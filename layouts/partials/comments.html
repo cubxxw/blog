@@ -15,25 +15,6 @@
     </div>
   </header>
 
-  {{- /* Passage quote preview (article-selection.js reveals this when the
-         reader uses the 评论 / Comment control). Utterances runs cross-origin,
-         so comment prefill is NOT supported — we never fabricate a posted
-         comment. The block only stages the quote + passage link so the reader
-         can copy it and paste it into the comment box below. */ -}}
-  <div class="post-comments__quote" id="post-comments-quote" hidden>
-    <p class="post-comments__quote-label" id="post-comments-quote-label"></p>
-    <blockquote class="post-comments__quote-text" id="post-comments-quote-text"></blockquote>
-    <p class="post-comments__quote-source">
-      <span id="post-comments-quote-title"></span>
-      <a id="post-comments-quote-link" rel="noopener"></a>
-    </p>
-    <div class="post-comments__quote-actions">
-      <button type="button" class="post-comments__quote-copy" id="post-comments-quote-copy"></button>
-    </div>
-    <p class="post-comments__quote-note" id="post-comments-quote-note" hidden></p>
-    <textarea class="post-comments__quote-manual" id="post-comments-quote-manual" hidden readonly rows="4" aria-label="Quote to copy manually"></textarea>
-  </div>
-
   <div class="post-comments__body" id="post-comments-body"></div>
   {{- /* Theme-aware utterances loader: github-light in light mode (unchanged),
          github-dark in dark mode, and live-switches when the reader toggles

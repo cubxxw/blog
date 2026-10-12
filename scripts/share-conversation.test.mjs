@@ -7,7 +7,7 @@ import { parseFragment } from 'parse5';
 // Browser boundary double: the real share controller, Markdown layout, QR encoder
 // and modal events run unchanged; only DOM and canvas rasterization are replaced.
 function browser({ lang = 'zh', dark = false, dpr = 2, native = true, qr = true } = {}) {
-  const records = { text: [], images: [], shares: [], downloads: [], qr: [] };
+  const records = { text: [], images: [], shares: [], downloads: [], qr: [], canvases: 0 };
   let document;
   class Element {
     constructor(tag) { this.tagName = tag; this.children = []; this.attrs = {}; this.style = {}; this.listeners = {}; this.textContent = ''; }
@@ -31,6 +31,7 @@ function browser({ lang = 'zh', dark = false, dpr = 2, native = true, qr = true 
       this.children = []; for (const n of parseFragment(value).childNodes) this.appendChild(convert(n));
     }
     matches(selector) {
+      if (selector.endsWith(':not([disabled])')) return this.matches(selector.replace(':not([disabled])', '')) && !this.disabled;
       if (selector === 'button:not([disabled])') return this.tagName === 'button' && !('disabled' in this.attrs);
       if (selector.startsWith('#')) return this.id === selector.slice(1);
       if (selector.startsWith('.')) return this.classList.contains(selector.slice(1));
@@ -47,7 +48,7 @@ function browser({ lang = 'zh', dark = false, dpr = 2, native = true, qr = true 
   }
   class Canvas extends Element {
     constructor() {
-      super('canvas'); this.width = 300; this.height = 150;
+      super('canvas'); records.canvases++; this.width = 300; this.height = 150;
       this.operations = [];
       const ctx = this.context = {
         font: '10px sans-serif', fillStyle: '#000', textAlign: 'left',
@@ -64,7 +65,7 @@ function browser({ lang = 'zh', dark = false, dpr = 2, native = true, qr = true 
   }
   const body = new Element('body'); if (dark) body.className = 'dark';
   const head = new Element('head'); const root = new Element('html'); root.attrs.lang = lang;
-  document = { body, head, documentElement: root, title: 'Source title', activeElement: new Element('button'), createElement: tag => tag === 'canvas' ? new Canvas() : new Element(tag), getElementById: id => body.querySelector('#' + id) || head.querySelector('#' + id), querySelector: () => null, addEventListener: body.addEventListener.bind(body), removeEventListener: body.removeEventListener.bind(body) };
+  document = { body, head, documentElement: root, title: 'Source title', activeElement: new Element('button'), createElement: tag => tag === 'canvas' ? new Canvas() : new Element(tag), getElementById: id => body.querySelector('#' + id) || head.querySelector('#' + id), querySelector: () => null, querySelectorAll: selector => body.querySelectorAll(selector), addEventListener: body.addEventListener.bind(body), removeEventListener: body.removeEventListener.bind(body) };
   const navigator = { clipboard: { writeText: async t => { records.text.push(t); }, write: async t => { records.images.push(t); } } };
   if (native) { navigator.share = async data => { records.shares.push(data); }; navigator.canShare = () => true; }
   const window = { document, navigator, devicePixelRatio: dpr, location: { href: 'https://cubxxw.com/zh/ai-agent/posts/source/', origin: 'https://cubxxw.com' }, ClipboardItem: class { constructor(data) { this.data = data; } } };
@@ -76,7 +77,7 @@ function browser({ lang = 'zh', dark = false, dpr = 2, native = true, qr = true 
   vm.runInContext(readFileSync(new URL('../static/js/share-conversation.js', import.meta.url), 'utf8'), context);
   const show = (messages, options = {}) => { window.ShareConversation.show(messages, { lang, title: 'Source title', url: window.location.href, ...options }); return canvas(); };
   const canvas = () => document.getElementById('csp-preview').children[0];
-  return { show, canvas, records, document, click: id => document.getElementById(id).click(), mode: value => document.getElementById('csp-modes').querySelectorAll('button').find(b => b.dataset.mode === value).click(), theme: value => document.getElementById('csp-themes').querySelectorAll('button').find(b => b.dataset.theme === value).click() };
+  return { show, excerpt: (quote, options = {}) => { window.ShareConversation.showExcerpt(quote, { lang, title: 'Source title', url: window.location.href, ...options }); return canvas(); }, canvas, records, document, click: id => document.getElementById(id).click(), mode: value => document.getElementById('csp-modes').querySelectorAll('button').find(b => b.dataset.mode === value).click(), theme: value => document.getElementById('csp-themes').querySelectorAll('button').find(b => b.dataset.theme === value).click() };
 }
 const pair = (answer, question = '原来的问题如何落地？') => [{ role: 'user', content: question }, { role: 'assistant', content: answer }];
 const text = canvas => canvas.operations.filter(op => op.type === 'text');
@@ -201,4 +202,34 @@ test('legacy Markdown links retain their destinations and plain arithmetic keeps
   app.click('csb-copy-text'); await Promise.resolve();
   assert.match(app.records.text[0], /https:\/\/example\.com\/docs/);
   assert.match(app.records.text[0], /2\*3\*4/);
+});
+test('literal excerpt retains markdown symbols, title, author and paragraph QR', async () => {
+  const app = browser();
+  const quote = '# 字句\n原文 **符号** 与 <标签>、a*b 都保留。';
+  const canvas = app.excerpt(quote, { author: '作者', sourceUrl: 'https://cubxxw.com/zh/article/#asel-p7:~:text=原文' });
+  assert.ok(printed(canvas).includes('# 字句'));
+  assert.ok(printed(canvas).includes('**符号**'));
+  assert.ok(printed(canvas).includes('<标签>'));
+  assert.ok(printed(canvas).includes('作者'));
+  assert.ok(printed(canvas).includes('Source title'));
+  assert.deepEqual(app.records.qr, ['https://cubxxw.com/zh/article/#asel-p7']);
+  app.click('csb-copy-text'); await Promise.resolve();
+  assert.ok(app.records.text[0].includes('> # 字句\n> 原文 **符号**'));
+  assert.ok(decodeURI(app.records.text[0]).endsWith('#asel-p7:~:text=原文'));
+});
+test('over-limit quote allocates zero canvases and can copy all original text', async () => {
+  const app = browser(), quote = '长'.repeat(2401);
+  app.excerpt(quote);
+  assert.equal(app.records.canvases, 0);
+  assert.equal(app.document.getElementById('csb-save-img').disabled, true);
+  app.click('csb-copy-text'); await Promise.resolve();
+  assert.ok(app.records.text[0].includes(quote));
+});
+test('a closing editor can reopen without duplicate IDs or stale callbacks', () => {
+  const app = browser(); app.excerpt('第一句。');
+  app.document.body.querySelector('.conv-share-close').click();
+  app.excerpt('下一句。');
+  assert.equal(app.document.body.querySelectorAll('.conv-share-overlay').length, 1);
+  assert.match(printed(app.canvas()), /下一句。/);
+  app.click('csb-save-img'); assert.equal(app.records.downloads.length, 1);
 });

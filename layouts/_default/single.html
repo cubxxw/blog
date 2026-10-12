@@ -371,6 +371,12 @@
 
     {{/* Panel 3: Share */}}
     <div class="abs-panel" id="abs-panel-share" role="tabpanel" aria-labelledby="abs-tab-share" hidden>
+      <button type="button" class="abs-share-card" data-share-trigger
+        data-title="{{ .Title }}" data-url="{{ .Permalink }}" data-desc="{{ .Description }}" data-lang="{{ .Lang }}"
+        onclick="openArticleShareCard(this)">
+        <span>{{ if eq .Lang "zh" }}把文章留在一张卡片上{{ else }}Keep the article on a card{{ end }}</span>
+        <span>{{ if eq .Lang "zh" }}预览、保存，分享给在意的人{{ else }}Preview, save, and pass it on{{ end }}</span>
+      </button>
       <div class="abs-share-row">
         <a class="abs-share-btn" href="https://x.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }}"
            target="_blank" rel="noopener noreferrer" aria-label="Share on X">
@@ -406,7 +412,7 @@
   </div>{{/* .abs-panels */}}
 </div>{{/* .article-bottom-sheet */}}
 
-<script src="{{ "/js/article-bottom-sheet.js" | relURL }}" defer></script>
+<script src="{{ "/js/article-bottom-sheet.js" | relURL }}?v={{ readFile "static/js/article-bottom-sheet.js" | sha256 }}" defer></script>
 
 {{/* Hero cover 2.5D pointer parallax — no WebGL. Self-gates to fine-pointer
      / non-reduced-motion visitors and no-ops when the article has no cover. */}}

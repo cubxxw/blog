@@ -1,37 +1,8 @@
 /**
- * article-selection.js — bounded article selection interaction.
- *
- * Scope: default single-article layout, `.post-content` only. One quiet line
- * toolbar (分享 / AI 分析 / 评论 / 更多) floats as a BODY-LEVEL fixed overlay;
- * prose geometry (margins, padding, borders, widths, scrollHeight) is never
- * touched — the paragraph feedback is a zero-layout fixed marker painted at
- * 7% stroke / 1% background with a short left mark.
- *
- * Behaviour contract (see docs/article-selection.md):
- *  - Plain paragraph click → subtle paragraph marker + toolbar anchored above
- *    the full block (falls below the FULL block when blocked by the rendered
- *    fixed/sticky top chrome or the viewport top).
- *  - Drag / keyboard text selection → toolbar anchored to the actual selected
- *    line rects (Range.getClientRects), never the whole paragraph. Selection
- *    survives control activation; ranges reaching outside the article are
- *    rejected.
- *  - More menu is an independent fixed popup (never a second row), dismisses
- *    on outside click / Esc and restores focus.
- *  - Share opens a native dialog with a quote card (complete quote + title +
- *    author + source) and a canvas PNG export that draws the COMPLETE quote.
- *    Oversized selections are refused with a clear limit notice — never
- *    silently truncated.
- *  - AI analysis reuses /.netlify/functions/article-ai (JSON + SSE) with
- *    selectedText + selectionContext as reference data, per-selection history,
- *    retry/cancel/error states and abort on close.
- *  - Comment reveals the quote preview before Utterances. Cross-origin
- *    Utterances has no prefill — nothing is fabricated or auto-posted.
- *  - Mobile keeps native long-press selection and drag handles: we never
- *    cancel touchstart/contextmenu/article pointer defaults; the toolbar
- *    waits for the selection to settle and clears the system menu zone
- *    (>= 56px below the selection; OS menu rect is not exposed, see docs).
- *
- * Everything is mounted on document.body; nothing is inserted into prose.
+ * Native article text selection, anchored actions and noninterrupting responses.
+ * Plain reading clicks stay quiet. Shared cards and existing chat own their UI.
+ * Comment provider stays in its original DOM so iframe drafts survive.
+ * See docs/article-selection.md for selection, mobile and transport contracts.
  */
 (function () {
   'use strict';
@@ -142,11 +113,7 @@
   var SETTLE_MS = 350;          // wait for touch selection to settle
   var AI_MAX_SELECTED = 6000;   // mirror of the backend bound
   var AI_MAX_CONTEXT = 5600;    // mirror of the backend bound
-  var CARD_MAX_CHARS = 2400;    // clear export cap — never silent truncation
-  var CARD_MAX_LINES = 80;
   var TEXTFRAG_MAX = 300;
-  var AI_IDLE_TIMEOUT_MS = 45000;
-  var AI_HISTORY_MAX = 10;
 
   var BLOCK_SELECTOR = 'p, li, blockquote';
   var WIDGET_SELECTOR = 'figure, table, [data-ib-root], [data-asel-ignore]';
@@ -250,8 +217,7 @@
   var menuOpen = false;
   var lastTouchAt = 0;
   var settleTimer = 0;
-  var historyMap = Object.create(null); // quote text is untrusted, not object keys
-  var currentGradient = 'moss';
+  var pointerSelecting = false;
 
   // ── UI construction (mounted on body, outside prose) ──────────────────
   var root = el('div', 'asel-root');
@@ -325,110 +291,9 @@
   manual.appendChild(manualArea);
   manual.appendChild(manualClose);
 
-  // Share dialog
-  var shareDialog = el('dialog', 'asel-dialog asel-dialog-share');
-  shareDialog.setAttribute('aria-label', T.shareTitle);
-  var shareBody = el('div', 'asel-dialog-body');
-  var shareHead = el('div', 'asel-dialog-head');
-  shareHead.appendChild(el('h2', 'asel-dialog-title', T.shareTitle));
-  var shareClose = el('button', 'asel-dialog-close', '\u00d7');
-  shareClose.type = 'button';
-  shareClose.setAttribute('aria-label', T.close);
-  shareHead.appendChild(shareClose);
-  shareBody.appendChild(shareHead);
-
-  var choiceGroup = el('div', 'asel-card-choices');
-  choiceGroup.setAttribute('role', 'group');
-  choiceGroup.setAttribute('aria-label', T.cardStyle);
-  var choiceButtons = {};
-  [['moss', T.cardMoss], ['paper', T.cardPaper], ['dusk', T.cardDusk]].forEach(function (pair) {
-    var btn = el('button', 'asel-card-choice', pair[1]);
-    btn.type = 'button';
-    btn.setAttribute('data-asel-card', pair[0]);
-    btn.setAttribute('aria-pressed', pair[0] === currentGradient ? 'true' : 'false');
-    choiceGroup.appendChild(btn);
-    choiceButtons[pair[0]] = btn;
-  });
-  shareBody.appendChild(choiceGroup);
-
-  var card = el('div', 'asel-card asel-card--moss');
-  var cardQuote = el('p', 'asel-card-quote');
-  var cardMeta = el('div', 'asel-card-meta');
-  card.appendChild(cardQuote);
-  card.appendChild(cardMeta);
-  shareBody.appendChild(card);
-
-  var canvasWrap = el('div', 'asel-canvas-wrap');
-  var canvas = el('canvas');
-  canvas.setAttribute('aria-label', T.shareTitle);
-  canvasWrap.appendChild(canvas);
-  shareBody.appendChild(canvasWrap);
-
-  var limitNote = el('p', 'asel-limit-note');
-  limitNote.hidden = true;
-  shareBody.appendChild(limitNote);
-
-  var sourceLine = el('p', 'asel-source-line');
-  shareBody.appendChild(sourceLine);
-
-  var shareActions = el('div', 'asel-actions');
-  function makeAction(parent, action, label, primary) {
-    var btn = el('button', 'asel-action' + (primary ? ' asel-action--primary' : ''), label);
-    btn.type = 'button';
-    btn.setAttribute('data-asel-action', action);
-    parent.appendChild(btn);
-    return btn;
-  }
-  var downloadBtn = makeAction(shareActions, 'download', T.download, true);
-  var copyQuoteBtn = makeAction(shareActions, 'copy-quote-card', T.quoteCopy);
-  var nativeShareBtn = makeAction(shareActions, 'native-share', T.nativeShare);
-  nativeShareBtn.hidden = true;
-  makeAction(shareActions, 'close-share', T.close);
-  shareBody.appendChild(shareActions);
-  var shareStatus = el('p', 'asel-ai-status');
-  shareStatus.hidden = true;
-  shareBody.appendChild(shareStatus);
-  shareDialog.appendChild(shareBody);
-
-  // AI dialog
-  var aiDialog = el('dialog', 'asel-dialog asel-dialog-ai');
-  aiDialog.setAttribute('aria-label', T.aiTitle);
-  var aiBody = el('div', 'asel-dialog-body');
-  var aiHead = el('div', 'asel-dialog-head');
-  aiHead.appendChild(el('h2', 'asel-dialog-title', T.aiTitle));
-  var aiCloseBtn = el('button', 'asel-dialog-close', '\u00d7');
-  aiCloseBtn.type = 'button';
-  aiCloseBtn.setAttribute('aria-label', T.close);
-  aiHead.appendChild(aiCloseBtn);
-  aiBody.appendChild(aiHead);
-
-  var aiQuote = el('blockquote', 'asel-quote-text');
-  aiBody.appendChild(aiQuote);
-  var aiStatus = el('p', 'asel-ai-status');
-  aiStatus.hidden = true;
-  aiBody.appendChild(aiStatus);
-  var aiAnswer = el('div', 'asel-ai-answer');
-  aiAnswer.setAttribute('aria-live', 'polite');
-  aiBody.appendChild(aiAnswer);
-  var aiInput = el('textarea', 'asel-ai-input');
-  aiInput.setAttribute('aria-label', T.aiPlaceholder);
-  aiInput.placeholder = T.aiPlaceholder;
-  aiBody.appendChild(aiInput);
-  var aiActions = el('div', 'asel-actions');
-  var aiSendBtn = makeAction(aiActions, 'ai-send', T.send, true);
-  var aiRetryBtn = makeAction(aiActions, 'ai-retry', T.retry);
-  aiRetryBtn.hidden = true;
-  var aiCancelBtn = makeAction(aiActions, 'ai-cancel', T.cancel);
-  aiCancelBtn.hidden = true;
-  makeAction(aiActions, 'ai-close', T.close);
-  aiBody.appendChild(aiActions);
-  aiDialog.appendChild(aiBody);
-
   root.appendChild(marker);
   root.appendChild(toolbar);
   root.appendChild(menu);
-  root.appendChild(shareDialog);
-  root.appendChild(aiDialog);
   document.body.appendChild(toast);
   root.appendChild(manual);
   document.body.appendChild(root);
@@ -436,7 +301,6 @@
   // ── Copy helpers (clipboard refusal → visible selectable field) ───────
   var toastTimer = 0;
   function showToast(message) {
-    if (shareDialog.open) setShareStatus(message);
     toast.textContent = message;
     toast.classList.add('asel-toast--visible');
     clearTimeout(toastTimer);
@@ -623,19 +487,21 @@
       return;
     }
 
-    // Marker paints the full block extent in block mode (zero layout).
-    if (mode === 'block') {
+    // A roomy contour around the selected prose; range placement stays exact.
+    var marked = selectionBlocks();
+    if (marked.length) {
+      var mLeft = Infinity, mTop = Infinity, mRight = -Infinity, mBottom = -Infinity;
+      marked.forEach(function (block) {
+        var b = block.getBoundingClientRect();
+        mLeft = Math.min(mLeft, b.left); mTop = Math.min(mTop, b.top);
+        mRight = Math.max(mRight, b.right); mBottom = Math.max(mBottom, b.bottom);
+      });
+      var markerLeft = Math.max(PAD, mLeft - 8);
       marker.hidden = false;
-      marker.style.left = Math.round(fullLeft - 4) + 'px';
-      marker.style.top = Math.round(fullTop - 2) + 'px';
-      marker.style.width = Math.round(Math.max(0, (function () {
-        var maxRight = -Infinity;
-        for (var k = 0; k < rects.length; k += 1) {
-          if (rects[k].right > maxRight) maxRight = rects[k].right;
-        }
-        return maxRight - fullLeft + 8;
-      })())) + 'px';
-      marker.style.height = Math.round(fullBottom - fullTop + 4) + 'px';
+      marker.style.left = Math.round(markerLeft) + 'px';
+      marker.style.top = Math.round(mTop - 6) + 'px';
+      marker.style.width = Math.round(Math.max(0, Math.min(window.innerWidth - PAD, mRight + 8) - markerLeft)) + 'px';
+      marker.style.height = Math.round(mBottom - mTop + 12) + 'px';
     } else {
       marker.hidden = true;
     }
@@ -724,16 +590,8 @@
     return true;
   }
 
-  function captureBlockSelection(block) {
-    anchorBlock = block;
-    anchorRange = null;
-    anchorQuote = (block.innerText || block.textContent || '').trim();
-    mode = 'block';
-    dismissed = false;
-    scheduleReposition();
-  }
-
   function handleSelectionChange() {
+    if (pointerSelecting) return;
     if (menuOpen) return;
     if (root.contains(document.activeElement)) return;
     var sel = window.getSelection();
@@ -747,17 +605,13 @@
       discardAnchor();
       return;
     }
-    if (Date.now() - lastTouchAt < 900) {
-      // Touch: wait until the native selection settles before showing.
-      clearTimeout(settleTimer);
-      setFaded(true);
-      settleTimer = setTimeout(function () {
-        if (captureRangeSelection()) scheduleReposition();
-        else discardAnchor();
-      }, SETTLE_MS);
-      return;
-    }
-    if (!captureRangeSelection()) discardAnchor();
+    clearTimeout(settleTimer);
+    setFaded(true);
+    settleTimer = setTimeout(function () {
+      if (pointerSelecting) return;
+      if (captureRangeSelection()) scheduleReposition();
+      else discardAnchor();
+    }, Date.now() - lastTouchAt < 900 ? SETTLE_MS : 150);
   }
 
   function discardAnchor() {
@@ -798,12 +652,8 @@
       handleSelectionChange();
       return;
     }
-    var block = blockFor(event.target);
-    if (block) {
-      captureBlockSelection(block);
-    } else {
-      clearSelection();
-    }
+    // Ordinary reading clicks are deliberately quiet.
+    discardAnchor();
   });
 
   document.addEventListener('touchend', function () {
@@ -864,13 +714,29 @@
   });
 
   document.addEventListener('pointerdown', function (event) {
+    if (content.contains(event.target)) {
+      pointerSelecting = true;
+      clearTimeout(settleTimer);
+      hideAll();
+    }
     if (menuOpen && !menu.contains(event.target) && event.target !== moreBtn) {
       closeMenu(false);
     }
   });
+  document.addEventListener('pointerup', function () {
+    if (!pointerSelecting) return;
+    pointerSelecting = false;
+    handleSelectionChange();
+  });
+  document.addEventListener('pointercancel', function () {
+    pointerSelecting = false;
+    handleSelectionChange();
+  });
 
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape') return;
+    if (document.getElementById('conv-share-modal')) return;
+    if (commentOpen) { closeComments(); return; }
     if (document.querySelector('dialog[open]')) return; // native dialogs own Esc
     if (menuOpen) {
       closeMenu(true);
@@ -883,297 +749,6 @@
       hideAll();
     }
   });
-
-  // ── Comment quote preview ─────────────────────────────────────────────
-  function openCommentPreview() {
-    if (!commentsSection) return;
-    var box = document.getElementById('post-comments-quote');
-    if (!box) return;
-    var link = passageLink();
-    var payload = quoteWithSource(); // immutable even after the floating selection is cleared
-    document.getElementById('post-comments-quote-label').textContent = T.commentTitle;
-    var textEl = document.getElementById('post-comments-quote-text');
-    textEl.textContent = anchorQuote; // exact quote, escaped by textContent
-    document.getElementById('post-comments-quote-title').textContent =
-      String(config.title || '') + ' \u00b7 ' + T.sourceLabel + ': ';
-    var linkEl = document.getElementById('post-comments-quote-link');
-    linkEl.href = link;
-    linkEl.textContent = link;
-    var copyBtn = document.getElementById('post-comments-quote-copy');
-    copyBtn.textContent = T.quoteCopy;
-    var note = document.getElementById('post-comments-quote-note');
-    note.textContent = T.commentNote;
-    note.hidden = false;
-    var manualField = document.getElementById('post-comments-quote-manual');
-    manualField.hidden = true;
-    manualField.value = payload;
-    manualField.setAttribute('aria-label', T.manualHint);
-    box.hidden = false;
-    commentsSection.scrollIntoView({
-      behavior: reducedMotion() ? 'auto' : 'smooth',
-      block: 'start'
-    });
-    copyBtn.onclick = function () {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(payload).then(function () {
-          showToast(T.copied);
-        }).catch(function () {
-          note.textContent = T.copyFailed;
-          manualField.hidden = false;
-          try {
-            manualField.focus();
-            manualField.select();
-          } catch (err) { /* best effort */ }
-        });
-      } else {
-        note.textContent = T.copyFailed;
-        manualField.hidden = false;
-        try {
-          manualField.focus();
-          manualField.select();
-        } catch (err) { /* best effort */ }
-      }
-    };
-  }
-
-  // ── Share dialog + canvas quote card ──────────────────────────────────
-  function displayFont() {
-    return window.getComputedStyle(document.body).fontFamily ||
-      "'Inter', system-ui, sans-serif";
-  }
-
-  function headingFont() {
-    var h = document.querySelector('.post-title') || document.querySelector('h1');
-    return (h && window.getComputedStyle(h).fontFamily) || displayFont();
-  }
-
-  function wrapText(ctx, text, maxWidth) {
-    var lines = [];
-    var paragraphs = String(text || '').split('\n');
-    for (var p = 0; p < paragraphs.length; p += 1) {
-      var para = paragraphs[p];
-      if (!para.trim()) {
-        lines.push('');
-        continue;
-      }
-      var tokens = para.split(/(\s+)/);
-      var line = '';
-      for (var i = 0; i < tokens.length; i += 1) {
-        var token = tokens[i];
-        var candidate = line + token;
-        if (ctx.measureText(candidate).width > maxWidth && line) {
-          lines.push(line.replace(/\s+$/, ''));
-          line = token.replace(/^\s+/, '');
-        } else {
-          line = candidate;
-        }
-        while (ctx.measureText(line).width > maxWidth && line.length > 1) {
-          // Hard-break a single oversized token (long URLs, CJK runs) —
-          // estimate the cut point first so this stays linear, not quadratic.
-          var measured = ctx.measureText(line).width;
-          var cut = Math.max(1, Math.floor((line.length * maxWidth) / measured));
-          while (cut < line.length && ctx.measureText(line.slice(0, cut + 1)).width <= maxWidth) cut += 1;
-          while (cut > 1 && ctx.measureText(line.slice(0, cut)).width > maxWidth) cut -= 1;
-          lines.push(line.slice(0, cut));
-          line = line.slice(cut);
-        }
-      }
-      if (line.trim() || !lines.length) lines.push(line.replace(/\s+$/, ''));
-    }
-    return lines;
-  }
-
-  var cardDrawPromise = Promise.resolve();
-  var cardGeneration = 0;
-  var cardOverLimit = false;
-
-  function drawCard(generation) {
-    var quote = anchorQuote;
-    var palette = currentGradient;
-    var width = 1080;
-    var padX = 84;
-    var padY = 88;
-    var maxWidth = width - padX * 2;
-    var ctx = canvas.getContext('2d');
-    var quoteSize = 36;
-    var quoteLine = 58;
-    var metaSize = 24;
-    var metaLine = 38;
-
-    var fontsReady = document.fonts ? Promise.all([
-      document.fonts.load(quoteSize + 'px ' + headingFont(), quote),
-      document.fonts.load('600 ' + metaSize + 'px ' + displayFont(), String(config.title || '')),
-      document.fonts.ready
-    ]) : Promise.resolve();
-    return fontsReady.catch(function () { return null; }).then(function () {
-      if (generation !== cardGeneration || !shareDialog.open) return;
-      ctx.font = quoteSize + 'px ' + headingFont();
-      var quoteLines = wrapText(ctx, quote, maxWidth);
-      ctx.font = '600 ' + metaSize + 'px ' + displayFont();
-      var titleLines = wrapText(ctx, String(config.title || ''), maxWidth);
-      ctx.font = metaSize + 'px ' + displayFont();
-      var authorLines = wrapText(ctx, String(config.author || ''), maxWidth);
-      var urlLines = wrapText(ctx, String(config.url || ''), maxWidth);
-
-      var height = padY + quoteLines.length * quoteLine + 56 +
-        (titleLines.length + authorLines.length + urlLines.length) * metaLine + padY;
-      canvas.width = width;
-      canvas.height = Math.max(320, Math.round(height));
-
-      var gradient = ctx.createLinearGradient(0, 0, width, canvas.height);
-      if (palette === 'paper') {
-        gradient.addColorStop(0, '#fbf9f4');
-        gradient.addColorStop(1, '#f1ece2');
-      } else if (palette === 'dusk') {
-        gradient.addColorStop(0, '#2b2d3a');
-        gradient.addColorStop(0.6, '#4a4360');
-        gradient.addColorStop(1, '#7c6a8a');
-      } else {
-        gradient.addColorStop(0, '#1f2a24');
-        gradient.addColorStop(0.55, '#2f4a3a');
-        gradient.addColorStop(1, '#56715c');
-      }
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = palette === 'paper' ? '#1a1c1b' : '#f2f5f1';
-
-      var y = padY;
-      ctx.font = quoteSize + 'px ' + headingFont();
-      for (var i = 0; i < quoteLines.length; i += 1) {
-        ctx.fillText(quoteLines[i], padX, y);
-        y += quoteLine;
-      }
-      y += 56 - quoteLine + metaLine;
-      ctx.font = '600 ' + metaSize + 'px ' + displayFont();
-      for (var t = 0; t < titleLines.length; t += 1) {
-        ctx.fillText(titleLines[t], padX, y);
-        y += metaLine;
-      }
-      ctx.font = metaSize + 'px ' + displayFont();
-      for (var a = 0; a < authorLines.length; a += 1) {
-        ctx.fillText(authorLines[a], padX, y);
-        y += metaLine;
-      }
-      for (var u = 0; u < urlLines.length; u += 1) {
-        ctx.fillText(urlLines[u], padX, y);
-        y += metaLine;
-      }
-
-    });
-  }
-
-  function setShareStatus(message) {
-    shareStatus.textContent = message || '';
-    shareStatus.hidden = !message;
-  }
-
-  function queueCardDraw() {
-    var generation = ++cardGeneration;
-    downloadBtn.disabled = true;
-    nativeShareBtn.disabled = true;
-    if (cardOverLimit) {
-      canvasWrap.hidden = true;
-      canvas.width = 0;
-      canvas.height = 0;
-      cardDrawPromise = Promise.resolve();
-      return;
-    }
-    canvasWrap.hidden = false;
-    cardDrawPromise = drawCard(generation).then(function () {
-      if (generation !== cardGeneration || !shareDialog.open) return;
-      downloadBtn.disabled = false;
-      nativeShareBtn.disabled = false;
-    }).catch(function () {
-      if (generation === cardGeneration) setShareStatus(T.copyFailed);
-    });
-  }
-
-  function openShare() {
-    if (!anchorQuote) return;
-    var quote = anchorQuote;
-    cardQuote.textContent = quote;
-    card.className = 'asel-card asel-card--' + currentGradient;
-    cardMeta.innerHTML = '';
-    var strong = el('strong', '', String(config.title || ''));
-    cardMeta.appendChild(strong);
-    cardMeta.appendChild(el('br'));
-    cardMeta.appendChild(document.createTextNode(String(config.author || '')));
-    cardMeta.appendChild(el('br'));
-    cardMeta.appendChild(document.createTextNode(String(config.url || '')));
-    sourceLine.textContent = '';
-    var sourceLink = el('a', '', isZh ? '返回原文' : 'Read the original passage');
-    sourceLink.href = passageLink();
-    sourceLine.appendChild(sourceLink);
-
-    var lineCount = quote.split('\n').length;
-    var overLimit = quote.length > CARD_MAX_CHARS || lineCount > CARD_MAX_LINES;
-    cardOverLimit = overLimit;
-    limitNote.hidden = !overLimit;
-    if (overLimit) {
-      limitNote.textContent = fill(T.limitNote, { n: quote.length, max: CARD_MAX_CHARS });
-    }
-    downloadBtn.disabled = overLimit;
-    nativeShareBtn.disabled = overLimit;
-    setShareStatus('');
-    nativeShareBtn.hidden = !(navigator.canShare && navigator.share && window.File);
-    openDialog(shareDialog);
-    queueCardDraw();
-  }
-
-  function exportCardBlob() {
-    return cardDrawPromise.then(function () {
-      if (cardOverLimit || !canvas.width) return null;
-      return new Promise(function (resolve) {
-        canvas.toBlob(function (blob) { resolve(blob); }, 'image/png');
-      });
-    });
-  }
-
-  function downloadCard() {
-    exportCardBlob().then(function (blob) {
-      if (!blob) return;
-      var url = URL.createObjectURL(blob);
-      var a = el('a');
-      a.href = url;
-      a.download = 'quote-card.png';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(function () { URL.revokeObjectURL(url); }, 8000);
-    });
-  }
-
-  function nativeShareCard() {
-    exportCardBlob().then(function (blob) {
-      if (!blob) return;
-      var file = new File([blob], 'quote-card.png', { type: 'image/png' });
-      if (!navigator.canShare || !navigator.canShare({ files: [file] })) {
-        setShareStatus(T.shareFailed);
-        return;
-      }
-      navigator.share({
-        files: [file],
-        title: String(config.title || ''),
-        text: anchorQuote
-      }).then(function () {
-        showToast(T.shared);
-      }).catch(function (err) {
-        // Quiet on user cancellation; the download path stays functional.
-        if (err && err.name === 'AbortError') {
-          setShareStatus(T.shareCancelled);
-        } else {
-          setShareStatus(T.shareFailed);
-        }
-      });
-    });
-  }
-
-  // ── AI dialog (SSE via /.netlify/functions/article-ai) ────────────────
-  var aiController = null;
-  var aiIdleTimer = 0;
-  var aiLastQuestion = '';
-  var aiBusy = false;
-  var aiRequestSerial = 0;
 
   function articleTextForRequest() {
     var text = (content.innerText || content.textContent || '').replace(/\s+/g, ' ').trim();
@@ -1261,301 +836,196 @@
     return (head + '\n\n' + tail).slice(0, AI_MAX_CONTEXT);
   }
 
-  function aiHistory() {
-    var key = historyKey();
-    if (!historyMap[key]) historyMap[key] = [];
-    return historyMap[key];
-  }
+  // A noninterrupting responses surface. Keep the provider in its original DOM
+  // position: removing/reinserting an iframe would destroy an unsent draft.
+  var commentDrawer = null, commentOpen = false, commentPlaceholder = null;
+  var commentHost = document.getElementById('post-comments-body');
+  var commentHostStyle = null, commentOverflow = '', commentFocus = null;
+  var commentInert = [], commentResize = null, commentQuote = null, commentGeneration = 0;
 
-  function historyKey() {
-    var block = anchorBlock || (anchorRange && startBlockForRange(anchorRange));
-    return (block ? block.id : '') + '\n' + anchorQuote;
-  }
+  function commentIsModal() { return window.innerWidth < 900; }
 
-  function setAiStatus(message, isError) {
-    aiStatus.textContent = message || '';
-    aiStatus.hidden = !message;
-    aiStatus.classList.toggle('asel-ai-error', !!isError);
-  }
-
-  function aiTurn(question, answer) {
-    var turn = el('div', 'asel-ai-turn');
-    turn.appendChild(el('p', 'asel-ai-q', (isZh ? '问：' : 'Q: ') + question));
-    turn.appendChild(el('p', 'asel-ai-a', answer));
-    aiAnswer.appendChild(turn);
-    return turn.querySelector('.asel-ai-a');
-  }
-
-  function abortAi() {
-    aiRequestSerial += 1;
-    clearTimeout(aiIdleTimer);
-    if (aiController) {
-      try { aiController.abort(); } catch (err) { /* already aborted */ }
-      aiController = null;
+  function setCommentInert(on) {
+    commentInert.forEach(function (item) { item.node.inert = item.value; });
+    commentInert = [];
+    if (!on) return;
+    var branch = commentHost;
+    while (branch && branch.parentElement) {
+      Array.prototype.forEach.call(branch.parentElement.children, function (sibling) {
+        if (sibling === branch || sibling === commentDrawer || sibling.contains(commentDrawer)) return;
+        commentInert.push({ node: sibling, value: sibling.inert });
+        sibling.inert = true;
+      });
+      branch = branch.parentElement;
+      if (branch === document.body) break;
     }
-    aiBusy = false;
-    aiCancelBtn.hidden = true;
-    aiSendBtn.disabled = false;
   }
 
-  function streamAnswer(question) {
-    abortAi();
-    if (anchorQuote.length > AI_MAX_SELECTED) {
-      setAiStatus(fill(T.aiLimit, { n: anchorQuote.length, max: AI_MAX_SELECTED }), true);
-      aiRetryBtn.hidden = true;
-      return;
+  function positionComments() {
+    if (!commentOpen || !commentDrawer || !commentHost) return;
+    var modal = commentIsModal();
+    commentDrawer.setAttribute('aria-modal', modal ? 'true' : 'false');
+    commentDrawer.classList.toggle('asel-comments--modal', modal);
+    setCommentInert(modal);
+    document.body.style.overflow = modal ? 'hidden' : commentOverflow;
+    var slot = commentDrawer.querySelector('.asel-comments-provider');
+    var r = slot.getBoundingClientRect();
+    commentHost.style.cssText = 'position:fixed;z-index:6502;box-sizing:border-box;margin:0;' +
+      'left:' + Math.round(r.left) + 'px;top:' + Math.round(r.top) + 'px;' +
+      'width:' + Math.round(r.width) + 'px;height:' + Math.max(40, Math.round(r.height)) + 'px;' +
+      'overflow:auto;overscroll-behavior:contain;padding:0 2px 12px;background:var(--asel-surface);';
+  }
+
+  function closeComments() {
+    if (!commentOpen) return;
+    commentGeneration++;
+    commentOpen = false;
+    commentDrawer.hidden = true;
+    if (commentHostStyle === null) commentHost.removeAttribute('style');
+    else commentHost.setAttribute('style', commentHostStyle);
+    if (commentPlaceholder) commentPlaceholder.remove();
+    commentPlaceholder = null;
+    document.body.style.overflow = commentOverflow;
+    setCommentInert(false);
+    if (commentResize) commentResize.disconnect();
+    if (commentFocus && commentFocus.isConnected && typeof commentFocus.focus === 'function') {
+      commentFocus.focus({ preventScroll: true });
     }
-    var requestId = aiRequestSerial;
-    var key = historyKey();
-    var history = aiHistory();
-    var controller = typeof AbortController === 'function' ? new AbortController() : null;
-    aiController = controller;
-    aiLastQuestion = question;
-    aiBusy = true;
-    aiSendBtn.disabled = true;
-    aiCancelBtn.hidden = false;
-    aiRetryBtn.hidden = true;
-    setAiStatus(T.thinking, false);
-    var payload = {
-      question: question,
-      articleTitle: String(config.title || ''),
-      articleContent: articleTextForRequest(),
-      pagePath: String(config.pagePath || ''),
-      language: isZh ? 'zh' : 'en',
-      selectedText: anchorQuote,
-      selectionContext: buildSelectionContext(),
-      context: history.slice(-AI_HISTORY_MAX),
-      stream: true
+  }
+
+  function createComments() {
+    commentDrawer = el('section', 'asel-comments');
+    commentDrawer.setAttribute('role', 'dialog');
+    commentDrawer.setAttribute('aria-label', isZh ? '关于这段文字的评论' : 'Responses to this passage');
+    commentDrawer.setAttribute('aria-owns', 'post-comments-body');
+    commentDrawer.hidden = true;
+    var head = el('header', 'asel-comments-head');
+    head.appendChild(el('span', 'asel-comments-kicker', isZh ? '读者回响' : 'RESPONSES'));
+    var close = el('button', 'asel-comments-close', '\u00d7');
+    close.type = 'button'; close.setAttribute('aria-label', isZh ? '关闭评论' : 'Close responses');
+    close.addEventListener('click', closeComments); head.appendChild(close);
+    commentDrawer.appendChild(head);
+    var quoteWrap = el('div', 'asel-comments-context');
+    quoteWrap.appendChild(el('span', 'asel-comments-context-label', isZh ? '关于这段文字' : 'ABOUT THIS PASSAGE'));
+    commentQuote = el('blockquote', 'asel-comments-quote'); quoteWrap.appendChild(commentQuote);
+    var copy = el('button', 'asel-comments-copy', T.quoteCopy); copy.type = 'button';
+    quoteWrap.appendChild(copy);
+    quoteWrap.appendChild(el('p', 'asel-comments-hint', isZh ? '复制引用，在下方写下你的想法。' : 'Copy the passage, then add your thoughts below.'));
+    commentDrawer.appendChild(quoteWrap);
+    var slot = el('div', 'asel-comments-provider');
+    commentDrawer.appendChild(slot);
+    var bottom = el('footer', 'asel-comments-bottom');
+    var resume = el('button', 'asel-comments-resume', isZh ? '继续阅读' : 'Continue reading');
+    resume.type = 'button'; resume.addEventListener('click', closeComments); bottom.appendChild(resume);
+    commentDrawer.appendChild(bottom); document.body.appendChild(commentDrawer);
+    window.addEventListener('resize', positionComments);
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', positionComments);
+    commentDrawer.addEventListener('keydown', function (event) {
+      if (event.key !== 'Tab' || !commentIsModal()) return;
+      var controls = Array.prototype.filter.call(commentDrawer.querySelectorAll('button,textarea'), function (node) { return !node.hidden && node.offsetParent !== null; });
+      var frame = commentHost.querySelector('iframe');
+      if (frame) controls.push(frame);
+      var first = controls[0], last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+  }
+
+  function openCommentPreview() {
+    if (!commentsSection || !commentHost || !anchorQuote) return;
+    var quote = anchorQuote, payload = quoteWithSource();
+    var generation = ++commentGeneration;
+    function current() { return commentOpen && generation === commentGeneration; }
+    if (!commentDrawer) createComments();
+    var oldManual = commentDrawer.querySelector('.asel-comments-manual');
+    if (oldManual) oldManual.remove();
+    commentQuote.textContent = quote;
+    commentDrawer.querySelector('.asel-comments-copy').onclick = function () {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(payload).then(function () { if (current()) showToast(T.copied); }, function () { if (current()) showCommentManual(payload); });
+        } else if (current()) showCommentManual(payload);
+      } catch (_) { if (current()) showCommentManual(payload); }
     };
-    var answerEl = aiTurn(question, '');
-    var full = '';
-    var settled = false;
-    function active() { return requestId === aiRequestSerial && aiDialog.open; }
-    function fail(message) {
-      if (settled || !active()) return;
-      settled = true;
-      clearTimeout(aiIdleTimer);
-      aiBusy = false;
-      aiController = null;
-      aiSendBtn.disabled = false;
-      aiCancelBtn.hidden = true;
-      aiRetryBtn.hidden = false;
-      setAiStatus(message, true);
+    if (!commentOpen) {
+      commentHostStyle = commentHost.getAttribute('style');
+      commentOverflow = document.body.style.overflow;
+      commentFocus = document.activeElement;
+      commentPlaceholder = el('div', 'asel-comments-placeholder');
+      commentPlaceholder.style.height = commentHost.getBoundingClientRect().height + 'px';
+      commentPlaceholder.setAttribute('aria-hidden', 'true');
+      commentHost.parentNode.insertBefore(commentPlaceholder, commentHost);
     }
-    function finish() {
-      if (settled || !active()) return;
-      if (!full.trim()) { fail(T.aiEmpty); return; }
-      settled = true;
-      clearTimeout(aiIdleTimer);
-      aiBusy = false;
-      aiController = null;
-      aiSendBtn.disabled = false;
-      aiCancelBtn.hidden = true;
-      setAiStatus('', false);
-      answerEl.textContent = full;
-      history.push({ role: 'user', content: question });
-      history.push({ role: 'assistant', content: full });
-      historyMap[key] = history.slice(-AI_HISTORY_MAX);
+    commentOpen = true; commentDrawer.hidden = false;
+    dismissed = true; hideAll();
+    positionComments();
+    if ('ResizeObserver' in window) {
+      if (commentResize) commentResize.disconnect();
+      commentResize = new ResizeObserver(positionComments);
+      commentResize.observe(commentDrawer.querySelector('.asel-comments-context'));
     }
-    function refreshTimeout() {
-      if (!active() || settled) return;
-      clearTimeout(aiIdleTimer);
-      aiIdleTimer = setTimeout(function () {
-        if (!active() || settled) return;
-        if (controller) controller.abort();
-        fail(T.aiTimeout);
-      }, AI_IDLE_TIMEOUT_MS);
-    }
-    refreshTimeout(); // Includes waiting for response headers and every stream read.
-    fetch('/.netlify/functions/article-ai', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: controller ? controller.signal : undefined
-    }).then(async function (res) {
-      if (!active() || settled) return;
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      var type = res.headers.get('content-type') || '';
-      if (type.indexOf('text/event-stream') === -1) {
-        var data = await res.json();
-        if (!active() || settled) return;
-        full = typeof data.answer === 'string' ? data.answer : '';
-        finish();
-        return;
-      }
-      if (!res.body || !res.body.getReader) throw new Error('Missing response stream');
-      var reader = res.body.getReader();
-      var decoder = new TextDecoder();
-      var buffer = '';
-      function consume(final) {
-        var lines = buffer.split(/\r?\n/);
-        buffer = final ? '' : lines.pop();
-        for (var i = 0; i < lines.length; i += 1) {
-          if (lines[i].indexOf('data:') !== 0) continue;
-          var raw = lines[i].slice(5).trim();
-          if (raw === '[DONE]') return true;
-          if (!raw) continue;
-          try {
-            var chunk = JSON.parse(raw);
-            if (chunk && typeof chunk.delta === 'string') {
-              full += chunk.delta;
-              answerEl.textContent = full;
-            }
-          } catch (err) { /* malformed events never become HTML */ }
-        }
-        return false;
-      }
-      while (active() && !settled) {
-        refreshTimeout();
-        var step = await reader.read();
-        if (!active() || settled) break;
-        buffer += step.done ? decoder.decode() : decoder.decode(step.value, { stream: true });
-        if (consume(step.done) || step.done) {
-          finish();
-          try { await reader.cancel(); } catch (err) { /* stream already ended */ }
-          return;
-        }
-      }
-      try { await reader.cancel(); } catch (err) { /* closed or aborted */ }
-    }).catch(function (err) {
-      if (!active() || settled || (err && err.name === 'AbortError')) return;
-      fail(T.aiError);
-    });
+    commentDrawer.querySelector('.asel-comments-close').focus({ preventScroll: true });
   }
+
+  function showCommentManual(payload) {
+    var field = commentDrawer.querySelector('.asel-comments-manual');
+    if (!field) {
+      field = el('textarea', 'asel-comments-manual');
+      field.readOnly = true; field.setAttribute('aria-label', T.manualHint);
+      commentDrawer.querySelector('.asel-comments-context').appendChild(field);
+    }
+    field.value = payload; field.focus({ preventScroll: true }); field.select(); positionComments();
+  }
+
+  function openShare() {
+    var quote = anchorQuote;
+    if (!quote) return;
+    var options = { lang: isZh ? 'zh' : 'en', title: config.title, author: config.author,
+      url: config.url, sourceUrl: passageLink(), kind: 'excerpt' };
+    function open() {
+      if (window.ShareConversation && window.ShareConversation.showExcerpt) window.ShareConversation.showExcerpt(quote, options);
+      else showToast(isZh ? '分享暂时无法打开，请再试一次。' : 'Sharing is unavailable. Please try again.');
+    }
+    if (window.ShareConversation) open();
+    else if (typeof window.loadShareScripts === 'function') window.loadShareScripts(open);
+    else open();
+  }
+
   function openAi() {
-    aiQuote.textContent = anchorQuote;
-    aiAnswer.innerHTML = '';
-    aiInput.value = '';
-    aiRetryBtn.hidden = true;
-    aiSendBtn.disabled = false;
-    if (anchorQuote.length > AI_MAX_SELECTED) {
-      abortAi();
-      setAiStatus(fill(T.aiLimit, { n: anchorQuote.length, max: AI_MAX_SELECTED }), true);
-    } else {
-      setAiStatus('', false);
-    }
-    openDialog(aiDialog);
-    if (anchorQuote.length <= AI_MAX_SELECTED) {
-      streamAnswer(T.aiQuestion); // asks for explanation relative to the article
-    }
+    if (!aiEnabled || !anchorQuote) return;
+    if (anchorQuote.length > AI_MAX_SELECTED) { showToast(T.aiLimit.replace('{n}', anchorQuote.length).replace('{max}', AI_MAX_SELECTED)); return; }
+    var block = anchorRange && startBlockForRange(anchorRange);
+    var bounds = anchorRange && anchorRange.getBoundingClientRect();
+    var detail = { selectedText: anchorQuote, selectionContext: buildSelectionContext(),
+      sourceUrl: passageLink(), blockId: block ? block.id : '',
+      sourceRect: bounds ? { left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom } : null,
+      question: isZh ? '结合这篇文章，帮我理解这段话。' : 'Help me understand this passage in the context of the article.' };
+    dismissed = true; hideAll();
+    document.dispatchEvent(new CustomEvent('article:selection-analyze', { detail: detail }));
   }
 
-  function closeAi() {
-    abortAi();
-    closeDialog(aiDialog);
-  }
-
-  // ── Dialog helpers ────────────────────────────────────────────────────
-  function openDialog(dialog) {
-    if (typeof dialog.showModal === 'function') {
-      dialog.showModal();
-    } else {
-      dialog.setAttribute('open', 'open');
-    }
-    window.requestAnimationFrame(function () {
-      dialog.classList.add('asel-dialog--in');
-    });
-  }
-
-  function closeDialog(dialog) {
-    dialog.classList.remove('asel-dialog--in');
-    if (typeof dialog.close === 'function') {
-      if (dialog.open) dialog.close();
-    } else {
-      dialog.removeAttribute('open');
-    }
-  }
-
-  shareClose.addEventListener('click', function () { closeDialog(shareDialog); });
-  aiCloseBtn.addEventListener('click', closeAi);
-  shareDialog.addEventListener('close', function () {
-    shareDialog.classList.remove('asel-dialog--in');
-  });
-  aiDialog.addEventListener('close', function () {
-    abortAi(); // abort any in-flight stream on close
-    aiDialog.classList.remove('asel-dialog--in');
-  });
-
-  // ── Control activation ────────────────────────────────────────────────
-  // Preserve the reader's selection when clicking our own chrome.
   root.addEventListener('mousedown', function (event) {
-    if ((toolbar.contains(event.target) || menu.contains(event.target)) &&
-        event.target.closest && event.target.closest('button, a')) {
-      event.preventDefault();
-    }
+    if (event.target.closest('.asel-toolbar button,.asel-menu button')) event.preventDefault();
   });
-
-  document.addEventListener('click', function (event) {
-    var target = event.target.closest ? event.target.closest('[data-asel-action]') : null;
-    if (!target || !root.contains(target)) return;
-    var action = target.getAttribute('data-asel-action');
-    if (action === 'share') {
-      openShare();
-    } else if (action === 'ai') {
-      openAi();
-    } else if (action === 'comment') {
-      openCommentPreview();
-    } else if (action === 'more') {
-      if (menuOpen) closeMenu(true); else openMenu();
-    } else if (action === 'copy-quote') {
-      copyText(quoteWithSource());
-      closeMenu(true);
-    } else if (action === 'copy-link') {
-      copyText(passageLink());
-      closeMenu(true);
-    } else if (action === 'clear') {
-      closeMenu(false);
-      clearSelection();
-    } else if (action === 'download') {
-      downloadCard();
-    } else if (action === 'copy-quote-card') {
-      copyText(quoteWithSource());
-    } else if (action === 'native-share') {
-      nativeShareCard();
-    } else if (action === 'close-share') {
-      closeDialog(shareDialog);
-    } else if (action === 'ai-send') {
-      var question = aiInput.value.trim() || T.aiQuestion;
-      if (!aiBusy) streamAnswer(question);
-    } else if (action === 'ai-retry') {
-      if (!aiBusy && aiLastQuestion) streamAnswer(aiLastQuestion);
-    } else if (action === 'ai-cancel') {
-      abortAi();
-      setAiStatus(T.aiCancelled, false);
-    } else if (action === 'ai-close') {
-      closeAi();
-    }
+  root.addEventListener('click', function (event) {
+    var actionEl = event.target.closest('[data-asel-action]');
+    if (!actionEl) return;
+    var action = actionEl.getAttribute('data-asel-action');
+    if (action === 'more') { if (menuOpen) closeMenu(true); else openMenu(); }
+    else if (action === 'share') { closeMenu(false); openShare(); }
+    else if (action === 'ai') { closeMenu(false); openAi(); }
+    else if (action === 'comment') { closeMenu(false); openCommentPreview(); }
+    else if (action === 'copy-quote') { copyText(quoteWithSource()); closeMenu(false); }
+    else if (action === 'copy-link') { copyText(passageLink()); closeMenu(false); }
+    else if (action === 'clear') clearSelection();
   });
-
-  choiceGroup.addEventListener('click', function (event) {
-    var btn = event.target.closest ? event.target.closest('[data-asel-card]') : null;
-    if (!btn) return;
-    currentGradient = btn.getAttribute('data-asel-card');
-    for (var key in choiceButtons) {
-      if (Object.prototype.hasOwnProperty.call(choiceButtons, key)) {
-        choiceButtons[key].setAttribute('aria-pressed', key === currentGradient ? 'true' : 'false');
-      }
-    }
-    card.className = 'asel-card asel-card--' + currentGradient;
-    queueCardDraw();
-  });
-
-  aiInput.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
-      event.preventDefault();
-      if (!aiBusy) streamAnswer(aiInput.value.trim() || T.aiQuestion);
-    }
-  });
-
   toolbar.addEventListener('keydown', function (event) {
-    if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].indexOf(event.key) === -1) return;
-    var controls = Array.from(toolbar.querySelectorAll('button'));
+    if (['ArrowLeft','ArrowRight','Home','End'].indexOf(event.key) < 0) return;
+    var controls = Array.prototype.slice.call(toolbar.querySelectorAll('button:not([hidden])'));
     var index = controls.indexOf(document.activeElement);
     if (index < 0) return;
     event.preventDefault();
-    if (event.key === 'Home') index = 0;
-    else if (event.key === 'End') index = controls.length - 1;
-    else index = (index + (event.key === 'ArrowRight' ? 1 : controls.length - 1)) % controls.length;
+    index = event.key === 'Home' ? 0 : event.key === 'End' ? controls.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : controls.length - 1)) % controls.length;
     controls[index].focus({ preventScroll: true });
   });
 

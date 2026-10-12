@@ -18,8 +18,8 @@
   // picked from the site's light/dark state; the rest are explicit UI picks.
   var THEMES = {
     classic: {
-      labelZh: '纸白', labelEn: 'Paper',
-      bgFrom: '#e9e9e6', bgTo: '#dedfdb', card: '#fbfbf9',
+      labelZh: '书页', labelEn: 'Paper',
+      bgFrom: '#f5f1e8', bgTo: '#eae5d9', card: '#f8f5ed',
       accent: '#8d2d2e', ink: '#242624',
       muted: 'rgba(36,38,36,0.56)', subtle: 'rgba(36,38,36,0.105)',
       border: 'rgba(36,38,36,0.13)', context: 'rgba(36,38,36,0.04)',
@@ -45,7 +45,7 @@
       qrFg: '#1c2a30', qrBg: '#f7f9f9',
     },
     ink: {
-      labelZh: '墨白', labelEn: 'Minimal ink',
+      labelZh: '墨白', labelEn: 'Ink',
       bgFrom: '#efefed', bgTo: '#e2e3df', card: '#fdfdfb',
       accent: '#343735', ink: '#202321',
       muted: 'rgba(32,35,33,0.52)', subtle: 'rgba(32,35,33,0.105)',
@@ -137,6 +137,20 @@
       '@media (max-width:420px){.conv-share-subtitle{max-width:32ch}.conv-share-swatch-label{display:none}.conv-share-swatch{padding-inline:7px}.conv-share-swatch-chip{width:28px;height:28px}.conv-share-stage{padding-inline:10px}}',
       '@media (prefers-reduced-motion:reduce){.conv-share-overlay,.conv-share-sheet,.conv-share-close,.conv-share-swatch,.conv-share-mode,.conv-share-btn{transition:none!important}}',
       '@media (prefers-reduced-transparency:reduce){.conv-share-overlay{backdrop-filter:none;-webkit-backdrop-filter:none}.conv-share-sheet{background:var(--color-paper,#f9f9f7)}body.dark .conv-share-sheet{background:#1d201d}}',
+      '.conv-share-overlay{background:rgba(28,27,23,.28);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);font-family:var(--font-body,system-ui,sans-serif)}',
+      '.conv-share-sheet{max-width:940px;border-radius:28px 28px 0 0;border-color:color-mix(in srgb,var(--color-ink,#1a1c1b) 7%,transparent);box-shadow:0 24px 90px rgba(26,25,22,.18);background:var(--color-paper,#faf9f6)}',
+      '.conv-share-header{padding:22px 28px 20px;border-bottom-color:color-mix(in srgb,var(--color-ink,#1a1c1b) 6%,transparent)}',
+      '.conv-share-title{font-family:var(--font-serif,Georgia,serif);font-size:1.35rem;font-weight:500;letter-spacing:-.025em}.conv-share-subtitle{font-size:.76rem;line-height:1.7;margin-top:4px}',
+      '.conv-share-close{border-radius:50%;background:color-mix(in srgb,var(--color-ink,#1a1c1b) 3%,transparent)}',
+      '.conv-share-workspace{grid-template-columns:190px minmax(0,1fr)}.conv-share-rail{padding:26px 22px;gap:26px;border-right-color:color-mix(in srgb,var(--color-ink,#1a1c1b) 6%,transparent)}',
+      '.conv-share-swatch,.conv-share-mode{border-radius:14px;min-height:48px;padding:9px 10px}.conv-share-swatch-chip{border-radius:9px;width:28px;height:28px}.conv-share-swatch--on,.conv-share-mode--on{border-color:color-mix(in srgb,var(--color-ink,#1a1c1b) 8%,transparent);background:color-mix(in srgb,var(--color-ink,#1a1c1b) 3%,transparent)}',
+      '.conv-share-stage{height:min(60dvh,610px);padding:28px;background:color-mix(in srgb,var(--color-ink,#1a1c1b) 4%,var(--color-paper,#faf9f6))}.conv-share-preview{display:flex;align-items:flex-start;justify-content:center;padding:0;min-width:0}.conv-share-preview canvas{width:auto;max-width:100%;height:100%;max-height:100%;flex:none;object-fit:contain;border-radius:4px;box-shadow:0 12px 30px rgba(40,35,24,.12)}',
+      '.conv-share-preview--long{display:block}.conv-share-preview--long canvas{width:100%;height:auto;max-height:none;max-width:560px}.conv-share-preview[aria-busy=true]{opacity:.55}.conv-share-preview{transition:opacity 140ms ease}',
+      '.conv-share-footer{padding:18px 24px;gap:10px;border-top-color:color-mix(in srgb,var(--color-ink,#1a1c1b) 6%,transparent);flex-wrap:wrap}.conv-share-btn{border-radius:999px;min-height:44px;padding:10px 16px;font-weight:500;font-size:.76rem}.conv-share-btn--primary{min-width:124px}.conv-share-btn:disabled{opacity:.35;cursor:wait;transform:none}',
+      '.conv-share-source-actions{display:grid;gap:5px}.conv-share-source-actions button,.conv-share-source-actions a{display:flex;align-items:center;min-height:36px;padding:5px 7px;border:0;border-radius:9px;background:transparent;color:var(--color-ink-muted,#65645f);font-size:.72rem;text-decoration:none;text-align:left;cursor:pointer}.conv-share-source-actions button:hover,.conv-share-source-actions a:hover{background:color-mix(in srgb,var(--color-ink,#1a1c1b) 4%,transparent);color:var(--color-ink,#262520)}',
+      '.conv-share-limit{align-self:center;max-width:32ch;padding:24px;color:var(--color-ink-muted,#65645f);font-size:.95rem;line-height:1.8;text-align:center}.conv-share-manual{flex-basis:100%;padding:10px 0 0;color:var(--color-ink-muted,#65645f);font-size:.76rem;line-height:1.7}.conv-share-manual textarea{box-sizing:border-box;display:block;width:100%;min-height:94px;margin:8px 0 0;padding:12px 14px;border:1px solid color-mix(in srgb,var(--color-ink,#1a1c1b) 12%,transparent);border-radius:14px;background:var(--color-paper,#faf9f6);color:var(--color-ink,#262520);font:inherit;resize:vertical;max-height:160px}.conv-share-accessible{position:absolute!important;clip-path:inset(50%)!important;width:1px!important;height:1px!important;overflow:hidden!important;white-space:pre-wrap!important}',
+      '@media(min-width:700px){.conv-share-sheet{border-radius:28px}.conv-share-overlay{padding:28px}}',
+      '@media(max-width:699px){.conv-share-sheet{border-radius:28px 28px 0 0;max-height:96dvh}.conv-share-header{padding:18px 20px 16px}.conv-share-workspace{display:flex;flex-direction:column;overflow-y:auto}.conv-share-rail{order:2;gap:12px;padding:14px 20px;border:0}.conv-share-stage{order:1;flex:none;height:min(49dvh,460px);padding:20px 22px}.conv-share-themes{overflow:visible;justify-content:space-between}.conv-share-swatch{width:auto;min-height:44px;flex:1;justify-content:center;padding:6px}.conv-share-control-group{grid-template-columns:58px minmax(0,1fr)}.conv-share-source-actions{display:flex;flex-wrap:wrap;gap:4px}.conv-share-source-actions button,.conv-share-source-actions a{padding-inline:8px}.conv-share-source-actions a:last-child{margin-left:auto}.conv-share-footer{padding:14px 18px max(18px,env(safe-area-inset-bottom));flex-direction:column}.conv-share-actions,.conv-share-actions--four{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.conv-share-btn{padding-inline:10px;font-size:.74rem}.conv-share-btn--primary{grid-row:1;grid-column:1/-1}.conv-share-manual{flex-basis:auto;padding-top:4px}}',
     ].join('');
     document.head.appendChild(s);
   })();
@@ -196,7 +210,22 @@
     return true;
   }
 
-  function qrTarget(options) { return options.url || window.location.href; }
+  function sourceUrl(options) {
+    var canonical = document.querySelector('link[rel="canonical"]');
+    var candidates = [options.sourceUrl, options.url, canonical && canonical.href, window.location.href];
+    var local = '';
+    for (var i = 0; i < candidates.length; i++) {
+      if (!candidates[i]) continue;
+      try {
+        var url = new URL(String(candidates[i]), window.location.origin);
+        if (url.protocol !== 'https:' && url.protocol !== 'http:') continue;
+        if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(url.hostname)) { local = url.href; continue; }
+        return url.href;
+      } catch (_) { /* skip malformed links */ }
+    }
+    return local;
+  }
+  function qrTarget(options) { return sourceUrl(options).replace(/:~:text=.*$/, ''); }
 
   function shareSiteName(options) {
     if (options.siteName) return options.siteName;
@@ -231,6 +260,86 @@
   // the limit bounds browser memory without quietly discarding normal replies.
   var CARD_WIDTH = 1080, CARD_MAX_HEIGHT = 14000, CARD_PAD = 86;
   var MAX_INPUT_CHARS = 120000;
+
+  function excerptFont(options) {
+    var prose = document.querySelector('.post-content');
+    if (prose && typeof window.getComputedStyle === 'function') {
+      var family = window.getComputedStyle(prose).fontFamily;
+      if (family) return family;
+    }
+    return isZhLang(options)
+      ? '"Noto Serif SC","Songti SC","Source Han Serif SC",serif'
+      : '"Fraunces","Iowan Old Style",Georgia,serif';
+  }
+
+  // A book page: literal prose remains primary, with a separate source colophon.
+  function generateExcerptCard(options) {
+    var excerpt = String(options.excerpt || '');
+    if (excerpt.length > 2400 || excerpt.split('\n').length > 80) return null;
+    var theme = THEMES[options.theme] || THEMES[defaultTheme()];
+    var isZh = isZhLang(options), isArticle = options.kind === 'article';
+    var serif = excerptFont(options), sans = cardFont(isZh);
+    var W = CARD_WIDTH, pad = 110, bodyWidth = W - pad * 2;
+    var measure = document.createElement('canvas').getContext('2d');
+    var main = isArticle ? String(options.title || '') : excerpt;
+    var size = main.length < 280 ? 54 : (main.length < 800 ? 46 : 40);
+    var lineHeight = Math.round(size * 1.55);
+    measure.font = '400 ' + size + 'px ' + serif;
+    var lines = [];
+    main.split('\n').forEach(function (paragraph) {
+      lines = lines.concat(paragraph ? wrapText(measure, paragraph, bodyWidth) : ['']);
+    });
+    var description = [];
+    if (isArticle && excerpt) {
+      measure.font = '400 30px ' + sans;
+      excerpt.split('\n').forEach(function (paragraph) {
+        description = description.concat(paragraph ? wrapText(measure, paragraph, bodyWidth) : ['']);
+      });
+    }
+    var bodyHeight = lines.length * lineHeight + (description.length ? 54 + description.length * 49 : 0);
+    measure.font = '500 28px ' + sans;
+    var titles = isArticle ? [] : wrapText(measure, String(options.title || ''), bodyWidth - 215);
+    var footerHeight = Math.max(265, titles.length * 41 + 195);
+    var H = Math.max(1350, 270 + bodyHeight + 140 + footerHeight);
+    var footerTop = H - footerHeight;
+    var bodyY = Math.max(265, (footerTop - bodyHeight) / 2 + 48);
+    var canvas = document.createElement('canvas');
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    paintBackground(ctx, theme, W, H);
+    ctx.fillStyle = theme.muted; ctx.font = '400 23px ' + sans;
+    ctx.fillText(isArticle ? (isZh ? '一篇值得分享的文章' : 'FROM THE READING ROOM') : (isZh ? '阅读 · 摘录' : 'A PASSAGE TO KEEP'), pad, 112);
+    ctx.fillStyle = theme.accent; ctx.fillRect(pad, 157, 34, 2);
+    ctx.fillStyle = theme.ink; ctx.font = '400 ' + size + 'px ' + serif;
+    lines.forEach(function (line, index) { ctx.fillText(line, pad, bodyY + index * lineHeight); });
+    if (description.length) {
+      var descY = bodyY + lines.length * lineHeight + 54;
+      ctx.fillStyle = theme.muted; ctx.font = '400 30px ' + sans;
+      description.forEach(function (line, index) { ctx.fillText(line, pad, descY + index * 49); });
+    }
+    ctx.fillStyle = theme.subtle; ctx.fillRect(pad, footerTop, bodyWidth, 1);
+    var authorNode = document.querySelector('meta[name="author"]');
+    var author = String(options.author || (authorNode && authorNode.content) || 'Xinwei Xiong');
+    ctx.fillStyle = theme.ink; ctx.font = '500 28px ' + sans;
+    paintTextLines(ctx, author, pad, footerTop + 60, bodyWidth - 215, 1, 41);
+    ctx.fillStyle = theme.muted; ctx.font = '400 26px ' + sans;
+    titles.forEach(function (line, index) { ctx.fillText(line, pad, footerTop + 111 + index * 41); });
+    var metaY = footerTop + 111 + titles.length * 41;
+    var date = sourceDate(options);
+    ctx.font = '400 22px ' + sans;
+    ctx.fillText('cubxxw.com' + (date ? '  ·  ' + date : ''), pad, metaY + (titles.length ? 12 : 0));
+    var qrX = W - pad - 160, qrY = footerTop + 44;
+    if (drawQR(ctx, qrTarget(options), qrX, qrY, 160, '#1d211e', '#ffffff')) {
+      ctx.fillStyle = theme.muted; ctx.font = '400 19px ' + sans;
+      ctx.textAlign = 'center';
+      ctx.fillText(isZh ? '回到原文' : 'Return to the article', qrX + 80, qrY + 189);
+      ctx.textAlign = 'left';
+    } else {
+      ctx.fillStyle = theme.muted; ctx.font = '400 20px ' + sans;
+      paintTextLines(ctx, compactUrl(sourceUrl(options), 120), pad, metaY + 45, bodyWidth, 2, 30);
+    }
+    return canvas;
+  }
 
   function generateCard(messages, options) {
     var rounds = conversationPairs(messages);
@@ -646,7 +755,11 @@
   function formatAsText(messages, options, mode) {
     options = options || {};
     var title = options.title || document.title || '';
-    var url = options.url || window.location.href;
+    var url = sourceUrl(options);
+    if (typeof options.excerpt === 'string') {
+      var quote = options.kind === 'article' ? options.excerpt : options.excerpt.split('\n').map(function (line) { return '> ' + line; }).join('\n');
+      return quote + '\n\n' + title + (options.author ? ' — ' + options.author : '') + '\n' + url;
+    }
     var isZh = isZhLang(options);
     var rounds = conversationPairs(messages);
     var out = [];
@@ -674,14 +787,20 @@
   }
 
   // ── Share modal ─────────────────────────────────────────────────────────────
+  var closeActiveShare = null;
   function show(messages, options) {
     options = options || {};
     if (!messages || !messages.length) return;
     var isZh = isZhLang(options);
+    var isExcerpt = typeof options.excerpt === 'string';
+    var isArticle = options.kind === 'article';
+    var cardLabel = isExcerpt ? (isArticle ? (isZh ? '文章分享卡' : 'Article card') : (isZh ? '摘录分享卡' : 'Passage card')) : (isZh ? '阅读札记' : 'Reading note');
+    var link = sourceUrl(options);
+    options.url = link;
     options.theme = options.theme || defaultTheme();
 
-    var existing = document.getElementById('conv-share-modal');
-    if (existing) existing.remove();
+    if (closeActiveShare) closeActiveShare(true);
+    document.querySelectorAll('.conv-share-overlay').forEach(function (node) { node.remove(); });
     var previousActive = document.activeElement;
     var previousOverflow = document.body.style.overflow;
 
@@ -694,19 +813,19 @@
     var supportsCopyImg = !!(navigator.clipboard && window.ClipboardItem);
     var supportsWebShare = !!navigator.share;
     var copyImgBtn = supportsCopyImg
-      ? '<button class="conv-share-btn' + (supportsWebShare ? '' : ' conv-share-btn--primary') + '" id="csb-copy-img" aria-label="' + (isZh ? '复制图片' : 'Copy image') + '">' +
+      ? '<button class="conv-share-btn" id="csb-copy-img" aria-label="' + (isZh ? '复制图片' : 'Copy image') + '">' +
           '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
           '<span>' + (isZh ? '复制图片' : 'Copy image') + '</span></button>'
       : '';
 
     var saveImgBtn =
-      '<button class="conv-share-btn' + (!supportsWebShare && !supportsCopyImg ? ' conv-share-btn--primary' : '') + '" id="csb-save-img" aria-label="' + (isZh ? '下载图片' : 'Download image') + '">' +
+      '<button class="conv-share-btn conv-share-btn--primary" id="csb-save-img" aria-label="' + (isZh ? '下载图片' : 'Download image') + '">' +
         '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' +
-        '<span>' + (isZh ? '下载' : 'Download') + '</span>' +
+          '<span>' + (isZh ? '保存图片' : 'Save image') + '</span>' +
       '</button>';
 
     var webShareBtn = supportsWebShare
-      ? '<button class="conv-share-btn conv-share-btn--primary" id="csb-web-share" aria-label="' + (isZh ? '分享卡片' : 'Share card') + '">' +
+      ? '<button class="conv-share-btn" id="csb-web-share" aria-label="' + (isZh ? '分享卡片' : 'Share card') + '">' +
           '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>' +
           '<span>' + (isZh ? '分享卡片' : 'Share card') + '</span></button>'
       : '';
@@ -737,9 +856,9 @@
       '<div class="conv-share-sheet" role="dialog" aria-modal="true" aria-labelledby="conv-share-heading" aria-describedby="conv-share-description">' +
         '<div class="conv-share-handle"></div>' +
         '<div class="conv-share-header">' +
-          '<span class="conv-share-title" id="conv-share-heading">' + (isZh ? '分享阅读札记' : 'Share reading note') + '</span>' +
+          '<span class="conv-share-title" id="conv-share-heading">' + (isExcerpt ? (isArticle ? (isZh ? '分享这篇文章' : 'Share this article') : (isZh ? '把这段话，留在一张卡片上' : 'A passage worth keeping')) : (isZh ? '分享阅读札记' : 'Share reading note')) + '</span>' +
           '<span class="conv-share-subtitle" id="conv-share-description">' +
-            (isZh ? '选择内容与样式，然后导出卡片。' : 'Choose what to include, then export the card.') +
+            (isZh ? '字句、留白与出处。保存下来，也分享给在意的人。' : 'Words, breathing room, and their source. Keep it, or pass it on.') +
           '</span>' +
           '<button class="conv-share-close" aria-label="' + (isZh ? '关闭' : 'Close') + '">' +
             '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
@@ -753,8 +872,13 @@
               '<div class="conv-share-themes" id="csp-themes">' + swatches + '</div>' +
             '</div>' +
             '<div class="conv-share-output-meta" aria-hidden="true">' +
-              '<strong>' + (isZh ? '阅读札记' : 'Reading note') + '</strong>' +
+              '<strong>' + cardLabel + '</strong>' +
               '<span id="csp-size">PNG</span>' +
+            '</div>' +
+            '<div class="conv-share-source-actions">' +
+              '<button type="button" id="csb-copy-link"><span>' + (isZh ? '复制原文链接' : 'Copy source link') + '</span></button>' +
+              '<a id="csb-x" target="_blank" rel="noopener noreferrer">' + (isZh ? '分享到 X' : 'Share to X') + '</a>' +
+              '<a id="csb-source" target="_blank" rel="noopener noreferrer">' + (isZh ? '返回原文' : 'Return to article') + '</a>' +
             '</div>' +
           '</aside>' +
           '<div class="conv-share-stage">' +
@@ -764,45 +888,94 @@
         '<div class="conv-share-footer">' +
           '<span class="conv-share-format" aria-hidden="true">PNG</span>' +
           '<div class="conv-share-actions' + (supportsWebShare && supportsCopyImg ? ' conv-share-actions--four' : '') + '">' +
-            '<button class="conv-share-btn" id="csb-copy-text" aria-label="' + (isZh ? '复制文本' : 'Copy text') + '">' +
+            '<button class="conv-share-btn" id="csb-copy-text" aria-label="' + (isExcerpt ? (isZh ? '复制引用' : 'Copy quote') : (isZh ? '复制文本' : 'Copy text')) + '">' +
               '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
-              '<span>' + (isZh ? '复制文本' : 'Copy text') + '</span>' +
+              '<span>' + (isExcerpt ? (isZh ? '复制引用' : 'Copy quote') : (isZh ? '复制文本' : 'Copy text')) + '</span>' +
             '</button>' +
             saveImgBtn +
             copyImgBtn +
             webShareBtn +
           '</div>' +
+          '<div class="conv-share-manual" id="csp-manual" hidden><span>' + (isZh ? '可以直接选中下方文字复制。' : 'Select the text below and copy it.') + '</span><textarea readonly rows="3" aria-label="' + (isZh ? '手动复制' : 'Copy manually') + '"></textarea></div>' +
         '</div>' +
+        '<div class="conv-share-accessible" id="csp-readable"></div>' +
       '</div>';
 
     document.body.appendChild(overlay);
     document.body.style.overflow = 'hidden';
 
-    var previewArea = document.getElementById('csp-preview');
+    var previewArea = overlay.querySelector('#csp-preview');
+    var manual = overlay.querySelector('#csp-manual');
+    var readable = overlay.querySelector('#csp-readable');
+    readable.textContent = formatAsText(messages, options, 'latest');
+    overlay.querySelector('#csb-source').href = link;
+    overlay.querySelector('#csb-x').href = 'https://x.com/intent/tweet?text=' + encodeURIComponent((isExcerpt ? options.excerpt : options.title || '').slice(0, 180)) + '&url=' + encodeURIComponent(link);
     var mode = 'latest';
-    var canvas = render();
-    previewArea.appendChild(canvas);
-    updateDimensions();
+    var canvas = null, imageBlob = null, drawVersion = 0, closing = false;
+    var ready = false;
+    var imageButtons = [overlay.querySelector('#csb-save-img'), overlay.querySelector('#csb-copy-img'), overlay.querySelector('#csb-web-share')].filter(Boolean);
+    rerender();
 
     function updateDimensions() {
-      var label = document.getElementById('csp-size');
+      var label = overlay.querySelector('#csp-size');
+      if (!canvas) {
+        if (label) label.textContent = isZh ? '可复制完整文字' : 'Full text remains available';
+        return;
+      }
       if (label) label.textContent = canvas.width + ' × ' + canvas.height + ' px';
+      previewArea.classList.toggle('conv-share-preview--long', canvas.height > 2100);
       canvas.setAttribute('role', 'img');
-      canvas.setAttribute('aria-label', isZh ? '阅读札记图片，下方可复制文本' : 'Reading note image. Copy text below for an accessible version.');
+      canvas.setAttribute('aria-label', cardLabel);
     }
 
     function render() {
+      if (isExcerpt) return generateExcerptCard(options);
       return mode === 'collection' ? generateThreadCard(messages, options) : generateCard(messages, options);
     }
     function rerender() {
-      var next = render();
-      previewArea.replaceChild(next, canvas);
-      canvas = next;
-      previewArea.scrollTop = 0;
-      updateDimensions();
+      var version = ++drawVersion;
+      readable.textContent = formatAsText(messages, options, mode);
+      ready = false; imageBlob = null;
+      imageButtons.forEach(function (button) { button.disabled = true; });
+      previewArea.setAttribute('aria-busy', 'true');
+      function paint() {
+        if (closing || version !== drawVersion) return;
+        var next = render();
+        while (previewArea.children.length) previewArea.removeChild(previewArea.children[0]);
+        canvas = next;
+        if (!next) {
+          var limit = document.createElement('p');
+          limit.className = 'conv-share-limit';
+          limit.id = 'csp-limit';
+          limit.textContent = isZh ? '这段摘录有些长。选取 2400 字以内、80 行以内的内容生成图片，完整文字仍可复制。' : 'For an image, choose up to 2,400 characters and 80 lines. You can still copy the complete text.';
+          previewArea.appendChild(limit);
+          previewArea.setAttribute('aria-busy', 'false');
+          updateDimensions();
+          return;
+        }
+        previewArea.appendChild(next);
+        previewArea.scrollTop = 0;
+        updateDimensions();
+        next.toBlob(function (blob) {
+          if (closing || version !== drawVersion) return;
+          imageBlob = blob; ready = !!blob;
+          imageButtons.forEach(function (button) { button.disabled = !ready; });
+          previewArea.setAttribute('aria-busy', 'false');
+        }, 'image/png');
+      }
+      if (isExcerpt && (options.excerpt.length > 2400 || options.excerpt.split('\n').length > 80)) { paint(); return; }
+      var fonts = document.fonts;
+      if (fonts && typeof fonts.load === 'function') {
+        var sample = isExcerpt ? options.excerpt : messages.map(function (m) { return m.content || ''; }).join(' ');
+        Promise.all([
+          fonts.load('400 54px ' + (isExcerpt ? excerptFont(options) : cardFont(isZh)), String(sample).slice(0, 12000)),
+          fonts.load('500 28px ' + cardFont(isZh), String(options.title || '') + String(options.author || '')),
+          fonts.ready
+        ]).then(paint, paint);
+      } else paint();
     }
 
-    document.getElementById('csp-themes').addEventListener('click', function (e) {
+    overlay.querySelector('#csp-themes').addEventListener('click', function (e) {
       var b = e.target.closest('.conv-share-swatch');
       if (!b) return;
       options.theme = b.dataset.theme;
@@ -813,7 +986,7 @@
       rerender();
     });
 
-    var toggle = document.getElementById('csp-modes');
+    var toggle = overlay.querySelector('#csp-modes');
     if (toggle) {
       toggle.addEventListener('click', function (e) {
         var b = e.target.closest('.conv-share-mode');
@@ -827,20 +1000,24 @@
       });
     }
 
-    var closing = false;
-    function closeModal() {
+    function closeModal(immediate) {
       if (closing) return;
       closing = true;
+      drawVersion++;
       overlay.classList.remove('conv-share-overlay--visible');
       document.removeEventListener('keydown', handleKeydown);
-      setTimeout(function () {
+      document.body.style.overflow = previousOverflow;
+      if (closeActiveShare === closeModal) closeActiveShare = null;
+      function finish() {
         if (overlay.parentNode) overlay.remove();
-        document.body.style.overflow = previousOverflow;
-        if (previousActive && typeof previousActive.focus === 'function') previousActive.focus();
-      }, 240);
+        if (!closeActiveShare && previousActive && typeof previousActive.focus === 'function') previousActive.focus({ preventScroll: true });
+      }
+      if (immediate === true) finish(); else setTimeout(finish, 240);
     }
+    closeActiveShare = closeModal;
     function btnDone(id, label) {
-      var btn = document.getElementById(id);
+      if (closing) return;
+      var btn = overlay.querySelector('#' + id);
       if (!btn) return;
       btn.classList.add('conv-share-btn--done');
       var sp = btn.querySelector('span');
@@ -857,7 +1034,9 @@
         return;
       }
       if (e.key !== 'Tab') return;
-      var focusable = overlay.querySelectorAll('button:not([disabled])');
+      var focusable = Array.prototype.filter.call(overlay.querySelectorAll('button:not([disabled]), a[href], textarea:not([hidden])'), function (node) {
+        return !node.hidden && !(node.closest('#csp-manual') && manual.hidden);
+      });
       if (!focusable.length) return;
       var first = focusable[0];
       var last = focusable[focusable.length - 1];
@@ -871,66 +1050,86 @@
     }
     document.addEventListener('keydown', handleKeydown);
 
-    document.getElementById('csb-copy-text').addEventListener('click', function () {
-      var text = formatAsText(messages, options, mode);
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function () { btnDone('csb-copy-text', isZh ? '已复制 ✓' : 'Copied ✓'); });
-      } else {
-        var ta = document.createElement('textarea');
-        ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
-        document.body.appendChild(ta); ta.select();
-        document.execCommand('copy'); document.body.removeChild(ta);
-        btnDone('csb-copy-text', isZh ? '已复制 ✓' : 'Copied ✓');
-      }
+    function showManual(text, note) {
+      if (closing) return;
+      manual.hidden = false;
+      if (note) manual.querySelector('span').textContent = note;
+      var field = manual.querySelector('textarea');
+      field.value = text;
+      field.focus({ preventScroll: true });
+      if (typeof field.select === 'function') field.select();
+    }
+    function copyText(text, buttonId) {
+      try {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText(text).then(function () { btnDone(buttonId, isZh ? '已复制' : 'Copied'); }, function () { showManual(text); });
+          return;
+        }
+      } catch (_) { /* manual copy stays within this dialog */ }
+      showManual(text);
+    }
+    overlay.querySelector('#csb-copy-text').addEventListener('click', function () {
+      copyText(formatAsText(messages, options, mode), 'csb-copy-text');
     });
+    overlay.querySelector('#csb-copy-link').addEventListener('click', function () { copyText(link, 'csb-copy-link'); });
 
-    var copyImg = document.getElementById('csb-copy-img');
+    var copyImg = overlay.querySelector('#csb-copy-img');
     if (copyImg) {
       copyImg.addEventListener('click', function () {
-        canvas.toBlob(function (blob) {
-          if (!blob) return;
+          if (!ready || !imageBlob) return;
           try {
-            navigator.clipboard.write([new window.ClipboardItem({ 'image/png': blob })]).then(function () {
-              btnDone('csb-copy-img', isZh ? '已复制 ✓' : 'Copied ✓');
-            }).catch(function () { btnDone('csb-copy-img', isZh ? '复制失败' : 'Failed'); });
-          } catch (err) { btnDone('csb-copy-img', isZh ? '复制失败' : 'Failed'); }
-        }, 'image/png');
+            navigator.clipboard.write([new window.ClipboardItem({ 'image/png': imageBlob })]).then(function () {
+              btnDone('csb-copy-img', isZh ? '已复制' : 'Copied');
+            }).catch(function () { showManual(formatAsText(messages, options, mode), isZh ? '可以保存图片后分享，也可以复制下方引用。' : 'Save the image to share it, or copy the text below.'); });
+          } catch (_) { showManual(formatAsText(messages, options, mode)); }
       });
     }
 
-    document.getElementById('csb-save-img').addEventListener('click', function () {
+    overlay.querySelector('#csb-save-img').addEventListener('click', function () {
+      if (!ready || !canvas) return;
       var a = document.createElement('a');
-      a.download = 'article-insight.png';
+      a.download = isExcerpt ? (isArticle ? 'article-card.png' : 'quote-card.png') : 'article-insight.png';
       a.href = canvas.toDataURL('image/png');
       a.click();
       btnDone('csb-save-img', isZh ? '已保存 ✓' : 'Saved ✓');
     });
 
-    var wsBtn = document.getElementById('csb-web-share');
+    var wsBtn = overlay.querySelector('#csb-web-share');
     if (wsBtn) {
       wsBtn.addEventListener('click', function () {
-        canvas.toBlob(function (blob) {
-          if (!blob) return;
-          var file = new File([blob], 'article-insight.png', { type: 'image/png' });
-          var shareTitle = (isZh ? '阅读札记｜' : 'Reading note | ') + (options.title || document.title || '');
+          if (!ready || !imageBlob) return;
+          var file = new File([imageBlob], isExcerpt ? 'quote-card.png' : 'article-insight.png', { type: 'image/png' });
+          var shareTitle = (isExcerpt ? '' : (isZh ? '阅读札记｜' : 'Reading note | ')) + (options.title || document.title || '');
           var shareData = {
             title: shareTitle,
             text: formatAsText(messages, options, mode).slice(0, 300),
-            url: options.url || window.location.href,
+            url: link,
           };
           if (navigator.canShare && navigator.canShare({ files: [file] })) shareData.files = [file];
-          navigator.share(shareData).catch(function () {});
-        });
+          try {
+            navigator.share(shareData).catch(function (err) {
+              if (!err || err.name !== 'AbortError') showManual(formatAsText(messages, options, mode), isZh ? '可以保存图片后分享，也可以复制下方引用。' : 'Save the image to share it, or copy the text below.');
+            });
+          } catch (_) { showManual(formatAsText(messages, options, mode)); }
       });
     }
 
     requestAnimationFrame(function () {
+      if (closing) return;
       overlay.classList.add('conv-share-overlay--visible');
-      var initialFocus = overlay.querySelector('.conv-share-btn--primary') || overlay.querySelector('.conv-share-close');
+      var initialFocus = overlay.querySelector('.conv-share-btn--primary:not([disabled])') || overlay.querySelector('.conv-share-close');
       initialFocus.focus({ preventScroll: true });
     });
   }
 
-  global.ShareConversation = { show: show };
+  function showExcerpt(text, options) {
+    options = Object.assign({}, options || {}, { excerpt: String(text || '') });
+    options.kind = options.kind === 'article' ? 'article' : 'excerpt';
+    options.title = String(options.title || '').slice(0, 1000);
+    options.author = String(options.author || '').slice(0, 160);
+    if (!options.excerpt) return;
+    show([{ role: 'assistant', content: options.excerpt }], options);
+  }
+  global.ShareConversation = { show: show, showExcerpt: showExcerpt };
 
 }(window));

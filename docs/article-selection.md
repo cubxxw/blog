@@ -1,67 +1,61 @@
-# 正文选区工具
+# 正文选区、分享与阅读讨论
 
-适用范围：默认文章详情页的 `.post-content`。单击文字段落，或使用浏览器原生文字选择后，出现「分享 / AI 分析 / 评论 / 更多」。中英文按钮分别本地化。
+默认文章详情页使用浏览器原生文字选择。普通点击段落保持安静；拖选松手、双击选词或键盘选文稳定后，出现「分享 / AI 分析 / 评论 / 更多」，中英文分别本地化。
 
-## 调研与设计选择
+## 设计依据
 
-Readwise 将摘录作为可独立分享的图片，并保留阅读材料的来源；本功能据此采用“先预览摘录卡，再下载或调用系统分享”的流程。[Readwise Sharing](https://docs.readwise.io/reader/docs/faqs/sharing)
+Notion 与 Medium 官方文档都提供选中文字后评论的入口，Notion 还提供评论侧栏；本次评论布局以作者给出的 Medium 截图为直接参考。[Notion comments](https://www.notion.com/help/comments-mentions-and-reminders)、[Medium highlights](https://help.medium.com/hc/en-us/articles/214406358-About-highlights)
 
-Ghostreader 的解释功能把选中文字和所在句子一起送给模型。这里把选文、邻近段落和文章节选一起作为阅读材料，避免文章后半段的选区丢失上下文。[Default Ghostreader Prompts](https://docs.readwise.io/reader/guides/ghostreader/default-prompts)
+分享采用博客原有暖纸、衬线正文、留白与克制的主题色。微信读书是作者指定的书页审美参考，不把未验证的 App 行为当作事实。X 入口打开附有原文链接的分享草稿，发布由读者完成。[X sharing](https://help.x.com/en/using-x/share-a-post)
 
-Substack 支持选中片段后以引用分享，并在引用之外添加自己的文字。这里让分享卡和评论引用共用同一份选文与来源链接，评论仍由读者在原评论框发表。[Substack Restack](https://support.substack.com/hc/en-us/articles/14671398684308-What-is-a-restack-on-Substack-Notes)
+## 选区与反馈
 
-这些资料用于确定交互方向；工具条位置、极淡边框与渐变色采用作者提供的截图和要求。
+- 工具条、独立“更多”菜单与段落轮廓均挂在 body 下固定定位，正文宽度、间距和滚动高度不因选择改变。
+- 轮廓圆角 16px，向外留 8px / 6px 呼吸空间。明亮主题为 4.5% 描边、0.6% 底色和 14px 短线；暗色主题为 7% / 1%，保留很淡的反馈。
+- 工具条锚定真实 Range。桌面优先在选文上方 10px，顶栏或视口遮挡时落在完整选区下方；两侧均不足时暂时隐藏。滚动离开视口淡出，返回后重新锚定。
+- pointer 按下期间隐藏动作，不拦截文字、链接或行内代码的原生行为。键盘与跨段选择可用；选区端点越出正文、落在不支持的结构时拒绝操作，保留原生选择。
+- 触屏稳定 350ms 后显示，优先在选区下方留出 56px。网页不能读取系统菜单矩形；这是避让策略，真实 iOS / Android 菜单仍需真机验收。320px 与 390px 浏览器布局纳入自动测试。
 
-## 阅读交互
+## 统一分享编辑器
 
-- 工具条、独立“更多”菜单和段落标记挂在 `body` 下，以 `position: fixed` 绘制；正文不增加 wrapper、占位、padding 或 margin。
-- 段落标记采用 7% 墨绿色描边、1% 底色、6px 圆角和左侧短线，明暗主题分别调整墨色。
-- 桌面优先位于选区上方 10px。顶栏或视口边缘挡住上方时，移到完整段落/选区下方；两侧都没有空间时暂时隐藏。
-- 文字拖选使用 `Range.getClientRects()` 的真实选区。跨段和行内格式保留原生选择；图片、链接点击、代码交互、折叠区和互动组件保留自身行为。仅端点属于可选择正文块的范围才出现工具条。
-- 滚动和视口变化按动画帧重新定位，离开视口时淡出并停止接收焦点；回到视口后重新锚定。Escape 关闭菜单或工具条，保留原生选文。
-- 触屏选文稳定 350ms 后显示工具条，优先放在选区下方并留出至少 56px。网页无法读取操作系统菜单的实际矩形，这属于避让策略；iOS/Android 原生菜单仍需真机验证。正文不拦截 `touchstart`、`contextmenu` 或拖选默认行为。
+摘录、整篇文章及 AI 阅读札记复用 ShareConversation。摘录默认书页式卡片，包含完整原文、作者、标题、原文二维码；整篇卡片以标题和摘要为主。书页、石墨、晨雾、墨白四种纸面样式均可预览。手机先呈现卡片，样式与分享操作跟随其后。
 
-## 分享与引用评论
+保存 PNG、复制引用、复制图片、系统分享、原文链接及 X 草稿按照能力开放。只绘制一个当前预览；字体与 PNG Blob 完成后启用导出，重绘和退场旧回调不能覆盖新卡。二维码本地生成，使用 canonical 原文链接与段落 anchor，避免将本地预览地址写进卡片。
 
-分享弹窗以渐现方式出现，支持墨/苔、纸、暮三种渐变，只有一个可见 PNG 预览。图片包含完整摘录、文章标题、作者和来源；字体加载和最新绘制完成后才启用导出。复制文本保留 Markdown 引用和来源链接。
+摘录上限为 2400 字符、80 行显式文本，超限不分配画布，仍保留完整文字复制。原文 Markdown 符号按字面保留；AI 札记单独排版并标明节选。剪贴板失败在当前弹窗提供手动复制；系统分享取消保持安静。Escape、焦点循环、快速关闭重开均有回归测试。
 
-PNG 导出上限为 2400 字符或 80 行显式文本。超过上限时给出缩短选择的提示，停止画布分配并保留完整文本复制能力；不会截断最后一行冒充完整导出。原生图片分享按 Web Share 能力检测开放，取消后仍可下载。自动复制失败时，在当前弹窗内提供可选中的手动复制框。
+兼容接口：
 
-评论操作滚动到页底，展示选文、来源和“复制引用”。预览保存独立快照，之后清除选区也不会丢失复制内容。Utterances 是跨域 iframe，本实现没有预填或自动发表评论；读者复制后粘贴到原评论框并发表。
+- ShareConversation.show(messages, options)：现有 AI 分享。
+- ShareConversation.showExcerpt(text, options)：excerpt / article 卡片。
+- 选文入口与文章页底微信入口调用同一编辑器。
 
-段落链接保留已有作者 ID，给其余可选块分配不冲突的 `asel-pN` ID；浏览器支持时补充文字片段。ID 依赖正文顺序，编辑文章后可能变化；文字片段提供额外的原文定位。
+## 不跳页底的评论
 
-## AI 接口
+桌面打开右侧 Responses 面板，手机使用下方面板。选文、复制引用和真实 Utterances 评论框在一起；关闭或“继续阅读”返回原阅读位置。桌面保留正文操作，手机按 modal 管理焦点与背景。
 
-复用 `/.netlify/functions/article-ai`：沿用 `question`、`language`、`articleTitle`、`articleContent`、`pagePath`、`context`、`stream`，新增可选的 `selectedText` 和 `selectionContext`。
+#post-comments-body 固定到侧栏的 provider 槽位，iframe 始终保留在原父节点。原位置留下同高度占位，关闭后恢复样式；不移除、重挂或刷新评论 iframe，草稿与浏览上下文跨开关保留。MDN 说明普通 DOM 移动可能重置 iframe，moveBefore 的兼容范围仍有限，因此本实现直接避开重挂。[MDN moveBefore](https://developer.mozilla.org/en-US/docs/Web/API/Element/moveBefore)
 
-- 选文最大 6000 字符，上下文最大 5600 字符；过长选文在前端提示缩短，后端再次约束长度。
-- 选文和邻近上下文仅进入 user 角色的参考资料 JSON，原文中的指令不进入 system 权限；旧客户端的请求形状保持一致。
-- 支持 JSON 和 SSE，包括跨读取边界、UTF-8、流末尾和 `[DONE]`；回答使用纯文本渲染。
-- 每份完整选区单独保存最多 10 条会话消息。关闭/取消会中止请求，过期请求不能改写新会话。
-- 等待响应头和读取流均有 45 秒无进展超时，失败可重试；失败回答不会进入会话历史。
-- 备份部署依照 `site-capabilities` 隐藏 AI 操作，没有评论区时隐藏评论操作。
+Utterances 由 GitHub Issues 和其原有登录流程完成发表。跨域编辑器没有安全的预填接口：读者复制引用后粘贴，页面不虚构预填或发布成功。验收不发送真实评论。[Utterances](https://github.com/utterance/utterances)
 
-## 文件与验证
+## AI 进入现有聊天
 
-入口为 `layouts/partials/article/selection-tools.html` 和 `layouts/_default/single.html`；运行时为 `static/js/article-selection.js`，样式为 `assets/css/extended/article-selection.css`。样式沿用文章页面的资源归属规则，脚本仅由默认文章详情页加载并带内容版本。
+article:selection-analyze 把选文快照、邻近上下文与源位置传给 ArticleChat。1200px 以上进入右侧 rc 聊天，较窄视口进入现有 abs 工具抽屉；不另开正文弹窗，不抢正文滚动位置或清空未发送问题。桌面 650ms 细曲线把选文引向聊天引用，滚动、尺寸变化或减少动态效果时清理。
 
-```sh
-node --check static/js/article-selection.js
-node --test scripts/article-ai.test.mjs
-npm run typecheck
-SITE_OUTPUT_DIR=<已构建的站点目录> SITE_TEST_RESULTS=<登记的测试产物目录> \
-  npm test -- article-selection.spec.ts --project=desktop --workers=1
-git diff --check
-```
+每次追问携带 selectedText、selectionContext、文章节选与当前选区自己的历史。按完整选文身份隔离最多 24 个会话、每个最多 10 条历史消息；失败与停止结果不进入历史。结束选文解读恢复整篇问答。重试复用同一提问，避免重复气泡。
 
-浏览器用例覆盖 320px、390px、1280px 的段落坐标/页面高度、菜单脱离正文、顶部翻转、滚动淡出、原生 Range、触屏避让、明暗主题、PNG 下载、评论引用、复制失败、AI JSON/SSE/追问/失败/重试/超时/取消和英文按钮。几何测量关闭已有滚动入场动画，单独验证选区操作是否产生位移。
+ArticleAIClient 统一 POST /.netlify/functions/article-ai，支持 JSON、SSE、分块 UTF-8、CRLF、EOF 和 [DONE]。等待响应头与流读取采用 45 秒无进展超时；取消和过期响应不能污染当前会话。选文上限 6000、上下文上限 5600 字符，沿用后端对参考资料与系统指令的权限区分。桌面使用现有转义 Markdown renderer，手机使用安全文本渲染；相关来源只接受 HTTP(S)。
 
-## 参考资料
+静态本地预览没有 Netlify 函数，浏览器 AI 验收使用明确的 mock 回复；不将其写成真实模型服务已通过。
 
-- [Readwise Sharing](https://docs.readwise.io/reader/docs/faqs/sharing)
-- [Readwise Default Ghostreader Prompts](https://docs.readwise.io/reader/guides/ghostreader/default-prompts)
-- [Substack Restack](https://support.substack.com/hc/en-us/articles/14671398684308-What-is-a-restack-on-Substack-Notes)
-- [MDN Range.getClientRects](https://developer.mozilla.org/en-US/docs/Web/API/Range/getClientRects)
-- [MDN Web Share API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API)
-- [Utterances](https://utteranc.es/)
+## 验证
+
+定向 Hugo 生产构建覆盖本次文章与行内代码验收页；按仓库冻结站点机制隔离第三方网络。
+
+- node --test scripts/article-ai-client.test.mjs scripts/article-ai.test.mjs scripts/share-conversation.test.mjs
+- npm run typecheck
+- article-selection.spec.ts：尺寸与零位移、卡片完整导出、手机/桌面聊天、追问、错误重试、曲线、暗色、复制拒绝、快速重开和评论阅读位置。
+- article-selection-state.spec.ts：评论 iframe 内草稿和初始化标识反复开关保留，原生正文/行内代码拖选只在松手后显示。
+- git diff --check 与改动脚本语法检查。
+
+正式截图与本次验收记录保存在任务永久产物目录，不将可重建缓存留在 /private/tmp。

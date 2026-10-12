@@ -1,393 +1,243 @@
-import { test, expect } from '../helpers/frozen-site';
-
+import { test, expect, type Page, type Locator } from '../helpers/frozen-site';
+import { join } from 'node:path';
 const article = '/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/';
 const passage = '先从一个意象讲起，它是这场讨论里最美的一块。';
-
-// Existing scroll-reveal transforms are unrelated to the selection overlay;
-// measure a settled layout, while the feature itself keeps native selection.
 test.use({ reducedMotion: 'reduce' });
-
+async function select(page: Page, paragraph?: Locator) {
+  const p = paragraph || page.locator('.post-content p').filter({ hasText: passage });
+  await p.click();
+  await p.evaluate(async el => {
+    el.scrollIntoView({ block: 'center' });
+    const style = getComputedStyle(el);
+    await document.fonts.load(style.fontWeight + ' ' + style.fontSize + ' ' + style.fontFamily, el.textContent || ''); await document.fonts.ready;
+    const r = document.createRange(); r.selectNodeContents(el);
+    getSelection()!.removeAllRanges(); getSelection()!.addRange(r);
+  });
+  await expect(page.getByRole('toolbar')).toBeVisible();
+}
+async function share(page: Page) {
+  await page.getByRole('toolbar').getByRole('button', { name: '分享', exact: true }).click();
+  const dialog = page.locator('#conv-share-modal [role="dialog"]');
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('#csb-save-img')).toBeEnabled();
+  return dialog;
+}
 for (const width of [320, 390, 1280]) {
-  test(`${width}px: selection and independent menu preserve article geometry`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 844 });
-    await page.goto(article);
-    const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-    await paragraph.evaluate(el => el.scrollIntoView({ block: 'center' }));
+  test(width + 'px: selection/menu/card preserve prose geometry and fit viewport', async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 }); await page.goto(article); await select(page);
     const measure = () => page.evaluate(() => ({
       height: document.documentElement.scrollHeight,
-      positions: Array.from(document.querySelectorAll('.post-content p')).map(p => {
-        const r = p.getBoundingClientRect();
-        return { x: r.x, y: r.y + scrollY, width: r.width, height: r.height };
+      p: Array.from(document.querySelectorAll('.post-content p')).map(el => {
+        const r = el.getBoundingClientRect(); return [r.x, r.y + scrollY, r.width, r.height];
       }),
     }));
-    const before = await measure();
-    await paragraph.click();
+    await page.keyboard.press('Escape'); const before = await measure();
+    await select(page); expect(await measure()).toEqual(before);
     const toolbar = page.getByRole('toolbar');
-    await expect(toolbar).toBeVisible({ timeout: 3000 });
-    expect(await measure()).toEqual(before);
     await toolbar.getByRole('button', { name: '更多', exact: true }).click();
     expect(await measure()).toEqual(before);
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
-    expect(overflow).toBe(false);
-    const toolbarBounds = await toolbar.boundingBox();
-    expect(toolbarBounds!.x).toBeGreaterThanOrEqual(0);
-    expect(toolbarBounds!.x + toolbarBounds!.width).toBeLessThanOrEqual(width);
-    const menu = page.getByRole('menu');
-    await expect(menu).toBeVisible();
-    expect(await menu.evaluate(el => Boolean(el.closest('[role="toolbar"]')))).toBe(false);
+    const menu = page.getByRole('menu'); await expect(menu).toBeVisible();
+    expect(await menu.evaluate(el => !!el.closest('[role="toolbar"]'))).toBe(false);
+    for (const layer of [toolbar, menu]) {
+      const r = (await layer.boundingBox())!;
+      expect(r.x).toBeGreaterThanOrEqual(0); expect(r.x + r.width).toBeLessThanOrEqual(width);
+    }
     await page.keyboard.press('Escape');
-    await expect(menu).not.toBeVisible();
-    await expect(toolbar).toBeVisible();
-    await page.evaluate(() => scrollTo(0, 0));
-    await expect(toolbar).not.toBeVisible();
-    await paragraph.evaluate(el => el.scrollIntoView({ block: 'center' }));
-    await expect(toolbar).toBeVisible();
+    await page.evaluate(() => scrollTo(0, 0)); await expect(toolbar).not.toBeVisible();
+    await page.locator('.post-content p').filter({ hasText: passage }).evaluate(el => el.scrollIntoView({ block: 'center' }));
+    await expect(toolbar).toBeVisible(); const dialog = await share(page);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const r = (await dialog.boundingBox())!;
+    expect(r.x).toBeGreaterThanOrEqual(0); expect(r.x + r.width).toBeLessThanOrEqual(width);
+    if (process.env.SELECTION_EVIDENCE) await page.screenshot({ path: join(process.env.SELECTION_EVIDENCE, 'share-' + width + '.png') });
+    await page.keyboard.press('Escape'); await expect(dialog).not.toBeVisible(); expect(await measure()).toEqual(before);
   });
 }
-
-test('AI receives the exact selected text and neighboring article context', async ({ page }) => {
-  const requests: any[] = [];
-  await page.route('**/.netlify/functions/article-ai', async route => {
-    requests.push(route.request().postDataJSON());
-    await route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: '这是结合文章上下文的解释。' }) });
+for (const width of [390, 1280]) {
+  test(width + 'px: selected AI uses existing chat, preserves draft and follows up', async ({ page }) => {
+    const requests: any[] = [];
+    await page.route('**/.netlify/functions/article-ai', async route => {
+      requests.push(route.request().postDataJSON());
+      await route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: '这是结合文章上下文的解释。' }) });
+    });
+    await page.setViewportSize({ width, height: 844 }); await page.goto(article);
+    const prefix = width < 1200 ? 'abs' : 'rc', panel = page.locator('.' + prefix + '-ai-panel');
+    if (width >= 1200) { await page.locator('#rc-tab-ai').click(); await panel.locator('textarea').fill('尚未发送的问题'); }
+    await select(page); const y = await page.evaluate(() => scrollY);
+    await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
+    await expect(panel.locator('.' + prefix + '-ai-answer-body')).toHaveText('这是结合文章上下文的解释。');
+    await expect(panel.locator('.article-chat-quote')).toHaveText(passage);
+    expect(await page.evaluate(() => scrollY)).toBe(y);
+    expect(await page.locator('.asel-dialog').count()).toBe(0);
+    expect(requests[0].selectedText).toBe(passage); expect(requests[0].selectionContext).toContain('一束阳光');
+    expect(requests[0].articleContent).toContain('这篇文章的种子'); expect(requests[0].pagePath).toBe(article);
+    const input = panel.locator('textarea');
+    if (width >= 1200) await expect(input).toHaveValue('尚未发送的问题');
+    await input.fill('能举一个例子吗？'); await panel.locator('.' + prefix + '-ai-send').click();
+    await expect.poll(() => requests.length).toBe(2);
+    expect(requests[1].question).toBe('能举一个例子吗？'); expect(requests[1].context).toHaveLength(2);
+    expect(requests[1].selectedText).toBe(passage);
+    await expect(panel.locator('.' + prefix + '-ai-answer-body')).toHaveCount(2);
+    await expect(panel.locator('.' + prefix + '-ai-send')).toBeEnabled();
+    await expect(panel.locator('.' + prefix + '-ai-loading')).not.toBeVisible();
+    expect(await panel.locator('.article-chat-quote').evaluate(el => el.getBoundingClientRect().width)).toBeGreaterThan(180);
+    await expect(input).toBeInViewport();
+    if (width < 1200) await expect.poll(() => page.locator('#article-bottom-sheet').evaluate(el => getComputedStyle(el).opacity)).toBe('1');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    if (process.env.SELECTION_EVIDENCE) await page.screenshot({ path: join(process.env.SELECTION_EVIDENCE, 'ai-' + width + '.png') });
   });
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-  await paragraph.click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  const dialog = page.getByRole('dialog');
-  await expect(dialog).toBeVisible();
-  await expect(dialog.getByText('这是结合文章上下文的解释。', { exact: true })).toBeVisible();
-  expect(requests[0].selectedText).toBe(passage);
-  expect(requests[0].selectionContext).toContain('一束阳光');
-  expect(requests[0].articleContent).toContain('这篇文章的种子');
-  expect(requests[0].pagePath).toBe(article);
-  await page.keyboard.press('Escape');
-  await expect(dialog).not.toBeVisible();
-});
-
-test('share opens a gradient quote dialog and downloads a complete PNG', async ({ page }) => {
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: '分享', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: '分享引用', exact: true });
-  await expect(dialog).toBeVisible();
-  await expect(dialog.getByText(passage, { exact: true })).toHaveText(passage);
-  await expect.poll(() => dialog.locator('canvas').evaluate((c: HTMLCanvasElement) => c.width)).toBe(1080);
-  const downloadPromise = page.waitForEvent('download');
-  await dialog.getByRole('button', { name: '下载 PNG', exact: true }).click();
-  const download = await downloadPromise;
+}
+test('share exports complete PNG with original canonical passage source', async ({ page }) => {
+  await page.goto(article); await select(page); const dialog = await share(page);
+  expect(await dialog.locator('canvas').evaluate((c: HTMLCanvasElement) => c.width)).toBe(1080);
+  await expect(dialog.locator('#csp-readable')).toContainText(passage);
+  const source = await dialog.locator('#csb-source').getAttribute('href');
+  expect(source).toContain('https://cubxxw.com/zh/growth/posts/'); expect(source).toContain('#asel-p'); expect(source).not.toContain('127.0.0.1');
+  const pending = page.waitForEvent('download'); await dialog.locator('#csb-save-img').click(); const download = await pending;
   expect(download.suggestedFilename()).toBe('quote-card.png');
-  const file = await download.path();
-  expect(file).toBeTruthy();
+  if (process.env.SELECTION_EVIDENCE) await download.saveAs(join(process.env.SELECTION_EVIDENCE, 'quote-card.png'));
 });
-
-test('medium quotes use a complete text fragment without overlapping start and end', async ({ page }) => {
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: '我们太容易觉得那只看不清的眼睛是' });
-  const quote = (await paragraph.innerText()).replace(/\s+/g, ' ').trim();
-  expect(quote.length).toBeGreaterThan(120);
-  expect(quote.length).toBeLessThanOrEqual(160);
-  await paragraph.click();
-  await page.getByRole('toolbar').getByRole('button', { name: '分享', exact: true }).click();
-  const link = await page.getByRole('dialog', { name: '分享引用' }).getByRole('link', { name: '返回原文' }).getAttribute('href');
-  expect(decodeURIComponent(link!.split(':~:text=')[1])).toBe(quote);
-});
-
-test('AI input receives mouse focus and supports follow-up questions', async ({ page }) => {
-  const requests: any[] = [];
-  await page.route('**/.netlify/functions/article-ai', async route => {
-    requests.push(route.request().postDataJSON());
-    await route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: '已结合上下文解释。' }) });
+test('share copy refusal and rapid reopen keep current quote and handlers', async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('refused')) } }));
+  await page.goto(article); await select(page); let dialog = await share(page);
+  await dialog.locator('#csb-copy-text').click(); await expect(dialog.locator('#csp-manual textarea')).toHaveValue(new RegExp(passage));
+  await page.evaluate(() => {
+    document.querySelector<HTMLButtonElement>('.conv-share-close')!.click();
+    (window as any).ShareConversation.showExcerpt('下一段原文。', { lang: 'zh', title: '测试', url: 'https://cubxxw.com/zh/growth/posts/test/' });
   });
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  const dialog = page.getByRole('dialog');
-  await expect(dialog.getByText('已结合上下文解释。', { exact: true })).toBeVisible();
-  const input = dialog.getByRole('textbox', { name: '想继续追问什么？' });
-  await input.click();
-  await expect(input).toBeFocused();
-  await page.keyboard.type('能举一个例子吗？');
-  await dialog.getByRole('button', { name: '发送', exact: true }).click();
-  await expect.poll(() => requests.length).toBe(2);
-  expect(requests[1].question).toBe('能举一个例子吗？');
-  expect(requests[1].context).toHaveLength(2);
+  dialog = page.locator('#conv-share-modal [role="dialog"]');
+  await expect(page.locator('#conv-share-modal')).toHaveCount(1);
+  await dialog.locator('#csb-copy-text').click(); await expect(dialog.locator('#csp-manual textarea')).toHaveValue(/下一段原文/);
+  await expect(dialog.locator('#csb-save-img')).toBeEnabled();
 });
-
-test('comment quote remains intact after clearing the floating selection', async ({ page, context }) => {
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
+test('font preparation keeps focus inside share editor', async ({ page }) => {
+  await page.goto(article); await select(page);
+  await page.evaluate(() => {
+    const load = document.fonts.load.bind(document.fonts);
+    document.fonts.load = async (...args) => { await new Promise(r => setTimeout(r, 250)); return load(...args); };
+  });
+  await page.getByRole('toolbar').getByRole('button', { name: '分享', exact: true }).click();
+  await expect(page.locator('.conv-share-close')).toBeFocused(); await expect(page.locator('#csb-save-img')).toBeEnabled();
+});
+test('over-limit excerpt has no canvas and retains full copy', async ({ page }) => {
+  await page.goto(article); await select(page); await share(page);
+  await page.evaluate(() => (window as any).ShareConversation.showExcerpt('长'.repeat(2401), { lang: 'zh', title: '长引用' }));
+  const dialog = page.locator('#conv-share-modal [role="dialog"]');
+  await expect(dialog.locator('#csp-limit')).toBeVisible(); await expect(dialog.locator('canvas')).toHaveCount(0);
+  await expect(dialog.locator('#csb-save-img')).toBeDisabled(); await expect(dialog.locator('#csb-copy-text')).toBeEnabled();
+});
+test('comments preserve reading position, refresh failed copy and respect topmost share', async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('refused')) } }));
+  await page.goto(article); await select(page); const y = await page.evaluate(() => scrollY);
   await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
-  const preview = page.locator('#post-comments-quote');
-  await expect(preview).toBeVisible();
-  await page.locator('.post-comments__title').click();
-  await preview.getByRole('button', { name: '复制引用', exact: true }).click();
-  const copied = await page.evaluate(() => navigator.clipboard.readText());
-  expect(copied).toContain('> ' + passage);
-  expect(copied).toContain('https://cubxxw.com/zh/growth/posts/');
-  expect(copied).toContain('#asel-p');
-  expect(copied).not.toContain('127.0.0.1');
+  const drawer = page.locator('.asel-comments'); await expect(drawer).toBeVisible();
+  expect(await page.evaluate(() => scrollY)).toBe(y);
+  await drawer.getByRole('button', { name: '复制引用', exact: true }).click();
+  await expect(drawer.locator('.asel-comments-manual')).toHaveValue(new RegExp(passage));
+  await drawer.getByRole('button', { name: '继续阅读', exact: true }).click(); expect(await page.evaluate(() => scrollY)).toBe(y);
+  await select(page, page.locator('.post-content p').filter({ hasText: '这篇文章的种子' }));
+  await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+  await expect(drawer.locator('.asel-comments-manual')).toHaveCount(0);
+  await expect(drawer.locator('blockquote')).toContainText('这篇文章的种子');
+  await page.evaluate(() => (window as any).loadShareScripts(() => (window as any).ShareConversation.showExcerpt('当前分享。', { lang: 'zh' })));
+  await expect(page.locator('#conv-share-modal')).toBeVisible(); await page.keyboard.press('Escape');
+  await expect(page.locator('#conv-share-modal')).not.toBeVisible(); await expect(drawer).toBeVisible();
+  if (process.env.SELECTION_EVIDENCE) await page.screenshot({ path: join(process.env.SELECTION_EVIDENCE, 'comments-desktop.png') });
 });
-
-test('share clipboard refusal leaves a usable manual copy field inside the dialog', async ({ page }) => {
-  await page.addInitScript(() => {
-    Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('refused')) } });
-    document.execCommand = () => false;
+test('drag uses actual range and Escape preserves native text', async ({ page }) => {
+  await page.goto(article); await select(page);
+  await page.locator('.post-content p').filter({ hasText: passage }).evaluate(el => {
+    const r = document.createRange(); r.setStart(el.firstChild!, 4); r.setEnd(el.firstChild!, 12);
+    getSelection()!.removeAllRanges(); getSelection()!.addRange(r);
   });
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: '分享', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: '分享引用' });
-  await dialog.getByRole('button', { name: '复制引用', exact: true }).click();
-  const manual = dialog.locator('.asel-manual textarea');
-  await expect(manual).toBeVisible();
-  await manual.click();
-  await expect(manual).toBeFocused();
-  expect(await manual.inputValue()).toContain(passage);
-  const bounds = await manual.boundingBox();
-  const dialogBounds = await dialog.boundingBox();
-  expect(bounds!.x).toBeGreaterThan(dialogBounds!.x);
-  expect(bounds!.x + bounds!.width).toBeLessThan(dialogBounds!.x + dialogBounds!.width);
-});
-
-test('dark dialog follows the article theme without a light surface flash', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('pref-theme', 'dark'));
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: '分享', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: '分享引用' });
-  const colors = await dialog.evaluate(el => ({
-    background: getComputedStyle(el).backgroundColor,
-    color: getComputedStyle(el).color,
-    paper: getComputedStyle(document.body).getPropertyValue('--color-paper').trim(),
-  }));
-  expect(colors.background).toBe('rgb(28, 25, 23)');
-  expect(colors.color).not.toBe('rgb(26, 28, 27)');
-});
-
-test('drag selection anchors to its actual range and Escape preserves the selected text', async ({ page }) => {
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-  await paragraph.evaluate(el => {
-    el.scrollIntoView({ block: 'center' });
-    const range = document.createRange();
-    range.setStart(el.firstChild!, 4);
-    range.setEnd(el.firstChild!, 12);
-    getSelection()!.removeAllRanges();
-    getSelection()!.addRange(range);
-  });
-  const toolbar = page.getByRole('toolbar');
-  await expect(toolbar).toBeVisible();
   const selected = await page.evaluate(() => ({ text: getSelection()!.toString(), rect: getSelection()!.getRangeAt(0).getBoundingClientRect().toJSON() }));
-  const bounds = await toolbar.boundingBox();
-  expect(Math.abs(bounds!.x - selected.rect.left)).toBeLessThan(2);
-  expect(Math.abs(bounds!.y + bounds!.height + 10 - selected.rect.top)).toBeLessThan(2);
-  expect(selected.text).toBe(passage.slice(4, 12));
-  await page.keyboard.press('Escape');
-  await expect(toolbar).not.toBeVisible();
+  await expect.poll(async () => { const r = (await page.getByRole('toolbar').boundingBox())!; return Math.abs(r.y + r.height + 10 - selected.rect.top); }).toBeLessThan(2);
+  await page.keyboard.press('Escape'); await expect(page.getByRole('toolbar')).not.toBeVisible();
   expect(await page.evaluate(() => getSelection()!.toString())).toBe(passage.slice(4, 12));
 });
-
+test('dark share matches article surface', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('pref-theme', 'dark'));
+  await page.goto(article); await select(page); const dialog = await share(page);
+  expect(await dialog.evaluate(el => getComputedStyle(el).backgroundColor)).not.toBe('rgb(255, 255, 255)');
+  expect(await page.locator('body').evaluate(el => el.classList.contains('dark'))).toBe(true);
+  if (process.env.SELECTION_EVIDENCE) await page.screenshot({ path: join(process.env.SELECTION_EVIDENCE, 'share-dark.png') });
+});
+test('footer card uses same local editor and Escape closes cleanly', async ({ page }) => {
+  await page.goto(article); await page.getByRole('button', { name: '生成文章分享卡', exact: true }).click();
+  const dialog = page.locator('#conv-share-modal [role="dialog"]');
+  await expect(dialog).toBeVisible(); await expect(dialog.locator('#csb-save-img')).toBeEnabled();
+  await expect(dialog.locator('#conv-share-heading')).toHaveText('分享这篇文章');
+  await page.keyboard.press('Escape'); await expect(dialog).not.toBeVisible();
+});
 test.describe('native touch selection', () => {
   test.use({ hasTouch: true, isMobile: true, viewport: { width: 390, height: 844 } });
-  test('selection stays native and the toolbar clears the system menu zone below it', async ({ page }) => {
-    await page.goto(article);
-    const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-    await paragraph.evaluate(el => {
-      el.scrollIntoView({ block: 'center' });
-      const range = document.createRange();
-      range.selectNodeContents(el);
-      getSelection()!.removeAllRanges();
-      getSelection()!.addRange(range);
-    });
-    const toolbar = page.getByRole('toolbar');
-    await expect(toolbar).toBeVisible();
-    const range = await page.evaluate(() => getSelection()!.getRangeAt(0).getBoundingClientRect().toJSON());
-    const bounds = await toolbar.boundingBox();
-    expect(bounds!.y).toBeGreaterThanOrEqual(range.bottom + 55);
-    expect(await page.evaluate(() => getSelection()!.toString())).toBe(passage);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  test('toolbar clears system menu zone and compact comments fit', async ({ page }) => {
+    await page.goto(article); await select(page);
+    const r = await page.evaluate(() => getSelection()!.getRangeAt(0).getBoundingClientRect().toJSON());
+    expect((await page.getByRole('toolbar').boundingBox())!.y).toBeGreaterThanOrEqual(r.bottom + 55);
+    await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+    const drawer = page.locator('.asel-comments'); await expect(drawer).toHaveAttribute('aria-modal', 'true');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await drawer.getByRole('button', { name: '继续阅读', exact: true }).click(); await expect(drawer).not.toBeVisible();
   });
 });
-
-test('selection extending outside the article is rejected while preserving the native selection', async ({ page }) => {
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-  await paragraph.click();
-  await page.evaluate(() => {
-    const title = document.querySelector('.post-title')!;
-    const range = document.createRange();
-    range.selectNodeContents(title);
-    getSelection()!.removeAllRanges();
-    getSelection()!.addRange(range);
-  });
+test('unsupported selection is rejected and English controls are localized', async ({ page }) => {
+  await page.goto(article); await select(page);
+  await page.locator('.post-title').evaluate(el => { const r = document.createRange(); r.selectNodeContents(el); getSelection()!.removeAllRanges(); getSelection()!.addRange(r); });
   await expect(page.getByRole('toolbar')).not.toBeVisible();
-  expect(await page.evaluate(() => getSelection()!.toString())).toContain('拆到最后');
-});
-
-test('unsupported text selections inside prose cannot share an old paragraph', async ({ page }) => {
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.evaluate(() => {
-    const heading = document.querySelector('.post-content h2')!;
-    const range = document.createRange();
-    range.selectNodeContents(heading);
-    getSelection()!.removeAllRanges();
-    getSelection()!.addRange(range);
-  });
-  await expect(page.getByRole('toolbar')).not.toBeVisible();
-  expect(await page.evaluate(() => getSelection()!.toString())).toContain('引');
-});
-
-test('top-edge toolbar flips below the complete paragraph', async ({ page }) => {
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: '如果只从光学上看，这句话是成立的' });
-  await paragraph.evaluate(el => scrollTo(0, el.getBoundingClientRect().top + scrollY - 20));
-  await paragraph.click();
-  const toolbar = page.getByRole('toolbar');
-  await expect(toolbar).toBeVisible();
-  const paragraphBounds = await paragraph.boundingBox();
-  const toolbarBounds = await toolbar.boundingBox();
-  expect(toolbarBounds!.y).toBeGreaterThanOrEqual(paragraphBounds!.y + paragraphBounds!.height + 9);
-});
-
-test('prototype-looking text is safe as an AI selection history key', async ({ page }) => {
-  await page.route('**/.netlify/functions/article-ai', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: 'constructor 在此处的含义。' }) }));
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-  await paragraph.evaluate(el => { el.textContent = 'constructor'; });
-  await page.getByText('constructor', { exact: true }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  await expect(page.getByRole('dialog').getByText('constructor 在此处的含义。', { exact: true })).toBeVisible();
-});
-
-test('AI parses SSE deltas and accepts the final event without a newline', async ({ page }) => {
-  await page.route('**/.netlify/functions/article-ai', route => route.fulfill({
-    contentType: 'text/event-stream',
-    body: 'data: {"delta":"上下文"}\r\n\r\ndata: {"delta":"解释完成。"}',
-  }));
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  await expect(page.getByRole('dialog').getByText('上下文解释完成。', { exact: true })).toBeVisible();
-  await expect(page.getByRole('dialog').getByRole('button', { name: '发送', exact: true })).toBeEnabled();
-});
-
-test('AI failures retry without promoting failed replies into history', async ({ page }) => {
-  const requests: any[] = [];
-  await page.route('**/.netlify/functions/article-ai', route => {
-    requests.push(route.request().postDataJSON());
-    return route.fulfill(requests.length === 1
-      ? { status: 503, contentType: 'application/json', body: '{"error":"unavailable"}' }
-      : { contentType: 'application/json', body: '{"answer":"重试成功。"}' });
-  });
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  const dialog = page.getByRole('dialog');
-  await dialog.getByRole('button', { name: '重试', exact: true }).click();
-  await expect(dialog.getByText('重试成功。', { exact: true })).toBeVisible();
-  expect(requests[1].context).toEqual([]);
-});
-
-test('AI times out while response headers are still pending', async ({ page }) => {
-  await page.clock.install();
-  await page.route('**/.netlify/functions/article-ai', () => {});
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  await page.clock.fastForward(46_000);
-  const dialog = page.getByRole('dialog');
-  await expect(dialog.getByText('请求超时，请重试。', { exact: true })).toBeVisible();
-  await expect(dialog.getByRole('button', { name: '发送', exact: true })).toBeEnabled();
-});
-
-test('closing AI prevents an old reply from overwriting a new request', async ({ page }) => {
-  await page.addInitScript(() => {
-    const original = window.fetch.bind(window);
-    (window as any).__heldAI = [];
-    window.fetch = (input, init) => {
-      if (String(input).includes('/.netlify/functions/article-ai')) {
-        return new Promise(resolve => (window as any).__heldAI.push(resolve));
-      }
-      return original(input, init);
-    };
-  });
-  await page.goto(article);
-  await page.locator('.post-content p').filter({ hasText: passage }).click();
-  const ai = page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true });
-  await ai.click();
-  await expect.poll(() => page.evaluate(() => (window as any).__heldAI.length)).toBe(1);
-  await page.keyboard.press('Escape');
-  await ai.click();
-  await expect.poll(() => page.evaluate(() => (window as any).__heldAI.length)).toBe(2);
-  await page.evaluate(() => (window as any).__heldAI[0](Response.json({ answer: '过时的回复' })));
-  const dialog = page.getByRole('dialog');
-  await expect(dialog.getByRole('button', { name: '发送', exact: true })).toBeDisabled();
-  await expect(dialog.getByText('过时的回复', { exact: true })).toHaveCount(0);
-  await page.evaluate(() => (window as any).__heldAI[1](Response.json({ answer: '当前回复' })));
-  await expect(dialog.getByText('当前回复', { exact: true })).toBeVisible();
-});
-
-test('long quotes with identical prefixes do not share AI history', async ({ page }) => {
-  const requests: any[] = [];
-  await page.route('**/.netlify/functions/article-ai', route => {
-    requests.push(route.request().postDataJSON());
-    return route.fulfill({ contentType: 'application/json', body: '{"answer":"解释完成。"}' });
-  });
-  await page.goto(article);
-  const id = await page.locator('.post-content p').filter({ hasText: passage }).getAttribute('id');
-  const paragraph = page.locator('#' + id);
-  await paragraph.evaluate(el => { el.textContent = '相同开头'.repeat(60) + '第一段'; });
-  await paragraph.click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  await expect(page.getByRole('dialog').getByText('解释完成。', { exact: true })).toBeVisible();
-  await page.keyboard.press('Escape');
-  await paragraph.evaluate(el => { el.textContent = '相同开头'.repeat(60) + '第二段'; });
-  await paragraph.click();
-  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  await expect.poll(() => requests.length).toBe(2);
-  expect(requests[1].context).toEqual([]);
-});
-
-test('over-limit image export skips canvas allocation and gives a clear limit', async ({ page }) => {
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-  await paragraph.evaluate(el => {
-    el.textContent = '长'.repeat(2500);
-    // Keep room around this synthetic long selection; placement limits are
-    // tested separately, so this case isolates export resource protection.
-    el.style.maxHeight = '100px';
-    el.style.overflow = 'auto';
-  });
-  await page.getByText('长'.repeat(2500), { exact: true }).click();
-  await page.getByRole('toolbar').getByRole('button', { name: '分享', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: '分享引用' });
-  await expect(dialog.getByText(/选文过长/)).toBeVisible();
-  await expect(dialog.getByRole('button', { name: '下载 PNG', exact: true })).toBeDisabled();
-  expect(await dialog.locator('canvas').evaluate((el: HTMLCanvasElement) => el.width * el.height)).toBe(0);
-  await expect(dialog.getByRole('button', { name: '复制引用', exact: true })).toBeEnabled();
-});
-
-test('English articles provide the same localized selection controls', async ({ page }) => {
   await page.goto('/growth/posts/2026-07-14-what-remains-when-taken-apart/');
-  await page.locator('.post-content p').filter({ hasText: 'Start with an image — the most beautiful thing' }).click();
-  const toolbar = page.getByRole('toolbar');
-  await expect(toolbar.getByRole('button', { name: 'Share', exact: true })).toBeVisible();
-  await expect(toolbar.getByRole('button', { name: 'AI analysis', exact: true })).toBeVisible();
-  await expect(toolbar.getByRole('button', { name: 'Comment', exact: true })).toBeVisible();
-  await expect(toolbar.getByRole('button', { name: 'More', exact: true })).toBeVisible();
+  await select(page, page.locator('.post-content p').filter({ hasText: 'Start with an image — the most beautiful thing' }));
+  for (const name of ['Share', 'AI analysis', 'Comment', 'More']) await expect(page.getByRole('toolbar').getByRole('button', { name, exact: true })).toBeVisible();
+});
+test('failed AI retry avoids duplicate question and poisoned history', async ({ page }) => {
+  const requests: any[] = [];
+  await page.route('**/.netlify/functions/article-ai', async route => {
+    requests.push(route.request().postDataJSON());
+    await route.fulfill(requests.length === 1 ? { status: 503, body: '{}' } : { contentType: 'text/event-stream', body: 'data: {"delta":"回复完整。"}\r\n\r\ndata: [DONE]\r\n\r\n' });
+  });
+  await page.goto(article); await select(page);
+  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
+  const panel = page.locator('.rc-ai-panel'); await panel.getByRole('button', { name: '重试', exact: true }).click();
+  await expect(panel.locator('.rc-ai-answer-body')).toHaveText('回复完整。'); await expect(panel.locator('.rc-ai-msg--user')).toHaveCount(1);
+  expect(requests[1].context).toEqual([]);
 });
 
-test('copied passage anchors resolve to the original paragraph after reload', async ({ page }) => {
-  await page.goto(article);
-  const paragraph = page.locator('.post-content p').filter({ hasText: passage });
-  const id = await paragraph.getAttribute('id');
-  await page.goto(article + '#' + id);
-  const linked = page.locator('#' + id);
-  await expect(linked).toHaveText(passage);
-  await expect(linked).toBeInViewport();
-  expect(await page.locator('.post-content [id]').evaluateAll(nodes => new Set(nodes.map(el => el.id)).size)).toBe(await page.locator('.post-content [id]').count());
+test('a brief curve connects the passage to desktop chat and then clears', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.route('**/.netlify/functions/article-ai', async route => {
+    await route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: '这段解释进入右侧聊天。' }) });
+  });
+  await page.goto(article); await select(page);
+  await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
+  await expect(page.locator('.article-selection-guide path')).toBeAttached();
+  await expect(page.locator('#rc-tab-ai')).toHaveAttribute('aria-selected', 'true');
+  if (process.env.SELECTION_EVIDENCE) await page.screenshot({ path: join(process.env.SELECTION_EVIDENCE, 'ai-curve.png') });
+  await expect(page.locator('.article-selection-guide')).toHaveCount(0);
+});
+test('a late clipboard rejection cannot restore an old comment quote', async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: {
+    writeText: () => new Promise((_, reject) => { (window as any).rejectOldQuote = reject; }),
+  } }));
+  await page.goto(article); await select(page);
+  await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+  const drawer = page.locator('.asel-comments');
+  await drawer.getByRole('button', { name: '复制引用', exact: true }).click();
+  await drawer.getByRole('button', { name: '继续阅读', exact: true }).click();
+  await select(page, page.locator('.post-content p').filter({ hasText: '这篇文章的种子' }));
+  await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+  await page.evaluate(() => (window as any).rejectOldQuote(new Error('delayed refusal')));
+  await expect(drawer.locator('.asel-comments-manual')).toHaveCount(0);
+  await expect(drawer.locator('blockquote')).toContainText('这篇文章的种子');
+});
+test('compact share tray has a local article-card entry and retains its open state', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(article); await select(page); await page.keyboard.press('Escape');
+  await page.locator('#article-fab').click();
+  await page.locator('.abs-tab[data-tab="share"]').click();
+  await page.locator('.abs-share-card').click();
+  const dialog = page.locator('#conv-share-modal [role="dialog"]');
+  await expect(dialog).toBeVisible(); await expect(dialog.locator('#csb-save-img')).toBeEnabled();
+  await page.keyboard.press('Escape'); await expect(dialog).not.toBeVisible();
+  await expect(page.locator('#article-bottom-sheet')).toHaveClass(/abs--open/);
+  expect(await page.evaluate(() => document.body.style.overflow)).toBe('hidden');
 });

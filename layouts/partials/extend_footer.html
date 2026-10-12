@@ -19,7 +19,7 @@
 (function(){
   var loading=false,callbacks=[];
   function flush(){
-    window.__shareScriptsLoaded=true;loading=false;
+    window.__shareScriptsLoaded=!!window.ShareConversation;loading=false;
     callbacks.splice(0).forEach(function(cb){try{cb();}catch(_){}});
   }
   function loadShareScripts(cb){
@@ -30,9 +30,37 @@
     var pending=2;
     function done(){if(!--pending)flush();}
     var s1=document.createElement('script');s1.src='{{ "/js/qrcode-generator.js" | relURL }}';s1.onload=done;s1.onerror=done;document.body.appendChild(s1);
-    var s2=document.createElement('script');s2.src='{{ "/js/share-conversation.js" | relURL }}';s2.onload=done;s2.onerror=done;document.body.appendChild(s2);
+    var s2=document.createElement('script');s2.src='{{ "/js/share-conversation.js" | relURL }}?v={{ readFile "static/js/share-conversation.js" | sha256 }}';s2.onload=done;s2.onerror=done;document.body.appendChild(s2);
   }
   window.loadShareScripts=loadShareScripts;
+    // Article and WeChat sharing use the same local card editor.
+
+    window.openArticleShareCard = function (btn) {
+        var canonical = document.querySelector('link[rel="canonical"]');
+        var title = (btn && btn.dataset.title) || document.title || '';
+        var url = (btn && btn.dataset.url) || (canonical && canonical.href) || window.location.href;
+        var description = (btn && btn.dataset.desc) || '';
+        var lang = (btn && btn.dataset.lang) || document.documentElement.lang;
+        var author = document.querySelector('meta[name="author"]');
+        function open() {
+            if (window.ShareConversation && window.ShareConversation.showExcerpt) {
+                window.ShareConversation.showExcerpt(description || title, {
+                    lang: lang, title: title, author: author && author.content,
+                    url: url, sourceUrl: url, kind: 'article'
+                });
+            } else {
+                var note = document.createElement('p'); note.setAttribute('role', 'status');
+                note.textContent = lang.indexOf('zh') === 0 ? '分享暂时无法打开，请再试一次。' : 'Sharing is unavailable. Please try again.';
+                note.style.cssText = 'position:fixed;bottom:24px;left:12px;right:12px;z-index:9000;padding:14px;border-radius:16px;text-align:center;background:var(--color-paper);color:var(--color-ink)';
+                document.body.appendChild(note); setTimeout(function () { note.remove(); }, 3000);
+            }
+        }
+        if (typeof window.loadShareScripts === 'function') window.loadShareScripts(open);
+        else open();
+    };
+    // WeChat uses the same local poster/QR editor rather than a remote QR popup.
+    window.openWechatQR = window.openArticleShareCard;
+
   document.addEventListener('click',function h(e){
     if(e.target.closest('[data-share-trigger],[class*="share"],.share-btn')){
       loadShareScripts();document.removeEventListener('click',h,true);
@@ -41,7 +69,11 @@
 })();
 </script>
 {{- if .IsPage }}
-<script src="{{ "/js/reading-companion.js" | relURL }}" defer></script>
+{{- if (partial "site-capabilities.html" .).ai }}
+<script src="{{ "/js/article-ai-client.js" | relURL }}?v={{ readFile "static/js/article-ai-client.js" | sha256 }}" defer></script>
+<script src="{{ "/js/article-chat.js" | relURL }}?v={{ readFile "static/js/article-chat.js" | sha256 }}" defer></script>
+{{- end }}
+<script src="{{ "/js/reading-companion.js" | relURL }}?v={{ readFile "static/js/reading-companion.js" | sha256 }}" defer></script>
 <script src="{{ "/js/toc-highlight.js" | relURL }}" defer></script>
 <script src="{{ "/js/image-lightbox.js" | relURL }}" defer></script>
 <script src="{{ "/js/wide-content-scroll.js" | relURL }}" defer></script>
