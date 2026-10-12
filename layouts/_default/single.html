@@ -148,6 +148,13 @@
          without the shortcode emit nothing here. */}}
     {{- partial "interactive/assets.html" . }}
 
+    {{- /* Article selection tools (issue scope): config only — the runtime UI
+         is mounted on <body> as a fixed overlay by article-selection.js so the
+         prose geometry can never shift. The script loads here (and only here)
+         because this is the default single-article layout. */}}
+    {{- partial "article/selection-tools.html" . }}
+    <script src="{{ "/js/article-selection.js" | relURL }}?v={{ readFile "static/js/article-selection.js" | sha256 }}" defer></script>
+
     {{- partial "article/faq.html" . -}}
 
     {{- partial "article/column-outro.html" . -}}

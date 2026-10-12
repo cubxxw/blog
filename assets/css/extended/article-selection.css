@@ -1,0 +1,760 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   article-selection.css — bounded article selection interaction.
+
+   Art direction (screenshot sign-off): warm editorial surface, a tiny calm
+   toolbar and an extremely subtle paragraph rectangle. Everything the
+   interaction paints lives in fixed overlays mounted on <body>
+   (.asel-*), so prose geometry (margins, padding, borders, widths,
+   scrollHeight) is never touched. Selectors are namespaced .asel- (plus the
+   comment quote preview, which owns its .post-comments__quote-* block) and
+   this file is gated to single pages by the owner list in partials/head.html.
+
+   The paragraph feedback is painted at 7% stroke / 1% background in an
+   ink-green; no layout box is added to the article flow.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --asel-green: #4a7f60;
+  --asel-green-soft: #e3ece6;
+  --asel-shadow: 0 6px 22px rgba(26, 28, 27, 0.10), 0 1px 3px rgba(26, 28, 27, 0.06);
+  --asel-z: 2500;
+}
+
+/* Resolve aliases where the site's light/dark tokens are actually defined. */
+body {
+  --asel-surface: var(--color-paper, #f9f9f7);
+  --asel-ink: var(--color-ink, #1a1c1b);
+  --asel-ink-muted: var(--color-ink-muted, #5e5e63);
+  --asel-rule: var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+
+body.dark,
+[data-theme="dark"] {
+  --asel-green: #8fcba5;
+  --asel-green-soft: rgba(143, 203, 165, 0.12);
+  --asel-shadow: 0 6px 22px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* Soft theme ::selection — native selection behaviour stays untouched; only
+   the highlight tint is themed so long reads keep the warm paper feel. */
+.post-content ::selection {
+  background: rgba(74, 127, 96, 0.18);
+}
+
+body.dark .post-content ::selection,
+[data-theme="dark"] .post-content ::selection {
+  background: rgba(143, 203, 165, 0.26);
+}
+
+/* ─── Root overlay ───────────────────────────────────────────────────── */
+
+.asel-root {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 0;
+  z-index: var(--asel-z);
+  pointer-events: none;
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  transition: opacity 160ms ease;
+}
+
+.asel-root.asel-faded {
+  opacity: 0;
+}
+
+.asel-root.asel-faded .asel-toolbar,
+.asel-root.asel-faded .asel-menu {
+  pointer-events: none;
+}
+
+/* ─── Paragraph marker (fixed overlay, zero layout) ──────────────────── */
+
+.asel-marker {
+  position: fixed;
+  border: 1px solid rgba(74, 127, 96, 0.07);
+  background: rgba(74, 127, 96, 0.01);
+  border-radius: 6px;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+body.dark .asel-marker,
+[data-theme="dark"] .asel-marker {
+  border-color: rgba(143, 203, 165, 0.07);
+  background: rgba(143, 203, 165, 0.01);
+}
+
+/* Short left mark — the only emphatic element of the feedback. */
+.asel-marker::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 10px;
+  width: 2px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgba(74, 127, 96, 0.32);
+}
+
+body.dark .asel-marker::before,
+[data-theme="dark"] .asel-marker::before {
+  background: rgba(143, 203, 165, 0.38);
+}
+
+/* ─── Toolbar: one calm line, floating above the chosen rect ─────────── */
+
+.asel-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  margin: 0;
+  max-width: calc(100vw - 24px);
+  background: var(--asel-surface);
+  border: 1px solid var(--asel-rule);
+  border-radius: 999px;
+  box-shadow: var(--asel-shadow);
+  pointer-events: auto;
+  white-space: nowrap;
+}
+
+.asel-btn {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 4px 9px;
+  background: transparent;
+  color: var(--asel-ink);
+  font-family: inherit;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+:lang(zh) .asel-btn {
+  font-size: 0.75rem;
+}
+
+.asel-btn:hover {
+  background: var(--asel-green-soft);
+}
+
+.asel-btn:focus-visible {
+  outline: 2px solid var(--asel-green);
+  outline-offset: 1px;
+}
+
+.asel-btn[aria-expanded="true"] {
+  background: var(--asel-green-soft);
+}
+
+.asel-btn-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--asel-rule);
+  margin: 0 2px;
+  flex: 0 0 auto;
+}
+
+/* ─── More menu: an independent fixed popup, never a second row ──────── */
+
+.asel-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 168px;
+  padding: 5px;
+  margin: 0;
+  list-style: none;
+  background: var(--asel-surface);
+  border: 1px solid var(--asel-rule);
+  border-radius: 12px;
+  box-shadow: var(--asel-shadow);
+  pointer-events: auto;
+}
+
+.asel-menu[hidden] {
+  display: none;
+}
+
+.asel-menu-item {
+  appearance: none;
+  display: block;
+  width: 100%;
+  text-align: start;
+  border: 0;
+  margin: 0;
+  padding: 7px 10px;
+  background: transparent;
+  color: var(--asel-ink);
+  font-family: inherit;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.asel-menu-item:hover {
+  background: var(--asel-green-soft);
+}
+
+.asel-menu-item:focus-visible {
+  outline: 2px solid var(--asel-green);
+  outline-offset: -2px;
+}
+
+/* ─── Toast + manual copy fallback ───────────────────────────────────── */
+
+.asel-toast {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 7px 14px;
+  background: var(--asel-surface);
+  color: var(--asel-ink);
+  border: 1px solid var(--asel-rule);
+  border-radius: 999px;
+  box-shadow: var(--asel-shadow);
+  font-size: 0.74rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.asel-toast.asel-toast--visible {
+  opacity: 1;
+}
+
+.asel-manual {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, calc(100vw - 24px));
+  padding: 12px;
+  background: var(--asel-surface);
+  border: 1px solid var(--asel-rule);
+  border-radius: 12px;
+  box-shadow: var(--asel-shadow);
+  pointer-events: auto;
+}
+
+.asel-manual[hidden] {
+  display: none;
+}
+
+.asel-manual.asel-manual--modal {
+  position: static;
+  transform: none;
+  left: auto;
+  bottom: auto;
+  width: auto;
+  max-width: none;
+  margin-top: 12px;
+  box-sizing: border-box;
+}
+
+.asel-manual-hint {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  color: var(--asel-ink-muted);
+}
+
+.asel-manual textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 64px;
+  padding: 8px;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: var(--asel-ink);
+  background: transparent;
+  border: 1px solid var(--asel-rule);
+  border-radius: 8px;
+}
+
+.asel-manual-close {
+  appearance: none;
+  margin-top: 8px;
+  padding: 5px 12px;
+  border: 1px solid var(--asel-rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--asel-ink);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+/* ─── Dialogs (native <dialog>, gradual entrance) ────────────────────── */
+
+.asel-dialog {
+  position: fixed;
+  pointer-events: auto;
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(84vh, 720px);
+  padding: 0;
+  border: 1px solid var(--asel-rule);
+  border-radius: 16px;
+  background: var(--asel-surface);
+  color: var(--asel-ink);
+  box-shadow: var(--asel-shadow);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 260ms ease, transform 260ms ease;
+  overflow: hidden;
+}
+
+.asel-dialog.asel-dialog--in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.asel-dialog::backdrop {
+  pointer-events: auto;
+  background: rgba(26, 28, 27, 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asel-dialog {
+    transition: none;
+    transform: none;
+  }
+
+  .asel-dialog.asel-dialog--in {
+    transform: none;
+  }
+
+  .asel-root,
+  .asel-toast {
+    transition: none;
+  }
+}
+
+.asel-dialog-body {
+  padding: 18px 20px 20px;
+  overflow-y: auto;
+  max-height: calc(min(84vh, 720px) - 52px);
+  box-sizing: border-box;
+}
+
+.asel-dialog-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.asel-dialog-title {
+  margin: 0;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+:lang(zh) .asel-dialog-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body), serif;
+  letter-spacing: 0.02em;
+}
+
+.asel-dialog-close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--asel-ink-muted);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.asel-dialog-close:hover {
+  background: var(--asel-green-soft);
+}
+
+.asel-quote-text {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border-inline-start: 2px solid var(--asel-green);
+  background: var(--asel-green-soft);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-size: 0.86rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  max-height: 180px;
+  color: var(--asel-ink);
+}
+
+:lang(zh) .asel-quote-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body), serif;
+}
+
+/* ─── Share dialog: quote card + canvas export ───────────────────────── */
+
+.asel-card-choices {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0 12px;
+}
+
+.asel-card-choice {
+  appearance: none;
+  flex: 1 1 0;
+  padding: 6px 8px;
+  border: 1px solid var(--asel-rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--asel-ink-muted);
+  font-family: inherit;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.asel-card-choice[aria-pressed="true"] {
+  border-color: var(--asel-green);
+  color: var(--asel-ink);
+  background: var(--asel-green-soft);
+}
+
+.asel-card {
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.asel-card--moss {
+  background: linear-gradient(155deg, #1f2a24 0%, #2f4a3a 55%, #56715c 100%);
+  color: #f2f5f1;
+}
+
+.asel-card--paper {
+  background: linear-gradient(155deg, #fbf9f4 0%, #f1ece2 100%);
+  color: #1a1c1b;
+  border: 1px solid rgba(30, 35, 30, 0.10);
+}
+
+.asel-card--dusk {
+  background: linear-gradient(155deg, #2b2d3a 0%, #4a4360 60%, #7c6a8a 100%);
+  color: #f4f2f7;
+}
+
+.asel-card-quote {
+  margin: 0 0 12px;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+:lang(zh) .asel-card-quote {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body), serif;
+}
+
+.asel-card-meta {
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  word-break: break-all;
+}
+
+.asel-card-meta strong {
+  font-weight: 600;
+}
+
+.asel-canvas-wrap {
+  margin: 0 0 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--asel-rule);
+  background: rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: center;
+}
+
+.asel-canvas-wrap canvas {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.asel-canvas-wrap[hidden] { display: none; }
+
+/* The PNG is the single visible preview. Keep its textual counterpart
+   available to assistive technology without showing a duplicate card. */
+.asel-dialog .asel-card {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.asel-limit-note {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border: 1px solid rgba(180, 90, 40, 0.35);
+  border-radius: 8px;
+  background: rgba(180, 90, 40, 0.08);
+  color: var(--asel-ink);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.asel-limit-note[hidden] {
+  display: none;
+}
+
+.asel-source-line {
+  margin: 0 0 12px;
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: var(--asel-ink-muted);
+  word-break: break-all;
+}
+
+.asel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.asel-action {
+  appearance: none;
+  padding: 8px 14px;
+  border: 1px solid var(--asel-rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--asel-ink);
+  font-family: inherit;
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.asel-action:hover {
+  background: var(--asel-green-soft);
+}
+
+.asel-action:focus-visible {
+  outline: 2px solid var(--asel-green);
+  outline-offset: 1px;
+}
+
+.asel-action[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.asel-action--primary {
+  border-color: var(--asel-green);
+  background: var(--asel-green-soft);
+}
+
+/* ─── AI dialog ──────────────────────────────────────────────────────── */
+
+.asel-ai-status {
+  margin: 0 0 10px;
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--asel-ink-muted);
+}
+
+.asel-ai-status[hidden] {
+  display: none;
+}
+
+.asel-ai-answer {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--asel-rule);
+  border-radius: 10px;
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  font-size: 0.82rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  min-height: 44px;
+  max-height: 240px;
+  overflow-y: auto;
+  color: var(--asel-ink);
+}
+
+.asel-ai-turn + .asel-ai-turn {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--asel-rule);
+}
+
+.asel-ai-q {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--asel-ink-muted);
+}
+
+.asel-ai-a {
+  margin: 0;
+}
+
+.asel-ai-error {
+  color: #a4552d;
+}
+
+.asel-ai-input {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 56px;
+  padding: 9px 10px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--asel-ink);
+  background: transparent;
+  border: 1px solid var(--asel-rule);
+  border-radius: 10px;
+}
+
+/* ─── Comment quote preview (before Utterances) ──────────────────────── */
+
+.post-comments__quote {
+  margin: 0 0 1.75rem;
+  padding: 14px 16px;
+  border: 1px solid var(--asel-rule, rgba(30, 35, 30, 0.12));
+  border-radius: 12px;
+  background: rgba(74, 127, 96, 0.04);
+}
+
+.post-comments__quote[hidden] {
+  display: none;
+}
+
+.post-comments__quote-label {
+  margin: 0 0 8px;
+  font-family: var(--font-mono, 'JetBrains Mono', ui-monospace, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--asel-ink-muted, #5e5e63);
+}
+
+.post-comments__quote-text {
+  margin: 0 0 10px;
+  padding: 0 0 0 12px;
+  border-inline-start: 2px solid var(--asel-green, #4a7f60);
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: var(--asel-ink, #1a1c1b);
+}
+
+:lang(zh) .post-comments__quote-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body), serif;
+}
+
+.post-comments__quote-source {
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--asel-ink-muted, #5e5e63);
+  word-break: break-all;
+}
+
+.post-comments__quote-source a {
+  color: inherit;
+}
+
+.post-comments__quote-copy {
+  appearance: none;
+  padding: 7px 14px;
+  border: 1px solid var(--asel-rule, rgba(30, 35, 30, 0.12));
+  border-radius: 999px;
+  background: transparent;
+  color: var(--asel-ink, #1a1c1b);
+  font-family: inherit;
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.post-comments__quote-copy:hover {
+  background: var(--asel-green-soft, #e3ece6);
+}
+
+.post-comments__quote-note {
+  margin: 10px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.65;
+  color: var(--asel-ink-muted, #5e5e63);
+}
+
+.post-comments__quote-manual {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  resize: vertical;
+  min-height: 64px;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: var(--asel-ink, #1a1c1b);
+  background: transparent;
+  border: 1px solid var(--asel-rule, rgba(30, 35, 30, 0.12));
+  border-radius: 8px;
+}
+
+.post-comments__quote-manual[hidden] {
+  display: none;
+}
+
+/* ─── Narrow viewports: the single line must fit 320px ───────────────── */
+
+@media (max-width: 420px) {
+  .asel-btn {
+    padding: 4px 7px;
+    font-size: 0.7rem;
+    gap: 3px;
+  }
+
+  .asel-toolbar {
+    gap: 1px;
+    padding: 2px;
+  }
+
+  .asel-dialog-body {
+    padding: 14px;
+  }
+
+  .asel-card {
+    padding: 14px;
+  }
+}

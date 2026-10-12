@@ -149,7 +149,7 @@
 {{- $singlePage := .IsPage -}}
 {{- /* These controls belong to single-page article chrome. Keep them on all
      page kinds (including custom layouts), but omit them from list routes. */ -}}
-{{- range slice "article-layout.css" "article-bottom-sheet.css" "article-maturity.css" "article-series-nav.css" "article-series.css" "article-faq.css" "article-tldr.css" "share-buttons.css" "editorial-tools.css" "marginalia.css" "post-footer.css" "toc-highlight.css" "zz-reading-progress-complete.css" "zzz-article-header-entrance.css" -}}
+{{- range slice "article-layout.css" "article-bottom-sheet.css" "article-maturity.css" "article-selection.css" "article-series-nav.css" "article-series.css" "article-faq.css" "article-tldr.css" "share-buttons.css" "editorial-tools.css" "marginalia.css" "post-footer.css" "toc-highlight.css" "zz-reading-progress-complete.css" "zzz-article-header-entrance.css" -}}
   {{- $owners = merge $owners (dict . $singlePage) -}}
 {{- end -}}
 {{- $filteredFiles := slice -}}
