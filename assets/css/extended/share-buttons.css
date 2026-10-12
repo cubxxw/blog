@@ -622,3 +622,34 @@
     animation: none !important;
   }
 }
+.share-btn.share-btn--card { width: auto; min-height: 42px; padding-inline: 17px; border-radius: 999px; color: var(--color-ink); background: color-mix(in srgb, var(--color-ink) 4%, transparent); font: inherit; font-size: .75rem; gap: 6px; }
+/* Article sharing follows the same paper-and-ink language as passage cards. */
+.post-single .share-container { max-width: 100%; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.post-single .share-primary { flex-wrap: wrap; gap: 8px; }
+.post-single .share-primary .share-btn {
+  min-height: 42px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+  background: transparent;
+  color: var(--color-ink-muted);
+  box-shadow: none;
+}
+.post-single .share-primary .share-btn:hover {
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-ink) 4%, transparent);
+  transform: translateY(-1px);
+}
+.post-single .share-primary .share-btn--card {
+  padding-inline: 17px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.post-single .share-primary .share-btn--card:hover { background: var(--color-ink); color: var(--color-paper); }
+.abs-share-card {
+  display: flex; flex-direction: column; gap: 8px; width: 100%; min-height: 104px;
+  margin-bottom: 20px; padding: 22px 24px; border: 1px solid var(--color-rule);
+  border-radius: 22px; text-align: left; background: var(--color-paper); color: var(--color-ink); cursor: pointer;
+}
+.abs-share-card span:first-child { font-family: var(--font-serif, Georgia, serif); font-size: 1.1rem; }
+.abs-share-card span:last-child { color: var(--color-ink-muted); font-size: .74rem; }
+.abs-share-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }

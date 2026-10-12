@@ -8,14 +8,12 @@ function renderer(file, name, indent) {
   const start = source.indexOf(`function ${name}(text)`);
   assert.ok(start >= 0, `Missing ${name}`);
   const declaration = source.slice(start).match(new RegExp(`^[\\s\\S]*?^${' '.repeat(indent)}}$`, 'm'))[0];
-  const helperStart = source.indexOf('function escapeHtml(s)');
-  const helper = source.slice(helperStart).match(new RegExp(`^[\\s\\S]*?^${' '.repeat(name === 'parseMarkdown' ? 4 : indent)}}$`, 'm'))[0];
-  return vm.runInNewContext(`${helper}\n(${declaration})`, { window: { location: { origin: 'https://cubxxw.com' } } });
+  return vm.runInNewContext('(' + declaration + ')', { window: { location: { origin: 'https://cubxxw.com' } } });
 }
 
 for (const [file, name, indent] of [
   ['static/js/reading-companion.js', 'parseMarkdown', 2],
-  ['static/js/article-bottom-sheet.js', 'renderAiText', 4],
+  ['static/js/article-chat.js', 'renderAiText', 2],
 ]) {
   test(`${name}: answers use prose paragraphs without generated heading/list styling`, () => {
     const render = renderer(file, name, indent);

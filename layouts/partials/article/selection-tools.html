@@ -1,0 +1,33 @@
+{{- /* Article selection tools — configuration only.
+
+       The bounded selection interaction (toolbar / marker / dialogs) is built
+       at RUNTIME by static/js/article-selection.js and mounted on document.body
+       as a fixed overlay, so prose geometry is never touched. This partial only
+       publishes the per-page configuration the script needs; the script itself
+       is loaded exactly once from layouts/_default/single.html, and the CSS is
+       gated to single pages via the per-page owner list in partials/head.html.
+
+       Keep this a pure data emitter: no markup inside .post-content. */ -}}
+{{- $capabilities := partial "site-capabilities.html" . -}}
+{{- $authorRaw := .Params.author | default site.Params.author -}}
+{{- $author := "" -}}
+{{- if reflect.IsSlice $authorRaw -}}
+  {{- range $authorRaw -}}
+    {{- $candidate := trim (printf "%v" .) " " -}}
+    {{- if and (not $author) $candidate (not (in (slice "Me" "me" "我" "我自己") $candidate)) -}}
+      {{- $author = $candidate -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if $authorRaw -}}
+  {{- $author = trim (replaceRE "[，,]\\s*(我|Me|me)\\s*$" "" (printf "%v" $authorRaw)) " " -}}
+{{- end -}}
+<script type="application/json" id="asel-config">{{ dict
+  "language" .Lang
+  "title" .Title
+  "url" .Permalink
+  "pagePath" .RelPermalink
+  "author" $author
+  "ai" (eq $capabilities.ai true)
+  "comments" (not (not (.Param "comments")))
+  "textFragment" true
+| jsonify | safeJS }}</script>

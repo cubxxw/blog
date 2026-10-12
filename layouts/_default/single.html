@@ -148,6 +148,13 @@
          without the shortcode emit nothing here. */}}
     {{- partial "interactive/assets.html" . }}
 
+    {{- /* Article selection tools (issue scope): config only — the runtime UI
+         is mounted on <body> as a fixed overlay by article-selection.js so the
+         prose geometry can never shift. The script loads here (and only here)
+         because this is the default single-article layout. */}}
+    {{- partial "article/selection-tools.html" . }}
+    <script src="{{ "/js/article-selection.js" | relURL }}?v={{ readFile "static/js/article-selection.js" | sha256 }}" defer></script>
+
     {{- partial "article/faq.html" . -}}
 
     {{- partial "article/column-outro.html" . -}}
@@ -364,6 +371,12 @@
 
     {{/* Panel 3: Share */}}
     <div class="abs-panel" id="abs-panel-share" role="tabpanel" aria-labelledby="abs-tab-share" hidden>
+      <button type="button" class="abs-share-card" data-share-trigger
+        data-title="{{ .Title }}" data-url="{{ .Permalink }}" data-desc="{{ .Description }}" data-lang="{{ .Lang }}"
+        onclick="openArticleShareCard(this)">
+        <span>{{ if eq .Lang "zh" }}把文章留在一张卡片上{{ else }}Keep the article on a card{{ end }}</span>
+        <span>{{ if eq .Lang "zh" }}预览、保存，分享给在意的人{{ else }}Preview, save, and pass it on{{ end }}</span>
+      </button>
       <div class="abs-share-row">
         <a class="abs-share-btn" href="https://x.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }}"
            target="_blank" rel="noopener noreferrer" aria-label="Share on X">
@@ -399,7 +412,7 @@
   </div>{{/* .abs-panels */}}
 </div>{{/* .article-bottom-sheet */}}
 
-<script src="{{ "/js/article-bottom-sheet.js" | relURL }}" defer></script>
+<script src="{{ "/js/article-bottom-sheet.js" | relURL }}?v={{ readFile "static/js/article-bottom-sheet.js" | sha256 }}" defer></script>
 
 {{/* Hero cover 2.5D pointer parallax — no WebGL. Self-gates to fine-pointer
      / non-reduced-motion visitors and no-ops when the article has no cover. */}}

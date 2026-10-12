@@ -168,6 +168,15 @@ async function handler(event) {
   const articleTitle = String(payload.articleTitle || "").trim();
   const articleContent = String(payload.articleContent || "").trim();
   const pagePath = String(payload.pagePath || "").trim();
+  // Selection-aware requests (article selection toolbar) carry the reader's
+  // exact selected text plus locally derived context around it. Both are
+  // BOUNDED here and travel ONLY inside the reference-data JSON below (user
+  // role) — never in system instructions. Clients that predate these fields
+  // send neither and get the exact same request shape as before.
+  const hasSelectedText = typeof payload.selectedText === "string" && payload.selectedText.trim().length > 0;
+  const hasSelectionContext = typeof payload.selectionContext === "string" && payload.selectionContext.trim().length > 0;
+  const selectedText = hasSelectedText ? String(payload.selectedText).slice(0, 6000) : "";
+  const selectionContext = hasSelectionContext ? String(payload.selectionContext).slice(0, 5600) : "";
   const conversationHistory = Array.isArray(payload.context) ? payload.context : [];
   // Respect the reader's language — the previous prompt was hardcoded to
   // Chinese, so EN readers got Chinese answers.
@@ -205,6 +214,8 @@ async function handler(event) {
     articleTitle,
     pagePath,
     articleExcerpt: articleContent.slice(0, 5600),
+    ...(hasSelectedText ? { selectedText } : {}),
+    ...(hasSelectionContext ? { selectionContext } : {}),
     relatedArticles: related,
   });
   const messages = [

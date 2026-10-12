@@ -45,6 +45,13 @@
         {{/* ── Primary buttons (always visible) ── */}}
         <div class="share-primary">
 
+            <button type="button" class="share-btn share-btn--card" data-share-trigger
+                aria-label="{{ if eq .Lang "zh" }}生成文章分享卡{{ else }}Create article card{{ end }}"
+                data-title="{{ $title }}" data-url="{{ $pageurl }}" data-desc="{{ $desc }}"
+                data-lang="{{ .Lang }}" onclick="openArticleShareCard(this)">
+                <span>{{ if eq .Lang "zh" }}分享卡片{{ else }}Share card{{ end }}</span>
+            </button>
+
             {{/* Copy Link */}}
             <button
                 aria-label="{{ i18n "share_copy_link" | default "Copy link" }}"
@@ -335,7 +342,8 @@
     }
 
     window.shareCopyLink = function (btn) {
-        var url = window.location.href;
+        var canonical = document.querySelector('link[rel="canonical"]');
+        var url = btn.dataset.url || (canonical && canonical.href) || window.location.href;
         var title = btn.dataset.title || '';
         clipboardCopy(url, function () {
             var orig = btn.dataset.tooltip;
@@ -429,7 +437,7 @@
     window.closeShareSheet = function () {
         var sheet = document.getElementById('share-sheet');
         var backdrop = document.getElementById('share-sheet-backdrop');
-        if (!sheet || !backdrop) return;
+        if (!sheet || !backdrop || !sheet.classList.contains('is-open')) return;
         sheet.classList.remove('is-open');
         backdrop.classList.remove('is-open');
         sheet.setAttribute('aria-hidden', 'true');
@@ -441,146 +449,8 @@
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             window.closeShareSheet();
-            window.closeWechatQR();
         }
     });
 
-    // ── WeChat QR Modal ──────────────────────────────────────────────
-
-    function buildWechatModal() {
-        var backdrop = document.createElement('div');
-        backdrop.id = 'wechat-qr-backdrop';
-        backdrop.className = 'wechat-qr-backdrop';
-        backdrop.setAttribute('aria-hidden', 'true');
-
-        backdrop.innerHTML = [
-            '<div class="wechat-qr-modal" role="dialog" aria-modal="true" aria-label="微信分享">',
-              '<button class="wechat-qr-close" aria-label="关闭" onclick="closeWechatQR()">&#215;</button>',
-              '<div class="wechat-qr-header">',
-                '<svg class="wechat-qr-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
-                  '<path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>',
-                '</svg>',
-                '<span class="wechat-qr-platform">微信 / WeChat</span>',
-              '</div>',
-              '<div class="wechat-qr-body">',
-                '<div class="wechat-qr-img-wrap">',
-                  '<img class="wechat-qr-img" src="" alt="QR Code" width="180" height="180" />',
-                '</div>',
-                '<p class="wechat-qr-hint">用微信「扫一扫」分享</p>',
-                '<p class="wechat-qr-hint-en">Scan with WeChat to share</p>',
-              '</div>',
-              '<div class="wechat-qr-article">',
-                '<p class="wechat-qr-title"></p>',
-                '<p class="wechat-qr-desc"></p>',
-                '<div class="wechat-qr-meta">',
-                  '<div class="wechat-qr-cats"></div>',
-                  '<div class="wechat-qr-tags"></div>',
-                '</div>',
-                '<p class="wechat-qr-source"></p>',
-              '</div>',
-              '<div class="wechat-qr-footer">',
-                '<button class="wechat-qr-copy-btn" onclick="wechatQRCopyLink()">复制链接 / Copy Link</button>',
-              '</div>',
-            '</div>'
-        ].join('');
-
-        backdrop.addEventListener('click', function (e) {
-            if (e.target === backdrop) window.closeWechatQR();
-        });
-
-        document.body.appendChild(backdrop);
-        return backdrop;
-    }
-
-    window.openWechatQR = function (btn) {
-        var title = btn.dataset.title || document.title || '';
-        var url   = btn.dataset.url   || window.location.href;
-        var desc  = btn.dataset.desc  || '';
-
-        var backdrop = document.getElementById('wechat-qr-backdrop') || buildWechatModal();
-
-        // Populate QR image
-        var imgWrap = backdrop.querySelector('.wechat-qr-img-wrap');
-        var img = backdrop.querySelector('.wechat-qr-img');
-        if (imgWrap) imgWrap.classList.remove('loaded');
-        img.src = '';
-        img.onload = function () {
-            if (imgWrap) imgWrap.classList.add('loaded');
-        };
-        img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=000000&bgcolor=ffffff&margin=1&data=' + encodeURIComponent(url);
-
-        var titleEl = backdrop.querySelector('.wechat-qr-title');
-        titleEl.textContent = title;
-
-        var descEl = backdrop.querySelector('.wechat-qr-desc');
-        descEl.textContent = desc || '';
-        descEl.style.display = desc ? '' : 'none';
-
-        // Categories
-        var catsEl = backdrop.querySelector('.wechat-qr-cats');
-        var cats = (btn.dataset.cats || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
-        if (catsEl) {
-            catsEl.innerHTML = '';
-            cats.forEach(function(c) {
-                var span = document.createElement('span');
-                span.className = 'wechat-qr-chip wechat-qr-chip--cat';
-                span.textContent = c;
-                catsEl.appendChild(span);
-            });
-            catsEl.style.display = cats.length ? '' : 'none';
-        }
-
-        // Tags
-        var tagsEl = backdrop.querySelector('.wechat-qr-tags');
-        var tags = (btn.dataset.tags || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
-        if (tagsEl) {
-            tagsEl.innerHTML = '';
-            tags.forEach(function(t) {
-                var span = document.createElement('span');
-                span.className = 'wechat-qr-chip wechat-qr-chip--tag';
-                span.textContent = '# ' + t;
-                tagsEl.appendChild(span);
-            });
-            tagsEl.style.display = tags.length ? '' : 'none';
-        }
-
-        // URL source line
-        var srcEl = backdrop.querySelector('.wechat-qr-source');
-        if (srcEl) srcEl.textContent = url.replace(/^https?:\/\//, '').split('/')[0];
-
-        // Store current URL for copy button
-        backdrop.dataset.url = url;
-
-        // Show
-        backdrop.classList.add('is-open');
-        backdrop.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-
-        var closeBtn = backdrop.querySelector('.wechat-qr-close');
-        if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 50);
-    };
-
-    window.closeWechatQR = function () {
-        var backdrop = document.getElementById('wechat-qr-backdrop');
-        if (!backdrop) return;
-        backdrop.classList.remove('is-open');
-        backdrop.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    };
-
-    window.wechatQRCopyLink = function () {
-        var backdrop = document.getElementById('wechat-qr-backdrop');
-        var url = (backdrop && backdrop.dataset.url) || window.location.href;
-        clipboardCopy(url, function () {
-            var copyBtn = backdrop && backdrop.querySelector('.wechat-qr-copy-btn');
-            if (copyBtn) {
-                var orig = copyBtn.textContent;
-                copyBtn.textContent = '已复制！/ Copied!';
-                setTimeout(function () { copyBtn.textContent = orig; }, 2000);
-            }
-        }, function () {
-            showShareToast('Copy failed — please copy from the address bar');
-        });
-    };
 })();
 </script>
