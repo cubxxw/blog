@@ -34,7 +34,15 @@
     {{- if not $isArticlesLibrary }}
     let menu = document.getElementById('menu')
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        // A missing/default position must not force full-page layout before
+        // first paint. Restore only a real position in a visible scroller.
+        const savedMenuScroll = Number(localStorage.getItem("menu-scroll-position"));
+        if (Number.isFinite(savedMenuScroll) && savedMenuScroll > 0 &&
+            !menu.inert && menu.getAttribute('aria-hidden') !== 'true') {
+            const menuStyle = getComputedStyle(menu);
+            if (menuStyle.display !== 'none' && menuStyle.visibility !== 'hidden' &&
+                menu.scrollWidth > menu.clientWidth) menu.scrollLeft = savedMenuScroll;
+        }
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }

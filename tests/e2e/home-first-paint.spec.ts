@@ -57,3 +57,22 @@ test('Chinese long prose fonts activate when readable prose enters the viewport'
   await expect(fonts).toHaveAttribute('rel', 'stylesheet');
   await expect(page.locator('.post-content')).toBeInViewport();
 });
+
+test('cold navigation does not synchronously write an absent menu scroll position', async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = Object.getOwnPropertyDescriptor(Element.prototype, 'scrollLeft')!;
+    const state = window as typeof window & { menuRestoreWrites: number };
+    state.menuRestoreWrites = 0;
+    Object.defineProperty(Element.prototype, 'scrollLeft', {
+      ...original,
+      set(value: number) {
+        if ((this as Element).id === 'menu') state.menuRestoreWrites++;
+        original.set!.call(this, value);
+      },
+    });
+  });
+  for (const route of ['/', '/zh/growth/', '/zh/ai-agent/']) {
+    await page.goto(route);
+    expect(await page.evaluate(() => (window as typeof window & { menuRestoreWrites: number }).menuRestoreWrites)).toBe(0);
+  }
+});

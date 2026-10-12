@@ -19,7 +19,7 @@
 | [#392](https://github.com/cubxxw/blog/issues/392) | Snapshot plan 缺失仍采集/提交；PSI 把 API 缺少比较参数误当采集失败 | 主代理修 plan 守卫与工作流接线，PSI worker 分开采集与比较状态；还需真实运行/三次计划验收。可选模型缺 structured_output 保持 withheld，不猜鉴权/配额原因 |
 | [#393](https://github.com/cubxxw/blog/issues/393) | 旧路径迁移大部分有效；4 条查询规则无效，Google 侧分诊未验收 | 留存真实 HTTP 证据；`?p=341` 原内容未确认，不盲跳首页。仍需索引分类导出、P1 Inspection、迁移设置和观察 |
 | [#394](https://github.com/cubxxw/blog/issues/394) | 六篇教程存在配置语法、版本字段和动作元数据错误，英文核心解释残留中文 | Pi 修六篇双语技术事实与示例；父代理及独立 reviewer 复验。原搜索实验的 Google 重抓与完整 28 天观察仍待完成 |
-| [#395](https://github.com/cubxxw/blog/issues/395) | 首屏透明动画使 LCP 可能错记导航，掩盖标题可见时间 | 保留并行性能改动，完成 33 个同条件样本；修标题/封面初始透明度，年度候选三次均为 H1、median 1.804s/CLS 0。最终关闭须绑定新 CI 编译与部署字节 |
+| [#395](https://github.com/cubxxw/blog/issues/395) | 云端CLS/加载长尾真实，旧本机条件不能替代验收 | 已有同口径39before+39after、CLS及图片成本改善；LCP未全达标，footer残余修复与最新CI待验，保持OPEN |
 | [#396](https://github.com/cubxxw/blog/issues/396) | 原计划的月档案主题导航已存在；英文摘要条数/日期不准；新文试点缺相关查询与作者 brief | 已修准确性；取消尚未启动的新文/搜索试点，按 `not_planned` 关闭，维护后续观察归 #390；不声称原试点完成 |
 | [#397](https://github.com/cubxxw/blog/issues/397) | Mem0 OSS 查询有效；LangGraph 崩溃恢复与 HTTP 重试说明需校正 | 补 Mem0 相关内链；按固定官方源码校正双语 LangGraph pending checkpoint 恢复与 retry_on 边界，保留开篇/代码/交互；搜索实验仍需重抓和完整窗口 |
 | [#450](https://github.com/cubxxw/blog/issues/450) | 10/11 日报，已被有完整结果的 10/12 日报 #451 替代 | 按严格日期生命周期关闭旧日报；今日 #451 保持开放，历史诊断保留 |

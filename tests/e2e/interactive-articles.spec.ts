@@ -61,13 +61,23 @@ test('pilot article: offline interaction stays local (zh context article)', asyn
   await page.addInitScript(instrumentation);
   await page.goto(PAGES.contextZh);
   await expect(page.locator('blog-context-budget[data-enhanced]').first()).toBeAttached({ timeout: 15_000 });
+  const root = page.locator('blog-context-budget').first();
+  // Enter the reading viewport online: Chinese prose fonts activate there,
+  // so an earlier fonts.ready would describe the unactivated font set.
+  await root.scrollIntoViewIfNeeded();
+  await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'stylesheet');
+  await expect.poll(() => page.evaluate(() => {
+    let registered = false;
+    document.fonts.forEach(face => {
+      if (face.family.replace(/["']/g, '') === 'Noto Serif SC') registered = true;
+    });
+    return registered;
+  })).toBe(true);
   // Issue protocol: freeze the network only AFTER the page's and the
   // components' static resources have loaded (the site's webfont slices load
   // lazily in unicode-range batches).
+  await page.evaluate(() => document.fonts.ready);
   await page.waitForLoadState('networkidle');
-  await page.evaluate(() =>
-    Promise.race([Promise.resolve(document.fonts.ready).then(() => undefined), new Promise((r) => setTimeout(r, 8000))])
-  );
   // Full-content baseline BEFORE any interaction (site startup state is
   // baseline — never claimed as component writes).
   const before = await page.evaluate(() => {
@@ -85,7 +95,6 @@ test('pilot article: offline interaction stays local (zh context article)', asyn
     // excluded; everything else must stay at zero.
     if (!ambientEmbed.test(r.url())) requests.push(r.url());
   });
-  const root = page.locator('blog-context-budget').first();
   await root.locator('[data-ib-scenario="compact"]').click();
   await root.locator('[data-ib-panel="compact"] [data-ib-range]').evaluate((el: HTMLInputElement) => {
     el.value = '20';
