@@ -80,3 +80,13 @@
 实现提交 `be49de399269e9ade6aa4783e316b555d3d10c0e` 推送后，生产页面出现新Launchpad及fingerprinted BEAR样式。`bear-agent`真实模型调用返回200；随后生产浏览器任务完成2轮模型请求、实际公开文章检索与打开阅读器，并返回文章链接。`bear-media`返回200、not_configured，未读取私人相册。独立阅读器重测读取真实公开正文成功，用时8.328秒。
 
 正式证据：[真实Agent回执](assets/bear-os-2026-10-13/live-agent.json)、[线上任务截图](assets/bear-os-2026-10-13/live-agent.png)、[冒烟摘要](assets/bear-os-2026-10-13/live-smoke.json)。完整线上21项脚本曾在文章加载期限失败（此前6项通过）；单独重测成功支持网络时延的推断，不宣称整套线上通过。本地Netlify dev的21项仍全部通过。刷新验收脚本已使用DOMContentLoaded并继续等待工作区ready，避免无关媒体load阻塞导航断言。
+
+## CI扩大覆盖后的修复
+
+[首次生产CI](https://github.com/cubxxw/blog/actions/runs/38422192434) 完成生产构建，但旧浏览器集361通过、18按设备跳过、5失败，因此不认定该run为绿灯。3个失败指向已经退役的osx控件，测试改为当前OS语义并保留44px、快捷键、真实product payload、关闭/恢复等行为。2个失败暴露知识空间加载中Escape无法退出，已用generation、独立mount host和迟到dispose修复，并新增立即退出重开回归。
+
+更强的手机测试又发现联系窗口初次渲染递归写draft，使后续应用无法渲染；初次挂载改为只更新链接，输入时才保存草稿。全站搜索bootstrap与palette现在把BEAR ready时的快捷键交给OS，已打开的全站搜索保留关闭路径。知识空间视图切换器在文档流占位，返回按钮不会被遮挡。
+
+最新Netlify dev：原21项回归再次全过；P1/P2加全站搜索定向集23通过、7个已有设备限定跳过、0失败，手机实际打开全部11应用且浏览器异常为空。见 [定向浏览器日志](assets/bear-os-2026-10-13/p1-header-search.log)。123项Node再次全过；独立取消竞态复核覆盖import/mount期间退出重开、切BEAR、迟到拒绝与cached退出。当前提交CI仍需读回，不用这组本地结果替代生产门禁。
+
+已打开的全局搜索优先处理事件；OS同时检查defaultPrevented与search-palette-open，覆盖监听器两种注册顺序。Projects原来省略全局搜索markup但Lab仍显示搜索按钮，现增加仅Projects的互斥partial。新增桌面/手机真实弹层优先级回归通过；最终独立review无未解决P0/P1或已确认P2。

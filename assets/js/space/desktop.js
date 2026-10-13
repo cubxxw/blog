@@ -26,7 +26,7 @@ function mountDesktop(root) {
   const dialogFocus = new WeakMap();
   const menu = root.querySelector('[data-space-menu-trigger]');
   const menuPanel = root.querySelector('.space-menu');
-  let lab, knowledge, knowledgePending = false;
+  let lab, knowledge, knowledgePending = false, knowledgeGeneration = 0;
   const icon = app => root.querySelector(`[data-space-dock] [data-open="${app}"] .space-icon`)?.outerHTML || '';
   function notify(message) {
     const toast = root.querySelector('[data-space-toast]'); toast.textContent = message; toast.hidden = false;
@@ -334,6 +334,10 @@ function mountDesktop(root) {
   layer.addEventListener('pointerup',()=>finishDrag());layer.addEventListener('pointercancel',()=>finishDrag(true));
   document.addEventListener('pointerdown',event=>{if(!event.target.closest('.space-menu,[data-space-menu-trigger]'))closeMenu();});
   document.addEventListener('keydown',event=>{
+    if(event.defaultPrevented||document.body.classList.contains('search-palette-open'))return;
+    if(event.key==='Escape'&&productRoot.dataset.productView==='lab'&&location.hash==='#knowledge'){
+      event.preventDefault();setView('lab');lab.querySelector('[data-bks-enter]')?.focus({preventScroll:true});return;
+    }
     if(productRoot.dataset.productView!=='bear')return;
     if(event.isComposing)return;
     const editing=isEditableTarget(event.target);
@@ -356,6 +360,8 @@ function mountDesktop(root) {
   window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{finishDrag(true);update({type:'viewport'});},100);});
   window.addEventListener('storage',event=>{if(event.key===storageKey&&event.newValue){const localEditing=root.contains(document.activeElement)&&isEditableTarget(document.activeElement);if(localEditing){notify(t('另一个标签页更新了空间。刷新后可以载入。','Another tab updated this space. Reload to load it.'));return;}state=createWorkspace(event.newValue,stateViewport());const note=nodes.get('notes');if(note)note.rendered=false;const contact=nodes.get('contact');if(contact)contact.rendered=false;render();}});
   function setView(view,writeHash=true){
+    knowledgeGeneration++;knowledgePending=false;
+    delete productRoot.dataset.knowledgeView;
     const isLab=view==='lab';
     if(isLab){closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);}
     if(isLab&&!lab){productRoot.append(productRoot.querySelector('[data-product-lab-template]').content.cloneNode(true));lab=productRoot.querySelector('[data-product-panel="lab"]');lab.addEventListener('click',event=>{if(event.target.closest('[data-bks-enter]'))openKnowledge();});}
@@ -369,13 +375,25 @@ function mountDesktop(root) {
   }
   async function openKnowledge(){
     if(knowledgePending)return;
-    setView('lab',false);const host=lab.querySelector('[data-bks-host]');host.hidden=false;lab.querySelectorAll('.builds-main,.builds-footer,.builds-hero,[data-bks-entry]').forEach(el=>el.hidden=true);
+    setView('lab',false);let host=lab.querySelector('[data-bks-host]');host.hidden=false;lab.querySelectorAll('.builds-main,.builds-footer,.builds-hero,[data-bks-entry]').forEach(el=>el.hidden=true);
     history.replaceState(null,'',location.pathname+location.search+'#knowledge');
+    productRoot.dataset.knowledgeView='open';
     if(knowledge)return;
+    // Each pending mount owns its host. A cancelled mount can never clear a
+    // newer one if the visitor immediately leaves and reopens the space.
+    const target=host.cloneNode(false);host.replaceWith(target);host=target;
+    const generation=knowledgeGeneration;
+    const current=()=>generation===knowledgeGeneration&&host.isConnected&&location.hash==='#knowledge'&&productRoot.dataset.productView==='lab';
     knowledgePending=true;
-    try{const config=JSON.parse(productRoot.querySelector('[data-space-knowledge]').textContent);const module=await import(config.module);knowledge=await module.mountKnowledgeSpace(host,{nodes:config.nodes,isZh:zh,onExit:()=>{host.hidden=true;lab.querySelectorAll('.builds-main,.builds-footer,.builds-hero,[data-bks-entry]').forEach(el=>el.hidden=false);history.replaceState(null,'',location.pathname+location.search+'#product-lab');}});}
-    catch{host.innerHTML=`<p class="space-app">${t('知识空间暂时无法加载。','The knowledge space could not load.')}</p><button data-product-view-button="lab">${t('返回 Product Lab','Back to Product Lab')}</button>`;}
-    finally{knowledgePending=false;}
+    try{
+      const config=JSON.parse(productRoot.querySelector('[data-space-knowledge]').textContent);
+      const module=await import(config.module);if(!current())return;
+      const mounted=await module.mountKnowledgeSpace(host,{nodes:config.nodes,isZh:zh,onExit:()=>{if(host.isConnected&&location.hash==='#knowledge'&&productRoot.dataset.productView==='lab')setView('lab');}});
+      if(!current()){mounted?.dispose?.();return;}
+      knowledge=mounted;
+    }
+    catch{if(current())host.innerHTML=`<p class="space-app">${t('知识空间暂时无法加载。','The knowledge space could not load.')}</p><button data-product-view-button="lab">${t('返回 Product Lab','Back to Product Lab')}</button>`;}
+    finally{if(generation===knowledgeGeneration)knowledgePending=false;}
   }
   productRoot.addEventListener('click',event=>{const b=event.target.closest('[data-product-view-button]');if(b)setView(b.dataset.productViewButton);});
   function applyHash(){

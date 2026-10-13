@@ -17,6 +17,7 @@ body.products-view-bear .main { margin: 0; padding: 0; width: 100%; max-width: n
 .space { --sp-ink: #29382f; --sp-muted: #657165; --sp-paper: #faf8f2; --sp-surface: #f0eee5; --sp-line: #35463622; --sp-chrome: #f7f5edee; --sp-glass: #f4f3e7ba; --sp-focus: #46775e; --sp-accent: #3c6953; --sp-soft: #e7ecdf; --sp-shadow: 0 28px 70px -24px #203b3d60, 0 5px 16px #243c3b18; position: fixed; inset: 0; isolation: isolate; overflow: hidden; color: var(--sp-ink); font: 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-optical-sizing: auto; text-align: left; color-scheme: light; }
 .space[data-theme="dark"] { --sp-ink: #e2e9e2; --sp-muted: #adbaae; --sp-paper: #202d28; --sp-surface: #1b2622; --sp-line: #d7ead22b; --sp-chrome: #293931f5; --sp-glass: #283a32db; --sp-focus: #b6d5ab; --sp-accent: #b3d3a9; --sp-soft: #34463d; --sp-shadow: 0 28px 90px -20px #081818ab, 0 5px 14px #0003; color-scheme: dark; }
 .space *, .space *::before, .space *::after { box-sizing: border-box; }
+.product-space[data-knowledge-view="open"] > .product-view-switch { position: sticky; top: 72px; right: auto; margin: 12px 24px 12px auto; width: max-content; }
 .space button, .space input, .space textarea, .space select { font: inherit; }
 .space button { color: inherit; cursor: pointer; border: 0; background: none; border-radius: 6px; padding: 0; touch-action: manipulation; }
 .space button:active { filter: brightness(.94); }

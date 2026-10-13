@@ -87,3 +87,6 @@
 {{ partial "wechat-contact.html" . }}
 {{- end }}
 {{- end }}
+{{- if $isProjectsLanding }}
+{{ partial "search-palette.html" . }}
+{{- end }}

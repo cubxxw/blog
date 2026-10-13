@@ -1,0 +1,36 @@
+
+Running 30 tests using 1 worker
+
+  ✓   1 [desktop] › tests/e2e/header-search.spec.ts:4:7 › Header Search Interaction › desktop - search panel opens, accepts input, closes with Esc (1.2s)
+  -   2 [desktop] › tests/e2e/header-search.spec.ts:27:7 › Header Search Interaction › mobile - search panel opens and closes with Esc
+  ✓   3 [desktop] › tests/e2e/header-search.spec.ts:47:7 › Header Search Interaction › desktop - arrow keys select results and Enter opens the selected article (1.1s)
+  ✓   4 [desktop] › tests/e2e/header-search.spec.ts:78:7 › Header Search Interaction › desktop - Control+Enter asks AI without opening a result (1.7s)
+  ✓   5 [desktop] › tests/e2e/header-search.spec.ts:99:7 › Header Search Interaction › Chinese palette exposes localized names and combobox semantics (287ms)
+  ✓   6 [desktop] › tests/e2e/p1-p2-ux.spec.ts:4:7 › P1-P2 UX regression › newsletter validation exposes and clears an accessible error (194ms)
+  ✓   7 [desktop] › tests/e2e/p1-p2-ux.spec.ts:21:7 › P1-P2 UX regression › contact dialog preloads its QR, traps focus, and restores the trigger (641ms)
+  -   8 [desktop] › tests/e2e/p1-p2-ux.spec.ts:46:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact
+  -   9 [desktop] › tests/e2e/p1-p2-ux.spec.ts:62:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target
+  ✓  10 [desktop] › tests/e2e/p1-p2-ux.spec.ts:113:7 › P1-P2 UX regression › products defaults to BEAR OS and switches to Product Lab and back (297ms)
+  ✓  11 [desktop] › tests/e2e/p1-p2-ux.spec.ts:142:7 › P1-P2 UX regression › BEAR OS product search uses workspace search and restores the selected product (260ms)
+  ✓  12 [desktop] › tests/e2e/p1-p2-ux.spec.ts:188:7 › P1-P2 UX regression › Product Lab can enter BEAR knowledge space and return without leaving lab (314ms)
+  ✓  13 [desktop] › tests/e2e/p1-p2-ux.spec.ts:210:7 › P1-P2 UX regression › an already open global search owns shortcuts above the BEAR workspace (442ms)
+  ✓  14 [desktop] › tests/e2e/p1-p2-ux.spec.ts:228:7 › P1-P2 UX regression › knowledge space stays closed when the reader exits before its module loads (1.0s)
+  ✓  15 [desktop] › tests/e2e/p1-p2-ux.spec.ts:244:7 › P1-P2 UX regression › a pending knowledge mount cannot clear an immediate reopen or a later BEAR view (1.4s)
+  -  16 [mobile] › tests/e2e/header-search.spec.ts:4:7 › Header Search Interaction › desktop - search panel opens, accepts input, closes with Esc
+  ✓  17 [mobile] › tests/e2e/header-search.spec.ts:27:7 › Header Search Interaction › mobile - search panel opens and closes with Esc (863ms)
+  -  18 [mobile] › tests/e2e/header-search.spec.ts:47:7 › Header Search Interaction › desktop - arrow keys select results and Enter opens the selected article
+  -  19 [mobile] › tests/e2e/header-search.spec.ts:78:7 › Header Search Interaction › desktop - Control+Enter asks AI without opening a result
+  -  20 [mobile] › tests/e2e/header-search.spec.ts:99:7 › Header Search Interaction › Chinese palette exposes localized names and combobox semantics
+  ✓  21 [mobile] › tests/e2e/p1-p2-ux.spec.ts:4:7 › P1-P2 UX regression › newsletter validation exposes and clears an accessible error (202ms)
+  ✓  22 [mobile] › tests/e2e/p1-p2-ux.spec.ts:21:7 › P1-P2 UX regression › contact dialog preloads its QR, traps focus, and restores the trigger (286ms)
+  ✓  23 [mobile] › tests/e2e/p1-p2-ux.spec.ts:46:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact (134ms)
+  ✓  24 [mobile] › tests/e2e/p1-p2-ux.spec.ts:62:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target (1.1s)
+  ✓  25 [mobile] › tests/e2e/p1-p2-ux.spec.ts:113:7 › P1-P2 UX regression › products defaults to BEAR OS and switches to Product Lab and back (253ms)
+  ✓  26 [mobile] › tests/e2e/p1-p2-ux.spec.ts:142:7 › P1-P2 UX regression › BEAR OS product search uses workspace search and restores the selected product (263ms)
+  ✓  27 [mobile] › tests/e2e/p1-p2-ux.spec.ts:188:7 › P1-P2 UX regression › Product Lab can enter BEAR knowledge space and return without leaving lab (266ms)
+  ✓  28 [mobile] › tests/e2e/p1-p2-ux.spec.ts:210:7 › P1-P2 UX regression › an already open global search owns shortcuts above the BEAR workspace (436ms)
+  ✓  29 [mobile] › tests/e2e/p1-p2-ux.spec.ts:228:7 › P1-P2 UX regression › knowledge space stays closed when the reader exits before its module loads (1.0s)
+  ✓  30 [mobile] › tests/e2e/p1-p2-ux.spec.ts:244:7 › P1-P2 UX regression › a pending knowledge mount cannot clear an immediate reopen or a later BEAR view (1.2s)
+
+  7 skipped
+  23 passed (16.4s)

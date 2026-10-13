@@ -61,27 +61,53 @@ test.describe('P1-P2 UX regression', () => {
 
   test('mobile product workspace exposes 44px actions and a close target', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'mobile', 'mobile only');
-    await page.addInitScript(() => sessionStorage.setItem('osx-booted', '1'));
+    const errors: string[] = [];
+    page.on('pageerror', error => errors.push(error.message));
     await page.goto('/zh/projects/');
-    await expect(page.locator('body')).toHaveCSS('overflow', 'auto');
+    const workspace = page.locator('[data-bear-workspace]');
+    await expect(workspace).toHaveAttribute('data-ready', 'true');
+    await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
+    await expect(workspace.locator('[data-space-dock] [data-mobile-destination]:visible')).toHaveCount(5);
 
-    const beforeTheme = await page.locator('body').evaluate((body) => body.classList.contains('dark'));
-    await page.locator('[data-osx-theme]').click();
-    await expect.poll(() => page.locator('body').evaluate((body) => body.classList.contains('dark'))).toBe(!beforeTheme);
+    const allApps = workspace.locator('.space-menubar [data-space-launchpad-trigger]');
+    const launchpad = workspace.locator('[data-space-launchpad]');
+    await allApps.click();
+    await expect(launchpad.locator('[data-launchpad-app]')).toHaveCount(11);
+    await launchpad.locator('[data-launchpad-app="settings"]').click();
+    const settings = workspace.locator('[data-space-window="settings"]');
+    await expect(settings).toBeVisible();
+    const nextTheme = await workspace.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    await settings.locator(`[data-set-theme="${nextTheme}"]`).click();
+    await expect(workspace).toHaveAttribute('data-theme', nextTheme);
+    await expect(settings.locator(`[data-set-theme="${nextTheme}"]`)).toHaveAttribute('aria-pressed', 'true');
+    await expect.poll(() => page.evaluate(() => (
+      window as unknown as { BearSpace: { snapshot: () => { theme: string } } }
+    ).BearSpace.snapshot().theme)).toBe(nextTheme);
 
-    await page.locator('.osx-widget--proc [data-osx-select]').first().click();
-    const primary = page.locator('[data-osx-case="talent-signal"] [data-osx-open]');
-    await expect.poll(async () => (await primary.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
-    await primary.click();
-    const close = page.locator('.osx-window--open .osx-window__close');
-    await expect(close).toBeVisible();
-    // Opening scales the window briefly; measure the settled hit targets.
-    await expect.poll(async () => (await close.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44);
-    await expect.poll(async () => (await close.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
+    for (const action of ['close', 'minimize', 'maximize', 'arrange']) {
+      const control = settings.locator(`[data-window-action="${action}"]`);
+      await expect(control).toBeVisible();
+      await expect.poll(async () => (await control.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44);
+      await expect.poll(async () => (await control.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
+    }
 
-    await close.click();
-    await expect(page.locator('[data-osx-case="talent-signal"]')).toBeVisible();
+    for (const app of ['welcome', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings']) {
+      await allApps.click();
+      await expect(launchpad).toBeVisible();
+      await launchpad.locator(`[data-launchpad-app="${app}"]`).click();
+      await expect(launchpad).toBeHidden();
+      await expect(workspace.locator(`[data-space-window="${app}"]`)).toBeVisible();
+      if(app === 'contact') {
+        await page.locator('[data-message-draft]').fill('A private contact draft.');
+        await expect(page.locator('[data-contact-email]')).toHaveAttribute('href',/A%20private%20contact%20draft/);
+      }
+    }
+    await settings.locator('[data-window-action="close"]').click();
+    await expect(settings).toHaveCount(0);
+    await expect(workspace.locator('[data-space-window][data-active="true"]')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
+    expect(errors).toEqual([]);
   });
 
   test('products defaults to BEAR OS and switches to Product Lab and back', async ({ page }) => {
@@ -113,25 +139,50 @@ test.describe('P1-P2 UX regression', () => {
     await expect(page).not.toHaveURL(/#product-lab$/);
   });
 
-  test('BEAR OS product search keeps the global search shortcut separate', async ({ page }) => {
+  test('BEAR OS product search uses workspace search and restores the selected product', async ({ page }) => {
     await page.goto('/zh/projects/');
-    await page.keyboard.press('p');
-    const dialog = page.getByRole('dialog', { name: '搜索产品' });
+    const workspace = page.locator('[data-bear-workspace]');
+    await expect(workspace).toHaveAttribute('data-ready', 'true');
+    const searchTrigger = workspace.locator('.space-menubar [data-space-search-trigger]');
+    await expect(searchTrigger).toBeVisible();
+    await searchTrigger.focus();
+    await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
+    const dialog = page.getByRole('dialog', { name: '搜索工作区' });
     await expect(dialog).toBeVisible();
-
-    await page.locator('[data-osx-command-input]').fill('solo');
-    await expect(page.locator('[data-osx-command-item]:visible')).toHaveCount(1);
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    await expect(page.locator('[data-osx-case="solo-compass"]')).toBeVisible();
-    await expect(page.locator('[data-osx-select="solo-compass"]')).toHaveAttribute('aria-pressed', 'true');
-    await expect(dialog).toBeHidden();
-    await expect(page).toHaveURL(/#focus-solo-compass$/);
-    await page.locator('[data-osx-case="solo-compass"] [data-osx-open]').click();
-    await expect(page.locator('[data-osx-window="solo-compass"]')).toBeVisible();
+    await expect(dialog.locator('[data-space-search-input]')).toBeFocused();
     await page.keyboard.press('Escape');
-    await expect(page.locator('[data-osx-window="solo-compass"]')).toBeHidden();
-    await expect(page.locator('[data-osx-case="solo-compass"]')).toBeVisible();
+    await expect(dialog).toBeHidden();
+    await expect(searchTrigger).toBeFocused();
+    await expect(workspace.locator('[data-space-window="welcome"]')).toBeVisible();
+
+    await searchTrigger.click();
+    await expect(dialog).toBeVisible();
+    await dialog.locator('[data-space-search-input]').fill('solo');
+    const result = dialog.locator('[data-search-kind="product"][data-search-payload="solo-compass"]');
+    await expect(result).toHaveCount(1);
+    await expect(result).toContainText('Solo Compass');
+    await page.keyboard.press('ArrowDown');
+    await expect(result).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(dialog).toBeHidden();
+    const product = workspace.locator('[data-space-window="products"]');
+    await expect(product).toBeVisible();
+    await expect(product.locator('.space-product h2')).toHaveText('Solo Compass');
+    await expect(product.locator('[data-select-product="solo-compass"]')).toHaveAttribute('aria-pressed', 'true');
+    const productState = () => page.evaluate(() => {
+      const state = (window as unknown as {
+        BearSpace: { snapshot: () => { windows: Array<{ app: string; payload: string; minimized: boolean }> } };
+      }).BearSpace.snapshot().windows.find((win) => win.app === 'products');
+      return { payload: state?.payload, minimized: state?.minimized };
+    });
+    await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: false });
+    await page.keyboard.press('Escape');
+    await expect(product).toBeHidden();
+    await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: true });
+    await workspace.locator('[data-space-dock] [data-open="products"]').click();
+    await expect(product).toBeVisible();
+    await expect(product.locator('.space-product h2')).toHaveText('Solo Compass');
+    await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: false });
   });
 
   test('Product Lab can enter BEAR knowledge space and return without leaving lab', async ({ page }) => {
@@ -156,6 +207,24 @@ test.describe('P1-P2 UX regression', () => {
     await expect(page.getByRole('button', { name: '进入知识空间' })).toBeVisible();
   });
 
+  test('an already open global search owns shortcuts above the BEAR workspace', async ({ page }) => {
+    await page.goto('/zh/projects/');
+    const globalSearch=page.locator('#search-command-palette');
+    const workspaceSearch=page.locator('[data-space-search]');
+    for(const key of [process.platform==='darwin'?'Meta+k':'Control+k','Escape']) {
+      await page.getByRole('button',{name:'Product Lab',exact:true}).click();
+      await page.locator('[data-search-trigger="nav"]').click();
+      await expect(globalSearch).toBeVisible();
+      await page.evaluate(()=>{location.hash='';});
+      await expect(page.locator('[data-bear-workspace]')).toBeVisible();
+      await globalSearch.locator('.search-palette__close').focus();
+      await page.keyboard.press(key);
+      await expect(globalSearch).toBeHidden();
+      await expect(workspaceSearch).toBeHidden();
+      await expect(page.locator('[data-space-window="welcome"]')).toBeVisible();
+    }
+  });
+
   test('knowledge space stays closed when the reader exits before its module loads', async ({ page }) => {
     await page.route('**/bear-knowledge-space*.js', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 500));
@@ -170,5 +239,28 @@ test.describe('P1-P2 UX regression', () => {
     await expect(page.locator('[data-bks-host]')).toBeHidden();
     await page.getByRole('button', { name: '进入知识空间' }).click();
     await expect(page.locator('[data-bks-host] .bks__chip').first()).toBeVisible();
+  });
+
+  test('a pending knowledge mount cannot clear an immediate reopen or a later BEAR view', async ({ page }) => {
+    await page.route('**/bear-knowledge-space*.js', async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await route.fallback();
+    });
+    await page.goto('/zh/projects/');
+    await page.getByRole('button', { name: 'Product Lab', exact: true }).click();
+    await page.getByRole('button', { name: '进入知识空间' }).click();
+    await page.keyboard.press('Escape');
+    await expect(page).toHaveURL(/#product-lab$/);
+    await page.getByRole('button', { name: '进入知识空间' }).click();
+    await expect(page.locator('[data-bks-host] .bks__chip').first()).toBeVisible();
+    await expect(page.locator('[data-bks-host]')).toHaveCount(1);
+    await page.locator('.bks__back').click();
+    await expect(page).toHaveURL(/#product-lab$/);
+    await page.getByRole('button', { name: '进入知识空间' }).click();
+    await expect(page.locator('[data-bks-host] .bks__chip').first()).toBeVisible();
+    await page.getByRole('button', { name: 'BEAR OS', exact: true }).click();
+    await expect(page.locator('[data-bear-workspace]')).toBeVisible();
+    await expect(page.locator('[data-bks-host]')).toBeHidden();
+    await expect(page).not.toHaveURL(/#knowledge$/);
   });
 });

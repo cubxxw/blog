@@ -116,11 +116,12 @@ export function mountApps({ root, catalog, execute, getState, updateNote, notify
     const links = catalog.links;
     host.innerHTML = `<div class="space-app space-contact"><p class="space-eyebrow">SAY HELLO</p><h2>${t('有想法，就聊聊。','Have a thought? Say hello.')}</h2><p style="font-size:12px;color:var(--sp-muted)">${t('产品反馈、文章讨论，或者分享一段路上的故事。','Product feedback, a conversation about writing, or a story from the road.')}</p><div class="space-contact-links">${[['github','GitHub'],['x','X'],['zhihu','知乎'],['linkedin','LinkedIn'],['bilibili','Bilibili'],['youtube','YouTube'],['instagram','Instagram'],['polarsteps','Polarsteps']].map(([key,name]) => link(links[key],name)).join('')}</div><h3>${t('先写一张便笺','Write a little note')}</h3><textarea data-message-draft maxlength="6000" aria-label="${t('留言草稿','Message draft')}" placeholder="${t('想对我说什么？','What would you like to tell me?')}"></textarea><div class="space-contact__actions"><a class="space-button" data-contact-email>${t('通过邮件发给我','Send by email')} ↗</a><a data-contact-github target="_blank" rel="noopener noreferrer">${t('在 GitHub 公开留言','Leave a public GitHub message')} ↗</a>${link(links.whatsapp,'WhatsApp')}</div><p class="space-contact__hint">${t('草稿保存在你的浏览器。选择渠道后，由你确认发送；这里不会代发，也不会显示虚假的送达状态。','The draft stays in your browser. Choose a channel and confirm sending there.')}</p>${button('agent',t('想先了解我？和 AI 向导聊聊','Meet me through the AI guide'))}</div>`;
     const draft = host.querySelector('[data-message-draft]'); draft.value = getState().draft;
-    const sync = () => {
-      execute('draft', { text: draft.value });
+    const syncLinks = () => {
       host.querySelector('[data-contact-email]').href = `mailto:${links.email}?subject=${encodeURIComponent('Hello from BEAR Space')}&body=${encodeURIComponent(draft.value)}`;
       host.querySelector('[data-contact-github]').href = `https://github.com/cubxxw/blog/issues/new?title=${encodeURIComponent('Hello from BEAR Space')}&body=${encodeURIComponent(draft.value)}`;
-    }; draft.addEventListener('input', sync); sync();
+    };
+    draft.addEventListener('input', () => { execute('draft', { text: draft.value }); syncLinks(); });
+    syncLinks();
   }
   function showTerminal(host) {
     host.innerHTML = `<div class="space-terminal"><p>BEAR / WORKSPACE SHELL<br>${t('输入 help 看看能做什么。run &lt;命令&gt; 可调用已连接的本地 Linux 沙盒。','Type help. Use run &lt;command&gt; for the connected local Linux sandbox.')}</p><div class="space-terminal__output" data-terminal-output></div><form><span>guest@bear ~ %</span><input data-terminal-input aria-label="${t('终端命令','Terminal command')}" autocomplete="off" spellcheck="false"></form></div>`;

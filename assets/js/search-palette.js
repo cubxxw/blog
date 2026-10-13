@@ -670,6 +670,7 @@
 
   // Keyboard shortcuts and dialog focus management.
   document.addEventListener('keydown', function(e) {
+    if(!isOpen&&document.querySelector('[data-product-space][data-product-view="bear"] [data-bear-workspace][data-ready="true"]'))return;
     const key = e.key.toLowerCase();
     const targetIsField = /input|textarea|select/i.test(e.target.tagName) || e.target.isContentEditable;
     if ((e.metaKey || e.ctrlKey) && key === 'k') {
