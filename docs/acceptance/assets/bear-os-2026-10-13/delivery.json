@@ -1,0 +1,47 @@
+{
+  "implementationCommit": "f1b2d966855985a25dc2b0b1d312afbb506ebc04",
+  "qualityCI": {
+    "url": "https://github.com/cubxxw/blog/actions/runs/38427505649",
+    "conclusion": "success",
+    "browserQualityPassed": 48,
+    "legacyPassed": 370,
+    "interactivePassed": 573,
+    "bearBoundaryTestsPassed": 123,
+    "verifiedDeploymentFiles": 3694
+  },
+  "lighthouse": {
+    "url": "https://github.com/cubxxw/blog/actions/runs/38427505311",
+    "conclusion": "success"
+  },
+  "productionSmoke": {
+    "time": "2026-10-13T16:09:24.370Z",
+    "implementationCommit": "f1b2d966855985a25dc2b0b1d312afbb506ebc04",
+    "site": "https://cubxxw.com/zh/projects/",
+    "allApps": [
+      "welcome",
+      "products",
+      "reader",
+      "photos",
+      "map",
+      "books",
+      "notes",
+      "contact",
+      "terminal",
+      "agent",
+      "settings"
+    ],
+    "shortcut": "Control+k opens workspace search",
+    "pendingKnowledgeExit": "Escape returns to Product Lab",
+    "errors": []
+  },
+  "limitations": [
+    "Immich public album allowlist is not configured",
+    "Real Docker execution has not been accepted",
+    "The complete live 21-case suite had a network timeout; isolated reading and latest critical flows passed"
+  ],
+  "resources": {
+    "ownedDevServersStopped": true,
+    "worktreeArchived": true,
+    "unrelatedOutputPreserved": true
+  }
+}

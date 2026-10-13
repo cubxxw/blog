@@ -6,7 +6,7 @@
 
 定向 Node 测试 **123/123** 通过；既有 AI 相关回归 **23/23**、CI workflow 回归 **5/5** 与 `products:check` 通过；最终 Netlify dev 浏览器验收 **21/21** 通过，`browser-acceptance.json` 的 `errors` 为空。已确认的独立 review P1/P2 已修复并复核关闭。
 
-真实模型已在生产站点完成两轮请求与实际公开目录工具调用；Immich 公开相册尚未配置，真实 Docker 执行未验收。最新生产 artifact 和最终线上交付由当前提交 CI 验证。
+真实模型已在生产站点完成两轮请求与实际公开目录工具调用；Immich 公开相册尚未配置，真实 Docker 执行未验收。实现提交 `f1b2d966` 的完整CI与Lighthouse均通过；生产页面CSS匹配、手机11应用及关键交互已实测。
 
 ## Node 证据
 
@@ -61,7 +61,7 @@
 | 真实 Immich 相册 | 未配置公开 allowlist；只验证服务端适配、mock 上游与既有公开博客照片，未读取私人相册 |
 | 真实模型网络 | 生产API返回200；真实浏览器完成2轮模型请求、search_writing与open_app，任务completed，无浏览器异常；见live-agent.json |
 | 真实 Docker | 未完成运行、文件持久化或并发 live 验收；运行时生命周期通过 mock Docker 边界与真实 HTTP/fs 验证 |
-| 最终生产/线上部署 | 等待当前提交 CI 的 artifact 与交付读回，本文不声明已部署 |
+| 最终生产/线上部署 | 实现提交f1b2d966完整CI通过；3694个部署文件已验证，线上CSS匹配与关键交互通过；见delivery.json |
 | 长期个人 Agent 服务 | 登录、跨设备同步、访客独立云端沙盒和后台可恢复任务未接入 |
 
 运行时第一次 RED 测试使用 Node `t.mock.method` 包装 `execFile`，旧的 `promisify.custom` 越过 stub，曾意外发起真实 Docker CLI `inspect`/`run` 尝试。没有成功启动证据；该测试及对应 CLI 进程已退出，未执行 Docker stop/remove 或停止其他服务。之后改为测试进程内显式替换 promise 边界，并在导入运行时前断言替换已生效。后续 RED、GREEN 与上述最终计数均来自隔离 fixture，不能把第一次 CLI 尝试算作 Docker live 通过。
@@ -87,6 +87,12 @@
 
 更强的手机测试又发现联系窗口初次渲染递归写draft，使后续应用无法渲染；初次挂载改为只更新链接，输入时才保存草稿。全站搜索bootstrap与palette现在把BEAR ready时的快捷键交给OS，已打开的全站搜索保留关闭路径。知识空间视图切换器在文档流占位，返回按钮不会被遮挡。
 
-最新Netlify dev：原21项回归再次全过；P1/P2加全站搜索定向集23通过、7个已有设备限定跳过、0失败，手机实际打开全部11应用且浏览器异常为空。见 [定向浏览器日志](assets/bear-os-2026-10-13/p1-header-search.log)。123项Node再次全过；独立取消竞态复核覆盖import/mount期间退出重开、切BEAR、迟到拒绝与cached退出。当前提交CI仍需读回，不用这组本地结果替代生产门禁。
+最新Netlify dev：原21项回归再次全过；P1/P2加全站搜索定向集23通过、7个已有设备限定跳过、0失败，手机实际打开全部11应用且浏览器异常为空。见 [定向浏览器日志](assets/bear-os-2026-10-13/p1-header-search.log)。123项Node再次全过；独立取消竞态复核覆盖import/mount期间退出重开、切BEAR、迟到拒绝与cached退出。随后读回实现提交f1b2d966的完整CI，全部通过；这组本地结果不替代生产门禁。
 
 已打开的全局搜索优先处理事件；OS同时检查defaultPrevented与search-palette-open，覆盖监听器两种注册顺序。Projects原来省略全局搜索markup但Lab仍显示搜索按钮，现增加仅Projects的互斥partial。新增桌面/手机真实弹层优先级回归通过；最终独立review无未解决P0/P1或已确认P2。
+
+## 最终交付（2026-10-14上海时间）
+
+[实现提交f1b2d966](https://github.com/cubxxw/blog/commit/f1b2d966855985a25dc2b0b1d312afbb506ebc04) 已推送main。[完整CI](https://github.com/cubxxw/blog/actions/runs/38427505649) 全过：48项站点质量、370项全站回归、573项三引擎交互、123项BEAR边界测试，验证3694个部署文件。[Lighthouse](https://github.com/cubxxw/blog/actions/runs/38427505311) 同样通过。release/followups在当前shadow迁移配置下按条件跳过，生产继续由Netlify原生Git构建发布。
+
+最新生产冒烟验证11个手机应用、Ctrl+K和加载中知识空间Escape退出，无浏览器异常；样式fingerprint与源码构建匹配。正式结果见 [delivery.json](assets/bear-os-2026-10-13/delivery.json)。真实模型已完成两轮及实际目录工具；Immich公开相册未配置与Docker live未验收的限制继续保留。独立工作树已归档，本任务开发服务已关闭，临时产物在正式证据保存后回收。
