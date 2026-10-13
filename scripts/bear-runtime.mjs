@@ -22,20 +22,56 @@ export function validateCommand(value) {
 async function docker(args, options = {}) {
   return exec('docker',args,{timeout:20000,maxBuffer:150000,...options});
 }
-async function ensureContainer() {
-  let info;
-  try { info = JSON.parse((await docker(['inspect',container])).stdout)[0]; } catch { /* No owned runtime yet. */ }
+async function inspectContainer() {
+  try { return JSON.parse((await docker(['inspect',container])).stdout)[0]; }
+  catch { return null; }
+}
+async function ensureContainer(acquisition) {
+  const info=await inspectContainer();
   if (info) {
     if (info.Config?.Labels?.['bear.workspace'] !== 'local-v1') throw new Error('Container name belongs to another runtime');
-    if (!info.State.Running) await docker(['start',container]);
+    if(typeof info.Id!=='string'||!info.Id)throw new Error('Container identity is unavailable');
+    acquisition.id=info.Id;
+    if (!info.State.Running) {
+      // Record ownership before mutation so a CLI failure after starting still rolls back.
+      acquisition.owned=true;
+      await docker(['start',acquisition.id]);
+    }
     return;
   }
-  await docker(['run','-d','--name',container,'--label','bear.workspace=local-v1','--memory','512m','--cpus','1','--pids-limit','64','--cap-drop','ALL','--security-opt','no-new-privileges','--network','none','--mount','type=volume,source=bear-space-local-v1,target=/workspace','--workdir','/workspace',image,'sleep','infinity'],{timeout:60000});
+  acquisition.created=true;
+  const result=await docker(['run','-d','--name',container,'--label','bear.workspace=local-v1','--label',`bear.runtime-session=${acquisition.session}`,'--memory','512m','--cpus','1','--pids-limit','64','--cap-drop','ALL','--security-opt','no-new-privileges','--network','none','--mount','type=volume,source=bear-space-local-v1,target=/workspace','--workdir','/workspace',image,'sleep','infinity'],{timeout:60000});
+  acquisition.id=result.stdout.trim();
+  acquisition.owned=true;
 }
 export async function startRuntime({ port = 8777, configFile = path.resolve('.netlify/bear-runtime.json') } = {}) {
-  await ensureContainer();
   const token = randomBytes(32).toString('hex'); let busy = false;
-  const server = createServer(async (req,res) => {
+  const acquisition={session:randomBytes(16).toString('hex'),id:null,owned:false,created:false};
+  const temporaryConfig=`${configFile}.${acquisition.session}.tmp`;
+  let server,temporaryHandle,temporaryOwned=false,configWritten=false,configText,closePromise;
+  const close=()=>closePromise ||= (async()=>{
+    const errors=[];
+    const cleanup=async operation=>{try{await operation();}catch(error){if(error.code!=='ENOENT')errors.push(error);}};
+    await cleanup(async()=>{if(server?.listening)await new Promise((resolve,reject)=>server.close(error=>error?reject(error):resolve()));});
+    await cleanup(async()=>{if(temporaryHandle){await temporaryHandle.close();temporaryHandle=null;}});
+    await cleanup(async()=>{
+      // Another local runtime may have replaced the configuration after this one started.
+      if(configWritten && await fs.readFile(configFile,'utf8')===configText)await fs.unlink(configFile);
+    });
+    await cleanup(async()=>{if(temporaryOwned){await fs.unlink(temporaryConfig);temporaryOwned=false;}});
+    await cleanup(async()=>{
+      // A failed Docker run may have created its container before returning an error.
+      if(acquisition.created&&!acquisition.id){
+        const info=await inspectContainer();
+        if(info?.Config?.Labels?.['bear.runtime-session']===acquisition.session){acquisition.id=info.Id;acquisition.owned=true;}
+      }
+      if(acquisition.owned&&acquisition.id)await docker(['stop','--time','2',acquisition.id]);
+    });
+    if(errors.length)throw new AggregateError(errors,'Runtime cleanup could not release every owned resource');
+  })();
+  try {
+    await ensureContainer(acquisition);
+    server = createServer(async (req,res) => {
     const send = (code,data) => { res.writeHead(code,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(data)); };
     if (!authorized(req.headers.authorization,token)) { send(401,{error:'Unauthorized'});return; }
     if (req.method==='GET' && req.url==='/status') { send(200,{available:true,kind:'docker',workspace:'/workspace',network:'disabled',busy});return; }
@@ -54,13 +90,29 @@ export async function startRuntime({ port = 8777, configFile = path.resolve('.ne
       send(200,{...result,stdout:result.stdout.slice(0,50000),stderr:result.stderr.slice(0,10000),workspace:'/workspace'});
     } catch {send(400,{error:'Invalid command request'});}
     finally{if(ownsExecution)busy=false;}
-  });
-  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});
-  await fs.mkdir(path.dirname(configFile),{recursive:true});
-  await fs.writeFile(configFile,JSON.stringify({url:`http://127.0.0.1:${server.address().port}`,token}),{mode:0o600});
-  await fs.chmod(configFile,0o600);
-  const close=async()=>{await new Promise(resolve=>server.close(resolve));await fs.unlink(configFile).catch(()=>{});await docker(['stop','--time','2',container]).catch(()=>{});};
-  return {url:`http://127.0.0.1:${server.address().port}`,token,close};
+    });
+    await new Promise((resolve,reject)=>{
+      const failed=error=>reject(error);
+      server.once('error',failed);
+      server.listen(port,'127.0.0.1',()=>{server.removeListener('error',failed);resolve();});
+    });
+    const url=`http://127.0.0.1:${server.address().port}`;
+    configText=JSON.stringify({url,token});
+    await fs.mkdir(path.dirname(configFile),{recursive:true});
+    temporaryHandle=await fs.open(temporaryConfig,'wx',0o600);
+    temporaryOwned=true;
+    await fs.writeFile(temporaryHandle,configText);
+    await fs.chmod(temporaryConfig,0o600);
+    await temporaryHandle.close();temporaryHandle=null;
+    // Publish a complete private file without overwriting another active runtime's config.
+    await fs.link(temporaryConfig,configFile);configWritten=true;
+    await fs.unlink(temporaryConfig);temporaryOwned=false;
+    return {url,token,close};
+  } catch(error) {
+    try { await close(); }
+    catch(rollbackError){throw new AggregateError([error,rollbackError],`Runtime startup failed: ${error.message}; rollback incomplete`,{cause:error});}
+    throw error;
+  }
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   const runtime=await startRuntime();

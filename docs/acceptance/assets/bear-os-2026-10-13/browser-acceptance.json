@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "desktop opens multiple real apps immediately",
+    "private writing survives a page reload",
+    "minimize and dock restore the same window",
+    "CLI calls the same workspace open operation",
+    "window drag and resize alter real geometry",
+    "keyboard focus activates the window it enters",
+    "search opens a real article inside the reader",
+    "leaving a pending article does not overwrite its library",
+    "Product Lab switches back to the OS",
+    "Product Lab control exits its knowledge graph to the product catalog",
+    "a real travel photo opens its matching map region",
+    "private notes export their real text",
+    "geographic map zoom, keyboard pan and reset update its real view",
+    "dark appearance and reduced motion keep controls readable",
+    "mobile applications remain usable with no horizontal overflow",
+    "English workspace has localized labels and true products",
+    "an unavailable AI service reports failure while the workspace stays usable",
+    "a visitor can stop a pending AI request",
+    "agent executes real catalog search and app tools before answering",
+    "approved note text changes the actual editor exactly once",
+    "stopping approval leaves no write or replay after reload"
+  ],
+  "errors": []
+}

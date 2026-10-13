@@ -48,6 +48,8 @@ jobs:
       - name: Enforce checks and verify one production artifact
         id: verify
         run: node scripts/ci-run.mjs verify
+      - name: Verify BEAR OS tool and media boundaries
+        run: npm run bear:test
       - name: Upload the verified deployment bundle
         id: artifact
         if: steps.plan.outputs.run_site == 'true'

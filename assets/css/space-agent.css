@@ -1,0 +1,333 @@
+/* BEAR OS agent task panel — scoped entirely to .bear-agent (the task UI
+   mounted inside a workspace window). No global selectors: every rule starts
+   from the panel root so the blog theme is never touched. Theme colors come
+   from the workspace tokens (light via .space, dark via .space[data-theme="dark"])
+   with readable fallbacks. */
+
+.bear-agent {
+  --ba-ink: var(--sp-ink, #263632);
+  --ba-muted: var(--sp-muted, #69766d);
+  --ba-line: var(--sp-line, #273c3020);
+  --ba-surface: var(--sp-surface, #eef2e9);
+  --ba-soft: var(--sp-soft, #e7eee3);
+  --ba-accent: var(--sp-accent, #3b6755);
+  --ba-chrome: var(--sp-chrome, #f6f7f0eb);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  color: var(--ba-ink);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.bear-agent button { min-height: 34px; }
+
+/* ── Header: quiet identity, one line of grounding ─────────────────────────── */
+
+.bear-agent .bear-agent__header {
+  padding: 16px 22px 13px;
+  border-bottom: 1px solid var(--ba-line);
+}
+.bear-agent .bear-agent__header strong {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: .01em;
+}
+.bear-agent .bear-agent__header strong span { font-size: 17px; color: var(--ba-accent); }
+.bear-agent .bear-agent__header p {
+  margin-top: 5px;
+  max-width: 62ch;
+  font-size: 11px;
+  color: var(--ba-muted);
+}
+
+/* ── Body: work timeline above, composer below ────────────────────────────── */
+
+.bear-agent .bear-agent__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.bear-agent .bear-agent__log {
+  flex: 1;
+  min-height: 120px;
+  overflow: auto;
+  padding: 16px 22px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+/* ── Prompt chips grounded in the public catalog ──────────────────────────── */
+
+.bear-agent .bear-agent__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.bear-agent .bear-agent__chip {
+  padding: 7px 12px;
+  border: 1px solid var(--ba-line);
+  border-radius: 999px;
+  background: var(--ba-surface);
+  color: var(--ba-ink);
+  font-size: 11px;
+}
+.bear-agent .bear-agent__chip:hover { background: var(--ba-soft); }
+.bear-agent .bear-agent__chip:focus-visible {
+  outline: 2px solid var(--ba-accent);
+  outline-offset: 2px;
+}
+
+/* ── Task card: question, timeline, answer ────────────────────────────────── */
+
+.bear-agent .bear-agent__task {
+  border: 1px solid var(--ba-line);
+  border-radius: 13px;
+  background: var(--ba-chrome);
+  padding: 14px 16px 13px;
+}
+.bear-agent .bear-agent__task-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.bear-agent .bear-agent__question {
+  font-weight: 600;
+  font-size: 13px;
+  max-width: 58ch;
+}
+
+/* Operational state badge — real task state only, never animated fakery. */
+.bear-agent .bear-agent__badge {
+  flex: none;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: .03em;
+  border: 1px solid var(--ba-line);
+  color: var(--ba-muted);
+  background: var(--ba-surface);
+  white-space: nowrap;
+}
+.bear-agent .bear-agent__badge[data-status="running"],
+.bear-agent .bear-agent__badge[data-status="awaiting-approval"] {
+  color: var(--ba-accent);
+  border-color: color-mix(in srgb, var(--ba-accent) 42%, transparent);
+}
+.bear-agent .bear-agent__badge[data-status="completed"] {
+  color: var(--ba-accent);
+  background: color-mix(in srgb, var(--ba-accent) 14%, var(--ba-surface));
+}
+.bear-agent .bear-agent__badge[data-status="interrupted"],
+.bear-agent .bear-agent__badge[data-status="failed"] {
+  color: #9a5b34;
+  border-color: #9a5b3455;
+}
+
+/* ── Work timeline ────────────────────────────────────────────────────────── */
+
+.bear-agent .bear-agent__timeline {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0 0 0 17px;
+  border-left: 1px solid var(--ba-line);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.bear-agent .bear-agent__step {
+  position: relative;
+}
+.bear-agent .bear-agent__dot {
+  position: absolute;
+  left: -21px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ba-muted);
+  border: 1px solid var(--ba-chrome);
+}
+.bear-agent .bear-agent__step[data-status="running"] .bear-agent .bear-agent__dot { background: var(--ba-accent); }
+.bear-agent .bear-agent__step[data-status="ok"] .bear-agent .bear-agent__dot { background: var(--ba-accent); }
+.bear-agent .bear-agent__step[data-status="error"] .bear-agent .bear-agent__dot,
+.bear-agent .bear-agent__step[data-status="interrupted"] .bear-agent .bear-agent__dot { background: #b2673a; }
+.bear-agent .bear-agent__step[data-status="declined"] .bear-agent .bear-agent__dot { background: transparent; border: 1.5px solid var(--ba-muted); }
+.bear-agent .bear-agent__step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.bear-agent .bear-agent__step-body strong {
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.bear-agent .bear-agent__step-body small {
+  font-size: 10.5px;
+  color: var(--ba-muted);
+}
+.bear-agent .bear-agent__step-result {
+  max-width: 54ch;
+}
+.bear-agent .bear-agent__preview {
+  margin: 4px 0 0;
+  padding: 8px 10px;
+  max-width: 54ch;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ba-ink);
+  background: var(--ba-surface);
+  border: 1px solid var(--ba-line);
+  border-radius: 8px;
+}
+
+/* ── Approval: exact action preview + explicit decision ───────────────────── */
+
+.bear-agent .bear-agent__approval-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 7px;
+}
+.bear-agent .bear-agent__approve,
+.bear-agent .bear-agent__decline {
+  padding: 6px 13px;
+  border-radius: 8px;
+  font-size: 11px;
+  border: 1px solid var(--ba-line);
+  background: var(--ba-surface);
+  color: var(--ba-ink);
+}
+.bear-agent .bear-agent__approve {
+  background: var(--ba-accent);
+  border-color: var(--ba-accent);
+  color: var(--ba-chrome);
+}
+.bear-agent .bear-agent__approve:hover { filter: brightness(1.06); }
+.bear-agent .bear-agent__decline:hover { background: var(--ba-soft); }
+.bear-agent .bear-agent__approve:focus-visible,
+.bear-agent .bear-agent__decline:focus-visible,
+.bear-agent .bear-agent__retry:focus-visible {
+  outline: 2px solid var(--ba-accent);
+  outline-offset: 2px;
+}
+
+/* ── Answer: plain text + safe hyperlinks ─────────────────────────────────── */
+
+.bear-agent .bear-agent__answer {
+  margin-top: 13px;
+  padding-top: 11px;
+  border-top: 1px solid var(--ba-line);
+  max-width: 64ch;
+}
+.bear-agent .bear-agent__answer:empty { display: none; }
+.bear-agent .bear-agent__link {
+  color: var(--ba-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+.bear-agent .bear-agent__link:hover { text-decoration-thickness: 2px; }
+.bear-agent .bear-agent__note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--ba-muted);
+}
+.bear-agent .bear-agent__retry {
+  margin-top: 11px;
+  padding: 7px 14px;
+  border-radius: 9px;
+  border: 1px solid var(--ba-line);
+  background: var(--ba-surface);
+  color: var(--ba-ink);
+  font-size: 11px;
+}
+.bear-agent .bear-agent__retry:hover { background: var(--ba-soft); }
+
+/* ── Composer ─────────────────────────────────────────────────────────────── */
+
+.bear-agent .bear-agent__composer {
+  border-top: 1px solid var(--ba-line);
+  padding: 11px 17px 12px;
+}
+.bear-agent .bear-agent__composer form {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+.bear-agent .bear-agent__composer textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  max-height: 132px;
+  resize: none;
+  padding: 10px 11px;
+  background: var(--ba-surface);
+  border: 1px solid var(--ba-line);
+  border-radius: 9px;
+  color: var(--ba-ink);
+  font-size: 12px;
+}
+.bear-agent .bear-agent__composer textarea::placeholder { color: var(--ba-muted); }
+.bear-agent .bear-agent__controls {
+  display: flex;
+  gap: 8px;
+}
+.bear-agent .bear-agent__send,
+.bear-agent .bear-agent__stop {
+  padding: 9px 15px;
+  border-radius: 9px;
+  font-size: 11.5px;
+}
+.bear-agent .bear-agent__send {
+  background: var(--ba-accent);
+  border: 1px solid var(--ba-accent);
+  color: var(--ba-chrome);
+}
+.bear-agent .bear-agent__send:disabled {
+  opacity: .55;
+  cursor: default;
+}
+.bear-agent .bear-agent__stop {
+  border: 1px solid var(--ba-line);
+  background: var(--ba-surface);
+  color: var(--ba-ink);
+}
+.bear-agent .bear-agent__status {
+  margin-top: 7px;
+  font-size: 10.5px;
+  color: var(--ba-muted);
+  min-height: 1.4em;
+}
+
+/* ── Narrow windows ───────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .bear-agent button { min-height: 44px; }
+  .bear-agent .bear-agent__header { padding: 13px 15px 11px; }
+  .bear-agent .bear-agent__log { padding: 13px 15px 6px; }
+  .bear-agent .bear-agent__composer { padding: 10px 13px 11px; }
+  .bear-agent .bear-agent__composer form { flex-direction: column; align-items: stretch; }
+  .bear-agent .bear-agent__controls { justify-content: flex-end; }
+}
+
+/* ── Reduced motion: the panel is informational, never decorative ─────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .bear-agent *,
+  .bear-agent *::before,
+  .bear-agent *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .bear-agent .bear-agent__log { scroll-behavior: auto; }
+}
