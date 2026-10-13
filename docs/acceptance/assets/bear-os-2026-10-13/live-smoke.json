@@ -1,0 +1,31 @@
+{
+  "implementationCommit": "be49de399269e9ade6aa4783e316b555d3d10c0e",
+  "site": "https://cubxxw.com/zh/projects/",
+  "agent": {
+    "httpStatus": 200,
+    "browserTaskStatus": "completed",
+    "modelRounds": 2,
+    "successfulTools": [
+      "search_writing",
+      "open_app"
+    ],
+    "browserErrors": []
+  },
+  "media": {
+    "httpStatus": 200,
+    "reason": "not_configured",
+    "connected": false
+  },
+  "reader": {
+    "httpStatus": 200,
+    "loadMilliseconds": 8328,
+    "characters": 25822,
+    "publicArticle": "/zh/growth/posts/2026-10-thought-notes/"
+  },
+  "fullLiveBrowserSuite": {
+    "completed": false,
+    "passedBeforeFailure": 6,
+    "failure": "article fetch exceeded bounded client deadline; isolated real article retest succeeded",
+    "networkCause": "inference from a successful isolated request; no claim of full 21-case live pass"
+  }
+}

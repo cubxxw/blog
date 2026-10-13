@@ -41,7 +41,7 @@ try {
   });
   await check('private writing survives a page reload', async () => {
     await page.locator('[data-note-editor]').fill('测试笔记：明天继续探索 Agent。');
-    await page.reload();
+    await page.reload({waitUntil:'domcontentloaded'});
     await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
     assert.equal(await page.locator('[data-note-editor]').inputValue(), '测试笔记：明天继续探索 Agent。');
   });
@@ -273,7 +273,7 @@ try {
     await page.locator('[data-agent-task]').last().locator('[data-agent-badge][data-status="interrupted"]').waitFor();
     assert.equal(await page.locator('[data-agent-approve]').count(),0);
     assert.equal(await page.locator('[data-note-editor]').inputValue(),prior);
-    await page.reload();
+    await page.reload({waitUntil:'domcontentloaded'});
     await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.ready==='true');
     assert.equal(await page.locator('[data-agent-task]').last().locator('[data-agent-badge]').getAttribute('data-status'),'interrupted');
     assert.equal(await page.locator('[data-note-editor]').inputValue(),prior);

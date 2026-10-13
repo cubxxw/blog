@@ -6,7 +6,7 @@
 
 定向 Node 测试 **123/123** 通过；既有 AI 相关回归 **23/23**、CI workflow 回归 **5/5** 与 `products:check` 通过；最终 Netlify dev 浏览器验收 **21/21** 通过，`browser-acceptance.json` 的 `errors` 为空。已确认的独立 review P1/P2 已修复并复核关闭。
 
-真实 Immich 公开相册尚未配置，模型网络 live 请求与真实 Docker 执行未验收。最新生产 artifact 和最终线上交付由当前提交 CI 验证。
+真实模型已在生产站点完成两轮请求与实际公开目录工具调用；Immich 公开相册尚未配置，真实 Docker 执行未验收。最新生产 artifact 和最终线上交付由当前提交 CI 验证。
 
 ## Node 证据
 
@@ -59,7 +59,7 @@
 | 项目 | 本轮状态 |
 | --- | --- |
 | 真实 Immich 相册 | 未配置公开 allowlist；只验证服务端适配、mock 上游与既有公开博客照片，未读取私人相册 |
-| 真实模型网络 | 未进行 live 模型调用；固定模型适配与任务流程由定向测试和浏览器 fixture 验证 |
+| 真实模型网络 | 生产API返回200；真实浏览器完成2轮模型请求、search_writing与open_app，任务completed，无浏览器异常；见live-agent.json |
 | 真实 Docker | 未完成运行、文件持久化或并发 live 验收；运行时生命周期通过 mock Docker 边界与真实 HTTP/fs 验证 |
 | 最终生产/线上部署 | 等待当前提交 CI 的 artifact 与交付读回，本文不声明已部署 |
 | 长期个人 Agent 服务 | 登录、跨设备同步、访客独立云端沙盒和后台可恢复任务未接入 |
@@ -74,3 +74,9 @@
 - 地图源记录：`assets/js/space/media-state.mjs` 与 `scripts/bear-media-geography.mjs`，Natural Earth 4.1.0 / world-atlas 2.0.2，SHA-256 `ead5f68119c49a9250902e7da303bcb209341bbb8fefe7369a439b48b704658a`。
 
 补充视觉验收：修复 `.space button` 覆盖助手控件的问题后，21项浏览器回归再次通过；桌面批准按钮保留填色和边框，手机批准按钮至少44px且页面无横向溢出。新增 [手机助手](assets/bear-os-2026-10-13/mobile-agent.png) 截图仍使用受控模型响应。
+
+## 生产站点冒烟
+
+实现提交 `be49de399269e9ade6aa4783e316b555d3d10c0e` 推送后，生产页面出现新Launchpad及fingerprinted BEAR样式。`bear-agent`真实模型调用返回200；随后生产浏览器任务完成2轮模型请求、实际公开文章检索与打开阅读器，并返回文章链接。`bear-media`返回200、not_configured，未读取私人相册。独立阅读器重测读取真实公开正文成功，用时8.328秒。
+
+正式证据：[真实Agent回执](assets/bear-os-2026-10-13/live-agent.json)、[线上任务截图](assets/bear-os-2026-10-13/live-agent.png)、[冒烟摘要](assets/bear-os-2026-10-13/live-smoke.json)。完整线上21项脚本曾在文章加载期限失败（此前6项通过）；单独重测成功支持网络时延的推断，不宣称整套线上通过。本地Netlify dev的21项仍全部通过。刷新验收脚本已使用DOMContentLoaded并继续等待工作区ready，避免无关媒体load阻塞导航断言。
