@@ -1,0 +1,19 @@
+{{- $zh := eq .Lang "zh" -}}
+{{- $themes := slice -}}
+{{- range site.Data.space_cafe.themes -}}
+  {{- $image := resources.Get (printf "images/space-cafe/%s.png" .id) -}}
+  {{- $hero := $image.Resize "1920x webp q82" -}}
+  {{- $small := $image.Resize "960x webp q80" -}}
+  {{- $thumb := $image.Resize "480x webp q75" -}}
+  {{- $themes = $themes | append (dict "id" .id "name" (cond $zh .name_zh .name_en) "note" (cond $zh .note_zh .note_en) "image" $hero.RelPermalink "small" $small.RelPermalink "thumb" $thumb.RelPermalink) -}}
+{{- end -}}
+<div class="space-cafe" data-space-cafe>
+  <div class="space-cafe__scene" aria-hidden="true"><img data-cafe-image width="1920" height="1080" alt="" fetchpriority="high" decoding="async"></div>
+  <header class="space-cafe__header"><a class="space-cafe__brand" href="{{ "/" | relLangURL }}" aria-label="{{ if $zh }}返回博客{{ else }}Back to the blog{{ end }}">SPACE<span>CAFÉ</span></a><div class="space-cafe__utilities"><button type="button" data-cafe-language aria-label="{{ if $zh }}切换到英文{{ else }}Switch to Chinese{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</button><button type="button" data-cafe-picker aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}</span></button></div></header>
+  <div class="space-cafe__welcome"><p class="space-cafe__eyebrow">CUBXXW / A PLACE TO THINK</p><h2>{{ if $zh }}欢迎，<br>坐一会儿。{{ else }}Come in.<br>Stay a while.{{ end }}</h2><p class="space-cafe__intro">{{ if $zh }}一杯咖啡，一扇窗，我的整个世界。{{ else }}A coffee, a window, and my world within.{{ end }}</p><button class="space-cafe__enter" type="button" data-cafe-enter>{{ if $zh }}打开我的电脑{{ else }}Open my computer{{ end }}<span aria-hidden="true">↗</span></button><button class="space-cafe__guide" type="button" data-cafe-guide>{{ if $zh }}问问空间助手{{ else }}Ask the space companion{{ end }} <span aria-hidden="true">→</span></button></div>
+  <button type="button" class="space-cafe__computer" data-cafe-enter aria-label="{{ if $zh }}打开桌上的 CUBXXW OS 电脑{{ else }}Open CUBXXW OS on the desk{{ end }}"><span>CUBXXW OS <span aria-hidden="true">↗</span></span></button>
+  <footer class="space-cafe__footer"><button type="button" class="space-cafe__place" data-cafe-picker aria-haspopup="dialog"><span class="space-cafe__place-dot" aria-hidden="true"></span><span data-cafe-name></span><span aria-hidden="true">⌄</span></button><p data-cafe-note></p><button type="button" data-cafe-outside aria-pressed="false">{{ if $zh }}看看窗外{{ else }}Look outside{{ end }} <span aria-hidden="true">↗</span></button></footer>
+  <p class="space-sr-only" data-cafe-status role="status" aria-live="polite"></p>
+</div>
+<dialog class="space-cafe-picker" data-cafe-dialog aria-labelledby="space-cafe-picker-title"><header><div><p class="space-cafe__eyebrow">SPACE / SOMEWHERE BEAUTIFUL</p><h2 id="space-cafe-picker-title">{{ if $zh }}今天，想坐在哪里？{{ else }}Where shall we sit today?{{ end }}</h2><p>{{ if $zh }}换一处风景，桌上的事情还在。{{ else }}A different view. Your work stays with you.{{ end }}</p></div><button type="button" data-cafe-picker-close aria-label="{{ if $zh }}关闭场景选择{{ else }}Close scene selection{{ end }}">×</button></header><div class="space-cafe-picker__grid" data-cafe-choices></div><p class="space-cafe-picker__status" data-cafe-picker-status role="status" aria-live="polite"></p><footer>{{ if $zh }}这是我想象中的咖啡馆，也是一间未来想开的小店。{{ else }}Imagined cafés, and the little place I hope to open one day.{{ end }}</footer></dialog>
+<script type="application/json" data-cafe-catalog>{{ dict "themes" $themes | jsonify | safeJS }}</script>

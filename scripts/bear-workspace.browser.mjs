@@ -33,7 +33,9 @@ try {
   await page.goto(`${base}/zh/projects/`, { waitUntil: 'domcontentloaded' });
   assert.equal(await page.locator('[data-bear-workspace]').count(), 1, 'BEAR must provide an interactive desktop');
   await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
-  await check('desktop starts with onboarding and opens real apps from the Dock', async () => {
+  await check('café opens the real desktop and its Dock apps', async () => {
+    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
+    await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     assert.equal(await page.locator('[data-space-window]').count(), 1);
     await page.locator('[data-space-dock] [data-open="notes"]').click();
     await page.locator('[data-space-window="notes"]').waitFor();
@@ -189,6 +191,8 @@ try {
   await check('English workspace has localized labels and true products', async () => {
     await page.goto(`${base}/projects/`, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
+    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
+    await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     await page.locator('[data-space-dock] [data-open="products"]').click();
     assert.ok((await page.locator('[data-space-window="products"]').innerText()).includes('Talent Signal'));
   });
