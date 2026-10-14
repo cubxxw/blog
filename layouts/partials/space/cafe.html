@@ -2,9 +2,9 @@
 {{- $themes := slice -}}
 {{- range site.Data.space_cafe.themes -}}
   {{- $image := resources.Get (printf "images/space-cafe/%s.png" .id) -}}
-  {{- $hero := $image.Resize "1920x webp q82" -}}
-  {{- $small := $image.Resize "960x webp q80" -}}
-  {{- $thumb := $image.Resize "480x webp q75" -}}
+  {{- $hero := $image.Resize "1600x webp q75" -}}
+  {{- $small := $image.Resize "960x webp q75" -}}
+  {{- $thumb := $image.Resize "360x webp q70" -}}
   {{- $themes = $themes | append (dict "id" .id "name" (cond $zh .name_zh .name_en) "note" (cond $zh .note_zh .note_en) "image" $hero.RelPermalink "small" $small.RelPermalink "thumb" $thumb.RelPermalink) -}}
 {{- end -}}
 <div class="space-cafe" data-space-cafe>
