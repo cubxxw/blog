@@ -14,11 +14,13 @@
 - 新交互覆盖单实例快捷键、语音不可用回退、公开文章引用、选文、移除上下文后的发送负测、私有编辑器排除、320px 布局。
 - 语音验收只覆盖不可用回退和生命周期代码；尚未以真实麦克风验收识别质量。
 
-证据在本地 `output/playwright/space-companion/`、`output/playwright/space-companion-regression/`；公开仓库不提交临时浏览器输出。最终定向测试与构建结果以本轮交付记录为准。
+最终本地验收：146 项工作区及服务测试、5 项文章客户端测试通过；21 项原工作区与7 项新交互浏览器检查通过，另已独立实测真实 DeepSeek 两轮工具任务。生产构建与双语产品、SEO 输出检查通过。独立审查确认上下文移除、截断回答和超时断言已闭环，取消流关闭上游连接，原生依赖打包可加载。
+
+证据在本地 `output/playwright/space-companion/`、`output/playwright/space-companion-final-regression/`；公开仓库不提交临时浏览器输出。语音检查未使用真实麦克风。
 
 ## 部署条件
 
-线上必须在 Netlify 的 Functions 环境变量中配置 `DEEPSEEK_API_KEY`，不能将密钥放入源码或客户端。Messages 地址和模型默认值在 netlify.toml 中配置。当前本机 CLI 未登录，浏览器控制连接无法加载请求策略，线上密钥配置需由用户在 Netlify 后台完成，随后重新部署并验证线上调用。
+线上必须在 Netlify 的 Functions 环境变量中配置 `DEEPSEEK_API_KEY`，不能将密钥放入源码或客户端。Messages 地址和模型默认值在 netlify.toml 中配置。用户提供的凭证已通过真实请求验证并保存到忽略的本地环境文件。本机已完成 Netlify CLI 授权，但当前账户站点列表为空，查询 cubxxw 返回未找到；线上配置与调用验收仍需管理该站点的账户权限。
 
 ## 参考设计
 
