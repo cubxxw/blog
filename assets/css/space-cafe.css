@@ -79,11 +79,13 @@
 @media(max-height:500px) { .space-cafe__welcome { top:80px; } .space-cafe__welcome h2 { font-size:32px; } .space-cafe__welcome .space-cafe__eyebrow,.space-cafe__intro { display:none; } .space-cafe__footer { bottom:14px; } }
 @media(max-height:350px) { .space-cafe__welcome { top:70px; } .space-cafe__welcome h2 { font-size:24px; line-height:1.15; margin-bottom:8px; } .space-cafe button.space-cafe__guide { margin-top:0; font-size:11px; } }
 
-.space-world { position:absolute; inset:0; z-index:1; overflow:hidden; background:#c7d1bd; }
+.space-world { position:absolute; inset:0; z-index:1; overflow:clip; background:#c7d1bd; }
 .space-world__canvas { position:absolute; inset:0; width:100%; height:100%; touch-action:none; outline:none; }
-.space-world__css { position:absolute; inset:0; pointer-events:none; }
+/* CSS3DRenderer sets inline overflow:hidden. Its camera viewport must never
+   scroll when the browser focuses a transformed app control. */
+.space-world__css { position:absolute; inset:0; pointer-events:none; overflow:clip!important; }
 .space-world__css>div { pointer-events:none; }
-.space-spatial-screen { position:relative; pointer-events:auto; box-sizing:border-box; border:1px solid #fff9; border-radius:14px; background:linear-gradient(130deg,#e8efe9d9,#d4e1d6b3); box-shadow:0 30px 100px #132f283b,0 0 0 6px #ffffff14; overflow:hidden; }
+.space-spatial-screen { position:relative; pointer-events:auto; box-sizing:border-box; border:1px solid #fff9; border-radius:14px; background:linear-gradient(130deg,#e8efe9d9,#d4e1d6b3); box-shadow:0 30px 100px #132f283b,0 0 0 6px #ffffff14; overflow:clip; }
 .space[data-theme="dark"] .space-spatial-screen { background:linear-gradient(130deg,#203e37e8,#132f29d9); border-color:#accabb80; }
 .space[data-world-ready] .space-landscape { display:none; }
 .space[data-world-loading] :is(.space-window-layer,.space-bottom,.space-menu) { visibility:hidden; }
@@ -131,6 +133,7 @@
   .space-spatial-screen { border-radius:12px; }
   .space[data-world-ready] .space-spatial-screen button { min-height:54px; }
   .space[data-world-ready] .space-window-controls button { width:54px; min-width:54px; }
+  .space[data-world-ready] [data-window-action="arrange"] { width:54px; height:54px; min-width:54px; min-height:54px; }
   .space[data-world-ready] .space-window__bar { height:56px; }
   .space[data-world-ready] .space-window__body { height:calc(100% - 56px); }
   .space[data-world-ready] .space-note-editor { font-size:20px !important; }

@@ -23,5 +23,31 @@ try {
     await page.keyboard.type('A question that has not been sent.');
     assert.equal(await page.locator('[data-agent-input]').inputValue(),'A question that has not been sent.');
   });
+  await check('an idle computer stops GPU drawing and resumes for a scene change or walking',async()=>{
+    const root=page.locator('[data-bear-workspace]');
+    await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.worldTravel==='false');
+    await page.waitForTimeout(100);const frames=Number(await root.getAttribute('data-world-frames'));
+    await page.waitForTimeout(350);assert.equal(Number(await root.getAttribute('data-world-frames')),frames);
+    await page.evaluate(()=>document.dispatchEvent(new Event('visibilitychange')));await page.waitForTimeout(150);
+    assert.equal(Number(await root.getAttribute('data-world-frames')),frames+1,'one resume queues only one paint');
+    await page.locator('.space-world-hud [data-cafe-picker]').click();await page.locator('[data-cafe-theme="lake"]').click();
+    await page.waitForFunction(frames=>Number(document.querySelector('[data-bear-workspace]').dataset.worldFrames)>frames,frames+1);
+    await page.locator('.space-world-hud [data-cafe-visit]').click();await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.worldRenderedMode==='roam');
+    const before=await root.getAttribute('data-world-pose');await page.keyboard.down('w');await page.waitForTimeout(250);await page.keyboard.up('w');
+    assert.notEqual(await root.getAttribute('data-world-pose'),before);
+  });
+  await check('focus and article scrolling cannot move the camera viewport',async()=>{
+    await page.goto(base+'/zh/projects/?profile=about#identity');
+    await page.waitForFunction(()=>Number(document.querySelector('[data-bear-workspace]').dataset.worldFrames)>0);
+    await page.locator('[data-space-dock] [data-open="reader"]').click();
+    const positions=()=>page.locator('.space-world,.space-world__css,.space-spatial-screen').evaluateAll(nodes=>nodes.map(node=>[node.scrollLeft,node.scrollTop]));
+    assert.deepEqual(await positions(),[[0,0],[0,0],[0,0]]);
+    await page.locator('[data-library-list] [data-open="reader"]').first().click();
+    await page.locator('[data-reader-body] .post-content').waitFor();
+    const body=page.locator('[data-space-window="reader"] .space-window__body'),before=await body.evaluate(node=>node.scrollTop);
+    await body.hover();await page.mouse.wheel(0,600);
+    await page.waitForFunction(before=>document.querySelector('[data-space-window="reader"] .space-window__body').scrollTop>before,before);
+    assert.deepEqual(await positions(),[[0,0],[0,0],[0,0]]);
+  });
 }finally{await browser.close();}
 if(failed)process.exitCode=1;

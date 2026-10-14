@@ -1,6 +1,10 @@
 import { enterWorkspace } from '../helpers/space-entry';
 import { test, expect } from '../helpers/frozen-site';
 
+// These cases verify controls and persistence. Camera motion has its own
+// Space world tests; honor reduced motion and use Chromium's real renderer.
+test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+
 test.describe('P1-P2 UX regression', () => {
   test('newsletter validation exposes and clears an accessible error', async ({ page }) => {
     await page.goto('/zh/');
@@ -189,7 +193,7 @@ test.describe('P1-P2 UX regression', () => {
       return { payload: state?.payload, minimized: state?.minimized };
     });
     await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: false });
-    await page.keyboard.press('Escape');
+    await product.locator('[data-window-action="minimize"]').click();
     await expect(product).toBeHidden();
     await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: true });
     await workspace.locator('[data-space-dock] [data-open="products"]').click();
@@ -202,6 +206,7 @@ test.describe('P1-P2 UX regression', () => {
     await page.goto('/zh/projects/?profile=about#identity');
     const workspace = page.locator('[data-bear-workspace]');
     await expect(workspace).toHaveAttribute('data-ready', 'true');
+    await enterWorkspace(page);
     const openApp = async (app: string) => {
       const dock = workspace.locator(`[data-space-dock] [data-open="${app}"]`);
       if (await dock.isVisible()) await dock.click();
@@ -226,6 +231,7 @@ test.describe('P1-P2 UX regression', () => {
     await page.locator('[data-set-language="en"]').click();
     await expect(page).toHaveURL(/\/projects\/\?profile=about#identity$/);
     await expect(workspace).toHaveAttribute('data-ready', 'true');
+    await enterWorkspace(page);
     await expect(page.locator('[data-set-language="en"]')).toHaveAttribute('aria-pressed', 'true');
     expect(await snapshot()).toEqual(before);
     await openApp('reader');
@@ -250,6 +256,7 @@ test.describe('P1-P2 UX regression', () => {
       await page.goto('/zh/projects/?profile=about#identity');
       const workspace = page.locator('[data-bear-workspace]');
       await expect(workspace).toHaveAttribute('data-ready', 'true');
+      await enterWorkspace(page);
       await page.evaluate(() => (window as unknown as { BearSpace: { execute: (name: string, args: object) => unknown } }).BearSpace.execute('note', { text: 'Keep this private note.' }));
       await workspace.locator('[data-space-dock] [data-open="settings"]').click();
       const snapshot = () => page.evaluate(() => (window as unknown as { BearSpace: { snapshot: () => unknown } }).BearSpace.snapshot());
@@ -260,6 +267,7 @@ test.describe('P1-P2 UX regression', () => {
         await expect(workspace.locator('[data-space-toast]')).toContainText('导出');
       } else {
         await expect(page).toHaveURL(/\/projects\/\?profile=about#identity$/);
+        await enterWorkspace(page);
         await expect(page.locator('[data-set-language="en"]')).toHaveAttribute('aria-pressed', 'true');
       }
       expect(await snapshot()).toEqual(before);

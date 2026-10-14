@@ -20,7 +20,8 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   camera.rotation.order='YXZ';
   const room=new THREE.Group(), outdoors=new THREE.Group();scene.add(room,outdoors);
   const resources=new Set(), textures=new Set();
-  let disposed=false,mode='intro',moving=null,frame=0,last=0,elapsed=0,drag=null,themeId=theme;
+  let disposed=false,mode='intro',moving=null,frame=0,last=0,elapsed=0,drag=null,themeId=theme,initialized=false,drawing=false;
+  function wake(){if(initialized&&!disposed&&!frame&&!drawing){last=0;frame=requestAnimationFrame(tick);}}
   const keys=new Set(),touchKeys=new Set();const abort=new AbortController();
   const listen=(target,type,fn,opts={})=>target.addEventListener(type,fn,{...opts,signal:abort.signal});
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -252,6 +253,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     }
     const objectCount=outdoors.children.length;batchStatic(outdoors,[water]);renderer.shadowMap.needsUpdate=true;
     root.dataset.worldTheme=id;root.dataset.worldObjects=String(objectCount);
+    wake();
   }
   setTheme(theme);
   const screen=document.createElement('div');screen.className='space-spatial-screen';screen.setAttribute('aria-label','CUBXXW OS');css.domElement.append(screen);
@@ -265,6 +267,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height);css.setSize(width,height);
     screen.style.width=width+'px';screen.style.height=height+'px';fit=screenFit({width,height});cssObject.scale.setScalar(fit.scale);
     if(mode==='workspace')applyPose(workspacePose());
+    wake();
   }
   function lookPose(position,target,fov=48) {
     const direction=new THREE.Vector3(...target).sub(new THREE.Vector3(...position));
@@ -274,13 +277,13 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   const walkingPose=()=>lookPose([1.35,1.68,4.5],[3.5,1.65,-2.5],54);
   const workspacePose=()=>({x:3.65,y:1.98,z:-1.5+fit.distance,yaw:0,pitch:0,fov:38});
   let pose=introPose(),returnPose=walkingPose();
-  function applyPose(value) {pose=value;camera.position.set(value.x,value.y,value.z);camera.rotation.set(value.pitch,value.yaw,0,'YXZ');if(camera.fov!==value.fov){camera.fov=value.fov;camera.updateProjectionMatrix();}}
-  function setMode(value) {mode=value;root.dataset.worldMode=value;screen.inert=value!=='workspace';screen.style.visibility=value==='workspace'?'visible':'hidden';root.dataset.worldTravel='false';}
+  function applyPose(value) {pose=value;camera.position.set(value.x,value.y,value.z);camera.rotation.set(value.pitch,value.yaw,0,'YXZ');if(camera.fov!==value.fov){camera.fov=value.fov;camera.updateProjectionMatrix();}wake();}
+  function setMode(value) {mode=value;root.dataset.worldMode=value;screen.inert=value!=='workspace';screen.style.visibility=value==='workspace'?'visible':'hidden';root.dataset.worldTravel='false';wake();}
   function travel(target,nextMode,duration=1700) {
     keys.clear();touchKeys.clear();moving?.resolve();moving=null;
     if(reduced.matches){applyPose(target);setMode(nextMode);onTravel?.(false);return Promise.resolve();}
     root.dataset.worldTravel='true';onTravel?.(true);
-    return new Promise(resolve=>{moving={from:{...pose},to:target,start:performance.now(),duration,nextMode,resolve};});
+    return new Promise(resolve=>{moving={from:{...pose},to:target,start:performance.now(),duration,nextMode,resolve};wake();});
   }
   function start() {setMode('roam');renderer.domElement.focus({preventScroll:true});return travel(walkingPose(),'roam',2200);}
   function focus(animate=true) {if(mode==='workspace'&&!moving)return Promise.resolve();if(mode==='roam')returnPose={...pose};screen.style.visibility='hidden';if(!animate){moving?.resolve();moving=null;onTravel?.(false);applyPose(workspacePose());setMode('workspace');css.render(scene,camera);return Promise.resolve();}return travel(workspacePose(),'workspace',1850);}
@@ -305,19 +308,20 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   listen(renderer.domElement,'pointercancel',()=>{drag=null;});
   listen(document,'keydown',event=>{
     if(mode!=='roam'||isBlocked()||event.metaKey||event.ctrlKey||event.altKey||event.target.closest('input,textarea,[contenteditable="true"]'))return;
-    if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();keys.add(event.code);}
+    if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();keys.add(event.code);wake();}
     if(event.code==='KeyE'){event.preventDefault();onComputer();}
   });
   listen(document,'keyup',event=>keys.delete(event.code));
   listen(window,'blur',()=>{keys.clear();touchKeys.clear();drag=null;});
   for(const button of root.querySelectorAll('[data-world-walk]')){
-    listen(button,'pointerdown',event=>{event.preventDefault();touchKeys.add(button.dataset.worldWalk);button.setPointerCapture(event.pointerId);});
+    listen(button,'pointerdown',event=>{event.preventDefault();touchKeys.add(button.dataset.worldWalk);button.setPointerCapture(event.pointerId);wake();});
     const release=()=>touchKeys.delete(button.dataset.worldWalk);listen(button,'pointerup',release);listen(button,'pointercancel',release);listen(button,'lostpointercapture',release);
   }
   const observer=new ResizeObserver(resize);observer.observe(root);resize();setMode('intro');applyPose(pose);
   let active=!document.hidden&&!root.hidden;
   function tick(time) {
     if(disposed)return;frame=0;if(!active)return;
+    drawing=true;
     const dt=last?Math.min((time-last)/1000,.04):0;last=time;elapsed+=dt;
     if(moving) {
       const t=Math.min(1,(time-moving.start)/moving.duration);applyPose(travelPose(moving.from,moving.to,t));
@@ -327,15 +331,20 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
       const p=stepWalk(pose,pose.yaw,{forward:Number(has('KeyW','ArrowUp','forward'))-Number(has('KeyS','ArrowDown','back')),right:Number(has('KeyD','ArrowRight','right'))-Number(has('KeyA','ArrowLeft','left'))},dt);
       applyPose({...pose,...p});
     }
-    if(water&&!reduced.matches){const p=water.geometry.attributes.position,b=water.userData.base;for(let i=0;i<p.count;i++)p.setY(i,b[i*3+1]+Math.sin(b[i*3]*1.8+elapsed*.55)*.018+Math.sin(b[i*3+2]*2.1+elapsed*.8)*.012);p.needsUpdate=true;}
-    if(rain&&!reduced.matches){const p=rain.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setY(i,((rainBase[i*3+1]-elapsed*4)%12+12)%12);p.needsUpdate=true;}
+    if(water&&mode!=='workspace'&&!reduced.matches){const p=water.geometry.attributes.position,b=water.userData.base;for(let i=0;i<p.count;i++)p.setY(i,b[i*3+1]+Math.sin(b[i*3]*1.8+elapsed*.55)*.018+Math.sin(b[i*3+2]*2.1+elapsed*.8)*.012);p.needsUpdate=true;}
+    if(rain&&mode!=='workspace'&&!reduced.matches){const p=rain.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setY(i,((rainBase[i*3+1]-elapsed*4)%12+12)%12);p.needsUpdate=true;}
     renderer.render(scene,camera);css.render(scene,camera);root.dataset.worldRenderedMode=mode;
     root.dataset.worldPose=JSON.stringify({x:+pose.x.toFixed(3),z:+pose.z.toFixed(3),yaw:+pose.yaw.toFixed(3)});
     root.dataset.worldFrames=String(renderer.info.render.frame);root.dataset.worldTriangles=String(renderer.info.render.triangles);root.dataset.worldDraws=String(renderer.info.render.calls);
-    frame=requestAnimationFrame(tick);
+    drawing=false;
+    // The DOM workspace paints itself. Keep the GPU quiet while its camera is
+    // still; a new pose, theme, viewport or input wakes the real scene again.
+    if(!disposed&&(moving||(mode==='roam'&&!isBlocked()&&(keys.size||touchKeys.size))||(mode!=='workspace'&&!reduced.matches&&(water||rain))))frame=requestAnimationFrame(tick);
+    else last=0;
   }
-  function visibility() {active=!document.hidden&&!root.hidden;keys.clear();touchKeys.clear();last=0;if(active&&!frame){resize();frame=requestAnimationFrame(tick);}else if(!active&&frame){cancelAnimationFrame(frame);frame=0;}}
+  function visibility() {active=!document.hidden&&!root.hidden;keys.clear();touchKeys.clear();last=0;if(active&&!frame){resize();wake();}else if(!active&&frame){cancelAnimationFrame(frame);frame=0;}}
   listen(document,'visibilitychange',visibility);const hiddenObserver=new MutationObserver(visibility);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
+  listen(reduced,'change',wake);
   listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;moving?.resolve();moving=null;onTravel?.(false);onFailure?.();});
   listen(window,'pagehide',event=>{if(event.persisted){active=false;cancelAnimationFrame(frame);frame=0;}else dispose();});listen(window,'pageshow',visibility);
   function dispose() {
@@ -344,6 +353,6 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     room.traverse(object=>{if(object.isInstancedMesh)object.dispose();});sun.shadow.map?.dispose();sun.shadow.mapPass?.dispose();
     for(const r of resources)r.dispose();for(const t of textures)t.dispose();renderer.dispose();renderer.forceContextLoss();host.remove();
   }
-  root.dataset.worldReady='true';frame=requestAnimationFrame(tick);
+  root.dataset.worldReady='true';initialized=true;wake();
   return {start,focus,leave,outside,setTheme,dispose,get mode(){return mode;}};
 }
