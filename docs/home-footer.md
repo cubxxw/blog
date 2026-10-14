@@ -10,8 +10,9 @@ WeChat, and RedNote are immediately visible; the existing QR dialogs retain
 their configured assets and destinations. Without JavaScript, QR image links
 replace the dialog buttons and the disclosures still work.
 
-The homepage owns one copyright row with RSS, JSON Feed, and OPML. Other pages
-retain their existing footer. `zz-home-footer.css` belongs to the explicit
+The homepage footer is rendered after `main`, exposing one top-level
+`contentinfo` landmark. It owns one copyright row with RSS, JSON Feed, and OPML.
+Other pages retain their existing footer. `zz-home-footer.css` belongs to the explicit
 homepage shell and is excluded from article and section bundles. This change
 adds no production JavaScript or third-party dependencies.
 

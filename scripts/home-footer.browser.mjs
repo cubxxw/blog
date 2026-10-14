@@ -25,6 +25,8 @@ try {
     await page.goto(`${base}${prefix}/`, { waitUntil: 'load' });
     const footer = page.locator('.hp-footer');
     assert.equal(await page.locator('footer.footer').count(), 0, 'the homepage must have one copyright owner');
+    assert.equal(await page.getByRole('contentinfo').count(), 1, 'the homepage must expose one footer landmark');
+    assert.equal(await page.getByRole('contentinfo').evaluate(element => element.closest('main') === null), true, 'the site footer must be outside the main landmark');
     assert.match(await footer.locator('.hp-footer-brand').innerText(), /CUBXXW/);
     for (const width of [1440, 1920, 768, 390]) {
       await page.setViewportSize({ width, height: 950 });

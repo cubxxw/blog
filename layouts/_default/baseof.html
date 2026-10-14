@@ -17,6 +17,7 @@
     <main class="main" id="main-content" role="main">
         {{- block "main" . }}{{ end }}
     </main>
+    {{- if .IsHome }}{{ partial "homepage-footer.html" . }}{{- end }}
     {{- /* Rich site footer for non-home pages. Lives outside footer.html:
          that partial is cached by Layout/Kind, and the exclusions below
          depend on .Section/.IsHome which are not in its cache key. The
