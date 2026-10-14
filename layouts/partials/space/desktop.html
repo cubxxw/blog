@@ -41,15 +41,12 @@
 {{- range site.Data.travel.regions -}}
  {{- $places = $places | append (dict "id" .slug "name" (cond $zh .name_zh .name_en) "description" (cond $zh .tagline_zh .tagline_en) "lat" .lat "lon" .lon "match" .match) -}}
 {{- end -}}
-{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") (resources.Get "css/space-classic.css") (resources.Get "css/space-companion.css") (resources.Get "css/space-cafe.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
+{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") (resources.Get "css/space-classic.css") (resources.Get "css/space-companion.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" data-cafe-mode="cafe" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
+<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
   <div class="space-landscape" aria-hidden="true"></div>
-  {{ partial "space/cafe.html" . }}
   <nav class="space-menu" id="space-menu" aria-label="{{ if $zh }}空间菜单{{ else }}Space menu{{ end }}" hidden>
     <div class="space-menu__heading"><strong>CUBXXW OS</strong><span data-active-label></span></div>
-    <button type="button" data-cafe-visit>{{ if $zh }}回到咖啡馆{{ else }}Back to the café{{ end }}</button>
-    <button type="button" data-cafe-picker aria-haspopup="dialog">{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}</button>
     <button data-space-home>{{ if $zh }}欢迎与关于我{{ else }}Welcome & about me{{ end }}</button>
     <button type="button" data-space-launchpad-trigger aria-haspopup="dialog">{{ if $zh }}所有应用{{ else }}All apps{{ end }} <span class="space-menu__hint">↗</span></button>
     <button type="button" data-space-search-trigger aria-haspopup="dialog">{{ if $zh }}搜索{{ else }}Search{{ end }} <span class="space-menu__hint">⌘ / Ctrl K</span></button>

@@ -64,8 +64,6 @@ test.describe('P1-P2 UX regression', () => {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/zh/projects/');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
-    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
     const workspace = page.locator('[data-bear-workspace]');
     await expect(workspace).toHaveAttribute('data-ready', 'true');
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
@@ -116,8 +114,6 @@ test.describe('P1-P2 UX regression', () => {
 
   test('space defaults to CUBXXW OS and switches to Product Lab and back', async ({ page }) => {
     await page.goto('/zh/projects/');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
-    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
 
     const space = page.locator('[data-product-space]');
     const bearButton = page.locator('.product-view-switch [data-product-view-button="bear"]');
@@ -150,8 +146,6 @@ test.describe('P1-P2 UX regression', () => {
 
   test('BEAR OS product search uses workspace search and restores the selected product', async ({ page }) => {
     await page.goto('/zh/projects/');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
-    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
     const workspace = page.locator('[data-bear-workspace]');
     await expect(workspace).toHaveAttribute('data-ready', 'true');
     const searchTrigger = workspace.locator('[data-space-menu-trigger]');
@@ -268,8 +262,6 @@ test.describe('P1-P2 UX regression', () => {
 
   test('Product Lab can enter BEAR knowledge space and return without leaving lab', async ({ page }) => {
     await page.goto('/zh/projects/');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
-    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
 
     await page.locator('[data-space-menu-trigger]').click();
     await page.locator('.space-menu [data-product-view-button="lab"]').click();
@@ -293,8 +285,6 @@ test.describe('P1-P2 UX regression', () => {
 
   test('an already open global search owns shortcuts above the BEAR workspace', async ({ page }) => {
     await page.goto('/zh/projects/');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
-    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
     const globalSearch=page.locator('#search-command-palette');
     const workspaceSearch=page.locator('[data-space-search]');
     for(const key of [process.platform==='darwin'?'Meta+k':'Control+k','Escape']) {
@@ -317,8 +307,6 @@ test.describe('P1-P2 UX regression', () => {
       await route.fallback();
     });
     await page.goto('/zh/projects/');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
-    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
     await page.locator('[data-space-menu-trigger]').click();
     await page.locator('.space-menu [data-product-view-button="lab"]').click();
     await page.getByRole('button', { name: '进入知识空间' }).click();
@@ -336,8 +324,6 @@ test.describe('P1-P2 UX regression', () => {
       await route.fallback();
     });
     await page.goto('/zh/projects/');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
-    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
     await page.locator('[data-space-menu-trigger]').click();
     await page.locator('.space-menu [data-product-view-button="lab"]').click();
     await page.getByRole('button', { name: '进入知识空间' }).click();

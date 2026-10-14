@@ -1,5 +1,4 @@
-import { languageDestination } from './entry.mjs';
-import { mountCafe } from './cafe.js';
+import { languageDestination, canAnimateEntry } from './entry.mjs';
 import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
@@ -20,11 +19,11 @@ function mountDesktop(root) {
   try { saved = localStorage.getItem(storageKey); } catch { saveFailure = true; }
   let state = createWorkspace(saved,stateViewport());
   const nodes = new Map();
-  let onboarding = false, cafe;
+  let onboarding = false;
   let companionFocus = null;
   const entryURL = new URL(location.href);
-  let localeResume = entryURL.searchParams.get('space-resume') === catalog.language;
-  try { localeResume = localeResume || sessionStorage.getItem('space:locale-resume') === catalog.language; sessionStorage.removeItem('space:locale-resume'); } catch {}
+  let visited = false, localeResume = entryURL.searchParams.get('space-resume') === catalog.language;
+  try { visited = sessionStorage.getItem('space:visited:v2') === 'yes'; localeResume = localeResume || sessionStorage.getItem('space:locale-resume') === catalog.language; sessionStorage.removeItem('space:locale-resume'); } catch {}
   if (entryURL.searchParams.get('space-resume') === catalog.language) { entryURL.searchParams.delete('space-resume'); history.replaceState(null,'',entryURL.pathname+entryURL.search+entryURL.hash); }
   const completeEntry = () => { onboarding = false; root.removeAttribute('data-onboarding'); try { sessionStorage.setItem('space:visited:v2', 'yes'); } catch {} };
   let toastTimer, searchIndex = 0, drag = null;
@@ -98,7 +97,6 @@ function mountDesktop(root) {
   }
   function open(app,payload) {
     if (!APPS.includes(app)) return t('没有这个应用。','Unknown application.');
-    cafe?.enterDesktop();
     if (app !== 'welcome') completeEntry();
     const previous = state.windows.find(w => w.app === app);
     if(app==='agent' && state.active !== 'agent')companionFocus=publicFocus(state,catalog);
@@ -136,7 +134,7 @@ function mountDesktop(root) {
       if (!persist()) { notify(t('暂时无法保存，请先导出工作区再切换语言。','Storage is unavailable. Export your workspace before changing language.')); return false; }
       const destination = new URL(target);
       try { sessionStorage.setItem('space:locale-resume', args.value); }
-      catch { destination.searchParams.set('space-resume', args.value); destination.searchParams.set('space-cafe', cafe?.mode || 'desktop'); }
+      catch { destination.searchParams.set('space-resume', args.value); }
       location.assign(destination.href); return true;
     }
     if (name === 'command') return command(args.command);
@@ -186,7 +184,6 @@ function mountDesktop(root) {
     (button?.getClientRects().length ? button : fallback)?.focus({preventScroll:true});
   }
   function showDialog(dialog, input, fallback) {
-    cafe?.enterDesktop();
     completeEntry(); render();
     if (!dialog.open) {
       const active = document.activeElement;
@@ -371,11 +368,9 @@ function mountDesktop(root) {
     }
     if(productRoot.dataset.productView!=='bear')return;
     if(event.isComposing)return;
-    if(cafe?.modalOpen)return;
     const editing=isEditableTarget(event.target);
     if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();showSearch();return;}
     if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='j'){event.preventDefault();closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);open('agent');return;}
-    if(cafe?.active){if(event.key==='Escape')cafe.escape();return;}
     if(event.key==='Escape'){
       const action=escapeAction({searchOpen:search.open,launchpadOpen:launchpad.open,overviewOpen:overview.open,menuOpen:!menuPanel.hidden,editing,hasActive:Boolean(state.active)});
       if(!action)return;
@@ -397,7 +392,7 @@ function mountDesktop(root) {
     knowledgeGeneration++;knowledgePending=false;
     delete productRoot.dataset.knowledgeView;
     const isLab=view==='lab';
-    if(isLab){cafe?.enterDesktop();completeEntry();render();closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);}
+    if(isLab){completeEntry();render();closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);}
     if(isLab&&!lab){productRoot.append(productRoot.querySelector('[data-product-lab-template]').content.cloneNode(true));lab=productRoot.querySelector('[data-product-panel="lab"]');lab.addEventListener('click',event=>{if(event.target.closest('[data-bks-enter]'))openKnowledge();});}
     productRoot.dataset.productView=isLab?'lab':'bear';root.hidden=isLab;if(lab)lab.hidden=!isLab;
     document.body.classList.toggle('products-view-bear',!isLab);document.body.classList.toggle('products-view-lab',isLab);
@@ -442,15 +437,16 @@ function mountDesktop(root) {
   window.BearSpace=Object.freeze({ version:1, tools:Object.freeze([{name:'open',description:'Open an app',apps:[...APPS]},{name:'search',description:'Search public writing'},{name:'launchpad',description:'Browse all workspace applications'},{name:'note',description:'Replace this visitor’s local note'},{name:'arrange',description:'Arrange open windows'},{name:'export',description:'Download workspace state'},{name:'run',description:'Execute in the connected local Docker sandbox; never on the host'}]), execute, snapshot:()=>JSON.parse(serializeWorkspace(state)) });
   const entryRoute = resolveSpaceRoute(location.hash,catalog.products,new URLSearchParams(location.search).get('profile') === 'about' ? 'about' : '');
   const navigationType = performance.getEntriesByType('navigation')[0]?.type;
-  let resumeCafe = false;
-  try { resumeCafe = navigationType === 'reload' && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
-  if (!state.initialized) home(); else render();
-  applyHash(localeResume || resumeCafe);
-  cafe = mountCafe({ root, route:entryRoute, navigation:navigationType, localeResume, execute,
-    onEnter:()=>{completeEntry();render();},
-    beforeVisit:()=>{closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);},
-    focusDesktop:()=>nodes.get(state.active)?.el || menu
-  });
-  root.dataset.ready='true';
+  const freshEntry = navigationType === 'navigate' || (navigationType !== 'reload' && !visited);
+  onboarding = freshEntry && !localeResume && entryRoute.view === 'bear' && !entryRoute.app;
+  if (onboarding) { root.dataset.onboarding = 'true'; home(); }
+  else if (!state.initialized) home(); else render();
+  applyHash(localeResume);root.dataset.ready='true';
+  if (onboarding && canAnimateEntry({ reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches, coarsePointer:matchMedia('(pointer: coarse)').matches, saveData:navigator.connection?.saveData === true, width:root.clientWidth, visible:!document.hidden })) {
+    const config = JSON.parse(document.querySelector('[data-space-entrance]').textContent);
+    const host = root.querySelector('[data-space-entry-art]');
+    // This optional module never delays the working desktop or blocks input.
+    if (host) import(config.module).then(module => { if (host.isConnected && !root.hidden && !document.hidden) module.playEntrance(host); }).catch(() => {});
+  }
   if(saveFailure)notify(t('无法使用浏览器存储。笔记可导出，但刷新后可能丢失。','Browser storage is unavailable. Export notes before reloading.'));
 }
