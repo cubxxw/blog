@@ -52,6 +52,16 @@ try {
     await failurePage.waitForFunction(() => document.querySelector('[data-cafe-picker-status]').textContent.includes('未能载入'));
     assert.equal(await failurePage.locator('[data-cafe-image]').getAttribute('data-theme'), 'garden');
     assert.equal(await failurePage.evaluate(() => localStorage.getItem('space:cafe:theme:v1')), 'garden');
+    const lake = scenes.find(scene => scene.id === 'lake').image;
+    let release;
+    const held = new Promise(resolve => release = resolve);
+    await failurePage.route(`${base}${lake}`, async route => { await held; await route.continue(); });
+    await failurePage.clock.install();
+    await failurePage.locator('button[data-cafe-theme="lake"]').click();
+    await failurePage.clock.fastForward(45001);
+    await failurePage.waitForFunction(() => document.querySelector('[data-cafe-picker-status]').textContent.includes('未能载入'));
+    release(); await failurePage.waitForTimeout(100);
+    assert.equal(await failurePage.locator('[data-cafe-image]').getAttribute('data-theme'), 'garden', 'a late image cannot commit after its timeout');
     await failureContext.close();
   });
   await check('six complete cafés switch freely without changing workspace state', async () => {
