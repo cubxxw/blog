@@ -36,3 +36,16 @@ export function serviceMessage(code, zh = true) {
   };
   return (messages[code] || messages['ai-unavailable'])[zh ? 0 : 1];
 }
+
+// Limited inline formatting; the renderer creates text nodes, never HTML.
+export function planInlineText(value) {
+  const text=String(value || ''), segments=[];
+  const emphasis=/\*\*([^*\n]{1,240})\*\*/g;
+  let offset=0;
+  for(const match of text.matchAll(emphasis)) {
+    if(match.index>offset)segments.push({kind:'text',text:text.slice(offset,match.index)});
+    segments.push({kind:'strong',text:match[1]});offset=match.index+match[0].length;
+  }
+  if(offset<text.length)segments.push({kind:'text',text:text.slice(offset)});
+  return segments;
+}

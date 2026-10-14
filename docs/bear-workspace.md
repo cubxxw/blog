@@ -59,6 +59,8 @@ Dock 或 `⌘ / Ctrl J` 唤起非模态输入卡；开始任务后展开右侧�
 
 本地 `.env` 与线上 Netlify Functions 环境变量都需要配置凭证；构建成功不代表线上密钥已配置。服务分别提示配置缺失、凭证失效、限流、额度不足、超时和连接失败。验收见 [2026-10-14 空间助手](acceptance/2026-10-14-space-companion.md)。
 
+生产站点将 `DEEPSEEK_API_KEY` 保存为 Netlify Secret，只设置 production 上下文。Starter 计划使用默认 Builds / Functions / Runtime 范围；旧 `DASHSCOPE_API_KEY` 已移除。更新环境变量后需要重新部署，才能让运行中的函数读取新配置。
+
 | 工具 | 行为与审批 |
 | --- | --- |
 | `search_writing`、`read_writing` | 检索公开目录，读取同源公开文章的有限纯文本 |

@@ -9,7 +9,7 @@
 // mountAgent({host, catalog, execute, getState, notify}) -> disposer
 
 import { safeURL } from './state.mjs';
-import { contextualQuestion, serviceMessage } from './companion.mjs';
+import { contextualQuestion, serviceMessage, planInlineText } from './companion.mjs';
 import {
   runAgentTask,
   createTaskStore,
@@ -172,7 +172,9 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
         anchor.rel = 'noopener noreferrer';
         container.append(anchor);
       } else {
-        container.append(document.createTextNode(segment.text));
+        for(const part of planInlineText(segment.text)) {
+          container.append(part.kind==='strong' ? el('strong','',part.text) : document.createTextNode(part.text));
+        }
       }
     }
   }

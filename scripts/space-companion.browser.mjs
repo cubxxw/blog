@@ -21,7 +21,7 @@ try {
     await page.locator('[data-agent-voice]').click();assert.match(await page.locator('[data-agent-status]').textContent(),/不支持语音/);assert.equal(await page.locator('[data-agent-input]').isEditable(),true);
   });
   let requests=[];const endpoint=`${base}/.netlify/functions/bear-agent`;
-  await page.route(endpoint,route=>{requests.push(route.request().postDataJSON());return route.fulfill({contentType:'application/json',body:JSON.stringify({message:'CONTEXT_ANSWER：这是根据公开文章给出的回答。',toolCalls:[]})});});
+  await page.route(endpoint,route=>{requests.push(route.request().postDataJSON());return route.fulfill({contentType:'application/json',body:JSON.stringify({message:'CONTEXT_ANSWER：这是根据**公开文章**给出的回答。<img src=x onerror="window.MODEL_HTML_EXECUTED=true">',toolCalls:[]})});});
   await check('public article action pins its source and expands the sidecar',async()=>{
     await page.locator('[data-space-window="agent"] [data-window-action="close"]').click();
     await page.locator('[data-space-dock] [data-open="reader"]').click();await page.locator('[data-library-list] [data-open="reader"]').first().click();
@@ -32,6 +32,13 @@ try {
     assert.equal(await page.locator('[data-companion-mode="expanded"]').count(),1);assert.ok(requests[0].messages[0].content.includes('Reference:'));
     assert.equal(await page.locator('[data-agent-activity]').last().getAttribute('open'),null);
     await page.screenshot({path:`${directory}/desktop-sidecar.png`});
+  });
+  await check('answer emphasis renders without executing model HTML',async()=>{
+    const answer=page.locator('[data-agent-answer]').filter({hasText:'CONTEXT_ANSWER'});
+    assert.equal(await answer.locator('strong').textContent(),'公开文章');
+    assert.ok(!(await answer.textContent()).includes('**公开文章**'));
+    assert.equal(await answer.locator('img').count(),0);
+    assert.equal(await page.evaluate(()=>window.MODEL_HTML_EXECUTED),undefined);
   });
   await check('explicit selection is copied from the public reader only',async()=>{
     await page.locator('[data-space-window="agent"] [data-window-action="close"]').click();

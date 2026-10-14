@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { publicFocus, contextualQuestion, serviceMessage } from '../assets/js/space/companion.mjs';
+import { publicFocus, contextualQuestion, serviceMessage, planInlineText } from '../assets/js/space/companion.mjs';
 
 const catalog = { articles:[{url:'/zh/ai-agent/posts/test/',title:'An article'}], products:[{id:'daypage',name:'DayPage',url:'https://daypage.example'}], readingDocuments:[], photos:[] };
 test('context resolves only public catalog objects and excludes private editors', () => {
@@ -23,4 +23,10 @@ test('service failures explain real causes without echoing provider details', ()
   assert.match(serviceMessage('ai-credit-exhausted',false),/credit/i);
   assert.match(serviceMessage('ai-not-configured',true),/配置/);
   assert.ok(!serviceMessage('sk-PRIVATE_secret',true).includes('PRIVATE'));
+});
+test('inline emphasis removes paired markers while HTML and unmatched syntax stay literal',()=>{
+  assert.deepEqual(planInlineText('主题：**AI 与 Agent**。'),[{kind:'text',text:'主题：'},{kind:'strong',text:'AI 与 Agent'},{kind:'text',text:'。'}]);
+  assert.deepEqual(planInlineText('**<img src=x onerror=alert(1)>**'),[{kind:'strong',text:'<img src=x onerror=alert(1)>'}]);
+  assert.deepEqual(planInlineText('未结束 **标题'),[{kind:'text',text:'未结束 **标题'}]);
+  assert.deepEqual(planInlineText('代码 2 ** 3'),[{kind:'text',text:'代码 2 ** 3'}]);
 });
