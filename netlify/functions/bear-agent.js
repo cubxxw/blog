@@ -309,7 +309,9 @@ function buildUpstreamBody({ question, messages, context, language, model }) {
   ].join("\n").slice(0, LIMITS.contextChars + 200);
   // The browser loop sends messages rather than a separate question field.
   // Keep public data below system authority without splitting tool call/results.
-  const turns = [{ role: "system", content: SYSTEM_PROMPT }, ...messages.map(message => ({ ...message }))];
+  const selectedLanguage = language === 'en' ? 'English (en)' : 'Chinese (zh)';
+  const languageInstruction = `Selected interface language: ${selectedLanguage}. Answer in this language unless the visitor explicitly requests another language.`;
+  const turns = [{ role: "system", content: `${SYSTEM_PROMPT}\n${languageInstruction}` }, ...messages.map(message => ({ ...message }))];
   if (question) turns.push({ role: "user", content: `${question}\n\n${catalogBlock}` });
   else {
     const firstUser = turns.findIndex(message => message.role === 'user');

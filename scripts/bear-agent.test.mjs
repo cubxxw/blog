@@ -133,6 +133,17 @@ test('the upstream timeout covers the request and its body read', async () => {
 
 // ─── Untrusted request content ───────────────────────────────────────────────
 
+for (const [language, label] of [['en-US', 'English (en)'], ['zh-CN', 'Chinese (zh)']]) {
+  test(`${language}: the selected interface language reaches the authoritative model instructions`, async () => {
+    const { calls, requestImpl } = upstreamReply({ content: 'ok' });
+    const handler = createHandler({ requestImpl, env: ENV });
+    await handler(post({ language, messages: [{ role: 'user', content: 'Open the writing library.' }] }));
+    const system = calls[0].body.messages.find(message => message.role === 'system').content;
+    assert.ok(system.includes(`Selected interface language: ${label}`));
+    assert.ok(system.includes('unless the visitor explicitly requests another language'));
+  });
+}
+
 test('client system roles are stripped and the server instructions stay authoritative', async () => {
   const { calls, requestImpl } = upstreamReply({ content: 'ok' });
   const handler = createHandler({ requestImpl, env: ENV });
@@ -148,7 +159,8 @@ test('client system roles are stripped and the server instructions stay authorit
   const messages = calls[0].body.messages;
   const systemMessages = messages.filter((m) => m.role === 'system');
   assert.equal(systemMessages.length, 1, 'only the server system prompt may exist');
-  assert.equal(systemMessages[0].content, SYSTEM_PROMPT);
+  assert.ok(systemMessages[0].content.startsWith(`${SYSTEM_PROMPT}\n`));
+  assert.ok(systemMessages[0].content.includes('Selected interface language: Chinese (zh)'));
   const upstream = JSON.stringify(calls[0].body);
   assert.ok(!upstream.includes('CLIENT_SYSTEM_SENTINEL'));
   assert.ok(!upstream.includes('CLIENT_DEVELOPER_SENTINEL'));
