@@ -1,3 +1,4 @@
+import { enterWorkspace } from './space-browser-entry.mjs';
 import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -18,7 +19,7 @@ try {
     assert.equal(await page.locator(`#menu a[href$="${prefix}/projects/"]`).innerText(), label);
     await page.goto(`${base}${prefix}/projects/`, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
+    await enterWorkspace(page);
     await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     assert.match(await page.locator('[data-space-menu-trigger]').getAttribute('aria-label'), /CUBXXW\s*OS/);
     await page.locator('[data-space-window="welcome"] [data-payload="identity"]').click();

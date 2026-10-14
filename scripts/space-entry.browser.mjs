@@ -1,3 +1,4 @@
+import { enterWorkspace } from './space-browser-entry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -22,20 +23,20 @@ try {
     await page.evaluate(theme => window.BearSpace.execute('theme',{value:theme}),theme);
     assert.equal(await page.locator('[data-space-cafe]').isVisible(),true);
     assert.equal(await page.locator('[data-space-window]:visible').count(),0);
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
+    await enterWorkspace(page);
     assert.equal(await page.locator('[data-space-window]:visible').count(),1);
     assert.equal(await page.locator('.space-menubar,.space-desktop-icons,.space-signature').count(),0);
     assert.equal(await page.locator('.product-view-switch').isVisible(),false);
-    assert.equal(await page.locator('[data-enter-space]').isVisible(),true);
+    assert.equal(await page.locator('[data-space-profile]').isVisible(),true);
     assert.equal(await page.locator('[data-space-icons]').evaluate(template => template.content.querySelectorAll('.space-icon').length),11);
     const dock = await page.locator('[data-space-dock]').boundingBox();
     assert.ok(dock.x>=0 && dock.x+dock.width<=width);
     if(width<=390) for (const item of await page.locator('[data-space-dock] button:visible').all()) {
       const box=await item.boundingBox(); assert.ok(box.width>=44 && box.height>=44);
     }
-    assert.equal(requests.some(url => /three\.module|\/entrance\./.test(url)),false,'reduced motion must avoid the entire 3D download');
+    assert.equal(await page.locator('[data-bear-workspace]').getAttribute('data-world-travel'),'false','reduced motion skips automatic camera travel');
     await page.screenshot({path:path.join(evidence,`${lang}-${width}-${theme}.png`)});
-    await page.locator('[data-enter-space]').click();
+    await page.locator('[data-space-menu-trigger]').click(); await page.locator('.space-menu [data-space-launchpad-trigger]').click();
     assert.equal(await page.locator('[data-space-launchpad]').isVisible(),true);
     assert.equal(await page.locator('[data-launchpad-app]').count(),11);
     await page.keyboard.press('Escape');
@@ -102,7 +103,7 @@ try {
   const beforeCafeEscape=await recovering.evaluate(()=>window.BearSpace.snapshot());
   await recovering.keyboard.press('Escape');
   assert.deepEqual(await recovering.evaluate(()=>window.BearSpace.snapshot()),beforeCafeEscape,'Escape in the café cannot minimize a hidden window');
-  await recovering.locator('.space-cafe__welcome [data-cafe-enter]').click();
+  await enterWorkspace(recovering);
   assert.equal(await recovering.locator('[data-space-window="notes"]').isVisible(),true,'opening the computer restores the prior workspace');
   assert.equal(await recovering.locator('[data-note-editor]').inputValue(),'Existing private note');
   await recovering.goto(`${base}/zh/projects/`);
@@ -118,7 +119,7 @@ try {
   await unsaved.goto(`${base}/zh/projects/`);
   await unsaved.waitForFunction(() => window.BearSpace);
   await unsaved.evaluate(() => window.BearSpace.execute('note',{text:'Unsaved private note'}));
-  await unsaved.locator('.space-cafe__welcome [data-cafe-enter]').click();
+  await enterWorkspace(unsaved);
   await unsaved.locator('[data-space-dock] [data-open="settings"]').click();
   await unsaved.locator('[data-set-language="en"]').click();
   assert.equal(new URL(unsaved.url()).pathname,'/zh/projects/');
@@ -151,9 +152,9 @@ try {
   const context=await browser.newContext({viewport:{width:1440,height:900}}), page=await context.newPage();
   await page.goto(`${base}/zh/projects/`);
   await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready==='true');
-  await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
+  await enterWorkspace(page);
   await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.cafeMode==='desktop');
-  assert.equal(await page.locator('.space-cafe__scene').evaluate(el=>el.getAnimations().length),0,'entrance animation must release after reaching the computer');
+  assert.equal(await page.locator('[data-bear-workspace]').getAttribute('data-world-travel'),'false','camera travel must release after reaching the computer');
   await page.screenshot({path:path.join(evidence,'desktop-entrance-complete.png')});
   await context.close();
   await fs.writeFile(path.join(evidence,'results.json'),JSON.stringify(results,null,2));

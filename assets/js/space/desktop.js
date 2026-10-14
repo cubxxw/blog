@@ -98,14 +98,14 @@ function mountDesktop(root) {
   }
   function open(app,payload) {
     if (!APPS.includes(app)) return t('没有这个应用。','Unknown application.');
-    cafe?.enterDesktop();
+    const entering=cafe?.enterDesktop();
     if (app !== 'welcome') completeEntry();
     const previous = state.windows.find(w => w.app === app);
     if(app==='agent' && state.active !== 'agent')companionFocus=publicFocus(state,catalog);
     // Dock restores the existing document; an explicit payload navigates that app.
     update({ type:'open',app,payload:app==='agent' ? '' : payload === undefined ? previous?.payload || '' : payload });
     if (!state.windows.some(w => w.app === app)) return t('窗口已满。先关闭一个窗口。','Close a window before opening another.');
-    focusWindow(app);
+    if(entering)entering.then(()=>{if(state.active===app)focusWindow(app);});else focusWindow(app);
     if(app==='agent')root.dispatchEvent(new CustomEvent('bear:agent-prefill',{detail:{focus:companionFocus,question:payload || ''}}));
     return t(`已打开：${labels[app]}`,`Opened: ${labels[app]}`);
   }
@@ -175,11 +175,11 @@ function mountDesktop(root) {
   function home() {
     const width = root.clientWidth <= 640 ? 1280 : viewport().width;
     const height = Math.min(600, Math.max(380, viewport().height - 140));
-    update({type:'open',app:'welcome',payload:'',rect:{x:Math.max(16,(width-680)/2),y:Math.max(16,(viewport().height-height-85)/2),width:Math.min(680,width-32),height}});
+    update({type:'open',app:'welcome',payload:root.querySelector('[data-space-cafe]')?'identity':'',rect:{x:Math.max(16,(width-680)/2),y:Math.max(16,(viewport().height-height-85)/2),width:Math.min(680,width-32),height}});
     update({type:'focus',id:'welcome'});
     update({type:'initialized'});
   }
-  function focusWindow(app) { nodes.get(app)?.el.focus({preventScroll:true}); }
+  function focusWindow(app) {const el=nodes.get(app)?.el,input=app==='agent'?el?.querySelector('[data-agent-input]'):null;(input&&!input.disabled?input:el)?.focus({preventScroll:true});}
   function focusAppControl(app) {
     const button = root.querySelector(`[data-space-dock] [data-open="${app}"]`);
     const fallback = menu;
@@ -344,14 +344,18 @@ function mountDesktop(root) {
   });
   layer.addEventListener('pointermove',event=>{
     if(!drag)return;
-    const dx=event.clientX-drag.x,dy=event.clientY-drag.y;
+    const screen=root.querySelector('.space-spatial-screen');
+    const bounds=screen?.getBoundingClientRect();
+    const ratio=bounds?.width / viewport().width || 1;
+    const dx=(event.clientX-drag.x)/ratio,dy=(event.clientY-drag.y)/ratio;
     const rect={...drag.rect};
     if(drag.kind==='move'){rect.x+=dx;rect.y+=dy;}
     else {if(drag.kind.includes('e'))rect.width+=dx;if(drag.kind.includes('s'))rect.height+=dy;}
     drag.next=fitRect(rect,viewport());
     Object.assign(drag.el.style,{width:`${drag.next.width}px`,height:`${drag.next.height}px`,transform:`translate(${drag.next.x}px,${drag.next.y}px)`});
     const preview=root.querySelector('[data-space-snap]');
-    drag.snap=drag.kind==='move'?(event.clientX<25?'left':event.clientX>viewport().width-25?'right':event.clientY<49?'max':null):null;
+    const pointerX=(event.clientX-(bounds?.left||0))/ratio,pointerY=(event.clientY-(bounds?.top||0))/ratio;
+    drag.snap=drag.kind==='move'?(pointerX<25?'left':pointerX>viewport().width-25?'right':pointerY<49?'max':null):null;
     preview.hidden=!drag.snap;
     if(drag.snap){preview.style.left=drag.snap==='right'?'calc(50% + 4px)':'8px';preview.style.width=drag.snap==='max'?'calc(100% - 16px)':'calc(50% - 12px)';}
   });
@@ -377,6 +381,7 @@ function mountDesktop(root) {
     if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='j'){event.preventDefault();closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);open('agent');return;}
     if(cafe?.active){if(event.key==='Escape')cafe.escape();return;}
     if(event.key==='Escape'){
+      if(cafe?.spatial&&!editing&&!search.open&&!launchpad.open&&!overview.open&&menuPanel.hidden){event.preventDefault();cafe.visit();return;}
       const action=escapeAction({searchOpen:search.open,launchpadOpen:launchpad.open,overviewOpen:overview.open,menuOpen:!menuPanel.hidden,editing,hasActive:Boolean(state.active)});
       if(!action)return;
       event.preventDefault();

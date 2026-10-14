@@ -1,3 +1,4 @@
+import { enterWorkspace } from './space-browser-entry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -34,7 +35,7 @@ try {
   assert.equal(await page.locator('[data-bear-workspace]').count(), 1, 'BEAR must provide an interactive desktop');
   await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
   await check('café opens the real desktop and its Dock apps', async () => {
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
+    await enterWorkspace(page);
     await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     assert.equal(await page.locator('[data-space-window]').count(), 1);
     await page.locator('[data-space-dock] [data-open="notes"]').click();
@@ -191,7 +192,7 @@ try {
   await check('English workspace has localized labels and true products', async () => {
     await page.goto(`${base}/projects/`, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
-    await page.locator('.space-cafe__welcome [data-cafe-enter]').click();
+    await enterWorkspace(page);
     await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     await page.locator('[data-space-dock] [data-open="products"]').click();
     assert.ok((await page.locator('[data-space-window="products"]').innerText()).includes('Talent Signal'));
