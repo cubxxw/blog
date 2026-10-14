@@ -25,9 +25,9 @@ function loadHandler(t, responses) {
   }));
   const calls = [];
   const sandbox = {
-    exports: {}, __dirname: directory, TextDecoder,
-    process: { env: { DASHSCOPE_API_KEY: 'test-secret-never-expose', DASHSCOPE_MODEL: 'test-model', DASHSCOPE_BASE_URL: 'https://example.invalid/v1' } },
-    require: (name) => name === '@netlify/functions' ? { stream: (handler) => handler } : require(name),
+    exports: {}, __dirname: directory, TextDecoder, AbortController,
+    process: { env: { DEEPSEEK_API_KEY: 'test-secret-never-expose', DEEPSEEK_MODEL: 'deepseek-flash', DEEPSEEK_BASE_URL: 'https://example.invalid/v1' } },
+    require: (name) => name === '@netlify/functions' ? { stream: (handler) => handler } : name === '../lib/deepseek.js' ? {deepseekChat: async (body)=>{ calls.push({body:JSON.parse(JSON.stringify(body))}); assert.ok(responses.length,'Unexpected upstream request'); return responses.shift(); }} : require(name),
     fetch: async (url, options) => {
       calls.push({ url, body: JSON.parse(options.body) });
       assert.ok(responses.length, 'Unexpected upstream request');
@@ -103,7 +103,7 @@ for (const language of ['zh-CN', 'en']) {
       { role: 'user', content: 'Earlier question' }, { role: 'assistant', content: 'Earlier answer' },
       { role: 'user', content: 'How does Agent memory work?' },
     ]);
-    assert.equal(calls[0].body.model, 'test-model');
+    assert.equal(calls[0].body.model, 'deepseek-flash');
     assert.equal(calls[0].body.max_completion_tokens, 1800);
     assert.equal(calls[0].body.stream, false);
     assert.deepEqual(JSON.parse(result.body), {

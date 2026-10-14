@@ -25,7 +25,7 @@
     "seo:output:check": "node scripts/check-generated-seo.mjs",
     "performance:check": "node --test scripts/performance-seo.test.mjs",
     "products:check": "node scripts/check-product-integration.mjs",
-    "bear:test": "node --test scripts/bear-agent-loop.test.mjs scripts/bear-agent.test.mjs scripts/bear-media.test.cjs scripts/bear-media-state.test.mjs scripts/bear-media-lifecycle.test.mjs scripts/bear-runtime-lifecycle.test.mjs scripts/bear-runtime.test.mjs scripts/bear-runtime-proxy.test.mjs scripts/bear-navigation.test.mjs scripts/bear-workspace-state.test.mjs scripts/space-profile-route.test.mjs scripts/space-entry.test.mjs scripts/blog-ai-stream.test.mjs",
+    "bear:test": "node --test scripts/bear-agent-loop.test.mjs scripts/bear-agent.test.mjs scripts/bear-media.test.cjs scripts/bear-media-state.test.mjs scripts/bear-media-lifecycle.test.mjs scripts/bear-runtime-lifecycle.test.mjs scripts/bear-runtime.test.mjs scripts/bear-runtime-proxy.test.mjs scripts/bear-navigation.test.mjs scripts/bear-workspace-state.test.mjs scripts/space-profile-route.test.mjs scripts/space-entry.test.mjs scripts/blog-ai-stream.test.mjs scripts/article-ai.test.mjs scripts/deepseek-transport.test.mjs scripts/space-companion.test.mjs",
     "flavor:check": "node scripts/check-ai-flavor.mjs --changed --check",
     "flavor:scan": "node scripts/check-ai-flavor.mjs",
     "geo:audit": "node scripts/geo-audit.mjs",
@@ -77,5 +77,8 @@
     "smol-toml": "1.9.0",
     "typescript": "^7.0.2",
     "yaml": "2.9.1"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-llm-deepseek": "0.2.0-rc.2"
   }
 }

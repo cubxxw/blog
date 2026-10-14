@@ -16,18 +16,18 @@ const { createHandler, TOOL_SCHEMAS, REGISTERED_APPS, SYSTEM_PROMPT } = bearAgen
 // ─── Test doubles ────────────────────────────────────────────────────────────
 
 const ENV = {
-  DASHSCOPE_API_KEY: 'test-secret-never-expose',
-  DASHSCOPE_MODEL: 'test-model',
-  DASHSCOPE_BASE_URL: 'https://upstream.invalid/v1',
+  DEEPSEEK_API_KEY: 'test-secret-never-expose',
+  DEEPSEEK_MODEL: 'test-model',
+  DEEPSEEK_BASE_URL: 'https://upstream.invalid/v1',
 };
 
 function upstreamReply(message) {
   const calls = [];
-  const fetchImpl = async (url, options) => {
-    calls.push({ url, options, body: JSON.parse(options.body) });
+  const requestImpl = async (body, options) => {
+    calls.push({ options, body });
     return { ok: true, status: 200, json: async () => ({ choices: [{ message }] }) };
   };
-  return { calls, fetchImpl };
+  return { calls, requestImpl };
 }
 
 function post(body, headers = {}) {
@@ -46,8 +46,8 @@ function post(body, headers = {}) {
 const readBody = (response) => JSON.parse(response.body);
 
 test('a browser loop turn includes the public catalog even without a separate question field', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'ok' });
-  await createHandler({ fetchImpl, env: ENV })(post({
+  const { calls, requestImpl } = upstreamReply({ content: 'ok' });
+  await createHandler({ requestImpl, env: ENV })(post({
     messages: [{ role: 'user', content: 'Show the journey' }],
     publicContext: { photos: [{ id: 'kumano', title: 'CATALOG_SENTINEL', region: 'japan' }] },
   }));
@@ -55,25 +55,18 @@ test('a browser loop turn includes the public catalog even without a separate qu
   assert.ok(!calls[0].body.messages[0].content.includes('CATALOG_SENTINEL'));
 });
 
-test('non-streaming Qwen turns explicitly disable thinking without changing the configured model', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'ok' });
-  await createHandler({ fetchImpl, env: { ...ENV, DASHSCOPE_MODEL: 'qwen-turbo' } })(post({ question: 'Hello' }));
-  assert.equal(calls[0].body.enable_thinking, false);
-  assert.equal(calls[0].body.model, 'qwen-turbo');
-});
-
 test('public Immich photo IDs remain complete in the model context', async () => {
   const id = `immich:${'a'.repeat(64)}:123e4567-e89b-42d3-a456-426614174000`;
-  const { calls, fetchImpl } = upstreamReply({ content: 'ok' });
-  await createHandler({ fetchImpl, env: ENV })(post({ messages: [{ role: 'user', content: 'Open this photograph' }], publicContext: { photos: [{ id, title: 'Public photo' }] } }));
+  const { calls, requestImpl } = upstreamReply({ content: 'ok' });
+  await createHandler({ requestImpl, env: ENV })(post({ messages: [{ role: 'user', content: 'Open this photograph' }], publicContext: { photos: [{ id, title: 'Public photo' }] } }));
   assert.ok(calls[0].body.messages.some(message => message.content.includes(id)));
 });
 
 // ─── Transport boundaries ────────────────────────────────────────────────────
 
 test('only same-origin JSON POST requests reach the model', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'hi' });
-  const handler = createHandler({ fetchImpl, env: ENV });
+  const { calls, requestImpl } = upstreamReply({ content: 'hi' });
+  const handler = createHandler({ requestImpl, env: ENV });
 
   assert.equal((await handler({ httpMethod: 'GET', headers: {} })).statusCode, 405);
   assert.equal((await handler(post({ question: 'hi' }, { 'content-type': 'text/plain' }))).statusCode, 415);
@@ -84,12 +77,12 @@ test('only same-origin JSON POST requests reach the model', async () => {
   assert.equal((await handler(post({ question: 'hi' }))).statusCode, 200);
   assert.equal((await handler(post({ question: 'hi' }, { origin: undefined }))).statusCode, 200);
   assert.equal(calls.length, 2);
-  assert.equal(calls[0].url, 'https://upstream.invalid/v1/chat/completions');
+  assert.equal(calls[0].options.env.DEEPSEEK_BASE_URL, ENV.DEEPSEEK_BASE_URL);
 });
 
 test('request budgets reject oversized bodies, histories and questions', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'hi' });
-  const handler = createHandler({ fetchImpl, env: ENV });
+  const { calls, requestImpl } = upstreamReply({ content: 'hi' });
+  const handler = createHandler({ requestImpl, env: ENV });
 
   assert.equal((await handler(post('x'.repeat(70000)))).statusCode, 413);
   assert.equal((await handler(post({ question: 'hi', messages: Array.from({ length: 30 }, () => ({ role: 'user', content: 'x' })) }))).statusCode, 400);
@@ -100,29 +93,29 @@ test('request budgets reject oversized bodies, histories and questions', async (
 });
 
 test('without a configured key the response is an actionable unavailable state', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'hi' });
-  const handler = createHandler({ fetchImpl, env: { DASHSCOPE_BASE_URL: 'https://upstream.invalid/v1' } });
+  const { calls, requestImpl } = upstreamReply({ content: 'hi' });
+  const handler = createHandler({ requestImpl, env: { DEEPSEEK_BASE_URL: 'https://upstream.invalid/v1' } });
   const response = await handler(post({ question: 'hi' }));
   assert.equal(response.statusCode, 503);
-  assert.deepEqual(readBody(response), { error: 'ai-unavailable', available: false });
+  assert.deepEqual(readBody(response), { error: 'ai-not-configured', available: false });
   assert.ok(!response.body.includes('upstream.invalid'));
   assert.deepEqual(calls, []);
 });
 
 test('upstream failures and provider errors never leak through', async () => {
   const leaky = async () => { throw new Error('internal: upstream.invalid token abc123'); };
-  const handler = createHandler({ fetchImpl: leaky, env: ENV });
+  const handler = createHandler({ requestImpl: leaky, env: ENV });
   const response = await handler(post({ question: 'hi' }));
   assert.equal(response.statusCode, 502);
-  assert.deepEqual(readBody(response), { error: 'ai-unavailable' });
+  assert.deepEqual(readBody(response), { error: 'ai-network-error' });
   assert.ok(!response.body.includes('abc123') && !response.body.includes('upstream.invalid'));
 
   const denied = createHandler({
     env: ENV,
-    fetchImpl: async () => ({ ok: false, status: 429, json: async () => ({ error: { message: 'quota secret-detail' } }) }),
+    requestImpl: async () => ({ ok: false, status: 429, json: async () => ({ error: { message: 'quota secret-detail' } }) }),
   });
   const blocked = await denied(post({ question: 'hi' }));
-  assert.equal(blocked.statusCode, 502);
+  assert.equal(blocked.statusCode, 429);
   assert.deepEqual(readBody(blocked), { error: 'ai-unavailable' });
   assert.ok(!blocked.body.includes('secret-detail'));
 });
@@ -131,18 +124,18 @@ test('the upstream timeout covers the request and its body read', async () => {
   const hanging = (url, options) => new Promise((resolve, reject) => {
     options.signal.addEventListener('abort', () => reject(new Error('aborted')), { once: true });
   });
-  const handler = createHandler({ fetchImpl: hanging, env: ENV, timeoutMs: 60 });
+  const handler = createHandler({ requestImpl: hanging, env: ENV, timeoutMs: 60 });
   const started = Date.now();
   const response = await handler(post({ question: 'hi' }));
-  assert.equal(response.statusCode, 502);
+  assert.equal(response.statusCode, 504);
   assert.ok(Date.now() - started < 3000, 'the handler must give up on a hung upstream');
 });
 
 // ─── Untrusted request content ───────────────────────────────────────────────
 
 test('client system roles are stripped and the server instructions stay authoritative', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'ok' });
-  const handler = createHandler({ fetchImpl, env: ENV });
+  const { calls, requestImpl } = upstreamReply({ content: 'ok' });
+  const handler = createHandler({ requestImpl, env: ENV });
   await handler(post({
     question: 'hello',
     messages: [
@@ -163,8 +156,8 @@ test('client system roles are stripped and the server instructions stay authorit
 });
 
 test('browser metadata is untrusted data and private note or draft never travel', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'ok' });
-  const handler = createHandler({ fetchImpl, env: ENV });
+  const { calls, requestImpl } = upstreamReply({ content: 'ok' });
+  const handler = createHandler({ requestImpl, env: ENV });
   await handler(post({
     question: 'hello',
     publicContext: {
@@ -187,8 +180,8 @@ test('browser metadata is untrusted data and private note or draft never travel'
 });
 
 test('the caller cannot choose a provider, model, base URL or tool set', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'ok' });
-  const handler = createHandler({ fetchImpl, env: ENV });
+  const { calls, requestImpl } = upstreamReply({ content: 'ok' });
+  const handler = createHandler({ requestImpl, env: ENV });
   await handler(post({
     question: 'hello',
     provider: 'evil-provider',
@@ -199,8 +192,8 @@ test('the caller cannot choose a provider, model, base URL or tool set', async (
   }));
 
   const body = calls[0].body;
-  assert.equal(calls[0].url, 'https://upstream.invalid/v1/chat/completions');
-  assert.equal(body.model, 'test-model');
+  assert.equal(calls[0].options.env.DEEPSEEK_BASE_URL, ENV.DEEPSEEK_BASE_URL);
+  assert.equal(body.model, 'deepseek-flash');
   assert.deepEqual(body.tools, TOOL_SCHEMAS);
   assert.equal(body.stream, false, 'the model turn is non-streaming');
   assert.ok(Number.isFinite(body.max_tokens) && body.max_tokens <= 2000);
@@ -210,8 +203,8 @@ test('the caller cannot choose a provider, model, base URL or tool set', async (
 });
 
 test('conversation history keeps its OpenAI tool shape but stays bounded', async () => {
-  const { calls, fetchImpl } = upstreamReply({ content: 'ok' });
-  const handler = createHandler({ fetchImpl, env: ENV });
+  const { calls, requestImpl } = upstreamReply({ content: 'ok' });
+  const handler = createHandler({ requestImpl, env: ENV });
   await handler(post({
     messages: [
       { role: 'user', content: 'find memory' },
@@ -236,7 +229,7 @@ test('conversation history keeps its OpenAI tool shape but stays bounded', async
 // ─── Model tool call validation ──────────────────────────────────────────────
 
 test('model tool calls are structurally validated and bounded', async () => {
-  const { fetchImpl } = upstreamReply({
+  const { requestImpl } = upstreamReply({
     content: '',
     tool_calls: [
       { id: 'ok1', function: { name: 'open_app', arguments: '{"app":"products"}' } },
@@ -247,7 +240,7 @@ test('model tool calls are structurally validated and bounded', async () => {
       { id: 'over2', function: { name: 'list_photos', arguments: '{}' } },
     ],
   });
-  const handler = createHandler({ fetchImpl, env: ENV });
+  const handler = createHandler({ requestImpl, env: ENV });
   const response = await handler(post({ question: 'hello' }));
   assert.equal(response.statusCode, 200);
   const { message, toolCalls, rejectedToolCalls } = readBody(response);

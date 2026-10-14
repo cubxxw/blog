@@ -4,7 +4,7 @@ import { mountAgent } from './agent-panel.js';
 
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const html = escapeHTML;
-export function mountApps({ root, catalog, execute, getState, updateNote, notify, icon }) {
+export function mountApps({ root, catalog, execute, getState, getContext, updateNote, notify, icon }) {
   const zh = catalog.language === 'zh';
   const t = (cn, en) => zh ? cn : en;
   const disposers = new Map();
@@ -29,6 +29,9 @@ export function mountApps({ root, catalog, execute, getState, updateNote, notify
     const selected = productByID(selectedID);
     host.innerHTML = `<div class="space-finder"><aside class="space-sidebar"><p>${t('产品目录','PRODUCTS')}</p>${catalog.products.map(p => `<button data-select-product="${html(p.id)}" aria-pressed="${p.id === selected.id}">${html(p.name)}</button>`).join('')}<p style="margin-top:22px">${t('继续探索','EXPLORE')}</p><button data-open="reader">${t('构建笔记','Build notes')}</button><button data-open="books">${t('我的书架','Books')}</button></aside><article class="space-product"><p class="space-eyebrow">${html(selected.stage)}</p><h2>${html(selected.name)}</h2><p>${html(selected.headline)}</p>${selected.image ? `<img class="space-product__shot" src="${html(selected.image)}" alt="${html(selected.alt)}" loading="lazy">` : ''}<p>${html(selected.description)}</p><div class="space-product__links">${link(selected.url,t('打开真实产品','Open the product'),'space-button')}${link(selected.demo,t('测试预览','Try the demo'))}${link(selected.github,t('源码','Source'))}</div>${selected.boundary ? `<p class="space-map__note">${t('当前边界：','Current boundary: ')}${html(selected.boundary)}</p>` : ''}${selected.related?.length ? `<h3 style="margin-top:24px">${t('从构建到思考','Related writing')}</h3>${selected.related.map(url => { const a = articleByURL(url); return a ? listItem(a,`data-open="reader" data-payload="${html(url)}"`) : ''; }).join('')}` : ''}</article></div>`;
     host.querySelectorAll('[data-select-product]').forEach(b => b.addEventListener('click', () => execute('open', { app: 'products', payload: b.dataset.selectProduct })));
+    const ask = document.createElement('button'); ask.type='button';ask.className='space-button space-button--secondary';ask.dataset.productAsk='';ask.textContent=t('✳ 聊聊这个产品','✳ Ask about this project');
+    ask.addEventListener('click',()=>execute('ask',{question:t('介绍这个产品，它解决什么问题？','What does this project do, and who is it for?')}));
+    host.querySelector('.space-product__links').append(ask);
   }
   function showLibrary(host, filter = libraryView.filter) {
     host.innerHTML = `<div class="space-toolbar"><span>${t('公开文章','Public writing')} / ${articles.length}</span><input data-library-query type="search" placeholder="${t('找一篇文章…','Find writing…')}" aria-label="${t('筛选文章','Filter writing')}"></div><div class="space-finder"><aside class="space-sidebar"><p>${t('阅读目录','LIBRARY')}</p>${[['all',t('全部文章','All writing')],['ai-agent','AI Agent'],['engineering',t('工程实践','Engineering')],['growth',t('思考与笔记','Thoughts')],['favorites',t('你的收藏','Your bookmarks')]].map(([id,label]) => `<button data-library-filter="${id}" aria-pressed="${filter === id}">${label}</button>`).join('')}<p style="margin-top:22px">${t('你的空间','YOUR SPACE')}</p><button data-open="notes">${t('写点想法','Write a note')}</button><button data-open="books">${t('书架','Books')}</button></aside><div class="space-list" data-library-list></div></div>`;
@@ -55,9 +58,24 @@ export function mountApps({ root, catalog, execute, getState, updateNote, notify
       execute('favorite', { url });
       event.currentTarget.textContent = `${getState().favorites.includes(url) ? '★' : '☆'} ${t('收藏','Save')}`;
     });
+    const actions = document.createElement('div');actions.className='space-reader__ai-actions';
+    const ask = document.createElement('button');ask.type='button';ask.dataset.readerAsk='';ask.textContent=t('✳ 总结这篇文章','✳ Summarize this article');
+    const explain = document.createElement('button');explain.type='button';explain.dataset.readerExplain='';explain.hidden=true;explain.textContent=t('解释选中文字','Explain selection');
+    actions.append(ask,explain);host.querySelector('.space-toolbar').after(actions);
+    ask.addEventListener('click',()=>execute('ask',{question:t('总结这篇文章，给出核心观点和阅读入口。','Summarize this article and link to it.')}));
+    let selection = '';
+    const capture = () => {
+      const selected=window.getSelection(); const body=host.querySelector('[data-reader-body]');
+      selection = selected && body?.contains(selected.anchorNode) && body.contains(selected.focusNode) ? selected.toString().trim().slice(0,1200) : '';
+      explain.hidden=!selection;
+    };
+    document.addEventListener('selectionchange',capture);
+    // Preserve the explicit selection while the toolbar takes focus.
+    explain.addEventListener('pointerdown',event=>event.preventDefault());
+    explain.addEventListener('click',()=>{if(selection)execute('ask',{question:t('解释下面选中的段落。','Explain this selected passage.'),selection});});
     const controller = new AbortController();
     let disposed = false;
-    disposers.set(windowID, () => { disposed = true; controller.abort(); });
+    disposers.set(windowID, () => { disposed = true; controller.abort();document.removeEventListener('selectionchange',capture); });
     const timer = setTimeout(() => controller.abort(), 12000);
     try {
       const href = safeURL(url, location.origin);
@@ -145,7 +163,7 @@ export function mountApps({ root, catalog, execute, getState, updateNote, notify
     });
   }
   function showAgent(host, windowID, payload) {
-    const dispose = mountAgent({ host, catalog, execute, getState, notify });
+    const dispose = mountAgent({ host, catalog, execute, getState, getContext, notify });
     disposers.set(windowID, typeof dispose === 'function' ? dispose : () => dispose?.dispose?.());
     if (payload && typeof payload === 'string') {
       const editor = host.querySelector('textarea');

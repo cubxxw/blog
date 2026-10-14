@@ -1,4 +1,5 @@
 import { languageDestination, canAnimateEntry } from './entry.mjs';
+import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
 import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
@@ -19,6 +20,7 @@ function mountDesktop(root) {
   let state = createWorkspace(saved,stateViewport());
   const nodes = new Map();
   let onboarding = false;
+  let companionFocus = null;
   const entryURL = new URL(location.href);
   let visited = false, localeResume = entryURL.searchParams.get('space-resume') === catalog.language;
   try { visited = sessionStorage.getItem('space:visited:v2') === 'yes'; localeResume = localeResume || sessionStorage.getItem('space:locale-resume') === catalog.language; sessionStorage.removeItem('space:locale-resume'); } catch {}
@@ -39,7 +41,11 @@ function mountDesktop(root) {
     const toast = root.querySelector('[data-space-toast]'); toast.textContent = message; toast.hidden = false;
     clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; },4000);
   }
-  const apps = mountApps({ root,catalog,execute,getState:()=>state,updateNote:text=>update({type:'note',text},false),notify,icon });
+  const apps = mountApps({ root,catalog,execute,getState:()=>state,getContext:()=>companionFocus,updateNote:text=>update({type:'note',text},false),notify,icon });
+  root.addEventListener('bear:agent-status',event=>{
+    const button=root.querySelector('[data-space-dock] [data-open="agent"]');
+    if(button){button.dataset.agentState=event.detail.state;button.title=t('空间助手','Space companion')+' · '+({working:t('进行中','Working'),waiting:t('等待确认','Approval needed'),done:t('已完成','Done'),error:t('未完成','Failed'),stopped:t('已停止','Stopped'),idle:t('就绪','Ready')}[event.detail.state] || '');}
+  });
   function persist() {
     try { localStorage.setItem(storageKey,serializeWorkspace(state)); return true; }
     catch { if (!saveFailure) notify(t('浏览器未能保存。请导出一份笔记。','Browser storage failed. Please export your notes.')); saveFailure = true; return false; }
@@ -64,6 +70,7 @@ function mountDesktop(root) {
       let entry = nodes.get(win.id);
       if (!entry) {
         const el = document.createElement('section'); el.className = 'space-window'; el.dataset.spaceWindow = win.id;
+        if(win.app==='agent')el.dataset.companionMode='compact';
         el.setAttribute('role','region'); el.tabIndex = -1;
         el.innerHTML = `<header class="space-window__bar" data-window-drag><div class="space-window-controls"><button type="button" data-window-action="close" aria-label="${t('关闭窗口','Close window')}"></button><button type="button" data-window-action="minimize" aria-label="${t('最小化窗口','Minimize window')}"></button><button type="button" data-window-action="maximize" aria-label="${t('最大化或恢复窗口','Maximize or restore window')}"></button></div><strong></strong><button class="space-window__layout" type="button" data-window-action="arrange" aria-label="${t('窗口并排','Arrange windows')}">◫</button></header><div class="space-window__body" data-window-body></div><div class="space-resize" data-window-resize="se"></div><div class="space-resize" data-window-resize="e"></div><div class="space-resize" data-window-resize="s"></div>`;
         layer.append(el); entry = { el,payload:null }; nodes.set(win.id,entry);
@@ -92,10 +99,12 @@ function mountDesktop(root) {
     if (!APPS.includes(app)) return t('没有这个应用。','Unknown application.');
     if (app !== 'welcome') completeEntry();
     const previous = state.windows.find(w => w.app === app);
+    if(app==='agent' && state.active !== 'agent')companionFocus=publicFocus(state,catalog);
     // Dock restores the existing document; an explicit payload navigates that app.
-    update({ type:'open',app,payload:payload === undefined ? previous?.payload || '' : payload });
+    update({ type:'open',app,payload:app==='agent' ? '' : payload === undefined ? previous?.payload || '' : payload });
     if (!state.windows.some(w => w.app === app)) return t('窗口已满。先关闭一个窗口。','Close a window before opening another.');
     focusWindow(app);
+    if(app==='agent')root.dispatchEvent(new CustomEvent('bear:agent-prefill',{detail:{focus:companionFocus,question:payload || ''}}));
     return t(`已打开：${labels[app]}`,`Opened: ${labels[app]}`);
   }
   function command(commandText) {
@@ -117,6 +126,7 @@ function mountDesktop(root) {
   }
   function execute(name,args = {}) {
     if (name === 'open') return open(args.app,args.payload);
+    if (name === 'ask') { open('agent');root.dispatchEvent(new CustomEvent('bear:agent-prefill',{detail:{focus:companionFocus,question:args.question || '',selection:args.selection || ''}}));return true; }
     if (name === 'enter') { completeEntry(); render(); showLaunchpad(); return true; }
     if (name === 'language') {
       const target = languageDestination(args.value, catalog.languageRoutes, location.href);
@@ -317,6 +327,7 @@ function mountDesktop(root) {
     const el=event.target.closest('[data-space-window]');if(!el)return;
     const id=el.dataset.spaceWindow;
     if(state.active!==id)update({type:'focus',id});
+    if(id==='agent')return;
     const resize=event.target.closest('[data-window-resize]');
     const bar=event.target.closest('[data-window-drag]');
     if(viewport().width<=640||(!resize&&!bar)||event.target.closest('button,a')||isEditableTarget(event.target))return;
@@ -359,6 +370,7 @@ function mountDesktop(root) {
     if(event.isComposing)return;
     const editing=isEditableTarget(event.target);
     if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();showSearch();return;}
+    if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='j'){event.preventDefault();closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);open('agent');return;}
     if(event.key==='Escape'){
       const action=escapeAction({searchOpen:search.open,launchpadOpen:launchpad.open,overviewOpen:overview.open,menuOpen:!menuPanel.hidden,editing,hasActive:Boolean(state.active)});
       if(!action)return;

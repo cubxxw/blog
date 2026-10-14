@@ -1,3 +1,4 @@
+const { deepseekChat } = require("../lib/deepseek.js");
 "use strict";
 
 // BEAR agent — server model-turn adapter for the workspace task UI.
@@ -6,13 +7,13 @@
 // request. The client-side bounded loop (assets/js/space/agent-loop.mjs) drives
 // rounds and executes tools in the browser; this function never executes shell
 // commands, never touches private notes, and never calls anything but the
-// configured DashScope-compatible endpoint.
+// configured official DSH Messages adapter.
 //
 // Trust boundaries:
 //   - The system instructions and tool schemas below are authoritative. Browser
 //     metadata (catalog context, history) is untrusted *data* and can never
 //     replace them. Client `system` / `developer` roles are stripped.
-//   - Only DASHSCOPE_API_KEY / DASHSCOPE_MODEL / DASHSCOPE_BASE_URL configure
+//   - Only DEEPSEEK_API_KEY / DEEPSEEK_MODEL / DEEPSEEK_BASE_URL configure
 //     the upstream. Request-supplied providers, models or base URLs are ignored,
 //     and the MiMo Token Plan is never a product backend.
 //   - Public catalog context is compact and whitelisted. Private note and draft
@@ -320,18 +321,15 @@ function buildUpstreamBody({ question, messages, context, language, model }) {
     tools: TOOL_SCHEMAS,
     max_tokens: LIMITS.maxTokens,
     stream: false,
-    // Qwen non-streaming requests require non-thinking mode. Keep the existing
-    // configured model/provider. https://help.aliyun.com/zh/model-studio/qwen-function-calling
-    ...(/^qwen/i.test(model) ? { enable_thinking: false } : {}),
     ...(language ? { user: `bear-workspace-${language}` } : {}),
   };
 }
 
 // ─── Handler factory (fetch and env are injectable for tests) ────────────────
 
-function createHandler({ fetchImpl, env, timeoutMs } = {}) {
+function createHandler({ requestImpl, env, timeoutMs } = {}) {
   return async function handler(event) {
-    const doFetch = fetchImpl || fetch;
+    const request = requestImpl || deepseekChat;
     const config = env || process.env;
     const upstreamTimeoutMs = Number.isFinite(Number(timeoutMs)) ? Math.min(60000, Math.max(10, Number(timeoutMs))) : LIMITS.upstreamTimeoutMs;
     const headers = headerMap(event && event.headers);
@@ -365,11 +363,11 @@ function createHandler({ fetchImpl, env, timeoutMs } = {}) {
     const language = normalizeLanguage(payload.language);
     // Caller-supplied provider / model / base URL / tools are never read.
 
-    const apiKey = config.DASHSCOPE_API_KEY;
-    if (!apiKey) return json(503, { error: "ai-unavailable", available: false });
+    const apiKey = config.DEEPSEEK_API_KEY;
+    if (!apiKey) return json(503, { error: "ai-not-configured", available: false });
 
-    const model = config.DASHSCOPE_MODEL || "qwen-turbo";
-    const baseUrl = (config.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1").replace(/\/+$/, "");
+    const model = "deepseek-flash";
+    const baseUrl = (config.DEEPSEEK_BASE_URL || "https://api.deepseek.com/anthropic").replace(/\/+$/, "");
     const body = buildUpstreamBody({ question, messages, context, language, model });
 
     const controller = new AbortController();
@@ -377,16 +375,15 @@ function createHandler({ fetchImpl, env, timeoutMs } = {}) {
     try {
       let response;
       try {
-        response = await doFetch(`${baseUrl}/chat/completions`, {
-          method: "POST",
-          headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-          signal: controller.signal,
-        });
+        response = await request(body,{env:config,signal:controller.signal});
       } catch {
-        return json(502, { error: "ai-unavailable" });
+        return json(controller.signal.aborted ? 504 : 502, { error: controller.signal.aborted ? 'ai-timeout' : 'ai-network-error' });
       }
-      if (!response || !response.ok) return json(502, { error: "ai-unavailable" });
+      if (!response || !response.ok) {
+        let reason; try { reason=await response?.json(); } catch {}
+        const code=['ai-rate-limited','ai-credit-exhausted','ai-not-configured','ai-auth-failed','ai-timeout','ai-network-error','ai-output-truncated'].includes(reason?.error) ? reason.error : 'ai-unavailable';
+        return json(response?.status || 502,{error:code});
+      }
       let data;
       try { data = await response.json(); } catch { return json(502, { error: "ai-unavailable" }); }
       const message = data && data.choices && data.choices[0] && data.choices[0].message;

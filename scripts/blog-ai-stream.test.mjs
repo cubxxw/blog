@@ -21,8 +21,8 @@ function load(fetch, timeoutMs = 20) {
   const timers = new Set();
   const sandbox = {
     exports: {}, __dirname: '/test/blog-functions', TextDecoder, AbortController, Buffer,
-    process: { env: { DASHSCOPE_API_KEY: 'test-secret', DASHSCOPE_BASE_URL: 'https://provider.invalid/v1' } },
-    require: name => name === '@netlify/functions' ? { stream: handler => handler }
+    process: { env: { DEEPSEEK_API_KEY: 'test-secret', DEEPSEEK_BASE_URL: 'https://provider.invalid/v1' } },
+    require: name => name === '../lib/deepseek.js' ? {deepseekChat:(body,{signal})=>fetch('DSH',{body:JSON.stringify(body),signal})} : name === '@netlify/functions' ? { stream: handler => handler }
       : name === 'node:fs' ? { readFileSync: () => JSON.stringify(index) } : require(name),
     fetch,
     setTimeout: callback => { const timer = setTimeout(callback, timeoutMs); timers.add(timer); return timer; },

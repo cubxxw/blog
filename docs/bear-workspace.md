@@ -49,7 +49,15 @@ CUBXXW OS 默认呈现作者的文章、产品和旅途，访客可以在当前�
 
 ## 有限任务与逐操作审批
 
-BEAR 任务由客户端循环与服务端单轮模型适配器组成。每项任务最多 **6 轮模型请求、12 次工具调用、120 秒总预算**，调用方只能缩小上限。服务端固定使用 `DASHSCOPE_API_KEY`、`DASHSCOPE_MODEL`、`DASHSCOPE_BASE_URL`，请求不能选择 provider、model、URL 或工具集；MiMo Token Plan 只用于编码任务，不是产品后端。
+空间助手由客户端任务循环与服务端官方 DeepSeek Harness 模型适配器组成。每项任务最多 **6 轮模型请求、12 次工具调用、120 秒总预算**，调用方只能缩小上限。三个文本 AI 入口（空间、首页、文章）统一使用 `deepseek-flash`；服务端凭证为 `DEEPSEEK_API_KEY`，Messages 地址默认 `https://api.deepseek.com/anthropic`。请求不能选择 provider、model、URL 或工具集。
+
+Dock 或 `⌘ / Ctrl J` 唤起非模态输入卡；开始任务后展开右侧结果栏，手机上使用剩余屏幕。操作记录默认收起，需要追加笔记或执行命令时自动展开具体预览，等待用户确认。Dock 状态来自真实任务事件。
+
+文章和产品提供直接提问入口；文章选中文字后可解释该段。预填问题不自动发送，公开资料引用与选文在发送时组装，点掉上下文标签会同时移除引用和选文。笔记、联系草稿和终端内容不会被当作环境上下文读取。语音仅在用户点击后调用浏览器语音识别，先填入可编辑文字，再由用户发送；不支持语音的浏览器继续使用文本。
+
+`netlify/lib/deepseek.js` 使用官方 `@deepseek-ai/dsh-llm-deepseek@0.2.0-rc.2` 的 `DeepSeekAdapter`，将 Messages 的文字与工具事件转换为本站既有响应协议，过滤思考内容。公开网站只加载模型适配层；应用工具由本站注册和执行。Netlify 将原生 ESM 包作为 `external_node_modules` 保留，避免 `import.meta.url` 在 CommonJS 打包时失效。运行说明与官方接口见 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness/)。
+
+本地 `.env` 与线上 Netlify Functions 环境变量都需要配置凭证；构建成功不代表线上密钥已配置。服务分别提示配置缺失、凭证失效、限流、额度不足、超时和连接失败。验收见 [2026-10-14 空间助手](acceptance/2026-10-14-space-companion.md)。
 
 | 工具 | 行为与审批 |
 | --- | --- |

@@ -9,6 +9,7 @@
 // mountAgent({host, catalog, execute, getState, notify}) -> disposer
 
 import { safeURL } from './state.mjs';
+import { contextualQuestion, serviceMessage } from './companion.mjs';
 import {
   runAgentTask,
   createTaskStore,
@@ -55,7 +56,7 @@ function createDOMArticleParser() {
   };
 }
 
-export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
+export function mountAgent({ host, catalog, execute, getState, notify, getContext } = {}) {
   if (!host || typeof host.querySelector !== 'function') throw new TypeError('mountAgent needs a host element');
   const zh = catalog?.language === 'zh';
   const t = (cn, en) => (zh ? cn : en);
@@ -76,25 +77,34 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
   let busy = false;
   let controller = null;
   let pendingApproval = null;
+  let focus = getContext?.() || null;
+  let selectedText = '';
+  let recognition = null;
+  const workspace = host.closest('[data-bear-workspace]');
+  const announce = state => { if(!disposed || state==='idle')workspace?.dispatchEvent(new CustomEvent('bear:agent-status', { detail:{state} })); };
+  const expand = () => host.closest('[data-space-window]')?.setAttribute('data-companion-mode','expanded');
 
   // ── Markup (structure only; every dynamic value goes through textContent) ──
   host.innerHTML = `
     <div class="bear-agent" data-agent-root>
       <header class="bear-agent__header">
-        <strong><span aria-hidden="true">✳</span> BEAR / ${t('任务助手', 'Task guide')}</strong>
-        <p>${t('从公开文章、产品与照片里找答案，也能帮你打开工作区应用。操作都会显示在这里。', 'Answers come from public writing, products and photos, and I can open workspace apps. Every action shows up here.')}</p>
+        <div class="bear-agent__identity"><span class="bear-agent__orb" aria-hidden="true">✳</span><div><strong>${t('空间助手','Space companion')}</strong><small>DeepSeek Flash</small></div><button type="button" data-agent-history aria-label="${t('查看任务记录','Show task history')}">◷</button></div>
+        <h2>${t('接下来，想探索什么？','Where shall we go next?')}</h2>
+        <p>${t('找文章、了解作品，或者一起去旅途中看看。','Find a thought, discover a project, or revisit a journey.')}</p>
       </header>
       <div class="bear-agent__body">
         <div class="bear-agent__log" data-chat-log role="log" aria-label="${t('任务记录', 'Task log')}"></div>
         <div class="bear-agent__composer">
+          <button type="button" class="bear-agent__context" data-agent-context hidden></button>
           <form>
-            <textarea data-agent-input rows="2" maxlength="4000" aria-label="${t('给 BEAR 的任务', 'Task for BEAR')}" placeholder="${t('想了解什么，或者让我做一件小事…', 'Ask something, or have me do one small thing…')}"></textarea>
+            <textarea data-agent-input rows="2" maxlength="4000" aria-label="${t('给空间助手的任务', 'Task for the space companion')}" placeholder="${t('说说你的想法…', 'What’s on your mind?')}"></textarea>
             <div class="bear-agent__controls">
-              <button type="submit" class="bear-agent__send" data-agent-send>${t('发送', 'Send')} ↑</button>
+              <button type="button" class="bear-agent__voice" data-agent-voice aria-label="${t('语音输入','Voice input')}" title="${t('语音输入','Voice input')}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11v1a6 6 0 0 0 12 0v-1M12 18v3M9 21h6"/></svg></button>
+              <button type="submit" class="bear-agent__send" data-agent-send aria-label="${t('发送','Send')}">↑</button>
               <button type="button" class="bear-agent__stop" data-agent-stop hidden>${t('停止', 'Stop')}</button>
             </div>
           </form>
-          <p class="bear-agent__status" data-agent-status role="status" aria-live="polite">${t('AI 回答来自博客服务；工作区操作在本地执行。', 'AI answers use the blog service; workspace actions run locally.')}</p>
+          <p class="bear-agent__status" data-agent-status role="status" aria-live="polite">${t('⌘ / Ctrl J 唤起 · Enter 发送','⌘ / Ctrl J to open · Enter to send')}</p>
         </div>
       </div>
     </div>`;
@@ -106,6 +116,20 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
   const send = host.querySelector('[data-agent-send]');
   const stop = host.querySelector('[data-agent-stop]');
   const status = host.querySelector('[data-agent-status]');
+  const contextButton = host.querySelector('[data-agent-context]');
+  const drawContext = () => { contextButton.hidden = !focus; contextButton.textContent = focus ? `${selectedText ? t('选中文字','Selected passage') : t('结合当前内容','With context')} · ${focus.title} ×` : ''; };
+  drawContext();
+  contextButton.addEventListener('click',()=>{focus=null;selectedText='';drawContext();input.focus();});
+  const prefill = event => {
+    if (disposed) return;
+    if (!event.detail?.question && input.value.trim()) { input.focus({preventScroll:true});return; }
+    selectedText = event.detail?.selection || '';
+    focus = event.detail?.focus || null; drawContext();
+    if (event.detail?.question) input.value = event.detail.question.slice(0,4000);
+    input.focus({preventScroll:true});
+  };
+  workspace?.addEventListener('bear:agent-prefill',prefill);
+  host.querySelector('[data-agent-history]').addEventListener('click',expand);
 
   const setStatus = (text) => { status.textContent = text; };
   const setBusy = (value) => {
@@ -172,17 +196,21 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
     const section = el('section', 'bear-agent__task');
     section.dataset.agentTask = record?.id || '';
     const head = el('div', 'bear-agent__task-head');
-    head.append(el('p', 'bear-agent__question', question));
+    head.append(el('p', 'bear-agent__question', question.split('\n\n[Public ')[0]));
     const badge = el('span', 'bear-agent__badge');
     badge.dataset.agentBadge = '';
     head.append(badge);
     section.append(head);
     const timeline = el('ol', 'bear-agent__timeline');
     timeline.dataset.agentTimeline = '';
-    section.append(timeline);
+    const activity = el('details','bear-agent__activity');
+    activity.dataset.agentActivity = '';
+    activity.append(el('summary','',t('操作记录','Activity')));
+    activity.append(timeline);
     const answer = el('div', 'bear-agent__answer');
     answer.dataset.agentAnswer = '';
     section.append(answer);
+    section.append(activity);
     log.append(section);
     section.scrollIntoView({ block: 'nearest' });
     return section;
@@ -206,7 +234,7 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
     const retry = el('button', 'bear-agent__retry', t('作为新任务重试', 'Retry as a new task'));
     retry.type = 'button';
     retry.dataset.agentRetry = '';
-    retry.addEventListener('click', () => { if (!busy) runTask(question); });
+    retry.addEventListener('click', () => { if (!busy) runTask(question,{context:false}); });
     taskNode.append(retry);
   }
 
@@ -252,6 +280,8 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
   function requestApproval({ taskId, name, args }) {
     const taskNode = taskId ? host.querySelector(`[data-agent-task="${taskId}"]`) : log.lastElementChild;
     const gate = createApprovalGate();
+    if (taskNode) taskNode.querySelector('[data-agent-activity]').open = true;
+    expand(); announce('waiting');
     const li = taskNode ? createStepNode(taskNode, {
       type: 'approval',
       title: `${t('请确认', 'Approval needed')}: ${toolLabel(name)}`,
@@ -277,7 +307,7 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
         body.append(el('small', '', cancelled ? t('已取消，未执行。', 'Cancelled; nothing ran.') : approved ? t('已批准执行', 'approved') : t('已拒绝，未执行', 'declined')));
       }
       buttons.remove();
-      if (!cancelled) setStatus(approved ? t('已批准，正在执行…', 'Approved. Running…') : t('已拒绝这次操作。', 'Action declined.'));
+      if (!cancelled) { announce('working'); setStatus(approved ? t('已批准，正在执行…', 'Approved. Running…') : t('已拒绝这次操作。', 'Action declined.')); }
     };
     approve.addEventListener('click', () => { if (gate.decide(true)) refresh(true, false); });
     decline.addEventListener('click', () => { if (gate.decide(false)) refresh(false, false); });
@@ -301,18 +331,20 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
     let data = null;
     try { data = await response.json(); } catch { data = null; }
     if (!response.ok || !data || typeof data.message !== 'string') {
-      throw new Error(`Agent service unavailable (${response.status})`);
+      throw new Error(/^ai-[a-z-]+$/.test(data?.error) ? data.error : 'ai-unavailable');
     }
     return { message: data.message, toolCalls: Array.isArray(data.toolCalls) ? data.toolCalls : [] };
   }
 
   // ── Task lifecycle ─────────────────────────────────────────────────────────
 
-  async function runTask(question) {
+  async function runTask(question, {context = true} = {}) {
     if (busy || disposed) return null;
-    const text = String(question ?? '').trim().slice(0, 4000);
+    const raw = String(question ?? '').trim().slice(0, 4000);
+    if (!raw) return null;
+    const text = contextualQuestion(raw,context ? focus : null,context ? selectedText : '');
     if (!text) return null;
-    if (typeof notify === 'function') notify(t('任务已开始。', 'Task started.'));
+    recognition?.abort(); expand(); announce('working');
     const taskNode = createTaskNode(text, null);
     const live = {
       id: `pending-${Date.now().toString(36)}`,
@@ -339,8 +371,8 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
       } else if (event.type === 'model-request') {
         const step = { type: 'model', round: event.round };
         live.steps.push(step);
-        createStepNode(taskNode, { type: 'model', title: `${t('模型请求', 'Model request')} #${event.round}`, status: 'ok' });
-        setStatus(t('正在向模型请求下一步…', 'Asking the model for the next step…'));
+        createStepNode(taskNode, { type: 'model', title: t('理解请求','Understanding the request'), status: 'running' });
+        setStatus(t('正在思考下一步…', 'Considering the next step…'));
       } else if (event.type === 'tool-start') {
         const step = { type: 'tool', id: event.step.id, name: event.step.name, args: event.step.args, status: 'running', result: '' };
         live.steps.push(step);
@@ -399,7 +431,8 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
       applyFinalStatus(record);
       return record;
     } catch (error) {
-      const record = { ...live, status: 'failed', stopReason: 'error', endedAt: new Date().toISOString() };
+      const record = { ...live, status: 'failed', stopReason: 'error', steps:[...live.steps,{type:'error',message:error?.message}], endedAt: new Date().toISOString() };
+      live.status = 'failed';
       renderRecordInto(taskNode, record);
       persist(record);
       applyFinalStatus(record);
@@ -410,14 +443,16 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
       // survive the task or mutate the status of the next one.
       if (pendingApproval) { pendingApproval.cancel(); pendingApproval = null; }
       setBusy(false);
+      announce(live.status === 'completed' ? 'done' : live.status === 'failed' ? 'error' : 'stopped');
     }
   }
 
   function renderRecordInto(taskNode, record) {
     setBadge(taskNode, record);
+    for (const node of taskNode.querySelectorAll('[data-agent-step="model"][data-status="running"]')) node.dataset.status = record.status === 'failed' ? 'error' : record.status === 'completed' ? 'ok' : 'interrupted';
     renderAnswer(taskNode.querySelector('[data-agent-answer]'), record.answer || '');
     if (record.status === 'failed') {
-      taskNode.querySelector('[data-agent-answer]').append(el('p', 'bear-agent__note', t('AI 服务暂时不可用。你仍可以直接探索文章与产品，或者联系我。', 'The AI service is unavailable. You can still explore the writing and products, or contact me.')));
+      taskNode.querySelector('[data-agent-answer]').append(el('p', 'bear-agent__note', serviceMessage(record.steps?.findLast(s=>s.type==='error')?.message,zh)));
       addRetry(taskNode, record.question);
     } else if (record.status === 'interrupted') {
       taskNode.querySelector('[data-agent-answer]').append(el('p', 'bear-agent__note', t('任务被中断，没有标记为完成，也不会自动重跑。', 'The task was interrupted, not marked complete, and will not rerun automatically.')));
@@ -438,7 +473,7 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
       setStatus(t('任务达到了它的步骤上限，未标记为完成。', 'The task reached its step limit and was not marked complete.'));
       return;
     }
-    setStatus(t('未收到有效回答。', 'No valid answer received.'));
+    setStatus(serviceMessage(record.steps?.findLast(s=>s.type==='error')?.message,zh));
   }
 
   // ── Restored history (last 12 records, interrupted stays interrupted) ─────
@@ -465,6 +500,22 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
     setStatus(t('已停止或超时。', 'Stopped or timed out.'));
   });
 
+  const voice = host.querySelector('[data-agent-voice]');
+  const SpeechInput = globalThis.SpeechRecognition || globalThis.webkitSpeechRecognition;
+  voice.addEventListener('click',()=>{
+    if (busy) return;
+    if (!SpeechInput) { setStatus(t('这个浏览器暂不支持语音输入，请直接输入文字。','Voice input is unavailable in this browser. You can type instead.')); return; }
+    if (recognition) { recognition.stop(); return; }
+    const session = new SpeechInput(); recognition = session;
+    session.lang = zh ? 'zh-CN' : 'en-US'; session.interimResults = true;
+    const before = input.value;
+    session.onresult = event => { if (!disposed) input.value = (before + Array.from(event.results).map(r=>r[0].transcript).join('')).slice(0,4000); };
+    session.onerror = () => { if (!disposed) setStatus(t('没有收到语音，可以继续输入文字。','Voice input did not arrive. You can continue typing.')); };
+    session.onend = () => { if(recognition===session)recognition=null;voice.removeAttribute('data-listening'); };
+    voice.dataset.listening='true'; setStatus(t('正在听。结束后可编辑，再发送。','Listening. Edit the text before sending.'));
+    try {session.start();} catch {session.onend();setStatus(t('语音输入没有启动，请直接输入文字。','Voice input could not start. You can type instead.'));}
+  });
+
   // Prompt chips grounded in the public catalog.
   const chips = [];
   const product = (catalog?.products || [])[0];
@@ -478,10 +529,10 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
     for (const chip of chips) {
       const button = el('button', 'bear-agent__chip', chip.label);
       button.type = 'button';
-      button.addEventListener('click', () => { if (!busy) runTask(chip.question); });
+      button.addEventListener('click', () => { if (!busy) runTask(chip.question,{context:false}); });
       chipRow.append(button);
     }
-    log.prepend(chipRow);
+    host.querySelector('.bear-agent__header').append(chipRow);
   }
   root.dataset.ready = 'true';
 
@@ -489,6 +540,9 @@ export function mountAgent({ host, catalog, execute, getState, notify } = {}) {
     if (disposed) return;
     disposed = true;
     controller?.abort();
+    recognition?.abort();
+    workspace?.removeEventListener('bear:agent-prefill',prefill);
+    announce('idle');
     if (pendingApproval) { pendingApproval.cancel(); pendingApproval = null; }
     host.replaceChildren();
   };

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "commonjs",
   "dependencies": {
+    "@deepseek-ai/dsh-llm-deepseek": "0.2.0-rc.2",
     "@netlify/functions": "^2.8.2"
   }
 }

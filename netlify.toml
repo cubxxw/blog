@@ -9,6 +9,7 @@
 [functions]
   included_files = ["netlify/functions/_generated/**"]
   node_bundler = "esbuild"
+  external_node_modules = ["@deepseek-ai/dsh-llm-deepseek"]
 
 [dev]
   framework = "#custom"
@@ -26,15 +27,15 @@
   SECRETS_SCAN_OMIT_PATHS = ".obsidian/**"
   # Public service endpoints are configuration, not credentials. Keep secret
   # scanning enabled for actual API keys while avoiding URL false positives.
-  SECRETS_SCAN_OMIT_KEYS = "DASHSCOPE_BASE_URL,OPENAI_BASE_URL"
+  SECRETS_SCAN_OMIT_KEYS = "DEEPSEEK_BASE_URL,OPENAI_BASE_URL"
   GIT_SUBMODULE_STRATEGY = "recursive"
 
 [context.production.environment]
   HUGO_BASEURL = "https://cubxxw.com"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
-  DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-  DASHSCOPE_MODEL = "qwen-turbo"
+  DEEPSEEK_BASE_URL = "https://api.deepseek.com/anthropic"
+  DEEPSEEK_MODEL = "deepseek-flash"
 
 [context.deploy-preview]
   command = "npm install --prefix netlify/functions && node scripts/check-interactive-specs.mjs && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL && node scripts/check-content-rendering.mjs public"

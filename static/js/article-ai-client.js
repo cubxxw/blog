@@ -22,7 +22,18 @@
         body: JSON.stringify(payload), signal: controller.signal
       });
       resetTimer();
-      if (!response.ok) throw new Error('AI request failed (' + response.status + ')');
+      if (!response.ok) {
+        var failure = {}; try { failure = await response.json(); } catch (_) {}
+        var isZh = (payload.language || document.documentElement.lang || '').indexOf('zh') === 0;
+        var causes = {
+          'ai-rate-limited': ['DeepSeek 当前限流，请稍后重试。','DeepSeek is rate limited. Please try again shortly.'],
+          'ai-credit-exhausted': ['DeepSeek 服务额度不足。','The DeepSeek service needs additional credit.'],
+          'ai-not-configured': ['DeepSeek 服务尚未配置。','The DeepSeek service has not been configured.'],
+          'ai-auth-failed': ['DeepSeek 服务凭证需要更新。','The DeepSeek service credential needs updating.'],
+          'ai-timeout': ['DeepSeek 响应超时，请重试。','DeepSeek timed out. Please try again.']
+        };
+        throw new Error(causes[failure.error] ? causes[failure.error][isZh ? 0 : 1] : (isZh ? 'DeepSeek 暂时未能回答，请重试。' : 'DeepSeek could not answer. Please try again.'));
+      }
       if ((response.headers.get('content-type') || '').indexOf('text/event-stream') === -1) {
         var data = await response.json();
         if (controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');

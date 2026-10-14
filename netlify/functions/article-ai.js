@@ -1,3 +1,4 @@
+const { deepseekChat } = require("../lib/deepseek.js");
 "use strict";
 
 const fs = require("node:fs");
@@ -103,7 +104,7 @@ function parseFollowupList(raw) {
 // Second, tiny model call after the main answer: generate 2-3 follow-up
 // questions that go DEEPER INTO THIS BOOK. Non-streaming, short output.
 // Any failure degrades silently to no follow-ups (the main answer is unaffected).
-async function generateBookFollowups({ baseUrl, model, isZh, bookContext, userQuestion, answer }) {
+async function generateBookFollowups({ baseUrl, model, isZh, bookContext, userQuestion, answer, signal }) {
   const sys = isZh
     ? '你要基于下面这本书的信息、读者刚问的问题和 AI 刚给出的回答，生成 2-3 个让读者继续深入了解【这本书本身】的追问。'
       + '要求：紧扣书的内容/主题/观点，不要推荐其它书或文章，不要重复读者已问的问题，每个问题不超过 22 字。'
@@ -114,19 +115,7 @@ async function generateBookFollowups({ baseUrl, model, isZh, bookContext, userQu
   const usr = `${bookContext}\n\n${isZh ? "读者问" : "Reader asked"}: ${userQuestion}\n\n`
     + `${isZh ? "AI 回答" : "AI answered"}: ${String(answer).slice(0, 800)}`;
   try {
-    const res = await fetch(`${baseUrl}/chat/completions`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model,
-        messages: [{ role: "system", content: sys }, { role: "user", content: usr }],
-        max_completion_tokens: 220,
-        stream: false,
-      }),
-    });
+    const res = await deepseekChat({model,messages:[{role:'system',content:sys},{role:'user',content:usr}],max_completion_tokens:220,stream:false},{env:process.env,signal});
     if (!res.ok) return [];
     const data = await res.json();
     return parseFollowupList(data?.choices?.[0]?.message?.content || "");
@@ -155,7 +144,7 @@ async function handler(event) {
   }
 
   if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed" });
-  if (!process.env.DASHSCOPE_API_KEY) return json(500, { error: "Missing DASHSCOPE_API_KEY environment variable" });
+  if (!process.env.DEEPSEEK_API_KEY) return json(503, { error: "ai-not-configured" });
 
   let payload;
   try {
@@ -190,8 +179,8 @@ async function handler(event) {
 
   const related = findRelated(question, articleTitle, isZh ? "zh" : "en", pagePath, 3);
 
-  const model = process.env.DASHSCOPE_MODEL || "qwen-turbo";
-  const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1";
+  const model = "deepseek-flash";
+  const baseUrl = process.env.DEEPSEEK_BASE_URL || "https://api.deepseek.com/anthropic";
 
   const systemPrompt = (isZh
     ? [
@@ -235,25 +224,19 @@ async function handler(event) {
   messages.push({ role: "user", content: question });
 
   const useStream = String(payload.stream) !== "false";
+  const requestController = new AbortController();
 
   let upstreamRes;
   try {
-    upstreamRes = await fetch(`${baseUrl}/chat/completions`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ model, messages, max_completion_tokens: 1800, stream: useStream }),
-    });
+    upstreamRes = await deepseekChat({model,messages,max_completion_tokens:1800,stream:useStream},{env:process.env,signal:requestController.signal});
   } catch (err) {
-    return json(502, { error: "AI service unreachable: " + err.message });
+    return json(502, { error: 'ai-network-error' });
   }
 
   if (!upstreamRes.ok) {
     let data;
     try { data = await upstreamRes.json(); } catch { data = {}; }
-    return json(upstreamRes.status, { error: data?.error?.message || "AI API error" });
+    return json(upstreamRes.status, { error: data?.error || 'ai-unavailable' });
   }
 
   if (!useStream) {
@@ -267,6 +250,8 @@ async function handler(event) {
 
   // True progressive streaming via Node.js Readable stream
   const nodeReadable = new Readable({ read() {} });
+  nodeReadable.once('close',()=>requestController.abort());
+  nodeReadable.once('error',()=>requestController.abort());
 
   // Emit related-reading links first so the frontend can render the
   // "related reading" row as soon as the answer completes. In book-companion
@@ -279,8 +264,9 @@ async function handler(event) {
   }
 
   (async () => {
+    let reader;
     try {
-      const reader = upstreamRes.body.getReader();
+      reader = upstreamRes.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
       let fullAnswer = "";
@@ -317,6 +303,7 @@ async function handler(event) {
           bookContext: articleContent,
           userQuestion: question,
           answer: fullAnswer,
+          signal: requestController.signal,
         });
         if (followups.length) {
           nodeReadable.push(`data: ${JSON.stringify({ followups })}\n\n`);
@@ -327,7 +314,9 @@ async function handler(event) {
     } catch (err) {
       nodeReadable.destroy(err);
     } finally {
-      nodeReadable.push(null);
+      requestController.abort();
+      if(reader){try{await reader.cancel();}catch{}reader.releaseLock();}
+      if(!nodeReadable.destroyed)nodeReadable.push(null);
     }
   })();
 

@@ -1,3 +1,4 @@
+const { deepseekChat } = require("../lib/deepseek.js");
 "use strict";
 
 // Bear AI — site-wide chat with an agentic retrieval loop.
@@ -363,18 +364,10 @@ function executeTool(index, name, args, requestedLanguage, isZh, emitStatus, cal
   return { error: `Unknown tool: ${name}` };
 }
 
-// ─── Upstream (DashScope OpenAI-compatible) ──────────────────────────────────
+// ─── Upstream (Official DeepSeek Harness) ──────────────────────────────────
 
 async function upstreamChat(baseUrl, body, signal) {
-  return fetch(`${baseUrl}/chat/completions`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-      signal,
-    });
+  return deepseekChat(body,{env:process.env,signal});
 }
 
 // Run one streamed round. Pushes {delta} lines for content as it arrives and
@@ -393,7 +386,7 @@ async function runStreamedRound(baseUrl, requestBody, pushLine, signal, deadline
   if (!res.ok) {
     let detail;
     try { detail = await res.json(); } catch { detail = {}; }
-    const err = new Error(detail.error?.message || detail.error || `Upstream error (${res.status})`);
+    const err = new Error(detail.error || 'ai-unavailable');
     err.statusCode = res.status;
     throw err;
   }
@@ -515,7 +508,7 @@ async function handler(event) {
   }
 
   if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed" });
-  if (!process.env.DASHSCOPE_API_KEY) return json(500, { error: "Missing DASHSCOPE_API_KEY environment variable" });
+  if (!process.env.DEEPSEEK_API_KEY) return json(503, { error: "ai-not-configured" });
   if (typeof event.body !== 'string' || Buffer.byteLength(event.body) > 65536) return json(400, { error: 'Request body is too large or invalid' });
 
   let payload;
@@ -539,8 +532,8 @@ async function handler(event) {
   if (!question) return json(400, { error: "Question is required" });
 
   const index = loadIndex();
-  const model = process.env.DASHSCOPE_MODEL || "qwen-turbo";
-  const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1";
+  const model = "deepseek-flash";
+  const baseUrl = process.env.DEEPSEEK_BASE_URL || "https://api.deepseek.com/anthropic";
 
   const prefetched = searchDocuments(index, question, language, 4);
   const candidates = (prefetched.length

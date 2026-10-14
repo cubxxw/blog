@@ -442,8 +442,12 @@
         errorMsg = labels.aiTimeout;
       } else if (err.message === 'LOCAL_DEV_404') {
         errorMsg = labels.localDev;
-      } else if (err.message.includes('Missing DASHSCOPE_API_KEY')) {
+      } else if (err.message === 'ai-not-configured' || err.message === 'ai-auth-failed') {
         errorMsg = labels.configError;
+      } else if (err.message === 'ai-rate-limited') {
+        errorMsg = isZh ? 'DeepSeek 当前限流，请稍后重试。' : 'DeepSeek is rate limited. Please try again shortly.';
+      } else if (err.message === 'ai-credit-exhausted') {
+        errorMsg = isZh ? 'DeepSeek 服务额度不足，需要补充额度。' : 'The DeepSeek service needs additional credit.';
       } else if (err.message) {
         errorMsg = labels.errorPrefix + escapeHtml(err.message);
       }

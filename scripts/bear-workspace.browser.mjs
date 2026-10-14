@@ -198,8 +198,8 @@ try {
     await page.locator('[data-space-dock] [data-open="agent"]').click();
     await page.locator('[data-space-window="agent"] textarea').fill('Tell me about your writing.');
     await page.locator('[data-agent-send]').click();
-    await page.waitForFunction(()=>document.querySelector('[data-agent-status]')?.textContent==='No valid answer received.');
-    assert.ok((await page.locator('[data-chat-log]').innerText()).includes('unavailable'));
+    await page.waitForFunction(()=>document.querySelector('[data-agent-status]')?.textContent==='DeepSeek could not answer. Please try again.');
+    assert.ok((await page.locator('[data-chat-log]').innerText()).includes('DeepSeek could not answer'));
     assert.equal(await page.locator('[data-agent-send]').isEnabled(),true);
     await page.unroute(matcher);
   });
