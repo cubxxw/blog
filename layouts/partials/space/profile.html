@@ -1,0 +1,62 @@
+{{- $zh := eq .Lang "zh" -}}
+{{- $identity := site.Data.identity -}}
+{{- $person := $identity.person -}}
+{{- $links := $identity.links -}}
+{{- $story := index site.Data "about-story" -}}
+<details class="space-profile" data-space-profile>
+  <summary>{{ if $zh }}个人介绍与经历{{ else }}About me and my story{{ end }} <span aria-hidden="true">↗</span></summary>
+  <div class="space-profile__content" id="about" data-profile-section="about">
+    <nav class="space-profile__nav" aria-label="{{ if $zh }}个人介绍目录{{ else }}Profile sections{{ end }}">
+      <button type="button" data-profile-target="identity">{{ if $zh }}个人档案{{ else }}Profile{{ end }}</button>
+      <button type="button" data-profile-target="story">{{ if $zh }}这些年{{ else }}Along the way{{ end }}</button>
+      <button type="button" data-profile-target="start-here">{{ if $zh }}阅读地图{{ else }}Reading paths{{ end }}</button>
+    </nav>
+    <section class="space-profile__identity" id="identity" data-profile-section="identity" data-identity-card data-identity-json="/data/identity.json" data-timeline-md="/data/personal-timeline-2019-2026.md">
+      <p class="space-eyebrow">CUBXXW / PROFILE</p>
+      <h3>{{ if $zh }}熊鑫伟{{ else }}Xinwei Xiong{{ end }} <span>cubxxw</span></h3>
+      <p>{{ cond $zh $person.description_zh $person.description_en }}</p>
+      <p class="space-profile__mission">{{ cond $zh $person.life_mission_zh $person.life_mission_en }}</p>
+      <div class="space-profile__links">
+        {{ with $links.resume }}<a href="{{ if $zh }}{{ . }}{{ else }}{{ printf "%s/en/" (strings.TrimRight "/" .) }}{{ end }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}简历与项目证据{{ else }}Resume and project evidence{{ end }} ↗</a>{{ end }}
+        {{ with $links.github }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>{{ end }}
+        <button type="button" data-open="contact">{{ if $zh }}联系我{{ else }}Say hello{{ end }} ↗</button>
+      </div>
+      <details class="space-profile__archive">
+        <summary>{{ if $zh }}完整履历与公开资料{{ else }}Full biography and public records{{ end }}</summary>
+        <p>{{ $person.name }} · {{ $person.name_zh }} · {{ $person.birthYear }}</p>
+        <p>{{ $person.jobTitle }}</p>
+        {{ with $person.motto }}<p>{{ . }}</p>{{ end }}
+        <p>{{ replaceRE "→" "·" (cond $zh $identity.timeline.arc_zh $identity.timeline.arc_en) }}</p>
+        <ol class="space-profile__timeline">
+          {{ range $identity.timeline.milestones }}<li><time>{{ .date }}</time><span>{{ .label }}</span></li>{{ end }}
+        </ol>
+        <div class="space-profile__links">
+          <a href="/data/identity.json">identity.json ↗</a>
+          <a href="/data/personal-timeline-2019-2026.md">{{ if $zh }}逐周公开时间线{{ else }}Public timeline{{ end }} ↗</a>
+        </div>
+      </details>
+    </section>
+    <section class="space-profile__story" id="story" data-profile-section="story">
+      <p class="space-eyebrow">CUBXXW / ALONG THE WAY</p>
+      <h3>{{ if $zh }}这些年{{ else }}Along the way{{ end }}</h3>
+      <ol class="space-profile__chapters">
+        {{ range $story.chapters }}
+        {{ $chapter := index . (cond $zh "zh" "en") }}
+        <li data-profile-chapter>
+          <time>{{ .year }}</time>
+          <div>
+            <h4>{{ $chapter.title }}</h4>
+            <p>{{ $chapter.summary }}</p>
+            {{ with $chapter.details }}<details><summary>{{ if $zh }}多一点细节{{ else }}More of the story{{ end }}</summary>{{ range . }}<p>{{ . }}</p>{{ end }}</details>{{ end }}
+            {{ with $chapter.link }}<a href="{{ .href }}">{{ .label }} ↗</a>{{ end }}
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+    </section>
+    <section class="space-profile__reading" data-profile-section="start-here">
+      <p class="space-eyebrow">CUBXXW / READING PATHS</p>
+      {{ with site.GetPage "/about" }}{{ .Content }}{{ end }}
+    </section>
+  </div>
+</details>

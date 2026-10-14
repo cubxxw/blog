@@ -31,13 +31,13 @@
 {{- range site.Data.travel.regions -}}
  {{- $places = $places | append (dict "id" .slug "name" (cond $zh .name_zh .name_en) "description" (cond $zh .tagline_zh .tagline_en) "lat" .lat "lon" .lon "match" .match) -}}
 {{- end -}}
-{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
+{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" aria-label="{{ if $zh }}BEAR OS 个人工作区{{ else }}BEAR OS personal workspace{{ end }}">
+<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
   <div class="space-landscape" aria-hidden="true"></div>
   <header class="space-menubar">
     <div class="space-menubar__left">
-      <button type="button" class="space-brand" data-space-menu-trigger aria-label="{{ if $zh }}BEAR OS 工作区菜单{{ else }}BEAR OS workspace menu{{ end }}" aria-expanded="false" aria-controls="space-menu"><span aria-hidden="true">✳</span><strong>BEAR OS</strong><span class="space-brand__chevron" aria-hidden="true">⌄</span></button>
+      <button type="button" class="space-brand" data-space-menu-trigger aria-label="{{ if $zh }}CUBXXW OS 工作区菜单{{ else }}CUBXXW OS workspace menu{{ end }}" aria-expanded="false" aria-controls="space-menu"><svg class="space-brand__mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 29 9.5v13L16 30 3 22.5v-13Z"/><path d="m3 9.5 13 7.5 13-7.5M16 17v13M9.5 5.8l13 7.5v7.5"/></svg><span class="space-brand__wordmark"><strong>CUBXXW</strong> <b>OS</b></span><span class="space-brand__chevron" aria-hidden="true">⌄</span></button>
       <span class="space-menubar__app" data-active-label>{{ if $zh }}工作区{{ else }}Workspace{{ end }}</span>
       <button type="button" class="space-menubar__apps" data-space-launchpad-trigger aria-haspopup="dialog">{{ if $zh }}所有应用{{ else }}All apps{{ end }}</button>
       <button type="button" class="space-menubar__windows" data-space-overview-trigger aria-haspopup="dialog">{{ if $zh }}窗口{{ else }}Windows{{ end }}</button>
@@ -65,11 +65,11 @@
     <button data-open="{{ . }}">{{ partial "space/icon.html" . }}<span>{{ index $labels . }}</span></button>
     {{ end }}
   </nav>
-  <div class="space-signature" aria-hidden="true"><p>Xinwei's space</p><strong>{{ if $zh }}一边构建，<br>一边走走。{{ else }}Build things.<br>Go places.{{ end }}</strong><span>{{ if $zh }}文章、产品，还有路上的生活{{ else }}Writing, experiments & life along the way{{ end }}</span></div>
+  <div class="space-signature" aria-hidden="true"><p>PERSONAL SPACE / OPEN WORLD</p><strong>CUBXXW<span>OS<span class="space-signature__cursor">_</span></span></strong><span class="space-signature__caption">{{ if $zh }}一边构建，一边走走。{{ else }}Build things. Go places.{{ end }}</span></div>
   <div class="space-window-layer" data-space-windows></div>
   <div class="space-snap-preview" data-space-snap hidden aria-hidden="true"></div>
   <footer class="space-bottom">
-    <p class="space-wallpaper-credit">BEAR / {{ if $zh }}公开工作间{{ else }}Open workspace{{ end }}<span>{{ if $zh }}随意逛，也可以留下点什么。{{ else }}Explore. Make yourself at home.{{ end }}</span></p>
+    <p class="space-wallpaper-credit">CUBXXW / {{ if $zh }}公开工作间{{ else }}Open workspace{{ end }}<span>{{ if $zh }}随意逛，也可以留下点什么。{{ else }}Explore. Make yourself at home.{{ end }}</span></p>
     <nav class="space-dock" data-space-dock aria-label="{{ if $zh }}应用 Dock{{ else }}Application Dock{{ end }}">
       <button type="button" class="space-dock__launchpad" data-space-launchpad-trigger aria-haspopup="dialog" aria-label="{{ if $zh }}所有应用{{ else }}All apps{{ end }}" title="{{ if $zh }}所有应用{{ else }}All apps{{ end }}">{{ partial "space/icon.html" "launchpad" }}<span class="space-dock__label">{{ if $zh }}所有应用{{ else }}All apps{{ end }}</span><i class="space-dock__dot"></i></button>
       {{ range slice "welcome" "products" "reader" "photos" "map" "books" "notes" "contact" "terminal" "agent" "settings" }}
@@ -90,6 +90,7 @@
   </dialog>
   <dialog class="space-overview" data-space-overview aria-label="{{ if $zh }}窗口概览{{ else }}Window overview{{ end }}"><header><h2>{{ if $zh }}你的工作区{{ else }}Your workspace{{ end }}</h2><button data-space-overview-close>{{ if $zh }}返回{{ else }}Back{{ end }} <kbd>Esc</kbd></button></header><div data-space-overview-list></div></dialog>
   <p class="space-toast" data-space-toast role="status" aria-live="polite" hidden></p>
-  <noscript><div class="space-nojs"><h2>{{ if $zh }}欢迎来到我的空间{{ else }}Welcome to my space{{ end }}</h2><p>{{ if $zh }}交互桌面需要 JavaScript。下面的内容仍然可以直接阅读。{{ else }}The desktop needs JavaScript. You can still read the content directly.{{ end }}</p><a href="{{ "/articles/" | relLangURL }}">{{ index $labels "reader" }}</a> · <a href="{{ "/about/" | relLangURL }}">{{ index $labels "welcome" }}</a> · <a href="{{ "/travel/" | relLangURL }}">{{ index $labels "map" }}</a></div></noscript>
+  <template data-space-profile-template>{{ partial "space/profile.html" . }}</template>
+  <noscript><div class="space-nojs"><h2>{{ if $zh }}欢迎来到我的空间{{ else }}Welcome to my space{{ end }}</h2><p>{{ if $zh }}交互桌面需要 JavaScript。下面的内容仍然可以直接阅读。{{ else }}The desktop needs JavaScript. You can still read the content directly.{{ end }}</p><a href="{{ "/articles/" | relLangURL }}">{{ index $labels "reader" }}</a> · <a href="{{ "/travel/" | relLangURL }}">{{ index $labels "map" }}</a>{{ partial "space/profile.html" . }}</div></noscript>
   <script type="application/json" data-space-catalog>{{ dict "language" .Lang "labels" $labels "person" site.Data.identity.person "links" site.Data.identity.links "articles" $articles "products" $products "photos" $photos "books" $books "places" $places | jsonify | safeJS }}</script>
 </section>

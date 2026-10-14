@@ -1,6 +1,24 @@
 // Shell navigation is independent of durable window geometry and app rendering.
 export const MOBILE_APPS = Object.freeze(['welcome', 'reader', 'products', 'photos', 'agent']);
 
+// Historical About fragments remain useful after the two entrances merge.
+export function resolveSpaceRoute(hash, products = [], entry = '') {
+  const fragment = String(hash || '').replace(/^#/, '') || entry;
+  if (fragment === 'product-lab') return { view: 'lab' };
+  if (fragment === 'knowledge') return { view: 'knowledge' };
+  const profiles = { about: 'about', identity: 'identity', story: 'story', 'start-here': 'start-here', 'blog-definition': 'start-here', workbench: 'start-here', 'studio-products': 'products', 'studio-road': 'photos', 'tell-me': 'contact' };
+  if (Object.hasOwn(profiles, fragment)) {
+    const payload = profiles[fragment];
+    return ['products', 'photos', 'contact'].includes(payload)
+      ? { view: 'bear', app: payload, payload: '' }
+      : { view: 'bear', app: 'welcome', payload };
+  }
+  const id = fragment.replace(/^focus-/, '');
+  return products.some(product => product.id === id)
+    ? { view: 'bear', app: 'products', payload: id }
+    : { view: 'bear' };
+}
+
 const normalize = value => String(value ?? '').normalize('NFKC').toLocaleLowerCase().trim();
 
 export function findApplications(apps, labels, query = '') {

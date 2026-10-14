@@ -117,15 +117,15 @@
 
 <script>document.body.classList.add('products-view-bear');</script>
 <div class="product-space" data-product-space data-product-view="bear">
-  <h1 class="product-space__title" id="products-title">{{ if $isZh }}产品{{ else }}Products{{ end }}</h1>
+  <h1 class="product-space__title" id="products-title">{{ if $isZh }}空间 · CUBXXW OS{{ else }}Space · CUBXXW OS{{ end }}</h1>
 
   <nav class="product-view-switch" aria-label="{{ if $isZh }}选择产品视图{{ else }}Choose product view{{ end }}">
-    <button type="button" data-product-view-button="bear" aria-pressed="true">BEAR OS</button>
+    <button type="button" data-product-view-button="bear" aria-pressed="true">CUBXXW OS</button>
     <button type="button" data-product-view-button="lab" aria-pressed="false">Product Lab</button>
   </nav>
 
   <p class="product-view-status product-space__title" data-product-view-status aria-live="polite">
-    {{ if $isZh }}当前为 BEAR OS 视图{{ else }}BEAR OS view active{{ end }}
+    {{ if $isZh }}当前为 CUBXXW OS 视图{{ else }}CUBXXW OS view active{{ end }}
   </p>
 
   {{ partial "space/desktop.html" . }}

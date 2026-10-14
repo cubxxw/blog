@@ -1,6 +1,6 @@
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
-import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction } from './navigation.mjs';
+import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
 
 const root = document.querySelector('[data-bear-workspace]');
 if (root) mountDesktop(root);
@@ -368,7 +368,7 @@ function mountDesktop(root) {
     productRoot.dataset.productView=isLab?'lab':'bear';root.hidden=isLab;if(lab)lab.hidden=!isLab;
     document.body.classList.toggle('products-view-bear',!isLab);document.body.classList.toggle('products-view-lab',isLab);
     productRoot.querySelectorAll('[data-product-view-button]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.productViewButton===(isLab?'lab':'bear'))));
-    productRoot.querySelector('[data-product-view-status]').textContent=isLab?'Product Lab':t('BEAR OS 工作区','BEAR OS workspace');
+    productRoot.querySelector('[data-product-view-status]').textContent=isLab?'Product Lab':t('CUBXXW OS 工作区','CUBXXW OS workspace');
     if(lab){lab.querySelector('[data-bks-host]').hidden=true;lab.querySelectorAll('.builds-main,.builds-footer,.builds-hero,[data-bks-entry]').forEach(el=>el.hidden=false);}
     if(writeHash)history.replaceState(null,'',location.pathname+location.search+(isLab?'#product-lab':''));
     window.scrollTo({top:0,behavior:'instant'});
@@ -397,10 +397,10 @@ function mountDesktop(root) {
   }
   productRoot.addEventListener('click',event=>{const b=event.target.closest('[data-product-view-button]');if(b)setView(b.dataset.productViewButton);});
   function applyHash(){
-    const hash=location.hash.slice(1);
-    if(hash==='product-lab')setView('lab',false);
-    else if(hash==='knowledge')openKnowledge();
-    else {setView('bear',false);const id=hash.replace(/^focus-/,'');if(catalog.products.some(p=>p.id===id))open('products',id);}
+    const entry=new URLSearchParams(location.search).get('profile')==='about'?'about':'';
+    const route=resolveSpaceRoute(location.hash,catalog.products,entry);
+    if(route.view==='knowledge')openKnowledge();
+    else {setView(route.view,false);if(route.app)open(route.app,route.payload);}
   }
   window.addEventListener('hashchange',applyHash);
   const clock=()=>{root.querySelector('[data-space-clock]').textContent=new Intl.DateTimeFormat(zh?'zh-CN':'en-GB',{weekday:'short',hour:'2-digit',minute:'2-digit'}).format(new Date());};clock();setInterval(clock,60000);

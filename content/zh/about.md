@@ -2,6 +2,8 @@
 title: "关于我"
 menuTitle: "关于"
 layout: "about"
+canonicalURL: "https://cubxxw.com/zh/projects/"
+robotsNoIndex: true
 description: "认识熊鑫伟（cubxxw），以及这份公开的实践与思想档案。这里沉淀 AI 工作流、真实项目、工程方法，以及关于个人成长、哲学与人生的长期思考。"
 summary: "把真实实践，沉淀成能穿越时间的知识。"
 ShowReadingTime: false

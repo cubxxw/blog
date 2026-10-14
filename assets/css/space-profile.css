@@ -1,0 +1,53 @@
+/* The profile shares the desktop's tokens and native disclosure behavior. */
+.space-welcome__foot button { color: var(--sp-accent); font-size: 11px; padding: 5px 0; }
+.space-profile { margin-top: 26px; border-top: 1px solid var(--sp-line); }
+.space-profile > summary { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; cursor: pointer; list-style: none; font-size: 13px; font-weight: 600; color: var(--sp-accent); }
+.space-profile > summary::-webkit-details-marker { display: none; }
+.space-profile[open] > summary span { transform: rotate(90deg); }
+.space-profile__content { padding: 0 0 15px; }
+.space-profile__nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 3px 0 25px; }
+.space-profile__nav button { padding: 7px 11px; border: 1px solid var(--sp-line); color: var(--sp-muted); font-size: 11px; }
+.space-profile__nav button:hover { background: var(--sp-soft); color: var(--sp-ink); }
+.space-profile section { scroll-margin-top: 18px; }
+.space-profile h3 { font-size: 23px; font-weight: 550; letter-spacing: -.025em; margin: 0 0 14px; }
+.space-profile h3 > span { font: 11px/1 ui-monospace, monospace; margin-left: 10px; color: var(--sp-muted); }
+.space-profile p { font-size: 13px; color: var(--sp-muted); margin: 12px 0; }
+.space-profile .space-profile__mission { color: var(--sp-ink); font-size: 18px; line-height: 1.7; }
+.space-profile__links { display: flex; flex-wrap: wrap; align-items: center; gap: 9px 16px; margin: 17px 0; font-size: 11px; color: var(--sp-accent); }
+.space-profile__links button { color: inherit; font-size: inherit; padding: 0; }
+.space-profile__archive { margin-top: 20px; padding: 15px 17px; background: var(--sp-surface); border: 1px solid var(--sp-line); border-radius: 8px; }
+.space-profile__archive summary, .space-profile__chapters summary { font-size: 12px; color: var(--sp-accent); cursor: pointer; }
+.space-profile__timeline { margin: 18px 0 0; padding: 0; list-style: none; }
+.space-profile__timeline li { display: grid; grid-template-columns: 95px minmax(0,1fr); gap: 12px; border-top: 1px solid var(--sp-line); padding: 10px 0; font-size: 11px; line-height: 1.7; }
+.space-profile__timeline time { color: var(--sp-accent); font-family: ui-monospace,monospace; }
+.space-profile__story, .space-profile__reading { border-top: 1px solid var(--sp-line); padding-top: 27px; margin-top: 29px; }
+.space-profile__chapters { list-style: none; padding: 0; margin: 20px 0 0; }
+.space-profile__chapters > li { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: 17px; padding: 0 0 26px; }
+.space-profile__chapters > li > time { font: 12px/1.8 ui-monospace,monospace; color: var(--sp-accent); position: relative; }
+.space-profile__chapters > li:not(:last-child) > time::after { content: ""; position: absolute; left: 3px; top: 31px; bottom: -13px; border-left: 1px solid var(--sp-line); }
+.space-profile__chapters h4 { font-size: 15px; font-weight: 600; line-height: 1.7; margin: 0 0 6px; }
+.space-profile__chapters p { margin: 5px 0 12px; }
+.space-profile__chapters a { display: inline-block; color: var(--sp-accent); font-size: 11px; margin-top: 12px; }
+.space-profile__reading .meet-atlas { padding: 0; margin: 0; border: 0; }
+.space-profile__reading .meet-atlas-summary { display: block; padding: 0 0 14px; font-size: 13px; cursor: pointer; }
+.space-profile__reading .meet-atlas-hint { display: block; font-size: 11px; color: var(--sp-muted); margin-top: 4px; }
+.space-profile__reading .post-content { font-size: 13px; line-height: 1.8; }
+.space-profile__reading .post-content h2, .space-profile__reading .post-content h3 { font-size: 17px; margin: 20px 0 12px; }
+.space-profile__reading .post-content ul { padding-left: 18px; }
+.space-profile a { overflow-wrap: anywhere; }
+.space-profile summary:focus-visible { outline: 2px solid var(--sp-accent); outline-offset: 4px; }
+.space-nojs { max-height: calc(100dvh - 80px); overflow: auto; }
+.space-nojs .space-profile { text-align: left; }
+.space-nojs .space-profile__nav, .space-nojs .space-profile__links button { display: none; }
+@media (max-width: 640px) {
+  .space-profile__nav button, .space-welcome__foot button, .space-profile__links a, .space-profile__links button { min-height: 44px; display: inline-flex; align-items: center; }
+  .space-profile__nav { gap: 5px; }
+  .space-profile__timeline li { grid-template-columns: 76px minmax(0,1fr); gap: 8px; }
+  .space-profile__chapters > li { gap: 10px; }
+  .space-profile__archive { padding: 12px; }
+  .space-nojs { inset: 105px 12px 20px; max-height: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .space-brand__mark { transition: none; animation: none; }
+  .space-brand:hover .space-brand__mark, .space-brand[aria-expanded="true"] .space-brand__mark { transform: none; }
+}

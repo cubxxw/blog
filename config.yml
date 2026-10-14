@@ -322,10 +322,7 @@ languages:
     languageName: English
     weight: 1
     menu:
-      # Nav v4 (2026-07): 9 items collapsed to 3 — Posts ▾ (dropdown) /
-      # Products / About. Columns, Travel and the flat section links moved
-      # into the dropdown or the merged About page; /start-here/ 301s to
-      # /about/ (see static/_redirects).
+      # Posts and Space: About and Products share the CUBXXW OS desktop.
       main:
         - identifier: posts
           name: Posts
@@ -362,15 +359,10 @@ languages:
           pageRef: /articles
           weight: 5
         - identifier: projects
-          name: Products
+          name: Space
           url: /projects/
           pageRef: /projects
           weight: 20
-        - identifier: about
-          name: About
-          url: /about/
-          pageRef: /about
-          weight: 30
     params:
       description: "Xinwei Xiong's open archive of AI workflows, real projects, engineering methods, systems thinking, personal growth, philosophy, and life."
       profileMode:
@@ -411,9 +403,7 @@ languages:
     contentDir: "content/zh"
     weight: 2
     menu:
-      # Nav v4（2026-07）：9 项收敛为 3 项——文章 ▾（下拉）/ 产品 / 关于。
-      # 专栏、旅行与平铺的 section 链接收进下拉或合并后的 About 页；
-      # /zh/start-here/ 301 到 /zh/about/（见 static/_redirects）。
+      # 文章与空间：个人介绍和产品共用 CUBXXW OS 桌面。
       main:
         - identifier: posts
           name: 文章
@@ -450,15 +440,10 @@ languages:
           pageRef: /articles
           weight: 5
         - identifier: projects
-          name: 产品
+          name: 空间
           url: /zh/projects/
           pageRef: /projects
           weight: 20
-        - identifier: about
-          name: 关于
-          url: /zh/about/
-          pageRef: /about
-          weight: 30
     params:
       # 中文日期：覆盖全局 "January 2, 2006"（渲染成「7 月 11, 2026」的
       # 英式混排），标题区 meta 行统一为中文书写习惯。

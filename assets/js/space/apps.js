@@ -161,7 +161,26 @@ export function mountApps({ root, catalog, execute, getState, updateNote, notify
   function render(win, host) {
     disposers.get(win.id)?.(); disposers.delete(win.id);
     if (win.app === 'welcome') {
-      host.innerHTML = `<article class="space-welcome space-app"><p class="space-eyebrow">A LITTLE WINDOW INTO MY WORLD</p><img class="space-welcome__avatar" src="/images/cubxxw-avatar-96.webp" alt="${t('熊鑫伟的头像插画','Illustrated portrait of Xinwei')}"><h2>${t('嗨，我是熊鑫伟。<br>欢迎来我的空间坐坐。','Hi, I’m Xinwei.<br>Welcome to my little corner.')}</h2><p class="space-welcome__intro">${t('写代码，做产品，也去山里走走。<br>这里放着我在做的东西、写下的想法，<br>还有一些路上的照片。','I write code, build products, and wander into the mountains.<br>Here are the things I’m making, the thoughts I’m writing down,<br>and a few photographs from the road.')}</p><div class="space-welcome__routes">${[['products',t('看看我在做什么','See what I’m making'),t('真实产品与构建记录','Products & build notes')],['reader',t('读一篇文章','Find something to read'),t('AI、工程，还有生活','AI, engineering & life')],['map',t('去路上看看','Explore the places'),t('照片、地图与游记','Photos & travel writing')],['contact',t('留句话给我','Leave me a note'),t('说声你好，也挺好','A hello is always welcome')]].map(([app,title,desc]) => `<button data-open="${app}"><strong>${title}<b>↗</b></strong><span>${desc}</span></button>`).join('')}</div><footer class="space-welcome__foot"><span>cubxxw / ${html(catalog.person.jobTitle)}</span>${link(catalog.links.about,t('完整介绍','More about me'))}</footer></article>`;
+      host.innerHTML = `<article class="space-welcome space-app"><p class="space-eyebrow">A LITTLE WINDOW INTO MY WORLD</p><img class="space-welcome__avatar" src="/images/cubxxw-avatar-96.webp" alt="${t('熊鑫伟的头像插画','Illustrated portrait of Xinwei')}"><h2>${t('嗨，我是熊鑫伟。<br>欢迎来我的空间坐坐。','Hi, I’m Xinwei.<br>Welcome to my little corner.')}</h2><p class="space-welcome__intro">${t('写代码，做产品，也去山里走走。<br>这里放着我在做的东西、写下的想法，<br>还有一些路上的照片。','I write code, build products, and wander into the mountains.<br>Here are the things I’m making, the thoughts I’m writing down,<br>and a few photographs from the road.')}</p><div class="space-welcome__routes">${[['products',t('看看我在做什么','See what I’m making'),t('真实产品与构建记录','Products & build notes')],['reader',t('读一篇文章','Find something to read'),t('AI、工程，还有生活','AI, engineering & life')],['map',t('去路上看看','Explore the places'),t('照片、地图与游记','Photos & travel writing')],['contact',t('留句话给我','Leave me a note'),t('说声你好，也挺好','A hello is always welcome')]].map(([app,title,desc]) => `<button data-open="${app}"><strong>${title}<b>↗</b></strong><span>${desc}</span></button>`).join('')}</div><footer class="space-welcome__foot"><span>cubxxw / ${html(catalog.person.jobTitle)}</span><button data-open="welcome" data-payload="identity">${t('个人经历与履历','My story and profile')} ↗</button></footer></article>`;
+      const template = root.querySelector('[data-space-profile-template]');
+      if (template) host.querySelector('.space-welcome').append(template.content.cloneNode(true));
+      const reveal = payload => {
+        const profile = host.querySelector('[data-space-profile]');
+        const target = [...host.querySelectorAll('[data-profile-section]')].find(element => element.dataset.profileSection === payload);
+        if (!profile || !target) return;
+        profile.open = true;
+        if (payload === 'start-here') target.querySelector('details')?.setAttribute('open', '');
+        target.tabIndex = -1;
+        requestAnimationFrame(() => {
+          if (host.isConnected && getState().active === 'welcome') {
+            target.scrollIntoView({ block: 'start', behavior: 'instant' });
+            target.focus({ preventScroll: true });
+          }
+        });
+      };
+      host.querySelectorAll('[data-profile-target]').forEach(control => control.addEventListener('click', () => reveal(control.dataset.profileTarget)));
+      host.querySelector('.space-welcome__foot [data-payload="identity"]').addEventListener('click', () => reveal('identity'));
+      if (win.payload) reveal(win.payload);
     } else if (win.app === 'products') showProducts(host,win.payload);
     else if (win.app === 'reader') { if (win.payload && articleByURL(win.payload)) showReader(host,win.payload,win.id); else showLibrary(host,win.payload === 'growth' ? 'growth' : libraryView.filter); }
     else if (win.app === 'photos') media.renderPhotos(host,win.payload,win.id);

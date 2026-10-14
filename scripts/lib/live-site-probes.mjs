@@ -34,17 +34,29 @@ export async function probeLiveSite({pageMap,changeSet,readExpected,fetch=global
     await Promise.all(Array.from({length:Math.min(4,items.length)},async()=>{while(index<items.length){const item=items[index++];try{await fn(item);}catch(error){errors.push(`${typeof item==='string'?new URL(item).pathname:item.outputPath}: ${error.message}`);}}}));
   }
   await workers(selected,async page=>{
-    const expected=readExpected?renderedPageData(await readExpected(page),page.url):page.rendered;
+    let expected=readExpected?renderedPageData(await readExpected(page),page.url):page.rendered;
+    let expectedURL=page.url;
     if(!expected||typeof expected.canonical!=='string'||!Array.isArray(expected.resources))throw new Error('Frozen rendering metadata is missing');
     const {response,url}=await request(page.url);
     if(!response.ok||!response.headers.get('content-type')?.includes('text/html'))throw new Error(`Page unavailable (${response.status})`);
-    if(new URL(url).pathname!==canonicalUrl(page.url).pathname)throw new Error('Published route redirects to another page');
+    if(new URL(url).pathname!==canonicalUrl(page.url).pathname) {
+      // A retired noindex page may move only to its frozen same-origin
+      // canonical. Verify the destination's own metadata and resources;
+      // arbitrary redirects retain the existing failure boundary.
+      const declared=canonicalUrl(expected.canonical);
+      if(!expected.robots.split(',').includes('noindex')||new URL(url).pathname!==declared.pathname)throw new Error('Published route redirects to another page');
+      const target=pageMap.pages.find(candidate=>candidate.kind!=='alias'&&canonicalUrl(candidate.url).href===declared.href);
+      if(!target)throw new Error('Redirect canonical is missing from the verified inventory');
+      expected=readExpected?renderedPageData(await readExpected(target),target.url):target.rendered;
+      expectedURL=target.url;
+      if(!expected||expected.canonical!==declared.href||!Array.isArray(expected.resources))throw new Error('Frozen redirect target metadata is missing or invalid');
+    }
     const body=await response.text();if(body.length>16*1024*1024)throw new Error('Page response too large');
     const actual=meta(body);
     if(actual.canonical!==expected.canonical||actual.robots!==expected.robots)throw new Error('Published SEO metadata differs from verified output');
     if(!allowPreviewNoindex&&!expected.robots.includes('noindex')&&/noindex/i.test(response.headers.get('x-robots-tag')??''))throw new Error('Published headers unexpectedly prevent indexing');
     for(const {url,kind} of expected.resources){
-      const resource=new URL(url,page.url);if(resource.origin!==origin||resource.pathname.startsWith('/.netlify/functions/'))continue;
+      const resource=new URL(url,expectedURL);if(resource.origin!==origin||resource.pathname.startsWith('/.netlify/functions/'))continue;
       resource.hash='';resources.set(resource.href,kind);
     }
   });

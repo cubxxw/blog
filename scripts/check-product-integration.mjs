@@ -9,7 +9,7 @@ const routes = [
   {
     file: path.join(outputRoot, "projects", "index.html"),
     required: [
-      "BEAR OS",
+      "CUBXXW OS",
       "Product Lab",
       "Products are where ideas meet reality.",
       "Talent Signal",
@@ -33,7 +33,7 @@ const routes = [
   {
     file: path.join(outputRoot, "zh", "projects", "index.html"),
     required: [
-      "BEAR OS",
+      "CUBXXW OS",
       "Product Lab",
       "产品，是判断接受现实检验的地方。",
       "Talent Signal",
@@ -89,7 +89,12 @@ for (const route of routes) {
     }
   }
 
-  const text = visibleText(html);
+  // This product-copy policy excludes the imported author's profile, whose
+  // quotations and foreign-language biography must retain their punctuation.
+  const productCopy = html
+    .replace(/<template\b(?=[^>]*\bdata-space-profile-template\b)[^>]*>[\s\S]*?<\/template>/gi, '')
+    .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, '');
+  const text = visibleText(productCopy);
   if (/[—–]/u.test(text)) {
     failures.push(`${path.relative(root, route.file)} contains a visible em/en dash`);
   }

@@ -1,6 +1,6 @@
 ---
-title: "产品"
-description: "熊鑫伟的产品实验室：Talent Signal、Solo Compass、DayPage 等真实产品的当前状态、测试问题、公开入口与源码。"
+title: "空间 · CUBXXW OS"
+description: "进入熊鑫伟的 CUBXXW OS 空间，了解个人经历，浏览正在构建的产品与公开文章，也可以看看旅途照片，写下一点自己的想法。"
 cascade:
   - type: "posts"
 ---

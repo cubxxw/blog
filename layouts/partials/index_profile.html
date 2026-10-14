@@ -27,7 +27,7 @@
         <section class="profile_hero">
             <div class="profile_copy">
                 <div class="profile_status_bar">
-                    <a class="profile_status" href="{{ "/about/" | relLangURL }}" title="{{ if eq site.Language.Lang "zh" }}关于我{{ else }}About me{{ end }}">
+                    <a class="profile_status" href="{{ "/projects/" | relLangURL }}?profile=about" title="{{ if eq site.Language.Lang "zh" }}关于我{{ else }}About me{{ end }}">
                         <span class="profile_status__dot"></span>
                         <span>{{ $statusText }}</span>
                     </a>

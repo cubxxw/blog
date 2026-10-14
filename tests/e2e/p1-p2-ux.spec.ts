@@ -110,11 +110,11 @@ test.describe('P1-P2 UX regression', () => {
     expect(errors).toEqual([]);
   });
 
-  test('products defaults to BEAR OS and switches to Product Lab and back', async ({ page }) => {
+  test('space defaults to CUBXXW OS and switches to Product Lab and back', async ({ page }) => {
     await page.goto('/zh/projects/');
 
     const space = page.locator('[data-product-space]');
-    const bearButton = page.getByRole('button', { name: 'BEAR OS', exact: true });
+    const bearButton = page.getByRole('button', { name: 'CUBXXW OS', exact: true });
     const labButton = page.getByRole('button', { name: 'Product Lab', exact: true });
     const bearPanel = page.locator('[data-product-panel="bear"]');
 
@@ -258,7 +258,7 @@ test.describe('P1-P2 UX regression', () => {
     await expect(page).toHaveURL(/#product-lab$/);
     await page.getByRole('button', { name: '进入知识空间' }).click();
     await expect(page.locator('[data-bks-host] .bks__chip').first()).toBeVisible();
-    await page.getByRole('button', { name: 'BEAR OS', exact: true }).click();
+    await page.getByRole('button', { name: 'CUBXXW OS', exact: true }).click();
     await expect(page.locator('[data-bear-workspace]')).toBeVisible();
     await expect(page.locator('[data-bks-host]')).toBeHidden();
     await expect(page).not.toHaveURL(/#knowledge$/);

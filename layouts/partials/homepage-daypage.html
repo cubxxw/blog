@@ -58,7 +58,7 @@
           <a href="#hp-posts">{{ if $isZh }}开始阅读{{ else }}Start reading{{ end }} <span aria-hidden="true">↓</span></a>
           <a href="{{ "/projects/" | relLangURL }}">{{ if $isZh }}探索产品{{ else }}Explore products{{ end }} <span aria-hidden="true">↗</span></a>
         </nav>
-        <a class="hp-hero-cta" href="{{ "/about/" | relLangURL }}">
+        <a class="hp-hero-cta" href="{{ "/projects/" | relLangURL }}?profile=about">
           <span>{{ if $isZh }}了解这个博客{{ else }}About this blog{{ end }}</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -420,7 +420,7 @@
       <div class="hp-footer-col">
         <h4>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h4>
         <ul>
-          <li><a href="{{ "/about/" | relLangURL }}">{{ if $isZh }}关于 · 阅读地图{{ else }}About · Start Here{{ end }}</a></li>
+          <li><a href="{{ "/projects/" | relLangURL }}#start-here">{{ if $isZh }}空间 · 阅读地图{{ else }}Space · Reading paths{{ end }}</a></li>
           <li><a href="{{ "/articles/" | relLangURL }}">{{ if $isZh }}全部文章{{ else }}All Posts{{ end }}</a></li>
           <li><a href="{{ "/columns/" | relLangURL }}">{{ if $isZh }}专栏{{ else }}Columns{{ end }}</a></li>
           <li><a href="{{ "/travel/" | relLangURL }}">{{ if $isZh }}旅行{{ else }}Travel{{ end }}</a></li>

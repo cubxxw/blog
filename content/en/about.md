@@ -2,6 +2,8 @@
 title: "About Me"
 menuTitle: "About"
 layout: "about"
+canonicalURL: "https://cubxxw.com/projects/"
+robotsNoIndex: true
 description: "Meet Xinwei Xiong (cubxxw) and his open archive of practice and thought, covering AI workflows, real projects, engineering methods, personal growth, philosophy, and life."
 summary: "Turning lived practice into knowledge that compounds over time."
 ShowReadingTime: false

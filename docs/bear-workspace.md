@@ -1,12 +1,22 @@
-# BEAR OS：公开内容与访客工作区
+# CUBXXW OS：公开内容与访客工作区
 
-BEAR OS 默认呈现作者的文章、产品和旅途，访客可以在当前浏览器保存笔记、收藏与窗口布局，也可以交给 BEAR 一项有步骤、有结果的小任务。Hugo 提供公开内容；浏览器管理私人工作区；模型与 Immich 的连接配置留在服务端。
+CUBXXW OS 默认呈现作者的文章、产品和旅途，访客可以在当前浏览器保存笔记、收藏与窗口布局，也可以交给 BEAR 一项有步骤、有结果的小任务。Hugo 提供公开内容；浏览器管理私人工作区；模型与 Immich 的连接配置留在服务端。
 
 本轮功能与验收状态见 [2026-10-13 验收记录](acceptance/2026-10-13-bear-os-evolution.md)。真实模型网络及公开目录工具已完成线上冒烟；Immich 相册尚未配置，Docker live 执行尚未验收。
 
 ## 入口与导航
 
-`/projects/` 与 `/zh/projects/` 默认进入 BEAR OS，首屏打开欢迎窗口与熊野古道照片。Product Lab 保留双向切换，文章原始路由、博客首页、About 和 Travel 继续可访问。
+网站导航只保留「文章」与「空间 / Space」。`/projects/` 与 `/zh/projects/` 默认进入 CUBXXW OS，首屏打开欢迎窗口与熊野古道照片。Product Lab 保留双向切换，文章原始路由、博客首页和 Travel 继续可访问。
+
+「关于我」窗口包含个人介绍、五段公开经历、完整履历与阅读地图。HTML 由 `space/profile.html` 从现有 `identity.json`、`about-story.yml` 和 About 正文生成，与原始公开资料共用数据源。访客无需离开桌面阅读，也可以从个人介绍打开联系窗口。关闭 JavaScript 后，原生 disclosure 与资料链接仍可用。
+
+部署时，旧 `/about/` 与 `/zh/about/` 强制跳转到对应空间入口，`profile=about` 使没有锚点的旧链接也打开个人介绍。旧 `#identity`、`#story`、`#start-here` 等锚点继续定位窗口内的内容；旧 Start Here 链接直接进入阅读地图。原 About HTML 保留为静态兼容输出，canonical 指向空间并退出站点地图，生产导航不会再产生独立 About 入口。
+
+桌面菜单和背景签名使用 CUBXXW OS 字标，BEAR 继续是任务助手。访客存储键、窗口标识和产品深链保留原有协议，以便已经保存的笔记、收藏和布局继续使用。
+
+发布探针对这种迁移继续验收旧入口：只有已验证的 `noindex` 页面、其声明的同源 canonical，以及产物中实际存在的目标页面同时匹配时，才接受路径变化。目标的 SEO 元数据和资源仍须与已验证产物一致；任意改向、缺失目标和错误元数据继续阻断验收。
+
+2026-10-14 入口合并的本地验收覆盖双语导航、反复展开档案、原生旧锚点、访客笔记、双向视图、深色模式和手机操作，浏览器没有运行异常。`npm run bear:test` 的 125 项检查、发布与探针的 20 项检查、现有工作区的 21 个浏览器流程，以及定向 CI 浏览器的 5 个流程均通过；生产构建、产品整合和生成 SEO 检查通过。新增回归入口是 `scripts/space-profile.browser.mjs` 和 `scripts/space-profile-route.test.mjs`，本地截图与回执在 `output/playwright/space-profile/`。线上发布仍须以对应提交的 CI 和部署验收为准。
 
 宽屏保留多窗口、拖动、缩放、边缘吸附、并排、最小化与恢复。欢迎桌面恢复欢迎和照片窗口，保留其他应用与已有位置。文章目录也记住筛选词与分类。
 
