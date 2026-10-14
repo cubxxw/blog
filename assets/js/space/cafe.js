@@ -17,7 +17,7 @@ export function mountCafe({ root, route, navigation, localeResume, execute, onEn
   const url = new URL(location.href);
   if (localeResume && url.searchParams.has('space-cafe')) savedMode = url.searchParams.get('space-cafe');
   if (url.searchParams.has('space-cafe')) { url.searchParams.delete('space-cafe'); history.replaceState(null, '', url.pathname + url.search + url.hash); }
-  function asset(scene) { return matchMedia('(max-width: 640px)').matches || navigator.connection?.saveData ? scene.small : scene.image; }
+  function asset(scene) { return matchMedia('(max-width: 640px)').matches ? scene.small : scene.image; }
   function announce(message) { status.textContent = message; pickerStatus.textContent = message; }
   function setMode(value, focus = false) {
     revision++; transition?.cancel(); transition = null; delete root.dataset.cafeTransition;
@@ -40,10 +40,8 @@ export function mountCafe({ root, route, navigation, localeResume, execute, onEn
     load: id => new Promise((resolve, reject) => {
       const scene = themes.find(scene => scene.id === id);
       if (!scene) { reject(new Error('unknown scene')); return; }
-      const preload = new Image(); preload.decoding = 'async'; preload.fetchPriority = 'high';
-      const timer = setTimeout(() => { preload.onload = preload.onerror = null; reject(new Error('scene timed out')); }, 45000);
-      preload.onload = () => { clearTimeout(timer); resolve(preload); };
-      preload.onerror = () => { clearTimeout(timer); reject(new Error('scene unavailable')); };
+      const preload = new Image(); preload.decoding = 'async';
+      preload.onload = () => resolve(preload); preload.onerror = () => reject(new Error('scene unavailable'));
       preload.src = asset(scene);
     }), commit
   });
@@ -63,7 +61,7 @@ export function mountCafe({ root, route, navigation, localeResume, execute, onEn
     if (!choices.children.length) {
       for (const scene of themes) {
         const button = document.createElement('button'); button.type = 'button'; button.dataset.cafeTheme = scene.id;
-        const thumb = document.createElement('img'); thumb.src = scene.thumb; thumb.alt = ''; thumb.width = 360; thumb.height = 203; thumb.loading = 'lazy'; thumb.fetchPriority = 'low';
+        const thumb = document.createElement('img'); thumb.src = scene.thumb; thumb.alt = ''; thumb.width = 480; thumb.height = 270; thumb.loading = 'lazy';
         const name = document.createElement('strong'); name.textContent = scene.name;
         const note = document.createElement('span'); note.textContent = scene.note;
         button.append(thumb, name, note); choices.append(button);
