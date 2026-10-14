@@ -131,14 +131,14 @@ test('backup omits AI and email actions while keeping article content, search an
   }
 });
 
-test('primary site retains AI, newsletter, indexability and default BEAR OS products', () => {
+test('primary site retains AI, newsletter, indexability and default CUBXXW OS space', () => {
   const home = htmlNodes('production', 'index.html');
   assert.ok(home.some((node) => attr(node, 'id') === 'hp-bear-ai'));
   assert.ok(home.some((node) => attr(node, 'data-fsub-form') !== undefined));
   const article = htmlNodes('production', 'engineering/posts/go-release-tools/index.html');
   assert.ok(article.some((node) => attr(node, 'data-tab') === 'ai'));
   assert.ok(attr(article.find((node) => attr(node, 'name') === 'robots'), 'content').startsWith('index,'));
-  for (const target of ['production', 'backup']) assert.ok(read(target, 'projects/index.html').includes('BEAR OS'));
+  for (const target of ['production', 'backup']) assert.ok(read(target, 'projects/index.html').includes('CUBXXW OS'));
 });
 
 test('backup travel keeps the bookshelf while omitting unavailable book AI actions', () => {
