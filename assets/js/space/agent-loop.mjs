@@ -424,13 +424,13 @@ function boundStep(raw) {
   return step;
 }
 
-function normalizeStoredRecord(raw) {
+export function normalizeStoredRecord(raw) {
   if (!raw || typeof raw !== 'object') return null;
   const id = typeof raw.id === 'string' && raw.id.trim() ? raw.id.trim().slice(0, 80) : null;
   if (!id) return null;
   return {
     id,
-    question: typeof raw.question === 'string' ? raw.question.slice(0, 2000) : '',
+    question: typeof raw.question === 'string' ? raw.question.slice(0, 4000) : '',
     status: TASK_STATUSES.has(raw.status) ? raw.status : 'interrupted',
     steps: (Array.isArray(raw.steps) ? raw.steps.slice(0, 60) : []).map(boundStep).filter(Boolean),
     answer: typeof raw.answer === 'string' ? raw.answer.slice(0, 8000) : '',
@@ -440,7 +440,7 @@ function normalizeStoredRecord(raw) {
   };
 }
 
-function markInterrupted(record) {
+export function markInterrupted(record) {
   if (record.status === 'running' || record.status === 'awaiting-approval') {
     return { ...record, status: 'interrupted', stopReason: 'restored-interrupted' };
   }
@@ -502,6 +502,30 @@ export function createTaskStore({ storage, key = TASK_STORE_KEY, maxRecords = TA
 
 const MAX_QUESTION_CHARS = 4000;
 const MAX_ANSWER_CHARS = 8000;
+
+// Only complete visible user/assistant pairs can enter a continuing session.
+// Saved roles cannot add instructions or replay tools. The current task keeps
+// its full operational transcript; older dialogue uses the remaining budget.
+export function boundConversation(history,{maxMessages=6,maxChars=8000}={}) {
+  if(!Array.isArray(history)||maxMessages<2||maxChars<100)return [];
+  const pairs=[];let user=null;
+  for(const item of history) {
+    if(item?.role==='user'&&typeof item.content==='string')user=item.content.trim().slice(0,4000);
+    else if(item?.role==='assistant'&&typeof item.content==='string'&&user){
+      const answer=item.content.trim().slice(0,4000);if(answer)pairs.push([{role:'user',content:user},{role:'assistant',content:answer}]);user=null;
+    }
+  }
+  const result=[];let used=2;
+  for(const pair of pairs.slice(-3).reverse()) {
+    if(!result.length)while(JSON.stringify(pair).length+used>maxChars&&pair.some(message=>message.content.length>40)){
+      for(const message of pair)if(message.content.length>40)message.content=message.content.slice(0,Math.max(40,Math.floor(message.content.length*.8)));
+    }
+    const size=JSON.stringify(pair).length;
+    if(result.length+2>maxMessages||used+size>maxChars)break;
+    result.unshift(...pair);used+=size;
+  }
+  return result;
+}
 
 function createTaskId() {
   const random = globalThis.crypto?.randomUUID?.().slice(0, 8) || Math.random().toString(36).slice(2, 10);
@@ -597,6 +621,7 @@ function normalizeToolCalls(list, round) {
 
 export async function runAgentTask({
   question,
+  history = [],
   language = 'zh',
   publicContext = null,
   requestTurn,
@@ -782,7 +807,11 @@ export async function runAgentTask({
 
       emit({ type: 'model-request', taskId: id, round });
       const turn = await withAbort(
-        Promise.resolve().then(() => requestTurn({ messages, language, context: publicContext, signal: controller.signal })),
+        Promise.resolve().then(() => {
+          const room=56000-JSON.stringify(messages).length-JSON.stringify(publicContext || {}).length;
+          const previous=boundConversation(history,{maxMessages:24-messages.length,maxChars:Math.min(8000,room)});
+          return requestTurn({ messages:[...previous,...messages], language, context: publicContext, signal: controller.signal });
+        }),
         controller.signal,
       );
       const content = turnText(turn?.message);

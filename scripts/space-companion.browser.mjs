@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import { chromium } from 'playwright';
 const base=process.env.BEAR_DEV_URL || 'http://127.0.0.1:8888';
 const directory='output/playwright/space-companion';await fs.mkdir(directory,{recursive:true});
-const browser=await chromium.launch();const page=await browser.newPage({viewport:{width:1440,height:900}});
+const browser=await chromium.launch({channel:'chromium',args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const checks=[];
 async function check(name,fn){await fn();checks.push(name);console.log('PASS',name);}
@@ -47,7 +47,8 @@ try {
   });
   await check('removing context also removes the reference and selection from the actual request',async()=>{
     await page.locator('[data-agent-context]').click();await page.locator('[data-agent-send]').click();await page.locator('[data-agent-task]').last().locator('[data-agent-badge][data-status="completed"]').waitFor();
-    assert.ok(!requests.at(-1).messages[0].content.includes('Reference:'));assert.ok(!requests.at(-1).messages[0].content.includes('Selected text:'));
+    const latest=requests.at(-1).messages.findLast(message=>message.role==='user');
+    assert.ok(!latest.content.includes('Reference:'));assert.ok(!latest.content.includes('Selected text:'));
   });
   await check('private editor is never read as ambient context',async()=>{
     await page.locator('[data-space-window="agent"] [data-window-action="close"]').click();await page.locator('[data-space-dock] [data-open="notes"]').click();await page.locator('[data-note-editor]').fill('PRIVATE_WORKSPACE_SENTINEL');

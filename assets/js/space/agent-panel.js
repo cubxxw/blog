@@ -10,9 +10,9 @@
 
 import { safeURL } from './state.mjs';
 import { contextualQuestion, serviceMessage, planInlineText } from './companion.mjs';
+import {createSessionStore,sessionMessages} from './agent-sessions.mjs';
 import {
   runAgentTask,
-  createTaskStore,
   createToolExecutor,
   createApprovalGate,
   interpretRunResult,
@@ -62,7 +62,8 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   const t = (cn, en) => (zh ? cn : en);
   const origin = typeof location !== 'undefined' ? location.origin : 'https://cubxxw.com';
   const publicContext = buildPublicContext(catalog);
-  const store = createTaskStore({ storage: (() => { try { return typeof localStorage !== 'undefined' ? localStorage : null; } catch { return null; } })() });
+  const sessions = createSessionStore({ storage: (() => { try { return typeof localStorage !== 'undefined' ? localStorage : null; } catch { return null; } })() });
+  let session = sessions.active(), draftTimer, draftDirty=false, draftRevision=session.draftRevision;
 
   const executeTool = createToolExecutor({
     catalog,
@@ -88,7 +89,9 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   host.innerHTML = `
     <div class="bear-agent" data-agent-root>
       <header class="bear-agent__header">
-        <div class="bear-agent__identity"><span class="bear-agent__orb" aria-hidden="true">✳</span><div><strong>${t('空间助手','Space companion')}</strong><small>DeepSeek Flash</small></div><button type="button" data-agent-history aria-label="${t('查看任务记录','Show task history')}">◷</button></div>
+        <div class="bear-agent__identity"><span class="bear-agent__orb" aria-hidden="true">✳</span><div><strong>${t('空间助手','Space companion')}</strong><small>DeepSeek Flash</small></div><button type="button" data-agent-new aria-label="${t('新对话','New conversation')}">＋</button><button type="button" data-agent-history aria-label="${t('会话历史','Conversation history')}" aria-expanded="false">◷</button></div>
+        <p class="bear-agent__session-title" data-agent-session-title></p>
+        <p class="bear-agent__persistence" data-agent-persistence hidden role="status"></p>
         <h2>${t('接下来，想探索什么？','Where shall we go next?')}</h2>
         <p>${t('找文章、了解作品，或者一起去旅途中看看。','Find a thought, discover a project, or revisit a journey.')}</p>
       </header>
@@ -107,6 +110,13 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
           <p class="bear-agent__status" data-agent-status role="status" aria-live="polite">${t('⌘ / Ctrl J 唤起 · Enter 发送','⌘ / Ctrl J to open · Enter to send')}</p>
         </div>
       </div>
+      <section class="bear-agent__sessions" data-agent-sessions hidden aria-label="${t('会话历史','Conversation history')}">
+        <header><div><p>YOUR CONVERSATIONS</p><h3>${t('之前的对话','Previous conversations')}</h3></div><button type="button" data-agent-history-close aria-label="${t('关闭会话历史','Close conversation history')}">×</button></header>
+        <button type="button" class="bear-agent__session-new" data-agent-session-new>＋ ${t('开始新对话','Start a new conversation')}</button>
+        <label class="bear-agent__session-search"><span class="space-sr-only">${t('查找对话','Find a conversation')}</span><input type="search" data-agent-session-search placeholder="${t('查找之前聊过的内容…','Find something we talked about…')}"></label>
+        <div class="bear-agent__session-list" data-agent-session-list></div>
+        <footer><p data-agent-session-save></p><button type="button" data-agent-session-export>${t('导出记录','Export conversations')} ↗</button></footer>
+      </section>
     </div>`;
 
   const root = host.querySelector('[data-agent-root]');
@@ -117,6 +127,47 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   const stop = host.querySelector('[data-agent-stop]');
   const status = host.querySelector('[data-agent-status]');
   const contextButton = host.querySelector('[data-agent-context]');
+  const historyPanel=host.querySelector('[data-agent-sessions]'),historyButton=host.querySelector('[data-agent-history]');
+  const sessionList=host.querySelector('[data-agent-session-list]'),sessionSearch=host.querySelector('[data-agent-session-search]');
+  const sessionTitle=host.querySelector('[data-agent-session-title]'),sessionSave=host.querySelector('[data-agent-session-save]');
+  const saveWarning=host.querySelector('[data-agent-persistence]');
+  const nameOf=value=>value.legacy?t('之前的对话','Previous conversation'):value.title||t('新对话','New conversation');
+  function drawSave(){sessionSave.textContent=sessions.persisted?t('仅保存在当前浏览器。换风景、切语言都还在。','Saved in this browser. Scenery and language changes keep it.'):t('浏览器未能保存，请先导出记录。当前页面仍保留你的对话。','Browser storage failed. Export your conversations; this page still retains them.');sessionSave.dataset.saved=String(sessions.persisted);saveWarning.hidden=sessions.persisted;saveWarning.textContent=sessions.persisted?'':t('记录未能保存，建议先导出。','History could not save. Export it before leaving.');}
+  function saveDraft(){clearTimeout(draftTimer);if(!draftDirty)return;const saved=sessions.saveDraft(session.id,input.value,{expectedRevision:draftRevision});draftRevision=sessions.lastDraftRevision;if(saved)draftDirty=false;drawSave();}
+  function drawSessions(){
+    sessionList.replaceChildren();const query=sessionSearch.value.trim().toLowerCase();
+    for(const value of sessions.list()){
+      const name=nameOf(value);if(query&&!`${name} ${value.tasks.map(task=>task.question+' '+task.answer).join(' ')}`.toLowerCase().includes(query))continue;
+      const button=el('button','bear-agent__session-item');button.type='button';button.dataset.agentSession=value.id;
+      button.setAttribute('aria-current',String(value.id===session.id));button.disabled=busy;
+      button.append(el('strong','',name));
+      const latest=value.tasks.at(-1);button.append(el('span','',String(latest?.answer||latest?.question||t('还没开始，想聊什么？','What shall we talk about?')).replace(/\s+/g,' ').slice(0,85)));
+      const date=new Intl.DateTimeFormat(zh?'zh-CN':'en-GB',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(value.updatedAt||value.createdAt));
+      button.append(el('small','',`${date} · ${value.tasks.length} ${t('轮对话','turns')}`));sessionList.append(button);
+    }
+    if(!sessionList.children.length)sessionList.append(el('p','bear-agent__session-empty',t('没有找到这段对话。','No matching conversation.')));
+    drawSave();
+  }
+  function closeHistory(){historyPanel.hidden=true;historyButton.setAttribute('aria-expanded','false');input.focus({preventScroll:true});}
+  function showHistory(){expand();drawSessions();historyPanel.hidden=false;historyButton.setAttribute('aria-expanded','true');sessionSearch.focus({preventScroll:true});}
+  function drawSession(){
+    session=sessions.active();sessionTitle.textContent=nameOf(session);log.replaceChildren();
+    for(const record of session.tasks)renderRecord(record,{restored:true});
+    input.value=session.draft;draftRevision=session.draftRevision;draftDirty=false;if(session.tasks.length||session.draft)expand();drawSave();
+  }
+  function newSession(){if(busy)return;saveDraft();session=sessions.create();focus=null;selectedText='';drawContext();drawSession();closeHistory();setStatus(t('已开始新对话。之前的记录保留在历史里。','New conversation. Earlier conversations remain in history.'));}
+  historyButton.addEventListener('click',()=>historyPanel.hidden?showHistory():closeHistory());
+  host.querySelector('[data-agent-history-close]').addEventListener('click',closeHistory);
+  host.querySelector('[data-agent-new]').addEventListener('click',newSession);
+  host.querySelector('[data-agent-session-new]').addEventListener('click',newSession);
+  sessionSearch.addEventListener('input',drawSessions);
+  sessionList.addEventListener('click',event=>{const button=event.target.closest('[data-agent-session]');if(!button||busy)return;saveDraft();if(!sessions.select(button.dataset.agentSession))return;focus=null;selectedText='';drawContext();drawSession();closeHistory();setStatus(t('已恢复这段对话，可以接着聊。','Conversation restored. You can continue.'));});
+  historyPanel.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();closeHistory();}});
+  host.querySelector('[data-agent-session-export]').addEventListener('click',()=>{
+    saveDraft();const url=URL.createObjectURL(new Blob([sessions.export()],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='space-conversations.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  input.addEventListener('input',()=>{draftDirty=true;clearTimeout(draftTimer);draftTimer=setTimeout(saveDraft,250);});
+  const flushDraft=()=>{if(!disposed)saveDraft();};window.addEventListener('pagehide',flushDraft);
   const drawContext = () => { contextButton.hidden = !focus; contextButton.textContent = focus ? `${selectedText ? t('选中文字','Selected passage') : t('结合当前内容','With context')} · ${focus.title} ×` : ''; };
   drawContext();
   contextButton.addEventListener('click',()=>{focus=null;selectedText='';drawContext();input.focus();});
@@ -125,17 +176,18 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     if (!event.detail?.question && input.value.trim()) { input.focus({preventScroll:true});return; }
     selectedText = event.detail?.selection || '';
     focus = event.detail?.focus || null; drawContext();
-    if (event.detail?.question) input.value = event.detail.question.slice(0,4000);
+    if (event.detail?.question) {input.value = event.detail.question.slice(0,4000);draftDirty=true;}
+    saveDraft();
     input.focus({preventScroll:true});
   };
   workspace?.addEventListener('bear:agent-prefill',prefill);
-  host.querySelector('[data-agent-history]').addEventListener('click',expand);
 
   const setStatus = (text) => { status.textContent = text; };
   const setBusy = (value) => {
     busy = value;
     send.disabled = value;
     stop.hidden = !value;
+    host.querySelectorAll('[data-agent-new],[data-agent-session-new],[data-agent-session]').forEach(button=>{button.disabled=value;});
   };
 
   // ── Rendering helpers (textContent / safe links only) ──────────────────────
@@ -346,6 +398,8 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     if (!raw) return null;
     const text = contextualQuestion(raw,context ? focus : null,context ? selectedText : '');
     if (!text) return null;
+    const sessionId=session.id,history=sessionMessages(sessions.active());
+    closeHistory();
     recognition?.abort(); expand(); announce('working');
     const taskNode = createTaskNode(text, null);
     const live = {
@@ -364,7 +418,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     setBusy(true);
     setStatus(t('任务执行中…', 'Working on the task…'));
 
-    const persist = (record = live) => { try { store.save(record); } catch { /* storage is optional */ } };
+    const persist = (record = live) => {sessions.saveTask(sessionId,record);sessionTitle.textContent=nameOf(sessions.active());drawSave();};
     const onEvent = (event) => {
       if (disposed) return;
       if (event.type === 'task-start') {
@@ -420,6 +474,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     try {
       const record = await runAgentTask({
         question: text,
+        history,
         language: catalog?.language || 'zh',
         publicContext,
         requestTurn,
@@ -478,8 +533,8 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     setStatus(serviceMessage(record.steps?.findLast(s=>s.type==='error')?.message,zh));
   }
 
-  // ── Restored history (last 12 records, interrupted stays interrupted) ─────
-  for (const record of store.load()) renderRecord(record, { restored: true });
+  // Resume the selected conversation, preserving old task records on migration.
+  drawSession();
 
   // ── Composer ───────────────────────────────────────────────────────────────
   form.addEventListener('submit', (event) => {
@@ -487,6 +542,8 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     const question = input.value.trim();
     if (!question || busy) return;
     input.value = '';
+    draftDirty=true;
+    saveDraft();
     runTask(question);
     input.focus({ preventScroll: true });
   });
@@ -511,7 +568,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     const session = new SpeechInput(); recognition = session;
     session.lang = zh ? 'zh-CN' : 'en-US'; session.interimResults = true;
     const before = input.value;
-    session.onresult = event => { if (!disposed) input.value = (before + Array.from(event.results).map(r=>r[0].transcript).join('')).slice(0,4000); };
+    session.onresult = event => { if (!disposed) {input.value = (before + Array.from(event.results).map(r=>r[0].transcript).join('')).slice(0,4000);draftDirty=true;saveDraft();} };
     session.onerror = () => { if (!disposed) setStatus(t('没有收到语音，可以继续输入文字。','Voice input did not arrive. You can continue typing.')); };
     session.onend = () => { if(recognition===session)recognition=null;voice.removeAttribute('data-listening'); };
     voice.dataset.listening='true'; setStatus(t('正在听。结束后可编辑，再发送。','Listening. Edit the text before sending.'));
@@ -540,6 +597,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
 
   return function dispose() {
     if (disposed) return;
+    saveDraft();window.removeEventListener('pagehide',flushDraft);clearTimeout(draftTimer);
     disposed = true;
     controller?.abort();
     recognition?.abort();
