@@ -1,3 +1,4 @@
+import { languageDestination, canAnimateEntry } from './entry.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
 import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
@@ -10,13 +11,19 @@ function mountDesktop(root) {
   const labels = catalog.labels, zh = catalog.language === 'zh';
   const t = (cn,en) => zh ? cn : en;
   const layer = root.querySelector('[data-space-windows]');
-  const viewport = () => ({ width: root.clientWidth, height: root.clientHeight - root.querySelector('.space-menubar').offsetHeight });
+  const viewport = () => ({ width: root.clientWidth, height: root.clientHeight });
   const stateViewport = () => root.clientWidth <= 640 ? { width: 10000, height: 10000 } : viewport();
   const storageKey = 'bear-space:v1';
   let saved, saveFailure = false;
   try { saved = localStorage.getItem(storageKey); } catch { saveFailure = true; }
   let state = createWorkspace(saved,stateViewport());
   const nodes = new Map();
+  let onboarding = false;
+  const entryURL = new URL(location.href);
+  let visited = false, localeResume = entryURL.searchParams.get('space-resume') === catalog.language;
+  try { visited = sessionStorage.getItem('space:visited:v2') === 'yes'; localeResume = localeResume || sessionStorage.getItem('space:locale-resume') === catalog.language; sessionStorage.removeItem('space:locale-resume'); } catch {}
+  if (entryURL.searchParams.get('space-resume') === catalog.language) { entryURL.searchParams.delete('space-resume'); history.replaceState(null,'',entryURL.pathname+entryURL.search+entryURL.hash); }
+  const completeEntry = () => { onboarding = false; root.removeAttribute('data-onboarding'); try { sessionStorage.setItem('space:visited:v2', 'yes'); } catch {} };
   let toastTimer, searchIndex = 0, drag = null;
   const search = root.querySelector('[data-space-search]');
   const searchInput = root.querySelector('[data-space-search-input]');
@@ -27,19 +34,19 @@ function mountDesktop(root) {
   const menu = root.querySelector('[data-space-menu-trigger]');
   const menuPanel = root.querySelector('.space-menu');
   let lab, knowledge, knowledgePending = false, knowledgeGeneration = 0;
-  const icon = app => root.querySelector(`[data-space-dock] [data-open="${app}"] .space-icon`)?.outerHTML || '';
+  const icon = app => root.querySelector('[data-space-icons]').content.querySelector(`[data-app-icon="${app}"] .space-icon`)?.outerHTML || '';
   function notify(message) {
     const toast = root.querySelector('[data-space-toast]'); toast.textContent = message; toast.hidden = false;
     clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; },4000);
   }
   const apps = mountApps({ root,catalog,execute,getState:()=>state,updateNote:text=>update({type:'note',text},false),notify,icon });
   function persist() {
-    try { localStorage.setItem(storageKey,serializeWorkspace(state)); }
-    catch { if (!saveFailure) notify(t('浏览器未能保存。请导出一份笔记。','Browser storage failed. Please export your notes.')); saveFailure = true; }
+    try { localStorage.setItem(storageKey,serializeWorkspace(state)); return true; }
+    catch { if (!saveFailure) notify(t('浏览器未能保存。请导出一份笔记。','Browser storage failed. Please export your notes.')); saveFailure = true; return false; }
   }
   function title(win) {
     if (win.app === 'products' && win.payload) return catalog.products.find(p => p.id === win.payload)?.name || labels.products;
-    if (win.app === 'reader' && win.payload) return catalog.articles.find(a => a.url === win.payload)?.title || labels.reader;
+    if (win.app === 'reader' && win.payload) return [...catalog.articles, ...(catalog.readingDocuments || [])].find(a => a.url === win.payload)?.title || labels.reader;
     if (win.app === 'photos' && win.payload) return catalog.photos.find(p => p.id === win.payload)?.title || labels.photos;
     return labels[win.app];
   }
@@ -62,7 +69,7 @@ function mountDesktop(root) {
         layer.append(el); entry = { el,payload:null }; nodes.set(win.id,entry);
       }
       const {el} = entry;
-      el.hidden = win.minimized; el.dataset.active = String(win.id === state.active);
+      el.hidden = win.minimized || (onboarding && win.app !== 'welcome'); el.dataset.active = String(win.id === state.active);
       const name = title(win); el.setAttribute('aria-label',name); el.querySelector('header strong').textContent = name;
       const rect = win.maximized ? { x:8,y:8,width:viewport().width-16,height:viewport().height-108 } : win.rect;
       Object.assign(el.style,{ left:'0px',top:'0px',width:`${rect.width}px`,height:`${rect.height}px`,transform:`translate(${rect.x}px,${rect.y}px)`,zIndex:String(10+index) });
@@ -83,6 +90,7 @@ function mountDesktop(root) {
   }
   function open(app,payload) {
     if (!APPS.includes(app)) return t('没有这个应用。','Unknown application.');
+    if (app !== 'welcome') completeEntry();
     const previous = state.windows.find(w => w.app === app);
     // Dock restores the existing document; an explicit payload navigates that app.
     update({ type:'open',app,payload:payload === undefined ? previous?.payload || '' : payload });
@@ -98,7 +106,7 @@ function mountDesktop(root) {
     if (name === 'apps') return APPS.map(app=>`${app.padEnd(10)} ${labels[app]}`).join('\n');
     if (name === 'ls') return state.windows.map(w=>`${w.app}${w.minimized?' [minimized]':''}`).join('\n') || t('没有打开的窗口。','No open windows.');
     if (name === 'open') return open(arg);
-    if (name === 'close') { update({type:'close',id:arg}); return t('窗口已关闭。','Window closed.'); }
+    if (name === 'close') { completeEntry(); update({type:'close',id:arg}); return t('窗口已关闭。','Window closed.'); }
     if (name === 'search') { showSearch(arg); return t('已打开搜索。','Search opened.'); }
     if (name === 'launchpad') { showLaunchpad(arg); return t('已打开所有应用。','All apps opened.'); }
     if (name === 'note') { update({type:'note',text:state.note+(state.note?'\n':'')+arg}); const existing=nodes.get('notes'); if(existing){existing.rendered=false;render();} return t('已追加到你的笔记。','Added to your note.'); }
@@ -109,6 +117,16 @@ function mountDesktop(root) {
   }
   function execute(name,args = {}) {
     if (name === 'open') return open(args.app,args.payload);
+    if (name === 'enter') { completeEntry(); render(); showLaunchpad(); return true; }
+    if (name === 'language') {
+      const target = languageDestination(args.value, catalog.languageRoutes, location.href);
+      if (!target || args.value === catalog.language) return false;
+      if (!persist()) { notify(t('暂时无法保存，请先导出工作区再切换语言。','Storage is unavailable. Export your workspace before changing language.')); return false; }
+      const destination = new URL(target);
+      try { sessionStorage.setItem('space:locale-resume', args.value); }
+      catch { destination.searchParams.set('space-resume', args.value); }
+      location.assign(destination.href); return true;
+    }
     if (name === 'command') return command(args.command);
     if (['note','draft','favorite'].includes(name)) {
       update({type:name,...args},false);
@@ -125,7 +143,7 @@ function mountDesktop(root) {
       return true;
     }
     if (['theme','wallpaper'].includes(name)) { update({type:name,...args}); return true; }
-    if (name === 'close') { update({type:'close',id:args.id}); return true; }
+    if (name === 'close') { completeEntry(); update({type:'close',id:args.id}); return true; }
     if (name === 'arrange') { if(root.clientWidth<=640)showOverview();else update({type:'arrange'}); return true; }
     if (name === 'search') { showSearch(args.query || ''); return true; }
     if (name === 'launchpad') { showLaunchpad(args.query || ''); return true; }
@@ -143,21 +161,20 @@ function mountDesktop(root) {
     } catch {return t('本地沙盒未响应，命令没有得到确认。','The sandbox did not respond; execution is unconfirmed.');}
   }
   function home() {
-    const width=root.clientWidth<=640?1280:viewport().width;
-    if (!state.initialized) {
-      update({type:'open',app:'welcome',rect:{x:Math.max(118,(width-1100)/2),y:67,width:Math.min(580,width-150),height:535}});
-      update({type:'open',app:'photos',payload:'kumano',rect:{x:Math.max(550,(width-1100)/2+642),y:101,width:320,height:465}});
-    } else { open('photos'); open('welcome'); }
+    const width = root.clientWidth <= 640 ? 1280 : viewport().width;
+    const height = Math.min(600, Math.max(380, viewport().height - 140));
+    update({type:'open',app:'welcome',payload:'',rect:{x:Math.max(16,(width-680)/2),y:Math.max(16,(viewport().height-height-85)/2),width:Math.min(680,width-32),height}});
     update({type:'focus',id:'welcome'});
     update({type:'initialized'});
   }
   function focusWindow(app) { nodes.get(app)?.el.focus({preventScroll:true}); }
   function focusAppControl(app) {
     const button = root.querySelector(`[data-space-dock] [data-open="${app}"]`);
-    const fallback = root.querySelector('[data-space-launchpad-trigger]');
+    const fallback = menu;
     (button?.getClientRects().length ? button : fallback)?.focus({preventScroll:true});
   }
   function showDialog(dialog, input, fallback) {
+    completeEntry(); render();
     if (!dialog.open) {
       const active = document.activeElement;
       const sourceDialog = active?.closest('dialog');
@@ -187,7 +204,7 @@ function mountDesktop(root) {
   }
   function showSearch(query = '') {
     searchInput.value=query; searchIndex=0; drawSearch();
-    showDialog(search,searchInput,root.querySelector('[data-space-search-trigger]'));
+    showDialog(search,searchInput,menu);
   }
   function closeSearch() { closeDialog(search); }
   function drawSearch() {
@@ -233,7 +250,7 @@ function mountDesktop(root) {
   }
   function showLaunchpad(query = '') {
     launchpadInput.value=query; drawLaunchpad();
-    showDialog(launchpad,launchpadInput,root.querySelector('[data-space-launchpad-trigger]'));
+    showDialog(launchpad,launchpadInput,menu);
   }
   launchpadInput.addEventListener('input',drawLaunchpad);
   launchpad.addEventListener('keydown',event=>{
@@ -255,7 +272,7 @@ function mountDesktop(root) {
   });
   function showOverview() {
     root.querySelector('[data-space-overview-list]').innerHTML=state.windows.map(w=>`<button class="space-overview__item" data-overview-id="${escapeHTML(w.id)}">${icon(w.app)}<strong>${escapeHTML(title(w))}</strong><small>${w.minimized?t('已最小化','Minimized'):t('打开中','Open')}</small></button>`).join('') || `<p>${t('桌面很清爽，打开一个应用吧。','A quiet desktop. Open an app.')}</p>`;
-    showDialog(overview,null,root.querySelector('[data-space-overview-trigger]'));
+    showDialog(overview,null,menu);
   }
   overview.addEventListener('click',event=>{
     const item=event.target.closest('[data-overview-id]');
@@ -285,11 +302,11 @@ function mountDesktop(root) {
     const opener=target.closest('[data-open]');
     if(opener){closeMenu();open(opener.dataset.open,opener.hasAttribute('data-payload') ? opener.dataset.payload : undefined);return;}
     const action=target.closest('[data-window-action]');
-    if(action){const id=action.closest('[data-space-window]').dataset.spaceWindow;if(action.dataset.windowAction==='arrange')execute('arrange');else update({type:action.dataset.windowAction,id}); if(action.dataset.windowAction==='close'||action.dataset.windowAction==='minimize')focusAppControl(id);return;}
+    if(action){completeEntry();const id=action.closest('[data-space-window]').dataset.spaceWindow;if(action.dataset.windowAction==='arrange')execute('arrange');else update({type:action.dataset.windowAction,id}); if(action.dataset.windowAction==='close'||action.dataset.windowAction==='minimize')focusAppControl(id);return;}
     if(target.closest('[data-space-arrange]')){closeMenu();execute('arrange');}
     if(target.closest('[data-space-export]')){closeMenu();execute('export');}
     if(target.closest('[data-space-home]')){closeMenu();home();}
-    if(target.closest('[data-space-show-desktop]')){closeMenu();for(const w of state.windows)update({type:'minimize',id:w.id});}
+    if(target.closest('[data-space-show-desktop]')){completeEntry();closeMenu();for(const w of state.windows)update({type:'minimize',id:w.id});}
     if(target.closest('[data-space-overview-trigger]'))showOverview();
     if(target.closest('[data-space-search-trigger]'))showSearch();
     if(target.closest('[data-space-launchpad-trigger]'))showLaunchpad();
@@ -347,7 +364,7 @@ function mountDesktop(root) {
       if(!action)return;
       event.preventDefault();
       if(action==='menu')closeMenu(true);
-      else if(action==='minimize'){const current=state.windows.find(w=>w.id===state.active);if(current){update({type:'minimize',id:current.id});focusAppControl(current.app);}}
+      else if(action==='minimize'){const current=state.windows.find(w=>w.id===state.active);if(current){completeEntry();update({type:'minimize',id:current.id});focusAppControl(current.app);}}
       else closeDialog({search,launchpad,overview}[action]);
       return;
     }
@@ -363,7 +380,7 @@ function mountDesktop(root) {
     knowledgeGeneration++;knowledgePending=false;
     delete productRoot.dataset.knowledgeView;
     const isLab=view==='lab';
-    if(isLab){closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);}
+    if(isLab){completeEntry();render();closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);}
     if(isLab&&!lab){productRoot.append(productRoot.querySelector('[data-product-lab-template]').content.cloneNode(true));lab=productRoot.querySelector('[data-product-panel="lab"]');lab.addEventListener('click',event=>{if(event.target.closest('[data-bks-enter]'))openKnowledge();});}
     productRoot.dataset.productView=isLab?'lab':'bear';root.hidden=isLab;if(lab)lab.hidden=!isLab;
     document.body.classList.toggle('products-view-bear',!isLab);document.body.classList.toggle('products-view-lab',isLab);
@@ -395,18 +412,29 @@ function mountDesktop(root) {
     catch{if(current())host.innerHTML=`<p class="space-app">${t('知识空间暂时无法加载。','The knowledge space could not load.')}</p><button data-product-view-button="lab">${t('返回 Product Lab','Back to Product Lab')}</button>`;}
     finally{if(generation===knowledgeGeneration)knowledgePending=false;}
   }
-  productRoot.addEventListener('click',event=>{const b=event.target.closest('[data-product-view-button]');if(b)setView(b.dataset.productViewButton);});
-  function applyHash(){
+  productRoot.addEventListener('click',event=>{const b=event.target.closest('[data-product-view-button]');if(!b)return;setView(b.dataset.productViewButton);const target=b.dataset.productViewButton==='bear'?menu:productRoot.querySelector('.product-view-switch [data-product-view-button="lab"]');target?.focus({preventScroll:true});});
+  function applyHash(restoreLocale = false){
     const entry=new URLSearchParams(location.search).get('profile')==='about'?'about':'';
     const route=resolveSpaceRoute(location.hash,catalog.products,entry);
     if(route.view==='knowledge')openKnowledge();
-    else {setView(route.view,false);if(route.app)open(route.app,route.payload);}
+    else {setView(route.view,false);if(route.app && !restoreLocale)open(route.app,route.payload);}
   }
-  window.addEventListener('hashchange',applyHash);
+  window.addEventListener('hashchange',()=>applyHash());
   const clock=()=>{root.querySelector('[data-space-clock]').textContent=new Intl.DateTimeFormat(zh?'zh-CN':'en-GB',{weekday:'short',hour:'2-digit',minute:'2-digit'}).format(new Date());};clock();setInterval(clock,60000);
   // Public capability descriptions are data; only the registered operations execute.
   window.BearSpace=Object.freeze({ version:1, tools:Object.freeze([{name:'open',description:'Open an app',apps:[...APPS]},{name:'search',description:'Search public writing'},{name:'launchpad',description:'Browse all workspace applications'},{name:'note',description:'Replace this visitor’s local note'},{name:'arrange',description:'Arrange open windows'},{name:'export',description:'Download workspace state'},{name:'run',description:'Execute in the connected local Docker sandbox; never on the host'}]), execute, snapshot:()=>JSON.parse(serializeWorkspace(state)) });
-  if(!state.initialized)home();else render();
-  applyHash();root.dataset.ready='true';
+  const entryRoute = resolveSpaceRoute(location.hash,catalog.products,new URLSearchParams(location.search).get('profile') === 'about' ? 'about' : '');
+  const navigationType = performance.getEntriesByType('navigation')[0]?.type;
+  const freshEntry = navigationType === 'navigate' || (navigationType !== 'reload' && !visited);
+  onboarding = freshEntry && !localeResume && entryRoute.view === 'bear' && !entryRoute.app;
+  if (onboarding) { root.dataset.onboarding = 'true'; home(); }
+  else if (!state.initialized) home(); else render();
+  applyHash(localeResume);root.dataset.ready='true';
+  if (onboarding && canAnimateEntry({ reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches, coarsePointer:matchMedia('(pointer: coarse)').matches, saveData:navigator.connection?.saveData === true, width:root.clientWidth, visible:!document.hidden })) {
+    const config = JSON.parse(document.querySelector('[data-space-entrance]').textContent);
+    const host = root.querySelector('[data-space-entry-art]');
+    // This optional module never delays the working desktop or blocks input.
+    if (host) import(config.module).then(module => { if (host.isConnected && !root.hidden && !document.hidden) module.playEntrance(host); }).catch(() => {});
+  }
   if(saveFailure)notify(t('无法使用浏览器存储。笔记可导出，但刷新后可能丢失。','Browser storage is unavailable. Export notes before reloading.'));
 }

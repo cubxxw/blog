@@ -4,7 +4,7 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 import { createOutputServer } from './serve-site-output.mjs';
 
-const directory = path.resolve(process.env.BEAR_EVIDENCE_DIR || 'output/playwright/bear-workspace');
+const directory = path.resolve(process.env.BEAR_EVIDENCE_DIR || 'output/playwright/space-classic-workspace');
 await fs.mkdir(directory, { recursive: true });
 const server = createOutputServer({ publicDir: path.resolve(process.env.SITE_PUBLIC_DIR || 'public') });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -27,14 +27,14 @@ async function check(name, fn) {
 async function openApp(app) {
   const dock = page.locator(`[data-space-dock] [data-open="${app}"]`);
   if (await dock.isVisible()) await dock.click();
-  else { await page.locator('.space-menubar [data-space-launchpad-trigger]').click(); await page.locator(`[data-launchpad-app="${app}"]`).click(); }
+  else { await page.locator('[data-space-menu-trigger]').click(); await page.locator('.space-menu [data-space-launchpad-trigger]').click(); await page.locator(`[data-launchpad-app="${app}"]`).click(); }
 }
 try {
   await page.goto(`${base}/zh/projects/`, { waitUntil: 'domcontentloaded' });
   assert.equal(await page.locator('[data-bear-workspace]').count(), 1, 'BEAR must provide an interactive desktop');
   await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
-  await check('desktop opens multiple real apps immediately', async () => {
-    assert.equal(await page.locator('[data-space-window]').count(), 2);
+  await check('desktop starts with onboarding and opens real apps from the Dock', async () => {
+    assert.equal(await page.locator('[data-space-window]').count(), 1);
     await page.locator('[data-space-dock] [data-open="notes"]').click();
     await page.locator('[data-space-window="notes"]').waitFor();
     assert.equal(await page.locator('[data-space-window="notes"]').count(), 1);
@@ -52,7 +52,7 @@ try {
     assert.equal(await page.locator('[data-space-window="notes"]').isVisible(), true);
   });
   await check('CLI calls the same workspace open operation', async () => {
-    await page.locator('[data-space-dock] [data-open="terminal"]').click();
+    await openApp('terminal');
     await page.locator('[data-terminal-input]').fill('open books');
     await page.locator('[data-terminal-input]').press('Enter');
     assert.equal(await page.locator('[data-space-window="books"]').isVisible(), true);
@@ -79,7 +79,7 @@ try {
     assert.equal(await page.evaluate(()=>window.BearSpace.snapshot().active),'notes');
   });
   await check('search opens a real article inside the reader', async () => {
-    await page.locator('.space-menubar [data-space-search-trigger]').click();
+    await page.locator('[data-space-menu-trigger]').click(); await page.locator('.space-menu [data-space-search-trigger]').click();
     await page.locator('[data-space-search-input]').fill('Agent');
     const article = page.locator('[data-search-kind="article"]').first();
     assert.ok(await article.count()); await article.click();
@@ -108,22 +108,25 @@ try {
     assert.deepEqual(errors, [], 'a cancelled reader must not mutate a later screen');
   });
   await check('Product Lab switches back to the OS', async () => {
-    await page.locator('[data-product-view-button="lab"]').click();
+    if (await page.locator('[data-bear-workspace]').isVisible()) await page.locator('[data-space-menu-trigger]').click();
+    await page.locator('[data-product-view-button="lab"]:visible').click();
     assert.equal(await page.locator('[data-product-panel="lab"]').isVisible(), true);
     await page.locator('[data-product-view-button="bear"]').click();
     assert.equal(await page.locator('[data-bear-workspace]').isVisible(), true);
   });
   await check('Product Lab control exits its knowledge graph to the product catalog', async () => {
-    await page.locator('[data-product-view-button="lab"]').click();
+    if (await page.locator('[data-bear-workspace]').isVisible()) await page.locator('[data-space-menu-trigger]').click();
+    await page.locator('[data-product-view-button="lab"]:visible').click();
     await page.locator('[data-bks-enter]').click();
     assert.equal(await page.locator('.builds-main').isVisible(),false);
-    await page.locator('[data-product-view-button="lab"]').click();
+    if (await page.locator('[data-bear-workspace]').isVisible()) await page.locator('[data-space-menu-trigger]').click();
+    await page.locator('[data-product-view-button="lab"]:visible').click();
     assert.equal(await page.locator('.builds-main').isVisible(),true);
     await page.locator('[data-product-view-button="bear"]').click();
   });
   await check('a real travel photo opens its matching map region', async () => {
     await page.locator('[data-space-dock] [data-open="photos"]').click();
-    await page.locator('[data-photo-back]').click();
+    if (await page.locator('[data-photo-back]').isVisible()) await page.locator('[data-photo-back]').click();
     await page.locator('[data-photo-select]').first().click();
     const mapLink=page.locator('.sp-photo-detail figcaption [data-media-open="map"]');
     const region=await mapLink.getAttribute('data-media-payload');
@@ -178,7 +181,7 @@ try {
     await page.setViewportSize({width:320,height:700});
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
     assert.ok((await page.locator('[data-note-editor]').boundingBox()).width<=320);
-    await page.locator('.space-menubar [data-space-launchpad-trigger]').click();
+    await page.locator('[data-space-menu-trigger]').click(); await page.locator('.space-menu [data-space-launchpad-trigger]').click();
     assert.equal(await page.locator('[data-launchpad-app]').count(),11);
     await page.locator('[data-launchpad-app="settings"]').click();
     await page.locator('[data-space-window="settings"]').waitFor();
@@ -291,7 +294,7 @@ try {
     });
     await check('browser terminal executes inside the real connected sandbox',async()=>{
       await page.setViewportSize({width:1280,height:850});
-      await page.locator('[data-space-dock] [data-open="terminal"]').click();
+      await openApp('terminal');
       await page.locator('[data-terminal-input]').fill("run printf 'BROWSER_SANDBOX_OK' > /workspace/browser-acceptance.txt; cat /workspace/browser-acceptance.txt");
       await page.locator('[data-terminal-input]').press('Enter');
       await page.waitForFunction(()=>document.querySelector('[data-terminal-output]')?.textContent.includes('BROWSER_SANDBOX_OK\n[exit 0'),{},{timeout:25000});

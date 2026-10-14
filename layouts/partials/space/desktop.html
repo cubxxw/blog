@@ -1,9 +1,19 @@
 {{- $zh := eq .Lang "zh" -}}
-{{- $labels := dict "welcome" (cond $zh "关于我" "About me") "products" (cond $zh "产品实验室" "Products") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "和 BEAR 聊聊" "Ask BEAR") "settings" (cond $zh "工作区设置" "Settings") -}}
-{{- $mobileLabels := dict "welcome" (cond $zh "关于" "Home") "reader" (cond $zh "文章" "Writing") "products" (cond $zh "产品" "Products") "photos" (cond $zh "相册" "Photos") "agent" (cond $zh "助手" "BEAR") -}}
+{{- $languageRoutes := dict .Lang .RelPermalink -}}
+{{- range .Translations }}{{ $languageRoutes = merge $languageRoutes (dict .Lang .RelPermalink) }}{{ end -}}
+{{- $labels := dict "welcome" (cond $zh "欢迎" "Welcome") "products" (cond $zh "产品实验室" "Products") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "和 BEAR 聊聊" "Ask BEAR") "settings" (cond $zh "工作区设置" "Settings") -}}
+{{- $mobileLabels := dict "welcome" (cond $zh "空间" "Home") "reader" (cond $zh "文章" "Writing") "products" (cond $zh "产品" "Products") "settings" (cond $zh "设置" "Settings") "agent" (cond $zh "向导" "Guide") -}}
 {{- $articles := slice -}}
 {{- range (where site.RegularPages "Type" "posts").ByDate.Reverse -}}
   {{- $articles = $articles | append (dict "id" .RelPermalink "title" .Title "url" .RelPermalink "description" (.Description | default (.Summary | plainify | truncate 180)) "date" (.Date.Format "2006.01.02") "section" .Section "tags" .Params.tags) -}}
+{{- end -}}
+{{- $readingDocuments := slice -}}
+{{- range site.Sites -}}
+  {{- if ne .Language.Lang $.Lang -}}
+    {{- range where .RegularPages "Type" "posts" -}}
+      {{- $readingDocuments = $readingDocuments | append (dict "title" .Title "url" .RelPermalink "date" (.Date.Format "2006.01.02") "section" .Section) -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 {{- $products := slice -}}
 {{- range site.Data.products.products -}}
@@ -31,53 +41,36 @@
 {{- range site.Data.travel.regions -}}
  {{- $places = $places | append (dict "id" .slug "name" (cond $zh .name_zh .name_en) "description" (cond $zh .tagline_zh .tagline_en) "lat" .lat "lon" .lon "match" .match) -}}
 {{- end -}}
-{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
+{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") (resources.Get "css/space-classic.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 <section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
   <div class="space-landscape" aria-hidden="true"></div>
-  <header class="space-menubar">
-    <div class="space-menubar__left">
-      <button type="button" class="space-brand" data-space-menu-trigger aria-label="{{ if $zh }}CUBXXW OS 工作区菜单{{ else }}CUBXXW OS workspace menu{{ end }}" aria-expanded="false" aria-controls="space-menu"><svg class="space-brand__mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 29 9.5v13L16 30 3 22.5v-13Z"/><path d="m3 9.5 13 7.5 13-7.5M16 17v13M9.5 5.8l13 7.5v7.5"/></svg><span class="space-brand__wordmark"><strong>CUBXXW</strong> <b>OS</b></span><span class="space-brand__chevron" aria-hidden="true">⌄</span></button>
-      <span class="space-menubar__app" data-active-label>{{ if $zh }}工作区{{ else }}Workspace{{ end }}</span>
-      <button type="button" class="space-menubar__apps" data-space-launchpad-trigger aria-haspopup="dialog">{{ if $zh }}所有应用{{ else }}All apps{{ end }}</button>
-      <button type="button" class="space-menubar__windows" data-space-overview-trigger aria-haspopup="dialog">{{ if $zh }}窗口{{ else }}Windows{{ end }}</button>
-      <button type="button" class="space-menubar__arrange" data-space-arrange>{{ if $zh }}并排{{ else }}Arrange{{ end }}</button>
-    </div>
-    <div class="space-menubar__right">
-      <span class="space-local" title="{{ if $zh }}布局和笔记保存在当前浏览器{{ else }}Layout and notes are stored in this browser{{ end }}"><i></i>{{ if $zh }}你的访客空间{{ else }}Your guest space{{ end }}</span>
-      {{ range .Translations }}<a href="{{ .RelPermalink }}" hreflang="{{ .Lang }}">{{ if $zh }}EN{{ else }}中文{{ end }}</a>{{ end }}
-      <time data-space-clock></time>
-      <button type="button" class="space-menubar__search" data-space-search-trigger aria-haspopup="dialog" aria-label="{{ if $zh }}搜索应用与文章，快捷键 Command 或 Control K{{ else }}Search apps and writing, Command or Control K{{ end }}"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>{{ if $zh }}搜索{{ else }}Search{{ end }}</span></button>
-    </div>
-  </header>
-  <nav class="space-menu" id="space-menu" aria-label="{{ if $zh }}工作区菜单{{ else }}Workspace menu{{ end }}" hidden>
-    <button type="button" data-space-launchpad-trigger aria-haspopup="dialog">{{ if $zh }}所有应用{{ else }}All apps{{ end }} <span class="space-menu__hint">Launchpad</span></button>
-    <button type="button" data-space-search-trigger aria-haspopup="dialog">{{ if $zh }}搜索工作区{{ else }}Search workspace{{ end }} <span class="space-menu__hint">⌘ / Ctrl K</span></button>
-    <button data-space-home>{{ if $zh }}回到欢迎桌面{{ else }}Welcome desktop{{ end }}</button>
+  <nav class="space-menu" id="space-menu" aria-label="{{ if $zh }}空间菜单{{ else }}Space menu{{ end }}" hidden>
+    <div class="space-menu__heading"><strong>CUBXXW OS</strong><span data-active-label></span></div>
+    <button data-space-home>{{ if $zh }}欢迎与关于我{{ else }}Welcome & about me{{ end }}</button>
+    <button type="button" data-space-launchpad-trigger aria-haspopup="dialog">{{ if $zh }}所有应用{{ else }}All apps{{ end }} <span class="space-menu__hint">↗</span></button>
+    <button type="button" data-space-search-trigger aria-haspopup="dialog">{{ if $zh }}搜索{{ else }}Search{{ end }} <span class="space-menu__hint">⌘ / Ctrl K</span></button>
+    <hr>
+    <button data-space-overview-trigger aria-haspopup="dialog">{{ if $zh }}窗口概览{{ else }}All windows{{ end }}</button>
     <button data-space-arrange>{{ if $zh }}窗口并排{{ else }}Arrange windows{{ end }}</button>
     <button data-space-show-desktop>{{ if $zh }}显示桌面{{ else }}Show desktop{{ end }}</button>
-    <button data-space-export>{{ if $zh }}导出你的工作区{{ else }}Export your workspace{{ end }}</button>
+    <hr>
     <button data-open="settings">{{ index $labels "settings" }}</button>
-    <a href="{{ "/" | relLangURL }}">{{ if $zh }}返回博客首页{{ else }}Back to the blog{{ end }} ↗</a>
+    <button data-product-view-button="lab" aria-pressed="false">Product Lab <span class="space-menu__hint">↗</span></button>
+    <a href="{{ "/" | relLangURL }}">{{ if $zh }}返回博客{{ else }}Back to the blog{{ end }} ↗</a>
+    <time data-space-clock></time>
   </nav>
-  <nav class="space-desktop-icons" aria-label="{{ if $zh }}桌面应用{{ else }}Desktop apps{{ end }}">
-    {{ range slice "products" "reader" "photos" "map" "books" "contact" }}
-    <button data-open="{{ . }}">{{ partial "space/icon.html" . }}<span>{{ index $labels . }}</span></button>
-    {{ end }}
-  </nav>
-  <div class="space-signature" aria-hidden="true"><p>PERSONAL SPACE / OPEN WORLD</p><strong>CUBXXW<span>OS<span class="space-signature__cursor">_</span></span></strong><span class="space-signature__caption">{{ if $zh }}一边构建，一边走走。{{ else }}Build things. Go places.{{ end }}</span></div>
   <div class="space-window-layer" data-space-windows></div>
   <div class="space-snap-preview" data-space-snap hidden aria-hidden="true"></div>
   <footer class="space-bottom">
-    <p class="space-wallpaper-credit">CUBXXW / {{ if $zh }}公开工作间{{ else }}Open workspace{{ end }}<span>{{ if $zh }}随意逛，也可以留下点什么。{{ else }}Explore. Make yourself at home.{{ end }}</span></p>
     <nav class="space-dock" data-space-dock aria-label="{{ if $zh }}应用 Dock{{ else }}Application Dock{{ end }}">
-      <button type="button" class="space-dock__launchpad" data-space-launchpad-trigger aria-haspopup="dialog" aria-label="{{ if $zh }}所有应用{{ else }}All apps{{ end }}" title="{{ if $zh }}所有应用{{ else }}All apps{{ end }}">{{ partial "space/icon.html" "launchpad" }}<span class="space-dock__label">{{ if $zh }}所有应用{{ else }}All apps{{ end }}</span><i class="space-dock__dot"></i></button>
-      {{ range slice "welcome" "products" "reader" "photos" "map" "books" "notes" "contact" "terminal" "agent" "settings" }}
+      <button type="button" class="space-dock__menu" data-space-menu-trigger aria-label="{{ if $zh }}CUBXXW OS 空间菜单{{ else }}CUBXXW OS Space menu{{ end }}" aria-expanded="false" aria-controls="space-menu"><span class="space-icon space-os-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3 28 10v13l-12 7L4 23V10Z"/><path d="m4 10 12 7 12-7M16 17v13"/></svg></span><span class="space-dock__label">CUBXXW OS</span><span class="space-dock__mobile-label">OS</span></button>
+      {{ range slice "welcome" "reader" "products" "photos" "notes" "agent" "settings" }}
       <button type="button" data-open="{{ . }}"{{ if index $mobileLabels . }} data-mobile-destination="{{ . }}"{{ end }} aria-label="{{ index $labels . }}" title="{{ index $labels . }}">{{ partial "space/icon.html" . }}<span class="space-dock__label">{{ index $labels . }}</span>{{ with index $mobileLabels . }}<span class="space-dock__mobile-label">{{ . }}</span>{{ end }}<i class="space-dock__dot" aria-hidden="true"></i></button>
       {{ end }}
     </nav>
-    <button type="button" class="space-agent-launch" data-open="agent"><span aria-hidden="true">✳</span>{{ if $zh }}和 BEAR 聊聊{{ else }}Ask BEAR{{ end }} <span class="space-agent-launch__arrow" aria-hidden="true">↗</span></button>
   </footer>
+  <template data-space-icons>{{ range slice "welcome" "products" "reader" "photos" "map" "books" "notes" "contact" "terminal" "agent" "settings" }}<span data-app-icon="{{ . }}">{{ partial "space/icon.html" . }}</span>{{ end }}</template>
   <dialog class="space-search" data-space-search aria-label="{{ if $zh }}搜索工作区{{ else }}Search workspace{{ end }}">
     <header><span aria-hidden="true">⌕</span><input type="search" data-space-search-input aria-controls="space-search-results" aria-describedby="space-search-status" placeholder="{{ if $zh }}打开应用，或者找一篇文章…{{ else }}Open an app, or find something to read…{{ end }}" aria-label="{{ if $zh }}搜索词{{ else }}Search query{{ end }}"><button type="button" data-space-search-close aria-label="{{ if $zh }}关闭搜索{{ else }}Close search{{ end }}">Esc</button></header>
     <p class="space-sr-only" id="space-search-status" data-space-search-status role="status" aria-live="polite"></p><div id="space-search-results" data-space-search-results></div><footer>↑ ↓ {{ if $zh }}选择{{ else }}select{{ end }} &nbsp; ↵ {{ if $zh }}打开{{ else }}open{{ end }}<span>BEAR / SPOTLIGHT</span></footer>
@@ -92,5 +85,5 @@
   <p class="space-toast" data-space-toast role="status" aria-live="polite" hidden></p>
   <template data-space-profile-template>{{ partial "space/profile.html" . }}</template>
   <noscript><div class="space-nojs"><h2>{{ if $zh }}欢迎来到我的空间{{ else }}Welcome to my space{{ end }}</h2><p>{{ if $zh }}交互桌面需要 JavaScript。下面的内容仍然可以直接阅读。{{ else }}The desktop needs JavaScript. You can still read the content directly.{{ end }}</p><a href="{{ "/articles/" | relLangURL }}">{{ index $labels "reader" }}</a> · <a href="{{ "/travel/" | relLangURL }}">{{ index $labels "map" }}</a>{{ partial "space/profile.html" . }}</div></noscript>
-  <script type="application/json" data-space-catalog>{{ dict "language" .Lang "labels" $labels "person" site.Data.identity.person "links" site.Data.identity.links "articles" $articles "products" $products "photos" $photos "books" $books "places" $places | jsonify | safeJS }}</script>
+  <script type="application/json" data-space-catalog>{{ dict "language" .Lang "languageRoutes" $languageRoutes "labels" $labels "person" site.Data.identity.person "links" site.Data.identity.links "articles" $articles "readingDocuments" $readingDocuments "products" $products "photos" $photos "books" $books "places" $places | jsonify | safeJS }}</script>
 </section>

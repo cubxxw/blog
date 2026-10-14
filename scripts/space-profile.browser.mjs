@@ -18,7 +18,7 @@ try {
     assert.equal(await page.locator(`#menu a[href$="${prefix}/projects/"]`).innerText(), label);
     await page.goto(`${base}${prefix}/projects/`, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
-    assert.match(await page.locator('.space-brand').innerText(), /CUBXXW\s*OS/);
+    assert.match(await page.locator('[data-space-menu-trigger]').getAttribute('aria-label'), /CUBXXW\s*OS/);
     await page.locator('[data-space-window="welcome"] [data-payload="identity"]').click();
     const profile = page.locator('[data-space-window="welcome"] [data-space-profile]');
     assert.equal(await profile.count(), 1);
@@ -44,7 +44,8 @@ try {
     assert.equal(await page.locator('[data-space-window="welcome"]').isVisible(), true);
     await page.locator('[data-space-dock] [data-open="notes"]').click();
     assert.equal(await page.locator('[data-note-editor]').inputValue(), `Preserve this note: ${language}`);
-    await page.locator('[data-product-view-button="lab"]').click();
+    await page.locator('[data-space-menu-trigger]').click();
+    await page.locator('.space-menu [data-product-view-button="lab"]').click();
     assert.equal(await page.locator('[data-product-panel="lab"]').isVisible(), true);
     await page.locator('[data-product-view-button="bear"]').click();
     assert.equal(await page.locator('[data-bear-workspace]').isVisible(), true);
@@ -68,7 +69,7 @@ try {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     await page.screenshot({ path: path.join(evidence, `${language}-mobile.png`) });
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    assert.equal(await page.locator('.space-brand__mark').evaluate(element => getComputedStyle(element).animationName), 'none');
+    assert.equal(await page.locator('.space-os-icon').evaluate(element => getComputedStyle(element).animationName), 'none');
     checks.push(`${language}: unified navigation, profile, old About fragment, notes, both views, dark theme, mobile, keyboard menu, reduced motion`);
     await page.close();
   }

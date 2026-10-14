@@ -70,8 +70,9 @@ test.describe('P1-P2 UX regression', () => {
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
     await expect(workspace.locator('[data-space-dock] [data-mobile-destination]:visible')).toHaveCount(5);
 
-    const allApps = workspace.locator('.space-menubar [data-space-launchpad-trigger]');
+    const allApps = workspace.locator('.space-menu [data-space-launchpad-trigger]');
     const launchpad = workspace.locator('[data-space-launchpad]');
+    await workspace.locator('[data-space-menu-trigger]').click();
     await allApps.click();
     await expect(launchpad.locator('[data-launchpad-app]')).toHaveCount(11);
     await launchpad.locator('[data-launchpad-app="settings"]').click();
@@ -93,7 +94,8 @@ test.describe('P1-P2 UX regression', () => {
     }
 
     for (const app of ['welcome', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings']) {
-      await allApps.click();
+      await workspace.locator('[data-space-menu-trigger]').click();
+    await allApps.click();
       await expect(launchpad).toBeVisible();
       await launchpad.locator(`[data-launchpad-app="${app}"]`).click();
       await expect(launchpad).toBeHidden();
@@ -114,8 +116,8 @@ test.describe('P1-P2 UX regression', () => {
     await page.goto('/zh/projects/');
 
     const space = page.locator('[data-product-space]');
-    const bearButton = page.getByRole('button', { name: 'CUBXXW OS', exact: true });
-    const labButton = page.getByRole('button', { name: 'Product Lab', exact: true });
+    const bearButton = page.locator('.product-view-switch [data-product-view-button="bear"]');
+    const labButton = page.locator('.space-menu [data-product-view-button="lab"]');
     const bearPanel = page.locator('[data-product-panel="bear"]');
 
     await expect(space).toHaveAttribute('data-product-view', 'bear');
@@ -123,12 +125,14 @@ test.describe('P1-P2 UX regression', () => {
     await expect(bearPanel).toBeVisible();
     await expect(page.locator('[data-product-panel="lab"]')).toHaveCount(0);
 
+    await page.locator('[data-space-menu-trigger]').click();
     await labButton.click();
     const labPanel = page.locator('[data-product-panel="lab"]');
     await expect(space).toHaveAttribute('data-product-view', 'lab');
     await expect(labButton).toHaveAttribute('aria-pressed', 'true');
     await expect(bearPanel).toBeHidden();
     await expect(labPanel).toBeVisible();
+    await expect(page.locator('.product-view-switch [data-product-view-button="lab"]')).toBeFocused();
     await expect(page).toHaveURL(/#product-lab$/);
 
     await bearButton.click();
@@ -137,13 +141,14 @@ test.describe('P1-P2 UX regression', () => {
     await expect(bearPanel).toBeVisible();
     await expect(labPanel).toBeHidden();
     await expect(page).not.toHaveURL(/#product-lab$/);
+    await expect(page.locator('[data-space-menu-trigger]')).toBeFocused();
   });
 
   test('BEAR OS product search uses workspace search and restores the selected product', async ({ page }) => {
     await page.goto('/zh/projects/');
     const workspace = page.locator('[data-bear-workspace]');
     await expect(workspace).toHaveAttribute('data-ready', 'true');
-    const searchTrigger = workspace.locator('.space-menubar [data-space-search-trigger]');
+    const searchTrigger = workspace.locator('[data-space-menu-trigger]');
     await expect(searchTrigger).toBeVisible();
     await searchTrigger.focus();
     await page.keyboard.press(process.platform === 'darwin' ? 'Meta+k' : 'Control+k');
@@ -156,6 +161,7 @@ test.describe('P1-P2 UX regression', () => {
     await expect(workspace.locator('[data-space-window="welcome"]')).toBeVisible();
 
     await searchTrigger.click();
+    await workspace.locator('.space-menu [data-space-search-trigger]').click();
     await expect(dialog).toBeVisible();
     await dialog.locator('[data-space-search-input]').fill('solo');
     const result = dialog.locator('[data-search-kind="product"][data-search-payload="solo-compass"]');
@@ -185,10 +191,80 @@ test.describe('P1-P2 UX regression', () => {
     await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: false });
   });
 
+  test('Space language changes preserve private work and the open article', async ({ page }) => {
+    await page.goto('/zh/projects/?profile=about#identity');
+    const workspace = page.locator('[data-bear-workspace]');
+    await expect(workspace).toHaveAttribute('data-ready', 'true');
+    const openApp = async (app: string) => {
+      const dock = workspace.locator(`[data-space-dock] [data-open="${app}"]`);
+      if (await dock.isVisible()) await dock.click();
+      else {
+        await workspace.locator('[data-space-menu-trigger]').click();
+        await workspace.locator('.space-menu [data-space-launchpad-trigger]').click();
+        await workspace.locator(`[data-launchpad-app="${app}"]`).click();
+      }
+    };
+    await openApp('reader');
+    await page.locator('[data-library-list] [data-open="reader"]').first().click();
+    const article = page.locator('[data-reader-body] .post-content');
+    await expect(article).toBeVisible();
+    const original = await article.innerText();
+    await openApp('notes');
+    await page.locator('[data-note-editor]').fill('Private note stays here.');
+    await openApp('contact');
+    await page.locator('[data-message-draft]').fill('A draft, not sent.');
+    await openApp('settings');
+    const snapshot = () => page.evaluate(() => (window as unknown as { BearSpace: { snapshot: () => unknown } }).BearSpace.snapshot());
+    const before = await snapshot();
+    await page.locator('[data-set-language="en"]').click();
+    await expect(page).toHaveURL(/\/projects\/\?profile=about#identity$/);
+    await expect(workspace).toHaveAttribute('data-ready', 'true');
+    await expect(page.locator('[data-set-language="en"]')).toHaveAttribute('aria-pressed', 'true');
+    expect(await snapshot()).toEqual(before);
+    await openApp('reader');
+    await expect.poll(() => article.innerText()).toBe(original);
+    await openApp('notes');
+    await expect(page.locator('[data-note-editor]')).toHaveValue('Private note stays here.');
+    await openApp('contact');
+    await expect(page.locator('[data-message-draft]')).toHaveValue('A draft, not sent.');
+  });
+
+  for (const blocked of ['local', 'session'] as const) {
+    test(`Space preserves work when ${blocked} storage fails during a language change`, async ({ page }) => {
+      await page.addInitScript((blocked) => {
+        const original = Storage.prototype.setItem;
+        Storage.prototype.setItem = function (key, value) {
+          if ((blocked === 'local' && this === localStorage && key === 'bear-space:v1') || (blocked === 'session' && this === sessionStorage)) {
+            throw new DOMException('Storage is unavailable', 'QuotaExceededError');
+          }
+          return original.call(this, key, value);
+        };
+      }, blocked);
+      await page.goto('/zh/projects/?profile=about#identity');
+      const workspace = page.locator('[data-bear-workspace]');
+      await expect(workspace).toHaveAttribute('data-ready', 'true');
+      await page.evaluate(() => (window as unknown as { BearSpace: { execute: (name: string, args: object) => unknown } }).BearSpace.execute('note', { text: 'Keep this private note.' }));
+      await workspace.locator('[data-space-dock] [data-open="settings"]').click();
+      const snapshot = () => page.evaluate(() => (window as unknown as { BearSpace: { snapshot: () => unknown } }).BearSpace.snapshot());
+      const before = await snapshot();
+      await page.locator('[data-set-language="en"]').click();
+      if (blocked === 'local') {
+        await expect(page).toHaveURL(/\/zh\/projects\/\?profile=about#identity$/);
+        await expect(workspace.locator('[data-space-toast]')).toContainText('导出');
+      } else {
+        await expect(page).toHaveURL(/\/projects\/\?profile=about#identity$/);
+        await expect(page.locator('[data-set-language="en"]')).toHaveAttribute('aria-pressed', 'true');
+      }
+      expect(await snapshot()).toEqual(before);
+      await expect(workspace.locator('[data-space-window="settings"]')).toBeVisible();
+    });
+  }
+
   test('Product Lab can enter BEAR knowledge space and return without leaving lab', async ({ page }) => {
     await page.goto('/zh/projects/');
 
-    await page.getByRole('button', { name: 'Product Lab' }).click();
+    await page.locator('[data-space-menu-trigger]').click();
+    await page.locator('.space-menu [data-product-view-button="lab"]').click();
     await page.getByRole('button', { name: '进入知识空间' }).click();
 
     const host = page.locator('[data-bks-host]');
@@ -212,7 +288,7 @@ test.describe('P1-P2 UX regression', () => {
     const globalSearch=page.locator('#search-command-palette');
     const workspaceSearch=page.locator('[data-space-search]');
     for(const key of [process.platform==='darwin'?'Meta+k':'Control+k','Escape']) {
-      await page.getByRole('button',{name:'Product Lab',exact:true}).click();
+      if (await page.locator('[data-bear-workspace]').isVisible()) { await page.locator('[data-space-menu-trigger]').click(); await page.locator('.space-menu [data-product-view-button="lab"]').click(); }
       await page.locator('[data-search-trigger="nav"]').click();
       await expect(globalSearch).toBeVisible();
       await page.evaluate(()=>{location.hash='';});
@@ -231,7 +307,8 @@ test.describe('P1-P2 UX regression', () => {
       await route.fallback();
     });
     await page.goto('/zh/projects/');
-    await page.getByRole('button', { name: 'Product Lab' }).click();
+    await page.locator('[data-space-menu-trigger]').click();
+    await page.locator('.space-menu [data-product-view-button="lab"]').click();
     await page.getByRole('button', { name: '进入知识空间' }).click();
     await page.keyboard.press('Escape');
     await expect(page).toHaveURL(/#product-lab$/);
@@ -247,7 +324,8 @@ test.describe('P1-P2 UX regression', () => {
       await route.fallback();
     });
     await page.goto('/zh/projects/');
-    await page.getByRole('button', { name: 'Product Lab', exact: true }).click();
+    await page.locator('[data-space-menu-trigger]').click();
+    await page.locator('.space-menu [data-product-view-button="lab"]').click();
     await page.getByRole('button', { name: '进入知识空间' }).click();
     await page.keyboard.press('Escape');
     await expect(page).toHaveURL(/#product-lab$/);

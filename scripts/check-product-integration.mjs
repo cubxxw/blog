@@ -118,9 +118,15 @@ for (const route of routes) {
     failures.push(`${path.relative(root, route.file)} must render Product Lab as the switchable secondary panel`);
   }
 
-  const viewButtons = html.match(/data-product-view-button=(?:"(?:bear|lab)"|'(?:bear|lab)'|(?:bear|lab))(?:\s|>)/gi) ?? [];
-  if (viewButtons.length !== 2) {
-    failures.push(`${path.relative(root, route.file)} must render exactly two product view controls`);
+  const switchHTML = html.match(/<nav\b[^>]*class=(?:"[^"]*product-view-switch[^"]*"|product-view-switch)[^>]*>([\s\S]*?)<\/nav>/i)?.[1] || '';
+  for (const view of ['bear','lab']) {
+    if (!new RegExp(`data-product-view-button=(?:"${view}"|'${view}'|${view})(?:\\s|>)`, 'i').test(switchHTML)) {
+      failures.push(`${path.relative(root, route.file)} must retain a ${view} view control in Product Lab`);
+    }
+  }
+  const menuHTML = html.match(/<nav\b[^>]*class=(?:"space-menu"|space-menu)[^>]*>([\s\S]*?)<\/nav>/i)?.[1] || '';
+  if (!/data-product-view-button=(?:"lab"|'lab'|lab)(?:\s|>)/i.test(menuHTML)) {
+    failures.push(`${path.relative(root, route.file)} must offer Product Lab inside the OS menu`);
   }
 
   if (/role=["']progressbar["']/i.test(html) || /osx-progress/i.test(html)) {

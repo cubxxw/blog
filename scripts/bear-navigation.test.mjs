@@ -6,7 +6,7 @@ import { MOBILE_APPS, findApplications, searchWorkspace, resultIndex, isEditable
 const labels = { welcome: '关于我', reader: '文章与思考', products: '产品实验室', photos: '旅途相册', map: '去过的地方', books: '我的书架', notes: '你的笔记', contact: '联系与留言', terminal: '终端', agent: '和 BEAR 聊聊', settings: '工作区设置' };
 
 test('the five mobile destinations are registered and the full launcher exposes every application', () => {
-  assert.deepEqual(MOBILE_APPS, ['welcome', 'reader', 'products', 'photos', 'agent']);
+  assert.deepEqual(MOBILE_APPS, ['welcome', 'reader', 'products', 'agent', 'settings']);
   assert.ok(MOBILE_APPS.every(app => APPS.includes(app)));
   assert.equal(APPS.length, 11);
   assert.deepEqual(findApplications(APPS, labels), APPS);
