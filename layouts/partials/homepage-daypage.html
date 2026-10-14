@@ -411,77 +411,70 @@
 
   {{/* ── Footer ──────────────────────────────────────── */}}
   {{ partial "footer-subscribe.html" . }}
-  <footer class="hp-footer hp-page">
+  <footer class="hp-footer hp-footer--refined hp-page" aria-label="{{ if $isZh }}站点页脚{{ else }}Site footer{{ end }}">
+    <noscript><style>.hp-footer button[aria-haspopup="dialog"]{display:none!important}</style></noscript>
     <div class="hp-footer-grid">
-      <div>
-        <div class="hp-footer-brand">BEAR · 熊</div>
-        <p class="hp-footer-bio">{{ if $isZh }}{{ $d.hero.footerBioZh }}{{ else }}{{ $d.hero.footerBioEn }}{{ end }}</p>
+      <div class="hp-footer-identity">
+        <div>
+          <a class="hp-footer-brand" href="{{ "/" | relLangURL }}" aria-label="{{ if $isZh }}CUBXXW 首页{{ else }}CUBXXW home{{ end }}"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 29 9.5v13L16 30 3 22.5v-13Z"/><path d="m3 9.5 13 7.5 13-7.5M16 17v13M9.5 5.8l13 7.5v7.5"/></svg><span>CUBXXW</span></a>
+          <p class="hp-footer-bio">{{ if $isZh }}{{ $d.hero.footerBioZh }}{{ else }}{{ $d.hero.footerBioEn }}{{ end }}</p>
+        </div>
+        <a class="hp-footer-space" href="{{ "/projects/" | relLangURL }}"><span>{{ if $isZh }}进入我的空间{{ else }}Enter my space{{ end }}<small>CUBXXW OS</small></span><b aria-hidden="true">↗</b></a>
       </div>
-      <div class="hp-footer-col">
-        <h4>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h4>
+      <nav class="hp-footer-col" aria-label="{{ if $isZh }}阅读导航{{ else }}Reading navigation{{ end }}">
+        <h4>{{ if $isZh }}阅读{{ else }}Explore{{ end }}</h4>
         <ul>
-          <li><a href="{{ "/projects/" | relLangURL }}#start-here">{{ if $isZh }}空间 · 阅读地图{{ else }}Space · Reading paths{{ end }}</a></li>
+          <li><a href="{{ "/projects/" | relLangURL }}#start-here">{{ if $isZh }}阅读地图{{ else }}Reading paths{{ end }}</a></li>
           <li><a href="{{ "/articles/" | relLangURL }}">{{ if $isZh }}全部文章{{ else }}All Posts{{ end }}</a></li>
           <li><a href="{{ "/columns/" | relLangURL }}">{{ if $isZh }}专栏{{ else }}Columns{{ end }}</a></li>
           <li><a href="{{ "/travel/" | relLangURL }}">{{ if $isZh }}旅行{{ else }}Travel{{ end }}</a></li>
           <li><a href="{{ "/archives/" | relLangURL }}">{{ if $isZh }}归档{{ else }}Archives{{ end }}</a></li>
         </ul>
-      </div>
+      </nav>
       <div class="hp-footer-col">
         <h4>{{ if $isZh }}书与项目{{ else }}Books &amp; Builds{{ end }}</h4>
-        <ul>
-          {{- range $d.books }}
-          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .titleEn }} · {{ .titleZh }}</a></li>
-          {{- end }}
-          {{- /* Products come from data/products.yml — the single source of
-                 truth shared with section 03 and /projects/ (BEAR OS). */}}
-          {{- range site.Data.products.products }}
+        {{- $products := site.Data.products.products -}}
+        <ul class="hp-footer-builds">
+          {{- range first 3 $products }}
           <li><a href="{{ partial "products/url.html" (dict "product" . "lang" $.Lang) }}" target="_blank" rel="noopener">{{ .name }}</a></li>
           {{- end }}
         </ul>
-      </div>
-      <div class="hp-footer-col">
-        <h4>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h4>
-        <ul>
-          {{- range site.Params.socialIcons }}
-          {{- if or (eq .name "wechat") (eq .name "xhs") }}
-          {{- $platform := cond (eq .name "wechat") "wechat" "xhs" -}}
-          {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
-          {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
-          {{- $contactURL := cond (eq .name "xhs") (trim .url " ") "" -}}
-          {{- $qrSrc := .qr | relURL -}}
-          {{- with resources.Get $asset -}}
-            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
-            {{- if and hugo.IsExtended $prod -}}
-              {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
-            {{- else -}}
-              {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
-            {{- end -}}
-          {{- end -}}
-          <li><button type="button" class="hp-footer-wechat hp-footer-wechat--{{ $platform }}" aria-haspopup="dialog" aria-expanded="false"
-            data-contact-platform="{{ $platform }}" data-contact-id="{{ $contactID }}" data-contact-qr="{{ $qrSrc }}"
-            {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }}
-            onclick="openContactCard(this)">{{ .title | default (.name | title) }}</button></li>
-          {{- else }}
-          <li><a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .title | default (.name | title) }}</a></li>
+        {{- if gt (len $products) 3 }}
+        <details class="hp-footer-more hp-footer-more--builds"><summary>{{ if $isZh }}更多作品{{ else }}More builds{{ end }}<span aria-hidden="true">+</span></summary><ul>
+          {{- range after 3 $products }}
+          <li><a href="{{ partial "products/url.html" (dict "product" . "lang" $.Lang) }}" target="_blank" rel="noopener">{{ .name }}</a></li>
           {{- end }}
-          {{- end }}
-          <li><a href="{{ "/index.xml" | relLangURL }}">RSS</a></li>
-          {{- with (site.GetPage "/").OutputFormats.Get "JSONFeed" }}
-          <li><a href="{{ .RelPermalink }}">JSON Feed</a></li>
-          {{- end }}
-          {{- with (site.GetPage "/").OutputFormats.Get "OPML" }}
-          <li><a href="{{ .RelPermalink }}" download>OPML (all)</a></li>
+        </ul></details>
+        {{- end }}
+        <ul class="hp-footer-books">
+          {{- range $d.books }}
+          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ if $isZh }}{{ .titleZh }}{{ else }}{{ .titleEn }}{{ end }}<span>{{ if $isZh }}{{ .titleEn }}{{ else }}{{ .titleZh }}{{ end }}</span></a></li>
           {{- end }}
         </ul>
       </div>
+      <div class="hp-footer-col hp-footer-connect">
+        <h4>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h4>
+        {{- $primaryContacts := slice "email" "github" "wechat" "xhs" -}}
+        <ul class="hp-footer-contact-grid">
+          {{- range $name := $primaryContacts }}{{- range where site.Params.socialIcons "name" $name }}
+          {{ partial "footer-contact-item.html" (dict "item" . "lang" $.Lang) }}
+          {{- end }}{{- end }}
+        </ul>
+        <details class="hp-footer-more hp-footer-more--social"><summary>{{ if $isZh }}其他平台{{ else }}Other places{{ end }}<span aria-hidden="true">+</span></summary><ul>
+          {{- range site.Params.socialIcons }}{{- if not (in $primaryContacts .name) }}
+          {{ partial "footer-contact-item.html" (dict "item" . "lang" $.Lang) }}
+          {{- end }}
+          {{- end }}
+        </ul></details>
+      </div>
     </div>
     <div class="hp-footer-bottom">
-      <span>© {{ now.Format "2006" }} XINWEI XIONG · THE QUIET COLLECTOR</span>
-      <div class="hp-footer-bottom-right">
-        <span>BUILT WITH SIGNAL</span>
-        <span>{{ $d.hero.siteVersion }} · {{ now.Format "2006" }}</span>
-      </div>
+      <span>© {{ now.Format "2006" }} Xinwei Xiong <span class="hp-footer-handle">/ cubxxw</span></span>
+      <nav class="hp-footer-feeds" aria-label="{{ if $isZh }}订阅格式{{ else }}Feed formats{{ end }}">
+        <a href="{{ "/index.xml" | relLangURL }}">RSS</a>
+        {{ with (site.GetPage "/").OutputFormats.Get "JSONFeed" }}<a href="{{ .RelPermalink }}">JSON Feed</a>{{ end }}
+        {{ with (site.GetPage "/").OutputFormats.Get "OPML" }}<a href="{{ .RelPermalink }}" download>OPML</a>{{ end }}
+      </nav>
     </div>
   </footer>
 

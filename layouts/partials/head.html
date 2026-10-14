@@ -56,6 +56,11 @@
 
 {{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
 {{- $isProjectsLanding := and (eq .Kind "section") (eq .Section "projects") -}}
+{{- if $isProjectsLanding }}
+{{- /* Opt in before the workspace stylesheet in the body arrives. The
+     browser determines cross-document transition eligibility at reveal. */}}
+<style>@media(prefers-reduced-motion:no-preference){@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation-duration:160ms}}</style>
+{{- end }}
 
 {{- /* includes */}}
 {{- $includes := slice }}
@@ -125,6 +130,7 @@
        (section-ai-agent.css, section-engineering.css, columns.css) remain in
        the bundle. */}}
 {{- $homepageCSS := resources.Get "css/extended/homepage-daypage.css" }}
+{{- $homepageFooterCSS := resources.Get "css/extended/zz-home-footer.css" }}
 {{- $aboutCSS    := resources.Get "css/extended/about.css" }}
 {{- $travelCSS   := resources.Get "css/extended/zzz-travel-world.css" }}
 {{- $projectsCSS := resources.Get "css/extended/products.css" }}
@@ -132,7 +138,7 @@
 {{- $bearKnowledgeCSS := resources.Get "css/extended/bear-knowledge-space.css" }}
 {{- $growthCSS   := resources.Get "css/extended/section-growth.css" }}
 {{- $articlesCSS := resources.Get "css/extended/section-articles.css" }}
-{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $projectsBearCSS $bearKnowledgeCSS $growthCSS $articlesCSS) }}
+{{- $pageScoped  := (slice $homepageCSS $homepageFooterCSS $aboutCSS $travelCSS $projectsCSS $projectsBearCSS $bearKnowledgeCSS $growthCSS $articlesCSS) }}
 {{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
 {{- /* Filter in place: section styles must still precede hover reset and
      press feedback. A composition key shares identical page bundles while
@@ -176,6 +182,7 @@
     "nav-elegant.css"
     "site-footer-subscribe.css"
     "tokens.css"
+    "zz-home-footer.css"
     "zz-interaction-detail.css"
     "zz-scroll-detail.css"
     "zz-theme-toggle-fx.css"

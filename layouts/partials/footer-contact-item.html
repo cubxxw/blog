@@ -1,0 +1,26 @@
+{{- $item := .item -}}
+{{- $zh := eq .lang "zh" -}}
+{{- $label := $item.title | default ($item.name | title) -}}
+{{- if eq $item.name "email" }}{{ $label = cond $zh "邮件" "Email" }}{{ end -}}
+{{- if or (eq $item.name "wechat") (eq $item.name "xhs") -}}
+  {{- $platform := $item.name -}}
+  {{- $asset := cond (eq $platform "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
+  {{- $contactID := cond (eq $platform "wechat") $item.wechatID $item.xhsID -}}
+  {{- $contactURL := cond (eq $platform "xhs") (trim $item.url " ") "" -}}
+  {{- $label = cond (eq $platform "wechat") (cond $zh "微信" "WeChat") (cond $zh "小红书" "RedNote") -}}
+  {{- $qrSrc := $item.qr | relURL -}}
+  {{- with resources.Get $asset -}}
+    {{- if and hugo.IsExtended (or hugo.IsProduction (eq site.Params.env "production")) -}}
+      {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
+    {{- else -}}
+      {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+  <li><button type="button" class="hp-footer-wechat hp-footer-wechat--{{ $platform }}" aria-haspopup="dialog" aria-expanded="false"
+    data-contact-platform="{{ $platform }}" data-contact-id="{{ $contactID }}" data-contact-qr="{{ $qrSrc }}"
+    {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }} onclick="openContactCard(this)">{{ $label }}<span aria-hidden="true">↗</span></button>
+    <noscript><a href="{{ $qrSrc }}">{{ $label }} QR ↗</a></noscript>
+  </li>
+{{- else -}}
+  <li><a href="{{ trim $item.url " " | safeURL }}" target="_blank" rel="noopener noreferrer">{{ $label }}<span aria-hidden="true">↗</span></a></li>
+{{- end -}}

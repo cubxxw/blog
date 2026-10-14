@@ -1,4 +1,4 @@
-{{- if not (.Param "hideFooter") }}
+{{- if and (not (.Param "hideFooter")) (not .IsHome) }}
 <footer class="footer reveal-item" role="contentinfo">
     {{- if site.Copyright }}
     <span>{{ site.Copyright | markdownify }}</span>

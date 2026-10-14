@@ -50,6 +50,17 @@ test('explicit dynamic hash contracts use real template data and remain page-sco
   assert.equal(findings[0].evidence,'#invented');
   assert.equal((await checkOutput({...ctx,contracts:{dynamicAnchors:[{...contracts.dynamicAnchors[0],outputPath:'other.html'}]}})).length,2);
 });
+test('Space profile anchors require published template data and a matching page contract',async t=>{
+  const contracts=JSON.parse(await fs.readFile(new URL('../config/content-quality.json',import.meta.url),'utf8'));
+  const ctx=await fixture(t,'<a href="/projects/#start-here">Reading paths</a><a href="/zh/projects/#story">Story</a><a href="/projects/#invented">Unknown</a><a href="/projects/#inert-id">Inert</a><a href="#start-here">Wrong page</a><template><section data-profile-section="start-here"></section></template>');
+  for(const outputPath of ['projects/index.html','zh/projects/index.html']) {
+    await fs.mkdir(path.dirname(path.join(ctx.publicDir,outputPath)),{recursive:true});
+    await fs.writeFile(path.join(ctx.publicDir,outputPath),'<template><section data-profile-section="start-here"></section><section data-profile-section="story"></section><p id="inert-id">Not a live anchor</p></template>');
+    ctx.pageMap.pages.push({source:null,url:new URL(outputPath.replace('index.html',''),ctx.pageMap.baseUrl).href,outputPath,lang:outputPath.startsWith('zh/')?'zh':'en',kind:'section',contentHash:'c'.repeat(64)});
+  }
+  const findings=await checkOutput({...ctx,contracts});
+  assert.deepEqual(findings.filter(d=>d.ruleId==='local-anchor-missing').map(d=>d.evidence).sort(),['#start-here','/projects/#inert-id','/projects/#invented']);
+});
 test('encoded traversal and symlinks cannot escape public output',async t=>{
   const ctx=await fixture(t,'<img src="/%2e%2e/private.png"><img src="/leak.png">');
   await fs.writeFile(path.join(ctx.root,'secret'),'secret'); await fs.symlink(path.join(ctx.root,'secret'),path.join(ctx.publicDir,'leak.png'));

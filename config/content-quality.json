@@ -8,7 +8,9 @@
   ],
   "dynamicAnchors": [
     { "outputPath": "projects/index.html", "attribute": "data-space-product", "prefixes": ["", "focus-"] },
-    { "outputPath": "zh/projects/index.html", "attribute": "data-space-product", "prefixes": ["", "focus-"] }
+    { "outputPath": "zh/projects/index.html", "attribute": "data-space-product", "prefixes": ["", "focus-"] },
+    { "outputPath": "projects/index.html", "attribute": "data-profile-section", "prefixes": [""] },
+    { "outputPath": "zh/projects/index.html", "attribute": "data-profile-section", "prefixes": [""] }
   ],
   "functionRoutes": ["/.netlify/functions/blog-ai", "/.netlify/functions/article-ai", "/.netlify/functions/subscribe-email", "/.netlify/functions/bear-runtime"]
 }
