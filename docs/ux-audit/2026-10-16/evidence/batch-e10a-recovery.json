@@ -1,0 +1,370 @@
+{
+  "source": "batch-e10a-source.json",
+  "observations": [
+    {
+      "kind": "actual390 error/retry/duplicate guard and focus ownership",
+      "firstError": {
+        "open": true,
+        "status": "图片暂时无法加载。请重试，或使用账号搜索。",
+        "statusVisible": true,
+        "statusFont": "14px",
+        "contrastInputs": {
+          "status": "rgb(108, 91, 78)",
+          "statusOpacity": "1",
+          "feedbackOpacity": "1",
+          "retry": "rgb(53, 0, 3)",
+          "retryOpacity": "1",
+          "card": "rgb(255, 253, 249)",
+          "cardOpacity": "1"
+        },
+        "retry": {
+          "hidden": false,
+          "ariaDisabled": "false",
+          "focused": false,
+          "width": 106,
+          "height": 44,
+          "inside": true
+        },
+        "poster": {
+          "x": 85,
+          "y": 257,
+          "width": 220,
+          "height": 300
+        },
+        "statusInside": true,
+        "image": {
+          "hidden": true,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "src": "/xiaohongshu.jpg"
+        },
+        "focusClass": "tw-qr__x",
+        "id": "nsddd_top"
+      },
+      "retryPending": {
+        "open": true,
+        "status": "正在重新加载图片…",
+        "statusVisible": true,
+        "statusFont": "14px",
+        "contrastInputs": {
+          "status": "rgb(108, 91, 78)",
+          "statusOpacity": "1",
+          "feedbackOpacity": "1",
+          "retry": "rgb(53, 0, 3)",
+          "retryOpacity": "0.65",
+          "card": "rgb(255, 253, 249)",
+          "cardOpacity": "1"
+        },
+        "retry": {
+          "hidden": false,
+          "ariaDisabled": "true",
+          "focused": true,
+          "width": 106,
+          "height": 44,
+          "inside": true
+        },
+        "poster": {
+          "x": 85,
+          "y": 257,
+          "width": 220,
+          "height": 300
+        },
+        "statusInside": true,
+        "image": {
+          "hidden": true,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "src": "http://127.0.0.1:1317/xiaohongshu.jpg?qr_retry=2"
+        },
+        "focusClass": "tw-qr__retry",
+        "id": "nsddd_top"
+      },
+      "afterRetry": {
+        "open": true,
+        "status": "",
+        "statusVisible": false,
+        "statusFont": "14px",
+        "contrastInputs": {
+          "status": "rgb(108, 91, 78)",
+          "statusOpacity": "1",
+          "feedbackOpacity": "1",
+          "retry": "rgb(53, 0, 3)",
+          "retryOpacity": "0.65",
+          "card": "rgb(255, 253, 249)",
+          "cardOpacity": "1"
+        },
+        "retry": {
+          "hidden": true,
+          "ariaDisabled": "true",
+          "focused": false,
+          "width": 0,
+          "height": 0,
+          "inside": false
+        },
+        "poster": {
+          "x": 85,
+          "y": 257,
+          "width": 220,
+          "height": 300
+        },
+        "statusInside": false,
+        "image": {
+          "hidden": false,
+          "naturalWidth": 1279,
+          "naturalHeight": 1747,
+          "src": "http://127.0.0.1:1317/xiaohongshu.jpg?qr_retry=2"
+        },
+        "focusClass": "tw-qr__x",
+        "id": "nsddd_top"
+      },
+      "redRequests": 2,
+      "requestURLs": [
+        "http://127.0.0.1:1317/xiaohongshu.jpg",
+        "http://127.0.0.1:1317/xiaohongshu.jpg?qr_retry=2",
+        "http://127.0.0.1:1317/wechat.jpg",
+        "http://127.0.0.1:1317/wechat.jpg?qr_retry=4"
+      ],
+      "noFocusTheftAfterTabToDetails": true,
+      "escapeReturns": true
+    },
+    {
+      "kind": "actual568x224dark both error states/status and44retry bounded",
+      "channels": [
+        {
+          "open": true,
+          "status": "图片暂时无法加载。请重试，或使用账号搜索。",
+          "statusVisible": true,
+          "statusFont": "14px",
+          "contrastInputs": {
+            "status": "rgb(168, 162, 158)",
+            "statusOpacity": "1",
+            "feedbackOpacity": "1",
+            "retry": "rgb(245, 243, 238)",
+            "retryOpacity": "1",
+            "card": "rgb(27, 33, 44)",
+            "cardOpacity": "1"
+          },
+          "retry": {
+            "hidden": false,
+            "ariaDisabled": "false",
+            "focused": false,
+            "width": 106,
+            "height": 44,
+            "inside": true
+          },
+          "poster": {
+            "x": 61,
+            "y": 33,
+            "width": 215,
+            "height": 158
+          },
+          "statusInside": true,
+          "image": {
+            "hidden": true,
+            "naturalWidth": 0,
+            "naturalHeight": 0,
+            "src": "/xiaohongshu.jpg"
+          },
+          "focusClass": "tw-qr__x",
+          "id": "nsddd_top"
+        },
+        {
+          "open": true,
+          "status": "图片暂时无法加载。请重试，或使用账号搜索。",
+          "statusVisible": true,
+          "statusFont": "14px",
+          "contrastInputs": {
+            "status": "rgb(168, 162, 158)",
+            "statusOpacity": "1",
+            "feedbackOpacity": "1",
+            "retry": "rgb(245, 243, 238)",
+            "retryOpacity": "1",
+            "card": "rgb(27, 33, 44)",
+            "cardOpacity": "1"
+          },
+          "retry": {
+            "hidden": false,
+            "ariaDisabled": "false",
+            "focused": false,
+            "width": 106,
+            "height": 44,
+            "inside": true
+          },
+          "poster": {
+            "x": 61,
+            "y": 33,
+            "width": 215,
+            "height": 158
+          },
+          "statusInside": true,
+          "image": {
+            "hidden": true,
+            "naturalWidth": 0,
+            "naturalHeight": 0,
+            "src": "/wechat.jpg"
+          },
+          "focusClass": "tw-qr__x",
+          "id": "cubxxwAI"
+        }
+      ]
+    },
+    {
+      "kind": "actual open and browser virtual clock exact15000ms deadline; post-timeout old-node events synthetic",
+      "startedAt": 1792097257406,
+      "pending": {
+        "open": true,
+        "status": "正在加载图片…",
+        "statusVisible": true,
+        "statusFont": "14px",
+        "contrastInputs": {
+          "status": "rgb(108, 91, 78)",
+          "statusOpacity": "1",
+          "feedbackOpacity": "1",
+          "retry": "rgb(53, 0, 3)",
+          "retryOpacity": "0.65",
+          "card": "rgb(255, 253, 249)",
+          "cardOpacity": "1"
+        },
+        "retry": {
+          "hidden": true,
+          "ariaDisabled": "true",
+          "focused": false,
+          "width": 0,
+          "height": 0,
+          "inside": false
+        },
+        "poster": {
+          "x": 85,
+          "y": 257,
+          "width": 220,
+          "height": 300
+        },
+        "statusInside": true,
+        "image": {
+          "hidden": true,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "src": "/xiaohongshu.jpg"
+        },
+        "focusClass": "tw-qr__x",
+        "id": "nsddd_top"
+      },
+      "beforeDeadline": {
+        "open": true,
+        "status": "正在加载图片…",
+        "statusVisible": true,
+        "statusFont": "14px",
+        "contrastInputs": {
+          "status": "rgb(108, 91, 78)",
+          "statusOpacity": "1",
+          "feedbackOpacity": "1",
+          "retry": "rgb(53, 0, 3)",
+          "retryOpacity": "0.65",
+          "card": "rgb(255, 253, 249)",
+          "cardOpacity": "1"
+        },
+        "retry": {
+          "hidden": true,
+          "ariaDisabled": "true",
+          "focused": false,
+          "width": 0,
+          "height": 0,
+          "inside": false
+        },
+        "poster": {
+          "x": 85,
+          "y": 257,
+          "width": 220,
+          "height": 300
+        },
+        "statusInside": true,
+        "image": {
+          "hidden": true,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "src": "/xiaohongshu.jpg"
+        },
+        "focusClass": "tw-qr__x",
+        "id": "nsddd_top"
+      },
+      "timeout": {
+        "open": true,
+        "status": "图片加载超时。请重试，或使用账号搜索。",
+        "statusVisible": true,
+        "statusFont": "14px",
+        "contrastInputs": {
+          "status": "rgb(108, 91, 78)",
+          "statusOpacity": "1",
+          "feedbackOpacity": "1",
+          "retry": "rgb(53, 0, 3)",
+          "retryOpacity": "1",
+          "card": "rgb(255, 253, 249)",
+          "cardOpacity": "1"
+        },
+        "retry": {
+          "hidden": false,
+          "ariaDisabled": "false",
+          "focused": false,
+          "width": 106,
+          "height": 44,
+          "inside": true
+        },
+        "poster": {
+          "x": 85,
+          "y": 257,
+          "width": 220,
+          "height": 300
+        },
+        "statusInside": true,
+        "image": {
+          "hidden": true,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "src": null
+        },
+        "focusClass": "tw-qr__x",
+        "id": "nsddd_top"
+      },
+      "afterSyntheticLateEvents": {
+        "open": true,
+        "status": "图片加载超时。请重试，或使用账号搜索。",
+        "statusVisible": true,
+        "statusFont": "14px",
+        "contrastInputs": {
+          "status": "rgb(108, 91, 78)",
+          "statusOpacity": "1",
+          "feedbackOpacity": "1",
+          "retry": "rgb(53, 0, 3)",
+          "retryOpacity": "1",
+          "card": "rgb(255, 253, 249)",
+          "cardOpacity": "1"
+        },
+        "retry": {
+          "hidden": false,
+          "ariaDisabled": "false",
+          "focused": false,
+          "width": 106,
+          "height": 44,
+          "inside": true
+        },
+        "poster": {
+          "x": 85,
+          "y": 257,
+          "width": 220,
+          "height": 300
+        },
+        "statusInside": true,
+        "image": {
+          "hidden": true,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "src": null
+        },
+        "focusClass": "tw-qr__x",
+        "id": "nsddd_top"
+      },
+      "escapeReturns": true
+    }
+  ],
+  "limits": "Three simulated Chromium contexts. Local404/delayed image transport, coordinate retry, keyboard focus and virtual14999/15000 deadline verified. Post-timeout old-node load/error dispatch is a labeled synthetic component boundary. No physical QR scan, live messaging/AI/backend, Safari/zoom or all-state certification."
+}

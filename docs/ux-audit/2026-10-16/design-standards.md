@@ -50,3 +50,8 @@ E9产品合同揭示：空demo却出现“测试预览”并打开首页，是�
 ## 如何计分
 
 沿用control/scorecard固定六维：任务清晰20、命中与键盘25、状态恢复20、视觉15、动效性能10、响应连续10。硬门槛失败先修；缺设备/语言/主题/状态证据保留`unverified`与`null`。专家视觉范围分、合成测试和真实浏览器动作分别记录；它们都不能自动替代真实用户研究。当前场景是风格化实时3D，不能称为摄影级真实或已达到99分。
+
+
+### 搜索编辑与选择语义补记
+
+可编辑combobox需要浏览器标准文字编辑操作，DOM焦点与aria-activedescendant选择分开；APG同时允许popup中Home/End的可选选择变体，因此当前观测不机械判违规。下一批先依据真实“新query却打开旧article”的任务错误修复，不扩大成未经验证的键盘总判定。来源：[W3C APG Combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)。

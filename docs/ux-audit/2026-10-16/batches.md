@@ -171,3 +171,42 @@ E9b本地checkpoint `39a7bd07` 已保存，未push。E9c已按只读最小方案
 ### E9c独立闭环
 
 Reviewer逐张18图并独立标准库解码12个monitor PNG，采样RGBA和SHA完全相符；两源/QA、3合同和原连续性复核，无新增P0/P1。UX038只在2实际reduce context六色与1440 forced-fallback合同范围闭，E9b短屏低分保持，完整控件/族/全站分null。Inventory1.17为309族/362selectors/281状态/60局部族/0完整；两审计Agent已停写。准备本地checkpoint，不push；E10仅有界QR随后放行。
+
+
+## E10实施期间的新独立基线（生产预览仍b5b6fa34）
+
+源hash单独冻结global search三文件，与正在修改的Travel不相交，未build半成品。父实际search-index探针：390zh/reduce控制GET挂起，两次虚拟60s后busy=true但可见“0结果”，Escape可返回；重开另发第二GET。另1440zh控制首GET迟到503，第二GET真实本地index成功10结果后被旧failure清成0/error，编辑可恢复。不是实际生产故障，也不宣称无关闭出口。三张正常/失败与pending图及JSON/log/script归档。
+
+Inventory提出150ms stale result候选后，父用已加载实际index，clock只在150msdebounce窗口暂停：输入改成无匹配query后仍10旧结果、fullHref旧Kubernetes，实际Enter导航为旧首篇，route截获abort无外网。没有改source或等待旧结果来掩盖竞态。Home/End观测记录但APG允许popup变体，未自动判违规。
+
+另脚注候选在390×844zh/coarse/reduce真实touchscreen.tap复现：context-engineering文章首标记已居中，scrollY2813→18972/hash#fn:1，2frames与300ms预览均hidden，前后图父已看。只该已测首tap范围；源footer/footnoteJS/CSS3hash与脚本/JSON/log保存。后续E11 search/E12 footnote，需独立复核；不是E10代码通过或已修复声明。
+
+
+## E10首次冻结验收与E10a有界跟进
+
+3src/QA匹配，QR native modal/完整竖海报/44Close/短双列/代次rAF与close事件防护。Hugo3855ms，syntax/typecheck/diff、9不同合同全过11.3s。父4实际Chinese contexts（390×844light normal、568×256dark reduce、320×740light reduce、1440×900dark normal）各2真渠道，共8图已逐看：完整原poster自然比例/contain/四边在卡内、Close不覆盖；真实Tab循环/EscapeEnter重开/Close/backdrop/runtime reduce/scroll&overflow恢复可用。实际English保原4nonQR，无二维码旅程冒称。
+
+父probe首跑要求duration严格0而失败，诊断runtime property:none,duration1e-06s,animations[]；site-wide micro-interactions.css的important极短duration不表示实际动画。仅改父assert为property:none+running0并完整复跑4contexts通过；没有改生产，initial与diagnostic日志永久留档。
+
+补1实际390图片状态scope：pending RedNote卡塌缩为空白label/id，WeChat404露破图+重复alt；有原ID/Close、非空auto!important overflow精确恢复、scroll不变、关闭后迟到真图不重开，但loading/error观感未通过。父与独立review均确认需E10a最小poster区状态/本地重试，不能以9合同功能过当全状态好。源仍E10冻结，尚未checkpoint；执行Agent先有界方案再放行。原图不裁/不换，不做实体扫码或外发。
+
+
+### E10a冻结与父探针基准修正
+
+final3hash/QA核验，Hugo3539ms，原9未放宽+新增8总17合同全部通过16.6s。每attempt新Image/15s/清监听timer再清src、focus guard与稳定poster按冻结方案。
+
+父main新source首390normal在多次开关后测scrollY11467→11453（14px）失败，保留initial。独立scroll诊断实测未稳定背景：before party translateY14，opened仍1.5553、末尾footer/party有限过渡在运行，fonts亦在Escape后loading，文档高度/maxScroll本身会改变；诊断那次close自身11467→11467。未据此断言QR close生产bug，也未把14px误差直接容忍掉。父main改为滚至原trigger后等待文档fonts与背景有限过渡完成（忽略明确无限dot，不等待QR动画），再固定scroll基准；严格相等断言保留，4contexts8正常图完整复跑通过。source生产完全未改，17合同不重复跑。只认证稳定背景下恢复，快速跳到底且背景尚在入场的整体阅读位置仍待更广motion验收；initial/诊断JSON/log/图永久保存。
+
+
+### E10a父完整局部验收
+
+父main4实际contexts8正常图全部逐看，完整原poster/稳定frame/14ID与status16label、44Close、Tab/Escape/重开与稳定背景scroll恢复通过。新增恢复3contexts7图：390真实404→原本地pathname加qr_retry重载成功，双击只2GET；Retry仍focused成功转Close，另WeChat用户Tab转ID后成功不抢；568×224dark双channel error status/44Retry都在左poster内，右账号/Close独立。clock暂停精确14999仍loading、15000为timeout/可Retry；旧node人工load/error边界不改状态，明确合成组件证据。
+
+另无clock390实际pending/404补2图，初次pending可见loading+label/ID、404可见说明/Retry/ID且无破图，非空auto!important与scroll原样恢复、关闭后晚成功不重开。clock0ms初loading PNG尚未完全绘字不冒称实际pending缺ID，原图不删除。共17张新图父全部逐看。computed opaque status与enabledRetry在4error/timeout scope raw对比最低6.371623070570725（派生JSON保原RGB/opacity），仅该文字，不含画像/整页/disabled。全部源码3hash/QA/3父runnerhash再读回一致。独立review及inventory最后停写后才checkpoint；正常motion/实体扫码/AT/完整设备矩阵不外推。
+
+
+### E10/E10a独立闭环与本地保存
+
+17不同合同、17新主图与17图内8正常/7恢复/2无clock、所有原失败与诊断均独立复核；3src/QA/3父runnerhash一致，无新增P0/P1，UX018/043只命名范围闭。正常静态D4先前没有可见缺陷的泛化扣分撤回，局部专家96但完整维度null；D1=94.5。恢复D4=94.5，390 Retry底约455→账号标题580有约120px空区关联成本，已给具体后续布局建议，不拿AT/实体扫码未知扣视觉分。全族0/null不变。
+
+Inventory1.18为309族/366selector entries/295状态/63证据族，366不是按钮数；QR details/Retry与脚注marker/More补齐，root98是support-root非点击。Scorecard175检查/86视觉片段，UX039–042开放，mid-reveal滚动未知。三个Agent均已停止生产/盘点/评分写入；E11只有只读方案，未开始实现。准备本地checkpoint，不push/PR/合并/部署；heartbeat仍ACTIVE，继续至12:00。

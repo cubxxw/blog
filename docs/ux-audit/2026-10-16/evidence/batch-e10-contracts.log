@@ -1,0 +1,16 @@
+
+Running 9 tests using 1 worker
+
+(node:66051) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / reduce › both full portraits contain focus, restore the opener and survive immediate reopen (1.0s)
+  ✓  2 tests/e2e/travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / no-preference › both full portraits contain focus, restore the opener and survive immediate reopen (3.9s)
+  ✓  3 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / reduce › both complete portrait posters and the real close target fit the bounded card (534ms)
+  ✓  4 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / no-preference › both complete portrait posters and the real close target fit the bounded card (1.3s)
+  ✓  5 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / reduce › both complete portrait posters and the real close target fit the bounded card (541ms)
+  ✓  6 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / no-preference › both complete portrait posters and the real close target fit the bounded card (1.3s)
+  ✓  7 tests/e2e/travel-qr-contracts.spec.ts:91:7 › runtime preference and page lifecycle › runtime reduce completes entrance, immediate close cancels its frame, and pagehide restores overflow (1.1s)
+  ✓  8 tests/e2e/travel-qr-contracts.spec.ts:109:7 › unavailable image transport › pending and 404 images keep real metadata and close usable without reopening later (512ms)
+  ✓  9 tests/e2e/travel-qr-contracts.spec.ts:125:5 › the actual English Travel page keeps its four non-QR channels (247ms)
+
+  9 passed (11.3s)

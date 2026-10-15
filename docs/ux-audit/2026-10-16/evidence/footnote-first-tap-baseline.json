@@ -1,0 +1,36 @@
+{
+  "sources": {
+    "static/js/footnote-preview.js": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a",
+    "layouts/partials/footer.html": "fedadada1ba3642177b887fa5b9dfe7a94842b1261ac20af06d500d912ba1999",
+    "assets/css/extended/zzz-footnote-preview.css": "7c91e706f1e4e7c55dacc72a177d63b5cd8033b2d28024d4e68643b89e5f00d1"
+  },
+  "previewCheckpoint": "b5b6fa34 disjoint global files; E10Travel WIP not built",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "pointer": "coarse/touchscreen.tap simulated",
+  "motion": "reduce",
+  "href": "#fn:1",
+  "before": {
+    "scrollY": 2813,
+    "hash": "",
+    "popoverVisible": false,
+    "active": "BODY"
+  },
+  "afterTwoFrames": {
+    "scrollY": 18972,
+    "hash": "#fn:1",
+    "popoverVisible": false,
+    "popoverAria": "true",
+    "active": "A"
+  },
+  "after300ms": {
+    "scrollY": 18972,
+    "hash": "#fn:1",
+    "popoverVisible": false,
+    "popoverAria": "true",
+    "active": "A"
+  },
+  "limits": "Exploratory first actual tap observation on one existing Chinese article. Not a physical device, not passing acceptance, no source changes/real AI or contact requests."
+}

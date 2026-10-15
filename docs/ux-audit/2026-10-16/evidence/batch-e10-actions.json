@@ -1,0 +1,526 @@
+{
+  "observations": [
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "motion": "no-preference",
+      "channels": [
+        {
+          "name": "小红书 / RedNote",
+          "triggerBox": {
+            "x": 107.59375,
+            "y": 530.40625,
+            "width": 174.8125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 45,
+              "y": 198.15625,
+              "width": 300,
+              "height": 447.6875
+            },
+            "image": {
+              "x": 85,
+              "y": 259.15625,
+              "width": 220,
+              "height": 300.5,
+              "naturalWidth": 1279,
+              "naturalHeight": 1747,
+              "objectFit": "contain",
+              "paint": {
+                "width": 219.99971379507727,
+                "height": 300.5,
+                "x": 85.00014310246137,
+                "y": 259.15625
+              }
+            },
+            "close": {
+              "x": 290,
+              "y": 209.15625,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            "label": "小红书 / RedNote",
+            "id": "nsddd_top"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        },
+        {
+          "name": "微信 / WeChat",
+          "triggerBox": {
+            "x": 55.921875,
+            "y": 586.40625,
+            "width": 158.078125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 45.000030517578125,
+              "y": 207.64068603515625,
+              "width": 299.99993896484375,
+              "height": 428.70306396484375
+            },
+            "image": {
+              "x": 85.0000228881836,
+              "y": 268.64068603515625,
+              "width": 219.99993896484375,
+              "height": 281.51556396484375,
+              "naturalWidth": 962,
+              "naturalHeight": 1231,
+              "objectFit": "contain",
+              "paint": {
+                "width": 219.99835299283484,
+                "height": 281.51556396484375,
+                "x": 85.00081587418805,
+                "y": 268.64068603515625
+              }
+            },
+            "close": {
+              "x": 290,
+              "y": 218.64068603515625,
+              "width": 43.999969482421875,
+              "height": 44,
+              "hit": true
+            },
+            "label": "微信 / WeChat",
+            "id": "cubxxwAI"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        }
+      ],
+      "runtimeReduce": {
+        "opacity": "1",
+        "transition": "1e-06s",
+        "transitionProperty": "none",
+        "cardTransition": "1e-06s",
+        "cardTransitionProperty": "none",
+        "runningAnimations": 0,
+        "focusInside": true
+      },
+      "backdropReturn": true,
+      "errors": []
+    },
+    {
+      "width": 568,
+      "height": 256,
+      "theme": "dark",
+      "motion": "reduce",
+      "channels": [
+        {
+          "name": "小红书 / RedNote",
+          "triggerBox": {
+            "x": 52.515625,
+            "y": 142.390625,
+            "width": 174.8125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 44,
+              "y": 16,
+              "width": 480,
+              "height": 223.984375
+            },
+            "image": {
+              "x": 98.953125,
+              "y": 33,
+              "width": 139.09375,
+              "height": 189.984375,
+              "naturalWidth": 1279,
+              "naturalHeight": 1747,
+              "objectFit": "contain",
+              "paint": {
+                "width": 139.0898772896394,
+                "height": 189.984375,
+                "x": 98.9550613551803,
+                "y": 33
+              }
+            },
+            "close": {
+              "x": 469,
+              "y": 27,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            "label": "小红书 / RedNote",
+            "id": "nsddd_top"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        },
+        {
+          "name": "微信 / WeChat",
+          "triggerBox": {
+            "x": 237.328125,
+            "y": 142.390625,
+            "width": 158.078125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 44,
+              "y": 16,
+              "width": 480,
+              "height": 223.984375
+            },
+            "image": {
+              "x": 94.265625,
+              "y": 33,
+              "width": 148.46875,
+              "height": 189.984375,
+              "naturalWidth": 962,
+              "naturalHeight": 1231,
+              "objectFit": "contain",
+              "paint": {
+                "width": 148.4686992282697,
+                "height": 189.984375,
+                "x": 94.26565038586514,
+                "y": 33
+              }
+            },
+            "close": {
+              "x": 469,
+              "y": 27,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            "label": "微信 / WeChat",
+            "id": "cubxxwAI"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        }
+      ],
+      "runtimeReduce": {
+        "opacity": "1",
+        "transition": "1e-06s",
+        "transitionProperty": "none",
+        "cardTransition": "1e-06s",
+        "cardTransitionProperty": "none",
+        "runningAnimations": 0,
+        "focusInside": true
+      },
+      "backdropReturn": true,
+      "errors": []
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "theme": "light",
+      "motion": "reduce",
+      "channels": [
+        {
+          "name": "小红书 / RedNote",
+          "triggerBox": {
+            "x": 72.59375,
+            "y": 383.734375,
+            "width": 174.8125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 16,
+              "y": 146.15625,
+              "width": 288,
+              "height": 447.6875
+            },
+            "image": {
+              "x": 50,
+              "y": 207.15625,
+              "width": 220,
+              "height": 300.5,
+              "naturalWidth": 1279,
+              "naturalHeight": 1747,
+              "objectFit": "contain",
+              "paint": {
+                "width": 219.99971379507727,
+                "height": 300.5,
+                "x": 50.000143102461365,
+                "y": 207.15625
+              }
+            },
+            "close": {
+              "x": 249,
+              "y": 157.15625,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            "label": "小红书 / RedNote",
+            "id": "nsddd_top"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        },
+        {
+          "name": "微信 / WeChat",
+          "triggerBox": {
+            "x": 80.953125,
+            "y": 437.734375,
+            "width": 158.078125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 16,
+              "y": 155.640625,
+              "width": 288,
+              "height": 428.703125
+            },
+            "image": {
+              "x": 50,
+              "y": 216.640625,
+              "width": 220,
+              "height": 281.515625,
+              "naturalWidth": 962,
+              "naturalHeight": 1231,
+              "objectFit": "contain",
+              "paint": {
+                "width": 219.99840069049554,
+                "height": 281.515625,
+                "x": 50.00079965475223,
+                "y": 216.640625
+              }
+            },
+            "close": {
+              "x": 249,
+              "y": 166.640625,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            "label": "微信 / WeChat",
+            "id": "cubxxwAI"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        }
+      ],
+      "runtimeReduce": {
+        "opacity": "1",
+        "transition": "1e-06s",
+        "transitionProperty": "none",
+        "cardTransition": "1e-06s",
+        "cardTransitionProperty": "none",
+        "runningAnimations": 0,
+        "focusInside": true
+      },
+      "backdropReturn": true,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "theme": "dark",
+      "motion": "no-preference",
+      "channels": [
+        {
+          "name": "小红书 / RedNote",
+          "triggerBox": {
+            "x": 488.515625,
+            "y": 634.21875,
+            "width": 174.8125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 570,
+              "y": 226.15625,
+              "width": 300,
+              "height": 447.6875
+            },
+            "image": {
+              "x": 610,
+              "y": 287.15625,
+              "width": 220,
+              "height": 300.5,
+              "naturalWidth": 1279,
+              "naturalHeight": 1747,
+              "objectFit": "contain",
+              "paint": {
+                "width": 219.99971379507727,
+                "height": 300.5,
+                "x": 610.0001431024614,
+                "y": 287.15625
+              }
+            },
+            "close": {
+              "x": 815,
+              "y": 237.15625,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            "label": "小红书 / RedNote",
+            "id": "nsddd_top"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        },
+        {
+          "name": "微信 / WeChat",
+          "triggerBox": {
+            "x": 673.328125,
+            "y": 636.21875,
+            "width": 158.078125,
+            "height": 44,
+            "hit": true
+          },
+          "geometry": {
+            "card": {
+              "x": 570,
+              "y": 235.64068603515625,
+              "width": 299.99993896484375,
+              "height": 428.70306396484375
+            },
+            "image": {
+              "x": 610,
+              "y": 296.64068603515625,
+              "width": 219.99993896484375,
+              "height": 281.51556396484375,
+              "naturalWidth": 962,
+              "naturalHeight": 1231,
+              "objectFit": "contain",
+              "paint": {
+                "width": 219.99835299283484,
+                "height": 281.51556396484375,
+                "x": 610.0007929860044,
+                "y": 296.64068603515625
+              }
+            },
+            "close": {
+              "x": 814.9999389648438,
+              "y": 246.64068603515625,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            "label": "微信 / WeChat",
+            "id": "cubxxwAI"
+          },
+          "focusPath": [
+            "tw-qr__details",
+            "tw-qr__x",
+            "tw-qr__details",
+            "tw-qr__x"
+          ],
+          "escapeReturn": true,
+          "immediateReopen": true,
+          "closeReturn": true,
+          "overflowRestored": true,
+          "scrollPreserved": true
+        }
+      ],
+      "runtimeReduce": {
+        "opacity": "1",
+        "transition": "1e-06s",
+        "transitionProperty": "none",
+        "cardTransition": "1e-06s",
+        "cardTransitionProperty": "none",
+        "runningAnimations": 0,
+        "focusInside": true
+      },
+      "backdropReturn": true,
+      "errors": []
+    }
+  ],
+  "englishActualRoute": {
+    "qrTriggers": 0,
+    "channels": [
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/cubxxw/"
+      },
+      {
+        "label": "Facebook",
+        "href": "https://www.facebook.com/cubxxw/"
+      },
+      {
+        "label": "Email",
+        "href": "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/cubxxw"
+      }
+    ]
+  },
+  "limits": "Actual Chinese Travel coordinate/keyboard journeys in four Chromium viewports. English actual route preserves its four original non-QR channels and is not an English QR journey. Full original posters are displayed; no physical QR scan, real contact, model request, Safari, virtual keyboard or all-state certification."
+}

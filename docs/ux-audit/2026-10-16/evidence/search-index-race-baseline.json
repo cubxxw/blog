@@ -1,0 +1,43 @@
+{
+  "sources": {
+    "assets/js/search-palette.js": "0c448966d5ff9a2b15569fc759f39a63633cf2bf078c4e7767cdbcfdf2b39c6c",
+    "layouts/partials/search-palette.html": "a2dcaf5f07f656cdd56db2fcbe86bd383f96eefc697ff9d3e29ddbb22d9257aa",
+    "themes/PaperMod/assets/css/common/header.css": "3708186f89820caef71b40a29d1be23506bd568419bb37f1cc144094cd2eb15a"
+  },
+  "previewCheckpoint": "b5b6fa34 global files, disjoint E10 Travel WIP not built",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "motion": "reduce",
+  "lang": "zh",
+  "indexRequests": 2,
+  "newerSuccess": {
+    "busy": "false",
+    "query": "Kubernetes",
+    "results": 10,
+    "count": "10",
+    "emptyVisible": false,
+    "emptyText": "没有找到匹配结果",
+    "focusInside": true
+  },
+  "afterOldFailure": {
+    "busy": "false",
+    "query": "Kubernetes",
+    "results": 0,
+    "count": "0",
+    "emptyVisible": true,
+    "emptyText": "搜索索引暂时无法载入，请稍后重试。",
+    "focusInside": true
+  },
+  "editedRecovery": {
+    "busy": "false",
+    "query": "Kubernetes ",
+    "results": 10,
+    "count": "10",
+    "emptyVisible": false,
+    "emptyText": "搜索索引暂时无法载入，请稍后重试。",
+    "focusInside": true
+  },
+  "limits": "Controlled old index503 after later real local-index success; actual click/Escape/Enter/type. Not real backend outage or whole-family pass. No AI/contact/external requests."
+}

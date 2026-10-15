@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T04:21:11+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `39a7bd07`（E9b）。
+更新：2026-10-16T05:01:48+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `b5b6fa34`（E9c），E10a冻结证据已复核。
 
-**当前不能宣称全站或每个按钮96+。309族/362控件的完整分保持 `unverified / null`；281条记录只覆盖60族的局部状态。E9c新颜色输出已在命名范围复核，完整认证仍为0。**
+**当前不能宣称全站或每个按钮96+。309族/366selector条目的完整分仍为 `unverified / null`；295条记录只覆盖63族局部状态，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`39a7bd07`（E9b）。E9c当前2hash/QA、3合同、2实际Metal/reduce范围及18图已独立复核，无新增P0/P1；UX038仅关闭命名六色输出/fallback合同。E9a/E9b有界关闭保留，E9b短屏contact/settings低分不因背景换色上调；全矩阵仍未知。
+最近已验checkpoint：`b5b6fa34`（E9c）。E10a当前3hash/QA、17合同、8本地中文context及英文无QR回归/17主图已复核，无新P0/P1；UX018/043按命名范围关闭。搜索UX039–041、脚注UX042开放；mid-reveal滚动与全矩阵未知。
 
 
 
@@ -68,7 +68,7 @@
 | UX-015 | `G.SEARCH.QUERY`, `G.SEARCH.FOLLOWUP` | AI旧回复成功后强制聚焦追问框 | D1-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-016 | `A.BODY.FAQ`, `A.FAQ.AI.OPEN`, `A.FAQ.AI.SEND` | 收起外层FAQ没有取消正在生成的AI | D1-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-017 | `T.BOOK.ASK`, `T.BOOK.CLOSE`, `T.BOOK.INPUT`, `T.BOOK.SEND` | 书籍AI模态未约束键盘焦点在弹层内 | D2 | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
-| UX-018 | `T.SOCIAL.QR` | 旅行二维码打开后焦点留在背景，正常动效快速重开被旧关闭隐藏 | later-bounded-TravelQR-after-E7 | `confirmed_recorded_390_zh_two_media_focus_failure_and_normal_reopen_race` |
+| UX-018 | `T.SOCIAL.QR` | 旅行二维码打开后焦点留在背景，正常动效快速重开被旧关闭隐藏 | E10a_final | `closed_named_E10a_scope_full_matrix_unverified` |
 | UX-019 | `MOTION.FAQ`, `A.BODY.FAQ` | 运行时开启减少动态效果后FAQ仍沿用旧WAAPI动画分支 | later-motion-queue | `closed_for_recorded_E52_runtime_motion_hidden_focus_cancel_cases` |
 | UX-020 | `T.BOOK.SEND`, `T.BOOK.SUGGEST` | 书籍手机发送/建议按钮仍偏小且长问题出现孤行 | later-mobile-polish | `closed_for_recorded_D4b_contracts_incomplete_family_matrix` |
 | UX-021 | `S.WINDOW.DRAG`, `S.WINDOW.CLOSE`, `S.APP.notes.EDITOR`, `S.APP.map.REGION` | Space工作区整体缩小且透明边界叠加，桌面文字发软 | next-Space-readability | `closed_for_E5_primary_reading_and_plane_scope_chrome_matrix_unknown` |
@@ -89,6 +89,12 @@
 | UX-036 | `S.APP.products.OPEN` | 空产品demo被当本站首页，却渲染测试预览链接 | E9a1 | `closed_for_E9a1_E9a2_catalog_empty_demo_cases` |
 | UX-037 | `S.APP.products.SELECT`, `S.APP.products.OPEN` | 短横屏产品导航堆叠，首屏只有stage而标题和简介出fold | E9a2 | `closed_for_E9a2_844_shortcoarse_entry_geometry_and_images` |
 | UX-038 | `S.APP.settings.COLOR` | 默认3D桌面颜色保存/选中正确但屏幕底色不变 | E9c_final | `closed_named_E9c_visible_palette_scopes_full_matrix_unverified` |
+| UX-039 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 搜索索引挂起时长期显示0结果，缺少可见加载与有界恢复 | E11_candidate | `confirmed_named_search_baseline_open_for_E11` |
+| UX-040 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 关闭重开后的旧索引失败会清空新会话已成功结果 | E11_candidate | `confirmed_named_search_baseline_open_for_E11` |
+| UX-041 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 修改查询后立即Enter会打开上一查询的首篇结果 | E11_candidate | `confirmed_named_search_baseline_open_for_E11` |
+| UX-042 | `A.BODY.FOOTNOTEPREVIEW` | 首tap脚注预览跳文末 | E12_candidate | `confirmed_named_first_touch_reading_interruption_open` |
+| UX-043 | `T.SOCIAL.QR` | 图片pending/404缺说明与重试 | E10a_final | `closed_named_E10a_scope_full_matrix_unverified` |
+
 
 ## 有证据的单项锚点评分
 
@@ -309,7 +315,7 @@
 | S.APP.products.SELECT, S.APP.products.OPEN | D1 | 96,96,90,96 | 94.5 | 导航一行后完整h2/headline首行无需先滚，选择→理解→再打开清楚；Dogfood等stage术语可后续改易懂名称。 | E9a2 final bounded shortcoarseentry refinement / high |
 | S.APP.products.SELECT, S.APP.products.OPEN | D4 | 96,90,90,96 | 93.0 | 保44目标/原字号，导航不再吞首屏，标题/简介重新主导；有效focus环保留，没有删内容凑满分。 | E9a2 final bounded shortcoarseentry refinement / high |
 
-## 完整可追踪覆盖（inventory v1.17 一对一映射）
+## 完整可追踪覆盖（inventory v1.18 一对一映射）
 
 309族/361selectors；60族有局部状态证据，完整认证仍0。native04c780与旧目录分别绑定；Ask a3b76f仅44/hit，不继承链接popup/AI结果。
 
@@ -328,8 +334,8 @@
 | `G.NAV.TOP` | 返回顶部/进度环 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.NAV.WAYFINDER` | 章节侧边索引 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.CLOSE` | 关闭搜索 | 1 | 1 | `unverified / null` | 待矩阵 |
-| `G.SEARCH.QUERY` | 搜索文章 | 1 | 2 | `unverified / null` | UX-015 |
-| `G.SEARCH.RESULT` | 搜索结果/键盘上下移动 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.QUERY` | 搜索文章 | 1 | 5 | `unverified / null` | UX-015, UX-039, UX-040, UX-041 |
+| `G.SEARCH.RESULT` | 搜索结果/键盘上下移动 | 1 | 3 | `unverified / null` | UX-039, UX-040, UX-041 |
 | `G.SEARCH.AI` | 用 AI 回答 / 停止生成 | 2 | 1 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.SUGGEST` | 入门推荐/AI Agent/最新文章 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.AICLOSE` | 关闭 AI 搜索 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -405,7 +411,7 @@
 | `A.BODY.FAQ` | FAQ 折叠 | 1 | 3 | `unverified / null` | UX-016, UX-019 |
 | `A.BODY.NOTES` | 月度思考段落定位 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `A.BODY.LINKPREVIEW` | 链接预览 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 3 | 1 | `unverified / null` | UX-042 |
 | `A.FOOTER.NEXT` | 上一篇/下一篇/相关文章/专栏结尾 | 3 | 0 | `unverified / null` | 待矩阵 |
 | `G.SHARE.ENTRY` | 生成分享卡/微信分享 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `G.SHARE.DIRECT` | X/Email/复制链接 | 2 | 3 | `unverified / null` | UX-006 |
@@ -523,7 +529,7 @@
 | `T.BOOK.SUGGEST` | 书籍建议/追问 | 1 | 4 | `unverified / null` | UX-012, UX-020 |
 | `T.BOOK.INPUT` | 书籍问题 | 1 | 7 | `unverified / null` | UX-012, UX-017 |
 | `T.BOOK.SEND` | 发送书籍问题 / 请求中停止生成（同一按钮） | 1 | 7 | `unverified / null` | UX-012, UX-017, UX-020 |
-| `T.SOCIAL.QR` | 社交二维码 / 查看 ID / 关闭 | 2 | 3 | `unverified / null` | UX-018 |
+| `T.SOCIAL.QR` | 社交二维码 / 查看 ID / 关闭 | 4 | 19 | `unverified / null` | UX-018, UX-043 |
 | `T.SOCIAL.LINK` | 社交平台链接 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `B.HERO.ACTION` | 经历/文章 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `B.HERO.CAROUSEL` | 人物照片轮播/命名照片选项 | 2 | 0 | `unverified / null` | 待矩阵 |
@@ -952,3 +958,49 @@ UX038关闭1440×900中文fine、390×844英文coarse的Metal/reduce命名范围
 视觉上，轻柔纯色使桌面偏好有可见结果，未给窗口阅读面染色；同theme下paper/draft/window/chrome采样保持不变，[桌面中性文档](evidence/batch-e9c-1440-zh-neutral-document.png)与[手机中性文档](evidence/batch-e9c-390-en-neutral-document.png)可见原输入和必要focus环。D1.1可见意图、D4.3色盘/阅读面一致性及两项连续性/fallback命名片段按固定锚点96；不重评整维D4，也不覆盖E9b短屏contact89/90、settings90.5/90的历史层级差距。空桌面截图不能证明完整App任务清晰或全站审美达标。
 
 单个无遮挡像素不是整页对比度/显示校准/全图相等；normalmotion、Safari、zoom、实体设备、全部错误恢复和FPS仍未知。原notes/contact DOM与值、继续输入在命名链保持，无外发/真实backend认证。inventory v1.17仅同步4新增binding引用：309族/362selectors/281记录/60局部族，完整0/null；没有复制整份actions矩阵。
+
+## E11前基线：索引生命周期与最新查询意图
+
+2026-10-16T04:30:01+08:00：只读核对三个global源hash均匹配b5b6fa34预览，独立读三脚本/JSON/正式log并查看5图；E10仅Travel WIP，与这些文件不相交，未把它记为新回归。新增三个P2，无P0/P1：
+
+| 问题 | 具体证据与影响 | 最小修复方向 |
+|---|---|---|
+| UX039 索引挂起反馈/恢复 | [390挂起回执](evidence/search-index-baseline.json)：两个受控虚拟60s仍busy且视觉为0结果；Escape可返回，重开2GET。 | 当前load拥有权、可见loading、覆盖fetch/JSON的有界期限及保query重试。 |
+| UX040 旧失败覆盖新成功 | [1440竞态回执](evidence/search-index-race-baseline.json)：新index已10结果，旧503清0/报错；加空格恢复10。 | close/pagehide取消并失效owner，所有await/catch/finally守代次；旧结果无UI写权。 |
+| UX041 新query立即Enter开旧文章 | [意图回执](evidence/search-intent-baseline.json)：150ms窗口中新query仍显示旧10结果；实际Enter捕获旧首篇URL并本地abort。 | input即时失效旧候选/同步fullHref；Enter刷新或验证当前query再导航。 |
+
+三失败片段分别D3.1/D3.4/D3.2=80，完整分仍null。UX039有Escape/完整搜索出口，不能误套“无退出路径busy”硬门槛；不把受控挂起写成实际公网故障。fullHref陈旧是同窗口源码/DOM观察，本轮实际误导航证据是Enter旧首篇，不虚构已点击完整搜索。
+
+E11优先消除错误导航，再统一索引owner与期限；保留原150ms前沿、旧503与60s挂起回归，并覆盖fetch headers/body JSON挂起、关闭后的旧success/error、重试与当前query Enter。修改限search palette所需JS/状态模板和样式，AI运输、全文搜索页与路由不顺手改。
+
+[W3C APG Combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)同时要求平台文本编辑能力，并允许popup的Home/End可选行为。当前Home/End移动结果、caret不变只登记观察；没有仅凭此判违规。未测OS原生键盘/辅助技术、Safari/zoom/实机/所有语言，均未知。脚注首tap基线留下一轮独立核实，不混入本次搜索结论。
+
+## E10原批局部结论：正常模态改善，图片状态仍待E10a
+
+2026-10-16T04:38:00+08:00：在E10a获准修改前，3src/QA已匹配；原[E10快照](evidence/batch-e10-source.json)、[9合同](evidence/batch-e10-contracts.log)（11.3s）与Hugo3855ms正式日志均复核。此后E10a为已授权WIP，旧hash/图只作历史片段，不认证当前修改。
+
+四中文actual、八正常原海报及[pending/404两图](evidence/batch-e10-image-state.json)全部独立看完，[正常动作](evidence/batch-e10-actions.json)与两个脚本/log读完。UX018仅关闭命名正常链：Close移焦/双向Tabwrap、Escape即时Enter重开、真实44Close/backdrop、原opener与scroll/overflow恢复。native queuedclose/rAF/runtime reduce以及same-task跨渠道、syntheticpagehide合同分开记录；不冒称所有真实导航已测。完整portrait自然比例/contain保留顶部定位标记与底部说明，Close不压图；旧390裁顶部的负视觉历史保留，不推断实体扫码。
+
+正常portrait D1=94.5/D4=93；568×256短屏D1=94.5/D4=93，四子项在VIS-E10。双列保持整图和独立ID同屏，手机外置ID仍有字号工艺余量。必要Close focus环不作装饰扣分；normal照片是稳定态，未以入场中帧作审美。1440dark两正常图也已逐看，完整图和暗卡层级一致，不另灌一组重复高分。
+
+UX043/P2开放：pending仅label/ID，404是broken-image+重复alt，无状态说明/本地Retry。D3.1/D3.3各80；Close/ID可用、auto!important与scroll恢复、迟到成功不重开仍分别通过，不能用9合同覆盖error设计。父已授权最小E10a：有界poster状态、loading/error/Retry、保ID与44Close、session/attempt/node失效及有界等待；新freeze/actual后再判断关闭。
+
+父initial motion断言严格要求duration0误判，[diagnostic](evidence/batch-e10-motion-diagnostic.log)为property:none、duration1e-06s、running0。生产未改，final按property:none/running0/opacity1完整重跑4context通过，原失败log保留。英文实际仅保留原4nonQR渠道，不当英文二维码旅程。无新P0/P1；实机扫码/Safari/zoom/全错误矩阵未知。
+
+### 独立脚注负基线（不属于E10回归）
+
+UX042/P2：[一条真实首tap回执](evidence/footnote-first-tap-baseline.json)/两图与三SHA匹配b5预览。390×844中文coarse/reduce context-engineering首reference，scroll2813→18972/#fn:1，两帧及300ms preview均hidden，D6.4片段80。源推断为footer inline52–79先执行hash滚动，defer脚注click再preventDefault无法撤回，随后scroll hide；未另instrument事件顺序。后续明确通用anchor/脚注所有权，保首tap位置与第二tap/查看脚注/noJS原生路由。v1.18已将负动作绑定真实marker `control.d3b14a`；旧 `control.98b9b5` 校正为 `.fn-popover` 支持容器，More `control.70bc13` 未实点，二者不继承该点击失败。
+
+## E10a最终：明确等待、可重试、保留原意图
+
+2026-10-16T04:57:07+08:00：当前3src/QA再次匹配；原9合同前缀按旧spec SHA未变，[17合同](evidence/batch-e10a-contracts.log)17/17（16.6s）、Hugo3539ms与正式syntax/typecheck/diff已读。[main](evidence/batch-e10a-actions.json)、[recovery](evidence/batch-e10a-recovery.json)、[无clock图片状态](evidence/batch-e10a-image-state.json)及17主图全部复核，无新P0/P1。
+
+UX018/043仅关闭命名范围：main4中文context/8poster，recovery3，无clock390补拍1，另英文4nonQR回归，不是17个actualjourneys。等待有真实loading，404/超时有14px说明、44Retry与14px账号ID，破图隐藏、poster稳定。实际Retry2GET/重复guard/原海报恢复；仅Retry仍focused时成功转Close，已Tab到账号region不抢。15s14999/15000为暂停clock，旧node事件为合成边界；listener/timer/src清理与跨attempt隔离有合同，原空白/破图负图保留。
+
+当前稳定normal D1=94.5/D4=96，恢复界面D1=94.5/D4=94.5；仅为VIS-E10A命名静态图专家片段，完整维度仍null。复看未发现能支持原“字体/间距可打磨”扣分的具体normal缺口，撤回无依据扣分，未变更量表。明确剩余差距：无clock404-390图Retry底约455px、账号标题约580px，约120px空区割开错误恢复与账号替代；可仅在error态把反馈组靠近poster底部/账号区，保固定card高度。320 RedNote/1440 WeChat正常图的ID是裸值，可加“账号/微信号”短前缀说明搜索用途。均为后续有界设计建议，不是新增功能失败。必要focus环不是装饰，AT/实体扫码unknown不用于扣视觉分。clock0初loading图部分文字未paint，只作计时边界；新无clockpending明确loading+渠道/ID，不泛化真实pending缺失。
+
+父initial严格scroll差14px，[诊断](evidence/batch-e10a-scroll-diagnostic.json)记录party transform14→1.5553/finite过渡、fonts重载及docH/max变化，同诊断Close11467→11467。生产未改，仅等待fonts/finite背景稳定后保留严格==并完整重跑4context。旧失败log保留；mid-reveal全局滚动恢复仍unknown。
+
+[反馈对比](evidence/batch-e10a-feedback-contrast.json)四opaque scope独立sRGB重算一致，status最小6.371623070570725、enabledRetry最小14.561420266815729，不取整；仅这些status/启用Retry文字，不含aria-disabled、海报/整页/抗锯齿或显示校准。AT播报、Safari、zoom、实体扫码/键盘、真实联系/模型与全状态未知，完整分仍null。
+
+盘点v1.18同步309族/366selector entries（不是366按钮）：QRdetails57404f是可聚焦region，Retry246c0a；脚注marker d3b14a仅UX042负，More70bc13未实点，旧98b9b5校正.fn-popover/support-root并保历史alias，不继承动作。295记录/63局部族/0完整认证，完整证据保留原回执，仅追加引用。

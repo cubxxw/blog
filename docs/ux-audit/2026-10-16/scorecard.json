@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T04:21:11+08:00",
+  "updated_at": "2026-10-16T05:01:48+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,26 +353,26 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.17",
+    "inventory_version": "1.18",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
       "world-decoration": 18,
       "motion": 26
     },
-    "selector_level_controls": 362,
+    "selector_level_controls": 366,
     "family_ids_covered": 309,
     "certified_96_plus_controls": 0,
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/362selectors，281条状态记录、60族局部证据、0完整认证；E9c只关闭命名颜色输出范围。",
-    "families_with_recorded_contract_fragments": 68,
-    "scoped_check_assessments": 155,
-    "expert_visual_assessments": 78,
-    "inventory_families_with_partial_state_evidence": 60,
+    "reason": "309族/366selector entries（含support-root/region），295状态记录/63局部证据族，0完整认证。",
+    "families_with_recorded_contract_fragments": 70,
+    "scoped_check_assessments": 175,
+    "expert_visual_assessments": 86,
+    "inventory_families_with_partial_state_evidence": 63,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 281
+    "inventory_state_evidence_records": 295
   },
   "evidence": [
     {
@@ -2257,6 +2257,220 @@
         "Single unobstructed pixel per monitor image is not whole-page contrast, display calibration or full-image equivalence.",
         "Only named reduced-motion Chromium contexts and one forced-failure contract; no normal-motion/Safari/zoom/physical-device/FPS certification.",
         "No live backend/contact/model request; full controls/families/site remain null."
+      ],
+      "new_P0_P1_findings": []
+    },
+    {
+      "id": "E-SEARCH-INDEX-PENDING-BASELINE",
+      "kind": "recorded_negative_browser_baseline",
+      "path": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.log",
+      "script": "docs/ux-audit/2026-10-16/probe-search-index.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/search-index-pending-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/search-index-available-1440-zh.png"
+      ],
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "scope": "390×844zh/reduce controlled pending index, two virtual60s periods;1440zh available-index Home/End observation only.",
+      "source_hashes_match_at_review": true,
+      "limits": "No scoring-agent browser/build; synthetic viewport/time/network where stated. No real public navigation, AI/contact request, physical-device or complete keyboard certification."
+    },
+    {
+      "id": "E-SEARCH-INDEX-RACE-BASELINE",
+      "kind": "recorded_negative_browser_baseline",
+      "path": "docs/ux-audit/2026-10-16/evidence/search-index-race-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/search-index-race-baseline.log",
+      "script": "docs/ux-audit/2026-10-16/probe-search-index-race.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/search-index-new-success-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/search-index-old-failure-1440-zh.png"
+      ],
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "scope": "1440×900zh/reduce old controlled503 after later real local index success; no live outage.",
+      "source_hashes_match_at_review": true,
+      "limits": "No scoring-agent browser/build; synthetic viewport/time/network where stated. No real public navigation, AI/contact request, physical-device or complete keyboard certification."
+    },
+    {
+      "id": "E-SEARCH-QUERY-INTENT-BASELINE",
+      "kind": "recorded_negative_browser_baseline",
+      "path": "docs/ux-audit/2026-10-16/evidence/search-intent-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/search-intent-baseline.log",
+      "script": "docs/ux-audit/2026-10-16/probe-search-intent.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/search-intent-old-results-1440-zh.png"
+      ],
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "scope": "1440×900zh/reduce actual local index, clock paused within150ms debounce; actual Enter navigation captured and aborted locally.",
+      "source_hashes_match_at_review": true,
+      "limits": "No scoring-agent browser/build; synthetic viewport/time/network where stated. No real public navigation, AI/contact request, physical-device or complete keyboard certification."
+    },
+    {
+      "id": "E-BATCH-E10",
+      "kind": "historical_frozen_QR_modal_portrait_partial",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e10-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e10-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e10-actions.browser.mjs",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-1440x900-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-1440x900-dark-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-320x740-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-320x740-light-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-390x844-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-390x844-light-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-568x256-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-568x256-dark-wechat.png"
+      ],
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e10-contracts.log",
+      "contract_result": {
+        "distinct_cases": 9,
+        "passed": 9,
+        "duration": "11.3s"
+      },
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-build.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-diff.log"
+      ],
+      "initial_probe_log": "docs/ux-audit/2026-10-16/evidence/batch-e10-actions-initial.log",
+      "diagnostic_log": "docs/ux-audit/2026-10-16/evidence/batch-e10-motion-diagnostic.log",
+      "source_and_QA_hashes_matched_before_E10a_authorized_WIP": true,
+      "results": "Four Chinese actual contexts/eight original posters: native modal focus/Tab loops, Escape+immediateEnter, close/backdrop,44 target, full portrait/no overlap, precise overflow/scroll restoration. English actual route retains four non-QR links; no synthetic English QR.",
+      "scope": "Actual390×844light/normal,568×256dark/reduce,320×740light/reduce,1440×900dark/normal. Contracts additionally568×224two motion, same-task queuedclose, immediate-rAF cancellation, syntheticpagehide and image transport.",
+      "initial_probe_resolution": "Initial assertion demanded exact zero duration; diagnostic shows transition-property:none,duration1e-06s,runningAnimations0. Final checks property:none/running0/opacity1; production unchanged, four contexts fully rerun.",
+      "limits": "Original E10 only, not current E10a WIP. Full poster display is not real QR scan. No Safari/zoom/physical device/native keyboard/contact/model certification. Nine contract passes do not certify image error feedback."
+    },
+    {
+      "id": "E-E10-IMAGE-STATE-FAIL",
+      "kind": "controlled_actual_pending_404_feedback_failure",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e10-image-state.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e10-image-state.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e10-image-state.browser.mjs",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-image-404-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-image-pending-390-zh.png"
+      ],
+      "scope": "390×844zh/reduce original E10 local image delay and intercepted404.",
+      "observation": "Pending shows only channel/id without loading explanation;404 exposes browser broken-image and duplicated alt, with no retry. ID/Close/focus and auto!important overflow/scroll restore remain usable; late successful image stays closed.",
+      "limits": "Error/loading design fails named scope; no live outage or P1. E10a remedy is WIP/unverified."
+    },
+    {
+      "id": "E-FOOTNOTE-FIRST-TAP-BASELINE",
+      "kind": "controlled_existing_article_actual_first_tap_failure",
+      "path": "docs/ux-audit/2026-10-16/evidence/footnote-first-tap-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/footnote-first-tap-baseline.log",
+      "script": "docs/ux-audit/2026-10-16/probe-footnote-intent.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/footnote-first-tap-before-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/footnote-first-tap-after-390-zh.png"
+      ],
+      "as_of": {
+        "phase": "Pre-E11/E12 disjoint b5 global baseline",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "source_hashes_match_at_review": true,
+      "scope": "390×844zh/coarse/reduce context-engineering first reference actual touchscreen.tap;scroll2813→18972/hash#fn:1, popover hidden after2frames and300ms.",
+      "limits": "One existing article/marker, simulated touch. Script/source suggest generic anchor owner conflict; event-order causation not separately instrumented. No all-footnotes/device/OS claim."
+    },
+    {
+      "id": "E-BATCH-E10A",
+      "kind": "final_frozen_QR_recovery_contracts_actuals_visual_review",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e10a-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e10a-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e10-actions.browser.mjs",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-1440x900-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-1440x900-dark-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-320x740-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-320x740-light-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-390x844-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-390x844-light-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-568x256-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-568x256-dark-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-error-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-retrying-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-recovered-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-error-568x224-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-error-568x224-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-loading-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-timeout-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-pending-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-404-390-zh.png"
+      ],
+      "source_and_QA_hashes_matched_at_review": true,
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e10a-contracts.log",
+      "contract_result": {
+        "distinct_cases": 17,
+        "passed": 17,
+        "duration": "16.6s",
+        "original_nine_prefix_byte_hash_matches": true
+      },
+      "recovery_path": "docs/ux-audit/2026-10-16/evidence/batch-e10a-recovery.json",
+      "recovery_script": "docs/ux-audit/2026-10-16/batch-e10a-recovery.browser.mjs",
+      "natural_image_state_path": "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-state.json",
+      "contrast_path": "docs/ux-audit/2026-10-16/evidence/batch-e10a-feedback-contrast.json",
+      "contrast_independently_recalculated": true,
+      "minimum_raw_status_ratio": 6.371623070570725,
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-build.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-diff.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-recovery.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-state.log"
+      ],
+      "initial_probe_log": "docs/ux-audit/2026-10-16/evidence/batch-e10a-actions-initial.log",
+      "scroll_diagnostic": "docs/ux-audit/2026-10-16/evidence/batch-e10a-scroll-diagnostic.json",
+      "scope": "Main4Chinesecontexts/eightposters +recovery3+unclockedimage1; English four nonQR channels separate. All17primaryPNG viewed.17contracts are not17actualjourneys.",
+      "results": "404/localRetry2GET/duplicateguard; activeRetry-success→Close, detailsfocus retained; originalImage path/localquery. Virtual14999/15000 deadline and labeled synthetic old-node events prove owned attempt cleanup.",
+      "limits": [
+        "Strict main scroll baseline requires fonts/finite entrances settled; initial14px/documentmax diagnostic retained, mid-reveal scroll unknown.",
+        "Clock0ms loading image lacked some text paint; unclocked pending confirms loading+label/ID. Clock image excluded from stable visual proof.",
+        "Opaque status/enabledRetry contrast only; no artwork/fullpage/inactiveRetry/antialias/display calibration.",
+        "No physical QR scan,livecontact/model/backend,AT announcements,Safari,zoom,FPS or whole-family certification."
       ],
       "new_P0_P1_findings": []
     }
@@ -4883,6 +5097,262 @@
       ],
       "scope": "Named actual screenshots only. Not a complete dimension or control score.",
       "reason": "暗纸面与清楚按钮保留，但窗口chrome和长引导占短屏有限高度；建议短屏收引导留白，保原标题/44目标和既有DOM。"
+    },
+    {
+      "assessment_id": "VIS-E10-PORTRAIT-D1",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-320x740-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-320x740-light-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-390x844-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-390x844-light-wechat.png"
+      ],
+      "scope": "OriginalE10 named stable normal states only; not E10a or pending/error acceptance.",
+      "reason": "完整图、外置渠道/ID和Close主次清楚；图片内部小caption仍不能代替可读账号信息，不能由完整显示推断扫码。"
+    },
+    {
+      "assessment_id": "VIS-E10-PORTRAIT-D4",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-320x740-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-320x740-light-wechat.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-390x844-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-390x844-light-wechat.png"
+      ],
+      "scope": "OriginalE10 named stable normal states only; not E10a or pending/error acceptance.",
+      "reason": "去方形crop与图片圆角后内容完整，单卡边界和必要focus环有用途；外置ID偏小与图片内部说明重复仍有余量。"
+    },
+    {
+      "assessment_id": "VIS-E10-SHORT-D1",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-568x256-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-568x256-dark-wechat.png"
+      ],
+      "scope": "OriginalE10 named stable normal states only; not E10a or pending/error acceptance.",
+      "reason": "短屏左右分工明确，整个poster、渠道与ID/Close同时可见；小海报的实体可扫性未知。"
+    },
+    {
+      "assessment_id": "VIS-E10-SHORT-D4",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-568x256-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10-568x256-dark-wechat.png"
+      ],
+      "scope": "OriginalE10 named stable normal states only; not E10a or pending/error acceptance.",
+      "reason": "双列有界平衡且44Close不压图，无额外围框；辅助ID字号可继续审，不能用focus环作装饰扣分。"
+    },
+    {
+      "assessment_id": "VIS-E10A-NORMAL-D1",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-1440x900-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-320x740-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-390x844-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-568x256-dark-rednote.png"
+      ],
+      "scope": "NamedstableE10a images; clock0 initialpaint excluded from visual certification.",
+      "reason": "320x740-light-rednote与1440x900-dark-wechat中平台名下直接显示裸账号ID；能读但未说明可用于站内账号搜索。建议将这一行标作“账号：…”或“微信号：…”，不改变原ID。语言/任务提示片段90；AT/扫码未知不计作已见缺陷。"
+    },
+    {
+      "assessment_id": "VIS-E10A-NORMAL-D4",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-1440x900-dark-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-320x740-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-390x844-light-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-568x256-dark-rednote.png"
+      ],
+      "scope": "NamedstableE10a images; clock0 initialpaint excluded from visual certification.",
+      "reason": "复看八张稳定normal图，未找到足以支持原type/attention各90的具体视觉摩擦，撤回两项主观扣分。完整海报、正常/短屏分区、无叠框、必要focus环和稳定账号位置在这些图中通过。96仅是命名静态图的专家判断；complete_dimension_score与verified_score仍null，未把图内微字、AT或实体扫码未知伪作缺陷。"
+    },
+    {
+      "assessment_id": "VIS-E10A-RECOVERY-D1",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-pending-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-404-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-error-568x224-rednote.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-timeout-390-zh.png"
+      ],
+      "scope": "NamedstableE10a images; clock0 initialpaint excluded from visual certification.",
+      "reason": "无clock404-390图中“使用账号搜索”位于约363px，真实账号位于约610px，中间隔着Retry和约120px空区；备用路径仍可完成，但需要跨区域找ID。orientation片段90，与AT/扫码unknown无关。"
+    },
+    {
+      "assessment_id": "VIS-E10A-RECOVERY-D4",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-pending-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-image-404-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-retrying-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e10a-error-568x224-rednote.png"
+      ],
+      "scope": "NamedstableE10a images; clock0 initialpaint excluded from visual certification.",
+      "reason": "无clock404-390图Retry底约455px、账号标题约580px，约120px空区将错误恢复和账号替代拆开；固定poster高度可保留，仅error态将反馈组靠近poster底部/账号区即可。14px状态实际清楚且对比实测通过，不保留无具体依据的字体扣分。"
     }
   ],
   "findings": [
@@ -5720,11 +6190,11 @@
       "severity": "P2",
       "title": "旅行二维码打开后焦点留在背景，正常动效快速重开被旧关闭隐藏",
       "baseline_reason": "390×844中文light：reduce/normal打开均未移焦点，Tab到背景WeChat；Escape回trigger后立即Enter，normal500ms后hidden=true而is-open/expanded仍true；reduce重开仍可见。与travel.html:389–406无focus管理和未失效transitionend关闭回调吻合。",
-      "recommendation": "后续有界批使用原生dialog或完整模态焦点进入/Tab边界/返回策略；每次open失效旧rAF/transition关闭意图，关闭有有界终态；真实键盘复验两偏好快速重开，保留显示二维码/ID的原任务。",
-      "status": "confirmed_recorded_390_zh_two_media_focus_failure_and_normal_reopen_race",
+      "recommendation": "Retain owned native-dialog/portrait behavior; verify remaining AT/Safari/zoom/mid-reveal scopes with new evidence when applicable.",
+      "status": "closed_named_E10a_scope_full_matrix_unverified",
       "baseline_cap": 89,
-      "active_cap": 89,
-      "batch": "later-bounded-TravelQR-after-E7",
+      "active_cap": null,
+      "batch": "E10a_final",
       "dimensions": [
         "D2",
         "D3"
@@ -5738,28 +6208,24 @@
         }
       ],
       "browser_evidence": [
-        "E-TRAVEL-QR-BASELINE-FAIL"
+        "E-TRAVEL-QR-BASELINE-FAIL",
+        "E-BATCH-E10",
+        "E-BATCH-E10A"
       ],
       "verified_score": null,
       "confidence": "high",
       "as_of": {
-        "phase": "TravelQR actual baseline after E62; E7 WIP outside scope",
-        "reviewed_at": "2026-10-16T02:46:56+08:00",
-        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
-        "travel_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
-        "viewport": {
-          "width": 390,
-          "height": 844
-        },
-        "locale": "zh",
-        "theme": "light",
-        "motions": [
-          "reduce",
-          "no-preference"
-        ]
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
       },
       "source_candidate_reason": "travel.html:386–415 open只hidden=false/rAF添加is-open，没有移入焦点或Tab边界；close在transitionend无代次直接hidden=true，快速关闭再开可由旧listener隐藏新模态。",
-      "active_cap_scope": "G4仅normal快速重开后QR内容被hidden；其他范围/完整族分仍null。"
+      "active_cap_scope": "No active cap for closed named E10a modal/reopen/poster scope; full-family score remains null.",
+      "closed_scope": "Current17contracts +main4Chinesecontexts/eightportraits +recovery3 +naturalpending4041. Named focus/reopen/fullposter/15s/retry/focusownership only.",
+      "remaining_scope": "Mid-reveal scroll,AT,Safari,zoom,physicalscan and other untested states remain unknown. No whole-family pass.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-019",
@@ -6923,6 +7389,266 @@
       "original_failure_retained": true,
       "closed_scope": "Two actual Metal/reduce scopes1440zh fine and390en coarse: two themes×three wallpapers each, exact visible pixel output;1440zh forced-WebGL-failure contract original landscape palette retained.",
       "remaining_scope": "Normal-motion, Safari, zoom, physical-device and other untested contexts remain unverified. No whole-page contrast or full-family acceptance."
+    },
+    {
+      "id": "UX-039",
+      "family_prefix": "G.SEARCH",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "severity": "P2",
+      "title": "搜索索引挂起时长期显示0结果，缺少可见加载与有界恢复",
+      "baseline_reason": "390×844中文reduce，受控挂起index两次虚拟60s后aria-busy仍true且显示找到0条；Escape可返回，重开触发第二GET。不是实测公网故障，也不能说无退出路径。",
+      "recommendation": "为当前索引请求增加明确loading及有界fetch/JSON期限，失败保留query并提供重试；不能用0结果表达尚未完成的索引加载。",
+      "status": "confirmed_named_search_baseline_open_for_E11",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E11_candidate",
+      "dimensions": [
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-SEARCH-INDEX-PENDING-BASELINE"
+        },
+        {
+          "kind": "source",
+          "path": "assets/js/search-palette.js",
+          "line": 209
+        }
+      ],
+      "browser_evidence": [
+        "E-SEARCH-INDEX-PENDING-BASELINE"
+      ],
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "Controlled named scope only, not an E10 regression or full-family result.",
+        "No P0/P1 or automatic hard-gate cap inferred. Pending palette remains closable; Home/End not classified as failure."
+      ]
+    },
+    {
+      "id": "UX-040",
+      "family_prefix": "G.SEARCH",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "severity": "P2",
+      "title": "关闭重开后的旧索引失败会清空新会话已成功结果",
+      "baseline_reason": "1440×900中文reduce：首GET挂起，Escape重开后第二真实本地index提供Kubernetes10结果；旧GET迟到503将结果变0并显示索引错误，编辑空格后用已存fuse恢复10。",
+      "recommendation": "索引请求必须有当前owner/generation，关闭/pagehide失效并abort；每个await、catch/finally只允许owner更新busy/results/error，旧响应不得覆盖新会话。",
+      "status": "confirmed_named_search_baseline_open_for_E11",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E11_candidate",
+      "dimensions": [
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-SEARCH-INDEX-RACE-BASELINE"
+        },
+        {
+          "kind": "source",
+          "path": "assets/js/search-palette.js",
+          "line": 237
+        }
+      ],
+      "browser_evidence": [
+        "E-SEARCH-INDEX-RACE-BASELINE"
+      ],
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "Controlled named scope only, not an E10 regression or full-family result.",
+        "No P0/P1 or automatic hard-gate cap inferred. Pending palette remains closable; Home/End not classified as failure."
+      ]
+    },
+    {
+      "id": "UX-041",
+      "family_prefix": "G.SEARCH",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "severity": "P2",
+      "title": "修改查询后立即Enter会打开上一查询的首篇结果",
+      "baseline_reason": "1440×900中文reduce真实Kubernetes10结果后，虚拟clock停在150ms debounce内；填入无匹配新query后实际Enter，捕获导航仍是旧Kubernetes首篇URL。输入已新值，旧10结果与旧fullHref尚未更新；请求已本地abort。",
+      "recommendation": "input时立即使旧结果/active descendant失效并同步fullHref；plain Enter先对当前query刷新或验证renderedQuery归属，只能激活当前query的候选/完整搜索。",
+      "status": "confirmed_named_search_baseline_open_for_E11",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E11_candidate",
+      "dimensions": [
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-SEARCH-QUERY-INTENT-BASELINE"
+        },
+        {
+          "kind": "source",
+          "path": "assets/js/search-palette.js",
+          "line": 631
+        }
+      ],
+      "browser_evidence": [
+        "E-SEARCH-QUERY-INTENT-BASELINE"
+      ],
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "Controlled named scope only, not an E10 regression or full-family result.",
+        "No P0/P1 or automatic hard-gate cap inferred. Pending palette remains closable; Home/End not classified as failure."
+      ]
+    },
+    {
+      "id": "UX-042",
+      "family_prefix": "A.BODY",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a"
+      ],
+      "severity": "P2",
+      "title": "脚注预览首次触控直接跳文末，打断原阅读位置",
+      "baseline_reason": "390×844中文coarse/reduce context-engineering首tap #fn:1，scroll2813→18972，hash变更；两帧/300ms popover均hidden。已独立看原位/文末两图。",
+      "recommendation": "通用锚点增强与脚注预览明确事件所有权；首tap保阅读位置，第二tap/查看脚注/noJS仍保原生导航。不要改文章内容或用全站anchor改动掩盖冲突。",
+      "source_inference": "footer inline52–79先注册scroll/history，defer footnote-preview175–187的preventDefault不能撤回之前已执行滚动；随后scroll hide吻合观察。未额外instrument event order。",
+      "status": "confirmed_named_first_touch_reading_interruption_open",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E12_candidate",
+      "dimensions": [
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-FOOTNOTE-FIRST-TAP-BASELINE"
+        },
+        {
+          "kind": "source",
+          "path": "layouts/partials/footer.html",
+          "line": 52
+        },
+        {
+          "kind": "source",
+          "path": "static/js/footnote-preview.js",
+          "line": 175
+        }
+      ],
+      "browser_evidence": [
+        "E-FOOTNOTE-FIRST-TAP-BASELINE"
+      ],
+      "as_of": {
+        "phase": "Pre-E12 disjoint global footnote negative baseline",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/footnote-first-tap-baseline.json"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "One existing article/marker, not all footnotes/device failure.",
+        "Incorrect old inventory child selector is not assigned this negative tap evidence."
+      ]
+    },
+    {
+      "id": "UX-043",
+      "family_prefix": "T.SOCIAL",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f"
+      ],
+      "severity": "P2",
+      "title": "二维码图片挂起和失败缺说明，404直接暴露破图且无重试",
+      "baseline_reason": "390×844中文reduce受控图片pending只见label/id空卡；404出现broken-image与重复alt，无载入/错误说明和本地Retry。Close/账号信息可用及晚到不重开并非状态反馈已合格。",
+      "recommendation": "E10a仅poster区提供稳定有界loading/error、同本地URLRetry并隐藏破图；保真实ID/44Close。session+attempt+node所有权及有界等待，重试成功只在其仍持焦点时返回Close。",
+      "status": "closed_named_E10a_scope_full_matrix_unverified",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E10a_final",
+      "dimensions": [
+        "D3",
+        "D4"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-E10-IMAGE-STATE-FAIL"
+        },
+        {
+          "kind": "source",
+          "path": "layouts/page/travel.html",
+          "line": 333
+        }
+      ],
+      "browser_evidence": [
+        "E-E10-IMAGE-STATE-FAIL",
+        "E-BATCH-E10A"
+      ],
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "Controlled localpending/404, not real outage or P1.",
+        "Original ID/Close is an alternative, so no mechanical no-exit gate cap.",
+        "Current E10a WIP is not certified by old nine tests/images."
+      ],
+      "original_failure_retained": true,
+      "closed_scope": "Current17contracts +main4Chinesecontexts/eightportraits +recovery3 +naturalpending4041. Named focus/reopen/fullposter/15s/retry/focusownership only.",
+      "remaining_scope": "Mid-reveal scroll,AT,Safari,zoom,physicalscan and other untested states remain unknown. No whole-family pass."
     }
   ],
   "next_batches": [
@@ -6963,6 +7689,12 @@
       "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
       "relevance": "Normaltext4.5; qualifyinglargetext3. Ratioscannotroundup. Informationalauthornotpuredecoration; projectallcoverDOM4.5isconservativebeyondlargeexception.",
       "independently_read_at": "2026-10-16T03:22:42+08:00"
+    },
+    {
+      "title": "W3C APG Combobox Pattern",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/",
+      "verified_at": "2026-10-16T04:30:01+08:00",
+      "use": "Editable inputs support platform text editing; popup Home/End has optional behaviors. Does not automatically classify observed Home/End result navigation as failure."
     }
   ],
   "limitations": [
@@ -6974,8 +7706,8 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.17",
-    "sha256": "0a065b24756d018a9114c2d841cafde13e5025cf77cfaa3a0addc2b7c79d442d",
+    "version": "1.18",
+    "sha256": "f7a1de8d445fe56814ecbfac64c56ad2b0fcac6505ab2e14e74ab95f4a1eb3e8",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -6983,14 +7715,14 @@
       "motion_families": 26,
       "world_decorative_families": 18,
       "control_families": 265,
-      "stable_control_selectors": 362,
+      "stable_control_selectors": 366,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 59,
+      "partial_state_evidence_families": 62,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 224,
-        "partial-state-evidence": 59,
+        "source-only": 221,
+        "partial-state-evidence": 62,
         "measured-observation-only": 1,
         "rendered-baseline": 25
       },
@@ -6998,13 +7730,13 @@
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 60,
+      "families_with_state_evidence": 63,
       "accepted_whole_families": 0,
-      "state_evidence_records": 281
+      "state_evidence_records": 295
     },
-    "imported_at": "2026-10-16T04:21:11+08:00",
-    "source_metadata_updated_at": "2026-10-16T04:19:25+08:00",
-    "import_scope": "Counts and four E9c binding-ID references only; canonical inventory holds complete scopes. No new controls or whole-family pass."
+    "imported_at": "2026-10-16T04:57:07+08:00",
+    "source_metadata_updated_at": "2026-10-16T04:54:05+08:00",
+    "import_scope": "Fournewselectorentries/support-root correction; bindingreferences only. Marker alone ownsUX042 negative; More untested; QRregion notbutton."
   },
   "groups": [
     {
@@ -8559,7 +9291,7 @@
         "sha256": "04e9bd50498a938f89c4c352fbe8de4f86ec922eb57da20705649f6ad0207808"
       },
       "state_profile": "nav",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -8949,7 +9681,7 @@
         "sha256": "c7a4404349875e96fe46e7cd26afdd577742e3db538210815bf8e242b6d76a84"
       },
       "state_profile": "input",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -8997,7 +9729,10 @@
         }
       },
       "known_findings": [
-        "UX-015"
+        "UX-015",
+        "UX-039",
+        "UX-040",
+        "UX-041"
       ],
       "contract_evidence": [
         {
@@ -9017,9 +9752,18 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-D1-SEARCH-CLOSE",
-        "CHK-D2B-SEARCH-FOCUS"
+        "CHK-D2B-SEARCH-FOCUS",
+        "CHK-SEARCH-INDEX-PENDING",
+        "CHK-SEARCH-INDEX-RACE",
+        "CHK-SEARCH-QUERY-INTENT"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.S39.index-pending.G.SEARCH.QUERY.loading"
+        ]
+      }
     },
     {
       "family_id": "G.SEARCH.RESULT",
@@ -9041,7 +9785,7 @@
         "sha256": "6b2b5353c785dd9967ee3a6f342b07564caed217f8ffa55522ffdf4dd7d86592"
       },
       "state_profile": "nav",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -9088,7 +9832,11 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-039",
+        "UX-040",
+        "UX-041"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -9096,8 +9844,19 @@
       "journey_queue_ids": [
         "R-02"
       ],
-      "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SEARCH-INDEX-PENDING",
+        "CHK-SEARCH-INDEX-RACE",
+        "CHK-SEARCH-QUERY-INTENT"
+      ],
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.S40.old-index-overwrite.G.SEARCH.RESULT.error",
+          "EIMPORT.S41.old-query-enter.G.SEARCH.RESULT.active"
+        ]
+      }
     },
     {
       "family_id": "G.SEARCH.AI",
@@ -10259,7 +11018,7 @@
         "sha256": "af4377b5fcf52ef3954a961cd44055140ba95a2ebafd2369c80c70095daa4322"
       },
       "state_profile": "nav",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -11028,7 +11787,7 @@
         "sha256": "af4377b5fcf52ef3954a961cd44055140ba95a2ebafd2369c80c70095daa4322"
       },
       "state_profile": "async",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "measured-observation-only",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -11116,7 +11875,7 @@
         "sha256": "af4377b5fcf52ef3954a961cd44055140ba95a2ebafd2369c80c70095daa4322"
       },
       "state_profile": "async",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -11631,7 +12390,7 @@
         "sha256": "af4377b5fcf52ef3954a961cd44055140ba95a2ebafd2369c80c70095daa4322"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -11895,7 +12654,7 @@
         "sha256": "af4377b5fcf52ef3954a961cd44055140ba95a2ebafd2369c80c70095daa4322"
       },
       "state_profile": "async",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -14121,7 +14880,7 @@
         "sha256": "a30181df494f6386b349d327d49a6fa8b650b0d09110d67afeebfbc3dd2af6ca"
       },
       "state_profile": "nav",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -17264,10 +18023,12 @@
       "family_id": "A.BODY.FOOTNOTEPREVIEW",
       "title": "脚注预览/继续到脚注",
       "scope": "control-family",
-      "selector": ".footnote-preview",
+      "selector": ".fn-popover, .post-content a.footnote-ref[href^=\"#\"], .fn-popover__more",
       "selector_type": "css",
       "control_ids": [
-        "A.BODY.FOOTNOTEPREVIEW.control.98b9b5"
+        "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a",
+        "A.BODY.FOOTNOTEPREVIEW.control.70bc13"
       ],
       "routes": [
         "带脚注文章"
@@ -17280,7 +18041,7 @@
         "sha256": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -17327,7 +18088,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-042"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -17335,8 +18098,16 @@
       "journey_queue_ids": [
         "R-16"
       ],
-      "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-FOOTNOTE-FIRST-TAP-FAIL"
+      ],
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.F42.first-touch.A.BODY.FOOTNOTEPREVIEW.active"
+        ]
+      }
     },
     {
       "family_id": "A.FOOTER.NEXT",
@@ -21815,7 +22586,7 @@
         "sha256": "348a1daae8f4b5b21de5eb1fc3229b79538fdea6e5676a1981e5d343c34222ac"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -21893,7 +22664,7 @@
         "sha256": "348a1daae8f4b5b21de5eb1fc3229b79538fdea6e5676a1981e5d343c34222ac"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -27437,7 +28208,7 @@
         "sha256": "4067d85d0ecac8b4ac04840ffb4af93634805818ad2ba2b84afa1d040996bb10"
       },
       "state_profile": "window",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -28390,7 +29161,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "toggle",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -28992,7 +29763,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "nav",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -30467,7 +31238,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "nav",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -34070,7 +34841,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "nav",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -44403,11 +45174,13 @@
       "family_id": "T.SOCIAL.QR",
       "title": "社交二维码 / 查看 ID / 关闭",
       "scope": "control-family",
-      "selector": ".tw-social--qr, [data-qr-close]",
+      "selector": ".tw-social--qr, [data-qr-close], .tw-qr__details, .tw-qr__retry",
       "selector_type": "css",
       "control_ids": [
         "T.SOCIAL.QR.control.27594f",
-        "T.SOCIAL.QR.control.cdff1a"
+        "T.SOCIAL.QR.control.cdff1a",
+        "T.SOCIAL.QR.control.57404f",
+        "T.SOCIAL.QR.control.246c0a"
       ],
       "routes": [
         "Travel"
@@ -44420,7 +45193,7 @@
         "sha256": "6bbc8101260220042a2c7aefabf8223d8d1d0bbe3289c60ced0ed1bbf77263d5"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -44468,7 +45241,8 @@
         }
       },
       "known_findings": [
-        "UX-018"
+        "UX-018",
+        "UX-043"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -44684,9 +45458,49 @@
       "scoped_check_assessment_ids": [
         "CHK-TRAVEL-QR-FOCUS-FAIL",
         "CHK-TRAVEL-QR-REOPEN-FAIL",
-        "CHK-TRAVEL-QR-ESCAPE-RETURN"
+        "CHK-TRAVEL-QR-ESCAPE-RETURN",
+        "CHK-E10-MODAL-FOCUS",
+        "CHK-E10-REOPEN-CANCEL",
+        "CHK-E10-FULL-POSTER",
+        "CHK-E10-CLOSE-TARGET",
+        "CHK-E10-REDUCED-MOTION",
+        "CHK-E10-IMAGE-EXIT",
+        "CHK-E10-IMAGE-PENDING-FAIL",
+        "CHK-E10-IMAGE-ERROR-FAIL",
+        "CHK-E10A-NORMAL-FOCUS",
+        "CHK-E10A-SCROLL-POSTER",
+        "CHK-E10A-LOADING-FEEDBACK",
+        "CHK-E10A-IMAGE-RECOVERY",
+        "CHK-E10A-ATTEMPT-LIFECYCLE",
+        "CHK-E10A-RETRY-FOCUS",
+        "CHK-E10A-RETRY-TARGET",
+        "CHK-E10A-FEEDBACK-CONTRAST"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-E10-PORTRAIT-D1",
+        "VIS-E10-PORTRAIT-D4",
+        "VIS-E10-SHORT-D1",
+        "VIS-E10-SHORT-D4",
+        "VIS-E10A-NORMAL-D1",
+        "VIS-E10A-NORMAL-D4",
+        "VIS-E10A-RECOVERY-D1",
+        "VIS-E10A-RECOVERY-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E10.poster-history.T.SOCIAL.QR.normal",
+          "EIMPORT.E10.focus-history.T.SOCIAL.QR.focus",
+          "EIMPORT.E10.reopen-history.T.SOCIAL.QR.active",
+          "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.loading",
+          "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.error",
+          "EIMPORT.E10A.poster-current.T.SOCIAL.QR.normal",
+          "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus",
+          "EIMPORT.E10A.image-loading.T.SOCIAL.QR.loading",
+          "EIMPORT.E10A.image-errors.T.SOCIAL.QR.error",
+          "EIMPORT.E10A.retry-owned-attempt.T.SOCIAL.QR.active"
+        ]
+      }
     },
     {
       "family_id": "T.SOCIAL.LINK",
@@ -48761,7 +49575,7 @@
         "sha256": "4258286908b1657bb2868b4e7608ab3ed1a35a20b24e6a1f405b38d661988238"
       },
       "state_profile": "animation",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -48847,7 +49661,7 @@
         "sha256": "af4377b5fcf52ef3954a961cd44055140ba95a2ebafd2369c80c70095daa4322"
       },
       "state_profile": "animation",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -54500,13 +55314,25 @@
         "D6": null
       },
       "known_findings": [
-        "UX-015"
+        "UX-015",
+        "UX-039",
+        "UX-040",
+        "UX-041"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-D1-SEARCH-CLOSE",
-        "CHK-D2B-SEARCH-FOCUS"
-      ]
+        "CHK-D2B-SEARCH-FOCUS",
+        "CHK-SEARCH-INDEX-PENDING",
+        "CHK-SEARCH-INDEX-RACE",
+        "CHK-SEARCH-QUERY-INTENT"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.S39.index-pending.G.SEARCH.QUERY.loading"
+        ]
+      }
     },
     {
       "control_id": "G.SEARCH.RESULT.control.c71700",
@@ -54575,9 +55401,24 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-039",
+        "UX-040",
+        "UX-041"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SEARCH-INDEX-PENDING",
+        "CHK-SEARCH-INDEX-RACE",
+        "CHK-SEARCH-QUERY-INTENT"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.S40.old-index-overwrite.G.SEARCH.RESULT.error",
+          "EIMPORT.S41.old-query-enter.G.SEARCH.RESULT.active"
+        ]
+      }
     },
     {
       "control_id": "G.SEARCH.AI.control.ad34d6",
@@ -62040,7 +62881,7 @@
     {
       "control_id": "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
       "family_id": "A.BODY.FOOTNOTEPREVIEW",
-      "selector": ".footnote-preview",
+      "selector": ".fn-popover",
       "instance_policy": "同一模板数据重复按运行时渲染实例；本盘点不虚构实例数",
       "scope": "control-family",
       "status": "unverified",
@@ -62106,7 +62947,15 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [],
+      "historical_selector_aliases": [
+        ".footnote-preview"
+      ],
+      "selector_correction_version": "1.18",
+      "interaction_kind": "support-root",
+      "interactive": false,
+      "focusable": false,
+      "note": "Dynamic tooltip container; old nonexistent selector never grants tap/Tab/More action evidence."
     },
     {
       "control_id": "A.FOOTER.NEXT.control.1be975",
@@ -72750,14 +73599,36 @@
         "D6": null
       },
       "known_findings": [
-        "UX-018"
+        "UX-018",
+        "UX-043"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-TRAVEL-QR-FOCUS-FAIL",
         "CHK-TRAVEL-QR-REOPEN-FAIL",
-        "CHK-TRAVEL-QR-ESCAPE-RETURN"
-      ]
+        "CHK-TRAVEL-QR-ESCAPE-RETURN",
+        "CHK-E10-MODAL-FOCUS",
+        "CHK-E10-REOPEN-CANCEL",
+        "CHK-E10-FULL-POSTER",
+        "CHK-E10-REDUCED-MOTION",
+        "CHK-E10-IMAGE-EXIT",
+        "CHK-E10-IMAGE-PENDING-FAIL",
+        "CHK-E10-IMAGE-ERROR-FAIL",
+        "CHK-E10A-NORMAL-FOCUS",
+        "CHK-E10A-SCROLL-POSTER",
+        "CHK-E10A-LOADING-FEEDBACK",
+        "CHK-E10A-ATTEMPT-LIFECYCLE"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E10.focus-history.T.SOCIAL.QR.focus",
+          "EIMPORT.E10.reopen-history.T.SOCIAL.QR.active",
+          "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.loading",
+          "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.error",
+          "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus"
+        ]
+      }
     },
     {
       "control_id": "T.SOCIAL.QR.control.cdff1a",
@@ -72830,7 +73701,30 @@
         "UX-018"
       ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E10-MODAL-FOCUS",
+        "CHK-E10-REOPEN-CANCEL",
+        "CHK-E10-CLOSE-TARGET",
+        "CHK-E10-REDUCED-MOTION",
+        "CHK-E10-IMAGE-EXIT",
+        "CHK-E10A-NORMAL-FOCUS",
+        "CHK-E10A-SCROLL-POSTER",
+        "CHK-E10A-IMAGE-RECOVERY",
+        "CHK-E10A-ATTEMPT-LIFECYCLE",
+        "CHK-E10A-RETRY-FOCUS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E10.focus-history.T.SOCIAL.QR.focus",
+          "EIMPORT.E10.reopen-history.T.SOCIAL.QR.active",
+          "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.loading",
+          "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.error",
+          "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus",
+          "EIMPORT.E10A.image-errors.T.SOCIAL.QR.error",
+          "EIMPORT.E10A.retry-owned-attempt.T.SOCIAL.QR.active"
+        ]
+      }
     },
     {
       "control_id": "T.SOCIAL.LINK.control.66e0a7",
@@ -83350,6 +84244,366 @@
           "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
         ]
       }
+    },
+    {
+      "control_id": "A.BODY.FOOTNOTEPREVIEW.control.d3b14a",
+      "family_id": "A.BODY.FOOTNOTEPREVIEW",
+      "selector": ".post-content a.footnote-ref[href^=\"#\"]",
+      "instance_policy": "Only real selector instances; no fabricated repeat count",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [
+        "UX-042"
+      ],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-FOOTNOTE-FIRST-TAP-FAIL"
+      ],
+      "label": "脚注预览标记",
+      "source": {
+        "file": "static/js/footnote-preview.js",
+        "line": 28,
+        "sha256": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a"
+      },
+      "registered_in_version": "1.18",
+      "interaction_kind": "interactive",
+      "evidence": "source-only-unless-explicit-state-binding",
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.F42.first-touch.A.BODY.FOOTNOTEPREVIEW.active"
+        ]
+      }
+    },
+    {
+      "control_id": "A.BODY.FOOTNOTEPREVIEW.control.70bc13",
+      "family_id": "A.BODY.FOOTNOTEPREVIEW",
+      "selector": ".fn-popover__more",
+      "instance_policy": "Only real selector instances; no fabricated repeat count",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Footnote anchor native/enhanced behavior needs separate evidence; no state pass inferred."
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [],
+      "label": "查看脚注",
+      "source": {
+        "file": "static/js/footnote-preview.js",
+        "line": 64,
+        "sha256": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a"
+      },
+      "registered_in_version": "1.18",
+      "interaction_kind": "interactive",
+      "evidence": "source-only; no actual More click"
+    },
+    {
+      "control_id": "T.SOCIAL.QR.control.57404f",
+      "family_id": "T.SOCIAL.QR",
+      "selector": ".tw-qr__details",
+      "instance_policy": "Only real selector instances; no fabricated repeat count",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Focusable account-information region, not a button; read/select/scroll evidence only."
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E10-MODAL-FOCUS",
+        "CHK-E10A-NORMAL-FOCUS",
+        "CHK-E10A-SCROLL-POSTER",
+        "CHK-E10A-IMAGE-RECOVERY",
+        "CHK-E10A-RETRY-FOCUS"
+      ],
+      "label": "账号信息可滚动区域",
+      "source": {
+        "file": "layouts/page/travel.html",
+        "line": 340,
+        "sha256": "626bb786e656dbe339e1a7d02a88f0dd9b2560bab7796f09a3aa140312db5af8"
+      },
+      "registered_in_version": "1.18",
+      "interaction_kind": "focusable-region-not-button",
+      "evidence": "source-only-unless-explicit-state-binding",
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E10.focus-history.T.SOCIAL.QR.focus",
+          "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus",
+          "EIMPORT.E10A.image-errors.T.SOCIAL.QR.error"
+        ]
+      }
+    },
+    {
+      "control_id": "T.SOCIAL.QR.control.246c0a",
+      "family_id": "T.SOCIAL.QR",
+      "selector": ".tw-qr__retry",
+      "instance_policy": "Only real selector instances; no fabricated repeat count",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Owned image Retry with pending/error/timeout; aria-disabled and focus behavior require scoped evidence."
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E10A-LOADING-FEEDBACK",
+        "CHK-E10A-IMAGE-RECOVERY",
+        "CHK-E10A-ATTEMPT-LIFECYCLE",
+        "CHK-E10A-RETRY-FOCUS",
+        "CHK-E10A-RETRY-TARGET",
+        "CHK-E10A-FEEDBACK-CONTRAST"
+      ],
+      "label": "重新加载图片",
+      "source": {
+        "file": "layouts/page/travel.html",
+        "line": 337,
+        "sha256": "626bb786e656dbe339e1a7d02a88f0dd9b2560bab7796f09a3aa140312db5af8"
+      },
+      "registered_in_version": "1.18",
+      "interaction_kind": "interactive",
+      "evidence": "source-only-unless-explicit-state-binding",
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus",
+          "EIMPORT.E10A.image-loading.T.SOCIAL.QR.loading",
+          "EIMPORT.E10A.image-errors.T.SOCIAL.QR.error",
+          "EIMPORT.E10A.retry-owned-attempt.T.SOCIAL.QR.active"
+        ]
+      }
     }
   ],
   "specific_observations": [
@@ -87621,11 +88875,572 @@
       ],
       "scope": "Contract-only forced failure at1440zh, not all live loss/recovery/device paths.",
       "reason": "Forced WebGL failure1440zh contract keeps visible original landscape with six classic colors and no spatial screen; selectors/JS outside screen-background CSS unchanged."
+    },
+    {
+      "id": "CHK-SEARCH-INDEX-PENDING",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "criterion": "D3.1",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_failure",
+      "status": "confirmed_named_scope_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "evidence": [
+        "E-SEARCH-INDEX-PENDING-BASELINE"
+      ],
+      "scope": "390×844中文reduce，受控挂起index两次虚拟60s后aria-busy仍true且显示找到0条；Escape可返回，重开触发第二GET。不是实测公网故障，也不能说无退出路径。",
+      "reason": "390×844中文reduce，受控挂起index两次虚拟60s后aria-busy仍true且显示找到0条；Escape可返回，重开触发第二GET。不是实测公网故障，也不能说无退出路径。",
+      "finding_id": "UX-039"
+    },
+    {
+      "id": "CHK-SEARCH-INDEX-RACE",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_failure",
+      "status": "confirmed_named_scope_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "evidence": [
+        "E-SEARCH-INDEX-RACE-BASELINE"
+      ],
+      "scope": "1440×900中文reduce：首GET挂起，Escape重开后第二真实本地index提供Kubernetes10结果；旧GET迟到503将结果变0并显示索引错误，编辑空格后用已存fuse恢复10。",
+      "reason": "1440×900中文reduce：首GET挂起，Escape重开后第二真实本地index提供Kubernetes10结果；旧GET迟到503将结果变0并显示索引错误，编辑空格后用已存fuse恢复10。",
+      "finding_id": "UX-040"
+    },
+    {
+      "id": "CHK-SEARCH-QUERY-INTENT",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "criterion": "D3.2",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_failure",
+      "status": "confirmed_named_scope_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:30:01+08:00",
+        "locale": "zh",
+        "motion": "reduce",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+      },
+      "evidence": [
+        "E-SEARCH-QUERY-INTENT-BASELINE"
+      ],
+      "scope": "1440×900中文reduce真实Kubernetes10结果后，虚拟clock停在150ms debounce内；填入无匹配新query后实际Enter，捕获导航仍是旧Kubernetes首篇URL。输入已新值，旧10结果与旧fullHref尚未更新；请求已本地abort。",
+      "reason": "1440×900中文reduce真实Kubernetes10结果后，虚拟clock停在150ms debounce内；填入无匹配新query后实际Enter，捕获导航仍是旧Kubernetes首篇URL。输入已新值，旧10结果与旧fullHref尚未更新；请求已本地abort。",
+      "finding_id": "UX-041"
+    },
+    {
+      "id": "CHK-E10-MODAL-FOCUS",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "passed_named_historical_E10_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10"
+      ],
+      "scope": "Four actual Chinese contexts/twochannels; no full OS/AT keyboard certification.",
+      "reason": "Native dialog focus entersClose, explicit both-direction Tabwrap never reaches background/BODY; Escape/actualClose/backdrop restore opener."
+    },
+    {
+      "id": "CHK-E10-REOPEN-CANCEL",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "passed_named_historical_E10_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10"
+      ],
+      "scope": "Actual samechannel plus same-task component crosschannel, immediate-before-rAF and syntheticpagehide contracts explicitly separate.",
+      "reason": "Immediate Escape→Enter survives old native close event; owner/generation/rAF cancellation and runtime reduce preserve current session."
+    },
+    {
+      "id": "CHK-E10-FULL-POSTER",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "passed_named_historical_E10_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10"
+      ],
+      "scope": "Full visual poster display only, no physical QR scan or claim that tiny embedded caption text is readable at all sizes.",
+      "reason": "Eight actual portraits preserve natural ratio/complete top markers and lower text; contain, no rounded-image crop and no close overlap. Old reduction screenshot compared with original portraits."
+    },
+    {
+      "id": "CHK-E10-CLOSE-TARGET",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "passed_named_historical_E10_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10"
+      ],
+      "scope": "Only .tw-qr__x instance within composite [data-qr-close] control; backdrop closing is separately checked, not a named button44 assertion.",
+      "reason": "Actual X Close is44×44 viewportCSSpx with center hit and16px bounded card; source original images and metadata retained."
+    },
+    {
+      "id": "CHK-E10-REDUCED-MOTION",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D5.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "passed_named_historical_E10_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10"
+      ],
+      "scope": "Named actual/runtime and synthetic entrance boundaries, not FPS/hidden-resource or all animation certification.",
+      "reason": "Initial and runtime reduce settleopacity1, transition-property:none/runningAnimations0; actual duration1e-06s is a global compatibility declaration, not running motion."
+    },
+    {
+      "id": "CHK-E10-IMAGE-EXIT",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "passed_named_historical_E10_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-E10-IMAGE-STATE-FAIL"
+      ],
+      "scope": "Usable exit/metadata does not imply adequate loading/error explanation.",
+      "reason": "Pending/404 retain Close+channel/id and focus; close restores nonempty auto!important overflow/scroll; late image success does not reopen."
+    },
+    {
+      "id": "CHK-E10-IMAGE-PENDING-FAIL",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f"
+      ],
+      "criterion": "D3.1",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "confirmed_named_scope_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-E10-IMAGE-STATE-FAIL"
+      ],
+      "scope": "390zh/reduce controlled delay only; not indefinite real-network-outage claim.",
+      "reason": "Pending image collapses to blank-content card with channel/id only, no visible loading state.",
+      "finding_id": "UX-043"
+    },
+    {
+      "id": "CHK-E10-IMAGE-ERROR-FAIL",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "confirmed_named_scope_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-E10-IMAGE-STATE-FAIL"
+      ],
+      "scope": "390zh/reduce intercepted404 only; no automatic no-exit hard-gate cap.",
+      "reason": "404 shows broken browser image plus duplicate alt and no local retry/explanation; trueID andClose remain available.",
+      "finding_id": "UX-043"
+    },
+    {
+      "id": "CHK-FOOTNOTE-FIRST-TAP-FAIL",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_fragment",
+      "status": "confirmed_named_scope_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Pre-E12 disjoint global footnote negative baseline",
+        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+        "reviewed_at": "2026-10-16T04:38:00+08:00",
+        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/footnote-first-tap-baseline.json"
+      },
+      "evidence": [
+        "E-FOOTNOTE-FIRST-TAP-BASELINE"
+      ],
+      "scope": "390zh/context-engineering marker1 only; existing inventory selector .footnote-preview does not match actual a.footnote-ref, so no child ID inherited.",
+      "reason": "First touch on promised inline preview jumps fromscroll2813 to18972/#fn:1; no popover after2frames/300ms.",
+      "finding_id": "UX-042"
+    },
+    {
+      "id": "CHK-E10A-NORMAL-FOCUS",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.cdff1a",
+        "T.SOCIAL.QR.control.57404f"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "Native Closeentry/bothTabloops/Escape/Close/backdrop return and immediate reopen current-source normal flows; four Chinese contexts."
+    },
+    {
+      "id": "CHK-E10A-SCROLL-POSTER",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.cdff1a",
+        "T.SOCIAL.QR.control.57404f"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "Complete natural portraits/44Close/no overlap and exact overflow+scroll after fonts/finite background settle. Mid-reveal remains unknown."
+    },
+    {
+      "id": "CHK-E10A-LOADING-FEEDBACK",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.246c0a"
+      ],
+      "criterion": "D3.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "Unclocked390pending showsloading+channel/ID in stableposter. Reloading aria-disabledRetry retainsfocus and rejects repeated activation."
+    },
+    {
+      "id": "CHK-E10A-IMAGE-RECOVERY",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.246c0a",
+        "T.SOCIAL.QR.control.57404f",
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "404/timeout explanation+account alternative+localRetry, brokenimagehidden; actualRetry2GET success, same-origin/path with namedquery, stableposterheight."
+    },
+    {
+      "id": "CHK-E10A-ATTEMPT-LIFECYCLE",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.27594f",
+        "T.SOCIAL.QR.control.246c0a",
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "FreshImage/session/generation/node ownership;15s clearslistener/timer/src. Exact14999/15000 pausedclock and labeled synthetic lateevents; oldattempt cannot change newchannel."
+    },
+    {
+      "id": "CHK-E10A-RETRY-FOCUS",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.246c0a",
+        "T.SOCIAL.QR.control.57404f",
+        "T.SOCIAL.QR.control.cdff1a"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "Retryfocused success→Close only whilestillactive; userTabtoIDfocus retained, Retry enters explicitTabloop. No AT/fullOSkeyboard claim."
+    },
+    {
+      "id": "CHK-E10A-RETRY-TARGET",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.246c0a"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "ActualRetry106×44/centerhit/statusinsideposter at390light and568×224dark bothchannels; sourceClose44 preserved."
+    },
+    {
+      "id": "CHK-E10A-FEEDBACK-CONTRAST",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "control_ids": [
+        "T.SOCIAL.QR.control.246c0a"
+      ],
+      "criterion": "D2.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E10a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E10a final bounded QR recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+        "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+        "reviewed_at": "2026-10-16T04:57:07+08:00",
+        "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+      },
+      "evidence": [
+        "E-BATCH-E10A"
+      ],
+      "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
+      "reason": "Four opaque status/enabledRetry samples independently recomputed: statusmin6.371623070570725,enabledRetrymin14.561420266815729. No inactive/artwork/fullpage claim."
     }
   ],
-  "latest_validated_checkpoint": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
-  "preview_scope": "E9c frozen visible palette named scopes reviewed after39a7bd07; E9a/E9b historic bounded closures retained. Full matrices and original low short-screen visual scores remain unverified/unchanged.",
-  "latest_reviewed_artifact": "E-BATCH-E9C",
+  "latest_validated_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+  "preview_scope": "FrozenE10a named modal/image recovery accepted; search39–41/footnote42 open. Mid-reveal and complete matrices unknown.",
+  "latest_reviewed_artifact": "E-BATCH-E10A",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -87974,7 +89789,7 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
   "anchor_intent_review": {
     "as_of": {
       "phase": "478 preview native anchor and actual right TOC scoped probes",
@@ -88164,5 +89979,88 @@
     ],
     "verified_score": null,
     "limits": "E9b short-screen D1/D4 scores not changed; new D4.3 palette-consistency check is a criterion fragment, not a complete D4 score."
+  },
+  "search_pre_e11_review": {
+    "as_of": {
+      "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
+      "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+      "reviewed_at": "2026-10-16T04:30:01+08:00",
+      "locale": "zh",
+      "motion": "reduce",
+      "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+    },
+    "status": "three_confirmed_P2_baselines_not_production_acceptance",
+    "findings": [
+      "UX-039",
+      "UX-040",
+      "UX-041"
+    ],
+    "source_hashes": "Three global file hashes match current files and frozen baseline; Travel E10 source is disjoint and was not built into these probes.",
+    "scope_limits": "Home/End remains an observation. APG supports platform editing plus optional popup Home/End variants; no automatic noncompliance finding. Footnote baseline awaits separate read-only review.",
+    "minimal_plan": [
+      "Owned index load with close/pagehide invalidation, abort and bounded fetch+JSON settlement; loading/error/retry truth and query retained.",
+      "Synchronously invalidate stale candidates/update full query URL on input; Enter flushes/validates latest query before any navigation.",
+      "Retain original150ms-window/race/pending reproductions, add header/body deadline, late success/failure after close, retry, current-query Enter and unchanged AI intent guards."
+    ],
+    "new_P0_P1_findings": [],
+    "verified_score": null
+  },
+  "e10_source_review": {
+    "as_of": {
+      "phase": "E10 original frozen normal/modal partial; authorized E10a now WIP and not certified",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10-source.json",
+      "reviewed_at": "2026-10-16T04:38:00+08:00",
+      "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+    },
+    "status": "original_E10_partial_closed_normal_behavior_image_feedback_open_E10a_WIP",
+    "source_review": "Native/modal Tabwrap,session/generation/queuedcloseguard,original overflowvalue+priority,entrance-rAF cancel/runtime media/pagehide coherent.",
+    "new_P0_P1_findings": [],
+    "open_P2": [
+      "UX-043"
+    ],
+    "evidence": [
+      "E-BATCH-E10",
+      "E-E10-IMAGE-STATE-FAIL"
+    ],
+    "verified_score": null
+  },
+  "e10a_source_review": {
+    "as_of": {
+      "phase": "E10a final bounded QR recovery review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+      "recorded_at": "2026-10-15T20:42:13.263784+00:00",
+      "reviewed_at": "2026-10-16T04:57:07+08:00",
+      "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6"
+    },
+    "status": "three_hash_QA_17contracts_current_actuals_and_visuals_reviewed",
+    "new_P0_P1_findings": [],
+    "closed_findings_in_named_scope": [
+      "UX-018",
+      "UX-043"
+    ],
+    "source_review": "Fresh ownedImage; listener/timer removal/livefalse before clearSrc; same-origin/path Retryquery and activeelementguard. Original9contract prefix byte hash unchanged.",
+    "verified_score": null,
+    "limits": "Main4+recovery3+natural1contexts distinct from17contracts; settled-background precondition. UX039–042 open.",
+    "visual_followup": {
+      "normal_type_attention_deductions_withdrawn": "Previous generic typography/spacing deductions had no concrete observed support; correction affects expert static-scope judgment only.",
+      "candidates": [
+        {
+          "images": [
+            "batch-e10a-image-404-390-zh.png"
+          ],
+          "observation": "Retry bottom~455; account title~580. Error instruction and fallback ID split by ~120px void.",
+          "minimal_change": "Keep stable card/poster dimensions; place error feedback nearer account block."
+        },
+        {
+          "images": [
+            "batch-e10a-320x740-light-rednote.png",
+            "batch-e10a-1440x900-dark-wechat.png"
+          ],
+          "observation": "Bare ID line lacks explicit account/search qualifier.",
+          "minimal_change": "Prefix existing ID with short platform-specific account label; preserve original ID."
+        }
+      ],
+      "limits": "Design candidates only, not new reproduced functional failure. AT/physical scanning unknown do not lower visible-layout scores."
+    }
   }
 }

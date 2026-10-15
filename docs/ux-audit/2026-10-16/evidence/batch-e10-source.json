@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-15T20:29:15.311676+00:00",
+  "batch": "E10",
+  "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+  "files": {
+    "layouts/page/travel.html": "31d8a9a1ada1f2a5c58ebbdf3c994755552bf36d668cde03ce6d2d50a50f990c",
+    "assets/css/extended/zzz-travel-world.css": "281971f1592c60575bcb17eb45e98b08f1089e5c0d7fc0045ce60478a4638988",
+    "tests/e2e/travel-qr-contracts.spec.ts": "2b8d811c0dfd31e5dff3ec7109cebaa917d75a23ac0df7447e42324b9a20ea2f"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "12c7f8d42490aec110474fb55e543601abae71441a8c7ef5a21e76d32fe851f8",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "preserved": "QR-only template/controller and CSS. Original portrait image sources/metadata/channels, Book AI/map/reveal unchanged. Actual English four non-QR channels preserved."
+}

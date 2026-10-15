@@ -1,0 +1,46 @@
+{
+  "source": "batch-e10-source.json",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "lang": "zh",
+  "motion": "reduce",
+  "pending": {
+    "open": true,
+    "focusInside": true,
+    "label": "小红书 / RedNote",
+    "id": "nsddd_top",
+    "image": {
+      "complete": false,
+      "naturalWidth": 0,
+      "alt": "小红书 / RedNote"
+    },
+    "visibleText": "小红书 / RedNote\n\nnsddd_top"
+  },
+  "unavailable": {
+    "open": true,
+    "focusInside": true,
+    "label": "微信 / WeChat",
+    "id": "cubxxwAI",
+    "image": {
+      "complete": true,
+      "naturalWidth": 0,
+      "alt": "微信 / WeChat"
+    },
+    "visibleText": "微信 / WeChat\n\ncubxxwAI"
+  },
+  "nonemptyOverflow": {
+    "original": {
+      "value": "auto",
+      "priority": "important"
+    },
+    "restored": {
+      "value": "auto",
+      "priority": "important"
+    }
+  },
+  "scrollPreserved": true,
+  "lateSuccessfulImageDidNotReopen": true,
+  "limits": "Actual local image request delay and intercepted404. Close/metadata continuity verified; visible error/loading feedback adequacy requires independent visual assessment and is not presumed passing. No physical QR scan or live contact/model calls."
+}

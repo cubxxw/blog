@@ -178,7 +178,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `A.BODY.FAQ` | FAQ 折叠 | `.article-faq__q`<br>[layouts/partials/article/faq.html:28](../../../layouts/partials/article/faq.html) | 展开答案 | `toggle` / source-only |
 | `A.BODY.NOTES` | 月度思考段落定位 | `.note-block[id]`<br>[layouts/partials/article/note-blocks.html:7](../../../layouts/partials/article/note-blocks.html) | 定位具体笔记段 | `nav` / source-only |
 | `A.BODY.LINKPREVIEW` | 链接预览 | `.link-preview`<br>[static/js/link-preview.js:56](../../../static/js/link-preview.js) | 悬停了解目的地 | `decor` / source-only |
-| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | `.footnote-preview`<br>[static/js/footnote-preview.js:46](../../../static/js/footnote-preview.js) | 不离开阅读线查看注释 | `command` / source-only |
+| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | `.fn-popover`（非点击support）、`.post-content a.footnote-ref[href^="#"]`、`.fn-popover__more`<br>[static/js/footnote-preview.js:46](../../../static/js/footnote-preview.js) | 不离开阅读线查看注释 | `command` / source-only |
 | `A.FOOTER.NEXT` | 上一篇/下一篇/相关文章/专栏结尾 | `.paginav a, .related-posts a, .column-outro a`<br>[layouts/partials/post_nav_links.html:44](../../../layouts/partials/post_nav_links.html) | 继续下一段阅读 | `nav` / source-only |
 | `A.BODY.DISCLOSURE` | 收起长折叠内容 | `.article-disclosure__collapse`<br>[static/js/article-disclosure.js:85](../../../static/js/article-disclosure.js) | 读完折叠块后回到标题 | `command` / source-only |
 | `A.FAQ.AI.OPEN` | 继续问AI | `.article-faq__ai-toggle`<br>[static/js/article-faq.js:236](../../../static/js/article-faq.js) | 带FAQ问答上下文追问 | `toggle` / source-only |
@@ -327,7 +327,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `T.BOOK.SUGGEST` | 书籍建议/追问 | `.tw-book-ai__chip`<br>[static/js/travel-book-ai.js:173](../../../static/js/travel-book-ai.js) | 启动/延展书籍问题 | `async` / source-only |
 | `T.BOOK.INPUT` | 书籍问题 | `.tw-book-ai__input`<br>[layouts/page/travel.html:260](../../../layouts/page/travel.html) | 编写问题 | `input` / source-only |
 | `T.BOOK.SEND` | 发送书籍问题/请求中停止（同一按钮） | `.tw-book-ai__send`<br>[layouts/page/travel.html:262](../../../layouts/page/travel.html) | 请求流式解释 | `async` / source-only |
-| `T.SOCIAL.QR` | 社交二维码 / 查看ID / 关闭 | `.tw-social--qr, [data-qr-close]`<br>[layouts/page/travel.html:326](../../../layouts/page/travel.html) | 联系作者 | `command` / source-only |
+| `T.SOCIAL.QR` | 社交二维码 / 查看ID / 关闭 / 重试 | `.tw-social--qr, [data-qr-close], .tw-qr__details, .tw-qr__retry`<br>[layouts/page/travel.html:326](../../../layouts/page/travel.html) | 联系作者 | `command` / source-only |
 | `T.SOCIAL.LINK` | 社交平台链接 | `a.tw-social`<br>[layouts/page/travel.html:316](../../../layouts/page/travel.html) | 打开公开平台 | `nav` / source-only |
 | `T.BOOK.RETRY` | 重试书籍问题 | `.tw-book-ai__retry`<br>[static/js/travel-book-ai.js:175](../../../static/js/travel-book-ai.js) | 失败后重试原问题 | `async` / source-only |
 
@@ -1716,3 +1716,25 @@ E9a与a1各4源hash分别冻结。initial **0过/6失败**均为无demo时预期
 只新增 **COLOR normal/focus、contactDRAFT active、notesEDITOR active共4条**，不复制raw动作矩阵；18图/source/scope引用在JSON `e9c-wallpaper-scope-import`。本Agent查看desktop light forest scene、phone dark forest scene、phone neutral document三张。UX038旧固定底色失败/旧图保留；独立review已复核2hash+QA/3合同/18图，并以标准库PNG独立解码核对12采样点+SHA，关闭本次命名scope。normal motion、其他viewport、实体设备、contrast等继续unknown。
 
 累计 **281条状态 / 60族局部证据**，保持 **309族 / 362selectors / 57journeys / 18roadmap**。完整族认证0、完整分数null；仅改两inventory文件，未启动browser/构建/测试，现停写供checkpoint。
+
+
+## v1.18 E10/E10a局部闭环与全局四项真实失败
+
+导入 **2026-10-16T04:54:05+08:00**。只补 **14状态记录**：搜索/脚注4负基线、E10历史5、E10a局部5；原负状态不改，回执/source/图片均以共享registry引用，未复制raw动作。
+
+**selector校准/补漏：** 旧脚注`98b9b5`改真实`.fn-popover`，明确非点击/非Tab support-root，旧`.footnote-preview`仅历史alias，不继承动作。真实marker **`d3b14a`**=`.post-content a.footnote-ref[href^="#"]`、More **`70bc13`**=`.fn-popover__more`；UX042首tap只绑marker，More仍source-only未实点。QR新增 **`57404f`**=`.tw-qr__details`可Tab region、**`246c0a`**=`.tw-qr__retry`条件按钮，均归原族。当前 **366是selector entries，不能称366按钮/完整认证**。
+
+| 实证 | 精确范围与结果 | 保留边界 |
+| --- | --- | --- |
+| UX039/040/041，开放P2 | 搜索pending390zh/reduce经虚拟60s仍busy/视觉0；1440第二GET真实成功10条后旧503清空；新无匹配query在暂停150ms窗口真实Enter仍开旧Kubernetes首篇 | source与b5Git blob一致；本地传输/clock，导航abort无外网；Home/End仅观察、不判违规 |
+| UX042，开放P2 | context-engineering390zh/coarse/reduce首次真实模拟tap脚注，scrollY2813→18972/hash#fn:1，两帧/300ms均无popover | root仅支持状态观测、不获点击通过；More未点；未测article1200resize |
+| E10历史 | 9合同含English无QR1例；4中文context/8正常图、完整原poster/44close/Tab details/返回/即时重开；pending/404只有metadata和close，UX043原反馈失败保留 | E10旧3hash与E10a分开；不能把历史9+最新17说成26distinct。initial duration1e-6s在property:none时非实际动画 |
+| E10a正常 | 3hash+QA冻结，17合同16.6s、Hugo3539ms；4中文context8正常图，原海报/账号、close/details焦点循环与返回、即时重开/overflow/scroll | 390×844light/normal、568×256dark/reduce、320×740light/reduce、1440×900dark/normal；English实际4nonQR另算 |
+| E10a恢复 | 3context7图：390真实404→坐标Retry→JPEG、重复guard仅2GET、poster稳定；Retry成功转close，真实Tab至details后完成不抢；568×224dark双error/status/44Retry有界 | R2为暂停clock14999/15000精确deadline；旧node晚load/error为合成组件边界，不是实际网络等15s |
+| E10a无clock补充 | 另1scope2图：390zh/reduce真实pending/404，loading/error文字与label/ID可见，auto!important overflow原样恢复，close后实际晚成功不重开 | 暂停clock0ms图有未paint label，不因此判源码缺metadata，也不拿该图认证全可见 |
+
+**滚动限制保留：** E10a首轮严格scroll差14px及[diagnostic](evidence/batch-e10a-scroll-diagnostic.json)仍在；final严格相等以fonts/有限背景入口动画settled为前提，firstpaint/mid-reveal全局恢复继续unknown。17主图与1diagnostic分开。反馈[raw contrast](evidence/batch-e10a-feedback-contrast.json)仅4个error/timeout scope的opaque status+enabledRetry，最小 **6.371623**；不授disabled/图片/整页/抗锯齿对比认证。
+
+依据：[E10 source](evidence/batch-e10-source.json)、[E10a source](evidence/batch-e10a-source.json)、[17合同](evidence/batch-e10a-contracts.log)、[正常动作](evidence/batch-e10a-actions.json)、[恢复](evidence/batch-e10a-recovery.json)、[无clock图像状态](evidence/batch-e10a-image-state.json)；全局四负基线见JSON `global-search-footnote-baseline-import`。本Agent查看搜索pending、脚注文末、E10a无clockpending、短横屏error四张；独立review查看E10a17主图并复算四对比scope，**UX018/UX043只在命名范围闭**，无新增P0/P1。
+
+累计 **295状态 / 63族局部证据**；保持 **309族 / 366selector entries / 57journeys / 18roadmap**。分类62 partial-state+1 measured，完整族认证0、完整分数null。只写两inventory，未启动browser/构建/测试，现停止写入供checkpoint。

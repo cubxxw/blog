@@ -311,7 +311,7 @@
           {{- $label := .title | default $name }}
           {{- if .qr }}
           {{/* QR channels (WeChat / RedNote): click to reveal a QR popover */}}
-          <button type="button" class="tw-social tw-social--qr" data-qr="{{ .qr | relURL }}" data-qr-id="{{ .wechatID | default .xhsID | default "" }}" data-qr-label="{{ $label }}" aria-haspopup="dialog" aria-expanded="false">
+          <button type="button" class="tw-social tw-social--qr" data-qr="{{ .qr | relURL }}" data-qr-id="{{ .wechatID | default .xhsID | default "" }}" data-qr-label="{{ $label }}" aria-haspopup="dialog" aria-controls="tw-qr" aria-expanded="false">
             {{- partial "travel-social-icon.html" $name }}<span>{{ $label }}</span>
           </button>
           {{- else if .url }}
@@ -324,17 +324,25 @@
     </div>
 
     {{/* QR popover (single, reused by all QR channels) */}}
-    <div class="tw-qr" id="tw-qr" role="dialog" aria-modal="true" aria-label="{{ if $isZh }}扫码添加{{ else }}Scan to connect{{ end }}" hidden>
+    <dialog class="tw-qr" id="tw-qr" aria-label="{{ if $isZh }}扫码添加{{ else }}Scan to connect{{ end }}">
       <div class="tw-qr__backdrop" data-qr-close></div>
       <div class="tw-qr__card" role="document">
         <button type="button" class="tw-qr__x" data-qr-close aria-label="{{ if $isZh }}关闭{{ else }}Close{{ end }}">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
-        <img class="tw-qr__img" alt="" width="200" height="200" loading="lazy" decoding="async">
-        <p class="tw-qr__label"></p>
-        <p class="tw-qr__id"></p>
+        <div class="tw-qr__poster" aria-busy="false">
+          <img class="tw-qr__img" alt="" decoding="async" hidden>
+          <div class="tw-qr__feedback" hidden>
+            <p class="tw-qr__status" role="status" data-qr-loading="{{ if $isZh }}正在加载图片…{{ else }}Loading image…{{ end }}" data-qr-reloading="{{ if $isZh }}正在重新加载图片…{{ else }}Reloading image…{{ end }}" data-qr-error="{{ if $isZh }}图片暂时无法加载。请重试，或使用账号搜索。{{ else }}Image unavailable. Retry or search the account ID.{{ end }}" data-qr-timeout="{{ if $isZh }}图片加载超时。请重试，或使用账号搜索。{{ else }}The image timed out. Retry or search the account ID.{{ end }}"></p>
+            <button type="button" class="tw-qr__retry" hidden>{{ if $isZh }}重新加载图片{{ else }}Reload image{{ end }}</button>
+          </div>
+        </div>
+        <div class="tw-qr__details" tabindex="0" role="region" aria-label="{{ if $isZh }}账号信息{{ else }}Account details{{ end }}">
+          <p class="tw-qr__label"></p>
+          <p class="tw-qr__id"></p>
+        </div>
       </div>
-    </div>
+    </dialog>
   </section>
 
 </div>
@@ -385,35 +393,130 @@
     var img = modal.querySelector('.tw-qr__img');
     var labelEl = modal.querySelector('.tw-qr__label');
     var idEl = modal.querySelector('.tw-qr__id');
-    var lastTrigger = null;
+    var closeButton = modal.querySelector('.tw-qr__x');
+    var poster = modal.querySelector('.tw-qr__poster');
+    var feedback = modal.querySelector('.tw-qr__feedback');
+    var statusEl = modal.querySelector('.tw-qr__status');
+    var retryButton = modal.querySelector('.tw-qr__retry');
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var session = null, generation = 0, entranceFrame = 0;
+    var activeAttempt = null, imageSequence = 0;
+    function cleanupImage(attempt, clearSource) {
+      if (!attempt) return;
+      clearTimeout(attempt.timer);
+      attempt.node.removeEventListener('load', attempt.loaded);
+      attempt.node.removeEventListener('error', attempt.failed);
+      attempt.live = false;
+      if (clearSource) attempt.node.removeAttribute('src');
+    }
+    function ownsImage(attempt) {
+      return activeAttempt === attempt && attempt.live && attempt.state === 'loading' && session === attempt.owner && attempt.owner.generation === generation && modal.open;
+    }
+    function imageFailed(attempt, timeout) {
+      if (!ownsImage(attempt)) return;
+      attempt.state = 'error'; cleanupImage(attempt, timeout);
+      poster.setAttribute('aria-busy', 'false');
+      statusEl.textContent = statusEl.getAttribute(timeout ? 'data-qr-timeout' : 'data-qr-error');
+      retryButton.hidden = false; retryButton.setAttribute('aria-disabled', 'false');
+    }
+    function startImage(owner, retry) {
+      if (session !== owner || !modal.open || (activeAttempt && activeAttempt.owner === owner && activeAttempt.state === 'loading')) return;
+      cleanupImage(activeAttempt, true);
+      var node = new Image(); node.className = 'tw-qr__img'; node.alt = owner.label; node.decoding = 'async'; node.hidden = true;
+      img.replaceWith(node); img = node;
+      var attempt = {owner:owner, node:node, state:'loading', live:true, timer:0, sequence:++imageSequence};
+      activeAttempt = attempt;
+      poster.setAttribute('aria-busy', 'true'); feedback.hidden = false;
+      statusEl.textContent = statusEl.getAttribute(retry ? 'data-qr-reloading' : 'data-qr-loading');
+      retryButton.hidden = !retry; retryButton.setAttribute('aria-disabled', 'true');
+      attempt.loaded = function () {
+        if (!ownsImage(attempt)) return;
+        if (!node.naturalWidth) {imageFailed(attempt, false); return;}
+        attempt.state = 'ready'; cleanupImage(attempt, false);
+        poster.setAttribute('aria-busy', 'false');
+        if (document.activeElement === retryButton) closeButton.focus({preventScroll:true});
+        retryButton.hidden = true; feedback.hidden = true; statusEl.textContent = ''; node.hidden = false;
+      };
+      attempt.failed = function () {imageFailed(attempt, false);};
+      node.addEventListener('load', attempt.loaded); node.addEventListener('error', attempt.failed);
+      attempt.timer = setTimeout(function () {imageFailed(attempt, true);}, 15000);
+      try {
+        var address = new URL(owner.source, location.href);
+        if (address.origin !== location.origin) {imageFailed(attempt, false); return;}
+        if (retry) address.searchParams.set('qr_retry', String(attempt.sequence));
+        node.src = retry ? address.href : owner.source;
+      } catch (_) {imageFailed(attempt, false);}
+    }
+    function cancelEntrance() {
+      if (entranceFrame) cancelAnimationFrame(entranceFrame);
+      entranceFrame = 0;
+    }
+    function settleEntrance() {
+      cancelEntrance();
+      if (session && modal.open) modal.classList.add('is-open');
+    }
+    function finish(owner, restoreFocus) {
+      if (!owner || session !== owner || owner.generation !== generation) return;
+      cleanupImage(activeAttempt, true); activeAttempt = null;
+      session = null;
+      owner.trigger.setAttribute('aria-expanded', 'false');
+      if (owner.overflow) document.body.style.setProperty('overflow', owner.overflow, owner.overflowPriority);
+      else document.body.style.removeProperty('overflow');
+      if (restoreFocus && owner.trigger.isConnected) owner.trigger.focus({preventScroll:true});
+    }
+    function close(restoreFocus) {
+      var owner = session;
+      cancelEntrance();
+      modal.classList.remove('is-open');
+      if (modal.open) modal.close();
+      finish(owner, restoreFocus !== false);
+    }
     function open(btn) {
-      img.src = btn.getAttribute('data-qr');
-      img.alt = btn.getAttribute('data-qr-label') || '';
-      labelEl.textContent = btn.getAttribute('data-qr-label') || '';
+      if (session || modal.open) close(false);
+      var owner = {generation:++generation, trigger:btn, source:btn.getAttribute('data-qr'), label:btn.getAttribute('data-qr-label') || '', overflow:document.body.style.getPropertyValue('overflow'), overflowPriority:document.body.style.getPropertyPriority('overflow')};
+      session = owner;
+      labelEl.textContent = owner.label;
       var id = btn.getAttribute('data-qr-id') || '';
       idEl.textContent = id;
       idEl.hidden = !id;
-      modal.hidden = false;
-      requestAnimationFrame(function () { modal.classList.add('is-open'); });
+      document.body.style.setProperty('overflow', 'hidden');
       btn.setAttribute('aria-expanded', 'true');
-      lastTrigger = btn;
-    }
-    function close() {
-      modal.classList.remove('is-open');
-      if (lastTrigger) lastTrigger.setAttribute('aria-expanded', 'false');
-      var done = function () { modal.hidden = true; modal.removeEventListener('transitionend', done); };
-      if (reduced) done(); else modal.addEventListener('transitionend', done);
-      if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
+      modal.showModal();
+      closeButton.focus({preventScroll:true});
+      startImage(owner, false);
+      if (motion.matches) settleEntrance();
+      else entranceFrame = requestAnimationFrame(function () {
+        entranceFrame = 0;
+        if (session === owner && owner.generation === generation && modal.open) modal.classList.add('is-open');
+      });
     }
     root.querySelectorAll('.tw-social--qr').forEach(function (btn) {
       btn.addEventListener('click', function () { open(btn); });
     });
     modal.querySelectorAll('[data-qr-close]').forEach(function (el) {
-      el.addEventListener('click', close);
+      el.addEventListener('click', function () { close(true); });
     });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !modal.hidden) close();
+    retryButton.addEventListener('click', function () {if (session) startImage(session, true);});
+    modal.addEventListener('keydown', function (e) {
+      if (!modal.open) return;
+      if (e.key === 'Escape' && (e.isComposing || e.keyCode === 229)) {e.preventDefault(); return;}
+      if (e.key !== 'Tab') return;
+      var stops = Array.prototype.filter.call(modal.querySelectorAll('button, a[href], input, textarea, select, [tabindex]'), function (node) {
+        return !node.disabled && node.tabIndex >= 0 && node.getClientRects().length && window.getComputedStyle(node).visibility === 'visible';
+      });
+      if (!stops.length) {e.preventDefault(); modal.tabIndex = -1; modal.focus(); return;}
+      var first = stops[0], last = stops[stops.length - 1], active = document.activeElement;
+      if (e.shiftKey && (active === first || active === modal || active === document.body)) {e.preventDefault(); last.focus();}
+      else if (!e.shiftKey && (active === last || active === modal || active === document.body)) {e.preventDefault(); first.focus();}
     });
+    modal.addEventListener('cancel', function (e) {e.preventDefault(); close(true);});
+    modal.addEventListener('close', function () {
+      // A queued close from the previous session may arrive after a reopen.
+      if (modal.open || !session) return;
+      cancelEntrance(); modal.classList.remove('is-open'); finish(session, true);
+    });
+    motion.addEventListener('change', function () {if (motion.matches) settleEntrance();});
+    window.addEventListener('pagehide', function () {close(false);});
   })();
 
   /* ── Scroll reveal ── */

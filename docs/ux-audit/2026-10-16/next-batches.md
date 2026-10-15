@@ -48,3 +48,22 @@ UX038独立确认1440真实spatial desktop中的颜色选择无可见背景效�
 只Travel QR markup/controller、QR CSS与新定向合同。保持原渠道、label/id、两张真实竖版海报源（wechat962×1231、RedNote1279×1747）；旧200平方cover会裁海报，新版完整自然比例/contain，normal约200–220宽，短屏横向有界完整海报+真实ID，独立44Close不压图。良好标准是任务辨识、完整图、可关闭且可继续；不能用方形构图好看掩盖图像裁切，也不以显示完整推断实体扫码成功。
 
 原生dialog.showModal+背景inert，打开focus Close；显式Tab双向循环、Escape/Close/backdrop即时归还原opener与原overflow值。只保留用户动作触发开场，runtime reduce立即终态并取消RAF；close即时且幂等、pending旧close事件不teardown新session。页面hide释放自有锁。English实际渠道无QR入口，保留原Instagram/Facebook/email/GitHub；组件fixture必须独立命名，不能计为真实英文二维码旅程。
+
+
+## E11 / E12 · E10期间新增实证队列
+
+E11优先global search的当前查询意图与索引恢复：旧结果150ms内被Enter实际打开；index挂起可关闭但无有界载入状态，旧失败能盖新成功。先等待独立review命名；最小方案需input立即同步query/fullHref并失效旧results，Enter只基于当前query；索引代次/单次请求所有权、取消与timeout/retry保留query，真实pending与无结果分开。不要重写Fuse算法/检索内容、AI运输或借机装饰全站。
+
+E12阅读脚注firsttap：先解决footer通用anchor与preview首tap的所有权冲突，保证保持原阅读scroll/hash、预览存活、显式GoToNote/第二tap正常跳转与Back；JS缺失仍原生anchors。进一步tooltip交互语义/键盘发现和hover仅在具体actual/source复核后加入小批，不泛化旧TOC已测结论。Article工具1199→1200的focus/draft交接仍未实际复现，保持候选。
+
+
+### E11只读实施合同（E10a期间准备，尚未放行）
+
+仅search-palette本地index/结果闭包、必要状态/44Retry模板样式和新search-index合同。input即时clear旧options/count/active并同步fullHref；150ms仅延迟计算，timer捕获query+intent代次，普通Enter取消debounce并同步计算当前query再导航，不读取旧候选。保持IME与Fuse现keys/threshold/fallback、AItransport和全文搜索页/路由。
+
+index独立owner/AbortController/serial，单flight，15s总期限覆盖fetch与JSON，非合作abort仍由race释放UI；close/pagehide失效旧owner，成功Fuse可复用。idle/loading/debounce/trueempty/error/timeout分清，loading/error不展示虚假0结果；Retry保query/fullHref与focus，成功仅自身仍focused才返input再隐藏。测试0/149/150ms与14999/15000ms前沿、旧503/JSON覆盖、cached成功不重复GET、双语390/1440/dark与44hit。E10a checkpoint后再明确放行生产。
+
+
+### QR后续视觉细化（E11/E12真实主任务缺陷之后）
+
+独立review指出390无clock error图Retry底约455而账号标题约580，提示“使用账号搜索”和实际ID被约120px空区割开，属于可见关联成本而非AT/实体扫码unknown。后续可保持modal/poster固定高度，portrait error/retrying反馈组靠近poster底部/账号区，固定Retry底以避免错误两行→重试一行时按钮漂移；initial loading/正常海报保持。短横屏左右布局不机械下移。先以独立图测反馈→账号间距/Retry位置与焦点，再有界CSS状态实现；不为凑96新增框/功能或改原图。正常图若没有可观察type缺口，不用纯unknown扣局部视觉分；全族仍受完整矩阵unknown约束。

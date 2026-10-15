@@ -1,0 +1,18 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(runtime.transition.split(',').every(v=>parseFloat(v)===0))
+
+    at file://<SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/batch-e10-actions.browser.mjs:69:39 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

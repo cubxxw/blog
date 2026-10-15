@@ -53,4 +53,4 @@ Heartbeat ID：`12-00`，当前聊天`01a13ec1-4c36-7410-915a-d52653d3129f`。�
 
 父任务后续在`batches.md`与`state.json`记录当前批次、验证源码revision、证据路径、工作中Agent及下一个可执行目标。
 
-最新已验本地checkpoint：`39a7bd07`（E9b独立验收），前序ebc488e6/3caab4d1/aff16e05保留。1317当前E9c冻结版本：3合同+2父实际context/12次选择/18图已验，原6色真实PNG像素和中性阅读面/草稿连续性通过；独立复核结束后才能checkpoint。盘点v1.17为309族/362selectors/281状态记录/60局部族，完整认证0。UX038只命名范围关闭，其他motion/device/contrast矩阵未验证。E9b短contact D1/D4为89/90、settings90.5/90，低分不因背景修复上调。下一E10只QR focus/reopen/runtime reduce/完整竖图/44Close/短屏；不改书籍AI、原channels或QR源，英文实际无QR不冒充英文旅程。无push/部署。
+最新已验本地checkpoint暂为`b5b6fa34`（E9c），E10/E10a现已独立闭环、准备保存。1317当前E10a冻结构建，17合同/17新图独立复核，native/focus/fullposter/loading/error/15s/Retry已测范围闭，未新增P0/P1。盘点1.18：309族/366selector entries（非按钮数）/295状态/63局部族/0完整；所有完整分null。UX039–041 search与UX042脚注开放，E11只读方案已准备尚未生产放行；QR portrait错误态约120px反馈→账号距离留作后续视觉细化。滚动恢复仅已稳定fonts/有限背景过渡，mid-reveal未知保留。无push/部署，heartbeat ACTIVE至12:00。

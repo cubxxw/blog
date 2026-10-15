@@ -3,30 +3,31 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
-  "phase": "E9c-independent-accepted-checkpoint-ready",
-  "batch": "E9c",
+  "checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+  "phase": "E10a-independent-accepted-checkpoint-ready",
+  "batch": "E10a",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "E9c independently accepted; create local checkpoint, then E10 QR native modal implementation",
-    "E10 Travel UX018 QR modal focus/reopen/runtime reduce/44 target",
-    "Short contact/settings entry costs; remaining article TOC/modifier/runtime matrix"
+    "E11 confirmed global search UX039040041: stale150ms Enter, index deadline/owner/localRetry; read-only implementation plan ready",
+    "E12 footnote firsttap UX042: recorded jump2813→18972, no implementation yet",
+    "QR portrait error/retrying group-to-ID visual spacing followup after primary task defects; mid-reveal global scroll and full matrices unverified"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e9c-actions.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e10a-recovery.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T20:22:14.124658+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+  "updatedAt": "2026-10-15T21:03:11.162135+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "E9c 2 hashes+QA,3 contracts,2 actual Metal/reduce contexts/12 choices/18 PNGs independently reviewed; independent PNG decode agrees all 12 pixels+SHA. UX038 scoped closed, no newP0/P1. E9b short low scores retained. 309/362/281/60 partial, full scores null.",
-  "previewBatch": "E9c independently accepted frozen build",
+  "review": "E10a17contracts passed16.6s,4normal+3recovery+1wallimage contexts/17newPNG independently reviewed;3source+QA+3parentrunner hashes match;UX018043 named scoped closed,no newP0/P1.309/366/295/63partial,0whole/null. Normal D4static96, recovery94.5 (actual120px gap advice), D1both94.5; no scores imported as full96.",
+  "previewBatch": "E10a independently accepted frozen build;17contracts/17newPNG and named current source hashes verified",
   "executorOwnership": [
-    "assets/css/space-cafe.css spatial-screen six existing desktop palette only",
-    "tests/e2e/space-wallpaper-contracts.spec.ts"
+    "layouts/page/travel.html QR markup/controller only",
+    "assets/css/extended/zzz-travel-world.css QR styles only",
+    "tests/e2e/travel-qr-contracts.spec.ts"
   ]
 }
