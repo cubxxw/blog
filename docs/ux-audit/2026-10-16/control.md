@@ -52,3 +52,5 @@ Heartbeat ID：`12-00`，当前聊天`01a13ec1-4c36-7410-915a-d52653d3129f`。�
 2026-10-16约00:32：58 Node/npm、swap10.37GiB、可用34.40GiB；Solo Compass仍有并行任务。单浏览器串行，复用现有服务/工具；重构建前资源审计，不开iOS Simulator，不抢占/停止别人的服务。测试目录用dev-storage-guard注册；正式证据保存后精确清理，保留活动预览构建。
 
 父任务后续在`batches.md`与`state.json`记录当前批次、验证源码revision、证据路径、工作中Agent及下一个可执行目标。
+
+最新本地checkpoint：`94e644e5`（D3/D4b，经独立review和真实浏览器验收）。预览当前为E5.1冻结版本；E5纸面/主字与5条阅读合同已实测，E5.1 FAQ合同1/2通过。父实测发现568 HUD遮挡close、620地图尺寸缺口、844 coarse窗体/map仅26px以及FAQ hidden被display:grid覆盖，E5.2正在修复。首页A/B临时原型已生成，待独立相对比较。下一轮先读state与执行Agent交接，禁止构建半写入源码。源工作树分支不变。

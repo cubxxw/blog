@@ -1,0 +1,428 @@
+{
+  "kind": "Actual mouse actions and hit tests on frozen E5.2; isolated local storage and no live API",
+  "observations": [
+    {
+      "source": "batch-e52-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "coarse": false,
+      "controls": [
+        {
+          "label": "关闭窗口",
+          "width": 44.27994155883789,
+          "height": 44.27994155883789,
+          "x": 84.74024772644043,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "最小化窗口",
+          "width": 44.27995300292969,
+          "height": 44.27994155883789,
+          "x": 129.02019500732422,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "最大化或恢复窗口",
+          "width": 44.279937744140625,
+          "height": 44.27994155883789,
+          "x": 173.30014038085938,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "窗口并排",
+          "width": 44.279937744140625,
+          "height": 44.27994155883789,
+          "x": 483.25975036621094,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ],
+      "closeActualClick": "window removed; remained desktop",
+      "hud": [
+        {
+          "label": "回到咖啡馆",
+          "width": 44,
+          "height": 44,
+          "x": 26,
+          "y": 38,
+          "hit": true,
+          "top": "path"
+        },
+        {
+          "label": "换个风景",
+          "width": 44,
+          "height": 44,
+          "x": 542,
+          "y": 38,
+          "hit": true,
+          "top": "svg"
+        }
+      ],
+      "hudActualClicks": "picker open/Escape restored; café return; same editor DOM",
+      "map": [
+        {
+          "label": "放大地图",
+          "width": 44.279945373535156,
+          "height": 44.279937744140625,
+          "x": 101.96022415161133,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "缩小地图",
+          "width": 44.27995300292969,
+          "height": 44.279937744140625,
+          "x": 147.06017303466797,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "查看所有区域",
+          "width": 62.319915771484375,
+          "height": 44.279937744140625,
+          "x": 201.1800994873047,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "世界",
+          "width": 44.279937744140625,
+          "height": 44.279937744140625,
+          "x": 255.30003356933594,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ]
+    },
+    {
+      "source": "batch-e52-source.json",
+      "route": "http://127.0.0.1:1317/projects/?profile=about",
+      "locale": "en",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "coarse": false,
+      "controls": [
+        {
+          "label": "Close window",
+          "width": 44.27994155883789,
+          "height": 44.27994155883789,
+          "x": 84.74024772644043,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "Minimize window",
+          "width": 44.27995300292969,
+          "height": 44.27994155883789,
+          "x": 129.02019500732422,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "Maximize or restore window",
+          "width": 44.279937744140625,
+          "height": 44.27994155883789,
+          "x": 173.30014038085938,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "Arrange windows",
+          "width": 44.279937744140625,
+          "height": 44.27994155883789,
+          "x": 483.25975036621094,
+          "y": 59.55012321472168,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ],
+      "closeActualClick": "window removed; remained desktop",
+      "hud": [
+        {
+          "label": "Back to the café",
+          "width": 44,
+          "height": 44,
+          "x": 26,
+          "y": 38,
+          "hit": true,
+          "top": "path"
+        },
+        {
+          "label": "Change the view",
+          "width": 44,
+          "height": 44,
+          "x": 542,
+          "y": 38,
+          "hit": true,
+          "top": "svg"
+        }
+      ],
+      "hudActualClicks": "picker open/Escape restored; café return; same editor DOM",
+      "map": [
+        {
+          "label": "Zoom in",
+          "width": 44.279945373535156,
+          "height": 44.279937744140625,
+          "x": 101.96022415161133,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "Zoom out",
+          "width": 44.27995300292969,
+          "height": 44.279937744140625,
+          "x": 147.06017303466797,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "Fit places",
+          "width": 49.62275695800781,
+          "height": 44.279937744140625,
+          "x": 194.8315200805664,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "World",
+          "width": 44.279937744140625,
+          "height": 44.279937744140625,
+          "x": 242.6028594970703,
+          "y": 187.05996704101562,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ]
+    },
+    {
+      "source": "batch-e52-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "viewport": {
+        "width": 620,
+        "height": 844
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "coarse": false,
+      "controls": [
+        {
+          "label": "关闭窗口",
+          "width": 44.28050231933594,
+          "height": 44.28050231933594,
+          "x": 89.41751098632812,
+          "y": 106.7064437866211,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "最小化窗口",
+          "width": 44.280494689941406,
+          "height": 44.28050231933594,
+          "x": 133.6980094909668,
+          "y": 106.7064437866211,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "最大化或恢复窗口",
+          "width": 44.28050231933594,
+          "height": 44.28050231933594,
+          "x": 177.97850799560547,
+          "y": 106.7064437866211,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "窗口并排",
+          "width": 44.280487060546875,
+          "height": 44.28050231933594,
+          "x": 530.5824737548828,
+          "y": 106.7064437866211,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ],
+      "closeActualClick": "window removed; remained desktop",
+      "map": [
+        {
+          "label": "放大地图",
+          "width": 44.28050231933594,
+          "height": 44.28050231933594,
+          "x": 117.2978286743164,
+          "y": 267.0182571411133,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "缩小地图",
+          "width": 44.28050231933594,
+          "height": 44.28050231933594,
+          "x": 164.85836029052734,
+          "y": 267.0182571411133,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "查看所有区域",
+          "width": 63.960723876953125,
+          "height": 44.28050231933594,
+          "x": 222.25900268554688,
+          "y": 267.0182571411133,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "世界",
+          "width": 44.280487060546875,
+          "height": 44.28050231933594,
+          "x": 279.65965270996094,
+          "y": 267.0182571411133,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ]
+    },
+    {
+      "source": "batch-e52-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "coarse": true,
+      "controls": [
+        {
+          "label": "关闭窗口",
+          "width": 44.27973937988281,
+          "height": 44.27973556518555,
+          "x": 248.98104095458984,
+          "y": 59.29081153869629,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "最小化窗口",
+          "width": 44.27972412109375,
+          "height": 44.27973556518555,
+          "x": 293.2607727050781,
+          "y": 59.29081153869629,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "最大化或恢复窗口",
+          "width": 44.27972412109375,
+          "height": 44.27973556518555,
+          "x": 337.5404968261719,
+          "y": 59.29081153869629,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "窗口并排",
+          "width": 44.27972412109375,
+          "height": 44.27973556518555,
+          "x": 714.7382507324219,
+          "y": 59.29081153869629,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ],
+      "closeActualClick": "window removed; remained desktop",
+      "hud": [
+        {
+          "label": "回到咖啡馆",
+          "width": 44,
+          "height": 44,
+          "x": 26,
+          "y": 42,
+          "hit": true,
+          "top": "path"
+        },
+        {
+          "label": "换个风景",
+          "width": 44,
+          "height": 44,
+          "x": 818,
+          "y": 42,
+          "hit": true,
+          "top": "svg"
+        }
+      ],
+      "hudActualClicks": "picker open/Escape restored; café return; same editor DOM",
+      "map": [
+        {
+          "label": "放大地图",
+          "width": 44.279754638671875,
+          "height": 44.27973937988281,
+          "x": 298.1807403564453,
+          "y": 220.00984954833984,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "缩小地图",
+          "width": 44.27972412109375,
+          "height": 44.27973937988281,
+          "x": 345.7404479980469,
+          "y": 220.00984954833984,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "查看所有区域",
+          "width": 63.959625244140625,
+          "height": 44.27973937988281,
+          "x": 403.14012145996094,
+          "y": 220.00984954833984,
+          "hit": true,
+          "top": "BUTTON"
+        },
+        {
+          "label": "世界",
+          "width": 44.27972412109375,
+          "height": 44.27973937988281,
+          "x": 460.5397644042969,
+          "y": 220.00984954833984,
+          "hit": true,
+          "top": "BUTTON"
+        }
+      ]
+    }
+  ]
+}

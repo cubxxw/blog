@@ -59,7 +59,16 @@
     return (STR[language] && STR[language][key]) || STR.en[key] || key;
   }
 
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionPreference = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  var motionListeners = [];
+  function prefersReducedMotion() { return Boolean(motionPreference && motionPreference.matches); }
+  function onMotionPreferenceChange() {
+    if (prefersReducedMotion()) motionListeners.forEach(function (settle) { settle(); });
+  }
+  if (motionPreference) {
+    if (motionPreference.addEventListener) motionPreference.addEventListener('change', onMotionPreferenceChange);
+    else if (motionPreference.addListener) motionPreference.addListener(onMotionPreferenceChange);
+  }
   var ENDPOINT = '/.netlify/functions/article-ai';
   var MAX_INPUT = 400;
   var ARTICLE_MAX = 5500;
@@ -152,20 +161,34 @@
     this.summary = details.querySelector('summary');
     this.body = details.querySelector('.article-faq__body');
     this.animation = null;
+    this.frame = 0;
+    this.targetOpen = details.open;
     this.isClosing = false;
     this.isExpanding = false;
     var self = this;
     this.summary.addEventListener('click', function (e) { self.onClick(e); });
+    motionListeners.push(function () {
+      if (self.animation || self.frame) self.onAnimationFinish(self.targetOpen);
+    });
   }
+
+  Accordion.prototype.cancelAnimation = function () {
+    if (this.frame) { window.cancelAnimationFrame(this.frame); this.frame = 0; }
+    if (!this.animation) return;
+    var animation = this.animation;
+    this.animation = null;
+    animation.onfinish = null;
+    animation.oncancel = null;
+    animation.cancel();
+  };
 
   Accordion.prototype.onClick = function (e) {
     if (e.target.closest('a')) return;
     e.preventDefault();
-    if (reduceMotion || !this.details.animate) {
+    if (prefersReducedMotion() || !this.details.animate) {
       // Instant toggle keeps semantics without motion.
       var willOpen = !(this.details.open && !this.isClosing);
-      this.details.open = willOpen;
-      this.details.classList.toggle('article-faq__item--open', willOpen);
+      this.onAnimationFinish(willOpen);
       return;
     }
     this.details.style.overflow = 'hidden';
@@ -177,32 +200,42 @@
   };
 
   Accordion.prototype.shrink = function () {
-    this.isClosing = true;
-    this.details.classList.remove('article-faq__item--open');
     var startHeight = this.details.offsetHeight;
+    this.cancelAnimation();
+    this.targetOpen = false;
+    this.isClosing = true;
+    this.isExpanding = false;
+    this.details.classList.remove('article-faq__item--open');
     var endHeight = this.summary.offsetHeight;
-    if (this.animation) this.animation.cancel();
     this.animation = this.details.animate(
       { height: [startHeight + 'px', endHeight + 'px'] },
       { duration: 260, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }
     );
     var self = this;
     this.animation.onfinish = function () { self.onAnimationFinish(false); };
-    this.animation.oncancel = function () { self.isClosing = false; };
   };
 
   Accordion.prototype.open = function () {
     var self = this;
-    this.details.style.height = this.details.offsetHeight + 'px';
+    var startHeight = this.details.offsetHeight;
+    this.cancelAnimation();
+    this.targetOpen = true;
+    this.isClosing = false;
+    this.isExpanding = true;
+    this.details.style.height = startHeight + 'px';
     this.details.open = true;
-    window.requestAnimationFrame(function () { self.expand(); });
+    this.frame = window.requestAnimationFrame(function () {
+      self.frame = 0;
+      if (prefersReducedMotion()) self.onAnimationFinish(true);
+      else self.expand();
+    });
   };
 
   Accordion.prototype.expand = function () {
     this.isExpanding = true;
     var startHeight = this.details.offsetHeight;
     var endHeight = this.summary.offsetHeight + this.body.offsetHeight;
-    if (this.animation) this.animation.cancel();
+    this.cancelAnimation();
     this.details.classList.add('article-faq__item--open');
     this.animation = this.details.animate(
       { height: [startHeight + 'px', endHeight + 'px'] },
@@ -210,17 +243,17 @@
     );
     var self = this;
     this.animation.onfinish = function () { self.onAnimationFinish(true); };
-    this.animation.oncancel = function () { self.isExpanding = false; };
   };
 
   Accordion.prototype.onAnimationFinish = function (open) {
+    this.cancelAnimation();
+    this.targetOpen = open;
     this.details.open = open;
-    this.animation = null;
     this.isClosing = false;
     this.isExpanding = false;
     this.details.style.height = '';
     this.details.style.overflow = '';
-    if (!open) this.details.classList.remove('article-faq__item--open');
+    this.details.classList.toggle('article-faq__item--open', open);
   };
 
   /* ── 2. Inline AI follow-up thread ────────────────────────────────────── */
@@ -264,7 +297,7 @@
     var opened = false;
     var busy = false;
     var lastQuestion = '';
-    var requestSerial = 0, activeRequest = null, panelSerial = 0, hideTimer = 0;
+    var requestSerial = 0, activeRequest = null, panelSerial = 0, hideTimer = 0, focusTimer = 0;
     // Seed the conversation with this FAQ's Q&A so follow-ups land in context.
     var history = [
       { role: 'user', content: qText },
@@ -313,10 +346,24 @@
     wrap.appendChild(panel);
     body.appendChild(wrap);
 
+    function focusInput(view) {
+      if (opened && item.open && view === panelSerial && !document.hidden && document.activeElement === toggle && !input.disabled) input.focus({preventScroll: true});
+    }
+    motionListeners.push(function () {
+      window.clearTimeout(hideTimer);
+      if (!opened) panel.setAttribute('hidden', '');
+      else panel.classList.add('article-faq__ai-panel--open');
+      if (focusTimer) {
+        window.clearTimeout(focusTimer); focusTimer = 0;
+        focusInput(panelSerial);
+      }
+    });
+
     toggle.addEventListener('click', function () {
       opened = !opened;
       var view = ++panelSerial;
       window.clearTimeout(hideTimer);
+      window.clearTimeout(focusTimer); focusTimer = 0;
       toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
       wrap.classList.toggle('article-faq__ai--open', opened);
       if (opened) {
@@ -324,14 +371,14 @@
         window.requestAnimationFrame(function () {
           if (opened && view === panelSerial) panel.classList.add('article-faq__ai-panel--open');
         });
-        window.setTimeout(function () {
-          if (opened && view === panelSerial && document.activeElement === toggle) input.focus({preventScroll: true});
-        }, reduceMotion ? 0 : 320);
+        focusTimer = window.setTimeout(function () {
+          focusTimer = 0; focusInput(view);
+        }, prefersReducedMotion() ? 0 : 320);
       } else {
         cancelRequest(true);
         panel.classList.remove('article-faq__ai-panel--open');
         var hide = function () {if (!opened && view === panelSerial) panel.setAttribute('hidden', '');};
-        if (reduceMotion) hide(); else hideTimer = window.setTimeout(hide, 250);
+        if (prefersReducedMotion()) hide(); else hideTimer = window.setTimeout(hide, 250);
       }
     });
 
@@ -434,7 +481,7 @@
         if (serial === requestSerial) {activeRequest = null; setBusy(false);}
       }
     }
-    window.addEventListener('pagehide', function () {cancelRequest(false);});
+    window.addEventListener('pagehide', function () {window.clearTimeout(focusTimer); focusTimer = 0; cancelRequest(false);});
     item.addEventListener('toggle', function () {if (!item.open) cancelRequest(true);});
 
   }

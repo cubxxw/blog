@@ -1,0 +1,22 @@
+
+Running 11 tests using 1 worker
+
+(node:36955) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/faq-motion-contracts.spec.ts:5:5 › FAQ reads runtime motion preferences and settles interrupted opening and closing (1.4s)
+  ✓   2 tests/e2e/faq-motion-contracts.spec.ts:23:5 › runtime reduced motion keeps FAQ focus intent, draft recovery and request cancellation (1.3s)
+(node:36985) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 tests/e2e/space-boundary-contracts.spec.ts:19:37 › short-screen window close and compact café navigation have separate real hit targets in zh (1.4s)
+  ✓   4 tests/e2e/space-boundary-contracts.spec.ts:19:37 › short-screen window close and compact café navigation have separate real hit targets in en (998ms)
+  ✓   5 tests/e2e/space-boundary-contracts.spec.ts:36:5 › all map controls remain 44px and clickable in the 600–640px boundary (885ms)
+  ✓   6 tests/e2e/space-boundary-contracts.spec.ts:48:7 › coarse landscape pointer › window chrome and every map control provide an actual 44px touch target (985ms)
+(node:37022) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 tests/e2e/space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 320×844 (2.3s)
+  ✓   8 tests/e2e/space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 390×844 (2.8s)
+  ✓   9 tests/e2e/space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 568×320 (2.9s)
+  ✓  10 tests/e2e/space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 1440×900 (2.4s)
+  ✓  11 tests/e2e/space-reading-contracts.spec.ts:72:5 › the unscaled graphics fallback retains its reading type sizes (689ms)
+
+  11 passed (21.4s)

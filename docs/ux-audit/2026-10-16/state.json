@@ -3,26 +3,36 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "a8e4120b",
-  "phase": "D4b-reviewed-and-accepted-E5-next",
-  "batch": "D4b",
+  "checkpoint": "94e644e5",
+  "phase": "E5.2-parent-accepted-awaiting-independent-review",
+  "batch": "E5.2",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "local checkpoint then executor E5 Space stylesheet batch",
-    "parent freeze/build E5 only after worker complete",
-    "runtime FAQ reduced-motion change",
-    "homepage attention and remaining inventory journeys"
+    "independent E5.2 hash/source/8screens/action review; close only evidenced defects",
+    "checkpoint E5–E5.2 after review",
+    "homepage A chosen narrowly over B; prepare bounded E6 faithful implementation",
+    "retain B challenger; verify actual chat open/return in new placement; no live model"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-d4b-request-checks.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e52-boundaries.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T17:33:11.940641+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-d4b-source.json",
+  "updatedAt": "2026-10-15T17:57:48.075531+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e52-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "D4b independent review: no new P0/P1; 19-file manifest matches"
+  "review": "D4b independent review: no new P0/P1; 19-file manifest matches",
+  "previewBatch": "E5.2 frozen; 11 contracts and 4 actual mouse journeys passed",
+  "executorOwnership": [
+    "assets/css/space-cafe.css",
+    "assets/css/space-media.css",
+    "assets/css/space-classic.css",
+    "layouts/partials/space/cafe.html",
+    "assets/css/extended/article-faq.css",
+    "static/js/article-faq.js",
+    "targeted Space/FAQ E2E"
+  ]
 }

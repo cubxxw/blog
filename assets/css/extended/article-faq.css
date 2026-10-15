@@ -167,6 +167,7 @@
   transition: grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
   opacity: 0;
 }
+.article-faq__ai-panel[hidden] { display: none; }
 .article-faq__ai-panel--open {
   grid-template-rows: 1fr;
   opacity: 1;

@@ -1,0 +1,39 @@
+
+Running 2 tests using 1 worker
+
+(node:35376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/faq-motion-contracts.spec.ts:5:5 › FAQ reads runtime motion preferences and settles interrupted opening and closing (2.8s)
+  ✘  2 tests/e2e/faq-motion-contracts.spec.ts:23:5 › runtime reduced motion keeps FAQ focus intent, draft recovery and request cancellation (6.2s)
+
+
+  1) tests/e2e/faq-motion-contracts.spec.ts:23:5 › runtime reduced motion keeps FAQ focus intent, draft recovery and request cancellation
+
+    Error: expect(locator).toBeHidden() failed
+
+    Locator:  locator('.article-faq__item').first().locator('.article-faq__ai-panel')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeHidden" locator('.article-faq__item').first().locator('.article-faq__ai-panel') with timeout 5000ms
+      - waiting for locator('.article-faq__item').first().locator('.article-faq__ai-panel')
+        14 × locator resolved to <div hidden="" class="article-faq__ai-panel">…</div>
+           - unexpected value "visible"
+
+
+      36 |   await toggle.click();const theme=page.locator('#theme-toggle');await theme.focus();
+      37 |   await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(400);await expect(theme).toBeFocused();
+    > 38 |   await toggle.click();await expect(panel).toBeHidden();await toggle.click();await expect(input).toBeFocused();
+         |                                            ^
+      39 |   await input.fill('切换偏好后保留这个问题');await item.getByRole('button',{name:'发送',exact:true}).click();
+      40 |   await expect(page.locator('html')).toHaveAttribute('data-faq-request','started');
+      41 |   await item.locator('summary').click();await expect(page.locator('html')).toHaveAttribute('data-faq-request','cancelled');
+        at <SOURCE_WORKTREE>/tests/e2e/faq-motion-contracts.spec.ts:38:44
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/faq-motion-contracts-runti-e4d3d-ry-and-request-cancellation/error-context.md
+
+  1 failed
+    tests/e2e/faq-motion-contracts.spec.ts:23:5 › runtime reduced motion keeps FAQ focus intent, draft recovery and request cancellation
+  1 passed (12.0s)

@@ -1,0 +1,49 @@
+{
+  "evidence": [
+    {
+      "id": "baseline-home-channel",
+      "active": "ai-agent",
+      "source": "94e644e5/D4b homepage"
+    },
+    {
+      "direction": "before",
+      "kind": "actual frozen homepage",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "source": "94e644e5 (home unchanged by Space E5)"
+    },
+    {
+      "direction": "a",
+      "kind": "temporary DOM/CSS concept; not implemented or functionally certified",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "source": "94e644e5 (home unchanged by Space E5)"
+    },
+    {
+      "direction": "b",
+      "kind": "temporary DOM/CSS concept; not implemented or functionally certified",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "source": "94e644e5 (home unchanged by Space E5)"
+    }
+  ],
+  "limits": "Only temporary comparison; deterministic prompt seed and cleared synthetic storage align content, all real articles/photos/links retained; no real AI call. Direction selection is relative judgment, not an absolute96 certification."
+}

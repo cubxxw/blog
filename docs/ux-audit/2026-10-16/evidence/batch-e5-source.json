@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-15T17:38:10.850283+00:00",
+  "base": "94e644e50bc4ee1731d3250f2746db68653cd182",
+  "files": {
+    "assets/css/space-cafe.css": "2bd2cedeb370144ab6341677a0bed351100c8ccbba2012d078bbc675013a5684",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+    "assets/css/space-media.css": "15285d855b350c30193d5400738f75db0b7d9134f7b8331507ab253d1ca1778d",
+    "tests/e2e/space-reading-contracts.spec.ts": "27685f0ce7cf58f32773e731579e2edbe7da7407bda469a3e496a765214e5268"
+  }
+}
