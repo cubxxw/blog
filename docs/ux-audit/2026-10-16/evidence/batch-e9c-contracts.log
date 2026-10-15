@@ -1,0 +1,10 @@
+
+Running 3 tests using 1 worker
+
+(node:63712) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/space-wallpaper-contracts.spec.ts:41:7 › 1440×900 zh live monitor wallpaper › all six existing colors reach the monitor without recoloring documents or replacing editors (2.4s)
+  ✓  2 tests/e2e/space-wallpaper-contracts.spec.ts:41:7 › 390×844 en live monitor wallpaper › all six existing colors reach the monitor without recoloring documents or replacing editors (1.8s)
+  ✓  3 tests/e2e/space-wallpaper-contracts.spec.ts:82:7 › graphics recovery desktop › forced WebGL failure keeps the original visible six-color landscape palette (1.4s)
+
+  3 passed (6.9s)

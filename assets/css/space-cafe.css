@@ -87,7 +87,12 @@
    scroll when the browser focuses a transformed app control. */
 .space-world__css { position:absolute; inset:0; pointer-events:none; overflow:clip!important; }
 .space-world__css>div { pointer-events:none; }
-.space-spatial-screen { position:relative; pointer-events:auto; box-sizing:border-box; border:1px solid var(--sp-line); border-radius:14px; background:var(--sp-surface); box-shadow:0 18px 50px #132f2826; overflow:clip; }
+.space-spatial-screen { position:relative; pointer-events:auto; box-sizing:border-box; border:1px solid var(--sp-line); border-radius:14px; background:#6fa69d; box-shadow:0 18px 50px #132f2826; overflow:clip; }
+.space[data-wallpaper="dusk"] .space-spatial-screen { background:#718c9b; }
+.space[data-wallpaper="forest"] .space-spatial-screen { background:#97aa8f; }
+.space[data-theme="dark"] .space-spatial-screen { background:#294c47; }
+.space[data-theme="dark"][data-wallpaper="dusk"] .space-spatial-screen { background:#30434f; }
+.space[data-theme="dark"][data-wallpaper="forest"] .space-spatial-screen { background:#3c4c39; }
 .space[data-theme="dark"] .space-spatial-screen { box-shadow:0 18px 50px #08181866; }
 /* Only the live DOM plane is scaled by the camera. Keep its reading type
    comfortable without enlarging chrome or the unscaled recovery desktop. */

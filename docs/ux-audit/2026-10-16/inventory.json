@@ -5,7 +5,7 @@
     "timezone": "Asia/Shanghai",
     "workspace": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
     "base_commit": "6d7b9fe92a746a83e635282c9b78966920336a69",
-    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched; v1.16 imported E9b7contracts/4actual20PNG with shared refs, WhatsApp omission and spatial visual baseline; inspected3existingE9bPNG; no browser/build/test launched",
+    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched; v1.16 imported E9b7contracts/4actual20PNG with shared refs, WhatsApp omission and spatial visual baseline; inspected3existingE9bPNG; no browser/build/test launched; v1.17 appended4E9c bounded records,3contracts/2actual12choices18PNG; inspected3existingPNG, no browser/build/test launched",
     "scope": "按共享模板和交互变体归类，不按每篇文章/每个数据行重复膨胀计数",
     "limitations": [
       "source candidates不是运行时DOM计数",
@@ -16,8 +16,8 @@
       "About Quest已在中英content frontmatter确认路由，但本Agent未访问运行时页面。",
       "第三方评论与Calendly/BMC/Polarsteps内控件无法仅从本仓源码穷尽；登记宿主功能族，实例数/浏览器能力需实际渲染补全。"
     ],
-    "inventory_version": "1.16",
-    "updated_at_shanghai": "2026-10-16T04:03:11+08:00",
+    "inventory_version": "1.17",
+    "updated_at_shanghai": "2026-10-16T04:19:25+08:00",
     "corrections": [
       "v1.4 corrected unsupported ?app= routes in candidate journey queues; actual app selection uses supported profile/hash plus visible launchpad. Existing inventory IDs/count remain unchanged.",
       "v1.7 G.SEARCH.AI is an async askAI action with conditional Stop, not a toggle; D2b completion-focus evidence no longer lists Stop as tested.",
@@ -30,7 +30,7 @@
     "roadmap_count": 18,
     "roadmap_subject_count": 12,
     "roadmap_source_note": "Roadmap source refs traced at 2026-10-16 01:05-01:13 Asia/Shanghai while other bounded implementation batches may run; no new browser acceptance.",
-    "current_checkout_revision_at_import": "ebc488e69640d561e96203b93fb4a0eb7676ccab",
+    "current_checkout_revision_at_import": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
     "next_probe_source_read_at_shanghai": "2026-10-16T02:43:06+08:00"
   },
   "counts": {
@@ -57,7 +57,7 @@
     },
     "families_with_state_evidence": 60,
     "accepted_whole_families": 0,
-    "state_evidence_records": 277
+    "state_evidence_records": 281
   },
   "state_profiles": {
     "nav": {
@@ -604,8 +604,11 @@
       "source": "evidence/spatial-wallpaper-baseline.json",
       "evidence": "actual3choices1440zh/light/reduce; source5hash; reviewer confirmed P2",
       "criterion": "已命名的桌面颜色应在用户实际看见的桌面中反馈，设置选中与视觉结果分别验收。",
-      "status": "open_confirmed_only_spatial_monitor_scope",
-      "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action."
+      "status": "closed_only_E9c_named_scope_independently_reviewed",
+      "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action.",
+      "scoped_followup_registry_ref": "e9c-wallpaper-scope-import",
+      "remaining_scope": "Normal motion/other viewports/device paths remain unverified; no whole-family approval.",
+      "closure_registry_ref": "e9c-wallpaper-scope-import"
     }
   ],
   "items": [
@@ -51483,7 +51486,7 @@
         "normal": "scoped evidence: 无spatial plane的fallback notes物理字号恰为16px。",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "scoped E9b: 四actual原editor DOM/合成draft保留；六合同返回继续输入，不认证全部App/持久化。",
+        "active": "scoped E9c: 两actual原editor DOM/值跨六色保持；C0/C1另返回notes继续输入。不是全App或所有持久化认证。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -55804,6 +55807,29 @@
           "observation": "四actual原editor DOM/合成draft保留；六合同返回继续输入，不认证全部App/持久化。",
           "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9C.document-continuity.S.APP.notes.EDITOR.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9c six-color spatial/fallback evidence",
+          "receipt": "evidence/batch-e9c-actions.json",
+          "receipt_sha256": "e238a48a53b3c48c666bec5292b7939bb850940a02de4593f72f0623ce6ad365",
+          "evidence_registry_ref": "e9c-wallpaper-scope-import",
+          "source_context_ref": "batch-e9c-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "C0",
+            "C1"
+          ],
+          "control_ids": [
+            "S.APP.notes.EDITOR.control.5ead41"
+          ],
+          "control_resolution": "Existing selectors, exact named screen/settings/editor instances only; no new control or whole-family inheritance",
+          "observation": "两actual原editor DOM/值跨六色保持；C0/C1另返回notes继续输入。不是全App或所有持久化认证。",
+          "limits": "Two actual Chromium Metal contexts, reduced animation, simulated phone. Each selected palette is sampled at one unobstructed background pixel in the lossless screenshot decoded through Canvas2D; this is not whole-page contrast, display calibration, physical-device, FPS, Safari, or all-state certification. No paid AI/contact/backend calls. Normal motion, all other viewports, themes beyond these6, complete keyboard/real backend remain unverified.",
+          "verified_score": null
         }
       ],
       "acceptance_status": "unverified",
@@ -55972,7 +55998,7 @@
         "normal": "scoped E9b: 四actual草稿computed20px、投影约16.4viewport CSSpx，无横溢；六合同另检intro≥16/hint≥13。",
         "hover": "unverified",
         "focus": "scoped E9b: 原textarea focus时programmatic publictool改外观，原DOM/value/focus不变，settingsARIA同步、runtimeLabel同一且GET不重复。",
-        "active": "scoped E9b: 原textarea DOM/值在切App、改外观、最小化重开后保持并继续输入；合同另读localStorage.draft。",
+        "active": "scoped E9c: 两actual跨6色后原textarea DOM/值保留并继续输入；两主合同同样继续写。同theme切wallpaper不染草稿/中性paper，未测刷新/所有偏好路径。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -56540,6 +56566,29 @@
           "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
           "observation": "原textarea DOM/值在切App、改外观、最小化重开后保持并继续输入；合同另读localStorage.draft。",
           "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9C.document-continuity.S.APP.contact.DRAFT.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9c six-color spatial/fallback evidence",
+          "receipt": "evidence/batch-e9c-actions.json",
+          "receipt_sha256": "e238a48a53b3c48c666bec5292b7939bb850940a02de4593f72f0623ce6ad365",
+          "evidence_registry_ref": "e9c-wallpaper-scope-import",
+          "source_context_ref": "batch-e9c-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "C0",
+            "C1"
+          ],
+          "control_ids": [
+            "S.APP.contact.DRAFT.control.604358"
+          ],
+          "control_resolution": "Existing selectors, exact named screen/settings/editor instances only; no new control or whole-family inheritance",
+          "observation": "两actual跨6色后原textarea DOM/值保留并继续输入；两主合同同样继续写。同theme切wallpaper不染草稿/中性paper，未测刷新/所有偏好路径。",
+          "limits": "Two actual Chromium Metal contexts, reduced animation, simulated phone. Each selected palette is sampled at one unobstructed background pixel in the lossless screenshot decoded through Canvas2D; this is not whole-page contrast, display calibration, physical-device, FPS, Safari, or all-state certification. No paid AI/contact/backend calls. Normal motion, all other viewports, themes beyond these6, complete keyboard/real backend remain unverified.",
           "verified_score": null
         }
       ],
@@ -60589,9 +60638,9 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "E9b target/type measured; separate UX038 P2 spatial monitor visual response failure, selected UI/storage correct.",
+        "normal": "scoped E9c: A0/A1每context六色、12次原wallpaper选择后最小化：无遮挡monitor PNG单像素逐一精确等classic RGB，computed/noimage/opacity1一致；paper/draft/window/chrome在同theme三色间不变。C2另证1440强制WebGL失败可见landscape六色computed正确，不称其有PNG像素验收。",
         "hover": "unverified",
-        "focus": "scoped E9b: actual坐标选中后2帧原button focus；合同theme显式focus+Space、color坐标后下一帧focus。完整Tab/所有输入方式未验。",
+        "focus": "scoped E9c: A0/A1十二次真实坐标wallpaper选择后2帧原button仍focus，pressed/state/storage正确，同dawn按钮DOM持续；C0/C1合同下一帧同控件focus。只这些输入与视口。",
         "active": "scoped E9b: actual forest/dusk; contract forest/dusk/dawn；同button/root/status、pressed/state正确；合同storage与仅1pressed正确。publictool同步ARIA不抢contact草稿focus。",
         "disabled": "unverified",
         "loading": "unverified",
@@ -61361,6 +61410,61 @@
             "UX-038"
           ],
           "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action. Independent P2 scope only; E9c not implemented. Selected-state passes never certify visual color change.",
+          "verified_score": null,
+          "scoped_followup": {
+            "registry_ref": "e9c-wallpaper-scope-import",
+            "binding_id": "EIMPORT.E9C.visible-palette.S.APP.settings.COLOR.normal",
+            "note": "Old failure kept. E9c independent final closes only2actual Metal/reduce contexts and1440 forced-fallback contract; no whole-family acceptance."
+          }
+        },
+        {
+          "binding_id": "EIMPORT.E9C.visible-palette.S.APP.settings.COLOR.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9c six-color spatial/fallback evidence",
+          "receipt": "evidence/batch-e9c-actions.json",
+          "receipt_sha256": "e238a48a53b3c48c666bec5292b7939bb850940a02de4593f72f0623ce6ad365",
+          "evidence_registry_ref": "e9c-wallpaper-scope-import",
+          "source_context_ref": "batch-e9c-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "C0",
+            "C1",
+            "C2"
+          ],
+          "control_ids": [
+            "S.APP.settings.COLOR.control.3feb46"
+          ],
+          "control_resolution": "Existing selectors, exact named screen/settings/editor instances only; no new control or whole-family inheritance",
+          "observation": "A0/A1每context六色、12次原wallpaper选择后最小化：无遮挡monitor PNG单像素逐一精确等classic RGB，computed/noimage/opacity1一致；paper/draft/window/chrome在同theme三色间不变。C2另证1440强制WebGL失败可见landscape六色computed正确，不称其有PNG像素验收。",
+          "limits": "Two actual Chromium Metal contexts, reduced animation, simulated phone. Each selected palette is sampled at one unobstructed background pixel in the lossless screenshot decoded through Canvas2D; this is not whole-page contrast, display calibration, physical-device, FPS, Safari, or all-state certification. No paid AI/contact/backend calls. Normal motion, all other viewports, themes beyond these6, complete keyboard/real backend remain unverified.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-038"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9C.choice-focus.S.APP.settings.COLOR.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9c six-color spatial/fallback evidence",
+          "receipt": "evidence/batch-e9c-actions.json",
+          "receipt_sha256": "e238a48a53b3c48c666bec5292b7939bb850940a02de4593f72f0623ce6ad365",
+          "evidence_registry_ref": "e9c-wallpaper-scope-import",
+          "source_context_ref": "batch-e9c-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "C0",
+            "C1"
+          ],
+          "control_ids": [
+            "S.APP.settings.COLOR.control.3feb46"
+          ],
+          "control_resolution": "Existing selectors, exact named screen/settings/editor instances only; no new control or whole-family inheritance",
+          "observation": "A0/A1十二次真实坐标wallpaper选择后2帧原button仍focus，pressed/state/storage正确，同dawn按钮DOM持续；C0/C1合同下一帧同控件focus。只这些输入与视口。",
+          "limits": "Two actual Chromium Metal contexts, reduced animation, simulated phone. Each selected palette is sampled at one unobstructed background pixel in the lossless screenshot decoded through Canvas2D; this is not whole-page contrast, display calibration, physical-device, FPS, Safari, or all-state certification. No paid AI/contact/backend calls. Normal motion, all other viewports, themes beyond these6, complete keyboard/real backend remain unverified.",
           "verified_score": null
         }
       ],
@@ -81285,6 +81389,379 @@
       "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action.",
       "whole_family_accepted": false,
       "verified_score": null
+    },
+    "batch-e9c-source.json": {
+      "manifest": "evidence/batch-e9c-source.json",
+      "manifest_sha256": "3f6ab7a40fcfab11458584facc5cde968b425b20afb75eaade4e76dfa490e74b",
+      "frozen_at_utc": "2026-10-15T20:09:37.409195+00:00",
+      "base_revision": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
+      "current_checkout_revision_at_import": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
+      "imported_at_shanghai": "2026-10-16T04:18:59+08:00",
+      "dependencies": [
+        {
+          "file": "assets/css/space-cafe.css",
+          "frozen_sha256": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+          "current_worktree_sha256": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+          "same_current": true
+        },
+        {
+          "file": "tests/e2e/space-wallpaper-contracts.spec.ts",
+          "frozen_sha256": "92ae6907bf9c5375cf0445f66f418ab579d205ebc236bcda498f180c2f4372a8",
+          "current_worktree_sha256": "92ae6907bf9c5375cf0445f66f418ab579d205ebc236bcda498f180c2f4372a8",
+          "same_current": true
+        }
+      ],
+      "qa_config": {
+        "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+        "sha256": "a6b4673639ad7591dcdc7f16daaf432009dfc117eec2f3779283f5cd8f832822",
+        "workers": 1,
+        "browser": "Chromium Metal"
+      },
+      "qa_config_current_match": true,
+      "preserved": "Only spatial-screen background: existing six classic colors; no window paper/chrome/world/model/JS delta",
+      "limits": "2-file frozen changed source + QA, not complete build closure; older failures/screenshots retain their own source identity."
+    },
+    "e9c-wallpaper-scope-import": {
+      "imported_at_shanghai": "2026-10-16T04:18:59+08:00",
+      "source_context_ref": "batch-e9c-source.json",
+      "receipts": [
+        {
+          "path": "evidence/batch-e9c-contracts.log",
+          "sha256": "264c615d481534a14bde088ab36c2b31a9f749979e151d7708203966e331bf46"
+        },
+        {
+          "path": "evidence/batch-e9c-actions.json",
+          "sha256": "e238a48a53b3c48c666bec5292b7939bb850940a02de4593f72f0623ce6ad365"
+        },
+        {
+          "path": "evidence/batch-e9c-actions.log",
+          "sha256": "700d8d4a0b8aafcc31f5603911ec5f42ee70247bfaadf80d5ed0b54c43ad0c07"
+        },
+        {
+          "path": "batch-e9c-actions.browser.mjs",
+          "sha256": "b258b3d5e77f3daeab35f647ee5f80e4d4f768dd79edbcc4d169748d3838aa7e"
+        },
+        {
+          "path": "evidence/batch-e9c-build.log",
+          "sha256": "1329078a5429df9bc1d8f16c66c385b2ffd05c9823ed496b5247a6e4e4e5c431"
+        },
+        {
+          "path": "evidence/batch-e9c-typecheck.log",
+          "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+        },
+        {
+          "path": "evidence/batch-e9c-diff.log",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        }
+      ],
+      "scope_definitions": {
+        "A0": {
+          "receipt_pointer": "/observations/0",
+          "route": "/zh/projects/?profile=about",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "locale": "zh",
+          "coarse": false,
+          "reducedMotion": "reduce",
+          "themes": [
+            "light",
+            "dark"
+          ],
+          "choices_each_theme": [
+            "dawn",
+            "dusk",
+            "forest"
+          ],
+          "wallpaper_clicks": 6
+        },
+        "A1": {
+          "receipt_pointer": "/observations/1",
+          "route": "/projects/?profile=about",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "locale": "en",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "themes": [
+            "light",
+            "dark"
+          ],
+          "choices_each_theme": [
+            "dawn",
+            "dusk",
+            "forest"
+          ],
+          "wallpaper_clicks": 6
+        },
+        "C0": {
+          "route": "/zh/projects/",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "locale": "zh",
+          "coarse": false,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-wallpaper-contracts.spec.ts:41"
+        },
+        "C1": {
+          "route": "/projects/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "locale": "en",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-wallpaper-contracts.spec.ts:41"
+        },
+        "C2": {
+          "route": "/zh/projects/",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "locale": "zh",
+          "coarse": false,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-wallpaper-contracts.spec.ts:82",
+          "graphics": "forced HTMLCanvasElement webgl/webgl2/experimental-webgl getContext returns null; world-failed=true; no spatial screen; visible landscape six colors computed"
+        }
+      },
+      "reported_passed_contracts": 3,
+      "actual_contexts": 2,
+      "actual_wallpaper_choices": 12,
+      "palette_RGB": {
+        "light": {
+          "dawn": [
+            111,
+            166,
+            157
+          ],
+          "dusk": [
+            113,
+            140,
+            155
+          ],
+          "forest": [
+            151,
+            170,
+            143
+          ]
+        },
+        "dark": {
+          "dawn": [
+            41,
+            76,
+            71
+          ],
+          "dusk": [
+            48,
+            67,
+            79
+          ],
+          "forest": [
+            60,
+            76,
+            57
+          ]
+        }
+      },
+      "palette_source": {
+        "file": "assets/css/space-classic.css",
+        "base_revision": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
+        "base_blob_sha256": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+        "current_matches_base": true
+      },
+      "pixel_method": "Each actual six-color screenshot decoded through Canvas2D samples one unobstructed monitor background pixel; parent asserts exposed element+computed/no image/opacity1 and exact RGBA. No whole-frame/display calibration inference.",
+      "interaction_methods": "Actual theme and wallpaper real coordinate centers; wallpaper original button/focus/pressed/state/store after2frames. Contracts theme explicit focus+Space and wallpaper real coordinates. Minimize fine24/coarse44 then same settings nodes reopen.",
+      "continuity": "Per theme, paper/draft/window/chrome unchanged across three wallpapers; theme itself may change neutral paper/chrome. Actual contact sameDOM/value+continues, notes sameDOM/value; contracts both continue.",
+      "artifacts": [
+        {
+          "path": "evidence/batch-e9c-1440-zh-dark-dawn-monitor.png",
+          "sha256": "3f4464a41354ed1a98cbf8c09e4d3855c4ea2259e80623dbfaa9c7c5049f4519",
+          "pixels": [
+            1182,
+            738
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-dark-dusk-monitor.png",
+          "sha256": "1c137a5301de89bb75a114425850dfdf5011fe556f65418bc4e215af12d7ec01",
+          "pixels": [
+            1182,
+            738
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-dark-forest-monitor.png",
+          "sha256": "19a28d857183eed81f82a3e9d5eec02264f6f9211e7b60a8b0f428b273495ce2",
+          "pixels": [
+            1182,
+            738
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-dark-forest-scene.png",
+          "sha256": "d0be0817d2cff4d770f48ccd2bc1863035fd81a12575acafa372d0854711a9f0",
+          "pixels": [
+            1440,
+            900
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-light-dawn-monitor.png",
+          "sha256": "1324d39a0d891177e491e13e2dc82563e3d9311c8f4004b1b554faef2906ecb0",
+          "pixels": [
+            1182,
+            738
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-light-dusk-monitor.png",
+          "sha256": "fd685c335ac49a2c3753906fd1cb4fcbe260255faec5ac5b5655b93f41f49bb9",
+          "pixels": [
+            1182,
+            738
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-light-forest-monitor.png",
+          "sha256": "ed9ea6d83f35afafed0e3230cb49590e335bdae15f568fc14eea4e7953427f47",
+          "pixels": [
+            1182,
+            738
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-light-forest-scene.png",
+          "sha256": "832e8e79160f358abac191b6c0b9e23848fa5feb3fdf73be8e324b7065ec5635",
+          "pixels": [
+            1440,
+            900
+          ],
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e9c-1440-zh-neutral-document.png",
+          "sha256": "c6a0a695fd36fe03b25822fdfcefad0b5bcba68e36a64c83b7ecd8dad3d81421",
+          "pixels": [
+            1440,
+            900
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-dark-dawn-monitor.png",
+          "sha256": "aa889f13311db741ca31af503b7b43276e243ef4da6e969abfc33ed8e3e899a2",
+          "pixels": [
+            320,
+            694
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-dark-dusk-monitor.png",
+          "sha256": "da19d40554c19975fba8eeb327a836ee6d2b8b3704d3cf2f0247b8d5dbbc1c8b",
+          "pixels": [
+            320,
+            694
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-dark-forest-monitor.png",
+          "sha256": "3d836ad0d9ba268247ecf5f23e8e8ef22d1ea5cdd73a984e7282083050c8c65a",
+          "pixels": [
+            320,
+            694
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-dark-forest-scene.png",
+          "sha256": "b2a0805f51a7d5fe89638f94ab40699a217c4378f66a359d9f8795f1e51f65f9",
+          "pixels": [
+            390,
+            844
+          ],
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-light-dawn-monitor.png",
+          "sha256": "d1547329a37d69665caf92448f06c3fd2f580b529a619b80f166624d481c15eb",
+          "pixels": [
+            320,
+            694
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-light-dusk-monitor.png",
+          "sha256": "5e3f687b6fecf7d0c870864d1020f771f6119e2aabea9b983dd00fbbd5ecf0d0",
+          "pixels": [
+            320,
+            694
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-light-forest-monitor.png",
+          "sha256": "c1740ea55c37cbd9176b27f733fd173f0b56fa32c71b5ca006cbff0554c6cd02",
+          "pixels": [
+            320,
+            694
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-light-forest-scene.png",
+          "sha256": "305c1d1b2ad1323537221b41a0c25d64d2a4332f76e699da3344732418327b77",
+          "pixels": [
+            390,
+            844
+          ],
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9c-390-en-neutral-document.png",
+          "sha256": "c98649838f0d1b43d44ba8058647a59409900c9866a8a784967116211116f17b",
+          "pixels": [
+            390,
+            844
+          ],
+          "inspected_by_inventory": true
+        }
+      ],
+      "artifact_count": 18,
+      "review_status": "independent final accepted named scopes; UX038 closed only E9c measured spatial/fallback scope, no new P0/P1",
+      "limits": "Two actual Chromium Metal contexts, reduced animation, simulated phone. Each selected palette is sampled at one unobstructed background pixel in the lossless screenshot decoded through Canvas2D; this is not whole-page contrast, display calibration, physical-device, FPS, Safari, or all-state certification. No paid AI/contact/backend calls. Normal motion, all other viewports, themes beyond these6, complete keyboard/real backend remain unverified.",
+      "whole_family_accepted": false,
+      "verified_score": null,
+      "new_state_bindings": 4,
+      "new_control_ids": [],
+      "new_families": 0,
+      "independent_review": {
+        "agent": "/root/space_review",
+        "received_at_shanghai": "2026-10-16T04:19:25+08:00",
+        "verification": "2hash+QA,3contracts,18images visually inspected by reviewer; standard-library PNG decode12sample points andSHA independently match six palette colors per each of2contexts",
+        "scope": "1440×900zh fine /390×844en coarse Metal/reduce,2themes×3wallpapers; forced WebGL fallback1440 contract only",
+        "limits": "Baseline failure kept; whole-family score null; normalmotion/contrast/physical devices unverified."
+      }
     }
   },
   "journey_queue": [

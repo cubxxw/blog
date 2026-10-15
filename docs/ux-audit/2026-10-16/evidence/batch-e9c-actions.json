@@ -1,0 +1,537 @@
+{
+  "observations": [
+    {
+      "width": 1440,
+      "height": 900,
+      "lang": "zh",
+      "coarse": false,
+      "source": "batch-e9c-source.json",
+      "motion": "reduce",
+      "colors": [
+        {
+          "theme": "light",
+          "wallpaper": "dawn",
+          "target": {
+            "x": 349.3597106933594,
+            "y": 373.7015075683594,
+            "width": 82.00006103515625,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dawn",
+            "stored": "dawn"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(111, 166, 157)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(252, 252, 248)",
+            "draft": "rgb(238, 239, 235)",
+            "window": "rgb(252, 252, 248)",
+            "chrome": "rgb(229, 231, 226)"
+          },
+          "sample": {
+            "x": 591,
+            "y": 221,
+            "width": 1182,
+            "height": 738,
+            "rgba": [
+              111,
+              166,
+              157,
+              255
+            ]
+          },
+          "pngSHA256": "1324d39a0d891177e491e13e2dc82563e3d9311c8f4004b1b554faef2906ecb0",
+          "monitorImage": "batch-e9c-1440-zh-light-dawn-monitor.png"
+        },
+        {
+          "theme": "light",
+          "wallpaper": "dusk",
+          "target": {
+            "x": 439.5597839355469,
+            "y": 373.7015075683594,
+            "width": 54.120025634765625,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dusk",
+            "stored": "dusk"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(113, 140, 155)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(252, 252, 248)",
+            "draft": "rgb(238, 239, 235)",
+            "window": "rgb(252, 252, 248)",
+            "chrome": "rgb(229, 231, 226)"
+          },
+          "sample": {
+            "x": 591,
+            "y": 221,
+            "width": 1182,
+            "height": 738,
+            "rgba": [
+              113,
+              140,
+              155,
+              255
+            ]
+          },
+          "pngSHA256": "fd685c335ac49a2c3753906fd1cb4fcbe260255faec5ac5b5655b93f41f49bb9",
+          "monitorImage": "batch-e9c-1440-zh-light-dusk-monitor.png"
+        },
+        {
+          "theme": "light",
+          "wallpaper": "forest",
+          "target": {
+            "x": 501.87982177734375,
+            "y": 373.7015075683594,
+            "width": 68.06005859375,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "forest",
+            "stored": "forest"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(151, 170, 143)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(252, 252, 248)",
+            "draft": "rgb(238, 239, 235)",
+            "window": "rgb(252, 252, 248)",
+            "chrome": "rgb(229, 231, 226)"
+          },
+          "sample": {
+            "x": 591,
+            "y": 221,
+            "width": 1182,
+            "height": 738,
+            "rgba": [
+              151,
+              170,
+              143,
+              255
+            ]
+          },
+          "pngSHA256": "ed9ea6d83f35afafed0e3230cb49590e335bdae15f568fc14eea4e7953427f47",
+          "monitorImage": "batch-e9c-1440-zh-light-forest-monitor.png"
+        },
+        {
+          "theme": "dark",
+          "wallpaper": "dawn",
+          "target": {
+            "x": 349.3597106933594,
+            "y": 373.7015075683594,
+            "width": 82.00006103515625,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dawn",
+            "stored": "dawn"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(41, 76, 71)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(36, 46, 43)",
+            "draft": "rgb(48, 59, 54)",
+            "window": "rgb(36, 46, 43)",
+            "chrome": "rgb(57, 70, 63)"
+          },
+          "sample": {
+            "x": 591,
+            "y": 221,
+            "width": 1182,
+            "height": 738,
+            "rgba": [
+              41,
+              76,
+              71,
+              255
+            ]
+          },
+          "pngSHA256": "3f4464a41354ed1a98cbf8c09e4d3855c4ea2259e80623dbfaa9c7c5049f4519",
+          "monitorImage": "batch-e9c-1440-zh-dark-dawn-monitor.png"
+        },
+        {
+          "theme": "dark",
+          "wallpaper": "dusk",
+          "target": {
+            "x": 439.5597839355469,
+            "y": 373.7015075683594,
+            "width": 54.120025634765625,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dusk",
+            "stored": "dusk"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(48, 67, 79)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(36, 46, 43)",
+            "draft": "rgb(48, 59, 54)",
+            "window": "rgb(36, 46, 43)",
+            "chrome": "rgb(57, 70, 63)"
+          },
+          "sample": {
+            "x": 591,
+            "y": 221,
+            "width": 1182,
+            "height": 738,
+            "rgba": [
+              48,
+              67,
+              79,
+              255
+            ]
+          },
+          "pngSHA256": "1c137a5301de89bb75a114425850dfdf5011fe556f65418bc4e215af12d7ec01",
+          "monitorImage": "batch-e9c-1440-zh-dark-dusk-monitor.png"
+        },
+        {
+          "theme": "dark",
+          "wallpaper": "forest",
+          "target": {
+            "x": 501.87982177734375,
+            "y": 373.7015075683594,
+            "width": 68.06005859375,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "forest",
+            "stored": "forest"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(60, 76, 57)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(36, 46, 43)",
+            "draft": "rgb(48, 59, 54)",
+            "window": "rgb(36, 46, 43)",
+            "chrome": "rgb(57, 70, 63)"
+          },
+          "sample": {
+            "x": 591,
+            "y": 221,
+            "width": 1182,
+            "height": 738,
+            "rgba": [
+              60,
+              76,
+              57,
+              255
+            ]
+          },
+          "pngSHA256": "19a28d857183eed81f82a3e9d5eec02264f6f9211e7b60a8b0f428b273495ce2",
+          "monitorImage": "batch-e9c-1440-zh-dark-forest-monitor.png"
+        }
+      ],
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "contact": {
+        "sameDOM": true,
+        "valuePreserved": true,
+        "continued": true
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "en",
+      "coarse": true,
+      "source": "batch-e9c-source.json",
+      "motion": "reduce",
+      "colors": [
+        {
+          "theme": "light",
+          "wallpaper": "dawn",
+          "target": {
+            "x": 59.69847106933594,
+            "y": 642.0443725585938,
+            "width": 96.96609497070312,
+            "height": 44.28045654296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dawn",
+            "stored": "dawn"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(111, 166, 157)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(252, 252, 248)",
+            "draft": "rgb(238, 239, 235)",
+            "window": "rgb(252, 252, 248)",
+            "chrome": "rgb(229, 231, 226)"
+          },
+          "sample": {
+            "x": 160,
+            "y": 208,
+            "width": 320,
+            "height": 694,
+            "rgba": [
+              111,
+              166,
+              157,
+              255
+            ]
+          },
+          "pngSHA256": "d1547329a37d69665caf92448f06c3fd2f580b529a619b80f166624d481c15eb",
+          "monitorImage": "batch-e9c-390-en-light-dawn-monitor.png"
+        },
+        {
+          "theme": "light",
+          "wallpaper": "dusk",
+          "target": {
+            "x": 164.86465454101562,
+            "y": 642.0443725585938,
+            "width": 105.87088012695312,
+            "height": 44.28045654296875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dusk",
+            "stored": "dusk"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(113, 140, 155)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(252, 252, 248)",
+            "draft": "rgb(238, 239, 235)",
+            "window": "rgb(252, 252, 248)",
+            "chrome": "rgb(229, 231, 226)"
+          },
+          "sample": {
+            "x": 160,
+            "y": 208,
+            "width": 320,
+            "height": 694,
+            "rgba": [
+              113,
+              140,
+              155,
+              255
+            ]
+          },
+          "pngSHA256": "5e3f687b6fecf7d0c870864d1020f771f6119e2aabea9b983dd00fbbd5ecf0d0",
+          "monitorImage": "batch-e9c-390-en-light-dusk-monitor.png"
+        },
+        {
+          "theme": "light",
+          "wallpaper": "forest",
+          "target": {
+            "x": 59.69847106933594,
+            "y": 386.20147705078125,
+            "width": 57.861907958984375,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "stored": {
+            "state": "forest",
+            "stored": "forest"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(151, 170, 143)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(252, 252, 248)",
+            "draft": "rgb(238, 239, 235)",
+            "window": "rgb(252, 252, 248)",
+            "chrome": "rgb(229, 231, 226)"
+          },
+          "sample": {
+            "x": 160,
+            "y": 208,
+            "width": 320,
+            "height": 694,
+            "rgba": [
+              151,
+              170,
+              143,
+              255
+            ]
+          },
+          "pngSHA256": "c1740ea55c37cbd9176b27f733fd173f0b56fa32c71b5ca006cbff0554c6cd02",
+          "monitorImage": "batch-e9c-390-en-light-forest-monitor.png"
+        },
+        {
+          "theme": "dark",
+          "wallpaper": "dawn",
+          "target": {
+            "x": 59.69847106933594,
+            "y": 333.72088623046875,
+            "width": 96.96609497070312,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dawn",
+            "stored": "dawn"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(41, 76, 71)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(36, 46, 43)",
+            "draft": "rgb(48, 59, 54)",
+            "window": "rgb(36, 46, 43)",
+            "chrome": "rgb(57, 70, 63)"
+          },
+          "sample": {
+            "x": 160,
+            "y": 208,
+            "width": 320,
+            "height": 694,
+            "rgba": [
+              41,
+              76,
+              71,
+              255
+            ]
+          },
+          "pngSHA256": "aa889f13311db741ca31af503b7b43276e243ef4da6e969abfc33ed8e3e899a2",
+          "monitorImage": "batch-e9c-390-en-dark-dawn-monitor.png"
+        },
+        {
+          "theme": "dark",
+          "wallpaper": "dusk",
+          "target": {
+            "x": 164.86465454101562,
+            "y": 333.72088623046875,
+            "width": 105.87088012695312,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "stored": {
+            "state": "dusk",
+            "stored": "dusk"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(48, 67, 79)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(36, 46, 43)",
+            "draft": "rgb(48, 59, 54)",
+            "window": "rgb(36, 46, 43)",
+            "chrome": "rgb(57, 70, 63)"
+          },
+          "sample": {
+            "x": 160,
+            "y": 208,
+            "width": 320,
+            "height": 694,
+            "rgba": [
+              48,
+              67,
+              79,
+              255
+            ]
+          },
+          "pngSHA256": "da19d40554c19975fba8eeb327a836ee6d2b8b3704d3cf2f0247b8d5dbbc1c8b",
+          "monitorImage": "batch-e9c-390-en-dark-dusk-monitor.png"
+        },
+        {
+          "theme": "dark",
+          "wallpaper": "forest",
+          "target": {
+            "x": 59.69847106933594,
+            "y": 386.20147705078125,
+            "width": 57.861907958984375,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "stored": {
+            "state": "forest",
+            "stored": "forest"
+          },
+          "exposed": true,
+          "computed": {
+            "background": "rgb(60, 76, 57)",
+            "image": "none",
+            "opacity": "1"
+          },
+          "appearance": {
+            "paper": "rgb(36, 46, 43)",
+            "draft": "rgb(48, 59, 54)",
+            "window": "rgb(36, 46, 43)",
+            "chrome": "rgb(57, 70, 63)"
+          },
+          "sample": {
+            "x": 160,
+            "y": 208,
+            "width": 320,
+            "height": 694,
+            "rgba": [
+              60,
+              76,
+              57,
+              255
+            ]
+          },
+          "pngSHA256": "3d836ad0d9ba268247ecf5f23e8e8ef22d1ea5cdd73a984e7282083050c8c65a",
+          "monitorImage": "batch-e9c-390-en-dark-forest-monitor.png"
+        }
+      ],
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "contact": {
+        "sameDOM": true,
+        "valuePreserved": true,
+        "continued": true
+      },
+      "errors": []
+    }
+  ],
+  "limits": "Two actual Chromium Metal contexts, reduced animation, simulated phone. Each selected palette is sampled at one unobstructed background pixel in the lossless screenshot decoded through Canvas2D; this is not whole-page contrast, display calibration, physical-device, FPS, Safari, or all-state certification. No paid AI/contact/backend calls."
+}

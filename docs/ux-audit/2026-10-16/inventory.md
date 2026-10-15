@@ -1703,3 +1703,16 @@ E9a与a1各4源hash分别冻结。initial **0过/6失败**均为无demo时预期
 **UX038独立P2视觉失败仍开放：** [颜色基线](evidence/spatial-wallpaper-baseline.json)、[log](evidence/spatial-wallpaper-baseline.log)、[probe](probe-spatial-wallpaper.browser.mjs)与3图，仅1440×900zh/light/reduce真实dawn/dusk/forest→最小化露monitor。三值pressed/stored/dataset正确，screen仍`rgb(238,239,235)`、landscape `display:none`；dawn/forest monitor PNG相同，dusk虽不同但底色同。`desktop.js:94`写dataset，`space-classic.css:5–10`改landscape，`space-cafe.css:90/122`用surface并隐藏landscape。独立review确认此范围P2；**选中成功不等于桌面视觉变色**，E9c尚未实施。
 
 旧pre-E9 BODY焦点负记录保留，仅附有界follow-up。UX028/029补齐products/books/contact/settings这批字号/目标片段，其他App与未测状态仍开放，未关闭全站缺口。本轮新增 **19条E9b状态+1条独立视觉基线=20条**；累计 **277条 / 60族有局部状态证据**。总量 **309族 / 362selectors / 57journeys / 18roadmap**，完整family通过0、完整分数null。仅更新两inventory文件，未启动browser/构建/测试，现停写供checkpoint。
+
+
+## v1.17 E9c：只追加桌面六色输出与原文档连续性
+
+导入 **2026-10-16T04:18:59+08:00**，source=[batch-e9c-source.json](evidence/batch-e9c-source.json)：2源hash+QA匹配，base`39a7bd07c09d`。CSS只将现有classic六色投到spatial screen（`space-cafe.css:90–95`），没有新颜色控件/JS行为。
+
+[3合同](evidence/batch-e9c-contracts.log)通过：[actual JSON](evidence/batch-e9c-actions.json)/[log](evidence/batch-e9c-actions.log)/[probe](batch-e9c-actions.browser.mjs)有 **1440×900zh fine、390×844en coarse两Metal/reduce context、12次真实wallpaper选择、18新图**。每context light/dark各dawn/dusk/forest；露出monitor且无窗口遮挡后，PNG经Canvas2D解码的单像素精确为light `111,166,157 / 113,140,155 / 151,170,143`、dark `41,76,71 / 48,67,79 / 60,76,57`，同时computed背景正确、无image、opacity1。不是整帧/显示校准/全页面对比认证。
+
+原button/focus/pressed/storage保持；同theme三wallpaper不染paper/draft/window/chrome，theme本身仍可正常变更中性纸张。原contact textarea同DOM/值继续写，notes原DOM/值保留；主合同另返回notes继续输入。第三合同**1440zh强制WebGL失败**，无spatial screen且landscape可见，原备用桌面六色computed通过；不把它描述成实际PNG像素验收。
+
+只新增 **COLOR normal/focus、contactDRAFT active、notesEDITOR active共4条**，不复制raw动作矩阵；18图/source/scope引用在JSON `e9c-wallpaper-scope-import`。本Agent查看desktop light forest scene、phone dark forest scene、phone neutral document三张。UX038旧固定底色失败/旧图保留；独立review已复核2hash+QA/3合同/18图，并以标准库PNG独立解码核对12采样点+SHA，关闭本次命名scope。normal motion、其他viewport、实体设备、contrast等继续unknown。
+
+累计 **281条状态 / 60族局部证据**，保持 **309族 / 362selectors / 57journeys / 18roadmap**。完整族认证0、完整分数null；仅改两inventory文件，未启动browser/构建/测试，现停写供checkpoint。

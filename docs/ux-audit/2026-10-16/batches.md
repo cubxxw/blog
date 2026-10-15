@@ -158,3 +158,16 @@ E9b父probe初跑在第四个1440 fine-pointer的原window minimize处误把44�
 ### E9b独立闭环
 
 独立7合同、4实际context/20图、4hash+QA均已复核，无新增P0/P1；UX034按原button/焦点、原runtimeLabel、UI/publictool同步与pending关闭/迟到隔离范围闭合。UX028/029只联系/设置已测字号/命中片段闭，其他App不继承。桌面contact D1/D4=94.5/93、settings93/91.5；手机约93/91.5；短contact89/90、settings90.5/90，留滚动成本低分，不凑96。UX038/P2真实壁纸输出缺口开放，E9c只读方案待本地checkpoint后实现。两审计Agent已停写，inventory1.16为309族/362selectors/277状态/60局部族、完整0；WhatsApp是既有功能独立补漏control.10f744。
+
+
+E9b本地checkpoint `39a7bd07` 已保存，未push。E9c已按只读最小方案放行：只spatial-screen CSS六现色+新三合同，source冻结前不build。最近预览仍已验E9b。
+
+
+## E9c 真实可见壁纸结果（04:20前）
+
+仅spatial-screen六条现有palette规则，两源hash/QA冻结；Hugo4096ms，syntax/typecheck/diff、3不同合同均通过6.9s（1440zh/390en真实Metal、1440 forced-WebGL-failure备用landscape）。父2实际Metal/reduce context共12次原设置选择→最小化露桌面，原button跨帧focus/DOM/store正确；无遮挡screen PNG解码Canvas2D单点RGBA逐一等于6现有色，两个context均6不同色。全18图父逐张已看，desktop/phone实际背景色可辨，原中性paper/chrome不跟wallpaper切换、notes和contact草稿同节点可续写，pageerror0。没有把单点pixel当整页contrast或normalmotion/实体phone认证。源清单、3合同、actions JSON/log/script与18PNG已永久保存；独立review/盘点尚待停写，checkpoint仍39a7bd07。
+
+
+### E9c独立闭环
+
+Reviewer逐张18图并独立标准库解码12个monitor PNG，采样RGBA和SHA完全相符；两源/QA、3合同和原连续性复核，无新增P0/P1。UX038只在2实际reduce context六色与1440 forced-fallback合同范围闭，E9b短屏低分保持，完整控件/族/全站分null。Inventory1.17为309族/362selectors/281状态/60局部族/0完整；两审计Agent已停写。准备本地checkpoint，不push；E10仅有界QR随后放行。

@@ -41,3 +41,10 @@ E9a先products/books，E9b再contact/settings；共用原有palette/组件语义
 ### E9c · 壁纸的真实可见结果（只读方案，待E9b checkpoint）
 
 UX038独立确认1440真实spatial desktop中的颜色选择无可见背景效果；旧landscape隐藏，新screen用固定sp-surface。仅space-cafe.css复用classic现有6色至screen桌面面，保持窗口paper/chrome、3D物理机框与world材质/灯光/动画。新独立合同：1440zh+390en真实3色×2主题→minimize露背景、准确computed色与不同色、原button/焦点/notes/contact草稿保留；同主题阅读面/chrome不跟着换。另1440 forced-WebGL-failure验原fallback landscape palette。父截图确认实际色差，不能只靠dataset或“选择成功”。
+
+
+### E10最终边界与设计判断（E9c后放行）
+
+只Travel QR markup/controller、QR CSS与新定向合同。保持原渠道、label/id、两张真实竖版海报源（wechat962×1231、RedNote1279×1747）；旧200平方cover会裁海报，新版完整自然比例/contain，normal约200–220宽，短屏横向有界完整海报+真实ID，独立44Close不压图。良好标准是任务辨识、完整图、可关闭且可继续；不能用方形构图好看掩盖图像裁切，也不以显示完整推断实体扫码成功。
+
+原生dialog.showModal+背景inert，打开focus Close；显式Tab双向循环、Escape/Close/backdrop即时归还原opener与原overflow值。只保留用户动作触发开场，runtime reduce立即终态并取消RAF；close即时且幂等、pending旧close事件不teardown新session。页面hide释放自有锁。English实际渠道无QR入口，保留原Instagram/Facebook/email/GitHub；组件fixture必须独立命名，不能计为真实英文二维码旅程。

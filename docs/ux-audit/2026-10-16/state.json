@@ -3,32 +3,30 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "ebc488e69640d561e96203b93fb4a0eb7676ccab",
-  "phase": "E9b-final-audit-sync",
-  "batch": "E9b",
+  "checkpoint": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
+  "phase": "E9c-independent-accepted-checkpoint-ready",
+  "batch": "E9c",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "Finish E9b inventory/score count sync and stop signals, save local checkpoint; no rerun unchanged tests",
-    "E9c UX038 actual spatial wallpaper colors; read-only plan approved in next-batches, no production writes yet",
-    "E10 Travel UX018 QR; short contact/settings density and remaining TOC/modifier matrix"
+    "E9c independently accepted; create local checkpoint, then E10 QR native modal implementation",
+    "E10 Travel UX018 QR modal focus/reopen/runtime reduce/44 target",
+    "Short contact/settings entry costs; remaining article TOC/modifier/runtime matrix"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-actions.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e9c-actions.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T20:03:40.347351+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+  "updatedAt": "2026-10-15T20:22:14.124658+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "E9a2 four source hashes+QA match; six contracts, A1 four contexts/16 images plus A2 one context/4 images independently reviewed, no newP0/P1. UX035/036/037 scoped closed; products/books only for UX028/029. Short product D1 94.5/D4 93, phone D1 93/D4 91.5, books D1 94.5/D4 91.5; full scores null.",
-  "previewBatch": "E9b 7 contracts +4 actual contexts/20 images passed; independent behavior/visual review complete; inventory/score metadata synchronization still writing",
+  "review": "E9c 2 hashes+QA,3 contracts,2 actual Metal/reduce contexts/12 choices/18 PNGs independently reviewed; independent PNG decode agrees all 12 pixels+SHA. UX038 scoped closed, no newP0/P1. E9b short low scores retained. 309/362/281/60 partial, full scores null.",
+  "previewBatch": "E9c independently accepted frozen build",
   "executorOwnership": [
-    "apps.js contact/settings renderer and their owned disposers only",
-    "space.css contact/settings only",
-    "space-cafe.css corresponding typography/targets only",
-    "space-preferences-contact-contracts.spec.ts"
+    "assets/css/space-cafe.css spatial-screen six existing desktop palette only",
+    "tests/e2e/space-wallpaper-contracts.spec.ts"
   ]
 }

@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T02:38:36+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，基线 `6d7b9fe92a746a83e635282c9b78966920336a69`。
+更新：2026-10-16T04:21:11+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `39a7bd07`（E9b）。
 
-**当前没有足够证据宣称全站或每个按钮96+。所有功能总分保持 `unverified / null`；旧Space证据只覆盖已记录的本地Chromium状态。**
+**当前不能宣称全站或每个按钮96+。309族/362控件的完整分保持 `unverified / null`；281条记录只覆盖60族的局部状态。E9c新颜色输出已在命名范围复核，完整认证仍为0。**
 
 ## 固定量表与分数计算
 
@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`3caab4d1`（E81）。E9a2当前4hash/QA与6合同、A1四actual16图+A2一actual4图已复核，无新P0/P1。UX035/036/037按命名范围关闭；UX028/029只闭products/books片段，contact/settings和UX034仍待E9b。
+最近已验checkpoint：`39a7bd07`（E9b）。E9c当前2hash/QA、3合同、2实际Metal/reduce范围及18图已独立复核，无新增P0/P1；UX038仅关闭命名六色输出/fallback合同。E9a/E9b有界关闭保留，E9b短屏contact/settings低分不因背景换色上调；全矩阵仍未知。
 
 
 
@@ -88,7 +88,7 @@
 | UX-035 | `S.APP.books.READ` | 书封作者小字对比不足，橙封标题原始比值低于3 | E9a1/E9a2 | `closed_for_E9a1_E9a2_named_cover_DOM_computed_contrast` |
 | UX-036 | `S.APP.products.OPEN` | 空产品demo被当本站首页，却渲染测试预览链接 | E9a1 | `closed_for_E9a1_E9a2_catalog_empty_demo_cases` |
 | UX-037 | `S.APP.products.SELECT`, `S.APP.products.OPEN` | 短横屏产品导航堆叠，首屏只有stage而标题和简介出fold | E9a2 | `closed_for_E9a2_844_shortcoarse_entry_geometry_and_images` |
-| UX-038 | `S.APP.settings.COLOR` | 默认3D桌面颜色保存/选中正确但屏幕底色不变 | E9c_candidate | `confirmed_bounded_E9b_spatial_visual_output_pending_E9c` |
+| UX-038 | `S.APP.settings.COLOR` | 默认3D桌面颜色保存/选中正确但屏幕底色不变 | E9c_final | `closed_named_E9c_visible_palette_scopes_full_matrix_unverified` |
 
 ## 有证据的单项锚点评分
 
@@ -309,7 +309,7 @@
 | S.APP.products.SELECT, S.APP.products.OPEN | D1 | 96,96,90,96 | 94.5 | 导航一行后完整h2/headline首行无需先滚，选择→理解→再打开清楚；Dogfood等stage术语可后续改易懂名称。 | E9a2 final bounded shortcoarseentry refinement / high |
 | S.APP.products.SELECT, S.APP.products.OPEN | D4 | 96,90,90,96 | 93.0 | 保44目标/原字号，导航不再吞首屏，标题/简介重新主导；有效focus环保留，没有删内容凑满分。 | E9a2 final bounded shortcoarseentry refinement / high |
 
-## 完整可追踪覆盖（inventory v1.16 一对一映射）
+## 完整可追踪覆盖（inventory v1.17 一对一映射）
 
 309族/361selectors；60族有局部状态证据，完整认证仍0。native04c780与旧目录分别绑定；Ask a3b76f仅44/hit，不继承链接popup/AI结果。
 
@@ -484,10 +484,10 @@
 | `S.APP.map.ZOOM` | 放大/缩小/全部/世界 | 3 | 6 | `unverified / null` | UX-022 |
 | `S.APP.map.RELATED` | 相关照片/游记/数据许可 | 3 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.books.READ` | 开始阅读 | 1 | 5 | `unverified / null` | UX-028, UX-029, UX-035 |
-| `S.APP.notes.EDITOR` | 本地笔记 | 1 | 6 | `unverified / null` | UX-021 |
+| `S.APP.notes.EDITOR` | 本地笔记 | 1 | 7 | `unverified / null` | UX-021 |
 | `S.APP.notes.EXPORT` | 导出.md | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.notes.SANDBOX` | 保存到沙盒 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.contact.DRAFT` | 留言草稿 | 1 | 2 | `unverified / null` | UX-028 |
+| `S.APP.contact.DRAFT` | 留言草稿 | 1 | 3 | `unverified / null` | UX-028 |
 | `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | 4 | 5 | `unverified / null` | UX-028, UX-029 |
 | `S.APP.terminal.COMMAND` | 命令输入/help/history/run | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.NEW` | 新对话 | 2 | 0 | `unverified / null` | 待矩阵 |
@@ -503,7 +503,7 @@
 | `S.APP.agent.ACTIVITY` | 任务执行过程/工具步骤 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.settings.LANG` | 中文/English | 1 | 3 | `unverified / null` | UX-028 |
 | `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 7 | `unverified / null` | UX-028, UX-034 |
-| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 8 | `unverified / null` | UX-028, UX-034, UX-038 |
+| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 12 | `unverified / null` | UX-028, UX-034, UX-038 |
 | `S.APP.settings.EXPORT` | 导出工作区 | 1 | 3 | `unverified / null` | UX-028 |
 | `S.LAB.SWITCH` | CUBXXW OS/Product Lab双向切换 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.LAB.FEATURE` | 推荐产品/所有产品锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -942,3 +942,13 @@ D1/D4为逐图专家判断（完整维度/控件仍null）：
 这是“桌面颜色”命名与实际可见结果脱节，D1.1失败片段80；不改写成state存储失败、不撤E9b焦点/ARIA通过、不升P1或机械套假成功gate。建议E9c仅让露出屏幕背景复用classic明暗六palette，窗口阅读面/chrome/3D机框保持；真实选择后最小化，复核light/dark与fallback。该视觉效果明确未认证，完整族仍null。
 
 本轮结构同步inventory v1.16：309族/362selectors/57旅程/18roadmap，277条状态记录、60局部族（59partial+1measured）、0完整认证。WhatsApp补漏`S.APP.contact.CHANNEL.control.10f744`对应`.space-contact__actions a[href*="wa.me/"]`，只绑定独立第11个捕获click/原href与44目标，不从8社交、AI或外发继承。完整记录保留inventory，scorecard仅引用binding IDs。JSON/引用/固定量表/特殊控件边界与diff-check通过。
+
+## E9c：六色实际输出恢复，阅读面保持中性
+
+2026-10-16T04:21:11+08:00：2源hash与QA一致，独立复核[源快照](evidence/batch-e9c-source.json)、[3/3合同](evidence/batch-e9c-contracts.log)（6.9s）、Hugo4096ms及typecheck/syntax/diff。[父动作回执](evidence/batch-e9c-actions.json)/[脚本](batch-e9c-actions.browser.mjs)和18张monitor/scene/neutral-document图全部查看；无新增P0/P1。
+
+UX038关闭1440×900中文fine、390×844英文coarse的Metal/reduce命名范围：各自两theme×三color，12次真实选择后最小化露出monitor，原button/focus/storage保持。独立以标准库PNG解码复核12张图的SHA和回执采样坐标RGBA，各context六色不同且逐一精确匹配classic色盘。forced-WebGL-failure1440中文仅按第三合同确认旧landscape六色仍可见，不冒称父额外像素实拍。旧E9b无可见变化负证据保留。
+
+视觉上，轻柔纯色使桌面偏好有可见结果，未给窗口阅读面染色；同theme下paper/draft/window/chrome采样保持不变，[桌面中性文档](evidence/batch-e9c-1440-zh-neutral-document.png)与[手机中性文档](evidence/batch-e9c-390-en-neutral-document.png)可见原输入和必要focus环。D1.1可见意图、D4.3色盘/阅读面一致性及两项连续性/fallback命名片段按固定锚点96；不重评整维D4，也不覆盖E9b短屏contact89/90、settings90.5/90的历史层级差距。空桌面截图不能证明完整App任务清晰或全站审美达标。
+
+单个无遮挡像素不是整页对比度/显示校准/全图相等；normalmotion、Safari、zoom、实体设备、全部错误恢复和FPS仍未知。原notes/contact DOM与值、继续输入在命名链保持，无外发/真实backend认证。inventory v1.17仅同步4新增binding引用：309族/362selectors/281记录/60局部族，完整0/null；没有复制整份actions矩阵。

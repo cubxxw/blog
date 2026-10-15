@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T04:04:57+08:00",
+  "updated_at": "2026-10-16T04:21:11+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,7 +353,7 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.16",
+    "inventory_version": "1.17",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
@@ -366,13 +366,13 @@
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/362selectors，277条状态记录，60族仅局部证据（59partial+1measured），0完整认证。WhatsApp新子ID仅独立URL/44证据。",
+    "reason": "309族/362selectors，281条状态记录、60族局部证据、0完整认证；E9c只关闭命名颜色输出范围。",
     "families_with_recorded_contract_fragments": 68,
-    "scoped_check_assessments": 151,
+    "scoped_check_assessments": 155,
     "expert_visual_assessments": 78,
     "inventory_families_with_partial_state_evidence": 60,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 277
+    "inventory_state_evidence_records": 281
   },
   "evidence": [
     {
@@ -2201,6 +2201,64 @@
       "source_and_png_hashes_independently_matched": true,
       "observation": "Three real wallpaper clicks, then minimize Settings to expose monitor: state/dataset/pressed correct, but spatial-screen background remains rgb(238,239,235); hidden landscape changes palette, window layer transparent. Dawn/forest monitor PNG SHA equal; dusk SHA different, so not all three pixel-identical.",
       "limits": "One actual light/reduce/1440 desktop; no dark/fallback/device/zoom certification. This concerns visible output only, not E9b focus/aria/storage regressions."
+    },
+    {
+      "id": "E-BATCH-E9C",
+      "kind": "frozen_two_source_hashes_three_contracts_two_actual_contexts_visible_pixels",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e9c-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e9c-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e9c-actions.browser.mjs",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+      "as_of": {
+        "phase": "E9c final visible spatial wallpaper bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+        "recorded_at": "2026-10-15T20:09:37.409195+00:00",
+        "reviewed_at": "2026-10-16T04:21:11+08:00",
+        "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d"
+      },
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-dark-dawn-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-dark-dusk-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-dark-forest-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-dark-forest-scene.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-light-dawn-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-light-dusk-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-light-forest-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-light-forest-scene.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-1440-zh-neutral-document.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-dark-dawn-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-dark-dusk-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-dark-forest-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-dark-forest-scene.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-light-dawn-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-light-dusk-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-light-forest-monitor.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-light-forest-scene.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-390-en-neutral-document.png"
+      ],
+      "source_and_QA_hashes_independently_matched": true,
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e9c-contracts.log",
+      "contract_result": {
+        "distinct_cases": 3,
+        "passed": 3,
+        "duration": "6.9s"
+      },
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-build.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9c-diff.log"
+      ],
+      "build_result": "Hugo4096ms",
+      "actual_scope": "1440×900zh/fine and390×844en/coarse, Metal/reduce; two themes×three wallpapers in each. Forced-WebGL-failure1440zh is contract-only.",
+      "results": "Twelve real choices retain original button/focus/storage, minimize exposes monitor. Twelve recorded PNG SHA and exact RGBA at named unobstructed sample independently decoded with standard-library PNG filters/zlib; each context has six distinct existing colors. Same-theme neutral paper/chrome and original note/draft nodes/values retained; errors0.",
+      "visual_observation": "All18 images viewed. Quiet classic solids visibly differentiate desktop choice while documents keep their neutral reading plane. Empty-desktop crops are evidence of preference output, not a claim of complete task hierarchy or whole-D4 aesthetics. Existing E9b low short-screen scores remain.",
+      "limits": [
+        "Single unobstructed pixel per monitor image is not whole-page contrast, display calibration or full-image equivalence.",
+        "Only named reduced-motion Chromium contexts and one forced-failure contract; no normal-motion/Safari/zoom/physical-device/FPS certification.",
+        "No live backend/contact/model request; full controls/families/site remain null."
+      ],
+      "new_P0_P1_findings": []
     }
   ],
   "historical_visual_assessments": [
@@ -6815,10 +6873,10 @@
       "title": "默认3D桌面的颜色选项有保存和选中反馈，露出的屏幕底色却不变化",
       "baseline_reason": "1440×900中文light/reduce真实Metal，依次实际选择dawn/dusk/forest并最小化设置。state/dataset/pressed均正确，screen背景始终rgb(238,239,235)，隐藏landscape虽改变颜色却display:none。dawn与forest monitorPNG相同；duskSHA不同，不能称三PNG完全一致。",
       "recommendation": "仅对spatial-screen露出的桌面背景复用classic明暗六palette；保留窗口阅读面、chrome、3D物理机框和原DOM。按真实选择→minimize在明暗主题重拍/测computed，额外验证fallback原palette不退化。",
-      "status": "confirmed_bounded_E9b_spatial_visual_output_pending_E9c",
+      "status": "closed_named_E9c_visible_palette_scopes_full_matrix_unverified",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E9c_candidate",
+      "batch": "E9c_final",
       "dimensions": [
         "D1",
         "D3"
@@ -6845,19 +6903,15 @@
         }
       ],
       "browser_evidence": [
-        "E-E9B-WALLPAPER-BASELINE"
+        "E-E9B-WALLPAPER-BASELINE",
+        "E-BATCH-E9C"
       ],
       "as_of": {
-        "phase": "E9b unchanged spatial wallpaper exploratory baseline",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
-        "reviewed_at": "2026-10-16T03:58:17+08:00",
-        "viewport": {
-          "width": 1440,
-          "height": 900
-        },
-        "locale": "zh",
-        "theme": "light",
-        "motion": "reduce"
+        "phase": "E9c final visible spatial wallpaper bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+        "recorded_at": "2026-10-15T20:09:37.409195+00:00",
+        "reviewed_at": "2026-10-16T04:21:11+08:00",
+        "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d"
       },
       "verified_score": null,
       "confidence": "high",
@@ -6865,7 +6919,10 @@
         "State/storage and aria success remain valid; failure is observable appearance promised by the label.",
         "No global false-success cap inferred; all full scores already null.",
         "One named light spatial mode only; no P1, backend or full-theme conclusion."
-      ]
+      ],
+      "original_failure_retained": true,
+      "closed_scope": "Two actual Metal/reduce scopes1440zh fine and390en coarse: two themes×three wallpapers each, exact visible pixel output;1440zh forced-WebGL-failure contract original landscape palette retained.",
+      "remaining_scope": "Normal-motion, Safari, zoom, physical-device and other untested contexts remain unverified. No whole-page contrast or full-family acceptance."
     }
   ],
   "next_batches": [
@@ -6909,16 +6966,16 @@
     }
   ],
   "limitations": [
-    "No browser/server/build launched by scoring agent.",
-    "Only Space historic screenshots inspected;global current visual matrix remains unverified.",
-    "No real email/contact/share/paidAI requests performed.",
-    "Inventoryv1.2全部已映射；第三方宿主控件不等于其内部所有按钮均已盘点/验证。",
-    "A特定合同20pass，不代表hover/200%缩放/所有主题/所有重复实例已测。"
+    "Scoring agent launched no browser/server/build; reviewed parent frozen receipts, source and actual screenshots, with lightweight independent PNG decode.",
+    "Current evidence covers named local Chromium scopes only; untested applicable states and global visual matrix remain unverified.",
+    "No real email/contact/share/paidAI or backend connection certified.",
+    "Inventoryv1.17 maps309families/362selectors; third-party host families do not enumerate or certify every internal control.",
+    "Local contract/pixel checks do not certify Safari,200%zoom,physical devices,normal-motion or whole-page contrast."
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.16",
-    "sha256": "d14308278be5c82f20e0b9643ca7d29d57daa56689d1828c8ffb49cfe561a2c6",
+    "version": "1.17",
+    "sha256": "0a065b24756d018a9114c2d841cafde13e5025cf77cfaa3a0addc2b7c79d442d",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -6943,11 +7000,11 @@
       },
       "families_with_state_evidence": 60,
       "accepted_whole_families": 0,
-      "state_evidence_records": 277
+      "state_evidence_records": 281
     },
-    "imported_at": "2026-10-16T04:04:57+08:00",
-    "source_metadata_updated_at": "2026-10-16T04:03:11+08:00",
-    "import_scope": "Structure/counts and E9b binding-ID references only. New WhatsApp control.10f744 independently bound to destinations/target; AI guide geometry does not imply action. Full scores null."
+    "imported_at": "2026-10-16T04:21:11+08:00",
+    "source_metadata_updated_at": "2026-10-16T04:19:25+08:00",
+    "import_scope": "Counts and four E9c binding-ID references only; canonical inventory holds complete scopes. No new controls or whole-family pass."
   },
   "groups": [
     {
@@ -36409,7 +36466,8 @@
         "CHK-E5-PRIMARY-TYPE",
         "CHK-E5-OPAQUE-PLANE",
         "CHK-E52-HUD-INTENT",
-        "CHK-E81-OVERVIEW-NOTES-CONTINUITY"
+        "CHK-E81-OVERVIEW-NOTES-CONTINUITY",
+        "CHK-E9C-EDITOR-CONTINUITY"
       ],
       "expert_visual_assessment_ids": [
         "VIS-SPACE-NOTES-D1",
@@ -36424,7 +36482,8 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active"
+          "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active",
+          "EIMPORT.E9C.document-continuity.S.APP.notes.EDITOR.active"
         ],
         "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
       }
@@ -37117,7 +37176,8 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-E9B-CONTACT-DRAFT",
-        "CHK-E9B-READING-TYPE"
+        "CHK-E9B-READING-TYPE",
+        "CHK-E9C-EDITOR-CONTINUITY"
       ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-CONTACT-D1",
@@ -37134,7 +37194,8 @@
         "binding_ids": [
           "EIMPORT.E9B.readability.S.APP.contact.DRAFT.normal",
           "EIMPORT.E9B.external-tool-focus.S.APP.contact.DRAFT.focus",
-          "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active"
+          "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active",
+          "EIMPORT.E9C.document-continuity.S.APP.contact.DRAFT.active"
         ],
         "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
       }
@@ -41617,7 +41678,11 @@
         "CHK-E9B-SETTINGS-LIFECYCLE",
         "CHK-E9B-ACTION-TARGETS",
         "CHK-E9B-READING-TYPE",
-        "CHK-E9B-WALLPAPER-VISUAL-FAIL"
+        "CHK-E9B-WALLPAPER-VISUAL-FAIL",
+        "CHK-E9C-VISIBLE-COLOR",
+        "CHK-E9C-PALETTE-ISOLATION",
+        "CHK-E9C-EDITOR-CONTINUITY",
+        "CHK-E9C-FALLBACK-PALETTE"
       ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-SETTINGS-D1",
@@ -41635,7 +41700,9 @@
           "EIMPORT.E9B.target-type.S.APP.settings.COLOR.normal",
           "EIMPORT.E9B.selected.S.APP.settings.COLOR.active",
           "EIMPORT.E9B.choice-focus.S.APP.settings.COLOR.focus",
-          "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal"
+          "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal",
+          "EIMPORT.E9C.visible-palette.S.APP.settings.COLOR.normal",
+          "EIMPORT.E9C.choice-focus.S.APP.settings.COLOR.focus"
         ],
         "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
       }
@@ -69257,12 +69324,14 @@
         "CHK-E5-PRIMARY-TYPE",
         "CHK-E5-OPAQUE-PLANE",
         "CHK-E52-HUD-INTENT",
-        "CHK-E81-OVERVIEW-NOTES-CONTINUITY"
+        "CHK-E81-OVERVIEW-NOTES-CONTINUITY",
+        "CHK-E9C-EDITOR-CONTINUITY"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active"
+          "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active",
+          "EIMPORT.E9C.document-continuity.S.APP.notes.EDITOR.active"
         ]
       }
     },
@@ -69479,14 +69548,16 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-E9B-CONTACT-DRAFT",
-        "CHK-E9B-READING-TYPE"
+        "CHK-E9B-READING-TYPE",
+        "CHK-E9C-EDITOR-CONTINUITY"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E9B.readability.S.APP.contact.DRAFT.normal",
           "EIMPORT.E9B.external-tool-focus.S.APP.contact.DRAFT.focus",
-          "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active"
+          "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active",
+          "EIMPORT.E9C.document-continuity.S.APP.contact.DRAFT.active"
         ]
       }
     },
@@ -70977,7 +71048,11 @@
         "CHK-E9B-PREFERENCE-STATE",
         "CHK-E9B-ACTION-TARGETS",
         "CHK-E9B-READING-TYPE",
-        "CHK-E9B-WALLPAPER-VISUAL-FAIL"
+        "CHK-E9B-WALLPAPER-VISUAL-FAIL",
+        "CHK-E9C-VISIBLE-COLOR",
+        "CHK-E9C-PALETTE-ISOLATION",
+        "CHK-E9C-EDITOR-CONTINUITY",
+        "CHK-E9C-FALLBACK-PALETTE"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
@@ -70985,7 +71060,9 @@
           "EIMPORT.E9B.target-type.S.APP.settings.COLOR.normal",
           "EIMPORT.E9B.selected.S.APP.settings.COLOR.active",
           "EIMPORT.E9B.choice-focus.S.APP.settings.COLOR.focus",
-          "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal"
+          "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal",
+          "EIMPORT.E9C.visible-palette.S.APP.settings.COLOR.normal",
+          "EIMPORT.E9C.choice-focus.S.APP.settings.COLOR.focus"
         ]
       }
     },
@@ -87432,11 +87509,123 @@
       "scope": "1440×900zh/light/reduce default3D only; actual clicks followed by monitor exposure.",
       "reason": "Desktop-color setting has no visible desktop color effect in this actual scope, despite correct state/pressed. Not a state-loss or focus failure.",
       "finding_id": "UX-038"
+    },
+    {
+      "id": "CHK-E9C-VISIBLE-COLOR",
+      "family_ids": [
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9c_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9c final visible spatial wallpaper bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+        "recorded_at": "2026-10-15T20:09:37.409195+00:00",
+        "reviewed_at": "2026-10-16T04:21:11+08:00",
+        "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d"
+      },
+      "evidence": [
+        "E-BATCH-E9C"
+      ],
+      "scope": "Only named actual reduced-motion spatial scopes; original failed E9b record retained.",
+      "reason": "Promised desktop color now visibly reaches the exposed live monitor: two actual viewports each show six exact distinct palette pixels after real selection/minimize."
+    },
+    {
+      "id": "CHK-E9C-PALETTE-ISOLATION",
+      "family_ids": [
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D4.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9c_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9c final visible spatial wallpaper bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+        "recorded_at": "2026-10-15T20:09:37.409195+00:00",
+        "reviewed_at": "2026-10-16T04:21:11+08:00",
+        "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d"
+      },
+      "evidence": [
+        "E-BATCH-E9C"
+      ],
+      "scope": "Named appearance samples and images only; not whole-page contrast or full D4 score.",
+      "reason": "Six colors match existing classic palette; within each theme document paper, draft, window and chrome computed values remain unchanged across wallpaper choices; neutral-document images independently viewed."
+    },
+    {
+      "id": "CHK-E9C-EDITOR-CONTINUITY",
+      "family_ids": [
+        "S.APP.settings.COLOR",
+        "S.APP.contact.DRAFT",
+        "S.APP.notes.EDITOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.COLOR.control.3feb46",
+        "S.APP.contact.DRAFT.control.604358",
+        "S.APP.notes.EDITOR.control.5ead41"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9c_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9c final visible spatial wallpaper bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+        "recorded_at": "2026-10-15T20:09:37.409195+00:00",
+        "reviewed_at": "2026-10-16T04:21:11+08:00",
+        "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d"
+      },
+      "evidence": [
+        "E-BATCH-E9C"
+      ],
+      "scope": "Named controlled values, not all app data/history/OS input; previous E9b focus/tool evidence remains separate.",
+      "reason": "Original settings button/focus/storage retained through twelve choices; original contact and notes nodes/values survive, with contract continuation and actual contact continued typing."
+    },
+    {
+      "id": "CHK-E9C-FALLBACK-PALETTE",
+      "family_ids": [
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D6.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9c_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9c final visible spatial wallpaper bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+        "recorded_at": "2026-10-15T20:09:37.409195+00:00",
+        "reviewed_at": "2026-10-16T04:21:11+08:00",
+        "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d"
+      },
+      "evidence": [
+        "E-BATCH-E9C"
+      ],
+      "scope": "Contract-only forced failure at1440zh, not all live loss/recovery/device paths.",
+      "reason": "Forced WebGL failure1440zh contract keeps visible original landscape with six classic colors and no spatial screen; selectors/JS outside screen-background CSS unchanged."
     }
   ],
-  "latest_validated_checkpoint": "ebc488e69640d561e96203b93fb4a0eb7676ccab",
-  "preview_scope": "E9a2products/books namedscopesaccepted; contact/settingsE9bnotimplemented/fullmatrixnull.",
-  "latest_reviewed_artifact": "E-BATCH-E9B",
+  "latest_validated_checkpoint": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
+  "preview_scope": "E9c frozen visible palette named scopes reviewed after39a7bd07; E9a/E9b historic bounded closures retained. Full matrices and original low short-screen visual scores remain unverified/unchanged.",
+  "latest_reviewed_artifact": "E-BATCH-E9C",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -87785,7 +87974,7 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
   "anchor_intent_review": {
     "as_of": {
       "phase": "478 preview native anchor and actual right TOC scoped probes",
@@ -87958,5 +88147,22 @@
     "new_P2_findings": [
       "UX-038"
     ]
+  },
+  "e9c_source_review": {
+    "as_of": {
+      "phase": "E9c final visible spatial wallpaper bounded review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9c-source.json",
+      "recorded_at": "2026-10-15T20:09:37.409195+00:00",
+      "reviewed_at": "2026-10-16T04:21:11+08:00",
+      "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d"
+    },
+    "status": "two_hashes_QA_three_contracts_two_actuals_eighteen_images_independently_reviewed",
+    "source_review": "Only screen background base+five selectors, identical to classic six colors; dark/combined specificity correct. No Apps/JS/world/paper/chrome delta.",
+    "new_P0_P1_findings": [],
+    "closed_findings_in_named_scope": [
+      "UX-038"
+    ],
+    "verified_score": null,
+    "limits": "E9b short-screen D1/D4 scores not changed; new D4.3 palette-consistency check is a criterion fragment, not a complete D4 score."
   }
 }
