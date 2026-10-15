@@ -39,6 +39,7 @@
   var pop = null;
   var popBody = null;
   var popMore = null;
+  var popHint = null;
   var currentRef = null; // marker the popover is bound to right now
   var showTimer = 0;
   var hideTimer = 0;
@@ -71,6 +72,13 @@
     pop.setAttribute('aria-label', isZh ? '脚注预览' : 'Footnote preview');
     pop.setAttribute('aria-hidden', 'true');
     pop.inert = true;
+
+    popHint = document.createElement('span');
+    popHint.className = 'fn-popover__keyboard-hint';
+    popHint.textContent = isZh ? '在标记上按 ↓ 进入预览' : 'At the marker, press ↓ to enter.';
+    popHint.setAttribute('aria-hidden', 'true');
+    popHint.hidden = true;
+    pop.appendChild(popHint);
 
     popBody = document.createElement('div');
     popBody.className = 'fn-popover__body';
@@ -138,8 +146,9 @@
     // Let the card size to its content first (CSS caps the max width).
     pop.style.left = '0px';
     pop.style.top = '0px';
-    var pw = pop.offsetWidth;
-    var ph = pop.offsetHeight;
+    var bounds = pop.getBoundingClientRect();
+    var pw = bounds.width;
+    var ph = bounds.height;
 
     var r = ref.getBoundingClientRect();
     var refCx = r.left + r.width / 2;
@@ -158,12 +167,12 @@
     var arrowX = Math.max(14, Math.min(refCx - left, pw - 14));
     pop.style.setProperty('--fn-arrow-x', arrowX + 'px');
 
-    pop.style.left = left + window.scrollX + 'px';
-    pop.style.top = top + window.scrollY + 'px';
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
   }
 
   /* --- Show / hide --------------------------------------------------- */
-  function show(ref) {
+  function show(ref, keyboard) {
     var html = noteHtmlFor(ref);
     if (!html) return false; // nothing to preview → leave the link alone
     buildPop();
@@ -175,6 +184,9 @@
       expanded(currentRef, false);
       popBody.innerHTML = html;
       popBody.scrollTop = 0;
+      popHint.hidden = !keyboard;
+    } else if (keyboard) {
+      popHint.hidden = false;
     }
     popMore.setAttribute('href', ref.getAttribute('href'));
     currentRef = ref;
@@ -258,12 +270,12 @@
       if (!isCoarse()) scheduleHide();
     });
     ref.addEventListener('focus', function () {
-      if (suppressFocusRef !== ref && !isCoarse()) show(ref);
+      if (suppressFocusRef !== ref && !isCoarse()) show(ref, ref.matches(':focus-visible'));
     });
     ref.addEventListener('blur', scheduleHide);
     ref.addEventListener('keydown', function (event) {
       if (event.key !== 'ArrowDown' || event.isComposing || event.keyCode === 229 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
-      if (show(ref)) { event.preventDefault(); popBody.focus({preventScroll: true}); }
+      if (show(ref, true)) { event.preventDefault(); popBody.focus({preventScroll: true}); }
     });
   });
 

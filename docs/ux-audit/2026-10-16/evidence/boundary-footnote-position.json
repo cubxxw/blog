@@ -1,0 +1,1486 @@
+{
+  "at": "2026-10-15T22:18:41.019Z",
+  "contract": "boundary-footnote-position-contract.json",
+  "productionSourceSHA": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662",
+  "experimentalJS_SHA": "40a3197d4aa2bd61d8064c232d4b6b39efe7440f3fb19b086624a49b7ca5e019",
+  "decision": "supported",
+  "observedFacts": [
+    {
+      "caseId": "normal-first-note",
+      "variant": "A",
+      "enteredY": 2501,
+      "citationY": 2501,
+      "escapedY": 2501
+    },
+    {
+      "caseId": "normal-first-note",
+      "variant": "B",
+      "enteredY": 2501,
+      "citationY": 2501,
+      "escapedY": 2501
+    },
+    {
+      "caseId": "edge-existing-longest",
+      "variant": "A",
+      "enteredY": 10462,
+      "citationY": 10431,
+      "escapedY": 10431
+    },
+    {
+      "caseId": "edge-existing-longest",
+      "variant": "B",
+      "enteredY": 10462,
+      "citationY": 10462,
+      "escapedY": 10462
+    },
+    {
+      "caseId": "failure-long-note",
+      "variant": "A",
+      "enteredY": 3018,
+      "citationY": 3013,
+      "escapedY": 3013
+    },
+    {
+      "caseId": "failure-long-note",
+      "variant": "B",
+      "enteredY": 3018,
+      "citationY": 3018,
+      "escapedY": 3018
+    }
+  ],
+  "automatedVerdicts": [
+    {
+      "caseId": "normal-first-note",
+      "variant": "A",
+      "verdict": "pass",
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      }
+    },
+    {
+      "caseId": "normal-first-note",
+      "variant": "B",
+      "verdict": "pass",
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      }
+    },
+    {
+      "caseId": "edge-existing-longest",
+      "variant": "A",
+      "verdict": "fail",
+      "gates": {
+        "windowYUnchanged": false,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      }
+    },
+    {
+      "caseId": "edge-existing-longest",
+      "variant": "B",
+      "verdict": "pass",
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      }
+    },
+    {
+      "caseId": "failure-long-note",
+      "variant": "A",
+      "verdict": "fail",
+      "gates": {
+        "windowYUnchanged": false,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      }
+    },
+    {
+      "caseId": "failure-long-note",
+      "variant": "B",
+      "verdict": "pass",
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      }
+    }
+  ],
+  "humanChoice": "unreviewed; no case promotion to regression or Gold",
+  "aiHypothesis": "An absolute descendant can cause native focus scrolling of the document to satisfy root scroll-padding. A fixed descendant may stay inside the viewport without asking the document to reveal it; paired observations support or reject that mechanism, not a browser-engine proof.",
+  "remainingUncertainty": "One Chromium runtime, three cases; source untouched. Production native anchors/history/resize/reduced-motion and full matrices need separate acceptance after any authorized rewrite.",
+  "runs": [
+    {
+      "caseId": "normal-first-note",
+      "case_type": "normal",
+      "source": "real",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "variant": "A",
+      "states": {
+        "entered": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:1",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "escaped": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      },
+      "automatedVerdict": "pass",
+      "errors": [],
+      "denied": [],
+      "scriptRequests": 1,
+      "image": "docs/ux-audit/2026-10-16/evidence/boundary-footnote-normal-first-note-A.png"
+    },
+    {
+      "caseId": "normal-first-note",
+      "case_type": "normal",
+      "source": "real",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "variant": "B",
+      "states": {
+        "entered": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:1",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "escaped": {
+          "scrollY": 2501,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 37,
+            "y": 277.25,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 51.59375,
+            "y": 289.4375,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 51.59375,
+            "y": 375.828125,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      },
+      "automatedVerdict": "pass",
+      "errors": [],
+      "denied": [],
+      "scriptRequests": 1,
+      "image": "docs/ux-audit/2026-10-16/evidence/boundary-footnote-normal-first-note-B.png"
+    },
+    {
+      "caseId": "edge-existing-longest",
+      "case_type": "edge",
+      "source": "real",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "variant": "A",
+      "states": {
+        "entered": {
+          "scrollY": 10462,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 10431,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 10431,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:12",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "escaped": {
+          "scrollY": 10431,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:12",
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "gates": {
+        "windowYUnchanged": false,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      },
+      "automatedVerdict": "fail",
+      "errors": [],
+      "denied": [],
+      "scriptRequests": 1,
+      "image": "docs/ux-audit/2026-10-16/evidence/boundary-footnote-edge-existing-longest-A.png"
+    },
+    {
+      "caseId": "edge-existing-longest",
+      "case_type": "edge",
+      "source": "real",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "variant": "B",
+      "states": {
+        "entered": {
+          "scrollY": 10462,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 10462,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 10462,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:12",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "escaped": {
+          "scrollY": 10462,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:12",
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      },
+      "automatedVerdict": "pass",
+      "errors": [],
+      "denied": [],
+      "scriptRequests": 1,
+      "image": "docs/ux-audit/2026-10-16/evidence/boundary-footnote-edge-existing-longest-B.png"
+    },
+    {
+      "caseId": "failure-long-note",
+      "case_type": "failure",
+      "source": "synthetic",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "variant": "A",
+      "states": {
+        "entered": {
+          "scrollY": 3018,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 3013,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 3013,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:1",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "escaped": {
+          "scrollY": 3013,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "gates": {
+        "windowYUnchanged": false,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      },
+      "automatedVerdict": "fail",
+      "errors": [],
+      "denied": [],
+      "scriptRequests": 1,
+      "image": "docs/ux-audit/2026-10-16/evidence/boundary-footnote-failure-long-note-A.png"
+    },
+    {
+      "caseId": "failure-long-note",
+      "case_type": "failure",
+      "source": "synthetic",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "variant": "B",
+      "states": {
+        "entered": {
+          "scrollY": 3018,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 3018,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 3018,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:1",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "escaped": {
+          "scrollY": 3018,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 196,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 210.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 210.59375,
+            "y": 157.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "gates": {
+        "windowYUnchanged": true,
+        "hashUnchanged": true,
+        "internalCitation": true,
+        "moreFocused": true,
+        "more44AndInViewport": true,
+        "escapedToMarker": true,
+        "forbiddenNetworkAbsent": true
+      },
+      "automatedVerdict": "pass",
+      "errors": [],
+      "denied": [],
+      "scriptRequests": 1,
+      "image": "docs/ux-audit/2026-10-16/evidence/boundary-footnote-failure-long-note-B.png"
+    }
+  ]
+}

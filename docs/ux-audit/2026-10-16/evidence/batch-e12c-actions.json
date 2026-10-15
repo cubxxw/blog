@@ -1,0 +1,1598 @@
+{
+  "at": "2026-10-15T22:35:19.078Z",
+  "sourceManifest": "batch-e12c-source.json",
+  "backTrace": "docs/ux-audit/2026-10-16/evidence/batch-e12c-back-trace-1792103699222.jsonl",
+  "contexts": [
+    {
+      "kind": "coarse-firsttap-more-secondtap-native-back",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "coarse": true,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "href": "#fn:1",
+      "before": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "",
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 105.53125,
+          "height": 69.171875
+        },
+        "body": {
+          "x": 14.59375,
+          "y": 12.1875,
+          "width": 76.34375,
+          "height": 0,
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 14.59375,
+          "y": 14.578125,
+          "width": 76.34375,
+          "height": 44,
+          "href": null,
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "first": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 248.6875,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 260.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 347.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "moreTarget": {
+        "hash": "#fn:1",
+        "scrollY": 18972,
+        "target": {
+          "x": 54.296875,
+          "y": 72.140625,
+          "width": 305.703125,
+          "height": 153.25,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": 52
+      },
+      "afterMoreBack": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 3,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 248.6875,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 260.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 347.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "reopen": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 3,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 248.6875,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 260.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 347.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "secondTarget": {
+        "hash": "#fn:1",
+        "scrollY": 18972,
+        "target": {
+          "x": 54.296875,
+          "y": 72.140625,
+          "width": 305.703125,
+          "height": 153.25,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": 52
+      },
+      "afterSecondBack": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 3,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 248.6875,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 260.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 347.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "errors": [],
+      "denied": [],
+      "setup": "Scrolled existing marker to viewport center; actual touchscreen taps; both Back operations actual browser history, no synthetic click or routing."
+    },
+    {
+      "kind": "coarse-firsttap-more-secondtap-native-back",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "coarse": true,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "href": "#fn:1",
+      "before": {
+        "scrollY": 3867,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "",
+        "card": {
+          "x": 0,
+          "y": 4,
+          "width": 117,
+          "height": 69.171875
+        },
+        "body": {
+          "x": 14.59375,
+          "y": 16.1875,
+          "width": 87.8125,
+          "height": 0,
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 14.59375,
+          "y": 18.578125,
+          "width": 87.8125,
+          "height": 44,
+          "href": null,
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "dark nav-hidden",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 4)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "first": {
+        "scrollY": 3867,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 249.765625,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 261.953125,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 348.34375,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "moreTarget": {
+        "hash": "#fn:1",
+        "scrollY": 24434,
+        "target": {
+          "x": 52.34375,
+          "y": 772.34375,
+          "width": 307.65625,
+          "height": 148.75,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": -1
+      },
+      "afterMoreBack": {
+        "scrollY": 3867,
+        "hash": "",
+        "historyLength": 3,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 253.765625,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 265.953125,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 352.34375,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "dark",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 4)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "reopen": {
+        "scrollY": 3867,
+        "hash": "",
+        "historyLength": 3,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 249.765625,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 261.953125,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 348.34375,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "secondTarget": {
+        "hash": "#fn:1",
+        "scrollY": 24491,
+        "target": {
+          "x": 52.34375,
+          "y": 715.34375,
+          "width": 307.65625,
+          "height": 148.75,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": -1
+      },
+      "afterSecondBack": {
+        "scrollY": 3867,
+        "hash": "",
+        "historyLength": 3,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 253.765625,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 265.953125,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 352.34375,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "dark",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 4)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "errors": [],
+      "denied": [],
+      "setup": "Scrolled existing marker to viewport center; actual touchscreen taps; both Back operations actual browser history, no synthetic click or routing."
+    },
+    {
+      "kind": "trusted-local-tab-arrowdown-links-persistence-escape-native-enter",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "coarse": false,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "href": "#fn:1",
+      "previous": {
+        "tag": "A",
+        "id": "",
+        "className": ""
+      },
+      "markerBefore": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 251.6875,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 288.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": true,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 484.59375,
+            "y": 263.875,
+            "width": 330.8125,
+            "height": 21,
+            "top": 263.875,
+            "right": 815.40625,
+            "bottom": 284.875,
+            "left": 484.59375
+          }
+        }
+      },
+      "entered": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 251.6875,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 288.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "DIV",
+          "id": "",
+          "className": "fn-popover__body",
+          "href": null,
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": true,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 484.59375,
+            "y": 263.875,
+            "width": 330.8125,
+            "height": 21,
+            "top": 263.875,
+            "right": 815.40625,
+            "bottom": 284.875,
+            "left": 484.59375
+          }
+        }
+      },
+      "moreFocused": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 251.6875,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 288.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "fn-popover__more",
+          "href": "#fn:1",
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": true,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 484.59375,
+            "y": 263.875,
+            "width": 330.8125,
+            "height": 21,
+            "top": 263.875,
+            "right": 815.40625,
+            "bottom": 284.875,
+            "left": 484.59375
+          }
+        }
+      },
+      "naturalExit": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 251.6875,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 288.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 484.59375,
+            "y": 263.875,
+            "width": 330.8125,
+            "height": 21,
+            "top": 263.875,
+            "right": 815.40625,
+            "bottom": 284.875,
+            "left": 484.59375
+          }
+        }
+      },
+      "escaped": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 251.6875,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 288.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 484.59375,
+            "y": 263.875,
+            "width": 330.8125,
+            "height": 21,
+            "top": 263.875,
+            "right": 815.40625,
+            "bottom": 284.875,
+            "left": 484.59375
+          }
+        }
+      },
+      "enterTarget": {
+        "hash": "#fn:1",
+        "scrollY": 12919,
+        "target": {
+          "x": 136.296875,
+          "y": 72.015625,
+          "width": 881.9375,
+          "height": 72,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": 44.59375
+      },
+      "pointerHover": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 3,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 276.6875,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 288.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false,
+        "hint": {
+          "text": "在标记上按 ↓ 进入预览",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "errors": [],
+      "denied": [],
+      "setup": "Programmatic focus only on existing previous tab stop; subsequent Tab/ArrowDown/Tab/Escape/Enter trusted keys. Marker.focus is used only for second reopening to isolate Escape. Not full article Tab traversal or AT."
+    },
+    {
+      "kind": "trusted-local-tab-arrowdown-links-persistence-escape-native-enter",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "coarse": false,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "href": "#fn:1",
+      "previous": {
+        "tag": "A",
+        "id": "",
+        "className": ""
+      },
+      "markerBefore": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 252.078125,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 289.265625,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 375.65625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": true,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 51.59375,
+            "y": 264.265625,
+            "width": 330.8125,
+            "height": 21,
+            "top": 264.265625,
+            "right": 382.40625,
+            "bottom": 285.265625,
+            "left": 51.59375
+          }
+        }
+      },
+      "entered": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 252.078125,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 289.265625,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 375.65625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "DIV",
+          "id": "",
+          "className": "fn-popover__body",
+          "href": null,
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": true,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 51.59375,
+            "y": 264.265625,
+            "width": 330.8125,
+            "height": 21,
+            "top": 264.265625,
+            "right": 382.40625,
+            "bottom": 285.265625,
+            "left": 51.59375
+          }
+        }
+      },
+      "moreFocused": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 252.078125,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 289.265625,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 375.65625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "fn-popover__more",
+          "href": "#fn:1",
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": true,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 51.59375,
+            "y": 264.265625,
+            "width": 330.8125,
+            "height": 21,
+            "top": 264.265625,
+            "right": 382.40625,
+            "bottom": 285.265625,
+            "left": 51.59375
+          }
+        }
+      },
+      "naturalExit": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 255.86537170410156,
+          "width": 360,
+          "height": 178.17185974121094
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 293.0528564453125,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 379.4434814453125,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "dark nav-hidden",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 3,
+        "transform": "matrix(1, 0, 0, 1, 0, 3.78725)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 51.59375,
+            "y": 268.16021728515625,
+            "width": 330.8125,
+            "height": 21,
+            "top": 268.16021728515625,
+            "right": 382.40625,
+            "bottom": 289.16021728515625,
+            "left": 51.59375
+          }
+        }
+      },
+      "escaped": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 256.078125,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 293.265625,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 379.65625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 4)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 51.59375,
+            "y": 268.265625,
+            "width": 330.8125,
+            "height": 21,
+            "top": 268.265625,
+            "right": 382.40625,
+            "bottom": 289.265625,
+            "left": 51.59375
+          }
+        }
+      },
+      "enterTarget": {
+        "hash": "#fn:1",
+        "scrollY": 14779,
+        "target": {
+          "x": 134.34375,
+          "y": 725.953125,
+          "width": 707.9375,
+          "height": 64.78125,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": -1
+      },
+      "pointerHover": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 3,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 277.3979187011719,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 289.5854187011719,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 375.9760437011719,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "dark",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 2,
+        "transform": "matrix(1, 0, 0, 1, 0, 0.319798)",
+        "overflowX": false,
+        "hint": {
+          "text": "At the marker, press ↓ to enter.",
+          "visible": false,
+          "ariaHidden": "true",
+          "fontSize": "14px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      "errors": [],
+      "denied": [],
+      "setup": "Programmatic focus only on existing previous tab stop; subsequent Tab/ArrowDown/Tab/Escape/Enter trusted keys. Marker.focus is used only for second reopening to isolate Escape. Not full article Tab traversal or AT."
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-before-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-first-tap-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-more-target-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-before-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-first-tap-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-more-target-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-keyboard-marker-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-keyboard-entered-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-keyboard-more-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-pointer-hover-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-keyboard-marker-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-keyboard-entered-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-keyboard-more-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12c-pointer-hover-en.png"
+  ],
+  "limits": "Four Chromium named contexts; keyboard visible cue/session footprint plus actual pointerhover/tap absence; actual existing bilingual article/coordinates/keys and native same-document Back, no real AI/share/contact/citation navigation. Not physical device/Safari/AT/full keyboard certification."
+}

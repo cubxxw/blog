@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T06:15:47+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `9d43d0cc`（E11c）；E12脚注冻结证据已复核，完整评分仍null。
+更新：2026-10-16T06:42:28+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `50a08fbb`（E12）；E12c冻结源码与新实测已复核，尚无新checkpoint。
 
-**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；323条记录只覆盖69族局部状态，完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；328条记录只覆盖69族局部状态，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`9d43d0cc`（E11c）。E12四源/QA/四runner、8合同及七actual context/15正式图已复核，无新P0/P1；UX042按settled-font命名范围关闭。UX044文章断点、UX046冷字体位移开放；可视键盘入口提示仍有具体D1差距。完整评分仍null。
+最近已验checkpoint：`50a08fbb`（E12）。E12c当前fixed/可视cue命名范围通过、UX047有界关闭，普通阅读静态D1/D4=96/96；UX044/046继续开放。初始Back超时未解释；全矩阵仍null。
 
 
 
@@ -97,6 +97,7 @@
 | UX-044 | `A.AI.INPUT`, `A.TOC.MOBILETABS`, `A.TOC.FAB` | 文章AI跨1200断点未交接续写目标与焦点，下一Tab跳到文末 | post_E12_candidate | `confirmed_named_article_resize_baseline_open` |
 | UX-045 | `G.SEARCH.RETRY` | 搜索Retry在错误转pending时上移，原坐标再次点击丢失焦点 | E11b_final | `closed_named_E11b_scope_full_matrix_unverified` |
 | UX-046 | 正文渲染面（无控件归因） | 冷启动迟到字体注册期间正文重排，阅读位置发生跳移 | post_E12_font_candidate | `confirmed_named_cold_async_font_layout_baseline_open` |
+| UX-047 | `A.BODY.FOOTNOTEPREVIEW` 支持面 | 短屏内部Tab牵动正文，退出仍偏移 | E12c1 | `closed_E12c_named_fixed_short_Tab_node_identity_resize_reduce_scope` |
 
 
 ## 有证据的单项锚点评分
@@ -414,7 +415,7 @@
 | `A.BODY.FAQ` | FAQ 折叠 | 1 | 3 | `unverified / null` | UX-016, UX-019 |
 | `A.BODY.NOTES` | 月度思考段落定位 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `A.BODY.LINKPREVIEW` | 链接预览 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 3 | 11 | `unverified / null` | UX-042 |
+| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 3 | 21 | `unverified / null` | UX-042 |
 | `A.FOOTER.NEXT` | 上一篇/下一篇/相关文章/专栏结尾 | 3 | 0 | `unverified / null` | 待矩阵 |
 | `G.SHARE.ENTRY` | 生成分享卡/微信分享 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `G.SHARE.DIRECT` | X/Email/复制链接 | 2 | 3 | `unverified / null` | UX-006 |
@@ -1067,3 +1068,37 @@ UX042只关闭命名的settled-font范围：390中英首tap精确保scroll/hash/
 当前验收显式等待异步style注册及fonts.ready，只界定settled范围，**没有修复冷启动读者的布局跳移**。后续先比较cold/warm/delayed/failed字体与fallback度量，再选小范围交付/字体度量修法；不以等待、换量表或暖缓存掩盖。后续warm/reduce稳定不是cold/reduce通过，未测CLS/设备/全站性能。
 
 盘点v1.22最终同步：309族/367selector entries、323状态（新增8）/69局部证据族（68partial+1measured）/0完整。仅追加E12 binding引用；root98/body是支持语义，marker d3与More70独立，未新增按钮。UX042命名关闭、UX044/046开放；量表、门槛和完整null保持不变。
+
+
+## UX047 · 短屏内部Tab牵动正文；定位实验支持独立重写
+
+2026-10-16T06:22:22+08:00：[新短Tab实测](evidence/probe-e12-short-tab.json)在568×150英文/dark/reduce既有最长note，真实ArrowDown→Tab引用使fine/coarse两次scroll10462→10431，body内部scroll26，More仍在10431；不再是单程序化body.focus候选。新增P2、D6.2负片段80；没有route/draft丢失或脱困失败，不自动套硬门槛。原E12的首tap/nativehistory、1440局部键盘和短屏bodywheel通过范围保留，不能扩成短屏内部Tab合格。
+
+按[boundary-demo技能](/Users/cubxxw/.agents/skills/boundary-demo/SKILL.md)复核[单决策合同](evidence/boundary-footnote-position-contract.json)、[回执](evidence/boundary-footnote-position.json)/[provenance](evidence/boundary-footnote-position-provenance.json)、runner与六张A/B图，hash均匹配。A原absolute与B仅route内坐标替换/临时fixedCSS，生产JS/CSS未改；正常1440两者0，真实150高note A−31/B0，224合成24段note A−5/B0。B内部focus/More44/屏内/Escape/hash自动门槛通过，未发现实验P0/P1。
+
+结论为 **supported：支持fixed+viewport坐标的最小生产重写假设**。事实、自动判定、AI机制假设与humanChoice分开，所有case仍discovery/unreviewed；无Gold、用户品味选择或自动promote。不是证明浏览器内部机制，也不是交付B源码或新96。
+
+两项eval精度限制随证据保留：Escape门槛只比较href，同一note多个marker不能证明原节点；生产回归要用===原DOM。`forbiddenNetworkAbsent`实际检查Netlify route尝试计数及pageerror为空，不是全部外网白名单审计；本次未激活citation/model/share/contact。二者不推翻定位对照，但不能扩大相应安全/owner结论。
+
+重写后须独立跑真实短Tab→citation→More→Escape的严格windowY/hash及原节点断言，并保原生first/secondtap/More/Back、bodywheel到底、文档scroll/resize/runtimeMotion、换marker与外部焦点意图。normalmotion、visualViewport/zoom、Safari/AT/实体设备未知；UX046冷字体及可视键盘提示另保原结论。本轮无新control或inventory状态导入，仍v1.22的309族/367selectors/323状态/69局部族/0完整。
+
+源范围补记：UX047及A/B原实现绑定不可变`50a08fbb` Git blob与实验provenance；父已据独立结论授权E12c JS/CSS/spec重写，当前WIP不再用旧hash认证。等待新freeze/actual后才判断UX047关闭，E13仍未实施。
+
+
+## E12c · 独立生产重写与可视键盘入口
+
+2026-10-16T06:41:59+08:00：[四源/QA/四runner](evidence/batch-e12c-source.json)、[provenance](evidence/batch-e12c-provenance.json)及三回执/六条finalBack trace SHA均匹配。[10合同](evidence/batch-e12c1-contracts.log)17.1s、Hugo4481ms；原8case加强加2个真实shortTab，不是新增十种行为。[main四context/14图](evidence/batch-e12c-actions.json)+[short两context/六图](evidence/batch-e12c-short-tab.json)共20新图独立逐看，无新P0/P1。
+
+UX047仅关闭 `closed_E12c_named_fixed_short_Tab_node_identity_resize_reduce_scope`：568×150英文/dark/normal、fine/coarse既有最长note，ArrowDown→citation→More→resize224→runtimeReduce→Escape，rootY10462/hash/history保持，Escape用===原marker DOM而非href。150压力边界正文窗口约32CSSpx，内容通过内部滚动可读；224恢复完整note。More高44/字14，card上下12px；不把150当实体机或常规移动视口认证。原−31、224合成−5及A/B实验均保留；实验仍discovery/unreviewed，无Gold或自动promote。
+
+当前普通390/1440阅读截图**局部D1/D4=96/96**，E12旧94.5仍为历史。中英marker首次键盘聚焦即可看到“在标记上按↓进入预览/At the marker, press↓to enter.”；进入body/citation/More后hint/card bbox不变，可视副本aria-hidden且原SR说明保留。新pointerhover与触摸首tap无cue，提示不增加普遍噪声；必要focus环不作装饰扣分。六张极短图另按可达性几何核验，不冒常规视口审美或整族96。
+
+[22个computed样本](evidence/batch-e12c-contrast.json)独立sRGB重算误差≤1.78e-15，含More0.9合成，rawmin **4.879289268784955**；两hint比值6.152277596615889/8.408914777673388。仅这些14CSSpx正文/引用/More/hint，不认证inlinecode0.92em、整页/图片/抗锯齿或AT。
+
+原C十合同8过2失败保留；[fractional诊断](evidence/probe-e12c-fractional.json)稳定rect178.171875而offsetHeight178，净空11.828125px。C1仅改JS为fractional bbox，CSS/spec/footer不动，严格12px/.1断言未放宽；这不是UX047根滚动再失败，也未归咎入口过渡。
+
+初始英文normal More→Back exactY 10s超时仍是**未解释观察**，原log/source/六图保留。三[诊断context](evidence/probe-e12c-back.json)2.5s回原3867及markerDocY4279.9375，final六条Back trace也精确通过；这些新成功不能解释旧失败或证明其不可能。只加只读事件/font/scroll JSONL，无生产scroll补偿、恢复措施或放宽gate。当前native通过只授新记录scope，Back整体可靠性仍未知，正常目标PNG为首次进入视口帧，不宣称smooth终态。
+
+UX044文章AI断点、UX046冷字体仍open；自然Tab离开More后的合理正文目标、320/整页zoom/Safari/AT/实体输入法/设备和完整矩阵未验。完整分保持null，当前盘点同步完成后停止写入。
+
+盘点v1.23最终同步：309族/367selector entries、328状态（新增5）/69局部证据族/0完整；hint仅root支持项，无新按钮。原短Tab失败、当前cue/shortTab/native/文字证据分别引用；初Back超时未解释，实验case未晋级。

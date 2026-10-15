@@ -1,0 +1,17 @@
+
+Running 10 tests using 1 worker
+
+(node:80698) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/footnote-preview-contracts.spec.ts:34:7 › zh coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back (831ms)
+  ✓   2 tests/e2e/footnote-preview-contracts.spec.ts:34:7 › en coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back (8.0s)
+  ✓   3 tests/e2e/footnote-preview-contracts.spec.ts:51:7 › zh fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening (1.1s)
+  ✓   4 tests/e2e/footnote-preview-contracts.spec.ts:51:7 › en fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening (1.1s)
+  ✓   5 tests/e2e/footnote-preview-contracts.spec.ts:68:7 › bounded short-screen footnote › a long-note fixture scrolls inside the region without moving the article or clipping More (1.5s)
+  ✓   6 tests/e2e/footnote-preview-contracts.spec.ts:87:7 › fine real short-screen Tab › the existing longest English note keeps native internal Tab off the document scroll chain (1.2s)
+  ✓   7 tests/e2e/footnote-preview-contracts.spec.ts:87:7 › coarse real short-screen Tab › the existing longest English note keeps native internal Tab off the document scroll chain (1.2s)
+  ✓   8 tests/e2e/footnote-preview-contracts.spec.ts:105:7 › coarse click intent › modifiers, non-primary, AT, Space and missing or malformed definitions retain native intent (508ms)
+  ✓   9 tests/e2e/footnote-preview-contracts.spec.ts:120:7 › native fallback without JavaScript › the original marker navigates to the complete note and browser Back restores its reading point (453ms)
+  ✓  10 tests/e2e/footnote-preview-contracts.spec.ts:129:7 › owned preview timers › an old hover timer cannot replace a newer focused marker or hide its citation; existing ARIA survives (520ms)
+
+  10 passed (17.1s)

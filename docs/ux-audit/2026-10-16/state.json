@@ -3,33 +3,32 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653",
-  "phase": "E12-accepted-named-scope-E12c-preparing",
-  "batch": "E12-footnote-preview",
+  "checkpoint": "50a08fbbfb19b5f59d2dc95202071f6132466655",
+  "phase": "E12c-independent-closure-ready-local-checkpoint",
+  "batch": "E12c-footnote-visible-keyboard-cue-and-fixed-position",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "E12c keyboard entry visible cue; parent additional150px actual Tab citation shiftedreading31px, unreviewed probe needs bounded absolute/fixed experiment before production choice",
     "E13 UX044 canonical single AI DOM/controller;7source/10case refined readonlyplan;not implemented",
     "E14 UX046 cold asyncfont registration reflowsarticle;read-only alternatives need bounded experiment",
+    "E12c original actualBack10s timeout unexplained;final6trace bounded successes,wholeBack reliability unknown",
     "QR portrait error/account grouping;AT/Safari/physical/fullmatrix/BFCache unknown"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e12-provenance.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e12c-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T22:17:19.379305+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+  "updatedAt": "2026-10-15T22:43:02.913628+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e12c-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "Independent15formal+2discovery+4fontPNG;20contrast rawmin4.879289268784955;4src/QA/4runners/provenance match,no P0/P1;309families/367selectors/323states/69partial/0full/null;D1local94.5,D4static96;UX042namedclosed;UX044046open",
-  "previewBatch": "E12 accepted8contracts14.9s/7actual15PNG+20computedcontrast;settled-font scopes only",
+  "review": "Independent20formalPNG;22contrast rawmin4.879289268784955;4src/QA/4runners/provenance/6Backtrace match,no newP0/P1;309families/367selectors/328states/69partial/0full/null;D1D4local96/96;UX047namedclosed;UX044046open;originalBacktimeoutunexplained",
+  "previewBatch": "E12c1 accepted named scope: Hugo4481ms/10pass17.1s/6actual20PNG/22computedcontrast;full score null",
   "executorOwnership": [
-    "layouts/partials/footer.html onlyfootnote ownership exclusion",
-    "static/js/footnote-preview.js preview intent/focus/ownedtimers/semantics",
-    "assets/css/extended/zzz-footnote-preview.css More44/14text/shortbody scroll",
-    "tests/e2e/footnote-preview-contracts.spec.ts new8cases"
+    "static/js/footnote-preview.js fixed viewport coordinates/session stable visual keyboard hint",
+    "assets/css/extended/zzz-footnote-preview.css fixed positioning/14px hint;footer byte-unchanged",
+    "tests/e2e/footnote-preview-contracts.spec.ts 8base strengthened +2 actual shortTab fine/coarse =10cases"
   ]
 }

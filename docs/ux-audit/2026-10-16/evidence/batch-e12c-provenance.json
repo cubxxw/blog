@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-15T22:38:02.933275+00:00",
+  "sourceManifest": "batch-e12c-source.json",
+  "sourceManifestSHA256": "267dfa12eec2168d7a5acbc3f5ebbe1ad11e31dc4c228973caf9100c97bd0c5d",
+  "base": "50a08fbbfb19b5f59d2dc95202071f6132466655",
+  "receipts": {
+    "batch-e12c-actions.json": {
+      "sha256": "be6924335b7760f6de96dcb308c3402f307f71d4424370156099ed35b801d631",
+      "images": 14,
+      "contexts": 4
+    },
+    "batch-e12c-short-tab.json": {
+      "sha256": "68a5508373d20e1ee81b6fe06c5ee4e3f61127c7efcb183cf4c62ef3a37d79ba",
+      "images": 6,
+      "contexts": 2
+    },
+    "batch-e12c-contrast.json": {
+      "sha256": "aa4868a4ee64eac44aeb10fe43d629c38af2164e7eb7391c150534e558f3504d",
+      "images": 0,
+      "contexts": 4
+    }
+  },
+  "parentReadAll20FormalPNG": true,
+  "candidateHistory": "Initial C10 contracts8pass/2fail due integer offset height afterresize; fractional probe178.171875 vs178 confirms, C1onlymeasurementchange; same spec12px/.1 assertions kept;10pass17.1s/Hugo4481ms.",
+  "backObservation": "First C actual en normal More→Back exactY gate10s timeout is retained and unexplained. No production fix or softened gate.3diagnostic contexts returned exactY/markerY; final main6Back traces allpass. Does not prove original timeout impossible or explain it.",
+  "limits": "6named actualcontexts20images+4computedcontrast contexts22visible samples. Main normalnative target PNG first-visible, not final smooth alignment. Extra150px is explicit boundary, no physicaldevice/OSzoom/AT/fullmatrix claim. Body/More/hint14 notinlinecode. Experiment discovery remainsunreviewed; production independentrewrite, noGold promotion.",
+  "backTrace": {
+    "path": "docs/ux-audit/2026-10-16/evidence/batch-e12c-back-trace-1792103699222.jsonl",
+    "sha256": "23331f668556ecf91ace1b0995a1c555a622ad70bc23bd61d9293c04e24ae947",
+    "count": 6,
+    "allpass": true
+  }
+}

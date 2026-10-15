@@ -1806,3 +1806,20 @@ E11b的17图、2旧专项及真实Back完整保留，c未重跑Back/旧专项，
 **UX046/P2开放**：[冷字体probe](evidence/probe-e12-font-layout.json)仅en390dark/no-preference，字体0→15、document30674→31731、marker414.28→627.94、scroll3713→3652，未有新用户scroll。归阅读渲染surface、`control_ids=[]`，不是marker点击失败/E12回归；reduce本次已字体暖，不授冷加载通过。文章UX044继续开放。
 
 本Agent看3张既有正式图、读source/provenance并复算20样本；父/独立review已读15正式图。累计 **323状态 / 69族局部证据**；保持 **309族 / 367selector entries / 57journeys / 18roadmap**。完整族0/fullscore null；未启动browser/构建/测试，现停止写入供checkpoint。
+
+
+## v1.23 E12c：可见键盘入口与短屏内部焦点
+
+导入 **2026-10-16T06:41:02+08:00**；[source](evidence/batch-e12c-source.json)/[provenance](evidence/batch-e12c-provenance.json)冻结匹配：仅JS/CSS两生产文件，footer与`50a08fbb`逐字相同。C初10合同8过2失败保留；C1只把JS整数offset测量改为实际小数bbox，CSS/footer/spec与12px/.1断言未放宽。[最终10合同17.1s](evidence/batch-e12c1-contracts.log)是**8base加强+2新shortTab**，不是18合同或10新功能。
+
+只添 **5状态**：旧UX047负focus、键盘cue focus、两短屏内部Tab focus、当前main原生active、22文字normal；仍现有3control ID，无新族/selector entry。新`.fn-popover__keyboard-hint`只属root`98b9b5`支持span，14px且`aria-hidden`避免重复说明，不是按钮/Tabstop。
+
+- [4maincontexts/14图](evidence/batch-e12c-actions.json)：中英键盘显示↓可视入口，ArrowDown/引用/More同会话占位不变；pointerhover/tap无提示。当前source首tap/secondtap/More/native/Back和局部Esc实测，不继承旧图认证新source。
+- [2shortcontexts/6图](evidence/batch-e12c-short-tab.json)：568×150en/dark fine/coarse，现有最长note实际内部Tabcitation/More保持Y10462/hash/history；resize224/runtimeReduce/Esc保原body/citation/MoreDOM与阅读点。More44/14、12px边界有界，不认证完整Tab/实机/全矩阵。
+- [22computed文字样本](evidence/batch-e12c-contrast.json)含2新hint、More0.9合成，rawmin **4.879289268784955**；本Agent复算误差≤1.78e-15。不含inlinecode`.92em`/抗锯齿/全页/AT。
+
+**UX047负基线保留**：[真实shortTab](evidence/probe-e12-short-tab.json)绑定immutable`50a08fbb`，原fine/coarse内部focus使10462→10431，More保持偏移；不塞给marker/More点击失败。[paired boundary](evidence/boundary-footnote-position-provenance.json)仍discovery/humanChoice unreviewed，B实验不是生产pass或Gold。独立final已复核source/10合同/20正式图/22contrast，UX047关闭`closed_E12c_named_fixed_short_Tab_node_identity_resize_reduce_scope`，只限568×150en/dark normal fine/coarse现有note→resize224→runtimeReduce→Esc原DOM；224长fixture另为合同。旧负基线保留，不认证整族。
+
+**Back初失败未解释**：[初enMore→Back10s timeout](evidence/batch-e12c-back-initial-actions.log)、原source和6初图保留。3诊断返回精确Y、finalmain6条JSONL均pass，但没有生产修复/放宽原gate，不能把原失败说成已fix或不可能复现。normal目标图仍首次可见，非smooth终态。
+
+UX044/046继续开放，完整族0/fullscore null。本Agent只看2张既有正式图、读回source/receipt并复算22样本，无browser/构建/测试。累计 **328状态 / 69族局部证据**；保持 **309族 / 367selector entries / 57journeys / 18roadmap**，现停写供checkpoint与review同步。

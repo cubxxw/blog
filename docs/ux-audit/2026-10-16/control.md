@@ -68,3 +68,9 @@ E11c独立闭环：15同case7.0s、7actual/15图独立逐看，6status+2Retry文
 E11c checkpoint `9d43d0cc2e4b090b0196b2fe36a09c9dece26653` 已readback，工作树当时clean，未push。E12按next-batches中已准备8合同边界明确放行现executor；source冻结前不build，1317继续c已验preview。E13推荐canonical单DOM/controller，7源/10合同只读候选，优先E12，未实施。
 
 E12独立闭环：8合同14.9s/Hugo3488ms，7actual15主图父/独立逐看，20computed含More.9合成rawmin4.879289268784955、独立误差1.78e-15；4源/QA/4runner/provenance一致。v1.22 309族/367selectors/323状态/69局部/0完整，D1局部94.5（键盘可视入口缺提示），静态D4=96；UX042仅settledfont首tap/nativehistory/ownedkeyboard命名范围闭，044/046open。所有初失败/harness修正/冷font负基线保留，未把额外150px说实体手机，不把first-visible smooth截图说终态。下一E12c先可视cue，同时额外150px真实Tab引用导致31px正文偏移的新probe待独立诊断；无新已评P0/P1，不扩充完整96认证。先保存本地checkpoint，继续单browser/不push。
+
+E12 checkpoint `50a08fbbfb19b5f59d2dc95202071f6132466655` readback，未push，3source frozen. Boundary-demo experiment uses browser-only JS route+CSS overlay Aabsolute/Bfixed, fixedviewport coords as coherent onealternative; 3paired normal/edge/failure discovery cases, 6runs/6images. A short150 actualnote -31px and long224fixture -5px; B both0, normalboth0. Supported within thesecases, humanchoiceunreviewed/discovery unchanged, noGold/promotion. Source未改。独立review后方重写生产source与正常验收，不将实验pass冒生产交付。
+
+E12c已明确放行现executor仅JS/CSS+现spec，10case=8加强+2短Tab，footer仍50a08字节。独立已核实验6图/immutable2blob/contract/receipt，支持定位假设无实验P0/P1，UX047/P2open；不promote discovery、不当生产pass。预览仍E12 CP50a08，source WIP不build。父c用新版本helper以保原E12 helper/runner证据不变，单独stubGA自动脚本，Netlify仍blocked503，publicfonts继续真实读取；不把Netlify计数叫完整外网审计。无browser/build运行。
+
+E12c独立闭环：四源/QA/四runner/provenance及六条finalBack trace SHA匹配；10合同17.1s、Hugo4481ms、6actual20PNG父与独立全部逐看，22contrast独立rawmin4.879289268784955，无新增P0/P1。v1.23为309族/367selectors/328状态/69局部/0完整，普通已测视口静态D1/D4=96/96；UX047仅fixed/短Tab/原节点/resize/runtimeReduce命名范围闭。初Back10s超时未解释、全分null、实验discovery/unreviewed不变。两审计Agent停写后本地checkpoint；随后E13，预览保留，不push。
