@@ -1,0 +1,1297 @@
+{
+  "observations": [
+    {
+      "width": 320,
+      "height": 740,
+      "lang": "zh",
+      "theme": "light",
+      "coarse": true,
+      "source": "batch-e9a1-source.json",
+      "compact": true,
+      "selections": [
+        {
+          "option": {
+            "id": "talent-signal",
+            "name": "Talent Signal"
+          },
+          "link": {
+            "href": "https://gettalentsignal.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.1143569946289,
+            "height": 44.279449462890625,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 300,
+            "scrollWidth": 300,
+            "projectedBodyFont": 16.399788411458335
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "imstage",
+            "name": "IMStage"
+          },
+          "link": {
+            "href": "https://imstage.org/?lang=zh",
+            "label": "打开真实产品 ↗",
+            "width": 122.1143569946289,
+            "height": 44.2794189453125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 300,
+            "scrollWidth": 300,
+            "projectedBodyFont": 16.399788411458335
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "solo-compass",
+            "name": "Solo Compass"
+          },
+          "link": {
+            "href": "https://github.com/getyak/solo-compass",
+            "label": "打开真实产品 ↗",
+            "width": 122.1143569946289,
+            "height": 44.2794189453125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 300,
+            "scrollWidth": 300,
+            "projectedBodyFont": 16.399788411458335
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "daypage",
+            "name": "DayPage"
+          },
+          "link": {
+            "href": "https://daypage.cubxxw.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.1143569946289,
+            "height": 44.2794189453125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 300,
+            "scrollWidth": 300,
+            "projectedBodyFont": 16.399788411458335
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "telepace",
+            "name": "Telepace"
+          },
+          "link": {
+            "href": "https://telepace.cubxxw.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.1143569946289,
+            "height": 44.2794189453125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 300,
+            "scrollWidth": 300,
+            "projectedBodyFont": 16.399788411458335
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "apply-agent",
+            "name": "Apply Agent"
+          },
+          "link": {
+            "href": "https://apply.cubxxw.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.1143569946289,
+            "height": 44.2794189453125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 300,
+            "scrollWidth": 300,
+            "projectedBodyFont": 16.399788411458335
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "agent-diff-guard",
+            "name": "Agent Diff Guard"
+          },
+          "link": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "label": "打开真实产品 ↗",
+            "width": 122.1143569946289,
+            "height": 44.2794189453125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 300,
+            "scrollWidth": 300,
+            "projectedBodyFont": 16.399788411458335
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        }
+      ],
+      "external": {
+        "count": 1,
+        "href": "https://github.com/cubxxw/agent-diff-guard",
+        "target": {
+          "x": 50.94141387939453,
+          "y": 464.61907958984375,
+          "width": 122.1143569946289,
+          "height": 44.2794189453125,
+          "hit": true
+        },
+        "network": "intercepted local response before external request"
+      },
+      "exploreTarget": {
+        "x": 130.48037719726562,
+        "y": 181.40245056152344,
+        "width": 72.15907287597656,
+        "height": 44.2794189453125,
+        "hit": true
+      },
+      "covers": [
+        {
+          "background": "rgb(79, 104, 90)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 01",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "越南",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            }
+          ]
+        },
+        {
+          "background": "rgb(141, 93, 67)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 02",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "吴哥窟",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            }
+          ]
+        },
+        {
+          "background": "rgb(76, 105, 121)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 03",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "西藏",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            }
+          ]
+        },
+        {
+          "background": "rgb(117, 85, 81)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 04",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "乱世为龙",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            }
+          ]
+        }
+      ],
+      "bookLinks": [
+        {
+          "title": "越南",
+          "href": "https://vietnam.cubxxw.com/",
+          "label": "阅读《越南》 ↗",
+          "width": 110.63450622558594,
+          "height": 44.2794189453125,
+          "hit": true
+        },
+        {
+          "title": "吴哥窟",
+          "href": "https://angkor.cubxxw.com/",
+          "label": "阅读《吴哥窟》 ↗",
+          "width": 124.57432556152344,
+          "height": 44.2794189453125,
+          "hit": true
+        },
+        {
+          "title": "西藏",
+          "href": "https://tibet.cubxxw.com/",
+          "label": "阅读《西藏》 ↗",
+          "width": 110.63450622558594,
+          "height": 44.2794189453125,
+          "hit": true
+        },
+        {
+          "title": "乱世为龙",
+          "href": "https://wudai.cubxxw.com/",
+          "label": "阅读《乱世为龙》 ↗",
+          "width": 138.51414489746094,
+          "height": 44.2794189453125,
+          "hit": true
+        }
+      ],
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "en",
+      "theme": "dark",
+      "coarse": true,
+      "source": "batch-e9a1-source.json",
+      "compact": true,
+      "selections": [
+        {
+          "option": {
+            "id": "talent-signal",
+            "name": "Talent Signal"
+          },
+          "link": {
+            "href": "https://gettalentsignal.com/",
+            "label": "Open the product ↗",
+            "width": 148.79324340820312,
+            "height": 44.280517578125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 370,
+            "scrollWidth": 370,
+            "projectedBodyFont": 16.40018607474662
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "imstage",
+            "name": "IMStage"
+          },
+          "link": {
+            "href": "https://imstage.org/?lang=en",
+            "label": "Open the product ↗",
+            "width": 148.79324340820312,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 370,
+            "scrollWidth": 370,
+            "projectedBodyFont": 16.40018607474662
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "solo-compass",
+            "name": "Solo Compass"
+          },
+          "link": {
+            "href": "https://github.com/getyak/solo-compass",
+            "label": "Open the product ↗",
+            "width": 148.79324340820312,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 370,
+            "scrollWidth": 370,
+            "projectedBodyFont": 16.40018607474662
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "daypage",
+            "name": "DayPage"
+          },
+          "link": {
+            "href": "https://daypage.cubxxw.com/",
+            "label": "Open the product ↗",
+            "width": 148.79324340820312,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 370,
+            "scrollWidth": 370,
+            "projectedBodyFont": 16.40018607474662
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "telepace",
+            "name": "Telepace"
+          },
+          "link": {
+            "href": "https://telepace.cubxxw.com/",
+            "label": "Open the product ↗",
+            "width": 148.79324340820312,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 370,
+            "scrollWidth": 370,
+            "projectedBodyFont": 16.40018607474662
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "apply-agent",
+            "name": "Apply Agent"
+          },
+          "link": {
+            "href": "https://apply.cubxxw.com/",
+            "label": "Open the product ↗",
+            "width": 148.79324340820312,
+            "height": 44.280487060546875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 370,
+            "scrollWidth": 370,
+            "projectedBodyFont": 16.40018607474662
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "agent-diff-guard",
+            "name": "Agent Diff Guard"
+          },
+          "link": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "label": "Open the product ↗",
+            "width": 148.79324340820312,
+            "height": 44.280517578125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 370,
+            "scrollWidth": 370,
+            "projectedBodyFont": 16.40018607474662
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        }
+      ],
+      "external": {
+        "count": 1,
+        "href": "https://github.com/cubxxw/agent-diff-guard",
+        "target": {
+          "x": 57.23844528198242,
+          "y": 609.2824096679688,
+          "width": 148.79324340820312,
+          "height": 44.280517578125,
+          "hit": true
+        },
+        "network": "intercepted local response before external request"
+      },
+      "exploreTarget": {
+        "x": 150.47605895996094,
+        "y": 190.75738525390625,
+        "width": 54.863739013671875,
+        "height": 44.28050231933594,
+        "hit": true
+      },
+      "covers": [
+        {
+          "background": "rgb(79, 104, 90)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 01",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "Vietnam",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            }
+          ]
+        },
+        {
+          "background": "rgb(141, 93, 67)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 02",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "Angkor",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            }
+          ]
+        },
+        {
+          "background": "rgb(76, 105, 121)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 03",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "Tibet",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            }
+          ]
+        },
+        {
+          "background": "rgb(117, 85, 81)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 04",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "Dragon in a Broken Age",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            }
+          ]
+        }
+      ],
+      "bookLinks": [
+        {
+          "title": "Vietnam",
+          "href": "https://vietnam.cubxxw.com/",
+          "label": "Read Vietnam ↗",
+          "width": 113.60971069335938,
+          "height": 44.280517578125,
+          "hit": true
+        },
+        {
+          "title": "Angkor",
+          "href": "https://angkor.cubxxw.com/",
+          "label": "Read Angkor ↗",
+          "width": 106.934326171875,
+          "height": 44.280517578125,
+          "hit": true
+        },
+        {
+          "title": "Tibet",
+          "href": "https://tibet.cubxxw.com/",
+          "label": "Read Tibet ↗",
+          "width": 94.22418212890625,
+          "height": 44.280517578125,
+          "hit": true
+        },
+        {
+          "title": "Dragon in a Broken Age",
+          "href": "https://wudai.cubxxw.com/",
+          "label": "Read Dragon in a Broken Age ↗",
+          "width": 208.69236755371094,
+          "height": 44.280517578125,
+          "hit": true
+        }
+      ],
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "lang": "en",
+      "theme": "light",
+      "coarse": true,
+      "source": "batch-e9a1-source.json",
+      "compact": true,
+      "selections": [
+        {
+          "option": {
+            "id": "talent-signal",
+            "name": "Talent Signal"
+          },
+          "link": {
+            "href": "https://gettalentsignal.com/",
+            "label": "Open the product ↗",
+            "width": 148.79067993164062,
+            "height": 44.27973937988281,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 826,
+            "scrollWidth": 826,
+            "projectedBodyFont": 16.399901161470943
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "imstage",
+            "name": "IMStage"
+          },
+          "link": {
+            "href": "https://imstage.org/?lang=en",
+            "label": "Open the product ↗",
+            "width": 148.79067993164062,
+            "height": 44.27973937988281,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 826,
+            "scrollWidth": 826,
+            "projectedBodyFont": 16.399901161470943
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "solo-compass",
+            "name": "Solo Compass"
+          },
+          "link": {
+            "href": "https://github.com/getyak/solo-compass",
+            "label": "Open the product ↗",
+            "width": 148.79067993164062,
+            "height": 44.27973937988281,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 826,
+            "scrollWidth": 826,
+            "projectedBodyFont": 16.399901161470943
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "daypage",
+            "name": "DayPage"
+          },
+          "link": {
+            "href": "https://daypage.cubxxw.com/",
+            "label": "Open the product ↗",
+            "width": 148.79067993164062,
+            "height": 44.27973937988281,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 826,
+            "scrollWidth": 826,
+            "projectedBodyFont": 16.399901161470943
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "telepace",
+            "name": "Telepace"
+          },
+          "link": {
+            "href": "https://telepace.cubxxw.com/",
+            "label": "Open the product ↗",
+            "width": 148.79067993164062,
+            "height": 44.27973937988281,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 826,
+            "scrollWidth": 826,
+            "projectedBodyFont": 16.399901161470943
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "apply-agent",
+            "name": "Apply Agent"
+          },
+          "link": {
+            "href": "https://apply.cubxxw.com/",
+            "label": "Open the product ↗",
+            "width": 148.79067993164062,
+            "height": 44.27973937988281,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 826,
+            "scrollWidth": 826,
+            "projectedBodyFont": 16.399901161470943
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        },
+        {
+          "option": {
+            "id": "agent-diff-guard",
+            "name": "Agent Diff Guard"
+          },
+          "link": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "label": "Open the product ↗",
+            "width": 148.79067993164062,
+            "height": 44.27972412109375,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 826,
+            "scrollWidth": 826,
+            "projectedBodyFont": 16.399901161470943
+          },
+          "focusAfterTwoFrames": true,
+          "method": "focus + native select change contract"
+        }
+      ],
+      "external": {
+        "count": 1,
+        "href": "https://github.com/cubxxw/agent-diff-guard",
+        "target": {
+          "x": 102.20191192626953,
+          "y": 194.5003204345703,
+          "width": 148.79067993164062,
+          "height": 44.27972412109375,
+          "hit": true
+        },
+        "network": "intercepted local response before external request"
+      },
+      "exploreTarget": {
+        "x": 191.3379364013672,
+        "y": 149.9002685546875,
+        "width": 54.86280822753906,
+        "height": 44.27973937988281,
+        "hit": true
+      },
+      "covers": [
+        {
+          "background": "rgb(79, 104, 90)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 01",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "Vietnam",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            }
+          ]
+        },
+        {
+          "background": "rgb(141, 93, 67)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 02",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "Angkor",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            }
+          ]
+        },
+        {
+          "background": "rgb(76, 105, 121)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 03",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "Tibet",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            }
+          ]
+        },
+        {
+          "background": "rgb(117, 85, 81)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 04",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "Dragon in a Broken Age",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "Xinwei Xiong · self-written",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            }
+          ]
+        }
+      ],
+      "bookLinks": [
+        {
+          "title": "Vietnam",
+          "href": "https://vietnam.cubxxw.com/",
+          "label": "Read Vietnam ↗",
+          "width": 113.60774993896484,
+          "height": 44.27973937988281,
+          "hit": true
+        },
+        {
+          "title": "Angkor",
+          "href": "https://angkor.cubxxw.com/",
+          "label": "Read Angkor ↗",
+          "width": 106.9324951171875,
+          "height": 44.27973937988281,
+          "hit": true
+        },
+        {
+          "title": "Tibet",
+          "href": "https://tibet.cubxxw.com/",
+          "label": "Read Tibet ↗",
+          "width": 94.2225570678711,
+          "height": 44.27973937988281,
+          "hit": true
+        },
+        {
+          "title": "Dragon in a Broken Age",
+          "href": "https://wudai.cubxxw.com/",
+          "label": "Read Dragon in a Broken Age ↗",
+          "width": 208.688720703125,
+          "height": 44.27972412109375,
+          "hit": true
+        }
+      ],
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "lang": "zh",
+      "theme": "light",
+      "coarse": false,
+      "source": "batch-e9a1-source.json",
+      "compact": false,
+      "selections": [
+        {
+          "option": {
+            "id": "talent-signal",
+            "name": "Talent Signal"
+          },
+          "link": {
+            "href": "https://gettalentsignal.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.11605834960938,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 1422,
+            "scrollWidth": 1422,
+            "projectedBodyFont": 16.400012567576475
+          },
+          "focusAfterTwoFrames": true,
+          "method": "actual coordinate directory choice"
+        },
+        {
+          "option": {
+            "id": "imstage",
+            "name": "IMStage"
+          },
+          "link": {
+            "href": "https://imstage.org/?lang=zh",
+            "label": "打开真实产品 ↗",
+            "width": 122.11605834960938,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 1422,
+            "scrollWidth": 1422,
+            "projectedBodyFont": 16.400012567576475
+          },
+          "focusAfterTwoFrames": true,
+          "method": "actual coordinate directory choice"
+        },
+        {
+          "option": {
+            "id": "solo-compass",
+            "name": "Solo Compass"
+          },
+          "link": {
+            "href": "https://github.com/getyak/solo-compass",
+            "label": "打开真实产品 ↗",
+            "width": 122.11605834960938,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 1422,
+            "scrollWidth": 1422,
+            "projectedBodyFont": 16.400012567576475
+          },
+          "focusAfterTwoFrames": true,
+          "method": "actual coordinate directory choice"
+        },
+        {
+          "option": {
+            "id": "daypage",
+            "name": "DayPage"
+          },
+          "link": {
+            "href": "https://daypage.cubxxw.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.11605834960938,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 1422,
+            "scrollWidth": 1422,
+            "projectedBodyFont": 16.400012567576475
+          },
+          "focusAfterTwoFrames": true,
+          "method": "actual coordinate directory choice"
+        },
+        {
+          "option": {
+            "id": "telepace",
+            "name": "Telepace"
+          },
+          "link": {
+            "href": "https://telepace.cubxxw.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.11605834960938,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 1422,
+            "scrollWidth": 1422,
+            "projectedBodyFont": 16.400012567576475
+          },
+          "focusAfterTwoFrames": true,
+          "method": "actual coordinate directory choice"
+        },
+        {
+          "option": {
+            "id": "apply-agent",
+            "name": "Apply Agent"
+          },
+          "link": {
+            "href": "https://apply.cubxxw.com/",
+            "label": "打开真实产品 ↗",
+            "width": 122.11605834960938,
+            "height": 44.280029296875,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 1422,
+            "scrollWidth": 1422,
+            "projectedBodyFont": 16.400012567576475
+          },
+          "focusAfterTwoFrames": true,
+          "method": "actual coordinate directory choice"
+        },
+        {
+          "option": {
+            "id": "agent-diff-guard",
+            "name": "Agent Diff Guard"
+          },
+          "link": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "label": "打开真实产品 ↗",
+            "width": 122.11605834960938,
+            "height": 44.280059814453125,
+            "hit": true
+          },
+          "metrics": {
+            "bodyWidth": 1422,
+            "scrollWidth": 1422,
+            "projectedBodyFont": 16.400012567576475
+          },
+          "focusAfterTwoFrames": true,
+          "method": "actual coordinate directory choice"
+        }
+      ],
+      "external": {
+        "count": 1,
+        "href": "https://github.com/cubxxw/agent-diff-guard",
+        "target": {
+          "x": 336.23968505859375,
+          "y": 343.72021484375,
+          "width": 122.11605834960938,
+          "height": 44.280059814453125,
+          "hit": true
+        },
+        "network": "intercepted local response before external request"
+      },
+      "exploreTarget": {
+        "x": 147.63955688476562,
+        "y": 607.4401245117188,
+        "width": 159.90011596679688,
+        "height": 44.280029296875,
+        "hit": true
+      },
+      "covers": [
+        {
+          "background": "rgb(79, 104, 90)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 01",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "越南",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.344834475567508
+            }
+          ]
+        },
+        {
+          "background": "rgb(141, 93, 67)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 02",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "吴哥窟",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 4.893529199904568
+            }
+          ]
+        },
+        {
+          "background": "rgb(76, 105, 121)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 03",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "西藏",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.1315624608620025
+            }
+          ]
+        },
+        {
+          "background": "rgb(117, 85, 81)",
+          "coverOpacity": 1,
+          "coverFilter": "none",
+          "text": [
+            {
+              "text": "BEAR / 04",
+              "fontSize": "13px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "乱世为龙",
+              "fontSize": "24px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            },
+            {
+              "text": "熊鑫伟 · 自著",
+              "fontSize": "16px",
+              "color": "rgb(244, 241, 223)",
+              "opacity": 1,
+              "contrast": 5.825708633737578
+            }
+          ]
+        }
+      ],
+      "bookLinks": [
+        {
+          "title": "越南",
+          "href": "https://vietnam.cubxxw.com/",
+          "label": "阅读《越南》 ↗",
+          "width": 110.63603210449219,
+          "height": 44.280029296875,
+          "hit": true
+        },
+        {
+          "title": "吴哥窟",
+          "href": "https://angkor.cubxxw.com/",
+          "label": "阅读《吴哥窟》 ↗",
+          "width": 124.5760498046875,
+          "height": 44.280029296875,
+          "hit": true
+        },
+        {
+          "title": "西藏",
+          "href": "https://tibet.cubxxw.com/",
+          "label": "阅读《西藏》 ↗",
+          "width": 110.63603210449219,
+          "height": 44.28009033203125,
+          "hit": true
+        },
+        {
+          "title": "乱世为龙",
+          "href": "https://wudai.cubxxw.com/",
+          "label": "阅读《乱世为龙》 ↗",
+          "width": 138.51605224609375,
+          "height": 44.28009033203125,
+          "hit": true
+        }
+      ],
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    }
+  ],
+  "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated coarse viewports; picker change is selectOption, not physical OS picker/IME/Tab certification. No real backend/external service/contact/model request. Ratios use computed solid CSS RGB and text opacity; not full-page contrast certification. No browser zoom, Safari or physical phone claim."
+}

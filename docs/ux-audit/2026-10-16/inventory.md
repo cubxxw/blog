@@ -1629,3 +1629,55 @@ E61共 **8图**（5短屏+normal动态/减少动态对比2图+posts neutral1图�
 E81菜单overview焦点→ArrowDown与重复arrange项显示条件、本地terminal arrange真实反馈只按对应合同绑定，不将bar实际入口通过赠给menu trigger。UX024/032/033仅上述状态已有父验收与有界新证据；独立最终review在导入时待closure，完整family继续未认证。旧负state保留并附E81范围，不改旧失败的raw尺寸/换位事实。
 
 本轮新增 **25条状态绑定 / 6个既有族**，累计 **228条 / 59族有局部状态证据**。当前总量 **309族 / 359 selectors / 57journeys / 18roadmap批次**，完整family通过0、完整分数null。E8/E81各5图分开登记，本轮独立查看E8 overview en4、E81同配置与1440tile3张；未启动browser/构建、未改生产。
+
+
+## v1.13 E81复核关闭与pre-E9独立失败基线
+
+导入 **2026-10-16T03:22:25+08:00**。E81最终独立review已关闭前述对应scope，并保存checkpoint **`3caab4d18800`**；v1.12写入时pending属历史时点，现同步registry/UX024/032/033，旧E8换位与Back17.5失败仍保留原负状态。
+
+两个新baseline均严格绑定**未改的3ca预览**，逐个显式源hash与`git show 3caab4d1:<file>`核对一致。当前E9源码的apps.js/space.css/space-cafe.css已有WIP差异，不让新源继承旧图；products/books E9a未验收，联系/设置E9b后续，均没有升级。
+
+| 族 / 本轮状态 | 独立基线事实 | 验收边界 |
+| --- | --- | --- |
+| `S.APP.products.SELECT` / focus策略观察、未认证 | 1440×900zh/reduce，显式programmatic focus后真实Space选择imstage；selected/payload正确，focus进入具名products SECTION region，activeProduct=null | 这是现有导航策略，不自动判失败或硬门槛；Tab路线/完整键盘仍未认证。E9a同component留焦点是授权改善，不伪称修复原不可达 |
+| `S.APP.settings.THEME` / focus失败 | 真实Space改dark：stored与selected正确，focus落BODY | 初始light→dark一条路径，不认证完整主题或持久化矩阵 |
+| `S.APP.settings.COLOR` / focus失败 | 真实Space改forest：stored与selected正确，focus落BODY | 当前实际激活路径，不推断Tab/实体键盘/所有颜色 |
+| `S.APP.books.READ` / normal静态文字基线 | 四色封面DOM作者/编号opacity .75合成ratio **3.415 / 2.330 / 2.706 / 3.164**，橙封DOM标题 **2.957** | 控件族承载书封呈现观察，但control_ids为空：没有新按钮，没有测阅读link点击；不是截图内图像文字 |
+
+focus基线的2张1440×900图已独立查看。书封基线没有用图片量颜色；来自computed solid RGB与text opacity在纯色cover上的合成，cover opacity1、filter none，按sRGB luminance复算12样本与原ratio最大误差约`8.9e-16`。探针对全部封面DOM文字（含heading）统一用4.5作保守目标，**不能据此声称所有大标题标准一律4.5、抗锯齿已测或整页/全部主题对比度通过/失败**。这些是精确基线缺口，E9a正常效果未建未验，先保留。
+
+本轮新增 **4条状态记录：3条失败（主题/颜色BODY连续性、书封原始对比基线）+1条产品导航策略观察 / 4个既有族**；累计 **232条状态 / 59族有局部证据**，仍 **309族 / 359selectors / 57journeys / 18roadmap批次**。完整family通过0、完整分数null。只改两inventory文件，没有启动browser/构建或修改生产。
+
+分类更正时间 **2026-10-16T03:23:43+08:00**：独立review将产品SELECT的具名SECTION焦点归为现有导航结果观察，不与theme/wallpaper的BODY焦点损失混为已证失败。四条新增记录、232条总记录及309/359/57总量不变。
+
+
+## v1.14 E9a1产品/书架：独立picker、保留initial失败
+
+导入 **2026-10-16T03:36:26+08:00**。仍309族；新native`[data-product-select]`归原`S.APP.products.SELECT`、ID`S.APP.products.SELECT.control.04c780`；旧目录按钮selector/ID保留。另经父授权补漏3ca早已存在的`[data-product-ask]`，归`products.OPEN`、ID`S.APP.products.OPEN.control.a3b76f`，**只44/hit，没有触发AI动作**，不继承产品link/popup通过。因此359→**361 control IDs**；无重复新族。既存reader/books app-nav的当前aside容器locator作为旧导航control variant明确登记，原selector不改。
+
+E9a与a1各4源hash分别冻结。initial **0过/6失败**均为无demo时预期2真实URL却出现3anchor的假预览，历史保留；a1 helper先拒绝空/全空白，**6合同全过**并检查缺demo不出现假预览。不是测试误报，也不把失败前少量断言算整批通过。当前a2短高CSS/spec工作不由a1旧图认证。
+
+| a1证据片段 | 具体范围 | 保留边界 |
+| --- | --- | --- |
+| 父4actual/16新图 | 320×740zh/light、390×844en/dark、844×390en/light coarse；1440×900zh/light桌面，全部reduce | 与合同320×844、390en/light、620zh/dark、844en/dark、1440中light/英dark的6配置分开，不混尺寸/主题 |
+| compact/desktop产品选择 | 父3compact用focus+selectOption；父desktop逐个7产品真实坐标click；均两帧后对应control focus/title/payload正确。六合同另验native Home/End/ArrowDown与旧目录Space | 不证明物理OS picker/Tab/IME；旧region导航是策略观察，a1 component留焦点是授权改善 |
+| 产品可读/真实入口 | 实测正文约16.4，body无横溢；主link44/hit，父每context最后产品popup本地拦截；六合同所有真实url/demo/github坐标click被document捕获 | 不访问外站服务；Ask仅target测试。7真实产品与原selector保留 |
+| 书架 | 4真实书/12封面DOM文字每context ratio约5.345/4.894/5.132/5.826；4named readlink各44/hit，含真实书名与distinctURL；六合同另真正坐标click并阻止导航 | computed CSS/opacity，不是截图内部文字/抗锯齿或全页对比认证；父actual本身没有点击booklink |
+| 原notes | 4actual同editor DOM+draft精确保留；六合同另继续输入 | 不证明其他所有app/持久化路径 |
+
+8渠道原contact函数与3ca源码逐字一致，只记录源内容保留；没有测试其焦点/44/发送，**UX028/029仅products/books片段有新证据，contact/settings仍开放**。书封旧raw低比值保持历史负记录并附a1对照；UX035/036对应case通过待独立final关闭，完整分数null。
+
+**UX037保留：** a1真实844×390en/light coarse首图中产品entry nav占主要可用高度，h2/headline在fold外；内容可滚动，属于首屏层级缺口，不称不可达。a2已获父授权另修，本轮不等待也不提前验收。
+
+本轮新增 **23条状态 / 5个既有族**，累计 **255条 / 60族有局部证据**。总量 **309族 / 361selectors / 57journeys / 18roadmap**，完整family认证0。16图按source登记，本轮独立查看short产品首图、320书架、desktop末产品、390dark末书4图；只写inventory，未启动浏览器/构建。
+
+
+## v1.15 小量追加：a2只验844短coarse入口
+
+导入 **2026-10-16T03:38:40+08:00**，source=`batch-e9a2-source.json`（4hash+QA）。CSS只在`min-width641 + pointer:coarse + max-height420`将产品picker/探索nav同排；原a1 fold缺口保留历史。
+
+`844×390 en/light/reduce coarse`父actual首/末产品在真实body scrollTop0：body纵界 **89.22..272.90**，h2完整 **180.89..215.00**，headline首行bottom **247.80**，均在内容视口内。另a2 **6合同全过**，其中`844×390 en/dark`对全部7个产品逐个验此entry几何。父actual是selectOption与first/last量值，不是物理picker/Tab/实机；可滚的其余正文不要求全部同屏。
+
+只新增 **2条normal内容几何记录**，不重记a1其他状态；4新图登记，本轮看产品first/last2图。UX037按此scope标改善/已测，旧a1视觉缺口不改原值/原图；Ask仍仅hit，contact/settings缺口不继承关闭。未做全站/完整控件评分。
+
+累计 **257条状态 / 60族局部证据**，保持 **309族 / 361selectors / 57journeys / 18roadmap**、完整family通过0/fullscore null。没有启动browser/构建，只写两inventory文件，现停写。

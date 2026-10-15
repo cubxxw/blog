@@ -99,6 +99,20 @@
 .space-spatial-screen .space-reader__body .post-content :is(h4,h5,h6) { font-size:21px; }
 .space-spatial-screen .space-reader__body pre { font-size:18px; }
 .space-spatial-screen .space-terminal { font-size:18px; }
+.space-spatial-screen .space-product p,.space-spatial-screen .space-book p { font-size:20px; }
+.space-spatial-screen .space-product h2 { font-size:32px; }
+.space-spatial-screen .space-product h3 { font-size:24px; }
+.space-spatial-screen .space-product .space-product__stage,.space-spatial-screen .space-product .space-product__boundary { font-size:16px; }
+.space-spatial-screen .space-products .space-sidebar p,.space-spatial-screen .space-product-picker,.space-spatial-screen .space-books-toolbar { font-size:16px; }
+.space-spatial-screen .space-product-picker select { font-size:20px; }
+.space-spatial-screen .space-products .space-sidebar button,.space-spatial-screen .space-product__links :is(a,button),.space-spatial-screen .space-book > a { font-size:17px; }
+.space-spatial-screen .space-product-directory,.space-spatial-screen .space-product-explore { gap:10px; }
+.space-spatial-screen .space-products .space-button,.space-spatial-screen .space-books-toolbar .space-button { font-size:17px !important; }
+.space-spatial-screen .space-products :is(button,select),.space-spatial-screen .space-product__links a,.space-spatial-screen .space-book > a,.space-spatial-screen .space-books-toolbar button { min-width:54px; min-height:54px; }
+.space-spatial-screen .space-products .space-list-item strong { font-size:20px; }
+.space-spatial-screen .space-products .space-list-item :is(small,span) { font-size:16px; }
+.space-spatial-screen .space-book__number { font-size:13px; }
+.space-spatial-screen .space-book__cover .space-book__author { font-size:16px; }
 .space[data-world-ready] .space-landscape { display:none; }
 .space[data-world-loading] :is(.space-window-layer,.space-bottom,.space-menu) { visibility:hidden; }
 .space[data-world-mode="roam"] .space-cafe__welcome { visibility:hidden; }

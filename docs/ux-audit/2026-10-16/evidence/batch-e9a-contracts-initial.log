@@ -1,0 +1,192 @@
+
+Running 6 tests using 1 worker
+
+(node:58060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 320×844 zh light products and books › real choices retain focus, readable content and distinct reachable reading links (6.1s)
+(node:58081) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links (6.1s)
+(node:58123) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links (6.3s)
+(node:58182) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 844×390 en dark products and books › real choices retain focus, readable content and distinct reachable reading links (6.0s)
+(node:58207) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 zh light products and books › real choices retain focus, readable content and distinct reachable reading links (6.0s)
+(node:58227) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  6 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 en dark products and books › real choices retain focus, readable content and distinct reachable reading links (6.1s)
+
+
+  1) tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 320×844 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-space-window="products"]').locator('.space-product__links a')
+    Expected: 2
+    Received: 3
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-space-window="products"]').locator('.space-product__links a') with timeout 5000ms
+      - waiting for locator('[data-space-window="products"]').locator('.space-product__links a')
+        14 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      101 |       }
+      102 |       const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter(Boolean);
+    > 103 |       await expect(links).toHaveCount(urls.length);
+          |                           ^
+      104 |       for(let n=0;n<urls.length;n++){expect(await physicalType(links.nth(n))).toBeGreaterThanOrEqual(13);await isolatedLinkClick(page,links.nth(n),urls[n]);}
+      105 |       // The AI action is checked for reachability only; it is never invoked.
+      106 |       await hit(products.locator('[data-product-ask]'));
+        at <SOURCE_WORKTREE>/tests/e2e/space-app-reading-contracts.spec.ts:103:27
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/space-app-reading-contract-0dc04-nct-reachable-reading-links/error-context.md
+
+  2) tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-space-window="products"]').locator('.space-product__links a')
+    Expected: 2
+    Received: 3
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-space-window="products"]').locator('.space-product__links a') with timeout 5000ms
+      - waiting for locator('[data-space-window="products"]').locator('.space-product__links a')
+        14 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      101 |       }
+      102 |       const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter(Boolean);
+    > 103 |       await expect(links).toHaveCount(urls.length);
+          |                           ^
+      104 |       for(let n=0;n<urls.length;n++){expect(await physicalType(links.nth(n))).toBeGreaterThanOrEqual(13);await isolatedLinkClick(page,links.nth(n),urls[n]);}
+      105 |       // The AI action is checked for reachability only; it is never invoked.
+      106 |       await hit(products.locator('[data-product-ask]'));
+        at <SOURCE_WORKTREE>/tests/e2e/space-app-reading-contracts.spec.ts:103:27
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/space-app-reading-contract-c8758-nct-reachable-reading-links/error-context.md
+
+  3) tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-space-window="products"]').locator('.space-product__links a')
+    Expected: 2
+    Received: 3
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-space-window="products"]').locator('.space-product__links a') with timeout 5000ms
+      - waiting for locator('[data-space-window="products"]').locator('.space-product__links a')
+        14 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      101 |       }
+      102 |       const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter(Boolean);
+    > 103 |       await expect(links).toHaveCount(urls.length);
+          |                           ^
+      104 |       for(let n=0;n<urls.length;n++){expect(await physicalType(links.nth(n))).toBeGreaterThanOrEqual(13);await isolatedLinkClick(page,links.nth(n),urls[n]);}
+      105 |       // The AI action is checked for reachability only; it is never invoked.
+      106 |       await hit(products.locator('[data-product-ask]'));
+        at <SOURCE_WORKTREE>/tests/e2e/space-app-reading-contracts.spec.ts:103:27
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/space-app-reading-contract-cf3d9-nct-reachable-reading-links/error-context.md
+
+  4) tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 844×390 en dark products and books › real choices retain focus, readable content and distinct reachable reading links
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-space-window="products"]').locator('.space-product__links a')
+    Expected: 2
+    Received: 3
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-space-window="products"]').locator('.space-product__links a') with timeout 5000ms
+      - waiting for locator('[data-space-window="products"]').locator('.space-product__links a')
+        14 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      101 |       }
+      102 |       const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter(Boolean);
+    > 103 |       await expect(links).toHaveCount(urls.length);
+          |                           ^
+      104 |       for(let n=0;n<urls.length;n++){expect(await physicalType(links.nth(n))).toBeGreaterThanOrEqual(13);await isolatedLinkClick(page,links.nth(n),urls[n]);}
+      105 |       // The AI action is checked for reachability only; it is never invoked.
+      106 |       await hit(products.locator('[data-product-ask]'));
+        at <SOURCE_WORKTREE>/tests/e2e/space-app-reading-contracts.spec.ts:103:27
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/space-app-reading-contract-46743-nct-reachable-reading-links/error-context.md
+
+  5) tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-space-window="products"]').locator('.space-product__links a')
+    Expected: 2
+    Received: 3
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-space-window="products"]').locator('.space-product__links a') with timeout 5000ms
+      - waiting for locator('[data-space-window="products"]').locator('.space-product__links a')
+        14 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      101 |       }
+      102 |       const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter(Boolean);
+    > 103 |       await expect(links).toHaveCount(urls.length);
+          |                           ^
+      104 |       for(let n=0;n<urls.length;n++){expect(await physicalType(links.nth(n))).toBeGreaterThanOrEqual(13);await isolatedLinkClick(page,links.nth(n),urls[n]);}
+      105 |       // The AI action is checked for reachability only; it is never invoked.
+      106 |       await hit(products.locator('[data-product-ask]'));
+        at <SOURCE_WORKTREE>/tests/e2e/space-app-reading-contracts.spec.ts:103:27
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/space-app-reading-contract-11b56-nct-reachable-reading-links/error-context.md
+
+  6) tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 en dark products and books › real choices retain focus, readable content and distinct reachable reading links
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-space-window="products"]').locator('.space-product__links a')
+    Expected: 2
+    Received: 3
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-space-window="products"]').locator('.space-product__links a') with timeout 5000ms
+      - waiting for locator('[data-space-window="products"]').locator('.space-product__links a')
+        14 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      101 |       }
+      102 |       const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter(Boolean);
+    > 103 |       await expect(links).toHaveCount(urls.length);
+          |                           ^
+      104 |       for(let n=0;n<urls.length;n++){expect(await physicalType(links.nth(n))).toBeGreaterThanOrEqual(13);await isolatedLinkClick(page,links.nth(n),urls[n]);}
+      105 |       // The AI action is checked for reachability only; it is never invoked.
+      106 |       await hit(products.locator('[data-product-ask]'));
+        at <SOURCE_WORKTREE>/tests/e2e/space-app-reading-contracts.spec.ts:103:27
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/space-app-reading-contract-aaa43-nct-reachable-reading-links/error-context.md
+
+  6 failed
+    tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 320×844 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+    tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links
+    tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links
+    tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 844×390 en dark products and books › real choices retain focus, readable content and distinct reachable reading links
+    tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+    tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 en dark products and books › real choices retain focus, readable content and distinct reachable reading links

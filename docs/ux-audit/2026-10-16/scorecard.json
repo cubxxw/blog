@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T03:14:05+08:00",
+  "updated_at": "2026-10-16T03:41:45+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,24 +353,24 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.12",
+    "inventory_version": "1.15",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
       "world-decoration": 18,
       "motion": 26
     },
-    "selector_level_controls": 359,
+    "selector_level_controls": 361,
     "family_ids_covered": 309,
     "certified_96_plus_controls": 0,
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/359selectors；Back为既存控件盘点补漏，局部证据族不是完整认证。",
-    "families_with_recorded_contract_fragments": 62,
-    "scoped_check_assessments": 126,
-    "expert_visual_assessments": 56,
-    "inventory_families_with_partial_state_evidence": 56,
+    "reason": "309族/361selectors，60族仅局部状态，0完整认证；native新控件/Ask旧漏项证据独立。",
+    "families_with_recorded_contract_fragments": 65,
+    "scoped_check_assessments": 143,
+    "expert_visual_assessments": 66,
+    "inventory_families_with_partial_state_evidence": 60,
     "inventory_accepted_whole_families": 0
   },
   "evidence": [
@@ -1863,6 +1863,248 @@
         "Noallappbodytype/targets/contentcertification; UX028/029remain.",
         "OldE8tile/overviewimages remain failure/history and cannotcertifyE81.",
         "Closed dialogdisplayguard is[open]-onlysourceplusactualclosehiddenchecks; notallmodalruntimecertification."
+      ]
+    },
+    {
+      "id": "E-E9-FOCUS-BASELINE",
+      "kind": "recorded_actual_Space_after_programmatic_choice_focus_and_two_inspected_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/space-preference-focus-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/space-preference-focus-baseline.log",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/space-product-focus-after-choice.png",
+        "docs/ux-audit/2026-10-16/evidence/space-settings-focus-after-choices.png"
+      ],
+      "as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce"
+      },
+      "source_sha256": {
+        "assets/js/space/apps.js": "526846478a60819f4fac9383cb60083d7dd413e28ed184ebfe10ffca4cc7dac0",
+        "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+        "assets/css/space.css": "92c22c9acf248d200c4a29648589d0d28b8101f7cf626bfe740d6067c0c257c3",
+        "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3"
+      },
+      "source_hashes_match_immutable_blob": true,
+      "observed": "Products imstage selected/payloadcorrect, focusproductsSECTION; theme dark/wallpaperforest stored+pressedcorrect, focusBODY afterrerender.",
+      "source_reason": "apps.js:191–192execute then showSettings replaceshost.innerHTML without restoringchoicefocus. Productselect usesexecuteopen anddesktop focusWindow to namedregionSECTION.",
+      "limits": [
+        "Programmaticchoicefocus followedby actualSpace; Tabtraversal nottested.",
+        "One1440×900zh/reduceChromiumscope, API503isolation; light→dark bytestedchoice.",
+        "ProductSECTIONfocus isnamedrole=region/tabindex−1 navigationtarget; not automaticallysamefailureasBODY.",
+        "E9WIPnotbuilt, reviewed oraccepted."
+      ]
+    },
+    {
+      "id": "E-E9-BOOK-CONTRAST-BASELINE",
+      "kind": "recorded_computed_CSS_solid_cover_alpha_contrast_independently_recomputed",
+      "path": "docs/ux-audit/2026-10-16/evidence/space-book-contrast-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/space-book-contrast-baseline.log",
+      "as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce",
+        "theme": "light"
+      },
+      "source_sha256": {
+        "assets/js/space/apps.js": "526846478a60819f4fac9383cb60083d7dd413e28ed184ebfe10ffca4cc7dac0",
+        "assets/css/space.css": "92c22c9acf248d200c4a29648589d0d28b8101f7cf626bfe740d6067c0c257c3",
+        "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+        "assets/css/space-cafe.css": "05eda0f61d39ea74c1643f92bcee252bb7dc4eabd271af413afdaad0b053439c"
+      },
+      "source_hashes_match_immutable_blob": true,
+      "independent_formula_check": "All12rawratios independently recomputed fromeffectiveRGBandbackground,sRGBrelative luminance; difference<1e-10.",
+      "method": "Computed browser solid RGB colors; element text opacity composited over its solid cover; sRGB luminance ratio. 4.5 used conservatively for all cover DOM text, including headings.",
+      "small_author_and_serial_ratios": [
+        3.415057138476459,
+        2.3304571115286286,
+        2.7061418096982504,
+        3.163882816075573
+      ],
+      "orange_title_ratio": 2.9574874341489124,
+      "threshold_application": "Normalinformationalauthortext4.5; largequalifyingtext3.0; no rounding. Projectconservativelyuses4.5forallcoverDOMtext, but3..4.5largetitlesarenotautomaticallyAAfail.",
+      "limits": [
+        "ComputedCSS/color+elementopacityoversolidcover, notantialiasing/fullpagecontrastcertification.",
+        "Coveropacity1/filternoneobserved; notcurrentE9WIPcolors.",
+        "Authorship ismeaningfulinformation, notpuredecoration. Serial/brandingexceptionnotusedtoglossauthorshipfailure.",
+        "Titlelargequalificationdependsactualfont/weight/projection; orange2.957<3 fails evenlarge; others3..4.5onlyprojecttargetgapwithoutfurtherqualification."
+      ]
+    },
+    {
+      "id": "E-E9A-INITIAL-LINK-FAIL",
+      "kind": "historical_six_failures_from_preexisting_optional_emptyURL_UI_defect",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e9a-contracts-initial.log",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "result": {
+        "total": 6,
+        "failed": 6
+      },
+      "cause": "IMStage.demo empty; old3ca helper resolvesemptytooriginroot andrenders extraTrydemo; expected2 received3.",
+      "resolution": "A1 local link presenceguard, globalsafeURLunchanged; originalcount/URLassertions retained."
+    },
+    {
+      "id": "E-BATCH-E9A1",
+      "kind": "recorded_sixcontracts_four_actual_Metal_contexts_sixteen_independently_inspected_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e9a-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e9a-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e9a-actions.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-320-zh-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-320-zh-light-last.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-320-zh-light-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-320-zh-light-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-390-en-dark-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-390-en-dark-last.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-390-en-dark-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-390-en-dark-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-last.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-844-en-light-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-844-en-light-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-1440-zh-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-1440-zh-light-last.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-1440-zh-light-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-1440-zh-light-bottom.png"
+      ],
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "source_hash_matches_at_initial_review": {
+        "assets/js/space/apps.js": true,
+        "assets/css/space.css": true,
+        "assets/css/space-cafe.css": true,
+        "tests/e2e/space-app-reading-contracts.spec.ts": true
+      },
+      "qa_config_hash_matches_at_initial_review": true,
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-contracts.log",
+      "contract_result": {
+        "distinct_cases": 6,
+        "passed": 6,
+        "duration": "16.2s"
+      },
+      "contract_scope": [
+        "320×844zh/light/coarse",
+        "390×844en/light/coarse",
+        "620×844zh/dark/coarse",
+        "844×390en/dark/coarse",
+        "1440×900zh/light/fine",
+        "1440×900en/dark/fine"
+      ],
+      "actual_scope": [
+        "320×740zh/light/coarse",
+        "390×844en/dark/coarse",
+        "844×390en/light/coarse",
+        "1440×900zh/light/fine"
+      ],
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a1-apps-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a1-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a1-diff.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a1-build.log"
+      ],
+      "build_result": "Hugo3886ms",
+      "actual_results": "28selections: desktopcoordinate/compactfocus+selectOption, twoframesfocus/payload/title/originalURLs correct. Oneprimaryactualpopuppercontextlocallyintercepted. Fourbooks44/hit/scroll, notesDOM/valuepreserved, errors0.",
+      "raw_cover_ratios": [
+        5.344834475567508,
+        4.893529199904568,
+        5.1315624608620025,
+        5.825708633737578
+      ],
+      "independent_ratio_check": "All48rawactualratios independentlyrecomputed CSSalpha/sRGB; error<1e-10; min4.893529199904568>=4.5unrounded.",
+      "new_P0_P1_findings": [],
+      "limits": [
+        "16images/4contexts bindA1history; A2changestrackedseparately.",
+        "Explicitfocus/selectOption/nativekeyboardcontract, notphysicalOSpicker/fullTabtraversal.",
+        "BookURL/capturedcoordinateclicks incontracts; actualbookjourneyonlyhit/scroll, notfourrealexternalbookrequests.",
+        "Askonly44/hit, AIneverinvoked; noexternalservice/model/contactsend/physicaldevice/Safari/zoom/FPS.",
+        "A1short844firstfoldgap isUX037despitefunctionalpass."
+      ]
+    },
+    {
+      "id": "E-BATCH-E9A2",
+      "kind": "final_four_frozen_hashes_six_contracts_one_actual844_context_four_new_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e9a2-actions.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-products-844-en-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-products-844-en-light-last.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-books-844-en-light-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-books-844-en-light-bottom.png"
+      ],
+      "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "source_hash_matches_at_review": {
+        "assets/js/space/apps.js": true,
+        "assets/css/space.css": true,
+        "assets/css/space-cafe.css": true,
+        "tests/e2e/space-app-reading-contracts.spec.ts": true
+      },
+      "qa_config": {
+        "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+        "sha256": "fec9a25901f414d314d7e9ee5ee82841b9c7432750f8c83931864a52a102cce9",
+        "workers": 1,
+        "browser": "Chromium Metal"
+      },
+      "qa_config_hash_matches_at_review": true,
+      "delta_from_A1": "Onlyspace.css shortcoarse(minwidth641/maxheight420)row/margins+entrygeometrytest; apps/cafeCSS identical.",
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-contracts.log",
+      "contract_result": {
+        "distinct_cases": 6,
+        "passed": 6,
+        "duration": "15.9s",
+        "not12distinct_after_A1_rerun": true
+      },
+      "contract_scope": [
+        "320×844zh/light/coarse",
+        "390×844en/light/coarse",
+        "620×844zh/dark/coarse",
+        "844×390en/dark/coarse",
+        "1440×900zh/light/fine",
+        "1440×900en/dark/fine"
+      ],
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-apps-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-diff.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-build.log"
+      ],
+      "build_result": "Hugo3733ms",
+      "actual_scope": "844×390en/light/coarse/reduce",
+      "actual_results": "7focus/URL/44targets +1interceptedpopup, books/notes pass. Actualfirst/lastentry body[89.2206,272.8995],h2[180.8935,215.0002],headlinefirstlinebottom247.8000. Contract844en/darkchecksall7entriesfrombodyScrollTop0.",
+      "new_P0_P1_findings": [],
+      "limits": [
+        "Onecurrentactualshortscope+sixreruncontracts; otherA1screenshotsremainhistorical.",
+        "NativeOSpicker/Tab/Safari/zoom/physicaldevice/focusstealotherintentcasesunknown.",
+        "Contact/settingsE9bnotimplemented; fullUX028/029/034notclosed.",
+        "Computedcovercontrastonly, notallpagetext/focuscontrastcertification."
       ]
     }
   ],
@@ -3761,6 +4003,329 @@
       ],
       "scope": "OnlycurrentE81namedimages; scrolledEnglishoverviewisintendedscrolledstate, nottopnormal; nofullcontrol/wholeappscore.",
       "reason": "四窗空间均衡、无整理重叠，笔记真实focus环可辨且重复整理稳定；欢迎/联系/地图辅助字仍很小，不能因几何通过将App排版问题UX028/029抬成96。"
+    },
+    {
+      "assessment_id": "VIS-E9A-PRODUCT-DESKTOP-D1",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-1440-zh-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-1440-zh-light-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "产品名/一句话作用/真实动作清楚；stage与边界为辅助，截图缩小让首屏完成判断。"
+    },
+    {
+      "assessment_id": "VIS-E9A-PRODUCT-DESKTOP-D4",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        90,
+        90,
+        96
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-1440-zh-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-1440-zh-light-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "16.4px正文、13+目录清楚，真实截图不再吞动作；短内容留白可接受，次级按钮/细线有工艺余量。"
+    },
+    {
+      "assessment_id": "VIS-E9A-PRODUCT-PHONE-D1",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        90
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-320-zh-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-320-zh-light-last.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-390-en-dark-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-390-en-dark-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "选择/标题/正文/打开任务连贯，长描述仍需纵滚；按钮可达不意味着首屏层级满分。"
+    },
+    {
+      "assessment_id": "VIS-E9A-PRODUCT-PHONE-D4",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        90,
+        90,
+        90
+      ],
+      "scope_score": 91.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-320-zh-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-390-en-dark-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "正文清楚、主打开与源码/AI有差异；真实focus环有效不当装饰扣分，顶部控件/边框仍占空间。"
+    },
+    {
+      "assessment_id": "VIS-E9A-PRODUCT-SHORT-D1",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        80,
+        90,
+        90
+      ],
+      "scope_score": 89.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "A1短coarse导航约115px，初开只见stage，h2/headline需先滚，决策成本高；可滚不等于不可达。"
+    },
+    {
+      "assessment_id": "VIS-E9A-PRODUCT-SHORT-D4",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        80,
+        90,
+        80
+      ],
+      "scope_score": 85.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "A1header视觉与空间过重，真正产品内容首屏缺位；functionalpass不抵消层级差距。"
+    },
+    {
+      "assessment_id": "VIS-E9A-BOOKS-D1",
+      "family_ids": [
+        "S.APP.books.READ"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-320-zh-light-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-390-en-dark-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-1440-zh-light-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-844-en-light-bottom.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "四真实作品/作者保留，阅读入口具体到书名/原URL；短屏半封面属滚动状态，链接实际命中。"
+    },
+    {
+      "assessment_id": "VIS-E9A-BOOKS-D4",
+      "family_ids": [
+        "S.APP.books.READ"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        90,
+        90,
+        90
+      ],
+      "scope_score": 91.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-320-zh-light-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-390-en-dark-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a-books-1440-zh-light-bottom.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "高对比真实封面/作者和16px正文保留书的区别，英文不再旧VIETNA/M断词；手机单列完整、桌面两列留白偏多但未妨碍读。"
+    },
+    {
+      "assessment_id": "VIS-E9A2-PRODUCT-SHORT-D1",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-products-844-en-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-products-844-en-light-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "导航一行后完整h2/headline首行无需先滚，选择→理解→再打开清楚；Dogfood等stage术语可后续改易懂名称。"
+    },
+    {
+      "assessment_id": "VIS-E9A2-PRODUCT-SHORT-D4",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        90,
+        90,
+        96
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-products-844-en-light-first.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9a2-products-844-en-light-last.png"
+      ],
+      "scope": "Namedactualimages/states only, notfullcontrolscore.",
+      "reason": "保44目标/原字号，导航不再吞首屏，标题/简介重新主导；有效focus环保留，没有删内容凑满分。"
     }
   ],
   "findings": [
@@ -5143,10 +5708,10 @@
       "title": "Space四App重要正文、动作标签和能力说明在投影后过小",
       "baseline_reason": "77/E52八个normal maximized范围：products正文11.48px/手机目录8.2；books摘要8.2、covermeta6.56；contact发送边界说明8.2、渠道标签9.02；settings能力状态7.52、语言/主题标签9.02。已独立看16图，问题在实际任务文字，不能用主标题仍大抵消。",
       "recommendation": "仅这些App的空间承载面内分层：长正文/输入约15–16实际px，主要动作13–14，重要帮助/能力状态12–13，非必要装饰meta10–11；用真实投影比例测量。各App按任务限制行长与截图高度；保留原world/DOM/会话/数据，fallback字号不盲目放大。",
-      "status": "confirmed_recorded_normal_readability_gap_bounded_four_app_batch",
+      "status": "partially_closed_E9a_products_books_contact_settings_remaining",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "after-E6-Space-four-app-type-targets",
+      "batch": "E9a_partial_E9b_pending",
       "dimensions": [
         "D1",
         "D4",
@@ -5164,6 +5729,21 @@
         }
       ],
       "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "scope_limits": [
+        "字号没有统一WCAG16px要求；这里是重要内容的实际可读性判断。",
+        "书封编号/装饰kicker不与隐私说明/功能能力状态同级，不机械全部16px。",
+        "No real navigation, send, settings persistence or fullinteraction pass claimed."
+      ],
+      "severity": "P2",
+      "verified_score": null,
+      "confidence": "high",
+      "baseline_as_of": {
         "phase": "Space four-app normal maximized baseline",
         "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
         "reviewed_at": "2026-10-16T02:10:53+08:00",
@@ -5181,14 +5761,13 @@
           }
         ]
       },
-      "scope_limits": [
-        "字号没有统一WCAG16px要求；这里是重要内容的实际可读性判断。",
-        "书封编号/装饰kicker不与隐私说明/功能能力状态同级，不机械全部16px。",
-        "No real navigation, send, settings persistence or fullinteraction pass claimed."
+      "closed_scope": "Onlytestedproducts/books bodyandprimaryactionfragments in6contracts/4A1actual+1A2actual; fullstatesunknown.",
+      "remaining_scope": "Contact/settingstypeandcontrolsremain",
+      "browser_evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
       ],
-      "severity": "P2",
-      "verified_score": null,
-      "confidence": "high"
+      "original_failure_retained": true
     },
     {
       "id": "UX-029",
@@ -5201,10 +5780,10 @@
       "title": "Space手机主要产品/阅读/联系链接仍低于项目44px触控目标",
       "baseline_reason": "390×844实际normal测量：打开真实产品29.52px高；books唯一开始阅读anchor45.63×13.53（封面是div，无等价大链接）；contact邮件/GitHub/WhatsApp36.08px高。settings与products侧栏按钮44.28已经达到，不能把这些通过外推到anchor。",
       "recommendation": "主要产品/阅读/发送渠道提供实际≥44×44点击区与稳定间距，CSS54px须经过.82投影复测；补anchor与button同等关注、清楚focus。不扩大为每个内联字链接都44或自动WCAG失败。",
-      "status": "confirmed_recorded_390_primary_anchor_target_gap",
+      "status": "partially_closed_E9a_products_books_contact_remaining",
       "baseline_cap": 89,
       "active_cap": 89,
-      "batch": "after-E6-Space-four-app-type-targets",
+      "batch": "E9a_partial_E9b_pending",
       "dimensions": [
         "D2",
         "D6"
@@ -5226,6 +5805,20 @@
         }
       ],
       "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "scope_limits": [
+        "Project importantmobile action goal;WCAG2.5.8 exceptions need independentcontext analysis.",
+        "No centerhit/actual external click was run in normalcaptures."
+      ],
+      "severity": "P2",
+      "verified_score": null,
+      "confidence": "high",
+      "baseline_as_of": {
         "phase": "Space four-app normal maximized baseline",
         "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
         "reviewed_at": "2026-10-16T02:10:53+08:00",
@@ -5243,13 +5836,14 @@
           }
         ]
       },
-      "scope_limits": [
-        "Project importantmobile action goal;WCAG2.5.8 exceptions need independentcontext analysis.",
-        "No centerhit/actual external click was run in normalcaptures."
+      "closed_scope": "Onlytestedproducts/books bodyandprimaryactionfragments in6contracts/4A1actual+1A2actual; fullstatesunknown.",
+      "remaining_scope": "Contactprimarychanneltargetspending",
+      "browser_evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
       ],
-      "severity": "P2",
-      "verified_score": null,
-      "confidence": "high"
+      "original_failure_retained": true,
+      "active_cap_scope": "89appliesremainingcontacttargetgaponly; namedproduct/booktargetsclosed."
     },
     {
       "id": "UX-030",
@@ -5486,6 +6080,226 @@
       },
       "closure_scope": "844×390coarse zh/en3/4contracts+actualzh3/en4: Back44/headerstaysvisibleafterlastitemscroll, centerhit/coordinateclose/returntrigger; fulltargetmatrixunknown.",
       "original_failure_retained": true
+    },
+    {
+      "id": "UX-034",
+      "family_prefix": "S.APP.settings",
+      "family_ids": [
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.THEME.control.d56fcd",
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "severity": "P2",
+      "title": "主题和壁纸选择已生效，但Space激活重建后焦点落BODY",
+      "baseline_reason": "3ca预览1440×900中文reduce，先明确programmatic focus某choice再真实Space：dark/forest stored与pressed都正确，但activeElement为BODY。不可把此记成状态切换失败；是仍在设置任务里的键盘连续性丢失。",
+      "recommendation": "在重建后只恢复同一仍有效choice的焦点/键盘位置，或保留原控件节点；不得抢走用户已转移的焦点，补Space/Enter后继续选择与真正Tab路径合同。",
+      "status": "confirmed_recorded_3ca_two_setting_choices_focus_BODY_pending_E9b",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E9-settings-continuity",
+      "dimensions": [
+        "D2",
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-E9-FOCUS-BASELINE"
+        },
+        {
+          "kind": "immutable_source",
+          "revision": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+          "path": "assets/js/space/apps.js",
+          "line": 191
+        }
+      ],
+      "browser_evidence": [
+        "E-E9-FOCUS-BASELINE"
+      ],
+      "as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "Programmaticfocus+actualSpaceonly, notTabtraversal/OSkeyboard/allviewports.",
+        "ProductselectionSECTIONfocus isseparateobservation, notincludedfailure.",
+        "Stateandpressedcorrect; noP1/state-lossclaim."
+      ]
+    },
+    {
+      "id": "UX-035",
+      "family_prefix": "S.APP.books",
+      "family_ids": [
+        "S.APP.books.READ"
+      ],
+      "component_selector": ".space-book__cover",
+      "control_relation": "BookcardDOMtextvisualboundary; no contrastmeasurementofREADanchor itself.",
+      "severity": "P2",
+      "title": "书封作者小字对比不足，橙封标题原始比值低于3",
+      "baseline_reason": "3cacomputedCSS+opacity合成：四作者/编号为3.415057/2.330457/2.706142/3.163883；normal作者信息低于4.5。橙封标题2.957487<3不可取整；其他3..4.5标题仅按项目保守4.5记录差距，未一概判AA失败。",
+      "recommendation": "保留真实书名/作者与四书区别，以文字色或封面底色提供可复算对比，去不必要的文字.75淡化；本批coverDOM保守统一≥4.5，再实际检查双主题/响应式，不凭大标题豁免作者。",
+      "status": "closed_for_E9a1_E9a2_named_cover_DOM_computed_contrast",
+      "baseline_cap": 89,
+      "active_cap": null,
+      "active_cap_scope": "G4necessaryinformationalcovertextcontrastinspecifiedbaseline; notfullpage/WIPAAverdict.",
+      "batch": "E9a1/E9a2",
+      "dimensions": [
+        "D2",
+        "D4"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_CSS_alpha_contrast",
+          "evidence_id": "E-E9-BOOK-CONTRAST-BASELINE"
+        },
+        {
+          "kind": "immutable_source",
+          "revision": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+          "path": "assets/css/space.css",
+          "line": 186
+        }
+      ],
+      "browser_evidence": [
+        "E-E9-BOOK-CONTRAST-BASELINE",
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "ComputedCSS/color+elementopacityoversolidcover, notantialiasing/fullpagecontrastcertification.",
+        "Coveropacity1/filternoneobserved; notcurrentE9WIPcolors.",
+        "Authorship ismeaningfulinformation, notpuredecoration. Serial/brandingexceptionnotusedtoglossauthorshipfailure.",
+        "Titlelargequalificationdependsactualfont/weight/projection; orange2.957<3 fails evenlarge; others3..4.5onlyprojecttargetgapwithoutfurtherqualification."
+      ],
+      "baseline_as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce",
+        "theme": "light"
+      },
+      "closure_scope": "FourcoverDOMtitle/author/number raw>=4.5 insixcontractscopes+4A1actual+1A2actual; notfullpage/WCAGglobal.",
+      "original_failure_retained": true
+    },
+    {
+      "id": "UX-036",
+      "family_prefix": "S.APP.products.OPEN",
+      "family_ids": [
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.OPEN.control.ce80f4"
+      ],
+      "severity": "P2",
+      "title": "空产品demo被当本站首页，却渲染测试预览链接",
+      "baseline_reason": "A1前初跑6/6均在IMStage预期2链接却出现3；旧3ca helper无presenceguard，safeURL空字符串解析origin根。既存意图缺陷，非新回归/安全P1。",
+      "recommendation": "仅link格式器拒绝nonstring/trim空白，保留有效相对URL与原目标；原count/URL断言不放宽。",
+      "status": "closed_for_E9a1_E9a2_catalog_empty_demo_cases",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E9a1",
+      "dimensions": [
+        "D1",
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_contract_failure",
+          "evidence_id": "E-E9A-INITIAL-LINK-FAIL"
+        },
+        {
+          "kind": "immutable_source",
+          "revision": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+          "path": "assets/js/space/apps.js",
+          "line": 17
+        }
+      ],
+      "browser_evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "closure_scope": "Sevenrealcatalogproducts exactoptionalURLs/missingdemoabsent in6contracts; whitespace/nonstringguard source-reviewed, notallpossibledatafixtures."
+    },
+    {
+      "id": "UX-037",
+      "family_prefix": "S.APP.products",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.SELECT.control.04c780",
+        "S.APP.products.OPEN.control.e19345"
+      ],
+      "severity": "P2",
+      "title": "短横屏产品导航堆叠，首屏只有stage而标题和简介出fold",
+      "baseline_reason": "A1 actual844×390en/light/coarse first/lasttop：picker+explore约115px，首屏只见stage，h2/headline需滚。内容可达、44目标合格，是可见层级/决策成本而非P1/不可达。",
+      "recommendation": "仅641+宽/420以下高coarse将picker与explore同排保44，压stage/title冗余margin，完整h2和headline首行入body初始可见区。",
+      "status": "closed_for_E9a2_844_shortcoarse_entry_geometry_and_images",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E9a2",
+      "dimensions": [
+        "D1",
+        "D4",
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_images",
+          "paths": [
+            "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-first.png",
+            "docs/ux-audit/2026-10-16/evidence/batch-e9a-products-844-en-light-last.png"
+          ]
+        }
+      ],
+      "browser_evidence": [
+        "E-BATCH-E9A2"
+      ],
+      "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "closure_scope": "Actual844×390en/lightfirst/lasttitle+headlinefirstline;844en/darkcontractall7entries. Other641+shortsizesnotimplied."
     }
   ],
   "next_batches": [
@@ -5520,6 +6334,12 @@
       "title": "Clipboard.writeText",
       "url": "https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText",
       "relevance": "Only resolved Promise proves successful clipboard write."
+    },
+    {
+      "title": "WCAG1.4.3 ContrastMinimum",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "relevance": "Normaltext4.5; qualifyinglargetext3. Ratioscannotroundup. Informationalauthornotpuredecoration; projectallcoverDOM4.5isconservativebeyondlargeexception.",
+      "independently_read_at": "2026-10-16T03:22:42+08:00"
     }
   ],
   "limitations": [
@@ -5531,8 +6351,8 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.12",
-    "sha256": "b2b2ee75563dd84a1fdb3d1e5c18f3f78795a34b6b53a4192a02d34c665f2968",
+    "version": "1.15",
+    "sha256": "80bdbb8dc76ecf28ca6282a5b93a5678a270a04657e6449b528e936b7ea15ebc",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -5540,27 +6360,27 @@
       "motion_families": 26,
       "world_decorative_families": 18,
       "control_families": 265,
-      "stable_control_selectors": 359,
+      "stable_control_selectors": 361,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 47,
+      "partial_state_evidence_families": 55,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 228,
-        "partial-state-evidence": 47,
-        "measured-observation-only": 9,
+        "source-only": 224,
+        "partial-state-evidence": 55,
+        "measured-observation-only": 5,
         "rendered-baseline": 25
       },
       "initial_evidence_census": {
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 56,
+      "families_with_state_evidence": 60,
       "accepted_whole_families": 0
     },
-    "imported_at": "2026-10-16T03:14:05+08:00",
-    "source_metadata_updated_at": "2026-10-16T03:12:00+08:00",
-    "import_scope": "Counts and previouslyomittedBackselectorstructuralmapping; olditem/menu passesnotinherited."
+    "imported_at": "2026-10-16T03:41:45+08:00",
+    "source_metadata_updated_at": "2026-10-16T03:38:40+08:00",
+    "import_scope": "Stable361structure: native04c780 andexistingAsk a3b76f independent; A2boundedentryindependentlyreviewed."
   },
   "groups": [
     {
@@ -26892,12 +27712,13 @@
     },
     {
       "family_id": "S.APP.products.SELECT",
-      "title": "产品侧栏选择",
+      "title": "产品选择 / 原生产品选择框",
       "scope": "control-family",
-      "selector": "[data-select-product]",
+      "selector": "[data-select-product], [data-product-select]",
       "selector_type": "css",
       "control_ids": [
-        "S.APP.products.SELECT.control.361280"
+        "S.APP.products.SELECT.control.361280",
+        "S.APP.products.SELECT.control.04c780"
       ],
       "routes": [
         "产品应用"
@@ -26958,7 +27779,8 @@
         }
       },
       "known_findings": [
-        "UX-028"
+        "UX-028",
+        "UX-037"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -27468,21 +28290,37 @@
       "journey_queue_ids": [
         "E-06"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E9-PRODUCT-SELECTION-STATE",
+        "CHK-E9A-DIRECTORY-FOCUS",
+        "CHK-E9A-NATIVE-CHOICE",
+        "CHK-E9A-PRODUCT-TYPE",
+        "CHK-E9A2-SHORT-ENTRY",
+        "CHK-E9A-SHORT-ENTRY-FAIL"
+      ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-PRODUCTS-D1",
-        "VIS-FOUR-APP-PRODUCTS-D4"
+        "VIS-FOUR-APP-PRODUCTS-D4",
+        "VIS-E9A-PRODUCT-DESKTOP-D1",
+        "VIS-E9A-PRODUCT-DESKTOP-D4",
+        "VIS-E9A-PRODUCT-PHONE-D1",
+        "VIS-E9A-PRODUCT-PHONE-D4",
+        "VIS-E9A-PRODUCT-SHORT-D1",
+        "VIS-E9A-PRODUCT-SHORT-D4",
+        "VIS-E9A2-PRODUCT-SHORT-D1",
+        "VIS-E9A2-PRODUCT-SHORT-D4"
       ]
     },
     {
       "family_id": "S.APP.products.OPEN",
       "title": "真实产品/预览/源码/相关写作",
       "scope": "control-family",
-      "selector": ".space-product__links a, .space-product [data-open]",
+      "selector": ".space-product__links a, .space-product [data-open], [data-product-ask]",
       "selector_type": "css",
       "control_ids": [
         "S.APP.products.OPEN.control.ce80f4",
-        "S.APP.products.OPEN.control.e19345"
+        "S.APP.products.OPEN.control.e19345",
+        "S.APP.products.OPEN.control.a3b76f"
       ],
       "routes": [
         "产品应用"
@@ -27544,7 +28382,9 @@
       },
       "known_findings": [
         "UX-028",
-        "UX-029"
+        "UX-029",
+        "UX-036",
+        "UX-037"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -28056,11 +28896,27 @@
         "E-06"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9A-PRODUCT-TYPE",
+        "CHK-E9A-PRODUCT-LINK-TARGET",
+        "CHK-E9A-LINK-TRUTH",
+        "CHK-E9A-ASK-TARGET",
+        "CHK-E9A-EXPLORE",
+        "CHK-E9A2-SHORT-ENTRY",
+        "CHK-E9A-EMPTY-DEMO-FAIL",
+        "CHK-E9A-SHORT-ENTRY-FAIL"
       ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-PRODUCTS-D1",
-        "VIS-FOUR-APP-PRODUCTS-D4"
+        "VIS-FOUR-APP-PRODUCTS-D4",
+        "VIS-E9A-PRODUCT-DESKTOP-D1",
+        "VIS-E9A-PRODUCT-DESKTOP-D4",
+        "VIS-E9A-PRODUCT-PHONE-D1",
+        "VIS-E9A-PRODUCT-PHONE-D4",
+        "VIS-E9A-PRODUCT-SHORT-D1",
+        "VIS-E9A-PRODUCT-SHORT-D4",
+        "VIS-E9A2-PRODUCT-SHORT-D1",
+        "VIS-E9A2-PRODUCT-SHORT-D4"
       ]
     },
     {
@@ -32604,7 +33460,8 @@
       },
       "known_findings": [
         "UX-028",
-        "UX-029"
+        "UX-029",
+        "UX-035"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -33067,11 +33924,17 @@
         "E-06"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9-BOOK-COVER-CONTRAST-FAIL",
+        "CHK-E9A-BOOK-TYPE",
+        "CHK-E9A-BOOK-LINK-TARGET",
+        "CHK-E9A-BOOK-CONTRAST"
       ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-BOOKS-D1",
-        "VIS-FOUR-APP-BOOKS-D4"
+        "VIS-FOUR-APP-BOOKS-D4",
+        "VIS-E9A-BOOKS-D1",
+        "VIS-E9A-BOOKS-D4"
       ]
     },
     {
@@ -38667,7 +39530,8 @@
         }
       },
       "known_findings": [
-        "UX-028"
+        "UX-028",
+        "UX-034"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -39441,7 +40305,10 @@
       "journey_queue_ids": [
         "E-06"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E9-SETTINGS-FOCUS-FAIL",
+        "CHK-E9-SETTINGS-STATE-TRUTH"
+      ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-SETTINGS-D1",
         "VIS-FOUR-APP-SETTINGS-D4"
@@ -39515,7 +40382,8 @@
         }
       },
       "known_findings": [
-        "UX-028"
+        "UX-028",
+        "UX-034"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -40057,7 +40925,10 @@
       "journey_queue_ids": [
         "E-06"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E9-SETTINGS-FOCUS-FAIL",
+        "CHK-E9-SETTINGS-STATE-TRUTH"
+      ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-SETTINGS-D1",
         "VIS-FOUR-APP-SETTINGS-D4"
@@ -65475,7 +66346,10 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E9-PRODUCT-SELECTION-STATE",
+        "CHK-E9A-DIRECTORY-FOCUS"
+      ]
     },
     {
       "control_id": "S.APP.products.OPEN.control.ce80f4",
@@ -65547,7 +66421,9 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9A-PRODUCT-LINK-TARGET",
+        "CHK-E9A-LINK-TRUTH"
       ]
     },
     {
@@ -65620,7 +66496,9 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9A-EXPLORE",
+        "CHK-E9A2-SHORT-ENTRY"
       ]
     },
     {
@@ -67545,7 +68423,8 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9A-BOOK-LINK-TARGET"
       ]
     },
     {
@@ -69192,9 +70071,14 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-034"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E9-SETTINGS-FOCUS-FAIL",
+        "CHK-E9-SETTINGS-STATE-TRUTH"
+      ]
     },
     {
       "control_id": "S.APP.settings.COLOR.control.3feb46",
@@ -69263,9 +70147,14 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-034"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E9-SETTINGS-FOCUS-FAIL",
+        "CHK-E9-SETTINGS-STATE-TRUTH"
+      ]
     },
     {
       "control_id": "S.APP.settings.EXPORT.control.df1ab3",
@@ -78945,6 +79834,2520 @@
         "symbol": "overview click → closeDialog(overview)"
       },
       "task": "关闭概览并返回触发窗口控件"
+    },
+    {
+      "control_id": "S.APP.products.SELECT.control.04c780",
+      "family_id": "S.APP.products.SELECT",
+      "selector": "[data-product-select]",
+      "instance_policy": "compact产品目录：一个native select动态呈现7真实产品option",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "可见选项及当前选择"
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "视觉反馈待实测"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Tab/Enter/Space 可达性待实测"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Nativeoptionvalue/change reflectsproduct; OSdesiredpicker/Tabpathunverified."
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "边界或忙碌时条件性禁用，逐项待核验"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用：本地选择立即生效"
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "持久化失败反馈待实测"
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "无可选项时说明或不渲染"
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [
+        {
+          "binding_id": "EIMPORT.E9A1.actual-native.S.APP.products.SELECT.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9a1 products/books scoped evidence",
+          "receipt": "evidence/batch-e9a-actions.json",
+          "receipt_sha256": "e7241f43d709719288a2b866e2640246f9588a798cf784f2690dca256cbfe191",
+          "control_ids": [
+            "S.APP.products.SELECT.control.04c780"
+          ],
+          "control_resolution": "Only explicit selector mode/instance; native/old directory/Ask/link do not inherit each other",
+          "observation": "3个compact context逐个7真实option，selectOption后title/payload/真实链接一致，two frames后picker保留焦点。",
+          "cases": [
+            {
+              "route": "/zh/projects/?profile=about",
+              "viewport": {
+                "width": 320,
+                "height": 740
+              },
+              "locale": "zh",
+              "theme": "light",
+              "reducedMotion": "reduce",
+              "coarse": true,
+              "compact": true,
+              "selections": [
+                {
+                  "option": {
+                    "id": "talent-signal",
+                    "name": "Talent Signal"
+                  },
+                  "link": {
+                    "href": "https://gettalentsignal.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.279449462890625,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "imstage",
+                    "name": "IMStage"
+                  },
+                  "link": {
+                    "href": "https://imstage.org/?lang=zh",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "solo-compass",
+                    "name": "Solo Compass"
+                  },
+                  "link": {
+                    "href": "https://github.com/getyak/solo-compass",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "daypage",
+                    "name": "DayPage"
+                  },
+                  "link": {
+                    "href": "https://daypage.cubxxw.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "telepace",
+                    "name": "Telepace"
+                  },
+                  "link": {
+                    "href": "https://telepace.cubxxw.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "apply-agent",
+                    "name": "Apply Agent"
+                  },
+                  "link": {
+                    "href": "https://apply.cubxxw.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "agent-diff-guard",
+                    "name": "Agent Diff Guard"
+                  },
+                  "link": {
+                    "href": "https://github.com/cubxxw/agent-diff-guard",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                }
+              ],
+              "external": {
+                "count": 1,
+                "href": "https://github.com/cubxxw/agent-diff-guard",
+                "target": {
+                  "x": 50.94141387939453,
+                  "y": 464.61907958984375,
+                  "width": 122.1143569946289,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                "network": "intercepted local response before external request"
+              },
+              "exploreTarget": {
+                "x": 130.48037719726562,
+                "y": 181.40245056152344,
+                "width": 72.15907287597656,
+                "height": 44.2794189453125,
+                "hit": true
+              },
+              "covers": [
+                {
+                  "background": "rgb(79, 104, 90)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 01",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "越南",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(141, 93, 67)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 02",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "吴哥窟",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(76, 105, 121)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 03",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "西藏",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(117, 85, 81)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 04",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "乱世为龙",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    }
+                  ]
+                }
+              ],
+              "bookLinks": [
+                {
+                  "title": "越南",
+                  "href": "https://vietnam.cubxxw.com/",
+                  "label": "阅读《越南》 ↗",
+                  "width": 110.63450622558594,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                {
+                  "title": "吴哥窟",
+                  "href": "https://angkor.cubxxw.com/",
+                  "label": "阅读《吴哥窟》 ↗",
+                  "width": 124.57432556152344,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                {
+                  "title": "西藏",
+                  "href": "https://tibet.cubxxw.com/",
+                  "label": "阅读《西藏》 ↗",
+                  "width": 110.63450622558594,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                {
+                  "title": "乱世为龙",
+                  "href": "https://wudai.cubxxw.com/",
+                  "label": "阅读《乱世为龙》 ↗",
+                  "width": 138.51414489746094,
+                  "height": 44.2794189453125,
+                  "hit": true
+                }
+              ],
+              "notes": {
+                "sameDOM": true,
+                "valuePreserved": true
+              },
+              "pageErrors": []
+            },
+            {
+              "route": "/projects/?profile=about",
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "locale": "en",
+              "theme": "dark",
+              "reducedMotion": "reduce",
+              "coarse": true,
+              "compact": true,
+              "selections": [
+                {
+                  "option": {
+                    "id": "talent-signal",
+                    "name": "Talent Signal"
+                  },
+                  "link": {
+                    "href": "https://gettalentsignal.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280517578125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "imstage",
+                    "name": "IMStage"
+                  },
+                  "link": {
+                    "href": "https://imstage.org/?lang=en",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "solo-compass",
+                    "name": "Solo Compass"
+                  },
+                  "link": {
+                    "href": "https://github.com/getyak/solo-compass",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "daypage",
+                    "name": "DayPage"
+                  },
+                  "link": {
+                    "href": "https://daypage.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "telepace",
+                    "name": "Telepace"
+                  },
+                  "link": {
+                    "href": "https://telepace.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "apply-agent",
+                    "name": "Apply Agent"
+                  },
+                  "link": {
+                    "href": "https://apply.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "agent-diff-guard",
+                    "name": "Agent Diff Guard"
+                  },
+                  "link": {
+                    "href": "https://github.com/cubxxw/agent-diff-guard",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280517578125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                }
+              ],
+              "external": {
+                "count": 1,
+                "href": "https://github.com/cubxxw/agent-diff-guard",
+                "target": {
+                  "x": 57.23844528198242,
+                  "y": 609.2824096679688,
+                  "width": 148.79324340820312,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                "network": "intercepted local response before external request"
+              },
+              "exploreTarget": {
+                "x": 150.47605895996094,
+                "y": 190.75738525390625,
+                "width": 54.863739013671875,
+                "height": 44.28050231933594,
+                "hit": true
+              },
+              "covers": [
+                {
+                  "background": "rgb(79, 104, 90)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 01",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Vietnam",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(141, 93, 67)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 02",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Angkor",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(76, 105, 121)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 03",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Tibet",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(117, 85, 81)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 04",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Dragon in a Broken Age",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    }
+                  ]
+                }
+              ],
+              "bookLinks": [
+                {
+                  "title": "Vietnam",
+                  "href": "https://vietnam.cubxxw.com/",
+                  "label": "Read Vietnam ↗",
+                  "width": 113.60971069335938,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                {
+                  "title": "Angkor",
+                  "href": "https://angkor.cubxxw.com/",
+                  "label": "Read Angkor ↗",
+                  "width": 106.934326171875,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                {
+                  "title": "Tibet",
+                  "href": "https://tibet.cubxxw.com/",
+                  "label": "Read Tibet ↗",
+                  "width": 94.22418212890625,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                {
+                  "title": "Dragon in a Broken Age",
+                  "href": "https://wudai.cubxxw.com/",
+                  "label": "Read Dragon in a Broken Age ↗",
+                  "width": 208.69236755371094,
+                  "height": 44.280517578125,
+                  "hit": true
+                }
+              ],
+              "notes": {
+                "sameDOM": true,
+                "valuePreserved": true
+              },
+              "pageErrors": []
+            },
+            {
+              "route": "/projects/?profile=about",
+              "viewport": {
+                "width": 844,
+                "height": 390
+              },
+              "locale": "en",
+              "theme": "light",
+              "reducedMotion": "reduce",
+              "coarse": true,
+              "compact": true,
+              "selections": [
+                {
+                  "option": {
+                    "id": "talent-signal",
+                    "name": "Talent Signal"
+                  },
+                  "link": {
+                    "href": "https://gettalentsignal.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "imstage",
+                    "name": "IMStage"
+                  },
+                  "link": {
+                    "href": "https://imstage.org/?lang=en",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "solo-compass",
+                    "name": "Solo Compass"
+                  },
+                  "link": {
+                    "href": "https://github.com/getyak/solo-compass",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "daypage",
+                    "name": "DayPage"
+                  },
+                  "link": {
+                    "href": "https://daypage.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "telepace",
+                    "name": "Telepace"
+                  },
+                  "link": {
+                    "href": "https://telepace.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "apply-agent",
+                    "name": "Apply Agent"
+                  },
+                  "link": {
+                    "href": "https://apply.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "agent-diff-guard",
+                    "name": "Agent Diff Guard"
+                  },
+                  "link": {
+                    "href": "https://github.com/cubxxw/agent-diff-guard",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27972412109375,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                }
+              ],
+              "external": {
+                "count": 1,
+                "href": "https://github.com/cubxxw/agent-diff-guard",
+                "target": {
+                  "x": 102.20191192626953,
+                  "y": 194.5003204345703,
+                  "width": 148.79067993164062,
+                  "height": 44.27972412109375,
+                  "hit": true
+                },
+                "network": "intercepted local response before external request"
+              },
+              "exploreTarget": {
+                "x": 191.3379364013672,
+                "y": 149.9002685546875,
+                "width": 54.86280822753906,
+                "height": 44.27973937988281,
+                "hit": true
+              },
+              "covers": [
+                {
+                  "background": "rgb(79, 104, 90)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 01",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Vietnam",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(141, 93, 67)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 02",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Angkor",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(76, 105, 121)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 03",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Tibet",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(117, 85, 81)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 04",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Dragon in a Broken Age",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    }
+                  ]
+                }
+              ],
+              "bookLinks": [
+                {
+                  "title": "Vietnam",
+                  "href": "https://vietnam.cubxxw.com/",
+                  "label": "Read Vietnam ↗",
+                  "width": 113.60774993896484,
+                  "height": 44.27973937988281,
+                  "hit": true
+                },
+                {
+                  "title": "Angkor",
+                  "href": "https://angkor.cubxxw.com/",
+                  "label": "Read Angkor ↗",
+                  "width": 106.9324951171875,
+                  "height": 44.27973937988281,
+                  "hit": true
+                },
+                {
+                  "title": "Tibet",
+                  "href": "https://tibet.cubxxw.com/",
+                  "label": "Read Tibet ↗",
+                  "width": 94.2225570678711,
+                  "height": 44.27973937988281,
+                  "hit": true
+                },
+                {
+                  "title": "Dragon in a Broken Age",
+                  "href": "https://wudai.cubxxw.com/",
+                  "label": "Read Dragon in a Broken Age ↗",
+                  "width": 208.688720703125,
+                  "height": 44.27972412109375,
+                  "hit": true
+                }
+              ],
+              "notes": {
+                "sameDOM": true,
+                "valuePreserved": true
+              },
+              "pageErrors": []
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e9a1-source.json",
+            "manifest_sha256": "8a335fd28bbf4fdf1ac70c683e8395b2cfee845a2ec443a1f723313b61f9bf0f",
+            "frozen_at_utc": "2026-10-15T19:29:07.722260+00:00",
+            "frozen_at_shanghai": "2026-10-16T03:29:07.722260+08:00",
+            "base_revision": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "current_checkout_revision_at_import": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "imported_at_shanghai": "2026-10-16T03:36:26+08:00",
+            "dependencies": [
+              {
+                "file": "assets/js/space/apps.js",
+                "frozen_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "current_worktree_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/space.css",
+                "frozen_sha256": "725ccd16b67ae70c7a0e0933f8c94f33b067bd9b17f08282addf7e363b81e449",
+                "current_worktree_sha256": "037e7c0e06282f51cda4a36929074735073f3637c2d9bdc691542581f1aaf997",
+                "same_current": false
+              },
+              {
+                "file": "assets/css/space-cafe.css",
+                "frozen_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "current_worktree_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/space-app-reading-contracts.spec.ts",
+                "frozen_sha256": "dd0c0aee478e9b945ddf4a59cf0e598d1c72dfd47464f7abb2a4e858e2ff4568",
+                "current_worktree_sha256": "4ddfbbe904bd5139a6a7af3595f1636b10eff897196e95d32fcdac87db05c120",
+                "same_current": false
+              }
+            ],
+            "qa_config": {
+              "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+              "sha256": "fec9a25901f414d314d7e9ee5ee82841b9c7432750f8c83931864a52a102cce9",
+              "workers": 1,
+              "browser": "Chromium Metal"
+            },
+            "qa_config_current_match": true,
+            "latest_does_not_inherit_old_screenshot": true,
+            "limits": "本轮只认证a1 freeze对应状态；当前a2 CSS/spec修改不继承a1图。"
+          },
+          "limits": "父actual方法是focus+selectOption；不是物理OS picker手势、Tab或IME。合同的Home/End/ArrowDown单独绑定。",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9A1.actual-native.S.APP.products.SELECT.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9a1 products/books scoped evidence",
+          "receipt": "evidence/batch-e9a-actions.json",
+          "receipt_sha256": "e7241f43d709719288a2b866e2640246f9588a798cf784f2690dca256cbfe191",
+          "control_ids": [
+            "S.APP.products.SELECT.control.04c780"
+          ],
+          "control_resolution": "Only explicit selector mode/instance; native/old directory/Ask/link do not inherit each other",
+          "observation": "父3个compact context每次select change后两帧焦点仍在新native picker。",
+          "cases": [
+            {
+              "route": "/zh/projects/?profile=about",
+              "viewport": {
+                "width": 320,
+                "height": 740
+              },
+              "locale": "zh",
+              "theme": "light",
+              "reducedMotion": "reduce",
+              "coarse": true,
+              "compact": true,
+              "selections": [
+                {
+                  "option": {
+                    "id": "talent-signal",
+                    "name": "Talent Signal"
+                  },
+                  "link": {
+                    "href": "https://gettalentsignal.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.279449462890625,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "imstage",
+                    "name": "IMStage"
+                  },
+                  "link": {
+                    "href": "https://imstage.org/?lang=zh",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "solo-compass",
+                    "name": "Solo Compass"
+                  },
+                  "link": {
+                    "href": "https://github.com/getyak/solo-compass",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "daypage",
+                    "name": "DayPage"
+                  },
+                  "link": {
+                    "href": "https://daypage.cubxxw.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "telepace",
+                    "name": "Telepace"
+                  },
+                  "link": {
+                    "href": "https://telepace.cubxxw.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "apply-agent",
+                    "name": "Apply Agent"
+                  },
+                  "link": {
+                    "href": "https://apply.cubxxw.com/",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "agent-diff-guard",
+                    "name": "Agent Diff Guard"
+                  },
+                  "link": {
+                    "href": "https://github.com/cubxxw/agent-diff-guard",
+                    "label": "打开真实产品 ↗",
+                    "width": 122.1143569946289,
+                    "height": 44.2794189453125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 300,
+                    "scrollWidth": 300,
+                    "projectedBodyFont": 16.399788411458335
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                }
+              ],
+              "external": {
+                "count": 1,
+                "href": "https://github.com/cubxxw/agent-diff-guard",
+                "target": {
+                  "x": 50.94141387939453,
+                  "y": 464.61907958984375,
+                  "width": 122.1143569946289,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                "network": "intercepted local response before external request"
+              },
+              "exploreTarget": {
+                "x": 130.48037719726562,
+                "y": 181.40245056152344,
+                "width": 72.15907287597656,
+                "height": 44.2794189453125,
+                "hit": true
+              },
+              "covers": [
+                {
+                  "background": "rgb(79, 104, 90)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 01",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "越南",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(141, 93, 67)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 02",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "吴哥窟",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(76, 105, 121)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 03",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "西藏",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(117, 85, 81)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 04",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "乱世为龙",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "熊鑫伟 · 自著",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    }
+                  ]
+                }
+              ],
+              "bookLinks": [
+                {
+                  "title": "越南",
+                  "href": "https://vietnam.cubxxw.com/",
+                  "label": "阅读《越南》 ↗",
+                  "width": 110.63450622558594,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                {
+                  "title": "吴哥窟",
+                  "href": "https://angkor.cubxxw.com/",
+                  "label": "阅读《吴哥窟》 ↗",
+                  "width": 124.57432556152344,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                {
+                  "title": "西藏",
+                  "href": "https://tibet.cubxxw.com/",
+                  "label": "阅读《西藏》 ↗",
+                  "width": 110.63450622558594,
+                  "height": 44.2794189453125,
+                  "hit": true
+                },
+                {
+                  "title": "乱世为龙",
+                  "href": "https://wudai.cubxxw.com/",
+                  "label": "阅读《乱世为龙》 ↗",
+                  "width": 138.51414489746094,
+                  "height": 44.2794189453125,
+                  "hit": true
+                }
+              ],
+              "notes": {
+                "sameDOM": true,
+                "valuePreserved": true
+              },
+              "pageErrors": []
+            },
+            {
+              "route": "/projects/?profile=about",
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "locale": "en",
+              "theme": "dark",
+              "reducedMotion": "reduce",
+              "coarse": true,
+              "compact": true,
+              "selections": [
+                {
+                  "option": {
+                    "id": "talent-signal",
+                    "name": "Talent Signal"
+                  },
+                  "link": {
+                    "href": "https://gettalentsignal.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280517578125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "imstage",
+                    "name": "IMStage"
+                  },
+                  "link": {
+                    "href": "https://imstage.org/?lang=en",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "solo-compass",
+                    "name": "Solo Compass"
+                  },
+                  "link": {
+                    "href": "https://github.com/getyak/solo-compass",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "daypage",
+                    "name": "DayPage"
+                  },
+                  "link": {
+                    "href": "https://daypage.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "telepace",
+                    "name": "Telepace"
+                  },
+                  "link": {
+                    "href": "https://telepace.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "apply-agent",
+                    "name": "Apply Agent"
+                  },
+                  "link": {
+                    "href": "https://apply.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280487060546875,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "agent-diff-guard",
+                    "name": "Agent Diff Guard"
+                  },
+                  "link": {
+                    "href": "https://github.com/cubxxw/agent-diff-guard",
+                    "label": "Open the product ↗",
+                    "width": 148.79324340820312,
+                    "height": 44.280517578125,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 370,
+                    "scrollWidth": 370,
+                    "projectedBodyFont": 16.40018607474662
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                }
+              ],
+              "external": {
+                "count": 1,
+                "href": "https://github.com/cubxxw/agent-diff-guard",
+                "target": {
+                  "x": 57.23844528198242,
+                  "y": 609.2824096679688,
+                  "width": 148.79324340820312,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                "network": "intercepted local response before external request"
+              },
+              "exploreTarget": {
+                "x": 150.47605895996094,
+                "y": 190.75738525390625,
+                "width": 54.863739013671875,
+                "height": 44.28050231933594,
+                "hit": true
+              },
+              "covers": [
+                {
+                  "background": "rgb(79, 104, 90)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 01",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Vietnam",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(141, 93, 67)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 02",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Angkor",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(76, 105, 121)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 03",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Tibet",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(117, 85, 81)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 04",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Dragon in a Broken Age",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    }
+                  ]
+                }
+              ],
+              "bookLinks": [
+                {
+                  "title": "Vietnam",
+                  "href": "https://vietnam.cubxxw.com/",
+                  "label": "Read Vietnam ↗",
+                  "width": 113.60971069335938,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                {
+                  "title": "Angkor",
+                  "href": "https://angkor.cubxxw.com/",
+                  "label": "Read Angkor ↗",
+                  "width": 106.934326171875,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                {
+                  "title": "Tibet",
+                  "href": "https://tibet.cubxxw.com/",
+                  "label": "Read Tibet ↗",
+                  "width": 94.22418212890625,
+                  "height": 44.280517578125,
+                  "hit": true
+                },
+                {
+                  "title": "Dragon in a Broken Age",
+                  "href": "https://wudai.cubxxw.com/",
+                  "label": "Read Dragon in a Broken Age ↗",
+                  "width": 208.69236755371094,
+                  "height": 44.280517578125,
+                  "hit": true
+                }
+              ],
+              "notes": {
+                "sameDOM": true,
+                "valuePreserved": true
+              },
+              "pageErrors": []
+            },
+            {
+              "route": "/projects/?profile=about",
+              "viewport": {
+                "width": 844,
+                "height": 390
+              },
+              "locale": "en",
+              "theme": "light",
+              "reducedMotion": "reduce",
+              "coarse": true,
+              "compact": true,
+              "selections": [
+                {
+                  "option": {
+                    "id": "talent-signal",
+                    "name": "Talent Signal"
+                  },
+                  "link": {
+                    "href": "https://gettalentsignal.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "imstage",
+                    "name": "IMStage"
+                  },
+                  "link": {
+                    "href": "https://imstage.org/?lang=en",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "solo-compass",
+                    "name": "Solo Compass"
+                  },
+                  "link": {
+                    "href": "https://github.com/getyak/solo-compass",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "daypage",
+                    "name": "DayPage"
+                  },
+                  "link": {
+                    "href": "https://daypage.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "telepace",
+                    "name": "Telepace"
+                  },
+                  "link": {
+                    "href": "https://telepace.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "apply-agent",
+                    "name": "Apply Agent"
+                  },
+                  "link": {
+                    "href": "https://apply.cubxxw.com/",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27973937988281,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                },
+                {
+                  "option": {
+                    "id": "agent-diff-guard",
+                    "name": "Agent Diff Guard"
+                  },
+                  "link": {
+                    "href": "https://github.com/cubxxw/agent-diff-guard",
+                    "label": "Open the product ↗",
+                    "width": 148.79067993164062,
+                    "height": 44.27972412109375,
+                    "hit": true
+                  },
+                  "metrics": {
+                    "bodyWidth": 826,
+                    "scrollWidth": 826,
+                    "projectedBodyFont": 16.399901161470943
+                  },
+                  "focusAfterTwoFrames": true,
+                  "method": "focus + native select change contract"
+                }
+              ],
+              "external": {
+                "count": 1,
+                "href": "https://github.com/cubxxw/agent-diff-guard",
+                "target": {
+                  "x": 102.20191192626953,
+                  "y": 194.5003204345703,
+                  "width": 148.79067993164062,
+                  "height": 44.27972412109375,
+                  "hit": true
+                },
+                "network": "intercepted local response before external request"
+              },
+              "exploreTarget": {
+                "x": 191.3379364013672,
+                "y": 149.9002685546875,
+                "width": 54.86280822753906,
+                "height": 44.27973937988281,
+                "hit": true
+              },
+              "covers": [
+                {
+                  "background": "rgb(79, 104, 90)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 01",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Vietnam",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.344834475567508
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(141, 93, 67)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 02",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Angkor",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 4.893529199904568
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(76, 105, 121)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 03",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Tibet",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.1315624608620025
+                    }
+                  ]
+                },
+                {
+                  "background": "rgb(117, 85, 81)",
+                  "coverOpacity": 1,
+                  "coverFilter": "none",
+                  "text": [
+                    {
+                      "text": "BEAR / 04",
+                      "fontSize": "13px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Dragon in a Broken Age",
+                      "fontSize": "24px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    },
+                    {
+                      "text": "Xinwei Xiong · self-written",
+                      "fontSize": "16px",
+                      "color": "rgb(244, 241, 223)",
+                      "opacity": 1,
+                      "contrast": 5.825708633737578
+                    }
+                  ]
+                }
+              ],
+              "bookLinks": [
+                {
+                  "title": "Vietnam",
+                  "href": "https://vietnam.cubxxw.com/",
+                  "label": "Read Vietnam ↗",
+                  "width": 113.60774993896484,
+                  "height": 44.27973937988281,
+                  "hit": true
+                },
+                {
+                  "title": "Angkor",
+                  "href": "https://angkor.cubxxw.com/",
+                  "label": "Read Angkor ↗",
+                  "width": 106.9324951171875,
+                  "height": 44.27973937988281,
+                  "hit": true
+                },
+                {
+                  "title": "Tibet",
+                  "href": "https://tibet.cubxxw.com/",
+                  "label": "Read Tibet ↗",
+                  "width": 94.2225570678711,
+                  "height": 44.27973937988281,
+                  "hit": true
+                },
+                {
+                  "title": "Dragon in a Broken Age",
+                  "href": "https://wudai.cubxxw.com/",
+                  "label": "Read Dragon in a Broken Age ↗",
+                  "width": 208.688720703125,
+                  "height": 44.27972412109375,
+                  "hit": true
+                }
+              ],
+              "notes": {
+                "sameDOM": true,
+                "valuePreserved": true
+              },
+              "pageErrors": []
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e9a1-source.json",
+            "manifest_sha256": "8a335fd28bbf4fdf1ac70c683e8395b2cfee845a2ec443a1f723313b61f9bf0f",
+            "frozen_at_utc": "2026-10-15T19:29:07.722260+00:00",
+            "frozen_at_shanghai": "2026-10-16T03:29:07.722260+08:00",
+            "base_revision": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "current_checkout_revision_at_import": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "imported_at_shanghai": "2026-10-16T03:36:26+08:00",
+            "dependencies": [
+              {
+                "file": "assets/js/space/apps.js",
+                "frozen_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "current_worktree_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/space.css",
+                "frozen_sha256": "725ccd16b67ae70c7a0e0933f8c94f33b067bd9b17f08282addf7e363b81e449",
+                "current_worktree_sha256": "037e7c0e06282f51cda4a36929074735073f3637c2d9bdc691542581f1aaf997",
+                "same_current": false
+              },
+              {
+                "file": "assets/css/space-cafe.css",
+                "frozen_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "current_worktree_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/space-app-reading-contracts.spec.ts",
+                "frozen_sha256": "dd0c0aee478e9b945ddf4a59cf0e598d1c72dfd47464f7abb2a4e858e2ff4568",
+                "current_worktree_sha256": "4ddfbbe904bd5139a6a7af3595f1636b10eff897196e95d32fcdac87db05c120",
+                "same_current": false
+              }
+            ],
+            "qa_config": {
+              "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+              "sha256": "fec9a25901f414d314d7e9ee5ee82841b9c7432750f8c83931864a52a102cce9",
+              "workers": 1,
+              "browser": "Chromium Metal"
+            },
+            "qa_config_current_match": true,
+            "latest_does_not_inherit_old_screenshot": true,
+            "limits": "本轮只认证a1 freeze对应状态；当前a2 CSS/spec修改不继承a1图。"
+          },
+          "limits": "只本轮products/books exact conditions；contact/settings与完整family未认证。",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9A1.native-keyboard-contract.S.APP.products.SELECT.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9a1 products/books scoped evidence",
+          "receipt": "evidence/batch-e9a1-contracts.log",
+          "receipt_sha256": "d9224d6d1f2f6e864d0f659bc4117ece8b77bcd26dcc56a2cd28862d05b104ab",
+          "control_ids": [
+            "S.APP.products.SELECT.control.04c780"
+          ],
+          "control_resolution": "Only explicit selector mode/instance; native/old directory/Ask/link do not inherit each other",
+          "observation": "4个compact合同：native Home/End/ArrowDown逐个选择7option，choice/title/payload与目录真实集合一致，一帧后picker仍focus。",
+          "cases": [
+            {
+              "id": "320×844 zh light products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/zh/projects/",
+              "viewport": {
+                "width": 320,
+                "height": 844
+              },
+              "locale": "zh",
+              "theme": "light",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "390×844 en light products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/projects/",
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "locale": "en",
+              "theme": "light",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "620×844 zh dark products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/zh/projects/",
+              "viewport": {
+                "width": 620,
+                "height": 844
+              },
+              "locale": "zh",
+              "theme": "dark",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "844×390 en dark products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/projects/",
+              "viewport": {
+                "width": 844,
+                "height": 390
+              },
+              "locale": "en",
+              "theme": "dark",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e9a1-source.json",
+            "manifest_sha256": "8a335fd28bbf4fdf1ac70c683e8395b2cfee845a2ec443a1f723313b61f9bf0f",
+            "frozen_at_utc": "2026-10-15T19:29:07.722260+00:00",
+            "frozen_at_shanghai": "2026-10-16T03:29:07.722260+08:00",
+            "base_revision": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "current_checkout_revision_at_import": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "imported_at_shanghai": "2026-10-16T03:36:26+08:00",
+            "dependencies": [
+              {
+                "file": "assets/js/space/apps.js",
+                "frozen_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "current_worktree_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/space.css",
+                "frozen_sha256": "725ccd16b67ae70c7a0e0933f8c94f33b067bd9b17f08282addf7e363b81e449",
+                "current_worktree_sha256": "037e7c0e06282f51cda4a36929074735073f3637c2d9bdc691542581f1aaf997",
+                "same_current": false
+              },
+              {
+                "file": "assets/css/space-cafe.css",
+                "frozen_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "current_worktree_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/space-app-reading-contracts.spec.ts",
+                "frozen_sha256": "dd0c0aee478e9b945ddf4a59cf0e598d1c72dfd47464f7abb2a4e858e2ff4568",
+                "current_worktree_sha256": "4ddfbbe904bd5139a6a7af3595f1636b10eff897196e95d32fcdac87db05c120",
+                "same_current": false
+              }
+            ],
+            "qa_config": {
+              "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+              "sha256": "fec9a25901f414d314d7e9ee5ee82841b9c7432750f8c83931864a52a102cce9",
+              "workers": 1,
+              "browser": "Chromium Metal"
+            },
+            "qa_config_current_match": true,
+            "latest_does_not_inherit_old_screenshot": true,
+            "limits": "本轮只认证a1 freeze对应状态；当前a2 CSS/spec修改不继承a1图。"
+          },
+          "limits": "原生select键盘合同；不是Tab遍历、物理picker或OS级输入测试。",
+          "verified_score": null
+        }
+      ],
+      "scoped_check_assessment_ids": [
+        "CHK-E9A-NATIVE-CHOICE",
+        "CHK-E9A2-SHORT-ENTRY",
+        "CHK-E9A-SHORT-ENTRY-FAIL"
+      ],
+      "source": {
+        "file": "assets/js/space/apps.js",
+        "line": 31,
+        "symbol": "select[data-product-select] / change→choose",
+        "frozen_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9"
+      },
+      "role_note": "Nativecombobox selectedoption/value/change; evidence distinctfromdesktopbutton."
+    },
+    {
+      "control_id": "S.APP.products.OPEN.control.a3b76f",
+      "family_id": "S.APP.products.OPEN",
+      "selector": "[data-product-ask]",
+      "instance_policy": "3ca就已存在的真实Ask按钮，补漏映射；随当前产品上下文改变",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "链接可见且指向可读目标"
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "应有文字/背景反馈；当前逐项样式仅源码，未实测"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "原生链接 Tab 可达，Enter 导航；Space 保持原生滚动。焦点视觉/遮挡/次序待实测。"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "导航触发；当前路由 aria-current/active 依组件而异"
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用：普通导航不应禁用"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "AIactionnotinvoked; applicabilityandbehaviorunverified."
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "AIactionnotinvoked; applicabilityandbehaviorunverified."
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "AIactionnotinvoked; applicabilityandbehaviorunverified."
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [
+        {
+          "binding_id": "EIMPORT.E9A1.ask-hit-only.S.APP.products.OPEN.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9a1 products/books scoped evidence",
+          "receipt": "evidence/batch-e9a1-contracts.log",
+          "receipt_sha256": "d9224d6d1f2f6e864d0f659bc4117ece8b77bcd26dcc56a2cd28862d05b104ab",
+          "control_ids": [
+            "S.APP.products.OPEN.control.a3b76f"
+          ],
+          "control_resolution": "Only explicit selector mode/instance; native/old directory/Ask/link do not inherit each other",
+          "observation": "六个合同对每个产品的[data-product-ask]只验证44尺寸与centerhit。",
+          "cases": [
+            {
+              "id": "320×844 zh light products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/zh/projects/",
+              "viewport": {
+                "width": 320,
+                "height": 844
+              },
+              "locale": "zh",
+              "theme": "light",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "390×844 en light products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/projects/",
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "locale": "en",
+              "theme": "light",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "620×844 zh dark products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/zh/projects/",
+              "viewport": {
+                "width": 620,
+                "height": 844
+              },
+              "locale": "zh",
+              "theme": "dark",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "844×390 en dark products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/projects/",
+              "viewport": {
+                "width": 844,
+                "height": 390
+              },
+              "locale": "en",
+              "theme": "dark",
+              "coarse": true,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "1440×900 zh light products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/zh/projects/",
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "locale": "zh",
+              "theme": "light",
+              "coarse": false,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            },
+            {
+              "id": "1440×900 en dark products and books / real choices retain focus, readable content and distinct reachable reading links",
+              "route": "/projects/",
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "locale": "en",
+              "theme": "dark",
+              "coarse": false,
+              "reducedMotion": "reduce",
+              "reported_passed": true,
+              "network": "document capture prevents default and logs real coordinate link clicks; no external services",
+              "test_source": "tests/e2e/space-app-reading-contracts.spec.ts:48"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e9a1-source.json",
+            "manifest_sha256": "8a335fd28bbf4fdf1ac70c683e8395b2cfee845a2ec443a1f723313b61f9bf0f",
+            "frozen_at_utc": "2026-10-15T19:29:07.722260+00:00",
+            "frozen_at_shanghai": "2026-10-16T03:29:07.722260+08:00",
+            "base_revision": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "current_checkout_revision_at_import": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+            "imported_at_shanghai": "2026-10-16T03:36:26+08:00",
+            "dependencies": [
+              {
+                "file": "assets/js/space/apps.js",
+                "frozen_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "current_worktree_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/space.css",
+                "frozen_sha256": "725ccd16b67ae70c7a0e0933f8c94f33b067bd9b17f08282addf7e363b81e449",
+                "current_worktree_sha256": "037e7c0e06282f51cda4a36929074735073f3637c2d9bdc691542581f1aaf997",
+                "same_current": false
+              },
+              {
+                "file": "assets/css/space-cafe.css",
+                "frozen_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "current_worktree_sha256": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/space-app-reading-contracts.spec.ts",
+                "frozen_sha256": "dd0c0aee478e9b945ddf4a59cf0e598d1c72dfd47464f7abb2a4e858e2ff4568",
+                "current_worktree_sha256": "4ddfbbe904bd5139a6a7af3595f1636b10eff897196e95d32fcdac87db05c120",
+                "same_current": false
+              }
+            ],
+            "qa_config": {
+              "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+              "sha256": "fec9a25901f414d314d7e9ee5ee82841b9c7432750f8c83931864a52a102cce9",
+              "workers": 1,
+              "browser": "Chromium Metal"
+            },
+            "qa_config_current_match": true,
+            "latest_does_not_inherit_old_screenshot": true,
+            "limits": "本轮只认证a1 freeze对应状态；当前a2 CSS/spec修改不继承a1图。"
+          },
+          "limits": "Ask动作从未被触发，不绑定产品外链popup/URL或任何AI/网络结果；仅补真实旧selector漏项。",
+          "verified_score": null
+        }
+      ],
+      "scoped_check_assessment_ids": [
+        "CHK-E9A-ASK-TARGET"
+      ],
+      "source": {
+        "file": "assets/js/space/apps.js",
+        "line": 47,
+        "symbol": "ask.dataset.productAsk and execute(ask)",
+        "frozen_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9"
+      },
+      "role_note": "AIbutton; geometryonly, neverAIinvoked."
     }
   ],
   "specific_observations": [
@@ -79127,6 +82530,16 @@
       "finding_id": "UX-031",
       "evidence_type": "actualwheel_and_delayedJSON",
       "evidence": "E-BATCH-E71-FINAL"
+    },
+    {
+      "id": "DES-E9A-NEXT",
+      "families": [
+        "S.APP.products.SELECT",
+        "S.APP.books.READ"
+      ],
+      "status": "low_priority_after_contact_settings",
+      "proposal": "保持641+短coarse布局；后续对照stage Dogfood易懂名称、书架桌面留白/英文作者行节奏，不凭偏好新增P2，不抢contact/settings优先级。",
+      "evidence_type": "20actualimages E9a1/E9a2"
     }
   ],
   "scoped_check_assessments": [
@@ -82352,11 +85765,503 @@
       ],
       "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
       "reason": "Shortbarlabel/title/haspopup saysWindowoverview; menuduplicatetilehidden+arrowsskiphole; terminalreportsactualoverview, publicexecute remains true. Normaldesktoplabelarrange andtrue tile. Exactnamedcontracts only."
+    },
+    {
+      "id": "CHK-E9-SETTINGS-FOCUS-FAIL",
+      "family_ids": [
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.THEME.control.d56fcd",
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 80,
+      "reason": "ActualSpace afterexplicitchoicefocus leavesBODY, so keyboardpositioninsettingslost; values/pressedstillcorrect. Tabpathunverified.",
+      "finding_id": "UX-034",
+      "evidence": [
+        "E-E9-FOCUS-BASELINE"
+      ],
+      "scope": "1440×900zh/reduce; dark/forestonly.",
+      "verified_score": null,
+      "kind": "recorded_baseline_bounded_behavior_or_computed_contrast",
+      "status": "observed_baseline_not_current_E9_acceptance",
+      "confidence": "high",
+      "as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce"
+      }
+    },
+    {
+      "id": "CHK-E9-SETTINGS-STATE-TRUTH",
+      "family_ids": [
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.THEME.control.d56fcd",
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D3.2",
+      "anchor_score": 96,
+      "reason": "Onlytestedchoices store dark/forest andselectedpressedagree; focusfailureisindependent andnotcanceledbycorrectvalue.",
+      "evidence": [
+        "E-E9-FOCUS-BASELINE"
+      ],
+      "scope": "1440×900zh/reduce dark/forest.",
+      "verified_score": null,
+      "kind": "recorded_baseline_bounded_behavior_or_computed_contrast",
+      "status": "observed_baseline_not_current_E9_acceptance",
+      "confidence": "high",
+      "as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce"
+      }
+    },
+    {
+      "id": "CHK-E9-PRODUCT-SELECTION-STATE",
+      "family_ids": [
+        "S.APP.products.SELECT"
+      ],
+      "control_ids": [
+        "S.APP.products.SELECT.control.361280"
+      ],
+      "criterion": "D3.2",
+      "anchor_score": 96,
+      "reason": "Space afterexplicitimstagebuttonfocus setsselectedandpayloadimstage. Focusmoves tonamedproductsSECTION; observationonly, notfullkeyboardpass/failure.",
+      "evidence": [
+        "E-E9-FOCUS-BASELINE"
+      ],
+      "scope": "1440×900zh/light/reduce imstageonly.",
+      "verified_score": null,
+      "kind": "recorded_baseline_bounded_behavior_or_computed_contrast",
+      "status": "observed_baseline_not_current_E9_acceptance",
+      "confidence": "high",
+      "as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce"
+      }
+    },
+    {
+      "id": "CHK-E9-BOOK-COVER-CONTRAST-FAIL",
+      "family_ids": [
+        "S.APP.books.READ"
+      ],
+      "control_ids": [],
+      "component_selector": ".space-book__cover",
+      "criterion": "D2.4",
+      "anchor_score": 80,
+      "reason": "Fourinformationalauthor8px textafter.75opacityeach<4.5; orangetitle2.957487<3unrounded. ComputedCSS/alphasolidcoloronly; READanchoritselfnotmeasured.",
+      "finding_id": "UX-035",
+      "evidence": [
+        "E-E9-BOOK-CONTRAST-BASELINE"
+      ],
+      "scope": "1440×900zh/light/reduce3ca; bookcoverDOMtextonly.",
+      "verified_score": null,
+      "kind": "recorded_baseline_bounded_behavior_or_computed_contrast",
+      "status": "observed_baseline_not_current_E9_acceptance",
+      "confidence": "high",
+      "as_of": {
+        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+        "reviewed_at": "2026-10-16T03:22:42+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "motion": "reduce"
+      }
+    },
+    {
+      "id": "CHK-E9A-DIRECTORY-FOCUS",
+      "family_ids": [
+        "S.APP.products.SELECT"
+      ],
+      "control_ids": [
+        "S.APP.products.SELECT.control.361280"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "Desktop7directorybuttons actualcoordinate1440zh +Spacecontracts; payload/title/focusretain2frames. Newpolicy, oldnamedregionnotabug."
+    },
+    {
+      "id": "CHK-E9A-NATIVE-CHOICE",
+      "family_ids": [
+        "S.APP.products.SELECT"
+      ],
+      "control_ids": [
+        "S.APP.products.SELECT.control.04c780"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "Compact7options actualexplicitfocus/selectOption+2framesfocus; contractsHome/End/ArrowDown. NoOSpicker/fullTabclaim."
+    },
+    {
+      "id": "CHK-E9A-PRODUCT-TYPE",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [],
+      "criterion": "D4.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "Productparagraphprojected16.4CSSpx; directory/actions≥13, imagecontainsmax280rawheightwithrealalt/content; noxoverflow6scopes."
+    },
+    {
+      "id": "CHK-E9A-PRODUCT-LINK-TARGET",
+      "family_ids": [
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.OPEN.control.ce80f4"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "Allproductanchorscontract44/hit; actualprimaryabout44.28high4contexts, exactoriginalURLs, oneactualpopuplocallyintercepted/context."
+    },
+    {
+      "id": "CHK-E9A-LINK-TRUTH",
+      "family_ids": [
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.OPEN.control.ce80f4"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "All7catalog exactoptionalURLlist andmissingdemoabsent; original6fail preserved, globalsafeURLunchanged."
+    },
+    {
+      "id": "CHK-E9A-ASK-TARGET",
+      "family_ids": [
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.OPEN.control.a3b76f"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "Only6contractsAsk44/hit, neverinvokeAI; noURL/popup/resultinheritance."
+    },
+    {
+      "id": "CHK-E9A-EXPLORE",
+      "family_ids": [
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.OPEN.control.e19345"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "ActualExplorebooksopensshelf; contractsreader/books/Writingnavigation andnotesoriginalDOM/value/continuationpass."
+    },
+    {
+      "id": "CHK-E9A-BOOK-TYPE",
+      "family_ids": [
+        "S.APP.books.READ"
+      ],
+      "control_ids": [],
+      "criterion": "D4.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "Fourrealbookauthor/title/description retained, descriptionprojected≥16/namedreading≥13; phoneonecolumn, longtitlefitscover."
+    },
+    {
+      "id": "CHK-E9A-BOOK-LINK-TARGET",
+      "family_ids": [
+        "S.APP.books.READ"
+      ],
+      "control_ids": [
+        "S.APP.books.READ.control.715814"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "4distinctnamedanchors44/hit/scroll actual; contractscapturecoordinateclickwithoriginalURLs, notexternalavailability."
+    },
+    {
+      "id": "CHK-E9A-BOOK-CONTRAST",
+      "family_ids": [
+        "S.APP.books.READ"
+      ],
+      "control_ids": [],
+      "criterion": "D2.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "12opaqueDOMtext/context≥4.5; rawfourratios5.3448344756/4.8935291999/5.1315624609/5.8257086337 independentlyrecomputed, norounding/fullpageclaim."
+    },
+    {
+      "id": "CHK-E9A2-SHORT-ENTRY",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.SELECT.control.04c780",
+        "S.APP.products.OPEN.control.e19345"
+      ],
+      "criterion": "D1.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E9a1_E9a2_check",
+      "status": "closed_for_named_E9a_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a2 final bounded shortcoarseentry refinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1",
+        "E-BATCH-E9A2"
+      ],
+      "scope": "Specifiedcontract/actualpaths only; notfullfamily/device/Tab/AIcertification.",
+      "reason": "844shortheaderoneRow; actualfirst/lasttitle+headlinefirstlineinsidebody, contractall7atbodyscrollTop0; 44targets/focus/URLsretained."
+    },
+    {
+      "id": "CHK-E9A-EMPTY-DEMO-FAIL",
+      "family_ids": [
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.OPEN.control.ce80f4"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "historical_recorded_failure_preserved",
+      "status": "historical_failure_later_bounded_fix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-E9A-INITIAL-LINK-FAIL"
+      ],
+      "scope": "HistoricalA1only,currentfixseparate.",
+      "reason": "Oldemptydemo rendersTrydemo→sitehome; initial6fail received3expected2, P2intentmismatch.",
+      "finding_id": "UX-036"
+    },
+    {
+      "id": "CHK-E9A-SHORT-ENTRY-FAIL",
+      "family_ids": [
+        "S.APP.products.SELECT",
+        "S.APP.products.OPEN"
+      ],
+      "control_ids": [
+        "S.APP.products.SELECT.control.04c780",
+        "S.APP.products.OPEN.control.e19345"
+      ],
+      "criterion": "D1.2",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "historical_recorded_failure_preserved",
+      "status": "historical_failure_later_bounded_fix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a1-source.json",
+        "recorded_at": "2026-10-15T19:29:07.722260+00:00",
+        "reviewed_at": "2026-10-16T03:41:45+08:00",
+        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+      },
+      "evidence": [
+        "E-BATCH-E9A1"
+      ],
+      "scope": "HistoricalA1only,currentfixseparate.",
+      "reason": "A1844short about115pxnavigation leavesh2/headlineoutsidefirstfold; contentreachable.",
+      "finding_id": "UX-037"
     }
   ],
-  "latest_validated_checkpoint": "aff16e05b32229baab2da82298e2f14990f955df",
-  "preview_scope": "E81namedcapacity/overview/Back44/repeatstability verified; fullcontrol/appcontentmatrixnull.",
-  "latest_reviewed_artifact": "E-BATCH-E81-FINAL",
+  "latest_validated_checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+  "preview_scope": "E9a2products/books namedscopesaccepted; contact/settingsE9bnotimplemented/fullmatrixnull.",
+  "latest_reviewed_artifact": "E-BATCH-E9A2",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -82705,7 +86610,7 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
   "anchor_intent_review": {
     "as_of": {
       "phase": "478 preview native anchor and actual right TOC scoped probes",
@@ -82803,6 +86708,54 @@
       "Noallappbodytype/targets/contentcertification; UX028/029remain.",
       "OldE8tile/overviewimages remain failure/history and cannotcertifyE81.",
       "Closed dialogdisplayguard is[open]-onlysourceplusactualclosehiddenchecks; notallmodalruntimecertification."
+    ],
+    "verified_score": null
+  },
+  "e9_baseline_review": {
+    "as_of": {
+      "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
+      "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+      "reviewed_at": "2026-10-16T03:22:42+08:00",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "motion": "reduce"
+    },
+    "immutable_blob_hashes_verified": true,
+    "product_region_focus": "Observedcurrentnavigationstrategy; noautomaticfailureorTabcertification.",
+    "confirmed_findings": [
+      "UX-034",
+      "UX-035"
+    ],
+    "new_P0_P1_findings": [],
+    "current_E9_source_status": "WIP_notreviewed_notaccepted",
+    "verified_score": null
+  },
+  "e9a_source_review": {
+    "as_of": {
+      "phase": "E9a2 final bounded shortcoarseentry refinement",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+      "recorded_at": "2026-10-15T19:33:56.182116+00:00",
+      "reviewed_at": "2026-10-16T03:41:45+08:00",
+      "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+    },
+    "status": "final4hash_QA_boundedreceipts_verified",
+    "new_P0_P1_findings": [],
+    "source_review": "Choicehost/active/payload/activeElementguard+microtasknewpolicy; oldregionnotdeclaredunreachable. LocaloptionalURLpresenceguard. A2onlyshortcoarse641+CSSrow/margins+entrygeometry, apps/cafeCSSunchanged.",
+    "partial_closures": [
+      "UX028/029products_books_only"
+    ],
+    "closed_findings": [
+      "UX035",
+      "UX036",
+      "UX037"
+    ],
+    "remaining": [
+      "UX034settingsBODY",
+      "contact/settingstype/targets",
+      "OSpicker/Safari/zoom/Tab/fullstates"
     ],
     "verified_score": null
   }

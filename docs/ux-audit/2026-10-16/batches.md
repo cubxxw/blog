@@ -114,3 +114,20 @@
 ### E8.1独立闭环
 
 独立复核5/5源码与QA、17Node/6合同/3实际旅程和5新图，无新P0/P1。UX024/032/033只按已测容量fallback、重复整理稳定、844coarse Back44/滚末项返回链关闭；历史失败保留。概览局部D1 94.5/D4 93，四窗tile D4仍89（App小字问题归E9继续修）。盘点补漏现存Back selector至359：是既有按钮新登记，不是新增功能；与item/menu证据分别绑定。完整309族仍无全矩阵认证。
+
+
+## E9a初跑：真实链接缺口
+
+4文件source manifest和QA冻结，语法/typecheck/diff通过，Hugo4296ms。6组合同全部在IMStage第二产品链接数失败：catalog.demo为空，已有shared link→safeURL('',origin)却解析成本站root，额外显示“测试预览”。不是通过删/放宽真实URL断言处理；旧3ca helper相同，此处首次动作合同揭示既有缺陷。初始完整log保留，未把后半未执行的书/笔记合同当通过。E9a1只shared link空/空白/非string提前返回，不改state全局URL策略；原6合同继续复跑。
+
+
+### E9a1功能复验与E9a2观感迭代
+
+- 最小link presence guard后四hash/QA冻结，Hugo与typecheck通过，6不同合同全部通过16.2s，原count/URL断言未放宽，并显式无demo无预览入口。
+- 父4实际Metalcontext（320×740zh/light、390×844en/dark、844×390en/light coarse、1440×900zh/light）/16图：7真实产品选择与全部URL、跨2帧choice焦点；desktop实际坐标/phone native selectOption明确非实体picker认证。每scope1主要link真实popup由本地route截获，无真实外站请求；explore实际去书架，4书命名/链接/hit/滚动，12computed比值最低4.893529，各scope一致；body16.4CSSpx、主要link高约44.28，notes同DOM/草稿保留，pageerrors0。
+- 独立逐张审16图认同UX037：844短coarse stacked picker/explore约115px，标题与headline全在fold外，功能可滚动不等于优秀初开层级。旧a1短屏图保留；授权E9a2仅短coarse产品导航同行/减少多余纵距，保持原字号与44目标，增加入口h2/介绍首行实际geometry。其他viewports/CSS/生产JS不扩大修改。
+
+
+### E9a2父实拍通过
+
+A2仅shortcoarse产品CSS与对应入口几何增强，4hash/QA核验；Hugo3733ms、typecheck/语法/diff通过；原6不同合同完整通过15.9s。父844×390en/light coarse复用1实际Metalcontext/4新图，不覆盖a1：body可见y89.22..272.90，first/last产品h2 y180.89..215.00，headline首行bottom247.80，真实入口能同时辨认产品身份和介绍。其余6合同全7产品入口几何成立；目标/焦点/原URL/书封比值/笔记连续性仍过。独立review/盘点收尾后才能做本地checkpoint，联系/设置未开始。

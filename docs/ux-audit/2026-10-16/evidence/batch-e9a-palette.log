@@ -1,0 +1,5 @@
+4f685a 5.344834475567508
+8d5d43 4.893529199904568
+4c6979 5.1315624608620025
+755551 5.825708633737578
+Static palette sanity only; computed DOM opacity/compositing belongs to the browser contract.

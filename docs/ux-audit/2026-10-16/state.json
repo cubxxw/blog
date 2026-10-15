@@ -3,33 +3,32 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "aff16e05b32229baab2da82298e2f14990f955df",
-  "phase": "E8-E81-independently-accepted-checkpointing",
-  "batch": "E8.1",
+  "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+  "phase": "E9a2-short-product-verification",
+  "batch": "E9a2",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "save accepted E8/E81 checkpoint",
-    "E9a products/books typography, native phone selector,44 projected links, product focus",
-    "E9b contact/settings typography/targets and selected-button DOM focus",
-    "E10 Travel UX018 QR; TOC internal tracking/remaining modifier paths"
+    "E9a2 short product entry title/intro geometry and independent final review; local checkpoint only after accepted",
+    "E9b contact/settings typography/targets, preference focused node continuity",
+    "E10 Travel UX018 QR; TOC internal tracking/native other-modifier matrices"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e7-actions.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e81-actions.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T19:16:06.097406+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+  "updatedAt": "2026-10-15T19:34:46.988558+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
   "review": "E81 5 source hashes+QA match;17Node/6 contracts/3 actual journeys and5new images accepted; no newP0/P1. UX024/032/033 closed only recorded scopes. Overview D4 93; tiled App small text D4 89 remains E9.",
-  "previewBatch": "E81 frozen build, 17Node/typecheck/build +6 contracts and3 actual journeys passed; independent final review and inventory pending",
+  "previewBatch": "E9a2 frozen build; targeted contracts and parent short viewport visual verification underway",
   "executorOwnership": [
-    "state.mjs stable visual order without z-order changes",
-    "desktop.js existing capacity/labels",
-    "space.css overview open layout/back target only",
-    "workspace-state unit and arrangement targeted contracts"
+    "apps.js products/books rendering + product selection focus",
+    "space.css products/books/native phone selector only",
+    "space-cafe.css spatial products/books typography and targets",
+    "space-app-reading-contracts.spec.ts products/books only"
   ]
 }

@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:58455) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 320×844 zh light products and books › real choices retain focus, readable content and distinct reachable reading links (2.8s)
+  ✓  2 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links (2.5s)
+  ✓  3 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links (2.7s)
+  ✓  4 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 844×390 en dark products and books › real choices retain focus, readable content and distinct reachable reading links (2.4s)
+  ✓  5 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 zh light products and books › real choices retain focus, readable content and distinct reachable reading links (2.6s)
+  ✓  6 tests/e2e/space-app-reading-contracts.spec.ts:48:7 › 1440×900 en dark products and books › real choices retain focus, readable content and distinct reachable reading links (2.4s)
+
+  6 passed (16.2s)

@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`aff16e05`（E7/E71）。E81当前5hash/QA一致，6合同、17Node、三实际旅程/五新图已复核，无新P0/P1；UX024/032/033仅按命名范围关闭。E8原换位/17.5px失败保留历史，不借旧图认证新状态。
+最近已验checkpoint：`3caab4d1`（E81）。E9a2当前4hash/QA与6合同、A1四actual16图+A2一actual4图已复核，无新P0/P1。UX035/036/037按命名范围关闭；UX028/029只闭products/books片段，contact/settings和UX034仍待E9b。
 
 
 
@@ -78,12 +78,16 @@
 | UX-025 | `H.CHAT.INPUT`, `H.CHAT.CLOSE`, `H.CHAT.OPEN` | 首页聊天关闭再开丢失未发送草稿 | E7/E7.1 | `closed_for_E71_named_draft_close_reopen_clear_send_cases` |
 | UX-026 | `H.CHAT.INPUT`, `H.CHAT.SEND` | 首页聊天合成composition Enter触发发送 | E7/E7.1 | `closed_for_E71_synthetic_composition_guards_OS_IME_unverified` |
 | UX-027 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.RETRY` | 首页聊天挂起无就地停止或请求时限，只能关窗取消 | E7/E7.1 | `closed_for_E7_E71_named_Stop_idle_JSON_SSE_DONE_recovery_cases` |
-| UX-028 | `S.APP.products.SELECT`, `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.DRAFT`, `S.APP.contact.CHANNEL`, `S.APP.settings.LANG`, `S.APP.settings.THEME`, `S.APP.settings.COLOR`, `S.APP.settings.EXPORT` | Space四App重要正文、动作标签和能力说明在投影后过小 | after-E6-Space-four-app-type-targets | `confirmed_recorded_normal_readability_gap_bounded_four_app_batch` |
-| UX-029 | `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.CHANNEL` | Space手机主要产品/阅读/联系链接仍低于项目44px触控目标 | after-E6-Space-four-app-type-targets | `confirmed_recorded_390_primary_anchor_target_gap` |
+| UX-028 | `S.APP.products.SELECT`, `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.DRAFT`, `S.APP.contact.CHANNEL`, `S.APP.settings.LANG`, `S.APP.settings.THEME`, `S.APP.settings.COLOR`, `S.APP.settings.EXPORT` | Space四App重要正文、动作标签和能力说明在投影后过小 | E9a_partial_E9b_pending | `partially_closed_E9a_products_books_contact_settings_remaining` |
+| UX-029 | `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.CHANNEL` | Space手机主要产品/阅读/联系链接仍低于项目44px触控目标 | E9a_partial_E9b_pending | `partially_closed_E9a_products_books_contact_remaining` |
 | UX-030 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.QUICK` | 短横屏聊天聚焦输入后composer部分出屏，关闭按钮被导航遮挡 | E6.1-short-chat-recovery | `closed_for_recorded_E61_568_bilingual_844_coarse_chrome_scroll_paths` |
 | UX-031 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE` | 短屏旧回复完成把滚去旅行书的读者拉回聊天并聚焦输入 | E7/E7.1 | `closed_for_E7_E71_568_en_wheel_JSON_completion_case` |
 | UX-032 | `S.WINDOW.ARRANGE` | 平铺后仅聚焦笔记，再整理会按z序交换窗口位置 | E8/E8.1 | `closed_for_E81_repeat_arrange_after_notes_focus_cases` |
 | UX-033 | `S.WINDOW.OVERVIEWITEM` | 844短横屏窗口概览Back可点，但高度只有17.5CSSpx | E8/E8.1 | `closed_for_E81_844_coarse_Back44_scrolled_list_actual_close_cases` |
+| UX-034 | `S.APP.settings.THEME`, `S.APP.settings.COLOR` | 主题和壁纸选择已生效，但Space激活重建后焦点落BODY | E9-settings-continuity | `confirmed_recorded_3ca_two_setting_choices_focus_BODY_pending_E9b` |
+| UX-035 | `S.APP.books.READ` | 书封作者小字对比不足，橙封标题原始比值低于3 | E9a1/E9a2 | `closed_for_E9a1_E9a2_named_cover_DOM_computed_contrast` |
+| UX-036 | `S.APP.products.OPEN` | 空产品demo被当本站首页，却渲染测试预览链接 | E9a1 | `closed_for_E9a1_E9a2_catalog_empty_demo_cases` |
+| UX-037 | `S.APP.products.SELECT`, `S.APP.products.OPEN` | 短横屏产品导航堆叠，首屏只有stage而标题和简介出fold | E9a2 | `closed_for_E9a2_844_shortcoarse_entry_geometry_and_images` |
 
 ## 有证据的单项锚点评分
 
@@ -215,6 +219,23 @@
 | `CHK-E81-TRUE-TILE` | D6.1 | 96 | 1440×9002/4contractstruecapacitytiles min320×260 inusablearea+gap4, allchromecentershit≥24CSSpx; actual4tile16controlshit. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
 | `CHK-E81-REPEAT-STABLE` | D4.4 | 96 | Preservedbrowseridempotence aftereditnotes+publicexecute; actualsecondbararrange afterfocusnotes leavesid→rectunchanged. Unitalsokeepsz-order/active. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
 | `CHK-E81-ACTION-TRUTH` | D1.1 | 96 | Shortbarlabel/title/haspopup saysWindowoverview; menuduplicatetilehidden+arrowsskiphole; terminalreportsactualoverview, publicexecute remains true. Normaldesktoplabelarrange andtrue tile. Exactnamedcontracts only. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E9-SETTINGS-FOCUS-FAIL` | D2.2 | 80 | ActualSpace afterexplicitchoicefocus leavesBODY, so keyboardpositioninsettingslost; values/pressedstillcorrect. Tabpathunverified. | PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed / observed_baseline_not_current_E9_acceptance / high |
+| `CHK-E9-SETTINGS-STATE-TRUTH` | D3.2 | 96 | Onlytestedchoices store dark/forest andselectedpressedagree; focusfailureisindependent andnotcanceledbycorrectvalue. | PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed / observed_baseline_not_current_E9_acceptance / high |
+| `CHK-E9-PRODUCT-SELECTION-STATE` | D3.2 | 96 | Space afterexplicitimstagebuttonfocus setsselectedandpayloadimstage. Focusmoves tonamedproductsSECTION; observationonly, notfullkeyboardpass/failure. | PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed / observed_baseline_not_current_E9_acceptance / high |
+| `CHK-E9-BOOK-COVER-CONTRAST-FAIL` | D2.4 | 80 | Fourinformationalauthor8px textafter.75opacityeach<4.5; orangetitle2.957487<3unrounded. ComputedCSS/alphasolidcoloronly; READanchoritselfnotmeasured. | PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed / observed_baseline_not_current_E9_acceptance / high |
+| `CHK-E9A-DIRECTORY-FOCUS` | D2.2 | 96 | Desktop7directorybuttons actualcoordinate1440zh +Spacecontracts; payload/title/focusretain2frames. Newpolicy, oldnamedregionnotabug. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-NATIVE-CHOICE` | D2.2 | 96 | Compact7options actualexplicitfocus/selectOption+2framesfocus; contractsHome/End/ArrowDown. NoOSpicker/fullTabclaim. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-PRODUCT-TYPE` | D4.1 | 96 | Productparagraphprojected16.4CSSpx; directory/actions≥13, imagecontainsmax280rawheightwithrealalt/content; noxoverflow6scopes. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-PRODUCT-LINK-TARGET` | D2.3 | 96 | Allproductanchorscontract44/hit; actualprimaryabout44.28high4contexts, exactoriginalURLs, oneactualpopuplocallyintercepted/context. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-LINK-TRUTH` | D1.1 | 96 | All7catalog exactoptionalURLlist andmissingdemoabsent; original6fail preserved, globalsafeURLunchanged. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-ASK-TARGET` | D2.3 | 96 | Only6contractsAsk44/hit, neverinvokeAI; noURL/popup/resultinheritance. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-EXPLORE` | D6.4 | 96 | ActualExplorebooksopensshelf; contractsreader/books/Writingnavigation andnotesoriginalDOM/value/continuationpass. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-BOOK-TYPE` | D4.1 | 96 | Fourrealbookauthor/title/description retained, descriptionprojected≥16/namedreading≥13; phoneonecolumn, longtitlefitscover. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-BOOK-LINK-TARGET` | D2.3 | 96 | 4distinctnamedanchors44/hit/scroll actual; contractscapturecoordinateclickwithoriginalURLs, notexternalavailability. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-BOOK-CONTRAST` | D2.4 | 96 | 12opaqueDOMtext/context≥4.5; rawfourratios5.3448344756/4.8935291999/5.1315624609/5.8257086337 independentlyrecomputed, norounding/fullpageclaim. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A2-SHORT-ENTRY` | D1.2 | 96 | 844shortheaderoneRow; actualfirst/lasttitle+headlinefirstlineinsidebody, contractall7atbodyscrollTop0; 44targets/focus/URLsretained. | E9a2 final bounded shortcoarseentry refinement / closed_for_named_E9a_fragments_incomplete_family_matrix / high |
+| `CHK-E9A-EMPTY-DEMO-FAIL` | D1.1 | 80 | Oldemptydemo rendersTrydemo→sitehome; initial6fail received3expected2, P2intentmismatch. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / historical_failure_later_bounded_fix / high |
+| `CHK-E9A-SHORT-ENTRY-FAIL` | D1.2 | 80 | A1844short about115pxnavigation leavesh2/headlineoutsidefirstfold; contentreachable. | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / historical_failure_later_bounded_fix / high |
 
 ## D1 / D4 独立专家视觉判断
 
@@ -276,10 +297,20 @@
 | S.WINDOW.ARRANGE, S.WINDOW.OVERVIEWITEM | D1 | 96,96,90,96 | 94.5 | 容量不足时明确进入概览，选择目标窗口/返回主次清楚，菜单与终端名称对应实际动作；短屏中英已见，其他文案矩阵未知。 | E8.1 final bounded arrangement and overview recovery / high |
 | S.WINDOW.OVERVIEWITEM | D4 | 90,96,90,96 | 93.0 | 概览卡片边框表达选择对象，header常驻使返回不随列表跑；44命中修正但Back11px文字与10px状态仍较小，重要标签可再做工艺细化。 | E8.1 final bounded arrangement and overview recovery / high |
 | S.WINDOW.ARRANGE, S.APP.notes.EDITOR | D4 | 80,90,90,96 | 89.0 | 四窗空间均衡、无整理重叠，笔记真实focus环可辨且重复整理稳定；欢迎/联系/地图辅助字仍很小，不能因几何通过将App排版问题UX028/029抬成96。 | E8.1 final bounded arrangement and overview recovery / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D1 | 96,96,90,96 | 94.5 | 产品名/一句话作用/真实动作清楚；stage与边界为辅助，截图缩小让首屏完成判断。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D4 | 96,90,90,96 | 93.0 | 16.4px正文、13+目录清楚，真实截图不再吞动作；短内容留白可接受，次级按钮/细线有工艺余量。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D1 | 96,90,96,90 | 93.0 | 选择/标题/正文/打开任务连贯，长描述仍需纵滚；按钮可达不意味着首屏层级满分。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D4 | 96,90,90,90 | 91.5 | 正文清楚、主打开与源码/AI有差异；真实focus环有效不当装饰扣分，顶部控件/边框仍占空间。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D1 | 96,80,90,90 | 89.0 | A1短coarse导航约115px，初开只见stage，h2/headline需先滚，决策成本高；可滚不等于不可达。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D4 | 90,80,90,80 | 85.0 | A1header视觉与空间过重，真正产品内容首屏缺位；functionalpass不抵消层级差距。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.books.READ | D1 | 96,96,90,96 | 94.5 | 四真实作品/作者保留，阅读入口具体到书名/原URL；短屏半封面属滚动状态，链接实际命中。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.books.READ | D4 | 96,90,90,90 | 91.5 | 高对比真实封面/作者和16px正文保留书的区别，英文不再旧VIETNA/M断词；手机单列完整、桌面两列留白偏多但未妨碍读。 | E9a1 historical product/books fragments before authorizedshortcoarseCSSrefinement / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D1 | 96,96,90,96 | 94.5 | 导航一行后完整h2/headline首行无需先滚，选择→理解→再打开清楚；Dogfood等stage术语可后续改易懂名称。 | E9a2 final bounded shortcoarseentry refinement / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D4 | 96,90,90,96 | 93.0 | 保44目标/原字号，导航不再吞首屏，标题/简介重新主导；有效focus环保留，没有删内容凑满分。 | E9a2 final bounded shortcoarseentry refinement / high |
 
-## 完整可追踪覆盖（inventory v1.12 一对一映射）
+## 完整可追踪覆盖（inventory v1.15 一对一映射）
 
-309族/359selectors；56族有某种局部状态证据，完整认证仍0。Back为既存控件补漏，新control只绑定自身E8失败和E81 Back44/返回/滚动证据，不继承旧item/menu通过。
+309族/361selectors；60族有局部状态证据，完整认证仍0。native04c780与旧目录分别绑定；Ask a3b76f仅44/hit，不继承链接popup/AI结果。
 
 
 
@@ -431,8 +462,8 @@
 | `S.APP.welcome.ROUTES` | 文章/作品/AI向导/关于我 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.welcome.PROFILE` | 个人档案/这些年/阅读地图/展开履历 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.welcome.LINKS` | 简历/GitHub/联系/公开JSON/时间线 | 2 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.products.SELECT` | 产品侧栏选择 | 1 | 0 | `unverified / null` | UX-028 |
-| `S.APP.products.OPEN` | 真实产品/预览/源码/相关写作 | 2 | 1 | `unverified / null` | UX-028, UX-029 |
+| `S.APP.products.SELECT` | 产品选择 / 原生产品选择框 | 2 | 6 | `unverified / null` | UX-028, UX-037 |
+| `S.APP.products.OPEN` | 真实产品/预览/源码/相关写作 | 3 | 9 | `unverified / null` | UX-028, UX-029, UX-036, UX-037 |
 | `S.APP.reader.QUERY` | 筛选文章 | 1 | 2 | `unverified / null` | UX-010 |
 | `S.APP.reader.FILTER` | 全部/AI/工程/思考/收藏 | 1 | 2 | `unverified / null` | UX-010 |
 | `S.APP.reader.ITEM` | 文章列表项 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -451,7 +482,7 @@
 | `S.APP.map.VIEW` | 拖动/键盘平移地图 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.map.ZOOM` | 放大/缩小/全部/世界 | 3 | 6 | `unverified / null` | UX-022 |
 | `S.APP.map.RELATED` | 相关照片/游记/数据许可 | 3 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.books.READ` | 开始阅读 | 1 | 1 | `unverified / null` | UX-028, UX-029 |
+| `S.APP.books.READ` | 开始阅读 | 1 | 5 | `unverified / null` | UX-028, UX-029, UX-035 |
 | `S.APP.notes.EDITOR` | 本地笔记 | 1 | 6 | `unverified / null` | UX-021 |
 | `S.APP.notes.EXPORT` | 导出.md | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.notes.SANDBOX` | 保存到沙盒 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -470,8 +501,8 @@
 | `S.APP.agent.STOP` | 停止 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.ACTIVITY` | 任务执行过程/工具步骤 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.settings.LANG` | 中文/English | 1 | 0 | `unverified / null` | UX-028 |
-| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 0 | `unverified / null` | UX-028 |
-| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 0 | `unverified / null` | UX-028 |
+| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 2 | `unverified / null` | UX-028, UX-034 |
+| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 2 | `unverified / null` | UX-028, UX-034 |
 | `S.APP.settings.EXPORT` | 导出工作区 | 1 | 0 | `unverified / null` | UX-028 |
 | `S.LAB.SWITCH` | CUBXXW OS/Product Lab双向切换 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.LAB.FEATURE` | 推荐产品/所有产品锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -851,3 +882,29 @@ UX032关闭正常desktop已测重复整理：保留原失败幂等断言，focus
 实际设计范围：overview D1=94.5（96/96/90/96），D4=93（90/96/90/96）；边框用于选择对象、返回固定，Back11px和10px状态仍可细化。四窗tile D4=89（80/90/90/96）：位置和注意力稳定了，但welcome/contact/map辅助字偏小，UX028/029不因布局六合同消失。笔记focus环是必要状态，不当装饰扣分。English overview图为滚到底的实际状态，首行图标裁切属内部滚动，不误报不可达。
 
 Zero/one/minimized/rawcapacity边界有Node覆盖，未新增真实browser矩阵；无实体设备、OS键盘、Safari、200%zoom、全App内容或FPS结论。三actual均worldFrames3/failedfalse/bootcomplete只证世界真实出现。Back盘点补漏映射到S.WINDOW.OVERVIEWITEM.control.e9b894，309族不增、selectors359；新control不继承旧item/menu证据。完整控件/族/全站仍null。
+
+## E9前基线：设置焦点与书封信息对比
+
+2026-10-16T03:22:42+08:00：只读space-preference-focus-baseline JSON/log/两图及space-book-contrast-baseline JSON/log，四份源hash各自与不可变3caab4d1 Git blob一致。工作树E9已在改，未读取或认证其WIP。1440×900中文reduce，明确programmatic focus choice后真实Space：theme dark/wallpaper forest stored与pressed正确，但重建后焦点BODY，UX034 P2/D2.2片段80；状态正确片段96不能抵消焦点丢失。未证明真实Tab路径/OS输入或其它viewport。
+
+产品imstage选择payload/selected正确，focus进入具名products SECTION（role=region、tabindex−1）。源码通过现有open→focusWindow导航到窗口，作为独立观察与状态片段96记录，不自动当BODY失败，也不因此授完整键盘通过。
+
+12个书封比值已独立按effectiveRGB/solidbackground/sRGB亮度重算，与回执差小于1e−10。四作者/编号在.75文字opacity后为3.415057、2.330457、2.706142、3.163883，普通信息作者低于4.5，非纯装饰；橙封标题2.957487低于大型文字3，不能取整到3。UX035 P2/D2.4片段80/G4cap89仅此旧基线书封DOM信息；READ链接自身未测对比。
+
+已独立核对[W3C SC1.4.3说明](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)：普通文字4.5、合格大型文字3，临界值不四舍五入。本批项目将coverDOM保守统一4.5；其他标题3..4.5仅记项目差距，不未经字号/字重/投影适用性就全判AA失败。computedCSS+textopacity合成不测抗锯齿、全页对比或E9新颜色，也不伪装当前WIP验收。完整309族/359控件仍null，E9a等待新冻结与实拍。
+
+## E9a1/A2：产品、书架有界闭环与真实设计差距
+
+2026-10-16T03:41:45+08:00：A1初读4hash/QA一致，授权A2只变space.css短coarse641+行布局/margin及同spec入口几何；apps/cafeCSS保A1hash。当前A2 4/4hash+QA再次匹配。A1六合同6pass16.2s/build3886ms；A2原六合同再6pass15.9s/build3733ms及syntax/typecheck/diff正式log均读完，不写成12不同合同。初始6fail均为IMStage空demo额外root链接，失败log保留。
+
+UX036是旧3ca即存P2：空demo被URL解析成站点首页却显示测试预览；本地link格式器提前拒绝nonstring/trim空白，全局URL规则不动，原链接数量/URL断言不放宽。七真实产品缺demo不再出现假链接，具体目录范围关闭；不泛称穷尽所有数据形状。
+
+A1四actualMetal context（320×740zh/light、390×844en/dark、844×390en/lightcoarse、1440×900zh/light）JSON/log/动作脚本与16图全部独立读。每scope7选择后两帧focus/标题/payload/原URL一致；desktop真实坐标目录，compact明确focus+selectOption，合同另用Home/End/ArrowDown。它是新保choice焦点策略，旧具名region导航不倒写成不可达。主链接每scope一次真实popup由本地route拦截，无外部请求；书架Explore真实打开、四阅读链接44/hit/滚动，合同捕获坐标click/URL。Ask只量44/hit，未调用AI；notes原DOM/value保留，合同另有继续输入，errors0。
+
+cover12比值×4scope共48值独立复算一致，四色原始5.3448344756/4.8935291999/5.1315624609/5.8257086337，最小不取整仍≥4.5；去作者淡化、真实title/author/description/原阅读URL保留。UX035仅闭这些computedCSS+alpha固底DOM文字，不证全页/抗锯齿。正文显示约16.4CSSpx、主要target约44.28；UX028/029只products/books已测片段闭，contact/settings与UX034不受本批认证。
+
+A1视觉：desktop产品D1=94.5/D4=93；phone产品D1=93/D4=91.5；books D1=94.5/D4=91.5。真实内容更清楚，目录/作者不再小到难辨，截图不吞桌面动作。focus环有效而非额外装饰。书架短屏半封面是滚动状态且标题/链接可达，不误报不可达。
+
+UX037 A1短844coarse为P2：picker+explore约115px令初开只见stage，h2/headline在fold外；D1=89（96/80/90/90）、D4=85（90/80/90/80）。可滚/functionalpass不抵消层级差距，也不升P1。A2只对应641+短coarse将二者同排、保54源尺寸约44显示目标，压冗余margin。新844×390en/light四图全部看：first/last body[89.22,272.90]、h2[180.89,215.00]、headline首行bottom247.80；合同844en/dark七产品都从bodyScrollTop0复验。A2七选择/URL/44/focus与书/notes再过，UX037仅此范围关闭。新短产品D1=94.5（96/96/90/96）、D4=93（96/90/90/96），保留A1低分历史，不凑96。
+
+后续工艺余量：stage Dogfood可用更易懂名称；书架桌面留白/英文作者行节奏可小批对照，优先级低于contact/settings，不为密度删真实作品。OSpicker/完整Tab/Safari/zoom/实体设备/全状态/真实AI未知；20图不等于全站通过。inventory v1.15同步309族/361selectors，native04c780与Ask a3b76f独立绑定；完整控件/族/全站分仍null。

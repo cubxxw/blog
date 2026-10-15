@@ -1,0 +1,218 @@
+{
+  "kind": "Pre-E9 computed CSS book cover text contrast; no pass claim. Raw ratios unrounded.",
+  "previewBase": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+  "previewSource": "batch-e81-source.json",
+  "sourceSHA256": {
+    "assets/js/space/apps.js": "526846478a60819f4fac9383cb60083d7dd413e28ed184ebfe10ffca4cc7dac0",
+    "assets/css/space.css": "92c22c9acf248d200c4a29648589d0d28b8101f7cf626bfe740d6067c0c257c3",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+    "assets/css/space-cafe.css": "05eda0f61d39ea74c1643f92bcee252bb7dc4eabd271af413afdaad0b053439c"
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "lang": "zh",
+  "theme": "light",
+  "motion": "reduce",
+  "covers": [
+    {
+      "background": "rgb(87, 113, 98)",
+      "coverOpacity": "1",
+      "coverFilter": "none",
+      "text": [
+        {
+          "tag": "SMALL",
+          "text": "BEAR / 01",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            204.75,
+            209,
+            191.75
+          ],
+          "contrast": 3.415057138476459,
+          "projectedNormal45": false
+        },
+        {
+          "tag": "STRONG",
+          "text": "越南",
+          "fontSize": "24px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 1,
+          "effectiveColor": [
+            244,
+            241,
+            223
+          ],
+          "contrast": 4.689615622200977,
+          "projectedNormal45": true
+        },
+        {
+          "tag": "SMALL",
+          "text": "熊鑫伟 · 自著",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            204.75,
+            209,
+            191.75
+          ],
+          "contrast": 3.415057138476459,
+          "projectedNormal45": false
+        }
+      ]
+    },
+    {
+      "background": "rgb(180, 129, 97)",
+      "coverOpacity": "1",
+      "coverFilter": "none",
+      "text": [
+        {
+          "tag": "SMALL",
+          "text": "BEAR / 02",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            228,
+            213,
+            191.5
+          ],
+          "contrast": 2.3304571115286286,
+          "projectedNormal45": false
+        },
+        {
+          "tag": "STRONG",
+          "text": "吴哥窟",
+          "fontSize": "24px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 1,
+          "effectiveColor": [
+            244,
+            241,
+            223
+          ],
+          "contrast": 2.9574874341489124,
+          "projectedNormal45": false
+        },
+        {
+          "tag": "SMALL",
+          "text": "熊鑫伟 · 自著",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            228,
+            213,
+            191.5
+          ],
+          "contrast": 2.3304571115286286,
+          "projectedNormal45": false
+        }
+      ]
+    },
+    {
+      "background": "rgb(101, 131, 147)",
+      "coverOpacity": "1",
+      "coverFilter": "none",
+      "text": [
+        {
+          "tag": "SMALL",
+          "text": "BEAR / 03",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            208.25,
+            213.5,
+            204
+          ],
+          "contrast": 2.7061418096982504,
+          "projectedNormal45": false
+        },
+        {
+          "tag": "STRONG",
+          "text": "西藏",
+          "fontSize": "24px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 1,
+          "effectiveColor": [
+            244,
+            241,
+            223
+          ],
+          "contrast": 3.5421669880859263,
+          "projectedNormal45": false
+        },
+        {
+          "tag": "SMALL",
+          "text": "熊鑫伟 · 自著",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            208.25,
+            213.5,
+            204
+          ],
+          "contrast": 2.7061418096982504,
+          "projectedNormal45": false
+        }
+      ]
+    },
+    {
+      "background": "rgb(135, 107, 102)",
+      "coverOpacity": "1",
+      "coverFilter": "none",
+      "text": [
+        {
+          "tag": "SMALL",
+          "text": "BEAR / 04",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            216.75,
+            207.5,
+            192.75
+          ],
+          "contrast": 3.163882816075573,
+          "projectedNormal45": false
+        },
+        {
+          "tag": "STRONG",
+          "text": "乱世为龙",
+          "fontSize": "24px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 1,
+          "effectiveColor": [
+            244,
+            241,
+            223
+          ],
+          "contrast": 4.276016409040246,
+          "projectedNormal45": false
+        },
+        {
+          "tag": "SMALL",
+          "text": "熊鑫伟 · 自著",
+          "fontSize": "8px",
+          "color": "rgb(244, 241, 223)",
+          "opacity": 0.75,
+          "effectiveColor": [
+            216.75,
+            207.5,
+            192.75
+          ],
+          "contrast": 3.163882816075573,
+          "projectedNormal45": false
+        }
+      ]
+    }
+  ],
+  "method": "Computed browser solid RGB colors; element text opacity composited over its solid cover; sRGB luminance ratio. 4.5 used conservatively for all cover DOM text, including headings.",
+  "limits": "Does not measure antialiasing or certify all page contrast. Cover opacity/filter recorded; source hashes are from immutable preview Git base because production E9 edits are underway but have not been built."
+}

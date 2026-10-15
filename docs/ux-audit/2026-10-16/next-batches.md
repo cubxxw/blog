@@ -25,3 +25,9 @@
 UX018已有真实390×844zh/light两motion焦点失败；normal Escape后立即Enter重开被旧transition隐藏。修复需要实际focus进入/Tab containment/Escape返回，运行时reduce与取消旧过渡。先保留渠道/二维码源与可见外观，不真实添加联系人。
 
 F03只验Archives首年Mac Meta/plain/Back；其余修饰键/页面不继承。UX009只验当前右TOC runtime reduce点击定位；长目录自动追踪container.scrollTo与焦点仍需独立探针，legacy左sidebar无当前模板不能冒充活路径。
+
+### E9拆批与已测基线
+
+E9a先products/books，E9b再contact/settings；共用原有palette/组件语义，不同时重写4个App。E9a允许native phone select释放正文宽度、保持desktop目录与全部7个产品/4本真实书、限制截图高度保持图像比例、主入口投影后44px、同component产品选择后焦点连续；E9b原contact draft同节点，settings仅同步pressed而不重建整个host，避免焦点BODY。
+
+3caab4d1不可变预览书封computed CSS对比探针已保存：作者/编号因opacity.75，四封面分别约3.415/2.330/2.706/3.164；第二封面的标题2.957，不能上取整为3。E9a保持四色相，允许调深背景与去降低对比opacity，测实际computed前景/背景/元素opacity并报告原始ratio；不把source数值或程序设焦点当全页/Tab路径通过。
