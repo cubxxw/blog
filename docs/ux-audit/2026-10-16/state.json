@@ -3,30 +3,29 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
-  "phase": "E11b-accepted-preparing-local-checkpoint",
-  "batch": "E11b-accepted-next-E11c-copy",
+  "checkpoint": "1e2d94acae058204233d6547ba47ba599025c9bf",
+  "phase": "E11c-accepted-preparing-local-checkpoint",
+  "batch": "E11c-accepted-next-E12",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "E11c wording only: human Retry and compact clear bilingual status; no new interaction policy",
-    "E12 UX042 firsttap event ownership+qualified preview focus lifecycle;read-only8caseplan ready",
-    "E13 UX044 active article AI across1200px: no draft deletion but focus/continuation gap;architecture review pending",
-    "QR portrait error→account spacing followup; BFCache/physical/AT/full matrix stillunverified"
+    "E12 UX042 footnote firsttap ownership+preview focus lifecycle;3production+1spec8case read-onlyplan ready in next-batches",
+    "E13 UX044 active article AI across1200px:recommended one canonical DOM/controller moving betweenhosts;7source+10case readonlyplan ready,not yetimplemented",
+    "QR portrait error→account spacing followup; realBFCache/physical/AT/full matrices unverified"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e11-actions.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e11c-actions.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T21:35:02.412712+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+  "updatedAt": "2026-10-15T21:43:09.291268+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e11c-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "Independent4source/QA/scripts/15new+2old/17images;UX039040041045 scopedclosed,no newP0/P1;309/367/313/69partial,0full/null;normal scopedD1/D4=96,recovery94.5 needsuser copy;42/44open",
-  "previewBatch": "E11b accepted;15new+2old+7actual/15PNG;Back2diagnostic not restored",
+  "review": "Independent15newcimages,13opaque textcontrast samples min5.789000796485059;4src/QA/runner/erratum match,no newP0/P1;315state/69partial/309families/367selector/0full. c recovery scopedstaticD1/D4=96;whole null;UX042044open",
+  "previewBatch": "E11c accepted15samecontracts/7actual15PNG;no BFCache certification",
   "executorOwnership": [
-    "No active source writer;E11c labels only after checkpoint;E12 ready read-only plan3production+1spec8cases"
+    "No active source writer;E12 ready for explicit dispatch3production+new8case spec"
   ]
 }

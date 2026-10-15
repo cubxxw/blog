@@ -1772,3 +1772,16 @@ E11真实`#search-index-retry`已在WIP源码出现，预计算`G.SEARCH.RETRY.c
 脚注[fine诊断](evidence/footnote-focus-baseline.json)另记qualified component：programmatic marker/citation focus后250ms隐藏→BODY；实际自然Tab到下个marker保持正常，不称自然键盘进入citation失败或全脚注不可达。UX042与文章UX044继续open。初probe在被abort的chrome错误页触发localStorage限制仅runner修正，与真实UX045位移失败分开保留。
 
 本轮 **14新state**（含1旧UX045负记录）/1新control，累计 **313状态 / 69族局部证据**（68partial+1measured）；保持 **309族 / 367selectors / 57journeys / 18roadmap**。独立review已闭UX039/040/041/045命名范围，无新增P0/P1，所有旧负记录不改。本Agent看4主图，未启动browser/构建/测试；完整族认证0/full分null，现停写供checkpoint。
+
+
+## v1.21 E11c：仅追加文案与可见文字对比
+
+导入 **2026-10-16T05:41:19+08:00**；[c manifest](evidence/batch-e11c-source.json)4源/QA/runner匹配。[scope proof](evidence/batch-e11c-scope.log)的6status+2label反替换后JS/template/spec与accepted`1e2d94a`逐字一致，CSS未变；本Agent亦独立重做反替换核对。
+
+只新增 **2条normal片段**：QUERY的`#search-empty`非交互status-support（无control ID），以及原Retry`b68b79`的“重试搜索 / Retry search”文案。7个新actualcontext/[15图](evidence/batch-e11c-actions.json)显示短提示解决implementation名词与390中文孤行，原44几何/焦点/当前Enter在c scope维持；[15合同7.0s](evidence/batch-e11c-contracts.log)是相同15case重跑，**没有新增15功能/再叠b14状态**。
+
+13个可见status/enabledRetry opaque computed样本raw最小 **5.789000796485059**，本Agent与独立review分别复算误差0。仅这些文字，不含disabled .65/图片/全页/AT。独立review已看c15图，确认命名恢复视觉建议解决；b94.5历史保留，专家静态D1/D4片段见scorecard，full分仍null。
+
+**明确provenance erratum：** raw actions顶层`sourceManifest`仍为复制的b literal；[独立勘误](evidence/batch-e11c-provenance.json)绑定rawSHA、真正c manifestSHA、已执行runnerSHA。runner5–7用c prefix读取c manifest并逐4源assert。保留raw/runner不改，不冒充重跑；本次state按勘误绑定c。
+
+E11b的17图、2旧专项及真实Back完整保留，c未重跑Back/旧专项，不继承BFCache恢复通过；UX042/UX044仍open，E12未实施。本Agent看3张c图，无browser/构建/测试进程。累计 **315状态 / 69族局部证据**，保持 **309族 / 367selector entries / 57journeys / 18roadmap**，完整族0/fullnull；现停止写入供checkpoint。

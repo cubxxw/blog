@@ -67,3 +67,12 @@ index独立owner/AbortController/serial，单flight，15s总期限覆盖fetch与
 ### QR后续视觉细化（E11/E12真实主任务缺陷之后）
 
 独立review指出390无clock error图Retry底约455而账号标题约580，提示“使用账号搜索”和实际ID被约120px空区割开，属于可见关联成本而非AT/实体扫码unknown。后续可保持modal/poster固定高度，portrait error/retrying反馈组靠近poster底部/账号区，固定Retry底以避免错误两行→重试一行时按钮漂移；initial loading/正常海报保持。短横屏左右布局不机械下移。先以独立图测反馈→账号间距/Retry位置与焦点，再有界CSS状态实现；不为凑96新增框/功能或改原图。正常图若没有可观察type缺口，不用纯unknown扣局部视觉分；全族仍受完整矩阵unknown约束。
+
+
+### E12最小实施方案（E11b后只读已审，未放行）
+
+只`layouts/partials/footer.html`、`static/js/footnote-preview.js`、`assets/css/extended/zzz-footnote-preview.css`及新`tests/e2e/footnote-preview-contracts.spec.ts`，拟8个不同合同。通用footer只跳过真实post-content footnote-ref；coarse仅有效定义/普通主键无修饰的真实首tap接管，第二tap/More/Enter/modifier/noJS保持native。坏URI/缺定义放行不抛、不吞。
+
+交互tooltip改具名非模态region，marker aria-controls/expanded+共享键盘说明/ArrowDown进入（Enter仍native）；内部focusin/out与180ms timer绑定当前marker代次，Escape仅内部回marker且不立刻重开；关闭inert阻断残留Tab，不加背景inert或trap。More各pointer可见44；纸色/引用/正文不改。短屏flex/body min-height0+内部scroll，max-height 100dvh-24px并vh回退，More不缩水，12px边界；不加装饰动画/框层。
+
+父实际门槛：390zh/en首tap原scroll/hash/history不动、secondtap/More→脚注→Back回原读点；1440可信Tab局部起点→ArrowDown进入引用/More、停250ms、Escape返原ref不重开、再Enter仍native；568×224 dark实际长note/body可滚/More真实44且屏内、runtime reduce；coarse Meta/非主键、noJS真anchor；timer换marker/离开不抢焦点。OS输入法/AT/实体设备未知不伪称。只读方案由现executor准备，E11c checkpoint后由父明确放行，不覆盖现搜索源码。

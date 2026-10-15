@@ -55,3 +55,9 @@ E9产品合同揭示：空demo却出现“测试预览”并打开首页，是�
 ### 搜索编辑与选择语义补记
 
 可编辑combobox需要浏览器标准文字编辑操作，DOM焦点与aria-activedescendant选择分开；APG同时允许popup中Home/End的可选选择变体，因此当前观测不机械判违规。下一批先依据真实“新query却打开旧article”的任务错误修复，不扩大成未经验证的键盘总判定。来源：[W3C APG Combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)。
+
+## 搜索批次中的可复核标准
+
+提示要描述用户任务。E11c把“重新加载索引”改为“重试搜索”，错误文字保持完整短句；这是可见文案的设计改进，不是给内部变量改名。查询仍在输入框，不使用“saved”暗示没有实现的跨刷新存储。loading/error不显示“0条结果”，只有当前查询真实计算为空才显示零。
+
+命中不能只用DOM `.click()`证明。E11a Retry从error变为loading时上移23.546875px：按钮仍44高、请求去重也正确，但第二次真实原中心点击落到空白且焦点回BODY。好的状态过渡保持本次点击目标的位置；测量当前换行高度到pending结束，既不压小字号，也不在用户转去别处后强行抢焦点。E11b/c的原坐标二次点击与成功焦点意图分别验收，详见[负基线](evidence/search-retry-layout-baseline.json)与[c当前回执](evidence/batch-e11c-actions.json)。

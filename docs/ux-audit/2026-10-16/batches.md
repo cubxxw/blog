@@ -236,3 +236,10 @@ final四源/QA/2父runner/额外旧专项QA hash逐一读回一致；Hugo3785ms�
 另父1440zh/dark/reduce已完成mockAI+未发送followup，真正same-local nav→Back attempted但pageshow.persisted=false/document token变，浏览器notRestoredReasons包含response-cache-control-no-store、response-cache-control-no-store-with-js-network-request和masked；如实保存2前后图/JSON/log，不给BFCache恢复通过。只有新合同中synthetic pagehide/pageshow保原AI DOM/value/history及后续context通过。该完整Back/生产cache/实体AT/Safari仍unknown，未扩大产品storage。全部17主图父已看；等待独立评分/盘点正式停写再checkpoint。
 
 E11b独立最终冻结：scorecard45发现/188行为片段/90视觉片段，inventory1.20 313/69/309/367；两审计Agent已明确停写。39/40/41/45 scopedclosed，无新P0/P1；正常静态D1/D4=96、recovery94.5/94.5，fullnull。E11c仅解决index术语与390孤行，E12 3源码+新8case只读方案已备，未实施。准备本地checkpoint。
+
+
+## E11c 用户任务文案
+
+基于accepted本地1e2d94a，只6个localized status+2Retry文本（JS/template/spec3files），反向替换与b逐字相同，headerCSS/AI/Fuse/所有权/15s/footprint/focus不动。新source/runner/QA hash均读回一致，source/图/receipt新前缀不覆盖b。Hugo3635ms，15同一不同合同7.0s通过（不是新增15feature），2旧专项与真实Back因行为字节不变不重复，不外推BFCache。父新7context/15PNG全通过并逐张看完：390错误不再单字孤行、Retry说搜索任务，真实原坐标点击稳定、pending/ready焦点意图保留；中英390/1440当前queryEnter仍正确捕获本地阻止外跳。另computed13个可见status/启用Retry文本样本raw最低contrast5.789000796485059，背景不透明且effective opacity1；aria-disabled.65/画像/整页/抗锯齿/AT不包含，raw RGB/背景栈/字号完整在actionsJSON，待独立重算。尚待评分/盘点最终停写与checkpoint，不能以父过代独审。
+
+E11c独立最终：4src/QA/runner及provenance erratum3SHA核验，15新c图全读，13contrast重算误差0，未新增P0/P1。c recovery静态D1/D4=96/96，b94.5历史保留，fullnull。inventory1.21 315状态/69局部族/309族/367selector；scorecard45发现/191检查/92视觉片段，两Agent已最终停写。保存local checkpoint后继续E12，不push。

@@ -60,3 +60,7 @@ E11于05:04明确放行现有executor，限local index/result intent、真实sta
 05:15 E11初候选已3850ms构建到1317，但未验收；首合同因lazy-ready测具等待死锁中止，pagehide会话边界source review修复中。accepted checkpoint仍e5fafdc2，不能将当前candidate预览当已通过。
 
 05:35 E11b独立闭环：四源/QA/2runner/suppQA均match，15新+2旧合同通过，7actual15图+Back2图独立逐看，无新P0/P1，UX039040041045只命名范围闭。v1.20 309族/367selectors/313状态/69局部族，完整0/null。正常局部D1/D4=96，恢复94.5/94.5；仅两文案建议下一E11c，不把计划当完成。42脚注/44文章仍open，Back未命中BFCache而保unknown。三个Agent最终停写、无browser/build，保存本地checkpoint后继续；不push。
+
+E11b本地checkpoint `1e2d94acae058204233d6547ba47ba599025c9bf` 已readback，未push。E11c继承行为，仅搜索短文案/Retry label；新receipt使用batch-e11c前缀，不覆盖b source/图/score证据。当前1317仍b已验构建，E12方案待c后放行。
+
+E11c独立闭环：15同case7.0s、7actual/15图独立逐看，6status+2Retry文本only反替换与bCP字节相同，c recovery局部静态D1/D4=96/96，13可见opaque文字对比rawmin5.789000796485059独立重算误差0。完整分null；315状态/69局部族/309族/367selector/0完整，42/44仍open，Back仅b未命中unknown。raw receipt顶层sourceManifest旧b literal保留，实际runner5–7prefix读取c且SHA assert；provenance erratum明确绑定raw/cmanifest/runner3SHA，不偷偷改raw或宣称重跑。两Agent最终停写，无browser/build/source WIP；准备本地checkpoint，随后E12。

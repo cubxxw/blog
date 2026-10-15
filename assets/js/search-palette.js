@@ -33,10 +33,10 @@
     retry: '重试',
     sources: '参考来源：',
     noResults: '没有找到匹配结果',
-    indexError: '搜索索引暂时无法载入。可重新加载，查询会保留。',
-    indexLoading: '正在加载搜索索引…',
+    indexError: '暂时无法搜索，请重试。',
+    indexLoading: '正在准备搜索…',
     searching: '正在搜索…',
-    indexTimeout: '搜索索引加载超时。可重新加载，查询会保留。'
+    indexTimeout: '搜索超时，请重试。'
   } : {
     you: 'You',
     ai: 'AI',
@@ -49,10 +49,10 @@
     retry: 'Retry',
     sources: 'Sources: ',
     noResults: 'No matching results',
-    indexError: 'The search index could not load. Reload it to keep searching.',
-    indexLoading: 'Loading the search index…',
+    indexError: 'Search is unavailable. Please try again.',
+    indexLoading: 'Preparing search…',
     searching: 'Searching…',
-    indexTimeout: 'The search index timed out. Reload it to keep searching.'
+    indexTimeout: 'Search timed out. Please try again.'
   };
 
   let fuse, searchData;

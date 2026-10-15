@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T05:33:50+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `e5fafdc2`（E10/E10a）；E11b冻结证据已复核，后续E11c文案须新冻结验收。
+更新：2026-10-16T05:42:26+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `1e2d94ac`（E11b）；E11c新文案冻结证据已复核，完整评分仍null。
 
-**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；313条记录只覆盖69族局部状态，完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；315条记录只覆盖69族局部状态，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -1030,3 +1030,16 @@ UX045/P2保留原[Retry位移负基线](evidence/search-retry-layout-baseline.js
 脚注UX042与文章断点UX044继续open。[fine组件诊断](evidence/footnote-focus-baseline.json)只证程序化进入citation后250ms hidden/BODY；naturalTab到下一marker不是失败，inside-initial图已hidden，只用即时JSON证最初visible。暂为qualified焦点生命周期候选，无新编号/全脚注键盘失败声明。所有全族评分仍null。
 
 盘点v1.20同步313状态/69局部族（68partial+1measured）、309族/367selector entries/0完整。新增localindexRetry `G.SEARCH.RETRY.control.b68b79`不继承AIretry `788d65`；FullLink仅href/焦点、followup仅input合成生命周期，Escape关闭只作流程支持不授Close按钮实点。
+
+
+## E11c · 用搜索任务表述恢复动作
+
+2026-10-16T05:41:16+08:00：[c manifest](evidence/batch-e11c-source.json)四源/QA/runner匹配；独立对b checkpoint`1e2d94ac`验证仅6status+2Retrylabel替换，CSS/owner/deadline/footprint/焦点/AI/Fuse不变。[15同case](evidence/batch-e11c-contracts.log)重跑7.0s、Hugo3635ms；[7context/15新图](evidence/batch-e11c-actions.json)全逐看，无新P0/P1。不是新增15种测试，也不覆盖b历史17图。
+
+[c390错误](evidence/batch-e11c-error-390-zh.png)完整一行、不再孤立“留。”，动作“重试搜索/Retry search”直接说明任务；英文错误/timeout同样清楚，无saved持久化承诺。error→pending原坐标连点仍44目标/单flight，ready尊重input或已移FullLink的焦点。此前具体b视觉差距已解决：**c recovery静态D1/D4=96/96**，b94.5历史原样保留，完整维度/族仍null；未用未知AT/实体设备虚构扣分或抬全分。
+
+13个可见computed样本（10status14.72CSSpx、3enabledRetry14CSSpx）独立sRGB重算误差0，rawmin**5.789000796485059**，普通文字门槛4.5；仅opacity1/记录opaque背景的这些文字。disabled.65/hidden/海报/整页/抗锯齿/AT不在结论内，未把200%status字号当整页zoom。
+
+原raw顶层sourceManifest残留b字面值；[显式勘误](evidence/batch-e11c-provenance.json)绑定rawSHA、真正c manifest与已执行runnerSHA，runner5–7实际按c前缀读取并assert。原回执/runner/b证据均未覆盖。b两旧键盘专项及真实Back未在c重跑，b未命中BFCache依旧unknown；合成生命周期只按合同范围保留。UX042/044继续开放。
+
+盘点v1.21最终同步：309族/367selector entries/315状态/69局部族（68partial+1measured）/0完整；只追加status支持根与新Retry的两条c引用，无新按钮或整族认证。

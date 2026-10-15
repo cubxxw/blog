@@ -5,7 +5,7 @@
     "timezone": "Asia/Shanghai",
     "workspace": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
     "base_commit": "6d7b9fe92a746a83e635282c9b78966920336a69",
-    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched; v1.16 imported E9b7contracts/4actual20PNG with shared refs, WhatsApp omission and spatial visual baseline; inspected3existingE9bPNG; no browser/build/test launched; v1.17 appended4E9c bounded records,3contracts/2actual12choices18PNG; inspected3existingPNG, no browser/build/test launched; v1.18 lean14records for global4negative baselines/E10historical5/E10a5,4real selector entries registered and footnote support-root corrected; inspected4existingPNG; no browser/build/test launched; v1.19 added4article-resize baseline records/7immutable source identities and2inspected settled images, originaldraft retained; E11 indexRetry planned-only, no browser/build/test launched; v1.20 registeredindexRetry b68b79 with14bounded E11bstate records/15newcontracts+2oldregressions/7actual15PNG+actualBack2PNG separate;4existingPNG inspected; no browser/build/test launched",
+    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched; v1.16 imported E9b7contracts/4actual20PNG with shared refs, WhatsApp omission and spatial visual baseline; inspected3existingE9bPNG; no browser/build/test launched; v1.17 appended4E9c bounded records,3contracts/2actual12choices18PNG; inspected3existingPNG, no browser/build/test launched; v1.18 lean14records for global4negative baselines/E10historical5/E10a5,4real selector entries registered and footnote support-root corrected; inspected4existingPNG; no browser/build/test launched; v1.19 added4article-resize baseline records/7immutable source identities and2inspected settled images, originaldraft retained; E11 indexRetry planned-only, no browser/build/test launched; v1.20 registeredindexRetry b68b79 with14bounded E11bstate records/15newcontracts+2oldregressions/7actual15PNG+actualBack2PNG separate;4existingPNG inspected; no browser/build/test launched; v1.21 only2c label/visible-textcontrast records;15samecases/7newactual15PNG,3existingPNGinspected;explicit rawmetadataerratum, no browser/build/test launched",
     "scope": "按共享模板和交互变体归类，不按每篇文章/每个数据行重复膨胀计数",
     "limitations": [
       "source candidates不是运行时DOM计数",
@@ -16,8 +16,8 @@
       "About Quest已在中英content frontmatter确认路由，但本Agent未访问运行时页面。",
       "第三方评论与Calendly/BMC/Polarsteps内控件无法仅从本仓源码穷尽；登记宿主功能族，实例数/浏览器能力需实际渲染补全。"
     ],
-    "inventory_version": "1.20",
-    "updated_at_shanghai": "2026-10-16T05:31:50+08:00",
+    "inventory_version": "1.21",
+    "updated_at_shanghai": "2026-10-16T05:41:19+08:00",
     "corrections": [
       "v1.4 corrected unsupported ?app= routes in candidate journey queues; actual app selection uses supported profile/hash plus visible launchpad. Existing inventory IDs/count remain unchanged.",
       "v1.7 G.SEARCH.AI is an async askAI action with conditional Stop, not a toggle; D2b completion-focus evidence no longer lists Stop as tested.",
@@ -31,7 +31,7 @@
     "roadmap_count": 18,
     "roadmap_subject_count": 12,
     "roadmap_source_note": "Roadmap source refs traced at 2026-10-16 01:05-01:13 Asia/Shanghai while other bounded implementation batches may run; no new browser acceptance.",
-    "current_checkout_revision_at_import": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+    "current_checkout_revision_at_import": "1e2d94acae058204233d6547ba47ba599025c9bf",
     "next_probe_source_read_at_shanghai": "2026-10-16T02:43:06+08:00"
   },
   "counts": {
@@ -58,7 +58,7 @@
     },
     "families_with_state_evidence": 69,
     "accepted_whole_families": 0,
-    "state_evidence_records": 313
+    "state_evidence_records": 315
   },
   "state_profiles": {
     "nav": {
@@ -1798,7 +1798,7 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "unverified",
+        "normal": "c新短status在7actual命名scope可见：中英准备/失败/超时用读者动作措辞，390中文错误句不再孤行；#search-empty为noninteractive support，非输入框行为重验。13可见status/enabledRetry opaque样本rawmin5.7890，仅文字。",
         "hover": "unverified",
         "focus": "unverified",
         "active": "unverified",
@@ -1903,6 +1903,32 @@
           "verified_score": null,
           "related_issue_ids": [
             "UX-039"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11C.status-copy.G.SEARCH.QUERY.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-label-batch",
+          "receipt": "evidence/batch-e11c-actions.json",
+          "receipt_sha256": "b25141c5e831abcb60233a14f43d132075f830a25ec0d0a9d4145e35876cd9c3",
+          "evidence_registry_ref": "e11c-label-visual-import",
+          "source_context_ref": "batch-e11c-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6"
+          ],
+          "control_ids": [],
+          "control_resolution": "Only new c status/Retry label and visible-text contrast fragment; no AIretry/full-family/history inheritance",
+          "observation": "c新短status在7actual命名scope可见：中英准备/失败/超时用读者动作措辞，390中文错误句不再孤行；#search-empty为noninteractive support，非输入框行为重验。13可见status/enabledRetry opaque样本rawmin5.7890，仅文字。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Contrast excludes disabled.65/image/fullpage/AT; no actualBFCache restoration claim. UX042/044remainopen; E12 not implemented.",
+          "verified_score": null,
+          "support_selectors": [
+            "#search-empty"
           ]
         }
       ],
@@ -70341,7 +70367,7 @@
     },
     {
       "id": "G.SEARCH.RETRY",
-      "label": "重新加载索引 / AI 回答重试（各自目标）",
+      "label": "搜索重试 / AI回答重试（各自目标）",
       "selector": ".search-palette__ai-error .ai-retry-btn, #search-index-retry",
       "source": {
         "file": "assets/js/search-palette.js",
@@ -70369,7 +70395,7 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "v1.2补全DOM工厂生成或条件挂载控件；未实际加载第三方/请求后端。",
       "state_observations": {
-        "normal": "新local index Retry：A4/5目标44高、14px、中心hit；原坐标在error/pending不变。C4/5只放大status文字200%且button rect不变，不是pagezoom。",
+        "normal": "同一indexRetry改为重试搜索/Retry search，c error/timeout新图文字与44目标；当前坐标/焦点契约在同15case与7actual维持，但本条只新增文案/contrast视觉，不重记b14状态。",
         "hover": "unverified",
         "focus": "旧13合同已过但390zh actual原中心第二click后焦点BODY/top；父/独立诊断y346.375→322.828125。旧log保留，不以新15通过改写历史失败。",
         "active": "两actual本地503→原坐标Retry→真实local index10条，query保留；关开缓存同index总GET2。仅索引恢复，不授AIretry行为。",
@@ -70395,16 +70421,24 @@
         {
           "id": "G.SEARCH.RETRY.control.b68b79",
           "selector": "#search-index-retry",
-          "label": "重新加载索引 / Reload index",
+          "label": "重试搜索 / Retry search",
           "retry_target": "local language index",
           "source": {
             "file": "layouts/partials/search-palette.html",
             "line": 104,
-            "sha256": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46"
+            "sha256": "07fedce353a97293526509f43101a840c81b04b43196adaba29c00971fbc361e"
           },
           "instance_policy": "One conditional local-index Retry, separate from existing AIretry788d65",
           "registered_in_version": "1.20",
-          "prior_plan_registry_ref": "E11-index-retry-source-planned"
+          "prior_plan_registry_ref": "E11-index-retry-source-planned",
+          "label_history": [
+            {
+              "label": "重新加载索引 / Reload index",
+              "source_context_ref": "batch-e11-source.json",
+              "phase": "E11b historical"
+            }
+          ],
+          "label_source_context_ref": "batch-e11c-source.json"
         }
       ],
       "selector_type": "css",
@@ -70547,6 +70581,31 @@
             "registry_ref": "e11-index-state-import",
             "note": "Original failure preserved. Independent closure is only final E11b named contracts/actual scopes; whole-family unverified."
           }
+        },
+        {
+          "binding_id": "EIMPORT.E11C.retry-copy.G.SEARCH.RETRY.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-label-batch",
+          "receipt": "evidence/batch-e11c-actions.json",
+          "receipt_sha256": "b25141c5e831abcb60233a14f43d132075f830a25ec0d0a9d4145e35876cd9c3",
+          "evidence_registry_ref": "e11c-label-visual-import",
+          "source_context_ref": "batch-e11c-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6"
+          ],
+          "control_ids": [
+            "G.SEARCH.RETRY.control.b68b79"
+          ],
+          "control_resolution": "Only new c status/Retry label and visible-text contrast fragment; no AIretry/full-family/history inheritance",
+          "observation": "同一indexRetry改为重试搜索/Retry search，c error/timeout新图文字与44目标；当前坐标/焦点契约在同15case与7actual维持，但本条只新增文案/contrast视觉，不重记b14状态。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Contrast excludes disabled.65/image/fullpage/AT; no actualBFCache restoration claim. UX042/044remainopen; E12 not implemented.",
+          "verified_score": null
         }
       ],
       "issue_ids": [
@@ -84211,6 +84270,207 @@
       "limits": "Exploratory fine-pointer focus lifecycle. Marker/citation .focus are programmatic component probes, only subsequent Tab is a trusted key; does NOT claim an actual natural keyboard route into appended citation. No citation activated/external navigation/AI calls. Not whole feature inaccessibility: original marker Enter route remains available.",
       "classification": "qualified component observation, not natural keyboard route failure/wholefeature inaccessible; UX042 firsttouch andUX044 article resize still open",
       "new_state_bindings": 0,
+      "whole_family_accepted": false,
+      "verified_score": null
+    },
+    "batch-e11c-source.json": {
+      "manifest": "evidence/batch-e11c-source.json",
+      "manifest_sha256": "4378ef0084f310290fd865f3a208910e52a4925b9e1c974dbd631ee6e0dacbfc",
+      "frozen_at_utc": "2026-10-15T21:36:21.536673+00:00",
+      "base_revision": "1e2d94acae058204233d6547ba47ba599025c9bf",
+      "imported_at_shanghai": "2026-10-16T05:41:19+08:00",
+      "dependencies": [
+        {
+          "file": "assets/js/search-palette.js",
+          "frozen_sha256": "ac86aca823a56a300276a584cd29b7f532560cee7cb59cf3dccd6479f3f1f65d",
+          "current_matches": true
+        },
+        {
+          "file": "layouts/partials/search-palette.html",
+          "frozen_sha256": "07fedce353a97293526509f43101a840c81b04b43196adaba29c00971fbc361e",
+          "current_matches": true
+        },
+        {
+          "file": "themes/PaperMod/assets/css/common/header.css",
+          "frozen_sha256": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+          "current_matches": true
+        },
+        {
+          "file": "tests/e2e/search-index-contracts.spec.ts",
+          "frozen_sha256": "08ffabbc44fdf28b19ced500e2e0908245ddac3d15a6a8b53b801ead2aca6507",
+          "current_matches": true
+        }
+      ],
+      "qa_config": {
+        "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+        "sha256": "30455a6b7840d4fc07d6d290e8d3da9dfb09112747238a305e7bff56f7cd953b",
+        "workers": 1,
+        "browser": "Chromium Metal"
+      },
+      "parent_runners": {
+        "batch-e11c-actions.browser.mjs": "6306bd68b887074bafb3822a7d0bbd66d616a7866ff4d708c32888e9af02c148"
+      },
+      "all_current_match": true,
+      "scope": "Three-file labels-only;6localized status strings+2Retrylabels. CSS/algorithm/owned lifetime/AI/Markdown/fallback byte-identical to accepted1e2d94a after reversed strings.15differentcases unchanged.",
+      "provenance_erratum_ref": "evidence/batch-e11c-provenance.json",
+      "limits": "Labels-only current freeze; b Back/2existing regressions are historical and were not rerun for c."
+    },
+    "e11c-label-visual-import": {
+      "imported_at_shanghai": "2026-10-16T05:41:19+08:00",
+      "source_context_ref": "batch-e11c-source.json",
+      "receipts": [
+        {
+          "path": "evidence/batch-e11c-actions.json",
+          "sha256": "b25141c5e831abcb60233a14f43d132075f830a25ec0d0a9d4145e35876cd9c3"
+        },
+        {
+          "path": "evidence/batch-e11c-actions.log",
+          "sha256": "1c7b225b9dfcceae11b885f87f47b3ee065d4536a7b7add9b721790d449614eb"
+        },
+        {
+          "path": "evidence/batch-e11c-contracts.log",
+          "sha256": "894adb6a77b14c287a78981de4090a3c6e69ae9e80799b0ddd1708b3e1f97c9d"
+        },
+        {
+          "path": "evidence/batch-e11c-scope.log",
+          "sha256": "815b540eb7be46fb749af6a51effd4fdfb0e82d14eb1e1b70b4126906785efeb"
+        },
+        {
+          "path": "evidence/batch-e11c-provenance.json",
+          "sha256": "177c06c02e179c5a1892968c53e301241fabe2393b4ec32a5dc5d25f5440be7d"
+        },
+        {
+          "path": "evidence/batch-e11c-hugo.log",
+          "sha256": "650d1e12bd424403a7972baa5719af3ae1c75f05dea7fd4924debd72e3b7115e"
+        },
+        {
+          "path": "evidence/batch-e11c-typecheck.log",
+          "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+        }
+      ],
+      "actual_scope_identity_ref": "e11-index-state-import.actual_scope_definitions",
+      "actual_scope_ids": [
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scope_identity_validation": "All7c context kind/view fields equal b shapes; c has own actual observations/timestamp/source, no b passing state inherited.",
+      "actual_receipt_pointers": "/contexts/0..6",
+      "actual_contexts": 7,
+      "artifacts": [
+        {
+          "path": "evidence/batch-e11c-results-390-zh.png",
+          "sha256": "cf86edb661b5879a6ec2af3754846d970b7908ab07b2780c4573b988a06dcd07",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-fresh-intent-390-zh.png",
+          "sha256": "68583da4bf60d52b7eecd0a6d7a164983aa58fdf2a4abb863b4a99d53ed85582",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-results-390-en.png",
+          "sha256": "c9ac5d4db519f6a76a268dd1f17b423778ee81bc361a3dd1dd8a9c0dfee05690",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-fresh-intent-390-en.png",
+          "sha256": "08ea8b23904447f65df6d70b53d996d1e37979d4c1c183d0c722c9c8770b8a5d",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-results-1440-zh.png",
+          "sha256": "068e0dfe2b541cac5a2ed6ddecf04650afac9a431c8b7bd105a76febe20dd2e3",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-fresh-intent-1440-zh.png",
+          "sha256": "606203a8a991c78de5dd2a2cbfc82902fb1bfd65ef21ef7492ac5a4b90c25125",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-results-1440-en.png",
+          "sha256": "07c1cdeb0fd71ceb9ae3f663ed736241d550b1ddb640c9a3480fda7c8b3c0655",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-fresh-intent-1440-en.png",
+          "sha256": "932f5b47aa5669d5344a90eefacc98f828e6a85933d1c2c1ad8f5729adf4deb5",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-error-390-zh.png",
+          "sha256": "5b18991c4662fb1ce2a43c7c02ece0c0b494812e1dc294446d64cd82aa51b7fc",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e11c-retrying-390-zh.png",
+          "sha256": "036f4385c17251fc3823d48ae890cbd7d0e0ed964f8ad718e3d6b8db1b8ab3b2",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e11c-recovered-390-zh.png",
+          "sha256": "87c906c07b395f25a196410218b736b45ae6061c6963ba5adba0b52cb086f9f3",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-error-1440-en.png",
+          "sha256": "8f64edef68e8b5d642f51a2fba44d9e7f867722fcd8e1ae420cc92f187cc9d21",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e11c-retrying-1440-en.png",
+          "sha256": "9f2f48450400d4df6372b4d06bd35c84c90de9071e848b0d3f8ef0d92653994c",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-recovered-1440-en.png",
+          "sha256": "66378fd34f1e81d53ec628cfc52d5355c4ed50a5e24f487396b6205f408111ae",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11c-timeout-390-en.png",
+          "sha256": "19b3db5a3355e5102648d7c9b85c8faccfccae97b04c72f0e93ca261388c33c9",
+          "inspected_by_inventory": false
+        }
+      ],
+      "artifact_count": 15,
+      "contract_repeat": {
+        "same_distinct_cases_as_E11b": 15,
+        "seconds": 7.0,
+        "new_features_or_new_cases_added": 0,
+        "case_identity_verified": true,
+        "prior_case_list_ref": "e11-index-state-import.contract_scope_definitions"
+      },
+      "scope_proof": "Approved6localizedstatus+2Retrylabel replacements reversed byte-for-byte to1e2d94a in JS/template/spec; CSS unchanged. Inventory independently repeated reverse-string comparison before import.",
+      "contrast": {
+        "receipt_pointer": "/actualContrast",
+        "samples": 13,
+        "min_raw_ratio": 5.789000796485059,
+        "inventory_independent_recomputed_max_error": 0.0,
+        "reviewer_independent_recomputed_max_error": 0.0,
+        "limits": "Only visible status and enabled Retry with computed opaque backgrounds and effective opacity1; disabled button/image/full-page/antialiasing/AT unverified."
+      },
+      "provenance": {
+        "erratum": "evidence/batch-e11c-provenance.json",
+        "raw_reported_literal": "batch-e11-source.json",
+        "verified_source_manifest": "batch-e11c-source.json",
+        "raw_and_executed_runner_unmodified": true,
+        "explanation": "Copied top-level b literal only. Executed runner lines5–7 uses c prefix/manifest and asserts4sourceSHA before browser; bind c through explicit erratum, not silent raw edit or behavior rerun."
+      },
+      "review_status": "independent final15images/13contrast reviewed; implementation terminology and390orphanline addressed in named c recovery pictures; no newUX/P0/P1",
+      "visual_assessment_ref": "scorecard.md/json c recovery D1/D4 expert static fragments only; b94.5 history remains, fullnull",
+      "not_rerun": [
+        "E11b actual Back/BFCache diagnostic",
+        "2existing keyboard regressions"
+      ],
+      "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Contrast excludes disabled.65/image/fullpage/AT; no actualBFCache restoration claim. UX042/044remainopen; E12 not implemented.",
+      "new_state_bindings": 2,
+      "new_controls": [],
       "whole_family_accepted": false,
       "verified_score": null
     }

@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-15T21:36:21.536673+00:00",
+  "batch": "E11c",
+  "base": "1e2d94acae058204233d6547ba47ba599025c9bf",
+  "priorFrozen": "batch-e11-source.json",
+  "files": {
+    "assets/js/search-palette.js": "ac86aca823a56a300276a584cd29b7f532560cee7cb59cf3dccd6479f3f1f65d",
+    "layouts/partials/search-palette.html": "07fedce353a97293526509f43101a840c81b04b43196adaba29c00971fbc361e",
+    "themes/PaperMod/assets/css/common/header.css": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+    "tests/e2e/search-index-contracts.spec.ts": "08ffabbc44fdf28b19ced500e2e0908245ddac3d15a6a8b53b801ead2aca6507"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "30455a6b7840d4fc07d6d290e8d3da9dfb09112747238a305e7bff56f7cd953b",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "parentActionRunners": {
+    "batch-e11c-actions.browser.mjs": "6306bd68b887074bafb3822a7d0bbd66d616a7866ff4d708c32888e9af02c148"
+  },
+  "scope": "Three-file labels-only;6localized status strings+2Retrylabels. CSS/algorithm/owned lifetime/AI/Markdown/fallback byte-identical to accepted1e2d94a after reversed strings.15differentcases unchanged.",
+  "priorRegression": "E11b2oldkeyboard andBackdiagnostic unchangedbehavior code, not rerun; realBFCache remainsunverified."
+}

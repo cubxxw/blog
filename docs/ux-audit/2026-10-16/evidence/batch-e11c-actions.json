@@ -1,0 +1,2935 @@
+{
+  "actualContrast": {
+    "samples": [
+      {
+        "context": 0,
+        "state": "immediate",
+        "control": "status",
+        "ratio": 5.789000796485059,
+        "color": "rgb(111, 95, 77)",
+        "backgroundRGB": [
+          250,
+          248,
+          244
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 1,
+        "state": "immediate",
+        "control": "status",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 2,
+        "state": "immediate",
+        "control": "status",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 3,
+        "state": "immediate",
+        "control": "status",
+        "ratio": 5.789000796485059,
+        "color": "rgb(111, 95, 77)",
+        "backgroundRGB": [
+          250,
+          248,
+          244
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 4,
+        "state": "failed",
+        "control": "status",
+        "ratio": 5.789000796485059,
+        "color": "rgb(111, 95, 77)",
+        "backgroundRGB": [
+          250,
+          248,
+          244
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 4,
+        "state": "failed",
+        "control": "retry",
+        "ratio": 5.789000796485059,
+        "color": "rgb(111, 95, 77)",
+        "backgroundRGB": [
+          250,
+          248,
+          244
+        ],
+        "fontSize": "14px"
+      },
+      {
+        "context": 4,
+        "state": "pending",
+        "control": "status",
+        "ratio": 5.789000796485059,
+        "color": "rgb(111, 95, 77)",
+        "backgroundRGB": [
+          250,
+          248,
+          244
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 5,
+        "state": "failed",
+        "control": "status",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 5,
+        "state": "failed",
+        "control": "retry",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14px"
+      },
+      {
+        "context": 5,
+        "state": "pending",
+        "control": "status",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 6,
+        "state": "at14999",
+        "control": "status",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 6,
+        "state": "at15000",
+        "control": "status",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14.72px"
+      },
+      {
+        "context": 6,
+        "state": "at15000",
+        "control": "retry",
+        "ratio": 7.38754739644761,
+        "color": "rgb(183, 165, 143)",
+        "backgroundRGB": [
+          28,
+          24,
+          20
+        ],
+        "fontSize": "14px"
+      }
+    ],
+    "minRatio": 5.789000796485059,
+    "limits": "Only visible status and enabled Retry with computed opaque backgrounds and effective opacity1; disabled button/image/full-page/antialiasing/AT unverified."
+  },
+  "at": "2026-10-15T21:37:24.278Z",
+  "batch": "E11c",
+  "sourceManifest": "batch-e11-source.json",
+  "contexts": [
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "zh",
+        "dark": false,
+        "motion": "no-preference"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在准备搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "正在搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 5.789000796485059,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "navigationURL": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Preparing search…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Searching…",
+        "fullHref": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "navigationURL": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "zh",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在准备搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(28, 25, 23)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(28, 25, 23)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "正在搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(28, 25, 23)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(28, 25, 23)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "navigationURL": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "en",
+        "dark": false,
+        "motion": "no-preference"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Preparing search…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Searching…",
+        "fullHref": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 5.789000796485059,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "navigationURL": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-route503-local-retry-success-cache",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "gets": 2,
+      "failed": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "暂时无法搜索，请重试。",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "false",
+          "x": 152,
+          "y": 322.828125,
+          "width": 86,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 5.789000796485059,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": true,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 5.789000796485059,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "pending": {
+        "query": "Kubernetes",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "正在准备搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "true",
+          "x": 152,
+          "y": 322.828125,
+          "width": 86,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "search-index-retry",
+          "className": "search-palette__index-retry",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 5.789000796485059,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": true,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "success": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-0",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在准备搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "cached": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-0",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(111, 95, 77)",
+            "backgroundRGB": [
+              250,
+              248,
+              244
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(250, 248, 244)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list search-palette-open",
+                "background": "rgb(245, 245, 247)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "errors": [],
+      "denied": [],
+      "focus": "390 retry retained until success then input;1440 real Shift+Tab to full link retained after success"
+    },
+    {
+      "kind": "actual-route503-local-retry-success-cache",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 2,
+      "failed": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Search is unavailable. Please try again.",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "false",
+          "x": 664.28125,
+          "y": 360.515625,
+          "width": 111.421875,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": true,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "pending": {
+        "query": "Kubernetes",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Preparing search…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "true",
+          "x": 664.28125,
+          "y": 360.515625,
+          "width": 111.421875,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "search-index-retry",
+          "className": "search-palette__index-retry",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": true,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "success": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-1",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Preparing search…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "search-full-link",
+          "className": "search-palette__full-link",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "cached": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-1",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Searching…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": false,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "errors": [],
+      "denied": [],
+      "focus": "390 retry retained until success then input;1440 real Shift+Tab to full link retained after success"
+    },
+    {
+      "kind": "actual-index-route-pending-with-virtual-deadline",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 1,
+      "at14999": {
+        "query": "Kubernetes",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Preparing search…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": false,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 0.65,
+            "backgroundUncertain": false,
+            "measurable": false,
+            "contrast": null,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "0.65"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "at15000": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Search timed out. Please try again.",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "false",
+          "x": 139.28125,
+          "y": 324.546875,
+          "width": 111.421875,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false,
+        "styles": {
+          "status": {
+            "visible": true,
+            "fontSize": "14.72px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "P",
+                "id": "search-empty",
+                "className": "search-palette__empty",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          },
+          "retry": {
+            "visible": true,
+            "fontSize": "14px",
+            "fontFamily": "-apple-system, \"system-ui\", \"segoe ui\", Roboto, Oxygen, Ubuntu, Cantarell, \"open sans\", \"helvetica neue\", sans-serif",
+            "color": "rgb(183, 165, 143)",
+            "backgroundRGB": [
+              28,
+              24,
+              20
+            ],
+            "effectiveOpacity": 1,
+            "backgroundUncertain": false,
+            "measurable": true,
+            "contrast": 7.38754739644761,
+            "layers": [
+              {
+                "tag": "BUTTON",
+                "id": "search-index-retry",
+                "className": "search-palette__index-retry",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "search-palette__panel",
+                "background": "rgb(28, 24, 20)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "DIV",
+                "id": "search-command-palette",
+                "className": "search-palette",
+                "background": "rgba(0, 0, 0, 0)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "BODY",
+                "id": "top",
+                "className": "list dark search-palette-open",
+                "background": "rgb(15, 15, 16)",
+                "image": "none",
+                "opacity": "1"
+              },
+              {
+                "tag": "HTML",
+                "id": "",
+                "className": "",
+                "background": "rgb(18, 20, 19)",
+                "image": "none",
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      },
+      "closed": true,
+      "errors": [],
+      "denied": [],
+      "clock": "Exact14999/15000ms virtual timer boundary, not15s wall latency; noncooperating headers+JSON and lateowners handled separately by deterministic contracts."
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-results-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-fresh-intent-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-results-390-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-fresh-intent-390-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-results-1440-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-fresh-intent-1440-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-results-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-fresh-intent-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-error-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-retrying-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-recovered-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-error-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-retrying-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-recovered-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11c-timeout-390-en.png"
+  ],
+  "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification."
+}

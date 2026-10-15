@@ -54,12 +54,12 @@ for(const view of [
   test('loading, error, retry, calculation, real empty and idle have truthful content',async({page})=>{
     await installIndex(page);const trigger=await prepare(page,view.locale,view.dark),query=input(page),summary=page.locator('#search-result-summary'),status=page.locator('#search-empty'),retry=page.locator('#search-index-retry');
     await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);
-    await expect(summary).toBeHidden();await expect(status).toHaveText(view.locale==='zh'?'正在加载搜索索引…':'Loading the search index…');await expect(options(page)).toHaveCount(0);
+    await expect(summary).toBeHidden();await expect(status).toHaveText(view.locale==='zh'?'正在准备搜索…':'Preparing search…');await expect(options(page)).toHaveCount(0);
     await expect(retry).toBeHidden();expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
-    await reply(page,0,[],503);await expect(status).toHaveText(view.locale==='zh'?'搜索索引暂时无法载入。可重新加载，查询会保留。':'The search index could not load. Reload it to keep searching.');
+    await reply(page,0,[],503);await expect(status).toHaveText(view.locale==='zh'?'暂时无法搜索，请重试。':'Search is unavailable. Please try again.');
     await expect(query).toHaveAttribute('aria-busy','false');await expect(summary).toBeHidden();await expect(query).toHaveValue('Kubernetes');
     const box=await retryHit(retry);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();await expect(retry).toHaveAttribute('aria-disabled','true');
-    expect(await retry.boundingBox()).toEqual(box);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();expect(await retry.boundingBox()).toEqual(box);await expect.poll(()=>turnCount(page)).toBe(2);await expect(status).toHaveText(view.locale==='zh'?'正在加载搜索索引…':'Loading the search index…');
+    expect(await retry.boundingBox()).toEqual(box);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();expect(await retry.boundingBox()).toEqual(box);await expect.poll(()=>turnCount(page)).toBe(2);await expect(status).toHaveText(view.locale==='zh'?'正在准备搜索…':'Preparing search…');
     await reply(page,1,documents(view.locale));await expect(options(page)).toHaveCount(10);await expect(query).toBeFocused();await expect(retry).toBeHidden();await expect(summary).toBeVisible();
     expect(await status.evaluate(el=>el.style.minHeight)).toBe('');
     await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
@@ -83,7 +83,7 @@ for(const locale of ['zh','en'])test(`${locale} status text size 200% keeps the 
   await status.evaluate(el=>el.style.fontSize=`${parseFloat(getComputedStyle(el).fontSize)*2}px`);const box=await retryHit(retry),beforeHeight=await status.evaluate(el=>el.getBoundingClientRect().height);
   await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toHaveAttribute('aria-disabled','true');await expect(retry).toBeFocused();expect(await retry.boundingBox()).toEqual(box);expect(await status.evaluate(el=>el.getBoundingClientRect().height)).toBe(beforeHeight);
   await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();expect(await turnCount(page)).toBe(2);expect(await retry.boundingBox()).toEqual(box);
-  await page.clock.fastForward(15000);await expect(status).toHaveText(locale==='zh'?'搜索索引加载超时。可重新加载，查询会保留。':'The search index timed out. Reload it to keep searching.');await expect(retry).toHaveAttribute('aria-disabled','false');await expect(retry).toBeFocused();expect(await retry.boundingBox()).toEqual(box);expect(await status.evaluate(el=>el.getBoundingClientRect().height)).toBe(beforeHeight);
+  await page.clock.fastForward(15000);await expect(status).toHaveText(locale==='zh'?'搜索超时，请重试。':'Search timed out. Please try again.');await expect(retry).toHaveAttribute('aria-disabled','false');await expect(retry).toBeFocused();expect(await retry.boundingBox()).toEqual(box);expect(await status.evaluate(el=>el.getBoundingClientRect().height)).toBe(beforeHeight);
   await page.keyboard.press('Escape');expect(await status.evaluate(el=>el.style.minHeight)).toBe('');await trigger.press('Enter');await expect(query).toBeFocused();expect(await status.evaluate(el=>el.style.minHeight)).toBe('');await expect.poll(()=>turnCount(page)).toBe(3);
 });
 
@@ -102,8 +102,8 @@ for(const phase of ['headers','json'] as const)test(`the 15000ms total index dea
   await installIndex(page);await page.clock.install();const trigger=await prepare(page),query=input(page);await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
   await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);const startedAt=await page.evaluate(()=>(window as any).__localIndex.turns[0].startedAt);
   if(phase==='json'){await page.clock.fastForward(8000);await page.evaluate(()=>(window as any).__localIndex.turns[0].headers(200));await expect.poll(()=>page.evaluate(()=>(window as any).__localIndex.turns[0].jsonCalls)).toBe(1);}
-  await page.clock.fastForward(phase==='json'?6999:14999);expect(await page.evaluate(()=>Date.now())-startedAt).toBe(14999);await expect(query).toHaveAttribute('aria-busy','true');await expect(page.locator('#search-empty')).toHaveText('正在加载搜索索引…');
-  await page.clock.fastForward(1);expect(await page.evaluate(()=>Date.now())-startedAt).toBe(15000);await expect(query).toHaveAttribute('aria-busy','false');await expect(page.locator('#search-empty')).toHaveText('搜索索引加载超时。可重新加载，查询会保留。');await expect(query).toHaveValue('Kubernetes');
+  await page.clock.fastForward(phase==='json'?6999:14999);expect(await page.evaluate(()=>Date.now())-startedAt).toBe(14999);await expect(query).toHaveAttribute('aria-busy','true');await expect(page.locator('#search-empty')).toHaveText('正在准备搜索…');
+  await page.clock.fastForward(1);expect(await page.evaluate(()=>Date.now())-startedAt).toBe(15000);await expect(query).toHaveAttribute('aria-busy','false');await expect(page.locator('#search-empty')).toHaveText('搜索超时，请重试。');await expect(query).toHaveValue('Kubernetes');
   expect(await page.evaluate(()=>(window as any).__localIndex.turns[0].aborts)).toBe(1);await expect(page.locator('#search-result-summary')).toBeHidden();
   const retry=page.locator('#search-index-retry');await retry.click();await retry.evaluate((el:HTMLButtonElement)=>el.click());await expect.poll(()=>turnCount(page)).toBe(2);await expect(retry).toBeFocused();
   const full=page.locator('#search-full-link');if(phase==='json')await full.focus();
