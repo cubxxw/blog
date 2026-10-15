@@ -3,25 +3,26 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "6d7b9fe9",
-  "phase": "batch-d2b-accepted-local-checkpoint",
-  "batch": "D2b",
+  "checkpoint": "a8e4120b",
+  "phase": "D4b-reviewed-and-accepted-E5-next",
+  "batch": "D4b",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "local checkpoint of A-D2b",
-    "D3 copy layout/Knowledge All/prose motion",
-    "Space OS journey and homepage intent batches",
-    "independent current-scope scoring"
+    "local checkpoint then executor E5 Space stylesheet batch",
+    "parent freeze/build E5 only after worker complete",
+    "runtime FAQ reduced-motion change",
+    "homepage attention and remaining inventory journeys"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-d2b-checks.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-d4b-request-checks.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T17:09:24.124392+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+  "updatedAt": "2026-10-15T17:33:11.940641+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-d4b-source.json",
   "localOnly": true,
   "liveBackendTested": false,
-  "physicalPhoneTested": false
+  "physicalPhoneTested": false,
+  "review": "D4b independent review: no new P0/P1; 19-file manifest matches"
 }

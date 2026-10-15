@@ -67,7 +67,8 @@
         }, 2000);
       } else {
         button.textContent = copyLabel;
-        status.textContent = failedLabel;
+        var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        status.textContent = touch && labels.failedTouch ? labels.failedTouch : failedLabel;
       }
     });
 

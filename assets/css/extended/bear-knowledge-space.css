@@ -955,7 +955,7 @@ body.dark .bks {
 }
 
 /* Articles are a browsable index, never twenty overlapping labels. */
-.bks__stage-wrap[data-filter="writing"] .bks__nodes,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__nodes,
 .bks__stage-wrap[data-filter="series"] .bks__nodes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -965,14 +965,14 @@ body.dark .bks {
   padding: 24px;
 }
 
-.bks__stage-wrap[data-filter="writing"] .bks__stage::before,
-.bks__stage-wrap[data-filter="writing"] .bks__stage::after,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__stage::before,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__stage::after,
 .bks__stage-wrap[data-filter="series"] .bks__stage::before,
 .bks__stage-wrap[data-filter="series"] .bks__stage::after {
   display: none;
 }
 
-.bks__stage-wrap[data-filter="writing"] .bks__node,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__node,
 .bks__stage-wrap[data-filter="series"] .bks__node {
   position: static;
   display: block;
@@ -982,12 +982,12 @@ body.dark .bks {
   transform: none;
 }
 
-.bks__stage-wrap[data-filter="writing"] .bks__node::before,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__node::before,
 .bks__stage-wrap[data-filter="series"] .bks__node::before {
   display: none;
 }
 
-.bks__stage-wrap[data-filter="writing"] .bks__chip,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__chip,
 .bks__stage-wrap[data-filter="series"] .bks__chip {
   width: 100%;
   max-width: none;
@@ -1001,9 +1001,9 @@ body.dark .bks {
   font-size: 0.77rem;
 }
 
-.bks__stage-wrap[data-filter="writing"] .bks__chip:hover,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__chip:hover,
 .bks__stage-wrap[data-filter="series"] .bks__chip:hover,
-.bks__stage-wrap[data-filter="writing"] .bks__chip.is-focus,
+.bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__chip.is-focus,
 .bks__stage-wrap[data-filter="series"] .bks__chip.is-focus {
   color: var(--bks-amber);
   transform: none;
@@ -1029,7 +1029,7 @@ body.dark .bks {
   .bks__node { position: static; transform: none; }
   .bks__node::before { display: none; }
   .bks__chip, .bks__chip--product { min-width: 0; max-width: none; min-height: 44px; }
-  .bks__stage-wrap[data-filter="writing"] .bks__nodes,
+  .bks__stage-wrap:is([data-filter="all"], [data-filter="writing"]) .bks__nodes,
   .bks__stage-wrap[data-filter="series"] .bks__nodes { display: grid; grid-template-columns: 1fr; padding: 14px; overflow: visible; }
   .bks__panel { padding: 22px; }
   .bks__status { padding-inline: 16px; }

@@ -254,8 +254,10 @@
           <h3 class="tw-book-ai__title"></h3>
           <p class="tw-book-ai__author"></p>
         </header>
-        <div class="tw-book-ai__thread" aria-live="polite"></div>
-        <div class="tw-book-ai__chips" hidden></div>
+        <div class="tw-book-ai__conversation" role="region" tabindex="0" aria-label="{{ if $isZh }}对话与建议问题{{ else }}Conversation and suggested questions{{ end }}">
+          <div class="tw-book-ai__thread" aria-live="polite"></div>
+          <div class="tw-book-ai__chips" hidden></div>
+        </div>
         <div class="tw-book-ai__composer">
           <textarea class="tw-book-ai__input" rows="1" maxlength="400"
                     placeholder="{{ if $isZh }}追问这本书…{{ else }}Ask more about this book…{{ end }}"></textarea>

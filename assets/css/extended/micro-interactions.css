@@ -55,22 +55,6 @@ html.motion-reveal .is-revealed {
   will-change: auto;
 }
 
-/* ---------- In-article block reveal (headings, quotes, code) ---------- */
-/* Structural blocks ease up as they enter the viewport so a long read
-   feels like it unfolds. Scoped to .motion-reveal + the .reveal-block
-   class JS adds, so content is never hidden without the enhancement. */
-html.motion-reveal .post-content .reveal-block {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-html.motion-reveal .post-content .reveal-block.is-revealed {
-  opacity: 1;
-  transform: none;
-}
-
 /* ---------- Article images: gentle fade-in on load ---------- */
 html.motion-reveal .post-content img {
   opacity: 0;
@@ -376,7 +360,6 @@ summary:focus-visible,
   .growth-list-item,
   .reveal-item,
   .rpc,
-  .post-content .reveal-block,
   .post-content img {
     opacity: 1 !important;
     transform: none !important;

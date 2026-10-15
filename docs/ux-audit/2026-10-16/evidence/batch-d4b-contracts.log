@@ -1,0 +1,19 @@
+
+Running 10 tests using 1 worker
+
+(node:29288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/product-entry-contracts.spec.ts:11:7 › Chinese home introduction opens the actual products app in the current tab (644ms)
+  ✓   2 tests/e2e/product-entry-contracts.spec.ts:11:7 › English home products section opens the actual products app in the current tab (577ms)
+  ✓   3 tests/e2e/product-entry-contracts.spec.ts:11:7 › Chinese shared footer opens the actual products app in the current tab (676ms)
+  ✓   4 tests/e2e/product-entry-contracts.spec.ts:25:5 › the unqualified Space entrance still begins in the café in both languages (495ms)
+(node:29319) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 tests/e2e/travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 320px (529ms)
+  ✓   6 tests/e2e/travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 390px (391ms)
+  ✓   7 tests/e2e/travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in zh at 568×320 (880ms)
+  ✓   8 tests/e2e/travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in en at 568×320 (922ms)
+  ✓   9 tests/e2e/travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in zh at 568×256 (865ms)
+  ✓  10 tests/e2e/travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in en at 568×256 (988ms)
+
+  10 passed (8.0s)

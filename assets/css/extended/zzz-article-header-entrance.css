@@ -1,11 +1,10 @@
 /* ============================================================
    zzz-article-header-entrance.css — article header load-in
    ------------------------------------------------------------
-   Everything below the fold already fades up as it scrolls into
-   view (micro-interactions.js → .reveal-block / card reveal), but
-   the article header itself — breadcrumbs, title, description,
-   meta and the hairline rule — sat above the fold and simply
-   appeared on load. This gives that first screen a gentle, once-
+   The header — breadcrumbs, title, description, meta and the
+   hairline rule — has one readable, once-only entrance. Body
+   headings, quotes and code remain static during reading.
+   This gives the first screen a gentle, once-
    only entrance so opening an article feels like it "arrives"
    rather than blinking into place. Desktop + mobile.
 

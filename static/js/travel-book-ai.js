@@ -121,6 +121,7 @@
   var titleEl = modal.querySelector('.tw-book-ai__title');
   var authorEl = modal.querySelector('.tw-book-ai__author');
   var threadEl = modal.querySelector('.tw-book-ai__thread');
+  var conversationEl = modal.querySelector('.tw-book-ai__conversation');
   var chipsEl = modal.querySelector('.tw-book-ai__chips');
   var inputEl = modal.querySelector('.tw-book-ai__input');
   var sendEl = modal.querySelector('.tw-book-ai__send');
@@ -156,7 +157,7 @@
     msg.appendChild(tag);
     msg.appendChild(body);
     threadEl.appendChild(msg);
-    threadEl.scrollTop = threadEl.scrollHeight;
+    conversationEl.scrollTop = conversationEl.scrollHeight;
     return body;
   }
 
@@ -166,7 +167,7 @@
     el.innerHTML = '<span></span><span></span><span></span>';
     el.setAttribute('aria-label', t('thinking'));
     threadEl.appendChild(el);
-    threadEl.scrollTop = threadEl.scrollHeight;
+    conversationEl.scrollTop = conversationEl.scrollHeight;
     return el;
   }
 
@@ -185,7 +186,7 @@
       el.appendChild(btn);
     }
     threadEl.appendChild(el);
-    threadEl.scrollTop = threadEl.scrollHeight;
+    conversationEl.scrollTop = conversationEl.scrollHeight;
   }
 
   /* ── Chips (seed prompts AND follow-ups share this — both {label,msg}) ── */
@@ -263,7 +264,7 @@
         thinkingEl.remove();
         if (!streamBody) streamBody = addBubble('ai', '');
         streamBody.innerHTML = parseMarkdown(answer);
-        threadEl.scrollTop = threadEl.scrollHeight;
+        conversationEl.scrollTop = conversationEl.scrollHeight;
       }});
       if (!valid()) return;
       thinkingEl.remove();
@@ -315,6 +316,7 @@
       previousOverflow = document.body.style.overflow;
       modal.showModal();
     }
+    conversationEl.scrollTop = 0;
     document.body.style.overflow = 'hidden';
     if (reduceMotion) { modal.classList.add('is-open'); }
     else { requestAnimationFrame(function () { if (view === viewSerial && !modal.hidden) modal.classList.add('is-open'); }); }

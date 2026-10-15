@@ -83,6 +83,7 @@
       if (d > 0.5) offset = Math.round(d) + 8;
     }
     tools.style.right = offset + 'px';
+    container.style.setProperty('--code-tools-offset', offset + 'px');
   }
 
   function refresh(code) {

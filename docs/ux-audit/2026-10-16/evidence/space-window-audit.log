@@ -1,0 +1,6 @@
+PASS SPACE.notes-minimize-restores-same-DOM
+PASS SPACE.maximize-restore
+PASS SPACE.notes-close-reopen-persists-text
+PASS SPACE.notes-minimize-restores-same-DOM
+PASS SPACE.maximize-restore
+PASS SPACE.notes-close-reopen-persists-text

@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-15T17:29:33.246200+00:00",
+  "base": "a8e4120bb054bbfb3ea024c63d08b07e7ffc05f5",
+  "files": {
+    "assets/css/extended/bear-knowledge-space.css": "648000f9b99828f6afb28a3554f40b9323c2bb3425026f1e9c0124cb454e8120",
+    "assets/css/extended/micro-interactions.css": "2e5e6a47f99172abbe7e08768c94337350c1917495dc576cbcf091ffd788c05e",
+    "assets/css/extended/zzz-article-header-entrance.css": "230a5b8ccae1a0e81746d972c0aec1fea460174f757d08fcdb763e050c12f63f",
+    "assets/css/extended/zzz-copy-code-feedback.css": "815c13890911b370a13153c932e451e3095d2aff59f6bdbd7b994f14d04f50fd",
+    "assets/css/extended/zzz-interaction-detail-v4.css": "0a357ecdaa44cc456e5cd853168aecbc423e879b937c46b6c8cc0bb4f7b6fb1d",
+    "assets/css/extended/zzz-travel-world.css": "1c6a15321212445c1b74f1e31461e185f0f8491fc468457fbfcd7fb29c0e0259",
+    "assets/js/bear-knowledge-space.js": "469e07785e9cd5ac55cb9ef08b5f1b6589b448375e3caca9e0883ec67939b3c3",
+    "layouts/page/travel.html": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+    "layouts/partials/footer.html": "fedadada1ba3642177b887fa5b9dfe7a94842b1261ac20af06d500d912ba1999",
+    "layouts/partials/homepage-daypage.html": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab",
+    "layouts/partials/site-footer.html": "092829dcfd3a895486f29c55378753c66d84b7ff6e886ef31fb41613958583ed",
+    "layouts/partials/space/desktop.html": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21",
+    "static/js/code-copy.js": "a20f790ffd7f33f83f191ba1e046137810ffcfe0bf45731000c5e53d510ffbe1",
+    "static/js/code-mobile.js": "ee9cb9618d1759c04d02292f65e21acc066113b2c0ab0cf704fd8922e579ea2c",
+    "static/js/micro-interactions.js": "c60cfff350fa9fc75e5cd370da8847774d7b47b26584ccf7ae0414429e56f853",
+    "static/js/travel-book-ai.js": "637ea2630bd213f89bfbeff5e4544acbb417619db742fd5d4235e13fb1b5a8f7",
+    "tests/e2e/knowledge-filter-contracts.spec.ts": "47f520b04d551e3437838ab06d855b5e8e6452692376bbf09c3b17f8b3a53d3a",
+    "tests/e2e/product-entry-contracts.spec.ts": "099db9aa8629eae66670add69c00fb432dccbe747ee3bb3ad13592090492a746",
+    "tests/e2e/travel-composer-contracts.spec.ts": "bdfa5af9c7474fbca963c8023f43c9c5568b06120cd7860c547986418983d24e"
+  }
+}

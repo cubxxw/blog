@@ -1,6 +1,6 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T01:13:13+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，基线 `6d7b9fe92a746a83e635282c9b78966920336a69`。
+更新：2026-10-16T01:23:26+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，基线 `6d7b9fe92a746a83e635282c9b78966920336a69`。
 
 **当前没有足够证据宣称全站或每个按钮96+。所有功能总分保持 `unverified / null`；旧Space证据只覆盖已记录的本地Chromium状态。**
 
@@ -44,74 +44,99 @@
 ## 已发现缺口与当前状态
 
 | ID | 控件族 | 问题 | 批次 | 当前状态 |
-| --- | --- | --- | --- | --- | --- |
-| UX-001 | `S.CAFE.PICKER` | 手机换景按钮缺名称且只剩chevron | A | `verified_specific_contracts_incomplete_matrix` |
-| UX-002 | `S.CAFE.QUIET` | 安静开关缺视觉开启状态 | A | `verified_specific_contracts_incomplete_matrix` |
-| UX-003 | `A.TOC.TABS`, `A.TOC.MOBILETABS` | 文章两套Tab只有点击，缺复合控件键盘模式 | B | `source_fixed_awaiting_browser` |
-| UX-004 | `A.TOC.MOBILETABS` | 手机tabpanel指向不存在的标签ID | B | `source_fixed_awaiting_browser` |
-| UX-005 | `A.BODY.CODECOPY` | 代码复制在Promise完成前伪报成功 | A | `verified_specific_contracts_incomplete_matrix` |
-| UX-006 | `G.SHARE.DIRECT` | 文章链接复制拒绝后无恢复且提示未本地化 | C | `source_fixed_awaiting_browser` |
-| UX-007 | `G.SUB.SUBMIT`, `G.SUB.EMAIL` | 订阅请求挂起会永久busy | C | `source_fixed_awaiting_browser` |
-| UX-008 | `G.NAV.MOBILE` | 手机菜单缺Escape及明确关闭焦点规则 | B | `browser_found_transition_focus_gap_fix_pending` |
+| --- | --- | --- | --- | --- |
+| UX-001 | `S.CAFE.PICKER` | 手机换景按钮缺名称且只剩chevron | A | `closed_for_recorded_A_contracts_incomplete_family_matrix` |
+| UX-002 | `S.CAFE.QUIET` | 安静开关缺视觉开启状态 | A | `closed_for_recorded_A_contracts_incomplete_family_matrix` |
+| UX-003 | `A.TOC.TABS`, `A.TOC.MOBILETABS` | 文章两套Tab只有点击，缺复合控件键盘模式 | B | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-004 | `A.TOC.MOBILETABS` | 手机tabpanel指向不存在的标签ID | B | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-005 | `A.BODY.CODECOPY` | 代码复制在Promise完成前伪报成功 | A | `closed_for_recorded_A_contracts_incomplete_family_matrix` |
+| UX-006 | `G.SHARE.DIRECT` | 文章链接复制拒绝后无恢复且提示未本地化 | C | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-007 | `G.SUB.SUBMIT`, `G.SUB.EMAIL` | 订阅请求挂起会永久busy | C | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-008 | `G.NAV.MOBILE` | 手机菜单缺Escape及明确关闭焦点规则 | B | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-009 | `A.TOC.LINK` | TOC自动平滑滚动忽略减少动态效果 | B | `source_fixed_awaiting_browser` |
-| UX-010 | `S.APP.reader.QUERY`, `S.APP.reader.FILTER` | 搜索空结果没有条件解释与恢复入口 | C | `source_fixed_awaiting_browser` |
-| UX-011 | `A.BODY.CODECOPY`, `A.BODY.CODEEXPAND` | 新增复制失败说明与代码展开按钮重叠 | A-followup | `closed_for_recorded_C_cases_incomplete_family_matrix` |
+| UX-010 | `S.APP.reader.QUERY`, `S.APP.reader.FILTER` | 搜索空结果没有条件解释与恢复入口 | C | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-011 | `A.BODY.CODECOPY`, `A.BODY.CODEEXPAND` | 新增复制失败说明与代码展开按钮重叠 | A-followup | `closed_for_recorded_D3_cases_incomplete_family_matrix` |
 | UX-012 | `T.BOOK.ASK`, `T.BOOK.SUGGEST`, `T.BOOK.INPUT`, `T.BOOK.SEND`, `A.FAQ.AI.OPEN`, `A.FAQ.AI.CHIP`, `A.FAQ.AI.INPUT`, `A.FAQ.AI.SEND`, `A.FAQ.AI.RETRY` | AI Markdown链接未做属性转义，可注入事件属性 | D-security | `closed_parser_and_recorded_entrypoint_scope` |
+| UX-013 | `A.BODY.CODEEXPAND` | 全屏代码阅读器缺键盘焦点边界 | D-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-014 | `A.TOC.FAB`, `A.TOC.MOBILETABS`, `A.TOC.LINK` | 关闭的文章工具抽屉仍可进入键盘顺序并捕获Tab | B-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-015 | `G.SEARCH.QUERY`, `G.SEARCH.FOLLOWUP` | AI旧回复成功后强制聚焦追问框 | D1-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-016 | `A.BODY.FAQ`, `A.FAQ.AI.OPEN`, `A.FAQ.AI.SEND` | 收起外层FAQ没有取消正在生成的AI | D1-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-017 | `T.BOOK.ASK`, `T.BOOK.CLOSE`, `T.BOOK.INPUT`, `T.BOOK.SEND` | 书籍AI模态未约束键盘焦点在弹层内 | D2 | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
+| UX-018 | `T.SOCIAL.QR` | 旅行二维码模态缺焦点进入且关闭回调可影响重开 | later-modal-queue | `source_confirmed_queued_browser_reproduction` |
+| UX-019 | `MOTION.FAQ`, `A.BODY.FAQ` | 运行时开启减少动态效果后FAQ仍沿用旧WAAPI动画分支 | later-motion-queue | `source_confirmed_queued_browser_reproduction` |
+| UX-020 | `T.BOOK.SEND`, `T.BOOK.SUGGEST` | 书籍手机发送/建议按钮仍偏小且长问题出现孤行 | later-mobile-polish | `source_fixed_awaiting_D4_browser` |
+| UX-021 | `S.WINDOW.DRAG`, `S.WINDOW.CLOSE`, `S.APP.notes.EDITOR`, `S.APP.map.REGION` | Space工作区整体缩小且透明边界叠加，桌面文字发软 | next-Space-readability | `recorded_visual_gap` |
+| UX-022 | `S.APP.map.ZOOM` | 手机地图缩放按钮仅22px宽 | next-Space-readability | `recorded_geometry_gap` |
 
-| UX-013 | `A.BODY.CODEEXPAND` | 全屏代码阅读器缺键盘焦点边界；源码确认，待Tab链实测 | D-followup | `browser_observed_body_focus_gap_wrap_fix_pending` |
-
-| UX-014 | `A.TOC.FAB`, `A.TOC.MOBILETABS`, `A.TOC.LINK` | 关闭工具抽屉仅移出屏幕，仍进入Tab并trap；待浏览器复现 | B-followup | `source_fixed_awaiting_D2_browser` |
-
-| UX-015 | `G.SEARCH.QUERY`, `G.SEARCH.FOLLOWUP` | AI旧回复成功后强制聚焦追问框 | D1-followup | `source_fixed_awaiting_D2_browser` |
-| UX-016 | `A.BODY.FAQ`, `A.FAQ.AI.OPEN`, `A.FAQ.AI.SEND` | 收起外层FAQ没有取消正在生成的AI | D1-followup | `source_fixed_awaiting_D2_browser` |
-
-| UX-017 | `T.BOOK.ASK/CLOSE/INPUT/SEND` | 书籍AI弹层只有Escape，无Tab焦点边界；待浏览器复现 | D2 | `browser_observed_body_focus_gap_wrap_fix_pending` |
-
-| UX-018 | `T.SOCIAL.QR` | 二维码模态焦点与旧关闭回调重开风险，后续队列 | later-modal-queue | `source_confirmed_queued_browser_reproduction` |
-
-| UX-019 | `MOTION.FAQ`, `A.BODY.FAQ` | reduceMotion缓存不响应运行时变更，后续窄范围复现 | later-motion-queue | `source_confirmed_queued_browser_reproduction` |
-
-P1 `UX-012` 原属性逃逸已由三处renderer转义修复；独立运行6条parse5安全回归通过，源码/解析器层关闭，当前浏览器验收待补。另6条transport与4条clipboard意图单测通过（共16）。无浏览器或事件执行，无外部AI调用；不改变已冻结UX量表或临时创造分数。
+缺陷按已覆盖合同关闭；完整功能矩阵仍单独保留未知。安全修复与可见Travel/FAQ入口绑定，dormantlegacy不算可见功能。临时纸面概念不算生产修改。
 
 ## 有证据的单项锚点评分
 
-以下分数只对表中检查片段与as-of证据负责，完整维度/控件/全站仍是null。历史源码诊断分用于排序，不能冒充当前运行时评分。96表示该片段的约定检查通过，不认证整个功能。
+局部片段分不代替完整维度/功能分；历史失败保留as-of和superseded状态，当前通过只覆盖具体断言。
 
-| 检查 | 维度片段 | 锚点分 | 依据与限制 | as-of / 置信度 |
+| 检查 | 维度片段 | 分 | 依据与限制 | as-of / 状态 / 置信度 |
 | --- | --- | ---: | --- | --- |
-| `CHK-A-PICKER-NAME` | `D2.1` | 96 | 390/320/568三个宽度均有稳定名称；44px命中另列。 | batch A frozen source / high |
-| `CHK-A-PICKER-KEYBOARD` | `D2.2` | 96 | 已记录打开场景选择后Escape关闭并返回原触发器；只对这条取消链。 | batch A frozen source / high |
-| `CHK-A-PICKER-TARGET` | `D2.3` | 96 | 390/320/568宽度中实际盒均44×44；未外推其他按钮。 | batch A frozen source / high |
-| `CHK-A-QUIET-VISIBLE` | `D3.2` | 96 | 三个宽度pressed开启后背景明显反色且title改变，状态反馈和开关一致；不证明所有暂停资源。 | batch A frozen source / high |
-| `CHK-A-QUIET-CONSISTENCY` | `D4.3` | 96 | 320px实图中quiet开启使用浅色实底，区别旁边未选图标；范围仅此状态对照。 | batch A frozen source / medium |
-| `CHK-A-COPY-TRUTH` | `D3.2` | 96 | pending未伪报success；resolved与legacy true才完成，denial显示人工复制路径。仅桩结果，不证明实体剪贴板。 | batch A frozen source / high |
-| `CHK-A-COPY-RECOVERY` | `D3.3` | 80 | 390px人工恢复说明右端被展开按钮覆盖；信息有方向但可读性受损。C布局已修，待新图关闭。 | batch A frozen source / high |
-| `CHK-A-COPY-ATTENTION` | `D4.4` | 80 | 复制恢复说明与展开工具同占代码块右下角，用户不能清楚区分说明和工具区域。 | batch A frozen source / high |
-| `CHK-A-COPY-MOBILE-TARGET` | `D2.3` | 96 | zh/en手机用例复制按钮高44px；桌面31.34px无需硬套移动44目标。 | batch A frozen source / high |
-| `CHK-A-EMAIL-FOCUS` | `D2.4` | 96 | zh/en桌面/手机均实际focused/visible，边框改变并有3pxshadow；outline:none不构成缺陷。此分仅焦点可见片段，未量测对比或虚拟键盘。 | batch A frozen source / high |
-| `CHK-A-WINDOW-PRESS` | `D5.2` | 96 | 最小化按钮按压前后44.28px边界稳定，未因全局scale跳动。 | batch A frozen source / high |
-| `CHK-A-MAP-PRESS` | `D5.2` | 96 | 地图标记按压几何稳定；9.46px盒只证明未被transform覆盖，命中/spacing/等价区域列表须另测。 | batch A frozen source / high |
-| `CHK-BASE-UX-001` | `D2.1` | 60 | 手机换景旧按钮唯一文字隐藏且图标aria-hidden，读屏需绕路；A专项已关闭此片段。 | baseline source before fixes / high |
-| `CHK-BASE-UX-002` | `D3.2` | 80 | 旧quiet仅aria变化，视觉用户无法确认暂停状态；A已验证反色。 | baseline source before fixes / high |
-| `CHK-BASE-UX-003` | `D2.2` | 60 | role=tab未实现方向键与roving模型，Tab/Enter仍能绕路；B改后待实际矩阵。 | baseline source before fixes / high |
-| `CHK-BASE-UX-004` | `D2.1` | 60 | 旧aria-labelledby所指ID不存在，辅助技术缺关联；B改后待渲染验证。 | baseline source before fixes / high |
-| `CHK-BASE-UX-005` | `D3.2` | 60 | 旧Promise未settle即成功，用户无法判断复制是否完成；A专项已关闭。 | baseline source before fixes / high |
-| `CHK-BASE-UX-006` | `D3.3` | 60 | 旧clipboard拒绝无恢复说明；C已改源码待真实桩验收。 | baseline source before fixes / high |
-| `CHK-BASE-UX-007` | `D3.1` | 60 | 旧fetch无超时，挂起submit一直disabled，必须刷新绕路；C改后待挂起和重试链。 | baseline source before fixes / high |
-| `CHK-BASE-UX-008` | `D2.2` | 80 | 原菜单无Escape/返回焦点；B同步focus又撞visibility过渡，延迟guard正在修。 | baseline source before fixes / high |
-| `CHK-BASE-UX-009` | `D5.1` | 60 | 旧TOC固定smooth无reduce分支；B源码改后待实际行为。 | baseline source before fixes / high |
-| `CHK-BASE-UX-010` | `D1.4` | 80 | 旧无匹配仍说目录空，缺清条件入口，用户可手动删查询绕路；C待验收。 | baseline source before fixes / high |
-
-| `CHK-SOURCE-CLOSED-SHEET` | `D2.2` | 60 | closed抽屉仅移到屏外，当前tab/目录仍可聚焦，keydown未检查open；源码诊断，实测待复现。 | current source / high |
-
-| `CHK-C-COPY-SEPARATION` | `D6.1` | 96 | 四张当前图已逐张查看；文字Range rect和44px工具不相交，hit中心成功；仅关闭UX-011。横屏/200%与键盘边界仍未知。 | batch C / high |
-| `CHK-C-COPY-ATTENTION` | `D4.4` | 90 | 恢复说明和44px工具已分出独立行，旧覆盖关闭；320zh与390en文字终点距工具仅约0.24/0.25px，仍显拥挤，后续可留更明确间距。此为视觉细化，不重新宣告叠压失败。 | batch C / medium |
-| `CHK-C-COPY-CLEAN-READER` | `D3.4` | 96 | 四个C记录中从error打开fullscreen没有重复旧status；UX-013 focus边界未包含在该合同。 | batch C / high |
-
+| `CHK-A-PICKER-NAME` | `D2.1` | 96 | 390/320/568三个宽度均有稳定名称；44px命中另列。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-PICKER-KEYBOARD` | `D2.2` | 96 | 已记录打开场景选择后Escape关闭并返回原触发器；只对这条取消链。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-PICKER-TARGET` | `D2.3` | 96 | 390/320/568宽度中实际盒均44×44；未外推其他按钮。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-QUIET-VISIBLE` | `D3.2` | 96 | 三个宽度pressed开启后背景明显反色且title改变，状态反馈和开关一致；不证明所有暂停资源。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-QUIET-CONSISTENCY` | `D4.3` | 96 | 320px实图中quiet开启使用浅色实底，区别旁边未选图标；范围仅此状态对照。 | batch A frozen source / scoped_assessment / medium |
+| `CHK-A-COPY-TRUTH` | `D3.2` | 96 | pending未伪报success；resolved与legacy true才完成，denial显示人工复制路径。仅桩结果，不证明实体剪贴板。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-COPY-RECOVERY` | `D3.3` | 80 | 390px人工恢复说明右端被展开按钮覆盖；信息有方向但可读性受损。C布局已修，待新图关闭。 | batch A frozen source / historical_gap_closed_for_new_C_recorded_cases / high |
+| `CHK-A-COPY-ATTENTION` | `D4.4` | 80 | 复制恢复说明与展开工具同占代码块右下角，用户不能清楚区分说明和工具区域。 | batch A frozen source / historical_gap_closed_for_new_C_recorded_cases / high |
+| `CHK-A-COPY-MOBILE-TARGET` | `D2.3` | 96 | zh/en手机用例复制按钮高44px；桌面31.34px无需硬套移动44目标。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-EMAIL-FOCUS` | `D2.4` | 96 | zh/en桌面/手机均实际focused/visible，边框改变并有3pxshadow；outline:none不构成缺陷。此分仅焦点可见片段，未量测对比或虚拟键盘。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-WINDOW-PRESS` | `D5.2` | 96 | 最小化按钮按压前后44.28px边界稳定，未因全局scale跳动。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-MAP-PRESS` | `D5.2` | 96 | 地图标记按压几何稳定；9.46px盒只证明未被transform覆盖，命中/spacing/等价区域列表须另测。 | batch A frozen source / scoped_assessment / high |
+| `CHK-BASE-UX-001` | `D2.1` | 60 | 手机换景旧按钮唯一文字隐藏且图标aria-hidden，读屏需绕路；A专项已关闭此片段。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-002` | `D3.2` | 80 | 旧quiet仅aria变化，视觉用户无法确认暂停状态；A已验证反色。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-003` | `D2.2` | 60 | role=tab未实现方向键与roving模型，Tab/Enter仍能绕路；B改后待实际矩阵。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-004` | `D2.1` | 60 | 旧aria-labelledby所指ID不存在，辅助技术缺关联；B改后待渲染验证。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-005` | `D3.2` | 60 | 旧Promise未settle即成功，用户无法判断复制是否完成；A专项已关闭。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-006` | `D3.3` | 60 | 旧clipboard拒绝无恢复说明；C已改源码待真实桩验收。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-007` | `D3.1` | 60 | 旧fetch无超时，挂起submit一直disabled，必须刷新绕路；C改后待挂起和重试链。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-008` | `D2.2` | 80 | 原菜单无Escape/返回焦点；B同步focus又撞visibility过渡，延迟guard正在修。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-009` | `D5.1` | 60 | 旧TOC固定smooth无reduce分支；B源码改后待实际行为。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-010` | `D1.4` | 80 | 旧无匹配仍说目录空，缺清条件入口，用户可手动删查询绕路；C待验收。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-SOURCE-CLOSED-SHEET` | `D2.2` | 60 | article-bottom-sheet.css:113–145仅用transform移到屏外，没有hidden/visibility/inert；模板当前tab tabindex0且TOC链接可聚焦。article-bottom-sheet.js:157 keydown handler未检查abs--open，屏外进入后还会循环trap；Escape可退出，故不夸大为完全无法脱困。 | current source review / source_diagnosis_not_runtime_score / high |
+| `CHK-C-COPY-SEPARATION` | `D6.1` | 96 | 四张当前图已逐张查看；文字Range rect和44px工具不相交，hit中心成功；仅关闭UX-011。横屏/200%与键盘边界仍未知。 | batch C frozen source / scoped_contract_pass / high |
+| `CHK-C-COPY-ATTENTION` | `D4.4` | 90 | 恢复说明和44px工具已分出独立行，旧覆盖关闭；320zh与390en文字终点距工具仅约0.24/0.25px，仍显拥挤，后续可留更明确间距。此为视觉细化，不重新宣告叠压失败。 | batch C frozen source / historical_C_crowding_improved_D3 / medium |
+| `CHK-C-COPY-CLEAN-READER` | `D3.4` | 96 | 四个C记录中从error打开fullscreen没有重复旧status；UX-013 focus边界未包含在该合同。 | batch C frozen source / scoped_contract_pass / high |
+| `CHK-D1-SHARE-INTENT` | `D3.4` | 96 | 390px zh/light/reduce中复制迟到拒绝没有重开manual模态，焦点仍在FAB；只证明该意图变更链。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D1-BOOK-STOP` | `D3.3` | 96 | 1440px zh/light/reduce，部分SSE后Stop取消并保留问题，回到可编辑状态。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D1-BOOK-SWITCH` | `D3.4` | 96 | 同一桌面配置关闭A并打开B后旧回答隔离；不认证D2后来native dialog Tab/淡出。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D1-FAQ-STOP` | `D3.3` | 96 | 390px zh/light/reduce，部分SSE Stop恢复问题和输入；不包含外层summary collapse。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D1-SEARCH-CLOSE` | `D3.4` | 96 | 1440px zh/light/reduce，关闭搜索取消部分SSE，重开清空；不包含旧成功回复抢编辑焦点。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2-NATIVE-FOCUS-GAP` | `D2.2` | 80 | native dialog仍有一跳activeElement=body，焦点环丢失后下一Tab返回首项；可完成有明确摩擦。此分不声称背景控件可用。 | D2a frozen source before explicit focus wrap / historical_D2a_gap_closed_for_D2b_recorded_cases / high |
+| `CHK-D2B-TABS-DESKTOP` | `D2.2` | 96 | 1440×900 zh reduced，End/Home/ArrowRight循环与单一tabstop按实际断言通过；ArrowLeft另有Node合同，完整可选series配置未齐。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-TABS-COMPACT` | `D2.2` | 96 | 390×844 zh reduced，End切末tab、ShiftTab不离弹层、Escape返回FAB。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-PANEL-NAME` | `D2.1` | 96 | 实际可见分享panel aria-labelledby等于被选tabID；源中全部ID已补，未把可选series组合都认证。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-MOBILE-MENU` | `D2.2` | 96 | 390×844 /zh/articles/，实际延后可见后首链接聚焦、Escape回触发器且关闭；不外推长英文/断点。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-COPY-REFUSAL` | `D3.3` | 96 | 受控reject+execCommandfalse，没有is-copied，原代码选择保留且按钮恢复可用。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SHEET-CLOSED` | `D2.2` | 96 | 390×844初始与关闭后inert/ariahidden，尝试focus当前tab均失败；打开可聚焦，Escape再关闭。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-CODE-FOCUS` | `D2.2` | 96 | 390×844全屏连续6次Tab每次都有可见dialog内焦点，Escape关闭并返回原展开按钮。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-BOOK-FOCUS` | `D2.2` | 96 | 390×844书籍弹层连续8次Tab均可见，Escape返回触发器，关闭控件实际44px。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-BOOK-CLOSE-TARGET` | `D2.3` | 96 | 只验证书籍Close实际宽高≥44；Send和chips尺寸不包含，不能由Close通过认证整模态命中。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-IME-BOOK` | `D3.4` | 96 | 合成isComposing Enter不发请求，后续明确Enter才发；不是实体手机真实中文输入法完整验收。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-IME-FAQ` | `D3.4` | 96 | isComposing与keyCode229合成事件都保留草稿且0请求，明确Enter才发。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SHARE-RECOVERY` | `D3.3` | 96 | 390×844分享拒绝后native manual弹层保留可选择URL，Escape回复制触发器。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SUB-TIMEOUT` | `D3.1` | 96 | fetch桩永不settle，虚拟时钟16秒后submit恢复/邮箱保留/超时可见；未发送真实订阅。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-LIBRARY-EMPTY` | `D3.3` | 96 | 真实Dock开reader，清无匹配query后焦点回输入且列表恢复；空收藏能回all并显示文章。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-FAQ-OUTER-CANCEL` | `D3.4` | 96 | 390×844 zh/light/reduce外层summary关闭取消；关闭后的迟到结果不被承诺为有效回复。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SEARCH-FOCUS` | `D3.4` | 96 | 1440×844 zh/light/reduce，旧回答完成不抢正在编辑的新搜索焦点。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-BOOK-ESCAPE-REOPEN` | `D3.4` | 96 | 390×844 zh/light，在reduce与no-preference均双Escape和快速重开不被旧回调关闭。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-NOTE-DOM` | `D6.4` | 96 | 1440/390×900两个记录最小化/恢复保留同DOM；不外推语言/路由/关闭后原节点。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-MAX-RESTORE` | `D3.4` | 96 | 1440/390×900最大化再恢复按记录完成；内容可读性与所有尺寸仍须另评。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-NOTE-TEXT` | `D6.4` | 96 | 1440/390×900关闭再开保留文本；该合同不承诺关闭后仍同节点。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-PHONE-WINDOW-TARGET` | `D2.3` | 96 | 手机四个windowaction实际44.28×44.28、中心命中，专项通过；桌面各22.96，不能由手机通过外推。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-MAP-ZOOM-TARGET` | `D2.3` | 80 | 手机+/−实际22.14×44.28，宽不足项目重要移动控件44目标；中心命中但点击有摩擦，G4上限89。WCAG24与spacing/替代仍须独立判断。 | Space window audit against D2b frozen source / observed_target_gap / high |
+| `CHK-D3-COPY-CLEARANCE` | `D4.4` | 96 | 文字Range与44px展开工具净空实算26.23/45.55/18.53/14.58px，四图分区清楚，C的0.24px拥挤在这些新D3状态关闭。 | D3 frozen source / scoped_contract_pass / high |
+| `CHK-D3-COPY-ACTION-LANGUAGE` | `D1.3` | 96 | 中文按钮只保留“复制”；手机失败文案明确“长按代码，选择复制”，四张语言/指针场景与动作一致。 | D3 frozen source / scoped_contract_pass / high |
+| `CHK-D3-COPY-NO-STALE-STATUS` | `D3.4` | 96 | 四个D3记录从error进入全屏没有克隆旧status；focus循环另由D2b合同保证，未由这8条替代。 | D3 frozen source / scoped_contract_pass / high |
 
 ## D1 / D4 独立专家视觉判断
 
-此处是已实际查看截图的局部设计判断，和真实操作验收分开；维度均按原四项等权计算，子项只使用固定锚点。历史图不可认证当前构建。
+实际查看截图的范围判断；子项只使用固定锚点、四项等权。不把当前控件所有状态认证为该分；中间帧不作normal。
 
 | 范围 | 维度 | 四子项 | 范围分 | 原因 | as-of / 置信度 |
 | --- | --- | --- | ---: | --- | --- |
@@ -124,342 +149,331 @@ P1 `UX-012` 原属性逃逸已由三处renderer转义修复；独立运行6条pa
 | A.TOC.LINK, A.BODY.CODECOPY | D1 | 90,96,90,90 | 91.5 | 步骤标题、正文和右侧当前目录层级清楚；本截图为代码工具出现前基线，未展示复制入口和失败出口，不能据此评复制功能清晰度。 | baseline before batch A / medium |
 | A.TOC.LINK, A.BODY.CODECOPY | D4 | 90,96,90,96 | 93.0 | 正文行长与段距稳定，代码框边界表达内容类型且没有装饰性多层围框；右侧目录较淡需量测必要对比。截图右侧代码横向截断是滚动容器可能行为，未测试不能报溢出缺陷。 | baseline before batch A / medium |
 | S.CAFE.PICKER, S.CAFE.QUIET, S.CAFE.READ, S.CAFE.WORKSPACE | D1 | 90,96,90,90 | 91.5 | 两个主动作采用完整动词且主次明确；换景已改风景图标，quiet反色可识别。320px只靠风景图标发现换景用途仍有学习成本，地点标题与顶部换景为双入口，建议后续实测发现率再决定是否加短标签；不能仅凭偏好加更多HUD。 | batch A frozen source / medium |
+| T.BOOK.ASK, T.BOOK.SUGGEST, T.BOOK.INPUT, T.BOOK.SEND | D1 | 96,96,90,96 | 94.5 | 书名、作者与种子问题明确约束本次任务，输入位于顺序末尾且focus可见；初始占位“追问”略预设已经有回答，术语细化可后续处理，不构成功能阻塞。 | D2b frozen source / medium |
+| T.BOOK.ASK, T.BOOK.SUGGEST, T.BOOK.INPUT, T.BOOK.SEND | D4 | 90,96,90,96 | 93.0 | 单一卡片与实际书籍/旅行色彩相称，建议问题、输入与焦点边界分工清楚，遮罩集中注意；仅桌面zh初始态，字号/对比需实际量测与手机长标签验证。 | D2b frozen source / medium |
+| T.BOOK.CLOSE, T.BOOK.SUGGEST, T.BOOK.INPUT, T.BOOK.SEND | D4 | 80,96,90,90 | 89 | 卡片居中/边界与44px关闭对齐清楚，focus清晰。12px建议问题与单字孤行让手机密度偏高，发送38px观感比关闭小，下一轮优先测实际box并改善留白。no-preference图是中间帧，不评分。 | D2b frozen source / medium |
+| S.WINDOW.DRAG, S.APP.notes.EDITOR | D1 | 90,80,90,80 | 85.0 | 前台笔记任务明确，但behind欢迎窗口/实体电脑仍穿出，工作区整体小字和次级操作不易定位。原节点与文字连续性专项通过，不抵消阅读层级缺口。 | Space window audit against D2b frozen source / medium |
+| S.WINDOW.DRAG, S.APP.notes.EDITOR | D4 | 60,60,90,80 | 72.5 | 标题与保存/导出等实际文字很小且软；透明屏幕、实体电脑、双窗口边缘/阴影多层穿透，边界没有清楚表达单一承载面。需要放大/聚焦的明显摩擦；不推断未测对比度失败。 | Space window audit against D2b frozen source / high |
+| S.APP.map.ZOOM, S.APP.map.REGION, S.APP.map.RELATED | D4 | 80,80,80,80 | 80.0 | 地图题名可识别，但kicker/坐标/照片计数很小，地图工具框/区域卡/屏幕外框叠加；两张灰块照片目前像空占位，原因待查而非自动归咎后端。 后续诊断已确认灰图为截帧过早，不能作稳定占位缺陷。 | Space window audit against D2b frozen source / medium |
+| A.BODY.CODECOPY, A.BODY.CODEEXPAND | D1 | 96,96,96,96 | 96.0 | 当前四图“复制”与失败后的下一步动作明确，本地化去重复括号，长按指令对应coarsepointer；只评这些静态文字/操作入口清晰度，不等于实体长按成功。 | D3 frozen source / high |
+| A.BODY.CODECOPY, A.BODY.CODEEXPAND | D4 | 90,96,96,96 | 94.5 | 说明与44px工具明显分区，实际水平净空≥14.58px，边界与状态位置清楚；320英文Copy.单词占末行、13px提示略密是小幅排版余量，非遮挡/功能失败。 | D3 frozen source / high |
+| S.APP.map.ZOOM, S.APP.map.REGION, S.APP.map.RELATED | D4 | 80,80,90,80 | 82.5 | 两张真实旅行照片已显示，区域→图片→写作内容联系清楚；工具窄/细标签和多框层级仍有摩擦。没有稳定灰图/加载失败缺陷。 | StableSpace sourceunchangedfroma8e4120b / high |
 
-优先顺序：先关闭P1渲染边界，再验证D批取消/超时恢复；C手机恢复说明不重叠与B菜单过渡焦点使用当前图/合同关闭。设计细化首先减少首页低信息量协议小字和重复围框；保留Bear主表达与Space终端/猫的编排，不以CSS文件数量或个人偏好批量删除动效。
+## 完整可追踪覆盖（inventory v1.5 一对一映射）
 
-## 完整可追踪覆盖（inventory v1.3 一对一映射）
+309族/356selector；已验局部片段数展示实际进展，不是完整功能分。Dock桌面7/手机5+OS，Launchpad全11；音乐无实现单列gap，不造按钮。
 
-| 稳定族ID | 范围 | 子选择器数 | 总分 | 已知缺口 |
-| --- | --- | ---: | --- | --- |
-| `G.NAV.SKIP` | 跳到正文 | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.HOME` | CUBXXW 品牌/首页 | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.MENU` | 文章/专栏/AI Agent/工程/成长/空间 | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.SEARCH` | 搜索/⌘ K | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.THEME` | 浅色/深色 | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.LANG` | 中文/EN | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.MOBILE` | 打开/关闭导航 | 1 | `unverified / null` | UX-008 |
-| `G.NAV.ANCHOR` | 原生页内锚点 | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.TOP` | 返回顶部/进度环 | 1 | `unverified / null` | 待逐项实测 |
-| `G.NAV.WAYFINDER` | 章节侧边索引 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.CLOSE` | 关闭搜索 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.QUERY` | 搜索文章 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.RESULT` | 搜索结果/键盘上下移动 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.AI` | AI 搜索开关 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.SUGGEST` | 入门推荐/AI Agent/最新文章 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.AICLOSE` | 关闭 AI 搜索 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.FULL` | 完整搜索页面 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.PAGE` | 完整搜索输入/结果 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SUB.EMAIL` | 订阅邮箱 | 1 | `unverified / null` | UX-007 |
-| `G.SUB.SUBMIT` | 订阅 | 1 | `unverified / null` | UX-007 |
-| `G.SUB.FEED` | RSS/JSON/OPML/频道 | 1 | `unverified / null` | 待逐项实测 |
-| `G.FOOTER.LINKS` | 内容/产品/作者/社交入口 | 2 | `unverified / null` | 待逐项实测 |
-| `G.FOOTER.MORE` | 更多作品/其他平台 | 1 | `unverified / null` | 待逐项实测 |
-| `G.CONTACT.QR` | 微信/小红书二维码/复制 ID | 1 | `unverified / null` | 待逐项实测 |
-| `H.HERO.READ` | 开始阅读 | 1 | `unverified / null` | 待逐项实测 |
-| `H.HERO.PRODUCT` | 探索产品 | 1 | `unverified / null` | 待逐项实测 |
-| `H.HERO.ABOUT` | 认识我/关于我 | 1 | `unverified / null` | 待逐项实测 |
-| `H.HERO.SOCIAL` | 社交图标链接 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.OPEN` | Bear 头像 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.BUBBLE` | 环绕问题气泡 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.QUICK` | 快捷问题 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.INPUT` | 给 Bear 的消息 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.SEND` | 发送消息 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.CLEAR` | 清空对话 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.CLOSE` | 关闭对话 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHAT.RETRY` | 重试这条消息 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHANNEL.TABS` | 写作频道标签 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHANNEL.PREV` | 上一个频道 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHANNEL.NEXT` | 下一个频道 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHANNEL.MORE` | 查看全部文章 | 1 | `unverified / null` | 待逐项实测 |
-| `H.CHANNEL.CARD` | 频道内文章卡片 | 1 | `unverified / null` | 待逐项实测 |
-| `H.BOOK.LINK` | 书籍封面/阅读 | 1 | `unverified / null` | 待逐项实测 |
-| `H.PRODUCT.CARD` | 产品主卡片 | 1 | `unverified / null` | 待逐项实测 |
-| `H.PRODUCT.OPEN` | 打开产品/GitHub | 1 | `unverified / null` | 待逐项实测 |
-| `H.ACTIVITY.STATS` | 总文章/今年/年数/标签 | 1 | `unverified / null` | 待逐项实测 |
-| `H.ACTIVITY.YEAR` | 热力图年份 | 1 | `unverified / null` | 待逐项实测 |
-| `H.ACTIVITY.DAY` | 热力图日期格子 | 1 | `unverified / null` | 待逐项实测 |
-| `H.ACTIVITY.RECENT` | 最近文章 | 1 | `unverified / null` | 待逐项实测 |
-| `L.FILTER.TOPIC` | 全部/AI Agent/工程/成长/项目 | 1 | `unverified / null` | 待逐项实测 |
-| `L.FILTER.MORE` | 更多筛选 | 1 | `unverified / null` | 待逐项实测 |
-| `L.FILTER.TAG` | 标签选项 | 1 | `unverified / null` | 待逐项实测 |
-| `L.FILTER.SORT` | 排序 | 1 | `unverified / null` | 待逐项实测 |
-| `L.FILTER.RESET` | 清除筛选/重置 | 1 | `unverified / null` | 待逐项实测 |
-| `L.CARD.OPEN` | 文章标题/封面 | 1 | `unverified / null` | 待逐项实测 |
-| `L.CARD.MORE` | 加载更多/下一页 | 1 | `unverified / null` | 待逐项实测 |
-| `L.CARD.PAGINATION` | 继续加载文章/下一页 | 1 | `unverified / null` | 待逐项实测 |
-| `L.TAXONOMY.TAG` | 标签/分类入口 | 1 | `unverified / null` | 待逐项实测 |
-| `L.TAXONOMY.COLUMN` | 专栏卡片 | 1 | `unverified / null` | 待逐项实测 |
-| `L.ARCHIVE.YEAR` | 归档年份 | 1 | `unverified / null` | 待逐项实测 |
-| `L.ARCHIVE.POST` | 归档文章 | 1 | `unverified / null` | 待逐项实测 |
-| `A.META.AUTHOR` | 作者卡/日期/语言/分类/标签 | 4 | `unverified / null` | 待逐项实测 |
-| `A.META.SOURCE` | 编辑本文/查看源文 | 1 | `unverified / null` | 待逐项实测 |
-| `A.TOC.TABS` | 目录/系列/AI 阅读标签 | 1 | `unverified / null` | UX-003 |
-| `A.TOC.LINK` | 目录标题项 | 1 | `unverified / null` | UX-009 |
-| `A.TOC.FAB` | 移动阅读工具 | 1 | `unverified / null` | 待逐项实测 |
-| `A.TOC.MOBILETABS` | 目录/系列/AI/分享 | 1 | `unverified / null` | UX-003, UX-004 |
-| `A.TOC.SERIES` | 系列列表/上一下一篇/更多系列 | 3 | `unverified / null` | 待逐项实测 |
-| `A.TOC.SERIESMORE` | 查看系列全部篇数 | 1 | `unverified / null` | 待逐项实测 |
-| `A.AI.CHIP` | 总结/原句/关联/质疑/入门/延伸/系列视角 | 2 | `unverified / null` | 待逐项实测 |
-| `A.AI.INPUT` | 文章问题 | 2 | `unverified / null` | 待逐项实测 |
-| `A.AI.SEND` | 发送问题 | 2 | `unverified / null` | 待逐项实测 |
-| `A.AI.STOP` | 停止回答 | 1 | `unverified / null` | 待逐项实测 |
-| `A.AI.CONTEXTCLEAR` | 移除引用上下文 | 1 | `unverified / null` | 待逐项实测 |
-| `A.AI.RETRY` | 重试 | 1 | `unverified / null` | 待逐项实测 |
-| `A.AI.FOLLOWUP` | 继续提问建议 | 1 | `unverified / null` | 待逐项实测 |
-| `A.AI.SHARE` | 分享阅读洞见 | 2 | `unverified / null` | 待逐项实测 |
-| `A.SELECTION.SHARE` | 选文分享 | 1 | `unverified / null` | 待逐项实测 |
-| `A.SELECTION.AI` | 解释选中段落 | 1 | `unverified / null` | 待逐项实测 |
-| `A.SELECTION.COMMENT` | 评论选中段落 | 1 | `unverified / null` | 待逐项实测 |
-| `A.SELECTION.MORE` | 更多/复制引用/复制定位链接/清除 | 4 | `unverified / null` | 待逐项实测 |
-| `A.SELECTION.COMMENTDRAWER` | 评论抽屉关闭/复制/继续阅读 | 3 | `unverified / null` | 待逐项实测 |
-| `A.BODY.LINK` | 正文/脚注/参考资料/文内锚点 | 1 | `unverified / null` | 待逐项实测 |
-| `A.BODY.IMAGE` | 图片放大/关闭 | 2 | `unverified / null` | 待逐项实测 |
-| `A.BODY.CODECOPY` | 复制代码 | 1 | `unverified / null` | UX-005, UX-011 |
-| `A.BODY.CODEEXPAND` | 代码全屏/字体缩放/关闭 | 4 | `unverified / null` | UX-011 |
-| `A.BODY.FAQ` | FAQ 折叠 | 1 | `unverified / null` | 待逐项实测 |
-| `A.BODY.NOTES` | 月度思考段落定位 | 1 | `unverified / null` | 待逐项实测 |
-| `A.BODY.LINKPREVIEW` | 链接预览 | 1 | `unverified / null` | 待逐项实测 |
-| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 1 | `unverified / null` | 待逐项实测 |
-| `A.FOOTER.NEXT` | 上一篇/下一篇/相关文章/专栏结尾 | 3 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.ENTRY` | 生成分享卡/微信分享 | 2 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.DIRECT` | X/Email/复制链接 | 2 | `unverified / null` | UX-006 |
-| `G.SHARE.CLOSE` | 关闭卡片编辑器 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.THEME` | 卡片主题颜色 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.MODE` | 当前回答/全部回答 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.COPYIMAGE` | 复制图片 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.SAVE` | 下载图片 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.SYSTEM` | 系统分享 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.COPYTEXT` | 复制文本/引用/原文链接 | 2 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.SOURCE` | 分享到X/返回原文 | 2 | `unverified / null` | 待逐项实测 |
-| `S.BOOT.HOME` | 终端品牌返回首页 | 1 | `unverified / null` | 待逐项实测 |
-| `S.BOOT.READ` | 先读文章 | 1 | `unverified / null` | 待逐项实测 |
-| `S.BOOT.SKIP` | 准备中/进入/打开工作区 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.HOME` | Space Café 品牌 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.LANGUAGE` | EN/中 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.QUIET` | 安静模式 | 1 | `unverified / null` | UX-002 |
-| `S.CAFE.PICKER` | 换个地方/当前地点/换个风景 | 1 | `unverified / null` | UX-001 |
-| `S.CAFE.THEME` | 六个场景卡片 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.PICKERCLOSE` | 关闭场景选择 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.SEAT` | 回到座位 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.TERRACE` | 去露台看看 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.REPLAY` | 重播入场 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.READ` | 坐下读一篇 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.WORKSPACE` | 打开工作区 | 1 | `unverified / null` | 待逐项实测 |
-| `S.CAFE.RETURN` | 回到咖啡馆 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WORLD.LOOK` | 拖动环顾 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WORLD.WALK` | 方向键/WASD/触控四方向 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WORLD.COMPUTER` | 真实三维电脑屏幕 | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.OS` | CUBXXW OS菜单 | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.HOME` | 欢迎与关于我 | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.LAUNCH` | 所有应用 | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.SEARCH` | 搜索/⌘K | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.OVERVIEW` | 窗口概览 | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.ARRANGE` | 窗口并排/整理窗口 | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.DESKTOP` | 显示桌面 | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.LAB` | Product Lab | 1 | `unverified / null` | 待逐项实测 |
-| `S.MENU.BLOG` | 返回博客 | 1 | `unverified / null` | 待逐项实测 |
-| `S.DOCK.APP` | 11 Apps入口/运行状态 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WINDOW.CLOSE` | 关闭窗口 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WINDOW.MINIMIZE` | 最小化 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WINDOW.MAXIMIZE` | 最大化/恢复 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WINDOW.ARRANGE` | 窗口并排 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WINDOW.DRAG` | 标题栏拖动 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WINDOW.RESIZE` | 右/下/角缩放 | 1 | `unverified / null` | 待逐项实测 |
-| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 | 1 | `unverified / null` | 待逐项实测 |
-| `S.SEARCH.QUERY` | 打开应用或找文章 | 1 | `unverified / null` | 待逐项实测 |
-| `S.SEARCH.RESULT` | 结果项 | 1 | `unverified / null` | 待逐项实测 |
-| `S.SEARCH.EMPTY` | 清空搜索/浏览所有应用 | 1 | `unverified / null` | 待逐项实测 |
-| `S.SEARCH.CLOSE` | Esc/关闭搜索 | 1 | `unverified / null` | 待逐项实测 |
-| `S.LAUNCH.QUERY` | 查找应用 | 1 | `unverified / null` | 待逐项实测 |
-| `S.LAUNCH.APP` | 应用磁贴/查看所有应用 | 2 | `unverified / null` | 待逐项实测 |
-| `S.LAUNCH.CLOSE` | 完成/Esc | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.welcome.ENTER` | 进入空间 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.welcome.ROUTES` | 文章/作品/AI向导/关于我 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.welcome.PROFILE` | 个人档案/这些年/阅读地图/展开履历 | 2 | `unverified / null` | 待逐项实测 |
-| `S.APP.welcome.LINKS` | 简历/GitHub/联系/公开JSON/时间线 | 2 | `unverified / null` | 待逐项实测 |
-| `S.APP.products.SELECT` | 产品侧栏选择 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.products.OPEN` | 真实产品/预览/源码/相关写作 | 2 | `unverified / null` | 待逐项实测 |
-| `S.APP.reader.QUERY` | 筛选文章 | 1 | `unverified / null` | UX-010 |
-| `S.APP.reader.FILTER` | 全部/AI/工程/思考/收藏 | 1 | `unverified / null` | UX-010 |
-| `S.APP.reader.ITEM` | 文章列表项 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.reader.NAV` | 返回目录/原文 | 2 | `unverified / null` | 待逐项实测 |
-| `S.APP.reader.FAVORITE` | 收藏/已收藏 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.reader.EXPLAIN` | 解释选中内容 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.photos.FILTER` | 地区筛选 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.photos.SELECT` | 打开照片 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.photos.NAV` | 返回/上一张/下一张 | 3 | `unverified / null` | 待逐项实测 |
-| `S.APP.photos.RETRY` | 重试照片 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.photos.LOAD` | 加载Immich/刷新/重试连接 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.photos.MORE` | 继续加载相册 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.photos.PLACE` | 去过的地方/查看旅行区域 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.map.PIN` | 地图区域标记 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.map.REGION` | 区域列表 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.map.VIEW` | 拖动/键盘平移地图 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.map.ZOOM` | 放大/缩小/全部/世界 | 3 | `unverified / null` | 待逐项实测 |
-| `S.APP.map.RELATED` | 相关照片/游记/数据许可 | 3 | `unverified / null` | 待逐项实测 |
-| `S.APP.books.READ` | 开始阅读 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.notes.EDITOR` | 本地笔记 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.notes.EXPORT` | 导出.md | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.notes.SANDBOX` | 保存到沙盒 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.contact.DRAFT` | 留言草稿 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | 3 | `unverified / null` | 待逐项实测 |
-| `S.APP.terminal.COMMAND` | 命令输入/help/history/run | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.NEW` | 新对话 | 2 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.HISTORY` | 历史/关闭历史 | 2 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.SESSIONQUERY` | 查找之前聊过的内容 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.SESSION` | 历史会话项 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.EXPORT` | 导出记录 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.CONTEXT` | 当前页面/选文上下文 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.INPUT` | 给空间助手的任务 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.VOICE` | 语音输入 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.SEND` | 发送 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.STOP` | 停止 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.ACTIVITY` | 任务执行过程/工具步骤 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.settings.LANG` | 中文/English | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.settings.EXPORT` | 导出工作区 | 1 | `unverified / null` | 待逐项实测 |
-| `S.LAB.SWITCH` | CUBXXW OS/Product Lab双向切换 | 1 | `unverified / null` | 待逐项实测 |
-| `S.LAB.FEATURE` | 推荐产品/所有产品锚点 | 1 | `unverified / null` | 待逐项实测 |
-| `S.LAB.PRODUCT` | 产品截图/打开产品/预览/源码 | 2 | `unverified / null` | 待逐项实测 |
-| `S.LAB.KNOWLEDGE` | 进入知识空间 | 1 | `unverified / null` | 待逐项实测 |
-| `S.KNOWLEDGE.BACK` | 返回Product Lab | 1 | `unverified / null` | 待逐项实测 |
-| `S.KNOWLEDGE.FILTER` | 全部/产品/写作/系列 | 1 | `unverified / null` | 待逐项实测 |
-| `S.KNOWLEDGE.NODE` | 可聚焦节点标签 | 1 | `unverified / null` | 待逐项实测 |
-| `S.KNOWLEDGE.OPEN` | 打开当前条目 | 1 | `unverified / null` | 待逐项实测 |
-| `S.KNOWLEDGE.RELATED` | 相邻条目/浏览写作 | 2 | `unverified / null` | 待逐项实测 |
-| `T.HERO.EXPLORE` | 探索世界/Polarsteps | 1 | `unverified / null` | 待逐项实测 |
-| `T.MAP.PIN` | 世界地图地区点 | 1 | `unverified / null` | 待逐项实测 |
-| `T.MAP.REGION` | 区域游记文章卡 | 2 | `unverified / null` | 待逐项实测 |
-| `T.BOOK.READ` | 书脊/封面 | 1 | `unverified / null` | 待逐项实测 |
-| `T.BOOK.ASK` | 和这本书聊聊 | 1 | `unverified / null` | 待逐项实测 |
-| `T.BOOK.CLOSE` | 关闭书籍AI | 1 | `unverified / null` | 待逐项实测 |
-| `T.BOOK.SUGGEST` | 书籍建议/追问 | 1 | `unverified / null` | 待逐项实测 |
-| `T.BOOK.INPUT` | 书籍问题 | 1 | `unverified / null` | 待逐项实测 |
-| `T.BOOK.SEND` | 发送书籍问题 | 1 | `unverified / null` | 待逐项实测 |
-| `T.SOCIAL.QR` | 社交二维码/复制ID/关闭 | 2 | `unverified / null` | 待逐项实测 |
-| `T.SOCIAL.LINK` | 社交平台链接 | 1 | `unverified / null` | 待逐项实测 |
-| `B.HERO.ACTION` | 经历/文章 | 1 | `unverified / null` | 待逐项实测 |
-| `B.HERO.CAROUSEL` | 人物照片轮播/命名照片选项 | 2 | `unverified / null` | 待逐项实测 |
-| `B.STORY.CAROUSEL` | 旅程横向照片/选项/展开文字 | 3 | `unverified / null` | 待逐项实测 |
-| `B.IDENTITY.LINKS` | 简历/公开资料/联系/产品 | 1 | `unverified / null` | 待逐项实测 |
-| `B.INTERVIEW.START` | AI采访主题/返回/关闭 | 3 | `unverified / null` | 待逐项实测 |
-| `Q.STORY.START` | 进入故事/从头开始/文字版 | 3 | `unverified / null` | 待逐项实测 |
-| `Q.STORY.PAUSE` | 暂停/慢走/正常/加速 | 2 | `unverified / null` | 待逐项实测 |
-| `Q.STORY.MOVE` | 方向键/跳跃/触控移动 | 1 | `unverified / null` | 待逐项实测 |
-| `Q.STORY.LEVEL` | 文章关卡块/文章卡 | 2 | `unverified / null` | 待逐项实测 |
-| `Q.STORY.REPLAY` | 再走一遍/去读文字/跳过 | 3 | `unverified / null` | 待逐项实测 |
-| `E.404.HOME` | 返回主页/浏览文章/推荐文章 | 2 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.context-budget` | 上下文预算 | 3 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.agent-loop` | Agent循环 | 4 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.effect-recovery` | 副作用恢复 | 3 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.flow-bottleneck` | 流动瓶颈 | 4 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.gitops-reconcile` | GitOps对账 | 4 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.memory-lineage` | 记忆来源 | 2 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.notification-threshold` | 通知阈值 | 4 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.reliability-chain` | 可靠性链 | 5 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.session-tree` | 会话树 | 2 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.session-scope` | 会话作用域 | 1 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.vector-cosine` | 向量余弦 | 5 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.task-cost` | 任务成本 | 2 | `unverified / null` | 待逐项实测 |
-| `X.INTERACTIVE.RESET` | 重置图示/参考说明/来源 | 3 | `unverified / null` | 待逐项实测 |
-| `X.GALAXY.NODE` | 知识星图节点/中心 | 1 | `unverified / null` | 待逐项实测 |
-| `X.EMBED.LINKS` | Buy Me a Coffee外部支持组件 | 1 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.WALLS` | 抹灰墙/木梁/落地窗立柱 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.FLOOR` | 木地板/接缝/露台地板 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.RUG` | 编织地毯 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.TABLE` | 圆桌/纸页/陶杯 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.CHAIR` | 椅背/坐垫/椅腿 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.SHELF` | 书架/彩色书脊 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.BAR` | 咖啡吧/机器/杯碟 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.DESK` | 书桌/键盘/杯子/鼠标 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.PHOTO` | 桌上旅行照片/相框 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.LIGHT` | 吊灯/太阳/阴影 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.PLANT` | 盆栽/陶瓶 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.SKY` | 天空/雾/远景 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.GARDEN` | 庭院/月洞门/竹/苔藓/石 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.TREES` | 树木/树叶实例/岩石 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.MOUNTAIN` | 分层群山 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.WATER` | 水面/波纹 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.RAIN` | 雨粒子/街景/路灯 | 0 | `unverified / null` | 待逐项实测 |
-| `S.OBJECT.CAT` | 小猫/眼睛/骨骼/接触影 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.BOOT` | 终端光标/真实步骤/揭幕 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.CAMERA` | 进电脑/离开/座位/露台镜头 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.CAT` | 小猫步态/尾巴/观察/停留 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.WEATHER` | 雨粒/水波 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.ENTRY` | 欢迎方块/轨道/窗口入场 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.DOCK` | Dock hover 提起图标 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.WINDOW` | 窗口开关/最小化/拖拽/缩放/并排 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.HOMEFIELD` | 首页背景场/球体 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.HOMEBUBBLES` | 头像周围建议气泡 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.HOMEREVEAL` | 首页分区 reveal | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.MICRO` | 涟漪/悬浮/磁吸/反馈 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.CARDTILT` | 卡片鼠标倾斜 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.COVER` | 封面视差 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.READPROGRESS` | 文章阅读进度/返回顶环 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.WAYFINDER` | 章节索引安静/唤醒 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.LINKPREVIEW` | 链接/脚注预览显隐 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.TRAVELREVEAL` | 旅行分区 reveal | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.KNOWLEDGE` | Canvas/WebGPU关系场/指针响应 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.ABOUTCAROUSEL` | 照片横向滚动 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.QUEST` | 游戏行走/金币/跳跃/爬山/滑索 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.404` | 404漂浮画面 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.CHATSTREAM` | AI流式文字/运行步骤/停止 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.INTERACTIVE` | 12类模型图示播放/步骤/响应 | 0 | `unverified / null` | 待逐项实测 |
-| `S.APP.reader.SUMMARIZE` | 总结这篇文章 | 1 | `unverified / null` | 待逐项实测 |
-| `T.BOOK.RETRY` | 重试书籍问题 | 1 | `unverified / null` | 待逐项实测 |
-| `X.EMBED.CALENDLY` | 预约时间外部浮钮/日历 | 2 | `unverified / null` | 待逐项实测 |
-| `X.EMBED.POLARSTEPS` | 嵌入旅行轨迹 | 1 | `unverified / null` | 待逐项实测 |
-| `X.EMBED.OPENSOURCE` | 开源项目列表链接 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.FOLLOWUP` | AI追问输入/发送 | 2 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.RETRY` | AI搜索重试 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SEARCH.CONTACT` | 打开微信名片 | 1 | `unverified / null` | 待逐项实测 |
-| `G.CONTACT.CLOSE` | 关闭联系卡 | 1 | `unverified / null` | 待逐项实测 |
-| `G.CONTACT.COPY` | 复制账号 | 1 | `unverified / null` | 待逐项实测 |
-| `G.CONTACT.VIEW` | 查看二维码大图/打开主页 | 2 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.MORE` | 更多/收起分享渠道 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.WEBSHARE` | 系统分享文章 | 1 | `unverified / null` | 待逐项实测 |
-| `G.SHARE.PLATFORMS` | X/Email/LinkedIn/Telegram/WhatsApp/Reddit/微博/B站/知乎/小红书/HN/Facebook | 2 | `unverified / null` | 待逐项实测 |
-| `A.BODY.DISCLOSURE` | 收起长折叠内容 | 1 | `unverified / null` | 待逐项实测 |
-| `A.FAQ.AI.OPEN` | 继续问AI | 1 | `unverified / null` | 待逐项实测 |
-| `A.FAQ.AI.CHIP` | FAQ建议问题 | 1 | `unverified / null` | 待逐项实测 |
-| `A.FAQ.AI.INPUT` | FAQ追问输入 | 1 | `unverified / null` | 待逐项实测 |
-| `A.FAQ.AI.SEND` | FAQ追问发送 | 1 | `unverified / null` | 待逐项实测 |
-| `A.FAQ.AI.RETRY` | FAQ追问重试 | 1 | `unverified / null` | 待逐项实测 |
-| `A.COMMENTS.EXTERNAL` | 登录/排序/回复/反应/评论输入与提交 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.RETRY` | 作为新任务重试 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.APPROVE` | 批准执行 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.DECLINE` | 拒绝 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.CHIP` | 聊产品/最新写作/某地旅程 | 1 | `unverified / null` | 待逐项实测 |
-| `S.APP.agent.LINK` | 回答中的文章/产品/照片/地点入口 | 1 | `unverified / null` | 待逐项实测 |
-| `B.INTERVIEW.CONSENT` | 同意复选框/开始采访 | 2 | `unverified / null` | 待逐项实测 |
-| `B.INTERVIEW.ANSWER` | 采访回答输入 | 1 | `unverified / null` | 待逐项实测 |
-| `B.INTERVIEW.SEND` | 发送采访回答 | 1 | `unverified / null` | 待逐项实测 |
-| `B.INTERVIEW.RESTART` | 再来一次 | 1 | `unverified / null` | 待逐项实测 |
-| `B.INTERVIEW.RETRY` | 重试/打开独立采访页 | 2 | `unverified / null` | 待逐项实测 |
-| `MOTION.NEWSLETTER` | 订阅熊眼睛追踪/成功反应 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.CONTACTQR` | 二维码扫描线/联系卡显隐 | 0 | `unverified / null` | 待逐项实测 |
-| `MOTION.FAQ` | FAQ高度展开/AI面板/流式回答 | 0 | `unverified / null` | 待逐项实测 |
-
-已一对一导入 **309项**：265控件族、26动画、18场景物体；**356个selector级control_id**。这不是运行时每个重复数据行实例计数。全部ID与原inventory保持一致，完整子控件、状态和适用性在scorecard.json。当前0项认证96+；未知保持null。
-
-非交互物体/动画的D2可有理由N/A；关联实际控件单独审查。第三方评论/Calendly/BMC/Polarsteps只登记宿主，外部内部控件仍未实测，不能声称全覆盖。
-
-### 批次A独立复核
-
-20条浏览器合同检查已读，0条页面JS异常；接受确切记录的复制pending/success/reject/legacy、手机换景名称/44px命中/Escape返回、quiet反色、地图/窗口按压位置。代码复制使用网络/Clipboard桩，不证明真实外部写入。
-
-- `UX-001/002/005`对应缺口已通过具体合同检查，总分仍因矩阵缺项为null。
-- 邮箱outline:none已有可见边框+3px阴影，不重复加focus环。
-- 地图标记9.46×9.46只通过“按压不跳”，目标尺寸须另查等价列表/间距例外。
-- **新增UX-011**：已实际查看390px复制失败PNG，代码展开按钮盖住说明末尾；暂保持最高89，需320/390px错误态几何复核。
-- `UX-003/004/008/009`批次B已见源码修复，等待父任务实际浏览器；其它项不随源码修复自动变高分。
-
-仅本轮已检查的A图片：`after-cafe-quiet-320.png`、`after-code-failure-zh-mobile.png`、`after-email-focus.png`。320pxquiet/picker的D4局部专家判断为93.0，不是整族功能分数。
-
-### 动效与边框建议
-
-先对正文.reveal-block的14px/500ms入场和全局button ripple做窄范围真实对照，再决定收敛；共享反馈语义，阅读与Space保留各自已有视觉语汇。保留用户指定终端/咖啡主编排与有目的猫环境行为。所有纯设计建议仍须截图/实际操作支持，不以样式文件数量认定缺陷。
+| 稳定族ID | 范围 | 子选择器 | 已验局部片段 | 总分 | 追踪项（含已闭） |
+| --- | --- | ---: | ---: | --- | --- |
+| `G.NAV.SKIP` | 跳到正文 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.HOME` | CUBXXW 品牌/首页 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.MENU` | 文章/专栏/AI Agent/工程/成长/空间 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.SEARCH` | 搜索/⌘ K | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.THEME` | 浅色/深色 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.LANG` | 中文/EN | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.MOBILE` | 打开/关闭导航 | 1 | 1 | `unverified / null` | UX-008 |
+| `G.NAV.ANCHOR` | 原生页内锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.TOP` | 返回顶部/进度环 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.WAYFINDER` | 章节侧边索引 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.CLOSE` | 关闭搜索 | 1 | 1 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.QUERY` | 搜索文章 | 1 | 2 | `unverified / null` | UX-015 |
+| `G.SEARCH.RESULT` | 搜索结果/键盘上下移动 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.AI` | AI 搜索开关 | 1 | 1 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.SUGGEST` | 入门推荐/AI Agent/最新文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.AICLOSE` | 关闭 AI 搜索 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.FULL` | 完整搜索页面 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.PAGE` | 完整搜索输入/结果 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SUB.EMAIL` | 订阅邮箱 | 1 | 1 | `unverified / null` | UX-007 |
+| `G.SUB.SUBMIT` | 订阅 | 1 | 1 | `unverified / null` | UX-007 |
+| `G.SUB.FEED` | RSS/JSON/OPML/频道 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.FOOTER.LINKS` | 内容/产品/作者/社交入口 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `G.FOOTER.MORE` | 更多作品/其他平台 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.CONTACT.QR` | 微信/小红书二维码/复制 ID | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.HERO.READ` | 开始阅读 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.HERO.PRODUCT` | 探索产品 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.HERO.ABOUT` | 认识我/关于我 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.HERO.SOCIAL` | 社交图标链接 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.OPEN` | Bear 头像 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.BUBBLE` | 环绕问题气泡 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.QUICK` | 快捷问题 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.INPUT` | 给 Bear 的消息 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.SEND` | 发送消息 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.CLEAR` | 清空对话 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.CLOSE` | 关闭对话 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHAT.RETRY` | 重试这条消息 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHANNEL.TABS` | 写作频道标签 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHANNEL.PREV` | 上一个频道 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHANNEL.NEXT` | 下一个频道 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHANNEL.MORE` | 查看全部文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.CHANNEL.CARD` | 频道内文章卡片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.BOOK.LINK` | 书籍封面/阅读 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.PRODUCT.CARD` | 产品主卡片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.PRODUCT.OPEN` | 打开产品/GitHub | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.ACTIVITY.STATS` | 总文章/今年/年数/标签 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.ACTIVITY.YEAR` | 热力图年份 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.ACTIVITY.DAY` | 热力图日期格子 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.ACTIVITY.RECENT` | 最近文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.FILTER.TOPIC` | 全部/AI Agent/工程/成长/项目 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.FILTER.MORE` | 更多筛选 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.FILTER.TAG` | 标签选项 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.FILTER.SORT` | 排序 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.FILTER.RESET` | 清除筛选/重置 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.CARD.OPEN` | 文章标题/封面 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.CARD.MORE` | 加载更多/下一页 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.CARD.PAGINATION` | 继续加载文章/下一页 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.TAXONOMY.TAG` | 标签/分类入口 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.TAXONOMY.COLUMN` | 专栏卡片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.ARCHIVE.YEAR` | 归档年份 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `L.ARCHIVE.POST` | 归档文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.META.AUTHOR` | 作者卡/日期/语言/分类/标签 | 4 | 0 | `unverified / null` | 待矩阵 |
+| `A.META.SOURCE` | 编辑本文/查看源文 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.TOC.TABS` | 目录/系列/AI 阅读标签 | 1 | 1 | `unverified / null` | UX-003 |
+| `A.TOC.LINK` | 目录标题项 | 1 | 1 | `unverified / null` | UX-009, UX-014 |
+| `A.TOC.FAB` | 移动阅读工具 | 1 | 1 | `unverified / null` | UX-014 |
+| `A.TOC.MOBILETABS` | 目录/系列/AI/分享 | 1 | 3 | `unverified / null` | UX-003, UX-004, UX-014 |
+| `A.TOC.SERIES` | 系列列表/上一下一篇/更多系列 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `A.TOC.SERIESMORE` | 查看系列全部篇数 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.CHIP` | 总结/原句/关联/质疑/入门/延伸/系列视角 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.INPUT` | 文章问题 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.SEND` | 发送问题 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.STOP` | 停止回答 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.CONTEXTCLEAR` | 移除引用上下文 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.RETRY` | 重试 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.FOLLOWUP` | 继续提问建议 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.AI.SHARE` | 分享阅读洞见 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `A.SELECTION.SHARE` | 选文分享 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.SELECTION.AI` | 解释选中段落 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.SELECTION.COMMENT` | 评论选中段落 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.SELECTION.MORE` | 更多/复制引用/复制定位链接/清除 | 4 | 0 | `unverified / null` | 待矩阵 |
+| `A.SELECTION.COMMENTDRAWER` | 评论抽屉关闭/复制/继续阅读 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `A.BODY.LINK` | 正文/脚注/参考资料/文内锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.BODY.IMAGE` | 图片放大/关闭 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `A.BODY.CODECOPY` | 复制代码 | 1 | 5 | `unverified / null` | UX-005, UX-011 |
+| `A.BODY.CODEEXPAND` | 代码全屏/字体缩放/关闭 | 4 | 6 | `unverified / null` | UX-011, UX-013 |
+| `A.BODY.FAQ` | FAQ 折叠 | 1 | 1 | `unverified / null` | UX-016, UX-019 |
+| `A.BODY.NOTES` | 月度思考段落定位 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.BODY.LINKPREVIEW` | 链接预览 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.FOOTER.NEXT` | 上一篇/下一篇/相关文章/专栏结尾 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.ENTRY` | 生成分享卡/微信分享 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.DIRECT` | X/Email/复制链接 | 2 | 2 | `unverified / null` | UX-006 |
+| `G.SHARE.CLOSE` | 关闭卡片编辑器 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.THEME` | 卡片主题颜色 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.MODE` | 当前回答/全部回答 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.COPYIMAGE` | 复制图片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.SAVE` | 下载图片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.SYSTEM` | 系统分享 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.COPYTEXT` | 复制文本/引用/原文链接 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.SOURCE` | 分享到X/返回原文 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.BOOT.HOME` | 终端品牌返回首页 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.BOOT.READ` | 先读文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.BOOT.SKIP` | 准备中/进入/打开工作区 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.HOME` | Space Café 品牌 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.LANGUAGE` | EN/中 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.QUIET` | 安静模式 | 1 | 0 | `unverified / null` | UX-002 |
+| `S.CAFE.PICKER` | 换个地方/当前地点/换个风景 | 1 | 0 | `unverified / null` | UX-001 |
+| `S.CAFE.THEME` | 六个场景卡片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.PICKERCLOSE` | 关闭场景选择 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.SEAT` | 回到座位 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.TERRACE` | 去露台看看 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.REPLAY` | 重播入场 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.READ` | 坐下读一篇 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.WORKSPACE` | 打开工作区 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.CAFE.RETURN` | 回到咖啡馆 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.WORLD.LOOK` | 拖动环顾 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.WORLD.WALK` | 方向键/WASD/触控四方向 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.WORLD.COMPUTER` | 真实三维电脑屏幕 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.OS` | CUBXXW OS菜单 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.HOME` | 欢迎与关于我 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.LAUNCH` | 所有应用 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.SEARCH` | 搜索/⌘K | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.OVERVIEW` | 窗口概览 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.ARRANGE` | 窗口并排/整理窗口 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.DESKTOP` | 显示桌面 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.LAB` | Product Lab | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.BLOG` | 返回博客 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.DOCK.APP` | Dock常用应用入口：桌面7项/手机5项，另有OS；全部11项在Launchpad | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.WINDOW.CLOSE` | 关闭窗口 | 1 | 2 | `unverified / null` | UX-021 |
+| `S.WINDOW.MINIMIZE` | 最小化 | 1 | 2 | `unverified / null` | 待矩阵 |
+| `S.WINDOW.MAXIMIZE` | 最大化/恢复 | 1 | 2 | `unverified / null` | 待矩阵 |
+| `S.WINDOW.ARRANGE` | 窗口并排 | 1 | 1 | `unverified / null` | 待矩阵 |
+| `S.WINDOW.DRAG` | 标题栏拖动 | 1 | 0 | `unverified / null` | UX-021 |
+| `S.WINDOW.RESIZE` | 右/下/角缩放 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.SEARCH.QUERY` | 打开应用或找文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.SEARCH.RESULT` | 结果项 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.SEARCH.EMPTY` | 清空搜索/浏览所有应用 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.SEARCH.CLOSE` | Esc/关闭搜索 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.LAUNCH.QUERY` | 查找应用 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.LAUNCH.APP` | 应用磁贴/查看所有应用 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.LAUNCH.CLOSE` | 完成/Esc | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.welcome.ENTER` | 进入空间 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.welcome.ROUTES` | 文章/作品/AI向导/关于我 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.welcome.PROFILE` | 个人档案/这些年/阅读地图/展开履历 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.welcome.LINKS` | 简历/GitHub/联系/公开JSON/时间线 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.products.SELECT` | 产品侧栏选择 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.products.OPEN` | 真实产品/预览/源码/相关写作 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.reader.QUERY` | 筛选文章 | 1 | 1 | `unverified / null` | UX-010 |
+| `S.APP.reader.FILTER` | 全部/AI/工程/思考/收藏 | 1 | 1 | `unverified / null` | UX-010 |
+| `S.APP.reader.ITEM` | 文章列表项 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.reader.NAV` | 返回目录/原文 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.reader.FAVORITE` | 收藏/已收藏 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.reader.EXPLAIN` | 解释选中内容 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.photos.FILTER` | 地区筛选 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.photos.SELECT` | 打开照片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.photos.NAV` | 返回/上一张/下一张 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.photos.RETRY` | 重试照片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.photos.LOAD` | 加载Immich/刷新/重试连接 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.photos.MORE` | 继续加载相册 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.photos.PLACE` | 去过的地方/查看旅行区域 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.map.PIN` | 地图区域标记 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.map.REGION` | 区域列表 | 1 | 0 | `unverified / null` | UX-021 |
+| `S.APP.map.VIEW` | 拖动/键盘平移地图 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.map.ZOOM` | 放大/缩小/全部/世界 | 3 | 0 | `unverified / null` | UX-022 |
+| `S.APP.map.RELATED` | 相关照片/游记/数据许可 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.books.READ` | 开始阅读 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.notes.EDITOR` | 本地笔记 | 1 | 2 | `unverified / null` | UX-021 |
+| `S.APP.notes.EXPORT` | 导出.md | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.notes.SANDBOX` | 保存到沙盒 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.contact.DRAFT` | 留言草稿 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.terminal.COMMAND` | 命令输入/help/history/run | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.NEW` | 新对话 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.HISTORY` | 历史/关闭历史 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.SESSIONQUERY` | 查找之前聊过的内容 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.SESSION` | 历史会话项 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.EXPORT` | 导出记录 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.CONTEXT` | 当前页面/选文上下文 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.INPUT` | 给空间助手的任务 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.VOICE` | 语音输入 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.SEND` | 发送 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.STOP` | 停止 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.ACTIVITY` | 任务执行过程/工具步骤 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.settings.LANG` | 中文/English | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.settings.EXPORT` | 导出工作区 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.LAB.SWITCH` | CUBXXW OS/Product Lab双向切换 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.LAB.FEATURE` | 推荐产品/所有产品锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.LAB.PRODUCT` | 产品截图/打开产品/预览/源码 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.LAB.KNOWLEDGE` | 进入知识空间 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.KNOWLEDGE.BACK` | 返回Product Lab | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.KNOWLEDGE.FILTER` | 全部/产品/写作/系列 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.KNOWLEDGE.NODE` | 可聚焦节点标签 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.KNOWLEDGE.OPEN` | 打开当前条目 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.KNOWLEDGE.RELATED` | 相邻条目/浏览写作 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `T.HERO.EXPLORE` | 探索世界/Polarsteps | 1 | 0 | `unverified / null` | 待矩阵 |
+| `T.MAP.PIN` | 世界地图地区点 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `T.MAP.REGION` | 区域游记文章卡 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `T.BOOK.READ` | 书脊/封面 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `T.BOOK.ASK` | 和这本书聊聊 | 1 | 3 | `unverified / null` | UX-012, UX-017 |
+| `T.BOOK.CLOSE` | 关闭书籍AI | 1 | 4 | `unverified / null` | UX-017 |
+| `T.BOOK.SUGGEST` | 书籍建议/追问 | 1 | 0 | `unverified / null` | UX-012, UX-020 |
+| `T.BOOK.INPUT` | 书籍问题 | 1 | 4 | `unverified / null` | UX-012, UX-017 |
+| `T.BOOK.SEND` | 发送书籍问题 | 1 | 3 | `unverified / null` | UX-012, UX-017, UX-020 |
+| `T.SOCIAL.QR` | 社交二维码/复制ID/关闭 | 2 | 0 | `unverified / null` | UX-018 |
+| `T.SOCIAL.LINK` | 社交平台链接 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `B.HERO.ACTION` | 经历/文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `B.HERO.CAROUSEL` | 人物照片轮播/命名照片选项 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `B.STORY.CAROUSEL` | 旅程横向照片/选项/展开文字 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `B.IDENTITY.LINKS` | 简历/公开资料/联系/产品 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `B.INTERVIEW.START` | AI采访主题/返回/关闭 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `Q.STORY.START` | 进入故事/从头开始/文字版 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `Q.STORY.PAUSE` | 暂停/慢走/正常/加速 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `Q.STORY.MOVE` | 方向键/跳跃/触控移动 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `Q.STORY.LEVEL` | 文章关卡块/文章卡 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `Q.STORY.REPLAY` | 再走一遍/去读文字/跳过 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `E.404.HOME` | 返回主页/浏览文章/推荐文章 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.context-budget` | 上下文预算 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.agent-loop` | Agent循环 | 4 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.effect-recovery` | 副作用恢复 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.flow-bottleneck` | 流动瓶颈 | 4 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.gitops-reconcile` | GitOps对账 | 4 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.memory-lineage` | 记忆来源 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.notification-threshold` | 通知阈值 | 4 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.reliability-chain` | 可靠性链 | 5 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.session-tree` | 会话树 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.session-scope` | 会话作用域 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.vector-cosine` | 向量余弦 | 5 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.task-cost` | 任务成本 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `X.INTERACTIVE.RESET` | 重置图示/参考说明/来源 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `X.GALAXY.NODE` | 知识星图节点/中心 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `X.EMBED.LINKS` | Buy Me a Coffee外部支持组件 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.WALLS` | 抹灰墙/木梁/落地窗立柱 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.FLOOR` | 木地板/接缝/露台地板 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.RUG` | 编织地毯 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.TABLE` | 圆桌/纸页/陶杯 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.CHAIR` | 椅背/坐垫/椅腿 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.SHELF` | 书架/彩色书脊 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.BAR` | 咖啡吧/机器/杯碟 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.DESK` | 书桌/键盘/杯子/鼠标 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.PHOTO` | 桌上旅行照片/相框 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.LIGHT` | 吊灯/太阳/阴影 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.PLANT` | 盆栽/陶瓶 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.SKY` | 天空/雾/远景 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.GARDEN` | 庭院/月洞门/竹/苔藓/石 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.TREES` | 树木/树叶实例/岩石 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.MOUNTAIN` | 分层群山 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.WATER` | 水面/波纹 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.RAIN` | 雨粒子/街景/路灯 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.OBJECT.CAT` | 小猫/眼睛/骨骼/接触影 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.BOOT` | 终端光标/真实步骤/揭幕 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.CAMERA` | 进电脑/离开/座位/露台镜头 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.CAT` | 小猫步态/尾巴/观察/停留 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.WEATHER` | 雨粒/水波 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.ENTRY` | 欢迎方块/轨道/窗口入场 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.DOCK` | Dock hover 提起图标 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.WINDOW` | 窗口开关/最小化/拖拽/缩放/并排 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.HOMEFIELD` | 首页背景场/球体 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.HOMEBUBBLES` | 头像周围建议气泡 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.HOMEREVEAL` | 首页分区 reveal | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.MICRO` | 涟漪/悬浮/磁吸/反馈 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.CARDTILT` | 卡片鼠标倾斜 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.COVER` | 封面视差 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.READPROGRESS` | 文章阅读进度/返回顶环 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.WAYFINDER` | 章节索引安静/唤醒 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.LINKPREVIEW` | 链接/脚注预览显隐 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.TRAVELREVEAL` | 旅行分区 reveal | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.KNOWLEDGE` | Canvas/WebGPU关系场/指针响应 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.ABOUTCAROUSEL` | 照片横向滚动 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.QUEST` | 游戏行走/金币/跳跃/爬山/滑索 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.404` | 404漂浮画面 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.CHATSTREAM` | AI流式文字/运行步骤/停止 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.INTERACTIVE` | 12类模型图示播放/步骤/响应 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.reader.SUMMARIZE` | 总结这篇文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `T.BOOK.RETRY` | 重试书籍问题 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `X.EMBED.CALENDLY` | 预约时间外部浮钮/日历 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `X.EMBED.POLARSTEPS` | 嵌入旅行轨迹 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `X.EMBED.OPENSOURCE` | 开源项目列表链接 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.FOLLOWUP` | AI追问输入/发送 | 2 | 1 | `unverified / null` | UX-015 |
+| `G.SEARCH.RETRY` | AI搜索重试 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.CONTACT` | 打开微信名片 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.CONTACT.CLOSE` | 关闭联系卡 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.CONTACT.COPY` | 复制账号 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.CONTACT.VIEW` | 查看二维码大图/打开主页 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.MORE` | 更多/收起分享渠道 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.WEBSHARE` | 系统分享文章 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.SHARE.PLATFORMS` | X/Email/LinkedIn/Telegram/WhatsApp/Reddit/微博/B站/知乎/小红书/HN/Facebook | 2 | 0 | `unverified / null` | 待矩阵 |
+| `A.BODY.DISCLOSURE` | 收起长折叠内容 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `A.FAQ.AI.OPEN` | 继续问AI | 1 | 0 | `unverified / null` | UX-012, UX-016 |
+| `A.FAQ.AI.CHIP` | FAQ建议问题 | 1 | 0 | `unverified / null` | UX-012 |
+| `A.FAQ.AI.INPUT` | FAQ追问输入 | 1 | 3 | `unverified / null` | UX-012 |
+| `A.FAQ.AI.SEND` | FAQ追问发送 | 1 | 3 | `unverified / null` | UX-012, UX-016 |
+| `A.FAQ.AI.RETRY` | FAQ追问重试 | 1 | 0 | `unverified / null` | UX-012 |
+| `A.COMMENTS.EXTERNAL` | 登录/排序/回复/反应/评论输入与提交 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.RETRY` | 作为新任务重试 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.APPROVE` | 批准执行 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.DECLINE` | 拒绝 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.CHIP` | 聊产品/最新写作/某地旅程 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.agent.LINK` | 回答中的文章/产品/照片/地点入口 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `B.INTERVIEW.CONSENT` | 同意复选框/开始采访 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `B.INTERVIEW.ANSWER` | 采访回答输入 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `B.INTERVIEW.SEND` | 发送采访回答 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `B.INTERVIEW.RESTART` | 再来一次 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `B.INTERVIEW.RETRY` | 重试/打开独立采访页 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.NEWSLETTER` | 订阅熊眼睛追踪/成功反应 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.CONTACTQR` | 二维码扫描线/联系卡显隐 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.FAQ` | FAQ高度展开/AI面板/流式回答 | 0 | 0 | `unverified / null` | UX-019 |
 
 ## 下一批实质改进与验收
 
@@ -489,3 +503,19 @@ P1 `UX-012` 原属性逃逸已由三处renderer转义修复；独立运行6条pa
 ## D2a 失败保留
 
 2026-10-16T01:11:13+08:00：已读focus-probe：Travel和代码全屏仍有Tab落到body的一跳，D2.2此片段80；native dialog已阻止背景交互，不能把body.inert=false解释为隐式inert失效，code-fs-stage是内部div也不能用其modal:false否定父dialog。UX-013/017保留待显式首尾wrap后重测，不因native标签关闭。FAQ外层collapse与Search新query保焦点由父任务报告已过，但本轮总脚本随后停止，待独立完整回执再认证。
+
+## D2b 独立闭环与provenance更正
+
+2026-10-16T01:17:39+08:00：已读12条contracts/recovery/IME日志、对应实际断言源、6条自定义回执与当前47文件manifest。已覆盖focus/closed sheet/IME/取消/错误恢复按具体范围关闭，未覆盖语言/主题/缩放保持null。D1原五流程日志仍存；原JSON现在为索引，当前5条重验与换书图统一绑定D2b，不能当旧D1图。稳定390px图已评D4范围89；no-preference中间帧不评分。后续真正可见的优先项：复制说明工具净空、书籍手机Send/Stop与chip44px命中、长chip孤行/12px密度；首页旧图多入口/低信息小字需新当前前后图，而非只作源码重构。
+
+## Space当前实拍优先项
+
+2026-10-16T01:20:46+08:00：独立查看desktop笔记与390地图图、6条窗口连续性检查与实际几何。最小化保持同DOM、max恢复、关闭再开保留文字在两尺寸均通过（片段96）；手机windowactions44.28专项通过。手机map缩放22.14px宽属项目目标缺口，D2.3片段80、G4cap89；pin8px有91.8×44等价区域列表，桌面hitfalse需先查当前遮挡节点。
+
+真实观感：desktop笔记D1范围85，D4范围72.5（60/60/90/80）；手机地图D4范围80。优先接近1:1的文字与清楚承载纸面，减少透明工作区/实体电脑/窗口多重边界，保留咖啡在外侧；正文/工具实际可读后再调装饰。灰图原因未知，先查currentSrc/naturalWidth/data-image-state再决定修复，不填假图、不自动怪后端。新增UX-021/022已入JSON追踪；未改inventory数量。
+
+## D3当前复制视觉复核
+
+2026-10-16T01:23:26+08:00：8条视觉/全屏检查已读，4张图逐张看。实际文字与44px展开工具净空26.23/45.55/18.53/14.58px，中文单语复制与coarsepointer长按提示清楚，D4.4此片段96。专家D1范围96（四项96），D4范围94.5（90/96/96/96）；320英文末尾Copy.独占末行略碎，属于小幅文案/断行余量，不阻断功能。完整copy/expand仍null（hover/200%/实体长按等未齐）。
+
+Space诊断更正：settled390图已逐张看，两张localimage450ms后complete/naturalWidth480/opacity1/ready，灰块只是早帧。稳定地图D4范围82.5；桌面pin bboxcenter落海洋、region超出window可滚范围，不报遮挡bug。临时不透明纸面概念明显隔开实体电脑与工作区，但未改生产且前台app不同，不算数值A/B；原字仍小软，后续样式批必须看实际字号/target，而非只加不透明。

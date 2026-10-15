@@ -1,7 +1,7 @@
 {{- $zh := eq .Lang "zh" -}}
 {{- $languageRoutes := dict .Lang .RelPermalink -}}
 {{- range .Translations }}{{ $languageRoutes = merge $languageRoutes (dict .Lang .RelPermalink) }}{{ end -}}
-{{- $labels := dict "welcome" (cond $zh "欢迎" "Welcome") "products" (cond $zh "产品实验室" "Products") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "空间助手" "Space companion") "settings" (cond $zh "工作区设置" "Settings") -}}
+{{- $labels := dict "welcome" (cond $zh "欢迎" "Welcome") "products" (cond $zh "产品" "Products") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "空间助手" "Space companion") "settings" (cond $zh "工作区设置" "Settings") -}}
 {{- $mobileLabels := dict "welcome" (cond $zh "空间" "Home") "reader" (cond $zh "文章" "Writing") "products" (cond $zh "产品" "Products") "settings" (cond $zh "设置" "Settings") "agent" (cond $zh "助手" "AI") -}}
 {{- $articles := slice -}}
 {{- range (where site.RegularPages "Type" "posts").ByDate.Reverse -}}

@@ -240,8 +240,9 @@
 
 {{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
 <script defer src="{{ "/js/code-copy.js" | relURL }}?v={{ readFile "static/js/code-copy.js" | sha256 }}"
-    data-copy="{{ i18n "code_copy" | default "Copy" }}"
-    data-copied="{{ i18n "code_copied" | default "Copied" }}"
+    data-copy="{{ cond (eq .Lang "zh") "复制" "Copy" }}"
+    data-copied="{{ cond (eq .Lang "zh") "已复制" "Copied" }}"
     data-pending="{{ cond (eq .Lang "zh") "正在复制…" "Copying…" }}"
+    data-failed-touch="{{ cond (eq .Lang "zh") "自动复制不可用。请长按代码，选择“复制”。" "Automatic copy is unavailable. Press and hold the code, then choose Copy." }}"
     data-failed="{{ cond (eq .Lang "zh") "自动复制不可用，代码已选中。请按 Ctrl / ⌘ + C 复制。" "Automatic copy is unavailable. Code selected; press Ctrl / ⌘ + C to copy." }}"></script>
 {{- end }}

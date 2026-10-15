@@ -1,0 +1,186 @@
+{
+  "kind": "diagnostic plus explicitly temporary CSS concept, not production implementation",
+  "observations": [
+    {
+      "width": 1440,
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "source": "batch-d3-source.json (Space source unchanged from a8e4120b)",
+      "images": [
+        {
+          "src": "http://127.0.0.1:1317/images/about/journey/02-g318-480.webp",
+          "complete": true,
+          "naturalWidth": 480,
+          "opacity": "1",
+          "visibility": "visible",
+          "wrapper": "<div class=\"sp-media-image \" data-image-wrap=\"\" data-image-state=\"ready\"><img src=\"http://127.0.0.1:1317/images/about/journey/02-g318-480.webp\" alt=\"中国 · 川藏公路\" loading=\"lazy\" decoding=\"async\" data-media-image=\"\"><span class=\"sp-media-image__feedback\" data-image-feedback=\"\"></span></div>"
+        },
+        {
+          "src": "http://127.0.0.1:1317/images/about/journey/03-prayer-flags-480.webp",
+          "complete": true,
+          "naturalWidth": 480,
+          "opacity": "1",
+          "visibility": "visible",
+          "wrapper": "<div class=\"sp-media-image \" data-image-wrap=\"\" data-image-state=\"ready\"><img src=\"http://127.0.0.1:1317/images/about/journey/03-prayer-flags-480.webp\" alt=\"中国 · 川西\" loading=\"lazy\" decoding=\"async\" data-media-image=\"\"><span class=\"sp-media-image__feedback\" data-image-feedback=\"\"></span></div>"
+        }
+      ],
+      "targets": [
+        {
+          "label": "西藏高原",
+          "rect": {
+            "x": 426.0901794433594,
+            "y": 385.9501037597656,
+            "width": 30.553131103515625,
+            "height": 14.15869140625
+          },
+          "hit": "<rect x=\"0\" y=\"0\" width=\"720\" height=\"360\" class=\"sp-map-ocean\"></rect>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "日本列岛",
+          "rect": {
+            "x": 630.7509765625,
+            "y": 361.3942565917969,
+            "width": 30.343994140625,
+            "height": 14.15869140625
+          },
+          "hit": "<rect x=\"0\" y=\"0\" width=\"720\" height=\"360\" class=\"sp-map-ocean\"></rect>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "东南亚",
+          "rect": {
+            "x": 474.72882080078125,
+            "y": 432.0945129394531,
+            "width": 26.43896484375,
+            "height": 14.15869140625
+          },
+          "hit": "<circle class=\"sp-map-pin__halo\" cx=\"564.9\" cy=\"142.16\" r=\"3.292333333333333\"></circle>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "01西藏高原2 张照片",
+          "rect": {
+            "x": 291.95965576171875,
+            "y": 535.8438110351562,
+            "width": 159.61825561523438,
+            "height": 46.74005126953125
+          },
+          "hit": "<div class=\"space-spatial-screen\" aria-label=\"CUBXXW OS\" draggable=\"false\" style=\"position: absolute; pointer-events: auto; user-select: auto; width: 1440px; height: 900px; visibility: visible; transform: translate(-50%, -50%) matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, 3.65, 1.98, -1.5, 1);\"><div class=\"space-window-layer\" data-space-windows=\"\"><section class=\"space-window\" data-spa"
+        },
+        {
+          "label": "02日本列岛2 张照片",
+          "rect": {
+            "x": 455.67791748046875,
+            "y": 535.8438110351562,
+            "width": 159.63104248046875,
+            "height": 46.74005126953125
+          },
+          "hit": "<section class=\"space-profile__identity\" id=\"space-profile-identity\" data-profile-section=\"identity\" data-identity-card=\"\" data-identity-json=\"/data/identity.json\" data-timeline-md=\"/data/personal-timeline-2019-2026.md\"><p class=\"space-eyebrow\">CUBXXW / PROFILE</p><h3>熊鑫伟 <span>cubxxw</span></h3><p>熊鑫伟（cubxxw / BEAR，2001 年生）构建 AI 产品，关注 Agent 评估与可靠执行。曾参与 OpenIM 的工程和社区协作，在 cubxxw.com 公开项目实践与每月思考，旅行仍",
+          "closestWindow": "welcome"
+        },
+        {
+          "label": "03东南亚4 张照片",
+          "rect": {
+            "x": 619.4089965820312,
+            "y": 535.8438110351562,
+            "width": 159.63104248046875,
+            "height": 46.74005126953125
+          },
+          "hit": "<section class=\"space-profile__identity\" id=\"space-profile-identity\" data-profile-section=\"identity\" data-identity-card=\"\" data-identity-json=\"/data/identity.json\" data-timeline-md=\"/data/personal-timeline-2019-2026.md\"><p class=\"space-eyebrow\">CUBXXW / PROFILE</p><h3>熊鑫伟 <span>cubxxw</span></h3><p>熊鑫伟（cubxxw / BEAR，2001 年生）构建 AI 产品，关注 Agent 评估与可靠执行。曾参与 OpenIM 的工程和社区协作，在 cubxxw.com 公开项目实践与每月思考，旅行仍",
+          "closestWindow": "welcome"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "source": "batch-d3-source.json (Space source unchanged from a8e4120b)",
+      "images": [
+        {
+          "src": "http://127.0.0.1:1317/images/about/journey/02-g318-480.webp",
+          "complete": true,
+          "naturalWidth": 480,
+          "opacity": "1",
+          "visibility": "visible",
+          "wrapper": "<div class=\"sp-media-image \" data-image-wrap=\"\" data-image-state=\"ready\"><img src=\"http://127.0.0.1:1317/images/about/journey/02-g318-480.webp\" alt=\"中国 · 川藏公路\" loading=\"lazy\" decoding=\"async\" data-media-image=\"\"><span class=\"sp-media-image__feedback\" data-image-feedback=\"\"></span></div>"
+        },
+        {
+          "src": "http://127.0.0.1:1317/images/about/journey/03-prayer-flags-480.webp",
+          "complete": true,
+          "naturalWidth": 480,
+          "opacity": "1",
+          "visibility": "visible",
+          "wrapper": "<div class=\"sp-media-image \" data-image-wrap=\"\" data-image-state=\"ready\"><img src=\"http://127.0.0.1:1317/images/about/journey/03-prayer-flags-480.webp\" alt=\"中国 · 川西\" loading=\"lazy\" decoding=\"async\" data-media-image=\"\"><span class=\"sp-media-image__feedback\" data-image-feedback=\"\"></span></div>"
+        }
+      ],
+      "targets": [
+        {
+          "label": "西藏高原",
+          "rect": {
+            "x": 131.42410278320312,
+            "y": 299.59246826171875,
+            "width": 8.344833374023438,
+            "height": 8.227325439453125
+          },
+          "hit": "<circle cx=\"542.28\" cy=\"120.7\" r=\"1.0347333333333335\"></circle>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "日本列岛",
+          "rect": {
+            "x": 250.3485870361328,
+            "y": 285.32354736328125,
+            "width": 8.344863891601562,
+            "height": 8.227325439453125
+          },
+          "hit": "<circle cx=\"637.46\" cy=\"109.28\" r=\"1.0347333333333335\"></circle>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "东南亚",
+          "rect": {
+            "x": 159.6870880126953,
+            "y": 326.4060974121094,
+            "width": 8.3448486328125,
+            "height": 8.22735595703125
+          },
+          "hit": "<circle cx=\"564.9\" cy=\"142.16\" r=\"1.0347333333333335\"></circle>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "01西藏高原2 张照片",
+          "rect": {
+            "x": 53.139888763427734,
+            "y": 404.4771423339844,
+            "width": 91.84007263183594,
+            "height": 44.280029296875
+          },
+          "hit": "<button data-place-select=\"tibet\" aria-pressed=\"true\"><span>01</span><strong>西藏高原</strong><small>2 张照片</small></button>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "02日本列岛2 张照片",
+          "rect": {
+            "x": 149.07997131347656,
+            "y": 404.4771423339844,
+            "width": 91.84005737304688,
+            "height": 44.280029296875
+          },
+          "hit": "<button data-place-select=\"japan\" aria-pressed=\"false\"><span>02</span><strong>日本列岛</strong><small>2 张照片</small></button>",
+          "closestWindow": "map"
+        },
+        {
+          "label": "03东南亚4 张照片",
+          "rect": {
+            "x": 245.02003479003906,
+            "y": 404.4771423339844,
+            "width": 91.84007263183594,
+            "height": 44.280029296875
+          },
+          "hit": "<button data-place-select=\"southeast-asia\" aria-pressed=\"false\"><span>03</span><strong>东南亚</strong><small>4 张照片</small></button>",
+          "closestWindow": "map"
+        }
+      ]
+    }
+  ]
+}

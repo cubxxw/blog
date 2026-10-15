@@ -60,7 +60,7 @@
   .post-content .code-copy-status:not(:empty) {
     /* The fullscreen action belongs to the block's trailing edge. Keep a
        separate action lane when a failed copy adds an instruction row. */
-    padding-inline-end: 76px;
+    padding-inline-end: calc(var(--code-tools-offset, 8px) + 44px + 12px);
     min-height: 64px;
   }
 }

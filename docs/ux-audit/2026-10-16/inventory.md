@@ -184,7 +184,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `A.FAQ.AI.OPEN` | 继续问AI | `.article-faq__ai-toggle`<br>[static/js/article-faq.js:236](../../../static/js/article-faq.js) | 带FAQ问答上下文追问 | `toggle` / source-only |
 | `A.FAQ.AI.CHIP` | FAQ建议问题 | `.article-faq__ai-chip`<br>[static/js/article-faq.js:271](../../../static/js/article-faq.js) | 快速追问当前答案 | `async` / source-only |
 | `A.FAQ.AI.INPUT` | FAQ追问输入 | `.article-faq__ai-input`<br>[static/js/article-faq.js:290](../../../static/js/article-faq.js) | 输入具体疑问 | `input` / source-only |
-| `A.FAQ.AI.SEND` | FAQ追问发送 | `.article-faq__ai-send`<br>[static/js/article-faq.js:297](../../../static/js/article-faq.js) | 请求流式问答 | `async` / source-only |
+| `A.FAQ.AI.SEND` | FAQ追问发送/请求中停止（同一按钮） | `.article-faq__ai-send`<br>[static/js/article-faq.js:297](../../../static/js/article-faq.js) | 请求流式问答 | `async` / source-only |
 | `A.FAQ.AI.RETRY` | FAQ追问重试 | `.article-faq__ai-retry`<br>[static/js/article-faq.js:484](../../../static/js/article-faq.js) | 失败后重试原问题 | `async` / source-only |
 | `A.COMMENTS.EXTERNAL` | 登录/排序/回复/反应/评论输入与提交 | `#post-comments-body`<br>[layouts/partials/comments.html:18](../../../layouts/partials/comments.html) | 阅读与参与真实讨论 | `async` / source-only |
 
@@ -326,7 +326,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `T.BOOK.CLOSE` | 关闭书籍AI | `[data-bai-close]`<br>[layouts/page/travel.html:247](../../../layouts/page/travel.html) | 恢复原书位置焦点 | `command` / source-only |
 | `T.BOOK.SUGGEST` | 书籍建议/追问 | `.tw-book-ai__chip`<br>[static/js/travel-book-ai.js:173](../../../static/js/travel-book-ai.js) | 启动/延展书籍问题 | `async` / source-only |
 | `T.BOOK.INPUT` | 书籍问题 | `.tw-book-ai__input`<br>[layouts/page/travel.html:260](../../../layouts/page/travel.html) | 编写问题 | `input` / source-only |
-| `T.BOOK.SEND` | 发送书籍问题 | `.tw-book-ai__send`<br>[layouts/page/travel.html:262](../../../layouts/page/travel.html) | 请求流式解释 | `async` / source-only |
+| `T.BOOK.SEND` | 发送书籍问题/请求中停止（同一按钮） | `.tw-book-ai__send`<br>[layouts/page/travel.html:262](../../../layouts/page/travel.html) | 请求流式解释 | `async` / source-only |
 | `T.SOCIAL.QR` | 社交二维码/复制ID/关闭 | `.tw-social--qr, [data-qr-close]`<br>[layouts/page/travel.html:326](../../../layouts/page/travel.html) | 联系作者 | `command` / source-only |
 | `T.SOCIAL.LINK` | 社交平台链接 | `a.tw-social`<br>[layouts/page/travel.html:316](../../../layouts/page/travel.html) | 打开公开平台 | `nav` / source-only |
 | `T.BOOK.RETRY` | 重试书籍问题 | `.tw-book-ai__retry`<br>[static/js/travel-book-ai.js:175](../../../static/js/travel-book-ai.js) | 失败后重试原问题 | `async` / source-only |
@@ -1447,3 +1447,34 @@ P2 / `source_only`；复用队列：E-09, E-10。
 - `blog-ai-inline.js`只有历史源码，没有当前挂载container，保持dormant，安全回归与“可见入口验收”分开。
 
 本附录只给可操作验收与设计标准。没有新增浏览器结论，没有把主观品味写成96分。
+
+## v1.6 状态证据导入：D2b、D3与窗口探索
+
+导入时点 **2026-10-16T01:26:06+08:00**，当前checkout **`a8e4120bb054`**。导入5个指定JSON，共27条check报告passed；它们仅作为case/状态证据。**309族仍无整族验收升级，verified_score=null**。真实新停止控件`#search-ai-stop`归入既有AI请求族，选择器级ID总数现为357。
+
+| Freeze | 时间（上海） | 源revision上下文 | 当前继承边界 |
+| --- | --- | --- | --- |
+| batch-d2b-source.json | 2026-10-16T01:11:58.685295+08:00 | base `6d7b9fe92a74` + manifest文件SHA256 | 当前已变化：assets/css/extended/micro-interactions.css, assets/css/extended/zzz-copy-code-feedback.css, assets/css/extended/zzz-travel-world.css, layouts/page/travel.html, layouts/partials/footer.html, static/js/code-copy.js, static/js/code-mobile.js, static/js/micro-interactions.js, static/js/travel-book-ai.js |
+| batch-d3-source.json | 2026-10-16T01:18:23.225380+08:00 | base `a8e4120bb054` + manifest文件SHA256 | 列出文件当前相同；仍不外推完整构建/全局依赖 |
+
+D1原执行仅保留索引`evidence/batch-d1-flows.log`。五个仍以D1命名的请求case已在**D2b**重新运行，当前依据`batch-d2b-request-checks.json`；不拿旧D1截图认证已经改变的dialog。
+
+| 对应功能 | 只可证明的状态/边界 | 不能外推 |
+| --- | --- | --- | --- |
+| Travel书籍AI | D2b：停止保留问题、A书关闭切B书隔离、390px双Escape与快速重开在两种motion通过 | D4改变dialog后的横屏/最新视觉、英语/其他主题、所有追问状态 |
+| FAQ AI | D2b：外层关闭取消请求、SSE停止恢复输入 | 所有超时/失败/空态、运行时减少动态正确 |
+| 搜索AI | D2b：关闭取消清理、完成不抢用户当前焦点 | 新Stop点击未在这批case单测；具体完成时focus target未记录 |
+| 分享复制/关闭 | D2b：关闭后Clipboard迟到拒绝不复活modal | 回执未区分copy text/link发起selector，不把两者都写完整通过 |
+| 代码复制/展开 | D3四个中英/320与390/light与dark交叉配置：错误说明与工具分离、展开44px且可点击、错误后仍能全屏 | 其他尺寸/主题组合与hover/focus、真实Clipboard权限 |
+| 文章动效 | D3：390px no-preference文章18处正文可读；主题按钮无全局ripple | 首页reveal、全部动画/性能；回执缺失字段不补猜 |
+| Space窗口/笔记 | D2b：1440/390×900最小化恢复同DOM、最大化恢复、关闭重开文本保留 | 关闭保同DOM、11App全部内容、所有窗口几何均达标 |
+
+窗口/地图geometry全部保留为**observation-not-pass**：desktop窗口约22.96px、mobile约44.28px；mobile地图pin约8.3px；desktop部分map hit=false。hit/visible/尺寸原值不是自动通过，也不未经排查直接认定功能失败。
+
+**负证据不能变通过**：`NEXT.faq-runtime-reduce`记录运行时改变减少动态仍有height动画running，已绑定`MOTION.FAQ`为D3已复现问题。
+
+**D4仍待验收**：Travel横屏没有导入通过。首页产品入口的`#studio-products`与站内target、Dock中文“产品”已经源码调整，只标`source_fixed_pending`；旧图不认证最新源码。Roadmap之前的对应诊断保留为历史观察。
+
+每个state_evidence含对应family/control ID、case route/viewport/theme/motion、freeze时间/base revision、具体依赖SHA256与当前比较。未被manifest列出的未改依赖按base blob追踪并标明fallback；不声称所有构建依赖都已穷尽。
+
+回执元数据注意：`batch-d2b-request-checks.json`的legacy limits仍写Frozen D1，但每个case的source、revalidatedAt与note明确D2b重跑。本清单按该明确重跑记录绑定D2b，同时保留原文本矛盾提示；没有把旧D1图当最新图。

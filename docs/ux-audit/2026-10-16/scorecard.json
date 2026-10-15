@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T01:13:13+08:00",
+  "updated_at": "2026-10-16T01:23:26+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,7 +353,7 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.3",
+    "inventory_version": "1.5",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
@@ -366,7 +366,10 @@
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/356selectors不是运行时每个数据行实例数；未知状态与全站矩阵不认证。"
+    "reason": "309族/356selectors不是运行时每个数据行实例数；未知状态与全站矩阵不认证。",
+    "families_with_recorded_contract_fragments": 28,
+    "scoped_check_assessments": 57,
+    "expert_visual_assessments": 18
   },
   "evidence": [
     {
@@ -499,8 +502,8 @@
     },
     {
       "id": "E-BATCH-D1",
-      "kind": "recorded_browser",
-      "path": "docs/ux-audit/2026-10-16/evidence/batch-d1-checks.json",
+      "kind": "historical_execution_log",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-d1-flows.log",
       "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
       "source_recorded_at": "2026-10-15T17:04:46.677629+00:00",
       "passed_checks": 5,
@@ -550,8 +553,10 @@
         "tests/e2e/control-recovery.spec.ts": true
       },
       "source_drift_note": "D2 already modifies book/FAQ/search/fullscreen/sheet source; D1 acceptance is frozen as-of its own manifest, not new D2 modal behavior.",
-      "inspected_screenshot": "docs/ux-audit/2026-10-16/evidence/batch-d1-travel-second-book.png",
-      "limits": "Controlled isolated AI streams and Clipboard; no real API, subscription or clipboard mutation. Frozen D1 only; FAQ outer collapse and success focus are reserved for D2."
+      "inspected_screenshot": null,
+      "limits": "Controlled isolated AI streams and Clipboard; no real API, subscription or clipboard mutation. Frozen D1 only; FAQ outer collapse and success focus are reserved for D2.",
+      "original_receipt_index": "docs/ux-audit/2026-10-16/evidence/batch-d1-checks.json",
+      "provenance_correction": "Original receipt filename was reused; it is now an index. D1 original five-flow log retained, current5-flow JSON and renamed screenshot belongD2b. All current contract assessments moved toD2b; no current D1 screenshot certification."
     },
     {
       "id": "E-D2-FOCUS-PROBE",
@@ -579,6 +584,201 @@
         "static/js/article-share-link.js": "86aabb660138042ac63b8ae494c841493212659b572f4bc85c0f3f4841decf3a"
       },
       "scope": "Adds realReadableStream headers-stall/after-delta-stall, signal AbortError, TimeoutError, unlocked reader; no browser or external writes."
+    },
+    {
+      "id": "E-BATCH-D2B",
+      "kind": "recorded_browser_and_test_logs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-d2b-checks.json",
+        "docs/ux-audit/2026-10-16/evidence/batch-d2b-contracts.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-d2b-unit.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-d2b-typecheck.log"
+      ],
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+      "source_recorded_at": "2026-10-15T17:11:58.685295+00:00",
+      "source_files": 47,
+      "source_hash_matches_at_review": {
+        ".github/workflows/main.yaml": true,
+        "assets/css/extended/article-faq.css": true,
+        "assets/css/extended/editorial-tools.css": true,
+        "assets/css/extended/micro-interactions.css": false,
+        "assets/css/extended/zzz-code-mobile.css": true,
+        "assets/css/extended/zzz-copy-code-feedback.css": false,
+        "assets/css/extended/zzz-travel-world.css": true,
+        "assets/css/space-cafe.css": true,
+        "assets/css/space.css": true,
+        "assets/js/about-native-interview.js": true,
+        "assets/js/search-bootstrap.js": true,
+        "assets/js/search-palette.js": true,
+        "assets/js/space/apps.js": true,
+        "assets/js/space/cafe.js": true,
+        "assets/js/space/desktop.js": true,
+        "layouts/_default/single.html": true,
+        "layouts/page/travel.html": true,
+        "layouts/partials/article/editorial-tools.html": true,
+        "layouts/partials/article/faq.html": true,
+        "layouts/partials/extend_footer.html": true,
+        "layouts/partials/footer-subscribe.html": true,
+        "layouts/partials/footer.html": false,
+        "layouts/partials/header.html": true,
+        "layouts/partials/search-palette.html": true,
+        "layouts/partials/space/cafe.html": true,
+        "package.json": true,
+        "scripts/ai-markdown-security.test.mjs": true,
+        "scripts/article-ai-client.test.mjs": true,
+        "scripts/article-share-link.test.mjs": true,
+        "scripts/article-tabs.test.mjs": true,
+        "scripts/code-copy.test.mjs": true,
+        "scripts/footer-subscribe.test.mjs": true,
+        "static/js/article-ai-client.js": true,
+        "static/js/article-bottom-sheet.js": true,
+        "static/js/article-chat.js": true,
+        "static/js/article-faq.js": true,
+        "static/js/article-share-link.js": true,
+        "static/js/article-tabs.js": true,
+        "static/js/blog-ai-inline.js": true,
+        "static/js/code-copy.js": false,
+        "static/js/code-mobile.js": false,
+        "static/js/micro-interactions.js": false,
+        "static/js/reading-companion.js": true,
+        "static/js/travel-book-ai.js": true,
+        "tests/e2e/control-contracts.spec.ts": true,
+        "tests/e2e/control-recovery.spec.ts": true,
+        "tests/e2e/ime-contracts.spec.ts": true
+      },
+      "passed_contract_tests": 12,
+      "passed_custom_flows": 6,
+      "passed_node_tests_reported_log": 26,
+      "errors": [],
+      "reviewed_at": "2026-10-16T01:17:39+08:00",
+      "test_sources": [
+        "tests/e2e/control-contracts.spec.ts",
+        "tests/e2e/control-recovery.spec.ts",
+        "tests/e2e/ime-contracts.spec.ts"
+      ],
+      "scope": "Exact contracts only:desktop1440/compact390 zh reduced;Travel Escape/reopen additionallyno-preference; theme not asserted uniformly in contracts log. No external writes or real model calls.",
+      "stable_focus_screenshot": "docs/ux-audit/2026-10-16/evidence/batch-d2b-book-dialog-reduce.png",
+      "excluded_normal_screenshot": "docs/ux-audit/2026-10-16/evidence/batch-d2b-book-dialog-no-preference.png",
+      "excluded_reason": "Captured during entry; do not use for normal visual score."
+    },
+    {
+      "id": "E-BATCH-D2B-REQUESTS",
+      "kind": "recorded_browser",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-d2b-request-checks.json",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+      "passed_checks": 5,
+      "errors": [],
+      "reviewed_at": "2026-10-16T01:17:39+08:00",
+      "inspected_screenshot": "docs/ux-audit/2026-10-16/evidence/batch-d2b-travel-second-book.png",
+      "provenance_note": "Rerun of D1-named flows afterD2b dialog DOM changes; currentsourceD2b. Old filename nowindex only."
+    },
+    {
+      "id": "E-SPACE-WINDOW-AUDIT",
+      "kind": "recorded_browser_geometry_and_inspected_screenshots",
+      "path": "docs/ux-audit/2026-10-16/evidence/space-window-audit.json",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+      "passed_checks": 6,
+      "errors": [],
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/space-notes-1440.png",
+        "docs/ux-audit/2026-10-16/evidence/space-map-390.png"
+      ],
+      "reviewed_at": "2026-10-16T01:20:46+08:00",
+      "scope": "1440/390×900, zh/light/reduce, note min/max/close text continuity plus exploratorywindow/mapgeometry. Geometry not automatically target-pass.",
+      "limitations": [
+        "Map desktop hit:false may be a lower window covered by activeNotes; inspect elementFromPoint before declaring a defect.",
+        "8px mobilepin has91.8×44 regionlist alternative geometry, not automatic blanketWCAGfailure.",
+        "Grayphoto cause unverified; no invented image/loading/remote backend diagnosis."
+      ]
+    },
+    {
+      "id": "E-BATCH-D3-COPY",
+      "kind": "recorded_browser_and_independently_inspected_screenshots",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-d3-visual-checks.json",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-d3-source.json",
+      "passed_checks": 8,
+      "errors": [],
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-zh-dark-320.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-zh-light-390.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-en-light-320.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-en-dark-390.png"
+      ],
+      "reviewed_at": "2026-10-16T01:23:26+08:00",
+      "source_hash_matches_at_review": {
+        "assets/css/extended/bear-knowledge-space.css": true,
+        "assets/css/extended/micro-interactions.css": true,
+        "assets/css/extended/zzz-article-header-entrance.css": true,
+        "assets/css/extended/zzz-copy-code-feedback.css": true,
+        "assets/css/extended/zzz-interaction-detail-v4.css": true,
+        "assets/js/bear-knowledge-space.js": true,
+        "layouts/partials/footer.html": true,
+        "static/js/code-copy.js": true,
+        "static/js/code-mobile.js": true,
+        "static/js/micro-interactions.js": true,
+        "tests/e2e/knowledge-filter-contracts.spec.ts": true
+      },
+      "measured_clearances": [
+        {
+          "locale": "zh",
+          "theme": "dark",
+          "viewport": {
+            "width": 320,
+            "height": 844
+          },
+          "min_horizontal_clearance_px": 26.234375
+        },
+        {
+          "locale": "zh",
+          "theme": "light",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "min_horizontal_clearance_px": 45.546875
+        },
+        {
+          "locale": "en",
+          "theme": "light",
+          "viewport": {
+            "width": 320,
+            "height": 844
+          },
+          "min_horizontal_clearance_px": 18.53125
+        },
+        {
+          "locale": "en",
+          "theme": "dark",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "min_horizontal_clearance_px": 14.578125
+        }
+      ],
+      "scope": "Only four320/390zh/enlight/darkcrosserrorcases plus fullscreen no stale status. IDs stillC-prefixed but actualsourceD3. Coarse-pointerinstructions, not physicalphone longpress verification."
+    },
+    {
+      "id": "E-SPACE-SETTLED",
+      "kind": "diagnostic_and_stable_screenshot",
+      "path": "docs/ux-audit/2026-10-16/evidence/space-render-probe.json",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/space-map-settled-390.png"
+      ],
+      "reviewed_at": "2026-10-16T01:23:26+08:00",
+      "source_scope": "Space unchanged from checkpointa8e4120b;probe referencesD3manifest",
+      "conclusions": [
+        "Localtwoimages complete480/opacity1/ready after450ms;earlierblankcapture timing,not stable image failure.",
+        "SVGg bboxcenter canhit ocean beyondcircle;regioncontrols clipped bywindow scroll. No occlusionbug inferred."
+      ]
+    },
+    {
+      "id": "E-SPACE-CONCEPT",
+      "kind": "explicitly_temporary_browser_css_concept",
+      "path": "docs/ux-audit/2026-10-16/evidence/space-plane-concept-1440.png",
+      "production_implementation": false,
+      "reviewed_at": "2026-10-16T01:23:26+08:00",
+      "scope": "Qualitativeopaque-paperdirection only. Activeapp differs from priorNotes screenshot; no numericbeforeafter orproductionclosure."
     }
   ],
   "historical_visual_assessments": [
@@ -876,16 +1076,17 @@
       "kind": "expert_visual_judgment",
       "confidence": "medium",
       "as_of": {
-        "phase": "D1 frozen source",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
-        "recorded_at": "2026-10-15T17:04:46.677629+00:00",
-        "reviewed_at": "2026-10-16T01:10:00+08:00"
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
       },
       "evidence_paths": [
-        "docs/ux-audit/2026-10-16/evidence/batch-d1-travel-second-book.png"
+        "docs/ux-audit/2026-10-16/evidence/batch-d2b-travel-second-book.png"
       ],
-      "scope": "1440×900 zh/light/reduce second-book initial modal screenshot;D1 before native dialog",
-      "reason": "书名、作者与种子问题明确约束本次任务，输入位于顺序末尾且focus可见；初始占位“追问”略预设已经有回答，术语细化可后续处理，不构成功能阻塞。"
+      "scope": "1440×900 zh/light/reduce second-book initial modal, currentD2b",
+      "reason": "书名、作者与种子问题明确约束本次任务，输入位于顺序末尾且focus可见；初始占位“追问”略预设已经有回答，术语细化可后续处理，不构成功能阻塞。",
+      "provenance_correction": "Earlier filename reused; rescopedto renamedD2b artifact. No D1 screenshot certification."
     },
     {
       "assessment_id": "VIS-BOOK-D4",
@@ -908,16 +1109,233 @@
       "kind": "expert_visual_judgment",
       "confidence": "medium",
       "as_of": {
-        "phase": "D1 frozen source",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
-        "recorded_at": "2026-10-15T17:04:46.677629+00:00",
-        "reviewed_at": "2026-10-16T01:10:00+08:00"
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
       },
       "evidence_paths": [
-        "docs/ux-audit/2026-10-16/evidence/batch-d1-travel-second-book.png"
+        "docs/ux-audit/2026-10-16/evidence/batch-d2b-travel-second-book.png"
       ],
-      "scope": "1440×900 zh/light/reduce second-book initial modal screenshot;D1 before native dialog",
-      "reason": "单一卡片与实际书籍/旅行色彩相称，建议问题、输入与焦点边界分工清楚，遮罩集中注意；仅桌面zh初始态，字号/对比需实际量测与手机长标签验证。"
+      "scope": "1440×900 zh/light/reduce second-book initial modal, currentD2b",
+      "reason": "单一卡片与实际书籍/旅行色彩相称，建议问题、输入与焦点边界分工清楚，遮罩集中注意；仅桌面zh初始态，字号/对比需实际量测与手机长标签验证。",
+      "provenance_correction": "Earlier filename reused; rescopedto renamedD2b artifact. No D1 screenshot certification."
+    },
+    {
+      "assessment_id": "VIS-BOOK-D2B-MOBILE-D4",
+      "family_ids": [
+        "T.BOOK.CLOSE",
+        "T.BOOK.SUGGEST",
+        "T.BOOK.INPUT",
+        "T.BOOK.SEND"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        80,
+        96,
+        90,
+        90
+      ],
+      "scope_score": 89,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "medium",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-d2b-book-dialog-reduce.png"
+      ],
+      "scope": "390×844 zh/light/reduce stablecard with first-chip keyboardfocus;not un-focusednormal",
+      "reason": "卡片居中/边界与44px关闭对齐清楚，focus清晰。12px建议问题与单字孤行让手机密度偏高，发送38px观感比关闭小，下一轮优先测实际box并改善留白。no-preference图是中间帧，不评分。"
+    },
+    {
+      "assessment_id": "VIS-SPACE-NOTES-D1",
+      "family_ids": [
+        "S.WINDOW.DRAG",
+        "S.APP.notes.EDITOR"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        90,
+        80,
+        90,
+        80
+      ],
+      "scope_score": 85.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "medium",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/space-notes-1440.png"
+      ],
+      "scope": "Actual named screenshot at recordedD2b source only",
+      "reason": "前台笔记任务明确，但behind欢迎窗口/实体电脑仍穿出，工作区整体小字和次级操作不易定位。原节点与文字连续性专项通过，不抵消阅读层级缺口。"
+    },
+    {
+      "assessment_id": "VIS-SPACE-NOTES-D4",
+      "family_ids": [
+        "S.WINDOW.DRAG",
+        "S.APP.notes.EDITOR"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        60,
+        60,
+        90,
+        80
+      ],
+      "scope_score": 72.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/space-notes-1440.png"
+      ],
+      "scope": "Actual named screenshot at recordedD2b source only",
+      "reason": "标题与保存/导出等实际文字很小且软；透明屏幕、实体电脑、双窗口边缘/阴影多层穿透，边界没有清楚表达单一承载面。需要放大/聚焦的明显摩擦；不推断未测对比度失败。"
+    },
+    {
+      "assessment_id": "VIS-SPACE-MAP-D4",
+      "family_ids": [
+        "S.APP.map.ZOOM",
+        "S.APP.map.REGION",
+        "S.APP.map.RELATED"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "scope_score": 80.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "medium",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/space-map-390.png"
+      ],
+      "scope": "Actual named screenshot at recordedD2b source only",
+      "reason": "地图题名可识别，但kicker/坐标/照片计数很小，地图工具框/区域卡/屏幕外框叠加；两张灰块照片目前像空占位，原因待查而非自动归咎后端。 后续诊断已确认灰图为截帧过早，不能作稳定占位缺陷。",
+      "superseded_by": "VIS-SPACE-MAP-SETTLED-D4"
+    },
+    {
+      "assessment_id": "VIS-COPY-D3-D1",
+      "family_ids": [
+        "A.BODY.CODECOPY",
+        "A.BODY.CODEEXPAND"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D3 frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d3-source.json",
+        "recorded_at": "2026-10-15T17:18:23.225380+00:00",
+        "reviewed_at": "2026-10-16T01:23:26+08:00"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-zh-dark-320.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-zh-light-390.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-en-light-320.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-en-dark-390.png"
+      ],
+      "scope": "Fourrecorded coarsepointer error screenshots only",
+      "reason": "当前四图“复制”与失败后的下一步动作明确，本地化去重复括号，长按指令对应coarsepointer；只评这些静态文字/操作入口清晰度，不等于实体长按成功。"
+    },
+    {
+      "assessment_id": "VIS-COPY-D3-D4",
+      "family_ids": [
+        "A.BODY.CODECOPY",
+        "A.BODY.CODEEXPAND"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D3 frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d3-source.json",
+        "recorded_at": "2026-10-15T17:18:23.225380+00:00",
+        "reviewed_at": "2026-10-16T01:23:26+08:00"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-zh-dark-320.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-zh-light-390.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-en-light-320.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-d3-code-en-dark-390.png"
+      ],
+      "scope": "Fourrecorded coarsepointer error screenshots only",
+      "reason": "说明与44px工具明显分区，实际水平净空≥14.58px，边界与状态位置清楚；320英文Copy.单词占末行、13px提示略密是小幅排版余量，非遮挡/功能失败。"
+    },
+    {
+      "assessment_id": "VIS-SPACE-MAP-SETTLED-D4",
+      "family_ids": [
+        "S.APP.map.ZOOM",
+        "S.APP.map.REGION",
+        "S.APP.map.RELATED"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        80,
+        80,
+        90,
+        80
+      ],
+      "scope_score": 82.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "StableSpace sourceunchangedfroma8e4120b",
+        "reviewed_at": "2026-10-16T01:23:26+08:00"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/space-map-settled-390.png"
+      ],
+      "scope": "390px zh/light settled localphotos, not temporaryconcept",
+      "reason": "两张真实旅行照片已显示，区域→图片→写作内容联系清楚；工具窄/细标签和多框层级仍有摩擦。没有稳定灰图/加载失败缺陷。"
     }
   ],
   "findings": [
@@ -928,7 +1346,7 @@
       "title": "手机换景按钮缺名称且只剩chevron",
       "baseline_reason": "唯一文字被display:none，剩余chevron aria-hidden；旧320px截图显示图标不表达换景。",
       "recommendation": "补稳定aria-label与可识别风景图标；验证320/390px名称、44px命中与Enter/Escape返回。",
-      "status": "verified_specific_contracts_incomplete_matrix",
+      "status": "closed_for_recorded_A_contracts_incomplete_family_matrix",
       "baseline_cap": 79,
       "active_cap": null,
       "batch": "A",
@@ -972,7 +1390,7 @@
       "title": "安静开关缺视觉开启状态",
       "baseline_reason": "原实现仅更新aria-pressed，视觉样式相同；难以知道环境是否暂停。",
       "recommendation": "以可见pressed样式/文案指明暂停与恢复，验证刷新保留、减少动态效果和键盘状态。",
-      "status": "verified_specific_contracts_incomplete_matrix",
+      "status": "closed_for_recorded_A_contracts_incomplete_family_matrix",
       "baseline_cap": 84,
       "active_cap": null,
       "batch": "A",
@@ -1016,7 +1434,7 @@
       "title": "文章两套Tab只有点击，缺复合控件键盘模式",
       "baseline_reason": "role=tab的桌面/手机组未实现方向键/Home/End与roving tabindex。",
       "recommendation": "统一Tab切换模型，测Arrow/Home/End、Tab离组、隐藏面板不可聚焦、切换后当前状态。",
-      "status": "source_fixed_awaiting_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": null,
       "active_cap": null,
       "batch": "B",
@@ -1045,6 +1463,11 @@
       "family_ids": [
         "A.TOC.TABS",
         "A.TOC.MOBILETABS"
+      ],
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "fix_evidence": [
+        "E-BATCH-D2B"
       ]
     },
     {
@@ -1054,7 +1477,7 @@
       "title": "手机tabpanel指向不存在的标签ID",
       "baseline_reason": "aria-labelledby=abs-tab-*，对应button无该id。",
       "recommendation": "为全部实际渲染的tabs建立唯一id，验证带/不带series和AI时关联均有效。",
-      "status": "source_fixed_awaiting_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": 79,
       "active_cap": null,
       "batch": "B",
@@ -1081,6 +1504,11 @@
       "verified_score": null,
       "family_ids": [
         "A.TOC.MOBILETABS"
+      ],
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "fix_evidence": [
+        "E-BATCH-D2B"
       ]
     },
     {
@@ -1090,7 +1518,7 @@
       "title": "代码复制在Promise完成前伪报成功",
       "baseline_reason": "基线点击即copyingDone/is-copied，拒绝或execCommand false仍可能显示完成。",
       "recommendation": "把pending/success/failure统一交真实剪贴板结果；保留手动选择恢复，避免多个反馈处理器。",
-      "status": "verified_specific_contracts_incomplete_matrix",
+      "status": "closed_for_recorded_A_contracts_incomplete_family_matrix",
       "baseline_cap": 84,
       "active_cap": null,
       "batch": "A",
@@ -1139,7 +1567,7 @@
       "title": "文章链接复制拒绝后无恢复且提示未本地化",
       "baseline_reason": "writeText没有reject分支；legacy不检查true；toast恒为英语且无live状态。",
       "recommendation": "使用真实成功/失败反馈与本地化live状态，保留可选择链接；测试deny、legacy false与重复点击。",
-      "status": "source_fixed_awaiting_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": 84,
       "active_cap": null,
       "batch": "C",
@@ -1169,7 +1597,11 @@
       "family_ids": [
         "G.SHARE.DIRECT"
       ],
-      "closure_note": "Executor/parent reports bounded source correction; original defect score remains historical, no closure until current browser evidence."
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-007",
@@ -1178,7 +1610,7 @@
       "title": "订阅请求挂起会永久busy",
       "baseline_reason": "fetch无AbortController/超时；Promise挂起后submit一直disabled。",
       "recommendation": "增加有界超时、保留邮箱与重试；仅用网络桩测试，不发真实邮件。",
-      "status": "source_fixed_awaiting_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": 84,
       "active_cap": null,
       "batch": "C",
@@ -1207,7 +1639,11 @@
         "G.SUB.SUBMIT",
         "G.SUB.EMAIL"
       ],
-      "closure_note": "Executor/parent reports bounded source correction; original defect score remains historical, no closure until current browser evidence."
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-008",
@@ -1216,7 +1652,7 @@
       "title": "手机菜单缺Escape及明确关闭焦点规则",
       "baseline_reason": "当前只有toggle/outside click，未见aria-controls和Escape关闭；要核对实际键盘顺序。",
       "recommendation": "补披露关系与Escape关闭返回触发器；外点关闭不能抢走用户新焦点，链接导航保持原生行为。",
-      "status": "browser_found_transition_focus_gap_fix_pending",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": null,
       "active_cap": null,
       "batch": "B",
@@ -1245,7 +1681,11 @@
       "family_ids": [
         "G.NAV.MOBILE"
       ],
-      "closure_note": "Parent verified focus attempt while visibility:hidden; visible after200ms. Guarded delayed focus under repair."
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-009",
@@ -1290,7 +1730,7 @@
       "title": "搜索空结果没有条件解释与恢复入口",
       "baseline_reason": "有查询和筛选时仍只显示“这里还没有条目”，无法分辨无匹配还是目录为空。",
       "recommendation": "区分无收藏/无匹配/目录空；显示查询条件、清除查询和恢复全部入口，保留原筛选意图。",
-      "status": "source_fixed_awaiting_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": null,
       "active_cap": null,
       "batch": "C",
@@ -1320,7 +1760,11 @@
         "S.APP.reader.QUERY",
         "S.APP.reader.FILTER"
       ],
-      "closure_note": "Executor/parent reports bounded source correction; original defect score remains historical, no closure until current browser evidence."
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-011",
@@ -1333,7 +1777,7 @@
       "title": "新增复制失败说明与代码展开按钮重叠",
       "baseline_reason": "已查看after-code-failure-zh-mobile.png：首代码块右下角展开按钮约x319–352,y599–631覆盖manual fallback说明右端。20条状态检查没有覆盖这项几何关系。",
       "recommendation": "工具与状态说明分区或保留可靠工具区域；320/390px验证说明与展开按钮不相交、文字完整可读，不以缩字代替布局修复。",
-      "status": "closed_for_recorded_C_cases_incomplete_family_matrix",
+      "status": "closed_for_recorded_D3_cases_incomplete_family_matrix",
       "baseline_cap": 89,
       "active_cap": null,
       "batch": "A-followup",
@@ -1360,8 +1804,12 @@
         }
       ],
       "verified_score": null,
-      "closure_note": "Independent scorer inspected all4 C PNGs and8 checks; relevant copyCSS/JS still matchC manifest. No overlap/hit failure in those cases. UX-013/014 keyboard findings remain open separately.",
-      "closed_at": "2026-10-16T01:00:27+08:00"
+      "closure_note": "D3 fourcurrenterrorcases now14.58px minimum text/tool clearance;fullfamily matrix unknown.",
+      "closed_at": "2026-10-16T01:00:27+08:00",
+      "fix_evidence": [
+        "E-BATCH-C-VISUAL",
+        "E-BATCH-D3-COPY"
+      ]
     },
     {
       "id": "UX-012",
@@ -1441,10 +1889,10 @@
       },
       "security_fix_verified_at": "2026-10-16T01:02:45+08:00",
       "runtime_acceptance_pending": false,
-      "closure_note": "6parse5 renderer cases independently passed; D1 browser invokes actual visible Travel/FAQ entrypoints successfully against frozen source. Malicious payloads were tested in pure parser, not executed in browser. Dormantlegacy remains defense only. Other locale/theme/motion matrix remains unknown.",
+      "closure_note": "Security parser fix plus actualTravel/FAQ entrypoint rerun againstD2b. Malicious payloads only parsed,not browser-executed. Dormantlegacy defense only.",
       "fix_evidence": [
         "E-D1-UNIT",
-        "E-BATCH-D1"
+        "E-BATCH-D2B-REQUESTS"
       ],
       "active_entrypoint_scope": {
         "travel": "visible book AI modal",
@@ -1463,9 +1911,9 @@
       "title": "全屏代码阅读器缺键盘焦点边界",
       "baseline_reason": "code-mobile.js 的全屏容器是div role=dialog/aria-modal；打开仅focus关闭按钮，未见Tab处理或背景inert。关闭按钮位于最后，继续Tab可聚焦视觉遮挡的背景。Esc有出口，因此不声称完全不能脱困。",
       "recommendation": "父任务先用现有单浏览器验证打开→Tab/Shift+Tab→Escape→原展开按钮返回；修复可采用原生dialog或明确trap/inert，保留现布局与原overflow值。",
-      "status": "browser_observed_body_focus_gap_wrap_fix_pending",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": 89,
-      "active_cap": 89,
+      "active_cap": null,
       "batch": "D-followup",
       "dimensions": [
         "D2",
@@ -1496,7 +1944,12 @@
         "reviewed_at": "2026-10-16T00:57:16+08:00"
       },
       "source_recheck_note": "Current read-only source confirms native-dialog/inert, removed unguarded search focus, or outer details toggle cancellation. Do not close without new D2 browser receipt.",
-      "current_failure_note": "D2a native dialog protects background but does not keep focus continuously inside; explicit first/last wrap under repair. Do not claim old background focus bug unchanged."
+      "current_failure_note": "D2a native dialog protects background but does not keep focus continuously inside; explicit first/last wrap under repair. Do not claim old background focus bug unchanged.",
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-014",
@@ -1510,7 +1963,7 @@
       "title": "关闭的文章工具抽屉仍可进入键盘顺序并捕获Tab",
       "baseline_reason": "article-bottom-sheet.css:113–145仅用transform移到屏外，没有hidden/visibility/inert；模板当前tab tabindex0且TOC链接可聚焦。article-bottom-sheet.js:157 keydown handler未检查abs--open，屏外进入后还会循环trap；Escape可退出，故不夸大为完全无法脱困。",
       "recommendation": "父任务在1199px以下真实验证初始closed→此前DOM焦点Tab/Shift+Tab不进入sheet，打开后trap，关闭后再次不进入；为closed sheet提供inert和隐藏语义，open/close/1200断点同步；同时验证断点隐藏后焦点移到合适可见目标。",
-      "status": "source_fixed_awaiting_D2_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": 79,
       "active_cap": null,
       "batch": "B-followup",
@@ -1540,7 +1993,12 @@
         "phase": "current source review",
         "reviewed_at": "2026-10-16T00:58:38+08:00"
       },
-      "source_recheck_note": "Current read-only source confirms native-dialog/inert, removed unguarded search focus, or outer details toggle cancellation. Do not close without new D2 browser receipt."
+      "source_recheck_note": "Current read-only source confirms native-dialog/inert, removed unguarded search focus, or outer details toggle cancellation. Do not close without new D2 browser receipt.",
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-015",
@@ -1553,7 +2011,7 @@
       "title": "AI旧回复成功后强制聚焦追问框",
       "baseline_reason": "AI请求在飞行时，主搜索输入仍可编辑；attachFollowUpListeners在成功后10ms无条件followUpInput.focus。用户已在主输入编新query时，旧回复会把后续输入抢入追问。isOpen/request有效不等于新编辑意图仍允许夺焦点。",
       "recommendation": "保留触发时query/focus和request所有权，成功后仅在原动作仍保持焦点且用户未转移时聚焦；真实网络桩测Q1慢→主输入键入Q2→Q1返回→activeElement与Q2保留。",
-      "status": "source_fixed_awaiting_D2_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": 79,
       "active_cap": null,
       "batch": "D1-followup",
@@ -1582,7 +2040,12 @@
         "status": "parent_reports_pass_pending_complete_D2_receipt",
         "reviewed_at": "2026-10-16T01:11:13+08:00",
         "scope": "FAQ outercollapse signal abort / newsearchquery focus retained; overallscript stopped later onTravel focus failure."
-      }
+      },
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-016",
@@ -1596,7 +2059,7 @@
       "title": "收起外层FAQ没有取消正在生成的AI",
       "baseline_reason": "cancelRequest只接入AI-toggle、Stop和pagehide；外层Accordion收起details不通知buildAiPanel，opened仍true，valid()继续允许delta写隐藏thread。关闭FAQ后直到完整/25s idle才结束请求。",
       "recommendation": "在外层FAQ收起开始/原生toggle关闭时取消并保留问题；重新展开可重试；测signal aborted与迟到delta/history不进入隐藏内容，保留reduce/普通动画两种关闭路径。",
-      "status": "source_fixed_awaiting_D2_browser",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": null,
       "active_cap": null,
       "batch": "D1-followup",
@@ -1624,7 +2087,12 @@
         "status": "parent_reports_pass_pending_complete_D2_receipt",
         "reviewed_at": "2026-10-16T01:11:13+08:00",
         "scope": "FAQ outercollapse signal abort / newsearchquery focus retained; overallscript stopped later onTravel focus failure."
-      }
+      },
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-017",
@@ -1639,9 +2107,9 @@
       "title": "书籍AI模态未约束键盘焦点在弹层内",
       "baseline_reason": "travel-book-ai.js只处理Escape和输入Enter，未见Tab trap或背景inert；打开focus输入后继续Tab可去背景控件。travel.html自身keydown只针对QR模态，不覆盖书籍AI。",
       "recommendation": "父任务真实Tab/Shift+Tab复现；仅为书籍AI补模态边界与关闭焦点，保留已有取消代次；测试关闭淡出期间不能再启动新请求，快速A/B重开不恢复旧焦点。",
-      "status": "browser_observed_body_focus_gap_wrap_fix_pending",
+      "status": "closed_for_recorded_D2b_contracts_incomplete_family_matrix",
       "baseline_cap": 89,
-      "active_cap": 89,
+      "active_cap": null,
       "batch": "D2",
       "dimensions": [
         "D2",
@@ -1668,7 +2136,12 @@
         "reviewed_at": "2026-10-16T01:06:19+08:00"
       },
       "source_recheck_note": "Current read-only source confirms native-dialog/inert, removed unguarded search focus, or outer details toggle cancellation. Do not close without new D2 browser receipt.",
-      "current_failure_note": "D2a native dialog protects background but does not keep focus continuously inside; explicit first/last wrap under repair. Do not claim old background focus bug unchanged."
+      "current_failure_note": "D2a native dialog protects background but does not keep focus continuously inside; explicit first/last wrap under repair. Do not claim old background focus bug unchanged.",
+      "closed_at": "2026-10-16T01:17:39+08:00",
+      "closure_note": "Independent scorer read passing12-test log and actual assertion sources plus6customflows. Closure restricted to those exact clauses; English/dark/zoom/otherviewports remain unknown.",
+      "fix_evidence": [
+        "E-BATCH-D2B"
+      ]
     },
     {
       "id": "UX-018",
@@ -1737,6 +2210,126 @@
         "phase": "source queue after D2a review",
         "reviewed_at": "2026-10-16T01:13:13+08:00"
       }
+    },
+    {
+      "id": "UX-020",
+      "family_prefix": "T.BOOK",
+      "family_ids": [
+        "T.BOOK.SEND",
+        "T.BOOK.SUGGEST"
+      ],
+      "severity": "P2",
+      "title": "书籍手机发送/建议按钮仍偏小且长问题出现孤行",
+      "baseline_reason": "已看D2b稳定390px图，发送圆按钮明显小于新44px关闭按钮；CSS send为38×38，单行chip为12px字+6px竖padding。首个长问题末尾“么？”单独换行，信息密度高。实际命中盒待DOM读取，不能把38px说成WCAG24失败。",
+      "recommendation": "下一窄批先记录Send/Stop及单行chip实际box；重要手机动作达项目44px。对长问题布局试更清楚的行高/换行平衡，不改作者原文，不隐藏必要内容；320/390与英文长标签实图复核。",
+      "status": "source_fixed_awaiting_D4_browser",
+      "baseline_cap": 89,
+      "active_cap": null,
+      "batch": "later-mobile-polish",
+      "dimensions": [
+        "D2",
+        "D4",
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_screenshot",
+          "path": "docs/ux-audit/2026-10-16/evidence/batch-d2b-book-dialog-reduce.png",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json"
+        },
+        {
+          "kind": "source",
+          "path": "assets/css/extended/zzz-travel-world.css",
+          "line": 1256,
+          "sha256": "324cc98bbb17fca7618e9f6b02a321b8b9304a02d62c2663b1e7fad479cc69ec"
+        }
+      ],
+      "browser_evidence": [],
+      "verified_score": null,
+      "confidence": "medium",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "source_fix_note": "Read-onlyD4 source:Send44,smallviewportfullrowchipsmin44/font13/balancedwrap,input16/minwidth0. Needactual320/390/568checks beforeclosure."
+    },
+    {
+      "id": "UX-021",
+      "family_prefix": "S.WINDOW",
+      "family_ids": [
+        "S.WINDOW.DRAG",
+        "S.WINDOW.CLOSE",
+        "S.APP.notes.EDITOR",
+        "S.APP.map.REGION"
+      ],
+      "severity": "P2",
+      "title": "Space工作区整体缩小且透明边界叠加，桌面文字发软",
+      "baseline_reason": "桌面实际窗口动作22.96px；screenFit visibleFraction=.82让28CSSpx变约23，14CSSpx文字约11.5。已看1440截图：大透明工作区面、实体电脑、前后窗口/阴影叠穿，工具文字小且软。手机地图细标签也偏密。",
+      "recommendation": "以实际像素可读性为验收：接近1:1的DOM文字/控件与清楚纸面承载区，保留咖啡在外侧；避免先加边框/阴影或仅增CSS字号。对实际正文、标题、次级操作分别测量并新前后截图。",
+      "status": "recorded_visual_gap",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "next-Space-readability",
+      "dimensions": [
+        "D1",
+        "D4",
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "path": "docs/ux-audit/2026-10-16/evidence/space-window-audit.json"
+        },
+        {
+          "kind": "recorded_screenshot",
+          "path": "docs/ux-audit/2026-10-16/evidence/space-notes-1440.png"
+        }
+      ],
+      "verified_score": null,
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      }
+    },
+    {
+      "id": "UX-022",
+      "family_prefix": "S.APP.map",
+      "family_ids": [
+        "S.APP.map.ZOOM"
+      ],
+      "severity": "P2",
+      "title": "手机地图缩放按钮仅22px宽",
+      "baseline_reason": "space-window-audit当前390盒：放大/缩小22.14×44.28，中心hittrue；重要移动动作未达到项目44×44目标。8px地图pin另有regionlist，不混为同一问题。",
+      "recommendation": "先补缩放/世界操作实际命中到44×44，测320/390/568横屏与键盘；不要只让CSS声明44再被3D .82缩掉，保留视觉与实际hit区域关系。",
+      "status": "recorded_geometry_gap",
+      "baseline_cap": 89,
+      "active_cap": 89,
+      "batch": "next-Space-readability",
+      "dimensions": [
+        "D2",
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "path": "docs/ux-audit/2026-10-16/evidence/space-window-audit.json"
+        },
+        {
+          "kind": "recorded_screenshot",
+          "path": "docs/ux-audit/2026-10-16/evidence/space-map-390.png"
+        }
+      ],
+      "verified_score": null,
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      }
     }
   ],
   "next_batches": [
@@ -1782,8 +2375,8 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.3",
-    "sha256": "47986bc1d2c7b513969fac404e05c442ac57193160d88a05a3631414f153a054",
+    "version": "1.5",
+    "sha256": "fa88e2d455d8d8b9f31bb1d0435e874d075edf367c3c2e0f10b623b41a2288c9",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -1806,8 +2399,8 @@
         "source_only_families": 281
       }
     },
-    "imported_at": "2026-10-16T00:55:34+08:00",
-    "source_metadata_updated_at": "2026-10-16T00:52:03+08:00"
+    "imported_at": "2026-10-16T01:17:39+08:00",
+    "source_metadata_updated_at": "2026-10-16T01:13:18+08:00"
   },
   "groups": [
     {
@@ -3282,7 +3875,8 @@
         "R-02"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-008"
+        "CHK-BASE-UX-008",
+        "CHK-D2B-MOBILE-MENU"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -3695,7 +4289,8 @@
         "R-39"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-D1-SEARCH-CLOSE"
+        "CHK-D1-SEARCH-CLOSE",
+        "CHK-D2B-SEARCH-FOCUS"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -4446,7 +5041,8 @@
         "R-03"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-A-EMAIL-FOCUS"
+        "CHK-A-EMAIL-FOCUS",
+        "CHK-D2B-SUB-TIMEOUT"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -4528,7 +5124,8 @@
         "R-03"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-007"
+        "CHK-BASE-UX-007",
+        "CHK-D2B-SUB-TIMEOUT"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -7909,7 +8506,8 @@
         "R-12"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-003"
+        "CHK-BASE-UX-003",
+        "CHK-D2B-TABS-DESKTOP"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -7993,7 +8591,8 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-009",
-        "CHK-SOURCE-CLOSED-SHEET"
+        "CHK-SOURCE-CLOSED-SHEET",
+        "CHK-D2B-SHEET-CLOSED"
       ],
       "expert_visual_assessment_ids": [
         "VIS-ARTICLE-D1",
@@ -8078,7 +8677,8 @@
         "R-12"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-SOURCE-CLOSED-SHEET"
+        "CHK-SOURCE-CLOSED-SHEET",
+        "CHK-D2B-SHEET-CLOSED"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -8164,7 +8764,10 @@
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-003",
         "CHK-BASE-UX-004",
-        "CHK-SOURCE-CLOSED-SHEET"
+        "CHK-SOURCE-CLOSED-SHEET",
+        "CHK-D2B-TABS-COMPACT",
+        "CHK-D2B-PANEL-NAME",
+        "CHK-D2B-SHEET-CLOSED"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -9901,11 +10504,17 @@
         "CHK-A-COPY-MOBILE-TARGET",
         "CHK-BASE-UX-005",
         "CHK-C-COPY-SEPARATION",
-        "CHK-C-COPY-ATTENTION"
+        "CHK-C-COPY-ATTENTION",
+        "CHK-D2B-COPY-REFUSAL",
+        "CHK-D3-COPY-CLEARANCE",
+        "CHK-D3-COPY-ACTION-LANGUAGE",
+        "CHK-D3-COPY-NO-STALE-STATUS"
       ],
       "expert_visual_assessment_ids": [
         "VIS-ARTICLE-D1",
-        "VIS-ARTICLE-D4"
+        "VIS-ARTICLE-D4",
+        "VIS-COPY-D3-D1",
+        "VIS-COPY-D3-D4"
       ]
     },
     {
@@ -9999,9 +10608,16 @@
         "CHK-C-COPY-SEPARATION",
         "CHK-C-COPY-ATTENTION",
         "CHK-C-COPY-CLEAN-READER",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-CODE-FOCUS",
+        "CHK-D3-COPY-CLEARANCE",
+        "CHK-D3-COPY-ACTION-LANGUAGE",
+        "CHK-D3-COPY-NO-STALE-STATUS"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-COPY-D3-D1",
+        "VIS-COPY-D3-D4"
+      ]
     },
     {
       "family_id": "A.BODY.FAQ",
@@ -10081,7 +10697,9 @@
       "journey_queue_ids": [
         "R-15"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-D2B-FAQ-OUTER-CANCEL"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -10565,7 +11183,8 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-006",
-        "CHK-D1-SHARE-INTENT"
+        "CHK-D1-SHARE-INTENT",
+        "CHK-D2B-SHARE-RECOVERY"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -13494,7 +14113,7 @@
     },
     {
       "family_id": "S.DOCK.APP",
-      "title": "11 Apps入口/运行状态",
+      "title": "Dock常用应用入口：桌面7项/手机5项，另有OS；全部11项在Launchpad",
       "scope": "control-family",
       "selector": ".space-dock [data-open]",
       "selector_type": "css",
@@ -13637,7 +14256,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -13645,7 +14266,10 @@
       "journey_queue_ids": [
         "E-01"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-NOTE-TEXT",
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -13758,7 +14382,9 @@
         "E-01"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-A-WINDOW-PRESS"
+        "CHK-A-WINDOW-PRESS",
+        "CHK-SPACE-NOTE-DOM",
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -13837,7 +14463,10 @@
       "journey_queue_ids": [
         "E-01"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-MAX-RESTORE",
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -13915,7 +14544,9 @@
       "journey_queue_ids": [
         "E-01"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -13985,7 +14616,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -13994,7 +14627,10 @@
         "E-01"
       ],
       "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-SPACE-NOTES-D1",
+        "VIS-SPACE-NOTES-D4"
+      ]
     },
     {
       "family_id": "S.WINDOW.RESIZE",
@@ -15248,7 +15884,8 @@
         "E-05"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-010"
+        "CHK-BASE-UX-010",
+        "CHK-D2B-LIBRARY-EMPTY"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -15330,7 +15967,8 @@
         "E-05"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-010"
+        "CHK-BASE-UX-010",
+        "CHK-D2B-LIBRARY-EMPTY"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -16378,7 +17016,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -16387,7 +17027,10 @@
         "E-03"
       ],
       "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-SPACE-MAP-D4",
+        "VIS-SPACE-MAP-SETTLED-D4"
+      ]
     },
     {
       "family_id": "S.APP.map.VIEW",
@@ -16536,7 +17179,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-022"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -16544,8 +17189,13 @@
       "journey_queue_ids": [
         "E-04"
       ],
-      "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-MAP-ZOOM-TARGET"
+      ],
+      "expert_visual_assessment_ids": [
+        "VIS-SPACE-MAP-D4",
+        "VIS-SPACE-MAP-SETTLED-D4"
+      ]
     },
     {
       "family_id": "S.APP.map.RELATED",
@@ -16625,7 +17275,10 @@
         "E-04"
       ],
       "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-SPACE-MAP-D4",
+        "VIS-SPACE-MAP-SETTLED-D4"
+      ]
     },
     {
       "family_id": "S.APP.books.READ",
@@ -16772,7 +17425,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -16780,8 +17435,14 @@
       "journey_queue_ids": [
         "E-02"
       ],
-      "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-NOTE-DOM",
+        "CHK-SPACE-NOTE-TEXT"
+      ],
+      "expert_visual_assessment_ids": [
+        "VIS-SPACE-NOTES-D1",
+        "VIS-SPACE-NOTES-D4"
+      ]
     },
     {
       "family_id": "S.APP.notes.EXPORT",
@@ -19452,9 +20113,14 @@
         "D-05"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-D1-BOOK-SWITCH"
+        "CHK-D1-BOOK-SWITCH",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-BOOK-ESCAPE-REOPEN"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-BOOK-D1",
+        "VIS-BOOK-D4"
+      ]
     },
     {
       "family_id": "T.BOOK.CLOSE",
@@ -19542,9 +20208,14 @@
         "D-05"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-D1-BOOK-SWITCH"
+        "CHK-D1-BOOK-SWITCH",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-BOOK-CLOSE-TARGET",
+        "CHK-D2B-BOOK-ESCAPE-REOPEN"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-BOOK-D2B-MOBILE-D4"
+      ]
     },
     {
       "family_id": "T.BOOK.SUGGEST",
@@ -19614,7 +20285,8 @@
         }
       },
       "known_findings": [
-        "UX-012"
+        "UX-012",
+        "UX-020"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -19624,7 +20296,11 @@
         "D-05"
       ],
       "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-BOOK-D1",
+        "VIS-BOOK-D4",
+        "VIS-BOOK-D2B-MOBILE-D4"
+      ]
     },
     {
       "family_id": "T.BOOK.INPUT",
@@ -19716,9 +20392,15 @@
       "scoped_check_assessment_ids": [
         "CHK-D1-BOOK-STOP",
         "CHK-D1-BOOK-SWITCH",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-IME-BOOK"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-BOOK-D1",
+        "VIS-BOOK-D4",
+        "VIS-BOOK-D2B-MOBILE-D4"
+      ]
     },
     {
       "family_id": "T.BOOK.SEND",
@@ -19789,7 +20471,8 @@
       },
       "known_findings": [
         "UX-012",
-        "UX-017"
+        "UX-017",
+        "UX-020"
       ],
       "contract_evidence": [
         {
@@ -19808,9 +20491,15 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-D1-BOOK-STOP",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-IME-BOOK"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-BOOK-D1",
+        "VIS-BOOK-D4",
+        "VIS-BOOK-D2B-MOBILE-D4"
+      ]
     },
     {
       "family_id": "T.SOCIAL.QR",
@@ -25634,7 +26323,9 @@
       "journey_queue_ids": [
         "D-02"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-D2B-SEARCH-FOCUS"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -26588,7 +27279,9 @@
         "D-04"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-D1-FAQ-STOP"
+        "CHK-D1-FAQ-STOP",
+        "CHK-D2B-IME-FAQ",
+        "CHK-D2B-FAQ-OUTER-CANCEL"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -26679,7 +27372,9 @@
         "D-04"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-D1-FAQ-STOP"
+        "CHK-D1-FAQ-STOP",
+        "CHK-D2B-IME-FAQ",
+        "CHK-D2B-FAQ-OUTER-CANCEL"
       ],
       "expert_visual_assessment_ids": []
     },
@@ -28353,7 +29048,8 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-008"
+        "CHK-BASE-UX-008",
+        "CHK-D2B-MOBILE-MENU"
       ]
     },
     {
@@ -28709,10 +29405,13 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-015"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-D1-SEARCH-CLOSE"
+        "CHK-D1-SEARCH-CLOSE",
+        "CHK-D2B-SEARCH-FOCUS"
       ]
     },
     {
@@ -29404,7 +30103,8 @@
         }
       ],
       "scoped_check_assessment_ids": [
-        "CHK-A-EMAIL-FOCUS"
+        "CHK-A-EMAIL-FOCUS",
+        "CHK-D2B-SUB-TIMEOUT"
       ]
     },
     {
@@ -29479,7 +30179,8 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-007"
+        "CHK-BASE-UX-007",
+        "CHK-D2B-SUB-TIMEOUT"
       ]
     },
     {
@@ -32820,7 +33521,8 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-003"
+        "CHK-BASE-UX-003",
+        "CHK-D2B-TABS-DESKTOP"
       ]
     },
     {
@@ -32891,12 +33593,14 @@
         "D6": null
       },
       "known_findings": [
-        "UX-009"
+        "UX-009",
+        "UX-014"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-009",
-        "CHK-SOURCE-CLOSED-SHEET"
+        "CHK-SOURCE-CLOSED-SHEET",
+        "CHK-D2B-SHEET-CLOSED"
       ]
     },
     {
@@ -32966,10 +33670,13 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-014"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-SOURCE-CLOSED-SHEET"
+        "CHK-SOURCE-CLOSED-SHEET",
+        "CHK-D2B-SHEET-CLOSED"
       ]
     },
     {
@@ -33041,13 +33748,17 @@
       },
       "known_findings": [
         "UX-003",
-        "UX-004"
+        "UX-004",
+        "UX-014"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-003",
         "CHK-BASE-UX-004",
-        "CHK-SOURCE-CLOSED-SHEET"
+        "CHK-SOURCE-CLOSED-SHEET",
+        "CHK-D2B-TABS-COMPACT",
+        "CHK-D2B-PANEL-NAME",
+        "CHK-D2B-SHEET-CLOSED"
       ]
     },
     {
@@ -35483,7 +36194,11 @@
         "CHK-A-COPY-MOBILE-TARGET",
         "CHK-BASE-UX-005",
         "CHK-C-COPY-SEPARATION",
-        "CHK-C-COPY-ATTENTION"
+        "CHK-C-COPY-ATTENTION",
+        "CHK-D2B-COPY-REFUSAL",
+        "CHK-D3-COPY-CLEARANCE",
+        "CHK-D3-COPY-ACTION-LANGUAGE",
+        "CHK-D3-COPY-NO-STALE-STATUS"
       ]
     },
     {
@@ -35554,7 +36269,8 @@
         "D6": null
       },
       "known_findings": [
-        "UX-011"
+        "UX-011",
+        "UX-013"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
@@ -35562,7 +36278,11 @@
         "CHK-C-COPY-SEPARATION",
         "CHK-C-COPY-ATTENTION",
         "CHK-C-COPY-CLEAN-READER",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-CODE-FOCUS",
+        "CHK-D3-COPY-CLEARANCE",
+        "CHK-D3-COPY-ACTION-LANGUAGE",
+        "CHK-D3-COPY-NO-STALE-STATUS"
       ]
     },
     {
@@ -35633,7 +36353,8 @@
         "D6": null
       },
       "known_findings": [
-        "UX-011"
+        "UX-011",
+        "UX-013"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
@@ -35641,7 +36362,11 @@
         "CHK-C-COPY-SEPARATION",
         "CHK-C-COPY-ATTENTION",
         "CHK-C-COPY-CLEAN-READER",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-CODE-FOCUS",
+        "CHK-D3-COPY-CLEARANCE",
+        "CHK-D3-COPY-ACTION-LANGUAGE",
+        "CHK-D3-COPY-NO-STALE-STATUS"
       ]
     },
     {
@@ -35712,7 +36437,8 @@
         "D6": null
       },
       "known_findings": [
-        "UX-011"
+        "UX-011",
+        "UX-013"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
@@ -35720,7 +36446,11 @@
         "CHK-C-COPY-SEPARATION",
         "CHK-C-COPY-ATTENTION",
         "CHK-C-COPY-CLEAN-READER",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-CODE-FOCUS",
+        "CHK-D3-COPY-CLEARANCE",
+        "CHK-D3-COPY-ACTION-LANGUAGE",
+        "CHK-D3-COPY-NO-STALE-STATUS"
       ]
     },
     {
@@ -35791,7 +36521,8 @@
         "D6": null
       },
       "known_findings": [
-        "UX-011"
+        "UX-011",
+        "UX-013"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
@@ -35799,7 +36530,11 @@
         "CHK-C-COPY-SEPARATION",
         "CHK-C-COPY-ATTENTION",
         "CHK-C-COPY-CLEAN-READER",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-CODE-FOCUS",
+        "CHK-D3-COPY-CLEARANCE",
+        "CHK-D3-COPY-ACTION-LANGUAGE",
+        "CHK-D3-COPY-NO-STALE-STATUS"
       ]
     },
     {
@@ -35869,9 +36604,14 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-016",
+        "UX-019"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-D2B-FAQ-OUTER-CANCEL"
+      ]
     },
     {
       "control_id": "A.BODY.NOTES.control.752b12",
@@ -36514,7 +37254,8 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-006",
-        "CHK-D1-SHARE-INTENT"
+        "CHK-D1-SHARE-INTENT",
+        "CHK-D2B-SHARE-RECOVERY"
       ]
     },
     {
@@ -36590,7 +37331,8 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-006",
-        "CHK-D1-SHARE-INTENT"
+        "CHK-D1-SHARE-INTENT",
+        "CHK-D2B-SHARE-RECOVERY"
       ]
     },
     {
@@ -39528,9 +40270,14 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-NOTE-TEXT",
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
+      ]
     },
     {
       "control_id": "S.WINDOW.MINIMIZE.control.02e48c",
@@ -39636,7 +40383,9 @@
         }
       ],
       "scoped_check_assessment_ids": [
-        "CHK-A-WINDOW-PRESS"
+        "CHK-A-WINDOW-PRESS",
+        "CHK-SPACE-NOTE-DOM",
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
       ]
     },
     {
@@ -39708,7 +40457,10 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-MAX-RESTORE",
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
+      ]
     },
     {
       "control_id": "S.WINDOW.ARRANGE.control.057daf",
@@ -39779,7 +40531,9 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-PHONE-WINDOW-TARGET"
+      ]
     },
     {
       "control_id": "S.WINDOW.DRAG.control.aac6e7",
@@ -39848,7 +40602,9 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -41273,7 +42029,8 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-010"
+        "CHK-BASE-UX-010",
+        "CHK-D2B-LIBRARY-EMPTY"
       ]
     },
     {
@@ -41348,7 +42105,8 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-BASE-UX-010"
+        "CHK-BASE-UX-010",
+        "CHK-D2B-LIBRARY-EMPTY"
       ]
     },
     {
@@ -42521,7 +43279,9 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -42663,9 +43423,13 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-022"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-MAP-ZOOM-TARGET"
+      ]
     },
     {
       "control_id": "S.APP.map.ZOOM.control.638bfd",
@@ -42734,9 +43498,13 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-022"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-MAP-ZOOM-TARGET"
+      ]
     },
     {
       "control_id": "S.APP.map.ZOOM.control.167605",
@@ -42805,9 +43573,13 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-022"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-MAP-ZOOM-TARGET"
+      ]
     },
     {
       "control_id": "S.APP.map.RELATED.control.dc3a84",
@@ -43160,9 +43932,14 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-021"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-SPACE-NOTE-DOM",
+        "CHK-SPACE-NOTE-TEXT"
+      ]
     },
     {
       "control_id": "S.APP.notes.EXPORT.control.8bdf72",
@@ -46071,10 +46848,15 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012",
+        "UX-017"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-D1-BOOK-SWITCH"
+        "CHK-D1-BOOK-SWITCH",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-BOOK-ESCAPE-REOPEN"
       ]
     },
     {
@@ -46144,10 +46926,15 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-017"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-D1-BOOK-SWITCH"
+        "CHK-D1-BOOK-SWITCH",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-BOOK-CLOSE-TARGET",
+        "CHK-D2B-BOOK-ESCAPE-REOPEN"
       ]
     },
     {
@@ -46217,7 +47004,10 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012",
+        "UX-020"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -46288,12 +47078,17 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012",
+        "UX-017"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-D1-BOOK-STOP",
         "CHK-D1-BOOK-SWITCH",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-IME-BOOK"
       ]
     },
     {
@@ -46363,11 +47158,17 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012",
+        "UX-017",
+        "UX-020"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-D1-BOOK-STOP",
-        "CHK-D2-NATIVE-FOCUS-GAP"
+        "CHK-D2-NATIVE-FOCUS-GAP",
+        "CHK-D2B-BOOK-FOCUS",
+        "CHK-D2B-IME-BOOK"
       ]
     },
     {
@@ -46437,7 +47238,9 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-018"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -46508,7 +47311,9 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-018"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -51833,9 +52638,13 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-015"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-D2B-SEARCH-FOCUS"
+      ]
     },
     {
       "control_id": "G.SEARCH.FOLLOWUP.control.75df78",
@@ -51904,9 +52713,13 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-015"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-D2B-SEARCH-FOCUS"
+      ]
     },
     {
       "control_id": "G.SEARCH.RETRY.control.788d65",
@@ -52756,7 +53569,10 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012",
+        "UX-016"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -52827,7 +53643,9 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -52898,10 +53716,14 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-D1-FAQ-STOP"
+        "CHK-D1-FAQ-STOP",
+        "CHK-D2B-IME-FAQ",
+        "CHK-D2B-FAQ-OUTER-CANCEL"
       ]
     },
     {
@@ -52971,10 +53793,15 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012",
+        "UX-016"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-D1-FAQ-STOP"
+        "CHK-D1-FAQ-STOP",
+        "CHK-D2B-IME-FAQ",
+        "CHK-D2B-FAQ-OUTER-CANCEL"
       ]
     },
     {
@@ -53044,7 +53871,9 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-012"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": []
     },
@@ -53994,6 +54823,27 @@
       "check_id": "A.FOCUS.email",
       "status": "visible_focus_verified_for_recorded_cases",
       "reason": "outline:none可由明确边框改变+3pxshadow表达焦点；不为通过某条断言叠双环。其余状态未知。"
+    },
+    {
+      "family_ids": [
+        "S.APP.map.PIN",
+        "S.APP.map.REGION"
+      ],
+      "artifact": "E-SPACE-WINDOW-AUDIT",
+      "status": "equivalent_region_geometry_available_but_desktop_hit_diagnosis_pending",
+      "mobile_pin_box": "8.34×8.23",
+      "mobile_region_box": "91.84×44.28",
+      "reason": "Region controls provide same place-selection source path and adequategeometry; do not declarepinWCAGfailure frompinbox alone. Desktophitfalse requires actualtopnode/activewindowdiagnosis."
+    },
+    {
+      "family_ids": [
+        "S.APP.map.RELATED",
+        "S.APP.map.PIN",
+        "S.APP.map.REGION"
+      ],
+      "artifact": "E-SPACE-SETTLED",
+      "status": "diagnostic_resolved_not_production_bug",
+      "reason": "450ms后realimagesready；desktop pinbboxcenter ocean/regionclip解释原hitfalse，未确认渲染/遮挡缺陷。Temporaryopaqueplane separatelylabeledconcept,notproduction."
     }
   ],
   "recommendation_queue": [
@@ -54655,7 +55505,7 @@
       "anchor_score": 90,
       "verified_score": null,
       "kind": "expert_visual_judgment",
-      "status": "scoped_assessment",
+      "status": "historical_C_crowding_improved_D3",
       "confidence": "medium",
       "as_of": {
         "phase": "batch C frozen source",
@@ -54668,7 +55518,8 @@
       ],
       "scope": "Four recorded error screenshots only",
       "reason": "恢复说明和44px工具已分出独立行，旧覆盖关闭；320zh与390en文字终点距工具仅约0.24/0.25px，仍显拥挤，后续可留更明确间距。此为视觉细化，不重新宣告叠压失败。",
-      "finding_id": null
+      "finding_id": null,
+      "superseded_by": "CHK-D3-COPY-CLEARANCE"
     },
     {
       "id": "CHK-C-COPY-CLEAN-READER",
@@ -54706,17 +55557,18 @@
       "status": "scoped_contract_pass",
       "confidence": "high",
       "as_of": {
-        "phase": "D1 frozen source",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
-        "recorded_at": "2026-10-15T17:04:46.677629+00:00",
-        "reviewed_at": "2026-10-16T01:10:00+08:00"
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
       },
       "evidence": [
-        "E-BATCH-D1:D1.share-late-refusal-no-modal"
+        "E-BATCH-D2B-REQUESTS:D1.share-late-refusal-no-modal"
       ],
       "scope": "Single named zh/light/reduce workflow and recorded viewport only",
       "reason": "390px zh/light/reduce中复制迟到拒绝没有重开manual模态，焦点仍在FAB；只证明该意图变更链。",
-      "finding_id": null
+      "finding_id": null,
+      "provenance_correction": "Same namedflow rerun currentD2b, not oldD1 receipt."
     },
     {
       "id": "CHK-D1-BOOK-STOP",
@@ -54731,17 +55583,18 @@
       "status": "scoped_contract_pass",
       "confidence": "high",
       "as_of": {
-        "phase": "D1 frozen source",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
-        "recorded_at": "2026-10-15T17:04:46.677629+00:00",
-        "reviewed_at": "2026-10-16T01:10:00+08:00"
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
       },
       "evidence": [
-        "E-BATCH-D1:D1.travel-stop-preserves-question"
+        "E-BATCH-D2B-REQUESTS:D1.travel-stop-preserves-question"
       ],
       "scope": "Single named zh/light/reduce workflow and recorded viewport only",
       "reason": "1440px zh/light/reduce，部分SSE后Stop取消并保留问题，回到可编辑状态。",
-      "finding_id": null
+      "finding_id": null,
+      "provenance_correction": "Same namedflow rerun currentD2b, not oldD1 receipt."
     },
     {
       "id": "CHK-D1-BOOK-SWITCH",
@@ -54757,17 +55610,18 @@
       "status": "scoped_contract_pass",
       "confidence": "high",
       "as_of": {
-        "phase": "D1 frozen source",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
-        "recorded_at": "2026-10-15T17:04:46.677629+00:00",
-        "reviewed_at": "2026-10-16T01:10:00+08:00"
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
       },
       "evidence": [
-        "E-BATCH-D1:D1.travel-close-switch-isolates-request"
+        "E-BATCH-D2B-REQUESTS:D1.travel-close-switch-isolates-request"
       ],
       "scope": "Single named zh/light/reduce workflow and recorded viewport only",
       "reason": "同一桌面配置关闭A并打开B后旧回答隔离；不认证D2后来native dialog Tab/淡出。",
-      "finding_id": null
+      "finding_id": null,
+      "provenance_correction": "Same namedflow rerun currentD2b, not oldD1 receipt."
     },
     {
       "id": "CHK-D1-FAQ-STOP",
@@ -54782,17 +55636,18 @@
       "status": "scoped_contract_pass",
       "confidence": "high",
       "as_of": {
-        "phase": "D1 frozen source",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
-        "recorded_at": "2026-10-15T17:04:46.677629+00:00",
-        "reviewed_at": "2026-10-16T01:10:00+08:00"
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
       },
       "evidence": [
-        "E-BATCH-D1:D1.faq-stream-stop-restores-input"
+        "E-BATCH-D2B-REQUESTS:D1.faq-stream-stop-restores-input"
       ],
       "scope": "Single named zh/light/reduce workflow and recorded viewport only",
       "reason": "390px zh/light/reduce，部分SSE Stop恢复问题和输入；不包含外层summary collapse。",
-      "finding_id": null
+      "finding_id": null,
+      "provenance_correction": "Same namedflow rerun currentD2b, not oldD1 receipt."
     },
     {
       "id": "CHK-D1-SEARCH-CLOSE",
@@ -54808,17 +55663,18 @@
       "status": "scoped_contract_pass",
       "confidence": "high",
       "as_of": {
-        "phase": "D1 frozen source",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d1-source.json",
-        "recorded_at": "2026-10-15T17:04:46.677629+00:00",
-        "reviewed_at": "2026-10-16T01:10:00+08:00"
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
       },
       "evidence": [
-        "E-BATCH-D1:D1.search-close-cancels-and-clears"
+        "E-BATCH-D2B-REQUESTS:D1.search-close-cancels-and-clears"
       ],
       "scope": "Single named zh/light/reduce workflow and recorded viewport only",
       "reason": "1440px zh/light/reduce，关闭搜索取消部分SSE，重开清空；不包含旧成功回复抢编辑焦点。",
-      "finding_id": null
+      "finding_id": null,
+      "provenance_correction": "Same namedflow rerun currentD2b, not oldD1 receipt."
     },
     {
       "id": "CHK-D2-NATIVE-FOCUS-GAP",
@@ -54831,7 +55687,7 @@
       "anchor_score": 80,
       "verified_score": null,
       "kind": "recorded_browser",
-      "status": "observed_gap_fix_pending",
+      "status": "historical_D2a_gap_closed_for_D2b_recorded_cases",
       "confidence": "high",
       "as_of": {
         "phase": "D2a frozen source before explicit focus wrap",
@@ -54843,7 +55699,627 @@
       ],
       "scope": "Recorded Tab traversal only; outside remains implicitly inert",
       "reason": "native dialog仍有一跳activeElement=body，焦点环丢失后下一Tab返回首项；可完成有明确摩擦。此分不声称背景控件可用。",
-      "finding_id": "UX-013/UX-017"
+      "finding_id": "UX-013/UX-017",
+      "superseded_by": [
+        "CHK-D2B-CODE-FOCUS",
+        "CHK-D2B-BOOK-FOCUS"
+      ]
+    },
+    {
+      "id": "CHK-D2B-TABS-DESKTOP",
+      "family_ids": [
+        "A.TOC.TABS"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:article tabs expose one stop and support Arrow, Home and End"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "1440×900 zh reduced，End/Home/ArrowRight循环与单一tabstop按实际断言通过；ArrowLeft另有Node合同，完整可选series配置未齐。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-TABS-COMPACT",
+      "family_ids": [
+        "A.TOC.MOBILETABS"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:compact tools retain focus around the selected tab and name each panel"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844 zh reduced，End切末tab、ShiftTab不离弹层、Escape返回FAB。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-PANEL-NAME",
+      "family_ids": [
+        "A.TOC.MOBILETABS"
+      ],
+      "criterion": "D2.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:compact tools retain focus around the selected tab and name each panel"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "实际可见分享panel aria-labelledby等于被选tabID；源中全部ID已补，未把可选series组合都认证。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-MOBILE-MENU",
+      "family_ids": [
+        "G.NAV.MOBILE"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:mobile navigation is a dismissible named disclosure"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844 /zh/articles/，实际延后可见后首链接聚焦、Escape回触发器且关闭；不外推长英文/断点。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-COPY-REFUSAL",
+      "family_ids": [
+        "A.BODY.CODECOPY"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:refused clipboard copy leaves code selected with a truthful recovery"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "受控reject+execCommandfalse，没有is-copied，原代码选择保留且按钮恢复可用。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-SHEET-CLOSED",
+      "family_ids": [
+        "A.TOC.FAB",
+        "A.TOC.MOBILETABS",
+        "A.TOC.LINK"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:closed compact tools cannot receive focus before opening or after dismissal"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844初始与关闭后inert/ariahidden，尝试focus当前tab均失败；打开可聚焦，Escape再关闭。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-CODE-FOCUS",
+      "family_ids": [
+        "A.BODY.CODEEXPAND"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:fullscreen code uses a native modal and restores its expand trigger"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844全屏连续6次Tab每次都有可见dialog内焦点，Escape关闭并返回原展开按钮。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-BOOK-FOCUS",
+      "family_ids": [
+        "T.BOOK.ASK",
+        "T.BOOK.CLOSE",
+        "T.BOOK.INPUT",
+        "T.BOOK.SEND"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:book AI uses a native modal with keyboard containment and a 44px exit"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844书籍弹层连续8次Tab均可见，Escape返回触发器，关闭控件实际44px。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-BOOK-CLOSE-TARGET",
+      "family_ids": [
+        "T.BOOK.CLOSE"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:book AI uses a native modal with keyboard containment and a 44px exit"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "只验证书籍Close实际宽高≥44；Send和chips尺寸不包含，不能由Close通过认证整模态命中。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-IME-BOOK",
+      "family_ids": [
+        "T.BOOK.INPUT",
+        "T.BOOK.SEND"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:book AI keeps the composing draft until a deliberate Enter"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "合成isComposing Enter不发请求，后续明确Enter才发；不是实体手机真实中文输入法完整验收。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-IME-FAQ",
+      "family_ids": [
+        "A.FAQ.AI.INPUT",
+        "A.FAQ.AI.SEND"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:FAQ AI ignores both composing Enter and Safari keyCode229"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "isComposing与keyCode229合成事件都保留草稿且0请求，明确Enter才发。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-SHARE-RECOVERY",
+      "family_ids": [
+        "G.SHARE.DIRECT"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:share link refusal preserves the URL and returns focus after dismissal"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844分享拒绝后native manual弹层保留可选择URL，Escape回复制触发器。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-SUB-TIMEOUT",
+      "family_ids": [
+        "G.SUB.EMAIL",
+        "G.SUB.SUBMIT"
+      ],
+      "criterion": "D3.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:newsletter timeout releases the busy form and preserves the email"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "fetch桩永不settle，虚拟时钟16秒后submit恢复/邮箱保留/超时可见；未发送真实订阅。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-LIBRARY-EMPTY",
+      "family_ids": [
+        "S.APP.reader.QUERY",
+        "S.APP.reader.FILTER"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:library empty search and empty bookmarks offer a working way back"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "真实Dock开reader，清无匹配query后焦点回输入且列表恢复；空收藏能回all并显示文章。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-FAQ-OUTER-CANCEL",
+      "family_ids": [
+        "A.BODY.FAQ",
+        "A.FAQ.AI.INPUT",
+        "A.FAQ.AI.SEND"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:D2.faq-outer-collapse-cancels"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844 zh/light/reduce外层summary关闭取消；关闭后的迟到结果不被承诺为有效回复。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-SEARCH-FOCUS",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.FOLLOWUP"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:D2.search-completion-keeps-current-focus"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "1440×844 zh/light/reduce，旧回答完成不抢正在编辑的新搜索焦点。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-D2B-BOOK-ESCAPE-REOPEN",
+      "family_ids": [
+        "T.BOOK.ASK",
+        "T.BOOK.CLOSE"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "recorded_at": "2026-10-15T17:11:58.685295+00:00",
+        "reviewed_at": "2026-10-16T01:17:39+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D2B:D2.travel-dialog-double-escape / D2.travel-quick-reopen"
+      ],
+      "scope": "Only the exact test assertions and route/viewport described",
+      "reason": "390×844 zh/light，在reduce与no-preference均双Escape和快速重开不被旧回调关闭。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-SPACE-NOTE-DOM",
+      "family_ids": [
+        "S.WINDOW.MINIMIZE",
+        "S.APP.notes.EDITOR"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence": [
+        "E-SPACE-WINDOW-AUDIT:SPACE.notes-minimize-restores-same-DOM"
+      ],
+      "scope": "Exact recordedwindow/geometry fragment only",
+      "reason": "1440/390×900两个记录最小化/恢复保留同DOM；不外推语言/路由/关闭后原节点。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-SPACE-MAX-RESTORE",
+      "family_ids": [
+        "S.WINDOW.MAXIMIZE"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence": [
+        "E-SPACE-WINDOW-AUDIT:SPACE.maximize-restore"
+      ],
+      "scope": "Exact recordedwindow/geometry fragment only",
+      "reason": "1440/390×900最大化再恢复按记录完成；内容可读性与所有尺寸仍须另评。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-SPACE-NOTE-TEXT",
+      "family_ids": [
+        "S.WINDOW.CLOSE",
+        "S.APP.notes.EDITOR"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence": [
+        "E-SPACE-WINDOW-AUDIT:SPACE.notes-close-reopen-persists-text"
+      ],
+      "scope": "Exact recordedwindow/geometry fragment only",
+      "reason": "1440/390×900关闭再开保留文本；该合同不承诺关闭后仍同节点。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-SPACE-PHONE-WINDOW-TARGET",
+      "family_ids": [
+        "S.WINDOW.CLOSE",
+        "S.WINDOW.MINIMIZE",
+        "S.WINDOW.MAXIMIZE",
+        "S.WINDOW.ARRANGE"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence": [
+        "E-SPACE-WINDOW-AUDIT:SPACE.window-targets:390"
+      ],
+      "scope": "Exact recordedwindow/geometry fragment only",
+      "reason": "手机四个windowaction实际44.28×44.28、中心命中，专项通过；桌面各22.96，不能由手机通过外推。",
+      "finding_id": null
+    },
+    {
+      "id": "CHK-SPACE-MAP-ZOOM-TARGET",
+      "family_ids": [
+        "S.APP.map.ZOOM"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "recorded_browser",
+      "status": "observed_target_gap",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Space window audit against D2b frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d2b-source.json",
+        "reviewed_at": "2026-10-16T01:20:46+08:00"
+      },
+      "evidence": [
+        "E-SPACE-WINDOW-AUDIT:SPACE.map-targets:390"
+      ],
+      "scope": "Exact recordedwindow/geometry fragment only",
+      "reason": "手机+/−实际22.14×44.28，宽不足项目重要移动控件44目标；中心命中但点击有摩擦，G4上限89。WCAG24与spacing/替代仍须独立判断。",
+      "finding_id": "UX-022"
+    },
+    {
+      "id": "CHK-D3-COPY-CLEARANCE",
+      "family_ids": [
+        "A.BODY.CODECOPY",
+        "A.BODY.CODEEXPAND"
+      ],
+      "criterion": "D4.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser_and_inspected_screenshot",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D3 frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d3-source.json",
+        "recorded_at": "2026-10-15T17:18:23.225380+00:00",
+        "reviewed_at": "2026-10-16T01:23:26+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D3-COPY"
+      ],
+      "scope": "Only named fourcurrent error statecases;notcomplete family",
+      "reason": "文字Range与44px展开工具净空实算26.23/45.55/18.53/14.58px，四图分区清楚，C的0.24px拥挤在这些新D3状态关闭。",
+      "finding_id": "UX-011"
+    },
+    {
+      "id": "CHK-D3-COPY-ACTION-LANGUAGE",
+      "family_ids": [
+        "A.BODY.CODECOPY",
+        "A.BODY.CODEEXPAND"
+      ],
+      "criterion": "D1.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser_and_inspected_screenshot",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D3 frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d3-source.json",
+        "recorded_at": "2026-10-15T17:18:23.225380+00:00",
+        "reviewed_at": "2026-10-16T01:23:26+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D3-COPY"
+      ],
+      "scope": "Only named fourcurrent error statecases;notcomplete family",
+      "reason": "中文按钮只保留“复制”；手机失败文案明确“长按代码，选择复制”，四张语言/指针场景与动作一致。",
+      "finding_id": "UX-011"
+    },
+    {
+      "id": "CHK-D3-COPY-NO-STALE-STATUS",
+      "family_ids": [
+        "A.BODY.CODECOPY",
+        "A.BODY.CODEEXPAND"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_browser_and_inspected_screenshot",
+      "status": "scoped_contract_pass",
+      "confidence": "high",
+      "as_of": {
+        "phase": "D3 frozen source",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-d3-source.json",
+        "recorded_at": "2026-10-15T17:18:23.225380+00:00",
+        "reviewed_at": "2026-10-16T01:23:26+08:00"
+      },
+      "evidence": [
+        "E-BATCH-D3-COPY"
+      ],
+      "scope": "Only named fourcurrent error statecases;notcomplete family",
+      "reason": "四个D3记录从error进入全屏没有克隆旧status；focus循环另由D2b合同保证，未由这8条替代。",
+      "finding_id": "UX-011"
     }
   ]
 }
