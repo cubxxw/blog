@@ -186,38 +186,7 @@
 
 </div>
 
-<script>
-(function () {
-  function showToast(msg) {
-    var t = document.querySelector('.et-copy-toast');
-    if (!t) {
-      t = document.createElement('div');
-      t.className = 'et-copy-toast';
-      document.body.appendChild(t);
-    }
-    t.textContent = msg;
-    t.classList.add('et-copy-toast--visible');
-    setTimeout(function () { t.classList.remove('et-copy-toast--visible'); }, 2000);
-  }
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('.et-share-copy, .abs-share-copy');
-    if (btn) {
-      var href = btn.dataset.href || location.href;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(href).then(function () { showToast('Link copied'); });
-      } else {
-        var ta = document.createElement('textarea');
-        ta.value = href;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showToast('Link copied');
-      }
-    }
-  });
-})();
-</script>
+<script src="{{ "/js/article-share-link.js" | relURL }}?v={{ readFile "static/js/article-share-link.js" | sha256 }}" defer></script>
 
 {{/* ─── US-031: Compact-layout FAB + Bottom Sheet (&lt;1200px) ──── */}}
 
@@ -237,12 +206,12 @@
 </button>
 
 {{/* Bottom Sheet */}}
-<div id="article-bottom-sheet" class="article-bottom-sheet" role="dialog" aria-modal="true" aria-label="{{ i18n "tools.toc" | default "Article Tools" | safeHTML }}">
+<div id="article-bottom-sheet" class="article-bottom-sheet" role="dialog" aria-modal="true" aria-hidden="true" inert aria-label="{{ i18n "tools.toc" | default "Article Tools" | safeHTML }}">
   <div class="abs-handle" aria-hidden="true"></div>
 
   {{/* Tab bar */}}
   <div class="abs-tabs" role="tablist">
-    <button class="abs-tab abs-tab--active" role="tab" data-tab="toc" aria-selected="true" aria-controls="abs-panel-toc">
+    <button class="abs-tab abs-tab--active" role="tab" id="abs-tab-toc" tabindex="0" data-tab="toc" aria-selected="true" aria-controls="abs-panel-toc">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
         <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
@@ -252,7 +221,7 @@
     {{- $absSeries := .Params.series }}
     {{- $absHasSeries := and $absSeries $absSeries.slug }}
     {{- if $absHasSeries }}
-    <button class="abs-tab" role="tab" data-tab="series" aria-selected="false" aria-controls="abs-panel-series">
+    <button class="abs-tab" role="tab" id="abs-tab-series" tabindex="-1" data-tab="series" aria-selected="false" aria-controls="abs-panel-series">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
@@ -261,7 +230,7 @@
     </button>
     {{- end }}
     {{- if $capabilities.ai }}
-    <button class="abs-tab" role="tab" data-tab="ai" aria-selected="false" aria-controls="abs-panel-ai">
+    <button class="abs-tab" role="tab" id="abs-tab-ai" tabindex="-1" data-tab="ai" aria-selected="false" aria-controls="abs-panel-ai">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
         <circle cx="7.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
@@ -270,7 +239,7 @@
       <span>{{ i18n "tools.ai" | default "AI" | safeHTML }}</span>
     </button>
     {{- end }}
-    <button class="abs-tab" role="tab" data-tab="share" aria-selected="false" aria-controls="abs-panel-share">
+    <button class="abs-tab" role="tab" id="abs-tab-share" tabindex="-1" data-tab="share" aria-selected="false" aria-controls="abs-panel-share">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
         <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
@@ -379,12 +348,12 @@
       </button>
       <div class="abs-share-row">
         <a class="abs-share-btn" href="https://x.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }}"
-           target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+           target="_blank" rel="noopener noreferrer" aria-label="{{ if eq .Lang "zh" }}分享到 X{{ else }}Share on X{{ end }}">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </a>
-        <button class="abs-share-btn" aria-label="Share via WeChat"
+        <button type="button" class="abs-share-btn" aria-label="{{ if eq .Lang "zh" }}微信分享卡片{{ else }}Share via WeChat{{ end }}"
                 data-title="{{ .Title | safeJS }}"
                 data-url="{{ .Permalink }}"
                 data-desc="{{ .Description | safeJS }}"
@@ -393,14 +362,14 @@
             <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
           </svg>
         </button>
-        <button class="abs-share-btn abs-share-copy" aria-label="Copy link" data-href="{{ .Permalink }}">
+        <button type="button" class="abs-share-btn abs-share-copy" aria-label="{{ if eq .Lang "zh" }}复制链接{{ else }}Copy link{{ end }}" data-href="{{ .Permalink }}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
           </svg>
         </button>
         <a class="abs-share-btn" href="mailto:?subject={{ .Title | urlquery }}&body={{ .Permalink | urlquery }}"
-           aria-label="Share via Email">
+           aria-label="{{ if eq .Lang "zh" }}通过邮件分享{{ else }}Share via email{{ end }}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
@@ -412,6 +381,7 @@
   </div>{{/* .abs-panels */}}
 </div>{{/* .article-bottom-sheet */}}
 
+<script src="{{ "/js/article-tabs.js" | relURL }}?v={{ readFile "static/js/article-tabs.js" | sha256 }}" defer></script>
 <script src="{{ "/js/article-bottom-sheet.js" | relURL }}?v={{ readFile "static/js/article-bottom-sheet.js" | sha256 }}" defer></script>
 
 {{/* Hero cover 2.5D pointer parallax — no WebGL. Self-gates to fine-pointer

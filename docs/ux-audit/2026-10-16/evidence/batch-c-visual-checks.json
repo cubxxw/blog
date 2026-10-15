@@ -1,0 +1,246 @@
+{
+  "checks": [
+    {
+      "id": "C.CODECOPY.error-tool-separation",
+      "route": "/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "dark",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "selector": ".code-copy-status/.code-tool-expand",
+      "passed": true,
+      "geometry": {
+        "button": {
+          "x": 238,
+          "y": 704.546875,
+          "width": 44,
+          "height": 44,
+          "right": 282,
+          "bottom": 748.546875
+        },
+        "lines": [
+          {
+            "x": 14,
+            "y": 704.546875,
+            "width": 223.765625,
+            "height": 17,
+            "right": 237.765625,
+            "bottom": 721.546875
+          },
+          {
+            "x": 14,
+            "y": 723.734375,
+            "width": 88.96875,
+            "height": 17,
+            "right": 102.96875,
+            "bottom": 740.734375
+          }
+        ],
+        "hit": true,
+        "message": "自动复制不可用，代码已选中。请按 Ctrl / ⌘ + C 复制。"
+      },
+      "screenshot": "batch-c-code-zh-dark-320.png"
+    },
+    {
+      "id": "C.CODECOPY.fullscreen-after-error",
+      "route": "/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "dark",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "passed": true
+    },
+    {
+      "id": "C.CODECOPY.error-tool-separation",
+      "route": "/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "selector": ".code-copy-status/.code-tool-expand",
+      "passed": true,
+      "geometry": {
+        "button": {
+          "x": 308,
+          "y": 657.125,
+          "width": 44,
+          "height": 44,
+          "right": 352,
+          "bottom": 701.125
+        },
+        "lines": [
+          {
+            "x": 14,
+            "y": 657.125,
+            "width": 292.359375,
+            "height": 17,
+            "right": 306.359375,
+            "bottom": 674.125
+          },
+          {
+            "x": 14,
+            "y": 676.3125,
+            "width": 24.734375,
+            "height": 17,
+            "right": 38.734375,
+            "bottom": 693.3125
+          }
+        ],
+        "hit": true,
+        "message": "自动复制不可用，代码已选中。请按 Ctrl / ⌘ + C 复制。"
+      },
+      "screenshot": "batch-c-code-zh-light-390.png"
+    },
+    {
+      "id": "C.CODECOPY.fullscreen-after-error",
+      "route": "/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "passed": true
+    },
+    {
+      "id": "C.CODECOPY.error-tool-separation",
+      "route": "/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "locale": "en",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "selector": ".code-copy-status/.code-tool-expand",
+      "passed": true,
+      "geometry": {
+        "button": {
+          "x": 238,
+          "y": 657.640625,
+          "width": 44,
+          "height": 44,
+          "right": 282,
+          "bottom": 701.640625
+        },
+        "lines": [
+          {
+            "x": 14,
+            "y": 658.640625,
+            "width": 204.046875,
+            "height": 15,
+            "right": 218.046875,
+            "bottom": 673.640625
+          },
+          {
+            "x": 14,
+            "y": 677.828125,
+            "width": 202.78125,
+            "height": 15,
+            "right": 216.78125,
+            "bottom": 692.828125
+          }
+        ],
+        "hit": true,
+        "message": "Automatic copy is unavailable. Code selected; press Ctrl / ⌘ + C to copy."
+      },
+      "screenshot": "batch-c-code-en-light-320.png"
+    },
+    {
+      "id": "C.CODECOPY.fullscreen-after-error",
+      "route": "/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "locale": "en",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "passed": true
+    },
+    {
+      "id": "C.CODECOPY.error-tool-separation",
+      "route": "/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "en",
+      "theme": "dark",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "selector": ".code-copy-status/.code-tool-expand",
+      "passed": true,
+      "geometry": {
+        "button": {
+          "x": 308,
+          "y": 633,
+          "width": 44,
+          "height": 44,
+          "right": 352,
+          "bottom": 677
+        },
+        "lines": [
+          {
+            "x": 14,
+            "y": 634,
+            "width": 293.75,
+            "height": 15,
+            "right": 307.75,
+            "bottom": 649
+          },
+          {
+            "x": 14,
+            "y": 653.1875,
+            "width": 113.09375,
+            "height": 15,
+            "right": 127.09375,
+            "bottom": 668.1875
+          }
+        ],
+        "hit": true,
+        "message": "Automatic copy is unavailable. Code selected; press Ctrl / ⌘ + C to copy."
+      },
+      "screenshot": "batch-c-code-en-dark-390.png"
+    },
+    {
+      "id": "C.CODECOPY.fullscreen-after-error",
+      "route": "/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "en",
+      "theme": "dark",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-c-source.json",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "source": "batch-c-source.json"
+}

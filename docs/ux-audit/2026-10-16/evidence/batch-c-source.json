@@ -1,0 +1,23 @@
+{
+  "assets/css/extended/editorial-tools.css": "004a55b024103694573dbd7085c7f2f99373bd1892e782f290264787a9f895b9",
+  "assets/css/extended/micro-interactions.css": "b37a981e2727c7238f304c874875b68170c614cf1802df4cd584945754fb1c0a",
+  "assets/css/extended/zzz-code-mobile.css": "6ae0d289df60b1dae5a3c385e034665bbf96343fb086304880598e7a7ebe111d",
+  "assets/css/extended/zzz-copy-code-feedback.css": "c5067df11c535f327cac6d3cec0ce35ca4ee6bb82531cfeb953a74baed39f2cd",
+  "assets/css/space-cafe.css": "c41f9bbfa9dbb6b885bac78488a1ae00072cc8cdfecfdad13434fe461e09d8e2",
+  "assets/css/space.css": "7131d6fce8498f0145ce6086e619b6fcb76fe409f228c85bf9240c6cfaf037da",
+  "assets/js/space/apps.js": "526846478a60819f4fac9383cb60083d7dd413e28ed184ebfe10ffca4cc7dac0",
+  "assets/js/space/cafe.js": "dbde12314836e989ebc40d6d7c051fa3d08f39b860ce8a6197d3f885fe5a503d",
+  "layouts/_default/single.html": "e2e9d53a7df422e46b476cd7ef0e34292d01713a822285aaab7b3e82d7c65b62",
+  "layouts/partials/article/editorial-tools.html": "a30181df494f6386b349d327d49a6fa8b650b0d09110d67afeebfbc3dd2af6ca",
+  "layouts/partials/footer-subscribe.html": "310c31ad659bbb3efc565733943a98d5a64be04d5b7da91c279f8a0ebb08f631",
+  "layouts/partials/footer.html": "05fb9e3a7581bdb54de650166a1ddf28f9ca2186ba056b7caf847aaba0b4565c",
+  "layouts/partials/header.html": "515a1cea0e694b1bb4a59a5b8c80264c6b8c368e828962538400d769225d40b9",
+  "layouts/partials/space/cafe.html": "f1b09a4ded6fe4cf5fe3294fa028f9c30a8fbf6a783948e068f005b78e930064",
+  "static/js/article-bottom-sheet.js": "fe8410f1ffbb412e8c1d61fa51168a3ee1cc6021546677bb113e510c415f5d30",
+  "static/js/article-share-link.js": "6afdd1be4cd280f60ddc5b6f82f7c69fa6d82053d25d9acafa24cafa5ed2674a",
+  "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+  "static/js/code-copy.js": "e8be3d3a4f11052965d716188cbd1cd834a919e05276d947b247b93557a7c93d",
+  "static/js/code-mobile.js": "157df1263594c580812401951c683c6f57e4a45867082cbe7190a907fad65911",
+  "static/js/micro-interactions.js": "85a47c36f29ed560b3dc38c539143021a860bb6a75030063744603242be7315c",
+  "static/js/reading-companion.js": "0a71bfbdb1521ba4e16ff83899bf768e864dfd2694c3018339ad1e62e3ab23b3"
+}

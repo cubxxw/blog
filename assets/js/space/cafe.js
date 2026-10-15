@@ -29,7 +29,10 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   }
   function setQuiet(value) {
     quiet=value;root.dataset.environmentPaused=String(value);
-    root.querySelector('[data-cafe-quiet]').setAttribute('aria-pressed',String(value));world?.setQuiet(value);
+    const button=root.querySelector('[data-cafe-quiet]');
+    button.setAttribute('aria-pressed',String(value));
+    button.title=value?t('安静模式已开启，点击恢复环境动效','Quiet mode is on. Resume environment motion'):t('暂停小猫、水面和雨水的动效','Pause the cat, water and rain motion');
+    world?.setQuiet(value);
     try{localStorage.setItem('space:cafe:quiet:v1',value?'yes':'no');}catch{}
   }
   commit(theme);setQuiet(quiet);desiredMode=cafeEntryMode({route,navigation,saved:savedMode,localeResume});setMode(desiredMode);

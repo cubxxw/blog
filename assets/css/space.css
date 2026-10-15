@@ -143,6 +143,10 @@ body.products-view-bear .main { margin: 0; padding: 0; width: 100%; max-width: n
 .space-sidebar button { display: block; width: 100%; padding: 9px 10px; text-align: left; font-size: 11px; margin-bottom: 2px; }
 .space-sidebar button:hover, .space-sidebar button[aria-pressed="true"] { background: var(--sp-soft); }
 .space-list { padding: 9px 19px; }
+.space-library-empty { padding:32px 12px; max-width:440px; overflow-wrap:anywhere; }
+.space-library-empty h3 { font-size:16px; line-height:1.6; margin-bottom:10px; }
+.space-library-empty p { color:var(--sp-muted); font-size:13px; line-height:1.8; margin-bottom:20px; }
+.space-library-empty button { min-height:44px; }
 .space-list-item { width: 100%; padding: 15px 0 !important; border-bottom: 1px solid var(--sp-line) !important; border-radius: 0 !important; display: block; text-align: left; }
 .space-list-item strong { display: block; font-size: 13px; margin-bottom: 5px; font-weight: 550; }
 .space-list-item span { display: block; color: var(--sp-muted); font-size: 10px; line-height: 1.65; }

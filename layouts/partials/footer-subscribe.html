@@ -122,17 +122,19 @@
       sending: '正在寄出…',
       success: '成功！去邮箱点一下确认，我们就正式认识了。',
       dup: '这个邮箱已经在名单里了，我们已经认识啦。',
-      rate: '请求太频繁了，喝口水稍后再试。',
-      invalid: '这个邮箱好像不太对，再看一眼？',
-      error: '寄丢了…请稍后再试一次。'
+      rate: '请求太频繁，请稍后重试。',
+      invalid: '请输入有效的邮箱地址。',
+      error: '未能完成订阅，请稍后重试。',
+      timeout: '请求超时，请检查网络后重试。'
     },
     en: {
       sending: 'Sending…',
       success: 'Done! Check your inbox to confirm. Then it’s official.',
       dup: 'This address is already on the list. We’ve met!',
-      rate: 'Too many attempts. Take a sip of water and retry.',
-      invalid: 'That email looks off. Please double-check it.',
-      error: 'Lost in the mail… please try again shortly.'
+      rate: 'Too many attempts. Please try again later.',
+      invalid: 'Enter a valid email address.',
+      error: 'Subscription could not be completed. Please try again.',
+      timeout: 'Request timed out. Check your connection and try again.'
     }
   };
   var lang = (document.documentElement.lang || '').indexOf('zh') === 0 ? 'zh' : 'en';
@@ -144,6 +146,7 @@
     var input = form.querySelector('input[name="email"]');
     var status = band.querySelector('[data-fsub-status]');
     var submit = form.querySelector('button[type="submit"]');
+    var currentRequest = 0;
 
     /* ── pupil tracking ─────────────────────────────── */
     if (!reduce && bear && window.matchMedia('(pointer: fine)').matches) {
@@ -195,6 +198,7 @@
     function setBusy(busy) {
       form.setAttribute('aria-busy', busy ? 'true' : 'false');
       if (submit) submit.disabled = busy;
+      input.readOnly = busy;
     }
     function celebrate() {
       band.classList.remove('is-loading');
@@ -225,8 +229,20 @@
       band.classList.add('is-loading');
       setBusy(true);
       setStatus(t.sending, 'loading');
+      var controller = new AbortController();
+      var timedOut = false;
+      var request = ++currentRequest;
+      var requestTimer = setTimeout(function () {
+        if (request !== currentRequest) return;
+        timedOut = true;
+        controller.abort();
+        band.classList.remove('is-loading');
+        setBusy(false);
+        setStatus(t.timeout, 'error');
+      }, 15000);
       fetch('/.netlify/functions/subscribe-email', {
         method: 'POST',
+        signal: controller.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email,
@@ -237,16 +253,18 @@
           company: String(form.elements.company.value || '').trim()
         })
       }).then(function (res) {
+        if (controller.signal.aborted || request !== currentRequest) return;
         if (res.ok) { celebrate(); setStatus(t.success, 'success'); return; }
         if (res.status === 409) { celebrate(); setStatus(t.dup, 'success'); return; }
         band.classList.remove('is-loading');
         setBusy(false);
         setStatus(res.status === 429 ? t.rate : t.error, 'error');
       }).catch(function () {
+        if (timedOut || request !== currentRequest) return;
         band.classList.remove('is-loading');
         setBusy(false);
-        setStatus(t.error, 'error');
-      });
+        setStatus(timedOut ? t.timeout : t.error, 'error');
+      }).finally(function () { clearTimeout(requestTimer); });
     });
   });
 })();

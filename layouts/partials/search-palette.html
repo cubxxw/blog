@@ -62,6 +62,7 @@
           <span class="search-palette__ai-icon" aria-hidden="true">✦</span>
           <span>{{ if $isZh }}AI 回答{{ else }}AI answer{{ end }}</span>
         </div>
+        <button type="button" class="search-palette__ai-stop" id="search-ai-stop" hidden>{{ if $isZh }}停止生成{{ else }}Stop generating{{ end }}</button>
         <button type="button" class="search-palette__ai-close" id="search-ai-close"
                 aria-label="{{ if $isZh }}关闭 AI 回答{{ else }}Close AI answer{{ end }}">&times;</button>
       </div>

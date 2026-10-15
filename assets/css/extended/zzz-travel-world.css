@@ -1066,7 +1066,17 @@ a.tw-tome__spine:focus-visible {
   place-items: center;
   opacity: 0;
   transition: opacity 200ms var(--ease-standard, ease);
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
 }
+.tw-book-ai::backdrop { background: transparent; }
 .tw-book-ai.is-open { opacity: 1; }
 .tw-book-ai[hidden] { display: none; }
 .tw-book-ai__backdrop {
@@ -1095,8 +1105,8 @@ a.tw-tome__spine:focus-visible {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border: none;

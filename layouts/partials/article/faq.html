@@ -37,6 +37,6 @@
   </div>
 </section>
 {{- if (partial "site-capabilities.html" $).ai -}}
-<script src="{{ "/js/article-faq.js" | relURL }}" defer></script>
+<script src="{{ "/js/article-faq.js" | relURL }}?v={{ readFile "static/js/article-faq.js" | sha256 }}" defer></script>
 {{- end -}}
 {{- end -}}

@@ -1145,6 +1145,17 @@ body.dark .editorial-tools-panel .rc-ai-loading-line::after {
 }
 
 /* Copy toast */
+.search-palette__ai-stop {
+  min-height:44px;
+  padding:8px 12px;
+  margin-left:auto;
+  border:1px solid var(--color-rule);
+  border-radius:5px;
+  background:transparent;
+  color:var(--color-ink);
+  font:12px var(--font-body);
+  cursor:pointer;
+}
 .et-copy-toast {
   position: fixed;
   bottom: 1.5rem;
@@ -1163,6 +1174,43 @@ body.dark .editorial-tools-panel .rc-ai-loading-line::after {
 
 .et-copy-toast.et-copy-toast--visible {
   opacity: 1;
+}
+
+/* Clipboard refusal retains a selectable link and an explicit way back. */
+.article-copy-fallback {
+  width: min(440px, calc(100% - 32px));
+  margin: auto;
+  padding: 26px;
+  border: 1px solid var(--color-rule);
+  border-radius: 12px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+.article-copy-fallback::backdrop { background: #0007; }
+.article-copy-fallback h2 { margin: 0 0 12px; font-size: 20px; line-height: 1.5; }
+.article-copy-fallback p { margin: 0 0 18px; font-size: 14px; line-height: 1.75; }
+.article-copy-fallback input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-rule);
+  border-radius: 5px;
+  color: inherit;
+  background: transparent;
+  font: 16px var(--font-body);
+}
+.article-copy-fallback button {
+  display: block;
+  min-width: 80px;
+  min-height: 44px;
+  margin: 18px 0 0 auto;
+  border: 1px solid var(--color-rule);
+  border-radius: 5px;
+  font: 14px var(--font-body);
+  color: inherit;
+  cursor: pointer;
 }
 
 /* ── Annotations empty state ── */

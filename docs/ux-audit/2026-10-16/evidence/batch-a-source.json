@@ -1,0 +1,10 @@
+{
+  "assets/css/extended/micro-interactions.css": "b37a981e2727c7238f304c874875b68170c614cf1802df4cd584945754fb1c0a",
+  "assets/css/extended/zzz-copy-code-feedback.css": "8158fbf068ed9e0a24d2c17e93da378da665cd5c4aba7d59e648f1159f3c471b",
+  "assets/css/space-cafe.css": "c41f9bbfa9dbb6b885bac78488a1ae00072cc8cdfecfdad13434fe461e09d8e2",
+  "assets/js/space/cafe.js": "dbde12314836e989ebc40d6d7c051fa3d08f39b860ce8a6197d3f885fe5a503d",
+  "layouts/partials/footer.html": "04e9bd50498a938f89c4c352fbe8de4f86ec922eb57da20705649f6ad0207808",
+  "layouts/partials/space/cafe.html": "f1b09a4ded6fe4cf5fe3294fa028f9c30a8fbf6a783948e068f005b78e930064",
+  "static/js/code-copy.js": "e8be3d3a4f11052965d716188cbd1cd834a919e05276d947b247b93557a7c93d",
+  "static/js/micro-interactions.js": "85a47c36f29ed560b3dc38c539143021a860bb6a75030063744603242be7315c"
+}

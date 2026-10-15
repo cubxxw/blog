@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "id": "D2.faq-outer-collapse-cancels",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "source": "batch-d2b-source.json",
+      "reducedMotion": "reduce"
+    },
+    {
+      "id": "D2.search-completion-keeps-current-focus",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/",
+      "viewport": {
+        "width": 1440,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "source": "batch-d2b-source.json",
+      "reducedMotion": "reduce"
+    },
+    {
+      "id": "D2.travel-dialog-double-escape",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "source": "batch-d2b-source.json",
+      "reducedMotion": "reduce"
+    },
+    {
+      "id": "D2.travel-quick-reopen",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "source": "batch-d2b-source.json",
+      "reducedMotion": "reduce"
+    },
+    {
+      "id": "D2.travel-dialog-double-escape",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "source": "batch-d2b-source.json",
+      "reducedMotion": "no-preference"
+    },
+    {
+      "id": "D2.travel-quick-reopen",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "source": "batch-d2b-source.json",
+      "reducedMotion": "no-preference"
+    }
+  ],
+  "errors": [],
+  "limits": "Isolated browser transport. Exact routes, dimensions and motion as recorded. Native dialog containment also checked in contracts suite."
+}

@@ -1,0 +1,7 @@
+{
+  "stage": "D1 original five flows passed, then revalidated after D2b dialog changes",
+  "originalSource": "batch-d1-source.json",
+  "originalExecutionLog": "batch-d1-flows.log",
+  "currentReceipt": "batch-d2b-request-checks.json",
+  "currentSource": "batch-d2b-source.json"
+}

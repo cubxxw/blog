@@ -1,0 +1,156 @@
+npm notice run cubxxw-blog@1.0.0 ux:test
+npm notice run node --test scripts/code-copy.test.mjs scripts/article-share-link.test.mjs scripts/article-tabs.test.mjs scripts/footer-subscribe.test.mjs scripts/article-ai-client.test.mjs scripts/ai-markdown-security.test.mjs
+TAP version 13
+# Subtest: travel-book-ai.js: generated attributes cannot escape an AI Markdown URL
+ok 1 - travel-book-ai.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 3.645583
+  type: 'test'
+  ...
+# Subtest: travel-book-ai.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 2 - travel-book-ai.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 1.135917
+  type: 'test'
+  ...
+# Subtest: article-faq.js: generated attributes cannot escape an AI Markdown URL
+ok 3 - article-faq.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 0.697958
+  type: 'test'
+  ...
+# Subtest: article-faq.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 4 - article-faq.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.208417
+  type: 'test'
+  ...
+# Subtest: blog-ai-inline.js: generated attributes cannot escape an AI Markdown URL
+ok 5 - blog-ai-inline.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 0.700667
+  type: 'test'
+  ...
+# Subtest: blog-ai-inline.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 6 - blog-ai-inline.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.214
+  type: 'test'
+  ...
+# Subtest: JSON preserves request selection fields and validates answer
+ok 7 - JSON preserves request selection fields and validates answer
+  ---
+  duration_ms: 17.635333
+  type: 'test'
+  ...
+# Subtest: SSE handles byte-split UTF-8, CRLF, metadata, DONE and EOF tails
+ok 8 - SSE handles byte-split UTF-8, CRLF, metadata, DONE and EOF tails
+  ---
+  duration_ms: 4.763709
+  type: 'test'
+  ...
+# Subtest: abort invalidates late JSON even when a transport ignores cancellation
+ok 9 - abort invalidates late JSON even when a transport ignores cancellation
+  ---
+  duration_ms: 0.553292
+  type: 'test'
+  ...
+# Subtest: idle response-header timeout aborts and reports a retryable timeout
+ok 10 - idle response-header timeout aborts and reports a retryable timeout
+  ---
+  duration_ms: 15.608458
+  type: 'test'
+  ...
+# Subtest: SSE malformed data and empty streams cannot become successful history
+ok 11 - SSE malformed data and empty streams cannot become successful history
+  ---
+  duration_ms: 1.278583
+  type: 'test'
+  ...
+# Subtest: optional book suggestions survive both transports without changing ordinary response keys
+ok 12 - optional book suggestions survive both transports without changing ordinary response keys
+  ---
+  duration_ms: 1.714875
+  type: 'test'
+  ...
+# Subtest: share copy confirms the resolved operation in the page language
+ok 13 - share copy confirms the resolved operation in the page language
+  ---
+  duration_ms: 1.668917
+  type: 'test'
+  ...
+# Subtest: refused share copy preserves a selectable URL in a dismissible dialog
+ok 14 - refused share copy preserves a selectable URL in a dismissible dialog
+  ---
+  duration_ms: 1.477625
+  type: 'test'
+  ...
+# Subtest: legacy copy must return true before English success is announced
+ok 15 - legacy copy must return true before English success is announced
+  ---
+  duration_ms: 0.618625
+  type: 'test'
+  ...
+# Subtest: a late clipboard refusal cannot reopen a modal after focus has moved
+ok 16 - a late clipboard refusal cannot reopen a modal after focus has moved
+  ---
+  duration_ms: 0.509291
+  type: 'test'
+  ...
+# Subtest: a tablist has one keyboard stop and a matching visible panel
+ok 17 - a tablist has one keyboard stop and a matching visible panel
+  ---
+  duration_ms: 2.162334
+  type: 'test'
+  ...
+# Subtest: arrows wrap, Home and End move focus with selection, ordinary Tab stays native
+ok 18 - arrows wrap, Home and End move focus with selection, ordinary Tab stays native
+  ---
+  duration_ms: 0.769708
+  type: 'test'
+  ...
+# Subtest: copy confirms only after the clipboard promise succeeds and blocks duplicate presses
+ok 19 - copy confirms only after the clipboard promise succeeds and blocks duplicate presses
+  ---
+  duration_ms: 1.936125
+  type: 'test'
+  ...
+# Subtest: clipboard refusal and failed legacy copy never claim success; code remains selected
+ok 20 - clipboard refusal and failed legacy copy never claim success; code remains selected
+  ---
+  duration_ms: 1.391334
+  type: 'test'
+  ...
+# Subtest: a successful legacy copy uses the same confirmation and clears the temporary selection
+ok 21 - a successful legacy copy uses the same confirmation and clears the temporary selection
+  ---
+  duration_ms: 0.63
+  type: 'test'
+  ...
+# Subtest: a request deadline restores the form even when the transport never settles
+ok 22 - a request deadline restores the form even when the transport never settles
+  ---
+  duration_ms: 1.605917
+  type: 'test'
+  ...
+# Subtest: a late timed-out response cannot overwrite the result of the next attempt
+ok 23 - a late timed-out response cannot overwrite the result of the next attempt
+  ---
+  duration_ms: 0.51625
+  type: 'test'
+  ...
+# Subtest: network rejection releases pending state and keeps a usable retry
+ok 24 - network rejection releases pending state and keeps a usable retry
+  ---
+  duration_ms: 0.446208
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 102.020875

@@ -24,7 +24,7 @@
     <div class="space-cafe__utilities">
       <button type="button" data-cafe-language aria-label="{{ if $zh }}切换到英文{{ else }}Switch to Chinese{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</button>
       <button type="button" data-cafe-quiet aria-pressed="false">{{ if $zh }}安静模式{{ else }}Quiet mode{{ end }}</button>
-      <button type="button" data-cafe-picker aria-haspopup="dialog"><span>{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}</span><span aria-hidden="true">⌄</span></button>
+      <button type="button" data-cafe-picker aria-haspopup="dialog" aria-label="{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}"><span>{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}</span><span aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m4 18 5-5 4 3 3-5 4 7"/></svg></span></button>
     </div>
   </header>
   <footer class="space-cafe__footer"><div><p class="space-cafe__eyebrow">A PLACE TO STAY A LITTLE</p><button type="button" class="space-cafe__place" data-cafe-picker aria-haspopup="dialog"><span data-cafe-name></span><span aria-hidden="true">⌄</span></button><p data-cafe-note></p></div><p class="space-cafe__resident" data-cafe-resident>{{ if $zh }}不赶时间。坐一会儿。{{ else }}No hurry. Stay a little.{{ end }}</p></footer>

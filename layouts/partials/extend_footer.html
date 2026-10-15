@@ -7,7 +7,7 @@
 {{- if not $isArticlesLibrary }}
 <script src="{{ "/js/micro-interactions.js" | relURL }}?v={{ readFile "static/js/micro-interactions.js" | sha256 }}" defer></script>
 {{- if (partial "site-capabilities.html" .).ai }}
-<script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>
+<script src="{{ "/js/blog-ai-inline.js" | relURL }}?v={{ readFile "static/js/blog-ai-inline.js" | sha256 }}" defer></script>
 {{- end }}
 {{- /* newsletter.js removed: it only served [data-newsletter-form] inside
      rss-subscribe.html, whose callers (index_profile / home-info /

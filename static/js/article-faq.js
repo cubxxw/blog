@@ -17,11 +17,13 @@
       askToggle: '对这个问题继续追问 AI',
       placeholder: '针对这个问题继续追问…',
       send: '发送',
+      stop: '停止生成',
+      stopped: '已停止生成，可以修改问题后重试。',
       thinking: '思考中',
       noAnswer: '（未收到回复）',
       timeout: '请求超时，请稍后重试。',
       genericError: '请求失败，请稍后重试。',
-      notFound: 'AI 函数未找到，请确认 netlify dev 正在运行',
+      notFound: 'AI 暂时无法使用，请稍后重试。',
       retry: '重试',
       you: '你',
       ai: 'AI',
@@ -35,11 +37,13 @@
       askToggle: 'Keep asking the AI about this',
       placeholder: 'Ask a follow-up on this question…',
       send: 'Send',
+      stop: 'Stop generating',
+      stopped: 'Generation stopped. Edit your question to try again.',
       thinking: 'Thinking',
       noAnswer: '(No answer received)',
       timeout: 'Request timed out. Please try again.',
       genericError: 'Request failed. Please try again.',
-      notFound: 'AI function not found. Make sure netlify dev is running.',
+      notFound: 'AI is unavailable. Please try again later.',
       retry: 'Retry',
       you: 'You',
       ai: 'AI',
@@ -88,17 +92,17 @@
   /* ── Minimal Markdown → HTML (subset shared with reading-companion) ─── */
   function parseMarkdown(text) {
     function safeHref(url) {
-      if (/^https?:\/\//i.test(url) || /^\//.test(url)) return url;
-      return null;
+      if (!/^https?:\/\//i.test(url) && !/^\/(?!\/)/.test(url)) return null;
+      try { new URL(url, window.location.origin); return url; } catch (_) { return null; }
     }
     function inline(s) {
       return s
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
         .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
           var href = safeHref(url);
           if (!href) return label;
-          var ext = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
-          return '<a href="' + href + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
+          var ext = /^https?:\/\//i.test(href) && new URL(href).origin !== window.location.origin;
+          return '<a href="' + href + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + label + '</a>';
         })
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
@@ -260,6 +264,7 @@
     var opened = false;
     var busy = false;
     var lastQuestion = '';
+    var requestSerial = 0, activeRequest = null, panelSerial = 0, hideTimer = 0;
     // Seed the conversation with this FAQ's Q&A so follow-ups land in context.
     var history = [
       { role: 'user', content: qText },
@@ -300,6 +305,7 @@
       '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>' +
       '</svg>';
+    var sendIcon = sendBtn.innerHTML;
     composer.appendChild(input);
     composer.appendChild(sendBtn);
     panelInner.appendChild(composer);
@@ -309,24 +315,23 @@
 
     toggle.addEventListener('click', function () {
       opened = !opened;
+      var view = ++panelSerial;
+      window.clearTimeout(hideTimer);
       toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
       wrap.classList.toggle('article-faq__ai--open', opened);
       if (opened) {
         panel.removeAttribute('hidden');
-        // Next frame so the 0fr → 1fr transition actually runs.
         window.requestAnimationFrame(function () {
-          panel.classList.add('article-faq__ai-panel--open');
+          if (opened && view === panelSerial) panel.classList.add('article-faq__ai-panel--open');
         });
-        window.setTimeout(function () { input.focus({ preventScroll: true }); }, 320);
+        window.setTimeout(function () {
+          if (opened && view === panelSerial && document.activeElement === toggle) input.focus({preventScroll: true});
+        }, reduceMotion ? 0 : 320);
       } else {
+        cancelRequest(true);
         panel.classList.remove('article-faq__ai-panel--open');
-        var onEnd = function (e) {
-          if (e.target !== panel) return;
-          panel.setAttribute('hidden', '');
-          panel.removeEventListener('transitionend', onEnd);
-        };
-        if (reduceMotion) panel.setAttribute('hidden', '');
-        else panel.addEventListener('transitionend', onEnd);
+        var hide = function () {if (!opened && view === panelSerial) panel.setAttribute('hidden', '');};
+        if (reduceMotion) hide(); else hideTimer = window.setTimeout(hide, 250);
       }
     });
 
@@ -336,12 +341,12 @@
       sendBtn.classList.toggle('article-faq__ai-send--ready', this.value.trim().length > 0 && !busy);
     });
     input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && !e.shiftKey) {
+      if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && e.keyCode !== 229) {
         e.preventDefault();
         send();
       }
     });
-    sendBtn.addEventListener('click', send);
+    sendBtn.addEventListener('click', function () {if (busy) cancelRequest(true); else send();});
 
     function addBubble(role, text) {
       var row = document.createElement('div');
@@ -367,138 +372,71 @@
       return el;
     }
 
-    function createAbort(ms) {
-      if (typeof AbortController === 'undefined') return { signal: undefined, cancel: function () {} };
-      var controller = new AbortController();
-      var id = setTimeout(function () { controller.abort(); }, ms);
-      return { signal: controller.signal, cancel: function () { clearTimeout(id); } };
-    }
-
     function setBusy(on) {
       busy = on;
-      sendBtn.disabled = on;
+      sendBtn.disabled = false;
+      sendBtn.setAttribute('aria-label', t(on ? 'stop' : 'send'));
+      sendBtn.innerHTML = on ? '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1" fill="currentColor"/></svg>' : sendIcon;
       input.disabled = on;
+      wrap.setAttribute('aria-busy', String(on));
       wrap.classList.toggle('article-faq__ai--busy', on);
       if (!on) sendBtn.classList.toggle('article-faq__ai-send--ready', input.value.trim().length > 0);
     }
-
-    async function send() {
-      var q = input.value.trim();
-      if (!q || busy) return;
-      if (q.length > MAX_INPUT) q = q.slice(0, MAX_INPUT);
-      lastQuestion = q;
-
-      // Chips are a cold-start aid; retire the row once a real turn happens.
-      if (chipsRow.parentNode) {
-        chipsRow.classList.add('article-faq__ai-chips--gone');
-        window.setTimeout(function () { chipsRow.remove(); }, 260);
+    function cancelRequest(restore) {
+      requestSerial++;
+      var previous = activeRequest; activeRequest = null;
+      if (previous) {
+        previous.controller.abort(); previous.thinking.remove();
+        if (restore && !input.value) input.value = previous.question;
+        if (restore) {
+          var note = document.createElement('p'); note.className = 'article-faq__ai-error';
+          note.setAttribute('role', 'status'); note.textContent = t('stopped'); thread.appendChild(note);
+        }
       }
-      var prevError = thread.querySelector('.article-faq__ai-error');
-      if (prevError) prevError.remove();
-
-      addBubble('user', q);
-      input.value = '';
-      input.style.height = 'auto';
-      setBusy(true);
-      var thinkingEl = showThinking();
-      var request = createAbort(25000);
-
+      setBusy(false);
+    }
+    async function send() {
+      var q = input.value.trim().slice(0, MAX_INPUT);
+      if (!q || busy || !opened) return;
+      lastQuestion = q;
+      if (chipsRow.parentNode) chipsRow.remove();
+      var prevError = thread.querySelector('.article-faq__ai-error'); if (prevError) prevError.remove();
+      addBubble('user', q); input.value = ''; input.style.height = 'auto'; setBusy(true);
+      var thinkingEl = showThinking(), streamBody = null;
+      var controller = new AbortController(), serial = ++requestSerial;
+      activeRequest = {controller: controller, question: q, thinking: thinkingEl};
+      function valid() {return serial === requestSerial && !controller.signal.aborted && opened;}
       try {
-        var res = await fetch(ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            question: q,
-            language: language,
-            articleTitle: getArticleTitle(),
-            articleContent: getArticleText(),
-            pagePath: window.location.pathname,
-            context: history
-          }),
-          signal: request.signal
-        });
-        request.cancel();
-
-        if (!res.ok) {
-          if (res.status === 404) throw new Error(t('notFound'));
-          var errData;
-          try { errData = await res.json(); } catch (_) { errData = {}; }
-          throw new Error(errData.error || (t('genericError') + ' (' + res.status + ')'));
-        }
-
-        var contentType = res.headers.get('content-type') || '';
-        var answer = '';
-
-        if (contentType.indexOf('text/event-stream') !== -1 && res.body && res.body.getReader) {
-          thinkingEl.remove();
-          var streamBody = addBubble('ai', '');
-          var reader = res.body.getReader();
-          var decoder = new TextDecoder();
-          var buffer = '';
-          sse: while (true) {
-            var chunk = await reader.read();
-            if (chunk.done) break;
-            buffer += decoder.decode(chunk.value, { stream: true });
-            var lines = buffer.split('\n');
-            buffer = lines.pop();
-            for (var li = 0; li < lines.length; li++) {
-              var line = lines[li];
-              if (line.indexOf('data: ') !== 0) continue;
-              var data = line.slice(6).trim();
-              if (data === '[DONE]') break sse;
-              try {
-                var json = JSON.parse(data);
-                var delta = json.delta || '';
-                if (delta) {
-                  answer += delta;
-                  streamBody.innerHTML = parseMarkdown(answer);
-                }
-              } catch (_e) {}
-            }
-          }
-          if (!answer) {
-            answer = t('noAnswer');
-            streamBody.textContent = answer;
-          }
-        } else {
-          var payload;
-          try { payload = await res.json(); } catch (_) { throw new Error(t('genericError')); }
-          thinkingEl.remove();
-          answer = payload.answer || t('noAnswer');
-          addBubble('ai', answer);
-        }
-
-        history.push({ role: 'user', content: q });
-        history.push({ role: 'assistant', content: answer });
-        // Keep the seed Q&A, trim the middle when the thread gets long.
+        if (!window.ArticleAIClient) throw new Error(t('genericError'));
+        var result = await window.ArticleAIClient.request({
+          question: q, language: language, articleTitle: getArticleTitle(),
+          articleContent: getArticleText(), pagePath: window.location.pathname, context: history
+        }, {signal: controller.signal, timeoutMs: 25000, onDelta: function (answer) {
+          if (!valid()) return;
+          thinkingEl.remove(); if (!streamBody) streamBody = addBubble('ai', '');
+          streamBody.innerHTML = parseMarkdown(answer);
+        }});
+        if (!valid()) return;
+        thinkingEl.remove();
+        if (streamBody) streamBody.innerHTML = parseMarkdown(result.answer); else addBubble('ai', result.answer);
+        history.push({role: 'user', content: q}, {role: 'assistant', content: result.answer});
         if (history.length > 14) history = history.slice(0, 2).concat(history.slice(-10));
       } catch (err) {
-        if (thinkingEl.parentNode) thinkingEl.remove();
-        var msg = err && err.name === 'AbortError' ? t('timeout') : ((err && err.message) || t('genericError'));
-        var errEl = document.createElement('div');
-        errEl.className = 'article-faq__ai-error';
-        var errText = document.createElement('span');
-        errText.textContent = '⚠ ' + msg;
-        var retryBtn = document.createElement('button');
-        retryBtn.type = 'button';
-        retryBtn.className = 'article-faq__ai-retry';
-        retryBtn.textContent = t('retry');
-        retryBtn.addEventListener('click', function () {
-          if (busy || !lastQuestion) return;
-          // Remove the failed user bubble + error so the retry reads clean.
-          var failedUser = errEl.previousElementSibling;
-          if (failedUser && failedUser.classList.contains('article-faq__ai-msg--user')) failedUser.remove();
-          errEl.remove();
-          input.value = lastQuestion;
-          send();
-        });
-        errEl.appendChild(errText);
-        errEl.appendChild(retryBtn);
-        thread.appendChild(errEl);
+        if (!valid()) return;
+        thinkingEl.remove();
+        if (!input.value) input.value = q;
+        var errEl = document.createElement('div'); errEl.className = 'article-faq__ai-error'; errEl.setAttribute('role', 'status');
+        var errText = document.createElement('span'); errText.textContent = err && err.name === 'TimeoutError' ? t('timeout') : t('genericError');
+        var retryBtn = document.createElement('button'); retryBtn.type = 'button'; retryBtn.className = 'article-faq__ai-retry'; retryBtn.textContent = t('retry');
+        retryBtn.addEventListener('click', function () {if (busy || !lastQuestion) return; errEl.remove(); input.value = lastQuestion; send();});
+        errEl.appendChild(errText); errEl.appendChild(retryBtn); thread.appendChild(errEl);
       } finally {
-        setBusy(false);
+        if (serial === requestSerial) {activeRequest = null; setBusy(false);}
       }
     }
+    window.addEventListener('pagehide', function () {cancelRequest(false);});
+    item.addEventListener('toggle', function () {if (!item.open) cancelRequest(true);});
+
   }
 
   /* ── Bootstrap ─────────────────────────────────────────────────────────── */

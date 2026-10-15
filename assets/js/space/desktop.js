@@ -374,7 +374,7 @@ function mountDesktop(root) {
       event.preventDefault();setView('lab');lab.querySelector('[data-bks-enter]')?.focus({preventScroll:true});return;
     }
     if(productRoot.dataset.productView!=='bear')return;
-    if(event.isComposing)return;
+    if(event.isComposing||event.keyCode===229)return;
     if(cafe?.modalOpen)return;
     const editing=isEditableTarget(event.target);
     if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();showSearch();return;}

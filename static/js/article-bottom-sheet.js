@@ -25,18 +25,8 @@
     fab.addEventListener('click', openSheet);
     overlay.addEventListener('click', closeSheet);
 
-    // Tab switching — keep aria-selected in sync so assistive tech reports
-    // the active tab correctly (previously only the visual class changed).
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var target = tab.dataset.tab;
-        tabs.forEach(function (t) {
-          var on = t.dataset.tab === target;
-          t.classList.toggle('abs-tab--active', on);
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        panels.forEach(function (p) { p.hidden = p.id !== 'abs-panel-' + target; });
-      });
+    if (window.ArticleTabs) window.ArticleTabs.mount({
+      tabs: tabs, panels: panels, tabClass: 'abs-tab--active', panelPrefix: 'abs-panel-'
     });
 
     initDragToClose();
@@ -52,6 +42,8 @@
     var onLayoutChange = function (event) {
       if (!event.matches || !sheet.classList.contains('abs--open')) return;
       sheet.classList.remove('abs--open', 'abs--dragging');
+      sheet.inert = true;
+      sheet.setAttribute('aria-hidden', 'true');
       sheet.style.transform = '';
       overlay.style.opacity = '';
       overlay.classList.remove('abs-overlay--visible');
@@ -165,6 +157,7 @@
   }
 
   function onSheetKeydown(e) {
+    if (!sheet.classList.contains('abs--open') || e.isComposing || e.keyCode === 229) return;
     if (e.key === 'Escape' || e.key === 'Esc') {
       e.preventDefault();
       closeSheet();
@@ -178,7 +171,7 @@
       sheet.querySelectorAll(
         'button:not([disabled]), a[href], textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
       ),
-      function (el) { return el.offsetParent !== null || el === document.activeElement; }
+      function (el) { return el.tabIndex >= 0 && (el.offsetParent !== null || el === document.activeElement); }
     );
     if (!focusables.length) return;
     var first = focusables[0];
@@ -203,6 +196,8 @@
 
   function openSheet() {
     lastFocused = document.activeElement;
+    sheet.inert = false;
+    sheet.setAttribute('aria-hidden', 'false');
     fab.classList.add('article-fab--hidden');
     sheet.classList.add('abs--open');
     overlay.classList.add('abs-overlay--visible');
@@ -218,6 +213,8 @@
 
   function closeSheet() {
     sheet.classList.remove('abs--open', 'abs--dragging');
+    sheet.inert = true;
+    sheet.setAttribute('aria-hidden', 'true');
     sheet.style.transform = '';
     overlay.style.opacity = '';
     overlay.classList.remove('abs-overlay--visible');

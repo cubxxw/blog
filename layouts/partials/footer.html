@@ -54,7 +54,10 @@
         // history restoration and its own destination focus enhancement.
         if (anchor.closest('[data-page-wayfinder], .hp-entry-actions')) return;
         anchor.addEventListener("click", function (e) {
-            var id = decodeURIComponent(this.getAttribute("href").substr(1));
+            if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || this.hasAttribute('download') || this.target === '_blank') return;
+            var id;
+            try { id = decodeURIComponent(this.getAttribute("href").substr(1)); }
+            catch (_) { return; }
             // getElementById tolerates ids with special characters (quotes,
             // colons, CJK) that a `[id='…']` attribute selector would choke
             // on. Guard against missing targets so a stale or "#" link never
@@ -236,53 +239,9 @@
 {{- end }}
 
 {{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
-
-        function copyingDone() {
-            copybutton.innerHTML = '{{- i18n "code_copied" | default "copied!" }}';
-            copybutton.classList.add('is-copied');
-            setTimeout(() => {
-                copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
-                copybutton.classList.remove('is-copied');
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            // td containing LineNos
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            // table containing LineNos and code
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            // code blocks not having highlight as parent class
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
+<script defer src="{{ "/js/code-copy.js" | relURL }}?v={{ readFile "static/js/code-copy.js" | sha256 }}"
+    data-copy="{{ i18n "code_copy" | default "Copy" }}"
+    data-copied="{{ i18n "code_copied" | default "Copied" }}"
+    data-pending="{{ cond (eq .Lang "zh") "正在复制…" "Copying…" }}"
+    data-failed="{{ cond (eq .Lang "zh") "自动复制不可用，代码已选中。请按 Ctrl / ⌘ + C 复制。" "Automatic copy is unavailable. Code selected; press Ctrl / ⌘ + C to copy." }}"></script>
 {{- end }}

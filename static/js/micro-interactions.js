@@ -5,7 +5,6 @@
  *  2. Article images fade in once loaded
  *  3. Swipe left / right to navigate prev / next article (touch)
  *  4. Tap / click ripple feedback (mobile + desktop)
- *  5. Copy-code button success pop
  *  6. Homepage "scroll for more" cue (bobbing chevron)
  *
  * Everything is a progressive enhancement and fully disabled
@@ -435,35 +434,6 @@
   }
 
   /* ---------------------------------------------------------
-   * 5. Copy-code button: success feedback (mobile + desktop)
-   *    The theme's copy button only swaps its label to "copied!".
-   *    Add a quick tactile "pop + accent flash" by toggling a
-   *    transient `.is-copied` class the CSS animates. Delegated so
-   *    it covers buttons the theme injects after load. Pure feedback
-   *    — the copy itself is handled by the theme; we never touch it.
-   * ------------------------------------------------------- */
-  function initCopyFeedback() {
-    document.addEventListener(
-      'click',
-      function (e) {
-        var btn = e.target.closest && e.target.closest('.copy-code');
-        if (!btn) return;
-        // Restart the animation cleanly on rapid re-clicks.
-        btn.classList.remove('is-copied');
-        // Force reflow so re-adding the class replays the keyframes.
-        void btn.offsetWidth;
-        btn.classList.add('is-copied');
-        // Matches the theme's 2s label-reset window.
-        window.clearTimeout(btn.__copiedTimer);
-        btn.__copiedTimer = window.setTimeout(function () {
-          btn.classList.remove('is-copied');
-        }, 2000);
-      },
-      { passive: true }
-    );
-  }
-
-  /* ---------------------------------------------------------
    * 6. Homepage scroll cue (mobile + desktop)
    *    The day-page hero fills most of the first screen, so the
    *    posts / books / projects below were easy to miss. Inject a
@@ -648,7 +618,6 @@
     initImageFade();
     initSwipeNav();
     initRipple();
-    initCopyFeedback();
     initScrollCue();
   }
 

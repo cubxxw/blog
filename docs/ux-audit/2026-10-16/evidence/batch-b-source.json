@@ -1,0 +1,16 @@
+{
+  "assets/css/extended/micro-interactions.css": "b37a981e2727c7238f304c874875b68170c614cf1802df4cd584945754fb1c0a",
+  "assets/css/extended/zzz-copy-code-feedback.css": "8158fbf068ed9e0a24d2c17e93da378da665cd5c4aba7d59e648f1159f3c471b",
+  "assets/css/space-cafe.css": "c41f9bbfa9dbb6b885bac78488a1ae00072cc8cdfecfdad13434fe461e09d8e2",
+  "assets/js/space/cafe.js": "dbde12314836e989ebc40d6d7c051fa3d08f39b860ce8a6197d3f885fe5a503d",
+  "layouts/_default/single.html": "dc6b0d12feb95296d9456d6ebfe56d34d142ca83d79ab3cc4de74b0a8e88baf0",
+  "layouts/partials/article/editorial-tools.html": "a30181df494f6386b349d327d49a6fa8b650b0d09110d67afeebfbc3dd2af6ca",
+  "layouts/partials/footer.html": "04e9bd50498a938f89c4c352fbe8de4f86ec922eb57da20705649f6ad0207808",
+  "layouts/partials/header.html": "df827ec1698c3c3fafa8880c2217edff5a7c283079340250c4e69e1827961857",
+  "layouts/partials/space/cafe.html": "f1b09a4ded6fe4cf5fe3294fa028f9c30a8fbf6a783948e068f005b78e930064",
+  "static/js/article-bottom-sheet.js": "fe8410f1ffbb412e8c1d61fa51168a3ee1cc6021546677bb113e510c415f5d30",
+  "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+  "static/js/code-copy.js": "e8be3d3a4f11052965d716188cbd1cd834a919e05276d947b247b93557a7c93d",
+  "static/js/micro-interactions.js": "85a47c36f29ed560b3dc38c539143021a860bb6a75030063744603242be7315c",
+  "static/js/reading-companion.js": "0a71bfbdb1521ba4e16ff83899bf768e864dfd2694c3018339ad1e62e3ab23b3"
+}

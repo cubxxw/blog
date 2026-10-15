@@ -38,6 +38,7 @@ import * as params from '@params';
   }, true);
 
   document.addEventListener('keydown', event => {
+    if (event.isComposing || event.keyCode === 229) return;
     if(document.querySelector('[data-product-space][data-product-view="bear"] [data-bear-workspace][data-ready="true"]'))return;
     if (!isShortcut(event) || window.__searchPaletteReady) return;
     if (event.key === '/' && /input|textarea|select/i.test(event.target.tagName)) return;

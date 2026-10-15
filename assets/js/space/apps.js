@@ -41,9 +41,22 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
     const listHost = host.querySelector('[data-library-list]');
     const draw = () => {
       libraryView.query = queryInput.value; saveLibrary();
-      const query = queryInput.value.toLocaleLowerCase();
+      const query = queryInput.value.trim().toLocaleLowerCase();
       const list = (filter === 'favorites' ? documents : articles).filter(a => (filter === 'all' || a.section === filter || (filter === 'favorites' && getState().favorites.includes(a.url))) && `${a.title} ${a.description} ${(a.tags || []).join(' ')}`.toLocaleLowerCase().includes(query));
-      host.querySelector('[data-library-list]').innerHTML = list.length ? list.map(a => listItem(a, `data-open="reader" data-payload="${html(a.url)}"`)).join('') : `<p class="space-app">${t('这里还没有条目。','No writing here yet.')}</p>`;
+      if (list.length) {
+        listHost.innerHTML = list.map(a => listItem(a, `data-open="reader" data-payload="${html(a.url)}"`)).join('');
+      } else {
+        const searching = query.trim().length > 0;
+        const title = searching ? t(`没有找到“${queryInput.value}”`, `No matches for “${queryInput.value}”`) : filter === 'favorites' ? t('还没有收藏文章','No bookmarks yet') : t('这个分类还没有文章','No articles in this category yet');
+        const hint = searching ? t('试试其他关键词，或清除搜索查看当前分类。','Try another keyword, or clear your search to view this section.') : filter === 'favorites' ? t('阅读文章时，点击“收藏”就能在这里找到它。','Save an article while reading to find it here.') : t('可以先看看其他分类的文章。','Browse the other sections in the meantime.');
+        listHost.innerHTML = `<div class="space-library-empty"><h3>${html(title)}</h3><p>${hint}</p><button type="button" class="space-button space-button--secondary" data-library-recover>${searching ? t('清除搜索','Clear search') : t('查看全部文章','Browse all writing')}</button></div>`;
+        listHost.querySelector('[data-library-recover]').addEventListener('click', () => {
+          libraryView.scroll = 0;
+          queryInput.value = ''; libraryView.query = '';
+          if (searching) { draw(); queryInput.focus(); }
+          else showLibrary(host, 'all');
+        });
+      }
     };
     host.querySelector('[data-library-query]').addEventListener('input', draw);
     host.querySelectorAll('[data-library-filter]').forEach(b => b.addEventListener('click', () => { libraryView.scroll = 0; showLibrary(host, b.dataset.libraryFilter); }));

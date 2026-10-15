@@ -102,7 +102,6 @@ html.motion-reveal .post-content img.img-loaded {
 .post-tag:active,
 .post-category:active,
 .button:active,
-button:active,
 .top-link:active {
   transform: scale(0.94);
 }
@@ -111,6 +110,11 @@ button:active,
 /* Keyboard users get a clear, consistent focus indicator. */
 a:focus-visible,
 button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[contenteditable="true"]:focus-visible,
 .post-entry:focus-visible,
 .ai-tech-card:focus-visible,
 .growth-card:focus-visible,

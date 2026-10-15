@@ -1,0 +1,263 @@
+{
+  "base": "http://127.0.0.1:1317",
+  "stage": "batch A frozen production files",
+  "source": "batch-a-source.json",
+  "checks": [
+    {
+      "id": "A.CODECOPY.pending-success",
+      "passed": true,
+      "name": "zh-desktop",
+      "selector": ".copy-code",
+      "calls": 1
+    },
+    {
+      "id": "A.CODECOPY.target",
+      "passed": true,
+      "name": "zh-desktop",
+      "selector": ".copy-code",
+      "box": {
+        "x": 780.90625,
+        "y": 470.578125,
+        "width": 80.09375,
+        "height": 31.34375
+      }
+    },
+    {
+      "id": "A.FOCUS.email",
+      "passed": true,
+      "name": "zh-desktop",
+      "selector": "input[type=email]",
+      "unfocused": {
+        "border": "rgba(53, 0, 3, 0.1)",
+        "shadow": "none"
+      },
+      "focus": {
+        "focused": true,
+        "visible": true,
+        "outline": "rgb(53, 0, 3) none 3px",
+        "outlineStyle": "none",
+        "outlineWidth": "3px",
+        "border": "rgb(134, 33, 34)",
+        "shadow": "rgb(234, 232, 227) 0px 0px 0px 3px"
+      }
+    },
+    {
+      "id": "A.CODECOPY.failure-recovery",
+      "passed": true,
+      "name": "zh-mobile",
+      "selector": ".copy-code",
+      "message": "自动复制不可用，代码已选中。请按 Ctrl / ⌘ + C 复制。"
+    },
+    {
+      "id": "A.CODECOPY.target",
+      "passed": true,
+      "name": "zh-mobile",
+      "selector": ".copy-code",
+      "box": {
+        "x": 293.578125,
+        "y": 435.765625,
+        "width": 86.421875,
+        "height": 44
+      }
+    },
+    {
+      "id": "A.FOCUS.email",
+      "passed": true,
+      "name": "zh-mobile",
+      "selector": "input[type=email]",
+      "unfocused": {
+        "border": "rgba(245, 243, 238, 0.1)",
+        "shadow": "none"
+      },
+      "focus": {
+        "focused": true,
+        "visible": true,
+        "outline": "rgb(255, 107, 107) solid 2px",
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "border": "rgb(255, 107, 107)",
+        "shadow": "rgb(46, 26, 25) 0px 0px 0px 3px"
+      }
+    },
+    {
+      "id": "A.CODECOPY.failure-recovery",
+      "passed": true,
+      "name": "en-desktop",
+      "selector": ".copy-code",
+      "message": "Automatic copy is unavailable. Code selected; press Ctrl / ⌘ + C to copy."
+    },
+    {
+      "id": "A.CODECOPY.target",
+      "passed": true,
+      "name": "en-desktop",
+      "selector": ".copy-code",
+      "box": {
+        "x": 811.140625,
+        "y": 470.140625,
+        "width": 49.859375,
+        "height": 31.34375
+      }
+    },
+    {
+      "id": "A.FOCUS.email",
+      "passed": true,
+      "name": "en-desktop",
+      "selector": "input[type=email]",
+      "unfocused": {
+        "border": "rgba(226, 227, 225, 0.1)",
+        "shadow": "none"
+      },
+      "focus": {
+        "focused": true,
+        "visible": true,
+        "outline": "rgb(125, 211, 252) solid 2px",
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "border": "rgb(125, 211, 252)",
+        "shadow": "rgba(125, 211, 252, 0.1) 0px 0px 0px 3px"
+      }
+    },
+    {
+      "id": "A.CODECOPY.legacy-true",
+      "passed": true,
+      "name": "en-mobile",
+      "selector": ".copy-code"
+    },
+    {
+      "id": "A.CODECOPY.target",
+      "passed": true,
+      "name": "en-mobile",
+      "selector": ".copy-code",
+      "box": {
+        "x": 296.421875,
+        "y": 435.734375,
+        "width": 83.578125,
+        "height": 44
+      }
+    },
+    {
+      "id": "A.FOCUS.email",
+      "passed": true,
+      "name": "en-mobile",
+      "selector": "input[type=email]",
+      "unfocused": {
+        "border": "rgba(30, 35, 30, 0.12)",
+        "shadow": "none"
+      },
+      "focus": {
+        "focused": true,
+        "visible": true,
+        "outline": "rgb(26, 28, 27) none 3px",
+        "outlineStyle": "none",
+        "outlineWidth": "3px",
+        "border": "rgb(46, 53, 46)",
+        "shadow": "rgb(221, 229, 218) 0px 0px 0px 3px"
+      }
+    },
+    {
+      "id": "A.CAFE.picker-name-and-return",
+      "passed": true,
+      "width": 390,
+      "height": 844,
+      "selector": ".space-cafe__utilities [data-cafe-picker]",
+      "box": {
+        "x": 328,
+        "y": 20,
+        "width": 44,
+        "height": 44
+      }
+    },
+    {
+      "id": "A.CAFE.quiet-visible",
+      "passed": true,
+      "width": 390,
+      "height": 844,
+      "selector": "[data-cafe-quiet]",
+      "before": "rgba(23, 43, 37, 0.22)",
+      "after": "rgb(244, 238, 224)",
+      "title": "安静模式已开启，点击恢复环境动效"
+    },
+    {
+      "id": "A.PRESS.window-control-stable",
+      "passed": true,
+      "selector": "[data-window-action=minimize]",
+      "rect": {
+        "x": 90.85882568359375,
+        "y": 84.56619262695312,
+        "width": 44.28050231933594,
+        "height": 44.28050231933594
+      },
+      "pressed": {
+        "x": 90.85882568359375,
+        "y": 84.56619262695312,
+        "width": 44.28050231933594,
+        "height": 44.28050231933594
+      }
+    },
+    {
+      "id": "A.PRESS.map-position-stable",
+      "passed": true,
+      "selector": "[data-map-pin]",
+      "prior": {
+        "x": 130.80845642089844,
+        "y": 293.9361267089844,
+        "width": 9.45745849609375,
+        "height": 9.45745849609375
+      },
+      "held": {
+        "x": 130.80845642089844,
+        "y": 293.9361267089844,
+        "width": 9.45745849609375,
+        "height": 9.45745849609375
+      }
+    },
+    {
+      "id": "A.CAFE.picker-name-and-return",
+      "passed": true,
+      "width": 320,
+      "height": 844,
+      "selector": ".space-cafe__utilities [data-cafe-picker]",
+      "box": {
+        "x": 258,
+        "y": 20,
+        "width": 44,
+        "height": 44
+      }
+    },
+    {
+      "id": "A.CAFE.quiet-visible",
+      "passed": true,
+      "width": 320,
+      "height": 844,
+      "selector": "[data-cafe-quiet]",
+      "before": "rgba(23, 43, 37, 0.22)",
+      "after": "rgb(244, 238, 224)",
+      "title": "安静模式已开启，点击恢复环境动效"
+    },
+    {
+      "id": "A.CAFE.picker-name-and-return",
+      "passed": true,
+      "width": 568,
+      "height": 320,
+      "selector": ".space-cafe__utilities [data-cafe-picker]",
+      "box": {
+        "x": 506,
+        "y": 20,
+        "width": 44,
+        "height": 44
+      }
+    },
+    {
+      "id": "A.CAFE.quiet-visible",
+      "passed": true,
+      "width": 568,
+      "height": 320,
+      "selector": "[data-cafe-quiet]",
+      "before": "rgba(23, 43, 37, 0.22)",
+      "after": "rgb(244, 238, 224)",
+      "title": "安静模式已开启，点击恢复环境动效"
+    }
+  ],
+  "errors": [],
+  "note": "Isolated Clipboard success/rejection/legacy results; no real clipboard data, subscription or backend writes."
+}

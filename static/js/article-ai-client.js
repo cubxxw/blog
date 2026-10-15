@@ -6,6 +6,16 @@
     var controller = new AbortController(), timer = null, timedOut = false, reader = null;
     var timeout = options.timeoutMs || 45000;
     var outer = options.signal;
+    function followups(value) {
+      return Array.isArray(value) ? value.filter(function (item) {
+        return item && typeof item.label === 'string' && typeof item.msg === 'string';
+      }).slice(0, 6) : [];
+    }
+    function result(answer, candidates, suggestions) {
+      var response = {answer: answer, candidates: candidates};
+      if (suggestions.length) response.followups = suggestions;
+      return response;
+    }
     function abort() { controller.abort(); }
     function resetTimer() {
       clearTimeout(timer);
@@ -39,11 +49,11 @@
         if (controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
         if (!data || typeof data.answer !== 'string' || !data.answer.trim()) throw new Error('AI returned no answer');
         if (data.answer.length > 150000) throw new Error('AI answer exceeded the reading limit');
-        return { answer: data.answer, candidates: Array.isArray(data.candidates) ? data.candidates : [] };
+        return result(data.answer, Array.isArray(data.candidates) ? data.candidates : [], followups(data.followups));
       }
       if (!response.body) throw new Error('AI returned no stream');
       reader = response.body.getReader();
-      var decoder = new TextDecoder(), buffer = '', fields = [], answer = '', candidates = [], done = false;
+      var decoder = new TextDecoder(), buffer = '', fields = [], answer = '', candidates = [], suggestions = [], done = false;
       function event() {
         if (!fields.length) return;
         var value = fields.join('\n'); fields = [];
@@ -52,6 +62,7 @@
         try { parsed = JSON.parse(value); } catch (_) { throw new Error('Malformed AI stream'); }
         if (parsed.error) throw new Error(String(parsed.error));
         if (parsed.meta && Array.isArray(parsed.meta.candidates)) candidates = parsed.meta.candidates;
+        if (parsed.followups) suggestions = followups(parsed.followups);
         var delta = parsed.delta;
         if (typeof delta === 'string' && delta) {
           answer += delta;
@@ -80,7 +91,7 @@
       }
       if (!answer.trim()) throw new Error('AI returned no answer');
       if (controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
-      return { answer: answer, candidates: candidates };
+      return result(answer, candidates, suggestions);
     } catch (err) {
       if (timedOut) { var timeoutError = new Error('AI response timed out'); timeoutError.name = 'TimeoutError'; throw timeoutError; }
       throw err;

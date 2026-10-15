@@ -241,7 +241,7 @@
     {{/* Single reused "Ask AI about this book" modal — mirrors the QR popover pattern.
          Filled per-book by /js/travel-book-ai.js when a .tw-tome__ask button is clicked. */}}
     {{- if $capabilities.ai }}
-    <div class="tw-book-ai" id="tw-book-ai" role="dialog" aria-modal="true"
+    <dialog class="tw-book-ai" id="tw-book-ai" aria-modal="true"
          aria-label="{{ if $isZh }}问 AI 关于这本书{{ else }}Ask AI about this book{{ end }}"
          data-lang="{{ cond $isZh "zh" "en" }}" hidden>
       <div class="tw-book-ai__backdrop" data-bai-close></div>
@@ -264,7 +264,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </dialog>
     {{- end }}
   </section>
   {{- end }}
@@ -429,6 +429,6 @@
 })();
 </script>
 {{- if $capabilities.ai }}
-<script src="{{ "/js/travel-book-ai.js" | relURL }}" defer></script>
+<script src="{{ "/js/travel-book-ai.js" | relURL }}?v={{ readFile "static/js/travel-book-ai.js" | sha256 }}" defer></script>
 {{- end }}
 {{- end }}

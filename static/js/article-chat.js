@@ -259,7 +259,7 @@
     }
     textarea.addEventListener('input', function () { textarea.style.height = 'auto'; textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px'; updateBusy(busy); });
     textarea.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) { event.preventDefault(); send(); }
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing && event.keyCode !== 229) { event.preventDefault(); send(); }
     });
     sendButton.addEventListener('click', function () { send(); });
     panel.querySelectorAll('[data-prompt]').forEach(function (chip) {

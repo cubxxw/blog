@@ -111,8 +111,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border-radius: 7px;
   background: var(--code-btn-bg, rgba(31, 35, 40, 0.05));
@@ -133,6 +133,13 @@
   height: 15px;
   display: block;
 }
+@media (max-width: 1023px) {
+  .post-content .highlight[data-code-tools] pre > code,
+  .post-content pre[data-code-tools] > code {
+    /* Reserve a true action lane so expanding a block never covers code. */
+    padding-bottom: 62px !important;
+  }
+}
 
 /* The fullscreen reader is a phone/tablet affordance — desktop
    columns are wide enough already, so the whole cluster (now just
@@ -149,6 +156,13 @@
   inset: 0;
   z-index: 10000;
   display: none;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
   /* Background is synced from the source block by code-mobile.js so
      it matches whichever of the four code themes is active. */
   background: #0d1117;
@@ -205,8 +219,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 34px;
-  height: 30px;
+  min-width: 44px;
+  height: 44px;
   padding: 0 8px;
   border-radius: 7px;
   border: 1px solid rgba(128, 128, 128, 0.35);
@@ -270,6 +284,7 @@
 
 /* Never show in-article controls inside the reader. */
 .code-fs-content .copy-code,
+.code-fs-content .code-copy-status,
 .code-fs-content .code-tools {
   display: none !important;
 }

@@ -50,6 +50,8 @@ jobs:
         run: node scripts/ci-run.mjs verify
       - name: Verify BEAR OS tool and media boundaries
         run: npm run bear:test
+      - name: Verify public interaction and AI rendering contracts
+        run: npm run ux:test
       - name: Upload the verified deployment bundle
         id: artifact
         if: steps.plan.outputs.run_site == 'true'

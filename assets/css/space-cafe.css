@@ -15,6 +15,8 @@
 .space .space-cafe h2,.space .space-cafe .space-cafe__brand { color:#fffdf5; }
 .space-cafe__utilities { display:flex; gap:10px; }
 .space-cafe__utilities button { min-width:44px; min-height:44px; display:flex; gap:10px; align-items:center; justify-content:center; padding:0 14px; border:1px solid #fff5d83b; border-radius:30px; background:#172b2538; backdrop-filter:blur(12px); font-size:12px; }
+.space-cafe__utilities [data-cafe-quiet][aria-pressed="true"] { background:#f4eee0; color:#26382d; border-color:#f4eee0; }
+.space-cafe__utilities [data-cafe-picker] svg { display:block; }
 .space-cafe__utilities svg { width:16px; height:16px; }
 .space-cafe__welcome { left:clamp(24px,6vw,96px); top:50%; transform:translateY(-40%); max-width:440px; }
 .space-cafe__eyebrow { font-size:10px; font-weight:500; letter-spacing:.18em; margin:0 0 24px; }

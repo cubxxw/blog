@@ -1,0 +1,75 @@
+
+Running 10 tests using 1 worker
+
+(node:23862) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/control-contracts.spec.ts:6:5 › article tabs expose one stop and support Arrow, Home and End (592ms)
+  ✓   2 tests/e2e/control-contracts.spec.ts:23:5 › compact tools retain focus around the selected tab and name each panel (455ms)
+  ✓   3 tests/e2e/control-contracts.spec.ts:41:5 › mobile navigation is a dismissible named disclosure (538ms)
+  ✓   4 tests/e2e/control-contracts.spec.ts:55:5 › refused clipboard copy leaves code selected with a truthful recovery (400ms)
+  ✓   5 tests/e2e/control-contracts.spec.ts:69:5 › closed compact tools cannot receive focus before opening or after dismissal (435ms)
+  ✘   6 tests/e2e/control-contracts.spec.ts:80:5 › fullscreen code uses a native modal and restores its expand trigger (5.5s)
+(node:24084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 tests/e2e/control-contracts.spec.ts:88:5 › book AI uses a native modal with keyboard containment and a 44px exit (5.5s)
+(node:24119) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 tests/e2e/control-recovery.spec.ts:7:5 › share link refusal preserves the URL and returns focus after dismissal (676ms)
+  ✓   9 tests/e2e/control-recovery.spec.ts:25:5 › newsletter timeout releases the busy form and preserves the email (353ms)
+  ✓  10 tests/e2e/control-recovery.spec.ts:39:5 › library empty search and empty bookmarks offer a working way back (656ms)
+
+
+  1) tests/e2e/control-contracts.spec.ts:80:5 › fullscreen code uses a native modal and restores its expand trigger
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: '全屏阅读' }).locator(':focus')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: '全屏阅读' }).locator(':focus') with timeout 5000ms
+      - waiting for getByRole('dialog', { name: '全屏阅读' }).locator(':focus')
+
+
+      82 |   const trigger=page.locator('.code-tool-expand:visible').first();await trigger.click();
+      83 |   const dialog=page.getByRole('dialog',{name:'全屏阅读'});await expect(dialog).toBeVisible();
+    > 84 |   for(let i=0;i<6;i++){await page.keyboard.press('Tab');await expect(dialog.locator(':focus')).toBeVisible();}
+         |                                                                                                ^
+      85 |   await page.keyboard.press('Escape');await expect(dialog).toBeHidden();await expect(trigger).toBeFocused();
+      86 | });
+      87 |
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/control-contracts.spec.ts:84:96
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright/control-contracts-fullscre-ba6f7-restores-its-expand-trigger/error-context.md
+
+  2) tests/e2e/control-contracts.spec.ts:88:5 › book AI uses a native modal with keyboard containment and a 44px exit
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: '问 AI 关于这本书' }).locator(':focus')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: '问 AI 关于这本书' }).locator(':focus') with timeout 5000ms
+      - waiting for getByRole('dialog', { name: '问 AI 关于这本书' }).locator(':focus')
+
+
+      90 |   const trigger=page.locator('.tw-tome__ask').first();await trigger.click();
+      91 |   const dialog=page.getByRole('dialog',{name:'问 AI 关于这本书'});await expect(dialog).toBeVisible();
+    > 92 |   for(let i=0;i<8;i++){await page.keyboard.press('Tab');await expect(dialog.locator(':focus')).toBeVisible();}
+         |                                                                                                ^
+      93 |   const close=dialog.locator('.tw-book-ai__x'),box=await close.boundingBox();
+      94 |   expect(box!.width).toBeGreaterThanOrEqual(44);expect(box!.height).toBeGreaterThanOrEqual(44);
+      95 |   await page.keyboard.press('Escape');await expect(dialog).toBeHidden();await expect(trigger).toBeFocused();
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/control-contracts.spec.ts:92:96
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright/control-contracts-book-AI--eaf9d-containment-and-a-44px-exit/error-context.md
+
+  2 failed
+    tests/e2e/control-contracts.spec.ts:80:5 › fullscreen code uses a native modal and restores its expand trigger
+    tests/e2e/control-contracts.spec.ts:88:5 › book AI uses a native modal with keyboard containment and a 44px exit
+  8 passed (16.8s)

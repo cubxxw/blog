@@ -224,8 +224,9 @@
         <button
             type="button"
             class="hamburger-menu"
-            aria-label="Toggle menu"
+            aria-label="{{ cond (eq .Lang "zh") "打开导航菜单" "Open navigation menu" }}"
             aria-expanded="false"
+            aria-controls="menu"
             onclick="toggleMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -239,29 +240,57 @@
 </div>
 
 <script>
+function setMobileMenu(open, restoreFocus) {
+    var menu = document.getElementById('menu');
+    var hamburger = document.querySelector('.hamburger-menu');
+    if (!menu || !hamburger) return;
+    var zh = document.documentElement.lang.indexOf('zh') === 0;
+    menu.classList.toggle('mobile-open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? (zh ? '关闭导航菜单' : 'Close navigation menu') : (zh ? '打开导航菜单' : 'Open navigation menu'));
+    if (restoreFocus) hamburger.focus({ preventScroll: true });
+}
 function toggleMenu() {
-    const menu = document.getElementById('menu');
-    const hamburger = document.querySelector('.hamburger-menu');
-    const isOpen = menu.classList.contains('mobile-open');
-
-    if (isOpen) {
-        menu.classList.remove('mobile-open');
-        hamburger.setAttribute('aria-expanded', 'false');
-    } else {
-        menu.classList.add('mobile-open');
-        hamburger.setAttribute('aria-expanded', 'true');
+    var menu = document.getElementById('menu');
+    if (!menu) return;
+    var open = !menu.classList.contains('mobile-open');
+    setMobileMenu(open, false);
+    if (open) {
+        var first = menu.querySelector('a[href]');
+        var hamburger = document.querySelector('.hamburger-menu');
+        var openedAt = performance.now();
+        // Display and visibility are controlled by separate responsive rules.
+        // Wait for the rendered open state; never steal focus after a person
+        // has already moved on or closed the disclosure during its entrance.
+        function focusVisibleMenu() {
+            if (!first || !menu.classList.contains('mobile-open') || document.activeElement !== hamburger) return;
+            if (getComputedStyle(first).visibility === 'visible') first.focus({ preventScroll: true });
+            else if (performance.now() - openedAt < 500) requestAnimationFrame(focusVisibleMenu);
+        }
+        requestAnimationFrame(focusVisibleMenu);
     }
 }
 
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    const menu = document.getElementById('menu');
-    const hamburger = document.querySelector('.hamburger-menu');
-
-    if (menu && hamburger && !menu.contains(event.target) && !hamburger.contains(event.target)) {
-        menu.classList.remove('mobile-open');
-        hamburger.setAttribute('aria-expanded', 'false');
-    }
+// This is a navigation disclosure: Escape returns to its trigger; moving
+// onward with Tab closes it without trapping the visitor in the header.
+document.addEventListener('keydown', function(event) {
+    if (event.key !== 'Escape') return;
+    var menu = document.getElementById('menu');
+    if (!menu || !menu.classList.contains('mobile-open')) return;
+    event.preventDefault();
+    setMobileMenu(false, true);
+});
+function outsideMobileMenu(event) {
+    var menu = document.getElementById('menu');
+    var hamburger = document.querySelector('.hamburger-menu');
+    if (!menu || !hamburger || !menu.classList.contains('mobile-open')) return;
+    if (menu.contains(event.target) || hamburger.contains(event.target)) return;
+    setMobileMenu(false, false);
+}
+document.addEventListener('focusin', outsideMobileMenu);
+document.addEventListener('click', outsideMobileMenu);
+window.matchMedia('(min-width: 769px)').addEventListener('change', function(event) {
+    if (event.matches) setMobileMenu(false, false);
 });
 
 // Auto-hide navbar on scroll down, reveal on scroll up (Medium-style)

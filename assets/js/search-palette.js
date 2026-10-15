@@ -8,6 +8,7 @@
   const aiBox = document.getElementById('search-ai-box');
   const aiContent = document.getElementById('search-ai-content');
   const aiClose = document.getElementById('search-ai-close');
+  const aiStop = document.getElementById('search-ai-stop');
   const triggers = document.querySelectorAll('[data-search-trigger], .nav-search-trigger');
   const closeBtn = palette?.querySelector('.search-palette__close');
   const backdrop = palette?.querySelector('.search-palette__backdrop');
@@ -54,6 +55,18 @@
   let lastAiQuery = ''; // Store last query for retry
   let activeIndex = -1;
   let lastFocusedElement = null;
+  let aiRequest = null, aiSerial = 0;
+  function cancelAI() {
+    aiSerial++;
+    const request = aiRequest; aiRequest = null;
+    if (request) {
+      clearTimeout(request.timer); request.controller.abort();
+      request.cleanup?.();
+      try { request.reader?.cancel()?.catch(() => {}); } catch (_) {}
+    }
+    isAiThinking = false;
+    if (aiStop) aiStop.hidden = true;
+  }
 
   function escapeHtml(value) {
     return String(value == null ? '' : value).replace(/[&<>"']/g, character => ({
@@ -127,6 +140,7 @@
   }
 
   function hideAiBox() {
+    cancelAI();
     if (!aiEnabled || !aiBox || !aiContent) return;
     aiBox.hidden = true;
     aiContent.innerHTML = '';
@@ -281,6 +295,7 @@
     if (!aiEnabled || isAiThinking || !query.trim()) return;
 
     isAiThinking = true;
+    if (aiStop) aiStop.hidden = false;
     aiBox.hidden = false;
     aiContent.setAttribute('aria-busy', 'true');
     lastAiQuery = query;
@@ -320,7 +335,18 @@
     addToHistory('user', query);
 
     const aiController = new AbortController();
-    const aiTimeoutId = setTimeout(() => aiController.abort(), 25000);
+    const request = {id: ++aiSerial, controller: aiController, reader: null, timer: null, cleanup: null};
+    aiRequest = request;
+    const owns = () => aiRequest === request && request.id === aiSerial && isOpen && !aiBox.hidden;
+    const valid = () => owns() && !aiController.signal.aborted;
+    const deadline = () => {
+      clearTimeout(request.timer);
+      request.timer = setTimeout(() => {
+        aiController.abort();
+        try {request.reader?.cancel()?.catch(() => {});} catch (_) {}
+      }, 25000);
+    };
+    deadline();
 
     try {
       const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -337,7 +363,8 @@
         signal: aiController.signal,
       });
 
-      clearTimeout(aiTimeoutId);
+      if (!valid()) throw new DOMException('Aborted', 'AbortError');
+      deadline();
 
       if (!response.ok) {
         if (response.status === 404 && isLocalhost) {
@@ -370,21 +397,25 @@
           pinToBottom = aiContent.scrollHeight - aiContent.scrollTop - aiContent.clientHeight < 40;
         };
         aiContent.addEventListener('scroll', onAiScroll, { passive: true });
+        request.cleanup = () => aiContent.removeEventListener('scroll', onAiScroll);
 
         const reader = response.body.getReader();
+        request.reader = reader;
         const decoder = new TextDecoder();
         let buffer = '';
 
-        while (true) {
+        stream: while (true) {
           const { done, value } = await reader.read();
+          if (!valid()) throw new DOMException('Aborted', 'AbortError');
           if (done) break;
+          deadline();
           buffer += decoder.decode(value, { stream: true });
           const lines = buffer.split('\n');
           buffer = lines.pop();
           for (const line of lines) {
             if (line.startsWith('data: ')) {
               const data = line.slice(6).trim();
-              if (data === '[DONE]') break;
+              if (data === '[DONE]') break stream;
               try {
                 const json = JSON.parse(data);
                 if (json.meta) {
@@ -408,10 +439,12 @@
       } else {
         // Non-streaming JSON response (fallback)
         const data = await response.json();
+        if (!valid()) throw new DOMException('Aborted', 'AbortError');
         answer = data.answer || labels.aiFallback;
         candidates = data.candidates || [];
       }
 
+      if (!valid()) throw new DOMException('Aborted', 'AbortError');
       // Add AI response to history
       addToHistory('assistant', answer);
 
@@ -434,7 +467,7 @@
       // surface a one-tap button that opens the site-wide WeChat card.
       maybeAddWechatCTA(answer);
     } catch (err) {
-      clearTimeout(aiTimeoutId);
+      if (!owns()) return;
       console.error('AI Error:', err);
       let errorMsg = labels.aiError;
 
@@ -465,7 +498,12 @@
       });
       aiContent.querySelector('.search-palette__ai-error').appendChild(retryBtn);
     } finally {
+      clearTimeout(request.timer); request.cleanup?.();
+      try { request.reader?.cancel()?.catch(() => {}); request.reader?.releaseLock(); } catch (_) {}
+      if (!owns()) return;
+      aiRequest = null;
       isAiThinking = false;
+      if (aiStop) aiStop.hidden = true;
       aiContent.removeAttribute('aria-busy');
       updateAiTrigger();
     }
@@ -489,7 +527,7 @@
 
     // Send on Enter key
     followUpInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) {
         e.preventDefault();
         const query = followUpInput.value.trim();
         if (query) {
@@ -509,9 +547,8 @@
       });
     }
 
-    // Focus the input without yanking the scroll position (we position the
-    // scroll explicitly after rendering)
-    setTimeout(() => followUpInput.focus({ preventScroll: true }), 10);
+    // Completing an answer never takes focus away from a newer search or
+    // another control. The follow-up remains in the normal keyboard order.
   }
 
   function renderSources(candidates) {
@@ -674,6 +711,7 @@
 
   // Keyboard shortcuts and dialog focus management.
   document.addEventListener('keydown', function(e) {
+    if (e.isComposing || e.keyCode === 229) return;
     if(!isOpen&&document.querySelector('[data-product-space][data-product-view="bear"] [data-bear-workspace][data-ready="true"]'))return;
     const key = e.key.toLowerCase();
     const targetIsField = /input|textarea|select/i.test(e.target.tagName) || e.target.isContentEditable;
@@ -708,7 +746,7 @@
   });
 
   input?.addEventListener('keydown', event => {
-    if (event.isComposing) return;
+    if (event.isComposing || event.keyCode === 229) return;
     if (event.key === 'ArrowDown') {
       event.preventDefault();
       const options = resultOptions();
@@ -754,6 +792,15 @@
     input?.focus();
   });
   aiBtn?.addEventListener('click', () => askAI(input.value));
+  aiStop?.addEventListener('click', () => {
+    const question = lastAiQuery;
+    cancelAI();
+    aiContent.removeAttribute('aria-busy');
+    aiContent.textContent = isZh ? '已停止生成，可以修改问题后重试。' : 'Generation stopped. Edit your question to try again.';
+    if (input) {input.value = question; input.focus();}
+    updateAiTrigger();
+  });
+  window.addEventListener('pagehide', cancelAI);
 
   // Suggested questions
   document.querySelectorAll('.search-palette__ai-suggestion').forEach(btn => {
