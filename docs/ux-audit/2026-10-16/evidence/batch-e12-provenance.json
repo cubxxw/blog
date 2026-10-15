@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-15T22:06:34.852339+00:00",
+  "scope": "E12 same3production across all immutable candidate manifests; spec NoJS/realArrowDown harness corrections only. Main final execute snapshot retained before boundary-only150px edit and contrast runner registration; do not claim reran main for unrelated manifest metadata.",
+  "finalManifest": "batch-e12-source.json",
+  "mainExecutedManifestSnapshot": "batch-e12-180-source.json",
+  "sources": {
+    "layouts/partials/footer.html": "a2f0695f95f4171fb6bd0350f57142d5092949a2c687be37cc85280f68778cc1",
+    "static/js/footnote-preview.js": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662",
+    "assets/css/extended/zzz-footnote-preview.css": "511ee027f33a74dc965571a1a7f0fb73a0021600a183e656f544b433b2c91671",
+    "tests/e2e/footnote-preview-contracts.spec.ts": "357bf59487877da8fc4164eac52a779c8fc7d2a9579cd44e389290b874b01bbb"
+  },
+  "receipts": {
+    "batch-e12-actions.json": {
+      "sha256": "dfcd3948155d283e500cdff8ac44b9ac9a4d12b077dbdc233559c711742ea489",
+      "parentRunner": "batch-e12-actions.browser.mjs",
+      "parentRunnerSHA256": "fd81ed324d3e2908ec7b2b8ca15f8a40b77f207ab8a82a71aa8822519d3c67a3"
+    },
+    "batch-e12-boundaries.json": {
+      "sha256": "822dbe92327b53b9307e23259322bc5777b1637016476ed863d22f18193d8179",
+      "parentRunner": "batch-e12-boundaries.browser.mjs",
+      "parentRunnerSHA256": "726b6069f88d30d24d8cb3f05f2ff1ae8ddb3022c7bc0edc577f51988a52fa29"
+    },
+    "batch-e12-contrast.json": {
+      "sha256": "edc1f7cecc923cd4011ecfdfc306407e0b46b00626124f5364a65dcdb672c387",
+      "parentRunner": "batch-e12-contrast.browser.mjs",
+      "parentRunnerSHA256": "bccf444f984e8964702b56be1356c73468966a68ef668dcaee46504bd6718483"
+    }
+  },
+  "limits": "All15 parent main/boundary PNGs visually read. Main normal-motion native target image captured when first visible, not full settled smooth-scroll alignment. JS-disabled frame/layout evaluation only is QA setup/read, native tap/Back real.150px extra short height is deliberate overflow boundary, not physical phone certification. Cold fonts still pending."
+}

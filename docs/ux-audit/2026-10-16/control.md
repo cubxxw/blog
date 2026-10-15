@@ -64,3 +64,7 @@ E11于05:04明确放行现有executor，限local index/result intent、真实sta
 E11b本地checkpoint `1e2d94acae058204233d6547ba47ba599025c9bf` 已readback，未push。E11c继承行为，仅搜索短文案/Retry label；新receipt使用batch-e11c前缀，不覆盖b source/图/score证据。当前1317仍b已验构建，E12方案待c后放行。
 
 E11c独立闭环：15同case7.0s、7actual/15图独立逐看，6status+2Retry文本only反替换与bCP字节相同，c recovery局部静态D1/D4=96/96，13可见opaque文字对比rawmin5.789000796485059独立重算误差0。完整分null；315状态/69局部族/309族/367selector/0完整，42/44仍open，Back仅b未命中unknown。raw receipt顶层sourceManifest旧b literal保留，实际runner5–7prefix读取c且SHA assert；provenance erratum明确绑定raw/cmanifest/runner3SHA，不偷偷改raw或宣称重跑。两Agent最终停写，无browser/build/source WIP；准备本地checkpoint，随后E12。
+
+E11c checkpoint `9d43d0cc2e4b090b0196b2fe36a09c9dece26653` 已readback，工作树当时clean，未push。E12按next-batches中已准备8合同边界明确放行现executor；source冻结前不build，1317继续c已验preview。E13推荐canonical单DOM/controller，7源/10合同只读候选，优先E12，未实施。
+
+E12独立闭环：8合同14.9s/Hugo3488ms，7actual15主图父/独立逐看，20computed含More.9合成rawmin4.879289268784955、独立误差1.78e-15；4源/QA/4runner/provenance一致。v1.22 309族/367selectors/323状态/69局部/0完整，D1局部94.5（键盘可视入口缺提示），静态D4=96；UX042仅settledfont首tap/nativehistory/ownedkeyboard命名范围闭，044/046open。所有初失败/harness修正/冷font负基线保留，未把额外150px说实体手机，不把first-visible smooth截图说终态。下一E12c先可视cue，同时额外150px真实Tab引用导致31px正文偏移的新probe待独立诊断；无新已评P0/P1，不扩充完整96认证。先保存本地checkpoint，继续单browser/不push。

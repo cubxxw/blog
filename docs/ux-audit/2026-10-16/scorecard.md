@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T05:42:26+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `1e2d94ac`（E11b）；E11c新文案冻结证据已复核，完整评分仍null。
+更新：2026-10-16T06:15:47+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `9d43d0cc`（E11c）；E12脚注冻结证据已复核，完整评分仍null。
 
-**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；315条记录只覆盖69族局部状态，完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；323条记录只覆盖69族局部状态，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`b5b6fa34`（E9c）。E10a当前3hash/QA、17合同、8本地中文context及英文无QR回归/17主图已复核，无新P0/P1；UX018/043按命名范围关闭。搜索UX039–041、脚注UX042开放；mid-reveal滚动与全矩阵未知。
+最近已验checkpoint：`9d43d0cc`（E11c）。E12四源/QA/四runner、8合同及七actual context/15正式图已复核，无新P0/P1；UX042按settled-font命名范围关闭。UX044文章断点、UX046冷字体位移开放；可视键盘入口提示仍有具体D1差距。完整评分仍null。
 
 
 
@@ -89,11 +89,14 @@
 | UX-036 | `S.APP.products.OPEN` | 空产品demo被当本站首页，却渲染测试预览链接 | E9a1 | `closed_for_E9a1_E9a2_catalog_empty_demo_cases` |
 | UX-037 | `S.APP.products.SELECT`, `S.APP.products.OPEN` | 短横屏产品导航堆叠，首屏只有stage而标题和简介出fold | E9a2 | `closed_for_E9a2_844_shortcoarse_entry_geometry_and_images` |
 | UX-038 | `S.APP.settings.COLOR` | 默认3D桌面颜色保存/选中正确但屏幕底色不变 | E9c_final | `closed_named_E9c_visible_palette_scopes_full_matrix_unverified` |
-| UX-039 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 搜索索引挂起时长期显示0结果，缺少可见加载与有界恢复 | E11_candidate | `confirmed_named_search_baseline_open_for_E11` |
-| UX-040 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 关闭重开后的旧索引失败会清空新会话已成功结果 | E11_candidate | `confirmed_named_search_baseline_open_for_E11` |
-| UX-041 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 修改查询后立即Enter会打开上一查询的首篇结果 | E11_candidate | `confirmed_named_search_baseline_open_for_E11` |
-| UX-042 | `A.BODY.FOOTNOTEPREVIEW` | 首tap脚注预览跳文末 | E12_candidate | `confirmed_named_first_touch_reading_interruption_open` |
-| UX-043 | `T.SOCIAL.QR` | 图片pending/404缺说明与重试 | E10a_final | `closed_named_E10a_scope_full_matrix_unverified` |
+| UX-039 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 搜索索引挂起时长期显示0结果，缺少可见加载与有界恢复 | E11b_final | `closed_named_E11b_scope_full_matrix_unverified` |
+| UX-040 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 关闭重开后的旧索引失败会清空新会话已成功结果 | E11b_final | `closed_named_E11b_scope_full_matrix_unverified` |
+| UX-041 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 修改查询后立即Enter会打开上一查询的首篇结果 | E11b_final | `closed_named_E11b_scope_full_matrix_unverified` |
+| UX-042 | `A.BODY.FOOTNOTEPREVIEW` | 脚注预览首次触控直接跳文末，打断原阅读位置 | E12 | `closed_E12_settled_font_first_touch_native_history_and_owned_local_keyboard_scope` |
+| UX-043 | `T.SOCIAL.QR` | 二维码图片挂起和失败缺说明，404直接暴露破图且无重试 | E10a_final | `closed_named_E10a_scope_full_matrix_unverified` |
+| UX-044 | `A.AI.INPUT`, `A.TOC.MOBILETABS`, `A.TOC.FAB` | 文章AI跨1200断点未交接续写目标与焦点，下一Tab跳到文末 | post_E12_candidate | `confirmed_named_article_resize_baseline_open` |
+| UX-045 | `G.SEARCH.RETRY` | 搜索Retry在错误转pending时上移，原坐标再次点击丢失焦点 | E11b_final | `closed_named_E11b_scope_full_matrix_unverified` |
+| UX-046 | 正文渲染面（无控件归因） | 冷启动迟到字体注册期间正文重排，阅读位置发生跳移 | post_E12_font_candidate | `confirmed_named_cold_async_font_layout_baseline_open` |
 
 
 ## 有证据的单项锚点评分
@@ -411,7 +414,7 @@
 | `A.BODY.FAQ` | FAQ 折叠 | 1 | 3 | `unverified / null` | UX-016, UX-019 |
 | `A.BODY.NOTES` | 月度思考段落定位 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `A.BODY.LINKPREVIEW` | 链接预览 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 3 | 1 | `unverified / null` | UX-042 |
+| `A.BODY.FOOTNOTEPREVIEW` | 脚注预览/继续到脚注 | 3 | 11 | `unverified / null` | UX-042 |
 | `A.FOOTER.NEXT` | 上一篇/下一篇/相关文章/专栏结尾 | 3 | 0 | `unverified / null` | 待矩阵 |
 | `G.SHARE.ENTRY` | 生成分享卡/微信分享 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `G.SHARE.DIRECT` | X/Email/复制链接 | 2 | 3 | `unverified / null` | UX-006 |
@@ -1043,3 +1046,24 @@ UX045/P2保留原[Retry位移负基线](evidence/search-retry-layout-baseline.js
 原raw顶层sourceManifest残留b字面值；[显式勘误](evidence/batch-e11c-provenance.json)绑定rawSHA、真正c manifest与已执行runnerSHA，runner5–7实际按c前缀读取并assert。原回执/runner/b证据均未覆盖。b两旧键盘专项及真实Back未在c重跑，b未命中BFCache依旧unknown；合成生命周期只按合同范围保留。UX042/044继续开放。
 
 盘点v1.21最终同步：309族/367selector entries/315状态/69局部族（68partial+1measured）/0完整；只追加status支持根与新Retry的两条c引用，无新按钮或整族认证。
+
+
+## E12 · 保留阅读位置的脚注预览（有界验收）
+
+2026-10-16T06:14:09+08:00：[四源/QA/四runner](evidence/batch-e12-source.json)与[provenance](evidence/batch-e12-provenance.json)均独立核SHA；main执行时180快照与最终四源/main/helper一致，之后仅边界180→150与contrast登记变化，不伪称重跑main。[8合同](evidence/batch-e12b-contracts.log)14.9s；[main四context/十图](evidence/batch-e12-actions.json)和[boundary三context/五图](evidence/batch-e12-boundaries.json)共15图逐看，未发现新P0/P1。
+
+UX042只关闭命名的settled-font范围：390中英首tap精确保scroll/hash/history，secondtap/More原生到fn及Back；1440局部真实Tab→ArrowDown进入body，引用/More保持focus超过300ms，Escape返原marker且不重开。旧程序化citation后隐藏的负记录保留，新内部焦点/owner链有界关闭；More后Tab实为BODY，只证离开，不授合理下一正文目标通过。root98是非点击/nonTab支持region，body tabindex0是focus/scroll支持group；marker d3与More70动作不混授。
+
+实际Mac Meta、Space、Enter、noJS/Back与合成detail0/flags/无效定义、暂停clock旧timer回归分别记录。原最长真实note在224可读、180不overflow；保留旧precondition失败，额外150仅用原note触发内部scroll，body/bottomwheel不带正文，More仍高44/字14且屏内；合同长note fixture与该actual不同。正常native目标图是首次进入视口帧，不作smooth最终对齐截图。初始、load-only、hash-only探针失败均保留。
+
+局部**D1=94.5（96/96/96/90）、静态D4=96（96/96/96/96）**，完整维度仍null。[补充两张键盘发现性图](evidence/probe-e12-keyboard-discovery.json)：marker焦点打开预览，但只有1px裁切SR说明可解释ArrowDown，下一Tab去下一个marker。键盘读者看得到引用和“查看脚注”，却看不到进入方法；Enter仍有等价原生路径，不判trap或G1失败。最小后续仅在键盘marker时显示“按↓进入预览”及英文短提示，同次打开保footprint，触摸/指针不增加噪声，可视副本避免SR重复。必要焦点环不是装饰缺陷，未观察到其它足以扣分的命名静态摩擦。
+
+[20个computed文字样本](evidence/batch-e12-contrast.json)独立sRGB重算最大误差1.78e-15；More opacity0.9已合成，rawmin **4.879289268784955**≥4.5。仅四scope正文/引用/More resting-hover-focus及实测14CSSpx；不认证inlinecode的0.92em为14、不认证整页/图片/抗锯齿或AT。320、整页200%zoom、Safari、实体输入法/设备、完整Tab与所有脚注矩阵未知，不以未知制造视觉扣分，也不授整族96。
+
+### UX046 · 冷字体布局位移仍开放
+
+[冷字体诊断](evidence/probe-e12-font-layout.json)与四图已核：390英文/dark/normal在无wheel期间，字体0→15注册/loaded，marker y414.28125→627.9375、docH30674→31731、scroll3713→3652。`extend_head.html:56`异步preload转stylesheet/文章swap是相关交付边界，该文件独立与`9d43d0cc`字节一致；未隔离证明每个delta只由字体引起。记录P2渲染面缺口，D4.4负片段80，不绑脚注marker点击、不称E12新增回归。
+
+当前验收显式等待异步style注册及fonts.ready，只界定settled范围，**没有修复冷启动读者的布局跳移**。后续先比较cold/warm/delayed/failed字体与fallback度量，再选小范围交付/字体度量修法；不以等待、换量表或暖缓存掩盖。后续warm/reduce稳定不是cold/reduce通过，未测CLS/设备/全站性能。
+
+盘点v1.22最终同步：309族/367selector entries、323状态（新增8）/69局部证据族（68partial+1measured）/0完整。仅追加E12 binding引用；root98/body是支持语义，marker d3与More70独立，未新增按钮。UX042命名关闭、UX044/046开放；量表、门槛和完整null保持不变。

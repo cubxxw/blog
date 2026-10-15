@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T05:42:26+08:00",
+  "updated_at": "2026-10-16T06:15:47+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,7 +353,7 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.21",
+    "inventory_version": "1.22",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
@@ -366,13 +366,13 @@
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/367selector entries，315状态记录/69局部证据族（68partial+1measured），0完整认证。",
+    "reason": "309族/367selector entries，323状态记录/69局部证据族（68partial+1measured），0完整认证。",
     "families_with_recorded_contract_fragments": 73,
-    "scoped_check_assessments": 191,
-    "expert_visual_assessments": 92,
+    "scoped_check_assessments": 202,
+    "expert_visual_assessments": 94,
     "inventory_families_with_partial_state_evidence": 69,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 315
+    "inventory_state_evidence_records": 323
   },
   "evidence": [
     {
@@ -2666,6 +2666,115 @@
         "No Safari,physicalIME/device,AT,wholecontrast,realAI/backend,FPS or completefamily certification."
       ],
       "new_P0_P1_findings": []
+    },
+    {
+      "id": "E-BATCH-E12",
+      "kind": "frozen_source_actual_local_interaction_and_visual_review",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e12-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e12-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e12-actions.browser.mjs",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e12-provenance.json",
+      "boundary_receipt": "docs/ux-audit/2026-10-16/evidence/batch-e12-boundaries.json",
+      "contrast_receipt": "docs/ux-audit/2026-10-16/evidence/batch-e12-contrast.json",
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e12b-contracts.log",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-before-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-first-tap-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-more-target-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-before-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-first-tap-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-more-target-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-entered-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-more-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-entered-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-more-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-224-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-body-scroll-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-runtime-reduce-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-coarse-native-enter-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-nojs-native-zh.png"
+      ],
+      "contract_result": "8 distinct targeted contracts passed in14.9s; reviewed recorded syntax/typecheck/diff. Scoring agent launched no browser/build.",
+      "source_proof": "Independent4source/QA/4runner SHA match; main-executed180 snapshot has identical4source/main/helper to final. Provenance receipt and runner hashes recomputed. Footer exclusion is the sole footer change.",
+      "scope": "Main4 actual contexts/10PNG plus boundary3/5PNG, all15 independently viewed. 390zh/light/reduce and390en/dark/normal firsttap;1440zh/light/reduce and1440en/dark/normal local keyboard;568en/dark224+deliberate150 overflow/runtime reduce;390zh actualMacMeta/Space/Enter/noJS/Back.",
+      "contrast_review": {
+        "sample_count": 20,
+        "raw_min_ratio": 4.879289268784955,
+        "independent_sRGB_max_error": 1.7763568394002505e-15,
+        "method": "Recorded computed RGBA converted to Canvas8bit sRGB, foreground alpha times element opacity over opaque popup background; More opacity.9 composited, ancestors1.",
+        "scope": "Paragraph/citation/More resting-hover-focus only, sampled14CSSpx. Not inlinecode(.92em), whole-page/image/antialias/AT."
+      },
+      "limits": [
+        "Acceptance explicitly waits late preload stylesheets then fonts.ready; cold font layout remains UX046, not fixed by harness waiting.",
+        "Original longest existing note fits180; original failed overflow precondition retained. Extra150 tests actual existing note overflow,224 geometry still tested. Contract long-note fixture is separate.",
+        "Natural Tab after More reachedBODY; only exit observed, no claim appropriate next prose target. Local previous-tabstop setup is programmatic; following Tab/ArrowDown/Escape are trusted.",
+        "NoJS/Meta/Space/Enter/Back actual; detail0/modifierflags/malformed fixture and owned timers are controlled/synthetic contract boundaries, not physical AT.",
+        "Normal native target images show first-in-viewport moment, not final smooth-scroll alignment. Cold-font and initial/load-only/hash-only failures retained.",
+        "No320/200%wholezoom/Safari/physicaldevice/AT/fullarticleTab/OSIME/wholefamily certification."
+      ],
+      "new_P0_P1_findings": []
+    },
+    {
+      "id": "E-FOOTNOTE-KEYBOARD-DISCOVERY",
+      "kind": "actual_local_keyboard_discovery_observation",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-discovery.json",
+      "script": "docs/ux-audit/2026-10-16/probe-e12-keyboard-discovery.browser.mjs",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-en.png"
+      ],
+      "scope": "1440zh/light and en/dark, fine/reduce; previous-control focus setup then actual Tab to marker, no ArrowDown instruction. Preview visible, clipped1px SRhelp only; next actualTab goes next marker.",
+      "limits": [
+        "No trap: nativeEnter is an equivalent note path. No AT speech/wholeTab certification. Visible keyboard orientation is a concrete design gap, not a new hardgate failure."
+      ]
+    },
+    {
+      "id": "E-COLD-FONT-LAYOUT-BASELINE",
+      "kind": "independent_rendering_stability_negative_baseline",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-e12-font-layout.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/probe-e12-font-layout.log",
+      "script": "docs/ux-audit/2026-10-16/probe-e12-font-layout.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-font-no-preference-before.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-font-no-preference-open.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-font-reduce-before.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-font-reduce-open.png"
+      ],
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "source_surface": {
+        "path": "layouts/partials/extend_head.html",
+        "line": 56,
+        "sha256": "016ab7a88fa34427be7d9d954abbf0f3f783c58700ed705abe240ab868c57b2e",
+        "proof": "Byte-identical to9d43d0cc HEAD; separate from E12 four-source manifest."
+      },
+      "scope": "390x844en/dark/no-preference cold async fonts, no wheel between readings: t611.5 scroll3713/marker414.28125/docH30674/0registeredfonts to t1167.5 scroll3652/marker627.9375/docH31731/15fonts; loadingdone1126.",
+      "limits": [
+        "Actual layout/scroll movement correlates with late font registration/loading; no isolated proof every delta is exclusively font-driven.",
+        "Later reduce context was warm/stable, not cold-reduce certification. No CLS/performance/device claim.",
+        "Settled-font acceptance helper is a test precondition, not a production fix; baseline remains open."
+      ]
     }
   ],
   "historical_visual_assessments": [
@@ -5795,6 +5904,98 @@
       ],
       "scope": "Namedc recovery static images only; priorconcreteb gaps fixed. Not wholefamily/AT/browser/allstates96.",
       "reason": "New390zherror fitsoneclearline withoutorphan留。;No fontsize change:status14.72/retry14 measured. Newerror/pendingbuttonboxstable,contrastfornamedtexts independentlypasses;nootherconcrete staticfriction observed inthisscope."
+    },
+    {
+      "assessment_id": "VIS-E12-D1",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-before-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-first-tap-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-more-target-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-before-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-first-tap-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-more-target-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-entered-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-more-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-entered-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-more-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-224-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-body-scroll-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-runtime-reduce-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-coarse-native-enter-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-nojs-native-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-en.png"
+      ],
+      "scope": "Only named settled-font main/boundary static images plus keyboarddiscovery observation; no fullfamily/dimension96 or cold-font certification.",
+      "reason": "Firsttap keeps reading place; clear note/citation andnativeMore. Concrete remainingorientation gap: on focusedmarker no visibleArrowDown instruction, nextTab leaves to nextmarker. TinySRhelp exists but was notspoken-tested. Minimal keyboard-only visible hint is justified."
+    },
+    {
+      "assessment_id": "VIS-E12-D4",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-before-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-first-tap-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-more-target-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-before-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-first-tap-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-more-target-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-entered-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-more-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-entered-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-keyboard-more-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-224-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-body-scroll-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-runtime-reduce-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-coarse-native-enter-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e12-nojs-native-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-en.png"
+      ],
+      "scope": "Only named settled-font main/boundary static images plus keyboarddiscovery observation; no fullfamily/dimension96 or cold-font certification.",
+      "reason": "Named settled static images show14CSSpx note/More, readable links, one quietsurface boundary and necessary focusoutline.224/150 keepMore withincard without clipping; no additional observed staticfriction. Coldfont movement is separate negative surface evidence; unknownAT/code does not manufacture a visual deduction."
     }
   ],
   "findings": [
@@ -8023,10 +8224,10 @@
       "baseline_reason": "390×844中文coarse/reduce context-engineering首tap #fn:1，scroll2813→18972，hash变更；两帧/300ms popover均hidden。已独立看原位/文末两图。",
       "recommendation": "通用锚点增强与脚注预览明确事件所有权；首tap保阅读位置，第二tap/查看脚注/noJS仍保原生导航。不要改文章内容或用全站anchor改动掩盖冲突。",
       "source_inference": "footer inline52–79先注册scroll/history，defer footnote-preview175–187的preventDefault不能撤回之前已执行滚动；随后scroll hide吻合观察。未额外instrument event order。",
-      "status": "confirmed_named_first_touch_reading_interruption_open",
+      "status": "closed_E12_settled_font_first_touch_native_history_and_owned_local_keyboard_scope",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E12_candidate",
+      "batch": "E12",
       "dimensions": [
         "D6"
       ],
@@ -8047,7 +8248,8 @@
         }
       ],
       "browser_evidence": [
-        "E-FOOTNOTE-FIRST-TAP-BASELINE"
+        "E-FOOTNOTE-FIRST-TAP-BASELINE",
+        "E-BATCH-E12"
       ],
       "as_of": {
         "phase": "Pre-E12 disjoint global footnote negative baseline",
@@ -8063,8 +8265,21 @@
       ],
       "qualified_focus_candidate": {
         "evidence": "E-FOOTNOTE-FOCUS-COMPONENT",
-        "status": "reproduced_programmatic_component_focus_lifecycle_natural_entry_unverified",
-        "proposal": "Protect focus inside preview; timer/relatedTarget ownership; Escape return without re-show. Interactive semantics/keyboardentry remain bounded follow-up, not forcedmodal/TOC rewrite."
+        "status": "closed_for_E12_owned_local_internal_keyboard_focus_and_timer_scope",
+        "proposal": "Protect focus inside preview; timer/relatedTarget ownership; Escape return without re-show. Interactive semantics/keyboardentry remain bounded follow-up, not forcedmodal/TOC rewrite.",
+        "follow_up": "New trustedlocalArrowDown→body/citation/More chain survives300ms; Escape returnsmarker. Oldprogrammaticfailure retained, naturalnextTab exit toBODY is not positive nextcontent-target certification."
+      },
+      "resolution": {
+        "evidence": "E-BATCH-E12",
+        "as_of": {
+          "phase": "E12 frozen final bounded footnote review",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+          "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+          "reviewed_at": "2026-10-16T06:14:09+08:00",
+          "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+        },
+        "scope": "390zh/light/reduce and390en/dark/normal firsttap/secondtap/More/Back;1440zh/light/reduce and1440en/dark/normal localArrowDown/internalfocus/Escape; actualnative compatibility and controlledownership fixtures separately identified.",
+        "limits": "Settledfonts only; oldnegative retained. No physicalAT/fullTab/320/wholezoom/allnotes/browser guarantee; visiblekeyboardhint remains designgap, coldfontsUX046 separate."
       }
     },
     {
@@ -8235,6 +8450,53 @@
         "evidence": "E-BATCH-E11C",
         "limits": "No c Back/oldkeyboard rerun orcompletefamily result; b originalclosure/evidence retained."
       }
+    },
+    {
+      "id": "UX-046",
+      "family_prefix": "A.BODY",
+      "family_ids": [],
+      "control_ids": [],
+      "severity": "P2",
+      "title": "冷启动迟到字体注册期间正文重排，阅读位置发生跳移",
+      "baseline_reason": "390x844en/dark/normal，无用户wheel：字体0→15注册/loaded期间，marker y414.28125→627.9375，docH30674→31731，scroll3713→3652。诊断JSON/四图已独立查看；后续warm reduce稳定不代表所有cold路径合格。",
+      "recommendation": "独立评估正文异步字体交付/回退字体度量与swap策略，保留既定字体和内容意图；用冷/暖/延迟/失败字体下同一阅读锚点回归，不把测试等待当产品修复。先定位真实layout贡献，再选最小修复。",
+      "source_inference": "extend_head56 preload→stylesheet与article display=swap是相关交付边界；诊断证实字体注册/布局变化相关，未隔离证明每个delta仅由字体引起。",
+      "status": "confirmed_named_cold_async_font_layout_baseline_open",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "post_E12_font_candidate",
+      "dimensions": [
+        "D4",
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-COLD-FONT-LAYOUT-BASELINE"
+        },
+        {
+          "kind": "source",
+          "path": "layouts/partials/extend_head.html",
+          "line": 56
+        }
+      ],
+      "browser_evidence": [
+        "E-COLD-FONT-LAYOUT-BASELINE"
+      ],
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "verified_score": null,
+      "confidence": "high_for_observed_movement_qualified_for_isolated_cause",
+      "scope_limits": [
+        "Source-surface only, no button/marker-click attribution or new family.",
+        "Not an E12 source regression;3production hashes unchanged throughout diagnostics.",
+        "Settledfont E12 acceptance does not close coldloading; no CLS/GPU/device/globalmotion claim."
+      ]
     }
   ],
   "next_batches": [
@@ -8287,13 +8549,13 @@
     "Scoring agent launched no browser/server/build; reviewed parent frozen receipts, source and actual screenshots, with lightweight independent PNG decode.",
     "Current evidence covers named local Chromium scopes only; untested applicable states and global visual matrix remain unverified.",
     "No real email/contact/share/paidAI or backend connection certified.",
-    "Inventoryv1.17 maps309families/362selectors; third-party host families do not enumerate or certify every internal control.",
-    "Local contract/pixel checks do not certify Safari,200%zoom,physical devices,normal-motion or whole-page contrast."
+    "Local contract/pixel checks do not certify Safari,200%zoom,physical devices,normal-motion or whole-page contrast.",
+    "Inventory covers309families;selector/state counts synchronize to the latest frozen snapshot below. Third-party host families do not certify internal controls."
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.21",
-    "sha256": "a05afe7e864cfb4eaf3528bfdd3938d1d0eeee577e8d6972204cd34c6f11788d",
+    "version": "1.22",
+    "sha256": "89e2ccf92e446a968ffd46c621694cd2a9f252da07e7c393095754e0984c4988",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -8318,11 +8580,11 @@
       },
       "families_with_state_evidence": 69,
       "accepted_whole_families": 0,
-      "state_evidence_records": 315
+      "state_evidence_records": 323
     },
-    "imported_at": "2026-10-16T05:42:26+08:00",
-    "source_metadata_updated_at": "2026-10-16T05:41:19+08:00",
-    "import_scope": "TwoE11c copy/contrast refs only;status is support root with no actioncontrol;Retryb68b79 only.No b Back/oldkeyboard copied as c run."
+    "imported_at": "2026-10-16T06:15:47+08:00",
+    "source_metadata_updated_at": "2026-10-16T06:14:03+08:00",
+    "import_scope": "Eight E12 bounded state binding refs only;root/body support distinct from marker/More actions. UX046 rendering-surface finding has no control/state attribution; no full-family acceptance."
   },
   "groups": [
     {
@@ -18696,9 +18958,10 @@
       "task": "不离开阅读线查看注释",
       "source": {
         "file": "static/js/footnote-preview.js",
-        "line": 46,
-        "symbol_or_needle": "popMore",
-        "sha256": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a"
+        "line": 63,
+        "symbol_or_needle": "buildPop/show/hide/ref click/keydown",
+        "sha256": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662",
+        "source_context_ref": "batch-e12-source.json"
       },
       "state_profile": "command",
       "inventory_evidence": "partial-state-evidence",
@@ -18759,15 +19022,49 @@
         "R-16"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-FOOTNOTE-FIRST-TAP-FAIL"
+        "CHK-FOOTNOTE-FIRST-TAP-FAIL",
+        "CHK-E12-READING-HISTORY",
+        "CHK-E12-LOCAL-KEYBOARD",
+        "CHK-E12-SEMANTICS",
+        "CHK-E12-MORE-TARGET",
+        "CHK-E12-TEXT-CONTRAST",
+        "CHK-E12-SHORT-SCROLL",
+        "CHK-E12-RUNTIME-REDUCE",
+        "CHK-E12-OWNED-TIMERS",
+        "CHK-E12-NATIVE-FALLBACK",
+        "CHK-E12-KEYBOARD-DISCOVERY"
       ],
-      "expert_visual_assessment_ids": [],
+      "expert_visual_assessment_ids": [
+        "VIS-E12-D1",
+        "VIS-E12-D4"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.F42.first-touch.A.BODY.FOOTNOTEPREVIEW.active"
+          "EIMPORT.F42.first-touch.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.first-tap.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.more-native.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.keyboard-entry.A.BODY.FOOTNOTEPREVIEW.focus",
+          "EIMPORT.E12.native-intent.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.region-support.A.BODY.FOOTNOTEPREVIEW.normal",
+          "EIMPORT.E12.short-body.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.visible-text.A.BODY.FOOTNOTEPREVIEW.normal",
+          "EIMPORT.E12.owned-timers.A.BODY.FOOTNOTEPREVIEW.focus"
         ]
-      }
+      },
+      "support_selectors": [
+        {
+          "selector": ".fn-popover",
+          "control_id": "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
+          "role": "named nonmodal region support-root; nonclick/nonTab"
+        },
+        {
+          "selector": ".fn-popover__body",
+          "support_control_id": "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
+          "role": "tabindex0 named group; focus/scroll support child, not clickable command",
+          "source": "static/js/footnote-preview.js:75"
+        }
+      ]
     },
     {
       "family_id": "A.FOOTER.NEXT",
@@ -63655,7 +63952,7 @@
           "status": "unverified",
           "score": null,
           "applicability": "requires_role_and_runtime_review",
-          "inventory_expectation": "可触发当前用户动作"
+          "inventory_expectation": "Named nonmodal region visibility/semantics; whole support matrix remains incomplete."
         },
         "hover": {
           "status": "unverified",
@@ -63667,13 +63964,13 @@
           "status": "unverified",
           "score": null,
           "applicability": "requires_role_and_runtime_review",
-          "inventory_expectation": "应可 Tab/Enter/Space；焦点视觉待实测"
+          "inventory_expectation": "Root nonTab; named bodygroup tabindex0 focus/scroll support is a child, not a button."
         },
         "active": {
           "status": "unverified",
           "score": null,
           "applicability": "requires_role_and_runtime_review",
-          "inventory_expectation": "按下反馈和完成后的状态待实测"
+          "inventory_expectation": "Support visibility/content state only; root has no press/click action."
         },
         "disabled": {
           "status": "unverified",
@@ -63710,7 +64007,13 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E12-SEMANTICS",
+        "CHK-E12-TEXT-CONTRAST",
+        "CHK-E12-SHORT-SCROLL",
+        "CHK-E12-RUNTIME-REDUCE",
+        "CHK-E12-OWNED-TIMERS"
+      ],
       "historical_selector_aliases": [
         ".footnote-preview"
       ],
@@ -63718,7 +64021,26 @@
       "interaction_kind": "support-root",
       "interactive": false,
       "focusable": false,
-      "note": "Dynamic tooltip container; old nonexistent selector never grants tap/Tab/More action evidence."
+      "note": "Named nonmodal region support-root, nonclick/nonTab. Body is tabindex0 group/focus-scroll support child, not button. Old .footnote-preview alias grants no evidence.",
+      "source": {
+        "file": "static/js/footnote-preview.js",
+        "line": 63,
+        "sha256": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662"
+      },
+      "inventory_support_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.F42.first-touch.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.first-tap.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.more-native.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.keyboard-entry.A.BODY.FOOTNOTEPREVIEW.focus",
+          "EIMPORT.E12.region-support.A.BODY.FOOTNOTEPREVIEW.normal",
+          "EIMPORT.E12.short-body.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.visible-text.A.BODY.FOOTNOTEPREVIEW.normal",
+          "EIMPORT.E12.owned-timers.A.BODY.FOOTNOTEPREVIEW.focus"
+        ],
+        "scope": "Support visibility/semantics/bodyfocus-scroll only; no marker/More click or rootTab/press inheritance."
+      }
     },
     {
       "control_id": "A.FOOTER.NEXT.control.1be975",
@@ -85087,13 +85409,19 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-FOOTNOTE-FIRST-TAP-FAIL"
+        "CHK-FOOTNOTE-FIRST-TAP-FAIL",
+        "CHK-E12-READING-HISTORY",
+        "CHK-E12-LOCAL-KEYBOARD",
+        "CHK-E12-SEMANTICS",
+        "CHK-E12-OWNED-TIMERS",
+        "CHK-E12-NATIVE-FALLBACK",
+        "CHK-E12-KEYBOARD-DISCOVERY"
       ],
       "label": "脚注预览标记",
       "source": {
         "file": "static/js/footnote-preview.js",
         "line": 28,
-        "sha256": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a"
+        "sha256": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662"
       },
       "registered_in_version": "1.18",
       "interaction_kind": "interactive",
@@ -85101,7 +85429,11 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.F42.first-touch.A.BODY.FOOTNOTEPREVIEW.active"
+          "EIMPORT.F42.first-touch.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.first-tap.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.keyboard-entry.A.BODY.FOOTNOTEPREVIEW.focus",
+          "EIMPORT.E12.native-intent.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.owned-timers.A.BODY.FOOTNOTEPREVIEW.focus"
         ]
       }
     },
@@ -85174,16 +85506,30 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E12-READING-HISTORY",
+        "CHK-E12-LOCAL-KEYBOARD",
+        "CHK-E12-MORE-TARGET",
+        "CHK-E12-TEXT-CONTRAST",
+        "CHK-E12-SHORT-SCROLL"
+      ],
       "label": "查看脚注",
       "source": {
         "file": "static/js/footnote-preview.js",
-        "line": 64,
-        "sha256": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a"
+        "line": 82,
+        "sha256": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662"
       },
       "registered_in_version": "1.18",
       "interaction_kind": "interactive",
-      "evidence": "source-only; no actual More click"
+      "evidence": "source-only; no actual More click",
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E12.more-native.A.BODY.FOOTNOTEPREVIEW.active",
+          "EIMPORT.E12.keyboard-entry.A.BODY.FOOTNOTEPREVIEW.focus",
+          "EIMPORT.E12.visible-text.A.BODY.FOOTNOTEPREVIEW.normal"
+        ]
+      }
     },
     {
       "control_id": "T.SOCIAL.QR.control.57404f",
@@ -85671,6 +86017,22 @@
       "status": "confirmed_P2_after_E11_E12",
       "proposal": "Active editor-only breakpoint handoff; preserve draft/read position/focus with ownership guard and no overwrite of distinct destination draft. Minimal tests: both directions, inactive-reader no theft, differing drafts, repeated breakpoint crossings. Busy/IME/context histories remain separate unknowns.",
       "evidence": "E-ARTICLE-RESIZE-BASELINE"
+    },
+    {
+      "id": "DES-E12-KEYBOARD-DISCOVERY",
+      "families": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "status": "concrete_design_gap_for_narrow_E12c",
+      "proposal": "仅在键盘marker聚焦时显示简短ArrowDown进入提示；本次打开会话固定footprint避免进入body后跳位，触摸/指针不加噪声，保现有SR说明且可视副本aria-hidden。验证首次Tab未获指令也能看懂、两语言/短屏/切marker/Escape不重开。",
+      "evidence": "E-FOOTNOTE-KEYBOARD-DISCOVERY"
+    },
+    {
+      "id": "NEXT-COLD-FONT-LAYOUT",
+      "families": [],
+      "status": "UX046_open_surface_baseline",
+      "proposal": "先测字体交付与fallback度量的cold/warm/delayed/failed路径，保同一阅读锚点；settled验收等待不是生产修复。",
+      "evidence": "E-COLD-FONT-LAYOUT-BASELINE"
     }
   ],
   "scoped_check_assessments": [
@@ -90777,11 +91139,311 @@
       ],
       "scope": "Newc receipts/images only;no inheritanceofb Back/oldkeyboard orcomplete matrices.",
       "reason": "Independent13sRGB calculations identical,rawmin5.789000796485059≥4.5 forstatus14.72CSSpx/enabledRetry14CSSpx. Statusisfamilysupport;notinputglyph ordisabled/fullpage pass."
+    },
+    {
+      "id": "CHK-E12-READING-HISTORY",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a",
+        "A.BODY.FOOTNOTEPREVIEW.control.70bc13"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "390zh/light/reduce +390en/dark/normal; settled fonts, existing firstnote.",
+      "reason": "Firsttap preserves exactscroll/hash/history; secondtap andactualMore navigate originalfn with nativeBack restoring reading point. Oldmarker-only negative remains historical."
+    },
+    {
+      "id": "CHK-E12-LOCAL-KEYBOARD",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a",
+        "A.BODY.FOOTNOTEPREVIEW.control.70bc13"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "1440zh/light/reduce +1440en/dark/normal; local prior-tabstop setup only. Body is focusable supportgroup, not a button/root action.",
+      "reason": "TrustedTab reaches marker; ArrowDown entersbody; citation/More retain focus past300ms; insideEscape returns originalmarker without reopening. Tab afterMore exits toBODY, not certified nextprose destination."
+    },
+    {
+      "id": "CHK-E12-SEMANTICS",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a"
+      ],
+      "criterion": "D2.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "Recorded namedregion + controlled existingARIA contract; not AT speech or complete ARIA audit.",
+      "reason": "Named nonmodalregion with inert closedstate, bodygroup tabindex0; existing ARIA token merging and ownedexpanded verified by source/controlled fixture. Root is nonclick/nonTab support."
+    },
+    {
+      "id": "CHK-E12-MORE-TARGET",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.70bc13"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "390zh/en and568en224/150; More only, not every citation/footnote target.",
+      "reason": "ActualMore is14CSSpx and44px high, visible insidecard and centerhit in named phone/short boundaries. Inline marker not subjected to blanket44px requirement."
+    },
+    {
+      "id": "CHK-E12-TEXT-CONTRAST",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
+        "A.BODY.FOOTNOTEPREVIEW.control.70bc13"
+      ],
+      "criterion": "D2.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "Four named main contexts; root is text-support, not action. Excludesinlinecode.92em/wholepage/image/antialias/AT.",
+      "reason": "20 independent sRGB recomputations maxerror1.7763568394002505e-15; rawmin4.879289268784955≥4.5 after Moreopacity.9. Paragraph/citation/More samples14CSSpx."
+    },
+    {
+      "id": "CHK-E12-SHORT-SCROLL",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
+        "A.BODY.FOOTNOTEPREVIEW.control.70bc13"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "568en/dark/normal224 and150;150 is extra stressboundary, not device or fullviewportmatrix.",
+      "reason": "Existing longestnote fits224; deliberate150 viewport triggers realinternalbodyoverflow, wheel500/bottomwheel leave article scroll/hash unchanged, More stays44/visible/hit."
+    },
+    {
+      "id": "CHK-E12-RUNTIME-REDUCE",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.98b9b5"
+      ],
+      "criterion": "D5.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "568en/dark150 runtime switch; no FPS/GPUidle or allmotion certification.",
+      "reason": "Actual shortscreen runtime reduce shows zero running animations/none transform, note content andMore remain usable."
+    },
+    {
+      "id": "CHK-E12-OWNED-TIMERS",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.98b9b5",
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "Controlled timer/ARIA fixture; no syntheticevent claim of naturalAT.",
+      "reason": "Generation/ref/relatedTarget guards preserve newer focusedmarker and internalcitation; stale hover/hide clocks cannot replace/hide ownedcontent. Source and pausedclock fixture support, actual internalfocus chain separate."
+    },
+    {
+      "id": "CHK-E12-NATIVE-FALLBACK",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_E12_interaction_or_support_fragment",
+      "status": "passed_named_E12_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-BATCH-E12"
+      ],
+      "scope": "390zh actualnative paths; no physicalAT or allmodifier/browser claim.",
+      "reason": "ActualMacMeta popup preserves originalpage; Space remains anchor scroll, Enter/noJS retainfn+Back. Malformed/missing definitions and nonprimary/detail0/modifier guards are distinct synthetic contracts."
+    },
+    {
+      "id": "CHK-E12-KEYBOARD-DISCOVERY",
+      "family_ids": [
+        "A.BODY.FOOTNOTEPREVIEW"
+      ],
+      "control_ids": [
+        "A.BODY.FOOTNOTEPREVIEW.control.d3b14a"
+      ],
+      "criterion": "D1.4",
+      "anchor_score": 90,
+      "verified_score": null,
+      "kind": "expert_orientation_gap_supported_by_actual_local_keyboard_probe",
+      "status": "observed_design_gap_open_not_hardgate_failure",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-FOOTNOTE-KEYBOARD-DISCOVERY"
+      ],
+      "scope": "1440zh/light and en/dark fine/reduce, two actualdiscovery PNG.",
+      "reason": "Focused marker reveals clickable preview but only1pxclipped SRhelp describes ArrowDown; nextTab goes nextmarker. Sighted keyboard reader has no visible entry clue. Enter still reaches equivalent endnote, so no trap/G1 assertion."
+    },
+    {
+      "id": "CHK-E12-COLD-FONT-LAYOUT-FAIL",
+      "family_ids": [],
+      "control_ids": [],
+      "criterion": "D4.4",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "actual_rendering_surface_negative_fragment",
+      "status": "confirmed_named_cold_font_layout_baseline_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E12 frozen final bounded footnote review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+        "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+        "reviewed_at": "2026-10-16T06:14:09+08:00",
+        "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+      },
+      "evidence": [
+        "E-COLD-FONT-LAYOUT-BASELINE"
+      ],
+      "scope": "390en/dark/normal diagnostic only; source-surface with no control action attribution.",
+      "reason": "Cold latefont registration coincides with marker+213.65625viewportCSSpx, docH+1057 andscroll-61 withoutwheel, disrupting reading stability. Settled-font testwait does not repair production.",
+      "finding_id": "UX-046"
     }
   ],
-  "latest_validated_checkpoint": "1e2d94acae058204233d6547ba47ba599025c9bf",
-  "preview_scope": "E11c newcopy/15samecontracts/7actualcontexts accepted in named scopes;42/44open,Back/BFCacheunknown,fullnull.",
-  "latest_reviewed_artifact": "E-BATCH-E11C",
+  "latest_validated_checkpoint": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653",
+  "preview_scope": "E12 accepted named settled-font footnote first-touch/nativehistory/localkeyboard scopes;UX044/046open,keyboardorientationdesigngap,fullnull.",
+  "latest_reviewed_artifact": "E-BATCH-E12",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -91130,7 +91792,7 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e11c-source.json",
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
   "anchor_intent_review": {
     "as_of": {
       "phase": "478 preview native anchor and actual right TOC scoped probes",
@@ -91450,5 +92112,35 @@
     "raw_min_ratio": 5.789000796485059,
     "provenance_erratum": "docs/ux-audit/2026-10-16/evidence/batch-e11c-provenance.json",
     "remaining_unknowns": "BFCache actualmissedb only;physicalIME/Safari/AT/fullzoom/wholecontrast/fullfamilies remainunverified."
+  },
+  "e12_source_review": {
+    "as_of": {
+      "phase": "E12 frozen final bounded footnote review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e12-source.json",
+      "frozen_at": "2026-10-15T22:05:14.794954+00:00",
+      "reviewed_at": "2026-10-16T06:14:09+08:00",
+      "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653"
+    },
+    "status": "accepted_named_settled_font_scope_with_separate_design_and_coldfont_gaps",
+    "new_P0_P1_findings": [],
+    "verified_score": null,
+    "hash_review": "4source+QA+4runners+provenance receipts independentlymatch;main180snapshot identical4source/main/helper;sourcefont delivery independentlymatchesHEAD.",
+    "contract_result": "8/8 distinct14.9s; main4contexts10PNG+boundary3contexts5PNG, not15testcases.",
+    "contrast_review": "20computed samples independently recomputed; min4.879289268784955 afterMore.9; maxerror1.7763568394002505e-15.",
+    "closed_findings": [
+      "UX-042_named_settled_scope"
+    ],
+    "open_findings": [
+      "UX-044",
+      "UX-046"
+    ],
+    "concrete_design_gap": "Keyboardentry SR-only help, scopedD1=94.5;D4static=96.",
+    "remaining_unknowns": [
+      "coldfont transition unresolved",
+      "naturalTabafterMore nextcontent target",
+      "inlinecode.92em14pxfloor",
+      "wholepage200zoom/320/Safari/AT/physicalkeyboard/device",
+      "allnotes/completefamily matrices"
+    ]
   }
 }

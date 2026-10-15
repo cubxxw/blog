@@ -53,6 +53,7 @@
         // The reading index uses native anchors, including modifier clicks,
         // history restoration and its own destination focus enhancement.
         if (anchor.closest('[data-page-wayfinder], .hp-entry-actions')) return;
+        if (anchor.matches('.post-content a.footnote-ref')) return;
         anchor.addEventListener("click", function (e) {
             if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || this.hasAttribute('download') || this.target === '_blank') return;
             var id;

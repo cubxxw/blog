@@ -24,6 +24,10 @@
   width: max-content;
   max-width: min(360px, calc(100vw - 24px));
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 24px);
+  max-height: calc(100dvh - 24px);
   padding: 0.7rem 0.85rem 0.6rem;
   background: var(--color-bg, #f9f9f7);
   color: var(--color-text, #1a1c1b);
@@ -31,7 +35,7 @@
   border-radius: var(--radius-lg, 12px);
   box-shadow: var(--shadow-lg, 0 12px 32px rgba(15, 23, 42, 0.08));
   font-family: var(--font-prose, var(--font-serif, Georgia, serif));
-  font-size: 0.86rem;
+  font-size: max(14px, 0.86rem);
   line-height: 1.5;
 
   /* Hidden resting state. Opacity + visibility so it's removed from the
@@ -55,6 +59,7 @@
 
 /* The note's text. Tame block margins so a one-line note isn't padded
    like a full article paragraph, and keep long links from overflowing. */
+.fn-popover__body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
 .fn-popover__body > :first-child { margin-top: 0; }
 .fn-popover__body > :last-child { margin-bottom: 0; }
 .fn-popover__body p { margin: 0 0 0.4rem; }
@@ -69,14 +74,17 @@
   font-size: 0.92em;
 }
 
-/* "Go to note ↓" — quiet affordance, mostly for touch where the tap no
-   longer jumps on its own. Hidden on hover-capable pointers to keep the
-   desktop card clean (kept in the DOM for keyboard users via :focus). */
+/* The native note link stays available to touch and keyboard readers. */
 .fn-popover__more {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
   margin-top: 0.15rem;
   font-family: var(--font-meta, var(--font-sans, system-ui, sans-serif));
-  font-size: 0.72rem;
+  font-size: max(14px, 0.78rem);
   letter-spacing: 0.02em;
   color: var(--color-text-muted, #5e5e63);
   text-decoration: none;
@@ -85,9 +93,15 @@
 .fn-popover__more:hover,
 .fn-popover__more:focus { color: var(--color-accent, #2e352e); }
 
-@media (hover: hover) and (pointer: fine) {
-  .fn-popover__more { display: none; }
-  .fn-popover__more:focus { display: inline-block; }
+.fn-preview-keyboard-help {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* Little arrow pointing at the marker. --fn-arrow-x is set in JS. */

@@ -1785,3 +1785,24 @@ E11真实`#search-index-retry`已在WIP源码出现，预计算`G.SEARCH.RETRY.c
 **明确provenance erratum：** raw actions顶层`sourceManifest`仍为复制的b literal；[独立勘误](evidence/batch-e11c-provenance.json)绑定rawSHA、真正c manifestSHA、已执行runnerSHA。runner5–7用c prefix读取c manifest并逐4源assert。保留raw/runner不改，不冒充重跑；本次state按勘误绑定c。
 
 E11b的17图、2旧专项及真实Back完整保留，c未重跑Back/旧专项，不继承BFCache恢复通过；UX042/UX044仍open，E12未实施。本Agent看3张c图，无browser/构建/测试进程。累计 **315状态 / 69族局部证据**，保持 **309族 / 367selector entries / 57journeys / 18roadmap**，完整族0/fullnull；现停止写入供checkpoint。
+
+
+## v1.22 E12：脚注首触、局部键盘与原生阅读意图
+
+导入 **2026-10-16T06:14:03+08:00**；[source](evidence/batch-e12-source.json)四源/QA/runner读回匹配，3生产SHA初冻至今未变。[provenance](evidence/batch-e12-provenance.json)明确main实际执行[180 snapshot](evidence/batch-e12-180-source.json)，之后只改boundary的180→150附加高度/注册contrast，**不冒main重跑**。spec仅NoJS rAF/实际ArrowDown纠正；初合同、父初失败、early-hash与180前置失败全部保留。
+
+新增 **8条状态**，均归既存脚注族：root`98b9b5`为非点击/非Tab的具名非模态region；marker`d3b14a`、More`70bc13`分开。body`tabindex=0/role=group`仅focus/scroll支持子目标，不造按钮/control ID。[8合同14.9s](evidence/batch-e12b-contracts.log)、[4maincontext/10图](evidence/batch-e12-actions.json)、[3boundarycontext/5图](evidence/batch-e12-boundaries.json)分开；JSON只共享必要引用。
+
+| 片段 | 实证 | 限制 |
+| --- | --- | --- |
+| 首触/原生阅读 | 中英390首tap预览保scroll/hash/history；第二tap/More沿原hash到完整脚注，真实Back返原阅读点 | 字体已稳定；normal目标图仅首次可见，非smooth终态 |
+| 局部键盘 | 1440中英实际局部Tab→marker、ArrowDown→body，Tab到引用/More停留，Esc回marker且不重开；Enter原生 | 先focus前一真实tabstop；二次程序focus隔离Esc；**自然Tab退出BODY不授下一正文目标通过**，无完整Tab/AT认证 |
+| 兼容意图 | 390zh实际Mac Meta保原页/开localpopup，Space滚动、Enter跳转；NoJS实际tap/Back | 其他modifier/nonprimary/detail0、ARIA、timer代际、长note fixture另为合同，非实机AT |
+| 短屏 | 568×224正常几何；额外150高原note内部wheel至27，overscroll不动文章Y10425，More44高；runtime reduce无运行变换 | 180原note可容纳；150是明确附加边界，不认证224溢出/物理手机 |
+| 文字/目标 | [4contexts/20contrast样本](evidence/batch-e12-contrast.json)含More resting-hover-focus的0.9合成；rawmin **4.879289268784955**，本Agent复算误差≤1.78e-15；root/body/More14px、More44px | 不涵inline code`.92em`/抗锯齿/整页/全部富文本与状态 |
+
+[键盘发现性2图](evidence/probe-e12-keyboard-discovery.json)补到原keyboard binding：ArrowDown只有SR-only说明/ARIA，实际自然Tab可到下marker。可视keyhint是明确设计差距，不另报trap/不可达。独立复核关闭 **UX042的settled-font首触/nativehistory/owned局部键盘命名范围**；旧b5负记录与qualified programmaticfocus失败不删除，不认证整族。
+
+**UX046/P2开放**：[冷字体probe](evidence/probe-e12-font-layout.json)仅en390dark/no-preference，字体0→15、document30674→31731、marker414.28→627.94、scroll3713→3652，未有新用户scroll。归阅读渲染surface、`control_ids=[]`，不是marker点击失败/E12回归；reduce本次已字体暖，不授冷加载通过。文章UX044继续开放。
+
+本Agent看3张既有正式图、读source/provenance并复算20样本；父/独立review已读15正式图。累计 **323状态 / 69族局部证据**；保持 **309族 / 367selector entries / 57journeys / 18roadmap**。完整族0/fullscore null；未启动browser/构建/测试，现停止写入供checkpoint。
