@@ -1,0 +1,1126 @@
+npm notice run cubxxw-blog@1.0.0 bear:test
+npm notice run node --test scripts/bear-agent-loop.test.mjs scripts/bear-agent.test.mjs scripts/bear-media.test.cjs scripts/bear-media-state.test.mjs scripts/bear-media-lifecycle.test.mjs scripts/bear-runtime-lifecycle.test.mjs scripts/bear-runtime.test.mjs scripts/bear-runtime-proxy.test.mjs scripts/bear-navigation.test.mjs scripts/bear-workspace-state.test.mjs scripts/space-profile-route.test.mjs scripts/space-entry.test.mjs scripts/blog-ai-stream.test.mjs scripts/article-ai.test.mjs scripts/deepseek-transport.test.mjs scripts/space-companion.test.mjs scripts/space-cafe.test.mjs scripts/space-sessions.test.mjs scripts/space-world.test.mjs scripts/space-onboarding.test.mjs scripts/space-onboarding-dom.test.mjs scripts/space-cat.test.mjs
+TAP version 13
+# Subtest: zh-CN: main request gives lean prose instructions and treats excerpts as reading data
+ok 1 - zh-CN: main request gives lean prose instructions and treats excerpts as reading data
+  ---
+  duration_ms: 35.291416
+  type: 'test'
+  ...
+# Subtest: en: main request gives lean prose instructions and treats excerpts as reading data
+ok 2 - en: main request gives lean prose instructions and treats excerpts as reading data
+  ---
+  duration_ms: 3.161542
+  type: 'test'
+  ...
+# Subtest: reading data preserves excerpt and history caps without promoting historical roles
+ok 3 - reading data preserves excerpt and history caps without promoting historical roles
+  ---
+  duration_ms: 2.289792
+  type: 'test'
+  ...
+# Subtest: article streaming preserves answer deltas and structured related links
+ok 4 - article streaming preserves answer deltas and structured related links
+  ---
+  duration_ms: 3.685292
+  type: 'test'
+  ...
+# Subtest: zh: book follow-up generation remains JSON while the main answer stays plain
+ok 5 - zh: book follow-up generation remains JSON while the main answer stays plain
+  ---
+  duration_ms: 2.568375
+  type: 'test'
+  ...
+# Subtest: en: book follow-up generation remains JSON while the main answer stays plain
+ok 6 - en: book follow-up generation remains JSON while the main answer stays plain
+  ---
+  duration_ms: 3.47275
+  type: 'test'
+  ...
+# Subtest: zh-CN: selection fields stay inside reference data, never in system instructions
+ok 7 - zh-CN: selection fields stay inside reference data, never in system instructions
+  ---
+  duration_ms: 2.392791
+  type: 'test'
+  ...
+# Subtest: en: selection fields stay inside reference data, never in system instructions
+ok 8 - en: selection fields stay inside reference data, never in system instructions
+  ---
+  duration_ms: 4.9185
+  type: 'test'
+  ...
+# Subtest: selection fields are bounded at 6000 and 5600 characters
+ok 9 - selection fields are bounded at 6000 and 5600 characters
+  ---
+  duration_ms: 3.723292
+  type: 'test'
+  ...
+# Subtest: old clients without selection fields keep the previous request shape
+ok 10 - old clients without selection fields keep the previous request shape
+  ---
+  duration_ms: 1.901792
+  type: 'test'
+  ...
+# Subtest: streaming answers keep selection reference data and SSE deltas intact
+ok 11 - streaming answers keep selection reference data and SSE deltas intact
+  ---
+  duration_ms: 2.018708
+  type: 'test'
+  ...
+# Subtest: empty selection fields are omitted rather than sent as blanks
+ok 12 - empty selection fields are omitted rather than sent as blanks
+  ---
+  duration_ms: 2.409834
+  type: 'test'
+  ...
+# Subtest: a task runs bounded model rounds and finishes with an answer record
+ok 13 - a task runs bounded model rounds and finishes with an answer record
+  ---
+  duration_ms: 7.049583
+  type: 'test'
+  ...
+# Subtest: operational events cover the full task without hidden reasoning
+ok 14 - operational events cover the full task without hidden reasoning
+  ---
+  duration_ms: 3.177833
+  type: 'test'
+  ...
+# Subtest: model reasoning fields are never recorded or emitted
+ok 15 - model reasoning fields are never recorded or emitted
+  ---
+  duration_ms: 0.216125
+  type: 'test'
+  ...
+# Subtest: append_note and sandbox_run need approval and only approved calls execute
+ok 16 - append_note and sandbox_run need approval and only approved calls execute
+  ---
+  duration_ms: 0.424166
+  type: 'test'
+  ...
+# Subtest: without an approver, mutating tools are declined by default
+ok 17 - without an approver, mutating tools are declined by default
+  ---
+  duration_ms: 0.27125
+  type: 'test'
+  ...
+# Subtest: unapproved destructive or unknown actions never execute, even when every action is approved
+ok 18 - unapproved destructive or unknown actions never execute, even when every action is approved
+  ---
+  duration_ms: 0.891792
+  type: 'test'
+  ...
+# Subtest: abort stops new calls and interrupts a pending approval without completing
+ok 19 - abort stops new calls and interrupts a pending approval without completing
+  ---
+  duration_ms: 20.3775
+  type: 'test'
+  ...
+# Subtest: abort at the approval decision never runs the executor
+ok 20 - abort at the approval decision never runs the executor
+  ---
+  duration_ms: 0.772417
+  type: 'test'
+  ...
+# Subtest: abort from the decided approval event prevents execution
+ok 21 - abort from the decided approval event prevents execution
+  ---
+  duration_ms: 0.447458
+  type: 'test'
+  ...
+# Subtest: a late approval resolution after stop never runs anything
+ok 22 - a late approval resolution after stop never runs anything
+  ---
+  duration_ms: 136.286334
+  type: 'test'
+  ...
+# Subtest: abort between rounds prevents further model requests
+ok 23 - abort between rounds prevents further model requests
+  ---
+  duration_ms: 0.408208
+  type: 'test'
+  ...
+# Subtest: the total time budget interrupts a hanging model call
+ok 24 - the total time budget interrupts a hanging model call
+  ---
+  duration_ms: 251.5205
+  type: 'test'
+  ...
+# Subtest: limits can shrink but can never grow past the bounded maxima
+ok 25 - limits can shrink but can never grow past the bounded maxima
+  ---
+  duration_ms: 0.380084
+  type: 'test'
+  ...
+# Subtest: a model that never answers stops at the round limit without completing
+ok 26 - a model that never answers stops at the round limit without completing
+  ---
+  duration_ms: 0.834625
+  type: 'test'
+  ...
+# Subtest: a round that would exceed the tool budget stops before executing anything
+ok 27 - a round that would exceed the tool budget stops before executing anything
+  ---
+  duration_ms: 0.281542
+  type: 'test'
+  ...
+# Subtest: tool errors travel back to the model and identical failures are never repeated
+ok 28 - tool errors travel back to the model and identical failures are never repeated
+  ---
+  duration_ms: 0.595708
+  type: 'test'
+  ...
+# Subtest: duplicate call ids and duplicate mutations execute at most once
+ok 29 - duplicate call ids and duplicate mutations execute at most once
+  ---
+  duration_ms: 0.502916
+  type: 'test'
+  ...
+# Subtest: invalid arguments become in-band tool errors, never executions
+ok 30 - invalid arguments become in-band tool errors, never executions
+  ---
+  duration_ms: 0.30575
+  type: 'test'
+  ...
+# Subtest: results are bounded before they reach the model or the record
+ok 31 - results are bounded before they reach the model or the record
+  ---
+  duration_ms: 0.295125
+  type: 'test'
+  ...
+# Subtest: failed tools settle as tool errors and never as green done steps
+ok 32 - failed tools settle as tool errors and never as green done steps
+  ---
+  duration_ms: 0.8665
+  type: 'test'
+  ...
+# Subtest: structured executor failures settle as tool errors
+ok 33 - structured executor failures settle as tool errors
+  ---
+  duration_ms: 0.235417
+  type: 'test'
+  ...
+# Subtest: an empty model turn is a failed task, not a completed one
+ok 34 - an empty model turn is a failed task, not a completed one
+  ---
+  duration_ms: 0.110833
+  type: 'test'
+  ...
+# Subtest: the registry allows only the fixed tools and approval set
+ok 35 - the registry allows only the fixed tools and approval set
+  ---
+  duration_ms: 0.178958
+  type: 'test'
+  ...
+# Subtest: sandbox_run reports success only on a real trailing exit 0 marker and throws on failure
+ok 36 - sandbox_run reports success only on a real trailing exit 0 marker and throws on failure
+  ---
+  duration_ms: 0.691458
+  type: 'test'
+  ...
+# Subtest: append_note is the only tool that reads the private note, and it appends
+ok 37 - append_note is the only tool that reads the private note, and it appends
+  ---
+  duration_ms: 0.347666
+  type: 'test'
+  ...
+# Subtest: append_note never truncates approved text and verifies the note changed
+ok 38 - append_note never truncates approved text and verifies the note changed
+  ---
+  duration_ms: 0.486167
+  type: 'test'
+  ...
+# Subtest: open_app verifies real window state and fails on capacity
+ok 39 - open_app verifies real window state and fails on capacity
+  ---
+  duration_ms: 0.389709
+  type: 'test'
+  ...
+# Subtest: read_writing only fetches same-origin public articles and strips active content
+ok 40 - read_writing only fetches same-origin public articles and strips active content
+  ---
+  duration_ms: 1.301375
+  type: 'test'
+  ...
+# Subtest: read_writing failures throw truthful errors instead of success strings
+ok 41 - read_writing failures throw truthful errors instead of success strings
+  ---
+  duration_ms: 0.292333
+  type: 'test'
+  ...
+# Subtest: catalog tools return deterministic public metadata only
+ok 42 - catalog tools return deterministic public metadata only
+  ---
+  duration_ms: 1.36425
+  type: 'test'
+  ...
+# Subtest: list_photos filters before limiting so later matches survive
+ok 43 - list_photos filters before limiting so later matches survive
+  ---
+  duration_ms: 0.221709
+  type: 'test'
+  ...
+# Subtest: public ids survive at 128+ characters across context and lookups
+ok 44 - public ids survive at 128+ characters across context and lookups
+  ---
+  duration_ms: 0.582125
+  type: 'test'
+  ...
+# Subtest: the approval gate cancels once and ignores late resolutions
+ok 45 - the approval gate cancels once and ignores late resolutions
+  ---
+  duration_ms: 0.197208
+  type: 'test'
+  ...
+# Subtest: a browser loop turn includes the public catalog even without a separate question field
+ok 46 - a browser loop turn includes the public catalog even without a separate question field
+  ---
+  duration_ms: 3.964292
+  type: 'test'
+  ...
+# Subtest: public Immich photo IDs remain complete in the model context
+ok 47 - public Immich photo IDs remain complete in the model context
+  ---
+  duration_ms: 0.716625
+  type: 'test'
+  ...
+# Subtest: only same-origin JSON POST requests reach the model
+ok 48 - only same-origin JSON POST requests reach the model
+  ---
+  duration_ms: 1.256875
+  type: 'test'
+  ...
+# Subtest: request budgets reject oversized bodies, histories and questions
+ok 49 - request budgets reject oversized bodies, histories and questions
+  ---
+  duration_ms: 0.50775
+  type: 'test'
+  ...
+# Subtest: without a configured key the response is an actionable unavailable state
+ok 50 - without a configured key the response is an actionable unavailable state
+  ---
+  duration_ms: 0.463708
+  type: 'test'
+  ...
+# Subtest: upstream failures and provider errors never leak through
+ok 51 - upstream failures and provider errors never leak through
+  ---
+  duration_ms: 0.752958
+  type: 'test'
+  ...
+# Subtest: the upstream timeout covers the request and its body read
+ok 52 - the upstream timeout covers the request and its body read
+  ---
+  duration_ms: 61.222167
+  type: 'test'
+  ...
+# Subtest: en-US: the selected interface language reaches the authoritative model instructions
+ok 53 - en-US: the selected interface language reaches the authoritative model instructions
+  ---
+  duration_ms: 0.774708
+  type: 'test'
+  ...
+# Subtest: zh-CN: the selected interface language reaches the authoritative model instructions
+ok 54 - zh-CN: the selected interface language reaches the authoritative model instructions
+  ---
+  duration_ms: 0.712791
+  type: 'test'
+  ...
+# Subtest: client system roles are stripped and the server instructions stay authoritative
+ok 55 - client system roles are stripped and the server instructions stay authoritative
+  ---
+  duration_ms: 1.117875
+  type: 'test'
+  ...
+# Subtest: browser metadata is untrusted data and private note or draft never travel
+ok 56 - browser metadata is untrusted data and private note or draft never travel
+  ---
+  duration_ms: 0.906458
+  type: 'test'
+  ...
+# Subtest: the caller cannot choose a provider, model, base URL or tool set
+ok 57 - the caller cannot choose a provider, model, base URL or tool set
+  ---
+  duration_ms: 0.269417
+  type: 'test'
+  ...
+# Subtest: conversation history keeps its OpenAI tool shape but stays bounded
+ok 58 - conversation history keeps its OpenAI tool shape but stays bounded
+  ---
+  duration_ms: 0.5555
+  type: 'test'
+  ...
+# Subtest: model tool calls are structurally validated and bounded
+ok 59 - model tool calls are structurally validated and bounded
+  ---
+  duration_ms: 0.646959
+  type: 'test'
+  ...
+# Subtest: the fixed schema only allows registered app ids and closed objects
+ok 60 - the fixed schema only allows registered app ids and closed objects
+  ---
+  duration_ms: 0.242666
+  type: 'test'
+  ...
+# Subtest: persisted running or awaiting tasks restore as interrupted and never auto-rerun
+ok 61 - persisted running or awaiting tasks restore as interrupted and never auto-rerun
+  ---
+  duration_ms: 0.936541
+  type: 'test'
+  ...
+# Subtest: task persistence is versioned and bounded in count and bytes
+ok 62 - task persistence is versioned and bounded in count and bytes
+  ---
+  duration_ms: 3.912792
+  type: 'test'
+  ...
+# Subtest: a corrupt store degrades to an empty history instead of throwing
+ok 63 - a corrupt store degrades to an empty history instead of throwing
+  ---
+  duration_ms: 0.13
+  type: 'test'
+  ...
+# Subtest: answer links resolve only to safe URLs and stay plain text otherwise
+ok 64 - answer links resolve only to safe URLs and stay plain text otherwise
+  ---
+  duration_ms: 0.307875
+  type: 'test'
+  ...
+# Subtest: run results only claim success on a real exit 0
+ok 65 - run results only claim success on a real exit 0
+  ---
+  duration_ms: 0.085333
+  type: 'test'
+  ...
+# Subtest: the browser context is compact and free of private workspace state
+ok 66 - the browser context is compact and free of private workspace state
+  ---
+  duration_ms: 0.341
+  type: 'test'
+  ...
+# Subtest: full refresh replaces remote projection and preserves the static object and array
+ok 67 - full refresh replaces remote projection and preserves the static object and array
+  ---
+  duration_ms: 29.193166
+  type: 'test'
+  ...
+# Subtest: pagination appends the requested album, updates duplicate IDs and retains other albums
+ok 68 - pagination appends the requested album, updates duplicate IDs and retains other albums
+  ---
+  duration_ms: 2.706042
+  type: 'test'
+  ...
+# Subtest: not configured response removes earlier remote photos
+ok 69 - not configured response removes earlier remote photos
+  ---
+  duration_ms: 2.903708
+  type: 'test'
+  ...
+# Subtest: revoked shares remove earlier remote photos and explain the strict sharing flags
+ok 70 - revoked shares remove earlier remote photos and explain the strict sharing flags
+  ---
+  duration_ms: 2.377041
+  type: 'test'
+  ...
+# Subtest: disposing the last media window aborts transport and ignores late results
+ok 71 - disposing the last media window aborts transport and ignores late results
+  ---
+  duration_ms: 1.503875
+  type: 'test'
+  ...
+# Subtest: late cancelled request cannot overwrite a newly reopened media load
+ok 72 - late cancelled request cannot overwrite a newly reopened media load
+  ---
+  duration_ms: 1.252291
+  type: 'test'
+  ...
+# Subtest: one remaining media window keeps the shared request alive
+ok 73 - one remaining media window keeps the shared request alive
+  ---
+  duration_ms: 1.020084
+  type: 'test'
+  ...
+# Subtest: timeout is distinct from closing the last window and rejects delayed data
+ok 74 - timeout is distinct from closing the last window and rejects delayed data
+  ---
+  duration_ms: 5.790458
+  type: 'test'
+  ...
+# Subtest: photo selection keeps exact object ID across region and detail transitions
+ok 75 - photo selection keeps exact object ID across region and detail transitions
+  ---
+  duration_ms: 2.203625
+  type: 'test'
+  ...
+# Subtest: unassigned photos are shown only in all, without invented region coordinates
+ok 76 - unassigned photos are shown only in all, without invented region coordinates
+  ---
+  duration_ms: 0.082417
+  type: 'test'
+  ...
+# Subtest: projection is geographic and rejects invalid coordinates
+ok 77 - projection is geographic and rejects invalid coordinates
+  ---
+  duration_ms: 0.431541
+  type: 'test'
+  ...
+# Subtest: fit contains all real travel region centers
+ok 78 - fit contains all real travel region centers
+  ---
+  duration_ms: 0.209125
+  type: 'test'
+  ...
+# Subtest: zoom preserves cursor position unless bounded at map edges
+ok 79 - zoom preserves cursor position unless bounded at map edges
+  ---
+  duration_ms: 0.099709
+  type: 'test'
+  ...
+# Subtest: restored public photo IDs stay selected while explicit album load is pending
+ok 80 - restored public photo IDs stay selected while explicit album load is pending
+  ---
+  duration_ms: 0.05425
+  type: 'test'
+  ...
+# Subtest: no explicit album allowlist makes no upstream requests
+ok 81 - no explicit album allowlist makes no upstream requests
+  ---
+  duration_ms: 2.3225
+  type: 'test'
+  ...
+# Subtest: only GET and the fixed public protocol are accepted
+ok 82 - only GET and the fixed public protocol are accepted
+  ---
+  duration_ms: 0.451
+  type: 'test'
+  ...
+# Subtest: invalid allowlist and insecure remote provider fail closed
+ok 83 - invalid allowlist and insecure remote provider fail closed
+  ---
+  duration_ms: 0.14675
+  type: 'test'
+  ...
+# Subtest: listing uses album-confined v3 filter and strips all private fields
+ok 84 - listing uses album-confined v3 filter and strips all private fields
+  ---
+  duration_ms: 13.447167
+  type: 'test'
+  ...
+# Subtest: unassigned public album remains unassigned instead of inferring a region
+ok 85 - unassigned public album remains unassigned instead of inferring a region
+  ---
+  duration_ms: 1.022708
+  type: 'test'
+  ...
+# Subtest: cursor is opaque, bound to album and expires
+ok 86 - cursor is opaque, bound to album and expires
+  ---
+  duration_ms: 1.968542
+  type: 'test'
+  ...
+# Subtest: wrong share type, another album and expiration are rejected
+ok 87 - wrong share type, another album and expiration are rejected
+  ---
+  duration_ms: 0.424875
+  type: 'test'
+  ...
+# Subtest: public share must explicitly disable uploads, downloads and metadata
+ok 88 - public share must explicitly disable uploads, downloads and metadata
+  ---
+  duration_ms: 1.057417
+  type: 'test'
+  ...
+# Subtest: thumbnail proves fresh asset membership within allowed album before serving
+ok 89 - thumbnail proves fresh asset membership within allowed album before serving
+  ---
+  duration_ms: 0.7765
+  type: 'test'
+  ...
+# Subtest: arbitrary asset UUID and video cannot access thumbnail endpoint
+ok 90 - arbitrary asset UUID and video cannot access thumbnail endpoint
+  ---
+  duration_ms: 2.177583
+  type: 'test'
+  ...
+# Subtest: upstream redirects are rejected and error bodies never leak keys
+ok 91 - upstream redirects are rejected and error bodies never leak keys
+  ---
+  duration_ms: 0.897416
+  type: 'test'
+  ...
+# Subtest: timeout is a real failed connection
+ok 92 - timeout is a real failed connection
+  ---
+  duration_ms: 6.17725
+  type: 'test'
+  ...
+# Subtest: bounded image bytes and unsupported content types fail closed
+ok 93 - bounded image bytes and unsupported content types fail closed
+  ---
+  duration_ms: 2.02175
+  type: 'test'
+  ...
+# Subtest: JPEG strips EXIF, XMP, ICC, comments and trailing data, including between scans
+ok 94 - JPEG strips EXIF, XMP, ICC, comments and trailing data, including between scans
+  ---
+  duration_ms: 0.224041
+  type: 'test'
+  ...
+# Subtest: PNG strips eXIf, text and other ancillary chunks without changing pixel data
+ok 95 - PNG strips eXIf, text and other ancillary chunks without changing pixel data
+  ---
+  duration_ms: 0.188625
+  type: 'test'
+  ...
+# Subtest: WebP strips EXIF/XMP/ICC chunks and feature flags, rejects animation
+ok 96 - WebP strips EXIF/XMP/ICC chunks and feature flags, rejects animation
+  ---
+  duration_ms: 0.189917
+  type: 'test'
+  ...
+# Subtest: 4 MiB binary boundary stays within the buffered response after base64 encoding
+ok 97 - 4 MiB binary boundary stays within the buffered response after base64 encoding
+  ---
+  duration_ms: 42.07125
+  type: 'test'
+  ...
+# Subtest: album configuration and asset IDs reject implicit coercion
+ok 98 - album configuration and asset IDs reject implicit coercion
+  ---
+  duration_ms: 2.386667
+  type: 'test'
+  ...
+# Subtest: early upstream rejection aborts the signal and cancels every unread body
+ok 99 - early upstream rejection aborts the signal and cancels every unread body
+  ---
+  duration_ms: 1.319834
+  type: 'test'
+  ...
+# Subtest: fully consumed upstream requests also release their abort controllers
+ok 100 - fully consumed upstream requests also release their abort controllers
+  ---
+  duration_ms: 0.828042
+  type: 'test'
+  ...
+# Subtest: the five mobile destinations are registered and the full launcher exposes every application
+ok 101 - the five mobile destinations are registered and the full launcher exposes every application
+  ---
+  duration_ms: 2.942542
+  type: 'test'
+  ...
+# Subtest: application search matches Chinese labels and normalizes wide Latin characters
+ok 102 - application search matches Chinese labels and normalizes wide Latin characters
+  ---
+  duration_ms: 2.777667
+  type: 'test'
+  ...
+# Subtest: workspace search preserves app document context and identifies explicit product and article navigation
+ok 103 - workspace search preserves app document context and identifies explicit product and article navigation
+  ---
+  duration_ms: 0.225792
+  type: 'test'
+  ...
+# Subtest: sparse catalogs and empty keyboard result lists stay navigable
+ok 104 - sparse catalogs and empty keyboard result lists stay navigable
+  ---
+  duration_ms: 0.0715
+  type: 'test'
+  ...
+# Subtest: Escape dismisses the active overlay before considering a window
+ok 105 - Escape dismisses the active overlay before considering a window
+  ---
+  duration_ms: 0.071417
+  type: 'test'
+  ...
+# Subtest: text editing and contenteditable suppress destructive window shortcuts
+ok 106 - text editing and contenteditable suppress destructive window shortcuts
+  ---
+  duration_ms: 0.253333
+  type: 'test'
+  ...
+# Subtest: writeFile failure rolls back the listener, owned container, and incomplete configuration
+ok 107 - writeFile failure rolls back the listener, owned container, and incomplete configuration
+  ---
+  duration_ms: 17.028083
+  type: 'test'
+  ...
+# Subtest: chmod failure rolls back the listener, owned container, and incomplete configuration
+ok 108 - chmod failure rolls back the listener, owned container, and incomplete configuration
+  ---
+  duration_ms: 7.379958
+  type: 'test'
+  ...
+# Subtest: a runtime borrowing an already-running container leaves that container running when closed
+ok 109 - a runtime borrowing an already-running container leaves that container running when closed
+  ---
+  duration_ms: 26.067833
+  type: 'test'
+  ...
+# Subtest: stopped container is owned by this session and close is idempotent
+ok 110 - stopped container is owned by this session and close is idempotent
+  ---
+  duration_ms: 17.911584
+  type: 'test'
+  ...
+# Subtest: missing container is owned by this session and close is idempotent
+ok 111 - missing container is owned by this session and close is idempotent
+  ---
+  duration_ms: 11.056792
+  type: 'test'
+  ...
+# Subtest: closing a runtime keeps configuration replaced by another session
+ok 112 - closing a runtime keeps configuration replaced by another session
+  ---
+  duration_ms: 5.4545
+  type: 'test'
+  ...
+# Subtest: a second runtime cannot overwrite an active runtime configuration
+ok 113 - a second runtime cannot overwrite an active runtime configuration
+  ---
+  duration_ms: 9.774125
+  type: 'test'
+  ...
+# Subtest: configuration failure does not stop a container running before startup
+ok 114 - configuration failure does not stop a container running before startup
+  ---
+  duration_ms: 4.026167
+  type: 'test'
+  ...
+# Subtest: listen failure rolls back a container started here without closing the existing listener
+ok 115 - listen failure rolls back a container started here without closing the existing listener
+  ---
+  duration_ms: 5.482666
+  type: 'test'
+  ...
+# Subtest: Docker start failure after a side effect rolls back only the acquired container
+ok 116 - Docker start failure after a side effect rolls back only the acquired container
+  ---
+  duration_ms: 1.97475
+  type: 'test'
+  ...
+# Subtest: Docker run failure after a side effect rolls back only the acquired container
+ok 117 - Docker run failure after a side effect rolls back only the acquired container
+  ---
+  duration_ms: 2.7885
+  type: 'test'
+  ...
+# Subtest: public deployments cannot call the local sandbox even when request origin is forged
+ok 118 - public deployments cannot call the local sandbox even when request origin is forged
+  ---
+  duration_ms: 0.856
+  type: 'test'
+  ...
+# Subtest: local sandbox rejects cross-site browser requests before reading credentials
+ok 119 - local sandbox rejects cross-site browser requests before reading credentials
+  ---
+  duration_ms: 0.1275
+  type: 'test'
+  ...
+# Subtest: runtime authorization rejects absent and incorrect tokens
+ok 120 - runtime authorization rejects absent and incorrect tokens
+  ---
+  duration_ms: 0.3785
+  type: 'test'
+  ...
+# Subtest: runtime commands have bounded length and prohibit null bytes
+ok 121 - runtime commands have bounded length and prohibit null bytes
+  ---
+  duration_ms: 0.214792
+  type: 'test'
+  ...
+# Subtest: opening two applications retains both and gives the latest window focus
+ok 122 - opening two applications retains both and gives the latest window focus
+  ---
+  duration_ms: 0.826208
+  type: 'test'
+  ...
+# Subtest: a minimized application restores its original geometry without duplicating itself
+ok 123 - a minimized application restores its original geometry without duplicating itself
+  ---
+  duration_ms: 1.676125
+  type: 'test'
+  ...
+# Subtest: a persisted window from a large screen stays reachable after resizing
+ok 124 - a persisted window from a large screen stays reachable after resizing
+  ---
+  duration_ms: 0.454792
+  type: 'test'
+  ...
+# Subtest: corrupt snapshots and unknown applications do not poison the workspace
+ok 125 - corrupt snapshots and unknown applications do not poison the workspace
+  ---
+  duration_ms: 0.086917
+  type: 'test'
+  ...
+# Subtest: local writing survives serialization and respects the storage size boundary
+ok 126 - local writing survives serialization and respects the storage size boundary
+  ---
+  duration_ms: 0.200667
+  type: 'test'
+  ...
+# Subtest: maximize and restore returns to the pre-maximize rectangle
+ok 127 - maximize and restore returns to the pre-maximize rectangle
+  ---
+  duration_ms: 0.098959
+  type: 'test'
+  ...
+# Subtest: closing the active window focuses the next visible window
+ok 128 - closing the active window focuses the next visible window
+  ---
+  duration_ms: 0.063333
+  type: 'test'
+  ...
+# Subtest: only safe site and HTTPS links can be opened
+ok 129 - only safe site and HTTPS links can be opened
+  ---
+  duration_ms: 0.130542
+  type: 'test'
+  ...
+# Subtest: reader links resolved to the local site retain their safe HTTP URLs
+ok 130 - reader links resolved to the local site retain their safe HTTP URLs
+  ---
+  duration_ms: 0.579792
+  type: 'test'
+  ...
+# Subtest: provider deadline still aborts a stalled stream after response headers
+ok 131 - provider deadline still aborts a stalled stream after response headers
+  ---
+  duration_ms: 25.108417
+  type: 'test'
+  ...
+# Subtest: a final SSE event without a newline is retained
+ok 132 - a final SSE event without a newline is retained
+  ---
+  duration_ms: 1.722416
+  type: 'test'
+  ...
+# Subtest: tool amplification is bounded even if one model round returns many calls
+ok 133 - tool amplification is bounded even if one model round returns many calls
+  ---
+  duration_ms: 1.097292
+  type: 'test'
+  ...
+# Subtest: oversized question is rejected before any provider request
+ok 134 - oversized question is rejected before any provider request
+  ---
+  duration_ms: 0.450375
+  type: 'test'
+  ...
+# Subtest: destroying the downstream response cancels its pending provider stream
+ok 135 - destroying the downstream response cancels its pending provider stream
+  ---
+  duration_ms: 1.630917
+  type: 'test'
+  ...
+# Subtest: DONE ends a completed answer even if the provider keeps its socket open
+ok 136 - DONE ends a completed answer even if the provider keeps its socket open
+  ---
+  duration_ms: 0.615084
+  type: 'test'
+  ...
+# Subtest: official DSH transport sends Messages blocks, streams text and tool calls, and strips reasoning
+ok 137 - official DSH transport sends Messages blocks, streams text and tool calls, and strips reasoning
+  ---
+  duration_ms: 47.4705
+  type: 'test'
+  ...
+# Subtest: missing configuration reports a safe actionable cause
+ok 138 - missing configuration reports a safe actionable cause
+  ---
+  duration_ms: 0.191542
+  type: 'test'
+  ...
+# Subtest: DSH provider errors retain rate, credit and credential causes without exposing details
+ok 139 - DSH provider errors retain rate, credit and credential causes without exposing details
+  ---
+  duration_ms: 12.232958
+  type: 'test'
+  ...
+# Subtest: native max_tokens termination is never reported as a successful answer
+ok 140 - native max_tokens termination is never reported as a successful answer
+  ---
+  duration_ms: 7.44525
+  type: 'test'
+  ...
+# Subtest: only six known cafés can be restored from browser storage
+ok 141 - only six known cafés can be restored from browser storage
+  ---
+  duration_ms: 0.803875
+  type: 'test'
+  ...
+# Subtest: direct content routes take priority over a café visit
+ok 142 - direct content routes take priority over a café visit
+  ---
+  duration_ms: 0.09525
+  type: 'test'
+  ...
+# Subtest: root visits and reloads enter the café while language changes preserve the current place
+ok 143 - root visits and reloads enter the café while language changes preserve the current place
+  ---
+  duration_ms: 0.062042
+  type: 'test'
+  ...
+# Subtest: an explicit reader deep link beats stale café storage on reload
+ok 144 - an explicit reader deep link beats stale café storage on reload
+  ---
+  duration_ms: 0.482042
+  type: 'test'
+  ...
+# Subtest: returning to the café from an old About URL survives reload and language changes
+ok 145 - returning to the café from an old About URL survives reload and language changes
+  ---
+  duration_ms: 0.055833
+  type: 'test'
+  ...
+# Subtest: a slow previous scene cannot overwrite the latest selection
+ok 146 - a slow previous scene cannot overwrite the latest selection
+  ---
+  duration_ms: 0.35575
+  type: 'test'
+  ...
+# Subtest: a failed scene keeps the previous view; selecting the current scene cancels an older load
+ok 147 - a failed scene keeps the previous view; selecting the current scene cancels an older load
+  ---
+  duration_ms: 0.094375
+  type: 'test'
+  ...
+# Subtest: every route clears café furniture and chair legs with the resident radius
+ok 148 - every route clears café furniture and chair legs with the resident radius
+  ---
+  duration_ms: 3.75475
+  type: 'test'
+  ...
+# Subtest: the resident walks and rests without leaving the floor or crossing furniture
+ok 149 - the resident walks and rests without leaving the floor or crossing furniture
+  ---
+  duration_ms: 48.294708
+  type: 'test'
+  ...
+# Subtest: quiet, reading and background pauses preserve the exact state and elapsed dwell
+ok 150 - quiet, reading and background pauses preserve the exact state and elapsed dwell
+  ---
+  duration_ms: 0.211792
+  type: 'test'
+  ...
+# Subtest: a newly blocked route stops safely instead of teleporting through the obstacle
+ok 151 - a newly blocked route stops safely instead of teleporting through the obstacle
+  ---
+  duration_ms: 0.07475
+  type: 'test'
+  ...
+# Subtest: context resolves only public catalog objects and excludes private editors
+ok 152 - context resolves only public catalog objects and excludes private editors
+  ---
+  duration_ms: 0.620541
+  type: 'test'
+  ...
+# Subtest: explicit public selection has a bounded pinned reference; ordinary typing preserves its question
+ok 153 - explicit public selection has a bounded pinned reference; ordinary typing preserves its question
+  ---
+  duration_ms: 0.11
+  type: 'test'
+  ...
+# Subtest: service failures explain real causes without echoing provider details
+ok 154 - service failures explain real causes without echoing provider details
+  ---
+  duration_ms: 0.109667
+  type: 'test'
+  ...
+# Subtest: inline emphasis removes paired markers while HTML and unmatched syntax stay literal
+ok 155 - inline emphasis removes paired markers while HTML and unmatched syntax stay literal
+  ---
+  duration_ms: 0.423667
+  type: 'test'
+  ...
+# Subtest: language changes keep the current profile route and query on this site
+ok 156 - language changes keep the current profile route and query on this site
+  ---
+  duration_ms: 0.466167
+  type: 'test'
+  ...
+# Subtest: language selection respects a backup deployment prefix without allowing a different root
+ok 157 - language selection respects a backup deployment prefix without allowing a different root
+  ---
+  duration_ms: 0.115208
+  type: 'test'
+  ...
+# Subtest: the optional 3D entrance costs nothing for motion, bandwidth and mobile opt-outs
+ok 158 - the optional 3D entrance costs nothing for motion, bandwidth and mobile opt-outs
+  ---
+  duration_ms: 0.062334
+  type: 'test'
+  ...
+# (node:96183) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/assets/js/space/onboarding.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: failure after the first frame stops presentation timers and retains a usable escape
+ok 159 - failure after the first frame stops presentation timers and retains a usable escape
+  ---
+  duration_ms: 0.729292
+  type: 'test'
+  ...
+# Subtest: failure during the reveal releases the modal even when its fade timer is cancelled
+ok 160 - failure during the reveal releases the modal even when its fade timer is cancelled
+  ---
+  duration_ms: 1.192041
+  type: 'test'
+  ...
+# Subtest: leaving during preparation removes pending work and cannot reopen the panel
+ok 161 - leaving during preparation removes pending work and cannot reopen the panel
+  ---
+  duration_ms: 0.589458
+  type: 'test'
+  ...
+# Subtest: skip and elapsed presentation cannot declare an unrendered room ready
+ok 162 - skip and elapsed presentation cannot declare an unrendered room ready
+  ---
+  duration_ms: 0.377417
+  type: 'test'
+  ...
+# Subtest: fresh presentation finishes only after real readiness and a short optional duration
+ok 163 - fresh presentation finishes only after real readiness and a short optional duration
+  ---
+  duration_ms: 0.088417
+  type: 'test'
+  ...
+# Subtest: revisit and reduced motion have no artificial presentation delay
+ok 164 - revisit and reduced motion have no artificial presentation delay
+  ---
+  duration_ms: 0.052042
+  type: 'test'
+  ...
+# Subtest: failure stays distinct from readiness and cannot be overwritten by late success
+ok 165 - failure stays distinct from readiness and cannot be overwritten by late success
+  ---
+  duration_ms: 0.041334
+  type: 'test'
+  ...
+# Subtest: old About bookmarks open the matching profile section inside the desktop
+ok 166 - old About bookmarks open the matching profile section inside the desktop
+  ---
+  duration_ms: 0.620792
+  type: 'test'
+  ...
+# Subtest: product links and alternate views retain their destinations after the merge
+ok 167 - product links and alternate views retain their destinations after the merge
+  ---
+  duration_ms: 0.180541
+  type: 'test'
+  ...
+# Subtest: legacy records migrate once without deleting the original data or inventing sessions
+ok 168 - legacy records migrate once without deleting the original data or inventing sessions
+  ---
+  duration_ms: 1.734667
+  type: 'test'
+  ...
+# Subtest: migration preserves every valid record still present in legacy storage
+ok 169 - migration preserves every valid record still present in legacy storage
+  ---
+  duration_ms: 1.006375
+  type: 'test'
+  ...
+# Subtest: sessions survive reload, retain more than twelve turns, and isolate conversation drafts
+ok 170 - sessions survive reload, retain more than twelve turns, and isolate conversation drafts
+  ---
+  duration_ms: 1.592625
+  type: 'test'
+  ...
+# Subtest: a partially saved migration completes after storage becomes available again
+ok 171 - a partially saved migration completes after storage becomes available again
+  ---
+  duration_ms: 0.248833
+  type: 'test'
+  ...
+# Subtest: snapshot migration retains the selected session and never revives a migrated old draft
+ok 172 - snapshot migration retains the selected session and never revives a migrated old draft
+  ---
+  duration_ms: 0.339041
+  type: 'test'
+  ...
+# Subtest: storage failure is explicit and keeps previous records plus an exportable memory copy
+ok 173 - storage failure is explicit and keeps previous records plus an exportable memory copy
+  ---
+  duration_ms: 0.126916
+  type: 'test'
+  ...
+# Subtest: a pending task restores as interrupted and selecting history never runs its tools
+ok 174 - a pending task restores as interrupted and selecting history never runs its tools
+  ---
+  duration_ms: 0.361834
+  type: 'test'
+  ...
+# Subtest: two tabs merge distinct tasks without replacing each other’s history
+ok 175 - two tabs merge distinct tasks without replacing each other’s history
+  ---
+  duration_ms: 0.122334
+  type: 'test'
+  ...
+# Subtest: a write interleaved between another tab’s read and commit cannot erase its task
+ok 176 - a write interleaved between another tab’s read and commit cannot erase its task
+  ---
+  duration_ms: 0.317833
+  type: 'test'
+  ...
+# Subtest: an untouched stale draft cannot erase another tab’s edited draft
+ok 177 - an untouched stale draft cannot erase another tab’s edited draft
+  ---
+  duration_ms: 0.287
+  type: 'test'
+  ...
+# Subtest: concurrent intentional edits preserve both draft versions instead of overwriting data
+ok 178 - concurrent intentional edits preserve both draft versions instead of overwriting data
+  ---
+  duration_ms: 0.147917
+  type: 'test'
+  ...
+# Subtest: a follow-up carries prior visible dialogue without trusting saved roles or replaying old tools
+ok 179 - a follow-up carries prior visible dialogue without trusting saved roles or replaying old tools
+  ---
+  duration_ms: 1.183875
+  type: 'test'
+  ...
+# Subtest: long history remains complete locally while model context stays inside the turn adapter budget
+ok 180 - long history remains complete locally while model context stays inside the turn adapter budget
+  ---
+  duration_ms: 0.326417
+  type: 'test'
+  ...
+# Subtest: walking follows the view direction and diagonal walking has the same speed
+ok 181 - walking follows the view direction and diagonal walking has the same speed
+  ---
+  duration_ms: 0.406625
+  type: 'test'
+  ...
+# Subtest: walking stops at furniture and slides along it without entering the table
+ok 182 - walking stops at furniture and slides along it without entering the table
+  ---
+  duration_ms: 0.06225
+  type: 'test'
+  ...
+# Subtest: a resumed frame cannot teleport the visitor through a wall
+ok 183 - a resumed frame cannot teleport the visitor through a wall
+  ---
+  duration_ms: 0.088542
+  type: 'test'
+  ...
+# Subtest: camera travel reaches its exact destination with no invalid positions
+ok 184 - camera travel reaches its exact destination with no invalid positions
+  ---
+  duration_ms: 0.690458
+  type: 'test'
+  ...
+# Subtest: the floating workspace fits narrow and wide cameras without changing private window coordinates
+ok 185 - the floating workspace fits narrow and wide cameras without changing private window coordinates
+  ---
+  duration_ms: 0.09025
+  type: 'test'
+  ...
+1..185
+# tests 185
+# suites 0
+# pass 185
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1158.687125

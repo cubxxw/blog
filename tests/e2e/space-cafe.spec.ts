@@ -3,7 +3,7 @@ import {enterWorkspace} from '../helpers/space-entry';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
 test.describe('Space café',()=>{
-  test('a game entry offers six scenes, then opens the real workspace search',async({page})=>{
+  test('the café entry offers six scenes, then opens the real workspace search',async({page})=>{
     await page.goto('/zh/projects/');const space=page.locator('[data-bear-workspace]');
     await expect(space).toHaveAttribute('data-ready','true');await expect(space).toHaveAttribute('data-cafe-mode','cafe');
     await expect(page.locator('[data-space-dock]')).toBeHidden();
@@ -20,11 +20,10 @@ test.describe('Space café',()=>{
   test('the landscape room controls stay clickable at low height',async({page})=>{
     await page.setViewportSize({width:568,height:320});await page.goto('/zh/projects/');
     const space=page.locator('[data-bear-workspace]');
-    await expect(page.locator('[data-cafe-start]')).toBeEnabled({timeout:20000});
+    await page.waitForFunction(()=>{const d=document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;return d?.worldFailed==='true'||d?.bootState==='complete';});
     test.skip(await space.getAttribute('data-world-failed')==='true','This engine has no WebGL; ordinary workspace fallback is tested separately.');
-    await page.locator('[data-cafe-start]').click();await expect(space).toHaveAttribute('data-world-rendered-mode','roam');
-    const guide=page.locator('[data-cafe-guide]');
-    expect(await guide.evaluate(el=>{const b=el.getBoundingClientRect();return el.contains(document.elementFromPoint(b.x+b.width/2,b.y+b.height/2));})).toBe(true);
+    await expect(space).toHaveAttribute('data-world-rendered-mode','roam');
+    for(const control of ['[data-cafe-read]','[data-cafe-enter]'])expect(await page.locator(control).evaluate(el=>{const b=el.getBoundingClientRect();return el.contains(document.elementFromPoint(b.x+b.width/2,b.y+b.height/2));})).toBe(true);
     // Open the composer without sending a model request in frozen-site QA.
     await page.keyboard.press('Control+j');await expect(space).toHaveAttribute('data-cafe-mode','desktop');
     await expect(page.locator('[data-agent-input]')).toBeFocused();
@@ -36,7 +35,7 @@ test.describe('Space café',()=>{
     await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-visit]').click();
     await page.locator('.space-cafe__utilities [data-cafe-picker]').click();await page.locator('button[data-cafe-theme="garden"]').click();
     await expect(space).toHaveAttribute('data-cafe-theme','garden');await page.locator('[data-cafe-language]').click();
-    await expect(page).toHaveURL(/\/projects\/\?profile=about#identity$/);await expect(space).toHaveAttribute('data-cafe-mode','cafe');
+    await expect(page).toHaveURL(/\/projects\/$/);await expect(space).toHaveAttribute('data-cafe-mode','cafe');
     await expect(page.locator('[data-cafe-name]')).toHaveText('Scholar’s Garden');await page.reload();
     await expect(space).toHaveAttribute('data-cafe-mode','cafe');await expect(space).toHaveAttribute('data-cafe-theme','garden');
   });
@@ -50,7 +49,7 @@ test.describe('Space café',()=>{
     const before=await snapshot();await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-visit]').click();
     expect(await snapshot()).toEqual(before);await enterWorkspace(page);
     await expect(page.locator('[data-note-editor]')).toHaveAttribute('data-instance','original');expect(await snapshot()).toEqual(before);
-    await page.reload();await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode','desktop');
+    await page.reload();await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode','cafe');await enterWorkspace(page);
     await expect(page.locator('[data-note-editor]')).toHaveValue('A private note beside the window.');
   });
 });

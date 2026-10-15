@@ -1,10 +1,11 @@
 import * as THREE from 'three';
 import { CSS3DRenderer, CSS3DObject } from '../vendor/CSS3DRenderer.js';
 import { stepWalk, travelPose, screenFit } from './world-state.mjs';
+import { createCafeResident } from './world-cat.js';
 
 // Three r160 and its CSS3D renderer share one camera. The live workspace is a
 // real DOM plane in the room; apps and their private state are never duplicated.
-export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, isBlocked }) {
+export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, isBlocked, catAsset, photoAsset }) {
   const host=document.createElement('div');host.className='space-world';
   const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
   root.prepend(host);
@@ -21,6 +22,9 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   const room=new THREE.Group(), outdoors=new THREE.Group();scene.add(room,outdoors);
   const resources=new Set(), textures=new Set();
   let disposed=false,mode='intro',moving=null,frame=0,last=0,elapsed=0,drag=null,themeId=theme,initialized=false,drawing=false;
+  let quiet=false,resident,lastPaint=0,catStamp=0,firstPending=true,resolveFirst;
+  const firstFrame=new Promise(resolve=>{resolveFirst=resolve;});
+  const settleFirst=value=>{if(firstPending){firstPending=false;resolveFirst(value);}};
   function wake(){if(initialized&&!disposed&&!frame&&!drawing){last=0;frame=requestAnimationFrame(tick);}}
   const keys=new Set(),touchKeys=new Set();const abort=new AbortController();
   const listen=(target,type,fn,opts={})=>target.addEventListener(type,fn,{...opts,signal:abort.signal});
@@ -34,11 +38,11 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   const woodTexture=(base,streak)=>{
     const c=document.createElement('canvas');c.width=512;c.height=512;const ctx=c.getContext('2d');
     ctx.fillStyle=base;ctx.fillRect(0,0,512,512);
-    for(let i=0;i<1800;i++){const y=random()*512;ctx.strokeStyle=streak;ctx.globalAlpha=.015+random()*.075;ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(170,y+random()*12,340,y-random()*12,512,y+random()*5);ctx.stroke();}
+    for(let i=0;i<320;i++){const y=random()*512;ctx.strokeStyle=streak;ctx.globalAlpha=.012+random()*.04;ctx.lineWidth=.4+random()*1.4;ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(170,y+random()*12,340,y-random()*12,512,y+random()*5);ctx.stroke();}
     ctx.globalAlpha=1;const texture=new THREE.CanvasTexture(c);texture.colorSpace=THREE.SRGBColorSpace;texture.wrapS=texture.wrapT=THREE.RepeatWrapping;textures.add(texture);return texture;
   };
-  const oak=mat('#b49b73',.78,{map:woodTexture('#c8ac82','#493421')});
-  const walnut=mat('#ac957d',.7,{map:woodTexture('#96714f','#30241b')});
+  const oak=mat('#f0e7d7',.82,{map:woodTexture('#c8ac82','#6c5236')});
+  const walnut=mat('#d5c3ad',.76,{map:woodTexture('#96714f','#30241b')});
   const plaster=mat('#e5dfcf'),paper=mat('#eee8d8'),stone=mat('#b0afa0'),black=mat('#232825',.48),brass=mat('#b89a57',.4,{metalness:.6}),linen=mat('#c6c2a6');
   const mesh=(g,m,x,y,z,parent=room)=>{const v=new THREE.Mesh(g,m);v.position.set(x,y,z);v.castShadow=true;v.receiveShadow=true;parent.add(v);return v;};
   const box=(x,y,z,w,h,d,m,parent=room)=>{const v=mesh(boxGeometry,m,x,y,z,parent);v.scale.set(w,h,d);return v;};
@@ -69,9 +73,17 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   // Quiet timber architecture. The entire north façade is glazed, with an open
   // central door into the garden. The south façade is open to the entrance.
   box(0,-.12,.3,14,.22,10.4,oak);box(0,-.27,-8,13,.22,6,stone,outdoors);
-  const floorMap=oak.map.clone();textures.add(floorMap);floorMap.repeat.set(5,4);
-  const floor=mat('#d1b487',.82,{map:floorMap});box(0,.001,.3,13.8,.014,10.2,floor);
-  for(let z=-4.5;z<5.6;z+=.38)box(0,.009,z,13.8,.002,.007,walnut).castShadow=false;
+  const floorMap=oak.map.clone();textures.add(floorMap);floorMap.repeat.set(4,4);
+  floorMap.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+  const floor=mat('#f7f1e6',.86,{map:floorMap});box(0,.001,.3,13.8,.014,10.2,floor);
+  // Sparse low-contrast seams avoid the old screen-space moiré of black strips.
+  const seam=mat('#b9a17d',.9);for(let x=-6.5;x<6.8;x+=.9)box(x,.009,.3,.003,.001,10.2,seam).castShadow=false;
+  // A woven runner gives the open aisle a human scale without blocking paths.
+  const weave=document.createElement('canvas');weave.width=weave.height=128;const wc=weave.getContext('2d');
+  wc.fillStyle='#b4b6a0';wc.fillRect(0,0,128,128);wc.strokeStyle='#7c887036';wc.lineWidth=1;
+  for(let i=0;i<128;i+=4){wc.beginPath();wc.moveTo(i,0);wc.lineTo(i,128);wc.moveTo(0,i);wc.lineTo(128,i);wc.stroke();}
+  const weaveMap=new THREE.CanvasTexture(weave);weaveMap.colorSpace=THREE.SRGBColorSpace;weaveMap.wrapS=weaveMap.wrapT=THREE.RepeatWrapping;weaveMap.repeat.set(5,8);weaveMap.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.add(weaveMap);
+  const rug=mat('#f3f0dd',1,{map:weaveMap});box(2,.018,1.5,1.8,.015,3.6,rug).castShadow=false;
   box(-6.88,2,.2,.22,4.2,10.6,plaster);
   // Sheltered ceiling with a central skylight and exposed oak joists.
   box(-4.9,4.22,.3,4.2,.14,10.6,plaster);box(4.9,4.22,.3,4.2,.14,10.6,plaster);
@@ -114,6 +126,18 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   chair(3.65,-1.17,Math.PI);cup(4.72,1.2,-2.12);
   box(2.58,1.13,-2.24,.4,.065,.55,mat('#45564b')).rotation.y=-.08;
   box(2.61,1.18,-2.29,.35,.028,.5,paper).rotation.y=.12;
+  // A real travel photograph, mounted with a matte rather than stretched.
+  box(2.52,1.5,-2.78,.7,.49,.045,walnut);
+  box(2.52,1.5,-2.75,.64,.43,.01,paper);
+  if(photoAsset){
+    const photoMaterial=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.85});resources.add(photoMaterial);
+    const picture=mesh(geometry(new THREE.PlaneGeometry(1,1)),photoMaterial,2.52,1.5,-2.739);picture.visible=false;
+    new THREE.TextureLoader().load(photoAsset,texture=>{
+      if(disposed){texture.dispose();return;}textures.add(texture);texture.colorSpace=THREE.SRGBColorSpace;
+      const ratio=texture.image.width/texture.image.height;picture.scale.set(Math.min(.57,.36*ratio),Math.min(.36,.57/ratio),1);
+      photoMaterial.map=texture;photoMaterial.needsUpdate=true;picture.visible=true;wake();
+    },undefined,()=>{});
+  }
   const computer=new THREE.Group();computer.position.set(3.65,0,-2.68);room.add(computer);
   box(0,1.105,.05,.66,.05,.3,stone,computer);cyl(0,1.29,0,.045,.36,stone,computer);
   const monitor=box(0,1.86,0,1.62,1.03,.09,paper,computer);
@@ -274,7 +298,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     return {x:position[0],y:position[1],z:position[2],yaw:Math.atan2(-direction.x,-direction.z),pitch:Math.atan2(direction.y,Math.hypot(direction.x,direction.z)),fov};
   }
   const introPose=()=>lookPose([8.2,3.5,11.8],[.7,1.8,-2.7],48);
-  const walkingPose=()=>lookPose([1.35,1.68,4.5],[3.5,1.65,-2.5],54);
+  const walkingPose=()=>lookPose([2.6,1.55,4.65],[camera.aspect<.9?-.1:.5,camera.aspect<.9?.15:1,-1.5],54);
   const workspacePose=()=>({x:3.65,y:1.98,z:-1.5+fit.distance,yaw:0,pitch:0,fov:38});
   let pose=introPose(),returnPose=walkingPose();
   function applyPose(value) {pose=value;camera.position.set(value.x,value.y,value.z);camera.rotation.set(value.pitch,value.yaw,0,'YXZ');if(camera.fov!==value.fov){camera.fov=value.fov;camera.updateProjectionMatrix();}wake();}
@@ -285,7 +309,11 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     root.dataset.worldTravel='true';onTravel?.(true);
     return new Promise(resolve=>{moving={from:{...pose},to:target,start:performance.now(),duration,nextMode,resolve};wake();});
   }
-  function start() {setMode('roam');renderer.domElement.focus({preventScroll:true});return travel(walkingPose(),'roam',2200);}
+  function start({animate=true,focus=true}={}) {
+    setMode('roam');if(focus)renderer.domElement.focus({preventScroll:true});
+    if(!animate){applyPose(walkingPose());return Promise.resolve();}
+    return travel(walkingPose(),'roam',1100);
+  }
   function focus(animate=true) {if(mode==='workspace'&&!moving)return Promise.resolve();if(mode==='roam')returnPose={...pose};screen.style.visibility='hidden';if(!animate){moving?.resolve();moving=null;onTravel?.(false);applyPose(workspacePose());setMode('workspace');css.render(scene,camera);return Promise.resolve();}return travel(workspacePose(),'workspace',1850);}
   function leave() {screen.inert=true;screen.style.visibility='hidden';setMode('roam');renderer.domElement.focus({preventScroll:true});return travel({...returnPose,fov:54},'roam',1200);}
   function outside() {setMode('roam');screen.style.visibility='hidden';renderer.domElement.focus({preventScroll:true});return travel(lookPose([0,1.68,-8.8],[0,1.6,-19],58),'roam',2000);}
@@ -319,8 +347,15 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   }
   const observer=new ResizeObserver(resize);observer.observe(root);resize();setMode('intro');applyPose(pose);
   let active=!document.hidden&&!root.hidden;
+  resident=createCafeResident({scene,asset:catAsset,wake});
+  resident.ready.then(loaded=>{if(!disposed){root.dataset.catLoaded=String(loaded);wake();}});
   function tick(time) {
     if(disposed)return;frame=0;if(!active)return;
+    const lifeActive=mode==='roam'&&!quiet&&!reduced.matches&&!isBlocked();
+    // rAF timestamps fluctuate around the display interval. A 1 ms tolerance
+    // avoids accidentally waiting a third refresh on a nominal 60 Hz display.
+    if(lifeActive&&!moving&&!keys.size&&!touchKeys.size&&!drag&&time-lastPaint<1000/30-1){frame=requestAnimationFrame(tick);return;}
+    lastPaint=time;
     drawing=true;
     const dt=last?Math.min((time-last)/1000,.04):0;last=time;elapsed+=dt;
     if(moving) {
@@ -331,15 +366,21 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
       const p=stepWalk(pose,pose.yaw,{forward:Number(has('KeyW','ArrowUp','forward'))-Number(has('KeyS','ArrowDown','back')),right:Number(has('KeyD','ArrowRight','right'))-Number(has('KeyA','ArrowLeft','left'))},dt);
       applyPose({...pose,...p});
     }
-    if(water&&mode!=='workspace'&&!reduced.matches){const p=water.geometry.attributes.position,b=water.userData.base;for(let i=0;i<p.count;i++)p.setY(i,b[i*3+1]+Math.sin(b[i*3]*1.8+elapsed*.55)*.018+Math.sin(b[i*3+2]*2.1+elapsed*.8)*.012);p.needsUpdate=true;}
-    if(rain&&mode!=='workspace'&&!reduced.matches){const p=rain.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setY(i,((rainBase[i*3+1]-elapsed*4)%12+12)%12);p.needsUpdate=true;}
-    renderer.render(scene,camera);css.render(scene,camera);root.dataset.worldRenderedMode=mode;
+    if(water&&lifeActive){const p=water.geometry.attributes.position,b=water.userData.base;for(let i=0;i<p.count;i++)p.setY(i,b[i*3+1]+Math.sin(b[i*3]*1.8+elapsed*.55)*.018+Math.sin(b[i*3+2]*2.1+elapsed*.8)*.012);p.needsUpdate=true;}
+    if(rain&&lifeActive){const p=rain.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setY(i,((rainBase[i*3+1]-elapsed*4)%12+12)%12);p.needsUpdate=true;}
+    resident.update(dt,{active:lifeActive});
+    try{renderer.render(scene,camera);css.render(scene,camera);}catch{drawing=false;settleFirst(false);onFailure?.();return;}
+    root.dataset.worldRenderedMode=mode;
+    if(firstPending){root.dataset.worldReady='true';settleFirst(true);}
+    if(time-catStamp>250||root.dataset.catActive!==String(lifeActive&&resident.loaded)){
+      const cat=resident.snapshot();root.dataset.catState=cat.phase;root.dataset.catPose=JSON.stringify({x:cat.x,z:cat.z,yaw:cat.yaw});root.dataset.catActive=String(lifeActive&&cat.loaded);catStamp=time;
+    }
     root.dataset.worldPose=JSON.stringify({x:+pose.x.toFixed(3),z:+pose.z.toFixed(3),yaw:+pose.yaw.toFixed(3)});
     root.dataset.worldFrames=String(renderer.info.render.frame);root.dataset.worldTriangles=String(renderer.info.render.triangles);root.dataset.worldDraws=String(renderer.info.render.calls);
     drawing=false;
     // The DOM workspace paints itself. Keep the GPU quiet while its camera is
     // still; a new pose, theme, viewport or input wakes the real scene again.
-    if(!disposed&&(moving||(mode==='roam'&&!isBlocked()&&(keys.size||touchKeys.size))||(mode!=='workspace'&&!reduced.matches&&(water||rain))))frame=requestAnimationFrame(tick);
+    if(!disposed&&(moving||(mode==='roam'&&!isBlocked()&&(keys.size||touchKeys.size))||(lifeActive&&(water||rain||resident.loaded))))frame=requestAnimationFrame(tick);
     else last=0;
   }
   function visibility() {active=!document.hidden&&!root.hidden;keys.clear();touchKeys.clear();last=0;if(active&&!frame){resize();wake();}else if(!active&&frame){cancelAnimationFrame(frame);frame=0;}}
@@ -349,10 +390,11 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   listen(window,'pagehide',event=>{if(event.persisted){active=false;cancelAnimationFrame(frame);frame=0;}else dispose();});listen(window,'pageshow',visibility);
   function dispose() {
     if(disposed)return;disposed=true;cancelAnimationFrame(frame);moving?.resolve();moving=null;abort.abort();observer.disconnect();hiddenObserver.disconnect();
+    settleFirst(false);resident?.dispose();
     for(const [node,anchor] of anchors){anchor.replaceWith(node);}cssObject.removeFromParent();disposeEnvironment();
     room.traverse(object=>{if(object.isInstancedMesh)object.dispose();});sun.shadow.map?.dispose();sun.shadow.mapPass?.dispose();
     for(const r of resources)r.dispose();for(const t of textures)t.dispose();renderer.dispose();renderer.forceContextLoss();host.remove();
   }
-  root.dataset.worldReady='true';initialized=true;wake();
-  return {start,focus,leave,outside,setTheme,dispose,get mode(){return mode;}};
+  initialized=true;wake();
+  return {start,focus,leave,outside,setTheme,dispose,firstFrame,wake,setQuiet(value){quiet=value;wake();},get mode(){return mode;}};
 }

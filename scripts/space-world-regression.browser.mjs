@@ -7,7 +7,7 @@ page.on('pageerror',error=>errors.push(error.message));let failed=0;
 async function check(name,fn){try{await fn();console.log('PASS',name);}catch(error){failed++;console.log('FAIL',name,error.message);}}
 try {
   await check('a hidden Product Lab retains attached app DOM through resize and return',async()=>{
-    await page.goto(base+'/zh/projects/#product-lab');await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.worldReady==='true');
+    await page.goto(base+'/zh/projects/#product-lab');await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.ready==='true');
     assert.equal(await page.locator('[data-bear-workspace] [data-active-label]').count(),1);
     await page.setViewportSize({width:1180,height:820});await page.waitForTimeout(300);
     await page.locator('.product-view-switch [data-product-view-button="bear"]').click();
@@ -17,8 +17,7 @@ try {
     assert.deepEqual(errors,[]);
   });
   await check('the companion shortcut accepts actual typing after the camera arrives',async()=>{
-    await page.goto(base+'/zh/projects/');await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.worldReady==='true');
-    await page.locator('[data-cafe-start]').click();await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.worldRenderedMode==='roam');
+    await page.goto(base+'/zh/projects/');await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.bootState==='complete');await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.worldRenderedMode==='roam');
     await page.keyboard.press('Control+j');await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     await page.keyboard.type('A question that has not been sent.');
     assert.equal(await page.locator('[data-agent-input]').inputValue(),'A question that has not been sent.');

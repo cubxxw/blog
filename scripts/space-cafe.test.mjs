@@ -10,12 +10,17 @@ test('direct content routes take priority over a café visit', () => {
   assert.equal(cafeEntryMode({ route: { view: 'bear', app: 'reader' }, navigation: 'navigate' }), 'desktop');
   assert.equal(cafeEntryMode({ route: { view: 'lab' }, saved: 'cafe', localeResume: true }), 'desktop');
 });
-test('a fresh visit enters the café; reload and language changes resume the current place', () => {
+test('root visits and reloads enter the café while language changes preserve the current place', () => {
   const route = { view: 'bear' };
   assert.equal(cafeEntryMode({ route, navigation: 'navigate', saved: 'desktop' }), 'cafe');
-  assert.equal(cafeEntryMode({ route, navigation: 'reload', saved: 'desktop' }), 'desktop');
+  assert.equal(cafeEntryMode({ route, navigation: 'reload', saved: 'desktop' }), 'cafe');
   assert.equal(cafeEntryMode({ route, navigation: 'navigate', saved: 'desktop', localeResume: true }), 'desktop');
   assert.equal(cafeEntryMode({ route, navigation: 'reload', saved: 'invalid' }), 'cafe');
+});
+test('an explicit reader deep link beats stale café storage on reload',()=>{
+  assert.equal(cafeEntryMode({route:{view:'bear',app:'reader'},navigation:'reload',saved:'cafe'}),'desktop');
+  assert.equal(cafeEntryMode({route:{view:'bear',app:'reader'},navigation:'back_forward',saved:'cafe'}),'desktop');
+  assert.equal(cafeEntryMode({route:{view:'bear'},navigation:'back_forward',saved:'desktop'}),'desktop');
 });
 test('returning to the café from an old About URL survives reload and language changes', () => {
   const route = { view: 'bear', app: 'welcome', payload: 'identity' };

@@ -434,7 +434,16 @@ function mountDesktop(root) {
     catch{if(current())host.innerHTML=`<p class="space-app">${t('知识空间暂时无法加载。','The knowledge space could not load.')}</p><button data-product-view-button="lab">${t('返回 Product Lab','Back to Product Lab')}</button>`;}
     finally{if(generation===knowledgeGeneration)knowledgePending=false;}
   }
-  productRoot.addEventListener('click',event=>{const b=event.target.closest('[data-product-view-button]');if(!b)return;setView(b.dataset.productViewButton);const target=b.dataset.productViewButton==='bear'?menu:productRoot.querySelector('.product-view-switch [data-product-view-button="lab"]');target?.focus({preventScroll:true});});
+  productRoot.addEventListener('click',async event=>{
+    const b=event.target.closest('[data-product-view-button]');if(!b)return;
+    setView(b.dataset.productViewButton);
+    if(b.dataset.productViewButton==='bear'){
+      // The hidden Lab may have deferred the first real frame. Its controls
+      // become focusable only after the spatial workspace is ready.
+      const entered=await cafe?.enterDesktop();
+      if(entered!==false&&!root.hidden&&(document.activeElement===b||document.activeElement===document.body))menu.focus({preventScroll:true});
+    }else productRoot.querySelector('.product-view-switch [data-product-view-button="lab"]')?.focus({preventScroll:true});
+  });
   function applyHash(restoreLocale = false){
     const entry=new URLSearchParams(location.search).get('profile')==='about'?'about':'';
     const route=resolveSpaceRoute(location.hash,catalog.products,entry);
@@ -448,7 +457,7 @@ function mountDesktop(root) {
   const entryRoute = resolveSpaceRoute(location.hash,catalog.products,new URLSearchParams(location.search).get('profile') === 'about' ? 'about' : '');
   const navigationType = performance.getEntriesByType('navigation')[0]?.type;
   let resumeCafe = false;
-  try { resumeCafe = navigationType === 'reload' && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
+  try { resumeCafe = navigationType === 'reload' && !entryRoute.app && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
   if (!state.initialized) home(); else render();
   applyHash(localeResume || resumeCafe);
   cafe = mountCafe({ root, route:entryRoute, navigation:navigationType, localeResume, execute,

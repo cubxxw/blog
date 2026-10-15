@@ -1,0 +1,180 @@
+{
+  "base": "http://127.0.0.1:1317",
+  "checks": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "controls": [
+        {
+          "width": 164,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "width": 164,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "data": {
+        "productPanel": "bear",
+        "bearWorkspace": "",
+        "theme": "light",
+        "wallpaper": "dawn",
+        "cafeMode": "cafe",
+        "cafeTheme": "zen",
+        "environmentPaused": "false",
+        "bootState": "complete",
+        "bootStage": "3",
+        "ready": "true",
+        "worldTheme": "zen",
+        "worldObjects": "224",
+        "worldMode": "roam",
+        "worldTravel": "false",
+        "worldRenderedMode": "roam",
+        "worldReady": "true",
+        "catState": "look",
+        "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "catActive": "true",
+        "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.329}",
+        "worldFrames": "10",
+        "worldTriangles": "104272",
+        "worldDraws": "102",
+        "catLoaded": "true"
+      },
+      "observedAmbientFps": 30
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "controls": [
+        {
+          "width": 144,
+          "height": 46,
+          "hit": true
+        },
+        {
+          "width": 144,
+          "height": 46,
+          "hit": true
+        }
+      ],
+      "data": {
+        "productPanel": "bear",
+        "bearWorkspace": "",
+        "theme": "light",
+        "wallpaper": "dawn",
+        "cafeMode": "cafe",
+        "cafeTheme": "zen",
+        "environmentPaused": "false",
+        "bootState": "complete",
+        "bootStage": "3",
+        "ready": "true",
+        "worldTheme": "zen",
+        "worldObjects": "224",
+        "worldMode": "roam",
+        "worldTravel": "false",
+        "worldRenderedMode": "roam",
+        "worldReady": "true",
+        "catState": "look",
+        "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "catActive": "false",
+        "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.414}",
+        "worldFrames": "3",
+        "worldTriangles": "70546",
+        "worldDraws": "52",
+        "catLoaded": "true"
+      }
+    },
+    {
+      "name": "narrow",
+      "width": 320,
+      "height": 740,
+      "controls": [
+        {
+          "width": 144,
+          "height": 46,
+          "hit": true
+        },
+        {
+          "width": 144,
+          "height": 46,
+          "hit": true
+        }
+      ],
+      "data": {
+        "productPanel": "bear",
+        "bearWorkspace": "",
+        "theme": "light",
+        "wallpaper": "dawn",
+        "cafeMode": "cafe",
+        "cafeTheme": "zen",
+        "environmentPaused": "false",
+        "bootState": "complete",
+        "bootStage": "3",
+        "ready": "true",
+        "worldTheme": "zen",
+        "worldObjects": "224",
+        "worldMode": "roam",
+        "worldTravel": "false",
+        "worldRenderedMode": "roam",
+        "worldReady": "true",
+        "catState": "look",
+        "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "catActive": "false",
+        "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.414}",
+        "worldFrames": "3",
+        "worldTriangles": "69650",
+        "worldDraws": "50",
+        "catLoaded": "true"
+      }
+    },
+    {
+      "name": "landscape",
+      "width": 568,
+      "height": 320,
+      "controls": [
+        {
+          "width": 144,
+          "height": 46,
+          "hit": true
+        },
+        {
+          "width": 144,
+          "height": 46,
+          "hit": true
+        }
+      ],
+      "data": {
+        "productPanel": "bear",
+        "bearWorkspace": "",
+        "theme": "light",
+        "wallpaper": "dawn",
+        "cafeMode": "cafe",
+        "cafeTheme": "zen",
+        "environmentPaused": "false",
+        "bootState": "complete",
+        "bootStage": "3",
+        "ready": "true",
+        "worldTheme": "zen",
+        "worldObjects": "224",
+        "worldMode": "roam",
+        "worldTravel": "false",
+        "worldRenderedMode": "roam",
+        "worldReady": "true",
+        "catState": "look",
+        "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "catActive": "false",
+        "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.329}",
+        "worldFrames": "3",
+        "worldTriangles": "105048",
+        "worldDraws": "104",
+        "catLoaded": "true"
+      }
+    }
+  ],
+  "errors": [],
+  "note": "Local Chromium observations. Phone emulation is not a physical-device performance measurement."
+}
