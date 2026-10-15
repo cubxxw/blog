@@ -6,9 +6,9 @@
      • an Icosahedron (subdiv 5) whose vertices breathe via 3D simplex
        noise in the vertex shader, so the surface undulates organically
        instead of reading as a plastic ball;
-     • a Fresnel rim glow in the fragment shader — bright edge, dark
-       core — composited ADDITIVELY so it reads as emitted light;
-     • a few hundred Points scattered on a shell around it, slowly
+     • a low-contrast Fresnel rim in the fragment shader, composited
+       transparently behind the portrait and question controls;
+     • a sparse set of Points scattered on a shell around it, slowly
        spinning, with LineSegments wiring near neighbours into a
        drifting neural network (the most direct "AI" metaphor);
      • pointer parallax (the orb leans toward the cursor, particles
@@ -17,8 +17,8 @@
 
    Deliberately NO postprocessing (EffectComposer/UnrealBloomPass): this
    is a reading-first blog, the addon chain is heavy, and an additive
-   Fresnel term + AdditiveBlending particles get us 90% of the bloom look
-   for none of the weight. Colour is bound to the warm palette (amber/gold
+   Fresnel term and sparse particles keep the background light. Colour is
+   bound to the warm palette (amber/gold
    over warm brown), never tech-blue, so it stays in the "Quiet Collector"
    key.
 
@@ -130,13 +130,12 @@ const ORB_FRAG = /* glsl */ `
   varying vec3 vViewDir;
   varying float vNoise;
   void main() {
-    // Fresnel: bright at grazing angles (rim), dark facing the camera.
+    // A low-contrast rim stays behind the portrait and question controls.
     float fres = pow(1.0 - clamp(dot(vViewDir, vNormalW), 0.0, 1.0), 3.0);
     // Core gets a faint noise shimmer so it never looks like dead plastic.
     vec3 core = uBaseColor * (0.35 + 0.25 * (vNoise * 0.5 + 0.5));
-    vec3 col  = core + uGlowColor * fres * (1.6 * uGlow);
-    // Additive-style emission: alpha tracks brightness so the rim "burns"
-    // into the background instead of sitting as a solid ball.
+    vec3 col  = core + uGlowColor * fres * (0.9 * uGlow);
+    // Alpha fades the whole surface so the portrait stays the focal point.
     float a = (0.30 + 0.70 * fres) * uOpacity;
     gl_FragColor = vec4(col, a);
   }
@@ -180,8 +179,8 @@ export function mountBearOrb(host, themeEl = host) {
     uTime:      { value: 0 },
     uFreq:      { value: 1.3 },
     uAmp:       { value: 0.22 },
-    uGlow:      { value: 1.0 },
-    uOpacity:   { value: 1.0 },
+    uGlow:      { value: 0.3 },
+    uOpacity:   { value: 0.25 },
     uBaseColor: { value: baseColor },
     uGlowColor: { value: glowColor },
   };
@@ -200,7 +199,7 @@ export function mountBearOrb(host, themeEl = host) {
   scene.add(orb);
 
   // ---- Neural particle field --------------------------------------------
-  const COUNT = 260;
+  const COUNT = 110;
   const positions = new Float32Array(COUNT * 3);
   const shell = [];
   for (let i = 0; i < COUNT; i++) {
@@ -218,14 +217,14 @@ export function mountBearOrb(host, themeEl = host) {
   const ptsGeo = new THREE.BufferGeometry();
   ptsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   const ptsMat = new THREE.PointsMaterial({
-    color: glowColor, size: 0.045, transparent: true, opacity: 0.9,
-    blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true,
+    color: glowColor, size: 0.035, transparent: true, opacity: 0.2,
+    blending: THREE.NormalBlending, depthWrite: false, sizeAttenuation: true,
   });
   const points = new THREE.Points(ptsGeo, ptsMat);
 
   // Wire near neighbours into a static neural mesh (cheap: built once).
   const linePos = [];
-  const MAX_DIST = 0.72;
+  const MAX_DIST = 0.62;
   for (let i = 0; i < shell.length; i++) {
     for (let j = i + 1; j < shell.length; j++) {
       if (shell[i].distanceTo(shell[j]) < MAX_DIST) {
@@ -236,8 +235,8 @@ export function mountBearOrb(host, themeEl = host) {
   const lineGeo = new THREE.BufferGeometry();
   lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePos), 3));
   const lineMat = new THREE.LineBasicMaterial({
-    color: glowColor, transparent: true, opacity: 0.16,
-    blending: THREE.AdditiveBlending, depthWrite: false,
+    color: glowColor, transparent: true, opacity: 0.04,
+    blending: THREE.NormalBlending, depthWrite: false,
   });
   const lines = new THREE.LineSegments(lineGeo, lineMat);
 
@@ -302,13 +301,13 @@ export function mountBearOrb(host, themeEl = host) {
       pulseT = Math.max(0, pulseT - dt / 0.4);
       const e = pulseT; // 1→0
       pulseAmp = e * e * 0.35;
-      pulseGlow = e * 1.2;
+      pulseGlow = e * 0.6;
     }
 
     // Compose uniforms from idle + thinking + pulse + recess.
     uniforms.uAmp.value = (0.18 + thinking * 0.22 + pulseAmp) * (1 - recess * 0.5);
-    uniforms.uGlow.value = (0.85 + thinking * 0.9 + pulseGlow) * (1 - recess * 0.55);
-    uniforms.uOpacity.value = 1 - recess * 0.7;
+    uniforms.uGlow.value = (0.3 + thinking * 0.3 + pulseGlow) * (1 - recess * 0.55);
+    uniforms.uOpacity.value = 0.25 * (1 - recess * 0.7);
 
     // Orb leans toward the cursor; recess shrinks it and pushes it back.
     const scale = (1 - recess * 0.34);
@@ -326,8 +325,8 @@ export function mountBearOrb(host, themeEl = host) {
     cloud.position.z = -recess * 1.0;
     cloud.scale.setScalar(1 + recess * 0.12);
     const cloudFade = 1 - recess * 0.35;
-    ptsMat.opacity = (0.55 + thinking * 0.35) * cloudFade;
-    lineMat.opacity = (0.12 + thinking * 0.12) * cloudFade;
+    ptsMat.opacity = (0.2 + thinking * 0.15) * cloudFade;
+    lineMat.opacity = (0.04 + thinking * 0.03) * cloudFade;
 
     renderer.render(scene, camera);
   }, {

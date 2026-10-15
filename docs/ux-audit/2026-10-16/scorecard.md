@@ -1,6 +1,6 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T02:00:50+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，基线 `6d7b9fe92a746a83e635282c9b78966920336a69`。
+更新：2026-10-16T02:38:36+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，基线 `6d7b9fe92a746a83e635282c9b78966920336a69`。
 
 **当前没有足够证据宣称全站或每个按钮96+。所有功能总分保持 `unverified / null`；旧Space证据只覆盖已记录的本地Chromium状态。**
 
@@ -35,6 +35,8 @@
 
 ## 证据与必测矩阵
 
+测量单位：本卡“实际/投影后字号”和命中尺寸均为变换后的**浏览器视口CSSpx**，独立于DPR和屏幕硬件像素。原回执的legacy字段 `physicalFont` / `fontPhysical` 为兼容保留，含义仍是投影后显示CSSpx；44×44目标同理。模拟粗指针不是实体设备测试。
+
 - 类型分开记录：源码、轻量测试、历史浏览器回执、已检查截图、当前浏览器、实体设备、专家视觉判断。源码不等于实测。
 - 基础尺寸：1440×900、390×844、320×740、568×320；按适用性覆盖中英、明暗、200%缩放、正常/减少动态效果。
 - 操作状态：正常、hover（适用时）、pressed/selected、键盘focus、disabled、pending、success、empty、error/retry、cancel/迟到结果。导航另测历史/深链/语言；私人内容另测输入和原DOM连续性。
@@ -43,7 +45,9 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`94e644e5`。当前独立复核E5.2的9文件hash、11条合同和4条实际动作旅程；仅关闭其明确范围。首页A/B为独立相对设计实验，详见文末。
+最近已验checkpoint：`77bf94c2`。E6.2当前9hash及QA config hash一致；core仅五处材质/每帧目标差异，四张双主题实拍与实际Metal生命周期已复核，无新P0/P1。UX030保持E61具体范围关闭，UX025–027与实际wheel复现UX031仍开。
+
+
 
 | ID | 控件族 | 问题 | 批次 | 当前状态 |
 | --- | --- | --- | --- | --- |
@@ -70,96 +74,126 @@
 | UX-021 | `S.WINDOW.DRAG`, `S.WINDOW.CLOSE`, `S.APP.notes.EDITOR`, `S.APP.map.REGION` | Space工作区整体缩小且透明边界叠加，桌面文字发软 | next-Space-readability | `closed_for_E5_primary_reading_and_plane_scope_chrome_matrix_unknown` |
 | UX-022 | `S.APP.map.ZOOM` | 手机地图缩放按钮仅22px宽 | next-Space-readability | `closed_for_recorded_E52_620_and_844_coarse_target_boundaries` |
 | UX-023 | `S.WINDOW.CLOSE`, `S.CAFE.RETURN`, `S.WINDOW.ARRANGE`, `S.CAFE.PICKER` | 短横屏café HUD截获窗口关闭/并排入口 | E5-shortheight-followup | `closed_for_recorded_E52_568_bilingual_and_844_coarse_HUD_paths` |
+| UX-024 | `S.WINDOW.ARRANGE`, `S.WINDOW.OVERVIEWITEM`, `S.WINDOW.CLOSE`, `S.WINDOW.MAXIMIZE` | 短横屏三窗“并排”仍重叠，隐藏了一整组窗口操作 | after-E6-short-arrange-recovery | `confirmed_recorded_shortheight_arrange_failure_bounded_followup` |
+| UX-025 | `H.CHAT.INPUT`, `H.CHAT.CLOSE`, `H.CHAT.OPEN` | 首页聊天关闭再开丢失未发送草稿 | after-E6-home-transport | `confirmed_baseline_mock_probe_pending_transport_batch` |
+| UX-026 | `H.CHAT.INPUT`, `H.CHAT.SEND` | 首页聊天合成composition Enter触发发送 | after-E6-home-transport | `confirmed_synthetic_event_guard_gap_OS_IME_unverified` |
+| UX-027 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.RETRY` | 首页聊天挂起无就地停止或请求时限，只能关窗取消 | after-E6-home-transport | `confirmed_mock_pending_friction_close_abort_available` |
+| UX-028 | `S.APP.products.SELECT`, `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.DRAFT`, `S.APP.contact.CHANNEL`, `S.APP.settings.LANG`, `S.APP.settings.THEME`, `S.APP.settings.COLOR`, `S.APP.settings.EXPORT` | Space四App重要正文、动作标签和能力说明在投影后过小 | after-E6-Space-four-app-type-targets | `confirmed_recorded_normal_readability_gap_bounded_four_app_batch` |
+| UX-029 | `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.CHANNEL` | Space手机主要产品/阅读/联系链接仍低于项目44px触控目标 | after-E6-Space-four-app-type-targets | `confirmed_recorded_390_primary_anchor_target_gap` |
+| UX-030 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.QUICK` | 短横屏聊天聚焦输入后composer部分出屏，关闭按钮被导航遮挡 | E6.1-short-chat-recovery | `closed_for_recorded_E61_568_bilingual_844_coarse_chrome_scroll_paths` |
+| UX-031 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE` | 短屏旧回复完成把滚去旅行书的读者拉回聊天并聚焦输入 | E7-transport-scroll-intent-probe | `confirmed_recorded_E61_568_en_wheel_completion_intent_failure` |
 
 ## 有证据的单项锚点评分
 
-片段分限定于对应as-of/断言；历史失败保留superseded状态。
-
 | 检查 | 维度片段 | 分 | 依据与限制 | as-of / 状态 / 置信度 |
-| --- | --- | ---: | --- | --- |
-| `CHK-A-PICKER-NAME` | `D2.1` | 96 | 390/320/568三个宽度均有稳定名称；44px命中另列。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-PICKER-KEYBOARD` | `D2.2` | 96 | 已记录打开场景选择后Escape关闭并返回原触发器；只对这条取消链。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-PICKER-TARGET` | `D2.3` | 96 | 390/320/568宽度中实际盒均44×44；未外推其他按钮。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-QUIET-VISIBLE` | `D3.2` | 96 | 三个宽度pressed开启后背景明显反色且title改变，状态反馈和开关一致；不证明所有暂停资源。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-QUIET-CONSISTENCY` | `D4.3` | 96 | 320px实图中quiet开启使用浅色实底，区别旁边未选图标；范围仅此状态对照。 | batch A frozen source / scoped_assessment / medium |
-| `CHK-A-COPY-TRUTH` | `D3.2` | 96 | pending未伪报success；resolved与legacy true才完成，denial显示人工复制路径。仅桩结果，不证明实体剪贴板。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-COPY-RECOVERY` | `D3.3` | 80 | 390px人工恢复说明右端被展开按钮覆盖；信息有方向但可读性受损。C布局已修，待新图关闭。 | batch A frozen source / historical_gap_closed_for_new_C_recorded_cases / high |
-| `CHK-A-COPY-ATTENTION` | `D4.4` | 80 | 复制恢复说明与展开工具同占代码块右下角，用户不能清楚区分说明和工具区域。 | batch A frozen source / historical_gap_closed_for_new_C_recorded_cases / high |
-| `CHK-A-COPY-MOBILE-TARGET` | `D2.3` | 96 | zh/en手机用例复制按钮高44px；桌面31.34px无需硬套移动44目标。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-EMAIL-FOCUS` | `D2.4` | 96 | zh/en桌面/手机均实际focused/visible，边框改变并有3pxshadow；outline:none不构成缺陷。此分仅焦点可见片段，未量测对比或虚拟键盘。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-WINDOW-PRESS` | `D5.2` | 96 | 最小化按钮按压前后44.28px边界稳定，未因全局scale跳动。 | batch A frozen source / scoped_assessment / high |
-| `CHK-A-MAP-PRESS` | `D5.2` | 96 | 地图标记按压几何稳定；9.46px盒只证明未被transform覆盖，命中/spacing/等价区域列表须另测。 | batch A frozen source / scoped_assessment / high |
-| `CHK-BASE-UX-001` | `D2.1` | 60 | 手机换景旧按钮唯一文字隐藏且图标aria-hidden，读屏需绕路；A专项已关闭此片段。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-002` | `D3.2` | 80 | 旧quiet仅aria变化，视觉用户无法确认暂停状态；A已验证反色。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-003` | `D2.2` | 60 | role=tab未实现方向键与roving模型，Tab/Enter仍能绕路；B改后待实际矩阵。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-004` | `D2.1` | 60 | 旧aria-labelledby所指ID不存在，辅助技术缺关联；B改后待渲染验证。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-005` | `D3.2` | 60 | 旧Promise未settle即成功，用户无法判断复制是否完成；A专项已关闭。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-006` | `D3.3` | 60 | 旧clipboard拒绝无恢复说明；C已改源码待真实桩验收。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-007` | `D3.1` | 60 | 旧fetch无超时，挂起submit一直disabled，必须刷新绕路；C改后待挂起和重试链。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-008` | `D2.2` | 80 | 原菜单无Escape/返回焦点；B同步focus又撞visibility过渡，延迟guard正在修。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-009` | `D5.1` | 60 | 旧TOC固定smooth无reduce分支；B源码改后待实际行为。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-BASE-UX-010` | `D1.4` | 80 | 旧无匹配仍说目录空，缺清条件入口，用户可手动删查询绕路；C待验收。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
-| `CHK-SOURCE-CLOSED-SHEET` | `D2.2` | 60 | article-bottom-sheet.css:113–145仅用transform移到屏外，没有hidden/visibility/inert；模板当前tab tabindex0且TOC链接可聚焦。article-bottom-sheet.js:157 keydown handler未检查abs--open，屏外进入后还会循环trap；Escape可退出，故不夸大为完全无法脱困。 | current source review / source_diagnosis_not_runtime_score / high |
-| `CHK-C-COPY-SEPARATION` | `D6.1` | 96 | 四张当前图已逐张查看；文字Range rect和44px工具不相交，hit中心成功；仅关闭UX-011。横屏/200%与键盘边界仍未知。 | batch C frozen source / scoped_contract_pass / high |
-| `CHK-C-COPY-ATTENTION` | `D4.4` | 90 | 恢复说明和44px工具已分出独立行，旧覆盖关闭；320zh与390en文字终点距工具仅约0.24/0.25px，仍显拥挤，后续可留更明确间距。此为视觉细化，不重新宣告叠压失败。 | batch C frozen source / historical_C_crowding_improved_D3 / medium |
-| `CHK-C-COPY-CLEAN-READER` | `D3.4` | 96 | 四个C记录中从error打开fullscreen没有重复旧status；UX-013 focus边界未包含在该合同。 | batch C frozen source / scoped_contract_pass / high |
-| `CHK-D1-SHARE-INTENT` | `D3.4` | 96 | 390px zh/light/reduce中复制迟到拒绝没有重开manual模态，焦点仍在FAB；只证明该意图变更链。 | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D1-BOOK-STOP` | `D3.3` | 96 | 1440px zh/light/reduce，部分SSE后Stop取消并保留问题，回到可编辑状态。 | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D1-BOOK-SWITCH` | `D3.4` | 96 | 同一桌面配置关闭A并打开B后旧回答隔离；不认证D2后来native dialog Tab/淡出。 | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D1-FAQ-STOP` | `D3.3` | 96 | 390px zh/light/reduce，部分SSE Stop恢复问题和输入；不包含外层summary collapse。 | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D1-SEARCH-CLOSE` | `D3.4` | 96 | 1440px zh/light/reduce，关闭搜索取消部分SSE，重开清空；不包含旧成功回复抢编辑焦点。 | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D2-NATIVE-FOCUS-GAP` | `D2.2` | 80 | native dialog仍有一跳activeElement=body，焦点环丢失后下一Tab返回首项；可完成有明确摩擦。此分不声称背景控件可用。 | D2a frozen source before explicit focus wrap / historical_D2a_gap_closed_for_D2b_recorded_cases / high |
-| `CHK-D2B-TABS-DESKTOP` | `D2.2` | 96 | 1440×900 zh reduced，End/Home/ArrowRight循环与单一tabstop按实际断言通过；ArrowLeft另有Node合同，完整可选series配置未齐。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-TABS-COMPACT` | `D2.2` | 96 | 390×844 zh reduced，End切末tab、ShiftTab不离弹层、Escape返回FAB。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-PANEL-NAME` | `D2.1` | 96 | 实际可见分享panel aria-labelledby等于被选tabID；源中全部ID已补，未把可选series组合都认证。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-MOBILE-MENU` | `D2.2` | 96 | 390×844 /zh/articles/，实际延后可见后首链接聚焦、Escape回触发器且关闭；不外推长英文/断点。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-COPY-REFUSAL` | `D3.3` | 96 | 受控reject+execCommandfalse，没有is-copied，原代码选择保留且按钮恢复可用。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-SHEET-CLOSED` | `D2.2` | 96 | 390×844初始与关闭后inert/ariahidden，尝试focus当前tab均失败；打开可聚焦，Escape再关闭。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-CODE-FOCUS` | `D2.2` | 96 | 390×844全屏连续6次Tab每次都有可见dialog内焦点，Escape关闭并返回原展开按钮。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-BOOK-FOCUS` | `D2.2` | 96 | 390×844书籍弹层连续8次Tab均可见，Escape返回触发器，关闭控件实际44px。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-BOOK-CLOSE-TARGET` | `D2.3` | 96 | 只验证书籍Close实际宽高≥44；Send和chips尺寸不包含，不能由Close通过认证整模态命中。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-IME-BOOK` | `D3.4` | 96 | 合成isComposing Enter不发请求，后续明确Enter才发；不是实体手机真实中文输入法完整验收。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-IME-FAQ` | `D3.4` | 96 | isComposing与keyCode229合成事件都保留草稿且0请求，明确Enter才发。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-SHARE-RECOVERY` | `D3.3` | 96 | 390×844分享拒绝后native manual弹层保留可选择URL，Escape回复制触发器。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-SUB-TIMEOUT` | `D3.1` | 96 | fetch桩永不settle，虚拟时钟16秒后submit恢复/邮箱保留/超时可见；未发送真实订阅。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-LIBRARY-EMPTY` | `D3.3` | 96 | 真实Dock开reader，清无匹配query后焦点回输入且列表恢复；空收藏能回all并显示文章。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-FAQ-OUTER-CANCEL` | `D3.4` | 96 | 390×844 zh/light/reduce外层summary关闭取消；关闭后的迟到结果不被承诺为有效回复。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-SEARCH-FOCUS` | `D3.4` | 96 | 1440×844 zh/light/reduce，旧回答完成不抢正在编辑的新搜索焦点。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-D2B-BOOK-ESCAPE-REOPEN` | `D3.4` | 96 | 390×844 zh/light，在reduce与no-preference均双Escape和快速重开不被旧回调关闭。 | D2b frozen source / scoped_contract_pass / high |
-| `CHK-SPACE-NOTE-DOM` | `D6.4` | 96 | 1440/390×900两个记录最小化/恢复保留同DOM；不外推语言/路由/关闭后原节点。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
-| `CHK-SPACE-MAX-RESTORE` | `D3.4` | 96 | 1440/390×900最大化再恢复按记录完成；内容可读性与所有尺寸仍须另评。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
-| `CHK-SPACE-NOTE-TEXT` | `D6.4` | 96 | 1440/390×900关闭再开保留文本；该合同不承诺关闭后仍同节点。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
-| `CHK-SPACE-PHONE-WINDOW-TARGET` | `D2.3` | 96 | 手机四个windowaction实际44.28×44.28、中心命中，专项通过；桌面各22.96，不能由手机通过外推。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
-| `CHK-SPACE-MAP-ZOOM-TARGET` | `D2.3` | 80 | 手机+/−实际22.14×44.28，宽不足项目重要移动控件44目标；中心命中但点击有摩擦，G4上限89。WCAG24与spacing/替代仍须独立判断。 | Space window audit against D2b frozen source / observed_target_gap / high |
-| `CHK-D3-COPY-CLEARANCE` | `D4.4` | 96 | 文字Range与44px展开工具净空实算26.23/45.55/18.53/14.58px，四图分区清楚，C的0.24px拥挤在这些新D3状态关闭。 | D3 frozen source / scoped_contract_pass / high |
-| `CHK-D3-COPY-ACTION-LANGUAGE` | `D1.3` | 96 | 中文按钮只保留“复制”；手机失败文案明确“长按代码，选择复制”，四张语言/指针场景与动作一致。 | D3 frozen source / scoped_contract_pass / high |
-| `CHK-D3-COPY-NO-STALE-STATUS` | `D3.4` | 96 | 四个D3记录从error进入全屏没有克隆旧status；focus循环另由D2b合同保证，未由这8条替代。 | D3 frozen source / scoped_contract_pass / high |
-| `CHK-D4B-PRODUCT-INTENT` | `D1.4` | 96 | Chinesehomehero/Englishhomeproducts/Chinesearticlefooter nowopensactualProductsappcurrenttab withrealh2andproperDocklabel;#studio-products already supportedroute. | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D4B-SPACE-PLAIN-ENTRY` | `D6.4` | 96 | Bothzh/enplain /projects/ stillstartcafe;Dock/productsapphidden untilintentionalenter. Productdeeplinkdoesnotchangecafédefault. | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D4B-BOOK-TOUCH` | `D2.3` | 96 | 320/390zhsuggestionsheight≥44,SendandStop44×44,input16pxand≥8pxgap;Stopabortsandrestoresquestion. Targetsactuallymeasured,notCSS-only. | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D4B-BOOK-LINES` | `D4.1` | 96 | 320/390firstpromptfinalrenderedline≥4characters,oldtwo-characterorphanclosed;allrealquestionspreserved. | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D4B-BOOK-SHORTHEIGHT` | `D6.1` | 96 | 568×320/256bothzh/en:card16pxinset,Close/input/Send≥44insidecardandcenterhit;thirdsuggestioncan scrollintoview/click withoutcoveringcomposer. | D4b frozen source / scoped_contract_pass / high |
-| `CHK-D4B-BOOK-LONG-READING` | `D6.2` | 96 | Shortheight4cases:thirdsuggestionyields30paragraphanswer;conversationoverflowsscrollably;focusedregionHome/Endwork;header/composerstayreachableandEscapecloses. | D4b frozen source / scoped_contract_pass / high |
-| `CHK-E5-PRIMARY-TYPE` | `D4.1` | 96 | Notesactualfont16.4px at1440/390/320/568,upfromsmallprojectedreadingtype;onlyprimarynoteschrome,notalllabels. | E5 frozen Space styles / scoped_contract_pass / high |
-| `CHK-E5-DESKTOP-TARGETS` | `D2.3` | 96 | Desktopwindow/mapcontrolsactual26.24px,meetingthe24pximportantdesktopgoalat1440;fullpointerhit/pathnotallclaimed. | E5 frozen Space styles / scoped_contract_pass / high |
-| `CHK-E5-MOBILE-MAP-TARGETS` | `D2.3` | 96 | 320/390/568mapcontrolsactual44.28×44.28;fit62.32×44.28andWorld44.28. UX022closedfortheserecordedwidths;600..640unknown. | E5 frozen Space styles / scoped_contract_pass / high |
-| `CHK-E5-OPAQUE-PLANE` | `D4.2` | 96 | Actualnotes/mapplaneisrgb(238,239,235),noimagegradient,worldbehindnolongershows throughreadingarea;stablefocusededitorringretained. | E5 frozen Space styles / scoped_contract_pass / high |
-| `CHK-E5-SHORT-CLOSE-FAIL` | `D6.1` | 60 | 568×320 close center triggered café return instead of closing notes; notesCount remained1. Known historical failure, repaired by E5.2. | E5 actual boundary failure / historical_failure_closed_for_recorded_E52_cases / high |
-| `CHK-E5-620-MAP-FAIL` | `D2.3` | 80 | 620×844 zoom26.24×44.28 and World27.88×44.28 missed the project important mobile target; no blanket WCAG claim. | E5 actual boundary failure / historical_failure_closed_for_recorded_E52_cases / high |
-| `CHK-E51-COARSE-TARGET-FAIL` | `D2.3` | 80 | 844×390 coarse window/map controls about26.24px; arrange center additionally hit scenery HUD. E5.2 now addresses both. | E5.1 coarse boundary failure / historical_failure_closed_for_recorded_E52_cases / high |
-| `CHK-E52-CLOSE-HUD` | `D6.1` | 96 | 568×320 zh/en and844×390 coarse zh all window/HUD centers hit intended targets; actual coordinate close removes window while desktop remains. | E5.2 frozen source / scoped_contract_pass / high |
-| `CHK-E52-MAP-TARGETS` | `D2.3` | 96 | 620×844 zh and844×390 coarse zh: every map button≥44.27px, center hit and actual click;568×320 zh/en also pass. | E5.2 frozen source / scoped_contract_pass / high |
-| `CHK-E52-HUD-INTENT` | `D6.4` | 96 | Three short-height journeys open picker, Escape returns focus, café return then CtrlK/workspace preserves original editor DOM and note text. | E5.2 frozen source / scoped_contract_pass / high |
-| `CHK-E52-FAQ-MOTION` | `D5.1` | 96 | Runtime reduce change cancels active opening/closing WAAPI, reaches intended details.open/class, clears height/overflow and leaves zero animations; subsequent toggles settle. | E5.2 frozen source / scoped_contract_pass / high |
-| `CHK-E52-FAQ-HIDDEN` | `D2.2` | 96 | Initial hidden panel has no bounding box and input cannot focus. Closing after runtime preference change becomes hidden; toggle keeps focus, reopening focuses input. | E5.2 frozen source / scoped_contract_pass / high |
-| `CHK-E52-FAQ-INTENT` | `D3.4` | 96 | Moving focus to theme before reduce does not steal it; controlled hanging request aborts when FAQ collapses and reopens with draft enabled/intact. | E5.2 frozen source / scoped_contract_pass / high |
+| --- | --- | --- | --- | --- |
+| `CHK-A-PICKER-NAME` | D2.1 | 96 | 390/320/568三个宽度均有稳定名称；44px命中另列。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-PICKER-KEYBOARD` | D2.2 | 96 | 已记录打开场景选择后Escape关闭并返回原触发器；只对这条取消链。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-PICKER-TARGET` | D2.3 | 96 | 390/320/568宽度中实际盒均44×44；未外推其他按钮。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-QUIET-VISIBLE` | D3.2 | 96 | 三个宽度pressed开启后背景明显反色且title改变，状态反馈和开关一致；不证明所有暂停资源。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-QUIET-CONSISTENCY` | D4.3 | 96 | 320px实图中quiet开启使用浅色实底，区别旁边未选图标；范围仅此状态对照。 | batch A frozen source / scoped_assessment / medium |
+| `CHK-A-COPY-TRUTH` | D3.2 | 96 | pending未伪报success；resolved与legacy true才完成，denial显示人工复制路径。仅桩结果，不证明实体剪贴板。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-COPY-RECOVERY` | D3.3 | 80 | 390px人工恢复说明右端被展开按钮覆盖；信息有方向但可读性受损。C布局已修，待新图关闭。 | batch A frozen source / historical_gap_closed_for_new_C_recorded_cases / high |
+| `CHK-A-COPY-ATTENTION` | D4.4 | 80 | 复制恢复说明与展开工具同占代码块右下角，用户不能清楚区分说明和工具区域。 | batch A frozen source / historical_gap_closed_for_new_C_recorded_cases / high |
+| `CHK-A-COPY-MOBILE-TARGET` | D2.3 | 96 | zh/en手机用例复制按钮高44px；桌面31.34px无需硬套移动44目标。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-EMAIL-FOCUS` | D2.4 | 96 | zh/en桌面/手机均实际focused/visible，边框改变并有3pxshadow；outline:none不构成缺陷。此分仅焦点可见片段，未量测对比或虚拟键盘。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-WINDOW-PRESS` | D5.2 | 96 | 最小化按钮按压前后44.28px边界稳定，未因全局scale跳动。 | batch A frozen source / scoped_assessment / high |
+| `CHK-A-MAP-PRESS` | D5.2 | 96 | 地图标记按压几何稳定；9.46px盒只证明未被transform覆盖，命中/spacing/等价区域列表须另测。 | batch A frozen source / scoped_assessment / high |
+| `CHK-BASE-UX-001` | D2.1 | 60 | 手机换景旧按钮唯一文字隐藏且图标aria-hidden，读屏需绕路；A专项已关闭此片段。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-002` | D3.2 | 80 | 旧quiet仅aria变化，视觉用户无法确认暂停状态；A已验证反色。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-003` | D2.2 | 60 | role=tab未实现方向键与roving模型，Tab/Enter仍能绕路；B改后待实际矩阵。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-004` | D2.1 | 60 | 旧aria-labelledby所指ID不存在，辅助技术缺关联；B改后待渲染验证。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-005` | D3.2 | 60 | 旧Promise未settle即成功，用户无法判断复制是否完成；A专项已关闭。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-006` | D3.3 | 60 | 旧clipboard拒绝无恢复说明；C已改源码待真实桩验收。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-007` | D3.1 | 60 | 旧fetch无超时，挂起submit一直disabled，必须刷新绕路；C改后待挂起和重试链。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-008` | D2.2 | 80 | 原菜单无Escape/返回焦点；B同步focus又撞visibility过渡，延迟guard正在修。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-009` | D5.1 | 60 | 旧TOC固定smooth无reduce分支；B源码改后待实际行为。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-BASE-UX-010` | D1.4 | 80 | 旧无匹配仍说目录空，缺清条件入口，用户可手动删查询绕路；C待验收。 | baseline source before fixes / historical_diagnosis_not_runtime_score / high |
+| `CHK-SOURCE-CLOSED-SHEET` | D2.2 | 60 | article-bottom-sheet.css:113–145仅用transform移到屏外，没有hidden/visibility/inert；模板当前tab tabindex0且TOC链接可聚焦。article-bottom-sheet.js:157 keydown handler未检查abs--open，屏外进入后还会循环trap；Escape可退出，故不夸大为完全无法脱困。 | current source review / source_diagnosis_not_runtime_score / high |
+| `CHK-C-COPY-SEPARATION` | D6.1 | 96 | 四张当前图已逐张查看；文字Range rect和44px工具不相交，hit中心成功；仅关闭UX-011。横屏/200%与键盘边界仍未知。 | batch C frozen source / scoped_contract_pass / high |
+| `CHK-C-COPY-ATTENTION` | D4.4 | 90 | 恢复说明和44px工具已分出独立行，旧覆盖关闭；320zh与390en文字终点距工具仅约0.24/0.25px，仍显拥挤，后续可留更明确间距。此为视觉细化，不重新宣告叠压失败。 | batch C frozen source / historical_C_crowding_improved_D3 / medium |
+| `CHK-C-COPY-CLEAN-READER` | D3.4 | 96 | 四个C记录中从error打开fullscreen没有重复旧status；UX-013 focus边界未包含在该合同。 | batch C frozen source / scoped_contract_pass / high |
+| `CHK-D1-SHARE-INTENT` | D3.4 | 96 | 390px zh/light/reduce中复制迟到拒绝没有重开manual模态，焦点仍在FAB；只证明该意图变更链。 | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D1-BOOK-STOP` | D3.3 | 96 | 1440px zh/light/reduce，部分SSE后Stop取消并保留问题，回到可编辑状态。 | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D1-BOOK-SWITCH` | D3.4 | 96 | 同一桌面配置关闭A并打开B后旧回答隔离；不认证D2后来native dialog Tab/淡出。 | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D1-FAQ-STOP` | D3.3 | 96 | 390px zh/light/reduce，部分SSE Stop恢复问题和输入；不包含外层summary collapse。 | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D1-SEARCH-CLOSE` | D3.4 | 96 | 1440px zh/light/reduce，关闭搜索取消部分SSE，重开清空；不包含旧成功回复抢编辑焦点。 | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D2-NATIVE-FOCUS-GAP` | D2.2 | 80 | native dialog仍有一跳activeElement=body，焦点环丢失后下一Tab返回首项；可完成有明确摩擦。此分不声称背景控件可用。 | D2a frozen source before explicit focus wrap / historical_D2a_gap_closed_for_D2b_recorded_cases / high |
+| `CHK-D2B-TABS-DESKTOP` | D2.2 | 96 | 1440×900 zh reduced，End/Home/ArrowRight循环与单一tabstop按实际断言通过；ArrowLeft另有Node合同，完整可选series配置未齐。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-TABS-COMPACT` | D2.2 | 96 | 390×844 zh reduced，End切末tab、ShiftTab不离弹层、Escape返回FAB。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-PANEL-NAME` | D2.1 | 96 | 实际可见分享panel aria-labelledby等于被选tabID；源中全部ID已补，未把可选series组合都认证。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-MOBILE-MENU` | D2.2 | 96 | 390×844 /zh/articles/，实际延后可见后首链接聚焦、Escape回触发器且关闭；不外推长英文/断点。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-COPY-REFUSAL` | D3.3 | 96 | 受控reject+execCommandfalse，没有is-copied，原代码选择保留且按钮恢复可用。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SHEET-CLOSED` | D2.2 | 96 | 390×844初始与关闭后inert/ariahidden，尝试focus当前tab均失败；打开可聚焦，Escape再关闭。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-CODE-FOCUS` | D2.2 | 96 | 390×844全屏连续6次Tab每次都有可见dialog内焦点，Escape关闭并返回原展开按钮。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-BOOK-FOCUS` | D2.2 | 96 | 390×844书籍弹层连续8次Tab均可见，Escape返回触发器，关闭控件实际44px。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-BOOK-CLOSE-TARGET` | D2.3 | 96 | 只验证书籍Close实际宽高≥44；Send和chips尺寸不包含，不能由Close通过认证整模态命中。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-IME-BOOK` | D3.4 | 96 | 合成isComposing Enter不发请求，后续明确Enter才发；不是实体手机真实中文输入法完整验收。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-IME-FAQ` | D3.4 | 96 | isComposing与keyCode229合成事件都保留草稿且0请求，明确Enter才发。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SHARE-RECOVERY` | D3.3 | 96 | 390×844分享拒绝后native manual弹层保留可选择URL，Escape回复制触发器。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SUB-TIMEOUT` | D3.1 | 96 | fetch桩永不settle，虚拟时钟16秒后submit恢复/邮箱保留/超时可见；未发送真实订阅。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-LIBRARY-EMPTY` | D3.3 | 96 | 真实Dock开reader，清无匹配query后焦点回输入且列表恢复；空收藏能回all并显示文章。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-FAQ-OUTER-CANCEL` | D3.4 | 96 | 390×844 zh/light/reduce外层summary关闭取消；关闭后的迟到结果不被承诺为有效回复。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-SEARCH-FOCUS` | D3.4 | 96 | 1440×844 zh/light/reduce，旧回答完成不抢正在编辑的新搜索焦点。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-D2B-BOOK-ESCAPE-REOPEN` | D3.4 | 96 | 390×844 zh/light，在reduce与no-preference均双Escape和快速重开不被旧回调关闭。 | D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-NOTE-DOM` | D6.4 | 96 | 1440/390×900两个记录最小化/恢复保留同DOM；不外推语言/路由/关闭后原节点。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-MAX-RESTORE` | D3.4 | 96 | 1440/390×900最大化再恢复按记录完成；内容可读性与所有尺寸仍须另评。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-NOTE-TEXT` | D6.4 | 96 | 1440/390×900关闭再开保留文本；该合同不承诺关闭后仍同节点。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-PHONE-WINDOW-TARGET` | D2.3 | 96 | 手机四个windowaction实际44.28×44.28、中心命中，专项通过；桌面各22.96，不能由手机通过外推。 | Space window audit against D2b frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-MAP-ZOOM-TARGET` | D2.3 | 80 | 手机+/−实际22.14×44.28，宽不足项目重要移动控件44目标；中心命中但点击有摩擦，G4上限89。WCAG24与spacing/替代仍须独立判断。 | Space window audit against D2b frozen source / observed_target_gap / high |
+| `CHK-D3-COPY-CLEARANCE` | D4.4 | 96 | 文字Range与44px展开工具净空实算26.23/45.55/18.53/14.58px，四图分区清楚，C的0.24px拥挤在这些新D3状态关闭。 | D3 frozen source / scoped_contract_pass / high |
+| `CHK-D3-COPY-ACTION-LANGUAGE` | D1.3 | 96 | 中文按钮只保留“复制”；手机失败文案明确“长按代码，选择复制”，四张语言/指针场景与动作一致。 | D3 frozen source / scoped_contract_pass / high |
+| `CHK-D3-COPY-NO-STALE-STATUS` | D3.4 | 96 | 四个D3记录从error进入全屏没有克隆旧status；focus循环另由D2b合同保证，未由这8条替代。 | D3 frozen source / scoped_contract_pass / high |
+| `CHK-D4B-PRODUCT-INTENT` | D1.4 | 96 | Chinesehomehero/Englishhomeproducts/Chinesearticlefooter nowopensactualProductsappcurrenttab withrealh2andproperDocklabel;#studio-products already supportedroute. | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D4B-SPACE-PLAIN-ENTRY` | D6.4 | 96 | Bothzh/enplain /projects/ stillstartcafe;Dock/productsapphidden untilintentionalenter. Productdeeplinkdoesnotchangecafédefault. | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D4B-BOOK-TOUCH` | D2.3 | 96 | 320/390zhsuggestionsheight≥44,SendandStop44×44,input16pxand≥8pxgap;Stopabortsandrestoresquestion. Targetsactuallymeasured,notCSS-only. | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D4B-BOOK-LINES` | D4.1 | 96 | 320/390firstpromptfinalrenderedline≥4characters,oldtwo-characterorphanclosed;allrealquestionspreserved. | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D4B-BOOK-SHORTHEIGHT` | D6.1 | 96 | 568×320/256bothzh/en:card16pxinset,Close/input/Send≥44insidecardandcenterhit;thirdsuggestioncan scrollintoview/click withoutcoveringcomposer. | D4b frozen source / scoped_contract_pass / high |
+| `CHK-D4B-BOOK-LONG-READING` | D6.2 | 96 | Shortheight4cases:thirdsuggestionyields30paragraphanswer;conversationoverflowsscrollably;focusedregionHome/Endwork;header/composerstayreachableandEscapecloses. | D4b frozen source / scoped_contract_pass / high |
+| `CHK-E5-PRIMARY-TYPE` | D4.1 | 96 | Notesactualfont16.4px at1440/390/320/568,upfromsmallprojectedreadingtype;onlyprimarynoteschrome,notalllabels. | E5 frozen Space styles / scoped_contract_pass / high |
+| `CHK-E5-DESKTOP-TARGETS` | D2.3 | 96 | Desktopwindow/mapcontrolsactual26.24px,meetingthe24pximportantdesktopgoalat1440;fullpointerhit/pathnotallclaimed. | E5 frozen Space styles / scoped_contract_pass / high |
+| `CHK-E5-MOBILE-MAP-TARGETS` | D2.3 | 96 | 320/390/568mapcontrolsactual44.28×44.28;fit62.32×44.28andWorld44.28. UX022closedfortheserecordedwidths;600..640unknown. | E5 frozen Space styles / scoped_contract_pass / high |
+| `CHK-E5-OPAQUE-PLANE` | D4.2 | 96 | Actualnotes/mapplaneisrgb(238,239,235),noimagegradient,worldbehindnolongershows throughreadingarea;stablefocusededitorringretained. | E5 frozen Space styles / scoped_contract_pass / high |
+| `CHK-E5-SHORT-CLOSE-FAIL` | D6.1 | 60 | 568×320 close center triggered café return instead of closing notes; notesCount remained1. Known historical failure, repaired by E5.2. | E5 actual boundary failure / historical_failure_closed_for_recorded_E52_cases / high |
+| `CHK-E5-620-MAP-FAIL` | D2.3 | 80 | 620×844 zoom26.24×44.28 and World27.88×44.28 missed the project important mobile target; no blanket WCAG claim. | E5 actual boundary failure / historical_failure_closed_for_recorded_E52_cases / high |
+| `CHK-E51-COARSE-TARGET-FAIL` | D2.3 | 80 | 844×390 coarse window/map controls about26.24px; arrange center additionally hit scenery HUD. E5.2 now addresses both. | E5.1 coarse boundary failure / historical_failure_closed_for_recorded_E52_cases / high |
+| `CHK-E52-CLOSE-HUD` | D6.1 | 96 | 568×320 zh/en and844×390 coarse zh all window/HUD centers hit intended targets; actual coordinate close removes window while desktop remains. | E5.2 frozen source / scoped_contract_pass / high |
+| `CHK-E52-MAP-TARGETS` | D2.3 | 96 | 620×844 zh and844×390 coarse zh: every map button≥44.27px, center hit and actual click;568×320 zh/en also pass. | E5.2 frozen source / scoped_contract_pass / high |
+| `CHK-E52-HUD-INTENT` | D6.4 | 96 | Three short-height journeys open picker, Escape returns focus, café return then CtrlK/workspace preserves original editor DOM and note text. | E5.2 frozen source / scoped_contract_pass / high |
+| `CHK-E52-FAQ-MOTION` | D5.1 | 96 | Runtime reduce change cancels active opening/closing WAAPI, reaches intended details.open/class, clears height/overflow and leaves zero animations; subsequent toggles settle. | E5.2 frozen source / scoped_contract_pass / high |
+| `CHK-E52-FAQ-HIDDEN` | D2.2 | 96 | Initial hidden panel has no bounding box and input cannot focus. Closing after runtime preference change becomes hidden; toggle keeps focus, reopening focuses input. | E5.2 frozen source / scoped_contract_pass / high |
+| `CHK-E52-FAQ-INTENT` | D3.4 | 96 | Moving focus to theme before reduce does not steal it; controlled hanging request aborts when FAQ collapses and reopens with draft enabled/intact. | E5.2 frozen source / scoped_contract_pass / high |
+| `CHK-SPACE-SHORT-ARRANGE` | D1.4 | 80 | Explicit“窗口并排”does not expose allthree windows: welcome’s fourcontrolcenters arecovered bymap afterfitRectclamps row2. Alternativeapp/overview entry exists in source, so this is a bounded recovery/clarity friction, not proven total task failure. | E5.2 short-layout exploratory probe / observed_shortheight_arrange_gap / high |
+| `CHK-HOME-DRAFT-BASE` | D6.4 | 60 | 受控close/open后未发送草稿为空，必须重新输入；只绑定77/E52。 | Homepage transport baseline before E6 build / recorded_baseline_gap_not_full_score / high |
+| `CHK-HOME-COMPOSITION-BASE` | D2.2 | 60 | 合成composing Enter发生1次API stub；事件guard缺失，OS级输入未测试。 | Homepage transport baseline before E6 build / recorded_baseline_gap_not_full_score / high |
+| `CHK-HOME-PENDING-BASE` | D3.1 | 80 | 虚拟35秒仍busy/disabled/无Stop，关闭可abort；可退出但恢复有明确摩擦。 | Homepage transport baseline before E6 build / recorded_baseline_gap_not_full_score / high |
+| `CHK-FOUR-APP-PRIMARY-TARGETS` | D2.3 | 80 | 390主要anchor高度29.52/13.53/36.08px，未达项目44目标；不自动等同WCAG失败。 | Space four-app normal maximized baseline / recorded_baseline_gap_not_full_score / high |
+| `CHK-E6-NOJS-ARTICLE` | D1.4 | 96 | 中英禁用JS均点击真实实践链接，到文章并核对标题/time/说明。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-READING-FOCUS` | D2.2 | 96 | 六旅程开始阅读focus=hp-posts、headingTop约130CSSpx；原CTA与新实践anchor分别验。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-SOCIAL-TARGETS` | D2.3 | 96 | 六旅程10social均44×44CSSpx；320/390中英合同补≥8gap，无横溢。未导航所有外链。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-CONTACT-RETURN` | D2.2 | 96 | 320/390中英微信/小红书联系卡打开，Escape回原触发器。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-CHAT-ROOT-SESSION` | D6.4 | 96 | 受控开/答/关/重开仍同Bear根、消息保留、问题或头像opener获焦点；未发送草稿不包含。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-CHAT-STALE` | D3.4 | 96 | 当前布局重验close/clear迟到stream隔离与失败retry；桩故意忽略AbortSignal。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-REPLY-FOCUS` | D3.4 | 96 | 离开chat到posts后旧回复完成不抢posts焦点；UX026/027不包含。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-SYNTHETIC-BFCACHE` | D3.4 | 96 | 合成persisted pagehide/pageshow后composer恢复，新轮可发且旧delta隔离；非原生缓存命中验收。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-PAINT` | D6.2 | 96 | 412×823暂停模块再放行，Books位置变化≤1CSSpx；320/375/412 CTA≥44且不横溢。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-PRODUCT-INTENT` | D6.4 | 96 | 中英两条首页产品入口按当前源码重验同tab实际Products app；不外推所有路由。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-REAL-AMBIENT` | D5.1 | 96 | 真实Metal：hero交互+3秒无renderer下载；Bear可见2canvas；runtime reduce销毁/restore重挂。非性能或隐藏零帧证明。 | E6 frozen historical production evidence; E6.1 WIP not accepted / scoped_contract_pass / high |
+| `CHK-E6-SHORT-FOCUS` | D6.1 | 80 | 568中英初始input部分出屏，close中心被固定导航盖；滚入composer又把close移出，局部恢复摩擦。 | E6 frozen historical production evidence; E6.1 WIP not accepted / historical_E6_failure_closed_for_recorded_E61_cases / high |
+| `CHK-E61-SHORT-CHROME` | D6.1 | 96 | 五actual中input/send/close均44CSSpx，完整位于header下和屏内，中心命中；568×320/256中英与844×390粗指针英文。 | E6.1 frozen short-chat and material review / scoped_contract_pass / high |
+| `CHK-E61-SHORT-RETURN` | D2.2 | 96 | 五actual coordinateclose移除panel并回opener，重新打开Escape再次回opener；close不被固定导航截获。 | E6.1 frozen short-chat and material review / scoped_contract_pass / high |
+| `CHK-E61-SCROLL-CONTENT` | D2.2 | 96 | 四568合同：末条真实suggestion可在中段滚入、中心hit并坐标点击；24段受控回答、Home/End滚动，同时chrome保持可达。 | E6.1 frozen short-chat and material review / scoped_contract_pass / high |
+| `CHK-E61-NORMAL-SESSION` | D6.4 | 96 | 390/1440×900 normal wrapper为display:contents，原尺寸/受控问答close-reopen保留；不含未发送draft。 | E6.1 frozen short-chat and material review / scoped_contract_pass / high |
+| `CHK-E61-CONTINUITY` | D3.4 | 96 | 当前3合同重验close/clear迟到隔离、点击离开后回复不抢焦点、合成bfcache恢复；不认证wheel-only意图候选。 | E6.1 frozen short-chat and material review / scoped_contract_pass / high |
+| `CHK-E61-REAL-AMBIENT` | D5.1 | 96 | 真实新renderer：herointent+3s无renderer请求，Bear可见2canvas，runtime reduce销毁/restore重挂、pageErrors空。非FPS/资源基准。 | E6.1 frozen short-chat and material review / scoped_contract_pass / high |
+| `CHK-E61-WHEEL-COMPLETION-FAIL` | D3.4 | 80 | 读者已滚到Books而仅保留旧chat DOM焦点；完成将scrollY2803拉回2183并focusinput，需再次找回阅读位置。可恢复但有明确摩擦，非P1。 | E6.1 actual wheel-only late-completion failure / observed_current_intent_regression / high |
+| `CHK-E62-RUNTIME-MOTION` | D5.1 | 96 | Both light/dark actual Metal scopes remove both canvases on runtime reduce, remount on restore and remove on final reduce. Only recorded preference lifecycle. | E6.2 bounded core material correction / closed_for_recorded_E62_two_theme_lifecycle_only / high |
+| `CHK-E62-VISIBILITY-LOAD` | D5.3 | 96 | Both themes: trusted interaction at hero +3s causes zero renderer requests; only Bear visible loads two genuine canvases. No FPS or all-hidden-frame assertion. | E6.2 bounded core material correction / closed_for_recorded_E62_two_theme_lifecycle_only / high |
 
 ## D1 / D4 独立专家视觉判断
 
-实际查看截图的范围判断；四项按固定锚点等权。focus ring表达真实编辑状态，不因可见边框扣装饰分。中间帧不作normal，临时原型另用相对量表。
-
 | 范围 | 维度 | 四子项 | 范围分 | 原因 | as-of / 置信度 |
-| --- | --- | --- | ---: | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | S.BOOT | D4 | 96,90,80,96 | 90.5 | Memorable restrained terminal fits explicit brief;waiting text too dim,typography/label hierarchy still worth checking. Not full-control score. | Space checkpoint 6d7b9fe9 / 2026-10-15 recorded evidence / medium |
 | S.CAFE | D4 | 90,90,80,90 | 87.5 | Clear main/secondary actions and real room;mobile tiny labels/unnamedchevron and top/bottom chrome need correction. Batch A changes mean these old visuals cannot certify current rendering. | Space checkpoint 6d7b9fe9 / 2026-10-15 recorded evidence / medium |
 | S.WINDOW | D4 | 80,80,90,90 | 85.0 | Preserved place context and clear workspace;mobile window/monitor/editor boundaries stack,and secondarylabels small. Need current per-control measurements. | Space checkpoint 6d7b9fe9 / 2026-10-15 recorded evidence / medium |
@@ -188,13 +222,36 @@
 | S.APP.reader.ITEM, S.APP.reader.NAV | D4 | 90,90,90,90 | 90.0 | 正文/标题明显可读，阅读器有稳定承载面；小工具条与后台多窗仍影响整体精致度。旧文章可见:::tip与锚点#属于内容/渲染呈现后续检查，不归咎本CSS。 | E5 frozen Space styles / high |
 | S.APP.notes.EDITOR, S.WINDOW.CLOSE, S.CAFE.RETURN | D4 | 90,96,90,96 | 93.0 | 两张568中英图：正文与真实输入焦点清楚，侧边44px HUD与窗口条各占独立位置；小窗口标题/保存导出仍细，不能由此认证全部工具阅读性。 | E5.2 frozen source / high |
 | S.APP.map.ZOOM, S.APP.map.REGION, S.APP.map.RELATED | D4 | 80,90,90,90 | 87.5 | 620图地图动作、区域选择与实图顺序清楚且纸面稳定；坐标/kicker等次级字仍细，图片在滚动区继续，非全部内容一次可见。 | E5.2 frozen source / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D1 | 90,60,90,80 | 80.0 | 真实产品/测试边界文案明确，但桌面巨幅截图把“打开真实产品”推到下一屏；手机侧栏挤占正文到194px，目录与主要动作极小。 | Space four-app normal maximized baseline / high |
+| S.APP.products.SELECT, S.APP.products.OPEN | D4 | 60,90,80,60 | 72.5 | 正文11.48、手机目录8.2、动作9.84实际px；桌面无高度上限截图主导版面。边框能表达目录/截图，优先字号/比例，不再加围框。 | Space four-app normal maximized baseline / high |
+| S.APP.books.READ | D1 | 90,90,90,90 | 90.0 | 四色书封与真实书名快速说明自己写的书，读入口一致；小摘要和孤立小链接增加判断/点击摩擦。 | Space four-app normal maximized baseline / high |
+| S.APP.books.READ | D4 | 60,96,90,80 | 81.5 | 书封有辨识且边界克制，摘要8.2px是主要阅读障碍；手机双列使长书名拆行、摘要密排，需以真实长标题与阅读动作净空为准，不凭换行认定溢出。 | Space four-app normal maximized baseline / high |
+| S.APP.contact.DRAFT, S.APP.contact.CHANNEL | D1 | 90,80,90,80 | 85.0 | 标题/便笺/渠道/由用户确认发送顺序明确；社交多行先于草稿，重要发送边界提示太细，原目标都应保留。 | Space four-app normal maximized baseline / high |
+| S.APP.contact.DRAFT, S.APP.contact.CHANNEL | D4 | 60,90,90,80 | 80.0 | 输入与主发送边界有意义、主次可见；9px渠道/8.2px隐私说明和全宽桌面长行需提升，次级社交已有多围框，宜减视觉权重而非加卡片。 | Space four-app normal maximized baseline / high |
+| S.APP.settings.LANG, S.APP.settings.THEME, S.APP.settings.COLOR, S.APP.settings.EXPORT | D1 | 90,90,90,80 | 87.5 | 语言/咖啡/外观/能力分组清楚；“未连接/本浏览器保存”等决策信息约7.52px，桌面左右隔整屏，状态关系不够易读。 | Space four-app normal maximized baseline / high |
+| S.APP.settings.LANG, S.APP.settings.THEME, S.APP.settings.COLOR, S.APP.settings.EXPORT | D4 | 60,90,90,80 | 80.0 | 选中浅色/勾与功能组边界明确，手机44.28按钮已够大；标签9.02、状态7.52px太细。限制桌面阅读列与增加语义字号，不把每组再围卡。 | Space four-app normal maximized baseline / high |
+| H.HERO.READ, H.HERO.PRODUCT, H.HERO.ABOUT, H.HERO.SOCIAL | D1 | 96,96,90,96 | 94.5 | 真实Nango题目说明“能读什么”，作者/阅读/产品主次清楚、社交后置；390中文阅读动作完整可见。MCP专业词对非工程访客仍有少量理解成本。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.HERO.READ, H.HERO.PRODUCT, H.HERO.ABOUT, H.HERO.SOCIAL | D4 | 96,96,90,90 | 93.0 | 实际文字/按钮与边界清楚、项目成词；比旧首屏六气泡和原A重复月记聚焦。长说明仍密，社交去盒保留44px。320标题仅局部入屏、568常规纵滚本身非bug。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.CHANNEL.CARD, H.CHANNEL.TABS, H.CHANNEL.PREV, H.CHANNEL.NEXT | D1 | 96,90,90,90 | 91.5 | 一主两compact可扫描且不重复hero实践；月记真实摘要统计仍密，中文READ ESSAY混用是小语义余量。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.CHANNEL.CARD, H.CHANNEL.TABS, H.CHANNEL.PREV, H.CHANNEL.NEXT | D4 | 90,96,90,90 | 91.5 | neutral实图分隔线表达一主两辅，比原A三长列表节制；320长标题自然占高。早期红/蓝hover可能态不当normal不一致。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.CHAT.OPEN, H.CHAT.INPUT, H.CHAT.CLOSE, H.CHAT.QUICK | D1 | 90,90,90,90 | 90.0 | AI身份/公开资料/输入/关闭明确；320三条quick建议省略后难辨问题。568可达性单列UX030，运输仍开。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.CHAT.OPEN, H.CHAT.INPUT, H.CHAT.CLOSE, H.CHAT.QUICK | D4 | 90,90,90,90 | 90.0 | 照片/消息/输入/真实focus边界分工，中英明暗主输入清楚；quick/footer仍细且省略，真实focus不扣装饰分。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.CHAT.OPEN, H.CHAT.BUBBLE | D4 | 90,90,90,90 | 90.0 | 后置AI明确标题和真头像，手机整块入口接旅行书，避开B大留白。六气泡仍有装饰分量但不再抢首次阅读。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| MOTION.HOMEFIELD, MOTION.HOMEBUBBLES, H.CHAT.BUBBLE | D4 | 90,80,80,80 | 82.5 | 真实normal强白密线网覆盖整圈、块边缘可见，分量高于头像与问题；同配置reduce静态更清楚。只判视觉注意力，不推断GPU性能失败。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.BOOK.LINK | D4 | 90,96,90,90 | 91.5 | 真实封面/地点/引句形成内容停顿，产品实图已显示；英语书脊VIETNA/M小断行余量，旁边完整书名可读，非功能阻断。 | E6 frozen historical production evidence; E6.1 WIP not accepted / high |
+| H.CHAT.INPUT, H.CHAT.CLOSE, H.CHAT.QUICK | D4 | 90,96,90,90 | 91.5 | 短屏header/composer完整，输入focus清楚；中段有独立可滚内容而非压小动作。256高只能显示少量文本是可滚状态，不据此扣“缺内容”。footer与meta仍细，只评5图。 | E6.1 frozen short-chat and material review / high |
+| MOTION.HOMEFIELD, MOTION.HOMEBUBBLES, H.CHAT.BUBBLE | D4 | 90,80,80,90 | 85.0 | 比E6强白密网安静，头像/问题更清楚；NormalBlending核心呈褐色薄壳/实体片，仍不自然，背景光斑边缘尚显。D4范围85，未达目标；静态仍更轻。 | E6.1 frozen short-chat and material review / high |
+| MOTION.HOMEFIELD, MOTION.HOMEBUBBLES, H.CHAT.BUBBLE | D4 | 90,90,90,96 | 91.5 | 褐色实体片已消失；头像与六条问题比弱金光先被看见，低对比网络不再形成白色围栏。手绘人物/轨道/外晕仍叠在同一小区域，静态仍更轻；此材质范围91.5，不是完整控件分。 | E6.2 bounded core material correction / high |
+| MOTION.HOMEFIELD, MOTION.HOMEBUBBLES, H.CHAT.BUBBLE | D4 | 90,90,90,90 | 90.0 | 实体壳消失，细淡金网络与背景相融，头像/问题保持主次。暗色仍可见多边形光晕与人物线稿的第二套轮廓，辅助提示较微小；范围90，保留进一步组件收敛空间。 | E6.2 bounded core material correction / high |
 
-## 完整可追踪覆盖（inventory v1.6 一对一映射）
+## 完整可追踪覆盖（inventory v1.7 一对一映射）
 
-309族 / 357 selector controls全部保留；完整分仍为null。已记录片段不代替全族验收。
+309族/357selectors完整分仍null；新实践anchor盘点增量待同步。
+
+
 
 | family_id | 族 | 控件数 | 片段数 | 完整评分 | 发现 |
-| --- | --- | ---: | ---: | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | `G.NAV.SKIP` | 跳到正文 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.NAV.HOME` | CUBXXW 品牌/首页 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.NAV.MENU` | 文章/专栏/AI Agent/工程/成长/空间 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -208,7 +265,7 @@
 | `G.SEARCH.CLOSE` | 关闭搜索 | 1 | 1 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.QUERY` | 搜索文章 | 1 | 2 | `unverified / null` | UX-015 |
 | `G.SEARCH.RESULT` | 搜索结果/键盘上下移动 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `G.SEARCH.AI` | 用AI回答 / 停止生成 | 2 | 1 | `unverified / null` | 待矩阵 |
+| `G.SEARCH.AI` | 用 AI 回答 / 停止生成 | 2 | 1 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.SUGGEST` | 入门推荐/AI Agent/最新文章 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.AICLOSE` | 关闭 AI 搜索 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.FULL` | 完整搜索页面 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -219,18 +276,18 @@
 | `G.FOOTER.LINKS` | 内容/产品/作者/社交入口 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `G.FOOTER.MORE` | 更多作品/其他平台 | 1 | 1 | `unverified / null` | 待矩阵 |
 | `G.CONTACT.QR` | 微信/小红书二维码/复制 ID | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.HERO.READ` | 开始阅读 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.HERO.PRODUCT` | 探索产品 | 1 | 1 | `unverified / null` | 待矩阵 |
+| `H.HERO.READ` | 开始阅读 | 1 | 4 | `unverified / null` | 待矩阵 |
+| `H.HERO.PRODUCT` | 探索产品 | 1 | 2 | `unverified / null` | 待矩阵 |
 | `H.HERO.ABOUT` | 认识我/关于我 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.HERO.SOCIAL` | 社交图标链接 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.OPEN` | Bear 头像 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.BUBBLE` | 环绕问题气泡 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.QUICK` | 快捷问题 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.INPUT` | 给 Bear 的消息 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.SEND` | 发送消息 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.CLEAR` | 清空对话 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.CLOSE` | 关闭对话 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.CHAT.RETRY` | 重试这条消息 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `H.HERO.SOCIAL` | 社交图标链接 | 1 | 2 | `unverified / null` | 待矩阵 |
+| `H.CHAT.OPEN` | Bear 头像 | 1 | 4 | `unverified / null` | UX-025 |
+| `H.CHAT.BUBBLE` | 环绕问题气泡 | 1 | 1 | `unverified / null` | 待矩阵 |
+| `H.CHAT.QUICK` | 快捷问题 | 1 | 1 | `unverified / null` | UX-030 |
+| `H.CHAT.INPUT` | 给 Bear 的消息 | 1 | 10 | `unverified / null` | UX-025, UX-026, UX-027, UX-030, UX-031 |
+| `H.CHAT.SEND` | 发送消息 | 1 | 6 | `unverified / null` | UX-026, UX-027, UX-030, UX-031 |
+| `H.CHAT.CLEAR` | 清空对话 | 1 | 2 | `unverified / null` | 待矩阵 |
+| `H.CHAT.CLOSE` | 关闭对话 | 1 | 9 | `unverified / null` | UX-025, UX-027, UX-030, UX-031 |
+| `H.CHAT.RETRY` | 重试这条消息 | 1 | 1 | `unverified / null` | UX-027 |
 | `H.CHANNEL.TABS` | 写作频道标签 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.CHANNEL.PREV` | 上一个频道 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.CHANNEL.NEXT` | 下一个频道 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -238,7 +295,7 @@
 | `H.CHANNEL.CARD` | 频道内文章卡片 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.BOOK.LINK` | 书籍封面/阅读 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.PRODUCT.CARD` | 产品主卡片 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.PRODUCT.OPEN` | 打开产品/GitHub | 1 | 1 | `unverified / null` | 待矩阵 |
+| `H.PRODUCT.OPEN` | 打开产品/GitHub | 1 | 2 | `unverified / null` | 待矩阵 |
 | `H.ACTIVITY.STATS` | 总文章/今年/年数/标签 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.ACTIVITY.YEAR` | 热力图年份 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.ACTIVITY.DAY` | 热力图日期格子 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -323,13 +380,13 @@
 | `S.MENU.LAB` | Product Lab | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.MENU.BLOG` | 返回博客 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.DOCK.APP` | Dock常用应用入口：桌面7项/手机5项，另有OS；全部11项在Launchpad | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.WINDOW.CLOSE` | 关闭窗口 | 1 | 6 | `unverified / null` | UX-021, UX-023 |
+| `S.WINDOW.CLOSE` | 关闭窗口 | 1 | 6 | `unverified / null` | UX-021, UX-023, UX-024 |
 | `S.WINDOW.MINIMIZE` | 最小化 | 1 | 5 | `unverified / null` | 待矩阵 |
-| `S.WINDOW.MAXIMIZE` | 最大化/恢复 | 1 | 4 | `unverified / null` | 待矩阵 |
-| `S.WINDOW.ARRANGE` | 窗口并排 | 1 | 4 | `unverified / null` | UX-023 |
+| `S.WINDOW.MAXIMIZE` | 最大化/恢复 | 1 | 4 | `unverified / null` | UX-024 |
+| `S.WINDOW.ARRANGE` | 窗口并排 | 1 | 5 | `unverified / null` | UX-023, UX-024 |
 | `S.WINDOW.DRAG` | 标题栏拖动 | 1 | 1 | `unverified / null` | UX-021 |
 | `S.WINDOW.RESIZE` | 右/下/角缩放 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 | 1 | 1 | `unverified / null` | UX-024 |
 | `S.SEARCH.QUERY` | 打开应用或找文章 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.SEARCH.RESULT` | 结果项 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.SEARCH.EMPTY` | 清空搜索/浏览所有应用 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -341,8 +398,8 @@
 | `S.APP.welcome.ROUTES` | 文章/作品/AI向导/关于我 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.welcome.PROFILE` | 个人档案/这些年/阅读地图/展开履历 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.welcome.LINKS` | 简历/GitHub/联系/公开JSON/时间线 | 2 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.products.SELECT` | 产品侧栏选择 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.products.OPEN` | 真实产品/预览/源码/相关写作 | 2 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.products.SELECT` | 产品侧栏选择 | 1 | 0 | `unverified / null` | UX-028 |
+| `S.APP.products.OPEN` | 真实产品/预览/源码/相关写作 | 2 | 1 | `unverified / null` | UX-028, UX-029 |
 | `S.APP.reader.QUERY` | 筛选文章 | 1 | 2 | `unverified / null` | UX-010 |
 | `S.APP.reader.FILTER` | 全部/AI/工程/思考/收藏 | 1 | 2 | `unverified / null` | UX-010 |
 | `S.APP.reader.ITEM` | 文章列表项 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -361,12 +418,12 @@
 | `S.APP.map.VIEW` | 拖动/键盘平移地图 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.map.ZOOM` | 放大/缩小/全部/世界 | 3 | 6 | `unverified / null` | UX-022 |
 | `S.APP.map.RELATED` | 相关照片/游记/数据许可 | 3 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.books.READ` | 开始阅读 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.books.READ` | 开始阅读 | 1 | 1 | `unverified / null` | UX-028, UX-029 |
 | `S.APP.notes.EDITOR` | 本地笔记 | 1 | 5 | `unverified / null` | UX-021 |
 | `S.APP.notes.EXPORT` | 导出.md | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.notes.SANDBOX` | 保存到沙盒 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.contact.DRAFT` | 留言草稿 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | 3 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.contact.DRAFT` | 留言草稿 | 1 | 0 | `unverified / null` | UX-028 |
+| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | 3 | 1 | `unverified / null` | UX-028, UX-029 |
 | `S.APP.terminal.COMMAND` | 命令输入/help/history/run | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.NEW` | 新对话 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.HISTORY` | 历史/关闭历史 | 2 | 0 | `unverified / null` | 待矩阵 |
@@ -379,10 +436,10 @@
 | `S.APP.agent.SEND` | 发送 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.STOP` | 停止 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.ACTIVITY` | 任务执行过程/工具步骤 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.settings.LANG` | 中文/English | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.settings.EXPORT` | 导出工作区 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.APP.settings.LANG` | 中文/English | 1 | 0 | `unverified / null` | UX-028 |
+| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 0 | `unverified / null` | UX-028 |
+| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 0 | `unverified / null` | UX-028 |
+| `S.APP.settings.EXPORT` | 导出工作区 | 1 | 0 | `unverified / null` | UX-028 |
 | `S.LAB.SWITCH` | CUBXXW OS/Product Lab双向切换 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.LAB.FEATURE` | 推荐产品/所有产品锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.LAB.PRODUCT` | 产品截图/打开产品/预览/源码 | 2 | 0 | `unverified / null` | 待矩阵 |
@@ -454,8 +511,8 @@
 | `MOTION.ENTRY` | 欢迎方块/轨道/窗口入场 | 0 | 0 | `unverified / null` | 待矩阵 |
 | `MOTION.DOCK` | Dock hover 提起图标 | 0 | 0 | `unverified / null` | 待矩阵 |
 | `MOTION.WINDOW` | 窗口开关/最小化/拖拽/缩放/并排 | 0 | 0 | `unverified / null` | 待矩阵 |
-| `MOTION.HOMEFIELD` | 首页背景场/球体 | 0 | 0 | `unverified / null` | 待矩阵 |
-| `MOTION.HOMEBUBBLES` | 头像周围建议气泡 | 0 | 0 | `unverified / null` | 待矩阵 |
+| `MOTION.HOMEFIELD` | 首页背景场/球体 | 0 | 4 | `unverified / null` | 待矩阵 |
+| `MOTION.HOMEBUBBLES` | 头像周围建议气泡 | 0 | 4 | `unverified / null` | 待矩阵 |
 | `MOTION.HOMEREVEAL` | 首页分区 reveal | 0 | 0 | `unverified / null` | 待矩阵 |
 | `MOTION.MICRO` | 涟漪/悬浮/磁吸/反馈 | 0 | 0 | `unverified / null` | 待矩阵 |
 | `MOTION.CARDTILT` | 卡片鼠标倾斜 | 0 | 0 | `unverified / null` | 待矩阵 |
@@ -601,3 +658,99 @@ E5截图尺寸更正依visual.json：1440×900、390×900、320×844、568×320�
 baseline chat仍显示“在线·通常几秒回复”；A/B normal入口不能证明展开后这一不确定承诺已更正。生产候选需明确AI身份与真实请求状态，保留全部社交目标、频道/箭头、旅行书、产品意图、热图和根Space café入口。原型未调用真实AI，仅before实际打开/关闭chat；A/B交互、英文/深色/200%/320/横屏/正常动效/实体触控/性能均为unverified，完整控件/族/全站总分继续null。
 
 若A仍像泛化刊物、重复长篇未解或迁移破坏chat，回D1/D2比较，不能继续调阴影；若B修掉移动留白后真实文章同屏且五秒任务辨识胜A，允许反转胜者。当前停在D2/D3，不用测试数替代方向选择。
+
+## 短横屏整理：UX-024有界候选
+
+2026-10-16T02:06:09+08:00：已读实际max→restore→arrange探针与当前desktop.js/state.mjs，逐张看default/maximized/arranged三图，并以轻量Node复算state几何。**P2：844×390 coarse的3窗“并排”仍重叠，欢迎窗口4个控制中心全被map覆盖。**
+
+原因在`state.mjs:65–72`：2列/2排先算每窗131px高，`fitRect:9–10`再将高度抬到260、第二排y压至30。实际第一排y12、第二排y30，重叠242CSSpx；这使明确整理动作未兑现“并排”。`desktop.js:159`只按宽≤640决定overview，844短高未进入。D1.4此片段80、G4上限89，完整族仍null，不升级为全局或P1。
+
+默认地图右界只比plane多0.82px，body638/638没有横向溢出；实际最大化在plane内且4控命中。此前截图裁切观察至此撤销“内容不可达”疑虑；正常前后窗遮挡不等于整理失败，UX024只针对点击arrange后的结果。
+
+下一有界批建议：按真实可容纳行数/最小窗口高判断；装不下时复用overview，提供每个窗口可选择的恢复入口。此时可访问名称/可见文案应说“查看所有窗口”，只有真平铺才说“窗口并排”。terminal当前源码无条件返回“已并排”也需同策略一致，但未单独实测该反馈，不虚称新运行时失败。
+
+验收保持窄范围：844×390粗指针3/4窗实际选择被盖的welcome；Escape返回真实触发器；回notes仍同editor DOM/草稿；普通1440×900的2/4窗在装得下时仍真平铺；maximize/restore与原rect连续性不丢。E6首页当前尚未构建，不由本探针提前认证。
+
+## 首页运输基线：下一批复现缺陷
+
+2026-10-16T02:10:53+08:00：已读home-chat-baseline-probe.json并用77bf94c2的Git blob核对模板hash，匹配；当前E6源码/布局未构建，不能以旧预览验收它。全部API为桩，未调用真实模型。
+
+- UX025 / D6.4片段60：未发送草稿close/open变空。原模板close→renderOrbit用innerHTML替换输入，未独立保存draft。
+- UX026 / D2.2片段60：合成isComposing Enter触发1次stub，原keydown缺composition guard；不作OS级IME结论。
+- UX027 / D3.1片段80：虚拟35秒挂起仍busy/inputdisabled，无Stop；关闭后abort确实发生，因此是缺少就地停止/时限的恢复摩擦，不是“完全无法退出”。headers/delta卡住和DONE保持连接另属源码后续候选，未伪称实测。
+
+下一运输批按草稿、composition、Stop/时限、关闭/迟到结果/焦点分别验收，不能把E6布局或正常聊天展开图算通过。
+
+## 四App下一有界排版/触控批
+
+2026-10-16T02:10:53+08:00：已读8个scope几何并独立看16张top/bottom图（1440×900、390×844，zh/light/reduce/maximized）；apps.js/space.css/space-classic.css当前hash与77blob一致。API503隔离，未真实联系/导航外链/发送；只记normal呈现，不认证功能。
+
+UX028是实际阅读/决策信息过小；UX029是390主要anchor触控不足。它们优先于装饰：
+
+| App / 用户任务 | 已观察问题 | 下一有界修改建议 |
+| --- | --- | --- |
+| products / 先读懂产品再决定是否打开 | 正文11.48、手机目录8.2实际px；手机正文仅194px宽。desktop16:10图覆盖主阅读区，“打开真实产品”在下一屏；手机主链接29.52px高。 | 正文15–16、目录/主要动作13–14实际px；限制desktop截图高度/阅读行长；手机目录用紧凑顶部选择释放正文宽度，保留全部真实产品与外链，不把图中假按钮做成页面点击区。 |
+| books / 选择一本真实书开始读 | 摘要8.2、封面meta6.56、阅读字9.02实际px；开始阅读仅13.53px高，cover为div没有等价大点击区。 | 保留四色书封，辅助编号/作者可10–11实际px；摘要约14、开始阅读重要入口≥44实际px。手机单列或封面+正文行，允许纵滚，不把四书硬塞同屏。 |
+| contact / 写草稿并自行选渠道发送 | 渠道字9.02、发送边界提示8.2实际px；手机邮件/公开GitHub/WhatsApp36.08px高，X宽35.4。输入区与“由你确认发送”内容本身清楚。 | 输入约16、主要渠道14实际px且≥44目标，隐私/由谁发送说明12–13；社交保留目标、降低围框密度。限制desktop列宽，保留草稿DOM/值，不执行真实发送。 |
+| settings / 清楚改偏好并知道可用边界 | 手机按钮44.28已够大，标签仍9.02、能力状态7.52实际px；desktop能力与状态隔很长一行，重要不支持信息太细。 | 现有mobile44.28保留；标签13–14、能力状态12–13实际px，组名16–18；desktop限制状态表宽或上下就近，保留真实不支持状态，边框只分组/选中。 |
+
+建议实际字号层级：长正文/输入15–16px、主动作13–14px、重要辅助说明/能力状态12–13px、非必要装饰编号10–11px。不是所有字一律16，也不是WCAG统一字号规定；CSS声明需经过.82投影后量真实值。只在这4个App live spatialplane下处理，不改world/state/私人DOM与fallback。保留四色书封、真实截图比例、所有产品/社交/渠道目标；边框继续表达输入、选择、分组，不新增一层卡片。允许内容纵滚，不为同屏齐全压小文字。
+
+下一实拍验收：同内容desktop/390前后，另补320、620、844coarse短高；量primary文字与实际44目标/中心hit，检查长英文、深色、zoom、focus/selected及滚到底。Contact只拦截检查mailto/GitHub公开/WhatsApp目标，不真实发信；原草稿同DOM/值、语言与主题/窗口连续性必须保留。E6完成后再开本批，当前不跨改生产。
+
+当前专家范围判断（非完整分）：products D1=80/D4=72.5；books D1=90/D4=81.5；contact D1=85/D4=80；settings D1=87.5/D4=80。分项原因与证据在上方表/JSON；全部控件/族/全站总分仍null。
+
+## E6生产候选：源码先行复核
+
+2026-10-16T02:16:37+08:00：7/7当前文件hash匹配冻结batch-e6-source.json。已读真实模板/partial、CSS、ambient与3份相关测试源，未发现新P0/P1；本阶段只确认源码约束，没有给源码打96或提前接受仍运行的20条home+2条paint。
+
+1. 实践入口来自当前语言Type=posts的AI/工程真实最新文章，原生链接/time/标题/说明由Hugo输出；latest只去重复预览，计数仍用全量，主题频道保留该文。书籍/产品/活动/社交目标数据未删除。
+2. hero源码顺序为intro→practice→social；手机10目标按44px+8gap设计；文章区一主+两compact，修掉A原型的三条长摘要节奏。实际净空、短屏和长英文仍等浏览器。
+3. 完整Bear根含stage/layer/field静态后置到posts/books之间，messages/request闭包未重建；不确定的在线/时限/每篇读过承诺移除。会话保留与未发送draft不同，UX025–027继续开放。
+4. ambient观察实际Bearwrap，真实交互、可见、idle、motion/width/coarse/connection门禁仍在moduleload前；隐藏/偏好/离页沿用dispose生命周期。测试源确有offscreen无mount、可见后mount及runtime reduce分支，但尚未读最终回执。
+
+新partial无JS阅读、320/390中英主次/all10social/二维码Escape、原Bearroot/消息/问题返回、paint预留位置均有明确合同断言。等待父6scope实际截图后再给E6 D1/D4范围判断；旧A/B原型+Space图片不能验收本次生产布局。
+
+## E6实际落地：A方向保留，后续源码单独验
+
+2026-10-16T02:29:36+08:00：已独立读20条home/about-reading、2条改变的paint、2条产品入口正式pass日志，六actual旅程和24图+neutral+真实GPU两图共27图。7hash最初匹配；最后写入时homepage模板/CSS已进入授权E6.1修改，故本轮全部绑定E6历史manifest，不认证当前WIP。未发现新P0/P1，UX030为P2且正在下一批修。
+
+Nango实践替代原A重复月记，latest去重、一主两compact改善扫描；后置原Bear仍有作者照片和会话，手机一行入口避免B大留白。真实书籍/产品内容保留。A仍为主方向、B保留，原相对+0.40不换算绝对分。
+
+范围专家判断：hero D1=94.5/D4=93；posts D1/D4=91.5；chat（不含568可达性）D1/D4=90；静态conversation D4=90；books D4=91.5。320英文实践标题局部入首屏、568常规纵滚不是自动失败；quick省略和书脊VIETNA/M为后续具体工艺余量。neutral文章图用于normal，早帧红/蓝hover不判样式不一致。
+
+对应合同片段确认：无JS真实文章可读；阅读CTA焦点posts；10social44CSSpx，320/390中英联系卡Escape回触发器；原Bear根/消息/回答/opener连续、close/clear迟到隔离、retry、离开后focus、合成bfcache均按指定范围通过。未发送draft/合成composition Enter/35秒挂起恢复仍为UX025–027，不被这些正常链抵消。
+
+真实Metal门禁：hero trustedintent+3秒无renderer请求，Bear可见才2canvas；runtime reduce销毁/restore重挂且pageErrors空。只接受门禁与偏好生命周期片段，不证明FPS/INP/隐藏零帧。实际normal强白密线球压过人物与问题，D4仅82.5；同配置reduce静态90。下一独立小批收敛线密度/亮度/不透明度/光晕边缘，保留真实头像、问题、操作反馈和资源门禁。
+
+UX030实际568中英初始chat：input已focus却部分出屏，close中心被固定导航盖；滚入composer后close又离开视口。中文滚后仅约0.17CSSpx边界出屏，不夸大完全不可达。P2/D6.1片段80、G4cap89，非全局或P1。4张before/scrolled与JSON已读；E6.1在修，当前不关闭。
+
+已同步inventory v1.7局部记录，SearchStop仍不继承旧完成焦点证据；完整309族/357控件/全站均null，未按24合同给审美满分。
+
+## E6.1当前冻结：短屏闭环，材质未达目标
+
+2026-10-16T02:36:50+08:00：9/9当前源码hash与QA config hash匹配（默认1440×900、单worker）；正式build/typecheck、6条short/normal与3条continuity日志已读，五实际坐标旅程、8张实图逐张看，无新P0/P1。
+
+UX030仅关闭568×320/256中英、844×390 coarse英文light/reduce范围：input/send/close实际44CSSpx且全部在导航下/屏内，centerhit；真实coordinateclose移除panel，opener获焦点，重开Escape仍回opener。四568合同另验证末条真实建议可滚入/坐标点击、24段长回答Home/End滚动且chrome仍可达；390/1440正常wrapper为display:contents、原尺寸/会话保留。旧E6失败保留historical，不用旧24条替新状态。草稿/IME/Stop仍未修。
+
+短屏D4范围91.5（90/96/90/90）；中段独立滚动允许256高只显少量内容，输入/关闭稳定，不靠压小44目标塞齐。动态偏好门禁使用当前真实Metal再次通过：herointent+3秒无renderer，Bear可见2canvas，reduce销毁/restore重挂。仅门禁/生命周期片段96，非性能/隐藏零帧结论。
+
+normal球体D4范围85（90/80/80/90），比E6白密网82.5更安静，但核心NormalBlending形成褐色薄壳/实体片，未达自然轻量的目标；静态仍更清楚，不为checkpoint抬分。E6.2可以仅core恢复Additive并降低每帧实际opacity/rim，network维持低alpha Normal；constructor默认会被loop目标覆盖，两处须同意图。只重验shader/生命周期与真实light/dark+reduce，不重复无关24合同。
+
+若窄材质修正后仍靠反复调色解释其意义，下一D4组件分叉明确保留两条：A进一步收敛、无实体壳的低对比球；B真实头像+少量完整问题，其余问题可展开。两条尚未实拍，不提前给相对胜负；B不是当前已授权删除问题或原状态。E7已证实的数据/输入/停止恢复优先。
+
+新增UX031为source-only P2候选：生成中用户仅wheel滚去Books，焦点仍在chatsection，完成renderChat→layoutChat(hadChatFocus)→window.scrollTo可能把页面拉回；现“离开不抢焦点”合同点击posts改变了焦点，未覆盖此路径。建议E7受控晚回复复现/修正，当前不说已实测、不设新硬门槛或完整分。所有完整控件/族/全站仍null。
+
+## UX031升级：实际wheel阅读意图被旧完成覆盖
+
+2026-10-16T02:38:36+08:00：已读home-wheel-intent-probe.json/log及before/after两图。568×320英文light/reduce：受控请求开始后chatsection持有焦点；真实wheel620CSSpx滚到旅行书，scrollY从2183到2803，未改DOM焦点。延迟JSON完成后页面回2183（−620），输入框抢到焦点；前图是Angkor书卡，后图是chat。候选至此升级为具体范围复现P2，D3.4片段80；不升级为P1或全设备结论。
+
+E7需让完成/失败保留wheel离开后的页面位置与焦点意图，同时保留显式open/close的短屏可达。现“点击posts后不抢焦点”合同改变了焦点，不能覆盖本链。只有这条延迟JSON完成已实测，失败/其他尺寸仍待补；未调用真实模型。E6.2 renderer正在授权修改，本回执不认证新材质源码。
+
+## E6.2有界材质闭环：实体壳消失，功能缺口仍开
+
+2026-10-16T02:42:21+08:00：9/9源码hash与QA config一致。将当前renderer五处差异反向还原后hash恰等E61：core恢复Additive，glow初值/每帧目标降低，opacity初值/每帧目标均降至.25；稀疏低alpha Normal网络、pulse/thinking/recess和资源门禁未变。正式build4219ms成功。未见新P0/P1，不重审或重复宣称旧24合同当前全范围通过。
+
+四张1440×900中文light/dark normal/reduce实图已逐张查看。E61褐色实体片消失，头像与问题重新优先；浅色D4范围91.5（90/90/90/96），暗色90（90/90/90/90）。暗色仍有淡金多边形光晕，线稿/多圈轨道仍是额外视觉层；静态更轻。此次窄修已达到消除新增实体感回退的目标，未达到可泛化的96审美或整站结论。更大的纯头像/少量完整问题与低对比球组件分叉仍未渲染，放在E7功能恢复之后。
+
+真实Metal双主题回执均为hero trusted intent+3秒0renderer请求，Bear可见2canvas，runtime reduce0/restore2/finalreduce0，pageErrors空。只对资源门禁与运行时偏好生命周期片段给96，不证明FPS、INP、隐藏零重绘、实体设备或其他尺寸。四图绑定batch-e62-source，不能用新材质外推旧交互矩阵。UX025–027与已实测UX031仍开；所有完整控件、族与全站分保持null。

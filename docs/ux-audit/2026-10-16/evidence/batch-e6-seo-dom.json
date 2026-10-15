@@ -1,0 +1,27 @@
+{
+  "kind": "Scoped generated root-home structural/SEO contract; not a full SEO audit",
+  "observations": [
+    {
+      "locale": "en",
+      "path": "/",
+      "source": "batch-e6-source.json",
+      "title": "Xinwei Xiong (cubxxw) · An Open Archive of Practice and Thought",
+      "description": "Xinwei Xiong's open archive of AI workflows, real projects, engineering methods, systems thinking, personal growth, philosophy, and life.",
+      "canonical": "https://cubxxw.com/",
+      "h1": 1,
+      "main": 1,
+      "duplicateIDs": []
+    },
+    {
+      "locale": "zh",
+      "path": "/zh/",
+      "source": "batch-e6-source.json",
+      "title": "熊鑫伟（cubxxw）· 公开的实践与思想档案",
+      "description": "熊鑫伟的公开实践与思想档案，记录 AI 工作流、真实项目、工程方法、系统思维，以及关于个人成长、哲学与人生的长期思考。",
+      "canonical": "https://cubxxw.com/zh/",
+      "h1": 1,
+      "main": 1,
+      "duplicateIDs": []
+    }
+  ]
+}

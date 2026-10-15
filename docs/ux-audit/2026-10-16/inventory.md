@@ -69,7 +69,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `G.SEARCH.CLOSE` | 关闭搜索 | `.search-palette__close`<br>[layouts/partials/search-palette.html:19](../../../layouts/partials/search-palette.html) | 退出搜索并恢复焦点 | `command` / source-only |
 | `G.SEARCH.QUERY` | 搜索文章 | `.search-palette__input`<br>[layouts/partials/search-palette.html:24](../../../layouts/partials/search-palette.html) | 输入检索词 | `input` / source-only |
 | `G.SEARCH.RESULT` | 搜索结果/键盘上下移动 | `.search-palette__result`<br>[assets/js/search-palette.js:456](../../../assets/js/search-palette.js) | 打开命中文章 | `nav` / source-only |
-| `G.SEARCH.AI` | AI 搜索开关 | `#search-ai-btn`<br>[layouts/partials/search-palette.html:40](../../../layouts/partials/search-palette.html) | 切换语义问答 | `toggle` / source-only |
+| `G.SEARCH.AI` | 用 AI 回答 / 停止生成 | `#search-ai-btn`、条件性 `#search-ai-stop`<br>[layouts/partials/search-palette.html:40](../../../layouts/partials/search-palette.html) | 发送搜索问题并可取消pending | `async` / 局部状态证据，Stop点击待测 |
 | `G.SEARCH.SUGGEST` | 入门推荐/AI Agent/最新文章 | `.search-palette__ai-suggestion`<br>[layouts/partials/search-palette.html:73](../../../layouts/partials/search-palette.html) | 启动一个建议问题 | `async` / source-only |
 | `G.SEARCH.AICLOSE` | 关闭 AI 搜索 | `#search-ai-close`<br>[layouts/partials/search-palette.html:65](../../../layouts/partials/search-palette.html) | 返回普通检索 | `command` / source-only |
 | `G.SEARCH.FULL` | 完整搜索页面 | `#search-full-link`<br>[layouts/partials/search-palette.html:95](../../../layouts/partials/search-palette.html) | 使用完整检索 | `nav` / source-only |
@@ -104,7 +104,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 
 | 稳定 ID | 可见内容/动作 | 定位与源码 | 用户任务 | 状态/证据 |
 | --- | --- | --- | --- | --- |
-| `H.HERO.READ` | 开始阅读 | `.hp-entry-actions a[href="#hp-posts"]`<br>[layouts/partials/homepage-daypage.html:58](../../../layouts/partials/homepage-daypage.html) | 滚动到最新写作 | `nav` / source-only |
+| `H.HERO.READ` | 开始阅读 / 读这篇文章 | `.hp-entry-actions a[href="#hp-posts"]`、`.hp-reading-start__link`<br>[homepage-reading-start.html:4](../../../layouts/partials/homepage-reading-start.html) | 定位文章区 / 直接读真实实践文章 | `nav` / 每个control独立局部证据 |
 | `H.HERO.PRODUCT` | 探索产品 | `.hp-entry-actions a[href*="projects"]`<br>[layouts/partials/homepage-daypage.html:59](../../../layouts/partials/homepage-daypage.html) | 进入空间 | `nav` / source-only |
 | `H.HERO.ABOUT` | 认识我/关于我 | `.hp-hero-cta`<br>[layouts/partials/homepage-daypage.html:61](../../../layouts/partials/homepage-daypage.html) | 打开作者介绍 | `nav` / source-only |
 | `H.HERO.SOCIAL` | 社交图标链接 | `.hp-social-icon`<br>[layouts/partials/homepage-daypage.html:83](../../../layouts/partials/homepage-daypage.html) | 访问公开平台 | `nav` / source-only |
@@ -327,7 +327,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `T.BOOK.SUGGEST` | 书籍建议/追问 | `.tw-book-ai__chip`<br>[static/js/travel-book-ai.js:173](../../../static/js/travel-book-ai.js) | 启动/延展书籍问题 | `async` / source-only |
 | `T.BOOK.INPUT` | 书籍问题 | `.tw-book-ai__input`<br>[layouts/page/travel.html:260](../../../layouts/page/travel.html) | 编写问题 | `input` / source-only |
 | `T.BOOK.SEND` | 发送书籍问题/请求中停止（同一按钮） | `.tw-book-ai__send`<br>[layouts/page/travel.html:262](../../../layouts/page/travel.html) | 请求流式解释 | `async` / source-only |
-| `T.SOCIAL.QR` | 社交二维码/复制ID/关闭 | `.tw-social--qr, [data-qr-close]`<br>[layouts/page/travel.html:326](../../../layouts/page/travel.html) | 联系作者 | `command` / source-only |
+| `T.SOCIAL.QR` | 社交二维码 / 查看ID / 关闭 | `.tw-social--qr, [data-qr-close]`<br>[layouts/page/travel.html:326](../../../layouts/page/travel.html) | 联系作者 | `command` / source-only |
 | `T.SOCIAL.LINK` | 社交平台链接 | `a.tw-social`<br>[layouts/page/travel.html:316](../../../layouts/page/travel.html) | 打开公开平台 | `nav` / source-only |
 | `T.BOOK.RETRY` | 重试书籍问题 | `.tw-book-ai__retry`<br>[static/js/travel-book-ai.js:175](../../../static/js/travel-book-ai.js) | 失败后重试原问题 | `async` / source-only |
 
@@ -1478,3 +1478,86 @@ D1原执行仅保留索引`evidence/batch-d1-flows.log`。五个仍以D1命名�
 每个state_evidence含对应family/control ID、case route/viewport/theme/motion、freeze时间/base revision、具体依赖SHA256与当前比较。未被manifest列出的未改依赖按base blob追踪并标明fallback；不声称所有构建依赖都已穷尽。
 
 回执元数据注意：`batch-d2b-request-checks.json`的legacy limits仍写Frozen D1，但每个case的source、revalidatedAt与note明确D2b重跑。本清单按该明确重跑记录绑定D2b，同时保留原文本矛盾提示；没有把旧D1图当最新图。
+
+
+## v1.7 E5/E51/E52：逐状态证据与仍开放的探针
+
+导入时点 **2026-10-16T02:15:38+08:00**，checkout **`77bf94c27a64`**。仍为 **309 族 / 357 个 selector ID / 57 个旅程队列**，完整功能族验收数 **0**，完整分数继续 `null`。没有启动浏览器、构建或外部提交；只读取正式回执、合同源码与现有 PNG。既有八状态在未测尺寸/实例/条件下继续未证实。
+
+| Freeze | 上海时间 | manifest 文件数 | 本次身份边界 |
+| --- | --- | --- | --- |
+| batch-e5-source.json | 2026-10-16T01:38:10.850283+08:00 | 4 | 有后续变更：assets/css/space-cafe.css, assets/css/space-media.css |
+| batch-e51-source.json | 2026-10-16T01:49:04.857976+08:00 | 6 | 有后续变更：assets/css/space-cafe.css, assets/css/space-media.css, tests/e2e/faq-motion-contracts.spec.ts |
+| batch-e52-source.json | 2026-10-16T01:54:48.601670+08:00 | 9 | 列出文件当前hash相同；全局依赖仍受限 |
+
+三次 freeze 的 base 都是 `94e644e50bc4`，具体变更按 manifest SHA256；E52 独立审查闭环与本地 `77bf94c2`仅作交付上下文，不增加视觉状态。每条新 `state_evidence` 都带具体 family/control ID、receipt SHA256、route/尺寸条件（回执缺失则不猜）、冻结源身份与当前比较。manifest 未列出的已知依赖另标 Git blob fallback，不声称构建闭包完整。
+
+| 证据 | 已证明的具体范围 | 仍未证明 |
+| --- | --- | --- |
+| E5 5 reading 合同，E52 重跑同5项 | 笔记实际字≥16、同editor DOM/原值/继续输入；DLV真实文章首段≥16、无横向溢出；本地terminal help与投影字≥14.5；map控件实际click；OS菜单回café保留notes；1440 dark plane变化 | 全部toolbar/侧栏小字、所有文章、11App、真实sandbox、hover/focus/错误全矩阵 |
+| WebGL fallback 合同 | 无WebGL时无spatial plane，notes16/terminal12的未缩放基线保留 | 不能把WebGL terminal≥14.5冒称fallback字也≥14.5；context loss等其他失败未测 |
+| E52 4 boundary合同 / 4实际旅程 / 8图 | 568×320中英、620×844中文、844×390中文coarse，notes窗口4控中心hit且≥44.27，实际关闭移除窗口并仍desktop；map4控实际几何 | minimize/maximize/arrange操作结果不因hit而通过；11App关闭及dirty态未测 |
+| E52 3个短高HUD链 | 568中英、844 coarse的44×44、图标/名称、picker→Escape焦点恢复、返回咖啡→再入同editor DOM | 620未记录HUD点击；不认证全部场景切换/所有picker实例 |
+| E52 map真实点击 | 620/coarse合同逐个scroll/click/无横向溢出；中文568也有reading合同；四实际旅程均有map geometry/hit | 英文568回执没有独立map动作字段，不凭其正常图补成点击通过；pin/区域选择另验 |
+| E52 FAQ 2合同 | runtime reduce中断opening/closing后到正确details/class终态，height/overflow清空、0动画；1440×900中文panel hidden/noBox、不能focus、主题焦点不抢、显式重开聚焦、外层关闭abort与草稿恢复 | 真实AI、Stop点击、所有error/retry、全部FAQ/尺寸/浏览器、全站动效未测 |
+
+**图片尺寸与合同尺寸分别登记。** PNG IHDR实际为：E5 desktop1440×900；390图为390×900；320图为320×844；568图为568×320。reading合同则320×844、390×844、568×320、1440×900。E5共10图（另含dark notes/reader），E52共8图；不能把390×900图当390×844合同截图。本清单本轮只独立查看 E52 notes568zh、map620zh、Space products390top、books390top 四张，其他图登记为导入证据并不冒称逐张亲看。
+
+**失败历史保持失败。** E51回执是1通过/1失败，第二条 `.article-faq__ai-panel[hidden]`持续visible，不能写成2通过。E5短高close误回咖啡、620窄目标和E51coarse26.24px/hit截获也保留负记录；只在E52相应窗口/尺寸/动作链上标“后续有界关闭”。D3 runtime reduce负记录同样保留。E52的11合同含重跑5个reading，不累加成16个不同任务验收。
+
+**搜索分类修正。** `G.SEARCH.AI`现在是async：`#search-ai-btn`→`askAI(input.value)`，pending时`#search-ai-stop`取消；不能要求aria-pressed，也不能把loading/error记N/A。既有D2b完成焦点检查只关联启动按钮，Stop点击不继承该回执。
+
+### 当前仍开放的具体问题
+
+| ID / 控件族 | 冻结事实 | 下一轮仍需要的有界验收 |
+| --- | --- | --- |
+| UX-024 / `S.WINDOW.ARRANGE`（相关窗口恢复入口另保留） | 844×390coarse三窗并排后welcome/map同列重叠，welcome4控制中心被盖；`state.mjs:65–72`排2行再被`fitRect:9–10`最低高抬升、y压缩；`desktop.js:159`当前仅按width≤640选overview | 真实整理后每窗有明确可选择的恢复入口，3/4窗短高与普通桌面能容纳平铺分别验；不把普通前后窗遮挡误判失败 |
+| UX-025 / `H.CHAT.INPUT/CLOSE/OPEN` | `77bf94c2`首页预览未发送草稿close/open变空 | 原问题保留、焦点/DOM连续性按实际产品合同验 |
+| UX-026 / `H.CHAT.INPUT/SEND` | 合成isComposing Enter触发1次fetch桩 | composition guard及真实OS中文候选确认单独验；没有OS实测不认证IME |
+| UX-027 / `H.CHAT.INPUT/SEND/CLOSE/RETRY` | 虚拟35秒仍busy、inputDisabled、Stop数量0；关闭后abort=1 | 就地停止/时限、原问题恢复与错误重试；关闭可退出已知，不能说完全无法取消 |
+
+首页探针缺viewport/locale字段，本清单未补猜；current E6首页源码正在实现而未构建，新布局与运输状态不能由旧预览证据继承。
+
+### 四App正常呈现与首页概念边界
+
+`space-app-families.json`为products/books/contact/settings共8个scope、16张top/bottom图：1440×900和390×844，zh/light/reduce/maximized、API503隔离。已逐族绑定normal外观/文字几何，**没有认证选择、外链、联系发送、偏好切换或导出动作**。现有309族不增加。products手机正文狭窄/目录细、books摘要与阅读入口细、contact主要渠道触控和提示层级、settings能力状态字细，作为下一有界排版/命中批；评价以内容可读、真实动作易找、边框只表达分组/选择为标准，不靠多一层卡片/更多动画补“品味”。
+
+`homepage-directions.json`中的A/B为临时DOM/CSS概念。父任务与评分Agent相对比较选择A1“公开实践笔记”为小幅条件胜者，B1“先认识作者”保留挑战者；不能将其作为实际首页功能验收，也没有绝对96认证。E6当前源改动尚未构建，图片仍指旧base。真实文章、旅行书、产品、社交入口与默认café意图继续由既有roadmap逐项验收。
+
+本轮新增 **90** 条有界状态记录，触及 **30** 个既有族（含历史失败和normal观察）；当前有状态证据 **46** 族。此计数表达清单覆盖，不能当合格率。
+
+
+## v1.8 E61短屏与连续性：只关闭具体范围
+
+导入时间 **2026-10-16T02:41:07+08:00**，checkout `77bf94c27a64`。盘点仍为 **309族、57旅程**；新增真实原生文章入口 `.hp-reading-start__link`，归原有 `H.HERO.READ`，selector级总数为 **358**。原 `.hp-entry-actions a[href="#hp-posts"]` 继续存在；新入口有独立Control ID `H.HERO.READ.control.ff1fe2`，不继承原按钮的通过记录。
+
+`layouts/partials/homepage-reading-start.html:4` 的一个原生anchor包含time/title/description及“读这篇文章”，href为真实文章URL。E6原20条正式日志里中英两条无JS合同已分别实际click并核对抵达URL/文章标题；本轮只把这两条精准绑定给新anchor。E6旧freeze为 `2026-10-16T02:12:13.486802+08:00`、7文件；E61为 `2026-10-16T02:29:48.071870+08:00`、9文件及独立QA配置hash，二者都以base `77bf94c2`和各自manifest文件SHA256定位，不能跨版本继承新布局图。
+
+| E61证据 | 精确状态范围 | 不代表 |
+| --- | --- | --- |
+| 6 short/normal合同 | 4条568×320/256中英：input/send/close至少44、位于header下/屏内、centerhit；末条真实建议可滚入坐标click、24段回答与Home/End滚动；2条390/1440×900中文正常会话保持wrapper display:contents与原尺寸 | 未发送draft、IME、Stop/时限、所有错误重试；normal desktop仍保留原34px send，不谎称此处全44 |
+| 5实际坐标旅程 / 5短屏图 | 568×320/256中英、844×390英文coarse，light/reduce；input/send/close真实44+hit，coordinate close移除panel，opener获焦点；重开Escape回opener | actual JSON没有发送/API动作，不把几何/正常图当发送功能通过 |
+| 3 continuity合同 | 1440×900默认冻结QA：close/clear隔离迟到回复；实际click开始阅读转posts focus后完成不抢；合成persisted pagehide/pageshow恢复composer/隔离旧delta | wheel-only离开意图；原生BFCache命中；真实OS键盘 |
+| 真实Metal ambient / 3张附图 | hero可信意图+3秒无renderer，Bear可见后两个420canvas；reduce销毁/restore重挂，pageErrors空 | FPS/INP/实体设备/hidden零帧；材质normal仍为reviewer有界85，待E62，完整分继续null |
+
+E61共 **8图**（5短屏+normal动态/减少动态对比2图+posts neutral1图），尺寸来自PNG IHDR，图不是额外通过合同。`#hp-chat-scroll`为新增键盘滚动辅助surface：max-height420时tabIndex=0，正常高度移除tabindex并display:contents；在现有聊天/建议任务下登记，不算新按钮或新族。
+
+**UX030仅在上述568中英/844英文coarse的light/reduce路径关闭。** UX025草稿、UX026合成IME误发送、UX027挂起缺就地Stop与时限继续open，不能用短屏布局合同关闭。Space的UX024三窗并排、UX028重要文本物理字号、UX029主anchor触控仍开放；E61首页并未处理它们。
+
+### UX031已经实测复现：滚轮阅读意图被晚回复覆盖
+
+`home-wheel-intent-probe.json`冻结E61、568×320英文reduce，真实wheel620px从chat到Books，DOM focus仍chatsection；受控晚JSON完成后input获焦点，scrollY从 **2803回2183（-620px）**。两张实际图分别是Books阅读中与被拉回composer，不是normal成功图。源路径为 `renderChat → layoutChat(focusInput || hadChatFocus) → revealShortChat → window.scrollTo`，以旧DOM焦点推断对话意图会忽略刚发生的滚动。已绑定 `H.CHAT.INPUT/SEND` 的focus失败及UX031开放问题；CLOSE作为恢复链相关入口不凭本探针另判失败。
+
+旧“离开不抢焦点”合同真实点击posts改变focus后通过，与这条仅wheel离开的失败同时保留，不能互相抵消。UX031仍待E7，未调用付费/真实模型，仅一台模拟短屏Chromium，不外推实体手机/所有浏览器。E7任何进行中源码未获本次证据验收。
+
+本轮新增 **31条** 有界state_evidence，触及 **10个既有族**；累计有状态记录 **52族**。全体完整family验收继续 **0**，完整控件/族/全站分数仍 `null`。本轮独立查看E61 short568×256en、normal motion及wheel前后4张已有图片，没有启动浏览器或构建。
+
+
+### 原roadmap下一轮仅两个高影响族（只读探针候选）
+
+本轮源追踪时间 **2026-10-16T02:43:06+08:00**；复用既有RM/R旅程，仍18个roadmap批次，不扩大实现范围、不启动browser。E61导入时`bear-orb.js`已进入E62源码改动，manifest比较标出不同；E61图与有界材质85只属于其freeze，不认证当前shader。
+
+1. **`T.SOCIAL.QR` / R-30，作为RM-07 Travel内容同行程的附属探针。** `/zh/travel/`真实微信/小红书按钮`.tw-social--qr`→共享`#tw-qr`。`travel.html:389–399`的open只改img/label/id、hidden/class/expanded，未主动focus入modal或建立Tab边界；`:401–407`的close依赖transitionend，没有新open代次保护。CSS root透明200ms、card变换240ms，子transition也会冒泡。风险为键盘仍在背景和关闭旧回调隐藏新B，但都仍是源码候选，不能写已复现。最小探针：390×844实际键盘开A→Tab/ShiftTab记录焦点；no-preference实际closeA→过渡未完即开B→300ms后核B图/label/ID/visible；Escape回B，再runtime reduce重做关开/hidden/noBox。只读二维码，不发送、不导航外站。另已更正原盘点：ID仅显示，**当前没有复制ID按钮**；英文Travel social order不含QR。
+2. **`G.NAV.ANCHOR` / RM-15、R-02。** 选`/zh/archives/`真实`.archives-year-nav__link`（`archives.html:49`）而非已被排除的首页CTA。`footer.html:57`当前已在preventDefault前检查button/modifier/download/_blank，故F03是历史源缺口、现在`source_fixed_pending_browser`，不是当前已知未修。最小探针：普通可信click实际年链接→记录hash/目标/Back；平台Meta/Ctrl、Shift或中键真实操作→读回当前页不被增强scroll与真实native新tab意图；reduce后普通click记录不强制smooth。所有链接站内，只读。首页CTA和wayfinder在55行被排除，它们的通过不能认证此global处理；不得用合成dispatchEvent替代原生新标签行为。
+
+这两项只为下一次父任务挑选提供任务、selector、真实执行路径和可复用探针。没有增加控件族，没有将源码诊断升级为浏览器失败或通过。

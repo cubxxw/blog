@@ -1,5 +1,5 @@
 {{- /* Homepage DayPage Redesign — Bear / 熊
-     Mirrors the design prototype: Hero + AI Chat + Posts + Books + Projects + Travel + Subscribe + Footer
+     Reading first: identity + a real practice article, writing, then Bear, books and projects
      Lang: en (default) / zh — detected from .Lang
 */ -}}
 
@@ -7,17 +7,18 @@
 {{- $lang  := .Lang -}}
 {{- $d     := site.Data.homepage -}}
 {{- $capabilities := partial "site-capabilities.html" . -}}
+{{- $homePosts := where (where site.RegularPages "Lang" $lang) "Type" "posts" -}}
+{{- $practicePosts := (where $homePosts "Section" "in" (slice "ai-agent" "engineering")).ByDate.Reverse -}}
+{{- $readingStart := false -}}
+{{- range first 1 $practicePosts }}{{ $readingStart = . }}{{ end -}}
 
 <div class="homepage-root" id="hp-root" data-lang="{{ $lang }}">
 
   <div class="hp-page">
 
     {{/* ── Hero ─────────────────────────────────────────── */}}
-    <section class="hp-hero" id="hp-about">
-      {{/* Ambient 3D field — sits behind both columns, purely decorative.
-           Stays empty (transparent) on phones / reduced-motion / no-WebGL. */}}
-      <div class="hp-hero-field" id="hp-hero-field" aria-hidden="true"></div>
-      <div>
+    <section class="hp-hero{{ if $readingStart }} hp-hero--with-reading{{ end }}" id="hp-about">
+      <div class="hp-hero-intro">
         <h1>
           <span class="hp-hero-name-row">
             <span class="hp-hero-name-text">
@@ -47,7 +48,7 @@
         </h1>
 
         <p class="hp-hero-motto">
-          {{ if $isZh }}{{ $d.hero.mottoZh }}{{ else }}{{ $d.hero.mottoEn }}{{ end }}
+          {{ if $isZh }}{{ replace $d.hero.mottoZh "项目" `<span class="hp-keep-word">项目</span>` | safeHTML }}{{ else }}{{ $d.hero.mottoEn }}{{ end }}
         </p>
 
         <p class="hp-hero-bio">
@@ -62,6 +63,12 @@
           <span>{{ if $isZh }}了解这个博客{{ else }}About this blog{{ end }}</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
+
+      </div>
+
+      {{- with $readingStart }}
+      {{ partial "homepage-reading-start.html" (dict "page" . "isZh" $isZh) }}
+      {{- end }}
 
         {{- if site.Params.socialIcons }}
         <div class="hp-hero-socials">
@@ -100,58 +107,7 @@
           {{- end }}
         </div>
         {{- end }}
-      </div>
 
-      {{- if $capabilities.ai -}}
-      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
-        data-avatar-src="{{ "images/xinwei-hiking-avatar.webp" | relURL }}"
-        data-bubbles-en='{{ $d.ai.bubblesEn | jsonify }}'
-        data-bubbles-zh='{{ $d.ai.bubblesZh | jsonify }}'
-        data-sys-en="{{ $d.ai.sysPromptEn }}"
-        data-sys-zh="{{ $d.ai.sysPromptZh }}">
-        {{/* Persistent 3D stage: the Three.js canvas lives here and is NEVER
-             torn down on orbit↔chat swaps. orbit and chat are DOM layers
-             rendered into #hp-bear-layer on top of it, so the same AI orb
-             flows continuously between states (recedes behind the chat
-             glass rather than disappearing). aria-hidden: purely ambient. */}}
-        <div id="hp-bear-stage" class="hp-bear-stage" aria-hidden="true"></div>
-        {{/* Plan A: a line-art "hiker looking up at the stars" figure, floating
-             in front of the orb as a quiet digital-twin silhouette. Pure DOM/SVG,
-             sits between the canvas (orb) and the DOM layer (bubbles/chat) so it
-             reads as holographically projected onto the sphere. */}}
-        <div class="hp-orb-avatar" aria-hidden="true">
-          <svg viewBox="0 0 200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M152 22 l3.4 9 9 3.4 -9 3.4 -3.4 9 -3.4 -9 -9 -3.4 9 -3.4 z"
-                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <circle cx="100" cy="82" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <!-- short masculine hair: cap with a slight fringe -->
-            <path d="M78 80 Q76 56 100 54 Q124 56 122 80 Q118 70 108 68 Q100 66 92 68 Q82 70 78 80 Z"
-                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M92 68 L93 77 M100 67 L100 78 M108 68 L107 77"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <!-- faint face hint: brows, eyes, nose -->
-            <path d="M91 85 q4 -2 8 0 M101 85 q4 -2 8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            <path d="M100 87 l-1.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            <path d="M100 104 L100 116" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- torso: broad shoulders, V-taper (masculine build) -->
-            <path d="M78 118 Q100 112 122 118 L127 196 Q100 204 73 196 Z"
-                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M122 126 Q147 130 145 168 Q143 192 124 194"
-                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M80 126 L62 182 L58 214" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M120 126 L144 104 L156 56" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M90 198 L82 270 L78 336" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M110 198 L118 268 L122 336" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div id="hp-bear-layer" class="hp-bear-layer"></div>
-        <span id="hp-chat-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"></span>
-      </div>
-      {{- end }}
     </section>
 
     {{ partial "page-wayfinder.html" . }}
@@ -159,8 +115,6 @@
     {{/* ── Posts ───────────────────────────────────────── */}}
     <section class="hp-section" id="hp-posts">
       <div class="hp-section-head">
-        <span class="hp-section-num">01</span>
-        <span class="hp-section-label">{{ if $isZh }}最新信号{{ else }}Latest Signals{{ end }}</span>
         <h2 class="hp-section-title">
           {{ if $isZh }}正在写的{{ else }}Writing{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}文章{{ end }}</span>
         </h2>
@@ -175,13 +129,17 @@
              clicking the active tab enters that section page. ── */}}
       {{- $langPages := where site.RegularPages "Lang" $lang }}
       {{- $allPosts  := (where $langPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
+      {{- /* The hero already offers this practice article. This is a preview;
+             the channel count and its full destination keep the complete set. */ -}}
+      {{- $latestPreview := $allPosts }}
+      {{- with $readingStart }}{{ $latestPreview = where $allPosts "RelPermalink" "ne" .RelPermalink }}{{ end }}
       {{- $travelPages := slice }}
       {{- with site.Taxonomies.tags.travel }}{{ $travelPages = .Pages.ByDate.Reverse }}{{ end }}
       {{- $channels := slice (dict
             "key" "latest" "icon" "✦" "url" "/articles/"
             "nameEn" "Latest" "nameZh" "最新"
             "browseEn" "All Posts" "browseZh" "所有文章"
-            "count" (len $allPosts) "pages" $allPosts) }}
+            "count" (len $allPosts) "pages" $latestPreview) }}
       {{- range $d.sections }}
         {{- if ne .key "projects" }}{{- /* Products live in section 03, not the rail */}}
         {{- $pages := slice }}{{- $count := 0 }}
@@ -239,13 +197,69 @@
       </div>
     </section>
 
+    {{- if $capabilities.ai }}
+    <section class="hp-section hp-conversation" id="hp-conversation" data-home-conversation aria-labelledby="hp-conversation-title">
+      <div class="hp-conversation__intro">
+        <h2 id="hp-conversation-title">{{ if $isZh }}读完，接着聊。{{ else }}Keep the conversation going.{{ end }}</h2>
+        <p>{{ if $isZh }}这是我的 AI 分身。可以接着聊文章、产品，或路上的故事。{{ else }}Meet my AI twin. Ask about the writing, the projects, or stories from the road.{{ end }}</p>
+      </div>
+      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
+        data-avatar-src="{{ "images/xinwei-hiking-avatar.webp" | relURL }}"
+        data-bubbles-en='{{ $d.ai.bubblesEn | jsonify }}'
+        data-bubbles-zh='{{ $d.ai.bubblesZh | jsonify }}'
+        data-sys-en="{{ $d.ai.sysPromptEn }}"
+        data-sys-zh="{{ $d.ai.sysPromptZh }}">
+        <div class="hp-hero-field" id="hp-hero-field" aria-hidden="true"></div>
+        {{/* Persistent 3D stage: the Three.js canvas lives here and is NEVER
+             torn down on orbit↔chat swaps. orbit and chat are DOM layers
+             rendered into #hp-bear-layer on top of it, so the same AI orb
+             flows continuously between states (recedes behind the chat
+             glass rather than disappearing). aria-hidden: purely ambient. */}}
+        <div id="hp-bear-stage" class="hp-bear-stage" aria-hidden="true"></div>
+        {{/* Plan A: a line-art "hiker looking up at the stars" figure, floating
+             in front of the orb as a quiet digital-twin silhouette. Pure DOM/SVG,
+             sits between the canvas (orb) and the DOM layer (bubbles/chat) so it
+             reads as holographically projected onto the sphere. */}}
+        <div class="hp-orb-avatar" aria-hidden="true">
+          <svg viewBox="0 0 200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M152 22 l3.4 9 9 3.4 -9 3.4 -3.4 9 -3.4 -9 -9 -3.4 9 -3.4 z"
+                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="100" cy="82" r="22" stroke="currentColor" stroke-width="2.5"/>
+            <!-- short masculine hair: cap with a slight fringe -->
+            <path d="M78 80 Q76 56 100 54 Q124 56 122 80 Q118 70 108 68 Q100 66 92 68 Q82 70 78 80 Z"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M92 68 L93 77 M100 67 L100 78 M108 68 L107 77"
+                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <!-- faint face hint: brows, eyes, nose -->
+            <path d="M91 85 q4 -2 8 0 M101 85 q4 -2 8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M100 87 l-1.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M100 104 L100 116" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- torso: broad shoulders, V-taper (masculine build) -->
+            <path d="M78 118 Q100 112 122 118 L127 196 Q100 204 73 196 Z"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M122 126 Q147 130 145 168 Q143 192 124 194"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M80 126 L62 182 L58 214" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M120 126 L144 104 L156 56" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M90 198 L82 270 L78 336" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M110 198 L118 268 L122 336" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div id="hp-bear-layer" class="hp-bear-layer"></div>
+        <span id="hp-chat-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"></span>
+      </div>
+    </section>
+    {{- end }}
+
     <div class="hp-divider-fade"></div>
 
     {{/* ── Books ──────────────────────────────────────── */}}
     <section class="hp-section" id="hp-books">
       <div class="hp-section-head">
-        <span class="hp-section-num">02</span>
-        <span class="hp-section-label">{{ if $isZh }}我的书{{ else }}Books · Travelogues{{ end }}</span>
         <h2 class="hp-section-title">{{ if $isZh }}我的旅行书{{ else }}Field Notebooks{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}游记{{ end }}</span></h2>
       </div>
       <div class="hp-books-grid">
@@ -282,8 +296,6 @@
     {{/* ── Products ────────────────────────────────────── */}}
     <section class="hp-section" id="hp-projects">
       <div class="hp-section-head">
-        <span class="hp-section-num">03</span>
-        <span class="hp-section-label">{{ if $isZh }}独立产品{{ else }}Independent Products{{ end }}</span>
         <h2 class="hp-section-title">{{ if $isZh }}正在构建{{ else }}What I'm Building{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}产品{{ end }}</span></h2>
         <a class="hp-section-action" href="{{ "/projects/" | relLangURL }}#studio-products">
           {{ if $isZh }}全部产品{{ else }}All Products{{ end }}
@@ -333,8 +345,6 @@
     {{- $recentPosts := (where $allPages "Section" "in" site.Params.mainSections) | first 5 -}}
     <section class="hp-section" id="hp-travel" data-post-dates='{{ $allPosts | jsonify }}'>
       <div class="hp-section-head">
-        <span class="hp-section-num">04</span>
-        <span class="hp-section-label">{{ if $isZh }}写作{{ else }}Writing{{ end }}</span>
         <h2 class="hp-section-title">{{ if $isZh }}发布记录{{ else }}Post Activity{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}写作{{ end }}</span></h2>
         <a class="hp-section-action" href="{{ "/archives/" | relLangURL }}">
           {{ if $isZh }}完整归档{{ else }}All Archives{{ end }}
@@ -453,6 +463,37 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
 
   function renderMsg(value) { return renderMessage(value, window.location.origin); }
   var requestSerial = 0, activeRequest = null, retryText = '', openerMessage = null;
+  var shortChat = window.matchMedia('(max-height: 420px)');
+  function chatViewport() {
+    return document.getElementById(shortChat.matches ? 'hp-chat-scroll' : 'hp-chat-body');
+  }
+  function scrollTranscriptEnd() {
+    var viewport = chatViewport(), transcript = document.getElementById('hp-chat-body');
+    if (!viewport || !transcript) return;
+    viewport.scrollTop = shortChat.matches
+      ? Math.max(0, viewport.scrollTop + transcript.getBoundingClientRect().bottom - viewport.getBoundingClientRect().bottom)
+      : viewport.scrollHeight;
+  }
+  function revealShortChat(surface) {
+    if (!shortChat.matches || !surface) return;
+    var header = document.querySelector('.header-wrapper');
+    var headerHeight = header ? header.getBoundingClientRect().height : 0;
+    root.style.setProperty('--hp-chat-header-height', headerHeight + 'px');
+    // Leave room for the sticky navigation even while it is auto-hidden.
+    // Use an immediate scroll: focusing the composer must not race a scroll.
+    window.scrollTo({ top: Math.max(0, window.scrollY + surface.getBoundingClientRect().top - headerHeight - 12), behavior: 'instant' });
+  }
+  function layoutChat(align) {
+    var viewport = document.getElementById('hp-chat-scroll');
+    if (!viewport) return;
+    if (shortChat.matches) {
+      viewport.tabIndex = 0;
+      if (align) revealShortChat(layer.querySelector('.hp-bear-chat'));
+    } else {
+      viewport.removeAttribute('tabindex');
+      root.style.removeProperty('--hp-chat-header-height');
+    }
+  }
   function requestIsCurrent(request) {
     return chatOpen && activeRequest === request && request.id === requestSerial && !request.controller.signal.aborted;
   }
@@ -469,7 +510,9 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
     document.getElementById('hp-chat-status').textContent = isZh ? '对话已关闭' : 'Conversation closed';
     renderOrbit();
     var opener = openerMessage && Array.from(layer.querySelectorAll('.hp-bear-bubble')).find(function(btn) { return btn.dataset.msg === openerMessage; });
-    (opener || document.getElementById('hp-avatar-btn')).focus({ preventScroll: true });
+    var trigger = opener || document.getElementById('hp-avatar-btn');
+    revealShortChat(trigger);
+    trigger.focus({ preventScroll: true });
   }
 
   function renderOrbit() {
@@ -506,12 +549,8 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
           '<span class="hp-bear-avatar-pulse"></span>'+
           '<span class="hp-bear-avatar-pulse hp-bear-avatar-pulse-2"></span>'+
           '<span class="hp-bear-avatar-core">'+PORTRAIT+'</span>'+
-          '<span class="hp-bear-avatar-status"><span class="hp-bear-avatar-status-dot"></span>'+(isZh?'在线':'ONLINE')+'</span>'+
+          '<span class="hp-bear-avatar-status">'+(isZh?'AI 分身':'AI twin')+'</span>'+
         '</button>'+
-        '<div class="hp-bear-hud hp-bear-hud-tl"><div class="hp-bear-hud-label">DIGITAL TWIN</div><div class="hp-bear-hud-val">{{ $d.ai.hudTwinVal }}</div></div>'+
-        '<div class="hp-bear-hud hp-bear-hud-tr"><div class="hp-bear-hud-label">'+(isZh?'协议':'PROTOCOL')+'</div><div class="hp-bear-hud-val">{{ $d.ai.hudProtocolVal }}</div></div>'+
-        '<div class="hp-bear-hud hp-bear-hud-bl"><div class="hp-bear-hud-label">'+(isZh?'语气':'VOICE')+'</div><div class="hp-bear-hud-val">{{ $d.ai.hudVoiceVal }}</div></div>'+
-        '<div class="hp-bear-hud hp-bear-hud-br"><div class="hp-bear-hud-label">'+(isZh?'点击开始':'TAP · BEGIN')+'</div><div class="hp-bear-hud-val">↗ '+(isZh?'聊天':'CHAT')+'</div></div>'+
         '<div class="hp-bear-cta-line">'+(isZh?'点击头像 · 与 Bear 的数字分身对话':"Tap the orb · Talk to Bear's digital twin")+'</div>'+
       '</div>';
 
@@ -562,7 +601,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
     document.getElementById('hp-chat-status').textContent = loading ? (isZh ? 'Bear 正在回复' : 'Bear is replying') : (retryText ? (isZh ? '连接中断，可重试消息' : 'Connection interrupted. You can retry this message.') : (messages.length ? (isZh ? '回复完成' : 'Reply ready') : (isZh ? '可以开始对话' : 'Ready to chat')));
     var bodyHtml = '';
     if (messages.length === 0) {
-      bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨，我是 Bear 的数字分身。站里每一篇文章我都读过——帮你找文章、聊 Agent 与开源，或者讲讲路上的事，都可以。':"Hey — I'm Bear's digital twin. I've read every post on this site. I can find articles for you, talk agents and open source, or tell you about life on the road.")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
+      bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨，我是 Bear 的数字分身。可以帮你找文章，聊 Agent 与开源，或讲讲路上的事。':"Hey — I'm Bear's digital twin. Ask about the writing, agents, open source, or life on the road.")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
     } else {
       bodyHtml = messages.map(function(m, idx) {
         var cls = m.role==='user' ? 'hp-bear-chat-msg-user' : 'hp-bear-chat-msg-bear';
@@ -604,10 +643,10 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
       '<section class="hp-bear-chat" tabindex="-1" role="region" aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
         '<div class="hp-bear-chat-head">'+
           '<div class="hp-bear-chat-head-left">'+
-            '<span class="hp-bear-chat-avatar">'+PORTRAIT+'<span class="hp-bear-chat-avatar-dot"></span></span>'+
+            '<span class="hp-bear-chat-avatar">'+PORTRAIT+'</span>'+
             '<div>'+
               '<div class="hp-bear-chat-name">Bear <span class="hp-bear-chat-name-zh">· 熊</span></div>'+
-              '<div class="hp-bear-chat-meta"><span class="hp-bear-chat-pulse-dot"></span>'+(loading?(isZh?'正在输入…':'typing…'):(isZh?'在线 · 通常几秒回复':'online · usually replies in seconds'))+'</div>'+
+              '<div class="hp-bear-chat-meta">'+(loading?'<span class="hp-bear-chat-pulse-dot"></span>'+(isZh?'正在回复…':'Replying…'):(isZh?'AI 分身 · 参考站内公开内容':'AI twin · draws on published writing'))+'</div>'+
             '</div>'+
           '</div>'+
           '<div class="hp-bear-chat-actions">'+
@@ -615,9 +654,11 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
             '<button class="hp-bear-chat-icon-btn" id="hp-chat-close" aria-label="'+(isZh?'关闭对话':'Close conversation')+'" title="'+(isZh?'关闭对话':'Close conversation')+'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>'+
           '</div>'+
         '</div>'+
-        '<div class="hp-bear-chat-body" id="hp-chat-body" aria-busy="'+loading+'">'+bodyHtml+'</div>'+
-        (quickHtml ? '<div class="hp-bear-chat-quick'+(isStart?' is-start':'')+'">'+(followups.length && !isStart ? '<span class="hp-bear-chat-quick-tag">'+(isZh?'继续聊':'go deeper')+'</span>' : '')+quickHtml+'</div>' : '')+
-        (retryText ? '<button class="hp-bear-chat-quick-btn" id="hp-chat-retry">'+(isZh?'重试这条消息':'Retry this message')+'</button>' : '')+
+        '<div class="hp-bear-chat-scroll" id="hp-chat-scroll" role="region" aria-label="'+(isZh?'对话内容与建议':'Conversation and suggestions')+'">'+
+          '<div class="hp-bear-chat-body" id="hp-chat-body" aria-busy="'+loading+'">'+bodyHtml+'</div>'+
+          (quickHtml ? '<div class="hp-bear-chat-quick'+(isStart?' is-start':'')+'">'+(followups.length && !isStart ? '<span class="hp-bear-chat-quick-tag">'+(isZh?'继续聊':'go deeper')+'</span>' : '')+quickHtml+'</div>' : '')+
+          (retryText ? '<button class="hp-bear-chat-quick-btn" id="hp-chat-retry">'+(isZh?'重试这条消息':'Retry this message')+'</button>' : '')+
+        '</div>'+
         '<div class="hp-bear-chat-input-row">'+
           '<input class="hp-bear-chat-input" id="hp-chat-input" aria-label="'+(isZh?'给 Bear 的消息':'Message Bear')+'" placeholder="'+(isZh?'问我文章、产品或旅行…':'Ask about posts, projects, travel…')+'"'+(loading?' disabled':'')+'>'+
           '<button class="hp-bear-chat-send" id="hp-chat-send" aria-label="'+(isZh?'发送消息':'Send message')+'" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'+
@@ -625,8 +666,12 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
         '<div class="hp-bear-chat-foot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.5 4.5L6 9l4.5 1.5L12 15l1.5-4.5L18 9l-4.5-1.5z"/></svg><span>'+(isZh?"AI 模拟 Bear 的语气 · 不是本人":"AI mimicking Bear's voice · not the human")+'</span></div>'+
       '</section>';
 
-    var body = document.getElementById('hp-chat-body');
-    if (body) body.scrollTop = body.scrollHeight;
+    layoutChat(focusInput || hadChatFocus);
+    var body = chatViewport();
+    if (body) {
+      if (messages.length) scrollTranscriptEnd();
+      else body.scrollTop = 0;
+    }
 
     var inp  = document.getElementById('hp-chat-input');
     var send = document.getElementById('hp-chat-send');
@@ -660,16 +705,19 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
   // animation — the panel strobed. Here we mutate the existing last bear
   // bubble's HTML only: no node churn, no re-animation, smooth typewriter.
   function updateStreamingBubble(contentHtml) {
-    var body = document.getElementById('hp-chat-body');
+    var body = chatViewport();
     if (!body || !chatOpen) return;
     var bubbles = body.querySelectorAll('.hp-bear-chat-msg-bear .hp-bear-chat-bubble');
     var last = bubbles[bubbles.length - 1];
     if (!last) return;
     // Measure before insertion, so a larger chunk still follows the end.
-    var nearBottom = body.scrollHeight - body.scrollTop - body.clientHeight < 80;
+    var transcript = document.getElementById('hp-chat-body');
+    var nearBottom = shortChat.matches
+      ? transcript.getBoundingClientRect().bottom - body.getBoundingClientRect().bottom < 80
+      : body.scrollHeight - body.scrollTop - body.clientHeight < 80;
     last.classList.add('is-streaming');
     last.innerHTML = contentHtml;
-    if (nearBottom) body.scrollTop = body.scrollHeight;
+    if (nearBottom) scrollTranscriptEnd();
   }
 
   function openChat(initMsg) {
@@ -766,6 +814,9 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
     // A bfcache restore keeps the old DOM but pagehide canceled its request.
     if (event.persisted && chatOpen) renderChat();
   });
+  window.addEventListener('resize', function() {
+    if (chatOpen) layoutChat(!!document.activeElement.closest('.hp-bear-chat'));
+  }, { passive: true });
 
   renderOrbit();
   {{- end }}

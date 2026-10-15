@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-15T18:12:13.486802+00:00",
+  "base": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+  "files": {
+    "layouts/partials/homepage-daypage.html": "1af8922766ef4651bcce697c32682609ff56ff12538ae17309e5262f80e22472",
+    "layouts/partials/homepage-reading-start.html": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+    "assets/css/home-about-experience.css": "8e17a3e2823a4f002d22e0274c2cbd4fd13826e4a065f932c493b296825c7ef0",
+    "assets/js/home-ambient.mjs": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+    "tests/e2e/home-reading-contracts.spec.ts": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+    "tests/e2e/home-about-experience.spec.ts": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+    "tests/e2e/home-first-paint.spec.ts": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591"
+  }
+}

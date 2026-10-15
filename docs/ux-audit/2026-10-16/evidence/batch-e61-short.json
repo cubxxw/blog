@@ -1,0 +1,205 @@
+{
+  "kind": "Actual viewport bounds + center hits + coordinate close/Escape; no send/API action. Does not certify draft recovery.",
+  "observations": [
+    {
+      "source": "batch-e61-source.json",
+      "locale": "zh",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "coarse": false,
+      "motion": "reduce",
+      "theme": "light",
+      "active": "hp-chat-input",
+      "headerBottom": 53,
+      "controls": [
+        {
+          "id": "hp-chat-input",
+          "x": 29,
+          "y": 241.53125,
+          "width": 458,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-send",
+          "x": 495,
+          "y": 241.53125,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-close",
+          "x": 495,
+          "y": 66.171875,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "actions": "coordinate close removed panel; opener focused; reopened and Escape returned focus"
+    },
+    {
+      "source": "batch-e61-source.json",
+      "locale": "en",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "coarse": false,
+      "motion": "reduce",
+      "theme": "light",
+      "active": "hp-chat-input",
+      "headerBottom": 53,
+      "controls": [
+        {
+          "id": "hp-chat-input",
+          "x": 29,
+          "y": 241.515625,
+          "width": 458,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-send",
+          "x": 495,
+          "y": 241.515625,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-close",
+          "x": 495,
+          "y": 66.15625,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "actions": "coordinate close removed panel; opener focused; reopened and Escape returned focus"
+    },
+    {
+      "source": "batch-e61-source.json",
+      "locale": "zh",
+      "viewport": {
+        "width": 568,
+        "height": 256
+      },
+      "coarse": false,
+      "motion": "reduce",
+      "theme": "light",
+      "active": "hp-chat-input",
+      "headerBottom": 53,
+      "controls": [
+        {
+          "id": "hp-chat-input",
+          "x": 29,
+          "y": 177.53125,
+          "width": 458,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-send",
+          "x": 495,
+          "y": 177.53125,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-close",
+          "x": 495,
+          "y": 66.171875,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "actions": "coordinate close removed panel; opener focused; reopened and Escape returned focus"
+    },
+    {
+      "source": "batch-e61-source.json",
+      "locale": "en",
+      "viewport": {
+        "width": 568,
+        "height": 256
+      },
+      "coarse": false,
+      "motion": "reduce",
+      "theme": "light",
+      "active": "hp-chat-input",
+      "headerBottom": 53,
+      "controls": [
+        {
+          "id": "hp-chat-input",
+          "x": 29,
+          "y": 177.515625,
+          "width": 458,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-send",
+          "x": 495,
+          "y": 177.515625,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-close",
+          "x": 495,
+          "y": 66.15625,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "actions": "coordinate close removed panel; opener focused; reopened and Escape returned focus"
+    },
+    {
+      "source": "batch-e61-source.json",
+      "locale": "en",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "coarse": true,
+      "motion": "reduce",
+      "theme": "light",
+      "active": "hp-chat-input",
+      "headerBottom": 45,
+      "controls": [
+        {
+          "id": "hp-chat-input",
+          "x": 451,
+          "y": 312.09375,
+          "width": 300,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-send",
+          "x": 759,
+          "y": 312.09375,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "id": "hp-chat-close",
+          "x": 759,
+          "y": 58.734375,
+          "width": 44,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "actions": "coordinate close removed panel; opener focused; reopened and Escape returned focus"
+    }
+  ]
+}

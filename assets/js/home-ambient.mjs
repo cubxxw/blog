@@ -1,11 +1,11 @@
 // The gate itself has no Three.js dependency. The loader stays untouched until
 // decoration is useful, visible, and the browser has spare main-thread time.
 export function mountHomeAmbient(loadModules, onOrb) {
-  const hero = document.getElementById('hp-about');
+  const surface = document.querySelector('[data-home-conversation]');
   const host = document.getElementById('hp-hero-field');
   const stage = document.getElementById('hp-bear-stage');
   const wrap = document.getElementById('hp-bear-ai');
-  if (!hero || !host || !stage || !wrap) return;
+  if (!surface || !host || !stage || !wrap) return;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const width = matchMedia('(max-width: 768px)');
   const coarse = matchMedia('(pointer: coarse)');
@@ -79,7 +79,7 @@ export function mountHomeAmbient(loadModules, onOrb) {
       visible = entries[0].isIntersecting;
       reconcile();
     }, { threshold: 0.01 });
-    observer.observe(hero);
+    observer.observe(wrap);
   }
   motion.addEventListener('change', reconcile);
   width.addEventListener('change', reconcile);

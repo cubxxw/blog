@@ -1,0 +1,33 @@
+{
+  "kind": "Exploratory baseline defects, not a pass. No real backend; pending fetch rejects on abort. IME event synthetic, not OS-level input.",
+  "previewBase": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+  "sourceSHA256": {
+    "layouts/partials/homepage-daypage.html": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab"
+  },
+  "observations": [
+    {
+      "kind": "draft",
+      "source": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+      "valueAfterReopen": ""
+    },
+    {
+      "kind": "composing-enter",
+      "source": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+      "syntheticKeyboardEvent": true,
+      "calls": 1,
+      "aborts": 0,
+      "busy": "true"
+    },
+    {
+      "kind": "pending",
+      "source": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+      "elapsedVirtualMs": 35000,
+      "calls": 1,
+      "aborts": 0,
+      "busy": "true",
+      "inputDisabled": true,
+      "stopButtons": 0,
+      "abortsAfterClose": 1
+    }
+  ]
+}

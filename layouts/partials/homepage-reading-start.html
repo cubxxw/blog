@@ -1,0 +1,10 @@
+{{- $page := .page -}}
+{{- $zh := .isZh -}}
+<aside class="hp-reading-start" aria-label="{{ if $zh }}先读一篇实践文章{{ else }}Start with an article{{ end }}">
+  <a class="hp-reading-start__link" href="{{ $page.RelPermalink }}">
+    <div class="hp-reading-start__meta"><span>{{ if $zh }}最近的实践{{ else }}Recent practice{{ end }}</span><time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006.01.02" }}</time></div>
+    <h2 class="hp-reading-start__title">{{ $page.Title }}</h2>
+    <p class="hp-reading-start__description">{{ $page.Description | default $page.Summary | plainify | truncate (cond $zh 110 180) }}</p>
+    <span class="hp-reading-start__action">{{ if $zh }}读这篇文章{{ else }}Read the article{{ end }} <span aria-hidden="true">→</span></span>
+  </a>
+</aside>

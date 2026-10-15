@@ -53,4 +53,4 @@ Heartbeat ID：`12-00`，当前聊天`01a13ec1-4c36-7410-915a-d52653d3129f`。�
 
 父任务后续在`batches.md`与`state.json`记录当前批次、验证源码revision、证据路径、工作中Agent及下一个可执行目标。
 
-最新本地checkpoint：`94e644e5`（D3/D4b，经独立review和真实浏览器验收）。预览当前为E5.1冻结版本；E5纸面/主字与5条阅读合同已实测，E5.1 FAQ合同1/2通过。父实测发现568 HUD遮挡close、620地图尺寸缺口、844 coarse窗体/map仅26px以及FAQ hidden被display:grid覆盖，E5.2正在修复。首页A/B临时原型已生成，待独立相对比较。下一轮先读state与执行Agent交接，禁止构建半写入源码。源工作树分支不变。
+最新本地checkpoint：`77bf94c2`（E5–E5.2已验收）；E6–E6.2已完成独立验收，正在保存下一checkpoint。1317提供E6.2冻结构建：真实阅读顺序/内容、短屏聊天可达、球体疏网与透明core。独立D4为浅色91.5、暗色90，仅局部视觉，无新P0/P1。下一E7草稿/IME/Stop/idle与wheel离开后回复抢滚动；之后Space短屏arrange、四App文字/命中和Travel二维码。分支不变，无推送/部署。

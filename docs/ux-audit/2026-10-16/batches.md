@@ -32,7 +32,7 @@
 ## E5 / E5.1 真实验收与未通过边界（2026-10-16 01:55）
 
 - 冻结基线为本地 `94e644e5`；E5四文件和E5.1六文件分别见source manifest。生产预览复用1317。
-- E5：纸面不透明，实际主文字16.4px；桌面窗控26.24px；原320/390/568手机窗控与地图44.28px。5条Space阅读/原笔记DOM与fallback合同通过，10张稳定画面/JSON已归档。截图手机高度为900，合同手机高度为844，不能互相替代。
+- E5：纸面不透明，实际主文字16.4px；桌面窗控26.24px；原320/390/568手机窗控与地图44.28px。5条Space阅读/原笔记DOM与fallback合同通过，10张稳定画面/JSON已归档。E5截图实际为390×900、320×844、568×320、1440×900；reading手机合同为320/390×844，不能互相替代。
 - 独立设计判断：桌面笔记D4由72.5→90，390笔记93，深色笔记/阅读器90，390地图87.5。仅局部视觉范围，完整控件分仍未知。
 - 后续实际hit与click发现：568×320 close中心被“回到咖啡馆”HUD盖住，真实点击进入café、notes仍存在；620×844 map按钮只有26.24px宽；844×390 coarse=true，窗控/map仅26.24px且arrange被换景HUD截获。E5阅读合同只测几何，不能据此声称这些按钮可点。
 - E5.1 FAQ runtime减少动态效果第一合同通过；第二合同失败：`.article-faq__ai-panel[hidden]`仍有可见盒子，自定义display:grid覆盖UA hidden。失败原始log已存，不能关闭UX019。
@@ -47,3 +47,33 @@
 - 独立review：9/9 hash匹配，读11条断言/原始log与4鼠标旅程、逐张看8图；已复现的FAQ runtime/hidden、620/coarse按钮、568 HUD遮挡按具体范围关闭，无新P0/P1。完整控件族分仍null。
 - 剩余观察：844×390桌面式重叠窗口有plane裁切；body自身无x溢出不证明被裁内容可达。后续以maximize/arrange/滚动实际动作探针判断，不外推全app可用。
 - 资源审计82 Node/npm、swap21.79GiB、剩余21.54GiB；其他SoloCompass模拟器验收仍活动。只复用既有服务、缓存与单浏览器，未启动Simulator/并行构建，未停止或清理其他活动任务。
+
+## 下一批基线探针（02:07，尚未修复）
+
+- `space-short-layout-probe.json`：844×390 coarse真实max/restore可用，default map仅边界0.82px，不证明内容不可达；但3窗arrange后第2排因minHeight260/clamp重叠，第1个welcome所有窗控被盖。独立判P2 UX024，建议容量不足走现有overview并同步真实动作名称/terminal反馈。
+- `home-chat-baseline-probe.json`：绑定77bf94c2模板blob hash。原未发送draft关开变空；合成composition Enter触发API stub（不代表OS级IME测过）；35s虚拟挂起仍busy/disabled/无Stop，关闭可abort。独立记录UX025/026/027，留E6布局之后单独修，不把关闭可取消描述成无法退出。
+- `space-app-families.json`与16张normal max图：products/books/contact/settings在1440×900与390×844。只做8个外观scope，API503隔离、不真实外链/联系，未认证功能。目录物理7.38px、书meta6.56px、settings状态7.52px、contact link9.02px，交独立设计角色建议正文/辅助/控件的真实层级；不能据无x溢出/字号数字宣称观感达96。
+- E6生产实施中：真实Hugo实践文章先于AI、保留原Bear实例与会话、资源观察迁移、手机全社交入口。父任务未构建半写源码，1317仍为已验收E5.2。
+
+## E6 初次运行结果与 E6.1 待修（02:23）
+
+- 七文件source manifest `batch-e6-source.json`，Hugo/typecheck通过。20条home-reading/home-about合同、2paint、2实际product入口全部通过。源站SEO/公开数据未改，新增文章起点为Hugo真实Nango，原AI整根/会话保留。非JS双语入口实际点击可到对应文章。
+- 父6scope实际图/动作见`batch-e6-visual.json`：1440zh/light、1440en/dark、390zh/light、390zh/dark、320en/light、568en/light。24图包括real mocked request关开连续性；不认证真实模型、实体手机、Safari或200% zoom。阅读CTA后posts图可能带实际pointer hover，另存neutral图作公平布局判断。
+- `batch-e6-ambient.json`使用真实Chromium Metal模块：hero可信交互+3s不下载renderer，Bear可见后两canvas有非零尺寸，运行时reduce释放、restore重新挂载。它不等于FPS/INP/CWV通过。
+- 独立判断：hero约D1=94.5/D4=93，posts约91.5；normal白色密线球D4仅82.5，对照静态约90，仍需降低背景注意力。没有把24测试当96。
+- 父`home-short-composer-probe.json`证实568×320中英初开后input/send y≈288,h44，底部出屏约12px；close中心被固定导航盖。滚动到input会让close进一步出界。控件只是部分出屏，不以此一概宣称WCAG失败，也不能以isVisible/无x溢出当任务可用。
+- E6.1已交执行Agent：short-height完整panel定位/滚动/命中与更短256中英，normal球网亮度/密度克制；不扩大到聊天运输或Space。旧E6图、manifest、缺陷证据保留；E7已准备但等待该批冻结/独立验收后开始。
+
+## E6.1 短屏闭环与 E6.2 材质迭代（02:40）
+
+- E61九文件与QA config hash匹配。6条短屏/normal合同、3条原连续性定向合同、Hugo/typecheck及真实GPU生命周期通过。父5条坐标旅程为568×320/256中英、844×390en coarse；close/input/send均44px且实际中心命中，关闭/重开/Escape焦点返回可用。
+- 独立复核6+3日志、5旅程与8图，无新P0/P1；UX030仅按上述具体范围关闭。疏网已降噪，core NormalBlending却形成褐色薄壳，D4仅85（历史白网82.5、静态90）；没有把功能通过等同视觉达标。E6.2只core恢复Additive并降低真实每帧opacity与rim，网络保留Normal/低alpha。
+- `home-wheel-intent-probe.json`实际复现UX031：568×320英文reduce，Enter发送后chatsection焦点，真实wheel620px读到books；mock JSON完成后scrollY2803→2183，画面被拉回620px并聚焦input。两图/日志保留，不是候选猜测，也不外推全部视口。交E7与草稿/IME/Stop/idle一并处理。
+- 最新资源95 Node/npm、swap13.04GiB、磁盘30.12GiB；未增加并行浏览器/服务，不清理其他活动任务。
+
+## E6.2 已独立接受（02:44）
+
+- final九文件`batch-e62-source.json`与QA配置hash一致，core constructor/loop opacity均.25、低gain、Additive；110点/.62邻距/低alpha Normal网络保持。只材质5处增量，未重跑无新风险的24条E6合同。
+- Hugo构建4219ms、JS语法/diff通过；父实际Metal浅/深2scope分别未可见0renderer→可见2canvas→reduce0→restore2→final0，无page error。4图/JSON/log归档。不证明FPS/INP/实体手机/后台零帧。
+- 独立看4图、source与log，无新P0/P1；褐壳消失，局部D4浅色91.5、暗色90。留真实头像、问题、淡金光晕，未称96。
+- 额外未来缺陷基线`travel-qr-baseline-probe.json`：390×844zh/light两motion，打开仍焦点背景trigger，Tab进背景WeChat；Escape后立即Enter重开，normal旧transition让hidden=true且expanded=true，reduce重开可见。4图、独立Travel template SHA与日志保留，不属于E62通过范围；UX018后续修。

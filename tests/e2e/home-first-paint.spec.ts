@@ -1,6 +1,6 @@
 import { test, expect } from '../helpers/frozen-site';
 
-test('mobile AI enhancement occupies its reserved space without moving the article rail', async ({ page }) => {
+test('mobile AI enhancement occupies its reserved space without moving the books below it', async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 823 });
   let releaseModule!: () => void;
   const paused = new Promise<void>(resolve => { releaseModule = resolve; });
@@ -13,10 +13,11 @@ test('mobile AI enhancement occupies its reserved space without moving the artic
     const layer = page.locator('#hp-bear-layer');
     await expect(layer).toHaveCSS('min-height', '80px');
     await expect(layer.locator('#hp-orbit')).toHaveCount(0);
-    const before = await page.locator('#hp-posts').boundingBox();
+    await expect(page.locator('.hp-books-grid')).toHaveCSS('display','grid');
+    const before = await page.locator('#hp-books').boundingBox();
     releaseModule();
     await expect(layer.locator('#hp-avatar-btn')).toBeVisible();
-    const after = await page.locator('#hp-posts').boundingBox();
+    const after = await page.locator('#hp-books').boundingBox();
     expect(Math.abs(after!.y - before!.y)).toBeLessThanOrEqual(1);
     await layer.locator('#hp-avatar-btn').click();
     await expect(page.locator('#hp-bear-ai')).toHaveClass(/is-chat-open/);
@@ -43,7 +44,7 @@ test('mobile primary links remain readable within stable columns', async ({ page
     if (width > 360) expect(Math.abs(boxes[0].y - boxes[1].y)).toBeLessThanOrEqual(1);
     else expect(boxes[1].y).toBeGreaterThan(boxes[0].y);
     await expect(links.first()).toHaveAttribute('href', '#hp-posts');
-    await expect(links.last()).toHaveAttribute('href', /\/projects\/$/);
+    await expect(links.last()).toHaveAttribute('href', /\/projects\/#studio-products$/);
   }
 });
 
