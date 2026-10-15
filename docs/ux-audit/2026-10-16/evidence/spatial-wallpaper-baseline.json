@@ -1,0 +1,63 @@
+{
+  "kind": "Exploratory actual wallpaper choices and monitor pixels; not a pass/failure classification",
+  "previewSource": "batch-e9b-source.json",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "lang": "zh",
+  "theme": "light",
+  "motion": "reduce",
+  "sources": {
+    "assets/css/space.css": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+    "assets/css/space-cafe.css": "574a2e5ad267150e33b118b1041f8bec4d683898a67313911c50020b876fcc33",
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194"
+  },
+  "observations": [
+    {
+      "choice": "dawn",
+      "selected": "true",
+      "computed": {
+        "stored": "dawn",
+        "dataset": "dawn",
+        "worldFrames": "4",
+        "screenBackground": "rgb(238, 239, 235)",
+        "landscapeDisplay": "none",
+        "landscapeBackground": "rgb(111, 166, 157)",
+        "layerBackground": "rgba(0, 0, 0, 0)"
+      },
+      "monitorPngSHA256": "8a4b722ff8ea42f821be9b8b13bd8e48571a3c84ff7631b942c4e2a19aa43adf"
+    },
+    {
+      "choice": "dusk",
+      "selected": "true",
+      "computed": {
+        "stored": "dusk",
+        "dataset": "dusk",
+        "worldFrames": "4",
+        "screenBackground": "rgb(238, 239, 235)",
+        "landscapeDisplay": "none",
+        "landscapeBackground": "rgb(113, 140, 155)",
+        "layerBackground": "rgba(0, 0, 0, 0)"
+      },
+      "monitorPngSHA256": "eb5e6c9989b801883cb57398aa4e11735b025f37ce3c2ca8f96db885c2cf3cdf"
+    },
+    {
+      "choice": "forest",
+      "selected": "true",
+      "computed": {
+        "stored": "forest",
+        "dataset": "forest",
+        "worldFrames": "4",
+        "screenBackground": "rgb(238, 239, 235)",
+        "landscapeDisplay": "none",
+        "landscapeBackground": "rgb(151, 170, 143)",
+        "layerBackground": "rgba(0, 0, 0, 0)"
+      },
+      "monitorPngSHA256": "8a4b722ff8ea42f821be9b8b13bd8e48571a3c84ff7631b942c4e2a19aa43adf"
+    }
+  ],
+  "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action."
+}

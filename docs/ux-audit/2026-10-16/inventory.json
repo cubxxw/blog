@@ -5,7 +5,7 @@
     "timezone": "Asia/Shanghai",
     "workspace": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
     "base_commit": "6d7b9fe92a746a83e635282c9b78966920336a69",
-    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched",
+    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched; v1.16 imported E9b7contracts/4actual20PNG with shared refs, WhatsApp omission and spatial visual baseline; inspected3existingE9bPNG; no browser/build/test launched",
     "scope": "按共享模板和交互变体归类，不按每篇文章/每个数据行重复膨胀计数",
     "limitations": [
       "source candidates不是运行时DOM计数",
@@ -16,20 +16,21 @@
       "About Quest已在中英content frontmatter确认路由，但本Agent未访问运行时页面。",
       "第三方评论与Calendly/BMC/Polarsteps内控件无法仅从本仓源码穷尽；登记宿主功能族，实例数/浏览器能力需实际渲染补全。"
     ],
-    "inventory_version": "1.15",
-    "updated_at_shanghai": "2026-10-16T03:38:40+08:00",
+    "inventory_version": "1.16",
+    "updated_at_shanghai": "2026-10-16T04:03:11+08:00",
     "corrections": [
       "v1.4 corrected unsupported ?app= routes in candidate journey queues; actual app selection uses supported profile/hash plus visible launchpad. Existing inventory IDs/count remain unchanged.",
       "v1.7 G.SEARCH.AI is an async askAI action with conditional Stop, not a toggle; D2b completion-focus evidence no longer lists Stop as tested.",
       "v1.8 E6 and E61 now have frozen built evidence; v1.7 statements of unbuilt E6 are historical. New reading anchor adds one genuine selector, not a family. UX031 is runtime reproduced, not source-only.",
       "v1.12补漏既存overview Back真实selector，归现有S.WINDOW.OVERVIEWITEM；族309不变，selectors359。",
       "v1.13 classification correction: products SELECT named-region navigation is observed/not-certified, not a confirmed failure. Three failure records (theme/color BODY +book contrast) and one strategy observation;4new/232total unchanged.",
-      "v1.14 new native select plus parent-approved existingAsk omission are separatecontrol IDs; oldselectors preserved. Product priorregion outcome stays navigation strategy observation, not bug."
+      "v1.14 new native select plus parent-approved existingAsk omission are separatecontrol IDs; oldselectors preserved. Product priorregion outcome stays navigation strategy observation, not bug.",
+      "v1.16 existingWhatsApp independent10f744 fixes omission, 309families/362controls; AI guide geometry-only; spatial UI selection does not imply visible wallpaper success."
     ],
     "roadmap_count": 18,
     "roadmap_subject_count": 12,
     "roadmap_source_note": "Roadmap source refs traced at 2026-10-16 01:05-01:13 Asia/Shanghai while other bounded implementation batches may run; no new browser acceptance.",
-    "current_checkout_revision_at_import": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+    "current_checkout_revision_at_import": "ebc488e69640d561e96203b93fb4a0eb7676ccab",
     "next_probe_source_read_at_shanghai": "2026-10-16T02:43:06+08:00"
   },
   "counts": {
@@ -39,15 +40,15 @@
     "motion_families": 26,
     "world_decorative_families": 18,
     "control_families": 265,
-    "stable_control_selectors": 361,
+    "stable_control_selectors": 362,
     "content_shortcode_source_instances": 34,
-    "partial_state_evidence_families": 55,
+    "partial_state_evidence_families": 59,
     "journey_batches": 57,
     "journey_queued_unique_families": 309,
     "evidence_current_classification": {
       "source-only": 224,
-      "partial-state-evidence": 55,
-      "measured-observation-only": 5,
+      "partial-state-evidence": 59,
+      "measured-observation-only": 1,
       "rendered-baseline": 25
     },
     "initial_evidence_census": {
@@ -55,7 +56,8 @@
       "source_only_families": 281
     },
     "families_with_state_evidence": 60,
-    "accepted_whole_families": 0
+    "accepted_whole_families": 0,
+    "state_evidence_records": 277
   },
   "state_profiles": {
     "nav": {
@@ -435,20 +437,18 @@
       "source": "evidence/space-app-families.json",
       "evidence": "bounded normal appearance/physical-font observations",
       "criterion": "按主要正文、动作、辅助说明建立实际可读层级；不凭CSS名义字号认证。",
-      "status": "open_remaining_contact_settings; products_books_only_scoped_E9a1_checks_passed",
+      "status": "scoped_products_books_E9a1_contact_settings_E9b_fragments_passed_full_App_matrix_open",
       "scoped_followup_families": [
         "S.APP.products.SELECT",
         "S.APP.products.OPEN",
         "S.APP.books.READ"
       ],
-      "remaining_families": [
-        "S.APP.contact.DRAFT",
-        "S.APP.contact.CHANNEL",
-        "S.APP.settings.LANG",
-        "S.APP.settings.THEME",
-        "S.APP.settings.COLOR",
-        "S.APP.settings.EXPORT"
-      ]
+      "remaining_families": [],
+      "scoped_followup_registry_refs": [
+        "e9a1-products-books-import",
+        "e9b-contact-settings-import"
+      ],
+      "remaining_scope": "Original named subset typography/targets has bounded receipts; other Apps/unmeasured routes/themes/states remain open. Empty named remainder is not all-site closure."
     },
     {
       "id": "UX-029",
@@ -462,10 +462,13 @@
       "source": "evidence/space-app-families.json",
       "evidence": "bounded normal geometry, no external navigation/send",
       "criterion": "主要目标真实44px与centerhit应逐项实测；settings手机44.28已够，不泛化全部失败。",
-      "status": "open_remaining_contact_channels; products_books_only_scoped_E9a1_target_checks_passed",
-      "remaining_families": [
-        "S.APP.contact.CHANNEL"
-      ]
+      "status": "scoped_products_books_E9a1_contact_settings_E9b_fragments_passed_full_App_matrix_open",
+      "remaining_families": [],
+      "scoped_followup_registry_refs": [
+        "e9a1-products-books-import",
+        "e9b-contact-settings-import"
+      ],
+      "remaining_scope": "Original named subset typography/targets has bounded receipts; other Apps/unmeasured routes/themes/states remain open. Empty named remainder is not all-site closure."
     },
     {
       "id": "UX-030",
@@ -590,6 +593,19 @@
       "limits": "层级不足，不称不可达/所有小屏功能失败。",
       "resolution_scope": "actual en/light firstlast products + contracten/dark all7; h2 complete/headline firstline visible; no broad accessibility certification",
       "historical_a1_gap_retained": true
+    },
+    {
+      "id": "UX-038",
+      "priority": "P2",
+      "target": [
+        "S.APP.settings.COLOR"
+      ],
+      "observation": "三颜色真实选择存储/pressed正确，3D monitor可见背景固定，dawn/forest截图相同。",
+      "source": "evidence/spatial-wallpaper-baseline.json",
+      "evidence": "actual3choices1440zh/light/reduce; source5hash; reviewer confirmed P2",
+      "criterion": "已命名的桌面颜色应在用户实际看见的桌面中反馈，设置选中与视觉结果分别验收。",
+      "status": "open_confirmed_only_spatial_monitor_scope",
+      "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action."
     }
   ],
   "items": [
@@ -17115,7 +17131,7 @@
         "docs/acceptance/assets/space-onboarding-2026-10-15/room-mobile.png"
       ],
       "state_observations": {
-        "normal": "scoped evidence: 568中英和844 coarse三个短高HUD：44×44、中心命中、图标可见、aria-label/title语义对应。",
+        "normal": "scoped E9b: 六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
         "hover": "unverified",
         "focus": "scoped evidence: 关闭场景dialog的Escape恢复焦点到HUD picker。",
         "active": "scoped evidence: picker实际打开→Escape恢复；回café→再入workspace原editor DOM仍在。",
@@ -17138,7 +17154,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "state_evidence": [
         {
           "state": "normal",
@@ -17712,6 +17728,34 @@
           "screenshots": [],
           "screenshot_inspected_by_inventory": false,
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.settings-target.S.CAFE.PICKER.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.CAFE.PICKER.control.8caf8e"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
+          "limits": "Only selector within [data-space-window=\"settings\"] .space-settings; no action/focus/keyboard/API acceptance.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
         }
       ],
       "acceptance_status": "unverified",
@@ -18435,7 +18479,7 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: 568中英和844 coarse三个短高HUD：44×44、中心命中、图标可见、aria-label/title语义对应。",
+        "normal": "scoped E9b: 六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
         "hover": "unverified",
         "focus": "unverified",
         "active": "scoped evidence: picker实际打开→Escape恢复；回café→再入workspace原editor DOM仍在。",
@@ -18458,7 +18502,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "R-19"
       ],
@@ -19247,6 +19291,34 @@
           "screenshots": [],
           "screenshot_inspected_by_inventory": false,
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.settings-target.S.CAFE.RETURN.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.CAFE.RETURN.control.41ddd2"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
+          "limits": "Only selector within [data-space-window=\"settings\"] .space-settings; no action/focus/keyboard/API acceptance.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
         }
       ],
       "acceptance_status": "unverified",
@@ -19956,7 +20028,7 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: limited模式重复arrange菜单项hidden；1440普通tile时菜单项可见、文案窗口并排。",
+        "normal": "scoped E9b: 六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
         "hover": "unverified",
         "focus": "unverified",
         "active": "unverified",
@@ -19979,7 +20051,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "per-state E8 historical / E81 followup arrangement evidence",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "R-20"
       ],
@@ -20186,6 +20258,34 @@
           },
           "limits": "仅显示/名称条件，不证明该menu项click结果；实际bar与terminal各有独立记录。",
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.settings-target.S.MENU.ARRANGE.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.MENU.ARRANGE.control.b40add"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
+          "limits": "Only selector within [data-space-window=\"settings\"] .space-settings; no action/focus/keyboard/API acceptance.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
         }
       ],
       "acceptance_status": "unverified",
@@ -20485,7 +20585,7 @@
         "normal": "scoped evidence: 4个实际旅程中该窗口控件均>=44.27px，中心命中本button。",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "scoped evidence: 四个坐标真实点击关闭：notes window移除，仍在desktop，未误回咖啡。",
+        "active": "scoped E9b: C6 pending实际close旧GET收abort，新mount第二GET false后旧不合作late true不改新label；旧choice/status不再更新。C4/5另验完成后close/reopen。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -20505,7 +20605,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "E-01"
       ],
@@ -21836,6 +21936,28 @@
           "screenshots": [],
           "screenshot_inspected_by_inventory": false,
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.settings-pending-close.S.WINDOW.CLOSE.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C6",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.WINDOW.CLOSE.control.b81623"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "C6 pending实际close旧GET收abort，新mount第二GET false后旧不合作late true不改新label；旧choice/status不再更新。C4/5另验完成后close/reopen。",
+          "limits": "1440desktop settings only; synthetic fetch records abort without settling to test late isolation. No real backend/all-site cancellation claim.",
+          "verified_score": null
         }
       ],
       "acceptance_status": "unverified",
@@ -21888,7 +22010,7 @@
         "normal": "scoped evidence: 4个实际旅程中该窗口控件均>=44.27px，中心命中本button。",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "partial frozen evidence: 1440/390×900 zh/light/reduce：最小化后恢复保持同一笔记DOM。",
+        "active": "scoped E9b: 仅contact实际坐标最小化→Launchpad重开，原textarea DOM/值保持。coarse44/fine24探针；旧fine26.24不伪记44。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -21908,7 +22030,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "state_evidence": [
         {
           "state": "active",
@@ -22982,6 +23104,35 @@
           },
           "screenshots": [],
           "screenshot_inspected_by_inventory": false,
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.contact-reopen.S.WINDOW.MINIMIZE.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.WINDOW.MINIMIZE.control.02e48c"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "仅contact实际坐标最小化→Launchpad重开，原textarea DOM/值保持。coarse44/fine24探针；旧fine26.24不伪记44。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
           "verified_score": null
         }
       ],
@@ -51332,7 +51483,7 @@
         "normal": "scoped evidence: 无spatial plane的fallback notes物理字号恰为16px。",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "scoped evidence: 六合同产品/书架之后notes保持同editor DOM、原合成draft与End继续输入。",
+        "active": "scoped E9b: 四actual原editor DOM/合成draft保留；六合同返回继续输入，不认证全部App/持久化。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -51352,7 +51503,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "historical evidence plus E9a1 exact fragments; E9a2 not accepted",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "E-02"
       ],
@@ -55624,6 +55775,35 @@
           },
           "limits": "只本轮products/books exact conditions；contact/settings与完整family未认证。",
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.notes.EDITOR.control.5ead41"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "四actual原editor DOM/合成draft保留；六合同返回继续输入，不认证全部App/持久化。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null
         }
       ],
       "acceptance_status": "unverified",
@@ -55785,14 +55965,14 @@
         "联系应用"
       ],
       "priority": "P2",
-      "evidence": "measured-observation-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: 仅正常最大化呈现/实际文字与几何采样；不是选择/导航/渠道发送/偏好变更/导出功能通过。",
+        "normal": "scoped E9b: 四actual草稿computed20px、投影约16.4viewport CSSpx，无横溢；六合同另检intro≥16/hint≥13。",
         "hover": "unverified",
-        "focus": "unverified",
-        "active": "unverified",
+        "focus": "scoped E9b: 原textarea focus时programmatic publictool改外观，原DOM/value/focus不变，settingsARIA同步、runtimeLabel同一且GET不重复。",
+        "active": "scoped E9b: 原textarea DOM/值在切App、改外观、最小化重开后保持并继续输入；合同另读localStorage.draft。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -55812,7 +55992,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "E-02"
       ],
@@ -56268,6 +56448,99 @@
           ],
           "screenshot_inspected_by_inventory": false,
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.readability.S.APP.contact.DRAFT.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.contact.DRAFT.control.604358"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "四actual草稿computed20px、投影约16.4viewport CSSpx，无横溢；六合同另检intro≥16/hint≥13。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9B.external-tool-focus.S.APP.contact.DRAFT.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.contact.DRAFT.control.604358"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "原textarea focus时programmatic publictool改外观，原DOM/value/focus不变，settingsARIA同步、runtimeLabel同一且GET不重复。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-034"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.contact.DRAFT.control.604358"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "原textarea DOM/值在切App、改外观、最小化重开后保持并继续输入；合同另读localStorage.draft。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null
         }
       ],
       "acceptance_status": "unverified",
@@ -56290,7 +56563,7 @@
     {
       "id": "S.APP.contact.CHANNEL",
       "label": "邮件/GitHub公开留言/WhatsApp/社交",
-      "selector": "[data-contact-email], [data-contact-github], .space-contact-links a",
+      "selector": "[data-contact-email], [data-contact-github], .space-contact-links a, .space-contact__actions a[href*=\"wa.me/\"]",
       "source": {
         "file": "assets/js/space/apps.js",
         "line": 136,
@@ -56313,14 +56586,14 @@
         "联系应用"
       ],
       "priority": "P2",
-      "evidence": "measured-observation-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: 仅正常最大化呈现/实际文字与几何采样；不是选择/导航/渠道发送/偏好变更/导出功能通过。",
+        "normal": "scoped E9b: 8社交+mail/GitHub公开留言/WhatsApp共11anchor逐一≥44/hit；合同社交投影≥13、blank/noopener。AI另记geometry support。",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "unverified",
+        "active": "scoped E9b: 每actual11真实坐标点击capture阻导航；社交catalog URL、mail/GitHub特殊字符/换行draft编码、独立WhatsApp catalog href正确。未外发/外站导航。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -56332,7 +56605,8 @@
       "control_ids": [
         "S.APP.contact.CHANNEL.control.5c50a9",
         "S.APP.contact.CHANNEL.control.fb9210",
-        "S.APP.contact.CHANNEL.control.5dd633"
+        "S.APP.contact.CHANNEL.control.5dd633",
+        "S.APP.contact.CHANNEL.control.10f744"
       ],
       "controls": [
         {
@@ -56349,10 +56623,25 @@
           "id": "S.APP.contact.CHANNEL.control.5dd633",
           "selector": ".space-contact-links a",
           "instance_policy": "同一模板数据重复按运行时渲染实例；本盘点不虚构实例数"
+        },
+        {
+          "id": "S.APP.contact.CHANNEL.control.10f744",
+          "selector": ".space-contact__actions a[href*=\"wa.me/\"]",
+          "label": "WhatsApp",
+          "instance_policy": "既有WhatsApp anchor，不继承8社交/mail/GitHub",
+          "source": {
+            "file": "assets/js/space/apps.js",
+            "line": 164,
+            "symbol_or_needle": "showContact → links.whatsapp",
+            "sha256": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52"
+          },
+          "registered_in_version": "1.16",
+          "correction": "existing-control omission, not new feature",
+          "receipt_locator_equivalence": ".space-contact__actions a.last; href matches catalog.links.whatsapp"
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "E-02"
       ],
@@ -56809,6 +57098,74 @@
             }
           ],
           "screenshot_inspected_by_inventory": false,
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.contact.CHANNEL.control.5c50a9",
+            "S.APP.contact.CHANNEL.control.fb9210",
+            "S.APP.contact.CHANNEL.control.5dd633",
+            "S.APP.contact.CHANNEL.control.10f744"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "8社交+mail/GitHub公开留言/WhatsApp共11anchor逐一≥44/hit；合同社交投影≥13、blank/noopener。AI另记geometry support。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028",
+            "UX-029"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.contact.CHANNEL.control.5c50a9",
+            "S.APP.contact.CHANNEL.control.fb9210",
+            "S.APP.contact.CHANNEL.control.5dd633",
+            "S.APP.contact.CHANNEL.control.10f744"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "每actual11真实坐标点击capture阻导航；社交catalog URL、mail/GitHub特殊字符/换行draft编码、独立WhatsApp catalog href正确。未外发/外站导航。",
+          "limits": "WhatsApp entry10 binds10f744, never social5dd633. AI guide geometry only.",
           "verified_score": null
         }
       ],
@@ -58563,11 +58920,11 @@
         "设置应用"
       ],
       "priority": "P2",
-      "evidence": "measured-observation-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: 仅正常最大化呈现/实际文字与几何采样；不是选择/导航/渠道发送/偏好变更/导出功能通过。",
+        "normal": "scoped E9b: 六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
         "hover": "unverified",
         "focus": "unverified",
         "active": "unverified",
@@ -58590,7 +58947,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "E-06"
       ],
@@ -59126,6 +59483,34 @@
           ],
           "screenshot_inspected_by_inventory": false,
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.settings-target.S.APP.settings.LANG.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.LANG.control.4756f4"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
+          "limits": "Only selector within [data-space-window=\"settings\"] .space-settings; no action/focus/keyboard/API acceptance.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
         }
       ],
       "acceptance_status": "unverified",
@@ -59175,10 +59560,10 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: 仅正常最大化呈现/实际文字与几何采样；不是选择/导航/渠道发送/偏好变更/导出功能通过。",
+        "normal": "scoped E9b: 设置选项target≥44/centerhit，合同投影字≥13；仅所测实例/视口。",
         "hover": "unverified",
-        "focus": "baseline failure: 实际Space后stored/selected=dark正确，focus落BODY，未留在主题选项。",
-        "active": "scoped evidence: 1440×900实际点深色后spatial plane背景为不同rgb且无背景图。",
+        "focus": "scoped E9b: actual坐标选中后2帧原button focus；合同theme显式focus+Space、color坐标后下一帧focus。完整Tab/所有输入方式未验。",
+        "active": "scoped E9b: actual dark/light; contract dark/light；同button/root/status、pressed/state正确；合同storage与仅1pressed正确。publictool同步ARIA不抢contact草稿focus。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -59198,7 +59583,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "historical scoped evidence plus immutable3ca pre-E9 failure baseline",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "E-06"
       ],
@@ -60057,7 +60442,104 @@
           },
           "limits": "仅1440×900zh/reduce三次显式focus→真实Space动作；不能推断Tab顺序、完整keyboard模式、所有产品/偏好/尺寸。selected正确不抵消focus连续性失败，也不把selected说成失败。",
           "resolution": "open baseline; E9a/E9b implementation not yet accepted",
-          "verified_score": null
+          "verified_score": null,
+          "scoped_followup": {
+            "registry_ref": "e9b-contact-settings-import",
+            "binding_id": "EIMPORT.E9B.choice-focus.S.APP.settings.THEME.focus",
+            "review": "UX034 closed only measured Space/coordinate/externaltool paths; original negative remains"
+          }
+        },
+        {
+          "binding_id": "EIMPORT.E9B.target-type.S.APP.settings.THEME.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.THEME.control.d56fcd"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "设置选项target≥44/centerhit，合同投影字≥13；仅所测实例/视口。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9B.selected.S.APP.settings.THEME.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.THEME.control.d56fcd"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "actual dark/light; contract dark/light；同button/root/status、pressed/state正确；合同storage与仅1pressed正确。publictool同步ARIA不抢contact草稿focus。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-034"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9B.choice-focus.S.APP.settings.THEME.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.THEME.control.d56fcd"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "actual坐标选中后2帧原button focus；合同theme显式focus+Space、color坐标后下一帧focus。完整Tab/所有输入方式未验。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-034"
+          ]
         }
       ],
       "acceptance_status": "unverified",
@@ -60107,10 +60589,10 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: 仅正常最大化呈现/实际文字与几何采样；不是选择/导航/渠道发送/偏好变更/导出功能通过。",
+        "normal": "E9b target/type measured; separate UX038 P2 spatial monitor visual response failure, selected UI/storage correct.",
         "hover": "unverified",
-        "focus": "baseline failure: 实际Space后stored/selected=forest正确，focus落BODY，未留在桌面颜色选项。",
-        "active": "unverified",
+        "focus": "scoped E9b: actual坐标选中后2帧原button focus；合同theme显式focus+Space、color坐标后下一帧focus。完整Tab/所有输入方式未验。",
+        "active": "scoped E9b: actual forest/dusk; contract forest/dusk/dawn；同button/root/status、pressed/state正确；合同storage与仅1pressed正确。publictool同步ARIA不抢contact草稿focus。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -60130,7 +60612,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "historical scoped evidence plus immutable3ca pre-E9 failure baseline",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "E-06"
       ],
@@ -60757,6 +61239,128 @@
           },
           "limits": "仅1440×900zh/reduce三次显式focus→真实Space动作；不能推断Tab顺序、完整keyboard模式、所有产品/偏好/尺寸。selected正确不抵消focus连续性失败，也不把selected说成失败。",
           "resolution": "open baseline; E9a/E9b implementation not yet accepted",
+          "verified_score": null,
+          "scoped_followup": {
+            "registry_ref": "e9b-contact-settings-import",
+            "binding_id": "EIMPORT.E9B.choice-focus.S.APP.settings.COLOR.focus",
+            "review": "UX034 closed only measured Space/coordinate/externaltool paths; original negative remains"
+          }
+        },
+        {
+          "binding_id": "EIMPORT.E9B.target-type.S.APP.settings.COLOR.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.COLOR.control.3feb46"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "设置选项target≥44/centerhit，合同投影字≥13；仅所测实例/视口。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9B.selected.S.APP.settings.COLOR.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.COLOR.control.3feb46"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "actual forest/dusk; contract forest/dusk/dawn；同button/root/status、pressed/state正确；合同storage与仅1pressed正确。publictool同步ARIA不抢contact草稿focus。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-034"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E9B.choice-focus.S.APP.settings.COLOR.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-actions.json",
+          "receipt_sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.COLOR.control.3feb46"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "actual坐标选中后2帧原button focus；合同theme显式focus+Space、color坐标后下一帧focus。完整Tab/所有输入方式未验。",
+          "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-034"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal",
+          "state": "normal",
+          "status": "known-failure-as-of-E9b-spatial-baseline",
+          "phase": "E9b spatial visual outcome baseline",
+          "receipt": "evidence/spatial-wallpaper-baseline.json",
+          "receipt_sha256": "fe1c07f72be714a5820b4fd980e41d52a3179e9382bd8969b7d4a9bdbfca68f2",
+          "evidence_registry_ref": "spatial-wallpaper-visual-baseline",
+          "source_context_ref": "batch-e9b-source.json",
+          "control_ids": [
+            "S.APP.settings.COLOR.control.3feb46"
+          ],
+          "control_resolution": "Existing color choices plus exposed monitor outcome only",
+          "observation": "1440×900zh/light/reduce dawn/dusk/forest实际pressed/stored/dataset正确；screen固定rgb(238,239,235)、landscape display:none。dawn/forest PNG相同，dusk不同但底色同。",
+          "source_trace": [
+            "assets/js/space/desktop.js:94 root.dataset.wallpaper",
+            "assets/css/space-classic.css:5-10 wallpaper targets .space-landscape",
+            "assets/css/space-cafe.css:90 screen surface; :122 world-ready hides landscape"
+          ],
+          "related_issue_ids": [
+            "UX-038"
+          ],
+          "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action. Independent P2 scope only; E9c not implemented. Selected-state passes never certify visual color change.",
           "verified_score": null
         }
       ],
@@ -60803,11 +61407,11 @@
         "设置应用"
       ],
       "priority": "P2",
-      "evidence": "measured-observation-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "scoped evidence: 仅正常最大化呈现/实际文字与几何采样；不是选择/导航/渠道发送/偏好变更/导出功能通过。",
+        "normal": "scoped E9b: 六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
         "hover": "unverified",
         "focus": "unverified",
         "active": "unverified",
@@ -60830,7 +61434,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "state-specific evidence through E5/E51/E52; see immutable freeze context per binding",
+      "evidence_phase": "historic baseline plus bounded E9b states; no whole-family acceptance",
       "journey_queue_ids": [
         "R-24"
       ],
@@ -61366,6 +61970,34 @@
           ],
           "screenshot_inspected_by_inventory": false,
           "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E9B.settings-target.S.APP.settings.EXPORT.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E9b frozen contact/settings evidence",
+          "receipt": "evidence/batch-e9b-contracts.log",
+          "receipt_sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1",
+          "evidence_registry_ref": "e9b-contact-settings-import",
+          "source_context_ref": "batch-e9b-source.json",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "S.APP.settings.EXPORT.control.df1ab3"
+          ],
+          "control_resolution": "Exact selectors and named contact/settings instance only; geometry is not action certification",
+          "observation": "六合同仅settings实例按钮≥44×44/centerhit；不授语言切换、导出文件、café切景返回或arrange动作。",
+          "limits": "Only selector within [data-space-window=\"settings\"] .space-settings; no action/focus/keyboard/API acceptance.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-028"
+          ]
         }
       ],
       "acceptance_status": "unverified",
@@ -80074,6 +80706,583 @@
       "Ask_status": "unchanged hit-only froma1; no AI behavior acceptance",
       "limits": "One isolated Chromium Metal contexts, reduced animation, simulated coarse viewports; picker change is selectOption, not physical OS picker/IME/Tab certification. No real backend/external service/contact/model request. Ratios use computed solid CSS RGB and text opacity; not full-page contrast certification. No browser zoom, Safari or physical phone claim.",
       "review_status": "parent exact a2 acceptance; independent final contemporaneous, not presumed fullfamily closure",
+      "whole_family_accepted": false,
+      "verified_score": null
+    },
+    "batch-e9b-source.json": {
+      "manifest": "evidence/batch-e9b-source.json",
+      "manifest_sha256": "029e78069b18f8088a30ecc575296aa3242ec01e1722712a3ba4a4459d99f12d",
+      "frozen_at_utc": "2026-10-15T19:50:00.714909+00:00",
+      "base_revision": "ebc488e69640d561e96203b93fb4a0eb7676ccab",
+      "current_checkout_revision_at_import": "ebc488e69640d561e96203b93fb4a0eb7676ccab",
+      "imported_at_shanghai": "2026-10-16T04:03:11+08:00",
+      "dependencies": [
+        {
+          "file": "assets/js/space/apps.js",
+          "frozen_sha256": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+          "current_worktree_sha256": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+          "same_current": true
+        },
+        {
+          "file": "assets/css/space.css",
+          "frozen_sha256": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+          "current_worktree_sha256": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+          "same_current": true
+        },
+        {
+          "file": "assets/css/space-cafe.css",
+          "frozen_sha256": "574a2e5ad267150e33b118b1041f8bec4d683898a67313911c50020b876fcc33",
+          "current_worktree_sha256": "574a2e5ad267150e33b118b1041f8bec4d683898a67313911c50020b876fcc33",
+          "same_current": true
+        },
+        {
+          "file": "tests/e2e/space-preferences-contact-contracts.spec.ts",
+          "frozen_sha256": "4a9c606db6aa8f7cd561b4eb48b5b34e67810df5da0eb888e88938e96722d080",
+          "current_worktree_sha256": "4a9c606db6aa8f7cd561b4eb48b5b34e67810df5da0eb888e88938e96722d080",
+          "same_current": true
+        }
+      ],
+      "qa_config": {
+        "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+        "sha256": "02794033dff323239094c4bd32cc0588eb52bbc277ffb3caa59b430deb8a98ae",
+        "workers": 1,
+        "browser": "Chromium Metal"
+      },
+      "qa_config_current_match": true,
+      "test_revision": "b1 includes pending-close 7th contract; no production delta",
+      "latest_does_not_inherit_old_screenshot": true,
+      "limits": "4 frozen files plus QA only; not full build closure/whole-family approval."
+    },
+    "e9b-contact-settings-import": {
+      "imported_at_shanghai": "2026-10-16T04:03:11+08:00",
+      "source_context_ref": "batch-e9b-source.json",
+      "receipts": [
+        {
+          "path": "evidence/batch-e9b-contracts.log",
+          "sha256": "bd26d92ea1afcbf142cfe4110ebd5f313bffb6419eb13e5a0e826a94b6a8eae1"
+        },
+        {
+          "path": "evidence/batch-e9b-actions.json",
+          "sha256": "ee1dbb29e5791606827f9c710b5d8fe060ef4e91d678c59bbf3de34f2aff88b8"
+        },
+        {
+          "path": "evidence/batch-e9b-actions.log",
+          "sha256": "2385bc88b7fe5ca01a3634590d2313619dc9ce0182c18c923deb1a84b39d32c9"
+        },
+        {
+          "path": "batch-e9b-actions.browser.mjs",
+          "sha256": "5bd8975b1764bfd9543e1f152ebd558d2c2ddbc85011f46bbdba9613a6b20573"
+        },
+        {
+          "path": "evidence/batch-e9b-actions-initial.log",
+          "sha256": "5dcea6f84e2a5ad41c3c8b2664731ebf2b3778c71554b98979117207d60c7d48"
+        },
+        {
+          "path": "evidence/batch-e9b-build.log",
+          "sha256": "e3180d8fd1cfe5438755877667cda380fb523e5cd95ff3d7bd61f001e35609da"
+        },
+        {
+          "path": "evidence/batch-e9b1-typecheck.log",
+          "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+        },
+        {
+          "path": "evidence/batch-e9b-apps-syntax.log",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "evidence/batch-e9b1-diff.log",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        }
+      ],
+      "contract_scopes": {
+        "C0": {
+          "route": "/zh/projects/",
+          "viewport": {
+            "width": 320,
+            "height": 844
+          },
+          "locale": "zh",
+          "initial_theme": "light",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-preferences-contact-contracts.spec.ts:45"
+        },
+        "C1": {
+          "route": "/projects/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "locale": "en",
+          "initial_theme": "light",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-preferences-contact-contracts.spec.ts:45"
+        },
+        "C2": {
+          "route": "/zh/projects/",
+          "viewport": {
+            "width": 620,
+            "height": 844
+          },
+          "locale": "zh",
+          "initial_theme": "dark",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-preferences-contact-contracts.spec.ts:45"
+        },
+        "C3": {
+          "route": "/projects/",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "locale": "en",
+          "initial_theme": "dark",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-preferences-contact-contracts.spec.ts:45"
+        },
+        "C4": {
+          "route": "/zh/projects/",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "locale": "zh",
+          "initial_theme": "light",
+          "coarse": false,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-preferences-contact-contracts.spec.ts:45"
+        },
+        "C5": {
+          "route": "/projects/",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "locale": "en",
+          "initial_theme": "dark",
+          "coarse": false,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-preferences-contact-contracts.spec.ts:45"
+        },
+        "C6": {
+          "route": "/zh/projects/",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "locale": "zh",
+          "theme": "fixture default; later tool dark",
+          "coarse": false,
+          "reducedMotion": "reduce",
+          "reported_passed": true,
+          "test_source": "tests/e2e/space-preferences-contact-contracts.spec.ts:137",
+          "purpose": "pending-close abort/late isolation"
+        }
+      },
+      "actual_scopes": {
+        "A0": {
+          "pointer": "/observations/0",
+          "route": "/zh/projects/?profile=about",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "locale": "zh",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "theme_sequence": "initial light → settings ends dark → tool contact light/dawn"
+        },
+        "A1": {
+          "pointer": "/observations/1",
+          "route": "/projects/?profile=about",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "locale": "en",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "theme_sequence": "initial light → settings ends dark → tool contact light/dawn"
+        },
+        "A2": {
+          "pointer": "/observations/2",
+          "route": "/projects/?profile=about",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "locale": "en",
+          "coarse": true,
+          "reducedMotion": "reduce",
+          "theme_sequence": "initial light → settings ends dark → tool contact light/dawn"
+        },
+        "A3": {
+          "pointer": "/observations/3",
+          "route": "/zh/projects/?profile=about",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "locale": "zh",
+          "coarse": false,
+          "reducedMotion": "reduce",
+          "theme_sequence": "initial light → settings ends dark → tool contact light/dawn"
+        }
+      },
+      "reported_passed_contracts": 7,
+      "actual_journeys": 4,
+      "artifacts": [
+        {
+          "path": "evidence/batch-e9b-contact-1440-zh-bottom.png",
+          "sha256": "abee90f20141f8a83432c19ac350607aeaf52ad0be035f82a0c1550c8cfd8928",
+          "pixels": {
+            "width": 1440,
+            "height": 900
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-contact-1440-zh-top.png",
+          "sha256": "84f1d74655f57445f4edbc3af8ff5b8abdce5ad67a10fd6f11f02d779d9e23f7",
+          "pixels": {
+            "width": 1440,
+            "height": 900
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-contact-320-zh-bottom.png",
+          "sha256": "ff50b5a9c1f26635de390fc5719155d11db355320db24cd9147c0f3ea8305e58",
+          "pixels": {
+            "width": 320,
+            "height": 740
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-contact-320-zh-top.png",
+          "sha256": "ee6a50f8aa463e0ab7dd54486b862787943219fc1f0b0abc0ce5bf9a35fa4cb7",
+          "pixels": {
+            "width": 320,
+            "height": 740
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-contact-390-en-bottom.png",
+          "sha256": "a7c6b309665021d5347dbfa2a91dd30383bc3ba6441f8b3a40c52318f26389cc",
+          "pixels": {
+            "width": 390,
+            "height": 844
+          },
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e9b-contact-390-en-top.png",
+          "sha256": "661ee6ec39a2194b96a81e232bdccb0775311deb0318d492997c165feead69bc",
+          "pixels": {
+            "width": 390,
+            "height": 844
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-contact-844-en-bottom.png",
+          "sha256": "5b502db2363dae97336a05531b3a896a2fa1346993ed5aded5b67b8111ffcb87",
+          "pixels": {
+            "width": 844,
+            "height": 390
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-contact-844-en-top.png",
+          "sha256": "6434571618d25643ee448951fff6eda34cf6bca5627feb4d08ab89edf8c3c610",
+          "pixels": {
+            "width": 844,
+            "height": 390
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-1440-zh-bottom.png",
+          "sha256": "63f9eb88da417cb0ff385dd56f636830a375cf6d6efdc14fa2ea412ec12303e1",
+          "pixels": {
+            "width": 1440,
+            "height": 900
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-1440-zh-pending.png",
+          "sha256": "4c6ee2fa7204079be736734c3c1277e42d71ea496776ebcf2adef7d73c76fdca",
+          "pixels": {
+            "width": 1440,
+            "height": 900
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-1440-zh-top.png",
+          "sha256": "912fe0c594917ad8df73d26e10e3ae714792f8b3a7a3ceb7bb49f3f454e9e20c",
+          "pixels": {
+            "width": 1440,
+            "height": 900
+          },
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e9b-settings-320-zh-bottom.png",
+          "sha256": "0351d8cb6d4116e502054685218c373cdd9ba10c77ab13985fe811d133a1207d",
+          "pixels": {
+            "width": 320,
+            "height": 740
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-320-zh-pending.png",
+          "sha256": "2a55824a35baeabca7dadc81f15e3e6b7b2fb0d7e753a5f61e837ad031e95d28",
+          "pixels": {
+            "width": 320,
+            "height": 740
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-320-zh-top.png",
+          "sha256": "c7a50964064deacb87d63956d32de81967e5664dcf22cee78a7fbe648b8f533e",
+          "pixels": {
+            "width": 320,
+            "height": 740
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-390-en-bottom.png",
+          "sha256": "3e4f691e257054d4e9134d8cf66ef88cbcc2a885c76e7e696b8e38ac30c5d998",
+          "pixels": {
+            "width": 390,
+            "height": 844
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-390-en-pending.png",
+          "sha256": "24510b30237a8cfb6fb62ac642d9904ad17ef82fca9d2e85cf172a163b2d8709",
+          "pixels": {
+            "width": 390,
+            "height": 844
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-390-en-top.png",
+          "sha256": "be0f802084a22e6463f6339f14853e5f6228b2b9b0b76f102dcd7e6ca0dac518",
+          "pixels": {
+            "width": 390,
+            "height": 844
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-844-en-bottom.png",
+          "sha256": "ee596c1d1f978e5b48e8f1bcdd0eeeb78268cb56367bb5723a96692c16903071",
+          "pixels": {
+            "width": 844,
+            "height": 390
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e9b-settings-844-en-pending.png",
+          "sha256": "da907ba6ae7f01f538b7eec803d301ca7f23d94982946ff8bbb8192bc8f89e6e",
+          "pixels": {
+            "width": 844,
+            "height": 390
+          },
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e9b-settings-844-en-top.png",
+          "sha256": "802bf86c1ff1ac537ad978e0fb4943b33a37ffd879cfc6a4e9d5a42dd6536f4d",
+          "pixels": {
+            "width": 844,
+            "height": 390
+          },
+          "inspected_by_inventory": false
+        }
+      ],
+      "artifact_count": 20,
+      "methods": {
+        "actual_preferences": "5 real coordinate events dark→forest→light→dusk→dark; after2frames same button/focus/selected/state. Not5distinct options.",
+        "contract_preferences": "Theme explicit focus+Space dark/light; wallpaper forest/dusk/dawn coordinate; next frame same choice/root/status/focus/state/storage, exactly1pressed.",
+        "external_tools": "Programmatic public BearSpace.execute(theme/wallpaper), while original contact textarea focused; mounted settings ARIA sync. Separate from actual clicks.",
+        "links": "11real coordinate anchor clicks/context capture-prevented; catalog href and draft encoding checked, no external navigation/send."
+      },
+      "runtime_fragments": [
+        {
+          "scopes": [
+            "A0",
+            "A1",
+            "A2",
+            "A3"
+          ],
+          "selector": "[data-runtime-status]",
+          "control_ids": [],
+          "observation": "same original label, exactly1delayedGET during5choice events; pending→local available:false/disconnected",
+          "pointer": "/observations/*/runtime"
+        },
+        {
+          "scopes": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "selector": "[data-runtime-status]",
+          "control_ids": [],
+          "observation": "first stub available:true gives connected label without stealing draft focus; desktop reopen gets2ndGET/newlabel/false",
+          "limits": "true contract and false actual differ; neither proves real backend."
+        }
+      ],
+      "geometry_only_support": [
+        {
+          "selector": ".space-contact [data-open=\"agent\"]",
+          "scope_refs": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [],
+          "verified": "44×44+centerhit only",
+          "unverified": "No launch/input/API/answer/full keyboard; not unrelated Dock control."
+        }
+      ],
+      "link_control_pointers": {
+        "S.APP.contact.CHANNEL.control.5dd633": "/observations/*/contact/interceptedActualClicks/0..7",
+        "S.APP.contact.CHANNEL.control.5c50a9": "/observations/*/contact/interceptedActualClicks/8",
+        "S.APP.contact.CHANNEL.control.fb9210": "/observations/*/contact/interceptedActualClicks/9",
+        "S.APP.contact.CHANNEL.control.10f744": "/observations/*/contact/interceptedActualClicks/10"
+      },
+      "whatsapp_assertion": "Existing .space-contact__actions a.last href equals new URL(catalog.links.whatsapp).href; no social-selector inheritance.",
+      "initial_probe": {
+        "path": "evidence/batch-e9b-actions-initial.log",
+        "classification": "probe threshold mismatch, not new production defect",
+        "observation": "fine-pointer minimize26.240×26.240/hittrue wrongly checked44; corrected24 only for this fine minimize,44 for coarse/important contact+settings."
+      },
+      "independent_review": {
+        "agent": "/root/space_review",
+        "status": "bounded final accepted, no newP0/P1 per direct message",
+        "UX034": "closed only Space/coordinate preference focus and external tool preserving draft focus"
+      },
+      "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification.",
+      "whole_family_accepted": false,
+      "verified_score": null,
+      "new_state_bindings": 19,
+      "new_control_ids": [
+        "S.APP.contact.CHANNEL.control.10f744"
+      ],
+      "new_families": 0
+    },
+    "spatial-wallpaper-visual-baseline": {
+      "imported_at_shanghai": "2026-10-16T04:03:11+08:00",
+      "receipt": "evidence/spatial-wallpaper-baseline.json",
+      "receipt_sha256": "fe1c07f72be714a5820b4fd980e41d52a3179e9382bd8969b7d4a9bdbfca68f2",
+      "log": "evidence/spatial-wallpaper-baseline.log",
+      "log_sha256": "015f04d45e12da2909cdb5abd247bd0d2b930d1634640b2999707f75d32cebbf",
+      "source_context_ref": "batch-e9b-source.json",
+      "additional_explicit_dependencies": [
+        {
+          "file": "assets/css/space.css",
+          "frozen_sha256": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+          "current_worktree_sha256": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+          "same_current": true
+        },
+        {
+          "file": "assets/css/space-classic.css",
+          "frozen_sha256": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+          "current_worktree_sha256": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+          "same_current": true
+        },
+        {
+          "file": "assets/css/space-cafe.css",
+          "frozen_sha256": "574a2e5ad267150e33b118b1041f8bec4d683898a67313911c50020b876fcc33",
+          "current_worktree_sha256": "574a2e5ad267150e33b118b1041f8bec4d683898a67313911c50020b876fcc33",
+          "same_current": true
+        },
+        {
+          "file": "assets/js/space/apps.js",
+          "frozen_sha256": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+          "current_worktree_sha256": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+          "same_current": true
+        },
+        {
+          "file": "assets/js/space/desktop.js",
+          "frozen_sha256": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+          "current_worktree_sha256": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+          "same_current": true
+        }
+      ],
+      "scope": {
+        "route": "/zh/projects/?profile=about",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light",
+        "reducedMotion": "reduce",
+        "browser": "Chromium Metal spatial monitor"
+      },
+      "probe_script": "probe-spatial-wallpaper.browser.mjs",
+      "probe_sha256": "682c06a522c001a9330e63346de208c031c183ead363933c1b5068c6e3f76720",
+      "artifacts": [
+        {
+          "path": "evidence/spatial-wallpaper-baseline-dawn.png",
+          "sha256": "8a4b722ff8ea42f821be9b8b13bd8e48571a3c84ff7631b942c4e2a19aa43adf",
+          "pixels": {
+            "width": 1182,
+            "height": 738
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/spatial-wallpaper-baseline-dusk.png",
+          "sha256": "eb5e6c9989b801883cb57398aa4e11735b025f37ce3c2ca8f96db885c2cf3cdf",
+          "pixels": {
+            "width": 1182,
+            "height": 738
+          },
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/spatial-wallpaper-baseline-forest.png",
+          "sha256": "8a4b722ff8ea42f821be9b8b13bd8e48571a3c84ff7631b942c4e2a19aa43adf",
+          "pixels": {
+            "width": 1182,
+            "height": 738
+          },
+          "inspected_by_inventory": false
+        }
+      ],
+      "classification": "UX-038 confirmed P2 open by independent reviewer; state/storage succeeds while spatial visible output unchanged",
+      "method": "real three choices then minimize to expose monitor",
+      "limits": "One true Metal spatial desktop, settings real click then minimize to expose monitor. PNG equality concerns this monitor screenshot only, not all rendering/fallback/device states. No contact or model action.",
       "whole_family_accepted": false,
       "verified_score": null
     }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T03:41:45+08:00",
+  "updated_at": "2026-10-16T04:04:57+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,25 +353,26 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.15",
+    "inventory_version": "1.16",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
       "world-decoration": 18,
       "motion": 26
     },
-    "selector_level_controls": 361,
+    "selector_level_controls": 362,
     "family_ids_covered": 309,
     "certified_96_plus_controls": 0,
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/361selectors，60族仅局部状态，0完整认证；native新控件/Ask旧漏项证据独立。",
-    "families_with_recorded_contract_fragments": 65,
-    "scoped_check_assessments": 143,
-    "expert_visual_assessments": 66,
+    "reason": "309族/362selectors，277条状态记录，60族仅局部证据（59partial+1measured），0完整认证。WhatsApp新子ID仅独立URL/44证据。",
+    "families_with_recorded_contract_fragments": 68,
+    "scoped_check_assessments": 151,
+    "expert_visual_assessments": 78,
     "inventory_families_with_partial_state_evidence": 60,
-    "inventory_accepted_whole_families": 0
+    "inventory_accepted_whole_families": 0,
+    "inventory_state_evidence_records": 277
   },
   "evidence": [
     {
@@ -2106,6 +2107,100 @@
         "Contact/settingsE9bnotimplemented; fullUX028/029/034notclosed.",
         "Computedcovercontrastonly, notallpagetext/focuscontrastcertification."
       ]
+    },
+    {
+      "id": "E-BATCH-E9B",
+      "kind": "frozen_source_seven_contracts_four_actual_contexts_twenty_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e9b-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e9b-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e9b-actions.browser.mjs",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-320-zh-pending.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-320-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-320-zh-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-320-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-320-zh-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-390-en-pending.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-390-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-390-en-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-390-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-390-en-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-844-en-pending.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-844-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-844-en-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-844-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-844-en-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-1440-zh-pending.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-1440-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-1440-zh-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-1440-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-1440-zh-bottom.png"
+      ],
+      "source_hash_matches_at_review": {
+        "assets/js/space/apps.js": true,
+        "assets/css/space.css": true,
+        "assets/css/space-cafe.css": true,
+        "tests/e2e/space-preferences-contact-contracts.spec.ts": true
+      },
+      "qa_config_hash_matches_at_review": true,
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e9b-contracts.log",
+      "contract_result": {
+        "distinct_cases": 7,
+        "passed": 7,
+        "duration": "17.1s"
+      },
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-build.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b1-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b1-diff.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-apps-syntax.log"
+      ],
+      "initial_probe_log": "docs/ux-audit/2026-10-16/evidence/batch-e9b-actions-initial.log",
+      "initial_probe_resolution": "Probe-only threshold error for unchanged desktop window chrome: 26.24×26.24/hit is above existing fine-pointer24 target; final changes only that minimize check to coarse44/fine24. All App contact/settings checks remain44. No production change.",
+      "scope": "Six contract configurations plus pending-close; four actual reduced-motion Chromium Metal contexts:320×740zh,390×844en,844×390en/coarse,1440×900zh/fine. Settings screenshots dark; contact screenshots light following explicit public-tool update.",
+      "results": "Each actual scope: five coordinate preference choices retain original button/focus/pressed after two frames; one delayed stub GET/original label; external tool aria sync preserves contact draft focus; eleven capture-prevented native anchor clicks preserve original URLs/encoded draft; original draft/notes DOM and values/minimize continuity; errors0.",
+      "limits": [
+        "No real contact/social/model submission or backend connection: links intercepted and runtime GET stubbed.",
+        "Synthetic viewports/media and explicit focus+Space do not certify full Tab traversal, native OSIME, physical devices, Safari, zoom or all states.",
+        "Pending-close deliberately ignores abort then resolves old request; proves stale isolation, not every network failure or deadline.",
+        "Whole control/family/site scores remain null; images are expert visual scope evidence, not96 certification."
+      ],
+      "new_P0_P1_findings": []
+    },
+    {
+      "id": "E-E9B-WALLPAPER-BASELINE",
+      "kind": "bounded_actual_preference_output_failure",
+      "path": "docs/ux-audit/2026-10-16/evidence/spatial-wallpaper-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/spatial-wallpaper-baseline.log",
+      "script": "docs/ux-audit/2026-10-16/probe-spatial-wallpaper.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/spatial-wallpaper-baseline-dawn.png",
+        "docs/ux-audit/2026-10-16/evidence/spatial-wallpaper-baseline-dusk.png",
+        "docs/ux-audit/2026-10-16/evidence/spatial-wallpaper-baseline-forest.png"
+      ],
+      "as_of": {
+        "phase": "E9b unchanged spatial wallpaper exploratory baseline",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "reviewed_at": "2026-10-16T03:58:17+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motion": "reduce"
+      },
+      "source_and_png_hashes_independently_matched": true,
+      "observation": "Three real wallpaper clicks, then minimize Settings to expose monitor: state/dataset/pressed correct, but spatial-screen background remains rgb(238,239,235); hidden landscape changes palette, window layer transparent. Dawn/forest monitor PNG SHA equal; dusk SHA different, so not all three pixel-identical.",
+      "limits": "One actual light/reduce/1440 desktop; no dark/fallback/device/zoom certification. This concerns visible output only, not E9b focus/aria/storage regressions."
     }
   ],
   "historical_visual_assessments": [
@@ -4326,6 +4421,410 @@
       ],
       "scope": "Namedactualimages/states only, notfullcontrolscore.",
       "reason": "保44目标/原字号，导航不再吞首屏，标题/简介重新主导；有效focus环保留，没有删内容凑满分。"
+    },
+    {
+      "assessment_id": "VIS-E9B-CONTACT-DESKTOP-D1",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-1440-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-1440-zh-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "真实社交、草稿、邮件主动作和发送边界清楚；AI入口次级。宽屏仍有较大闲置承载区，入口优先级还可精细化。"
+    },
+    {
+      "assessment_id": "VIS-E9B-CONTACT-DESKTOP-D4",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-1440-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-1440-zh-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "去掉逐渠道围框，纸面承载与单个邮件主按钮有明确用途；投影字体仍略软，纵向节奏可继续打磨。"
+    },
+    {
+      "assessment_id": "VIS-E9B-CONTACT-PHONE-D1",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        90
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-320-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-320-zh-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-390-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-390-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "两列渠道可扫读、便笺标题和发送说明真实完整；社交列表先占四行，起草/发送要滚动，层级仍有任务成本。"
+    },
+    {
+      "assessment_id": "VIS-E9B-CONTACT-PHONE-D4",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        90,
+        90
+      ],
+      "scope_score": 91.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-320-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-320-zh-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-390-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-390-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "文本输入与主次动作均可辨，撤链接围框减噪；44目标造成纵向长度，社交区到草稿的间距尚可精减。"
+    },
+    {
+      "assessment_id": "VIS-E9B-CONTACT-SHORT-D1",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        80,
+        90,
+        90
+      ],
+      "scope_score": 89.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-844-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-844-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "初屏只有标题/介绍与首排社交，便笺/发送不在首屏；实际可滚达，属于决策滚动成本，不判不可达或P1。"
+    },
+    {
+      "assessment_id": "VIS-E9B-CONTACT-SHORT-D4",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "scope_score": 90.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-844-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-contact-844-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "目标与文字保留但短承载面内容碎片化；可局部减标题/intro留白并评估简短段落定位，不能靠缩小44目标解决。"
+    },
+    {
+      "assessment_id": "VIS-E9B-SETTINGS-DESKTOP-D1",
+      "family_ids": [
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        90
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-1440-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-1440-zh-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "选项按语言/咖啡馆/外观/颜色分组，能力状态明确；长单列与右侧空白并存，能力区在fold后仍需寻找。"
+    },
+    {
+      "assessment_id": "VIS-E9B-SETTINGS-DESKTOP-D4",
+      "family_ids": [
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        90,
+        90,
+        96
+      ],
+      "scope_score": 91.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-1440-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-1440-zh-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "选中态有目的、能力分隔线承担行对应作用；大面积单列留白与间距密度仍可优化，不把有效选中/焦点框当装饰。"
+    },
+    {
+      "assessment_id": "VIS-E9B-SETTINGS-PHONE-D1",
+      "family_ids": [
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        90
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-320-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-320-zh-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-390-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-390-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "分组标题和已选择状态清楚、能力边界可读；英文咖啡馆动作换行合理，但整页较长且导出在底部。"
+    },
+    {
+      "assessment_id": "VIS-E9B-SETTINGS-PHONE-D4",
+      "family_ids": [
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        90,
+        90
+      ],
+      "scope_score": 91.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-320-zh-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-320-zh-bottom.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-390-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-390-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "状态从旧7.52px增到可读辅助层级，按钮44目标保全；长说明与分组间距仍有简化余量，未测对比不能作AA承诺。"
+    },
+    {
+      "assessment_id": "VIS-E9B-SETTINGS-SHORT-D1",
+      "family_ids": [
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        80,
+        96,
+        90
+      ],
+      "scope_score": 90.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-844-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-844-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "首屏只展示Language，appearance/颜色/能力需滚动；路径实际可达，短屏缺少快速定位仍是层级余量。"
+    },
+    {
+      "assessment_id": "VIS-E9B-SETTINGS-SHORT-D4",
+      "family_ids": [
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "scope_score": 90.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-844-en-top.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e9b-settings-844-en-bottom.png"
+      ],
+      "scope": "Named actual screenshots only. Not a complete dimension or control score.",
+      "reason": "暗纸面与清楚按钮保留，但窗口chrome和长引导占短屏有限高度；建议短屏收引导留白，保原标题/44目标和既有DOM。"
     }
   ],
   "findings": [
@@ -5708,10 +6207,10 @@
       "title": "Space四App重要正文、动作标签和能力说明在投影后过小",
       "baseline_reason": "77/E52八个normal maximized范围：products正文11.48px/手机目录8.2；books摘要8.2、covermeta6.56；contact发送边界说明8.2、渠道标签9.02；settings能力状态7.52、语言/主题标签9.02。已独立看16图，问题在实际任务文字，不能用主标题仍大抵消。",
       "recommendation": "仅这些App的空间承载面内分层：长正文/输入约15–16实际px，主要动作13–14，重要帮助/能力状态12–13，非必要装饰meta10–11；用真实投影比例测量。各App按任务限制行长与截图高度；保留原world/DOM/会话/数据，fallback字号不盲目放大。",
-      "status": "partially_closed_E9a_products_books_contact_settings_remaining",
+      "status": "closed_named_E9a_E9b_fragments_full_matrix_unverified",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E9a_partial_E9b_pending",
+      "batch": "E9b_final",
       "dimensions": [
         "D1",
         "D4",
@@ -5729,11 +6228,11 @@
         }
       ],
       "as_of": {
-        "phase": "E9a2 final bounded shortcoarseentry refinement",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
-        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
-        "reviewed_at": "2026-10-16T03:41:45+08:00",
-        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
       },
       "scope_limits": [
         "字号没有统一WCAG16px要求；这里是重要内容的实际可读性判断。",
@@ -5761,11 +6260,12 @@
           }
         ]
       },
-      "closed_scope": "Onlytestedproducts/books bodyandprimaryactionfragments in6contracts/4A1actual+1A2actual; fullstatesunknown.",
-      "remaining_scope": "Contact/settingstypeandcontrolsremain",
+      "closed_scope": "Products/books E9a plus contact/settings named main16/action13/helper13 projected type samples in E9b six contracts and four actual scopes.",
+      "remaining_scope": "Full Tab traversal, Safari, zoom, physical device/native keyboard and other untested states remain unverified; no whole-family score.",
       "browser_evidence": [
         "E-BATCH-E9A1",
-        "E-BATCH-E9A2"
+        "E-BATCH-E9A2",
+        "E-BATCH-E9B"
       ],
       "original_failure_retained": true
     },
@@ -5780,10 +6280,10 @@
       "title": "Space手机主要产品/阅读/联系链接仍低于项目44px触控目标",
       "baseline_reason": "390×844实际normal测量：打开真实产品29.52px高；books唯一开始阅读anchor45.63×13.53（封面是div，无等价大链接）；contact邮件/GitHub/WhatsApp36.08px高。settings与products侧栏按钮44.28已经达到，不能把这些通过外推到anchor。",
       "recommendation": "主要产品/阅读/发送渠道提供实际≥44×44点击区与稳定间距，CSS54px须经过.82投影复测；补anchor与button同等关注、清楚focus。不扩大为每个内联字链接都44或自动WCAG失败。",
-      "status": "partially_closed_E9a_products_books_contact_remaining",
+      "status": "closed_named_E9a_E9b_fragments_full_matrix_unverified",
       "baseline_cap": 89,
-      "active_cap": 89,
-      "batch": "E9a_partial_E9b_pending",
+      "active_cap": null,
+      "batch": "E9b_final",
       "dimensions": [
         "D2",
         "D6"
@@ -5805,11 +6305,11 @@
         }
       ],
       "as_of": {
-        "phase": "E9a2 final bounded shortcoarseentry refinement",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
-        "recorded_at": "2026-10-15T19:33:56.182116+00:00",
-        "reviewed_at": "2026-10-16T03:41:45+08:00",
-        "base": "3caab4d188001ba21ab88fd0789d1096de528a8c"
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
       },
       "scope_limits": [
         "Project importantmobile action goal;WCAG2.5.8 exceptions need independentcontext analysis.",
@@ -5836,14 +6336,15 @@
           }
         ]
       },
-      "closed_scope": "Onlytestedproducts/books bodyandprimaryactionfragments in6contracts/4A1actual+1A2actual; fullstatesunknown.",
-      "remaining_scope": "Contactprimarychanneltargetspending",
+      "closed_scope": "E9a named product/book targets plus E9b named contact links44/center-hit/actual intercepted click; no external submission.",
+      "remaining_scope": "Full Tab traversal, Safari, zoom, physical device/native keyboard and other untested states remain unverified; no whole-family score.",
       "browser_evidence": [
         "E-BATCH-E9A1",
-        "E-BATCH-E9A2"
+        "E-BATCH-E9A2",
+        "E-BATCH-E9B"
       ],
       "original_failure_retained": true,
-      "active_cap_scope": "89appliesremainingcontacttargetgaponly; namedproduct/booktargetsclosed."
+      "active_cap_scope": "No active cap for closed named targets; unknown instances still null."
     },
     {
       "id": "UX-030",
@@ -6096,10 +6597,10 @@
       "title": "主题和壁纸选择已生效，但Space激活重建后焦点落BODY",
       "baseline_reason": "3ca预览1440×900中文reduce，先明确programmatic focus某choice再真实Space：dark/forest stored与pressed都正确，但activeElement为BODY。不可把此记成状态切换失败；是仍在设置任务里的键盘连续性丢失。",
       "recommendation": "在重建后只恢复同一仍有效choice的焦点/键盘位置，或保留原控件节点；不得抢走用户已转移的焦点，补Space/Enter后继续选择与真正Tab路径合同。",
-      "status": "confirmed_recorded_3ca_two_setting_choices_focus_BODY_pending_E9b",
+      "status": "closed_E9b_named_original_button_focus_and_tool_intent",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E9-settings-continuity",
+      "batch": "E9b_final",
       "dimensions": [
         "D2",
         "D3"
@@ -6117,18 +6618,15 @@
         }
       ],
       "browser_evidence": [
-        "E-E9-FOCUS-BASELINE"
+        "E-E9-FOCUS-BASELINE",
+        "E-BATCH-E9B"
       ],
       "as_of": {
-        "phase": "PreE9 baseline atimmutable3ca preview; E9aWIPnotreviewed",
-        "checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
-        "reviewed_at": "2026-10-16T03:22:42+08:00",
-        "viewport": {
-          "width": 1440,
-          "height": 900
-        },
-        "locale": "zh",
-        "motion": "reduce"
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
       },
       "verified_score": null,
       "confidence": "high",
@@ -6136,7 +6634,10 @@
         "Programmaticfocus+actualSpaceonly, notTabtraversal/OSkeyboard/allviewports.",
         "ProductselectionSECTIONfocus isseparateobservation, notincludedfailure.",
         "Stateandpressedcorrect; noP1/state-lossclaim."
-      ]
+      ],
+      "original_failure_retained": true,
+      "closed_scope": "Theme/wallpaper original-node focus retention: explicit focus+Space and coordinate choices, mounted aria/state/storage sync; public tools while another App owns typing do not take focus; owned settings GET/disposal isolation.",
+      "remaining_scope": "Full Tab traversal, Safari, zoom, physical device/native keyboard and other untested states remain unverified; no whole-family score."
     },
     {
       "id": "UX-035",
@@ -6300,6 +6801,71 @@
       "verified_score": null,
       "confidence": "high",
       "closure_scope": "Actual844×390en/lightfirst/lasttitle+headlinefirstline;844en/darkcontractall7entries. Other641+shortsizesnotimplied."
+    },
+    {
+      "id": "UX-038",
+      "family_prefix": "S.APP.settings",
+      "family_ids": [
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "severity": "P2",
+      "title": "默认3D桌面的颜色选项有保存和选中反馈，露出的屏幕底色却不变化",
+      "baseline_reason": "1440×900中文light/reduce真实Metal，依次实际选择dawn/dusk/forest并最小化设置。state/dataset/pressed均正确，screen背景始终rgb(238,239,235)，隐藏landscape虽改变颜色却display:none。dawn与forest monitorPNG相同；duskSHA不同，不能称三PNG完全一致。",
+      "recommendation": "仅对spatial-screen露出的桌面背景复用classic明暗六palette；保留窗口阅读面、chrome、3D物理机框和原DOM。按真实选择→minimize在明暗主题重拍/测computed，额外验证fallback原palette不退化。",
+      "status": "confirmed_bounded_E9b_spatial_visual_output_pending_E9c",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E9c_candidate",
+      "dimensions": [
+        "D1",
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-E9B-WALLPAPER-BASELINE"
+        },
+        {
+          "kind": "source",
+          "path": "assets/css/space-cafe.css",
+          "line": 90
+        },
+        {
+          "kind": "source",
+          "path": "assets/css/space-classic.css",
+          "line": 5
+        },
+        {
+          "kind": "source",
+          "path": "assets/js/space/world-cafe.js",
+          "line": 283
+        }
+      ],
+      "browser_evidence": [
+        "E-E9B-WALLPAPER-BASELINE"
+      ],
+      "as_of": {
+        "phase": "E9b unchanged spatial wallpaper exploratory baseline",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "reviewed_at": "2026-10-16T03:58:17+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motion": "reduce"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "State/storage and aria success remain valid; failure is observable appearance promised by the label.",
+        "No global false-success cap inferred; all full scores already null.",
+        "One named light spatial mode only; no P1, backend or full-theme conclusion."
+      ]
     }
   ],
   "next_batches": [
@@ -6351,8 +6917,8 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.15",
-    "sha256": "80bdbb8dc76ecf28ca6282a5b93a5678a270a04657e6449b528e936b7ea15ebc",
+    "version": "1.16",
+    "sha256": "d14308278be5c82f20e0b9643ca7d29d57daa56689d1828c8ffb49cfe561a2c6",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -6360,15 +6926,15 @@
       "motion_families": 26,
       "world_decorative_families": 18,
       "control_families": 265,
-      "stable_control_selectors": 361,
+      "stable_control_selectors": 362,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 55,
+      "partial_state_evidence_families": 59,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
         "source-only": 224,
-        "partial-state-evidence": 55,
-        "measured-observation-only": 5,
+        "partial-state-evidence": 59,
+        "measured-observation-only": 1,
         "rendered-baseline": 25
       },
       "initial_evidence_census": {
@@ -6376,11 +6942,12 @@
         "source_only_families": 281
       },
       "families_with_state_evidence": 60,
-      "accepted_whole_families": 0
+      "accepted_whole_families": 0,
+      "state_evidence_records": 277
     },
-    "imported_at": "2026-10-16T03:41:45+08:00",
-    "source_metadata_updated_at": "2026-10-16T03:38:40+08:00",
-    "import_scope": "Stable361structure: native04c780 andexistingAsk a3b76f independent; A2boundedentryindependentlyreviewed."
+    "imported_at": "2026-10-16T04:04:57+08:00",
+    "source_metadata_updated_at": "2026-10-16T04:03:11+08:00",
+    "import_scope": "Structure/counts and E9b binding-ID references only. New WhatsApp control.10f744 independently bound to destinations/target; AI guide geometry does not imply action. Full scores null."
   },
   "groups": [
     {
@@ -18955,7 +19522,14 @@
       ],
       "expert_visual_assessment_ids": [
         "VIS-CAFE-A-D1"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.CAFE.PICKER.normal"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.CAFE.THEME",
@@ -20609,7 +21183,14 @@
       ],
       "expert_visual_assessment_ids": [
         "VIS-E52-SHORT-NOTES-D4"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.CAFE.RETURN.normal"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.WORLD.LOOK",
@@ -21314,7 +21895,14 @@
         "CHK-E81-CAPACITY-FALLBACK",
         "CHK-E81-ACTION-TRUTH"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.MENU.ARRANGE.normal"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.MENU.DESKTOP",
@@ -23042,7 +23630,14 @@
       ],
       "expert_visual_assessment_ids": [
         "VIS-E52-SHORT-NOTES-D4"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-pending-close.S.WINDOW.CLOSE.active"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.WINDOW.MINIMIZE",
@@ -24201,7 +24796,14 @@
         "CHK-E5-DESKTOP-TARGETS",
         "CHK-E51-COARSE-TARGET-FAIL"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.contact-reopen.S.WINDOW.MINIMIZE.active"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.WINDOW.MAXIMIZE",
@@ -35818,7 +36420,14 @@
         "VIS-E5-NOTES-DARK-D4",
         "VIS-E52-SHORT-NOTES-D4",
         "VIS-E81-TILE-D4"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.APP.notes.EXPORT",
@@ -35996,7 +36605,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "input",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -36506,22 +37115,41 @@
       "journey_queue_ids": [
         "E-02"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E9B-CONTACT-DRAFT",
+        "CHK-E9B-READING-TYPE"
+      ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-CONTACT-D1",
-        "VIS-FOUR-APP-CONTACT-D4"
-      ]
+        "VIS-FOUR-APP-CONTACT-D4",
+        "VIS-E9B-CONTACT-DESKTOP-D1",
+        "VIS-E9B-CONTACT-DESKTOP-D4",
+        "VIS-E9B-CONTACT-PHONE-D1",
+        "VIS-E9B-CONTACT-PHONE-D4",
+        "VIS-E9B-CONTACT-SHORT-D1",
+        "VIS-E9B-CONTACT-SHORT-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.readability.S.APP.contact.DRAFT.normal",
+          "EIMPORT.E9B.external-tool-focus.S.APP.contact.DRAFT.focus",
+          "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.APP.contact.CHANNEL",
       "title": "邮件/GitHub公开留言/WhatsApp/社交",
       "scope": "control-family",
-      "selector": "[data-contact-email], [data-contact-github], .space-contact-links a",
+      "selector": "[data-contact-email], [data-contact-github], .space-contact-links a, .space-contact__actions a[href*=\"wa.me/\"]",
       "selector_type": "css",
       "control_ids": [
         "S.APP.contact.CHANNEL.control.5c50a9",
         "S.APP.contact.CHANNEL.control.fb9210",
-        "S.APP.contact.CHANNEL.control.5dd633"
+        "S.APP.contact.CHANNEL.control.5dd633",
+        "S.APP.contact.CHANNEL.control.10f744"
       ],
       "routes": [
         "联系应用"
@@ -36534,7 +37162,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "nav",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -37048,12 +37676,30 @@
         "E-02"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9B-CONTACT-DRAFT",
+        "CHK-E9B-CONTACT-DESTINATIONS",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE"
       ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-CONTACT-D1",
-        "VIS-FOUR-APP-CONTACT-D4"
-      ]
+        "VIS-FOUR-APP-CONTACT-D4",
+        "VIS-E9B-CONTACT-DESKTOP-D1",
+        "VIS-E9B-CONTACT-DESKTOP-D4",
+        "VIS-E9B-CONTACT-PHONE-D1",
+        "VIS-E9B-CONTACT-PHONE-D4",
+        "VIS-E9B-CONTACT-SHORT-D1",
+        "VIS-E9B-CONTACT-SHORT-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
+          "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.APP.terminal.COMMAND",
@@ -38866,7 +39512,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "toggle",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -39456,11 +40102,28 @@
       "journey_queue_ids": [
         "E-06"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E9B-SETTINGS-LIFECYCLE",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE"
+      ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-SETTINGS-D1",
-        "VIS-FOUR-APP-SETTINGS-D4"
-      ]
+        "VIS-FOUR-APP-SETTINGS-D4",
+        "VIS-E9B-SETTINGS-DESKTOP-D1",
+        "VIS-E9B-SETTINGS-DESKTOP-D4",
+        "VIS-E9B-SETTINGS-PHONE-D1",
+        "VIS-E9B-SETTINGS-PHONE-D4",
+        "VIS-E9B-SETTINGS-SHORT-D1",
+        "VIS-E9B-SETTINGS-SHORT-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.APP.settings.LANG.normal"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.APP.settings.THEME",
@@ -40307,12 +40970,32 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-E9-SETTINGS-FOCUS-FAIL",
-        "CHK-E9-SETTINGS-STATE-TRUTH"
+        "CHK-E9-SETTINGS-STATE-TRUTH",
+        "CHK-E9B-PREFERENCE-FOCUS",
+        "CHK-E9B-PREFERENCE-STATE",
+        "CHK-E9B-SETTINGS-LIFECYCLE",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE"
       ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-SETTINGS-D1",
-        "VIS-FOUR-APP-SETTINGS-D4"
-      ]
+        "VIS-FOUR-APP-SETTINGS-D4",
+        "VIS-E9B-SETTINGS-DESKTOP-D1",
+        "VIS-E9B-SETTINGS-DESKTOP-D4",
+        "VIS-E9B-SETTINGS-PHONE-D1",
+        "VIS-E9B-SETTINGS-PHONE-D4",
+        "VIS-E9B-SETTINGS-SHORT-D1",
+        "VIS-E9B-SETTINGS-SHORT-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.settings.THEME.normal",
+          "EIMPORT.E9B.selected.S.APP.settings.THEME.active",
+          "EIMPORT.E9B.choice-focus.S.APP.settings.THEME.focus"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.APP.settings.COLOR",
@@ -40334,7 +41017,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "toggle",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -40383,7 +41066,8 @@
       },
       "known_findings": [
         "UX-028",
-        "UX-034"
+        "UX-034",
+        "UX-038"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -40927,12 +41611,34 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-E9-SETTINGS-FOCUS-FAIL",
-        "CHK-E9-SETTINGS-STATE-TRUTH"
+        "CHK-E9-SETTINGS-STATE-TRUTH",
+        "CHK-E9B-PREFERENCE-FOCUS",
+        "CHK-E9B-PREFERENCE-STATE",
+        "CHK-E9B-SETTINGS-LIFECYCLE",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE",
+        "CHK-E9B-WALLPAPER-VISUAL-FAIL"
       ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-SETTINGS-D1",
-        "VIS-FOUR-APP-SETTINGS-D4"
-      ]
+        "VIS-FOUR-APP-SETTINGS-D4",
+        "VIS-E9B-SETTINGS-DESKTOP-D1",
+        "VIS-E9B-SETTINGS-DESKTOP-D4",
+        "VIS-E9B-SETTINGS-PHONE-D1",
+        "VIS-E9B-SETTINGS-PHONE-D4",
+        "VIS-E9B-SETTINGS-SHORT-D1",
+        "VIS-E9B-SETTINGS-SHORT-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.settings.COLOR.normal",
+          "EIMPORT.E9B.selected.S.APP.settings.COLOR.active",
+          "EIMPORT.E9B.choice-focus.S.APP.settings.COLOR.focus",
+          "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.APP.settings.EXPORT",
@@ -40954,7 +41660,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "command",
-      "inventory_evidence": "measured-observation-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -41544,11 +42250,28 @@
       "journey_queue_ids": [
         "R-24"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E9B-SETTINGS-LIFECYCLE",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE"
+      ],
       "expert_visual_assessment_ids": [
         "VIS-FOUR-APP-SETTINGS-D1",
-        "VIS-FOUR-APP-SETTINGS-D4"
-      ]
+        "VIS-FOUR-APP-SETTINGS-D4",
+        "VIS-E9B-SETTINGS-DESKTOP-D1",
+        "VIS-E9B-SETTINGS-DESKTOP-D4",
+        "VIS-E9B-SETTINGS-PHONE-D1",
+        "VIS-E9B-SETTINGS-PHONE-D4",
+        "VIS-E9B-SETTINGS-SHORT-D1",
+        "VIS-E9B-SETTINGS-SHORT-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.APP.settings.EXPORT.normal"
+        ],
+        "limits": "Canonical inventory holds complete scoped records; no whole-family/state pass inferred."
+      }
     },
     {
       "family_id": "S.LAB.SWITCH",
@@ -63202,7 +63925,13 @@
         "CHK-BASE-UX-001",
         "CHK-E52-CLOSE-HUD",
         "CHK-E52-HUD-INTENT"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.CAFE.PICKER.normal"
+        ]
+      }
     },
     {
       "control_id": "S.CAFE.THEME.control.416942",
@@ -63782,7 +64511,13 @@
         "CHK-E5-SHORT-CLOSE-FAIL",
         "CHK-E52-CLOSE-HUD",
         "CHK-E52-HUD-INTENT"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.CAFE.RETURN.normal"
+        ]
+      }
     },
     {
       "control_id": "S.WORLD.LOOK.control.cded48",
@@ -64424,7 +65159,13 @@
       "scoped_check_assessment_ids": [
         "CHK-E81-CAPACITY-FALLBACK",
         "CHK-E81-ACTION-TRUTH"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.MENU.ARRANGE.normal"
+        ]
+      }
     },
     {
       "control_id": "S.MENU.DESKTOP.control.3e5e4b",
@@ -64789,7 +65530,13 @@
         "CHK-E5-SHORT-CLOSE-FAIL",
         "CHK-E51-COARSE-TARGET-FAIL",
         "CHK-E52-CLOSE-HUD"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-pending-close.S.WINDOW.CLOSE.active"
+        ]
+      }
     },
     {
       "control_id": "S.WINDOW.MINIMIZE.control.02e48c",
@@ -64900,7 +65647,13 @@
         "CHK-SPACE-PHONE-WINDOW-TARGET",
         "CHK-E5-DESKTOP-TARGETS",
         "CHK-E51-COARSE-TARGET-FAIL"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.contact-reopen.S.WINDOW.MINIMIZE.active"
+        ]
+      }
     },
     {
       "control_id": "S.WINDOW.MAXIMIZE.control.9fa9a1",
@@ -68505,7 +69258,13 @@
         "CHK-E5-OPAQUE-PLANE",
         "CHK-E52-HUD-INTENT",
         "CHK-E81-OVERVIEW-NOTES-CONTINUITY"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active"
+        ]
+      }
     },
     {
       "control_id": "S.APP.notes.EXPORT.control.8bdf72",
@@ -68718,7 +69477,18 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E9B-CONTACT-DRAFT",
+        "CHK-E9B-READING-TYPE"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.readability.S.APP.contact.DRAFT.normal",
+          "EIMPORT.E9B.external-tool-focus.S.APP.contact.DRAFT.focus",
+          "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active"
+        ]
+      }
     },
     {
       "control_id": "S.APP.contact.CHANNEL.control.5c50a9",
@@ -68790,8 +69560,17 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
-      ]
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9B-CONTACT-DESTINATIONS",
+        "CHK-E9B-ACTION-TARGETS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
+          "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
+        ]
+      }
     },
     {
       "control_id": "S.APP.contact.CHANNEL.control.fb9210",
@@ -68863,8 +69642,17 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
-      ]
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9B-CONTACT-DESTINATIONS",
+        "CHK-E9B-ACTION-TARGETS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
+          "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
+        ]
+      }
     },
     {
       "control_id": "S.APP.contact.CHANNEL.control.5dd633",
@@ -68936,8 +69724,18 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-FOUR-APP-PRIMARY-TARGETS"
-      ]
+        "CHK-FOUR-APP-PRIMARY-TARGETS",
+        "CHK-E9B-CONTACT-DESTINATIONS",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
+          "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
+        ]
+      }
     },
     {
       "control_id": "S.APP.terminal.COMMAND.control.1d0911",
@@ -70002,7 +70800,15 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E9B-ACTION-TARGETS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.APP.settings.LANG.normal"
+        ]
+      }
     },
     {
       "control_id": "S.APP.settings.THEME.control.d56fcd",
@@ -70077,8 +70883,20 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-E9-SETTINGS-FOCUS-FAIL",
-        "CHK-E9-SETTINGS-STATE-TRUTH"
-      ]
+        "CHK-E9-SETTINGS-STATE-TRUTH",
+        "CHK-E9B-PREFERENCE-FOCUS",
+        "CHK-E9B-PREFERENCE-STATE",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.settings.THEME.normal",
+          "EIMPORT.E9B.selected.S.APP.settings.THEME.active",
+          "EIMPORT.E9B.choice-focus.S.APP.settings.THEME.focus"
+        ]
+      }
     },
     {
       "control_id": "S.APP.settings.COLOR.control.3feb46",
@@ -70148,13 +70966,28 @@
         "D6": null
       },
       "known_findings": [
-        "UX-034"
+        "UX-034",
+        "UX-038"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-E9-SETTINGS-FOCUS-FAIL",
-        "CHK-E9-SETTINGS-STATE-TRUTH"
-      ]
+        "CHK-E9-SETTINGS-STATE-TRUTH",
+        "CHK-E9B-PREFERENCE-FOCUS",
+        "CHK-E9B-PREFERENCE-STATE",
+        "CHK-E9B-ACTION-TARGETS",
+        "CHK-E9B-READING-TYPE",
+        "CHK-E9B-WALLPAPER-VISUAL-FAIL"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.settings.COLOR.normal",
+          "EIMPORT.E9B.selected.S.APP.settings.COLOR.active",
+          "EIMPORT.E9B.choice-focus.S.APP.settings.COLOR.focus",
+          "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal"
+        ]
+      }
     },
     {
       "control_id": "S.APP.settings.EXPORT.control.df1ab3",
@@ -70225,7 +71058,15 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E9B-ACTION-TARGETS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.settings-target.S.APP.settings.EXPORT.normal"
+        ]
+      }
     },
     {
       "control_id": "S.LAB.SWITCH.control.8a5c3d",
@@ -82348,6 +83189,90 @@
         "frozen_sha256": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9"
       },
       "role_note": "AIbutton; geometryonly, neverAIinvoked."
+    },
+    {
+      "control_id": "S.APP.contact.CHANNEL.control.10f744",
+      "family_id": "S.APP.contact.CHANNEL",
+      "selector": ".space-contact__actions a[href*=\"wa.me/\"]",
+      "instance_policy": "同一模板数据重复按运行时渲染实例；本盘点不虚构实例数",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "链接可见且指向可读目标"
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "应有文字/背景反馈；当前逐项样式仅源码，未实测"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "原生链接 Tab 可达，Enter 导航；Space 保持原生滚动。焦点视觉/遮挡/次序待实测。"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "导航触发；当前路由 aria-current/active 依组件而异"
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用：普通导航不应禁用"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "浏览器原生导航；无组件加载状态"
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "目标/外链失败由目标页呈现，未逐个联网验证"
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用"
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [
+        "UX-028",
+        "UX-029"
+      ],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E9B-CONTACT-DESTINATIONS",
+        "CHK-E9B-ACTION-TARGETS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
+          "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
+        ]
+      }
     }
   ],
   "specific_observations": [
@@ -86257,11 +87182,261 @@
       "scope": "HistoricalA1only,currentfixseparate.",
       "reason": "A1844short about115pxnavigation leavesh2/headlineoutsidefirstfold; contentreachable.",
       "finding_id": "UX-037"
+    },
+    {
+      "id": "CHK-E9B-PREFERENCE-FOCUS",
+      "family_ids": [
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.THEME.control.d56fcd",
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9b_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence": [
+        "E-BATCH-E9B"
+      ],
+      "scope": "Named choice flows only; no full Tab traversal or OS keyboard claim.",
+      "reason": "Original theme/wallpaper buttons survive explicit focus+Space in six contracts and coordinate choices in four actual scopes; focus/pressed retained after frames. External tool updates do not take draft focus."
+    },
+    {
+      "id": "CHK-E9B-PREFERENCE-STATE",
+      "family_ids": [
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.THEME.control.d56fcd",
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D3.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9b_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence": [
+        "E-BATCH-E9B"
+      ],
+      "scope": "Two themes/three wallpapers in contracts; five coordinate choices per actual scope.",
+      "reason": "Theme/wallpaper choices update snapshot, localStorage and exactly-one aria-pressed in contracts; coordinate choices and external tools update mounted original controls."
+    },
+    {
+      "id": "CHK-E9B-SETTINGS-LIFECYCLE",
+      "family_ids": [
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "control_ids": [],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9b_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence": [
+        "E-BATCH-E9B"
+      ],
+      "scope": "Runtime status is a family-level capability fragment with no invented child control; local stub, not actual backend.",
+      "reason": "Original runtime label/one owned GET survive preferences; close removes listener and aborts request. Pending-close contract deliberately ignores abort, resolves new mount first, then old: neither stale label nor new mount is overwritten."
+    },
+    {
+      "id": "CHK-E9B-CONTACT-DRAFT",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL"
+      ],
+      "control_ids": [
+        "S.APP.contact.DRAFT.control.604358"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9b_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence": [
+        "E-BATCH-E9B"
+      ],
+      "scope": "Named contract/actual flows only; reload, storage failure, OSIME and native keyboard viewport not certified.",
+      "reason": "Original textarea/value survive settings/tool updates and minimize/reopen; continued typing and persisted draft retain punctuation/newline. Original notes node/value and continued typing also checked."
+    },
+    {
+      "id": "CHK-E9B-CONTACT-DESTINATIONS",
+      "family_ids": [
+        "S.APP.contact.CHANNEL"
+      ],
+      "control_ids": [
+        "S.APP.contact.CHANNEL.control.5c50a9",
+        "S.APP.contact.CHANNEL.control.fb9210",
+        "S.APP.contact.CHANNEL.control.5dd633",
+        "S.APP.contact.CHANNEL.control.10f744"
+      ],
+      "criterion": "D3.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9b_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence": [
+        "E-BATCH-E9B"
+      ],
+      "scope": "Known email/GitHub/social/WhatsApp child selectors independently bound; WhatsApp control.10f744 comes from actual click entry10 and contract last anchor, not inherited social checks. No external send/availability proof.",
+      "reason": "Eight original social destinations plus mailto/GitHub draft encoding and WhatsApp URL preserved in eleven real coordinate click events per scope; capture prevents default before external navigation."
+    },
+    {
+      "id": "CHK-E9B-ACTION-TARGETS",
+      "family_ids": [
+        "S.APP.contact.CHANNEL",
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "control_ids": [
+        "S.APP.contact.CHANNEL.control.5c50a9",
+        "S.APP.contact.CHANNEL.control.fb9210",
+        "S.APP.contact.CHANNEL.control.5dd633",
+        "S.APP.settings.LANG.control.4756f4",
+        "S.APP.settings.THEME.control.d56fcd",
+        "S.APP.settings.COLOR.control.3feb46",
+        "S.APP.settings.EXPORT.control.df1ab3",
+        "S.APP.contact.CHANNEL.control.10f744"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9b_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence": [
+        "E-BATCH-E9B"
+      ],
+      "scope": "Only named mounted instances; contact AI guide target measured but action never invoked. Unchanged fine-pointer window chrome uses24 target, not this App44 check.",
+      "reason": "Contact anchors and settings buttons meet44×44 viewportCSSpx with center hit in six contracts; actual preference centers and eleven contact anchor clicks pass. Main projected controls approximately44.28px."
+    },
+    {
+      "id": "CHK-E9B-READING-TYPE",
+      "family_ids": [
+        "S.APP.contact.DRAFT",
+        "S.APP.contact.CHANNEL",
+        "S.APP.settings.LANG",
+        "S.APP.settings.THEME",
+        "S.APP.settings.COLOR",
+        "S.APP.settings.EXPORT"
+      ],
+      "control_ids": [
+        "S.APP.contact.DRAFT.control.604358",
+        "S.APP.contact.CHANNEL.control.5dd633",
+        "S.APP.settings.THEME.control.d56fcd",
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D4.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_contract_fragment",
+      "status": "passed_named_E9b_fragments_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b final contact/settings bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+        "reviewed_at": "2026-10-16T03:56:51+08:00",
+        "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+      },
+      "evidence": [
+        "E-BATCH-E9B"
+      ],
+      "scope": "Named measured draft/intro/social-label/preference-label/capability/help samples only; no measured claim for every action label, no new computed-contrast or whole-page readability certification.",
+      "reason": "Contract main text/input >=16 projected viewportCSSpx, action labels>=13, important help/capability labels>=13; actual textarea16.3998–16.4002. Twenty screenshots independently viewed."
+    },
+    {
+      "id": "CHK-E9B-WALLPAPER-VISUAL-FAIL",
+      "family_ids": [
+        "S.APP.settings.COLOR"
+      ],
+      "control_ids": [
+        "S.APP.settings.COLOR.control.3feb46"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_failure",
+      "status": "confirmed_named_scope_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E9b unchanged spatial wallpaper exploratory baseline",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+        "reviewed_at": "2026-10-16T03:58:17+08:00",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motion": "reduce"
+      },
+      "evidence": [
+        "E-E9B-WALLPAPER-BASELINE"
+      ],
+      "scope": "1440×900zh/light/reduce default3D only; actual clicks followed by monitor exposure.",
+      "reason": "Desktop-color setting has no visible desktop color effect in this actual scope, despite correct state/pressed. Not a state-loss or focus failure.",
+      "finding_id": "UX-038"
     }
   ],
-  "latest_validated_checkpoint": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+  "latest_validated_checkpoint": "ebc488e69640d561e96203b93fb4a0eb7676ccab",
   "preview_scope": "E9a2products/books namedscopesaccepted; contact/settingsE9bnotimplemented/fullmatrixnull.",
-  "latest_reviewed_artifact": "E-BATCH-E9A2",
+  "latest_reviewed_artifact": "E-BATCH-E9B",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -86610,7 +87785,7 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9a2-source.json",
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
   "anchor_intent_review": {
     "as_of": {
       "phase": "478 preview native anchor and actual right TOC scoped probes",
@@ -86758,5 +87933,30 @@
       "OSpicker/Safari/zoom/Tab/fullstates"
     ],
     "verified_score": null
+  },
+  "e9b_source_review": {
+    "as_of": {
+      "phase": "E9b final contact/settings bounded review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e9b-source.json",
+      "recorded_at": "2026-10-15T19:50:00.714909+00:00",
+      "reviewed_at": "2026-10-16T03:56:51+08:00",
+      "base": "ebc488e69640d561e96203b93fb4a0eb7676ccab"
+    },
+    "status": "four_hashes_QA_contracts_actuals_images_independently_reviewed",
+    "new_P0_P1_findings": [],
+    "source_review": "Same settings nodes sync after workspace reducer/render; no rerender on theme/wallpaper. Captured runtimeLabel+disposed/isConnected+abort disposer isolate stale GET and listener. Original contact URLs/draft listeners and encoded send links retained.",
+    "closed_findings_in_named_scope": [
+      "UX-028",
+      "UX-029",
+      "UX-034"
+    ],
+    "remaining": "Short-screen content hierarchy needs further refinement; fullmatrix and real backend/external sends unknown. Wallpaper visible output is explicitly unaccepted in the named spatial baseline (UX-038).",
+    "evidence": [
+      "E-BATCH-E9B"
+    ],
+    "verified_score": null,
+    "new_P2_findings": [
+      "UX-038"
+    ]
   }
 }

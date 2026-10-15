@@ -31,3 +31,13 @@ F03只验Archives首年Mac Meta/plain/Back；其余修饰键/页面不继承。U
 E9a先products/books，E9b再contact/settings；共用原有palette/组件语义，不同时重写4个App。E9a允许native phone select释放正文宽度、保持desktop目录与全部7个产品/4本真实书、限制截图高度保持图像比例、主入口投影后44px、同component产品选择后焦点连续；E9b原contact draft同节点，settings仅同步pressed而不重建整个host，避免焦点BODY。
 
 3caab4d1不可变预览书封computed CSS对比探针已保存：作者/编号因opacity.75，四封面分别约3.415/2.330/2.706/3.164；第二封面的标题2.957，不能上取整为3。E9a保持四色相，允许调深背景与去降低对比opacity，测实际computed前景/背景/元素opacity并报告原始ratio；不把source数值或程序设焦点当全页/Tab路径通过。
+
+
+### E10只读准备（E9b期间，不是实现）
+
+父读取当前Travel QR源码与既有baseline：div role=dialog未移焦/约束Tab，close仅靠未过滤transitionend且保留旧listener，normal立即重开后会被旧关闭完成事件隐藏；reduced是脚本初次缓存，不保证runtime变化。独立基线已有390中文两motion，继续使用而不重复跑无变化版本。下批仅Travel template的QR markup/controller、对应QR CSS和精确新合同；可参考已存在book modal的native dialog/显式wrap，但不改book AI运输或公开QR源。新增重要close44、短高有界内容与close可达属于项目体验目标，需实际画面决定。先完成E9b独立验收再放行E10生产。
+
+
+### E9c · 壁纸的真实可见结果（只读方案，待E9b checkpoint）
+
+UX038独立确认1440真实spatial desktop中的颜色选择无可见背景效果；旧landscape隐藏，新screen用固定sp-surface。仅space-cafe.css复用classic现有6色至screen桌面面，保持窗口paper/chrome、3D物理机框与world材质/灯光/动画。新独立合同：1440zh+390en真实3色×2主题→minimize露背景、准确computed色与不同色、原button/焦点/notes/contact草稿保留；同主题阅读面/chrome不跟着换。另1440 forced-WebGL-failure验原fallback landscape palette。父截图确认实际色差，不能只靠dataset或“选择成功”。

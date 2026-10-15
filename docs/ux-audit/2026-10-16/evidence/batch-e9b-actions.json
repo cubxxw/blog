@@ -1,0 +1,513 @@
+{
+  "observations": [
+    {
+      "width": 320,
+      "height": 740,
+      "lang": "zh",
+      "coarse": true,
+      "source": "batch-e9b-source.json",
+      "motion": "reduce",
+      "preferenceTargets": [
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 143.6002197265625,
+          "y": 489.0265808105469,
+          "width": 54.119293212890625,
+          "height": 44.279449462890625,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "forest",
+          "x": 53.40138244628906,
+          "y": 333.5489196777344,
+          "width": 68.05912017822266,
+          "height": 44.2794189453125,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "light",
+          "x": 53.40138244628906,
+          "y": 182.35055541992188,
+          "width": 81.99893188476562,
+          "height": 44.27943420410156,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "dusk",
+          "x": 143.6002197265625,
+          "y": 281.069580078125,
+          "width": 54.119293212890625,
+          "height": 44.279449462890625,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 143.6002197265625,
+          "y": 182.35055541992188,
+          "width": 54.119293212890625,
+          "height": 44.27943420410156,
+          "hit": true
+        }
+      ],
+      "runtime": {
+        "requests": 1,
+        "status": "未连接（仅本地开发可用）",
+        "sameLabel": true
+      },
+      "preferences": {
+        "sameButton": true,
+        "clickFocusRetained": true,
+        "toolSyncWhileDraftFocused": true
+      },
+      "contact": {
+        "channels": 8,
+        "interceptedActualClicks": [
+          {
+            "href": "https://github.com/cubxxw",
+            "label": "GitHub ↗"
+          },
+          {
+            "href": "https://x.com/cubxxw",
+            "label": "X ↗"
+          },
+          {
+            "href": "https://www.zhihu.com/people/3293172751",
+            "label": "知乎 ↗"
+          },
+          {
+            "href": "https://www.linkedin.com/in/cubxxw",
+            "label": "LinkedIn ↗"
+          },
+          {
+            "href": "https://space.bilibili.com/1233089591",
+            "label": "Bilibili ↗"
+          },
+          {
+            "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+            "label": "YouTube ↗"
+          },
+          {
+            "href": "https://www.instagram.com/cubxxw/",
+            "label": "Instagram ↗"
+          },
+          {
+            "href": "https://www.polarsteps.com/cubxxw",
+            "label": "Polarsteps ↗"
+          },
+          {
+            "href": "mailto:3293172751nss@gmail.com?subject=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "通过邮件发给我 ↗"
+          },
+          {
+            "href": "https://github.com/cubxxw/blog/issues/new?title=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "在 GitHub 公开留言 ↗"
+          },
+          {
+            "href": "https://wa.me/8618672749565",
+            "label": "WhatsApp ↗"
+          }
+        ],
+        "textarea": {
+          "computed": "20px",
+          "viewportCSSpx": 16.399786142202522
+        },
+        "sameDOM": true,
+        "draftPreserved": true,
+        "minimizeReopen": true,
+        "horizontalFit": true
+      },
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "en",
+      "coarse": true,
+      "source": "batch-e9b-source.json",
+      "motion": "reduce",
+      "preferenceTargets": [
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 169.09283447265625,
+          "y": 574.4832763671875,
+          "width": 55.529998779296875,
+          "height": 44.280517578125,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "forest",
+          "x": 59.69847106933594,
+          "y": 386.20147705078125,
+          "width": 57.861907958984375,
+          "height": 44.280487060546875,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "light",
+          "x": 59.69847106933594,
+          "y": 234.99945068359375,
+          "width": 101.19427490234375,
+          "height": 44.280487060546875,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "dusk",
+          "x": 164.86465454101562,
+          "y": 333.72088623046875,
+          "width": 105.87088012695312,
+          "height": 44.280487060546875,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 169.09283447265625,
+          "y": 234.99945068359375,
+          "width": 55.529998779296875,
+          "height": 44.280487060546875,
+          "hit": true
+        }
+      ],
+      "runtime": {
+        "requests": 1,
+        "status": "Disconnected (local development only)",
+        "sameLabel": true
+      },
+      "preferences": {
+        "sameButton": true,
+        "clickFocusRetained": true,
+        "toolSyncWhileDraftFocused": true
+      },
+      "contact": {
+        "channels": 8,
+        "interceptedActualClicks": [
+          {
+            "href": "https://github.com/cubxxw",
+            "label": "GitHub ↗"
+          },
+          {
+            "href": "https://x.com/cubxxw",
+            "label": "X ↗"
+          },
+          {
+            "href": "https://www.zhihu.com/people/3293172751",
+            "label": "知乎 ↗"
+          },
+          {
+            "href": "https://www.linkedin.com/in/cubxxw",
+            "label": "LinkedIn ↗"
+          },
+          {
+            "href": "https://space.bilibili.com/1233089591",
+            "label": "Bilibili ↗"
+          },
+          {
+            "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+            "label": "YouTube ↗"
+          },
+          {
+            "href": "https://www.instagram.com/cubxxw/",
+            "label": "Instagram ↗"
+          },
+          {
+            "href": "https://www.polarsteps.com/cubxxw",
+            "label": "Polarsteps ↗"
+          },
+          {
+            "href": "mailto:3293172751nss@gmail.com?subject=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "Send by email ↗"
+          },
+          {
+            "href": "https://github.com/cubxxw/blog/issues/new?title=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "Leave a public GitHub message ↗"
+          },
+          {
+            "href": "https://wa.me/8618672749565",
+            "label": "WhatsApp ↗"
+          }
+        ],
+        "textarea": {
+          "computed": "20px",
+          "viewportCSSpx": 16.40018347537879
+        },
+        "sameDOM": true,
+        "draftPreserved": true,
+        "minimizeReopen": true,
+        "horizontalFit": true
+      },
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "lang": "en",
+      "coarse": true,
+      "source": "batch-e9b-source.json",
+      "motion": "reduce",
+      "preferenceTargets": [
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 213.234375,
+          "y": 158.56146240234375,
+          "width": 55.529052734375,
+          "height": 44.27973937988281,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "forest",
+          "x": 323.0752868652344,
+          "y": 228.58135986328125,
+          "width": 57.86090087890625,
+          "height": 44.27972412109375,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "light",
+          "x": 103.84190368652344,
+          "y": 129.86163330078125,
+          "width": 101.19252014160156,
+          "height": 44.27973937988281,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "dusk",
+          "x": 209.0062713623047,
+          "y": 228.58135986328125,
+          "width": 105.86906433105469,
+          "height": 44.27972412109375,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 213.234375,
+          "y": 129.86163330078125,
+          "width": 55.529052734375,
+          "height": 44.27973937988281,
+          "hit": true
+        }
+      ],
+      "runtime": {
+        "requests": 1,
+        "status": "Disconnected (local development only)",
+        "sameLabel": true
+      },
+      "preferences": {
+        "sameButton": true,
+        "clickFocusRetained": true,
+        "toolSyncWhileDraftFocused": true
+      },
+      "contact": {
+        "channels": 8,
+        "interceptedActualClicks": [
+          {
+            "href": "https://github.com/cubxxw",
+            "label": "GitHub ↗"
+          },
+          {
+            "href": "https://x.com/cubxxw",
+            "label": "X ↗"
+          },
+          {
+            "href": "https://www.zhihu.com/people/3293172751",
+            "label": "知乎 ↗"
+          },
+          {
+            "href": "https://www.linkedin.com/in/cubxxw",
+            "label": "LinkedIn ↗"
+          },
+          {
+            "href": "https://space.bilibili.com/1233089591",
+            "label": "Bilibili ↗"
+          },
+          {
+            "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+            "label": "YouTube ↗"
+          },
+          {
+            "href": "https://www.instagram.com/cubxxw/",
+            "label": "Instagram ↗"
+          },
+          {
+            "href": "https://www.polarsteps.com/cubxxw",
+            "label": "Polarsteps ↗"
+          },
+          {
+            "href": "mailto:3293172751nss@gmail.com?subject=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "Send by email ↗"
+          },
+          {
+            "href": "https://github.com/cubxxw/blog/issues/new?title=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "Leave a public GitHub message ↗"
+          },
+          {
+            "href": "https://wa.me/8618672749565",
+            "label": "WhatsApp ↗"
+          }
+        ],
+        "textarea": {
+          "computed": "20px",
+          "viewportCSSpx": 16.399901716139137
+        },
+        "sameDOM": true,
+        "draftPreserved": true,
+        "minimizeReopen": true,
+        "horizontalFit": true
+      },
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "lang": "zh",
+      "coarse": false,
+      "source": "batch-e9b-source.json",
+      "motion": "reduce",
+      "preferenceTargets": [
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 247.67962646484375,
+          "y": 461.1212463378906,
+          "width": 54.12005615234375,
+          "height": 44.280059814453125,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "forest",
+          "x": 309.9996643066406,
+          "y": 559.8416748046875,
+          "width": 68.06005859375,
+          "height": 44.280029296875,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "light",
+          "x": 157.47955322265625,
+          "y": 461.1212463378906,
+          "width": 82.00007629394531,
+          "height": 44.280059814453125,
+          "hit": true
+        },
+        {
+          "kind": "wallpaper",
+          "value": "dusk",
+          "x": 247.67962646484375,
+          "y": 559.8416748046875,
+          "width": 54.12005615234375,
+          "height": 44.280029296875,
+          "hit": true
+        },
+        {
+          "kind": "theme",
+          "value": "dark",
+          "x": 247.67962646484375,
+          "y": 461.1212463378906,
+          "width": 54.12005615234375,
+          "height": 44.280059814453125,
+          "hit": true
+        }
+      ],
+      "runtime": {
+        "requests": 1,
+        "status": "未连接（仅本地开发可用）",
+        "sameLabel": true
+      },
+      "preferences": {
+        "sameButton": true,
+        "clickFocusRetained": true,
+        "toolSyncWhileDraftFocused": true
+      },
+      "contact": {
+        "channels": 8,
+        "interceptedActualClicks": [
+          {
+            "href": "https://github.com/cubxxw",
+            "label": "GitHub ↗"
+          },
+          {
+            "href": "https://x.com/cubxxw",
+            "label": "X ↗"
+          },
+          {
+            "href": "https://www.zhihu.com/people/3293172751",
+            "label": "知乎 ↗"
+          },
+          {
+            "href": "https://www.linkedin.com/in/cubxxw",
+            "label": "LinkedIn ↗"
+          },
+          {
+            "href": "https://space.bilibili.com/1233089591",
+            "label": "Bilibili ↗"
+          },
+          {
+            "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+            "label": "YouTube ↗"
+          },
+          {
+            "href": "https://www.instagram.com/cubxxw/",
+            "label": "Instagram ↗"
+          },
+          {
+            "href": "https://www.polarsteps.com/cubxxw",
+            "label": "Polarsteps ↗"
+          },
+          {
+            "href": "mailto:3293172751nss@gmail.com?subject=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "通过邮件发给我 ↗"
+          },
+          {
+            "href": "https://github.com/cubxxw/blog/issues/new?title=Hello%20from%20BEAR%20Space&body=E9b%20synthetic%20draft%20%E2%80%94%20%E9%82%AE%E4%BB%B6%20%26%20GitHub%3F%20%23one%0Asecond%20line%20continued",
+            "label": "在 GitHub 公开留言 ↗"
+          },
+          {
+            "href": "https://wa.me/8618672749565",
+            "label": "WhatsApp ↗"
+          }
+        ],
+        "textarea": {
+          "computed": "20px",
+          "viewportCSSpx": 16.40001349492904
+        },
+        "sameDOM": true,
+        "draftPreserved": true,
+        "minimizeReopen": true,
+        "horizontalFit": true
+      },
+      "notes": {
+        "sameDOM": true,
+        "valuePreserved": true
+      },
+      "errors": []
+    }
+  ],
+  "limits": "Four isolated Chromium Metal contexts, reduced animation, simulated touch viewports. Programmatic public tool updates explicitly separated from actual coordinate choices. Eleven real contact anchor clicks/context prevented at capture; no mail/contact/share/model submission. Runtime GET is a delayed local stub, not a real backend connection. No full Tab/OSIME/Safari/zoom/physical-device/FPS certification."
+}

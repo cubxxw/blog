@@ -113,6 +113,12 @@
 .space-spatial-screen .space-products .space-list-item :is(small,span) { font-size:16px; }
 .space-spatial-screen .space-book__number { font-size:13px; }
 .space-spatial-screen .space-book__cover .space-book__author { font-size:16px; }
+.space-spatial-screen .space-contact p,.space-spatial-screen .space-contact textarea,.space-spatial-screen .space-settings > p,.space-spatial-screen .space-capability { font-size:20px; }
+.space-spatial-screen :is(.space-contact,.space-settings) h2 { font-size:32px; }
+.space-spatial-screen :is(.space-contact,.space-settings) h3 { font-size:22px; }
+.space-spatial-screen .space-contact .space-contact__hint,.space-spatial-screen .space-settings .space-language__hint,.space-spatial-screen .space-capability small { font-size:16px; }
+.space-spatial-screen .space-contact :is(a,button),.space-spatial-screen .space-settings button { min-width:54px; min-height:54px; font-size:17px; }
+.space-spatial-screen :is(.space-contact,.space-settings) .space-button { font-size:17px !important; }
 .space[data-world-ready] .space-landscape { display:none; }
 .space[data-world-loading] :is(.space-window-layer,.space-bottom,.space-menu) { visibility:hidden; }
 .space[data-world-mode="roam"] .space-cafe__welcome { visibility:hidden; }

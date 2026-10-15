@@ -78,16 +78,17 @@
 | UX-025 | `H.CHAT.INPUT`, `H.CHAT.CLOSE`, `H.CHAT.OPEN` | 首页聊天关闭再开丢失未发送草稿 | E7/E7.1 | `closed_for_E71_named_draft_close_reopen_clear_send_cases` |
 | UX-026 | `H.CHAT.INPUT`, `H.CHAT.SEND` | 首页聊天合成composition Enter触发发送 | E7/E7.1 | `closed_for_E71_synthetic_composition_guards_OS_IME_unverified` |
 | UX-027 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.RETRY` | 首页聊天挂起无就地停止或请求时限，只能关窗取消 | E7/E7.1 | `closed_for_E7_E71_named_Stop_idle_JSON_SSE_DONE_recovery_cases` |
-| UX-028 | `S.APP.products.SELECT`, `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.DRAFT`, `S.APP.contact.CHANNEL`, `S.APP.settings.LANG`, `S.APP.settings.THEME`, `S.APP.settings.COLOR`, `S.APP.settings.EXPORT` | Space四App重要正文、动作标签和能力说明在投影后过小 | E9a_partial_E9b_pending | `partially_closed_E9a_products_books_contact_settings_remaining` |
-| UX-029 | `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.CHANNEL` | Space手机主要产品/阅读/联系链接仍低于项目44px触控目标 | E9a_partial_E9b_pending | `partially_closed_E9a_products_books_contact_remaining` |
+| UX-028 | `S.APP.products.SELECT`, `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.DRAFT`, `S.APP.contact.CHANNEL`, `S.APP.settings.LANG`, `S.APP.settings.THEME`, `S.APP.settings.COLOR`, `S.APP.settings.EXPORT` | Space四App重要正文、动作标签和能力说明在投影后过小 | E9b_final | `closed_named_E9a_E9b_fragments_full_matrix_unverified` |
+| UX-029 | `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.CHANNEL` | Space手机主要产品/阅读/联系链接仍低于项目44px触控目标 | E9b_final | `closed_named_E9a_E9b_fragments_full_matrix_unverified` |
 | UX-030 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.QUICK` | 短横屏聊天聚焦输入后composer部分出屏，关闭按钮被导航遮挡 | E6.1-short-chat-recovery | `closed_for_recorded_E61_568_bilingual_844_coarse_chrome_scroll_paths` |
 | UX-031 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE` | 短屏旧回复完成把滚去旅行书的读者拉回聊天并聚焦输入 | E7/E7.1 | `closed_for_E7_E71_568_en_wheel_JSON_completion_case` |
 | UX-032 | `S.WINDOW.ARRANGE` | 平铺后仅聚焦笔记，再整理会按z序交换窗口位置 | E8/E8.1 | `closed_for_E81_repeat_arrange_after_notes_focus_cases` |
 | UX-033 | `S.WINDOW.OVERVIEWITEM` | 844短横屏窗口概览Back可点，但高度只有17.5CSSpx | E8/E8.1 | `closed_for_E81_844_coarse_Back44_scrolled_list_actual_close_cases` |
-| UX-034 | `S.APP.settings.THEME`, `S.APP.settings.COLOR` | 主题和壁纸选择已生效，但Space激活重建后焦点落BODY | E9-settings-continuity | `confirmed_recorded_3ca_two_setting_choices_focus_BODY_pending_E9b` |
+| UX-034 | `S.APP.settings.THEME`, `S.APP.settings.COLOR` | 主题和壁纸选择已生效，但Space激活重建后焦点落BODY | E9b_final | `closed_E9b_named_original_button_focus_and_tool_intent` |
 | UX-035 | `S.APP.books.READ` | 书封作者小字对比不足，橙封标题原始比值低于3 | E9a1/E9a2 | `closed_for_E9a1_E9a2_named_cover_DOM_computed_contrast` |
 | UX-036 | `S.APP.products.OPEN` | 空产品demo被当本站首页，却渲染测试预览链接 | E9a1 | `closed_for_E9a1_E9a2_catalog_empty_demo_cases` |
 | UX-037 | `S.APP.products.SELECT`, `S.APP.products.OPEN` | 短横屏产品导航堆叠，首屏只有stage而标题和简介出fold | E9a2 | `closed_for_E9a2_844_shortcoarse_entry_geometry_and_images` |
+| UX-038 | `S.APP.settings.COLOR` | 默认3D桌面颜色保存/选中正确但屏幕底色不变 | E9c_candidate | `confirmed_bounded_E9b_spatial_visual_output_pending_E9c` |
 
 ## 有证据的单项锚点评分
 
@@ -308,7 +309,7 @@
 | S.APP.products.SELECT, S.APP.products.OPEN | D1 | 96,96,90,96 | 94.5 | 导航一行后完整h2/headline首行无需先滚，选择→理解→再打开清楚；Dogfood等stage术语可后续改易懂名称。 | E9a2 final bounded shortcoarseentry refinement / high |
 | S.APP.products.SELECT, S.APP.products.OPEN | D4 | 96,90,90,96 | 93.0 | 保44目标/原字号，导航不再吞首屏，标题/简介重新主导；有效focus环保留，没有删内容凑满分。 | E9a2 final bounded shortcoarseentry refinement / high |
 
-## 完整可追踪覆盖（inventory v1.15 一对一映射）
+## 完整可追踪覆盖（inventory v1.16 一对一映射）
 
 309族/361selectors；60族有局部状态证据，完整认证仍0。native04c780与旧目录分别绑定；Ask a3b76f仅44/hit，不继承链接popup/AI结果。
 
@@ -486,8 +487,8 @@
 | `S.APP.notes.EDITOR` | 本地笔记 | 1 | 6 | `unverified / null` | UX-021 |
 | `S.APP.notes.EXPORT` | 导出.md | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.notes.SANDBOX` | 保存到沙盒 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.contact.DRAFT` | 留言草稿 | 1 | 0 | `unverified / null` | UX-028 |
-| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | 3 | 1 | `unverified / null` | UX-028, UX-029 |
+| `S.APP.contact.DRAFT` | 留言草稿 | 1 | 2 | `unverified / null` | UX-028 |
+| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | 4 | 5 | `unverified / null` | UX-028, UX-029 |
 | `S.APP.terminal.COMMAND` | 命令输入/help/history/run | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.NEW` | 新对话 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.HISTORY` | 历史/关闭历史 | 2 | 0 | `unverified / null` | 待矩阵 |
@@ -500,10 +501,10 @@
 | `S.APP.agent.SEND` | 发送 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.STOP` | 停止 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.agent.ACTIVITY` | 任务执行过程/工具步骤 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.APP.settings.LANG` | 中文/English | 1 | 0 | `unverified / null` | UX-028 |
-| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 2 | `unverified / null` | UX-028, UX-034 |
-| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 2 | `unverified / null` | UX-028, UX-034 |
-| `S.APP.settings.EXPORT` | 导出工作区 | 1 | 0 | `unverified / null` | UX-028 |
+| `S.APP.settings.LANG` | 中文/English | 1 | 3 | `unverified / null` | UX-028 |
+| `S.APP.settings.THEME` | 经典浅色/深色 | 1 | 7 | `unverified / null` | UX-028, UX-034 |
+| `S.APP.settings.COLOR` | 青绿/暮蓝/鼠尾草 | 1 | 8 | `unverified / null` | UX-028, UX-034, UX-038 |
+| `S.APP.settings.EXPORT` | 导出工作区 | 1 | 3 | `unverified / null` | UX-028 |
 | `S.LAB.SWITCH` | CUBXXW OS/Product Lab双向切换 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.LAB.FEATURE` | 推荐产品/所有产品锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.LAB.PRODUCT` | 产品截图/打开产品/预览/源码 | 2 | 0 | `unverified / null` | 待矩阵 |
@@ -908,3 +909,36 @@ A1视觉：desktop产品D1=94.5/D4=93；phone产品D1=93/D4=91.5；books D1=94.5
 UX037 A1短844coarse为P2：picker+explore约115px令初开只见stage，h2/headline在fold外；D1=89（96/80/90/90）、D4=85（90/80/90/80）。可滚/functionalpass不抵消层级差距，也不升P1。A2只对应641+短coarse将二者同排、保54源尺寸约44显示目标，压冗余margin。新844×390en/light四图全部看：first/last body[89.22,272.90]、h2[180.89,215.00]、headline首行bottom247.80；合同844en/dark七产品都从bodyScrollTop0复验。A2七选择/URL/44/focus与书/notes再过，UX037仅此范围关闭。新短产品D1=94.5（96/96/90/96）、D4=93（96/90/90/96），保留A1低分历史，不凑96。
 
 后续工艺余量：stage Dogfood可用更易懂名称；书架桌面留白/英文作者行节奏可小批对照，优先级低于contact/settings，不为密度删真实作品。OSpicker/完整Tab/Safari/zoom/实体设备/全状态/真实AI未知；20图不等于全站通过。inventory v1.15同步309族/361selectors，native04c780与Ask a3b76f独立绑定；完整控件/族/全站分仍null。
+
+## E9b：联系与设置的有界闭环
+
+2026-10-16T03:56:51+08:00：当前4/4源hash与QA一致；独立读源/测试、正式7/7合同（17.1s）、Hugo3604ms/typecheck/syntax/diff、父4actual JSON/脚本/20图。无新增P0/P1。[源快照](evidence/batch-e9b-source.json)、[合同](evidence/batch-e9b-contracts.log)、[动作回执](evidence/batch-e9b-actions.json)与[脚本](batch-e9b-actions.browser.mjs)保留详细范围，不重复嵌入raw矩阵。
+
+UX034只关闭主题/壁纸已测连续性：六合同明确focus+Space、四actual每scope五次中心坐标选择，两帧后仍原button/focus/pressed；外部tool更新已挂载ARIA时不抢contact草稿焦点。runtime原label/仅1GET保留；关闭disposer移除listener并abort，第七合同让旧请求忽略abort且晚于新挂载返回，旧/新label均不被越权改写。原BODY焦点失败证据保留，完整Tab/OS输入不继承通过。
+
+UX028/029补齐本批联系/设置所测片段：主要文字/输入约16.4 viewport CSSpx，动作约13.94、重要辅助约13.12；所有指定App目标44/hit，8社交+邮件/GitHub/WhatsApp每scope共11真实坐标click在capture阻止default，原URL与含标点换行的草稿编码正确。contact原textarea/值、minimize重开与notes原DOM/值保留，errors0。AI guide仅量目标未调用，导出/语言/换景等这里只验尺寸，不能授其动作结果。
+
+父initial probe错把未改fine-pointer窗口chrome统一按44断言：实际26.24×26.24且hit，已有desktop门槛24；[原失败](evidence/batch-e9b-actions-initial.log)保留。final只按coarse44/fine24修这一条probe，本批App目标始终44，生产hash未变。不是新生产失败，也未放宽App门槛。
+
+D1/D4为逐图专家判断（完整维度/控件仍null）：
+
+| 实际范围 | D1 | D4 | 仍有的具体差距 |
+|---|---:|---:|---|
+| 1440中文contact/light | 94.5 | 93 | 邮件主动作与发送边界清楚，较大承载区/纵向节奏尚可精细化。 |
+| 320中文、390英文contact/light | 93 | 91.5 | 社交先占四行，便笺与发送要滚动；保留44后仍可压冗余留白。 |
+| 844×390英文contact/light/coarse | 89 | 90 | 首屏只容标题/intro及首排社交，起草任务被分段；实际可滚达，不判不可达/P1。 |
+| 1440中文settings/dark | 93 | 91.5 | 分组/状态明确，长单列与右侧空白并存，能力区需滚动寻找。 |
+| 320中文、390英文settings/dark | 93 | 91.5 | 辅助状态终于可读，长说明/底部动作的浏览成本仍在。 |
+| 844×390英文settings/dark/coarse | 90.5 | 90 | 首屏仅Language，appearance/颜色/能力缺短路径；可局部收引导留白/试简短定位，保44与原DOM。 |
+
+本轮20图全部查看，settings为dark，contact因明确public-tool改变为light。暗纸面/按钮边框与选中态有功能用途，不当装饰扣分；旧重要文字过小已在命名范围改善，投影文字柔软、短屏层级和宽屏密度仍未到96。各四子项分在JSON VIS-E9B记录；七项行为片段按固定锚点96，仅证明命名断言。
+
+四actual都是reduce/模拟触控视口的Chromium Metal；不代表实体设备、Safari、200%zoom、完整Tab、实际外发或真实backend。runtime是延迟stub，并非Docker连通认证；没有新的全页computedcontrast结论。完整控件/族/全站评分继续null，后续优先级不靠合同条数凑高分。
+
+### E9b补充开放项：桌面颜色的可见输出
+
+2026-10-16T03:58:17+08:00：独立核对[baseline](evidence/spatial-wallpaper-baseline.json)、[脚本](probe-spatial-wallpaper.browser.mjs)/log、5源SHA和3PNG SHA，逐张看dawn/dusk/forest露出的monitor图。新增UX038/P2：1440×900中文light/reduce真实Metal中，三个真实选项的stored/dataset/pressed均正确，但screen背景固定rgb(238,239,235)，只有已隐藏landscape响应颜色；world-cafe.js:283移入layer/dock的screen由space-cafe.css:90读取sp-surface。dawn与forest的monitor PNG相同，dusk SHA不同，不能概括三张像素完全一致。
+
+这是“桌面颜色”命名与实际可见结果脱节，D1.1失败片段80；不改写成state存储失败、不撤E9b焦点/ARIA通过、不升P1或机械套假成功gate。建议E9c仅让露出屏幕背景复用classic明暗六palette，窗口阅读面/chrome/3D机框保持；真实选择后最小化，复核light/dark与fallback。该视觉效果明确未认证，完整族仍null。
+
+本轮结构同步inventory v1.16：309族/362selectors/57旅程/18roadmap，277条状态记录、60局部族（59partial+1measured）、0完整认证。WhatsApp补漏`S.APP.contact.CHANNEL.control.10f744`对应`.space-contact__actions a[href*="wa.me/"]`，只绑定独立第11个捕获click/原href与44目标，不从8社交、AI或外发继承。完整记录保留inventory，scorecard仅引用binding IDs。JSON/引用/固定量表/特殊控件边界与diff-check通过。

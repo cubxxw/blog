@@ -131,3 +131,30 @@
 ### E9a2父实拍通过
 
 A2仅shortcoarse产品CSS与对应入口几何增强，4hash/QA核验；Hugo3733ms、typecheck/语法/diff通过；原6不同合同完整通过15.9s。父844×390en/light coarse复用1实际Metalcontext/4新图，不覆盖a1：body可见y89.22..272.90，first/last产品h2 y180.89..215.00，headline首行bottom247.80，真实入口能同时辨认产品身份和介绍。其余6合同全7产品入口几何成立；目标/焦点/原URL/书封比值/笔记连续性仍过。独立review/盘点收尾后才能做本地checkpoint，联系/设置未开始。
+
+
+### E9a2独立闭环与checkpoint
+
+独立核四hash/QA、6不同合同、5父实际contexts和20张图，无新P0/P1；UX035/036/037只关闭已测书封、空链接和844短产品入口范围，UX028/029只products/books部分闭，联系/设置UX034仍开。A1短产品D1=89/D4=85历史保留；A2 D1=94.5/D4=93，desktop产品94.5/93、phone93/91.5、books94.5/91.5，未凑96。Inventory1.15为309族/361selectors/257state/60局部族，完整0。已保存本地checkpoint `ebc488e6`，未push。E9b放行只联系/设置，保8渠道/原草稿、有效URL与现有跨App连续性；统一UI和public tool状态同步，捕获本次runtime label避免重复重建/请求。
+
+
+## E9b冻结与待验范围
+
+3生产+1测试hash/QA冻结（test b1只追加pending-close，总7不同case），syntax/typecheck/diff与Hugo通过。settings原DOM同步UI/public tool aria、单次runtime捕获label/disposer abort；contact保8渠道/原draft listener/邮件GitHub编码，少逐项围框、正文/辅助/44目标明确。尚待7合同、父4实际context和独立评分，不提前关闭UX034。
+
+资源审计76Node/npm、swap11.03GiB、可用35.55GiB；audit列3台allowlist模拟器均shutdown、8个Docker项目均allowlist，登记旧产物未据年龄删除。audit/resources有maintenance/swap warning(exit2)，未将其记全绿。只复用1317/缓存/单浏览器，不开Simulator、不清理或停止其他活动任务。
+
+
+E9b父probe初跑在第四个1440 fine-pointer的原window minimize处误把44统一套用，量26.24×26.24且centerhit。原桌面chrome要求24、coarse要求44，E9b新增的contact/settings正文目标仍统一44。该chrome源码未改，7正式合同已按正确范围通过；修正父script仅此既有bar动作minimum参数，不修改生产或放宽本批App目标，initial log保留。因初跑未写finalJSON，四context重跑生成完整正式记录。
+
+
+### E9b父实际验收与新视觉基线
+
+7合同通过17.1s。父4实际Metalcontext/20图已全看：320×740zh、390×844en、844×390en coarse、1440×900zh，均reduce；每scope5次真实偏好点后原button/focus、原runtimeLabel pending→受控false，只1GET；外部theme/wallpaper工具同步settings但contact输入焦点不动。8社交+邮件/GitHub/WhatsApp共11anchor/case真实坐标点击在capture阻断，原URL与草稿编码正确、textarea显示约16.4CSSpx，minimize/reopen原节点/值和notes原DOM/值保留，pageerrors0。不真实联系/AI/后端。父probe initial仅错误套用旧finepointer窗控44已解释保留；新App目标未放宽。
+
+另父新增1scope实际壁纸探针/3monitor图：1440zh/light/reduce，真实选择dawn/dusk/forest并minimize设置后，状态/pressed正确但screen背景固定#eeefeb、旧landscape display:none；dawn与forest PNG同hash，dusk hash不同但底色同，不声称三图完全一致。独立复核认UX038/P2：默认3D里的“桌面颜色”无实际色彩结果，既有问题非E9b回归，不推翻UI焦点/存储修复。E9c只读方案已备，待E9b checkpoint后使screen外露桌面背景使用现有明暗6palette，不改阅读面/机框/world材质。短横屏contact/settings仍有滚动成本，独立评分留低分。
+
+
+### E9b独立闭环
+
+独立7合同、4实际context/20图、4hash+QA均已复核，无新增P0/P1；UX034按原button/焦点、原runtimeLabel、UI/publictool同步与pending关闭/迟到隔离范围闭合。UX028/029只联系/设置已测字号/命中片段闭，其他App不继承。桌面contact D1/D4=94.5/93、settings93/91.5；手机约93/91.5；短contact89/90、settings90.5/90，留滚动成本低分，不凑96。UX038/P2真实壁纸输出缺口开放，E9c只读方案待本地checkpoint后实现。两审计Agent已停写，inventory1.16为309族/362selectors/277状态/60局部族、完整0；WhatsApp是既有功能独立补漏control.10f744。

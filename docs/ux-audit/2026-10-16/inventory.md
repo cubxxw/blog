@@ -263,7 +263,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `S.APP.notes.EXPORT` | 导出.md | `[data-note-export]`<br>[assets/js/space/apps.js:115](../../../assets/js/space/apps.js) | 保存本地备份 | `command` / source-only |
 | `S.APP.notes.SANDBOX` | 保存到沙盒 | `[data-note-sandbox]`<br>[assets/js/space/apps.js:115](../../../assets/js/space/apps.js) | 写到已连接的本地Linux环境 | `async` / source-only |
 | `S.APP.contact.DRAFT` | 留言草稿 | `[data-message-draft]`<br>[assets/js/space/apps.js:136](../../../assets/js/space/apps.js) | 起草要发给作者的话 | `input` / source-only |
-| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | `[data-contact-email], [data-contact-github], .space-contact-links a`<br>[assets/js/space/apps.js:136](../../../assets/js/space/apps.js) | 用户选渠道自行确认发送 | `nav` / source-only |
+| `S.APP.contact.CHANNEL` | 邮件/GitHub公开留言/WhatsApp/社交 | `[data-contact-email], [data-contact-github], .space-contact-links a, .space-contact__actions a[href*="wa.me/"]`<br>[assets/js/space/apps.js:164](../../../assets/js/space/apps.js) | 用户选渠道自行确认发送 | `nav` / source-only |
 | `S.APP.terminal.COMMAND` | 命令输入/help/history/run | `[data-terminal-input]`<br>[assets/js/space/apps.js:146](../../../assets/js/space/apps.js) | 执行工作区命令或本地沙盒命令 | `async` / source-only |
 | `S.APP.agent.NEW` | 新对话 | `[data-agent-new], [data-agent-session-new]`<br>[assets/js/space/agent-panel.js:92](../../../assets/js/space/agent-panel.js) | 切换一个干净的任务 | `command` / source-only |
 | `S.APP.agent.HISTORY` | 历史/关闭历史 | `[data-agent-history], [data-agent-history-close]`<br>[assets/js/space/agent-panel.js:92](../../../assets/js/space/agent-panel.js) | 恢复过往对话 | `toggle` / source-only |
@@ -1681,3 +1681,25 @@ E9a与a1各4源hash分别冻结。initial **0过/6失败**均为无demo时预期
 只新增 **2条normal内容几何记录**，不重记a1其他状态；4新图登记，本轮看产品first/last2图。UX037按此scope标改善/已测，旧a1视觉缺口不改原值/原图；Ask仍仅hit，contact/settings缺口不继承关闭。未做全站/完整控件评分。
 
 累计 **257条状态 / 60族局部证据**，保持 **309族 / 361selectors / 57journeys / 18roadmap**、完整family通过0/fullscore null。没有启动browser/构建，只写两inventory文件，现停写。
+
+
+## v1.16 E9b联系/设置：有界状态与颜色视觉基线
+
+导入 **2026-10-16T04:03:11+08:00**。依据[E9b manifest](evidence/batch-e9b-source.json)冻结4源hash+QA，与当前逐项一致；base`ebc488e69640`。只新增必要状态/引用，原历史保留。
+
+**补漏既有WhatsApp：** 同`S.APP.contact.CHANNEL`新增control **`S.APP.contact.CHANNEL.control.10f744`**，稳定selector`.space-contact__actions a[href*="wa.me/"]`，对应probe`.space-contact__actions a.last`。该anchor不在8社交容器，独立绑定第11次capture click与catalog href。原3个渠道control/8社交内容均保留；这是旧功能漏映射，**309族不变、361→362selectors**。AI向导只登记geometry support selector，不授启动/API/回答行为。
+
+| 片段 | 实测范围 | 不外推 |
+| --- | --- | --- |
+| 7合同 / 4actual / 20图 | 合同6视口中英明暗+独立pending-close；actual320×740zh、390×844en、844×390en coarse、1440×900zh fine，全部reduce | 合同320高844与actual740分开；非实体手机/完整Tab/OS IME |
+| theme/color | actual5次真实坐标事件dark→forest→light→dusk→dark，两帧原button/focus/pressed/state；合同theme显式focus+Space，color三值坐标，另核storage | 5事件不是5个不同选项。UX034仅所测焦点连续性/外部tool路径独立关闭 |
+| 原runtime/close | actual单GET/原label pending→stub false；合同首次stub true不抢draft focus。独立pendingclose实点后旧GET收abort，新mount false后旧late true不覆写 | connected来自stub，不是真实后端；静态label非新按钮；不授全站AI取消 |
+| 草稿/notes | 草稿投影约16.4px，无横溢，同DOM/值/最小化重开继续写；public tool改外观时textarea仍focus且settingsARIA同步；notes原DOM值保留 | public tool是programmatic，与真实选择分开；不授全部持久化/其他App |
+| 11渠道 | 实际逐一44/hit，真实坐标点击capture阻导航；catalog href及mail/GitHub特殊字符/换行draft编码正确 | 没有外发邮件/公开issue/message或访问外站。WhatsApp不继承8社交通过 |
+| 其他设置入口 | language/café/export/arrange仅settings实例44/hit；能力名≥16、辅助状态≥13、说明≥16 | 不授语言切换/切景返回/导出文件/整理动作 |
+
+[7合同log](evidence/batch-e9b-contracts.log)、[actual JSON](evidence/batch-e9b-actions.json)、[actual log](evidence/batch-e9b-actions.log)、[probe](batch-e9b-actions.browser.mjs)及20图索引集中在JSON `e9b-contact-settings-import`；本Agent查看844pending、390contact bottom、1440settings top共3图。initial probe误把旧fine-pointer最小化26.24px也要求44，改探针为该处24；**不记生产新failure**，主要动作/coarse目标仍44。
+
+**UX038独立P2视觉失败仍开放：** [颜色基线](evidence/spatial-wallpaper-baseline.json)、[log](evidence/spatial-wallpaper-baseline.log)、[probe](probe-spatial-wallpaper.browser.mjs)与3图，仅1440×900zh/light/reduce真实dawn/dusk/forest→最小化露monitor。三值pressed/stored/dataset正确，screen仍`rgb(238,239,235)`、landscape `display:none`；dawn/forest monitor PNG相同，dusk虽不同但底色同。`desktop.js:94`写dataset，`space-classic.css:5–10`改landscape，`space-cafe.css:90/122`用surface并隐藏landscape。独立review确认此范围P2；**选中成功不等于桌面视觉变色**，E9c尚未实施。
+
+旧pre-E9 BODY焦点负记录保留，仅附有界follow-up。UX028/029补齐products/books/contact/settings这批字号/目标片段，其他App与未测状态仍开放，未关闭全站缺口。本轮新增 **19条E9b状态+1条独立视觉基线=20条**；累计 **277条 / 60族有局部状态证据**。总量 **309族 / 362selectors / 57journeys / 18roadmap**，完整family通过0、完整分数null。仅更新两inventory文件，未启动browser/构建/测试，现停写供checkpoint。
