@@ -1823,3 +1823,29 @@ E11b的17图、2旧专项及真实Back完整保留，c未重跑Back/旧专项，
 **Back初失败未解释**：[初enMore→Back10s timeout](evidence/batch-e12c-back-initial-actions.log)、原source和6初图保留。3诊断返回精确Y、finalmain6条JSONL均pass，但没有生产修复/放宽原gate，不能把原失败说成已fix或不可能复现。normal目标图仍首次可见，非smooth终态。
 
 UX044/046继续开放，完整族0/fullscore null。本Agent只看2张既有正式图、读回source/receipt并复算22样本，无browser/构建/测试。累计 **328状态 / 69族局部证据**；保持 **309族 / 367selector entries / 57journeys / 18roadmap**，现停写供checkpoint与review同步。
+
+
+## v1.24 E13e：单一文章AI与 Space 实测/负基线
+
+导入 **2026-10-16T07:44:53+08:00**；[E13e source](evidence/batch-e13e-source.json)11源含7生产变更/2测试/2未改依赖，[final provenance](evidence/batch-e13e-provenance.json) SHA`92c225d717…`绑定71唯一文件路径（本Agent74次SHA核对）及25正式图。**13不同合同15.3s + 4旧专项4.5s分开**，7actualcontexts；正式引用段落旅程只用`batch-e13e-settled-scope.json`，不拿opacity过渡帧/早期视觉误读当稳定缺陷。
+
+E13只新增 **11状态**：canonical输入focus/normal、实际Send、quickchip、Stop、clear、Analyze、FAB、compactAI tab，以及nonAI等价焦点合同、旧Retry专项。`.rc-ai-textarea`4748de/Send a9e4f5/Chip4702a5随同一root搬入两host；旧abs001165/6c8f06/88b800/c0f33f保历史selector，**不表示仍有第二DOM，也不继承新通过**。manual followup不认证建议按钮fc51ca；静态Share卡不认证分享动作。
+
+| 有界实证 | 范围与限制 |
+| --- | --- |
+| 原root/input/messages、草稿/首交接选区、跨断点focus与显式close/reopen | 中英1199↔1200与完成general历史；迁移不等于用户取消，exact overflow!important另为合同 |
+| general→A→手动追问→B→A→clear→general | 程序DOMRange选择真实公共段落后实际toolbar点击；原AIClient受控请求，不声称物理拖选/付费模型 |
+| 两轮真实wheel阅读锚点、后续stream、Stop | 首可见字符相对锚点≤1px；跨host不abort，实际Stop只一次；原Stop partial-answer设计未整体验收 |
+| 实际Send/quickchip与compact Analyze | 自disabled/隐藏后保AI归属；新Analyze进可见textarea，Esc回FAB；非AI/外theme不抢来自合同，非全Tab/AT |
+
+独立复核 **UX044关闭命名`closed_E13e_canonical_DOM_active_AI_handoff_context_stream_owner_explicit_analyze_scope`**，旧resize负证据原样保留。早期A/B/C/D失败、合法fixture/normalmotion/selectiontext修正与截图误读更正在provenance留档；小字/多层引用边框仍是具体设计差距，完整分数null，不授整体验收96。
+
+另新增 **6条**（不按PNG扩计）：
+
+1. [电脑1actual/7图](evidence/probe-space-computer-provenance.json)：只`b4a35c`一状态，1180,325 hover/click→workspace→真实reader首篇→回cafe→50pxdrag不入场；源9ec，无生产修复，其他遮挡/阈值边沿/keyboard/motion未知。`visibleButtons`仅layout-present，不是可视按钮普查。
+2. [收藏1actual/6图](evidence/probe-space-bookmark-provenance.json)：只`cab162`一状态，390en真实save→favorites→reload→remove→empty可用；本Agent逐看6图，评分Agent未逐图审，不因此新增评分卡行为通过。仅星号变更、aria-pressed/label缺失记观察，不称AT失败。实量32.44×44.28不是44square通过，小标签仍待改善。
+3. **UX048/P2四族负normal**：[阅读小字4图](evidence/probe-space-reading-scale-provenance.json)，只reader.ITEM bc2443标题/date/description、FILTER bcd452首all标签、PROFILE27a4fa分组的非交互简介支持、LINKS963723实际contact文字。1440zh/390en原9ec样本约7.42–10.66投影CSSpx；bbox/offsetWidth含rounding，非字形像素或通用WCAG字号阈值。未测其他links/filter功能；手机44hit不抵消小label。该缺口开放。
+
+[E14单face 3×3/18图](evidence/boundary-font-registration-provenance.json)只registry引用，**0新state**；discovery/humanChoice unreviewed，不promote Gold，不声称完整字体bundle或全过程文字可见；UX046继续开放。
+
+本轮 **17新状态→345累计 / 81族局部证据**（80partial+1measured；203source-only+25rendered），由JSON条目复算；完整族0/fullnull。保持 **309族/367selector entries/57journeys/18roadmap**。本Agent仅既有证据读取、11图查看与SHA校验，无browser/构建/测试；现停写供checkpoint与scorecard同步。

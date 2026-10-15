@@ -1,0 +1,431 @@
+{
+  "at": "2026-10-15T22:57:37.211Z",
+  "sources": {
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/css/space.css": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "layouts/partials/space/profile.html": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205"
+  },
+  "previewCheckpoint": "9ec879f3; E13 WIP not built",
+  "rows": [
+    {
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "zh",
+        "coarse": false
+      },
+      "welcome": {
+        "heading": {
+          "selector": "H3.",
+          "text": "熊鑫伟 cubxxw",
+          "font": "550 23px / 27.6px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "23px",
+          "lineHeight": "27.6px",
+          "width": 598,
+          "bbox": {
+            "x": 475.6398010253906,
+            "y": 410.2684020996094,
+            "width": 490.3603820800781,
+            "height": 22.62689208984375,
+            "top": 410.2684020996094,
+            "right": 966.0001831054688,
+            "bottom": 432.8952941894531,
+            "left": 475.6398010253906
+          },
+          "projectedScale": 0.8200006389298965,
+          "projectedFontCSSpx": 18.86001469538762,
+          "projectedLineHeightCSSpx": 22.632017634465143,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "description": {
+          "selector": "P.",
+          "text": "熊鑫伟（cubxxw / BEAR，2001 年生）构建 AI 产品，关注 Agent 评估与可靠执行。曾参与 OpenIM 的工程和社区协作，在 cubxxw.com 公开项目实践与每月思考，旅行仍是生活的一部分。",
+          "font": "13px / 24.05px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "13px",
+          "lineHeight": "24.05px",
+          "width": 598,
+          "bbox": {
+            "x": 475.6398010253906,
+            "y": 444.37530517578125,
+            "width": 490.3603820800781,
+            "height": 39.436920166015625,
+            "top": 444.37530517578125,
+            "right": 966.0001831054688,
+            "bottom": 483.8122253417969,
+            "left": 475.6398010253906
+          },
+          "projectedScale": 0.8200006389298965,
+          "projectedFontCSSpx": 10.660008306088654,
+          "projectedLineHeightCSSpx": 19.721015366264012,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "action": {
+          "selector": "BUTTON.",
+          "text": "联系我 ↗",
+          "font": "11px / 16.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "11px",
+          "lineHeight": "16.5px",
+          "width": 45,
+          "bbox": {
+            "x": 614.1558837890625,
+            "y": 532.6791381835938,
+            "width": 36.60528564453125,
+            "height": 13.530029296875,
+            "top": 532.6791381835938,
+            "right": 650.7611694335938,
+            "bottom": 546.2091674804688,
+            "left": 614.1558837890625
+          },
+          "projectedScale": 0.8134507921006945,
+          "projectedFontCSSpx": 8.947958713107639,
+          "projectedLineHeightCSSpx": 13.42193806966146,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        }
+      },
+      "library": {
+        "filter": {
+          "selector": "BUTTON.",
+          "text": "全部文章",
+          "font": "11px / 16.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "11px",
+          "lineHeight": "16.5px",
+          "width": 122,
+          "bbox": {
+            "x": 282.1196594238281,
+            "y": 258.52984619140625,
+            "width": 100.04006958007812,
+            "height": 28.2900390625,
+            "top": 258.52984619140625,
+            "right": 382.15972900390625,
+            "bottom": 286.81988525390625,
+            "left": 282.1196594238281
+          },
+          "projectedScale": 0.8200005703285093,
+          "projectedFontCSSpx": 9.020006273613602,
+          "projectedLineHeightCSSpx": 13.530009410420403,
+          "hit": true,
+          "ariaPressed": "true",
+          "opacity": "1"
+        },
+        "date": {
+          "selector": "SMALL.",
+          "text": "2026.10.08",
+          "font": "9px / 13.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "9px",
+          "lineHeight": "13.5px",
+          "width": 49,
+          "bbox": {
+            "x": 406.759765625,
+            "y": 248.27984619140625,
+            "width": 40.3978271484375,
+            "height": 9.019989013671875,
+            "top": 248.27984619140625,
+            "right": 447.1575927734375,
+            "bottom": 257.2998352050781,
+            "left": 406.759765625
+          },
+          "projectedScale": 0.8244454520089286,
+          "projectedFontCSSpx": 7.420009068080358,
+          "projectedLineHeightCSSpx": 11.130013602120536,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "title": {
+          "selector": "STRONG.",
+          "text": "2026年10月思考笔记：日常与其他、AI 与 Agent 系统、工程与开源",
+          "font": "550 13px / 19.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "13px",
+          "lineHeight": "19.5px",
+          "width": 457,
+          "bbox": {
+            "x": 406.759765625,
+            "y": 259.7598571777344,
+            "width": 374.74029541015625,
+            "height": 15.990020751953125,
+            "top": 259.7598571777344,
+            "right": 781.5000610351562,
+            "bottom": 275.7498779296875,
+            "left": 406.759765625
+          },
+          "projectedScale": 0.8200006464117204,
+          "projectedFontCSSpx": 10.660008403352366,
+          "projectedLineHeightCSSpx": 15.990012605028548,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "description": {
+          "selector": "SPAN.",
+          "text": "2026 年 10 月思考笔记的持续归档，截至 10 月 8 日共有 68 条公开记录，按 8 个主题整理。内容包括 Agent 评估与遗忘机制、产品设计和个人工作方法，阅读观影后对情谊、命运与主体性的思考。每条笔记保留原始时间戳，回看这些想法出现的时间和上下",
+          "font": "10px / 16.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "10px",
+          "lineHeight": "16.5px",
+          "width": 457,
+          "bbox": {
+            "x": 406.759765625,
+            "y": 279.849853515625,
+            "width": 374.74029541015625,
+            "height": 54.12005615234375,
+            "top": 279.849853515625,
+            "right": 781.5000610351562,
+            "bottom": 333.96990966796875,
+            "left": 406.759765625
+          },
+          "projectedScale": 0.8200006464117204,
+          "projectedFontCSSpx": 8.200006464117205,
+          "projectedLineHeightCSSpx": 13.530010665793387,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "item": {
+          "selector": "BUTTON.space-list-item",
+          "text": "2026.10.082026年10月思考笔记：日常与其他、AI 与 Agent 系统、工程与开源2026 年 10 月思考笔记的持续归档，截至 10 月 8 日共有 68 条公开记录，按 8 个主题整理。内容包括 Agent 评估与遗忘机制、产品设计和个人工作",
+          "font": "14px / 21px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "21px",
+          "width": 457,
+          "bbox": {
+            "x": 406.759765625,
+            "y": 230.2398223876953,
+            "width": 374.74029541015625,
+            "height": 116.85008239746094,
+            "top": 230.2398223876953,
+            "right": 781.5000610351562,
+            "bottom": 347.08990478515625,
+            "left": 406.759765625
+          },
+          "projectedScale": 0.8200006464117204,
+          "projectedFontCSSpx": 11.480009049764085,
+          "projectedLineHeightCSSpx": 17.220013574646128,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        }
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "coarse": true
+      },
+      "welcome": {
+        "heading": {
+          "selector": "H3.",
+          "text": "Xinwei Xiong cubxxw",
+          "font": "550 23px / 27.6px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "23px",
+          "lineHeight": "27.6px",
+          "width": 330,
+          "bbox": {
+            "x": 59.69847106933594,
+            "y": 372.0563049316406,
+            "width": 270.60302734375,
+            "height": 22.62713623046875,
+            "top": 372.0563049316406,
+            "right": 330.30149841308594,
+            "bottom": 394.6834411621094,
+            "left": 59.69847106933594
+          },
+          "projectedScale": 0.8200091737689394,
+          "projectedFontCSSpx": 18.86021099668561,
+          "projectedLineHeightCSSpx": 22.63225319602273,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "description": {
+          "selector": "P.",
+          "text": "Xinwei Xiong (熊鑫伟, aka cubxxw / BEAR, b. 2001) builds AI products with a focus on agent evaluation and reliable execution. He cont",
+          "font": "16px / 29.6px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "29.6px",
+          "width": 330,
+          "bbox": {
+            "x": 59.69847106933594,
+            "y": 406.16357421875,
+            "width": 270.60302734375,
+            "height": 169.87005615234375,
+            "top": 406.16357421875,
+            "right": 330.30149841308594,
+            "bottom": 576.0336303710938,
+            "left": 59.69847106933594
+          },
+          "projectedScale": 0.8200091737689394,
+          "projectedFontCSSpx": 13.120146780303031,
+          "projectedLineHeightCSSpx": 24.27227154356061,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "action": {
+          "selector": "BUTTON.",
+          "text": "Say hello ↗",
+          "font": "11px / 16.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "11px",
+          "lineHeight": "16.5px",
+          "width": 59,
+          "bbox": {
+            "x": 262.0613708496094,
+            "y": 644.40185546875,
+            "width": 48.35491943359375,
+            "height": 44.280517578125,
+            "top": 644.40185546875,
+            "right": 310.4162902832031,
+            "bottom": 688.682373046875,
+            "left": 262.0613708496094
+          },
+          "projectedScale": 0.8195749056541314,
+          "projectedFontCSSpx": 9.015323962195446,
+          "projectedLineHeightCSSpx": 13.522985943293168,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        }
+      },
+      "library": {
+        "filter": {
+          "selector": "BUTTON.",
+          "text": "All writing",
+          "font": "10px / 15px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "10px",
+          "lineHeight": "15px",
+          "width": 88,
+          "bbox": {
+            "x": 47.39833450317383,
+            "y": 211.66761779785156,
+            "width": 72.16081237792969,
+            "height": 44.28050231933594,
+            "top": 211.66761779785156,
+            "right": 119.55914688110352,
+            "bottom": 255.9481201171875,
+            "left": 47.39833450317383
+          },
+          "projectedScale": 0.8200092315673828,
+          "projectedFontCSSpx": 8.200092315673828,
+          "projectedLineHeightCSSpx": 12.300138473510742,
+          "hit": true,
+          "ariaPressed": "true",
+          "opacity": "1"
+        },
+        "date": {
+          "selector": "SMALL.",
+          "text": "2026.10.08",
+          "font": "9px / 13.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "9px",
+          "lineHeight": "13.5px",
+          "width": 49,
+          "bbox": {
+            "x": 135.1393280029297,
+            "y": 202.23751831054688,
+            "width": 40.39826965332031,
+            "height": 9.020095825195312,
+            "top": 202.23751831054688,
+            "right": 175.53759765625,
+            "bottom": 211.2576141357422,
+            "left": 135.1393280029297
+          },
+          "projectedScale": 0.8244544827208227,
+          "projectedFontCSSpx": 7.420090344487404,
+          "projectedLineHeightCSSpx": 11.130135516731105,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "title": {
+          "selector": "STRONG.",
+          "text": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+          "font": "550 12px / 18px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "12px",
+          "lineHeight": "18px",
+          "width": 245,
+          "bbox": {
+            "x": 135.1393280029297,
+            "y": 213.7176513671875,
+            "width": 200.9022674560547,
+            "height": 44.280487060546875,
+            "top": 213.7176513671875,
+            "right": 336.0415954589844,
+            "bottom": 257.9981384277344,
+            "left": 135.1393280029297
+          },
+          "projectedScale": 0.8200092549226722,
+          "projectedFontCSSpx": 9.840111059072067,
+          "projectedLineHeightCSSpx": 14.760166588608099,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "description": {
+          "selector": "SPAN.",
+          "text": "October 2026 thought notes: 68 public entries across 8 themes as of October 8, on AI agents, product design, personal work, readin",
+          "font": "10px / 16.5px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "10px",
+          "lineHeight": "16.5px",
+          "width": 245,
+          "bbox": {
+            "x": 135.1393280029297,
+            "y": 262.09820556640625,
+            "width": 200.9022674560547,
+            "height": 54.12060546875,
+            "top": 262.09820556640625,
+            "right": 336.0415954589844,
+            "bottom": 316.21881103515625,
+            "left": 135.1393280029297
+          },
+          "projectedScale": 0.8200092549226722,
+          "projectedFontCSSpx": 8.200092549226722,
+          "projectedLineHeightCSSpx": 13.530152706224092,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        },
+        "item": {
+          "selector": "BUTTON.space-list-item",
+          "text": "2026.10.08October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open SourceOctober 2026 thought notes: 68 ",
+          "font": "14px / 21px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "21px",
+          "width": 245,
+          "bbox": {
+            "x": 135.1393280029297,
+            "y": 184.1973114013672,
+            "width": 200.9022674560547,
+            "height": 145.1416473388672,
+            "top": 184.1973114013672,
+            "right": 336.0415954589844,
+            "bottom": 329.3389587402344,
+            "left": 135.1393280029297
+          },
+          "projectedScale": 0.8200092549226722,
+          "projectedFontCSSpx": 11.48012956891741,
+          "projectedLineHeightCSSpx": 17.220194353376115,
+          "hit": true,
+          "ariaPressed": null,
+          "opacity": "1"
+        }
+      },
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-1440-zh-welcome.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-1440-zh-library.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-390-en-welcome.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-390-en-library.png"
+  ],
+  "limits": "Two named contexts; projectedFontCSSpx is computed font size times actual element bbox.width/offsetWidth (planar workspace view), not raster glyph pixel height/AT or universal WCAG font floor. source-observed inherited small type is separate from task correctness; no source changed. Layout-present hidden/clipped parts not certified by metrics."
+}

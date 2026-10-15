@@ -3,32 +3,29 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "50a08fbbfb19b5f59d2dc95202071f6132466655",
-  "phase": "E12c-independent-closure-ready-local-checkpoint",
-  "batch": "E12c-footnote-visible-keyboard-cue-and-fixed-position",
+  "checkpoint": "9ec879f3c4c04c622523dc9e98222d58bb90ba3f",
+  "phase": "E13e-accepted-independent-final-audit-checkpoint-pending",
+  "batch": "E13e-canonical-AI-and-explicit-analysis-focus",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "E13 UX044 canonical single AI DOM/controller;7source/10case refined readonlyplan;not implemented",
+    "E15 UX048 Space directory/profile legibility +actualbookmarkpressed/44square +actual listreadingpointloss911→0;8contract readonlyplanready",
     "E14 UX046 cold asyncfont registration reflowsarticle;read-only alternatives need bounded experiment",
     "E12c original actualBack10s timeout unexplained;final6trace bounded successes,wholeBack reliability unknown",
-    "QR portrait error/account grouping;AT/Safari/physical/fullmatrix/BFCache unknown"
+    "QR portrait error/account grouping;AT/Safari/physical/fullmatrix/BFCache unknown",
+    "E15 Space profile/directory actual2contexts4PNG confirms small projected type,readonlyproposal,noimpl"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e12c-provenance.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e13e-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T22:43:02.913628+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e12c-source.json",
+  "updatedAt": "2026-10-15T23:47:57.439762+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e13e-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "Independent20formalPNG;22contrast rawmin4.879289268784955;4src/QA/4runners/provenance/6Backtrace match,no newP0/P1;309families/367selectors/328states/69partial/0full/null;D1D4local96/96;UX047namedclosed;UX044046open;originalBacktimeoutunexplained",
-  "previewBatch": "E12c1 accepted named scope: Hugo4481ms/10pass17.1s/6actual20PNG/22computedcontrast;full score null",
-  "executorOwnership": [
-    "static/js/footnote-preview.js fixed viewport coordinates/session stable visual keyboard hint",
-    "assets/css/extended/zzz-footnote-preview.css fixed positioning/14px hint;footer byte-unchanged",
-    "tests/e2e/footnote-preview-contracts.spec.ts 8base strengthened +2 actual shortTab fine/coarse =10cases"
-  ]
+  "review": "Independent25formalPNG/71uniquehash+11src/QA/6runners+supplemental match;no newP0/P1;UX044 scopedclosed;309families/367selectorentries/345states/81partial/0full/null;localD1=94.5,D4=90.5 due tinylabels/redundantquoteoutlines,retainedforE16;UX046/048open",
+  "previewBatch": "E13e accepted Hugo3781ms/13pass15.3s/4old4.5s/7actual25formalPNG",
+  "executorOwnership": []
 }

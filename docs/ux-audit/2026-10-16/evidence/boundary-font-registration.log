@@ -1,0 +1,9 @@
+{"case":"normal-fast","variant":"A","delta":{"root":0,"document":0,"viewport":0,"docHeight":0},"loaded":[{"family":"Noto Serif","status":"loaded","display":"swap"}]}
+{"case":"normal-fast","variant":"B","delta":{"root":0,"document":0,"viewport":0,"docHeight":0},"loaded":[{"family":"Noto Serif","status":"loaded","display":"optional"}]}
+{"case":"normal-fast","variant":"C","delta":{"root":0,"document":0,"viewport":0,"docHeight":0},"loaded":[{"family":"Noto Serif","status":"loaded","display":"optional"}]}
+{"case":"edge-cached-late-registration","variant":"A","delta":{"root":0,"document":171.34375,"viewport":171.34375,"docHeight":973},"loaded":[{"family":"Noto Serif","status":"loaded","display":"swap"}]}
+{"case":"edge-cached-late-registration","variant":"B","delta":{"root":0,"document":0,"viewport":0,"docHeight":0},"loaded":[{"family":"Noto Serif","status":"loaded","display":"optional"}]}
+{"case":"edge-cached-late-registration","variant":"C","delta":{"root":0,"document":0,"viewport":0,"docHeight":0},"loaded":[{"family":"Noto Serif","status":"loaded","display":"optional"}]}
+{"case":"failure-slow-font","variant":"A","delta":{"root":0,"document":171.34375,"viewport":171.34375,"docHeight":973},"loaded":[{"family":"Noto Serif","status":"loaded","display":"swap"}]}
+{"case":"failure-slow-font","variant":"B","delta":{"root":0,"document":0,"viewport":0,"docHeight":0},"loaded":[{"family":"Noto Serif","status":"loaded","display":"optional"}]}
+{"case":"failure-slow-font","variant":"C","delta":{"root":0,"document":0,"viewport":0,"docHeight":0},"loaded":[{"family":"Noto Serif","status":"loaded","display":"optional"}]}

@@ -1,0 +1,122 @@
+{
+  "at": "2026-10-15T23:37:10.318Z",
+  "sources": {
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/css/space.css": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258"
+  },
+  "view": {
+    "width": 390,
+    "height": 844,
+    "locale": "en",
+    "coarse": true,
+    "motion": "reduce"
+  },
+  "url": "/growth/posts/2026-10-thought-notes/",
+  "steps": [
+    {
+      "name": "before-save",
+      "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+      "bookmark": {
+        "text": "☆ Save",
+        "pressed": null,
+        "label": null,
+        "box": {
+          "x": 300.3199462890625,
+          "y": 138.27679443359375,
+          "width": 32.441619873046875,
+          "height": 44.28050231933594,
+          "top": 138.27679443359375,
+          "right": 332.7615661621094,
+          "bottom": 182.5572967529297,
+          "left": 300.3199462890625
+        },
+        "hit": true
+      },
+      "library": []
+    },
+    {
+      "name": "saved",
+      "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+      "bookmark": {
+        "text": "★ Save",
+        "pressed": null,
+        "label": null,
+        "box": {
+          "x": 300.3199462890625,
+          "y": 138.27679443359375,
+          "width": 32.441619873046875,
+          "height": 44.28050231933594,
+          "top": 138.27679443359375,
+          "right": 332.7615661621094,
+          "bottom": 182.5572967529297,
+          "left": 300.3199462890625
+        },
+        "hit": true
+      },
+      "library": []
+    },
+    {
+      "name": "favorites",
+      "bookmark": null,
+      "library": [
+        {
+          "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+          "url": "/growth/posts/2026-10-thought-notes/"
+        }
+      ],
+      "filter": "favorites"
+    },
+    {
+      "name": "reloaded-favorites",
+      "bookmark": null,
+      "library": [
+        {
+          "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+          "url": "/growth/posts/2026-10-thought-notes/"
+        }
+      ],
+      "filter": "favorites"
+    },
+    {
+      "name": "removed",
+      "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+      "bookmark": {
+        "text": "☆ Save",
+        "pressed": null,
+        "label": null,
+        "box": {
+          "x": 300.3199462890625,
+          "y": 138.27679443359375,
+          "width": 32.441619873046875,
+          "height": 44.28050231933594,
+          "top": 138.27679443359375,
+          "right": 332.7615661621094,
+          "bottom": 182.5572967529297,
+          "left": 300.3199462890625
+        },
+        "hit": true
+      },
+      "library": []
+    },
+    {
+      "name": "empty-favorites",
+      "bookmark": null,
+      "library": [],
+      "filter": "favorites",
+      "empty": "No bookmarks yetSave an article while reading to find it here.Browse all writing"
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-before-save.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-saved.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-favorites.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-reloaded-favorites.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-removed.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-empty-favorites.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One fresh isolated Chromium context, actual pointer clicks save→favorites→reload→remove→empty; original public article fetch, local browser storage only. No model/subscription/sharing call, AT/native touch or fullmatrix claim. aria-pressed/label raw observations, not AT transcript."
+}

@@ -1,0 +1,71 @@
+{
+  "createdAt": "2026-10-15T23:47:09.553314+00:00",
+  "mode": "boundary",
+  "question": "With the current complete Google CSS manifest, does article-only optional retain an already painted reading point under late CSS and delayed/failed naturally requested font deliveries?",
+  "sourceBaseline": "E13e frozen article production; font head/tokens/typography/localCJK same as accepted9ec; no font production change",
+  "sources": {
+    "layouts/partials/extend_head.html": "016ab7a88fa34427be7d9d954abbf0f3f783c58700ed705abe240ab868c57b2e",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417",
+    "static/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css": "52b2ee5f12e90dcd606c28bfd2d2ddce2182a4022a5342595b384a2365f56720"
+  },
+  "variants": {
+    "A": "unchanged complete Google CSS, font-display:swap",
+    "B": "exact same CSS except font-display:optional"
+  },
+  "scope": "One original English article390x844/dark/reduced-motion. Freeze complete Chromium-UA Google CSS including all5family declarations/unicode-range/weights; serve only naturally requested font files from public URLs, fixed URL/byte SHA inventory. No forced loading unused face, no font redistribution in source. Browser-only route/document overlay; preserve current async registration timing as controlled independent variable.",
+  "cases": [
+    {
+      "id": "fast-before-reading",
+      "case_type": "normal",
+      "stimulus": "style and naturally requested faces delivered before reader centers"
+    },
+    {
+      "id": "css-late-font-immediate",
+      "case_type": "edge",
+      "stimulus": "fallback marker centered and natural phase PNG captured; release CSS, known font fixture bytes immediately available; this is not HTTP warm cache"
+    },
+    {
+      "id": "css-late-font-1200ms",
+      "case_type": "failure",
+      "stimulus": "same lateCSS; fonts held1200ms after request, then successful delivery"
+    },
+    {
+      "id": "css-success-font-404",
+      "case_type": "failure",
+      "stimulus": "same lateCSS; each naturally requested font returns404; public original text remains inspectable at named phases"
+    }
+  ],
+  "stages": [
+    "late only: CSS held, fallback painted reading point",
+    "late only: CSS registered with font held, natural time trace before delivery",
+    "font delivery/failure stage after known font requests settle",
+    "terminal natural phase after link stylesheet and request settlements; fastcase before/after center only"
+  ],
+  "checks": [
+    "same original marker identity/connected/hash/history/focused node/rootY preserved",
+    "record marker document and viewport coordinates, document height, heading/prose/code range line geometry",
+    "B named readingpoint docY and viewportY differences<=0.5CSSpx; A must actually drift before comparison supports improvement, else inconclusive",
+    "record every CSS/font request and response fixture SHA/times/status; unexpected needed font not in fixture invalidates deterministic case until resolved",
+    "CDP CSS.getPlatformFontsForNode for heading/prose/code actual node glyphCount/customFont if supported; otherwise actual rendered family unknown",
+    "zero paid/model/subscription/contact endpoint calls; no public/source edits",
+    "phase screenshots animations:allow with PW_TEST_SCREENSHOT_NO_FONTS_READY=1 only this experiment, permitting deliberately heldfont phases; retain naturally observed time, no waiting fontsready as production remedy"
+  ],
+  "factsPolicy": "Raw receipts immutable; expert visible text reading/automated geometric verdict/AI hypothesis/human preference separate. Named screenshots verify paint at those times only; never claim continuous FOIT-free delivery.",
+  "lifecycle": {
+    "split": "discovery",
+    "review": {
+      "status": "unreviewed"
+    },
+    "humanChoice": "unreviewed"
+  },
+  "timebox": "30min after fixture preparation,8sequential contexts/onebrowser; invalid fixtures stop and preserve failures; no unchanged repeats",
+  "outOfScope": [
+    "realHTTPwarm cache",
+    "all unused font faces/all site pages",
+    "localCJK absence on Windows/Android or changes to its swap manifest",
+    "continuous FOIT/fullCLS/FPS/AT/Safari/physical devices",
+    "production optional change or96certification",
+    "early inline registration necessity or human-approved design choice"
+  ]
+}

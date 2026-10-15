@@ -1,0 +1,2556 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: article-chat-continuity-contracts.spec.ts >> a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once
+- Location: tests/e2e/article-chat-continuity-contracts.spec.ts:81:5
+
+# Error details
+
+```
+Error: expect(received).toBeLessThanOrEqual(expected)
+
+Expected: <= 1
+Received:    50
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - link "cubxxw" [ref=e6] [cursor=pointer]:
+        - /url: https://cubxxw.com/zh/
+      - list [ref=e7]:
+        - listitem [ref=e8]:
+          - link "文章" [ref=e9] [cursor=pointer]:
+            - /url: https://cubxxw.com/zh/articles/
+        - listitem [ref=e13]:
+          - link "空间" [ref=e14] [cursor=pointer]:
+            - /url: https://cubxxw.com/zh/projects/
+      - generic [ref=e16]:
+        - button "搜索" [ref=e17] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e23]:
+            - generic [ref=e24]: ⌘
+            - generic [ref=e25]: K
+        - button "Toggle theme" [ref=e26] [cursor=pointer]
+        - list "Language" [ref=e27]:
+          - listitem [ref=e28]:
+            - link "English" [ref=e29] [cursor=pointer]:
+              - /url: /engineering/posts/use-go-tools-dlv/
+              - text: EN
+          - listitem [ref=e30]:
+            - text: /
+            - generic "简体中文" [ref=e31]: 中
+  - main [ref=e32]:
+    - generic [ref=e33]:
+      - article [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - link "主页" [ref=e37] [cursor=pointer]:
+              - /url: https://cubxxw.com/zh/
+            - text: »
+            - link "Engineering" [ref=e38] [cursor=pointer]:
+              - /url: https://cubxxw.com/zh/engineering/
+          - heading "Go 调试测试以及调试工具 dlv 学习" [level=1] [ref=e39]
+          - paragraph [ref=e40]: 本文深入介绍 Go 语言的调试过程，测试方法以及如何使用调试工具 dlv 来优化代码。
+          - generic [ref=e41]:
+            - generic "2023-06-19 16:38:39 +0800 CST" [ref=e42]: 2023 年 6 月 19 日
+            - text: "· 11 分钟 · 5403 字 · 熊鑫伟，我 | 语言:"
+            - list [ref=e43]:
+              - listitem [ref=e44]:
+                - link "En" [ref=e45] [cursor=pointer]:
+                  - /url: https://cubxxw.com/engineering/posts/use-go-tools-dlv/
+            - text: "|"
+            - link "Suggest Changes" [ref=e46] [cursor=pointer]:
+              - /url: https://github.com/cubxxw/blog/edit/main/content/zh/engineering/posts/use-go-tools-dlv.md
+        - complementary "核心要点" [ref=e48]:
+          - heading "提要" [level=2] [ref=e49]
+          - list [ref=e51]:
+            - listitem [ref=e52]: dlv是Go语言功能最完善的调试工具，相比gdb对goroutine和Go类型支持更出色，支持本地和远程调试功能。
+            - listitem [ref=e53]: VSCode可一键生成测试单元并通过launch.json配置本地或远程调试，支持设置断点、查看变量、跟踪调用栈等完整调试工作流。
+            - listitem [ref=e54]: dlv提供break、continue、print、locals、goroutines等丰富指令，能够访问深层调用栈变量信息，优于gdb在Go程序调试中的表现。
+        - generic [ref=e55]:
+          - heading "调试Go工程" [level=2] [ref=e56]
+          - paragraph [ref=e57]: "::: tip prepare："
+          - list [ref=e58]:
+            - listitem [ref=e59]: vscode
+            - listitem [ref=e60]: golang 1.92
+          - paragraph [ref=e61]: ":::"
+          - heading "demo" [level=3] [ref=e62]
+          - generic [ref=e63]:
+            - code [ref=e64]: go mod init test
+            - button "复制" [ref=e65] [cursor=pointer]
+          - paragraph [ref=e66]:
+            - text: In
+            - code [ref=e67]: main.go
+            - text: file
+          - generic [ref=e68]:
+            - code [ref=e70]:
+              - generic [ref=e72]:
+                - generic [ref=e73]: package
+                - text: main
+              - generic [ref=e75]:
+                - generic [ref=e76]: import
+                - text: (
+              - generic [ref=e77]: "\"fmt\""
+              - generic [ref=e80]: )
+              - generic [ref=e82]: // Swap functions
+              - generic [ref=e86]:
+                - generic [ref=e87]: func
+                - generic [ref=e89]: swap
+                - generic [ref=e91]: (
+                - generic [ref=e93]: x
+                - generic [ref=e95]: ","
+                - generic [ref=e98]: "y"
+                - generic [ref=e101]: "*"
+                - generic [ref=e103]: string
+                - generic [ref=e106]: )
+                - generic [ref=e108]: (
+                - generic [ref=e110]: string
+                - generic [ref=e113]: ","
+                - generic [ref=e116]: string
+                - generic [ref=e119]: )
+                - text: "{"
+              - generic [ref=e121]: //XOR exchange
+              - generic [ref=e124]: "*x, *y = *y, *x"
+              - generic [ref=e126]: "}"
+              - generic [ref=e129]:
+                - generic [ref=e130]: func
+                - generic [ref=e132]: main
+                - generic [ref=e134]: ()
+                - text: "{"
+              - generic [ref=e137]:
+                - text: fmt.Println(
+                - generic [ref=e138]: "\"Hello, world!\""
+                - text: )
+              - generic [ref=e139]: //Swap functions
+              - generic [ref=e143]:
+                - generic [ref=e144]: for
+                - text: i :=
+                - generic [ref=e145]: "0"
+                - text: ; i <
+                - generic [ref=e146]: "10"
+                - text: "; i++ {"
+              - generic [ref=e148]:
+                - text: a :=
+                - generic [ref=e149]: "\"a\""
+              - generic [ref=e151]:
+                - text: b :=
+                - generic [ref=e152]: "\"b\""
+              - generic [ref=e153]: swap(&a, &b)
+              - generic [ref=e155]: fmt.Println(a, b)
+              - generic [ref=e157]: "}"
+              - generic [ref=e159]: "}"
+            - button "复制" [ref=e161] [cursor=pointer]
+          - heading "vscode一键生成测试" [level=2] [ref=e162]
+          - generic [ref=e163]:
+            - code [ref=e165]:
+              - generic [ref=e167]:
+                - text: ">gotest"
+                - generic [ref=e168]: for
+                - text: package/function
+            - button "复制" [ref=e169] [cursor=pointer]
+          - paragraph [ref=e170]: "::: tip 分别是为包生成测试单元，为函数生成测试单元。 :::"
+          - paragraph [ref=e171]:
+            - strong [ref=e172]: 生成如下：
+          - generic [ref=e173]:
+            - code [ref=e175]:
+              - generic [ref=e177]:
+                - generic [ref=e178]: package
+                - text: main
+              - generic [ref=e180]:
+                - generic [ref=e181]: import
+                - text: (
+              - generic [ref=e182]: "\"testing\""
+              - generic [ref=e185]: )
+              - generic [ref=e188]:
+                - generic [ref=e189]: func
+                - generic [ref=e191]: Test_main
+                - generic [ref=e193]: (
+                - generic [ref=e195]: t
+                - generic [ref=e198]: "*"
+                - generic [ref=e200]: testing
+                - generic [ref=e202]: .
+                - generic [ref=e204]: T
+                - generic [ref=e206]: )
+                - text: "{"
+              - generic [ref=e209]:
+                - text: tests := []
+                - generic [ref=e210]: struct
+                - text: "{"
+              - generic [ref=e212]:
+                - text: name
+                - generic [ref=e213]: string
+              - generic [ref=e214]: "}{"
+              - generic [ref=e216]: "// TODO: Add test cases."
+              - generic [ref=e220]: "}"
+              - generic [ref=e223]:
+                - generic [ref=e224]: for
+                - text: _, tt :=
+                - generic [ref=e225]: range
+                - text: "tests {"
+              - generic [ref=e227]:
+                - text: t.Run(tt.name,
+                - generic [ref=e228]: func
+                - generic [ref=e230]: (
+                - generic [ref=e232]: t
+                - generic [ref=e235]: "*"
+                - generic [ref=e237]: testing
+                - generic [ref=e239]: .
+                - generic [ref=e241]: T
+                - generic [ref=e243]: )
+                - text: "{"
+              - generic [ref=e245]: main()
+              - generic [ref=e247]: "})"
+              - generic [ref=e249]: "}"
+              - generic [ref=e251]: "}"
+              - generic [ref=e254]:
+                - generic [ref=e255]: func
+                - generic [ref=e257]: Test_swap
+                - generic [ref=e259]: (
+                - generic [ref=e261]: t
+                - generic [ref=e264]: "*"
+                - generic [ref=e266]: testing
+                - generic [ref=e268]: .
+                - generic [ref=e270]: T
+                - generic [ref=e272]: )
+                - text: "{"
+              - generic [ref=e275]:
+                - generic [ref=e276]: type
+                - text: args
+                - generic [ref=e277]: struct
+                - text: "{"
+              - generic [ref=e279]:
+                - text: x *
+                - generic [ref=e280]: string
+              - generic [ref=e282]:
+                - text: y *
+                - generic [ref=e283]: string
+              - generic [ref=e284]: "}"
+              - generic [ref=e287]:
+                - text: tests := []
+                - generic [ref=e288]: struct
+                - text: "{"
+              - generic [ref=e290]:
+                - text: name
+                - generic [ref=e291]: string
+              - generic [ref=e292]: args args
+              - generic [ref=e295]:
+                - text: want
+                - generic [ref=e296]: string
+              - generic [ref=e298]:
+                - text: want1
+                - generic [ref=e299]: string
+              - generic [ref=e300]: "}{"
+              - generic [ref=e302]: "// TODO: Add test cases."
+              - generic [ref=e306]: "}"
+              - generic [ref=e309]:
+                - generic [ref=e310]: for
+                - text: _, tt :=
+                - generic [ref=e311]: range
+                - text: "tests {"
+              - generic [ref=e313]:
+                - text: t.Run(tt.name,
+                - generic [ref=e314]: func
+                - generic [ref=e316]: (
+                - generic [ref=e318]: t
+                - generic [ref=e321]: "*"
+                - generic [ref=e323]: testing
+                - generic [ref=e325]: .
+                - generic [ref=e327]: T
+                - generic [ref=e329]: )
+                - text: "{"
+              - generic [ref=e331]: got, got1 := swap(tt.args.x, tt.args.y)
+              - generic [ref=e334]:
+                - generic [ref=e335]: if
+                - text: "got != tt.want {"
+              - generic [ref=e337]:
+                - text: t.Errorf(
+                - generic [ref=e338]: "\"swap() got = %v, want %v\""
+                - text: ", got, tt.want)"
+              - generic [ref=e339]: "}"
+              - generic [ref=e342]:
+                - generic [ref=e343]: if
+                - text: "got1 != tt.want1 {"
+              - generic [ref=e345]:
+                - text: t.Errorf(
+                - generic [ref=e346]: "\"swap() got1 = %v, want %v\""
+                - text: ", got1, tt.want1)"
+              - generic [ref=e347]: "}"
+              - generic [ref=e349]: "})"
+              - generic [ref=e351]: "}"
+              - generic [ref=e353]: "}"
+            - button "复制" [ref=e355] [cursor=pointer]
+          - paragraph [ref=e356]:
+            - strong [ref=e357]:
+              - text: 我们在
+              - code [ref=e358]: "TODO: Add test cases."
+              - text: 那边给出测试就好了：
+          - paragraph [ref=e359]:
+            - text: 也有快捷键，我们先加入一个
+            - code [ref=e360]: "{}"
+            - text: ：
+          - generic [ref=e361]:
+            - code [ref=e362]: ">go:file struct"
+            - button "复制" [ref=e363] [cursor=pointer]
+          - paragraph [ref=e364]: 生成：
+          - generic [ref=e365]:
+            - code [ref=e367]:
+              - generic [ref=e369]:
+                - generic [ref=e370]: package
+                - text: main
+              - generic [ref=e372]:
+                - generic [ref=e373]: import
+                - text: (
+              - generic [ref=e374]: "\"testing\""
+              - generic [ref=e377]: )
+              - generic [ref=e380]:
+                - generic [ref=e381]: func
+                - generic [ref=e383]: Test_main
+                - generic [ref=e385]: (
+                - generic [ref=e387]: t
+                - generic [ref=e390]: "*"
+                - generic [ref=e392]: testing
+                - generic [ref=e394]: .
+                - generic [ref=e396]: T
+                - generic [ref=e398]: )
+                - text: "{"
+              - generic [ref=e401]:
+                - text: tests := []
+                - generic [ref=e402]: struct
+                - text: "{"
+              - generic [ref=e404]:
+                - text: name
+                - generic [ref=e405]: string
+              - generic [ref=e406]: "}{"
+              - generic [ref=e408]: "// TODO: Add test cases."
+              - generic [ref=e412]: "{"
+              - generic [ref=e415]:
+                - text: "name:"
+                - generic [ref=e416]: "\"test\""
+                - text: ","
+              - generic [ref=e417]: "},"
+              - generic [ref=e419]: "}"
+              - generic [ref=e422]:
+                - generic [ref=e423]: for
+                - text: _, tt :=
+                - generic [ref=e424]: range
+                - text: "tests {"
+              - generic [ref=e426]:
+                - text: t.Run(tt.name,
+                - generic [ref=e427]: func
+                - generic [ref=e429]: (
+                - generic [ref=e431]: t
+                - generic [ref=e434]: "*"
+                - generic [ref=e436]: testing
+                - generic [ref=e438]: .
+                - generic [ref=e440]: T
+                - generic [ref=e442]: )
+                - text: "{"
+              - generic [ref=e444]: main()
+              - generic [ref=e446]: "})"
+              - generic [ref=e448]: "}"
+              - generic [ref=e450]: "}"
+              - generic [ref=e453]:
+                - generic [ref=e454]: func
+                - generic [ref=e456]: Test_swap
+                - generic [ref=e458]: (
+                - generic [ref=e460]: t
+                - generic [ref=e463]: "*"
+                - generic [ref=e465]: testing
+                - generic [ref=e467]: .
+                - generic [ref=e469]: T
+                - generic [ref=e471]: )
+                - text: "{"
+              - generic [ref=e474]:
+                - generic [ref=e475]: type
+                - text: args
+                - generic [ref=e476]: struct
+                - text: "{"
+              - generic [ref=e478]:
+                - text: x *
+                - generic [ref=e479]: string
+              - generic [ref=e481]:
+                - text: y *
+                - generic [ref=e482]: string
+              - generic [ref=e483]: "}"
+              - generic [ref=e486]:
+                - text: tests := []
+                - generic [ref=e487]: struct
+                - text: "{"
+              - generic [ref=e489]:
+                - text: name
+                - generic [ref=e490]: string
+              - generic [ref=e491]: args args
+              - generic [ref=e494]:
+                - text: want
+                - generic [ref=e495]: string
+              - generic [ref=e497]:
+                - text: want1
+                - generic [ref=e498]: string
+              - generic [ref=e499]: "}{"
+              - generic [ref=e501]: "// TODO: Add test cases."
+              - generic [ref=e505]: "{"
+              - generic [ref=e508]:
+                - text: "name:"
+                - generic [ref=e509]: "\"afsdfwe\""
+                - text: ","
+              - generic [ref=e510]: "args: args{"
+              - generic [ref=e513]:
+                - text: "x:"
+                - generic [ref=e514]: "12"
+                - text: ","
+              - generic [ref=e516]:
+                - text: "y:"
+                - generic [ref=e517]: "214"
+                - text: ","
+              - generic [ref=e518]: "},"
+              - generic [ref=e521]:
+                - text: "want:"
+                - generic [ref=e522]: "\"shabi\""
+                - text: ","
+              - generic [ref=e524]:
+                - text: "want1:"
+                - generic [ref=e525]: "\"wangshan \""
+                - text: ","
+              - generic [ref=e526]: "},"
+              - generic [ref=e528]: "{"
+              - generic [ref=e531]:
+                - text: "name:"
+                - generic [ref=e532]: "\"23asdfs\""
+                - text: ","
+              - generic [ref=e533]: "args: args{"
+              - generic [ref=e536]:
+                - text: "x:"
+                - generic [ref=e537]: "1254"
+                - text: ","
+              - generic [ref=e539]:
+                - text: "y:"
+                - generic [ref=e540]: "421"
+                - text: ","
+              - generic [ref=e541]: "},"
+              - generic [ref=e544]:
+                - text: "want:"
+                - generic [ref=e545]: "\"afswedwe\""
+                - text: ","
+              - generic [ref=e547]:
+                - text: "want1:"
+                - generic [ref=e548]: "\"3erasfdsa\""
+                - text: ","
+              - generic [ref=e549]: "},"
+              - generic [ref=e551]: "}"
+              - generic [ref=e554]:
+                - generic [ref=e555]: for
+                - text: _, tt :=
+                - generic [ref=e556]: range
+                - text: "tests {"
+              - generic [ref=e558]:
+                - text: t.Run(tt.name,
+                - generic [ref=e559]: func
+                - generic [ref=e561]: (
+                - generic [ref=e563]: t
+                - generic [ref=e566]: "*"
+                - generic [ref=e568]: testing
+                - generic [ref=e570]: .
+                - generic [ref=e572]: T
+                - generic [ref=e574]: )
+                - text: "{"
+              - generic [ref=e576]: got, got1 := swap(tt.args.x, tt.args.y)
+              - generic [ref=e579]:
+                - generic [ref=e580]: if
+                - text: "got != tt.want {"
+              - generic [ref=e582]:
+                - text: t.Errorf(
+                - generic [ref=e583]: "\"swap() got = %v, want %v\""
+                - text: ", got, tt.want)"
+              - generic [ref=e584]: "}"
+              - generic [ref=e587]:
+                - generic [ref=e588]: if
+                - text: "got1 != tt.want1 {"
+              - generic [ref=e590]:
+                - text: t.Errorf(
+                - generic [ref=e591]: "\"swap() got1 = %v, want %v\""
+                - text: ", got1, tt.want1)"
+              - generic [ref=e592]: "}"
+              - generic [ref=e594]: "})"
+              - generic [ref=e596]: "}"
+              - generic [ref=e598]: "}"
+            - button "复制" [ref=e600] [cursor=pointer]
+          - heading "测试" [level=2] [ref=e601]
+          - paragraph [ref=e602]: 就像我们上面的测试用例那样，我们回到测试用例，可以直接设计断点调试
+          - paragraph [ref=e603]:
+            - strong [ref=e604]: 选择类型（测试类型）：
+          - generic [ref=e605]:
+            - code [ref=e606]: "\"mode\": \"test\""
+            - button "复制" [ref=e607] [cursor=pointer]
+          - blockquote [ref=e608]:
+            - paragraph [ref=e609]:
+              - text: 可以是 远程的
+              - code [ref=e610]: remote
+              - text: ，或者选择
+              - code [ref=e611]: debug
+          - paragraph [ref=e612]:
+            - strong [ref=e613]: 测试的档案所在目录：
+          - generic [ref=e614]:
+            - code [ref=e616]:
+              - generic [ref=e618]:
+                - generic [ref=e619]: "\"program\""
+                - text: ":"
+                - generic [ref=e620]: "\"${file}\""
+            - button "复制" [ref=e621] [cursor=pointer]
+          - paragraph [ref=e622]: "::: warning"
+          - generic [ref=e623]:
+            - code [ref=e625]:
+              - generic [ref=e626]: "{"
+              - generic [ref=e629]:
+                - generic [ref=e630]: "\"name\""
+                - text: ":"
+                - generic [ref=e631]: "\"Launch test function\""
+                - text: ","
+              - generic [ref=e633]:
+                - generic [ref=e634]: "\"type\""
+                - text: ":"
+                - generic [ref=e635]: "\"go\""
+                - text: ","
+              - generic [ref=e637]:
+                - generic [ref=e638]: "\"request\""
+                - text: ":"
+                - generic [ref=e639]: "\"launch\""
+                - text: ","
+              - generic [ref=e641]:
+                - generic [ref=e642]: "\"mode\""
+                - text: ":"
+                - generic [ref=e643]: "\"test\""
+                - text: ","
+              - generic [ref=e645]:
+                - generic [ref=e646]: "\"program\""
+                - text: ":"
+                - generic [ref=e647]: "\"${workspaceFolder}\""
+                - text: ","
+              - generic [ref=e649]:
+                - generic [ref=e650]: "\"args\""
+                - text: ": ["
+              - generic [ref=e652]:
+                - generic [ref=e653]: "\"-test.run\""
+                - text: ","
+              - generic [ref=e654]: "\"MyTestFunction\""
+              - generic [ref=e657]: "]"
+              - generic [ref=e659]: "}"
+            - button "复制" [ref=e661] [cursor=pointer]
+          - paragraph [ref=e662]: ":::"
+          - heading "完整性的测试" [level=2] [ref=e663]
+          - paragraph [ref=e664]:
+            - strong [ref=e665]: 我们需要设置 program 在某个具体目录下的，比如说：
+          - generic [ref=e666]:
+            - code [ref=e668]:
+              - generic [ref=e669]: "{"
+              - generic [ref=e672]:
+                - generic [ref=e673]: "\"configurations\""
+                - text: ": ["
+              - generic [ref=e674]: "{"
+              - generic [ref=e677]:
+                - generic [ref=e678]: "\"name\""
+                - text: ":"
+                - generic [ref=e679]: "\"Launch Package\""
+                - text: ","
+              - generic [ref=e681]:
+                - generic [ref=e682]: "\"type\""
+                - text: ":"
+                - generic [ref=e683]: "\"go\""
+                - text: ","
+              - generic [ref=e685]:
+                - generic [ref=e686]: "\"request\""
+                - text: ":"
+                - generic [ref=e687]: "\"launch\""
+                - text: ","
+              - generic [ref=e689]:
+                - generic [ref=e690]: "\"mode\""
+                - text: ":"
+                - generic [ref=e691]: "\"auto\""
+                - text: ","
+              - generic [ref=e693]:
+                - generic [ref=e694]: "\"program\""
+                - text: ":"
+                - generic [ref=e695]: "\"${fileDirname}/../main\""
+              - generic [ref=e696]: "},"
+              - generic [ref=e698]: "{"
+              - generic [ref=e701]:
+                - generic [ref=e702]: "\"name\""
+                - text: ":"
+                - generic [ref=e703]: "\"Connect to server\""
+                - text: ","
+              - generic [ref=e705]:
+                - generic [ref=e706]: "\"type\""
+                - text: ":"
+                - generic [ref=e707]: "\"go\""
+                - text: ","
+              - generic [ref=e709]:
+                - generic [ref=e710]: "\"request\""
+                - text: ":"
+                - generic [ref=e711]: "\"attach\""
+                - text: ","
+              - generic [ref=e713]:
+                - generic [ref=e714]: "\"mode\""
+                - text: ":"
+                - generic [ref=e715]: "\"remote\""
+                - text: ","
+              - generic [ref=e717]:
+                - generic [ref=e718]: "\"remotePath\""
+                - text: ":"
+                - generic [ref=e719]: "\"${workspaceFolder}\""
+                - text: ","
+              - generic [ref=e721]:
+                - generic [ref=e722]: "\"port\""
+                - text: ":"
+                - generic [ref=e723]: "22"
+                - text: ","
+              - generic [ref=e725]:
+                - generic [ref=e726]: "\"host\""
+                - text: ":"
+                - generic [ref=e727]: "\"192.168.71.130\""
+              - generic [ref=e728]: "}"
+              - generic [ref=e730]: "]"
+              - generic [ref=e732]: "}"
+            - button "复制" [ref=e734] [cursor=pointer]
+          - paragraph [ref=e735]:
+            - strong [ref=e736]: 指定函数（function）测试：
+          - generic [ref=e737]:
+            - code [ref=e739]:
+              - generic [ref=e740]: // Swap functions
+              - generic [ref=e744]:
+                - generic [ref=e745]: func
+                - generic [ref=e747]: swap
+                - generic [ref=e749]: (
+                - generic [ref=e751]: x
+                - generic [ref=e753]: ","
+                - generic [ref=e756]: "y"
+                - generic [ref=e759]: "*"
+                - generic [ref=e761]: string
+                - generic [ref=e764]: )
+                - generic [ref=e766]: (
+                - generic [ref=e768]: string
+                - generic [ref=e771]: ","
+                - generic [ref=e774]: string
+                - generic [ref=e777]: )
+                - text: "{"
+              - generic [ref=e779]: //XOR exchange
+              - generic [ref=e782]: "*x, *y = *y, *x"
+              - generic [ref=e785]:
+                - generic [ref=e786]: return
+                - text: "*x, *y"
+              - generic [ref=e787]: "}"
+            - button "复制" [ref=e789] [cursor=pointer]
+          - paragraph [ref=e790]:
+            - strong [ref=e791]: 需要指定 test 参数，来指定具体的测试函数：
+          - generic [ref=e792]:
+            - code [ref=e794]:
+              - generic [ref=e795]: "{"
+              - generic [ref=e798]:
+                - generic [ref=e799]: "\"name\""
+                - text: ":"
+                - generic [ref=e800]: "\"Launch test function\""
+                - text: ","
+              - generic [ref=e802]:
+                - generic [ref=e803]: "\"type\""
+                - text: ":"
+                - generic [ref=e804]: "\"go\""
+                - text: ","
+              - generic [ref=e806]:
+                - generic [ref=e807]: "\"request\""
+                - text: ":"
+                - generic [ref=e808]: "\"launch\""
+                - text: ","
+              - generic [ref=e810]:
+                - generic [ref=e811]: "\"mode\""
+                - text: ":"
+                - generic [ref=e812]: "\"test\""
+                - text: ","
+              - generic [ref=e814]:
+                - generic [ref=e815]: "\"program\""
+                - text: ":"
+                - generic [ref=e816]: "\"${workspaceFolder}\""
+                - text: ","
+              - generic [ref=e818]:
+                - generic [ref=e819]: "\"args\""
+                - text: ": ["
+              - generic [ref=e821]:
+                - generic [ref=e822]: "\"-test.run\""
+                - text: ","
+              - generic [ref=e823]: "\"MyTestFunction\""
+              - generic [ref=e826]: "]"
+              - generic [ref=e828]: "},"
+            - button "复制" [ref=e830] [cursor=pointer]
+          - heading "vscode 远程调试" [level=2] [ref=e831]
+          - paragraph [ref=e832]: "::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::"
+          - paragraph [ref=e833]:
+            - strong [ref=e834]: 首先我们需要先启动一个 devle server
+          - generic [ref=e835]:
+            - code [ref=e837]:
+              - generic [ref=e838]: dlv --headless debug Test
+            - button "复制" [ref=e839] [cursor=pointer]
+          - paragraph [ref=e840]:
+            - strong [ref=e841]: 我们可以在另外一台终端或者机器上模拟这个调用：
+          - generic [ref=e842]:
+            - code [ref=e844]:
+              - generic [ref=e845]: root@cubmaster01:~/go/src/k8s.io/kubernetes# dlv connect localhost:40609
+              - generic [ref=e848]:
+                - text: Type
+                - generic [ref=e849]: "'help'"
+                - generic [ref=e850]: for
+                - text: list of commands.
+              - generic [ref=e852]:
+                - text: (dlv)
+                - generic [ref=e853]: break
+                - text: main.go:32
+              - generic [ref=e855]:
+                - text: Breakpoint 1
+                - generic [ref=e856]: set
+                - text: at 0x4a05b2
+                - generic [ref=e857]: for
+                - text: main.main() /workspces/test/main.go:32
+              - generic [ref=e859]:
+                - text: (dlv)
+                - generic [ref=e860]: continue
+              - generic [ref=e861]: "> main.main() /workspces/test/main.go:32 (hits goroutine(1):1 total:1) (PC: 0x4a05b2)"
+              - generic [ref=e863]: "27: gid, _ := strconv.ParseInt(idField, 10, 64)"
+              - generic [ref=e866]:
+                - text: "28:"
+                - generic [ref=e867]: return
+                - text: gid
+              - generic [ref=e868]: "29: }"
+              - generic [ref=e870]: "30:"
+              - generic [ref=e872]:
+                - text: "31: func"
+                - generic [ref=e873]: main
+                - text: "() {"
+              - generic [ref=e874]: "=> 32: debug()"
+              - generic [ref=e876]: "33: }"
+            - button "复制" [ref=e878] [cursor=pointer]
+          - paragraph [ref=e879]:
+            - strong [ref=e880]:
+              - text: 创建
+              - code [ref=e881]: .vscode
+              - text: 文件夹（mod rootfs目录），并在下面创建：
+          - list [ref=e882]:
+            - listitem [ref=e883]:
+              - paragraph [ref=e884]:
+                - text: 创建
+                - code [ref=e885]: settings.json
+            - listitem [ref=e886]:
+              - paragraph [ref=e887]:
+                - text: 创建
+                - code [ref=e888]: launch.json
+                - text: 写入
+              - generic [ref=e889]:
+                - code [ref=e891]:
+                  - generic [ref=e892]: "{"
+                  - generic [ref=e894]: //Use IntelliSense to learn about related properties.
+                  - generic [ref=e897]: //Hover to see a description of an existing property.
+                  - generic [ref=e900]: "//For more information, please visit: https://go.microsoft.com/fwlink/?linkid=830387"
+                  - generic [ref=e904]:
+                    - generic [ref=e905]: "\"version\""
+                    - text: ":"
+                    - generic [ref=e906]: "\"0.2.0\""
+                    - text: ","
+                  - generic [ref=e908]:
+                    - generic [ref=e909]: "\"configurations\""
+                    - text: ": ["
+                  - generic [ref=e910]: "{"
+                  - generic [ref=e913]:
+                    - generic [ref=e914]: "\"name\""
+                    - text: ":"
+                    - generic [ref=e915]: "\"Connect to server\""
+                    - text: ","
+                  - generic [ref=e917]:
+                    - generic [ref=e918]: "\"type\""
+                    - text: ":"
+                    - generic [ref=e919]: "\"go\""
+                    - text: ","
+                  - generic [ref=e921]:
+                    - generic [ref=e922]: "\"request\""
+                    - text: ":"
+                    - generic [ref=e923]: "\"attach\""
+                    - text: ","
+                  - generic [ref=e925]:
+                    - generic [ref=e926]: "\"mode\""
+                    - text: ":"
+                    - generic [ref=e927]: "\"remote\""
+                    - text: ","
+                  - generic [ref=e929]:
+                    - generic [ref=e930]: "\"remotePath\""
+                    - text: ":"
+                    - generic [ref=e931]: "\"/workspace/sealer\""
+                    - text: ","
+                  - generic [ref=e933]:
+                    - generic [ref=e934]: "\"port\""
+                    - text: ":"
+                    - generic [ref=e935]: "22"
+                    - text: ","
+                  - generic [ref=e937]:
+                    - generic [ref=e938]: "\"host\""
+                    - text: ":"
+                    - generic [ref=e939]: "\"192.168.71.130\""
+                  - generic [ref=e940]: "},"
+                  - generic [ref=e942]: "{"
+                  - generic [ref=e945]:
+                    - generic [ref=e946]: "\"name\""
+                    - text: ":"
+                    - generic [ref=e947]: "\"Launch file\""
+                    - text: ","
+                  - generic [ref=e949]:
+                    - generic [ref=e950]: "\"type\""
+                    - text: ":"
+                    - generic [ref=e951]: "\"go\""
+                    - text: ","
+                  - generic [ref=e953]:
+                    - generic [ref=e954]: "\"request\""
+                    - text: ":"
+                    - generic [ref=e955]: "\"launch\""
+                    - text: ","
+                  - generic [ref=e957]:
+                    - generic [ref=e958]: "\"mode\""
+                    - text: ":"
+                    - generic [ref=e959]: "\"debug\""
+                    - text: ","
+                  - generic [ref=e961]:
+                    - generic [ref=e962]: "\"program\""
+                    - text: ":"
+                    - generic [ref=e963]: "\"${file}\""
+                  - generic [ref=e964]: "}"
+                  - generic [ref=e966]: "]"
+                  - generic [ref=e968]: "}"
+                - button "复制" [ref=e970] [cursor=pointer]
+          - paragraph [ref=e971]: "::: warning 方便起见可以直接在调试窗口一键创建"
+          - paragraph [ref=e972]: ":::"
+          - heading "dlv + VSCode + Go开发环境搭建" [level=2] [ref=e973]
+          - paragraph [ref=e974]:
+            - text: "::: tip 需要的问题 项目需要 gcc/c++ 环境，或者是大型的项目需要构建（sealos、sealer、kubernets、"
+            - link "prometheus" [ref=e975] [cursor=pointer]:
+              - /url: https://github.com/prometheus/prometheus
+            - text: ）
+          - paragraph [ref=e976]:
+            - text: "**我需要： ** 使用"
+            - code [ref=e977]: vscode
+            - text: 编辑器编写
+            - code [ref=e978]: go
+            - text: ，然后进行编译、调试（打断点）。
+          - paragraph [ref=e979]: ":::"
+          - paragraph [ref=e980]:
+            - text: dlv 是一个简称， 实际上，
+            - link "delve" [ref=e981] [cursor=pointer]:
+              - /url: https://github.com/go-delve/delve
+            - text: 才是全称，dlv 只是启动命令，如果使用 VScode，默认使用的调试器就是基于 delve 的。
+          - heading "常用指令" [level=3] [ref=e982]
+          - table [ref=e983]:
+            - rowgroup [ref=e984]:
+              - row [ref=e985]:
+                - columnheader "指令" [ref=e986]
+                - columnheader "用处" [ref=e987]
+                - columnheader "实操" [ref=e988]
+            - rowgroup [ref=e989]:
+              - row [ref=e990]:
+                - cell "attach" [ref=e991]
+                - cell "这个命令将使Delve控制一个已经运行的进程，并开始一个新的调试会话。 当退出调试会话时，你可以选择让该进程继续运行或杀死它。" [ref=e992]
+                - cell "case1" [ref=e993]
+              - row [ref=e994]:
+                - cell "exec" [ref=e995]
+                - cell "这个命令将使Delve执行二进制文件，并立即附加到它，开始一个新的调试会话。请注意，如果二进制文件在编译时没有关闭优化功能，可能很难正确地调试它。请考虑在Go 1.10或更高版本上用-gcflags=“all=-N -l “编译调试二进制文件，在Go的早期版本上用-gcflags=\"-N -l”。" [ref=e996]
+                - cell "case2" [ref=e997]
+              - row [ref=e998]:
+                - cell "help" [ref=e999]
+                - cell "使用手册" [ref=e1000]
+                - cell "case3" [ref=e1001]
+              - row [ref=e1002]:
+                - cell "debug" [ref=e1003]
+                - cell "默认情况下，没有参数，Delve将编译当前目录下的 “main “包，并开始调试。或者，你可以指定一个包的名字，Delve将编译该包，并开始一个新的调试会话。" [ref=e1004]
+                - cell "case4" [ref=e1005]
+              - row [ref=e1006]:
+                - cell "test" [ref=e1007]
+                - cell [ref=e1008]:
+                  - text: test命令允许你在单元测试的背景下开始一个新的调试会话。默认情况下，Delve将调试当前目录下的测试。另外，你可以指定一个包的名称，Delve将在该包中调试测试。双破折号
+                  - code [ref=e1009]: "--"
+                  - text: 可以用来传递参数给测试程序。
+                - cell "case5" [ref=e1010]
+              - row [ref=e1011]:
+                - cell "version" [ref=e1012]
+                - cell "查看dlv版本" [ref=e1013]
+                - cell "case6" [ref=e1014]
+          - heading "goroutine" [level=3] [ref=e1015]
+          - paragraph [ref=e1016]:
+            - strong [ref=e1017]: dlv 特别支持 goroutine
+          - list [ref=e1018]:
+            - listitem [ref=e1019]: goroutine
+            - listitem [ref=e1020]: gorouties
+            - listitem [ref=e1021]: thread
+            - listitem [ref=e1022]: threads
+          - heading "dlv调试指令" [level=2] [ref=e1023]
+          - heading "断点管理" [level=3] [ref=e1024]
+          - table [ref=e1025]:
+            - rowgroup [ref=e1026]:
+              - row [ref=e1027]:
+                - columnheader "指令" [ref=e1028]
+                - columnheader "缩写" [ref=e1029]
+                - columnheader "用法" [ref=e1030]
+                - columnheader "案例" [ref=e1031]
+            - rowgroup [ref=e1032]:
+              - row [ref=e1033]:
+                - cell "break" [ref=e1034]
+                - cell "b" [ref=e1035]
+                - cell "设置断点" [ref=e1036]
+                - cell "case7" [ref=e1037]
+              - row [ref=e1038]:
+                - cell "breakpoints" [ref=e1039]
+                - cell "bp" [ref=e1040]
+                - cell "查看当前所有断点" [ref=e1041]
+                - cell "case8" [ref=e1042]
+              - row [ref=e1043]:
+                - cell "clear" [ref=e1044]
+                - cell / [ref=e1045]
+                - cell "删除断点" [ref=e1046]
+                - cell "case9" [ref=e1047]
+              - row [ref=e1048]:
+                - cell "clearall" [ref=e1049]
+                - cell / [ref=e1050]
+                - cell "删除多个断点" [ref=e1051]
+                - cell "case10" [ref=e1052]
+              - row [ref=e1053]:
+                - cell "toggle" [ref=e1054]
+                - cell / [ref=e1055]
+                - cell "启用或关闭断点" [ref=e1056]
+                - cell "case11" [ref=e1057]
+          - heading "程序执行中的调试指令" [level=3] [ref=e1058]
+          - table [ref=e1059]:
+            - rowgroup [ref=e1060]:
+              - row [ref=e1061]:
+                - columnheader "指令" [ref=e1062]
+                - columnheader "缩写" [ref=e1063]
+                - columnheader "用法" [ref=e1064]
+                - columnheader "案例" [ref=e1065]
+            - rowgroup [ref=e1066]:
+              - row [ref=e1067]:
+                - cell "continue" [ref=e1068]
+                - cell "c" [ref=e1069]
+                - cell "继续执行到一个断点或者程序结束吗" [ref=e1070]
+                - cell "case12" [ref=e1071]
+              - row [ref=e1072]:
+                - cell "next" [ref=e1073]
+                - cell "n" [ref=e1074]
+                - cell "执行下一行代码" [ref=e1075]
+                - cell "case13" [ref=e1076]
+              - row [ref=e1077]:
+                - cell "restart" [ref=e1078]
+                - cell "r" [ref=e1079]
+                - cell "重新执行程序" [ref=e1080]
+                - cell "case14" [ref=e1081]
+              - row [ref=e1082]:
+                - cell "step" [ref=e1083]
+                - cell "s" [ref=e1084]
+                - cell "执行代码的下一步" [ref=e1085]
+                - cell "case15" [ref=e1086]
+              - row [ref=e1087]:
+                - cell "step-instruction" [ref=e1088]
+                - cell "si" [ref=e1089]
+                - cell "执行下一行机器码" [ref=e1090]
+                - cell "case16" [ref=e1091]
+              - row [ref=e1092]:
+                - cell "stepout" [ref=e1093]
+                - cell "so" [ref=e1094]
+                - cell "跳出当前执行函数" [ref=e1095]
+                - cell "case17" [ref=e1096]
+          - heading "参数管理" [level=3] [ref=e1097]
+          - table [ref=e1098]:
+            - rowgroup [ref=e1099]:
+              - row [ref=e1100]:
+                - columnheader "指令" [ref=e1101]
+                - columnheader "缩写" [ref=e1102]
+                - columnheader "用法" [ref=e1103]
+                - columnheader "案例" [ref=e1104]
+            - rowgroup [ref=e1105]:
+              - row [ref=e1106]:
+                - cell "args" [ref=e1107]
+                - cell / [ref=e1108]
+                - cell "打印函数input" [ref=e1109]
+                - cell "case18" [ref=e1110]
+              - row [ref=e1111]:
+                - cell "display" [ref=e1112]
+                - cell / [ref=e1113]
+                - cell "打印加入到display的变量的值，每次执行下一行代码或下一个断点时" [ref=e1114]
+                - cell "case19" [ref=e1115]
+              - row [ref=e1116]:
+                - cell "locals" [ref=e1117]
+                - cell / [ref=e1118]
+                - cell "打印局部变量" [ref=e1119]
+                - cell "case20" [ref=e1120]
+              - row [ref=e1121]:
+                - cell "print" [ref=e1122]
+                - cell "p" [ref=e1123]
+                - cell "打印表达式的结果" [ref=e1124]
+                - cell "case21" [ref=e1125]
+              - row [ref=e1126]:
+                - cell "set" [ref=e1127]
+                - cell / [ref=e1128]
+                - cell "设置某个变量的值" [ref=e1129]
+                - cell "case22" [ref=e1130]
+              - row [ref=e1131]:
+                - cell "vars" [ref=e1132]
+                - cell / [ref=e1133]
+                - cell "查看全局变量" [ref=e1134]
+                - cell "case23" [ref=e1135]
+              - row [ref=e1136]:
+                - cell "whatis" [ref=e1137]
+                - cell / [ref=e1138]
+                - cell "查看变量类型" [ref=e1139]
+                - cell "case24" [ref=e1140]
+          - heading "其他" [level=3] [ref=e1141]
+          - table [ref=e1142]:
+            - rowgroup [ref=e1143]:
+              - row [ref=e1144]:
+                - columnheader "指令" [ref=e1145]
+                - columnheader "缩写" [ref=e1146]
+                - columnheader "用法" [ref=e1147]
+                - columnheader "案例" [ref=e1148]
+            - rowgroup [ref=e1149]:
+              - row [ref=e1150]:
+                - cell "disassemble" [ref=e1151]
+                - cell "disass" [ref=e1152]
+                - cell "查看反编译后的代码，机器码" [ref=e1153]
+                - cell "case25" [ref=e1154]
+              - row [ref=e1155]:
+                - cell "exit" [ref=e1156]
+                - cell "quit / q" [ref=e1157]
+                - cell "退出" [ref=e1158]
+                - cell "case26" [ref=e1159]
+              - row [ref=e1160]:
+                - cell "funcs" [ref=e1161]
+                - cell / [ref=e1162]
+                - cell "打印程序用到的所有函数" [ref=e1163]
+                - cell "case27" [ref=e1164]
+              - row [ref=e1165]:
+                - cell "help" [ref=e1166]
+                - cell "h" [ref=e1167]
+                - cell "帮助信息" [ref=e1168]
+                - cell "case28" [ref=e1169]
+              - row [ref=e1170]:
+                - cell "list" [ref=e1171]
+                - cell "ls / l" [ref=e1172]
+                - cell "打印代码" [ref=e1173]
+                - cell "case29" [ref=e1174]
+          - paragraph [ref=e1175]:
+            - strong [ref=e1176]: 一个合适的流程开启我们的调试之旅：
+          - list [ref=e1177]:
+            - listitem [ref=e1178]:
+              - text: 建立相应的目录。到
+              - code [ref=e1179]: /usr/local/go/bin/github.com/
+              - text: 路径下建立这样的路径,建立之后应该存在这样的路径
+              - code [ref=e1180]: /usr/local/go/bin/github.com/derekparker/delve
+              - text: 。
+            - listitem [ref=e1181]:
+              - text: 下载调试依赖的git库：
+              - code [ref=e1182]: https://github.com/derekparker/delve
+              - text: 需直接zip包，然后把源代码解压，然后把源代码直接放到上面的路径下（上面的路径下应该直接是源代码，可以找到Makefile文件！！！！！！）。
+            - listitem [ref=e1183]:
+              - text: 执行命令
+              - code [ref=e1184]: make install
+              - text: 。
+            - listitem [ref=e1185]:
+              - text: 配置VSCode的launch.json文，具体怎么配置给个官网链接，英文的自己去看，看不懂你根本不配看这个文章。
+              - code [ref=e1186]: https://github.com/Microsoft/vscode-go/wiki/Debugging-Go-code-using-VS-Code
+              - text: 。
+            - listitem [ref=e1187]: 打断点进行测试（测试的项目可以是我们一开始编写的hello.go文件）。
+          - heading "安装 dlv" [level=2] [ref=e1188]
+          - generic [ref=e1189]:
+            - code [ref=e1191]:
+              - generic [ref=e1193]:
+                - text: git clone https://github.com/go-delve/delve.git
+                - generic [ref=e1194]: $GOPATH
+                - text: /src/github.com/go-delve/delve
+              - generic [ref=e1196]:
+                - generic [ref=e1197]: cd
+                - generic [ref=e1198]: $GOPATH
+                - text: /src/github.com/go-delve/delve
+              - generic [ref=e1199]: make install
+              - generic [ref=e1201]:
+                - generic [ref=e1202]: export
+                - text: PATH=
+                - generic [ref=e1203]: $PATH
+                - text: ":"
+                - generic [ref=e1204]: $GOPATH
+                - text: /bin
+              - generic [ref=e1205]: dlv version
+            - button "复制" [ref=e1206] [cursor=pointer]
+          - paragraph [ref=e1207]:
+            - strong [ref=e1208]: 或者使用 get：
+          - generic [ref=e1209]:
+            - code [ref=e1211]:
+              - generic [ref=e1212]: go get github.com/derekparker/delve/cmd/dlv
+            - button "复制" [ref=e1213] [cursor=pointer]
+          - heading "添加debug方案" [level=2] [ref=e1214]
+          - paragraph [ref=e1215]:
+            - text: 另外，需要给
+            - code [ref=e1216]: Visual Code
+            - text: 添加对应的
+            - code [ref=e1217]: debug
+            - text: 方案（debug configuration）。在Visual Code的菜单栏上，通过Debug->Open Configurations打开launch.json的编辑界面。在configurations数组中，加入以下内容后，保存文件。
+          - generic [ref=e1218]:
+            - code [ref=e1220]:
+              - generic [ref=e1221]: "{"
+              - generic [ref=e1224]:
+                - generic [ref=e1225]: "\"name\""
+                - text: ":"
+                - generic [ref=e1226]: "\"Launch remote\""
+                - text: ","
+              - generic [ref=e1228]:
+                - generic [ref=e1229]: "\"type\""
+                - text: ":"
+                - generic [ref=e1230]: "\"go\""
+                - text: ","
+              - generic [ref=e1232]:
+                - generic [ref=e1233]: "\"request\""
+                - text: ":"
+                - generic [ref=e1234]: "\"launch\""
+                - text: ","
+              - generic [ref=e1236]:
+                - generic [ref=e1237]: "\"mode\""
+                - text: ":"
+                - generic [ref=e1238]: "\"remote\""
+                - text: ","
+              - generic [ref=e1240]:
+                - generic [ref=e1241]: "\"remotePath\""
+                - text: ":"
+                - generic [ref=e1242]: "\"/root/go/src/hello\""
+                - text: ","
+              - generic [ref=e1244]:
+                - generic [ref=e1245]: "\"port\""
+                - text: ":"
+                - generic [ref=e1246]: "2345"
+                - text: ","
+              - generic [ref=e1248]:
+                - generic [ref=e1249]: "\"host\""
+                - text: ":"
+                - generic [ref=e1250]: "\"192.168.33.123\""
+                - text: ","
+              - generic [ref=e1252]:
+                - generic [ref=e1253]: "\"program\""
+                - text: ":"
+                - generic [ref=e1254]: "\"${fileDirname}\""
+                - text: ","
+              - generic [ref=e1256]:
+                - generic [ref=e1257]: "\"env\""
+                - text: ": {}"
+              - generic [ref=e1258]: "}"
+            - button "复制" [ref=e1260] [cursor=pointer]
+          - heading "执行方法" [level=3] [ref=e1261]
+          - paragraph [ref=e1262]:
+            - strong [ref=e1263]: dlv的debug远程调试需要远端和近端都持有全部的源代码文件
+            - text: 。为了方便，这里就不改变GOPATH，在远端直接将整个项目，扔到
+            - code [ref=e1264]: $GOPATH/src
+            - text: 里面。
+          - paragraph [ref=e1265]:
+            - text: 源代码文件路径为
+            - code [ref=e1266]: $GOPATH/src/hello/main.go
+          - paragraph [ref=e1267]:
+            - text: 在近端，直接创建
+            - code [ref=e1268]: hello
+            - text: 目录，就把源代码文件直接放在里面。
+          - generic [ref=e1269]:
+            - code [ref=e1271]:
+              - generic [ref=e1273]:
+                - text: dlv debug --headless --listen
+                - generic [ref=e1274]: "\":2345\""
+                - text: "--log --api-version 2"
+            - button "复制" [ref=e1275] [cursor=pointer]
+          - paragraph [ref=e1276]: 画面显示以下内容则说明dlv服务端已经就绪。
+          - generic [ref=e1277]:
+            - code [ref=e1279]:
+              - generic [ref=e1280]: "API server listening at: [::]:2345"
+              - generic [ref=e1282]: "INFO[0004] launching process with args: [/root/go/src/hello/debug] layer=debugger"
+            - button "复制" [ref=e1284] [cursor=pointer]
+          - paragraph [ref=e1285]: 然后，回到 Visual Code 进入 debug 界面，选择 “Launch remote” 方案后，点击启动来进行 go debugger，就能启动远程调试。大部分的操作和本地调试无异，堆栈、变量、watch都能正常使用。
+          - heading "dlv 💡简单的一个案例" [level=2] [ref=e1286]
+          - generic [ref=e1287]:
+            - code [ref=e1289]:
+              - generic [ref=e1291]:
+                - text: PS D:\文档\my
+                - generic [ref=e1292]: \t
+                - text: est> dlv
+                - generic [ref=e1293]: exec
+                - text: .\main.exe
+              - generic [ref=e1295]:
+                - text: Type
+                - generic [ref=e1296]: "'help'"
+                - generic [ref=e1297]: for
+                - text: list of commands.
+              - generic [ref=e1298]: (dlv) b
+              - generic [ref=e1301]:
+                - text: Breakpoint 1
+                - generic [ref=e1302]: set
+                - text: at 0x7ffc6a490651
+                - generic [ref=e1303]: for
+                - text: :0
+              - generic [ref=e1304]: (dlv) b main.main
+              - generic [ref=e1307]:
+                - text: Breakpoint 2
+                - generic [ref=e1308]: set
+                - text: at 0xe7e48f
+                - generic [ref=e1309]: for
+                - text: main.main() d:/文档/my/test/main.go:14
+              - generic [ref=e1310]: (dlv) c
+              - generic [ref=e1312]: "Stopped at: 0x7ffc6a490651"
+              - generic [ref=e1315]:
+                - text: "=> 1: no"
+                - generic [ref=e1316]: source
+                - text: available
+              - generic [ref=e1317]: (dlv) b main.swap
+              - generic [ref=e1320]:
+                - text: Breakpoint 3
+                - generic [ref=e1321]: set
+                - text: at 0xe7e51c
+                - generic [ref=e1322]: for
+                - text: main.main() d:/文档/my/test/main.go:10
+              - generic [ref=e1323]: (dlv) c
+              - generic [ref=e1325]: "> main.main() d:/文档/my/test/main.go:14 (hits goroutine(1):1 total:1) (PC: 0xe7e48f)"
+              - generic [ref=e1328]:
+                - text: "Warning: debugging optimized"
+                - generic [ref=e1329]: function
+              - generic [ref=e1330]: "9: //XOR exchange"
+              - generic [ref=e1331]: "10: *x, *y = *y, *x"
+              - generic [ref=e1334]:
+                - text: "11:"
+                - generic [ref=e1335]: return
+                - text: "*x, *y"
+              - generic [ref=e1336]: "12: }"
+              - generic [ref=e1338]: "13:"
+              - generic [ref=e1340]:
+                - text: "=> 14: func"
+                - generic [ref=e1341]: main
+                - text: "() {"
+              - generic [ref=e1343]:
+                - text: "15: fmt.Println("
+                - generic [ref=e1344]: "\"Hello, world!\""
+                - text: )
+              - generic [ref=e1345]: "16: //Swap functions"
+              - generic [ref=e1348]:
+                - text: "17:"
+                - generic [ref=e1349]: for
+                - text: "i := 0; i < 10; i++ {"
+              - generic [ref=e1351]:
+                - text: "18: a :="
+                - generic [ref=e1352]: "\"a\""
+              - generic [ref=e1354]:
+                - text: "19: b :="
+                - generic [ref=e1355]: "\"b\""
+              - generic [ref=e1356]: (dlv) bp
+              - generic [ref=e1359]:
+                - text: Breakpoint runtime-fatal-throw (enabled) at 0xe24a20,0xe24b20
+                - generic [ref=e1360]: for
+                - text: (multiple functions)() d:/app/go/src/runtime/panic.go:1059 (0)
+              - generic [ref=e1362]:
+                - text: Breakpoint unrecovered-panic (enabled) at 0xe24ec0
+                - generic [ref=e1363]: for
+                - text: runtime.fatalpanic() d:/app/go/src/runtime/panic.go:1143 (0)
+              - generic [ref=e1364]: print runtime.curg._panic.arg
+              - generic [ref=e1367]:
+                - text: Breakpoint 1 (enabled) at 0x7ffc6a490651
+                - generic [ref=e1368]: for
+                - text: :0 (1)
+              - generic [ref=e1370]:
+                - text: Breakpoint 2 (enabled) at 0xe7e48f
+                - generic [ref=e1371]: for
+                - text: main.main() d:/文档/my/test/main.go:14 (1)
+              - generic [ref=e1373]:
+                - text: Breakpoint 3 (enabled) at 0xe7e51c
+                - generic [ref=e1374]: for
+                - text: main.main() d:/文档/my/test/main.go:10 (0)
+              - generic [ref=e1375]: (dlv) clear 2
+              - generic [ref=e1378]:
+                - text: Breakpoint 2 cleared at 0xe7e48f
+                - generic [ref=e1379]: for
+                - text: main.main() d:/文档/my/test/main.go:14
+              - generic [ref=e1380]: (dlv) bp
+              - generic [ref=e1383]:
+                - text: Breakpoint runtime-fatal-throw (enabled) at 0xe24a20,0xe24b20
+                - generic [ref=e1384]: for
+                - text: (multiple functions)() d:/app/go/src/runtime/panic.go:1059 (0)
+              - generic [ref=e1386]:
+                - text: Breakpoint unrecovered-panic (enabled) at 0xe24ec0
+                - generic [ref=e1387]: for
+                - text: runtime.fatalpanic() d:/app/go/src/runtime/panic.go:1143 (0)
+              - generic [ref=e1388]: print runtime.curg._panic.arg
+              - generic [ref=e1391]:
+                - text: Breakpoint 1 (enabled) at 0x7ffc6a490651
+                - generic [ref=e1392]: for
+                - text: :0 (1)
+              - generic [ref=e1394]:
+                - text: Breakpoint 3 (enabled) at 0xe7e51c
+                - generic [ref=e1395]: for
+                - text: main.main() d:/文档/my/test/main.go:10 (0)
+              - generic [ref=e1396]: (dlv) ls
+              - generic [ref=e1398]: "> main.main() d:/文档/my/test/main.go:14 (PC: 0xe7e48f)"
+              - generic [ref=e1401]:
+                - text: "Warning: debugging optimized"
+                - generic [ref=e1402]: function
+              - generic [ref=e1403]: "9: //XOR exchange"
+              - generic [ref=e1404]: "10: *x, *y = *y, *x"
+              - generic [ref=e1407]:
+                - text: "11:"
+                - generic [ref=e1408]: return
+                - text: "*x, *y"
+              - generic [ref=e1409]: "12: }"
+              - generic [ref=e1411]: "13:"
+              - generic [ref=e1413]:
+                - text: "=> 14: func"
+                - generic [ref=e1414]: main
+                - text: "() {"
+              - generic [ref=e1416]:
+                - text: "15: fmt.Println("
+                - generic [ref=e1417]: "\"Hello, world!\""
+                - text: )
+              - generic [ref=e1418]: "16: //Swap functions"
+              - generic [ref=e1421]:
+                - text: "17:"
+                - generic [ref=e1422]: for
+                - text: "i := 0; i < 10; i++ {"
+              - generic [ref=e1424]:
+                - text: "18: a :="
+                - generic [ref=e1425]: "\"a\""
+              - generic [ref=e1427]:
+                - text: "19: b :="
+                - generic [ref=e1428]: "\"b\""
+              - generic [ref=e1429]: (dlv)
+            - button "复制" [ref=e1431] [cursor=pointer]
+          - list [ref=e1432]:
+            - listitem [ref=e1433]:
+              - paragraph [ref=e1434]:
+                - text: 带参数启动程序（
+                - code [ref=e1435]: dlv exec ./GoDbg -- arg1 arg2
+                - text: ）
+              - generic [ref=e1436]:
+                - code [ref=e1438]:
+                  - generic [ref=e1440]:
+                    - text: "[lday@alex GoDbg]$ dlv exec ./GoDbg"
+                    - generic [ref=e1441]: "-- arg1 arg2"
+                  - generic [ref=e1443]:
+                    - text: Type
+                    - generic [ref=e1444]: "'help'"
+                    - generic [ref=e1446]: for
+                    - generic [ref=e1448]: list
+                    - generic [ref=e1450]: of
+                    - generic [ref=e1452]: commands
+                    - generic [ref=e1453]: .
+                  - generic [ref=e1455]:
+                    - generic [ref=e1456]: (
+                    - generic [ref=e1457]: dlv
+                    - generic [ref=e1458]: )
+                - button "复制" [ref=e1460] [cursor=pointer]
+            - listitem [ref=e1461]:
+              - paragraph [ref=e1462]:
+                - text: 在main函数上设置断点（
+                - code [ref=e1463]: b
+                - text: ）
+              - generic [ref=e1464]:
+                - code [ref=e1466]:
+                  - generic [ref=e1468]:
+                    - text: (
+                    - generic [ref=e1469]: dlv
+                    - text: )
+                    - generic [ref=e1470]: b
+                    - generic [ref=e1471]: main
+                    - generic [ref=e1472]: .
+                    - generic [ref=e1473]: main
+                  - generic [ref=e1475]:
+                    - generic [ref=e1476]: Breakpoint
+                    - text: "1"
+                    - generic [ref=e1477]: set
+                    - generic [ref=e1478]: at
+                    - generic [ref=e1479]: "0x40101b"
+                    - generic [ref=e1480]: for
+                    - generic [ref=e1481]: main
+                    - generic [ref=e1482]: .
+                    - generic [ref=e1483]: main
+                    - text: () ./
+                    - generic [ref=e1484]: main
+                    - generic [ref=e1485]: .
+                    - generic [ref=e1486]: go
+                    - generic [ref=e1487]: ":"
+                    - generic [ref=e1488]: "9"
+                - button "复制" [ref=e1489] [cursor=pointer]
+            - listitem [ref=e1490]:
+              - paragraph [ref=e1491]:
+                - text: 启动调试，断点后继续执行（
+                - code [ref=e1492]: c
+                - text: ）
+              - generic [ref=e1493]:
+                - code [ref=e1495]:
+                  - generic [ref=e1497]:
+                    - text: (
+                    - generic [ref=e1498]: dlv
+                    - text: )
+                    - generic [ref=e1499]: c
+                  - generic [ref=e1501]:
+                    - text: ">"
+                    - generic [ref=e1502]: main
+                    - generic [ref=e1503]: .
+                    - generic [ref=e1504]: main
+                    - text: () ./
+                    - generic [ref=e1505]: main
+                    - generic [ref=e1506]: .
+                    - generic [ref=e1507]: go
+                    - generic [ref=e1508]: ":"
+                    - generic [ref=e1509]: "9"
+                    - text: (
+                    - generic [ref=e1510]: hits
+                    - generic [ref=e1511]: goroutine
+                    - text: (1)
+                    - generic [ref=e1512]: ":"
+                    - generic [ref=e1513]: "1"
+                    - generic [ref=e1514]: total
+                    - generic [ref=e1515]: ":"
+                    - generic [ref=e1516]: "1"
+                    - generic [ref=e1517]: )
+                    - text: (
+                    - generic [ref=e1518]: PC
+                    - text: ":"
+                    - generic [ref=e1519]: "0x40101b"
+                    - text: )
+                  - generic [ref=e1521]:
+                    - text: "4:"
+                    - generic [ref=e1522]: "\"GoWorks/GoDbg/mylib\""
+                  - generic [ref=e1524]:
+                    - text: "5:"
+                    - generic [ref=e1525]: "\"fmt\""
+                  - generic [ref=e1527]:
+                    - text: "6:"
+                    - generic [ref=e1528]: "\"os\""
+                  - generic [ref=e1529]: "7: )"
+                  - generic [ref=e1531]: "8:"
+                  - generic [ref=e1534]:
+                    - text: "=> 9:"
+                    - generic [ref=e1535]: func
+                    - generic [ref=e1536]: main
+                    - text: "() {"
+                  - generic [ref=e1537]: "10: fmt.Println(\"Golang dbg test...\")"
+                  - generic [ref=e1539]: "11:"
+                  - generic [ref=e1541]: "12: var argc = len(os.Args)"
+                  - generic [ref=e1544]:
+                    - text: "13: var argv = append([]string{},"
+                    - generic [ref=e1545]: os
+                    - generic [ref=e1546]: .
+                    - generic [ref=e1547]: Args
+                    - text: ...)
+                  - generic [ref=e1548]: "14:"
+                - button "复制" [ref=e1550] [cursor=pointer]
+            - listitem [ref=e1551]:
+              - paragraph [ref=e1552]:
+                - text: 在文件dbgTest.go上通过行号设置断点（
+                - code [ref=e1553]: b
+                - text: ）
+              - generic [ref=e1554]:
+                - code [ref=e1556]:
+                  - generic [ref=e1557]: (dlv) b dbgTest.go:17
+                  - generic [ref=e1560]:
+                    - text: Breakpoint 2
+                    - generic [ref=e1561]: set
+                    - text: at 0x457f51
+                    - generic [ref=e1562]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:17
+                  - generic [ref=e1563]: (dlv) b dbgTest.go:23
+                  - generic [ref=e1566]:
+                    - text: Breakpoint 3
+                    - generic [ref=e1567]: set
+                    - text: at 0x4580d0
+                    - generic [ref=e1568]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:23
+                  - generic [ref=e1569]: (dlv) b dbgTest.go:26
+                  - generic [ref=e1572]:
+                    - text: Breakpoint 4
+                    - generic [ref=e1573]: set
+                    - text: at 0x458123
+                    - generic [ref=e1574]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:26
+                  - generic [ref=e1575]: (dlv) b dbgTest.go:29
+                  - generic [ref=e1578]:
+                    - text: Breakpoint 5
+                    - generic [ref=e1579]: set
+                    - text: at 0x458166
+                    - generic [ref=e1580]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:29
+                - button "复制" [ref=e1581] [cursor=pointer]
+            - listitem [ref=e1582]:
+              - paragraph [ref=e1583]:
+                - text: 显示所有断点列表（
+                - code [ref=e1584]: bp
+                - text: ）
+              - generic [ref=e1585]:
+                - code [ref=e1587]:
+                  - generic [ref=e1588]: (dlv) bp
+                  - generic [ref=e1591]:
+                    - text: Breakpoint unrecovered-panic at 0x429690
+                    - generic [ref=e1592]: for
+                    - text: runtime.startpanic() /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/panic.go:524 (0)
+                  - generic [ref=e1594]:
+                    - text: Breakpoint 1 at 0x40101b
+                    - generic [ref=e1595]: for
+                    - text: main.main() ./main.go:9 (1)
+                  - generic [ref=e1597]:
+                    - text: Breakpoint 2 at 0x457f51
+                    - generic [ref=e1598]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:17 (0)
+                  - generic [ref=e1600]:
+                    - text: Breakpoint 3 at 0x4580d0
+                    - generic [ref=e1601]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:23 (0)
+                  - generic [ref=e1603]:
+                    - text: Breakpoint 4 at 0x458123
+                    - generic [ref=e1604]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:26 (0)
+                  - generic [ref=e1606]:
+                    - text: Breakpoint 5 at 0x458166
+                    - generic [ref=e1607]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:29 (0)
+                - button "复制" [ref=e1608] [cursor=pointer]
+              - paragraph [ref=e1609]:
+                - text: dlv似乎没有提供类似gdb
+                - code [ref=e1610]: dis x
+                - text: ，禁止某个断点的功能，在文档中暂时没有查到。不过这个功能用处不大。
+            - listitem [ref=e1611]:
+              - paragraph [ref=e1612]:
+                - text: 删除某个断点（
+                - code [ref=e1613]: clear x
+                - text: ）
+              - generic [ref=e1614]:
+                - code [ref=e1616]:
+                  - generic [ref=e1617]: (dlv) clear 5
+                  - generic [ref=e1620]:
+                    - text: Breakpoint 5 cleared at 0x458166
+                    - generic [ref=e1621]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:29
+                  - generic [ref=e1622]: (dlv) bp
+                  - generic [ref=e1625]:
+                    - text: Breakpoint unrecovered-panic at 0x429690
+                    - generic [ref=e1626]: for
+                    - text: runtime.startpanic() /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/panic.go:524 (0)
+                  - generic [ref=e1628]:
+                    - text: Breakpoint 1 at 0x40101b
+                    - generic [ref=e1629]: for
+                    - text: main.main() ./main.go:9 (1)
+                  - generic [ref=e1631]:
+                    - text: Breakpoint 2 at 0x457f51
+                    - generic [ref=e1632]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:17 (0)
+                  - generic [ref=e1634]:
+                    - text: Breakpoint 3 at 0x4580d0
+                    - generic [ref=e1635]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:23 (0)
+                  - generic [ref=e1637]:
+                    - text: Breakpoint 4 at 0x458123
+                    - generic [ref=e1638]: for
+                    - text: GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:26 (0)
+                - button "复制" [ref=e1639] [cursor=pointer]
+            - listitem [ref=e1640]:
+              - paragraph [ref=e1641]:
+                - text: 显示当前运行的代码位置（
+                - code [ref=e1642]: ls
+                - text: ）
+              - generic [ref=e1643]:
+                - code [ref=e1645]:
+                  - generic [ref=e1646]: (dlv) ls
+                  - generic [ref=e1649]:
+                    - text: "> GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest."
+                    - generic [ref=e1650]: go
+                    - text: ":"
+                    - generic [ref=e1651]: "17"
+                    - text: (hits goroutine(
+                    - generic [ref=e1652]: "1"
+                    - text: "):"
+                    - generic [ref=e1653]: "1"
+                    - text: "total:"
+                    - generic [ref=e1654]: "1"
+                    - text: ") (PC:"
+                    - generic [ref=e1655]: "0x457f51"
+                    - text: )
+                  - generic [ref=e1657]:
+                    - generic [ref=e1658]: "12"
+                    - text: ": C"
+                    - generic [ref=e1659]: map
+                    - text: "["
+                    - generic [ref=e1660]: int
+                    - text: "]"
+                    - generic [ref=e1661]: string
+                  - generic [ref=e1663]:
+                    - generic [ref=e1664]: "13"
+                    - text: ": D []"
+                    - generic [ref=e1665]: string
+                  - generic [ref=e1667]:
+                    - generic [ref=e1668]: "14"
+                    - text: ": }"
+                  - generic [ref=e1670]:
+                    - generic [ref=e1671]: "15"
+                    - text: ":"
+                  - generic [ref=e1673]:
+                    - generic [ref=e1674]: "16"
+                    - text: ":"
+                    - generic [ref=e1675]: func
+                    - generic [ref=e1677]: DBGTestRun
+                    - generic [ref=e1679]: (
+                    - generic [ref=e1681]: var1
+                    - generic [ref=e1684]: int
+                    - generic [ref=e1687]: ","
+                    - generic [ref=e1690]: var2
+                    - generic [ref=e1693]: string
+                    - generic [ref=e1696]: ","
+                    - generic [ref=e1699]: var3
+                    - generic [ref=e1702]: "[]"
+                    - generic [ref=e1704]: int
+                    - generic [ref=e1707]: ","
+                    - generic [ref=e1710]: var4
+                    - generic [ref=e1713]: MyStruct
+                    - generic [ref=e1715]: )
+                    - text: "{"
+                  - generic [ref=e1718]:
+                    - text: =>
+                    - generic [ref=e1719]: "17"
+                    - text: ": fmt.Println("
+                    - generic [ref=e1720]: "\"DBGTestRun Begin!\\n\""
+                    - text: )
+                  - generic [ref=e1722]:
+                    - generic [ref=e1723]: "18"
+                    - text: ": waiter := &sync.WaitGroup{}"
+                  - generic [ref=e1725]:
+                    - generic [ref=e1726]: "19"
+                    - text: ":"
+                  - generic [ref=e1728]:
+                    - generic [ref=e1729]: "20"
+                    - text: ": waiter.Add("
+                    - generic [ref=e1730]: "1"
+                    - text: )
+                  - generic [ref=e1732]:
+                    - generic [ref=e1733]: "21"
+                    - text: ":"
+                    - generic [ref=e1734]: go
+                    - text: RunFunc1(var1, waiter)
+                  - generic [ref=e1736]:
+                    - generic [ref=e1737]: "22"
+                    - text: ":"
+                - button "复制" [ref=e1738] [cursor=pointer]
+            - listitem [ref=e1739]:
+              - paragraph [ref=e1740]:
+                - text: 查看当前调用栈信息（
+                - code [ref=e1741]: bt
+                - text: ）
+              - generic [ref=e1742]:
+                - code [ref=e1744]:
+                  - generic [ref=e1745]: (dlv) bt
+                  - generic [ref=e1747]: 0 0x0000000000457f51 in GoWorks/GoDbg/mylib.DBGTestRun
+                  - generic [ref=e1749]: at ./mylib/dbgTest.go:17
+                  - generic [ref=e1750]: 1 0x0000000000401818 in main.main
+                  - generic [ref=e1752]: at ./main.go:27
+                  - generic [ref=e1753]: 2 0x000000000042aefb in runtime.main
+                  - generic [ref=e1755]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/proc.go:188
+                  - generic [ref=e1756]: 3 0x0000000000456df0 in runtime.goexit
+                  - generic [ref=e1758]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/asm_amd64.s:1998
+                - button "复制" [ref=e1759] [cursor=pointer]
+            - listitem [ref=e1760]:
+              - paragraph [ref=e1761]:
+                - text: 输出变量信息（
+                - code [ref=e1762]: print/p
+                - text: ）
+              - generic [ref=e1763]:
+                - code [ref=e1765]:
+                  - generic [ref=e1767]:
+                    - text: (dlv)
+                    - generic [ref=e1768]: print
+                    - text: var1
+                  - generic [ref=e1769]: "1"
+                  - generic [ref=e1773]:
+                    - text: (dlv)
+                    - generic [ref=e1774]: print
+                    - text: var2
+                  - generic [ref=e1775]: "\"golang dbg test\""
+                  - generic [ref=e1779]:
+                    - text: (dlv)
+                    - generic [ref=e1780]: print
+                    - text: var3
+                  - generic [ref=e1782]:
+                    - text: "[]"
+                    - generic [ref=e1783]: int
+                    - generic [ref=e1784]: len
+                    - text: ":"
+                    - generic [ref=e1785]: "3"
+                    - text: ","
+                    - generic [ref=e1786]: cap
+                    - text: ":"
+                    - generic [ref=e1787]: "3"
+                    - text: ", ["
+                    - generic [ref=e1788]: "1"
+                    - text: ","
+                    - generic [ref=e1789]: "2"
+                    - text: ","
+                    - generic [ref=e1790]: "3"
+                    - text: "]"
+                  - generic [ref=e1792]:
+                    - text: (dlv)
+                    - generic [ref=e1793]: print
+                    - text: var4
+                  - generic [ref=e1794]: "GoWorks/GoDbg/mylib.MyStruct {"
+                  - generic [ref=e1797]:
+                    - text: "A:"
+                    - generic [ref=e1798]: "1"
+                    - text: ","
+                  - generic [ref=e1800]:
+                    - text: "B:"
+                    - generic [ref=e1801]: "\"golang dbg my struct field B\""
+                    - text: ","
+                  - generic [ref=e1803]:
+                    - text: "C:"
+                    - generic [ref=e1804]: map
+                    - text: "["
+                    - generic [ref=e1805]: int
+                    - text: "]"
+                    - generic [ref=e1806]: string
+                    - text: "["
+                  - generic [ref=e1808]:
+                    - generic [ref=e1809]: "1"
+                    - text: ":"
+                    - generic [ref=e1810]: "\"value1\""
+                    - text: ","
+                  - generic [ref=e1812]:
+                    - generic [ref=e1813]: "2"
+                    - text: ":"
+                    - generic [ref=e1814]: "\"value2\""
+                    - text: ","
+                  - generic [ref=e1816]:
+                    - generic [ref=e1817]: "3"
+                    - text: ":"
+                    - generic [ref=e1818]: "\"value3\""
+                    - text: ","
+                  - generic [ref=e1819]: "],"
+                  - generic [ref=e1822]:
+                    - text: "D: []"
+                    - generic [ref=e1823]: string
+                    - generic [ref=e1824]: len
+                    - text: ":"
+                    - generic [ref=e1825]: "3"
+                    - text: ","
+                    - generic [ref=e1826]: cap
+                    - text: ":"
+                    - generic [ref=e1827]: "3"
+                    - text: ", ["
+                    - generic [ref=e1828]: "\"D1\""
+                    - text: ","
+                    - generic [ref=e1829]: "\"D2\""
+                    - text: ","
+                    - generic [ref=e1830]: "\"D3\""
+                    - text: "],}"
+                - button "复制" [ref=e1831] [cursor=pointer]
+              - paragraph [ref=e1832]:
+                - text: "*"
+                - strong [ref=e1833]: 类比gdb调试，我们看到，之前我们使用gdb进行调试时，发现gdb在此时无法输出var3, var4的内容，而dlv可以*
+            - listitem [ref=e1834]:
+              - paragraph [ref=e1835]:
+                - text: 在第n层调用栈上执行相应指令（
+                - code [ref=e1836]: frame n cmd
+                - text: ）
+              - generic [ref=e1837]:
+                - code [ref=e1839]:
+                  - generic [ref=e1841]:
+                    - text: (dlv) frame
+                    - generic [ref=e1842]: "1"
+                    - text: ls
+                  - generic [ref=e1844]:
+                    - generic [ref=e1845]: "22"
+                    - text: ": var4.A ="
+                    - generic [ref=e1846]: "1"
+                  - generic [ref=e1848]:
+                    - generic [ref=e1849]: "23"
+                    - text: ": var4.B ="
+                    - generic [ref=e1850]: "\"golang dbg my struct field B\""
+                  - generic [ref=e1852]:
+                    - generic [ref=e1853]: "24"
+                    - text: ": var4.C ="
+                    - generic [ref=e1854]: map
+                    - text: "["
+                    - generic [ref=e1855]: int
+                    - text: "]"
+                    - generic [ref=e1856]: string
+                    - text: "{"
+                    - generic [ref=e1857]: "1"
+                    - text: ":"
+                    - generic [ref=e1858]: "\"value1\""
+                    - text: ","
+                    - generic [ref=e1859]: "2"
+                    - text: ":"
+                    - generic [ref=e1860]: "\"value2\""
+                    - text: ","
+                    - generic [ref=e1861]: "3"
+                    - text: ":"
+                    - generic [ref=e1862]: "\"value3\""
+                    - text: "}"
+                  - generic [ref=e1864]:
+                    - generic [ref=e1865]: "25"
+                    - text: ": var4.D = []"
+                    - generic [ref=e1866]: string
+                    - text: "{"
+                    - generic [ref=e1867]: "\"D1\""
+                    - text: ","
+                    - generic [ref=e1868]: "\"D2\""
+                    - text: ","
+                    - generic [ref=e1869]: "\"D3\""
+                    - text: "}"
+                  - generic [ref=e1871]:
+                    - generic [ref=e1872]: "26"
+                    - text: ":"
+                  - generic [ref=e1874]:
+                    - text: =>
+                    - generic [ref=e1875]: "27"
+                    - text: ": mylib.DBGTestRun(var1, var2, var3, var4)"
+                  - generic [ref=e1877]:
+                    - generic [ref=e1878]: "28"
+                    - text: ": fmt.Println("
+                    - generic [ref=e1879]: "\"Golang dbg test over\""
+                    - text: )
+                  - generic [ref=e1881]:
+                    - generic [ref=e1882]: "29"
+                    - text: ": }"
+                - button "复制" [ref=e1883] [cursor=pointer]
+              - paragraph [ref=e1884]:
+                - code [ref=e1885]: frame 1 ls
+                - text: 将显示程序在第1层调用栈上的具体实行位置
+            - listitem [ref=e1886]:
+              - paragraph [ref=e1887]:
+                - text: 查看goroutine的信息（
+                - code [ref=e1888]: goroutines
+                - text: ） 当我们执行到
+                - code [ref=e1889]: dbgTest.go:26
+                - text: 时，我们已经启动了两个goroutine
+              - generic [ref=e1890]:
+                - code [ref=e1892]:
+                  - generic [ref=e1893]: (dlv)
+                  - generic [ref=e1897]:
+                    - generic [ref=e1898]: "> GoWorks/GoDbg/mylib.DBGTestRun() ./mylib/dbgTest.go:26 (hits goroutine(1):1 total:1) (PC"
+                    - generic [ref=e1899]: ":"
+                    - generic [ref=e1900]: "0x458123"
+                    - generic [ref=e1901]: )
+                  - generic [ref=e1903]:
+                    - generic [ref=e1904]: "21"
+                    - generic [ref=e1905]: ":"
+                    - generic [ref=e1906]: go RunFunc1(var1, waiter)
+                  - generic [ref=e1908]:
+                    - generic [ref=e1909]: "22"
+                    - generic [ref=e1910]: ":"
+                  - generic [ref=e1912]:
+                    - generic [ref=e1913]: "23"
+                    - generic [ref=e1914]: ":"
+                    - generic [ref=e1915]: waiter.Add(1)
+                  - generic [ref=e1917]:
+                    - generic [ref=e1918]: "24"
+                    - generic [ref=e1919]: ":"
+                    - generic [ref=e1920]: go RunFunc2(var2, waiter)
+                  - generic [ref=e1922]:
+                    - generic [ref=e1923]: "25"
+                    - generic [ref=e1924]: ":"
+                  - generic [ref=e1926]:
+                    - generic [ref=e1927]: => 26
+                    - generic [ref=e1928]: ":"
+                    - generic [ref=e1929]: waiter.Add(1)
+                  - generic [ref=e1931]:
+                    - generic [ref=e1932]: "27"
+                    - generic [ref=e1933]: ":"
+                    - generic [ref=e1934]: go RunFunc3(&var3, waiter)
+                  - generic [ref=e1936]:
+                    - generic [ref=e1937]: "28"
+                    - generic [ref=e1938]: ":"
+                  - generic [ref=e1940]:
+                    - generic [ref=e1941]: "29"
+                    - generic [ref=e1942]: ":"
+                    - generic [ref=e1943]: waiter.Add(1)
+                  - generic [ref=e1945]:
+                    - generic [ref=e1946]: "30"
+                    - generic [ref=e1947]: ":"
+                    - generic [ref=e1948]: go RunFunc4(&var4, waiter)
+                  - generic [ref=e1950]:
+                    - generic [ref=e1951]: "31"
+                    - generic [ref=e1952]: ":"
+                - button "复制" [ref=e1953] [cursor=pointer]
+              - paragraph [ref=e1954]: 此时我们来查看程序的goroutine状态信息
+              - generic [ref=e1955]:
+                - code [ref=e1957]:
+                  - generic [ref=e1958]: (dlv) goroutines
+                  - generic [ref=e1960]: "[6 goroutines]"
+                  - generic [ref=e1962]: "* Goroutine 1 - User: ./mylib/dbgTest.go:26 GoWorks/GoDbg/mylib.DBGTestRun (0x458123) (thread 9022)"
+                  - generic [ref=e1964]: "Goroutine 2 - User: /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/proc.go:263 runtime.gopark (0x42b2d3)"
+                  - generic [ref=e1966]: "Goroutine 3 - User: /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/proc.go:263 runtime.gopark (0x42b2d3)"
+                  - generic [ref=e1968]: "Goroutine 4 - User: /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/proc.go:263 runtime.gopark (0x42b2d3)"
+                  - generic [ref=e1970]: "Goroutine 5 - User: ./mylib/dbgTest.go:39 GoWorks/GoDbg/mylib.RunFunc1 (0x4583eb) (thread 9035)"
+                  - generic [ref=e1972]: "Goroutine 6 - User: /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/format.go:130 fmt.(*fmt).padString (0x459545)"
+                - button "复制" [ref=e1974] [cursor=pointer]
+              - paragraph [ref=e1975]:
+                - text: 从输出的信息来看，先启动的goroutine 5，执行
+                - code [ref=e1976]: RunFunc1
+                - text: ，此时还没有执行
+                - code [ref=e1977]: fmt.Printf
+                - text: ，而后启动的goroutine 6，执行
+                - code [ref=e1978]: RunFunc2
+                - text: ，则已经进入到
+                - code [ref=e1979]: fmt.Printf
+                - text: 的内部调用过程中了
+            - listitem [ref=e1980]:
+              - paragraph [ref=e1981]:
+                - text: 进一步查看goroutine信息（
+                - code [ref=e1982]: goroutine x
+                - text: ） 接第11步的操作，此时我想查看goroutine 6的具体执行情况，则执行
+                - code [ref=e1983]: goroutine 6
+              - generic [ref=e1984]:
+                - code [ref=e1986]:
+                  - generic [ref=e1988]:
+                    - text: (
+                    - generic [ref=e1989]: dlv
+                    - text: )
+                    - generic [ref=e1990]: goroutine
+                    - text: "6"
+                  - generic [ref=e1992]:
+                    - generic [ref=e1993]: Switched
+                    - generic [ref=e1994]: from
+                    - text: "1"
+                    - generic [ref=e1995]: to
+                    - text: 6 (
+                    - generic [ref=e1996]: thread
+                    - text: 9022)
+                - button "复制" [ref=e1997] [cursor=pointer]
+              - paragraph [ref=e1998]:
+                - text: 在此基础上，执行
+                - code [ref=e1999]: bt
+                - text: ，则可以看到当前goroutine的调用栈情况
+              - generic [ref=e2000]:
+                - code [ref=e2002]:
+                  - generic [ref=e2003]: (dlv) bt
+                  - generic [ref=e2005]: 0 0x0000000000454730 in runtime.systemstack_switch
+                  - generic [ref=e2007]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/asm_amd64.s:245
+                  - generic [ref=e2008]: 1 0x000000000040f700 in runtime.mallocgc
+                  - generic [ref=e2010]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/malloc.go:643
+                  - generic [ref=e2011]: 2 0x000000000040fc43 in runtime.rawmem
+                  - generic [ref=e2013]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/malloc.go:809
+                  - generic [ref=e2014]: 3 0x000000000043c2a5 in runtime.growslice
+                  - generic [ref=e2016]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/slice.go:95
+                  - generic [ref=e2017]: 4 0x000000000043c015 in runtime.growslice_n
+                  - generic [ref=e2019]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/slice.go:44
+                  - generic [ref=e2020]: 5 0x0000000000459545 in fmt.(*fmt).padString
+                  - generic [ref=e2022]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/format.go:130
+                  - generic [ref=e2023]: 6 0x000000000045a13f in fmt.(*fmt).fmt_s
+                  - generic [ref=e2025]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/format.go:322
+                  - generic [ref=e2026]: 7 0x000000000045e905 in fmt.(*pp).fmtString
+                  - generic [ref=e2028]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/print.go:518
+                  - generic [ref=e2029]: 8 0x000000000046200f in fmt.(*pp).printArg
+                  - generic [ref=e2031]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/print.go:797
+                  - generic [ref=e2032]: 9 0x0000000000468a8d in fmt.(*pp).doPrintf
+                  - generic [ref=e2034]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/print.go:1238
+                  - generic [ref=e2035]: 10 0x000000000045c654 in fmt.Fprintf
+                  - generic [ref=e2037]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/print.go:188
+                - button "复制" [ref=e2038] [cursor=pointer]
+              - paragraph [ref=e2039]:
+                - text: 此时输出了10层调用栈，但似乎最原始的我自身程序dbgTest.go的调用栈没有输出， 可以通过
+                - code [ref=e2040]: bt
+                - text: 加depth参数，设定bt的输出深度，进而找到我们自己的调用栈，例如
+                - code [ref=e2041]: bt 13
+              - generic [ref=e2042]:
+                - code [ref=e2044]:
+                  - generic [ref=e2045]: (dlv) bt 13
+                  - generic [ref=e2047]: ...
+                  - generic [ref=e2048]: 10 0x000000000045c654 in fmt.Fprintf
+                  - generic [ref=e2050]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/print.go:188
+                  - generic [ref=e2051]: 11 0x000000000045c74b in fmt.Printf
+                  - generic [ref=e2053]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/print.go:197
+                  - generic [ref=e2054]: 12 0x000000000045846f in GoWorks/GoDbg/mylib.RunFunc2
+                  - generic [ref=e2056]: at ./mylib/dbgTest.go:50
+                  - generic [ref=e2057]: 13 0x0000000000456df0 in runtime.goexit
+                  - generic [ref=e2059]: at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/asm_amd64.s:1998
+                - button "复制" [ref=e2060] [cursor=pointer]
+              - paragraph [ref=e2061]:
+                - text: 我们看到，我们自己dbgTest.go的调用栈在第12层。当前goroutine已经不再我们自己的调用栈上，而是进入到系统函数的调用中，在这种情况下，使用gdb进行调试时，我们发现，此时我们没有很好的方法能够输出我们需要的调用栈变量信息。
+                - strong [ref=e2062]: dlv可以
+                - text: "!此时只需简单的通过"
+                - code [ref=e2063]: frame x cmd
+                - text: 就可以输出我们想要的调用栈信息了
+              - generic [ref=e2064]:
+                - code [ref=e2066]:
+                  - generic [ref=e2067]: (dlv) frame 12 ls
+                  - generic [ref=e2071]:
+                    - generic [ref=e2072]: "45"
+                    - generic [ref=e2073]: ":"
+                    - generic [ref=e2074]: time.Sleep(10 * time.Second)
+                  - generic [ref=e2076]:
+                    - generic [ref=e2077]: "46"
+                    - generic [ref=e2078]: ":"
+                    - generic [ref=e2079]: waiter.Done()
+                  - generic [ref=e2081]:
+                    - generic [ref=e2082]: "47"
+                    - generic [ref=e2083]: ":"
+                    - text: "}"
+                  - generic [ref=e2085]:
+                    - generic [ref=e2086]: "48"
+                    - generic [ref=e2087]: ":"
+                  - generic [ref=e2089]:
+                    - generic [ref=e2090]: "49"
+                    - generic [ref=e2091]: ":"
+                    - generic [ref=e2092]: "func RunFunc2(variable string, waiter *sync.WaitGroup) {"
+                  - generic [ref=e2094]:
+                    - generic [ref=e2095]: => 50
+                    - generic [ref=e2096]: ":"
+                    - generic [ref=e2097]: fmt.Printf("var2:%v\n", variable)
+                  - generic [ref=e2099]:
+                    - generic [ref=e2100]: "51"
+                    - generic [ref=e2101]: ":"
+                    - generic [ref=e2102]: time.Sleep(10 * time.Second)
+                  - generic [ref=e2104]:
+                    - generic [ref=e2105]: "52"
+                    - generic [ref=e2106]: ":"
+                    - generic [ref=e2107]: waiter.Done()
+                  - generic [ref=e2109]:
+                    - generic [ref=e2110]: "53"
+                    - generic [ref=e2111]: ":"
+                    - text: "}"
+                  - generic [ref=e2113]:
+                    - generic [ref=e2114]: "54"
+                    - generic [ref=e2115]: ":"
+                  - generic [ref=e2117]:
+                    - generic [ref=e2118]: "55"
+                    - generic [ref=e2119]: ":"
+                    - generic [ref=e2120]: "func RunFunc3(pVariable *[]int, waiter *sync.WaitGroup) {"
+                  - generic [ref=e2121]: (dlv) frame 12 print variable
+                  - generic [ref=e2124]: "\"golang dbg test\""
+                  - generic [ref=e2127]: (dlv) frame 12 print waiter
+                  - generic [ref=e2131]:
+                    - generic [ref=e2132]: "*sync.WaitGroup"
+                    - text: "{"
+                  - generic [ref=e2134]:
+                    - generic [ref=e2135]: state1
+                    - generic [ref=e2136]: ":"
+                    - text: "["
+                    - generic [ref=e2137]: "12"
+                    - text: "]"
+                    - generic [ref=e2138]: uint8 [0,0,0,0,2,0,0,0,0,0,0,0],
+                  - generic [ref=e2140]:
+                    - generic [ref=e2141]: sema
+                    - generic [ref=e2142]: ":"
+                    - generic [ref=e2143]: "0"
+                    - text: ",}"
+                - button "复制" [ref=e2144] [cursor=pointer]
+              - paragraph [ref=e2145]: 多好的功能啊！
+            - listitem [ref=e2146]:
+              - paragraph [ref=e2147]:
+                - text: 查看当前是在哪个goroutine上（
+                - code [ref=e2148]: goroutine
+                - text: ） 当使用
+                - code [ref=e2149]: goroutine
+                - text: 不带参数时，dlv就会显示当前goroutine信息，这可以帮助我们在调试时确认是否需要做goroutine切换
+              - generic [ref=e2150]:
+                - code [ref=e2152]:
+                  - generic [ref=e2153]: (dlv) goroutine
+                  - generic [ref=e2155]: Thread 9022 at ./mylib/dbgTest.go:26
+                  - generic [ref=e2157]: "Goroutine 6:"
+                  - generic [ref=e2158]: "Runtime: /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/asm_amd64.s:245 runtime.systemstack_switch (0x454730)"
+                  - generic [ref=e2160]: "User: /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/fmt/format.go:130 fmt.(*fmt).padString (0x459545)"
+                  - generic [ref=e2162]: "Go: ./mylib/dbgTest.go:26 GoWorks/GoDbg/mylib.DBGTestRun (0x458123)"
+                - button "复制" [ref=e2164] [cursor=pointer]
+          - heading "dlv前端(gdlv)" [level=3] [ref=e2165]
+          - paragraph [ref=e2166]:
+            - text: dlv提供了类似gdb的cli调试系统，而有第三方还提供了dlv的GUI前端(
+            - link "gdlv" [ref=e2167] [cursor=pointer]:
+              - /url: https://github.com/aarzilli/gdlv
+            - text: )，对于那些习惯了使用GUI进行调试的人来说，结合gdlv和dlv，调试会更加方便。gdlv有个问题是：他无法在xwindows server上运行，只能在server本地运行。
+            - button "img — open full size"
+          - heading "结论" [level=3] [ref=e2168]
+          - paragraph [ref=e2169]: 综合比较两个Golang程序调试器gdb和dlv，我认为dlv的功能更为完善，更能满足实际调试时的功能需求。两者的优缺点比较大致如下
+          - table [ref=e2170]:
+            - rowgroup [ref=e2171]:
+              - row [ref=e2172]:
+                - columnheader "调试器" [ref=e2173]
+                - columnheader "优势" [ref=e2174]
+                - columnheader "不足" [ref=e2175]
+            - rowgroup [ref=e2176]:
+              - row [ref=e2177]:
+                - cell "dlv" [ref=e2178]
+                - cell "对goroutine, go类型调试支持比较完善" [ref=e2179]
+                - cell "只支持 go, 不支持调试某些Go内部底部数据" [ref=e2180]
+              - row [ref=e2181]:
+                - cell "gdb" [ref=e2182]
+                - cell "符合现有的调试习惯，类似C/C++调试指令都有" [ref=e2183]
+                - cell "对goroutine场景支持不足，不能很好的应对goroutine的调试" [ref=e2184]
+          - heading "总结" [level=2] [ref=e2185]
+          - paragraph [ref=e2186]:
+            - text: 通过
+            - code [ref=e2187]: Visual Code+dlv
+            - text: 来进行 go 程序的远程调试，对“开发用Windows，生产用Linux”之类的场合下，调试与系统相关的问题非常有帮助。而且，Visual Code的图形界面和代码提示实在是相当方便。
+          - paragraph [ref=e2188]: 但是debug这个做法有两点不完善的地方。第一个是它原理上需要远端对源代码进行编译，局限了它在除了开发测试环境外的使用场景，也使得每次调试都得等它编译；另一个是因为远端和近端都得有相同的源代码，无论是dlv还是 Visual Code的Go插件，目前都没法自动将本地改动过的代码上传到远端去。
+        - generic [ref=e2189]:
+          - list [ref=e2190]:
+            - listitem [ref=e2191]:
+              - link "Blog" [ref=e2192] [cursor=pointer]:
+                - /url: https://cubxxw.com/zh/tags/blog/
+            - listitem [ref=e2193]:
+              - link "Development" [ref=e2194] [cursor=pointer]:
+                - /url: https://cubxxw.com/zh/tags/development/
+            - listitem [ref=e2195]:
+              - link "Debugging" [ref=e2196] [cursor=pointer]:
+                - /url: https://cubxxw.com/zh/tags/debugging/
+          - navigation "文章导航" [ref=e2197]:
+            - link "上一篇 我是如何优雅设计 OpenIM 多进程管理策略的" [ref=e2198] [cursor=pointer]:
+              - /url: https://cubxxw.com/zh/engineering/posts/openim-multi-process-management/
+              - generic [ref=e2199]: 上一篇
+              - generic [ref=e2202]: 我是如何优雅设计 OpenIM 多进程管理策略的
+            - link "下一篇 Github Actions 的高级使用技巧" [ref=e2203] [cursor=pointer]:
+              - /url: https://cubxxw.com/zh/engineering/posts/github-actions-advanced-techniques/
+              - generic [ref=e2204]: 下一篇
+              - generic [ref=e2207]: Github Actions 的高级使用技巧
+          - generic [ref=e2208]:
+            - generic [ref=e2209]: 分享这篇文章
+            - generic [ref=e2210]:
+              - generic [ref=e2211]:
+                - button "生成文章分享卡" [ref=e2212] [cursor=pointer]:
+                  - generic [ref=e2213]: 分享卡片
+                - button "复制链接" [ref=e2214] [cursor=pointer]
+                - button "分享到微信" [ref=e2218] [cursor=pointer]: 微信
+                - link "分享到 X / Twitter" [ref=e2221] [cursor=pointer]:
+                  - /url: https://x.com/intent/tweet/?text=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0+%E2%80%94+%E6%9C%AC%E6%96%87%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D+Go+%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E6%9D%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%82&url=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f&hashtags=Blog%2cDevelopment%2cDebugging
+                  - text: X / Twitter
+                - link "通过邮件分享" [ref=e2224] [cursor=pointer]:
+                  - /url: mailto:?subject=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0&body=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0%0A%0A%E6%9C%AC%E6%96%87%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D+Go+%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E6%9D%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%82%0A%0Ahttps%3A%2F%2Fcubxxw.com%2Fzh%2Fengineering%2Fposts%2Fuse-go-tools-dlv%2F%0A%0ATopics%3A+Engineering%0ATags%3A+Blog%2C+Development%2C+Debugging
+                  - text: Email
+                - link "分享到 LinkedIn" [ref=e2228] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f&title=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0&summary=%E6%9C%AC%E6%96%87%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D+Go+%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E6%9D%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%82&source=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f
+                  - text: LinkedIn
+                - button "分享" [ref=e2233] [cursor=pointer]
+                - button "更多" [ref=e2240] [cursor=pointer]
+              - generic [ref=e2246]:
+                - link [ref=e2247] [cursor=pointer]:
+                  - /url: https://telegram.me/share/url?text=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0+%E2%80%94+%E6%9C%AC%E6%96%87%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D+Go+%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E6%9D%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%82&url=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f
+                  - text: Telegram
+                - link [ref=e2250] [cursor=pointer]:
+                  - /url: https://api.whatsapp.com/send?text=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0+%E2%80%94+%E6%9C%AC%E6%96%87%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D+Go+%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E6%9D%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%82%20https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f
+                  - text: WhatsApp
+                - link [ref=e2253] [cursor=pointer]:
+                  - /url: https://reddit.com/submit?url=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f&title=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0
+                  - text: Reddit
+                - link [ref=e2256] [cursor=pointer]:
+                  - /url: https://service.weibo.com/share/share.php?url=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f&title=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0+%E2%80%94+%E6%9C%AC%E6%96%87%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D+Go+%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E6%9D%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%82
+                  - text: 微博
+                - link [ref=e2259] [cursor=pointer]:
+                  - /url: https://www.bilibili.com/
+                  - text: Bilibili
+                - link [ref=e2262] [cursor=pointer]:
+                  - /url: https://www.zhihu.com/
+                  - text: 知乎
+                - link [ref=e2265] [cursor=pointer]:
+                  - /url: https://www.xiaohongshu.com/
+                  - text: 小红书
+                - link [ref=e2268] [cursor=pointer]:
+                  - /url: https://news.ycombinator.com/submitlink?t=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0&u=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f
+                  - text: Hacker News
+                - link [ref=e2271] [cursor=pointer]:
+                  - /url: https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fcubxxw.com%2fzh%2fengineering%2fposts%2fuse-go-tools-dlv%2f&quote=Go+%E8%B0%83%E8%AF%95%E6%B5%8B%E8%AF%95%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E5%AD%A6%E4%B9%A0+%E2%80%94+%E6%9C%AC%E6%96%87%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D+Go+%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7+dlv+%E6%9D%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%82
+                  - text: Facebook
+        - region "读者回响" [ref=e2274]:
+          - generic [ref=e2275]:
+            - heading "读者回响" [level=3] [ref=e2276]
+            - generic [ref=e2277]:
+              - generic [ref=e2278]: —
+              - generic [ref=e2279]: 加入讨论
+      - complementary "Editorial tools" [ref=e2281]:
+        - complementary "目录" [ref=e2282]:
+          - tablist [ref=e2283]:
+            - tab "目录" [ref=e2284] [cursor=pointer]
+            - tab "AI" [selected] [ref=e2286] [cursor=pointer]
+          - tabpanel "AI" [ref=e2288]:
+            - generic [ref=e2289]:
+              - generic "文章解读" [ref=e2290]:
+                - generic [ref=e2291]:
+                  - generic [ref=e2292]: 你的问题
+                  - paragraph [ref=e2293]: Keep one streaming request
+                - generic [ref=e2294]:
+                  - generic [ref=e2295]:
+                    - generic [ref=e2296]: AI
+                    - generic [ref=e2297]: 一起读懂
+                  - generic [ref=e2298]:
+                    - paragraph [ref=e2299]: Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2300]: Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2301]: Reading anchor paragraph 002. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2302]: Reading anchor paragraph 003. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2303]: Reading anchor paragraph 004. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2304]: Reading anchor paragraph 005. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2305]: Reading anchor paragraph 006. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2306]: Reading anchor paragraph 007. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2307]: Reading anchor paragraph 008. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2308]: Reading anchor paragraph 009. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2309]: Reading anchor paragraph 010. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2310]: Reading anchor paragraph 011. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2311]: Reading anchor paragraph 012. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2312]: Reading anchor paragraph 013. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2313]: Reading anchor paragraph 014. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2314]: Reading anchor paragraph 015. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2315]: Reading anchor paragraph 016. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2316]: Reading anchor paragraph 017. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2317]: Reading anchor paragraph 018. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2318]: Reading anchor paragraph 019. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2319]: Reading anchor paragraph 020. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2320]: Reading anchor paragraph 021. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2321]: Reading anchor paragraph 022. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2322]: Reading anchor paragraph 023. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2323]: Reading anchor paragraph 024. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2324]: Reading anchor paragraph 025. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2325]: Reading anchor paragraph 026. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2326]: Reading anchor paragraph 027. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2327]: Reading anchor paragraph 028. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2328]: Reading anchor paragraph 029. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2329]: Reading anchor paragraph 030. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2330]: Reading anchor paragraph 031. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2331]: Reading anchor paragraph 032. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2332]: Reading anchor paragraph 033. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2333]: Reading anchor paragraph 034. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2334]: Reading anchor paragraph 035. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2335]: Reading anchor paragraph 036. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2336]: Reading anchor paragraph 037. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2337]: Reading anchor paragraph 038. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2338]: Reading anchor paragraph 039. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2339]: Reading anchor paragraph 040. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2340]: Reading anchor paragraph 041. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2341]: Reading anchor paragraph 042. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2342]: Reading anchor paragraph 043. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2343]: Reading anchor paragraph 044. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2344]: Reading anchor paragraph 045. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2345]: Reading anchor paragraph 046. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2346]: Reading anchor paragraph 047. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2347]: Reading anchor paragraph 048. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2348]: Reading anchor paragraph 049. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2349]: Reading anchor paragraph 050. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2350]: Reading anchor paragraph 051. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2351]: Reading anchor paragraph 052. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2352]: Reading anchor paragraph 053. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2353]: Reading anchor paragraph 054. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2354]: Reading anchor paragraph 055. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2355]: Reading anchor paragraph 056. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2356]: Reading anchor paragraph 057. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2357]: Reading anchor paragraph 058. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2358]: Reading anchor paragraph 059. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2359]: Reading anchor paragraph 060. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2360]: Reading anchor paragraph 061. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2361]: Reading anchor paragraph 062. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2362]: Reading anchor paragraph 063. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2363]: Reading anchor paragraph 064. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2364]: Reading anchor paragraph 065. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2365]: Reading anchor paragraph 066. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2366]: Reading anchor paragraph 067. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2367]: Reading anchor paragraph 068. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2368]: Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2369]: Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2370]: Reading anchor paragraph 071. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2371]: Reading anchor paragraph 072. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2372]: Reading anchor paragraph 073. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2373]: Reading anchor paragraph 074. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2374]: Reading anchor paragraph 075. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2375]: Reading anchor paragraph 076. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2376]: Reading anchor paragraph 077. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2377]: Reading anchor paragraph 078. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2378]: Reading anchor paragraph 079. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2379]: Reading anchor paragraph 080. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2380]: Reading anchor paragraph 081. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2381]: Reading anchor paragraph 082. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2382]: Reading anchor paragraph 083. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2383]: Reading anchor paragraph 084. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2384]: Reading anchor paragraph 085. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2385]: Reading anchor paragraph 086. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2386]: Reading anchor paragraph 087. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2387]: Reading anchor paragraph 088. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2388]: Reading anchor paragraph 089. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2389]: Reading anchor paragraph 090. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2390]: Reading anchor paragraph 091. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2391]: Reading anchor paragraph 092. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2392]: Reading anchor paragraph 093. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2393]: Reading anchor paragraph 094. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2394]: Reading anchor paragraph 095. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2395]: Reading anchor paragraph 096. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2396]: Reading anchor paragraph 097. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2397]: Reading anchor paragraph 098. This controlled passage is long enough to wrap differently in each reading layout.
+                    - paragraph [ref=e2398]: Reading anchor paragraph 099. This controlled passage is long enough to wrap differently in each reading layout.
+              - generic [ref=e2399]:
+                - textbox "AI" [active] [ref=e2400]:
+                  - /placeholder: 继续追问这篇文章…
+                - button "发送" [disabled] [ref=e2401]
+                - button "停止生成" [ref=e2405] [cursor=pointer]: 停止
+    - generic [ref=e2406]:
+      - generic [ref=e2407]:
+        - generic [ref=e2408]: 继续阅读
+        - heading "相关文章 / Related Posts" [level=3] [ref=e2409]
+      - generic [ref=e2410]:
+        - link "Blog OpenIM 这是一篇我职业生涯总结的 OpenIM 故障排查指南 2024-04-16 24 min" [ref=e2411] [cursor=pointer]:
+          - /url: /zh/engineering/posts/troubleshooting-guide-for-openim/
+          - generic [ref=e2412]:
+            - generic [ref=e2413]:
+              - generic [ref=e2414]: Blog
+              - generic [ref=e2415]: OpenIM
+            - paragraph [ref=e2416]: 这是一篇我职业生涯总结的 OpenIM 故障排查指南
+            - generic [ref=e2417]:
+              - generic [ref=e2418]: 2024-04-16
+              - generic [aria-hidden] [ref=e2419]: ·
+              - generic [ref=e2420]: 24 min
+          - generic [aria-hidden] [ref=e2421]: →
+        - link "Hugo Blog Hugo 的高级教程 2023-11-06 28 min" [ref=e2422] [cursor=pointer]:
+          - /url: /zh/engineering/posts/hugo-advanced-tutorial/
+          - generic [ref=e2423]:
+            - generic [ref=e2424]:
+              - generic [ref=e2425]: Hugo
+              - generic [ref=e2426]: Blog
+            - paragraph [ref=e2427]: Hugo 的高级教程
+            - generic [ref=e2428]:
+              - generic [ref=e2429]: 2023-11-06
+              - generic [aria-hidden] [ref=e2430]: ·
+              - generic [ref=e2431]: 28 min
+          - generic [aria-hidden] [ref=e2432]: →
+        - link "Blog OpenIM 一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍） 2023-09-16 12 min" [ref=e2433] [cursor=pointer]:
+          - /url: /zh/engineering/posts/open-source-contribution-guidelines/
+          - generic [ref=e2434]:
+            - generic [ref=e2435]:
+              - generic [ref=e2436]: Blog
+              - generic [ref=e2437]: OpenIM
+            - paragraph [ref=e2438]: 一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）
+            - generic [ref=e2439]:
+              - generic [ref=e2440]: 2023-09-16
+              - generic [aria-hidden] [ref=e2441]: ·
+              - generic [ref=e2442]: 12 min
+          - generic [aria-hidden] [ref=e2443]: →
+  - region "邮件订阅" [ref=e2444]:
+    - generic [ref=e2447]:
+      - generic [ref=e2448]:
+        - heading "新文章写好，先寄给你" [level=2] [ref=e2449]
+        - paragraph [ref=e2450]: 每有新文章，寄一封信到你的邮箱。双重确认，随时退订。
+      - generic [ref=e2451]:
+        - generic [ref=e2452]:
+          - generic [ref=e2453]: 邮箱地址
+          - textbox "邮箱地址" [ref=e2454]:
+            - /placeholder: you@example.com
+        - button "订阅" [ref=e2455] [cursor=pointer]
+        - textbox [aria-hidden] [ref=e2458]
+      - paragraph [ref=e2459]
+      - generic [ref=e2460]:
+        - generic [ref=e2461]: 更喜欢 RSS？
+        - link "全部 · RSS" [ref=e2462] [cursor=pointer]:
+          - /url: /zh/index.xml
+        - link "JSON" [ref=e2463] [cursor=pointer]:
+          - /url: /zh/feed.json
+        - link "OPML" [ref=e2464] [cursor=pointer]:
+          - /url: /zh/subscriptions.opml
+        - link "Growth & Life" [ref=e2466] [cursor=pointer]:
+          - /url: /zh/growth/index.xml
+        - link "AI Agent" [ref=e2467] [cursor=pointer]:
+          - /url: /zh/ai-agent/index.xml
+        - link "Engineering" [ref=e2468] [cursor=pointer]:
+          - /url: /zh/engineering/index.xml
+        - link "空间 · CUBXXW OS" [ref=e2469] [cursor=pointer]:
+          - /url: /zh/projects/index.xml
+        - link "所有文章" [ref=e2470] [cursor=pointer]:
+          - /url: /zh/articles/index.xml
+  - contentinfo "站点导航" [ref=e2471]:
+    - generic [ref=e2472]:
+      - generic [ref=e2473]:
+        - paragraph [ref=e2474]: 继续读
+        - list [ref=e2475]:
+          - listitem [ref=e2476]:
+            - link "专栏" [ref=e2477] [cursor=pointer]:
+              - /url: /zh/columns/
+          - listitem [ref=e2478]:
+            - link "AI Agent" [ref=e2479] [cursor=pointer]:
+              - /url: /zh/ai-agent/
+          - listitem [ref=e2480]:
+            - link "工程" [ref=e2481] [cursor=pointer]:
+              - /url: /zh/engineering/
+          - listitem [ref=e2482]:
+            - link "成长" [ref=e2483] [cursor=pointer]:
+              - /url: /zh/growth/
+          - listitem [ref=e2484]:
+            - link "全部文章" [ref=e2485] [cursor=pointer]:
+              - /url: /zh/articles/
+          - listitem [ref=e2486]:
+            - link "归档" [ref=e2487] [cursor=pointer]:
+              - /url: /zh/archives/
+          - listitem [ref=e2488]:
+            - link "旅行" [ref=e2489] [cursor=pointer]:
+              - /url: /zh/travel/
+      - generic [ref=e2490]:
+        - paragraph [ref=e2491]: 产品
+        - list [ref=e2492]:
+          - listitem [ref=e2493]:
+            - link "Talent Signal" [ref=e2494] [cursor=pointer]:
+              - /url: /zh/projects/#talent-signal
+          - listitem [ref=e2495]:
+            - link "IMStage" [ref=e2496] [cursor=pointer]:
+              - /url: /zh/projects/#imstage
+          - listitem [ref=e2497]:
+            - link "Solo Compass" [ref=e2498] [cursor=pointer]:
+              - /url: /zh/projects/#solo-compass
+          - listitem [ref=e2499]:
+            - link "DayPage" [ref=e2500] [cursor=pointer]:
+              - /url: /zh/projects/#daypage
+          - listitem [ref=e2501]:
+            - link "Telepace" [ref=e2502] [cursor=pointer]:
+              - /url: /zh/projects/#telepace
+          - listitem [ref=e2503]:
+            - link "Apply Agent" [ref=e2504] [cursor=pointer]:
+              - /url: /zh/projects/#apply-agent
+          - listitem [ref=e2505]:
+            - link "Agent Diff Guard" [ref=e2506] [cursor=pointer]:
+              - /url: /zh/projects/#agent-diff-guard
+          - listitem [ref=e2507]:
+            - link "全部产品 →" [ref=e2508] [cursor=pointer]:
+              - /url: /zh/projects/#studio-products
+      - generic [ref=e2509]:
+        - paragraph [ref=e2510]: 订阅与联系
+        - list [ref=e2511]:
+          - listitem [ref=e2512]:
+            - link "关于 · 阅读地图" [ref=e2513] [cursor=pointer]:
+              - /url: /zh/about/
+          - listitem [ref=e2514]:
+            - link "RSS" [ref=e2515] [cursor=pointer]:
+              - /url: /zh/index.xml
+          - listitem [ref=e2516]:
+            - link "JSON Feed" [ref=e2517] [cursor=pointer]:
+              - /url: /zh/feed.json
+          - listitem [ref=e2518]:
+            - link "GitHub" [ref=e2519] [cursor=pointer]:
+              - /url: https://github.com/cubxxw
+          - listitem [ref=e2520]:
+            - link "邮件" [ref=e2521] [cursor=pointer]:
+              - /url: mailto:3293172751nss@gmail.com
+  - contentinfo [ref=e2522]:
+    - generic [ref=e2523]:
+      - text: © 2026
+      - link "熊鑫伟（cubxxw）· 公开的实践与思想档案" [ref=e2524] [cursor=pointer]:
+        - /url: https://cubxxw.com/zh/
+  - progressbar "Reading progress" [ref=e2525]
+  - status
+  - status
+```
+
+# Test source
+
+```ts
+  1   | import {test,expect,type Page} from '../helpers/frozen-site';
+  2   | 
+  3   | test.use({channel:'chromium',reducedMotion:'reduce'});
+  4   | const article=(locale='zh')=>`${locale==='zh'?'/zh':''}/engineering/posts/use-go-tools-dlv/`;
+  5   | const root=(page:Page)=>page.locator('[data-article-chat]');
+  6   | const input=(page:Page)=>root(page).locator('.rc-ai-textarea');
+  7   | const messages=(page:Page)=>root(page).locator('.rc-ai-messages');
+  8   | const sheet=(page:Page)=>page.locator('#article-bottom-sheet');
+  9   | const frames=(page:Page)=>page.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));
+  10  | async function prepare(page:Page,width=1440,locale='zh'){
+  11  |   await page.setViewportSize({width,height:900});await page.goto(article(locale));await expect(root(page)).toHaveAttribute('data-chat-ready','true');
+  12  |   await page.evaluate(()=>scrollTo({top:500,behavior:'instant'}));await frames(page);
+  13  | }
+  14  | async function openAI(page:Page){
+  15  |   if((page.viewportSize()?.width||0)>=1200)await page.locator('#rc-tab-ai').click();
+  16  |   else {await page.locator('#article-fab').click();await page.locator('#abs-tab-ai').click();}
+  17  |   await expect(input(page)).toBeVisible();
+  18  | }
+  19  | async function resize(page:Page,width:number){
+  20  |   await page.setViewportSize({width,height:900});await expect.poll(()=>root(page).evaluate(el=>el.parentElement?.id)).toBe(width>=1200?'rc-panel-ai':'abs-panel-ai');await frames(page);
+  21  | }
+  22  | async function identities(page:Page){return {root:await root(page).elementHandle(),input:await input(page).elementHandle(),messages:await messages(page).elementHandle()};}
+  23  | async function unchanged(page:Page,original:Awaited<ReturnType<typeof identities>>){
+  24  |   expect(await root(page).evaluate((el,old)=>el===old,original.root)).toBe(true);expect(await input(page).evaluate((el,old)=>el===old,original.input)).toBe(true);expect(await messages(page).evaluate((el,old)=>el===old,original.messages)).toBe(true);
+  25  | }
+  26  | async function mockJSON(page:Page){
+  27  |   const posts:any[]=[];await page.route('**/.netlify/functions/article-ai',route=>{posts.push(route.request().postDataJSON());return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({answer:`Controlled answer ${posts.length}.`})});});return posts;
+  28  | }
+  29  | async function heldStream(page:Page){
+  30  |   await page.addInitScript(()=>{
+  31  |     const original=window.fetch.bind(window),state:any={turns:[]};(window as any).__articleStreams=state;
+  32  |     window.fetch=(input,options)=>{
+  33  |       const address=typeof input==='string'?input:input instanceof URL?input.href:input.url;
+  34  |       if(new URL(address,location.href).pathname!=='/.netlify/functions/article-ai')return original(input,options);
+  35  |       const turn:any={payload:JSON.parse(String(options?.body)),aborts:0,cancels:0};let ended=false;
+  36  |       const stream=new ReadableStream<Uint8Array>({start(controller){
+  37  |         turn.delta=(delta:string)=>{if(!ended)controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify({delta})}\n\n`));};
+  38  |         options?.signal?.addEventListener('abort',()=>{turn.aborts++;if(!ended){ended=true;controller.error(new DOMException('Aborted','AbortError'));}},{once:true});
+  39  |       },cancel(){ended=true;turn.cancels++;}});
+  40  |       state.turns.push(turn);return Promise.resolve(new Response(stream,{headers:{'Content-Type':'text/event-stream'}}));
+  41  |     };
+  42  |   });
+  43  | }
+  44  | const streamCount=(page:Page)=>page.evaluate(()=>(window as any).__articleStreams.turns.length);
+  45  | const aborts=(page:Page)=>page.evaluate(()=>(window as any).__articleStreams.turns[0].aborts);
+  46  | async function delta(page:Page,text:string){await page.evaluate(text=>(window as any).__articleStreams.turns[0].delta(text),text);}
+  47  | async function analyze(page:Page,blockId:string,selectedText:string,question:string){
+  48  |   await page.evaluate(detail=>document.dispatchEvent(new CustomEvent('article:selection-analyze',{detail})),{blockId,selectedText,selectionContext:`Context for ${blockId}`,question});
+  49  | }
+  50  | 
+  51  | for(const locale of ['zh','en'])test(`${locale} active draft, selection and the same nodes follow both directions repeatedly`,async({page})=>{
+  52  |   const posts=await mockJSON(page);await prepare(page,1199,locale);await openAI(page);const original=await identities(page),draft=`${locale} — 尚未发送 / editing this same question`;
+  53  |   await input(page).fill(draft);await input(page).evaluate((el:HTMLTextAreaElement)=>el.setSelectionRange(3,13,'backward'));
+  54  |   for(const width of [1200,1199,1440,390,1200]){
+  55  |     const y=await page.evaluate(()=>scrollY);await resize(page,width);await unchanged(page,original);await expect(input(page)).toBeFocused();await expect(input(page)).toHaveValue(draft);expect(await input(page).evaluate((el:HTMLTextAreaElement)=>[el.selectionStart,el.selectionEnd,el.selectionDirection])).toEqual([3,13,'backward']);expect(await page.evaluate(()=>scrollY)).toBe(y);
+  56  |     await expect(page.locator(width>=1200?'#rc-tab-ai':'#abs-tab-ai')).toHaveAttribute('aria-selected','true');if(width<1200)await expect(sheet(page)).toHaveClass(/abs--open/);else expect(await sheet(page).evaluate((el:HTMLElement)=>el.inert)).toBe(true);
+  57  |   }expect(posts).toHaveLength(0);
+  58  | });
+  59  | 
+  60  | for(const from of [1199,1200])test(`${from}px non-AI tools use visible equivalent focus without opening AI`,async({page})=>{
+  61  |   const posts=await mockJSON(page);await prepare(page,from);if(from<1200)await page.locator('#article-fab').click();await page.locator(from<1200?'#abs-tab-toc':'#rc-tab-toc').focus();const y=await page.evaluate(()=>scrollY);await resize(page,from<1200?1200:1199);
+  62  |   await expect(page.locator(from<1200?'#rc-tab-toc':'#article-fab')).toBeFocused();await expect(sheet(page)).not.toHaveClass(/abs--open/);await expect(page.locator('#rc-tab-ai')).toHaveAttribute('aria-selected','false');await expect(page.locator('#abs-tab-ai')).toHaveAttribute('aria-selected','false');expect(await page.evaluate(()=>scrollY)).toBe(y);
+  63  |   const nav=page.locator('[data-search-trigger="nav"]:visible').first();await nav.focus();await resize(page,from);await expect(nav).toBeFocused();await expect(sheet(page)).not.toHaveClass(/abs--open/);expect(posts).toHaveLength(0);
+  64  | });
+  65  | 
+  66  | test('a completed general conversation remains the actual follow-up context in the other layout',async({page})=>{
+  67  |   const posts=await mockJSON(page);await prepare(page);await openAI(page);const original=await identities(page);await input(page).fill('First general question');await input(page).press('Enter');await expect(root(page).locator('.rc-ai-answer-body')).toHaveText('Controlled answer 1.');
+  68  |   await input(page).fill('Unsent follow-up draft');await resize(page,390);await unchanged(page,original);await expect(input(page)).toHaveValue('Unsent follow-up draft');await expect(input(page)).toBeFocused();await input(page).press('Enter');await expect.poll(()=>posts.length).toBe(2);
+  69  |   expect(posts[1].context).toEqual([{role:'user',content:'First general question'},{role:'assistant',content:'Controlled answer 1.'}]);expect(posts[1].question).toBe('Unsent follow-up draft');expect(posts[1].selectedText).toBeUndefined();await expect(root(page).locator('.rc-ai-answer-body')).toHaveCount(2);
+  70  | });
+  71  | 
+  72  | test('quoted A/B scopes and general history stay owned by one controller across layouts',async({page})=>{
+  73  |   const posts=await mockJSON(page);await prepare(page,390);await openAI(page);const original=await identities(page);await input(page).fill('An unsent draft');
+  74  |   await analyze(page,'passage-a','Quoted passage A','Explain A');await expect.poll(()=>posts.length).toBe(1);await expect(root(page).locator('.rc-ai-answer-body').last()).toHaveText('Controlled answer 1.');await expect(input(page)).toHaveValue('An unsent draft');await resize(page,1200);
+  75  |   await input(page).fill('Follow up A');await input(page).press('Enter');await expect(root(page).locator('.rc-ai-answer-body').last()).toHaveText('Controlled answer 2.');expect(posts[1].context).toHaveLength(2);expect(posts[1].selectedText).toBe('Quoted passage A');expect(posts[1].selectionContext).toBe('Context for passage-a');
+  76  |   await analyze(page,'passage-b','Quoted passage B','Explain B');await expect(root(page).locator('.rc-ai-answer-body').last()).toHaveText('Controlled answer 3.');expect(posts[2].context).toEqual([]);await resize(page,1199);
+  77  |   await analyze(page,'passage-a','Quoted passage A','Return to A');await expect(root(page).locator('.rc-ai-answer-body').last()).toHaveText('Controlled answer 4.');expect(posts[3].context).toEqual([{role:'user',content:'Explain A'},{role:'assistant',content:'Controlled answer 1.'},{role:'user',content:'Follow up A'},{role:'assistant',content:'Controlled answer 2.'}]);expect(posts[3].selectedText).toBe('Quoted passage A');await unchanged(page,original);
+  78  |   await root(page).locator('.article-chat-reference-clear').click();await input(page).fill('Back to the article');await input(page).press('Enter');await expect.poll(()=>posts.length).toBe(5);expect(posts[4].context).toEqual([]);expect(posts[4].selectedText).toBeUndefined();
+  79  | });
+  80  | 
+  81  | test('a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once',async({page})=>{
+  82  |   await heldStream(page);await prepare(page);await openAI(page);const original=await identities(page);await input(page).fill('Keep one streaming request');await input(page).press('Enter');await expect.poll(()=>streamCount(page)).toBe(1);
+  83  |   const text=Array.from({length:100},(_,i)=>`Reading anchor paragraph ${String(i).padStart(3,'0')}. This controlled passage is long enough to wrap differently in each reading layout.`).join('\n\n');await delta(page,text);await expect(root(page).locator('.rc-ai-answer-body p')).toHaveCount(100);const stream=await root(page).locator('.rc-ai-msg--ai').last().elementHandle();
+  84  |   const box=(await messages(page).boundingBox())!,atBottom=await messages(page).evaluate(el=>el.scrollTop);await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.wheel(0,-3000);await expect.poll(()=>messages(page).evaluate(el=>el.scrollTop)).toBeLessThan(atBottom-100);await frames(page);
+  85  |   const anchor=await messages(page).evaluate(el=>{const view=el.getBoundingClientRect();const p=Array.from(el.querySelectorAll('.rc-ai-answer-body p')).find(p=>{const r=p.getBoundingClientRect();return r.top>=view.top+1&&r.bottom<=view.bottom-1;})!;const range=document.createRange();range.setStart(p.firstChild!,0);range.setEnd(p.firstChild!,1);return {text:p.textContent,top:range.getBoundingClientRect().top-view.top};});
+> 86  |   const checkAnchor=async()=>{const position=await messages(page).evaluate((el,text)=>{const p=Array.from(el.querySelectorAll('.rc-ai-answer-body p')).find(p=>p.textContent===text)!;const range=document.createRange();range.setStart(p.firstChild!,0);range.setEnd(p.firstChild!,1);return range.getBoundingClientRect().top-el.getBoundingClientRect().top;},anchor.text);expect(Math.abs(position-anchor.top)).toBeLessThanOrEqual(1);expect(await messages(page).evaluate(el=>el.scrollHeight-el.scrollTop-el.clientHeight)).toBeGreaterThan(90);};
+      |                                                                                                                                                                                                                                                                                                                                                                                                                     ^ Error: expect(received).toBeLessThanOrEqual(expected)
+  87  |   for(const width of [1199,1440,390]){await resize(page,width);await unchanged(page,original);await expect(input(page)).toBeFocused();await checkAnchor();expect(await streamCount(page)).toBe(1);expect(await aborts(page)).toBe(0);expect(await root(page).locator('.rc-ai-msg--ai').last().evaluate((el,old)=>el===old,stream)).toBe(true);}
+  88  |   await delta(page,'\n\nA later chunk must not pull the reader to the bottom.');await expect(root(page).locator('.rc-ai-answer-body')).toContainText('A later chunk');await checkAnchor();
+  89  |   const stop=root(page).locator('.article-chat-stop'),stopBox=(await stop.boundingBox())!;expect(stopBox.height).toBeGreaterThanOrEqual(44);expect(stopBox.width).toBeGreaterThanOrEqual(44);expect(await stop.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);await stop.click();await expect(root(page)).toHaveAttribute('aria-busy','false');expect(await aborts(page)).toBe(1);expect(await streamCount(page)).toBe(1);await unchanged(page,original);
+  90  | });
+  91  | 
+  92  | test('synthetic composition and keyCode229 cannot submit while the same draft crosses layouts',async({page})=>{
+  93  |   const posts=await mockJSON(page);await prepare(page,1199);await openAI(page);const original=await identities(page);await input(page).fill('正在选择中文候选');await input(page).dispatchEvent('compositionstart');await input(page).dispatchEvent('keydown',{key:'Enter',isComposing:true});await resize(page,1200);await input(page).dispatchEvent('keydown',{key:'Enter',keyCode:229});await expect(input(page)).toHaveValue('正在选择中文候选');await unchanged(page,original);expect(posts).toHaveLength(0);
+  94  |   await input(page).dispatchEvent('compositionend');await input(page).press('Enter');await expect.poll(()=>posts.length).toBe(1);await expect(root(page).locator('.rc-ai-answer-body')).toHaveText('Controlled answer 1.');
+  95  | });
+  96  | 
+  97  | test('layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request',async({page})=>{
+  98  |   await heldStream(page);await prepare(page);await page.evaluate(()=>document.body.style.setProperty('overflow','auto','important'));await openAI(page);const original=await identities(page);await input(page).fill('Still running');await input(page).press('Enter');await expect.poll(()=>streamCount(page)).toBe(1);await delta(page,'Controlled partial.');await expect(root(page).locator('.rc-ai-answer-body')).toHaveText('Controlled partial.');await input(page).fill('Preserve this unsent draft');
+  99  |   await resize(page,1199);expect(await aborts(page)).toBe(0);await expect(sheet(page)).toHaveClass(/abs--open/);await resize(page,1200);expect(await aborts(page)).toBe(0);expect(await page.evaluate(()=>[document.body.style.getPropertyValue('overflow'),document.body.style.getPropertyPriority('overflow')])).toEqual(['auto','important']);
+  100 |   await resize(page,1199);await input(page).press('Escape');await expect(sheet(page)).not.toHaveClass(/abs--open/);expect(await aborts(page)).toBe(1);await expect(page.locator('#article-fab')).toBeFocused();expect(await sheet(page).evaluate((el:HTMLElement)=>el.inert)).toBe(true);expect(await page.evaluate(()=>[document.body.style.getPropertyValue('overflow'),document.body.style.getPropertyPriority('overflow')])).toEqual(['auto','important']);await unchanged(page,original);await expect(input(page)).toHaveValue('Preserve this unsent draft');
+  101 |   await page.locator('#article-fab').press('Enter');await expect(input(page)).toBeVisible();await expect(input(page)).toHaveValue('Preserve this unsent draft');expect(await streamCount(page)).toBe(1);await expect(root(page)).toHaveAttribute('aria-busy','false');
+  102 | });
+  103 | 
+  104 | test('delayed shared initialization and two entry calls still create one root, controller and selection request',async({page})=>{
+  105 |   const posts=await mockJSON(page);await page.addInitScript(()=>document.addEventListener('DOMContentLoaded',()=>{const root=document.querySelector('[data-article-chat]');const a=(window as any).ArticleChat.init(root,{prefix:'rc'}),b=(window as any).ArticleChat.init(root?.parentElement,{prefix:'abs'});(window as any).__sameChatEntry=!!a&&a===b;}));
+  106 |   let release=()=>{},scripts=0;let gate:Promise<void>;await page.route(/\/js\/article-chat\.js(?:\?|$)/,async route=>{scripts++;await gate;await route.continue();});
+  107 |   for(const width of [390,1440]){
+  108 |     gate=new Promise<void>(resolve=>{release=resolve;});await page.setViewportSize({width,height:900});await page.goto(article(),{waitUntil:'commit'});await expect(root(page)).toHaveCount(1);await expect.poll(()=>scripts).toBe(width===390?1:2);const original=await identities(page);await page.setViewportSize({width:width===390?1200:1199,height:900});await page.setViewportSize({width,height:900});release();await page.waitForLoadState('domcontentloaded');await expect(root(page)).toHaveAttribute('data-chat-ready','true');await unchanged(page,original);expect(await page.evaluate(()=>(window as any).__sameChatEntry)).toBe(true);
+  109 |     await expect(root(page).locator('textarea')).toHaveCount(1);await expect(input(page)).toHaveAttribute('maxlength','500');expect(await root(page).locator('[data-prompt]').count()).toBeGreaterThanOrEqual(6);await expect(page.locator('#rc-tab-ai')).toHaveAttribute('aria-selected','false');await expect(page.locator('#abs-tab-ai')).toHaveAttribute('aria-selected','false');await expect(sheet(page)).not.toHaveClass(/abs--open/);
+  110 |     await analyze(page,'initialization-check','One controlled selected passage',`One action at ${width}`);await expect.poll(()=>posts.length).toBe(width===390?1:2);await expect(root(page).locator('.rc-ai-answer-body')).toHaveText(`Controlled answer ${posts.length}.`);
+  111 |   }expect(scripts).toBe(2);
+  112 | });
+  113 | 
+```

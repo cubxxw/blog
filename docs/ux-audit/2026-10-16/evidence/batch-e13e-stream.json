@@ -1,0 +1,968 @@
+{
+  "at": "2026-10-15T23:32:05.598Z",
+  "sourceManifest": "batch-e13e-source.json",
+  "view": {
+    "width": 1440,
+    "height": 900,
+    "locale": "en",
+    "dark": false,
+    "motion": "reduce"
+  },
+  "before": {
+    "width": 1440,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "rc-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 1041.265625,
+      "y": 111.390625,
+      "width": 286.734375,
+      "height": 476.75,
+      "top": 111.390625,
+      "right": 1328,
+      "bottom": 588.140625,
+      "left": 1041.265625
+    },
+    "inputBox": {
+      "x": 1053.265625,
+      "y": 529.390625,
+      "width": 187.71875,
+      "height": 48.75,
+      "top": 529.390625,
+      "right": 1240.984375,
+      "bottom": 578.140625,
+      "left": 1053.265625
+    },
+    "messages": {
+      "box": {
+        "x": 1041.265625,
+        "y": 111.390625,
+        "width": 286.734375,
+        "height": 396,
+        "top": 111.390625,
+        "right": 1328,
+        "bottom": 507.390625,
+        "left": 1041.265625
+      },
+      "scrollTop": 3531,
+      "scrollHeight": 4527,
+      "clientHeight": 396,
+      "text": "Your questionRead this long controlled answerAIReading togetherPassage 01 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 02 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 03 — Ke"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 1285.984375,
+        "y": 546.140625,
+        "width": 33.015625,
+        "height": 32,
+        "top": 546.140625,
+        "right": 1319,
+        "bottom": 578.140625,
+        "left": 1285.984375
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "",
+      "priority": ""
+    },
+    "sheet": {
+      "open": false,
+      "inert": true,
+      "ariaHidden": "true"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-toc"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "beforeAnchor": {
+    "text": "Passage 33 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.",
+    "firstCharacterOffset": 105.046875,
+    "paragraphOffset": 101.046875
+  },
+  "compact": {
+    "width": 1199,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 252.5,
+      "y": 283.328125,
+      "width": 694,
+      "height": 604.671875,
+      "top": 283.328125,
+      "right": 946.5,
+      "bottom": 888,
+      "left": 252.5
+    },
+    "inputBox": {
+      "x": 264.5,
+      "y": 818.40625,
+      "width": 571,
+      "height": 59.59375,
+      "top": 818.40625,
+      "right": 835.5,
+      "bottom": 878,
+      "left": 264.5
+    },
+    "messages": {
+      "box": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 796.40625,
+        "left": 252.5
+      },
+      "scrollTop": 1919,
+      "scrollHeight": 2512,
+      "clientHeight": 513,
+      "text": "Your questionRead this long controlled answerAIReading togetherPassage 01 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 02 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 03 — Ke"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 893.5,
+        "y": 834,
+        "width": 44,
+        "height": 44,
+        "top": 834,
+        "right": 937.5,
+        "bottom": 878,
+        "left": 893.5
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "compactAnchor": {
+    "text": "Passage 33 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.",
+    "firstCharacterOffset": 105.046875,
+    "paragraphOffset": 101.046875
+  },
+  "nextChunk": {
+    "width": 1199,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 252.5,
+      "y": 283.328125,
+      "width": 694,
+      "height": 604.671875,
+      "top": 283.328125,
+      "right": 946.5,
+      "bottom": 888,
+      "left": 252.5
+    },
+    "inputBox": {
+      "x": 264.5,
+      "y": 818.40625,
+      "width": 571,
+      "height": 59.59375,
+      "top": 818.40625,
+      "right": 835.5,
+      "bottom": 878,
+      "left": 264.5
+    },
+    "messages": {
+      "box": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 796.40625,
+        "left": 252.5
+      },
+      "scrollTop": 1919,
+      "scrollHeight": 2547,
+      "clientHeight": 513,
+      "text": "Your questionRead this long controlled answerAIReading togetherPassage 01 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 02 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 03 — Ke"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 893.5,
+        "y": 834,
+        "width": 44,
+        "height": 44,
+        "top": 834,
+        "right": 937.5,
+        "bottom": 878,
+        "left": 893.5
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "nextAnchor": {
+    "text": "Passage 33 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.",
+    "firstCharacterOffset": 105.046875,
+    "paragraphOffset": 101.046875
+  },
+  "returned": {
+    "width": 1200,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "rc-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 887.390625,
+      "y": 111.390625,
+      "width": 258.609375,
+      "height": 476.75,
+      "top": 111.390625,
+      "right": 1146,
+      "bottom": 588.140625,
+      "left": 887.390625
+    },
+    "inputBox": {
+      "x": 899.390625,
+      "y": 529.390625,
+      "width": 159.59375,
+      "height": 48.75,
+      "top": 529.390625,
+      "right": 1058.984375,
+      "bottom": 578.140625,
+      "left": 899.390625
+    },
+    "messages": {
+      "box": {
+        "x": 887.390625,
+        "y": 111.390625,
+        "width": 258.609375,
+        "height": 396,
+        "top": 111.390625,
+        "right": 1146,
+        "bottom": 507.390625,
+        "left": 887.390625
+      },
+      "scrollTop": 3549,
+      "scrollHeight": 4605,
+      "clientHeight": 396,
+      "text": "Your questionRead this long controlled answerAIReading togetherPassage 01 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 02 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 03 — Ke"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 1103.984375,
+        "y": 546.140625,
+        "width": 33.015625,
+        "height": 32,
+        "top": 546.140625,
+        "right": 1137,
+        "bottom": 578.140625,
+        "left": 1103.984375
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "",
+      "priority": ""
+    },
+    "sheet": {
+      "open": false,
+      "inert": true,
+      "ariaHidden": "true"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "returnAnchor": {
+    "text": "Passage 33 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.",
+    "firstCharacterOffset": 104.625,
+    "paragraphOffset": 100.625
+  },
+  "newBefore": {
+    "width": 1200,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "rc-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 887.390625,
+      "y": 111.390625,
+      "width": 258.609375,
+      "height": 476.75,
+      "top": 111.390625,
+      "right": 1146,
+      "bottom": 588.140625,
+      "left": 887.390625
+    },
+    "inputBox": {
+      "x": 899.390625,
+      "y": 529.390625,
+      "width": 159.59375,
+      "height": 48.75,
+      "top": 529.390625,
+      "right": 1058.984375,
+      "bottom": 578.140625,
+      "left": 899.390625
+    },
+    "messages": {
+      "box": {
+        "x": 887.390625,
+        "y": 111.390625,
+        "width": 258.609375,
+        "height": 396,
+        "top": 111.390625,
+        "right": 1146,
+        "bottom": 507.390625,
+        "left": 887.390625
+      },
+      "scrollTop": 2849,
+      "scrollHeight": 4605,
+      "clientHeight": 396,
+      "text": "Your questionRead this long controlled answerAIReading togetherPassage 01 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 02 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 03 — Ke"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 1103.984375,
+        "y": 546.140625,
+        "width": 33.015625,
+        "height": 32,
+        "top": 546.140625,
+        "right": 1137,
+        "bottom": 578.140625,
+        "left": 1103.984375
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "",
+      "priority": ""
+    },
+    "sheet": {
+      "open": false,
+      "inert": true,
+      "ariaHidden": "true"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "newBeforeAnchor": {
+    "text": "Passage 26 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.",
+    "firstCharacterOffset": 29.375,
+    "paragraphOffset": 25.375
+  },
+  "newCompact": {
+    "width": 1199,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 252.5,
+      "y": 283.328125,
+      "width": 694,
+      "height": 604.671875,
+      "top": 283.328125,
+      "right": 946.5,
+      "bottom": 888,
+      "left": 252.5
+    },
+    "inputBox": {
+      "x": 264.5,
+      "y": 818.40625,
+      "width": 571,
+      "height": 59.59375,
+      "top": 818.40625,
+      "right": 835.5,
+      "bottom": 878,
+      "left": 264.5
+    },
+    "messages": {
+      "box": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 796.40625,
+        "left": 252.5
+      },
+      "scrollTop": 1572,
+      "scrollHeight": 2547,
+      "clientHeight": 513,
+      "text": "Your questionRead this long controlled answerAIReading togetherPassage 01 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 02 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 03 — Ke"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 893.5,
+        "y": 834,
+        "width": 44,
+        "height": 44,
+        "top": 834,
+        "right": 937.5,
+        "bottom": 878,
+        "left": 893.5
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "newCompactAnchor": {
+    "text": "Passage 26 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.",
+    "firstCharacterOffset": 29.421875,
+    "paragraphOffset": 25.421875
+  },
+  "newAfterChunk": {
+    "width": 1199,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 252.5,
+      "y": 283.328125,
+      "width": 694,
+      "height": 604.671875,
+      "top": 283.328125,
+      "right": 946.5,
+      "bottom": 888,
+      "left": 252.5
+    },
+    "inputBox": {
+      "x": 264.5,
+      "y": 818.40625,
+      "width": 571,
+      "height": 59.59375,
+      "top": 818.40625,
+      "right": 835.5,
+      "bottom": 878,
+      "left": 264.5
+    },
+    "messages": {
+      "box": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 796.40625,
+        "left": 252.5
+      },
+      "scrollTop": 1572,
+      "scrollHeight": 2582,
+      "clientHeight": 513,
+      "text": "Your questionRead this long controlled answerAIReading togetherPassage 01 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 02 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.Passage 03 — Ke"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 893.5,
+        "y": 834,
+        "width": 44,
+        "height": 44,
+        "top": 834,
+        "right": 937.5,
+        "bottom": 878,
+        "left": 893.5
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "newAfterAnchor": {
+    "text": "Passage 26 — Keep this sentence in view while changing layouts. Read this original paragraph before continuing.",
+    "firstCharacterOffset": 29.421875,
+    "paragraphOffset": 25.421875
+  },
+  "stopped": {
+    "width": 1199,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "false",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 252.5,
+      "y": 283.328125,
+      "width": 694,
+      "height": 604.671875,
+      "top": 283.328125,
+      "right": 946.5,
+      "bottom": 888,
+      "left": 252.5
+    },
+    "inputBox": {
+      "x": 264.5,
+      "y": 818.40625,
+      "width": 622,
+      "height": 59.59375,
+      "top": 818.40625,
+      "right": 886.5,
+      "bottom": 878,
+      "left": 264.5
+    },
+    "messages": {
+      "box": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 796.40625,
+        "left": 252.5
+      },
+      "scrollTop": 0,
+      "scrollHeight": 513,
+      "clientHeight": 513,
+      "text": "Your questionRead this long controlled answerAIReading togetherStopped."
+    },
+    "stop": {
+      "visible": false,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 1,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Read this long controlled answer",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-stream-reading-desktop-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-stream-reading-compact-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-stream-returned-desktop-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-stream-new-reading-desktop-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-stream-new-reading-compact-en.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One actual English1440→1199→1200/reduce context, controlled held Response stream consumed by original transport; real user wheel away, native resize and Stop. First visible whole paragraph first-character relative position measured independently. No real model, OS composition, physical/safari/fullmatrix; not certifying prior Stop partial-answer design."
+}

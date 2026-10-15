@@ -321,20 +321,7 @@
     {{/* Panel 2: AI Companion */}}
     {{- if $capabilities.ai }}
     <div class="abs-panel" id="abs-panel-ai" role="tabpanel" aria-labelledby="abs-tab-ai" hidden>
-      <div class="abs-ai-panel">
-        <div class="abs-ai-messages" aria-live="polite" aria-label="{{ if eq .Lang "zh" }}文章解读{{ else }}Article insights{{ end }}"></div>
-        <div class="abs-ai-input-area">
-          <textarea class="abs-ai-textarea" rows="2"
-            placeholder="{{ if eq .Lang "zh" }}{{ i18n "tools.ai_placeholder" | default "向 AI 提问…" | safeHTML }}{{ else }}{{ i18n "tools.ai_placeholder" | default "Ask about this article..." | safeHTML }}{{ end }}"
-            aria-label="{{ i18n "tools.ai" | default "AI Companion" | safeHTML }}"></textarea>
-          <button class="abs-ai-send" aria-label="{{ i18n "ai_send_label" | default "Send" | safeHTML }}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-          </button>
-        </div>
-      </div>
+      {{/* The single article chat moves here when the compact tools are used. */}}
     </div>
     {{- end }}
 

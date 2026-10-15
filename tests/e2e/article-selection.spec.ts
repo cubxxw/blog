@@ -61,7 +61,7 @@ for (const width of [390, 1280]) {
       await route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: '这是结合文章上下文的解释。' }) });
     });
     await page.setViewportSize({ width, height: 844 }); await page.goto(article);
-    const prefix = width < 1200 ? 'abs' : 'rc', panel = page.locator('.' + prefix + '-ai-panel');
+    const prefix = 'rc', panel = page.locator('[data-article-chat]');
     if (width >= 1200) { await page.locator('#rc-tab-ai').click(); await panel.locator('textarea').fill('尚未发送的问题'); }
     await select(page); const y = await page.evaluate(() => scrollY);
     await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();

@@ -74,3 +74,7 @@ E12 checkpoint `50a08fbbfb19b5f59d2dc95202071f6132466655` readback，未push，3
 E12c已明确放行现executor仅JS/CSS+现spec，10case=8加强+2短Tab，footer仍50a08字节。独立已核实验6图/immutable2blob/contract/receipt，支持定位假设无实验P0/P1，UX047/P2open；不promote discovery、不当生产pass。预览仍E12 CP50a08，source WIP不build。父c用新版本helper以保原E12 helper/runner证据不变，单独stubGA自动脚本，Netlify仍blocked503，publicfonts继续真实读取；不把Netlify计数叫完整外网审计。无browser/build运行。
 
 E12c独立闭环：四源/QA/四runner/provenance及六条finalBack trace SHA匹配；10合同17.1s、Hugo4481ms、6actual20PNG父与独立全部逐看，22contrast独立rawmin4.879289268784955，无新增P0/P1。v1.23为309族/367selectors/328状态/69局部/0完整，普通已测视口静态D1/D4=96/96；UX047仅fixed/短Tab/原节点/resize/runtimeReduce命名范围闭。初Back10s超时未解释、全分null、实验discovery/unreviewed不变。两审计Agent停写后本地checkpoint；随后E13，预览保留，不push。
+
+E12c checkpoint `9ec879f3c4c04c622523dc9e98222d58bb90ba3f` 已readback。E13明确放行现executor按已定canonical单DOM/controller 7源/10case，父负责单browser，sourcefreeze前不build，1317仍Caccepted。7源之外生产不改，不触真实模型，UX044继续open。
+
+E13e独立闭环：13新合同15.3s/4旧专项4.5s/Hugo3781ms，7正式actual25PNG父/独立全看，71uniquehash/11source/QA/6standardrunner+supplemental/HTTPserved3JS/provenance匹配，无新增P0/P1。UX044仅同DOM/草稿选区/请求scope/读点/显式analyzefocus/Escape命名范围闭。局部D1=94.5、D4=90.5，小字11.5/9.5与引用多围框是真差距留E16，完整null。v1.24 309族/367selectorentries（含历史别名，非按钮数）/345状态/81局部/0完整；UX046字体与UX048Space小字open。初始锚/鼠标ownership/选段focus负例全保；defaultoverflow/自然240ms/真实Selection夹具修正明记；父scope-B初看误判由字节相同对照/几何/独立看图校准，无虚构capturebug。E14仅discovery不晋级，computer实际链条和bookmark本来功能正证有界。下批优先E15Space可读性/收藏44square和pressed/list实际911→0读点丢失，E14字体完整CSS边界另行研究；source暂停待本地checkpoint，不push。

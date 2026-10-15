@@ -132,7 +132,7 @@
   {{/* ── Panel 2: AI Companion ── */}}
   {{- if $capabilities.ai }}
   <div class="rc-panel" id="rc-panel-ai" role="tabpanel" aria-labelledby="rc-tab-ai" hidden>
-    <div class="rc-ai-panel">
+    <div class="rc-ai-panel" data-article-chat>
       {{- $isZh := eq $page.Lang "zh" -}}
       <div class="rc-ai-intro">
         <div class="rc-ai-quick-label">{{ if $isZh }}选择阅读角度{{ else }}Choose a reading lens{{ end }}</div>

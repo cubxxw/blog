@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-15T23:16:49.570010+00:00",
+  "batch": "E13",
+  "base": "9ec879f3c4c04c622523dc9e98222d58bb90ba3f",
+  "files": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "92dc733d5df1b43a9ac4c85bee529a074d3f3c7a85c6fd9daa9cc5265f972aa6",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "5f8f8b81690cd0665b1f848024ce7c94d24d8069080916710c96a69b206fce14",
+    "assets/css/extended/article-bottom-sheet.css": "526c39c57662025613d428841012e4627eb6ae4a83125eb1cb7b166be5a4028e",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "37c7e563d6011856f8e2d06111339dee527cbdc701052d0344110f911d83012c",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/article-continuity-qa.config.mjs",
+    "sha256": "1698df4609aec570f80ed0b34df8ce545424e250596bdfd19fea25f0a3b645cb",
+    "workers": 1,
+    "browser": "ChromiumMetal"
+  },
+  "parentActionRunners": {
+    "article-qa.browser-helpers.mjs": "237a292a8df3e2ada3432a3a293d51e871cabe372a7ee5f43d91e6142ac1fedd",
+    "article-qa-visible-focus.mjs": "52b7b6211b70c9392230a05277c5e56db23cd1692a21c1ed96422b7a82f4887e",
+    "batch-e13-actions.browser.mjs": "6b172431d3e638fa0e42fd76596d0192466695159c723917c00a14caa11af484",
+    "batch-e13-stream.browser.mjs": "6ef48e9aab07b7bb7f443a55b318841a83efa8426cc960c7fabca1d727bf05ff",
+    "batch-e13-scope.browser.mjs": "093f38a1358a29020bc82c0c3060f4ba4ae968b45fcc692d2d84dd14d8600b51",
+    "batch-e13-entry.browser.mjs": "0c8db31458389ae00aca766aa327fb3b69eb77a77aab38956e78aa4cbdd4631f"
+  },
+  "scope": "7production+new10contracts+oldselection locator only;AIClient/ArticleTabs immutable. Same root/controller/scopes/general/stream; layout handoff differs from userclose. No live model/paid/contact/share/subscription.",
+  "iteration": "E13d1 spec-only modal precondition: legal desktop before actual outside themeclick, then1199; original10andallpositiveassertionsunchanged;productionD/Hugo3621ms reused",
+  "parentActualPrecondition": "Default inline body overflow for normal user journey; synthetic auto!important exact owner restoration stays in unchanged contract9. Controlled two-case geometry shows auto!important itself changes sticky viewport input y376→-123/rootY Tab500→0, default remains500. Initial actualrunner/source/log2PNG and diagnostic4PNG preserved. New independent visible-focus helper asserts full viewport/centerhit/notinert/notdisabled rather than layout-presence alone; no production changes or rootY tolerance.",
+  "parentMotionGate": "Actual normal motion helper now waits open noninert sheet transform m42<=0.1/no running transform transition, bounded1500ms, then same strict fullviewport+centerhit assertion. Natural timeline probe at33.39ms/input1481.7,183.39ms/input843.0,settled818 verifies transition rather than product defect. Initial helper animations:disabled probe separately preserved with limitation; no source or contract change.",
+  "parentRunnerManifestTiming": "Current helper was saved before actual third-run launch; parent runner SHA map refreshed during run after basename path correction. verify() run-time validates files only; final provenance independently binds runner bytes and this metadata timing, not a false runtime runner-hash assertion.",
+  "scopeFixtureCorrection": "Original raw textContent paragraph includes source newlines which rendered normal-white-space selection collapses. Initial assertion failure preserved. Actual scope runner now independently captures innerText and live getSelection().toString().trim(), asserts those identical, and exact payload.selectedText equals that real browser selection; selectionContext normalized-text inclusion follows unchanged public source behavior. No production/contracts change."
+}

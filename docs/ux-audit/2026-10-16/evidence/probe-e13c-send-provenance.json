@@ -1,0 +1,17 @@
+{
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send.json": "7255c025fd71ede40b64bf2cb186a1dcf5862dae04aba59a436793f3d078e00e",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send.log": "616ede50385f45827c5164eee2044560aba15d23c4113a0e79b49057d203cef7",
+    "docs/ux-audit/2026-10-16/probe-e13c-send.browser.mjs": "7d336ae90658ac2e1ad054bbafee06765e358a1c2ca33a994ab91c75a8259b65"
+  },
+  "images": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send-before-click.png": "d31403c46ab2dd4dee5baccc0cc32dbe0d00e886b309bf21d319f85add024a18",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send-clicked-and-busy.png": "0b163cfe6c0a74ce0ec194850fc714161bc81008d9f3877895480a35df7ea672",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send-after-1199.png": "571347909c317b7ccfc184ec094b24cc6123795163786a09aa987380d4280a0f"
+  },
+  "sourceManifest": "batch-e13c-source.json",
+  "servedJS_SHA256": "e62732cba23167955445c696aafe96c661eebe77ec3e328fca4dea12977bbfff",
+  "parentReadAll3PNG": true,
+  "status": "sameMouseSendOwnerNegativePersistsOnC;notrequestlost",
+  "scope": "One1440en/reduce→1199;sourceunchangedc,realbuttonclick/heldmock,0actualendpoints."
+}

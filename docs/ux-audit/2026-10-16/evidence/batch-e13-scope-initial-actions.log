@@ -1,0 +1,25 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::'
+- '::: tip\n' +
+-   'When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process.\n' +
+-   ':::'
+
+    at choose (file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/batch-e13-scope.browser.mjs:7:706)
+    at async file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/batch-e13-scope.browser.mjs:8:17 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::',
+  expected: '::: tip\n' +
+    'When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process.\n' +
+    ':::',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

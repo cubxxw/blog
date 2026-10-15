@@ -1,0 +1,1818 @@
+{
+  "at": "2026-10-15T23:00:35.341Z",
+  "sourceManifest": "batch-e13-initial-source.json",
+  "sourceManifestSHA256": "4db4ad46f48001ec3e4cb375a77b218172788e4d5679cc43a4eb5a40c0b3a5f5",
+  "anchor": {
+    "text": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+    "top": 66.546875
+  },
+  "rows": [
+    {
+      "name": "before",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 66.546875,
+        "paragraphRect": {
+          "x": 1057.265625,
+          "y": 177.546875,
+          "width": 252.734375,
+          "height": 100.75,
+          "top": 177.546875,
+          "right": 1310,
+          "bottom": 278.296875,
+          "left": 1057.265625
+        },
+        "messagesRect": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 396,
+          "top": 113,
+          "right": 1328,
+          "bottom": 509,
+          "left": 1041.265625
+        },
+        "scrollTop": 7776,
+        "scrollHeight": 11172,
+        "clientHeight": 396,
+        "firstFullyVisible": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 478.28125,
+          "top": 113,
+          "right": 1328,
+          "bottom": 591.28125,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 531,
+          "width": 189.6875,
+          "height": 50.28125,
+          "top": 531,
+          "right": 1242.953125,
+          "bottom": 581.28125,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 113,
+            "width": 286.734375,
+            "height": 396,
+            "top": 113,
+            "right": 1328,
+            "bottom": 509,
+            "left": 1041.265625
+          },
+          "scrollTop": 7776,
+          "scrollHeight": 11172,
+          "clientHeight": 396,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 1287.953125,
+            "y": 549.28125,
+            "width": 31.046875,
+            "height": 32,
+            "top": 549.28125,
+            "right": 1319,
+            "bottom": 581.28125,
+            "left": 1287.953125
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-toc"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 0
+    },
+    {
+      "name": "resize-1199-immediate",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 66.296875,
+        "paragraphRect": {
+          "x": 268.5,
+          "y": 347.625,
+          "width": 660,
+          "height": 50.375,
+          "top": 347.625,
+          "right": 928.5,
+          "bottom": 398,
+          "left": 268.5
+        },
+        "messagesRect": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 513.078125,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 796.40625,
+          "left": 252.5
+        },
+        "scrollTop": 4250,
+        "scrollHeight": 6135,
+        "clientHeight": 513,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818.40625,
+          "width": 571,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 835.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 283.328125,
+            "width": 694,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 946.5,
+            "bottom": 796.40625,
+            "left": 252.5
+          },
+          "scrollTop": 4250,
+          "scrollHeight": 6135,
+          "clientHeight": 513,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 893.5,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 937.5,
+            "bottom": 878,
+            "left": 893.5
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": -0.25
+    },
+    {
+      "name": "resize-1199-2frames",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 66.296875,
+        "paragraphRect": {
+          "x": 268.5,
+          "y": 347.625,
+          "width": 660,
+          "height": 50.375,
+          "top": 347.625,
+          "right": 928.5,
+          "bottom": 398,
+          "left": 268.5
+        },
+        "messagesRect": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 513.078125,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 796.40625,
+          "left": 252.5
+        },
+        "scrollTop": 4250,
+        "scrollHeight": 6135,
+        "clientHeight": 513,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818.40625,
+          "width": 571,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 835.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 283.328125,
+            "width": 694,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 946.5,
+            "bottom": 796.40625,
+            "left": 252.5
+          },
+          "scrollTop": 4250,
+          "scrollHeight": 6135,
+          "clientHeight": 513,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 893.5,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 937.5,
+            "bottom": 878,
+            "left": 893.5
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": -0.25
+    },
+    {
+      "name": "resize-1199-120ms",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 66.296875,
+        "paragraphRect": {
+          "x": 268.5,
+          "y": 347.625,
+          "width": 660,
+          "height": 50.375,
+          "top": 347.625,
+          "right": 928.5,
+          "bottom": 398,
+          "left": 268.5
+        },
+        "messagesRect": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 513.078125,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 796.40625,
+          "left": 252.5
+        },
+        "scrollTop": 4250,
+        "scrollHeight": 6135,
+        "clientHeight": 513,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818.40625,
+          "width": 571,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 835.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 283.328125,
+            "width": 694,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 946.5,
+            "bottom": 796.40625,
+            "left": 252.5
+          },
+          "scrollTop": 4250,
+          "scrollHeight": 6135,
+          "clientHeight": 513,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 893.5,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 937.5,
+            "bottom": 878,
+            "left": 893.5
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": -0.25
+    },
+    {
+      "name": "resize-1440-immediate",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 116.546875,
+        "paragraphRect": {
+          "x": 1057.265625,
+          "y": 227.546875,
+          "width": 252.734375,
+          "height": 100.75,
+          "top": 227.546875,
+          "right": 1310,
+          "bottom": 328.296875,
+          "left": 1057.265625
+        },
+        "messagesRect": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 396,
+          "top": 113,
+          "right": 1328,
+          "bottom": 509,
+          "left": 1041.265625
+        },
+        "scrollTop": 7726,
+        "scrollHeight": 11172,
+        "clientHeight": 396,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 478.28125,
+          "top": 113,
+          "right": 1328,
+          "bottom": 591.28125,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 531,
+          "width": 189.6875,
+          "height": 50.28125,
+          "top": 531,
+          "right": 1242.953125,
+          "bottom": 581.28125,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 113,
+            "width": 286.734375,
+            "height": 396,
+            "top": 113,
+            "right": 1328,
+            "bottom": 509,
+            "left": 1041.265625
+          },
+          "scrollTop": 7726,
+          "scrollHeight": 11172,
+          "clientHeight": 396,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 1287.953125,
+            "y": 549.28125,
+            "width": 31.046875,
+            "height": 32,
+            "top": 549.28125,
+            "right": 1319,
+            "bottom": 581.28125,
+            "left": 1287.953125
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 50
+    },
+    {
+      "name": "resize-1440-2frames",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 116.546875,
+        "paragraphRect": {
+          "x": 1057.265625,
+          "y": 227.546875,
+          "width": 252.734375,
+          "height": 100.75,
+          "top": 227.546875,
+          "right": 1310,
+          "bottom": 328.296875,
+          "left": 1057.265625
+        },
+        "messagesRect": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 396,
+          "top": 113,
+          "right": 1328,
+          "bottom": 509,
+          "left": 1041.265625
+        },
+        "scrollTop": 7726,
+        "scrollHeight": 11172,
+        "clientHeight": 396,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 478.28125,
+          "top": 113,
+          "right": 1328,
+          "bottom": 591.28125,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 531,
+          "width": 189.6875,
+          "height": 50.28125,
+          "top": 531,
+          "right": 1242.953125,
+          "bottom": 581.28125,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 113,
+            "width": 286.734375,
+            "height": 396,
+            "top": 113,
+            "right": 1328,
+            "bottom": 509,
+            "left": 1041.265625
+          },
+          "scrollTop": 7726,
+          "scrollHeight": 11172,
+          "clientHeight": 396,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 1287.953125,
+            "y": 549.28125,
+            "width": 31.046875,
+            "height": 32,
+            "top": 549.28125,
+            "right": 1319,
+            "bottom": 581.28125,
+            "left": 1287.953125
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 50
+    },
+    {
+      "name": "resize-1440-120ms",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 116.546875,
+        "paragraphRect": {
+          "x": 1057.265625,
+          "y": 227.546875,
+          "width": 252.734375,
+          "height": 100.75,
+          "top": 227.546875,
+          "right": 1310,
+          "bottom": 328.296875,
+          "left": 1057.265625
+        },
+        "messagesRect": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 396,
+          "top": 113,
+          "right": 1328,
+          "bottom": 509,
+          "left": 1041.265625
+        },
+        "scrollTop": 7726,
+        "scrollHeight": 11172,
+        "clientHeight": 396,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 478.28125,
+          "top": 113,
+          "right": 1328,
+          "bottom": 591.28125,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 531,
+          "width": 189.6875,
+          "height": 50.28125,
+          "top": 531,
+          "right": 1242.953125,
+          "bottom": 581.28125,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 113,
+            "width": 286.734375,
+            "height": 396,
+            "top": 113,
+            "right": 1328,
+            "bottom": 509,
+            "left": 1041.265625
+          },
+          "scrollTop": 7726,
+          "scrollHeight": 11172,
+          "clientHeight": 396,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 1287.953125,
+            "y": 549.28125,
+            "width": 31.046875,
+            "height": 32,
+            "top": 549.28125,
+            "right": 1319,
+            "bottom": 581.28125,
+            "left": 1287.953125
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 50
+    },
+    {
+      "name": "resize-390-immediate",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 91.421875,
+        "paragraphRect": {
+          "x": 29,
+          "y": 372.75,
+          "width": 330,
+          "height": 75.5625,
+          "top": 372.75,
+          "right": 359,
+          "bottom": 448.3125,
+          "left": 29
+        },
+        "messagesRect": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 513.078125,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 796.40625,
+          "left": 13
+        },
+        "scrollTop": 5988,
+        "scrollHeight": 8653,
+        "clientHeight": 513,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 390,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 888,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 818.40625,
+          "width": 241,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 266,
+          "bottom": 878,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 283.328125,
+            "width": 364,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 377,
+            "bottom": 796.40625,
+            "left": 13
+          },
+          "scrollTop": 5988,
+          "scrollHeight": 8653,
+          "clientHeight": 513,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 324,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 368,
+            "bottom": 878,
+            "left": 324
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 24.875
+    },
+    {
+      "name": "resize-390-2frames",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 91.421875,
+        "paragraphRect": {
+          "x": 29,
+          "y": 372.75,
+          "width": 330,
+          "height": 75.5625,
+          "top": 372.75,
+          "right": 359,
+          "bottom": 448.3125,
+          "left": 29
+        },
+        "messagesRect": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 513.078125,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 796.40625,
+          "left": 13
+        },
+        "scrollTop": 5988,
+        "scrollHeight": 8653,
+        "clientHeight": 513,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 390,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 888,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 818.40625,
+          "width": 241,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 266,
+          "bottom": 878,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 283.328125,
+            "width": 364,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 377,
+            "bottom": 796.40625,
+            "left": 13
+          },
+          "scrollTop": 5988,
+          "scrollHeight": 8653,
+          "clientHeight": 513,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 324,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 368,
+            "bottom": 878,
+            "left": 324
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 24.875
+    },
+    {
+      "name": "resize-390-120ms",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 91.421875,
+        "paragraphRect": {
+          "x": 29,
+          "y": 372.75,
+          "width": 330,
+          "height": 75.5625,
+          "top": 372.75,
+          "right": 359,
+          "bottom": 448.3125,
+          "left": 29
+        },
+        "messagesRect": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 513.078125,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 796.40625,
+          "left": 13
+        },
+        "scrollTop": 5988,
+        "scrollHeight": 8653,
+        "clientHeight": 513,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 390,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 888,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 818.40625,
+          "width": 241,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 266,
+          "bottom": 878,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 283.328125,
+            "width": 364,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 377,
+            "bottom": 796.40625,
+            "left": 13
+          },
+          "scrollTop": 5988,
+          "scrollHeight": 8653,
+          "clientHeight": 513,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 324,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 368,
+            "bottom": 878,
+            "left": 324
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 24.875
+    },
+    {
+      "name": "later-chunk",
+      "detail": {
+        "anchorText": "Reading anchor paragraph 070. This controlled passage is long enough to wrap differently in each reading layout.",
+        "firstCharOffset": 91.421875,
+        "paragraphRect": {
+          "x": 29,
+          "y": 372.75,
+          "width": 330,
+          "height": 75.5625,
+          "top": 372.75,
+          "right": 359,
+          "bottom": 448.3125,
+          "left": 29
+        },
+        "messagesRect": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 513.078125,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 796.40625,
+          "left": 13
+        },
+        "scrollTop": 5988,
+        "scrollHeight": 8714,
+        "clientHeight": 513,
+        "firstFullyVisible": "Reading anchor paragraph 069. This controlled passage is long enough to wrap differently in each reading layout."
+      },
+      "state": {
+        "width": 390,
+        "height": 900,
+        "rootY": 498,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 283.328125,
+          "width": 364,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 377,
+          "bottom": 888,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 818.40625,
+          "width": 241,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 266,
+          "bottom": 878,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 283.328125,
+            "width": 364,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 377,
+            "bottom": 796.40625,
+            "left": 13
+          },
+          "scrollTop": 5988,
+          "scrollHeight": 8714,
+          "clientHeight": 513,
+          "text": "你的问题Keep one streaming requestAI一起读懂Reading anchor paragraph 000. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 001. This controlled passage is long enough to wrap differently in each reading layout.Reading anchor paragraph 002. This contr"
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 324,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 368,
+            "bottom": 878,
+            "left": 324
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep one streaming request",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "delta": 24.875
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-before.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-resize-1199-2frames.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-resize-1440-2frames.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-resize-390-2frames.png"
+  ],
+  "trace": [
+    {
+      "event": "messages-scroll",
+      "time": 396.5,
+      "width": 1440,
+      "parent": "rc-panel-ai",
+      "scrollTop": 7776,
+      "height": 396,
+      "rect": {
+        "x": 1041.265625,
+        "y": 113,
+        "width": 286.734375,
+        "height": 396,
+        "top": 113,
+        "right": 1328,
+        "bottom": 509,
+        "left": 1041.265625
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "resize",
+      "time": 528.5,
+      "width": 1199,
+      "parent": "rc-panel-ai",
+      "scrollTop": 0,
+      "height": 0,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "root-parent-mutated",
+      "time": 532.6999998092651,
+      "width": 1199,
+      "parent": "abs-panel-ai",
+      "scrollTop": 4250,
+      "height": 513,
+      "rect": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 796.40625,
+        "left": 252.5
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "messages-scroll",
+      "time": 542.3000001907349,
+      "width": 1199,
+      "parent": "abs-panel-ai",
+      "scrollTop": 4250,
+      "height": 513,
+      "rect": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 796.40625,
+        "left": 252.5
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "resize",
+      "time": 815.3000001907349,
+      "width": 1440,
+      "parent": "abs-panel-ai",
+      "scrollTop": 0,
+      "height": 0,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "root-parent-mutated",
+      "time": 817.3000001907349,
+      "width": 1440,
+      "parent": "rc-panel-ai",
+      "scrollTop": 7726,
+      "height": 396,
+      "rect": {
+        "x": 1041.265625,
+        "y": 113,
+        "width": 286.734375,
+        "height": 396,
+        "top": 113,
+        "right": 1328,
+        "bottom": 509,
+        "left": 1041.265625
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "messages-scroll",
+      "time": 825.1999998092651,
+      "width": 1440,
+      "parent": "rc-panel-ai",
+      "scrollTop": 7726,
+      "height": 396,
+      "rect": {
+        "x": 1041.265625,
+        "y": 113,
+        "width": 286.734375,
+        "height": 396,
+        "top": 113,
+        "right": 1328,
+        "bottom": 509,
+        "left": 1041.265625
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "resize",
+      "time": 1129.9000000953674,
+      "width": 390,
+      "parent": "rc-panel-ai",
+      "scrollTop": 0,
+      "height": 0,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "root-parent-mutated",
+      "time": 1132.0999999046326,
+      "width": 390,
+      "parent": "abs-panel-ai",
+      "scrollTop": 5988,
+      "height": 513,
+      "rect": {
+        "x": 13,
+        "y": 283.328125,
+        "width": 364,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 377,
+        "bottom": 796.40625,
+        "left": 13
+      },
+      "focus": "rc-ai-textarea"
+    },
+    {
+      "event": "messages-scroll",
+      "time": 1200.0999999046326,
+      "width": 390,
+      "parent": "abs-panel-ai",
+      "scrollTop": 5988,
+      "height": 513,
+      "rect": {
+        "x": 13,
+        "y": 283.328125,
+        "width": 364,
+        "height": 513.078125,
+        "top": 283.328125,
+        "right": 377,
+        "bottom": 796.40625,
+        "left": 13
+      },
+      "focus": "rc-ai-textarea"
+    }
+  ],
+  "errors": [],
+  "denied": [],
+  "fixture": "Original100paragraph/actualwheel3000/width1199,1440,390; remote empty CSS matches contract offline typography. Pure mock Response stream through original AIClient. Source unchanged; observation-only no relaxed assertions."
+}

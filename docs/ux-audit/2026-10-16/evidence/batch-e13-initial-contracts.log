@@ -1,0 +1,41 @@
+
+Running 10 tests using 1 worker
+
+(node:84384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly (1.5s)
+  ✓   2 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly (1.2s)
+  ✓   3 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI (616ms)
+  ✓   4 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI (630ms)
+  ✓   5 tests/e2e/article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout (788ms)
+  ✓   6 tests/e2e/article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts (927ms)
+  ✘   7 tests/e2e/article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once (892ms)
+(node:84429) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 tests/e2e/article-chat-continuity-contracts.spec.ts:92:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts (656ms)
+  ✓   9 tests/e2e/article-chat-continuity-contracts.spec.ts:97:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request (794ms)
+  ✓  10 tests/e2e/article-chat-continuity-contracts.spec.ts:104:5 › delayed shared initialization and two entry calls still create one root, controller and selection request (1.3s)
+
+
+  1) tests/e2e/article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    50
+
+      84 |   const box=(await messages(page).boundingBox())!,atBottom=await messages(page).evaluate(el=>el.scrollTop);await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.wheel(0,-3000);await expect.poll(()=>messages(page).evaluate(el=>el.scrollTop)).toBeLessThan(atBottom-100);await frames(page);
+      85 |   const anchor=await messages(page).evaluate(el=>{const view=el.getBoundingClientRect();const p=Array.from(el.querySelectorAll('.rc-ai-answer-body p')).find(p=>{const r=p.getBoundingClientRect();return r.top>=view.top+1&&r.bottom<=view.bottom-1;})!;const range=document.createRange();range.setStart(p.firstChild!,0);range.setEnd(p.firstChild!,1);return {text:p.textContent,top:range.getBoundingClientRect().top-view.top};});
+    > 86 |   const checkAnchor=async()=>{const position=await messages(page).evaluate((el,text)=>{const p=Array.from(el.querySelectorAll('.rc-ai-answer-body p')).find(p=>p.textContent===text)!;const range=document.createRange();range.setStart(p.firstChild!,0);range.setEnd(p.firstChild!,1);return range.getBoundingClientRect().top-el.getBoundingClientRect().top;},anchor.text);expect(Math.abs(position-anchor.top)).toBeLessThanOrEqual(1);expect(await messages(page).evaluate(el=>el.scrollHeight-el.scrollTop-el.clientHeight)).toBeGreaterThan(90);};
+         |                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+      87 |   for(const width of [1199,1440,390]){await resize(page,width);await unchanged(page,original);await expect(input(page)).toBeFocused();await checkAnchor();expect(await streamCount(page)).toBe(1);expect(await aborts(page)).toBe(0);expect(await root(page).locator('.rc-ai-msg--ai').last().evaluate((el,old)=>el===old,stream)).toBe(true);}
+      88 |   await delta(page,'\n\nA later chunk must not pull the reader to the bottom.');await expect(root(page).locator('.rc-ai-answer-body')).toContainText('A later chunk');await checkAnchor();
+      89 |   const stop=root(page).locator('.article-chat-stop'),stopBox=(await stop.boundingBox())!;expect(stopBox.height).toBeGreaterThanOrEqual(44);expect(stopBox.width).toBeGreaterThanOrEqual(44);expect(await stop.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);await stop.click();await expect(root(page)).toHaveAttribute('aria-busy','false');expect(await aborts(page)).toBe(1);expect(await streamCount(page)).toBe(1);await unchanged(page,original);
+        at checkAnchor (<SOURCE_WORKTREE>/tests/e2e/article-chat-continuity-contracts.spec.ts:86:405)
+        at <SOURCE_WORKTREE>/tests/e2e/article-chat-continuity-contracts.spec.ts:87:135
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright-e13/article-chat-continuity-co-0eaa9-ndoff-then-Stop-aborts-once/error-context.md
+
+  1 failed
+    tests/e2e/article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once
+  9 passed (10.4s)

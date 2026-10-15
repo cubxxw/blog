@@ -1,0 +1,126 @@
+{
+  "at": "2026-10-15T23:36:26.027484+00:00",
+  "sourceManifest": "batch-e13e-source.json",
+  "sourceManifestSHA256": "ad187cb5258bae089e35131f276c179b4c5555629fb09863fc83fe6deb6e35d4",
+  "base": "9ec879f3c4c04c622523dc9e98222d58bb90ba3f",
+  "receipts": {
+    "batch-e13e-actions.json": {
+      "sha256": "a51d0dd4d949b056d9bec4c787a5c39a70219880b551053c1650b201a22dbbb0",
+      "contexts": 3,
+      "images": 11
+    },
+    "batch-e13e-stream.json": {
+      "sha256": "8b1a65bc408397f26331336600faae590a6c6f18afdcb0c0bdef02e162ed20a5",
+      "contexts": 1,
+      "images": 5
+    },
+    "batch-e13e-settled-scope.json": {
+      "sha256": "a1194360efcd779fe033c7f646434962bedd99d1c633fcb217e788490a3e8e49",
+      "contexts": 1,
+      "images": 3
+    },
+    "batch-e13e-entry.json": {
+      "sha256": "d97e38d22e0de1dbb284b2fa9d5216501790386ae1018e3630dc61537f8f83e1",
+      "contexts": 2,
+      "images": 6
+    }
+  },
+  "formal25Images": {
+    "batch-e13e-draft-1199-zh.png": "2ee4572393cc8f3dc385bc2ccdfa39aacfc069ff84b10a6434805d87232f9238",
+    "batch-e13e-draft-1200-zh.png": "0f47bcf499623dcbe37445ac9c06b5db1719e9805f251145e4a634ac2cd38ea2",
+    "batch-e13e-draft-return-1199-zh.png": "d49f8554163beac1e978ccfe8e236114c4ecf91248af80a846821c102b3641e0",
+    "batch-e13e-draft-reopened-zh.png": "efef462934f04ab34d18ebf9bec948b8ce2147d16274125cd7e831cd24929495",
+    "batch-e13e-draft-1199-en.png": "aa31ef1a727173e2a586a45ac608eab2dfc084bcbe99bfbf4f12702d6160ebda",
+    "batch-e13e-draft-1200-en.png": "54dc8e4ebbba6d0a75a7572915f78477624d5f44a8e832a7826638c8902ad916",
+    "batch-e13e-draft-return-1199-en.png": "d43072f61c4dd40e899582463d0d3f5e8b494ff04961b3731a326c63b384baf7",
+    "batch-e13e-draft-reopened-en.png": "6c4cd6a451dc3d75f80fd1cedab5681bad842d3fe270cfae4395b4be947fad47",
+    "batch-e13e-history-before-desktop-en.png": "cfe67729a79ef6f04783cabcec8c48404f623344acabafaa06f7bf18c3332fd3",
+    "batch-e13e-history-in-compact-en.png": "1fc9c972372cc1a5e93e413856051c0b6bc2992c45bf79c39cc74368722fa6fd",
+    "batch-e13e-history-continued-desktop-en.png": "035e2610927a084781733aef69b59c7427082f987a1b6786009ce1ee4e7ab7cd",
+    "batch-e13e-stream-reading-desktop-en.png": "6cdd6d25e38a6cb0420bd8365505b7490266bdd72d4c34f199915b3264b41c4b",
+    "batch-e13e-stream-reading-compact-en.png": "a2684622b8cd5c6aa05920ffa3e76ed8bdce350d20908cb099efba130cf7e379",
+    "batch-e13e-stream-returned-desktop-en.png": "62aee45fc002a2916e289148c5ab8882cde782ed59e6f1dbda90f8a836b1b84b",
+    "batch-e13e-stream-new-reading-desktop-en.png": "c10e4786e5dc4284a7bab2014f89bf784d2ff634c72a6da3483799a71536481c",
+    "batch-e13e-stream-new-reading-compact-en.png": "96a0a04b71b2627660aa74d03a23e0702d2dc7a139d12163974695afca2b5ac0",
+    "batch-e13e-settled-scope-a-desktop-zh.png": "c23b8599120ae66179980592884989b8a17ef56952c2da402d7afe894e0b6e11",
+    "batch-e13e-settled-scope-a-compact-followup-zh.png": "2ba26898e5a9cb977a7ddd03124d370d44d36c6a6f173cb9377f50fef13b7e91",
+    "batch-e13e-settled-scope-b-compact-zh.png": "59fcc47ec139529714d328e020bba39968b422cc614835dc51c63617d936477d",
+    "batch-e13e-send-entry-before-en.png": "cc01516246130985a1ecc95d220191b012667ddb346c49a453051d582fe8a3bb",
+    "batch-e13e-send-entry-migrated-en.png": "3f5e2b0d12f4573f86894df8247a11ac6497cabb20f75ba6a15cf19e4410eccc",
+    "batch-e13e-send-entry-stop-returned-en.png": "d9dea765c1b8b72c12b62a7b36540b5b27a48ca3af9dfa0a57d30f709fb2d33e",
+    "batch-e13e-quick-entry-before-zh.png": "8939523b37ce5a67686e6ab507998f0001dfd63e8bc2c281e27873faff876f6e",
+    "batch-e13e-quick-entry-migrated-zh.png": "348f8afce73dcfb87172c8afd76cb9cbeb4ae43c8961e391dbb0ef76009e51d1",
+    "batch-e13e-quick-entry-stop-returned-zh.png": "1332502270d46434f793f8d5b4c0f715dde653777223ba8364d2a85d340237cc"
+  },
+  "parentReadAll25FormalPNG": true,
+  "servedJS": [
+    {
+      "url": "http://127.0.0.1:1317/js/article-chat.js",
+      "sha256": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+      "matchesSource": true
+    },
+    {
+      "url": "http://127.0.0.1:1317/js/reading-companion.js",
+      "sha256": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+      "matchesSource": true
+    },
+    {
+      "url": "http://127.0.0.1:1317/js/article-bottom-sheet.js",
+      "sha256": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+      "matchesSource": true
+    }
+  ],
+  "supplementalRunnerSHA256": {
+    "batch-e13e-settled-scope.browser.mjs": "7cd11442dd1fdfc7b271c07aac29f881b91ed960b4724fba0f6eaefc20cf689c",
+    "batch-e13e-natural-scope.browser.mjs": "53354c243f19ba1fa6bfc648047baa2d28639fdf00de53216d2a862cce8ce5ff",
+    "probe-e13e-scope-settled.browser.mjs": "123aa0d00d80d90dbe8d008d748f648f657032801bbc17cb403217faa4d4f1a7"
+  },
+  "supplementalReceiptSHA256": {
+    "batch-e13e-settled-captures.json": "76ec96c53a5d86b476caea4b0e9ee32a6390681e140c1f5e4fb41da7796878ea",
+    "batch-e13e-scope.json": "a34550afc210943abee4b9cd496658fc86a467c977e4a702069b4e5b8ea7c778",
+    "batch-e13e-natural-scope.json": "36421207e2b58af2f12934e2bcea90f8c1e08a9047d8d74d6155d50ebe024657",
+    "batch-e13e-natural-captures.json": "6a1b6c00c56e46387b26d1aa42fb1045457d746b93a39c1374d7b19831eb4741",
+    "probe-e13e-scope-postcapture.json": "2bc93747cd29f89177dd2fa6df25378588f84f223e3de764208c2e2e153b7a04",
+    "probe-e13e-scope-settled-scope.json": "3d73689e47c76330c82e7dae7a1f661e3eb9231844bb7386e274acbbdd3e5be4"
+  },
+  "logSHA256": {
+    "batch-e13e-build.log": "57eb72388042fbb8247f413f29bba4b5c984d3bfe11d38869d6a8810f6c12445",
+    "batch-e13e-contracts.log": "3c7d9e76f7cc56a19423cb3f69be5a9d69228d431dfeee7b7565bd86218015ef",
+    "batch-e13e-selection-regressions.log": "b395ee41be8fe2acfd2593a6b50c9a019ff511cbf06a5d8743a615d4bc259855",
+    "batch-e13e-syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "batch-e13e-typecheck.log": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400",
+    "batch-e13e-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "batch-e13e-discovery.log": "d2ad2de6ecc033b73ba758b3de9852888f43c00912afe20b37b4806060933e8c",
+    "batch-e13e-scope.log": "6898b9960cc751fd905ed2c9ffbda346d0a9b7b0e71cab79297e4bed483810f8",
+    "batch-e13e-actions.log": "8595da5197b05fbe82c89faebf2e1ee246640b56743d812288a0c9857f49fba3",
+    "batch-e13e-stream.log": "2a77c257a3b3e0ef75410e79d0d978b9ab6a29a3431649c629bf2802e7c559ff",
+    "batch-e13e-entry.log": "f2be09f6e80fde73ea3c940bdc5580839d98682336f3150874c9004785e08cc0",
+    "batch-e13e-scope-actions.log": "e3585e6b0218377123b8319d9c9a07ba4aa64f71bb83dbb13785e228a77b453b",
+    "batch-e13e-natural-scope.log": "e3585e6b0218377123b8319d9c9a07ba4aa64f71bb83dbb13785e228a77b453b",
+    "batch-e13e-settled-scope.log": "e3585e6b0218377123b8319d9c9a07ba4aa64f71bb83dbb13785e228a77b453b"
+  },
+  "candidateHistory": "Initial ba6 anchor50px;B fda second user-anchor samehost2175px;C e627 contracts10pass but realmouse Send loses ownership;D92dc fixes self-disable/hide ownership;D1 test-only legal outside theme precondition12pass+4old. D1 realtoolbar explicit analyze leaves focusFAB→Esc ineffective→next toolbar908px. E f4e adds only explicit analyze focus line+13th realtoolbar test:13pass15.3s,4old4.5s,Hugo3781ms. Final7actualcontexts25formalPNG all assertions pass. Original failures and source manifests/logs/probes retained.",
+  "fixtureCorrections": "Main auto!important fixture changed body scrolling ancestor; controlled default comparison resolves fixture mismatch; exactauto!important restore contract remains. Normal2frames is240ms transform in progress; helper waits transform0 before strict fullviewport+hit. Scope rawtextContent newlines differed from rendered Selection; independently capture innerText/liveSelection then exact payload comparison; unchanged production selection.js. No forceclick/tolerance relaxation.",
+  "captureObservationCorrection": {
+    "fact": "Parent initial visual impression of clipped scope-B was incorrect. Current original images were not overwritten. Three controlled disabled/allow pairs byte-identical, independent review and postcapture fullviewport/hit agree. No production or screenshot-tool defect established.",
+    "pairs": [
+      {
+        "disabled": "probe-e13e-scope-settled-scope-a-desktop-zh.png",
+        "allow": "probe-e13e-scope-settled-scope-a-desktop-zh-allow.png",
+        "sameSHA256": "c23b8599120ae66179980592884989b8a17ef56952c2da402d7afe894e0b6e11"
+      },
+      {
+        "disabled": "probe-e13e-scope-settled-scope-a-compact-followup-zh.png",
+        "allow": "probe-e13e-scope-settled-scope-a-compact-followup-zh-allow.png",
+        "sameSHA256": "97c14fd9c74a2b4e09d3861af5d96f4fe5b220bab718d164d2c2fd27191c5a80"
+      },
+      {
+        "disabled": "probe-e13e-scope-settled-scope-b-compact-zh.png",
+        "allow": "probe-e13e-scope-settled-scope-b-compact-zh-allow.png",
+        "sameSHA256": "d137a60e9e40de7321947b0f3a40b97b63859f92bca29559ea95a13fcc197b64"
+      }
+    ],
+    "naturalStages": "Additional natural-scope first captures are opacity transition frames; preserved as such, not stable acceptance. Formal settled-scope waits opacity>=.999/no running opacity+transform before natural screenshot and asserts focused control fully viewport+centerhit before and after capture."
+  },
+  "limits": "Named7Chromium contexts with original AIClient and synthetic controlled Response/ReadableStream only; no live/paid model, AT, Safari, physical phone, real OS IME, hot migration of already-open old documents, BFCache or full device/state matrix certification. Full score null. Settled-font article setup does not resolve UX046. Main+stream+entry screenshots animations disabled; formalscope natural terminalopacity gates. Small intro/userlabel/share typography still design gap; no computed contrast or wholepaint certification from these PNGs."
+}

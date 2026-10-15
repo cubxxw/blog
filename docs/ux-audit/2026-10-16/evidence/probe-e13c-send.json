@@ -1,0 +1,342 @@
+{
+  "at": "2026-10-15T23:10:15.836Z",
+  "sourceManifest": "batch-e13c-source.json",
+  "servedJS_SHA256": "e62732cba23167955445c696aafe96c661eebe77ec3e328fca4dea12977bbfff",
+  "sourceBinding": "HTTP /js/article-chat.js exact c SHA; current c candidate frozen and built",
+  "before": {
+    "width": 1440,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "rc-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "false",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "Mouse Send ownership across layouts",
+    "selection": [
+      35,
+      35,
+      "none"
+    ],
+    "focus": {
+      "tag": "TEXTAREA",
+      "id": "",
+      "cls": "rc-ai-textarea",
+      "originalInput": true,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 1041.265625,
+      "y": 111.390625,
+      "width": 286.734375,
+      "height": 357.359375,
+      "top": 111.390625,
+      "right": 1328,
+      "bottom": 468.75,
+      "left": 1041.265625
+    },
+    "inputBox": {
+      "x": 1053.265625,
+      "y": 409.75,
+      "width": 227.734375,
+      "height": 49,
+      "top": 409.75,
+      "right": 1281,
+      "bottom": 458.75,
+      "left": 1053.265625
+    },
+    "messages": {
+      "box": {
+        "x": 1041.265625,
+        "y": 322.8125,
+        "width": 286.734375,
+        "height": 64.9375,
+        "top": 322.8125,
+        "right": 1328,
+        "bottom": 387.75,
+        "left": 1041.265625
+      },
+      "scrollTop": 0,
+      "scrollHeight": 65,
+      "clientHeight": 65,
+      "text": "Start with the article, and ask about a detail that matters to you."
+    },
+    "stop": {
+      "visible": false,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "",
+      "priority": ""
+    },
+    "sheet": {
+      "open": false,
+      "inert": true,
+      "ariaHidden": "true"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-toc"
+      ]
+    },
+    "turns": [],
+    "overflowX": false
+  },
+  "sent": {
+    "width": 1440,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "rc-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "rc-ai-send rc-ai-send--empty",
+      "originalInput": false,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 1041.265625,
+      "y": 111.390625,
+      "width": 286.734375,
+      "height": 182.5625,
+      "top": 111.390625,
+      "right": 1328,
+      "bottom": 293.953125,
+      "left": 1041.265625
+    },
+    "inputBox": {
+      "x": 1053.265625,
+      "y": 235.203125,
+      "width": 187.71875,
+      "height": 48.75,
+      "top": 235.203125,
+      "right": 1240.984375,
+      "bottom": 283.953125,
+      "left": 1053.265625
+    },
+    "messages": {
+      "box": {
+        "x": 1041.265625,
+        "y": 111.390625,
+        "width": 286.734375,
+        "height": 46.625,
+        "top": 111.390625,
+        "right": 1328,
+        "bottom": 158.015625,
+        "left": 1041.265625
+      },
+      "scrollTop": 0,
+      "scrollHeight": 47,
+      "clientHeight": 47,
+      "text": "Your questionMouse Send ownership across layouts"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 1285.984375,
+        "y": 251.953125,
+        "width": 33.015625,
+        "height": 32,
+        "top": 251.953125,
+        "right": 1319,
+        "bottom": 283.953125,
+        "left": 1285.984375
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "",
+      "priority": ""
+    },
+    "sheet": {
+      "open": false,
+      "inert": true,
+      "ariaHidden": "true"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-toc"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Mouse Send ownership across layouts",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "after": {
+    "width": 1199,
+    "height": 900,
+    "rootY": 497,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "BODY",
+      "id": "top",
+      "cls": "",
+      "originalInput": false,
+      "visible": true,
+      "insideAI": false,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "inputBox": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "messages": {
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "scrollTop": 0,
+      "scrollHeight": 0,
+      "clientHeight": 0,
+      "text": "Your questionMouse Send ownership across layouts"
+    },
+    "stop": {
+      "visible": false,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "",
+      "priority": ""
+    },
+    "sheet": {
+      "open": false,
+      "inert": true,
+      "ariaHidden": "true"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-toc"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "Mouse Send ownership across layouts",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send-before-click.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send-clicked-and-busy.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13c-send-after-1199.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One English1440→1199/reduce actual mouse Send and controlled held Response. No source fix/no Enter substitution/no real model. Negative or positive owner evidence only namedscope."
+}

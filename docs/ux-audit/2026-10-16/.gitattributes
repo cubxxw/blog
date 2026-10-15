@@ -1,0 +1,6 @@
+# Preserve SHA-bound raw diagnostic reports exactly, including tool-emitted end-of-line spaces.
+# This exception applies only to these four raw files; source and authored docs keep normal checks.
+evidence/batch-e13-initial-anchor-error-context.md whitespace=-blank-at-eol
+evidence/batch-e13b-anchor-error-context.md whitespace=-blank-at-eol
+evidence/batch-e13d-initial-overlay-error-context.md whitespace=-blank-at-eol
+evidence/batch-e13e-build.log whitespace=-blank-at-eol

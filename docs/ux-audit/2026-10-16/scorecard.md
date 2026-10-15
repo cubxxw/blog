@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T06:42:28+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `50a08fbb`（E12）；E12c冻结源码与新实测已复核，尚无新checkpoint。
+更新：2026-10-16T07:47:06+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验checkpoint `9ec879f3`（E12c）。E13e冻结源与7个实际context已独立复核，待父保存新checkpoint。
 
-**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；328条记录只覆盖69族局部状态，完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；345条记录只覆盖81族局部状态（80partial+1measured），完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`50a08fbb`（E12）。E12c当前fixed/可视cue命名范围通过、UX047有界关闭，普通阅读静态D1/D4=96/96；UX044/046继续开放。初始Back超时未解释；全矩阵仍null。
+最近已验checkpoint：`9ec879f3`（E12c）。E13e命名连续性通过、UX044有界关闭；文章AI静态D1=94.5/D4=90.5，小字/重复围框仍可改。UX046冷字体、UX048 Space可读性开放；原脚注Back超时未解释，全矩阵仍null。
 
 
 
@@ -94,10 +94,11 @@
 | UX-041 | `G.SEARCH.QUERY`, `G.SEARCH.RESULT` | 修改查询后立即Enter会打开上一查询的首篇结果 | E11b_final | `closed_named_E11b_scope_full_matrix_unverified` |
 | UX-042 | `A.BODY.FOOTNOTEPREVIEW` | 脚注预览首次触控直接跳文末，打断原阅读位置 | E12 | `closed_E12_settled_font_first_touch_native_history_and_owned_local_keyboard_scope` |
 | UX-043 | `T.SOCIAL.QR` | 二维码图片挂起和失败缺说明，404直接暴露破图且无重试 | E10a_final | `closed_named_E10a_scope_full_matrix_unverified` |
-| UX-044 | `A.AI.INPUT`, `A.TOC.MOBILETABS`, `A.TOC.FAB` | 文章AI跨1200断点未交接续写目标与焦点，下一Tab跳到文末 | post_E12_candidate | `confirmed_named_article_resize_baseline_open` |
+| UX-044 | `A.AI.INPUT`, `A.TOC.MOBILETABS`, `A.TOC.FAB` | 文章AI跨1200断点未交接续写目标与焦点，下一Tab跳到文末 | post_E12_candidate | `closed_E13e_canonical_DOM_active_AI_handoff_context_stream_owner_explicit_analyze_scope` |
 | UX-045 | `G.SEARCH.RETRY` | 搜索Retry在错误转pending时上移，原坐标再次点击丢失焦点 | E11b_final | `closed_named_E11b_scope_full_matrix_unverified` |
 | UX-046 | 正文渲染面（无控件归因） | 冷启动迟到字体注册期间正文重排，阅读位置发生跳移 | post_E12_font_candidate | `confirmed_named_cold_async_font_layout_baseline_open` |
 | UX-047 | `A.BODY.FOOTNOTEPREVIEW` 支持面 | 短屏内部Tab牵动正文，退出仍偏移 | E12c1 | `closed_E12c_named_fixed_short_Tab_node_identity_resize_reduce_scope` |
+| UX-048 | `S.APP.reader.ITEM`, `S.APP.reader.FILTER`, `S.APP.welcome.PROFILE`, `S.APP.welcome.LINKS` | 阅读目录/欢迎关键信息字号过小 | E15-baseline | `confirmed_named_pre_E15_readability_baseline_open` |
 
 
 ## 有证据的单项锚点评分
@@ -1102,3 +1103,30 @@ UX047仅关闭 `closed_E12c_named_fixed_short_Tab_node_identity_resize_reduce_sc
 UX044文章AI断点、UX046冷字体仍open；自然Tab离开More后的合理正文目标、320/整页zoom/Safari/AT/实体输入法/设备和完整矩阵未验。完整分保持null，当前盘点同步完成后停止写入。
 
 盘点v1.23最终同步：309族/367selector entries、328状态（新增5）/69局部证据族/0完整；hint仅root支持项，无新按钮。原短Tab失败、当前cue/shortTab/native/文字证据分别引用；初Back超时未解释，实验case未晋级。
+
+
+## E13e · 同一文章AI会话跨布局连续使用
+
+2026-10-16T07:44:14+08:00：[11源/QA/6runner](evidence/batch-e13e-source.json)与[provenance](evidence/batch-e13e-provenance.json)共71项来源hash匹配，HTTP三JS与当前源一致。13个不同合同15.3s、4旧专项4.5s、Hugo3781ms；原12合同字节未改。[main](evidence/batch-e13e-actions.json)3context/11图、[stream](evidence/batch-e13e-stream.json)1/5、[正式settled scope](evidence/batch-e13e-settled-scope.json)1/3、[entry](evidence/batch-e13e-entry.json)2/6，共7context/25正式图已全部独立逐看，无新P0/P1。
+
+UX044仅关闭 `closed_E13e_canonical_DOM_active_AI_handoff_context_stream_owner_explicit_analyze_scope`：同一root/input/messages保草稿、反向选区、rootY/hash/history；owned AI迁移到可见目标，非AI/真实外点不抢焦点。两次真实wheel读Passage33/26，首字相对偏移最大0.421875/0.046875CSSpx，原1px门槛保留；布局不abort、Stop一次abort。真实Send/quickchip自身disable前转原输入；显式工具条Analyze入焦点，Escape收到后回FAB。general→A→followup→B→A→clear/general六payload context长度[0,0,2,0,4,2]。新证据只授canonical rc INPUT4748de/SENDa9e4f5/CHIP4702a5等，历史abs控件不继承。
+
+[候选负记录与修正](evidence/batch-e13e-provenance.json)保留初版50px、B第二次wheel同host漂2175px、C鼠标Send失owner、D显式Analyze焦点仍在FAB/returnA工具条908px。模态外点被合法overlay拦截是测具前置状态，改为先回desktop再真实外点；exact auto!important恢复合同仍保留，正常main默认bodyoverflow，对照已证测试设置本身改变sticky祖先。normal两帧输入屏外是240ms入场中段，helper只等transform0后仍严格整框/centerhit。父误看scope-B裁切被三组disabled/allow字节相同、几何与独立逐看否定，**不登记生产或截图bug**；正式scope另自然等待opacity终态并核截图前后焦点，原中段图保留。
+
+静态局部 **D1=94.5（96/90/96/96），D4=90.5（80/90/96/96）**，完整维度/族仍null。具体差距见[桌面会话](evidence/batch-e13e-history-before-desktop-en.png)、[手机初态](evidence/batch-e13e-quick-entry-before-zh.png)、[选文B](evidence/batch-e13e-settled-scope-b-compact-zh.png)：问题11.5px且opacity.72、userlabel/share9.5px、intro11.5px偏小偏灰，回看问题/发现分享动作费力；composer的reference/quote围框与上方选文重复嵌套。下一独立小批先分层放大必要问题/动作文字、减少一层引用围框，保语义/选文/原DOM；主回复/输入不机械放大，必要focus环不是装饰。没有computed颜色实测，未凭PNG判WCAG对比失败，也不拿未知AT压视觉分。
+
+仅受控Response/ReadableStream与原AIClient的UI合同，无真实模型；DOMRange选原公开段落再真实点工具条不等于实体拖选，合成IME/229不等于OS输入法。320/短高/整页zoom/Safari/AT/实体设备、旧文档热迁移、BFCache、Stop替换partial的旧恢复设计及完整矩阵未认证；settled字体前置条件未修UX046。
+
+## E14 discovery · 支持完整optional bundle候选
+
+[单字体3×3实验](evidence/boundary-font-registration-provenance.json)九row/18图此前已独立复核：late swap在root0时marker+171.34375；同late optional与early optional均0，不能说early必要或完整bundle/中文已修。两项实验P1证据范围/后处理归属通过显式producer、原top值/新增字段与gateCoverage收窄解决；九row canonical SHA `f5a6a6e3…`独立重算。原整JSON字节未保存，不编原SHA或称exact raw。案例仍discovery/unreviewed、无Gold/人类选择/自动promote。阶段图不证交付全程可见，loaded不证DOM真用字体；即时bytes非HTTP暖缓存，1200ms迟到成功不是404/offline。UX046继续open。
+
+后续以同UA完整当前Google CSS的swap/optional做fast、lateCSS+即时font、lateCSS+1200msfont、font404配对，声明覆盖CSS失败才补其smoke；保持async/home/localCJK，严格原marker doc/viewport/root/hash/history/节点，保存交付阶段图与自然时钟trace。实际用字需节点glyph证据，否则unknown。`extend_head:44`默认URL非文章专用，实施需明确页面范围；本地CJK本身仍swap，不随英文关闭。
+
+## Space · 电脑入口正基线与UX048可读性负基线
+
+[电脑入口](evidence/probe-space-computer-provenance.json)仅9ec不可变源、1440中文/light/reduce真实Metal一context/七图：1180,325hoverpointer→真实click工作区→Dock reader首篇公开文章→回咖啡；同点横拖50px只改yaw不进入，errors/业务调用为空。只记一命名意图链片段，visibleButtons只是布局存在，不认证所有热区/遮挡/mobile/FPS/GPU静止。
+
+[UX048四图/量测](evidence/probe-space-reading-scale-provenance.json)仅1440中文与390英文/light/reduce首屏：目录标题约9.84–10.66、摘要8.2、日期7.42、过滤标签8.2–9.02投影后视口CSSpx；desktop简介10.66/联系动作8.95，mobile简介13.12但动作约9。静态局部D1=90.5（96/80/96/90）、D4=90.5（80/90/96/96）；44手机hit不抵消小标签。只建议reader目录/profile任务字号/行高与一层边界收敛，保原内容/DOM/过滤/真实文章路径；正文阅读面不机械放大。bbox/整数offsetWidth估算有短inline rounding，不叫硬件像素/字形高度或通用WCAG字号门槛。未测完整滚动/filters/bookmarks/所有links，UX048为P2开放，不抢其他交互结论。
+
+盘点v1.24最终同步：309族/367selector entries/345状态（新增17）/81局部族（80partial+1measured）/0完整。17为canonical11、computer1、bookmark1、可读性4；E14仅registry。新bookmark只按盘点Agent已观察的局部证据引用，本评分Agent未逐图审，不新增本卡行为通过或44square声明；下一批library scroll负基线未混入。本轮222项scoped checks、100个历史专家视觉片段，均不代替完整维度/族评分。

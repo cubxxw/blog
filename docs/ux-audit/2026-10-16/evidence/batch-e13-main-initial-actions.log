@@ -1,0 +1,18 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+0 !== 500
+
+    at file://<SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/batch-e13-actions.browser.mjs:9:180 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 500,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

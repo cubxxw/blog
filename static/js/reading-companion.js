@@ -250,7 +250,7 @@
 
   // ─── 5. AI Panel ──────────────────────────────────────────────────────────
   function initAiPanel() {
-    var panel = document.getElementById('rc-panel-ai');
+    var panel = document.querySelector('[data-article-chat]');
     if (panel && window.ArticleChat) window.ArticleChat.init(panel, { prefix: 'rc', render: parseMarkdown });
   }
 

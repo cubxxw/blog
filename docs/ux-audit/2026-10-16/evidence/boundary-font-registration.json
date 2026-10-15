@@ -1,0 +1,2674 @@
+{
+  "at": "2026-10-15T22:46:28.780Z",
+  "question": "For already-visible English article prose, is optional on a late async face registration alone sufficient to preserve the reading point, or is early registration a necessary candidate?",
+  "mode": "boundary",
+  "sources": {
+    "layouts/partials/extend_head.html": "016ab7a88fa34427be7d9d954abbf0f3f783c58700ed705abe240ab868c57b2e",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417"
+  },
+  "previewCheckpoint": "9ec879f3 accepted; E13 WIP not built",
+  "fontSource": {
+    "cssURL": "https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400&display=swap",
+    "fontURL": "https://fonts.gstatic.com/s/notoserif/v33/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFCTx8cKpKrCzi0i.woff2",
+    "cssSHA256": "a9ab49416659d0b5513672f3752590e840bc229c590544a4a52c5dfecf4b0e48",
+    "blockSHA256": "f3f6f28ddbce08b907fba0647d3f26680786dc8489db945c303212de6cd5b7eb",
+    "fontSHA256": "190064f73b8f5a6dc1c2ebf0605a9ca8909fce00bd04ce7e4340c110920551fb",
+    "fontBytes": 14372,
+    "block": "@font-face {\n  font-family: 'Noto Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-stretch: 100%;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/notoserif/v33/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFCTx8cKpKrCzi0i.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+  },
+  "rows": [
+    {
+      "case": {
+        "id": "normal-fast",
+        "case_type": "normal",
+        "source": "synthetic",
+        "stimulus": "face registered and ready before reading anchor is centered"
+      },
+      "variant": "A",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 194.5,
+        "rootY": 3886,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4298.625,
+        "markerY": 412.625,
+        "docH": 31632,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 56.625,
+            "width": 309.265625,
+            "height": 23
+          },
+          {
+            "x": 339.265625,
+            "y": 56.625,
+            "width": 5.28125,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 86.375,
+            "width": 279.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 116.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 145.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 175.625,
+            "width": 324.890625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 205.375,
+            "width": 316.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 235.125,
+            "width": 302.0625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 264.875,
+            "width": 185.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 116.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 145.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 175.625,
+            "width": 324.890625,
+            "height": 23
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "swap"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 133,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "time": 396.69999980926514,
+        "rootY": 3886,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4298.625,
+        "markerY": 412.625,
+        "docH": 31632,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 56.625,
+            "width": 309.265625,
+            "height": 23
+          },
+          {
+            "x": 339.265625,
+            "y": 56.625,
+            "width": 5.28125,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 86.375,
+            "width": 279.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 116.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 145.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 175.625,
+            "width": 324.890625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 205.375,
+            "width": 316.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 235.125,
+            "width": 302.0625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 264.875,
+            "width": 185.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 116.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 145.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 175.625,
+            "width": 324.890625,
+            "height": 23
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "swap"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 133,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 0,
+        "viewport": 0,
+        "docHeight": 0
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": true,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104378308,
+          "htmlSHA256": "522646d781cd69c497aa4524ebde836c1f1c37168a051cbd5c12bc2f1ccfa5bb"
+        },
+        {
+          "event": "style-request",
+          "time": 1792104378326
+        },
+        {
+          "event": "style-fulfill",
+          "time": 1792104378326
+        },
+        {
+          "event": "font-request",
+          "time": 1792104378401
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104378401
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104378523,
+          "rootY": 3886
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-A-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-A-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "normal-fast",
+        "case_type": "normal",
+        "source": "synthetic",
+        "stimulus": "face registered and ready before reading anchor is centered"
+      },
+      "variant": "B",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 152,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 98.59999990463257,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "time": 355.59999990463257,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 98.59999990463257,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 0,
+        "viewport": 0,
+        "docHeight": 0
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": true,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104378882,
+          "htmlSHA256": "522646d781cd69c497aa4524ebde836c1f1c37168a051cbd5c12bc2f1ccfa5bb"
+        },
+        {
+          "event": "style-request",
+          "time": 1792104378890
+        },
+        {
+          "event": "style-fulfill",
+          "time": 1792104378890
+        },
+        {
+          "event": "font-request",
+          "time": 1792104378954
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104378954
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104379062,
+          "rootY": 3713
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-B-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-B-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "normal-fast",
+        "case_type": "normal",
+        "source": "synthetic",
+        "stimulus": "face registered and ready before reading anchor is centered"
+      },
+      "variant": "C",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 163.80000019073486,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 94.90000009536743,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "time": 366.80000019073486,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 94.90000009536743,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 0,
+        "viewport": 0,
+        "docHeight": 0
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": true,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104379422,
+          "htmlSHA256": "619cdb656f5810720c2847558bb92703c67d021288a323f6e72ecb727b8b8946"
+        },
+        {
+          "event": "font-request",
+          "time": 1792104379493
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104379493
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104379612,
+          "rootY": 3713
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-C-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-C-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "edge-cached-late-registration",
+        "case_type": "edge",
+        "source": "synthetic",
+        "stimulus": "stylesheet release after reader centered; font bytes immediately available from deterministic fixture"
+      },
+      "variant": "A",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 424.2999997138977,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [],
+        "fontStatus": "loaded",
+        "events": []
+      },
+      "after": {
+        "time": 726,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4298.625,
+        "markerY": 585.625,
+        "docH": 31632,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 229.625,
+            "width": 309.265625,
+            "height": 23
+          },
+          {
+            "x": 339.265625,
+            "y": 229.625,
+            "width": 5.28125,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 259.375,
+            "width": 279.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 289.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 318.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 348.625,
+            "width": 324.890625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 378.375,
+            "width": 316.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 408.125,
+            "width": 302.0625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 437.875,
+            "width": 185.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 289.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 318.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 348.625,
+            "width": 324.890625,
+            "height": 23
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "swap"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 495.7999997138977,
+            "scrollY": 3713,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 171.34375,
+        "viewport": 171.34375,
+        "docHeight": 973
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": false,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104379987,
+          "htmlSHA256": "522646d781cd69c497aa4524ebde836c1f1c37168a051cbd5c12bc2f1ccfa5bb"
+        },
+        {
+          "event": "style-request",
+          "time": 1792104380004
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104380441,
+          "rootY": 3713
+        },
+        {
+          "event": "style-fulfill",
+          "time": 1792104380441
+        },
+        {
+          "event": "font-request",
+          "time": 1792104380467
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104380467
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-A-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-A-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "edge-cached-late-registration",
+        "case_type": "edge",
+        "source": "synthetic",
+        "stimulus": "stylesheet release after reader centered; font bytes immediately available from deterministic fixture"
+      },
+      "variant": "B",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 415.5,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [],
+        "fontStatus": "loaded",
+        "events": []
+      },
+      "after": {
+        "time": 720.5,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 465.30000019073486,
+            "scrollY": 3713,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 0,
+        "viewport": 0,
+        "docHeight": 0
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": true,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104380889,
+          "htmlSHA256": "522646d781cd69c497aa4524ebde836c1f1c37168a051cbd5c12bc2f1ccfa5bb"
+        },
+        {
+          "event": "style-request",
+          "time": 1792104380899
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104381332,
+          "rootY": 3713
+        },
+        {
+          "event": "style-fulfill",
+          "time": 1792104381332
+        },
+        {
+          "event": "font-request",
+          "time": 1792104381345
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104381345
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-B-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-B-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "edge-cached-late-registration",
+        "case_type": "edge",
+        "source": "synthetic",
+        "stimulus": "stylesheet release after reader centered; font bytes immediately available from deterministic fixture"
+      },
+      "variant": "C",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 417.2999997138977,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 94.09999990463257,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "time": 635.4000000953674,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 94.09999990463257,
+            "scrollY": 0,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 0,
+        "viewport": 0,
+        "docHeight": 0
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": true,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104381804,
+          "htmlSHA256": "619cdb656f5810720c2847558bb92703c67d021288a323f6e72ecb727b8b8946"
+        },
+        {
+          "event": "font-request",
+          "time": 1792104381874
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104381874
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104382251,
+          "rootY": 3713
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-C-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-C-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "failure-slow-font",
+        "case_type": "failure",
+        "source": "synthetic",
+        "stimulus": "stylesheet release after reader centered; font bytes held another1200ms, exceeding optional short block period"
+      },
+      "variant": "A",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 407.69999980926514,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [],
+        "fontStatus": "loaded",
+        "events": []
+      },
+      "after": {
+        "time": 1910.6999998092651,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4298.625,
+        "markerY": 585.625,
+        "docH": 31632,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 229.625,
+            "width": 309.265625,
+            "height": 23
+          },
+          {
+            "x": 339.265625,
+            "y": 229.625,
+            "width": 5.28125,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 259.375,
+            "width": 279.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 289.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 318.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 348.625,
+            "width": 324.890625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 378.375,
+            "width": 316.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 408.125,
+            "width": 302.0625,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 437.875,
+            "width": 185.71875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 289.125,
+            "width": 290.484375,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 318.875,
+            "width": 228.1875,
+            "height": 23
+          },
+          {
+            "x": 30,
+            "y": 348.625,
+            "width": 324.890625,
+            "height": 23
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "swap"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 1660.4000000953674,
+            "scrollY": 3713,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 171.34375,
+        "viewport": 171.34375,
+        "docHeight": 973
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": false,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104382612,
+          "htmlSHA256": "522646d781cd69c497aa4524ebde836c1f1c37168a051cbd5c12bc2f1ccfa5bb"
+        },
+        {
+          "event": "style-request",
+          "time": 1792104382623
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104383042,
+          "rootY": 3713
+        },
+        {
+          "event": "style-fulfill",
+          "time": 1792104383042
+        },
+        {
+          "event": "font-request",
+          "time": 1792104383056
+        },
+        {
+          "event": "release-slow-font",
+          "time": 1792104384244
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104384244
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-A-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-A-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "failure-slow-font",
+        "case_type": "failure",
+        "source": "synthetic",
+        "stimulus": "stylesheet release after reader centered; font bytes held another1200ms, exceeding optional short block period"
+      },
+      "variant": "B",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 417.69999980926514,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [],
+        "fontStatus": "loaded",
+        "events": []
+      },
+      "after": {
+        "time": 1920.0999999046326,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 1667.6999998092651,
+            "scrollY": 3713,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 0,
+        "viewport": 0,
+        "docHeight": 0
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": true,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104384719,
+          "htmlSHA256": "522646d781cd69c497aa4524ebde836c1f1c37168a051cbd5c12bc2f1ccfa5bb"
+        },
+        {
+          "event": "style-request",
+          "time": 1792104384733
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104385151,
+          "rootY": 3713
+        },
+        {
+          "event": "style-fulfill",
+          "time": 1792104385151
+        },
+        {
+          "event": "font-request",
+          "time": 1792104385165
+        },
+        {
+          "event": "release-slow-font",
+          "time": 1792104386354
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104386355
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-B-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-B-after.png"
+      ]
+    },
+    {
+      "case": {
+        "id": "failure-slow-font",
+        "case_type": "failure",
+        "source": "synthetic",
+        "stimulus": "stylesheet release after reader centered; font bytes held another1200ms, exceeding optional short block period"
+      },
+      "variant": "C",
+      "split": "discovery",
+      "review": {
+        "status": "unreviewed"
+      },
+      "humanChoice": "unreviewed",
+      "before": {
+        "time": 416.19999980926514,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loading",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loading",
+        "events": []
+      },
+      "after": {
+        "time": 1919.2999997138977,
+        "rootY": 3713,
+        "hash": "",
+        "history": 2,
+        "originalConnected": true,
+        "sameNode": true,
+        "markerDocY": 4127.28125,
+        "markerY": 414.28125,
+        "docH": 30659,
+        "markerText": "1",
+        "proseFont": "",
+        "visibleText": "Anthropic, in its widely cited engineering piece, gives a clean distinction: prompt engineering is “methods for writing and organizing LLM instruction",
+        "lines": [
+          {
+            "x": 30,
+            "y": 87.03125,
+            "width": 308.359375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 116.78125,
+            "width": 235.640625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 146.53125,
+            "width": 311.890625,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 176.28125,
+            "width": 301.59375,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 206.03125,
+            "width": 315.78125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 235.78125,
+            "width": 302.640625,
+            "height": 20
+          },
+          {
+            "x": 332.640625,
+            "y": 235.78125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 265.53125,
+            "width": 316.875,
+            "height": 20
+          },
+          {
+            "x": 346.875,
+            "y": 265.53125,
+            "width": 6.453125,
+            "height": 20
+          },
+          {
+            "x": 30,
+            "y": 295.28125,
+            "width": 168.890625,
+            "height": 20
+          },
+          {
+            "x": 265.640625,
+            "y": 116.78125,
+            "width": 66.046875,
+            "height": 20
+          }
+        ],
+        "faces": [
+          {
+            "family": "Noto Serif",
+            "status": "loaded",
+            "display": "optional"
+          }
+        ],
+        "fontStatus": "loaded",
+        "events": [
+          {
+            "event": "fonts-loadingdone",
+            "time": 1674.9000000953674,
+            "scrollY": 3713,
+            "faces": [
+              {
+                "family": "Noto Serif",
+                "status": "loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "delta": {
+        "root": 0,
+        "document": 0,
+        "viewport": 0,
+        "docHeight": 0
+      },
+      "automated": {
+        "measurementValid": true,
+        "stableReadingAnchor": true,
+        "zeroApplicationEndpointCalls": true
+      },
+      "trace": [
+        {
+          "event": "document-overlay",
+          "time": 1792104386823,
+          "htmlSHA256": "619cdb656f5810720c2847558bb92703c67d021288a323f6e72ecb727b8b8946"
+        },
+        {
+          "event": "font-request",
+          "time": 1792104386907
+        },
+        {
+          "event": "reader-centered-and-before-image",
+          "time": 1792104387268,
+          "rootY": 3713
+        },
+        {
+          "event": "release-slow-font",
+          "time": 1792104388470
+        },
+        {
+          "event": "font-fulfill",
+          "time": 1792104388471
+        }
+      ],
+      "remoteStubbed": [
+        {
+          "host": "utteranc.es",
+          "path": "/client.js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/social/paper_hu_1e439228b8c044d5.png"
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/gtag/js"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-32x32.png"
+        },
+        {
+          "host": "cubxxw.com",
+          "path": "/favicon-16x16.png"
+        }
+      ],
+      "errors": [],
+      "images": [
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-C-before.png",
+        "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-C-after.png"
+      ]
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-A-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-A-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-B-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-B-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-C-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-normal-fast-C-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-A-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-A-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-B-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-B-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-C-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-edge-cached-late-registration-C-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-A-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-A-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-B-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-B-after.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-C-before.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-failure-slow-font-C-after.png"
+  ],
+  "decision": "supported: optional is a candidate in these fixtures; inconclusive whether early registration is necessary beyond them",
+  "humanChoice": "unreviewed",
+  "hypothesis": "Optional prevented late prose relayout in both tested delivery fixtures. These data do not demonstrate that early registration is necessary or that switching the complete Google/CJK font bundle is sufficient. All-loaded and registered does not itself prove the chosen face rendered in document text.",
+  "limits": [
+    "whole Google family set",
+    "CJK/local installed fonts",
+    "production implementation",
+    "CLS benchmark",
+    "warm production cache/real network distributions",
+    "AT/Safari/physical devices",
+    "font license redistribution; fetched binary fixture only in registered tmp"
+  ],
+  "observedFacts": [
+    "normal fast: all variants font settled before center, all marker anchor deltas0",
+    "late immediate-byte fixture: A swap marker/document delta171.34375CSSpx; B late optional and C early optional both0",
+    "slow1200ms font fixture: A delta171.34375CSSpx; B/C both0; rootY delta0 in all, showing root scroll alone misses reflow"
+  ],
+  "automatedVerdict": "9validcases; originalnode/hash/history/zeroappcalls/pageerrors checks pass. Stable anchor A normalonly; B/C all3 within these fixtures.",
+  "postRunAnnotation": {
+    "producer": "/root AI evidence analyst after runner exit, before independent review",
+    "rawGeometryRows": "All nine rows/trace/before/after values unchanged; canonical JSON sorted-key compact UTF8 rows SHA256 f5a6a6e3843970014b0337d5e94acb50184b8b3e1a44df8fa391be00d2f4974a",
+    "originalRunnerTopLevel": {
+      "decision": "inconclusive until independent evidence review",
+      "hypothesis": "Late registration starts a new optional timing opportunity; early optional may keep fallback under slow font fixtures. This is a hypothesis until measurements and independent review, not a production fix."
+    },
+    "changedTopLevelFields": [
+      "decision",
+      "hypothesis"
+    ],
+    "addedTopLevelFields": [
+      "observedFacts",
+      "automatedVerdict",
+      "postRunAnnotation",
+      "gateCoverage"
+    ],
+    "rawByteOriginal": "Original whole JSON byte identity was not separately preserved before annotation; do not describe annotated receipt as exact raw script output. Immutable runner and stdout9rawdelta log retained. No invented originalSHA or rerun.",
+    "humanChoice": "unreviewed"
+  },
+  "gateCoverage": {
+    "zeroApplicationCalls": "passed9cases",
+    "originalNodeHashHistory": "passed9cases",
+    "beforeAfterTextVisible": "observed in eighteen PNGs; textContent/Range also captured",
+    "textVisibleThroughoutDelivery": "unverified: contract asks this but current runner only captures before/after. No observed FOIT claim; add continuous delivery-stage evidence in complete-bundle phase.",
+    "realHTTPWarmCache": "unverified",
+    "real404Offline": "unverified; failure case is delayed successful font delivery"
+  }
+}
