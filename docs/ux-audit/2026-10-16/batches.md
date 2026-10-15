@@ -96,3 +96,21 @@
 ### E7/E71独立复核完成
 
 8/8当前源码与QA hash匹配；E71仅修test，七其余hash与原生产相同。独立确认21不同合同组合、初始失败与修复前沿保留、3实际旅程/8图，无新P0/P1。UX025/026/027/031按具体范围关闭；OS输入法、离开后error状态及其他矩阵仍未知。恢复界面局部D1短屏93/桌面94.5、D4短屏91.5/桌面90，不能自动给完整族96。E8范围已由父/执行明确，见next-batches.md。
+
+## E8初跑与两项真实缺口
+
+- 4文件source manifest冻结，16Node/typecheck/JS语法通过，Hugo生产构建与6合同运行：5通过，4窗最后一项重复整理失败。首次tile不重叠、控件可点、原笔记保留；focus notes只改变z顺序，再arrange却重新分配三个窗口位置。完整initial.log保留。独立判UX032/P2/D4.4片段80，非数据丢失或P1；不删幂等断言。
+- 父3实际旅程：844×390 coarse中文3窗、英文4窗，1440×900中文4窗；全部worldFrames=3/worldFailed=false/boot complete，真实Metal场景。短屏bar打开overview、Escape及实际Back点返触发器、选择welcome全部4窗控命中、notes同DOM/草稿续写；desktop实际tile不重叠且所有窗控centerhit。5图/JSON/log保留，只核心路径通过，不等于完整E8通过。
+- 两个短屏overview Back实际宽44.98/48.66，高仅17.5px；hit与实际返回功能正确，未达项目重要触控44px目标。不一概声称WCAG失败。
+- E8.1授权：filter副本按原rect y/x/id稳定排tile，不改持久z/active；补focus后重复整理unit；新增space.css仅overview[open]flex受限列表内滚、header与44pxBack可达，避免作者display让closed dialog泄漏。更新4coarse合同滚底/Back真实点击，不扩大其他App/world范围。
+- 资源92Node/npm、swap11.97GiB、可用34.10GiB，单浏览器串行复用1317/缓存。没有重复跑E7或启动新服务。
+
+### E8.1父复验完成
+
+5文件manifest与QA配置冻结。17Node、typecheck、语法、diff、Hugo、6arrangement合同全过；父3实际旅程及5新图完成。844 coarse Back实际zh60.98×44/en64.66×44，列表滚到底仍header可达、实际点回原trigger；原notes DOM/草稿/geometry保留；1440四窗focusnotes后第二次真实bar整理，同id rect不变。独立最终复核与盘点收尾中，未提前宣布整站96。
+
+额外E9边界基线`space-preference-focus-baseline.json/log`独立绑定apps/desktop/spaceCSS/classicCSS四hash：1440×900zh/reduce，明确程序设button焦点后真实Space激活。产品imstage选择与payload正确，但焦点改为products section；主题dark/颜色forest应用且pressed正确，重建后焦点为BODY。它不证明Tab遍历/全部尺寸失败，也不是状态未应用；后续E9按局部键盘连续性审查。两张真实画面保留，不真实联系/模型请求。
+
+### E8.1独立闭环
+
+独立复核5/5源码与QA、17Node/6合同/3实际旅程和5新图，无新P0/P1。UX024/032/033只按已测容量fallback、重复整理稳定、844coarse Back44/滚末项返回链关闭；历史失败保留。概览局部D1 94.5/D4 93，四窗tile D4仍89（App小字问题归E9继续修）。盘点补漏现存Back selector至359：是既有按钮新登记，不是新增功能；与item/menu证据分别绑定。完整309族仍无全矩阵认证。

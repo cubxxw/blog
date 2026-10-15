@@ -226,7 +226,7 @@ v1.2：已逐项校准 selector；删除源码中不存在的年份筛选；补�
 | `S.WINDOW.ARRANGE` | 窗口并排 | `[data-window-action="arrange"]`<br>[assets/js/space/desktop.js:76](../../../assets/js/space/desktop.js) | 整理窗口 | `window` / source-only |
 | `S.WINDOW.DRAG` | 标题栏拖动 | `[data-window-drag]`<br>[assets/js/space/desktop.js:76](../../../assets/js/space/desktop.js) | 移动窗口 | `window` / source-only |
 | `S.WINDOW.RESIZE` | 右/下/角缩放 | `[data-window-resize]`<br>[assets/js/space/desktop.js:76](../../../assets/js/space/desktop.js) | 按内容调整尺寸 | `window` / source-only |
-| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 | `[data-overview-id]`<br>[assets/js/space/desktop.js:287](../../../assets/js/space/desktop.js) | 聚焦/恢复所选窗口 | `window` / source-only |
+| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 / 返回 | `[data-overview-id]`、`[data-space-overview-close]`<br>[desktop.html:87](../../../layouts/partials/space/desktop.html) | 选择窗口 / 返回触发器 | `command` / 每control分别绑定证据 |
 | `S.SEARCH.QUERY` | 打开应用或找文章 | `[data-space-search-input]`<br>[layouts/partials/space/desktop.html:78](../../../layouts/partials/space/desktop.html) | 检索工作区 | `input` / source-only |
 | `S.SEARCH.RESULT` | 结果项 | `[data-search-kind]`<br>[assets/js/space/desktop.js:227](../../../assets/js/space/desktop.js) | 打开应用或具体文章 | `command` / source-only |
 | `S.SEARCH.EMPTY` | 清空搜索/浏览所有应用 | `[data-space-search-reset]`<br>[assets/js/space/desktop.js:227](../../../assets/js/space/desktop.js) | 从空结果恢复 | `command` / source-only |
@@ -1613,3 +1613,19 @@ E61共 **8图**（5短屏+normal动态/减少动态对比2图+posts neutral1图�
 6张actual Stop旅程图、2张wheel图分开登记；本轮独立查看short pending、dark stopped与wheel after共3张。旧UX025/026/027/031失败state记录均保留负状态，只附E7/E71对应case有界通过链接；父验收与独立review已闭环，当前8hash/QA一致、对应范围无未解决P0/P1；完整功能族不升级。Space UX024/028/029与Travel UX018仍开放。
 
 本轮新增 **22条** 状态绑定、触及 **6个既有族**；累计 **203条 / 56族有局部状态证据**。总量仍 **309族 / 358 selectors / 57 journeys / 18roadmap批次**，完整family认证0、完整分数null。没有启动browser/构建或修改生产代码，现停止写入供checkpoint。
+
+
+## v1.12 E8历史与E81有界回归：补漏真实Back
+
+导入 **2026-10-16T03:14:25+08:00**，base `aff16e05b322`。真实存在的`[data-space-overview-close]`原先遗漏，已补到既有`S.WINDOW.OVERVIEWITEM`（概览项/返回）：新control **`S.WINDOW.OVERVIEWITEM.control.e9b894`**，原item`control.fb932e`不变。模板`space/desktop.html:87`、点击`desktop.js:322`→`closeDialog`。这是漏项纠正，**309族不变、selector358→359**；旧item或menu trigger证据均不传给Back。
+
+| 证据版本 | 具体记录 | 不能覆盖 |
+| --- | --- | --- |
+| E8 manifest4 / Node16 / initial5过1失败 | UX032：1440中文4窗focusnotes后再`BearSpace.execute(arrange)`，notes/map/terminal换tile；保留真正生产行为失败，非fixture误报 | 初次tile非重叠、可hit与重复整理失败并存，不能只看normal图宣布稳定 |
+| E8 actual3 / 5图 | 844coarsezh3/en4真实bar概览、Back/Escape返回、welcome/notes选择与同editor/草稿；1440zh4实际tile/每窗控制hit | Back中文44.98×17.5、英文48.66×17.5，项目重要移动动作44目标仍失败；不是不可点，也不一概称WCAG失败 |
+| E81 manifest5 / Node17 / typecheck/build / 6过 | 844coarse中英3/4窗overview不改geometry，末项内部scroll后Back≥44且在dialog内、真实click回trigger；1440中文2/4窗tile重复按idrect稳定 | 这六合同重跑同配置，不与initial凑成12个不同合同；Node也不凑33个新测试 |
+| E81 actual3 / 5新图 | Back中文60.98×44、英文64.66×44，滚末项header仍可见/centerhit/坐标返回；notes同DOM/值继续；1440四窗notesfocus后真实bar再次整理rect按id不变 | actual四窗含contact，合同四窗含terminal，分开记录；不把E8旧图认证E81源改动，也不把worldFrames3当FPS/实体设备认证 |
+
+E81菜单overview焦点→ArrowDown与重复arrange项显示条件、本地terminal arrange真实反馈只按对应合同绑定，不将bar实际入口通过赠给menu trigger。UX024/032/033仅上述状态已有父验收与有界新证据；独立最终review在导入时待closure，完整family继续未认证。旧负state保留并附E81范围，不改旧失败的raw尺寸/换位事实。
+
+本轮新增 **25条状态绑定 / 6个既有族**，累计 **228条 / 59族有局部状态证据**。当前总量 **309族 / 359 selectors / 57journeys / 18roadmap批次**，完整family通过0、完整分数null。E8/E81各5图分开登记，本轮独立查看E8 overview en4、E81同配置与1440tile3张；未启动browser/构建、未改生产。

@@ -53,4 +53,4 @@ Heartbeat ID：`12-00`，当前聊天`01a13ec1-4c36-7410-915a-d52653d3129f`。�
 
 父任务后续在`batches.md`与`state.json`记录当前批次、验证源码revision、证据路径、工作中Agent及下一个可执行目标。
 
-最新本地checkpoint：`4782757e`（E6–E6.2已独立验收）。E7生产冻结且已构建，E7.1只修测试clock基准、7其余hash一致；36Node、typecheck、最终组合21不同合同与3父实际旅程通过，正等待独立最终review/盘点后checkpoint。1317提供此E7等价构建。下一E8 Space短屏arrange，再四App文字/命中与Travel二维码；当前不构建或编辑其他生产。完整309族/358selectors仍无全矩阵96认证。分支不变，无推送/部署。
+最新本地checkpoint：`aff16e05`（E7/E71独立验收）。1317当前为E8历史冻结构建，16Node/typecheck、5/6合同与3父核心旅程；新增重复整理换位UX032与844 coarse概览Back17.5px实测缺口尚未闭合。E8.1正在窄修稳定空间顺序和overview受限内滚/44px返回，禁止构建半写源码。后续四App阅读/命中、Travel二维码。完整309族/358selectors未认证全矩阵96。无推送/部署。

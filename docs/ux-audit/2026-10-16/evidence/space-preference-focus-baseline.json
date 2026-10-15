@@ -1,0 +1,54 @@
+{
+  "kind": "Exploratory E9 focus continuity, not a pass; UI entries and actual Space activation after explicit programmatic button focus. Does not certify Tab traversal.",
+  "previewSource": "batch-e81-source.json",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "lang": "zh",
+  "initialTheme": "light; changed to dark by the tested action",
+  "motion": "reduce",
+  "sources": {
+    "assets/js/space/apps.js": "526846478a60819f4fac9383cb60083d7dd413e28ed184ebfe10ffca4cc7dac0",
+    "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+    "assets/css/space.css": "92c22c9acf248d200c4a29648589d0d28b8101f7cf626bfe740d6067c0c257c3",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3"
+  },
+  "observations": [
+    {
+      "kind": "product selection",
+      "chosen": "imstage",
+      "after": {
+        "activeTag": "SECTION",
+        "activeWindow": "products",
+        "activeProduct": null,
+        "selected": "imstage",
+        "payload": "imstage"
+      },
+      "focusRetained": false
+    },
+    {
+      "kind": "theme",
+      "after": {
+        "activeTag": "BODY",
+        "activeWindow": null,
+        "activeValue": null,
+        "stored": "dark",
+        "selected": "dark"
+      },
+      "focusRetained": false
+    },
+    {
+      "kind": "wallpaper",
+      "after": {
+        "activeTag": "BODY",
+        "activeWindow": null,
+        "activeValue": null,
+        "stored": "forest",
+        "selected": "forest"
+      },
+      "focusRetained": false
+    }
+  ],
+  "limits": "One Chromium/Metal simulated viewport, API503 isolated, no real contact/model calls."
+}

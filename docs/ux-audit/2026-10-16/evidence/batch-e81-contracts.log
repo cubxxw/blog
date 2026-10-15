@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:56045) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 3 windows use overview without rewriting their documents or geometry (1.0s)
+  ✓  2 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 3 windows use overview without rewriting their documents or geometry (846ms)
+  ✓  3 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 4 windows use overview without rewriting their documents or geometry (1.1s)
+  ✓  4 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 4 windows use overview without rewriting their documents or geometry (1.1s)
+  ✓  5 tests/e2e/space-arrangement-contracts.spec.ts:76:30 › a 1440×900 desktop tiles 2 windows with reachable controls and the original note (582ms)
+  ✓  6 tests/e2e/space-arrangement-contracts.spec.ts:76:30 › a 1440×900 desktop tiles 4 windows with reachable controls and the original note (817ms)
+
+  6 passed (6.2s)

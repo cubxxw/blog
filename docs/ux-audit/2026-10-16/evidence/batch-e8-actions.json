@@ -1,0 +1,581 @@
+{
+  "observations": [
+    {
+      "source": "batch-e8-source.json",
+      "width": 844,
+      "height": 390,
+      "lang": "zh",
+      "count": 3,
+      "coarse": true,
+      "motion": "reduce",
+      "runtime": {
+        "worldFrames": 3,
+        "worldFailed": false,
+        "bootState": "complete",
+        "mode": "desktop"
+      },
+      "label": "窗口概览",
+      "overviewBack": {
+        "box": {
+          "x": 755.515625,
+          "y": 55.9375,
+          "width": 44.984375,
+          "height": 17.5
+        },
+        "hit": true,
+        "meets44": false
+      },
+      "actualArrangeTarget": {
+        "x": 717.1982421875,
+        "y": 37.150943756103516,
+        "width": 44.27972412109375,
+        "height": 44.27973556518555
+      },
+      "before": {
+        "version": 1,
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "payload": "about",
+            "rect": {
+              "x": 82,
+              "y": 0,
+              "width": 680,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "notes",
+            "app": "notes",
+            "payload": "",
+            "rect": {
+              "x": 174,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "map",
+            "app": "map",
+            "payload": "",
+            "rect": {
+              "x": 204,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          }
+        ],
+        "active": "map",
+        "note": "Isolated arrangement test — 保留同一笔记节点",
+        "draft": "",
+        "favorites": [],
+        "theme": "light",
+        "wallpaper": "dawn",
+        "initialized": true
+      },
+      "result": "actual overview/Escape trigger return/welcome controls/notes same DOM + value + continuation",
+      "after": {
+        "version": 1,
+        "windows": [
+          {
+            "id": "map",
+            "app": "map",
+            "payload": "",
+            "rect": {
+              "x": 204,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "payload": "about",
+            "rect": {
+              "x": 82,
+              "y": 0,
+              "width": 680,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "notes",
+            "app": "notes",
+            "payload": "",
+            "rect": {
+              "x": 174,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          }
+        ],
+        "active": "notes",
+        "note": "Isolated arrangement test — 保留同一笔记节点 · continued",
+        "draft": "",
+        "favorites": [],
+        "theme": "light",
+        "wallpaper": "dawn",
+        "initialized": true
+      }
+    },
+    {
+      "source": "batch-e8-source.json",
+      "width": 844,
+      "height": 390,
+      "lang": "en",
+      "count": 4,
+      "coarse": true,
+      "motion": "reduce",
+      "runtime": {
+        "worldFrames": 3,
+        "worldFailed": false,
+        "bootState": "complete",
+        "mode": "desktop"
+      },
+      "label": "Window overview",
+      "overviewBack": {
+        "box": {
+          "x": 751.84375,
+          "y": 55.9375,
+          "width": 48.65625,
+          "height": 17.5
+        },
+        "hit": true,
+        "meets44": false
+      },
+      "actualArrangeTarget": {
+        "x": 717.1982421875,
+        "y": 37.150943756103516,
+        "width": 44.27972412109375,
+        "height": 44.27973556518555
+      },
+      "before": {
+        "version": 1,
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "payload": "about",
+            "rect": {
+              "x": 82,
+              "y": 0,
+              "width": 680,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "notes",
+            "app": "notes",
+            "payload": "",
+            "rect": {
+              "x": 174,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "map",
+            "app": "map",
+            "payload": "",
+            "rect": {
+              "x": 204,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "contact",
+            "app": "contact",
+            "payload": "",
+            "rect": {
+              "x": 204,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          }
+        ],
+        "active": "contact",
+        "note": "Isolated arrangement test — 保留同一笔记节点",
+        "draft": "",
+        "favorites": [],
+        "theme": "light",
+        "wallpaper": "dawn",
+        "initialized": true
+      },
+      "result": "actual overview/Escape trigger return/welcome controls/notes same DOM + value + continuation",
+      "after": {
+        "version": 1,
+        "windows": [
+          {
+            "id": "map",
+            "app": "map",
+            "payload": "",
+            "rect": {
+              "x": 204,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "contact",
+            "app": "contact",
+            "payload": "",
+            "rect": {
+              "x": 204,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "payload": "about",
+            "rect": {
+              "x": 82,
+              "y": 0,
+              "width": 680,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "notes",
+            "app": "notes",
+            "payload": "",
+            "rect": {
+              "x": 174,
+              "y": 0,
+              "width": 640,
+              "height": 290
+            },
+            "minimized": false,
+            "maximized": false
+          }
+        ],
+        "active": "notes",
+        "note": "Isolated arrangement test — 保留同一笔记节点 · continued",
+        "draft": "",
+        "favorites": [],
+        "theme": "light",
+        "wallpaper": "dawn",
+        "initialized": true
+      }
+    },
+    {
+      "source": "batch-e8-source.json",
+      "width": 1440,
+      "height": 900,
+      "lang": "zh",
+      "count": 4,
+      "coarse": false,
+      "motion": "reduce",
+      "runtime": {
+        "worldFrames": 3,
+        "worldFailed": false,
+        "bootState": "complete",
+        "mode": "desktop"
+      },
+      "label": "窗口并排",
+      "overviewBack": null,
+      "actualArrangeTarget": {
+        "x": 820.0401000976562,
+        "y": 186.3697967529297,
+        "width": 26.239990234375,
+        "height": 26.240020751953125
+      },
+      "before": {
+        "version": 1,
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "payload": "about",
+            "rect": {
+              "x": 380,
+              "y": 107.5,
+              "width": 680,
+              "height": 600
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "notes",
+            "app": "notes",
+            "payload": "",
+            "rect": {
+              "x": 174,
+              "y": 74,
+              "width": 640,
+              "height": 480
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "map",
+            "app": "map",
+            "payload": "",
+            "rect": {
+              "x": 208,
+              "y": 98,
+              "width": 640,
+              "height": 480
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "contact",
+            "app": "contact",
+            "payload": "",
+            "rect": {
+              "x": 242,
+              "y": 122,
+              "width": 640,
+              "height": 480
+            },
+            "minimized": false,
+            "maximized": false
+          }
+        ],
+        "active": "contact",
+        "note": "Isolated arrangement test — 保留同一笔记节点",
+        "draft": "",
+        "favorites": [],
+        "theme": "light",
+        "wallpaper": "dawn",
+        "initialized": true
+      },
+      "result": {
+        "kind": "actual tile; nonoverlap and every chrome control center hit; original notes continue",
+        "rects": [
+          {
+            "id": "welcome",
+            "rect": {
+              "x": 136.9795379638672,
+              "y": 91.65972137451172,
+              "width": 582.200439453125,
+              "height": 318.1602478027344,
+              "top": 91.65972137451172,
+              "right": 719.1799774169922,
+              "bottom": 409.8199691772461,
+              "left": 136.9795379638672
+            },
+            "controls": [
+              {
+                "action": "close",
+                "hit": true
+              },
+              {
+                "action": "minimize",
+                "hit": true
+              },
+              {
+                "action": "maximize",
+                "hit": true
+              },
+              {
+                "action": "arrange",
+                "hit": true
+              }
+            ]
+          },
+          {
+            "id": "notes",
+            "rect": {
+              "x": 722.4600219726562,
+              "y": 91.65972137451172,
+              "width": 582.2003784179688,
+              "height": 318.1602478027344,
+              "top": 91.65972137451172,
+              "right": 1304.660400390625,
+              "bottom": 409.8199691772461,
+              "left": 722.4600219726562
+            },
+            "controls": [
+              {
+                "action": "close",
+                "hit": true
+              },
+              {
+                "action": "minimize",
+                "hit": true
+              },
+              {
+                "action": "maximize",
+                "hit": true
+              },
+              {
+                "action": "arrange",
+                "hit": true
+              }
+            ]
+          },
+          {
+            "id": "map",
+            "rect": {
+              "x": 136.9795379638672,
+              "y": 413.0999755859375,
+              "width": 582.200439453125,
+              "height": 318.16021728515625,
+              "top": 413.0999755859375,
+              "right": 719.1799774169922,
+              "bottom": 731.2601928710938,
+              "left": 136.9795379638672
+            },
+            "controls": [
+              {
+                "action": "close",
+                "hit": true
+              },
+              {
+                "action": "minimize",
+                "hit": true
+              },
+              {
+                "action": "maximize",
+                "hit": true
+              },
+              {
+                "action": "arrange",
+                "hit": true
+              }
+            ]
+          },
+          {
+            "id": "contact",
+            "rect": {
+              "x": 722.4600219726562,
+              "y": 413.0999755859375,
+              "width": 582.2003784179688,
+              "height": 318.16021728515625,
+              "top": 413.0999755859375,
+              "right": 1304.660400390625,
+              "bottom": 731.2601928710938,
+              "left": 722.4600219726562
+            },
+            "controls": [
+              {
+                "action": "close",
+                "hit": true
+              },
+              {
+                "action": "minimize",
+                "hit": true
+              },
+              {
+                "action": "maximize",
+                "hit": true
+              },
+              {
+                "action": "arrange",
+                "hit": true
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "version": 1,
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "payload": "about",
+            "rect": {
+              "x": 8,
+              "y": 12,
+              "width": 710,
+              "height": 388
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "map",
+            "app": "map",
+            "payload": "",
+            "rect": {
+              "x": 8,
+              "y": 404,
+              "width": 710,
+              "height": 388
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "contact",
+            "app": "contact",
+            "payload": "",
+            "rect": {
+              "x": 722,
+              "y": 404,
+              "width": 710,
+              "height": 388
+            },
+            "minimized": false,
+            "maximized": false
+          },
+          {
+            "id": "notes",
+            "app": "notes",
+            "payload": "",
+            "rect": {
+              "x": 722,
+              "y": 12,
+              "width": 710,
+              "height": 388
+            },
+            "minimized": false,
+            "maximized": false
+          }
+        ],
+        "active": "notes",
+        "note": "Isolated arrangement test — 保留同一笔记节点 · tiled continuation",
+        "draft": "",
+        "favorites": [],
+        "theme": "light",
+        "wallpaper": "dawn",
+        "initialized": true
+      }
+    }
+  ],
+  "limits": "Three actual coordinate Chromium journeys, true Metal scene with reduced animation, simulated coarse media, no physical-phone or all-app content certification. Scoped notes are synthetic in isolated contexts."
+}

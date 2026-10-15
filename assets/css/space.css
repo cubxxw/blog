@@ -276,10 +276,11 @@ body.products-view-bear .main { margin: 0; padding: 0; width: 100%; max-width: n
 .space-launchpad__grid > .space-search-empty { grid-column: 1/-1; }
 .space-launchpad > footer { border-top: 1px solid var(--sp-line); padding-top: 13px; font-size: 11px; color: var(--sp-muted); text-align: center; }
 .space-overview { width: min(1050px,calc(100vw - 35px)); max-height: 85vh; padding: 25px; margin: 7vh auto; border: 1px solid var(--sp-line); background: var(--sp-chrome); color: var(--sp-ink); border-radius: 15px; box-shadow: var(--sp-shadow); }
-.space-overview header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.space-overview[open] { display: flex; flex-direction: column; overflow: hidden; }
+.space-overview header { display: flex; flex-shrink: 0; justify-content: space-between; align-items: center; margin-bottom: 22px; }
 .space-overview header h2 { font-size: 19px; font-weight: 500; }
-.space-overview header button { font-size: 11px; }
-.space-overview [data-space-overview-list] { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
+.space-overview header button { min-width: 44px; min-height: 44px; padding: 0 8px; font-size: 11px; }
+.space-overview [data-space-overview-list] { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; min-height: 0; overflow: auto; overscroll-behavior: contain; }
 .space-overview__item { padding: 20px !important; border: 1px solid var(--sp-line) !important; background: var(--sp-paper) !important; min-height: 135px; text-align: left; }
 .space-overview__item strong { display: block; font-size: 12px; margin-top: 13px; }
 .space-overview__item small { font-size: 10px; color: var(--sp-muted); }

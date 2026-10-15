@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`4782757e`（E6–E62）。E7/E7.1当前8hash/QA一致，无新P0/P1；初跑19/21保留，fixture修后9/9，最终21不同合同=未改12+修后9。UX025/026/027/031仅按各自已测范围关闭，OSIME、wheel-away失败等剩余边界不外推。
+最近已验checkpoint：`aff16e05`（E7/E71）。E81当前5hash/QA一致，6合同、17Node、三实际旅程/五新图已复核，无新P0/P1；UX024/032/033仅按命名范围关闭。E8原换位/17.5px失败保留历史，不借旧图认证新状态。
 
 
 
@@ -74,7 +74,7 @@
 | UX-021 | `S.WINDOW.DRAG`, `S.WINDOW.CLOSE`, `S.APP.notes.EDITOR`, `S.APP.map.REGION` | Space工作区整体缩小且透明边界叠加，桌面文字发软 | next-Space-readability | `closed_for_E5_primary_reading_and_plane_scope_chrome_matrix_unknown` |
 | UX-022 | `S.APP.map.ZOOM` | 手机地图缩放按钮仅22px宽 | next-Space-readability | `closed_for_recorded_E52_620_and_844_coarse_target_boundaries` |
 | UX-023 | `S.WINDOW.CLOSE`, `S.CAFE.RETURN`, `S.WINDOW.ARRANGE`, `S.CAFE.PICKER` | 短横屏café HUD截获窗口关闭/并排入口 | E5-shortheight-followup | `closed_for_recorded_E52_568_bilingual_and_844_coarse_HUD_paths` |
-| UX-024 | `S.WINDOW.ARRANGE`, `S.WINDOW.OVERVIEWITEM`, `S.WINDOW.CLOSE`, `S.WINDOW.MAXIMIZE` | 短横屏三窗“并排”仍重叠，隐藏了一整组窗口操作 | after-E6-short-arrange-recovery | `confirmed_recorded_shortheight_arrange_failure_bounded_followup` |
+| UX-024 | `S.WINDOW.ARRANGE`, `S.WINDOW.OVERVIEWITEM`, `S.WINDOW.CLOSE`, `S.WINDOW.MAXIMIZE` | 短横屏三窗“并排”仍重叠，隐藏了一整组窗口操作 | E8/E8.1 | `closed_for_E81_named_short_overview_and_normal_tiling_cases` |
 | UX-025 | `H.CHAT.INPUT`, `H.CHAT.CLOSE`, `H.CHAT.OPEN` | 首页聊天关闭再开丢失未发送草稿 | E7/E7.1 | `closed_for_E71_named_draft_close_reopen_clear_send_cases` |
 | UX-026 | `H.CHAT.INPUT`, `H.CHAT.SEND` | 首页聊天合成composition Enter触发发送 | E7/E7.1 | `closed_for_E71_synthetic_composition_guards_OS_IME_unverified` |
 | UX-027 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.RETRY` | 首页聊天挂起无就地停止或请求时限，只能关窗取消 | E7/E7.1 | `closed_for_E7_E71_named_Stop_idle_JSON_SSE_DONE_recovery_cases` |
@@ -82,6 +82,8 @@
 | UX-029 | `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.CHANNEL` | Space手机主要产品/阅读/联系链接仍低于项目44px触控目标 | after-E6-Space-four-app-type-targets | `confirmed_recorded_390_primary_anchor_target_gap` |
 | UX-030 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.QUICK` | 短横屏聊天聚焦输入后composer部分出屏，关闭按钮被导航遮挡 | E6.1-short-chat-recovery | `closed_for_recorded_E61_568_bilingual_844_coarse_chrome_scroll_paths` |
 | UX-031 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE` | 短屏旧回复完成把滚去旅行书的读者拉回聊天并聚焦输入 | E7/E7.1 | `closed_for_E7_E71_568_en_wheel_JSON_completion_case` |
+| UX-032 | `S.WINDOW.ARRANGE` | 平铺后仅聚焦笔记，再整理会按z序交换窗口位置 | E8/E8.1 | `closed_for_E81_repeat_arrange_after_notes_focus_cases` |
+| UX-033 | `S.WINDOW.OVERVIEWITEM` | 844短横屏窗口概览Back可点，但高度只有17.5CSSpx | E8/E8.1 | `closed_for_E81_844_coarse_Back44_scrolled_list_actual_close_cases` |
 
 ## 有证据的单项锚点评分
 
@@ -203,6 +205,16 @@
 | `CHK-E71-DONE-NO-EOF` | D3.4 | 96 | DONEcompleteswithoutEOF orsettlingcancel; inputready, signalnotabortedonsuccess; +30000virtualtime cannotmarksuccessfulanswer timedout. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
 | `CHK-E71-WHEEL-COMPLETION` | D3.4 | 96 | Actualwheel620 leavesoldchatDOMfocus, lateJSONcompletion preserves2803→2803 anddoesnotfocusinput; contractindependentlypasses. Errorbranch/othersizesunverified. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
 | `CHK-E71-CONTINUITY-REGRESSION` | D3.4 | 96 | Unchanged6about passsafeSSE, close/clear staleisolation, clickedpostsfocus, syntheticbfcache andretry; 6short keepexplicitopen/close/composerreachable. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E8-ORDER-STABILITY-FAIL` | D4.4 | 80 | 重复整理把正常focus变化转成三窗换位，需重新寻找窗口；可完成但有明确空间定位摩擦。 | E8 frozen source review; initialbrowser5pass1fail reported, fullreceiptpending / confirmed_model_behavior_failure / high |
+| `CHK-E8-OVERVIEW-BACK-TARGET-FAIL` | D2.3 | 80 | Back17.5highdespitewidth≥44; actualcenterhitandclose/focuswork. Project44importantmobileactiontargetfails, noWCAGblanketclaim. | E8 historical production actualthreejourneys before E81 / confirmed_target_failure_functionalclickpasses / high |
+| `CHK-E81-CAPACITY-FALLBACK` | D6.1 | 96 | 844coarse3/4 zh/encontract+actualzh3/en4: insufficientcapacityopensnamedoverview andretainsallstoredrect/maximize/state; doesnotclampundersizedtiles. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E81-OVERVIEW-NOTES-CONTINUITY` | D6.4 | 96 | Selectwelcome/notes fromoverview; originalnoteeditorDOM,valueandcontinuationretained; everyoverviewitemscrollsintoviewandcenterhits. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E81-BACK-TARGET` | D2.3 | 96 | OnlynewlymappedBack: actualzh60.98×44/en64.66×44 at844coarse; afterlastitemscrollcenterhit andactualcoordinateclickclose pass. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E81-BACK-RETURN` | D2.2 | 96 | ActualBackcoordinateclick andEscapeclosure returninitiatingarrangebutton in namedshortscopes; noolditem/menutrigger evidence transferred. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E81-LIST-CHROME` | D6.1 | 96 | Fourcoarsecontracts scrollallitems/lastrow, internalListscrollTop>0 for4items, Backstaysinsidedialog44/hit; actualEnglishlastrowimagekeepsheader/Back. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E81-TRUE-TILE` | D6.1 | 96 | 1440×9002/4contractstruecapacitytiles min320×260 inusablearea+gap4, allchromecentershit≥24CSSpx; actual4tile16controlshit. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E81-REPEAT-STABLE` | D4.4 | 96 | Preservedbrowseridempotence aftereditnotes+publicexecute; actualsecondbararrange afterfocusnotes leavesid→rectunchanged. Unitalsokeepsz-order/active. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
+| `CHK-E81-ACTION-TRUTH` | D1.1 | 96 | Shortbarlabel/title/haspopup saysWindowoverview; menuduplicatetilehidden+arrowsskiphole; terminalreportsactualoverview, publicexecute remains true. Normaldesktoplabelarrange andtrue tile. Exactnamedcontracts only. | E8.1 final bounded arrangement and overview recovery / closed_for_named_E81_cases_incomplete_family_matrix / high |
 
 ## D1 / D4 独立专家视觉判断
 
@@ -261,10 +273,13 @@
 | H.CHAT.SEND, H.CHAT.INPUT, H.CHAT.RETRY | D4 | 90,96,90,90 | 91.5 | 短屏44sender清楚，停止行与回复内容分离；保留输入真实focus环，未当装饰扣分。256高内容窗口窄，辅助小字/多层细线仍可收敛。 | E7/E7.1 final bounded homepage transport recovery / high |
 | H.CHAT.SEND, H.CHAT.INPUT, H.CHAT.RETRY | D1 | 96,96,90,96 | 94.5 | 停止后的partial、Reply stopped和独立Retry清楚，新问题继续可用；合成stub正文不是模型质量，中英混用的次级品牌文字仍有工艺余量。 | E7/E7.1 final bounded homepage transport recovery / high |
 | H.CHAT.SEND, H.CHAT.INPUT, H.CHAT.RETRY | D4 | 90,90,90,90 | 90.0 | 深色停止/下一问界面层级稳定，恢复文本不混入AI回复；quick省略、细碎辅助小字和输入/区域分隔层仍较多，范围90而非96。 | E7/E7.1 final bounded homepage transport recovery / high |
+| S.WINDOW.ARRANGE, S.WINDOW.OVERVIEWITEM | D1 | 96,96,90,96 | 94.5 | 容量不足时明确进入概览，选择目标窗口/返回主次清楚，菜单与终端名称对应实际动作；短屏中英已见，其他文案矩阵未知。 | E8.1 final bounded arrangement and overview recovery / high |
+| S.WINDOW.OVERVIEWITEM | D4 | 90,96,90,96 | 93.0 | 概览卡片边框表达选择对象，header常驻使返回不随列表跑；44命中修正但Back11px文字与10px状态仍较小，重要标签可再做工艺细化。 | E8.1 final bounded arrangement and overview recovery / high |
+| S.WINDOW.ARRANGE, S.APP.notes.EDITOR | D4 | 80,90,90,96 | 89.0 | 四窗空间均衡、无整理重叠，笔记真实focus环可辨且重复整理稳定；欢迎/联系/地图辅助字仍很小，不能因几何通过将App排版问题UX028/029抬成96。 | E8.1 final bounded arrangement and overview recovery / high |
 
-## 完整可追踪覆盖（inventory v1.10 一对一映射）
+## 完整可追踪覆盖（inventory v1.12 一对一映射）
 
-309族/358selectors；55族有某种局部状态证据，完整认证仍0。新实践anchor只绑定自身E6 no-JS文章导航，不继承原CTA focus/paint。
+309族/359selectors；56族有某种局部状态证据，完整认证仍0。Back为既存控件补漏，新control只绑定自身E8失败和E81 Back44/返回/滚动证据，不继承旧item/menu通过。
 
 
 
@@ -393,7 +408,7 @@
 | `S.MENU.LAUNCH` | 所有应用 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.MENU.SEARCH` | 搜索/⌘K | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.MENU.OVERVIEW` | 窗口概览 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.MENU.ARRANGE` | 窗口并排/整理窗口 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `S.MENU.ARRANGE` | 窗口并排/整理窗口 | 1 | 2 | `unverified / null` | 待矩阵 |
 | `S.MENU.DESKTOP` | 显示桌面 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.MENU.LAB` | Product Lab | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.MENU.BLOG` | 返回博客 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -401,10 +416,10 @@
 | `S.WINDOW.CLOSE` | 关闭窗口 | 1 | 6 | `unverified / null` | UX-021, UX-023, UX-024 |
 | `S.WINDOW.MINIMIZE` | 最小化 | 1 | 5 | `unverified / null` | 待矩阵 |
 | `S.WINDOW.MAXIMIZE` | 最大化/恢复 | 1 | 4 | `unverified / null` | UX-024 |
-| `S.WINDOW.ARRANGE` | 窗口并排 | 1 | 5 | `unverified / null` | UX-023, UX-024 |
+| `S.WINDOW.ARRANGE` | 窗口并排 | 1 | 10 | `unverified / null` | UX-023, UX-024, UX-032 |
 | `S.WINDOW.DRAG` | 标题栏拖动 | 1 | 1 | `unverified / null` | UX-021 |
 | `S.WINDOW.RESIZE` | 右/下/角缩放 | 1 | 0 | `unverified / null` | 待矩阵 |
-| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 | 1 | 1 | `unverified / null` | UX-024 |
+| `S.WINDOW.OVERVIEWITEM` | 窗口概览项 / 返回 | 2 | 6 | `unverified / null` | UX-024, UX-033 |
 | `S.SEARCH.QUERY` | 打开应用或找文章 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.SEARCH.RESULT` | 结果项 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.SEARCH.EMPTY` | 清空搜索/浏览所有应用 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -437,7 +452,7 @@
 | `S.APP.map.ZOOM` | 放大/缩小/全部/世界 | 3 | 6 | `unverified / null` | UX-022 |
 | `S.APP.map.RELATED` | 相关照片/游记/数据许可 | 3 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.books.READ` | 开始阅读 | 1 | 1 | `unverified / null` | UX-028, UX-029 |
-| `S.APP.notes.EDITOR` | 本地笔记 | 1 | 5 | `unverified / null` | UX-021 |
+| `S.APP.notes.EDITOR` | 本地笔记 | 1 | 6 | `unverified / null` | UX-021 |
 | `S.APP.notes.EXPORT` | 导出.md | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.notes.SANDBOX` | 保存到沙盒 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `S.APP.contact.DRAFT` | 留言草稿 | 1 | 0 | `unverified / null` | UX-028 |
@@ -806,3 +821,33 @@ UX031只关闭568×320英文light/reduce真实wheel620+延迟JSON完成：2803�
 实际恢复界面专家判断：短屏D1=93（96/90/96/90）、D4=91.5（90/96/90/90）；桌面深色D1=94.5（96/96/90/96）、D4=90（90/90/90/90）。停止、partial、恢复行与重试主次更清楚；256高重试仍在中段需滚，quick省略/细碎辅助标签/多层分隔有余量。输入/section实际focus环不是装饰缺陷。图中stub文案不代表真实AI内容质量，不靠21合同给审美满分，不重审renderer/E6文章布局。
 
 所有完整控件/族/全站分仍null；TravelQR UX018与Space短屏arrange等剩余队列保持。
+
+## E8初审：重复整理应保留已有空间位置
+
+2026-10-16T03:06:33+08:00：冻结4文件与QA hash在初读时均匹配；已读planner/reducer/desktop及unit与6条合同源码，无新P0/P1。实际viewport容量、raw320×260门槛、100chrome+边距/gap、空间不足直接overview且state返回原值，避免先fitRect抬高造成重叠。名称/haspopup/terminal按实际动作、重复overview菜单项隐藏并过滤键盘项，方向合理。
+
+新增UX032为P2，不是测试超约束。轻量Node独立复现1440×900四窗：首次notes(722,12)、map(8,404)、terminal(722,404)；仅focus notes令z序变welcome/map/terminal/notes，再arrange后notes(722,404)、map(722,12)、terminal(8,404)。没有重叠/数据丢失，但会让用户重新寻找位置，D4.4模型行为片段80（不是新视觉总分）。
+
+建议planner只对filter副本按原rect.y→x→稳定id排序再tile，不动windows数组z序；补arrange→focus→arrange纯state回归并保留浏览器幂等断言。父初跑5/6的正式log/实际旅程尚未独立读，UX024不提前关闭。844coarse overview Back字小/44仅≤640只是源码候选，等真实rect/hit再判断。同步inventory v1.11计数：309/358，56局部族；完整认证仍0。
+
+## E8实际旅程：Back目标缺口与部分正常链
+
+2026-10-16T03:08:37+08:00：已独立读E8正式initial5/6合同失败、16Node/typecheck/syntax/diff/build3781ms和actions JSON/log；五张overview/restored/tiled图逐张查看。三真实坐标旅程都有worldFrames3、worldFailedfalse、bootcomplete；仅证实实际世界已渲染，不是FPS/设备性能认证。
+
+844×390coarse中文3窗、英文4窗：整理进入overview，Escape与实际Back点击关闭后回trigger，原rect未重排，notes原节点/文字/继续输入保留。1440×900四窗真实平铺不重叠，16窗口控制中心hit，原notes继续输入。原四窗重复整理幂等失败与UX032 Node复现一致，保留断言。
+
+新增UX033 P2：Back中文44.98×17.5、英文48.66×17.5 viewportCSSpx。中心hit和实际关闭/回焦点均正确，但项目重要移动动作44目标未达，D2.3片段80/G4cap89仅此范围；不一概称WCAG失败，不夸大不可点击或P1。英文4项列表已超首屏，但可滚动，不能仅因下项裁切认定不可达。E81应限制[open]flex/列表内滚并保持header44Back常驻，避免closed dialog被display覆盖；后续新manifest实测后再审。
+
+Back selector在现scorecard控件清单无独立映射，已通知inventory补真实控件；当前不将失败/关闭通过混给overview trigger或item，也不擅改309/358总量。UX024与E8整批仍未最终关闭，E81 WIP不借E8旧图认证。
+
+## E8.1有界闭环：容量、稳定位置与真实返回目标
+
+2026-10-16T03:14:05+08:00：5/5当前源码hash及QA config匹配。desktop与E8相同，planner仅filter副本按rect.y/x/id排序；不改z-order/active，纯unit保留几何/active/z序。CSS flex只在overview[open]，header不缩，列表min-height0/内部overflow，closed dialog无display泄漏。已读正式17Node/typecheck/两syntax/diff/build3854ms、6/6合同和三实际actions JSON/log，五张新图逐张看；无新P0/P1。
+
+UX024关闭844×390coarse中英3/4窗的真实容量fallback：名称/haspopup/terminal与概览一致、重复菜单项隐藏且键盘跳过，选择welcome和notes可达，原rect、note节点/值/继续输入保持。1440×900中文2/4窗真tile仍有320×260最小尺寸、4gap与全部chrome hit；actual4窗16控制中心命中。其它resize/窗口数/模式仍未实测，不抬门槛。
+
+UX032关闭正常desktop已测重复整理：保留原失败幂等断言，focus/edit notes后publicexecute不换id→rect；实际第二次bar整理亦按id比较相等，z/active unit正确。UX033关闭844coarse已测返回链：Back中文60.98×44、英文64.66×44 viewportCSSpx，滚末项后header/Back仍在屏内，centerhit与真实坐标关闭/回触发器通过。原E8 17.5高/换位失败仍保留，旧tile截图不能认证E81新排序。
+
+实际设计范围：overview D1=94.5（96/96/90/96），D4=93（90/96/90/96）；边框用于选择对象、返回固定，Back11px和10px状态仍可细化。四窗tile D4=89（80/90/90/96）：位置和注意力稳定了，但welcome/contact/map辅助字偏小，UX028/029不因布局六合同消失。笔记focus环是必要状态，不当装饰扣分。English overview图为滚到底的实际状态，首行图标裁切属内部滚动，不误报不可达。
+
+Zero/one/minimized/rawcapacity边界有Node覆盖，未新增真实browser矩阵；无实体设备、OS键盘、Safari、200%zoom、全App内容或FPS结论。三actual均worldFrames3/failedfalse/bootcomplete只证世界真实出现。Back盘点补漏映射到S.WINDOW.OVERVIEWITEM.control.e9b894，309族不增、selectors359；新control不继承旧item/menu证据。完整控件/族/全站仍null。

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T02:56:17+08:00",
+  "updated_at": "2026-10-16T03:14:05+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,24 +353,24 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.10",
+    "inventory_version": "1.12",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
       "world-decoration": 18,
       "motion": 26
     },
-    "selector_level_controls": 358,
+    "selector_level_controls": 359,
     "family_ids_covered": 309,
     "certified_96_plus_controls": 0,
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/358selectors；局部证据族不是完整认证。",
-    "families_with_recorded_contract_fragments": 61,
-    "scoped_check_assessments": 116,
-    "expert_visual_assessments": 53,
-    "inventory_families_with_partial_state_evidence": 55,
+    "reason": "309族/359selectors；Back为既存控件盘点补漏，局部证据族不是完整认证。",
+    "families_with_recorded_contract_fragments": 62,
+    "scoped_check_assessments": 126,
+    "expert_visual_assessments": 56,
+    "inventory_families_with_partial_state_evidence": 56,
     "inventory_accepted_whole_families": 0
   },
   "evidence": [
@@ -1658,6 +1658,211 @@
         "ActualcoordinateStop only568×256 zh/light headerpending and1440×900 en/dark partialSSE, reduce, controlledfetchstreams.",
         "Wheel completion only568×320 en/reduce delayedJSON, scrollY2803→2803; errorwhileaway andothersizes unverified.",
         "No realmodel/backend quality/physicalphone/GPU/FPS/zoom claim; no renderer or E6articlelayout recertification."
+      ]
+    },
+    {
+      "id": "E-E8-SOURCE-ORDER-FAIL",
+      "kind": "independent_readonly_source_review_and_lightweight_Node_state_reproduction",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+      "as_of": {
+        "phase": "E8 frozen source review; initialbrowser5pass1fail reported, fullreceiptpending",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+        "recorded_at": "2026-10-15T19:03:18.094623+00:00",
+        "reviewed_at": "2026-10-16T03:06:33+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "source_hash_matches_at_initial_review": {
+        "assets/js/space/state.mjs": true,
+        "assets/js/space/desktop.js": true,
+        "scripts/bear-workspace-state.test.mjs": true,
+        "tests/e2e/space-arrangement-contracts.spec.ts": true
+      },
+      "qa_config_hash_matches_at_initial_review": true,
+      "runtime_acceptance_status": "notaccepted; parentreported5/6initialcontracts; formalreceiptandactualjourneysnotyetreviewed",
+      "independent_reproduction": {
+        "command": "Importstate.mjs; create1440×900; openwelcome/notes/map/terminal; arrange; focusnotes; arrange; comparegeometrybyid.",
+        "before": {
+          "welcome": {
+            "x": 8,
+            "y": 12
+          },
+          "notes": {
+            "x": 722,
+            "y": 12
+          },
+          "map": {
+            "x": 8,
+            "y": 404
+          },
+          "terminal": {
+            "x": 722,
+            "y": 404
+          }
+        },
+        "focus_z_order": [
+          "welcome",
+          "map",
+          "terminal",
+          "notes"
+        ],
+        "after": {
+          "welcome": {
+            "x": 8,
+            "y": 12
+          },
+          "map": {
+            "x": 722,
+            "y": 12
+          },
+          "terminal": {
+            "x": 8,
+            "y": 404
+          },
+          "notes": {
+            "x": 722,
+            "y": 404
+          }
+        }
+      },
+      "source_reason": "planWindowArrangement filters state.windows in current z-order; focus reducer moves focusedwindowtoarrayend. Repeatedarrange thereforeassignsnewcells despiteunchangedgeometry/capacity.",
+      "limits": [
+        "Node state reproduction isnotanewbrowser/visual/devicepass.",
+        "Nooverlap/data-loss/P1claim.",
+        "844coarseOverviewBack targetsizeissourcecandidate, awaitingparentmeasurement.",
+        "UX024 shortscreenactualclosureawaitsnewreceipts."
+      ]
+    },
+    {
+      "id": "E-E8-ACTUAL-PARTIAL",
+      "kind": "recorded_actualthreecoordinatejourneys_with_five_independently_inspected_images_and_initial_contract_failure",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e8-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e8-actions.log",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-overview-844-zh-3.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-overview-844-en-4.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-restored-844-zh-3.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-restored-844-en-4.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-tiled-1440-zh-4.png"
+      ],
+      "as_of": {
+        "phase": "E8 historical production actualthreejourneys before E81",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+        "reviewed_at": "2026-10-16T03:08:37+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e8-contracts-initial.log",
+      "contract_result": {
+        "total": 6,
+        "passed": 5,
+        "failed": 1,
+        "failure": "1440×900fourwindow focusnotes then publicarrangechanges three tilepositions (UX032)"
+      },
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-node.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-build.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-state-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-desktop-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e8-diff.log"
+      ],
+      "supporting_results": "16Node/typecheck/syntax/diffpassed; Hugo3781ms",
+      "actualscopes": [
+        "844×390coarse zh/light/reduce3windows",
+        "844×390coarse en/light/reduce4windows",
+        "1440×900zh/light/reduce4windows"
+      ],
+      "runtime_context": "Eachactualscope worldFrames3/worldFailedfalse/bootcomplete/desktop; genuineMetal scene, not FPSclaim.",
+      "observations": [
+        "Shortcoarseactualarrangeopensoverview; Escape/Backclose returns trigger; originalrects and notesDOM/value/continuationretained.",
+        "Desktopactualtilesnonoverlapand16chromecontrolcentershit; originalnotesDOMcontinues.",
+        "OverviewBack zh44.984375×17.5, en48.65625×17.5 viewportCSSpx; centerhitandactualclosework butproject44heightfails."
+      ],
+      "limits": [
+        "NotfullE8acceptance: UX032idempotenceandBacktargetremainopen.",
+        "ParentE81productionchangesauthorized; theseactualimagesonlycertifyhistoricalE8source.",
+        "No physicaldevice/WCAGblanketviolation/allappcontent/benchmarkclaim.",
+        "NoE81source/runtimecertificationuntilnewmanifestandreceipts."
+      ]
+    },
+    {
+      "id": "E-BATCH-E81-FINAL",
+      "kind": "independent_five_source_hash_test_source_review_and_recorded_six_contracts_three_actualjourneys_five_inspected_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e81-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e81-actions.log",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-overview-844-zh-3.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-overview-844-en-4.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-restored-844-zh-3.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-restored-844-en-4.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-tiled-1440-zh-4.png"
+      ],
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "source_hash_matches_at_review": {
+        "assets/js/space/state.mjs": true,
+        "assets/js/space/desktop.js": true,
+        "assets/css/space.css": true,
+        "scripts/bear-workspace-state.test.mjs": true,
+        "tests/e2e/space-arrangement-contracts.spec.ts": true
+      },
+      "qa_config": {
+        "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+        "sha256": "28ffa8b8c8091af5f06f2ae13af8b1a8eb7a4621fc09356e0c3c418fee3dd879",
+        "defaultViewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "workers": 1,
+        "browser": "Chromium Metal"
+      },
+      "qa_config_hash_matches_at_review": true,
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e81-contracts.log",
+      "contract_result": {
+        "total": 6,
+        "passed": 6,
+        "duration": "6.2s"
+      },
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-node.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-build.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-state-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-desktop-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-diff.log"
+      ],
+      "supporting_results": "17Node+typecheck+syntax+diff; Hugo3854ms",
+      "initial_failure_preserved": "E8initial5/6 remains in E-E8-ACTUAL-PARTIAL, UX032failure not reclassified as test-only.",
+      "source_review": "Onlyfilteredvisiblecopy sortedbyrect y/x/id; z-order/active unchanged. desktop hash identicaltoE8. overviewdisplay:flex only[open], headerflex-shrink0, Backmin44, listminheight0/overflowauto.",
+      "actual_scope": [
+        "844×390coarse zh/light/reduce3windows",
+        "844×390coarse en/light/reduce4windows",
+        "1440×900zh/light/reduce4windows"
+      ],
+      "contract_scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows",
+      "actual_results": "Shortfallbackretainsrects/notesDOM/value/continuation; scrolllastitem keepsheader/Backvisible; actualBack44/hit/coordinateclose/returntrigger. Desktopnonoverlap16chromehit, originalnotescontinue; afterfocusnotes actualsecondbararrange keepsid→rectmapping (browseractionsscriptassert).",
+      "Back_geometry": {
+        "zh": {
+          "width": 60.984375,
+          "height": 44
+        },
+        "en": {
+          "width": 64.65625,
+          "height": 44
+        }
+      },
+      "runtime_context": "Allthree actualworldFrames3/worldFailedfalse/bootcomplete; noFPSclaim.",
+      "new_P0_P1_findings": [],
+      "limits": [
+        "Named scopes only, simulatedcoarse/viewport; notphysicalphone/OSkeyboard/Safari/200%zoom/alllocale/themematrix.",
+        "Zero/one/minimized/exactcellboundary capacity paths haveNode modelcoverage, notnewrealbrowserjourneys.",
+        "Noallappbodytype/targets/contentcertification; UX028/029remain.",
+        "OldE8tile/overviewimages remain failure/history and cannotcertifyE81.",
+        "Closed dialogdisplayguard is[open]-onlysourceplusactualclosehiddenchecks; notallmodalruntimecertification."
       ]
     }
   ],
@@ -3462,6 +3667,100 @@
       ],
       "scope": "1440×900 en/dark/reduce partialstopped+nextturn only; actualrecordedrecoveryUI, notfullmatrix/modelquality.",
       "reason": "深色停止/下一问界面层级稳定，恢复文本不混入AI回复；quick省略、细碎辅助小字和输入/区域分隔层仍较多，范围90而非96。"
+    },
+    {
+      "assessment_id": "VIS-E81-OVERVIEW-D1",
+      "family_ids": [
+        "S.WINDOW.ARRANGE",
+        "S.WINDOW.OVERVIEWITEM"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-overview-844-zh-3.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-overview-844-en-4.png"
+      ],
+      "scope": "OnlycurrentE81namedimages; scrolledEnglishoverviewisintendedscrolledstate, nottopnormal; nofullcontrol/wholeappscore.",
+      "reason": "容量不足时明确进入概览，选择目标窗口/返回主次清楚，菜单与终端名称对应实际动作；短屏中英已见，其他文案矩阵未知。"
+    },
+    {
+      "assessment_id": "VIS-E81-OVERVIEW-D4",
+      "family_ids": [
+        "S.WINDOW.OVERVIEWITEM"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-overview-844-zh-3.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-overview-844-en-4.png"
+      ],
+      "scope": "OnlycurrentE81namedimages; scrolledEnglishoverviewisintendedscrolledstate, nottopnormal; nofullcontrol/wholeappscore.",
+      "reason": "概览卡片边框表达选择对象，header常驻使返回不随列表跑；44命中修正但Back11px文字与10px状态仍较小，重要标签可再做工艺细化。"
+    },
+    {
+      "assessment_id": "VIS-E81-TILE-D4",
+      "family_ids": [
+        "S.WINDOW.ARRANGE",
+        "S.APP.notes.EDITOR"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        80,
+        90,
+        90,
+        96
+      ],
+      "scope_score": 89.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e81-tiled-1440-zh-4.png"
+      ],
+      "scope": "OnlycurrentE81namedimages; scrolledEnglishoverviewisintendedscrolledstate, nottopnormal; nofullcontrol/wholeappscore.",
+      "reason": "四窗空间均衡、无整理重叠，笔记真实focus环可辨且重复整理稳定；欢迎/联系/地图辅助字仍很小，不能因几何通过将App排版问题UX028/029抬成96。"
     }
   ],
   "findings": [
@@ -4586,10 +4885,10 @@
       "title": "短横屏三窗“并排”仍重叠，隐藏了一整组窗口操作",
       "baseline_reason": "844×390 coarse zh/light/reduce，welcome/notes/map三个窗口点击arrange后仅两列可见。state.mjs先为2排算131px，再经fitRect最小260px把第二排y压到30；welcome y12、map y30，仅差18CSSpx。实际欢迎窗口4个控制中心均被map盖住。默认地图右界只超承载面约0.82px，不是内容不可达；实际maximize位于承载面内且4控均命中。",
       "recommendation": "用当前窗口数、可用矩形和最小窗口尺寸判断能否真并排；放不下时复用现有overview。fallback的可见名称/aria-label/terminal结果应明确“查看所有窗口”，只有实际平铺才称“并排”。保持原窗口DOM、笔记、原rect和最大化/恢复意图；避免降低正文高度只为塞齐网格。",
-      "status": "confirmed_recorded_shortheight_arrange_failure_bounded_followup",
+      "status": "closed_for_E81_named_short_overview_and_normal_tiling_cases",
       "baseline_cap": 89,
-      "active_cap": 89,
-      "batch": "after-E6-short-arrange-recovery",
+      "active_cap": null,
+      "batch": "E8/E8.1",
       "dimensions": [
         "D1",
         "D2",
@@ -4619,15 +4918,17 @@
         }
       ],
       "browser_evidence": [
-        "docs/ux-audit/2026-10-16/evidence/space-short-layout-probe.json"
+        "docs/ux-audit/2026-10-16/evidence/space-short-layout-probe.json",
+        "E-BATCH-E81-FINAL"
       ],
       "verified_score": null,
       "confidence": "high",
       "as_of": {
-        "phase": "E5.2 short-layout exploratory probe",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e52-source.json",
-        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
-        "reviewed_at": "2026-10-16T02:06:09+08:00"
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
       },
       "scope_limits": [
         "Only recorded844×390 three-window arrange; not a global layout failure orP1.",
@@ -4641,7 +4942,15 @@
         "Escape overview returns the initiating control; closing/minimizing one window does not leave focus on a removed node.",
         "Normal1440×900 two/four windows still use true tiling when it fits; restore/maximize and small-width existingoverview behavior retain intent.",
         "Source-level geometry test should reject the current242CSSpx vertical overlap instead of only checking rects are within viewport."
-      ]
+      ],
+      "baseline_as_of": {
+        "phase": "E5.2 short-layout exploratory probe",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e52-source.json",
+        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+        "reviewed_at": "2026-10-16T02:06:09+08:00"
+      },
+      "closure_scope": "844×390coarse zh/en3/4windows fallback+overviewselection/Escape/DOM, normal1440×900zh2/4tiling; otherstate/resize/fullmatrixunverified.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-025",
@@ -5059,6 +5368,124 @@
       },
       "closure_scope": "Onlyactual568×320 en/light/reduce wheel620+lateJSONcompletion, scrollY2803→2803/noinputfocus; failurewhileaway andothersizesunverified.",
       "original_failure_retained": true
+    },
+    {
+      "id": "UX-032",
+      "family_prefix": "S.WINDOW",
+      "family_ids": [
+        "S.WINDOW.ARRANGE"
+      ],
+      "severity": "P2",
+      "title": "平铺后仅聚焦笔记，再整理会按z序交换窗口位置",
+      "baseline_reason": "E8planWindowArrangement按state.windows顺序分配tile，而focus reducer把目标移到数组末尾。1440×900四窗，arrange→focus notes→arrange使notes从右上到右下，map左下到右上，terminal右下到左下；容量和既有rect未变。",
+      "recommendation": "对派生visible副本按既有rect.y、rect.x、稳定id排序后生成tile，不改state.windows自身z序；保留浏览器幂等断言，补纯state arrange→focus→arrange回归。",
+      "status": "closed_for_E81_repeat_arrange_after_notes_focus_cases",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E8/E8.1",
+      "dimensions": [
+        "D4",
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/js/space/state.mjs",
+          "line": 14,
+          "manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json"
+        },
+        {
+          "kind": "independent_Node_reproduction",
+          "evidence_id": "E-E8-SOURCE-ORDER-FAIL"
+        }
+      ],
+      "browser_evidence": [
+        "E-E8-ACTUAL-PARTIAL",
+        "E-BATCH-E81-FINAL"
+      ],
+      "verified_score": null,
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "scope_limits": [
+        "1440×900四窗state模型；父对应浏览器幂等断言失败待正式log审查。",
+        "可用但空间位置不稳定，非数据丢失/重叠/P1。"
+      ],
+      "baseline_as_of": {
+        "phase": "E8 historical production actualthreejourneys before E81",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+        "reviewed_at": "2026-10-16T03:08:37+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "closure_scope": "1440×900zh2/4publicexecuteandactual4secondbararrange aftereditingnotes; Nodez/active/idrectassertions; notallwindowcounts/drag/resizecombos.",
+      "original_failure_retained": true
+    },
+    {
+      "id": "UX-033",
+      "family_prefix": "S.WINDOW.OVERVIEW",
+      "family_ids": [
+        "S.WINDOW.OVERVIEWITEM"
+      ],
+      "inventory_mapping_status": "Mappedinventoryv1.12 existingBackcontrol; item/menu evidence doesnotinherit.",
+      "severity": "P2",
+      "title": "844短横屏窗口概览Back可点，但高度只有17.5CSSpx",
+      "baseline_reason": "E8实际844×390coarse zh3/en4：Back宽44.98/48.66、高均17.5；中心hit、真实点击关闭和回原trigger正确，未达本项目重要移动动作44×44目标。",
+      "recommendation": "仅overview[open]使用受限flex承载，header/Back常驻且Back44×44，列表内部滚动；保留closed dialog hidden与Esc/Back回trigger，按中英3/4窗真实滚底再点击复验。",
+      "status": "closed_for_E81_844_coarse_Back44_scrolled_list_actual_close_cases",
+      "baseline_cap": 89,
+      "active_cap": null,
+      "active_cap_scope": "G4project44mobiletargetonly; notblanketWCAGAAfailure.",
+      "batch": "E8/E8.1",
+      "dimensions": [
+        "D2",
+        "D6"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser_geometry_and_actualclick",
+          "evidence_id": "E-E8-ACTUAL-PARTIAL"
+        },
+        {
+          "kind": "source",
+          "path": "assets/css/space.css",
+          "line": 281,
+          "note": "font11base; minheight44onlymobile≤640branch; E81currentlyauthorizedfix, notyetreviewed."
+        }
+      ],
+      "browser_evidence": [
+        "E-E8-ACTUAL-PARTIAL",
+        "E-BATCH-E81-FINAL"
+      ],
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "verified_score": null,
+      "confidence": "high",
+      "scope_limits": [
+        "844×390coarse zh/en light/reduceonly.",
+        "Functionalclose/hit/focusworks; notclaimedunreachable/trapped/P1.",
+        "24WCAGminimumexceptionsnotassessed;44isprojecttarget."
+      ],
+      "control_ids": [
+        "S.WINDOW.OVERVIEWITEM.control.e9b894"
+      ],
+      "baseline_as_of": {
+        "phase": "E8 historical production actualthreejourneys before E81",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+        "reviewed_at": "2026-10-16T03:08:37+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "closure_scope": "844×390coarse zh/en3/4contracts+actualzh3/en4: Back44/headerstaysvisibleafterlastitemscroll, centerhit/coordinateclose/returntrigger; fulltargetmatrixunknown.",
+      "original_failure_retained": true
     }
   ],
   "next_batches": [
@@ -5104,8 +5531,8 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.10",
-    "sha256": "fa12e1e2c5ccb6408dd28ac3fb92c9c20d6a72dd41b40cf6d17a04a5c08e92f5",
+    "version": "1.12",
+    "sha256": "b2b2ee75563dd84a1fdb3d1e5c18f3f78795a34b6b53a4192a02d34c665f2968",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -5113,14 +5540,14 @@
       "motion_families": 26,
       "world_decorative_families": 18,
       "control_families": 265,
-      "stable_control_selectors": 358,
+      "stable_control_selectors": 359,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 46,
+      "partial_state_evidence_families": 47,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 229,
-        "partial-state-evidence": 46,
+        "source-only": 228,
+        "partial-state-evidence": 47,
         "measured-observation-only": 9,
         "rendered-baseline": 25
       },
@@ -5128,12 +5555,12 @@
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 55,
+      "families_with_state_evidence": 56,
       "accepted_whole_families": 0
     },
-    "imported_at": "2026-10-16T02:56:17+08:00",
-    "source_metadata_updated_at": "2026-10-16T02:49:26+08:00",
-    "import_scope": "Inventorycountmetadata; nowhole-familycertification."
+    "imported_at": "2026-10-16T03:14:05+08:00",
+    "source_metadata_updated_at": "2026-10-16T03:12:00+08:00",
+    "import_scope": "Counts and previouslyomittedBackselectorstructuralmapping; olditem/menu passesnotinherited."
   },
   "groups": [
     {
@@ -20063,7 +20490,10 @@
       "journey_queue_ids": [
         "R-20"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E81-CAPACITY-FALLBACK",
+        "CHK-E81-ACTION-TRUTH"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -24149,7 +24579,8 @@
       },
       "known_findings": [
         "UX-023",
-        "UX-024"
+        "UX-024",
+        "UX-032"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -25330,9 +25761,17 @@
         "CHK-E5-DESKTOP-TARGETS",
         "CHK-E51-COARSE-TARGET-FAIL",
         "CHK-E52-CLOSE-HUD",
-        "CHK-SPACE-SHORT-ARRANGE"
+        "CHK-SPACE-SHORT-ARRANGE",
+        "CHK-E8-ORDER-STABILITY-FAIL",
+        "CHK-E81-CAPACITY-FALLBACK",
+        "CHK-E81-TRUE-TILE",
+        "CHK-E81-REPEAT-STABLE",
+        "CHK-E81-ACTION-TRUTH"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-E81-OVERVIEW-D1",
+        "VIS-E81-TILE-D4"
+      ]
     },
     {
       "family_id": "S.WINDOW.DRAG",
@@ -25500,17 +25939,18 @@
     },
     {
       "family_id": "S.WINDOW.OVERVIEWITEM",
-      "title": "窗口概览项",
+      "title": "窗口概览项 / 返回",
       "scope": "control-family",
-      "selector": "[data-overview-id]",
+      "selector": "[data-overview-id], [data-space-overview-close]",
       "selector_type": "css",
       "control_ids": [
-        "S.WINDOW.OVERVIEWITEM.control.fb932e"
+        "S.WINDOW.OVERVIEWITEM.control.fb932e",
+        "S.WINDOW.OVERVIEWITEM.control.e9b894"
       ],
       "routes": [
         "窗口概览"
       ],
-      "task": "聚焦/恢复所选窗口",
+      "task": "在概览选择窗口，或返回触发入口",
       "source": {
         "file": "assets/js/space/desktop.js",
         "line": 287,
@@ -25566,7 +26006,8 @@
         }
       },
       "known_findings": [
-        "UX-024"
+        "UX-024",
+        "UX-033"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -25576,9 +26017,17 @@
         "R-21"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-SPACE-SHORT-ARRANGE"
+        "CHK-SPACE-SHORT-ARRANGE",
+        "CHK-E8-OVERVIEW-BACK-TARGET-FAIL",
+        "CHK-E81-OVERVIEW-NOTES-CONTINUITY",
+        "CHK-E81-BACK-TARGET",
+        "CHK-E81-BACK-RETURN",
+        "CHK-E81-LIST-CHROME"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-E81-OVERVIEW-D1",
+        "VIS-E81-OVERVIEW-D4"
+      ]
     },
     {
       "family_id": "S.SEARCH.QUERY",
@@ -34494,7 +34943,8 @@
         "CHK-SPACE-NOTE-TEXT",
         "CHK-E5-PRIMARY-TYPE",
         "CHK-E5-OPAQUE-PLANE",
-        "CHK-E52-HUD-INTENT"
+        "CHK-E52-HUD-INTENT",
+        "CHK-E81-OVERVIEW-NOTES-CONTINUITY"
       ],
       "expert_visual_assessment_ids": [
         "VIS-SPACE-NOTES-D1",
@@ -34503,7 +34953,8 @@
         "VIS-E5-NOTES-DESKTOP-D4",
         "VIS-E5-NOTES-MOBILE-D4",
         "VIS-E5-NOTES-DARK-D4",
-        "VIS-E52-SHORT-NOTES-D4"
+        "VIS-E52-SHORT-NOTES-D4",
+        "VIS-E81-TILE-D4"
       ]
     },
     {
@@ -63099,7 +63550,10 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E81-CAPACITY-FALLBACK",
+        "CHK-E81-ACTION-TRUTH"
+      ]
     },
     {
       "control_id": "S.MENU.DESKTOP.control.3e5e4b",
@@ -63720,14 +64174,21 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-032"
+      ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-SPACE-PHONE-WINDOW-TARGET",
         "CHK-E5-DESKTOP-TARGETS",
         "CHK-E51-COARSE-TARGET-FAIL",
         "CHK-E52-CLOSE-HUD",
-        "CHK-SPACE-SHORT-ARRANGE"
+        "CHK-SPACE-SHORT-ARRANGE",
+        "CHK-E8-ORDER-STABILITY-FAIL",
+        "CHK-E81-CAPACITY-FALLBACK",
+        "CHK-E81-TRUE-TILE",
+        "CHK-E81-REPEAT-STABLE",
+        "CHK-E81-ACTION-TRUTH"
       ]
     },
     {
@@ -63946,7 +64407,9 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-SPACE-SHORT-ARRANGE"
+        "CHK-SPACE-SHORT-ARRANGE",
+        "CHK-E81-OVERVIEW-NOTES-CONTINUITY",
+        "CHK-E81-LIST-CHROME"
       ]
     },
     {
@@ -67161,7 +67624,8 @@
         "CHK-SPACE-NOTE-TEXT",
         "CHK-E5-PRIMARY-TYPE",
         "CHK-E5-OPAQUE-PLANE",
-        "CHK-E52-HUD-INTENT"
+        "CHK-E52-HUD-INTENT",
+        "CHK-E81-OVERVIEW-NOTES-CONTINUITY"
       ]
     },
     {
@@ -78391,6 +78855,96 @@
         "sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba"
       },
       "task": "从真实题目/摘要直接阅读对应文章"
+    },
+    {
+      "control_id": "S.WINDOW.OVERVIEWITEM.control.e9b894",
+      "family_id": "S.WINDOW.OVERVIEWITEM",
+      "selector": "[data-space-overview-close]",
+      "instance_policy": "窗口概览dialog的既存Back/返回按钮；补漏非新增功能",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "窗口及标题/控件可见"
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "窗口控制图标反馈待实测"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "活动窗口/focus ring/焦点恢复待实测"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "聚焦/z-index/最小化/最大化状态来自 state"
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "无窗口或移动端不支持的动作需要明确处理"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "首次 app 内容可有实际异步状态"
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "app 自身错误不应使窗口管理失效"
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "桌面空白时 Dock/所有应用可继续"
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [
+        "UX-033"
+      ],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E8-OVERVIEW-BACK-TARGET-FAIL",
+        "CHK-E81-BACK-TARGET",
+        "CHK-E81-BACK-RETURN",
+        "CHK-E81-LIST-CHROME"
+      ],
+      "source": {
+        "file": "layouts/partials/space/desktop.html",
+        "line": 87,
+        "symbol": "dialog.space-overview > header button[data-space-overview-close]",
+        "sha256": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21"
+      },
+      "event_source": {
+        "file": "assets/js/space/desktop.js",
+        "line": 322,
+        "symbol": "overview click → closeDialog(overview)"
+      },
+      "task": "关闭概览并返回触发窗口控件"
     }
   ],
   "specific_observations": [
@@ -78518,9 +79072,10 @@
       ],
       "source": "assets/js/space/state.mjs:65; assets/js/space/desktop.js:159",
       "proposal": "用当前窗口数、可用矩形和最小窗口尺寸判断能否真并排；放不下时复用现有overview。fallback的可见名称/aria-label/terminal结果应明确“查看所有窗口”，只有实际平铺才称“并排”。保持原窗口DOM、笔记、原rect和最大化/恢复意图；避免降低正文高度只为塞齐网格。",
-      "status": "bounded_followup_after_E6",
+      "status": "closed_for_named_E81_capacity_overview_and_stable_tiling;fullmatrixunknown",
       "evidence_type": "recordedbrowserandcurrentstategeometry",
-      "finding_id": "UX-024"
+      "finding_id": "UX-024",
+      "evidence": "E-BATCH-E81-FINAL"
     },
     {
       "id": "DES-E6-ORB",
@@ -81525,11 +82080,283 @@
       ],
       "scope": "E7unchanged12, notrerunE71fixture-only",
       "reason": "Unchanged6about passsafeSSE, close/clear staleisolation, clickedpostsfocus, syntheticbfcache andretry; 6short keepexplicitopen/close/composerreachable."
+    },
+    {
+      "id": "CHK-E8-ORDER-STABILITY-FAIL",
+      "family_ids": [
+        "S.WINDOW.ARRANGE"
+      ],
+      "criterion": "D4.4",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "independent_state_model_behavior_check_not_visual_certification",
+      "status": "confirmed_model_behavior_failure",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8 frozen source review; initialbrowser5pass1fail reported, fullreceiptpending",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+        "recorded_at": "2026-10-15T19:03:18.094623+00:00",
+        "reviewed_at": "2026-10-16T03:06:33+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-E8-SOURCE-ORDER-FAIL"
+      ],
+      "scope": "1440×900 fourwindowpurestate arrange→focusnotes→arrange; nofullvisualscore.",
+      "reason": "重复整理把正常focus变化转成三窗换位，需重新寻找窗口；可完成但有明确空间定位摩擦。",
+      "finding_id": "UX-032"
+    },
+    {
+      "id": "CHK-E8-OVERVIEW-BACK-TARGET-FAIL",
+      "family_ids": [
+        "S.WINDOW.OVERVIEWITEM"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "recorded_actual_project_target_geometry_failure",
+      "status": "confirmed_target_failure_functionalclickpasses",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8 historical production actualthreejourneys before E81",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+        "reviewed_at": "2026-10-16T03:08:37+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-E8-ACTUAL-PARTIAL"
+      ],
+      "scope": "844×390coarse zh/en light/reduceBackonly; absentfrominventorycontrolmappingpending.",
+      "reason": "Back17.5highdespitewidth≥44; actualcenterhitandclose/focuswork. Project44importantmobileactiontargetfails, noWCAGblanketclaim.",
+      "finding_id": "UX-033",
+      "control_ids": [
+        "S.WINDOW.OVERVIEWITEM.control.e9b894"
+      ]
+    },
+    {
+      "id": "CHK-E81-CAPACITY-FALLBACK",
+      "family_ids": [
+        "S.WINDOW.ARRANGE",
+        "S.MENU.ARRANGE"
+      ],
+      "control_ids": [
+        "S.WINDOW.ARRANGE.control.057daf"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "844coarse3/4 zh/encontract+actualzh3/en4: insufficientcapacityopensnamedoverview andretainsallstoredrect/maximize/state; doesnotclampundersizedtiles."
+    },
+    {
+      "id": "CHK-E81-OVERVIEW-NOTES-CONTINUITY",
+      "family_ids": [
+        "S.WINDOW.OVERVIEWITEM",
+        "S.APP.notes.EDITOR"
+      ],
+      "control_ids": [
+        "S.WINDOW.OVERVIEWITEM.control.fb932e"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "Selectwelcome/notes fromoverview; originalnoteeditorDOM,valueandcontinuationretained; everyoverviewitemscrollsintoviewandcenterhits."
+    },
+    {
+      "id": "CHK-E81-BACK-TARGET",
+      "family_ids": [
+        "S.WINDOW.OVERVIEWITEM"
+      ],
+      "control_ids": [
+        "S.WINDOW.OVERVIEWITEM.control.e9b894"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "OnlynewlymappedBack: actualzh60.98×44/en64.66×44 at844coarse; afterlastitemscrollcenterhit andactualcoordinateclickclose pass."
+    },
+    {
+      "id": "CHK-E81-BACK-RETURN",
+      "family_ids": [
+        "S.WINDOW.OVERVIEWITEM"
+      ],
+      "control_ids": [
+        "S.WINDOW.OVERVIEWITEM.control.e9b894"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "ActualBackcoordinateclick andEscapeclosure returninitiatingarrangebutton in namedshortscopes; noolditem/menutrigger evidence transferred."
+    },
+    {
+      "id": "CHK-E81-LIST-CHROME",
+      "family_ids": [
+        "S.WINDOW.OVERVIEWITEM"
+      ],
+      "control_ids": [
+        "S.WINDOW.OVERVIEWITEM.control.e9b894",
+        "S.WINDOW.OVERVIEWITEM.control.fb932e"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "Fourcoarsecontracts scrollallitems/lastrow, internalListscrollTop>0 for4items, Backstaysinsidedialog44/hit; actualEnglishlastrowimagekeepsheader/Back."
+    },
+    {
+      "id": "CHK-E81-TRUE-TILE",
+      "family_ids": [
+        "S.WINDOW.ARRANGE"
+      ],
+      "control_ids": [
+        "S.WINDOW.ARRANGE.control.057daf"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "1440×9002/4contractstruecapacitytiles min320×260 inusablearea+gap4, allchromecentershit≥24CSSpx; actual4tile16controlshit."
+    },
+    {
+      "id": "CHK-E81-REPEAT-STABLE",
+      "family_ids": [
+        "S.WINDOW.ARRANGE"
+      ],
+      "control_ids": [
+        "S.WINDOW.ARRANGE.control.057daf"
+      ],
+      "criterion": "D4.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "Preservedbrowseridempotence aftereditnotes+publicexecute; actualsecondbararrange afterfocusnotes leavesid→rectunchanged. Unitalsokeepsz-order/active."
+    },
+    {
+      "id": "CHK-E81-ACTION-TRUTH",
+      "family_ids": [
+        "S.WINDOW.ARRANGE",
+        "S.MENU.ARRANGE"
+      ],
+      "control_ids": [
+        "S.WINDOW.ARRANGE.control.057daf"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E81_contract_and_actual_action",
+      "status": "closed_for_named_E81_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E8.1 final bounded arrangement and overview recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+        "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+        "reviewed_at": "2026-10-16T03:14:05+08:00",
+        "base": "aff16e05b32229baab2da82298e2f14990f955df"
+      },
+      "evidence": [
+        "E-BATCH-E81-FINAL"
+      ],
+      "scope": "844×390coarse zh/en×3/4windows;1440×900zh×2/4windows; actualthree specifiedjourneys; positivefragmentnotfullscore.",
+      "reason": "Shortbarlabel/title/haspopup saysWindowoverview; menuduplicatetilehidden+arrowsskiphole; terminalreportsactualoverview, publicexecute remains true. Normaldesktoplabelarrange andtrue tile. Exactnamedcontracts only."
     }
   ],
-  "latest_validated_checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
-  "preview_scope": "E7productionequivalenttoE71fixture; namedtransport/recoveryandshortcontinuityreceiptsaccepted. Fullsite/controlmatrixnull.",
-  "latest_reviewed_artifact": "E-BATCH-E71-FINAL",
+  "latest_validated_checkpoint": "aff16e05b32229baab2da82298e2f14990f955df",
+  "preview_scope": "E81namedcapacity/overview/Back44/repeatstability verified; fullcontrol/appcontentmatrixnull.",
+  "latest_reviewed_artifact": "E-BATCH-E81-FINAL",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -81878,7 +82705,7 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
   "anchor_intent_review": {
     "as_of": {
       "phase": "478 preview native anchor and actual right TOC scoped probes",
@@ -81923,6 +82750,59 @@
       "OSIME andvirtualkeyboard unverified",
       "Wheel-away error branch notseparatelyreproduced",
       "Fullhover/focus/zoom/locale/theme/controlmatrix incomplete"
+    ],
+    "verified_score": null
+  },
+  "e8_source_review": {
+    "as_of": {
+      "phase": "E8 frozen source review; initialbrowser5pass1fail reported, fullreceiptpending",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e8-source.json",
+      "recorded_at": "2026-10-15T19:03:18.094623+00:00",
+      "reviewed_at": "2026-10-16T03:06:33+08:00",
+      "base": "aff16e05b32229baab2da82298e2f14990f955df"
+    },
+    "new_P0_P1_findings": [],
+    "confirmed_P2": [
+      "UX-032",
+      "UX-033"
+    ],
+    "reviewed_content": [
+      "Realviewport usedforcapacity; mobilevirtual10000stateViewportnotusedforplanner.",
+      "Rawcell320×260 checkedbeforefitRect; gap4+chrome100+edges8/top12/bottom8 preventminimumclampoverlap.",
+      "Overviewfallbackreturnsoriginalstate; arrangeWindowsdoesnotwritegeometrywheninsufficientcapacity.",
+      "SamewindowDOM retained; visiblemenuitems filteredforarrow/Home/End; label/title/haspopup/terminalresultsreflectactualplan.",
+      "Publicexecute(arrange)stillreturnsbooleantrue; fallbackdeduplicatesmenuoverview."
+    ],
+    "remaining": [
+      "Repeatedarrangemuststable-sortexistinggeometry",
+      "ActualcoarseOverviewBacktargetsizepending",
+      "NoUX024closureuntilboundedbrowser/actualreceiptsreviewed"
+    ],
+    "verified_score": null,
+    "actual_receipt": "E-E8-ACTUAL-PARTIAL",
+    "status": "historicalE8initial5/6+3actualjourneysreviewed;E81pending"
+  },
+  "e81_source_review": {
+    "as_of": {
+      "phase": "E8.1 final bounded arrangement and overview recovery",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e81-source.json",
+      "recorded_at": "2026-10-15T19:09:05.674309+00:00",
+      "reviewed_at": "2026-10-16T03:14:05+08:00",
+      "base": "aff16e05b32229baab2da82298e2f14990f955df"
+    },
+    "status": "fivesourcehash_and_QA_matching_boundedreceipts_verified",
+    "new_P0_P1_findings": [],
+    "closed_findings": [
+      "UX-024",
+      "UX-032",
+      "UX-033"
+    ],
+    "remaining": [
+      "Named scopes only, simulatedcoarse/viewport; notphysicalphone/OSkeyboard/Safari/200%zoom/alllocale/themematrix.",
+      "Zero/one/minimized/exactcellboundary capacity paths haveNode modelcoverage, notnewrealbrowserjourneys.",
+      "Noallappbodytype/targets/contentcertification; UX028/029remain.",
+      "OldE8tile/overviewimages remain failure/history and cannotcertifyE81.",
+      "Closed dialogdisplayguard is[open]-onlysourceplusactualclosehiddenchecks; notallmodalruntimecertification."
     ],
     "verified_score": null
   }
