@@ -1,0 +1,20 @@
+
+Running 13 tests using 1 worker
+
+(node:71972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (638ms)
+  ✓   2 tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (345ms)
+  ✓   3 tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (406ms)
+  ✓   4 tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (398ms)
+  ✓   5 tests/e2e/search-index-contracts.spec.ts:79:80 › a late fetch-failure cannot overwrite the newer successful index (624ms)
+  ✓   6 tests/e2e/search-index-contracts.spec.ts:79:80 › a late json-failure cannot overwrite the newer successful index (336ms)
+  ✓   7 tests/e2e/search-index-contracts.spec.ts:79:80 › a late json-success cannot overwrite the newer successful index (346ms)
+  ✓   8 tests/e2e/search-index-contracts.spec.ts:90:52 › the 15000ms total index deadline also releases a non-cooperating headers stage (410ms)
+  ✓   9 tests/e2e/search-index-contracts.spec.ts:90:52 › the 15000ms total index deadline also releases a non-cooperating json stage (365ms)
+  ✓  10 tests/e2e/search-index-contracts.spec.ts:107:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner (325ms)
+  ✓  11 tests/e2e/search-index-contracts.spec.ts:116:5 › pagehide and pageshow preserve a completed AI conversation, its draft and the next follow-up context (444ms)
+  ✓  12 tests/e2e/search-index-contracts.spec.ts:133:39 › Enter within the debounce opens only the current matching article (379ms)
+  ✓  13 tests/e2e/search-index-contracts.spec.ts:133:39 › Enter within the debounce opens only the current full-search query (382ms)
+
+  13 passed (6.2s)

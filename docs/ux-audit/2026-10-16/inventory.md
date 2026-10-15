@@ -1738,3 +1738,37 @@ E9a与a1各4源hash分别冻结。initial **0过/6失败**均为无demo时预期
 依据：[E10 source](evidence/batch-e10-source.json)、[E10a source](evidence/batch-e10a-source.json)、[17合同](evidence/batch-e10a-contracts.log)、[正常动作](evidence/batch-e10a-actions.json)、[恢复](evidence/batch-e10a-recovery.json)、[无clock图像状态](evidence/batch-e10a-image-state.json)；全局四负基线见JSON `global-search-footnote-baseline-import`。本Agent查看搜索pending、脚注文末、E10a无clockpending、短横屏error四张；独立review查看E10a17主图并复算四对比scope，**UX018/UX043只在命名范围闭**，无新增P0/P1。
 
 累计 **295状态 / 63族局部证据**；保持 **309族 / 366selector entries / 57journeys / 18roadmap**。分类62 partial-state+1 measured，完整族认证0、完整分数null。只写两inventory，未启动browser/构建/测试，现停止写入供checkpoint。
+
+
+## v1.19 UX044：文章1200断点有界负基线
+
+导入 **2026-10-16T05:11:52+08:00**；[baseline](evidence/article-resize-baseline.json)/[log](evidence/article-resize-baseline.log)/[probe](probe-article-resize.browser.mjs)的7源SHA逐项匹配immutable `e5fafdc2` Git blob与当前，和未构建E11搜索WIP分开。
+
+`/zh/engineering/posts/use-go-tools-dlv/`、Chromium、zh/reduce、1199×900→1200×900：compact AI原textarea持未发送合成draft。跨断点sheet inert、overflow解锁，**focusBODY、desktopAI未选且空；下一真实Tab使scroll500→26055落推荐链接**。明确点desktopAI后仍是独立空textarea。原compact DOM/value始终保留，父手动回1199/scroll500并等FAB可见再实际打开、2帧+300ms后原草稿可见；**不是草稿删除或反向自动交接通过**。
+
+只新增 **4状态片段**：FAB`671080`手动重开观察、mobileAI tab`233f10`观察、compact`001165`/desktop`4748de`值对照、compact focus失败（desktop只support）。4正式图与早期return瞬间frame诊断分开；本Agent看1200与settled return两图，未把瞬间blank判稳定缺陷。initial probe在跳到footer后点击隐藏FAB超时仍保留，不能另报FAB生产故障。UX044已由独立review复核7SHA/4主图，确认为命名范围P2开放；FAB/mobiletabs仅流程上下文，续写缺口属于两input交接。完整Tab/OS缩放/其他viewport继续未知。
+
+E11真实`#search-index-retry`已在WIP源码出现，预计算`G.SEARCH.RETRY.control.b68b79`仅放**sourceplanned registry**，未注册/不增加control计数，等待freeze+finalactual；不继承原AI retry`788d65`。
+
+累计 **299状态 / 66族局部证据**（65partial+1measured），保持 **309族 / 366selector entries / 57journeys / 18roadmap**。完整族0、完整分数null；仅改两inventory文件，未启动browser/构建/测试，现停写供checkpoint。
+
+
+## v1.20 E11b：索引生命周期、当前意图与独立Retry
+
+导入 **2026-10-16T05:31:50+08:00**；[final manifest](evidence/batch-e11-source.json)4源/QA/2父runner/suppQA均匹配当前。新`#search-index-retry`正式登记 **`G.SEARCH.RETRY.control.b68b79`**，与AIretry`788d65`分目标/分状态，不继承AI行为；原sourceplanned保留历史并指向本次登记。309族不变，**366→367selector entries**。
+
+[15新合同](evidence/batch-e11-contracts.log)6.5s与[2旧专项](evidence/batch-e11-regression.log)2.8s分开，不能说17新合同。[7actualcontext/15主图](evidence/batch-e11-actions.json)为4真实local index中英390/1440交叉光暗/normal-reduce、2本地503恢复、1actualpending+virtualdeadline；各scope/method/图片只共享引用在JSON `e11-index-state-import`。
+
+| 片段 | 实证与范围 | 限制 |
+| --- | --- | --- |
+| UX039 | loading/searching/ready/true empty/error/timeout区分；两actual503→真实原坐标Retry→GET2成功，缓存关开不新增GET；actual14999/15000与合同headers/JSON总deadline | exact15s为虚拟clock，不是实际壁钟等待；局部query恢复不授AIretry |
+| UX040 | 旧fetch503/JSONreject/JSONsuccess不能覆写新owner10结果/query/focus | 三迟到variant来自受控合同，不伪称7actual含所有真实传输 |
+| UX041 | 四actual新无匹配query立即清旧结果/currentFullHref，150ms暂停窗口真实Enter只捕获当前Full Search；合同另验matchingEnter与合成IME键码 | 导航本地capture/abort，无canonicalhost访问；不是OS IME/Full link目标页认证 |
+| UX045 | 原13pass后actual第二原中心click焦点BODY失败仍存；父/独立坐标诊断y346.375→322.828125；5行status高度修复后390zh/1440en error→pending原y精确不变，44目标/焦点/GET2 | failure log直接证明BODY，位移数来自父/独立诊断，不假称raw JSON。新增2合同只status字号200%，不是pagezoom |
+| 焦点意图 | 手机Retry成功回input；桌面真实ShiftTab到Full Search后完成不抢link焦点 | 只各自命名路径，不授完整键盘矩阵 |
+
+**生命周期与Back分开：** C11/C12合成`PageTransitionEvent persisted:true`只证明原query、完成AI/原followupDOM/草稿/context受控保留；[真实Back](evidence/batch-e11-back.json)及2图`persisted=false`、document token改变，浏览器给`no-store`相关原因。**BFCache未命中，恢复仍unknown**，不能套用合成合同为真实Back通过，也不新增数据持久化缺陷。
+
+脚注[fine诊断](evidence/footnote-focus-baseline.json)另记qualified component：programmatic marker/citation focus后250ms隐藏→BODY；实际自然Tab到下个marker保持正常，不称自然键盘进入citation失败或全脚注不可达。UX042与文章UX044继续open。初probe在被abort的chrome错误页触发localStorage限制仅runner修正，与真实UX045位移失败分开保留。
+
+本轮 **14新state**（含1旧UX045负记录）/1新control，累计 **313状态 / 69族局部证据**（68partial+1measured）；保持 **309族 / 367selectors / 57journeys / 18roadmap**。独立review已闭UX039/040/041/045命名范围，无新增P0/P1，所有旧负记录不改。本Agent看4主图，未启动browser/构建/测试；完整族认证0/full分null，现停写供checkpoint。

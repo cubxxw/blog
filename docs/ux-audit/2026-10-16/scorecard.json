@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T05:01:48+08:00",
+  "updated_at": "2026-10-16T05:33:50+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,26 +353,26 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.18",
+    "inventory_version": "1.20",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
       "world-decoration": 18,
       "motion": 26
     },
-    "selector_level_controls": 366,
+    "selector_level_controls": 367,
     "family_ids_covered": 309,
     "certified_96_plus_controls": 0,
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/366selector entries（含support-root/region），295状态记录/63局部证据族，0完整认证。",
-    "families_with_recorded_contract_fragments": 70,
-    "scoped_check_assessments": 175,
-    "expert_visual_assessments": 86,
-    "inventory_families_with_partial_state_evidence": 63,
+    "reason": "309族/367selector entries（含support-root/region），313状态记录/69局部证据族，0完整认证。",
+    "families_with_recorded_contract_fragments": 73,
+    "scoped_check_assessments": 188,
+    "expert_visual_assessments": 90,
+    "inventory_families_with_partial_state_evidence": 69,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 295
+    "inventory_state_evidence_records": 313
   },
   "evidence": [
     {
@@ -2473,6 +2473,140 @@
         "No physical QR scan,livecontact/model/backend,AT announcements,Safari,zoom,FPS or whole-family certification."
       ],
       "new_P0_P1_findings": []
+    },
+    {
+      "id": "E-ARTICLE-RESIZE-BASELINE",
+      "kind": "recorded_browser_negative_baseline",
+      "path": "docs/ux-audit/2026-10-16/evidence/article-resize-baseline.json",
+      "script": "docs/ux-audit/2026-10-16/probe-article-resize.browser.mjs",
+      "as_of": {
+        "phase": "Independent article resize negative baseline; disjoint from E11 search WIP",
+        "preview_checkpoint": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+        "reviewed_at": "2026-10-16T05:11:41+08:00",
+        "route": "/zh/engineering/posts/use-go-tools-dlv/",
+        "viewport_transition": "1199x900 → 1200x900",
+        "locale": "zh",
+        "motion": "reduce"
+      },
+      "source_identity": "Seven sources in receipt independently match current files and immutable e5fafdc2 blobs; E11 search WIP not built.",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/article-resize-before-1199-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/article-resize-after-1200-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/article-resize-desktop-ai-1200-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/article-resize-return-1199-zh.png"
+      ],
+      "initial_log": "docs/ux-audit/2026-10-16/evidence/article-resize-initial.log",
+      "initial_image": "docs/ux-audit/2026-10-16/evidence/article-resize-return-initial-frame-1199-zh.png",
+      "scope": "One local Chromium zh/reduce unsent synthetic draft; viewport resize, actual Tab, no AI submit/network. Four settled primary images read.",
+      "limits": [
+        "Draft remains in original compact node/value. No deletion/data-loss claim.",
+        "Returning1199 involved manually scrolling to500 then reopening visible FAB; return image now twoframes+300ms settled.",
+        "Initial return click timed out at document bottom because FAB intentionally hidden there; preserved as probe precondition, not product failure.",
+        "No reverse active-edit transition, simultaneous different drafts, selection/IME, busy request, OS scaling, physical device, AT or browser matrix tested."
+      ]
+    },
+    {
+      "id": "E-BATCH-E11B",
+      "kind": "frozen_source_contracts_and_recorded_actuals",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e11-actions.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/batch-e11-actions.log",
+      "script": "docs/ux-audit/2026-10-16/batch-e11-actions.browser.mjs",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+      "all_manifest_hashes_matched": true,
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-timeout-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-back-before-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-back-after-1440-zh.png"
+      ],
+      "contract_log": "docs/ux-audit/2026-10-16/evidence/batch-e11-contracts.log",
+      "contract_result": {
+        "new_targeted_cases": 15,
+        "passed": 15,
+        "duration": "6.5s",
+        "existing_keyboard_regressions": 2,
+        "existing_duration": "2.8s",
+        "status_text_200_percent_is_not_fullpage_zoom": true
+      },
+      "regression_log": "docs/ux-audit/2026-10-16/evidence/batch-e11-regression.log",
+      "back_path": "docs/ux-audit/2026-10-16/evidence/batch-e11-back.json",
+      "back_log": "docs/ux-audit/2026-10-16/evidence/batch-e11-back.log",
+      "back_script": "docs/ux-audit/2026-10-16/batch-e11-back.browser.mjs",
+      "back_result": "Actual local navigate/Back did not use BFCache: persisted=false, changed document token; no-store/no-store-with-js-network/masked. DOM restoration unverified, not hard-reload persistence failure.",
+      "supporting_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-hugo.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11b-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11b-syntax.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11b-diff.log"
+      ],
+      "retained_initial_refs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-source-initial.json",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-source-pre-layout-fix.json",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-initial-contracts.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-actions-initial.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-actions-layout-failure.log"
+      ],
+      "scope": "7main Chromium contexts/15PNG plus1Back diagnostic/2PNG, all17 viewed. Four real local indexes/current-query navigation, two controlled503/recovery/cache, one routed pending virtualdeadline. No paid AI/public navigation.",
+      "limits": [
+        "15s14999/15000 and150ms Enter windows are paused-clock boundaries; not wall latency.",
+        "Noncooperating fetch/json and late owner cases are controlled contracts, not a production outage.",
+        "AI completed conversation/followup DOM/draft/context retained by synthetic pagehide/pageshow contract only; no real BFCache hit.",
+        "IME flags/keyCode229 synthetic, not OS composition. Status type200% is not whole-page zoom.",
+        "No Safari,AT,physical device,completecontrast,allstates/FPS or whole-family certification."
+      ],
+      "new_P0_P1_findings": []
+    },
+    {
+      "id": "E-SEARCH-RETRY-MOVE-BASELINE",
+      "kind": "recorded_browser_negative_baseline_before_E11b",
+      "path": "docs/ux-audit/2026-10-16/evidence/search-retry-layout-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/search-retry-layout-baseline.log",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e11-source-pre-layout-fix.json",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/search-retry-layout-after-first-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/search-retry-layout-after-second-390-zh.png"
+      ],
+      "scope": "390zh/reduce: Retry error y346.375→pending322.828125; originalpoint nowDIV, second trueclick focusBODY,GET2. Old13contracts had passed; retained actual failure motivated stronger geometry assertions.",
+      "limits": "Only this controlled coordinate/focus flow. Dedup worked; not repeated request,insufficient44target or blanket WCAG failure.",
+      "superseded_in_named_scope_by": "E-BATCH-E11B"
+    },
+    {
+      "id": "E-FOOTNOTE-FOCUS-COMPONENT",
+      "kind": "qualified_component_focus_diagnostic_not_natural_entry",
+      "path": "docs/ux-audit/2026-10-16/evidence/footnote-focus-baseline.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/footnote-focus-baseline.log",
+      "script": "docs/ux-audit/2026-10-16/probe-footnote-focus.browser.mjs",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/footnote-focus-marker-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/footnote-focus-inside-initial-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/footnote-focus-inside-hidden-1440-zh.png"
+      ],
+      "scope": "1440zh/fine/reduce,three footnote sources equal e5/current; programmatic marker/citation focus component setup. ImmediateJSON insidevisible; real250ms hidden/aria-hidden/BODY. NaturalTab to nextmarker remainsvisible, not failure.",
+      "limits": [
+        "No natural keyboard entry into citation proven and no citation navigation.",
+        "inside-initial PNG captured after180ms and alreadyhidden; immediateJSON alone proves initialvisible.",
+        "Qualified focus lifecycle candidate; no new numbered finding/hardgate/fullfeatureinaccessibility."
+      ]
     }
   ],
   "historical_visual_assessments": [
@@ -5353,6 +5487,185 @@
       ],
       "scope": "NamedstableE10a images; clock0 initialpaint excluded from visual certification.",
       "reason": "无clock404-390图Retry底约455px、账号标题约580px，约120px空区将错误恢复和账号替代拆开；固定poster高度可保留，仅error态将反馈组靠近poster底部/账号区即可。14px状态实际清楚且对比实测通过，不保留无具体依据的字体扣分。"
+    },
+    {
+      "assessment_id": "VIS-E11B-NORMAL-D1",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-timeout-390-en.png"
+      ],
+      "scope": "ViewedE11b namednormal/recovery images; no whole-family/dynamic/AT/physicaldevice matrix.",
+      "reason": "Fourresult/freshintent pairs: query/summary/destination hierarchy clear, staleoptions absent;scope static only."
+    },
+    {
+      "assessment_id": "VIS-E11B-NORMAL-D4",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-timeout-390-en.png"
+      ],
+      "scope": "ViewedE11b namednormal/recovery images; no whole-family/dynamic/AT/physicaldevice matrix.",
+      "reason": "Actualresultspalette usesoneplane/rowrules/readabletitles, no repeatedeyebrow or nestingfriction observed. Italics canbecomparedlater but no currenthardvisualdeduction;hoverhighlight afterretry not mistakenfornormaldefect."
+    },
+    {
+      "assessment_id": "VIS-E11B-RECOVERY-D1",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RETRY"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        90,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-timeout-390-en.png"
+      ],
+      "scope": "ViewedE11b namednormal/recovery images; no whole-family/dynamic/AT/physicaldevice matrix.",
+      "reason": "390zherror/1440enerror use“重新加载索引/Reload index”, an implementationnoun for task“retrysearch”. Concretecopy gap only;futureplainretrylabel,notAT/BFCacheunknown deduction."
+    },
+    {
+      "assessment_id": "VIS-E11B-RECOVERY-D4",
+      "family_ids": [
+        "G.SEARCH.RETRY"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-390-zh.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-error-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-1440-en.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e11-timeout-390-en.png"
+      ],
+      "scope": "ViewedE11b namednormal/recovery images; no whole-family/dynamic/AT/physicaldevice matrix.",
+      "reason": "390zherror lastline isonly“留。”;balancedconciseerror copy would removeorphan withoutshrinkingtype or movingRetry. Targetstable/recoverygroup legible;no unknowncontrast usedtodockscore."
     }
   ],
   "findings": [
@@ -7404,11 +7717,11 @@
       "severity": "P2",
       "title": "搜索索引挂起时长期显示0结果，缺少可见加载与有界恢复",
       "baseline_reason": "390×844中文reduce，受控挂起index两次虚拟60s后aria-busy仍true且显示找到0条；Escape可返回，重开触发第二GET。不是实测公网故障，也不能说无退出路径。",
-      "recommendation": "为当前索引请求增加明确loading及有界fetch/JSON期限，失败保留query并提供重试；不能用0结果表达尚未完成的索引加载。",
-      "status": "confirmed_named_search_baseline_open_for_E11",
+      "recommendation": "Preserve owned request/query intent guards and verify new scopes with their own evidence; current named failure closed.",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E11_candidate",
+      "batch": "E11b_final",
       "dimensions": [
         "D3"
       ],
@@ -7424,22 +7737,25 @@
         }
       ],
       "browser_evidence": [
-        "E-SEARCH-INDEX-PENDING-BASELINE"
+        "E-SEARCH-INDEX-PENDING-BASELINE",
+        "E-BATCH-E11B"
       ],
       "as_of": {
-        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
-        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
-        "reviewed_at": "2026-10-16T04:30:01+08:00",
-        "locale": "zh",
-        "motion": "reduce",
-        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
       },
       "verified_score": null,
       "confidence": "high",
       "scope_limits": [
         "Controlled named scope only, not an E10 regression or full-family result.",
         "No P0/P1 or automatic hard-gate cap inferred. Pending palette remains closable; Home/End not classified as failure."
-      ]
+      ],
+      "closed_scope": "Truthful loading/searching/realempty/error; owned15s total fetch+json deadline, query retained and localRetry. Fourlanguage/size contract states and namedactuals.",
+      "remaining_scope": "Named Chromium/controller scopes only;physicalIME,AT,Safari,wholepagezoom,BFCache restoration and complete family matrices unknown.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-040",
@@ -7455,11 +7771,11 @@
       "severity": "P2",
       "title": "关闭重开后的旧索引失败会清空新会话已成功结果",
       "baseline_reason": "1440×900中文reduce：首GET挂起，Escape重开后第二真实本地index提供Kubernetes10结果；旧GET迟到503将结果变0并显示索引错误，编辑空格后用已存fuse恢复10。",
-      "recommendation": "索引请求必须有当前owner/generation，关闭/pagehide失效并abort；每个await、catch/finally只允许owner更新busy/results/error，旧响应不得覆盖新会话。",
-      "status": "confirmed_named_search_baseline_open_for_E11",
+      "recommendation": "Preserve owned request/query intent guards and verify new scopes with their own evidence; current named failure closed.",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E11_candidate",
+      "batch": "E11b_final",
       "dimensions": [
         "D3"
       ],
@@ -7475,22 +7791,25 @@
         }
       ],
       "browser_evidence": [
-        "E-SEARCH-INDEX-RACE-BASELINE"
+        "E-SEARCH-INDEX-RACE-BASELINE",
+        "E-BATCH-E11B"
       ],
       "as_of": {
-        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
-        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
-        "reviewed_at": "2026-10-16T04:30:01+08:00",
-        "locale": "zh",
-        "motion": "reduce",
-        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
       },
       "verified_score": null,
       "confidence": "high",
       "scope_limits": [
         "Controlled named scope only, not an E10 regression or full-family result.",
         "No P0/P1 or automatic hard-gate cap inferred. Pending palette remains closable; Home/End not classified as failure."
-      ]
+      ],
+      "closed_scope": "Three deliberatelylate old fetch503/jsonreject/jsonsuccess contracts cannot overwrite new successful results;close/pagehide owner cancellation.",
+      "remaining_scope": "Named Chromium/controller scopes only;physicalIME,AT,Safari,wholepagezoom,BFCache restoration and complete family matrices unknown.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-041",
@@ -7506,11 +7825,11 @@
       "severity": "P2",
       "title": "修改查询后立即Enter会打开上一查询的首篇结果",
       "baseline_reason": "1440×900中文reduce真实Kubernetes10结果后，虚拟clock停在150ms debounce内；填入无匹配新query后实际Enter，捕获导航仍是旧Kubernetes首篇URL。输入已新值，旧10结果与旧fullHref尚未更新；请求已本地abort。",
-      "recommendation": "input时立即使旧结果/active descendant失效并同步fullHref；plain Enter先对当前query刷新或验证renderedQuery归属，只能激活当前query的候选/完整搜索。",
-      "status": "confirmed_named_search_baseline_open_for_E11",
+      "recommendation": "Preserve owned request/query intent guards and verify new scopes with their own evidence; current named failure closed.",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E11_candidate",
+      "batch": "E11b_final",
       "dimensions": [
         "D3"
       ],
@@ -7526,22 +7845,25 @@
         }
       ],
       "browser_evidence": [
-        "E-SEARCH-QUERY-INTENT-BASELINE"
+        "E-SEARCH-QUERY-INTENT-BASELINE",
+        "E-BATCH-E11B"
       ],
       "as_of": {
-        "phase": "Pre-E11 search controlled negative baseline, disjoint from E10 Travel WIP",
-        "preview_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
-        "reviewed_at": "2026-10-16T04:30:01+08:00",
-        "locale": "zh",
-        "motion": "reduce",
-        "source_hash_context": "docs/ux-audit/2026-10-16/evidence/search-index-baseline.json"
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
       },
       "verified_score": null,
       "confidence": "high",
       "scope_limits": [
         "Controlled named scope only, not an E10 regression or full-family result.",
         "No P0/P1 or automatic hard-gate cap inferred. Pending palette remains closable; Home/End not classified as failure."
-      ]
+      ],
+      "closed_scope": "Four actual local-index currentquery Enter navigation captures plus controlledcurrent matching/fullSearch cases; oldoptions cleared synchronously, currentfullHref, syntheticIMEguard.",
+      "remaining_scope": "Named Chromium/controller scopes only;physicalIME,AT,Safari,wholepagezoom,BFCache restoration and complete family matrices unknown.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-042",
@@ -7594,7 +7916,12 @@
       "scope_limits": [
         "One existing article/marker, not all footnotes/device failure.",
         "Incorrect old inventory child selector is not assigned this negative tap evidence."
-      ]
+      ],
+      "qualified_focus_candidate": {
+        "evidence": "E-FOOTNOTE-FOCUS-COMPONENT",
+        "status": "reproduced_programmatic_component_focus_lifecycle_natural_entry_unverified",
+        "proposal": "Protect focus inside preview; timer/relatedTarget ownership; Escape return without re-show. Interactive semantics/keyboardentry remain bounded follow-up, not forcedmodal/TOC rewrite."
+      }
     },
     {
       "id": "UX-043",
@@ -7649,6 +7976,116 @@
       "original_failure_retained": true,
       "closed_scope": "Current17contracts +main4Chinesecontexts/eightportraits +recovery3 +naturalpending4041. Named focus/reopen/fullposter/15s/retry/focusownership only.",
       "remaining_scope": "Mid-reveal scroll,AT,Safari,zoom,physicalscan and other untested states remain unknown. No whole-family pass."
+    },
+    {
+      "id": "UX-044",
+      "family_prefix": "A.AI.INPUT",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.TOC.MOBILETABS",
+        "A.TOC.FAB"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.001165",
+        "A.AI.INPUT.control.4748de",
+        "A.TOC.MOBILETABS.control.233f10",
+        "A.TOC.FAB.control.671080"
+      ],
+      "severity": "P2",
+      "title": "文章AI跨1200断点未交接续写目标与焦点，下一Tab跳到文末",
+      "baseline_reason": "1199x900 compactAI编辑未发送草稿→1200x900：sheet正确inert/关闭并解锁，原compact DOM/value保留；desktop仍目录选中/AI输入空，focusBODY。下一真实Tab scroll500→26055落推荐文章；再手动选desktopAI仍空。返回1199手动滚回500并重开，原draft可见，非草稿删除。",
+      "recommendation": "仅当跨断点前焦点/编辑目标属于正在使用的AI面板时，交接可见AI标签、未发送草稿及对应输入焦点，preventScroll并保阅读锚点；目标已有不同草稿时先定义冲突策略，禁止覆盖。用户已离开AI时不强行切AI或抢焦点。",
+      "status": "confirmed_named_article_resize_baseline_open",
+      "baseline_cap": 79,
+      "active_cap": 79,
+      "cap_gate": "G6",
+      "active_cap_scope": "Only named active-AI 1199→1200 task/orientation handoff: target becomesTOC and nextTab leaves reading position. Not loss of stored text or failure of every FAB/tab/input. Whole scores remain null.",
+      "batch": "post_E12_candidate",
+      "dimensions": [
+        "D6",
+        "D2"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-ARTICLE-RESIZE-BASELINE"
+        },
+        {
+          "kind": "source",
+          "path": "static/js/article-bottom-sheet.js",
+          "line": 42
+        },
+        {
+          "kind": "source",
+          "path": "static/js/article-chat.js",
+          "line": 113
+        }
+      ],
+      "browser_evidence": [
+        "E-ARTICLE-RESIZE-BASELINE"
+      ],
+      "verified_score": null,
+      "confidence": "high",
+      "as_of": {
+        "phase": "Independent article resize negative baseline; disjoint from E11 search WIP",
+        "preview_checkpoint": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+        "reviewed_at": "2026-10-16T05:11:41+08:00",
+        "route": "/zh/engineering/posts/use-go-tools-dlv/",
+        "viewport_transition": "1199x900 → 1200x900",
+        "locale": "zh",
+        "motion": "reduce"
+      },
+      "scope_limits": [
+        "One zh/reduce Chromium controlled unsent-draft scope; no submitted history/context/request continuity conclusion.",
+        "BODY focus and actual nextTab jump confirmed; return value preserved. No blank-rendering or draft-deletion finding.",
+        "Current E11 WIP not reviewed or scored."
+      ]
+    },
+    {
+      "id": "UX-045",
+      "family_prefix": "G.SEARCH.RETRY",
+      "family_ids": [
+        "G.SEARCH.RETRY"
+      ],
+      "control_ids": [
+        "G.SEARCH.RETRY.control.b68b79"
+      ],
+      "severity": "P2",
+      "title": "搜索Retry在错误转pending时上移，原坐标再次点击丢失焦点",
+      "baseline_reason": "390zh/reduce error y346.375→pending322.828125，目标上移23.546875；原中心y368.375落新button底366.828125外，命中panel，第二真click focusBODY。GET仍2，原去重正常。",
+      "recommendation": "Measure and retain current wrapped status borderbox during same retry attempt;release ready/empty/idle/newsession. Keep intent-based focus without forcing focus back.",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E11b_final",
+      "dimensions": [
+        "D5",
+        "D2",
+        "D4"
+      ],
+      "browser_evidence": [
+        "E-SEARCH-RETRY-MOVE-BASELINE",
+        "E-BATCH-E11B"
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/js/search-palette.js",
+          "line": 270
+        }
+      ],
+      "verified_score": null,
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "closed_scope": "Fourlanguage/size contracts sameoriginalcenter twoactualclicks;390zhlight/1440endark actual yunchanged/focusowned. Two status-only200% contracts preservewrappedfootprint throughvirtualtimeout and release onclose/reopen.",
+      "remaining_scope": "Not all resize/zoom/virtualkeyboard/browser/hit-area states; no blanketWCAG failure/pass.",
+      "original_failure_retained": true
     }
   ],
   "next_batches": [
@@ -7706,8 +8143,8 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.18",
-    "sha256": "f7a1de8d445fe56814ecbfac64c56ad2b0fcac6505ab2e14e74ab95f4a1eb3e8",
+    "version": "1.20",
+    "sha256": "bf2d8a436793bf7ec3f81d4beb37cbb3975f5b1c028a0fa45d20005860cec72b",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -7715,14 +8152,14 @@
       "motion_families": 26,
       "world_decorative_families": 18,
       "control_families": 265,
-      "stable_control_selectors": 366,
+      "stable_control_selectors": 367,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 62,
+      "partial_state_evidence_families": 68,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 221,
-        "partial-state-evidence": 62,
+        "source-only": 215,
+        "partial-state-evidence": 68,
         "measured-observation-only": 1,
         "rendered-baseline": 25
       },
@@ -7730,13 +8167,13 @@
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 63,
+      "families_with_state_evidence": 69,
       "accepted_whole_families": 0,
-      "state_evidence_records": 295
+      "state_evidence_records": 313
     },
-    "imported_at": "2026-10-16T04:57:07+08:00",
-    "source_metadata_updated_at": "2026-10-16T04:54:05+08:00",
-    "import_scope": "Fournewselectorentries/support-root correction; bindingreferences only. Marker alone ownsUX042 negative; More untested; QRregion notbutton."
+    "imported_at": "2026-10-16T05:33:50+08:00",
+    "source_metadata_updated_at": "2026-10-16T05:31:50+08:00",
+    "import_scope": "14leanE11b bindingrefs;newlocalindexRetry b68b79 distinctfromAI788d65. Fullhref/focus notclick;syntheticfollowup onlyinput,Close escape familyworkflow notbuttonclick."
   },
   "groups": [
     {
@@ -9659,7 +10096,13 @@
       "scoped_check_assessment_ids": [
         "CHK-D1-SEARCH-CLOSE"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E11B.pending-index-close.G.SEARCH.CLOSE.loading"
+        ]
+      }
     },
     {
       "family_id": "G.SEARCH.QUERY",
@@ -9755,13 +10198,27 @@
         "CHK-D2B-SEARCH-FOCUS",
         "CHK-SEARCH-INDEX-PENDING",
         "CHK-SEARCH-INDEX-RACE",
-        "CHK-SEARCH-QUERY-INTENT"
+        "CHK-SEARCH-QUERY-INTENT",
+        "CHK-E11-INDEX-STATUS",
+        "CHK-E11-INDEX-RECOVERY",
+        "CHK-E11-TOTAL-DEADLINE",
+        "CHK-E11-OWNER-ISOLATION",
+        "CHK-E11-CURRENT-INTENT",
+        "CHK-E11-RECOVERY-FOCUS",
+        "CHK-E11-SYNTH-LIFECYCLE",
+        "CHK-E11-KEYBOARD-REGRESSION"
       ],
-      "expert_visual_assessment_ids": [],
+      "expert_visual_assessment_ids": [
+        "VIS-E11B-NORMAL-D1",
+        "VIS-E11B-NORMAL-D4",
+        "VIS-E11B-RECOVERY-D1"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.S39.index-pending.G.SEARCH.QUERY.loading"
+          "EIMPORT.S39.index-pending.G.SEARCH.QUERY.loading",
+          "EIMPORT.E11B.index-lifetime.G.SEARCH.QUERY.loading",
+          "EIMPORT.E11B.index-error-recovery.G.SEARCH.QUERY.error"
         ]
       }
     },
@@ -9847,14 +10304,24 @@
       "scoped_check_assessment_ids": [
         "CHK-SEARCH-INDEX-PENDING",
         "CHK-SEARCH-INDEX-RACE",
-        "CHK-SEARCH-QUERY-INTENT"
+        "CHK-SEARCH-QUERY-INTENT",
+        "CHK-E11-INDEX-STATUS",
+        "CHK-E11-OWNER-ISOLATION",
+        "CHK-E11-CURRENT-INTENT",
+        "CHK-E11-KEYBOARD-REGRESSION"
       ],
-      "expert_visual_assessment_ids": [],
+      "expert_visual_assessment_ids": [
+        "VIS-E11B-NORMAL-D1",
+        "VIS-E11B-NORMAL-D4"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.S40.old-index-overwrite.G.SEARCH.RESULT.error",
-          "EIMPORT.S41.old-query-enter.G.SEARCH.RESULT.active"
+          "EIMPORT.S41.old-query-enter.G.SEARCH.RESULT.active",
+          "EIMPORT.E11B.real-results.G.SEARCH.RESULT.normal",
+          "EIMPORT.E11B.stale-owner-isolation.G.SEARCH.RESULT.error",
+          "EIMPORT.E11B.current-enter.G.SEARCH.RESULT.active"
         ]
       }
     },
@@ -10007,7 +10474,8 @@
         "D-02"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-D1-SEARCH-CLOSE"
+        "CHK-D1-SEARCH-CLOSE",
+        "CHK-E11-SYNTH-LIFECYCLE"
       ],
       "expert_visual_assessment_ids": [],
       "inventory_classification_correction": "Sourceclickstartsrealnetworkrequest;notaria-pressedtoggle. Stopconditionalpending,itsclickstillunverified. Inventoryowner notified."
@@ -10189,7 +10657,7 @@
         "sha256": "c7a4404349875e96fe46e7cd26afdd577742e3db538210815bf8e242b6d76a84"
       },
       "state_profile": "nav",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -10244,8 +10712,18 @@
       "journey_queue_ids": [
         "R-03"
       ],
-      "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E11-CURRENT-INTENT",
+        "CHK-E11-RECOVERY-FOCUS"
+      ],
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E11B.current-query-url.G.SEARCH.FULL.normal",
+          "EIMPORT.E11B.focus-intent.G.SEARCH.FULL.focus"
+        ]
+      }
     },
     {
       "family_id": "G.SEARCH.PAGE",
@@ -14969,7 +15447,7 @@
         "sha256": "dc6b0d12feb95296d9456d6ebfe56d34d142ca83d79ab3cc4de74b0a8e88baf0"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -15017,7 +15495,8 @@
         }
       },
       "known_findings": [
-        "UX-014"
+        "UX-014",
+        "UX-044"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -15028,9 +15507,16 @@
       ],
       "scoped_check_assessment_ids": [
         "CHK-SOURCE-CLOSED-SHEET",
-        "CHK-D2B-SHEET-CLOSED"
+        "CHK-D2B-SHEET-CLOSED",
+        "CHK-ARTICLE-RESIZE-FOCUS-FAIL"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.AR0.open-return-observation.A.TOC.FAB.active"
+        ]
+      }
     },
     {
       "family_id": "A.TOC.MOBILETABS",
@@ -15052,7 +15538,7 @@
         "sha256": "dc6b0d12feb95296d9456d6ebfe56d34d142ca83d79ab3cc4de74b0a8e88baf0"
       },
       "state_profile": "toggle",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -15102,7 +15588,8 @@
       "known_findings": [
         "UX-003",
         "UX-004",
-        "UX-014"
+        "UX-014",
+        "UX-044"
       ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
@@ -15117,9 +15604,16 @@
         "CHK-SOURCE-CLOSED-SHEET",
         "CHK-D2B-TABS-COMPACT",
         "CHK-D2B-PANEL-NAME",
-        "CHK-D2B-SHEET-CLOSED"
+        "CHK-D2B-SHEET-CLOSED",
+        "CHK-ARTICLE-RESIZE-FOCUS-FAIL"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.AR0.selected-ai-observation.A.TOC.MOBILETABS.active"
+        ]
+      }
     },
     {
       "family_id": "A.TOC.SERIES",
@@ -15379,7 +15873,7 @@
         "sha256": "a30181df494f6386b349d327d49a6fa8b650b0d09110d67afeebfbc3dd2af6ca"
       },
       "state_profile": "input",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -15426,7 +15920,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-044"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -15434,8 +15930,18 @@
       "journey_queue_ids": [
         "D-03"
       ],
-      "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-ARTICLE-RESIZE-FOCUS-FAIL",
+        "CHK-ARTICLE-RESIZE-DRAFT-HANDOFF-FAIL"
+      ],
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.AR0.draft-pair-observation.A.AI.INPUT.normal",
+          "EIMPORT.AR0.breakpoint-focus-failure.A.AI.INPUT.focus"
+        ]
+      }
     },
     {
       "family_id": "A.AI.SEND",
@@ -51326,7 +51832,7 @@
         "sha256": "6b2b5353c785dd9967ee3a6f342b07564caed217f8ffa55522ffdf4dd7d86592"
       },
       "state_profile": "async",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -51384,9 +51890,16 @@
         "D-02"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-D2B-SEARCH-FOCUS"
+        "CHK-D2B-SEARCH-FOCUS",
+        "CHK-E11-SYNTH-LIFECYCLE"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E11B.synthetic-page-lifecycle.G.SEARCH.FOLLOWUP.active"
+        ]
+      }
     },
     {
       "family_id": "G.SEARCH.RETRY",
@@ -51395,7 +51908,8 @@
       "selector": ".search-palette__ai-error .ai-retry-btn",
       "selector_type": "css",
       "control_ids": [
-        "G.SEARCH.RETRY.control.788d65"
+        "G.SEARCH.RETRY.control.788d65",
+        "G.SEARCH.RETRY.control.b68b79"
       ],
       "routes": [
         "全站搜索AI失败"
@@ -51408,7 +51922,7 @@
         "sha256": "6b2b5353c785dd9967ee3a6f342b07564caed217f8ffa55522ffdf4dd7d86592"
       },
       "state_profile": "async",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -51455,7 +51969,9 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-045"
+      ],
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
@@ -51463,8 +51979,28 @@
       "journey_queue_ids": [
         "D-02"
       ],
-      "scoped_check_assessment_ids": [],
-      "expert_visual_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E11-INDEX-RECOVERY",
+        "CHK-E11-TOTAL-DEADLINE",
+        "CHK-E11-RETRY-TARGET",
+        "CHK-E11-RETRY-STABILITY",
+        "CHK-E11-RECOVERY-FOCUS",
+        "CHK-E11A-RETRY-MOVE-FAIL"
+      ],
+      "expert_visual_assessment_ids": [
+        "VIS-E11B-RECOVERY-D1",
+        "VIS-E11B-RECOVERY-D4"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E11B.index-target.G.SEARCH.RETRY.normal",
+          "EIMPORT.E11B.index-pending.G.SEARCH.RETRY.loading",
+          "EIMPORT.E11B.index-focus.G.SEARCH.RETRY.focus",
+          "EIMPORT.E11B.index-recover.G.SEARCH.RETRY.active",
+          "EIMPORT.E11B.pre-fix-displacement.G.SEARCH.RETRY.focus"
+        ]
+      }
     },
     {
       "family_id": "G.SEARCH.CONTACT",
@@ -55325,12 +55861,22 @@
         "CHK-D2B-SEARCH-FOCUS",
         "CHK-SEARCH-INDEX-PENDING",
         "CHK-SEARCH-INDEX-RACE",
-        "CHK-SEARCH-QUERY-INTENT"
+        "CHK-SEARCH-QUERY-INTENT",
+        "CHK-E11-INDEX-STATUS",
+        "CHK-E11-INDEX-RECOVERY",
+        "CHK-E11-TOTAL-DEADLINE",
+        "CHK-E11-OWNER-ISOLATION",
+        "CHK-E11-CURRENT-INTENT",
+        "CHK-E11-RECOVERY-FOCUS",
+        "CHK-E11-SYNTH-LIFECYCLE",
+        "CHK-E11-KEYBOARD-REGRESSION"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.S39.index-pending.G.SEARCH.QUERY.loading"
+          "EIMPORT.S39.index-pending.G.SEARCH.QUERY.loading",
+          "EIMPORT.E11B.index-lifetime.G.SEARCH.QUERY.loading",
+          "EIMPORT.E11B.index-error-recovery.G.SEARCH.QUERY.error"
         ]
       }
     },
@@ -55410,13 +55956,20 @@
       "scoped_check_assessment_ids": [
         "CHK-SEARCH-INDEX-PENDING",
         "CHK-SEARCH-INDEX-RACE",
-        "CHK-SEARCH-QUERY-INTENT"
+        "CHK-SEARCH-QUERY-INTENT",
+        "CHK-E11-INDEX-STATUS",
+        "CHK-E11-OWNER-ISOLATION",
+        "CHK-E11-CURRENT-INTENT",
+        "CHK-E11-KEYBOARD-REGRESSION"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.S40.old-index-overwrite.G.SEARCH.RESULT.error",
-          "EIMPORT.S41.old-query-enter.G.SEARCH.RESULT.active"
+          "EIMPORT.S41.old-query-enter.G.SEARCH.RESULT.active",
+          "EIMPORT.E11B.real-results.G.SEARCH.RESULT.normal",
+          "EIMPORT.E11B.stale-owner-isolation.G.SEARCH.RESULT.error",
+          "EIMPORT.E11B.current-enter.G.SEARCH.RESULT.active"
         ]
       }
     },
@@ -55490,7 +56043,8 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-D1-SEARCH-CLOSE"
+        "CHK-D1-SEARCH-CLOSE",
+        "CHK-E11-SYNTH-LIFECYCLE"
       ]
     },
     {
@@ -55704,7 +56258,17 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-E11-CURRENT-INTENT",
+        "CHK-E11-RECOVERY-FOCUS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E11B.current-query-url.G.SEARCH.FULL.normal",
+          "EIMPORT.E11B.focus-intent.G.SEARCH.FULL.focus"
+        ]
+      }
     },
     {
       "control_id": "G.SEARCH.PAGE.control.b8d41d",
@@ -59792,13 +60356,20 @@
         "D6": null
       },
       "known_findings": [
-        "UX-014"
+        "UX-014",
+        "UX-044"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-SOURCE-CLOSED-SHEET",
         "CHK-D2B-SHEET-CLOSED"
-      ]
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.AR0.open-return-observation.A.TOC.FAB.active"
+        ]
+      }
     },
     {
       "control_id": "A.TOC.MOBILETABS.control.233f10",
@@ -59870,7 +60441,8 @@
       "known_findings": [
         "UX-003",
         "UX-004",
-        "UX-014"
+        "UX-014",
+        "UX-044"
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
@@ -59879,8 +60451,15 @@
         "CHK-SOURCE-CLOSED-SHEET",
         "CHK-D2B-TABS-COMPACT",
         "CHK-D2B-PANEL-NAME",
-        "CHK-D2B-SHEET-CLOSED"
-      ]
+        "CHK-D2B-SHEET-CLOSED",
+        "CHK-ARTICLE-RESIZE-FOCUS-FAIL"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.AR0.selected-ai-observation.A.TOC.MOBILETABS.active"
+        ]
+      }
     },
     {
       "control_id": "A.TOC.SERIES.control.0acc82",
@@ -60375,9 +60954,20 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-044"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-ARTICLE-RESIZE-FOCUS-FAIL",
+        "CHK-ARTICLE-RESIZE-DRAFT-HANDOFF-FAIL"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.AR0.draft-pair-observation.A.AI.INPUT.normal"
+        ]
+      }
     },
     {
       "control_id": "A.AI.INPUT.control.001165",
@@ -60446,9 +61036,21 @@
         "D5": null,
         "D6": null
       },
-      "known_findings": [],
+      "known_findings": [
+        "UX-044"
+      ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-ARTICLE-RESIZE-FOCUS-FAIL",
+        "CHK-ARTICLE-RESIZE-DRAFT-HANDOFF-FAIL"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.AR0.draft-pair-observation.A.AI.INPUT.normal",
+          "EIMPORT.AR0.breakpoint-focus-failure.A.AI.INPUT.focus"
+        ]
+      }
     },
     {
       "control_id": "A.AI.SEND.control.a9e4f5",
@@ -79052,8 +79654,15 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-D2B-SEARCH-FOCUS"
-      ]
+        "CHK-D2B-SEARCH-FOCUS",
+        "CHK-E11-SYNTH-LIFECYCLE"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E11B.synthetic-page-lifecycle.G.SEARCH.FOLLOWUP.active"
+        ]
+      }
     },
     {
       "control_id": "G.SEARCH.FOLLOWUP.control.75df78",
@@ -84604,6 +85213,96 @@
           "EIMPORT.E10A.retry-owned-attempt.T.SOCIAL.QR.active"
         ]
       }
+    },
+    {
+      "control_id": "G.SEARCH.RETRY.control.b68b79",
+      "family_id": "G.SEARCH.RETRY",
+      "selector": "#search-index-retry",
+      "instance_policy": "One local-index Retry button; distinct from existing AI error Retry. No cross-action evidence inheritance.",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "明确动作及预期结果"
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "反馈待真实 hover 核验"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Tab 可达与异步完成不抢焦点待实测"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "动作启动后防重复提交"
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "请求中/输入为空/不可用时真实 disabled；逐项待核验"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "应为实际请求状态，不能用装饰动画伪成功"
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "源中存在错误/重试/直达出口，详见该条；未逐个断网实测"
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "无内容或未连接时说明下一步，不伪造内容"
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [
+        "UX-045"
+      ],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E11-INDEX-RECOVERY",
+        "CHK-E11-TOTAL-DEADLINE",
+        "CHK-E11-RETRY-TARGET",
+        "CHK-E11-RETRY-STABILITY",
+        "CHK-E11-RECOVERY-FOCUS",
+        "CHK-E11A-RETRY-MOVE-FAIL"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E11B.index-target.G.SEARCH.RETRY.normal",
+          "EIMPORT.E11B.index-pending.G.SEARCH.RETRY.loading",
+          "EIMPORT.E11B.index-focus.G.SEARCH.RETRY.focus",
+          "EIMPORT.E11B.index-recover.G.SEARCH.RETRY.active",
+          "EIMPORT.E11B.pre-fix-displacement.G.SEARCH.RETRY.focus"
+        ]
+      }
     }
   ],
   "specific_observations": [
@@ -84796,6 +85495,17 @@
       "status": "low_priority_after_contact_settings",
       "proposal": "保持641+短coarse布局；后续对照stage Dogfood易懂名称、书架桌面留白/英文作者行节奏，不凭偏好新增P2，不抢contact/settings优先级。",
       "evidence_type": "20actualimages E9a1/E9a2"
+    },
+    {
+      "id": "NEXT-ARTICLE-RESIZE",
+      "families": [
+        "A.AI.INPUT",
+        "A.TOC.MOBILETABS",
+        "A.TOC.FAB"
+      ],
+      "status": "confirmed_P2_after_E11_E12",
+      "proposal": "Active editor-only breakpoint handoff; preserve draft/read position/focus with ownership guard and no overwrite of distinct destination draft. Minimal tests: both directions, inactive-reader no theft, differing drafts, repeated breakpoint crossings. Busy/IME/context histories remain separate unknowns.",
+      "evidence": "E-ARTICLE-RESIZE-BASELINE"
     }
   ],
   "scoped_check_assessments": [
@@ -89436,11 +90146,393 @@
       ],
       "scope": "Named controlled/local Chromium scopes only; see receipt limits.",
       "reason": "Four opaque status/enabledRetry samples independently recomputed: statusmin6.371623070570725,enabledRetrymin14.561420266815729. No inactive/artwork/fullpage claim."
+    },
+    {
+      "id": "CHK-ARTICLE-RESIZE-FOCUS-FAIL",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.TOC.MOBILETABS",
+        "A.TOC.FAB"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.001165",
+        "A.AI.INPUT.control.4748de",
+        "A.TOC.MOBILETABS.control.233f10"
+      ],
+      "criterion": "D6.2",
+      "reason": "ActivecompactAI→desktop dismisses sheet correctly but loses visible AI target and focused editor; next realTab scroll500→26055 to recommendation.",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_negative_fragment",
+      "status": "confirmed_named_baseline_failure_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Independent article resize negative baseline; disjoint from E11 search WIP",
+        "preview_checkpoint": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+        "reviewed_at": "2026-10-16T05:11:41+08:00",
+        "route": "/zh/engineering/posts/use-go-tools-dlv/",
+        "viewport_transition": "1199x900 → 1200x900",
+        "locale": "zh",
+        "motion": "reduce"
+      },
+      "evidence": [
+        "E-ARTICLE-RESIZE-BASELINE"
+      ],
+      "scope": "1199x900→1200x900 zh/reduce; local unsent synthetic draft only.",
+      "finding_id": "UX-044"
+    },
+    {
+      "id": "CHK-ARTICLE-RESIZE-DRAFT-HANDOFF-FAIL",
+      "family_ids": [
+        "A.AI.INPUT"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.001165",
+        "A.AI.INPUT.control.4748de"
+      ],
+      "criterion": "D6.4",
+      "reason": "Original compact node/value survives, yet visible desktopAI has empty input even after manual opening; unsent draft cannot continue in new layout. Not data deletion.",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_browser_negative_fragment",
+      "status": "confirmed_named_baseline_failure_open",
+      "confidence": "high",
+      "as_of": {
+        "phase": "Independent article resize negative baseline; disjoint from E11 search WIP",
+        "preview_checkpoint": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+        "reviewed_at": "2026-10-16T05:11:41+08:00",
+        "route": "/zh/engineering/posts/use-go-tools-dlv/",
+        "viewport_transition": "1199x900 → 1200x900",
+        "locale": "zh",
+        "motion": "reduce"
+      },
+      "evidence": [
+        "E-ARTICLE-RESIZE-BASELINE"
+      ],
+      "scope": "1199x900→1200x900 zh/reduce; local unsent synthetic draft only.",
+      "finding_id": "UX-044"
+    },
+    {
+      "id": "CHK-E11-INDEX-STATUS",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "criterion": "D3.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Loading/searching/error/realempty/idle distinct;0summary hidden until computed. Realindex fouractuals and fourcontrolledstate contracts."
+    },
+    {
+      "id": "CHK-E11-INDEX-RECOVERY",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RETRY"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RETRY.control.b68b79"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Controlled503/timeout preserves currentquery;localRetry succeeds and cached reopen does not issueanotherGET."
+    },
+    {
+      "id": "CHK-E11-TOTAL-DEADLINE",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RETRY"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RETRY.control.b68b79"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "One15s total deadline races noncooperating fetch+JSON;headersarrive8000 doesnotreset deadline.14999/15000 pausedclock exact."
+    },
+    {
+      "id": "CHK-E11-OWNER-ISOLATION",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Lateoldfetch503/jsonreject/jsonsuccess cannot overwrite newerowner;eachawait/catch owns,finally cleanupoldonly."
+    },
+    {
+      "id": "CHK-E11-CURRENT-INTENT",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT",
+        "G.SEARCH.FULL"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700",
+        "G.SEARCH.FULL.control.d7789e"
+      ],
+      "criterion": "D3.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Newinput clearsoldoptions/activeDescendant and updatesfullHref now;Enter inside150ms openscurrentarticle orcurrentfullSearch. Fouractual current-full captures plus matchingfixture/IMEflags;notOSIME."
+    },
+    {
+      "id": "CHK-E11-RETRY-TARGET",
+      "family_ids": [
+        "G.SEARCH.RETRY"
+      ],
+      "control_ids": [
+        "G.SEARCH.RETRY.control.b68b79"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "44x44minimum/centerhit andinsideviewport verified for newRetry. No inheritance to AIretry."
+    },
+    {
+      "id": "CHK-E11-RETRY-STABILITY",
+      "family_ids": [
+        "G.SEARCH.RETRY"
+      ],
+      "control_ids": [
+        "G.SEARCH.RETRY.control.b68b79"
+      ],
+      "criterion": "D5.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Originalcenter twoactualclicks stayonRetry/focus andsingleflight. Samebox held throughpending;status200% only notwholezoom."
+    },
+    {
+      "id": "CHK-E11-RECOVERY-FOCUS",
+      "family_ids": [
+        "G.SEARCH.RETRY",
+        "G.SEARCH.QUERY",
+        "G.SEARCH.FULL"
+      ],
+      "control_ids": [
+        "G.SEARCH.RETRY.control.b68b79",
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.FULL.control.d7789e"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Success focusesinput only whileRetry ownsfocus;1440realShiftTabtofullLink remains. Escape returnsopener. No generic delayedfocus."
+    },
+    {
+      "id": "CHK-E11-SYNTH-LIFECYCLE",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.AI",
+        "G.SEARCH.FOLLOWUP"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.AI.control.ad34d6",
+        "G.SEARCH.FOLLOWUP.control.c72eb6"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Syntheticpagehide/pageshow cancelsoldindex,resumeslocalonly;completedmockAI originalfollowup/answerDOM/draft/context retained,noautoAI. ActualBack didnotBFCache,unverified."
+    },
+    {
+      "id": "CHK-E11-KEYBOARD-REGRESSION",
+      "family_ids": [
+        "G.SEARCH.QUERY",
+        "G.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "G.SEARCH.QUERY.control.c12d02",
+        "G.SEARCH.RESULT.control.c71700"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_contract_actual_fragment",
+      "status": "passed_named_E11b_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11b final local-index recovery review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+        "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+        "reviewed_at": "2026-10-16T05:32:44+08:00",
+        "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+      },
+      "evidence": [
+        "E-BATCH-E11B"
+      ],
+      "scope": "Named local Chromium cases and explicit controlled/synthetic boundaries only.",
+      "reason": "Twoexistingdesktop regressions: Arrowselected Enteropensselected localarticle withnoAI;CtrlEntermockAI preservespage. Not fullkeyboard/AT certification."
+    },
+    {
+      "id": "CHK-E11A-RETRY-MOVE-FAIL",
+      "family_ids": [
+        "G.SEARCH.RETRY"
+      ],
+      "control_ids": [
+        "G.SEARCH.RETRY.control.b68b79"
+      ],
+      "criterion": "D5.2",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "historical_recorded_browser_negative_fragment",
+      "status": "historical_failure_retained_closed_only_E11b_named_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E11a beforelayoutfix",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source-pre-layout-fix.json"
+      },
+      "evidence": [
+        "E-SEARCH-RETRY-MOVE-BASELINE"
+      ],
+      "scope": "390zh/reduce sameoriginalcenter twoactualclicks.",
+      "reason": "Retry movesup23.546875px;oldcenter hitsDIV andfocusBODY;GETdedupstillworks.",
+      "finding_id": "UX-045"
     }
   ],
-  "latest_validated_checkpoint": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
-  "preview_scope": "FrozenE10a named modal/image recovery accepted; search39–41/footnote42 open. Mid-reveal and complete matrices unknown.",
-  "latest_reviewed_artifact": "E-BATCH-E10A",
+  "latest_validated_checkpoint": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+  "preview_scope": "E11b named local-index/retry/currentintent accepted;E12footnote42/article44 open. BFCache actual missed; full matricesnull.",
+  "latest_reviewed_artifact": "E-BATCH-E11B",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -89789,7 +90881,7 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e10a-source.json",
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
   "anchor_intent_review": {
     "as_of": {
       "phase": "478 preview native anchor and actual right TOC scoped probes",
@@ -90062,5 +91154,31 @@
       ],
       "limits": "Design candidates only, not new reproduced functional failure. AT/physical scanning unknown do not lower visible-layout scores."
     }
+  },
+  "e11_source_review": {
+    "as_of": {
+      "phase": "E11b final local-index recovery review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e11-source.json",
+      "frozen_at": "2026-10-15T21:24:47.703427+00:00",
+      "reviewed_at": "2026-10-16T05:32:44+08:00",
+      "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef"
+    },
+    "status": "accepted_named_E11b_scope_complete_matrix_unverified",
+    "new_P0_P1_findings": [],
+    "closed_findings": [
+      "UX-039",
+      "UX-040",
+      "UX-041",
+      "UX-045"
+    ],
+    "source_reasoning": "Perrequestabort/serial owner acrossfetch/json/catch;15s totaltimernotrenewed;finallyrequestlocalcleanup. Inputimmediateinvalidation/currentEnterflush. Retrywrappedborderbox measuredonce perattempt underglobalborder-box, releasedready/empty/idle/newsession. Intentbasedfocus unchanged.",
+    "pagehide_candidate": "InitialclosePalette callrisk removed;currentpagehide cancelsrequestswithoutclearingquery/AI DOM/history, pageshow resumeslocalonly. Syntheticcontractprovesretention,realBFCache remainsunknown.",
+    "unchanged_code_verified": "fallback+AI+Markdown/history implementation block and AIcancel byte-identicaltoHEAD;newcallpath inspected separately.",
+    "verified_score": null,
+    "limits": [
+      "No source-only96 or contract-count-to-visual inference.",
+      "Initiallazyfixturedeadlock,originlocalStorageerrorharness andactualRetrylayoutfailure retained.",
+      "No BFCachepass,wholepage200%zoom,OSIME,AT,Safari,realAI,completecontrastorFPS claim."
+    ]
   }
 }

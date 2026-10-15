@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T05:01:48+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `b5b6fa34`（E9c），E10a冻结证据已复核。
+更新：2026-10-16T05:33:50+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表 v1.0，审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验 checkpoint `e5fafdc2`（E10/E10a）；E11b冻结证据已复核，后续E11c文案须新冻结验收。
 
-**当前不能宣称全站或每个按钮96+。309族/366selector条目的完整分仍为 `unverified / null`；295条记录只覆盖63族局部状态，完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；313条记录只覆盖69族局部状态，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -1004,3 +1004,29 @@ UX018/043仅关闭命名范围：main4中文context/8poster，recovery3，无clo
 [反馈对比](evidence/batch-e10a-feedback-contrast.json)四opaque scope独立sRGB重算一致，status最小6.371623070570725、enabledRetry最小14.561420266815729，不取整；仅这些status/启用Retry文字，不含aria-disabled、海报/整页/抗锯齿或显示校准。AT播报、Safari、zoom、实体扫码/键盘、真实联系/模型与全状态未知，完整分仍null。
 
 盘点v1.18同步309族/366selector entries（不是366按钮）：QRdetails57404f是可聚焦region，Retry246c0a；脚注marker d3b14a仅UX042负，More70bc13未实点，旧98b9b5校正.fn-popover/support-root并保历史alias，不继承动作。295记录/63局部族/0完整认证，完整证据保留原回执，仅追加引用。
+
+
+## UX044 · 活跃AI编辑跨断点续写中断（独立P2）
+
+[1199→1200回执](evidence/article-resize-baseline.json)及四张主图已读；七源与不可变`e5fafdc2`及当前文件一致，E11搜索WIP不相交。中文/reduce、未发送合成draft：1199编辑中，1200后sheet正确inert/解锁，但desktop停在目录、AI输入为空、focus落BODY；下一真实Tab把scroll500带到26055的推荐链接，再选desktopAI仍为空。D6.2/D6.4负片段80，G6仅该活跃AI目标交接链上限79；完整族分仍null。
+
+原compact DOM/value始终存在，回1199手动滚回500再打开可见FAB，settled图显示原稿；不称草稿删除。初始返回在文末FAB按原设计隐藏而click超时，保留initial.log；瞬间图与补拍不作为blank故障。
+
+下一最小边界：仅在断点前用户正编辑该AI时交接可见标签、未发送draft/焦点与阅读锚点；目标已有不同draft不可盲覆盖，用户已离开AI时不抢焦点。回归双向/连续跨点、不同草稿与非AI阅读；selection/IME、流式请求/上下文/历史、AT/Safari/缩放/实体设备尚未验证，不从该合成未发送稿外推。FAB/mobiletab为流程入口上下文，不声称它们自身不可点击。
+
+盘点v1.19最终小同步：309族/366selector entries、299状态/66局部族（65partial+1measured）/0完整；仅追加四条AR0引用，FAB与mobiletab仍为观察，未将E11计划Retry预先注册。
+
+
+## E11b · 本地搜索恢复与当前意图（有界验收）
+
+2026-10-16T05:32:44+08:00：[四源manifest](evidence/batch-e11-source.json)、QA/suppQA/两runner均匹配；[15定向合同](evidence/batch-e11-contracts.log)6.5s、[2旧键盘回归](evidence/batch-e11-regression.log)2.8s与Hugo3785ms已读。[main七context/15图](evidence/batch-e11-actions.json)加[真实Back一context/两图](evidence/batch-e11-back.json)，17图逐张复核，无新P0/P1。UX039/040/041仅命名范围关闭：真实本地index、中英文390/1440、旧owner隔离、当前Enter与有界恢复；空AI/完整会话/IMEflags/期限分别按合同类型记录，不算公网模型或OS输入法。
+
+UX045/P2保留原[Retry位移负基线](evidence/search-retry-layout-baseline.json)：上移23.546875px、第二原坐标hitpanel/focusBODY，GET去重仍正常。E11b测当前换行status实际borderbox并仅本attempt保min-height；四state合同及390zh/1440en真原坐标二click均保持box与focus，成功后尊重已ShiftTab到FullLink的意图，因此只该范围闭合。新增两项200%仅status字号，不是整页zoom。旧13过仍有真实位移失败，原log/pre-layoutmanifest保留，未放宽坐标断言。
+
+初版pagehide→closePalette会清AI会话的调用路径风险已修；当前仅取消owner，pageshow只恢复localindex。完成mockAI+原followupDOM/未发送draft/后续context仅合成生命周期合同通过。真实同源navigate/Back的pageshow.persisted=false/token变，no-store等阻止缓存：**BFCache恢复unknown**，不冒通过或新增硬刷新持久化要求。lazyready首点击前等待死锁和originlocalStorage初脚本错误均保留为harness诊断。
+
+局部静态normal D1/D4=96，recovery D1/D4=94.5，完整维度与族仍null。具体两条改进绑定[b-error390图](evidence/batch-e11-error-390-zh.png)：按钮“重新加载索引/Reload index”让用户理解实现名词，可用“重试搜索/Retry search”；中文错误末行仅“留。”，可平衡短文案，保14px与测量footprint。结果summary斜体仅后续可比较方向，本轮不凭偏好扣分。新词E11c尚未实施/验收，不能继承b通过。
+
+脚注UX042与文章断点UX044继续open。[fine组件诊断](evidence/footnote-focus-baseline.json)只证程序化进入citation后250ms hidden/BODY；naturalTab到下一marker不是失败，inside-initial图已hidden，只用即时JSON证最初visible。暂为qualified焦点生命周期候选，无新编号/全脚注键盘失败声明。所有全族评分仍null。
+
+盘点v1.20同步313状态/69局部族（68partial+1measured）、309族/367selector entries/0完整。新增localindexRetry `G.SEARCH.RETRY.control.b68b79`不继承AIretry `788d65`；FullLink仅href/焦点、followup仅input合成生命周期，Escape关闭只作流程支持不授Close按钮实点。

@@ -5,7 +5,7 @@
     "timezone": "Asia/Shanghai",
     "workspace": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
     "base_commit": "6d7b9fe92a746a83e635282c9b78966920336a69",
-    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched; v1.16 imported E9b7contracts/4actual20PNG with shared refs, WhatsApp omission and spatial visual baseline; inspected3existingE9bPNG; no browser/build/test launched; v1.17 appended4E9c bounded records,3contracts/2actual12choices18PNG; inspected3existingPNG, no browser/build/test launched; v1.18 lean14records for global4negative baselines/E10historical5/E10a5,4real selector entries registered and footnote support-root corrected; inspected4existingPNG; no browser/build/test launched",
+    "method": "frontend-design SKILL read; targeted source trace; three existing baseline PNGs inspected; no browser/build/test process started by inventory agent; source sha256 attached per family to distinguish later execution batches; imported 20 bounded batch A checks and inspected 6 A screenshots; no browser/build launched; v1.7 imported frozen E5/E51/E52 test logs/actual boundaries and normal app probes; inspected four existing PNGs; no new browser/build/test launched; v1.8 imported E61 logs/actual coordinate and actual-wheel receipts, inspected4existingPNGs; no new browser/build/test launched; v1.9 imported only two failed TravelQR state bindings, no pass inferred; three existing PNGs inspected; no browser/build; v1.10 imported anchor-intent two actual journeys/three active bindings, inspected2PNGs, no browser/build; v1.11 imported E7/E71 recovery receipts, actual2Stop+1wheel, inspected3existingPNGs; no browser/build/test launched; v1.12 corrected omitted existing Back and imported E8 historical/E81 scoped arrangement evidence, inspected3existingPNGs; no browser/build/test launched; v1.13 recorded E81 final closure and3preE9 baseline failures+1navigation strategy observation against immutable3ca Git blobs, inspected2existingPNG, independently recomputed12CSScontrast ratios; no browser/build/test launched; v1.14 imported a1sixcontracts/fouractual16PNG, preserved initialsixfail, added native+existingAsk omission, inspected4PNG; no browser/build/test launched; v1.15 only appended2a2entry bindings/source+4artifacts, inspected2entryPNG; no browser/build/test launched; v1.16 imported E9b7contracts/4actual20PNG with shared refs, WhatsApp omission and spatial visual baseline; inspected3existingE9bPNG; no browser/build/test launched; v1.17 appended4E9c bounded records,3contracts/2actual12choices18PNG; inspected3existingPNG, no browser/build/test launched; v1.18 lean14records for global4negative baselines/E10historical5/E10a5,4real selector entries registered and footnote support-root corrected; inspected4existingPNG; no browser/build/test launched; v1.19 added4article-resize baseline records/7immutable source identities and2inspected settled images, originaldraft retained; E11 indexRetry planned-only, no browser/build/test launched; v1.20 registeredindexRetry b68b79 with14bounded E11bstate records/15newcontracts+2oldregressions/7actual15PNG+actualBack2PNG separate;4existingPNG inspected; no browser/build/test launched",
     "scope": "按共享模板和交互变体归类，不按每篇文章/每个数据行重复膨胀计数",
     "limitations": [
       "source candidates不是运行时DOM计数",
@@ -16,8 +16,8 @@
       "About Quest已在中英content frontmatter确认路由，但本Agent未访问运行时页面。",
       "第三方评论与Calendly/BMC/Polarsteps内控件无法仅从本仓源码穷尽；登记宿主功能族，实例数/浏览器能力需实际渲染补全。"
     ],
-    "inventory_version": "1.18",
-    "updated_at_shanghai": "2026-10-16T04:54:05+08:00",
+    "inventory_version": "1.20",
+    "updated_at_shanghai": "2026-10-16T05:31:50+08:00",
     "corrections": [
       "v1.4 corrected unsupported ?app= routes in candidate journey queues; actual app selection uses supported profile/hash plus visible launchpad. Existing inventory IDs/count remain unchanged.",
       "v1.7 G.SEARCH.AI is an async askAI action with conditional Stop, not a toggle; D2b completion-focus evidence no longer lists Stop as tested.",
@@ -31,7 +31,7 @@
     "roadmap_count": 18,
     "roadmap_subject_count": 12,
     "roadmap_source_note": "Roadmap source refs traced at 2026-10-16 01:05-01:13 Asia/Shanghai while other bounded implementation batches may run; no new browser acceptance.",
-    "current_checkout_revision_at_import": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+    "current_checkout_revision_at_import": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
     "next_probe_source_read_at_shanghai": "2026-10-16T02:43:06+08:00"
   },
   "counts": {
@@ -41,14 +41,14 @@
     "motion_families": 26,
     "world_decorative_families": 18,
     "control_families": 265,
-    "stable_control_selectors": 366,
+    "stable_control_selectors": 367,
     "content_shortcode_source_instances": 34,
-    "partial_state_evidence_families": 62,
+    "partial_state_evidence_families": 68,
     "journey_batches": 57,
     "journey_queued_unique_families": 309,
     "evidence_current_classification": {
-      "source-only": 221,
-      "partial-state-evidence": 62,
+      "source-only": 215,
+      "partial-state-evidence": 68,
       "measured-observation-only": 1,
       "rendered-baseline": 25
     },
@@ -56,9 +56,9 @@
       "baseline_screenshot_families": 28,
       "source_only_families": 281
     },
-    "families_with_state_evidence": 63,
+    "families_with_state_evidence": 69,
     "accepted_whole_families": 0,
-    "state_evidence_records": 295
+    "state_evidence_records": 313
   },
   "state_profiles": {
     "nav": {
@@ -622,9 +622,10 @@
       "observation": "搜索索引持续pending没有有界状态恢复",
       "source": "evidence/search-index-baseline.json",
       "evidence": "actual bounded negative baseline; independent reviewer confirmed",
-      "status": "open_confirmed_for_recorded_b5_scope",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
       "registry_ref": "global-search-footnote-baseline-import",
-      "criterion": "用户当前意图与显示/执行结果一致，状态可理解、恢复路径真实。"
+      "criterion": "用户当前意图与显示/执行结果一致，状态可理解、恢复路径真实。",
+      "closure_registry_ref": "e11-index-state-import"
     },
     {
       "id": "UX-040",
@@ -635,9 +636,10 @@
       "observation": "旧索引失败覆盖新查询结果",
       "source": "evidence/search-index-race-baseline.json",
       "evidence": "actual bounded negative baseline; independent reviewer confirmed",
-      "status": "open_confirmed_for_recorded_b5_scope",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
       "registry_ref": "global-search-footnote-baseline-import",
-      "criterion": "用户当前意图与显示/执行结果一致，状态可理解、恢复路径真实。"
+      "criterion": "用户当前意图与显示/执行结果一致，状态可理解、恢复路径真实。",
+      "closure_registry_ref": "e11-index-state-import"
     },
     {
       "id": "UX-041",
@@ -649,9 +651,10 @@
       "observation": "新查询Enter仍打开旧结果",
       "source": "evidence/search-intent-baseline.json",
       "evidence": "actual bounded negative baseline; independent reviewer confirmed",
-      "status": "open_confirmed_for_recorded_b5_scope",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
       "registry_ref": "global-search-footnote-baseline-import",
-      "criterion": "用户当前意图与显示/执行结果一致，状态可理解、恢复路径真实。"
+      "criterion": "用户当前意图与显示/执行结果一致，状态可理解、恢复路径真实。",
+      "closure_registry_ref": "e11-index-state-import"
     },
     {
       "id": "UX-042",
@@ -679,6 +682,36 @@
       "registry_ref": "e10a-qr-scoped-import",
       "criterion": "图像加载/error/deadline明确，Retry真实且不重复请求，结果不抢后续焦点。",
       "closure_registry_ref": "e10a-qr-scoped-import"
+    },
+    {
+      "id": "UX-044",
+      "priority": "P2",
+      "target": [
+        "A.TOC.FAB",
+        "A.TOC.MOBILETABS",
+        "A.AI.INPUT"
+      ],
+      "observation": "文章AI跨1200断点未交接草稿/焦点，下一实际Tab跳到文末推荐链接。",
+      "source": "evidence/article-resize-baseline.json",
+      "evidence": "1199→1200zh/reduce actual controlled unsentdraft;7source hashes match e5 Git blobs",
+      "status": "confirmed_named_article_resize_baseline_open",
+      "registry_ref": "article-resize-baseline-import",
+      "criterion": "读者跨布局后可继续原任务，焦点与可见内容一致；不因实现两套面板而丢失阅读位置。",
+      "limits": "Original compact DOM/value remains; not data deletion. Return1199 manually reset scroll500 and settled; no complete reverse handoff/fullTab/OSzoom certification."
+    },
+    {
+      "id": "UX-045",
+      "priority": "P2",
+      "target": [
+        "G.SEARCH.RETRY"
+      ],
+      "observation": "旧indexRetry error→loading高度改变使原位置第二click落BODY；初13合同未覆盖。",
+      "source": "evidence/batch-e11-actions-layout-failure.log",
+      "evidence": "parentactual390coordinates+independentreview; oldmanifest andfailure preserved",
+      "status": "closed_named_E11b_scope_full_matrix_unverified",
+      "closure_registry_ref": "e11-index-state-import",
+      "criterion": "恢复按钮在请求中保持原目标与focus，双click不重复请求；结果按当前焦点意图交接。",
+      "limits": "2actual retry scopes+4state contracts+2status-font200% cases; not full-page zoom/all-keyboard/all-states."
     }
   ],
   "items": [
@@ -1607,7 +1640,7 @@
         "focus": "unverified",
         "active": "unverified",
         "disabled": "unverified",
-        "loading": "partial frozen evidence: 1440×900 zh/light/reduce：关闭搜索取消当前AI请求并清理会话状态。",
+        "loading": "A6 timeout后实际Escape关闭；C0–3关开/缓存query重新输入；C6–8 close旧pending index并隔离late响应。C11pagehide为合成，非此close按钮实点或BFCache。",
         "error": "unverified",
         "empty": "unverified",
         "source_location": "found"
@@ -1625,7 +1658,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "D2b revalidation",
+      "evidence_phase": "frozen E11b exact state fragments plus preserved old failures",
       "journey_queue_ids": [
         "D-02"
       ],
@@ -1693,6 +1726,32 @@
           "screenshot_inspected_by_inventory": false,
           "verified_score": null,
           "original_case_id_note": "D1-prefixed ID retained; actual five flows rerun on D2b. Original D1 execution only indexed at evidence/batch-d1-flows.log; changed dialog not certified by old screenshot."
+        },
+        {
+          "binding_id": "EIMPORT.E11B.pending-index-close.G.SEARCH.CLOSE.loading",
+          "state": "loading",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A6",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C6",
+            "C7",
+            "C8"
+          ],
+          "control_ids": [
+            "G.SEARCH.CLOSE.control.a4cf1d"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "A6 timeout后实际Escape关闭；C0–3关开/缓存query重新输入；C6–8 close旧pending index并隔离late响应。C11pagehide为合成，非此close按钮实点或BFCache。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null
         }
       ],
       "acceptance_status": "unverified",
@@ -1744,8 +1803,8 @@
         "focus": "unverified",
         "active": "unverified",
         "disabled": "unverified",
-        "loading": "390zh/reduce controlled index pending：60s虚拟推进仍busy且视觉找到0，无有界恢复；关开再60s仍busy、共2GET；非真实网络故障。",
-        "error": "unverified",
+        "loading": "A6真实pending路由+暂停clock14999仍busy/loading、15000 timeout解锁且query保留；C9/10涵盖headers和JSON总deadline，非实际15s壁钟；C11合成pagehide abort owner、pageshow再取。",
+        "error": "503/timeout显示真实说明、保留query及可用indexRetry，loading不写视觉0结果；明确empty/idle仅当索引ready可计算。",
         "empty": "unverified",
         "source_location": "found"
       },
@@ -1762,7 +1821,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "bounded positive/negative state receipts; no full-family certification",
+      "evidence_phase": "frozen E11b exact state fragments plus preserved old failures",
       "journey_queue_ids": [
         "D-02",
         "R-39"
@@ -1784,6 +1843,63 @@
           "control_resolution": "Only these real selectors/instances; support roots and actions do not inherit one another",
           "observation": "390zh/reduce controlled index pending：60s虚拟推进仍busy且视觉找到0，无有界恢复；关开再60s仍busy、共2GET；非真实网络故障。",
           "limits": "Read referenced manifest/scopes/limits; whole-family score remains null.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-039"
+          ],
+          "scoped_followup": {
+            "registry_ref": "e11-index-state-import",
+            "note": "Original failure preserved. Independent closure is only final E11b named contracts/actual scopes; whole-family unverified."
+          }
+        },
+        {
+          "binding_id": "EIMPORT.E11B.index-lifetime.G.SEARCH.QUERY.loading",
+          "state": "loading",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A6",
+            "C9",
+            "C10",
+            "C11"
+          ],
+          "control_ids": [
+            "G.SEARCH.QUERY.control.c12d02"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "A6真实pending路由+暂停clock14999仍busy/loading、15000 timeout解锁且query保留；C9/10涵盖headers和JSON总deadline，非实际15s壁钟；C11合成pagehide abort owner、pageshow再取。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-039"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.index-error-recovery.G.SEARCH.QUERY.error",
+          "state": "error",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A4",
+            "A5",
+            "A6",
+            "C0",
+            "C1",
+            "C2",
+            "C3"
+          ],
+          "control_ids": [
+            "G.SEARCH.QUERY.control.c12d02"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "503/timeout显示真实说明、保留query及可用indexRetry，loading不写视觉0结果；明确empty/idle仅当索引ready可计算。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
           "verified_score": null,
           "related_issue_ids": [
             "UX-039"
@@ -1825,13 +1941,13 @@
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "unverified",
+        "normal": "A0–3真实zh/en local index每scope10结果/正确count，summary只ready可见、无横溢；输入新query立即清旧列表/aria-selected/activedescendant，显示searching。",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "新无匹配query置入后暂停150ms debounce窗口，真实Enter仍导航旧Kubernetes首篇；导航locally intercepted/aborted，无外站请求。",
+        "active": "A0–3当前无匹配query在150ms暂停窗口真实Enter都捕获当前Full Search URL而非旧首篇；C13另验当前matching article。合同IME/isComposing/keyCode边界为合成，不是OS IME。",
         "disabled": "unverified",
         "loading": "unverified",
-        "error": "1440zh/reduce第二GET成功10结果后旧GET503把结果清0并显示索引失败；query/focus未变，额外输入空格才恢复10。",
+        "error": "C6/7/8控制旧fetch503、JSONreject、JSONsuccess均不能覆盖新owner成功10条/query/focus；这是合同受控传输，不伪称actual7context含真实迟到三variant。",
         "empty": "unverified",
         "source_location": "found"
       },
@@ -1848,7 +1964,7 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "bounded positive/negative state receipts; no full-family certification",
+      "evidence_phase": "frozen E11b exact state fragments plus preserved old failures",
       "journey_queue_ids": [
         "R-02"
       ],
@@ -1872,7 +1988,11 @@
           "verified_score": null,
           "related_issue_ids": [
             "UX-040"
-          ]
+          ],
+          "scoped_followup": {
+            "registry_ref": "e11-index-state-import",
+            "note": "Original failure preserved. Independent closure is only final E11b named contracts/actual scopes; whole-family unverified."
+          }
         },
         {
           "binding_id": "EIMPORT.S41.old-query-enter.G.SEARCH.RESULT.active",
@@ -1890,6 +2010,86 @@
           "control_resolution": "Only these real selectors/instances; support roots and actions do not inherit one another",
           "observation": "新无匹配query置入后暂停150ms debounce窗口，真实Enter仍导航旧Kubernetes首篇；导航locally intercepted/aborted，无外站请求。",
           "limits": "Read referenced manifest/scopes/limits; whole-family score remains null.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-041"
+          ],
+          "scoped_followup": {
+            "registry_ref": "e11-index-state-import",
+            "note": "Original failure preserved. Independent closure is only final E11b named contracts/actual scopes; whole-family unverified."
+          }
+        },
+        {
+          "binding_id": "EIMPORT.E11B.real-results.G.SEARCH.RESULT.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3"
+          ],
+          "control_ids": [
+            "G.SEARCH.RESULT.control.c71700"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "A0–3真实zh/en local index每scope10结果/正确count，summary只ready可见、无横溢；输入新query立即清旧列表/aria-selected/activedescendant，显示searching。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-041"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.stale-owner-isolation.G.SEARCH.RESULT.error",
+          "state": "error",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-contracts.log",
+          "receipt_sha256": "e0da1fd7176494dff5ca64f74f545834837d0cd43f3ecd53f5a247c0100e0b54",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "C6",
+            "C7",
+            "C8"
+          ],
+          "control_ids": [
+            "G.SEARCH.RESULT.control.c71700"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "C6/7/8控制旧fetch503、JSONreject、JSONsuccess均不能覆盖新owner成功10条/query/focus；这是合同受控传输，不伪称actual7context含真实迟到三variant。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-040"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.current-enter.G.SEARCH.RESULT.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C13",
+            "C14"
+          ],
+          "control_ids": [
+            "G.SEARCH.RESULT.control.c71700"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "A0–3当前无匹配query在150ms暂停窗口真实Enter都捕获当前Full Search URL而非旧首篇；C13另验当前matching article。合同IME/isComposing/keyCode边界为合成，不是OS IME。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
           "verified_score": null,
           "related_issue_ids": [
             "UX-041"
@@ -2207,14 +2407,14 @@
         "/search/"
       ],
       "priority": "P2",
-      "evidence": "source-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "unverified",
+        "normal": "四actual currentFullHref立即反映新query且Enter导航请求正确，路由本地capture/abort没有访问canonicalhost；不是实际点击Full link后目标页可用性通过。",
         "hover": "unverified",
-        "focus": "unverified",
-        "active": "unverified",
+        "focus": "1440en/dark/reduce实际从Retry ShiftTab至#search-full-link，local index成功后仍focus该link；不授所有Tab顺序/其他viewport。",
+        "active": "unverified: actual activation of Full link/target-page usability not exercised; href and search-input Enter intent measured separately.",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -2234,9 +2434,59 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "2026-10-16 source inventory before/while batch A changes; no new runtime check",
+      "evidence_phase": "frozen E11b exact state fragments plus preserved old failures",
       "journey_queue_ids": [
         "R-03"
+      ],
+      "state_evidence": [
+        {
+          "binding_id": "EIMPORT.E11B.current-query-url.G.SEARCH.FULL.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "C14"
+          ],
+          "control_ids": [
+            "G.SEARCH.FULL.control.d7789e"
+          ],
+          "control_resolution": "Exact full-link href state observed; navigation was triggered by search input Enter, not an actual click/Enter on this link.",
+          "observation": "四actual currentFullHref立即反映新query且Enter导航请求正确，路由本地capture/abort没有访问canonicalhost；不是实际点击Full link后目标页可用性通过。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-041"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.focus-intent.G.SEARCH.FULL.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A5"
+          ],
+          "control_ids": [
+            "G.SEARCH.FULL.control.d7789e"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "1440en/dark/reduce实际从Retry ShiftTab至#search-full-link，local index成功后仍focus该link；不授所有Tab顺序/其他viewport。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null
+        }
+      ],
+      "issue_ids": [
+        "UX-041"
       ]
     },
     {
@@ -13255,14 +13505,14 @@
         "手机文章"
       ],
       "priority": "P2",
-      "evidence": "source-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
         "normal": "unverified",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "unverified",
+        "active": "1199 actualFAB打开AI；回1199后父先手动scroll500且等FAB可见再实际click，settled2帧+300ms sheet open/inertfalse；不认证自动反向断点交接。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -13282,9 +13532,35 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "2026-10-16 source inventory before/while batch A changes; no new runtime check",
+      "evidence_phase": "article1200 breakpoint actual named baseline; no complete acceptance",
       "journey_queue_ids": [
         "R-12"
+      ],
+      "state_evidence": [
+        {
+          "binding_id": "EIMPORT.AR0.open-return-observation.A.TOC.FAB.active",
+          "state": "active",
+          "status": "measured-observation-not-pass",
+          "receipt": "evidence/article-resize-baseline.json",
+          "receipt_sha256": "4a5dcb30f127be9fc8642949176b4769eac1e95b500892e3cc178b5e3edfbcc4",
+          "evidence_registry_ref": "article-resize-baseline-import",
+          "scope_refs": [
+            "AR0"
+          ],
+          "control_ids": [
+            "A.TOC.FAB.control.671080"
+          ],
+          "control_resolution": "Exact original FAB/mobileAI tab/input instances only. Observed counterpart is not automatic keyboard/action certification.",
+          "observation": "1199 actualFAB打开AI；回1199后父先手动scroll500且等FAB可见再实际click，settled2帧+300ms sheet open/inertfalse；不认证自动反向断点交接。",
+          "related_issue_ids": [
+            "UX-044"
+          ],
+          "limits": "One Chromium emulated desktop resize around1200 breakpoint; unsent synthetic draft; no model or submit; focus/continuity exploratory baseline, not complete certification. Return initialframe blank is not a stable defect. FullTab order, OSzoom, physical device, reverse auto handoff and other pages/viewports remain unverified. Disjoint E11 search WIP not built and not responsible.",
+          "verified_score": null
+        }
+      ],
+      "issue_ids": [
+        "UX-044"
       ]
     },
     {
@@ -13313,14 +13589,14 @@
         "手机文章"
       ],
       "priority": "P2",
-      "evidence": "source-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
         "normal": "unverified",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "unverified",
+        "active": "初始1199实际点abs-tab-ai后可输入；回1199 settled时focus在原abs-tab-ai，原草稿仍在。只AI变体，不授整组Arrow/Home/End/Tab语义。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -13340,9 +13616,35 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "2026-10-16 source inventory before/while batch A changes; no new runtime check",
+      "evidence_phase": "article1200 breakpoint actual named baseline; no complete acceptance",
       "journey_queue_ids": [
         "R-12"
+      ],
+      "state_evidence": [
+        {
+          "binding_id": "EIMPORT.AR0.selected-ai-observation.A.TOC.MOBILETABS.active",
+          "state": "active",
+          "status": "measured-observation-not-pass",
+          "receipt": "evidence/article-resize-baseline.json",
+          "receipt_sha256": "4a5dcb30f127be9fc8642949176b4769eac1e95b500892e3cc178b5e3edfbcc4",
+          "evidence_registry_ref": "article-resize-baseline-import",
+          "scope_refs": [
+            "AR0"
+          ],
+          "control_ids": [
+            "A.TOC.MOBILETABS.control.233f10"
+          ],
+          "control_resolution": "Exact original FAB/mobileAI tab/input instances only. Observed counterpart is not automatic keyboard/action certification.",
+          "observation": "初始1199实际点abs-tab-ai后可输入；回1199 settled时focus在原abs-tab-ai，原草稿仍在。只AI变体，不授整组Arrow/Home/End/Tab语义。",
+          "related_issue_ids": [
+            "UX-044"
+          ],
+          "limits": "One Chromium emulated desktop resize around1200 breakpoint; unsent synthetic draft; no model or submit; focus/continuity exploratory baseline, not complete certification. Return initialframe blank is not a stable defect. FullTab order, OSzoom, physical device, reverse auto handoff and other pages/viewports remain unverified. Disjoint E11 search WIP not built and not responsible.",
+          "verified_score": null
+        }
+      ],
+      "issue_ids": [
+        "UX-044"
       ]
     },
     {
@@ -13563,13 +13865,13 @@
         "文章"
       ],
       "priority": "P2",
-      "evidence": "source-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "",
       "state_observations": {
-        "normal": "unverified",
+        "normal": "1199未发compact草稿原DOM/value跨1200并回1199仍保留；1200 desktop AI原未选/textarea空，明确点desktopAI后仍空。不是草稿数据删除，也不把返回瞬间blank当稳定缺陷。",
         "hover": "unverified",
-        "focus": "unverified",
+        "focus": "1199 textarea焦点→1200 sheet inert/overflow解锁后focusBODY；下一真实Tab scroll500→26055落推荐文章链接。desktopAI未选且draft空，跨布局续写/焦点连续性缺口，仅此路径。",
         "active": "unverified",
         "disabled": "unverified",
         "loading": "unverified",
@@ -13596,9 +13898,60 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "2026-10-16 source inventory before/while batch A changes; no new runtime check",
+      "evidence_phase": "article1200 breakpoint actual named baseline; no complete acceptance",
       "journey_queue_ids": [
         "D-03"
+      ],
+      "state_evidence": [
+        {
+          "binding_id": "EIMPORT.AR0.draft-pair-observation.A.AI.INPUT.normal",
+          "state": "normal",
+          "status": "measured-observation-not-pass",
+          "receipt": "evidence/article-resize-baseline.json",
+          "receipt_sha256": "4a5dcb30f127be9fc8642949176b4769eac1e95b500892e3cc178b5e3edfbcc4",
+          "evidence_registry_ref": "article-resize-baseline-import",
+          "scope_refs": [
+            "AR0"
+          ],
+          "control_ids": [
+            "A.AI.INPUT.control.001165",
+            "A.AI.INPUT.control.4748de"
+          ],
+          "control_resolution": "Exact original FAB/mobileAI tab/input instances only. Observed counterpart is not automatic keyboard/action certification.",
+          "observation": "1199未发compact草稿原DOM/value跨1200并回1199仍保留；1200 desktop AI原未选/textarea空，明确点desktopAI后仍空。不是草稿数据删除，也不把返回瞬间blank当稳定缺陷。",
+          "related_issue_ids": [
+            "UX-044"
+          ],
+          "limits": "One Chromium emulated desktop resize around1200 breakpoint; unsent synthetic draft; no model or submit; focus/continuity exploratory baseline, not complete certification. Return initialframe blank is not a stable defect. FullTab order, OSzoom, physical device, reverse auto handoff and other pages/viewports remain unverified. Disjoint E11 search WIP not built and not responsible.",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.AR0.breakpoint-focus-failure.A.AI.INPUT.focus",
+          "state": "focus",
+          "status": "known-failure-as-of-e5-article-resize-baseline",
+          "receipt": "evidence/article-resize-baseline.json",
+          "receipt_sha256": "4a5dcb30f127be9fc8642949176b4769eac1e95b500892e3cc178b5e3edfbcc4",
+          "evidence_registry_ref": "article-resize-baseline-import",
+          "scope_refs": [
+            "AR0"
+          ],
+          "control_ids": [
+            "A.AI.INPUT.control.001165"
+          ],
+          "control_resolution": "Exact original FAB/mobileAI tab/input instances only. Observed counterpart is not automatic keyboard/action certification.",
+          "observation": "1199 textarea焦点→1200 sheet inert/overflow解锁后focusBODY；下一真实Tab scroll500→26055落推荐文章链接。desktopAI未选且draft空，跨布局续写/焦点连续性缺口，仅此路径。",
+          "related_issue_ids": [
+            "UX-044"
+          ],
+          "limits": "One Chromium emulated desktop resize around1200 breakpoint; unsent synthetic draft; no model or submit; focus/continuity exploratory baseline, not complete certification. Return initialframe blank is not a stable defect. FullTab order, OSzoom, physical device, reverse auto handoff and other pages/viewports remain unverified. Disjoint E11 search WIP not built and not responsible.",
+          "verified_score": null,
+          "support_control_ids": [
+            "A.AI.INPUT.control.4748de"
+          ]
+        }
+      ],
+      "issue_ids": [
+        "UX-044"
       ]
     },
     {
@@ -69927,14 +70280,14 @@
         "全站搜索AI"
       ],
       "priority": "P2",
-      "evidence": "source-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "v1.2补全DOM工厂生成或条件挂载控件；未实际加载第三方/请求后端。",
       "state_observations": {
         "normal": "unverified",
         "hover": "unverified",
         "focus": "unverified",
-        "active": "unverified",
+        "active": "仅C12合成pagehide/pageshow persisted:true：完成AI answer/原followup inputDOM/draft/context保留，随后input Enter受控followup完成。没有实点send按钮；真实Back未命中BFCache、token已变，不能套用本合同。",
         "disabled": "unverified",
         "loading": "unverified",
         "error": "unverified",
@@ -69960,15 +70313,36 @@
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "2026-10-16 source census v1.2; implementation batch A may already differ",
+      "evidence_phase": "frozen E11b exact state fragments plus preserved old failures",
       "journey_queue_ids": [
         "D-02"
+      ],
+      "state_evidence": [
+        {
+          "binding_id": "EIMPORT.E11B.synthetic-page-lifecycle.G.SEARCH.FOLLOWUP.active",
+          "state": "active",
+          "status": "partial-verified-controlled-component-contract",
+          "receipt": "evidence/batch-e11-contracts.log",
+          "receipt_sha256": "e0da1fd7176494dff5ca64f74f545834837d0cd43f3ecd53f5a247c0100e0b54",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "C12"
+          ],
+          "control_ids": [
+            "G.SEARCH.FOLLOWUP.control.c72eb6"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "仅C12合成pagehide/pageshow persisted:true：完成AI answer/原followup inputDOM/draft/context保留，随后input Enter受控followup完成。没有实点send按钮；真实Back未命中BFCache、token已变，不能套用本合同。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null
+        }
       ]
     },
     {
       "id": "G.SEARCH.RETRY",
-      "label": "AI搜索重试",
-      "selector": ".search-palette__ai-error .ai-retry-btn",
+      "label": "重新加载索引 / AI 回答重试（各自目标）",
+      "selector": ".search-palette__ai-error .ai-retry-btn, #search-index-retry",
       "source": {
         "file": "assets/js/search-palette.js",
         "symbol_or_needle": "retryBtn.className",
@@ -69982,25 +70356,25 @@
         "hover": "反馈待真实 hover 核验",
         "focus": "Tab 可达与异步完成不抢焦点待实测",
         "active": "动作启动后防重复提交",
-        "disabled": "请求中/输入为空/不可用时真实 disabled；逐项待核验",
-        "loading": "应为实际请求状态，不能用装饰动画伪成功",
-        "error": "源中存在错误/重试/直达出口，详见该条；未逐个断网实测",
+        "disabled": "索引请求中aria-disabled且实际guard有效，保持焦点；AI单独条件待验",
+        "loading": "索引Retry保持aria-disabled/原焦点并guard拒重复；AI重试自身另验",
+        "error": "索引错误/超时保留query与可用Retry；不继承为AI error通过",
         "empty": "无内容或未连接时说明下一步，不伪造内容"
       },
       "routes": [
         "全站搜索AI失败"
       ],
       "priority": "P2",
-      "evidence": "source-only",
+      "evidence": "partial-state-evidence",
       "verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "note": "v1.2补全DOM工厂生成或条件挂载控件；未实际加载第三方/请求后端。",
       "state_observations": {
-        "normal": "unverified",
+        "normal": "新local index Retry：A4/5目标44高、14px、中心hit；原坐标在error/pending不变。C4/5只放大status文字200%且button rect不变，不是pagezoom。",
         "hover": "unverified",
-        "focus": "unverified",
-        "active": "unverified",
+        "focus": "旧13合同已过但390zh actual原中心第二click后焦点BODY/top；父/独立诊断y346.375→322.828125。旧log保留，不以新15通过改写历史失败。",
+        "active": "两actual本地503→原坐标Retry→真实local index10条，query保留；关开缓存同index总GET2。仅索引恢复，不授AIretry行为。",
         "disabled": "unverified",
-        "loading": "unverified",
+        "loading": "两actual route503后同一原中心连点两次，pending aria-disabled=true/focus原Retry，GET仅2。合同非合作headers/JSON同样解锁，不继承AI请求。",
         "error": "unverified",
         "empty": "unverified",
         "source_location": "found"
@@ -70008,19 +70382,176 @@
       "familyId": "G.SEARCH.RETRY",
       "scope": "control-family",
       "control_ids": [
-        "G.SEARCH.RETRY.control.788d65"
+        "G.SEARCH.RETRY.control.788d65",
+        "G.SEARCH.RETRY.control.b68b79"
       ],
       "controls": [
         {
           "id": "G.SEARCH.RETRY.control.788d65",
           "selector": ".search-palette__ai-error .ai-retry-btn",
-          "instance_policy": "同一模板数据重复按运行时渲染实例；本盘点不虚构实例数"
+          "instance_policy": "同一模板数据重复按运行时渲染实例；本盘点不虚构实例数",
+          "retry_target": "AI answer"
+        },
+        {
+          "id": "G.SEARCH.RETRY.control.b68b79",
+          "selector": "#search-index-retry",
+          "label": "重新加载索引 / Reload index",
+          "retry_target": "local language index",
+          "source": {
+            "file": "layouts/partials/search-palette.html",
+            "line": 104,
+            "sha256": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46"
+          },
+          "instance_policy": "One conditional local-index Retry, separate from existing AIretry788d65",
+          "registered_in_version": "1.20",
+          "prior_plan_registry_ref": "E11-index-retry-source-planned"
         }
       ],
       "selector_type": "css",
-      "evidence_phase": "2026-10-16 source census v1.2; implementation batch A may already differ",
+      "evidence_phase": "frozen E11b exact state fragments plus preserved old failures",
       "journey_queue_ids": [
         "D-02"
+      ],
+      "state_evidence": [
+        {
+          "binding_id": "EIMPORT.E11B.index-target.G.SEARCH.RETRY.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A4",
+            "A5",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "control_ids": [
+            "G.SEARCH.RETRY.control.b68b79"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "新local index Retry：A4/5目标44高、14px、中心hit；原坐标在error/pending不变。C4/5只放大status文字200%且button rect不变，不是pagezoom。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-045"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.index-pending.G.SEARCH.RETRY.loading",
+          "state": "loading",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A4",
+            "A5",
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C9",
+            "C10"
+          ],
+          "control_ids": [
+            "G.SEARCH.RETRY.control.b68b79"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "两actual route503后同一原中心连点两次，pending aria-disabled=true/focus原Retry，GET仅2。合同非合作headers/JSON同样解锁，不继承AI请求。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-039",
+            "UX-045"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.index-focus.G.SEARCH.RETRY.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A4",
+            "A5"
+          ],
+          "control_ids": [
+            "G.SEARCH.RETRY.control.b68b79"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "390zh Retry focus保持至成功后input；1440en真实ShiftTab至Full Search后成功仍在原link，不抢新意图。两actual error/pending y精确相等。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-045"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.index-recover.G.SEARCH.RETRY.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "receipt": "evidence/batch-e11-actions.json",
+          "receipt_sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source.json",
+          "scope_refs": [
+            "A4",
+            "A5",
+            "C0",
+            "C1",
+            "C2",
+            "C3"
+          ],
+          "control_ids": [
+            "G.SEARCH.RETRY.control.b68b79"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "两actual本地503→原坐标Retry→真实local index10条，query保留；关开缓存同index总GET2。仅索引恢复，不授AIretry行为。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-039"
+          ]
+        },
+        {
+          "binding_id": "EIMPORT.E11B.pre-fix-displacement.G.SEARCH.RETRY.focus",
+          "state": "focus",
+          "status": "known-failure-as-of-E11a-pre-layout-fix",
+          "receipt": "evidence/batch-e11-actions-layout-failure.log",
+          "receipt_sha256": "badcabd18eb9348df0b8a4416ff3c95d6c6fda4935ef0a1140dd941c41f8cd98",
+          "evidence_registry_ref": "e11-index-state-import",
+          "source_context_ref": "batch-e11-source-pre-layout-fix.json",
+          "scope_refs": [
+            "UX045_history"
+          ],
+          "control_ids": [
+            "G.SEARCH.RETRY.control.b68b79"
+          ],
+          "control_resolution": "Only these controls/instances; local-index Retry never inherits AIretry; controlled lifecycle never certifies real BFCache",
+          "observation": "旧13合同已过但390zh actual原中心第二click后焦点BODY/top；父/独立诊断y346.375→322.828125。旧log保留，不以新15通过改写历史失败。",
+          "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification. Consult registry for clock/fixture/BFCache and200%-status-only limits.",
+          "verified_score": null,
+          "related_issue_ids": [
+            "UX-045"
+          ],
+          "scoped_followup": {
+            "registry_ref": "e11-index-state-import",
+            "note": "Original failure preserved. Independent closure is only final E11b named contracts/actual scopes; whole-family unverified."
+          }
+        }
+      ],
+      "issue_ids": [
+        "UX-039",
+        "UX-045"
       ]
     },
     {
@@ -83018,6 +83549,670 @@
         "verification": "Reviewer inspected17images and independently recomputed four opaque status/enabledRetry raw ratios",
         "limits": "Original14px mid-reveal/prepaint unknown retained; no physical QR scan, complete family or all-state certification."
       }
+    },
+    "article-resize-baseline-import": {
+      "imported_at_shanghai": "2026-10-16T05:11:52+08:00",
+      "receipt": "evidence/article-resize-baseline.json",
+      "receipt_sha256": "4a5dcb30f127be9fc8642949176b4769eac1e95b500892e3cc178b5e3edfbcc4",
+      "preview_revision": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+      "source_identities": [
+        {
+          "file": "static/js/article-bottom-sheet.js",
+          "frozen_sha256": "0a0f4a2b09b75d087dd41ec0659b9ff4af4ac932a6142e663ad4497e8d424f9a",
+          "matches_e5_git_blob": true,
+          "matches_current": true
+        },
+        {
+          "file": "static/js/article-chat.js",
+          "frozen_sha256": "9b81efeabd660a9cc77afb9c62ef54b5aca485aa346b01b4a68cc8933868a2f2",
+          "matches_e5_git_blob": true,
+          "matches_current": true
+        },
+        {
+          "file": "static/js/article-tabs.js",
+          "frozen_sha256": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+          "matches_e5_git_blob": true,
+          "matches_current": true
+        },
+        {
+          "file": "layouts/_default/single.html",
+          "frozen_sha256": "e07f6bd5f3062004db0193cd596bac40632107f0919746d803143818e1eb0479",
+          "matches_e5_git_blob": true,
+          "matches_current": true
+        },
+        {
+          "file": "layouts/partials/article/editorial-tools.html",
+          "frozen_sha256": "a30181df494f6386b349d327d49a6fa8b650b0d09110d67afeebfbc3dd2af6ca",
+          "matches_e5_git_blob": true,
+          "matches_current": true
+        },
+        {
+          "file": "assets/css/extended/article-bottom-sheet.css",
+          "frozen_sha256": "a42401645316e5510a54dc5e913d17d4fa9fefacf56568163053357df9007754",
+          "matches_e5_git_blob": true,
+          "matches_current": true
+        },
+        {
+          "file": "assets/css/extended/editorial-tools.css",
+          "frozen_sha256": "5a872d5ae55f8fe25ff0a41695c143d36b54087d0ef5b93f5037fc49ebf5b33d",
+          "matches_e5_git_blob": true,
+          "matches_current": true
+        }
+      ],
+      "receipts": [
+        {
+          "path": "evidence/article-resize-baseline.log",
+          "sha256": "917f7d0a2a7c28d72efc84c4e4d9c4da6202f06eeb423b3774692489415b6b86"
+        },
+        {
+          "path": "probe-article-resize.browser.mjs",
+          "sha256": "b53c2db34bacc8ac89b2a5999ff197fcfa9e7a26f0754d18c532e605a7f53834"
+        },
+        {
+          "path": "evidence/article-resize-initial.log",
+          "sha256": "8cf4f3873598f2ad4e4e88e454e5b80e36da9174af5d07e2755e6bc7767a2eea"
+        }
+      ],
+      "scope": {
+        "id": "AR0",
+        "route": "/zh/engineering/posts/use-go-tools-dlv/",
+        "viewport_sequence": [
+          [
+            1199,
+            900
+          ],
+          [
+            1200,
+            900
+          ],
+          [
+            1199,
+            900
+          ]
+        ],
+        "locale": "zh",
+        "motion": "reduce",
+        "browser": "Chromium emulated desktop",
+        "fixture": "unsent synthetic draft, no API/submit",
+        "snapshot_pointers": [
+          "/before",
+          "/afterDesktop",
+          "/afterTab",
+          "/desktopAfterOpen",
+          "/reopened"
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "evidence/article-resize-before-1199-zh.png",
+          "sha256": "75fbf8f312ef69e23c216a4325ebd89f5048b61fe367f0634d38c426b5c65acf",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/article-resize-after-1200-zh.png",
+          "sha256": "d7220fd1d8b907efa09ca8097b37feb9a7928556ea804597efb39ed78f2b1546",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/article-resize-desktop-ai-1200-zh.png",
+          "sha256": "1f765034c544368e509ef59919184fb233705e651faed6465ba43273b61e99a2",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/article-resize-return-1199-zh.png",
+          "sha256": "b8378378793e7d817effd8d7d017c701094f205c98f9156781680cb146274549",
+          "inspected_by_inventory": true
+        }
+      ],
+      "main_artifact_count": 4,
+      "diagnostic_artifact": {
+        "path": "evidence/article-resize-return-initial-frame-1199-zh.png",
+        "sha256": "be4ab11b7e028725ee4b2330f7607b23517dce9bd01e2f0aa569ea85defaf3da",
+        "classification": "initial unsettled frame, not stable blank defect"
+      },
+      "settled_return": "Parent resets scroll500, waits FAB no hidden class, actual clicks, then2frames+300ms. Original compact textarea DOM/value preserved; this is not automatic reverse handoff acceptance.",
+      "initial_probe_note": "Initial rerun clicked faded/hidden FAB while still at footer after actual Tab jump; timeout retained. Final return probe explicitly resets500 and waits; no separate FAB production defect inferred.",
+      "observed_failure": "1200 focusBODY/desktopAI unselected+empty; next actualTab scroll500→26055 lands recommended article rpc link",
+      "preserved_state": "Compact textarea same node and exact draft before/after/return; not deleted. Desktop AI explicit click remains separate empty editor.",
+      "review_status": "UX044 independently confirmed_named_article_resize_baseline_open / P2",
+      "limits": "One Chromium emulated desktop resize around1200 breakpoint; unsent synthetic draft; no model or submit; focus/continuity exploratory baseline, not complete certification. Return initialframe blank is not a stable defect. FullTab order, OSzoom, physical device, reverse auto handoff and other pages/viewports remain unverified. Disjoint E11 search WIP not built and not responsible.",
+      "new_state_bindings": 4,
+      "new_controls": 0,
+      "whole_family_accepted": false,
+      "verified_score": null,
+      "independent_review": {
+        "agent": "/root/space_review",
+        "received_at_shanghai": "2026-10-16T05:12:27+08:00",
+        "verified": "7SHA matchcurrent+e5 Git,4mainimages reviewed;1200focusBODY/nextTabfooter and independent emptydesktopAI; original compactdraft retained after manual500/FABreopen",
+        "limits": "FAB/mobiletabs are flow context; initialframe blank/hiddenFAB probe timeout not product failures; no reverseautomatic/fullTab/OSzoom certification."
+      }
+    },
+    "E11-index-retry-source-planned": {
+      "read_at_shanghai": "2026-10-16T05:11:52+08:00",
+      "selector": "#search-index-retry",
+      "planned_family_id": "G.SEARCH.RETRY",
+      "planned_control_id": "G.SEARCH.RETRY.control.b68b79",
+      "registered": true,
+      "counted_in_selector_entries": true,
+      "freeze_status": "registered after final E11b manifest+actual receipts",
+      "sources": [
+        {
+          "file": "layouts/partials/search-palette.html",
+          "line": 104,
+          "current_read_sha256": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46"
+        },
+        {
+          "file": "assets/js/search-palette.js",
+          "line": 860,
+          "current_read_sha256": "098dc2babfe419e6d87aab05638d1ea9d452f6ec69c36e0d345ae618f2de2b50"
+        }
+      ],
+      "retry_target": "index",
+      "does_not_inherit": "Existing AI retry control788d65 and its behavior evidence",
+      "next_binding_gate": "Use exact frozen source and final actual receipt; only then register real control ID/coverage.",
+      "verified_score": null,
+      "fulfilled_by_registry_ref": "e11-index-state-import",
+      "original_read_status": "Was sourceplanned only at v1.19; no historical measured inference."
+    },
+    "batch-e11-source.json": {
+      "manifest": "evidence/batch-e11-source.json",
+      "manifest_sha256": "3623e5df6b4c13a5266f9dae537346a17ffbb4e52ed4a4f7fd93afa54fd89ceb",
+      "frozen_at_utc": "2026-10-15T21:24:47.703427+00:00",
+      "base_revision": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+      "current_checkout_revision_at_import": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+      "imported_at_shanghai": "2026-10-16T05:31:50+08:00",
+      "dependencies": [
+        {
+          "file": "assets/js/search-palette.js",
+          "frozen_sha256": "69dcf084a8b1017b9dedd9e21a8adfc3f6a4c5da01f03cf848a0640b85b25101",
+          "current_matches": true
+        },
+        {
+          "file": "layouts/partials/search-palette.html",
+          "frozen_sha256": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46",
+          "current_matches": true
+        },
+        {
+          "file": "themes/PaperMod/assets/css/common/header.css",
+          "frozen_sha256": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+          "current_matches": true
+        },
+        {
+          "file": "tests/e2e/search-index-contracts.spec.ts",
+          "frozen_sha256": "a4a75159dc9b0ab8d199584c11a15e39a9e35be88e2c3a48aa5d339de26a0efd",
+          "current_matches": true
+        }
+      ],
+      "qa_config": {
+        "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+        "sha256": "30455a6b7840d4fc07d6d290e8d3da9dfb09112747238a305e7bff56f7cd953b",
+        "workers": 1,
+        "browser": "Chromium Metal"
+      },
+      "supplemental_qa": {
+        "path": "docs/ux-audit/2026-10-16/search-regression.config.mjs",
+        "sha256": "874246f1fe95e7dc83b226f6c59db16d812c3b26daad945685bb8cab42d6f049",
+        "scope": "Only existing Arrow/Enter + CtrlEnter mock regression; single desktop project"
+      },
+      "parent_runners": {
+        "batch-e11-actions.browser.mjs": "03b91976c958cb16690f5e100c25a2a944174203ac6ae3f3f83d7a2d1b8cd33f",
+        "batch-e11-back.browser.mjs": "ef3efa600196ce3723d755d1578fd02b2f7570fed7928a7c2f4c13509a4bef7e"
+      },
+      "all_current_match": true,
+      "scope": "Local index lifetime, truthful status,Retry,current result intent. AI core/markdown/history/fallback and public content unchanged.",
+      "limits": "4file frozen changed-source identity+QA/2runners/suppQA only, not full build closure. Old phases retain their own manifests."
+    },
+    "batch-e11-source-initial.json": {
+      "manifest": "evidence/batch-e11-source-initial.json",
+      "manifest_sha256": "cb72a99fae96cf5c8633485e6a701a0619b5adb3e77ac0d8112990ae3efdbd42",
+      "frozen_at_utc": "2026-10-15T21:13:06.121944+00:00",
+      "base_revision": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+      "phase": "E11",
+      "historical_only": true,
+      "files": {
+        "assets/js/search-palette.js": "098dc2babfe419e6d87aab05638d1ea9d452f6ec69c36e0d345ae618f2de2b50",
+        "layouts/partials/search-palette.html": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46",
+        "themes/PaperMod/assets/css/common/header.css": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+        "tests/e2e/search-index-contracts.spec.ts": "2e1dbe8747b44b70add15380527270de096d2546596aa2bc8597bca438a49492"
+      },
+      "limits": "Historical identity; never grants final E11b source acceptance."
+    },
+    "batch-e11-source-pre-layout-fix.json": {
+      "manifest": "evidence/batch-e11-source-pre-layout-fix.json",
+      "manifest_sha256": "811aa72a2c209483068691d5e70e30bd5a9b5b274f249df32bd3d7f7e3da6e6f",
+      "frozen_at_utc": "2026-10-15T21:18:34.784336+00:00",
+      "base_revision": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+      "phase": "E11a final freeze",
+      "historical_only": true,
+      "files": {
+        "assets/js/search-palette.js": "812df15edeb4a7573805f5f7a678b238f66e530f74a9e245004aa562989adabd",
+        "layouts/partials/search-palette.html": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46",
+        "themes/PaperMod/assets/css/common/header.css": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+        "tests/e2e/search-index-contracts.spec.ts": "b20b86fed45a6a4ccef8797614047469d94d64ac45d53de9acdbf14b278420cd"
+      },
+      "limits": "Historical identity; never grants final E11b source acceptance."
+    },
+    "batch-e11-source-pre-probe-fix.json": {
+      "manifest": "evidence/batch-e11-source-pre-probe-fix.json",
+      "manifest_sha256": "4cfe7cb25e568bb279ce407e66b03e209d8bf183f6691bce2e8007fad429fa91",
+      "frozen_at_utc": "2026-10-15T21:18:34.784336+00:00",
+      "base_revision": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+      "phase": "E11a final freeze",
+      "historical_only": true,
+      "files": {
+        "assets/js/search-palette.js": "812df15edeb4a7573805f5f7a678b238f66e530f74a9e245004aa562989adabd",
+        "layouts/partials/search-palette.html": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46",
+        "themes/PaperMod/assets/css/common/header.css": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+        "tests/e2e/search-index-contracts.spec.ts": "b20b86fed45a6a4ccef8797614047469d94d64ac45d53de9acdbf14b278420cd"
+      },
+      "limits": "Historical identity; never grants final E11b source acceptance."
+    },
+    "e11-index-state-import": {
+      "imported_at_shanghai": "2026-10-16T05:31:50+08:00",
+      "source_context_ref": "batch-e11-source.json",
+      "receipts": [
+        {
+          "path": "evidence/batch-e11-contracts.log",
+          "sha256": "e0da1fd7176494dff5ca64f74f545834837d0cd43f3ecd53f5a247c0100e0b54"
+        },
+        {
+          "path": "evidence/batch-e11-regression.log",
+          "sha256": "2e8cd4e699f0e5206ba396385a99ddddeee3029efdec33fc8dc55b5e98209efd"
+        },
+        {
+          "path": "evidence/batch-e11-actions.json",
+          "sha256": "af108c63cc120f3cd6f22f87b7b67e6d4b3b0a0fc1a93d61595f19c17c9ed788"
+        },
+        {
+          "path": "evidence/batch-e11-actions.log",
+          "sha256": "1c7b225b9dfcceae11b885f87f47b3ee065d4536a7b7add9b721790d449614eb"
+        },
+        {
+          "path": "evidence/batch-e11-back.json",
+          "sha256": "c843813cac499b1e2a18952e5fe97edde10f1b450b2d17ccaeeb2b0819cb9891"
+        },
+        {
+          "path": "evidence/batch-e11-back.log",
+          "sha256": "fef85911e7402e96a7cb651d6270c9c5fd39158c0e988a3e8e661551b57c8c6b"
+        },
+        {
+          "path": "evidence/batch-e11b-typecheck.log",
+          "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+        },
+        {
+          "path": "evidence/batch-e11b-syntax.log",
+          "sha256": "f8249ef3dba75656faf331c07ee42b9d745dba52df6166e9cf220f24d8ad7e61"
+        },
+        {
+          "path": "evidence/batch-e11b-diff.log",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "evidence/batch-e11a-hugo.log",
+          "sha256": "67e6fbf83f627c18e632953c2c09b662ed9e6da3eaa325c411806ef69c3eb12d"
+        },
+        {
+          "path": "evidence/batch-e11-initial-contracts.log",
+          "sha256": "35fd43adb6e6edf471c8712e192143855761302c2a3579ded17ba213f4cecf29"
+        },
+        {
+          "path": "evidence/batch-e11a-contracts.log",
+          "sha256": "3d6112e8b801c1a627dd79eb50550c5b37b3c44bba32efe2bbec75296f0348c0"
+        },
+        {
+          "path": "evidence/batch-e11-actions-layout-failure.log",
+          "sha256": "badcabd18eb9348df0b8a4416ff3c95d6c6fda4935ef0a1140dd941c41f8cd98"
+        },
+        {
+          "path": "evidence/batch-e11-actions-initial.log",
+          "sha256": "20424c7e27925611539dfab4eb8b6ae43c2663cd8661e7341c44432c17a18651"
+        },
+        {
+          "path": "evidence/batch-e11-source-pre-layout-fix.json",
+          "sha256": "811aa72a2c209483068691d5e70e30bd5a9b5b274f249df32bd3d7f7e3da6e6f"
+        },
+        {
+          "path": "evidence/batch-e11-source-pre-probe-fix.json",
+          "sha256": "4cfe7cb25e568bb279ce407e66b03e209d8bf183f6691bce2e8007fad429fa91"
+        }
+      ],
+      "actual_scope_definitions": {
+        "A0": {
+          "kind": "actual-local-index-and-current-enter",
+          "route": "/zh/articles/",
+          "viewport": [
+            390,
+            844
+          ],
+          "locale": "zh",
+          "theme": "light",
+          "motion": "no-preference",
+          "receipt_pointer": "/contexts/0",
+          "method_limit": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+        },
+        "A1": {
+          "kind": "actual-local-index-and-current-enter",
+          "route": "/articles/",
+          "viewport": [
+            390,
+            844
+          ],
+          "locale": "en",
+          "theme": "dark",
+          "motion": "reduce",
+          "receipt_pointer": "/contexts/1",
+          "method_limit": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+        },
+        "A2": {
+          "kind": "actual-local-index-and-current-enter",
+          "route": "/zh/articles/",
+          "viewport": [
+            1440,
+            900
+          ],
+          "locale": "zh",
+          "theme": "dark",
+          "motion": "reduce",
+          "receipt_pointer": "/contexts/2",
+          "method_limit": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+        },
+        "A3": {
+          "kind": "actual-local-index-and-current-enter",
+          "route": "/articles/",
+          "viewport": [
+            1440,
+            900
+          ],
+          "locale": "en",
+          "theme": "light",
+          "motion": "no-preference",
+          "receipt_pointer": "/contexts/3",
+          "method_limit": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+        },
+        "A4": {
+          "kind": "actual-route503-local-retry-success-cache",
+          "route": "/zh/articles/",
+          "viewport": [
+            390,
+            844
+          ],
+          "locale": "zh",
+          "theme": "light",
+          "motion": "reduce",
+          "receipt_pointer": "/contexts/4",
+          "method_limit": "390 retry retained until success then input;1440 real Shift+Tab to full link retained after success"
+        },
+        "A5": {
+          "kind": "actual-route503-local-retry-success-cache",
+          "route": "/articles/",
+          "viewport": [
+            1440,
+            900
+          ],
+          "locale": "en",
+          "theme": "dark",
+          "motion": "reduce",
+          "receipt_pointer": "/contexts/5",
+          "method_limit": "390 retry retained until success then input;1440 real Shift+Tab to full link retained after success"
+        },
+        "A6": {
+          "kind": "actual-index-route-pending-with-virtual-deadline",
+          "route": "/articles/",
+          "viewport": [
+            390,
+            844
+          ],
+          "locale": "en",
+          "theme": "dark",
+          "motion": "reduce",
+          "receipt_pointer": "/contexts/6",
+          "method_limit": "Exact14999/15000ms virtual timer boundary, not15s wall latency; noncooperating headers+JSON and lateowners handled separately by deterministic contracts."
+        }
+      },
+      "contract_scope_definitions": {
+        "C0": {
+          "log_case": "✓   1 tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (590ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C1": {
+          "log_case": "✓   2 tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (365ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C2": {
+          "log_case": "✓   3 tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (427ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C3": {
+          "log_case": "✓   4 tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (379ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C4": {
+          "log_case": "✓   5 tests/e2e/search-index-contracts.spec.ts:80:37 › zh status text size 200% keeps the same Retry target through loading and timeout (356ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C5": {
+          "log_case": "✓   6 tests/e2e/search-index-contracts.spec.ts:80:37 › en status text size 200% keeps the same Retry target through loading and timeout (345ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C6": {
+          "log_case": "✓   7 tests/e2e/search-index-contracts.spec.ts:90:80 › a late fetch-failure cannot overwrite the newer successful index (326ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C7": {
+          "log_case": "✓   8 tests/e2e/search-index-contracts.spec.ts:90:80 › a late json-failure cannot overwrite the newer successful index (316ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C8": {
+          "log_case": "✓   9 tests/e2e/search-index-contracts.spec.ts:90:80 › a late json-success cannot overwrite the newer successful index (322ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C9": {
+          "log_case": "✓  10 tests/e2e/search-index-contracts.spec.ts:101:52 › the 15000ms total index deadline also releases a non-cooperating headers stage (373ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C10": {
+          "log_case": "✓  11 tests/e2e/search-index-contracts.spec.ts:101:52 › the 15000ms total index deadline also releases a non-cooperating json stage (375ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C11": {
+          "log_case": "✓  12 tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner (338ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C12": {
+          "log_case": "✓  13 tests/e2e/search-index-contracts.spec.ts:127:5 › pagehide and pageshow preserve a completed AI conversation, its draft and the next follow-up context (445ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C13": {
+          "log_case": "✓  14 tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article (357ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        },
+        "C14": {
+          "log_case": "✓  15 tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query (377ms)",
+          "test_source": "tests/e2e/search-index-contracts.spec.ts",
+          "reported_passed": true
+        }
+      },
+      "final_new_contracts": 15,
+      "final_new_contracts_seconds": 6.5,
+      "separate_existing_regressions": {
+        "count": 2,
+        "seconds": 2.8,
+        "scope": "existing Arrow/Enter and CtrlEnter controlled AI mock",
+        "not_counted_as_new_contracts": true
+      },
+      "actual_main_contexts": 7,
+      "main_artifacts": [
+        {
+          "path": "evidence/batch-e11-results-390-zh.png",
+          "sha256": "cf86edb661b5879a6ec2af3754846d970b7908ab07b2780c4573b988a06dcd07",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-fresh-intent-390-zh.png",
+          "sha256": "68583da4bf60d52b7eecd0a6d7a164983aa58fdf2a4abb863b4a99d53ed85582",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-results-390-en.png",
+          "sha256": "c9ac5d4db519f6a76a268dd1f17b423778ee81bc361a3dd1dd8a9c0dfee05690",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-fresh-intent-390-en.png",
+          "sha256": "08ea8b23904447f65df6d70b53d996d1e37979d4c1c183d0c722c9c8770b8a5d",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e11-results-1440-zh.png",
+          "sha256": "068e0dfe2b541cac5a2ed6ddecf04650afac9a431c8b7bd105a76febe20dd2e3",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-fresh-intent-1440-zh.png",
+          "sha256": "606203a8a991c78de5dd2a2cbfc82902fb1bfd65ef21ef7492ac5a4b90c25125",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-results-1440-en.png",
+          "sha256": "1c5e3f3d0b21f98dafd6a070827cc9c7eca2870af12ff33d131b0e93e32d3fc0",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-fresh-intent-1440-en.png",
+          "sha256": "3dc3d273c7f6b39e5455fbe3932939c0f554553ccaf670b1df016f718a9030de",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-error-390-zh.png",
+          "sha256": "eaec5d5fd2b71ea5c786b4a25d3d059953d024c1a43ab7cc42275c531208e169",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e11-retrying-390-zh.png",
+          "sha256": "3430fb332758f619a52ddd2022fd5b38c282d56a0f5d7ed17ccb62ccc1f4262e",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e11-recovered-390-zh.png",
+          "sha256": "96aa4948560bc673f6acc901446fdcc304279df7bbec78b9cc881497f7f47bc6",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-error-1440-en.png",
+          "sha256": "b8865ca82d7b2d8f7aebe3c0b5c11a69c22301c2640ff1c7bb924eeeb1597d0f",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-retrying-1440-en.png",
+          "sha256": "d427814788a5c07439aa210e69046bf05fa103dd216fcc1b21a9a79bca61bd22",
+          "inspected_by_inventory": false
+        },
+        {
+          "path": "evidence/batch-e11-recovered-1440-en.png",
+          "sha256": "66378fd34f1e81d53ec628cfc52d5355c4ed50a5e24f487396b6205f408111ae",
+          "inspected_by_inventory": true
+        },
+        {
+          "path": "evidence/batch-e11-timeout-390-en.png",
+          "sha256": "841193fe0c141e4510f54373281654c4f252ff5d1cc0fdea42276b7ec8e92086",
+          "inspected_by_inventory": false
+        }
+      ],
+      "main_artifact_count": 15,
+      "historical_contract_counts": {
+        "evidence/batch-e11-initial-contracts.log": [],
+        "evidence/batch-e11a-contracts.log": [
+          "13"
+        ]
+      },
+      "UX045_history": {
+        "source_context_ref": "batch-e11-source-pre-layout-fix.json",
+        "failure_log": "evidence/batch-e11-actions-layout-failure.log",
+        "scope": "390zh/light/reduce samecoordinate2click during route503→pending",
+        "confirmed_by_log": "activeElement id top rather than search-index-retry",
+        "parent_independent_coordinate_diagnostic": {
+          "failed_y": 346.375,
+          "pending_y": 322.828125,
+          "value_origin": "Parent actual diagnostic and independent reviewer message, not printed in failure log JSON"
+        },
+        "observation": "13pass oldsuite did not cover original-position secondclick; real target moved and focusBODY. Five-line status-height reservation, final15pass and2actual retry contexts keep exact original y."
+      },
+      "initial_probe_note": "Original actions-initial log localStorage SecurityError was theme init run on aborted chrome error document; parent runner restricted preview origin. Not a product defect; retained distinct from real UX045 layout failure.",
+      "status_text_200pct": "Only #search-empty fontSize×2 in zh/en390 contracts C4/C5. Not full-page zoom/OS text scaling certification.",
+      "actual_back": {
+        "receipt": "evidence/batch-e11-back.json",
+        "artifacts": [
+          {
+            "path": "evidence/batch-e11-back-before-1440-zh.png",
+            "sha256": "6712ac7906aeb2a7fbc0e63294c19b41731879577aff298c551627e90228fbd9"
+          },
+          {
+            "path": "evidence/batch-e11-back-after-1440-zh.png",
+            "sha256": "e7ed85a58bd77bcbc5dde1d5bebd49158f75d102e38cd14bc5e535492d5becb8"
+          }
+        ],
+        "scope": "1440zh/dark/reduce actual same-local navigation/Back, controlled completedAI/followup",
+        "persisted": false,
+        "document_token_changed": true,
+        "restored": false,
+        "browser_reasons": [
+          "masked",
+          "response-cache-control-no-store",
+          "response-cache-control-no-store-with-js-network-request"
+        ],
+        "classification": "BFCache not hit; restoration remains unverified, not a passing BFCache or persistence defect claim"
+      },
+      "synthetic_lifecycle_scope": "C11/C12 dispatch PageTransitionEvent persisted:true; only controlled component query/AI answer/original followupDOM/draft/context preservation. Not real navigation or real BFCache.",
+      "review_status": "UX039/040/041/045 independently closed only named E11b scopes; no newP0/P1",
+      "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification.",
+      "new_state_bindings": 14,
+      "new_controls": [
+        "G.SEARCH.RETRY.control.b68b79"
+      ],
+      "whole_family_accepted": false,
+      "verified_score": null
+    },
+    "footnote-focus-qualified-diagnostic": {
+      "receipts": [
+        {
+          "path": "evidence/footnote-focus-baseline.json",
+          "sha256": "1ff0fad53d298ec0e63ef827175b9860a0f18e8258eb02ebcf0b61650b139cc2"
+        },
+        {
+          "path": "evidence/footnote-focus-baseline.log",
+          "sha256": "f1af24ae83503a5640bea711261381028deeb32ac99721b33d9962804e5d023c"
+        },
+        {
+          "path": "probe-footnote-focus.browser.mjs",
+          "sha256": "296cfce01db82d9006135c7446ffdbeebb5ae6d740ba33c42fd77253a1fcb5b5"
+        }
+      ],
+      "scope": "1440zh/fine/reduce, unchanged three footnote hashes from e5; search never activated",
+      "source_identities": {
+        "static/js/footnote-preview.js": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a",
+        "layouts/partials/footer.html": "fedadada1ba3642177b887fa5b9dfe7a94842b1261ac20af06d500d912ba1999",
+        "assets/css/extended/zzz-footnote-preview.css": "7c91e706f1e4e7c55dacc72a177d63b5cd8033b2d28024d4e68643b89e5f00d1"
+      },
+      "observations": "Programmatic marker focus opens preview; actual nextTab moves to nextmarker and remains normal after250ms. Programmatic citation focus inside preview followed by250ms hides it and focusBODY. More computed display:none.",
+      "limits": "Exploratory fine-pointer focus lifecycle. Marker/citation .focus are programmatic component probes, only subsequent Tab is a trusted key; does NOT claim an actual natural keyboard route into appended citation. No citation activated/external navigation/AI calls. Not whole feature inaccessibility: original marker Enter route remains available.",
+      "classification": "qualified component observation, not natural keyboard route failure/wholefeature inaccessible; UX042 firsttouch andUX044 article resize still open",
+      "new_state_bindings": 0,
+      "whole_family_accepted": false,
+      "verified_score": null
     }
   },
   "journey_queue": [

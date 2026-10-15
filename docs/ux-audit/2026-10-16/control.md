@@ -53,4 +53,10 @@ Heartbeat ID：`12-00`，当前聊天`01a13ec1-4c36-7410-915a-d52653d3129f`。�
 
 父任务后续在`batches.md`与`state.json`记录当前批次、验证源码revision、证据路径、工作中Agent及下一个可执行目标。
 
-最新已验本地checkpoint暂为`b5b6fa34`（E9c），E10/E10a现已独立闭环、准备保存。1317当前E10a冻结构建，17合同/17新图独立复核，native/focus/fullposter/loading/error/15s/Retry已测范围闭，未新增P0/P1。盘点1.18：309族/366selector entries（非按钮数）/295状态/63局部族/0完整；所有完整分null。UX039–041 search与UX042脚注开放，E11只读方案已准备尚未生产放行；QR portrait错误态约120px反馈→账号距离留作后续视觉细化。滚动恢复仅已稳定fonts/有限背景过渡，mid-reveal未知保留。无push/部署，heartbeat ACTIVE至12:00。
+最新已验本地checkpoint：`e5fafdc2`（E10/E10a；前序b5b6fa34 E9c）。1317当前同源E10a已验构建，17合同/17新主图独立复核，native/focus/fullposter/loading/error/15s/Retry已测范围闭，无新增P0/P1。盘点1.18：309族/366selector entries（非按钮数）/295状态/63局部族/0完整，完整分null。正常局部静态D4=96、恢复94.5/D1均94.5不等于完整族96。UX039–041 search与UX042脚注开放；E11只读方案已定（见next-batches），下一轮复用现有executor明确放行，当前无生产WIP/无在跑browser。QR portrait错误态约120px反馈→账号距离留作后续细化。滚动恢复仅稳定fonts/有限背景过渡，mid-reveal未知保留。无push/PR/部署，heartbeat ACTIVE继续至12:00。
+
+E11于05:04明确放行现有executor，限local index/result intent、真实status/44Retry、冗余eyebrow及新合同；单flight15s total fetch+JSON、关闭代次隔离、即时失效旧候选/Enter同步当前query。源码正在修改，不build半成品；1317继续E10a checkpoint e5fafdc2。资源swap10.79GiB/76Node/37.88GiB，复用缓存/服务、无新增浏览器并行。父独立补文章1199→1200的草稿/焦点风险基线，不涉及当前WIP source。
+
+05:15 E11初候选已3850ms构建到1317，但未验收；首合同因lazy-ready测具等待死锁中止，pagehide会话边界source review修复中。accepted checkpoint仍e5fafdc2，不能将当前candidate预览当已通过。
+
+05:35 E11b独立闭环：四源/QA/2runner/suppQA均match，15新+2旧合同通过，7actual15图+Back2图独立逐看，无新P0/P1，UX039040041045只命名范围闭。v1.20 309族/367selectors/313状态/69局部族，完整0/null。正常局部D1/D4=96，恢复94.5/94.5；仅两文案建议下一E11c，不把计划当完成。42脚注/44文章仍open，Back未命中BFCache而保unknown。三个Agent最终停写、无browser/build，保存本地checkpoint后继续；不push。

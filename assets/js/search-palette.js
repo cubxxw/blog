@@ -3,6 +3,8 @@
   const input = palette?.querySelector('.search-palette__input');
   const resultsList = document.getElementById('search-results-list');
   const resultCount = document.getElementById('search-result-count');
+  const resultSummary = document.getElementById('search-result-summary');
+  const indexRetry = document.getElementById('search-index-retry');
   const emptyMsg = document.getElementById('search-empty');
   const aiBtn = document.getElementById('search-ai-btn');
   const aiBox = document.getElementById('search-ai-box');
@@ -31,7 +33,10 @@
     retry: '重试',
     sources: '参考来源：',
     noResults: '没有找到匹配结果',
-    indexError: '搜索索引暂时无法载入，请稍后重试。'
+    indexError: '搜索索引暂时无法载入。可重新加载，查询会保留。',
+    indexLoading: '正在加载搜索索引…',
+    searching: '正在搜索…',
+    indexTimeout: '搜索索引加载超时。可重新加载，查询会保留。'
   } : {
     you: 'You',
     ai: 'AI',
@@ -44,7 +49,10 @@
     retry: 'Retry',
     sources: 'Sources: ',
     noResults: 'No matching results',
-    indexError: 'The search index could not be loaded. Please try again later.'
+    indexError: 'The search index could not load. Reload it to keep searching.',
+    indexLoading: 'Loading the search index…',
+    searching: 'Searching…',
+    indexTimeout: 'The search index timed out. Reload it to keep searching.'
   };
 
   let fuse, searchData;
@@ -56,6 +64,49 @@
   let activeIndex = -1;
   let lastFocusedElement = null;
   let aiRequest = null, aiSerial = 0;
+  let indexRequest = null, indexSerial = 0, indexState = 'idle';
+  let searchIntent = 0, debounceTimeout = null, renderedQuery = '';
+
+  function clearLocalResults() {
+    setActiveResult(-1, false);
+    resultsList.innerHTML = '';
+    renderedQuery = '';
+    resultCount.textContent = '0';
+    if (resultSummary) resultSummary.hidden = true;
+    input?.setAttribute('aria-expanded', 'false');
+  }
+
+  function showLocalStatus(kind) {
+    const failed = kind === 'error' || kind === 'timeout';
+    if (!failed && kind !== 'loading') emptyMsg.style.removeProperty('min-height');
+    if (resultSummary) resultSummary.hidden = !['results','empty'].includes(kind);
+    const message = {loading:labels.indexLoading, searching:labels.searching, empty:labels.noResults, error:labels.indexError, timeout:labels.indexTimeout}[kind];
+    emptyMsg.hidden = !message;
+    if (message) emptyMsg.textContent = message;
+    if (!indexRetry) return;
+    if (failed) {indexRetry.hidden = false; indexRetry.setAttribute('aria-disabled', 'false');}
+    else if (kind === 'loading') indexRetry.setAttribute('aria-disabled', 'true');
+    else {
+      if (document.activeElement === indexRetry && isOpen) input?.focus({preventScroll:true});
+      indexRetry.hidden = true;
+    }
+  }
+
+  function cancelSearchIntent() {
+    searchIntent++; clearTimeout(debounceTimeout); debounceTimeout = null;
+  }
+
+  function cleanupIndex(request) {
+    clearTimeout(request.timer);
+    request.controller.signal.removeEventListener('abort', request.onAbort);
+  }
+
+  function cancelIndex() {
+    const request = indexRequest; indexRequest = null; indexSerial++;
+    if (request) {request.controller.abort(); cleanupIndex(request);}
+    indexState = fuse ? 'ready' : 'idle';
+    input?.setAttribute('aria-busy', 'false');
+  }
   function cancelAI() {
     aiSerial++;
     const request = aiRequest; aiRequest = null;
@@ -113,7 +164,9 @@
       }
     }
     // Lazy load search data
+    updateFullSearchLink(input?.value || '');
     if (!fuse) loadSearchData();
+    else doSearch(input?.value || '');
   }
 
   // Close palette
@@ -121,15 +174,16 @@
     palette.setAttribute('hidden', '');
     document.body.classList.remove('search-palette-open');
     isOpen = false;
+    cancelSearchIntent(); cancelIndex();
     triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
     if (input) {
       input.value = '';
       input.setAttribute('aria-expanded', 'false');
       input.removeAttribute('aria-activedescendant');
     }
-    resultsList.innerHTML = '';
-    resultCount.textContent = '0';
-    emptyMsg.hidden = true;
+    clearLocalResults();
+    showLocalStatus('idle');
+    updateFullSearchLink('');
     activeIndex = -1;
     updateAiTrigger();
     hideAiBox();
@@ -199,23 +253,36 @@
     `;
   }
 
-  // Load index.json and initialize Fuse.js
-  function loadSearchData() {
-    // Load language-specific search index based on current page URL
-    const currentPath = window.location.pathname;
-    const langMatch = currentPath.match(/^\/(zh|en)/);
-    const searchLang = langMatch ? langMatch[1] : 'en';
-    const indexPath = searchLang !== 'en' ? `/${searchLang}/index.json` : '/index.json';
-    input?.setAttribute('aria-busy', 'true');
-
-    fetch(indexPath)
-      .then(response => {
-        if (!response.ok) throw new Error(`Search index error (${response.status})`);
-        return response.json();
-      })
-      .then(data => {
-        searchData = data;
-        fuse = new Fuse(searchData, {
+  // One owned, bounded request for this language's static local index.
+  async function loadSearchData(retry = false) {
+    if (!isOpen || indexRequest) return;
+    if (fuse) {doSearch(input?.value || ''); return;}
+    const langMatch = window.location.pathname.match(/^\/(zh|en)/);
+    const indexPath = langMatch && langMatch[1] !== 'en' ? `/${langMatch[1]}/index.json` : '/index.json';
+    const controller = new AbortController();
+    const request = {id:++indexSerial, controller, timer:null, onAbort:null, timedOut:false};
+    const interrupted = new Promise((_,reject) => {
+      request.onAbort = () => reject(new DOMException(request.timedOut ? 'Index timed out' : 'Index cancelled', request.timedOut ? 'TimeoutError' : 'AbortError'));
+    });
+    controller.signal.addEventListener('abort', request.onAbort, {once:true});
+    const owns = () => isOpen && indexRequest === request && request.id === indexSerial;
+    // Keep recovery in the same place while its shorter loading copy is shown.
+    // Measure the actual wrapped text, including a user's enlarged type.
+    if (retry && !emptyMsg.hidden) emptyMsg.style.minHeight = `${emptyMsg.getBoundingClientRect().height}px`;
+    else emptyMsg.style.removeProperty('min-height');
+    indexRequest = request; indexState = 'loading';
+    clearLocalResults(); input?.setAttribute('aria-busy', 'true');
+    if (indexRetry && !retry) indexRetry.hidden = true;
+    showLocalStatus('loading');
+    request.timer = setTimeout(() => {request.timedOut = true; controller.abort();}, 15000);
+    try {
+      const response = await Promise.race([fetch(indexPath, {signal:controller.signal}), interrupted]);
+      if (!owns()) return;
+      if (!response.ok) throw new Error(`Search index error (${response.status})`);
+      const data = await Promise.race([response.json(), interrupted]);
+      if (!owns()) return;
+      if (!Array.isArray(data)) throw new Error('Invalid search index');
+      const nextFuse = new Fuse(data, {
           keys: [
             { name: 'title', weight: 0.5 },
             { name: 'content', weight: 0.3 },
@@ -231,17 +298,15 @@
           tokenize: true,
           matchAllTokens: false
         });
-        input?.setAttribute('aria-busy', 'false');
-        if (input?.value.trim()) doSearch(input.value);
-      })
-      .catch(err => {
-        input?.setAttribute('aria-busy', 'false');
-        resultsList.innerHTML = '';
-        resultCount.textContent = '0';
-        emptyMsg.textContent = labels.indexError;
-        emptyMsg.hidden = false;
-        console.error('Failed to load search index:', err);
-      });
+      if (!owns()) return;
+      fuse = nextFuse; searchData = data; indexState = 'ready'; indexRequest = null;
+      input?.setAttribute('aria-busy', 'false');
+      doSearch(input?.value || '');
+    } catch (error) {
+      if (!owns()) return;
+      indexRequest = null; indexState = request.timedOut ? 'timeout' : 'error';
+      input?.setAttribute('aria-busy', 'false'); clearLocalResults(); showLocalStatus(indexState);
+    } finally {cleanupIndex(request);}
   }
 
   // Tokenize a query for fallback search: latin/number words plus CJK
@@ -629,42 +694,35 @@
   }
 
   function openSelectedResult() {
+    const query = input?.value.trim() || '';
+    updateFullSearchLink(query);
+    if (debounceTimeout !== null || renderedQuery !== query) doSearch(input?.value || '');
     const options = resultOptions();
     if (options.length) {
       const target = options[activeIndex >= 0 ? activeIndex : 0];
       window.location.assign(target.href);
       return;
     }
-    if (input?.value.trim() && fuse && fullLink) {
+    if (query && fullLink) {
       window.location.assign(fullLink.href);
     }
   }
 
   // Execute search
   function doSearch(query) {
-    updateFullSearchLink(query);
-    setActiveResult(-1, false);
-    if (!query.trim()) {
-      resultsList.innerHTML = '';
-      resultCount.textContent = '0';
-      emptyMsg.hidden = true;
-      input?.setAttribute('aria-expanded', 'false');
-      return;
-    }
+    if (!isOpen || query !== (input?.value || '')) return;
+    clearTimeout(debounceTimeout); debounceTimeout = null;
+    updateFullSearchLink(query); clearLocalResults();
     if (!fuse) {
+      showLocalStatus(indexRequest ? 'loading' : indexState);
       return;
     }
+    input?.setAttribute('aria-busy', 'false');
+    if (!query.trim()) {showLocalStatus('idle'); return;}
     const results = searchWithFallback(query, 10);
-    resultCount.textContent = results.length;
-    if (results.length === 0) {
-      resultsList.innerHTML = '';
-      emptyMsg.textContent = labels.noResults;
-      emptyMsg.hidden = false;
-      input?.setAttribute('aria-expanded', 'false');
-      return;
-    }
-    emptyMsg.hidden = true;
-    input?.setAttribute('aria-expanded', 'true');
+    renderedQuery = query.trim(); resultCount.textContent = results.length;
+    if (results.length === 0) {showLocalStatus('empty'); return;}
+    showLocalStatus('results'); input?.setAttribute('aria-expanded', 'true');
     const stripHtml = (html) => {
       const tmp = document.createElement('div');
       tmp.innerHTML = html;
@@ -800,7 +858,16 @@
     if (input) {input.value = question; input.focus();}
     updateAiTrigger();
   });
-  window.addEventListener('pagehide', cancelAI);
+  window.addEventListener('pagehide', () => {
+    cancelSearchIntent(); cancelIndex(); cancelAI();
+  });
+  window.addEventListener('pageshow', () => {
+    if (!isOpen) return;
+    updateFullSearchLink(input?.value || '');
+    if (fuse) doSearch(input?.value || '');
+    else loadSearchData();
+  });
+  indexRetry?.addEventListener('click', () => loadSearchData(true));
 
   // Suggested questions
   document.querySelectorAll('.search-palette__ai-suggestion').forEach(btn => {
@@ -813,13 +880,17 @@
     });
   });
 
-  // Input search event with debounce
-  let debounceTimeout;
-  input?.addEventListener('input', (e) => {
-    clearTimeout(debounceTimeout);
-    setActiveResult(-1, false);
-    updateAiTrigger();
-    debounceTimeout = setTimeout(() => doSearch(e.target.value), 150);
+  // Input intent takes effect immediately; only the local calculation waits.
+  input?.addEventListener('input', () => {
+    cancelSearchIntent(); clearLocalResults(); updateFullSearchLink(input.value); updateAiTrigger();
+    if (!fuse) {showLocalStatus(indexRequest ? 'loading' : indexState); return;}
+    if (!input.value.trim()) {input.setAttribute('aria-busy', 'false'); showLocalStatus('idle'); return;}
+    input.setAttribute('aria-busy', 'true'); showLocalStatus('searching');
+    const query = input.value, intent = searchIntent;
+    debounceTimeout = setTimeout(() => {
+      debounceTimeout = null;
+      if (isOpen && intent === searchIntent && query === input.value) doSearch(query);
+    }, 150);
   });
 
   updateAiTrigger();

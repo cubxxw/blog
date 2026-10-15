@@ -1,0 +1,672 @@
+{
+  "at": "2026-10-15T21:25:43.910Z",
+  "batch": "E11",
+  "sourceManifest": "batch-e11-source.json",
+  "contexts": [
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "zh",
+        "dark": false,
+        "motion": "no-preference"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在加载搜索索引…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "正在搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "navigationURL": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Loading the search index…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Searching…",
+        "fullHref": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "navigationURL": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "zh",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在加载搜索索引…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "正在搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "navigationURL": "https://cubxxw.com/zh/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-local-index-and-current-enter",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "en",
+        "dark": false,
+        "motion": "no-preference"
+      },
+      "gets": 1,
+      "loaded": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": null,
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Searching…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "immediate": {
+        "query": "zz_no_matching_topic_981254",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Searching…",
+        "fullHref": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "navigationURL": "https://cubxxw.com/search/?q=zz_no_matching_topic_981254",
+      "oldFirst": "https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/",
+      "errors": [],
+      "denied": [],
+      "clock": "Only paused inside150ms debounce after actual local index success. Navigation captured/aborted before any canonical-host request."
+    },
+    {
+      "kind": "actual-route503-local-retry-success-cache",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "gets": 2,
+      "failed": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "搜索索引暂时无法载入。可重新加载，查询会保留。",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "false",
+          "x": 138,
+          "y": 346.375,
+          "width": 114,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "pending": {
+        "query": "Kubernetes",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "正在加载搜索索引…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "true",
+          "x": 138,
+          "y": 346.375,
+          "width": 114,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "search-index-retry",
+          "className": "search-palette__index-retry",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "success": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-0",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在加载搜索索引…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "cached": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-0",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "正在搜索…",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(111, 95, 77)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "搜索文章、笔记与关键词",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": [],
+      "focus": "390 retry retained until success then input;1440 real Shift+Tab to full link retained after success"
+    },
+    {
+      "kind": "actual-route503-local-retry-success-cache",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 2,
+      "failed": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "The search index could not load. Reload it to keep searching.",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "false",
+          "x": 663.734375,
+          "y": 360.515625,
+          "width": 112.515625,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "pending": {
+        "query": "Kubernetes",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Loading the search index…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "true",
+          "x": 663.734375,
+          "y": 360.515625,
+          "width": 112.515625,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "search-index-retry",
+          "className": "search-palette__index-retry",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "success": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-1",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Loading the search index…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "search-full-link",
+          "className": "search-palette__full-link",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "cached": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "true",
+        "activeDescendant": "search-result-option-1",
+        "results": 10,
+        "count": "10",
+        "summaryVisible": true,
+        "statusVisible": false,
+        "status": "Searching…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": [],
+      "focus": "390 retry retained until success then input;1440 real Shift+Tab to full link retained after success"
+    },
+    {
+      "kind": "actual-index-route-pending-with-virtual-deadline",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "gets": 1,
+      "at14999": {
+        "query": "Kubernetes",
+        "busy": "true",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "Loading the search index…",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": true,
+          "disabled": "true",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "at15000": {
+        "query": "Kubernetes",
+        "busy": "false",
+        "expanded": "false",
+        "activeDescendant": null,
+        "results": 0,
+        "count": "0",
+        "summaryVisible": false,
+        "statusVisible": true,
+        "status": "The search index timed out. Reload it to keep searching.",
+        "fullHref": "https://cubxxw.com/search/?q=Kubernetes",
+        "retry": {
+          "hidden": false,
+          "disabled": "false",
+          "x": 138.734375,
+          "y": 348.09375,
+          "width": 112.515625,
+          "height": 44,
+          "fontSize": "14px",
+          "color": "rgb(183, 165, 143)"
+        },
+        "focus": {
+          "id": "",
+          "className": "search-palette__input",
+          "inside": true
+        },
+        "heading": "Search articles, notes, and keywords",
+        "eyebrows": 0,
+        "overflowX": false
+      },
+      "closed": true,
+      "errors": [],
+      "denied": [],
+      "clock": "Exact14999/15000ms virtual timer boundary, not15s wall latency; noncooperating headers+JSON and lateowners handled separately by deterministic contracts."
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-results-390-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-390-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-results-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-fresh-intent-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-error-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-390-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-error-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-retrying-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-recovered-1440-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e11-timeout-390-en.png"
+  ],
+  "limits": "Seven Chromium contexts, two languages/two sizes and namedthemes/motion; actual local index/coordinates/keys with controlled route outages. No AI/model/share/contact calls or public navigation. Clock-only intent/deadline fragments labeled. Not full family/site96, physical device, Safari or AT certification."
+}

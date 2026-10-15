@@ -210,3 +210,29 @@ final3hash/QA核验，Hugo3539ms，原9未放宽+新增8总17合同全部通过1
 17不同合同、17新主图与17图内8正常/7恢复/2无clock、所有原失败与诊断均独立复核；3src/QA/3父runnerhash一致，无新增P0/P1，UX018/043只命名范围闭。正常静态D4先前没有可见缺陷的泛化扣分撤回，局部专家96但完整维度null；D1=94.5。恢复D4=94.5，390 Retry底约455→账号标题580有约120px空区关联成本，已给具体后续布局建议，不拿AT/实体扫码未知扣视觉分。全族0/null不变。
 
 Inventory1.18为309族/366selector entries/295状态/63证据族，366不是按钮数；QR details/Retry与脚注marker/More补齐，root98是support-root非点击。Scorecard175检查/86视觉片段，UX039–042开放，mid-reveal滚动未知。三个Agent均已停止生产/盘点/评分写入；E11只有只读方案，未开始实现。准备本地checkpoint，不push/PR/合并/部署；heartbeat仍ACTIVE，继续至12:00。
+
+E10/E10a本地checkpoint `e5fafdc2` 已读回保存，未push。1317仍提供该冻结源码构建；三个Agent已停写，无browser/build运行。下一轮E11按已准备scope直接使用现有executor，E12脚注随后，均不需要重新询问用户。
+
+E11于05:04明确放行现有executor，限local index/result intent、真实status/44Retry、冗余eyebrow及新合同；单flight15s total fetch+JSON、关闭代次隔离、即时失效旧候选/Enter同步当前query。源码正在修改，不build半成品；1317继续E10a checkpoint e5fafdc2。资源swap10.79GiB/76Node/37.88GiB，复用缓存/服务、无新增浏览器并行。父独立补文章1199→1200的草稿/焦点风险基线，不涉及当前WIP source。
+
+
+## E11实施期间 disjoint 文章布局基线
+
+7个article source与e5 Gitblob SHA相等，1317仍E10a未build WIP。1199×900zh/reduce实际compactAI输入synthetic未发送draft→1200 sheet正确inert/解锁，但focus回BODY、desktopAI未选且输入空；下一实际Tab由scroll500跳26055的推荐链接。切回1199原compact节点/value保留，不能称草稿数据丢失。4主图与JSON/log/script保存，原返回未等paint图另留，2frames+300ms补图正常。第一次probe返回时在文末，FAB按原design隐藏造成click超时；仅父probe恢复scroll500后再click可见FAB修正，原失败log保留，源码未改。独立定级/评分中，未闭合。
+
+
+E11首次3850ms Hugo成功，但首合同prepare在首次click前等待lazy __searchPaletteReady，30s测试超时，父停止本次12-run避免其余相同死等；不是搜索功能超时。原source manifest与合同日志留initial。父setup同步修正先取得trigger、真正点击再等input可见。独立source review另发现新pagehide调用closePalette会清AI/query，accepted e5只cancelAI；尚无实际数据丢失声明，已明确执行Agent仅恢复旧会话保留边界并补pageshow索引恢复/受控会话合同。新冻结前不build。
+
+E11修复等待期间独立E12组件诊断：1440zh/fine/reduce，source三hash与原脚注相同。marker programmatic focus显示tooltip/两个links，More computed display:none；下一真实Tab到下一个marker并换预览（正常，不判失焦）。另显式programmatic citation.focus组件探针，立即JSON内部focus+visibletrue，250ms后hidden/aria-hiddentrue且focusBODY；自然键盘进入引用的路径仍未证明。3PNG父已逐看，inside-initial图因capture自身越180ms实际已hidden，不作为初可见证明；JSON才是定时前状态。后续E12以原firsttap冲突为主，可有界修焦点生命周期，不把本组件诊断冒称完整keyboard验收。
+
+
+E11a 13合同6.2s通过、Hugo3634ms。父main首次harness在本地截获abort导航后进入error document，theme-init仍访问localStorage触发SecurityError；原log留，父只把init限制本地preview origin，不filter生产errors，不改source。修正后正常4query contexts达到；390 recovery实际相同坐标第二click失焦，独立diag确认error Retry y346.375→loading322.828125，上移23.546875；第一次focus正确，第二原中心现DIVpanel→BODY，GET2保持单flight。正式JSON/2PNG/log/source-pre-layout-fix保存；执行Agent E11b只稳定重试消息footprint并把4state合同改为原坐标第二click，未放宽focus/44/deadline/intent。
+
+
+## E11b父最终有界验收
+
+final四源/QA/2父runner/额外旧专项QA hash逐一读回一致；Hugo3785ms。15不同新合同6.5s全过，2旧Arrow/selectedEnter与CtrlEnter受控AI专项2.8s过（不是17新合同）；中英status文字200%只对应文字，不冒称全页zoom。父main7实际context/15PNG全过：4真实localindex中英390/1440明暗normal/reduce新query立即删旧候选/fullHref当前、150ms内Enter当前fullsearch且canonical导航本地abort；2真实route503→原坐标双click只1Retryflight、14px/44/屏内、保pendingfocus/readyfocus按意图、cached重开无多GET；1实际pendingroute+clock精确14999loading/15000timeout/ESC回trigger，明确virtual期限。父15图全部逐看，无实后端/AI/分享联系。
+
+另父1440zh/dark/reduce已完成mockAI+未发送followup，真正same-local nav→Back attempted但pageshow.persisted=false/document token变，浏览器notRestoredReasons包含response-cache-control-no-store、response-cache-control-no-store-with-js-network-request和masked；如实保存2前后图/JSON/log，不给BFCache恢复通过。只有新合同中synthetic pagehide/pageshow保原AI DOM/value/history及后续context通过。该完整Back/生产cache/实体AT/Safari仍unknown，未扩大产品storage。全部17主图父已看；等待独立评分/盘点正式停写再checkpoint。
+
+E11b独立最终冻结：scorecard45发现/188行为片段/90视觉片段，inventory1.20 313/69/309/367；两审计Agent已明确停写。39/40/41/45 scopedclosed，无新P0/P1；正常静态D1/D4=96、recovery94.5/94.5，fullnull。E11c仅解决index术语与390孤行，E12 3源码+新8case只读方案已备，未实施。准备本地checkpoint。

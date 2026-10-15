@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-15T21:18:34.784336+00:00",
+  "batch": "E11a final freeze",
+  "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+  "files": {
+    "assets/js/search-palette.js": "812df15edeb4a7573805f5f7a678b238f66e530f74a9e245004aa562989adabd",
+    "layouts/partials/search-palette.html": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46",
+    "themes/PaperMod/assets/css/common/header.css": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+    "tests/e2e/search-index-contracts.spec.ts": "b20b86fed45a6a4ccef8797614047469d94d64ac45d53de9acdbf14b278420cd"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "30455a6b7840d4fc07d6d290e8d3da9dfb09112747238a305e7bff56f7cd953b",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "parentActionRunners": {
+    "batch-e11-actions.browser.mjs": "03b91976c958cb16690f5e100c25a2a944174203ac6ae3f3f83d7a2d1b8cd33f",
+    "batch-e11-back.browser.mjs": "ef3efa600196ce3723d755d1578fd02b2f7570fed7928a7c2f4c13509a4bef7e"
+  },
+  "scope": "Local index lifetime, truthful status,Retry,current result intent. AI core/markdown/history/fallback and public content unchanged.",
+  "priorFrozen": "batch-e11-source-initial.json",
+  "contracts": 13,
+  "supplementalQa": {
+    "path": "docs/ux-audit/2026-10-16/search-regression.config.mjs",
+    "sha256": "874246f1fe95e7dc83b226f6c59db16d812c3b26daad945685bb8cab42d6f049",
+    "scope": "Only existing Arrow/Enter + CtrlEnter mock regression; single desktop project"
+  },
+  "parentProbeFix": "Restrict theme init localStorage to the local preview origin; intercepted navigation abort yields inaccessible chrome error page. Original pageerror/assert log retained."
+}

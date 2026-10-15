@@ -54,10 +54,10 @@ UX038独立确认1440真实spatial desktop中的颜色选择无可见背景效�
 
 E11优先global search的当前查询意图与索引恢复：旧结果150ms内被Enter实际打开；index挂起可关闭但无有界载入状态，旧失败能盖新成功。先等待独立review命名；最小方案需input立即同步query/fullHref并失效旧results，Enter只基于当前query；索引代次/单次请求所有权、取消与timeout/retry保留query，真实pending与无结果分开。不要重写Fuse算法/检索内容、AI运输或借机装饰全站。
 
-E12阅读脚注firsttap：先解决footer通用anchor与preview首tap的所有权冲突，保证保持原阅读scroll/hash、预览存活、显式GoToNote/第二tap正常跳转与Back；JS缺失仍原生anchors。进一步tooltip交互语义/键盘发现和hover仅在具体actual/source复核后加入小批，不泛化旧TOC已测结论。Article工具1199→1200的focus/draft交接仍未实际复现，保持候选。
+E12阅读脚注firsttap：先解决footer通用anchor与preview首tap的所有权冲突，保证保持原阅读scroll/hash、预览存活、显式GoToNote/第二tap正常跳转与Back；JS缺失仍原生anchors。进一步tooltip交互语义/键盘发现和hover仅在具体actual/source复核后加入小批，不泛化旧TOC已测结论。Article工具1199→1200现已独立复现：compact未发送草稿保留原节点，desktop空且未切AI，focusBODY，下一真实Tab scroll500→26055落推荐链接。不是草稿已丢失；确为跨布局续写/键盘位置缺口，评分独立定级后单独有界修复。
 
 
-### E11只读实施合同（E10a期间准备，尚未放行）
+### E11实施合同（E10a期间准备，05:04已放行现有executor）
 
 仅search-palette本地index/结果闭包、必要状态/44Retry模板样式和新search-index合同。input即时clear旧options/count/active并同步fullHref；150ms仅延迟计算，timer捕获query+intent代次，普通Enter取消debounce并同步计算当前query再导航，不读取旧候选。保持IME与Fuse现keys/threshold/fallback、AItransport和全文搜索页/路由。
 

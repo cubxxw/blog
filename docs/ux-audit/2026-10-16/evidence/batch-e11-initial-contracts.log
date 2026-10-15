@@ -1,0 +1,74 @@
+
+Running 12 tests using 1 worker
+
+(node:71255) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (30.1s)
+(node:71357) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (30.1s)
+(node:71402) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (15.8s)
+
+
+  1) tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      30 | async function prepare(page:Page,locale='zh',dark=false) {
+      31 |   await page.addInitScript(dark=>localStorage.setItem('pref-theme',dark?'dark':'light'),dark);
+    > 32 |   await page.goto(locale==='zh'?'/zh/articles/':'/articles/');await page.waitForFunction(()=>(window as any).__searchPaletteReady);
+         |                                                                          ^
+      33 |   if(dark)await expect(page.locator('body')).toHaveClass(/dark/);
+      34 |   return page.locator('[data-search-trigger="nav"]:visible').first();
+      35 | }
+        at prepare (<SOURCE_WORKTREE>/tests/e2e/search-index-contracts.spec.ts:32:74)
+        at <SOURCE_WORKTREE>/tests/e2e/search-index-contracts.spec.ts:55:44
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/search-index-contracts-390-f632a--idle-have-truthful-content/error-context.md
+
+  2) tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      30 | async function prepare(page:Page,locale='zh',dark=false) {
+      31 |   await page.addInitScript(dark=>localStorage.setItem('pref-theme',dark?'dark':'light'),dark);
+    > 32 |   await page.goto(locale==='zh'?'/zh/articles/':'/articles/');await page.waitForFunction(()=>(window as any).__searchPaletteReady);
+         |                                                                          ^
+      33 |   if(dark)await expect(page.locator('body')).toHaveClass(/dark/);
+      34 |   return page.locator('[data-search-trigger="nav"]:visible').first();
+      35 | }
+        at prepare (<SOURCE_WORKTREE>/tests/e2e/search-index-contracts.spec.ts:32:74)
+        at <SOURCE_WORKTREE>/tests/e2e/search-index-contracts.spec.ts:55:44
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/search-index-contracts-390-fbaec--idle-have-truthful-content/error-context.md
+
+  3) tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+
+    Test was interrupted.
+
+    Error: page.waitForFunction: Test ended.
+
+      30 | async function prepare(page:Page,locale='zh',dark=false) {
+      31 |   await page.addInitScript(dark=>localStorage.setItem('pref-theme',dark?'dark':'light'),dark);
+    > 32 |   await page.goto(locale==='zh'?'/zh/articles/':'/articles/');await page.waitForFunction(()=>(window as any).__searchPaletteReady);
+         |                                                                          ^
+      33 |   if(dark)await expect(page.locator('body')).toHaveClass(/dark/);
+      34 |   return page.locator('[data-search-trigger="nav"]:visible').first();
+      35 | }
+        at prepare (<SOURCE_WORKTREE>/tests/e2e/search-index-contracts.spec.ts:32:74)
+        at <SOURCE_WORKTREE>/tests/e2e/search-index-contracts.spec.ts:55:44
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/search-index-contracts-144-40247--idle-have-truthful-content/error-context.md
+
+  2 failed
+    tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+    tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  1 interrupted
+    tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  9 did not run
