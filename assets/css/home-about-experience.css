@@ -94,6 +94,9 @@
 /* The normal transcript keeps its existing scroll behavior. On a short
    viewport, the transcript and suggestions share the available middle. */
 .hp-bear-chat-scroll { display: contents; }
+.homepage-root .hp-bear-chat-send { width: 44px; height: 44px; }
+.hp-bear-chat-recovery { max-width: 36em; margin: 4px 0 0; color: var(--fg-muted); font-size: 13px; line-height: 1.6; }
+.homepage-root #hp-chat-retry { align-self: flex-start; min-height: 44px; margin: 0 12px 8px; white-space: normal; text-align: left; }
 .about-studio .studio-hero { min-height: min(760px, calc(100svh - 60px)); }
 .about-studio .studio-hero h1 { text-wrap: balance; }
 .about-studio .studio-hero__controls button { min-width: 44px; min-height: 44px; }

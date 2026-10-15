@@ -423,7 +423,7 @@
 
 {{- $homeChatUtils := resources.Get "js/home-chat-utils.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
 <script type="module">
-import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } from "{{ $homeChatUtils.RelPermalink }}";
+import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions, createIdleRequest } from "{{ $homeChatUtils.RelPermalink }}";
 (function() {
   var isZh = document.documentElement.lang === 'zh';
   {{- if $capabilities.ai }}
@@ -436,7 +436,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
   // Choose once per document load; reopening chat keeps the same six prompts.
   var suggestions = sampleQuestions(JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn), 6)
     .map(function(text) { return { text: text }; });
-  var chatOpen = false, messages = [], loading = false, streaming = false;
+  var chatOpen = false, messages = [], loading = false, streaming = false, draft = '';
   // Guided-question rotation: chips the visitor already tapped/typed drop out
   // of the quick row, so it always offers something new. `followups` are
   // related-article questions the backend derives from whatever the last
@@ -494,12 +494,46 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
       root.style.removeProperty('--hp-chat-header-height');
     }
   }
+  function recoveryText(outcome) {
+    if (outcome === 'stopped') return isZh ? '已停止回复。' : 'Reply stopped.';
+    if (outcome === 'timeout') return isZh ? '等待回复超时。' : 'The reply timed out.';
+    return isZh ? '连接中断。' : 'The connection was interrupted.';
+  }
+  function captureDraft() {
+    var input = document.getElementById('hp-chat-input');
+    if (input) draft = input.value;
+  }
+  function cancelReader(request) {
+    var reader = request.reader;
+    if (!reader) return;
+    request.reader = null;
+    // cancel() itself may never settle on a non-fetch stream. Cleanup must
+    // not hold the composer or the next request hostage.
+    try { reader.cancel().catch(function() {}); } catch (_) {}
+    try { reader.releaseLock(); } catch (_) {}
+  }
+  function markInterrupted(request, outcome) {
+    request.user.failed = true;
+    request.reply.failed = true;
+    request.reply.outcome = outcome;
+    if (!messages.includes(request.reply)) messages.push(request.reply);
+    retryText = request.text;
+  }
+  function ownsRequest(request) {
+    return chatOpen && activeRequest === request && request.id === requestSerial;
+  }
   function requestIsCurrent(request) {
-    return chatOpen && activeRequest === request && request.id === requestSerial && !request.controller.signal.aborted;
+    return ownsRequest(request) && !request.lifetime.signal.aborted;
   }
   function cancelRequest() {
+    captureDraft();
     requestSerial++;
-    if (activeRequest) activeRequest.controller.abort();
+    if (activeRequest) {
+      markInterrupted(activeRequest, 'stopped');
+      activeRequest.lifetime.abort();
+      activeRequest.lifetime.dispose();
+      cancelReader(activeRequest);
+    }
     activeRequest = null;
     loading = false; streaming = false;
     orbSet('setThinking', false);
@@ -598,19 +632,29 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
   function renderChat(focusInput) {
     root.classList.add('is-chat-open');
     var hadChatFocus = !!document.activeElement.closest('.hp-bear-chat');
-    document.getElementById('hp-chat-status').textContent = loading ? (isZh ? 'Bear 正在回复' : 'Bear is replying') : (retryText ? (isZh ? '连接中断，可重试消息' : 'Connection interrupted. You can retry this message.') : (messages.length ? (isZh ? '回复完成' : 'Reply ready') : (isZh ? '可以开始对话' : 'Ready to chat')));
+    var previousPanel = layer.querySelector('.hp-bear-chat');
+    if (hadChatFocus && shortChat.matches && previousPanel) {
+      var previousBounds = previousPanel.getBoundingClientRect();
+      var header = document.querySelector('.header-wrapper');
+      var headerHeight = header ? header.getBoundingClientRect().height : 0;
+      // Wheel scrolling does not move DOM focus. Only return to the composer
+      // when the visitor has actually stayed with the visible short panel.
+      hadChatFocus = previousBounds.top >= headerHeight + 8 && previousBounds.bottom <= innerHeight - 8;
+    }
+    var lastMessage = messages[messages.length - 1];
+    document.getElementById('hp-chat-status').textContent = loading ? (isZh ? 'Bear 正在回复' : 'Bear is replying') : (retryText ? recoveryText(lastMessage && lastMessage.outcome)+(isZh?'可以重试这条消息。':' You can retry this message.') : (messages.length ? (isZh ? '回复完成' : 'Reply ready') : (isZh ? '可以开始对话' : 'Ready to chat')));
     var bodyHtml = '';
     if (messages.length === 0) {
       bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨，我是 Bear 的数字分身。可以帮你找文章，聊 Agent 与开源，或讲讲路上的事。':"Hey — I'm Bear's digital twin. Ask about the writing, agents, open source, or life on the road.")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
     } else {
       bodyHtml = messages.map(function(m, idx) {
         var cls = m.role==='user' ? 'hp-bear-chat-msg-user' : 'hp-bear-chat-msg-bear';
-        var t   = m.role==='user' ? (isZh?'已送达':'delivered') : (isZh?'刚刚':'just now');
+        var t   = m.role==='user' ? (isZh?'你':'You') : 'Bear';
         var content = m.role==='user' ? esc(m.content) : renderMsg(m.content);
         // The last bear bubble, while a reply is still streaming, gets a
         // blinking caret so partial tokens read as "being typed".
         var streamCls = (streaming && m.role==='bear' && idx===messages.length-1) ? ' is-streaming' : '';
-        return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble'+streamCls+'">'+content+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
+        return '<div class="hp-bear-chat-msg '+cls+'">'+(content||streamCls?'<div class="hp-bear-chat-bubble'+streamCls+'">'+content+'</div>':'')+(m.outcome?'<p class="hp-bear-chat-recovery">'+recoveryText(m.outcome)+'</p>':'')+'<div class="hp-bear-chat-time">'+t+'</div></div>';
       }).join('');
     }
     if (loading && !streaming) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
@@ -656,12 +700,12 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
         '</div>'+
         '<div class="hp-bear-chat-scroll" id="hp-chat-scroll" role="region" aria-label="'+(isZh?'对话内容与建议':'Conversation and suggestions')+'">'+
           '<div class="hp-bear-chat-body" id="hp-chat-body" aria-busy="'+loading+'">'+bodyHtml+'</div>'+
-          (quickHtml ? '<div class="hp-bear-chat-quick'+(isStart?' is-start':'')+'">'+(followups.length && !isStart ? '<span class="hp-bear-chat-quick-tag">'+(isZh?'继续聊':'go deeper')+'</span>' : '')+quickHtml+'</div>' : '')+
           (retryText ? '<button class="hp-bear-chat-quick-btn" id="hp-chat-retry">'+(isZh?'重试这条消息':'Retry this message')+'</button>' : '')+
+          (quickHtml ? '<div class="hp-bear-chat-quick'+(isStart?' is-start':'')+'">'+(followups.length && !isStart ? '<span class="hp-bear-chat-quick-tag">'+(isZh?'继续聊':'go deeper')+'</span>' : '')+quickHtml+'</div>' : '')+
         '</div>'+
         '<div class="hp-bear-chat-input-row">'+
-          '<input class="hp-bear-chat-input" id="hp-chat-input" aria-label="'+(isZh?'给 Bear 的消息':'Message Bear')+'" placeholder="'+(isZh?'问我文章、产品或旅行…':'Ask about posts, projects, travel…')+'"'+(loading?' disabled':'')+'>'+
-          '<button class="hp-bear-chat-send" id="hp-chat-send" aria-label="'+(isZh?'发送消息':'Send message')+'" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'+
+          '<input class="hp-bear-chat-input" id="hp-chat-input" value="'+esc(draft)+'" aria-label="'+(isZh?'给 Bear 的消息':'Message Bear')+'" placeholder="'+(isZh?'问我文章、产品或旅行…':'Ask about posts, projects, travel…')+'"'+(loading?' disabled':'')+'>'+
+          '<button class="hp-bear-chat-send" id="hp-chat-send" data-action="'+(loading?'stop':'send')+'" aria-label="'+(loading?(isZh?'停止回复':'Stop reply'):(isZh?'发送消息':'Send message'))+'" title="'+(loading?(isZh?'停止回复':'Stop reply'):(isZh?'发送消息':'Send message'))+'"'+(!loading&&!draft.trim()?' disabled':'')+'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+(loading?'<rect x="6" y="6" width="12" height="12" rx="1" fill="currentColor" stroke="none"/>':'<path d="M12 19V5M5 12l7-7 7 7"/>')+'</svg></button>'+
         '</div>'+
         '<div class="hp-bear-chat-foot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.5 4.5L6 9l4.5 1.5L12 15l1.5-4.5L18 9l-4.5-1.5z"/></svg><span>'+(isZh?"AI 模拟 Bear 的语气 · 不是本人":"AI mimicking Bear's voice · not the human")+'</span></div>'+
       '</section>';
@@ -676,25 +720,30 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
     var inp  = document.getElementById('hp-chat-input');
     var send = document.getElementById('hp-chat-send');
     if (inp) {
-      inp.addEventListener('input', function() { send.disabled = !this.value.trim() || loading; });
+      inp.addEventListener('input', function() { draft = this.value; send.disabled = !this.value.trim() || loading; });
       inp.addEventListener('keydown', function(e) {
+        if (e.isComposing || e.keyCode === 229) return;
         if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); if (!loading && this.value.trim()) sendMsg(this.value); }
       });
       // Focus only on open/send completion, never for individual tokens.
       if (!loading && chatOpen && (focusInput || hadChatFocus)) inp.focus({ preventScroll: true });
       else if (loading && hadChatFocus) layer.querySelector('.hp-bear-chat').focus({ preventScroll: true });
     }
-    if (send) send.addEventListener('click', function() { var v=inp&&inp.value; if(v) sendMsg(v); });
+    if (send) send.addEventListener('click', function() {
+      if (loading && activeRequest) { activeRequest.stopped = true; activeRequest.lifetime.abort(); return; }
+      var v=inp&&inp.value; if(v) sendMsg(v);
+    });
     var clr = document.getElementById('hp-chat-clear');
-    if (clr) clr.addEventListener('click', function() { cancelRequest(); messages=[]; asked={}; followups=[]; retryText=''; renderChat(); });
+    if (clr) clr.addEventListener('click', function() { cancelRequest(); messages=[]; asked={}; followups=[]; retryText=''; draft=''; renderChat(); });
     var cls = document.getElementById('hp-chat-close');
     if (cls) cls.addEventListener('click', closeChat);
     var retry = document.getElementById('hp-chat-retry');
     if (retry) retry.addEventListener('click', function() { sendMsg(retryText); });
     layer.querySelector('.hp-bear-chat').addEventListener('keydown', function(event) {
+      if (event.isComposing || event.keyCode === 229) return;
       if (event.key === 'Escape') { event.preventDefault(); closeChat(); }
     });
-    layer.querySelectorAll('.hp-bear-chat-quick-btn').forEach(function(btn) {
+    layer.querySelectorAll('.hp-bear-chat-quick-btn[data-msg]').forEach(function(btn) {
       btn.addEventListener('click', function() { if(!loading) { orb('pulse'); sendMsg(this.dataset.msg); } });
     });
   }
@@ -736,25 +785,34 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
       return { role: m.role === 'user' ? 'user' : 'assistant', content: m.content };
     });
     var replyMessage = { role: 'bear', content: '' };
-    var request = { id: ++requestSerial, controller: new AbortController(), reply: replyMessage };
+    var userMessage = { role: 'user', content: text };
+    var request = { id: ++requestSerial, lifetime: createIdleRequest(25000), reply: replyMessage, user: userMessage, text: text, reader: null, stopped: false };
     activeRequest = request;
-    messages.push({ role: 'user', content: text });
+    if (draft.trim() === text) draft = '';
+    messages.push(userMessage);
     loading = true;
     renderChat();
     try {
-      var res = await fetch('/.netlify/functions/blog-ai', {
-        method: 'POST', signal: request.controller.signal,
+      var response = fetch('/.netlify/functions/blog-ai', {
+        method: 'POST', signal: request.lifetime.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: text, language: isZh ? 'zh' : 'en', context: history, persona: isZh ? root.dataset.sysZh : root.dataset.sysEn })
       });
+      response.then(function(stale) {
+        if (!requestIsCurrent(request) && stale.body) {
+          try { stale.body.cancel().catch(function() {}); } catch (_) {}
+        }
+      }, function() {});
+      var res = await request.lifetime.wait(response);
       if (!requestIsCurrent(request)) return;
+      request.lifetime.touch();
       if (!res.ok) throw new Error('api error');
       messages.push(replyMessage);
       if ((res.headers.get('content-type') || '').includes('text/event-stream')) {
         if (!res.body) throw new Error('empty response');
         streaming = true;
         renderChat();
-        var agentSteps = new Map();
+        var agentSteps = new Map(), completed = false;
         function patch() {
           if (!requestIsCurrent(request)) return;
           var steps = Array.from(agentSteps.values()).map(function(st) {
@@ -763,7 +821,8 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
           updateStreamingBubble((steps ? '<div class="ai-steps"' + (replyMessage.content ? ' data-settled="true"' : '') + '>' + steps + '</div>' : '') + renderMsg(replyMessage.content));
         }
         var parser = createSSEParser(function(data) {
-          if (!requestIsCurrent(request) || !data || data === '[DONE]') return;
+          if (!requestIsCurrent(request) || completed || !data) return;
+          if (data === '[DONE]') { completed = true; return; }
           var event;
           try { event = JSON.parse(data); } catch (_) { return; }
           if (typeof event.delta === 'string') { replyMessage.content += event.delta; patch(); }
@@ -775,33 +834,32 @@ import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } fr
           }).slice(0, 3);
           if (event.error) throw new Error('stream error');
         });
-        var reader = res.body.getReader();
+        var reader = res.body.getReader(); request.reader = reader;
         try {
           while (requestIsCurrent(request)) {
-            var chunk = await reader.read();
+            var chunk = await request.lifetime.wait(reader.read());
             if (!requestIsCurrent(request)) break;
             if (chunk.done) { parser.finish(); break; }
+            request.lifetime.touch();
             parser.push(chunk.value);
+            if (completed) break;
           }
         } finally {
-          // Cancellation also covers synthetic/non-fetch streams in tests.
-          await reader.cancel().catch(function() {});
-          reader.releaseLock();
+          cancelReader(request);
         }
       } else {
-        var data = await res.json();
+        var data = await request.lifetime.wait(res.json());
         if (!requestIsCurrent(request)) return;
         replyMessage.content = data.answer || data.content || '';
       }
       if (requestIsCurrent(request) && !replyMessage.content) throw new Error('empty answer');
     } catch (error) {
-      if (!requestIsCurrent(request)) return;
-      if (!messages.includes(replyMessage)) messages.push(replyMessage);
-      replyMessage.failed = true;
-      replyMessage.content += (replyMessage.content ? '\n\n' : '') + (isZh ? '连接中断了，可以重试这条消息。' : 'The connection was interrupted. You can retry this message.');
-      retryText = text;
+      if (!ownsRequest(request)) return;
+      markInterrupted(request, request.stopped ? 'stopped' : (error && error.name === 'TimeoutError' ? 'timeout' : 'error'));
     } finally {
-      if (requestIsCurrent(request)) {
+      request.lifetime.dispose();
+      cancelReader(request);
+      if (ownsRequest(request)) {
         activeRequest = null; loading = false; streaming = false;
         orbSet('setThinking', false);
         renderChat();

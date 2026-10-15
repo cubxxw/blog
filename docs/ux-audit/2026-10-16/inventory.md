@@ -1561,3 +1561,55 @@ E61共 **8图**（5短屏+normal动态/减少动态对比2图+posts neutral1图�
 2. **`G.NAV.ANCHOR` / RM-15、R-02。** 选`/zh/archives/`真实`.archives-year-nav__link`（`archives.html:49`）而非已被排除的首页CTA。`footer.html:57`当前已在preventDefault前检查button/modifier/download/_blank，故F03是历史源缺口、现在`source_fixed_pending_browser`，不是当前已知未修。最小探针：普通可信click实际年链接→记录hash/目标/Back；平台Meta/Ctrl、Shift或中键真实操作→读回当前页不被增强scroll与真实native新tab意图；reduce后普通click记录不强制smooth。所有链接站内，只读。首页CTA和wayfinder在55行被排除，它们的通过不能认证此global处理；不得用合成dispatchEvent替代原生新标签行为。
 
 这两项只为下一次父任务挑选提供任务、selector、真实执行路径和可复用探针。没有增加控件族，没有将源码诊断升级为浏览器失败或通过。
+
+
+## v1.9 Travel QR实际失败与F03下一最小探针
+
+导入时间 **2026-10-16T02:45:33+08:00**，checkpoint **`4782757e3fc4`**。本轮只新增`T.SOCIAL.QR`两个失败state记录，没有成功验收升级。仍 **309族 / 358 selectors / 57 journeys / 18roadmap批次**。
+
+- **focus失败：390×844中文light，reduce和no-preference均复现。** 实际点小红书二维码后dialog visible但focus仍trigger；真实Tab转到背景微信trigger。未点击关闭X/backdrop，不把它们算通过；Escape返原trigger只是同case的事实，不升级整族。
+- **reopen失败：只在390×844中文light/no-preference。** Escape后立即Enter重开同一个小红书入口，500ms后`hidden=true`，但`is-open=true`、`aria-expanded=true`。`travel.html:401–406`旧transitionend done可覆盖新open；没有把它说成已测跨频道A→B。
+- **reduce重开仍visible：** `hidden=false/open=true/expanded=true`，所以不能把normal-motion重开隐藏失败外推reduce。reduce的焦点仍在背景，单独保留前一条focus失败。
+
+依据`travel-qr-baseline-probe.json/log`及4张390×844图；本轮独立查看normal初开/重开与reduce重开3图。receipt独立Travel template SHA为`041eb8ac202c`，与当前及`77bf94c2`Git blob一致；Travel模板和CSS不在E62九文件manifest内，使用独立hash与Git blob定位，没有借E62球体证据认证Travel。源级UX018现在升级为**有界实际失败已复现、仍开放**；完整族/全站分数继续null。
+
+**F03下一最小实际probe（未运行）：** 复用RM-15/R-02，`/zh/archives/`、1440×900/light/reduce，真实`.archives-year-nav__link`。先从DOM取实际年href并在隔离测试context记录click的`defaultPrevented`与`scrollIntoView`调用；mac真实Meta+click（其他系统Ctrl）须放行native站内新tab、原页hash/scroll不被增强改写；再普通click同链接须正常更新目标/hash且reduce不smooth，Back读回。仅在需要覆盖auxclick时再补中键，不广铺矩阵。`footer.html:57`已存在guard，所以仍是**source_fixed_pending_browser**，未写browser pass。首页CTA和wayfinder被55行排除，不能拿它们现有通过顶替；合成dispatchEvent不能证明原生新标签行为。
+
+本轮累计有状态记录 **53族 / 178条**，其中本次新增2条失败；完整族验收仍0。没有启动浏览器/构建，没有改生产代码。
+
+
+## v1.10 F03与当前右TOC：实际路径有界导入
+
+导入 **2026-10-16T02:49:26+08:00**，preview/checkpoint **`4782757e3fc4`**。`anchor-intent-source.json`在上海02:46:31冻结5个源hash，本轮当前hash仍匹配：footer、micro-interactions CSS、reading-companion、toc-highlight、editorial-tools。E7首页工作不在此5源范围；不外推完整构建闭包。
+
+| 既有族 / active状态 | 实际证据 | 保留边界 |
+| --- | --- | --- |
+| `G.NAV.ANCHOR` / Meta原生意图 | `/zh/archives/`1440×900zh/light/reduce，可信Mac Meta点击真实year2026，站内新tab是正确hash，原页URL/scrollY0不变、event未prevent、0 scrollIntoView | 只Mac Meta/year2026；Ctrl、Shift、中键、download/_blank与其他锚点仍未实测 |
+| `G.NAV.ANCHOR` / 普通定位与Back | 普通实际click后正确#year-2026、scrollY365、scrollIntoView options=null且html computed auto；Back回原Archives URL | 365是页面scrollY，不是heading top；回执未额外断言Back焦点/精确原scroll恢复 |
+| `A.TOC.LINK` / runtime reduce | `/zh/engineering/posts/use-go-tools-dlv/`实际右目录`.toc-side__nav a:visible`第一中文项，no-preference→reduce后真实click，auto/no smooth，解码hash“调试go工程”，scrollY692 | 只1440中文light当前right TOC/首项；目标focus、移动目录、其他文章与全部标题未测试 |
+
+因此F03与UX009只在上述路径关闭，不以源码guard存在推成全browser pass。`static/js/toc-highlight.js:9`的legacy`.toc-sidebar__nav #TableOfContents a`当前模板没有渲染，本次不认证它；实际右目录由`editorial-tools.html:64/73`生成，global footer处理点击。
+
+`anchor-intent-initial.log`保留：第一次脚本用百分号编码hex大小写做原文严格比较而误报，`#%E8...`与`#%e8...`解码等价；改用decodeURIComponent后真实重跑通过。它不是生产缺陷，未新增UI失败/族。两张1440×900既有实图已独立查看。
+
+本轮新增 **3条active局部记录**；累计 **181条 / 55族有状态证据**。仍 **309族 / 358 selectors / 57 journeys / 18roadmap批次**，完整family通过0，完整分数继续null。没有启动browser/构建或修改生产。
+
+
+## v1.11 E7/E71聊天恢复：同位Stop与精确任务范围
+
+导入 **2026-10-16T02:57:53+08:00**，base/checkpoint `4782757e3fc4`。`batch-e7-source`与E71各8文件；两manifest只有`home-chat-recovery.spec.ts`的时钟fixture hash不同，另7hash（含生产）相同。E71先在请求前暂停时钟，再断言startedAt到24999/25000的精确elapsed，不能把测试前沿修正说成另一次生产修复。
+
+**回执计数：** E7 initial **19/21通过、2失败保留**（header和SSE首chunk的24999ms前沿断言）；E71修fixture后 **9条recovery通过**。原不相交 **6 about +6 short/normal =12** 已通过，因此最终是 **21个distinct测试**，不是30个不同测试。30仅两轮执行次数；没有用重复通过数补分。另36 Node、typecheck与build正式日志已读，Node不代替浏览器状态。
+
+| 族 / 状态 | 具体证据 | 不能外推 |
+| --- | --- | --- |
+| `H.CHAT.SEND` / pending→Stop | 同一个`#hp-chat-send`切为`data-action=stop`、aria-label“停止回复/Stop reply”，沿用`control.916abc`；实际568×256zh/light headers挂起、1440×900en/dark partial，两者reduce，44px/centerhit/真实坐标click | 没有新增按钮/selector/族；不是只有正常图或aria名字就通过 |
+| 输入/关开 / draft | 两actual流精确未发送draft关开保持；E71默认1440中英另验含引号draft、成功后新draft关开、clear清空 | 不认证所有存储/刷新/实体键盘/私人数据策略 |
+| 发送 / synthetic composition | E71中英合成isComposing及keyCode229的Enter/Escape不误发/误关，普通Enter后1请求 | **不是OS级IME/候选词输入验收** |
+| Stop / 取消与恢复 | 两actual流abort=1，partial另cancel=1；问题/已有partial留transcript，独立新turn完成，失败问题不进入context；旧header晚JSON丢弃、partial reader已取消 | 两actual发独立新问题，没有假称点Retry；Retry由单独合同证明 |
+| timeout / Retry / DONE | 25秒idle涵盖header、SSE首/后chunk、JSON body；cancel永不settle也解锁；header/SSE/Stop后Retry context=[]并完成；[DONE]不等EOF，30秒后不误超时 | 受控传输不是真实服务器/模型质量；错误/主题/设备仍按case边界 |
+| wheel阅读意图 | 568×320en/reduce真实620px wheel到Books后晚回复完成，**scrollY2803→2803，delta0**；不focus input；E71同路径合同偏移<2 | 只这条模拟短屏路径；不能据此接受所有滚动/触控/虚拟键盘策略 |
+
+6张actual Stop旅程图、2张wheel图分开登记；本轮独立查看short pending、dark stopped与wheel after共3张。旧UX025/026/027/031失败state记录均保留负状态，只附E7/E71对应case有界通过链接；父验收与独立review已闭环，当前8hash/QA一致、对应范围无未解决P0/P1；完整功能族不升级。Space UX024/028/029与Travel UX018仍开放。
+
+本轮新增 **22条** 状态绑定、触及 **6个既有族**；累计 **203条 / 56族有局部状态证据**。总量仍 **309族 / 358 selectors / 57 journeys / 18roadmap批次**，完整family认证0、完整分数null。没有启动browser/构建或修改生产代码，现停止写入供checkpoint。

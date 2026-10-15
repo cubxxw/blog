@@ -67,11 +67,12 @@ for(const width of [390,1440]) {
     await page.goto('/zh/');await page.locator('#hp-avatar-btn').click();
     await page.locator('.hp-bear-chat').scrollIntoViewIfNeeded();
     expect(await page.locator('#hp-chat-scroll').evaluate(el=>getComputedStyle(el).display)).toBe('contents');
-    // Desktop keeps its existing 34px send target; short/coarse layouts use 44.
+    // Normal layouts retain the same panel bounds with the 44px sender.
     const panel=(await page.locator('.hp-bear-chat').boundingBox())!;
     expect(panel.height).toBeGreaterThanOrEqual(width===390?360:420);expect(panel.height).toBeLessThanOrEqual(560);
     for(const selector of ['#hp-chat-close','#hp-chat-input','#hp-chat-send']) {
       const box=(await page.locator(selector).boundingBox())!;
+      if(selector==='#hp-chat-send') {expect(box.width).toBeGreaterThanOrEqual(44);expect(box.height).toBeGreaterThanOrEqual(44);}
       expect(box.x).toBeGreaterThanOrEqual(panel.x);expect(box.x+box.width).toBeLessThanOrEqual(panel.x+panel.width);
       expect(box.y).toBeGreaterThanOrEqual(panel.y);expect(box.y+box.height).toBeLessThanOrEqual(panel.y+panel.height);
     }

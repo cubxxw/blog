@@ -1,0 +1,230 @@
+npm notice run cubxxw-blog@1.0.0 ux:test
+npm notice run node --test scripts/code-copy.test.mjs scripts/article-share-link.test.mjs scripts/article-tabs.test.mjs scripts/footer-subscribe.test.mjs scripts/article-ai-client.test.mjs scripts/ai-markdown-security.test.mjs scripts/home-chat-utils.test.mjs
+TAP version 13
+# Subtest: travel-book-ai.js: generated attributes cannot escape an AI Markdown URL
+ok 1 - travel-book-ai.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 2.603542
+  type: 'test'
+  ...
+# Subtest: travel-book-ai.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 2 - travel-book-ai.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.715459
+  type: 'test'
+  ...
+# Subtest: article-faq.js: generated attributes cannot escape an AI Markdown URL
+ok 3 - article-faq.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 0.529541
+  type: 'test'
+  ...
+# Subtest: article-faq.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 4 - article-faq.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.181166
+  type: 'test'
+  ...
+# Subtest: blog-ai-inline.js: generated attributes cannot escape an AI Markdown URL
+ok 5 - blog-ai-inline.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 0.63125
+  type: 'test'
+  ...
+# Subtest: blog-ai-inline.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 6 - blog-ai-inline.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.175375
+  type: 'test'
+  ...
+# Subtest: JSON preserves request selection fields and validates answer
+ok 7 - JSON preserves request selection fields and validates answer
+  ---
+  duration_ms: 19.23125
+  type: 'test'
+  ...
+# Subtest: SSE handles byte-split UTF-8, CRLF, metadata, DONE and EOF tails
+ok 8 - SSE handles byte-split UTF-8, CRLF, metadata, DONE and EOF tails
+  ---
+  duration_ms: 3.175625
+  type: 'test'
+  ...
+# Subtest: abort invalidates late JSON even when a transport ignores cancellation
+ok 9 - abort invalidates late JSON even when a transport ignores cancellation
+  ---
+  duration_ms: 0.411959
+  type: 'test'
+  ...
+# Subtest: idle response-header timeout aborts and reports a retryable timeout
+ok 10 - idle response-header timeout aborts and reports a retryable timeout
+  ---
+  duration_ms: 16.742958
+  type: 'test'
+  ...
+# Subtest: SSE malformed data and empty streams cannot become successful history
+ok 11 - SSE malformed data and empty streams cannot become successful history
+  ---
+  duration_ms: 0.921916
+  type: 'test'
+  ...
+# Subtest: optional book suggestions survive both transports without changing ordinary response keys
+ok 12 - optional book suggestions survive both transports without changing ordinary response keys
+  ---
+  duration_ms: 1.126458
+  type: 'test'
+  ...
+# Subtest: an idle SSE body times out and releases its reader after headers
+ok 13 - an idle SSE body times out and releases its reader after headers
+  ---
+  duration_ms: 16.911541
+  type: 'test'
+  ...
+# Subtest: an idle SSE body times out and releases its reader after a delta
+ok 14 - an idle SSE body times out and releases its reader after a delta
+  ---
+  duration_ms: 17.802875
+  type: 'test'
+  ...
+# Subtest: share copy confirms the resolved operation in the page language
+ok 15 - share copy confirms the resolved operation in the page language
+  ---
+  duration_ms: 2.4745
+  type: 'test'
+  ...
+# Subtest: refused share copy preserves a selectable URL in a dismissible dialog
+ok 16 - refused share copy preserves a selectable URL in a dismissible dialog
+  ---
+  duration_ms: 2.481666
+  type: 'test'
+  ...
+# Subtest: legacy copy must return true before English success is announced
+ok 17 - legacy copy must return true before English success is announced
+  ---
+  duration_ms: 0.297625
+  type: 'test'
+  ...
+# Subtest: a late clipboard refusal cannot reopen a modal after focus has moved
+ok 18 - a late clipboard refusal cannot reopen a modal after focus has moved
+  ---
+  duration_ms: 0.817667
+  type: 'test'
+  ...
+# Subtest: a tablist has one keyboard stop and a matching visible panel
+ok 19 - a tablist has one keyboard stop and a matching visible panel
+  ---
+  duration_ms: 2.715666
+  type: 'test'
+  ...
+# Subtest: arrows wrap, Home and End move focus with selection, ordinary Tab stays native
+ok 20 - arrows wrap, Home and End move focus with selection, ordinary Tab stays native
+  ---
+  duration_ms: 0.752625
+  type: 'test'
+  ...
+# Subtest: copy confirms only after the clipboard promise succeeds and blocks duplicate presses
+ok 21 - copy confirms only after the clipboard promise succeeds and blocks duplicate presses
+  ---
+  duration_ms: 0.983917
+  type: 'test'
+  ...
+# Subtest: clipboard refusal and failed legacy copy never claim success; code remains selected
+ok 22 - clipboard refusal and failed legacy copy never claim success; code remains selected
+  ---
+  duration_ms: 2.123959
+  type: 'test'
+  ...
+# Subtest: a successful legacy copy uses the same confirmation and clears the temporary selection
+ok 23 - a successful legacy copy uses the same confirmation and clears the temporary selection
+  ---
+  duration_ms: 0.311459
+  type: 'test'
+  ...
+# Subtest: a request deadline restores the form even when the transport never settles
+ok 24 - a request deadline restores the form even when the transport never settles
+  ---
+  duration_ms: 1.144625
+  type: 'test'
+  ...
+# Subtest: a late timed-out response cannot overwrite the result of the next attempt
+ok 25 - a late timed-out response cannot overwrite the result of the next attempt
+  ---
+  duration_ms: 0.524417
+  type: 'test'
+  ...
+# Subtest: network rejection releases pending state and keeps a usable retry
+ok 26 - network rejection releases pending state and keeps a usable retry
+  ---
+  duration_ms: 0.353
+  type: 'test'
+  ...
+# (node:50710) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: question sampling returns six distinct eligible questions without changing the pool
+ok 27 - question sampling returns six distinct eligible questions without changing the pool
+  ---
+  duration_ms: 3.520125
+  type: 'test'
+  ...
+# Subtest: all 36 questions can be selected and new draws can change the set
+ok 28 - all 36 questions can be selected and new draws can change the set
+  ---
+  duration_ms: 1.2195
+  type: 'test'
+  ...
+# Subtest: SSE preserves every UTF-8 byte boundary, CRLF and unterminated final event
+ok 29 - SSE preserves every UTF-8 byte boundary, CRLF and unterminated final event
+  ---
+  duration_ms: 3.118542
+  type: 'test'
+  ...
+# Subtest: SSE joins multiline data and accepts lone CR without leaking event metadata
+ok 30 - SSE joins multiline data and accepts lone CR without leaking event metadata
+  ---
+  duration_ms: 0.082042
+  type: 'test'
+  ...
+# Subtest: links reject injected attributes and unsafe protocols, preserving plain text
+ok 31 - links reject injected attributes and unsafe protocols, preserving plain text
+  ---
+  duration_ms: 0.512875
+  type: 'test'
+  ...
+# Subtest: article cards and inline links preserve safe URLs and escape ampersands once
+ok 32 - article cards and inline links preserve safe URLs and escape ampersands once
+  ---
+  duration_ms: 0.12025
+  type: 'test'
+  ...
+# Subtest: idle deadline races an uncooperative operation and aborts its signal at 25s
+ok 33 - idle deadline races an uncooperative operation and aborts its signal at 25s
+  ---
+  duration_ms: 0.985375
+  type: 'test'
+  ...
+# Subtest: headers and subsequent chunks each renew the idle deadline
+ok 34 - headers and subsequent chunks each renew the idle deadline
+  ---
+  duration_ms: 0.524625
+  type: 'test'
+  ...
+# Subtest: explicit stop settles immediately even if the original operation later resolves
+ok 35 - explicit stop settles immediately even if the original operation later resolves
+  ---
+  duration_ms: 0.281459
+  type: 'test'
+  ...
+# Subtest: completed work disposes its deadline without aborting a successful request
+ok 36 - completed work disposes its deadline without aborting a successful request
+  ---
+  duration_ms: 0.252959
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 125.832917

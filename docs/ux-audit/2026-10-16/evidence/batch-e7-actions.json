@@ -1,0 +1,111 @@
+{
+  "observations": [
+    {
+      "source": "batch-e7-source.json",
+      "width": 568,
+      "height": 256,
+      "lang": "zh",
+      "theme": "light",
+      "kind": "headers-pending",
+      "motion": "reduce",
+      "draft": "close/reopen retained exact unsent value",
+      "actualStopBox": {
+        "x": 495,
+        "y": 177.53125,
+        "width": 44,
+        "height": 44
+      },
+      "stopped": {
+        "status": "已停止回复。可以重试这条消息。",
+        "body": "还没发送的草稿，请保留你已停止回复。Bear",
+        "probe": {
+          "calls": 1,
+          "aborts": 1,
+          "cancels": 0,
+          "bodies": [
+            {
+              "question": "还没发送的草稿，请保留",
+              "language": "zh",
+              "context": [],
+              "persona": "语气：安静、克制、带一点诗意——像在旅途中回复朋友的消息。默认 2-4 句；被追问细节或请求推荐时才展开。第一人称『我』，不用 emoji，不堆感叹号。"
+            }
+          ]
+        }
+      },
+      "final": {
+        "calls": 2,
+        "aborts": 1,
+        "cancels": 0,
+        "bodies": [
+          {
+            "question": "还没发送的草稿，请保留",
+            "language": "zh",
+            "context": [],
+            "persona": "语气：安静、克制、带一点诗意——像在旅途中回复朋友的消息。默认 2-4 句；被追问细节或请求推荐时才展开。第一人称『我』，不用 emoji，不堆感叹号。"
+          },
+          {
+            "question": "A separate next question",
+            "language": "zh",
+            "context": [],
+            "persona": "语气：安静、克制、带一点诗意——像在旅途中回复朋友的消息。默认 2-4 句；被追问细节或请求推荐时才展开。第一人称『我』，不用 emoji，不堆感叹号。"
+          }
+        ]
+      },
+      "lateOldIgnored": true
+    },
+    {
+      "source": "batch-e7-source.json",
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "theme": "dark",
+      "kind": "partial-stream",
+      "motion": "reduce",
+      "draft": "close/reopen retained exact unsent value",
+      "actualStopBox": {
+        "x": 1103,
+        "y": 614.0625,
+        "width": 44,
+        "height": 44
+      },
+      "stopped": {
+        "status": "Reply stopped. You can retry this message.",
+        "body": "An unsent draft to keepYouPARTIAL_REPLY_KEPTReply stopped.Bear",
+        "probe": {
+          "calls": 1,
+          "aborts": 1,
+          "cancels": 1,
+          "bodies": [
+            {
+              "question": "An unsent draft to keep",
+              "language": "en",
+              "context": [],
+              "persona": "Voice: calm, a little poetic — like replying to a friend from the road. Default to 2-4 warm sentences; expand only when asked for depth or recommendations. First person. No emoji, no exclamation pileups."
+            }
+          ]
+        }
+      },
+      "final": {
+        "calls": 2,
+        "aborts": 1,
+        "cancels": 1,
+        "bodies": [
+          {
+            "question": "An unsent draft to keep",
+            "language": "en",
+            "context": [],
+            "persona": "Voice: calm, a little poetic — like replying to a friend from the road. Default to 2-4 warm sentences; expand only when asked for depth or recommendations. First person. No emoji, no exclamation pileups."
+          },
+          {
+            "question": "A separate next question",
+            "language": "en",
+            "context": [],
+            "persona": "Voice: calm, a little poetic — like replying to a friend from the road. Default to 2-4 warm sentences; expand only when asked for depth or recommendations. First person. No emoji, no exclamation pileups."
+          }
+        ]
+      },
+      "lateOldIgnored": "reader canceled"
+    }
+  ],
+  "limits": "Two isolated Chromium actual coordinate Stop journeys; intentional never-settling/partial-stream stubs, no model/backend quality/physical-device claim. Contract suite covers additional IME/idle/DONE branches separately."
+}

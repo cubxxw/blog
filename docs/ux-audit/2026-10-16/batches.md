@@ -77,3 +77,22 @@
 - Hugo构建4219ms、JS语法/diff通过；父实际Metal浅/深2scope分别未可见0renderer→可见2canvas→reduce0→restore2→final0，无page error。4图/JSON/log归档。不证明FPS/INP/实体手机/后台零帧。
 - 独立看4图、source与log，无新P0/P1；褐壳消失，局部D4浅色91.5、暗色90。留真实头像、问题、淡金光晕，未称96。
 - 额外未来缺陷基线`travel-qr-baseline-probe.json`：390×844zh/light两motion，打开仍焦点背景trigger，Tab进背景WeChat；Escape后立即Enter重开，normal旧transition让hidden=true且expanded=true，reduce重开可见。4图、独立Travel template SHA与日志保留，不属于E62通过范围；UX018后续修。
+
+## E7实施期间的非相交实际探针（02:49）
+
+- 生产预览仍4782757e/E62。`anchor-intent-source.json`单独冻结footer/reduce/TOC相关5源hash；E7只改首页，不以WIP验全站。
+- 1440×900 zh/light/reduce归档首年真实Mac Meta点击开新tab，原页hash/scroll不变、defaultPrevented=false且未调scrollIntoView；普通click到year2026的365px、hash正确，computed scrollBehavior=auto，Back回原route。
+- 当前右侧文章TOC在normal→runtime reduce后click编码中文heading，文档定位auto、无显式smooth、hash正确。此scope只验证点击定位；未触发reading-companion长目录内部`container.scrollTo`自动追踪，后者继续unverified。旧左sidebar脚本当前模板无对应selector，不把dead路径判实测失败/通过。
+- 首次脚本按percent编码大小写逐字比hash而失败；`anchor-intent-initial.log`保留，使用decodeURIComponent比较后复跑2旅程通过。没有修改生产路由或源码掩盖探针错误。
+
+## E7 / E7.1 聊天恢复与时间基准（02:54）
+
+- E7八文件冻结：独立draft；Enter/Escape合成composition/229守卫；同位44px enabled Stop；25s请求等待竞态覆盖fetch/JSON/read，SSE headers/每chunk续期；DONE立即收尾，cancel不等待。失败问题/partial保留在画面且排除未来context，恢复原因独立UI，不拼进AI答案；关闭/清空/pagehide仍隔离迟到请求。
+- 36Node、typecheck、Hugo4468ms通过。首跑21合同19通过/2失败，完整initial.log保留；失败处在请求发起/poll后fastForward24999，本虚拟clock仍随真实时间推进，已越25s。不是通过删断言或改生产deadline处理。
+- E71只修改testfixture：请求前暂停clock并记录startedAt，精确检查24999/25000与20s收到chunk后44999/45000两个边界。其余7hash与E7一致，生产不重建/旧12合同不重复；typecheck与9新恢复合同均通过。两份source manifest及initial/pass日志留档。
+- 父实际2坐标Stop旅程：568×256zh/light未返回headers；1440×900en/dark保留部分SSE。草稿关开精确保留，Stop中心实际44×44并enabled，点击立即解锁；保留问题/部分回答，真实signal abort+reader cancel，新问答完成且迟到旧结果不覆盖/旧失败问题不进context。6图与JSON/log归档。
+- 另父568×320en真实wheel620px去books、旧JSON完成，scrollY2803→2803（旧版2803→2183），两图正文位置一致，input不抢焦点。只该实际配置，不外推OS输入法、真实模型或所有尺寸。独立评分复核尚待完成；此处是父验收结果，无全站96声明。
+
+### E7/E71独立复核完成
+
+8/8当前源码与QA hash匹配；E71仅修test，七其余hash与原生产相同。独立确认21不同合同组合、初始失败与修复前沿保留、3实际旅程/8图，无新P0/P1。UX025/026/027/031按具体范围关闭；OS输入法、离开后error状态及其他矩阵仍未知。恢复界面局部D1短屏93/桌面94.5、D4短屏91.5/桌面90，不能自动给完整族96。E8范围已由父/执行明确，见next-batches.md。

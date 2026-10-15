@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T02:42:21+08:00",
+  "updated_at": "2026-10-16T02:56:17+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,23 +353,25 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.7",
+    "inventory_version": "1.10",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
       "world-decoration": 18,
       "motion": 26
     },
-    "selector_level_controls": 357,
+    "selector_level_controls": 358,
     "family_ids_covered": 309,
     "certified_96_plus_controls": 0,
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/357 selector controls不是运行时数据行实例数；未知状态与全站矩阵不认证。",
-    "families_with_recorded_contract_fragments": 59,
-    "scoped_check_assessments": 102,
-    "expert_visual_assessments": 49
+    "reason": "309族/358selectors；局部证据族不是完整认证。",
+    "families_with_recorded_contract_fragments": 61,
+    "scoped_check_assessments": 116,
+    "expert_visual_assessments": 53,
+    "inventory_families_with_partial_state_evidence": 55,
+    "inventory_accepted_whole_families": 0
   },
   "evidence": [
     {
@@ -1468,6 +1470,194 @@
         "Four actual images assess this desktop material only; no mobile/new functional certification.",
         "E6/E61 historical functional receipts remain scoped to their source; no rerun or new blanket acceptance of 24 contracts.",
         "UX025–027 and confirmed wheel-intent UX031 remain open and outside renderer correction."
+      ]
+    },
+    {
+      "id": "E-TRAVEL-QR-BASELINE-FAIL",
+      "kind": "recorded_actual_click_Tab_Escape_Enter_and_independently_inspected_four_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/travel-qr-baseline-probe.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/travel-qr-baseline-probe.log",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/travel-qr-reduce-initial.png",
+        "docs/ux-audit/2026-10-16/evidence/travel-qr-reduce-reopened.png",
+        "docs/ux-audit/2026-10-16/evidence/travel-qr-no-preference-initial.png",
+        "docs/ux-audit/2026-10-16/evidence/travel-qr-no-preference-reopened.png"
+      ],
+      "as_of": {
+        "phase": "TravelQR actual baseline after E62; E7 WIP outside scope",
+        "reviewed_at": "2026-10-16T02:46:56+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "travel_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motions": [
+          "reduce",
+          "no-preference"
+        ]
+      },
+      "independent_source_sha256": {
+        "layouts/page/travel.html": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef"
+      },
+      "source_hash_matches_at_review": true,
+      "source_manifest_caveat": "Travel template is not listed by E62 homepage manifest; independently checked standalone SHA matches receipt. E7 homepage WIP is not accepted.",
+      "observed": "Both media: opening leaves focus on background RedNote trigger; Tab goes background WeChat. Escape returns trigger. Rapid Escape→Enter reopening stays visible in reduce, but normal after500ms hidden=true while is-open=true/expanded=true.",
+      "limits": [
+        "Only390×844 zh/light Chromium simulated two media; no physicalphone/OSkeyboard/otherlocale/theme result.",
+        "Normal initial image is captured midtransition and not normal D4 evidence.",
+        "No contact message or external send.",
+        "UI displays QR and account ID, no copy button; no X/backdrop click or cross-channel switch claimed."
+      ]
+    },
+    {
+      "id": "E-ANCHOR-INTENT",
+      "kind": "recorded_trusted_Mac_Meta_click_plain_click_history_and_runtime_media_then_actual_TOC_click",
+      "path": "docs/ux-audit/2026-10-16/evidence/anchor-intent.json",
+      "log": "docs/ux-audit/2026-10-16/evidence/anchor-intent.log",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/anchor-intent-source.json",
+      "source_hash_matches_at_review": {
+        "layouts/partials/footer.html": true,
+        "assets/css/extended/micro-interactions.css": true,
+        "static/js/reading-companion.js": true,
+        "static/js/toc-highlight.js": true,
+        "layouts/partials/article/editorial-tools.html": true
+      },
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/anchor-archives-plain-reduce.png",
+        "docs/ux-audit/2026-10-16/evidence/anchor-article-toc-runtime-reduce.png"
+      ],
+      "as_of": {
+        "phase": "478 preview native anchor and actual right TOC scoped probes",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/anchor-intent-source.json",
+        "recorded_at": "2026-10-15T18:46:31.878345+00:00",
+        "reviewed_at": "2026-10-16T02:49:02+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light"
+      },
+      "observed": "Archives #year-2026 native Meta opens tab without preventing event or changing original hash/scroll or calling scrollIntoView; plain click reaches y365/hash with auto, Back restores URL. Article current right TOC normal→runtime reduce click reaches encoded Chinese heading using nonsmooth scrollIntoView and auto CSS.",
+      "initial_failed_log": "docs/ux-audit/2026-10-16/evidence/anchor-intent-initial.log",
+      "initial_failure_interpretation": "Harness compared percent-encoding case literally. Decoded hashes are equal; corrected harness rerun passes, no production change. Original failure preserved.",
+      "source_review": "Footer guards modifiers/defaultPrevented/button/download/_blank before enhancement; on each click reads motion preference. Reading-companion internal follow scroll also reads matchMedia at call. Legacy sidebar smooth code has no matching current layouts template selector.",
+      "limits": [
+        "Exactly1440×900 zh/light Chromium with reduced media. Meta only; Ctrl/Shift/Alt/middle/download/_blank remain source-only.",
+        "Current right TOC click targets first visible heading. Element.scrollIntoView was instrumented, not panel.scrollTo; long-TOC internal auto-follow and reading-focus preservation are unverified.",
+        "Legacy .toc-sidebar__nav #TableOfContents a is not current tested selector; no claim its behavior passed.",
+        "Two screenshots inspected for location/context only; no new full visual or control certification.",
+        "E7 homepage WIP unrelated and not accepted."
+      ]
+    },
+    {
+      "id": "E-BATCH-E7-INITIAL",
+      "kind": "historical_initial_partial_browser_receipt_preserved",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e7-contracts-initial.log",
+      "source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e7-source.json",
+      "as_of": {
+        "phase": "E7 initial test fixture before clock pause correction",
+        "reviewed_at": "2026-10-16T02:56:17+08:00"
+      },
+      "result": {
+        "total": 21,
+        "passed": 19,
+        "failed": 2
+      },
+      "failed_cases": [
+        "Header stall24999 busy expectedtrue receivedfalse",
+        "First SSE chunk stall24999 same failure"
+      ],
+      "resolution": "Test install() allowed real time to advance before fastForward. E71 pauses before request, records startedAt and retains exact24999/25000 and44999/45000 assertions. Only test changed; production25s deadline unchanged.",
+      "limits": [
+        "Initial19/21 was not full acceptance and remains in history.",
+        "Final unique test population21 = unchanged12 + revised9, not30 distinct tests."
+      ]
+    },
+    {
+      "id": "E-BATCH-E71-FINAL",
+      "kind": "independent_source_test_review_plus_recorded_contracts_actual_coordinate_Stop_and_wheel_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "source_hash_matches_at_review": {
+        "layouts/partials/homepage-daypage.html": true,
+        "assets/js/home-chat-utils.mjs": true,
+        "assets/css/home-about-experience.css": true,
+        "scripts/home-chat-utils.test.mjs": true,
+        "tests/e2e/home-chat-recovery.spec.ts": true,
+        "tests/e2e/home-about-experience.spec.ts": true,
+        "tests/e2e/home-short-chat-contracts.spec.ts": true,
+        "package.json": true
+      },
+      "qa_config": {
+        "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+        "sha256": "119ff94de5ae4b81756cb0dd907ab6f548dc67738ebcd50c50fb61937d475414",
+        "defaultViewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "workers": 1,
+        "browser": "Chromium Metal"
+      },
+      "qa_config_hash_matches_at_review": true,
+      "production_equivalence": {
+        "to": "docs/ux-audit/2026-10-16/evidence/batch-e7-source.json",
+        "changed_files": [
+          "tests/e2e/home-chat-recovery.spec.ts"
+        ],
+        "seven_remaining_hashes_identical": true,
+        "all_production_identical": true
+      },
+      "contract_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-contracts-initial.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e71-contracts.log"
+      ],
+      "final_contract_population": {
+        "unchanged_about": 6,
+        "unchanged_short": 6,
+        "revised_recovery": 9,
+        "unique_total": 21,
+        "recovery_rerun_passed": 9,
+        "recovery_rerun_duration": "5.9s"
+      },
+      "node_log": "docs/ux-audit/2026-10-16/evidence/batch-e7-node.log",
+      "node_passed": 36,
+      "typecheck_logs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-typecheck.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e71-typecheck.log"
+      ],
+      "build_log": "docs/ux-audit/2026-10-16/evidence/batch-e7-build.log",
+      "build_result": "successful4468ms; E71fixture-only so no new production build needed",
+      "actual_actions_receipt": "docs/ux-audit/2026-10-16/evidence/batch-e7-actions.json",
+      "actual_actions_log": "docs/ux-audit/2026-10-16/evidence/batch-e7-actions.log",
+      "actual_wheel_receipt": "docs/ux-audit/2026-10-16/evidence/batch-e7-wheel.json",
+      "actual_wheel_log": "docs/ux-audit/2026-10-16/evidence/batch-e7-wheel.log",
+      "paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-pending-568-256-zh-light.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-stopped-568-256-zh-light.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-next-turn-568-256-zh-light.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-pending-1440-900-en-dark.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-stopped-1440-900-en-dark.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-next-turn-1440-900-en-dark.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-wheel-before-complete.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-wheel-after-complete.png"
+      ],
+      "new_P0_P1_findings": [],
+      "limits": [
+        "25s deadlines use virtual clocks with measured time origin; composition and bfcache events synthetic, notOSIME/fullnavigation.",
+        "ActualcoordinateStop only568×256 zh/light headerpending and1440×900 en/dark partialSSE, reduce, controlledfetchstreams.",
+        "Wheel completion only568×320 en/reduce delayedJSON, scrollY2803→2803; errorwhileaway andothersizes unverified.",
+        "No realmodel/backend quality/physicalphone/GPU/FPS/zoom claim; no renderer or E6articlelayout recertification."
       ]
     }
   ],
@@ -3136,6 +3326,142 @@
       ],
       "scope": "Only actual1440×900 zh/dark E62 normal/reduce images; not a full interaction or performance score.",
       "reason": "实体壳消失，细淡金网络与背景相融，头像/问题保持主次。暗色仍可见多边形光晕与人物线稿的第二套轮廓，辅助提示较微小；范围90，保留进一步组件收敛空间。"
+    },
+    {
+      "assessment_id": "VIS-E71-SHORT-D1",
+      "family_ids": [
+        "H.CHAT.SEND",
+        "H.CHAT.INPUT",
+        "H.CHAT.RETRY"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        90
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-pending-568-256-zh-light.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-stopped-568-256-zh-light.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-next-turn-568-256-zh-light.png"
+      ],
+      "scope": "568×256 zh/light/reduce stopped+nextturn only; actualrecordedrecoveryUI, notfullmatrix/modelquality.",
+      "reason": "短屏Stop图标与真实停止反馈同位，输入恢复和下一问明确；256高重试位于中段滚动内，不能把首屏只见停止行当全部恢复动作已可扫到。"
+    },
+    {
+      "assessment_id": "VIS-E71-SHORT-D4",
+      "family_ids": [
+        "H.CHAT.SEND",
+        "H.CHAT.INPUT",
+        "H.CHAT.RETRY"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        96,
+        90,
+        90
+      ],
+      "scope_score": 91.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-pending-568-256-zh-light.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-stopped-568-256-zh-light.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-next-turn-568-256-zh-light.png"
+      ],
+      "scope": "568×256 zh/light/reduce stopped+nextturn only; actualrecordedrecoveryUI, notfullmatrix/modelquality.",
+      "reason": "短屏44sender清楚，停止行与回复内容分离；保留输入真实focus环，未当装饰扣分。256高内容窗口窄，辅助小字/多层细线仍可收敛。"
+    },
+    {
+      "assessment_id": "VIS-E71-DESKTOP-D1",
+      "family_ids": [
+        "H.CHAT.SEND",
+        "H.CHAT.INPUT",
+        "H.CHAT.RETRY"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        90,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-pending-1440-900-en-dark.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-stopped-1440-900-en-dark.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-next-turn-1440-900-en-dark.png"
+      ],
+      "scope": "1440×900 en/dark/reduce partialstopped+nextturn only; actualrecordedrecoveryUI, notfullmatrix/modelquality.",
+      "reason": "停止后的partial、Reply stopped和独立Retry清楚，新问题继续可用；合成stub正文不是模型质量，中英混用的次级品牌文字仍有工艺余量。"
+    },
+    {
+      "assessment_id": "VIS-E71-DESKTOP-D4",
+      "family_ids": [
+        "H.CHAT.SEND",
+        "H.CHAT.INPUT",
+        "H.CHAT.RETRY"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "scope_score": 90.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "expert_visual_judgment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-pending-1440-900-en-dark.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-stopped-1440-900-en-dark.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e7-next-turn-1440-900-en-dark.png"
+      ],
+      "scope": "1440×900 en/dark/reduce partialstopped+nextturn only; actualrecordedrecoveryUI, notfullmatrix/modelquality.",
+      "reason": "深色停止/下一问界面层级稳定，恢复文本不混入AI回复；quick省略、细碎辅助小字和输入/区域分隔层仍较多，范围90而非96。"
     }
   ],
   "findings": [
@@ -3494,7 +3820,7 @@
       "title": "TOC自动平滑滚动忽略减少动态效果",
       "baseline_reason": "scrollTocItemIntoView固定behavior:smooth。",
       "recommendation": "跟随prefers-reduced-motion并响应运行时切换；验证长目录滚动不移动正文焦点。",
-      "status": "source_fixed_awaiting_browser",
+      "status": "closed_for_recorded_right_TOC_runtime_reduce_click_internal_autofollow_unverified",
       "baseline_cap": 89,
       "active_cap": null,
       "batch": "B",
@@ -3517,10 +3843,31 @@
           "note": "Baseline diagnosis; concurrent fixes can move lines. Re-read before treating as current failure."
         }
       ],
-      "browser_evidence": [],
+      "browser_evidence": [
+        "E-ANCHOR-INTENT"
+      ],
       "verified_score": null,
       "family_ids": [
         "A.TOC.LINK"
+      ],
+      "as_of": {
+        "phase": "478 preview native anchor and actual right TOC scoped probes",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/anchor-intent-source.json",
+        "recorded_at": "2026-10-15T18:46:31.878345+00:00",
+        "reviewed_at": "2026-10-16T02:49:02+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light"
+      },
+      "closure_scope": "Current rightTOC firstvisibleheadingclick afterruntime reduce at1440×900 zh/light; notallTOCmotion.",
+      "remaining_unverified": [
+        "reading-companion internal container.scrollTo auto-follow to out-of-view active heading",
+        "long directory scroll retains article focus",
+        "mobile/otherlocale/theme/legacy sidebar"
       ]
     },
     {
@@ -3950,13 +4297,13 @@
         "T.SOCIAL.QR"
       ],
       "severity": "P2",
-      "title": "旅行二维码模态缺焦点进入且关闭回调可影响重开",
-      "baseline_reason": "travel.html:386–415 open只hidden=false/rAF添加is-open，没有移入焦点或Tab边界；close在transitionend无代次直接hidden=true，快速关闭再开可由旧listener隐藏新模态。",
-      "recommendation": "后续队列先单浏览器复现焦点进入/Tab边界/快速关闭重开，再用明确view代次和有界关闭回调；保留Escape返触发器，别扩入已冻结D2测试。",
-      "status": "source_confirmed_queued_browser_reproduction",
+      "title": "旅行二维码打开后焦点留在背景，正常动效快速重开被旧关闭隐藏",
+      "baseline_reason": "390×844中文light：reduce/normal打开均未移焦点，Tab到背景WeChat；Escape回trigger后立即Enter，normal500ms后hidden=true而is-open/expanded仍true；reduce重开仍可见。与travel.html:389–406无focus管理和未失效transitionend关闭回调吻合。",
+      "recommendation": "后续有界批使用原生dialog或完整模态焦点进入/Tab边界/返回策略；每次open失效旧rAF/transition关闭意图，关闭有有界终态；真实键盘复验两偏好快速重开，保留显示二维码/ID的原任务。",
+      "status": "confirmed_recorded_390_zh_two_media_focus_failure_and_normal_reopen_race",
       "baseline_cap": 89,
-      "active_cap": null,
-      "batch": "later-modal-queue",
+      "active_cap": 89,
+      "batch": "later-bounded-TravelQR-after-E7",
       "dimensions": [
         "D2",
         "D3"
@@ -3969,13 +4316,29 @@
           "sha256": "f4059581bf58791a261636a07d2abb3c2a1a208f2d7b09f99baefcac471f69e1"
         }
       ],
-      "browser_evidence": [],
+      "browser_evidence": [
+        "E-TRAVEL-QR-BASELINE-FAIL"
+      ],
       "verified_score": null,
       "confidence": "high",
       "as_of": {
-        "phase": "source queue after D1 review",
-        "reviewed_at": "2026-10-16T01:07:24+08:00"
-      }
+        "phase": "TravelQR actual baseline after E62; E7 WIP outside scope",
+        "reviewed_at": "2026-10-16T02:46:56+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "travel_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motions": [
+          "reduce",
+          "no-preference"
+        ]
+      },
+      "source_candidate_reason": "travel.html:386–415 open只hidden=false/rAF添加is-open，没有移入焦点或Tab边界；close在transitionend无代次直接hidden=true，快速关闭再开可由旧listener隐藏新模态。",
+      "active_cap_scope": "G4仅normal快速重开后QR内容被hidden；其他范围/完整族分仍null。"
     },
     {
       "id": "UX-019",
@@ -4291,10 +4654,10 @@
       "title": "首页聊天关闭再开丢失未发送草稿",
       "baseline_reason": "77/E52实际受控probe填入草稿后关闭/重开，valueAfterReopen为空。冻结模板renderOrbit以innerHTML替换输入，renderChat没有草稿值来源。",
       "recommendation": "将未发送draft与消息状态独立保存；renderChat/close/open/正常失败重渲染先保存并恢复，只有明确发送或清空才清除。按原生输入值验证，不以session存在代替draft连续性。",
-      "status": "confirmed_baseline_mock_probe_pending_transport_batch",
+      "status": "closed_for_E71_named_draft_close_reopen_clear_send_cases",
       "baseline_cap": 79,
-      "active_cap": 79,
-      "batch": "after-E6-home-transport",
+      "active_cap": null,
+      "batch": "E7/E7.1",
       "dimensions": [
         "D3",
         "D6"
@@ -4312,11 +4675,11 @@
         }
       ],
       "as_of": {
-        "phase": "Homepage transport baseline before E6 build",
-        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
-        "source_file": "layouts/partials/homepage-daypage.html",
-        "source_sha256": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab",
-        "reviewed_at": "2026-10-16T02:10:53+08:00"
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
       },
       "suggested_verification": [
         "未发送中英草稿close/open保留；Escape/清空/发送分别符合意图。",
@@ -4324,7 +4687,19 @@
       ],
       "severity": "P2",
       "verified_score": null,
-      "confidence": "high"
+      "confidence": "high",
+      "baseline_as_of": {
+        "phase": "Homepage transport baseline before E6 build",
+        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+        "source_file": "layouts/partials/homepage-daypage.html",
+        "source_sha256": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab",
+        "reviewed_at": "2026-10-16T02:10:53+08:00"
+      },
+      "browser_evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "closure_scope": "zh/en default1440×900 reduce exactquoted draftclose/reopen/clear/send, plusactualtwoStopjourneys; notreloadpersistence.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-026",
@@ -4336,10 +4711,10 @@
       "title": "首页聊天合成composition Enter触发发送",
       "baseline_reason": "77/E52受控synthetic KeyboardEvent(isComposing) Enter触发1次API stub并进入busy。冻结模板:636只看Enter/shiftKey，没有isComposing/keyCode229或composition生命周期guard。",
       "recommendation": "composition进行中让Enter由输入法处理；只在明确提交键或按钮意图后发送。复用仓库已有composition事件边界模式，并测试真实提交仍一次发送。",
-      "status": "confirmed_synthetic_event_guard_gap_OS_IME_unverified",
+      "status": "closed_for_E71_synthetic_composition_guards_OS_IME_unverified",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "after-E6-home-transport",
+      "batch": "E7/E7.1",
       "dimensions": [
         "D2",
         "D3"
@@ -4357,11 +4732,11 @@
         }
       ],
       "as_of": {
-        "phase": "Homepage transport baseline before E6 build",
-        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
-        "source_file": "layouts/partials/homepage-daypage.html",
-        "source_sha256": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab",
-        "reviewed_at": "2026-10-16T02:10:53+08:00"
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
       },
       "suggested_verification": [
         "isComposing=true Enter及keyCode229不调用stub；compositionend后明确Enter一次调用。",
@@ -4369,7 +4744,19 @@
       ],
       "severity": "P2",
       "verified_score": null,
-      "confidence": "high"
+      "confidence": "high",
+      "baseline_as_of": {
+        "phase": "Homepage transport baseline before E6 build",
+        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+        "source_file": "layouts/partials/homepage-daypage.html",
+        "source_sha256": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab",
+        "reviewed_at": "2026-10-16T02:10:53+08:00"
+      },
+      "browser_evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "closure_scope": "zh/en syntheticisComposing/keyCode229 Enter/Escapeonly; ordinaryEnterworks. NotOSIME.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-027",
@@ -4383,10 +4770,10 @@
       "title": "首页聊天挂起无就地停止或请求时限，只能关窗取消",
       "baseline_reason": "77/E52虚拟35秒后受控fetch仍busy、inputdisabled、Stop按钮0；关闭后abort增加1。冻结模板fetch和reader.read无deadline，DONE事件也只被忽略；后一stream边界目前仅源码候选。",
       "recommendation": "增加明确Stop/可编辑恢复与请求/读取闲置时限，覆盖headers前与SSE期间；取消保留问题/有效部分回答，generation防迟到写入与焦点抢占。DONE应结束读取但须按实际协议验证。",
-      "status": "confirmed_mock_pending_friction_close_abort_available",
+      "status": "closed_for_E7_E71_named_Stop_idle_JSON_SSE_DONE_recovery_cases",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "after-E6-home-transport",
+      "batch": "E7/E7.1",
       "dimensions": [
         "D3",
         "D5"
@@ -4404,11 +4791,11 @@
         }
       ],
       "as_of": {
-        "phase": "Homepage transport baseline before E6 build",
-        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
-        "source_file": "layouts/partials/homepage-daypage.html",
-        "source_sha256": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab",
-        "reviewed_at": "2026-10-16T02:10:53+08:00"
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
       },
       "scope_limits": [
         "Close is a verified abort exit; do not claim an inescapable busy state or triggerG3 solely from missingStop.",
@@ -4416,7 +4803,19 @@
       ],
       "severity": "P2",
       "verified_score": null,
-      "confidence": "high"
+      "confidence": "high",
+      "baseline_as_of": {
+        "phase": "Homepage transport baseline before E6 build",
+        "checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+        "source_file": "layouts/partials/homepage-daypage.html",
+        "source_sha256": "de2e2e08d54131d56bbafa2e0617614941963ec5b05149c7fce1310c2036cfab",
+        "reviewed_at": "2026-10-16T02:10:53+08:00"
+      },
+      "browser_evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "closure_scope": "NamedtwoactualStop; pausedvirtual25s headers/first/laterchunk+JSON, DONEwithoutEOF, stuckcancel, latecompletion/retrycontext. No realbackendtimingclaim.",
+      "original_failure_retained": true
     },
     {
       "id": "UX-028",
@@ -4607,10 +5006,10 @@
       "title": "短屏旧回复完成把滚去旅行书的读者拉回聊天并聚焦输入",
       "baseline_reason": "E61 actual568×320英文light/reduce：发送后scrollY2183，chatsection有DOM焦点；真实wheel620滚至Books，scrollY2803且焦点仍chatsection。受控延迟JSON完成后scrollY回2183（−620），input获焦点。前后图分别显示Angkor书卡与被拉回的chat。",
       "recommendation": "E7修复完成/失败重渲染的viewport/focus归属：显式open/close与需要维持可见输入的布局变化才对齐；持续旧chat DOM焦点不能代替用户仍在chat阅读。新增真实wheel离开后完成/失败不改scrollY、不把焦点强行移到input的回归，保留显式open/close短屏可达。",
-      "status": "confirmed_recorded_E61_568_en_wheel_completion_intent_failure",
+      "status": "closed_for_E7_E71_568_en_wheel_JSON_completion_case",
       "baseline_cap": null,
       "active_cap": null,
-      "batch": "E7-transport-scroll-intent-probe",
+      "batch": "E7/E7.1",
       "dimensions": [
         "D3",
         "D6"
@@ -4628,15 +5027,11 @@
         }
       ],
       "as_of": {
-        "phase": "E6.1 actual wheel-only late-completion failure",
-        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e61-source.json",
-        "reviewed_at": "2026-10-16T02:38:36+08:00",
-        "viewport": {
-          "width": 568,
-          "height": 320
-        },
-        "locale": "en",
-        "motion": "reduce"
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
       },
       "verified_score": null,
       "confidence": "high",
@@ -4647,9 +5042,23 @@
       ],
       "source_candidate_reason": "E61 renderChat:600只按activeElement判断hadChatFocus，:669以focusInput||hadChatFocus调用layoutChat；:491→revealShortChat:484无可见性/用户滚动意图guard执行window.scrollTo。生成时焦点移到chatsection，读者仅wheel到Books不会改变焦点，完成或错误重渲染仍可能重对齐回chat。现3条continuity包含点击posts改变焦点，未覆盖wheel-only路径。",
       "browser_evidence": [
-        "docs/ux-audit/2026-10-16/evidence/home-wheel-intent-probe.json"
+        "docs/ux-audit/2026-10-16/evidence/home-wheel-intent-probe.json",
+        "E-BATCH-E71-FINAL"
       ],
-      "candidate_upgraded_at": "2026-10-16T02:38:36+08:00"
+      "candidate_upgraded_at": "2026-10-16T02:38:36+08:00",
+      "baseline_as_of": {
+        "phase": "E6.1 actual wheel-only late-completion failure",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e61-source.json",
+        "reviewed_at": "2026-10-16T02:38:36+08:00",
+        "viewport": {
+          "width": 568,
+          "height": 320
+        },
+        "locale": "en",
+        "motion": "reduce"
+      },
+      "closure_scope": "Onlyactual568×320 en/light/reduce wheel620+lateJSONcompletion, scrollY2803→2803/noinputfocus; failurewhileaway andothersizesunverified.",
+      "original_failure_retained": true
     }
   ],
   "next_batches": [
@@ -4695,8 +5104,8 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.7",
-    "sha256": "919bf8671c3ca17393298a8b3584fad76cf40a8cc0c7becf2674ec0b08b7a3cd",
+    "version": "1.10",
+    "sha256": "fa12e1e2c5ccb6408dd28ac3fb92c9c20d6a72dd41b40cf6d17a04a5c08e92f5",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -4704,26 +5113,27 @@
       "motion_families": 26,
       "world_decorative_families": 18,
       "control_families": 265,
-      "stable_control_selectors": 357,
+      "stable_control_selectors": 358,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 38,
+      "partial_state_evidence_families": 46,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 238,
-        "partial-state-evidence": 38,
-        "rendered-baseline": 25,
-        "measured-observation-only": 8
+        "source-only": 229,
+        "partial-state-evidence": 46,
+        "measured-observation-only": 9,
+        "rendered-baseline": 25
       },
       "initial_evidence_census": {
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 46,
+      "families_with_state_evidence": 55,
       "accepted_whole_families": 0
     },
-    "imported_at": "2026-10-16T02:29:36+08:00",
-    "source_metadata_updated_at": "2026-10-16T02:15:38+08:00"
+    "imported_at": "2026-10-16T02:56:17+08:00",
+    "source_metadata_updated_at": "2026-10-16T02:49:26+08:00",
+    "import_scope": "Inventorycountmetadata; nowhole-familycertification."
   },
   "groups": [
     {
@@ -6333,7 +6743,10 @@
       "journey_queue_ids": [
         "R-02"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-ANCHOR-META-NATIVE",
+        "CHK-ANCHOR-PLAIN-REDUCE-BACK"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -7955,18 +8368,19 @@
     },
     {
       "family_id": "H.HERO.READ",
-      "title": "开始阅读",
+      "title": "开始阅读 / 读这篇文章",
       "scope": "control-family",
-      "selector": ".hp-entry-actions a[href=\"#hp-posts\"]",
+      "selector": ".hp-entry-actions a[href=\"#hp-posts\"], .hp-reading-start__link",
       "selector_type": "css",
       "control_ids": [
-        "H.HERO.READ.control.ffae77"
+        "H.HERO.READ.control.ffae77",
+        "H.HERO.READ.control.ff1fe2"
       ],
       "routes": [
         "/zh/",
         "/"
       ],
-      "task": "滚动到最新写作",
+      "task": "定位文章列表，或从最近实践的题目与摘要直接进入真实文章",
       "source": {
         "file": "layouts/partials/homepage-daypage.html",
         "line": 58,
@@ -8025,7 +8439,304 @@
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
-      "inventory_state_evidence": [],
+      "inventory_state_evidence": [
+        {
+          "binding_id": "EIMPORT.E6.native-article.H.HERO.READ.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E6 frozen evidence",
+          "receipt": "evidence/batch-e6-contracts.log",
+          "receipt_sha256": "5fc56660721fcf93ac6d193cf6ae1d6aee570f1bd70ffb7e16c3bb59f96594a5",
+          "control_ids": [
+            "H.HERO.READ.control.ff1fe2"
+          ],
+          "control_resolution": "Only explicitly scoped selectors/instances; no whole-family inference",
+          "observation": "中英无JS下新原生文章anchor的time datetime正确、真实题目和摘要存在，href为真实文章URL。",
+          "cases": [
+            {
+              "id": "zh practice title is a real article link without scripts",
+              "route": "/zh/",
+              "locale": "zh",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            },
+            {
+              "id": "en practice title is a real article link without scripts",
+              "route": "/",
+              "locale": "en",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e6-source.json",
+            "registry_ref": "batch-e6-source.json",
+            "base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "frozen_at_utc": "2026-10-15T18:12:13.486802+00:00",
+            "frozen_at_shanghai": "2026-10-16T02:12:13.486802+08:00",
+            "imported_at_shanghai": "2026-10-16T02:41:07+08:00",
+            "current_checkout_revision_at_import": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "qa_config": null,
+            "listed_files": [
+              {
+                "file": "layouts/partials/homepage-daypage.html",
+                "frozen_sha256": "1af8922766ef4651bcce697c32682609ff56ff12538ae17309e5262f80e22472",
+                "current_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "same_current": false
+              },
+              {
+                "file": "layouts/partials/homepage-reading-start.html",
+                "frozen_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "current_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/home-about-experience.css",
+                "frozen_sha256": "8e17a3e2823a4f002d22e0274c2cbd4fd13826e4a065f932c493b296825c7ef0",
+                "current_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "same_current": false
+              },
+              {
+                "file": "assets/js/home-ambient.mjs",
+                "frozen_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "current_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-reading-contracts.spec.ts",
+                "frozen_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "current_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-about-experience.spec.ts",
+                "frozen_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "current_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-first-paint.spec.ts",
+                "frozen_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "current_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "same_current": true
+              }
+            ],
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "limits": "仅E6 20合同中的两条新入口检查；不是把旧定位CTA证据转给新anchor，不外推E61/后续布局hover/focus。",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E6.native-article.H.HERO.READ.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E6 frozen evidence",
+          "receipt": "evidence/batch-e6-contracts.log",
+          "receipt_sha256": "5fc56660721fcf93ac6d193cf6ae1d6aee570f1bd70ffb7e16c3bb59f96594a5",
+          "control_ids": [
+            "H.HERO.READ.control.ff1fe2"
+          ],
+          "control_resolution": "Only explicitly scoped selectors/instances; no whole-family inference",
+          "observation": "中英禁用JS实际click新实践文章anchor，URL抵达对应文章且.post-title与链接h2一致。",
+          "cases": [
+            {
+              "id": "zh practice title is a real article link without scripts",
+              "route": "/zh/",
+              "locale": "zh",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            },
+            {
+              "id": "en practice title is a real article link without scripts",
+              "route": "/",
+              "locale": "en",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e6-source.json",
+            "registry_ref": "batch-e6-source.json",
+            "base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "frozen_at_utc": "2026-10-15T18:12:13.486802+00:00",
+            "frozen_at_shanghai": "2026-10-16T02:12:13.486802+08:00",
+            "imported_at_shanghai": "2026-10-16T02:41:07+08:00",
+            "current_checkout_revision_at_import": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "qa_config": null,
+            "listed_files": [
+              {
+                "file": "layouts/partials/homepage-daypage.html",
+                "frozen_sha256": "1af8922766ef4651bcce697c32682609ff56ff12538ae17309e5262f80e22472",
+                "current_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "same_current": false
+              },
+              {
+                "file": "layouts/partials/homepage-reading-start.html",
+                "frozen_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "current_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/home-about-experience.css",
+                "frozen_sha256": "8e17a3e2823a4f002d22e0274c2cbd4fd13826e4a065f932c493b296825c7ef0",
+                "current_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "same_current": false
+              },
+              {
+                "file": "assets/js/home-ambient.mjs",
+                "frozen_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "current_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-reading-contracts.spec.ts",
+                "frozen_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "current_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-about-experience.spec.ts",
+                "frozen_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "current_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-first-paint.spec.ts",
+                "frozen_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "current_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "same_current": true
+              }
+            ],
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "limits": "仅此冻结状态/路由/尺寸，不接受完整功能族或所有条件。",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E61.posts-focus.H.HERO.READ.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E61 frozen evidence",
+          "receipt": "evidence/batch-e61-continuity.log",
+          "receipt_sha256": "3f0313ae38e6289d1114d6e485b7dd2cd9cf34170337560610981973569f57e2",
+          "control_ids": [
+            "H.HERO.READ.control.ffae77"
+          ],
+          "control_resolution": "Only explicitly scoped selectors/instances; no whole-family inference",
+          "observation": "旧原生#hp-posts定位CTA实际点击后focus=posts，异步完成仍保留posts focus。",
+          "cases": [
+            {
+              "route": "/zh/",
+              "locale": "zh",
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "viewport_source": "E61 qaConfig defaultViewport (hash frozen)",
+              "reducedMotion": "reduce",
+              "network": "controllable stream stub intentionally allows stale events",
+              "reported_passed": true,
+              "id": "a completed reply does not steal focus after the visitor leaves chat",
+              "test_source": "tests/e2e/home-about-experience.spec.ts:103",
+              "leave_action": "actual click .hp-entry-actions a[href=\"#hp-posts\"] changes focus to #hp-posts"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e61-source.json",
+            "registry_ref": "batch-e61-source.json",
+            "base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "frozen_at_utc": "2026-10-15T18:29:48.071870+00:00",
+            "frozen_at_shanghai": "2026-10-16T02:29:48.071870+08:00",
+            "imported_at_shanghai": "2026-10-16T02:41:07+08:00",
+            "current_checkout_revision_at_import": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "qa_config": {
+              "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+              "sha256": "91ff3bd50428526f48f5a08ee0c4d1b5fe5a09429442b08cb08e27b6c1d2fcfd",
+              "defaultViewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "workers": 1,
+              "browser": "Chromium Metal"
+            },
+            "listed_files": [
+              {
+                "file": "layouts/partials/homepage-daypage.html",
+                "frozen_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "current_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "same_current": true
+              },
+              {
+                "file": "layouts/partials/homepage-reading-start.html",
+                "frozen_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "current_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/home-about-experience.css",
+                "frozen_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "current_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "same_current": true
+              },
+              {
+                "file": "assets/js/home-ambient.mjs",
+                "frozen_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "current_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "same_current": true
+              },
+              {
+                "file": "assets/js/three/bear-orb.js",
+                "frozen_sha256": "6dbc5f8a4107dd7cc1c9e7b16120e5b142aa7b2606fb71fb6e0b3d3005b7beac",
+                "current_sha256": "113cddac99ba4e8ca1d6815ad7d6074fdab72fe9d805f9f1b910a778b43da3c6",
+                "same_current": false
+              },
+              {
+                "file": "tests/e2e/home-reading-contracts.spec.ts",
+                "frozen_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "current_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-about-experience.spec.ts",
+                "frozen_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "current_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-first-paint.spec.ts",
+                "frozen_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "current_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-short-chat-contracts.spec.ts",
+                "frozen_sha256": "02aaa4e7878e3c293546b7d69176660ca546b6e3b8bd1295805c469cf4032644",
+                "current_sha256": "02aaa4e7878e3c293546b7d69176660ca546b6e3b8bd1295805c469cf4032644",
+                "same_current": true
+              }
+            ],
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "limits": "只旧定位CTA；新实践文章anchor不继承本条焦点证据。",
+          "verified_score": null
+        }
+      ],
       "journey_queue_ids": [
         "E-07"
       ],
@@ -8039,7 +8750,8 @@
         "VIS-HOME-D1",
         "VIS-E6-HERO-D1",
         "VIS-E6-HERO-D4"
-      ]
+      ],
+      "selector_variants_note": "ffae77为原#hp-posts定位CTA；新control为独立文章链接，不能共享功能通过。"
     },
     {
       "family_id": "H.HERO.PRODUCT",
@@ -8416,7 +9128,8 @@
         "CHK-E6-CHAT-ROOT-SESSION",
         "CHK-E6-PAINT",
         "CHK-E61-SHORT-RETURN",
-        "CHK-E61-NORMAL-SESSION"
+        "CHK-E61-NORMAL-SESSION",
+        "CHK-E71-DRAFT-CLOSE"
       ],
       "expert_visual_assessment_ids": [
         "VIS-E6-CHAT-D1",
@@ -8819,12 +9532,21 @@
         "CHK-E61-SHORT-CHROME",
         "CHK-E61-SCROLL-CONTENT",
         "CHK-E61-CONTINUITY",
-        "CHK-E61-WHEEL-COMPLETION-FAIL"
+        "CHK-E61-WHEEL-COMPLETION-FAIL",
+        "CHK-E71-DRAFT-CLOSE",
+        "CHK-E71-SYNTHETIC-COMPOSITION",
+        "CHK-E71-STOP-RECOVERY",
+        "CHK-E71-WHEEL-COMPLETION",
+        "CHK-E71-CONTINUITY-REGRESSION"
       ],
       "expert_visual_assessment_ids": [
         "VIS-E6-CHAT-D1",
         "VIS-E6-CHAT-D4",
-        "VIS-E61-SHORT-D4"
+        "VIS-E61-SHORT-D4",
+        "VIS-E71-SHORT-D1",
+        "VIS-E71-SHORT-D4",
+        "VIS-E71-DESKTOP-D1",
+        "VIS-E71-DESKTOP-D4"
       ]
     },
     {
@@ -9003,9 +9725,20 @@
         "CHK-E6-SYNTHETIC-BFCACHE",
         "CHK-E6-SHORT-FOCUS",
         "CHK-E61-SHORT-CHROME",
-        "CHK-E61-WHEEL-COMPLETION-FAIL"
+        "CHK-E61-WHEEL-COMPLETION-FAIL",
+        "CHK-E71-SYNTHETIC-COMPOSITION",
+        "CHK-E71-ACTUAL-STOP-TARGET",
+        "CHK-E71-STOP-RECOVERY",
+        "CHK-E71-IDLE-FRONTIERS",
+        "CHK-E71-DONE-NO-EOF",
+        "CHK-E71-WHEEL-COMPLETION"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-E71-SHORT-D1",
+        "VIS-E71-SHORT-D4",
+        "VIS-E71-DESKTOP-D1",
+        "VIS-E71-DESKTOP-D4"
+      ]
     },
     {
       "family_id": "H.CHAT.CLEAR",
@@ -9260,7 +9993,10 @@
         "CHK-E61-SHORT-CHROME",
         "CHK-E61-SHORT-RETURN",
         "CHK-E61-NORMAL-SESSION",
-        "CHK-E61-CONTINUITY"
+        "CHK-E61-CONTINUITY",
+        "CHK-E71-DRAFT-CLOSE",
+        "CHK-E71-SYNTHETIC-COMPOSITION",
+        "CHK-E71-CONTINUITY-REGRESSION"
       ],
       "expert_visual_assessment_ids": [
         "VIS-E6-CHAT-D1",
@@ -9346,9 +10082,17 @@
         "D-01"
       ],
       "scoped_check_assessment_ids": [
-        "CHK-E6-CHAT-STALE"
+        "CHK-E6-CHAT-STALE",
+        "CHK-E71-STOP-RECOVERY",
+        "CHK-E71-IDLE-FRONTIERS",
+        "CHK-E71-CONTINUITY-REGRESSION"
       ],
-      "expert_visual_assessment_ids": []
+      "expert_visual_assessment_ids": [
+        "VIS-E71-SHORT-D1",
+        "VIS-E71-SHORT-D4",
+        "VIS-E71-DESKTOP-D1",
+        "VIS-E71-DESKTOP-D4"
+      ]
     },
     {
       "family_id": "H.CHANNEL.TABS",
@@ -11567,7 +12311,8 @@
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-009",
         "CHK-SOURCE-CLOSED-SHEET",
-        "CHK-D2B-SHEET-CLOSED"
+        "CHK-D2B-SHEET-CLOSED",
+        "CHK-RIGHT-TOC-RUNTIME-REDUCE-CLICK"
       ],
       "expert_visual_assessment_ids": [
         "VIS-ARTICLE-D1",
@@ -41544,7 +42289,7 @@
     },
     {
       "family_id": "T.SOCIAL.QR",
-      "title": "社交二维码/复制ID/关闭",
+      "title": "社交二维码 / 查看 ID / 关闭",
       "scope": "control-family",
       "selector": ".tw-social--qr, [data-qr-close]",
       "selector_type": "css",
@@ -41616,11 +42361,219 @@
       "contract_evidence": [],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
-      "inventory_state_evidence": [],
+      "inventory_state_evidence": [
+        {
+          "binding_id": "EIMPORT.TQR.baseline.focus",
+          "state": "focus",
+          "status": "known-failure-as-of-Travel-QR-baseline",
+          "phase": "Travel QR actual baseline after E62 checkpoint",
+          "receipt": "evidence/travel-qr-baseline-probe.json",
+          "receipt_sha256": "079920e42f9f9ba6c048fe8c4d68da8f91ada12da1cbec320f10d0bcc809877e",
+          "control_ids": [
+            "T.SOCIAL.QR.control.27594f"
+          ],
+          "control_resolution": "Actual RedNote trigger opened; Tab moved to background WeChat trigger. Close button/backdrop were not clicked in this probe.",
+          "cases": [
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "lang": "zh",
+              "motion": "reduce",
+              "initial": {
+                "hidden": false,
+                "focusInside": false,
+                "active": "<button type=\"button\" class=\"tw-social tw-social--qr\" data-qr=\"/xiaohongshu.jpg\" data-qr-id=\"nsddd_top\" data-qr-label=\"小红书 / RedNote\" aria-haspopup=\"dialog\" aria-expanded=\"true\"><svg class=\"tw-social__ico\" viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2\" "
+              },
+              "afterTab": {
+                "focusInside": false,
+                "active": "<button type=\"button\" class=\"tw-social tw-social--qr\" data-qr=\"/wechat.jpg\" data-qr-id=\"cubxxwAI\" data-qr-label=\"微信 / WeChat\" aria-haspopup=\"dialog\" aria-expanded=\"false\"><svg class=\"tw-social__ico\" viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"currentcolor\" aria-hidden=\"true\"><path d=\"M8.69 4C4."
+              },
+              "afterEscape": {
+                "focused": true,
+                "expanded": "false"
+              },
+              "reopen": {
+                "hidden": false,
+                "open": true,
+                "expanded": "true",
+                "focusInside": false
+              },
+              "route": "/zh/travel/",
+              "theme": "light",
+              "theme_provenance": "parent supplied probe scope; JSON does not repeat theme",
+              "control_instance": ".tw-social--qr[data-qr=\"/xiaohongshu.jpg\"]",
+              "tab_destination": ".tw-social--qr[data-qr=\"/wechat.jpg\"]",
+              "network": "no contact messages, no paid backend"
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "lang": "zh",
+              "motion": "no-preference",
+              "initial": {
+                "hidden": false,
+                "focusInside": false,
+                "active": "<button type=\"button\" class=\"tw-social tw-social--qr\" data-qr=\"/xiaohongshu.jpg\" data-qr-id=\"nsddd_top\" data-qr-label=\"小红书 / RedNote\" aria-haspopup=\"dialog\" aria-expanded=\"true\"><svg class=\"tw-social__ico\" viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2\" "
+              },
+              "afterTab": {
+                "focusInside": false,
+                "active": "<button type=\"button\" class=\"tw-social tw-social--qr\" data-qr=\"/wechat.jpg\" data-qr-id=\"cubxxwAI\" data-qr-label=\"微信 / WeChat\" aria-haspopup=\"dialog\" aria-expanded=\"false\"><svg class=\"tw-social__ico\" viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"currentcolor\" aria-hidden=\"true\"><path d=\"M8.69 4C4."
+              },
+              "afterEscape": {
+                "focused": true,
+                "expanded": "false"
+              },
+              "reopen": {
+                "hidden": true,
+                "open": true,
+                "expanded": "true",
+                "focusInside": false
+              },
+              "route": "/zh/travel/",
+              "theme": "light",
+              "theme_provenance": "parent supplied probe scope; JSON does not repeat theme",
+              "control_instance": ".tw-social--qr[data-qr=\"/xiaohongshu.jpg\"]",
+              "tab_destination": ".tw-social--qr[data-qr=\"/wechat.jpg\"]",
+              "network": "no contact messages, no paid backend"
+            }
+          ],
+          "observation": "390×844中文light，reduce与no-preference两scope：实际click打开后focusInside=false、焦点仍小红书trigger；Tab移动到背景微信trigger。",
+          "limits": "只真实点击/Tab/Escape/Enter重开的这两个scope；未测ShiftTab完整循环、实体手机、其他主题/浏览器。Escape返trigger是同一失败case中的事实，不另升级关闭控件通过。",
+          "source_context": {
+            "manifest_reference": "evidence/batch-e62-source.json",
+            "manifest_sha256": "41bb2817ce612a59d5b56c30a10e4061e6f7262a9acd6a0691af0be000472228",
+            "manifest_at_utc": "2026-10-15T18:37:50.593975+00:00",
+            "manifest_base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "receipt_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+            "current_checkout_revision_at_import": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+            "imported_at_shanghai": "2026-10-16T02:45:33+08:00",
+            "dependencies": [
+              {
+                "file": "layouts/page/travel.html",
+                "frozen_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+                "current_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+                "same_current": true,
+                "same_77bf94c2": true,
+                "listed_in_E62_manifest": false,
+                "identity_source": "receipt travelTemplateSHA256 + verified77bf Git blob"
+              },
+              {
+                "file": "assets/css/extended/zzz-travel-world.css",
+                "frozen_sha256": "1c6a15321212445c1b74f1e31461e185f0f8491fc468457fbfcd7fb29c0e0259",
+                "current_sha256": "1c6a15321212445c1b74f1e31461e185f0f8491fc468457fbfcd7fb29c0e0259",
+                "same_current": true,
+                "same_77bf94c2": true,
+                "listed_in_E62_manifest": false,
+                "identity_source": "77bf Git blob fallback; Travel CSS not in E62 changed-file manifest"
+              }
+            ],
+            "identity_limits": "Travel不在E62九文件清单；只依据本receipt独立template hash与77bf Git blob核对，不将E62球体freeze冒称Travel所有依赖manifest。",
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "issue_ids": [
+            "UX-018"
+          ],
+          "resolution": "open; Travel QR implementation remains queued after E7/Space batches",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.TQR.baseline.reopen",
+          "state": "active",
+          "status": "known-failure-as-of-Travel-QR-baseline",
+          "phase": "Travel QR actual baseline after E62 checkpoint",
+          "receipt": "evidence/travel-qr-baseline-probe.json",
+          "receipt_sha256": "079920e42f9f9ba6c048fe8c4d68da8f91ada12da1cbec320f10d0bcc809877e",
+          "control_ids": [
+            "T.SOCIAL.QR.control.27594f"
+          ],
+          "control_resolution": "Actual Escape then immediate native Enter reopens same RedNote trigger; no cross-channel swap claimed.",
+          "cases": [
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "lang": "zh",
+              "motion": "no-preference",
+              "initial": {
+                "hidden": false,
+                "focusInside": false,
+                "active": "<button type=\"button\" class=\"tw-social tw-social--qr\" data-qr=\"/xiaohongshu.jpg\" data-qr-id=\"nsddd_top\" data-qr-label=\"小红书 / RedNote\" aria-haspopup=\"dialog\" aria-expanded=\"true\"><svg class=\"tw-social__ico\" viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2\" "
+              },
+              "afterTab": {
+                "focusInside": false,
+                "active": "<button type=\"button\" class=\"tw-social tw-social--qr\" data-qr=\"/wechat.jpg\" data-qr-id=\"cubxxwAI\" data-qr-label=\"微信 / WeChat\" aria-haspopup=\"dialog\" aria-expanded=\"false\"><svg class=\"tw-social__ico\" viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"currentcolor\" aria-hidden=\"true\"><path d=\"M8.69 4C4."
+              },
+              "afterEscape": {
+                "focused": true,
+                "expanded": "false"
+              },
+              "reopen": {
+                "hidden": true,
+                "open": true,
+                "expanded": "true",
+                "focusInside": false
+              },
+              "route": "/zh/travel/",
+              "theme": "light",
+              "theme_provenance": "parent supplied probe scope; JSON does not repeat theme",
+              "control_instance": ".tw-social--qr[data-qr=\"/xiaohongshu.jpg\"]",
+              "tab_destination": ".tw-social--qr[data-qr=\"/wechat.jpg\"]",
+              "network": "no contact messages, no paid backend"
+            }
+          ],
+          "observation": "只在390×844中文light/no-preference：Escape后立即Enter重开，500ms后hidden=true但is-open=true且trigger aria-expanded=true，旧transition回调覆盖新打开意图。",
+          "limits": "reduce同样重开仍visible（hidden=false），不能把no-preference重开失败外推reduce；reduce的focusInside=false仍属上一条焦点失败。500ms等待来自parent probe流程说明，JSON记录最终快照。未实际click关闭X/backdrop，不认证它们。",
+          "source_context": {
+            "manifest_reference": "evidence/batch-e62-source.json",
+            "manifest_sha256": "41bb2817ce612a59d5b56c30a10e4061e6f7262a9acd6a0691af0be000472228",
+            "manifest_at_utc": "2026-10-15T18:37:50.593975+00:00",
+            "manifest_base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "receipt_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+            "current_checkout_revision_at_import": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+            "imported_at_shanghai": "2026-10-16T02:45:33+08:00",
+            "dependencies": [
+              {
+                "file": "layouts/page/travel.html",
+                "frozen_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+                "current_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+                "same_current": true,
+                "same_77bf94c2": true,
+                "listed_in_E62_manifest": false,
+                "identity_source": "receipt travelTemplateSHA256 + verified77bf Git blob"
+              },
+              {
+                "file": "assets/css/extended/zzz-travel-world.css",
+                "frozen_sha256": "1c6a15321212445c1b74f1e31461e185f0f8491fc468457fbfcd7fb29c0e0259",
+                "current_sha256": "1c6a15321212445c1b74f1e31461e185f0f8491fc468457fbfcd7fb29c0e0259",
+                "same_current": true,
+                "same_77bf94c2": true,
+                "listed_in_E62_manifest": false,
+                "identity_source": "77bf Git blob fallback; Travel CSS not in E62 changed-file manifest"
+              }
+            ],
+            "identity_limits": "Travel不在E62九文件清单；只依据本receipt独立template hash与77bf Git blob核对，不将E62球体freeze冒称Travel所有依赖manifest。",
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "issue_ids": [
+            "UX-018"
+          ],
+          "resolution": "open; normal-motion reopen race reproduced only in stated scope",
+          "verified_score": null
+        }
+      ],
       "journey_queue_ids": [
         "R-30"
       ],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-TRAVEL-QR-FOCUS-FAIL",
+        "CHK-TRAVEL-QR-REOPEN-FAIL",
+        "CHK-TRAVEL-QR-ESCAPE-RETURN"
+      ],
       "expert_visual_assessment_ids": []
     },
     {
@@ -51147,7 +52100,10 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-ANCHOR-META-NATIVE",
+        "CHK-ANCHOR-PLAIN-REDUCE-BACK"
+      ]
     },
     {
       "control_id": "G.NAV.TOP.control.ae4d9f",
@@ -52634,9 +53590,117 @@
         "D6": null
       },
       "known_findings": [],
-      "inventory_state_evidence": [],
+      "inventory_state_evidence": [
+        {
+          "binding_id": "EIMPORT.E61.posts-focus.H.HERO.READ.focus",
+          "state": "focus",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E61 frozen evidence",
+          "receipt": "evidence/batch-e61-continuity.log",
+          "receipt_sha256": "3f0313ae38e6289d1114d6e485b7dd2cd9cf34170337560610981973569f57e2",
+          "control_ids": [
+            "H.HERO.READ.control.ffae77"
+          ],
+          "control_resolution": "Only explicitly scoped selectors/instances; no whole-family inference",
+          "observation": "旧原生#hp-posts定位CTA实际点击后focus=posts，异步完成仍保留posts focus。",
+          "cases": [
+            {
+              "route": "/zh/",
+              "locale": "zh",
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "viewport_source": "E61 qaConfig defaultViewport (hash frozen)",
+              "reducedMotion": "reduce",
+              "network": "controllable stream stub intentionally allows stale events",
+              "reported_passed": true,
+              "id": "a completed reply does not steal focus after the visitor leaves chat",
+              "test_source": "tests/e2e/home-about-experience.spec.ts:103",
+              "leave_action": "actual click .hp-entry-actions a[href=\"#hp-posts\"] changes focus to #hp-posts"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e61-source.json",
+            "registry_ref": "batch-e61-source.json",
+            "base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "frozen_at_utc": "2026-10-15T18:29:48.071870+00:00",
+            "frozen_at_shanghai": "2026-10-16T02:29:48.071870+08:00",
+            "imported_at_shanghai": "2026-10-16T02:41:07+08:00",
+            "current_checkout_revision_at_import": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "qa_config": {
+              "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+              "sha256": "91ff3bd50428526f48f5a08ee0c4d1b5fe5a09429442b08cb08e27b6c1d2fcfd",
+              "defaultViewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "workers": 1,
+              "browser": "Chromium Metal"
+            },
+            "listed_files": [
+              {
+                "file": "layouts/partials/homepage-daypage.html",
+                "frozen_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "current_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "same_current": true
+              },
+              {
+                "file": "layouts/partials/homepage-reading-start.html",
+                "frozen_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "current_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/home-about-experience.css",
+                "frozen_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "current_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "same_current": true
+              },
+              {
+                "file": "assets/js/home-ambient.mjs",
+                "frozen_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "current_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "same_current": true
+              },
+              {
+                "file": "assets/js/three/bear-orb.js",
+                "frozen_sha256": "6dbc5f8a4107dd7cc1c9e7b16120e5b142aa7b2606fb71fb6e0b3d3005b7beac",
+                "current_sha256": "113cddac99ba4e8ca1d6815ad7d6074fdab72fe9d805f9f1b910a778b43da3c6",
+                "same_current": false
+              },
+              {
+                "file": "tests/e2e/home-reading-contracts.spec.ts",
+                "frozen_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "current_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-about-experience.spec.ts",
+                "frozen_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "current_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-first-paint.spec.ts",
+                "frozen_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "current_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-short-chat-contracts.spec.ts",
+                "frozen_sha256": "02aaa4e7878e3c293546b7d69176660ca546b6e3b8bd1295805c469cf4032644",
+                "current_sha256": "02aaa4e7878e3c293546b7d69176660ca546b6e3b8bd1295805c469cf4032644",
+                "same_current": true
+              }
+            ],
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "limits": "只旧定位CTA；新实践文章anchor不继承本条焦点证据。",
+          "verified_score": null
+        }
+      ],
       "scoped_check_assessment_ids": [
-        "CHK-E6-NOJS-ARTICLE",
         "CHK-E6-READING-FOCUS",
         "CHK-E6-REPLY-FOCUS",
         "CHK-E6-PAINT"
@@ -52934,7 +53998,8 @@
         "CHK-E6-CHAT-ROOT-SESSION",
         "CHK-E6-PAINT",
         "CHK-E61-SHORT-RETURN",
-        "CHK-E61-NORMAL-SESSION"
+        "CHK-E61-NORMAL-SESSION",
+        "CHK-E71-DRAFT-CLOSE"
       ]
     },
     {
@@ -53162,7 +54227,12 @@
         "CHK-E61-SHORT-CHROME",
         "CHK-E61-SCROLL-CONTENT",
         "CHK-E61-CONTINUITY",
-        "CHK-E61-WHEEL-COMPLETION-FAIL"
+        "CHK-E61-WHEEL-COMPLETION-FAIL",
+        "CHK-E71-DRAFT-CLOSE",
+        "CHK-E71-SYNTHETIC-COMPOSITION",
+        "CHK-E71-STOP-RECOVERY",
+        "CHK-E71-WHEEL-COMPLETION",
+        "CHK-E71-CONTINUITY-REGRESSION"
       ]
     },
     {
@@ -53240,8 +54310,15 @@
         "CHK-E6-SYNTHETIC-BFCACHE",
         "CHK-E6-SHORT-FOCUS",
         "CHK-E61-SHORT-CHROME",
-        "CHK-E61-WHEEL-COMPLETION-FAIL"
-      ]
+        "CHK-E61-WHEEL-COMPLETION-FAIL",
+        "CHK-E71-SYNTHETIC-COMPOSITION",
+        "CHK-E71-ACTUAL-STOP-TARGET",
+        "CHK-E71-STOP-RECOVERY",
+        "CHK-E71-IDLE-FRONTIERS",
+        "CHK-E71-DONE-NO-EOF",
+        "CHK-E71-WHEEL-COMPLETION"
+      ],
+      "conditional_action_note": "Same#hp-chat-send actsasenabledStopwhileloading; exactE71target/recoverychecksrecorded, no wholecontrolmatrixcertification."
     },
     {
       "control_id": "H.CHAT.CLEAR.control.8c7f53",
@@ -53395,7 +54472,10 @@
         "CHK-E61-SHORT-CHROME",
         "CHK-E61-SHORT-RETURN",
         "CHK-E61-NORMAL-SESSION",
-        "CHK-E61-CONTINUITY"
+        "CHK-E61-CONTINUITY",
+        "CHK-E71-DRAFT-CLOSE",
+        "CHK-E71-SYNTHETIC-COMPOSITION",
+        "CHK-E71-CONTINUITY-REGRESSION"
       ]
     },
     {
@@ -53468,7 +54548,10 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-E6-CHAT-STALE"
+        "CHK-E6-CHAT-STALE",
+        "CHK-E71-STOP-RECOVERY",
+        "CHK-E71-IDLE-FRONTIERS",
+        "CHK-E71-CONTINUITY-REGRESSION"
       ]
     },
     {
@@ -55684,7 +56767,8 @@
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-009",
         "CHK-SOURCE-CLOSED-SHEET",
-        "CHK-D2B-SHEET-CLOSED"
+        "CHK-D2B-SHEET-CLOSED",
+        "CHK-RIGHT-TOC-RUNTIME-REDUCE-CLICK"
       ]
     },
     {
@@ -69398,7 +70482,11 @@
         "UX-018"
       ],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": []
+      "scoped_check_assessment_ids": [
+        "CHK-TRAVEL-QR-FOCUS-FAIL",
+        "CHK-TRAVEL-QR-REOPEN-FAIL",
+        "CHK-TRAVEL-QR-ESCAPE-RETURN"
+      ]
     },
     {
       "control_id": "T.SOCIAL.QR.control.cdff1a",
@@ -77032,6 +78120,277 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [],
       "family_context_not_direct_evidence_note": "Newconditional #search-ai-stop. Close/cancel/resultfocusflows do notproveStopclick/target/keyboard. Do notinheritfamily evidenceasStopacceptance."
+    },
+    {
+      "control_id": "H.HERO.READ.control.ff1fe2",
+      "family_id": "H.HERO.READ",
+      "selector": ".hp-reading-start__link",
+      "instance_policy": "首页按服务端readingStart选择的1篇真实文章；time/title/description均在同一原生anchor内",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "链接可见且指向可读目标",
+          "partial_evidence": "Only E6 frozen zh/en no-JS actual article title/date/description/link; no current hover/focus certification."
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "应有文字/背景反馈；当前逐项样式仅源码，未实测"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "原生链接 Tab 可达，Enter 导航；Space 保持原生滚动。焦点视觉/遮挡/次序待实测。"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "导航触发；当前路由 aria-current/active 依组件而异",
+          "partial_evidence": "Only E6 frozen zh/en no-JS click reached actual article URL/title."
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用：普通导航不应禁用"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "浏览器原生导航；无组件加载状态"
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "目标/外链失败由目标页呈现，未逐个联网验证"
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用"
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [
+        {
+          "binding_id": "EIMPORT.E6.native-article.H.HERO.READ.normal",
+          "state": "normal",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E6 frozen evidence",
+          "receipt": "evidence/batch-e6-contracts.log",
+          "receipt_sha256": "5fc56660721fcf93ac6d193cf6ae1d6aee570f1bd70ffb7e16c3bb59f96594a5",
+          "control_ids": [
+            "H.HERO.READ.control.ff1fe2"
+          ],
+          "control_resolution": "Only explicitly scoped selectors/instances; no whole-family inference",
+          "observation": "中英无JS下新原生文章anchor的time datetime正确、真实题目和摘要存在，href为真实文章URL。",
+          "cases": [
+            {
+              "id": "zh practice title is a real article link without scripts",
+              "route": "/zh/",
+              "locale": "zh",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            },
+            {
+              "id": "en practice title is a real article link without scripts",
+              "route": "/",
+              "locale": "en",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e6-source.json",
+            "registry_ref": "batch-e6-source.json",
+            "base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "frozen_at_utc": "2026-10-15T18:12:13.486802+00:00",
+            "frozen_at_shanghai": "2026-10-16T02:12:13.486802+08:00",
+            "imported_at_shanghai": "2026-10-16T02:41:07+08:00",
+            "current_checkout_revision_at_import": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "qa_config": null,
+            "listed_files": [
+              {
+                "file": "layouts/partials/homepage-daypage.html",
+                "frozen_sha256": "1af8922766ef4651bcce697c32682609ff56ff12538ae17309e5262f80e22472",
+                "current_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "same_current": false
+              },
+              {
+                "file": "layouts/partials/homepage-reading-start.html",
+                "frozen_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "current_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/home-about-experience.css",
+                "frozen_sha256": "8e17a3e2823a4f002d22e0274c2cbd4fd13826e4a065f932c493b296825c7ef0",
+                "current_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "same_current": false
+              },
+              {
+                "file": "assets/js/home-ambient.mjs",
+                "frozen_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "current_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-reading-contracts.spec.ts",
+                "frozen_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "current_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-about-experience.spec.ts",
+                "frozen_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "current_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-first-paint.spec.ts",
+                "frozen_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "current_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "same_current": true
+              }
+            ],
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "limits": "仅E6 20合同中的两条新入口检查；不是把旧定位CTA证据转给新anchor，不外推E61/后续布局hover/focus。",
+          "verified_score": null
+        },
+        {
+          "binding_id": "EIMPORT.E6.native-article.H.HERO.READ.active",
+          "state": "active",
+          "status": "partial-verified-as-of-frozen-batch",
+          "phase": "E6 frozen evidence",
+          "receipt": "evidence/batch-e6-contracts.log",
+          "receipt_sha256": "5fc56660721fcf93ac6d193cf6ae1d6aee570f1bd70ffb7e16c3bb59f96594a5",
+          "control_ids": [
+            "H.HERO.READ.control.ff1fe2"
+          ],
+          "control_resolution": "Only explicitly scoped selectors/instances; no whole-family inference",
+          "observation": "中英禁用JS实际click新实践文章anchor，URL抵达对应文章且.post-title与链接h2一致。",
+          "cases": [
+            {
+              "id": "zh practice title is a real article link without scripts",
+              "route": "/zh/",
+              "locale": "zh",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            },
+            {
+              "id": "en practice title is a real article link without scripts",
+              "route": "/",
+              "locale": "en",
+              "javaScriptEnabled": false,
+              "reducedMotion": "reduce",
+              "viewport": null,
+              "viewport_note": "E6 log/test do not explicitly record viewport for these two cases",
+              "reported_passed": true,
+              "test_source": "tests/e2e/home-reading-contracts.spec.ts:6"
+            }
+          ],
+          "source_context": {
+            "manifest": "evidence/batch-e6-source.json",
+            "registry_ref": "batch-e6-source.json",
+            "base_revision": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "frozen_at_utc": "2026-10-15T18:12:13.486802+00:00",
+            "frozen_at_shanghai": "2026-10-16T02:12:13.486802+08:00",
+            "imported_at_shanghai": "2026-10-16T02:41:07+08:00",
+            "current_checkout_revision_at_import": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+            "qa_config": null,
+            "listed_files": [
+              {
+                "file": "layouts/partials/homepage-daypage.html",
+                "frozen_sha256": "1af8922766ef4651bcce697c32682609ff56ff12538ae17309e5262f80e22472",
+                "current_sha256": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+                "same_current": false
+              },
+              {
+                "file": "layouts/partials/homepage-reading-start.html",
+                "frozen_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "current_sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+                "same_current": true
+              },
+              {
+                "file": "assets/css/home-about-experience.css",
+                "frozen_sha256": "8e17a3e2823a4f002d22e0274c2cbd4fd13826e4a065f932c493b296825c7ef0",
+                "current_sha256": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+                "same_current": false
+              },
+              {
+                "file": "assets/js/home-ambient.mjs",
+                "frozen_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "current_sha256": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-reading-contracts.spec.ts",
+                "frozen_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "current_sha256": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-about-experience.spec.ts",
+                "frozen_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "current_sha256": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+                "same_current": true
+              },
+              {
+                "file": "tests/e2e/home-first-paint.spec.ts",
+                "frozen_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "current_sha256": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+                "same_current": true
+              }
+            ],
+            "latest_does_not_inherit_old_screenshot": true
+          },
+          "limits": "仅此冻结状态/路由/尺寸，不接受完整功能族或所有条件。",
+          "verified_score": null
+        }
+      ],
+      "scoped_check_assessment_ids": [
+        "CHK-E6-NOJS-ARTICLE"
+      ],
+      "source": {
+        "file": "layouts/partials/homepage-reading-start.html",
+        "line": 4,
+        "symbol": "a.hp-reading-start__link",
+        "sha256": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba"
+      },
+      "task": "从真实题目/摘要直接阅读对应文章"
     }
   ],
   "specific_observations": [
@@ -77209,10 +78568,10 @@
         "H.CHAT.SEND"
       ],
       "proposal": "E7用挂起受控流，发送后只wheel/scroll到Books而不改activeElement，完成/失败后验证scrollY不回跳；只在明确open/close或需要保持可见输入的布局变化对齐，不把旧chat焦点等同持续阅读意图。",
-      "status": "confirmed_actual_wheel_failure_E7_fix",
+      "status": "closed_for_recorded_E7_E71_568_en_JSON_completion;errorwhileaway_pending",
       "finding_id": "UX-031",
       "evidence_type": "actualwheel_and_delayedJSON",
-      "evidence": "E-E61-WHEEL-INTENT-FAIL"
+      "evidence": "E-BATCH-E71-FINAL"
     }
   ],
   "scoped_check_assessments": [
@@ -79270,7 +80629,10 @@
         "E-BATCH-E6-RUNTIME"
       ],
       "scope": "Only named E6 frozen cases; fullmatrix unknown.",
-      "reason": "中英禁用JS均点击真实实践链接，到文章并核对标题/time/说明。"
+      "reason": "中英禁用JS均点击真实实践链接，到文章并核对标题/time/说明。",
+      "control_ids": [
+        "H.HERO.READ.control.ff1fe2"
+      ]
     },
     {
       "id": "CHK-E6-READING-FOCUS",
@@ -79293,7 +80655,10 @@
         "E-BATCH-E6-RUNTIME"
       ],
       "scope": "Only named E6 frozen cases; fullmatrix unknown.",
-      "reason": "六旅程开始阅读focus=hp-posts、headingTop约130CSSpx；原CTA与新实践anchor分别验。"
+      "reason": "六旅程开始阅读focus=hp-posts、headingTop约130CSSpx；原CTA与新实践anchor分别验。",
+      "control_ids": [
+        "H.HERO.READ.control.ffae77"
+      ]
     },
     {
       "id": "CHK-E6-SOCIAL-TARGETS",
@@ -79461,7 +80826,10 @@
         "E-BATCH-E6-RUNTIME"
       ],
       "scope": "Only named E6 frozen cases; fullmatrix unknown.",
-      "reason": "412×823暂停模块再放行，Books位置变化≤1CSSpx；320/375/412 CTA≥44且不横溢。"
+      "reason": "412×823暂停模块再放行，Books位置变化≤1CSSpx；320/375/412 CTA≥44且不横溢。",
+      "control_ids": [
+        "H.HERO.READ.control.ffae77"
+      ]
     },
     {
       "id": "CHK-E6-PRODUCT-INTENT",
@@ -79763,11 +81131,405 @@
       ],
       "scope": "1440×900 zh, light/dark, actual Chromium Metal; normal screenshots plus simulated runtime reduce/restore.",
       "reason": "Both themes: trusted interaction at hero +3s causes zero renderer requests; only Bear visible loads two genuine canvases. No FPS or all-hidden-frame assertion."
+    },
+    {
+      "id": "CHK-TRAVEL-QR-FOCUS-FAIL",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "recorded_actual_keyboard_and_reopen_baseline",
+      "status": "observed_failure",
+      "confidence": "high",
+      "as_of": {
+        "phase": "TravelQR actual baseline after E62; E7 WIP outside scope",
+        "reviewed_at": "2026-10-16T02:46:56+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "travel_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motions": [
+          "reduce",
+          "no-preference"
+        ]
+      },
+      "evidence": [
+        "E-TRAVEL-QR-BASELINE-FAIL"
+      ],
+      "scope": "390×844 zh/light reduce+normal; rapid reopen hide only normal.",
+      "reason": "Both reduce/normal actual open leaves background trigger focused; Tab goes background WeChat, so modal keyboard context is not entered.",
+      "finding_id": "UX-018"
+    },
+    {
+      "id": "CHK-TRAVEL-QR-REOPEN-FAIL",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "recorded_actual_keyboard_and_reopen_baseline",
+      "status": "observed_failure",
+      "confidence": "high",
+      "as_of": {
+        "phase": "TravelQR actual baseline after E62; E7 WIP outside scope",
+        "reviewed_at": "2026-10-16T02:46:56+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "travel_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motions": [
+          "reduce",
+          "no-preference"
+        ]
+      },
+      "evidence": [
+        "E-TRAVEL-QR-BASELINE-FAIL"
+      ],
+      "scope": "390×844 zh/light reduce+normal; rapid reopen hide only normal.",
+      "reason": "Normal motion Escape→Enter reopen is hidden by old close after500ms, while is-open/expanded remain true; reduce variant does not reproduce hide.",
+      "finding_id": "UX-018"
+    },
+    {
+      "id": "CHK-TRAVEL-QR-ESCAPE-RETURN",
+      "family_ids": [
+        "T.SOCIAL.QR"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_actual_keyboard_and_reopen_baseline",
+      "status": "scoped_positive_fragment",
+      "confidence": "high",
+      "as_of": {
+        "phase": "TravelQR actual baseline after E62; E7 WIP outside scope",
+        "reviewed_at": "2026-10-16T02:46:56+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "travel_template_sha256": "041eb8ac202c541f3975b6f77f8583639a38986032199a12b50be0553adf6aef",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "locale": "zh",
+        "theme": "light",
+        "motions": [
+          "reduce",
+          "no-preference"
+        ]
+      },
+      "evidence": [
+        "E-TRAVEL-QR-BASELINE-FAIL"
+      ],
+      "scope": "390×844 zh/light reduce+normal; rapid reopen hide only normal.",
+      "reason": "Only Escape closure returns original trigger and expanded=false in both named media; not proof that focus entry/trap/reopen or X/backdrop works.",
+      "finding_id": "UX-018"
+    },
+    {
+      "id": "CHK-ANCHOR-META-NATIVE",
+      "family_ids": [
+        "G.NAV.ANCHOR"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "independently_reviewed_recorded_native_anchor_probe",
+      "status": "scoped_recorded_pass_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "478 preview native anchor and actual right TOC scoped probes",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/anchor-intent-source.json",
+        "recorded_at": "2026-10-15T18:46:31.878345+00:00",
+        "reviewed_at": "2026-10-16T02:49:02+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light"
+      },
+      "evidence": [
+        "E-ANCHOR-INTENT"
+      ],
+      "scope": "1440×900 zh/light; exact Archivesyear2026/rightTOC heading journeys.",
+      "reason": "NativeMacMeta onArchives #year-2026 opens matchingnewtab; originalURL/scroll unchanged, defaultPrevented=false, zero scrollIntoView. Ctrl/middle/etc nottested."
+    },
+    {
+      "id": "CHK-ANCHOR-PLAIN-REDUCE-BACK",
+      "family_ids": [
+        "G.NAV.ANCHOR"
+      ],
+      "criterion": "D5.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "independently_reviewed_recorded_native_anchor_probe",
+      "status": "scoped_recorded_pass_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "478 preview native anchor and actual right TOC scoped probes",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/anchor-intent-source.json",
+        "recorded_at": "2026-10-15T18:46:31.878345+00:00",
+        "reviewed_at": "2026-10-16T02:49:02+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light"
+      },
+      "evidence": [
+        "E-ANCHOR-INTENT"
+      ],
+      "scope": "1440×900 zh/light; exact Archivesyear2026/rightTOC heading journeys.",
+      "reason": "Archives plainclick reaches correcthash/y365 with CSS auto and scrollIntoView withoutsmooth; Back restores originalURL. Exact1440zh/light/reduce/year2026 only."
+    },
+    {
+      "id": "CHK-RIGHT-TOC-RUNTIME-REDUCE-CLICK",
+      "family_ids": [
+        "A.TOC.LINK"
+      ],
+      "criterion": "D5.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "independently_reviewed_recorded_native_anchor_probe",
+      "status": "scoped_recorded_pass_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "478 preview native anchor and actual right TOC scoped probes",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/anchor-intent-source.json",
+        "recorded_at": "2026-10-15T18:46:31.878345+00:00",
+        "reviewed_at": "2026-10-16T02:49:02+08:00",
+        "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "locale": "zh",
+        "theme": "light"
+      },
+      "evidence": [
+        "E-ANCHOR-INTENT"
+      ],
+      "scope": "1440×900 zh/light; exact Archivesyear2026/rightTOC heading journeys.",
+      "reason": "ActualrightTOC after no-preference→runtime reduce clicksencodedChineseheading, matchesdecodedhash, auto CSS/no smooth. Does not trigger or instrument internalpanel auto-follow scrollTo."
+    },
+    {
+      "id": "CHK-E71-DRAFT-CLOSE",
+      "family_ids": [
+        "H.CHAT.INPUT",
+        "H.CHAT.CLOSE",
+        "H.CHAT.OPEN"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "default1440×900 zh/en reduce contracts + actual568×256zh/light and1440×900en/dark",
+      "reason": "zh/en exactquoted draft survivesclose/reopen; clearresets; sendingclearsmatchingdraft; twoactualcoordinatejourneys independentlyretainunsentdraft."
+    },
+    {
+      "id": "CHK-E71-SYNTHETIC-COMPOSITION",
+      "family_ids": [
+        "H.CHAT.INPUT",
+        "H.CHAT.SEND",
+        "H.CHAT.CLOSE"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "default1440×900 zh/en reduce syntheticDOM",
+      "reason": "SyntheticisComposing/keyCode229 Enter/Escape causeszero request/noclose, preservesinput; ordinaryEnterafterwards sends once. OSIME unverified."
+    },
+    {
+      "id": "CHK-E71-ACTUAL-STOP-TARGET",
+      "family_ids": [
+        "H.CHAT.SEND"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "namedtwoactualStop+568shortcontract",
+      "reason": "ActualcoordinateStop enabledsame44×44 viewportCSSpxsender at568×256zh/light and1440×900en/dark; shortcontractcheckcenterhitandposition."
+    },
+    {
+      "id": "CHK-E71-STOP-RECOVERY",
+      "family_ids": [
+        "H.CHAT.SEND",
+        "H.CHAT.RETRY",
+        "H.CHAT.INPUT"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "actualheaders/partialSSE+shortcontrolledcancel/retry",
+      "reason": "Abortrestorescomposer, retainsquestion/partial, recoveryline separatefromanswer; retry/newturn excludesfailedcontext; oldresultcannotwrite. Stuckreader.cancelnotawaited."
+    },
+    {
+      "id": "CHK-E71-IDLE-FRONTIERS",
+      "family_ids": [
+        "H.CHAT.SEND",
+        "H.CHAT.RETRY"
+      ],
+      "criterion": "D3.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "virtualtimes; zhheaders/first/laterSSE and enJSON controlledtransports",
+      "reason": "Pausedclock+requeststartedAt provesbusy at24999 andready25000 forheaders/firstchunk; laterchunkat20000 renews to44999busy/45000ready. JSONbodystallalso releases; lateheaders/bodyignored."
+    },
+    {
+      "id": "CHK-E71-DONE-NO-EOF",
+      "family_ids": [
+        "H.CHAT.SEND"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "default1440×900 en/reduce controlledSSE",
+      "reason": "DONEcompleteswithoutEOF orsettlingcancel; inputready, signalnotabortedonsuccess; +30000virtualtime cannotmarksuccessfulanswer timedout."
+    },
+    {
+      "id": "CHK-E71-WHEEL-COMPLETION",
+      "family_ids": [
+        "H.CHAT.INPUT",
+        "H.CHAT.SEND"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "568×320 en/light/reduce completiononly",
+      "reason": "Actualwheel620 leavesoldchatDOMfocus, lateJSONcompletion preserves2803→2803 anddoesnotfocusinput; contractindependentlypasses. Errorbranch/othersizesunverified."
+    },
+    {
+      "id": "CHK-E71-CONTINUITY-REGRESSION",
+      "family_ids": [
+        "H.CHAT.INPUT",
+        "H.CHAT.CLOSE",
+        "H.CHAT.RETRY"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "recorded_bounded_E71_contract_or_actual_action",
+      "status": "closed_for_named_E7_E71_cases_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E7/E7.1 final bounded homepage transport recovery",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+        "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+        "reviewed_at": "2026-10-16T02:56:17+08:00",
+        "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+      },
+      "evidence": [
+        "E-BATCH-E71-FINAL"
+      ],
+      "scope": "E7unchanged12, notrerunE71fixture-only",
+      "reason": "Unchanged6about passsafeSSE, close/clear staleisolation, clickedpostsfocus, syntheticbfcache andretry; 6short keepexplicitopen/close/composerreachable."
     }
   ],
-  "latest_validated_checkpoint": "77bf94c27a646d59ef773751d2bb76041e3e1203",
-  "preview_scope": "E62 core-only correction: recorded1440×900 zh light/dark Metal normal/reduce/restore; E61 short/continuity receipts historical; UX025–027/031 remain open.",
-  "latest_reviewed_artifact": "E-BATCH-E62",
+  "latest_validated_checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+  "preview_scope": "E7productionequivalenttoE71fixture; namedtransport/recoveryandshortcontinuityreceiptsaccepted. Fullsite/controlmatrixnull.",
+  "latest_reviewed_artifact": "E-BATCH-E71-FINAL",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -80116,5 +81878,52 @@
     "functional_priority": "E7已证实草稿/IME/Stop恢复优先，材质分叉不掩盖它们。",
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
-  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e62-source.json"
+  "latest_reviewed_source_snapshot": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+  "anchor_intent_review": {
+    "as_of": {
+      "phase": "478 preview native anchor and actual right TOC scoped probes",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/anchor-intent-source.json",
+      "recorded_at": "2026-10-15T18:46:31.878345+00:00",
+      "reviewed_at": "2026-10-16T02:49:02+08:00",
+      "checkpoint": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light"
+    },
+    "evidence": "E-ANCHOR-INTENT",
+    "inventory_finding_F03_scope": "Archives #year-2026 Meta behavior confirmednative inexactscope; otherhashanchors/modifiers notcertified.",
+    "UX009_scope": "Current rightTOC firstvisibleheadingclick afterruntime reduce at1440×900 zh/light; notallTOCmotion.",
+    "legacy_entry": "toc-highlight.js smooth handler only .toc-sidebar__nav #TableOfContents a; rg found no matching current layouts template markup; dormant/conditional code, nottested current UI.",
+    "remaining": "Internal TOC follow scrollTo issource-fixed butnotactualprobeverified.",
+    "production_changed": false
+  },
+  "e7_source_review": {
+    "as_of": {
+      "phase": "E7/E7.1 final bounded homepage transport recovery",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e71-source.json",
+      "recorded_at": "2026-10-15T18:53:15.973627+00:00",
+      "reviewed_at": "2026-10-16T02:56:17+08:00",
+      "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb"
+    },
+    "status": "no_new_P0_P1; bounded_final_receipts_verified",
+    "reviewed_content": [
+      "Everyfetch/json/read racescreateIdleRequest; renewedidledeadline onheaders/chunks.",
+      "Ownsrequest/generation distinctfromabort permitscleanupwithoutstalewriteback.",
+      "Readercancel never awaited; DONE endsbeforeEOF; failed user/replyexcludedfromcontext butvisiblepartial/recovery remainseparate.",
+      "Draft cachedandrestored; clearandsubmissionintentexplicit; isComposing/keyCode229 guardsEnterandEscape.",
+      "Stop enabledsame44sender; disableddata-msgquickseparatefromretryhandler.",
+      "Shortpanel oldDOMfocus sufficientonlywhenpanelstillfullyvisible belowheader; wheeldeparture doesnotalign/refocus.",
+      "E71onlyfixturepauseAt/requeststartedAt/exactelapsedassertions; sevenotherhashesequalE7.",
+      "Backend protocolsource sendsfollowups beforeDONE (netlify/functions/blog-ai.js:625–627), compatiblewithearlyDONEexit."
+    ],
+    "remaining": [
+      "OSIME andvirtualkeyboard unverified",
+      "Wheel-away error branch notseparatelyreproduced",
+      "Fullhover/focus/zoom/locale/theme/controlmatrix incomplete"
+    ],
+    "verified_score": null
+  }
 }

@@ -1,0 +1,20 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '#%E8%B0%83%E8%AF%95go%E5%B7%A5%E7%A8%8B'
+- '#%e8%b0%83%e8%af%95go%e5%b7%a5%e7%a8%8b'
+
+    at file://<SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/anchor-intent.browser.mjs:9:646 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '#%E8%B0%83%E8%AF%95go%E5%B7%A5%E7%A8%8B',
+  expected: '#%e8%b0%83%e8%af%95go%e5%b7%a5%e7%a8%8b',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

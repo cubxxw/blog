@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-15T18:50:42.855296+00:00",
+  "base": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+  "batch": "E7",
+  "files": {
+    "layouts/partials/homepage-daypage.html": "325d911a9aae55c3bd28baef2d4cdf623a18671dfe20699ec1ea659130ec00d8",
+    "assets/js/home-chat-utils.mjs": "3856b145127a08d8dc2befeb4009d7f4b0724588d61c711dca3b2da8b7189edd",
+    "assets/css/home-about-experience.css": "b9b1620fcb71b5e856fc2b06da32a3f1d0e70700e2614cd6822126d149853065",
+    "scripts/home-chat-utils.test.mjs": "d23bff1360a2f22f8c9e09b9fc32bc164ac31ffe6920b41579c59d3c9fb16b10",
+    "tests/e2e/home-chat-recovery.spec.ts": "16857f1ce68679b2d28c003be808e2cfbf2d38d56be70a67c26e8dbebdb05fa9",
+    "tests/e2e/home-about-experience.spec.ts": "6d617c5339da3588e856e25373c0fefe5166a339470623364023b2e389888757",
+    "tests/e2e/home-short-chat-contracts.spec.ts": "a30b7d375e11b59faac53f7d31aa84bd5585610dc51dd938e72f4aad5d9aa709",
+    "package.json": "85f5f8d11043af410e9c4375447c53cef3af786d63668d5f6209d9aefa327aa7"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "119ff94de5ae4b81756cb0dd907ab6f548dc67738ebcd50c50fb61937d475414",
+    "defaultViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "workers": 1,
+    "browser": "Chromium Metal"
+  }
+}

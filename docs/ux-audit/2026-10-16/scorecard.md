@@ -45,7 +45,7 @@
 
 ## 已发现缺口与当前状态
 
-最近已验checkpoint：`77bf94c2`。E6.2当前9hash及QA config hash一致；core仅五处材质/每帧目标差异，四张双主题实拍与实际Metal生命周期已复核，无新P0/P1。UX030保持E61具体范围关闭，UX025–027与实际wheel复现UX031仍开。
+最近已验checkpoint：`4782757e`（E6–E62）。E7/E7.1当前8hash/QA一致，无新P0/P1；初跑19/21保留，fixture修后9/9，最终21不同合同=未改12+修后9。UX025/026/027/031仅按各自已测范围关闭，OSIME、wheel-away失败等剩余边界不外推。
 
 
 
@@ -59,7 +59,7 @@
 | UX-006 | `G.SHARE.DIRECT` | 文章链接复制拒绝后无恢复且提示未本地化 | C | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-007 | `G.SUB.SUBMIT`, `G.SUB.EMAIL` | 订阅请求挂起会永久busy | C | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-008 | `G.NAV.MOBILE` | 手机菜单缺Escape及明确关闭焦点规则 | B | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
-| UX-009 | `A.TOC.LINK` | TOC自动平滑滚动忽略减少动态效果 | B | `source_fixed_awaiting_browser` |
+| UX-009 | `A.TOC.LINK` | TOC自动平滑滚动忽略减少动态效果 | B | `closed_for_recorded_right_TOC_runtime_reduce_click_internal_autofollow_unverified` |
 | UX-010 | `S.APP.reader.QUERY`, `S.APP.reader.FILTER` | 搜索空结果没有条件解释与恢复入口 | C | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-011 | `A.BODY.CODECOPY`, `A.BODY.CODEEXPAND` | 新增复制失败说明与代码展开按钮重叠 | A-followup | `closed_for_recorded_D3_cases_incomplete_family_matrix` |
 | UX-012 | `T.BOOK.ASK`, `T.BOOK.SUGGEST`, `T.BOOK.INPUT`, `T.BOOK.SEND`, `A.FAQ.AI.OPEN`, `A.FAQ.AI.CHIP`, `A.FAQ.AI.INPUT`, `A.FAQ.AI.SEND`, `A.FAQ.AI.RETRY` | AI Markdown链接未做属性转义，可注入事件属性 | D-security | `closed_parser_and_recorded_entrypoint_scope` |
@@ -68,20 +68,20 @@
 | UX-015 | `G.SEARCH.QUERY`, `G.SEARCH.FOLLOWUP` | AI旧回复成功后强制聚焦追问框 | D1-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-016 | `A.BODY.FAQ`, `A.FAQ.AI.OPEN`, `A.FAQ.AI.SEND` | 收起外层FAQ没有取消正在生成的AI | D1-followup | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
 | UX-017 | `T.BOOK.ASK`, `T.BOOK.CLOSE`, `T.BOOK.INPUT`, `T.BOOK.SEND` | 书籍AI模态未约束键盘焦点在弹层内 | D2 | `closed_for_recorded_D2b_contracts_incomplete_family_matrix` |
-| UX-018 | `T.SOCIAL.QR` | 旅行二维码模态缺焦点进入且关闭回调可影响重开 | later-modal-queue | `source_confirmed_queued_browser_reproduction` |
+| UX-018 | `T.SOCIAL.QR` | 旅行二维码打开后焦点留在背景，正常动效快速重开被旧关闭隐藏 | later-bounded-TravelQR-after-E7 | `confirmed_recorded_390_zh_two_media_focus_failure_and_normal_reopen_race` |
 | UX-019 | `MOTION.FAQ`, `A.BODY.FAQ` | 运行时开启减少动态效果后FAQ仍沿用旧WAAPI动画分支 | later-motion-queue | `closed_for_recorded_E52_runtime_motion_hidden_focus_cancel_cases` |
 | UX-020 | `T.BOOK.SEND`, `T.BOOK.SUGGEST` | 书籍手机发送/建议按钮仍偏小且长问题出现孤行 | later-mobile-polish | `closed_for_recorded_D4b_contracts_incomplete_family_matrix` |
 | UX-021 | `S.WINDOW.DRAG`, `S.WINDOW.CLOSE`, `S.APP.notes.EDITOR`, `S.APP.map.REGION` | Space工作区整体缩小且透明边界叠加，桌面文字发软 | next-Space-readability | `closed_for_E5_primary_reading_and_plane_scope_chrome_matrix_unknown` |
 | UX-022 | `S.APP.map.ZOOM` | 手机地图缩放按钮仅22px宽 | next-Space-readability | `closed_for_recorded_E52_620_and_844_coarse_target_boundaries` |
 | UX-023 | `S.WINDOW.CLOSE`, `S.CAFE.RETURN`, `S.WINDOW.ARRANGE`, `S.CAFE.PICKER` | 短横屏café HUD截获窗口关闭/并排入口 | E5-shortheight-followup | `closed_for_recorded_E52_568_bilingual_and_844_coarse_HUD_paths` |
 | UX-024 | `S.WINDOW.ARRANGE`, `S.WINDOW.OVERVIEWITEM`, `S.WINDOW.CLOSE`, `S.WINDOW.MAXIMIZE` | 短横屏三窗“并排”仍重叠，隐藏了一整组窗口操作 | after-E6-short-arrange-recovery | `confirmed_recorded_shortheight_arrange_failure_bounded_followup` |
-| UX-025 | `H.CHAT.INPUT`, `H.CHAT.CLOSE`, `H.CHAT.OPEN` | 首页聊天关闭再开丢失未发送草稿 | after-E6-home-transport | `confirmed_baseline_mock_probe_pending_transport_batch` |
-| UX-026 | `H.CHAT.INPUT`, `H.CHAT.SEND` | 首页聊天合成composition Enter触发发送 | after-E6-home-transport | `confirmed_synthetic_event_guard_gap_OS_IME_unverified` |
-| UX-027 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.RETRY` | 首页聊天挂起无就地停止或请求时限，只能关窗取消 | after-E6-home-transport | `confirmed_mock_pending_friction_close_abort_available` |
+| UX-025 | `H.CHAT.INPUT`, `H.CHAT.CLOSE`, `H.CHAT.OPEN` | 首页聊天关闭再开丢失未发送草稿 | E7/E7.1 | `closed_for_E71_named_draft_close_reopen_clear_send_cases` |
+| UX-026 | `H.CHAT.INPUT`, `H.CHAT.SEND` | 首页聊天合成composition Enter触发发送 | E7/E7.1 | `closed_for_E71_synthetic_composition_guards_OS_IME_unverified` |
+| UX-027 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.RETRY` | 首页聊天挂起无就地停止或请求时限，只能关窗取消 | E7/E7.1 | `closed_for_E7_E71_named_Stop_idle_JSON_SSE_DONE_recovery_cases` |
 | UX-028 | `S.APP.products.SELECT`, `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.DRAFT`, `S.APP.contact.CHANNEL`, `S.APP.settings.LANG`, `S.APP.settings.THEME`, `S.APP.settings.COLOR`, `S.APP.settings.EXPORT` | Space四App重要正文、动作标签和能力说明在投影后过小 | after-E6-Space-four-app-type-targets | `confirmed_recorded_normal_readability_gap_bounded_four_app_batch` |
 | UX-029 | `S.APP.products.OPEN`, `S.APP.books.READ`, `S.APP.contact.CHANNEL` | Space手机主要产品/阅读/联系链接仍低于项目44px触控目标 | after-E6-Space-four-app-type-targets | `confirmed_recorded_390_primary_anchor_target_gap` |
 | UX-030 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE`, `H.CHAT.QUICK` | 短横屏聊天聚焦输入后composer部分出屏，关闭按钮被导航遮挡 | E6.1-short-chat-recovery | `closed_for_recorded_E61_568_bilingual_844_coarse_chrome_scroll_paths` |
-| UX-031 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE` | 短屏旧回复完成把滚去旅行书的读者拉回聊天并聚焦输入 | E7-transport-scroll-intent-probe | `confirmed_recorded_E61_568_en_wheel_completion_intent_failure` |
+| UX-031 | `H.CHAT.INPUT`, `H.CHAT.SEND`, `H.CHAT.CLOSE` | 短屏旧回复完成把滚去旅行书的读者拉回聊天并聚焦输入 | E7/E7.1 | `closed_for_E7_E71_568_en_wheel_JSON_completion_case` |
 
 ## 有证据的单项锚点评分
 
@@ -189,6 +189,20 @@
 | `CHK-E61-WHEEL-COMPLETION-FAIL` | D3.4 | 80 | 读者已滚到Books而仅保留旧chat DOM焦点；完成将scrollY2803拉回2183并focusinput，需再次找回阅读位置。可恢复但有明确摩擦，非P1。 | E6.1 actual wheel-only late-completion failure / observed_current_intent_regression / high |
 | `CHK-E62-RUNTIME-MOTION` | D5.1 | 96 | Both light/dark actual Metal scopes remove both canvases on runtime reduce, remount on restore and remove on final reduce. Only recorded preference lifecycle. | E6.2 bounded core material correction / closed_for_recorded_E62_two_theme_lifecycle_only / high |
 | `CHK-E62-VISIBILITY-LOAD` | D5.3 | 96 | Both themes: trusted interaction at hero +3s causes zero renderer requests; only Bear visible loads two genuine canvases. No FPS or all-hidden-frame assertion. | E6.2 bounded core material correction / closed_for_recorded_E62_two_theme_lifecycle_only / high |
+| `CHK-TRAVEL-QR-FOCUS-FAIL` | D2.2 | 80 | Both reduce/normal actual open leaves background trigger focused; Tab goes background WeChat, so modal keyboard context is not entered. | TravelQR actual baseline after E62; E7 WIP outside scope / observed_failure / high |
+| `CHK-TRAVEL-QR-REOPEN-FAIL` | D3.4 | 80 | Normal motion Escape→Enter reopen is hidden by old close after500ms, while is-open/expanded remain true; reduce variant does not reproduce hide. | TravelQR actual baseline after E62; E7 WIP outside scope / observed_failure / high |
+| `CHK-TRAVEL-QR-ESCAPE-RETURN` | D2.2 | 96 | Only Escape closure returns original trigger and expanded=false in both named media; not proof that focus entry/trap/reopen or X/backdrop works. | TravelQR actual baseline after E62; E7 WIP outside scope / scoped_positive_fragment / high |
+| `CHK-ANCHOR-META-NATIVE` | D6.4 | 96 | NativeMacMeta onArchives #year-2026 opens matchingnewtab; originalURL/scroll unchanged, defaultPrevented=false, zero scrollIntoView. Ctrl/middle/etc nottested. | 478 preview native anchor and actual right TOC scoped probes / scoped_recorded_pass_incomplete_family_matrix / high |
+| `CHK-ANCHOR-PLAIN-REDUCE-BACK` | D5.1 | 96 | Archives plainclick reaches correcthash/y365 with CSS auto and scrollIntoView withoutsmooth; Back restores originalURL. Exact1440zh/light/reduce/year2026 only. | 478 preview native anchor and actual right TOC scoped probes / scoped_recorded_pass_incomplete_family_matrix / high |
+| `CHK-RIGHT-TOC-RUNTIME-REDUCE-CLICK` | D5.1 | 96 | ActualrightTOC after no-preference→runtime reduce clicksencodedChineseheading, matchesdecodedhash, auto CSS/no smooth. Does not trigger or instrument internalpanel auto-follow scrollTo. | 478 preview native anchor and actual right TOC scoped probes / scoped_recorded_pass_incomplete_family_matrix / high |
+| `CHK-E71-DRAFT-CLOSE` | D6.4 | 96 | zh/en exactquoted draft survivesclose/reopen; clearresets; sendingclearsmatchingdraft; twoactualcoordinatejourneys independentlyretainunsentdraft. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E71-SYNTHETIC-COMPOSITION` | D3.4 | 96 | SyntheticisComposing/keyCode229 Enter/Escape causeszero request/noclose, preservesinput; ordinaryEnterafterwards sends once. OSIME unverified. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E71-ACTUAL-STOP-TARGET` | D2.3 | 96 | ActualcoordinateStop enabledsame44×44 viewportCSSpxsender at568×256zh/light and1440×900en/dark; shortcontractcheckcenterhitandposition. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E71-STOP-RECOVERY` | D3.3 | 96 | Abortrestorescomposer, retainsquestion/partial, recoveryline separatefromanswer; retry/newturn excludesfailedcontext; oldresultcannotwrite. Stuckreader.cancelnotawaited. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E71-IDLE-FRONTIERS` | D3.1 | 96 | Pausedclock+requeststartedAt provesbusy at24999 andready25000 forheaders/firstchunk; laterchunkat20000 renews to44999busy/45000ready. JSONbodystallalso releases; lateheaders/bodyignored. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E71-DONE-NO-EOF` | D3.4 | 96 | DONEcompleteswithoutEOF orsettlingcancel; inputready, signalnotabortedonsuccess; +30000virtualtime cannotmarksuccessfulanswer timedout. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E71-WHEEL-COMPLETION` | D3.4 | 96 | Actualwheel620 leavesoldchatDOMfocus, lateJSONcompletion preserves2803→2803 anddoesnotfocusinput; contractindependentlypasses. Errorbranch/othersizesunverified. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
+| `CHK-E71-CONTINUITY-REGRESSION` | D3.4 | 96 | Unchanged6about passsafeSSE, close/clear staleisolation, clickedpostsfocus, syntheticbfcache andretry; 6short keepexplicitopen/close/composerreachable. | E7/E7.1 final bounded homepage transport recovery / closed_for_named_E7_E71_cases_incomplete_family_matrix / high |
 
 ## D1 / D4 独立专家视觉判断
 
@@ -243,10 +257,14 @@
 | MOTION.HOMEFIELD, MOTION.HOMEBUBBLES, H.CHAT.BUBBLE | D4 | 90,80,80,90 | 85.0 | 比E6强白密网安静，头像/问题更清楚；NormalBlending核心呈褐色薄壳/实体片，仍不自然，背景光斑边缘尚显。D4范围85，未达目标；静态仍更轻。 | E6.1 frozen short-chat and material review / high |
 | MOTION.HOMEFIELD, MOTION.HOMEBUBBLES, H.CHAT.BUBBLE | D4 | 90,90,90,96 | 91.5 | 褐色实体片已消失；头像与六条问题比弱金光先被看见，低对比网络不再形成白色围栏。手绘人物/轨道/外晕仍叠在同一小区域，静态仍更轻；此材质范围91.5，不是完整控件分。 | E6.2 bounded core material correction / high |
 | MOTION.HOMEFIELD, MOTION.HOMEBUBBLES, H.CHAT.BUBBLE | D4 | 90,90,90,90 | 90.0 | 实体壳消失，细淡金网络与背景相融，头像/问题保持主次。暗色仍可见多边形光晕与人物线稿的第二套轮廓，辅助提示较微小；范围90，保留进一步组件收敛空间。 | E6.2 bounded core material correction / high |
+| H.CHAT.SEND, H.CHAT.INPUT, H.CHAT.RETRY | D1 | 96,90,96,90 | 93.0 | 短屏Stop图标与真实停止反馈同位，输入恢复和下一问明确；256高重试位于中段滚动内，不能把首屏只见停止行当全部恢复动作已可扫到。 | E7/E7.1 final bounded homepage transport recovery / high |
+| H.CHAT.SEND, H.CHAT.INPUT, H.CHAT.RETRY | D4 | 90,96,90,90 | 91.5 | 短屏44sender清楚，停止行与回复内容分离；保留输入真实focus环，未当装饰扣分。256高内容窗口窄，辅助小字/多层细线仍可收敛。 | E7/E7.1 final bounded homepage transport recovery / high |
+| H.CHAT.SEND, H.CHAT.INPUT, H.CHAT.RETRY | D1 | 96,96,90,96 | 94.5 | 停止后的partial、Reply stopped和独立Retry清楚，新问题继续可用；合成stub正文不是模型质量，中英混用的次级品牌文字仍有工艺余量。 | E7/E7.1 final bounded homepage transport recovery / high |
+| H.CHAT.SEND, H.CHAT.INPUT, H.CHAT.RETRY | D4 | 90,90,90,90 | 90.0 | 深色停止/下一问界面层级稳定，恢复文本不混入AI回复；quick省略、细碎辅助小字和输入/区域分隔层仍较多，范围90而非96。 | E7/E7.1 final bounded homepage transport recovery / high |
 
-## 完整可追踪覆盖（inventory v1.7 一对一映射）
+## 完整可追踪覆盖（inventory v1.10 一对一映射）
 
-309族/357selectors完整分仍null；新实践anchor盘点增量待同步。
+309族/358selectors；55族有某种局部状态证据，完整认证仍0。新实践anchor只绑定自身E6 no-JS文章导航，不继承原CTA focus/paint。
 
 
 
@@ -259,7 +277,7 @@
 | `G.NAV.THEME` | 浅色/深色 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.NAV.LANG` | 中文/EN | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.NAV.MOBILE` | 打开/关闭导航 | 1 | 2 | `unverified / null` | UX-008 |
-| `G.NAV.ANCHOR` | 原生页内锚点 | 1 | 0 | `unverified / null` | 待矩阵 |
+| `G.NAV.ANCHOR` | 原生页内锚点 | 1 | 2 | `unverified / null` | 待矩阵 |
 | `G.NAV.TOP` | 返回顶部/进度环 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.NAV.WAYFINDER` | 章节侧边索引 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `G.SEARCH.CLOSE` | 关闭搜索 | 1 | 1 | `unverified / null` | 待矩阵 |
@@ -276,18 +294,18 @@
 | `G.FOOTER.LINKS` | 内容/产品/作者/社交入口 | 2 | 0 | `unverified / null` | 待矩阵 |
 | `G.FOOTER.MORE` | 更多作品/其他平台 | 1 | 1 | `unverified / null` | 待矩阵 |
 | `G.CONTACT.QR` | 微信/小红书二维码/复制 ID | 1 | 0 | `unverified / null` | 待矩阵 |
-| `H.HERO.READ` | 开始阅读 | 1 | 4 | `unverified / null` | 待矩阵 |
+| `H.HERO.READ` | 开始阅读 / 读这篇文章 | 2 | 4 | `unverified / null` | 待矩阵 |
 | `H.HERO.PRODUCT` | 探索产品 | 1 | 2 | `unverified / null` | 待矩阵 |
 | `H.HERO.ABOUT` | 认识我/关于我 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.HERO.SOCIAL` | 社交图标链接 | 1 | 2 | `unverified / null` | 待矩阵 |
-| `H.CHAT.OPEN` | Bear 头像 | 1 | 4 | `unverified / null` | UX-025 |
+| `H.CHAT.OPEN` | Bear 头像 | 1 | 5 | `unverified / null` | UX-025 |
 | `H.CHAT.BUBBLE` | 环绕问题气泡 | 1 | 1 | `unverified / null` | 待矩阵 |
 | `H.CHAT.QUICK` | 快捷问题 | 1 | 1 | `unverified / null` | UX-030 |
-| `H.CHAT.INPUT` | 给 Bear 的消息 | 1 | 10 | `unverified / null` | UX-025, UX-026, UX-027, UX-030, UX-031 |
-| `H.CHAT.SEND` | 发送消息 | 1 | 6 | `unverified / null` | UX-026, UX-027, UX-030, UX-031 |
+| `H.CHAT.INPUT` | 给 Bear 的消息 | 1 | 15 | `unverified / null` | UX-025, UX-026, UX-027, UX-030, UX-031 |
+| `H.CHAT.SEND` | 发送消息 | 1 | 12 | `unverified / null` | UX-026, UX-027, UX-030, UX-031 |
 | `H.CHAT.CLEAR` | 清空对话 | 1 | 2 | `unverified / null` | 待矩阵 |
-| `H.CHAT.CLOSE` | 关闭对话 | 1 | 9 | `unverified / null` | UX-025, UX-027, UX-030, UX-031 |
-| `H.CHAT.RETRY` | 重试这条消息 | 1 | 1 | `unverified / null` | UX-027 |
+| `H.CHAT.CLOSE` | 关闭对话 | 1 | 12 | `unverified / null` | UX-025, UX-027, UX-030, UX-031 |
+| `H.CHAT.RETRY` | 重试这条消息 | 1 | 4 | `unverified / null` | UX-027 |
 | `H.CHANNEL.TABS` | 写作频道标签 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.CHANNEL.PREV` | 上一个频道 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `H.CHANNEL.NEXT` | 下一个频道 | 1 | 0 | `unverified / null` | 待矩阵 |
@@ -315,7 +333,7 @@
 | `A.META.AUTHOR` | 作者卡/日期/语言/分类/标签 | 4 | 0 | `unverified / null` | 待矩阵 |
 | `A.META.SOURCE` | 编辑本文/查看源文 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `A.TOC.TABS` | 目录/系列/AI 阅读标签 | 1 | 2 | `unverified / null` | UX-003 |
-| `A.TOC.LINK` | 目录标题项 | 1 | 3 | `unverified / null` | UX-009, UX-014 |
+| `A.TOC.LINK` | 目录标题项 | 1 | 4 | `unverified / null` | UX-009, UX-014 |
 | `A.TOC.FAB` | 移动阅读工具 | 1 | 2 | `unverified / null` | UX-014 |
 | `A.TOC.MOBILETABS` | 目录/系列/AI/分享 | 1 | 6 | `unverified / null` | UX-003, UX-004, UX-014 |
 | `A.TOC.SERIES` | 系列列表/上一下一篇/更多系列 | 3 | 0 | `unverified / null` | 待矩阵 |
@@ -458,7 +476,7 @@
 | `T.BOOK.SUGGEST` | 书籍建议/追问 | 1 | 4 | `unverified / null` | UX-012, UX-020 |
 | `T.BOOK.INPUT` | 书籍问题 | 1 | 7 | `unverified / null` | UX-012, UX-017 |
 | `T.BOOK.SEND` | 发送书籍问题 / 请求中停止生成（同一按钮） | 1 | 7 | `unverified / null` | UX-012, UX-017, UX-020 |
-| `T.SOCIAL.QR` | 社交二维码/复制ID/关闭 | 2 | 0 | `unverified / null` | UX-018 |
+| `T.SOCIAL.QR` | 社交二维码 / 查看 ID / 关闭 | 2 | 3 | `unverified / null` | UX-018 |
 | `T.SOCIAL.LINK` | 社交平台链接 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `B.HERO.ACTION` | 经历/文章 | 1 | 0 | `unverified / null` | 待矩阵 |
 | `B.HERO.CAROUSEL` | 人物照片轮播/命名照片选项 | 2 | 0 | `unverified / null` | 待矩阵 |
@@ -754,3 +772,37 @@ E7需让完成/失败保留wheel离开后的页面位置与焦点意图，同时
 四张1440×900中文light/dark normal/reduce实图已逐张查看。E61褐色实体片消失，头像与问题重新优先；浅色D4范围91.5（90/90/90/96），暗色90（90/90/90/90）。暗色仍有淡金多边形光晕，线稿/多圈轨道仍是额外视觉层；静态更轻。此次窄修已达到消除新增实体感回退的目标，未达到可泛化的96审美或整站结论。更大的纯头像/少量完整问题与低对比球组件分叉仍未渲染，放在E7功能恢复之后。
 
 真实Metal双主题回执均为hero trusted intent+3秒0renderer请求，Bear可见2canvas，runtime reduce0/restore2/finalreduce0，pageErrors空。只对资源门禁与运行时偏好生命周期片段给96，不证明FPS、INP、隐藏零重绘、实体设备或其他尺寸。四图绑定batch-e62-source，不能用新材质外推旧交互矩阵。UX025–027与已实测UX031仍开；所有完整控件、族与全站分保持null。
+
+## TravelQR实际基线与inventory v1.9同步
+
+2026-10-16T02:46:56+08:00：已读travel-qr-baseline-probe.json/log和四张initial/reopened实际图。Travel模板独立SHA与当前源码一致（041eb8ac…）；E62首页manifest不含此模板，不将其source说明当Travel完整冻结清单。
+
+UX018升级具体P2：390×844中文light下，reduce/normal打开均保持背景RedNote trigger焦点，Tab走到背景WeChat；Escape确实返回trigger。随即Enter重开同一RedNote，normal约500ms后hidden=true但is-open和aria-expanded仍true，截图只剩背景；reduce重开保持可见。源码389–406无焦点进入、旧transitionend关闭无代次，与实际吻合。D2.2/D3.4失败片段各80，Escape返回单链96；G4 cap89仅约束normal快速重开后内容隐藏范围。完整族仍null，不把midtransition的normal初图作D4正常态评分，不外推全设备/P1。
+
+后续TravelQR有界批处理模态焦点与旧关闭失效，并真实复验reduce/normal快速键盘重开；不插入当前E7。页面仅显示二维码/账号ID，没有copy按钮，不虚构其行为；X/backdrop和跨频道切换未实测。
+
+inventory结构同步到已更新的v1.9：309族/358selectors，H.HERO.READ新增control.ff1fe2（.hp-reading-start__link），旧ffae77保留；新链接仅绑定E6中英无JS真实文章导航，原CTA focus/paint不得共享。v1.8为52局部证据族，v1.9加Travel后为53，完整认证仍0。所有完整控件/族/全站评分仍null。E6–E62已保存4782757e；E7 WIP未验收。
+
+## 原生锚点与右TOC：仅关闭实际点击子路径
+
+2026-10-16T02:49:02+08:00：anchor-intent五源hash全部匹配478 preview；已读source/JSON/正式log、首次失败log与脚本断言，并看两张实际图。1440×900中文light/reduce下，Archives #year-2026真实MacMeta点击原生开新tab，原页hash/scroll不变、defaultPrevented=false、无scrollIntoView；普通click到365CSSpx/hash、scrollBehavior auto，Back恢复原URL。右TOC实际normal→runtime reduce后点击编码中文heading，auto/no smooth/decoded hash正确。三个精确片段各96，不外推Ctrl/其他修饰键/所有年份或锚点。
+
+首次失败仅percent编码大小写严格比较：实际%E8与预期%e8解码相同；脚本改decode比较后通过，生产未变，initial.log保留。
+
+UX009仅关闭当前右TOC点击定位子路径。原诊断还有reading-companion scrollTocItemIntoView的内部container.scrollTo自动追踪；源码157已按每次调用读取matchMedia，但本probe仅拦截Element.scrollIntoView并点击第一项，未触发/观测长目录内部滚动，也未证明正文焦点不变。这部分继续unverified，不能用点击片段认证完整UX009链。toc-highlight.js旧左sidebar仍有smooth，但当前layouts未找到其selector，不把dead/conditional代码当当前实测失败或通过。
+
+F03只对这条Archives Meta意图获得真实正证据；全站anchor与适用矩阵仍null。E7首页WIP不受本批认证。
+
+## E7/E7.1闭环：数据、停止与阅读意图
+
+2026-10-16T02:56:17+08:00：当前E71 8/8hash与QA config匹配。与E7仅recovery测试SHA不同，其余7个hash逐一相等，包含全部生产代码。已独立读closure/helper/9新测试/受影响about与short增量；没有新P0/P1。请求拥有权与signal分离，每fetch/json/read均race25秒idle；reader.cancel不await，DONE不等EOF；failed用户/回复对排context，partial与恢复提示分离。后端followups在DONE前发送，提前结束兼容当前协议。
+
+初跑21合同19pass/2个24999前沿fail原log完整保留。clock.install后随真实时间推进，发送/轮询再加24999会越过deadline；E71仅fixture在请求前pauseAt并记录startedAt，仍断言24999busy/25000ready，续期chunk20000后44999busy/45000ready，未放宽生产期限。修后9/9正式log和typecheck通过；最终21不同合同=原未改6about+6short+修后9，不写成30项。36Node/typecheck与E7 build4468ms已读；fixture-only不重建、不重跑无风险12。
+
+UX025关闭指定中英draft close/reopen/clear/send与两实际旅程，非刷新持久化承诺。UX026仅关闭synthetic isComposing/keyCode229 Enter/Escape guard和普通Enter仍一次发送，OS级输入法未知。UX027关闭已测header/first/later SSE/JSON idle、DONE无EOF、永挂cancel、Stop/retry/failedcontext/迟到隔离。实际568×256中文light与1440×900英文dark reduce的44Stop坐标可点、停止恢复输入、partial保留、下一问context空，6action图逐张看完。
+
+UX031只关闭568×320英文light/reduce真实wheel620+延迟JSON完成：2803→2803、delta0、不聚焦input；两张before/after同位置保留Angkor卡。错误完成/其他尺寸仍未知。原E61回跳−620失败证据与源码候选历史不删除。
+
+实际恢复界面专家判断：短屏D1=93（96/90/96/90）、D4=91.5（90/96/90/90）；桌面深色D1=94.5（96/96/90/96）、D4=90（90/90/90/90）。停止、partial、恢复行与重试主次更清楚；256高重试仍在中段需滚，quick省略/细碎辅助标签/多层分隔有余量。输入/section实际focus环不是装饰缺陷。图中stub文案不代表真实AI内容质量，不靠21合同给审美满分，不重审renderer/E6文章布局。
+
+所有完整控件/族/全站分仍null；TravelQR UX018与Space短屏arrange等剩余队列保持。
