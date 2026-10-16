@@ -4,7 +4,7 @@
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
   "checkpoint": "8ed671cb6e625027b56914fd73de4f85187d0e62",
-  "phase": "Deadline closeout; no new implementations; accepted E17 preview retained",
+  "phase": "Deadline reached; heartbeat PAUSED readback; no production WIP",
   "batch": "E17-space-media-recovery-type",
   "agents": {
     "inventory": "/root/blog_inventory",
@@ -20,7 +20,7 @@
   ],
   "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e17-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-16T04:01:10.091784+00:00",
+  "updatedAt": "2026-10-16T04:07:07.904235+00:00",
   "previewSource": "Accepted E17 +C1/E16b/E14. C2/E18/titlebalance NOT implemented.",
   "localOnly": true,
   "liveBackendTested": false,
@@ -44,5 +44,11 @@
     "fullScore": null
   },
   "acceptedSinceCheckpoint": "E17 2media sources/new5spec and finalcards accepted; nextC2 singleoutlineoffset pending",
-  "checkpointCorrection": "Initial source checkpoint committed after raw-whitespace check failed because parent used wrong root .gitattributes path and shell continued. Exact6 raw-path exceptions corrected in existing nested attributes; raw bytes unchanged, subsequent git show/check passes."
+  "checkpointCorrection": "Initial source checkpoint committed after raw-whitespace check failed because parent used wrong root .gitattributes path and shell continued. Exact6 raw-path exceptions corrected in existing nested attributes; raw bytes unchanged, subsequent git show/check passes.",
+  "automationStatus": "PAUSED",
+  "acceptedSourceCheckpoint": "8ed671cb6e625027b56914fd73de4f85187d0e62",
+  "closeoutCheckpoint": "dcfa75208b2bc4d8a7f69f368c24c07befcb5263",
+  "deadlineReceipt": "evidence/final-deadline-receipt.json",
+  "temporaryArtifactRemoved": true,
+  "permanentValidation": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/final-validation"
 }

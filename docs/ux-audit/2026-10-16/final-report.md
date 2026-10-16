@@ -13,3 +13,5 @@
 原失败与测具修正均保留。E17初始4测试失败分别涉及ARIA isDisabled语义、map定位多匹配、同URL请求合并假设；原生产两源未因此改动。A手机主动Tab滚到caption后父未回顶就要求NAV全显而失败；B真实wheel回顶后严格44/clip通过。最终未降低命中阈值或把这些测具问题登记成产品修复。
 
 资源收尾：没有iOS Simulator/新服务/其他项目进程操作，所有本轮browser会话已关闭；1317活动预览保留。已登记tmp完整复制到任务永久final-validation后精确移除，保留源码、正式证据和当前预览。12:00后不开始新实现，heartbeat暂停及读回另留receipt。
+
+Heartbeat `12-00` 已通过app工具暂停，读回 `PAUSED`，原prompt/name/rrule/目标聊天逐字段一致。暂停实际时间见 `evidence/final-deadline-receipt.json`。源码checkpoint `8ed671cb`，记录整理checkpoint `dcfa7520`；最终额外提交仅保存本暂停receipt。1317三入口HTTP200只证明预览在服务，不作为新体验验收。
