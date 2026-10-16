@@ -1,0 +1,5 @@
+Listing tests:
+  article-chat-legibility-contracts.spec.ts:150:5 › desktop bilingual light/dark supporting copy, full passage and answer sharing keep a readable hierarchy
+  article-chat-legibility-contracts.spec.ts:162:7 › compact article reading › 390px bilingual conversation keeps 16px editing, full quote and 44px local actions
+  article-chat-legibility-contracts.spec.ts:172:7 › compact article reading › 568px short AI keeps initial, held selection, Stop, full quote, Clear and 503 Retry within 320/256/224px
+Total: 3 tests in 1 file

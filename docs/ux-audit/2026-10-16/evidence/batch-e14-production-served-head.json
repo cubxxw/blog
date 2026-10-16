@@ -1,0 +1,182 @@
+{
+  "at": "2026-10-16T01:17:45.106380+00:00",
+  "sourceContract": "batch-e14-production-contract.json",
+  "rows": [
+    {
+      "route": "/ai-agent/posts/context-engineering-the-new-foundation/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/ai-agent/posts/context-engineering-the-new-foundation/",
+      "bodySHA256": "26be91751899aff2c9581598a458ef9705616e0aa47e124d55e43078f7f13e0c",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": true
+        }
+      ]
+    },
+    {
+      "route": "/engineering/posts/use-go-tools-dlv/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/engineering/posts/use-go-tools-dlv/",
+      "bodySHA256": "3982a79a0e1edb6d06ab532f93927e81243cabebb8e02ac82778e5687a2fc6f1",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": true
+        }
+      ]
+    },
+    {
+      "route": "/zh/ai-agent/posts/context-engineering-the-new-foundation/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/zh/ai-agent/posts/context-engineering-the-new-foundation/",
+      "bodySHA256": "14fd10531029e7c3f3709e80c951209e03c122e264629fb79a20bc3e49f95578",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+          "noscript": true
+        },
+        {
+          "id": "zh-prose-fonts",
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css",
+          "noscript": false
+        }
+      ]
+    },
+    {
+      "route": "/travel/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/travel/",
+      "bodySHA256": "ef12ead7b90aa7be6ace64b0e6c414783258ad0bc88daa15a834c864c8317757",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+          "noscript": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/imstage/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/projects/imstage/",
+      "bodySHA256": "fe140667dd5a178610e2a8c2683a432ebe79f8acd760a2d1ea23527d07db72b7",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": true
+        }
+      ]
+    },
+    {
+      "route": "/ai-agent/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/ai-agent/",
+      "bodySHA256": "af0156957d56dd5d4de033054645eecc1e16814314c846b3684d4b24639c18fb",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+          "noscript": true
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/",
+      "bodySHA256": "0f8c3cab117013f811dfbc3013ecd9ef73ccf498174599577c8c4065d9f18668",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": true
+        }
+      ]
+    },
+    {
+      "route": "/zh/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/zh/",
+      "bodySHA256": "2ff6c11e291c1dd9fe01962837500289a1abd1b1104a94ae408c094f5a46ca04",
+      "links": [
+        {
+          "rel": "preload",
+          "as": "style",
+          "onload": "this.onload=null,this.rel=\"stylesheet\"",
+          "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": false
+        },
+        {
+          "rel": "stylesheet",
+          "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+          "noscript": true
+        }
+      ]
+    },
+    {
+      "route": "/articles/",
+      "status": 200,
+      "finalURL": "http://127.0.0.1:1317/articles/",
+      "bodySHA256": "60c71d994a1208adb1b4088c2f3eb68b1245212ee766ee1fcac49fff5fe97e2e",
+      "links": []
+    }
+  ],
+  "limits": "ActualservedHTML HTTP200/parsed exacthref/onload/noscript only; dynamic handler behavior separately controlled scopecontract; not allroutes/noJS navigation or font paint proof."
+}

@@ -1,0 +1,68 @@
+{
+  "createdAt": "2026-10-16T01:06:56.584998+00:00",
+  "batch": "E14 production EN posts font stability candidate",
+  "basis": "Independent reviewed boundary fullbundle retains reading position but cold fast still uses Georgia/Courier. This is an explicit fallback-first stability tradeoff; no warm brand font promise.",
+  "productionScope": "Only EN IsPage Typeposts Google query display optional; home3familyoptional, allZH/nonposts swap, async/noscript/localCJK/fontstacks exact preserved.",
+  "tests": "New deterministic servedURLscope + lateCSS/font404/CSS404 contract; parent onebrowser namedcoldcases actual naturalcaptures/CDP glyphs.",
+  "frozenGates": [
+    "Actual generated URL contains unchanged5families optional on EN posts only; native noscript URL parity",
+    "Same originalfootnote identity/focus/hash/history/root; marker doc and viewport delta<=0.5 CSSpx, no source scroll compensation",
+    "Retain originalGooglefont bytes from registered7files, unknownnaturallyneededfont invalidates namedcase",
+    "Visual heading/prose/code actualglyphfamily+naturalphotos; phase photos do not prove continuousFOIT",
+    "No paid endpoints/externalwrites; no change to experimentaldiscovery/review/humanChoice lifecycle"
+  ],
+  "outOfScope": [
+    "HTTPwarmcache",
+    "localCJKabsence/Windows/Android",
+    "fullCLS/continuousFOIT/FPS/AT/Safari/physicaldevices",
+    "allsite96/99 certification"
+  ],
+  "sources": {
+    "layouts/partials/extend_head.html": "f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417",
+    "static/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css": "52b2ee5f12e90dcd606c28bfd2d2ddce2182a4022a5342595b384a2365f56720",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "875e31471f281957b6328ff5e2c23271406c58ae143d7590599a4ce47ff2ce05",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "tests/e2e/article-font-stability-contracts.spec.ts": "2a1634e23e9130b1d6aabd58b7c6f0e74d2038e140573086254c127f94dc90e5"
+  },
+  "status": "frozen before production build/browser verification",
+  "cases": [
+    {
+      "id": "fast-before-reading",
+      "case_type": "normal",
+      "stimulus": "style and naturally requested faces delivered before reader centers"
+    },
+    {
+      "id": "css-late-font-immediate",
+      "case_type": "edge",
+      "stimulus": "fallback marker centered and natural phase PNG captured; release CSS, known font fixture bytes immediately available; this is not HTTP warm cache"
+    },
+    {
+      "id": "css-late-font-1200ms",
+      "case_type": "failure",
+      "stimulus": "same lateCSS; fonts held1200ms after request, then successful delivery"
+    },
+    {
+      "id": "css-success-font-404",
+      "case_type": "failure",
+      "stimulus": "same lateCSS; each naturally requested font returns404; public original text remains inspectable at named phases"
+    },
+    {
+      "id": "css-404",
+      "case_type": "failure",
+      "stimulus": "Original generated Google optional CSSrequest fails404 after fallback readingpoint snapshot; no Google font registration; existing text remains at named naturalphases."
+    }
+  ],
+  "previewCheckpoint": "E16b reviewed candidate article3CSS +E14 head candidate (frozen source manifest follows)",
+  "scopeClarification": "Typeposts is the exact approved content gate; EN individual projects/imstage is also typeposts and included, while BEAR OS projects section is unchanged/excluded by existing head lean gate. Scope tests cover9servedroutes; not all public content.",
+  "runners": {
+    "docs/ux-audit/2026-10-16/batch-e14b-production.actual.mjs": "c312d4ab5c14ef3d7cdf833180bebccb85970083c2332a0a83890b502a0b14d5",
+    "docs/ux-audit/2026-10-16/batch-e14b-production.zh-smoke.mjs": "5d11a7879d540242b323b2223ae7464bd7f4ff7faa888d88814db8dc7766407e",
+    "docs/ux-audit/2026-10-16/article-font-qa.config.mjs": "7de100b1f00d68c57f087b797039b4fd88fac2449e83714e70b0380365f17e53"
+  },
+  "harnessClarification": "Initial4=3behaviorpass1scope-handler-string-fixturefailure4.4s; Hugo minifier changed semicolon/quotes without semantic change. A test-only scope validates actual served handler on detached href-less link via controlled load dispatch; original3behavior tail/helper byte-identical and not rerun without risk. Original initialspec/sourcecontract/log/errorcontext retained; head exactf9b.",
+  "atB": "2026-10-16T01:18:39.918356+00:00",
+  "parentFixtureCorrection": "Initialfast generatedURL/marker0/CDP glyph/fontrequests7/2phase+title3PNG valid; extra planned pre-code photo failed because originalarticle has inlinecode only. Initialrunner/raw/log preserved unchanged. B only uses previously real tagged code node in extra surfacephoto; all source8/spec/threshold/stimuli unchanged. Remaining4 originally unrun. ZHsmoke not previouslyrun; use existinginlinecode. No productionfix attributed."
+}

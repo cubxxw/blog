@@ -1,0 +1,421 @@
+{
+  "at": "2026-10-16T00:50:23.007Z",
+  "sourceManifest": "batch-e16-initial-source.json",
+  "sources": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "f0a85dd9025dceeef5e2828d0dbc88c9cdf8fcb0233783ded8c3642bff371757",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "static/js/article-selection.js": "34b8da3bf5c74bfcc888d32381625297d694e538cc5bf8a7676d20a21e7bf956",
+    "tests/e2e/article-chat-legibility-contracts.spec.ts": "c97457585daa5d051a09c47630ae31684e924808a3c1b93a06601298ab97948f"
+  },
+  "steps": [
+    {
+      "name": "paragraph-centered",
+      "selected": "这个问句听起来很温柔，像在数一个人身上的行李。但你只要认真往下走两步，就会发现它有牙。因为它逼你一样一样地拿：拿掉工作，你还是你吗？还是。拿掉记忆呢？拿掉身体呢？拿掉那些让你之所以是你的经历、口音、爱过的人？一直拿下去，到某个地方，“你\"会不会突然就不在了？如果会，那个临界点在哪？如果不会——那\"你",
+      "range": {
+        "x": 30,
+        "y": 107.65625,
+        "width": 497.9375,
+        "height": 176.25,
+        "top": 107.65625,
+        "right": 527.9375,
+        "bottom": 283.90625,
+        "left": 30
+      },
+      "lines": [
+        {
+          "x": 30,
+          "y": 107.65625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 107.65625,
+          "right": 527.9375,
+          "bottom": 132.65625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 137.90625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 137.90625,
+          "right": 527.9375,
+          "bottom": 162.90625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 168.15625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 168.15625,
+          "right": 527.9375,
+          "bottom": 193.15625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 198.40625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 198.40625,
+          "right": 527.9375,
+          "bottom": 223.40625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 228.65625,
+          "width": 487.609375,
+          "height": 25,
+          "top": 228.65625,
+          "right": 517.609375,
+          "bottom": 253.65625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 258.90625,
+          "width": 75.359375,
+          "height": 25,
+          "top": 258.90625,
+          "right": 105.359375,
+          "bottom": 283.90625,
+          "left": 30
+        }
+      ],
+      "paragraph": {
+        "textLength": 164,
+        "box": {
+          "x": 30,
+          "y": 105.65625,
+          "width": 508,
+          "height": 181.5,
+          "top": 105.65625,
+          "right": 538,
+          "bottom": 287.15625,
+          "left": 30
+        }
+      },
+      "coarse": true,
+      "rootY": 1838,
+      "bodyOverflow": "",
+      "sheet": {
+        "open": false,
+        "inert": true,
+        "transform": "matrix(1, 0, 0, 1, 0, 308)"
+      },
+      "toolbar": {
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 205.078125,
+          "height": 52,
+          "top": 0,
+          "right": 205.078125,
+          "bottom": 52,
+          "left": 0
+        },
+        "visibility": "hidden",
+        "opacity": "0",
+        "inert": true,
+        "hidden": "true",
+        "hit": false
+      },
+      "chrome": [
+        {
+          "y": 2,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 10,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 24,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 48,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 80,
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "same-range-end-visible",
+      "selected": "这个问句听起来很温柔，像在数一个人身上的行李。但你只要认真往下走两步，就会发现它有牙。因为它逼你一样一样地拿：拿掉工作，你还是你吗？还是。拿掉记忆呢？拿掉身体呢？拿掉那些让你之所以是你的经历、口音、爱过的人？一直拿下去，到某个地方，“你\"会不会突然就不在了？如果会，那个临界点在哪？如果不会——那\"你",
+      "range": {
+        "x": 30,
+        "y": 19.65625,
+        "width": 497.9375,
+        "height": 176.25,
+        "top": 19.65625,
+        "right": 527.9375,
+        "bottom": 195.90625,
+        "left": 30
+      },
+      "lines": [
+        {
+          "x": 30,
+          "y": 19.65625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 19.65625,
+          "right": 527.9375,
+          "bottom": 44.65625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 49.90625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 49.90625,
+          "right": 527.9375,
+          "bottom": 74.90625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 80.15625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 80.15625,
+          "right": 527.9375,
+          "bottom": 105.15625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 110.40625,
+          "width": 497.9375,
+          "height": 25,
+          "top": 110.40625,
+          "right": 527.9375,
+          "bottom": 135.40625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 140.65625,
+          "width": 487.609375,
+          "height": 25,
+          "top": 140.65625,
+          "right": 517.609375,
+          "bottom": 165.65625,
+          "left": 30
+        },
+        {
+          "x": 30,
+          "y": 170.90625,
+          "width": 75.359375,
+          "height": 25,
+          "top": 170.90625,
+          "right": 105.359375,
+          "bottom": 195.90625,
+          "left": 30
+        }
+      ],
+      "paragraph": {
+        "textLength": 164,
+        "box": {
+          "x": 30,
+          "y": 17.65625,
+          "width": 508,
+          "height": 181.5,
+          "top": 17.65625,
+          "right": 538,
+          "bottom": 199.15625,
+          "left": 30
+        }
+      },
+      "coarse": true,
+      "rootY": 1926,
+      "bodyOverflow": "",
+      "sheet": {
+        "open": false,
+        "inert": true,
+        "transform": "matrix(1, 0, 0, 1, 0, 308)"
+      },
+      "toolbar": {
+        "box": {
+          "x": 30,
+          "y": 252,
+          "width": 205.078125,
+          "height": 52,
+          "top": 252,
+          "right": 235.078125,
+          "bottom": 304,
+          "left": 30
+        },
+        "visibility": "visible",
+        "opacity": "1",
+        "inert": false,
+        "hidden": "false",
+        "hit": true
+      },
+      "chrome": [
+        {
+          "y": 2,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 10,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 24,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 48,
+          "elements": [
+            {
+              "tag": "DIV",
+              "cls": "header-wrapper nav-scrolled",
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 568,
+                "height": 53,
+                "top": 0,
+                "right": 568,
+                "bottom": 53,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "y": 80,
+          "elements": []
+        }
+      ]
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement-paragraph-centered.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement-same-range-end-visible.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One568x320zhdarkreduce isolated coarse Chromium. Mirrors newcontract publishedlongestplainparagraph/first150chars, original native DOMRange; no production overlay/force or text shortening. Only actualdocument scroll repositions sameRange bottom to leave existing56+toolbar+16; no AIaction fired/paid call. Externalfont CSS intentionally empty like frozen-site fixture. Observes entry precondition, not E16 selection/Stop success."
+}

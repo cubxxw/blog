@@ -1,0 +1,261 @@
+{
+  "at": "2026-10-16T01:41:37.856Z",
+  "servedJS": {
+    "url": "http://127.0.0.1:1317/js/article-chat.js",
+    "sha256": "febedb352f60b801cc69124763306b40b09dae7c151875d4678cd02809d219b0"
+  },
+  "before": {
+    "width": 568,
+    "height": 320,
+    "rootY": 500,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "false",
+    "originalIdentity": {
+      "root": false,
+      "input": false,
+      "messages": false
+    },
+    "value": "My unfinished followup draft.\nKeep its second line.",
+    "selection": [
+      51,
+      51,
+      "none"
+    ],
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "article-chat-followup",
+      "originalInput": false,
+      "visible": true,
+      "insideAI": true,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 9,
+      "y": 76,
+      "width": 550,
+      "height": 236,
+      "top": 76,
+      "right": 559,
+      "bottom": 312,
+      "left": 9
+    },
+    "inputBox": {
+      "x": 18,
+      "y": 245,
+      "width": 482,
+      "height": 60,
+      "top": 245,
+      "right": 500,
+      "bottom": 305,
+      "left": 18
+    },
+    "messages": {
+      "box": {
+        "x": 9,
+        "y": 76,
+        "width": 550,
+        "height": 155,
+        "top": 76,
+        "right": 559,
+        "bottom": 231,
+        "left": 9
+      },
+      "scrollTop": 165,
+      "scrollHeight": 320,
+      "clientHeight": 155,
+      "text": "Your questionExplain the original Go debugging article.AIReading togetherShare insightThe answer is visible before choosing an original suggestion.Keep askingCan you give an example?What is the counter-argument?How does this apply in practice?"
+    },
+    "stop": {
+      "visible": false,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-toc"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 1,
+        "method": "POST",
+        "payload": {
+          "question": "Explain the original Go debugging article.",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "after": {
+    "width": 568,
+    "height": 320,
+    "rootY": 500,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "true",
+    "originalIdentity": {
+      "root": false,
+      "input": false,
+      "messages": false
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "BODY",
+      "id": "top",
+      "cls": "dark",
+      "originalInput": false,
+      "visible": true,
+      "insideAI": false,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 9,
+      "y": 76,
+      "width": 550,
+      "height": 236,
+      "top": 76,
+      "right": 559,
+      "bottom": 312,
+      "left": 9
+    },
+    "inputBox": {
+      "x": 18,
+      "y": 245.40625,
+      "width": 482,
+      "height": 59.59375,
+      "top": 245.40625,
+      "right": 500,
+      "bottom": 305,
+      "left": 18
+    },
+    "messages": {
+      "box": {
+        "x": 9,
+        "y": 76,
+        "width": 550,
+        "height": 125.21875,
+        "top": 76,
+        "right": 559,
+        "bottom": 201.21875,
+        "left": 9
+      },
+      "scrollTop": 49,
+      "scrollHeight": 204,
+      "clientHeight": 125,
+      "text": "Your questionExplain the original Go debugging article.AIReading togetherShare insightThe answer is visible before choosing an original suggestion.Your questionHow does this apply in practice?"
+    },
+    "stop": {
+      "visible": true,
+      "box": {
+        "x": 506,
+        "y": 261,
+        "width": 44,
+        "height": 44,
+        "top": 261,
+        "right": 550,
+        "bottom": 305,
+        "left": 506
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-toc"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 1,
+        "method": "POST",
+        "payload": {
+          "question": "Explain the original Go debugging article.",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      },
+      {
+        "aborts": 0,
+        "cancels": 0,
+        "method": "POST",
+        "payload": {
+          "question": "How does this apply in practice?",
+          "language": "en",
+          "pagePath": "/engineering/posts/use-go-tools-dlv/",
+          "context": [
+            {
+              "role": "user",
+              "content": "Explain the original Go debugging article."
+            },
+            {
+              "role": "assistant",
+              "content": "The answer is visible before choosing an original suggestion."
+            }
+          ],
+          "articleContentLength": 5403,
+          "articleTitle": "Use Go Tools Dlv"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "errors": [],
+  "denied": [],
+  "image": "docs/ux-audit/2026-10-16/evidence/probe-e16-followup-focus.png",
+  "limits": "One actual nativeEnter on locallyfocused existing thirdsuggestion after realwheel, original publicGo article/controlledSSE, C preview exactservedJS while C1sourceWIP notbuilt. Focus seed deliberate localcontrol, not wholepageTab proof."
+}

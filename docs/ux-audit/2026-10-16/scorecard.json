@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T08:25:11+08:00",
+  "updated_at": "2026-10-16T09:38:11+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,7 +353,7 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.25",
+    "inventory_version": "1.27",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
@@ -366,13 +366,14 @@
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309 families/369 selector entries;359 state records/82 families with local evidence (81partial+1measured),0whole; no whole control/family score or96 certification.",
-    "families_with_recorded_contract_fragments": 84,
-    "scoped_check_assessments": 234,
-    "expert_visual_assessments": 106,
-    "inventory_families_with_partial_state_evidence": 82,
+    "reason": "309families/369selector entries;373 itemstates/85localfamilies(84partial+1measured) plus4 independent E14 surface records.0whole/fullnull. UX046 ENcold namedscopeclosed;photoUX052open. E16c WIP unverified.",
+    "families_with_recorded_contract_fragments": 89,
+    "scoped_check_assessments": 247,
+    "expert_visual_assessments": 110,
+    "inventory_families_with_partial_state_evidence": 85,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 359
+    "inventory_state_evidence_records": 373,
+    "inventory_surface_state_evidence_records": 4
   },
   "evidence": [
     {
@@ -3005,6 +3006,71 @@
       "provenance": "docs/ux-audit/2026-10-16/evidence/probe-space-external-bookmark-provenance.json",
       "scope": "Initial E15 390en/coarse/reduce; original BearSpace.execute favorite on/off changes stored favorites/star but pressed remains false and label Save; own actual click gives Saved/true. Same focused button. Four PNG independently viewed.",
       "result": "Confirmed UX050; public API invocation, not a real assistant/model/AT test."
+    },
+    {
+      "id": "E-BATCH-E16B",
+      "kind": "bounded_source_recorded_browser_independent_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e16b-actual.json",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+      "source_manifest_sha256": "3ac1f9a3fa7426a18a7cae32f56edf74dd443631cc7efbdcde10ba5f7a1263f9",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e16b-provenance.json",
+      "provenance_sha256": "fac7a9b47c0a9874d3471aa7d4b6da26ecc412ce29f1ba3a6da7584ae1ff3626",
+      "composition": "Primary5 completed contexts/16 PNG = A desktop/phone6 + B affected shortzh/320en/shorten10. A two partial-failure short PNG retained separately, not accepted. All18 independently viewed. B34/A29 provenance paths match. B14source/QA/3runners match; exact2-declaration inverse recovers A bottomsheet, other2CSS exactA.",
+      "test_refs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16-initial-contracts.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16a-contracts.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16b-contracts.log"
+      ],
+      "tests": "Initial35=32 protected pass+2 new pass+1 entry-fixture failure; A same3 rerun12.1s, B same3 strengthened12.2s. Final35 distinct, not41 features. Old strict anchor/continuity assertions untouched.",
+      "result": "Named short selected AI composer, original draft/node/payload,44 controls, Stop mutual slot/abort1, reference internal wheel/root unchanged, clearer supporting type and one less quote boundary pass.",
+      "contrast": "A3 eligible flat samples independently recomputed6.1161026899074775, error0; share-label gradient sample unverified/null. New tests record flat stacks only, no full contrast certificate.",
+      "limits": "Five emulated Chromium contexts; controlled original AIClient only. Actual public paragraph selection, not code or physical drag/OS keyboard. No share publication, live AI, AT/Safari/full zoom/state matrix. E14 head change is subsequent separate scope; E16 evidence not re-labelled as E14 current build."
+    },
+    {
+      "id": "E-E16-SHORT-SELECTED-BASELINE",
+      "kind": "recorded_browser_negative",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected-settled.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected-provenance.json",
+      "scope": "Immutable08d/d5 CSS, actual568x320zh/dark/reduce publicparagraph→realtoolbar→controlledreply, settled transform0/opacity1/2RAF. Input344.64..404.23 and Send360.23..404.23 outsideviewport/nohit; originalroot/input retained.",
+      "result": "Confirmed UX051 P1; initial transitional paint and independent settled PNG both retained.25 current/Git/file hashes verified."
+    },
+    {
+      "id": "E-SPACE-PHOTO-RETRY-BASELINE",
+      "kind": "recorded_browser_negative_with_recovery",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-provenance.json",
+      "scope": "Immutable08d 1440zh/reduce local kumano fullimage404→real Retry→held→exact original WebP ready,4 PNG independently viewed.",
+      "result": "UX052 P2: focused Retry hides and drops focus BODY, then actual Tab goes photo-region button. Firsterror Retry bbox52.48x23.37 outside window clipping; click auto-scrolls. Recovery succeeds.",
+      "limits": "Not a trap/global Tab jump, mobile44/WCAG failure or elapsed-timeout proof; no actual album API/AT/device tests."
+    },
+    {
+      "id": "E-KNOWLEDGE-OPEN-BASELINE",
+      "kind": "recorded_browser_positive_fragment",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-provenance.json",
+      "scope": "Immutable08d 1440zh/light/reduce and390en/dark/reduce;3real product/writing/series nodes each,6 PNG independently viewed. Photo+Knowledge38 current/file/Git hashes matched.",
+      "result": "Current title/catalog URL/target/rel and actual trusted click/Enter activation match. All navigation intercepted preventDefault, no destination visited.",
+      "limits": "No source fix required; no full keyboard/AT or visited/popup claim.390 fixed OS/Lab switch shares reading plane; only layout candidate, automatic Open scroll/header clipping is not a diagnosed bug."
+    },
+    {
+      "id": "E-BATCH-E14B",
+      "kind": "bounded_source_surface_recorded_browser_independent_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-actual.json",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json",
+      "source_manifest_sha256": "b6a7f3b8dc4cfc0db7e9f30be9886364808d831e2da7f80e53bba4d069f606ef",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-provenance.json",
+      "provenance_sha256": "2b53d4934fb2206520bd1d4da4c45778ab45528cf291ddd32dedf9c81191ddca",
+      "metadata_erratum": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-erratum.json",
+      "metadata_erratum_sha256": "4aa34a8541352ea37185ccbce1ed1c9d33204f122f90e7b94d66a4e36c0c66d1",
+      "scope": "Five EN390x844 dark/coarse/reduce cold-delivery contexts/13 natural PNG plus one ZH390x844 light/normal settled compatibility context/3 PNG; all16 independently viewed. Source-surface only, no new controls/family certification.",
+      "proof": "51 provenance path hashes +8 source/3 runner-QA match. Five-line inverse recovers accepted08d head; existing home/localCJK/async/noscript/fontstacks retained. Five raw marker doc/view/root/docH deltas all0; originalnode/focus/hash/history retained; no source scroll compensation.",
+      "test_refs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e14-production-initial-contracts.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e14a-production-scope.log"
+      ],
+      "test_composition": "4 distinct contracts: initial3 behavior pass plus1 minified-handler string fixture failure4.4s; semantic detached-handler scope1pass1.0s. Original3body/helper byte-identical, not redundantly rerun. Hugo4153ms. No actual skips. Initial parent extra pre-code photo failure preserved; final B uses real tagged inlinecode only; production head unchanged.",
+      "actual_fonts": "FinalB fast before+terminal: heading Georgia; prose Noto Serif; code JetBrains Mono. Other4 late/font404/CSS404 rows Georgia/Courier. Original provenance all5 fallback claim is incorrect; raw/explicit erratum control. Earlier experiment/initialproduction fast fallback are independent observations.",
+      "limits": "Named phase visibility, not continuousFOIT/fullCLS/FPS/beforefirstpaint or HTTPwarm. FontFace.loaded is not actualuse proof; use CDP role maps. ZH installed SourceHan glyphs not local-CJK-absence/late-CJK coverage. No complete D1/D4 dimension, wholepagecontrast, AT/Safari/physical/wholematrix certificate; discovery/humanChoice stays unreviewed/nonGold. E16c JS is separate WIP outside source8."
     }
   ],
   "historical_visual_assessments": [
@@ -6632,6 +6698,140 @@
       ],
       "scope": "Only same Reading paths static block.",
       "reason": "Type is readable, but four lines of continuous underline flatten title/summary/action emphasis; use existing descendant block layout/spacing and title-only underline, preserving whole-link hit area/content/href."
+    },
+    {
+      "assessment_id": "VIS-E16B-NORMAL-D1",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.SHARE",
+        "A.AI.CONTEXTCLEAR",
+        "A.AI.FOLLOWUP"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-intro.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-readable-history.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-selected-passage.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16b-320-en-selected-passage.png"
+      ],
+      "scope": "A unchangeddesktop1440en/phone390zh + B320en named static supportingcopy/reference fragments.",
+      "reason": "Earlier concrete tinyquestion/label/share andnestedreferencebox gaps resolved; textrole clear, actionableShare legible, one less boundary. UnknownAT not used asvisual deduction."
+    },
+    {
+      "assessment_id": "VIS-E16B-NORMAL-D4",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.SHARE",
+        "A.AI.CONTEXTCLEAR",
+        "A.AI.FOLLOWUP"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-selected-passage.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-cleared-same-draft.png"
+      ],
+      "scope": "Same ordinarynamed resting/focus fragments, not fullUI dimension.",
+      "reason": "14question/12label/13Share and restrained quote/reference surfaces improvehierarchy; operationalfocusrings/selectionguide are notdecorative defects."
+    },
+    {
+      "assessment_id": "VIS-E16B-SHORT-D1",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.SHARE",
+        "A.AI.CONTEXTCLEAR",
+        "A.AI.FOLLOWUP"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        80,
+        96,
+        96
+      ],
+      "scope_score": 92.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-selected-passage.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-selected.png"
+      ],
+      "scope": "B568x320en/light/normal selectedstate;224zh/en stress supportsgeometryonly.",
+      "reason": "Keepasking and3suggestions consumevisiblemessages at320height, pushing just-generatedreply aboveviewport. Followups reachable but primaryreadingrequires extra scroll. Not renewedinput failure/P1."
+    },
+    {
+      "assessment_id": "VIS-E16B-SHORT-D4",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.SHARE",
+        "A.AI.CONTEXTCLEAR",
+        "A.AI.FOLLOWUP"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-selected-passage.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-selected-passage.png"
+      ],
+      "scope": "Same shortnormal static scope;224notordinarymobileaestheticcertificate.",
+      "reason": "Type/boundaries/consistency improved;followuppills receive dominantattention relative to response. Do not hide functionalitywithout accessibleentry."
     }
   ],
   "findings": [
@@ -9108,9 +9308,9 @@
       "severity": "P2",
       "title": "冷启动迟到字体注册期间正文重排，阅读位置发生跳移",
       "baseline_reason": "390x844en/dark/normal，无用户wheel：字体0→15注册/loaded期间，marker y414.28125→627.9375，docH30674→31731，scroll3713→3652。诊断JSON/四图已独立查看；后续warm reduce稳定不代表所有cold路径合格。",
-      "recommendation": "独立评估正文异步字体交付/回退字体度量与swap策略，保留既定字体和内容意图；用冷/暖/延迟/失败字体下同一阅读锚点回归，不把测试等待当产品修复。先定位真实layout贡献，再选最小修复。",
+      "recommendation": "命名英文冷加载读点范围已修；保留当前字栈与局部optional gate。若后续要求暖缓存或跨平台品牌字体一致，再针对真实glyph与同一读点采样，不把loaded或memory fixture当暖缓存承诺。",
       "source_inference": "extend_head56 preload→stylesheet与article display=swap是相关交付边界；诊断证实字体注册/布局变化相关，未隔离证明每个delta仅由字体引起。",
-      "status": "confirmed_named_cold_async_font_layout_baseline_open",
+      "status": "closed_E14b_named_EN_posts_cold_font_delivery_readpoint_scope",
       "baseline_cap": null,
       "active_cap": null,
       "batch": "post_E12_font_candidate",
@@ -9127,10 +9327,15 @@
           "kind": "source",
           "path": "layouts/partials/extend_head.html",
           "line": 56
+        },
+        {
+          "kind": "recorded_browser_source_surface",
+          "evidence_id": "E-BATCH-E14B"
         }
       ],
       "browser_evidence": [
-        "E-COLD-FONT-LAYOUT-BASELINE"
+        "E-COLD-FONT-LAYOUT-BASELINE",
+        "E-BATCH-E14B"
       ],
       "as_of": {
         "phase": "E12 frozen final bounded footnote review",
@@ -9145,7 +9350,26 @@
         "Source-surface only, no button/marker-click attribution or new family.",
         "Not an E12 source regression;3production hashes unchanged throughout diagnostics.",
         "Settledfont E12 acceptance does not close coldloading; no CLS/GPU/device/globalmotion claim."
-      ]
+      ],
+      "resolution": {
+        "as_of": {
+          "phase": "E14b final independent EN cold-font production review",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json",
+          "reviewed_at": "2026-10-16T09:38:11+08:00",
+          "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+        },
+        "evidence": [
+          "E-BATCH-E14B"
+        ],
+        "result": "EN IsPage && Typeposts only display=optional; five named cold fast/lateCSS/late1200/font404/CSS404 deliveries preserve original reading point, focus and content. ZH settled smoke is compatibility observation only.",
+        "actual_font_correction_ref": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-erratum.json",
+        "remaining_unverified": [
+          "HTTP warm cache and brand-font guarantee",
+          "late/local-CJK/Windows/Android absence",
+          "continuous FOIT/full CLS/FPS",
+          "Safari/AT/physical devices/all routes or full state matrix"
+        ]
+      }
     },
     {
       "id": "UX-047",
@@ -9385,6 +9609,115 @@
         "scope": "390en normal actual public off/on+own click and1440en public on/off contract; shared apps.syncFavorite preserves same button/focus/body/scroll, stable article-purpose name and true pressed/Saved state.",
         "limits": "Direct original public API, not real assistant UI/AT; initial focused button setup was programmatic. No unrelated favorite controls certified."
       }
+    },
+    {
+      "id": "UX-051",
+      "family_prefix": "A.AI",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.SEND",
+        "A.AI.STOP",
+        "A.AI.CONTEXTCLEAR"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.SEND.control.a9e4f5",
+        "A.AI.STOP.control.de0878",
+        "A.AI.CONTEXTCLEAR.control.988a49"
+      ],
+      "severity": "P1",
+      "title": "短横屏选文会话将输入与发送挤出视口，无法可视继续提问",
+      "baseline_reason": "Settled568x320zh/dark/reduce original input344.64..404.23 and Send360.23..404.23 below320/nohit. A CSS recovers controls but224held messages24.8125<replyline25.2; true failure retained, not transient.",
+      "recommendation": "Bound short-AI sheet and selected composer, retain original nodes/full quoted text, allocate complete computed reply line and44 controls; exact owner/focus and old continuity gates remain.",
+      "status": "closed_E16b_named_short_AI_selected_composer_Stop_full_line_scope",
+      "baseline_cap": 79,
+      "active_cap": null,
+      "batch": "E16b",
+      "dimensions": [
+        "D2",
+        "D6"
+      ],
+      "browser_evidence": [
+        "E-E16-SHORT-SELECTED-BASELINE",
+        "E-BATCH-E16B"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-E16-SHORT-SELECTED-BASELINE"
+        }
+      ],
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "verified_score": null,
+      "confidence": "high_for_named_geometry",
+      "resolution": {
+        "evidence": "E-BATCH-E16B",
+        "as_of": {
+          "phase": "E16b final independent bounded review",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+          "reviewed_at": "2026-10-16T09:17:22+08:00",
+          "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+        },
+        "scope": "B actual568zh/en320→224 and new3 contracts including320/256/224 initial/held/reply/Stop/Clear/503Retry/TOCShare;input/SendStop/Clear fullyviewport+hit,44,Stopabort1, same original draft/node/payload;messages28.8125>=computed25.2 under224held.",
+        "limits": "A desktop/phone evidence retained under unchanged CSS; short visual hierarchy still has separate recommendation. No OS keyboard/AT/physical/allshortwidth/fullfamily certificate."
+      }
+    },
+    {
+      "id": "UX-052",
+      "family_prefix": "S.APP.photos",
+      "family_ids": [
+        "S.APP.photos.RETRY"
+      ],
+      "control_ids": [
+        "S.APP.photos.RETRY.control.9d2d8e"
+      ],
+      "severity": "P2",
+      "title": "照片重试隐藏当前焦点，恢复反馈与入口不易发现",
+      "baseline_reason": "1440zh/reduce kumano404 first error Retry52.48x23.37 is below visible window clipping; real click auto-scrolls, synchronously hides focused Retry→BODY during held state. Next actual Tab returns photo-region button, then exact original WebP loads.",
+      "recommendation": "Only preview image recovery in media.js/space-media.css: retain same Retry with pending guard, stable visible status/action grouping and reasonable target/type; preserve explicit outside focus. Timeout remains a source/testing gap, not an observed hang.",
+      "status": "confirmed_named_photo_retry_focus_feedback_baseline_open",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "Space_media_baseline",
+      "dimensions": [
+        "D2",
+        "D3"
+      ],
+      "browser_evidence": [
+        "E-SPACE-PHOTO-RETRY-BASELINE"
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/js/space/media.js",
+          "line": 30
+        },
+        {
+          "kind": "source",
+          "path": "assets/css/space-media.css",
+          "line": 22
+        },
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-SPACE-PHOTO-RETRY-BASELINE"
+        }
+      ],
+      "as_of": {
+        "preview_checkpoint": "08dca5f0c40285e32132ec4a68d4c489f94b7003",
+        "reviewed_at": "2026-10-16T09:17:22+08:00"
+      },
+      "verified_score": null,
+      "confidence": "high_for_named_state",
+      "scope_limits": [
+        "Desktop local selected image only; no mobile44 or blanket WCAG target failure.",
+        "No trap/global Tab jump, real timeout or total album/source failure claim.",
+        "No API/backend/AT/physical-device evidence."
+      ]
     }
   ],
   "next_batches": [
@@ -9442,9 +9775,9 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.25",
-    "sha256": "cc89859d5e0b7ea8b351a7a2e5a854e5ea0017d376d37340930d45c768d32035",
-    "markdown_sha256": "26575a2cd0a6340312b8bc10159bf2f506027b05fd480a0cf245e62a093d2590",
+    "version": "1.27",
+    "sha256": "584969dcb9e715e35a3f9e6a7cca7e9d6a9fa40ed9b0b374b37b6ff58a00298d",
+    "markdown_sha256": "873a8787215b85ff5c89dae0cbaabe72c740f602343a219caebc29de9fc5c6d5",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -9454,12 +9787,12 @@
       "control_families": 265,
       "stable_control_selectors": 369,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 81,
+      "partial_state_evidence_families": 84,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 202,
-        "partial-state-evidence": 81,
+        "source-only": 199,
+        "partial-state-evidence": 84,
         "measured-observation-only": 1,
         "rendered-baseline": 25
       },
@@ -9467,12 +9800,13 @@
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 82,
+      "families_with_state_evidence": 85,
       "accepted_whole_families": 0,
-      "state_evidence_records": 359
+      "state_evidence_records": 373,
+      "surface_state_evidence_records": 4
     },
-    "imported_at": "2026-10-16T08:25:11+08:00",
-    "import_scope": "14 lean E15C refs:3 separate historical negatives+11 positive/contract fragments. Native e973e2 and preexisting Notes/Books f4bc09 are selector entries, not new families. All whole families unverified/null."
+    "imported_at": "2026-10-16T09:38:11+08:00",
+    "import_scope": "No new item/control/family:373 itemstates/85localfamilies unchanged;4 independent surface observations in e14b-production-font-import.surface_state_evidence, not included in373. UX046 named ENcold scopeclosed;ZH compatibility unscored.Wholecontrols/familiesnull."
   },
   "groups": [
     {
@@ -17299,10 +17633,12 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.AR0.selected-ai-observation.A.TOC.MOBILETABS.active",
-          "EIMPORT.E13E.compact-ai-entry.A.TOC.MOBILETABS.active"
+          "EIMPORT.E13E.compact-ai-entry.A.TOC.MOBILETABS.active",
+          "EIMPORT.E16B.short-lens-tabs-contract.A.TOC.MOBILETABS.normal"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": null
     },
     {
       "family_id": "A.TOC.SERIES",
@@ -17542,7 +17878,9 @@
         }
       },
       "known_findings": [],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E16B"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -17558,10 +17896,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.actual-entry.A.AI.CHIP.active"
+          "EIMPORT.E13E.actual-entry.A.AI.CHIP.active",
+          "EIMPORT.E16B.short-lens-geometry-only.A.AI.CHIP.normal"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e13e-source.json"
     },
     {
       "family_id": "A.AI.INPUT",
@@ -17633,9 +17973,13 @@
         }
       },
       "known_findings": [
-        "UX-044"
+        "UX-044",
+        "UX-051"
       ],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E16B",
+        "E-E16-SHORT-SELECTED-BASELINE"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -17664,10 +18008,15 @@
           "EIMPORT.AR0.draft-pair-observation.A.AI.INPUT.normal",
           "EIMPORT.AR0.breakpoint-focus-failure.A.AI.INPUT.focus",
           "EIMPORT.E13E.owned-draft.A.AI.INPUT.focus",
-          "EIMPORT.E13E.owned-history-reading.A.AI.INPUT.normal"
+          "EIMPORT.E13E.owned-history-reading.A.AI.INPUT.normal",
+          "EIMPORT.E16B.old-selected-outside.A.AI.INPUT.normal",
+          "EIMPORT.E16B.A-held-line-negative.A.AI.INPUT.loading",
+          "EIMPORT.E16B.reading-type-support.A.AI.INPUT.normal",
+          "EIMPORT.E16B.canonical-visible-draft.A.AI.INPUT.focus"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e13e-source.json"
     },
     {
       "family_id": "A.AI.SEND",
@@ -17738,8 +18087,13 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
-      "contract_evidence": [],
+      "known_findings": [
+        "UX-051"
+      ],
+      "contract_evidence": [
+        "E-BATCH-E16B",
+        "E-E16-SHORT-SELECTED-BASELINE"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -17754,10 +18108,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.actual-entry.A.AI.SEND.active"
+          "EIMPORT.E13E.actual-entry.A.AI.SEND.active",
+          "EIMPORT.E16B.selected-held-submit.A.AI.SEND.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e13e-source.json"
     },
     {
       "family_id": "A.AI.STOP",
@@ -17827,8 +18183,12 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
-      "contract_evidence": [],
+      "known_findings": [
+        "UX-051"
+      ],
+      "contract_evidence": [
+        "E-BATCH-E16B"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -17843,10 +18203,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.owned-stop.A.AI.STOP.active"
+          "EIMPORT.E13E.owned-stop.A.AI.STOP.active",
+          "EIMPORT.E16B.short-once-abort.A.AI.STOP.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": null
     },
     {
       "family_id": "A.AI.CONTEXTCLEAR",
@@ -17916,8 +18278,12 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
-      "contract_evidence": [],
+      "known_findings": [
+        "UX-051"
+      ],
+      "contract_evidence": [
+        "E-BATCH-E16B"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -17931,10 +18297,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.clear-general.A.AI.CONTEXTCLEAR.active"
+          "EIMPORT.E13E.clear-general.A.AI.CONTEXTCLEAR.active",
+          "EIMPORT.E16B.clear-draft.A.AI.CONTEXTCLEAR.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": null
     },
     {
       "family_id": "A.AI.RETRY",
@@ -18005,7 +18373,9 @@
         }
       },
       "known_findings": [],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E16B"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -18017,10 +18387,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.existing-retry-regression.A.AI.RETRY.error"
+          "EIMPORT.E13E.existing-retry-regression.A.AI.RETRY.error",
+          "EIMPORT.E16B.short-503-contract.A.AI.RETRY.error"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": null
     },
     {
       "family_id": "A.AI.FOLLOWUP",
@@ -18126,7 +18498,7 @@
         "sha256": "51f062ad0330c7cc786d71036c5aad770cededa65481d653e8aac1e775790029"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -18174,7 +18546,9 @@
         }
       },
       "known_findings": [],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E16B"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -18188,9 +18562,12 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E16B.label-hover-only.A.AI.SHARE.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e13e-source.json"
     },
     {
       "family_id": "A.SELECTION.SHARE",
@@ -18357,10 +18734,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.explicit-analyze.A.SELECTION.AI.active"
+          "EIMPORT.E13E.explicit-analyze.A.SELECTION.AI.active",
+          "EIMPORT.E16B.published-range-analyze.A.SELECTION.AI.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": null
     },
     {
       "family_id": "A.SELECTION.COMMENT",
@@ -34609,7 +34988,7 @@
         "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
       },
       "state_profile": "async",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -34656,8 +35035,12 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
-      "contract_evidence": [],
+      "known_findings": [
+        "UX-052"
+      ],
+      "contract_evidence": [
+        "E-SPACE-PHOTO-RETRY-BASELINE"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -34668,9 +35051,12 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active"
+        ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": null
     },
     {
       "family_id": "S.APP.photos.LOAD",
@@ -46744,7 +47130,9 @@
         }
       },
       "known_findings": [],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-KNOWLEDGE-OPEN-BASELINE"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -46779,7 +47167,7 @@
         "sha256": "c5c4c0183c92366e728c641ce00ef9ee2da5285f3aa868d7207bc8c77f415849"
       },
       "state_profile": "nav",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -46827,7 +47215,9 @@
         }
       },
       "known_findings": [],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-KNOWLEDGE-OPEN-BASELINE"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -46838,9 +47228,12 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E16B.current-node-native-intent.S.KNOWLEDGE.OPEN.active"
+        ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": null
     },
     {
       "family_id": "S.KNOWLEDGE.RELATED",
@@ -63973,7 +64366,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.AR0.selected-ai-observation.A.TOC.MOBILETABS.active",
-          "EIMPORT.E13E.compact-ai-entry.A.TOC.MOBILETABS.active"
+          "EIMPORT.E13E.compact-ai-entry.A.TOC.MOBILETABS.active",
+          "EIMPORT.E16B.short-lens-tabs-contract.A.TOC.MOBILETABS.normal"
         ]
       }
     },
@@ -64347,12 +64741,14 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-E13E-ENTRY-FOCUS"
+        "CHK-E13E-ENTRY-FOCUS",
+        "CHK-E16B-SHORT-INITIAL"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.actual-entry.A.AI.CHIP.active"
+          "EIMPORT.E13E.actual-entry.A.AI.CHIP.active",
+          "EIMPORT.E16B.short-lens-geometry-only.A.AI.CHIP.normal"
         ]
       }
     },
@@ -64512,14 +64908,21 @@
         "CHK-E13E-ENTRY-FOCUS",
         "CHK-E13E-EXPLICIT-ANALYZE",
         "CHK-E13E-CLOSE-STOP",
-        "CHK-E13E-INIT-IME"
+        "CHK-E13E-INIT-IME",
+        "CHK-E16B-TYPE",
+        "CHK-E16B-SHORT-INITIAL",
+        "CHK-E16B-SHORT-BUSY",
+        "CHK-E16B-PAYLOAD-DRAFT",
+        "CHK-E16B-OLD-SELECTED-NEGATIVE"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.AR0.draft-pair-observation.A.AI.INPUT.normal",
           "EIMPORT.E13E.owned-draft.A.AI.INPUT.focus",
-          "EIMPORT.E13E.owned-history-reading.A.AI.INPUT.normal"
+          "EIMPORT.E13E.owned-history-reading.A.AI.INPUT.normal",
+          "EIMPORT.E16B.old-selected-outside.A.AI.INPUT.normal",
+          "EIMPORT.E16B.canonical-visible-draft.A.AI.INPUT.focus"
         ]
       }
     },
@@ -64677,12 +65080,15 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-E13E-ENTRY-FOCUS",
-        "CHK-E13E-INIT-IME"
+        "CHK-E13E-INIT-IME",
+        "CHK-E16B-SHORT-ACTIONS",
+        "CHK-E16B-OLD-SELECTED-NEGATIVE"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.actual-entry.A.AI.SEND.active"
+          "EIMPORT.E13E.actual-entry.A.AI.SEND.active",
+          "EIMPORT.E16B.selected-held-submit.A.AI.SEND.active"
         ]
       }
     },
@@ -64832,12 +65238,15 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-E13E-ENTRY-FOCUS",
-        "CHK-E13E-CLOSE-STOP"
+        "CHK-E13E-CLOSE-STOP",
+        "CHK-E16B-SHORT-BUSY",
+        "CHK-E16B-SHORT-ACTIONS"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.owned-stop.A.AI.STOP.active"
+          "EIMPORT.E13E.owned-stop.A.AI.STOP.active",
+          "EIMPORT.E16B.short-once-abort.A.AI.STOP.active"
         ]
       }
     },
@@ -64911,12 +65320,16 @@
       "known_findings": [],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-E13E-CONTEXT-OWNER"
+        "CHK-E13E-CONTEXT-OWNER",
+        "CHK-E16B-QUOTE-BOUNDARY",
+        "CHK-E16B-SHORT-ACTIONS",
+        "CHK-E16B-PAYLOAD-DRAFT"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.clear-general.A.AI.CONTEXTCLEAR.active"
+          "EIMPORT.E13E.clear-general.A.AI.CONTEXTCLEAR.active",
+          "EIMPORT.E16B.clear-draft.A.AI.CONTEXTCLEAR.active"
         ]
       }
     },
@@ -64989,11 +65402,14 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E16B-RETRY"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.existing-retry-regression.A.AI.RETRY.error"
+          "EIMPORT.E13E.existing-retry-regression.A.AI.RETRY.error",
+          "EIMPORT.E16B.short-503-contract.A.AI.RETRY.error"
         ]
       }
     },
@@ -65141,10 +65557,14 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E16B-TYPE"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E16B.label-hover-only.A.AI.SHARE.normal"
+        ]
       }
     },
     {
@@ -65372,7 +65792,8 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.explicit-analyze.A.SELECTION.AI.active"
+          "EIMPORT.E13E.explicit-analyze.A.SELECTION.AI.active",
+          "EIMPORT.E16B.published-range-analyze.A.SELECTION.AI.active"
         ]
       }
     },
@@ -73863,10 +74284,14 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E16B-PHOTO-RETRY-NEGATIVE"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active"
+        ]
       }
     },
     {
@@ -77536,7 +77961,9 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E16B-KNOWLEDGE-OPEN"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": []
@@ -77611,10 +78038,14 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E16B-KNOWLEDGE-OPEN"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E16B.current-node-native-intent.S.KNOWLEDGE.OPEN.active"
+        ]
       }
     },
     {
@@ -90684,6 +91115,19 @@
       "evidence_paths": [
         "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-en-start-here.png"
       ]
+    },
+    {
+      "id": "NEXT-SHORT-AI-REPLY-LANDING",
+      "families": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "status": "observed_design_gap_bounded_followup_candidate",
+      "proposal": "Short-AI following mode: evaluate landing at lastreplybottom/followupgrouptop ratherthan absolute scrollbottom. Keep all original suggestions afterit, realwheel/Tab/click reachable;resize retains target, useroffbottomintent never overwritten. CSS-only hiding without accessibletrigger rejected;requires newtargetedcontract+old13continuity. No B acceptance scope widened.",
+      "evidence": "E-BATCH-E16B",
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-selected-passage.png"
+      ]
     }
   ],
   "scoped_check_assessments": [
@@ -96090,7 +96534,14 @@
       ],
       "scope": "390en/dark/normal diagnostic only; source-surface with no control action attribution.",
       "reason": "Cold latefont registration coincides with marker+213.65625viewportCSSpx, docH+1057 andscroll-61 withoutwheel, disrupting reading stability. Settled-font testwait does not repair production.",
-      "finding_id": "UX-046"
+      "finding_id": "UX-046",
+      "follow_up": {
+        "status": "closed_E14b_named_EN_posts_cold_font_delivery_readpoint_scope",
+        "evidence": [
+          "E-BATCH-E14B"
+        ],
+        "note": "Original80/as-of-negative retained; closure limited to later named EN cold cases, not all fonts or originalnormalmotion scope."
+      }
     },
     {
       "id": "CHK-E12-SHORT-TAB-FAIL",
@@ -96983,11 +97434,357 @@
       ],
       "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
       "reason": "Initial public API on changes star/state but pressed false/Save; own click repairs. Negative retained, new shared sync closure separate."
+    },
+    {
+      "id": "CHK-E16B-TYPE",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.SHARE"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.SHARE.control.dde414"
+      ],
+      "criterion": "D4.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "Intro/question14,label12,Share13 now readable;ordinary static fragments only, desktop input12.5/zh13 andcompact16 retained."
+    },
+    {
+      "id": "CHK-E16B-QUOTE-BOUNDARY",
+      "family_ids": [
+        "A.AI.CONTEXTCLEAR"
+      ],
+      "control_ids": [
+        "A.AI.CONTEXTCLEAR.control.988a49"
+      ],
+      "criterion": "D4.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "Quoted message outer frame removed/reference inner fill removed; full original selection/white-space/scroll andclear action preserved."
+    },
+    {
+      "id": "CHK-E16B-SHORT-INITIAL",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.CHIP"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.CHIP.control.4702a5"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "New contract initial568320/256/224 root scroll+sticky composer andall6lens realhit, tabs44 andTOC/Share original78dvh."
+    },
+    {
+      "id": "CHK-E16B-SHORT-BUSY",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.STOP"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.STOP.control.de0878"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "Actual224held both languages messages28.8125>=25.2computedline, original inputfullyviewport/hit. A24.8125 failure retained."
+    },
+    {
+      "id": "CHK-E16B-SHORT-ACTIONS",
+      "family_ids": [
+        "A.AI.SEND",
+        "A.AI.STOP",
+        "A.AI.CONTEXTCLEAR"
+      ],
+      "control_ids": [
+        "A.AI.SEND.control.a9e4f5",
+        "A.AI.STOP.control.de0878",
+        "A.AI.CONTEXTCLEAR.control.988a49"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "44controls fullyviewport+centerhit; Send hidden whilebusy, Stop same slot/abort1, inputfocus retained; no forced clicks."
+    },
+    {
+      "id": "CHK-E16B-PAYLOAD-DRAFT",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.CONTEXTCLEAR"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.CONTEXTCLEAR.control.988a49"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "Original published paragraph Range+realtoolbar selection exact in reference/payload;reference actualwheel/root/hash/history unchanged andsame draft/input onClear. No codeactual claim."
+    },
+    {
+      "id": "CHK-E16B-RETRY",
+      "family_ids": [
+        "A.AI.RETRY"
+      ],
+      "control_ids": [
+        "A.AI.RETRY.control.e78cc8"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "New short503Retry contract44/readable→one controlled success preserves original input; parent actual did not separately invokeRetry."
+    },
+    {
+      "id": "CHK-E16B-FLAT-CONTRAST",
+      "family_ids": [
+        "A.AI.INPUT"
+      ],
+      "control_ids": [],
+      "criterion": "D2.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "Only3 A desktop flat intro/question/label samples:6.1161026899074775 exact independentrecompute. Share gradient/null andwholepanel contrast unverified."
+    },
+    {
+      "id": "CHK-E16B-OLD-SELECTED-NEGATIVE",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.SEND"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.SEND.control.a9e4f5"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 60,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "historical_observed_gap_closed_only_in_followup_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-E16-SHORT-SELECTED-BASELINE"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "Historical settled568320 selectedinput/Send outsideviewport/nohit; G1localbaselinecap79; followupnamedclosure separate."
+    },
+    {
+      "id": "CHK-E16B-A-HELD-LINE-NEGATIVE",
+      "family_ids": [
+        "A.AI.INPUT"
+      ],
+      "control_ids": [],
+      "criterion": "D6.1",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "historical_observed_gap_closed_only_in_followup_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E16B"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "A actual224held messages24.8125<25.2; thirdpartialfailure,2unruncontexts. Not an allpass batch."
+    },
+    {
+      "id": "CHK-E16B-PHOTO-RETRY-NEGATIVE",
+      "family_ids": [
+        "S.APP.photos.RETRY"
+      ],
+      "control_ids": [
+        "S.APP.photos.RETRY.control.9d2d8e"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "observed_gap_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-SPACE-PHOTO-RETRY-BASELINE"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "RealRetry hides focusedbutton→BODY; nextTab photo-regionbutton. Recovery succeeds; P2 nottrap."
+    },
+    {
+      "id": "CHK-E16B-KNOWLEDGE-OPEN",
+      "family_ids": [
+        "S.KNOWLEDGE.NODE",
+        "S.KNOWLEDGE.OPEN"
+      ],
+      "control_ids": [
+        "S.KNOWLEDGE.NODE.control.f0e953",
+        "S.KNOWLEDGE.OPEN.control.4bf004"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E16b final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+        "reviewed_at": "2026-10-16T09:17:22+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-KNOWLEDGE-OPEN-BASELINE"
+      ],
+      "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
+      "reason": "2contexts×3realnode currenttitle/URL/target/rel; actualclick/Enter trusted capture preventednavigation. No destinationvisit certification."
+    },
+    {
+      "id": "CHK-E14B-COLD-READPOINT-STABILITY",
+      "family_ids": [],
+      "control_ids": [],
+      "criterion": "D4.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_source_surface_fragment",
+      "status": "passed_named_surface_scope_incomplete_dimension_matrix",
+      "confidence": "high_for_exact_named_readpoint_observation",
+      "as_of": {
+        "phase": "E14b final independent EN cold-font production review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json",
+        "reviewed_at": "2026-10-16T09:38:11+08:00",
+        "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+      },
+      "evidence": [
+        "E-BATCH-E14B"
+      ],
+      "scope": "Only five recorded EN cold deliveries; no overall D4/D1/family score. ZH settled compatibility unscored.",
+      "reason": "Original marker/DOM/focus/hash/history retained; doc/view/root/docH delta0 eachcase, readable staged text and no source scroll compensation. Actual fonts differ by timing; raw/erratum governs attribution."
     }
   ],
-  "latest_validated_checkpoint": "d5b35f94cee3a203938eff63f4932a016df71fb3",
-  "preview_scope": "E15c namedspatialreadability/ownscroll-return-reload/sharedbookmark accepted; UX048/049/050 boundedclosed, UX046 coldfontopen. Shortcoarse and Readingpaths static hierarchy recommendations retained; wholefamily scoresnull.",
-  "latest_reviewed_artifact": "E-BATCH-E15C",
+  "latest_validated_checkpoint": "08dca5f0c40285e32132ec4a68d4c489f94b7003",
+  "preview_scope": "E14b EN cold readpoint named scope accepted,UX046 scopedclosed. PriorE16b short-composer/legibility receipts retain their own frozen source. E16c article-chat.js WIP outside E14 source8 notcertified. UX052 photo P2 remainsopen.Wholefamily/dimension scoresnull.",
+  "latest_reviewed_artifact": "E-BATCH-E14B",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -97337,10 +98134,12 @@
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
   "latest_reviewed_source_snapshot": {
-    "path": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
-    "sha256": "a3eecd8d10d728dd124acc8631432b8e84f9098a695e738b298d5398601e4388",
-    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e15c-provenance.json",
-    "provenance_sha256": "10030f360127c13143822d673bd8e640b366754c466f177049cb8b70f8f10242",
+    "path": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json",
+    "sha256": "b6a7f3b8dc4cfc0db7e9f30be9886364808d831e2da7f80e53bba4d069f606ef",
+    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-provenance.json",
+    "provenance_sha256": "2b53d4934fb2206520bd1d4da4c45778ab45528cf291ddd32dedf9c81191ddca",
+    "erratum": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-erratum.json",
+    "erratum_sha256": "4aa34a8541352ea37185ccbce1ed1c9d33204f122f90e7b94d66a4e36c0c66d1",
     "status": "independent_bounded_review_complete_pending_parent_checkpoint"
   },
   "anchor_intent_review": {
@@ -97861,5 +98660,95 @@
     ],
     "inventory_sha256": "cc89859d5e0b7ea8b351a7a2e5a854e5ea0017d376d37340930d45c768d32035",
     "source_review_note": "C source/QA verified11 plus source10/provenance60 checked at final; new17images all viewed. Counts are inventory fragments, not image/test totals."
+  },
+  "e16_source_review": {
+    "as_of": {
+      "phase": "E16b final independent bounded review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json",
+      "reviewed_at": "2026-10-16T09:17:22+08:00",
+      "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+    },
+    "status": "accepted_named_short_composer_legibility_scope",
+    "new_P0_P1_findings": [],
+    "verified_score": null,
+    "closed_findings": [
+      "UX-051_named_scope"
+    ],
+    "open_findings": [
+      "UX-046",
+      "UX-052"
+    ],
+    "proof": "B34/A29 provenance hashes, manifest14+QA+3runners;2declarationinverseexactA andother2CSSsame.16primary+2partial PNG independentlyviewed.3eligiblecontrast exactrecompute. Originalstrictgatesretained.",
+    "primary_actual_composition": "A2completedcontexts6PNG+B3affectedcontexts10PNG=5/16;A2partialfailedshortPNGnotacceptance. B head delivery unchanged atactual; subsequent E14 is separate.",
+    "test_counts": "32 protected+3 new=35distinct. Original35run34pass/1entryfixture, A3pass12.1s, B3pass12.2s;not41differentcases.",
+    "static_design_fragments": {
+      "ordinary_D1": 96,
+      "ordinary_D4": 96,
+      "short_320_D1": 92,
+      "short_320_D4": 94.5,
+      "complete_dimensions": null
+    },
+    "limits": [
+      "controlledAIClient/publicparagraph selection only;no realmodel/sharepublish",
+      "OSkeyboard/AT/Safari/physical/wholematrixunknown",
+      "desktoptextarea12.5/13retained;compact16",
+      "Asharegradientcontrastnull;only3flatwordsamples6.1161",
+      "224pressuregeometrynotordinarymobileaestheticcertificate"
+    ],
+    "baseline_refs": [
+      "E-E16-SHORT-SELECTED-BASELINE",
+      "E-SPACE-PHOTO-RETRY-BASELINE",
+      "E-KNOWLEDGE-OPEN-BASELINE"
+    ],
+    "inventory_binding_refs": [
+      "EIMPORT.E16B.short-lens-tabs-contract.A.TOC.MOBILETABS.normal",
+      "EIMPORT.E16B.short-lens-geometry-only.A.AI.CHIP.normal",
+      "EIMPORT.E16B.old-selected-outside.A.AI.INPUT.normal",
+      "EIMPORT.E16B.A-held-line-negative.A.AI.INPUT.loading",
+      "EIMPORT.E16B.reading-type-support.A.AI.INPUT.normal",
+      "EIMPORT.E16B.canonical-visible-draft.A.AI.INPUT.focus",
+      "EIMPORT.E16B.selected-held-submit.A.AI.SEND.active",
+      "EIMPORT.E16B.short-once-abort.A.AI.STOP.active",
+      "EIMPORT.E16B.clear-draft.A.AI.CONTEXTCLEAR.active",
+      "EIMPORT.E16B.short-503-contract.A.AI.RETRY.error",
+      "EIMPORT.E16B.label-hover-only.A.AI.SHARE.normal",
+      "EIMPORT.E16B.published-range-analyze.A.SELECTION.AI.active",
+      "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active",
+      "EIMPORT.E16B.current-node-native-intent.S.KNOWLEDGE.OPEN.active"
+    ]
+  },
+  "e14_source_review": {
+    "as_of": {
+      "phase": "E14b final independent EN cold-font production review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json",
+      "reviewed_at": "2026-10-16T09:38:11+08:00",
+      "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003"
+    },
+    "status": "accepted_named_EN_cold_readpoint_scope",
+    "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json",
+    "metadata_erratum": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-erratum.json",
+    "new_P0_P1_findings": [],
+    "closed_findings": [
+      "UX-046_named_scope"
+    ],
+    "verified_score": null,
+    "static_design_fragments": {
+      "D4_4_readpoint_attention": 96,
+      "complete_D1": null,
+      "complete_D4": null
+    },
+    "proof_refs": [
+      "E-BATCH-E14B"
+    ],
+    "scope": "Only EN IsPage Typeposts; ENindividualprojecttypeposts included.9servedHTTP routes verify newgate,home3family andZH/noscript parity; BEAROSsection exclusion is source-scope, not a tenth actualroute.",
+    "font_tradeoff": "Final fast uses Georgia title/Noto prose/JetBrains code; late/failed cases Georgia/Courier remain readable/stable. Partial fast webfont use allowed, never guaranteed. No need to remove fontstack or force earlyCSS from these data.",
+    "history": "Initial handler-string fixture and parent nonexistentprecode photo failure retained with raw/source/log/images. Neither productionfix; head exactf9b. Paired experiments stay discovery/unreviewed/humanChoiceunreviewed, no Gold/autopromotion.",
+    "inventory_surface_refs": [
+      "SURFACE.E14B.en-cold-style.loading",
+      "SURFACE.E14B.en-font404.error",
+      "SURFACE.E14B.en-css404.error",
+      "SURFACE.E14B.zh-settled-smoke.normal"
+    ],
+    "limits": "Named phase visibility, not continuousFOIT/fullCLS/FPS/beforefirstpaint or HTTPwarm. FontFace.loaded is not actualuse proof; use CDP role maps. ZH installed SourceHan glyphs not local-CJK-absence/late-CJK coverage. No complete D1/D4 dimension, wholepagecontrast, AT/Safari/physical/wholematrix certificate; discovery/humanChoice stays unreviewed/nonGold. E16c JS is separate WIP outside source8."
   }
 }

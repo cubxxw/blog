@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T08:25:11+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe9`；最近已验checkpoint `d5b35f94`（E13e）。E15c冻结源与5个实际context已独立复核，待父保存新checkpoint。
+更新：2026-10-16T09:38:11+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe9`；最近已验checkpoint `08dca5f0`（E15c）。E16b命名源/A-B组合与本轮E14b英文冷字体读点均已独立复核；后续E16c JS属另批WIP，不继承本批图。
 
-**当前不能宣称全站或每个按钮96+。309族/369selector条目的完整分仍为 `unverified / null`；359条记录只覆盖82族局部状态（81partial+1measured），完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/369selector条目的完整分仍为 `unverified / null`；373条item状态只覆盖85族局部状态（84partial+1measured），另有4条独立字体surface观察，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -1150,3 +1150,38 @@ UX044仅关闭 `closed_E13e_canonical_DOM_active_AI_handoff_context_stream_owner
 Classic/fallback恢复、运行中context loss后的读点、Safari/AT/实体机/OS picker/整页200%zoom/完整状态矩阵未知；没有整页对比度、抗锯齿、真实外发或AI质量认证。UX046冷字体仍open，E13e辅助小字分数保持历史，不被本批覆盖。完整族/控件分仍null。
 
 盘点v1.25最终同步：309族/369selector entries、359状态（新增14）/82局部族（81partial+1measured）/0完整。14为三条独立旧负记录与11个正向/合同片段；新native分类 `S.APP.reader.FILTER.control.e973e2` 与旧Notes/Books入口补漏 `S.APP.reader.NAV.control.f4bc09` 分别绑定，不继承旧控件通过。当前234个scoped checks、106个历史视觉片段；量表及所有完整分null不变。UX048/049/050仅按上述scope关闭，UX046保持开放。本轮停写供父checkpoint。
+
+
+## E16b · 短屏可继续提问，辅助文字回到阅读层级
+
+2026-10-16T09:17:22+08:00：[B14源/QA/runner](evidence/batch-e16b-source.json)、[B provenance](evidence/batch-e16b-provenance.json)34路径及[A历史provenance](evidence/batch-e16a-initial-provenance.json)29路径均独立核hash；B只改短AI两声明，反向替换精确恢复A CSS，另两CSS相同。正式图为A已完成desktop/phone6张+B受影响三context10张，共5context/16图全部独立逐看；另A短屏partial两图保留。不是把A未跑context当通过。[初35合同](evidence/batch-e16-initial-contracts.log)34过/1入口fixture失败，原32保护合同全过；A同三新合同12.1s，B加强后[三合同12.2s](evidence/batch-e16b-contracts.log)。最终35不同合同，不把重跑算41种功能。
+
+**UX051 P1仅关闭 `closed_E16b_named_short_AI_selected_composer_Stop_full_line_scope`。** [旧settled568×320](evidence/probe-e16-short-selected-provenance.json)input344.64..404.23与Send360.23..404.23均屏下/nohit；不能归过渡。A恢复操作区后，224held仍出现messages24.8125<实际回复行25.2，原失败保留。B min28/loading padding2后，中英224held消息框28.8125≥25.2，输入、Clear、Stop44均整框屏内且centerhit，实际Stop abort1；Send/Stop互斥同位、原输入/草稿/选文payload保持。新三合同另外覆盖320/256/224 initial全部lens、引用内滚、Clear、503Retry与TOC/Share原高度。仅当次命名scope，不是OS软键盘或所有矮屏认证。
+
+普通桌面/手机片段局部 **D1/D4=96/96**：intro/问题14、label12、Share13，引用外层框与composer内层底色已收敛，选文全文/内滚/语义保留；主回复14、compact输入16保持，desktop输入仍12.5/中文13，没有悄悄扩成全端16。必要焦点环与选文引导线不是装饰缺陷。原E13e 94.5/90.5是历史，不被覆盖；Share只有名称/几何/hover/程序化focus，没有真实分享发布。
+
+短屏320静态 **D1=92（96/80/96/96）、D4=94.5（96/96/96/90）**：[英文选文图](evidence/batch-e16b-short-en-selected-passage.png)消息区被Keep asking与三建议占满，刚生成回复滚到上方；224压力图更明显。操作已可用，这仍有主次摩擦，非输入再次失效/P1。下一最小候选仅在短AI following时，让bottom目标落最后回复底/建议组top；建议留在其后，须实际wheel/Tab/click可达，resize保持目标且用户离底后不追抢。不能CSS直接隐藏无入口，也不能为96再压字号。224仅几何压力边界，不当常规手机审美满分。
+
+A四文字样本中，仅intro/question/label三项flat可判；独立sRGB重算均 **6.1161026899074775**、误差0。Share-label遇gradient保持null；新合同也只对合格opaque stack断言，不拿paper token代替实际背景。引用来自公开growth文章原段落Range+真实工具条、原AIClient受控响应；不是实际代码选文、实体拖选、真实模型或OS输入法。Safari/AT/实体机/整页zoom/全部状态矩阵未知；UX046冷字体仍open，后续E14 head变化独立验收，不能借本批图认证新字体交付。
+
+### Space附带基线：UX052开放，Knowledge打开链局部通过
+
+[照片四图](evidence/probe-space-photo-retry-provenance.json)与[Knowledge六图](evidence/probe-knowledge-open-provenance.json)此前全部独立逐看、共38项current/08d Git/filehash匹配。新增**UX052 P2：照片重试隐藏当前焦点，恢复反馈与入口不易发现**。仅1440中文/reduce kumano本地404→真实Retry→held→原WebP ready：Retry隐藏自身后焦点BODY，下一Tab回照片内旅行区域按钮，不是trap/跳全局。首错误图按钮在窗口裁剪外、布局bbox52.48×23.37，实际click自动滚入；不据此判移动44或WCAG普遍失败。正常恢复成功；没有等待真实timeout，缺期限仅源/覆盖候选。后续仅预览恢复保同Retry/pendingguard/稳定可见status与焦点意图，公开相册连接/地图不扩改。
+
+Knowledge仅两context三类真实节点的当前title/URL/target/rel与真实click/Enter trusted捕获通过；preventDefault使其未实际外跳，不认证目的页或popup。390 fixed OS/Lab占正文平面可作布局候选，Open自动滚动后的header裁切不判功能bug。未新增族/control。
+
+盘点v1.26最终同步：309族/369selectors/373状态（新增14）/85局部族（84partial+1measured）/0完整，199source-only+25rendered；57journeys/18roadmap不变。14为E16十二片段（含两历史负）及照片负/Knowledge正各一，不按16图或重跑次数加功能。当前246个scoped checks、110历史视觉片段、52个finding；UX051命名关闭，UX052/046开放，量表与所有完整分null不变。
+
+## E14b · 英文冷加载保留已建立的读点
+
+2026-10-16T09:38:11+08:00：[八源/QA/两runner合同](evidence/batch-e14b-production-contract.json)、[51路径provenance](evidence/batch-e14b-production-provenance.json)与[逐角色字体勘误](evidence/batch-e14b-production-erratum.json)独立核hash一致。[五个英文冷交付回执](evidence/batch-e14b-production-actual.json)13图与[中文settled smoke](evidence/batch-e14b-production-zh-smoke.json)3图，16正式图全部独立逐看；无新增P0/P1。head仅五行可逆变更，反向后精确等08d接受源；async/noscript、既有home三family、本地CJK和fontstack保留。
+
+**UX046仅关闭 `closed_E14b_named_EN_posts_cold_font_delivery_readpoint_scope`。** 英文390×844/dark/coarse/reduce的fast-before-reading、lateCSS+即时font、lateCSS+1200msfont、font404、CSS404五情形，原marker/节点/focus/hash/history保持，document/viewport/root/docHeight偏移均0；无生产scroll补偿。命名 **D4.4读点稳定片段=96**，不重评未改的D1/完整D4，也不把source-surface结果授给脚注按钮或全族。原冷字体负图/80分与实验case保留其历史范围。
+
+字体取舍按raw而非原摘要：[final fast](evidence/batch-e14b-production-fast-before-reading-before.png)标题实际Georgia，正文Noto Serif、代码JetBrains Mono；before和terminal均如此。后四late/404才是Georgia/Courier。provenance原“all5 fallback”错误已由独立[erratum](evidence/batch-e14b-production-erratum.json)绑定原raw/SHA纠正，原文件未改、不冒重跑。较早experiment/initialproduction的fast全回退是不同记录，不能套到final。快速交付允许部分webfont使用，迟到交付优先稳定回退；不保证品牌字体或真实HTTP暖缓存，不据此强制earlyCSS/删除字体栈。
+
+[九个served URL](evidence/batch-e14-production-served-head.json)核对EN `IsPage && Typeposts`新gate、home及ZH/noscript；EN单篇imstage本就Typeposts，明确含optional；BEAR OS `/projects/` section保持源逻辑排除，未冒九route中另有其实际访问。初四合同三behavior过、一个minifier-handler字符串测具失败4.4s；test-only语义load scope[重跑一项1.0s](evidence/batch-e14a-production-scope.log)通过，原三body/helper字节一致未重复，合计四不同合同、实际无skip。Hugo4153ms。父首fast额外pre-code照片定位不存在而失败，原raw/log/三图保留；B只用原有inlinecode拍额外图，head未再改，不能说这是生产修复。
+
+中文390/light/normal仅为settled兼容观察：正文实际Source Han Serif SC、代码JetBrains，内容可读；不证明无本地中文字体、CJK迟到稳定或Windows/Android。标题末“基”单字独行是可见排版候选，缺前后对照，不归本次字体回归。阶段PNG不证明持续FOIT、完整CLS/FPS或first-paint；空computed font shorthand不作精确字号证据。暖缓存、Safari/AT/实体设备/全页对比度/完整矩阵未知；discovery/humanChoice保持unreviewed、无Gold/自动promotion。E16c新AIJS不在八源内，既有E16b主次差距与UX052照片P2另保留。
+
+盘点v1.27最终同步：309族/369selector entries、373条item状态/85局部族（84partial+1measured）不变；四条source-surface独立计数，不新增控件、族或功能。当前247个scoped checks、110历史视觉片段、52个finding；UX046只按上述范围关闭，所有完整分仍null。本轮结束后停写供父checkpoint。

@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-16T00:50:53.859630+00:00",
+  "sourceSHA": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "f0a85dd9025dceeef5e2828d0dbc88c9cdf8fcb0233783ded8c3642bff371757",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "static/js/article-selection.js": "34b8da3bf5c74bfcc888d32381625297d694e538cc5bf8a7676d20a21e7bf956",
+    "tests/e2e/article-chat-legibility-contracts.spec.ts": "c97457585daa5d051a09c47630ae31684e924808a3c1b93a06601298ab97948f"
+  },
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-e16-toolbar-placement.browser.mjs": "9b410327da8fe13ac6afb583887b994f820403cbf424d13fbae1d47cc5473d77",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement-paragraph-centered.png": "ea4f16b053a54ca77712487d1b48b294ed50c6dcec85e0dfef0fd9e970f0ebcf",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement-initial.log": "56c5cf9f7baaf0028aac8b2ea65b11fdb41239216228bb4ffdd37bd73eb128fd",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement-initial.browser.mjs": "36ae95201a1ce818c81168fc6fc72a7b01a01a24023f2e92eace76d972c6f2df",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement.json": "2bc976a69a1902366d171966881641cb5554bf85a0e1348746d3ed65f9c31909",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement-same-range-end-visible.png": "d07c79528204ae107c0c0510d99a26c9458084de833b86b9e8c464edc3d8287d",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-toolbar-placement.log": "32fb42686c88dde913311432fc79581a7cec47180118a0ad00e2d31867fbb383"
+  },
+  "parentRead2PNG": true,
+  "observation": "Current frozen E16source unchanged: longestplainp center then first150chars range107.65625..283.90625/h176.25; toolbarh52, coarse56gap: below339.90625+52>312 and above -0.34375<fixedchrome+8, so originalpolicy hides. Same originalRange/text then actualscroll88 (root1838\u21921926) movesrange19.65625..195.90625; originaltoolbar appears252..304 withcenterhit/inertfalse/opacity1, no force/source changes. This diagnoses test entry geometry, not a newproductionfix or shortAI success.",
+  "initialDiagnosticCorrection": "Firstparentdiagnostic omitted test prepare scroll500 beforeFab, so hiddenFab click intercepted by articleTitle and timedout; initialscript/log retained and no Range data/PNG/production judgement claimed. Corrected only prepare to match test, then originalcounterexample andsameRangescroll measured.",
+  "limits": "One568x320zhdarkreduce isolated coarse Chromium. Mirrors newcontract publishedlongestplainparagraph/first150chars, original native DOMRange; no production overlay/force or text shortening. Only actualdocument scroll repositions sameRange bottom to leave existing56+toolbar+16; no AIaction fired/paid call. Externalfont CSS intentionally empty like frozen-site fixture. Observes entry precondition, not E16 selection/Stop success."
+}

@@ -1,0 +1,5 @@
+Listing tests:
+  [desktop] › article-chat-reply-landing-contracts.spec.ts:71:5 › short bilingual completed replies land on their actual final line; all three original suggestions and related links remain reachable
+  [desktop] › article-chat-reply-landing-contracts.spec.ts:117:5 › finishing a held long reply and resizing preserves a genuine wheel-owned reading anchor; a later wheel changes ownership
+  [desktop] › article-chat-reply-landing-contracts.spec.ts:132:5 › initial lenses and later suggestions keep a bilingual two-line draft; only its direct Send consumes it
+Total: 3 tests in 1 file

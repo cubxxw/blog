@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-16T00:53:05.457288+00:00",
+  "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003",
+  "batch": "E16a test-only shortcoarse selection entry positioning; E16production3CSS unchanged",
+  "files": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "f0a85dd9025dceeef5e2828d0dbc88c9cdf8fcb0233783ded8c3642bff371757",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "static/js/article-selection.js": "34b8da3bf5c74bfcc888d32381625297d694e538cc5bf8a7676d20a21e7bf956",
+    "tests/e2e/article-chat-legibility-contracts.spec.ts": "318c8e8edace918830e151751c20f6682202612a2094299baa46ea5a4cdf9d1b"
+  },
+  "qaConfig": {
+    "docs/ux-audit/2026-10-16/article-legibility-qa.config.mjs": "c83e4fd52ff2d67bbdaf5b79704d9d8db7c831cd013b354f7d91f8919727864a"
+  },
+  "runners": {
+    "docs/ux-audit/2026-10-16/batch-e16a.actual.mjs": "88c8beeb696c2f75223ec9e10c6eda28d1f0b01456e7bbb9be628ab39ba9a94d",
+    "docs/ux-audit/2026-10-16/article-qa.browser-helpers.mjs": "237a292a8df3e2ada3432a3a293d51e871cabe372a7ee5f43d91e6142ac1fedd",
+    "docs/ux-audit/2026-10-16/article-qa-visible-focus.mjs": "52b7b6211b70c9392230a05277c5e56db23cd1692a21c1ed96422b7a82f4887e"
+  },
+  "scope": "3productionCSS unchanged initial3SHA;new3contracts selectedRequest sameRange/text only shortcoarse legitimate viewport setup. Initial35 run34pass1entryfixturefail retained, old32 passed unchanged sources/tests;rerun only affected new3. No productionfix claimed for toolentrydiagnosis.",
+  "parentRunnerPrelaunch": "Before any a parentbrowser launch, flatcontrast helper also records full ancestoropacity chain above nearestopaque background and accepts only all1 target/ancestors. Gradients/opacity remain unverified, rawvalues retained. Original E16parentrunner unrun preserved; no production/test14source mutation. Added fifth shortEnglish normalmotion to inspect actual fullStopGenerating label wrapping; only prelaunch parentrunner plan, not extra source/test changes."
+}

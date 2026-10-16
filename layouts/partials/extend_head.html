@@ -42,6 +42,11 @@
        from a render-blocking @import that used to live in
        homepage-daypage.css — one consolidated async request. */ -}}
 {{- $baseFonts := "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" -}}
+{{- if and .IsPage (eq .Type "posts") (eq .Lang "en") -}}
+{{- /* Keep an established English reading point when cold webfonts arrive.
+     A cold first read may retain the existing system serif/mono fallback. */ -}}
+{{- $baseFonts = replace $baseFonts "display=swap" "display=optional" -}}
+{{- end -}}
 {{- if .IsHome -}}
 {{- /* The homepage uses these three families; article serif families and
      their large Chinese unicode-range manifest are not needed here. */ -}}

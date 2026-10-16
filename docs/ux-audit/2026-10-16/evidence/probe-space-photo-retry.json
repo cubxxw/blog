@@ -1,0 +1,177 @@
+{
+  "at": "2026-10-16T00:31:11.706Z",
+  "sources": {
+    "assets/js/space/media.js": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996",
+    "assets/js/space/media-state.mjs": "2154203c2999b5af5185ba31c5978ab8997dd4c3b774ffb3e28a47bb89c4bd6e",
+    "assets/css/space-media.css": "787430661224c666ca8032d62e3ac8e589c2a0bb19e7265c168ca5a4bb922ffa",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519"
+  },
+  "previewCheckpoint": "08dca5f0 accepted Space; E16 article CSS WIP not built",
+  "photo": {
+    "id": "kumano",
+    "image": "/images/about/journey/06-kumano.webp",
+    "place": "日本 · 熊野古道",
+    "region": "japan",
+    "thumb": "/images/about/journey/06-kumano-480.webp",
+    "title": "熊野古道",
+    "fixtureImageSHA256": "361b9419f04c7f2781f863c2aa8570b29aaf542c051d4387fb127fa3a8d029a9"
+  },
+  "view": {
+    "width": 1440,
+    "height": 900,
+    "locale": "zh",
+    "motion": "reduce"
+  },
+  "requests": [
+    {
+      "url": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+      "at": 1792110671418
+    },
+    {
+      "url": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+      "at": 1792110671514
+    }
+  ],
+  "steps": [
+    {
+      "name": "error",
+      "state": "error",
+      "feedback": "这张照片暂时未能打开。",
+      "feedbackRole": null,
+      "retry": {
+        "hidden": false,
+        "disabled": false,
+        "ariaDisabled": null,
+        "box": {
+          "x": 509.25982666015625,
+          "y": 603.8270263671875,
+          "width": 52.48004150390625,
+          "height": 23.3699951171875,
+          "top": 603.8270263671875,
+          "right": 561.7398681640625,
+          "bottom": 627.197021484375,
+          "left": 509.25982666015625
+        },
+        "focus": false
+      },
+      "active": {
+        "tag": "SECTION",
+        "cls": "space-window",
+        "insidePhoto": true
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 0
+      },
+      "backVisible": true
+    },
+    {
+      "name": "retry-held",
+      "state": "loading",
+      "feedback": "正在重试…",
+      "feedbackRole": null,
+      "retry": {
+        "hidden": true,
+        "disabled": false,
+        "ariaDisabled": null,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "focus": false
+      },
+      "active": {
+        "tag": "BODY",
+        "cls": "list products-view-bear",
+        "insidePhoto": false
+      },
+      "image": {
+        "complete": false,
+        "naturalWidth": 0
+      },
+      "backVisible": true
+    },
+    {
+      "name": "next-keyboard-focus",
+      "state": "loading",
+      "feedback": "正在重试…",
+      "feedbackRole": null,
+      "retry": {
+        "hidden": true,
+        "disabled": false,
+        "ariaDisabled": null,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "focus": false
+      },
+      "active": {
+        "tag": "BUTTON",
+        "cls": "",
+        "insidePhoto": true
+      },
+      "image": {
+        "complete": false,
+        "naturalWidth": 0
+      },
+      "backVisible": true
+    },
+    {
+      "name": "ready",
+      "state": "ready",
+      "feedback": "",
+      "feedbackRole": null,
+      "retry": {
+        "hidden": true,
+        "disabled": false,
+        "ariaDisabled": null,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "focus": false
+      },
+      "active": {
+        "tag": "BUTTON",
+        "cls": "",
+        "insidePhoto": true
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 675
+      },
+      "backVisible": true
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-error.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-retry-held.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-next-keyboard-focus.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-ready.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One desktop Chromium context. Actual existing public photo thumb/detail and realRetry/Tab, only chosen local fullimage404→held→exact original publicWebP bytes. No publicalbum API, externalwrite or actual networktimeout/AT/physical/fullmatrix certification; pendingstate is deliberately gated, not proof finite recovery timeout exists."
+}

@@ -1,0 +1,1529 @@
+{
+  "at": "2026-10-16T00:55:32.160Z",
+  "sourceManifest": "batch-e16a-source.json",
+  "rows": [
+    {
+      "view": {
+        "id": "desktop-en",
+        "width": 1440,
+        "height": 900,
+        "locale": "en",
+        "dark": false,
+        "motion": "no-preference"
+      },
+      "steps": [
+        {
+          "name": "original-public-paragraph-selected",
+          "selectedLength": 280,
+          "messages": {
+            "tag": "DIV",
+            "cls": "rc-ai-messages",
+            "font": "13px",
+            "opacity": "1",
+            "box": {
+              "x": 1041.265625,
+              "y": 111.390625,
+              "width": 286.734375,
+              "height": 396,
+              "top": 111.390625,
+              "right": 1328,
+              "bottom": 507.390625,
+              "left": 1041.265625
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 516,
+            "scrollHeight": 912,
+            "clientHeight": 396,
+            "minimumOneLine": 25.2
+          },
+          "input": {
+            "tag": "TEXTAREA",
+            "cls": "rc-ai-textarea",
+            "font": "12.5px",
+            "opacity": "1",
+            "box": {
+              "x": 1053.265625,
+              "y": 631.1875,
+              "width": 216.734375,
+              "height": 49,
+              "top": 631.1875,
+              "right": 1270,
+              "bottom": 680.1875,
+              "left": 1053.265625
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 49,
+            "clientHeight": 49
+          },
+          "clear": {
+            "tag": "BUTTON",
+            "cls": "article-chat-reference-clear",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 1275,
+              "y": 529.390625,
+              "width": 44,
+              "height": 44,
+              "top": 529.390625,
+              "right": 1319,
+              "bottom": 573.390625,
+              "left": 1275
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 44,
+            "clientHeight": 44
+          },
+          "send": {
+            "tag": "BUTTON",
+            "cls": "rc-ai-send",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 1279,
+              "y": 649.1875,
+              "width": 31,
+              "height": 31,
+              "top": 649.1875,
+              "right": 1310,
+              "bottom": 680.1875,
+              "left": 1279
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 31,
+            "clientHeight": 31
+          },
+          "snapshot": {
+            "width": 1440,
+            "height": 900,
+            "rootY": 3228,
+            "hash": "",
+            "history": 3,
+            "host": "rc-panel-ai",
+            "rootCount": 1,
+            "inputCount": 1,
+            "busy": "false",
+            "originalIdentity": {
+              "root": true,
+              "input": true,
+              "messages": true
+            },
+            "value": "Keep explaining this real passage.\nKeep my unfinished second line.",
+            "selection": [
+              0,
+              0,
+              "none"
+            ],
+            "focus": {
+              "tag": "TEXTAREA",
+              "id": "",
+              "cls": "rc-ai-textarea",
+              "originalInput": true,
+              "visible": true,
+              "insideAI": true,
+              "inInert": false
+            },
+            "rootBox": {
+              "x": 1041.265625,
+              "y": 111.390625,
+              "width": 286.734375,
+              "height": 578.796875,
+              "top": 111.390625,
+              "right": 1328,
+              "bottom": 690.1875,
+              "left": 1041.265625
+            },
+            "inputBox": {
+              "x": 1053.265625,
+              "y": 631.1875,
+              "width": 216.734375,
+              "height": 49,
+              "top": 631.1875,
+              "right": 1270,
+              "bottom": 680.1875,
+              "left": 1053.265625
+            },
+            "messages": {
+              "box": {
+                "x": 1041.265625,
+                "y": 111.390625,
+                "width": 286.734375,
+                "height": 396,
+                "top": 111.390625,
+                "right": 1328,
+                "bottom": 507.390625,
+                "left": 1041.265625
+              },
+              "scrollTop": 516,
+              "scrollHeight": 912,
+              "clientHeight": 396,
+              "text": "Your questionWhat should I check before running this Go debugger?AIReading togetherShare insightCheck the Go toolchain, the executable path, and the program arguments.About this passageOptically, the sentence holds, and it’s lovely. Cataracts cloud the lens, so light passing through no longer refrac"
+            },
+            "stop": {
+              "visible": false,
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "disabled": false
+            },
+            "overflow": {
+              "value": "",
+              "priority": ""
+            },
+            "sheet": {
+              "open": false,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            "tabs": {
+              "rc": [
+                "rc-tab-ai"
+              ],
+              "abs": [
+                "abs-tab-toc"
+              ]
+            },
+            "turns": [
+              {
+                "aborts": 0,
+                "cancels": 1,
+                "method": "POST",
+                "payload": {
+                  "question": "What should I check before running this Go debugger?",
+                  "language": "en",
+                  "pagePath": "/growth/posts/2026-07-14-what-remains-when-taken-apart/",
+                  "context": [],
+                  "articleContentLength": 5403,
+                  "articleTitle": "What Remains When You Take It All Apart: On No-Self, Suffering, and \"You Could Say It Either Way\""
+                }
+              },
+              {
+                "aborts": 0,
+                "cancels": 1,
+                "method": "POST",
+                "payload": {
+                  "question": "Help me understand this passage in the context of the article.",
+                  "language": "en",
+                  "pagePath": "/growth/posts/2026-07-14-what-remains-when-taken-apart/",
+                  "context": [],
+                  "selectedText": "Optically, the sentence holds, and it’s lovely. Cataracts cloud the lens, so light passing through no longer refracts cleanly — it scatters. To such an eye, a shaft of sunlight isn’t a sharp column of light; it blooms, pales, wears a halo, its edges fraying into mist. And the sha",
+                  "selectionContext": "[Article opening excerpt]\nThe seed of this piece was a conversation that ran for several rounds — starting from small talk about the weather and sliding, almost by accident, into “what is life even made of?” It won’t hand you an answer, because the thing actually worth having grows precisely where there is no answer. Opening: A question that sounds gentle and is actually dangerous Let me start with a question a friend threw out. She said she kept turning it over: how much can you take away from her before she stops being herself? It sounds gentle — like counting the luggage on a person. But take two honest steps into it and you find it has teeth. Because it forces you to remove things one by one. Take away the job — still you? Yes. The memories? The body? Those experiences, that accent, the people you’ve loved — the very things that make you you? Keep going, and at some point, does “you” simply vanish? If so, where’s the threshold? And if not — then what, exactly, was holding “you” up all along? The real origin of that conversation was suffering — the older question of why we suffer at all. Trace it back and you arrive at a suspect nearly every tradition points to: the self. Suffering comes from clinging to a self, from there being an “I” that’s afraid to lose, that can’t get what it wants, that won’t let go. So the question flips into: what is this “I” actually made of? Can it survive being taken apart? This piece walks that road — the road of taking-apart — all the way to the end, to see what’s still in your hands when you get there. Let me say this up front: this is not an essay meant to help you\n\n[Selection context]\nA shaft of sunlight, plus the eye of someone with cataracts, can see the shadow cast through a window.\nSelected: Optically, the sentence holds, and it’s lovely. Cataracts cloud the lens, so light passing through no longer refracts cleanly — it scatters. To such an eye, a shaft of sunlight isn’t a sharp column of light; it blooms, pales, wears a halo, its edges fraying into mist. And the sha\nOptically, the sentence holds, and it’s lovely. Cataracts cloud the lens, so light passing through no longer refracts cleanly — it scatters. To such an eye, a shaft of sunlight isn’t a sharp column of light; it blooms, pales, wears a halo, its edges fraying into mist. And the shadow thrown by the window frame, which should be a crisp geometric line, goes soft, grey, bleeding into itself under the scatter.\nThere’s something here worth stopping for.",
+                  "articleContentLength": 5403,
+                  "articleTitle": "What Remains When You Take It All Apart: On No-Self, Suffering, and \"You Could Say It Either Way\""
+                }
+              }
+            ],
+            "overflowX": false
+          }
+        },
+        {
+          "name": "reference-real-wheel",
+          "reference": {
+            "top": 146,
+            "scrollHeight": 208,
+            "clientHeight": 62
+          }
+        }
+      ],
+      "samples": [
+        {
+          "label": "intro",
+          "text": "Extract, explain, or challenge an idea from this article.",
+          "font": "14px",
+          "foregroundCSS": "rgb(94, 94, 99)",
+          "foreground": [
+            94,
+            94,
+            99,
+            255
+          ],
+          "opacity": 1,
+          "stack": [
+            {
+              "tag": "P",
+              "cls": "rc-ai-intro-copy",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-intro",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-panel",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-panel rc-panel--active",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "reading-companion editorial-tools-panel",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "article-tools",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "article-layout",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "MAIN",
+              "cls": "main",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "cls": "nav-hidden",
+              "color": "rgb(249, 249, 247)",
+              "rgba": [
+                249,
+                249,
+                247,
+                255
+              ],
+              "image": "none",
+              "opacity": 1
+            }
+          ],
+          "opacityAncestors": [
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-intro",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-panel",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-panel rc-panel--active",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "reading-companion editorial-tools-panel",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "article-tools",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "article-layout",
+              "opacity": 1
+            },
+            {
+              "tag": "MAIN",
+              "cls": "main",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "cls": "nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "cls": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "valid": true,
+          "backgroundRGB": [
+            249,
+            249,
+            247
+          ],
+          "effectiveForegroundRGB": [
+            94,
+            94,
+            99
+          ],
+          "contrast": 6.1161026899074775
+        },
+        {
+          "label": "user-question",
+          "text": "What should I check before running this Go debugger?",
+          "font": "14px",
+          "foregroundCSS": "rgb(94, 94, 99)",
+          "foreground": [
+            94,
+            94,
+            99,
+            255
+          ],
+          "opacity": 1,
+          "stack": [
+            {
+              "tag": "P",
+              "cls": "rc-ai-user-text",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-msg rc-ai-msg--user",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-messages",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-panel rc-ai-panel--engaged",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-panel rc-panel--active",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "reading-companion editorial-tools-panel",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "article-tools",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "article-layout",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "MAIN",
+              "cls": "main",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "cls": "nav-hidden",
+              "color": "rgb(249, 249, 247)",
+              "rgba": [
+                249,
+                249,
+                247,
+                255
+              ],
+              "image": "none",
+              "opacity": 1
+            }
+          ],
+          "opacityAncestors": [
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-msg rc-ai-msg--user",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-messages",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-panel rc-ai-panel--engaged",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-panel rc-panel--active",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "reading-companion editorial-tools-panel",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "article-tools",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "article-layout",
+              "opacity": 1
+            },
+            {
+              "tag": "MAIN",
+              "cls": "main",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "cls": "nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "cls": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "valid": true,
+          "backgroundRGB": [
+            249,
+            249,
+            247
+          ],
+          "effectiveForegroundRGB": [
+            94,
+            94,
+            99
+          ],
+          "contrast": 6.1161026899074775
+        },
+        {
+          "label": "user-label",
+          "text": "Your question",
+          "font": "12px",
+          "foregroundCSS": "rgb(94, 94, 99)",
+          "foreground": [
+            94,
+            94,
+            99,
+            255
+          ],
+          "opacity": 1,
+          "stack": [
+            {
+              "tag": "SPAN",
+              "cls": "rc-ai-user-label",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-msg rc-ai-msg--user",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-messages",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-panel rc-ai-panel--engaged",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-panel rc-panel--active",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "reading-companion editorial-tools-panel",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "article-tools",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "article-layout",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "MAIN",
+              "cls": "main",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "cls": "nav-hidden",
+              "color": "rgb(249, 249, 247)",
+              "rgba": [
+                249,
+                249,
+                247,
+                255
+              ],
+              "image": "none",
+              "opacity": 1
+            }
+          ],
+          "opacityAncestors": [
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-msg rc-ai-msg--user",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-messages",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-panel rc-ai-panel--engaged",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-panel rc-panel--active",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "reading-companion editorial-tools-panel",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "article-tools",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "article-layout",
+              "opacity": 1
+            },
+            {
+              "tag": "MAIN",
+              "cls": "main",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "cls": "nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "cls": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "valid": true,
+          "backgroundRGB": [
+            249,
+            249,
+            247
+          ],
+          "effectiveForegroundRGB": [
+            94,
+            94,
+            99
+          ],
+          "contrast": 6.1161026899074775
+        },
+        {
+          "label": "share-label",
+          "text": "Share insight",
+          "font": "13px",
+          "foregroundCSS": "rgb(94, 94, 99)",
+          "foreground": [
+            94,
+            94,
+            99,
+            255
+          ],
+          "opacity": 1,
+          "stack": [
+            {
+              "tag": "BUTTON",
+              "cls": "rc-ai-share-btn",
+              "color": "rgba(30, 35, 30, 0.035)",
+              "rgba": [
+                28,
+                28,
+                28,
+                9
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-answer-head",
+              "color": "rgba(0, 0, 0, 0)",
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "image": "none",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-msg rc-ai-msg--ai",
+              "color": "rgb(249, 249, 247)",
+              "rgba": [
+                249,
+                249,
+                247,
+                255
+              ],
+              "image": "none",
+              "opacity": 0
+            }
+          ],
+          "opacityAncestors": [
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-answer-head",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-msg rc-ai-msg--ai",
+              "opacity": 0
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-messages",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-ai-panel rc-ai-panel--engaged",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "rc-panel rc-panel--active",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "reading-companion editorial-tools-panel",
+              "opacity": 1
+            },
+            {
+              "tag": "ASIDE",
+              "cls": "article-tools",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "cls": "article-layout",
+              "opacity": 1
+            },
+            {
+              "tag": "MAIN",
+              "cls": "main",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "cls": "nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "cls": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "valid": false,
+          "contrast": null,
+          "unverified": "No opaque flat background before a gradient or ancestor opacity; raw stack preserved."
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "phone-zh",
+        "width": 390,
+        "height": 844,
+        "locale": "zh",
+        "dark": true,
+        "motion": "no-preference",
+        "coarse": true
+      },
+      "steps": [
+        {
+          "name": "original-public-paragraph-selected",
+          "selectedLength": 120,
+          "messages": {
+            "tag": "DIV",
+            "cls": "rc-ai-messages",
+            "font": "13.44px",
+            "opacity": "1",
+            "box": {
+              "x": 13,
+              "y": 271.015625,
+              "width": 364,
+              "height": 367.1875,
+              "top": 271.015625,
+              "right": 377,
+              "bottom": 638.203125,
+              "left": 13
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 233,
+            "scrollHeight": 600,
+            "clientHeight": 367,
+            "minimumOneLine": 25.2
+          },
+          "input": {
+            "tag": "TEXTAREA",
+            "cls": "rc-ai-textarea",
+            "font": "16px",
+            "opacity": "1",
+            "box": {
+              "x": 25,
+              "y": 762,
+              "width": 290,
+              "height": 60,
+              "top": 762,
+              "right": 315,
+              "bottom": 822,
+              "left": 25
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 60,
+            "clientHeight": 60
+          },
+          "clear": {
+            "tag": "BUTTON",
+            "cls": "article-chat-reference-clear",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 324,
+              "y": 660.203125,
+              "width": 44,
+              "height": 44,
+              "top": 660.203125,
+              "right": 368,
+              "bottom": 704.203125,
+              "left": 324
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 44,
+            "clientHeight": 44
+          },
+          "send": {
+            "tag": "BUTTON",
+            "cls": "rc-ai-send",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 324,
+              "y": 778,
+              "width": 44,
+              "height": 44,
+              "top": 778,
+              "right": 368,
+              "bottom": 822,
+              "left": 324
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 44,
+            "clientHeight": 44
+          },
+          "snapshot": {
+            "width": 390,
+            "height": 844,
+            "rootY": 11926,
+            "hash": "",
+            "history": 3,
+            "host": "abs-panel-ai",
+            "rootCount": 1,
+            "inputCount": 1,
+            "busy": "false",
+            "originalIdentity": {
+              "root": true,
+              "input": true,
+              "messages": true
+            },
+            "value": "继续说明这个真实段落。\n保留我正在写的第二行。",
+            "selection": [
+              23,
+              23,
+              "none"
+            ],
+            "focus": {
+              "tag": "TEXTAREA",
+              "id": "",
+              "cls": "rc-ai-textarea",
+              "originalInput": true,
+              "visible": true,
+              "insideAI": true,
+              "inInert": false
+            },
+            "rootBox": {
+              "x": 13,
+              "y": 271.015625,
+              "width": 364,
+              "height": 560.984375,
+              "top": 271.015625,
+              "right": 377,
+              "bottom": 832,
+              "left": 13
+            },
+            "inputBox": {
+              "x": 25,
+              "y": 762,
+              "width": 290,
+              "height": 60,
+              "top": 762,
+              "right": 315,
+              "bottom": 822,
+              "left": 25
+            },
+            "messages": {
+              "box": {
+                "x": 13,
+                "y": 271.015625,
+                "width": 364,
+                "height": 367.1875,
+                "top": 271.015625,
+                "right": 377,
+                "bottom": 638.203125,
+                "left": 13
+              },
+              "scrollTop": 233,
+              "scrollHeight": 600,
+              "clientHeight": 367,
+              "text": "关于这段文字你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两结合这篇文章，帮我理解这段话。AI一起读懂生成分享卡This explanation uses the original selected public passage.Keep the selected context while continuing this conversation.继续聊聊能举一个具体例子吗？有没有相反的观点？在现实里怎"
+            },
+            "stop": {
+              "visible": false,
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "disabled": false
+            },
+            "overflow": {
+              "value": "hidden",
+              "priority": ""
+            },
+            "sheet": {
+              "open": true,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            "tabs": {
+              "rc": [
+                "rc-tab-toc"
+              ],
+              "abs": [
+                "abs-tab-ai"
+              ]
+            },
+            "turns": [
+              {
+                "aborts": 0,
+                "cancels": 1,
+                "method": "POST",
+                "payload": {
+                  "question": "结合这篇文章，帮我理解这段话。",
+                  "language": "zh",
+                  "pagePath": "/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/",
+                  "context": [],
+                  "selectedText": "你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两",
+                  "selectionContext": "[文章开头节选]\n这篇文章的种子，是一场持续了几轮的对话——从\"广东热不热\"的闲聊，一路滑进\"生命是由什么构成的\"。 它不打算给你一个答案，因为真正值钱的东西，恰恰在没有答案的地方长出来。 引：一个看起来很温柔、其实很危险的问题# 先讲一个朋友抛出的问题。 她说，她一直在想：从身上拿掉多少东西，她就不再是她自己了？ 这个问句听起来很温柔，像在数一个人身上的行李。但你只要认真往下走两步，就会发现它有牙。因为它逼你一样一样地拿：拿掉工作，你还是你吗？还是。拿掉记忆呢？拿掉身体呢？拿掉那些让你之所以是你的经历、口音、爱过的人？一直拿下去，到某个地方，“你\"会不会突然就不在了？如果会，那个临界点在哪？如果不会——那\"你\"到底是被哪一样东西撑着的？ 我们那场对话的真正源头，其实是痛苦。是\"人为什么会痛苦\"这个更古老的问题。顺着它往回追，会追到一个几乎所有传统都指向的嫌疑犯：自我。痛苦源于\"我执”，源于有一个\"我\"在那里，怕失去、求不得、放不下。于是问题就翻转成了：这个\"我\"，到底是什么做的？它经得起拆吗？ 这篇文章，就是沿着\"拆\"这条路一直走到底，看看走到尽头，手里还剩下什么。 我想提前说清楚：这不是一篇让你\"看开\"的文章。恰恰相反，它想在你以为已经看开了的地方，再往回拉你一把。 第一层：一束光，和一只看不清的眼睛# 先从一个意象讲起，它是这场讨论里最美的一块。 一束阳光，加上一个白内障患者的眼球，能看到穿过窗户的阴影。 如果只从光学上看，这句话是成立的，而且动人。白内障让晶状体变浑浊，光穿过时不再干净地折射，转而被散射开。所以对这样一只眼睛来说，一束阳光不会是锐利的光柱——它会晕开、发白、带着光晕，边缘化成雾。而窗棂投下的阴影，本该是清晰的几何线条，在散射之下会变软、发灰、互相渗透。 这里有个东西值得停下来看。 一只清晰的眼睛，看到的是\"光和影的分界\"——仿佛\"光\"是一个东西，“影\"是另一个东西，中间有一条真实的、客观的界线。而那只浑浊的眼睛，把这条线抹掉了。它看到的几乎是\"光和影的和解”：界限消失了，一切浸在同一层柔光里。 我们太容易觉得那只看不清的眼睛是\"有缺陷的\"。但换个角度：那条被抹掉的分界线，本来就不在世界里。世界里只有连续变化的光强，从最亮到最暗是一条平滑的斜坡。是清晰的眼睛（和它背后的大脑）在那条斜坡上，硬切了一刀，说\"这边是光、那边是影\"。分界不是世界给的，是看的人加上去的。 那只浑浊的眼睛，某种意义上，反而看到了更接近实相的东西——分别消融的地方。 记住这个动作：我们习惯把自己切出来的线，当成世界本来就有的线。 接下来拆\"自我\"，用的是同一把刀，只不过这次，切的是我们自己。 第二层：开始拆——一辆马车，和一个找不到的\"我\"# 现在把这把刀转向\"我\"。 有一部很老的佛经叫《弥兰陀王问经》，里面记了一场对话。一位僧人那先，问国王弥兰陀：你是坐马车来的，那我问你，什么是\"马车\"？ 车轮是马车吗？不是，车轮只是车轮。 车轴是马车吗？不是。 车厢、辕木、缰绳，是马车吗？都不是。 那把它们全拆开，一件一件摆在地上——“马车\"在哪里？ 找不到。地上只有一堆零件。可是你又不能说马车不存在——你分明是坐着它来的。 结论是：“马车\"不是任何一个零件，也不是零件的简单堆叠；它是这些零件按某种关系装配起来、正在运作时，我们给这个整体起的一个名字。 抽掉关系，只剩零件；抽掉零件，关系也无处附着。马车是\"缘起\"的——依条件而暂时成立，不是本来就搁在那里的现成物。 “我\"也一样。 顺着这条路拆下去：没有了元素、器官，就没有肉体上的我；没有了经历、意识、思考，就没有灵魂上的我。两边都拆完，中间那个\"我”，没有一个单独的藏身之处。 佛学把这套拆法系统化成了五蕴——色、受、想、行、识。色是物质与身体；受是感受（苦、乐、不苦不乐）；想是辨认与概念化；行是意志、习性、造作的冲动；识是了别、\n\n[选文上下文]\n一个被给定的、明确的、放之四海皆准的答案，会取消掉一件事：你自己。因为凡是能被别人替你想清楚、替你说满的东西，长出来的都不是\"你的\"。那个没有答案的空，恰恰是\"你的东西\"唯一能生长的地方。\n选文：你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两\n你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两个是同一枚硬币的两面，你不能只留正面。\n所以，那个空白不是要被填上的坑，是要被认领的地。",
+                  "articleContentLength": 5383,
+                  "articleTitle": "拆到最后，剩下的才是你：一场关于无我、痛苦与\"怎么说都可以\"的追问"
+                }
+              }
+            ],
+            "overflowX": false
+          }
+        },
+        {
+          "name": "reference-real-wheel",
+          "reference": {
+            "top": 77,
+            "scrollHeight": 139,
+            "clientHeight": 62
+          }
+        }
+      ],
+      "samples": [],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "short-zh",
+        "width": 568,
+        "height": 320,
+        "locale": "zh",
+        "dark": true,
+        "motion": "reduce",
+        "coarse": true
+      },
+      "steps": [
+        {
+          "name": "original-public-paragraph-selected",
+          "selectedLength": 120,
+          "messages": {
+            "tag": "DIV",
+            "cls": "rc-ai-messages",
+            "font": "13.44px",
+            "opacity": "1",
+            "box": {
+              "x": 9,
+              "y": 76,
+              "width": 550,
+              "height": 155,
+              "top": 76,
+              "right": 559,
+              "bottom": 231,
+              "left": 9
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 256,
+            "scrollHeight": 411,
+            "clientHeight": 155,
+            "minimumOneLine": 25.2
+          },
+          "input": {
+            "tag": "TEXTAREA",
+            "cls": "rc-ai-textarea",
+            "font": "16px",
+            "opacity": "1",
+            "box": {
+              "x": 214.390625,
+              "y": 244,
+              "width": 285.59375,
+              "height": 60,
+              "top": 244,
+              "right": 499.984375,
+              "bottom": 304,
+              "left": 214.390625
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 60,
+            "clientHeight": 60
+          },
+          "clear": {
+            "tag": "BUTTON",
+            "cls": "article-chat-reference-clear",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 164.390625,
+              "y": 244,
+              "width": 44,
+              "height": 44,
+              "top": 244,
+              "right": 208.390625,
+              "bottom": 288,
+              "left": 164.390625
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 44,
+            "clientHeight": 44
+          },
+          "send": {
+            "tag": "BUTTON",
+            "cls": "rc-ai-send",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 505.984375,
+              "y": 260,
+              "width": 44,
+              "height": 44,
+              "top": 260,
+              "right": 549.984375,
+              "bottom": 304,
+              "left": 505.984375
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 44,
+            "clientHeight": 44
+          },
+          "snapshot": {
+            "width": 568,
+            "height": 320,
+            "rootY": 9610,
+            "hash": "",
+            "history": 3,
+            "host": "abs-panel-ai",
+            "rootCount": 1,
+            "inputCount": 1,
+            "busy": "false",
+            "originalIdentity": {
+              "root": true,
+              "input": true,
+              "messages": true
+            },
+            "value": "继续说明这个真实段落。\n保留我正在写的第二行。",
+            "selection": [
+              23,
+              23,
+              "none"
+            ],
+            "focus": {
+              "tag": "TEXTAREA",
+              "id": "",
+              "cls": "rc-ai-textarea",
+              "originalInput": true,
+              "visible": true,
+              "insideAI": true,
+              "inInert": false
+            },
+            "rootBox": {
+              "x": 9,
+              "y": 76,
+              "width": 550,
+              "height": 236,
+              "top": 76,
+              "right": 559,
+              "bottom": 312,
+              "left": 9
+            },
+            "inputBox": {
+              "x": 214.390625,
+              "y": 244,
+              "width": 285.59375,
+              "height": 60,
+              "top": 244,
+              "right": 499.984375,
+              "bottom": 304,
+              "left": 214.390625
+            },
+            "messages": {
+              "box": {
+                "x": 9,
+                "y": 76,
+                "width": 550,
+                "height": 155,
+                "top": 76,
+                "right": 559,
+                "bottom": 231,
+                "left": 9
+              },
+              "scrollTop": 256,
+              "scrollHeight": 411,
+              "clientHeight": 155,
+              "text": "关于这段文字你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两结合这篇文章，帮我理解这段话。AI一起读懂生成分享卡This explanation uses the original selected public passage.Keep the selected context while continuing this conversation.继续聊聊能举一个具体例子吗？有没有相反的观点？在现实里怎"
+            },
+            "stop": {
+              "visible": false,
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "disabled": false
+            },
+            "overflow": {
+              "value": "hidden",
+              "priority": ""
+            },
+            "sheet": {
+              "open": true,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            "tabs": {
+              "rc": [
+                "rc-tab-toc"
+              ],
+              "abs": [
+                "abs-tab-ai"
+              ]
+            },
+            "turns": [
+              {
+                "aborts": 0,
+                "cancels": 1,
+                "method": "POST",
+                "payload": {
+                  "question": "结合这篇文章，帮我理解这段话。",
+                  "language": "zh",
+                  "pagePath": "/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/",
+                  "context": [],
+                  "selectedText": "你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两",
+                  "selectionContext": "[文章开头节选]\n这篇文章的种子，是一场持续了几轮的对话——从\"广东热不热\"的闲聊，一路滑进\"生命是由什么构成的\"。 它不打算给你一个答案，因为真正值钱的东西，恰恰在没有答案的地方长出来。 引：一个看起来很温柔、其实很危险的问题# 先讲一个朋友抛出的问题。 她说，她一直在想：从身上拿掉多少东西，她就不再是她自己了？ 这个问句听起来很温柔，像在数一个人身上的行李。但你只要认真往下走两步，就会发现它有牙。因为它逼你一样一样地拿：拿掉工作，你还是你吗？还是。拿掉记忆呢？拿掉身体呢？拿掉那些让你之所以是你的经历、口音、爱过的人？一直拿下去，到某个地方，“你\"会不会突然就不在了？如果会，那个临界点在哪？如果不会——那\"你\"到底是被哪一样东西撑着的？ 我们那场对话的真正源头，其实是痛苦。是\"人为什么会痛苦\"这个更古老的问题。顺着它往回追，会追到一个几乎所有传统都指向的嫌疑犯：自我。痛苦源于\"我执”，源于有一个\"我\"在那里，怕失去、求不得、放不下。于是问题就翻转成了：这个\"我\"，到底是什么做的？它经得起拆吗？ 这篇文章，就是沿着\"拆\"这条路一直走到底，看看走到尽头，手里还剩下什么。 我想提前说清楚：这不是一篇让你\"看开\"的文章。恰恰相反，它想在你以为已经看开了的地方，再往回拉你一把。 第一层：一束光，和一只看不清的眼睛# 先从一个意象讲起，它是这场讨论里最美的一块。 一束阳光，加上一个白内障患者的眼球，能看到穿过窗户的阴影。 如果只从光学上看，这句话是成立的，而且动人。白内障让晶状体变浑浊，光穿过时不再干净地折射，转而被散射开。所以对这样一只眼睛来说，一束阳光不会是锐利的光柱——它会晕开、发白、带着光晕，边缘化成雾。而窗棂投下的阴影，本该是清晰的几何线条，在散射之下会变软、发灰、互相渗透。 这里有个东西值得停下来看。 一只清晰的眼睛，看到的是\"光和影的分界\"——仿佛\"光\"是一个东西，“影\"是另一个东西，中间有一条真实的、客观的界线。而那只浑浊的眼睛，把这条线抹掉了。它看到的几乎是\"光和影的和解”：界限消失了，一切浸在同一层柔光里。 我们太容易觉得那只看不清的眼睛是\"有缺陷的\"。但换个角度：那条被抹掉的分界线，本来就不在世界里。世界里只有连续变化的光强，从最亮到最暗是一条平滑的斜坡。是清晰的眼睛（和它背后的大脑）在那条斜坡上，硬切了一刀，说\"这边是光、那边是影\"。分界不是世界给的，是看的人加上去的。 那只浑浊的眼睛，某种意义上，反而看到了更接近实相的东西——分别消融的地方。 记住这个动作：我们习惯把自己切出来的线，当成世界本来就有的线。 接下来拆\"自我\"，用的是同一把刀，只不过这次，切的是我们自己。 第二层：开始拆——一辆马车，和一个找不到的\"我\"# 现在把这把刀转向\"我\"。 有一部很老的佛经叫《弥兰陀王问经》，里面记了一场对话。一位僧人那先，问国王弥兰陀：你是坐马车来的，那我问你，什么是\"马车\"？ 车轮是马车吗？不是，车轮只是车轮。 车轴是马车吗？不是。 车厢、辕木、缰绳，是马车吗？都不是。 那把它们全拆开，一件一件摆在地上——“马车\"在哪里？ 找不到。地上只有一堆零件。可是你又不能说马车不存在——你分明是坐着它来的。 结论是：“马车\"不是任何一个零件，也不是零件的简单堆叠；它是这些零件按某种关系装配起来、正在运作时，我们给这个整体起的一个名字。 抽掉关系，只剩零件；抽掉零件，关系也无处附着。马车是\"缘起\"的——依条件而暂时成立，不是本来就搁在那里的现成物。 “我\"也一样。 顺着这条路拆下去：没有了元素、器官，就没有肉体上的我；没有了经历、意识、思考，就没有灵魂上的我。两边都拆完，中间那个\"我”，没有一个单独的藏身之处。 佛学把这套拆法系统化成了五蕴——色、受、想、行、识。色是物质与身体；受是感受（苦、乐、不苦不乐）；想是辨认与概念化；行是意志、习性、造作的冲动；识是了别、\n\n[选文上下文]\n一个被给定的、明确的、放之四海皆准的答案，会取消掉一件事：你自己。因为凡是能被别人替你想清楚、替你说满的东西，长出来的都不是\"你的\"。那个没有答案的空，恰恰是\"你的东西\"唯一能生长的地方。\n选文：你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两\n你怕的那个\"不知道要追求什么\"的空白，和你要的那个\"自由\"，是同一个东西。自由从来不是\"有人告诉我该往哪走\"，自由是\"没人告诉我，而我仍然得走\"。它当然不舒服。空白总是不舒服的。但你没法既要\"完全的自由\"，又要\"有人替我把方向定死\"——这两个是同一枚硬币的两面，你不能只留正面。\n所以，那个空白不是要被填上的坑，是要被认领的地。",
+                  "articleContentLength": 5383,
+                  "articleTitle": "拆到最后，剩下的才是你：一场关于无我、痛苦与\"怎么说都可以\"的追问"
+                }
+              }
+            ],
+            "overflowX": false
+          }
+        },
+        {
+          "name": "reference-real-wheel",
+          "reference": {
+            "top": 240,
+            "scrollHeight": 277,
+            "clientHeight": 32
+          }
+        },
+        {
+          "name": "224px-selected",
+          "messages": {
+            "tag": "DIV",
+            "cls": "rc-ai-messages",
+            "font": "13.44px",
+            "opacity": "1",
+            "box": {
+              "x": 9,
+              "y": 76,
+              "width": 550,
+              "height": 59,
+              "top": 76,
+              "right": 559,
+              "bottom": 135,
+              "left": 9
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 333,
+            "scrollHeight": 392,
+            "clientHeight": 59,
+            "minimumOneLine": 25.2
+          },
+          "input": {
+            "tag": "TEXTAREA",
+            "cls": "rc-ai-textarea",
+            "font": "16px",
+            "opacity": "1",
+            "box": {
+              "x": 214.390625,
+              "y": 148,
+              "width": 285.59375,
+              "height": 60,
+              "top": 148,
+              "right": 499.984375,
+              "bottom": 208,
+              "left": 214.390625
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 60,
+            "clientHeight": 60
+          },
+          "clear": {
+            "tag": "BUTTON",
+            "cls": "article-chat-reference-clear",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 164.390625,
+              "y": 148,
+              "width": 44,
+              "height": 44,
+              "top": 148,
+              "right": 208.390625,
+              "bottom": 192,
+              "left": 164.390625
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 44,
+            "clientHeight": 44
+          },
+          "send": {
+            "tag": "BUTTON",
+            "cls": "rc-ai-send",
+            "font": "18px",
+            "opacity": "1",
+            "box": {
+              "x": 505.984375,
+              "y": 164,
+              "width": 44,
+              "height": 44,
+              "top": 164,
+              "right": 549.984375,
+              "bottom": 208,
+              "left": 505.984375
+            },
+            "fullViewport": true,
+            "hit": true,
+            "scrollTop": 0,
+            "scrollHeight": 44,
+            "clientHeight": 44
+          }
+        }
+      ],
+      "samples": [],
+      "failure": "AssertionError [ERR_ASSERTION]: Reply viewport cannot show one complete computed text line: {\"height\":24.8125,\"line\":25.2}\n    at readableMessages (file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/batch-e16a.actual.mjs:8:216)\n    at async file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/batch-e16a.actual.mjs:26:493"
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-intro.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-readable-history.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-cleared-same-draft.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-cleared-same-draft.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-224-selected.png"
+  ],
+  "limits": "Five emulated Chromium contexts with original published growth article/paragraph selection after the reused Go helper setup and real toolbar actions; AIClient controlled SSE only. No real model, actual share publish, OS keyboard, screen reader, physical touch, full contrast matrix, full device or full96 certification. Flat-background contrast samples are separate from explicitly unverified gradients."
+}

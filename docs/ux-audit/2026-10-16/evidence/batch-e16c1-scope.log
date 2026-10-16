@@ -1,0 +1,12 @@
+Inverse followup keepDraft plus owner handoff restores exact C JS; quickchip and C33 logic unchanged
+Original C helpers and both contracts exact prefix unchanged; only third distinct draft/focus contract appended
+UNCHANGED frozen de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6 assets/css/extended/editorial-tools.css
+UNCHANGED frozen bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc assets/css/extended/article-selection.css
+UNCHANGED frozen 875e31471f281957b6328ff5e2c23271406c58ae143d7590599a4ce47ff2ce05 assets/css/extended/article-bottom-sheet.css
+UNCHANGED frozen 962a791d66d19588879843b4da5872f310cdf4dfd1494cd75b8541457f73c63b tests/e2e/article-chat-legibility-contracts.spec.ts
+UNCHANGED frozen f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5 layouts/partials/extend_head.html
+UNCHANGED frozen 2a1634e23e9130b1d6aabd58b7c6f0e74d2038e140573086254c127f94dc90e5 tests/e2e/article-font-stability-contracts.spec.ts
+UNCHANGED frozen cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd tests/e2e/article-chat-continuity-contracts.spec.ts
+UNCHANGED frozen 613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed tests/e2e/article-selection.spec.ts
+FROZEN SHA256 a9d1fef2f50eb0740be0ebd61caa3f70f91561932a5a0ea96da816e1a8335b2a static/js/article-chat.js
+FROZEN SHA256 6cb553b7f64de69005ecbd55b9e2e6a9d1f829582b9899c40db6e672a919eae6 tests/e2e/article-chat-reply-landing-contracts.spec.ts

@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-16T00:36:13.836431+00:00",
+  "sources": {
+    "assets/js/bear-knowledge-space.js": "469e07785e9cd5ac55cb9ef08b5f1b6589b448375e3caca9e0883ec67939b3c3",
+    "assets/css/extended/bear-knowledge-space.css": "648000f9b99828f6afb28a3554f40b9323c2bb3425026f1e9c0124cb454e8120",
+    "layouts/section/projects.html": "462a369523f23c4b8cc6491985c50b77f91ea37c671f47a9578ee5dda6f429e5",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a"
+  },
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-knowledge-open.browser.mjs": "8b2ed4c516ce3f12550218aa445c4fdc5222ecf6dbf3ae7494ababcd9f4c61e0",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open.json": "23cb8e8b541b1225fa7a30de0435cce70230f111287c1056f9bc2aa5779b9109",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-1440-zh-series.png": "b8098e6bc8b6fc7721584ccca3e6e697455710bca7436911121004ca50a82979",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-390-en-product.png": "0110643c6121ee67abfc5770aad8733aecb593aea4efa700f37e1ae86c075330",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open.log": "ca87b6f346859caa6f3654d74f9a499b1dedb59d074bf937f74e309f5e7432ef",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-1440-zh-product.png": "0f95b8343b094752e58d25e36284a19e4b31b6320adc3ef1f411fe78405f80c2",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-1440-zh-writing.png": "c014bf3a4a71909ce2790175427d1a74599b9a56d7cdbd860863e41e8021afe3",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-390-en-series.png": "49955c15ecc27ab902d0803ce4d41fca8bb405cb4a03db9e1a0cf2efa8af09e8",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-390-en-writing.png": "f4ed6b889088968e00068ff442badbd345c2c138ab6c5a29dfc737f373259896"
+  },
+  "parentReadAll6PNG": true,
+  "observation": "2actual reducedmotion contexts1440zh light/390en dark, 3real product/writing/series nodes each. Node title,current Open normalizedhref/target/rel match catalog; actualclick forproduct/series andactualEnter on focusedwriting Open capture trustedintent. All6 stay #knowledge becausepreventDefault; no realdestinationsfollowed. Only positivecurrentnode\u2192Open scope; filtercount oldtestsnot re-counted.",
+  "limits": "Two Chromium emulated reducedmotion contexts, three existing real product/writing/series nodes each. Original control realclick or actualEnter on programmaticallyfocused Open captured with preventDefault; no destination followed/popup opened/externalwrite, backend/model call or full keyboard/AT/physical/FPS claim. Existingfiltercount tests not re-counted as newfeature."
+}

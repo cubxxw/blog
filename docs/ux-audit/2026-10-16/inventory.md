@@ -1871,3 +1871,47 @@ E13只新增 **11状态**：canonical输入focus/normal、实际Send、quickchip
 独立命名关闭 **UX048** `closed_E15c_named_spatial_library_profile_type_title_actions_scope`、**UX049** `closed_E15c_bounded_library_scroll_article_return_reload_minimized_new_intent_scope`、**UX050** `closed_E15c_shared_public_and_button_bookmark_same_node_state_scope`。旧A/B失败、源快照和初8/9合同结果保留，不将早期前段通过外推reload，也不把初8+9+10叠计。BBox投影不是字形像素/WCAG通用字号门槛；无OSpicker/AT/实体设备认证，classic/fallback/contextloss恢复仍unknown。UX046仍open。
 
 累计 **359状态 / 82族局部证据**（81partial+1measured；202source-only+25rendered），由条目复算；保持 **309族 / 369selector entries / 57journeys / 18roadmap**，完整族0/fullscore null。现停写供checkpoint与独立scorecard同步。
+
+
+## v1.26 E16b：文章 AI 阅读层级、短屏与两个独立入口基线
+
+导入 **2026-10-16T09:13:20+08:00**；[E16b source](evidence/batch-e16b-source.json)14源/QA/3runner共18项当前哈希及[provenance](evidence/batch-e16b-provenance.json)34项文件匹配。3生产CSS，B对A仅两条short声明；A三CSS快照仍匹配原manifest。**3个不同新合同12.2s**，不是initial35+A3+B3累加的新功能；initial35含旧13+19共32且全过，新3初期有toolbar入口fixture失败，诊断/原log保留。最终Hugo4008ms来自父回执，本Agent未运行。
+
+[5primary contexts/16图](evidence/batch-e16b-provenance.json)由A未改桌面en+phonezh的2context6图，与B affected shortzh/320en/shorten的3context10图组成；不是B单跑5context。新增 **14条证据行**（含2条负历史、旧同状态新版复验），**0新功能/控件/族**：
+
+| 证据片段 | 实际覆盖与限制 |
+| --- | --- |
+| UX051旧负 | 旧08d明确settled568×320选文后input/Send到404.23、无centerhit；A后续224held消息24.8125小于computedline25.2，原失败均保留，fixture诊断分开 |
+| 原输入/引用/选文 | 五primary程序Range选真实公共长段落后实际Analyze，selectedText精确、草稿/同DOM/visiblefocus保留；实际reference wheel不动正文。B两short224held视口28.8125≥25.2；不是OS选文/键盘/UX046冷字体通过 |
+| Clear/Send/Stop | A桌面/phonezh+B320en实际Clear保草稿；B两short224实际Send/44方形Stop，abort1。shortClear/跨256高度另属合同；desktopfine Send31不是44touch通过 |
+| 字号/分享/快捷提示/页签 | supporting正文14/meta12/reference14；Share13字号/hover几何与programmaticfocus，未执行分享；Chip逐项可达/命中、tabs切换/geometry主要是第3合同，不冒父primary逐个点击实拍；Retry503恢复也仅该受控合同 |
+| 文字对比 | A桌面intro/userquestion/userlabel三个opaque computed样本ratio6.1161026899074775；Share opacity/gradient样本invalid继续unknown，不外推整页 |
+
+独立final已逐看A完成6图+B受影响10图，另A短屏partial两图保负历史；**UX051关闭命名 `closed_E16b_named_short_AI_selected_composer_Stop_full_line_scope`**，只限命名actual/合同范围，不授OSkeyboard/AT/fullmatrix/整族96。原abs历史selector不继承当前rc证据；引用与root仅支持对象，不新造按钮。
+
+另各 **1条**：
+
+- [照片Retry负基线](evidence/probe-space-photo-retry-provenance.json)：08d七immutable源，1440zh/reduce真实404→Retry自动滚动→held→原WebP200；Retry52.48×23.37且首error在clip外，点击自隐藏→focusBODY，下一实际Tab回photo内BUTTON。**UX052/P2 open**，不称trap/全Tab失败；没有实际等待网络timeout。成功图片不消除焦点问题。
+- [Knowledge当前Open](evidence/probe-knowledge-open-provenance.json)：1440zh light+390en dark reduce，两context三kind各一次；真实pointer/程序focus后的实际Enter捕获可信意图，href/target/rel匹配当前node。全部preventDefault留#knowledge，未实际访问外部目标/打开popup，不认证全Tab/全部筛选。既存Open源码定位校准renderDetail:486/515，旧行/hash保历史。
+
+本Agent核现有回执/哈希，本轮看10张既有代表PNG（另照片前三图前轮只读已看），无browser/构建/测试。累计 **373条state-evidence / 85族局部证据**（84partial+1measured；199source-only+25rendered），仍 **309族 / 369selector entries / 57journeys / 18roadmap**。这些是证据行和选择器条目数，完整族认证0、完整分null；UX046仍open。现停写供独立评分同步与父checkpoint。
+
+
+## v1.27 E14：英文冷字体与阅读位置的有界取舍
+
+导入 **2026-10-16T09:28:53+08:00**；[source contract](evidence/batch-e14b-production-contract.json)8源+QA/2runner均在[51项provenance](evidence/batch-e14b-production-provenance.json)中匹配，另核7原fontfixturebytes。生产只有`extend_head.html:45–49`新增5行：**EN `.IsPage && Typeposts`** 的原5family Google请求改optional；单篇`/projects/imstage/`实际也是Typeposts而同含，BEAROSsection原lean gate/ZH/home/localCJK/fontstack未改。新E16c AIJS WIP不在这8源内，字体图不认证它。
+
+**保持373条item状态/85族**，不把字体硬挂到脚注marker/按钮；新增 **4条独立source-surface记录**，都`family_ids/control_ids=[]`，机器记录在JSON `e14b-production-font-import.surface_state_evidence`：
+
+| Surface记录 | 命名实际证据 |
+| --- | --- |
+| `en-cold-style.loading` | 390en dark/reduce的fast/lateCSS即时/lateCSS+1200held；同context marker document/viewport、rootY/docH各delta0，sameNode/focus/hash/history保留 |
+| `en-font404.error` | 原CSS200、font404，原文fallback和阅读点在before/terminal可见/稳定；不代表所有字体缺失平台 |
+| `en-css404.error` | 原CSS404、fontrequests0，同marker/readpoint保留；不是noJS全流程 |
+| `zh-settled-smoke.normal` | 一390zh light/normal标题、混排正文、inlinecode3图；本机SourceHanSerifSC/JetBrainsMono，非缺本地CJK字体/延迟注册稳定性证明 |
+
+[5ENcold/13正式图](evidence/batch-e14b-production-actual.json)+[1ZHsmoke/3图](evidence/batch-e14b-production-zh-smoke.json)父全看，本Agent看4代表图。**更正元数据而不覆盖raw：** 原provenance误称fast也全Georgia/Courier；本Agent读CDP发现最终fast实际heading Georgia、正文Noto Serif、代码JetBrains Mono，before/terminal一致。后四late/404才Georgia/Courier。[显式erratum](evidence/batch-e14b-production-erratum.json)绑定原provenance/rawSHA及五行glyphmaps；五行各自delta0不受此文字更正影响。及时到达可用部分webfont，晚到可保fallback，是已说明的稳定阅读取舍；不是“总是fallback”或HTTPwarm/品牌字体保证。
+
+[9served-head](evidence/batch-e14-production-served-head.json)只证明命名HTTP200头部URL/async/noscript parity，不等于9条字体旅程。initial4合同为3行为pass+1minified handler字串fixturefail4.4s；test-only语义load scope同一case1pass1.0s，原3行为tail/helper逐字节一致、未重跑，**合计4distinct**，不叠5新case。Hugo4153ms是父回执。初parent额外precode定位失败（原文只有inlinecode）保raw/script/log和3初图；B只修额外照片locator，未发生第二次生产字体修复。
+
+UX046原冷字体负基线保留；独立final逐看16正式图后，仅命名关闭 **`closed_E14b_named_EN_posts_cold_font_delivery_readpoint_scope`**：五EN冷交付case阅读点/node/hash/history/focus稳定，ZH settled smoke只兼容观察。旧singleface/fullbundle discovery与humanChoice继续unreviewed/nonGold；phase PNG只证明命名时间，continuousFOIT/fullCLS/FPS、HTTPwarm、Safari/AT/实机、缺本地CJK字体与全矩阵仍unknown。computed`font`空串不当字号证明；CDP实际glyph归属独立。**309族/369selectors/373item状态/85族局部证据+4surface记录，完整族0/fullnull**。本Agent未运行browser/构建/测试；独立结论已对齐，现停止写入供checkpoint。

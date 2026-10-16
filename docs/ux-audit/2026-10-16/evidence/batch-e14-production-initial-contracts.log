@@ -1,0 +1,34 @@
+
+Running 4 tests using 1 worker
+
+(node:1481) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/article-font-stability-contracts.spec.ts:24:5 › served font policy is optional only for English posts and the existing home bundle; async/noscript/families stay intact (288ms)
+(node:1497) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/article-font-stability-contracts.spec.ts:65:7 › late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable (628ms)
+  ✓  3 tests/e2e/article-font-stability-contracts.spec.ts:65:7 › late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable (1.8s)
+  ✓  4 tests/e2e/article-font-stability-contracts.spec.ts:65:7 › CSS 404: the original article marker, document/viewport read point, hash and focus stay stable (507ms)
+
+
+  1) tests/e2e/article-font-stability-contracts.spec.ts:24:5 › served font policy is optional only for English posts and the existing home bundle; async/noscript/families stay intact 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "this.onload=null;this.rel='stylesheet'"
+    Received: "this.onload=null,this.rel=\"stylesheet\""
+
+      41 |     if(row.display){
+      42 |       const preload=google.find(link=>!link.noscript)!,noscript=google.find(link=>link.noscript)!;
+    > 43 |       expect(preload.rel).toBe('preload');expect(preload.as).toBe('style');expect(preload.onload).toBe("this.onload=null;this.rel='stylesheet'");
+         |                                                                                                   ^
+      44 |       expect(noscript.rel).toBe('stylesheet');expect(noscript.onload).toBe('');expect(noscript.href).toBe(preload.href);
+      45 |       const url=new URL(preload.href);expect(url.searchParams.get('display')).toBe(row.display);expect(url.searchParams.getAll('family')).toEqual(row.families);
+      46 |     }
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/article-font-stability-contracts.spec.ts:43:99
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright-e14-production/article-font-stability-con-ea12c-script-families-stay-intact/error-context.md
+
+  1 failed
+    tests/e2e/article-font-stability-contracts.spec.ts:24:5 › served font policy is optional only for English posts and the existing home bundle; async/noscript/families stay intact 
+  3 passed (4.4s)

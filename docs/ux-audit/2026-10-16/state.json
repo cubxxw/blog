@@ -3,35 +3,50 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "d5b35f94cee3a203938eff63f4932a016df71fb3",
-  "phase": "E15c-accepted-E16-shortscreen-ready",
-  "batch": "E15-Space-directory-profile",
+  "checkpoint": "08dca5f0c40285e32132ec4a68d4c489f94b7003",
+  "phase": "E16c1 followup draft+ownedfocus candidate19 contracts and actual pending",
+  "batch": "E16-article-AI-shortscreen-and-type",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "E16 settled568x320 selectedAI input/Send belowviewport/nohit; realtoolbar/controlledreply baseline preserved. Highpriority named task gap, independent classification next; source3CSS local height/type/quote plan ready, no impl.",
+    "UX051/P1 independentlyconfirmed25hash+2PNG: settled568x320 selectedAI input/Send belowviewport/nohit. E163CSS+new3contracts implementation; JS/templates/old13+4 exactbytes protected.",
     "E15 shortcoarse directory two scrollsurfaces localD1=90.5/D4=94.5; readmap flattened sh-first localD1=94.5/D4=93. Needs separate scoped refinement, not all96.",
     "E14 fullbundle8discovery/18PNG independently verified; ENposts optionalcoldfallbacktradeoff explicit; productioncandidate not yet implemented",
     "E12c original actualBack10s timeout unexplained;final6trace bounded successes,wholeBack reliability unknown",
-    "QR portrait error/account grouping; photoimage retry/Knowledge currentnodeOpen not actualtested; AT/Safari/physical/fullmatrix/BFCache unknown"
+    "UX052/P2 photoRetry hiddenowner+firsterror recoverybelowclip (1actual4PNG/38indep combinedhash), not keyboardtrap or timeoutproof; KnowledgeOpen2actual6PNG positivecurrentnode paths independentlyverified, mobileOSLab layout suggestion separate. QR grouping/AT/Safari/physical/fullmatrix/BFCache remain."
   ],
   "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e15c-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-16T00:26:32.220459+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+  "updatedAt": "2026-10-16T00:38:56.215033+00:00",
+  "previewSource": "E16c1 AIJS +accepted E16b3CSS and E14 ENfonthead; sourceC1 notaccepted yet",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
   "review": "E15 ordinarynamedSpace type/title/profilelocalD1/D4=96/96;short/readmap lower scoped scores separate; fullnull309families/369selectorentries/359states/82partial/0full. No newE15 source P0/P1/P2; new preE16 shortscreen task gap remains open.",
   "previewBatch": "E15c Hugo3512ms/10contracts14.5s/5actual17PNG; source independent clean and final cards synchronizing",
   "executorOwnership": [
-    "assets/js/space/apps.js",
-    "assets/css/space.css",
-    "assets/css/space-cafe.css",
-    "assets/js/space/desktop.js",
-    "tests/e2e/space-library-profile-contracts.spec.ts"
-  ]
+    "assets/css/extended/editorial-tools.css",
+    "assets/css/extended/article-selection.css",
+    "assets/css/extended/article-bottom-sheet.css",
+    "tests/e2e/article-chat-legibility-contracts.spec.ts"
+  ],
+  "latestActualEvidence": "evidence/probe-e16-followup-focus.json",
+  "inventorySummary": {
+    "families": 309,
+    "selectorEntries": 369,
+    "cumulativeStateEvidenceRows": 373,
+    "partiallyCoveredFamilies": 85,
+    "fullyCertifiedFamilies": 0,
+    "independentSurfaceObservations": 4
+  },
+  "scoreSummary": {
+    "checks": 247,
+    "historicalExpertVisualFragments": 110,
+    "findings": 52,
+    "fullScore": null
+  },
+  "acceptedSinceCheckpoint": "E16b3CSS+legibility3, E14fonthead+4contract and independentcards ready for localcheckpoint; C1 JS/new3spec excluded from acceptedsource snapshot"
 }

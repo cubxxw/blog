@@ -246,7 +246,36 @@ body.dark .article-bottom-sheet {
 #abs-panel-ai [data-article-chat] .article-chat-reference-clear { width: 44px; height: 44px; }
 #abs-panel-ai [data-article-chat] .article-chat-reference { padding-right: 48px; }
 #abs-panel-ai [data-article-chat] .rc-ai-input-area:has(.article-chat-reference:not([hidden])) { grid-template-columns: minmax(0, 1fr) 44px; }
-#abs-panel-ai [data-article-chat] .rc-ai-msg--user:has(.article-chat-quote) { display: block; width: 100%; opacity: 1; border-radius: 18px; padding: 14px 16px; background: transparent; border: 1px solid color-mix(in srgb, var(--asel-ink) 6%, transparent); }
+#abs-panel-ai [data-article-chat] .rc-ai-msg--user:has(.article-chat-quote) { display:block; width:100%; opacity:1; border-radius:0; padding:4px 0; background:transparent; border:0; }
+
+/* The selected passage and composer share the available short-screen width.
+   TOC and Share keep their original sheet geometry. */
+@media(min-width:520px) and (max-height:420px) {
+ .article-bottom-sheet:has(#abs-panel-ai:not([hidden]) [data-article-chat]) { height:calc(100vh - 12px); height:calc(100dvh - 12px); max-height:calc(100dvh - 12px); }
+ .article-bottom-sheet:has(#abs-panel-ai:not([hidden]) [data-article-chat]) .abs-handle { margin-top:4px; }
+ .article-bottom-sheet:has(#abs-panel-ai:not([hidden]) [data-article-chat]) .abs-tabs { margin-top:2px; }
+ .article-bottom-sheet:has(#abs-panel-ai:not([hidden]) [data-article-chat]) .abs-tab { flex-direction:row; justify-content:center; gap:6px; min-height:44px; padding:6px 4px; font-size:12px; line-height:1.4; letter-spacing:.02em; }
+ #abs-panel-ai { padding:8px; }
+ #abs-panel-ai [data-article-chat] { gap:6px; }
+ #abs-panel-ai [data-article-chat] .rc-ai-messages { min-height:28px; }
+ /* Initial prompts may scroll; the original composer stays within reach. */
+ #abs-panel-ai [data-article-chat]:not(.rc-ai-panel--engaged) { display:block; overflow-y:auto; overscroll-behavior:contain; }
+ #abs-panel-ai [data-article-chat]:not(.rc-ai-panel--engaged) > :is(.rc-ai-intro,.rc-ai-quick,.rc-ai-messages) { margin-bottom:6px; }
+ #abs-panel-ai [data-article-chat]:not(.rc-ai-panel--engaged) .rc-ai-input-area { position:sticky; bottom:0; }
+
+ #abs-panel-ai [data-article-chat] .rc-ai-loading { flex-shrink:0; padding:2px 8px; }
+ #abs-panel-ai [data-article-chat] .rc-ai-input-area { display:grid; grid-template-columns:minmax(0,1fr) 44px; gap:6px; padding:6px 8px; align-items:end; }
+ #abs-panel-ai [data-article-chat] .rc-ai-textarea { grid-column:1; grid-row:1; width:100%; min-width:0; min-height:44px; height:60px; max-height:60px; overflow-y:auto; }
+ #abs-panel-ai [data-article-chat] .rc-ai-send,#abs-panel-ai [data-article-chat] .article-chat-stop { grid-column:2; grid-row:1; min-width:44px; width:44px; height:44px; min-height:44px; align-self:end; padding:0; }
+ #abs-panel-ai [data-article-chat] .article-chat-stop { overflow-wrap:anywhere; line-height:1; text-align:center; }
+ #abs-panel-ai [data-article-chat][aria-busy="true"] .rc-ai-send { display:none; }
+ #abs-panel-ai [data-article-chat] .rc-ai-input-area:has(.article-chat-reference:not([hidden])) { grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) 44px; }
+ #abs-panel-ai [data-article-chat] .article-chat-reference { grid-column:1; grid-row:1; min-width:0; min-height:60px; padding:0 48px 0 0; }
+ #abs-panel-ai [data-article-chat] .article-chat-reference-text { max-height:32px; }
+ #abs-panel-ai [data-article-chat] .rc-ai-input-area:has(.article-chat-reference:not([hidden])) .rc-ai-textarea { grid-column:2; }
+ #abs-panel-ai [data-article-chat] .rc-ai-input-area:has(.article-chat-reference:not([hidden])) :is(.rc-ai-send,.article-chat-stop) { grid-column:3; }
+ #abs-panel-ai [data-article-chat] .article-chat-quote { max-height:20dvh; }
+}
 
 .abs-panel {
   padding: 0.75rem;

@@ -1,0 +1,6 @@
+Listing tests:
+  article-font-stability-contracts.spec.ts:24:5 › served font policy is optional only for English posts and the existing home bundle; async/noscript/families stay intact
+  article-font-stability-contracts.spec.ts:65:7 › late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable
+  article-font-stability-contracts.spec.ts:65:7 › late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable
+  article-font-stability-contracts.spec.ts:65:7 › CSS 404: the original article marker, document/viewport read point, hash and focus stay stable
+Total: 4 tests in 1 file

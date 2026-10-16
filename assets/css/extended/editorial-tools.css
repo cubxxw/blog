@@ -1024,19 +1024,18 @@ body.dark [data-article-chat] .rc-ai-charcount {
   transition:
     background-color 150ms ease,
     border-color 150ms ease,
-    color 150ms ease,
-    transform 120ms ease;
+    color 150ms ease;
 }
 
 [data-article-chat] .rc-ai-share-btn:hover {
   border-color: color-mix(in oklab, var(--color-accent, #862122) 35%, var(--rc-ai-border));
   background: color-mix(in oklab, var(--color-accent, #862122) 6%, var(--rc-ai-surface-soft));
   color: var(--color-accent, #862122);
-  transform: translateY(-1px);
 }
 
 [data-article-chat] .rc-ai-share-btn:active {
-  transform: translateY(0) scale(0.97);
+  border-color: var(--color-accent, #862122);
+  color: var(--color-accent, #862122);
 }
 
 [data-article-chat] .rc-ai-share-btn svg {
@@ -1379,4 +1378,24 @@ body.dark [data-article-chat] .rc-ai-followup:hover {
   body.dark [data-article-chat] .rc-ai-chip {
     background: #242522;
   }
+}
+
+/* Supporting copy remains part of the conversation's reading hierarchy. */
+[data-article-chat] .rc-ai-intro-copy,
+html:lang(zh) [data-article-chat] .rc-ai-intro-copy,
+[data-article-chat] .rc-ai-greeting,
+html:lang(zh) [data-article-chat] .rc-ai-greeting,
+[data-article-chat] .rc-ai-msg--user { font-size:14px; opacity:1; }
+[data-article-chat] .rc-ai-user-label,
+[data-article-chat] .rc-ai-quick-label,
+html:lang(zh) [data-article-chat] .rc-ai-quick-label,
+[data-article-chat] .rc-ai-answer-title,
+[data-article-chat] .rc-ai-answer-context,
+[data-article-chat] .rc-ai-answer-mark { font-size:12px; opacity:1; }
+[data-article-chat] .rc-ai-share-btn { min-height:32px; font-size:13px; line-height:1.4; }
+[data-article-chat] .rc-ai-loading { font-size:13px; line-height:1.4; }
+[data-article-chat] .rc-ai-msg--error .ai-retry-btn { min-height:44px; font-size:14px; opacity:1; }
+
+[data-article-chat] .rc-ai-msg--error .rc-ai-answer-body {
+  color: var(--color-ink-muted, #5e5e63);
 }
