@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T09:58:53+08:00",
+  "updated_at": "2026-10-16T11:03:46+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,7 +353,7 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.28",
+    "inventory_version": "1.29",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
@@ -366,13 +366,13 @@
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309families/369selectors;382itemrows/86localfamilies(85partial+1measured)+4independentfontsurfaces.0whole/fullnull. C1UX053namedclosed;photoUX052open. No featurecount from19tests/17PNG.",
-    "families_with_recorded_contract_fragments": 90,
-    "scoped_check_assessments": 253,
-    "expert_visual_assessments": 112,
-    "inventory_families_with_partial_state_evidence": 86,
+    "reason": "309families/369selectors;394itemrows/93local(92partial+1measured)+4independentfontsurfaces.0whole/fullnull. E17UX052namedclosed;defaultdesktoppreviewdesigngapretained. No test/PNG count asfeatures.",
+    "families_with_recorded_contract_fragments": 94,
+    "scoped_check_assessments": 259,
+    "expert_visual_assessments": 116,
+    "inventory_families_with_partial_state_evidence": 93,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 382,
+    "inventory_state_evidence_records": 394,
     "inventory_surface_state_evidence_records": 4
   },
   "evidence": [
@@ -3095,6 +3095,35 @@
       "scope": "OriginalGo568en/dark/reduce; originalC servedJS exactFeb, realwheel/local thirdbuttonfocus/nativeEnter. Negative PNG independently viewed. CA bilingual actualclick raw independently read, not all14oldPNG re-certified.",
       "result": "Unsubmittedtwo-line draft becomes empty; focused thirdbutton removed→BODY/outsideAI. Request question/context correct and Stop usable; not note/persistentdata loss.",
       "limits": "OriginalIdentity false fields are unseeded baseline bookkeeping, not originalDOM-loss evidence. Not a trap/OSIME/fullkeyboard claim."
+    },
+    {
+      "id": "E-BATCH-E17",
+      "kind": "bounded_source_recorded_browser_independent_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e17b-actual.json",
+      "additional_primary_receipt": "docs/ux-audit/2026-10-16/evidence/batch-e17a-actual.json",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+      "source_manifest_sha256": "ddaa464e911f74c95658bedee325fd4c077917f662970b26f2fd696d9d70ac3c",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e17-provenance.json",
+      "provenance_sha256": "3e3231c722ded1358fc7dfaf0bb4ba566edb6adbafc372a14bfb7d2f4bf2d98d",
+      "composition": "A1440zh/light/reduce6+B390en/dark/normal6+B320zh/light/reduce6+Bclassic1440en/light/reduce4=4completecontexts/22primaryPNG. Aphone4partialhistory separate. All26independentlyviewed.",
+      "proof": "72 path hashes match; sourceB15/QA/runners exact,2servedbundle receipts sameOutputFile. ProductionJS8538917/CSS8d12bc initial→A→B exact; media sourcePanel onward exact4ffc protects Immich18s/proxy/NAV. AI/fonts/state preserved.",
+      "test_refs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e17-contracts.log",
+        "docs/ux-audit/2026-10-16/evidence/batch-e17a-contracts.log"
+      ],
+      "tests": "5distinct=initialunchangedNAV1pass+A4affected8.7s. Initial5 1pass4fixturefail16s preserved, not9features. Sameproduction Hugo4460ms; no rebuildforfixture-onlyA/B.",
+      "result": "Three spatial404→sameRetryrow/label/position pending; two nativeEnter no duplicate beyond initial+retry2GET. Decoded contain675px success ownedRetry→altimg only;390realTabaway target retained. NextrealEnter→ArrowRight actual; Escape only originalunchanged NAVcontract. SameNotesDOM/value/2..17backwardselection. Classic onlynormalimage/type/44/NAV/mapheader actual.",
+      "fixture_limits": "ARIA-disabled implies Playwright isDisabled true though native disabledfalse; exactnativeIDL/attr andEnter dedup fixedfixture. Ambiguous mapkicker scopedheader. SameURL pending request coalescence not recoveryfailure; syntheticcomplete0 separatethirdURL explicitlynotwarm. Aphone userTabscroll222 made topNAV partialoffwindow; B realwheelreturns0 before originalfullclip44 gates, no productionNAVfix.",
+      "scope_limits": "Imageownnetwork timeout absent,18s onlyexistingImmich; no realImmich/model/backend calls. Defaultshortdesktopwindow image/caption requirebody scroll ormaximize, not fullheightfit. Maponlysharedheader/footer/source type; pins/regiondetail/fullmap unverified. NoAT/Safari/physical/fullFPS/zoom/fullmatrix orwholecontrast certificate; close/reopen/stale/decode ownership source+contract not all actualmediaformats."
+    },
+    {
+      "id": "E-SPACE-SEARCH-ARTICLE",
+      "kind": "recorded_browser_positive_fragment",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-provenance.json",
+      "scope": "One immutable4ffc390en/light/reduce actualMeta+k fromeditingNotes→fullpublicarticletitle→ArrowDown/Enter→currentReader;10artifact+7Git sourcehashes matched,4PNG independentlyviewed including initialduplicatefocusimage.",
+      "result": "Catalogtitle/publicbody/originalsafeabsoluteURL correct; originalNotesDOM/two-linevalue/3..18backwardcaret retained. NomatchqueryEnter keeps samereader/dialog,Escape rawobserves SECTION insideworkspace/noninert.",
+      "history_limits": "Initialrelative-versusabsoluteexpectedhref fixtureerror retained; AonlynormalizesURLexpected/outputprefix, no productionfix. Escapefocus is rawobservation not explicit runnerassert. Originalsource link notclicked, no externaldestination/backend or wholekeyboard certification. Articlevariant only, no repeatedproduct/E11 feature count."
     }
   ],
   "historical_visual_assessments": [
@@ -6918,6 +6947,128 @@
       ],
       "scope": "Only320height completedreply resting/focusedtextarea staticstates;224/256 servepressuregeometry, not ordinarymobile/fullUI certificate. Focusedthird separateminorD2fragment.",
       "reason": "Original reply isvisibleprimary destination; suggestioncontrols remainavailable below withoutnew decoration or lostcontent. Existing14reply/16compactinput, reference semantics andpurposefulfocus retained. B92/94.5 remainhistorical, not overwritten."
+    },
+    {
+      "assessment_id": "VIS-E17-RECOVERY-D1",
+      "family_ids": [
+        "S.APP.photos.RETRY"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-error.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-retry-held.png"
+      ],
+      "scope": "Onlythreenamedspatial error/pendingrow staticstates, not entirephotoapp/normal/caption/wholecontrast.",
+      "reason": "Plainfailure/tryingtext andsamename44Retry groupedbesideeachother,readable andstablewithoutoverlaycoveringcontent; actualfocuspurposeful. Doesnotgranttimeout/backend/AT."
+    },
+    {
+      "assessment_id": "VIS-E17-RECOVERY-D4",
+      "family_ids": [
+        "S.APP.photos.RETRY"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-error.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-retry-held.png"
+      ],
+      "scope": "Onlythreenamedspatial error/pendingrow staticstates, not entirephotoapp/normal/caption/wholecontrast.",
+      "reason": "Plainfailure/tryingtext andsamename44Retry groupedbesideeachother,readable andstablewithoutoverlaycoveringcontent; actualfocuspurposeful. Doesnotgranttimeout/backend/AT."
+    },
+    {
+      "assessment_id": "VIS-E17-DEFAULT-DESKTOP-PREVIEW-D1",
+      "family_ids": [
+        "S.APP.photos.SELECT",
+        "S.APP.photos.NAV"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e17a-1440-zh-ready.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e17b-classic-en-ready.png"
+      ],
+      "scope": "Defaultshortdesktopphoto window only; phone/fallbackfailurerecovery notinferred.",
+      "reason": "Header/nav plus52vh image leavesphotographsubjectbottom/caption below initialwindowclip;userneedsbody scroll/maximize forwholeview. Contentpreserved/reachable,notrouting/data loss/P1. Considerimagecontainheightbasedonavailablewindowbody orclearzoom/max affordance,notfontreduction/hiddencontent."
+    },
+    {
+      "assessment_id": "VIS-E17-DEFAULT-DESKTOP-PREVIEW-D4",
+      "family_ids": [
+        "S.APP.photos.SELECT",
+        "S.APP.photos.NAV"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e17a-1440-zh-ready.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e17b-classic-en-ready.png"
+      ],
+      "scope": "Defaultshortdesktopphoto window only; phone/fallbackfailurerecovery notinferred.",
+      "reason": "Header/nav plus52vh image leavesphotographsubjectbottom/caption below initialwindowclip;userneedsbody scroll/maximize forwholeview. Contentpreserved/reachable,notrouting/data loss/P1. Considerimagecontainheightbasedonavailablewindowbody orclearzoom/max affordance,notfontreduction/hiddencontent."
     }
   ],
   "findings": [
@@ -9765,8 +9916,8 @@
       "severity": "P2",
       "title": "照片重试隐藏当前焦点，恢复反馈与入口不易发现",
       "baseline_reason": "1440zh/reduce kumano404 first error Retry52.48x23.37 is below visible window clipping; real click auto-scrolls, synchronously hides focused Retry→BODY during held state. Next actual Tab returns photo-region button, then exact original WebP loads.",
-      "recommendation": "Only preview image recovery in media.js/space-media.css: retain same Retry with pending guard, stable visible status/action grouping and reasonable target/type; preserve explicit outside focus. Timeout remains a source/testing gap, not an observed hang.",
-      "status": "confirmed_named_photo_retry_focus_feedback_baseline_open",
+      "recommendation": "命名照片404重试/焦点/反馈范围已修。默认短桌面预览仍可比较按windowbody适配的contain首屏或明显放大入口，保原图与滚动；图片自身期限仍是未验覆盖边界，不能当本批已修。",
+      "status": "closed_E17_named_spatial_photo_retry_focus_feedback_and_recovery_scope",
       "baseline_cap": null,
       "active_cap": null,
       "batch": "Space_media_baseline",
@@ -9775,7 +9926,8 @@
         "D3"
       ],
       "browser_evidence": [
-        "E-SPACE-PHOTO-RETRY-BASELINE"
+        "E-SPACE-PHOTO-RETRY-BASELINE",
+        "E-BATCH-E17"
       ],
       "evidence": [
         {
@@ -9791,6 +9943,10 @@
         {
           "kind": "recorded_browser",
           "evidence_id": "E-SPACE-PHOTO-RETRY-BASELINE"
+        },
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-BATCH-E17"
         }
       ],
       "as_of": {
@@ -9803,7 +9959,20 @@
         "Desktop local selected image only; no mobile44 or blanket WCAG target failure.",
         "No trap/global Tab jump, real timeout or total album/source failure claim.",
         "No API/backend/AT/physical-device evidence."
-      ]
+      ],
+      "resolution": {
+        "as_of": {
+          "phase": "E17 final independent photo recovery and named search-article review",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+          "reviewed_at": "2026-10-16T11:03:46+08:00",
+          "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+        },
+        "evidence": [
+          "E-BATCH-E17"
+        ],
+        "result": "Three namedspatial recovery contexts retain visible stableRetry;pendingARIAguard/2Enter singleflight;decoded contain onlyremainingRetryfocus→namedimg,away nofocussteal. OriginalNotes preserved.",
+        "limits": "Classicnormalonly;timeout notadded/observed;close/reopen/staleevent andsyntheticcomplete0 contractscope,notwarmcache/AT/physical/fullmatrix."
+      }
     },
     {
       "id": "UX-053",
@@ -9924,9 +10093,9 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.28",
-    "sha256": "ddf5c5448bb0c6c40a0d4c7e40b0f8db56f62aaf4c59b5a3dffc296b942c289b",
-    "markdown_sha256": "5868a7a743443f84d0b579b6d39dabfd3e66b50486310b31e65dc91482fb20b6",
+    "version": "1.29",
+    "sha256": "a79ffb91c6cba77b65638bb59dd42245d2deba545b323b8a679717f33d8d65de",
+    "markdown_sha256": "7969d3b5106682ca9f5f706f61b15d604a8b06b70f1b10f7f580866e95acd841",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -9936,12 +10105,12 @@
       "control_families": 265,
       "stable_control_selectors": 369,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 85,
+      "partial_state_evidence_families": 92,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 198,
-        "partial-state-evidence": 85,
+        "source-only": 191,
+        "partial-state-evidence": 92,
         "measured-observation-only": 1,
         "rendered-baseline": 25
       },
@@ -9949,13 +10118,13 @@
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 86,
+      "families_with_state_evidence": 93,
       "accepted_whole_families": 0,
-      "state_evidence_records": 382,
+      "state_evidence_records": 394,
       "surface_state_evidence_records": 4
     },
-    "imported_at": "2026-10-16T09:58:53+08:00",
-    "import_scope": "9 E16C1 lean itembindings, no newcontrol/family.382itemrows/86localfamilies(85partial+1measured)+4separatefontsurfaces,0whole/fullnull. Currentfollowupfc51ca sourcecalibrated; historicalabs controls no inheritance."
+    "imported_at": "2026-10-16T11:03:46+08:00",
+    "import_scope": "12 E17 lean itembindings=11media+1searcharticle, no newcontrol/family.394rows/93local(92+1)+4separatefontsurfaces,0whole/fullnull. NAVgeometry3controls/onlyNextactive,LOADtype/targetonly/mapheadernotwholemap."
   },
   "groups": [
     {
@@ -31661,7 +31830,9 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.article-reader-note-journey.S.SEARCH.RESULT.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -34892,9 +35063,10 @@
       "task": "按旅行区域看照片",
       "source": {
         "file": "assets/js/space/media.js",
-        "line": 127,
+        "line": 166,
         "symbol_or_needle": "data-photo-filter",
-        "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+        "sha256": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+        "source_context_ref": "batch-e17b-source.json"
       },
       "state_profile": "toggle",
       "inventory_evidence": "source-only",
@@ -34956,7 +35128,9 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.all-label-target-only.S.APP.photos.FILTER.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -34975,9 +35149,10 @@
       "task": "看大图",
       "source": {
         "file": "assets/js/space/media.js",
-        "line": 127,
+        "line": 166,
         "symbol_or_needle": "data-photo-select",
-        "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+        "sha256": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+        "source_context_ref": "batch-e17b-source.json"
       },
       "state_profile": "command",
       "inventory_evidence": "source-only",
@@ -35039,7 +35214,9 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.public-thumb-preview.S.APP.photos.SELECT.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -35060,9 +35237,10 @@
       "task": "连续浏览照片",
       "source": {
         "file": "assets/js/space/media.js",
-        "line": 127,
-        "symbol_or_needle": "data-photo-prev",
-        "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+        "line": 166,
+        "symbol_or_needle": "data-photo-next",
+        "sha256": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+        "source_context_ref": "batch-e17b-source.json"
       },
       "state_profile": "command",
       "inventory_evidence": "source-only",
@@ -35124,7 +35302,10 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.three-target-geometry.S.APP.photos.NAV.normal",
+          "EIMPORT.E17.native-next-arrow.S.APP.photos.NAV.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -35143,9 +35324,10 @@
       "task": "从单图失败恢复",
       "source": {
         "file": "assets/js/space/media.js",
-        "line": 18,
+        "line": 20,
         "symbol_or_needle": "data-image-retry",
-        "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+        "sha256": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+        "source_context_ref": "batch-e17b-source.json"
       },
       "state_profile": "async",
       "inventory_evidence": "partial-state-evidence",
@@ -35212,7 +35394,11 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active"
+          "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active",
+          "EIMPORT.E17.visible-error-row.S.APP.photos.RETRY.error",
+          "EIMPORT.E17.pending-single-flight.S.APP.photos.RETRY.loading",
+          "EIMPORT.E17.decoded-owned-or-away.S.APP.photos.RETRY.active",
+          "EIMPORT.E17.attempt-disposal-contract.S.APP.photos.RETRY.error"
         ],
         "legacy_record_count_without_binding_id": 0
       },
@@ -35233,9 +35419,10 @@
       "task": "显式连接公开相册",
       "source": {
         "file": "assets/js/space/media.js",
-        "line": 33,
+        "line": 85,
         "symbol_or_needle": "data-media-load",
-        "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+        "sha256": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+        "source_context_ref": "batch-e17b-source.json"
       },
       "state_profile": "async",
       "inventory_evidence": "source-only",
@@ -35297,7 +35484,9 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.source-panel-target-contract.S.APP.photos.LOAD.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -35399,9 +35588,10 @@
       "task": "看照片所在公开地区",
       "source": {
         "file": "assets/js/space/media.js",
-        "line": 127,
-        "symbol_or_needle": "Explore places",
-        "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+        "line": 166,
+        "symbol_or_needle": "routeButton map",
+        "sha256": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+        "source_context_ref": "batch-e17b-source.json"
       },
       "state_profile": "command",
       "inventory_evidence": "source-only",
@@ -35463,7 +35653,9 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.photo-header-to-map.S.APP.photos.PLACE.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -38248,9 +38440,10 @@
       "task": "从地点继续看真实记录",
       "source": {
         "file": "assets/js/space/media.js",
-        "line": 155,
-        "symbol_or_needle": "sp-place-writing",
-        "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+        "line": 194,
+        "symbol_or_needle": "sp-places sharedheader/related routes",
+        "sha256": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+        "source_context_ref": "batch-e17b-source.json"
       },
       "state_profile": "nav",
       "inventory_evidence": "source-only",
@@ -38317,7 +38510,9 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.header-photos-target-only.S.APP.map.RELATED.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -72420,7 +72615,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.article-reader-note-journey.S.SEARCH.RESULT.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -74264,7 +74461,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.all-label-target-only.S.APP.photos.FILTER.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -74340,7 +74539,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.public-thumb-preview.S.APP.photos.SELECT.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -74416,7 +74617,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.three-target-geometry.S.APP.photos.NAV.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -74492,7 +74695,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.three-target-geometry.S.APP.photos.NAV.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -74568,7 +74773,10 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.three-target-geometry.S.APP.photos.NAV.normal",
+          "EIMPORT.E17.native-next-arrow.S.APP.photos.NAV.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -74647,7 +74855,11 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active"
+          "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active",
+          "EIMPORT.E17.visible-error-row.S.APP.photos.RETRY.error",
+          "EIMPORT.E17.pending-single-flight.S.APP.photos.RETRY.loading",
+          "EIMPORT.E17.decoded-owned-or-away.S.APP.photos.RETRY.active",
+          "EIMPORT.E17.attempt-disposal-contract.S.APP.photos.RETRY.error"
         ],
         "legacy_record_count_without_binding_id": 0
       }
@@ -74724,7 +74936,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.source-panel-target-contract.S.APP.photos.LOAD.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -74876,7 +75090,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.photo-header-to-map.S.APP.photos.PLACE.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -75505,7 +75721,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E17.header-photos-target-only.S.APP.map.RELATED.normal"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -91675,6 +91893,17 @@
       "proposal": "Only focused suggestion states: inset itsoutline or reserve enoughscrollportgutter so outerringbottom iswhole at224; preservecurrent44, buttons, ownership and nativeTab. Currentfocusclear; no blocker/blanketWCAGfailure.",
       "status": "bounded_visual_finish_candidate",
       "evidence_type": "actualzh/en focusedthird PNG, not hypotheticalAT gap"
+    },
+    {
+      "id": "DES-E17-PREVIEW-FIT",
+      "families": [
+        "S.APP.photos.SELECT",
+        "S.APP.photos.NAV"
+      ],
+      "evidence": "E-BATCH-E17",
+      "proposal": "Compare defaultdesktoppreview contain sizing againstactualwindowbody capacity orclearmaximize/viewwholephoto action;preservephoto bytes/aspect/scroll/44/type. Specific1440readysubjectbottom/captionbelowclip;no inaccessible/P1 claim.",
+      "status": "bounded_design_followup_candidate",
+      "evidence_type": "actualdefaultdesktopreadyPNG"
     }
   ],
   "scoped_check_assessments": [
@@ -98276,7 +98505,14 @@
         "E-SPACE-PHOTO-RETRY-BASELINE"
       ],
       "scope": "Named recordedfragment only; completecriterion/dimension/family remainsunverified.",
-      "reason": "RealRetry hides focusedbutton→BODY; nextTab photo-regionbutton. Recovery succeeds; P2 nottrap."
+      "reason": "RealRetry hides focusedbutton→BODY; nextTab photo-regionbutton. Recovery succeeds; P2 nottrap.",
+      "follow_up": {
+        "status": "closed_E17_named_spatial_photo_retry_focus_feedback_and_recovery_scope",
+        "evidence": [
+          "E-BATCH-E17"
+        ],
+        "note": "Original80/desktopnegative retained;currentnamedspatialfollow-up only."
+      }
     },
     {
       "id": "CHK-E16B-KNOWLEDGE-OPEN",
@@ -98491,11 +98727,171 @@
       ],
       "scope": "Only named recordedfragment; wholecriterion/dimension/control/family remainsnull.",
       "reason": "Actualzh/en focusedthird PNG: outerring bottom edge clips againstscrollport, top/sides/text remainclearly identifiable andbutton44hit. Minorfinishcandidate insetring/gutter; no inability/WCAGfailure or contrastcertificate."
+    },
+    {
+      "id": "CHK-E17-RETRY-STABLE",
+      "family_ids": [
+        "S.APP.photos.RETRY"
+      ],
+      "control_ids": [
+        "S.APP.photos.RETRY.control.9d2d8e"
+      ],
+      "criterion": "D3.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_scope",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence": [
+        "E-BATCH-E17"
+      ],
+      "scope": "Namedstates only; fullcriterion/dimension/control/family remainsnull.",
+      "reason": "Error/pending samebutton/label/exactbbox44.28;2nativeEnter no newrequests beyond2GET;visiblepoliteatomicstatus. No fullimage deadline claim."
+    },
+    {
+      "id": "CHK-E17-RETRY-FOCUS",
+      "family_ids": [
+        "S.APP.photos.RETRY"
+      ],
+      "control_ids": [
+        "S.APP.photos.RETRY.control.9d2d8e"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_scope",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence": [
+        "E-BATCH-E17"
+      ],
+      "scope": "Namedstates only; fullcriterion/dimension/control/family remainsnull.",
+      "reason": "OwnedRetry decodedready→alt namedimg beforehide;realTabaway390 preservesotherbutton. Not allpageTab/AT/Safari/physical."
+    },
+    {
+      "id": "CHK-E17-ATTEMPT-OWNER",
+      "family_ids": [
+        "S.APP.photos.RETRY"
+      ],
+      "control_ids": [
+        "S.APP.photos.RETRY.control.9d2d8e"
+      ],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_scope",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence": [
+        "E-BATCH-E17"
+      ],
+      "scope": "Namedstates only; fullcriterion/dimension/control/family remainsnull.",
+      "reason": "Contractclosedreopen/differentphoto/staleoldnode events isolated;source decodeawait recheckscontroller/window/node/connected. Syntheticcomplete0 distinctURL notactualcache;src-clearing notguaranteedHTTPabort."
+    },
+    {
+      "id": "CHK-E17-READABLE-NAMED-TYPE",
+      "family_ids": [
+        "S.APP.photos.SELECT",
+        "S.APP.photos.FILTER"
+      ],
+      "control_ids": [
+        "S.APP.photos.SELECT.control.ac318e",
+        "S.APP.photos.FILTER.control.9e0485"
+      ],
+      "criterion": "D4.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_scope",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence": [
+        "E-BATCH-E17"
+      ],
+      "scope": "Namedstates only; fullcriterion/dimension/control/family remainsnull.",
+      "reason": "Spatialsource20/16/18→displayapproximately16.4/13.12/14.76;classic16/12/14. Normaltype andfilterall target only;notfilteraction/API/galleryfullheight."
+    },
+    {
+      "id": "CHK-E17-NAV-TARGETS",
+      "family_ids": [
+        "S.APP.photos.NAV"
+      ],
+      "control_ids": [
+        "S.APP.photos.NAV.control.c66522",
+        "S.APP.photos.NAV.control.567368",
+        "S.APP.photos.NAV.control.7b09ac"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_scope",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence": [
+        "E-BATCH-E17"
+      ],
+      "scope": "Namedstates only; fullcriterion/dimension/control/family remainsnull.",
+      "reason": "Back/prev/next three44targetgeometry;onlyNextnativeEnter+ArrowRight actualchain;Escape only unchangedNAVcontract. Returntopbyrealwheel whenuserpreviouslyscrolled,notallnavvisibleatallscrollpositions."
+    },
+    {
+      "id": "CHK-E17-SEARCH-ARTICLE",
+      "family_ids": [
+        "S.SEARCH.RESULT"
+      ],
+      "control_ids": [
+        "S.SEARCH.RESULT.control.4dbfd2"
+      ],
+      "criterion": "D1.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_scope",
+      "as_of": {
+        "phase": "E17 final independent photo recovery and named search-article review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+        "reviewed_at": "2026-10-16T11:03:46+08:00",
+        "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+      },
+      "evidence": [
+        "E-SPACE-SEARCH-ARTICLE"
+      ],
+      "scope": "Namedstates only; fullcriterion/dimension/control/family remainsnull.",
+      "reason": "Namedactualarticle search→Reader/safeURL/publicbody +sameNotes/caret,nomatchEnter nofalseopen;Escapequalifiedrawobservation. No oldproduct/E11 duplication."
     }
   ],
-  "latest_validated_checkpoint": "4ace9c524d6e91c8a2d0e52e361f1c8698297970",
-  "preview_scope": "E16c1 named3contexts/17finalPNG/19distinctcontracts accepted;UX053draft/ownedfocusscopedclosed. PriorE16B/E14 source-specific scopes retained. PhotoUX052open;focusedringminorfinishcandidate. Allcompletefamily/control/dimensionnull.",
-  "latest_reviewed_artifact": "E-BATCH-E16C1",
+  "latest_validated_checkpoint": "4ffc2c0b38f3e13194ee1ff565bc96364166034b",
+  "preview_scope": "E17 named3spatialrecovery+classicnormal scopeaccepted;UX052scopedclosed. Searcharticle immutable4ffconejourney positive. C2focusringnotimplemented;E18newbaselineexcluded. Wholefamily/control/dimensionsnull.",
+  "latest_reviewed_artifact": "E-BATCH-E17",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -98845,10 +99241,10 @@
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
   "latest_reviewed_source_snapshot": {
-    "path": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
-    "sha256": "81b367d0c4db78f428be900937494892b01389ff34b9d2bd4e835c000d544636",
-    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-provenance.json",
-    "provenance_sha256": "6ed65d3e2455eacdeb63f63d5169b6b2d26dc9f4411c6e8c8d9e3b5e1b8fb049",
+    "path": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+    "sha256": "ddaa464e911f74c95658bedee325fd4c077917f662970b26f2fd696d9d70ac3c",
+    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e17-provenance.json",
+    "provenance_sha256": "3e3231c722ded1358fc7dfaf0bb4ba566edb6adbafc372a14bfb7d2f4bf2d98d",
     "status": "independent_bounded_review_complete_pending_parent_checkpoint"
   },
   "anchor_intent_review": {
@@ -99488,5 +99884,32 @@
       "e16c1-reply-followup-import",
       "e16c-followup-negative-history"
     ]
+  },
+  "e17_source_review": {
+    "as_of": {
+      "phase": "E17 final independent photo recovery and named search-article review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e17b-source.json",
+      "reviewed_at": "2026-10-16T11:03:46+08:00",
+      "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b"
+    },
+    "status": "accepted_named_photo_recovery_and_search_article_scope",
+    "closed_findings": [
+      "UX-052_named_scope"
+    ],
+    "new_P0_P1_findings": [],
+    "verified_score": null,
+    "static_design_fragments": {
+      "recovery_D1": 96,
+      "recovery_D4": 96,
+      "defaultdesktop_preview_D1": 94.5,
+      "defaultdesktop_preview_D4": 94.5,
+      "complete_dimensions": null
+    },
+    "proof_refs": [
+      "E-BATCH-E17",
+      "E-SPACE-SEARCH-ARTICLE"
+    ],
+    "scope": "SourcePanelonward exact4ffc;imagebind/recovery +localCSS only.72hash/15source/QA/runners/2servedbundle;22primary+4history independentlyviewed. Search17artifact/Git source proof independent4ffc.",
+    "limits": "No ownimage timeout/realImmich/wholemap/AT/Safari/physical/zoom/continuousGPU/fullmatrix;classicactualnormal not404;C2 focusoffset notimplemented/certified. NewE18 readingmapbaseline excluded."
   }
 }

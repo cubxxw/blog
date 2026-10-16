@@ -1939,3 +1939,26 @@ UX046原冷字体负基线保留；独立final逐看16正式图后，仅命名�
 三类夹具纠正不作生产缺陷：初Clear→third固定Tab假设错，原referenceP合法focus；away原P按既有innerHTML更换，最终仍要求同answerBody/唯一同text/1px原gate；初C/CA半透明opacity.873642 finitefade非稳定终态，C1恢复原B opacity≥.999/inertfalse/无finite sheet-root动画gate，**没有CSS重绘修复或capturebug结论**。原raw/log/source全保；最终320首/next自然帧只命名时刻，不证明连续绘制。code/quote-shaped测试输入仍按既有plainparagraph渲染，不宣称新增富文本格式。
 
 累计 **382条item-state / 86族局部证据**（85partial+1measured；198source-only+25rendered），独立 **4字体surface**不变；仍 **309族 / 369selectors / 57journeys / 18roadmap / 0完整族 / fullnull**。新增的是证据行，不是9新功能；OSIME/AT/Safari/实机/全motion/全矩阵未知。本Agent未启动browser/构建/测试，现停写供checkpoint与评分同步。
+
+
+## v1.29 E17：照片恢复、媒体导航与文章搜索
+
+导入 **2026-10-16T10:40:04+08:00**；[provenance](evidence/batch-e17-provenance.json)72paths及[finalB manifest](evidence/batch-e17b-source.json)15项匹配，生产仅mediaJS`85389172…`/CSS`8d12bcf8…`两源initial→A→B不变；新spec`29f6ea85…`。源位置校准保历史，不新增selector/族。[5distinct合同](evidence/batch-e17a-contracts.log)=初轮不变NAV1pass+A4affected pass8.7s；初5中1pass/4fixturefail16s保留，不计9新功能。NAV整个caseblock逐字节相同；Hugo4460ms是原生产构建，A改测试/B改parent探针均未重建生产。
+
+**4 complete contexts/22 primary图**：A1440zh/light/reduce6、B390en/dark/normal6、B320zh/light/reduce6、Bclassic1440en/light/reduce4。Aphone partial4图只历史，不计第5完成context；父全看26图，本Agent看6primary代表图。Workspace theme是seed后读回，不冒实际设置动作。
+
+本轮 **12证据行**，媒体11、文章搜索1，非12新功能：
+
+| 精确绑定 | 证据边界 |
+| --- | --- |
+| Retry error/loading/active | 三spatial真实404→稳定Retry/status；原button矩形差≤.1/focus保留、ARIAdisabledtrue，额外两真实Enter仍2总GET。owned decode先交alt img再隐藏；390真实Tab去caption后完成不抢。classic未跑404/Retry |
+| Retry生命周期 | 单独C2合同：真实404→held→close/另一原图200，旧node合成事件不覆写；第三URL complete/errorgetter是合成，不认证warmcache/网络timeout |
+| SELECT/FILTER/LOAD | 四actual原thumb点开；gallery computedCSS字号spatial20/16/18、classic16/12/14仅样本，未投影；合同投影字号是平面bbox估算，非字形像素。FILTER firstAll只有normal44命中；LOAD仅合同说明文字及按钮44，未量按钮字体/未连Immich。1440/classic部分卡片文字fold下，不授全部文字首屏可见 |
+| NAV | 三按钮normal几何44.28spatial/44classic；实际动作仅Next原生Enter→ArrowRight到第三。Prev/Back不继承实点；Escgallery/Notes属不变NAV合同 |
+| 地点/map | 四actual照片header真click进map、原NotesDOM/value/反向2..17选区保留。map.RELATED仅`.sp-places` header Photos按钮normal/type/44，不授pins/全部区域/relatedreader/footer外链；zoom-in只classic合同回归 |
+
+UX052旧负保留；独立final逐看26图/核72hash后，仅命名关闭 **`closed_E17_named_spatial_photo_retry_focus_feedback_and_recovery_scope`**：三spatial404→同位置label Retry/pending去重→decodedready、owned交img/away不抢与Notes原状态。classic仅normal/type/NAV/mapheader，不冒错误恢复；关闭/旧事件/complete0仍合同。初4fixture纠正分别是`isDisabled`包含ARIA、map kicker需header限域、同URL合成complete/请求coalesce需分真实与第三URL合成、Aphone Tabaway合法滚到caption后未回0就测上方NAV。B只真实wheel回0再用原44/fullclip gate，**不是生产NAV修复或新裁切缺陷**；原raw/log/4partial图保留。
+
+另[Space article-search](evidence/probe-space-search-article-provenance.json)仅 **1条命名旅程**：10artifact+7immutable`4ffc`源匹配、A3图已看；390en/light/reduce原Notes→真实MetaK/ArrowDown/Enter→正确本地Reader/title/body/absoluteURL，原Notes同DOM/草稿/反向3..18选区保留；无匹配Enter不误开旧项。Escape关闭有assert，SECTION返回仅raw观察，不授特定owner/全Tab。初expected relativeURL错，A只规范absolute比较及输出prefix；无生产fix/新UX，初1图与A首图同SHA。旧product搜索/E11不叠加认证。
+
+累计 **394条item-state / 93族局部证据**（92partial+1measured；191source-only+25rendered），独立4字体surface不变；仍 **309族/369selectors/57journeys/18roadmap/0完整族/fullnull**。图片deadline、全contrast/全map/AT/实机/Safari/fullmatrix未认证。本Agent未运行browser/构建/测试；独立结论已对齐，现停止写入供checkpoint。

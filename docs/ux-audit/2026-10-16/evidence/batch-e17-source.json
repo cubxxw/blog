@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-16T02:15:59.272701+00:00",
+  "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b",
+  "files": {
+    "assets/js/space/media.js": "8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb",
+    "assets/css/space-media.css": "8d12bcf81af0df99eef224de844a6f58155395b0d38c1ec3954aa1f9cec07d07",
+    "tests/e2e/space-media-legibility-contracts.spec.ts": "d1ef4d6ebd98f947e7e08fa868edc448b671e5b1d1a22a323a0fd75112048493",
+    "assets/js/space/media-state.mjs": "2154203c2999b5af5185ba31c5978ab8997dd4c3b774ffb3e28a47bb89c4bd6e",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+    "layouts/partials/space/desktop.html": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21",
+    "static/js/article-chat.js": "a9d1fef2f50eb0740be0ebd61caa3f70f91561932a5a0ea96da816e1a8335b2a",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "layouts/partials/extend_head.html": "f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5",
+    "docs/ux-audit/2026-10-16/space-media-qa.config.mjs": "4dae411507b04b94b9f35a5de106d20aa96327075d4a5ef81b5c9329af0c5a42",
+    "docs/ux-audit/2026-10-16/batch-e17.actual.mjs": "51abeab7a9f0bd8e73a95376caddfad5064b5ac9fda302449d13608e6fa35e78"
+  }
+}

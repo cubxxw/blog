@@ -1,0 +1,17 @@
+{"view":"1440-zh","pass":true,"images":6}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"text":"→","font":"18px","color":"rgb(229, 235, 231)","background":"rgba(0, 0, 0, 0)","box":{"x":103.97897338867188,"y":111.94681549072266,"width":44.28050231933594,"height":44.280494689941406,"top":111.94681549072266,"right":148.2594757080078,"bottom":156.22731018066406,"left":103.97897338867188},"inView":true,"windowClip":false,"centerHit":true,"focus":false}
+    at measure (file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/batch-e17a.actual.mjs:7:559)
+    at async file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/batch-e17a.actual.mjs:12:94 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

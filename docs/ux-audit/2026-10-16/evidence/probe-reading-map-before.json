@@ -1,0 +1,1693 @@
+{
+  "at": "2026-10-16T02:32:33.099Z",
+  "base": "4ffc2c0b immutable8 readingmap sources; E17 media candidate unrelated",
+  "sources": {
+    "assets/css/space-profile.css": "8989a78db83d72540115d04eae012e6cc721660389093263cbd914ffdef28c7f",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "layouts/partials/space/profile.html": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205",
+    "layouts/shortcodes/start-here.html": "4173d0103f94f820ab0f76bf76233d0c6c6cfa81eb77f4511dba8bea4df9ed8a",
+    "layouts/partials/space/desktop.html": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21"
+  },
+  "rows": [
+    {
+      "view": {
+        "id": "1440-en",
+        "width": 1440,
+        "height": 900,
+        "lang": "en",
+        "theme": "light",
+        "motion": "reduce"
+      },
+      "steps": [
+        {
+          "name": "normal",
+          "data": {
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+            "href": "/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 475.6398010253906,
+              "y": 379.8258972167969,
+              "width": 490.0144348144531,
+              "height": 107.42007446289062,
+              "top": 379.8258972167969,
+              "right": 965.6542358398438,
+              "bottom": 487.2459716796875,
+              "left": 475.6398010253906
+            },
+            "window": {
+              "x": 442.83978271484375,
+              "y": 205.2298126220703,
+              "width": 555.96044921875,
+              "height": 455.92034912109375,
+              "top": 205.2298126220703,
+              "right": 998.8002319335938,
+              "bottom": 661.1501617431641,
+              "left": 442.83978271484375
+            },
+            "full": true,
+            "hit": false,
+            "focus": false,
+            "outline": {
+              "style": "none",
+              "width": "3px",
+              "offset": "0px",
+              "color": "rgb(39, 110, 101)"
+            },
+            "decoration": "none",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "Just want one post?",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 379.8258972167969,
+                  "width": 143.66665649414062,
+                  "height": 18.8599853515625,
+                  "top": 379.8258972167969,
+                  "right": 619.3064575195312,
+                  "bottom": 398.6858825683594,
+                  "left": 475.6398010253906
+                }
+              },
+              "title": {
+                "text": "Wandering & Growing: 2025-2026 Annual Review",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 379.8258972167969,
+                  "width": 449.9112854003906,
+                  "height": 48.380035400390625,
+                  "top": 379.8258972167969,
+                  "right": 925.5510864257812,
+                  "bottom": 428.2059326171875,
+                  "left": 475.6398010253906
+                }
+              },
+              "hook": {
+                "text": "A year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 409.3459167480469,
+                  "width": 488.1438293457031,
+                  "height": 48.380035400390625,
+                  "top": 409.3459167480469,
+                  "right": 963.7836303710938,
+                  "bottom": 457.7259521484375,
+                  "left": 475.6398010253906
+                }
+              },
+              "foot": {
+                "text": "25 min read\nStart with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 438.8659362792969,
+                  "width": 490.0144348144531,
+                  "height": 48.380035400390625,
+                  "top": 438.8659362792969,
+                  "right": 965.6542358398438,
+                  "bottom": 487.2459716796875,
+                  "left": 475.6398010253906
+                }
+              },
+              "meta": {
+                "text": "25 min read",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 841.680419921875,
+                  "y": 438.8659362792969,
+                  "width": 85.12628173828125,
+                  "height": 18.860015869140625,
+                  "top": 438.8659362792969,
+                  "right": 926.8067016601562,
+                  "bottom": 457.7259521484375,
+                  "left": 841.680419921875
+                }
+              },
+              "cta": {
+                "text": "Start with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 438.8659362792969,
+                  "width": 490.0144348144531,
+                  "height": 48.380035400390625,
+                  "top": 438.8659362792969,
+                  "right": 965.6542358398438,
+                  "bottom": 487.2459716796875,
+                  "left": 475.6398010253906
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "hover",
+          "data": {
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+            "href": "/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 475.6398010253906,
+              "y": 379.8258972167969,
+              "width": 490.0144348144531,
+              "height": 107.42007446289062,
+              "top": 379.8258972167969,
+              "right": 965.6542358398438,
+              "bottom": 487.2459716796875,
+              "left": 475.6398010253906
+            },
+            "window": {
+              "x": 442.83978271484375,
+              "y": 205.2298126220703,
+              "width": 555.96044921875,
+              "height": 455.92034912109375,
+              "top": 205.2298126220703,
+              "right": 998.8002319335938,
+              "bottom": 661.1501617431641,
+              "left": 442.83978271484375
+            },
+            "full": true,
+            "hit": false,
+            "focus": false,
+            "outline": {
+              "style": "none",
+              "width": "3px",
+              "offset": "0px",
+              "color": "rgb(39, 110, 101)"
+            },
+            "decoration": "underline",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "Just want one post?",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 379.8258972167969,
+                  "width": 143.66665649414062,
+                  "height": 18.8599853515625,
+                  "top": 379.8258972167969,
+                  "right": 619.3064575195312,
+                  "bottom": 398.6858825683594,
+                  "left": 475.6398010253906
+                }
+              },
+              "title": {
+                "text": "Wandering & Growing: 2025-2026 Annual Review",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 379.8258972167969,
+                  "width": 449.9112854003906,
+                  "height": 48.380035400390625,
+                  "top": 379.8258972167969,
+                  "right": 925.5510864257812,
+                  "bottom": 428.2059326171875,
+                  "left": 475.6398010253906
+                }
+              },
+              "hook": {
+                "text": "A year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 409.3459167480469,
+                  "width": 488.1438293457031,
+                  "height": 48.380035400390625,
+                  "top": 409.3459167480469,
+                  "right": 963.7836303710938,
+                  "bottom": 457.7259521484375,
+                  "left": 475.6398010253906
+                }
+              },
+              "foot": {
+                "text": "25 min read\nStart with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 438.8659362792969,
+                  "width": 490.0144348144531,
+                  "height": 48.380035400390625,
+                  "top": 438.8659362792969,
+                  "right": 965.6542358398438,
+                  "bottom": 487.2459716796875,
+                  "left": 475.6398010253906
+                }
+              },
+              "meta": {
+                "text": "25 min read",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 841.680419921875,
+                  "y": 438.8659362792969,
+                  "width": 85.12628173828125,
+                  "height": 18.860015869140625,
+                  "top": 438.8659362792969,
+                  "right": 926.8067016601562,
+                  "bottom": 457.7259521484375,
+                  "left": 841.680419921875
+                }
+              },
+              "cta": {
+                "text": "Start with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 438.8659362792969,
+                  "width": 490.0144348144531,
+                  "height": 48.380035400390625,
+                  "top": 438.8659362792969,
+                  "right": 965.6542358398438,
+                  "bottom": 487.2459716796875,
+                  "left": 475.6398010253906
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "native-tab-0",
+          "focus": {
+            "tag": "A",
+            "cls": "",
+            "text": "Resume and project evidence ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-1",
+          "focus": {
+            "tag": "A",
+            "cls": "",
+            "text": "GitHub ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-2",
+          "focus": {
+            "tag": "SUMMARY",
+            "cls": "meet-atlas-summary",
+            "text": "Want to read my writing?\nOpen four curated reading paths",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-3",
+          "focus": {
+            "tag": "A",
+            "cls": "sh-first sh-r",
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep ",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-focused",
+          "data": {
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+            "href": "/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 475.6398010253906,
+              "y": 496.2659606933594,
+              "width": 490.0144348144531,
+              "height": 107.42007446289062,
+              "top": 496.2659606933594,
+              "right": 965.6542358398438,
+              "bottom": 603.68603515625,
+              "left": 475.6398010253906
+            },
+            "window": {
+              "x": 442.83978271484375,
+              "y": 205.2298126220703,
+              "width": 555.96044921875,
+              "height": 455.92034912109375,
+              "top": 205.2298126220703,
+              "right": 998.8002319335938,
+              "bottom": 661.1501617431641,
+              "left": 442.83978271484375
+            },
+            "full": true,
+            "hit": false,
+            "focus": true,
+            "outline": {
+              "style": "solid",
+              "width": "2px",
+              "offset": "3px",
+              "color": "rgb(36, 108, 101)"
+            },
+            "decoration": "none",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "Just want one post?",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 496.2659606933594,
+                  "width": 143.66665649414062,
+                  "height": 18.860015869140625,
+                  "top": 496.2659606933594,
+                  "right": 619.3064575195312,
+                  "bottom": 515.1259765625,
+                  "left": 475.6398010253906
+                }
+              },
+              "title": {
+                "text": "Wandering & Growing: 2025-2026 Annual Review",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 496.2659606933594,
+                  "width": 449.9112854003906,
+                  "height": 48.380035400390625,
+                  "top": 496.2659606933594,
+                  "right": 925.5510864257812,
+                  "bottom": 544.64599609375,
+                  "left": 475.6398010253906
+                }
+              },
+              "hook": {
+                "text": "A year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 525.7860107421875,
+                  "width": 488.1438293457031,
+                  "height": 48.3800048828125,
+                  "top": 525.7860107421875,
+                  "right": 963.7836303710938,
+                  "bottom": 574.166015625,
+                  "left": 475.6398010253906
+                }
+              },
+              "foot": {
+                "text": "25 min read\nStart with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 555.3060302734375,
+                  "width": 490.0144348144531,
+                  "height": 48.3800048828125,
+                  "top": 555.3060302734375,
+                  "right": 965.6542358398438,
+                  "bottom": 603.68603515625,
+                  "left": 475.6398010253906
+                }
+              },
+              "meta": {
+                "text": "25 min read",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 841.680419921875,
+                  "y": 555.3060302734375,
+                  "width": 85.12628173828125,
+                  "height": 18.8599853515625,
+                  "top": 555.3060302734375,
+                  "right": 926.8067016601562,
+                  "bottom": 574.166015625,
+                  "left": 841.680419921875
+                }
+              },
+              "cta": {
+                "text": "Start with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 475.6398010253906,
+                  "y": 555.3060302734375,
+                  "width": 490.0144348144531,
+                  "height": 48.3800048828125,
+                  "top": 555.3060302734375,
+                  "right": 965.6542358398438,
+                  "bottom": 603.68603515625,
+                  "left": 475.6398010253906
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "native-enter-and-click-original-link-intents",
+          "events": [
+            {
+              "trusted": true,
+              "href": "/growth/posts/2025-annual-review/",
+              "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+              "detail": 0
+            },
+            {
+              "trusted": true,
+              "href": "/growth/posts/2025-annual-review/",
+              "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+              "detail": 1
+            }
+          ]
+        },
+        {
+          "name": "same-original-note",
+          "after": {
+            "same": true,
+            "value": "Keep this note while choosing a first read.\nOriginal second line.",
+            "start": 2,
+            "end": 19,
+            "direction": "backward"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "390-en",
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "theme": "dark",
+        "motion": "no-preference"
+      },
+      "steps": [
+        {
+          "name": "normal",
+          "data": {
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+            "href": "/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 59.69847106933594,
+              "y": 324.5085754394531,
+              "width": 264.31207275390625,
+              "height": 166.46188354492188,
+              "top": 324.5085754394531,
+              "right": 324.0105438232422,
+              "bottom": 490.970458984375,
+              "left": 59.69847106933594
+            },
+            "window": {
+              "x": 43.29828643798828,
+              "y": 130.0767059326172,
+              "width": 303.4034423828125,
+              "height": 555.9662475585938,
+              "top": 130.0767059326172,
+              "right": 346.7017288208008,
+              "bottom": 686.0429534912109,
+              "left": 43.29828643798828
+            },
+            "full": true,
+            "hit": false,
+            "focus": false,
+            "outline": {
+              "style": "none",
+              "width": "3px",
+              "offset": "0px",
+              "color": "rgb(164, 219, 201)"
+            },
+            "decoration": "none",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "Just want one post?",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 324.5085754394531,
+                  "width": 143.66818237304688,
+                  "height": 18.8602294921875,
+                  "top": 324.5085754394531,
+                  "right": 203.3666534423828,
+                  "bottom": 343.3688049316406,
+                  "left": 59.69847106933594
+                }
+              },
+              "title": {
+                "text": "Wandering & Growing: 2025-2026 Annual Review",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 324.5085754394531,
+                  "width": 260.7373046875,
+                  "height": 48.38055419921875,
+                  "top": 324.5085754394531,
+                  "right": 320.43577575683594,
+                  "bottom": 372.8891296386719,
+                  "left": 59.69847106933594
+                }
+              },
+              "hook": {
+                "text": "A year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 383.54925537109375,
+                  "width": 264.31207275390625,
+                  "height": 107.42120361328125,
+                  "top": 383.54925537109375,
+                  "right": 324.0105438232422,
+                  "bottom": 490.970458984375,
+                  "left": 59.69847106933594
+                }
+              },
+              "foot": {
+                "text": "25 min read\nStart with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.06443786621094,
+                  "y": 472.1102600097656,
+                  "width": 233.1645050048828,
+                  "height": 18.860198974609375,
+                  "top": 472.1102600097656,
+                  "right": 323.22894287109375,
+                  "bottom": 490.970458984375,
+                  "left": 90.06443786621094
+                }
+              },
+              "meta": {
+                "text": "25 min read",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.06443786621094,
+                  "y": 472.1102600097656,
+                  "width": 85.12721252441406,
+                  "height": 18.860198974609375,
+                  "top": 472.1102600097656,
+                  "right": 175.191650390625,
+                  "bottom": 490.970458984375,
+                  "left": 90.06443786621094
+                }
+              },
+              "cta": {
+                "text": "Start with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 179.1507568359375,
+                  "y": 472.1102600097656,
+                  "width": 144.07818603515625,
+                  "height": 18.860198974609375,
+                  "top": 472.1102600097656,
+                  "right": 323.22894287109375,
+                  "bottom": 490.970458984375,
+                  "left": 179.1507568359375
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "hover",
+          "data": {
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+            "href": "/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 59.69847106933594,
+              "y": 324.5085754394531,
+              "width": 264.31207275390625,
+              "height": 166.46188354492188,
+              "top": 324.5085754394531,
+              "right": 324.0105438232422,
+              "bottom": 490.970458984375,
+              "left": 59.69847106933594
+            },
+            "window": {
+              "x": 43.29828643798828,
+              "y": 130.0767059326172,
+              "width": 303.4034423828125,
+              "height": 555.9662475585938,
+              "top": 130.0767059326172,
+              "right": 346.7017288208008,
+              "bottom": 686.0429534912109,
+              "left": 43.29828643798828
+            },
+            "full": true,
+            "hit": false,
+            "focus": false,
+            "outline": {
+              "style": "none",
+              "width": "3px",
+              "offset": "0px",
+              "color": "rgb(164, 219, 201)"
+            },
+            "decoration": "underline",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "Just want one post?",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 324.5085754394531,
+                  "width": 143.66818237304688,
+                  "height": 18.8602294921875,
+                  "top": 324.5085754394531,
+                  "right": 203.3666534423828,
+                  "bottom": 343.3688049316406,
+                  "left": 59.69847106933594
+                }
+              },
+              "title": {
+                "text": "Wandering & Growing: 2025-2026 Annual Review",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 324.5085754394531,
+                  "width": 260.7373046875,
+                  "height": 48.38055419921875,
+                  "top": 324.5085754394531,
+                  "right": 320.43577575683594,
+                  "bottom": 372.8891296386719,
+                  "left": 59.69847106933594
+                }
+              },
+              "hook": {
+                "text": "A year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 383.54925537109375,
+                  "width": 264.31207275390625,
+                  "height": 107.42120361328125,
+                  "top": 383.54925537109375,
+                  "right": 324.0105438232422,
+                  "bottom": 490.970458984375,
+                  "left": 59.69847106933594
+                }
+              },
+              "foot": {
+                "text": "25 min read\nStart with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.06443786621094,
+                  "y": 472.1102600097656,
+                  "width": 233.1645050048828,
+                  "height": 18.860198974609375,
+                  "top": 472.1102600097656,
+                  "right": 323.22894287109375,
+                  "bottom": 490.970458984375,
+                  "left": 90.06443786621094
+                }
+              },
+              "meta": {
+                "text": "25 min read",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.06443786621094,
+                  "y": 472.1102600097656,
+                  "width": 85.12721252441406,
+                  "height": 18.860198974609375,
+                  "top": 472.1102600097656,
+                  "right": 175.191650390625,
+                  "bottom": 490.970458984375,
+                  "left": 90.06443786621094
+                }
+              },
+              "cta": {
+                "text": "Start with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 179.1507568359375,
+                  "y": 472.1102600097656,
+                  "width": 144.07818603515625,
+                  "height": 18.860198974609375,
+                  "top": 472.1102600097656,
+                  "right": 323.22894287109375,
+                  "bottom": 490.970458984375,
+                  "left": 179.1507568359375
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "native-tab-0",
+          "focus": {
+            "tag": "A",
+            "cls": "",
+            "text": "Resume and project evidence ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-1",
+          "focus": {
+            "tag": "A",
+            "cls": "",
+            "text": "GitHub ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-2",
+          "focus": {
+            "tag": "BUTTON",
+            "cls": "",
+            "text": "Say hello ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-3",
+          "focus": {
+            "tag": "SECTION",
+            "cls": "space-profile__reading",
+            "text": "CUBXXW / READING PATHSWant to read my writing?\nOpen four curated reading pathsNo",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-4",
+          "focus": {
+            "tag": "SUMMARY",
+            "cls": "meet-atlas-summary",
+            "text": "Want to read my writing?\nOpen four curated reading paths",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-5",
+          "focus": {
+            "tag": "A",
+            "cls": "sh-first sh-r sh-will sh-in",
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep ",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-focused",
+          "data": {
+            "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+            "href": "/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 59.69847106933594,
+              "y": 509.8306884765625,
+              "width": 264.31207275390625,
+              "height": 166.46185302734375,
+              "top": 509.8306884765625,
+              "right": 324.0105438232422,
+              "bottom": 676.2925415039062,
+              "left": 59.69847106933594
+            },
+            "window": {
+              "x": 43.29828643798828,
+              "y": 130.0767059326172,
+              "width": 303.4034423828125,
+              "height": 555.9662475585938,
+              "top": 130.0767059326172,
+              "right": 346.7017288208008,
+              "bottom": 686.0429534912109,
+              "left": 43.29828643798828
+            },
+            "full": true,
+            "hit": false,
+            "focus": true,
+            "outline": {
+              "style": "solid",
+              "width": "2px",
+              "offset": "3px",
+              "color": "rgb(164, 219, 201)"
+            },
+            "decoration": "none",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "Just want one post?",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 509.8306884765625,
+                  "width": 143.66818237304688,
+                  "height": 18.8602294921875,
+                  "top": 509.8306884765625,
+                  "right": 203.3666534423828,
+                  "bottom": 528.69091796875,
+                  "left": 59.69847106933594
+                }
+              },
+              "title": {
+                "text": "Wandering & Growing: 2025-2026 Annual Review",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 509.8306884765625,
+                  "width": 260.7373046875,
+                  "height": 48.38055419921875,
+                  "top": 509.8306884765625,
+                  "right": 320.43577575683594,
+                  "bottom": 558.2112426757812,
+                  "left": 59.69847106933594
+                }
+              },
+              "hook": {
+                "text": "A year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 59.69847106933594,
+                  "y": 568.871337890625,
+                  "width": 264.31207275390625,
+                  "height": 107.42120361328125,
+                  "top": 568.871337890625,
+                  "right": 324.0105438232422,
+                  "bottom": 676.2925415039062,
+                  "left": 59.69847106933594
+                }
+              },
+              "foot": {
+                "text": "25 min read\nStart with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.06443786621094,
+                  "y": 657.432373046875,
+                  "width": 233.1645050048828,
+                  "height": 18.86016845703125,
+                  "top": 657.432373046875,
+                  "right": 323.22894287109375,
+                  "bottom": 676.2925415039062,
+                  "left": 90.06443786621094
+                }
+              },
+              "meta": {
+                "text": "25 min read",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.06443786621094,
+                  "y": 657.432373046875,
+                  "width": 85.12721252441406,
+                  "height": 18.86016845703125,
+                  "top": 657.432373046875,
+                  "right": 175.191650390625,
+                  "bottom": 676.2925415039062,
+                  "left": 90.06443786621094
+                }
+              },
+              "cta": {
+                "text": "Start with this one→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(164, 219, 201)",
+                "decoration": "none",
+                "box": {
+                  "x": 179.1507568359375,
+                  "y": 657.432373046875,
+                  "width": 144.07818603515625,
+                  "height": 18.86016845703125,
+                  "top": 657.432373046875,
+                  "right": 323.22894287109375,
+                  "bottom": 676.2925415039062,
+                  "left": 179.1507568359375
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "native-enter-and-click-original-link-intents",
+          "events": [
+            {
+              "trusted": true,
+              "href": "/growth/posts/2025-annual-review/",
+              "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+              "detail": 0
+            },
+            {
+              "trusted": true,
+              "href": "/growth/posts/2025-annual-review/",
+              "text": "Just want one post?\nWandering & Growing: 2025-2026 Annual Review\nA year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.\n25 min read\nStart with this one→",
+              "detail": 1
+            }
+          ]
+        },
+        {
+          "name": "same-original-note",
+          "after": {
+            "same": true,
+            "value": "Keep this note while choosing a first read.\nOriginal second line.",
+            "start": 2,
+            "end": 19,
+            "direction": "backward"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "320-zh",
+        "width": 320,
+        "height": 720,
+        "lang": "zh",
+        "theme": "light",
+        "motion": "reduce"
+      },
+      "steps": [
+        {
+          "name": "normal",
+          "data": {
+            "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。\n约 20 分钟\n从这篇开始→",
+            "href": "/zh/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 53.40156555175781,
+              "y": 247.7513427734375,
+              "width": 213.1968536376953,
+              "height": 195.97711181640625,
+              "top": 247.7513427734375,
+              "right": 266.5984191894531,
+              "bottom": 443.72845458984375,
+              "left": 53.40156555175781
+            },
+            "window": {
+              "x": 37.001808166503906,
+              "y": 118.92353820800781,
+              "width": 245.99639892578125,
+              "height": 454.2733154296875,
+              "top": 118.92353820800781,
+              "right": 282.99820709228516,
+              "bottom": 573.1968536376953,
+              "left": 37.001808166503906
+            },
+            "full": true,
+            "hit": true,
+            "focus": false,
+            "outline": {
+              "style": "none",
+              "width": "3px",
+              "offset": "0px",
+              "color": "rgb(39, 110, 101)"
+            },
+            "decoration": "none",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "只想先读一篇？",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 247.7513427734375,
+                  "width": 114.79830932617188,
+                  "height": 18.859710693359375,
+                  "top": 247.7513427734375,
+                  "right": 168.1998748779297,
+                  "bottom": 266.6110534667969,
+                  "left": 53.40156555175781
+                }
+              },
+              "title": {
+                "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 247.7513427734375,
+                  "width": 204.15138244628906,
+                  "height": 77.89883422851562,
+                  "top": 247.7513427734375,
+                  "right": 257.5529479980469,
+                  "bottom": 325.6501770019531,
+                  "left": 53.40156555175781
+                }
+              },
+              "hook": {
+                "text": "一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 306.79046630859375,
+                  "width": 213.1968536376953,
+                  "height": 107.41842651367188,
+                  "top": 306.79046630859375,
+                  "right": 266.5984191894531,
+                  "bottom": 414.2088928222656,
+                  "left": 53.40156555175781
+                }
+              },
+              "foot": {
+                "text": "约 20 分钟\n从这篇开始→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 395.34918212890625,
+                  "width": 199.0777130126953,
+                  "height": 48.3792724609375,
+                  "top": 395.34918212890625,
+                  "right": 252.47927856445312,
+                  "bottom": 443.72845458984375,
+                  "left": 53.40156555175781
+                }
+              },
+              "meta": {
+                "text": "约 20 分钟",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.16008758544922,
+                  "y": 395.34918212890625,
+                  "width": 76.36138153076172,
+                  "height": 18.859710693359375,
+                  "top": 395.34918212890625,
+                  "right": 166.52146911621094,
+                  "bottom": 414.2088928222656,
+                  "left": 90.16008758544922
+                }
+              },
+              "cta": {
+                "text": "从这篇开始→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 395.34918212890625,
+                  "width": 199.07769775390625,
+                  "height": 48.3792724609375,
+                  "top": 395.34918212890625,
+                  "right": 252.47926330566406,
+                  "bottom": 443.72845458984375,
+                  "left": 53.40156555175781
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "hover",
+          "data": {
+            "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。\n约 20 分钟\n从这篇开始→",
+            "href": "/zh/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 53.40156555175781,
+              "y": 247.7513427734375,
+              "width": 213.1968536376953,
+              "height": 195.97711181640625,
+              "top": 247.7513427734375,
+              "right": 266.5984191894531,
+              "bottom": 443.72845458984375,
+              "left": 53.40156555175781
+            },
+            "window": {
+              "x": 37.001808166503906,
+              "y": 118.92353820800781,
+              "width": 245.99639892578125,
+              "height": 454.2733154296875,
+              "top": 118.92353820800781,
+              "right": 282.99820709228516,
+              "bottom": 573.1968536376953,
+              "left": 37.001808166503906
+            },
+            "full": true,
+            "hit": true,
+            "focus": false,
+            "outline": {
+              "style": "none",
+              "width": "3px",
+              "offset": "0px",
+              "color": "rgb(39, 110, 101)"
+            },
+            "decoration": "underline",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "只想先读一篇？",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 247.7513427734375,
+                  "width": 114.79830932617188,
+                  "height": 18.859710693359375,
+                  "top": 247.7513427734375,
+                  "right": 168.1998748779297,
+                  "bottom": 266.6110534667969,
+                  "left": 53.40156555175781
+                }
+              },
+              "title": {
+                "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 247.7513427734375,
+                  "width": 204.15138244628906,
+                  "height": 77.89883422851562,
+                  "top": 247.7513427734375,
+                  "right": 257.5529479980469,
+                  "bottom": 325.6501770019531,
+                  "left": 53.40156555175781
+                }
+              },
+              "hook": {
+                "text": "一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 306.79046630859375,
+                  "width": 213.1968536376953,
+                  "height": 107.41842651367188,
+                  "top": 306.79046630859375,
+                  "right": 266.5984191894531,
+                  "bottom": 414.2088928222656,
+                  "left": 53.40156555175781
+                }
+              },
+              "foot": {
+                "text": "约 20 分钟\n从这篇开始→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 395.34918212890625,
+                  "width": 199.0777130126953,
+                  "height": 48.3792724609375,
+                  "top": 395.34918212890625,
+                  "right": 252.47927856445312,
+                  "bottom": 443.72845458984375,
+                  "left": 53.40156555175781
+                }
+              },
+              "meta": {
+                "text": "约 20 分钟",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.16008758544922,
+                  "y": 395.34918212890625,
+                  "width": 76.36138153076172,
+                  "height": 18.859710693359375,
+                  "top": 395.34918212890625,
+                  "right": 166.52146911621094,
+                  "bottom": 414.2088928222656,
+                  "left": 90.16008758544922
+                }
+              },
+              "cta": {
+                "text": "从这篇开始→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 395.34918212890625,
+                  "width": 199.07769775390625,
+                  "height": 48.3792724609375,
+                  "top": 395.34918212890625,
+                  "right": 252.47926330566406,
+                  "bottom": 443.72845458984375,
+                  "left": 53.40156555175781
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "native-tab-0",
+          "focus": {
+            "tag": "A",
+            "cls": "",
+            "text": "简历与项目证据 ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-1",
+          "focus": {
+            "tag": "A",
+            "cls": "",
+            "text": "GitHub ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-2",
+          "focus": {
+            "tag": "BUTTON",
+            "cls": "",
+            "text": "联系我 ↗",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-3",
+          "focus": {
+            "tag": "SUMMARY",
+            "cls": "",
+            "text": "完整履历与公开资料",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-4",
+          "focus": {
+            "tag": "SUMMARY",
+            "cls": "meet-atlas-summary",
+            "text": "想读我的文字？\n展开四条精选阅读路径",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-tab-5",
+          "focus": {
+            "tag": "A",
+            "cls": "sh-first sh-r",
+            "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。\n约 20 ",
+            "inside": true
+          }
+        },
+        {
+          "name": "native-focused",
+          "data": {
+            "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。\n约 20 分钟\n从这篇开始→",
+            "href": "/zh/growth/posts/2025-annual-review/",
+            "box": {
+              "x": 53.40156555175781,
+              "y": 377.3094482421875,
+              "width": 213.1968536376953,
+              "height": 195.97711181640625,
+              "top": 377.3094482421875,
+              "right": 266.5984191894531,
+              "bottom": 573.2865600585938,
+              "left": 53.40156555175781
+            },
+            "window": {
+              "x": 37.001808166503906,
+              "y": 118.92353820800781,
+              "width": 245.99639892578125,
+              "height": 454.2733154296875,
+              "top": 118.92353820800781,
+              "right": 282.99820709228516,
+              "bottom": 573.1968536376953,
+              "left": 37.001808166503906
+            },
+            "full": false,
+            "hit": true,
+            "focus": true,
+            "outline": {
+              "style": "solid",
+              "width": "2px",
+              "offset": "3px",
+              "color": "rgb(36, 108, 101)"
+            },
+            "decoration": "none",
+            "transform": "none",
+            "children": {
+              "label": {
+                "text": "只想先读一篇？",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 377.3094482421875,
+                  "width": 114.79830932617188,
+                  "height": 18.859710693359375,
+                  "top": 377.3094482421875,
+                  "right": 168.1998748779297,
+                  "bottom": 396.1691589355469,
+                  "left": 53.40156555175781
+                }
+              },
+              "title": {
+                "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 377.3094482421875,
+                  "width": 204.15138244628906,
+                  "height": 77.89883422851562,
+                  "top": 377.3094482421875,
+                  "right": 257.5529479980469,
+                  "bottom": 455.2082824707031,
+                  "left": 53.40156555175781
+                }
+              },
+              "hook": {
+                "text": "一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 436.34857177734375,
+                  "width": 213.1968536376953,
+                  "height": 107.41839599609375,
+                  "top": 436.34857177734375,
+                  "right": 266.5984191894531,
+                  "bottom": 543.7669677734375,
+                  "left": 53.40156555175781
+                }
+              },
+              "foot": {
+                "text": "约 20 分钟\n从这篇开始→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 524.9072875976562,
+                  "width": 199.0777130126953,
+                  "height": 48.3792724609375,
+                  "top": 524.9072875976562,
+                  "right": 252.47927856445312,
+                  "bottom": 573.2865600585938,
+                  "left": 53.40156555175781
+                }
+              },
+              "meta": {
+                "text": "约 20 分钟",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 90.16008758544922,
+                  "y": 524.9072875976562,
+                  "width": 76.36138153076172,
+                  "height": 18.85968017578125,
+                  "top": 524.9072875976562,
+                  "right": 166.52146911621094,
+                  "bottom": 543.7669677734375,
+                  "left": 90.16008758544922
+                }
+              },
+              "cta": {
+                "text": "从这篇开始→",
+                "display": "inline",
+                "font": "20px",
+                "weight": "400",
+                "line": "36px",
+                "color": "rgb(39, 110, 101)",
+                "decoration": "none",
+                "box": {
+                  "x": 53.40156555175781,
+                  "y": 524.9072875976562,
+                  "width": 199.07769775390625,
+                  "height": 48.3792724609375,
+                  "top": 524.9072875976562,
+                  "right": 252.47926330566406,
+                  "bottom": 573.2865600585938,
+                  "left": 53.40156555175781
+                }
+              }
+            },
+            "overflow": false
+          }
+        },
+        {
+          "name": "native-enter-and-click-original-link-intents",
+          "events": [
+            {
+              "trusted": true,
+              "href": "/zh/growth/posts/2025-annual-review/",
+              "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。\n约 20 分钟\n从这篇开始→",
+              "detail": 0
+            },
+            {
+              "trusted": true,
+              "href": "/zh/growth/posts/2025-annual-review/",
+              "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。\n约 20 分钟\n从这篇开始→",
+              "detail": 1
+            }
+          ]
+        },
+        {
+          "name": "same-original-note",
+          "after": {
+            "same": true,
+            "value": "Keep this note while choosing a first read.\nOriginal second line.",
+            "start": 2,
+            "end": 19,
+            "direction": "backward"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-1440-en-normal.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-1440-en-hover.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-1440-en-focus.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-390-en-normal.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-390-en-hover.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-390-en-focus.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-320-zh-normal.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-320-zh-hover.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-320-zh-focus.png"
+  ],
+  "limits": "Current before-design observation, not preset productfailure. Named3Chromium viewport/theme seeds readback/native localTab and trusted link intent prevented. No realnavigation/AT/physical/Safari/wholepageTab/model/fullscore."
+}

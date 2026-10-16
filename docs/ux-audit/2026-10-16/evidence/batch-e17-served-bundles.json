@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-16T02:28:36.464360+00:00",
+  "sourceManifest": "batch-e17b-source.json",
+  "served": [
+    {
+      "path": "/css/bear-os.min.65e192e977a3d45af9a89fbabaf9d382822197eeba29222d69c72dc457b99b59.css",
+      "bytes": 115840,
+      "sha256": "65e192e977a3d45af9a89fbabaf9d382822197eeba29222d69c72dc457b99b59",
+      "sameOutputFile": true
+    },
+    {
+      "path": "/js/bear-workspace.0209eb6749d19517d5da3055116200e3994e43d815c407d01d7ec5d2b1731659.js",
+      "bytes": 185125,
+      "sha256": "0209eb6749d19517d5da3055116200e3994e43d815c407d01d7ec5d2b1731659",
+      "sameOutputFile": true
+    }
+  ]
+}

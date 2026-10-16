@@ -1,0 +1,628 @@
+{
+  "at": "2026-10-16T03:06:45.427Z",
+  "contract": "boundary-title-balance-contract.json",
+  "sources": {
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "layouts/partials/extend_head.html": "f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5"
+  },
+  "rows": [
+    {
+      "case": {
+        "id": "normal-zh390",
+        "case_type": "normal",
+        "source": "real",
+        "viewport": [
+          390,
+          844
+        ],
+        "url": "/zh/ai-agent/posts/context-engineering-the-new-foundation/"
+      },
+      "steps": [
+        {
+          "variant": "A",
+          "data": {
+            "text": "Context 不是 Prompt：上下文工程如何成为 AI Agent 的新地基",
+            "sameDOM": true,
+            "fontFamily": "\"Source Han Serif SC\", \"Songti SC\", STSong, SimSun, \"Noto Serif SC\", \"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", serif",
+            "fontSize": "28.8px",
+            "fontWeight": "700",
+            "lineHeight": "38.592px",
+            "letterSpacing": "0.864px",
+            "wrapStyle": "auto",
+            "box": {
+              "x": 30,
+              "y": 195.96875,
+              "width": 330,
+              "height": 154.3125,
+              "top": 195.96875,
+              "right": 360,
+              "bottom": 350.28125,
+              "left": 30
+            },
+            "lines": [
+              {
+                "top": 193.96875,
+                "left": 30,
+                "right": 215.53125,
+                "text": "Context不是",
+                "width": 185.53125,
+                "characters": 9
+              },
+              {
+                "top": 232.546875,
+                "left": 30,
+                "right": 350.75,
+                "text": "Prompt：上下文工程如",
+                "width": 320.75,
+                "characters": 13
+              },
+              {
+                "top": 271.125,
+                "left": 30,
+                "right": 355.453125,
+                "text": "何成为AIAgent的新地",
+                "width": 325.453125,
+                "characters": 13
+              },
+              {
+                "top": 309.703125,
+                "left": 30,
+                "right": 59.671875,
+                "text": "基",
+                "width": 29.671875,
+                "characters": 1
+              }
+            ],
+            "rootY": 0,
+            "hash": "",
+            "history": 2,
+            "docWidth": 390,
+            "viewport": 390,
+            "focus": "BODY"
+          }
+        },
+        {
+          "variant": "B",
+          "data": {
+            "text": "Context 不是 Prompt：上下文工程如何成为 AI Agent 的新地基",
+            "sameDOM": true,
+            "fontFamily": "\"Source Han Serif SC\", \"Songti SC\", STSong, SimSun, \"Noto Serif SC\", \"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", serif",
+            "fontSize": "28.8px",
+            "fontWeight": "700",
+            "lineHeight": "38.592px",
+            "letterSpacing": "0.864px",
+            "wrapStyle": "balance",
+            "box": {
+              "x": 30,
+              "y": 195.96875,
+              "width": 330,
+              "height": 154.3125,
+              "top": 195.96875,
+              "right": 360,
+              "bottom": 350.28125,
+              "left": 30
+            },
+            "lines": [
+              {
+                "top": 193.96875,
+                "left": 30,
+                "right": 215.53125,
+                "text": "Context不是",
+                "width": 185.53125,
+                "characters": 9
+              },
+              {
+                "top": 232.546875,
+                "left": 30,
+                "right": 261.765625,
+                "text": "Prompt：上下文",
+                "width": 231.765625,
+                "characters": 10
+              },
+              {
+                "top": 271.125,
+                "left": 30,
+                "right": 250.8125,
+                "text": "工程如何成为AI",
+                "width": 220.8125,
+                "characters": 8
+              },
+              {
+                "top": 309.703125,
+                "left": 30,
+                "right": 245.140625,
+                "text": "Agent的新地基",
+                "width": 215.140625,
+                "characters": 9
+              }
+            ],
+            "rootY": 0,
+            "hash": "",
+            "history": 2,
+            "docWidth": 390,
+            "viewport": 390,
+            "focus": "BODY"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "observation": {
+        "beforeLineChars": [
+          9,
+          13,
+          13,
+          1
+        ],
+        "afterLineChars": [
+          9,
+          10,
+          8,
+          9
+        ],
+        "heightDelta": 0,
+        "widthDelta": 0,
+        "overflow": false,
+        "engineLimitCase": false,
+        "notCertification": true
+      },
+      "pass": true
+    },
+    {
+      "case": {
+        "id": "edge-en390",
+        "case_type": "edge",
+        "source": "real",
+        "viewport": [
+          390,
+          844
+        ],
+        "url": "/ai-agent/posts/context-engineering-the-new-foundation/"
+      },
+      "steps": [
+        {
+          "variant": "A",
+          "data": {
+            "text": "Context Engineering: The New Foundation for AI Agents",
+            "sameDOM": true,
+            "fontFamily": "Fraunces, Georgia, \"Times New Roman\", serif",
+            "fontSize": "40px",
+            "fontWeight": "800",
+            "lineHeight": "43.2px",
+            "letterSpacing": "-0.8px",
+            "wrapStyle": "auto",
+            "box": {
+              "x": 30,
+              "y": 195.96875,
+              "width": 330,
+              "height": 215.9375,
+              "top": 195.96875,
+              "right": 360,
+              "bottom": 411.90625,
+              "left": 30
+            },
+            "lines": [
+              {
+                "top": 193.96875,
+                "left": 30,
+                "right": 184.234375,
+                "text": "Context",
+                "width": 154.234375,
+                "characters": 7
+              },
+              {
+                "top": 237.15625,
+                "left": 30,
+                "right": 287.6875,
+                "text": "Engineering:",
+                "width": 257.6875,
+                "characters": 12
+              },
+              {
+                "top": 280.34375,
+                "left": 30,
+                "right": 202.96875,
+                "text": "TheNew",
+                "width": 172.96875,
+                "characters": 6
+              },
+              {
+                "top": 323.53125,
+                "left": 30,
+                "right": 331.28125,
+                "text": "Foundationfor",
+                "width": 301.28125,
+                "characters": 13
+              },
+              {
+                "top": 366.71875,
+                "left": 30,
+                "right": 221.40625,
+                "text": "AIAgents",
+                "width": 191.40625,
+                "characters": 8
+              }
+            ],
+            "rootY": 0,
+            "hash": "",
+            "history": 2,
+            "docWidth": 390,
+            "viewport": 390,
+            "focus": "BODY"
+          }
+        },
+        {
+          "variant": "B",
+          "data": {
+            "text": "Context Engineering: The New Foundation for AI Agents",
+            "sameDOM": true,
+            "fontFamily": "Fraunces, Georgia, \"Times New Roman\", serif",
+            "fontSize": "40px",
+            "fontWeight": "800",
+            "lineHeight": "43.2px",
+            "letterSpacing": "-0.8px",
+            "wrapStyle": "balance",
+            "box": {
+              "x": 30,
+              "y": 195.96875,
+              "width": 330,
+              "height": 215.9375,
+              "top": 195.96875,
+              "right": 360,
+              "bottom": 411.90625,
+              "left": 30
+            },
+            "lines": [
+              {
+                "top": 193.96875,
+                "left": 30,
+                "right": 184.234375,
+                "text": "Context",
+                "width": 154.234375,
+                "characters": 7
+              },
+              {
+                "top": 237.15625,
+                "left": 30,
+                "right": 287.6875,
+                "text": "Engineering:",
+                "width": 257.6875,
+                "characters": 12
+              },
+              {
+                "top": 280.34375,
+                "left": 30,
+                "right": 202.96875,
+                "text": "TheNew",
+                "width": 172.96875,
+                "characters": 6
+              },
+              {
+                "top": 323.53125,
+                "left": 30,
+                "right": 262.375,
+                "text": "Foundation",
+                "width": 232.375,
+                "characters": 10
+              },
+              {
+                "top": 366.71875,
+                "left": 30,
+                "right": 290.3125,
+                "text": "forAIAgents",
+                "width": 260.3125,
+                "characters": 11
+              }
+            ],
+            "rootY": 0,
+            "hash": "",
+            "history": 2,
+            "docWidth": 390,
+            "viewport": 390,
+            "focus": "BODY"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "observation": {
+        "beforeLineChars": [
+          7,
+          12,
+          6,
+          13,
+          8
+        ],
+        "afterLineChars": [
+          7,
+          12,
+          6,
+          10,
+          11
+        ],
+        "heightDelta": 0,
+        "widthDelta": 0,
+        "overflow": false,
+        "engineLimitCase": false,
+        "notCertification": true
+      },
+      "pass": true
+    },
+    {
+      "case": {
+        "id": "failure-long-en320",
+        "case_type": "failure",
+        "source": "real",
+        "viewport": [
+          320,
+          844
+        ],
+        "url": "/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/"
+      },
+      "steps": [
+        {
+          "variant": "A",
+          "data": {
+            "text": "Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close",
+            "sameDOM": true,
+            "fontFamily": "Fraunces, Georgia, \"Times New Roman\", serif",
+            "fontSize": "34.4px",
+            "fontWeight": "800",
+            "lineHeight": "38.528px",
+            "letterSpacing": "-0.688px",
+            "wrapStyle": "auto",
+            "box": {
+              "x": 30,
+              "y": 195.96875,
+              "width": 260,
+              "height": 346.78125,
+              "top": 195.96875,
+              "right": 290,
+              "bottom": 542.75,
+              "left": 30
+            },
+            "lines": [
+              {
+                "top": 194.96875,
+                "left": 30,
+                "right": 203.3125,
+                "text": "Igniteand",
+                "width": 173.3125,
+                "characters": 9
+              },
+              {
+                "top": 233.5,
+                "left": 30,
+                "right": 273.703125,
+                "text": "Settle(Part1):",
+                "width": 243.703125,
+                "characters": 14
+              },
+              {
+                "top": 272.03125,
+                "left": 30,
+                "right": 226.734375,
+                "text": "TheQuality",
+                "width": 196.734375,
+                "characters": 10
+              },
+              {
+                "top": 310.5625,
+                "left": 30,
+                "right": 232.640625,
+                "text": "andTimeof",
+                "width": 202.640625,
+                "characters": 9
+              },
+              {
+                "top": 349.09375,
+                "left": 30,
+                "right": 280.96875,
+                "text": "Companionshi",
+                "width": 250.96875,
+                "characters": 12
+              },
+              {
+                "top": 387.625,
+                "left": 30,
+                "right": 251.6875,
+                "text": "p—andWhy",
+                "width": 221.6875,
+                "characters": 8
+              },
+              {
+                "top": 426.15625,
+                "left": 30,
+                "right": 281.6875,
+                "text": "WeTurnAway",
+                "width": 251.6875,
+                "characters": 10
+              },
+              {
+                "top": 464.6875,
+                "left": 30,
+                "right": 212.203125,
+                "text": "JustasWe",
+                "width": 182.203125,
+                "characters": 8
+              },
+              {
+                "top": 503.21875,
+                "left": 30,
+                "right": 228.578125,
+                "text": "ComeClose",
+                "width": 198.578125,
+                "characters": 9
+              }
+            ],
+            "rootY": 0,
+            "hash": "",
+            "history": 2,
+            "docWidth": 320,
+            "viewport": 320,
+            "focus": "BODY"
+          }
+        },
+        {
+          "variant": "B",
+          "data": {
+            "text": "Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close",
+            "sameDOM": true,
+            "fontFamily": "Fraunces, Georgia, \"Times New Roman\", serif",
+            "fontSize": "34.4px",
+            "fontWeight": "800",
+            "lineHeight": "38.528px",
+            "letterSpacing": "-0.688px",
+            "wrapStyle": "balance",
+            "box": {
+              "x": 30,
+              "y": 195.96875,
+              "width": 260,
+              "height": 346.78125,
+              "top": 195.96875,
+              "right": 290,
+              "bottom": 542.75,
+              "left": 30
+            },
+            "lines": [
+              {
+                "top": 194.96875,
+                "left": 30,
+                "right": 203.3125,
+                "text": "Igniteand",
+                "width": 173.3125,
+                "characters": 9
+              },
+              {
+                "top": 233.5,
+                "left": 30,
+                "right": 273.703125,
+                "text": "Settle(Part1):",
+                "width": 243.703125,
+                "characters": 14
+              },
+              {
+                "top": 272.03125,
+                "left": 30,
+                "right": 226.734375,
+                "text": "TheQuality",
+                "width": 196.734375,
+                "characters": 10
+              },
+              {
+                "top": 310.5625,
+                "left": 30,
+                "right": 232.640625,
+                "text": "andTimeof",
+                "width": 202.640625,
+                "characters": 9
+              },
+              {
+                "top": 349.09375,
+                "left": 30,
+                "right": 280.96875,
+                "text": "Companionshi",
+                "width": 250.96875,
+                "characters": 12
+              },
+              {
+                "top": 387.625,
+                "left": 30,
+                "right": 251.6875,
+                "text": "p—andWhy",
+                "width": 221.6875,
+                "characters": 8
+              },
+              {
+                "top": 426.15625,
+                "left": 30,
+                "right": 281.6875,
+                "text": "WeTurnAway",
+                "width": 251.6875,
+                "characters": 10
+              },
+              {
+                "top": 464.6875,
+                "left": 30,
+                "right": 212.203125,
+                "text": "JustasWe",
+                "width": 182.203125,
+                "characters": 8
+              },
+              {
+                "top": 503.21875,
+                "left": 30,
+                "right": 228.578125,
+                "text": "ComeClose",
+                "width": 198.578125,
+                "characters": 9
+              }
+            ],
+            "rootY": 0,
+            "hash": "",
+            "history": 2,
+            "docWidth": 320,
+            "viewport": 320,
+            "focus": "BODY"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "observation": {
+        "beforeLineChars": [
+          9,
+          14,
+          10,
+          9,
+          12,
+          8,
+          10,
+          8,
+          9
+        ],
+        "afterLineChars": [
+          9,
+          14,
+          10,
+          9,
+          12,
+          8,
+          10,
+          8,
+          9
+        ],
+        "heightDelta": 0,
+        "widthDelta": 0,
+        "overflow": false,
+        "engineLimitCase": true,
+        "notCertification": true
+      },
+      "pass": true
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-normal-zh390-A.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-normal-zh390-B.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-edge-en390-A.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-edge-en390-B.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-failure-long-en320-A.png",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-failure-long-en320-B.png"
+  ],
+  "lifecycle": {
+    "split": "discovery",
+    "review": {
+      "status": "unreviewed"
+    },
+    "humanChoice": "unreviewed"
+  },
+  "limits": [
+    "production edits",
+    "globalbody wrapping",
+    "coldfont stability recertification",
+    "physical/Safari/AT/fullmatrix",
+    "Gold or humanconfirmed promotion"
+  ]
+}

@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T09:58:53+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe9`；最近已验checkpoint `4ace9c52`（E16b/E14）。本轮C1回复读点及点击追问草稿/焦点仅按冻结源与实测范围复核。
+更新：2026-10-16T11:03:46+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe9`；最近已验checkpoint `4ffc2c0b`（C1）。本轮E17照片恢复/媒体文字与既有Space搜索article变体已按命名scope独立复核；C2未实施，E18新基线不在本批。
 
-**当前不能宣称全站或每个按钮96+。309族/369selector条目的完整分仍为 `unverified / null`；382条item状态只覆盖86族局部状态（85partial+1measured），另有4条独立字体surface观察，完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/369selector条目的完整分仍为 `unverified / null`；394条item状态只覆盖93族局部状态（92partial+1measured），另有4条独立字体surface观察，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -1201,3 +1201,23 @@ Knowledge仅两context三类真实节点的当前title/URL/target/rel与真实cl
 C/A首中文320所谓ghost实际raw是sheet opacity0.873642且finite fade运行，transform0并非settled；当前恢复B完整root/sheet opacity1/no finite动画门槛，无CSS重绘workaround或capturebug。原转场图、初Tab/旧p测具失败、真实draft/焦点负均保留且区分；17图只证各记录帧，不宣称持续paint/FPS。受控AIClient、公开段落Range与局部键盘不等于真实模型/实体拖选/OS输入法/整页Tab/AT/Safari/软键盘；无新整页对比度或完整矩阵认证。
 
 盘点v1.28同步：309族/369selector entries、382条item状态（新增9）/86局部族（85partial+1measured）及独立4fontsurface，0完整。Followup原`fc51ca`只校准当前controller动态source，无新控件/族；旧abs不继承。当前253个scoped checks、112历史视觉片段、53个finding；UX053只按本轮scope闭合，UX052照片仍open，所有完整分null。完成校验后停止写入供父checkpoint。
+
+## E17 · 重试照片保留位置，成功按焦点归属交接
+
+2026-10-16T11:03:46+08:00：[B十五源/QA/runner](evidence/batch-e17b-source.json)及[72路径provenance](evidence/batch-e17-provenance.json)全hash匹配，两served bundle回执与输出文件一致。生产mediaJS `8538917…`、CSS `8d12bc…` 初版/A/B均未改，`sourcePanel`后所有媒体代码精确等4ffc，保护18s Immich/proxy/NAV、AI/字体/state。正式[A1440中文6图](evidence/batch-e17a-actual.json)+[B390英文暗色6、320中文720高6、classic1440英文4图](evidence/batch-e17b-actual.json)，四完整context/22primary全部独立逐看；另A手机四张partial历史图也已看，无新增P0/P1。
+
+**UX052仅关闭 `closed_E17_named_spatial_photo_retry_focus_feedback_and_recovery_scope`。** 三spatial情形404→原Retry按钮/名称/精确bbox不变，实际显示目标约44.28，错误说明/尝试中status为polite+atomic；双nativeEnter仍单flight、总初请求+重试2GET。decoded后只有仍聚焦Retry才交alt具名img，390真实Tab已移到旅行区域按钮则不抢。原Notes同DOM/两行值/2..17反向caret保留，Next真实Enter→ArrowRight通过；Escape回相册仅授初始未改NAV合同，不冒父actual再测。旧焦点BODY/入口难见负记录保留历史；close/reopen/旧node event/complete0为合同范围，synthetic非暖缓存。
+
+五个不同合同＝初始原样NAV1过+[A四受影响8.7s](evidence/batch-e17a-contracts.log)，不是九种功能；初五1过4测具失败16s与原上下文保留。`isDisabled()`包含aria-disabled语义，当前保可focus原button的native disabled=false而ARIA=true；map kicker改限header，同URL挂起请求可能共用，complete0另用第三URL，不冒真实cache。A390用户Tab主动将caption滚入，顶NAV部分离窗；B真实wheel从222回0后再测44/fullclip，没有生产导航修复、放宽门槛或新增deadline。Hugo4460ms同生产构建复用。
+
+恢复行error/pending静态局部 **D1/D4=96/96**：[390暗色error](evidence/batch-e17b-390-en-error.png)/[320中文pending](evidence/batch-e17b-320-zh-retry-held.png)名称稳定、文字与按钮相邻，焦点清楚。新spatial标题/地点/动作源20/16/18，投影后约16.4/13.12/14.76CSSpx；classic16/12/14，区分主阅读与辅助信息。filter只all标签/geometry、三个NAV只有Next实际激活链；LOAD只说明文字/44合同，不授Immich连接/按钮字体；map只共享`.sp-places`header/footer/media文字，不认证pins/regiondetail/整个地图。
+
+默认短桌面照片预览另评 **D1/D4=94.5/94.5**：[spatial1440](evidence/batch-e17a-1440-zh-ready.png)/[classic1440](evidence/batch-e17b-classic-en-ready.png)中header/nav与52vh图片使人物下部、caption在初始windowclip外，需body滚动或放大看全。不是内容丢失/不可达/P1，但看完整照片要额外操作；后续仅比较按实际windowbody可用高收束contain预览或明确全图/放大入口，保原图、滚动、字号和44，不硬授全app96。
+
+图片自身network timeout未添加，原18s只属Immich链；src清除/owner失效不承诺所有HTTP都取消。classic本次actual仅normal/type/NAV，不冒404恢复；没有真实Immich/模型调用、AT/Safari/实体设备/整页zoom/完整矩阵/整页对比度/FPS认证。C2建议焦点内置offset仍未实施，原90片段不改；E18新readingmap基线暂不导入。
+
+### Space搜索 · 仅新增article变体的命名正例
+
+[10artifact+7不可变4ffc源](evidence/probe-space-search-article-provenance.json)hash与四图已独立核（初/最终focused两图同SHA）；一390英文/light/reduce实际Notes编辑→Meta+k全文文章名→ArrowDown/Enter，当前Reader标题/公开正文/安全绝对URL正确，Notes原DOM/两行值/3..18反向选区保留。无匹配query Enter不误开、仍同reader；Escape raw观察为workspace SECTION且非inert，这项未作runner显式assert。初relative-vs-absolute预期是测具错误，A仅规范expectedURL和输出prefix；非生产修复。Original链接没点、无真实外跳/业务调用，不重复旧product或E11功能，不授全键盘/搜索矩阵。
+
+盘点v1.29最终同步：309族/369selector entries、394条item状态（新增12：媒体11+搜索1）/93局部族（92partial+1measured）、独立4fontsurface/0完整；无新控件/族。当前259个scoped checks、116历史视觉片段、53finding，所有完整分仍null。UX052只按本轮scope闭合，原失败/partial/来源及具体设计差距保留，校验后停写供父checkpoint。

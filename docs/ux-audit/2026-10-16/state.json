@@ -3,8 +3,8 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "4ace9c524d6e91c8a2d0e52e361f1c8698297970",
-  "phase": "C1 independently accepted, saving checkpoint; E17 media source WIP excluded",
+  "checkpoint": "4ffc2c0b38f3e13194ee1ff565bc96364166034b",
+  "phase": "E17 independently accepted, checkpoint pending; C2 prepared notimplemented",
   "batch": "E17-space-media-recovery-type",
   "agents": {
     "inventory": "/root/blog_inventory",
@@ -12,40 +12,40 @@
     "score": "/root/space_review"
   },
   "pending": [
-    "E17 source WIP: UX052 photo Retry belowclip/hiddenowner; small photo navigation/type. No new image timeout; no appDark claim from globaltheme.",
-    "C1 focused-third external focus ring bottom mildly clipped; D2.4=90, small CSS refinement pending. Positive Enter not retested.",
-    "E15 shortdirectory D1=90.5/D4=94.5 and readmap94.5/93 remain.",
-    "E14 only named ENcoldfontdelivery closed; warm/CJKlate/physical/AT/Safari/fullmotion/fullmatrix unknown.",
-    "E12c originalBack10s timeout unexplained; no globalBFCache reliability certification."
+    "C2 shortAI thirdsuggestion externalfocusring bottom slightclip D2.4=90; pending one scoped CSS rule/nativeEnter positive verification.",
+    "E18 readingmap sameinline title/hook/meta/CTA nohierarchy; 3context9PNGbefore source-backed. PriorD1/D4=94.5/93.",
+    "E17 defaultshortdesktop photo fullimage/caption requires ownbody scroll/maximize; local94.5/94.5. Classic404 recovery/image-own-timeout unknown; mapdetailtype outside scope.",
+    "E15 shortdirectory D1=90.5/D4=94.5 remains.",
+    "E14 warm/CJKlate/physical/AT/Safari/fullmotion/fullmatrix unknown; E12originalBack10s unexplained."
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-provenance.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e17-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-16T02:09:11.747720+00:00",
-  "previewSource": "Accepted C1 AI JS +E16b CSS+E14 ENfonthead; E17 media WIP not built",
+  "updatedAt": "2026-10-16T03:19:19.664383+00:00",
+  "previewSource": "E17 media candidate +accepted C1/E16b/E14; C2 notimplemented",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "C1 named completed-reply local D1/D4=96/96; focused-third ring D2.4=90 retained. UX053 closed only clicked followup draft/ownedfocus. Positive Enter not retested. Fullscore null.",
-  "previewBatch": "C1 Hugo/19contracts36s/3actual17PNG independently reviewed",
+  "review": "UX052 only named3spatial404 recovery closed; 4contexts22primary26includinghistory PNG independent read. Recovery localD1/D4=96/96; shortdesktop photo preview scroll/maximize94.5/94.5 retained. Fullscore null.",
+  "previewBatch": "E17 Hugo4460ms/5distinct/4actual22primaryPNG",
   "executorOwnership": [
     "assets/js/space/media.js",
     "assets/css/space-media.css",
     "tests/e2e/space-media-legibility-contracts.spec.ts"
   ],
-  "latestActualEvidence": "evidence/batch-e16c1-actual.json",
+  "latestActualEvidence": "evidence/batch-e17-provenance.json",
   "inventorySummary": {
     "families": 309,
     "selectorEntries": 369,
-    "cumulativeStateEvidenceRows": 382,
-    "partiallyCoveredFamilies": 86,
+    "cumulativeStateEvidenceRows": 394,
+    "partiallyCoveredFamilies": 93,
     "fullyCertifiedFamilies": 0,
     "independentSurfaceObservations": 4
   },
   "scoreSummary": {
-    "checks": 253,
-    "historicalExpertVisualFragments": 112,
+    "checks": 259,
+    "historicalExpertVisualFragments": 116,
     "findings": 53,
     "fullScore": null
   },
-  "acceptedSinceCheckpoint": "C1 article-chat.js +newreply3spec with independent final cards; E17 excluded"
+  "acceptedSinceCheckpoint": "E17 2media sources/new5spec and finalcards accepted; nextC2 singleoutlineoffset pending"
 }
