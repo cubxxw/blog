@@ -3,8 +3,8 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "4ffc2c0b38f3e13194ee1ff565bc96364166034b",
-  "phase": "E17 independently accepted, checkpoint pending; C2 prepared notimplemented",
+  "checkpoint": "8ed671cb6e625027b56914fd73de4f85187d0e62",
+  "phase": "Deadline closeout; no new implementations; accepted E17 preview retained",
   "batch": "E17-space-media-recovery-type",
   "agents": {
     "inventory": "/root/blog_inventory",
@@ -20,18 +20,14 @@
   ],
   "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e17-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-16T03:19:19.664383+00:00",
-  "previewSource": "E17 media candidate +accepted C1/E16b/E14; C2 notimplemented",
+  "updatedAt": "2026-10-16T04:01:10.091784+00:00",
+  "previewSource": "Accepted E17 +C1/E16b/E14. C2/E18/titlebalance NOT implemented.",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
   "review": "UX052 only named3spatial404 recovery closed; 4contexts22primary26includinghistory PNG independent read. Recovery localD1/D4=96/96; shortdesktop photo preview scroll/maximize94.5/94.5 retained. Fullscore null.",
   "previewBatch": "E17 Hugo4460ms/5distinct/4actual22primaryPNG",
-  "executorOwnership": [
-    "assets/js/space/media.js",
-    "assets/css/space-media.css",
-    "tests/e2e/space-media-legibility-contracts.spec.ts"
-  ],
+  "executorOwnership": [],
   "latestActualEvidence": "evidence/batch-e17-provenance.json",
   "inventorySummary": {
     "families": 309,
@@ -47,5 +43,6 @@
     "findings": 53,
     "fullScore": null
   },
-  "acceptedSinceCheckpoint": "E17 2media sources/new5spec and finalcards accepted; nextC2 singleoutlineoffset pending"
+  "acceptedSinceCheckpoint": "E17 2media sources/new5spec and finalcards accepted; nextC2 singleoutlineoffset pending",
+  "checkpointCorrection": "Initial source checkpoint committed after raw-whitespace check failed because parent used wrong root .gitattributes path and shell continued. Exact6 raw-path exceptions corrected in existing nested attributes; raw bytes unchanged, subsequent git show/check passes."
 }

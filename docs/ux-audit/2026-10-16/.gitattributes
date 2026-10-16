@@ -21,3 +21,15 @@ evidence/batch-e16-initial-toolbar-error-context.md whitespace=-blank-at-eol
 evidence/batch-e16b-build.log whitespace=-blank-at-eol
 evidence/batch-e16c-build.log whitespace=-blank-at-eol
 evidence/batch-e16c1-build.log whitespace=-blank-at-eol
+
+evidence/batch-e17-build.log whitespace=-blank-at-eol
+
+evidence/batch-e17-contracts.log whitespace=-blank-at-eol
+
+evidence/batch-e17-initial-error-context-1.md whitespace=-blank-at-eol
+
+evidence/batch-e17-initial-error-context-2.md whitespace=-blank-at-eol
+
+evidence/batch-e17-initial-error-context-3.md whitespace=-blank-at-eol
+
+evidence/batch-e17-initial-error-context-4.md whitespace=-blank-at-eol
