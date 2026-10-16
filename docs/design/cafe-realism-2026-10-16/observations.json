@@ -1,0 +1,120 @@
+{
+  "status": "Local implementation and bounded browser acceptance complete; user taste acceptance and96/99 not claimed",
+  "sourceBase": "7f2900b2af8333e0afa3ee218ff02bdae840eaf0",
+  "browser": "existing IAB tab1, browser3; serial only; viewport overrides temporary",
+  "round1": {
+    "module": "/js/space/world-cafe.95523110522e9977aa84e5d586eff81659a644ef9e17c78286260c8ce3c15c13.js",
+    "sourceWorldSha": "afc27fabcc7c2aec377ddfedfbd4d77beef750825a17ddf036fdbfcd2fe6ee1b",
+    "actual": [
+      "coffee390 rim/interior/rosetta/saucer visible",
+      "Escape exact roam pose and external coffee button focus",
+      "same-assets A/B actual1440x900 and390x844",
+      "ordinary motion cat position z1.5 to3.3667953043637184; catActive true",
+      "quiet frames remained532 across subsequent observation; restored false",
+      "synthetic fixture note text and selection[0,1,forward] preserved through leave/books/return/workspace; factory original-node identity true",
+      "fixture disposal/recreate: one note and one canvas; original-node identity true"
+    ],
+    "correction": "catActive=false under reduce was expected, not a product defect. No misleading scheduler patch retained."
+  },
+  "round2": {
+    "module": "/js/space/world-cafe.4a512a963188e2852ac565aecb968a973b51e79d761aa8ba64d94833e29d38a5.js",
+    "actual": [
+      "1440 roundtable contour materially smoother",
+      "390 books whole view all10 physical volumes unobscured by default collapsed list",
+      "keyboard Tab/Return opens real10-book list; focus retained on disclosure",
+      "Tab/End scrolls list to last item, scrollTop113 of239px with126px clientheight; last item fully visible",
+      "ShiftTab/Return collapses and keeps focus on disclosure"
+    ],
+    "measuredHit": {
+      "exit": [
+        130.671875,
+        47
+      ],
+      "bookListDisclosure": [
+        56,
+        44
+      ]
+    },
+    "remainingAtRound2": [
+      "six physical spine titles small on390; targeted close camera being implemented",
+      "four faceout supports and correct table chair directions not yet in round2 built preview"
+    ]
+  },
+  "notVerified": [
+    "physical mobile device",
+    "frame rate/low-end GPU",
+    "full new automated browser suite (discovered only, no second browser started)",
+    "live private app Notes data intentionally untouched; only synthetic factory fixture tested",
+    "real newsletter/contact/model provider calls intentionally not made"
+  ],
+  "preferenceRestoration": {
+    "initialReducedMotion": true,
+    "afterRound1ReducedMotion": true,
+    "initialQuiet": false,
+    "afterRound1Quiet": false,
+    "viewport": "browser viewport reset and CDP metrics override cleared; host then1440x900",
+    "page": "ZH /projects/, BEAR default café zen roam",
+    "finalReducedMotion": true,
+    "finalQuiet": false,
+    "networkFaultInjection": "all blockedURLs cleared and Network disabled",
+    "webglFaultInjection": "restored by normal reload; final worldReadytrue/no failure"
+  },
+  "interpretation": "Rendered item labels and lifecycle observations are not proof of photo-realism or96/99 taste.",
+  "final": {
+    "module": "/js/space/world-cafe.3e36e0515d4d7d41c39b6a1bb65d27a9724e51e21c418ea095a7964ba43eda00.js",
+    "worldSha": "7f1da1a2b2f8efb2c49dffd2fe6a0af18292fd41706005c099c4c8883a664a63",
+    "spaceCssSha": "aeeb126e086fb1d78e546d935f3bfe6823a9f82fcc85b8c8b3c46508db4aafdb",
+    "browser": "one existing IAB tab, serial native actions and scoped developer CDP fault injection",
+    "tests": {
+      "entryOnboarding": {
+        "passed": 14,
+        "log": "evidence/logs/parent-entry-regression.log",
+        "overlapsPriorCafeCases": 7
+      },
+      "newAutomatedBrowserContracts": {
+        "discovered": 7,
+        "executed": 0,
+        "reason": "All actual UI acceptance used existing CUA browser; no overlapping Playwright runtime started"
+      },
+      "hugoProductionBuild": "evidence/logs/hugo-final-css.log",
+      "typecheck": "evidence/logs/canopy-typecheck.log",
+      "nodeSceneAndGeometry": {
+        "passed": 26,
+        "log": "evidence/logs/canopy-pure.log",
+        "composition": {
+          "details": 9,
+          "cafe": 7,
+          "garden": 5,
+          "world": 5
+        }
+      },
+      "uniqueNodeCasesPassed": 33
+    },
+    "actualProofFiles": [
+      "final-scene-actions.json",
+      "final-context-loss.json",
+      "final-texture-fallback.json",
+      "final-lab-gutter.json",
+      "final-browser-state.json"
+    ],
+    "actualViews": [
+      "ZH390/320 physical spine labels",
+      "EN390/320 physical spine labels",
+      "540x360 short wide caption clearance",
+      "1440x900 café/coffee/books/spines/terrace"
+    ],
+    "sourceBoundReuse": "Books/coffee/controller unchanged through final garden refinement; final CSS only removes forced root scrollbar in BEAR. Earlier images retain explicit candidate numbers. Final-*1440 images updated after CSS fix.",
+    "remainingTaste": [
+      "stylized low-polygon rock/mountain geometry",
+      "regular authored foliage and explicit oval moss patches",
+      "uniform material response in larger architecture; not photo-realistic",
+      "original stylized cat geometry unchanged"
+    ],
+    "unverified": [
+      "physical device and low-endGPU/FPS",
+      "real paid model/provider/backend submission",
+      "held asset delivered after disposal was source reviewed, not fault injected",
+      "all unseen scene/object backsides and all full-blog families96+"
+    ]
+  }
+}

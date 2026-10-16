@@ -1,0 +1,25 @@
+PASS world only adds static maple branch and resources; original pine/coast/lake/mountain/cat/tick/inspect unchanged
+PASS controller only forwards catalog mapleAsset
+PASS template only adds same-origin relURL mapleAsset
+PASS separate short-wide spines P2 only increases vertical fit envelope
+PASS existing geometry test only adds 540x360 to same spine NDC gate
+PASS assets/js/space/world-details.js unchanged from candidate 4
+PASS assets/css/space-cafe.css unchanged from candidate 4
+PASS tests/e2e/space-cafe-details-contracts.spec.ts unchanged from candidate 4
+PASS assets/js/space/world-cat.js unchanged from accepted HEAD
+PASS assets/js/space/world-state.mjs unchanged from accepted HEAD
+PASS assets/js/space/desktop.js unchanged from accepted HEAD
+PASS assets/js/space/apps.js unchanged from accepted HEAD
+PASS data/travel.yml unchanged from accepted HEAD
+SHA256 57ef434d7ec6f953d088f438fde8c2e5657e4e4d9c3124e0432a291b5cee6c4e assets/js/space/world-cafe.js
+SHA256 7648d756c1e0b41b11dfa8a7913c94e7626a8fff7334b9bad9af6a98b56e3b87 assets/js/space/world-garden.mjs
+SHA256 efb6d4622ca5bc920da7e5b665efa205b4592f31d95d8c4c942f06903b333d43 assets/js/space/world-details.js
+SHA256 79473344e575ff108ef38fcd0e857469111336f6ad63f9fea885b92443653982 assets/js/space/world-details.mjs
+SHA256 b495f569df6d4947c90f101e33dc69c98bce7ef3095e7cb7d2cddb7100d29d62 assets/js/space/cafe.js
+SHA256 230a2833ae04644f6d264925cd67258d472cf13dd9e549cdb5de8e990a11af43 layouts/partials/space/cafe.html
+SHA256 afa3cfbecd76d1a383740cf152c567e6bcd8b3295640e77c79fbc8ec28f153d2 assets/css/space-cafe.css
+SHA256 17660412d37a0e280698efd2fb6d075cd3f15ac872726b4ba9cf08412c6141b5 scripts/space-cafe-details.test.mjs
+SHA256 4a059b3df3bcb3a707d8f7f8f7f9f64a876631e6a606e971dc28f0113bf0f7ba scripts/space-world-garden.test.mjs
+SHA256 fd5cda6f7368ef3fec85b09b0d63dda197438af04a3f0e67c45019d1a471711f tests/e2e/space-cafe-details-contracts.spec.ts
+SHA256 2380bf0706fe81c48565a1c9ccf94776785c3c6d94f6b0ad5ce9ce410ad21522 static/images/space/cafe/maple-leaf-v1.png
+SHA256 6b649ffd3b9e061b9b8998d1ca08836ebfd644af6dc722910bcf02ad999eeea0 static/images/space/cafe/latte-rosetta-v1.jpg

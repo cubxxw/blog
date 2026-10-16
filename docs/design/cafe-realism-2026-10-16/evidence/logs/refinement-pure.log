@@ -1,0 +1,122 @@
+TAP version 13
+# (node:52788) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/assets/js/vendor/three.module.min.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: ceramic foot contacts its supporting surface; the open bowl contains liquid below its rim
+ok 1 - ceramic foot contacts its supporting surface; the open bowl contains liquid below its rim
+  ---
+  duration_ms: 0.441625
+  type: 'test'
+  ...
+# Subtest: all ten source books have supported real-size volumes within the original shelf footprint
+ok 2 - all ten source books have supported real-size volumes within the original shelf footprint
+  ---
+  duration_ms: 0.221042
+  type: 'test'
+  ...
+# Subtest: the shared atlas wraps every real English and Chinese title without truncating text
+ok 3 - the shared atlas wraps every real English and Chinese title without truncating text
+  ---
+  duration_ms: 0.342042
+  type: 'test'
+  ...
+# Subtest: coffee and bookshelf views face their actual contents in portrait and landscape cameras
+ok 4 - coffee and bookshelf views face their actual contents in portrait and landscape cameras
+  ---
+  duration_ms: 0.146792
+  type: 'test'
+  ...
+# Subtest: every physical book fits the bookshelf close view in all three real viewport aspects
+ok 5 - every physical book fits the bookshelf close view in all three real viewport aspects
+  ---
+  duration_ms: 0.998625
+  type: 'test'
+  ...
+# Subtest: the shared 64-segment tabletop has a fine physical bevel and retains each table support height and radius
+ok 6 - the shared 64-segment tabletop has a fine physical bevel and retains each table support height and radius
+  ---
+  duration_ms: 6.284125
+  type: 'test'
+  ...
+# Subtest: only six known cafés can be restored from browser storage
+ok 7 - only six known cafés can be restored from browser storage
+  ---
+  duration_ms: 0.522125
+  type: 'test'
+  ...
+# Subtest: direct content routes take priority over a café visit
+ok 8 - direct content routes take priority over a café visit
+  ---
+  duration_ms: 0.193709
+  type: 'test'
+  ...
+# Subtest: root visits and reloads enter the café while language changes preserve the current place
+ok 9 - root visits and reloads enter the café while language changes preserve the current place
+  ---
+  duration_ms: 0.115334
+  type: 'test'
+  ...
+# Subtest: an explicit reader deep link beats stale café storage on reload
+ok 10 - an explicit reader deep link beats stale café storage on reload
+  ---
+  duration_ms: 0.699208
+  type: 'test'
+  ...
+# Subtest: returning to the café from an old About URL survives reload and language changes
+ok 11 - returning to the café from an old About URL survives reload and language changes
+  ---
+  duration_ms: 0.163417
+  type: 'test'
+  ...
+# Subtest: a slow previous scene cannot overwrite the latest selection
+ok 12 - a slow previous scene cannot overwrite the latest selection
+  ---
+  duration_ms: 0.689709
+  type: 'test'
+  ...
+# Subtest: a failed scene keeps the previous view; selecting the current scene cancels an older load
+ok 13 - a failed scene keeps the previous view; selecting the current scene cancels an older load
+  ---
+  duration_ms: 0.318583
+  type: 'test'
+  ...
+# Subtest: walking follows the view direction and diagonal walking has the same speed
+ok 14 - walking follows the view direction and diagonal walking has the same speed
+  ---
+  duration_ms: 0.456625
+  type: 'test'
+  ...
+# Subtest: walking stops at furniture and slides along it without entering the table
+ok 15 - walking stops at furniture and slides along it without entering the table
+  ---
+  duration_ms: 0.068125
+  type: 'test'
+  ...
+# Subtest: a resumed frame cannot teleport the visitor through a wall
+ok 16 - a resumed frame cannot teleport the visitor through a wall
+  ---
+  duration_ms: 0.093792
+  type: 'test'
+  ...
+# Subtest: camera travel reaches its exact destination with no invalid positions
+ok 17 - camera travel reaches its exact destination with no invalid positions
+  ---
+  duration_ms: 0.988875
+  type: 'test'
+  ...
+# Subtest: the floating workspace fits narrow and wide cameras without changing private window coordinates
+ok 18 - the floating workspace fits narrow and wide cameras without changing private window coordinates
+  ---
+  duration_ms: 0.286
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 140.409125

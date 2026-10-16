@@ -1,0 +1,617 @@
+{
+  "sourceBase": "7f2900b2af8333e0afa3ee218ff02bdae840eaf0",
+  "branch": "codex/blog-experience-20261016",
+  "productionFiles": 8,
+  "testFiles": 3,
+  "rasterAssets": 2,
+  "uniqueNodeCasesPassed": 33,
+  "newE2EContractsExecuted": 0,
+  "scope": "Final human-active café detail continuation; old noon audit frozen",
+  "files": [
+    {
+      "path": "assets/css/space-cafe.css",
+      "bytes": 32886,
+      "sha256": "afa3cfbecd76d1a383740cf152c567e6bcd8b3295640e77c79fbc8ec28f153d2"
+    },
+    {
+      "path": "assets/css/space.css",
+      "bytes": 50829,
+      "sha256": "aeeb126e086fb1d78e546d935f3bfe6823a9f82fcc85b8c8b3c46508db4aafdb"
+    },
+    {
+      "path": "assets/js/space/cafe.js",
+      "bytes": 13792,
+      "sha256": "b495f569df6d4947c90f101e33dc69c98bce7ef3095e7cb7d2cddb7100d29d62"
+    },
+    {
+      "path": "assets/js/space/world-cafe.js",
+      "bytes": 45280,
+      "sha256": "7f1da1a2b2f8efb2c49dffd2fe6a0af18292fd41706005c099c4c8883a664a63"
+    },
+    {
+      "path": "assets/js/space/world-details.js",
+      "bytes": 8075,
+      "sha256": "efb6d4622ca5bc920da7e5b665efa205b4592f31d95d8c4c942f06903b333d43"
+    },
+    {
+      "path": "assets/js/space/world-details.mjs",
+      "bytes": 3482,
+      "sha256": "79473344e575ff108ef38fcd0e857469111336f6ad63f9fea885b92443653982"
+    },
+    {
+      "path": "assets/js/space/world-garden.mjs",
+      "bytes": 4274,
+      "sha256": "9ad8469a349649dbd24f47d7528cc6feb9bbf45f86b5b0ca2e55fd8f285f03f9"
+    },
+    {
+      "path": "layouts/partials/space/cafe.html",
+      "bytes": 9955,
+      "sha256": "230a2833ae04644f6d264925cd67258d472cf13dd9e549cdb5de8e990a11af43"
+    },
+    {
+      "path": "scripts/space-cafe-details.test.mjs",
+      "bytes": 6653,
+      "sha256": "17660412d37a0e280698efd2fb6d075cd3f15ac872726b4ba9cf08412c6141b5"
+    },
+    {
+      "path": "scripts/space-world-garden.test.mjs",
+      "bytes": 5660,
+      "sha256": "cb8639c12a3ed8de9c0d822f023eab0e35064ad80b43a2865d61e11e5701b166"
+    },
+    {
+      "path": "tests/e2e/space-cafe-details-contracts.spec.ts",
+      "bytes": 13358,
+      "sha256": "fd5cda6f7368ef3fec85b09b0d63dda197438af04a3f0e67c45019d1a471711f"
+    },
+    {
+      "path": "static/images/space/cafe/latte-rosetta-v1.jpg",
+      "bytes": 529195,
+      "sha256": "6b649ffd3b9e061b9b8998d1ca08836ebfd644af6dc722910bcf02ad999eeea0"
+    },
+    {
+      "path": "static/images/space/cafe/maple-leaf-v1.png",
+      "bytes": 64677,
+      "sha256": "2380bf0706fe81c48565a1c9ccf94776785c3c6d94f6b0ad5ce9ce410ad21522"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/README.md",
+      "bytes": 4714,
+      "sha256": "028027220643dfbc4149f8dd8d4c624edf6701e82b2dadf3195c4a2857db808d"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/before-in-app.png",
+      "bytes": 89338,
+      "sha256": "9d981088bc43f43559f0ea2f83d9044361197944aa188d642fd336e69be5eba2"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/before-metrics.json",
+      "bytes": 464,
+      "sha256": "7b807607475f22ad23b59a1a2d83a7237f5b11ff41c98af9544eba68e0c89fa5"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/build-visual-fixture.mjs",
+      "bytes": 4928,
+      "sha256": "7289470bfd5425a9e70212815a31a9ea1aa4586209c0d54aa703fe1b6d020601"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-1-books-390-cdp.png",
+      "bytes": 108223,
+      "sha256": "d05b086f5f66e6ad205e5de35129153b6f83c202243af159057e0f6af9851471"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-1-books-390.png",
+      "bytes": 9653,
+      "sha256": "7f5013e764e1e8c4680590fb93a580d99e70f2d09525e9ad0d88cba3aa2308db"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-1-books.png",
+      "bytes": 45924,
+      "sha256": "b1410ff0d053cf3c62b8fd0c53bc22a77a4a617ac2d06ae07e2de8846effd62a"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-1-coffee-390.png",
+      "bytes": 233840,
+      "sha256": "1c49cd522ba06a80b755909fb462aa3dbd0ba8eba25cdf850c9b5ee2c4bc636c"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-1-coffee.png",
+      "bytes": 42507,
+      "sha256": "a2bfd0983fe3f1cdb95894feb9227166c3414ee3c15440f92778804dd6239942"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-1-room.png",
+      "bytes": 86091,
+      "sha256": "ff2986ad6cab88aae79c9c2dea8e422d7c02bb85f207c554f2708984342f217a"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-2-books-1440.png",
+      "bytes": 184915,
+      "sha256": "4bb178e2e6014d191612fceeee2e2244fec804f6ae089d9e45f641097740b4a6"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-2-books-390.png",
+      "bytes": 81487,
+      "sha256": "e7c3eb598d454587702d112ff3dcb79e4e43655a5cc8c131172227efca73885e"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-2-room-1440.png",
+      "bytes": 965641,
+      "sha256": "fa4403586d9c29c55807eea5da94a57ec7ca1ceff97dce7588c1fc9d0b04fa03"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-books-320.png",
+      "bytes": 74157,
+      "sha256": "56cd0bf18f52cea4c36d17c857177b77bcfa64f8ce26f459dd33f5b15664fdf1"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-books-en-390.png",
+      "bytes": 89445,
+      "sha256": "582313e07b96ac6bc498ac80db1641d77afa516f3a4b5247ca660b2f0e530078"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-room-390.png",
+      "bytes": 242700,
+      "sha256": "328c006ed1c71413b3c185d415ff93c6542e5ee519077e49b1e200ddfab8b3b9"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-spines-320.png",
+      "bytes": 52159,
+      "sha256": "c99e3dff15ac7eacae5e3c698236f9b124763847547120bcd5a5006ed534d0ef"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-spines-390.png",
+      "bytes": 62659,
+      "sha256": "afdf7ce386b4148cc87ee392f7e2e85859ca465b6faf9d14d55cd874870100a7"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-spines-540-short.png",
+      "bytes": 59797,
+      "sha256": "3fa9eddfb8b3b0031cbc55fa3dc50fc8842c311c233e85fba6be417417298fc4"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-spines-en-320.png",
+      "bytes": 60014,
+      "sha256": "4d898a80d647c1393b2232f13edd93b475443ba8b2660cdd767264d4964bd676"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-4-spines-en-390.png",
+      "bytes": 72670,
+      "sha256": "c6ba957ec70159553474808a2a43c4d571528d8bc9aefb9079477e7766bbb7e5"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-5-room-1440.png",
+      "bytes": 966337,
+      "sha256": "e7749dcd187f758e8227496a55acb4c98a65ce392531e1e034543cb5a38feb3d"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-5-room-390.png",
+      "bytes": 238032,
+      "sha256": "911cdd08bb354250666e5c4a17f545d5fc5fef090c6908933d70a12a583525a3"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-5-spines-540-short.png",
+      "bytes": 53019,
+      "sha256": "67d6ecc3143e36e7b9099bc6c8dfaa9666142faeae6dd46e876669e553d26a23"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-5-terrace-1440.png",
+      "bytes": 915162,
+      "sha256": "1e8bc3ad58ea6ba6cb91a6848c718aacc7443a69f64a8f5deb14417f30bc3102"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/candidate-6-terrace-1440.png",
+      "bytes": 1094947,
+      "sha256": "5c3ef509c32891ebca8c9f355549deb11cc8a9102ec0158b62c1afb5f40aaa84"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/comparison-a-human-1440.png",
+      "bytes": 891429,
+      "sha256": "5f0fbd4de8ce6fa0ce51eb99f30f2f994e89862a671788782271635941547e2b"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/comparison-a-human-390.png",
+      "bytes": 239523,
+      "sha256": "55a0a34db249c3b23b9b3bebcec64a5062860e6c2a8aa96e6febfdc7b0e19dbf"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/comparison-b-miniature-1440.png",
+      "bytes": 521969,
+      "sha256": "b3de8213c67af1ab01abb026fe4a4b9a16b2aab9d26e07715ca93b61d91b6f27"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/comparison-b-miniature-390.png",
+      "bytes": 182196,
+      "sha256": "7a97573675a2ff782f8ccea7efaee0eb960244ca3667cf549257ae9f3740d82f"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/detail-inventory.md",
+      "bytes": 13645,
+      "sha256": "a1e0b7388b6bebe67ec511ee5699db280079cbd6cdfe087429dd1af8fb180b18"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/direction.md",
+      "bytes": 2144,
+      "sha256": "70944cd46f4c6cc5917bc67ab8e8379398e62d1ae62ef03ba1df9de850cd66ad"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/README.md",
+      "bytes": 744,
+      "sha256": "f00deb8864748d3a95cf6ca93246bd082133d09a184ff861595cc7050438811c"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/canopy-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/canopy-modules.log",
+      "bytes": 139,
+      "sha256": "c71862c6a25780cabdef4214122086f92e5e0ceb7fa81c1763185f3c7e29656b"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/canopy-pure.log",
+      "bytes": 6948,
+      "sha256": "4a7a3ea68246787c62109a63489521a23507f8bcb72bc99c8eff129fe5bc219b"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/canopy-relative.diff",
+      "bytes": 6149,
+      "sha256": "d77ec3161f2d12accd1b194702103a506e6224a14eb2298761c5b5539383b82f"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/canopy-scope.log",
+      "bytes": 2056,
+      "sha256": "c364cb0bcc5368c079e8355d9f1da5ab4448a5120caeb6715e0710a1254e107a"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/canopy-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/canopy-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/cleanup.json",
+      "bytes": 324,
+      "sha256": "467962fa40fe6b180c76175ea4cf64879b3c9eeb7b946b8861a764f3139be1d4"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-coffee-framing.log",
+      "bytes": 275,
+      "sha256": "c9b0629d886acafacad49c55a3f44251558240afce0ab3b78b339e3609464eb3"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-css.log",
+      "bytes": 26,
+      "sha256": "4925dc45bdaea2317eee30b179b0b2f3a5bc5b448c8d46ed3f1f0a411ee0874a"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-discovery.log",
+      "bytes": 1528,
+      "sha256": "fddcce221adaceee77be6e42bbeff6f2b816f37ad768541355972997b3669731"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-modules.log",
+      "bytes": 139,
+      "sha256": "48207db9144387f4eb4ca231a912913b1d809f8771381936d1c934a4265d8b14"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-pure.log",
+      "bytes": 4480,
+      "sha256": "7192204f91f30fdb5e0de8777d21030ec973d92f06af51a49bd3e04b628ccd76"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-scope.log",
+      "bytes": 1578,
+      "sha256": "2d0915b90f6932f11312bf909d5a3f4734026fe0b1cb5f8d8449e0cf82c20da4"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/details-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/frame-hypothesis-reverted.log",
+      "bytes": 449,
+      "sha256": "e21d3205eec0cbc48f85e21e4f641133a060294976a2a3136a94a1a955b80bf3"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/frame-recovery-pure.log",
+      "bytes": 4752,
+      "sha256": "e14ee42f2e5e2f452359552a7eff92d1b8e395f95f143c2c067faa99bd354ad9"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/frame-recovery-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/hugo-build.log",
+      "bytes": 480,
+      "sha256": "fe0273ceb189cf10f1587bc1555f77d67249db0869f6eef48cc1b30148255513"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/hugo-canopy.log",
+      "bytes": 480,
+      "sha256": "e5fdd6c3b6c68deca0feff59ac490f69150ba635d6d73031b1e1fa8132c39770"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/hugo-final-css.log",
+      "bytes": 480,
+      "sha256": "5772b6bf02b07af82f423e0dc8637920af55a92514e68e304a6b7e2e53e3bf73"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/hugo-maple.log",
+      "bytes": 480,
+      "sha256": "457774175e13693d1f485be682eec63c1ac40fab03cf7a5f113ff12b1272dc4c"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/hugo-refinement.log",
+      "bytes": 481,
+      "sha256": "14dbd1f8012a99cdf24feb5567dbcd5975b6490eb6c712f1d1b2160accba2825"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/hugo-spines.log",
+      "bytes": 480,
+      "sha256": "8e61e36ac5d3137d9c81018f086c38c24dbff3318be2d481256c5cbc95b0f207"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/maple-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/maple-modules.log",
+      "bytes": 139,
+      "sha256": "883fe808b8cb33f6e3c11ab5d4e63b2494a59d7902eb1f9e995ef83343560cc3"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/maple-pure.log",
+      "bytes": 6647,
+      "sha256": "63631d55f20fb4a84b1768ed6053cdd56115e7ec0bbf61429de4633291a3f6ff"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/maple-scope.log",
+      "bytes": 2146,
+      "sha256": "19df8967c18ce999887fd46878aeff8308520060e6b95f418ea49612573837cd"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/maple-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/maple-transcode.log",
+      "bytes": 245,
+      "sha256": "cf6235418e55d9b124b766508badedc7f57449f1adee99e9c22715c8523e6919"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/maple-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/parent-entry-regression.log",
+      "bytes": 3727,
+      "sha256": "20e75f1910b098c9016f7e167110381d085c69f130bfd3d2046ec7cb80527599"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/refinement-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/refinement-discovery.log",
+      "bytes": 1528,
+      "sha256": "fddcce221adaceee77be6e42bbeff6f2b816f37ad768541355972997b3669731"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/refinement-modules-css.log",
+      "bytes": 154,
+      "sha256": "1a7abf00b0a83e525b08f4d4e7ae4181e241d232b2552773ba4391e59a4ce320"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/refinement-pure.log",
+      "bytes": 4767,
+      "sha256": "045a343717e58f0d579b975b2524aafc19089340d7117e3bb916003b66db3cf5"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/refinement-scope.log",
+      "bytes": 1258,
+      "sha256": "71648f23f20c278641118eac76be3bebb452ab3bba9daa634d3340356b5d6e2f"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/refinement-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/refinement-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/root-gutter-css.log",
+      "bytes": 63,
+      "sha256": "5269920da3c7038fe25aadb5bf5e2f161d26e11b3977f5dfd3132b6f82ecc0f1"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/root-gutter-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/root-gutter-scope.log",
+      "bytes": 525,
+      "sha256": "062583ff4892e3800ff89a3e6b36d83bb925d92a060836a2c995ded4fc3c03e2"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/simulator-closeout.log",
+      "bytes": 271,
+      "sha256": "5b9cc152226f1429c7ead3799cf5386eb77f54761a64ebdbf9cbf2f8c7f871bc"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/spine-view-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/spine-view-discovery.log",
+      "bytes": 1528,
+      "sha256": "fddcce221adaceee77be6e42bbeff6f2b816f37ad768541355972997b3669731"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/spine-view-modules-css.log",
+      "bytes": 154,
+      "sha256": "716a32cda671258606481c0c8ce70fa601e582a54acdb11bdbe25f38036b0edd"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/spine-view-pure.log",
+      "bytes": 5537,
+      "sha256": "e9995d830eec4974c75f55597e847af407908d35cf2f0e5a897bd829e47e3477"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/spine-view-scope.log",
+      "bytes": 1637,
+      "sha256": "231c09bd28e351c5d863c70baa803aa6d21c3141d7597cbeb07c4aa0fcbde771"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/spine-view-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/spine-view-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/table-side-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/table-side-modules.log",
+      "bytes": 43,
+      "sha256": "0f8d1968470eaa3f775963e4064dec60016581c2b9532f6c4f2bf9c72d35b059"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/table-side-pure.log",
+      "bytes": 5263,
+      "sha256": "6bc42d438d5e6b289aa55a2436b009297fdd9981be90aa62f8593c443e4947e7"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/table-side-scope.log",
+      "bytes": 1656,
+      "sha256": "2880ccb08b67e7946ee3b4185dd9c2122786ecdc9ec48812e2f66e36acf2ee0c"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/table-side-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/evidence/logs/table-side-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-books-1440.png",
+      "bytes": 195957,
+      "sha256": "25818c670eeb8622be7b18e64cccb99b68436da3d476b9a43ff23423726e10ac"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-browser-state.json",
+      "bytes": 723,
+      "sha256": "9f2d1e07ad540265791ed8eebfdceee4dc6dfb1dc2d7cdceee0cc5dc3ea3d270"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-coffee-1440.png",
+      "bytes": 663569,
+      "sha256": "0f46991038d3dd4419ec88824dfebf299b54535307e4edb9a7f95e3b2e3ac88a"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-context-loss-workspace.png",
+      "bytes": 107119,
+      "sha256": "9bf906c56940fb47c12b5ff481f9d492911ac5f4b5a3dfcef40b1154fa15885f"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-context-loss.json",
+      "bytes": 225,
+      "sha256": "010706141892a3d930a9d984a75519f8146901bcdc18ab0b0c70d0a261ab602c"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-lab-gutter.json",
+      "bytes": 267,
+      "sha256": "a38ecff3ce1197316497dfe53c7897c1f347ba1804e4510ae62f2bd4fcf1bb68"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-missing-texture-fallback.png",
+      "bytes": 691190,
+      "sha256": "57ece4cf113f62e927e109087a633b370419ee2f6b2af859c9a94cddf84ed3f7"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-room-1440.png",
+      "bytes": 983177,
+      "sha256": "57e38341707f22bbcd9c67e8647f784e47de75d1113c43713126d6717d60244e"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-room-390.png",
+      "bytes": 237798,
+      "sha256": "371a34879d6f0d82333c153c9fb5e6ccfbf8715af4f2c9af8be0f82dc1e654e8"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-scene-actions.json",
+      "bytes": 1039,
+      "sha256": "2d1bf2d12343ab26d824596f859e97833efd296cdeb921ab63ea7ee79f402dd0"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-spines-1440.png",
+      "bytes": 161153,
+      "sha256": "78d17e79edfd8fd8d4cc8120f124926ebcd26db6d4f8e4abadb43027686c5a51"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/final-texture-fallback.json",
+      "bytes": 124,
+      "sha256": "1e6c477ca8b35d473f64fafa321d2d692a6eb067832edcb6372c0018777668e3"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/latte-asset.json",
+      "bytes": 1045,
+      "sha256": "ed48bf53fccdc87dffe986c7c2080481af90fd939c9065162fb29b5ced0b491b"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/maple-asset.json",
+      "bytes": 1283,
+      "sha256": "992e9f85c4f5ab08b5ac9871ef549506e6eae2509eaa5fc79385b17741c2ef23"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/observations.json",
+      "bytes": 5490,
+      "sha256": "28b716a13cadb84a153d054f38247f0d168f49cbca3575e23af7fb57878165e6"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/review.md",
+      "bytes": 35253,
+      "sha256": "9a81f6ac640a3f028503290a853fb0bc65378b9c95c98169bc32d6339843aaa5"
+    },
+    {
+      "path": "docs/design/cafe-realism-2026-10-16/work-state.json",
+      "bytes": 1666,
+      "sha256": "238b354ae3b62c27cec134cfb18732ab75e1fd22a7df63e4418eb27fde308e20"
+    }
+  ]
+}

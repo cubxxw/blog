@@ -1,0 +1,55 @@
+--- candidate5/world-cafe.js
++++ candidate6/world-cafe.js
+@@ -4,7 +4,7 @@
+ import { createCafeResident } from './world-cat.js';
+ import { createCafeDetails } from './world-details.js';
+ import { inspectView, tabletopProfile } from './world-details.mjs';
+-import { consumeLegacyMapleRandom, mapleCounts, maplePlan } from './world-garden.mjs';
++import { consumeLegacyMapleRandom, mapleCounts, maplePlan, mossMound } from './world-garden.mjs';
+ 
+ // Three r160 and its CSS3D renderer share one camera. The live workspace is a
+ // real DOM plane in the room; apps and their private state are never duplicated.
+@@ -176,7 +176,16 @@
+   const envMat=(color,extra={})=>{const key=color+JSON.stringify(Object.entries(extra).map(([k,v])=>[k,v?.uuid||v]));if(environmentMaterials.has(key))return environmentMaterials.get(key);const m=new THREE.MeshStandardMaterial({color,roughness:.9,...extra});environmentResources.add(m);environmentMaterials.set(key,m);return m;};
+   const envGeo=g=>{environmentResources.add(g);return g;};
+   const rockGeometry=geometry(new THREE.IcosahedronGeometry(1,1)),leafGeometry=geometry(new THREE.PlaneGeometry(1,1));
+-  const twigGeometry=geometry(new THREE.CylinderGeometry(.55,1,1,6)),planeNormal=new THREE.Vector3(0,0,1),mapleNormal=new THREE.Vector3(),mapleShade=new THREE.Color();
++  const twigGeometry=geometry(new THREE.CylinderGeometry(.55,1,1,6)),branchGeometry=geometry(new THREE.CylinderGeometry(.62,1,1,8)),planeNormal=new THREE.Vector3(0,0,1),mapleNormal=new THREE.Vector3(),mapleShade=new THREE.Color();
++  let mossTexture;
++  function mossMaterial(){
++    if(!mossTexture){
++      const canvas=document.createElement('canvas');canvas.width=canvas.height=128;const context=canvas.getContext('2d'),pixels=context.createImageData(128,128);
++      for(let y=0;y<128;y++)for(let x=0;x<128;x++){let hash=(Math.imul(x,374761393)^Math.imul(y,668265263))>>>0;hash=Math.imul(hash^(hash>>>13),1274126177)>>>0;const shade=190+(hash>>>24)/255*65,i=(y*128+x)*4;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=shade;pixels.data[i+3]=255;}
++      context.putImageData(pixels,0,0);mossTexture=new THREE.CanvasTexture(canvas);mossTexture.colorSpace=THREE.SRGBColorSpace;mossTexture.wrapS=mossTexture.wrapT=THREE.RepeatWrapping;mossTexture.repeat.set(4,4);textures.add(mossTexture);
++    }
++    return envMat('#71834e',{map:mossTexture,bumpMap:mossTexture,bumpScale:.003,roughness:.99,envMapIntensity:.08});
++  }
+   root.dataset.worldMapleTexture='fallback';
+   if(mapleAsset)new THREE.TextureLoader().load(mapleAsset,texture=>{
+     if(disposed){texture.dispose();return;}texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());textures.add(texture);mapleTexture=texture;
+@@ -195,9 +204,10 @@
+     const counts=mapleCounts(pendingMaples);let leavesTotal=0;
+     pendingMaples.forEach((tree,index)=>{
+       const plan=maplePlan(tree,counts[index]),bark=envMat('#77654d',{roughness:.94,bumpMap:grainMap,bumpScale:.008,envMapIntensity:.08}),leaf=mapleLeafMaterial(tree.color);
+-      segment([tree.x,0,tree.z],[tree.x+.14,tree.height*.65,tree.z-.1],.035*tree.height,bark,outdoors);
+-      for(const branch of plan.branches)segment(branch.start,branch.end,branch.radius,bark,outdoors);
+-      for(const twig of plan.twigs){const start=new THREE.Vector3(...twig.start),end=new THREE.Vector3(...twig.end),branch=mesh(twigGeometry,bark,...start.clone().add(end).multiplyScalar(.5).toArray(),outdoors);branch.scale.set(twig.radius,start.distanceTo(end),twig.radius);branch.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),end.sub(start).normalize());}
++      const addBranch=(spec,geo=branchGeometry)=>{const start=new THREE.Vector3(...spec.start),end=new THREE.Vector3(...spec.end),branch=mesh(geo,bark,...start.clone().add(end).multiplyScalar(.5).toArray(),outdoors);branch.scale.set(spec.radius,start.distanceTo(end),spec.radius);branch.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),end.sub(start).normalize());};
++      for(const trunk of plan.trunk)addBranch(trunk);
++      for(const branch of plan.branches)for(const section of branch.segments)addBranch(section);
++      for(const twig of plan.twigs)addBranch(twig,twigGeometry);
+       const leaves=new THREE.InstancedMesh(leafGeometry,leaf,plan.count);leaves.castShadow=true;leaves.receiveShadow=true;
+       for(let i=0;i<plan.count;i++){dummy.position.fromArray(plan.positions,i*3);mapleNormal.fromArray(plan.normals,i*3);dummy.quaternion.setFromUnitVectors(planeNormal,mapleNormal);dummy.rotateZ(plan.rolls[i]);dummy.scale.set(plan.sizes[i],plan.sizes[i],1);dummy.updateMatrix();leaves.setMatrixAt(i,dummy.matrix);leaves.setColorAt(i,mapleShade.setScalar(plan.shades[i]));}
+       outdoors.add(leaves);leavesTotal+=plan.count;
+@@ -293,9 +303,9 @@
+       makeWater('#7b9275',4.5,3.6,3.6,-13.5);
+       for(let i=0;i<22;i++)rock(-9+random()*18,-11-random()*12,.4+random()*.9);
+       for(let i=0;i<17;i++)tree(-16+random()*32,-14-random()*15,2.7+random()*2.6,id==='zen'?(i%3?'#758849':'#a57049'):'#4d7758');
+-      const mossGeo=envGeo(new THREE.SphereGeometry(1,12,8)),mossMat=envMat('#627646');
++      const mossGeo=envGeo(new THREE.SphereGeometry(1,12,8)),mossMat=mossMaterial();
+       const moss=new THREE.InstancedMesh(mossGeo,mossMat,130);
+-      for(let i=0;i<130;i++){dummy.position.set(-10+random()*20,-.03,-11-random()*12);dummy.scale.set(.4+random()*.7,.13+random()*.15,.4+random()*.7);dummy.updateMatrix();moss.setMatrixAt(i,dummy.matrix);}moss.receiveShadow=true;outdoors.add(moss);
++      for(let i=0;i<130;i++){const mound=mossMound(i,{x:-10+random()*20,z:-11-random()*12,width:.4+random()*.7,height:.13+random()*.15,depth:.4+random()*.7});dummy.position.fromArray(mound.position);dummy.rotation.fromArray(mound.rotation);dummy.scale.fromArray(mound.scale);dummy.updateMatrix();moss.setMatrixAt(i,dummy.matrix);}moss.receiveShadow=true;outdoors.add(moss);
+       for(let i=0;i<6;i++)cyl(-.4+Math.sin(i)*.2,-.02,-10.8-i*.65,.3,.07,stone,outdoors);
+       if(id==='garden') {
+         const wall=envMat('#e1e1cc');box(-6,1.35,-18,8,2.7,.3,wall,outdoors);box(6,1.35,-18,8,2.7,.3,wall,outdoors);

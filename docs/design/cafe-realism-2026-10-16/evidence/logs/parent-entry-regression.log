@@ -1,0 +1,98 @@
+TAP version 13
+# Subtest: only six known cafés can be restored from browser storage
+ok 1 - only six known cafés can be restored from browser storage
+  ---
+  duration_ms: 0.335583
+  type: 'test'
+  ...
+# Subtest: direct content routes take priority over a café visit
+ok 2 - direct content routes take priority over a café visit
+  ---
+  duration_ms: 0.062584
+  type: 'test'
+  ...
+# Subtest: root visits and reloads enter the café while language changes preserve the current place
+ok 3 - root visits and reloads enter the café while language changes preserve the current place
+  ---
+  duration_ms: 0.049792
+  type: 'test'
+  ...
+# Subtest: an explicit reader deep link beats stale café storage on reload
+ok 4 - an explicit reader deep link beats stale café storage on reload
+  ---
+  duration_ms: 0.331541
+  type: 'test'
+  ...
+# Subtest: returning to the café from an old About URL survives reload and language changes
+ok 5 - returning to the café from an old About URL survives reload and language changes
+  ---
+  duration_ms: 0.051125
+  type: 'test'
+  ...
+# Subtest: a slow previous scene cannot overwrite the latest selection
+ok 6 - a slow previous scene cannot overwrite the latest selection
+  ---
+  duration_ms: 0.305292
+  type: 'test'
+  ...
+# Subtest: a failed scene keeps the previous view; selecting the current scene cancels an older load
+ok 7 - a failed scene keeps the previous view; selecting the current scene cancels an older load
+  ---
+  duration_ms: 0.079416
+  type: 'test'
+  ...
+# (node:59980) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/assets/js/space/onboarding.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: failure after the first frame stops presentation timers and retains a usable escape
+ok 8 - failure after the first frame stops presentation timers and retains a usable escape
+  ---
+  duration_ms: 0.708375
+  type: 'test'
+  ...
+# Subtest: failure during the reveal releases the modal even when its fade timer is cancelled
+ok 9 - failure during the reveal releases the modal even when its fade timer is cancelled
+  ---
+  duration_ms: 0.708792
+  type: 'test'
+  ...
+# Subtest: leaving during preparation removes pending work and cannot reopen the panel
+ok 10 - leaving during preparation removes pending work and cannot reopen the panel
+  ---
+  duration_ms: 0.184
+  type: 'test'
+  ...
+# Subtest: skip and elapsed presentation cannot declare an unrendered room ready
+ok 11 - skip and elapsed presentation cannot declare an unrendered room ready
+  ---
+  duration_ms: 0.363416
+  type: 'test'
+  ...
+# Subtest: fresh presentation finishes only after real readiness and a short optional duration
+ok 12 - fresh presentation finishes only after real readiness and a short optional duration
+  ---
+  duration_ms: 0.0865
+  type: 'test'
+  ...
+# Subtest: revisit and reduced motion have no artificial presentation delay
+ok 13 - revisit and reduced motion have no artificial presentation delay
+  ---
+  duration_ms: 0.052667
+  type: 'test'
+  ...
+# Subtest: failure stays distinct from readiness and cannot be overwritten by late success
+ok 14 - failure stays distinct from readiness and cannot be overwritten by late success
+  ---
+  duration_ms: 0.043208
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 39.776917

@@ -1,0 +1,36 @@
+{
+  "mobile": {
+    "draws": "55",
+    "focus": "books",
+    "maple": "scan",
+    "mode": "roam",
+    "pose": "{\"x\":0.85,\"y\":1.52,\"z\":2.45,\"yaw\":0.785,\"pitch\":-0.337,\"fov\":54}",
+    "quiet": "false",
+    "reduce": true,
+    "root": [
+      390,
+      844
+    ],
+    "triangles": "106246",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "end": {
+    "htmlOverflow": "hidden",
+    "mode": "roam",
+    "quiet": "false",
+    "reduce": true,
+    "rootWidth": 1440,
+    "theme": "zen",
+    "url": "http://127.0.0.1:1317/zh/projects/",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  "temporaryMediaOverrideCleared": true,
+  "temporaryNetworkBlocksCleared": true,
+  "temporaryViewportOverrideCleared": true
+}

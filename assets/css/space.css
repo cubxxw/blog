@@ -1,4 +1,5 @@
 /* BEAR's desktop is a page-scoped product surface, not a global blog theme. */
+html:has(> body.products-view-bear) { overflow: hidden; }
 body.products-view-bear { overflow: hidden !important; }
 body.products-view-bear .header, body.products-view-bear .header-wrapper,
 body.products-view-bear .footer, body.products-view-bear #top-link,

@@ -1,0 +1,20 @@
+PASS world: only table chair rotations, standing human camera, and existing brass passed to shelf
+PASS render helper: only four supported faceout placements/stands, no coffee/material/atlas changes
+PASS pure helper: only L stand physical plan/baseY, no shelf order/near camera/roundtable changes
+PASS assets/js/space/cafe.js unchanged from candidate 2
+PASS layouts/partials/space/cafe.html unchanged from candidate 2
+PASS assets/css/space-cafe.css unchanged from candidate 2
+PASS tests/e2e/space-cafe-details-contracts.spec.ts unchanged from candidate 2
+PASS assets/js/space/world-cat.js remains accepted HEAD
+PASS assets/js/space/world-state.mjs remains accepted HEAD
+PASS assets/js/space/desktop.js remains accepted HEAD
+PASS assets/js/space/apps.js remains accepted HEAD
+PASS data/travel.yml remains accepted HEAD
+SHA256 12beb0bdb6da74174fdea426d5a44beaa5ac8a8ea19b51c36128fa79574645df assets/js/space/world-cafe.js
+SHA256 1c2edd014d712bfbc8a8f689ead451c28fd1fb749037316096f9b153d747c322 assets/js/space/world-details.js
+SHA256 5b6b3c817b2eadb89469dfaddb0ed8697e66287d7a35cb3931eb4dc7e1ddcce0 assets/js/space/world-details.mjs
+SHA256 d55f2101968d64161b7f3f85d7066f8569fde7fa312f649e87085481854cd9b7 assets/js/space/cafe.js
+SHA256 f69ae984174546c51f0473817c3af2713c52d106512c6c11e6541c389b4a8d94 layouts/partials/space/cafe.html
+SHA256 c94bc67a68e880c1f28c2b7b5f439750223b6e9ff78c8e90bd32776d345d94c7 assets/css/space-cafe.css
+SHA256 5d8b97aa8499a5904a91c06fce6c77d9fb40505b685536eff214e12ac6f439f0 scripts/space-cafe-details.test.mjs
+SHA256 7ec96294e1d6ff9642341d5d1c78366145fc0df90582cd51c0f9284f1735711c tests/e2e/space-cafe-details-contracts.spec.ts

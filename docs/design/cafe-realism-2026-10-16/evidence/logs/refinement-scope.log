@@ -1,0 +1,14 @@
+PASS world-cafe: only tabletop geometry/import/planar UV changed since candidate 1
+PASS pure helper: only tabletop profile appended; all coffee/books camera/layout unchanged
+PASS CSS: only bookbar/toggle rules appended
+PASS cafe controller: only per-entry collapsed reset and native toggle added
+PASS template: only bookbar and collapsed list markup changed
+PASS coffee/atlas/material helper unchanged from candidate 1
+SHA256 fee4af74530bf611b50b4dde367db999db66f113abd47d50ac72f2677b539c2f assets/js/space/world-cafe.js
+SHA256 5e907ea240f6487c7e3a363dcd8254db560b7bd88925ad0b3f1bf5789ddb0631 assets/js/space/world-details.js
+SHA256 7e61b268e1d9bd9703e619d557ac1a9e07763cc4826b61d2abaa573f14b1b120 assets/js/space/world-details.mjs
+SHA256 d55f2101968d64161b7f3f85d7066f8569fde7fa312f649e87085481854cd9b7 assets/js/space/cafe.js
+SHA256 f69ae984174546c51f0473817c3af2713c52d106512c6c11e6541c389b4a8d94 layouts/partials/space/cafe.html
+SHA256 c94bc67a68e880c1f28c2b7b5f439750223b6e9ff78c8e90bd32776d345d94c7 assets/css/space-cafe.css
+SHA256 85449e4aa6452837d467b0dadb9a1fed2ef6a2a2459ce9e60ebb7646e8d14963 scripts/space-cafe-details.test.mjs
+SHA256 7ec96294e1d6ff9642341d5d1c78366145fc0df90582cd51c0f9284f1735711c tests/e2e/space-cafe-details-contracts.spec.ts

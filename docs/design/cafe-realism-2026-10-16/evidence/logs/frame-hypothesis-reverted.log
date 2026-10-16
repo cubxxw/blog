@@ -1,0 +1,3 @@
+PASS original freeze restored afc27fabcc7c2aec377ddfedfbd4d77beef750825a17ddf036fdbfcd2fe6ee1b assets/js/space/world-cafe.js
+PASS original freeze restored eb010427ef23e88d6f3db4fa84f5f8e775ae713b062bb3822145d66c08ff4ef0 scripts/space-cafe-details.test.mjs
+The parent actual observation had prefers-reduced-motion: reduce, so paused cat rendering was expected. No confirmed lifecycle defect; speculative defensive scheduler change/test were removed.

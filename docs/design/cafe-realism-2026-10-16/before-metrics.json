@@ -1,0 +1,17 @@
+{
+  "sourceCheckpoint": "7f2900b2af8333e0afa3ee218ff02bdae840eaf0",
+  "view": "User current IAB918x847 approxactualimage, not controlled viewport",
+  "mode": "roam",
+  "theme": "zen",
+  "pose": {
+    "x": 2.6,
+    "z": 4.65,
+    "yaw": 0.329
+  },
+  "draws": 83,
+  "triangles": 82312,
+  "frames": 4,
+  "catLoaded": true,
+  "screenshot": "before-in-app.png",
+  "limits": "One natural userview frame. Frame4 is cumulative atcapture, not FPS; no inventedperfscore."
+}

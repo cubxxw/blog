@@ -1,0 +1,16 @@
+{
+  "lab": {
+    "overflow": "auto scroll",
+    "pageHeight": 5396,
+    "scrollY": 900,
+    "view": "lab"
+  },
+  "bear": {
+    "canvases": 1,
+    "mode": "workspace",
+    "overflow": "hidden",
+    "rootWidth": 1440,
+    "view": "bear",
+    "viewportWidth": 1440
+  }
+}

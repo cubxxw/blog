@@ -297,3 +297,42 @@
   .space-boot,.space-boot__steps li { transition:none; }
   .space-boot__caret { animation:none; }
 }
+
+/* Human-scale details remain part of the room. The two views have one clear
+   exit; the caption supplies the real shelf text without inventing book links. */
+.space-world-hud__details { position:absolute; top:98px; left:4vw; display:flex; gap:12px; }
+.space-world-hud__details button { min-width:44px; min-height:44px; padding:8px 12px; border:0; border-radius:3px; font-size:14px; background:#182b23b8; }
+.space:not([data-world-mode="roam"]) .space-world-hud__details { display:none; }
+.space-cafe-inspect { position:absolute; inset:0; pointer-events:none; }
+.space-cafe-inspect[hidden],.space-cafe-inspect [hidden] { display:none!important; }
+.space-cafe-inspect > button { position:absolute; top:98px; left:4vw; min-width:44px; min-height:44px; font-size:14px; border-radius:3px; }
+.space-cafe-inspect__caption { position:absolute; bottom:24px; left:4vw; right:4vw; width:fit-content; max-width:650px; pointer-events:auto; padding:12px 16px; background:#172820e8; color:#faf4e5; border-radius:3px; }
+.space-cafe-inspect__caption p { margin:0; font-size:14px; line-height:1.6; }
+.space .space-cafe-inspect h2 { margin:0 0 8px; color:inherit; font:500 16px/1.5 var(--font-sans,system-ui,sans-serif); }
+.space-cafe-inspect__caption ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 24px; list-style:none; margin:0; padding:0; max-height:140px; overflow:auto; overscroll-behavior:contain; }
+.space-cafe-inspect__caption li { min-width:0; font-size:14px; line-height:1.5; }
+.space-cafe-inspect__caption strong { display:block; font-weight:500; }
+.space-cafe-inspect__caption li span { display:block; color:#d1d6c8; font-size:12px; }
+.space-cafe-inspect__caption ul:focus-visible { outline:2px solid #e9e7ce; outline-offset:4px; }
+.space[data-world-mode="inspect"] .space-cafe__footer { visibility:hidden; }
+.space[data-world-mode="inspect"] .space-cafe::after { opacity:1; background:linear-gradient(180deg,#11201b66,transparent 25%,transparent 74%,#11201b70); }
+.space[data-world-failed] :is(.space-world-hud__details,.space-cafe-inspect),.space[data-world-loading] .space-world-hud__details { display:none!important; }
+@media(max-width:640px) {
+  .space-world-hud__details,.space-cafe-inspect > button { top:80px; left:14px; }
+  .space-world-hud__details { gap:8px; }
+  .space-world-hud__details button { padding:8px 10px; }
+  .space-cafe-inspect__caption { left:14px; right:14px; bottom:18px; max-width:none; width:auto; padding:10px 12px; }
+  .space-cafe-inspect__caption ul { max-height:126px; gap:10px 14px; }
+}
+@media(min-width:520px) and (max-height:420px) {
+  .space-world-hud__details,.space-cafe-inspect > button { top:76px; left:16px; }
+  .space-cafe-inspect__caption { left:auto; right:16px; bottom:16px; max-width:52%; }
+  .space-cafe-inspect__caption ul { max-height:88px; }
+}
+
+/* Keep the physical lower shelf visible until someone asks for the book list. */
+.space-cafe-inspect__bookbar { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.space .space-cafe-inspect__bookbar h2 { margin:0; }
+.space-world-hud .space-cafe-inspect__bookbar button { min-width:44px; min-height:44px; border:0; border-radius:0; padding:8px 0; background:transparent; backdrop-filter:none; font-size:14px; text-decoration:underline; text-underline-offset:4px; }
+.space-cafe-inspect__caption:has(.space-cafe-inspect__bookbar) { padding-block:6px; }
+.space-cafe-inspect__bookbar + ul:not([hidden]) { margin-top:8px; padding-bottom:4px; }
