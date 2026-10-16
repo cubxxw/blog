@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T07:47:06+08:00",
+  "updated_at": "2026-10-16T08:25:11+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,26 +353,26 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.24",
+    "inventory_version": "1.25",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
       "world-decoration": 18,
       "motion": 26
     },
-    "selector_level_controls": 367,
+    "selector_level_controls": 369,
     "family_ids_covered": 309,
     "certified_96_plus_controls": 0,
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309族/367selector entries，345状态记录/81局部证据族（80partial+1measured），0完整认证；新bookmark只库存局部证据，评分Agent未逐图审。",
-    "families_with_recorded_contract_fragments": 82,
-    "scoped_check_assessments": 222,
-    "expert_visual_assessments": 100,
-    "inventory_families_with_partial_state_evidence": 81,
+    "reason": "309 families/369 selector entries;359 state records/82 families with local evidence (81partial+1measured),0whole; no whole control/family score or96 certification.",
+    "families_with_recorded_contract_fragments": 84,
+    "scoped_check_assessments": 234,
+    "expert_visual_assessments": 106,
+    "inventory_families_with_partial_state_evidence": 82,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 345
+    "inventory_state_evidence_records": 359
   },
   "evidence": [
     {
@@ -2959,6 +2959,52 @@
       "rows_canonical_sha256": "f5a6a6e3843970014b0337d5e94acb50184b8b3e1a44df8fa391be00d2f4974a",
       "lifecycle": "discovery/unreviewed;humanChoiceunreviewed;noGold/noautomaticpromotion",
       "limits": "textVisibleThroughoutDeliveryunverified;loadedface!=actualDOMuse;immediatebytes!=HTTPwarm;slowcaseissuccessnot404/offline."
+    },
+    {
+      "id": "E-BATCH-E15C",
+      "kind": "bounded_source_recorded_browser_independent_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e15-actual.json",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+      "source_manifest_sha256": "a3eecd8d10d728dd124acc8631432b8e84f9098a695e738b298d5398601e4388",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e15c-provenance.json",
+      "provenance_sha256": "10030f360127c13143822d673bd8e640b366754c466f177049cb8b70f8f10242",
+      "scope": "10 distinct contracts/14.5s, Hugo3512ms;5 actual Chromium Metal contexts/17 natural PNG independently viewed.6 geometry contract configurations are not 6 extra actual journeys.4 production files/6 unchanged dependencies plus QA;70 hashes matched (10 source+60 provenance files).",
+      "proof_refs": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15c-contracts.log",
+        "docs/ux-audit/2026-10-16/batch-e15.actual.mjs",
+        "docs/ux-audit/2026-10-16/evidence/batch-e15c-served-bundles.json"
+      ],
+      "result": "Named library/profile type, complete title/full DOM description with 3-line visual clamp, bounded own scroll/return/reload, category focus/same controls, shared bookmark semantics and notes continuity pass.",
+      "retained_failures": [
+        "Initial missing eval parameter/NaN is fixture failure, not product scroll proof.",
+        "B reload is genuine: storage850, preworld list850/two RAF then ready0; exact adoption timing unknown.",
+        "Original public favorite state/visible Saved/pressed mismatch retained."
+      ],
+      "limits": "Classic/fallback/runtime context-loss restoration, AT/Safari/physical/OS picker presentation/zoom/whole state matrix remain unverified; no whole-family score."
+    },
+    {
+      "id": "E-SPACE-LIBRARY-SCROLL-BASELINE",
+      "kind": "qualified_recorded_browser_negative",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-provenance.json",
+      "scope": "Immutable d5b35f94 390x844 en/coarse/reduce, actual wheel850 yields windowbody911/list0/saved0; actual later article then Library return body0. Four PNG and 11 file/Git source hashes independently reviewed.",
+      "result": "Confirmed UX049 reading position loss; not all devices/scroll methods."
+    },
+    {
+      "id": "E-E15B-RELOAD-BASELINE",
+      "kind": "qualified_recorded_browser_negative",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload-provenance.json",
+      "scope": "E15b frozen 1440zh/reduce. storage850/preworld list850/two RAF850 then ready/enter list0 with storage still850. Two PNG independently viewed.",
+      "result": "Same UX049 lifecycle owner defect, separate negative history. No storage overwrite or precise reparent timestamp claim."
+    },
+    {
+      "id": "E-SPACE-EXTERNAL-BOOKMARK-BASELINE",
+      "kind": "qualified_recorded_browser_negative",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-space-external-bookmark.json",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/probe-space-external-bookmark-provenance.json",
+      "scope": "Initial E15 390en/coarse/reduce; original BearSpace.execute favorite on/off changes stored favorites/star but pressed remains false and label Save; own actual click gives Saved/true. Same focused button. Four PNG independently viewed.",
+      "result": "Confirmed UX050; public API invocation, not a real assistant/model/AT test."
     }
   ],
   "historical_visual_assessments": [
@@ -6399,6 +6445,193 @@
       ],
       "scope": "Onlynamedstaticfragments;fullmatrix/contrast/ATnotcertified.",
       "reason": "Tinynecessarytextplusprofilehorizontaldividersandlibrarysegmentationcostspace/readability;preserveneutralpaper/chrome,scaleprimary/auxiliarytypebytaskandreduceoneboundarylayer.NotWCAGfontfloor/deviceclaim."
+    },
+    {
+      "assessment_id": "VIS-E15C-NORMAL-D1",
+      "family_ids": [
+        "S.APP.reader.ITEM",
+        "S.APP.reader.FILTER",
+        "S.APP.welcome.PROFILE"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-320-zh-complete-title.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-returned-library.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-320-zh-identity.png"
+      ],
+      "scope": "Ordinary320zh/390en/1440 named title-summary-meta and identity/intro fragments; excludes short coarse and Reading paths recommendation block.",
+      "reason": "Complete task text, three type levels and clear category/search orientation. No observed friction in these named resting fragments; unknowns do not create visual deductions."
+    },
+    {
+      "assessment_id": "VIS-E15C-NORMAL-D4",
+      "family_ids": [
+        "S.APP.reader.ITEM",
+        "S.APP.welcome.PROFILE"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-returned-library.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-320-zh-identity.png"
+      ],
+      "scope": "Same ordinary named static fragments, not full UI matrix.",
+      "reason": "Projected title16.4/summary14.76/meta13.12 and original identity prose now legible with neutral paper and restrained dividers; focus ring is operational, not decorative."
+    },
+    {
+      "assessment_id": "VIS-E15C-SHORT-D1",
+      "family_ids": [
+        "S.APP.reader.ITEM",
+        "S.APP.reader.FILTER",
+        "S.APP.reader.NAV"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        80,
+        96,
+        90
+      ],
+      "scope_score": 90.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-directory.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-choices.png"
+      ],
+      "scope": "Only844x390en/light/normal/coarse directory entry and scrolled sidebar.",
+      "reason": "Short viewport retains200rawpx sidebar and separate search row: first long title consumes nearly all visible list, summary only begins; Notes/Books require independent sidebar scroll. Reachable and working, but article choice costs extra navigation."
+    },
+    {
+      "assessment_id": "VIS-E15C-SHORT-D4",
+      "family_ids": [
+        "S.APP.reader.ITEM",
+        "S.APP.reader.FILTER"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        90
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-directory.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-choices.png"
+      ],
+      "scope": "Only same short coarse static scope.",
+      "reason": "Text and neutral boundaries are consistent; sidebar/search chrome has too much attention/space relative to one partial article preview. Do not equate this with obstruction or failed44 targets."
+    },
+    {
+      "assessment_id": "VIS-E15C-READMAP-D1",
+      "family_ids": [
+        "S.APP.welcome.PROFILE",
+        "S.APP.welcome.LINKS"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        96
+      ],
+      "scope_score": 94.5,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-en-start-here.png"
+      ],
+      "scope": "Only1440en/light/reduce Reading paths recommendation block.",
+      "reason": "Featured recommendation concatenates kicker/title/description/reading time/CTA into one multi-line underlined link; choosing the suggested first article requires parsing one equal-weight text block."
+    },
+    {
+      "assessment_id": "VIS-E15C-READMAP-D4",
+      "family_ids": [
+        "S.APP.welcome.PROFILE",
+        "S.APP.welcome.LINKS"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        90,
+        96,
+        90
+      ],
+      "scope_score": 93.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-en-start-here.png"
+      ],
+      "scope": "Only same Reading paths static block.",
+      "reason": "Type is readable, but four lines of continuous underline flatten title/summary/action emphasis; use existing descendant block layout/spacing and title-only underline, preserving whole-link hit area/content/href."
     }
   ],
   "findings": [
@@ -9005,7 +9238,7 @@
       "title": "Space阅读目录与欢迎页关键信息字号过小，难以扫读和选择",
       "baseline_reason": "Twoimmutable9ec/light/reducecontexts1440zh/390en:titles/summary/date/filters~7.42–10.66projectedCSSpx;desktopprofiledescription10.66/contact8.95;phonecontact~9whiletarget44hit.4PNGvisiblyconfirm.",
       "recommendation": "Onlyreader目录/welcome profile做主标题/摘要/日期/过滤/联系动作的任务分层字号与行高，实测投影后CSSpx、换行/命中/首屏滚动；保原DOM/内容/过滤和打开文章路径，正文面不机械放大。",
-      "status": "confirmed_named_pre_E15_readability_baseline_open",
+      "status": "closed_E15c_named_spatial_library_profile_type_title_actions_scope",
       "baseline_cap": null,
       "active_cap": null,
       "batch": "E15_baseline",
@@ -9014,7 +9247,8 @@
         "D4"
       ],
       "browser_evidence": [
-        "E-SPACE-READING-SCALE"
+        "E-SPACE-READING-SCALE",
+        "E-BATCH-E15C"
       ],
       "evidence": [
         {
@@ -9032,7 +9266,125 @@
         "Firstvisiblenamedsamplesonly;profileancestorissupportnotactivation.",
         "bbox/integeroffsetWidthratioisapproximate,notglyphhardwarepxoruniversalWCAGfontfloor.",
         "No allfilters/bookmarks/scroll/links/articlebody/physicaldevicefailureclaim."
-      ]
+      ],
+      "resolution": {
+        "evidence": "E-BATCH-E15C",
+        "as_of": {
+          "phase": "E15c frozen final independent bounded review",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+          "reviewed_at": "2026-10-16T08:23:00+08:00",
+          "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+        },
+        "scope": "Named5 actual contexts plus6 geometry contract layouts: library title~16.4/summary14.76/meta13.12, profile prose16.4/actions~14.75 viewport CSSpx; complete titles, same category/query controls and original profile content/links.",
+        "limits": "Static scope only; short coarse decision density and reading-map hierarchy remain separate design recommendations. Not all content/contrast/fonts/AT/whole family."
+      }
+    },
+    {
+      "id": "UX-049",
+      "family_prefix": "S.APP.reader",
+      "family_ids": [
+        "S.APP.reader.NAV"
+      ],
+      "control_ids": [
+        "S.APP.reader.NAV.control.311e42"
+      ],
+      "severity": "P2",
+      "title": "书库读点保存容器与实际滚动容器不一致，文章返回或重载后回到列表顶部",
+      "baseline_reason": "Old390en true wheel body911/list0/saved0→article→Library0; B1440zh reload storage850/preworld list850→ready0. Separate recorded causes/limits retained.",
+      "recommendation": "Keep a single lifecycle/state owner and shared synchronization; preserve original DOM/focus and strict reading position/pressed assertions.",
+      "status": "closed_E15c_bounded_library_scroll_article_return_reload_minimized_new_intent_scope",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E15c",
+      "dimensions": [
+        "D6",
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-SPACE-LIBRARY-SCROLL-BASELINE"
+        },
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-E15B-RELOAD-BASELINE"
+        }
+      ],
+      "browser_evidence": [
+        "E-SPACE-LIBRARY-SCROLL-BASELINE",
+        "E-E15B-RELOAD-BASELINE",
+        "E-BATCH-E15C"
+      ],
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "verified_score": null,
+      "confidence": "high_for_named_runtime_scope",
+      "resolution": {
+        "evidence": "E-BATCH-E15C",
+        "as_of": {
+          "phase": "E15c frozen final independent bounded review",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+          "reviewed_at": "2026-10-16T08:23:00+08:00",
+          "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+        },
+        "scope": "390en normal actual owned list850/body0→article→Library/reload<=1;1440 contracts return/Notes/Books/minimized reload→new wheel and same-list reopen. C waits world ready/failed/no loading and valid dimensions, then cancels observers/RAF; user query/category/reading cancels pending restoration.",
+        "limits": "Classic/fallback/runtime context-loss restoration and all devices unknown; exact B reparent timestamp not proved."
+      }
+    },
+    {
+      "id": "UX-050",
+      "family_prefix": "S.APP.reader",
+      "family_ids": [
+        "S.APP.reader.FAVORITE"
+      ],
+      "control_ids": [
+        "S.APP.reader.FAVORITE.control.cab162"
+      ],
+      "severity": "P2",
+      "title": "公共收藏动作后按钮文案与aria-pressed未同步",
+      "baseline_reason": "Initial390en public execute on state/star true while aria-pressed false and visible Save; own click then Saved/true. Source desktop textContent partial sync bypassed apps button update.",
+      "recommendation": "Keep a single lifecycle/state owner and shared synchronization; preserve original DOM/focus and strict reading position/pressed assertions.",
+      "status": "closed_E15c_shared_public_and_button_bookmark_same_node_state_scope",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E15c",
+      "dimensions": [
+        "D2",
+        "D3"
+      ],
+      "evidence": [
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-SPACE-EXTERNAL-BOOKMARK-BASELINE"
+        }
+      ],
+      "browser_evidence": [
+        "E-SPACE-EXTERNAL-BOOKMARK-BASELINE",
+        "E-BATCH-E15C"
+      ],
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "verified_score": null,
+      "confidence": "high_for_named_runtime_scope",
+      "resolution": {
+        "evidence": "E-BATCH-E15C",
+        "as_of": {
+          "phase": "E15c frozen final independent bounded review",
+          "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+          "reviewed_at": "2026-10-16T08:23:00+08:00",
+          "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+        },
+        "scope": "390en normal actual public off/on+own click and1440en public on/off contract; shared apps.syncFavorite preserves same button/focus/body/scroll, stable article-purpose name and true pressed/Saved state.",
+        "limits": "Direct original public API, not real assistant UI/AT; initial focused button setup was programmatic. No unrelated favorite controls certified."
+      }
     }
   ],
   "next_batches": [
@@ -9090,9 +9442,9 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.24",
-    "sha256": "81f392cb4f906417d291444eb67fdb7ae118a54302a49be0210b1b246780ad02",
-    "markdown_sha256": "12f16e9fce8fc17882c7b126630089db00659e281de88c3f533d0558fa2eea74",
+    "version": "1.25",
+    "sha256": "cc89859d5e0b7ea8b351a7a2e5a854e5ea0017d376d37340930d45c768d32035",
+    "markdown_sha256": "26575a2cd0a6340312b8bc10159bf2f506027b05fd480a0cf245e62a093d2590",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -9100,14 +9452,14 @@
       "motion_families": 26,
       "world_decorative_families": 18,
       "control_families": 265,
-      "stable_control_selectors": 367,
+      "stable_control_selectors": 369,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 80,
+      "partial_state_evidence_families": 81,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 203,
-        "partial-state-evidence": 80,
+        "source-only": 202,
+        "partial-state-evidence": 81,
         "measured-observation-only": 1,
         "rendered-baseline": 25
       },
@@ -9115,12 +9467,12 @@
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 81,
+      "families_with_state_evidence": 82,
       "accepted_whole_families": 0,
-      "state_evidence_records": 345
+      "state_evidence_records": 359
     },
-    "imported_at": "2026-10-16T07:47:06+08:00",
-    "import_scope": "17newE13Erefs:canonical11/computer1/bookmark1/Spacelegibility4;E14registryonly. Bookmark is inventoryobserved/score-review-unverified, no newscorecardbehavior/44squarecertification. Allwholefamiliesunverified/null."
+    "imported_at": "2026-10-16T08:25:11+08:00",
+    "import_scope": "14 lean E15C refs:3 separate historical negatives+11 positive/contract fragments. Native e973e2 and preexisting Notes/Books f4bc09 are selector entries, not new families. All whole families unverified/null."
   },
   "groups": [
     {
@@ -31293,7 +31645,7 @@
         "sha256": "31b66be1147619ab8bc949510973e0a9ad1a007efd42158145b32cefa4af4e8f"
       },
       "state_profile": "command",
-      "inventory_evidence": "source-only",
+      "inventory_evidence": "partial-state-evidence",
       "historical_state_observations": {
         "normal": "unverified",
         "hover": "unverified",
@@ -31352,9 +31704,12 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E15C.about-profile-entry.S.APP.welcome.ROUTES.active"
+        ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.welcome.PROFILE",
@@ -31427,7 +31782,9 @@
       "known_findings": [
         "UX-048"
       ],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E15C"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -31444,10 +31801,13 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.small-type-baseline.S.APP.welcome.PROFILE.normal"
+          "EIMPORT.E13E.small-type-baseline.S.APP.welcome.PROFILE.normal",
+          "EIMPORT.E15C.profile-readable-type.S.APP.welcome.PROFILE.normal",
+          "EIMPORT.E15C.sections-and-summary.S.APP.welcome.PROFILE.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.welcome.LINKS",
@@ -31520,7 +31880,9 @@
       "known_findings": [
         "UX-048"
       ],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E15C"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -31537,10 +31899,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.small-type-baseline.S.APP.welcome.LINKS.normal"
+          "EIMPORT.E13E.small-type-baseline.S.APP.welcome.LINKS.normal",
+          "EIMPORT.E15C.named-link-target-type.S.APP.welcome.LINKS.normal"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.products.SELECT",
@@ -32854,7 +33218,9 @@
       "known_findings": [
         "UX-010"
       ],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E15C"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [
@@ -33181,10 +33547,12 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E5.reading.S.APP.reader.QUERY.active",
-          "EIMPORT.E52.reading.S.APP.reader.QUERY.active"
+          "EIMPORT.E52.reading.S.APP.reader.QUERY.active",
+          "EIMPORT.E15C.truthful-empty-recovery.S.APP.reader.QUERY.empty"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.reader.FILTER",
@@ -33193,7 +33561,8 @@
       "selector": "[data-library-filter]",
       "selector_type": "css",
       "control_ids": [
-        "S.APP.reader.FILTER.control.bcd452"
+        "S.APP.reader.FILTER.control.bcd452",
+        "S.APP.reader.FILTER.control.e973e2"
       ],
       "routes": [
         "阅读应用"
@@ -33257,7 +33626,9 @@
         "UX-010",
         "UX-048"
       ],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E15C"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -33276,10 +33647,12 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.small-type-baseline.S.APP.reader.FILTER.normal"
+          "EIMPORT.E13E.small-type-baseline.S.APP.reader.FILTER.normal",
+          "EIMPORT.E15C.category-choice.S.APP.reader.FILTER.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.reader.ITEM",
@@ -33351,7 +33724,9 @@
       "known_findings": [
         "UX-048"
       ],
-      "contract_evidence": [],
+      "contract_evidence": [
+        "E-BATCH-E15C"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [
@@ -33682,10 +34057,12 @@
         "binding_ids": [
           "EIMPORT.E5.reading.S.APP.reader.ITEM.active",
           "EIMPORT.E52.reading.S.APP.reader.ITEM.active",
-          "EIMPORT.E13E.small-type-baseline.S.APP.reader.ITEM.normal"
+          "EIMPORT.E13E.small-type-baseline.S.APP.reader.ITEM.normal",
+          "EIMPORT.E15C.readable-title-type.S.APP.reader.ITEM.normal"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.reader.NAV",
@@ -33695,7 +34072,8 @@
       "selector_type": "css",
       "control_ids": [
         "S.APP.reader.NAV.control.311e42",
-        "S.APP.reader.NAV.control.81ce46"
+        "S.APP.reader.NAV.control.81ce46",
+        "S.APP.reader.NAV.control.f4bc09"
       ],
       "routes": [
         "阅读应用正文"
@@ -33755,8 +34133,12 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
-      "contract_evidence": [],
+      "known_findings": [
+        "UX-049"
+      ],
+      "contract_evidence": [
+        "E-BATCH-E15C"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -33770,10 +34152,16 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E9A1.books-to-reader.S.APP.reader.NAV.active"
+          "EIMPORT.E9A1.books-to-reader.S.APP.reader.NAV.active",
+          "EIMPORT.E15C.old-owner-negative.S.APP.reader.NAV.active",
+          "EIMPORT.E15C.B-reload-negative.S.APP.reader.NAV.active",
+          "EIMPORT.E15C.real-return-reload.S.APP.reader.NAV.active",
+          "EIMPORT.E15C.minimized-reload-intent.S.APP.reader.NAV.active",
+          "EIMPORT.E15C.notes-books-entry.S.APP.reader.NAV.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.reader.FAVORITE",
@@ -33842,8 +34230,12 @@
           "reason": "缺少此控件当前适用完整矩阵证据。"
         }
       },
-      "known_findings": [],
-      "contract_evidence": [],
+      "known_findings": [
+        "UX-050"
+      ],
+      "contract_evidence": [
+        "E-BATCH-E15C"
+      ],
       "required_verification": "在代表路由：Tab 顺序与可见焦点；链接用 Enter、Space 保留原生滚动；按钮用 Enter/Space；相应复选框/滑块遵守原生键盘。再检查鼠标 hover/按下、390px触控和正常/焦点/选中/禁用/加载/失败/空态，记录命中与焦点；不提交外部写入。",
       "third_party_boundary": null,
       "inventory_state_evidence": [],
@@ -33855,10 +34247,13 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.bookmark-chain.S.APP.reader.FAVORITE.active"
+          "EIMPORT.E13E.bookmark-chain.S.APP.reader.FAVORITE.active",
+          "EIMPORT.E15C.A-public-negative.S.APP.reader.FAVORITE.active",
+          "EIMPORT.E15C.shared-state-and-own-click.S.APP.reader.FAVORITE.active"
         ],
         "legacy_record_count_without_binding_id": 0
-      }
+      },
+      "latest_inventory_source_context_ref": "batch-e15c-source.json"
     },
     {
       "family_id": "S.APP.reader.EXPLAIN",
@@ -71875,7 +72270,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E15C.about-profile-entry.S.APP.welcome.ROUTES.active"
+        ]
       }
     },
     {
@@ -71952,7 +72349,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E15C.sections-and-summary.S.APP.welcome.PROFILE.active"
+        ]
       }
     },
     {
@@ -72027,7 +72426,9 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E15C.sections-and-summary.S.APP.welcome.PROFILE.active"
+        ]
       }
     },
     {
@@ -72099,10 +72500,15 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E15C-TYPE",
+        "CHK-E15C-TARGET"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E15C.named-link-target-type.S.APP.welcome.LINKS.normal"
+        ]
       }
     },
     {
@@ -72182,7 +72588,8 @@
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.small-type-baseline.S.APP.welcome.LINKS.normal"
+          "EIMPORT.E13E.small-type-baseline.S.APP.welcome.LINKS.normal",
+          "EIMPORT.E15C.named-link-target-type.S.APP.welcome.LINKS.normal"
         ]
       }
     },
@@ -72512,13 +72919,15 @@
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-010",
-        "CHK-D2B-LIBRARY-EMPTY"
+        "CHK-D2B-LIBRARY-EMPTY",
+        "CHK-E15C-CATEGORY-FOCUS"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E5.reading.S.APP.reader.QUERY.active",
-          "EIMPORT.E52.reading.S.APP.reader.QUERY.active"
+          "EIMPORT.E52.reading.S.APP.reader.QUERY.active",
+          "EIMPORT.E15C.truthful-empty-recovery.S.APP.reader.QUERY.empty"
         ]
       }
     },
@@ -72597,12 +73006,14 @@
       "scoped_check_assessment_ids": [
         "CHK-BASE-UX-010",
         "CHK-D2B-LIBRARY-EMPTY",
-        "CHK-E15-READING-TYPE"
+        "CHK-E15-READING-TYPE",
+        "CHK-E15C-CATEGORY-FOCUS"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.small-type-baseline.S.APP.reader.FILTER.normal"
+          "EIMPORT.E13E.small-type-baseline.S.APP.reader.FILTER.normal",
+          "EIMPORT.E15C.category-choice.S.APP.reader.FILTER.active"
         ]
       }
     },
@@ -72678,14 +73089,17 @@
       ],
       "inventory_state_evidence": [],
       "scoped_check_assessment_ids": [
-        "CHK-E15-READING-TYPE"
+        "CHK-E15-READING-TYPE",
+        "CHK-E15C-TYPE",
+        "CHK-E15C-TITLE-DESC"
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E5.reading.S.APP.reader.ITEM.active",
           "EIMPORT.E52.reading.S.APP.reader.ITEM.active",
-          "EIMPORT.E13E.small-type-baseline.S.APP.reader.ITEM.normal"
+          "EIMPORT.E13E.small-type-baseline.S.APP.reader.ITEM.normal",
+          "EIMPORT.E15C.readable-title-type.S.APP.reader.ITEM.normal"
         ]
       }
     },
@@ -72758,11 +73172,17 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E15C-READING-RETURN",
+        "CHK-E15C-MINIMIZED-RELOAD",
+        "CHK-E15C-OLD-SCROLL-NEGATIVE"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E9A1.books-to-reader.S.APP.reader.NAV.active"
+          "EIMPORT.E9A1.books-to-reader.S.APP.reader.NAV.active",
+          "EIMPORT.E15C.old-owner-negative.S.APP.reader.NAV.active",
+          "EIMPORT.E15C.real-return-reload.S.APP.reader.NAV.active"
         ]
       }
     },
@@ -72910,11 +73330,17 @@
       },
       "known_findings": [],
       "inventory_state_evidence": [],
-      "scoped_check_assessment_ids": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E15C-PUBLIC-FAVORITE",
+        "CHK-E15C-BOOKMARK-EMPTY",
+        "CHK-E15C-OLD-PUBLIC-NEGATIVE"
+      ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
-          "EIMPORT.E13E.bookmark-chain.S.APP.reader.FAVORITE.active"
+          "EIMPORT.E13E.bookmark-chain.S.APP.reader.FAVORITE.active",
+          "EIMPORT.E15C.A-public-negative.S.APP.reader.FAVORITE.active",
+          "EIMPORT.E15C.shared-state-and-own-click.S.APP.reader.FAVORITE.active"
         ]
       }
     },
@@ -89810,6 +90236,168 @@
           "EIMPORT.E11C.retry-copy.G.SEARCH.RETRY.normal"
         ]
       }
+    },
+    {
+      "control_id": "S.APP.reader.FILTER.control.e973e2",
+      "family_id": "S.APP.reader.FILTER",
+      "selector": "[data-library-select]",
+      "instance_policy": "One selector entry; native5options not5buttons",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "可见选项及当前选择"
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "视觉反馈待实测"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "Tab/Enter/Space 可达性待实测"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "以 aria-pressed / aria-selected / checked 或 details[open] 区分"
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "边界或忙碌时条件性禁用，逐项待核验"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用：本地选择立即生效"
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "持久化失败反馈待实测"
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "无可选项时说明或不渲染"
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E15C-CATEGORY-FOCUS",
+        "CHK-E15C-BOOKMARK-EMPTY"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E15C.category-choice.S.APP.reader.FILTER.active"
+        ]
+      },
+      "registration_note": "Native select/previously omitted Notes-Books entry added in inventory1.25; sibling observations do not transfer. Explicit E15C refs only."
+    },
+    {
+      "control_id": "S.APP.reader.NAV.control.f4bc09",
+      "family_id": "S.APP.reader.NAV",
+      "selector": ".space-library-actions [data-open]",
+      "instance_policy": "ExistingNotes/Books2realbutton variants; one sharedselector, not a newfeature family",
+      "scope": "control-family",
+      "status": "unverified",
+      "verified_score": null,
+      "certification_96_plus": false,
+      "state_observations": {
+        "normal": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "链接可见且指向可读目标"
+        },
+        "hover": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "应有文字/背景反馈；当前逐项样式仅源码，未实测"
+        },
+        "focus": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "原生链接 Tab 可达，Enter 导航；Space 保持原生滚动。焦点视觉/遮挡/次序待实测。"
+        },
+        "active": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "导航触发；当前路由 aria-current/active 依组件而异"
+        },
+        "disabled": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用：普通导航不应禁用"
+        },
+        "loading": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "浏览器原生导航；无组件加载状态"
+        },
+        "error": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "目标/外链失败由目标页呈现，未逐个联网验证"
+        },
+        "empty": {
+          "status": "unverified",
+          "score": null,
+          "applicability": "requires_role_and_runtime_review",
+          "inventory_expectation": "不适用"
+        }
+      },
+      "dimension_scores": {
+        "D1": null,
+        "D2": null,
+        "D3": null,
+        "D4": null,
+        "D5": null,
+        "D6": null
+      },
+      "known_findings": [],
+      "inventory_state_evidence": [],
+      "scoped_check_assessment_ids": [
+        "CHK-E15C-TARGET",
+        "CHK-E15C-NOTES-BOOKS"
+      ],
+      "inventory_state_evidence_refs": {
+        "path": "docs/ux-audit/2026-10-16/inventory.json",
+        "binding_ids": [
+          "EIMPORT.E15C.notes-books-entry.S.APP.reader.NAV.active"
+        ]
+      },
+      "registration_note": "Native select/previously omitted Notes-Books entry added in inventory1.25; sibling observations do not transfer. Explicit E15C refs only."
     }
   ],
   "specific_observations": [
@@ -90069,6 +90657,33 @@
       "status": "recommended_independent_bounded_batch",
       "proposal": "完整Google CSS swap/optional同UA配对/自然clock交付门禁，保async/home/localCJK；测fast/lateimmediate/lateslow/font404及声明CSSfail，节点glyph证明actualuse，否则unknown。UX046未修。",
       "evidence": "E-FONT-REGISTRATION-DISCOVERY"
+    },
+    {
+      "id": "NEXT-SPACE-SHORT-LIBRARY-HIERARCHY",
+      "families": [
+        "S.APP.reader.ITEM",
+        "S.APP.reader.FILTER"
+      ],
+      "status": "observed_design_gap_followup_candidate",
+      "proposal": "Only short coarse641+ width/<=420 height: test a compact category+Notes/Books arrangement and shared header footprint so a real long article plus useful summary is visible. Preserve44 controls and bounded independent list/user reading owner. Requires new geometry/actual pictures; do not lower type to gain rows.",
+      "evidence": "E-BATCH-E15C",
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-directory.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-choices.png"
+      ]
+    },
+    {
+      "id": "NEXT-SPACE-READMAP-RECOMMENDATION",
+      "families": [
+        "S.APP.welcome.PROFILE",
+        "S.APP.welcome.LINKS"
+      ],
+      "status": "observed_design_gap_followup_candidate",
+      "proposal": "Scope .space-profile__reading recommendation descendants: make title, supporting description and time/action separate visual blocks; underline title/CTA on interaction rather than every line. Preserve all words/original URL/full anchor hit area, profile source and navigation.",
+      "evidence": "E-BATCH-E15C",
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-en-start-here.png"
+      ]
     }
   ],
   "scoped_check_assessments": [
@@ -96047,11 +96662,332 @@
       ],
       "scope": "Namedrecordedfragmentonly;fullcriterion/dimension/familyunverified.",
       "reason": "Named2contextlibrary7.42–10.66projectedCSSpx/contact~9visiblysmall;phone44hitdoesnotprovelegiblelabel."
+    },
+    {
+      "id": "CHK-E15C-TYPE",
+      "family_ids": [
+        "S.APP.reader.ITEM",
+        "S.APP.welcome.PROFILE",
+        "S.APP.welcome.LINKS"
+      ],
+      "control_ids": [
+        "S.APP.reader.ITEM.control.bc2443",
+        "S.APP.welcome.LINKS.control.cd4cf3"
+      ],
+      "criterion": "D4.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Recorded title16.4/summary14.76/meta13.12 and profile16.4/action14.75, original content preserved; bbox ratio is projected CSSpx, not glyph/hardware pixels."
+    },
+    {
+      "id": "CHK-E15C-TITLE-DESC",
+      "family_ids": [
+        "S.APP.reader.ITEM"
+      ],
+      "control_ids": [
+        "S.APP.reader.ITEM.control.bc2443"
+      ],
+      "criterion": "D6.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Longest original catalog title wraps completely, full escaped description retained in DOM, visual summary limited to3 lines; 6 geometry contract layouts, named320zh/1440en PNG."
+    },
+    {
+      "id": "CHK-E15C-CATEGORY-FOCUS",
+      "family_ids": [
+        "S.APP.reader.FILTER",
+        "S.APP.reader.QUERY"
+      ],
+      "control_ids": [
+        "S.APP.reader.FILTER.control.bcd452",
+        "S.APP.reader.FILTER.control.e973e2",
+        "S.APP.reader.QUERY.control.5e8128"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Desktop click and compact native Home/ArrowDown preserve query/select node and focused choice; no physical OS picker certification."
+    },
+    {
+      "id": "CHK-E15C-TARGET",
+      "family_ids": [
+        "S.APP.reader.NAV",
+        "S.APP.welcome.LINKS"
+      ],
+      "control_ids": [
+        "S.APP.reader.NAV.control.f4bc09",
+        "S.APP.welcome.LINKS.control.cd4cf3"
+      ],
+      "criterion": "D2.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Named Notes/Books and original profile links contract44+centerhit, parent real Notes/Books actions; no blanket24/44 rule for inline links."
+    },
+    {
+      "id": "CHK-E15C-READING-RETURN",
+      "family_ids": [
+        "S.APP.reader.NAV"
+      ],
+      "control_ids": [
+        "S.APP.reader.NAV.control.311e42"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "390en normal realwheel850 owned list/body0→real article→Library→reload preserves<=1px; query/filter retained. B raw failure remains historical."
+    },
+    {
+      "id": "CHK-E15C-MINIMIZED-RELOAD",
+      "family_ids": [
+        "S.APP.reader.NAV"
+      ],
+      "control_ids": [
+        "S.APP.reader.NAV.control.311e42"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "1440 contract minimized reload waits world+effective size and visible return; saved scroll restored<=1. Restoration unknown for classic/fallback/context loss."
+    },
+    {
+      "id": "CHK-E15C-NEW-INTENT",
+      "family_ids": [
+        "S.APP.reader.NAV"
+      ],
+      "control_ids": [],
+      "criterion": "D3.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "After minimized restore actual wheel300 changes reading scroll; same list min/reopen retains new value. Query/category cancel pending and render/dispose disconnect one-shot observer/RAF by source; no permanent redraw introduced."
+    },
+    {
+      "id": "CHK-E15C-NOTES-BOOKS",
+      "family_ids": [
+        "S.APP.reader.NAV"
+      ],
+      "control_ids": [
+        "S.APP.reader.NAV.control.f4bc09"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Named actual1440zh Notes/Books entries and contract preserve original note editor/value and continued typing; no unrelated apps re-certified."
+    },
+    {
+      "id": "CHK-E15C-PUBLIC-FAVORITE",
+      "family_ids": [
+        "S.APP.reader.FAVORITE"
+      ],
+      "control_ids": [
+        "S.APP.reader.FAVORITE.control.cab162"
+      ],
+      "criterion": "D2.1",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Own click and public execute share same state/visible label/pressed logic; original focused button/reader body preserved and name includes article title; no AT or real assistant claim."
+    },
+    {
+      "id": "CHK-E15C-BOOKMARK-EMPTY",
+      "family_ids": [
+        "S.APP.reader.FAVORITE",
+        "S.APP.reader.FILTER"
+      ],
+      "control_ids": [
+        "S.APP.reader.FAVORITE.control.cab162",
+        "S.APP.reader.FILTER.control.e973e2"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-BATCH-E15C"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Save→favorites→reload→remove→true empty→recover all writing focuses original query. Actual390en normal; contract390en reduce."
+    },
+    {
+      "id": "CHK-E15C-OLD-SCROLL-NEGATIVE",
+      "family_ids": [
+        "S.APP.reader.NAV"
+      ],
+      "control_ids": [
+        "S.APP.reader.NAV.control.311e42"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "historical_observed_gap_closed_only_in_followup_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-SPACE-LIBRARY-SCROLL-BASELINE",
+        "E-E15B-RELOAD-BASELINE"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Two distinct historical negative baselines: actual390en body-scroller mismatch and B1440zh reload boundary. Closed only for new C named scope."
+    },
+    {
+      "id": "CHK-E15C-OLD-PUBLIC-NEGATIVE",
+      "family_ids": [
+        "S.APP.reader.FAVORITE"
+      ],
+      "control_ids": [
+        "S.APP.reader.FAVORITE.control.cab162"
+      ],
+      "criterion": "D2.1",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "historical_observed_gap_closed_only_in_followup_scope",
+      "confidence": "high",
+      "as_of": {
+        "phase": "E15c frozen final independent bounded review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+        "reviewed_at": "2026-10-16T08:23:00+08:00",
+        "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+      },
+      "evidence": [
+        "E-SPACE-EXTERNAL-BOOKMARK-BASELINE"
+      ],
+      "scope": "Named recorded fragment only; complete criterion/dimension/family unverified.",
+      "reason": "Initial public API on changes star/state but pressed false/Save; own click repairs. Negative retained, new shared sync closure separate."
     }
   ],
-  "latest_validated_checkpoint": "9ec879f3c4c04c622523dc9e98222d58bb90ba3f",
-  "preview_scope": "E13e namedcanonicalAIcontinuityaccepted/UX044boundedclosed;UX046coldfont+UX048Spacelegibilityopen;typographygapretained;allwholefamilyscoresnull.",
-  "latest_reviewed_artifact": "E-BATCH-E13E",
+  "latest_validated_checkpoint": "d5b35f94cee3a203938eff63f4932a016df71fb3",
+  "preview_scope": "E15c namedspatialreadability/ownscroll-return-reload/sharedbookmark accepted; UX048/049/050 boundedclosed, UX046 coldfontopen. Shortcoarse and Readingpaths static hierarchy recommendations retained; wholefamily scoresnull.",
+  "latest_reviewed_artifact": "E-BATCH-E15C",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -96401,10 +97337,10 @@
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
   "latest_reviewed_source_snapshot": {
-    "path": "docs/ux-audit/2026-10-16/evidence/batch-e13e-source.json",
-    "sha256": "ad187cb5258bae089e35131f276c179b4c5555629fb09863fc83fe6deb6e35d4",
-    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e13e-provenance.json",
-    "provenance_sha256": "92c225d71705f5023e0edfb0da33636aedfb16a0e2725be062a03a3eaadc864c",
+    "path": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+    "sha256": "a3eecd8d10d728dd124acc8631432b8e84f9098a695e738b298d5398601e4388",
+    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e15c-provenance.json",
+    "provenance_sha256": "10030f360127c13143822d673bd8e640b366754c466f177049cb8b70f8f10242",
     "status": "independent_bounded_review_complete_pending_parent_checkpoint"
   },
   "anchor_intent_review": {
@@ -96866,5 +97802,64 @@
     "readability_negative_ref": "E-SPACE-READING-SCALE",
     "finding": "UX-048",
     "scope": "Immutable9ecdisjointfromE13;no currentproductionorwholeappacceptance."
+  },
+  "e15_source_review": {
+    "as_of": {
+      "phase": "E15c frozen final independent bounded review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
+      "reviewed_at": "2026-10-16T08:23:00+08:00",
+      "base": "d5b35f94cee3a203938eff63f4932a016df71fb3"
+    },
+    "status": "accepted_named_spatial_readability_scroll_bookmark_scope",
+    "new_P0_P1_findings": [],
+    "verified_score": null,
+    "proof": "70 hashes match;17 new natural PNG independently viewed, source/test/runner read;10 contracts14.5s/Hugo3512ms;served2bundles readback. Original9 cases retained, exact<=1px not weakened.",
+    "closed_findings": [
+      "UX-048_named_scope",
+      "UX-049_named_scope",
+      "UX-050_named_scope"
+    ],
+    "static_design_fragments": {
+      "ordinary_D1": 96,
+      "ordinary_D4": 96,
+      "short_coarse_D1": 90.5,
+      "short_coarse_D4": 94.5,
+      "reading_paths_D1": 94.5,
+      "reading_paths_D4": 93,
+      "complete_dimensions": null
+    },
+    "retained_history": [
+      "E-SPACE-LIBRARY-SCROLL-BASELINE",
+      "E-E15B-RELOAD-BASELINE",
+      "E-SPACE-EXTERNAL-BOOKMARK-BASELINE"
+    ],
+    "unknowns": [
+      "Classic/fallback/runtime context-loss restoration",
+      "AT/Safari/physical/OS native picker/200percent zoom/full matrix",
+      "whole-page contrast/glyph raster",
+      "live assistant/model/external delivery"
+    ],
+    "design_recommendations": [
+      "NEXT-SPACE-SHORT-LIBRARY-HIERARCHY",
+      "NEXT-SPACE-READMAP-RECOMMENDATION"
+    ],
+    "inventory_binding_refs": [
+      "EIMPORT.E15C.about-profile-entry.S.APP.welcome.ROUTES.active",
+      "EIMPORT.E15C.profile-readable-type.S.APP.welcome.PROFILE.normal",
+      "EIMPORT.E15C.sections-and-summary.S.APP.welcome.PROFILE.active",
+      "EIMPORT.E15C.named-link-target-type.S.APP.welcome.LINKS.normal",
+      "EIMPORT.E15C.truthful-empty-recovery.S.APP.reader.QUERY.empty",
+      "EIMPORT.E15C.category-choice.S.APP.reader.FILTER.active",
+      "EIMPORT.E15C.readable-title-type.S.APP.reader.ITEM.normal",
+      "EIMPORT.E15C.old-owner-negative.S.APP.reader.NAV.active",
+      "EIMPORT.E15C.B-reload-negative.S.APP.reader.NAV.active",
+      "EIMPORT.E15C.real-return-reload.S.APP.reader.NAV.active",
+      "EIMPORT.E15C.minimized-reload-intent.S.APP.reader.NAV.active",
+      "EIMPORT.E15C.notes-books-entry.S.APP.reader.NAV.active",
+      "EIMPORT.E15C.A-public-negative.S.APP.reader.FAVORITE.active",
+      "EIMPORT.E15C.shared-state-and-own-click.S.APP.reader.FAVORITE.active"
+    ],
+    "inventory_sha256": "cc89859d5e0b7ea8b351a7a2e5a854e5ea0017d376d37340930d45c768d32035",
+    "source_review_note": "C source/QA verified11 plus source10/provenance60 checked at final; new17images all viewed. Counts are inventory fragments, not image/test totals."
   }
 }

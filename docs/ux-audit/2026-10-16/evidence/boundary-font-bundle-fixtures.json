@@ -1,0 +1,855 @@
+{
+  "at": "2026-10-15T23:50:03.750Z",
+  "producer": "parent readonly fixture preparation from original public Google CSS/font sources; actual Chromium UA",
+  "previewCheckpoint": "d5b35f94 accepted; SpaceE15 WIP not built",
+  "sources": {
+    "layouts/partials/extend_head.html": "016ab7a88fa34427be7d9d954abbf0f3f783c58700ed705abe240ab868c57b2e",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417",
+    "static/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css": "52b2ee5f12e90dcd606c28bfd2d2ddce2182a4022a5342595b384a2365f56720"
+  },
+  "path": "/ai-agent/posts/context-engineering-the-new-foundation/",
+  "styles": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "status": 200,
+      "bytes": 41544,
+      "sha256": "df40f8b52b40b6a61627c0942f7abdce6e87e1402fb86ff144fcfcdafd6f6c69",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/google-full.css"
+    }
+  ],
+  "fonts": [
+    {
+      "url": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cIrqvgyjUjHaA.woff2",
+      "bytes": 15684,
+      "sha256": "c56c4604b4b81a1506b3bda18c440dfd4aec0d121a1b5b078c44345c072738a6",
+      "contentType": "font/woff2",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/c56c4604b4b81a1506b3bda18c440dfd4aec0d121a1b5b078c44345c072738a6.woff2"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf6D33WsNFH.woff2",
+      "bytes": 36696,
+      "sha256": "9f36107f7918309d0ffcc7d12ba636a247af36ba337f91f836173dab66a3b27e",
+      "contentType": "font/woff2",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/9f36107f7918309d0ffcc7d12ba636a247af36ba337f91f836173dab66a3b27e.woff2"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "bytes": 48432,
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
+      "contentType": "font/woff2",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4.woff2"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/fraunces/v38/6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeP2Xz5c.woff2",
+      "bytes": 67388,
+      "sha256": "48282a415ec22e31beaf0a0666e6fae0c8cbddcd0b1f6e729f27c3ade8a64e43",
+      "contentType": "font/woff2",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/48282a415ec22e31beaf0a0666e6fae0c8cbddcd0b1f6e729f27c3ade8a64e43.woff2"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2",
+      "bytes": 31340,
+      "sha256": "2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4",
+      "contentType": "font/woff2",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4.woff2"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/fraunces/v38/6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjeveQ7ZXk8g.woff2",
+      "bytes": 81704,
+      "sha256": "4af9c759c8059b53923b4b50ba377ba51029876e1af1ea757efb07bc67d97896",
+      "contentType": "font/woff2",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/4af9c759c8059b53923b4b50ba377ba51029876e1af1ea757efb07bc67d97896.woff2"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYeGD33WsNFHuQk.woff2",
+      "bytes": 65116,
+      "sha256": "c2543ee5f794df8cda2c4b535f640165bff2a9fe200aed3d07e4b95cf2f52d18",
+      "contentType": "font/woff2",
+      "temporaryFile": "/private/tmp/ai-test-blog-ux-20261016.d8VJru/font-bundle/c2543ee5f794df8cda2c4b535f640165bff2a9fe200aed3d07e4b95cf2f52d18.woff2"
+    }
+  ],
+  "families": [
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "300",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "300",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "300",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "weight": "700",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "300",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "300",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "300",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "italic",
+      "weight": "400",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "400",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Noto Serif",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "loaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "500",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "600",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    },
+    {
+      "family": "Space Grotesk",
+      "style": "normal",
+      "weight": "700",
+      "display": "swap",
+      "status": "unloaded"
+    }
+  ],
+  "trace": [
+    {
+      "event": "css-fetched",
+      "at": 1792108203259,
+      "url": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+      "bytes": 41544
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203411,
+      "url": "https://fonts.gstatic.com/s/notoserif/v33/ga6saw1J5X9T9RW6j9bNfFIMZhhWnFTyNZIQD1-_FXP0RgnaOg9MYBNLg_cIrqvgyjUjHaA.woff2",
+      "sha256": "c56c4604b4b81a1506b3bda18c440dfd4aec0d121a1b5b078c44345c072738a6"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203421,
+      "url": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf6D33WsNFH.woff2",
+      "sha256": "9f36107f7918309d0ffcc7d12ba636a247af36ba337f91f836173dab66a3b27e"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203433,
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203441,
+      "url": "https://fonts.gstatic.com/s/fraunces/v38/6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeP2Xz5c.woff2",
+      "sha256": "48282a415ec22e31beaf0a0666e6fae0c8cbddcd0b1f6e729f27c3ade8a64e43"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203457,
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2",
+      "sha256": "2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203459,
+      "url": "https://fonts.gstatic.com/s/fraunces/v38/6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjeveQ7ZXk8g.woff2",
+      "sha256": "4af9c759c8059b53923b4b50ba377ba51029876e1af1ea757efb07bc67d97896"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203466,
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2",
+      "sha256": "2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203466,
+      "url": "https://fonts.gstatic.com/s/fraunces/v38/6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeP2Xz5c.woff2",
+      "sha256": "48282a415ec22e31beaf0a0666e6fae0c8cbddcd0b1f6e729f27c3ade8a64e43"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203472,
+      "url": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf6D33WsNFH.woff2",
+      "sha256": "9f36107f7918309d0ffcc7d12ba636a247af36ba337f91f836173dab66a3b27e"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203473,
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203477,
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203483,
+      "url": "https://fonts.gstatic.com/s/fraunces/v38/6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjeveQ7ZXk8g.woff2",
+      "sha256": "4af9c759c8059b53923b4b50ba377ba51029876e1af1ea757efb07bc67d97896"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203483,
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2",
+      "sha256": "2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203484,
+      "url": "https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYeGD33WsNFHuQk.woff2",
+      "sha256": "c2543ee5f794df8cda2c4b535f640165bff2a9fe200aed3d07e4b95cf2f52d18"
+    },
+    {
+      "event": "font-fetched",
+      "at": 1792108203486,
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4"
+    }
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "Current complete5family CSS manifest but only naturally requested pagefonts. Fonts retained only in registeredtmp; URLs/SHA in formal metadata. Routing fixture does not demonstrate HTTPwarmcache, actual glyph family, continuousFOIT or productionfix."
+}

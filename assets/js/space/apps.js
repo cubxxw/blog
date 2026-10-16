@@ -25,7 +25,15 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
   const documents = [...articles, ...(catalog.readingDocuments || [])];
   const articleByURL = value => documents.find(a => a.url === value);
   const productByID = value => catalog.products.find(p => p.id === value) || catalog.products[0];
-  const listItem = (item, attrs) => `<button class="space-list-item" ${attrs}><small>${html(item.date || '')}</small><strong>${html(item.title || item.name)}</strong><span>${html(item.description || '').slice(0, 210)}</span></button>`;
+  const listItem = (item, attrs, fullDescription = false) => `<button class="space-list-item" ${attrs}><small>${html(item.date || '')}</small><strong>${html(item.title || item.name)}</strong><span>${fullDescription ? html(item.description || '') : html(item.description || '').slice(0, 210)}</span></button>`;
+  function syncFavorite(host, url) {
+    const control = host.querySelector('[data-reader-favorite]'), article = articleByURL(url);
+    if (!control || !article) return;
+    const saved = getState().favorites.includes(url);
+    control.setAttribute('aria-pressed', String(saved));
+    control.setAttribute('aria-label', t('收藏文章：','Bookmark article: ') + article.title);
+    control.innerHTML = `<span aria-hidden="true">${saved ? '★' : '☆'}</span> ${saved ? t('已收藏','Saved') : t('收藏','Save')}`;
+  }
   function showProducts(host, selectedID) {
     const selected = productByID(selectedID);
     host.innerHTML = `<div class="space-finder space-products"><aside class="space-sidebar"><div class="space-product-directory"><p>${t('产品目录','Products')}</p>${catalog.products.map(p => `<button data-select-product="${html(p.id)}" aria-pressed="${p.id === selected.id}">${html(p.name)}</button>`).join('')}</div><label class="space-product-picker"><span>${t('产品','Product')}</span><select data-product-select aria-label="${t('选择产品','Choose a product')}">${catalog.products.map(p=>`<option value="${html(p.id)}"${p.id===selected.id?' selected':''}>${html(p.name)}</option>`).join('')}</select></label><nav class="space-product-explore" aria-label="${t('继续探索','Explore more')}"><button data-open="reader">${t('构建笔记','Build notes')}</button><button data-open="books">${t('我的书架','Books')}</button></nav></aside><article class="space-product"><p class="space-product__stage">${html(selected.stage)}</p><h2>${html(selected.name)}</h2><p>${html(selected.headline)}</p>${selected.image ? `<img class="space-product__shot" src="${html(selected.image)}" alt="${html(selected.alt)}" loading="lazy">` : ''}<p>${html(selected.description)}</p><div class="space-product__links">${link(selected.url,t('打开真实产品','Open the product'),'space-button')}${link(selected.demo,t('测试预览','Try the demo'))}${link(selected.github,t('源码','Source'))}</div>${selected.boundary ? `<p class="space-product__boundary">${t('当前边界：','Current boundary: ')}${html(selected.boundary)}</p>` : ''}${selected.related?.length ? `<h3>${t('从构建到思考','Related writing')}</h3>${selected.related.map(url => { const a = articleByURL(url); return a ? listItem(a,`data-open="reader" data-payload="${html(url)}"`) : ''; }).join('')}` : ''}</article></div>`;
@@ -49,43 +57,85 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
     host.querySelector('.space-product__links').append(ask);
   }
   function showLibrary(host, filter = libraryView.filter) {
-    host.innerHTML = `<div class="space-toolbar"><span>${t('公开文章','Public writing')} / ${articles.length}</span><input data-library-query type="search" placeholder="${t('找一篇文章…','Find writing…')}" aria-label="${t('筛选文章','Filter writing')}"></div><div class="space-finder"><aside class="space-sidebar"><p>${t('阅读目录','LIBRARY')}</p>${[['all',t('全部文章','All writing')],['ai-agent','AI Agent'],['engineering',t('工程实践','Engineering')],['growth',t('思考与笔记','Thoughts')],['favorites',t('你的收藏','Your bookmarks')]].map(([id,label]) => `<button data-library-filter="${id}" aria-pressed="${filter === id}">${label}</button>`).join('')}<p style="margin-top:22px">${t('你的空间','YOUR SPACE')}</p><button data-open="notes">${t('写点想法','Write a note')}</button><button data-open="books">${t('书架','Books')}</button></aside><div class="space-list" data-library-list></div></div>`;
+    const filters = [['all',t('全部文章','All writing')],['ai-agent','AI Agent'],['engineering',t('工程实践','Engineering')],['growth',t('思考与笔记','Thoughts')],['favorites',t('你的收藏','Your bookmarks')]];
+    host.innerHTML = `<div class="space-library"><div class="space-toolbar"><span>${t('公开文章','Public writing')} / ${articles.length}</span><input data-library-query type="search" placeholder="${t('找一篇文章…','Find writing…')}" aria-label="${t('筛选文章','Filter writing')}"></div><div class="space-finder space-library__finder"><aside class="space-sidebar"><div class="space-library-directory"><p>${t('阅读目录','Library')}</p>${filters.map(([id,label]) => `<button type="button" data-library-filter="${id}" aria-pressed="${filter === id}">${label}</button>`).join('')}</div><label class="space-library-picker"><span>${t('分类','Section')}</span><select data-library-select aria-label="${t('文章分类','Writing section')}">${filters.map(([id,label])=>`<option value="${id}"${filter === id ? ' selected' : ''}>${label}</option>`).join('')}</select></label><nav class="space-library-actions" aria-label="${t('你的空间','Your space')}"><button type="button" data-open="notes">${t('笔记','Notes')}</button><button type="button" data-open="books">${t('书架','Books')}</button></nav></aside><div class="space-list" data-library-list role="region" aria-label="${t('文章列表','Writing list')}" tabindex="0"></div></div></div>`;
     libraryView.filter = filter;
     const queryInput = host.querySelector('[data-library-query]');
     queryInput.maxLength = 200; queryInput.value = libraryView.query;
     const listHost = host.querySelector('[data-library-list]');
+    let disposed = false, restoring = true, restoreFrame = 0;
+    const windowElement = host.closest('[data-space-window]');
+    const layoutObserver = new MutationObserver(scheduleRestore);
+    const sizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(scheduleRestore) : null;
+    function stopRestoring() {
+      restoring = false; cancelAnimationFrame(restoreFrame); restoreFrame = 0;
+      layoutObserver.disconnect(); sizeObserver?.disconnect();
+      for (const type of ['wheel','touchmove','pointerdown','keydown']) listHost.removeEventListener(type, userReading);
+    }
+    function userReading(event) {
+      if (event.type === 'keydown' && (event.ctrlKey || event.metaKey || event.altKey || !['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(event.key))) return;
+      stopRestoring();
+    }
+    function scheduleRestore() {
+      if (disposed || !restoring || restoreFrame) return;
+      restoreFrame = requestAnimationFrame(() => {
+        restoreFrame = 0;
+        if (disposed || !restoring || !listHost.isConnected) return;
+        // The room re-parents the original windows before its first frame.
+        // A positive size in the old host is not the final reading surface.
+        if (root.querySelector('[data-space-cafe]') && (!root.hasAttribute('data-world-ready') && !root.hasAttribute('data-world-failed') || root.hasAttribute('data-world-loading'))) return;
+        if (!listHost.clientWidth || !listHost.clientHeight) return;
+        listHost.scrollTop = libraryView.scroll;
+        stopRestoring();
+      });
+    }
+    layoutObserver.observe(root, {attributes:true,attributeFilter:['data-world-ready','data-world-failed','data-world-loading','hidden']});
+    if (windowElement) layoutObserver.observe(windowElement, {attributes:true,attributeFilter:['hidden','data-active','style']});
+    sizeObserver?.observe(listHost);
+    for (const type of ['wheel','touchmove','pointerdown']) listHost.addEventListener(type, userReading, {passive:true});
+    listHost.addEventListener('keydown', userReading);
+    disposers.set(windowElement?.dataset.spaceWindow || 'reader', () => { disposed = true; stopRestoring(); });
     const draw = () => {
       libraryView.query = queryInput.value; saveLibrary();
       const query = queryInput.value.trim().toLocaleLowerCase();
       const list = (filter === 'favorites' ? documents : articles).filter(a => (filter === 'all' || a.section === filter || (filter === 'favorites' && getState().favorites.includes(a.url))) && `${a.title} ${a.description} ${(a.tags || []).join(' ')}`.toLocaleLowerCase().includes(query));
       if (list.length) {
-        listHost.innerHTML = list.map(a => listItem(a, `data-open="reader" data-payload="${html(a.url)}"`)).join('');
+        listHost.innerHTML = list.map(a => listItem(a, `data-open="reader" data-payload="${html(a.url)}"`, true)).join('');
       } else {
         const searching = query.trim().length > 0;
         const title = searching ? t(`没有找到“${queryInput.value}”`, `No matches for “${queryInput.value}”`) : filter === 'favorites' ? t('还没有收藏文章','No bookmarks yet') : t('这个分类还没有文章','No articles in this category yet');
         const hint = searching ? t('试试其他关键词，或清除搜索查看当前分类。','Try another keyword, or clear your search to view this section.') : filter === 'favorites' ? t('阅读文章时，点击“收藏”就能在这里找到它。','Save an article while reading to find it here.') : t('可以先看看其他分类的文章。','Browse the other sections in the meantime.');
         listHost.innerHTML = `<div class="space-library-empty"><h3>${html(title)}</h3><p>${hint}</p><button type="button" class="space-button space-button--secondary" data-library-recover>${searching ? t('清除搜索','Clear search') : t('查看全部文章','Browse all writing')}</button></div>`;
         listHost.querySelector('[data-library-recover]').addEventListener('click', () => {
+          stopRestoring();
           libraryView.scroll = 0;
           queryInput.value = ''; libraryView.query = '';
-          if (searching) { draw(); queryInput.focus(); }
-          else showLibrary(host, 'all');
+          if (searching) draw();
+          else choose('all');
+          queryInput.focus({preventScroll:true});
         });
       }
     };
-    host.querySelector('[data-library-query]').addEventListener('input', draw);
-    host.querySelectorAll('[data-library-filter]').forEach(b => b.addEventListener('click', () => { libraryView.scroll = 0; showLibrary(host, b.dataset.libraryFilter); }));
-    listHost.addEventListener('scroll', () => { libraryView.scroll = listHost.scrollTop; saveLibrary(); }, { passive: true });
-    draw(); listHost.scrollTop = libraryView.scroll;
+    const picker = host.querySelector('[data-library-select]');
+    const choose = value => {
+      stopRestoring();
+      filter = value; libraryView.filter = value; libraryView.scroll = 0;
+      picker.value = value;
+      host.querySelectorAll('[data-library-filter]').forEach(control => control.setAttribute('aria-pressed', String(control.dataset.libraryFilter === value)));
+      draw(); listHost.scrollTop = 0;
+    };
+    queryInput.addEventListener('input', () => { stopRestoring(); libraryView.scroll = 0; draw(); listHost.scrollTop = 0; });
+    host.querySelectorAll('[data-library-filter]').forEach(b => b.addEventListener('click', () => choose(b.dataset.libraryFilter)));
+    picker.addEventListener('change', () => choose(picker.value));
+    listHost.addEventListener('scroll', () => { if (disposed || restoring || !listHost.isConnected || !listHost.clientHeight) return; libraryView.scroll = listHost.scrollTop; saveLibrary(); }, { passive: true });
+    draw(); scheduleRestore();
   }
   async function showReader(host, url, windowID) {
     const article = articleByURL(url);
     if (!article) { showLibrary(host); return; }
-    host.innerHTML = `<div class="space-toolbar">${button('reader',t('← 阅读目录','← Library'))}<div>${link(url,t('原文','Original'))}<button data-reader-favorite style="margin-left:14px">${getState().favorites.includes(url) ? '★' : '☆'} ${t('收藏','Save')}</button></div></div><div class="space-reader__title"><h2>${html(article.title)}</h2><p>${html(article.date)} · ${html(article.section)}</p></div><div class="space-reader__body" data-reader-body><p>${t('正在打开原文…','Opening the article…')}</p></div>`;
-    host.querySelector('[data-reader-favorite]').addEventListener('click', event => {
-      execute('favorite', { url });
-      event.currentTarget.textContent = `${getState().favorites.includes(url) ? '★' : '☆'} ${t('收藏','Save')}`;
-    });
+    host.innerHTML = `<div class="space-toolbar space-reader-toolbar">${button('reader',t('← 阅读目录','← Library'))}<div class="space-reader-toolbar__source">${link(url,t('原文','Original'))}<button type="button" data-reader-favorite></button></div></div><div class="space-reader__title"><h2>${html(article.title)}</h2><p>${html(article.date)} · ${html(article.section)}</p></div><div class="space-reader__body" data-reader-body><p>${t('正在打开原文…','Opening the article…')}</p></div>`;
+    syncFavorite(host, url);
+    host.querySelector('[data-reader-favorite]').addEventListener('click', () => execute('favorite', { url }));
     const actions = document.createElement('div');actions.className='space-reader__ai-actions';
     const ask = document.createElement('button');ask.type='button';ask.dataset.readerAsk='';ask.textContent=t('✳ 总结这篇文章','✳ Summarize this article');
     const explain = document.createElement('button');explain.type='button';explain.dataset.readerExplain='';explain.hidden=true;explain.textContent=t('解释选中文字','Explain selection');
@@ -260,5 +310,5 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
     else if (win.app === 'agent') showAgent(host,win.id,win.payload);
     else if (win.app === 'settings') showSettings(host,win.id);
   }
-  return { render, download, dispose(id) { disposers.get(id)?.(); disposers.delete(id); media.dispose(id); } };
+  return { render, download, syncFavorite, dispose(id) { disposers.get(id)?.(); disposers.delete(id); media.dispose(id); } };
 }

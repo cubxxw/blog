@@ -177,8 +177,7 @@ function mountDesktop(root) {
       const typingDraft = name === 'draft' && document.activeElement?.matches('[data-message-draft]') && document.activeElement.value === state.draft;
       if (entry && !typingDraft) {
         if (name === 'favorite' && entry.payload) {
-          const favorite = entry.el.querySelector('[data-reader-favorite]');
-          if (favorite) favorite.textContent = `${state.favorites.includes(entry.payload) ? '★' : '☆'} ${t('收藏','Save')}`;
+          apps.syncFavorite(entry.el, entry.payload);
         } else { entry.rendered = false; render(); }
       }
       return true;

@@ -1849,3 +1849,25 @@ E13只新增 **11状态**：canonical输入focus/normal、实际Send、quickchip
 [E14单face 3×3/18图](evidence/boundary-font-registration-provenance.json)只registry引用，**0新state**；discovery/humanChoice unreviewed，不promote Gold，不声称完整字体bundle或全过程文字可见；UX046继续开放。
 
 本轮 **17新状态→345累计 / 81族局部证据**（80partial+1measured；203source-only+25rendered），由JSON条目复算；完整族0/fullnull。保持 **309族/367selector entries/57journeys/18roadmap**。本Agent仅既有证据读取、11图查看与SHA校验，无browser/构建/测试；现停写供checkpoint与scorecard同步。
+
+
+## v1.25 E15c：阅读目录、收藏共享状态与读点生命周期
+
+导入 **2026-10-16T08:22:19+08:00**；[finalsource](evidence/batch-e15c-source.json)/[provenance](evidence/batch-e15c-provenance.json)10源+60文件SHA均匹配，4生产变更；[10不同合同14.5s](evidence/batch-e15c-contracts.log)、Hugo3512ms，[5actualcontexts/17正式图](evidence/batch-e15-actual.json)分开。父/独立review逐看17图；本Agent看4正式代表图/2旧公开收藏图，前轮已看旧owner4图/Breload2图，不启动browser/构建/测试。
+
+新增 **2selector entries**：既有FILTER族下native`e973e2`=`[data-library-select]`；既有NAV补漏`f4bc09`=`.space-library-actions [data-open]`（Notes/Books两真实实例）。5个option不是5按钮、不增族；旧desktop filter`bcd452`继续live，`[data-library-list]`只是可聚焦scrollregion支持。Notes/Books入口不误绑编辑器/书籍readlink。
+
+本轮 **14新状态**，其中3条旧负历史单列：
+
+| 历史/当前 | 范围与证据 |
+| --- | --- |
+| UX049旧owner负 | 390en/coarse/reduce实际wheel→windowbody911/list0/saved0→文章→Library0；绑定返回`311e42`，list支持 |
+| UX049候选B reload负 | 1440zh/reduce存储850、新list及两RAF850→ready/实际enter0，storage仍850；不称存储覆写或精确reparent时刻 |
+| UX050旧公开API负 | 候选A publicfavorite两toggle只改★☆，pressedfalse/Save滞后，ownclick才Saved/true；旧4图保留，非真实模型/AT |
+| 当前目录/读点 | 390en normal真实native Home/ArrowDown选分类、wheel由list保存850/windowbody0，文章返回/reload误差≤1；1440minimizedreload/只恢复一次后新wheel是第10合同，不冒父actual |
+| 当前收藏/入口 | 同button ownclick及原publicAPI同步pressed/稳定题名label/Saved和焦点；favorites reload/removal/empty恢复。844short与1440实际Notes/Books、原notesDOM/值、4书保留 |
+| 当前可读性/发现性 | 320zh/1440en最长标题完整wrap；投影标题16.4/摘要14.76/meta13.12，profile16.4/actions约14.75。摘要仍3行clamp；390/320 native、844short sidebar与profile/About章节仅命名实例；无外链跟随 |
+
+独立命名关闭 **UX048** `closed_E15c_named_spatial_library_profile_type_title_actions_scope`、**UX049** `closed_E15c_bounded_library_scroll_article_return_reload_minimized_new_intent_scope`、**UX050** `closed_E15c_shared_public_and_button_bookmark_same_node_state_scope`。旧A/B失败、源快照和初8/9合同结果保留，不将早期前段通过外推reload，也不把初8+9+10叠计。BBox投影不是字形像素/WCAG通用字号门槛；无OSpicker/AT/实体设备认证，classic/fallback/contextloss恢复仍unknown。UX046仍open。
+
+累计 **359状态 / 82族局部证据**（81partial+1measured；202source-only+25rendered），由条目复算；保持 **309族 / 369selector entries / 57journeys / 18roadmap**，完整族0/fullscore null。现停写供checkpoint与独立scorecard同步。

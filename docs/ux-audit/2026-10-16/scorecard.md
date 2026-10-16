@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T07:47:06+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe92a746a83e635282c9b78966920336a69`；最近已验checkpoint `9ec879f3`（E12c）。E13e冻结源与7个实际context已独立复核，待父保存新checkpoint。
+更新：2026-10-16T08:25:11+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe9`；最近已验checkpoint `d5b35f94`（E13e）。E15c冻结源与5个实际context已独立复核，待父保存新checkpoint。
 
-**当前不能宣称全站或每个按钮96+。309族/367selector条目的完整分仍为 `unverified / null`；345条记录只覆盖81族局部状态（80partial+1measured），完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/369selector条目的完整分仍为 `unverified / null`；359条记录只覆盖82族局部状态（81partial+1measured），完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -1130,3 +1130,23 @@ UX044仅关闭 `closed_E13e_canonical_DOM_active_AI_handoff_context_stream_owner
 [UX048四图/量测](evidence/probe-space-reading-scale-provenance.json)仅1440中文与390英文/light/reduce首屏：目录标题约9.84–10.66、摘要8.2、日期7.42、过滤标签8.2–9.02投影后视口CSSpx；desktop简介10.66/联系动作8.95，mobile简介13.12但动作约9。静态局部D1=90.5（96/80/96/90）、D4=90.5（80/90/96/96）；44手机hit不抵消小标签。只建议reader目录/profile任务字号/行高与一层边界收敛，保原内容/DOM/过滤/真实文章路径；正文阅读面不机械放大。bbox/整数offsetWidth估算有短inline rounding，不叫硬件像素/字形高度或通用WCAG字号门槛。未测完整滚动/filters/bookmarks/所有links，UX048为P2开放，不抢其他交互结论。
 
 盘点v1.24最终同步：309族/367selector entries/345状态（新增17）/81局部族（80partial+1measured）/0完整。17为canonical11、computer1、bookmark1、可读性4；E14仅registry。新bookmark只按盘点Agent已观察的局部证据引用，本评分Agent未逐图审，不新增本卡行为通过或44square声明；下一批library scroll负基线未混入。本轮222项scoped checks、100个历史专家视觉片段，均不代替完整维度/族评分。
+
+
+## E15c · 可读的书库、独立读点与一致收藏状态
+
+2026-10-16T08:23:00+08:00：[10源/QA](evidence/batch-e15c-source.json)与[provenance](evidence/batch-e15c-provenance.json)共70项hash匹配（源10+文件60），含父runner、原始回执、旧失败及17张新自然截图；HTTP两bundle另有[读回](evidence/batch-e15c-served-bundles.json)。[10不同合同](evidence/batch-e15c-contracts.log)14.5s/Hugo3512ms；[父5实际context/17图](evidence/batch-e15-actual.json)已全部独立逐看，无新P0/P1。六配置geometry合同不是额外六种实际旅程，原九case与严格≤1px门槛保留。
+
+**UX048**仅按当前spatial命名片段关闭：目录标题16.4、摘要14.76、日期13.12；简介16.4、动作约14.75投影后视口CSSpx。完整原title与description保留，摘要仅CSS三行收束；过滤/原查询节点与焦点保留、profile原内容/URL保留。普通320中文、390英文与桌面标题/简介片段局部D1/D4=96/96，完整维度仍null；这些字号是bbox比例估算，不是硬件像素/字形高度或WCAG字号门槛。
+
+**UX049**有界关闭：390英文正常动效真wheel850由list持有、windowbody0，实际文章→Library返回及reload读点≤1px；1440合同包含Notes/Books往返、原笔记节点/继续输入、minimized reload→恢复→真wheel新读点→同list重开。C等待world ready/failed且loading清除与有效尺寸，再恢复一次；查询/分类/阅读意图及dispose终止pending/observer/RAF，不追抢新读点。保留两种旧负记录：[旧390](evidence/probe-space-library-scroll-provenance.json)body911/list0/saved0返回0；[B1440](evidence/probe-e15b-reload-provenance.json)storage850、preworld850两RAF后ready0。后者不证明storage被覆写或精确reparent时刻。初版eval漏参数NaN是测具错误，不当产品失败或通过。
+
+**UX050**新增P2并按修复scope关闭：[初390公共API四图](evidence/probe-space-external-bookmark-provenance.json)state/星标变true但pressedfalse/Save，ownclick才Saved/true。当前own/public共用syncFavorite；父390实际off/on与1440合同on/off均保原button/focus/body/读点、稳定文章用途名称及真实pressed/Saved。仅原公开API，不冒真实助手UI或AT验收。
+
+两项真实设计差距单独保留，不以功能通过授全族96：
+
+- [844短横屏目录](evidence/batch-e15-844-en-short-directory.png)/[侧栏滚后](evidence/batch-e15-844-en-short-choices.png)：长首标题占去大部分列表，只露摘要开头，分类与Notes/Books另需侧栏滚动。可达且44通过；局部D1=90.5、D4=94.5。后续仅短coarse边界比较更紧凑的分类/入口与header占位，保字号、44和读点owner，不把这判遮挡/P1。
+- [1440英文Reading paths](evidence/batch-e15-1440-en-start-here.png)：推荐标题、摘要、阅读时间与CTA连成约四行同级下划线；局部D1=94.5、D4=93。最小后续仅将现有推荐链接子元素分块/间距/强调标题，保全部文字、URL与整块命中，不删内容或给未知AT编扣分。
+
+Classic/fallback恢复、运行中context loss后的读点、Safari/AT/实体机/OS picker/整页200%zoom/完整状态矩阵未知；没有整页对比度、抗锯齿、真实外发或AI质量认证。UX046冷字体仍open，E13e辅助小字分数保持历史，不被本批覆盖。完整族/控件分仍null。
+
+盘点v1.25最终同步：309族/369selector entries、359状态（新增14）/82局部族（81partial+1measured）/0完整。14为三条独立旧负记录与11个正向/合同片段；新native分类 `S.APP.reader.FILTER.control.e973e2` 与旧Notes/Books入口补漏 `S.APP.reader.NAV.control.f4bc09` 分别绑定，不继承旧控件通过。当前234个scoped checks、106个历史视觉片段；量表及所有完整分null不变。UX048/049/050仅按上述scope关闭，UX046保持开放。本轮停写供父checkpoint。

@@ -3,29 +3,35 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "9ec879f3c4c04c622523dc9e98222d58bb90ba3f",
-  "phase": "E13e-accepted-independent-final-audit-checkpoint-pending",
-  "batch": "E13e-canonical-AI-and-explicit-analysis-focus",
+  "checkpoint": "d5b35f94cee3a203938eff63f4932a016df71fb3",
+  "phase": "E15c-accepted-E16-shortscreen-ready",
+  "batch": "E15-Space-directory-profile",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "E15 UX048 Space directory/profile legibility +actualbookmarkpressed/44square +actual listreadingpointloss911→0;8contract readonlyplanready",
-    "E14 UX046 cold asyncfont registration reflowsarticle;read-only alternatives need bounded experiment",
+    "E16 settled568x320 selectedAI input/Send belowviewport/nohit; realtoolbar/controlledreply baseline preserved. Highpriority named task gap, independent classification next; source3CSS local height/type/quote plan ready, no impl.",
+    "E15 shortcoarse directory two scrollsurfaces localD1=90.5/D4=94.5; readmap flattened sh-first localD1=94.5/D4=93. Needs separate scoped refinement, not all96.",
+    "E14 fullbundle8discovery/18PNG independently verified; ENposts optionalcoldfallbacktradeoff explicit; productioncandidate not yet implemented",
     "E12c original actualBack10s timeout unexplained;final6trace bounded successes,wholeBack reliability unknown",
-    "QR portrait error/account grouping;AT/Safari/physical/fullmatrix/BFCache unknown",
-    "E15 Space profile/directory actual2contexts4PNG confirms small projected type,readonlyproposal,noimpl"
+    "QR portrait error/account grouping; photoimage retry/Knowledge currentnodeOpen not actualtested; AT/Safari/physical/fullmatrix/BFCache unknown"
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e13e-provenance.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e15c-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-15T23:47:57.439762+00:00",
-  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e13e-source.json",
+  "updatedAt": "2026-10-16T00:26:32.220459+00:00",
+  "previewSource": "docs/ux-audit/2026-10-16/evidence/batch-e15c-source.json",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "Independent25formalPNG/71uniquehash+11src/QA/6runners+supplemental match;no newP0/P1;UX044 scopedclosed;309families/367selectorentries/345states/81partial/0full/null;localD1=94.5,D4=90.5 due tinylabels/redundantquoteoutlines,retainedforE16;UX046/048open",
-  "previewBatch": "E13e accepted Hugo3781ms/13pass15.3s/4old4.5s/7actual25formalPNG",
-  "executorOwnership": []
+  "review": "E15 ordinarynamedSpace type/title/profilelocalD1/D4=96/96;short/readmap lower scoped scores separate; fullnull309families/369selectorentries/359states/82partial/0full. No newE15 source P0/P1/P2; new preE16 shortscreen task gap remains open.",
+  "previewBatch": "E15c Hugo3512ms/10contracts14.5s/5actual17PNG; source independent clean and final cards synchronizing",
+  "executorOwnership": [
+    "assets/js/space/apps.js",
+    "assets/css/space.css",
+    "assets/css/space-cafe.css",
+    "assets/js/space/desktop.js",
+    "tests/e2e/space-library-profile-contracts.spec.ts"
+  ]
 }

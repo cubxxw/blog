@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-16T00:08:52.635991+00:00",
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-query-equivalence.json": "e81b22a1f625519294c0d170b0907390298d117c03b8e31ddc77205cd3f142c3",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-google-optional.css": "36132094a2a20705d708954f4f7e0ccceb55dcc2b65d2d82948893fb65b7ce03",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-google-full.css": "df40f8b52b40b6a61627c0942f7abdce6e87e1402fb86ff144fcfcdafd6f6c69",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-provenance.json": "f57017624a554c0aeb4017bdd221b7c6e6da617a00e799df250581ead65d2b4c"
+  },
+  "scope": "Postexperiment primary GoogleCSS query equivalence, raw experiment/provenance unchanged. Independent AI reviewer found no unresolved experiment P0/P1 after exact originalCSS+fixture manifest saved. Still discovery/reviewunreviewed/humanChoiceunreviewed/noGold; not production pass. Actual glyph evidence cold optional fallback Georgia/Courier even fast; this tradeoff must remain explicit."
+}

@@ -1,0 +1,61 @@
+{
+  "scope": "Shared apps.syncFavorite serves initial markup, original public favorite execute, and own click (execute only). No reader replacement. Desktop change is exactly one favorite branch.",
+  "checks": [
+    {
+      "file": "assets/js/space/apps.js",
+      "sha256": "05b1684c901db1ef17f1b30e711ec1b6a2a1138aff9f37dcccb4395f09f0930d",
+      "unchangedFromE15Initial": false
+    },
+    {
+      "file": "assets/css/space.css",
+      "sha256": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+      "unchangedFromE15Initial": true
+    },
+    {
+      "file": "assets/css/space-cafe.css",
+      "sha256": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+      "unchangedFromE15Initial": true
+    },
+    {
+      "file": "tests/e2e/space-library-profile-contracts.spec.ts",
+      "sha256": "42d8f6ea1f014a16583c4aede06825c47add2379d6c42477ef7d39f4744a6c7e",
+      "unchangedFromE15Initial": false
+    },
+    {
+      "file": "layouts/partials/space/profile.html",
+      "sha256": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205",
+      "unchangedFromE15Initial": true
+    },
+    {
+      "file": "assets/css/space-profile.css",
+      "sha256": "8989a78db83d72540115d04eae012e6cc721660389093263cbd914ffdef28c7f",
+      "unchangedFromE15Initial": true
+    },
+    {
+      "file": "assets/css/space-classic.css",
+      "sha256": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+      "unchangedFromE15Initial": true
+    },
+    {
+      "file": "assets/js/space/state.mjs",
+      "sha256": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+      "unchangedFromE15Initial": true
+    },
+    {
+      "file": "assets/js/space/desktop.js",
+      "sha256": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+      "unchangedFromE15Initial": false
+    },
+    {
+      "file": "static/js/article-chat.js",
+      "sha256": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+      "unchangedFromE15Initial": true
+    }
+  ],
+  "originalEightByteIdentical": true,
+  "desktopOnlyFavoriteBranch": true,
+  "distinctCases": 9,
+  "defaultProjectEntries": 18,
+  "browserRun": false,
+  "hugoBuild": false
+}

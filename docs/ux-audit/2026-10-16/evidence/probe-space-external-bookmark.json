@@ -1,0 +1,125 @@
+{
+  "at": "2026-10-16T00:03:08.028Z",
+  "sources": {
+    "assets/js/space/apps.js": "ea147ba1ca147a15387a1770463d628531c3c74c1a5e1718b40a4a65b8ddbe36",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194"
+  },
+  "view": {
+    "width": 390,
+    "height": 844,
+    "locale": "en",
+    "coarse": true,
+    "motion": "reduce"
+  },
+  "url": "/engineering/posts/use-go-tools-dlv/",
+  "steps": [
+    {
+      "name": "before",
+      "sameButton": true,
+      "focused": true,
+      "selectedInState": false,
+      "title": "Use Go Tools Dlv",
+      "bookmark": {
+        "text": "☆ Save",
+        "pressed": "false",
+        "label": "Bookmark article: Use Go Tools Dlv",
+        "box": {
+          "x": 267.44268798828125,
+          "y": 136.63677978515625,
+          "width": 67.77890014648438,
+          "height": 44.28050231933594,
+          "top": 136.63677978515625,
+          "right": 335.2215881347656,
+          "bottom": 180.9172821044922,
+          "left": 267.44268798828125
+        },
+        "hit": true
+      },
+      "library": []
+    },
+    {
+      "name": "public-execute-on",
+      "sameButton": true,
+      "focused": true,
+      "selectedInState": true,
+      "title": "Use Go Tools Dlv",
+      "bookmark": {
+        "text": "★ Save",
+        "pressed": "false",
+        "label": "Bookmark article: Use Go Tools Dlv",
+        "box": {
+          "x": 268.6214599609375,
+          "y": 136.63677978515625,
+          "width": 66.60012817382812,
+          "height": 44.28050231933594,
+          "top": 136.63677978515625,
+          "right": 335.2215881347656,
+          "bottom": 180.9172821044922,
+          "left": 268.6214599609375
+        },
+        "hit": true
+      },
+      "library": []
+    },
+    {
+      "name": "public-execute-off",
+      "sameButton": true,
+      "focused": true,
+      "selectedInState": false,
+      "title": "Use Go Tools Dlv",
+      "bookmark": {
+        "text": "☆ Save",
+        "pressed": "false",
+        "label": "Bookmark article: Use Go Tools Dlv",
+        "box": {
+          "x": 268.6214599609375,
+          "y": 136.63677978515625,
+          "width": 66.60012817382812,
+          "height": 44.28050231933594,
+          "top": 136.63677978515625,
+          "right": 335.2215881347656,
+          "bottom": 180.9172821044922,
+          "left": 268.6214599609375
+        },
+        "hit": true
+      },
+      "library": []
+    },
+    {
+      "name": "own-button-click",
+      "sameButton": true,
+      "focused": true,
+      "selectedInState": true,
+      "title": "Use Go Tools Dlv",
+      "bookmark": {
+        "text": "★ Saved",
+        "pressed": "true",
+        "label": "Bookmark article: Use Go Tools Dlv",
+        "box": {
+          "x": 258.7685241699219,
+          "y": 136.63677978515625,
+          "width": 76.45306396484375,
+          "height": 44.28050231933594,
+          "top": 136.63677978515625,
+          "right": 335.2215881347656,
+          "bottom": 180.9172821044922,
+          "left": 258.7685241699219
+        },
+        "hit": true
+      },
+      "library": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-external-bookmark-before.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-external-bookmark-public-execute-on.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-external-bookmark-public-execute-off.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-external-bookmark-own-button-click.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One390en isolatedChromium runtime probe on E15 initial3prod source. Real reader/list actions, then direct original BearSpace.execute favorite API twice; this is publictool state-path invocation, not a realmodel/assistant chat UI action. Originalbutton focus programmatic; raw DOM/aria/state/title and ownpointer click observed. No AT/native touch/fullmatrix claim."
+}

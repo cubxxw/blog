@@ -282,3 +282,13 @@ E13e真实验收：Hugo3781ms，13distinct新合同15.3s+4旧专项4.5s全过；
 E13e独立最终：source/QA/runners+25图+rawreceipt/provenance71唯一路径匹配，未见新P0/P1；canonical named scope accepted/UX044 scopedclosed。固定rubric不变；D1local94.5/D4local90.5（主回复/输入可读，小label/重复reference边框具体不足），不认证整族96。inventory1.24 345状态/81局部族/309族/367历史+现selector/0full；E14discovery/UX046open，E15UX048open，bookmark并非scorereviewer新6图通过；新scroll负基线下批单独。准备本地checkpoint后E15。
 
 Checkpoint全staged检查发现4个此前untracked原始报告含工具输出行尾空格（3error-context/1Hugo build），不是生产/作者源码错误。为保持已独立核对的原始字节/SHA，docs本地.gitattributes仅精确这4文件关闭blank-at-eol，其余whitespace检查保留；未清洗/改写任何raw报告，也未绕过行为门槛。
+
+并行E14只读fullCSS配对实验：source4 unchanged/currentE13earticlepreview，E15源WIP不build；8case/18图父全看，有完整raw/fixture/CSS/schema/provenance。A latefont导致文内标记152.65625px/视口最大240.65625px漂移，B全部0但实际glyph保持Georgia/Courier，包含fast-before-reading。保留产品取舍和未验warm/本地CJK/continuousFOIT边界；尚无生产实现/评分提升/Discovery晋级。单browser已关闭，后可跑E15新source验收。
+
+E14 fullbundle独立只读复核完成：18图、32来源/fixture路径、原CSS/manifest均核，无未解决实验P0/P1。Google当前同UA display=optional真实查询与实验B逐字相同，单列query-equivalence/query-provenance，未改原始receipt。cold optional实际glyph包含fast仍Georgia/Courier，是稳定性与品牌首屏字体的明确取舍；warm/CJK/CSS404/连续FOIT未知。仅建议后续EN posts最小候选，不宣称已生产修复/UX046关闭，也不晋级discovery。
+
+E15b补一项独审P2并由父实际确认：外部原始public favorite仅星标更新，pressed/Save旧；原4图/raw保留。最小shared syncFavorite统一状态，desktop仅原2行换helper，Reader正文/节点焦点不重建。E15a前8合同逐字保持+第9公共toggle合同；CSS/other保护源未变，syntax/type/diff/discovery/scope通过，尚未build/行为验收。
+
+E15b真实9合同8pass/1fail19.6s：新增public favorite通过；第8到最终reload严格≤1收到850，之前articleback/minimize/Notes/Books恢复均过。source/log/error/spec保留initial。父额外真实1440zh reduce wheel850→reload，preworld新list已850，两RAF850，worldready后0，而storage仍850；2图全看，不能称storage被覆盖或确证每帧reparent时序。E15c只apps局部生命周期待有效world/尺寸完成pendingrestore，保disposer/新用户意图，不改world/不软化9合同；可追加minimized reload与后续真wheel不追抢合同。
+
+E15c父实测完成：Hugo3512ms/10distinct14.5s全过，5actual/17PNG父逐张全看。390en正常动效真实wheel850由list承接/body0，原article→Library与reload后原scroll≤1，原按钮Save/publictoggle/pressed/label不丢focus，favorites去除empty/recovery；320zhdark完整title/主文、844短粗指针目录自身滚动和Notes、1440zhdark PageDown与笔记同节点/书架、1440en阅读地图/longtitle/nohits。标题16.4/摘要14.76/meta13.12与profile16.4/actions14.75投影近似可读。60paths/source10/QA/runner/17PNG+HTTPserved2bundles SHA封存；初minified HTML带无引号属性，quoted-only regex解析0未生成证据，改HTMLParser后2bundle匹配output，不重跑browser。仍待独审最终卡/清单闭合，不先checkpoint。新增7个SHA-bound原始Hugo/失败报告仅精确路径whitespace例外，原始bytes未清洗。

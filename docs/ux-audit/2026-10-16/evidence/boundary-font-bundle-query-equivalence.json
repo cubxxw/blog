@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-15T23:59:50.063358+00:00",
+  "sourceURL": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional",
+  "UA": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+  "originalCSSSHA256": "df40f8b52b40b6a61627c0942f7abdce6e87e1402fb86ff144fcfcdafd6f6c69",
+  "optionalCSSSHA256": "36132094a2a20705d708954f4f7e0ccceb55dcc2b65d2d82948893fb65b7ce03",
+  "optionalBytes": 41932,
+  "normalizedOnlyDisplayEqual": true,
+  "exactDerivedExperimentalBEqual": true,
+  "scope": "Public current optional query verification after paired browser run; original raw experiment remains unchanged. Equal proves same CSS declaration/fontURL/weights at this retrieval only, not HTTPwarm/siteproductionfix."
+}

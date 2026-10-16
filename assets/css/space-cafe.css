@@ -124,6 +124,23 @@
 .space-spatial-screen .space-contact .space-contact__hint,.space-spatial-screen .space-settings .space-language__hint,.space-spatial-screen .space-capability small { font-size:16px; }
 .space-spatial-screen .space-contact :is(a,button),.space-spatial-screen .space-settings button { min-width:54px; min-height:54px; font-size:17px; }
 .space-spatial-screen :is(.space-contact,.space-settings) .space-button { font-size:17px !important; }
+.space .space-spatial-screen .space-library > .space-toolbar,.space .space-spatial-screen .space-library-directory p { font-size:16px; }
+.space .space-spatial-screen .space-library .space-toolbar input,.space .space-spatial-screen .space-library-picker select { font-size:20px; }
+.space .space-spatial-screen .space-library :is(button,select,input),.space .space-spatial-screen .space-reader-toolbar :is(a,button),.space .space-spatial-screen .space-reader__ai-actions button { min-width:54px; min-height:54px; }
+.space .space-spatial-screen .space-library .space-sidebar button,.space .space-spatial-screen .space-reader-toolbar :is(a,button),.space .space-spatial-screen .space-reader__ai-actions button { font-size:18px; }
+.space .space-spatial-screen .space-library .space-list-item strong { font-size:20px; }
+.space .space-spatial-screen .space-library .space-list-item span { font-size:18px; }
+.space .space-spatial-screen .space-library .space-list-item small { font-size:16px; }
+.space .space-spatial-screen .space-library-empty h3 { font-size:24px; }
+.space .space-spatial-screen .space-library-empty p { font-size:18px; }
+.space .space-spatial-screen .space-library-empty .space-button,.space .space-spatial-screen .space-reader-toolbar .space-button { font-size:18px !important; }
+.space .space-spatial-screen .space-welcome__intro,.space .space-spatial-screen .space-profile p,.space .space-spatial-screen .space-profile__reading .post-content { font-size:20px; }
+.space .space-spatial-screen .space-profile .space-profile__mission { font-size:24px; }
+.space .space-spatial-screen .space-profile h3 { font-size:32px; }
+.space .space-spatial-screen .space-profile__chapters h4 { font-size:22px; }
+.space .space-spatial-screen .space-profile h3 > span,.space .space-spatial-screen .space-profile__timeline li,.space .space-spatial-screen .space-profile__chapters > li > time,.space .space-spatial-screen .space-entry-hint,.space .space-spatial-screen .space-welcome__foot,.space .space-spatial-screen .space-profile__reading .meet-atlas-hint { font-size:16px; }
+.space .space-spatial-screen .space-welcome :is(.space-enter,.space-welcome__routes button,.space-welcome__foot button),.space .space-spatial-screen .space-profile :is(summary,.space-profile__nav button,.space-profile__links a,.space-profile__links button,.space-profile__chapters a) { min-width:54px; min-height:54px; font-size:18px; }
+.space .space-spatial-screen .space-welcome .space-enter { font-size:18px !important; }
 .space[data-world-ready] .space-landscape { display:none; }
 .space[data-world-loading] :is(.space-window-layer,.space-bottom,.space-menu) { visibility:hidden; }
 .space[data-world-mode="roam"] .space-cafe__welcome { visibility:hidden; }
@@ -179,7 +196,6 @@
   .space[data-world-ready] [data-window-action="arrange"] { width:54px; height:54px; min-width:54px; min-height:54px; }
   .space[data-world-ready] .space-window__bar { height:56px; }
   .space[data-world-ready] .space-window__body { height:calc(100% - 56px); }
-  .space[data-world-ready] .space-profile p { font-size:16px; }
 }
 @media(prefers-reduced-motion:reduce) { .space-cafe::after,.space[data-world-travel="true"] .space-cafe__welcome { transition:none; } }
 @media(min-width:520px) and (max-height:420px) {

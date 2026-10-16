@@ -1,0 +1,624 @@
+{
+  "sources": {
+    "assets/js/space/apps.js": "05b1684c901db1ef17f1b30e711ec1b6a2a1138aff9f37dcccb4395f09f0930d",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+    "tests/e2e/space-library-profile-contracts.spec.ts": "42d8f6ea1f014a16583c4aede06825c47add2379d6c42477ef7d39f4744a6c7e",
+    "layouts/partials/space/profile.html": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205",
+    "assets/css/space-profile.css": "8989a78db83d72540115d04eae012e6cc721660389093263cbd914ffdef28c7f",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec"
+  },
+  "steps": [
+    {
+      "tag": "before-reload",
+      "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+      "top": 850,
+      "trace": [
+        {
+          "tag": "init-before-product",
+          "t": 19.09999990463257,
+          "saved": null,
+          "list": null,
+          "world": null
+        },
+        {
+          "tag": "setItem",
+          "t": 447.59999990463257,
+          "saved": "{\"filter\":\"all\",\"query\":\"\",\"scroll\":0}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 365,
+            "top": 0,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        },
+        {
+          "tag": "new-list",
+          "t": 458.90000009536743,
+          "saved": "{\"filter\":\"all\",\"query\":\"\",\"scroll\":0}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 39364,
+            "top": 0,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        },
+        {
+          "tag": "next-frame",
+          "t": 468,
+          "saved": "{\"filter\":\"all\",\"query\":\"\",\"scroll\":0}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 39364,
+            "top": 0,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        },
+        {
+          "tag": "second-frame",
+          "t": 470.90000009536743,
+          "saved": "{\"filter\":\"all\",\"query\":\"\",\"scroll\":0}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 39364,
+            "top": 0,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        },
+        {
+          "tag": "setItem",
+          "t": 506.40000009536743,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"\",\"scroll\":0}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 39364,
+            "top": 0,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        },
+        {
+          "tag": "setItem",
+          "t": 512.5,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":0}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 7629,
+            "top": 0,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        },
+        {
+          "tag": "list-scroll",
+          "t": 587.3000001907349,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":0}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 3207,
+            "top": 850,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        },
+        {
+          "tag": "setItem",
+          "t": 587.5,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": {
+            "connected": true,
+            "height": 365,
+            "scrollHeight": 3207,
+            "top": 850,
+            "box": {
+              "x": 437.9197692871094,
+              "y": 235.97982788085938,
+              "width": 359.1603088378906,
+              "height": 299.3002624511719,
+              "top": 235.97982788085938,
+              "right": 797.080078125,
+              "bottom": 535.2800903320312,
+              "left": 437.9197692871094
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "desktop",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "complete",
+            "bootStage": "3",
+            "ready": "true",
+            "worldTheme": "zen",
+            "worldObjects": "224",
+            "worldMode": "workspace",
+            "worldTravel": "false",
+            "worldRenderedMode": "workspace",
+            "worldReady": "true",
+            "catState": "look",
+            "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+            "catActive": "false",
+            "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+            "worldFrames": "4",
+            "worldTriangles": "96268",
+            "worldDraws": "67",
+            "catLoaded": "true"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "after-reload",
+      "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+      "top": 0,
+      "trace": [
+        {
+          "tag": "init-before-product",
+          "t": 11.700000286102295,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": null,
+          "world": null
+        },
+        {
+          "tag": "setItem",
+          "t": 27,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": {
+            "connected": true,
+            "height": 375,
+            "scrollHeight": 375,
+            "top": 0,
+            "box": {
+              "x": 375,
+              "y": 178,
+              "width": 438,
+              "height": 375,
+              "top": 178,
+              "right": 813,
+              "bottom": 553,
+              "left": 375
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "cafe"
+          }
+        },
+        {
+          "tag": "new-list",
+          "t": 31.40000009536743,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": {
+            "connected": true,
+            "height": 375,
+            "scrollHeight": 2589,
+            "top": 850,
+            "box": {
+              "x": 375,
+              "y": 178,
+              "width": 438,
+              "height": 375,
+              "top": 178,
+              "right": 813,
+              "bottom": 553,
+              "left": 375
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "cafe",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "loading",
+            "bootStage": "0",
+            "worldLoading": "true",
+            "ready": "true"
+          }
+        },
+        {
+          "tag": "list-scroll",
+          "t": 33.30000019073486,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": {
+            "connected": true,
+            "height": 375,
+            "scrollHeight": 2589,
+            "top": 850,
+            "box": {
+              "x": 375,
+              "y": 178,
+              "width": 438,
+              "height": 375,
+              "top": 178,
+              "right": 813,
+              "bottom": 553,
+              "left": 375
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "cafe",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "loading",
+            "bootStage": "0",
+            "worldLoading": "true",
+            "ready": "true"
+          }
+        },
+        {
+          "tag": "setItem",
+          "t": 33.40000009536743,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": {
+            "connected": true,
+            "height": 375,
+            "scrollHeight": 2589,
+            "top": 850,
+            "box": {
+              "x": 375,
+              "y": 178,
+              "width": 438,
+              "height": 375,
+              "top": 178,
+              "right": 813,
+              "bottom": 553,
+              "left": 375
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "cafe",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "loading",
+            "bootStage": "0",
+            "worldLoading": "true",
+            "ready": "true"
+          }
+        },
+        {
+          "tag": "next-frame",
+          "t": 33.40000009536743,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": {
+            "connected": true,
+            "height": 375,
+            "scrollHeight": 2589,
+            "top": 850,
+            "box": {
+              "x": 375,
+              "y": 178,
+              "width": 438,
+              "height": 375,
+              "top": 178,
+              "right": 813,
+              "bottom": 553,
+              "left": 375
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "cafe",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "loading",
+            "bootStage": "0",
+            "worldLoading": "true",
+            "ready": "true"
+          }
+        },
+        {
+          "tag": "second-frame",
+          "t": 48.200000286102295,
+          "saved": "{\"filter\":\"engineering\",\"query\":\"Go\",\"scroll\":850}",
+          "list": {
+            "connected": true,
+            "height": 375,
+            "scrollHeight": 2589,
+            "top": 850,
+            "box": {
+              "x": 375,
+              "y": 178,
+              "width": 438,
+              "height": 375,
+              "top": 178,
+              "right": 813,
+              "bottom": 553,
+              "left": 375
+            }
+          },
+          "world": {
+            "productPanel": "bear",
+            "bearWorkspace": "",
+            "theme": "light",
+            "wallpaper": "dawn",
+            "cafeMode": "cafe",
+            "cafeTheme": "zen",
+            "environmentPaused": "false",
+            "bootState": "loading",
+            "bootStage": "0",
+            "worldLoading": "true",
+            "ready": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload-before-reload.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload-after-reload.png"
+  ],
+  "errors": [],
+  "observed": true
+}

@@ -1,0 +1,55 @@
+{
+  "source": "https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/json/browser_protocol.json",
+  "schemaSHA256": "0818e5ffb5286febc0b294a36f48bc685dfc5499b57b42b0c20b469620cd2c88",
+  "commands": [
+    {
+      "name": "getPlatformFontsForNode",
+      "description": "Requests information about platform fonts which we used to render child TextNodes in the given\nnode.",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "$ref": "DOM.NodeId"
+        }
+      ],
+      "returns": [
+        {
+          "name": "fonts",
+          "description": "Usage statistics for every employed platform font.",
+          "type": "array",
+          "items": {
+            "$ref": "PlatformFontUsage"
+          }
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "id": "PlatformFontUsage",
+      "description": "Information about amount of glyphs that were rendered with given font.",
+      "type": "object",
+      "properties": [
+        {
+          "name": "familyName",
+          "description": "Font's family name reported by platform.",
+          "type": "string"
+        },
+        {
+          "name": "postScriptName",
+          "description": "Font's PostScript name reported by platform.",
+          "type": "string"
+        },
+        {
+          "name": "isCustomFont",
+          "description": "Indicates if the font was downloaded or resolved locally.",
+          "type": "boolean"
+        },
+        {
+          "name": "glyphCount",
+          "description": "Amount of glyphs that were rendered with this font.",
+          "type": "number"
+        }
+      ]
+    }
+  ]
+}

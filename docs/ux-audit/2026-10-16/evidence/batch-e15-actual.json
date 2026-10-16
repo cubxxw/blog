@@ -1,0 +1,481 @@
+{
+  "at": "2026-10-16T00:15:48.936Z",
+  "manifest": "batch-e15c-source.json",
+  "sources": {
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+    "tests/e2e/space-library-profile-contracts.spec.ts": "abb4e08a1314bcf8a94af81dc32bb5e4586cfee36fb9a0c5cdbba406249682ef",
+    "layouts/partials/space/profile.html": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205",
+    "assets/css/space-profile.css": "8989a78db83d72540115d04eae012e6cc721660389093263cbd914ffdef28c7f",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec"
+  },
+  "rows": [
+    {
+      "view": {
+        "id": "390-en",
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "theme": "light",
+        "motion": "no-preference",
+        "coarse": true
+      },
+      "steps": [
+        {
+          "name": "identity"
+        },
+        {
+          "name": "real-wheel-owned-scroll",
+          "saved": 850
+        },
+        {
+          "name": "scrolled-library"
+        },
+        {
+          "name": "saved-article"
+        },
+        {
+          "name": "original-public-execute-off-on-same-button-focus"
+        },
+        {
+          "name": "returned-library"
+        },
+        {
+          "name": "reloaded-library"
+        },
+        {
+          "name": "empty-bookmarks"
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "320-zh",
+        "width": 320,
+        "height": 844,
+        "lang": "zh",
+        "theme": "dark",
+        "motion": "reduce",
+        "coarse": true
+      },
+      "steps": [
+        {
+          "name": "welcome"
+        },
+        {
+          "name": "identity"
+        },
+        {
+          "name": "complete-title"
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "844-en",
+        "width": 844,
+        "height": 390,
+        "lang": "en",
+        "theme": "light",
+        "motion": "no-preference",
+        "coarse": true
+      },
+      "steps": [
+        {
+          "name": "short-directory"
+        },
+        {
+          "name": "short-choices"
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "1440-zh",
+        "width": 1440,
+        "height": 900,
+        "lang": "zh",
+        "theme": "dark",
+        "motion": "no-preference",
+        "coarse": false
+      },
+      "steps": [
+        {
+          "name": "welcome"
+        },
+        {
+          "name": "story"
+        },
+        {
+          "name": "keyboard-list"
+        },
+        {
+          "name": "actual-notes-books-entry-and-same-editor"
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "1440-en",
+        "width": 1440,
+        "height": 900,
+        "lang": "en",
+        "theme": "light",
+        "motion": "reduce",
+        "coarse": false
+      },
+      "steps": [
+        {
+          "name": "start-here"
+        },
+        {
+          "name": "complete-title"
+        },
+        {
+          "name": "no-matches"
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    }
+  ],
+  "metrics": [
+    {
+      "view": "390-en",
+      "label": "identity-prose",
+      "text": "Xinwei Xiong (熊鑫伟, aka cubxxw / BEAR, b. 2001) builds AI products with a focus on agent evaluation and reliable execution. He contributed to OpenIM's engineerin",
+      "font": "20px / 36px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "20px",
+      "projectedFontCSSpx": 16.40018347537879,
+      "scale": 0.8200091737689394,
+      "box": {
+        "x": 59.69847106933594,
+        "y": 470.70086669921875,
+        "width": 270.60302734375,
+        "height": 265.6829833984375,
+        "top": 470.70086669921875,
+        "right": 330.30149841308594,
+        "bottom": 736.3838500976562,
+        "left": 59.69847106933594
+      },
+      "color": "rgb(97, 109, 106)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "390-en",
+      "label": "identity-link",
+      "text": "Resume and project evidence ↗",
+      "font": "18px / 27px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "18px",
+      "projectedFontCSSpx": 14.772829661649816,
+      "scale": 0.8207127589805453,
+      "box": {
+        "x": 59.69847106933594,
+        "y": 385.7274169921875,
+        "width": 209.28175354003906,
+        "height": 44.280487060546875,
+        "top": 385.7274169921875,
+        "right": 268.980224609375,
+        "bottom": 430.0079040527344,
+        "left": 59.69847106933594
+      },
+      "color": "rgb(39, 110, 101)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "320-zh",
+      "label": "welcome-intro",
+      "text": "我是熊鑫伟，写代码，做产品，也去路上走走。我的作品、思考和旅途，都放在这里。",
+      "font": "20px / 36px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "20px",
+      "projectedFontCSSpx": 16.400184044471153,
+      "scale": 0.8200092022235577,
+      "box": {
+        "x": 53.39879608154297,
+        "y": 324.12420654296875,
+        "width": 213.202392578125,
+        "height": 118.08132934570312,
+        "top": 324.12420654296875,
+        "right": 266.60118865966797,
+        "bottom": 442.2055358886719,
+        "left": 53.39879608154297
+      },
+      "color": "rgb(178, 189, 183)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "320-zh",
+      "label": "identity-prose",
+      "text": "熊鑫伟（cubxxw / BEAR，2001 年生）构建 AI 产品，关注 Agent 评估与可靠执行。曾参与 OpenIM 的工程和社区协作，在 cubxxw.com 公开项目实践与每月思考，旅行仍是生活的一部分。",
+      "font": "20px / 36px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "20px",
+      "projectedFontCSSpx": 16.400184044471153,
+      "scale": 0.8200092022235577,
+      "box": {
+        "x": 53.39879608154297,
+        "y": 470.70086669921875,
+        "width": 213.202392578125,
+        "height": 206.642333984375,
+        "top": 470.70086669921875,
+        "right": 266.60118865966797,
+        "bottom": 677.3432006835938,
+        "left": 53.39879608154297
+      },
+      "color": "rgb(178, 189, 183)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "320-zh",
+      "label": "identity-link",
+      "text": "简历与项目证据 ↗",
+      "font": "18px / 27px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "18px",
+      "projectedFontCSSpx": 14.748955726623535,
+      "scale": 0.8193864292568631,
+      "box": {
+        "x": 53.39879608154297,
+        "y": 531.6890258789062,
+        "width": 117.99164581298828,
+        "height": 44.280517578125,
+        "top": 531.6890258789062,
+        "right": 171.39044189453125,
+        "bottom": 575.9695434570312,
+        "left": 53.39879608154297
+      },
+      "color": "rgb(164, 219, 201)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "320-zh",
+      "label": "library-title",
+      "text": "AI Gateway 选型指南：LiteLLM、Kong、APISIX、Cloudflare 与 Portkey 怎么选",
+      "font": "550 20px / 30px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "20px",
+      "projectedFontCSSpx": 16.400184061989854,
+      "scale": 0.8200092030994928,
+      "box": {
+        "x": 50.11875915527344,
+        "y": 283.4184265136719,
+        "width": 219.76246643066406,
+        "height": 73.80084228515625,
+        "top": 283.4184265136719,
+        "right": 269.8812255859375,
+        "bottom": 357.2192687988281,
+        "left": 50.11875915527344
+      },
+      "color": "rgb(229, 235, 231)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "320-zh",
+      "label": "library-summary",
+      "text": "本文从架构、路由与容错、缓存、预算治理、安全、可观测性六个维度，对比 LiteLLM、Kong、Apache APISIX、Cloudflare AI Gateway 与 Portkey，厘清开源版、托管版和企业版的能力边界，并给出适合创业团队、平台团队与强合规场景的选择方法、上线前验证清单及可迁移的落地建议。",
+      "font": "18px / 30.6px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "18px",
+      "projectedFontCSSpx": 14.76016565579087,
+      "scale": 0.8200092030994928,
+      "box": {
+        "x": 50.11875915527344,
+        "y": 361.3193054199219,
+        "width": 219.76246643066406,
+        "height": 75.261474609375,
+        "top": 361.3193054199219,
+        "right": 269.8812255859375,
+        "bottom": 436.5807800292969,
+        "left": 50.11875915527344
+      },
+      "color": "rgb(178, 189, 183)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "320-zh",
+      "label": "library-meta",
+      "text": "2025.04.16",
+      "font": "16px / 24px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "16px",
+      "projectedFontCSSpx": 13.120147249591884,
+      "scale": 0.8200092030994928,
+      "box": {
+        "x": 50.11875915527344,
+        "y": 259.6381530761719,
+        "width": 219.76246643066406,
+        "height": 19.68023681640625,
+        "top": 259.6381530761719,
+        "right": 269.8812255859375,
+        "bottom": 279.3183898925781,
+        "left": 50.11875915527344
+      },
+      "color": "rgb(178, 189, 183)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "1440-zh",
+      "label": "welcome-intro",
+      "text": "我是熊鑫伟，写代码，做产品，也去路上走走。我的作品、思考和旅途，都放在这里。",
+      "font": "20px / 36px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "20px",
+      "projectedFontCSSpx": 16.400014478106833,
+      "scale": 0.8200007239053416,
+      "box": {
+        "x": 475.6398010253906,
+        "y": 422.4402770996094,
+        "width": 352.6003112792969,
+        "height": 59.040069580078125,
+        "top": 422.4402770996094,
+        "right": 828.2401123046875,
+        "bottom": 481.4803466796875,
+        "left": 475.6398010253906
+      },
+      "color": "rgb(178, 189, 183)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "1440-en",
+      "label": "library-title",
+      "text": "Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close",
+      "font": "550 20px / 30px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "20px",
+      "projectedFontCSSpx": 16.40001306581737,
+      "scale": 0.8200006532908684,
+      "box": {
+        "x": 454.3197937011719,
+        "y": 272.8798522949219,
+        "width": 326.3602600097656,
+        "height": 73.80007934570312,
+        "top": 272.8798522949219,
+        "right": 780.6800537109375,
+        "bottom": 346.679931640625,
+        "left": 454.3197937011719
+      },
+      "color": "rgb(39, 51, 49)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "1440-en",
+      "label": "library-summary",
+      "text": "Quality and time in companionship are not a choice between two things. They are two different systems doing two different jobs. Quality lights the fire. Time se",
+      "font": "18px / 30.6px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "18px",
+      "projectedFontCSSpx": 14.760011759235631,
+      "scale": 0.8200006532908684,
+      "box": {
+        "x": 454.3197937011719,
+        "y": 350.7799072265625,
+        "width": 326.3602600097656,
+        "height": 75.26071166992188,
+        "top": 350.7799072265625,
+        "right": 780.6800537109375,
+        "bottom": 426.0406188964844,
+        "left": 454.3197937011719
+      },
+      "color": "rgb(97, 109, 106)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    },
+    {
+      "view": "1440-en",
+      "label": "library-meta",
+      "text": "2026.06.28",
+      "font": "16px / 24px -apple-system, \"system-ui\", \"segoe ui\", sans-serif",
+      "fontSize": "16px",
+      "projectedFontCSSpx": 13.120010452653894,
+      "scale": 0.8200006532908684,
+      "box": {
+        "x": 454.3197937011719,
+        "y": 249.09983825683594,
+        "width": 326.3602600097656,
+        "height": 19.680007934570312,
+        "top": 249.09983825683594,
+        "right": 780.6800537109375,
+        "bottom": 268.77984619140625,
+        "left": 454.3197937011719
+      },
+      "color": "rgb(97, 109, 106)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "overflowX": false,
+      "focus": false,
+      "pressed": null
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-identity.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-scrolled-library.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-saved-article.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-returned-library.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-reloaded-library.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-390-en-empty-bookmarks.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-320-zh-welcome.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-320-zh-identity.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-320-zh-complete-title.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-directory.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-844-en-short-choices.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-zh-welcome.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-zh-story.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-zh-keyboard-list.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-en-start-here.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-en-complete-title.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e15-1440-en-no-matches.png"
+  ],
+  "limits": "Five isolated Chromium emulated layouts, named real pointer/wheel/keyboard actions and original public favorite API; no native hardware, screen reader, OS picker presentation, all11apps, full theme/motion matrix, paid AI, real sharing/subscription/contact or overall96 certification. Projected type is planar bounding-box scale, not raster glyph measurement. No external links actually followed."
+}
