@@ -141,9 +141,35 @@
     stop.type = 'button'; stop.setAttribute('aria-label', T.stop); stop.hidden = true; inputArea.appendChild(stop);
     var following = true, readingAnchor = null, moving = false, layoutSerial = 0, readingIntent = 0, anchorIntent = 0, ownedScrollTop = null;
     var focusOwned = false, lastOwnedControl = null, lastFocused = document.activeElement, focusIntent = 0;
+    var shortReading = matchMedia('(min-width: 520px) and (max-height: 420px)');
     function nearBottom() { return messages.scrollHeight - messages.scrollTop - messages.clientHeight < 90; }
     function scrollMessages(top) { messages.scrollTop = top; ownedScrollTop = messages.scrollTop; }
-    function bottom() { following = true; readingAnchor = null; scrollMessages(messages.scrollHeight); }
+    function shortReplyBody() {
+      if (!compact() || !shortReading.matches || !messages.querySelector('.article-chat-followups')) return null;
+      var replies = messages.querySelectorAll('.rc-ai-answer-body');
+      return replies.length ? replies[replies.length - 1] : null;
+    }
+    function bottom() {
+      following = true; readingAnchor = null;
+      var reply = shortReplyBody();
+      if (reply) {
+        var view = messages.getBoundingClientRect();
+        if (!view.height) return;
+        var style = getComputedStyle(messages), top = view.top + (parseFloat(style.paddingTop) || 0), end = view.bottom - (parseFloat(style.paddingBottom) || 0);
+        var active = document.activeElement;
+        if (messages.contains(active) && active.closest('.article-chat-followups, .ai-sources')) {
+          // An explicitly focused suggestion/reference owns its place in the list.
+          var control = active.getBoundingClientRect();
+          if (control.top < top) scrollMessages(messages.scrollTop + control.top - top);
+          else if (control.bottom > end) scrollMessages(messages.scrollTop + control.bottom - end);
+          return;
+        }
+        var contentEnd = reply.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(reply).paddingBottom) || 0);
+        scrollMessages(messages.scrollTop + contentEnd - end);
+        return;
+      }
+      scrollMessages(messages.scrollHeight);
+    }
     function captureReadingAnchor() {
       var view = messages.getBoundingClientRect();
       if (!view.height) return null;
@@ -287,10 +313,15 @@
     });
     function activeKey() { return context ? context.blockId + '\u0000' + context.selectedText : ''; }
     function updateBusy(on) {
+      var wasBusy = busy;
       beforeUnavailable(on ? sendButton : stop);
       busy = on; panel.setAttribute('aria-busy', String(on)); sendButton.disabled = on; stop.hidden = !on;
       sendButton.classList.toggle(prefix + '-ai-send--empty', on || !textarea.value.trim());
-      if (!on) loading.hidden = true;
+      if (!on) {
+        loading.hidden = true;
+        // Removing loading changes the short viewport; retain the same reply end.
+        if (wasBusy && following && shortReplyBody()) bottom();
+      }
     }
     function cancel() {
       serial++;
@@ -338,7 +369,7 @@
       var wrap = element('div', 'article-chat-followups');
       wrap.appendChild(element('span', 'article-chat-followups-label', T.followup));
       var list = isZh ? ['能举一个具体例子吗？','有没有相反的观点？','在现实里怎么应用？'] : ['Can you give an example?','What is the counter-argument?','How does this apply in practice?'];
-      list.forEach(function (question) { var btn = element('button', 'article-chat-followup', question); btn.type = 'button'; btn.addEventListener('click', function () { send(question); }); wrap.appendChild(btn); });
+      list.forEach(function (question) { var btn = element('button', 'article-chat-followup', question); btn.type = 'button'; btn.addEventListener('click', function () { send(question, true); }); wrap.appendChild(btn); });
       messages.appendChild(wrap); if (following) bottom();
     }
     function addSources(candidates) {
@@ -361,7 +392,7 @@
       q = q.slice(0, parseInt(textarea.getAttribute('maxlength'), 10) || 500);
       lastQuestion = q;
       if (recentError) { recentError.remove(); recentError = null; }
-      var followups = messages.querySelector('.article-chat-followups'); if (followups) followups.remove();
+      var followups = messages.querySelector('.article-chat-followups'); if (followups) { beforeUnavailable(followups); followups.remove(); }
       var greeting = select('greeting'); if (greeting) greeting.remove();
       var intro = select('intro'), quick = select('quick'); if (intro) intro.hidden = !!context; if (quick) quick.hidden = !!context;
       panel.classList.add(prefix + '-ai-panel--engaged');

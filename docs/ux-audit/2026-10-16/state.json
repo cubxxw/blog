@@ -3,50 +3,49 @@
   "deadline": "2026-10-16T12:00:00+08:00",
   "automationId": "12-00",
   "branch": "codex/blog-experience-20261016",
-  "checkpoint": "08dca5f0c40285e32132ec4a68d4c489f94b7003",
-  "phase": "E16c1 followup draft+ownedfocus candidate19 contracts and actual pending",
-  "batch": "E16-article-AI-shortscreen-and-type",
+  "checkpoint": "4ace9c524d6e91c8a2d0e52e361f1c8698297970",
+  "phase": "C1 independently accepted, saving checkpoint; E17 media source WIP excluded",
+  "batch": "E17-space-media-recovery-type",
   "agents": {
     "inventory": "/root/blog_inventory",
     "executor": "/root/blog_executor",
     "score": "/root/space_review"
   },
   "pending": [
-    "UX051/P1 independentlyconfirmed25hash+2PNG: settled568x320 selectedAI input/Send belowviewport/nohit. E163CSS+new3contracts implementation; JS/templates/old13+4 exactbytes protected.",
-    "E15 shortcoarse directory two scrollsurfaces localD1=90.5/D4=94.5; readmap flattened sh-first localD1=94.5/D4=93. Needs separate scoped refinement, not all96.",
-    "E14 fullbundle8discovery/18PNG independently verified; ENposts optionalcoldfallbacktradeoff explicit; productioncandidate not yet implemented",
-    "E12c original actualBack10s timeout unexplained;final6trace bounded successes,wholeBack reliability unknown",
-    "UX052/P2 photoRetry hiddenowner+firsterror recoverybelowclip (1actual4PNG/38indep combinedhash), not keyboardtrap or timeoutproof; KnowledgeOpen2actual6PNG positivecurrentnode paths independentlyverified, mobileOSLab layout suggestion separate. QR grouping/AT/Safari/physical/fullmatrix/BFCache remain."
+    "E17 source WIP: UX052 photo Retry belowclip/hiddenowner; small photo navigation/type. No new image timeout; no appDark claim from globaltheme.",
+    "C1 focused-third external focus ring bottom mildly clipped; D2.4=90, small CSS refinement pending. Positive Enter not retested.",
+    "E15 shortdirectory D1=90.5/D4=94.5 and readmap94.5/93 remain.",
+    "E14 only named ENcoldfontdelivery closed; warm/CJKlate/physical/AT/Safari/fullmotion/fullmatrix unknown.",
+    "E12c originalBack10s timeout unexplained; no globalBFCache reliability certification."
   ],
-  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e15c-provenance.json",
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-provenance.json",
   "previewPort": 1317,
-  "updatedAt": "2026-10-16T00:38:56.215033+00:00",
-  "previewSource": "E16c1 AIJS +accepted E16b3CSS and E14 ENfonthead; sourceC1 notaccepted yet",
+  "updatedAt": "2026-10-16T02:09:11.747720+00:00",
+  "previewSource": "Accepted C1 AI JS +E16b CSS+E14 ENfonthead; E17 media WIP not built",
   "localOnly": true,
   "liveBackendTested": false,
   "physicalPhoneTested": false,
-  "review": "E15 ordinarynamedSpace type/title/profilelocalD1/D4=96/96;short/readmap lower scoped scores separate; fullnull309families/369selectorentries/359states/82partial/0full. No newE15 source P0/P1/P2; new preE16 shortscreen task gap remains open.",
-  "previewBatch": "E15c Hugo3512ms/10contracts14.5s/5actual17PNG; source independent clean and final cards synchronizing",
+  "review": "C1 named completed-reply local D1/D4=96/96; focused-third ring D2.4=90 retained. UX053 closed only clicked followup draft/ownedfocus. Positive Enter not retested. Fullscore null.",
+  "previewBatch": "C1 Hugo/19contracts36s/3actual17PNG independently reviewed",
   "executorOwnership": [
-    "assets/css/extended/editorial-tools.css",
-    "assets/css/extended/article-selection.css",
-    "assets/css/extended/article-bottom-sheet.css",
-    "tests/e2e/article-chat-legibility-contracts.spec.ts"
+    "assets/js/space/media.js",
+    "assets/css/space-media.css",
+    "tests/e2e/space-media-legibility-contracts.spec.ts"
   ],
-  "latestActualEvidence": "evidence/probe-e16-followup-focus.json",
+  "latestActualEvidence": "evidence/batch-e16c1-actual.json",
   "inventorySummary": {
     "families": 309,
     "selectorEntries": 369,
-    "cumulativeStateEvidenceRows": 373,
-    "partiallyCoveredFamilies": 85,
+    "cumulativeStateEvidenceRows": 382,
+    "partiallyCoveredFamilies": 86,
     "fullyCertifiedFamilies": 0,
     "independentSurfaceObservations": 4
   },
   "scoreSummary": {
-    "checks": 247,
-    "historicalExpertVisualFragments": 110,
-    "findings": 52,
+    "checks": 253,
+    "historicalExpertVisualFragments": 112,
+    "findings": 53,
     "fullScore": null
   },
-  "acceptedSinceCheckpoint": "E16b3CSS+legibility3, E14fonthead+4contract and independentcards ready for localcheckpoint; C1 JS/new3spec excluded from acceptedsource snapshot"
+  "acceptedSinceCheckpoint": "C1 article-chat.js +newreply3spec with independent final cards; E17 excluded"
 }

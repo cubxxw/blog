@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-16T02:01:48.268887+00:00",
+  "sourceGitObjects": {
+    "assets/js/space/media.js": {
+      "ref": "08dca5f0:assets/js/space/media.js",
+      "sha256": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996"
+    },
+    "assets/js/space/media-state.mjs": {
+      "ref": "08dca5f0:assets/js/space/media-state.mjs",
+      "sha256": "2154203c2999b5af5185ba31c5978ab8997dd4c3b774ffb3e28a47bb89c4bd6e"
+    },
+    "assets/css/space-media.css": {
+      "ref": "08dca5f0:assets/css/space-media.css",
+      "sha256": "787430661224c666ca8032d62e3ac8e589c2a0bb19e7265c168ca5a4bb922ffa"
+    },
+    "assets/js/space/apps.js": {
+      "ref": "08dca5f0:assets/js/space/apps.js",
+      "sha256": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b"
+    },
+    "assets/js/space/desktop.js": {
+      "ref": "08dca5f0:assets/js/space/desktop.js",
+      "sha256": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a"
+    },
+    "assets/css/space.css": {
+      "ref": "08dca5f0:assets/css/space.css",
+      "sha256": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a"
+    },
+    "assets/css/space-cafe.css": {
+      "ref": "08dca5f0:assets/css/space-cafe.css",
+      "sha256": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519"
+    },
+    "layouts/partials/space/desktop.html": {
+      "ref": "08dca5f0:layouts/partials/space/desktop.html",
+      "sha256": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21"
+    }
+  },
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-1440-zh-after-next.png": "376862fec96c98be650b139a56279c7f71d08c1ac921832e8cc10f7c6b12b342",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-1440-zh-after-arrow.png": "e31fe89a1cd219f577fba72eda48682ebdf1f9815bf6e97269177841b750518b",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-gallery.png": "a6b5da4b4297902cbbdf243b8e425e3ff686e798745bd10bff887889e1808252",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-after-next.png": "0cd9ec513b75e49f4a61dc804c3974e310f1d018b3a366da87fe338864503d36",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-after-arrow.png": "4c33595219d97611e0491f393bab8038845af920188fe605d4ce7774b239b14d",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation.json": "360424c30597420b7e5d028f1d81d2db9b6e62b92a54100319380285ba4f452b",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation.log": "77936100401b6ec6cee2e463f5228224c8ac491e9df2f6c81329dd234599041b",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-a.json": "634517d73bbb6a611c2efa2a298d2b0ed0cd8f1581f834508a04b1ff9be3feb1",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-a.log": "8b0a8d28b3a5c1f35e309f965319e8536b0c1ea5ba98fb618b31902be06431c1",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b.json": "33fb236760ba095b7a4685cec338e0cf4a73579767d44a640d1bf9d8ec5083da",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b.log": "7001d061c7b0213e6af99bfb08eb7c8643355eca3647092b833699cc036829f9",
+    "docs/ux-audit/2026-10-16/probe-space-photo-navigation.browser.mjs": "98ebeab633c875d73dc62aedb2d8f90f705e1f33b9d3202d226baae095b6d884",
+    "docs/ux-audit/2026-10-16/probe-space-photo-navigation-a.browser.mjs": "2fa66e9ac2684e7b7e0d66105ac9394ef0bf69ac67ad94da9e0eb60b965549e0",
+    "docs/ux-audit/2026-10-16/probe-space-photo-navigation-b.browser.mjs": "ce3e7949d0acc5a931478eab4c04a1ebb6790e7fb3b37d72a957b048859046ce"
+  },
+  "parentImagesRead": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-1440-zh-after-next.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-1440-zh-after-arrow.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-gallery.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-after-next.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-after-arrow.png"
+  ],
+  "actualCompletedContexts": 2,
+  "navigationFinding": "Positive: desktop+phone localNextbutton actualEnter changes first→second; focusedSpacewindowSECTION retainsowner; actualArrowRight changes second→third. No keyboardfailure/BODY claim.",
+  "measuredGap": {
+    "desktopNext": "26.24x23.78 viewportCSSpx",
+    "phoneNext": "26.24x44.28 viewportCSSpx",
+    "computedFont": "11px before0.82 worldprojection, approximate9.02 projectedCSSpx; not exactrasterglyphfloor"
+  },
+  "harnessFailures": "Initialphone used intentionallyhiddenDockPhotos(no mobile-destination)30s; A incorrectlyguessed non-existentmenubar selector30s. Bothraw preserved, no productdefect claims. B uses sourceconfirmedactualMeta+k/Photos/ArrowDownnativeEnter; onlyaffectedphone rerun, desktoppositive reused. Initialwait expectedrelativeoriginalsrc was immediatelytrue but rawafter states directlyshowdistinctactualselected src/title; B normalizescomparetoactualentrysrc.",
+  "themeClarification": "view.dark seeds globalpref-theme only; rawphotos renderedworkspace light(default), no workspace-dark proof. Do not call phoneDarkspace validated. Actualdarkworkspace must be explicitlyset/readback in E17.",
+  "loadingImageLimit": "Screens after navigation intentionally capture eventstate; blackplaceholder doesnotproveimageerror. HiddenRetry is still in textContent, not errorproof. No loading-ready claim from screenshotalone.",
+  "limits": "Two emulatedChromium keynavigation tasks, desktoppartial+phonecorrectpath. No wholeTab, ownbuttonrestoration, allphoto failures, AT/physical/fullmatrix certification."
+}

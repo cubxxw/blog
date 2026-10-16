@@ -2,7 +2,7 @@
   "schema_version": 1,
   "rubric_version": "1.0",
   "created_at": "2026-10-16T00:41:05+08:00",
-  "updated_at": "2026-10-16T09:38:11+08:00",
+  "updated_at": "2026-10-16T09:58:53+08:00",
   "deadline": "2026-10-16T12:00:00+08:00",
   "role": "independent-score-and-recommendation",
   "source_root": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
@@ -353,7 +353,7 @@
   "coverage": {
     "inventory_path": "docs/ux-audit/2026-10-16/inventory.json",
     "inventory_imported": true,
-    "inventory_version": "1.27",
+    "inventory_version": "1.28",
     "inventory_families": 309,
     "scopes": {
       "control-family": 265,
@@ -366,13 +366,13 @@
     "site_verified_score": null,
     "status": "unverified",
     "runtime_instance_count": null,
-    "reason": "309families/369selector entries;373 itemstates/85localfamilies(84partial+1measured) plus4 independent E14 surface records.0whole/fullnull. UX046 ENcold namedscopeclosed;photoUX052open. E16c WIP unverified.",
-    "families_with_recorded_contract_fragments": 89,
-    "scoped_check_assessments": 247,
-    "expert_visual_assessments": 110,
-    "inventory_families_with_partial_state_evidence": 85,
+    "reason": "309families/369selectors;382itemrows/86localfamilies(85partial+1measured)+4independentfontsurfaces.0whole/fullnull. C1UX053namedclosed;photoUX052open. No featurecount from19tests/17PNG.",
+    "families_with_recorded_contract_fragments": 90,
+    "scoped_check_assessments": 253,
+    "expert_visual_assessments": 112,
+    "inventory_families_with_partial_state_evidence": 86,
     "inventory_accepted_whole_families": 0,
-    "inventory_state_evidence_records": 373,
+    "inventory_state_evidence_records": 382,
     "inventory_surface_state_evidence_records": 4
   },
   "evidence": [
@@ -3071,6 +3071,30 @@
       "test_composition": "4 distinct contracts: initial3 behavior pass plus1 minified-handler string fixture failure4.4s; semantic detached-handler scope1pass1.0s. Original3body/helper byte-identical, not redundantly rerun. Hugo4153ms. No actual skips. Initial parent extra pre-code photo failure preserved; final B uses real tagged inlinecode only; production head unchanged.",
       "actual_fonts": "FinalB fast before+terminal: heading Georgia; prose Noto Serif; code JetBrains Mono. Other4 late/font404/CSS404 rows Georgia/Courier. Original provenance all5 fallback claim is incorrect; raw/explicit erratum control. Earlier experiment/initialproduction fast fallback are independent observations.",
       "limits": "Named phase visibility, not continuousFOIT/fullCLS/FPS/beforefirstpaint or HTTPwarm. FontFace.loaded is not actualuse proof; use CDP role maps. ZH installed SourceHan glyphs not local-CJK-absence/late-CJK coverage. No complete D1/D4 dimension, wholepagecontrast, AT/Safari/physical/wholematrix certificate; discovery/humanChoice stays unreviewed/nonGold. E16c JS is separate WIP outside source8."
+    },
+    {
+      "id": "E-BATCH-E16C1",
+      "kind": "bounded_source_recorded_browser_independent_images",
+      "path": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-actual.json",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+      "source_manifest_sha256": "81b367d0c4db78f428be900937494892b01389ff34b9d2bd4e835c000d544636",
+      "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-provenance.json",
+      "provenance_sha256": "6ed65d3e2455eacdeb63f63d5169b6b2d26dc9f4411c6e8c8d9e3b5e1b8fb049",
+      "scope": "3 emulated Chromium contexts/17 final natural PNG all independently viewed:568zhdark/reduce andenlight/normal with320/256/224 heights; en dark/reduce genuine longSSE wheel-away. No newCSS/template/AIClient behavior.",
+      "proof": "57 path hashes+16source/QA/2runner match. C1 inverse two edits exactly archivedC Feb; old2spec exact479aff prefix. ServedJS a9d matches current source.19distinct36s=3newreply+3legibility+13continuity; initialC18 rerun not extra features.",
+      "result": "Short following reads actual final reply line, suggestions remain realwheel/localTab44 reachable; explicit suggestion/sourcefocus retains place. Clicked later suggestion preserves same draft/input/caret/height/scroll and one original-question/selectedcontext payload, ownedfocus input, Stopabort1. Awayanchor19.796875→20.171875=.375<=1 throughDONE/320256224 retains sameanswerbody/input/exactunique text.",
+      "history": "C/CA draft-clearing raw and nativeEnter focusBODY negative retained. Fixed Clear-before-third assumption was fixture error: reference-text scrollP is legitimate Tabstop. Oldparagraph node replacement is expected paintReply.innerHTML, not data loss; same answerBody/unique exacttext/<=1 checks retained. C/A opacity.873642 finitefade was not settled bleed/capturebug; C1 originalB fullsheet/root opacity/no finite animation gate, noCSSworkaround.",
+      "limits": "C1 positive followup action actualclick after trusted localTab; Enter only preC1 negative, no C1actualEnter certification. Initialquick alreadykeepDraft, only regression. Direct typedSend stillconsumesdraft. ControlledoriginalAIClient/publicparagraph selection, not liveAI/OSIME/physical/Safari/AT/wholepageTab/fullpaint/contrast or matrix."
+    },
+    {
+      "id": "E-E16-FOLLOWUP-NEGATIVE",
+      "kind": "recorded_browser_negative",
+      "path": "docs/ux-audit/2026-10-16/evidence/probe-e16-followup-focus.json",
+      "source_archive": "docs/ux-audit/2026-10-16/evidence/batch-e16c-before-draft-fix-article-chat.js",
+      "source_archive_sha256": "febedb352f60b801cc69124763306b40b09dae7c151875d4678cd02809d219b0",
+      "scope": "OriginalGo568en/dark/reduce; originalC servedJS exactFeb, realwheel/local thirdbuttonfocus/nativeEnter. Negative PNG independently viewed. CA bilingual actualclick raw independently read, not all14oldPNG re-certified.",
+      "result": "Unsubmittedtwo-line draft becomes empty; focused thirdbutton removed→BODY/outsideAI. Request question/context correct and Stop usable; not note/persistentdata loss.",
+      "limits": "OriginalIdentity false fields are unseeded baseline bookkeeping, not originalDOM-loss evidence. Not a trap/OSIME/fullkeyboard claim."
     }
   ],
   "historical_visual_assessments": [
@@ -6832,6 +6856,68 @@
       ],
       "scope": "Same shortnormal static scope;224notordinarymobileaestheticcertificate.",
       "reason": "Type/boundaries/consistency improved;followuppills receive dominantattention relative to response. Do not hide functionalitywithout accessibleentry."
+    },
+    {
+      "assessment_id": "VIS-E16C1-SHORT-REPLY-D1",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "dimension": "D1",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16c1-short-zh-reply-320-next-natural-frame.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16c1-short-en-reply-320.png"
+      ],
+      "scope": "Only320height completedreply resting/focusedtextarea staticstates;224/256 servepressuregeometry, not ordinarymobile/fullUI certificate. Focusedthird separateminorD2fragment.",
+      "reason": "Original reply isvisibleprimary destination; suggestioncontrols remainavailable below withoutnew decoration or lostcontent. Existing14reply/16compactinput, reference semantics andpurposefulfocus retained. B92/94.5 remainhistorical, not overwritten."
+    },
+    {
+      "assessment_id": "VIS-E16C1-SHORT-REPLY-D4",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "dimension": "D4",
+      "criteria_scores": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "scope_score": 96.0,
+      "complete_dimension_score": null,
+      "verified_score": null,
+      "kind": "independent_expert_static_image_fragment",
+      "confidence": "moderate_high",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence_paths": [
+        "docs/ux-audit/2026-10-16/evidence/batch-e16c1-short-zh-reply-320-next-natural-frame.png",
+        "docs/ux-audit/2026-10-16/evidence/batch-e16c1-short-en-reply-320.png"
+      ],
+      "scope": "Only320height completedreply resting/focusedtextarea staticstates;224/256 servepressuregeometry, not ordinarymobile/fullUI certificate. Focusedthird separateminorD2fragment.",
+      "reason": "Original reply isvisibleprimary destination; suggestioncontrols remainavailable below withoutnew decoration or lostcontent. Existing14reply/16compactinput, reference semantics andpurposefulfocus retained. B92/94.5 remainhistorical, not overwritten."
     }
   ],
   "findings": [
@@ -9718,6 +9804,69 @@
         "No trap/global Tab jump, real timeout or total album/source failure claim.",
         "No API/backend/AT/physical-device evidence."
       ]
+    },
+    {
+      "id": "UX-053",
+      "family_prefix": "A.AI",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.FOLLOWUP.control.fc51ca"
+      ],
+      "severity": "P2",
+      "title": "点击后续建议清空未提交草稿，并在移除聚焦建议组后丢失焦点",
+      "baseline_reason": "OriginalC CA bilingual actualclick clears existing two-line unsubmitted draft; independent568en nativeEnter probe changes BUTTON insideAI→BODY. Correct request/context/Stop do not preserve this unrelated user input.",
+      "recommendation": "CurrentC1 send(question,true) preserves draft; reuse beforeUnavailable(group) before focused group removal. Keep outside ownership guard and directtypedSend clearing; initialquick unchanged.",
+      "status": "closed_E16c1_named_followup_draft_selection_owned_focus_and_short_reply_scope",
+      "baseline_cap": null,
+      "active_cap": null,
+      "batch": "E16c1",
+      "dimensions": [
+        "D2",
+        "D3",
+        "D6"
+      ],
+      "browser_evidence": [
+        "E-E16-FOLLOWUP-NEGATIVE",
+        "E-BATCH-E16C1"
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "static/js/article-chat.js",
+          "line": 372
+        },
+        {
+          "kind": "source",
+          "path": "static/js/article-chat.js",
+          "line": 395
+        },
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-E16-FOLLOWUP-NEGATIVE"
+        },
+        {
+          "kind": "recorded_browser",
+          "evidence_id": "E-BATCH-E16C1"
+        }
+      ],
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "verified_score": null,
+      "confidence": "high_for_named_click_draft_focus_scope",
+      "resolution": "C1 clickedfollowup after localTab preserves exacteditor/value/caret/selectiondirection/height/scroll, originalselectedcontext andonePOST, focustextarea, Stopabort1. Newthirdcontract also checks backwardselection/partial/Stop/directSend and unchangedquick.",
+      "scope_limits": [
+        "Positive C1 action actualclick; oldnativeEnternegative preserved, C1Enter not independently exercised.",
+        "No savednotes/persistentdata loss, liveAI or wholekeyboard/AT/Safari/device certification.",
+        "Original C/CA main gates passing did not cover draft/focus; their raw/partial failures retained."
+      ]
     }
   ],
   "next_batches": [
@@ -9775,9 +9924,9 @@
   ],
   "rubric_sha256": "0dceae607e59f636f504be38043eb8c44278e99be177d40d9712a1007e74814f",
   "inventory_snapshot": {
-    "version": "1.27",
-    "sha256": "584969dcb9e715e35a3f9e6a7cca7e9d6a9fa40ed9b0b374b37b6ff58a00298d",
-    "markdown_sha256": "873a8787215b85ff5c89dae0cbaabe72c740f602343a219caebc29de9fc5c6d5",
+    "version": "1.28",
+    "sha256": "ddf5c5448bb0c6c40a0d4c7e40b0f8db56f62aaf4c59b5a3dffc296b942c289b",
+    "markdown_sha256": "5868a7a743443f84d0b579b6d39dabfd3e66b50486310b31e65dc91482fb20b6",
     "counts": {
       "control_and_object_families": 309,
       "source_candidate_expressions": 626,
@@ -9787,12 +9936,12 @@
       "control_families": 265,
       "stable_control_selectors": 369,
       "content_shortcode_source_instances": 34,
-      "partial_state_evidence_families": 84,
+      "partial_state_evidence_families": 85,
       "journey_batches": 57,
       "journey_queued_unique_families": 309,
       "evidence_current_classification": {
-        "source-only": 199,
-        "partial-state-evidence": 84,
+        "source-only": 198,
+        "partial-state-evidence": 85,
         "measured-observation-only": 1,
         "rendered-baseline": 25
       },
@@ -9800,13 +9949,13 @@
         "baseline_screenshot_families": 28,
         "source_only_families": 281
       },
-      "families_with_state_evidence": 85,
+      "families_with_state_evidence": 86,
       "accepted_whole_families": 0,
-      "state_evidence_records": 373,
+      "state_evidence_records": 382,
       "surface_state_evidence_records": 4
     },
-    "imported_at": "2026-10-16T09:38:11+08:00",
-    "import_scope": "No new item/control/family:373 itemstates/85localfamilies unchanged;4 independent surface observations in e14b-production-font-import.surface_state_evidence, not included in373. UX046 named ENcold scopeclosed;ZH compatibility unscored.Wholecontrols/familiesnull."
+    "imported_at": "2026-10-16T09:58:53+08:00",
+    "import_scope": "9 E16C1 lean itembindings, no newcontrol/family.382itemrows/86localfamilies(85partial+1measured)+4separatefontsurfaces,0whole/fullnull. Currentfollowupfc51ca sourcecalibrated; historicalabs controls no inheritance."
   },
   "groups": [
     {
@@ -18012,7 +18161,11 @@
           "EIMPORT.E16B.old-selected-outside.A.AI.INPUT.normal",
           "EIMPORT.E16B.A-held-line-negative.A.AI.INPUT.loading",
           "EIMPORT.E16B.reading-type-support.A.AI.INPUT.normal",
-          "EIMPORT.E16B.canonical-visible-draft.A.AI.INPUT.focus"
+          "EIMPORT.E16B.canonical-visible-draft.A.AI.INPUT.focus",
+          "EIMPORT.E16C1.old-followup-clears-draft.A.AI.INPUT.normal",
+          "EIMPORT.E16C1.completed-final-real-line.A.AI.INPUT.normal",
+          "EIMPORT.E16C1.followup-editor-exact.A.AI.INPUT.loading",
+          "EIMPORT.E16C1.away-same-body-text-anchor.A.AI.INPUT.normal"
         ],
         "legacy_record_count_without_binding_id": 0
       },
@@ -18109,7 +18262,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E13E.actual-entry.A.AI.SEND.active",
-          "EIMPORT.E16B.selected-held-submit.A.AI.SEND.active"
+          "EIMPORT.E16B.selected-held-submit.A.AI.SEND.active",
+          "EIMPORT.E16C1.typed-send-consumes-only.A.AI.SEND.active"
         ],
         "legacy_record_count_without_binding_id": 0
       },
@@ -18204,7 +18358,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E13E.owned-stop.A.AI.STOP.active",
-          "EIMPORT.E16B.short-once-abort.A.AI.STOP.active"
+          "EIMPORT.E16B.short-once-abort.A.AI.STOP.active",
+          "EIMPORT.E16C1.followup-abort-once.A.AI.STOP.active"
         ],
         "legacy_record_count_without_binding_id": 0
       },
@@ -18409,9 +18564,10 @@
       "task": "沿回答继续探索",
       "source": {
         "file": "static/js/article-chat.js",
-        "line": 192,
-        "symbol_or_needle": "article-chat-followup",
-        "sha256": "51f062ad0330c7cc786d71036c5aad770cededa65481d653e8aac1e775790029"
+        "line": 372,
+        "symbol_or_needle": "suggestions: send(question,true); send removes group with beforeUnavailable at395",
+        "sha256": "a9d1fef2f50eb0740be0ebd61caa3f70f91561932a5a0ea96da816e1a8335b2a",
+        "source_context_ref": "batch-e16c1-source.json"
       },
       "state_profile": "async",
       "inventory_evidence": "source-only",
@@ -18473,7 +18629,11 @@
       "expert_visual_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": [],
+        "binding_ids": [
+          "EIMPORT.E16C1.old-native-enter-owner-lost.A.AI.FOLLOWUP.active",
+          "EIMPORT.E16C1.suggestion-local-keyboard.A.AI.FOLLOWUP.focus",
+          "EIMPORT.E16C1.one-owned-payload.A.AI.FOLLOWUP.active"
+        ],
         "legacy_record_count_without_binding_id": 0
       }
     },
@@ -58638,7 +58798,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -58713,7 +58874,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -58788,7 +58950,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -58863,7 +59026,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -58938,7 +59102,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -59013,7 +59178,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59093,7 +59259,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59174,7 +59341,8 @@
         "binding_ids": [
           "EIMPORT.ANCHOR.meta.G.NAV.ANCHOR.active",
           "EIMPORT.ANCHOR.plain-back.G.NAV.ANCHOR.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59249,7 +59417,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59324,7 +59493,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59403,7 +59573,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E11B.pending-index-close.G.SEARCH.CLOSE.loading"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -59502,7 +59673,8 @@
           "EIMPORT.S39.index-pending.G.SEARCH.QUERY.loading",
           "EIMPORT.E11B.index-lifetime.G.SEARCH.QUERY.loading",
           "EIMPORT.E11B.index-error-recovery.G.SEARCH.QUERY.error"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59595,7 +59767,8 @@
           "EIMPORT.E11B.real-results.G.SEARCH.RESULT.normal",
           "EIMPORT.E11B.stale-owner-isolation.G.SEARCH.RESULT.error",
           "EIMPORT.E11B.current-enter.G.SEARCH.RESULT.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59673,7 +59846,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -59748,7 +59922,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59823,7 +59998,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59904,7 +60080,8 @@
         "binding_ids": [
           "EIMPORT.E11B.current-query-url.G.SEARCH.FULL.normal",
           "EIMPORT.E11B.focus-intent.G.SEARCH.FULL.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -59979,7 +60156,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60248,7 +60426,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60328,7 +60507,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60403,7 +60583,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60478,7 +60659,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60553,7 +60735,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60630,7 +60813,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60705,7 +60889,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60895,7 +61080,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E61.posts-focus.H.HERO.READ.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -60973,7 +61159,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61048,7 +61235,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61126,7 +61314,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61212,7 +61401,8 @@
           "EIMPORT.E61.actual-short-return.H.CHAT.OPEN.focus",
           "EIMPORT.E61.normal-continuity.H.CHAT.OPEN.active",
           "EIMPORT.E7.actual-stop.H.CHAT.OPEN.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61289,7 +61479,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61369,7 +61560,8 @@
         "binding_ids": [
           "EIMPORT.E61.short-scroll.H.CHAT.QUICK.normal",
           "EIMPORT.E61.short-scroll.H.CHAT.QUICK.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61478,7 +61670,8 @@
           "EIMPORT.E71.done-no-eof.H.CHAT.INPUT.active",
           "EIMPORT.E7.actual-wheel.H.CHAT.INPUT.focus",
           "EIMPORT.E71.wheel-contract.H.CHAT.INPUT.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61584,7 +61777,8 @@
           "EIMPORT.E71.done-no-eof.H.CHAT.SEND.loading",
           "EIMPORT.E7.about-revalidation.H.CHAT.SEND.loading",
           "EIMPORT.E7.actual-wheel.H.CHAT.SEND.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61665,7 +61859,8 @@
         "binding_ids": [
           "EIMPORT.E61.continuity.H.CHAT.CLEAR.loading",
           "EIMPORT.E71.clear-draft.H.CHAT.CLEAR.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61763,7 +61958,8 @@
           "EIMPORT.E61.continuity.H.CHAT.CLOSE.loading",
           "EIMPORT.E7.actual-stop.H.CHAT.CLOSE.active",
           "EIMPORT.E71.draft-continuity.H.CHAT.CLOSE.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61845,7 +62041,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E71.retry-context.H.CHAT.RETRY.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61920,7 +62117,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -61995,7 +62193,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62070,7 +62269,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62145,7 +62345,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62220,7 +62421,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62295,7 +62497,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62370,7 +62573,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62448,7 +62652,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62523,7 +62728,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62598,7 +62804,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62673,7 +62880,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62748,7 +62956,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62823,7 +63032,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62898,7 +63108,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -62973,7 +63184,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63048,7 +63260,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63123,7 +63336,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63198,7 +63412,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63273,7 +63488,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63348,7 +63564,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63423,7 +63640,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63498,7 +63716,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63573,7 +63792,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63648,7 +63868,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63723,7 +63944,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63798,7 +64020,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63873,7 +64096,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -63948,7 +64172,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64023,7 +64248,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64105,7 +64331,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E13E.non-ai-equivalent.A.TOC.TABS.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64190,7 +64417,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.ANCHOR.runtime-reduce.A.TOC.LINK.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64276,7 +64504,8 @@
         "binding_ids": [
           "EIMPORT.AR0.open-return-observation.A.TOC.FAB.active",
           "EIMPORT.E13E.open-close-return.A.TOC.FAB.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64368,7 +64597,8 @@
           "EIMPORT.AR0.selected-ai-observation.A.TOC.MOBILETABS.active",
           "EIMPORT.E13E.compact-ai-entry.A.TOC.MOBILETABS.active",
           "EIMPORT.E16B.short-lens-tabs-contract.A.TOC.MOBILETABS.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64443,7 +64673,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64518,7 +64749,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64593,7 +64825,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64668,7 +64901,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64749,7 +64983,8 @@
         "binding_ids": [
           "EIMPORT.E13E.actual-entry.A.AI.CHIP.active",
           "EIMPORT.E16B.short-lens-geometry-only.A.AI.CHIP.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64824,7 +65059,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -64922,8 +65158,11 @@
           "EIMPORT.E13E.owned-draft.A.AI.INPUT.focus",
           "EIMPORT.E13E.owned-history-reading.A.AI.INPUT.normal",
           "EIMPORT.E16B.old-selected-outside.A.AI.INPUT.normal",
-          "EIMPORT.E16B.canonical-visible-draft.A.AI.INPUT.focus"
-        ]
+          "EIMPORT.E16B.canonical-visible-draft.A.AI.INPUT.focus",
+          "EIMPORT.E16C1.old-followup-clears-draft.A.AI.INPUT.normal",
+          "EIMPORT.E16C1.followup-editor-exact.A.AI.INPUT.loading"
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65006,7 +65245,8 @@
         "binding_ids": [
           "EIMPORT.AR0.draft-pair-observation.A.AI.INPUT.normal",
           "EIMPORT.AR0.breakpoint-focus-failure.A.AI.INPUT.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65088,8 +65328,10 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E13E.actual-entry.A.AI.SEND.active",
-          "EIMPORT.E16B.selected-held-submit.A.AI.SEND.active"
-        ]
+          "EIMPORT.E16B.selected-held-submit.A.AI.SEND.active",
+          "EIMPORT.E16C1.typed-send-consumes-only.A.AI.SEND.active"
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65164,7 +65406,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65246,8 +65489,10 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E13E.owned-stop.A.AI.STOP.active",
-          "EIMPORT.E16B.short-once-abort.A.AI.STOP.active"
-        ]
+          "EIMPORT.E16B.short-once-abort.A.AI.STOP.active",
+          "EIMPORT.E16C1.followup-abort-once.A.AI.STOP.active"
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65330,7 +65575,8 @@
         "binding_ids": [
           "EIMPORT.E13E.clear-general.A.AI.CONTEXTCLEAR.active",
           "EIMPORT.E16B.clear-draft.A.AI.CONTEXTCLEAR.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65410,7 +65656,8 @@
         "binding_ids": [
           "EIMPORT.E13E.existing-retry-regression.A.AI.RETRY.error",
           "EIMPORT.E16B.short-503-contract.A.AI.RETRY.error"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65485,7 +65732,12 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [
+          "EIMPORT.E16C1.old-native-enter-owner-lost.A.AI.FOLLOWUP.active",
+          "EIMPORT.E16C1.suggestion-local-keyboard.A.AI.FOLLOWUP.focus",
+          "EIMPORT.E16C1.one-owned-payload.A.AI.FOLLOWUP.active"
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65564,7 +65816,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E16B.label-hover-only.A.AI.SHARE.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65639,7 +65892,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65714,7 +65968,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65794,7 +66049,8 @@
         "binding_ids": [
           "EIMPORT.E13E.explicit-analyze.A.SELECTION.AI.active",
           "EIMPORT.E16B.published-range-analyze.A.SELECTION.AI.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65869,7 +66125,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -65944,7 +66201,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66019,7 +66277,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66094,7 +66353,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66169,7 +66429,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66244,7 +66505,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66319,7 +66581,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66394,7 +66657,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66469,7 +66733,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66544,7 +66809,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -66619,7 +66885,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67004,7 +67271,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -67092,7 +67360,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -67180,7 +67449,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67268,7 +67538,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67356,7 +67627,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67441,7 +67713,8 @@
         "binding_ids": [
           "EIMPORT.E52.faq-motion.A.BODY.FAQ.active",
           "EIMPORT.E52.faq-focus-hidden-cancel.A.BODY.FAQ.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -67516,7 +67789,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67591,7 +67865,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67704,7 +67979,8 @@
       },
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67779,7 +68055,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67854,7 +68131,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -67929,7 +68207,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68004,7 +68283,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68079,7 +68359,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68160,7 +68441,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68241,7 +68523,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68316,7 +68599,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -68391,7 +68675,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68466,7 +68751,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68541,7 +68827,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68616,7 +68903,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68691,7 +68979,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68766,7 +69055,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -68841,7 +69131,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -68916,7 +69207,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -68991,7 +69283,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69066,7 +69359,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69141,7 +69435,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69216,7 +69511,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69291,7 +69587,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69366,7 +69663,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69544,7 +69842,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69691,7 +69990,8 @@
           "EIMPORT.E52.actual-hud.S.CAFE.PICKER.active",
           "EIMPORT.E52.actual-hud.S.CAFE.PICKER.focus",
           "EIMPORT.E9B.settings-target.S.CAFE.PICKER.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69766,7 +70066,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69843,7 +70144,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69918,7 +70220,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -69993,7 +70296,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70068,7 +70372,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70145,7 +70450,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70222,7 +70528,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70310,7 +70617,8 @@
           "EIMPORT.E52.actual-hud.S.CAFE.RETURN.normal",
           "EIMPORT.E52.actual-hud.S.CAFE.RETURN.active",
           "EIMPORT.E9B.settings-target.S.CAFE.RETURN.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70385,7 +70693,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70460,7 +70769,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70539,7 +70849,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E13E.computer-chain.S.WORLD.COMPUTER.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70614,7 +70925,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70689,7 +71001,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70764,7 +71077,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70839,7 +71153,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70916,7 +71231,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E81.menu-focus-contract.S.MENU.OVERVIEW.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -70997,7 +71313,8 @@
         "binding_ids": [
           "EIMPORT.E81.menu-intent-contract.S.MENU.ARRANGE.normal",
           "EIMPORT.E9B.settings-target.S.MENU.ARRANGE.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -71072,7 +71389,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -71147,7 +71465,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -71222,7 +71541,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -71297,7 +71617,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -71391,7 +71712,8 @@
           "EIMPORT.E52.actual-boundary.S.WINDOW.CLOSE.normal",
           "EIMPORT.E52.actual-close.S.WINDOW.CLOSE.active",
           "EIMPORT.E9B.settings-pending-close.S.WINDOW.CLOSE.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 3
       }
     },
     {
@@ -71513,7 +71835,8 @@
           "EIMPORT.E51.coarse-failure.S.WINDOW.MINIMIZE.normal",
           "EIMPORT.E52.actual-boundary.S.WINDOW.MINIMIZE.normal",
           "EIMPORT.E9B.contact-reopen.S.WINDOW.MINIMIZE.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 3
       }
     },
     {
@@ -71599,7 +71922,8 @@
           "EIMPORT.E52.reading.S.WINDOW.MAXIMIZE.normal",
           "EIMPORT.E51.coarse-failure.S.WINDOW.MAXIMIZE.normal",
           "EIMPORT.E52.actual-boundary.S.WINDOW.MAXIMIZE.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 3
       }
     },
     {
@@ -71705,7 +72029,8 @@
           "EIMPORT.E81.stable-repeat.S.WINDOW.ARRANGE.active",
           "EIMPORT.E8.repeat-failure.S.WINDOW.ARRANGE.active",
           "EIMPORT.E81.six-contracts.S.WINDOW.ARRANGE.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -71784,7 +72109,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -71859,7 +72185,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -71941,7 +72268,8 @@
         "binding_ids": [
           "EIMPORT.E8.actual-items.S.WINDOW.OVERVIEWITEM.active",
           "EIMPORT.E81.actual-items.S.WINDOW.OVERVIEWITEM.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72016,7 +72344,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72091,7 +72420,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72166,7 +72496,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72241,7 +72572,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72316,7 +72648,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72391,7 +72724,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72466,7 +72800,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72541,7 +72876,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72616,7 +72952,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72693,7 +73030,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E15C.about-profile-entry.S.APP.welcome.ROUTES.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72772,7 +73110,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E15C.sections-and-summary.S.APP.welcome.PROFILE.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72849,7 +73188,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E15C.sections-and-summary.S.APP.welcome.PROFILE.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -72929,7 +73269,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E15C.named-link-target-type.S.APP.welcome.LINKS.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73011,7 +73352,8 @@
         "binding_ids": [
           "EIMPORT.E13E.small-type-baseline.S.APP.welcome.LINKS.normal",
           "EIMPORT.E15C.named-link-target-type.S.APP.welcome.LINKS.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73095,7 +73437,8 @@
           "EIMPORT.E9A1.actual-directory.S.APP.products.SELECT.active",
           "EIMPORT.E9A1.actual-directory.S.APP.products.SELECT.focus",
           "EIMPORT.E9A1.directory-keyboard-contract.S.APP.products.SELECT.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73181,7 +73524,8 @@
           "EIMPORT.E9A1.links-contract.S.APP.products.OPEN.active",
           "EIMPORT.E9A.initial-empty-demo.S.APP.products.OPEN.empty",
           "EIMPORT.E9A1.real-url-only.S.APP.products.OPEN.empty"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73264,7 +73608,8 @@
           "EIMPORT.SPACE4APP.appearance.S.APP.products.OPEN.normal",
           "EIMPORT.E9A1.actual-explore.S.APP.products.OPEN.active",
           "EIMPORT.E9A1.explore-contract.S.APP.products.OPEN.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73349,7 +73694,8 @@
           "EIMPORT.E5.reading.S.APP.reader.QUERY.active",
           "EIMPORT.E52.reading.S.APP.reader.QUERY.active",
           "EIMPORT.E15C.truthful-empty-recovery.S.APP.reader.QUERY.empty"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73435,7 +73781,8 @@
         "binding_ids": [
           "EIMPORT.E13E.small-type-baseline.S.APP.reader.FILTER.normal",
           "EIMPORT.E15C.category-choice.S.APP.reader.FILTER.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73521,7 +73868,8 @@
           "EIMPORT.E52.reading.S.APP.reader.ITEM.active",
           "EIMPORT.E13E.small-type-baseline.S.APP.reader.ITEM.normal",
           "EIMPORT.E15C.readable-title-type.S.APP.reader.ITEM.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73604,7 +73952,8 @@
           "EIMPORT.E9A1.books-to-reader.S.APP.reader.NAV.active",
           "EIMPORT.E15C.old-owner-negative.S.APP.reader.NAV.active",
           "EIMPORT.E15C.real-return-reload.S.APP.reader.NAV.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73679,7 +74028,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73762,7 +74112,8 @@
           "EIMPORT.E13E.bookmark-chain.S.APP.reader.FAVORITE.active",
           "EIMPORT.E15C.A-public-negative.S.APP.reader.FAVORITE.active",
           "EIMPORT.E15C.shared-state-and-own-click.S.APP.reader.FAVORITE.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73837,7 +74188,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73912,7 +74264,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -73987,7 +74340,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74062,7 +74416,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74137,7 +74492,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74212,7 +74568,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74291,7 +74648,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E16B.photo-retry-focus-negative.S.APP.photos.RETRY.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74366,7 +74724,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74441,7 +74800,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74516,7 +74876,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74629,7 +74990,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -74706,7 +75068,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -74781,7 +75144,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -74875,7 +75239,8 @@
           "EIMPORT.E51.coarse-failure.S.APP.map.ZOOM.normal",
           "EIMPORT.E52.actual-map.S.APP.map.ZOOM.normal",
           "EIMPORT.E52.boundary-contract.S.APP.map.ZOOM.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -74969,7 +75334,8 @@
           "EIMPORT.E51.coarse-failure.S.APP.map.ZOOM.normal",
           "EIMPORT.E52.actual-map.S.APP.map.ZOOM.normal",
           "EIMPORT.E52.boundary-contract.S.APP.map.ZOOM.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -75063,7 +75429,8 @@
           "EIMPORT.E51.coarse-failure.S.APP.map.ZOOM.normal",
           "EIMPORT.E52.actual-map.S.APP.map.ZOOM.normal",
           "EIMPORT.E52.boundary-contract.S.APP.map.ZOOM.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -75138,7 +75505,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75213,7 +75581,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75288,7 +75657,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75370,7 +75740,8 @@
           "EIMPORT.SPACE4APP.appearance.S.APP.books.READ.normal",
           "EIMPORT.E9A1.actual-read-targets.S.APP.books.READ.normal",
           "EIMPORT.E9A1.named-read-contract.S.APP.books.READ.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75470,7 +75841,8 @@
           "EIMPORT.E9A1.notes-continuation-contract.S.APP.notes.EDITOR.active",
           "EIMPORT.E9B.continuation.S.APP.notes.EDITOR.active",
           "EIMPORT.E9C.document-continuity.S.APP.notes.EDITOR.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -75545,7 +75917,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75620,7 +75993,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75705,7 +76079,8 @@
           "EIMPORT.E9B.external-tool-focus.S.APP.contact.DRAFT.focus",
           "EIMPORT.E9B.continuation.S.APP.contact.DRAFT.active",
           "EIMPORT.E9C.document-continuity.S.APP.contact.DRAFT.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75788,7 +76163,8 @@
           "EIMPORT.SPACE4APP.appearance.S.APP.contact.CHANNEL.normal",
           "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
           "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75871,7 +76247,8 @@
           "EIMPORT.SPACE4APP.appearance.S.APP.contact.CHANNEL.normal",
           "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
           "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -75955,7 +76332,8 @@
           "EIMPORT.SPACE4APP.appearance.S.APP.contact.CHANNEL.normal",
           "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
           "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76038,7 +76416,8 @@
           "EIMPORT.E52.reading.S.APP.terminal.COMMAND.active",
           "EIMPORT.E52.fallback.S.APP.terminal.COMMAND.normal",
           "EIMPORT.E81.terminal-arrange-contract.S.APP.terminal.COMMAND.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76113,7 +76492,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76188,7 +76568,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76263,7 +76644,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76338,7 +76720,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76413,7 +76796,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76488,7 +76872,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76563,7 +76948,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76638,7 +77024,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76713,7 +77100,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76788,7 +77176,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76863,7 +77252,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -76938,7 +77328,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77013,7 +77404,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77093,7 +77485,8 @@
         "binding_ids": [
           "EIMPORT.SPACE4APP.appearance.S.APP.settings.LANG.normal",
           "EIMPORT.E9B.settings-target.S.APP.settings.LANG.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77185,7 +77578,8 @@
           "EIMPORT.E9B.target-type.S.APP.settings.THEME.normal",
           "EIMPORT.E9B.selected.S.APP.settings.THEME.active",
           "EIMPORT.E9B.choice-focus.S.APP.settings.THEME.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77284,7 +77678,8 @@
           "EIMPORT.WALLPAPER.visual-outcome.S.APP.settings.COLOR.normal",
           "EIMPORT.E9C.visible-palette.S.APP.settings.COLOR.normal",
           "EIMPORT.E9C.choice-focus.S.APP.settings.COLOR.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77364,7 +77759,8 @@
         "binding_ids": [
           "EIMPORT.SPACE4APP.appearance.S.APP.settings.EXPORT.normal",
           "EIMPORT.E9B.settings-target.S.APP.settings.EXPORT.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77439,7 +77835,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77514,7 +77911,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77589,7 +77987,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77664,7 +78063,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77739,7 +78139,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77814,7 +78215,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77889,7 +78291,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -77966,7 +78369,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78045,7 +78449,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E16B.current-node-native-intent.S.KNOWLEDGE.OPEN.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78120,7 +78525,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78195,7 +78601,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78270,7 +78677,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78345,7 +78753,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78420,7 +78829,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78495,7 +78905,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78570,7 +78981,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78652,7 +79064,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 2
       }
     },
     {
@@ -78735,7 +79148,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 3
       }
     },
     {
@@ -78818,7 +79232,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -78904,7 +79319,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -78991,7 +79407,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -79092,7 +79509,8 @@
           "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.loading",
           "EIMPORT.E10.image-feedback-baseline.T.SOCIAL.QR.error",
           "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79188,7 +79606,8 @@
           "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus",
           "EIMPORT.E10A.image-errors.T.SOCIAL.QR.error",
           "EIMPORT.E10A.retry-owned-attempt.T.SOCIAL.QR.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79263,7 +79682,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79338,7 +79758,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79413,7 +79834,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79488,7 +79910,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79563,7 +79986,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79638,7 +80062,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79713,7 +80138,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79788,7 +80214,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79863,7 +80290,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -79938,7 +80366,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80013,7 +80442,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80088,7 +80518,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80163,7 +80594,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80238,7 +80670,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80313,7 +80746,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80388,7 +80822,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80463,7 +80898,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80538,7 +80974,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80613,7 +81050,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80688,7 +81126,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80763,7 +81202,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80838,7 +81278,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80913,7 +81354,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -80988,7 +81430,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81063,7 +81506,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81138,7 +81582,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81213,7 +81658,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81288,7 +81734,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81363,7 +81810,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81438,7 +81886,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81513,7 +81962,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81588,7 +82038,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81663,7 +82114,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81738,7 +82190,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81813,7 +82266,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81888,7 +82342,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -81963,7 +82418,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82038,7 +82494,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82113,7 +82570,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82188,7 +82646,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82263,7 +82722,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82338,7 +82798,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82413,7 +82874,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82488,7 +82950,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82563,7 +83026,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82638,7 +83102,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82713,7 +83178,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82788,7 +83254,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82863,7 +83330,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -82938,7 +83406,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83013,7 +83482,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83088,7 +83558,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83163,7 +83634,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83238,7 +83710,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83313,7 +83786,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83388,7 +83862,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83463,7 +83938,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83538,7 +84014,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83613,7 +84090,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83688,7 +84166,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83763,7 +84242,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83838,7 +84318,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83913,7 +84394,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -83988,7 +84470,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84063,7 +84546,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84138,7 +84622,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84213,7 +84698,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84288,7 +84774,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84363,7 +84850,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84438,7 +84926,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84513,7 +85002,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84588,7 +85078,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84663,7 +85154,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84738,7 +85230,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84820,7 +85313,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E11B.synthetic-page-lifecycle.G.SEARCH.FOLLOWUP.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84899,7 +85393,8 @@
       ],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -84974,7 +85469,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85049,7 +85545,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85124,7 +85621,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85199,7 +85697,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85274,7 +85773,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85349,7 +85849,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85424,7 +85925,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85499,7 +86001,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85574,7 +86077,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85649,7 +86153,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85724,7 +86229,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85809,7 +86315,8 @@
           "EIMPORT.E52.faq-focus-hidden-cancel.A.FAQ.AI.OPEN.normal",
           "EIMPORT.E52.faq-focus-hidden-cancel.A.FAQ.AI.OPEN.active",
           "EIMPORT.E52.faq-focus-hidden-cancel.A.FAQ.AI.OPEN.focus"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -85886,7 +86393,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -85972,7 +86480,8 @@
         "binding_ids": [
           "EIMPORT.E52.faq-focus-hidden-cancel.A.FAQ.AI.INPUT.focus",
           "EIMPORT.E52.faq-focus-hidden-cancel.A.FAQ.AI.INPUT.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -86057,7 +86566,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E52.faq-focus-hidden-cancel.A.FAQ.AI.SEND.loading"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 1
       }
     },
     {
@@ -86134,7 +86644,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86209,7 +86720,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86284,7 +86796,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86359,7 +86872,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86434,7 +86948,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86509,7 +87024,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86584,7 +87100,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86659,7 +87176,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86734,7 +87252,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86809,7 +87328,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86884,7 +87404,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -86959,7 +87480,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -87034,7 +87556,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -87109,7 +87632,8 @@
       "scoped_check_assessment_ids": [],
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -87185,7 +87709,8 @@
       "family_context_not_direct_evidence_note": "Newconditional #search-ai-stop. Close/cancel/resultfocusflows do notproveStopclick/target/keyboard. Do notinheritfamily evidenceasStopacceptance.",
       "inventory_state_evidence_refs": {
         "path": "docs/ux-audit/2026-10-16/inventory.json",
-        "binding_ids": []
+        "binding_ids": [],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -87463,7 +87988,8 @@
         "binding_ids": [
           "EIMPORT.E6.native-article.H.HERO.READ.normal",
           "EIMPORT.E6.native-article.H.HERO.READ.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -87565,7 +88091,8 @@
           "EIMPORT.E81.actual-back-return.S.WINDOW.OVERVIEWITEM.focus",
           "EIMPORT.E81.back44.S.WINDOW.OVERVIEWITEM.normal",
           "EIMPORT.E81.back-scroll-contract.S.WINDOW.OVERVIEWITEM.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -89855,7 +90382,8 @@
           "EIMPORT.E9A1.actual-native.S.APP.products.SELECT.active",
           "EIMPORT.E9A1.actual-native.S.APP.products.SELECT.focus",
           "EIMPORT.E9A1.native-keyboard-contract.S.APP.products.SELECT.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90093,7 +90621,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E9A1.ask-hit-only.S.APP.products.OPEN.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90177,7 +90706,8 @@
         "binding_ids": [
           "EIMPORT.E9B.target-type.S.APP.contact.CHANNEL.normal",
           "EIMPORT.E9B.captured-clicks.S.APP.contact.CHANNEL.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90282,7 +90812,8 @@
           "EIMPORT.E12.native-intent.A.BODY.FOOTNOTEPREVIEW.active",
           "EIMPORT.E12.owned-timers.A.BODY.FOOTNOTEPREVIEW.focus",
           "EIMPORT.E12C.current-native.A.BODY.FOOTNOTEPREVIEW.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90381,7 +90912,8 @@
           "EIMPORT.E12.visible-text.A.BODY.FOOTNOTEPREVIEW.normal",
           "EIMPORT.E12C.current-native.A.BODY.FOOTNOTEPREVIEW.active",
           "EIMPORT.E12C.visible-text.A.BODY.FOOTNOTEPREVIEW.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90475,7 +91007,8 @@
           "EIMPORT.E10.focus-history.T.SOCIAL.QR.focus",
           "EIMPORT.E10A.focus-ownership.T.SOCIAL.QR.focus",
           "EIMPORT.E10A.image-errors.T.SOCIAL.QR.error"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90571,7 +91104,8 @@
           "EIMPORT.E10A.image-loading.T.SOCIAL.QR.loading",
           "EIMPORT.E10A.image-errors.T.SOCIAL.QR.error",
           "EIMPORT.E10A.retry-owned-attempt.T.SOCIAL.QR.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90665,7 +91199,8 @@
           "EIMPORT.E11B.index-recover.G.SEARCH.RETRY.active",
           "EIMPORT.E11B.pre-fix-displacement.G.SEARCH.RETRY.focus",
           "EIMPORT.E11C.retry-copy.G.SEARCH.RETRY.normal"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       }
     },
     {
@@ -90745,7 +91280,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E15C.category-choice.S.APP.reader.FILTER.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       },
       "registration_note": "Native select/previously omitted Notes-Books entry added in inventory1.25; sibling observations do not transfer. Explicit E15C refs only."
     },
@@ -90826,7 +91362,8 @@
         "path": "docs/ux-audit/2026-10-16/inventory.json",
         "binding_ids": [
           "EIMPORT.E15C.notes-books-entry.S.APP.reader.NAV.active"
-        ]
+        ],
+        "legacy_record_count_without_binding_id": 0
       },
       "registration_note": "Native select/previously omitted Notes-Books entry added in inventory1.25; sibling observations do not transfer. Explicit E15C refs only."
     }
@@ -91128,6 +91665,16 @@
       "evidence_paths": [
         "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-selected-passage.png"
       ]
+    },
+    {
+      "id": "DES-E16C1-FOCUS-RING",
+      "families": [
+        "A.AI.FOLLOWUP"
+      ],
+      "evidence": "E-BATCH-E16C1",
+      "proposal": "Only focused suggestion states: inset itsoutline or reserve enoughscrollportgutter so outerringbottom iswhole at224; preservecurrent44, buttons, ownership and nativeTab. Currentfocusclear; no blocker/blanketWCAGfailure.",
+      "status": "bounded_visual_finish_candidate",
+      "evidence_type": "actualzh/en focusedthird PNG, not hypotheticalAT gap"
     }
   ],
   "scoped_check_assessments": [
@@ -97780,11 +98327,175 @@
       ],
       "scope": "Only five recorded EN cold deliveries; no overall D4/D1/family score. ZH settled compatibility unscored.",
       "reason": "Original marker/DOM/focus/hash/history retained; doc/view/root/docH delta0 eachcase, readable staged text and no source scroll compensation. Actual fonts differ by timing; raw/erratum governs attribution."
+    },
+    {
+      "id": "CHK-E16C1-FOLLOWUP-NEGATIVE",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.FOLLOWUP.control.fc51ca"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 80,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "historical_observed_gap_closed_only_in_followup_scope",
+      "confidence": "high_for_named_fragment",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence": [
+        "E-E16-FOLLOWUP-NEGATIVE"
+      ],
+      "scope": "Only named recordedfragment; wholecriterion/dimension/control/family remainsnull.",
+      "reason": "OriginalC unsubmitteddraft cleared, independentnativeEnter focusedgroup removal→BODY. Historicalnegative retained; no persistentnotes-loss claim."
+    },
+    {
+      "id": "CHK-E16C1-FOLLOWUP-DRAFT",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.FOLLOWUP.control.fc51ca"
+      ],
+      "criterion": "D3.3",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_fragment",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence": [
+        "E-BATCH-E16C1"
+      ],
+      "scope": "Only named recordedfragment; wholecriterion/dimension/control/family remainsnull.",
+      "reason": "Actualclickedlater suggestion keeps originaldraft/caret/height/scroll/node/questioncontext. Contract backwardselection/partial/Stop/directSend verified. Initialquick alreadykeepDraft and unchanged."
+    },
+    {
+      "id": "CHK-E16C1-FOLLOWUP-FOCUS",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.FOLLOWUP.control.fc51ca"
+      ],
+      "criterion": "D2.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_fragment",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence": [
+        "E-BATCH-E16C1"
+      ],
+      "scope": "Only named recordedfragment; wholecriterion/dimension/control/family remainsnull.",
+      "reason": "Owned focusedgroup hands to originaltextarea before remove; actualpositiveclick after localTab, not currentnativeEnter or allpageTab/AT proof."
+    },
+    {
+      "id": "CHK-E16C1-REPLY-PRIORITY",
+      "family_ids": [
+        "A.AI.INPUT",
+        "A.AI.FOLLOWUP"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de",
+        "A.AI.FOLLOWUP.control.fc51ca"
+      ],
+      "criterion": "D1.2",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_fragment",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence": [
+        "E-BATCH-E16C1"
+      ],
+      "scope": "Only named recordedfragment; wholecriterion/dimension/control/family remainsnull.",
+      "reason": "Actualfinaltextline inside320/256/224 messagewindow; all3suggestions remain44, truewheel/nativeTab reachable andactualquestion sent once. Explicitfocusedfollowup/reference owns its position."
+    },
+    {
+      "id": "CHK-E16C1-AWAY-ANCHOR",
+      "family_ids": [
+        "A.AI.INPUT"
+      ],
+      "control_ids": [
+        "A.AI.INPUT.control.4748de"
+      ],
+      "criterion": "D6.4",
+      "anchor_score": 96,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "passed_named_scope_incomplete_family_matrix",
+      "confidence": "high_for_named_fragment",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence": [
+        "E-BATCH-E16C1"
+      ],
+      "scope": "Only named recordedfragment; wholecriterion/dimension/control/family remainsnull.",
+      "reason": "Genuinewheelaway beforeDONE; uniqueoriginaltext19.796875→20.171875=.375<=1 through320256224, samecanonicalanswerbody/input/rootY/hash/history; expectedpinnerHTML replacement notdata loss."
+    },
+    {
+      "id": "CHK-E16C1-FOCUS-RING-EDGE",
+      "family_ids": [
+        "A.AI.FOLLOWUP"
+      ],
+      "control_ids": [
+        "A.AI.FOLLOWUP.control.fc51ca"
+      ],
+      "criterion": "D2.4",
+      "anchor_score": 90,
+      "verified_score": null,
+      "kind": "bounded_recorded_fragment",
+      "status": "observed_minor_visual_gap_incomplete_family_matrix",
+      "confidence": "high_for_named_fragment",
+      "as_of": {
+        "phase": "E16c1 final short reply and followup independent review",
+        "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+        "reviewed_at": "2026-10-16T09:58:53+08:00",
+        "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+      },
+      "evidence": [
+        "E-BATCH-E16C1"
+      ],
+      "scope": "Only named recordedfragment; wholecriterion/dimension/control/family remainsnull.",
+      "reason": "Actualzh/en focusedthird PNG: outerring bottom edge clips againstscrollport, top/sides/text remainclearly identifiable andbutton44hit. Minorfinishcandidate insetring/gutter; no inability/WCAGfailure or contrastcertificate."
     }
   ],
-  "latest_validated_checkpoint": "08dca5f0c40285e32132ec4a68d4c489f94b7003",
-  "preview_scope": "E14b EN cold readpoint named scope accepted,UX046 scopedclosed. PriorE16b short-composer/legibility receipts retain their own frozen source. E16c article-chat.js WIP outside E14 source8 notcertified. UX052 photo P2 remainsopen.Wholefamily/dimension scoresnull.",
-  "latest_reviewed_artifact": "E-BATCH-E14B",
+  "latest_validated_checkpoint": "4ace9c524d6e91c8a2d0e52e361f1c8698297970",
+  "preview_scope": "E16c1 named3contexts/17finalPNG/19distinctcontracts accepted;UX053draft/ownedfocusscopedclosed. PriorE16B/E14 source-specific scopes retained. PhotoUX052open;focusedringminorfinishcandidate. Allcompletefamily/control/dimensionnull.",
+  "latest_reviewed_artifact": "E-BATCH-E16C1",
   "homepage_direction_review": {
     "id": "HP-DIRECTION-REVIEW-01",
     "kind": "relative_pairwise_expert_design_judgment",
@@ -98134,12 +98845,10 @@
     "next_bounded_E62_status": "verified_for_recorded_two_theme_material_and_runtime_preference_lifecycle"
   },
   "latest_reviewed_source_snapshot": {
-    "path": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json",
-    "sha256": "b6a7f3b8dc4cfc0db7e9f30be9886364808d831e2da7f80e53bba4d069f606ef",
-    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-provenance.json",
-    "provenance_sha256": "2b53d4934fb2206520bd1d4da4c45778ab45528cf291ddd32dedf9c81191ddca",
-    "erratum": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-erratum.json",
-    "erratum_sha256": "4aa34a8541352ea37185ccbce1ed1c9d33204f122f90e7b94d66a4e36c0c66d1",
+    "path": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+    "sha256": "81b367d0c4db78f428be900937494892b01389ff34b9d2bd4e835c000d544636",
+    "provenance": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-provenance.json",
+    "provenance_sha256": "6ed65d3e2455eacdeb63f63d5169b6b2d26dc9f4411c6e8c8d9e3b5e1b8fb049",
     "status": "independent_bounded_review_complete_pending_parent_checkpoint"
   },
   "anchor_intent_review": {
@@ -98750,5 +99459,34 @@
       "SURFACE.E14B.zh-settled-smoke.normal"
     ],
     "limits": "Named phase visibility, not continuousFOIT/fullCLS/FPS/beforefirstpaint or HTTPwarm. FontFace.loaded is not actualuse proof; use CDP role maps. ZH installed SourceHan glyphs not local-CJK-absence/late-CJK coverage. No complete D1/D4 dimension, wholepagecontrast, AT/Safari/physical/wholematrix certificate; discovery/humanChoice stays unreviewed/nonGold. E16c JS is separate WIP outside source8."
+  },
+  "e16c_source_review": {
+    "as_of": {
+      "phase": "E16c1 final short reply and followup independent review",
+      "source_manifest": "docs/ux-audit/2026-10-16/evidence/batch-e16c1-source.json",
+      "reviewed_at": "2026-10-16T09:58:53+08:00",
+      "base": "4ace9c524d6e91c8a2d0e52e361f1c8698297970"
+    },
+    "status": "accepted_named_short_reply_and_clicked_followup_scope",
+    "new_P0_P1_findings": [],
+    "closed_findings": [
+      "UX-053_named_scope"
+    ],
+    "verified_score": null,
+    "static_design_fragments": {
+      "short320_reply_D1": 96,
+      "short320_reply_D4": 96,
+      "focused_third_D2_4_fragment": 90,
+      "complete_dimensions": null
+    },
+    "proof_refs": [
+      "E-BATCH-E16C1",
+      "E-E16-FOLLOWUP-NEGATIVE"
+    ],
+    "limits": "No C1nativeEnteractual/fullpageTab/OSIME/AT/Safari/physical/fullpaint/wholecontrast;224geometrynotnormalmobileaesthetic. EarlierB92/94.5/failedC drafts/threefixturecorrections retainasofscope.",
+    "inventory_registry_refs": [
+      "e16c1-reply-followup-import",
+      "e16c-followup-negative-history"
+    ]
   }
 }

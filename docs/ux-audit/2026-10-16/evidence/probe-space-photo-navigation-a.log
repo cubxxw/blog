@@ -1,0 +1,16 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.space-menubar [data-space-menu-trigger]')[22m
+
+    at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/probe-space-photo-navigation-a.browser.mjs:3:1344 {
+  log: [
+    "  - waiting for locator('.space-menubar [data-space-menu-trigger]')"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.2

@@ -1915,3 +1915,27 @@ E13只新增 **11状态**：canonical输入focus/normal、实际Send、quickchip
 [9served-head](evidence/batch-e14-production-served-head.json)只证明命名HTTP200头部URL/async/noscript parity，不等于9条字体旅程。initial4合同为3行为pass+1minified handler字串fixturefail4.4s；test-only语义load scope同一case1pass1.0s，原3行为tail/helper逐字节一致、未重跑，**合计4distinct**，不叠5新case。Hugo4153ms是父回执。初parent额外precode定位失败（原文只有inlinecode）保raw/script/log和3初图；B只修额外照片locator，未发生第二次生产字体修复。
 
 UX046原冷字体负基线保留；独立final逐看16正式图后，仅命名关闭 **`closed_E14b_named_EN_posts_cold_font_delivery_readpoint_scope`**：五EN冷交付case阅读点/node/hash/history/focus稳定，ZH settled smoke只兼容观察。旧singleface/fullbundle discovery与humanChoice继续unreviewed/nonGold；phase PNG只证明命名时间，continuousFOIT/fullCLS/FPS、HTTPwarm、Safari/AT/实机、缺本地CJK字体与全矩阵仍unknown。computed`font`空串不当字号证明；CDP实际glyph归属独立。**309族/369selectors/373item状态/85族局部证据+4surface记录，完整族0/fullnull**。本Agent未运行browser/构建/测试；独立结论已对齐，现停止写入供checkpoint。
+
+
+## v1.28 E16c1：回复阅读落点、建议提问与原草稿
+
+导入 **2026-10-16T09:55:40+08:00**；[source](evidence/batch-e16c1-source.json)16源+QA/2runner、[provenance](evidence/batch-e16c1-provenance.json)57paths匹配，[servedJS](evidence/batch-e16c1-served-js.json)同最终源码SHA`a9d1fef2…`。接受基线`4ace9c52`只含E16b/E14，未包含C1；C1相对归档C `Feb…`逆两edit完全相同，不称相对CP只改两行。原initialquick已经keepDraft，本轮修的是laterfollowup `send(question,true)`与移除建议组前owned焦点交接。
+
+[19不同合同36.0s](evidence/batch-e16c1-contracts.log)=**3新reply合同+3旧legibility+13旧continuity**，初C18pass34s仍保历史、不叠37新功能；旧selection19未重跑不冒通过。C1原前两新合同完整prefix SHA`479aff2f…`逐字节一致，仅追加第三草稿/focus合同。Hugo3789ms来自父回执。
+
+本轮 **9条证据行**（含2旧负；旧状态新版复验也不是新功能）：
+
+| 片段 | 实际与合同的边界 |
+| --- | --- |
+| 旧负历史 | CA中英实际thirdfollowup把两行inputBefore→空；另精确servedFeb本地nativeEnter聚焦BUTTON→BODY且草稿空。原probe未remember的identityfalse不当DOM丢失/键盘trap |
+| 回复落点 | 两actual中英568×320→256→224完成回复真实末glyphline全可见，input/clear/send仍可hit；原3suggestions留存下方，不隐藏它们换可读空间 |
+| 建议的可达性 | 真实wheel→原input局部ShiftTab，经过Clear/合法scrollable referenceP再到third；原三按钮nativeTab/44命中，third跨256/224focus保留。两个来源链接focus路径仅C0合同，不授实际外跳/完整Tab |
+| 建议动作/原编辑器 | 两actualpointerclick只1POST、question/原selectedText120或280/context2正确；原input的两行值、caret、direction、height60、scroll0精确保留/ownedfocus可见。更广选区/滚动/partial/外部focus guard来自C2合同；直接typedSend才清草稿也是合同 |
+| Stop | 两actual原Stop44方形真实click、所属request abort1；旧3/13专项复验单列，不覆盖真实模型/全状态 |
+| 已上滚的阅读 | 1actual原Go受控longSSE实际wheel后DONE/resize320256224，同answerBody/input与唯一原text读点19.796875→20.171875，delta.375≤1；rootY500/hash/history/focus不变 |
+
+**UX053/P2旧负保留，独立命名关闭** `closed_E16c1_named_followup_draft_selection_owned_focus_and_short_reply_scope`。final[3actual/17图](evidence/batch-e16c1-actual.json)父/独立全看，本Agent看6正式代表图与1旧nativeEnter负图。`.article-chat-followup`仍既有`fc51ca`，仅源码定位校准当前372/395并保旧source；**0新族/selector**，旧abs不继承rc通过。
+
+三类夹具纠正不作生产缺陷：初Clear→third固定Tab假设错，原referenceP合法focus；away原P按既有innerHTML更换，最终仍要求同answerBody/唯一同text/1px原gate；初C/CA半透明opacity.873642 finitefade非稳定终态，C1恢复原B opacity≥.999/inertfalse/无finite sheet-root动画gate，**没有CSS重绘修复或capturebug结论**。原raw/log/source全保；最终320首/next自然帧只命名时刻，不证明连续绘制。code/quote-shaped测试输入仍按既有plainparagraph渲染，不宣称新增富文本格式。
+
+累计 **382条item-state / 86族局部证据**（85partial+1measured；198source-only+25rendered），独立 **4字体surface**不变；仍 **309族 / 369selectors / 57journeys / 18roadmap / 0完整族 / fullnull**。新增的是证据行，不是9新功能；OSIME/AT/Safari/实机/全motion/全矩阵未知。本Agent未启动browser/构建/测试，现停写供checkpoint与评分同步。

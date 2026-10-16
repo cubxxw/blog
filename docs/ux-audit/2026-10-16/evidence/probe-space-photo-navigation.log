@@ -1,0 +1,45 @@
+{"view":"1440-zh","steps":[{"name":"next-local-keyboard-entry","title":"熊野古道","src":"http://127.0.0.1:1317/images/about/journey/06-kumano.webp","active":{"tag":"BUTTON","cls":"","text":"→","insideWindow":true},"next":{"font":"11px","box":{"x":752.800048828125,"y":275.90362548828125,"width":26.239990234375,"height":23.779998779296875,"top":275.90362548828125,"right":779.0400390625,"bottom":299.6836242675781,"left":752.800048828125},"focused":true}},{"name":"after-first-next-enter","title":"万荣的慢","src":"http://127.0.0.1:1317/images/about/journey/09-vangvieng.webp","active":{"tag":"SECTION","cls":"space-window","text":"万荣的慢◫BEAR / FIELD ARCHIVE万荣的慢去过的地方 ↗← 返回相册2 / 8←→重试照片万荣的慢老挝 · 万荣 · 熊鑫伟 摄查看旅行区域 ↗← → 切换照片 · Esc 返回相册","insideWindow":true},"next":{"font":"11px","box":{"x":752.800048828125,"y":275.90362548828125,"width":26.239990234375,"height":23.779998779296875,"top":275.90362548828125,"right":779.0400390625,"bottom":299.6836242675781,"left":752.800048828125},"focused":false}},{"name":"after-next-arrow-right","title":"石头与树根","src":"http://127.0.0.1:1317/images/about/journey/10-taprohm.webp","active":{"tag":"SECTION","cls":"space-window","text":"石头与树根◫BEAR / FIELD ARCHIVE石头与树根去过的地方 ↗← 返回相册3 / 8←→重试照片石头与树根柬埔寨 · 塔普伦寺 · 熊鑫伟 摄查看旅行区域 ↗← → 切换照片 · Esc 返回相册","insideWindow":true},"next":{"font":"11px","box":{"x":752.800048828125,"y":275.90362548828125,"width":26.239990234375,"height":23.779998779296875,"top":275.90362548828125,"right":779.0400390625,"bottom":299.6836242675781,"left":752.800048828125},"focused":false}}]}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.space-bottom [data-open="photos"]')[22m
+[2m    - locator resolved to <button type="button" title="Photos" data-open="photos" aria-label="Photos">…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    57 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/probe-space-photo-navigation.browser.mjs:3:1414 {
+  log: [
+    `  - waiting for locator('.space-bottom [data-open="photos"]')`,
+    '    - locator resolved to <button type="button" title="Photos" data-open="photos" aria-label="Photos">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    57 × waiting for element to be visible, enabled and stable',
+    '       - element is not visible',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.2

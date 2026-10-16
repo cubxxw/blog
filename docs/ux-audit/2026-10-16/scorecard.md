@@ -1,8 +1,8 @@
 # 全博客控件评分卡
 
-更新：2026-10-16T09:38:11+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe9`；最近已验checkpoint `08dca5f0`（E15c）。E16b命名源/A-B组合与本轮E14b英文冷字体读点均已独立复核；后续E16c JS属另批WIP，不继承本批图。
+更新：2026-10-16T09:58:53+08:00。截止：2026-10-16 12:00 Asia/Shanghai。量表v1.0；审计基线 `6d7b9fe9`；最近已验checkpoint `4ace9c52`（E16b/E14）。本轮C1回复读点及点击追问草稿/焦点仅按冻结源与实测范围复核。
 
-**当前不能宣称全站或每个按钮96+。309族/369selector条目的完整分仍为 `unverified / null`；373条item状态只覆盖85族局部状态（84partial+1measured），另有4条独立字体surface观察，完整认证0。**
+**当前不能宣称全站或每个按钮96+。309族/369selector条目的完整分仍为 `unverified / null`；382条item状态只覆盖86族局部状态（85partial+1measured），另有4条独立字体surface观察，完整认证0。**
 
 ## 固定量表与分数计算
 
@@ -1185,3 +1185,19 @@ Knowledge仅两context三类真实节点的当前title/URL/target/rel与真实cl
 中文390/light/normal仅为settled兼容观察：正文实际Source Han Serif SC、代码JetBrains，内容可读；不证明无本地中文字体、CJK迟到稳定或Windows/Android。标题末“基”单字独行是可见排版候选，缺前后对照，不归本次字体回归。阶段PNG不证明持续FOIT、完整CLS/FPS或first-paint；空computed font shorthand不作精确字号证据。暖缓存、Safari/AT/实体设备/全页对比度/完整矩阵未知；discovery/humanChoice保持unreviewed、无Gold/自动promotion。E16c新AIJS不在八源内，既有E16b主次差距与UX052照片P2另保留。
 
 盘点v1.27最终同步：309族/369selector entries、373条item状态/85局部族（84partial+1measured）不变；四条source-surface独立计数，不新增控件、族或功能。当前247个scoped checks、110历史视觉片段、52个finding；UX046只按上述范围关闭，所有完整分仍null。本轮结束后停写供父checkpoint。
+
+## E16c1 · 先读回复，点击建议保留自己的草稿
+
+2026-10-16T09:58:53+08:00：[16源/QA/两runner](evidence/batch-e16c1-source.json)与[57路径provenance](evidence/batch-e16c1-provenance.json)全部hash匹配，HTTPservedJS精确等`a9d1fef2…`。C1两edit反向精确恢复归档C `febedb35…`，原两spec是`479aff2f…`完整前缀。[19不同合同](evidence/batch-e16c1-contracts.log)36s＝新reply3+旧legibility3+原continuity13；初C18不重复记功能。[三实际context/17自然图](evidence/batch-e16c1-actual.json)全部独立逐看，另原nativeEnter负图已看；无新增P0/P1。
+
+新增历史 **UX053 P2**：原C/CA后续建议清空未发送的两行草稿；独立[568英文nativeEnter探针](evidence/probe-e16-followup-focus.json)还确认聚焦BUTTON移除后落BODY。请求问题/context正确、Stop可用不抵消这项损失；不是笔记或持久数据丢失。仅按 `closed_E16c1_named_followup_draft_selection_owned_focus_and_short_reply_scope` 关闭：C1后续`send(question,true)`与组移除前`beforeUnavailable(group)`，双语真实click保原input/值/caret/选区方向/高度/scroll，原question/selectedcontext单POST，焦点交原textarea，Stop abort1。新第三合同覆盖反向选区、partial、Stop与直接Send清空。**初始quick本就keepDraft，整行未改，只记回归；直接输入Send仍消费草稿。** 当前正向是实际Tab抵达后click，nativeEnter为旧负探针，未冒C1正向Enter实测。
+
+完成回复的320高静态片段独立 **D1/D4=96/96**：[中文](evidence/batch-e16c1-short-zh-reply-320-next-natural-frame.png)/[英文](evidence/batch-e16c1-short-en-reply-320.png)优先显示真实末行，建议留在其后；320/256/224均保末行及输入/Send44整框命中，三建议仍真wheel/nativeTab可达44并可真实请求，未隐藏功能/删原文。显式focus在建议或来源链接时保其位置，busy结束去loading后仍对齐回复。B短92/94.5保留历史；224只是压力几何，不当普通手机美感或完整维度96。
+
+真实长SSE离底后DONE+320/256/224，原段落唯一文本位置 **19.796875→20.171875，偏移0.375≤原1CSSpx门槛**；原answerBody/input与rootY/hash/history不变。`paintReply.innerHTML`原本替换p节点，初测具要求旧p仍连接不成立；改核同body/唯一精确文本及原1px，不记data loss或生产anchor修复。Clear前有合法reference-text滚动P的Tabstop，纠正父固定“前一Tab就是第三建议”的假设，无新全局焦点逻辑。
+
+一项具体小差距另留：中英[第三建议focus图](evidence/batch-e16c1-short-en-focused-third.png)的外ring下缘靠scrollport被切少量，顶部/侧边/文字仍清楚，44命中与动作有效。仅 **D2.4焦点外观片段90**，建议后续inset ring或留轮廓净空；不判不可达/WCAG失败，也不拿未知AT扣当前静态分。主完成回复的视觉分不替代这个focus状态检查。
+
+C/A首中文320所谓ghost实际raw是sheet opacity0.873642且finite fade运行，transform0并非settled；当前恢复B完整root/sheet opacity1/no finite动画门槛，无CSS重绘workaround或capturebug。原转场图、初Tab/旧p测具失败、真实draft/焦点负均保留且区分；17图只证各记录帧，不宣称持续paint/FPS。受控AIClient、公开段落Range与局部键盘不等于真实模型/实体拖选/OS输入法/整页Tab/AT/Safari/软键盘；无新整页对比度或完整矩阵认证。
+
+盘点v1.28同步：309族/369selector entries、382条item状态（新增9）/86局部族（85partial+1measured）及独立4fontsurface，0完整。Followup原`fc51ca`只校准当前controller动态source，无新控件/族；旧abs不继承。当前253个scoped checks、112历史视觉片段、53个finding；UX053只按本轮scope闭合，UX052照片仍open，所有完整分null。完成校验后停止写入供父checkpoint。

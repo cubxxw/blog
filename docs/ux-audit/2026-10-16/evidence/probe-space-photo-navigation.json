@@ -1,0 +1,122 @@
+{
+  "at": "2026-10-16T01:51:31.074Z",
+  "preview": "C1 article candidate; Space7source immutable08dc and unchanged",
+  "sources": {
+    "assets/js/space/media.js": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996",
+    "assets/js/space/media-state.mjs": "2154203c2999b5af5185ba31c5978ab8997dd4c3b774ffb3e28a47bb89c4bd6e",
+    "assets/css/space-media.css": "787430661224c666ca8032d62e3ac8e589c2a0bb19e7265c168ca5a4bb922ffa",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519"
+  },
+  "rows": [
+    {
+      "view": {
+        "id": "1440-zh",
+        "width": 1440,
+        "height": 900,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "steps": [
+        {
+          "name": "next-local-keyboard-entry",
+          "title": "熊野古道",
+          "src": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+          "active": {
+            "tag": "BUTTON",
+            "cls": "",
+            "text": "→",
+            "insideWindow": true
+          },
+          "next": {
+            "font": "11px",
+            "box": {
+              "x": 752.800048828125,
+              "y": 275.90362548828125,
+              "width": 26.239990234375,
+              "height": 23.779998779296875,
+              "top": 275.90362548828125,
+              "right": 779.0400390625,
+              "bottom": 299.6836242675781,
+              "left": 752.800048828125
+            },
+            "focused": true
+          }
+        },
+        {
+          "name": "after-first-next-enter",
+          "title": "万荣的慢",
+          "src": "http://127.0.0.1:1317/images/about/journey/09-vangvieng.webp",
+          "active": {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "text": "万荣的慢◫BEAR / FIELD ARCHIVE万荣的慢去过的地方 ↗← 返回相册2 / 8←→重试照片万荣的慢老挝 · 万荣 · 熊鑫伟 摄查看旅行区域 ↗← → 切换照片 · Esc 返回相册",
+            "insideWindow": true
+          },
+          "next": {
+            "font": "11px",
+            "box": {
+              "x": 752.800048828125,
+              "y": 275.90362548828125,
+              "width": 26.239990234375,
+              "height": 23.779998779296875,
+              "top": 275.90362548828125,
+              "right": 779.0400390625,
+              "bottom": 299.6836242675781,
+              "left": 752.800048828125
+            },
+            "focused": false
+          }
+        },
+        {
+          "name": "after-next-arrow-right",
+          "title": "石头与树根",
+          "src": "http://127.0.0.1:1317/images/about/journey/10-taprohm.webp",
+          "active": {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "text": "石头与树根◫BEAR / FIELD ARCHIVE石头与树根去过的地方 ↗← 返回相册3 / 8←→重试照片石头与树根柬埔寨 · 塔普伦寺 · 熊鑫伟 摄查看旅行区域 ↗← → 切换照片 · Esc 返回相册",
+            "insideWindow": true
+          },
+          "next": {
+            "font": "11px",
+            "box": {
+              "x": 752.800048828125,
+              "y": 275.90362548828125,
+              "width": 26.239990234375,
+              "height": 23.779998779296875,
+              "top": 275.90362548828125,
+              "right": 779.0400390625,
+              "bottom": 299.6836242675781,
+              "left": 752.800048828125
+            },
+            "focused": false
+          }
+        }
+      ],
+      "errors": [],
+      "denied": []
+    },
+    {
+      "view": {
+        "id": "390-en",
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "steps": [],
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-1440-zh-after-next.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-1440-zh-after-arrow.png"
+  ],
+  "limits": "Two emulatedChromium localkeyboardNextEnter→ArrowRight tasks. Focus seeded on existingNext, not wholepageTab; publiclocalphotos only, no Immich/model calls. Observations not preassigned failure or fullscope scores."
+}
