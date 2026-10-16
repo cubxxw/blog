@@ -34,8 +34,8 @@ export function maplePlan(tree,count){
   }
   return {count,trunk,clusters,branches,twigs,positions,normals,sizes,rolls,shades};
 }
-export function mossMound(index,{x,z,width,height,depth}){
-  const angle=index*2.399963229728653,c=Math.cos(angle),s=Math.sin(angle),radiusX=Math.hypot(width*c,depth*s),radiusZ=Math.hypot(width*s,depth*c),radiusY=height*.32;
+export function mossMound(index,{x,z,width,height,depth,edge=1}){
+  const angle=index*2.399963229728653,c=Math.cos(angle),s=Math.sin(angle),radiusX=Math.hypot(width*c,depth*s)*edge,radiusZ=Math.hypot(width*s,depth*c)*edge,radiusY=height*.32;
   const support=x-radiusX>=-6.5&&x+radiusX<=6.5&&z-radiusZ>=-16.4&&z+radiusZ<=-10.6?-.035:-.10;
   return {position:[x,support-radiusY*.25,z],rotation:[0,angle,0],scale:[width,radiusY,depth]};
 }

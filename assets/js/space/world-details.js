@@ -56,9 +56,9 @@ export function createCafeDetails({resources,textures,isDisposed,wake,latteAsset
     for(const z of [-1.07,-.70]){const end=add(group,board,bookend,-6.54,.69,z);end.scale.set(.18,.15,.009);}
     return group;
   }
-  function tableBook(x,supportSurfaceY,z,parent){
-    const index=books.findIndex(b=>b.own);if(index<0)return;
-    const spec={book:books[index],index,height:.26,thickness:.023,width:.18},volume=book(spec,parent);volume.children.forEach(child=>{child.position.y-=spec.height/2;});volume.rotation.set(0,.15,-Math.PI/2);volume.position.set(x,supportSurfaceY+CUP.epsilon+spec.thickness/2,z);return volume;
+  function tableBook(x,supportSurfaceY,z,parent,variant=0){
+    const own=books.map((b,i)=>b.own?i:-1).filter(i=>i>=0),index=own[variant%own.length];if(index===undefined)return;
+    const spec={book:books[index],index,height:.26,thickness:.023,width:.18},volume=book(spec,parent);volume.children.forEach(child=>{child.position.y-=spec.height/2;});volume.rotation.set(0,variant?-.12:.15,-Math.PI/2);volume.position.set(x,supportSurfaceY+CUP.epsilon+spec.thickness/2,z);return volume;
   }
   return {cup,bookshelf,tableBook};
 }

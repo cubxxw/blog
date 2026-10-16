@@ -1,0 +1,916 @@
+{
+  "Diffuse": {
+    "8k": {
+      "jpg": {
+        "size": 27893471,
+        "md5": "8d2a5b5f6c3ef678c09b2a96c00cb03c",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_diff_8k.jpg"
+      },
+      "png": {
+        "size": 355258803,
+        "md5": "f7d4f4639095ddf4653cef3be08930a5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_diff_8k.png"
+      },
+      "exr": {
+        "size": 87244699,
+        "md5": "d850617389fd36a109838a0af5b6eaa2",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_diff_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 9067116,
+        "md5": "dc4dbd56d49f3278d1fcde8e58159a84",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_diff_4k.jpg"
+      },
+      "png": {
+        "size": 98214149,
+        "md5": "9a25a2042860883b50eb063b54a52191",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_diff_4k.png"
+      },
+      "exr": {
+        "size": 25682799,
+        "md5": "52d66d6bd5321068ce22453dc74b304f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_diff_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 2624635,
+        "md5": "024018554c0002620127749d1f585f3d",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_diff_2k.jpg"
+      },
+      "png": {
+        "size": 25184168,
+        "md5": "114960c35c481881102fa82ccad17030",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_diff_2k.png"
+      },
+      "exr": {
+        "size": 7431626,
+        "md5": "4bc9cbc56724e77a9aff45035f766517",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_diff_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 666655,
+        "md5": "e920ce36afd0abff000b8366d3d768d3",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg"
+      },
+      "png": {
+        "size": 6322654,
+        "md5": "c8e58b31d224fd27c5d8674ffb1c14e2",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.png"
+      },
+      "exr": {
+        "size": 1958932,
+        "md5": "31baa5ce2fd89f94a107db792db4a6dd",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.exr"
+      }
+    }
+  },
+  "nor_dx": {
+    "8k": {
+      "jpg": {
+        "size": 85595581,
+        "md5": "6f39d5062c213067817951de82318dff",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_nor_dx_8k.jpg"
+      },
+      "png": {
+        "size": 385311271,
+        "md5": "a2a5097869439bbda7a49cd66f138821",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_nor_dx_8k.png"
+      },
+      "exr": {
+        "size": 159196995,
+        "md5": "106a8419575dbfe27ff4cb3422770e8c",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_nor_dx_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 16759860,
+        "md5": "fbeb2c5bbe69d3a44df2c5591aead73b",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_nor_dx_4k.jpg"
+      },
+      "png": {
+        "size": 102796390,
+        "md5": "739f1f124c84c80c1e76f44cefcd69ec",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_nor_dx_4k.png"
+      },
+      "exr": {
+        "size": 34867367,
+        "md5": "7c6744e3675fd90b8428020ad077a625",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_nor_dx_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 3879028,
+        "md5": "55466b239d3781482d22fc3387b76b73",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_nor_dx_2k.jpg"
+      },
+      "png": {
+        "size": 25610944,
+        "md5": "17e256cc59a176f8ca3e9705d4ae6d94",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_nor_dx_2k.png"
+      },
+      "exr": {
+        "size": 8507378,
+        "md5": "9f688e0745a6dae9f9b4cf1fe64f6d17",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_nor_dx_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 926798,
+        "md5": "4c2090a059403875c417e5413e52d381",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_nor_dx_1k.jpg"
+      },
+      "png": {
+        "size": 6366365,
+        "md5": "13b51574507a459e59def288e312c5b8",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_nor_dx_1k.png"
+      },
+      "exr": {
+        "size": 2104261,
+        "md5": "2cf3777f5173c4bab363fa46cb241690",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_nor_dx_1k.exr"
+      }
+    }
+  },
+  "nor_gl": {
+    "8k": {
+      "jpg": {
+        "size": 84797612,
+        "md5": "8ae2558fa0133f12040e1271680a87a6",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_nor_gl_8k.jpg"
+      },
+      "png": {
+        "size": 385329391,
+        "md5": "b673d27b0717d4ca72ec13b321a774a6",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_nor_gl_8k.png"
+      },
+      "exr": {
+        "size": 159499149,
+        "md5": "cd21e90d2395b9705f66256123d7afa4",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_nor_gl_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 16425331,
+        "md5": "06db3e600acd612587f31573b02875d5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_nor_gl_4k.jpg"
+      },
+      "png": {
+        "size": 102797112,
+        "md5": "d78f7fe235a324d9017c75f077b2b4ca",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_nor_gl_4k.png"
+      },
+      "exr": {
+        "size": 34881263,
+        "md5": "fa4898efeecbac5a56a5f2e62bd4eefa",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_nor_gl_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 3799025,
+        "md5": "0c5423ce365169df7c242933b5137696",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_nor_gl_2k.jpg"
+      },
+      "png": {
+        "size": 25610587,
+        "md5": "c1ec8a813ab388d208abc7805db7b501",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_nor_gl_2k.png"
+      },
+      "exr": {
+        "size": 8510084,
+        "md5": "03b0de5c4a4a009099e84a6055c54349",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_nor_gl_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 904956,
+        "md5": "c8aa4c4f09b113cc7edef89ddeaccad9",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.jpg"
+      },
+      "png": {
+        "size": 6366521,
+        "md5": "7f8e7115d05196a294c10e545fa35fd5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.png"
+      },
+      "exr": {
+        "size": 2104775,
+        "md5": "ab0a086a2c6cfd0dc4a1e0c2c213ea74",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.exr"
+      }
+    }
+  },
+  "blend": {
+    "8k": {
+      "blend": {
+        "size": 273814,
+        "md5": "9a2987a066adf8985bb9bcb7f44d333d",
+        "include": {
+          "textures/aerial_grass_rock_nor_gl_8k.exr": {
+            "size": 159499149,
+            "md5": "cd21e90d2395b9705f66256123d7afa4",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_nor_gl_8k.exr"
+          },
+          "textures/aerial_grass_rock_rough_8k.jpg": {
+            "size": 16209135,
+            "md5": "10772228e9496b246fe9e725fe0e5a8b",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_rough_8k.jpg"
+          },
+          "textures/aerial_grass_rock_diff_8k.jpg": {
+            "size": 27893471,
+            "md5": "8d2a5b5f6c3ef678c09b2a96c00cb03c",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_diff_8k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_8k.png": {
+            "size": 79766291,
+            "md5": "611c97614b89bb1630f42169e749e8e7",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_disp_8k.png"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/8k/aerial_grass_rock/aerial_grass_rock_8k.blend"
+      }
+    },
+    "4k": {
+      "blend": {
+        "size": 273665,
+        "md5": "6db3b9e5c48e8a0d357698c3e5d3d8d4",
+        "include": {
+          "textures/aerial_grass_rock_rough_4k.jpg": {
+            "size": 5311238,
+            "md5": "5e97d52f1278ba5389ebccc268cf86ab",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_rough_4k.jpg"
+          },
+          "textures/aerial_grass_rock_nor_gl_4k.exr": {
+            "size": 34881263,
+            "md5": "fa4898efeecbac5a56a5f2e62bd4eefa",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_nor_gl_4k.exr"
+          },
+          "textures/aerial_grass_rock_diff_4k.jpg": {
+            "size": 9067116,
+            "md5": "dc4dbd56d49f3278d1fcde8e58159a84",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_diff_4k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_4k.png": {
+            "size": 28134986,
+            "md5": "6967126021cf0fd6a6c990bc807eae0f",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_disp_4k.png"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/4k/aerial_grass_rock/aerial_grass_rock_4k.blend"
+      }
+    },
+    "2k": {
+      "blend": {
+        "size": 273795,
+        "md5": "d1bb56d782467ef8c550dc7921bd27a9",
+        "include": {
+          "textures/aerial_grass_rock_nor_gl_2k.exr": {
+            "size": 8510084,
+            "md5": "03b0de5c4a4a009099e84a6055c54349",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_nor_gl_2k.exr"
+          },
+          "textures/aerial_grass_rock_rough_2k.jpg": {
+            "size": 1495844,
+            "md5": "8d181000237d420a73f99dfc260dab17",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_rough_2k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_2k.png": {
+            "size": 7364831,
+            "md5": "9934919189ea7d4f7e233bfeeb667f6f",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_disp_2k.png"
+          },
+          "textures/aerial_grass_rock_diff_2k.jpg": {
+            "size": 2624635,
+            "md5": "024018554c0002620127749d1f585f3d",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_diff_2k.jpg"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/2k/aerial_grass_rock/aerial_grass_rock_2k.blend"
+      }
+    },
+    "1k": {
+      "blend": {
+        "size": 273795,
+        "md5": "1e34eb8de9481da41944db8753ec3b23",
+        "include": {
+          "textures/aerial_grass_rock_diff_1k.jpg": {
+            "size": 666655,
+            "md5": "e920ce36afd0abff000b8366d3d768d3",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg"
+          },
+          "textures/aerial_grass_rock_rough_1k.jpg": {
+            "size": 362214,
+            "md5": "f78c5cdc565f990299ae7c5a81f68cf7",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_rough_1k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_1k.png": {
+            "size": 1951317,
+            "md5": "1fe85f6e82e3e62a1e5f143a7a31971c",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_disp_1k.png"
+          },
+          "textures/aerial_grass_rock_nor_gl_1k.exr": {
+            "size": 2104775,
+            "md5": "ab0a086a2c6cfd0dc4a1e0c2c213ea74",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.exr"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/1k/aerial_grass_rock/aerial_grass_rock_1k.blend"
+      }
+    }
+  },
+  "gltf": {
+    "8k": {
+      "gltf": {
+        "size": 2736,
+        "md5": "1caadde3fc43c809405fa16b38bdca30",
+        "include": {
+          "textures/aerial_grass_rock_nor_gl_8k.jpg": {
+            "size": 84797612,
+            "md5": "8ae2558fa0133f12040e1271680a87a6",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_nor_gl_8k.jpg"
+          },
+          "textures/aerial_grass_rock_rough_8k.jpg": {
+            "size": 16209135,
+            "md5": "10772228e9496b246fe9e725fe0e5a8b",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_rough_8k.jpg"
+          },
+          "textures/aerial_grass_rock_diff_8k.jpg": {
+            "size": 27893471,
+            "md5": "8d2a5b5f6c3ef678c09b2a96c00cb03c",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_diff_8k.jpg"
+          },
+          "aerial_grass_rock.bin": {
+            "size": 2369620,
+            "md5": "9e9fdf3bcf172ab87f787e8156b7929d",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/aerial_grass_rock/aerial_grass_rock.bin"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/aerial_grass_rock/aerial_grass_rock_8k.gltf"
+      }
+    },
+    "4k": {
+      "gltf": {
+        "size": 2736,
+        "md5": "1172970cbde3eebfc594fe565726ca05",
+        "include": {
+          "textures/aerial_grass_rock_rough_4k.jpg": {
+            "size": 5311238,
+            "md5": "5e97d52f1278ba5389ebccc268cf86ab",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_rough_4k.jpg"
+          },
+          "textures/aerial_grass_rock_nor_gl_4k.jpg": {
+            "size": 16425331,
+            "md5": "06db3e600acd612587f31573b02875d5",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_nor_gl_4k.jpg"
+          },
+          "textures/aerial_grass_rock_diff_4k.jpg": {
+            "size": 9067116,
+            "md5": "dc4dbd56d49f3278d1fcde8e58159a84",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_diff_4k.jpg"
+          },
+          "aerial_grass_rock.bin": {
+            "size": 2369620,
+            "md5": "9e9fdf3bcf172ab87f787e8156b7929d",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/aerial_grass_rock/aerial_grass_rock.bin"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/4k/aerial_grass_rock/aerial_grass_rock_4k.gltf"
+      }
+    },
+    "2k": {
+      "gltf": {
+        "size": 2736,
+        "md5": "8fa3120a248dd62d65023a8d3bf2e162",
+        "include": {
+          "textures/aerial_grass_rock_rough_2k.jpg": {
+            "size": 1495844,
+            "md5": "8d181000237d420a73f99dfc260dab17",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_rough_2k.jpg"
+          },
+          "textures/aerial_grass_rock_diff_2k.jpg": {
+            "size": 2624635,
+            "md5": "024018554c0002620127749d1f585f3d",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_diff_2k.jpg"
+          },
+          "aerial_grass_rock.bin": {
+            "size": 2369620,
+            "md5": "9e9fdf3bcf172ab87f787e8156b7929d",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/aerial_grass_rock/aerial_grass_rock.bin"
+          },
+          "textures/aerial_grass_rock_nor_gl_2k.jpg": {
+            "size": 3799025,
+            "md5": "0c5423ce365169df7c242933b5137696",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_nor_gl_2k.jpg"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/2k/aerial_grass_rock/aerial_grass_rock_2k.gltf"
+      }
+    },
+    "1k": {
+      "gltf": {
+        "size": 2736,
+        "md5": "e8b8e9e3eee17fb833b10992e825a7a4",
+        "include": {
+          "textures/aerial_grass_rock_diff_1k.jpg": {
+            "size": 666655,
+            "md5": "e920ce36afd0abff000b8366d3d768d3",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg"
+          },
+          "textures/aerial_grass_rock_rough_1k.jpg": {
+            "size": 362214,
+            "md5": "f78c5cdc565f990299ae7c5a81f68cf7",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_rough_1k.jpg"
+          },
+          "textures/aerial_grass_rock_nor_gl_1k.jpg": {
+            "size": 904956,
+            "md5": "c8aa4c4f09b113cc7edef89ddeaccad9",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.jpg"
+          },
+          "aerial_grass_rock.bin": {
+            "size": 2369620,
+            "md5": "9e9fdf3bcf172ab87f787e8156b7929d",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/aerial_grass_rock/aerial_grass_rock.bin"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/1k/aerial_grass_rock/aerial_grass_rock_1k.gltf"
+      }
+    }
+  },
+  "rough_ao": {
+    "8k": {
+      "jpg": {
+        "size": 75112705,
+        "md5": "bce9a833b6e6cd83d7d6201efdb14bdf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_rough_ao_8k.jpg"
+      },
+      "png": {
+        "size": 362157195,
+        "md5": "8422dec86028dff1f6c49521a1895e81",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_rough_ao_8k.png"
+      },
+      "exr": {
+        "size": 146362300,
+        "md5": "eea722add15d03edf51aa7bdc7e214c8",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_rough_ao_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 13047442,
+        "md5": "fc2c0de284cea5eecbbb063673a99fc2",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_rough_ao_4k.jpg"
+      },
+      "png": {
+        "size": 98310189,
+        "md5": "3492b3155e38961044916f7edde71eb8",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_rough_ao_4k.png"
+      },
+      "exr": {
+        "size": 30516441,
+        "md5": "0a3ac71004d9818aea26b89dbf95fbf0",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_rough_ao_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 2883918,
+        "md5": "e7ce2ace8d558c49f24a6fd86c4c76f3",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_rough_ao_2k.jpg"
+      },
+      "png": {
+        "size": 24702141,
+        "md5": "18e0f7906d1652ad0b8897a515d22104",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_rough_ao_2k.png"
+      },
+      "exr": {
+        "size": 7123083,
+        "md5": "5b871d9a978c50d348eb7e86048847ea",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_rough_ao_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 645436,
+        "md5": "75ef56bc8d9a4d398490f0ccb9d5c5f2",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_rough_ao_1k.jpg"
+      },
+      "png": {
+        "size": 6139761,
+        "md5": "4be889e95c011768f423e9f0da63c5c5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_rough_ao_1k.png"
+      },
+      "exr": {
+        "size": 1700719,
+        "md5": "b6a0b60578161ab682a09944390e1b98",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_rough_ao_1k.exr"
+      }
+    }
+  },
+  "arm": {
+    "8k": {
+      "jpg": {
+        "size": 16358668,
+        "md5": "391e34e78e872c4c043ba716dcb7f3c5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_arm_8k.jpg"
+      },
+      "png": {
+        "size": 263023379,
+        "md5": "b1712b5c67e1ebc84c70a12de1fff6d9",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_arm_8k.png"
+      },
+      "exr": {
+        "size": 125169758,
+        "md5": "95c95d92e44a27c94e75a4c7feba8f10",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_arm_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 4053803,
+        "md5": "9240c4cbe69b8d8c8931ad533adf1f78",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_arm_4k.jpg"
+      },
+      "png": {
+        "size": 74669799,
+        "md5": "7d61e63c50bdca180b88c95679bcd44e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_arm_4k.png"
+      },
+      "exr": {
+        "size": 30210129,
+        "md5": "4a011d6e8a5e62a2871438670ed93774",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_arm_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 945301,
+        "md5": "1491ee517b5cf713639f3add1b91c933",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_arm_2k.jpg"
+      },
+      "png": {
+        "size": 18659345,
+        "md5": "f7759ea8bcd895db1bf0e2e07d027c84",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_arm_2k.png"
+      },
+      "exr": {
+        "size": 7311486,
+        "md5": "d2899a6029d21a2dd2f8b3af05ae4104",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_arm_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 216829,
+        "md5": "1f37fdb9b46b7fe34932ed9aa77df0bf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_arm_1k.jpg"
+      },
+      "png": {
+        "size": 4624657,
+        "md5": "4c48969da80d8ea834d54a9506063c8c",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_arm_1k.png"
+      },
+      "exr": {
+        "size": 1775366,
+        "md5": "9ac1ff75dbeae4a2b7073573c067a2ce",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_arm_1k.exr"
+      }
+    }
+  },
+  "AO": {
+    "8k": {
+      "jpg": {
+        "size": 41191021,
+        "md5": "194f2525b639526900b67eaa1900f17f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_ao_8k.jpg"
+      },
+      "png": {
+        "size": 189241958,
+        "md5": "73717fa0bbe1fd91847b3ae9c1021c68",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_ao_8k.png"
+      },
+      "exr": {
+        "size": 59190082,
+        "md5": "b03a10fb71e89b9fdfe69244c8c3e9eb",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_ao_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 9478903,
+        "md5": "98fa895c9885632b671c927d9a7efd14",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_ao_4k.jpg"
+      },
+      "png": {
+        "size": 38466676,
+        "md5": "38b591df6580bfe0f27031e2db6909cc",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_ao_4k.png"
+      },
+      "exr": {
+        "size": 14150552,
+        "md5": "ed03a25f9423630e6095b4cf51bd8552",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_ao_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 2162395,
+        "md5": "9af2f43497a01ddd406f7b36d718fca4",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_ao_2k.jpg"
+      },
+      "png": {
+        "size": 9480342,
+        "md5": "2b544c93bb16d5cb85e0851dde37a62d",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_ao_2k.png"
+      },
+      "exr": {
+        "size": 3398889,
+        "md5": "5c1feee571db8e8c3b45d7ee46154a44",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_ao_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 506528,
+        "md5": "7d1ce90239859414aa607b0bd99e8262",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_ao_1k.jpg"
+      },
+      "png": {
+        "size": 2346389,
+        "md5": "ba88348eb9e2b28ead02e4b303453a05",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_ao_1k.png"
+      },
+      "exr": {
+        "size": 840218,
+        "md5": "142f5f9370fea0ca20b34cd6ee4c3bcd",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_ao_1k.exr"
+      }
+    }
+  },
+  "Displacement": {
+    "8k": {
+      "jpg": {
+        "size": 4561033,
+        "md5": "f94797f70e0cac53add10091cc108e95",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_disp_8k.jpg"
+      },
+      "png": {
+        "size": 79766291,
+        "md5": "611c97614b89bb1630f42169e749e8e7",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_disp_8k.png"
+      },
+      "exr": {
+        "size": 8926805,
+        "md5": "eb899e7c56b25f60dfa7a49a7a0394e4",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_disp_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 1528355,
+        "md5": "8d8734171639458ebe4318dbe430caea",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_disp_4k.jpg"
+      },
+      "png": {
+        "size": 28134986,
+        "md5": "6967126021cf0fd6a6c990bc807eae0f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_disp_4k.png"
+      },
+      "exr": {
+        "size": 3025152,
+        "md5": "727185d0c39cab5a3913ceb2b258d3d5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_disp_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 530342,
+        "md5": "a02fe96ebd14dabd8fc7a829f4a77bac",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_disp_2k.jpg"
+      },
+      "png": {
+        "size": 7364831,
+        "md5": "9934919189ea7d4f7e233bfeeb667f6f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_disp_2k.png"
+      },
+      "exr": {
+        "size": 1041410,
+        "md5": "69e824f8260bbba8ac4aea5c90b467dc",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_disp_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 174116,
+        "md5": "1c94b490268e4fca333e3d8d4afac033",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_disp_1k.jpg"
+      },
+      "png": {
+        "size": 1951317,
+        "md5": "1fe85f6e82e3e62a1e5f143a7a31971c",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_disp_1k.png"
+      },
+      "exr": {
+        "size": 358592,
+        "md5": "7e7c82b1f3e26cb2477046c835b98c98",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_disp_1k.exr"
+      }
+    }
+  },
+  "Rough": {
+    "8k": {
+      "jpg": {
+        "size": 16209135,
+        "md5": "10772228e9496b246fe9e725fe0e5a8b",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_rough_8k.jpg"
+      },
+      "png": {
+        "size": 127809818,
+        "md5": "ae0697508a07510a86e2efdaad32cd11",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_rough_8k.png"
+      },
+      "exr": {
+        "size": 26520001,
+        "md5": "a54a3257b15a657786960a37fb47a3bf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_rough_8k.exr"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 5311238,
+        "md5": "5e97d52f1278ba5389ebccc268cf86ab",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_rough_4k.jpg"
+      },
+      "png": {
+        "size": 34923634,
+        "md5": "6f35ed65acb136c6117a017a894aa9ad",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_rough_4k.png"
+      },
+      "exr": {
+        "size": 8519880,
+        "md5": "6302a9466a76c99022b4aaf475fa4495",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_rough_4k.exr"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 1495844,
+        "md5": "8d181000237d420a73f99dfc260dab17",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_rough_2k.jpg"
+      },
+      "png": {
+        "size": 8915297,
+        "md5": "686615872c298accf915ff73d587a58a",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_rough_2k.png"
+      },
+      "exr": {
+        "size": 2466654,
+        "md5": "a45a9cda5b1c914bf5f4170951b1226e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_rough_2k.exr"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 362214,
+        "md5": "f78c5cdc565f990299ae7c5a81f68cf7",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_rough_1k.jpg"
+      },
+      "png": {
+        "size": 2225970,
+        "md5": "f732623ea415e31ffc839da6bd45fc2e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_rough_1k.png"
+      },
+      "exr": {
+        "size": 625795,
+        "md5": "42a6fe81d3e74809b558e1a5db423b81",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_rough_1k.exr"
+      }
+    }
+  },
+  "mtlx": {
+    "8k": {
+      "mtlx": {
+        "size": 4768,
+        "md5": "408501d8834d93660c70ffa23719f345",
+        "include": {
+          "textures/aerial_grass_rock_nor_gl_8k.exr": {
+            "size": 159499149,
+            "md5": "cd21e90d2395b9705f66256123d7afa4",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/aerial_grass_rock/aerial_grass_rock_nor_gl_8k.exr"
+          },
+          "textures/aerial_grass_rock_rough_8k.jpg": {
+            "size": 16209135,
+            "md5": "10772228e9496b246fe9e725fe0e5a8b",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_rough_8k.jpg"
+          },
+          "textures/aerial_grass_rock_diff_8k.jpg": {
+            "size": 27893471,
+            "md5": "8d2a5b5f6c3ef678c09b2a96c00cb03c",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/aerial_grass_rock/aerial_grass_rock_diff_8k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_8k.png": {
+            "size": 79766291,
+            "md5": "611c97614b89bb1630f42169e749e8e7",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/aerial_grass_rock/aerial_grass_rock_disp_8k.png"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/8k/aerial_grass_rock/aerial_grass_rock_8k.mtlx"
+      }
+    },
+    "4k": {
+      "mtlx": {
+        "size": 4768,
+        "md5": "199c9358abd2d716ab096106e45da4be",
+        "include": {
+          "textures/aerial_grass_rock_rough_4k.jpg": {
+            "size": 5311238,
+            "md5": "5e97d52f1278ba5389ebccc268cf86ab",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_rough_4k.jpg"
+          },
+          "textures/aerial_grass_rock_nor_gl_4k.exr": {
+            "size": 34881263,
+            "md5": "fa4898efeecbac5a56a5f2e62bd4eefa",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/aerial_grass_rock/aerial_grass_rock_nor_gl_4k.exr"
+          },
+          "textures/aerial_grass_rock_diff_4k.jpg": {
+            "size": 9067116,
+            "md5": "dc4dbd56d49f3278d1fcde8e58159a84",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/aerial_grass_rock/aerial_grass_rock_diff_4k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_4k.png": {
+            "size": 28134986,
+            "md5": "6967126021cf0fd6a6c990bc807eae0f",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/aerial_grass_rock/aerial_grass_rock_disp_4k.png"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/4k/aerial_grass_rock/aerial_grass_rock_4k.mtlx"
+      }
+    },
+    "2k": {
+      "mtlx": {
+        "size": 4768,
+        "md5": "33a1c82e82892d918f40ef001ce4c4da",
+        "include": {
+          "textures/aerial_grass_rock_nor_gl_2k.exr": {
+            "size": 8510084,
+            "md5": "03b0de5c4a4a009099e84a6055c54349",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/aerial_grass_rock/aerial_grass_rock_nor_gl_2k.exr"
+          },
+          "textures/aerial_grass_rock_rough_2k.jpg": {
+            "size": 1495844,
+            "md5": "8d181000237d420a73f99dfc260dab17",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_rough_2k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_2k.png": {
+            "size": 7364831,
+            "md5": "9934919189ea7d4f7e233bfeeb667f6f",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_disp_2k.png"
+          },
+          "textures/aerial_grass_rock_diff_2k.jpg": {
+            "size": 2624635,
+            "md5": "024018554c0002620127749d1f585f3d",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/aerial_grass_rock/aerial_grass_rock_diff_2k.jpg"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/2k/aerial_grass_rock/aerial_grass_rock_2k.mtlx"
+      }
+    },
+    "1k": {
+      "mtlx": {
+        "size": 4768,
+        "md5": "f5de2e1636bc0eee1834e7929c7d19e0",
+        "include": {
+          "textures/aerial_grass_rock_diff_1k.jpg": {
+            "size": 666655,
+            "md5": "e920ce36afd0abff000b8366d3d768d3",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg"
+          },
+          "textures/aerial_grass_rock_rough_1k.jpg": {
+            "size": 362214,
+            "md5": "f78c5cdc565f990299ae7c5a81f68cf7",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_rough_1k.jpg"
+          },
+          "textures/aerial_grass_rock_disp_1k.png": {
+            "size": 1951317,
+            "md5": "1fe85f6e82e3e62a1e5f143a7a31971c",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_disp_1k.png"
+          },
+          "textures/aerial_grass_rock_nor_gl_1k.exr": {
+            "size": 2104775,
+            "md5": "ab0a086a2c6cfd0dc4a1e0c2c213ea74",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.exr"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/1k/aerial_grass_rock/aerial_grass_rock_1k.mtlx"
+      }
+    }
+  }
+}

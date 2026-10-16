@@ -1,0 +1,266 @@
+{
+  "candidate": "G",
+  "baseCommit": "75e82d563bfaae4c70fe0019f13a682f9b77fd68",
+  "branch": "codex/blog-experience-20261016",
+  "sourceWorktree": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
+  "productionAndNewTests": [
+    {
+      "path": "assets/css/space-cafe.css",
+      "bytes": 33542,
+      "sha256": "265ce8f008c526f6ae8cc70ade6a2accdda07decddc1a3cd981fb3683cf46ca0"
+    },
+    {
+      "path": "assets/js/space/cafe.js",
+      "bytes": 15938,
+      "sha256": "3c56a337093010f874d41f19971ddcb6cd5a90fb36423e78a69807f53bf8ba5c"
+    },
+    {
+      "path": "assets/js/space/cat-state.mjs",
+      "bytes": 8413,
+      "sha256": "9df20418e88bbea18cc9a32d1a497457fd24753cc007e8d7db1c019efd696241"
+    },
+    {
+      "path": "assets/js/space/world-cafe.js",
+      "bytes": 49333,
+      "sha256": "91681099b3f237dd2114d25733a47fd734c889345bb768f59d3c12e92ece5b39"
+    },
+    {
+      "path": "assets/js/space/world-cat.js",
+      "bytes": 10485,
+      "sha256": "e61e3f8203ffa3671e330cf855007a3d9f7c09fcc8fa617f8c6d9edaae116953"
+    },
+    {
+      "path": "assets/js/space/world-details.js",
+      "bytes": 8155,
+      "sha256": "e69ea71f55acd9c07de93dfdf47f86573d8ad296c71d4f9b68ae54cc75d1632e"
+    },
+    {
+      "path": "assets/js/space/world-garden.mjs",
+      "bytes": 4291,
+      "sha256": "5d739eb6cb190847442681173b801ee52fb7e8375dd17ac1d05d52a51f530772"
+    },
+    {
+      "path": "assets/js/space/world-ground.js",
+      "bytes": 4650,
+      "sha256": "79842b29699c3fa42377538c2383b4c8e77d8354809dac10302ba4ec364a3e94"
+    },
+    {
+      "path": "assets/js/space/world-landscape.mjs",
+      "bytes": 6800,
+      "sha256": "9b6bc7978a5370696aa317ec56656a9f333e839b9b4eabaab69ab43b39e42103"
+    },
+    {
+      "path": "assets/js/space/world-materials.js",
+      "bytes": 13610,
+      "sha256": "28743eb12ea536eece2151baa4b098c27938b1a71bb333ba0ff507655968aab6"
+    },
+    {
+      "path": "assets/js/space/world-nature.js",
+      "bytes": 8697,
+      "sha256": "1b9efe8765389cdcbf3384862d8bd259410a8043a076661d2f0847793f54b762"
+    },
+    {
+      "path": "assets/js/space/world-places.js",
+      "bytes": 11738,
+      "sha256": "22797589f79c39881133cc9ba9f619d29f74a797608bb76c5cac80e309c16244"
+    },
+    {
+      "path": "assets/js/space/world-props.js",
+      "bytes": 4887,
+      "sha256": "ec4ec37b26a93748e17f813db91096195fdd88fc775a6badb4926bc7d16dc795"
+    },
+    {
+      "path": "assets/js/vendor/RGBELoader.js",
+      "bytes": 11377,
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4"
+    },
+    {
+      "path": "assets/js/vendor/THREE-ADDONS.md",
+      "bytes": 926,
+      "sha256": "cd2460f01cca879868eff84e2ce5d0caeb2ae96b2d781b3e19d8453009e1a03d"
+    },
+    {
+      "path": "layouts/partials/space/cafe.html",
+      "bytes": 10735,
+      "sha256": "c4237dda24368d61ac65465e3499cffde9d59310a8cc531714e963a5c6c5efe7"
+    },
+    {
+      "path": "scripts/space-cat-interaction.test.mjs",
+      "bytes": 9490,
+      "sha256": "cd5828eb56195c211504ae5c7c175e812d46842f7a1c56202bea9d8ffbb3b0f3"
+    },
+    {
+      "path": "scripts/space-environment.test.mjs",
+      "bytes": 26869,
+      "sha256": "86df21acf39a58b0fd57bb8194d10459341606637263515818f9e449cc510a3a"
+    },
+    {
+      "path": "scripts/space-places.test.mjs",
+      "bytes": 9942,
+      "sha256": "3d4c4391050c4decfadbf5c5898d00f653f75a4f41de2ad6c1ebfe44ae957a6a"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/aerial_grass_rock-color.jpg",
+      "bytes": 666655,
+      "sha256": "57b8041bfe0d0f01430e4dbaad45e7ddddf0a9fc97317f90dbc51f7b0d9e1b5d"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/aerial_grass_rock-normal.jpg",
+      "bytes": 108305,
+      "sha256": "fe3828b9dee37e9a969c8d3776c9710899cd92a147cc431961beebe42b0d2f8a"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/aerial_grass_rock-roughness.jpg",
+      "bytes": 76110,
+      "sha256": "81074bc457a493b87ec2a40bfa9dce1ad97f2afeccbd24d27692daa48e04b893"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/brown_mud_rocks_01-color.jpg",
+      "bytes": 887215,
+      "sha256": "805675195f875f75b8f34410d8ead8b75c25643cdb2c0a8b0936d0f2698cce8c"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/brown_mud_rocks_01-normal.jpg",
+      "bytes": 178216,
+      "sha256": "1bf3c7d7a5c033fc2b503765ce54e47a5b79b42d402133d54e25d77588a5180f"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/brown_mud_rocks_01-roughness.jpg",
+      "bytes": 184208,
+      "sha256": "81f879b88dae67160fcb633a3e7b3b018a7213a4c4126829800c77c3aee1cfb0"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/drakensberg_solitary_mountain-1k.hdr",
+      "bytes": 1473279,
+      "sha256": "c132cea22e45dd0db830fe40dbdb49b3fe33a2ff916d2be9c4a0c6471e5de1a5"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/forest_grove-1k.hdr",
+      "bytes": 1922024,
+      "sha256": "9f8afec8d7b6701e5f7975ad3bb3e6b7dde5f5a134677f9c02c332aa2cf84137"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/forest_leaves_04-color.jpg",
+      "bytes": 423500,
+      "sha256": "a898e6ef0668a40faaf1bcbc6b024f6ef437ec424a10fa47aa6d35d013c9dade"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/forest_leaves_04-normal.jpg",
+      "bytes": 178198,
+      "sha256": "ad5e1d0b0794c22111ec275a0db4b6a6be20a3e5133ef7c4eb2ef142b69a8440"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/forest_leaves_04-roughness.jpg",
+      "bytes": 121792,
+      "sha256": "08031b54dd7dff2a17629a8e80c77d3fb7e29a1f7157a5f18a842338e77c6b36"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/overcast-sky-1k.hdr",
+      "bytes": 1174053,
+      "sha256": "5f98aa01d43a49cd899299751a978b3e5559a76300198b5dd2d9c68ecc4ad130"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+      "bytes": 686726,
+      "sha256": "440310f05af089f2c93353167573403cbc3f805948203237b5d26431eeb9e19c"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/painted_plaster_wall-normal.jpg",
+      "bytes": 60860,
+      "sha256": "29c5fb64dde602b87f77d0dff4d77ad811f86e48516efc3f86f3dad516f848b3"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/painted_plaster_wall-roughness.jpg",
+      "bytes": 20574,
+      "sha256": "c26a721e1056bab9eb99a5299f076c77efd40c2feb295875842e778129ec1276"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/pine-twig-alpha.jpg",
+      "bytes": 42437,
+      "sha256": "e316987d04fef859af12c64ce5609a9f1e4ad3f30d1262aeba23dbec9819dc0d"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/pine-twig-color.jpg",
+      "bytes": 74224,
+      "sha256": "5ea94ece3f86a73bf45931f421a17884cfe3eece473b69cc992ee6864286856e"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/rock_boulder_dry-color.jpg",
+      "bytes": 859211,
+      "sha256": "20f653a42fb24f42aa40641663070d578678da49af18cc1049dbdd4ed8679f3c"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/rock_boulder_dry-normal.jpg",
+      "bytes": 71778,
+      "sha256": "549f97082175a1daf842294076d5bf69784700c002bc8a40e750c16bac039cf2"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/rock_boulder_dry-roughness.jpg",
+      "bytes": 82007,
+      "sha256": "168589da7a5c26aa9678273b58f02771242dd929897c5b72571359514a585a4e"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/secluded_beach-1k.hdr",
+      "bytes": 1582472,
+      "sha256": "6dabc57dc42770ac20f87402d11246098caacc3de9a5fefd8444a229dbb70425"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/shudu_lake-1k.hdr",
+      "bytes": 1631335,
+      "sha256": "625e7c16eb4148d367d6f8892b6e24fd81f06ba79f569fa60994b97fb68f5c78"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/wood_floor-color.jpg",
+      "bytes": 734493,
+      "sha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/wood_floor-normal.jpg",
+      "bytes": 14506,
+      "sha256": "e6eba761dd4fb23cbb3db16ce6c98c83983ef11f9be4ae8014721ee4cac94a54"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/wood_floor-roughness.jpg",
+      "bytes": 48517,
+      "sha256": "b3d117148f083dfe5e26f116a55d1eb8100944676b4b42095fb3d50a5ebe9483"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/wood_table_001-color.jpg",
+      "bytes": 215573,
+      "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/wood_table_001-normal.jpg",
+      "bytes": 16937,
+      "sha256": "4aed2496498d61eb03354fa56d868af9f4865719bc8e62c9003b4c3f654335b1"
+    },
+    {
+      "path": "static/images/space/cafe/materials-v1/wood_table_001-roughness.jpg",
+      "bytes": 76203,
+      "sha256": "1c10aac10e0f7d203384c9f1caf1df6083706874c91b7d53a51f5df27a4549d0"
+    }
+  ],
+  "protectedUnchanged": [
+    "assets/js/space/desktop.js",
+    "assets/js/space/apps.js",
+    "assets/js/space/world-state.mjs",
+    "assets/js/space/world-details.mjs",
+    "assets/js/space/onboarding.js",
+    "assets/js/space/onboarding.mjs",
+    "assets/css/space.css",
+    "data/travel.yml"
+  ],
+  "tests": {
+    "distinct": 63,
+    "pass": 63,
+    "fail": 0,
+    "skip": 0,
+    "log": "validation-logs.tar.gz:final-g-node.log"
+  },
+  "preview": "http://127.0.0.1:1317/zh/projects/",
+  "unverified": [
+    "whole-world photorealism / 96 score unachieved",
+    "real-device FPS and all async/dispose permutations unverified"
+  ],
+  "independentReviewSha256": "6cc80fe1213b025ba57f8e2a9287d33b0684e496c2f22e606f2cf8c75d7cde97"
+}

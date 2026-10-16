@@ -1,0 +1,462 @@
+{
+  "tonemapped": {
+    "size": 7853973,
+    "md5": "a2b0081194aa71ed7b0b65835c17f451",
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/secluded_beach.jpg"
+  },
+  "hdri": {
+    "8k": {
+      "hdr": {
+        "size": 99396041,
+        "md5": "1d4bc7a9b14a36e20c92f3db4ee2c288",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/8k/secluded_beach_8k.hdr"
+      },
+      "exr": {
+        "size": 91884373,
+        "md5": "c9de45b04d858d924a05e014e923a72d",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/8k/secluded_beach_8k.exr"
+      }
+    },
+    "16k": {
+      "hdr": {
+        "size": 367718866,
+        "md5": "7f56b09da3759613e4ee88d99a95bac9",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/16k%2B/secluded_beach_16k.hdr"
+      },
+      "exr": {
+        "size": 339900957,
+        "md5": "4a5af612f0f347d82635af65aa608071",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/16k%2B/secluded_beach_16k.exr"
+      }
+    },
+    "4k": {
+      "hdr": {
+        "size": 25375378,
+        "md5": "c21da4cb34887774d61aa72741bf4009",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/secluded_beach_4k.hdr"
+      },
+      "exr": {
+        "size": 23794344,
+        "md5": "5e596a0dde52dfcf9b1e86cbe70e7a7e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/4k/secluded_beach_4k.exr"
+      }
+    },
+    "2k": {
+      "hdr": {
+        "size": 6315212,
+        "md5": "3ecac05563374d2939e9585e678de834",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/secluded_beach_2k.hdr"
+      },
+      "exr": {
+        "size": 6035399,
+        "md5": "53c32a0c6c0355b3d637c4919a4b086b",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/2k/secluded_beach_2k.exr"
+      }
+    },
+    "1k": {
+      "hdr": {
+        "size": 1582472,
+        "md5": "1ee56faeefb39653e2bd1a7bf7c88d5f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/secluded_beach_1k.hdr"
+      },
+      "exr": {
+        "size": 1535320,
+        "md5": "4d569f698fff81db314907d5e869bdc1",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/1k/secluded_beach_1k.exr"
+      }
+    }
+  },
+  "backplates": {
+    "IMG_0508": {
+      "jpg_pretty": {
+        "size": 10526221,
+        "md5": "447969a6fdf72f2c342de1bcf625fc42",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0508.jpg"
+      },
+      "jpg_plain": {
+        "size": 9018730,
+        "md5": "d16378b2cf3ee2f42b4e3a8a3506324f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0508.jpg"
+      },
+      "raw": {
+        "size": 25299688,
+        "md5": "21d337c95e2be1ef33a08d5fb7656559",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0508.dng"
+      }
+    },
+    "IMG_0507": {
+      "jpg_pretty": {
+        "size": 7723273,
+        "md5": "2dc04ec857b0fe4b962b75cf0cc8f2d6",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0507.jpg"
+      },
+      "jpg_plain": {
+        "size": 7143200,
+        "md5": "138314837df9c4ecf96f9f84ffdf488f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0507.jpg"
+      },
+      "raw": {
+        "size": 23479216,
+        "md5": "06e020311e46a022d8409dfb9e0a74f6",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0507.dng"
+      }
+    },
+    "IMG_0518": {
+      "jpg_pretty": {
+        "size": 12752090,
+        "md5": "0417257c196a5c1a11bf9d77aae031f0",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0518.jpg"
+      },
+      "jpg_plain": {
+        "size": 10739710,
+        "md5": "ebed92658a498d11c34e8a7e9a59441a",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0518.jpg"
+      },
+      "raw": {
+        "size": 26202552,
+        "md5": "fa6d5fa0e441f15f074d32234058227c",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0518.dng"
+      }
+    },
+    "IMG_0506": {
+      "jpg_pretty": {
+        "size": 8061757,
+        "md5": "27f1583459e1eac31022a55caf659def",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0506.jpg"
+      },
+      "jpg_plain": {
+        "size": 6685924,
+        "md5": "a2ac8eb5970ffea2c8892947abe5f3dd",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0506.jpg"
+      },
+      "raw": {
+        "size": 20925090,
+        "md5": "8bafca4462665b7d88c11d3349bdbf75",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0506.dng"
+      }
+    },
+    "IMG_0517": {
+      "jpg_pretty": {
+        "size": 10541334,
+        "md5": "8dc4d591044c5fd685bfbe17d5fbe12a",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0517.jpg"
+      },
+      "jpg_plain": {
+        "size": 7301397,
+        "md5": "45a31943e427f8d1dd73d5d3e53afea2",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0517.jpg"
+      },
+      "raw": {
+        "size": 21335914,
+        "md5": "bf5dec02c9d1c3ceec6d6feb809ce67e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0517.dng"
+      }
+    },
+    "IMG_0505": {
+      "jpg_pretty": {
+        "size": 7709644,
+        "md5": "5ed6c0fe51d1dce6058a70e682e83701",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0505.jpg"
+      },
+      "jpg_plain": {
+        "size": 6512736,
+        "md5": "14853a32c925a88c291b32acbd4047c5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0505.jpg"
+      },
+      "raw": {
+        "size": 21400538,
+        "md5": "f541edca2d727b73055d7b518d9ea45a",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0505.dng"
+      }
+    },
+    "IMG_0516": {
+      "jpg_pretty": {
+        "size": 13199003,
+        "md5": "e0af54762de361bcd99d9eb3104cee6d",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0516.jpg"
+      },
+      "jpg_plain": {
+        "size": 10034473,
+        "md5": "3d1871e6ca0d0b37912688c8b73c5b36",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0516.jpg"
+      },
+      "raw": {
+        "size": 24424248,
+        "md5": "7834534b743c4986796a24539839b539",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0516.dng"
+      }
+    },
+    "IMG_0504": {
+      "jpg_pretty": {
+        "size": 11368565,
+        "md5": "611686c0be38379fde75b04ed1a8307a",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0504.jpg"
+      },
+      "jpg_plain": {
+        "size": 9073021,
+        "md5": "3580d7bebf8bfe1c702706502d748ae4",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0504.jpg"
+      },
+      "raw": {
+        "size": 23693432,
+        "md5": "11217e1d1cdd2531a3c8b526b9d9c851",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0504.dng"
+      }
+    },
+    "IMG_0515": {
+      "jpg_pretty": {
+        "size": 12611264,
+        "md5": "88bf3ef755b61fd7f8e70b738a9df48e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0515.jpg"
+      },
+      "jpg_plain": {
+        "size": 10634381,
+        "md5": "4c3230df637af5e052f6981264fef7a5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0515.jpg"
+      },
+      "raw": {
+        "size": 24922390,
+        "md5": "b8f7b6a66ba22137434c9623260311b7",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0515.dng"
+      }
+    },
+    "IMG_0503": {
+      "jpg_pretty": {
+        "size": 8961079,
+        "md5": "c8688e9a91e5fab6a50a13c62c452c65",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0503.jpg"
+      },
+      "jpg_plain": {
+        "size": 7445853,
+        "md5": "b82acfb63a9d47e5d494fcc73900dd6e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0503.jpg"
+      },
+      "raw": {
+        "size": 22174186,
+        "md5": "0c1d4599f8ce1b91aa4d68929502c64f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0503.dng"
+      }
+    },
+    "IMG_0514": {
+      "jpg_pretty": {
+        "size": 12597005,
+        "md5": "c50c279382f9009469689cf9f26e05d0",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0514.jpg"
+      },
+      "jpg_plain": {
+        "size": 9397798,
+        "md5": "daceb7909b9dc35096930d69b380270b",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0514.jpg"
+      },
+      "raw": {
+        "size": 23727968,
+        "md5": "fb02d863c030813d4762a4bb5aaa581e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0514.dng"
+      }
+    },
+    "IMG_0502": {
+      "jpg_pretty": {
+        "size": 6760324,
+        "md5": "1e2ae060031ff9e4e809297078cb0f6a",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0502.jpg"
+      },
+      "jpg_plain": {
+        "size": 6437135,
+        "md5": "9bac214c8cb5d73c9e79b7ad551e4750",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0502.jpg"
+      },
+      "raw": {
+        "size": 20747702,
+        "md5": "538f63df851c5119e9e8b8d10e818401",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0502.dng"
+      }
+    },
+    "IMG_0513": {
+      "jpg_pretty": {
+        "size": 10369874,
+        "md5": "6a20d150c3ea2429f1413faa53e94868",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0513.jpg"
+      },
+      "jpg_plain": {
+        "size": 8926552,
+        "md5": "e677fa60b428b3628ca52e7767cf34f0",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0513.jpg"
+      },
+      "raw": {
+        "size": 25301282,
+        "md5": "830214751b6bbcfc3d62264040813e30",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0513.dng"
+      }
+    },
+    "IMG_0501": {
+      "jpg_pretty": {
+        "size": 8905615,
+        "md5": "720a664f939a50d88f212630e73319d8",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0501.jpg"
+      },
+      "jpg_plain": {
+        "size": 7391705,
+        "md5": "9148c1d0b8aeb085d4d9ffd2201da38c",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0501.jpg"
+      },
+      "raw": {
+        "size": 21576794,
+        "md5": "99297473376ace9ba986c83c8b5317f5",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0501.dng"
+      }
+    },
+    "IMG_0512": {
+      "jpg_pretty": {
+        "size": 9975666,
+        "md5": "8d766626de231ac05be79a375687d328",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0512.jpg"
+      },
+      "jpg_plain": {
+        "size": 8190145,
+        "md5": "8a7f365fb4be1c12dc47d7c1f65b00d8",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0512.jpg"
+      },
+      "raw": {
+        "size": 23498148,
+        "md5": "0402543b0a495ba2cabb3a193bbf8c07",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0512.dng"
+      }
+    },
+    "IMG_0500": {
+      "jpg_pretty": {
+        "size": 7748830,
+        "md5": "c5c2277261535228c4285f904c9300d3",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0500.jpg"
+      },
+      "jpg_plain": {
+        "size": 5283085,
+        "md5": "5b8b4f3d57bc94304b0fa16c72a6765d",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0500.jpg"
+      },
+      "raw": {
+        "size": 19688152,
+        "md5": "0eb85cace148ade134421e02d29d9ecf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0500.dng"
+      }
+    },
+    "IMG_0511": {
+      "jpg_pretty": {
+        "size": 12965831,
+        "md5": "c29e4fe31036eb28f4ededab6b43bb71",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0511.jpg"
+      },
+      "jpg_plain": {
+        "size": 10825541,
+        "md5": "342368a981c21c21dcc483e5bfebd194",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0511.jpg"
+      },
+      "raw": {
+        "size": 26110012,
+        "md5": "c99196149bfc672616833bbf4adeae3f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0511.dng"
+      }
+    },
+    "IMG_0499": {
+      "jpg_pretty": {
+        "size": 7938940,
+        "md5": "d1a821520b78c75fd5a687d2a0d87be3",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0499.jpg"
+      },
+      "jpg_plain": {
+        "size": 5506116,
+        "md5": "fca43114a4d52bb5cf9fd95f07949c84",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0499.jpg"
+      },
+      "raw": {
+        "size": 20031982,
+        "md5": "69a14ed157b212d8d55aba25d8445739",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0499.dng"
+      }
+    },
+    "IMG_0510": {
+      "jpg_pretty": {
+        "size": 12893729,
+        "md5": "f3c81548f2db52251b1de0170b1a2e6c",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0510.jpg"
+      },
+      "jpg_plain": {
+        "size": 10741857,
+        "md5": "f52b3b3479942d64f81182521304bcb6",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0510.jpg"
+      },
+      "raw": {
+        "size": 26094024,
+        "md5": "9a9897e6f550402e50d2cddc675af1a9",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0510.dng"
+      }
+    },
+    "IMG_0498": {
+      "jpg_pretty": {
+        "size": 6870317,
+        "md5": "9e75e8dab74e80932195a0b20576cca7",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0498.jpg"
+      },
+      "jpg_plain": {
+        "size": 5788304,
+        "md5": "5a93c5429158420134ebaf313a51c0b6",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0498.jpg"
+      },
+      "raw": {
+        "size": 20568938,
+        "md5": "dd88ceeccbdbe5d271d99e7ec7150468",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0498.dng"
+      }
+    },
+    "IMG_0497": {
+      "jpg_pretty": {
+        "size": 7596926,
+        "md5": "96a071b0309c474da285a3322c8df156",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0497.jpg"
+      },
+      "jpg_plain": {
+        "size": 6568809,
+        "md5": "ecf2c5146ee5281b4ff6696e7dc752b1",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0497.jpg"
+      },
+      "raw": {
+        "size": 20643878,
+        "md5": "b0041720234d4454bc289d8b43912895",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0497.dng"
+      }
+    },
+    "IMG_0495": {
+      "jpg_pretty": {
+        "size": 6868112,
+        "md5": "84afb6c476a7e1e8c915dc52b854a9d2",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0495.jpg"
+      },
+      "jpg_plain": {
+        "size": 6156255,
+        "md5": "3b7d4d4602caccf7baad5e0b558535d1",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0495.jpg"
+      },
+      "raw": {
+        "size": 20385656,
+        "md5": "65177843a6fbb4a96baac4f76ad6fc7e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0495.dng"
+      }
+    },
+    "IMG_0494": {
+      "jpg_pretty": {
+        "size": 6798966,
+        "md5": "65fcdf9e348b3776549bedc81a0dcf70",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_pretty/IMG_0494.jpg"
+      },
+      "jpg_plain": {
+        "size": 6142618,
+        "md5": "d95d9f5da013873547191ac0f51a7ae2",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/jpg_plain/IMG_0494.jpg"
+      },
+      "raw": {
+        "size": 20445624,
+        "md5": "1c4ea3c4ca0ed95257747ff4da3bd38d",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/secluded_beach/raw/IMG_0494.dng"
+      }
+    }
+  }
+}

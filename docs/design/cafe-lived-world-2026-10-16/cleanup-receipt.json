@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-16T18:14:48.407850+00:00",
+  "removed": "/private/tmp/ai-test-blog-cafe-lived-world-20261016.WE5505",
+  "method": "dev-storage-guard remove-artifact",
+  "noOpenFiles": true,
+  "permanentLogs": "validation-logs.tar.gz",
+  "byteVerifiedRecords": 82,
+  "pruneSimulators": {
+    "deleted": 0,
+    "keptAllowlisted": 3
+  },
+  "retainedPreview": "http://127.0.0.1:1317/zh/projects/",
+  "noPushNoDeploy": true
+}

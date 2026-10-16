@@ -336,3 +336,11 @@
 .space-world-hud .space-cafe-inspect__bookbar button { min-width:44px; min-height:44px; border:0; border-radius:0; padding:8px 0; background:transparent; backdrop-filter:none; font-size:14px; text-decoration:underline; text-underline-offset:4px; }
 .space-cafe-inspect__caption:has(.space-cafe-inspect__bookbar) { padding-block:6px; }
 .space-cafe-inspect__bookbar + ul:not([hidden]) { margin-top:8px; padding-bottom:4px; }
+
+/* A direct encounter, with the same quiet actions as the physical details. */
+.space-world-hud__details { flex-wrap:wrap; max-width:calc(100% - 28px); }
+.space-world-hud button[aria-disabled="true"] { cursor:default; opacity:.65; }
+.space-cafe-cat { max-width:380px; }
+.space-cafe-cat__actions { display:flex; gap:20px; margin-bottom:4px; }
+.space-world-hud .space-cafe-cat__actions button { min-width:44px; min-height:44px; padding:8px 0; background:transparent; border:0; border-radius:0; backdrop-filter:none; font-size:14px; text-decoration:underline; text-underline-offset:4px; }
+.space-cafe-cat [role="status"] { font-size:14px; line-height:1.5; }

@@ -1,0 +1,28 @@
+{
+  "phase": "G implementation and bounded actual acceptance complete; independent review stopped; overall realism target remains unachieved",
+  "base": "75e82d563bfaae4c70fe0019f13a682f9b77fd68",
+  "sourceWorktree": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree",
+  "branch": "codex/blog-experience-20261016",
+  "activeHumanContinuation": true,
+  "oldHeartbeat": "12-00 PAUSED unchanged",
+  "workers": {
+    "execution": "/root/blog_executor; production exclusive except parent static assets and new vendor RGBELoader",
+    "inventory": "/root/blog_inventory; inventory only stopped",
+    "review": "/root/space_review; review only"
+  },
+  "registeredTmp": "Removed exact registered path after byte-identical permanent archive and no-open-file check",
+  "preview": "http://127.0.0.1:1317/zh/projects/",
+  "actualNativePreferences": {
+    "reduce": true,
+    "quiet": false
+  },
+  "browser": "IAB3 tab1 markedDeliverable; all viewport/media/network overrides reset; native1280x720; zh/zen/roam/quietfalse; nativeReduce true",
+  "notYetAccepted": [
+    "whole-world photorealism / 96 score unachieved",
+    "real-device FPS and all async/dispose permutations unverified"
+  ],
+  "resourceScope": "preview PID99935/port1317 retained; formal evidence retained; tmp precisely removed; prune-simulators deleted0/KEEP3; no iOS started; no additional heavy build under low disk",
+  "score": "no96/99 or realism completion claimed",
+  "updatedUtc": "2026-10-16T18:14:48.407850+00:00",
+  "localCheckpoint": "Git commit containing this snapshot"
+}

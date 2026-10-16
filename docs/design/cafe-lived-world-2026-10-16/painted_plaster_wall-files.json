@@ -1,0 +1,1052 @@
+{
+  "Diffuse": {
+    "8k": {
+      "jpg": {
+        "size": 43648529,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_diff_8k.jpg",
+        "md5": "e55146c65099898b556a0dda0ee267c8"
+      },
+      "png": {
+        "size": 347444330,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_diff_8k.png",
+        "md5": "df6c9280f2874f47132bac5070697764"
+      },
+      "exr": {
+        "size": 61336955,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_diff_8k.exr",
+        "md5": "cbf23f318ef348cb8f171ac06e5b8bc7"
+      }
+    },
+    "16k": {
+      "jpg": {
+        "size": 128760056,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_diff_16k.jpg",
+        "md5": "aece3730d55eda1926a5ad0e94213529"
+      },
+      "png": {
+        "size": 1311820118,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_diff_16k.png",
+        "md5": "2f2c62062c91ec05e81456cee3418b7c"
+      },
+      "exr": {
+        "size": 185491958,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_diff_16k.exr",
+        "md5": "e064129097262dd549e74016e3b019bf"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 12556766,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_diff_4k.jpg",
+        "md5": "7db04e0e455152cf79e112f5852c973d"
+      },
+      "png": {
+        "size": 89568282,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_diff_4k.png",
+        "md5": "82dcf4263cc3b645feef088bf78ec383"
+      },
+      "exr": {
+        "size": 17995072,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_diff_4k.exr",
+        "md5": "3cc98cc366f126a569f41f30be3886e8"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 3132937,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_diff_2k.jpg",
+        "md5": "32f4f4e5ded7d20e55e337004d0d9691"
+      },
+      "png": {
+        "size": 22706294,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_diff_2k.png",
+        "md5": "a59f31e4461b4e9385e88030e32280d9"
+      },
+      "exr": {
+        "size": 4442147,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_diff_2k.exr",
+        "md5": "aabd9cec5e89c662d1fceb2e50f452fe"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 686726,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_diff_1k.jpg",
+        "md5": "15ba8c1f63a5ab412b1eabe31728540a"
+      },
+      "png": {
+        "size": 5617058,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_diff_1k.png",
+        "md5": "a579bdf62c32e5d8ada9b167da322416"
+      },
+      "exr": {
+        "size": 943871,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_diff_1k.exr",
+        "md5": "20f314f0fd8f84d4123b351439ed0d13"
+      }
+    }
+  },
+  "nor_dx": {
+    "8k": {
+      "jpg": {
+        "size": 58588281,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_nor_dx_8k.jpg",
+        "md5": "653a69026acd10c59ebc56668f93c0e9"
+      },
+      "png": {
+        "size": 353195059,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_nor_dx_8k.png",
+        "md5": "b33c54c011f300cbeb63780227b6e7c0"
+      },
+      "exr": {
+        "size": 118139834,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_nor_dx_8k.exr",
+        "md5": "e90463640129ba9c5e3ab0ad17de6054"
+      }
+    },
+    "16k": {
+      "jpg": {
+        "size": 191856847,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_nor_dx_16k.jpg",
+        "md5": "7d31ca9f5d6f029bbfb0e89662b1ae67"
+      },
+      "png": {
+        "size": 1334361356,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_nor_dx_16k.png",
+        "md5": "c72b883e02b046501a8d3fca270ef7aa"
+      },
+      "exr": {
+        "size": 369636133,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_nor_dx_16k.exr",
+        "md5": "ab144c738807edb1c0f77d0ed9a2c393"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 16231572,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_nor_dx_4k.jpg",
+        "md5": "6b76e3a8a1737242f629a977d0e7403c"
+      },
+      "png": {
+        "size": 90274887,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_nor_dx_4k.png",
+        "md5": "c15a03fc3027633d540920b584bef501"
+      },
+      "exr": {
+        "size": 33481693,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_nor_dx_4k.exr",
+        "md5": "c64142f1af27df1f4d30e4b6dddff133"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 4057940,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_nor_dx_2k.jpg",
+        "md5": "09f2dea3fed3b877d6d589df82f055f8"
+      },
+      "png": {
+        "size": 22789119,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_nor_dx_2k.png",
+        "md5": "8d007431481ffbff0e0d86684eb66e11"
+      },
+      "exr": {
+        "size": 8553786,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_nor_dx_2k.exr",
+        "md5": "53708a85246c4382c6f88be460a51a29"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 903207,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_nor_dx_1k.jpg",
+        "md5": "b65795d3a7c31d83ff31e055a16b7ad3"
+      },
+      "png": {
+        "size": 5687388,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_nor_dx_1k.png",
+        "md5": "0a6104ec9e3da58ed4e835f4a232a3fb"
+      },
+      "exr": {
+        "size": 2030018,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_nor_dx_1k.exr",
+        "md5": "af0193320443aa649a8ff82e355dc647"
+      }
+    }
+  },
+  "nor_gl": {
+    "8k": {
+      "jpg": {
+        "size": 58620794,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_nor_gl_8k.jpg",
+        "md5": "3bfb541bfbde5c4f0eabe91400f1807d"
+      },
+      "png": {
+        "size": 353204793,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_nor_gl_8k.png",
+        "md5": "6e636bd4a89a2eaa5a8ac70891e9dc57"
+      },
+      "exr": {
+        "size": 118170717,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_nor_gl_8k.exr",
+        "md5": "3c07fe1e02fa134583cf0412fde57a81"
+      }
+    },
+    "16k": {
+      "jpg": {
+        "size": 192052424,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_nor_gl_16k.jpg",
+        "md5": "2cadb52aab3bc7824b5632793811a6b8"
+      },
+      "png": {
+        "size": 1337766176,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_nor_gl_16k.png",
+        "md5": "8efcd0e704defc600046c2ec9fccdda4"
+      },
+      "exr": {
+        "size": 369597567,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_nor_gl_16k.exr",
+        "md5": "fc3ec1fe10b5974fd7b40f93f135d064"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 16230301,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_nor_gl_4k.jpg",
+        "md5": "efc61a0064fcb8b674ca817acd2e0555"
+      },
+      "png": {
+        "size": 90277227,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_nor_gl_4k.png",
+        "md5": "351ce0b340e3d17d801e03cecec90db8"
+      },
+      "exr": {
+        "size": 33497110,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_nor_gl_4k.exr",
+        "md5": "c470c0c6a33608ed4b99cd5960803012"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 4048392,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_nor_gl_2k.jpg",
+        "md5": "18faf9f7949aefdb3ae7cef7195cba04"
+      },
+      "png": {
+        "size": 22789885,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_nor_gl_2k.png",
+        "md5": "2eba0da17c1d194537c1231cb412e310"
+      },
+      "exr": {
+        "size": 8553701,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_nor_gl_2k.exr",
+        "md5": "1d00aad179bee580337c2f957841ea0d"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 900461,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_nor_gl_1k.jpg",
+        "md5": "43fff290583dbdfc9bfa088a2750e840"
+      },
+      "png": {
+        "size": 5688118,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_nor_gl_1k.png",
+        "md5": "a040e68bcbc18ce5f9bb84649c877d01"
+      },
+      "exr": {
+        "size": 2029808,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_nor_gl_1k.exr",
+        "md5": "48cd5a012bb80b83a7424b8deb2fcdf9"
+      }
+    }
+  },
+  "blend": {
+    "8k": {
+      "blend": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_8k.exr": {
+            "size": 118170717,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_nor_gl_8k.exr",
+            "md5": "3c07fe1e02fa134583cf0412fde57a81"
+          },
+          "textures/painted_plaster_wall_rough_8k.exr": {
+            "size": 16526116,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_rough_8k.exr",
+            "md5": "fdb7da207cdeffc930ff234bf580f41d"
+          },
+          "textures/painted_plaster_wall_diff_8k.jpg": {
+            "size": 43648529,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_diff_8k.jpg",
+            "md5": "e55146c65099898b556a0dda0ee267c8"
+          },
+          "textures/painted_plaster_wall_disp_8k.png": {
+            "size": 99028629,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_disp_8k.png",
+            "md5": "bf5682b541d1f43350a545ba3a965474"
+          }
+        },
+        "size": 216028,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/8k/painted_plaster_wall/painted_plaster_wall_8k.blend",
+        "md5": "015259e76a0324ee78aaaf7a6363f0cc"
+      }
+    },
+    "16k": {
+      "blend": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_16k.exr": {
+            "size": 369597567,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_nor_gl_16k.exr",
+            "md5": "fc3ec1fe10b5974fd7b40f93f135d064"
+          },
+          "textures/painted_plaster_wall_rough_16k.exr": {
+            "size": 49633643,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_rough_16k.exr",
+            "md5": "085beeda9d5b54dcc482b0dcc44a4bde"
+          },
+          "textures/painted_plaster_wall_diff_16k.jpg": {
+            "size": 128760056,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_diff_16k.jpg",
+            "md5": "aece3730d55eda1926a5ad0e94213529"
+          },
+          "textures/painted_plaster_wall_disp_16k.png": {
+            "size": 364595933,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_disp_16k.png",
+            "md5": "a8dd50b45fe1ea07f73e3932b7cce973"
+          }
+        },
+        "size": 216028,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/16k/painted_plaster_wall/painted_plaster_wall_16k.blend",
+        "md5": "bb53950bc562534e767e132d7c5f1796"
+      }
+    },
+    "4k": {
+      "blend": {
+        "include": {
+          "textures/painted_plaster_wall_disp_4k.png": {
+            "size": 26093820,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_disp_4k.png",
+            "md5": "ba4039583da135c56a8b60753b2e01d8"
+          },
+          "textures/painted_plaster_wall_diff_4k.jpg": {
+            "size": 12556766,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_diff_4k.jpg",
+            "md5": "7db04e0e455152cf79e112f5852c973d"
+          },
+          "textures/painted_plaster_wall_rough_4k.exr": {
+            "size": 5225725,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_rough_4k.exr",
+            "md5": "69f2f92cbab217b26f4fb0f27d3c302d"
+          },
+          "textures/painted_plaster_wall_nor_gl_4k.exr": {
+            "size": 33497110,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_nor_gl_4k.exr",
+            "md5": "c470c0c6a33608ed4b99cd5960803012"
+          }
+        },
+        "size": 215641,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/4k/painted_plaster_wall/painted_plaster_wall_4k.blend",
+        "md5": "3084c65a85fdf00701152fd03a02f48a"
+      }
+    },
+    "2k": {
+      "blend": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_2k.exr": {
+            "size": 8553701,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_nor_gl_2k.exr",
+            "md5": "1d00aad179bee580337c2f957841ea0d"
+          },
+          "textures/painted_plaster_wall_disp_2k.png": {
+            "size": 6821414,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_disp_2k.png",
+            "md5": "3826b298ae896a8ff22e8cf5964e35cf"
+          },
+          "textures/painted_plaster_wall_diff_2k.jpg": {
+            "size": 3132937,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_diff_2k.jpg",
+            "md5": "32f4f4e5ded7d20e55e337004d0d9691"
+          },
+          "textures/painted_plaster_wall_rough_2k.exr": {
+            "size": 1414932,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_rough_2k.exr",
+            "md5": "7edcf840639ffa38324b92053925c51a"
+          }
+        },
+        "size": 216331,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/2k/painted_plaster_wall/painted_plaster_wall_2k.blend",
+        "md5": "ffdcc4c7b736ff96f2aa2d527a0cee13"
+      }
+    },
+    "1k": {
+      "blend": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_1k.exr": {
+            "size": 2029808,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_nor_gl_1k.exr",
+            "md5": "48cd5a012bb80b83a7424b8deb2fcdf9"
+          },
+          "textures/painted_plaster_wall_rough_1k.exr": {
+            "size": 296023,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_rough_1k.exr",
+            "md5": "96f3110ddf09badeff7c08bb3d328b5b"
+          },
+          "textures/painted_plaster_wall_disp_1k.png": {
+            "size": 1752906,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_disp_1k.png",
+            "md5": "93566ac87958b2c5c6b25e1c2091ea32"
+          },
+          "textures/painted_plaster_wall_diff_1k.jpg": {
+            "size": 686726,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_diff_1k.jpg",
+            "md5": "15ba8c1f63a5ab412b1eabe31728540a"
+          }
+        },
+        "size": 215696,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/1k/painted_plaster_wall/painted_plaster_wall_1k.blend",
+        "md5": "3077984029644983b479916d9f656687"
+      }
+    }
+  },
+  "gltf": {
+    "8k": {
+      "gltf": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_8k.jpg": {
+            "size": 58620794,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_nor_gl_8k.jpg",
+            "md5": "3bfb541bfbde5c4f0eabe91400f1807d"
+          },
+          "textures/painted_plaster_wall_arm_8k.jpg": {
+            "size": 29996261,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_arm_8k.jpg",
+            "md5": "422ad6b9a0a899e00e250c03b4d2bfdf"
+          },
+          "painted_plaster_wall.bin": {
+            "size": 2370260,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/painted_plaster_wall/painted_plaster_wall.bin",
+            "md5": "fb3e34d6cc90cf0c924c936b977b5567"
+          },
+          "textures/painted_plaster_wall_diff_8k.jpg": {
+            "size": 43648529,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_diff_8k.jpg",
+            "md5": "e55146c65099898b556a0dda0ee267c8"
+          }
+        },
+        "size": 2845,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/painted_plaster_wall/painted_plaster_wall_8k.gltf",
+        "md5": "1159c8c43c22379bcd86fbd5e09ebf95"
+      }
+    },
+    "16k": {
+      "gltf": {
+        "include": {
+          "textures/painted_plaster_wall_arm_16k.jpg": {
+            "size": 121425242,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_arm_16k.jpg",
+            "md5": "af81dd2873e00c17ee5974529ac5beba"
+          },
+          "textures/painted_plaster_wall_nor_gl_16k.jpg": {
+            "size": 192052424,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_nor_gl_16k.jpg",
+            "md5": "2cadb52aab3bc7824b5632793811a6b8"
+          },
+          "painted_plaster_wall.bin": {
+            "size": 2370260,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/painted_plaster_wall/painted_plaster_wall.bin",
+            "md5": "fb3e34d6cc90cf0c924c936b977b5567"
+          },
+          "textures/painted_plaster_wall_diff_16k.jpg": {
+            "size": 128760056,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_diff_16k.jpg",
+            "md5": "aece3730d55eda1926a5ad0e94213529"
+          }
+        },
+        "size": 2848,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/16k/painted_plaster_wall/painted_plaster_wall_16k.gltf",
+        "md5": "3d328b42837c831da582fbb75873fa93"
+      }
+    },
+    "4k": {
+      "gltf": {
+        "include": {
+          "textures/painted_plaster_wall_diff_4k.jpg": {
+            "size": 12556766,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_diff_4k.jpg",
+            "md5": "7db04e0e455152cf79e112f5852c973d"
+          },
+          "painted_plaster_wall.bin": {
+            "size": 2370260,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/painted_plaster_wall/painted_plaster_wall.bin",
+            "md5": "fb3e34d6cc90cf0c924c936b977b5567"
+          },
+          "textures/painted_plaster_wall_nor_gl_4k.jpg": {
+            "size": 16230301,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_nor_gl_4k.jpg",
+            "md5": "efc61a0064fcb8b674ca817acd2e0555"
+          },
+          "textures/painted_plaster_wall_arm_4k.jpg": {
+            "size": 8187037,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_arm_4k.jpg",
+            "md5": "104a679da31725b3c453d439931dc98e"
+          }
+        },
+        "size": 2845,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/4k/painted_plaster_wall/painted_plaster_wall_4k.gltf",
+        "md5": "22d6f5e532ced5e7e32fa75500888d90"
+      }
+    },
+    "2k": {
+      "gltf": {
+        "include": {
+          "textures/painted_plaster_wall_arm_2k.jpg": {
+            "size": 2159906,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_arm_2k.jpg",
+            "md5": "b66f912016257faa7e71a1530e387545"
+          },
+          "painted_plaster_wall.bin": {
+            "size": 2370260,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/painted_plaster_wall/painted_plaster_wall.bin",
+            "md5": "fb3e34d6cc90cf0c924c936b977b5567"
+          },
+          "textures/painted_plaster_wall_diff_2k.jpg": {
+            "size": 3132937,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_diff_2k.jpg",
+            "md5": "32f4f4e5ded7d20e55e337004d0d9691"
+          },
+          "textures/painted_plaster_wall_nor_gl_2k.jpg": {
+            "size": 4048392,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_nor_gl_2k.jpg",
+            "md5": "18faf9f7949aefdb3ae7cef7195cba04"
+          }
+        },
+        "size": 2845,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/2k/painted_plaster_wall/painted_plaster_wall_2k.gltf",
+        "md5": "4d9329d270daa31fc9d5f6a36667ae45"
+      }
+    },
+    "1k": {
+      "gltf": {
+        "include": {
+          "painted_plaster_wall.bin": {
+            "size": 2370260,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/painted_plaster_wall/painted_plaster_wall.bin",
+            "md5": "fb3e34d6cc90cf0c924c936b977b5567"
+          },
+          "textures/painted_plaster_wall_nor_gl_1k.jpg": {
+            "size": 900461,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_nor_gl_1k.jpg",
+            "md5": "43fff290583dbdfc9bfa088a2750e840"
+          },
+          "textures/painted_plaster_wall_arm_1k.jpg": {
+            "size": 511105,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_arm_1k.jpg",
+            "md5": "a4c1ff7470669daec9e274d915471246"
+          },
+          "textures/painted_plaster_wall_diff_1k.jpg": {
+            "size": 686726,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_diff_1k.jpg",
+            "md5": "15ba8c1f63a5ab412b1eabe31728540a"
+          }
+        },
+        "size": 2845,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/1k/painted_plaster_wall/painted_plaster_wall_1k.gltf",
+        "md5": "bdcd316dc91ddbab5a17096d5341e6cd"
+      }
+    }
+  },
+  "arm": {
+    "8k": {
+      "jpg": {
+        "size": 29996261,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_arm_8k.jpg",
+        "md5": "422ad6b9a0a899e00e250c03b4d2bfdf"
+      },
+      "png": {
+        "size": 174895891,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_arm_8k.png",
+        "md5": "4de29fcc1dc73f259fca68a76d5fdc50"
+      },
+      "exr": {
+        "size": 45100753,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_arm_8k.exr",
+        "md5": "6f57ed9ee105fee9c3501585a031afe7"
+      }
+    },
+    "16k": {
+      "jpg": {
+        "size": 121425242,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_arm_16k.jpg",
+        "md5": "af81dd2873e00c17ee5974529ac5beba"
+      },
+      "png": {
+        "size": 629693185,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_arm_16k.png",
+        "md5": "62df00621fc818e68e4d06733b6f8086"
+      },
+      "exr": {
+        "size": 182923563,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_arm_16k.exr",
+        "md5": "be0e263db5cff08f55b08498faaa97eb"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 8187037,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_arm_4k.jpg",
+        "md5": "104a679da31725b3c453d439931dc98e"
+      },
+      "png": {
+        "size": 52773821,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_arm_4k.png",
+        "md5": "7c5c521d72d8ad722bc74036668199e3"
+      },
+      "exr": {
+        "size": 12949657,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_arm_4k.exr",
+        "md5": "183f6b5ee52579cae8c0ed5733aedd6b"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 2159906,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_arm_2k.jpg",
+        "md5": "b66f912016257faa7e71a1530e387545"
+      },
+      "png": {
+        "size": 14790707,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_arm_2k.png",
+        "md5": "89a4d4c345073c326ed4a29168e5e3f3"
+      },
+      "exr": {
+        "size": 3614777,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_arm_2k.exr",
+        "md5": "99caecfec8f0e8c84a1317b8c9991198"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 511105,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_arm_1k.jpg",
+        "md5": "a4c1ff7470669daec9e274d915471246"
+      },
+      "png": {
+        "size": 3925213,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_arm_1k.png",
+        "md5": "49999d9339d68766779ba7208aad0a7a"
+      },
+      "exr": {
+        "size": 849533,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_arm_1k.exr",
+        "md5": "ab5d799097626d4e9da8cb41c4edcf02"
+      }
+    }
+  },
+  "AO": {
+    "8k": {
+      "jpg": {
+        "size": 32098083,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_ao_8k.jpg",
+        "md5": "17b4c0bb214af6d4a7db64acd1c6659f"
+      },
+      "png": {
+        "size": 40889248,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_ao_8k.png",
+        "md5": "93aef2d3bdb144f453e2a396575cdcc0"
+      },
+      "exr": {
+        "size": 30168887,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_ao_8k.exr",
+        "md5": "2dcd08e7b88db23fc53c4b159ec2678a"
+      }
+    },
+    "16k": {
+      "jpg": {
+        "size": 139005261,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_ao_16k.jpg",
+        "md5": "72c25a70ede95a68b348f8b441144cd9"
+      },
+      "png": {
+        "size": 129773555,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_ao_16k.png",
+        "md5": "7699b9647eb8fe230b647ccd58aea5ce"
+      },
+      "exr": {
+        "size": 132971169,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_ao_16k.exr",
+        "md5": "e1316b46e2a006a17b64a4f39dad5807"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 8185251,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_ao_4k.jpg",
+        "md5": "08134127eaa34e4d655fb431ce26a0bb"
+      },
+      "png": {
+        "size": 17265348,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_ao_4k.png",
+        "md5": "00f2a2773735c33f80ff9fde25200043"
+      },
+      "exr": {
+        "size": 7638664,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_ao_4k.exr",
+        "md5": "e96bcb0bb79a044220ded2a9bb4620d7"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 2176195,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_ao_2k.jpg",
+        "md5": "b911e43133db837371f58983f5270586"
+      },
+      "png": {
+        "size": 5607988,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_ao_2k.png",
+        "md5": "98453c95cc082ab6685559b6b6d52f95"
+      },
+      "exr": {
+        "size": 2073612,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_ao_2k.exr",
+        "md5": "a721964b10a8de8ed5e290d27eac0198"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 555806,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_ao_1k.jpg",
+        "md5": "53304166d9a6943d41c7bae037fba208"
+      },
+      "png": {
+        "size": 1674527,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_ao_1k.png",
+        "md5": "66611da5c54cf56968ec395219930fb7"
+      },
+      "exr": {
+        "size": 546999,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_ao_1k.exr",
+        "md5": "9e14b71ea7506ffc4c6d96caa8970722"
+      }
+    }
+  },
+  "Displacement": {
+    "8k": {
+      "jpg": {
+        "size": 14048173,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_disp_8k.jpg",
+        "md5": "461674ea071413bb6bd061115cba22f7"
+      },
+      "png": {
+        "size": 99028629,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_disp_8k.png",
+        "md5": "bf5682b541d1f43350a545ba3a965474"
+      },
+      "exr": {
+        "size": 12506515,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_disp_8k.exr",
+        "md5": "6fcb766b4e78413ca79a32a41a923e29"
+      }
+    },
+    "16k": {
+      "jpg": {
+        "size": 42687135,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_disp_16k.jpg",
+        "md5": "9d1ebe23078077cd89ca56fd5e228d80"
+      },
+      "png": {
+        "size": 364595933,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_disp_16k.png",
+        "md5": "a8dd50b45fe1ea07f73e3932b7cce973"
+      },
+      "exr": {
+        "size": 33173645,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_disp_16k.exr",
+        "md5": "9aa22695c627cc400488aabb2e718102"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 4750653,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_disp_4k.jpg",
+        "md5": "2a89384ccbe20a27725632de4b0d48c8"
+      },
+      "png": {
+        "size": 26093820,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_disp_4k.png",
+        "md5": "ba4039583da135c56a8b60753b2e01d8"
+      },
+      "exr": {
+        "size": 4394314,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_disp_4k.exr",
+        "md5": "0bdd32417ec30b3c96db16c8978e3a28"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 1565195,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_disp_2k.jpg",
+        "md5": "b7823671e9faf44796354ef65b1dbe76"
+      },
+      "png": {
+        "size": 6821414,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_disp_2k.png",
+        "md5": "3826b298ae896a8ff22e8cf5964e35cf"
+      },
+      "exr": {
+        "size": 1510916,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_disp_2k.exr",
+        "md5": "c3abc839a6081df855712c30855b2a41"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 467406,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_disp_1k.jpg",
+        "md5": "25854e349663a15001215c53cf153215"
+      },
+      "png": {
+        "size": 1752906,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_disp_1k.png",
+        "md5": "93566ac87958b2c5c6b25e1c2091ea32"
+      },
+      "exr": {
+        "size": 476840,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_disp_1k.exr",
+        "md5": "01db0bd5f35ecbc19c653d55b284cac1"
+      }
+    }
+  },
+  "Rough": {
+    "8k": {
+      "jpg": {
+        "size": 19684871,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_rough_8k.jpg",
+        "md5": "e2e8d9e19c8f781ec61fb42242874c5a"
+      },
+      "png": {
+        "size": 104741775,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_rough_8k.png",
+        "md5": "819d198d384618e2a232aa4729c2ccd5"
+      },
+      "exr": {
+        "size": 16526116,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_rough_8k.exr",
+        "md5": "fdb7da207cdeffc930ff234bf580f41d"
+      }
+    },
+    "16k": {
+      "jpg": {
+        "size": 61953960,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_rough_16k.jpg",
+        "md5": "28a162a6635d8865ddf16c393817fcea"
+      },
+      "png": {
+        "size": 405811760,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_rough_16k.png",
+        "md5": "6a560e139f75e2322efb2b1a1319544b"
+      },
+      "exr": {
+        "size": 49633643,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_rough_16k.exr",
+        "md5": "085beeda9d5b54dcc482b0dcc44a4bde"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 6052444,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_rough_4k.jpg",
+        "md5": "a72a54cfc30558de814c0e4b1ad27916"
+      },
+      "png": {
+        "size": 27012475,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_rough_4k.png",
+        "md5": "579c313b62fd9c19a3511722633de725"
+      },
+      "exr": {
+        "size": 5225725,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_rough_4k.exr",
+        "md5": "69f2f92cbab217b26f4fb0f27d3c302d"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 1595466,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_rough_2k.jpg",
+        "md5": "7cdd5fbbe56f7becb757fc5b52d11d28"
+      },
+      "png": {
+        "size": 6836443,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_rough_2k.png",
+        "md5": "ca7f611c7ccbc7604fab09c698a4d329"
+      },
+      "exr": {
+        "size": 1414932,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_rough_2k.exr",
+        "md5": "7edcf840639ffa38324b92053925c51a"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 354762,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_rough_1k.jpg",
+        "md5": "e076a6360329a2bc18c7397dc50c074a"
+      },
+      "png": {
+        "size": 1678277,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_rough_1k.png",
+        "md5": "d83a79ebf1c0a51f83c032a9ec87d435"
+      },
+      "exr": {
+        "size": 296023,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_rough_1k.exr",
+        "md5": "96f3110ddf09badeff7c08bb3d328b5b"
+      }
+    }
+  },
+  "mtlx": {
+    "8k": {
+      "mtlx": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_8k.exr": {
+            "size": 118170717,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_nor_gl_8k.exr",
+            "md5": "3c07fe1e02fa134583cf0412fde57a81"
+          },
+          "textures/painted_plaster_wall_rough_8k.exr": {
+            "size": 16526116,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/painted_plaster_wall/painted_plaster_wall_rough_8k.exr",
+            "md5": "fdb7da207cdeffc930ff234bf580f41d"
+          },
+          "textures/painted_plaster_wall_diff_8k.jpg": {
+            "size": 43648529,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/painted_plaster_wall/painted_plaster_wall_diff_8k.jpg",
+            "md5": "e55146c65099898b556a0dda0ee267c8"
+          },
+          "textures/painted_plaster_wall_disp_8k.png": {
+            "size": 99028629,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/painted_plaster_wall/painted_plaster_wall_disp_8k.png",
+            "md5": "bf5682b541d1f43350a545ba3a965474"
+          }
+        },
+        "size": 4807,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/8k/painted_plaster_wall/painted_plaster_wall_8k.mtlx",
+        "md5": "3a67efdaebf0c74b3fe2b986030f8d8b"
+      }
+    },
+    "16k": {
+      "mtlx": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_16k.exr": {
+            "size": 369597567,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_nor_gl_16k.exr",
+            "md5": "fc3ec1fe10b5974fd7b40f93f135d064"
+          },
+          "textures/painted_plaster_wall_rough_16k.exr": {
+            "size": 49633643,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/16k/painted_plaster_wall/painted_plaster_wall_rough_16k.exr",
+            "md5": "085beeda9d5b54dcc482b0dcc44a4bde"
+          },
+          "textures/painted_plaster_wall_diff_16k.jpg": {
+            "size": 128760056,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/16k/painted_plaster_wall/painted_plaster_wall_diff_16k.jpg",
+            "md5": "aece3730d55eda1926a5ad0e94213529"
+          },
+          "textures/painted_plaster_wall_disp_16k.png": {
+            "size": 364595933,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/16k/painted_plaster_wall/painted_plaster_wall_disp_16k.png",
+            "md5": "a8dd50b45fe1ea07f73e3932b7cce973"
+          }
+        },
+        "size": 4811,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/16k/painted_plaster_wall/painted_plaster_wall_16k.mtlx",
+        "md5": "f5511bcc54e429882f7f2ecfe3b9f18b"
+      }
+    },
+    "4k": {
+      "mtlx": {
+        "include": {
+          "textures/painted_plaster_wall_disp_4k.png": {
+            "size": 26093820,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/painted_plaster_wall/painted_plaster_wall_disp_4k.png",
+            "md5": "ba4039583da135c56a8b60753b2e01d8"
+          },
+          "textures/painted_plaster_wall_diff_4k.jpg": {
+            "size": 12556766,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/painted_plaster_wall/painted_plaster_wall_diff_4k.jpg",
+            "md5": "7db04e0e455152cf79e112f5852c973d"
+          },
+          "textures/painted_plaster_wall_rough_4k.exr": {
+            "size": 5225725,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_rough_4k.exr",
+            "md5": "69f2f92cbab217b26f4fb0f27d3c302d"
+          },
+          "textures/painted_plaster_wall_nor_gl_4k.exr": {
+            "size": 33497110,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/painted_plaster_wall/painted_plaster_wall_nor_gl_4k.exr",
+            "md5": "c470c0c6a33608ed4b99cd5960803012"
+          }
+        },
+        "size": 4807,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/4k/painted_plaster_wall/painted_plaster_wall_4k.mtlx",
+        "md5": "39b7cb1fd25136b984b75b8432c993af"
+      }
+    },
+    "2k": {
+      "mtlx": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_2k.exr": {
+            "size": 8553701,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_nor_gl_2k.exr",
+            "md5": "1d00aad179bee580337c2f957841ea0d"
+          },
+          "textures/painted_plaster_wall_disp_2k.png": {
+            "size": 6821414,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_plaster_wall/painted_plaster_wall_disp_2k.png",
+            "md5": "3826b298ae896a8ff22e8cf5964e35cf"
+          },
+          "textures/painted_plaster_wall_diff_2k.jpg": {
+            "size": 3132937,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_plaster_wall/painted_plaster_wall_diff_2k.jpg",
+            "md5": "32f4f4e5ded7d20e55e337004d0d9691"
+          },
+          "textures/painted_plaster_wall_rough_2k.exr": {
+            "size": 1414932,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/painted_plaster_wall/painted_plaster_wall_rough_2k.exr",
+            "md5": "7edcf840639ffa38324b92053925c51a"
+          }
+        },
+        "size": 4807,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/2k/painted_plaster_wall/painted_plaster_wall_2k.mtlx",
+        "md5": "58a86497b049e5be61d89a90b6abd6b8"
+      }
+    },
+    "1k": {
+      "mtlx": {
+        "include": {
+          "textures/painted_plaster_wall_nor_gl_1k.exr": {
+            "size": 2029808,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_nor_gl_1k.exr",
+            "md5": "48cd5a012bb80b83a7424b8deb2fcdf9"
+          },
+          "textures/painted_plaster_wall_rough_1k.exr": {
+            "size": 296023,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/painted_plaster_wall/painted_plaster_wall_rough_1k.exr",
+            "md5": "96f3110ddf09badeff7c08bb3d328b5b"
+          },
+          "textures/painted_plaster_wall_disp_1k.png": {
+            "size": 1752906,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/painted_plaster_wall/painted_plaster_wall_disp_1k.png",
+            "md5": "93566ac87958b2c5c6b25e1c2091ea32"
+          },
+          "textures/painted_plaster_wall_diff_1k.jpg": {
+            "size": 686726,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/painted_plaster_wall/painted_plaster_wall_diff_1k.jpg",
+            "md5": "15ba8c1f63a5ab412b1eabe31728540a"
+          }
+        },
+        "size": 4807,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/1k/painted_plaster_wall/painted_plaster_wall_1k.mtlx",
+        "md5": "f73239195b11dab5e6d6701c53bc7bc3"
+      }
+    }
+  }
+}
