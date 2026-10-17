@@ -365,7 +365,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   const workspacePose=()=>({x:3.65,y:1.98,z:-1.5+fit.distance,yaw:0,pitch:0,fov:38});
   let pose=introPose(),returnPose=walkingPose(),inspection=null;
   function applyPose(value) {pose=value;camera.position.set(value.x,value.y,value.z);camera.rotation.set(value.pitch,value.yaw,0,'YXZ');if(camera.fov!==value.fov){camera.fov=value.fov;camera.updateProjectionMatrix();}wake();}
-  function setMode(value) {mode=value;root.dataset.worldMode=value;screen.inert=value!=='workspace';screen.style.visibility=value==='workspace'?'visible':'hidden';root.dataset.worldTravel='false';if(value==='workspace'||value==='inspect'&&inspection?.kind!=='cat')resident?.settle();wake();}
+  function setMode(value) {if(mode!==value)resident?.resetClock();mode=value;root.dataset.worldMode=value;screen.inert=value!=='workspace';screen.style.visibility=value==='workspace'?'visible':'hidden';root.dataset.worldTravel='false';if(value==='workspace'||value==='inspect'&&inspection?.kind!=='cat')resident?.settle();wake();}
   function travel(target,nextMode,duration=1700) {
     keys.clear();touchKeys.clear();moving?.resolve();moving=null;
     if(reduced.matches||quiet){applyPose(target);setMode(nextMode);onTravel?.(false);return Promise.resolve();}
@@ -437,6 +437,9 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   let active=!document.hidden&&!root.hidden;
   resident=createCafeResident({scene,asset:catAsset,wake,onChange:catEvent});catEvent('loading');
   resident.ready.then(loaded=>{if(!disposed){root.dataset.catLoaded=String(loaded);catEvent(loaded?'ready':'unavailable');wake();}});
+  let blocked=isBlocked();
+  const blockedObserver=new MutationObserver(()=>{const next=isBlocked();if(next!==blocked){blocked=next;resident.resetClock();if(!next)wake();}});
+  blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
   function tick(time) {
     if(disposed)return;frame=0;if(!active)return;
     const lifeActive=mode==='roam'&&!quiet&&!reduced.matches&&!isBlocked();
@@ -446,6 +449,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     if(lifeActive&&!moving&&!keys.size&&!touchKeys.size&&!drag&&time-lastPaint<1000/30-1){frame=requestAnimationFrame(tick);return;}
     lastPaint=time;
     drawing=true;
+    const catSeconds=last?(time-last)/1000:0;
     const dt=last?Math.min((time-last)/1000,.04):0;last=time;elapsed+=dt;
     if(moving) {
       const t=Math.min(1,(time-moving.start)/moving.duration);applyPose(travelPose(moving.from,moving.to,t));
@@ -457,7 +461,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     }
     if(water&&lifeActive){const p=water.geometry.attributes.position,n=water.geometry.attributes.normal,b=water.userData.base;for(let i=0;i<p.count;i++){const x=b[i*3]+water.position.x,z=b[i*3+2]+water.position.z;const sample=sampleWater(x,z,elapsed,themeId,waterSampleValue);p.setY(i,b[i*3+1]+sample[0]);n.setXYZ(i,sample[1],sample[2],sample[3]);}p.needsUpdate=n.needsUpdate=true;}
     if(rain&&lifeActive){const p=rain.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setY(i,((rainBase[i*3+1]-elapsed*4)%12+12)%12);p.needsUpdate=true;}
-    resident.update(dt,{active:lifeActive,interactive:catInteractive});
+    resident.update(catSeconds,{active:lifeActive,interactive:catInteractive});
     if(inspection?.kind==='cat'&&!moving)applyPose(detailPose('cat'));
     try{renderer.render(scene,camera);css.render(scene,camera);}catch{drawing=false;settleFirst(false);onFailure?.();return;}
     root.dataset.worldRenderedMode=mode;
@@ -473,18 +477,18 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     if(!disposed&&(moving||(mode==='roam'&&!isBlocked()&&(keys.size||touchKeys.size))||(lifeActive&&(water||rain||resident.loaded))||(catInteractive&&resident.pending)))frame=requestAnimationFrame(tick);
     else last=0;
   }
-  function visibility() {active=!document.hidden&&!root.hidden;keys.clear();touchKeys.clear();last=0;if(active&&!frame){resize();wake();}else if(!active&&frame){cancelAnimationFrame(frame);frame=0;}}
+  function visibility() {resident.resetClock();active=!document.hidden&&!root.hidden;keys.clear();touchKeys.clear();last=0;if(active&&!frame){resize();wake();}else if(!active&&frame){cancelAnimationFrame(frame);frame=0;}}
   listen(document,'visibilitychange',visibility);const hiddenObserver=new MutationObserver(visibility);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
-  listen(reduced,'change',()=>{if(reduced.matches){finishMoving();resident?.settle();}wake();});
+  listen(reduced,'change',()=>{resident.resetClock();if(reduced.matches){finishMoving();resident?.settle();}wake();});
   listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;moving?.resolve();moving=null;onTravel?.(false);onFailure?.();});
   listen(window,'pagehide',event=>{if(event.persisted){active=false;cancelAnimationFrame(frame);frame=0;}else dispose();});listen(window,'pageshow',visibility);
   function dispose() {
-    if(disposed)return;disposed=true;clearInspection();cancelAnimationFrame(frame);moving?.resolve();moving=null;abort.abort();observer.disconnect();hiddenObserver.disconnect();
+    if(disposed)return;disposed=true;clearInspection();cancelAnimationFrame(frame);moving?.resolve();moving=null;abort.abort();observer.disconnect();hiddenObserver.disconnect();blockedObserver.disconnect();
     settleFirst(false);resident?.dispose();pbr.dispose();
     for(const [node,anchor] of anchors){anchor.replaceWith(node);}cssObject.removeFromParent();disposeEnvironment();
     room.traverse(object=>{if(object.isInstancedMesh)object.dispose();});sun.shadow.map?.dispose();sun.shadow.mapPass?.dispose();
     for(const r of resources)r.dispose();for(const t of textures)t.dispose();renderer.dispose();renderer.forceContextLoss();host.remove();
   }
   initialized=true;wake();
-  return {start,focus,leave,outside,inspect,restoreInspection,interactCat,setTheme,dispose,firstFrame,wake,setQuiet(value){quiet=value;if(value){finishMoving();resident?.settle();}wake();},get mode(){return mode;}};
+  return {start,focus,leave,outside,inspect,restoreInspection,interactCat,setTheme,dispose,firstFrame,wake,setQuiet(value){resident.resetClock();quiet=value;if(value){finishMoving();resident?.settle();}wake();},get mode(){return mode;}};
 }

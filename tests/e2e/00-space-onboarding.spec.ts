@@ -98,10 +98,48 @@ test('the optional resident can fail without blocking the room or workspace',asy
 });
 
 test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>{
-  reserveWorldJourney(page);await page.goto('/zh/projects/');await room(page);
+  reserveWorldJourney(page);
+  await page.addInitScript(()=>{
+    const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null};
+    (window as unknown as {__catMotionObservation:typeof observation}).__catMotionObservation=observation;
+    const startupDeadline=performance.now()+60000;
+    let target:Element|null=null,done=false,timer:ReturnType<typeof setTimeout>;
+    const finish=(status:string)=>{
+      if(done)return;done=true;observation.status=status;
+      observer.disconnect();clearTimeout(timer);removeEventListener('pagehide',onPageHide);
+    };
+    const onPageHide=()=>finish('pagehide');
+    const sample=()=>{
+      if(done)return;
+      const now=performance.now();if(observation.initialTime===null&&now>startupDeadline){finish('startup-timeout');return;}
+      if(!target){
+        target=document.querySelector('[data-bear-workspace]');if(!target)return;
+        observer.disconnect();observer.observe(target,{attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
+      }
+      const loaded=target.getAttribute('data-cat-loaded'),active=target.getAttribute('data-cat-active'),pose=target.getAttribute('data-cat-pose');
+      if(observation.initialTime===null){
+        if(loaded!=='true'||active!=='true'||!pose)return;
+        observation.initialPose=pose;observation.initialTime=now;observation.status='watching';
+        clearTimeout(timer);timer=setTimeout(()=>finish('motion-timeout'),12000);return;
+      }
+      if(now-observation.initialTime>12000){finish('motion-timeout');return;}
+      if(loaded==='true'&&active==='true'&&pose&&pose!==observation.initialPose){
+        observation.changedPose=pose;observation.changedTime=now;finish('changed');
+      }
+    };
+    const observer=new MutationObserver(sample);
+    // Only collect actual attributes: no layout reads, frame loops or product writes.
+    observer.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
+    addEventListener('pagehide',onPageHide,{once:true});timer=setTimeout(()=>finish('startup-timeout'),60000);sample();
+  });
+  await page.goto('/zh/projects/');await room(page);
   await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
-  const pose=()=>page.locator(root).getAttribute('data-cat-pose');const initial=await pose();
-  await expect.poll(pose,{timeout:12000}).not.toBe(initial);
+  await expect.poll(()=>page.evaluate(()=>(window as unknown as {__catMotionObservation:{status:string}}).__catMotionObservation.status),{timeout:12000}).toBe('changed');
+  const movement=await page.evaluate(()=>(window as unknown as {__catMotionObservation:{initialPose:string;initialTime:number;changedPose:string;changedTime:number}}).__catMotionObservation);
+  const movementMs=movement.changedTime-movement.initialTime;
+  expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
+  expect(movement.changedPose).not.toBe(movement.initialPose);
+  const pose=()=>page.locator(root).getAttribute('data-cat-pose');
   await page.locator('[data-cafe-quiet]').click();await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
   const quiet=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(quiet);
   const frames=await page.locator(root).getAttribute('data-world-frames');await page.waitForTimeout(200);expect(await page.locator(root).getAttribute('data-world-frames')).toBe(frames);

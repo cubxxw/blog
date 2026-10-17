@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-17T10:07:43.581132+00:00",
+  "head": "9c1f56390039085746e02c0f730ceafd91895e62",
+  "base": "9a909dfdbbb64505d34e68a1b47d1ae4fd059192",
+  "run": 39022522727,
+  "attempt": 1,
+  "job": 117366998724,
+  "conclusion": "cancelled",
+  "reason": "resident loaded but original12s real-time pose change assertion failed on all3 attempts; confirmed actual failures, not stale UI.",
+  "artifact": {
+    "id": 12097860564,
+    "reportedBytes": 11500448,
+    "githubReportedSHA256": "ebef9f8b90438f1d7e35a558799b2bb736a1a64c6b837a4d11426c8106ba3689",
+    "fullDownload": "complete",
+    "selectedReports": 17,
+    "selectedCRCBytesSHAVerified": true,
+    "fullSHA256": "ebef9f8b90438f1d7e35a558799b2bb736a1a64c6b837a4d11426c8106ba3689",
+    "githubUploadDigestMatched": true
+  },
+  "actual": {
+    "quality": 48,
+    "legacyComplete": false,
+    "observed": {
+      "passedAttempts": 203,
+      "failedAttempts": 3,
+      "skipped": 8
+    },
+    "lastPrintedRawLine": "2026-10-17T10:05:34.3815857Z   ✓  214 [desktop] › tests/e2e/us031-bottom-sheet.spec.ts:61:5 › EN 414px: bottom sheet opens on FAB click (1.4s)",
+    "libraryFirstAttemptSeconds": [
+      31.7,
+      31.0
+    ],
+    "cancelClockFirstAttemptSeconds": 21.5,
+    "revealClockFirstAttemptSeconds": 7.9,
+    "onboardingOther9": "first-attempt passed",
+    "cat": "all3 failed after assetReady;12s pose unchanged;pause assertions not reached"
+  },
+  "rawLog": {
+    "bytes": 450642,
+    "sha256": "48db4620a40d998a49bde9deda95b78ac228ea9c8acb39e62ecfd403f563d321"
+  },
+  "cause": "under_investigation; .04/frame cap a candidate pending actual frame/time/active trace",
+  "files": [
+    {
+      "file": "cancelled.log.gz",
+      "bytes": 87087,
+      "sha256": "2649c311405d63f61a87a4c99338563e1b99bdb16f436cb50d0f4de156ecfb57"
+    },
+    {
+      "file": "reports.tar.gz",
+      "bytes": 73244,
+      "sha256": "a1a04fdca7e8ad76d3b8da06082b5ab71db353fce26aa39a3dbb251535346124"
+    },
+    {
+      "file": "artifact-9c1-fast-entries.json",
+      "bytes": 5338,
+      "sha256": "8945b0f4e08cb22ba2e104da5dfd1f4262b72c82cee60f68938b9b6d3edc010e"
+    },
+    {
+      "file": "artifact-9c1-fast-central.json",
+      "bytes": 4400,
+      "sha256": "565b7c61a71e7448e6c13c4ac1106ebae6b64f6c0c198e21f6015d7e5ced8ec8"
+    },
+    {
+      "file": "quality.zip",
+      "bytes": 11500448,
+      "sha256": "ebef9f8b90438f1d7e35a558799b2bb736a1a64c6b837a4d11426c8106ba3689"
+    },
+    {
+      "file": "cat-frame-observations.json",
+      "bytes": 9019,
+      "sha256": "c99963f21bc8b9bd5755814bd8514f592c19ea30b6ad7ad6f6796e041f32d868"
+    }
+  ],
+  "causeEvidence": "cat-frame-observations.json: loaded/active true in roam, environmentPausedfalse, pose look constant;12 paints over17.184284s only advance at most0.48 simulated seconds under .04/frame cap, below original3s look. Per-rAF max not recorded."
+}

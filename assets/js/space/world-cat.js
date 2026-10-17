@@ -1,12 +1,14 @@
 import * as THREE from 'three';
 import { GLTFLoader } from '../vendor/GLTFLoader.js';
 import { createCatState, stepCat, requestCat, settleCatInteraction } from './cat-state.mjs';
+import { createCatClock } from './cat-clock.mjs';
 
 // J-Toastie's rigged Cat (CC BY 3.0). Provenance and modifications are recorded
 // alongside the local asset; the original idle clip is retained.
 export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=>{},onChange=()=>{}}) {
   const anchor=new THREE.Group();anchor.name='cafe-resident';scene.add(anchor);
   let state=createCatState(),model,mixer,idle,disposed=false,loaded=false,blend=0,wasActive=false,bodyBounds;
+  const clock=createCatClock();
   const owned=new Set(),bones=[],expressionBones=[],eyes=[];
   const legNames=['L_Leg_Upper','R_Leg_Upper','L_BLeg_Upper','R_BLeg_Upper'];
   const phases=[0,Math.PI,Math.PI,0];
@@ -86,7 +88,7 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
       }
     }
     anchor.add(model);shadow.visible=true;
-    loaded=true;wake();return true;
+    loaded=true;clock.reset();wake();return true;
   }).catch(()=>false);
   function expression(){
     const action=state.interaction,pet=action?.kind==='pet',amount=pet?(action.instant ? .85 : .65+Math.sin((2.4-action.remaining)/2.4*Math.PI)*.25):(attention ? .35 : 0);
@@ -95,16 +97,18 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
   }
   function resetExpression(){for(const {bone,base} of expressionBones)bone.quaternion.copy(base);}
   function update(seconds,{active=false,interactive=false}={}) {
-    if(disposed||!loaded)return;
+    if(disposed||!loaded){clock.reset();return;}
     if(!active&&!interactive){
+      clock.reset();
       if(wasActive){blend=0;for(const {bone,base} of bones)bone.quaternion.copy(base);mixer?.update(0);}
       resetExpression();expression();
       wasActive=false;return;
     }
-    wasActive=true;const dt=Math.min(Math.max(seconds,0),.04);
-    const before=state.interaction?.stage;state=stepCat(state,dt);pose();
-    if(before==='approach'&&state.interaction?.stage==='near')onChange('arrived');
-    if(before==='respond'&&!state.interaction)onChange('petted');
+    wasActive=true;const dt=clock.advance(seconds,true,step=>{
+      const before=state.interaction?.stage;state=stepCat(state,step);
+      if(before==='approach'&&state.interaction?.stage==='near')onChange('arrived');
+      if(before==='respond'&&!state.interaction)onChange('petted');
+    });pose();
     const walking=state.phase==='walk'&&state.speed>.01;
     blend+=(Number(walking)-blend)*Math.min(1,dt*8);
     for(const {bone,base} of bones)bone.quaternion.copy(base);resetExpression();
@@ -120,19 +124,20 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
     shadow.material.opacity=state.phase==='rest'?.9:1;
   }
   function interact(kind,visitor,options={}){
+    clock.reset();
     if(disposed||!loaded){onChange('unavailable');return false;}
     const next=requestCat(state,kind,visitor,options);state=next.state;attention=true;pose();resetExpression();expression();onChange(next.result);wake();return next.result;
   }
-  function settle(){if(!state.interaction)return;const pending=state.interaction.stage==='approach',pet=state.interaction.kind==='pet';state=settleCatInteraction(state);pose();resetExpression();expression();if(pet)onChange('petted-still');else if(pending)onChange('noticed');}
-  function attend(visitor){if(!loaded||disposed)return;state={...state,yaw:Math.atan2(visitor.x-state.x,visitor.z-state.z),speed:0};attention=true;pose();resetExpression();expression();wake();}
+  function settle(){clock.reset();if(!state.interaction)return;const pending=state.interaction.stage==='approach',pet=state.interaction.kind==='pet';state=settleCatInteraction(state);pose();resetExpression();expression();if(pet)onChange('petted-still');else if(pending)onChange('noticed');}
+  function attend(visitor){clock.reset();if(!loaded||disposed)return;state={...state,yaw:Math.atan2(visitor.x-state.x,visitor.z-state.z),speed:0};attention=true;pose();resetExpression();expression();wake();}
   function view(aspect,yaw=state.yaw){
     const {x:width,y:height,z:depth,minY}=bodyBounds,tangent=Math.tan(42*Math.PI/360),distance=Math.max((height+.08)/(2*tangent*.54),(width+.08)/(2*tangent*Math.max(.25,aspect)*.64))+depth*.55;
     return {position:[state.x+Math.sin(yaw)*distance,minY+height*.68,state.z+Math.cos(yaw)*distance],target:[state.x,minY+height*.43,state.z],fov:42};
   }
   function dispose() {
-    if(disposed)return;disposed=true;
+    if(disposed)return;disposed=true;clock.reset();
     mixer?.stopAllAction();if(model)mixer?.uncacheRoot(model);
     anchor.removeFromParent();for(const resource of owned)resource.dispose?.();owned.clear();
   }
-  return {ready,update,interact,attend,settle,view,dispose,hit(raycaster){return loaded&&!disposed?raycaster.intersectObject(model,true)[0]:null;},get pending(){return Boolean(state.interaction&&!state.interaction.instant&&(state.interaction.stage==='approach'||state.interaction.remaining>0));},get loaded(){return loaded;},snapshot(){return {...state,loaded};}};
+  return {ready,update,interact,attend,settle,view,dispose,resetClock:clock.reset,hit(raycaster){return loaded&&!disposed?raycaster.intersectObject(model,true)[0]:null;},get pending(){return Boolean(state.interaction&&!state.interaction.instant&&(state.interaction.stage==='approach'||state.interaction.remaining>0));},get loaded(){return loaded;},snapshot(){return {...state,loaded};}};
 }

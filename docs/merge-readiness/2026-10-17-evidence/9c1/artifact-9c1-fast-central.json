@@ -1,0 +1,173 @@
+[
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-300-89f0e8104106ea429ffb7b82993d7f3828e800d0.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2555029013,
+    "compressed": 2353,
+    "bytes": 26788,
+    "localOffset": 0
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-300.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2555029013,
+    "compressed": 2353,
+    "bytes": 26788,
+    "localOffset": 2573
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-850-44ae59bb13ba140980e146d08fae46698b7e86b4.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2474568189,
+    "compressed": 2358,
+    "bytes": 26798,
+    "localOffset": 5093
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-850.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2474568189,
+    "compressed": 2358,
+    "bytes": 26798,
+    "localOffset": 7671
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/attachments/library-native-wheel-850-673ed2035d7162a655974b9e721bb514f08adb88.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3920108891,
+    "compressed": 2336,
+    "bytes": 26925,
+    "localOffset": 10196
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/library-native-wheel-850.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3920108891,
+    "compressed": 2336,
+    "bytes": 26925,
+    "localOffset": 12752
+  },
+  {
+    "name": "browser/legacy/results/00-space-onboarding-the-re-d65fd-ed-motion-and-the-workspace-desktop/error-context.md",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2234309212,
+    "compressed": 4430,
+    "bytes": 15636,
+    "localOffset": 15255
+  },
+  {
+    "name": "browser/legacy/results/00-space-onboarding-the-re-d65fd-ed-motion-and-the-workspace-desktop-retry1/error-context.md",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2234309212,
+    "compressed": 4430,
+    "bytes": 15636,
+    "localOffset": 19839
+  },
+  {
+    "name": "browser/legacy/results/00-space-onboarding-the-re-d65fd-ed-motion-and-the-workspace-desktop-retry1/trace.zip",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3588015021,
+    "compressed": 11167458,
+    "bytes": 11172195,
+    "localOffset": 24430
+  },
+  {
+    "name": "browser/legacy/results/00-space-onboarding-the-re-d65fd-ed-motion-and-the-workspace-desktop-retry2/error-context.md",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2234309212,
+    "compressed": 4430,
+    "bytes": 15636,
+    "localOffset": 11192042
+  },
+  {
+    "name": "browser/pages.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 4170702164,
+    "compressed": 91,
+    "bytes": 209,
+    "localOffset": 11196633
+  },
+  {
+    "name": "browser/quality/html/index.html",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2254758955,
+    "compressed": 234284,
+    "bytes": 572415,
+    "localOffset": 11196788
+  },
+  {
+    "name": "changes.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 165890919,
+    "compressed": 17042,
+    "bytes": 300842,
+    "localOffset": 11431149
+  },
+  {
+    "name": "functions-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 27900681,
+    "compressed": 79,
+    "bytes": 96,
+    "localOffset": 11448249
+  },
+  {
+    "name": "plan.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 1649306174,
+    "compressed": 244,
+    "bytes": 360,
+    "localOffset": 11448395
+  },
+  {
+    "name": "seo-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 1328484573,
+    "compressed": 76,
+    "bytes": 90,
+    "localOffset": 11448694
+  },
+  {
+    "name": "site/output-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3242033645,
+    "compressed": 5026,
+    "bytes": 34994,
+    "localOffset": 11448831
+  },
+  {
+    "name": "source-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 323995665,
+    "compressed": 43919,
+    "bytes": 200043,
+    "localOffset": 11453926
+  },
+  {
+    "name": "workflow-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3400014332,
+    "compressed": 79,
+    "bytes": 95,
+    "localOffset": 11497909
+  }
+]

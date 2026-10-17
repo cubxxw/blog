@@ -1,0 +1,23 @@
+{
+  "head": "9c1f56390039085746e02c0f730ceafd91895e62",
+  "exitCode": 1,
+  "failure": "real resident and actual world tick both fail to leave unchanged three-second look under 1.4s paint intervals",
+  "files": [
+    {
+      "path": "assets/js/space/world-cafe.js",
+      "sha256": "ea63b54c9869577066e5161fcc602fe375e96f19a6c9ff37656bcaa678e5a20a"
+    },
+    {
+      "path": "assets/js/space/world-cat.js",
+      "sha256": "e61e3f8203ffa3671e330cf855007a3d9f7c09fcc8fa617f8c6d9edaae116953"
+    },
+    {
+      "path": "assets/js/space/cat-state.mjs",
+      "sha256": "9df20418e88bbea18cc9a32d1a497457fd24753cc007e8d7db1c019efd696241"
+    },
+    {
+      "path": "scripts/space-cat-interaction.test.mjs",
+      "sha256": "8297d66654ba9197ed4d3543ccbb8b94472c950ad9a723d2e0738d6943b3b934"
+    }
+  ]
+}

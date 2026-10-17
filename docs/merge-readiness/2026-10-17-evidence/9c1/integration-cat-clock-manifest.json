@@ -1,0 +1,131 @@
+{
+  "head": "9c1f56390039085746e02c0f730ceafd91895e62",
+  "status": "source frozen; awaiting independent review and actual browser/CI",
+  "files": [
+    {
+      "path": "assets/js/space/world-cafe.js",
+      "sha256": "53088bdbc9ae3e20431ec7523d4f92d9484760b8bf84e54172a596a6003789c0"
+    },
+    {
+      "path": "assets/js/space/world-cat.js",
+      "sha256": "de3d2adda7c416b710bc632a38878fc1ee97fd9340e6d89e7d42cca7faff7d5d"
+    },
+    {
+      "path": "assets/js/space/cat-clock.mjs",
+      "sha256": "ce721b6c94f5d7e83d8aea77d4c0b51f85c77361ca6392b279ff15431f45ceb2"
+    },
+    {
+      "path": "scripts/space-cat.test.mjs",
+      "sha256": "0efba9c90d2fcfbc0e27b249a6be8b3339e326894d46f2ce3085084fbf559c10"
+    },
+    {
+      "path": "scripts/space-cat-interaction.test.mjs",
+      "sha256": "f028834c8c7d22d01d1d95ac55a46f5bfc75a89c060ce26e74c39e6a1635ab3d"
+    }
+  ],
+  "tdd": {
+    "redExitCode": 1,
+    "red": "realGLB resident and actual world tick fail movement after1.4s paint intervals before production edits; red source/hashes retained in integration-cat-clock-red-manifest.json",
+    "greenExitCode": 0,
+    "green": "23 targeted Node tests pass, real GLB/pixel decode stub and actual world tick with render boundary stub included",
+    "runner": "integration-cat-clock-runner.sh",
+    "runnerSha256": "b16db954589caf4113d9e4d9407bd34498de1b89eb4649365845bf1d2e9d9a77"
+  },
+  "budget": {
+    "elapsedPerPaintMaxSeconds": 2,
+    "substepMaxSeconds": 0.04,
+    "maxSubsteps": 50,
+    "overflow": "discarded; no future debt",
+    "rationale": "observed17.184s/12paints≈1.43s mean; actual maximum interval unmeasured"
+  },
+  "lifecycle": {
+    "reset": [
+      "notLoaded",
+      "firstActive",
+      "inactive",
+      "quiet changes",
+      "reduce changes",
+      "document/root visibility",
+      "mode change",
+      "isBlocked open/hidden changes",
+      "newcall/pet",
+      "attend/settle",
+      "dispose"
+    ],
+    "observer": "root subtree attributes open/hidden only, compare actual isBlocked, wake only on unblock; disconnect on dispose",
+    "render": "unchanged existing RAF; one final pose/mixer update per paint"
+  },
+  "protected": {
+    "catState": "byte-identical",
+    "cameraWaterRain": "existing tick byte-identical after removing separate cat input",
+    "e2eSha256": "5b699bfc184689516dde3fd12cff49a475ee608f5246ef94460c7d8bf78715d2",
+    "discovery": "758 tests in52files"
+  },
+  "checks": {
+    "syntax": 0,
+    "typecheck": 0,
+    "diff": 0,
+    "discovery": 0
+  },
+  "limits": [
+    "no real browser/Hugo/full-suite rerun; parent owns CI",
+    "Node actual model test stubs embedded pixel decoding and GPU render boundary",
+    "two-second cap is a bounded behavior policy, not measured maximumframe or universal performance guarantee",
+    "existing legitimate12–35s rest phase may require future test phase diagnosis if a delayed initial pose sample lands during rest; E2E unmodified",
+    "existing vendor ModuleTypeless warning retained, no package policy changes"
+  ],
+  "artifacts": [
+    {
+      "path": "integration-cat-clock-red.log",
+      "sha256": "ac4057643366334f4eaf35773f0f887c2d4aff490953cd5fe14544f2bac34334"
+    },
+    {
+      "path": "integration-cat-clock-red-world.log",
+      "sha256": "a79981a4df08ca71e439a015d61e490f503281b94085092dc2f4f9040195bdfc"
+    },
+    {
+      "path": "integration-cat-clock-green-initial.log",
+      "sha256": "f61f7ee63cc6e7ec291308d24f2949c1bff2036a1ebb4d639634847bb5980e2d"
+    },
+    {
+      "path": "integration-cat-clock-green.log",
+      "sha256": "7d290578bc1f1ef492b9e345522372bfc9299b5a46b55f4bbab7438b02f3a55f"
+    },
+    {
+      "path": "integration-cat-clock-green-final.log",
+      "sha256": "529d6006032793896a2416cdcc7dc1599cf13c6c8e7ea062920410bcf5de0650"
+    },
+    {
+      "path": "integration-cat-clock-world-syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "integration-cat-clock-resident-syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "integration-cat-clock-typecheck.log",
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "integration-cat-clock-diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "integration-cat-clock-discovery.log",
+      "sha256": "740b2ff5d8e2db673dc93b8d1e8abe6fc554863c7d9955db7507f99fdd256b3f"
+    },
+    {
+      "path": "integration-cat-clock-scope.log",
+      "sha256": "2a4b1b9573211065a24432306156c74e52d159ac6ce6b8fc8ee6c2c989bdd1a3"
+    },
+    {
+      "path": "integration-cat-clock-diff.log",
+      "sha256": "0e75d136a5a623c9135d02b190f8ec40c750941c1f3d90d1cebd2d99ca2dcf72"
+    },
+    {
+      "path": "integration-cat-clock-runner.sh",
+      "sha256": "b16db954589caf4113d9e4d9407bd34498de1b89eb4649365845bf1d2e9d9a77"
+    }
+  ]
+}
