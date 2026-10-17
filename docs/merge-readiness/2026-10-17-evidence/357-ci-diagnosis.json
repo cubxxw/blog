@@ -1,0 +1,60 @@
+{
+  "head": "35758f09995f945e6663d8fce457b584622ed60f",
+  "run": 39000205983,
+  "conclusion": "cancelled",
+  "artifact": 12089820197,
+  "artifactBytes": 34482466,
+  "output": {
+    "html": 643,
+    "errors": 0,
+    "warnings": 0
+  },
+  "qualityBrowser": {
+    "pass": 48
+  },
+  "legacyFinalTotal": null,
+  "knownFailures": [
+    {
+      "title": "no-JavaScript homepage product navigation",
+      "attempts": 3,
+      "confirmed": "Playwright waits20ms in page utility during retry while JavaScript disabled; trace ends in same call. Smooth scroll had not settled before offscreen hero click.",
+      "change": "Test-only native position settling with Node poll; then native Home and same real product click."
+    },
+    {
+      "title": "Space language work continuity",
+      "attempts": 3,
+      "confirmed": "Two real world entries consume total30s budget. First ready expect17.895512s and subsequent helper2.853605s; second language world begins with under7s left.",
+      "change": "Bounded whole-world journeys90s or six-scene120s; individual readiness30s; original expect assertions retained."
+    },
+    {
+      "title": "coarse English footnote native Back",
+      "attemptsFailed": 1,
+      "retryPassed": true,
+      "classification": "bounded unclosed P2 / cause unconfirmed",
+      "confirmed": "First attempt hash restored but scroll22407 expected3373 did not settle within5s strictpoll. Only retry trace retained, two Back polls~1.93s passed.",
+      "change": "None; preserve original footnote test and strict5s precision."
+    }
+  ],
+  "positiveContracts": [
+    "BEAR/Lab/back p1-p2:122 passed29.0s",
+    "product search p1-p2:156 passed20.8s"
+  ],
+  "actualSoftwareBuffer": {
+    "trace": "language retry1",
+    "width": 783,
+    "height": 489,
+    "pixels": 382887,
+    "css": [
+      1280,
+      800
+    ],
+    "limit": 384000,
+    "claims": "Confirms budget wiring only; not FPS or full UI acceptance"
+  },
+  "nativeEvidence": "../35758f09-native/readback.json",
+  "limitations": [
+    "Run cancelled early; unrun legacy instances not passed.",
+    "Native noJS CUA probe inconclusive and owned tab closed.",
+    "3D remains stylized; no score96 or real BFCache certification."
+  ]
+}

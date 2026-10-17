@@ -1,6 +1,7 @@
 import {test,expect} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.beforeEach(({page})=>reserveWorldJourney(page));
 
 test.describe('Space café',()=>{
   test('the café entry offers six scenes, then opens the real workspace search',async({page})=>{
@@ -20,7 +21,7 @@ test.describe('Space café',()=>{
   test('the landscape room controls stay clickable at low height',async({page})=>{
     await page.setViewportSize({width:568,height:320});await page.goto('/zh/projects/');
     const space=page.locator('[data-bear-workspace]');
-    await page.waitForFunction(()=>{const d=document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;return d?.worldFailed==='true'||d?.bootState==='complete';});
+    await page.waitForFunction(()=>{const d=document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;return d?.worldFailed==='true'||d?.bootState==='complete';},undefined,{timeout:30_000});
     test.skip(await space.getAttribute('data-world-failed')==='true','This engine has no WebGL; ordinary workspace fallback is tested separately.');
     await expect(space).toHaveAttribute('data-world-rendered-mode','roam');
     for(const control of ['[data-cafe-read]','[data-cafe-enter]'])expect(await page.locator(control).evaluate(el=>{const b=el.getBoundingClientRect();return el.contains(document.elementFromPoint(b.x+b.width/2,b.y+b.height/2));})).toBe(true);

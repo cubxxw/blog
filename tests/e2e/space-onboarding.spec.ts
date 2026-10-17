@@ -1,7 +1,8 @@
 import {test,expect} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 
 test.use({channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.beforeEach(({page})=>reserveWorldJourney(page));
 const root='[data-bear-workspace]';
 const room=async(page:import('@playwright/test').Page)=>{
   await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
@@ -82,7 +83,7 @@ test('the optional resident can fail without blocking the room or workspace',asy
 });
 
 test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>{
-  test.setTimeout(45000);await page.goto('/zh/projects/');await room(page);
+  reserveWorldJourney(page);await page.goto('/zh/projects/');await room(page);
   await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','true');
   const pose=()=>page.locator(root).getAttribute('data-cat-pose');const initial=await pose();
   await expect.poll(pose,{timeout:12000}).not.toBe(initial);

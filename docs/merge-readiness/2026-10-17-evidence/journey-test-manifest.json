@@ -1,0 +1,50 @@
+{
+  "base": "35758f09995f945e6663d8fce457b584622ed60f",
+  "files": {
+    "tests/helpers/space-entry.ts": "1fed7cf7eeec9d9dde3b724d3c2b5198749bc16131f34e3ab9e0f340ca3a8d14",
+    "tests/e2e/page-wayfinder.spec.ts": "cf748fc318a5d2cf374936bc3569b08a999fdf345041234e6e656d305add5cdf",
+    "tests/e2e/space-cafe-details-contracts.spec.ts": "446b30f8f28b021447c672d40d1831817b3362d6936b21dedaa619fa473dc70e",
+    "tests/e2e/space-cafe.spec.ts": "7870541a709cc25bf45e889e903afdd01a1f26667a073f51995642ad2c044189",
+    "tests/e2e/space-onboarding.spec.ts": "aa77cec11533936067e9fe19e9d361e8bb792d7d2d567912c5418ef09ecfe8a7"
+  },
+  "logs": [
+    {
+      "name": "integration-journey-action-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "name": "integration-journey-action-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "integration-journey-action-discovery.log",
+      "bytes": 104343,
+      "sha256": "d6478e3b479d6ed122f1044b98f9d810ce4eb0f0b6d1ae7727c539b0663d3a24"
+    },
+    {
+      "name": "integration-journey-action-budget-check.log",
+      "bytes": 575,
+      "sha256": "aaafce1263244c1841921c40a1a334f70c8f8bec52eb94c141522c004392a98d"
+    },
+    {
+      "name": "integration-journey-action-scope.log",
+      "bytes": 1634,
+      "sha256": "2670075d9822fa6bbc9af5a1e0fb3688ce791b3f8fda34d41114a44cdcbf60d7"
+    }
+  ],
+  "archiveSha256": "314ee6aee12e6e7ff41c533b502fbffa17b3070c36c83b1fc25625535b4c3bcf",
+  "executed": [
+    "TypeScript typecheck",
+    "git diff --check",
+    "legacy discovery758instances52files",
+    "actual reserve helper VM5budget boundaries with per-Page action/navigation30s"
+  ],
+  "notExecuted": [
+    "Browser runtime for test-only patch",
+    "Real noJS complete journey"
+  ],
+  "production": "unchanged357; config/workflow/footnote/frozen-site also unchanged",
+  "ci357": "357-ci-manifest.json"
+}

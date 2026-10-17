@@ -165,6 +165,27 @@ test.describe('Home and About reading navigation', () => {
     await page.locator('[data-page-wayfinder] a[href="#hp-books"]').click();
     await expect(page).toHaveURL(/#hp-books$/);
     await expect(page.locator('#hp-books')).toBeVisible();
+    // Native smooth scrolling continues after the hash changes. In a no-JS
+    // document, Playwright's page-timer click retry cannot settle: first wait
+    // from Node until the actual destination and geometry have settled.
+    const waitForNativePosition=async(selector:string,home=false)=>{
+      let previous:number[]|undefined,stable=0;
+      await expect.poll(async()=>{
+        const position=await page.locator(selector).evaluate((el,home)=>{
+          const rect=el.getBoundingClientRect(),html=document.documentElement;
+          const padding=parseFloat(getComputedStyle(html).scrollPaddingTop)||0,margin=parseFloat(getComputedStyle(el).scrollMarginTop)||0;
+          const target=Math.min(Math.max(0,html.scrollHeight-innerHeight),Math.max(0,scrollY+rect.top-padding-margin));
+          const landed=home?Math.abs(scrollY)<=1&&rect.top>=0&&rect.bottom<=innerHeight&&rect.left>=0&&rect.right<=innerWidth:Math.abs(scrollY-target)<=1&&rect.top>=0&&rect.top<innerHeight&&rect.bottom>0;
+          return {landed,geometry:[scrollY,rect.x,rect.y,rect.width,rect.height]};
+        },home);
+        stable=position.landed&&previous&&position.geometry.every((value,index)=>Math.abs(value-previous![index])<=.1)?stable+1:0;
+        previous=position.geometry;
+        return stable>=3;
+      },{message:`Native ${home?'home':'book'} navigation reaches a stable visible destination`,intervals:[50,100,150]}).toBe(true);
+    };
+    await waitForNativePosition('#hp-books');
+    await page.keyboard.press(process.platform==='darwin'?'Meta+ArrowUp':'Control+Home');
+    await waitForNativePosition('.hp-entry-actions a:nth-child(2)',true);
     const pages=context.pages().length;await page.locator('.hp-entry-actions a').nth(1).click();
     await expect(page).toHaveURL('/zh/projects/#studio-products');await expect(page.locator('#studio-products')).toHaveCount(1);
     await expect(page.locator('#studio-products[data-product-space]')).toBeVisible();
