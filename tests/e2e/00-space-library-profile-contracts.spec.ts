@@ -1,5 +1,7 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
 import {enterWorkspace} from '../helpers/space-entry';
+import {writeFile} from 'node:fs/promises';
+import {runLibraryWheelBoundary} from '../../docs/merge-readiness/probes/library-wheel-boundary';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 type Article={url:string,title:string,description:string,date:string,section:string,tags:string[]};
@@ -25,9 +27,9 @@ async function choose(page:Page,reader:Locator,value:string){
   else {const control=reader.locator(`[data-library-filter="${value}"]`);await hit(control);await control.click();await frames(page);await expect(control).toBeFocused();}
   await expect(reader.locator(`[data-library-filter="${value}"]`)).toHaveAttribute('aria-pressed','true');
 }
-async function wheelLibrary(page:Page,list:Locator,delta:number,minimum:number){
+async function wheelLibrary(page:Page,list:Locator,delta:number,minimum:number,options:{trial?:string,deadline?:number,record?:(value:any)=>void}={}){
   const box=(await list.boundingBox())!,point={x:box.x+box.width/2,y:box.y+box.height/2},handle=(await list.elementHandle())!;
-  let outcome='failed';
+  let outcome='failed',failed=false,failure:unknown,report:any,pollBudgetMs=5000;
   try{
     // Observe without waiting for a paint or replacing the native input. This
     // setup may itself affect timing, so a pass is not evidence of a fix.
@@ -37,13 +39,13 @@ async function wheelLibrary(page:Page,list:Locator,delta:number,minimum:number){
       const measure=()=>{
         const rect=node.getBoundingClientRect(),root=node.closest<HTMLElement>('[data-bear-workspace]'),body=node.closest<HTMLElement>('[data-window-body]');
         const ancestors=[];for(let current:HTMLElement|null=node;current&&ancestors.length<9;current=current.parentElement){const css=getComputedStyle(current);ancestors.push({node:describe(current),rect:current.getBoundingClientRect().toJSON(),clientWidth:current.clientWidth,clientHeight:current.clientHeight,scrollWidth:current.scrollWidth,scrollHeight:current.scrollHeight,scrollTop:current.scrollTop,overflowX:css.overflowX,overflowY:css.overflowY,height:css.height,minHeight:css.minHeight,pointerEvents:css.pointerEvents,transform:css.transform});}
-        return {at:performance.now(),connected:node.isConnected,hidden:document.hidden,rect:rect.toJSON(),clientHeight:node.clientHeight,scrollHeight:node.scrollHeight,scrollTop:node.scrollTop,bodyScrollTop:body?.scrollTop,windowScrollY:scrollY,viewport:{width:innerWidth,height:innerHeight},items:node.querySelectorAll('.space-list-item').length,focus:describe(document.activeElement),world:root?{ready:root.dataset.worldReady,mode:root.dataset.worldMode,rendered:root.dataset.worldRenderedMode,loading:root.dataset.worldLoading,travel:root.dataset.worldTravel}:null,point,hit:document.elementsFromPoint(point.x,point.y).slice(0,8).map(describe),ancestors};
+        return {at:performance.now(),connected:node.isConnected,hidden:document.hidden,rect:rect.toJSON(),clientHeight:node.clientHeight,scrollHeight:node.scrollHeight,scrollTop:node.scrollTop,bodyScrollTop:body?.scrollTop,windowScrollY:scrollY,viewport:{width:innerWidth,height:innerHeight},devicePixelRatio,visualViewportScale:visualViewport?.scale,items:node.querySelectorAll('.space-list-item').length,focus:describe(document.activeElement),world:root?{ready:root.dataset.worldReady,mode:root.dataset.worldMode,rendered:root.dataset.worldRenderedMode,loading:root.dataset.worldLoading,travel:root.dataset.worldTravel}:null,point,hit:document.elementsFromPoint(point.x,point.y).slice(0,8).map(describe),ancestors};
       };
       const data={delta,started:measure(),events:[] as any[],frames:[] as any[],dropped:0,stopped:null as null|{at:number,reason:string}};
       let frame=0,timer=0,stopped=false;
       const record=(event:Record<string,unknown>)=>{if(!stopped){if(data.events.length<80)data.events.push({at:performance.now(),...event});else data.dropped++;}};
       const wheel=(event:WheelEvent,phase:string)=>{
-        record({type:'wheel',phase,target:describe(event.target),path:event.composedPath().slice(0,8).map(describe),trusted:event.isTrusted,deltaX:event.deltaX,deltaY:event.deltaY,deltaMode:event.deltaMode,cancelable:event.cancelable,defaultPrevented:event.defaultPrevented,timeStamp:event.timeStamp,scrollTop:node.scrollTop});
+        record({type:'wheel',phase,target:describe(event.target),path:event.composedPath().slice(0,8).map(describe),trusted:event.isTrusted,deltaX:event.deltaX,deltaY:event.deltaY,deltaMode:event.deltaMode,ctrlKey:event.ctrlKey,metaKey:event.metaKey,shiftKey:event.shiftKey,altKey:event.altKey,cancelable:event.cancelable,defaultPrevented:event.defaultPrevented,timeStamp:event.timeStamp,scrollTop:node.scrollTop});
         queueMicrotask(()=>record({type:'wheel-microtask',phase,defaultPrevented:event.defaultPrevented,scrollTop:node.scrollTop}));
       };
       const capture=(event:WheelEvent)=>wheel(event,'document-capture'),bubble=(event:WheelEvent)=>wheel(event,'window-bubble');
@@ -58,13 +60,24 @@ async function wheelLibrary(page:Page,list:Locator,delta:number,minimum:number){
       frame=requestAnimationFrame(tick);timer=window.setTimeout(()=>stop('6000ms deadline'),6000);
     },{point,delta});
     await page.mouse.move(point.x,point.y);await page.mouse.wheel(0,delta);
-    await expect.poll(()=>list.evaluate(el=>el.scrollTop),{timeout:5000}).toBeGreaterThan(minimum);
+    pollBudgetMs=options.deadline===undefined?5000:Math.min(5000,options.deadline-Date.now());
+    if(pollBudgetMs<=0)throw new Error('Boundary observation deadline exhausted before poll');
+    await expect.poll(()=>list.evaluate(el=>el.scrollTop),{timeout:pollBudgetMs}).toBeGreaterThan(minimum);
     outcome='passed';
+  }catch(error){failed=true;failure=error;
   }finally{
     let diagnostics:unknown;try{diagnostics=await handle.evaluate(el=>{const node=el as any,probe=node.__libraryWheelProbe;if(!probe)return null;let final;try{final=probe.measure();}finally{probe.stop();delete node.__libraryWheelProbe;}return {...probe.data,final};});}catch(captureError){diagnostics={captureError:String(captureError)};}
-    await handle.dispose();
-    await test.info().attach(`library-native-wheel-${delta}`,{contentType:'application/json',body:Buffer.from(JSON.stringify({outcome,minimum,point,limitation:'Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.',diagnostics},null,2))});
+    try{await handle.dispose();}catch(error){if(!failed)throw error;console.log('LIBRARY_WHEEL_BOUNDARY',JSON.stringify({stage:'dispose-observer',outcome:'inconclusive',error:String(error)}));}
+    report={outcome:failed&&options.trial&&pollBudgetMs<5000?'inconclusive':outcome,pollBudgetMs,minimum,point,limitation:'Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.',diagnostics};
+    try{options.record?.(report);const name=options.trial?`library-wheel-boundary-${options.trial}`:`library-native-wheel-${delta}`,file=test.info().outputPath(`${name}.json`);await writeFile(file,JSON.stringify(report,null,2));await test.info().attach(name,{contentType:'application/json',path:file});}catch(error){if(!failed)throw error;console.log('LIBRARY_WHEEL_BOUNDARY',JSON.stringify({stage:'save-original-diagnostic',outcome:'inconclusive',error:String(error)}));}
   }
+  if(failed){
+    if(!options.trial&&delta===850&&test.info().retry===0&&test.info().title==='the real library scroller restores reading position while Notes and Books keep their own documents')try{
+      await runLibraryWheelBoundary({page,list,trial:async(name,deadline)=>{let value:any;try{await wheelLibrary(page,list,850,100,{trial:name,deadline,record:record=>value=record});}catch(error){if(!value)value={outcome:'inconclusive',error:String(error)};}return value;},persist:async value=>{const file=test.info().outputPath('library-wheel-boundary.json');await writeFile(file,JSON.stringify(value,null,2));await test.info().attach('library-wheel-boundary',{contentType:'application/json',path:file});}});
+    }catch(error){console.log('LIBRARY_WHEEL_BOUNDARY',JSON.stringify({stage:'counterfactual',outcome:'inconclusive',error:String(error)}));}
+    throw failure;
+  }
+  return report;
 }
 const views=[
   {width:320,height:844,locale:'zh',theme:'light',coarse:true},

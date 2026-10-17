@@ -1,0 +1,161 @@
+{
+  "head": "d2bcef4ac46b4cfa4829346bf2e657d22c370fab",
+  "run": 39009098178,
+  "conclusion": "cancelled",
+  "artifactId": 12092930277,
+  "artifactBytes": 11236172,
+  "artifactSHA256": "5bc591e05f684b76c002631834efe3f8027f0ee89a5ad3c469984cb04c35ff34",
+  "reports": [
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/error-context.md",
+      "bytes": 47999,
+      "compressed": 12717,
+      "crc32": 2272527725,
+      "sha256": "0a5fadf8e5521211db63dc37c61ac6b886c0289ced22cd29cf87197d9f61e727"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/error-context.md",
+      "bytes": 46729,
+      "compressed": 12413,
+      "crc32": 1548076265,
+      "sha256": "83bf33aad9ad380c30295e3510dbe2b73be18f03d3624b400717e504627524b5"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry1/error-context.md",
+      "bytes": 47999,
+      "compressed": 12717,
+      "crc32": 2272527725,
+      "sha256": "0a5fadf8e5521211db63dc37c61ac6b886c0289ced22cd29cf87197d9f61e727"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry2/error-context.md",
+      "bytes": 47999,
+      "compressed": 12717,
+      "crc32": 2272527725,
+      "sha256": "0a5fadf8e5521211db63dc37c61ac6b886c0289ced22cd29cf87197d9f61e727"
+    },
+    {
+      "name": "browser/pages.json",
+      "bytes": 209,
+      "compressed": 91,
+      "crc32": 4170702164,
+      "sha256": "3f2186964944eb96717f2cb44336b1a3156cc03d6ae3c71a193b11c7cac5e4b2"
+    },
+    {
+      "name": "changes.json",
+      "bytes": 293084,
+      "compressed": 16664,
+      "crc32": 2655614957,
+      "sha256": "03391023f2f99af0ccd881721a50771c213c5c213266a2a7f64bd56f572ae354"
+    },
+    {
+      "name": "functions-report.json",
+      "bytes": 96,
+      "compressed": 79,
+      "crc32": 27900681,
+      "sha256": "fee362c136342344d219385c3e39044a268b7363254ad513cb124515b6db5e4a"
+    },
+    {
+      "name": "plan.json",
+      "bytes": 360,
+      "compressed": 244,
+      "crc32": 79289937,
+      "sha256": "29214da91b52b5bb3a21bd71fd35bc98eaf62301496c1c38bcd69a4092fd9337"
+    },
+    {
+      "name": "seo-report.json",
+      "bytes": 90,
+      "compressed": 76,
+      "crc32": 1328484573,
+      "sha256": "1286b65d3458083a76862230c3eaffa021764b6dc1d44b628f535521bbb8480e"
+    },
+    {
+      "name": "site/output-report.json",
+      "bytes": 34994,
+      "compressed": 5026,
+      "crc32": 3242033645,
+      "sha256": "1d0f2942ba40582767a6b3f574dc319be9c86cfaa60415b27d4404ca8568f884"
+    },
+    {
+      "name": "source-report.json",
+      "bytes": 200043,
+      "compressed": 43919,
+      "crc32": 323995665,
+      "sha256": "b4899236a2d97b3088317cc9d356268eb55d6eb6b41374cfee679b190bfd2aa5"
+    },
+    {
+      "name": "workflow-report.json",
+      "bytes": 95,
+      "compressed": 79,
+      "crc32": 3400014332,
+      "sha256": "69f34dbf825a106f950cc3202fd1ff106462a22acd7dac4a1aa18ec3b76524d3"
+    }
+  ],
+  "reportArchive": {
+    "bytes": 111521,
+    "sha256": "2e77262559cb2c76dd81a006df40e3fb26b19110156cf512d5bab05e77922118"
+  },
+  "ciLog": {
+    "compressedFile": {
+      "bytes": 84831,
+      "sha256": "23e9f5ae6f8f4cec2096a616c5a32f1c617311efdaa55b083af727e163490b10"
+    },
+    "decodedRaw": {
+      "bytes": 766838,
+      "sha256": "2c4e7e88b821477c1a90fb636cc65bd1bb99706f0d928f645be2ebd95a2cfd56"
+    }
+  },
+  "trace": {
+    "name": "d2-library-scroll-trace.zip",
+    "artifactMember": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry1/trace.zip",
+    "zipCRC32": 2030219147,
+    "bytes": 10887405,
+    "sha256": "fabb9224d06f56f04fd0b1f6347b4ab0a0183a4f94b711d83dd8b71aa98e0907"
+  },
+  "probe": {
+    "file": "d2-library-wheel-probe.json",
+    "traceMember": "attachments/a3e7a18bb76df042e83184c516999ea7a15c7baf",
+    "bytes": 26564,
+    "sha256": "5e9c47d93c65ff13d82a078e0f068660df0c9f95e7e5f6041646d82e3a5626be"
+  },
+  "failure": {
+    "firstTitleAttempts": 3,
+    "durationsSeconds": [
+      24.4,
+      28.4,
+      25.0
+    ],
+    "secondTitleAttempts": 1,
+    "secondDurationSeconds": 24.1,
+    "stage": "first original native wheel; before restoration"
+  },
+  "observedFacts": {
+    "listClientHeight": 365,
+    "listScrollHeight": 3237,
+    "items": 17,
+    "center": [
+      645.3799438476562,
+      405.3099670410156
+    ],
+    "hit": "span→button.space-list-item→div.space-list",
+    "trustedWheelDeltaY": 850,
+    "deltaMode": 0,
+    "cancelable": false,
+    "defaultPreventedCaptureAndBubble": false,
+    "scrollEvents": 0,
+    "rafSamples": 16,
+    "finalListBodyWindowScroll": [
+      0,
+      0,
+      0
+    ],
+    "observationMs": 5032.2
+  },
+  "verdict": "Native default scrolling did not occur despite correct event target and positive overflow; not restoration rollback. Exact compositor/CSS/renderer cause remains unconfirmed.",
+  "limitations": [
+    "Observer can affect timing/routing; it did not cure this retry.",
+    "Only one retry trace retained. Firstcase failed3attempts; secondfirstattempt failed before cancellation.",
+    "758legacy full matrix not complete; only48quality and earlyLibrarylayout/bookmark tests passed.",
+    "Private signed artifact URLs excluded."
+  ]
+}
