@@ -101,12 +101,12 @@
       <div class="post-header-rule"></div>
     </header>
 
+    {{- partial "article/author-audio.html" (dict "page" . "placement" "intro") }}
+
     {{- /* Précis (tldr) sits with the header text, BEFORE the cover: the
          reader finishes all "front matter" in one place, then the cover
          acts as the curtain into the prose. */}}
     {{- partial "article/tldr.html" . }}
-
-    {{- partial "article/author-audio.html" (dict "page" . "placement" "intro") }}
 
     {{- /* Series banner sits with the header front matter, before the cover:
          one line telling the reader they are on a multi-part thread. */}}
