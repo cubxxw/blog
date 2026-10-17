@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>作者声音 · cubxxw</title>
+    <link rel="stylesheet" href="/studio.css" />
+    <script src="/studio.js" type="module"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <a href="https://cubxxw.com" target="_blank" rel="noreferrer">cubxxw</a>
+        <h1>作者声音</h1>
+        <p>让读者用你的声音听重点、理解难点。</p>
+        <p id="connection" role="status">正在连接本机工具…</p>
+      </header>
+      <section aria-labelledby="voice-title">
+        <h2 id="voice-title">先留下你的声音</h2>
+        <p id="voice-state">
+          创建一次，以后的文章都能复用。录音仅在你点击创建后交给 Google。
+        </p>
+        <details id="voice-setup">
+          <summary>创建或更新我的声音</summary>
+          <div class="recording" data-slot="reference">
+            <h3>参考录音</h3>
+            <p>自然说话 10–30 秒，像给朋友发一条语音。保持安静，不加配乐。</p>
+            <button type="button" data-record>开始录音</button
+            ><button type="button" data-stop hidden>结束录音</button
+            ><label class="upload"
+              >或选择录音<input type="file" accept="audio/*" /></label
+            ><audio controls hidden></audio>
+            <p data-record-status role="status"></p>
+          </div>
+          <div class="recording" data-slot="consent">
+            <h3>授权录音</h3>
+            <p>请你本人清楚读出下面这句话：</p>
+            <blockquote>
+              我是此声音的拥有者并授权谷歌使用此声音创建语音合成模型
+            </blockquote>
+            <details>
+              <summary>中文核验未通过时，可尝试英文授权句</summary>
+              <blockquote>
+                I am the owner of this voice and I consent to Google using this
+                voice to create a synthetic voice model.
+              </blockquote>
+              <p>
+                授权片段只读这句话，不加介绍。参考录音与授权录音尽量在同一安静环境录制。
+              </p>
+            </details>
+            <button type="button" data-record>开始录音</button
+            ><button type="button" data-stop hidden>结束录音</button
+            ><label class="upload"
+              >或选择录音<input type="file" accept="audio/*" /></label
+            ><audio controls hidden></audio>
+            <p data-record-status role="status"></p>
+          </div>
+          <label class="check"
+            ><input
+              id="consent-confirmed"
+              type="checkbox"
+            />两份录音都是我本人，并同意 Google 创建可复用的合成声音。</label
+          ><button id="create-voice" type="button" class="primary">
+            创建我的声音
+          </button>
+        </details>
+      </section>
+      <section aria-labelledby="article-title">
+        <h2 id="article-title">给一篇文章加声音</h2>
+        <label for="article-search">找文章</label
+        ><input
+          id="article-search"
+          type="search"
+          placeholder="输入标题关键词"
+        /><select id="article" aria-label="选择文章"></select>
+        <details>
+          <summary>不知道从哪里说起？</summary>
+          <ul id="questions"></ul>
+          <p>可以照着问题自由说几分钟，再整理成一段短稿。</p>
+        </details>
+        <label for="kind">读者想听什么</label
+        ><select id="kind">
+          <option value="summary">听重点 · 先判断值不值得细读</option>
+          <option value="section">听这一节 · 理解一个难点</option>
+          <option value="dialogue">问答讲解 · 顺着读者的问题理解长文</option>
+          <option value="intro">作者的话 · 开头</option>
+          <option value="afterword">作者后记 · 结尾</option>
+        </select>
+        <label id="section-label" for="section" hidden>选择章节</label
+        ><select id="section" hidden></select>
+        <button id="draft-script" type="button">根据原文整理讲解稿</button>
+        <p id="draft-note">
+          整理时只把所选原文交给
+          Google，按实际用量计费。请先核对文字，再用已保存的个人音色配音。读者播放时直接复用音频。
+        </p>
+        <label for="script">口播稿或录音文字稿</label
+        ><textarea
+          id="script"
+          rows="8"
+          placeholder="先从原文整理讲解稿，或填写你已确认的稿件。"
+        ></textarea>
+        <p id="estimate">建议先准备 150–600 字。长稿会自动分段，不丢内容。</p>
+        <div class="actions">
+          <button id="generate" type="button" class="primary">
+            用我的声音生成
+          </button>
+        </div>
+        <p>
+          点击生成后，口播稿会交给 Google 官方 Gemini
+          配音，按实际用量计费。相同片段会复用已有声音。
+        </p>
+        <details>
+          <summary>使用我亲口录制的原声</summary>
+          <div class="recording" data-slot="original">
+            <p>
+              可以在这里录制，或上传已有录音。原声只在本机转换，不调用语音模型。
+            </p>
+            <button type="button" data-record>开始录音</button
+            ><button type="button" data-stop hidden>结束录音</button
+            ><label class="upload"
+              >或选择录音<input type="file" accept="audio/*" /></label
+            ><audio controls hidden></audio>
+            <p data-record-status role="status"></p>
+          </div>
+          <button id="use-recording" type="button">准备这段原声</button>
+        </details>
+      </section>
+      <section id="result" hidden aria-labelledby="result-title">
+        <h2 id="result-title">试听与确认</h2>
+        <p id="result-article"></p>
+        <p id="job-state" role="status"></p>
+        <button id="cancel" type="button" hidden>停止准备</button>
+        <audio id="preview" controls preload="none" hidden></audio>
+        <p id="result-text" class="transcript"></p>
+        <div id="review" hidden>
+          <label class="check"
+            ><input
+              id="reviewed"
+              type="checkbox"
+            />我已试听并核对文字，确认可以放入这篇文章。</label
+          ><button id="publish" type="button" class="primary">
+            确认并加入文章
+          </button>
+          <p>这一步写入本地文章和公开音频文件，随后仍走博客原有的发布流程。</p>
+        </div>
+      </section>
+      <section>
+        <h2>最近准备的声音</h2>
+        <div id="history"></div>
+      </section>
+      <p id="notice" role="status" aria-live="polite"></p>
+      <footer>
+        密钥和个人声音配置留在本机。网页读者只会拿到你确认过的音频和文字稿。
+      </footer>
+    </main>
+  </body>
+</html>

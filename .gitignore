@@ -132,3 +132,6 @@ assets/jsconfig.json
 
 # flomo 导出与中间产物（含私人笔记原文，永不入库）
 /.flomo/
+
+# Local author voice profiles, recordings, drafts and API receipts (never public)
+/.author-voice/

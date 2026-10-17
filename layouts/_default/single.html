@@ -101,6 +101,8 @@
       <div class="post-header-rule"></div>
     </header>
 
+    {{- partial "article/author-audio.html" (dict "page" . "placement" "intro") }}
+
     {{- /* Précis (tldr) sits with the header text, BEFORE the cover: the
          reader finishes all "front matter" in one place, then the cover
          acts as the curtain into the prose. */}}
@@ -158,6 +160,8 @@
     {{- partial "article/faq.html" . -}}
 
     {{- partial "article/column-outro.html" . -}}
+
+    {{- partial "article/author-audio.html" (dict "page" . "placement" "afterword") }}
 
     <footer class="post-footer">
       {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
