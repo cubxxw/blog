@@ -1,0 +1,5700 @@
+{
+  "interpretation": "pending; only reversible A-fail/B-pass/A-fail with matched geometry can support a candidate",
+  "observations": [
+    {
+      "name": "A0-original-2raf",
+      "sameList": true,
+      "before": {
+        "rect": {
+          "x": 465.7998046875,
+          "y": 255.65985107421875,
+          "width": 359.1602783203125,
+          "height": 299.30023193359375,
+          "top": 255.65985107421875,
+          "right": 824.9600830078125,
+          "bottom": 554.9600830078125,
+          "left": 465.7998046875
+        },
+        "point": {
+          "x": 645.3799438476562,
+          "y": 405.3099670410156
+        },
+        "hit": {
+          "tag": "SPAN",
+          "class": null,
+          "inside": true
+        },
+        "clientHeight": 365,
+        "scrollHeight": 3237,
+        "scrollTop": 0,
+        "query": "Go",
+        "engineering": "true",
+        "willChange": "auto",
+        "overscroll": "contain",
+        "screenResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "listResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "geometryMixed": false,
+        "transforms": [
+          {
+            "class": "space-spatial-screen",
+            "rect": {
+              "x": 129.5995330810547,
+              "y": 80.99971008300781,
+              "width": 1180.801025390625,
+              "height": 738.0006103515625,
+              "top": 80.99971008300781,
+              "right": 1310.4005584716797,
+              "bottom": 819.0003204345703,
+              "left": 129.5995330810547
+            },
+            "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": -2106.688232421875,
+              "y": -695008.25,
+              "width": 1115186.625,
+              "height": 696991.625,
+              "top": -695008.25,
+              "right": 1113079.9367675781,
+              "bottom": 1983.375,
+              "left": -2106.688232421875
+            },
+            "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)",
+            "perspective": "none",
+            "transformStyle": "preserve-3d"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "space-world__css",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          }
+        ],
+        "reachable": true
+      },
+      "result": {
+        "outcome": "failed",
+        "pollBudgetMs": 5000,
+        "minimum": 100,
+        "point": {
+          "x": 645.3799438476562,
+          "y": 405.3099670410156
+        },
+        "limitation": "Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.",
+        "diagnostics": {
+          "delta": 850,
+          "started": {
+            "at": 26695.09999999986,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.1602783203125,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9600830078125,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799438476562,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.1602783203125,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.160400390625,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004150390625,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7800903320312,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.160888671875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.5804290771484,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.688232421875,
+                  "y": -695008.25,
+                  "width": 1115186.625,
+                  "height": 696991.625,
+                  "top": -695008.25,
+                  "right": 1113079.9367675781,
+                  "bottom": 1983.375,
+                  "left": -2106.688232421875
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113080,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          },
+          "events": [
+            {
+              "at": 26739.399999999907,
+              "type": "wheel",
+              "phase": "document-capture",
+              "target": {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "SPAN",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 26707,
+              "scrollTop": 0
+            },
+            {
+              "at": 26739.399999999907,
+              "type": "wheel-microtask",
+              "phase": "document-capture",
+              "defaultPrevented": false,
+              "scrollTop": 0
+            },
+            {
+              "at": 26739.399999999907,
+              "type": "wheel",
+              "phase": "window-bubble",
+              "target": {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "SPAN",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 26707,
+              "scrollTop": 0
+            },
+            {
+              "at": 26739.399999999907,
+              "type": "wheel-microtask",
+              "phase": "window-bubble",
+              "defaultPrevented": false,
+              "scrollTop": 0
+            }
+          ],
+          "frames": [
+            {
+              "time": 26688.9,
+              "observedAt": 26696,
+              "scrollTop": 0
+            },
+            {
+              "time": 26705.6,
+              "observedAt": 26706,
+              "scrollTop": 0
+            },
+            {
+              "time": 26722.3,
+              "observedAt": 26722.5,
+              "scrollTop": 0
+            },
+            {
+              "time": 26738.9,
+              "observedAt": 26739.399999999907,
+              "scrollTop": 0
+            },
+            {
+              "time": 26755.6,
+              "observedAt": 26755.800000000047,
+              "scrollTop": 0
+            },
+            {
+              "time": 26772.2,
+              "observedAt": 26772.5,
+              "scrollTop": 0
+            },
+            {
+              "time": 26788.9,
+              "observedAt": 26789.199999999953,
+              "scrollTop": 0
+            },
+            {
+              "time": 26805.6,
+              "observedAt": 26805.800000000047,
+              "scrollTop": 0
+            },
+            {
+              "time": 26822.2,
+              "observedAt": 26822.5,
+              "scrollTop": 0
+            },
+            {
+              "time": 26838.9,
+              "observedAt": 26839.199999999953,
+              "scrollTop": 0
+            },
+            {
+              "time": 26855.6,
+              "observedAt": 26855.800000000047,
+              "scrollTop": 0
+            },
+            {
+              "time": 26872.3,
+              "observedAt": 26872.5,
+              "scrollTop": 0
+            },
+            {
+              "time": 26889,
+              "observedAt": 26889.199999999953,
+              "scrollTop": 0
+            },
+            {
+              "time": 26905.5,
+              "observedAt": 26905.800000000047,
+              "scrollTop": 0
+            },
+            {
+              "time": 26922.2,
+              "observedAt": 26922.5,
+              "scrollTop": 0
+            },
+            {
+              "time": 26939,
+              "observedAt": 26939.09999999986,
+              "scrollTop": 0
+            }
+          ],
+          "dropped": 0,
+          "stopped": {
+            "at": 31637.199999999953,
+            "reason": "finally"
+          },
+          "final": {
+            "at": 31636.800000000047,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.1602783203125,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9600830078125,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799438476562,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.1602783203125,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.160400390625,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004150390625,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7800903320312,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.160888671875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.5804290771484,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.688232421875,
+                  "y": -695008.25,
+                  "width": 1115186.625,
+                  "height": 696991.625,
+                  "top": -695008.25,
+                  "right": 1113079.9367675781,
+                  "bottom": 1983.375,
+                  "left": -2106.688232421875
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113080,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "H-compositing-hint",
+      "sameList": true,
+      "before": {
+        "rect": {
+          "x": 465.7998046875,
+          "y": 255.65985107421875,
+          "width": 359.1602783203125,
+          "height": 299.30023193359375,
+          "top": 255.65985107421875,
+          "right": 824.9600830078125,
+          "bottom": 554.9600830078125,
+          "left": 465.7998046875
+        },
+        "point": {
+          "x": 645.3799438476562,
+          "y": 405.3099670410156
+        },
+        "hit": {
+          "tag": "SPAN",
+          "class": null,
+          "inside": true
+        },
+        "clientHeight": 365,
+        "scrollHeight": 3237,
+        "scrollTop": 0,
+        "query": "Go",
+        "engineering": "true",
+        "willChange": "transform",
+        "overscroll": "contain",
+        "screenResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "listResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "geometryMixed": false,
+        "transforms": [
+          {
+            "class": "space-spatial-screen",
+            "rect": {
+              "x": 129.5995330810547,
+              "y": 80.99971008300781,
+              "width": 1180.801025390625,
+              "height": 738.0006103515625,
+              "top": 80.99971008300781,
+              "right": 1310.4005584716797,
+              "bottom": 819.0003204345703,
+              "left": 129.5995330810547
+            },
+            "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": -2106.688232421875,
+              "y": -695008.25,
+              "width": 1115186.625,
+              "height": 696991.625,
+              "top": -695008.25,
+              "right": 1113079.9367675781,
+              "bottom": 1983.375,
+              "left": -2106.688232421875
+            },
+            "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)",
+            "perspective": "none",
+            "transformStyle": "preserve-3d"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "space-world__css",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          }
+        ],
+        "reachable": true
+      },
+      "result": {
+        "outcome": "passed",
+        "pollBudgetMs": 5000,
+        "minimum": 100,
+        "point": {
+          "x": 645.3799438476562,
+          "y": 405.3099670410156
+        },
+        "limitation": "Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.",
+        "diagnostics": {
+          "delta": 850,
+          "started": {
+            "at": 31709.699999999953,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.1602783203125,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9600830078125,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799438476562,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.1602783203125,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.160400390625,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004150390625,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7800903320312,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.160888671875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.5804290771484,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.688232421875,
+                  "y": -695008.25,
+                  "width": 1115186.625,
+                  "height": 696991.625,
+                  "top": -695008.25,
+                  "right": 1113079.9367675781,
+                  "bottom": 1983.375,
+                  "left": -2106.688232421875
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113080,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          },
+          "events": [
+            {
+              "at": 31756,
+              "type": "wheel",
+              "phase": "document-capture",
+              "target": {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 31723.09999999986,
+              "scrollTop": 850
+            },
+            {
+              "at": 31756.199999999953,
+              "type": "wheel-microtask",
+              "phase": "document-capture",
+              "defaultPrevented": false,
+              "scrollTop": 850
+            },
+            {
+              "at": 31756.199999999953,
+              "type": "wheel",
+              "phase": "window-bubble",
+              "target": {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 31723.09999999986,
+              "scrollTop": 850
+            },
+            {
+              "at": 31756.199999999953,
+              "type": "wheel-microtask",
+              "phase": "window-bubble",
+              "defaultPrevented": false,
+              "scrollTop": 850
+            },
+            {
+              "at": 31756.59999999986,
+              "type": "scroll",
+              "target": {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              "timeStamp": 31755.59999999986,
+              "scrollTop": 850,
+              "bodyScrollTop": 0,
+              "windowScrollY": 0
+            },
+            {
+              "at": 31756.59999999986,
+              "type": "scrollend",
+              "target": {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              "timeStamp": 31755.59999999986,
+              "scrollTop": 850,
+              "bodyScrollTop": 0,
+              "windowScrollY": 0
+            }
+          ],
+          "frames": [
+            {
+              "time": 31705.4,
+              "observedAt": 31710.399999999907,
+              "scrollTop": 0
+            },
+            {
+              "time": 31722.1,
+              "observedAt": 31722.399999999907,
+              "scrollTop": 0
+            },
+            {
+              "time": 31738.8,
+              "observedAt": 31739,
+              "scrollTop": 0
+            },
+            {
+              "time": 31755.4,
+              "observedAt": 31756.699999999953,
+              "scrollTop": 850
+            },
+            {
+              "time": 31772.1,
+              "observedAt": 31772.59999999986,
+              "scrollTop": 850
+            },
+            {
+              "time": 31788.7,
+              "observedAt": 31788.899999999907,
+              "scrollTop": 850
+            },
+            {
+              "time": 31805.4,
+              "observedAt": 31805.699999999953,
+              "scrollTop": 850
+            },
+            {
+              "time": 31822,
+              "observedAt": 31822.300000000047,
+              "scrollTop": 850
+            },
+            {
+              "time": 31838.7,
+              "observedAt": 31839,
+              "scrollTop": 850
+            },
+            {
+              "time": 31855.4,
+              "observedAt": 31855.699999999953,
+              "scrollTop": 850
+            }
+          ],
+          "dropped": 0,
+          "stopped": {
+            "at": 31859.09999999986,
+            "reason": "finally"
+          },
+          "final": {
+            "at": 31858.800000000047,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.1602783203125,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9600830078125,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 850,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799438476562,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-notes",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.1602783203125,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 850,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.160400390625,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004150390625,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7800903320312,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.160888671875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.5804290771484,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.688232421875,
+                  "y": -695008.25,
+                  "width": 1115186.625,
+                  "height": 696991.625,
+                  "top": -695008.25,
+                  "right": 1113079.9367675781,
+                  "bottom": 1983.375,
+                  "left": -2106.688232421875
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113080,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "A1-original-2raf",
+      "sameList": true,
+      "before": {
+        "rect": {
+          "x": 465.7998046875,
+          "y": 255.65985107421875,
+          "width": 359.1602783203125,
+          "height": 299.30023193359375,
+          "top": 255.65985107421875,
+          "right": 824.9600830078125,
+          "bottom": 554.9600830078125,
+          "left": 465.7998046875
+        },
+        "point": {
+          "x": 645.3799438476562,
+          "y": 405.3099670410156
+        },
+        "hit": {
+          "tag": "SPAN",
+          "class": null,
+          "inside": true
+        },
+        "clientHeight": 365,
+        "scrollHeight": 3237,
+        "scrollTop": 0,
+        "query": "Go",
+        "engineering": "true",
+        "willChange": "auto",
+        "overscroll": "contain",
+        "screenResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "listResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "geometryMixed": false,
+        "transforms": [
+          {
+            "class": "space-spatial-screen",
+            "rect": {
+              "x": 129.5995330810547,
+              "y": 80.99971008300781,
+              "width": 1180.801025390625,
+              "height": 738.0006103515625,
+              "top": 80.99971008300781,
+              "right": 1310.4005584716797,
+              "bottom": 819.0003204345703,
+              "left": 129.5995330810547
+            },
+            "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": -2106.688232421875,
+              "y": -695008.25,
+              "width": 1115186.625,
+              "height": 696991.625,
+              "top": -695008.25,
+              "right": 1113079.9367675781,
+              "bottom": 1983.375,
+              "left": -2106.688232421875
+            },
+            "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)",
+            "perspective": "none",
+            "transformStyle": "preserve-3d"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "space-world__css",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          }
+        ],
+        "reachable": true
+      },
+      "result": {
+        "outcome": "failed",
+        "pollBudgetMs": 5000,
+        "minimum": 100,
+        "point": {
+          "x": 645.3799438476562,
+          "y": 405.3099670410156
+        },
+        "limitation": "Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.",
+        "diagnostics": {
+          "delta": 850,
+          "started": {
+            "at": 31925.399999999907,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.1602783203125,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9600830078125,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799438476562,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.1602783203125,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.160400390625,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004150390625,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7800903320312,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.160888671875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.5804290771484,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.688232421875,
+                  "y": -695008.25,
+                  "width": 1115186.625,
+                  "height": 696991.625,
+                  "top": -695008.25,
+                  "right": 1113079.9367675781,
+                  "bottom": 1983.375,
+                  "left": -2106.688232421875
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113080,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          },
+          "events": [
+            {
+              "at": 31972.59999999986,
+              "type": "wheel",
+              "phase": "document-capture",
+              "target": {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "SPAN",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 31940,
+              "scrollTop": 0
+            },
+            {
+              "at": 31972.59999999986,
+              "type": "wheel-microtask",
+              "phase": "document-capture",
+              "defaultPrevented": false,
+              "scrollTop": 0
+            },
+            {
+              "at": 31972.59999999986,
+              "type": "wheel",
+              "phase": "window-bubble",
+              "target": {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "SPAN",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 31940,
+              "scrollTop": 0
+            },
+            {
+              "at": 31972.59999999986,
+              "type": "wheel-microtask",
+              "phase": "window-bubble",
+              "defaultPrevented": false,
+              "scrollTop": 0
+            }
+          ],
+          "frames": [
+            {
+              "time": 31922.1,
+              "observedAt": 31925.899999999907,
+              "scrollTop": 0
+            },
+            {
+              "time": 31938.7,
+              "observedAt": 31939.09999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 31955.4,
+              "observedAt": 31955.699999999953,
+              "scrollTop": 0
+            },
+            {
+              "time": 31972,
+              "observedAt": 31972.59999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 31988.7,
+              "observedAt": 31988.899999999907,
+              "scrollTop": 0
+            },
+            {
+              "time": 32005.4,
+              "observedAt": 32005.59999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 32022,
+              "observedAt": 32022.300000000047,
+              "scrollTop": 0
+            },
+            {
+              "time": 32038.7,
+              "observedAt": 32038.899999999907,
+              "scrollTop": 0
+            },
+            {
+              "time": 32055.4,
+              "observedAt": 32055.699999999953,
+              "scrollTop": 0
+            },
+            {
+              "time": 32072,
+              "observedAt": 32072.399999999907,
+              "scrollTop": 0
+            },
+            {
+              "time": 32088.7,
+              "observedAt": 32089,
+              "scrollTop": 0
+            },
+            {
+              "time": 32105.4,
+              "observedAt": 32105.59999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 32122.1,
+              "observedAt": 32122.300000000047,
+              "scrollTop": 0
+            },
+            {
+              "time": 32138.7,
+              "observedAt": 32139,
+              "scrollTop": 0
+            },
+            {
+              "time": 32155.4,
+              "observedAt": 32155.59999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 32172,
+              "observedAt": 32172.300000000047,
+              "scrollTop": 0
+            }
+          ],
+          "dropped": 0,
+          "stopped": {
+            "at": 36868.80000000005,
+            "reason": "finally"
+          },
+          "final": {
+            "at": 36868.30000000005,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.1602783203125,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9600830078125,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799438476562,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.1602783203125,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.160400390625,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.160400390625,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9600830078125,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004150390625,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7800903320312,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.160888671875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.5804290771484,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.688232421875,
+                  "y": -695008.25,
+                  "width": 1115186.625,
+                  "height": 696991.625,
+                  "top": -695008.25,
+                  "right": 1113079.9367675781,
+                  "bottom": 1983.375,
+                  "left": -2106.688232421875
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765172, 716.35, -448.02, 1305.21, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113080,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "F-flatten-css3d",
+      "sameList": true,
+      "before": {
+        "rect": {
+          "x": 465.7998046875,
+          "y": 255.65985107421875,
+          "width": 359.16033935546875,
+          "height": 299.30023193359375,
+          "top": 255.65985107421875,
+          "right": 824.9601440429688,
+          "bottom": 554.9600830078125,
+          "left": 465.7998046875
+        },
+        "point": {
+          "x": 645.3799743652344,
+          "y": 405.3099670410156
+        },
+        "hit": {
+          "tag": "SPAN",
+          "class": null,
+          "inside": true
+        },
+        "clientHeight": 365,
+        "scrollHeight": 3237,
+        "scrollTop": 0,
+        "query": "Go",
+        "engineering": "true",
+        "willChange": "auto",
+        "overscroll": "contain",
+        "screenResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "listResidual": {
+          "x": 0,
+          "y": 0,
+          "width": 0.00006103515625,
+          "height": 0
+        },
+        "geometryMixed": false,
+        "transforms": [
+          {
+            "class": "space-spatial-screen",
+            "rect": {
+              "x": 129.5995330810547,
+              "y": 80.99971008300781,
+              "width": 1180.801025390625,
+              "height": 738.0006103515625,
+              "top": 80.99971008300781,
+              "right": 1310.4005584716797,
+              "bottom": 819.0003204345703,
+              "left": 129.5995330810547
+            },
+            "transform": "matrix(0.820001, 0, 0, 0.820001, 129.6, 80.9997)",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "space-world__css",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          }
+        ],
+        "reachable": true
+      },
+      "result": {
+        "outcome": "passed",
+        "pollBudgetMs": 5000,
+        "minimum": 100,
+        "point": {
+          "x": 645.3799743652344,
+          "y": 405.3099670410156
+        },
+        "limitation": "Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.",
+        "diagnostics": {
+          "delta": 850,
+          "started": {
+            "at": 36948.09999999986,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.16033935546875,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9601440429688,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799743652344,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.16033935546875,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.1604614257812,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.1604614257812,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.1604614257812,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004760742188,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7801513671875,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.1610107421875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.580551147461,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(0.820001, 0, 0, 0.820001, 129.6, 80.9997)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          },
+          "events": [
+            {
+              "at": 36989.09999999986,
+              "type": "wheel",
+              "phase": "document-capture",
+              "target": {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 36956.59999999986,
+              "scrollTop": 850
+            },
+            {
+              "at": 36989.09999999986,
+              "type": "wheel-microtask",
+              "phase": "document-capture",
+              "defaultPrevented": false,
+              "scrollTop": 850
+            },
+            {
+              "at": 36989.09999999986,
+              "type": "wheel",
+              "phase": "window-bubble",
+              "target": {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 36956.59999999986,
+              "scrollTop": 850
+            },
+            {
+              "at": 36989.09999999986,
+              "type": "wheel-microtask",
+              "phase": "window-bubble",
+              "defaultPrevented": false,
+              "scrollTop": 850
+            },
+            {
+              "at": 36989.39999999991,
+              "type": "scroll",
+              "target": {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              "timeStamp": 36988.69999999995,
+              "scrollTop": 850,
+              "bodyScrollTop": 0,
+              "windowScrollY": 0
+            },
+            {
+              "at": 36989.5,
+              "type": "scrollend",
+              "target": {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              "timeStamp": 36988.69999999995,
+              "scrollTop": 850,
+              "bodyScrollTop": 0,
+              "windowScrollY": 0
+            }
+          ],
+          "frames": [
+            {
+              "time": 36938.5,
+              "observedAt": 36948.59999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 36955.2,
+              "observedAt": 36955.5,
+              "scrollTop": 0
+            },
+            {
+              "time": 36971.8,
+              "observedAt": 36972,
+              "scrollTop": 0
+            },
+            {
+              "time": 36988.5,
+              "observedAt": 36989.5,
+              "scrollTop": 850
+            },
+            {
+              "time": 37005.2,
+              "observedAt": 37005.5,
+              "scrollTop": 850
+            },
+            {
+              "time": 37021.8,
+              "observedAt": 37022.09999999986,
+              "scrollTop": 850
+            },
+            {
+              "time": 37038.5,
+              "observedAt": 37038.69999999995,
+              "scrollTop": 850
+            },
+            {
+              "time": 37055.2,
+              "observedAt": 37055.5,
+              "scrollTop": 850
+            },
+            {
+              "time": 37071.9,
+              "observedAt": 37072.09999999986,
+              "scrollTop": 850
+            }
+          ],
+          "dropped": 0,
+          "stopped": {
+            "at": 37085.09999999986,
+            "reason": "finally"
+          },
+          "final": {
+            "at": 37084.89999999991,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998046875,
+              "y": 255.65985107421875,
+              "width": 359.16033935546875,
+              "height": 299.30023193359375,
+              "top": 255.65985107421875,
+              "right": 824.9601440429688,
+              "bottom": 554.9600830078125,
+              "left": 465.7998046875
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 850,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799743652344,
+              "y": 405.3099670410156
+            },
+            "hit": [
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-notes",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998046875,
+                  "y": 255.65985107421875,
+                  "width": 359.16033935546875,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600830078125,
+                  "left": 465.7998046875
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 850,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 255.65985107421875,
+                  "width": 523.1604614257812,
+                  "height": 299.30023193359375,
+                  "top": 255.65985107421875,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600830078125,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.1604614257812,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7996826171875,
+                  "y": 197.43980407714844,
+                  "width": 523.1604614257812,
+                  "height": 357.520263671875,
+                  "top": 197.43980407714844,
+                  "right": 824.9601440429688,
+                  "bottom": 554.9600677490234,
+                  "left": 301.7996826171875
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.97967529296875,
+                  "y": 162.17977905273438,
+                  "width": 524.8004760742188,
+                  "height": 393.6003112792969,
+                  "top": 162.17977905273438,
+                  "right": 825.7801513671875,
+                  "bottom": 555.7800903320312,
+                  "left": 300.97967529296875
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41954040527344,
+                  "y": 81.81970977783203,
+                  "width": 1179.1610107421875,
+                  "height": 736.360595703125,
+                  "top": 81.81970977783203,
+                  "right": 1309.580551147461,
+                  "bottom": 818.180305480957,
+                  "left": 130.41954040527344
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5995330810547,
+                  "y": 80.99971008300781,
+                  "width": 1180.801025390625,
+                  "height": 738.0006103515625,
+                  "top": 80.99971008300781,
+                  "right": 1310.4005584716797,
+                  "bottom": 819.0003204345703,
+                  "left": 129.5995330810547
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(0.820001, 0, 0, 0.820001, 129.6, 80.9997)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "A2-original-2raf",
+      "sameList": true,
+      "before": {
+        "rect": {
+          "x": 465.7998962402344,
+          "y": 255.65992736816406,
+          "width": 359.1601257324219,
+          "height": 299.30010986328125,
+          "top": 255.65992736816406,
+          "right": 824.9600219726562,
+          "bottom": 554.9600372314453,
+          "left": 465.7998962402344
+        },
+        "point": {
+          "x": 645.3799591064453,
+          "y": 405.3099822998047
+        },
+        "hit": {
+          "tag": "SPAN",
+          "class": null,
+          "inside": true
+        },
+        "clientHeight": 365,
+        "scrollHeight": 3237,
+        "scrollTop": 0,
+        "query": "Go",
+        "engineering": "true",
+        "willChange": "auto",
+        "overscroll": "contain",
+        "screenResidual": {
+          "x": 0.000244140625,
+          "y": 0.00014495849609375,
+          "width": 0.00048828125,
+          "height": 0.0003662109375
+        },
+        "listResidual": {
+          "x": 0.000091552734375,
+          "y": 0.0000762939453125,
+          "width": 0.000152587890625,
+          "height": 0.0001220703125
+        },
+        "geometryMixed": false,
+        "transforms": [
+          {
+            "class": "space-spatial-screen",
+            "rect": {
+              "x": 129.5997772216797,
+              "y": 80.9998550415039,
+              "width": 1180.800537109375,
+              "height": 738.000244140625,
+              "top": 80.9998550415039,
+              "right": 1310.4003143310547,
+              "bottom": 819.0000991821289,
+              "left": 129.5997772216797
+            },
+            "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": -2106.695556640625,
+              "y": -695010,
+              "width": 1115189.5,
+              "height": 696993.375,
+              "top": -695010,
+              "right": 1113082.8044433594,
+              "bottom": 1983.375,
+              "left": -2106.695556640625
+            },
+            "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765175, 716.35, -448.02, 1305.2, 0.00129126)",
+            "perspective": "none",
+            "transformStyle": "preserve-3d"
+          },
+          {
+            "class": "",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          },
+          {
+            "class": "space-world__css",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "transform": "none",
+            "perspective": "none",
+            "transformStyle": "flat"
+          }
+        ],
+        "reachable": true
+      },
+      "result": {
+        "outcome": "failed",
+        "pollBudgetMs": 5000,
+        "minimum": 100,
+        "point": {
+          "x": 645.3799591064453,
+          "y": 405.30997467041016
+        },
+        "limitation": "Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.",
+        "diagnostics": {
+          "delta": 850,
+          "started": {
+            "at": 37157.59999999986,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998962402344,
+              "y": 255.65992736816406,
+              "width": 359.1601257324219,
+              "height": 299.30010986328125,
+              "top": 255.65992736816406,
+              "right": 824.9600219726562,
+              "bottom": 554.9600372314453,
+              "left": 465.7998962402344
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799591064453,
+              "y": 405.30997467041016
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998962402344,
+                  "y": 255.65992736816406,
+                  "width": 359.1601257324219,
+                  "height": 299.30010986328125,
+                  "top": 255.65992736816406,
+                  "right": 824.9600219726562,
+                  "bottom": 554.9600372314453,
+                  "left": 465.7998962402344
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7998352050781,
+                  "y": 255.65992736816406,
+                  "width": 523.16015625,
+                  "height": 299.30010986328125,
+                  "top": 255.65992736816406,
+                  "right": 824.9599914550781,
+                  "bottom": 554.9600372314453,
+                  "left": 301.7998352050781
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7998352050781,
+                  "y": 197.4398956298828,
+                  "width": 523.16015625,
+                  "height": 357.5201416015625,
+                  "top": 197.4398956298828,
+                  "right": 824.9599914550781,
+                  "bottom": 554.9600372314453,
+                  "left": 301.7998352050781
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7998352050781,
+                  "y": 197.4398956298828,
+                  "width": 523.16015625,
+                  "height": 357.5201416015625,
+                  "top": 197.4398956298828,
+                  "right": 824.9599914550781,
+                  "bottom": 554.9600372314453,
+                  "left": 301.7998352050781
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.9798278808594,
+                  "y": 162.1798858642578,
+                  "width": 524.8001708984375,
+                  "height": 393.60015869140625,
+                  "top": 162.1798858642578,
+                  "right": 825.7799987792969,
+                  "bottom": 555.7800445556641,
+                  "left": 300.9798278808594
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41976928710938,
+                  "y": 81.81985473632812,
+                  "width": 1179.160400390625,
+                  "height": 736.3602294921875,
+                  "top": 81.81985473632812,
+                  "right": 1309.5801696777344,
+                  "bottom": 818.1800842285156,
+                  "left": 130.41976928710938
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5997772216797,
+                  "y": 80.9998550415039,
+                  "width": 1180.800537109375,
+                  "height": 738.000244140625,
+                  "top": 80.9998550415039,
+                  "right": 1310.4003143310547,
+                  "bottom": 819.0000991821289,
+                  "left": 129.5997772216797
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.695556640625,
+                  "y": -695010,
+                  "width": 1115189.5,
+                  "height": 696993.375,
+                  "top": -695010,
+                  "right": 1113082.8044433594,
+                  "bottom": 1983.375,
+                  "left": -2106.695556640625
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765175, 716.35, -448.02, 1305.2, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113083,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          },
+          "events": [
+            {
+              "at": 37205.69999999995,
+              "type": "wheel",
+              "phase": "document-capture",
+              "target": {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "SPAN",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 37173.09999999986,
+              "scrollTop": 0
+            },
+            {
+              "at": 37205.89999999991,
+              "type": "wheel-microtask",
+              "phase": "document-capture",
+              "defaultPrevented": false,
+              "scrollTop": 0
+            },
+            {
+              "at": 37205.89999999991,
+              "type": "wheel",
+              "phase": "window-bubble",
+              "target": {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              "path": [
+                {
+                  "tag": "SPAN",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "",
+                  "class": "space-list-item",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                }
+              ],
+              "trusted": true,
+              "deltaX": 0,
+              "deltaY": 850,
+              "deltaMode": 0,
+              "ctrlKey": false,
+              "metaKey": false,
+              "shiftKey": false,
+              "altKey": false,
+              "cancelable": false,
+              "defaultPrevented": false,
+              "timeStamp": 37173.09999999986,
+              "scrollTop": 0
+            },
+            {
+              "at": 37205.89999999991,
+              "type": "wheel-microtask",
+              "phase": "window-bubble",
+              "defaultPrevented": false,
+              "scrollTop": 0
+            }
+          ],
+          "frames": [
+            {
+              "time": 37155.166,
+              "observedAt": 37158,
+              "scrollTop": 0
+            },
+            {
+              "time": 37171.8,
+              "observedAt": 37172.19999999995,
+              "scrollTop": 0
+            },
+            {
+              "time": 37188.5,
+              "observedAt": 37188.80000000005,
+              "scrollTop": 0
+            },
+            {
+              "time": 37205.1,
+              "observedAt": 37205.89999999991,
+              "scrollTop": 0
+            },
+            {
+              "time": 37221.8,
+              "observedAt": 37222.09999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 37238.5,
+              "observedAt": 37238.80000000005,
+              "scrollTop": 0
+            },
+            {
+              "time": 37255.2,
+              "observedAt": 37255.39999999991,
+              "scrollTop": 0
+            },
+            {
+              "time": 37271.8,
+              "observedAt": 37272.09999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 37288.5,
+              "observedAt": 37288.80000000005,
+              "scrollTop": 0
+            },
+            {
+              "time": 37305.2,
+              "observedAt": 37305.39999999991,
+              "scrollTop": 0
+            },
+            {
+              "time": 37321.9,
+              "observedAt": 37322.09999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 37338.5,
+              "observedAt": 37338.69999999995,
+              "scrollTop": 0
+            },
+            {
+              "time": 37355.1,
+              "observedAt": 37355.39999999991,
+              "scrollTop": 0
+            },
+            {
+              "time": 37371.9,
+              "observedAt": 37372.09999999986,
+              "scrollTop": 0
+            },
+            {
+              "time": 37388.5,
+              "observedAt": 37388.80000000005,
+              "scrollTop": 0
+            },
+            {
+              "time": 37405.1,
+              "observedAt": 37405.39999999991,
+              "scrollTop": 0
+            }
+          ],
+          "dropped": 0,
+          "stopped": {
+            "at": 42101.30000000005,
+            "reason": "finally"
+          },
+          "final": {
+            "at": 42100.69999999995,
+            "connected": true,
+            "hidden": false,
+            "rect": {
+              "x": 465.7998962402344,
+              "y": 255.65992736816406,
+              "width": 359.1601257324219,
+              "height": 299.30010986328125,
+              "top": 255.65992736816406,
+              "right": 824.9600219726562,
+              "bottom": 554.9600372314453,
+              "left": 465.7998962402344
+            },
+            "clientHeight": 365,
+            "scrollHeight": 3237,
+            "scrollTop": 0,
+            "bodyScrollTop": 0,
+            "windowScrollY": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "devicePixelRatio": 1,
+            "visualViewportScale": 1,
+            "items": 17,
+            "focus": {
+              "tag": "INPUT",
+              "id": "",
+              "class": null,
+              "app": null,
+              "list": false
+            },
+            "world": {
+              "ready": "true",
+              "mode": "workspace",
+              "rendered": "workspace",
+              "travel": "false"
+            },
+            "point": {
+              "x": 645.3799591064453,
+              "y": 405.30997467041016
+            },
+            "hit": [
+              {
+                "tag": "SPAN",
+                "id": "",
+                "class": null,
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "BUTTON",
+                "id": "",
+                "class": "space-list-item",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-list",
+                "app": null,
+                "list": true
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-finder space-library__finder",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-library",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "DIV",
+                "id": "",
+                "class": "space-window__body",
+                "app": null,
+                "list": false
+              },
+              {
+                "tag": "SECTION",
+                "id": "",
+                "class": "space-window",
+                "app": "reader",
+                "list": false
+              },
+              {
+                "tag": "TEXTAREA",
+                "id": "",
+                "class": "space-note-editor",
+                "app": null,
+                "list": false
+              }
+            ],
+            "ancestors": [
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-list",
+                  "app": null,
+                  "list": true
+                },
+                "rect": {
+                  "x": 465.7998962402344,
+                  "y": 255.65992736816406,
+                  "width": 359.1601257324219,
+                  "height": 299.30010986328125,
+                  "top": 255.65992736816406,
+                  "right": 824.9600219726562,
+                  "bottom": 554.9600372314453,
+                  "left": 465.7998962402344
+                },
+                "clientWidth": 438,
+                "clientHeight": 365,
+                "scrollWidth": 438,
+                "scrollHeight": 3237,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-finder space-library__finder",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7998352050781,
+                  "y": 255.65992736816406,
+                  "width": 523.16015625,
+                  "height": 299.30010986328125,
+                  "top": 255.65992736816406,
+                  "right": 824.9599914550781,
+                  "bottom": 554.9600372314453,
+                  "left": 301.7998352050781
+                },
+                "clientWidth": 638,
+                "clientHeight": 365,
+                "scrollWidth": 638,
+                "scrollHeight": 365,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "365px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-library",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7998352050781,
+                  "y": 197.4398956298828,
+                  "width": 523.16015625,
+                  "height": 357.5201416015625,
+                  "top": 197.4398956298828,
+                  "right": 824.9599914550781,
+                  "bottom": 554.9600372314453,
+                  "left": 301.7998352050781
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window__body",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 301.7998352050781,
+                  "y": 197.4398956298828,
+                  "width": 523.16015625,
+                  "height": 357.5201416015625,
+                  "top": 197.4398956298828,
+                  "right": 824.9599914550781,
+                  "bottom": 554.9600372314453,
+                  "left": 301.7998352050781
+                },
+                "clientWidth": 638,
+                "clientHeight": 436,
+                "scrollWidth": 638,
+                "scrollHeight": 436,
+                "scrollTop": 0,
+                "overflowX": "auto",
+                "overflowY": "auto",
+                "height": "436px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "SECTION",
+                  "id": "",
+                  "class": "space-window",
+                  "app": "reader",
+                  "list": false
+                },
+                "rect": {
+                  "x": 300.9798278808594,
+                  "y": 162.1798858642578,
+                  "width": 524.8001708984375,
+                  "height": 393.60015869140625,
+                  "top": 162.1798858642578,
+                  "right": 825.7799987792969,
+                  "bottom": 555.7800445556641,
+                  "left": 300.9798278808594
+                },
+                "clientWidth": 638,
+                "clientHeight": 478,
+                "scrollWidth": 638,
+                "scrollHeight": 478,
+                "scrollTop": 0,
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "height": "480px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix(1, 0, 0, 1, 208, 98)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-window-layer",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 130.41976928710938,
+                  "y": 81.81985473632812,
+                  "width": 1179.160400390625,
+                  "height": 736.3602294921875,
+                  "top": 81.81985473632812,
+                  "right": 1309.5801696777344,
+                  "bottom": 818.1800842285156,
+                  "left": 130.41976928710938
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "898px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": "space-spatial-screen",
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 129.5997772216797,
+                  "y": 80.9998550415039,
+                  "width": 1180.800537109375,
+                  "height": 738.000244140625,
+                  "top": 80.9998550415039,
+                  "right": 1310.4003143310547,
+                  "bottom": 819.0000991821289,
+                  "left": 129.5997772216797
+                },
+                "clientWidth": 1438,
+                "clientHeight": 898,
+                "scrollWidth": 1438,
+                "scrollHeight": 898,
+                "scrollTop": 0,
+                "overflowX": "clip",
+                "overflowY": "clip",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "auto",
+                "transform": "matrix3d(0.002, 0, 0, 0, 0, -0.002, 0, 0, 0, 0, 0.002, 0, -716.35, -448.02, -1.5, 1)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": -2106.695556640625,
+                  "y": -695010,
+                  "width": 1115189.5,
+                  "height": 696993.375,
+                  "top": -695010,
+                  "right": 1113082.8044433594,
+                  "bottom": 1983.375,
+                  "left": -2106.695556640625
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1440,
+                "scrollHeight": 900,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -0.000765175, 716.35, -448.02, 1305.2, 0.00129126)"
+              },
+              {
+                "node": {
+                  "tag": "DIV",
+                  "id": "",
+                  "class": null,
+                  "app": null,
+                  "list": false
+                },
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 900,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 900,
+                  "left": 0
+                },
+                "clientWidth": 1440,
+                "clientHeight": 900,
+                "scrollWidth": 1113083,
+                "scrollHeight": 1983,
+                "scrollTop": 0,
+                "overflowX": "visible",
+                "overflowY": "visible",
+                "height": "900px",
+                "minHeight": "0px",
+                "pointerEvents": "none",
+                "transform": "none"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

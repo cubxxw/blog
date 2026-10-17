@@ -1,7 +1,6 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
 import {enterWorkspace} from '../helpers/space-entry';
 import {writeFile} from 'node:fs/promises';
-import {runLibraryWheelBoundary} from '../../docs/merge-readiness/probes/library-wheel-boundary';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 type Article={url:string,title:string,description:string,date:string,section:string,tags:string[]};
@@ -27,9 +26,9 @@ async function choose(page:Page,reader:Locator,value:string){
   else {const control=reader.locator(`[data-library-filter="${value}"]`);await hit(control);await control.click();await frames(page);await expect(control).toBeFocused();}
   await expect(reader.locator(`[data-library-filter="${value}"]`)).toHaveAttribute('aria-pressed','true');
 }
-async function wheelLibrary(page:Page,list:Locator,delta:number,minimum:number,options:{trial?:string,deadline?:number,record?:(value:any)=>void}={}){
+async function wheelLibrary(page:Page,list:Locator,delta:number,minimum:number){
   const box=(await list.boundingBox())!,point={x:box.x+box.width/2,y:box.y+box.height/2},handle=(await list.elementHandle())!;
-  let outcome='failed',failed=false,failure:unknown,report:any,pollBudgetMs=5000;
+  let outcome='failed',failed=false,failure:unknown;
   try{
     // Observe without waiting for a paint or replacing the native input. This
     // setup may itself affect timing, so a pass is not evidence of a fix.
@@ -60,24 +59,16 @@ async function wheelLibrary(page:Page,list:Locator,delta:number,minimum:number,o
       frame=requestAnimationFrame(tick);timer=window.setTimeout(()=>stop('6000ms deadline'),6000);
     },{point,delta});
     await page.mouse.move(point.x,point.y);await page.mouse.wheel(0,delta);
-    pollBudgetMs=options.deadline===undefined?5000:Math.min(5000,options.deadline-Date.now());
-    if(pollBudgetMs<=0)throw new Error('Boundary observation deadline exhausted before poll');
-    await expect.poll(()=>list.evaluate(el=>el.scrollTop),{timeout:pollBudgetMs}).toBeGreaterThan(minimum);
+    await expect.poll(()=>list.evaluate(el=>el.scrollTop),{timeout:5000}).toBeGreaterThan(minimum);
     outcome='passed';
   }catch(error){failed=true;failure=error;
   }finally{
     let diagnostics:unknown;try{diagnostics=await handle.evaluate(el=>{const node=el as any,probe=node.__libraryWheelProbe;if(!probe)return null;let final;try{final=probe.measure();}finally{probe.stop();delete node.__libraryWheelProbe;}return {...probe.data,final};});}catch(captureError){diagnostics={captureError:String(captureError)};}
-    try{await handle.dispose();}catch(error){if(!failed)throw error;console.log('LIBRARY_WHEEL_BOUNDARY',JSON.stringify({stage:'dispose-observer',outcome:'inconclusive',error:String(error)}));}
-    report={outcome:failed&&options.trial&&pollBudgetMs<5000?'inconclusive':outcome,pollBudgetMs,minimum,point,limitation:'Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.',diagnostics};
-    try{options.record?.(report);const name=options.trial?`library-wheel-boundary-${options.trial}`:`library-native-wheel-${delta}`,file=test.info().outputPath(`${name}.json`);await writeFile(file,JSON.stringify(report,null,2));await test.info().attach(name,{contentType:'application/json',path:file});}catch(error){if(!failed)throw error;console.log('LIBRARY_WHEEL_BOUNDARY',JSON.stringify({stage:'save-original-diagnostic',outcome:'inconclusive',error:String(error)}));}
+    try{await handle.dispose();}catch(error){if(!failed)throw error;console.log('LIBRARY_WHEEL_DIAGNOSTIC',JSON.stringify({stage:'dispose-observer',error:String(error)}));}
+    const report={outcome,minimum,point,limitation:'Passive listeners and synchronous setup reads may alter native input timing or compositor routing. A diagnostic pass does not establish a production fix; wheel-microtask is scoped to its listener, not final dispatch.',diagnostics};
+    try{const name=`library-native-wheel-${delta}`,file=test.info().outputPath(`${name}.json`);await writeFile(file,JSON.stringify(report,null,2));await test.info().attach(name,{contentType:'application/json',path:file});}catch(error){if(!failed)throw error;console.log('LIBRARY_WHEEL_DIAGNOSTIC',JSON.stringify({stage:'save-diagnostic',error:String(error)}));}
   }
-  if(failed){
-    if(!options.trial&&delta===850&&test.info().retry===0&&test.info().title==='the real library scroller restores reading position while Notes and Books keep their own documents')try{
-      await runLibraryWheelBoundary({page,list,trial:async(name,deadline)=>{let value:any;try{await wheelLibrary(page,list,850,100,{trial:name,deadline,record:record=>value=record});}catch(error){if(!value)value={outcome:'inconclusive',error:String(error)};}return value;},persist:async value=>{const file=test.info().outputPath('library-wheel-boundary.json');await writeFile(file,JSON.stringify(value,null,2));await test.info().attach('library-wheel-boundary',{contentType:'application/json',path:file});}});
-    }catch(error){console.log('LIBRARY_WHEEL_BOUNDARY',JSON.stringify({stage:'counterfactual',outcome:'inconclusive',error:String(error)}));}
-    throw failure;
-  }
-  return report;
+  if(failed)throw failure;
 }
 const views=[
   {width:320,height:844,locale:'zh',theme:'light',coarse:true},

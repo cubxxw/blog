@@ -124,6 +124,9 @@
 .space-spatial-screen .space-contact .space-contact__hint,.space-spatial-screen .space-settings .space-language__hint,.space-spatial-screen .space-capability small { font-size:16px; }
 .space-spatial-screen .space-contact :is(a,button),.space-spatial-screen .space-settings button { min-width:54px; min-height:54px; font-size:17px; }
 .space-spatial-screen :is(.space-contact,.space-settings) .space-button { font-size:17px !important; }
+/* A reversible native-wheel probe supports this hint for the settled workspace.
+   Keep the same DOM plane, scroll owner, and projected geometry. */
+.space[data-world-mode="workspace"] .space-spatial-screen [data-library-list] { will-change:transform; }
 .space .space-spatial-screen .space-library > .space-toolbar,.space .space-spatial-screen .space-library-directory p { font-size:16px; }
 .space .space-spatial-screen .space-library .space-toolbar input,.space .space-spatial-screen .space-library-picker select { font-size:20px; }
 .space .space-spatial-screen .space-library :is(button,select,input),.space .space-spatial-screen .space-reader-toolbar :is(a,button),.space .space-spatial-screen .space-reader__ai-actions button { min-width:54px; min-height:54px; }

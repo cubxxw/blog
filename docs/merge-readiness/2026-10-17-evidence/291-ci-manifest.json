@@ -1,0 +1,300 @@
+{
+  "head": "29155a08e0ae7b78377ca23b1724de038d3b50a4",
+  "run": 39011506973,
+  "job": 117334824415,
+  "conclusion": "cancelled",
+  "artifactId": 12093019240,
+  "artifactBytes": 11209172,
+  "extraction": "single exact ZIP member via HTTP range; central-directory CRC32 checked; no full ZIP digest claimed",
+  "member": {
+    "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/library-wheel-boundary.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 926309328,
+    "compressed": 9495,
+    "bytes": 181106,
+    "localOffset": 53651,
+    "sha256": "ea9c55b1c0ef6965cbe08ea7c03df19c74b707a392c5c209c31bee07ecbce7b6"
+  },
+  "probe": {
+    "file": "291-library-wheel-boundary.json",
+    "bytes": 181106,
+    "sha256": "ea9c55b1c0ef6965cbe08ea7c03df19c74b707a392c5c209c31bee07ecbce7b6"
+  },
+  "rawLog": {
+    "file": "ci-291-cancelled.log",
+    "bytes": 767668,
+    "sha256": "75bab8c91650c5d3f959cf655562dc5ea9d8d8b4cf00df82df6def9b2a016de7"
+  },
+  "compressedLog": {
+    "file": "291-ci-cancelled.log.gz",
+    "bytes": 85122,
+    "sha256": "6376514b976164ac917ca561a9cd76686b4ec4c4797a1bfbf07141e801860a4a"
+  },
+  "observedFacts": [
+    {
+      "name": "A0-original-2raf",
+      "outcome": "failed",
+      "configuredPollMs": 5000,
+      "observerSpanMs": 4941.7,
+      "sameList": true,
+      "reachable": true,
+      "geometryMixed": false,
+      "screenResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "listResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "scrollTop": [
+        0,
+        0
+      ],
+      "wheel": [
+        {
+          "phase": "document-capture",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        },
+        {
+          "phase": "window-bubble",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        }
+      ]
+    },
+    {
+      "name": "H-compositing-hint",
+      "outcome": "passed",
+      "configuredPollMs": 5000,
+      "observerSpanMs": 149.1,
+      "sameList": true,
+      "reachable": true,
+      "geometryMixed": false,
+      "screenResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "listResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "scrollTop": [
+        0,
+        850
+      ],
+      "wheel": [
+        {
+          "phase": "document-capture",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        },
+        {
+          "phase": "window-bubble",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        }
+      ]
+    },
+    {
+      "name": "A1-original-2raf",
+      "outcome": "failed",
+      "configuredPollMs": 5000,
+      "observerSpanMs": 4942.9,
+      "sameList": true,
+      "reachable": true,
+      "geometryMixed": false,
+      "screenResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "listResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "scrollTop": [
+        0,
+        0
+      ],
+      "wheel": [
+        {
+          "phase": "document-capture",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        },
+        {
+          "phase": "window-bubble",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        }
+      ]
+    },
+    {
+      "name": "F-flatten-css3d",
+      "outcome": "passed",
+      "configuredPollMs": 5000,
+      "observerSpanMs": 136.8,
+      "sameList": true,
+      "reachable": true,
+      "geometryMixed": false,
+      "screenResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "listResidual": {
+        "x": 0,
+        "y": 0,
+        "width": 6.103515625e-05,
+        "height": 0
+      },
+      "scrollTop": [
+        0,
+        850
+      ],
+      "wheel": [
+        {
+          "phase": "document-capture",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        },
+        {
+          "phase": "window-bubble",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        }
+      ]
+    },
+    {
+      "name": "A2-original-2raf",
+      "outcome": "failed",
+      "configuredPollMs": 5000,
+      "observerSpanMs": 4943.1,
+      "sameList": true,
+      "reachable": true,
+      "geometryMixed": false,
+      "screenResidual": {
+        "x": 0.000244140625,
+        "y": 0.00014495849609375,
+        "width": 0.00048828125,
+        "height": 0.0003662109375
+      },
+      "listResidual": {
+        "x": 9.1552734375e-05,
+        "y": 7.62939453125e-05,
+        "width": 0.000152587890625,
+        "height": 0.0001220703125
+      },
+      "scrollTop": [
+        0,
+        0
+      ],
+      "wheel": [
+        {
+          "phase": "document-capture",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        },
+        {
+          "phase": "window-bubble",
+          "trusted": true,
+          "deltaY": 850,
+          "deltaMode": 0,
+          "ctrlKey": false,
+          "altKey": false,
+          "metaKey": false,
+          "shiftKey": false,
+          "cancelable": false,
+          "defaultPrevented": false
+        }
+      ]
+    }
+  ],
+  "automatedVerdict": "A0/A1/A2 fail; H/F pass. Original failing test rethrown before run cancelled. Not a green CI run.",
+  "decision": "Implement only workspace list will-change:transform; remove runtime experiment hook, preserve discovery source. Require independent review and full latest-head CI.",
+  "limitations": [
+    "Configured polling budget is 5000ms; negative diagnostic measurement spans approximately4942ms, not a continuous sampled>=5000ms trace.",
+    "Observer setup can affect routing/timing; one reversible sequence supports candidate, not GPU-layer or SwiftShader root-cause proof.",
+    "No full758 legacy matrix or final restoration evidence in this cancelled run.",
+    "Human lifecycle remains unreviewed; do not promote discovery to Gold.",
+    "Original live-console capture no longer had mounted lines; physical artifact and completed raw CI log are the formal receipts."
+  ]
+}
