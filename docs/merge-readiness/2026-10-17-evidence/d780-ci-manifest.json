@@ -1,0 +1,162 @@
+{
+  "head": "d780a65ac4f4a3d1833259b486a60a4d02976a53",
+  "run": 39005506271,
+  "conclusion": "cancelled",
+  "artifactId": 12090989970,
+  "artifactBytes": 22001795,
+  "reports": [
+    {
+      "name": "browser/legacy/results/space-library-profile-cont-0c649-ks-keep-their-own-documents-desktop/error-context.md",
+      "bytes": 43259,
+      "compressed": 10812,
+      "crc32": 2635229457,
+      "sha256": "e3fc9c71330d1c868f40066201dd00165ce18a552a2d5c6543cd30444a4d7154"
+    },
+    {
+      "name": "browser/legacy/results/space-library-profile-cont-0c649-ks-keep-their-own-documents-desktop-retry1/error-context.md",
+      "bytes": 43259,
+      "compressed": 10812,
+      "crc32": 2635229457,
+      "sha256": "e3fc9c71330d1c868f40066201dd00165ce18a552a2d5c6543cd30444a4d7154"
+    },
+    {
+      "name": "browser/legacy/results/space-library-profile-cont-0c649-ks-keep-their-own-documents-desktop-retry2/error-context.md",
+      "bytes": 43259,
+      "compressed": 10812,
+      "crc32": 2635229457,
+      "sha256": "e3fc9c71330d1c868f40066201dd00165ce18a552a2d5c6543cd30444a4d7154"
+    },
+    {
+      "name": "browser/legacy/results/space-library-profile-cont-5ab49-s-a-new-real-reading-scroll-desktop/error-context.md",
+      "bytes": 41728,
+      "compressed": 10529,
+      "crc32": 1224206542,
+      "sha256": "2fb0f134e9374f5863fe9afb5da149ddb8133c0b9eb1ef5dc713da62741354a8"
+    },
+    {
+      "name": "browser/legacy/results/space-library-profile-cont-5ab49-s-a-new-real-reading-scroll-desktop-retry1/error-context.md",
+      "bytes": 41728,
+      "compressed": 10529,
+      "crc32": 1224206542,
+      "sha256": "2fb0f134e9374f5863fe9afb5da149ddb8133c0b9eb1ef5dc713da62741354a8"
+    },
+    {
+      "name": "browser/legacy/results/space-library-profile-cont-5ab49-s-a-new-real-reading-scroll-desktop-retry2/error-context.md",
+      "bytes": 41728,
+      "compressed": 10529,
+      "crc32": 1224206542,
+      "sha256": "2fb0f134e9374f5863fe9afb5da149ddb8133c0b9eb1ef5dc713da62741354a8"
+    },
+    {
+      "name": "browser/pages.json",
+      "bytes": 209,
+      "compressed": 91,
+      "crc32": 4170702164,
+      "sha256": "3f2186964944eb96717f2cb44336b1a3156cc03d6ae3c71a193b11c7cac5e4b2"
+    },
+    {
+      "name": "changes.json",
+      "bytes": 292365,
+      "compressed": 16620,
+      "crc32": 2454816538,
+      "sha256": "be665acf1a0afcf910cdb62eee3d78c2601a101ec392453e10b59a8ec69721df"
+    },
+    {
+      "name": "functions-report.json",
+      "bytes": 96,
+      "compressed": 79,
+      "crc32": 27900681,
+      "sha256": "fee362c136342344d219385c3e39044a268b7363254ad513cb124515b6db5e4a"
+    },
+    {
+      "name": "plan.json",
+      "bytes": 360,
+      "compressed": 244,
+      "crc32": 1230055681,
+      "sha256": "1b6615dbf348114c627a8f9907c7330ce47ef3901e704c60a6347656ffbd8dcd"
+    },
+    {
+      "name": "seo-report.json",
+      "bytes": 90,
+      "compressed": 76,
+      "crc32": 1328484573,
+      "sha256": "1286b65d3458083a76862230c3eaffa021764b6dc1d44b628f535521bbb8480e"
+    },
+    {
+      "name": "site/output-report.json",
+      "bytes": 34994,
+      "compressed": 5026,
+      "crc32": 3242033645,
+      "sha256": "1d0f2942ba40582767a6b3f574dc319be9c86cfaa60415b27d4404ca8568f884"
+    },
+    {
+      "name": "source-report.json",
+      "bytes": 200043,
+      "compressed": 43919,
+      "crc32": 323995665,
+      "sha256": "b4899236a2d97b3088317cc9d356268eb55d6eb6b41374cfee679b190bfd2aa5"
+    },
+    {
+      "name": "workflow-report.json",
+      "bytes": 95,
+      "compressed": 79,
+      "crc32": 3400014332,
+      "sha256": "69f34dbf825a106f950cc3202fd1ff106462a22acd7dac4a1aa18ec3b76524d3"
+    }
+  ],
+  "reportArchive": {
+    "bytes": 123159,
+    "sha256": "dbb10a270ac9074bd4d64319a579d6b286a3134d7942f79251841d659d607446"
+  },
+  "ciLog": {
+    "compressedFile": {
+      "bytes": 98567,
+      "sha256": "801f354fa8bd6e4c9b180d3e817280e6c66696a3cc481a8a7684e0063316b615"
+    },
+    "decodedRaw": {
+      "bytes": 854113,
+      "sha256": "91972e148996ede872d99807c30a1e01e96754d279cfaf1a092c8b9dfa725c61"
+    }
+  },
+  "traces": [
+    {
+      "name": "d780-library-scroll-trace.zip",
+      "artifactMember": "browser/legacy/results/space-library-profile-cont-0c649-ks-keep-their-own-documents-desktop-retry1/trace.zip",
+      "zipCRC32": 2686834171,
+      "bytes": 10854078,
+      "sha256": "ec9c68ee94633415c4c36bdd5fece5e93edfe67d49941bc2f6b996d1d3a39383"
+    },
+    {
+      "name": "d780-library-minimized-trace.zip",
+      "artifactMember": "browser/legacy/results/space-library-profile-cont-5ab49-s-a-new-real-reading-scroll-desktop-retry1/trace.zip",
+      "zipCRC32": 1829446936,
+      "bytes": 10791607,
+      "sha256": "84f89cdd7539dbec97a376b7507e786cacccd7f1f589bf3fee192d5b70eaa70f"
+    }
+  ],
+  "failure": {
+    "tests": [
+      "the real library scroller restores reading position while Notes and Books keep their own documents",
+      "a minimized library restores after reload once, then follows a new real reading scroll"
+    ],
+    "attemptsEach": 3,
+    "stage": "first real native wheel deltaY850; before Back/minimize/reload restoration",
+    "actual": "scrollTop remained0 against original >100 in5s assertion",
+    "cause": "unconfirmed; cannot label a restoration defect without event/extent evidence"
+  },
+  "positiveDesktopContracts": [
+    "48quality passed",
+    "corrected six scenes+two details+original Notes node/draft/selection first attempt44.1s",
+    "all3cafe detail widths1440/390/320",
+    "actualcup/bookraycasts",
+    "quiet/reduce/resize",
+    "heldfailed latte/contextloss",
+    "sixlibrary/profile layouts",
+    "bookmark save/favorites/reload/remove"
+  ],
+  "limitations": [
+    "Cancelled full758legacy run; no complete matrix certification.",
+    "Private signed download URLs excluded.",
+    "Native Mac IAB d780 samequery has clientHeight365 scrollHeight3207 17items and native onepage scroll0to900; not a reproduction of Linux CI deltaY850 and not a restoration certification."
+  ]
+}
