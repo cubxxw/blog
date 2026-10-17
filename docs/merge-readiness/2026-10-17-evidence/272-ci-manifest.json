@@ -1,0 +1,333 @@
+{
+  "head": "272221722b3e7a86b2d1e8e016dc887098c709d5",
+  "run": 39012719783,
+  "conclusion": "cancelled",
+  "artifact": {
+    "id": 12094405200,
+    "bytes": 10703763,
+    "sha256": "6d7738411f03d97a7181e3d570ea84b93486db08756ebc2aceee1e6013d2bcd5",
+    "digestMatchedUploadLog": true
+  },
+  "reports": [
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-300-89f0e8104106ea429ffb7b82993d7f3828e800d0.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 1417452898,
+      "compressed": 2370,
+      "bytes": 27005,
+      "localOffset": 0,
+      "sha256": "31d0a77169026e2c8cce32811ff63a19ab669bc09be7a0a1831e25a5345c9ff2"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-850-44ae59bb13ba140980e146d08fae46698b7e86b4.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 3023877159,
+      "compressed": 2356,
+      "bytes": 26924,
+      "localOffset": 2590,
+      "sha256": "0c13c171be6e9853a2e2dd052a450de2437e45d20aafb32bf6c99c69e3148edb"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-300.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 1417452898,
+      "compressed": 2370,
+      "bytes": 27005,
+      "localOffset": 5166,
+      "sha256": "31d0a77169026e2c8cce32811ff63a19ab669bc09be7a0a1831e25a5345c9ff2"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-850.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 3023877159,
+      "compressed": 2356,
+      "bytes": 26924,
+      "localOffset": 7703,
+      "sha256": "0c13c171be6e9853a2e2dd052a450de2437e45d20aafb32bf6c99c69e3148edb"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/attachments/library-native-wheel-850-673ed2035d7162a655974b9e721bb514f08adb88.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 606648501,
+      "compressed": 2305,
+      "bytes": 26436,
+      "localOffset": 10226,
+      "sha256": "afd5b3720780c835e91125661f50c97c48487c39010aedf710a012e869af9afd"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/error-context.md",
+      "flags": 8,
+      "method": 8,
+      "crc32": 1677093868,
+      "compressed": 6009,
+      "bytes": 22994,
+      "localOffset": 12751,
+      "sha256": "905b3f14daafb8fbe55db41246d6a489d61b841e07025424162ea28d476a47e0"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/library-native-wheel-850.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 606648501,
+      "compressed": 2305,
+      "bytes": 26436,
+      "localOffset": 18914,
+      "sha256": "afd5b3720780c835e91125661f50c97c48487c39010aedf710a012e869af9afd"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry1/attachments/library-native-wheel-850-8d219b9bd9e1201aaa3449731da8dd631f26a1a2.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 2657473736,
+      "compressed": 2293,
+      "bytes": 26425,
+      "localOffset": 21386,
+      "sha256": "7c2dcb2b537dfb38f682a32accf5be862bcd6e74fabcd6d990ce4d0145adf5c3"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry1/error-context.md",
+      "flags": 8,
+      "method": 8,
+      "crc32": 1677093868,
+      "compressed": 6009,
+      "bytes": 22994,
+      "localOffset": 23906,
+      "sha256": "905b3f14daafb8fbe55db41246d6a489d61b841e07025424162ea28d476a47e0"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry1/library-native-wheel-850.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 2657473736,
+      "compressed": 2293,
+      "bytes": 26425,
+      "localOffset": 30076,
+      "sha256": "7c2dcb2b537dfb38f682a32accf5be862bcd6e74fabcd6d990ce4d0145adf5c3"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry2/attachments/library-native-wheel-850-794b1b8fb66154ff6444560f235d9d073f291d52.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 722041238,
+      "compressed": 2348,
+      "bytes": 27089,
+      "localOffset": 10387936,
+      "sha256": "163140a03f47cfbe44876dcac1d002b3ec578484ac6d4a414c90fa8f7ef9893a"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry2/error-context.md",
+      "flags": 8,
+      "method": 8,
+      "crc32": 1677093868,
+      "compressed": 6009,
+      "bytes": 22994,
+      "localOffset": 10390511,
+      "sha256": "905b3f14daafb8fbe55db41246d6a489d61b841e07025424162ea28d476a47e0"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry2/library-native-wheel-850.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 722041238,
+      "compressed": 2348,
+      "bytes": 27089,
+      "localOffset": 10396681,
+      "sha256": "163140a03f47cfbe44876dcac1d002b3ec578484ac6d4a414c90fa8f7ef9893a"
+    },
+    {
+      "name": "browser/pages.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 4170702164,
+      "compressed": 91,
+      "bytes": 209,
+      "localOffset": 10399203,
+      "sha256": "3f2186964944eb96717f2cb44336b1a3156cc03d6ae3c71a193b11c7cac5e4b2"
+    },
+    {
+      "name": "changes.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 624102903,
+      "compressed": 16736,
+      "bytes": 294774,
+      "localOffset": 10399358,
+      "sha256": "b5b0c7eb81a8ebc04000d75931305a55525e5f60a66b87f539967206d3d29d94"
+    },
+    {
+      "name": "functions-report.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 27900681,
+      "compressed": 79,
+      "bytes": 96,
+      "localOffset": 10416152,
+      "sha256": "fee362c136342344d219385c3e39044a268b7363254ad513cb124515b6db5e4a"
+    },
+    {
+      "name": "plan.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 194909954,
+      "compressed": 244,
+      "bytes": 360,
+      "localOffset": 10650908,
+      "sha256": "e873b46fb876b3e48735ceaa75fac87e10fc06601cbdfa56d54ca4a69c343d56"
+    },
+    {
+      "name": "seo-report.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 1328484573,
+      "compressed": 76,
+      "bytes": 90,
+      "localOffset": 10651207,
+      "sha256": "1286b65d3458083a76862230c3eaffa021764b6dc1d44b628f535521bbb8480e"
+    },
+    {
+      "name": "site/output-report.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 3242033645,
+      "compressed": 5026,
+      "bytes": 34994,
+      "localOffset": 10651344,
+      "sha256": "1d0f2942ba40582767a6b3f574dc319be9c86cfaa60415b27d4404ca8568f884"
+    },
+    {
+      "name": "source-report.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 323995665,
+      "compressed": 43919,
+      "bytes": 200043,
+      "localOffset": 10656439,
+      "sha256": "b4899236a2d97b3088317cc9d356268eb55d6eb6b41374cfee679b190bfd2aa5"
+    },
+    {
+      "name": "workflow-report.json",
+      "flags": 8,
+      "method": 8,
+      "crc32": 3400014332,
+      "compressed": 79,
+      "bytes": 95,
+      "localOffset": 10700422,
+      "sha256": "69f34dbf825a106f950cc3202fd1ff106462a22acd7dac4a1aa18ec3b76524d3"
+    }
+  ],
+  "reportArchive": {
+    "file": "272-ci-reports.tar.gz",
+    "bytes": 94190,
+    "sha256": "ccacc3edde21f8cb6c101c77dae152824e656bb3f41ab292aec31d28bdfc22b8"
+  },
+  "rawLog": {
+    "file": "ci-272-cancelled.log",
+    "bytes": 794310,
+    "sha256": "6e07e606ccebac3f397b59d9130b52932efe15ce60e6f42129d7befa5342d54c"
+  },
+  "compressedLog": {
+    "file": "272-ci-cancelled.log.gz",
+    "bytes": 89237,
+    "sha256": "4ff4184c21e61bfd24ff6f0b03a4ab15b958532eb7bcb6493c5a6d544ca823d9"
+  },
+  "trace": {
+    "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry1/trace.zip",
+    "bytes": 10361893,
+    "compressed": 10355239,
+    "crc32": 916006435,
+    "sha256": "f4b856929f26e45f73c62cf99fb8fe1bd9474dcf7145bdb5101dfde050d14439"
+  },
+  "tracePermanent": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-272/272-library-retry1-trace.zip",
+  "wheelObservations": [
+    {
+      "member": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-300.json",
+      "outcome": "passed",
+      "delta": 300,
+      "from": 850,
+      "to": 1150,
+      "observerSpanMs": 147.8,
+      "body": 0,
+      "window": 0
+    },
+    {
+      "member": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-850.json",
+      "outcome": "passed",
+      "delta": 850,
+      "from": 0,
+      "to": 850,
+      "observerSpanMs": 133.7,
+      "body": 0,
+      "window": 0
+    },
+    {
+      "member": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/library-native-wheel-850.json",
+      "outcome": "passed",
+      "delta": 850,
+      "from": 0,
+      "to": 850,
+      "observerSpanMs": 61.9,
+      "body": 0,
+      "window": 0
+    },
+    {
+      "member": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry1/library-native-wheel-850.json",
+      "outcome": "passed",
+      "delta": 850,
+      "from": 0,
+      "to": 850,
+      "observerSpanMs": 84.5,
+      "body": 0,
+      "window": 0
+    },
+    {
+      "member": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop-retry2/library-native-wheel-850.json",
+      "outcome": "passed",
+      "delta": 850,
+      "from": 0,
+      "to": 850,
+      "observerSpanMs": 151.1,
+      "body": 0,
+      "window": 0
+    }
+  ],
+  "failure": {
+    "title": "the real library scroller restores reading position while Notes and Books keep their own documents",
+    "attempts": 3,
+    "durationsSeconds": [
+      20.0,
+      23.3,
+      22.7
+    ],
+    "message": "locator.evaluate: TypeError: Cannot read properties of undefined (reading 'dataset')",
+    "stage": "fully-contained-item find returned undefined, before article click and all restoration assertions"
+  },
+  "completedPositiveScope": [
+    "325 Node checks0fail/skip",
+    "48 frozen content browser checks passed2.5min",
+    "6 library/profile dimensions and bookmarkpassed",
+    "Firsttitle850 passed all3attempts",
+    "Minimized-library reload+850/300+newscroll persisted firstattempt41.4s"
+  ],
+  "nativeCoordinateControl": {
+    "before": 900,
+    "afterReturn": 900,
+    "contrast": "Earlier locatorclick900→916; native coordinate click on same Hugo item preserves900",
+    "receipt": {
+      "file": "272-native-native-click-readback.json",
+      "bytes": 845,
+      "sha256": "2bc85cf4970e0cfc9bcfb26367ef1cdd43782482d90e9f37528965d21747c6d1"
+    }
+  },
+  "limitations": [
+    "758 full legacy did not complete; cancellation after confirmed3 failures does not establish full pass.",
+    "Five physical wheel reports are unique; attachments duplicates inside21 raw report archive are not added coverage.",
+    "Mac native1page is not Linux CI850. Native control does not prove firsttitle fullCI pass.",
+    "Only retry1trace retained; exact production CSS unchanged in subsequent fixture-only candidate.",
+    "Private signedURLs omitted."
+  ]
+}
