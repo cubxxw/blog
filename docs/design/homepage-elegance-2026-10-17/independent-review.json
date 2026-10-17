@@ -1,0 +1,26 @@
+{
+  "base": "184400b1fa6882f0528f48986e91cffb7b5ddd93",
+  "review": "independent read-only source and rendered review",
+  "unresolvedFindings": [],
+  "closedObservations": [
+    "769–1024 portrait/question hit-area overlap; all36 prompts checked in all6 slots",
+    "Activity direct-link assertion corrected to respect existing column folding",
+    "Adaptive square portrait verified at769/901; all36 questions in6 slots have zero avatar overlap"
+  ],
+  "checks": [
+    "Chinese/English narrow geometry and control hit testing",
+    "Long mocked replies and chat open/close focus restoration",
+    "Square object-fit:cover portrait",
+    "Zero horizontal overflow and page errors"
+  ],
+  "files": {
+    "layouts/partials/homepage-daypage.html": "322c3a20e181c76c947fc62290ac0b4c3470697ced9c0bba997b687c202afee8",
+    "assets/css/home-about-experience.css": "fdb1e110f1e4398784064d859ef04fcbd63b6bcf92b98a5f0bac8b2b3348a3d8",
+    "tests/e2e/home-reading-contracts.spec.ts": "007115426377473148f60550b40995ad8d46d87e92a0b0c877b48cc00b0bf114",
+    "tests/e2e/home-first-paint.spec.ts": "b08e3471ec01a2a11234a67f9d26f31ba87b26a9c215d1a160b761f184f0b25a",
+    "tests/e2e/home-about-experience.spec.ts": "83cee41fbec008f3c9970480242eb2ffddc2228eae8e0e4f6b0fc0420d16e938"
+  },
+  "limitations": [
+    "No-script and backup behavior reviewed in source; primary owns production browser gates"
+  ]
+}

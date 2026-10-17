@@ -1,6 +1,6 @@
 import { test, expect } from '../helpers/frozen-site';
 
-test('mobile AI enhancement occupies its reserved space without moving the books below it', async ({ page }) => {
+test('mobile AI enhancement occupies its reserved space without moving the writing below it', async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 823 });
   let releaseModule!: () => void;
   const paused = new Promise<void>(resolve => { releaseModule = resolve; });
@@ -13,11 +13,11 @@ test('mobile AI enhancement occupies its reserved space without moving the books
     const layer = page.locator('#hp-bear-layer');
     await expect(layer).toHaveCSS('min-height', '80px');
     await expect(layer.locator('#hp-orbit')).toHaveCount(0);
-    await expect(page.locator('.hp-books-grid')).toHaveCSS('display','grid');
-    const before = await page.locator('#hp-books').boundingBox();
+    await expect(page.locator('.hp-posts-grid').first()).toHaveCSS('display','grid');
+    const before = await page.locator('#hp-posts').boundingBox();
     releaseModule();
     await expect(layer.locator('#hp-avatar-btn')).toBeVisible();
-    const after = await page.locator('#hp-books').boundingBox();
+    const after = await page.locator('#hp-posts').boundingBox();
     expect(Math.abs(after!.y - before!.y)).toBeLessThanOrEqual(1);
     await layer.locator('#hp-avatar-btn').click();
     await expect(page.locator('#hp-bear-ai')).toHaveClass(/is-chat-open/);

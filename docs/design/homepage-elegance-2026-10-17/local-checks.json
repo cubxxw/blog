@@ -1,0 +1,60 @@
+[
+  {
+    "argv": [
+      "node",
+      "/private/tmp/ai-test-homepage-elegance-20261017.whiSFU/ts-toolchain/node_modules/typescript/bin/tsc",
+      "--version"
+    ],
+    "exitCode": 0,
+    "log": "verify-0.log"
+  },
+  {
+    "argv": [
+      "node",
+      "/private/tmp/ai-test-homepage-elegance-20261017.whiSFU/ts-toolchain/node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "log": "verify-1.log"
+  },
+  {
+    "argv": [
+      "node",
+      "/private/tmp/ai-test-homepage-elegance-20261017.whiSFU/ts-toolchain/node_modules/typescript/bin/tsc",
+      "--ignoreConfig",
+      "--noEmit",
+      "--strict",
+      "--esModuleInterop",
+      "--skipLibCheck",
+      "--module",
+      "NodeNext",
+      "--moduleResolution",
+      "NodeNext",
+      "--target",
+      "ES2020",
+      "--types",
+      "node,@playwright/test",
+      "playwright.interactive.config.ts"
+    ],
+    "exitCode": 0,
+    "log": "verify-2.log"
+  },
+  {
+    "argv": [
+      "node",
+      "--test",
+      "scripts/home-chat-utils.test.mjs"
+    ],
+    "exitCode": 0,
+    "log": "verify-3.log"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exitCode": 0,
+    "log": "verify-4.log"
+  }
+]

@@ -1,0 +1,572 @@
+[
+  {
+    "locale": "zh",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "heroBear": true,
+    "hero": {
+      "x": 152,
+      "y": 45,
+      "width": 1136,
+      "height": 514.125
+    },
+    "bear": {
+      "x": 793.453125,
+      "y": 94.0625,
+      "width": 420,
+      "height": 420
+    },
+    "socialTargets": [
+      {
+        "x": 152,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 204,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 256,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 308,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 360,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 412,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 464,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 516,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 568,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 620,
+        "y": 471.125,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(245, 237, 227)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      }
+    ]
+  },
+  {
+    "locale": "zh",
+    "width": 900,
+    "errors": [],
+    "overflow": false,
+    "heroBear": true,
+    "hero": {
+      "x": 32,
+      "y": 45,
+      "width": 836,
+      "height": 652
+    },
+    "bear": {
+      "x": 509.8125,
+      "y": 93,
+      "width": 358.1875,
+      "height": 560
+    },
+    "socialTargets": [
+      {
+        "x": 32,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 84,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 136,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 188,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 240,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 292,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 344,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 396,
+        "y": 521.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 32,
+        "y": 573.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 84,
+        "y": 573.640625,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(245, 237, 227)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      }
+    ]
+  },
+  {
+    "locale": "zh",
+    "width": 390,
+    "errors": [],
+    "overflow": false,
+    "heroBear": true,
+    "hero": {
+      "x": 20,
+      "y": 53,
+      "width": 350,
+      "height": 676.453125
+    },
+    "bear": {
+      "x": 20,
+      "y": 617.453125,
+      "width": 350,
+      "height": 80
+    },
+    "socialTargets": [
+      {
+        "x": 20,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 72,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 124,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 176,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 228,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 280,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 20,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 72,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 124,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 176,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(245, 237, 227)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      }
+    ]
+  },
+  {
+    "locale": "zh",
+    "width": 390,
+    "errors": [],
+    "overflow": false,
+    "heroBear": true,
+    "hero": {
+      "x": 20,
+      "y": 53,
+      "width": 350,
+      "height": 676.453125
+    },
+    "bear": {
+      "x": 20,
+      "y": 617.453125,
+      "width": 350,
+      "height": 80
+    },
+    "socialTargets": [
+      {
+        "x": 20,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 72,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 124,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 176,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 228,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 280,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 20,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 72,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 124,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 176,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(42, 31, 20)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(37, 34, 32)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(37, 34, 32)"
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "heroBear": true,
+    "hero": {
+      "x": 152,
+      "y": 45,
+      "width": 1136,
+      "height": 579.96875
+    },
+    "bear": {
+      "x": 793.453125,
+      "y": 126.984375,
+      "width": 420,
+      "height": 420
+    },
+    "socialTargets": [
+      {
+        "x": 152,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 204,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 256,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 308,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 360,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 412,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 464,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 516,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 568,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 620,
+        "y": 536.96875,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(245, 237, 227)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "errors": [],
+    "overflow": false,
+    "heroBear": true,
+    "hero": {
+      "x": 20,
+      "y": 53,
+      "width": 350,
+      "height": 676.453125
+    },
+    "bear": {
+      "x": 20,
+      "y": 617.453125,
+      "width": 350,
+      "height": 80
+    },
+    "socialTargets": [
+      {
+        "x": 20,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 72,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 124,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 176,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 228,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 280,
+        "y": 493.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 20,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 72,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 124,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "x": 176,
+        "y": 545.453125,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(245, 237, 227)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      }
+    ]
+  }
+]
