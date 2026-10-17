@@ -671,7 +671,14 @@ export async function createAuthorVoice({
       throw fail("声音还没有准备好。");
     return readFile(path.join(jobsDir, id + ".mp3"));
   }
-  async function publish({ id, reviewed }) {
+  let publicationTail = Promise.resolve();
+  function publish(input) {
+    const request = { id: input.id, reviewed: input.reviewed };
+    const outcome = publicationTail.then(() => publishOne(request));
+    publicationTail = outcome.catch(() => {});
+    return outcome;
+  }
+  async function publishOne({ id, reviewed }) {
     if (reviewed !== true) throw fail("请先试听并确认这份音频。");
     requestId(id);
     const j = await json(path.join(jobsDir, id + ".json"));

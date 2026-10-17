@@ -628,3 +628,34 @@ test("republishing a section after inserting earlier prose replaces only that se
   ).authorAudioTracks;
   assert.deepEqual(ids, [newA, oldB]);
 });
+
+test("two simultaneous audio publications retain both article tracks", async (t) => {
+  const f = await fixture(t, async () => speech());
+  await addVoice(f);
+  const jobs = [];
+  for (const [kind, id] of [
+    ["summary", "parallel-summary"],
+    ["dialogue", "parallel-dialogue"],
+  ]) {
+    await f.service.generate({
+      requestId: id,
+      article: f.article,
+      kind,
+      text: "确认过的说明。",
+    });
+    const j = await settle(f.service, id);
+    assert.equal(j.status, "ready", j.error);
+    jobs.push(j);
+  }
+  await Promise.all(
+    jobs.map((j) => f.service.publish({ id: j.id, reviewed: true })),
+  );
+  const { parse } = await import("yaml");
+  const meta = parse(
+    (await readFile(path.join(f.root, f.article), "utf8")).split("---")[1],
+  );
+  assert.deepEqual(
+    new Set(meta.authorAudioTracks),
+    new Set(jobs.map((j) => j.assetId)),
+  );
+});
