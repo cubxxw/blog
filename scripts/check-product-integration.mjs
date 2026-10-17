@@ -19,6 +19,13 @@ const routes = [
       "https://gettalentsignal.com",
       "https://gettalentsignal.com/demo",
       "https://github.com/getyak/talent-signal",
+      "Leafhour",
+      "Stay with a book.",
+      "https://leafhour.com/en",
+      "https://leafhour.com/read?book=gutenberg-alice",
+      "https://github.com/getyak/leafhour",
+      "leafhour-en.jpg",
+      "Google branding review remains pending.",
       "IMStage",
       "https://imstage.org/?lang=en",
       "imstage-en.jpg",
@@ -26,6 +33,7 @@ const routes = [
       "IMStage: Editable Chat Scenes",
     ],
     forbidden: [
+      "leafhour.jpg",
       "imstage-zh.jpg",
       "imstage.org/?lang=zh",
     ],
@@ -43,6 +51,13 @@ const routes = [
       "https://gettalentsignal.com",
       "https://gettalentsignal.com/demo",
       "https://github.com/getyak/talent-signal",
+      "Leafhour",
+      "留一点时间，读进一本书。",
+      "https://leafhour.com",
+      "https://leafhour.com/read?book=gutenberg-alice",
+      "https://github.com/getyak/leafhour",
+      "leafhour.jpg",
+      "Google 新品牌审核仍待通过。",
       "IMStage",
       "https://imstage.org/?lang=zh",
       "imstage-zh.jpg",
@@ -50,6 +65,8 @@ const routes = [
       "IMStage：可编辑的聊天场景",
     ],
     forbidden: [
+      "leafhour-en.jpg",
+      "https://leafhour.com/en",
       "imstage-en.jpg",
       "imstage.org/?lang=en",
     ],
@@ -134,12 +151,23 @@ for (const route of routes) {
   }
 }
 
-// These pages also consume the product catalog; localize their new IMStage cards.
+// These pages also consume the catalog; check the localized product cards.
 for (const lang of ["en", "zh"]) {
   const prefix = lang === "zh" ? "zh/" : "";
   for (const route of ["index.html", "about/index.html"]) {
     const file = path.join(outputRoot, prefix, route);
     const html = await readFile(file, "utf8");
+    const leafhourURL = lang === "en" ? "https://leafhour.com/en" : "https://leafhour.com";
+    const leafhourStem = lang === "en" ? "leafhour-en" : "leafhour";
+    for (const value of ["Leafhour", leafhourURL]) {
+      if (!html.includes(value)) failures.push(`${prefix}${route} is missing: ${value}`);
+    }
+    const leafhourImage = html.match(new RegExp(`/images/products/${leafhourStem}(?:_hu_[a-z0-9]+)?\\.(?:jpg|webp)`))?.[0];
+    if (!leafhourImage) failures.push(`${prefix}${route} is missing a Leafhour image`);
+    else {
+      try { await stat(path.join(outputRoot, leafhourImage.slice(1))); }
+      catch { failures.push(`${prefix}${route} refers to a missing Leafhour image: ${leafhourImage}`); }
+    }
     const productURL = `https://imstage.org/?lang=${lang}`;
     if (!html.includes(productURL)) failures.push(`${prefix}${route} is missing: ${productURL}`);
     // Hugo's existing homepage image pipeline emits responsive WebP variants.
@@ -154,6 +182,8 @@ for (const lang of ["en", "zh"]) {
 }
 
 const screenshots = [
+  { file: "leafhour.jpg", label: "Leafhour (zh)" },
+  { file: "leafhour-en.jpg", label: "Leafhour (en)" },
   { file: "talent-signal.jpg", label: "Talent Signal" },
   { file: "imstage-zh.jpg", label: "IMStage (zh)" },
   { file: "imstage-en.jpg", label: "IMStage (en)" },

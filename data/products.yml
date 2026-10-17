@@ -31,6 +31,36 @@ products:
     related: []
     tags: [agent, ai, career]
 
+  - id: leafhour
+    name: Leafhour
+    stage_zh: 已上线
+    stage_en: Live
+    headline_zh: 留一点时间，读进一本书。
+    headline_en: Stay with a book.
+    os_thesis_zh: AI 帮你读下去，理解由自己形成。
+    os_thesis_en: AI helps you keep reading. Understanding remains your own.
+    desc_zh: 一个有 AI 陪伴的私人阅读书房。回到上次读到的地方，在原文、译文和自己的旁注之间往返，遇到难点再展开阅读对话，让问题留在对应的书页旁。
+    desc_en: A personal reading room with AI by your side. Resume where you left off, move between the original, translations and your own notes, and open a reading conversation when a passage needs more attention.
+    audience_zh: 深度阅读者 · 原文阅读与语言学习
+    audience_en: Deep readers · Original-language reading and language learning
+    stack: Node.js · DeepSeek · Supabase · MCP
+    color: sage
+    mark: LH
+    url: https://leafhour.com
+    url_en: https://leafhour.com/en
+    github: https://github.com/getyak/leafhour
+    demo: https://leafhour.com/read?book=gutenberg-alice
+    image_en: /images/products/leafhour-en.jpg
+    image_alt_zh: Leafhour 官网首屏，森林绿标题 Stay with a book. 与窗边展开的书，呈现留一点时间读进一本书的主张
+    image_alt_en: Leafhour homepage with the forest-green headline Stay with a book. beside an open book by a sunlit window
+    question_zh: 中断几天后，能否从同一段原文和上次留下的问题继续，让 AI 的解释帮助自己形成理解？
+    question_en: After a few days away, can returning to the same passage and an unfinished question help readers form their own understanding with AI support?
+    boundary_zh: 应用以中文为主；AI 翻译与解释需要核对原文，阅读时长不能证明理解。Google 新品牌审核仍待通过。
+    boundary_en: The app is primarily in Chinese. AI translations and explanations need checking against the original; reading time does not establish understanding. Google branding review remains pending.
+    related:
+      - /growth/posts/ai-english-learning
+    tags: [ai, learning, open-source]
+
   - id: imstage
     name: IMStage
     stage_zh: 已上线
