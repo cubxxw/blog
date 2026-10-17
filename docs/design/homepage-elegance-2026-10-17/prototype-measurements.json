@@ -1,0 +1,82 @@
+[
+  {
+    "variant": "before",
+    "width": 1440,
+    "overflow": false,
+    "heroBear": false,
+    "cards": [
+      {
+        "border": "0px 0px 1px",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "border": "0px 0px 1px",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "border": "0px 0px 1px",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "variant": "before",
+    "width": 390,
+    "overflow": false,
+    "heroBear": false,
+    "cards": [
+      {
+        "border": "0px 0px 1px",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "border": "0px 0px 1px",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "border": "0px 0px 1px",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "variant": "prototype-a",
+    "width": 1440,
+    "overflow": false,
+    "heroBear": true,
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(245, 237, 227)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      }
+    ]
+  },
+  {
+    "variant": "prototype-a",
+    "width": 390,
+    "overflow": false,
+    "heroBear": true,
+    "cards": [
+      {
+        "border": "1px",
+        "background": "rgb(245, 237, 227)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "border": "1px",
+        "background": "rgb(255, 255, 255)"
+      }
+    ]
+  }
+]

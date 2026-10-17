@@ -1,0 +1,47 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'playwright' test tests/e2e/home-reading-contracts.spec.ts --workers=2 --reporter=line
+[WebServer] (node:9816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 22 tests using 2 workers
+
+(node:9821) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:9820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › zh featured writing is a real article link without scripts
+[2/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › en featured writing is a real article link without scripts
+[3/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 320px
+[4/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 320px
+[5/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 390px
+[6/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 390px
+[7/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh light hero and writing retain their hierarchy across breakpoints
+[8/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh dark hero and writing retain their hierarchy across breakpoints
+[9/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en light hero and writing retain their hierarchy across breakpoints
+[10/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en dark hero and writing retain their hierarchy across breakpoints
+[11/22] [desktop] › tests/e2e/home-reading-contracts.spec.ts:123:5 › hero Bear retains its question, reply and focus across chat reopening
+(node:9854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[12/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › zh featured writing is a real article link without scripts
+(node:9858) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[13/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › en featured writing is a real article link without scripts
+[14/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 320px
+[15/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 320px
+[16/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 390px
+[17/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 390px
+[18/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh light hero and writing retain their hierarchy across breakpoints
+[19/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh dark hero and writing retain their hierarchy across breakpoints
+[20/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en light hero and writing retain their hierarchy across breakpoints
+[21/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en dark hero and writing retain their hierarchy across breakpoints
+[22/22] [mobile] › tests/e2e/home-reading-contracts.spec.ts:123:5 › hero Bear retains its question, reply and focus across chat reopening
+  22 passed (6.9s)

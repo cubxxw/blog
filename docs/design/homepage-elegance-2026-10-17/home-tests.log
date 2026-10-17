@@ -1,0 +1,113 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'playwright' test tests/e2e/home-reading-contracts.spec.ts tests/e2e/home-first-paint.spec.ts tests/e2e/home-about-experience.spec.ts tests/e2e/page-wayfinder.spec.ts --workers=2 --reporter=line
+[WebServer] (node:12640) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 88 tests using 2 workers
+
+(node:12641) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:12642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/88] [desktop] › tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › en accessible chat streams safely and locks the complete turn
+[2/88] [desktop] › tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › zh accessible chat streams safely and locks the complete turn
+[3/88] [desktop] › tests/e2e/home-about-experience.spec.ts:79:7 › Homepage runtime and progressive decoration › close and clear isolate stale replies from a subsequent conversation
+[4/88] [desktop] › tests/e2e/home-about-experience.spec.ts:109:7 › Homepage runtime and progressive decoration › a completed reply does not steal focus after the visitor leaves chat
+[5/88] [desktop] › tests/e2e/home-about-experience.spec.ts:124:7 › Homepage runtime and progressive decoration › bfcache restoration synchronizes a canceled streaming composer
+[6/88] [desktop] › tests/e2e/home-about-experience.spec.ts:149:7 › Homepage runtime and progressive decoration › a failed stream exposes a usable retry
+[7/88] [desktop] › tests/e2e/home-about-experience.spec.ts:166:7 › Homepage runtime and progressive decoration › desktop decoration waits for hero visibility and intent, then responds to motion preference changes
+[8/88] [desktop] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › phone retains chat without downloading Three.js
+[9/88] [desktop] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › motion retains chat without downloading Three.js
+[10/88] [desktop] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › saveData retains chat without downloading Three.js
+[11/88] [desktop] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › slowConnection retains chat without downloading Three.js
+[12/88] [desktop] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › coarsePointer retains chat without downloading Three.js
+[13/88] [desktop] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › noWebGL retains chat without downloading Three.js
+[14/88] [desktop] › tests/e2e/home-first-paint.spec.ts:3:5 › mobile AI enhancement occupies its reserved space without moving the writing below it
+[15/88] [desktop] › tests/e2e/home-first-paint.spec.ts:29:5 › mobile primary links remain readable within stable columns
+[16/88] [desktop] › tests/e2e/home-first-paint.spec.ts:51:5 › Chinese first-screen text has a loaded webfont fallback before any reading scroll
+[17/88] [desktop] › tests/e2e/home-first-paint.spec.ts:69:5 › cold navigation does not synchronously write an absent menu scroll position
+[18/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › zh featured writing is a real article link without scripts
+[19/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › en featured writing is a real article link without scripts
+[20/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 320px
+[21/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 320px
+[22/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 390px
+[23/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 390px
+[24/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh light hero and writing retain their hierarchy across breakpoints
+[25/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh dark hero and writing retain their hierarchy across breakpoints
+[26/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en light hero and writing retain their hierarchy across breakpoints
+[27/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en dark hero and writing retain their hierarchy across breakpoints
+[28/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:123:5 › hero grid follows rendered capability without empty columns or rows
+[29/88] [desktop] › tests/e2e/home-reading-contracts.spec.ts:140:5 › hero Bear retains its question, reply and focus across chat reopening
+[30/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › / side index waits for reading, recedes at rest, and returns on intent
+[31/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/ side index waits for reading, recedes at rest, and returns on intent
+[32/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /about/ side index waits for reading, recedes at rest, and returns on intent
+[33/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/about/ side index waits for reading, recedes at rest, and returns on intent
+[34/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:38:7 › Home and About reading navigation › side index remains accessible without scripts and with reduced motion
+[35/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:65:9 › Home and About reading navigation › / reading index leaves content unobstructed at every width
+[36/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:65:9 › Home and About reading navigation › /about/ reading index leaves content unobstructed at every width
+[37/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/ native index, focus, and scroll position
+[38/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/about/ native index, focus, and scroll position
+[39/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/ native index, focus, and scroll position
+[40/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/about/ native index, focus, and scroll position
+[41/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:139:7 › Home and About reading navigation › About deep links and Enter navigation work with ordinary motion
+[42/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:159:7 › Home and About reading navigation › homepage primary routes and navigation remain usable without JavaScript
+[43/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:199:7 › /about/ a short final destination stays current at the native document boundary
+[44/88] [desktop] › tests/e2e/page-wayfinder.spec.ts:199:7 › /zh/about/ a short final destination stays current at the native document boundary
+(node:12745) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[45/88] [mobile] › tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › zh accessible chat streams safely and locks the complete turn
+[46/88] [mobile] › tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › en accessible chat streams safely and locks the complete turn
+[47/88] [mobile] › tests/e2e/home-about-experience.spec.ts:79:7 › Homepage runtime and progressive decoration › close and clear isolate stale replies from a subsequent conversation
+[48/88] [mobile] › tests/e2e/home-about-experience.spec.ts:109:7 › Homepage runtime and progressive decoration › a completed reply does not steal focus after the visitor leaves chat
+(node:12768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[49/88] [mobile] › tests/e2e/home-about-experience.spec.ts:124:7 › Homepage runtime and progressive decoration › bfcache restoration synchronizes a canceled streaming composer
+[50/88] [mobile] › tests/e2e/home-about-experience.spec.ts:149:7 › Homepage runtime and progressive decoration › a failed stream exposes a usable retry
+[51/88] [mobile] › tests/e2e/home-about-experience.spec.ts:166:7 › Homepage runtime and progressive decoration › desktop decoration waits for hero visibility and intent, then responds to motion preference changes
+[52/88] [mobile] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › phone retains chat without downloading Three.js
+[53/88] [mobile] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › motion retains chat without downloading Three.js
+[54/88] [mobile] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › saveData retains chat without downloading Three.js
+[55/88] [mobile] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › slowConnection retains chat without downloading Three.js
+[56/88] [mobile] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › coarsePointer retains chat without downloading Three.js
+[57/88] [mobile] › tests/e2e/home-about-experience.spec.ts:204:9 › Homepage runtime and progressive decoration › noWebGL retains chat without downloading Three.js
+[58/88] [mobile] › tests/e2e/home-first-paint.spec.ts:3:5 › mobile AI enhancement occupies its reserved space without moving the writing below it
+[59/88] [mobile] › tests/e2e/home-first-paint.spec.ts:29:5 › mobile primary links remain readable within stable columns
+[60/88] [mobile] › tests/e2e/home-first-paint.spec.ts:51:5 › Chinese first-screen text has a loaded webfont fallback before any reading scroll
+[61/88] [mobile] › tests/e2e/home-first-paint.spec.ts:69:5 › cold navigation does not synchronously write an absent menu scroll position
+[62/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › zh featured writing is a real article link without scripts
+[63/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:8:42 › a server-rendered reading entrance › en featured writing is a real article link without scripts
+[64/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 320px
+[65/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 320px
+[66/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › zh compact hero keeps every contact reachable at 390px
+[67/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:24:7 › en compact hero keeps every contact reachable at 390px
+[68/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh light hero and writing retain their hierarchy across breakpoints
+[69/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › zh dark hero and writing retain their hierarchy across breakpoints
+[70/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en light hero and writing retain their hierarchy across breakpoints
+[71/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:70:7 › en dark hero and writing retain their hierarchy across breakpoints
+[72/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:123:5 › hero grid follows rendered capability without empty columns or rows
+[73/88] [mobile] › tests/e2e/home-reading-contracts.spec.ts:140:5 › hero Bear retains its question, reply and focus across chat reopening
+[74/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › / side index waits for reading, recedes at rest, and returns on intent
+[75/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/ side index waits for reading, recedes at rest, and returns on intent
+[76/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /about/ side index waits for reading, recedes at rest, and returns on intent
+[77/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/about/ side index waits for reading, recedes at rest, and returns on intent
+[78/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:38:7 › Home and About reading navigation › side index remains accessible without scripts and with reduced motion
+[79/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:65:9 › Home and About reading navigation › / reading index leaves content unobstructed at every width
+[80/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:65:9 › Home and About reading navigation › /about/ reading index leaves content unobstructed at every width
+[81/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/ native index, focus, and scroll position
+[82/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/about/ native index, focus, and scroll position
+[83/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/ native index, focus, and scroll position
+[84/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/about/ native index, focus, and scroll position
+[85/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:139:7 › Home and About reading navigation › About deep links and Enter navigation work with ordinary motion
+[86/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:159:7 › Home and About reading navigation › homepage primary routes and navigation remain usable without JavaScript
+[87/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:199:7 › /about/ a short final destination stays current at the native document boundary
+[88/88] [mobile] › tests/e2e/page-wayfinder.spec.ts:199:7 › /zh/about/ a short final destination stays current at the native document boundary
+  88 passed (53.6s)

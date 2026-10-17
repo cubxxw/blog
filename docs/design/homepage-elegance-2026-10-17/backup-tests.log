@@ -1,0 +1,19 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'playwright' test tests/e2e/home-reading-contracts.spec.ts --grep hero grid follows rendered capability --workers=1 --reporter=line
+[WebServer] (node:12551) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 2 tests using 1 worker
+
+(node:12552) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/2] [desktop] › tests/e2e/home-reading-contracts.spec.ts:123:5 › hero grid follows rendered capability without empty columns or rows
+(node:12559) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/2] [mobile] › tests/e2e/home-reading-contracts.spec.ts:123:5 › hero grid follows rendered capability without empty columns or rows
+  2 passed (2.2s)
