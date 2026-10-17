@@ -1,0 +1,112 @@
+
+Running 12 tests using 1 worker
+
+(node:86487) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly (1.5s)
+  ✓   2 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly (1.2s)
+  ✓   3 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI (616ms)
+  ✓   4 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI (571ms)
+  ✓   5 tests/e2e/article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout (711ms)
+  ✓   6 tests/e2e/article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts (913ms)
+  ✓   7 tests/e2e/article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once (1.9s)
+  ✓   8 tests/e2e/article-chat-continuity-contracts.spec.ts:97:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts (600ms)
+  ✓   9 tests/e2e/article-chat-continuity-contracts.spec.ts:102:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request (779ms)
+  ✓  10 tests/e2e/article-chat-continuity-contracts.spec.ts:109:5 › delayed shared initialization and two entry calls still create one root, controller and selection request (1.2s)
+  ✘  11 tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside (30.1s)
+(node:86605) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  12 tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside (25.7s)
+
+
+  1) tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#theme-toggle')
+        - locator resolved to <button accesskey="t" id="theme-toggle" title="(Alt + T)" aria-label="Toggle theme">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div aria-hidden="true" id="article-sheet-overlay" class="abs-overlay abs-overlay--visible"></div> from <main role="main" class="main" id="main-content">…</main> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div aria-hidden="true" id="article-sheet-overlay" class="abs-overlay abs-overlay--visible"></div> from <main role="main" class="main" id="main-content">…</main> subtree intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        57 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <div aria-hidden="true" id="article-sheet-overlay" class="abs-overlay abs-overlay--visible"></div> from <main role="main" class="main" id="main-content">…</main> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+
+
+      124 |     await expect.poll(()=>streamCount(page)).toBe(1);await expect(control).toBeDisabled();await expect(root(page)).toHaveAttribute('aria-busy','true');expect(await page.evaluate(()=>(window as any).__articleStreams.turns[0].payload.question)).toBe(question);await expect(input(page)).toHaveValue(entry==='Send'?'':draft);
+      125 |     const target=from===1440?1199:1440;await resize(page,target);await unchanged(page,original);await expect(input(page)).toBeVisible();await expect(input(page)).toBeFocused();await expect(root(page)).toHaveAttribute('aria-busy','true');await expect(page.locator(target>=1200?'#rc-tab-ai':'#abs-tab-ai')).toHaveAttribute('aria-selected','true');if(target<1200)await expect(sheet(page)).toHaveClass(/abs--open/);expect(await streamCount(page)).toBe(1);expect(await aborts(page)).toBe(0);
+    > 126 |     const outside=page.locator('#theme-toggle');await outside.click();await expect(outside).toBeFocused();await resize(page,from);await expect(outside).toBeFocused();await expect(sheet(page)).not.toHaveClass(/abs--open/);await unchanged(page,original);expect(await streamCount(page)).toBe(1);expect(await aborts(page)).toBe(0);await expect(input(page)).toHaveValue(entry==='Send'?'':draft);
+          |                                                               ^
+      127 |   }
+      128 | });
+      129 |
+        at <SOURCE_WORKTREE>/tests/e2e/article-chat-continuity-contracts.spec.ts:126:63
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright-e13/article-chat-continuity-co-59689-til-the-user-clicks-outside/error-context.md
+
+  2) tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside
+
+    Test was interrupted.
+
+    Error: locator.click: Test ended.
+    Call log:
+      - waiting for locator('#theme-toggle')
+        - locator resolved to <button accesskey="t" id="theme-toggle" title="(Alt + T)" aria-label="Toggle theme">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div aria-hidden="true" id="article-sheet-overlay" class="abs-overlay abs-overlay--visible"></div> from <main role="main" class="main" id="main-content">…</main> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div aria-hidden="true" id="article-sheet-overlay" class="abs-overlay abs-overlay--visible"></div> from <main role="main" class="main" id="main-content">…</main> subtree intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        48 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <div aria-hidden="true" id="article-sheet-overlay" class="abs-overlay abs-overlay--visible"></div> from <main role="main" class="main" id="main-content">…</main> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+
+
+      124 |     await expect.poll(()=>streamCount(page)).toBe(1);await expect(control).toBeDisabled();await expect(root(page)).toHaveAttribute('aria-busy','true');expect(await page.evaluate(()=>(window as any).__articleStreams.turns[0].payload.question)).toBe(question);await expect(input(page)).toHaveValue(entry==='Send'?'':draft);
+      125 |     const target=from===1440?1199:1440;await resize(page,target);await unchanged(page,original);await expect(input(page)).toBeVisible();await expect(input(page)).toBeFocused();await expect(root(page)).toHaveAttribute('aria-busy','true');await expect(page.locator(target>=1200?'#rc-tab-ai':'#abs-tab-ai')).toHaveAttribute('aria-selected','true');if(target<1200)await expect(sheet(page)).toHaveClass(/abs--open/);expect(await streamCount(page)).toBe(1);expect(await aborts(page)).toBe(0);
+    > 126 |     const outside=page.locator('#theme-toggle');await outside.click();await expect(outside).toBeFocused();await resize(page,from);await expect(outside).toBeFocused();await expect(sheet(page)).not.toHaveClass(/abs--open/);await unchanged(page,original);expect(await streamCount(page)).toBe(1);expect(await aborts(page)).toBe(0);await expect(input(page)).toHaveValue(entry==='Send'?'':draft);
+          |                                                               ^
+      127 |   }
+      128 | });
+      129 |
+        at <SOURCE_WORKTREE>/tests/e2e/article-chat-continuity-contracts.spec.ts:126:63
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright-e13/article-chat-continuity-co-0624f-til-the-user-clicks-outside/error-context.md
+
+  1 failed
+    tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside
+  1 interrupted
+    tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside
+  10 passed (1.1m)

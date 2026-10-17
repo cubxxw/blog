@@ -1,0 +1,5 @@
+PASS spec changes limited to native disabled semantic probe, real keyboard Enter, deterministic lifecycle fixture, precise map header locator
+PASS media.js remains initial frozen bytes
+PASS media CSS remains initial frozen bytes
+PASS passed phone NAV/Notes case byte-identical
+SHA256 29f6ea85bd868c5d5690478eb597b3e9ccbe9571db27d1aedbb70b1f3f4d3bb0 tests/e2e/space-media-legibility-contracts.spec.ts

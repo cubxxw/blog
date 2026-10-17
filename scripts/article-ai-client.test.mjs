@@ -47,3 +47,27 @@ test('SSE malformed data and empty streams cannot become successful history', as
     await assert.rejects(api.request({}), /Malformed|no answer/);
   }
 });
+test('optional book suggestions survive both transports without changing ordinary response keys',async()=>{
+  const followups=[{label:'再读一点',msg:'展开这个观点'}, {label:'missing message'}];
+  const json=await client(async()=>Response.json({answer:'书的观点',followups})).request({});
+  assert.equal(json.followups.length,1);assert.equal(json.followups[0].msg,'展开这个观点');
+  const sse=await client(async()=>new Response('data: {"delta":"书的观点"}\n\ndata: '+JSON.stringify({followups})+'\n\ndata: [DONE]\n\n',{headers:{'content-type':'text/event-stream'}})).request({});
+  assert.equal(sse.followups.length,1);assert.equal(sse.followups[0].label,'再读一点');
+  const plain=await client(async()=>Response.json({answer:'普通文章'})).request({});
+  assert.deepEqual(Object.keys(plain),['answer','candidates']);
+});
+for (const firstChunk of ['', 'data: {"delta":"已收到的一段"}\n\n']) {
+  test(`an idle SSE body times out and releases its reader${firstChunk ? ' after a delta' : ' after headers'}`,async()=>{
+    let stream,aborted=false;const deltas=[];
+    const api=client(async(_,options)=>{
+      stream=new ReadableStream({start(controller){
+        if(firstChunk)controller.enqueue(new TextEncoder().encode(firstChunk));
+        options.signal.addEventListener('abort',()=>{aborted=true;controller.error(new DOMException('Aborted','AbortError'));},{once:true});
+      }});
+      return new Response(stream,{headers:{'content-type':'text/event-stream'}});
+    });
+    await assert.rejects(api.request({}, {timeoutMs:15,onDelta:text=>deltas.push(text)}),{name:'TimeoutError'});
+    assert.equal(aborted,true);assert.equal(stream.locked,false);
+    assert.deepEqual(deltas,firstChunk?['已收到的一段']:[]);
+  });
+}

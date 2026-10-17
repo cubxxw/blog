@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-15T19:33:56.182116+00:00",
+  "base": "3caab4d188001ba21ab88fd0789d1096de528a8c",
+  "batch": "E9a2",
+  "files": {
+    "assets/js/space/apps.js": "2bc6f0a22c402197722c23bf914680024d0a32db778defd3bacad94f06e349e9",
+    "assets/css/space.css": "037e7c0e06282f51cda4a36929074735073f3637c2d9bdc691542581f1aaf997",
+    "assets/css/space-cafe.css": "b5dea5a548c38a2bbb1cd10f0fd5b50b6c1eb954f79a764dde1e73a0ab70ce68",
+    "tests/e2e/space-app-reading-contracts.spec.ts": "4ddfbbe904bd5139a6a7af3595f1636b10eff897196e95d32fcdac87db05c120"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "fec9a25901f414d314d7e9ee5ee82841b9c7432750f8c83931864a52a102cce9",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "previous": "batch-e9a1-source.json"
+}

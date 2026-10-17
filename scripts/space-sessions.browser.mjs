@@ -1,8 +1,9 @@
+import {enterWorkspace} from './space-browser-entry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {chromium} from 'playwright';
-const base=process.env.SESSION_BASE_URL||'http://localhost:8888',output=path.resolve('output/playwright/space-sessions');await fs.mkdir(output,{recursive:true});
+const base=process.env.SESSION_BASE_URL||'http://localhost:8888',output=path.resolve(process.env.SESSION_EVIDENCE_DIR||'output/playwright/space-sessions');await fs.mkdir(output,{recursive:true});
 const browser=await chromium.launch({channel:'chromium',args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']});
 const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce'}),page=await context.newPage();
 const errors=[],requests=[],checks=[];page.on('pageerror',error=>errors.push(error.message));
@@ -16,7 +17,7 @@ await page.route('**/.netlify/functions/bear-agent',async route=>{
     {message:latest.includes('海边')?'我们在这段新对话里聊海边的咖啡馆。':'这段对话仍记得之前推荐的文章。',toolCalls:[]};
   await route.fulfill({contentType:'application/json',body:JSON.stringify(result)});
 });
-const ready=()=>page.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.worldReady==='true');
+const ready=()=>enterWorkspace(page);
 const send=async text=>{await page.locator('[data-agent-input]').fill(text);await page.locator('[data-agent-send]').click();await page.waitForFunction(()=>{const tasks=[...document.querySelectorAll('[data-agent-task]')];return tasks.at(-1)?.querySelector('[data-agent-badge]')?.dataset.status==='completed';},null,{timeout:60000});};
 const history=()=>page.locator('[data-agent-history]').click();
 async function check(name,fn){await fn();checks.push(name);console.log('PASS',name);}

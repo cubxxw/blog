@@ -1,0 +1,25 @@
+
+Running 18 tests using 1 worker
+
+(node:4133) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly (1.9s)
+  ✓   2 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly (1.2s)
+  ✓   3 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI (618ms)
+  ✓   4 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI (595ms)
+  ✓   5 tests/e2e/article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout (725ms)
+  ✓   6 tests/e2e/article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts (1.2s)
+  ✓   7 tests/e2e/article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once (1.9s)
+  ✓   8 tests/e2e/article-chat-continuity-contracts.spec.ts:97:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts (568ms)
+  ✓   9 tests/e2e/article-chat-continuity-contracts.spec.ts:102:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request (771ms)
+  ✓  10 tests/e2e/article-chat-continuity-contracts.spec.ts:109:5 › delayed shared initialization and two entry calls still create one root, controller and selection request (1.1s)
+  ✓  11 tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside (1.9s)
+  ✓  12 tests/e2e/article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside (1.9s)
+  ✓  13 tests/e2e/article-chat-continuity-contracts.spec.ts:131:5 › a real compact selection toolbar analysis owns focus, preserves the draft and closes with Escape (961ms)
+  ✓  14 tests/e2e/article-chat-legibility-contracts.spec.ts:150:5 › desktop bilingual light/dark supporting copy, full passage and answer sharing keep a readable hierarchy (4.2s)
+  ✓  15 tests/e2e/article-chat-legibility-contracts.spec.ts:162:7 › compact article reading › 390px bilingual conversation keeps 16px editing, full quote and 44px local actions (3.7s)
+  ✓  16 tests/e2e/article-chat-legibility-contracts.spec.ts:172:7 › compact article reading › 568px short AI keeps initial, held selection, Stop, full quote, Clear and 503 Retry within 320/256/224px (3.3s)
+  ✓  17 tests/e2e/article-chat-reply-landing-contracts.spec.ts:71:5 › short bilingual completed replies land on their actual final line; all three original suggestions and related links remain reachable (4.2s)
+  ✓  18 tests/e2e/article-chat-reply-landing-contracts.spec.ts:117:5 › finishing a held long reply and resizing preserves a genuine wheel-owned reading anchor; a later wheel changes ownership (1.9s)
+
+  18 passed (34.0s)

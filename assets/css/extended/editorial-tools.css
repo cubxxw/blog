@@ -399,7 +399,7 @@ html:lang(zh) body.dark .editorial-tools-panel .toc-item.toc-section-current > a
    AI PANEL — editorial reading tool with Apple-like materiality.
    The glass treatment is a web approximation, not Apple UI code.
    ──────────────────────────────────────────────────────────────── */
-.editorial-tools-panel .rc-ai-panel {
+[data-article-chat] {
   --rc-ai-radius: 14px;
   --rc-ai-control-radius: 11px;
   --rc-ai-border: rgba(30, 35, 30, 0.11);
@@ -415,7 +415,9 @@ html:lang(zh) body.dark .editorial-tools-panel .toc-item.toc-section-current > a
   z-index: 1;
 }
 
-body.dark .editorial-tools-panel .rc-ai-panel {
+[data-article-chat] .rc-ai-loading[hidden] { display: none !important; }
+
+body.dark [data-article-chat] {
   --rc-ai-border: rgba(226, 227, 225, 0.13);
   --rc-ai-border-strong: rgba(226, 227, 225, 0.22);
   --rc-ai-surface: rgba(226, 227, 225, 0.045);
@@ -423,13 +425,13 @@ body.dark .editorial-tools-panel .rc-ai-panel {
   --rc-ai-shadow: 0 14px 32px rgba(0, 0, 0, 0.13);
 }
 
-.editorial-tools-panel .rc-ai-intro {
+[data-article-chat] .rc-ai-intro {
   display: grid;
   gap: 4px;
   padding: 1px 2px 0;
 }
 
-.editorial-tools-panel .rc-ai-quick-label {
+[data-article-chat] .rc-ai-quick-label {
   margin: 0;
   color: var(--color-ink, #1a1c1b);
   font-family: var(--font-body);
@@ -440,12 +442,12 @@ body.dark .editorial-tools-panel .rc-ai-panel {
   -webkit-font-smoothing: antialiased;
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-quick-label {
+html:lang(zh) [data-article-chat] .rc-ai-quick-label {
   font-size: 12.5px;
   letter-spacing: 0.05em;
 }
 
-.editorial-tools-panel .rc-ai-intro-copy {
+[data-article-chat] .rc-ai-intro-copy {
   margin: 0;
   color: var(--color-ink-muted, #5e5e63);
   font-family: var(--font-body);
@@ -454,14 +456,14 @@ html:lang(zh) .editorial-tools-panel .rc-ai-quick-label {
   opacity: 0.7;
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-intro-copy {
+html:lang(zh) [data-article-chat] .rc-ai-intro-copy {
   font-size: 12px;
   letter-spacing: 0.015em;
 }
 
 /* Compact tool tiles keep six entry points scannable without making
    the sidebar look like a wall of chat pills. */
-.editorial-tools-panel .rc-ai-quick {
+[data-article-chat] .rc-ai-quick {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 7px;
@@ -470,12 +472,12 @@ html:lang(zh) .editorial-tools-panel .rc-ai-intro-copy {
 
 /* Once a question is sent, the reading tools recede so the answer gains the
    full sidebar canvas. Continued exploration stays available below the answer. */
-.editorial-tools-panel .rc-ai-panel--engaged .rc-ai-intro,
-.editorial-tools-panel .rc-ai-panel--engaged .rc-ai-quick {
+[data-article-chat].rc-ai-panel--engaged .rc-ai-intro,
+[data-article-chat].rc-ai-panel--engaged .rc-ai-quick {
   display: none;
 }
 
-.editorial-tools-panel .rc-ai-chip {
+[data-article-chat] .rc-ai-chip {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
@@ -506,13 +508,13 @@ html:lang(zh) .editorial-tools-panel .rc-ai-intro-copy {
   -webkit-font-smoothing: antialiased;
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-chip {
+html:lang(zh) [data-article-chat] .rc-ai-chip {
   font-size: 12.5px;
   font-weight: 480;
   letter-spacing: 0.035em;
 }
 
-.editorial-tools-panel .rc-ai-chip:hover {
+[data-article-chat] .rc-ai-chip:hover {
   border-color: color-mix(in oklab, var(--color-accent, #862122) 34%, var(--rc-ai-border));
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.18)),
@@ -524,12 +526,12 @@ html:lang(zh) .editorial-tools-panel .rc-ai-chip {
   transform: translateY(-1px);
 }
 
-.editorial-tools-panel .rc-ai-chip:active {
+[data-article-chat] .rc-ai-chip:active {
   box-shadow: inset 0 1px 2px rgba(30, 35, 30, 0.06);
   transform: translateY(0) scale(0.985);
 }
 
-body.dark .editorial-tools-panel .rc-ai-chip {
+body.dark [data-article-chat] .rc-ai-chip {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
     var(--rc-ai-surface);
@@ -537,14 +539,14 @@ body.dark .editorial-tools-panel .rc-ai-chip {
   color: color-mix(in oklab, var(--color-ink, #e2e3e1) 80%, transparent);
 }
 
-body.dark .editorial-tools-panel .rc-ai-chip:hover {
+body.dark [data-article-chat] .rc-ai-chip:hover {
   border-color: color-mix(in oklab, var(--color-accent, #ff6b6b) 40%, var(--rc-ai-border));
   background: color-mix(in oklab, var(--color-accent, #ff6b6b) 8%, var(--rc-ai-surface));
   color: var(--color-accent, #ff6b6b);
 }
 
-.editorial-tools-panel .rc-ai-chip--used,
-.editorial-tools-panel .rc-ai-chip:disabled {
+[data-article-chat] .rc-ai-chip--used,
+[data-article-chat] .rc-ai-chip:disabled {
   opacity: 0.34;
   cursor: default;
   pointer-events: none;
@@ -552,11 +554,12 @@ body.dark .editorial-tools-panel .rc-ai-chip:hover {
 }
 
 /* The question is context. The answer is the reading artifact. */
-.editorial-tools-panel .rc-ai-messages {
+[data-article-chat] .rc-ai-messages {
   display: flex;
   flex-direction: column;
   gap: 11px;
   max-height: min(44vh, 430px);
+  overflow-anchor: none;
   margin: 0;
   padding: 1px 2px 2px 0;
   overflow-y: auto;
@@ -571,34 +574,34 @@ body.dark .editorial-tools-panel .rc-ai-chip:hover {
 /* The message list is the scroll container. Its children must retain their
    intrinsic height; otherwise Flexbox shrinks a long answer to the height of
    its header and the answer body's overflow is clipped out of view. */
-.editorial-tools-panel .rc-ai-messages > * {
+[data-article-chat] .rc-ai-messages > * {
   flex: 0 0 auto;
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-messages {
+html:lang(zh) [data-article-chat] .rc-ai-messages {
   font-size: 13.5px;
   letter-spacing: 0.015em;
   line-height: 1.78;
 }
 
-.editorial-tools-panel .rc-ai-messages::-webkit-scrollbar {
+[data-article-chat] .rc-ai-messages::-webkit-scrollbar {
   width: 3px;
 }
 
-.editorial-tools-panel .rc-ai-messages::-webkit-scrollbar-track {
+[data-article-chat] .rc-ai-messages::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.editorial-tools-panel .rc-ai-messages::-webkit-scrollbar-thumb {
+[data-article-chat] .rc-ai-messages::-webkit-scrollbar-thumb {
   border-radius: 3px;
   background: var(--rc-ai-border-strong);
 }
 
-.editorial-tools-panel .rc-ai-msg {
+[data-article-chat] .rc-ai-msg {
   box-sizing: border-box;
 }
 
-.editorial-tools-panel .rc-ai-msg--user {
+[data-article-chat] .rc-ai-msg--user {
   align-self: stretch;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -614,7 +617,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-messages {
   opacity: 0.72;
 }
 
-.editorial-tools-panel .rc-ai-user-label {
+[data-article-chat] .rc-ai-user-label {
   color: var(--color-ink-muted, #5e5e63);
   font-size: 9.5px;
   font-weight: 650;
@@ -622,11 +625,11 @@ html:lang(zh) .editorial-tools-panel .rc-ai-messages {
   line-height: 1.9;
 }
 
-.editorial-tools-panel .rc-ai-user-text {
+[data-article-chat] .rc-ai-user-text {
   margin: 0;
 }
 
-.editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
+[data-article-chat] .rc-ai-msg--ai:not(.rc-ai-greeting) {
   position: relative;
   align-self: stretch;
   width: 100%;
@@ -643,7 +646,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-messages {
   animation: rc-ai-answer-in 320ms cubic-bezier(.22, 1, .36, 1) both;
 }
 
-body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
+body.dark [data-article-chat] .rc-ai-msg--ai:not(.rc-ai-greeting) {
   background: var(--rc-ai-surface);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.085),
@@ -651,7 +654,7 @@ body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
   color: var(--color-ink, #e2e3e1);
 }
 
-.editorial-tools-panel .rc-ai-answer-head {
+[data-article-chat] .rc-ai-answer-head {
   display: flex;
   align-items: center;
   gap: 7px;
@@ -660,14 +663,14 @@ body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
   border-bottom: 1px solid var(--rc-ai-border);
 }
 
-.editorial-tools-panel .rc-ai-answer-mark {
+[data-article-chat] .rc-ai-answer-mark {
   color: var(--color-accent, #862122);
   font-size: 10px;
   font-weight: 720;
   letter-spacing: 0.055em;
 }
 
-.editorial-tools-panel .rc-ai-answer-title {
+[data-article-chat] .rc-ai-answer-title {
   color: var(--color-ink-muted, #5e5e63);
   font-size: 10.5px;
   font-weight: 580;
@@ -675,33 +678,33 @@ body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
   opacity: 0.78;
 }
 
-.editorial-tools-panel .rc-ai-answer-context {
+[data-article-chat] .rc-ai-answer-context {
   margin-left: auto;
   color: var(--color-ink-muted, #5e5e63);
   font-size: 9.5px;
   opacity: 0.55;
 }
 
-.editorial-tools-panel .rc-ai-answer-body {
+[data-article-chat] .rc-ai-answer-body {
   padding: 15px 15px 16px;
   font-size: 14px;
   line-height: 1.8;
 }
 
-.editorial-tools-panel .rc-ai-answer-body > :first-child {
+[data-article-chat] .rc-ai-answer-body > :first-child {
   margin-top: 0;
 }
 
-.editorial-tools-panel .rc-ai-answer-body > :last-child {
+[data-article-chat] .rc-ai-answer-body > :last-child {
   margin-bottom: 0;
 }
 
-.editorial-tools-panel .rc-ai-answer-body p {
+[data-article-chat] .rc-ai-answer-body p {
   margin: 0 0 10px;
 }
 
-.editorial-tools-panel .rc-ai-answer-body h3,
-.editorial-tools-panel .rc-ai-answer-body h4 {
+[data-article-chat] .rc-ai-answer-body h3,
+[data-article-chat] .rc-ai-answer-body h4 {
   margin: 14px 0 6px;
   color: var(--color-ink, #1a1c1b);
   font-family: var(--font-body);
@@ -711,42 +714,42 @@ body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
   line-height: 1.45;
 }
 
-body.dark .editorial-tools-panel .rc-ai-answer-body h3,
-body.dark .editorial-tools-panel .rc-ai-answer-body h4 {
+body.dark [data-article-chat] .rc-ai-answer-body h3,
+body.dark [data-article-chat] .rc-ai-answer-body h4 {
   color: var(--color-ink, #e2e3e1);
 }
 
-.editorial-tools-panel .rc-ai-answer-body strong {
+[data-article-chat] .rc-ai-answer-body strong {
   color: var(--color-ink, #1a1c1b);
   font-weight: 660;
 }
 
-body.dark .editorial-tools-panel .rc-ai-answer-body strong {
+body.dark [data-article-chat] .rc-ai-answer-body strong {
   color: var(--color-ink, #e2e3e1);
 }
 
-.editorial-tools-panel .rc-ai-answer-body em {
+[data-article-chat] .rc-ai-answer-body em {
   color: color-mix(in oklab, var(--color-ink, #1a1c1b) 82%, transparent);
 }
 
-.editorial-tools-panel .rc-ai-list {
+[data-article-chat] .rc-ai-list {
   display: grid;
   gap: 8px;
   margin: 8px 0 11px;
   padding-left: 1.35em;
 }
 
-.editorial-tools-panel .rc-ai-list li {
+[data-article-chat] .rc-ai-list li {
   padding-left: 3px;
 }
 
-.editorial-tools-panel .rc-ai-list li::marker {
+[data-article-chat] .rc-ai-list li::marker {
   color: var(--color-accent, #862122);
   font-size: 0.88em;
   font-weight: 650;
 }
 
-.editorial-tools-panel .rc-ai-answer-body blockquote {
+[data-article-chat] .rc-ai-answer-body blockquote {
   margin: 10px 0;
   padding: 8px 10px;
   border-left: 2px solid color-mix(in oklab, var(--color-accent, #862122) 66%, transparent);
@@ -755,11 +758,11 @@ body.dark .editorial-tools-panel .rc-ai-answer-body strong {
   color: color-mix(in oklab, var(--color-ink, #1a1c1b) 82%, transparent);
 }
 
-.editorial-tools-panel .rc-ai-answer-body blockquote p {
+[data-article-chat] .rc-ai-answer-body blockquote p {
   margin: 0;
 }
 
-.editorial-tools-panel .rc-ai-answer-body code {
+[data-article-chat] .rc-ai-answer-body code {
   padding: 0.1em 0.34em;
   border: 1px solid var(--rc-ai-border);
   border-radius: 5px;
@@ -768,7 +771,7 @@ body.dark .editorial-tools-panel .rc-ai-answer-body strong {
   font-size: 0.88em;
 }
 
-.editorial-tools-panel .rc-ai-answer-body pre {
+[data-article-chat] .rc-ai-answer-body pre {
   max-width: 100%;
   margin: 10px 0;
   padding: 10px;
@@ -778,13 +781,13 @@ body.dark .editorial-tools-panel .rc-ai-answer-body strong {
   background: var(--rc-ai-surface-soft);
 }
 
-.editorial-tools-panel .rc-ai-answer-body pre code {
+[data-article-chat] .rc-ai-answer-body pre code {
   padding: 0;
   border: 0;
   background: transparent;
 }
 
-.editorial-tools-panel .rc-ai-greeting {
+[data-article-chat] .rc-ai-greeting {
   padding: 11px 12px;
   border: 1px solid var(--rc-ai-border);
   border-radius: var(--rc-ai-radius);
@@ -795,23 +798,23 @@ body.dark .editorial-tools-panel .rc-ai-answer-body strong {
   opacity: 0.78;
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
+html:lang(zh) [data-article-chat] .rc-ai-greeting {
   font-size: 12px;
 }
 
-.editorial-tools-panel .rc-ai-msg--error {
+[data-article-chat] .rc-ai-msg--error {
   border-color: color-mix(in oklab, #c0392b 38%, var(--rc-ai-border)) !important;
 }
 
-.editorial-tools-panel .rc-ai-msg--error .rc-ai-answer-context {
+[data-article-chat] .rc-ai-msg--error .rc-ai-answer-context {
   display: none;
 }
 
-.editorial-tools-panel .rc-ai-msg--error .rc-ai-answer-body {
+[data-article-chat] .rc-ai-msg--error .rc-ai-answer-body {
   color: #a23a30;
 }
 
-.editorial-tools-panel .rc-ai-msg--error .ai-retry-btn {
+[data-article-chat] .rc-ai-msg--error .ai-retry-btn {
   display: block;
   margin-top: 9px;
   padding: 5px 9px;
@@ -825,7 +828,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
   opacity: 0.76;
 }
 
-.editorial-tools-panel .ai-sources {
+[data-article-chat] .ai-sources {
   display: grid;
   gap: 5px;
   margin: 0;
@@ -835,7 +838,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
   opacity: 1;
 }
 
-.editorial-tools-panel .ai-sources-label {
+[data-article-chat] .ai-sources-label {
   margin: 0 6px 2px;
   color: var(--color-ink-muted, #5e5e63);
   font-weight: 620;
@@ -843,7 +846,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
   opacity: 0.62;
 }
 
-.editorial-tools-panel .ai-source-link {
+[data-article-chat] .ai-source-link {
   display: block;
   margin: 0;
   padding: 6px 7px;
@@ -855,13 +858,13 @@ html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
   transition: background-color 150ms ease, color 150ms ease;
 }
 
-.editorial-tools-panel .ai-source-link:hover {
+[data-article-chat] .ai-source-link:hover {
   background: color-mix(in oklab, var(--color-accent, #862122) 5%, transparent);
   color: var(--color-accent, #862122);
 }
 
 /* Composer sits on the page as one quiet glass-like control. */
-.editorial-tools-panel .rc-ai-input-area {
+[data-article-chat] .rc-ai-input-area {
   position: relative;
   display: flex;
   gap: 7px;
@@ -884,7 +887,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
     transform 220ms cubic-bezier(.22, 1, .36, 1);
 }
 
-.editorial-tools-panel .rc-ai-input-area:focus-within {
+[data-article-chat] .rc-ai-input-area:focus-within {
   border-color: color-mix(in oklab, var(--color-accent, #862122) 48%, var(--rc-ai-border));
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.72),
@@ -893,7 +896,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
   transform: translateY(-1px);
 }
 
-body.dark .editorial-tools-panel .rc-ai-input-area {
+body.dark [data-article-chat] .rc-ai-input-area {
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
     var(--rc-ai-surface);
@@ -902,7 +905,7 @@ body.dark .editorial-tools-panel .rc-ai-input-area {
     0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.editorial-tools-panel .rc-ai-textarea {
+[data-article-chat] .rc-ai-textarea {
   flex: 1;
   min-width: 0;
   box-sizing: border-box;
@@ -919,21 +922,21 @@ body.dark .editorial-tools-panel .rc-ai-input-area {
   -webkit-font-smoothing: antialiased;
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-textarea {
+html:lang(zh) [data-article-chat] .rc-ai-textarea {
   font-size: 13px;
   letter-spacing: 0.015em;
 }
 
-body.dark .editorial-tools-panel .rc-ai-textarea {
+body.dark [data-article-chat] .rc-ai-textarea {
   color: var(--color-ink, #e2e3e1);
 }
 
-.editorial-tools-panel .rc-ai-textarea::placeholder {
+[data-article-chat] .rc-ai-textarea::placeholder {
   color: var(--color-ink-muted, #5e5e63);
   opacity: 0.62;
 }
 
-.editorial-tools-panel .rc-ai-send {
+[data-article-chat] .rc-ai-send {
   flex-shrink: 0;
   width: 31px;
   height: 31px;
@@ -949,35 +952,35 @@ body.dark .editorial-tools-panel .rc-ai-textarea {
   transition: opacity 150ms ease, transform 120ms ease, box-shadow 150ms ease;
 }
 
-.editorial-tools-panel .rc-ai-send:hover {
+[data-article-chat] .rc-ai-send:hover {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.26),
     0 4px 10px color-mix(in oklab, var(--color-accent, #862122) 22%, transparent);
   transform: translateY(-1px);
 }
 
-.editorial-tools-panel .rc-ai-send:active {
+[data-article-chat] .rc-ai-send:active {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.16);
   transform: translateY(0) scale(0.96);
 }
 
-.editorial-tools-panel .rc-ai-send--empty {
+[data-article-chat] .rc-ai-send--empty {
   opacity: 0.34;
   cursor: default;
 }
 
-.editorial-tools-panel .rc-ai-send--empty:hover,
-.editorial-tools-panel .rc-ai-send--empty:active {
+[data-article-chat] .rc-ai-send--empty:hover,
+[data-article-chat] .rc-ai-send--empty:active {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
   transform: none;
 }
 
-.editorial-tools-panel .rc-ai-send svg {
+[data-article-chat] .rc-ai-send svg {
   width: 13px;
   height: 13px;
 }
 
-.editorial-tools-panel .rc-ai-charcount {
+[data-article-chat] .rc-ai-charcount {
   position: absolute;
   top: -7px;
   right: 11px;
@@ -990,18 +993,18 @@ body.dark .editorial-tools-panel .rc-ai-textarea {
   pointer-events: none;
 }
 
-body.dark .editorial-tools-panel .rc-ai-charcount {
+body.dark [data-article-chat] .rc-ai-charcount {
   background: var(--color-paper, #121413);
   color: rgba(226, 227, 225, 0.58);
 }
 
-.editorial-tools-panel .rc-ai-charcount--warn {
+[data-article-chat] .rc-ai-charcount--warn {
   color: var(--color-accent, #862122);
   font-weight: 650;
 }
 
 /* Sharing belongs to the answer header, not the input composer. */
-.editorial-tools-panel .rc-ai-share-btn {
+[data-article-chat] .rc-ai-share-btn {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -1021,27 +1024,26 @@ body.dark .editorial-tools-panel .rc-ai-charcount {
   transition:
     background-color 150ms ease,
     border-color 150ms ease,
-    color 150ms ease,
-    transform 120ms ease;
+    color 150ms ease;
 }
 
-.editorial-tools-panel .rc-ai-share-btn:hover {
+[data-article-chat] .rc-ai-share-btn:hover {
   border-color: color-mix(in oklab, var(--color-accent, #862122) 35%, var(--rc-ai-border));
   background: color-mix(in oklab, var(--color-accent, #862122) 6%, var(--rc-ai-surface-soft));
   color: var(--color-accent, #862122);
-  transform: translateY(-1px);
 }
 
-.editorial-tools-panel .rc-ai-share-btn:active {
-  transform: translateY(0) scale(0.97);
+[data-article-chat] .rc-ai-share-btn:active {
+  border-color: var(--color-accent, #862122);
+  color: var(--color-accent, #862122);
 }
 
-.editorial-tools-panel .rc-ai-share-btn svg {
+[data-article-chat] .rc-ai-share-btn svg {
   width: 11px;
   height: 11px;
 }
 
-.editorial-tools-panel .rc-ai-loading {
+[data-article-chat] .rc-ai-loading {
   display: flex;
   align-items: flex-start;
   gap: 9px;
@@ -1052,7 +1054,7 @@ body.dark .editorial-tools-panel .rc-ai-charcount {
   color: var(--color-ink-muted, #5e5e63);
 }
 
-.editorial-tools-panel .rc-ai-loading-mark {
+[data-article-chat] .rc-ai-loading-mark {
   flex: none;
   padding-top: 1px;
   color: var(--color-accent, #862122);
@@ -1061,20 +1063,20 @@ body.dark .editorial-tools-panel .rc-ai-charcount {
   letter-spacing: 0.05em;
 }
 
-.editorial-tools-panel .rc-ai-loading-body {
+[data-article-chat] .rc-ai-loading-body {
   flex: 1;
   display: grid;
   gap: 6px;
 }
 
-.editorial-tools-panel .rc-ai-loading-text {
+[data-article-chat] .rc-ai-loading-text {
   font-size: 10.5px;
   font-weight: 560;
   line-height: 1.25;
   opacity: 0.72;
 }
 
-.editorial-tools-panel .rc-ai-loading-line {
+[data-article-chat] .rc-ai-loading-line {
   width: 100%;
   height: 6px;
   overflow: hidden;
@@ -1083,11 +1085,11 @@ body.dark .editorial-tools-panel .rc-ai-charcount {
   position: relative;
 }
 
-.editorial-tools-panel .rc-ai-loading-line--short {
+[data-article-chat] .rc-ai-loading-line--short {
   width: 68%;
 }
 
-.editorial-tools-panel .rc-ai-loading-line::after {
+[data-article-chat] .rc-ai-loading-line::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -1096,7 +1098,7 @@ body.dark .editorial-tools-panel .rc-ai-charcount {
   animation: rc-ai-skeleton 1.25s cubic-bezier(.4, 0, .2, 1) infinite;
 }
 
-body.dark .editorial-tools-panel .rc-ai-loading-line::after {
+body.dark [data-article-chat] .rc-ai-loading-line::after {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
 }
 
@@ -1145,6 +1147,17 @@ body.dark .editorial-tools-panel .rc-ai-loading-line::after {
 }
 
 /* Copy toast */
+.search-palette__ai-stop {
+  min-height:44px;
+  padding:8px 12px;
+  margin-left:auto;
+  border:1px solid var(--color-rule);
+  border-radius:5px;
+  background:transparent;
+  color:var(--color-ink);
+  font:12px var(--font-body);
+  cursor:pointer;
+}
 .et-copy-toast {
   position: fixed;
   bottom: 1.5rem;
@@ -1163,6 +1176,43 @@ body.dark .editorial-tools-panel .rc-ai-loading-line::after {
 
 .et-copy-toast.et-copy-toast--visible {
   opacity: 1;
+}
+
+/* Clipboard refusal retains a selectable link and an explicit way back. */
+.article-copy-fallback {
+  width: min(440px, calc(100% - 32px));
+  margin: auto;
+  padding: 26px;
+  border: 1px solid var(--color-rule);
+  border-radius: 12px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+.article-copy-fallback::backdrop { background: #0007; }
+.article-copy-fallback h2 { margin: 0 0 12px; font-size: 20px; line-height: 1.5; }
+.article-copy-fallback p { margin: 0 0 18px; font-size: 14px; line-height: 1.75; }
+.article-copy-fallback input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-rule);
+  border-radius: 5px;
+  color: inherit;
+  background: transparent;
+  font: 16px var(--font-body);
+}
+.article-copy-fallback button {
+  display: block;
+  min-width: 80px;
+  min-height: 44px;
+  margin: 18px 0 0 auto;
+  border: 1px solid var(--color-rule);
+  border-radius: 5px;
+  font: 14px var(--font-body);
+  color: inherit;
+  cursor: pointer;
 }
 
 /* ── Annotations empty state ── */
@@ -1186,12 +1236,12 @@ body.dark .editorial-tools-panel .rc-ai-loading-line::after {
 /* custom.css @media(min-width:1500px) sets flex:1;min-height:0 on .rc-ai-panel,
    which collapses it to 0 height when .editorial-tools-panel is not a flex
    container with definite height. Override so the panel sizes to its content. */
-.editorial-tools-panel .rc-ai-panel {
+[data-article-chat] {
   flex: none;
 }
 
 /* ── Follow-up reading paths ── */
-.editorial-tools-panel .rc-ai-followups {
+[data-article-chat] .rc-ai-followups {
   display: grid;
   gap: 2px;
   margin-top: 1px;
@@ -1205,7 +1255,7 @@ body.dark .editorial-tools-panel .rc-ai-loading-line::after {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.editorial-tools-panel .rc-ai-followups__label {
+[data-article-chat] .rc-ai-followups__label {
   font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.035em;
@@ -1215,12 +1265,12 @@ body.dark .editorial-tools-panel .rc-ai-loading-line::after {
   margin: 0 7px 3px;
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-followups__label {
+html:lang(zh) [data-article-chat] .rc-ai-followups__label {
   letter-spacing: 0.06em;
   font-size: 10.5px;
 }
 
-.editorial-tools-panel .rc-ai-followup {
+[data-article-chat] .rc-ai-followup {
   position: relative;
   width: 100%;
   padding: 6px 22px 6px 7px;
@@ -1238,7 +1288,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-followups__label {
   -webkit-font-smoothing: antialiased;
 }
 
-.editorial-tools-panel .rc-ai-followup::after {
+[data-article-chat] .rc-ai-followup::after {
   content: "›";
   position: absolute;
   top: 50%;
@@ -1251,46 +1301,46 @@ html:lang(zh) .editorial-tools-panel .rc-ai-followups__label {
   transition: opacity 160ms ease, transform 160ms cubic-bezier(.22, 1, .36, 1);
 }
 
-html:lang(zh) .editorial-tools-panel .rc-ai-followup {
+html:lang(zh) [data-article-chat] .rc-ai-followup {
   font-size: 12px;
   letter-spacing: 0.01em;
 }
 
-.editorial-tools-panel .rc-ai-followup:hover {
+[data-article-chat] .rc-ai-followup:hover {
   background: color-mix(in oklab, var(--color-accent, #862122) 5%, transparent);
   color: var(--color-accent, #862122);
 }
 
-.editorial-tools-panel .rc-ai-followup:hover::after {
+[data-article-chat] .rc-ai-followup:hover::after {
   opacity: 0.82;
   transform: translate(2px, -52%);
 }
 
-.editorial-tools-panel .rc-ai-followup:active {
+[data-article-chat] .rc-ai-followup:active {
   transform: scale(0.985);
 }
 
-.editorial-tools-panel .rc-ai-followup--active,
-.editorial-tools-panel .rc-ai-followup--active:hover {
+[data-article-chat] .rc-ai-followup--active,
+[data-article-chat] .rc-ai-followup--active:hover {
   background: color-mix(in oklab, var(--color-accent, #862122) 9%, transparent);
   color: var(--color-accent, #862122);
 }
 
-.editorial-tools-panel .rc-ai-followup--dim {
+[data-article-chat] .rc-ai-followup--dim {
   opacity: 0.32;
 }
 
-body.dark .editorial-tools-panel .rc-ai-followup {
+body.dark [data-article-chat] .rc-ai-followup {
   color: color-mix(in oklab, var(--color-ink, #e2e3e1) 78%, transparent);
 }
 
-body.dark .editorial-tools-panel .rc-ai-followup:hover {
+body.dark [data-article-chat] .rc-ai-followup:hover {
   background: color-mix(in oklab, var(--color-accent, #ff6b6b) 8%, transparent);
   color: var(--color-accent, #ff6b6b);
 }
 
 /* ── Quick-start collapse (after all chips are used) ── */
-.editorial-tools-panel .rc-ai-quick--collapsed {
+[data-article-chat] .rc-ai-quick--collapsed {
   display: none;
 }
 
@@ -1299,33 +1349,53 @@ body.dark .editorial-tools-panel .rc-ai-followup:hover {
    loading affordance, not content, so freezing the dots is safe.
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .editorial-tools-panel .rc-ai-msg--ai,
-  .editorial-tools-panel .rc-ai-followups,
-  .editorial-tools-panel .rc-ai-loading-line::after {
+  [data-article-chat] .rc-ai-msg--ai,
+  [data-article-chat] .rc-ai-followups,
+  [data-article-chat] .rc-ai-loading-line::after {
     animation: none !important;
   }
 
-  .editorial-tools-panel .rc-ai-chip,
-  .editorial-tools-panel .rc-ai-input-area,
-  .editorial-tools-panel .rc-ai-send,
-  .editorial-tools-panel .rc-ai-share-btn,
-  .editorial-tools-panel .rc-ai-followup {
+  [data-article-chat] .rc-ai-chip,
+  [data-article-chat] .rc-ai-input-area,
+  [data-article-chat] .rc-ai-send,
+  [data-article-chat] .rc-ai-share-btn,
+  [data-article-chat] .rc-ai-followup {
     transition: none !important;
   }
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .editorial-tools-panel .rc-ai-input-area,
-  .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting),
-  .editorial-tools-panel .rc-ai-chip {
+  [data-article-chat] .rc-ai-input-area,
+  [data-article-chat] .rc-ai-msg--ai:not(.rc-ai-greeting),
+  [data-article-chat] .rc-ai-chip {
     background: var(--color-paper, #f9f9f7);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
 
-  body.dark .editorial-tools-panel .rc-ai-input-area,
-  body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting),
-  body.dark .editorial-tools-panel .rc-ai-chip {
+  body.dark [data-article-chat] .rc-ai-input-area,
+  body.dark [data-article-chat] .rc-ai-msg--ai:not(.rc-ai-greeting),
+  body.dark [data-article-chat] .rc-ai-chip {
     background: #242522;
   }
+}
+
+/* Supporting copy remains part of the conversation's reading hierarchy. */
+[data-article-chat] .rc-ai-intro-copy,
+html:lang(zh) [data-article-chat] .rc-ai-intro-copy,
+[data-article-chat] .rc-ai-greeting,
+html:lang(zh) [data-article-chat] .rc-ai-greeting,
+[data-article-chat] .rc-ai-msg--user { font-size:14px; opacity:1; }
+[data-article-chat] .rc-ai-user-label,
+[data-article-chat] .rc-ai-quick-label,
+html:lang(zh) [data-article-chat] .rc-ai-quick-label,
+[data-article-chat] .rc-ai-answer-title,
+[data-article-chat] .rc-ai-answer-context,
+[data-article-chat] .rc-ai-answer-mark { font-size:12px; opacity:1; }
+[data-article-chat] .rc-ai-share-btn { min-height:32px; font-size:13px; line-height:1.4; }
+[data-article-chat] .rc-ai-loading { font-size:13px; line-height:1.4; }
+[data-article-chat] .rc-ai-msg--error .ai-retry-btn { min-height:44px; font-size:14px; opacity:1; }
+
+[data-article-chat] .rc-ai-msg--error .rc-ai-answer-body {
+  color: var(--color-ink-muted, #5e5e63);
 }

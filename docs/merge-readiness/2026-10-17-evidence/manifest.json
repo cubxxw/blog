@@ -1,0 +1,71 @@
+{
+  "records": [
+    {
+      "path": "integration-copy-after.log",
+      "sha256": "5ca7821c01cf23f851016ab8b89aa50f3623e45965253a166e69d453b136fa0d",
+      "bytes": 2122
+    },
+    {
+      "path": "integration-copy-before.log",
+      "sha256": "ded179002c9f6d1399579daa287c911a67787162dfb441f1dfad9532f4414520",
+      "bytes": 4252
+    },
+    {
+      "path": "integration-discovery.log",
+      "sha256": "b8877d7b2d294276413098278dbb956bab83366040df1a1130917e322696f540",
+      "bytes": 2229
+    },
+    {
+      "path": "integration-node.log",
+      "sha256": "b37dc861d940a97758164ba0c4390b105b385f85d16bd71b80d3cf526e2d14a0",
+      "bytes": 13704
+    },
+    {
+      "path": "integration-p2-diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "integration-p2-scope.log",
+      "sha256": "0a4f6120c22ec4f9a3a78a8f38345861fb1beea0e7e0f1f29b79f878a56dc8ca",
+      "bytes": 1184
+    },
+    {
+      "path": "integration-p2-typecheck.log",
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400",
+      "bytes": 269
+    },
+    {
+      "path": "integration-scope.log",
+      "sha256": "54c2a4ca9cc58644e3e15fa14acdec34541fb13d4a95d51563f9d0c108541ec0",
+      "bytes": 655
+    },
+    {
+      "path": "integration-search-after.log",
+      "sha256": "4feb140b3efbd80a127ebf4b1b1543f33bf793032f7c56764242a926bab1b401",
+      "bytes": 1113
+    },
+    {
+      "path": "integration-search-before.log",
+      "sha256": "7d356cbf85aaf699a26ce0d34b2d70e8df6f57e8a40e948350c7b1805954426d",
+      "bytes": 873
+    },
+    {
+      "path": "integration-search-discovery.log",
+      "sha256": "1803272e98d6fe41cccbbf8406f9447dca161685928a30dfcdfa3294b34e422b",
+      "bytes": 5024
+    },
+    {
+      "path": "integration-search-lifecycle-vm.mjs",
+      "sha256": "d7f29dd18997288d2d29d4c0d44011e0394b558fc397775e9986c5eb1c2fe02e",
+      "bytes": 4957
+    },
+    {
+      "path": "integration-typecheck.log",
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400",
+      "bytes": 269
+    }
+  ],
+  "byteVerified": true,
+  "runtime": "deterministic Node/vm; browser discovery only, new E2E pending CI"
+}

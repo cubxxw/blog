@@ -15,20 +15,59 @@ export function mountMedia({ catalog, execute, notify, requestTimeoutMs = 18000 
   const writing = place => (catalog.articles || []).filter(a => (place?.match || []).some(term => `${a.title} ${a.description} ${(a.tags || []).join(' ')}`.toLocaleLowerCase().includes(String(term).toLocaleLowerCase())));
   const image = (photo, cls = '', preview = false) => {
     const src = url(preview ? photo.image : photo.thumb), alt = photo.place || photo.title;
-    return src ? `<div class="sp-media-image ${cls}" data-image-wrap data-image-state="loading"><img src="${html(src)}" alt="${html(alt)}" ${preview ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" data-media-image><span class="sp-media-image__feedback" data-image-feedback>${t('正在打开照片…', 'Loading photograph…')}</span>${preview ? `<button data-image-retry hidden>${t('重试照片', 'Retry photograph')}</button>` : ''}</div>` : `<div class="sp-media-image" data-image-state="error"><span>${t('照片地址不可用', 'Photograph unavailable')}</span></div>`;
+    if (!src) return `<div class="sp-media-image" data-image-state="error"><span>${t('照片地址不可用', 'Photograph unavailable')}</span></div>`;
+    const feedback = `<span class="sp-media-image__feedback" data-image-feedback ${preview ? 'role="status" aria-live="polite" aria-atomic="true"' : ''}>${t('正在打开照片…', 'Loading photograph…')}</span>`;
+    return `<div class="sp-media-image ${cls}" data-image-wrap data-image-state="loading">${preview ? `<div class="sp-photo-recovery" data-image-recovery>${feedback}<button type="button" data-image-retry aria-disabled="true" hidden>${t('重试照片', 'Retry photograph')}</button></div>` : ''}<img ${preview ? `data-media-src="${html(src)}" fetchpriority="high" tabindex="-1"` : `src="${html(src)}" loading="lazy"`} alt="${html(alt)}" decoding="async" data-media-image>${preview ? '' : feedback}</div>`;
   };
   function bind(host, windowID) {
     listeners.get(windowID)?.abort();
     const controller = new AbortController(); listeners.set(windowID, controller);
     const on = (element, type, callback, options = {}) => element?.addEventListener(type, callback, { ...options, signal: controller.signal });
     host.querySelectorAll('[data-media-open]').forEach(b => on(b, 'click', () => open(b.dataset.mediaOpen, b.dataset.mediaPayload)));
-    host.querySelectorAll('[data-media-image]').forEach(img => {
-      const wrapper = img.closest('[data-image-wrap]'), feedback = wrapper.querySelector('[data-image-feedback]'), retry = wrapper.querySelector('[data-image-retry]');
-      const success = () => { wrapper.dataset.imageState = 'ready'; feedback.textContent = ''; if (retry) retry.hidden = true; };
-      const failure = () => { wrapper.dataset.imageState = 'error'; feedback.textContent = t('这张照片暂时未能打开。', 'This photograph could not load.'); if (retry) retry.hidden = false; };
-      on(img, 'load', success); on(img, 'error', failure);
-      on(retry, 'click', event => { event.stopPropagation(); wrapper.dataset.imageState = 'loading'; feedback.textContent = t('正在重试…', 'Trying again…'); retry.hidden = true; const src = img.src; img.removeAttribute('src'); img.src = src; });
-      if (img.complete && img.naturalWidth) success();
+    host.querySelectorAll('[data-media-image]').forEach(initialImage => {
+      const wrapper = initialImage.closest('[data-image-wrap]'), feedback = wrapper.querySelector('[data-image-feedback]'), retry = wrapper.querySelector('[data-image-retry]'), recovery = wrapper.querySelector('[data-image-recovery]');
+      const source = initialImage.dataset.mediaSrc || initialImage.getAttribute('src');
+      let attempt;
+      const current = owner => attempt === owner && !owner.controller.signal.aborted && !controller.signal.aborted && listeners.get(windowID) === controller && host.isConnected && wrapper.isConnected && wrapper.contains(owner.node);
+      const stopAttempt = () => { if (!attempt) return; const previous = attempt; attempt = null; previous.controller.abort(); previous.node.removeAttribute('src'); };
+      controller.signal.addEventListener('abort', stopAttempt, { once: true });
+      function begin(node, assignSource) {
+        const owner = { node, controller: new AbortController(), settled: false, decoding: false }; attempt = owner;
+        const failure = () => {
+          if (!current(owner) || owner.settled) return;
+          owner.settled = true; owner.controller.abort(); wrapper.dataset.imageState = 'error';
+          feedback.textContent = t('这张照片暂时未能打开。', 'This photograph could not load.');
+          if (retry) { retry.hidden = false; retry.setAttribute('aria-disabled', 'false'); }
+        };
+        const success = async () => {
+          if (!current(owner) || owner.settled || owner.decoding) return;
+          owner.decoding = true;
+          try { if (typeof node.decode === 'function') await node.decode(); } catch { failure(); return; }
+          if (!current(owner) || owner.settled) return;
+          // Hand off only this still-focused recovery action, before hiding it.
+          if (retry && document.activeElement === retry) {
+            node.focus({ preventScroll: true });
+          }
+          owner.settled = true; owner.controller.abort(); wrapper.dataset.imageState = 'ready'; feedback.textContent = '';
+          if (retry) { retry.hidden = true; retry.setAttribute('aria-disabled', 'false'); }
+          if (recovery) { recovery.hidden = true; recovery.style.minHeight = ''; }
+        };
+        node.addEventListener('load', success, { signal: owner.controller.signal });
+        node.addEventListener('error', failure, { signal: owner.controller.signal });
+        if (assignSource) node.src = source;
+        // Cached images may have completed before listener registration.
+        if (node.complete && (node.currentSrc || node.getAttribute('src'))) node.naturalWidth ? success() : failure();
+      }
+      on(retry, 'click', event => {
+        event.stopPropagation(); if (wrapper.dataset.imageState === 'loading') return;
+        // Preserve the error row's footprint through shorter pending copy.
+        recovery.style.minHeight = getComputedStyle(recovery).height;
+        wrapper.dataset.imageState = 'loading'; feedback.textContent = t('正在重试…', 'Trying again…'); retry.setAttribute('aria-disabled', 'true');
+        const previous = attempt.node, next = document.createElement('img');
+        for (const attribute of previous.attributes) if (attribute.name !== 'src') next.setAttribute(attribute.name, attribute.value);
+        stopAttempt(); previous.replaceWith(next); begin(next, true);
+      });
+      begin(initialImage, !!initialImage.dataset.mediaSrc);
     });
     host.querySelectorAll('[data-media-load]').forEach(b => on(b, 'click', () => loadImmich()));
     host.querySelectorAll('[data-media-more]').forEach(b => on(b, 'click', () => loadImmich(b.dataset.mediaMore)));

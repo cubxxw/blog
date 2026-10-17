@@ -1,0 +1,22 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'playwright' test tests/e2e/space-library-profile-contracts.spec.ts --list
+Listing tests:
+  [desktop] › space-library-profile-contracts.spec.ts:38:7 › 320×844 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › space-library-profile-contracts.spec.ts:38:7 › 390×844 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › space-library-profile-contracts.spec.ts:38:7 › 620×844 zh dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › space-library-profile-contracts.spec.ts:38:7 › 844×390 en light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › space-library-profile-contracts.spec.ts:38:7 › 1440×900 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › space-library-profile-contracts.spec.ts:38:7 › 1440×900 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › space-library-profile-contracts.spec.ts:59:7 › 390 English bookmark semantics and recovery › Save, favorites, reload and remove expose the actual persistent state
+  [desktop] › space-library-profile-contracts.spec.ts:67:5 › the real library scroller restores reading position while Notes and Books keep their own documents
+  [desktop] › space-library-profile-contracts.spec.ts:74:5 › the original public favorite action synchronizes state and semantics without replacing the reader
+  [mobile] › space-library-profile-contracts.spec.ts:38:7 › 320×844 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › space-library-profile-contracts.spec.ts:38:7 › 390×844 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › space-library-profile-contracts.spec.ts:38:7 › 620×844 zh dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › space-library-profile-contracts.spec.ts:38:7 › 844×390 en light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › space-library-profile-contracts.spec.ts:38:7 › 1440×900 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › space-library-profile-contracts.spec.ts:38:7 › 1440×900 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › space-library-profile-contracts.spec.ts:59:7 › 390 English bookmark semantics and recovery › Save, favorites, reload and remove expose the actual persistent state
+  [mobile] › space-library-profile-contracts.spec.ts:67:5 › the real library scroller restores reading position while Notes and Books keep their own documents
+  [mobile] › space-library-profile-contracts.spec.ts:74:5 › the original public favorite action synchronizes state and semantics without replacing the reader
+Total: 18 tests in 1 file

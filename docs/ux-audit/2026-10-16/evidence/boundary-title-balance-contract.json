@@ -1,0 +1,19 @@
+{
+  "question": "Can balancing only the original article h1 remove very short last lines without changing type size, text, viewport width or adding title height in the named short-heading cases?",
+  "mode": "boundary",
+  "alternatives": ["A: current original title wrapping", "B: browser-only h1.post-title text-wrap-style:balance"],
+  "decisionChangingEvidence": "Original real headings compared in the same settled-font page and same DOM at paired A/B natural frames; per-character Range line groups and full screenshots. Prefer B only when last-line distribution improves without overflow or added heading height. A real long title beyond engine line limit is a limitation case, not a forced pass.",
+  "smallestFailure": "Text/type identity or width changes, horizontal overflow, added heading height >0.5CSSpx, or no improvement in the known one-character orphan case.",
+  "timeboxMinutes": 5,
+  "stopRule": "Three original-content cases once per A/B; preserve all outcomes, stop without production edits or tuning to a preferred result.",
+  "cases": [
+    {"id":"normal-zh390","case_type":"normal","source":"real","viewport":[390,844],"url":"/zh/ai-agent/posts/context-engineering-the-new-foundation/"},
+    {"id":"edge-en390","case_type":"edge","source":"real","viewport":[390,844],"url":"/ai-agent/posts/context-engineering-the-new-foundation/"},
+    {"id":"failure-long-en320","case_type":"failure","source":"real","viewport":[320,844],"url":"/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/"}
+  ],
+  "lifecycle":{"split":"discovery","review":{"status":"unreviewed"},"humanChoice":"unreviewed"},
+  "references":[{"url":"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-wrap-style","retrieved":"2026-10-16","basis":"balance is intended for short headings; engines limit affected line counts. Do not apply the slower pretty strategy to the full body or claim unsupported browsers verified."}],
+  "networkScope":"Existing local1317/public article+fonts only, Netlify503 and analyticsstub; no model/contact/subscribe/share.",
+  "outOfScope":["production edits","globalbody wrapping","coldfont stability recertification","physical/Safari/AT/fullmatrix","Gold or humanconfirmed promotion"],
+  "productionAuthorization":"User authorizes iterative blog design through noon, but this remains discovery/unreviewed. Any implementation must be rewritten/scoped and independently verified separately, never promoted as a demo or full96 claim."
+}

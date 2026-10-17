@@ -111,8 +111,15 @@
   window.addEventListener('resize', clearGuide);
 
   function init(panel, options) {
-    if (!panel || controllers.has(panel)) return;
-    var prefix = options.prefix, compact = prefix === 'abs';
+    if (!panel) return;
+    panel = panel.matches('[data-article-chat]') ? panel : panel.querySelector('[data-article-chat]');
+    if (!panel) return;
+    if (controllers.has(panel)) return controllers.get(panel);
+    options = options || {};
+    var prefix = 'rc';
+    var desktopHost = document.getElementById('rc-panel-ai'), compactHost = document.getElementById('abs-panel-ai');
+    var persistent = matchMedia('(min-width: 1200px)');
+    function compact() { return panel.parentElement === compactHost; }
     var select = function (suffix) { return panel.querySelector('.' + prefix + '-ai-' + suffix); };
     var messages = select('messages'), textarea = select('textarea'), sendButton = select('send');
     if (!messages || !textarea || !sendButton) return;
@@ -123,13 +130,6 @@
     var loading = select('loading');
     if (!loading) { loading = element('div', prefix + '-ai-loading'); loading.setAttribute('role', 'status'); surface.insertBefore(loading, messages); }
     loading.hidden = true;
-    if (compact && !select('chip')) {
-      var quick = element('div', 'abs-ai-quick');
-      prompts.forEach(function (pair) {
-        var chip = element('button', 'abs-ai-chip', pair[0]); chip.type = 'button'; chip.dataset.prompt = pair[1]; quick.appendChild(chip);
-      });
-      surface.insertBefore(quick, messages);
-    }
     if (!messages.children.length) messages.appendChild(element('div', prefix + '-ai-msg ' + prefix + '-ai-msg--ai ' + prefix + '-ai-greeting', T.greeting));
     var inputArea = select('input-area') || textarea.parentElement;
     var reference = element('div', 'article-chat-reference'); reference.hidden = true;
@@ -139,13 +139,189 @@
     reference.appendChild(clear); inputArea.insertBefore(reference, textarea);
     var stop = element('button', 'article-chat-stop', isZh ? '停止' : 'Stop');
     stop.type = 'button'; stop.setAttribute('aria-label', T.stop); stop.hidden = true; inputArea.appendChild(stop);
+    var following = true, readingAnchor = null, moving = false, layoutSerial = 0, readingIntent = 0, anchorIntent = 0, ownedScrollTop = null;
+    var focusOwned = false, lastOwnedControl = null, lastFocused = document.activeElement, focusIntent = 0;
+    var shortReading = matchMedia('(min-width: 520px) and (max-height: 420px)');
     function nearBottom() { return messages.scrollHeight - messages.scrollTop - messages.clientHeight < 90; }
-    function bottom() { messages.scrollTop = messages.scrollHeight; }
+    function scrollMessages(top) { messages.scrollTop = top; ownedScrollTop = messages.scrollTop; }
+    function shortReplyBody() {
+      if (!compact() || !shortReading.matches || !messages.querySelector('.article-chat-followups')) return null;
+      var replies = messages.querySelectorAll('.rc-ai-answer-body');
+      return replies.length ? replies[replies.length - 1] : null;
+    }
+    function bottom() {
+      following = true; readingAnchor = null;
+      var reply = shortReplyBody();
+      if (reply) {
+        var view = messages.getBoundingClientRect();
+        if (!view.height) return;
+        var style = getComputedStyle(messages), top = view.top + (parseFloat(style.paddingTop) || 0), end = view.bottom - (parseFloat(style.paddingBottom) || 0);
+        var active = document.activeElement;
+        if (messages.contains(active) && active.closest('.article-chat-followups, .ai-sources')) {
+          // An explicitly focused suggestion/reference owns its place in the list.
+          var control = active.getBoundingClientRect();
+          if (control.top < top) scrollMessages(messages.scrollTop + control.top - top);
+          else if (control.bottom > end) scrollMessages(messages.scrollTop + control.bottom - end);
+          return;
+        }
+        var contentEnd = reply.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(reply).paddingBottom) || 0);
+        scrollMessages(messages.scrollTop + contentEnd - end);
+        return;
+      }
+      scrollMessages(messages.scrollHeight);
+    }
+    function captureReadingAnchor() {
+      var view = messages.getBoundingClientRect();
+      if (!view.height) return null;
+      var paragraphs = messages.querySelectorAll('.rc-ai-answer-body p, .rc-ai-user-text');
+      var preferred = Array.prototype.find.call(paragraphs, function (node) {
+        var r = node.getBoundingClientRect(); return r.top >= view.top + 1 && r.bottom <= view.bottom - 1;
+      });
+      var walker = document.createTreeWalker(messages, NodeFilter.SHOW_TEXT), node;
+      while ((node = walker.nextNode())) {
+        if (!node.textContent.trim() || preferred && !preferred.contains(node)) continue;
+        var body = node.parentElement.closest('.rc-ai-answer-body, .rc-ai-user-text');
+        if (!body) continue;
+        var range = document.createRange(); range.selectNodeContents(node);
+        var r = range.getBoundingClientRect();
+        if (r.bottom <= view.top || r.top >= view.bottom) continue;
+        var offset = 0;
+        if (!preferred) {
+          var lo = 0, hi = node.textContent.length - 1;
+          while (lo < hi) {
+            var mid = (lo + hi) >> 1; range.setStart(node, mid); range.setEnd(node, mid + 1);
+            if (range.getBoundingClientRect().bottom <= view.top + 1) lo = mid + 1; else hi = mid;
+          }
+          offset = lo;
+        }
+        range.setStart(node, offset); range.setEnd(node, offset + 1);
+        var prefixRange = document.createRange(); prefixRange.selectNodeContents(body); prefixRange.setEnd(node, offset);
+        return {body:body, offset:prefixRange.toString().length, top:range.getBoundingClientRect().top - view.top};
+      }
+      return null;
+    }
+    function currentReadingAnchor() {
+      if (readingAnchor && readingAnchor.body.isConnected && anchorIntent === readingIntent) return readingAnchor;
+      var anchor = captureReadingAnchor();
+      if (anchor) { readingAnchor = anchor; anchorIntent = readingIntent; }
+      return anchor || readingAnchor;
+    }
+    function restoreReadingAnchor(anchor) {
+      if (!anchor || !anchor.body.isConnected || !messages.getBoundingClientRect().height) return;
+      var walker = document.createTreeWalker(anchor.body, NodeFilter.SHOW_TEXT), node, remaining = anchor.offset;
+      while ((node = walker.nextNode())) {
+        if (remaining >= node.textContent.length) { remaining -= node.textContent.length; continue; }
+        var range = document.createRange(); range.setStart(node, remaining); range.setEnd(node, remaining + 1);
+        scrollMessages(messages.scrollTop + range.getBoundingClientRect().top - messages.getBoundingClientRect().top - anchor.top);
+        readingAnchor = anchor; anchorIntent = readingIntent; return;
+      }
+    }
+    messages.addEventListener('scroll', function () {
+      if (moving || !messages.getBoundingClientRect().height) return;
+      // Layout restoration is not a new reading position, even when its scroll event arrives after the frame.
+      if (ownedScrollTop !== null && Math.abs(messages.scrollTop - ownedScrollTop) < 1) return;
+      ownedScrollTop = null; readingIntent++;
+      following = nearBottom();
+      readingAnchor = following ? null : captureReadingAnchor(); anchorIntent = readingIntent;
+    }, {passive:true});
+    function newReadingIntent() { readingIntent++; ownedScrollTop = null; }
+    messages.addEventListener('wheel', function (event) {
+      if (event.deltaY) newReadingIntent();
+      if (event.deltaY < 0) following = false;
+    }, {passive:true});
+    messages.addEventListener('touchmove', newReadingIntent, {passive:true});
+    messages.addEventListener('keydown', function (event) {
+      if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.target.closest('input,textarea,select,button,[contenteditable]')) return;
+      if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].indexOf(event.key) !== -1) newReadingIntent();
+    });
+    function visible(node) {
+      return node && node.isConnected && !node.disabled && node.getClientRects().length && !node.closest('[hidden],[inert]') && getComputedStyle(node).visibility !== 'hidden';
+    }
+    function beforeUnavailable(control) {
+      if (focusOwned && control.contains(document.activeElement) && visible(textarea)) textarea.focus({preventScroll:true});
+    }
+    function showAi() {
+      if (compact()) {
+        if (global.ArticleSheet) global.ArticleSheet.open('ai', {focus:false, opener:document.getElementById('article-fab')});
+      } else {
+        var tab = document.getElementById('rc-tab-ai'); if (tab) tab.click();
+      }
+    }
+    function restoreLayoutReading(anchor, readIntent, id) {
+      if (following) bottom(); else restoreReadingAnchor(anchor);
+      requestAnimationFrame(function () { if (id === layoutSerial) { moving = false; if (!following && readIntent === readingIntent) restoreReadingAnchor(anchor); } });
+    }
+    function routeLayout() {
+      var destination = persistent.matches ? desktopHost : compactHost;
+      if (!destination || !persistent.matches && !global.ArticleSheet) return;
+      panel.dataset.chatReady = 'true';
+      if (panel.parentElement === destination) {
+        if (!messages.getBoundingClientRect().height) return;
+        var reflowAnchor = following ? null : currentReadingAnchor();
+        moving = true; restoreLayoutReading(reflowAnchor, readingIntent, ++layoutSerial);
+        return;
+      }
+      var oldHost = panel.parentElement, active = document.activeElement;
+      var wanted = focusOwned && panel.contains(lastOwnedControl) ? lastOwnedControl : null;
+      var previous = active !== document.body ? active : lastFocused;
+      var intent = focusIntent, id = ++layoutSerial;
+      var selection = {start:textarea.selectionStart, end:textarea.selectionEnd, direction:textarea.selectionDirection, scroll:textarea.scrollTop};
+      var scroll = messages.scrollTop, anchor = following ? null : currentReadingAnchor(), readIntent = readingIntent;
+      moving = true;
+      destination.appendChild(panel);
+      if (wanted) showAi();
+      if (persistent.matches && global.ArticleSheet) global.ArticleSheet.closeForLayout();
+      if (wanted && !visible(wanted)) wanted = visible(textarea) ? textarea : visible(stop) ? stop : null;
+      if (wanted && intent === focusIntent && visible(wanted)) {
+        wanted.focus({preventScroll:true});
+        if (wanted === textarea) { textarea.setSelectionRange(selection.start, selection.end, selection.direction); textarea.scrollTop = selection.scroll; }
+      } else if (previous && oldHost && oldHost.closest('.article-tools, #article-bottom-sheet') && (oldHost.closest('.article-tools, #article-bottom-sheet').contains(previous) || previous.id === 'article-fab') && !visible(previous)) {
+        var replacement;
+        if (persistent.matches) {
+          var oldTab = previous.closest('[data-tab]'), oldPanel = previous.closest('.abs-panel');
+          var name = oldTab ? oldTab.dataset.tab : oldPanel ? oldPanel.id.replace('abs-panel-', '') : 'toc';
+          replacement = document.getElementById('rc-tab-' + name) || document.getElementById('rc-tab-toc');
+          if (name !== 'ai' && replacement) replacement.click();
+        } else replacement = document.getElementById('article-fab');
+        if (visible(replacement)) { replacement.focus({preventScroll:true}); lastFocused = replacement; }
+      }
+      if (!following) scrollMessages(scroll);
+      restoreLayoutReading(anchor, readIntent, id);
+    }
+    panel.addEventListener('focusin', function (event) { lastOwnedControl = event.target; focusOwned = true; lastFocused = event.target; });
+    panel.addEventListener('focusout', function (event) {
+      if (moving || panel.contains(event.relatedTarget)) return;
+      if (!event.relatedTarget && (panel.parentElement === desktopHost) !== persistent.matches) return;
+      focusOwned = false;
+    });
+    document.addEventListener('focusin', function (event) {
+      if (moving || panel.contains(event.target)) return;
+      lastFocused = event.target; focusOwned = false; focusIntent++;
+    });
+    function interaction(event) {
+      if (panel.contains(event.target)) { focusOwned = true; if (panel.contains(document.activeElement)) lastOwnedControl = document.activeElement; }
+      else { focusOwned = false; focusIntent++; if (event.type === 'pointerdown') lastFocused = null; }
+    }
+    document.addEventListener('pointerdown', interaction, {passive:true});
+    document.addEventListener('wheel', interaction, {passive:true});
+    panel.addEventListener('keydown', interaction);
+    document.addEventListener('article:tools-layout', routeLayout);
+    document.addEventListener('article:sheet-ready', routeLayout);
+    global.addEventListener('resize', routeLayout);
+    document.addEventListener('article:sheet-close', function (event) {
+      if (event.detail && event.detail.reason === 'user' && compact() && busy) cancel();
+    });
     function activeKey() { return context ? context.blockId + '\u0000' + context.selectedText : ''; }
     function updateBusy(on) {
+      var wasBusy = busy;
+      beforeUnavailable(on ? sendButton : stop);
       busy = on; panel.setAttribute('aria-busy', String(on)); sendButton.disabled = on; stop.hidden = !on;
       sendButton.classList.toggle(prefix + '-ai-send--empty', on || !textarea.value.trim());
-      if (!on) loading.hidden = true;
+      if (!on) {
+        loading.hidden = true;
+        // Removing loading changes the short viewport; retain the same reply end.
+        if (wasBusy && following && shortReplyBody()) bottom();
+      }
     }
     function cancel() {
       serial++;
@@ -172,7 +348,7 @@
         if (quote) div.appendChild(element('blockquote', 'article-chat-quote', quote));
         div.appendChild(element('p', prefix + '-ai-user-text', text));
       }
-      messages.appendChild(div); if (role === 'user' || nearBottom()) bottom();
+      messages.appendChild(div); if (role === 'user' || following) bottom();
       return div;
     }
     function paintReply(node, text) {
@@ -193,8 +369,8 @@
       var wrap = element('div', 'article-chat-followups');
       wrap.appendChild(element('span', 'article-chat-followups-label', T.followup));
       var list = isZh ? ['能举一个具体例子吗？','有没有相反的观点？','在现实里怎么应用？'] : ['Can you give an example?','What is the counter-argument?','How does this apply in practice?'];
-      list.forEach(function (question) { var btn = element('button', 'article-chat-followup', question); btn.type = 'button'; btn.addEventListener('click', function () { send(question); }); wrap.appendChild(btn); });
-      messages.appendChild(wrap); if (nearBottom()) bottom();
+      list.forEach(function (question) { var btn = element('button', 'article-chat-followup', question); btn.type = 'button'; btn.addEventListener('click', function () { send(question, true); }); wrap.appendChild(btn); });
+      messages.appendChild(wrap); if (following) bottom();
     }
     function addSources(candidates) {
       var section = element('div', 'ai-sources');
@@ -216,7 +392,7 @@
       q = q.slice(0, parseInt(textarea.getAttribute('maxlength'), 10) || 500);
       lastQuestion = q;
       if (recentError) { recentError.remove(); recentError = null; }
-      var followups = messages.querySelector('.article-chat-followups'); if (followups) followups.remove();
+      var followups = messages.querySelector('.article-chat-followups'); if (followups) { beforeUnavailable(followups); followups.remove(); }
       var greeting = select('greeting'); if (greeting) greeting.remove();
       var intro = select('intro'), quick = select('quick'); if (intro) intro.hidden = !!context; if (quick) quick.hidden = !!context;
       panel.classList.add(prefix + '-ai-panel--engaged');
@@ -234,16 +410,18 @@
         var result = await global.ArticleAIClient.request(payload, { signal: requestController.signal, onDelta: function (text) {
           if (!current()) return;
           loading.hidden = true;
-          var follow = nearBottom();
+          var anchor = following ? null : currentReadingAnchor();
           if (!streamNode) streamNode = appendMessage('', 'ai');
-          paintReply(streamNode, text); if (follow) bottom();
+          paintReply(streamNode, text); if (following) bottom(); else restoreReadingAnchor(anchor);
         } });
         if (!current()) return;
+        var anchor = following ? null : currentReadingAnchor();
         var answer = streamNode || appendMessage(result.answer, 'ai');
         paintReply(answer, result.answer); streamNode = null;
         requestHistory.push({ role: 'user', content: q }, { role: 'assistant', content: result.answer });
         if (requestHistory.length > 10) requestHistory.splice(0, requestHistory.length - 10);
         shareAnswer(answer, requestHistory.slice()); addSources(result.candidates); suggestions();
+        if (!following) restoreReadingAnchor(anchor);
       } catch (err) {
         if (id !== serial || requestController.signal.aborted && (!err || err.name !== 'TimeoutError')) return;
         if (streamNode) { streamNode.remove(); streamNode = null; }
@@ -259,11 +437,11 @@
     }
     textarea.addEventListener('input', function () { textarea.style.height = 'auto'; textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px'; updateBusy(busy); });
     textarea.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) { event.preventDefault(); send(); }
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing && event.keyCode !== 229) { event.preventDefault(); send(); }
     });
     sendButton.addEventListener('click', function () { send(); });
     panel.querySelectorAll('[data-prompt]').forEach(function (chip) {
-      chip.addEventListener('click', function () { if (busy || chip.disabled) return; clearContext(); chip.disabled = true; chip.classList.add(prefix + '-ai-chip--used'); send(chip.dataset.prompt, true); });
+      chip.addEventListener('click', function () { if (busy || chip.disabled) return; clearContext(); beforeUnavailable(chip); chip.disabled = true; chip.classList.add(prefix + '-ai-chip--used'); send(chip.dataset.prompt, true); });
     });
     updateBusy(false);
     function analyze(detail) {
@@ -274,13 +452,8 @@
       if (!scopes[key]) { scopes[key] = []; scopeOrder.push(key); if (scopeOrder.length > 24) delete scopes[scopeOrder.shift()]; }
       history = scopes[key];
       referenceText.textContent = context.selectedText; reference.hidden = false;
-      if (compact) {
-        var fab = document.getElementById('article-fab'); var sheet = document.getElementById('article-bottom-sheet');
-        if (fab && sheet && !sheet.classList.contains('abs--open')) fab.click();
-        var tab = document.getElementById('abs-tab-ai') || document.querySelector('.abs-tab[data-tab="ai"]'); if (tab) tab.click();
-      } else {
-        var tab = document.getElementById('rc-tab-ai'); if (tab) tab.click();
-      }
+      routeLayout(); showAi();
+      if (visible(textarea)) textarea.focus({preventScroll:true});
       var pending = send(detail.question || (isZh ? '结合这篇文章，帮我理解这段话。' : 'Explain this passage in the context of the article.'), true);
       var quotes = messages.querySelectorAll('.article-chat-quote');
       var quote = quotes.length ? quotes[quotes.length - 1] : reference;
@@ -291,17 +464,11 @@
       return pending;
     }
     document.addEventListener('article:selection-analyze', function (event) {
-      if ((innerWidth < 1200) !== compact) return;
       analyze(event.detail || {});
     });
-    window.addEventListener('resize', function () {
-      if (busy && (innerWidth < 1200) !== compact) cancel();
-    });
-    if (compact) {
-      var sheet = document.getElementById('article-bottom-sheet');
-      if (sheet) new MutationObserver(function () { if (!sheet.classList.contains('abs--open') && busy) cancel(); }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
-    }
-    controllers.set(panel, { cancel: cancel });
+    var api = {cancel:cancel}; controllers.set(panel, api);
+    routeLayout();
+    return api;
   }
   global.ArticleChat = { init: init };
 })(window);

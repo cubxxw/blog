@@ -1,0 +1,17 @@
+
+Running 10 tests using 1 worker
+
+(node:85722) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly (1.7s)
+  ✓   2 tests/e2e/article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly (1.1s)
+  ✓   3 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI (615ms)
+  ✓   4 tests/e2e/article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI (636ms)
+  ✓   5 tests/e2e/article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout (706ms)
+  ✓   6 tests/e2e/article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts (998ms)
+  ✓   7 tests/e2e/article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once (1.7s)
+  ✓   8 tests/e2e/article-chat-continuity-contracts.spec.ts:97:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts (609ms)
+  ✓   9 tests/e2e/article-chat-continuity-contracts.spec.ts:102:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request (789ms)
+  ✓  10 tests/e2e/article-chat-continuity-contracts.spec.ts:109:5 › delayed shared initialization and two entry calls still create one root, controller and selection request (1.2s)
+
+  10 passed (10.9s)

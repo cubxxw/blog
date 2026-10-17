@@ -1,0 +1,313 @@
+# 本地批次与实际证据
+
+工作持续至2026-10-16 12:00（上海）。这是当前验收记录，不是全站已完成声明。最新源码工作树见 control.md；仅本地，未发布。
+
+| 批次 | 实际结果 | 已验收的范围 | 限制/后续 |
+| --- | --- | --- | --- |
+| 前序 `6d7b9fe9` | 咖啡默认入口、真实首帧终端、小猫、材料与失败恢复 | 见 `docs/acceptance/2026-10-15-space-onboarding-local.md` | 保留风格化场景，未达到照片级写实 |
+| A | 真实复制pending/success/failure、焦点与按压、换景名称、quiet选择态 | `batch-a-checks.json`：20条 | 只覆盖记录的状态与设备模拟 |
+| B/C | tabs、菜单、分享、订阅超时、阅读器空结果、代码错误布局 | D1时7条contracts/recovery；C时8条视觉检查 | C净空不足1px，后由D3改进 |
+| D1 | 安全渲染、Travel/FAQ流取消、搜索取消、迟到分享不弹窗 | 24 Node、TypeScript、7浏览器回归、5请求流程；原log保留 | 五流程后在D2b及D4b重新验证，当前回执各自绑定新manifest |
+| D2b | 隐藏面板inert、代码/书籍原生dialog与Tab循环、IME、FAQ外层取消、搜索不抢焦点 | 26 Node、TypeScript、12浏览器合同、6专项、5请求回归 | D2a原生dialog仍有body一跳，失败记录保留，已补首尾wrap |
+| D3 | 复制净空/单语/触屏文案、Knowledge真实All、正文结构块静态、ripple opt-in | 14浏览器合同、8错误态视觉、2动效；净空最低14.58px | 专家局部D1=96、D4=94.5；320英文尾词单行仍可细化，完整功能分数未知 |
+| D4b | 产品CTA抵达真实App且根入口仍咖啡、Dock命名、44px书籍AI、单一滚动对话区 | 10浏览器合同（含568×320/256中英）、5请求回归、26 Node、TypeScript | D4旧横屏溢出图/失败记录保留；当前PNG为修复后实际画面 |
+
+每批 `evidence/batch-*-source.json`有源码SHA及其Git base。旧截图不认证后续代码。Node、浏览器合同、视觉判断分别记录；不能相加冒充已认证控件数量。
+
+## Space专项和下一步
+
+- `space-window-audit.json`：桌面/手机共6条实际操作通过，笔记最小化保持原DOM、最大化恢复、关闭再开文本保留。
+- `space-render-probe.json`：灰色缩略图为过早截帧；450ms后两张本地照片ready/naturalWidth480。SVG组bbox中点落海洋、滚动裁剪外不是遮挡缺陷。
+- `space-plane-concept-1440.png`仅临时CSS设计实验，不是生产改动或通过截图。
+- 下一E5：工作区承载面减少穿透/重复边界；正文提高实际字号；桌面窗口目标≥24、手机地图控制≥44，保留原world/DOM架构。
+- 已复现待修：FAQ在运行时切换减少动态效果后仍使用旧偏好播放高度动画（`batch-d3-motion-checks.json`的observation，不能算通过）。
+- 后续按inventory 18个Roadmap小批继续：电脑/相框/墙体/光、小猫/quiet/六景、11应用、真实内容、首页层级与导航。完整309族未认证；固定评分表不为凑96而改动。
+
+## 复现与边界
+
+唯一预览 http://127.0.0.1:1317 。`local-qa.config.mjs`复用已构建站点，单浏览器串行。父任务脚本按记录运行；历史故障复现脚本成功只代表复现故障，不代表产品通过。
+
+浏览器是Mac Chromium响应式模拟。没有实体手机、Safari/Firefox或真实模型/订阅后端的全覆盖验收；隔离mock不写真实用户数据，不进行公开部署。原始日志保留于登记artifact，正式文本副本已去ANSI与行尾空格。
+
+## E5 / E5.1 真实验收与未通过边界（2026-10-16 01:55）
+
+- 冻结基线为本地 `94e644e5`；E5四文件和E5.1六文件分别见source manifest。生产预览复用1317。
+- E5：纸面不透明，实际主文字16.4px；桌面窗控26.24px；原320/390/568手机窗控与地图44.28px。5条Space阅读/原笔记DOM与fallback合同通过，10张稳定画面/JSON已归档。E5截图实际为390×900、320×844、568×320、1440×900；reading手机合同为320/390×844，不能互相替代。
+- 独立设计判断：桌面笔记D4由72.5→90，390笔记93，深色笔记/阅读器90，390地图87.5。仅局部视觉范围，完整控件分仍未知。
+- 后续实际hit与click发现：568×320 close中心被“回到咖啡馆”HUD盖住，真实点击进入café、notes仍存在；620×844 map按钮只有26.24px宽；844×390 coarse=true，窗控/map仅26.24px且arrange被换景HUD截获。E5阅读合同只测几何，不能据此声称这些按钮可点。
+- E5.1 FAQ runtime减少动态效果第一合同通过；第二合同失败：`.article-faq__ai-panel[hidden]`仍有可见盒子，自定义display:grid覆盖UA hidden。失败原始log已存，不能关闭UX019。
+- E5.2执行Agent正在修上述四个确定缺陷；父任务等待冻结交接后一次构建/动作复验。暂无新的已验收checkpoint。
+- 首页before/A/B为临时DOM/CSS比较图；A文章优先、B作者/明确AI分身与3问题优先。当前仅方案研究，不是生产修改、功能回执或96分事实。
+
+## E5.2 已闭环（2026-10-16 02:00）
+
+- 九文件SHA manifest：`evidence/batch-e52-source.json`。Hugo生产构建、typecheck、JS语法与diff检查通过；11条FAQ/Space阅读/边界合同通过。
+- 父任务实际浏览器：568×320中英、620×844中文、844×390中文coarse，4条真实坐标鼠标旅程+8张稳定图。close中心命中且真实点击删除窗口、仍desktop；HUD各44px独立点击，换景Escape返焦点；咖啡往返原editorDOM/文字不丢。地图四按钮实际44.28px以上，逐个hit和点击。详见`batch-e52-boundaries.json/log`。
+- 第一次父脚本错误使用`/en/projects/`而超时，修正为项目真实默认英文`/projects/`后完整通过；这不是生产路由缺陷，也未用CSS/重定向掩盖脚本错误。
+- 独立review：9/9 hash匹配，读11条断言/原始log与4鼠标旅程、逐张看8图；已复现的FAQ runtime/hidden、620/coarse按钮、568 HUD遮挡按具体范围关闭，无新P0/P1。完整控件族分仍null。
+- 剩余观察：844×390桌面式重叠窗口有plane裁切；body自身无x溢出不证明被裁内容可达。后续以maximize/arrange/滚动实际动作探针判断，不外推全app可用。
+- 资源审计82 Node/npm、swap21.79GiB、剩余21.54GiB；其他SoloCompass模拟器验收仍活动。只复用既有服务、缓存与单浏览器，未启动Simulator/并行构建，未停止或清理其他活动任务。
+
+## 下一批基线探针（02:07，尚未修复）
+
+- `space-short-layout-probe.json`：844×390 coarse真实max/restore可用，default map仅边界0.82px，不证明内容不可达；但3窗arrange后第2排因minHeight260/clamp重叠，第1个welcome所有窗控被盖。独立判P2 UX024，建议容量不足走现有overview并同步真实动作名称/terminal反馈。
+- `home-chat-baseline-probe.json`：绑定77bf94c2模板blob hash。原未发送draft关开变空；合成composition Enter触发API stub（不代表OS级IME测过）；35s虚拟挂起仍busy/disabled/无Stop，关闭可abort。独立记录UX025/026/027，留E6布局之后单独修，不把关闭可取消描述成无法退出。
+- `space-app-families.json`与16张normal max图：products/books/contact/settings在1440×900与390×844。只做8个外观scope，API503隔离、不真实外链/联系，未认证功能。目录物理7.38px、书meta6.56px、settings状态7.52px、contact link9.02px，交独立设计角色建议正文/辅助/控件的真实层级；不能据无x溢出/字号数字宣称观感达96。
+- E6生产实施中：真实Hugo实践文章先于AI、保留原Bear实例与会话、资源观察迁移、手机全社交入口。父任务未构建半写源码，1317仍为已验收E5.2。
+
+## E6 初次运行结果与 E6.1 待修（02:23）
+
+- 七文件source manifest `batch-e6-source.json`，Hugo/typecheck通过。20条home-reading/home-about合同、2paint、2实际product入口全部通过。源站SEO/公开数据未改，新增文章起点为Hugo真实Nango，原AI整根/会话保留。非JS双语入口实际点击可到对应文章。
+- 父6scope实际图/动作见`batch-e6-visual.json`：1440zh/light、1440en/dark、390zh/light、390zh/dark、320en/light、568en/light。24图包括real mocked request关开连续性；不认证真实模型、实体手机、Safari或200% zoom。阅读CTA后posts图可能带实际pointer hover，另存neutral图作公平布局判断。
+- `batch-e6-ambient.json`使用真实Chromium Metal模块：hero可信交互+3s不下载renderer，Bear可见后两canvas有非零尺寸，运行时reduce释放、restore重新挂载。它不等于FPS/INP/CWV通过。
+- 独立判断：hero约D1=94.5/D4=93，posts约91.5；normal白色密线球D4仅82.5，对照静态约90，仍需降低背景注意力。没有把24测试当96。
+- 父`home-short-composer-probe.json`证实568×320中英初开后input/send y≈288,h44，底部出屏约12px；close中心被固定导航盖。滚动到input会让close进一步出界。控件只是部分出屏，不以此一概宣称WCAG失败，也不能以isVisible/无x溢出当任务可用。
+- E6.1已交执行Agent：short-height完整panel定位/滚动/命中与更短256中英，normal球网亮度/密度克制；不扩大到聊天运输或Space。旧E6图、manifest、缺陷证据保留；E7已准备但等待该批冻结/独立验收后开始。
+
+## E6.1 短屏闭环与 E6.2 材质迭代（02:40）
+
+- E61九文件与QA config hash匹配。6条短屏/normal合同、3条原连续性定向合同、Hugo/typecheck及真实GPU生命周期通过。父5条坐标旅程为568×320/256中英、844×390en coarse；close/input/send均44px且实际中心命中，关闭/重开/Escape焦点返回可用。
+- 独立复核6+3日志、5旅程与8图，无新P0/P1；UX030仅按上述具体范围关闭。疏网已降噪，core NormalBlending却形成褐色薄壳，D4仅85（历史白网82.5、静态90）；没有把功能通过等同视觉达标。E6.2只core恢复Additive并降低真实每帧opacity与rim，网络保留Normal/低alpha。
+- `home-wheel-intent-probe.json`实际复现UX031：568×320英文reduce，Enter发送后chatsection焦点，真实wheel620px读到books；mock JSON完成后scrollY2803→2183，画面被拉回620px并聚焦input。两图/日志保留，不是候选猜测，也不外推全部视口。交E7与草稿/IME/Stop/idle一并处理。
+- 最新资源95 Node/npm、swap13.04GiB、磁盘30.12GiB；未增加并行浏览器/服务，不清理其他活动任务。
+
+## E6.2 已独立接受（02:44）
+
+- final九文件`batch-e62-source.json`与QA配置hash一致，core constructor/loop opacity均.25、低gain、Additive；110点/.62邻距/低alpha Normal网络保持。只材质5处增量，未重跑无新风险的24条E6合同。
+- Hugo构建4219ms、JS语法/diff通过；父实际Metal浅/深2scope分别未可见0renderer→可见2canvas→reduce0→restore2→final0，无page error。4图/JSON/log归档。不证明FPS/INP/实体手机/后台零帧。
+- 独立看4图、source与log，无新P0/P1；褐壳消失，局部D4浅色91.5、暗色90。留真实头像、问题、淡金光晕，未称96。
+- 额外未来缺陷基线`travel-qr-baseline-probe.json`：390×844zh/light两motion，打开仍焦点背景trigger，Tab进背景WeChat；Escape后立即Enter重开，normal旧transition让hidden=true且expanded=true，reduce重开可见。4图、独立Travel template SHA与日志保留，不属于E62通过范围；UX018后续修。
+
+## E7实施期间的非相交实际探针（02:49）
+
+- 生产预览仍4782757e/E62。`anchor-intent-source.json`单独冻结footer/reduce/TOC相关5源hash；E7只改首页，不以WIP验全站。
+- 1440×900 zh/light/reduce归档首年真实Mac Meta点击开新tab，原页hash/scroll不变、defaultPrevented=false且未调scrollIntoView；普通click到year2026的365px、hash正确，computed scrollBehavior=auto，Back回原route。
+- 当前右侧文章TOC在normal→runtime reduce后click编码中文heading，文档定位auto、无显式smooth、hash正确。此scope只验证点击定位；未触发reading-companion长目录内部`container.scrollTo`自动追踪，后者继续unverified。旧左sidebar脚本当前模板无对应selector，不把dead路径判实测失败/通过。
+- 首次脚本按percent编码大小写逐字比hash而失败；`anchor-intent-initial.log`保留，使用decodeURIComponent比较后复跑2旅程通过。没有修改生产路由或源码掩盖探针错误。
+
+## E7 / E7.1 聊天恢复与时间基准（02:54）
+
+- E7八文件冻结：独立draft；Enter/Escape合成composition/229守卫；同位44px enabled Stop；25s请求等待竞态覆盖fetch/JSON/read，SSE headers/每chunk续期；DONE立即收尾，cancel不等待。失败问题/partial保留在画面且排除未来context，恢复原因独立UI，不拼进AI答案；关闭/清空/pagehide仍隔离迟到请求。
+- 36Node、typecheck、Hugo4468ms通过。首跑21合同19通过/2失败，完整initial.log保留；失败处在请求发起/poll后fastForward24999，本虚拟clock仍随真实时间推进，已越25s。不是通过删断言或改生产deadline处理。
+- E71只修改testfixture：请求前暂停clock并记录startedAt，精确检查24999/25000与20s收到chunk后44999/45000两个边界。其余7hash与E7一致，生产不重建/旧12合同不重复；typecheck与9新恢复合同均通过。两份source manifest及initial/pass日志留档。
+- 父实际2坐标Stop旅程：568×256zh/light未返回headers；1440×900en/dark保留部分SSE。草稿关开精确保留，Stop中心实际44×44并enabled，点击立即解锁；保留问题/部分回答，真实signal abort+reader cancel，新问答完成且迟到旧结果不覆盖/旧失败问题不进context。6图与JSON/log归档。
+- 另父568×320en真实wheel620px去books、旧JSON完成，scrollY2803→2803（旧版2803→2183），两图正文位置一致，input不抢焦点。只该实际配置，不外推OS输入法、真实模型或所有尺寸。独立评分复核尚待完成；此处是父验收结果，无全站96声明。
+
+### E7/E71独立复核完成
+
+8/8当前源码与QA hash匹配；E71仅修test，七其余hash与原生产相同。独立确认21不同合同组合、初始失败与修复前沿保留、3实际旅程/8图，无新P0/P1。UX025/026/027/031按具体范围关闭；OS输入法、离开后error状态及其他矩阵仍未知。恢复界面局部D1短屏93/桌面94.5、D4短屏91.5/桌面90，不能自动给完整族96。E8范围已由父/执行明确，见next-batches.md。
+
+## E8初跑与两项真实缺口
+
+- 4文件source manifest冻结，16Node/typecheck/JS语法通过，Hugo生产构建与6合同运行：5通过，4窗最后一项重复整理失败。首次tile不重叠、控件可点、原笔记保留；focus notes只改变z顺序，再arrange却重新分配三个窗口位置。完整initial.log保留。独立判UX032/P2/D4.4片段80，非数据丢失或P1；不删幂等断言。
+- 父3实际旅程：844×390 coarse中文3窗、英文4窗，1440×900中文4窗；全部worldFrames=3/worldFailed=false/boot complete，真实Metal场景。短屏bar打开overview、Escape及实际Back点返触发器、选择welcome全部4窗控命中、notes同DOM/草稿续写；desktop实际tile不重叠且所有窗控centerhit。5图/JSON/log保留，只核心路径通过，不等于完整E8通过。
+- 两个短屏overview Back实际宽44.98/48.66，高仅17.5px；hit与实际返回功能正确，未达项目重要触控44px目标。不一概声称WCAG失败。
+- E8.1授权：filter副本按原rect y/x/id稳定排tile，不改持久z/active；补focus后重复整理unit；新增space.css仅overview[open]flex受限列表内滚、header与44pxBack可达，避免作者display让closed dialog泄漏。更新4coarse合同滚底/Back真实点击，不扩大其他App/world范围。
+- 资源92Node/npm、swap11.97GiB、可用34.10GiB，单浏览器串行复用1317/缓存。没有重复跑E7或启动新服务。
+
+### E8.1父复验完成
+
+5文件manifest与QA配置冻结。17Node、typecheck、语法、diff、Hugo、6arrangement合同全过；父3实际旅程及5新图完成。844 coarse Back实际zh60.98×44/en64.66×44，列表滚到底仍header可达、实际点回原trigger；原notes DOM/草稿/geometry保留；1440四窗focusnotes后第二次真实bar整理，同id rect不变。独立最终复核与盘点收尾中，未提前宣布整站96。
+
+额外E9边界基线`space-preference-focus-baseline.json/log`独立绑定apps/desktop/spaceCSS/classicCSS四hash：1440×900zh/reduce，明确程序设button焦点后真实Space激活。产品imstage选择与payload正确，但焦点改为products section；主题dark/颜色forest应用且pressed正确，重建后焦点为BODY。它不证明Tab遍历/全部尺寸失败，也不是状态未应用；后续E9按局部键盘连续性审查。两张真实画面保留，不真实联系/模型请求。
+
+### E8.1独立闭环
+
+独立复核5/5源码与QA、17Node/6合同/3实际旅程和5新图，无新P0/P1。UX024/032/033只按已测容量fallback、重复整理稳定、844coarse Back44/滚末项返回链关闭；历史失败保留。概览局部D1 94.5/D4 93，四窗tile D4仍89（App小字问题归E9继续修）。盘点补漏现存Back selector至359：是既有按钮新登记，不是新增功能；与item/menu证据分别绑定。完整309族仍无全矩阵认证。
+
+
+## E9a初跑：真实链接缺口
+
+4文件source manifest和QA冻结，语法/typecheck/diff通过，Hugo4296ms。6组合同全部在IMStage第二产品链接数失败：catalog.demo为空，已有shared link→safeURL('',origin)却解析成本站root，额外显示“测试预览”。不是通过删/放宽真实URL断言处理；旧3ca helper相同，此处首次动作合同揭示既有缺陷。初始完整log保留，未把后半未执行的书/笔记合同当通过。E9a1只shared link空/空白/非string提前返回，不改state全局URL策略；原6合同继续复跑。
+
+
+### E9a1功能复验与E9a2观感迭代
+
+- 最小link presence guard后四hash/QA冻结，Hugo与typecheck通过，6不同合同全部通过16.2s，原count/URL断言未放宽，并显式无demo无预览入口。
+- 父4实际Metalcontext（320×740zh/light、390×844en/dark、844×390en/light coarse、1440×900zh/light）/16图：7真实产品选择与全部URL、跨2帧choice焦点；desktop实际坐标/phone native selectOption明确非实体picker认证。每scope1主要link真实popup由本地route截获，无真实外站请求；explore实际去书架，4书命名/链接/hit/滚动，12computed比值最低4.893529，各scope一致；body16.4CSSpx、主要link高约44.28，notes同DOM/草稿保留，pageerrors0。
+- 独立逐张审16图认同UX037：844短coarse stacked picker/explore约115px，标题与headline全在fold外，功能可滚动不等于优秀初开层级。旧a1短屏图保留；授权E9a2仅短coarse产品导航同行/减少多余纵距，保持原字号与44目标，增加入口h2/介绍首行实际geometry。其他viewports/CSS/生产JS不扩大修改。
+
+
+### E9a2父实拍通过
+
+A2仅shortcoarse产品CSS与对应入口几何增强，4hash/QA核验；Hugo3733ms、typecheck/语法/diff通过；原6不同合同完整通过15.9s。父844×390en/light coarse复用1实际Metalcontext/4新图，不覆盖a1：body可见y89.22..272.90，first/last产品h2 y180.89..215.00，headline首行bottom247.80，真实入口能同时辨认产品身份和介绍。其余6合同全7产品入口几何成立；目标/焦点/原URL/书封比值/笔记连续性仍过。独立review/盘点收尾后才能做本地checkpoint，联系/设置未开始。
+
+
+### E9a2独立闭环与checkpoint
+
+独立核四hash/QA、6不同合同、5父实际contexts和20张图，无新P0/P1；UX035/036/037只关闭已测书封、空链接和844短产品入口范围，UX028/029只products/books部分闭，联系/设置UX034仍开。A1短产品D1=89/D4=85历史保留；A2 D1=94.5/D4=93，desktop产品94.5/93、phone93/91.5、books94.5/91.5，未凑96。Inventory1.15为309族/361selectors/257state/60局部族，完整0。已保存本地checkpoint `ebc488e6`，未push。E9b放行只联系/设置，保8渠道/原草稿、有效URL与现有跨App连续性；统一UI和public tool状态同步，捕获本次runtime label避免重复重建/请求。
+
+
+## E9b冻结与待验范围
+
+3生产+1测试hash/QA冻结（test b1只追加pending-close，总7不同case），syntax/typecheck/diff与Hugo通过。settings原DOM同步UI/public tool aria、单次runtime捕获label/disposer abort；contact保8渠道/原draft listener/邮件GitHub编码，少逐项围框、正文/辅助/44目标明确。尚待7合同、父4实际context和独立评分，不提前关闭UX034。
+
+资源审计76Node/npm、swap11.03GiB、可用35.55GiB；audit列3台allowlist模拟器均shutdown、8个Docker项目均allowlist，登记旧产物未据年龄删除。audit/resources有maintenance/swap warning(exit2)，未将其记全绿。只复用1317/缓存/单浏览器，不开Simulator、不清理或停止其他活动任务。
+
+
+E9b父probe初跑在第四个1440 fine-pointer的原window minimize处误把44统一套用，量26.24×26.24且centerhit。原桌面chrome要求24、coarse要求44，E9b新增的contact/settings正文目标仍统一44。该chrome源码未改，7正式合同已按正确范围通过；修正父script仅此既有bar动作minimum参数，不修改生产或放宽本批App目标，initial log保留。因初跑未写finalJSON，四context重跑生成完整正式记录。
+
+
+### E9b父实际验收与新视觉基线
+
+7合同通过17.1s。父4实际Metalcontext/20图已全看：320×740zh、390×844en、844×390en coarse、1440×900zh，均reduce；每scope5次真实偏好点后原button/focus、原runtimeLabel pending→受控false，只1GET；外部theme/wallpaper工具同步settings但contact输入焦点不动。8社交+邮件/GitHub/WhatsApp共11anchor/case真实坐标点击在capture阻断，原URL与草稿编码正确、textarea显示约16.4CSSpx，minimize/reopen原节点/值和notes原DOM/值保留，pageerrors0。不真实联系/AI/后端。父probe initial仅错误套用旧finepointer窗控44已解释保留；新App目标未放宽。
+
+另父新增1scope实际壁纸探针/3monitor图：1440zh/light/reduce，真实选择dawn/dusk/forest并minimize设置后，状态/pressed正确但screen背景固定#eeefeb、旧landscape display:none；dawn与forest PNG同hash，dusk hash不同但底色同，不声称三图完全一致。独立复核认UX038/P2：默认3D里的“桌面颜色”无实际色彩结果，既有问题非E9b回归，不推翻UI焦点/存储修复。E9c只读方案已备，待E9b checkpoint后使screen外露桌面背景使用现有明暗6palette，不改阅读面/机框/world材质。短横屏contact/settings仍有滚动成本，独立评分留低分。
+
+
+### E9b独立闭环
+
+独立7合同、4实际context/20图、4hash+QA均已复核，无新增P0/P1；UX034按原button/焦点、原runtimeLabel、UI/publictool同步与pending关闭/迟到隔离范围闭合。UX028/029只联系/设置已测字号/命中片段闭，其他App不继承。桌面contact D1/D4=94.5/93、settings93/91.5；手机约93/91.5；短contact89/90、settings90.5/90，留滚动成本低分，不凑96。UX038/P2真实壁纸输出缺口开放，E9c只读方案待本地checkpoint后实现。两审计Agent已停写，inventory1.16为309族/362selectors/277状态/60局部族、完整0；WhatsApp是既有功能独立补漏control.10f744。
+
+
+E9b本地checkpoint `39a7bd07` 已保存，未push。E9c已按只读最小方案放行：只spatial-screen CSS六现色+新三合同，source冻结前不build。最近预览仍已验E9b。
+
+
+## E9c 真实可见壁纸结果（04:20前）
+
+仅spatial-screen六条现有palette规则，两源hash/QA冻结；Hugo4096ms，syntax/typecheck/diff、3不同合同均通过6.9s（1440zh/390en真实Metal、1440 forced-WebGL-failure备用landscape）。父2实际Metal/reduce context共12次原设置选择→最小化露桌面，原button跨帧focus/DOM/store正确；无遮挡screen PNG解码Canvas2D单点RGBA逐一等于6现有色，两个context均6不同色。全18图父逐张已看，desktop/phone实际背景色可辨，原中性paper/chrome不跟wallpaper切换、notes和contact草稿同节点可续写，pageerror0。没有把单点pixel当整页contrast或normalmotion/实体phone认证。源清单、3合同、actions JSON/log/script与18PNG已永久保存；独立review/盘点尚待停写，checkpoint仍39a7bd07。
+
+
+### E9c独立闭环
+
+Reviewer逐张18图并独立标准库解码12个monitor PNG，采样RGBA和SHA完全相符；两源/QA、3合同和原连续性复核，无新增P0/P1。UX038只在2实际reduce context六色与1440 forced-fallback合同范围闭，E9b短屏低分保持，完整控件/族/全站分null。Inventory1.17为309族/362selectors/281状态/60局部族/0完整；两审计Agent已停写。准备本地checkpoint，不push；E10仅有界QR随后放行。
+
+
+## E10实施期间的新独立基线（生产预览仍b5b6fa34）
+
+源hash单独冻结global search三文件，与正在修改的Travel不相交，未build半成品。父实际search-index探针：390zh/reduce控制GET挂起，两次虚拟60s后busy=true但可见“0结果”，Escape可返回；重开另发第二GET。另1440zh控制首GET迟到503，第二GET真实本地index成功10结果后被旧failure清成0/error，编辑可恢复。不是实际生产故障，也不宣称无关闭出口。三张正常/失败与pending图及JSON/log/script归档。
+
+Inventory提出150ms stale result候选后，父用已加载实际index，clock只在150msdebounce窗口暂停：输入改成无匹配query后仍10旧结果、fullHref旧Kubernetes，实际Enter导航为旧首篇，route截获abort无外网。没有改source或等待旧结果来掩盖竞态。Home/End观测记录但APG允许popup变体，未自动判违规。
+
+另脚注候选在390×844zh/coarse/reduce真实touchscreen.tap复现：context-engineering文章首标记已居中，scrollY2813→18972/hash#fn:1，2frames与300ms预览均hidden，前后图父已看。只该已测首tap范围；源footer/footnoteJS/CSS3hash与脚本/JSON/log保存。后续E11 search/E12 footnote，需独立复核；不是E10代码通过或已修复声明。
+
+
+## E10首次冻结验收与E10a有界跟进
+
+3src/QA匹配，QR native modal/完整竖海报/44Close/短双列/代次rAF与close事件防护。Hugo3855ms，syntax/typecheck/diff、9不同合同全过11.3s。父4实际Chinese contexts（390×844light normal、568×256dark reduce、320×740light reduce、1440×900dark normal）各2真渠道，共8图已逐看：完整原poster自然比例/contain/四边在卡内、Close不覆盖；真实Tab循环/EscapeEnter重开/Close/backdrop/runtime reduce/scroll&overflow恢复可用。实际English保原4nonQR，无二维码旅程冒称。
+
+父probe首跑要求duration严格0而失败，诊断runtime property:none,duration1e-06s,animations[]；site-wide micro-interactions.css的important极短duration不表示实际动画。仅改父assert为property:none+running0并完整复跑4contexts通过；没有改生产，initial与diagnostic日志永久留档。
+
+补1实际390图片状态scope：pending RedNote卡塌缩为空白label/id，WeChat404露破图+重复alt；有原ID/Close、非空auto!important overflow精确恢复、scroll不变、关闭后迟到真图不重开，但loading/error观感未通过。父与独立review均确认需E10a最小poster区状态/本地重试，不能以9合同功能过当全状态好。源仍E10冻结，尚未checkpoint；执行Agent先有界方案再放行。原图不裁/不换，不做实体扫码或外发。
+
+
+### E10a冻结与父探针基准修正
+
+final3hash/QA核验，Hugo3539ms，原9未放宽+新增8总17合同全部通过16.6s。每attempt新Image/15s/清监听timer再清src、focus guard与稳定poster按冻结方案。
+
+父main新source首390normal在多次开关后测scrollY11467→11453（14px）失败，保留initial。独立scroll诊断实测未稳定背景：before party translateY14，opened仍1.5553、末尾footer/party有限过渡在运行，fonts亦在Escape后loading，文档高度/maxScroll本身会改变；诊断那次close自身11467→11467。未据此断言QR close生产bug，也未把14px误差直接容忍掉。父main改为滚至原trigger后等待文档fonts与背景有限过渡完成（忽略明确无限dot，不等待QR动画），再固定scroll基准；严格相等断言保留，4contexts8正常图完整复跑通过。source生产完全未改，17合同不重复跑。只认证稳定背景下恢复，快速跳到底且背景尚在入场的整体阅读位置仍待更广motion验收；initial/诊断JSON/log/图永久保存。
+
+
+### E10a父完整局部验收
+
+父main4实际contexts8正常图全部逐看，完整原poster/稳定frame/14ID与status16label、44Close、Tab/Escape/重开与稳定背景scroll恢复通过。新增恢复3contexts7图：390真实404→原本地pathname加qr_retry重载成功，双击只2GET；Retry仍focused成功转Close，另WeChat用户Tab转ID后成功不抢；568×224dark双channel error status/44Retry都在左poster内，右账号/Close独立。clock暂停精确14999仍loading、15000为timeout/可Retry；旧node人工load/error边界不改状态，明确合成组件证据。
+
+另无clock390实际pending/404补2图，初次pending可见loading+label/ID、404可见说明/Retry/ID且无破图，非空auto!important与scroll原样恢复、关闭后晚成功不重开。clock0ms初loading PNG尚未完全绘字不冒称实际pending缺ID，原图不删除。共17张新图父全部逐看。computed opaque status与enabledRetry在4error/timeout scope raw对比最低6.371623070570725（派生JSON保原RGB/opacity），仅该文字，不含画像/整页/disabled。全部源码3hash/QA/3父runnerhash再读回一致。独立review及inventory最后停写后才checkpoint；正常motion/实体扫码/AT/完整设备矩阵不外推。
+
+
+### E10/E10a独立闭环与本地保存
+
+17不同合同、17新主图与17图内8正常/7恢复/2无clock、所有原失败与诊断均独立复核；3src/QA/3父runnerhash一致，无新增P0/P1，UX018/043只命名范围闭。正常静态D4先前没有可见缺陷的泛化扣分撤回，局部专家96但完整维度null；D1=94.5。恢复D4=94.5，390 Retry底约455→账号标题580有约120px空区关联成本，已给具体后续布局建议，不拿AT/实体扫码未知扣视觉分。全族0/null不变。
+
+Inventory1.18为309族/366selector entries/295状态/63证据族，366不是按钮数；QR details/Retry与脚注marker/More补齐，root98是support-root非点击。Scorecard175检查/86视觉片段，UX039–042开放，mid-reveal滚动未知。三个Agent均已停止生产/盘点/评分写入；E11只有只读方案，未开始实现。准备本地checkpoint，不push/PR/合并/部署；heartbeat仍ACTIVE，继续至12:00。
+
+E10/E10a本地checkpoint `e5fafdc2` 已读回保存，未push。1317仍提供该冻结源码构建；三个Agent已停写，无browser/build运行。下一轮E11按已准备scope直接使用现有executor，E12脚注随后，均不需要重新询问用户。
+
+E11于05:04明确放行现有executor，限local index/result intent、真实status/44Retry、冗余eyebrow及新合同；单flight15s total fetch+JSON、关闭代次隔离、即时失效旧候选/Enter同步当前query。源码正在修改，不build半成品；1317继续E10a checkpoint e5fafdc2。资源swap10.79GiB/76Node/37.88GiB，复用缓存/服务、无新增浏览器并行。父独立补文章1199→1200的草稿/焦点风险基线，不涉及当前WIP source。
+
+
+## E11实施期间 disjoint 文章布局基线
+
+7个article source与e5 Gitblob SHA相等，1317仍E10a未build WIP。1199×900zh/reduce实际compactAI输入synthetic未发送draft→1200 sheet正确inert/解锁，但focus回BODY、desktopAI未选且输入空；下一实际Tab由scroll500跳26055的推荐链接。切回1199原compact节点/value保留，不能称草稿数据丢失。4主图与JSON/log/script保存，原返回未等paint图另留，2frames+300ms补图正常。第一次probe返回时在文末，FAB按原design隐藏造成click超时；仅父probe恢复scroll500后再click可见FAB修正，原失败log保留，源码未改。独立定级/评分中，未闭合。
+
+
+E11首次3850ms Hugo成功，但首合同prepare在首次click前等待lazy __searchPaletteReady，30s测试超时，父停止本次12-run避免其余相同死等；不是搜索功能超时。原source manifest与合同日志留initial。父setup同步修正先取得trigger、真正点击再等input可见。独立source review另发现新pagehide调用closePalette会清AI/query，accepted e5只cancelAI；尚无实际数据丢失声明，已明确执行Agent仅恢复旧会话保留边界并补pageshow索引恢复/受控会话合同。新冻结前不build。
+
+E11修复等待期间独立E12组件诊断：1440zh/fine/reduce，source三hash与原脚注相同。marker programmatic focus显示tooltip/两个links，More computed display:none；下一真实Tab到下一个marker并换预览（正常，不判失焦）。另显式programmatic citation.focus组件探针，立即JSON内部focus+visibletrue，250ms后hidden/aria-hiddentrue且focusBODY；自然键盘进入引用的路径仍未证明。3PNG父已逐看，inside-initial图因capture自身越180ms实际已hidden，不作为初可见证明；JSON才是定时前状态。后续E12以原firsttap冲突为主，可有界修焦点生命周期，不把本组件诊断冒称完整keyboard验收。
+
+
+E11a 13合同6.2s通过、Hugo3634ms。父main首次harness在本地截获abort导航后进入error document，theme-init仍访问localStorage触发SecurityError；原log留，父只把init限制本地preview origin，不filter生产errors，不改source。修正后正常4query contexts达到；390 recovery实际相同坐标第二click失焦，独立diag确认error Retry y346.375→loading322.828125，上移23.546875；第一次focus正确，第二原中心现DIVpanel→BODY，GET2保持单flight。正式JSON/2PNG/log/source-pre-layout-fix保存；执行Agent E11b只稳定重试消息footprint并把4state合同改为原坐标第二click，未放宽focus/44/deadline/intent。
+
+
+## E11b父最终有界验收
+
+final四源/QA/2父runner/额外旧专项QA hash逐一读回一致；Hugo3785ms。15不同新合同6.5s全过，2旧Arrow/selectedEnter与CtrlEnter受控AI专项2.8s过（不是17新合同）；中英status文字200%只对应文字，不冒称全页zoom。父main7实际context/15PNG全过：4真实localindex中英390/1440明暗normal/reduce新query立即删旧候选/fullHref当前、150ms内Enter当前fullsearch且canonical导航本地abort；2真实route503→原坐标双click只1Retryflight、14px/44/屏内、保pendingfocus/readyfocus按意图、cached重开无多GET；1实际pendingroute+clock精确14999loading/15000timeout/ESC回trigger，明确virtual期限。父15图全部逐看，无实后端/AI/分享联系。
+
+另父1440zh/dark/reduce已完成mockAI+未发送followup，真正same-local nav→Back attempted但pageshow.persisted=false/document token变，浏览器notRestoredReasons包含response-cache-control-no-store、response-cache-control-no-store-with-js-network-request和masked；如实保存2前后图/JSON/log，不给BFCache恢复通过。只有新合同中synthetic pagehide/pageshow保原AI DOM/value/history及后续context通过。该完整Back/生产cache/实体AT/Safari仍unknown，未扩大产品storage。全部17主图父已看；等待独立评分/盘点正式停写再checkpoint。
+
+E11b独立最终冻结：scorecard45发现/188行为片段/90视觉片段，inventory1.20 313/69/309/367；两审计Agent已明确停写。39/40/41/45 scopedclosed，无新P0/P1；正常静态D1/D4=96、recovery94.5/94.5，fullnull。E11c仅解决index术语与390孤行，E12 3源码+新8case只读方案已备，未实施。准备本地checkpoint。
+
+
+## E11c 用户任务文案
+
+基于accepted本地1e2d94a，只6个localized status+2Retry文本（JS/template/spec3files），反向替换与b逐字相同，headerCSS/AI/Fuse/所有权/15s/footprint/focus不动。新source/runner/QA hash均读回一致，source/图/receipt新前缀不覆盖b。Hugo3635ms，15同一不同合同7.0s通过（不是新增15feature），2旧专项与真实Back因行为字节不变不重复，不外推BFCache。父新7context/15PNG全通过并逐张看完：390错误不再单字孤行、Retry说搜索任务，真实原坐标点击稳定、pending/ready焦点意图保留；中英390/1440当前queryEnter仍正确捕获本地阻止外跳。另computed13个可见status/启用Retry文本样本raw最低contrast5.789000796485059，背景不透明且effective opacity1；aria-disabled.65/画像/整页/抗锯齿/AT不包含，raw RGB/背景栈/字号完整在actionsJSON，待独立重算。尚待评分/盘点最终停写与checkpoint，不能以父过代独审。
+
+E11c独立最终：4src/QA/runner及provenance erratum3SHA核验，15新c图全读，13contrast重算误差0，未新增P0/P1。c recovery静态D1/D4=96/96，b94.5历史保留，fullnull。inventory1.21 315状态/69局部族/309族/367selector；scorecard45发现/191检查/92视觉片段，两Agent已最终停写。保存local checkpoint后继续E12，不push。
+
+E12实施期间独立noJS positive baseline：immutable9d43三源SHA，预览c未build WIP；390zh/reduce/page JSdisabled真实native点击ref#fn:1，hash正确、targettop72.140625而headerbottom52，既有CSS scrollpadding等已留空，不支持‘native被header挡住’猜测，不新增无证据offset修复。source/JSON/log/PNG/script保存，父已看；该正例是旧c基线，不冒新E12全功能通过。
+
+
+### E12 initial / harness diagnosis (not accepted)
+
+Initial Hugo3488ms, 8 contracts6pass/2fail. Immutable initial manifest, full log and both error contexts retained as `batch-e12-initial-*`. NoJS test rAF callback never executes with page JavaScript disabled; the original native-target/Back assertions stay. Short224 fixture failure was default programmatic `body.focus()` changing root2367→2319; stepwise `probe-e12-scroll.json` shows actual ArrowDown entry keeps2367, End/body bottom wheel stays2367 and420→1114→1114. Production3SHA unchanged. Test will exercise the real entry and preserve the strict scroll/hash/44/close gates.
+
+The first parent diagnostic used default scrollBy under smooth scrolling: firsttap happened before the center finished, so its open/wheel measurements are invalid as a product judgement. Original diagnostic JSON/log retained with initial suffix; parent helper now uses explicit instant setup. Samehash actual coarse More separately returned to#fn1 andclosed. Parent helper NoJS frame read uses synchronous layout, polling uses explicit100ms rather than rAF; no fake pass by timeout.
+
+E12 parent actual initial attempt stopped at en More hit after screenshot lost card; load-only retry stopped on strict readingY3713→3715. `probe-e12-font-layout.json` now demonstrates async base-font stylesheet arrives even after window load and an earlier fonts.ready promise: normal en centered3713/marker414/doc30674/0loadedfonts, before-shot ends3652/marker628/doc31731/15fonts; loadingdone and intermediate scrolls recorded. Reduce second context warmed endedstable3867. These are real cold-font layout observations, not an E12 hook fix; broader font-swap stability remains pending. Settled-font acceptance now explicitly waits preload style conversion (15s bounded, only JSenabled) then fonts.ready. Both failed raw logs, manifests and diagnostic images retained. No production changes or tolerance relaxation.
+
+E12b 8same distinct contracts pass14.9s; production3hash never changed after initialHugo3488ms. Settledfont main4contexts10PNG and boundary3contexts5PNG passed, parent all15 looked. Normal native hash changes before smooth target visible; nativeTarget now waits original strict target/header viewport gate rather than falsely checking synchronously onhash. Main target photo is first-visible frame, not final smooth alignment. Actual longest note fits180px; preservefailedprecondition, explicitextra150px nowexercises actualexistingtext overflow, two realwheels do not movewindow/hash, More44/14, runtimeReduce. JSdisablednative/Back passes; trustedMacMeta opensone same-localpopup thenclosed, Space scrolls/Enter native. No real model/share/contact/citation request, denied/errors0. 20visible computed text samples across4contexts properly composite Moreopacity.9; rawmin4.879289268784955. Body/Morefloor14 does not certify .92em inlinecode. Provenance maps main execution snapshot before boundaryonly150edit/contrastregistration; sources/main/helper unchanged, no meaninglessmainrerun. Independent scoring/inventory pending, no full96claim.
+
+E12 final reviewer froze: D1local94.5/D4static96, UX042namedclosed; UX044/046open, fullnull. Inventoryv1.22=323states/69partial/309families/367selectors/0full. Two added discovery images show visible entry cue gap. Additional`probe-e12-short-tab.json` (outside E12 accepted primary scope): existing longest English note at explicit568x150, actual ArrowDown then Tab to citation shifts10462→10431 on both fine/coarse; More stays10431. New observation, not yet scored or dismissed as programmatic focus. Next bounded experiment will compare positioning ownership; source remains frozen E12.
+
+### E12c1 · Keyboard cue / viewport ownership (await independent closure)
+
+Two productionfiles only; footer unchanged50a08, extraction/nativeclick/ownedhide chunks byte-identical. Existing8contracts strengthened +2distinct actualnote shortTab cases=10pass17.1s/Hugo4481ms. Initial10 8pass/2fail preserve exact0.1-marginassertion; fractional probe after224 showsoffsetHeight178 vsactual178.171875, stabletransformnone/gap11.828125. C1onlygetBoundingClientRect width/height restores preciseclamp; no assertionrelax/sleep/scrollcompensation.
+
+Main4contexts14PNG: keyboard marker showsone14hint, samecardfootprint throughout body/citation/More, no newpointer/touchcopy; nativeMore/secondtap/Enter/Back preserved. Short2contexts6PNG: actualexistinglongestnote150, realTabcitation/More rootY/hash/history unchanged; resize224/runtimeReduce/More44/14/exact originalnode Esc return. All20formalPNG parentread.22visiblecomputedtextsamplesincl2newhint rawmin4.879289268784955; remaininginlinecode.92em notfloorcertified. Netlify0/pageerrors0 onlynamedcounts, GAautomatic scriptstubbedparenthelperC, no completeInternetwhitelist claim.
+
+FirstenMoreBackactual exactY wait10s timeout preservedraw/source/6PNG; no afterdata/productionfix, cannot explain.3newdiagnosticcontexts earlynormal/settlednormal/earlyreduce allsameY/markerposition; finalinstrumentedmain6Back traces allpass. BeforePNG SHA identical doesn'tprove eventsequenceidentical. Keepunexplainedobservation, no gratuitousreruns/softening. Independentreview/fullmatrix unknownremain, sourcecheckpointnotyet.
+
+E12c独立闭环：四源/QA/四runner/provenance及六条finalBack trace SHA匹配；10合同17.1s、Hugo4481ms、6actual20PNG父与独立全部逐看，22contrast独立rawmin4.879289268784955，无新增P0/P1。v1.23为309族/367selectors/328状态/69局部/0完整，普通已测视口静态D1/D4=96/96；UX047仅fixed/短Tab/原节点/resize/runtimeReduce命名范围闭。初Back10s超时未解释、全分null、实验discovery/unreviewed不变。两审计Agent停写后本地checkpoint；随后E13，预览保留，不push。
+
+E13实施期间两项独立discovery（无生产变更/未buildWIP）：E14 font3x3/18PNG单Noto400Latin对照，lateSwap在2迟到case marker/doc+171.34375px而root0，lateOptional/earlyOptional均0，支持进一步完整bundle验证但不能证明early必要。Reviewer18图/SHA/9rows核验，两P1通过明确textVisibleThroughout=unverified及postrunAIannotation来源修正；原整JSONbyte未独存不编SHA，9rows canonicalSHA已保存；UX046不闭，所有case discovery/unreviewed。Space1actual1440zh/reduce7图，屏幕1180,325真click→workspaceSECTION→Dockreader首文→return→50pxdrag只变yaw，7sourceimmutable9ec/SHA/commands全部独立核。named链正例无新P0/P1；不认证阈值邻域/全部reader/移动普通motion。欢迎主文与reader目录较小为待测建议，正文较清楚，不整窗机械加字号。待E13最终lean导入inventory/scorecard。
+
+E13初candidate：Hugo4132ms，10合同9过1失败10.4s，heldstream严格1px实际50px。原source/log/errorcontext保存initial，源未变。父额外offlinefont匹配原100段/真实wheel3000探针4图：p070首字相对messages66.546875；1199delta-.25，但firstFullyVisible变p069；回1440delta+50稳定120ms；390+24.875、续chunk不再变。原节点/草稿/请求仍同，具体阅读anchor重复迁移未通过。恢复自身scroll重选锚是机制假设，已让executor只读确认最小修法，不放宽gate、不把9过称全通过。
+
+E13b修own-scroll后原p070全路径≤.25，但新增第二真wheel p062→1440-.375/1199+.375→最后1199→390同abs host+2175稳定120ms；原10合同9过1失败11.5s，8图逐看/源保b。原因更强实证为samehost宽度reflow没有MQL事件，非丢新wheel。E13c仅JS补同hostresize恢复/共享generation，Hugo后10全过10.9s，原1px门槛未动。独立mouseSend入口在b/c两版分别HTTPservedJS SHA绑定仍负：1440en真clickSend1busy0abort→1199原root在closed/inert abs/focusBODY；请求未丢，仅不可达，3+3图父已看。现明确E13d仅JS+spec加Send/quickchip两真实clickcase修self-disable/hide focusowner，旧10不动，不把新10pass当完整验收。
+
+E13d1 actual：main3contexts11PNG、stream1context5PNG通过且父/独立逐看，未完成族验收。前一auto!important fixture破坏sticky已受控default对照定位；原exactoverflow合同保留。normalmotion两帧offscreen为240ms过渡中帧，natural probe保动画证明终态818..878/hit；helper改为transform0/no running transition后同严格viewport gate，初animations:disabled诊断另保局限。scope原textContent/raw-newline与真实Selection折叠空白不同测具错误另保；修正独立innerText/liveSelection比对后，真实toolbar→AI焦点留FAB导致Esc失效，后续toolbar908px。该真实缺陷现E13e仅显式analyze focus修复+追加合同；D1部分正证不冒新source通过。
+
+E13e真实验收：Hugo3781ms，13distinct新合同15.3s+4旧专项4.5s全过；7正式actual context/25正式PNG父全看，source11/QA/6runner+补充runner/HTTPserved3JS及provenance已freeze。正式scope用settled自然图3张，前后焦点fullviewport/centerhit/不inert；原scope3、额外normal转场3/diagnostic6都保留。父初看scope-B疑clipped是视觉误判：独立核3对disabled/allow字节一致和原图/后capture818..878相符，无截图/生产新缺陷证据。normal opacity未终态图单列，非稳定态评分。独立最终卡待写，尚不accepted、不checkpoint。source保持7源范围/显式analyze新增1行精确反替换回D；原12合同字节保持，13th真实toolbar/原草稿选区/两Esc-两abort。
+
+E13e独立最终：source/QA/runners+25图+rawreceipt/provenance71唯一路径匹配，未见新P0/P1；canonical named scope accepted/UX044 scopedclosed。固定rubric不变；D1local94.5/D4local90.5（主回复/输入可读，小label/重复reference边框具体不足），不认证整族96。inventory1.24 345状态/81局部族/309族/367历史+现selector/0full；E14discovery/UX046open，E15UX048open，bookmark并非scorereviewer新6图通过；新scroll负基线下批单独。准备本地checkpoint后E15。
+
+Checkpoint全staged检查发现4个此前untracked原始报告含工具输出行尾空格（3error-context/1Hugo build），不是生产/作者源码错误。为保持已独立核对的原始字节/SHA，docs本地.gitattributes仅精确这4文件关闭blank-at-eol，其余whitespace检查保留；未清洗/改写任何raw报告，也未绕过行为门槛。
+
+并行E14只读fullCSS配对实验：source4 unchanged/currentE13earticlepreview，E15源WIP不build；8case/18图父全看，有完整raw/fixture/CSS/schema/provenance。A latefont导致文内标记152.65625px/视口最大240.65625px漂移，B全部0但实际glyph保持Georgia/Courier，包含fast-before-reading。保留产品取舍和未验warm/本地CJK/continuousFOIT边界；尚无生产实现/评分提升/Discovery晋级。单browser已关闭，后可跑E15新source验收。
+
+E14 fullbundle独立只读复核完成：18图、32来源/fixture路径、原CSS/manifest均核，无未解决实验P0/P1。Google当前同UA display=optional真实查询与实验B逐字相同，单列query-equivalence/query-provenance，未改原始receipt。cold optional实际glyph包含fast仍Georgia/Courier，是稳定性与品牌首屏字体的明确取舍；warm/CJK/CSS404/连续FOIT未知。仅建议后续EN posts最小候选，不宣称已生产修复/UX046关闭，也不晋级discovery。
+
+E15b补一项独审P2并由父实际确认：外部原始public favorite仅星标更新，pressed/Save旧；原4图/raw保留。最小shared syncFavorite统一状态，desktop仅原2行换helper，Reader正文/节点焦点不重建。E15a前8合同逐字保持+第9公共toggle合同；CSS/other保护源未变，syntax/type/diff/discovery/scope通过，尚未build/行为验收。
+
+E15b真实9合同8pass/1fail19.6s：新增public favorite通过；第8到最终reload严格≤1收到850，之前articleback/minimize/Notes/Books恢复均过。source/log/error/spec保留initial。父额外真实1440zh reduce wheel850→reload，preworld新list已850，两RAF850，worldready后0，而storage仍850；2图全看，不能称storage被覆盖或确证每帧reparent时序。E15c只apps局部生命周期待有效world/尺寸完成pendingrestore，保disposer/新用户意图，不改world/不软化9合同；可追加minimized reload与后续真wheel不追抢合同。
+
+E15c父实测完成：Hugo3512ms/10distinct14.5s全过，5actual/17PNG父逐张全看。390en正常动效真实wheel850由list承接/body0，原article→Library与reload后原scroll≤1，原按钮Save/publictoggle/pressed/label不丢focus，favorites去除empty/recovery；320zhdark完整title/主文、844短粗指针目录自身滚动和Notes、1440zhdark PageDown与笔记同节点/书架、1440en阅读地图/longtitle/nohits。标题16.4/摘要14.76/meta13.12与profile16.4/actions14.75投影近似可读。60paths/source10/QA/runner/17PNG+HTTPserved2bundles SHA封存；初minified HTML带无引号属性，quoted-only regex解析0未生成证据，改HTMLParser后2bundle匹配output，不重跑browser。仍待独审最终卡/清单闭合，不先checkpoint。新增7个SHA-bound原始Hugo/失败报告仅精确路径whitespace例外，原始bytes未清洗。
+
+E16生产3CSS WIP未build期间，父补Space独立raw基线，immutable08d/source/preview明确。相册1actual4PNG：404→真实Retry/Tab→原WebP成功，Retry自hidden/focusBODY、首error图动作在窗裁剪下，nextTab回photo内区域button；无trap/实测timeout说法。Knowledge2actual6PNG：三kind当前Open title/URL/target正确，真实click/实际Enter capturetrusted并preventDefault无外跳，非新D3筛选计数。父10图全看；独审10图/38hash匹配，照片命名UX052/P2待修，Knowledge功能正例/手机浮动切换占位仅设计建议，两卡仍停写不提前加覆盖/关闭。
+
+
+E16 initial/A：Hugo3351ms；initial35=新3+原13连续性+原19选区，34pass/1新短屏toolbarfixturefail，旧32全部过。相同150字Range在320高居中无合法56gap位置，父2图证明真实rootScroll88后同选区可出现原toolbar；A仅短粗指针测试预定位，3生产CSS不变，新3pass12.1s。父A首2context(1440en/390zh)通过/6图，shortzh320及224完成选区2图，但224 held回复区24.8125小于实际line25.2，strict gate失败；其后320en/shorten未跑。8图父全看/原raw及CSS快照保存，UX051未闭。B只准短AI CSS压缩loading间距并保整行回复，测试门槛不放宽；不重复未受规则影响旧32合同。
+
+E16b父最终：Hugo后新3合同3pass12.2s（同3不同合同非新增9功能），B3受影响actual/10图全过全看，中英224held messages28.8125>=line25.2，Stop44/真实abort1/input/clear/payload/draft保留。primary为Aunchanged1440en/390zh6图+B10=5完整contexts16图，A另2partialshort失败图保历史。B34source/QA/runners/artifacts binding与2声明inverse exactA。独审16primary/A失败图和3flatcontrast独立6.1161026899误差0；sharegradientnull。UX051仅named短AI可达/整行范围闭；普通静态D1/D4=96/96，但short建议组淹没刚生成回复为真实D1=92/D4=94.5，下一批另修，不冒整族96。E14head随后candidatebuild，不改B3CSS/AIJS。
+
+E14生产candidate：仅EN IsPage Typeposts basefontquery optional新增5行，coldfast实际Georgia/Courier取舍保留；ENproject/imstage亦typeposts、OSsection排除/主页3family/ZHlocalSC不改。Hugo后initial4合同3behaviorpass1scopefail4.4s：minifier只改handler标点，原字串测具错误；A onlyscope实际built handler在detached无href link受控load验证语义1pass1.0s，原3helper/body逐字相同、不重复；4distinct无skip。初parentfast reading0/CDP/7font/3图有效但额外precode拍摄locator不存在（原文只有inlinecode），超时raw保留/3图父全看，不称整contextpass。B only extra照片改真实taggedcode，source8不变，5完整EN冷contexts13自然图全部0doc/view/root/docH且父全看，CSS404字体请求0，其他7或15events；实际glyph Georgia/Courier，phase非连续FOIT。1ZH390normal/light settled混排3图/0unknown/原SCmanifest与font片元，父全看；标题末单字基为另可见建议不是本次字体回归。9actualservedHTML SHA/URL/noscript保存，51source/QA/receipt/photo路径冻结。E14独审待做，不提前闭UX046/96，warm/Safari/CJKabsence/全CLS/FPSunknown；所有原discovery/humanchoice仍unreviewed。
+
+E14 CDP事实勘误（不改原raw/provenance/runner）：盘点Agent逐row发现父provenance.actualGlyphFamilies把旧实验/initialfast的allfallback误套finalBfast。父现核原B：fast前后headingGeorgia/proseNotoSerif/codeJetBrainsMono；其余4late/404为Georgia/Courier，5行几何delta仍0。字体来源不是所有冷case固定fallback，也没有warm保证。新增batch-e14b-production-erratum.json绑定原provenanceSHA/rawSHA及5行原maps，独审与盘点据此；前段“coldfast实际Georgia/Courier”只适用旧实验/initialfast，不适用finalB。父已向用户明确更正自己的汇总错误。
+
+10:09 C1 independent final accepted: 57paths/17finalPNG/19distinctcontracts36s; no newP0/P1. UX053 only current clickedfollowup draft+ownedfocus closed; nativeEnter positive not retested. Completedreply localD1/D4=96/96, focused-third lower externalring clip D2.4=90 retained. v1.28=309families/369selectorentries/382 cumulative itemstate/86partial +4 independentfontsurfaces/0whole;253checks/112historicalvisual/53findings. 4ace checkpoint accepted E16b/E14; now C1 source/new3spec explicit checkpoint, E17mediaWIP excluded. E17 solelymediaJS/CSS/newspec; parent serialbrowser and actualappTheme readback required, no new image timeout.
+
+10:12 C1checkpoint4ffc2c0b readback；E17两media生产WIP未包含。父readonly新article-result变体1actual390enLight/reduce3PNG全看：编辑原Notes→真实Meta+k/fulltitle/ArrowDown/Enter→当前Reader正文/title/URL/focus正确，原NoteDOM/2行value/反向caret保留；nomatchEnter不误开旧项、Escape返回当前SECTION。Initial测具误把safeURL的absolutehref期待为relative，raw/1PNG/runner全保；A仅规范expectedURL，无生产改动。新证据非旧product/E11重复功能、不先改卡。
+
+10:25 E17 source2/new5spec frozen and Hugo4460ms. Initial5合同1NAVpass/4测具失败：ARIA语义isDisabled、mapkicker多匹配、同URLheld合并假设；A仅new spec修，四affected8.7s全过，NAV原段字节未动，合计5distinct不增算9。父A1440zh完整6图/390enDark4图后未回滚动就要求NAV全可见而fail；B真实wheel回body0后继续，另增320zh720及classic：3contexts16图全过。primary4contexts22PNG，含A历史26图父全看；Retry顶部44/稳定同label/pending2Enter仅2GET/owned→具名img、Tabaway不抢/Notes原节点选区草稿保留/NextEnter→Arrow/共享mapheader，0业务调用。原src/18sImmich/map算法/AI/font保护；photo自身无timeout，defaultshortdesktop可能需滚看完整照片，不称全heightfit。source/原失败/2servedbundles/provenance全部冻结，待独评卡和inventory，不先accepted。
+
+10:42 E17 independent final accepted:72paths/26PNG全看/5distinct合同；无新增P0/P1，UX052仅三spatial404恢复namedclosed，classic错误和自身timeout未验。恢复行局部D1/D4=96/96，短桌面默认window照片下部/caption需scroll/maximize另94.5/94.5真实保留。v1.29=309/369/394累计item/93局部+4surface/0whole/fullnull；259checks/116历史视觉/53finding。Searcharticle只新1命名旅程，Escape焦点只raw观察。E18改前3context9PNG支持层级方案；titlebalance browser-only3paired6图实验属于discovery/unreviewed，不是生产。两卡停写，可E17本地checkpoint后C2单CSS；不推送。

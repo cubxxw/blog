@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-17T11:31:07.653010+00:00",
+  "head": "3b924aaea7dcdd2e938421734ec82b9055f3cd64",
+  "run": 39025034021,
+  "job": 117374244535,
+  "conclusion": "cancelled",
+  "reason": "Actual mobile three-family three-attempt hard failures; not a stall inferred from UI.",
+  "artifact": {
+    "id": 12099575801,
+    "bytes": 24760732,
+    "sha256": "f87195239c0cf4ceba4dbff3da5765e8c52154f163353d9e0233b199d8766eba",
+    "githubUploadDigestMatched": true,
+    "allCRCVerified": true,
+    "selectedReports": 31,
+    "permanentFullZIP": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-3b/quality.zip"
+  },
+  "actual": {
+    "qualityPass": 48,
+    "legacyComplete": false,
+    "legacyPassedAttempts": 675,
+    "legacyFailedAttempts": 11,
+    "skipped": 24,
+    "onboarding20": "all desktop/mobile first-pass; cat45.6/33.7s",
+    "libraryStrictFirstAttemptSeconds": [
+      30.4,
+      28.4,
+      28.7,
+      28.6
+    ],
+    "footnote": "EN desktop first/retry1 failed, retry2 passed; EN mobile first passed8.1s. Unexplained historical P2 retained.",
+    "libraryEmptyDesktop": 14.1,
+    "threeMobileFailedFamilies": [
+      "canonical AI retry30.0/30.3/30.0s",
+      "coarse code-copy text5.5/5.9/5.6s",
+      "hidden desktop favorites41.3/41.8/40.3s"
+    ],
+    "last": "710 [mobile] P1-P2 storage language change9.0s"
+  },
+  "causes": {
+    "canonicalAI": "Actual retry1 DOM snapshot has rc-ai-panel/data-article-chat/data-chat-ready=true, Retry text and rc answer class. Old action waits.abs-ai-panel.",
+    "coarseCopy": "All3 actual errors receive exact labels.failedTouch, source uses actual pointer:coarse; original test requires fine substring. Real selection assertion retained in fix.",
+    "favorites": "All3 errors resolved hidden desktop button; snapshot native category select exists and query/list recovery already succeeded. CSS <=640 swaps directory for select. Actual Mac390 clear->native favorites->empty->All recovers189 items and query focus."
+  },
+  "rawLog": {
+    "bytes": 546955,
+    "sha256": "c33dae384c928ee272c065a02b998e065b65934fa64d71d0cb779455d11d54f1"
+  },
+  "traces": [
+    {
+      "file": "browser/legacy/results/article-selection-failed-A-28083-estion-and-poisoned-history-mobile-retry1/trace.zip",
+      "bytes": 4521088,
+      "crc32": 2215510766,
+      "sha256": "714f5dc16964ab7cec2980c206eaa7a9b2e1342bfc0db68eec059052717f33ec"
+    },
+    {
+      "file": "browser/legacy/results/control-contracts-refused--530bf-ed-with-a-truthful-recovery-mobile-retry1/trace.zip",
+      "bytes": 1434408,
+      "crc32": 4289570608,
+      "sha256": "b75a11d5b3360663b54e7d71f81f7c071b2a1b89dfe9635fec6faf33fa7e6862"
+    },
+    {
+      "file": "browser/legacy/results/control-recovery-library-e-42237-ks-offer-a-working-way-back-mobile-retry1/trace.zip",
+      "bytes": 13506218,
+      "crc32": 3126972977,
+      "sha256": "8a2124751f79e404955a3bae9969711b940546e2ab35a97405df03b7816e7ba4"
+    },
+    {
+      "file": "browser/legacy/results/footnote-preview-contracts-e0941-ain-native-history-and-Back-desktop-retry1/trace.zip",
+      "bytes": 5718013,
+      "crc32": 4227923276,
+      "sha256": "92fda837b5fe4ea5d313b91bb1e5d0f374c81b6ea724b841a0d8e8656cf09d70"
+    }
+  ],
+  "limit": "Not full CI success. Production unchanged by next three test fixes; true new-head full matrix still required."
+}

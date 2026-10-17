@@ -1,0 +1,58 @@
+{
+  "head": "272221722b3e7a86b2d1e8e016dc887098c709d5",
+  "url": "https://6ad31fa9228d7d7a6a35fa41--cubxxw.netlify.app/zh/projects/",
+  "input": "native tab.scroll at list center down1page; not CI850",
+  "before": {
+    "bodyScrollTop": 0,
+    "center": [
+      617.4999237060547,
+      385.6299591064453
+    ],
+    "clientHeight": 365,
+    "height": 900,
+    "hit": "SPAN",
+    "items": 17,
+    "rect": {
+      "height": 299.3002624511719,
+      "width": 359.1603088378906,
+      "x": 437.9197692871094,
+      "y": 235.97982788085935
+    },
+    "scrollHeight": 3207,
+    "scrollTop": 0,
+    "width": 1440,
+    "willChange": "transform"
+  },
+  "afterWheel": {
+    "bodyScrollTop": 0,
+    "scrollTop": 900,
+    "visible": [
+      {
+        "text": "Hugo 的高级教程",
+        "url": "/zh/engineering/posts/hugo-advanced-tutorial/"
+      }
+    ]
+  },
+  "afterArticleReturn": {
+    "bodyScrollTop": 0,
+    "filter": "true",
+    "query": "Go",
+    "scrollTop": 916
+  },
+  "afterMinimizeRestore": {
+    "query": "Go",
+    "scrollTop": 916,
+    "willChange": "transform"
+  },
+  "afterReloadWorkspace": {
+    "filter": "true",
+    "mode": "workspace",
+    "query": "Go",
+    "scrollTop": 916
+  },
+  "limitations": [
+    "Native page wheel differs from CI pixel850.",
+    "16px difference before article open vs after return; click/focus scroll may change offset but cause not established. Do not claim strict article restoration pass.",
+    "No complete remote CI conclusion yet."
+  ]
+}

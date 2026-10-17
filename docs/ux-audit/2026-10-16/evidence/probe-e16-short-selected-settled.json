@@ -1,0 +1,262 @@
+{
+  "at": "2026-10-16T00:21:36.726Z",
+  "sourceManifest": "batch-e13e-source.json",
+  "view": {
+    "width": 568,
+    "height": 320,
+    "locale": "zh",
+    "dark": true,
+    "motion": "reduce",
+    "coarse": true
+  },
+  "steps": [
+    {
+      "name": "actual-toolbar-selected-reply",
+      "selected": "In main.go file",
+      "snapshot": {
+        "width": 568,
+        "height": 320,
+        "rootY": 916,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 155.734375,
+          "width": 542,
+          "height": 152.265625,
+          "top": 155.734375,
+          "right": 555,
+          "bottom": 308,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 344.640625,
+          "width": 468,
+          "height": 59.59375,
+          "top": 344.640625,
+          "right": 493,
+          "bottom": 404.234375,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 155.734375,
+            "width": 542,
+            "height": 80,
+            "top": 155.734375,
+            "right": 555,
+            "bottom": 235.734375,
+            "left": 13
+          },
+          "scrollTop": 294,
+          "scrollHeight": 374,
+          "clientHeight": 80,
+          "text": "关于这段文字In main.go file结合这篇文章，帮我理解这段话。AI一起读懂生成分享卡短屏中保留原始选文与同一个输入框。继续聊聊能举一个具体例子吗？有没有相反的观点？在现实里怎么应用？"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-toc"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 1,
+            "method": "POST",
+            "payload": {
+              "question": "结合这篇文章，帮我理解这段话。",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "selectedText": "In main.go file",
+              "selectionContext": "[文章开头节选]\n调试Go工程# ::: tip prepare： vscode golang 1.92 ::: demo# go mod init test 复制 In main.go file package main import ( \"fmt\" ) // Swap functions func swap(x, y *string) (string, string) { //XOR exchange *x, *y = *y, *x } func main() { fmt.Println(\"Hello, world!\") //Swap functions for i := 0; i < 10; i++ { a := \"a\" b := \"b\" swap(&a, &b) fmt.Println(a, b) } } 复制 vscode一键生成测试# >gotest for package/function 复制 ::: tip 分别是为包生成测试单元，为函数生成测试单元。 ::: 生成如下： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { got, got1 := swap(tt.args.x, tt.args.y) if got != tt.want { t.Errorf(\"swap() got = %v, want %v\", got, tt.want) } if got1 != tt.want1 { t.Errorf(\"swap() got1 = %v, want %v\", got1, tt.want1) } }) } } 复制 我们在 TODO: Add test cases. 那边给出测试就好了： 也有快捷键，我们先加入一个 {}： >go:file struct 复制 生成： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. { name: \"test\", }, } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. { name: \"afsdfwe\", args: args{ x: 12, y: 214, }, wan\n\n[选文上下文]\n:::\n选文：In main.go file\nIn main.go file\n::: tip 分别是为包生成测试单元，为函数生成测试单元。 :::",
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "geometry": [
+        {
+          "selector": ".rc-ai-messages",
+          "font": "13.44px",
+          "lineHeight": "23.1168px",
+          "box": {
+            "x": 13,
+            "y": 155.734375,
+            "width": 542,
+            "height": 80,
+            "top": 155.734375,
+            "right": 555,
+            "bottom": 235.734375,
+            "left": 13
+          },
+          "scrollHeight": 374,
+          "clientHeight": 80,
+          "overflowY": "auto",
+          "fullViewport": true,
+          "hit": true
+        },
+        {
+          "selector": ".article-chat-reference",
+          "font": "18px",
+          "lineHeight": "28.8px",
+          "box": {
+            "x": 25,
+            "y": 257.734375,
+            "width": 521,
+            "height": 77.90625,
+            "top": 257.734375,
+            "right": 546,
+            "bottom": 335.640625,
+            "left": 25
+          },
+          "scrollHeight": 78,
+          "clientHeight": 78,
+          "overflowY": "visible",
+          "fullViewport": false,
+          "hit": true
+        },
+        {
+          "selector": ".article-chat-reference-text",
+          "font": "12.8px",
+          "lineHeight": "21.12px",
+          "box": {
+            "x": 38,
+            "y": 302.53125,
+            "width": 460,
+            "height": 21.109375,
+            "top": 302.53125,
+            "right": 498,
+            "bottom": 323.640625,
+            "left": 38
+          },
+          "scrollHeight": 21,
+          "clientHeight": 21,
+          "overflowY": "auto",
+          "fullViewport": false,
+          "hit": true
+        },
+        {
+          "selector": ".article-chat-reference-clear",
+          "font": "18px",
+          "lineHeight": "28.8px",
+          "box": {
+            "x": 498,
+            "y": 261.734375,
+            "width": 44,
+            "height": 44,
+            "top": 261.734375,
+            "right": 542,
+            "bottom": 305.734375,
+            "left": 498
+          },
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "overflowY": "visible",
+          "fullViewport": true,
+          "hit": true
+        },
+        {
+          "selector": ".rc-ai-textarea",
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "box": {
+            "x": 25,
+            "y": 344.640625,
+            "width": 468,
+            "height": 59.59375,
+            "top": 344.640625,
+            "right": 493,
+            "bottom": 404.234375,
+            "left": 25
+          },
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "overflowY": "auto",
+          "fullViewport": false,
+          "hit": false
+        },
+        {
+          "selector": ".rc-ai-send",
+          "font": "18px",
+          "lineHeight": "28.8px",
+          "box": {
+            "x": 502,
+            "y": 360.234375,
+            "width": 44,
+            "height": 44,
+            "top": 360.234375,
+            "right": 546,
+            "bottom": 404.234375,
+            "left": 502
+          },
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "overflowY": "visible",
+          "fullViewport": false,
+          "hit": false
+        }
+      ]
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected-settled.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One actual568x320 emulatedcoarse reducedmotion Chinese article. Original DOM Range paragraphselection then actualtoolbar click, originalAIClient with controlled response. Explicit settled sheet transform/opacity and twoRAF; measures before E16 typography changes; not physicalselection/OSkeyboard/AT/fullmatrix."
+}

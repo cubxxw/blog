@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-15T23:29:26.735265+00:00",
+  "sourceManifest": "batch-e13d1-actual-source.json",
+  "producer": "/root AI",
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion-initial.browser.mjs": "2c0517d8f7a7ac7d8981d7f139ac0e600d9d81c910c1f42f37c6d4bf5806ebf8",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion.json": "8c103dd825b2d5d945be2cbaedaae5eafa3532d173ff5fde1b640a33847c889e",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion.log": "868a3d600f8a30a79fd31ece99b59a09549413d136dc3ed48c1b98e2559cb47c",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion-two-frames.png": "3e754351657c97bcbd5b8f94eeb20c28a82a4165900a8fb5e2ef266c3338c86c",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion-settled.png": "e9470672e07e316a53d426db2ccd989b4affed2b223d0f58e6b8bb8d51682de7"
+  },
+  "parentReadAllNamedPNG": false,
+  "limits": "Initial timeline used photo helper animations:disabled; first raw geometry precedes screenshot which finishes transition. Thus cannot establish natural completion time. Later -natural rerun uses animations:allow. Raw original JSON limits string was optimistic and is explicitly corrected here."
+}

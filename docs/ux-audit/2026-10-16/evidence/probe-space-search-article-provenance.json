@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-16T02:11:44.952011+00:00",
+  "base": "4ffc2c0b38f3e13194ee1ff565bc96364166034b",
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-space-search-article.browser.mjs": "55fe19593d312388d35cdfb1184a8624b34a9007c254c9b4daa1d7df21c868d7",
+    "docs/ux-audit/2026-10-16/probe-space-search-article-a.browser.mjs": "faae83547cbca0873402acd2f08ca05af6a5784170056a1a8d481c980bd2a33a",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a.log": "1b2028a62b04c37c93ed8783d16c7b413f40cf4ef36592ab3f0d9d7dbcb99516",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a-focused-article.png": "789892f7442b133743dddf8b9a8411602b660e2b9e590b41d951b3db15e29e87",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a-reader.png": "b4e94a2f40b6c8977e9c1850fb05506f60a44afc455b02ab625e0011bc31aedb",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article.json": "28986bdc7d959f2a0fe57639b35e0e7c7a99b856b27057196f7c2e467db40feb",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article.log": "788bbd2d9c7452ad812447010c69e78bdb6d1564be42dd69054fea4bac1cbc1d",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-focused-article.png": "789892f7442b133743dddf8b9a8411602b660e2b9e590b41d951b3db15e29e87",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a.json": "a3fb0df8b4b53b334c82dcc2030be12a9da4778b6f2fc0a7fd6f3d272492c244",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a-empty-enter.png": "3a684592eac1f8abc592b974ca0bc063a991bdf9633ff159bbccba32b5c57e5d"
+  },
+  "sources": {
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "assets/js/space/navigation.mjs": "9323eaccb344d110391b9ebf2146113614e2c9731b96c53cd9071f13acf9d5ca",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "layouts/partials/space/desktop.html": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519"
+  },
+  "actual": "One390en Light/readback reduce; native Meta+k editingNotes→fullpublicarticle title→ArrowDown→Enter reader; localbody/title/absoluteoriginal URL correct; originalNotesnode/value/caretbackward preserved; emptyEnter keeps current reader; Escape focusSECTION insideworkspace noninert. 3finalPNG allparentread.",
+  "initialFailure": "Expected relative originalhref was wrong; safeURL legitimately returnsabsolute. Initialraw/log/script/1PNG preserved/read, A onlycomparison uses resolvedabsoluteURL; no productionchange.",
+  "limits": "No model/realbackend/contact/export; no physical/wholepageTab/AT/Safari/fullmatrix/fullscore."
+}

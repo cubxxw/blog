@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-15T23:38:28.302344+00:00",
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/batch-e13d1-actual-source.json": "632757af5d3ccd3ebfda1189d0680eb44bc008eaf28d05c67decc17c27500c48",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13d1-scope.browser.mjs": "7c0e50ead580794f3d13c104648d53ebacc2938df0524cf8a14cda45bc415f96",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13d1-scope-actions.log": "e5ddf721579b8381260aa94f0fd24f2102e91d68e030d28a96ebe96ed3a9af29",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-scope-toolbar-failure.json": "ae7b6d3e587bf94dd0a8d3b2346e3dd4fc3d9662e09c9c62386d5e62d5dfc497",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-scope-toolbar-failure.png": "2926f2e1acd8d5fdee412e5498e35f169a84dba5dbebde333331509b1451f21e",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13d1-article-chat.reconstructed.js": "92dc733d5df1b43a9ac4c85bee529a074d3f3c7a85c6fd9daa9cc5265f972aa6"
+  },
+  "producer": "/root AI; independently verified by space_review",
+  "source": "D1 actual source manifest before E focus fix; other source entries unchanged. article-chat exact previous bytes reconstructed by deleting the one explicit analyze focus line from E, SHA equals frozenD1; this is a reconstruction, not a contemporaneous source capture.",
+  "observed": "Actual compact B toolbar analysis opens sheet while focus remains FAB; subsequent realEscape does not reach sheet; returnA actual selection401..571 buttoolbar908px. index4 is failing returnA, not B click itself.",
+  "parentReadPNG": true,
+  "disposition": "ProductionE explicitanalyze focus line +13threaltoolbar contract; final scoped revalidation in E provenance. No selection positioning source changed."
+}

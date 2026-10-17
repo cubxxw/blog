@@ -3,8 +3,8 @@
    ------------------------------------------------------------
    The PaperMod copy button only swaps its label to "copied!".
    This layer adds:
-     1. A tactile "pop + accent flash" when a copy succeeds
-        (JS toggles `.is-copied` for ~2s; see micro-interactions.js).
+     1. A quiet confirmation when a copy succeeds
+        (code-copy.js owns the actual clipboard result).
      2. A discoverable baseline on touch devices, where the button
         is otherwise opacity:0 forever (no :hover on a phone), so the
         confirmation was previously invisible after a tap.
@@ -19,7 +19,9 @@
 @media (hover: none) {
   .post-content .highlight .copy-code,
   .post-content pre .copy-code {
-    opacity: 0.6;
+    opacity: 1;
+    min-height: 44px;
+    min-width: 44px;
   }
   .post-content .highlight .copy-code:active,
   .post-content pre .copy-code:active {
@@ -28,13 +30,7 @@
   }
 }
 
-/* ---------- Success state: pop + accent flash ---------- */
-@keyframes copy-code-pop {
-  0%   { transform: scale(1); }
-  35%  { transform: scale(1.12); }
-  65%  { transform: scale(0.98); }
-  100% { transform: scale(1); }
-}
+/* ---------- Completed operation: one static confirmation ---------- */
 
 .post-content .highlight .copy-code.is-copied,
 .post-content pre .copy-code.is-copied {
@@ -43,9 +39,30 @@
   color: #fff !important;
   background: var(--color-accent, var(--primary)) !important;
   border-color: var(--color-accent, var(--primary)) !important;
-  animation: copy-code-pop 0.42s var(--ease-spring) 1;
-  box-shadow: 0 2px 10px
-    color-mix(in srgb, var(--color-accent, var(--primary)) 35%, transparent);
+}
+
+.post-content .copy-code:disabled {
+  cursor: progress;
+  opacity: 1;
+}
+
+.post-content .code-copy-status:empty { display: none; }
+.post-content .code-copy-status:not(:empty) {
+  display: block;
+  padding: 10px 14px;
+  white-space: normal;
+  font: 12px/1.6 var(--font-body, sans-serif);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-rule);
+}
+@media (max-width: 1023px) {
+  .post-content .code-copy-status:not(:empty) {
+    /* The fullscreen action belongs to the block's trailing edge. Keep a
+       separate action lane when a failed copy adds an instruction row. */
+    padding-inline-end: calc(var(--code-tools-offset, 8px) + 44px + 12px);
+    min-height: 64px;
+  }
 }
 
 /* In dark mode the accent flips to light sky-blue (EN #7dd3fc) / red (ZH),
@@ -71,12 +88,6 @@
     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
   mask: no-repeat center / contain
     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
-  animation: copy-code-check 0.4s var(--ease-spring) 1;
-}
-@keyframes copy-code-check {
-  0%   { opacity: 0; transform: scale(0.4) rotate(-12deg); }
-  60%  { opacity: 1; transform: scale(1.18) rotate(0deg); }
-  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 /* ============================================================

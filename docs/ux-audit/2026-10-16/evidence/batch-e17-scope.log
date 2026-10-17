@@ -1,0 +1,20 @@
+PASS media module setup and existing 18,000ms default unchanged
+PASS source panel, proxy/Immich transport, map/photo navigation and dispose suffix byte-identical
+PASS media CSS existing bytes retained, additions only
+PASS tracked production changes limited to the 2 authorized media files
+PASS assets/js/space/media-state.mjs matches accepted HEAD
+PASS assets/js/space/apps.js matches accepted HEAD
+PASS assets/js/space/desktop.js matches accepted HEAD
+PASS assets/js/space/state.mjs matches accepted HEAD
+PASS assets/js/space/world-cafe.js matches accepted HEAD
+PASS assets/css/space.css matches accepted HEAD
+PASS assets/css/space-cafe.css matches accepted HEAD
+PASS static/js/article-chat.js matches accepted HEAD
+PASS layouts/partials/extend_head.html matches accepted HEAD
+PASS tests/e2e/article-chat-reply-landing-contracts.spec.ts matches accepted HEAD
+PASS tests/e2e/article-chat-continuity-contracts.spec.ts matches accepted HEAD
+PASS tests/e2e/article-selection.spec.ts matches accepted HEAD
+PASS public images and content unchanged
+SHA256 8538917239b455af6fb45fe11ca4a4db926b62c7349bb393165b281753c033cb assets/js/space/media.js
+SHA256 8d12bcf81af0df99eef224de844a6f58155395b0d38c1ec3954aa1f9cec07d07 assets/css/space-media.css
+SHA256 d1ef4d6ebd98f947e7e08fa868edc448b671e5b1d1a22a323a0fd75112048493 tests/e2e/space-media-legibility-contracts.spec.ts

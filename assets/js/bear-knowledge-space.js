@@ -564,7 +564,7 @@ export async function mountKnowledgeSpace(host, data) {
 
   const state = {
     nodes: nodesRaw.map((n) => ({ ...n, x: 0, y: 0, r: 5 })),
-    filter: 'all',
+    filter: 'product',
     focusId: nodesRaw[0] ? nodesRaw[0].id : null,
     hoverId: null,
     pointer: { x: 0, y: 0, active: false },
@@ -614,7 +614,7 @@ export async function mountKnowledgeSpace(host, data) {
 
   const filters = el('div', 'bks__filters');
   const filterDefs = [
-    ['all', isZh ? '全部' : 'All'],
+    ['all', `${isZh ? '全部' : 'All'} ${state.nodes.length}`],
     ['product', `${isZh ? '产品' : 'Products'} ${state.nodes.filter((n) => n.kind === 'product').length}`],
     ['writing', `${isZh ? '写作' : 'Writing'} ${state.nodes.filter((n) => n.kind === 'writing').length}`],
     ['series', `${isZh ? '系列' : 'Series'} ${state.nodes.filter((n) => n.kind === 'series').length}`],
@@ -623,7 +623,7 @@ export async function mountKnowledgeSpace(host, data) {
     const btn = el('button', 'bks__filter', text);
     btn.type = 'button';
     btn.dataset.filter = key;
-    btn.setAttribute('aria-pressed', String(key === 'all'));
+    btn.setAttribute('aria-pressed', String(key === 'product'));
     filters.appendChild(btn);
     return btn;
   });
@@ -631,9 +631,9 @@ export async function mountKnowledgeSpace(host, data) {
 
   const body = el('div', 'bks__body');
   const stageWrap = el('div', 'bks__stage-wrap');
-  stageWrap.dataset.filter = 'all';
+  stageWrap.dataset.filter = 'product';
   const stage = el('div', 'bks__stage');
-  stage.dataset.filter = 'all';
+  stage.dataset.filter = 'product';
   const nodeList = el('ul', 'bks__nodes');
   stageWrap.appendChild(stage);
   stageWrap.appendChild(nodeList);
@@ -689,7 +689,7 @@ export async function mountKnowledgeSpace(host, data) {
       ? document.activeElement.dataset.nodeId : null;
     nodeList.innerHTML = '';
     const visible = state.nodes.filter((n) =>
-      state.filter === 'all' ? n.kind === 'product' : n.kind === state.filter
+      state.filter === 'all' || n.kind === state.filter
     );
     visible.forEach((n, index) => {
       const li = el('li', 'bks__node');
@@ -723,7 +723,7 @@ export async function mountKnowledgeSpace(host, data) {
     stage.dataset.filter = next;
     stageWrap.dataset.filter = next;
     filterButtons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === next)));
-    const visible = state.nodes.filter((n) => next === 'all' ? n.kind === 'product' : n.kind === next);
+    const visible = state.nodes.filter((n) => next === 'all' || n.kind === next);
     if (!visible.some((n) => n.id === state.focusId)) state.focusId = visible[0] ? visible[0].id : null;
     rebuildNodeChips();
     renderDetail(host, state.nodes.find((n) => n.id === state.focusId) || null, isZh);

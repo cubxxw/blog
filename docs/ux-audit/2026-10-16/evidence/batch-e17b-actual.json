@@ -1,0 +1,955 @@
+{
+  "at": "2026-10-16T02:22:27.836Z",
+  "sourceManifest": "batch-e17b-source.json",
+  "rows": [
+    {
+      "view": {
+        "id": "390-en",
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "theme": "dark",
+        "motion": "no-preference",
+        "owned": false
+      },
+      "steps": [
+        {
+          "name": "workspace-seeded-theme-readback",
+          "actualTheme": "dark",
+          "worldFailed": null,
+          "spatial": 1
+        },
+        {
+          "name": "gallery-type",
+          "title": {
+            "text": "Kumano Kodo",
+            "font": "20px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 57.23844528198242,
+              "y": 435.65826416015625,
+              "width": 133.25149536132812,
+              "height": 24.60028076171875,
+              "top": 435.65826416015625,
+              "right": 190.48994064331055,
+              "bottom": 460.258544921875,
+              "left": 57.23844528198242
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "place": {
+            "text": "Kumano Kodo, Japan",
+            "font": "16px",
+            "color": "rgb(178, 189, 183)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 57.23844528198242,
+              "y": 461.8985900878906,
+              "width": 133.25149536132812,
+              "height": 19.680206298828125,
+              "top": 461.8985900878906,
+              "right": 190.48994064331055,
+              "bottom": 481.57879638671875,
+              "left": 57.23844528198242
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "filter": {
+            "text": "All photographs8",
+            "font": "18px",
+            "color": "rgb(36, 46, 43)",
+            "background": "rgb(229, 235, 231)",
+            "box": {
+              "x": 57.23844528198242,
+              "y": 268.4788818359375,
+              "width": 138.23562622070312,
+              "height": 44.280517578125,
+              "top": 268.4788818359375,
+              "right": 195.47407150268555,
+              "bottom": 312.7593994140625,
+              "left": 57.23844528198242
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "heading": {
+            "text": "Light gathered along the way.",
+            "font": "23px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 57.23844528198242,
+              "y": 194.0374298095703,
+              "width": 156.9805145263672,
+              "height": 49.02117919921875,
+              "top": 194.0374298095703,
+              "right": 214.2189598083496,
+              "bottom": 243.05860900878906,
+              "left": 57.23844528198242
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "thumbStatuses": 0
+        },
+        {
+          "name": "error-ready-recovery",
+          "retry": {
+            "text": "Retry photograph",
+            "font": "18px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgb(36, 46, 43)",
+            "box": {
+              "x": 196.7681427001953,
+              "y": 355.48956298828125,
+              "width": 133.5333709716797,
+              "height": 44.280487060546875,
+              "top": 355.48956298828125,
+              "right": 330.301513671875,
+              "bottom": 399.7700500488281,
+              "left": 196.7681427001953
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "status": {
+            "text": "This photograph could not load.",
+            "role": "status",
+            "live": "polite",
+            "atomic": "true",
+            "box": {
+              "x": 59.69847106933594,
+              "y": 355.48956298828125,
+              "width": 127.22956848144531,
+              "height": 44.280487060546875,
+              "top": 355.48956298828125,
+              "right": 186.92803955078125,
+              "bottom": 399.7700500488281,
+              "left": 59.69847106933594
+            }
+          }
+        },
+        {
+          "name": "held-stable-original-Retry-double-enter-singleflight",
+          "retry": {
+            "text": "Retry photograph",
+            "font": "18px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgb(36, 46, 43)",
+            "box": {
+              "x": 196.7681427001953,
+              "y": 355.48956298828125,
+              "width": 133.5333709716797,
+              "height": 44.280487060546875,
+              "top": 355.48956298828125,
+              "right": 330.301513671875,
+              "bottom": 399.7700500488281,
+              "left": 196.7681427001953
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": true
+          },
+          "requests": 2
+        },
+        {
+          "name": "real-tab-away",
+          "target": {
+            "tag": "BUTTON",
+            "text": "See travel region ↗",
+            "insidePhoto": true
+          }
+        },
+        {
+          "name": "decoded-success-owned-or-away",
+          "image": {
+            "focus": false,
+            "alt": "Kumano Kodo, Japan",
+            "complete": true,
+            "naturalWidth": 675,
+            "objectFit": "contain"
+          },
+          "requests": 2
+        },
+        {
+          "name": "real-wheel-return-to-navigation",
+          "beforeNavigationScroll": 222,
+          "after": 0
+        },
+        {
+          "name": "next-enlarged-hit",
+          "next": {
+            "text": "→",
+            "font": "18px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 103.97897338867188,
+              "y": 293.9888610839844,
+              "width": 44.28050231933594,
+              "height": 44.280517578125,
+              "top": 293.9888610839844,
+              "right": 148.2594757080078,
+              "bottom": 338.2693786621094,
+              "left": 103.97897338867188
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "actual-next-enter-arrow-native-chain",
+          "title": "Stone and roots",
+          "prev": {
+            "text": "←",
+            "font": "18px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 53.138397216796875,
+              "y": 293.9888610839844,
+              "width": 44.28050231933594,
+              "height": 44.280517578125,
+              "top": 293.9888610839844,
+              "right": 97.41889953613281,
+              "bottom": 338.2693786621094,
+              "left": 53.138397216796875
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "next": {
+            "text": "→",
+            "font": "18px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 103.97897338867188,
+              "y": 293.9888610839844,
+              "width": 44.28050231933594,
+              "height": 44.280517578125,
+              "top": 293.9888610839844,
+              "right": 148.2594757080078,
+              "bottom": 338.2693786621094,
+              "left": 103.97897338867188
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "back": {
+            "text": "← Back to photographs",
+            "font": "18px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 53.138397216796875,
+              "y": 243.14830017089844,
+              "width": 154.07205200195312,
+              "height": 44.28050231933594,
+              "top": 243.14830017089844,
+              "right": 207.21044921875,
+              "bottom": 287.4288024902344,
+              "left": 53.138397216796875
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "shared-map-header-hit",
+          "heading": {
+            "text": "A place leads to a story.",
+            "font": "23px",
+            "color": "rgb(229, 235, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 57.23844528198242,
+              "y": 194.0374298095703,
+              "width": 168.1403350830078,
+              "height": 49.02117919921875,
+              "top": 194.0374298095703,
+              "right": 225.37878036499023,
+              "bottom": 243.05860900878906,
+              "left": 57.23844528198242
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "link": {
+            "text": "Photographs ↗",
+            "font": "18px",
+            "color": "rgb(223, 178, 142)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 233.57887268066406,
+              "y": 198.77810668945312,
+              "width": 99.18269348144531,
+              "height": 44.28050231933594,
+              "top": 198.77810668945312,
+              "right": 332.7615661621094,
+              "bottom": 243.05860900878906,
+              "left": 233.57887268066406
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "same-note-after-recovery-navigation",
+          "noteAfter": {
+            "same": true,
+            "value": "A note stays here while the photograph recovers.\nKeep this line.",
+            "start": 2,
+            "end": 17,
+            "direction": "backward"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+          "at": 1792117344331
+        },
+        {
+          "url": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+          "at": 1792117344696
+        }
+      ],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "320-zh",
+        "width": 320,
+        "height": 720,
+        "lang": "zh",
+        "theme": "light",
+        "motion": "reduce",
+        "owned": true
+      },
+      "steps": [
+        {
+          "name": "workspace-seeded-theme-readback",
+          "actualTheme": "light",
+          "worldFailed": null,
+          "spatial": 1
+        },
+        {
+          "name": "gallery-type",
+          "title": {
+            "text": "熊野古道",
+            "font": "20px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 50.94160079956055,
+              "y": 402.9725036621094,
+              "width": 104.5484619140625,
+              "height": 24.599639892578125,
+              "top": 402.9725036621094,
+              "right": 155.49006271362305,
+              "bottom": 427.5721435546875,
+              "left": 50.94160079956055
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "place": {
+            "text": "日本 · 熊野古道",
+            "font": "16px",
+            "color": "rgb(97, 109, 106)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 50.94160079956055,
+              "y": 429.21209716796875,
+              "width": 104.5484619140625,
+              "height": 19.679718017578125,
+              "top": 429.21209716796875,
+              "right": 155.49006271362305,
+              "bottom": 448.8918151855469,
+              "left": 50.94160079956055
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "filter": {
+            "text": "全部照片8",
+            "font": "18px",
+            "color": "rgb(252, 252, 248)",
+            "background": "rgb(39, 51, 49)",
+            "box": {
+              "x": 50.94160079956055,
+              "y": 257.3221435546875,
+              "width": 93.15830993652344,
+              "height": 44.279327392578125,
+              "top": 257.3221435546875,
+              "right": 144.09991073608398,
+              "bottom": 301.6014709472656,
+              "left": 50.94160079956055
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "heading": {
+            "text": "把路上的光，带回来。",
+            "font": "23px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 50.94160079956055,
+              "y": 182.88259887695312,
+              "width": 121.44790649414062,
+              "height": 49.01991271972656,
+              "top": 182.88259887695312,
+              "right": 172.38950729370117,
+              "bottom": 231.9025115966797,
+              "left": 50.94160079956055
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "thumbStatuses": 0
+        },
+        {
+          "name": "error-ready-recovery",
+          "retry": {
+            "text": "重试照片",
+            "font": "18px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgb(252, 252, 248)",
+            "box": {
+              "x": 189.51956176757812,
+              "y": 293.4913024902344,
+              "width": 77.078857421875,
+              "height": 44.279327392578125,
+              "top": 293.4913024902344,
+              "right": 266.5984191894531,
+              "bottom": 337.7706298828125,
+              "left": 189.51956176757812
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "status": {
+            "text": "这张照片暂时未能打开。",
+            "role": "status",
+            "live": "polite",
+            "atomic": "true",
+            "box": {
+              "x": 53.40156555175781,
+              "y": 293.4913024902344,
+              "width": 126.27815246582031,
+              "height": 44.279327392578125,
+              "top": 293.4913024902344,
+              "right": 179.67971801757812,
+              "bottom": 337.7706298828125,
+              "left": 53.40156555175781
+            }
+          }
+        },
+        {
+          "name": "held-stable-original-Retry-double-enter-singleflight",
+          "retry": {
+            "text": "重试照片",
+            "font": "18px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgb(252, 252, 248)",
+            "box": {
+              "x": 189.51956176757812,
+              "y": 293.4913024902344,
+              "width": 77.078857421875,
+              "height": 44.279327392578125,
+              "top": 293.4913024902344,
+              "right": 266.5984191894531,
+              "bottom": 337.7706298828125,
+              "left": 189.51956176757812
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": true
+          },
+          "requests": 2
+        },
+        {
+          "name": "decoded-success-owned-or-away",
+          "image": {
+            "focus": true,
+            "alt": "日本 · 熊野古道",
+            "complete": true,
+            "naturalWidth": 675,
+            "objectFit": "contain"
+          },
+          "requests": 2
+        },
+        {
+          "name": "real-wheel-return-to-navigation",
+          "beforeNavigationScroll": 0,
+          "after": 0
+        },
+        {
+          "name": "next-enlarged-hit",
+          "next": {
+            "text": "→",
+            "font": "18px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 228.8789825439453,
+              "y": 231.9921875,
+              "width": 44.27934265136719,
+              "height": 44.27935791015625,
+              "top": 231.9921875,
+              "right": 273.1583251953125,
+              "bottom": 276.27154541015625,
+              "left": 228.8789825439453
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "actual-next-enter-arrow-native-chain",
+          "title": "石头与树根",
+          "prev": {
+            "text": "←",
+            "font": "18px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 178.03973388671875,
+              "y": 231.9921875,
+              "width": 44.27935791015625,
+              "height": 44.27935791015625,
+              "top": 231.9921875,
+              "right": 222.319091796875,
+              "bottom": 276.27154541015625,
+              "left": 178.03973388671875
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "next": {
+            "text": "→",
+            "font": "18px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 228.8789825439453,
+              "y": 231.9921875,
+              "width": 44.27934265136719,
+              "height": 44.27935791015625,
+              "top": 231.9921875,
+              "right": 273.1583251953125,
+              "bottom": 276.27154541015625,
+              "left": 228.8789825439453
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "back": {
+            "text": "← 返回相册",
+            "font": "18px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 46.8416633605957,
+              "y": 231.9921875,
+              "width": 75.79763793945312,
+              "height": 44.27935791015625,
+              "top": 231.9921875,
+              "right": 122.63930130004883,
+              "bottom": 276.27154541015625,
+              "left": 46.8416633605957
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "shared-map-header-hit",
+          "heading": {
+            "text": "从一段路，找到一个故事。",
+            "font": "23px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 50.94160079956055,
+              "y": 182.88259887695312,
+              "width": 136.2076873779297,
+              "height": 49.01991271972656,
+              "top": 182.88259887695312,
+              "right": 187.14928817749023,
+              "bottom": 231.9025115966797,
+              "left": 50.94160079956055
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "link": {
+            "text": "浏览相册 ↗",
+            "font": "18px",
+            "color": "rgb(143, 90, 61)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 195.3491668701172,
+              "y": 187.62315368652344,
+              "width": 73.70924377441406,
+              "height": 44.27935791015625,
+              "top": 187.62315368652344,
+              "right": 269.05841064453125,
+              "bottom": 231.9025115966797,
+              "left": 195.3491668701172
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "same-note-after-recovery-navigation",
+          "noteAfter": {
+            "same": true,
+            "value": "A note stays here while the photograph recovers.\nKeep this line.",
+            "start": 2,
+            "end": 17,
+            "direction": "backward"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+          "at": 1792117346226
+        },
+        {
+          "url": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+          "at": 1792117346374
+        }
+      ],
+      "pass": true
+    },
+    {
+      "view": {
+        "id": "classic-en",
+        "width": 1440,
+        "height": 900,
+        "lang": "en",
+        "theme": "light",
+        "motion": "reduce",
+        "classic": true
+      },
+      "steps": [
+        {
+          "name": "workspace-seeded-theme-readback",
+          "actualTheme": "light",
+          "worldFailed": "true",
+          "spatial": 0
+        },
+        {
+          "name": "gallery-type",
+          "title": {
+            "text": "Kumano Kodo",
+            "font": "16px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 237,
+              "y": 556.59375,
+              "width": 282,
+              "height": 24,
+              "top": 556.59375,
+              "right": 519,
+              "bottom": 580.59375,
+              "left": 237
+            },
+            "inView": true,
+            "windowClip": false,
+            "centerHit": true,
+            "focus": false
+          },
+          "place": {
+            "text": "Kumano Kodo, Japan",
+            "font": "12px",
+            "color": "rgb(97, 109, 106)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 237,
+              "y": 582.59375,
+              "width": 282,
+              "height": 18,
+              "top": 582.59375,
+              "right": 519,
+              "bottom": 600.59375,
+              "left": 237
+            },
+            "inView": true,
+            "windowClip": false,
+            "centerHit": false,
+            "focus": false
+          },
+          "filter": {
+            "text": "All photographs8",
+            "font": "14px",
+            "color": "rgb(252, 252, 248)",
+            "background": "rgb(39, 51, 49)",
+            "box": {
+              "x": 237,
+              "y": 267.09375,
+              "width": 141.421875,
+              "height": 44,
+              "top": 267.09375,
+              "right": 378.421875,
+              "bottom": 311.09375,
+              "left": 237
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "heading": {
+            "text": "Light gathered along the way.",
+            "font": "27px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 237,
+              "y": 195,
+              "width": 457.6875,
+              "height": 35.09375,
+              "top": 195,
+              "right": 694.6875,
+              "bottom": 230.09375,
+              "left": 237
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "thumbStatuses": 0
+        },
+        {
+          "name": "real-wheel-return-to-navigation",
+          "beforeNavigationScroll": 25,
+          "after": 0
+        },
+        {
+          "name": "next-enlarged-hit",
+          "next": {
+            "text": "→",
+            "font": "14px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 781,
+              "y": 265.09375,
+              "width": 44,
+              "height": 44,
+              "top": 265.09375,
+              "right": 825,
+              "bottom": 309.09375,
+              "left": 781
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "actual-next-enter-arrow-native-chain",
+          "title": "Stone and roots",
+          "prev": {
+            "text": "←",
+            "font": "14px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 729,
+              "y": 265.09375,
+              "width": 44,
+              "height": 44,
+              "top": 265.09375,
+              "right": 773,
+              "bottom": 309.09375,
+              "left": 729
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "next": {
+            "text": "→",
+            "font": "14px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 781,
+              "y": 265.09375,
+              "width": 44,
+              "height": 44,
+              "top": 265.09375,
+              "right": 825,
+              "bottom": 309.09375,
+              "left": 781
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "back": {
+            "text": "← Back to photographs",
+            "font": "14px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 231,
+              "y": 265.09375,
+              "width": 150.96875,
+              "height": 44,
+              "top": 265.09375,
+              "right": 381.96875,
+              "bottom": 309.09375,
+              "left": 231
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "shared-map-header-hit",
+          "heading": {
+            "text": "A place leads to a story.",
+            "font": "27px",
+            "color": "rgb(39, 51, 49)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 271,
+              "y": 219,
+              "width": 460,
+              "height": 35.09375,
+              "top": 219,
+              "right": 731,
+              "bottom": 254.09375,
+              "left": 271
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          },
+          "link": {
+            "text": "Photographs ↗",
+            "font": "14px",
+            "color": "rgb(143, 90, 61)",
+            "background": "rgba(0, 0, 0, 0)",
+            "box": {
+              "x": 755.953125,
+              "y": 210.09375,
+              "width": 97.046875,
+              "height": 44,
+              "top": 210.09375,
+              "right": 853,
+              "bottom": 254.09375,
+              "left": 755.953125
+            },
+            "inView": true,
+            "windowClip": true,
+            "centerHit": true,
+            "focus": false
+          }
+        },
+        {
+          "name": "same-note-after-recovery-navigation",
+          "noteAfter": {
+            "same": true,
+            "value": "A note stays here while the photograph recovers.\nKeep this line.",
+            "start": 2,
+            "end": 17,
+            "direction": "backward"
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "requests": [],
+      "pass": true
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-gallery.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-error.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-retry-held.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-ready.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-keyboard-third.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-390-en-map.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-gallery.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-error.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-retry-held.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-ready.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-keyboard-third.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-320-zh-map.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-classic-en-gallery.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-classic-en-ready.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-classic-en-keyboard-third.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e17b-classic-en-map.png"
+  ],
+  "limits": "Named Chromium emulations +controlled original public image404/held/200; real palette/Retry/nativeEnter/Tab/Next/Arrow/Notes. Seeded actual workspace theme and readback, no real theme-setting action claimed. Classic WebGL forced off is fallback fixture. No live Immich/model/subscribe/contact; no AT/physical/Safari/fullmatrix/full96/99."
+}

@@ -10,6 +10,39 @@ export function sampleQuestions(pool, count, random = Math.random) {
   return questions.slice(0, size);
 }
 
+// Homepage request lifetime. Racing every asynchronous boundary also releases
+// the UI when a transport ignores AbortSignal. A completed stream disposes its
+// deadline without aborting a successful request.
+export function createIdleRequest(timeoutMs = 25_000) {
+  const controller = new AbortController();
+  let timer, disposed = false, reason = null, rejectAbort;
+  const aborted = new Promise((_, reject) => { rejectAbort = reject; });
+  // The deadline can fire between two waits; it is still observed by the next
+  // race, without creating an unhandled rejection during that interval.
+  aborted.catch(() => {});
+  function abort(error = new DOMException('Request stopped', 'AbortError')) {
+    if (disposed || controller.signal.aborted) return;
+    reason = error;
+    clearTimeout(timer);
+    controller.abort(error);
+    rejectAbort(error);
+  }
+  function touch() {
+    if (disposed || controller.signal.aborted) return;
+    clearTimeout(timer);
+    timer = setTimeout(() => abort(new DOMException('Reply timed out', 'TimeoutError')), timeoutMs);
+  }
+  touch();
+  return {
+    signal: controller.signal,
+    wait(value) { return Promise.race([value, aborted]); },
+    touch,
+    abort,
+    dispose() { disposed = true; clearTimeout(timer); },
+    get reason() { return reason; },
+  };
+}
+
 export function escapeHTML(value) {
   return String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 }

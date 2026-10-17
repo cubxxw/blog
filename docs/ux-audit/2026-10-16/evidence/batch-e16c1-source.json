@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-16T01:45:31.248149+00:00",
+  "base": "08dca5f0c40285e32132ec4a68d4c489f94b7003",
+  "batch": "E16c1 followup draft/focus recovery +short completed reply landing",
+  "files": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "a9d1fef2f50eb0740be0ebd61caa3f70f91561932a5a0ea96da816e1a8335b2a",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "875e31471f281957b6328ff5e2c23271406c58ae143d7590599a4ce47ff2ce05",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "static/js/article-selection.js": "34b8da3bf5c74bfcc888d32381625297d694e538cc5bf8a7676d20a21e7bf956",
+    "tests/e2e/article-chat-legibility-contracts.spec.ts": "962a791d66d19588879843b4da5872f310cdf4dfd1494cd75b8541457f73c63b",
+    "tests/e2e/article-chat-reply-landing-contracts.spec.ts": "6cb553b7f64de69005ecbd55b9e2e6a9d1f829582b9899c40db6e672a919eae6",
+    "layouts/partials/extend_head.html": "f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5"
+  },
+  "qaConfig": {
+    "docs/ux-audit/2026-10-16/article-reply-landing-qa.config.mjs": "09b4b8b78072734451529dad70c0fe59cffecc4348bb4733ae405fad7b13d938"
+  },
+  "runners": {
+    "docs/ux-audit/2026-10-16/batch-e16c1.actual.mjs": "22597e8676ae721be8422799c2285d8cbf636a6d1b4481a75ff2ce2f5b104355",
+    "docs/ux-audit/2026-10-16/article-qa.browser-helpers.mjs": "237a292a8df3e2ada3432a3a293d51e871cabe372a7ee5f43d91e6142ac1fedd"
+  },
+  "scope": "C1 inverse2edits exactlyC archivedFeb; initialquick unchangedalreadykeepDraft. New3+old3+old13=19; originalC2contract prefix exact479aff. Parent localTab reference scrollstop preserved; away sameanswerBody+unique originaltextp anchor<=1 allows expected innerHTML textnode replacement; initialC/A faults raw retained. FirstC/A translucentimage was originalsheetopacity.873642 finitefade, not stablepaint/capturebug: restored B completeopacity1+no finite sheet/root animations gate. No sourceCSS workaround."
+}

@@ -1,0 +1,2 @@
+import{defineConfig}from'/Users/cubxxw/data/blog/node_modules/@playwright/test/index.mjs';
+export default defineConfig({testDir:'/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e',testMatch:['space-library-profile-contracts.spec.ts'],timeout:30000,workers:1,reporter:'list',outputDir:'/private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright-e15',use:{baseURL:'http://127.0.0.1:1317',serviceWorkers:'block',channel:'chromium',launchOptions:{args:['--enable-gpu','--use-angle=metal']},viewport:{width:1440,height:900}}});

@@ -1,0 +1,16 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: false == true
+    at tap (file://<SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/footnote-qa.browser-helpers.mjs:8:79)
+    at async file://<SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/batch-e12-actions.browser.mjs:7:2 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

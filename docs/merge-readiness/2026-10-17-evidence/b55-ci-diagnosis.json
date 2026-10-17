@@ -1,0 +1,251 @@
+{
+  "head": "b55f57d23c74bf7e75518fbf6e93787c65336619",
+  "unique_failed_titles": 18,
+  "failure_context_count": 52,
+  "failures": {
+    "product-entry-contracts.spec.ts >> Chinese shared footer opens the actual products app in the current tab": [
+      {
+        "file": "browser/legacy/results/product-entry-contracts-Ch-e8a2c-ucts-app-in-the-current-tab-desktop-retry2/error-context.md",
+        "error": "\n\n```\nError: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Test timeout of 30000ms exceeded\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/product-entry-contracts-Ch-e8a2c-ucts-app-in-the-current-tab-desktop/error-context.md",
+        "error": "\n\n```\nError: Timeout 5000ms exceeded while waiting on the predicate\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/product-entry-contracts-Ch-e8a2c-ucts-app-in-the-current-tab-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n"
+      }
+    ],
+    "p1-p2-ux.spec.ts >> P1-P2 UX regression >> Space preserves work when session storage fails during a language change": [
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-5e91e-ls-during-a-language-change-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.getAttribute: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-bear-workspace]')\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-5e91e-ls-during-a-language-change-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.getAttribute: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-bear-workspace]')\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-5e91e-ls-during-a-language-change-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.getAttribute: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-bear-workspace]')\n\n```\n\n"
+      }
+    ],
+    "p1-p2-ux.spec.ts >> P1-P2 UX regression >> space defaults to CUBXXW OS and switches to Product Lab and back": [
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-6cd18-hes-to-Product-Lab-and-back-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-6cd18-hes-to-Product-Lab-and-back-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-6cd18-hes-to-Product-Lab-and-back-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n"
+      }
+    ],
+    "p1-p2-ux.spec.ts >> P1-P2 UX regression >> Product Lab can enter BEAR knowledge space and return without leaving lab": [
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-e1d77--return-without-leaving-lab-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-e1d77--return-without-leaving-lab-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-e1d77--return-without-leaving-lab-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      }
+    ],
+    "space-cafe-details-contracts.spec.ts >> 1440px true café detail entry >> the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger": [
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-80327-oam-pose-and-native-trigger-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"roam\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-80327-oam-pose-and-native-trigger-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"coffee\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-80327-oam-pose-and-native-trigger-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"roam\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      }
+    ],
+    "page-wayfinder.spec.ts >> Home and About reading navigation >> homepage primary routes and navigation remain usable without JavaScript": [
+      {
+        "file": "browser/legacy/results/page-wayfinder-Home-and-Ab-6f2d8-n-usable-without-JavaScript-desktop-retry2/error-context.md",
+        "error": "\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('.hp-entry-actions a').nth(1)\nExpected: \"/zh/projects/\"\nReceived: \"/zh/projects/#studio-products\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('.hp-entry-actions a').nth(1) with timeout 5000ms\n  - waiting for locator('.hp-entry-actions a').nth(1)\n    14 × locator resolved to <a href=\"/zh/projects/#studio-products\">…</a>\n       - unexpected value \"/zh/projects/#studio-products\"\n\n```\n\n```yaml\n- link \"探索产品\":\n  - /url: /zh/projects/#studio-products\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/page-wayfinder-Home-and-Ab-6f2d8-n-usable-without-JavaScript-desktop/error-context.md",
+        "error": "\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('.hp-entry-actions a').nth(1)\nExpected: \"/zh/projects/\"\nReceived: \"/zh/projects/#studio-products\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('.hp-entry-actions a').nth(1) with timeout 5000ms\n  - waiting for locator('.hp-entry-actions a').nth(1)\n    14 × locator resolved to <a href=\"/zh/projects/#studio-products\">…</a>\n       - unexpected value \"/zh/projects/#studio-products\"\n\n```\n\n```yaml\n- link \"探索产品\":\n  - /url: /zh/projects/#studio-products\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/page-wayfinder-Home-and-Ab-6f2d8-n-usable-without-JavaScript-desktop-retry1/error-context.md",
+        "error": "\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('.hp-entry-actions a').nth(1)\nExpected: \"/zh/projects/\"\nReceived: \"/zh/projects/#studio-products\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('.hp-entry-actions a').nth(1) with timeout 5000ms\n  - waiting for locator('.hp-entry-actions a').nth(1)\n    14 × locator resolved to <a href=\"/zh/projects/#studio-products\">…</a>\n       - unexpected value \"/zh/projects/#studio-products\"\n\n```\n\n```yaml\n- link \"探索产品\":\n  - /url: /zh/projects/#studio-products\n```\n\n"
+      }
+    ],
+    "space-app-reading-contracts.spec.ts >> 1440×900 zh light products and books >> real choices retain focus, readable content and distinct reachable reading links": [
+      {
+        "file": "browser/legacy/results/space-app-reading-contract-11b56-nct-reachable-reading-links-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.evaluate: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-window=\"products\"]').locator('.space-product__links a').nth(1)\n    - locator resolved to visible <a class=\"\" target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://gettalentsignal.com/demo\">测试预览 ↗</a>\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-app-reading-contract-11b56-nct-reachable-reading-links-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-app-reading-contract-11b56-nct-reachable-reading-links-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      }
+    ],
+    "space-cafe-details-contracts.spec.ts >> the actual cup and book raycasts enter the same detail views; a drag retains the computer hit instead of creating a click": [
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-720ae-instead-of-creating-a-click-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"roam\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-720ae-instead-of-creating-a-click-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).not.toHaveAttribute() failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: not have attribute\nReceived: have attribute\n\nCall log:\n  - Expect \"not toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-720ae-instead-of-creating-a-click-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"coffee\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      }
+    ],
+    "space-app-reading-contracts.spec.ts >> 1440×900 en dark products and books >> real choices retain focus, readable content and distinct reachable reading links": [
+      {
+        "file": "browser/legacy/results/space-app-reading-contract-aaa43-nct-reachable-reading-links-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.boundingBox: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-window=\"products\"]').locator('.space-product__links a').nth(1)\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-app-reading-contract-aaa43-nct-reachable-reading-links-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"Close search\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-app-reading-contract-aaa43-nct-reachable-reading-links-desktop-retry2/error-context.md",
+        "error": "\n\n```\nError: Test timeout of 30000ms exceeded\n```\n\n"
+      }
+    ],
+    "product-entry-contracts.spec.ts >> English home products section opens the actual products app in the current tab": [
+      {
+        "file": "browser/legacy/results/product-entry-contracts-En-f9c6c-ucts-app-in-the-current-tab-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/product-entry-contracts-En-f9c6c-ucts-app-in-the-current-tab-desktop-retry2/error-context.md",
+        "error": "\n\n```\nError: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Test timeout of 30000ms exceeded\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/product-entry-contracts-En-f9c6c-ucts-app-in-the-current-tab-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.evaluate: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-window=\"products\"]')\n    - locator resolved to visible <section role=\"region\" tabindex=\"-1\" data-active=\"true\" class=\"space-window\" aria-label=\"Products\" data-maximized=\"false\" data-space-window=\"products\">…</section>\n\n```\n\n"
+      }
+    ],
+    "space-arrangement-contracts.spec.ts >> a 1440×900 desktop tiles 4 windows with reachable controls and the original note": [
+      {
+        "file": "browser/legacy/results/space-arrangement-contract-7577e-trols-and-the-original-note-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-arrangement-contract-7577e-trols-and-the-original-note-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-arrangement-contract-7577e-trols-and-the-original-note-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('.space-menu [data-space-launchpad-trigger]')\n    - locator resolved to <button type=\"button\" aria-haspopup=\"dialog\" data-space-launchpad-trigger=\"\">…</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n\n```\n\n"
+      }
+    ],
+    "p1-p2-ux.spec.ts >> P1-P2 UX regression >> a pending knowledge mount cannot clear an immediate reopen or a later BEAR view": [
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-44e6a-reopen-or-a-later-BEAR-view-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: visible\nReceived: undefined\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-44e6a-reopen-or-a-later-BEAR-view-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('[data-bks-host] .bks__chip').first()\nExpected: visible\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('[data-bks-host] .bks__chip').first() with timeout 5000ms\n  - waiting for locator('[data-bks-host] .bks__chip').first()\n  - Test timeout of 30000ms exceeded.\n\n```\n\n```yaml\n- link \"Skip to main content\":\n  - /url: \"#main-content\"\n- banner:\n  - navigation:\n    - link \"cubxxw\":\n      - /url: https://cubxxw.com/zh/\n    - list:\n      - listitem:\n        - link \"文章\":\n          - /url: https://cubxxw.com/zh/articles/\n      - listitem:\n        - link \"空间\":\n          - /url: https://cubxxw.com/zh/projects/\n    - button \"搜索\"\n    - button \"Toggle theme\":\n      - img\n      - img\n    - list \"Language\":\n      - listitem:\n        - link \"English\":\n          - /url: /projects/\n          - text: EN\n      - listitem: / 中\n- main:\n  - heading \"空间 · CUBXXW OS\" [level=1]\n  - navigation \"选择产品视图\":\n    - button \"CUBXXW OS\"\n    - button \"Product Lab\" [pressed]\n  - paragraph: Product Lab\n  - region \"空间 · CUBXXW OS\"\n- contentinfo:\n  - text: © 2026\n  - link \"熊鑫伟（cubxxw）· 公开的实践与思想档案\":\n    - /url: https://cubxxw.com/zh/\n```\n\n"
+      }
+    ],
+    "p1-p2-ux.spec.ts >> P1-P2 UX regression >> an already open global search owns shortcuts above the BEAR workspace": [
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-6a95f-ts-above-the-BEAR-workspace-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.focus: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('#search-command-palette').locator('.search-palette__close')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" class=\"search-palette__close\">…</button>\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-6a95f-ts-above-the-BEAR-workspace-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.focus: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('#search-command-palette').locator('.search-palette__close')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" class=\"search-palette__close\">…</button>\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-6a95f-ts-above-the-BEAR-workspace-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.focus: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('#search-command-palette').locator('.search-palette__close')\n\n```\n\n"
+      }
+    ],
+    "product-entry-contracts.spec.ts >> Chinese home introduction opens the actual products app in the current tab": [
+      {
+        "file": "browser/legacy/results/product-entry-contracts-Ch-7a652-ucts-app-in-the-current-tab-desktop/error-context.md",
+        "error": "\n\n```\nError: Timeout 5000ms exceeded while waiting on the predicate\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/product-entry-contracts-Ch-7a652-ucts-app-in-the-current-tab-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/product-entry-contracts-Ch-7a652-ucts-app-in-the-current-tab-desktop-retry2/error-context.md",
+        "error": "\n\n```\nError: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Test timeout of 30000ms exceeded\n```\n\n"
+      }
+    ],
+    "p1-p2-ux.spec.ts >> P1-P2 UX regression >> BEAR OS product search uses workspace search and restores the selected product": [
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-3812b-stores-the-selected-product-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n    - locator resolved to <button type=\"button\" aria-label=\"关闭搜索\" data-space-search-close=\"\">Esc</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-3812b-stores-the-selected-product-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-3812b-stores-the-selected-product-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toBeHidden() failed\n\nLocator:  getByRole('dialog', { name: '搜索工作区' })\nExpected: hidden\nReceived: undefined\n\nCall log:\n  - Expect \"toBeHidden\" getByRole('dialog', { name: '搜索工作区' }) with timeout 5000ms\n  - waiting for getByRole('dialog', { name: '搜索工作区' })\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      }
+    ],
+    "space-cafe-details-contracts.spec.ts >> six scene changes and both detail views preserve the original Notes node, draft and selection through the live workspace": [
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-d850e--through-the-live-workspace-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"false\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-d850e--through-the-live-workspace-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator:  locator('[data-cafe-inspect=\"coffee\"]')\nExpected: visible\nReceived: undefined\n\nCall log:\n  - Expect \"toBeVisible\" locator('[data-cafe-inspect=\"coffee\"]') with timeout 5000ms\n  - waiting for locator('[data-cafe-inspect=\"coffee\"]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-d850e--through-the-live-workspace-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-space-search-close]')\n\n```\n\n"
+      }
+    ],
+    "p1-p2-ux.spec.ts >> P1-P2 UX regression >> Space language changes preserve private work and the open article": [
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-62f6f-e-work-and-the-open-article-desktop-retry2/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.getAttribute: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-bear-workspace]')\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-62f6f-e-work-and-the-open-article-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: locator.getAttribute: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-bear-workspace]')\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-62f6f-e-work-and-the-open-article-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: page.waitForFunction: Test timeout of 30000ms exceeded.\n```\n\n"
+      }
+    ],
+    "space-cafe-details-contracts.spec.ts >> runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop": [
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-ff150-grab-or-an-idle-render-loop-desktop-retry1/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"roam\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      },
+      {
+        "file": "browser/legacy/results/space-cafe-details-contrac-ff150-grab-or-an-idle-render-loop-desktop/error-context.md",
+        "error": "\n\n```\nTest timeout of 30000ms exceeded.\n```\n\n```\nError: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"false\"\nReceived: \"\"\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\n\n```\n\n"
+      }
+    ]
+  }
+}

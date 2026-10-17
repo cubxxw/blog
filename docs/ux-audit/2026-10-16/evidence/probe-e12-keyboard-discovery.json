@@ -1,0 +1,258 @@
+{
+  "at": "2026-10-15T22:08:52.734Z",
+  "sourceManifest": "batch-e12-source.json",
+  "contexts": [
+    {
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "coarse": false,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "before": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 276.859375,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 289.046875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.4375,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "help": {
+        "text": "按向下方向键进入脚注预览，按回车跳到脚注。",
+        "rect": {
+          "x": -1,
+          "y": 15196.421875,
+          "width": 1,
+          "height": 1,
+          "top": 15196.421875,
+          "right": 0,
+          "bottom": 15197.421875,
+          "left": -1
+        },
+        "clipPath": "inset(50%)"
+      },
+      "afterTab": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Andrej Karpathy, X (Twitter), 2025-06. https://x.com/karpathy/status/1937902205765607626",
+        "card": {
+          "x": 113,
+          "y": 439.859375,
+          "width": 360,
+          "height": 132.171875
+        },
+        "body": {
+          "x": 127.59375,
+          "y": 452.046875,
+          "width": 330.8125,
+          "height": 63,
+          "scrollTop": 0,
+          "scrollHeight": 63,
+          "clientHeight": 63,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 127.59375,
+          "y": 517.4375,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:2",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:2",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:2"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-zh.png",
+      "limits": "Local previous-control focus setup; actual Tab reaches marker, no ArrowDown given. Normal Tab can continue to next marker. Existing SR-only description is present; no OS/AT listening performed."
+    },
+    {
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "coarse": false,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "before": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 277.25,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 289.4375,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 375.828125,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "help": {
+        "text": "Press Arrow Down to enter the preview, or Enter to go to the note.",
+        "rect": {
+          "x": -1,
+          "y": 17350.859375,
+          "width": 1,
+          "height": 1,
+          "top": 17350.859375,
+          "right": 0,
+          "bottom": 17351.859375,
+          "left": -1
+        },
+        "clipPath": "inset(50%)"
+      },
+      "afterTab": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Andrej Karpathy, X (Twitter), 2025-06. https://x.com/karpathy/status/1937902205765607626",
+        "card": {
+          "x": 609,
+          "y": 430.421875,
+          "width": 360,
+          "height": 132.171875
+        },
+        "body": {
+          "x": 623.59375,
+          "y": 442.609375,
+          "width": 330.8125,
+          "height": 63,
+          "scrollTop": 0,
+          "scrollHeight": 63,
+          "clientHeight": 63,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 623.59375,
+          "y": 508,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:2",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:2",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:2"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-e12-keyboard-marker-en.png",
+      "limits": "Local previous-control focus setup; actual Tab reaches marker, no ArrowDown given. Normal Tab can continue to next marker. Existing SR-only description is present; no OS/AT listening performed."
+    }
+  ]
+}

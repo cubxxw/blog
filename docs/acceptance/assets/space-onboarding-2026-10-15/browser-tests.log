@@ -1,0 +1,41 @@
+
+Running 28 tests using 1 worker
+
+(node:96214) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › tests/e2e/space-cafe.spec.ts:6:7 › Space café › the café entry offers six scenes, then opens the real workspace search (1.3s)
+  ✓   2 [desktop] › tests/e2e/space-cafe.spec.ts:20:7 › Space café › the landscape room controls stay clickable at low height (480ms)
+  ✓   3 [desktop] › tests/e2e/space-cafe.spec.ts:32:7 › Space café › an old About route can return to the room across language and reload (751ms)
+  ✓   4 [desktop] › tests/e2e/space-cafe.spec.ts:43:7 › Space café › visiting the room preserves the exact note editor and private workspace (790ms)
+(node:96256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [desktop] › tests/e2e/space-onboarding.spec.ts:11:5 › the terminal stays visible until a real scene frame, with a direct writing escape (2.2s)
+  ✓   6 [desktop] › tests/e2e/space-onboarding.spec.ts:27:5 › opening a seat or terrace from the workspace preserves notes and allows returning (837ms)
+  ✓   7 [desktop] › tests/e2e/space-onboarding.spec.ts:44:5 › a cancelled read transition cannot steal a replayed café visit (8.2s)
+  ✓   8 [desktop] › tests/e2e/space-onboarding.spec.ts:57:5 › a completed onboarding recovers immediately after graphics context loss (436ms)
+  ✓   9 [desktop] › tests/e2e/space-onboarding.spec.ts:68:5 › module failure offers an ordinary workspace and reading link (303ms)
+  ✓  10 [desktop] › tests/e2e/space-onboarding.spec.ts:77:5 › the optional resident can fail without blocking the room or workspace (454ms)
+  ✓  11 [desktop] › tests/e2e/space-onboarding.spec.ts:84:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (8.7s)
+  ✓  12 [desktop] › tests/e2e/space-onboarding.spec.ts:102:5 › a graphics failure during the reveal cannot leave an invisible modal behind (1.7s)
+  ✓  13 [desktop] › tests/e2e/space-onboarding.spec.ts:111:5 › graphics recovery preserves the original editor, focus and selection (589ms)
+  ✓  14 [desktop] › tests/e2e/space-onboarding.spec.ts:124:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry (764ms)
+(node:96331) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [mobile] › tests/e2e/space-cafe.spec.ts:6:7 › Space café › the café entry offers six scenes, then opens the real workspace search (602ms)
+  ✓  16 [mobile] › tests/e2e/space-cafe.spec.ts:20:7 › Space café › the landscape room controls stay clickable at low height (440ms)
+  ✓  17 [mobile] › tests/e2e/space-cafe.spec.ts:32:7 › Space café › an old About route can return to the room across language and reload (716ms)
+  ✓  18 [mobile] › tests/e2e/space-cafe.spec.ts:43:7 › Space café › visiting the room preserves the exact note editor and private workspace (671ms)
+(node:96360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  19 [mobile] › tests/e2e/space-onboarding.spec.ts:11:5 › the terminal stays visible until a real scene frame, with a direct writing escape (2.3s)
+  ✓  20 [mobile] › tests/e2e/space-onboarding.spec.ts:27:5 › opening a seat or terrace from the workspace preserves notes and allows returning (699ms)
+  ✓  21 [mobile] › tests/e2e/space-onboarding.spec.ts:44:5 › a cancelled read transition cannot steal a replayed café visit (7.7s)
+  ✓  22 [mobile] › tests/e2e/space-onboarding.spec.ts:57:5 › a completed onboarding recovers immediately after graphics context loss (409ms)
+  ✓  23 [mobile] › tests/e2e/space-onboarding.spec.ts:68:5 › module failure offers an ordinary workspace and reading link (292ms)
+  ✓  24 [mobile] › tests/e2e/space-onboarding.spec.ts:77:5 › the optional resident can fail without blocking the room or workspace (560ms)
+  ✓  25 [mobile] › tests/e2e/space-onboarding.spec.ts:84:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (8.1s)
+  ✓  26 [mobile] › tests/e2e/space-onboarding.spec.ts:102:5 › a graphics failure during the reveal cannot leave an invisible modal behind (1.7s)
+  ✓  27 [mobile] › tests/e2e/space-onboarding.spec.ts:111:5 › graphics recovery preserves the original editor, focus and selection (493ms)
+  ✓  28 [mobile] › tests/e2e/space-onboarding.spec.ts:124:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry (451ms)
+
+  28 passed (54.8s)

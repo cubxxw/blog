@@ -1,0 +1,16 @@
+
+Running 9 tests using 1 worker
+
+(node:51639) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/home-chat-recovery.spec.ts:51:37 › zh draft survives close and IME Enter/Escape retains composition (839ms)
+  ✓  2 tests/e2e/home-chat-recovery.spec.ts:51:37 › en draft survives close and IME Enter/Escape retains composition (557ms)
+  ✓  3 tests/e2e/home-chat-recovery.spec.ts:66:5 › a 25s header stall unlocks retry and a late response cannot overwrite it (388ms)
+  ✓  4 tests/e2e/home-chat-recovery.spec.ts:81:39 › SSE idle deadline covers the first chunk without awaiting stuck cancellation (402ms)
+  ✓  5 tests/e2e/home-chat-recovery.spec.ts:81:39 › SSE idle deadline covers a later chunk without awaiting stuck cancellation (412ms)
+  ✓  6 tests/e2e/home-chat-recovery.spec.ts:100:5 › a JSON body stall also races the idle deadline and ignores late JSON (407ms)
+  ✓  7 tests/e2e/home-chat-recovery.spec.ts:109:5 › short-screen Stop is the enabled sender target and preserves a partial answer for retry (449ms)
+  ✓  8 tests/e2e/home-chat-recovery.spec.ts:131:5 › [DONE] completes before EOF even when reader cancellation never settles (755ms)
+  ✓  9 tests/e2e/home-chat-recovery.spec.ts:142:5 › finishing a short-screen reply preserves a wheel departure toward the books (712ms)
+
+  9 passed (5.9s)

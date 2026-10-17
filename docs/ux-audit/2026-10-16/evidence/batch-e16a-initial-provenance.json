@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-16T01:02:08.610040+00:00",
+  "base": "08dca5f0",
+  "parentImagesRead": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-intro.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-readable-history.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-cleared-same-draft.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-cleared-same-draft.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-224-selected.png"
+  ],
+  "completedContexts": [
+    "desktop-en",
+    "phone-zh"
+  ],
+  "partialFailure": {
+    "context": "short-zh",
+    "at": "224px-held-generation",
+    "messagesHeight": 24.8125,
+    "computedReplyLineHeight": 25.2
+  },
+  "testEvidence": "initial35:34pass1fixture; protected32allpass. A affectednew3pass12.1s. Actual2pass/thirdpartial, fourth/fifthunrun.",
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-intro.png": "b9da60307ddb4c1ced925f4061576185baa760fbc9ad3d7b5509f4b917fd4eba",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-readable-history.png": "cc5e5e65d87b832a48d409ccee8d062434705ead4aacf9200cf6f244ca81c169",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-selected-passage.png": "215b69e4bc987ffb03803f58560825be12e62f0eec5e1a35ae165ab4e6683eb8",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-cleared-same-draft.png": "2dd80865959caeb4c493d4212d9ed2062cfe382061e94936ed55f175abbfaf13",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-selected-passage.png": "f02490bb09668beac974d623817271d49fea53e66af03dbeb17c0dad31a46f8f",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-cleared-same-draft.png": "91b8484f2b03c4ac9faac362cc97fccd81a9b5966006c70ee4cb27a4e4d03697",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-selected-passage.png": "7881eb14957aada42e078ed6695a97359b0b67636ef0235817551cde826df106",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-224-selected.png": "a7c8830a4c145118a9cffd02662b126a4e426ce5a27d624d26595830b6195ee8",
+    "docs/ux-audit/2026-10-16/batch-e16a.actual.mjs": "88c8beeb696c2f75223ec9e10c6eda28d1f0b01456e7bbb9be628ab39ba9a94d",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-initial-actual.json": "bf8a96b6f37105e22f8295cb338962da75a0189f33b55a06545e04a053efffca",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-initial-actual.log": "027bb24b7df9a9435375dde58a8a3ffbdfa8c3bf988c3744412e28c6242daee1",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-initial-source.json": "c06563e7c7a27a5d35355423046ccd72c69f3f3bd4b5daa8d4c6c54afb0ce0b2",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-contracts.log": "a4bfe4d7037ff420ad6bd26bdd0f71d23ee69488e907902569564af8a605ba9f",
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-initial-editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-initial-article-bottom-sheet.css": "f0a85dd9025dceeef5e2828d0dbc88c9cdf8fcb0233783ded8c3642bff371757",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-initial-article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "static/js/article-selection.js": "34b8da3bf5c74bfcc888d32381625297d694e538cc5bf8a7676d20a21e7bf956",
+    "docs/ux-audit/2026-10-16/article-legibility-qa.config.mjs": "c83e4fd52ff2d67bbdaf5b79704d9d8db7c831cd013b354f7d91f8919727864a",
+    "docs/ux-audit/2026-10-16/article-qa.browser-helpers.mjs": "237a292a8df3e2ada3432a3a293d51e871cabe372a7ee5f43d91e6142ac1fedd",
+    "docs/ux-audit/2026-10-16/article-qa-visible-focus.mjs": "52b7b6211b70c9392230a05277c5e56db23cd1692a21c1ed96422b7a82f4887e"
+  },
+  "limits": "All8A PNG parent read. No all5 pass or whole96 claim; sourceCSS immutable snapshots retain A. E16a spec same as source318c at actual start; no separate specbytes copy before B; original hash binding retained."
+}

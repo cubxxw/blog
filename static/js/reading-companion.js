@@ -61,21 +61,9 @@
     var panels = document.querySelectorAll('.reading-companion .rc-panel');
     if (!tabs.length) return;
 
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var target = tab.dataset.tab;
-        tabs.forEach(function (t) {
-          var active = t.dataset.tab === target;
-          t.classList.toggle('rc-tab--active', active);
-          t.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        panels.forEach(function (p) {
-          var isTarget = p.id === 'rc-panel-' + target;
-          p.classList.toggle('rc-panel--active', isTarget);
-          if (isTarget) { p.removeAttribute('hidden'); }
-          else { p.setAttribute('hidden', ''); }
-        });
-      });
+    if (window.ArticleTabs) window.ArticleTabs.mount({
+      tabs: tabs, panels: panels, tabClass: 'rc-tab--active',
+      panelClass: 'rc-panel--active', panelPrefix: 'rc-panel-'
     });
   }
 
@@ -166,7 +154,7 @@
       var padding = 40;
       if (linkRect.top < containerRect.top + padding || linkRect.bottom > containerRect.bottom - padding) {
         var targetScrollTop = container.scrollTop + (linkRect.top - containerRect.top) - (containerRect.height / 2) + (linkRect.height / 2);
-        container.scrollTo({ top: targetScrollTop, behavior: 'smooth' });
+        container.scrollTo({ top: targetScrollTop, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
       }
     }
 
@@ -262,7 +250,7 @@
 
   // ─── 5. AI Panel ──────────────────────────────────────────────────────────
   function initAiPanel() {
-    var panel = document.getElementById('rc-panel-ai');
+    var panel = document.querySelector('[data-article-chat]');
     if (panel && window.ArticleChat) window.ArticleChat.init(panel, { prefix: 'rc', render: parseMarkdown });
   }
 

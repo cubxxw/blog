@@ -1,0 +1,90 @@
+{
+  "at": "2026-10-16T01:04:23.243937+00:00",
+  "base": "08dca5f0",
+  "batch": "E16b final candidate awaiting independent review",
+  "files": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "875e31471f281957b6328ff5e2c23271406c58ae143d7590599a4ce47ff2ce05",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "static/js/article-selection.js": "34b8da3bf5c74bfcc888d32381625297d694e538cc5bf8a7676d20a21e7bf956",
+    "tests/e2e/article-chat-legibility-contracts.spec.ts": "962a791d66d19588879843b4da5872f310cdf4dfd1494cd75b8541457f73c63b",
+    "docs/ux-audit/2026-10-16/article-legibility-qa.config.mjs": "c83e4fd52ff2d67bbdaf5b79704d9d8db7c831cd013b354f7d91f8919727864a",
+    "docs/ux-audit/2026-10-16/batch-e16b.actual.mjs": "e3a01f114feb4e91ee5824036350633d32bf39bc69023751321da008f3352599",
+    "docs/ux-audit/2026-10-16/article-qa.browser-helpers.mjs": "237a292a8df3e2ada3432a3a293d51e871cabe372a7ee5f43d91e6142ac1fedd",
+    "docs/ux-audit/2026-10-16/article-qa-visible-focus.mjs": "52b7b6211b70c9392230a05277c5e56db23cd1692a21c1ed96422b7a82f4887e",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-selected-passage.png": "7881eb14957aada42e078ed6695a97359b0b67636ef0235817551cde826df106",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-selected.png": "a7c8830a4c145118a9cffd02662b126a4e426ce5a27d624d26595830b6195ee8",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-stop.png": "607f56182ea88843cd4b0df07366ccd07abbb102af24b46f4719fd6055b374b2",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-stopped.png": "b56d3e82c997b30dbe6966635993dbc7888e65116a4822b085b891956f9e9ad5",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-320-en-selected-passage.png": "6a7fa71d699b184f99a5ccb726eb840b54e4aba0eac560224d24cc25754625bd",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-320-en-cleared-same-draft.png": "c9d019f9cd5fd45f158a1f50ccf70f15eee5166d64c203e43a1a4adcacd86aad",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-selected-passage.png": "10e6f1eb5fa91a5f57f4a15f80cc70c4460d94b8945a82ea7257274ed73343ed",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-selected.png": "3be92e09d16c34f3c098fd5e33e6a1383b1321e4acc3bfe0ade79fee2914a005",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-stop.png": "69cabbe5b6fa682c1114d0a27f0402bb957982b4a5855e6b558c9e75bb5e5246",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-stopped.png": "031d2ee7adfe6ec733893304b0b1060e89f74c4d6b0e374bee8275fadd98e0ac",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-source.json": "3ac1f9a3fa7426a18a7cae32f56edf74dd443631cc7efbdcde10ba5f7a1263f9",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-actual.json": "74038279957b839e89ef126a63406a653459362d8a1ea4d9e5f7527acb1ca7f2",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-actual.log": "c4b09470b934ad08c7c702653ad48ea14cac5b9f792ccc11b116d7026545fedb",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-build.log": "c342c280e2d41c70f767fd9b025cba54e4d5e76c7e573737015bf79a3d88cb3e",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-contracts.log": "370e8a105530129f4be6b2474382d9d71d22d1394b0062a8441edfcb10ba0116",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16a-initial-provenance.json": "956b39a521b463e8bb37860e65cf7af5fca011f2a92a325043138810a13cbbec"
+  },
+  "parentImagesRead": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-selected.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-stop.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-stopped.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-320-en-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-320-en-cleared-same-draft.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-selected-passage.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-selected.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-stop.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-stopped.png"
+  ],
+  "primaryActualComposition": {
+    "AunchangedDesktopPhone": [
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-intro.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-readable-history.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-selected-passage.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-desktop-en-cleared-same-draft.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-selected-passage.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-phone-zh-cleared-same-draft.png"
+    ],
+    "Baffected3": [
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-selected-passage.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-selected.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-stop.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-zh-224-stopped.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-320-en-selected-passage.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-320-en-cleared-same-draft.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-selected-passage.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-selected.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-stop.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16b-short-en-224-stopped.png"
+    ],
+    "uniqueCompletedContexts": 5,
+    "primaryImages": 16,
+    "ApartialFailedShortImagesSeparatelyRetained": [
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-selected-passage.png",
+      "docs/ux-audit/2026-10-16/evidence/batch-e16a-short-zh-224-selected.png"
+    ]
+  },
+  "initialContracts": "initial35=34pass1entryfixture; unchangedold32allpass; A3newpass12.1s; B3newpass12.2s. Same3distinctcontracts, not9features.",
+  "Bactual": {
+    "pass": true,
+    "contexts": 3,
+    "images": 10,
+    "pageErrors": 0,
+    "endpointDenied": 0
+  },
+  "limits": "Only5 named emulated Chromium contexts; no OS keyboard/AT/Safari/physicaltouch/full96. Real Range+toolbar/input/clear/Send/Stop and controlled AIClient SSE only. Aflat3contrast (share-label background gradient unknown); no allcontrast claim; no paidmodel or share publish."
+}

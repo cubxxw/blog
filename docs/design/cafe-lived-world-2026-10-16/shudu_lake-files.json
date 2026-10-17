@@ -1,0 +1,326 @@
+{
+  "hdri": {
+    "12k": {
+      "hdr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/12k/shudu_lake_12k.hdr",
+        "size": 205476098,
+        "md5": "221c47ad7d75b6256abdd94d3eed3b81"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/12k/shudu_lake_12k.exr",
+        "size": 166560466,
+        "md5": "78308402b832d0ae4f3713ea209c0e76"
+      }
+    },
+    "8k": {
+      "hdr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/8k/shudu_lake_8k.hdr",
+        "size": 100868255,
+        "md5": "cd059fc86e118db66b2c19e7130d3cb1"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/8k/shudu_lake_8k.exr",
+        "size": 84168511,
+        "md5": "93e73f8ac6c360b3c9b600f72883763b"
+      }
+    },
+    "4k": {
+      "hdr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/shudu_lake_4k.hdr",
+        "size": 25917030,
+        "md5": "4ae0f52bf785fdadeb9bd3c41b803eb5"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/4k/shudu_lake_4k.exr",
+        "size": 21641061,
+        "md5": "3f2d493c21766f91afd5c7ac7ca875ec"
+      }
+    },
+    "2k": {
+      "hdr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/shudu_lake_2k.hdr",
+        "size": 6510297,
+        "md5": "35c4d4e235e38b377027dffbdd6ae40a"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/2k/shudu_lake_2k.exr",
+        "size": 5406884,
+        "md5": "17bb38fd5037480405b7f695fa71f299"
+      }
+    },
+    "1k": {
+      "hdr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/shudu_lake_1k.hdr",
+        "size": 1631335,
+        "md5": "bf91e2c627e25d7182fdf5d95b22e30e"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/1k/shudu_lake_1k.exr",
+        "size": 1384900,
+        "md5": "f14929e2a3a4a99e4c5d1d3b4c52d3e1"
+      }
+    }
+  },
+  "tonemapped": {
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/shudu_lake.jpg",
+    "size": 35529116,
+    "md5": "cb579edf160dcdf86d52e748209cd190"
+  },
+  "backplates": {
+    "PuDaCuo_20161010_07": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_07.jpg",
+        "size": 37216971,
+        "md5": "6743d41a679b7e89605a6916762bd29a"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_07.cr2",
+        "size": 64642082,
+        "md5": "c91389519ebc34cf8cb3b0388bff5fbb"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_07.jpg",
+        "size": 24068955,
+        "md5": "5c501fdba726bf078d468f48f154a309"
+      }
+    },
+    "PuDaCuo_20161010_06": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_06.jpg",
+        "size": 46267563,
+        "md5": "b31c926c5fab8812e7c28cac158b7c3d"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_06.cr2",
+        "size": 64794589,
+        "md5": "5cd74480985cdbfa4a73cfa8ae2a9bdd"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_06.jpg",
+        "size": 22555782,
+        "md5": "dd95c3a518fac4e858fdf7d203a948c5"
+      }
+    },
+    "PuDaCuo_20161010_09": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_09.jpg",
+        "size": 41163026,
+        "md5": "d2cc9e1ce9fca70eda678413fda700ea"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_09.cr2",
+        "size": 61540079,
+        "md5": "09a437ffad413a9d293ea8ab0e58029f"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_09.jpg",
+        "size": 20673380,
+        "md5": "a06675cb32f3ef8c5ee4590f168f3757"
+      }
+    },
+    "PuDaCuo_20161010_08": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_08.jpg",
+        "size": 36567772,
+        "md5": "5d524d4804d9207aab4bdd4b41b996e9"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_08.cr2",
+        "size": 62318996,
+        "md5": "08dd0cddb56c16087925f288a3157e1f"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_08.jpg",
+        "size": 17805689,
+        "md5": "f3ed71ebf2fa8a505d55c0ed0f8bd0fd"
+      }
+    },
+    "PuDaCuo_20161010_10": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_10.jpg",
+        "size": 41715344,
+        "md5": "ac45f97896c6a1d3289724b9b8330fa0"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_10.cr2",
+        "size": 63377069,
+        "md5": "cece8bb9128397059d024d63649d7b3f"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_10.jpg",
+        "size": 17501019,
+        "md5": "4d06ced71ce56e44334044a3f5871f94"
+      }
+    },
+    "PuDaCuo_20161010_01": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_01.jpg",
+        "size": 45318379,
+        "md5": "426519607d58f8bf870d16229d9c3982"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_01.cr2",
+        "size": 67851866,
+        "md5": "a0147c6b8d0febc2b1b4c03759af4f9c"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_01.jpg",
+        "size": 24117194,
+        "md5": "b61549bf79650d9c30512009c42e70e8"
+      }
+    },
+    "PuDaCuo_20161010_12": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_12.jpg",
+        "size": 38710350,
+        "md5": "8e9120512489b77fddc39bceb38373ea"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_12.cr2",
+        "size": 62658716,
+        "md5": "e24e1f90bb1856dcafe3189fff4f7b17"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_12.jpg",
+        "size": 16328304,
+        "md5": "44c60d5406b39d882be82fe7acc076b7"
+      }
+    },
+    "PuDaCuo_20161010_11": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_11.jpg",
+        "size": 39121063,
+        "md5": "d39797d2c23555a09c3345023ebc64e2"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_11.cr2",
+        "size": 63079469,
+        "md5": "380f43129e234ea7ee07425a3996a898"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_11.jpg",
+        "size": 16873307,
+        "md5": "4012ce27eac98b7679f633015164997d"
+      }
+    },
+    "PuDaCuo_20161010_14": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_14.jpg",
+        "size": 41447424,
+        "md5": "8c43bd6e612453230e577ae2681fbeb6"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_14.cr2",
+        "size": 65202008,
+        "md5": "ac222a807a64cf71e8a75f6cc8481f99"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_14.jpg",
+        "size": 20665738,
+        "md5": "11d6c98eccd62ca2b05f81a1462a99f2"
+      }
+    },
+    "PuDaCuo_20161010_03": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_03.jpg",
+        "size": 39276587,
+        "md5": "d307564c722522674ae13fe0ff956b6b"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_03.cr2",
+        "size": 63698333,
+        "md5": "cda1d234086ef24f224d57c2fbd25074"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_03.jpg",
+        "size": 17582868,
+        "md5": "8fc22d3b9a384bbc4add648bd81c94bc"
+      }
+    },
+    "PuDaCuo_20161010_13": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_13.jpg",
+        "size": 43973553,
+        "md5": "4d7a3e0e5175b5f5efb6645a5884c7df"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_13.cr2",
+        "size": 66016992,
+        "md5": "dc786f676e13ae324f831d07aba2b8c4"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_13.jpg",
+        "size": 19130579,
+        "md5": "95db61c8bf96a2d164fa82f08240957d"
+      }
+    },
+    "PuDaCuo_20161010_02": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_02.jpg",
+        "size": 41100507,
+        "md5": "1366fb70763d7776b159d30c9f6ab3a8"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_02.cr2",
+        "size": 64558711,
+        "md5": "83ce6bc47b2599c0b885337561ebe979"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_02.jpg",
+        "size": 22713210,
+        "md5": "f72849a65e370bcbff770651a96bdf6d"
+      }
+    },
+    "PuDaCuo_20161010_05": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_05.jpg",
+        "size": 43288221,
+        "md5": "faa9482d91480326c1020c216736fd19"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_05.cr2",
+        "size": 64405058,
+        "md5": "81c1979098d35089e23be8eacf1db029"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_05.jpg",
+        "size": 21104179,
+        "md5": "ef716ea0b8b31abf1af756849ba932d6"
+      }
+    },
+    "PuDaCuo_20161010_04": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_04.jpg",
+        "size": 41644983,
+        "md5": "86967b7e0e5382d153ce6dc3a175e52c"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_04.cr2",
+        "size": 64699069,
+        "md5": "41b15c77f9bc032ca5968a605e1a46be"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_04.jpg",
+        "size": 20302301,
+        "md5": "fa1de972a7d413465111041b918955fc"
+      }
+    },
+    "PuDaCuo_20161010_15": {
+      "jpg_pretty": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_pretty/PuDaCuo_20161010_15.jpg",
+        "size": 41010419,
+        "md5": "6733b0c69686ecb4b41e8b80788edd61"
+      },
+      "raw": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/raw/PuDaCuo_20161010_15.cr2",
+        "size": 65514416,
+        "md5": "d0b3acfa3f5bace5628f2bec9124cd48"
+      },
+      "jpg_plain": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/shudu_lake/jpg_plain/PuDaCuo_20161010_15.jpg",
+        "size": 19029203,
+        "md5": "53018eadf0190ee749ca982c48ea4208"
+      }
+    }
+  }
+}

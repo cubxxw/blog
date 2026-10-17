@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-15T23:09:25.406210+00:00",
+  "batch": "E13",
+  "base": "9ec879f3c4c04c622523dc9e98222d58bb90ba3f",
+  "files": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "e62732cba23167955445c696aafe96c661eebe77ec3e328fca4dea12977bbfff",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "5f8f8b81690cd0665b1f848024ce7c94d24d8069080916710c96a69b206fce14",
+    "assets/css/extended/article-bottom-sheet.css": "526c39c57662025613d428841012e4627eb6ae4a83125eb1cb7b166be5a4028e",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "c54443e56076247f124e81614ecbdc00787d2cbe0acf955c2150bbeb30089a53",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/article-continuity-qa.config.mjs",
+    "sha256": "1698df4609aec570f80ed0b34df8ce545424e250596bdfd19fea25f0a3b645cb",
+    "workers": 1,
+    "browser": "ChromiumMetal"
+  },
+  "parentActionRunners": {
+    "article-qa.browser-helpers.mjs": "237a292a8df3e2ada3432a3a293d51e871cabe372a7ee5f43d91e6142ac1fedd",
+    "batch-e13-actions.browser.mjs": "ac8b6a51b1699caff8c05d7343876e540ad84d8af2640bd4573f802e9af0996a",
+    "batch-e13-stream.browser.mjs": "dbf717e9cb261b2244da0d658ec771cdb5ee7b391e360034fab10afe25c0de3c",
+    "batch-e13-scope.browser.mjs": "eafb60d26d5b55193a333f3f2b0832a548f5a87d1f975ce4bf6f17f8e9b1aeb9"
+  },
+  "scope": "7production+new10contracts+oldselection locator only;AIClient/ArticleTabs immutable. Same root/controller/scopes/general/stream; layout handoff differs from userclose. No live model/paid/contact/share/subscription.",
+  "iteration": "E13c onlyJS: same-host viewport reflow restore after b firstpath fixed but secondwheel1199→390 drift2175;strict10casesunchanged"
+}

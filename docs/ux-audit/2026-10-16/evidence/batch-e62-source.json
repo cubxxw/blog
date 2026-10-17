@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-15T18:37:50.593975+00:00",
+  "base": "77bf94c27a646d59ef773751d2bb76041e3e1203",
+  "files": {
+    "layouts/partials/homepage-daypage.html": "77a4bd6b30b7b31e757fffb13f1f34aedc0af65be569f968aed78813baf0f405",
+    "layouts/partials/homepage-reading-start.html": "502b78f966333033e99e5f6ea95e214cc67a1abca1bb4a57fcada6dc667783ba",
+    "assets/css/home-about-experience.css": "ed0e5f799ce8a8add9cea7ac13f35ec3be12a2fe0eb824ec8d882abf75f74414",
+    "assets/js/home-ambient.mjs": "64008253e68cd65bea67e29364b8ff93d0cf5fc0be348115d09407e4dc375117",
+    "assets/js/three/bear-orb.js": "113cddac99ba4e8ca1d6815ad7d6074fdab72fe9d805f9f1b910a778b43da3c6",
+    "tests/e2e/home-reading-contracts.spec.ts": "0dee9846bcf70a95e2428fe751cf45f84d91ef80dc4321d52831325ab379317f",
+    "tests/e2e/home-about-experience.spec.ts": "ca9ad7cab0ab4f10417330777672d1f83aace3a7250b3243e47a093c5d5f3cb8",
+    "tests/e2e/home-first-paint.spec.ts": "a1fabd62aa018835957bedaeb033e60b1b2bc72caa9da41bbc7286d3f9565591",
+    "tests/e2e/home-short-chat-contracts.spec.ts": "02aaa4e7878e3c293546b7d69176660ca546b6e3b8bd1295805c469cf4032644"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "91ff3bd50428526f48f5a08ee0c4d1b5fe5a09429442b08cb08e27b6c1d2fcfd",
+    "defaultViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "batch": "E6.2",
+  "scope": "E6/E61 combined final source, E62 changes core renderer only"
+}

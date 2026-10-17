@@ -1,0 +1,120 @@
+{
+  "head": "c5202308b02c4262dacf166e9d6ec477fc0d2a8b",
+  "run": 39002815893,
+  "conclusion": "cancelled",
+  "artifactId": 12091195000,
+  "artifactBytes": 10740627,
+  "reports": [
+    {
+      "name": "browser/legacy/results/space-cafe-details-contrac-d850e--through-the-live-workspace-desktop/error-context.md",
+      "bytes": 21384,
+      "sha256": "c2bdec8efef7061c76185b280e4822fb67a2e78e5cc5fc0d991da4c91a1b5222",
+      "zipCRC32": 805841279
+    },
+    {
+      "name": "browser/legacy/results/space-cafe-details-contrac-d850e--through-the-live-workspace-desktop-retry1/error-context.md",
+      "bytes": 21384,
+      "sha256": "c2bdec8efef7061c76185b280e4822fb67a2e78e5cc5fc0d991da4c91a1b5222",
+      "zipCRC32": 805841279
+    },
+    {
+      "name": "browser/legacy/results/space-cafe-details-contrac-d850e--through-the-live-workspace-desktop-retry2/error-context.md",
+      "bytes": 21384,
+      "sha256": "c2bdec8efef7061c76185b280e4822fb67a2e78e5cc5fc0d991da4c91a1b5222",
+      "zipCRC32": 805841279
+    },
+    {
+      "name": "browser/pages.json",
+      "bytes": 209,
+      "sha256": "3f2186964944eb96717f2cb44336b1a3156cc03d6ae3c71a193b11c7cac5e4b2",
+      "zipCRC32": 4170702164
+    },
+    {
+      "name": "changes.json",
+      "bytes": 291391,
+      "sha256": "50d4168ab83ca23dd26df91aa15b693924817c63eff364010fbdeb8a26597fa6",
+      "zipCRC32": 2607510887
+    },
+    {
+      "name": "functions-report.json",
+      "bytes": 96,
+      "sha256": "fee362c136342344d219385c3e39044a268b7363254ad513cb124515b6db5e4a",
+      "zipCRC32": 27900681
+    },
+    {
+      "name": "plan.json",
+      "bytes": 360,
+      "sha256": "746a1d68ed9da75d9e89724b940f5ef81aa25bbfcb6883a2a4558520183767e1",
+      "zipCRC32": 2478402650
+    },
+    {
+      "name": "seo-report.json",
+      "bytes": 90,
+      "sha256": "1286b65d3458083a76862230c3eaffa021764b6dc1d44b628f535521bbb8480e",
+      "zipCRC32": 1328484573
+    },
+    {
+      "name": "site/output-report.json",
+      "bytes": 34994,
+      "sha256": "1d0f2942ba40582767a6b3f574dc319be9c86cfaa60415b27d4404ca8568f884",
+      "zipCRC32": 3242033645
+    },
+    {
+      "name": "source-report.json",
+      "bytes": 200043,
+      "sha256": "b4899236a2d97b3088317cc9d356268eb55d6eb6b41374cfee679b190bfd2aa5",
+      "zipCRC32": 323995665
+    },
+    {
+      "name": "workflow-report.json",
+      "bytes": 95,
+      "sha256": "69f34dbf825a106f950cc3202fd1ff106462a22acd7dac4a1aa18ec3b76524d3",
+      "zipCRC32": 3400014332
+    }
+  ],
+  "reportArchive": {
+    "bytes": 70342,
+    "sha256": "0302b77f9a08fbd23aa9979e97d5f3a0d3a3e909055206e592576b5f11242719"
+  },
+  "ciLog": {
+    "compressedFile": {
+      "bytes": 98642,
+      "sha256": "4b8b5cbf202daa53a8a6b6943fb72ebfc8a77963b0b13c7fbc4c462b4de778f9"
+    },
+    "decodedRaw": {
+      "bytes": 850631,
+      "sha256": "016a1bc1172828242841da39956e0fa92e78816d04f46ea182dd8d521015af54"
+    }
+  },
+  "trace": {
+    "name": "c520-six-scene-trace.zip",
+    "artifactMember": "browser/legacy/results/space-cafe-details-contrac-d850e--through-the-live-workspace-desktop-retry1/trace.zip",
+    "bytes": 10424556,
+    "sha256": "8987d63427e926756b93d8615aaa54f240012577bfef7e85a6dcf68c0a9f2d0d",
+    "zipCRC32": 30699878
+  },
+  "failure": {
+    "test": "six scene changes and both detail views preserve original Notes",
+    "attempts": 3,
+    "classification": "test locator strictness; not timeout",
+    "exact": "[data-cafe-theme=\"zen\"] matches workspace SECTION state and dialog BUTTON; retry trace call233 throws in24.941ms after room/inspect paths complete.",
+    "source": "tests/e2e/space-cafe-details-contracts.spec.ts:66"
+  },
+  "positiveDesktopContracts": [
+    "noJS native navigation2.4s",
+    "language continuity38.8s",
+    "all3product entry focus19.4/18.8/22.6s",
+    "six catalog viewports includingLeafhour20.5–28.7s",
+    "all6window arrangements21.4–24.9s",
+    "actualcafe buffer/10books/coffee3widths21.0/24.0/33.9s",
+    "cup/book raycasts42.9s",
+    "quiet/reduce/resize1min",
+    "heldfailed latte/contextloss26.4s",
+    "all10original desktopfootnote contracts first attempt, Englishcoarse nativeBack8.2s"
+  ],
+  "limitations": [
+    "Full758legacy matrix not completed; mobile not yet certified.",
+    "Private signed artifact URL excluded.",
+    "All10desktop footnote contracts passed this run; English coarse nativeBack first attempt8.2s. The357 previous failure cause remains unexplained; this is not a claimed root-cause repair or complete matrix certification."
+  ]
+}

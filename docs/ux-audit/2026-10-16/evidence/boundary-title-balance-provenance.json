@@ -1,0 +1,30 @@
+{
+  "files": {
+    "docs/ux-audit/2026-10-16/boundary-title-balance.browser.mjs": "9cef0b52b7ed742fe5cf04ba6bc2d5538d613984dcb0eb0a080a3f8825592f65",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance.log": "9df8ff6ed850c348af4c87f5b6cace34b4b19b424a51571c3e076300197f63a5",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance.json": "34ae97f43222593e449c9b73a705edd04d4d93ace485f102d5e966a549e97a09",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-edge-en390-A.png": "b5808252ca59cbadfe1ab1f38035acbc66ffd6305322af4805672f5dfd47b013",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-edge-en390-B.png": "12308b0e83440a30535a505edd0455ec6c641d9e81033631d94595da8a59b565",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-normal-zh390-B.png": "19093c00d753934a4de23bdcce24b131353df11c2320b5e8058bf0e921bab168",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-normal-zh390-A.png": "46a63c0570ed08eb22ce60c2582877899d45b78250e1c6dfd02b478740e2fdab",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-contract.json": "3f78ee5a36b4006d10032f6c5336b70298210e4382419a43f661e62449ca8284",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-failure-long-en320-A.png": "684d5867919cdb900cc1f3ec9741437d6452083648e36a635d7c97743cefade4",
+    "docs/ux-audit/2026-10-16/evidence/boundary-title-balance-failure-long-en320-B.png": "684d5867919cdb900cc1f3ec9741437d6452083648e36a635d7c97743cefade4"
+  },
+  "sources": {
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "layouts/partials/extend_head.html": "f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5"
+  },
+  "parentReadAllSixImages": true,
+  "observations": "ZH390 linechars9,13,13,1→9,10,8,9; EN3907,12,6,13,8→7,12,6,10,11; longEN320 nine lines unchanged. Allheight/width delta0. Rawpass only capture/identity assertions; decisionmetrics independently inspected, not productioncertification.",
+  "lifecycle": {
+    "split": "discovery",
+    "review": {
+      "status": "unreviewed"
+    },
+    "humanChoice": "unreviewed"
+  },
+  "notImplemented": true
+}

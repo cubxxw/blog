@@ -167,6 +167,7 @@
   transition: grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
   opacity: 0;
 }
+.article-faq__ai-panel[hidden] { display: none; }
 .article-faq__ai-panel--open {
   grid-template-rows: 1fr;
   opacity: 1;
@@ -328,8 +329,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--color-border, var(--border));
   border-radius: 50%;
   background: none;
@@ -344,6 +345,7 @@
   background: var(--color-accent, var(--primary));
   border-color: var(--color-accent, var(--primary));
 }
+.article-faq__ai--busy .article-faq__ai-send { opacity:1; color:var(--color-ink); border-color:var(--color-ink-muted); }
 .article-faq__ai-send--ready:hover { transform: translateY(-1px); }
 .article-faq__ai-send:disabled { cursor: default; }
 

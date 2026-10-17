@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-16T04:07:07.904235+00:00",
+  "deadline": "2026-10-16T12:00:00+08:00",
+  "automationId": "12-00",
+  "statusReadback": "PAUSED",
+  "updatedAt": 1792123375502,
+  "promptSHA256": "0a1661dc92c102fbfdec13c8975c603f8c886e50d236f730485caee8b8a07625",
+  "preservedFields": [
+    "name",
+    "prompt",
+    "rrule",
+    "target_thread_id"
+  ],
+  "sourceCheckpoint": "8ed671cb6e625027b56914fd73de4f85187d0e62",
+  "closeoutCheckpoint": "dcfa75208b2bc4d8a7f69f368c24c07befcb5263",
+  "tmpRemoved": true,
+  "permanentValidation": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/final-validation",
+  "previewHTTP": {
+    "/": 200,
+    "/zh/projects/": 200,
+    "/projects/": 200
+  }
+}

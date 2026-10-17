@@ -1,0 +1,11 @@
+
+Running 4 tests using 1 worker
+
+(node:18540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 1440px zh image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success (1.3s)
+  ✓  2 tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 390px en image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success (5.1s)
+  ✓  3 tests/e2e/space-media-legibility-contracts.spec.ts:67:5 › completed 404 retry and detached events cannot overwrite another reopened photo; synthetic complete/error is a separate branch (929ms)
+  ✓  4 tests/e2e/space-media-legibility-contracts.spec.ts:99:5 › the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work (794ms)
+
+  4 passed (8.7s)

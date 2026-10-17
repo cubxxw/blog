@@ -1,0 +1,13 @@
+Rich real prompts, series actions, labels and maxlength: unchanged; template adds only canonical root attribute.
+Reading companion: only initialization root locator changed; tabs/TOC/renderer unchanged.
+Existing article-selection contract: only canonical locator/prefix update; every assertion unchanged.
+Editorial CSS: only canonical AI selector scope, owned hidden loading rule and messages scroll-anchor control; typography/decorations/non-AI rules unchanged.
+AI request payload definition and selection fields are byte-identical.
+static/js/article-ai-client.js: unchanged.
+static/js/article-tabs.js: unchanged.
+static/js/article-selection.js: unchanged.
+netlify/functions/article-ai.js: unchanged.
+layouts/partials/footer.html: unchanged.
+static/js/footnote-preview.js: unchanged.
+assets/css/extended/zzz-footnote-preview.css: unchanged.
+Discovery only:10 contracts. No browser/Hugo/paid models/external writes/commit started by executor.

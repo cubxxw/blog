@@ -1,0 +1,19 @@
+{
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor.json": "3280a31d14c9b5078c8b1094a66902e444cf540522bf2e30f447a1bec6d50225",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor.log": "2dbf0f28a9244c64c57a54da76652a83944eb95c3eabbfc2be3509d287286c9f",
+    "docs/ux-audit/2026-10-16/probe-e13-anchor.browser.mjs": "fce557d4638120614e3426135b2767f2207ee38f582dbdc6a37c4021e2fa1c6b"
+  },
+  "images": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-before.png": "80f183ba48d3e8b37f24f6745a880b3cd110333f78489375c45f49107e7819ea",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-resize-1199-2frames.png": "b92e93c472b7216c30822dda458f307199776ce3596aba476b183a7ee5c080cb",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-resize-1440-2frames.png": "0fd65eaa2d8d71b5a5c5503aab3a05262b147ea3a392c04d8beef6970821f602",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-anchor-resize-390-2frames.png": "69816aeea5dd796d19dcec0263025baca8a78f2a2748de297a74a7a9493116b8"
+  },
+  "sourceManifest": "batch-e13-initial-source.json",
+  "sourceManifestSHA256": "4db4ad46f48001ec3e4cb375a77b218172788e4d5679cc43a4eb5a40c0b3a5f5",
+  "parentReadAll4PNG": true,
+  "observed": "First1199 delta-.25; returning1440 originalp070 firstchar+50CSSpx stable120ms;390+24.875,nextchunkstable. Newfirstfullyvisiblep069 after1199.",
+  "hypothesis": "Layout-owned restoration scroll may reselect p069 as readingAnchor instead of retaining original p070. Source review needed; no production fix/assertion relaxation yet.",
+  "status": "confirmed-local-negative-not-fullmatrix"
+}

@@ -1,0 +1,10 @@
+{
+  "method": "built-in image_gen tool; generated botanical texture, not a field scan",
+  "prompt": "Create one physically realistic botanical texture asset for a 3D café garden: a single Japanese maple leaf, mature spring green with subtle olive and yellow variation, anatomically correct five to seven finely serrated lobes, delicate visible branching veins and a short slender petiole. Flat orthographic view directly from above, fully spread and naturally slightly asymmetric. The whole leaf including stem fits inside the central 88% of a square. Soft neutral diffuse scan lighting, no directional cast shadow, no gloss hotspots, no depth of field, no other leaves or objects, no text or border. Transparent alpha background, clean natural edges, suitable as the color/alpha map on many small instanced leaves in a real-time 3D scene; do not make a decorative icon or simplified vector shape.",
+  "original": "/Users/cubxxw/.codex/generated_images/01a13ec1-4c36-7410-915a-d52653d3129f/exec-9d8eede1-b584-4719-abaa-43c1e77d9a7a.png",
+  "project": "static/images/space/cafe/maple-leaf-v1.png",
+  "processing": "sips -Z256 only, alpha retained; original preserved",
+  "size": 256,
+  "bytes": 64677,
+  "sha256": "2380bf0706fe81c48565a1c9ccf94776785c3c6d94f6b0ad5ce9ce410ad21522"
+}

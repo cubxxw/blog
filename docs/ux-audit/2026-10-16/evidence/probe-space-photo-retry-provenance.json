@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-16T00:32:17.457823+00:00",
+  "sources": {
+    "assets/js/space/media.js": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996",
+    "assets/js/space/media-state.mjs": "2154203c2999b5af5185ba31c5978ab8997dd4c3b774ffb3e28a47bb89c4bd6e",
+    "assets/css/space-media.css": "787430661224c666ca8032d62e3ac8e589c2a0bb19e7265c168ca5a4bb922ffa",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519"
+  },
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-space-photo-retry.browser.mjs": "9088d3dd03e82be7a32d9aad469e982cfe60d7025792730b63b59c903d161cd4",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-retry-held.png": "17056b504bd869dee83f050e4275b83d738576a27c3ee0860433dd0a008d04b3",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-error.png": "f8e4df1e1ea89d11376a2119dbcaf2d3748aa593aafb8746cc8026aa6132086c",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry.json": "e71362b04aee559e5a712e2d4b1f918db21129e5fc4277c929ee8ac082813231",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-next-keyboard-focus.png": "e44020a9547f6a14f96753421a851c1bdc18a8c97b2a7ba7e8a1b365b98d9cb0",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry-ready.png": "5c978385a0b318a0ab9127f8966bfa8c977b3559d0322613248fe6dfe218f6d3",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-retry.log": "4cf20fe69abea540515647025f27da23c61b7c22b4bf2d492140b6c651f429ba"
+  },
+  "parentReadAll4PNG": true,
+  "observation": "1440zh reduce existingkumano detail targeted local404\u2192realRetry\u2192held\u2192sameexactoriginalWebP success. Retry click hides its own focusedbutton; active BODY/outsidephoto in heldstate, next realTab lands BUTTON insidephoto (name not captured, not claimed outside). Error Retry layoutbbox52.48x23.37 viewportCSSpx and not visible in firsterrorPNG; actualclick autoscrolled beforependingPNG. Functional200 recovery succeeds; source/span has no role, explicitfullimage timeout not implemented, but no actualtimeout elapsedproof. No keytrap/globaltabdestination claim.",
+  "limits": "One desktop Chromium context. Actual existing public photo thumb/detail and realRetry/Tab, only chosen local fullimage404\u2192held\u2192exact original publicWebP bytes. No publicalbum API, externalwrite or actual networktimeout/AT/physical/fullmatrix certification; pendingstate is deliberately gated, not proof finite recovery timeout exists."
+}

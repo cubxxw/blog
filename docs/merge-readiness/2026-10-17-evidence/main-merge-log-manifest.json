@@ -1,0 +1,57 @@
+{
+  "base": "9a909dfdbbb64505d34e68a1b47d1ae4fd059192",
+  "previousHead": "3f87c204ce0d33c05a1f9f94378b62e0f80d00ae",
+  "source": {
+    "package.json": "8852f91fb6e594946d390682983691b4750ad438ca938bac8ef0dfca06f77b8a",
+    ".github/workflows/main.yaml": "dbf22b49c97826e7aedc20ced4086327da17324b7c44bd98be14a8ee1950d3af",
+    "layouts/_default/single.html": "17ea685cabff0e246f60658e6b8b35b90d11206d09e0582349f31e92d9abaa5f",
+    "assets/css/space-cafe.css": "3f6f01a095f8ef92a729c4aa14f69fd80a7c6ecca7e4945f3d591eaa138f8e22",
+    "tests/e2e/00-space-library-profile-contracts.spec.ts": "9a5a7435020d47d2026b6ae25aef07b2d5bbcd687500b6dabedcca21d3624d08"
+  },
+  "archive": {
+    "file": "main-merge-logs.tar.gz",
+    "bytes": 3360,
+    "sha256": "20c33737942e400d2032f33e3973658e02c56b580ec7ebdba986aaf54715960e"
+  },
+  "logs": [
+    {
+      "file": "integration-main-merge-scope.log",
+      "bytes": 449,
+      "sha256": "484a1835ce3ad1ec7a20e7fac728369fa4b3f8619606756468cba8fe2a9f8015"
+    },
+    {
+      "file": "integration-main-merge-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "file": "integration-main-merge-ux.log",
+      "bytes": 9808,
+      "sha256": "b755123bd32e471d604ed642cbc141be131d023ec53d89fb5c0054801a608828"
+    },
+    {
+      "file": "integration-main-merge-workflow.log",
+      "bytes": 1197,
+      "sha256": "fd0778cc52277c701cf11cbb31212793950ee83b3ef40318f617d09d87de22c7"
+    }
+  ],
+  "localChecks": {
+    "typecheck": 0,
+    "ux": {
+      "pass": 41,
+      "fail": 0,
+      "skip": 0
+    },
+    "workflow": {
+      "pass": 5,
+      "fail": 0,
+      "skip": 0
+    },
+    "scriptsUnion": true
+  },
+  "limitations": [
+    "No local full build/browser rerun; resource audit171 Node/13.27GiBswap, reuse existing browser, remaining verification assigned remote latestCI.",
+    "Voice tests and full integrated browser matrix not yet run by this task after merge.",
+    "Initial validator overstrictly compared oldmain bear:test exact value; corrected union check passed; no product failure."
+  ]
+}

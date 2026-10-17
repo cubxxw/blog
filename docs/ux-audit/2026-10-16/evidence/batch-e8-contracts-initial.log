@@ -1,0 +1,61 @@
+
+Running 6 tests using 1 worker
+
+(node:54884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 3 windows use overview without rewriting their documents or geometry (1.5s)
+  ✓  2 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 3 windows use overview without rewriting their documents or geometry (866ms)
+  ✓  3 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 4 windows use overview without rewriting their documents or geometry (1.1s)
+  ✓  4 tests/e2e/space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 4 windows use overview without rewriting their documents or geometry (1.1s)
+  ✓  5 tests/e2e/space-arrangement-contracts.spec.ts:69:30 › a 1440×900 desktop tiles 2 windows with reachable controls and the original note (593ms)
+  ✘  6 tests/e2e/space-arrangement-contracts.spec.ts:69:30 › a 1440×900 desktop tiles 4 windows with reachable controls and the original note (820ms)
+
+
+  1) tests/e2e/space-arrangement-contracts.spec.ts:69:30 › a 1440×900 desktop tiles 4 windows with reachable controls and the original note
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 4
+
+    @@ -1,22 +1,22 @@
+      Object {
+        "map": Object {
+          "height": 388,
+          "width": 710,
+    -     "x": 8,
+    -     "y": 404,
+    +     "x": 722,
+    +     "y": 12,
+        },
+        "notes": Object {
+          "height": 388,
+          "width": 710,
+          "x": 722,
+    -     "y": 12,
+    +     "y": 404,
+        },
+        "terminal": Object {
+          "height": 388,
+          "width": 710,
+    -     "x": 722,
+    +     "x": 8,
+          "y": 404,
+        },
+        "welcome": Object {
+          "height": 388,
+          "width": 710,
+
+      86 |   await page.locator('[data-space-menu-trigger]').click();await expect(page.locator('.space-menu [data-space-arrange]')).toBeVisible();
+      87 |   await expect(page.locator('.space-menu [data-space-arrange]')).toHaveText('窗口并排');await page.keyboard.press('Escape');
+    > 88 |   const before=await rectangles(page);expect(await page.evaluate(()=>(window as any).BearSpace.execute('arrange'))).toBe(true);expect(await rectangles(page)).toEqual(before);
+         |                                                                                                                                                               ^
+      89 | });
+      90 |
+        at <SOURCE_WORKTREE>/tests/e2e/space-arrangement-contracts.spec.ts:88:159
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/space-arrangement-contract-7577e-trols-and-the-original-note/error-context.md
+
+  1 failed
+    tests/e2e/space-arrangement-contracts.spec.ts:69:30 › a 1440×900 desktop tiles 4 windows with reachable controls and the original note
+  5 passed (7.4s)

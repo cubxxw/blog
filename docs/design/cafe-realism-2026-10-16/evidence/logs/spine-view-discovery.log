@@ -1,0 +1,11 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'playwright' test tests/e2e/space-cafe-details-contracts.spec.ts --project=desktop --list
+Listing tests:
+  [desktop] › space-cafe-details-contracts.spec.ts:31:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [desktop] › space-cafe-details-contracts.spec.ts:31:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [desktop] › space-cafe-details-contracts.spec.ts:31:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [desktop] › space-cafe-details-contracts.spec.ts:42:5 › the actual cup and book raycasts enter the same detail views; a drag retains the computer hit instead of creating a click
+  [desktop] › space-cafe-details-contracts.spec.ts:49:5 › six scene changes and both detail views preserve the original Notes node, draft and selection through the live workspace
+  [desktop] › space-cafe-details-contracts.spec.ts:56:5 › runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop
+  [desktop] › space-cafe-details-contracts.spec.ts:62:5 › a held then failed latte image never blocks the first room; simulated context loss restores the same Notes document
+Total: 7 tests in 1 file

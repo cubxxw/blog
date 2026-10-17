@@ -1,0 +1,122 @@
+TAP version 13
+# (node:51886) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/assets/js/vendor/three.module.min.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: ceramic foot contacts its supporting surface; the open bowl contains liquid below its rim
+ok 1 - ceramic foot contacts its supporting surface; the open bowl contains liquid below its rim
+  ---
+  duration_ms: 0.412667
+  type: 'test'
+  ...
+# Subtest: all ten source books have supported real-size volumes within the original shelf footprint
+ok 2 - all ten source books have supported real-size volumes within the original shelf footprint
+  ---
+  duration_ms: 0.211834
+  type: 'test'
+  ...
+# Subtest: the shared atlas wraps every real English and Chinese title without truncating text
+ok 3 - the shared atlas wraps every real English and Chinese title without truncating text
+  ---
+  duration_ms: 0.276792
+  type: 'test'
+  ...
+# Subtest: coffee and bookshelf views face their actual contents in portrait and landscape cameras
+ok 4 - coffee and bookshelf views face their actual contents in portrait and landscape cameras
+  ---
+  duration_ms: 0.109041
+  type: 'test'
+  ...
+# Subtest: every physical book fits the bookshelf close view in all three real viewport aspects
+ok 5 - every physical book fits the bookshelf close view in all three real viewport aspects
+  ---
+  duration_ms: 0.84275
+  type: 'test'
+  ...
+# Subtest: the real frame scheduler uses the completed mode and blocked state while quiet/reduce remain stopped
+ok 6 - the real frame scheduler uses the completed mode and blocked state while quiet/reduce remain stopped
+  ---
+  duration_ms: 2.327333
+  type: 'test'
+  ...
+# Subtest: only six known cafés can be restored from browser storage
+ok 7 - only six known cafés can be restored from browser storage
+  ---
+  duration_ms: 0.544166
+  type: 'test'
+  ...
+# Subtest: direct content routes take priority over a café visit
+ok 8 - direct content routes take priority over a café visit
+  ---
+  duration_ms: 0.065083
+  type: 'test'
+  ...
+# Subtest: root visits and reloads enter the café while language changes preserve the current place
+ok 9 - root visits and reloads enter the café while language changes preserve the current place
+  ---
+  duration_ms: 0.053042
+  type: 'test'
+  ...
+# Subtest: an explicit reader deep link beats stale café storage on reload
+ok 10 - an explicit reader deep link beats stale café storage on reload
+  ---
+  duration_ms: 0.404125
+  type: 'test'
+  ...
+# Subtest: returning to the café from an old About URL survives reload and language changes
+ok 11 - returning to the café from an old About URL survives reload and language changes
+  ---
+  duration_ms: 0.066125
+  type: 'test'
+  ...
+# Subtest: a slow previous scene cannot overwrite the latest selection
+ok 12 - a slow previous scene cannot overwrite the latest selection
+  ---
+  duration_ms: 0.396
+  type: 'test'
+  ...
+# Subtest: a failed scene keeps the previous view; selecting the current scene cancels an older load
+ok 13 - a failed scene keeps the previous view; selecting the current scene cancels an older load
+  ---
+  duration_ms: 0.0915
+  type: 'test'
+  ...
+# Subtest: walking follows the view direction and diagonal walking has the same speed
+ok 14 - walking follows the view direction and diagonal walking has the same speed
+  ---
+  duration_ms: 0.660375
+  type: 'test'
+  ...
+# Subtest: walking stops at furniture and slides along it without entering the table
+ok 15 - walking stops at furniture and slides along it without entering the table
+  ---
+  duration_ms: 0.060459
+  type: 'test'
+  ...
+# Subtest: a resumed frame cannot teleport the visitor through a wall
+ok 16 - a resumed frame cannot teleport the visitor through a wall
+  ---
+  duration_ms: 0.086542
+  type: 'test'
+  ...
+# Subtest: camera travel reaches its exact destination with no invalid positions
+ok 17 - camera travel reaches its exact destination with no invalid positions
+  ---
+  duration_ms: 1.4095
+  type: 'test'
+  ...
+# Subtest: the floating workspace fits narrow and wide cameras without changing private window coordinates
+ok 18 - the floating workspace fits narrow and wide cameras without changing private window coordinates
+  ---
+  duration_ms: 0.126792
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 104.768125

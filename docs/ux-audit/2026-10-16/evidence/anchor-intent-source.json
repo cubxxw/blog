@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-15T18:46:31.878345+00:00",
+  "previewBase": "4782757e3fc4ca8267189f711a11ae7ee2f80abb",
+  "scope": "Archives native anchor and current article right TOC; production source unchanged during E7 homepage-only implementation",
+  "files": {
+    "layouts/partials/footer.html": "fedadada1ba3642177b887fa5b9dfe7a94842b1261ac20af06d500d912ba1999",
+    "assets/css/extended/micro-interactions.css": "2e5e6a47f99172abbe7e08768c94337350c1917495dc576cbcf091ffd788c05e",
+    "static/js/reading-companion.js": "0a71bfbdb1521ba4e16ff83899bf768e864dfd2694c3018339ad1e62e3ab23b3",
+    "static/js/toc-highlight.js": "731370dcf8fdc4c002ab2cf4ddb8339e18447eb3ad7530d3db9cd8f44dfd0604",
+    "layouts/partials/article/editorial-tools.html": "a30181df494f6386b349d327d49a6fa8b650b0d09110d67afeebfbc3dd2af6ca"
+  }
+}

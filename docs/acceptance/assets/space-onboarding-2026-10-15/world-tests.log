@@ -1,0 +1,14 @@
+PASS the game entry renders real geometry without a photographic backdrop
+PASS entering the room, walking and looking change the actual camera
+PASS six scenes replace actual landscape geometry while retaining the room
+PASS the live workspace is a three-dimensional plane inside the room
+PASS leaving the computer and changing scenery preserve the exact live note editor
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+PASS language and reload restore the computer, theme and private draft
+PASS touch movement and the floating workspace fit a phone
+PASS module failure retains a usable ordinary workspace
+PASS camera travel is continuous and settles at the desk
+PASS a lost graphics context releases travel and preserves a usable workspace
+10 real browser checks passed.

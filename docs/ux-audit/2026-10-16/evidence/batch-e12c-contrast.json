@@ -1,0 +1,1535 @@
+{
+  "at": "2026-10-15T22:36:13.404Z",
+  "sourceManifest": "batch-e12c-source.json",
+  "contexts": [
+    {
+      "view": {
+        "width": 390,
+        "height": 844,
+        "coarse": true,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "samples": [
+        {
+          "label": "note-paragraph",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(53, 0, 3)",
+          "foregroundRGBA": [
+            53,
+            0,
+            3,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Source Han Serif SC\", \"Songti SC\", STSong, \"Noto Serif SC\", SimSun, \"PingFang SC\", serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 260.875,
+            "width": 330.8125,
+            "height": 84,
+            "top": 260.875,
+            "right": 357.40625,
+            "bottom": 344.875,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            53,
+            0,
+            3
+          ],
+          "contrast": 17.31464700163811
+        },
+        {
+          "label": "citation-link",
+          "text": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(134, 33, 34)",
+          "foregroundRGBA": [
+            134,
+            33,
+            34,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "P",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Source Han Serif SC\", \"Songti SC\", STSong, \"Noto Serif SC\", SimSun, \"PingFang SC\", serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 302.875,
+            "width": 328.796875,
+            "height": 41,
+            "top": 302.875,
+            "right": 355.390625,
+            "bottom": 343.875,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            134,
+            33,
+            34
+          ],
+          "contrast": 8.853471587093535
+        },
+        {
+          "label": "more-resting",
+          "text": "查看脚注 ↓",
+          "colorCSS": "rgb(108, 91, 78)",
+          "foregroundRGBA": [
+            108,
+            91,
+            78,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"PingFang SC\", \"Hiragino Sans GB\", system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 347.265625,
+            "width": 76.34375,
+            "height": 44,
+            "top": 347.265625,
+            "right": 102.9375,
+            "bottom": 391.265625,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            122.3,
+            106.8,
+            94.6
+          ],
+          "contrast": 4.879289268784955
+        },
+        {
+          "label": "more-hover",
+          "text": "查看脚注 ↓",
+          "colorCSS": "rgb(134, 33, 34)",
+          "foregroundRGBA": [
+            134,
+            33,
+            34,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"PingFang SC\", \"Hiragino Sans GB\", system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 347.265625,
+            "width": 76.34375,
+            "height": 44,
+            "top": 347.265625,
+            "right": 102.9375,
+            "bottom": 391.265625,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            145.7,
+            54.599999999999994,
+            55
+          ],
+          "contrast": 7.100681293732181
+        },
+        {
+          "label": "more-focus",
+          "text": "查看脚注 ↓",
+          "colorCSS": "rgb(134, 33, 34)",
+          "foregroundRGBA": [
+            134,
+            33,
+            34,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"PingFang SC\", \"Hiragino Sans GB\", system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 347.265625,
+            "width": 76.34375,
+            "height": 44,
+            "top": 347.265625,
+            "right": 102.9375,
+            "bottom": 391.265625,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            145.7,
+            54.599999999999994,
+            55
+          ],
+          "contrast": 7.100681293732181
+        }
+      ],
+      "snapshot": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 248.6875,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 260.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 347.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "fn-popover__more",
+          "href": "#fn:1",
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844,
+        "coarse": true,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "samples": [
+        {
+          "label": "note-paragraph",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(226, 227, 225)",
+          "foregroundRGBA": [
+            226,
+            227,
+            225,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Noto Serif\", Georgia, \"Times New Roman\", serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 261.953125,
+            "width": 330.8125,
+            "height": 84,
+            "top": 261.953125,
+            "right": 357.40625,
+            "bottom": 345.953125,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            226,
+            227,
+            225
+          ],
+          "contrast": 12.725268432904643
+        },
+        {
+          "label": "citation-link",
+          "text": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(125, 211, 252)",
+          "foregroundRGBA": [
+            125,
+            211,
+            252,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "P",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Noto Serif\", Georgia, \"Times New Roman\", serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 304.953125,
+            "width": 326.546875,
+            "height": 40,
+            "top": 304.953125,
+            "right": 353.140625,
+            "bottom": 344.953125,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            125,
+            211,
+            252
+          ],
+          "contrast": 9.827880038945144
+        },
+        {
+          "label": "more-resting",
+          "text": "Go to note ↓",
+          "colorCSS": "rgb(180, 188, 178)",
+          "foregroundRGBA": [
+            180,
+            188,
+            178,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "Inter, system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 348.34375,
+            "width": 87.8125,
+            "height": 44,
+            "top": 348.34375,
+            "right": 114.40625,
+            "bottom": 392.34375,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            165,
+            172.4,
+            163.3
+          ],
+          "contrast": 7.071189602339129
+        },
+        {
+          "label": "more-hover",
+          "text": "Go to note ↓",
+          "colorCSS": "rgb(125, 211, 252)",
+          "foregroundRGBA": [
+            125,
+            211,
+            252,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "Inter, system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 348.34375,
+            "width": 87.8125,
+            "height": 44,
+            "top": 348.34375,
+            "right": 114.40625,
+            "bottom": 392.34375,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            115.5,
+            193.1,
+            229.9
+          ],
+          "contrast": 8.203927971354057
+        },
+        {
+          "label": "more-focus",
+          "text": "Go to note ↓",
+          "colorCSS": "rgb(125, 211, 252)",
+          "foregroundRGBA": [
+            125,
+            211,
+            252,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "Inter, system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 26.59375,
+            "y": 348.34375,
+            "width": 87.8125,
+            "height": 44,
+            "top": 348.34375,
+            "right": 114.40625,
+            "bottom": 392.34375,
+            "left": 26.59375
+          },
+          "effectiveForegroundRGB": [
+            115.5,
+            193.1,
+            229.9
+          ],
+          "contrast": 8.203927971354057
+        }
+      ],
+      "snapshot": {
+        "scrollY": 3867,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 12,
+          "y": 249.765625,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 26.59375,
+          "y": 261.953125,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 26.59375,
+          "y": 348.34375,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "fn-popover__more",
+          "href": "#fn:1",
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "coarse": false,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "samples": [
+        {
+          "label": "note-paragraph",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(53, 0, 3)",
+          "foregroundRGBA": [
+            53,
+            0,
+            3,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Source Han Serif SC\", \"Songti SC\", STSong, \"Noto Serif SC\", SimSun, \"PingFang SC\", serif",
+          "visible": true,
+          "rect": {
+            "x": 484.59375,
+            "y": 288.875,
+            "width": 330.8125,
+            "height": 84,
+            "top": 288.875,
+            "right": 815.40625,
+            "bottom": 372.875,
+            "left": 484.59375
+          },
+          "effectiveForegroundRGB": [
+            53,
+            0,
+            3
+          ],
+          "contrast": 17.31464700163811
+        },
+        {
+          "label": "citation-link",
+          "text": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(134, 33, 34)",
+          "foregroundRGBA": [
+            134,
+            33,
+            34,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "P",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Source Han Serif SC\", \"Songti SC\", STSong, \"Noto Serif SC\", SimSun, \"PingFang SC\", serif",
+          "visible": true,
+          "rect": {
+            "x": 484.59375,
+            "y": 330.875,
+            "width": 328.796875,
+            "height": 41,
+            "top": 330.875,
+            "right": 813.390625,
+            "bottom": 371.875,
+            "left": 484.59375
+          },
+          "effectiveForegroundRGB": [
+            134,
+            33,
+            34
+          ],
+          "contrast": 8.853471587093535
+        },
+        {
+          "label": "more-resting",
+          "text": "查看脚注 ↓",
+          "colorCSS": "rgb(108, 91, 78)",
+          "foregroundRGBA": [
+            108,
+            91,
+            78,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"PingFang SC\", \"Hiragino Sans GB\", system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 484.59375,
+            "y": 375.265625,
+            "width": 76.34375,
+            "height": 44,
+            "top": 375.265625,
+            "right": 560.9375,
+            "bottom": 419.265625,
+            "left": 484.59375
+          },
+          "effectiveForegroundRGB": [
+            122.3,
+            106.8,
+            94.6
+          ],
+          "contrast": 4.879289268784955
+        },
+        {
+          "label": "keyboard-entry-hint",
+          "text": "在标记上按 ↓ 进入预览",
+          "colorCSS": "rgb(108, 91, 78)",
+          "foregroundRGBA": [
+            108,
+            91,
+            78,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"PingFang SC\", \"Hiragino Sans GB\", system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 484.59375,
+            "y": 263.875,
+            "width": 330.8125,
+            "height": 21,
+            "top": 263.875,
+            "right": 815.40625,
+            "bottom": 284.875,
+            "left": 484.59375
+          },
+          "effectiveForegroundRGB": [
+            108,
+            91,
+            78
+          ],
+          "contrast": 6.152277596615889
+        },
+        {
+          "label": "more-hover",
+          "text": "查看脚注 ↓",
+          "colorCSS": "rgb(134, 33, 34)",
+          "foregroundRGBA": [
+            134,
+            33,
+            34,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"PingFang SC\", \"Hiragino Sans GB\", system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 484.59375,
+            "y": 375.265625,
+            "width": 76.34375,
+            "height": 44,
+            "top": 375.265625,
+            "right": 560.9375,
+            "bottom": 419.265625,
+            "left": 484.59375
+          },
+          "effectiveForegroundRGB": [
+            145.7,
+            54.599999999999994,
+            55
+          ],
+          "contrast": 7.100681293732181
+        },
+        {
+          "label": "more-focus",
+          "text": "查看脚注 ↓",
+          "colorCSS": "rgb(134, 33, 34)",
+          "foregroundRGBA": [
+            134,
+            33,
+            34,
+            255
+          ],
+          "backgroundCSS": "rgb(251, 249, 244)",
+          "backgroundRGBA": [
+            251,
+            249,
+            244,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"PingFang SC\", \"Hiragino Sans GB\", system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 484.59375,
+            "y": 375.265625,
+            "width": 76.34375,
+            "height": 44,
+            "top": 375.265625,
+            "right": 560.9375,
+            "bottom": 419.265625,
+            "left": 484.59375
+          },
+          "effectiveForegroundRGB": [
+            145.7,
+            54.599999999999994,
+            55
+          ],
+          "contrast": 7.100681293732181
+        }
+      ],
+      "snapshot": {
+        "scrollY": 2007,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 470,
+          "y": 251.6875,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 484.59375,
+          "y": 288.875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 484.59375,
+          "y": 375.265625,
+          "width": 76.34375,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "fn-popover__more",
+          "href": "#fn:1",
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "coarse": false,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "samples": [
+        {
+          "label": "note-paragraph",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(226, 227, 225)",
+          "foregroundRGBA": [
+            226,
+            227,
+            225,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Noto Serif\", Georgia, \"Times New Roman\", serif",
+          "visible": true,
+          "rect": {
+            "x": 51.59375,
+            "y": 289.265625,
+            "width": 330.8125,
+            "height": 84,
+            "top": 289.265625,
+            "right": 382.40625,
+            "bottom": 373.265625,
+            "left": 51.59375
+          },
+          "effectiveForegroundRGB": [
+            226,
+            227,
+            225
+          ],
+          "contrast": 12.725268432904643
+        },
+        {
+          "label": "citation-link",
+          "text": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "colorCSS": "rgb(125, 211, 252)",
+          "foregroundRGBA": [
+            125,
+            211,
+            252,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "P",
+              "classes": "",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover__body",
+              "opacity": 1
+            },
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "\"Noto Serif\", Georgia, \"Times New Roman\", serif",
+          "visible": true,
+          "rect": {
+            "x": 51.59375,
+            "y": 332.265625,
+            "width": 326.546875,
+            "height": 40,
+            "top": 332.265625,
+            "right": 378.140625,
+            "bottom": 372.265625,
+            "left": 51.59375
+          },
+          "effectiveForegroundRGB": [
+            125,
+            211,
+            252
+          ],
+          "contrast": 9.827880038945144
+        },
+        {
+          "label": "more-resting",
+          "text": "Go to note ↓",
+          "colorCSS": "rgb(180, 188, 178)",
+          "foregroundRGBA": [
+            180,
+            188,
+            178,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "Inter, system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 51.59375,
+            "y": 375.65625,
+            "width": 87.8125,
+            "height": 44,
+            "top": 375.65625,
+            "right": 139.40625,
+            "bottom": 419.65625,
+            "left": 51.59375
+          },
+          "effectiveForegroundRGB": [
+            165,
+            172.4,
+            163.3
+          ],
+          "contrast": 7.071189602339129
+        },
+        {
+          "label": "keyboard-entry-hint",
+          "text": "At the marker, press ↓ to enter.",
+          "colorCSS": "rgb(180, 188, 178)",
+          "foregroundRGBA": [
+            180,
+            188,
+            178,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 1,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "Inter, system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 51.59375,
+            "y": 264.265625,
+            "width": 330.8125,
+            "height": 21,
+            "top": 264.265625,
+            "right": 382.40625,
+            "bottom": 285.265625,
+            "left": 51.59375
+          },
+          "effectiveForegroundRGB": [
+            180,
+            188,
+            178
+          ],
+          "contrast": 8.408914777673388
+        },
+        {
+          "label": "more-hover",
+          "text": "Go to note ↓",
+          "colorCSS": "rgb(125, 211, 252)",
+          "foregroundRGBA": [
+            125,
+            211,
+            252,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "Inter, system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 51.59375,
+            "y": 375.65625,
+            "width": 87.8125,
+            "height": 44,
+            "top": 375.65625,
+            "right": 139.40625,
+            "bottom": 419.65625,
+            "left": 51.59375
+          },
+          "effectiveForegroundRGB": [
+            115.5,
+            193.1,
+            229.9
+          ],
+          "contrast": 8.203927971354057
+        },
+        {
+          "label": "more-focus",
+          "text": "Go to note ↓",
+          "colorCSS": "rgb(125, 211, 252)",
+          "foregroundRGBA": [
+            125,
+            211,
+            252,
+            255
+          ],
+          "backgroundCSS": "color(srgb 0.117059 0.12451 0.120784)",
+          "backgroundRGBA": [
+            30,
+            32,
+            31,
+            255
+          ],
+          "opacity": 0.9,
+          "ancestors": [
+            {
+              "tag": "DIV",
+              "classes": "fn-popover is-visible",
+              "opacity": 1
+            },
+            {
+              "tag": "BODY",
+              "classes": "dark nav-hidden",
+              "opacity": 1
+            },
+            {
+              "tag": "HTML",
+              "classes": "motion-reveal",
+              "opacity": 1
+            }
+          ],
+          "fontSize": "14px",
+          "fontFamily": "Inter, system-ui, sans-serif",
+          "visible": true,
+          "rect": {
+            "x": 51.59375,
+            "y": 375.65625,
+            "width": 87.8125,
+            "height": 44,
+            "top": 375.65625,
+            "right": 139.40625,
+            "bottom": 419.65625,
+            "left": 51.59375
+          },
+          "effectiveForegroundRGB": [
+            115.5,
+            193.1,
+            229.9
+          ],
+          "contrast": 8.203927971354057
+        }
+      ],
+      "snapshot": {
+        "scrollY": 2501,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+        "card": {
+          "x": 37,
+          "y": 252.078125,
+          "width": 360,
+          "height": 178.171875
+        },
+        "body": {
+          "x": 51.59375,
+          "y": 289.265625,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 51.59375,
+          "y": 375.65625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:1",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "fn-popover__more",
+          "href": "#fn:1",
+          "insidePopover": true
+        },
+        "expanded": [
+          "#fn:1"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "minimum": 4.879289268784955,
+  "method": "Browser computed colors converted by sRGB canvas, individual alpha*opacity (including More0.9) over actual opaque card surface. Assert all ancestors opacity1. No antialiased raster contrast claim.14px root/More only;code .92em is not certified by this.",
+  "limits": "Four specified Chromium contexts; 22 visible computed samples, not all rich text/images/states/AT/physical-device/full-site contrast."
+}

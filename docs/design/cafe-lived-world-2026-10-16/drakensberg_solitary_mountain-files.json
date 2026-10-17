@@ -1,0 +1,86 @@
+{
+  "tonemapped": {
+    "size": 47023033,
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/drakensberg_solitary_mountain.jpg",
+    "md5": "e98d8032f7d95b0f78979e3d9494fb8a"
+  },
+  "hdri": {
+    "8k": {
+      "hdr": {
+        "size": 98701353,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/8k/drakensberg_solitary_mountain_8k.hdr",
+        "md5": "336080bb73f769027ee311f4b9d9d14e"
+      },
+      "exr": {
+        "size": 325456045,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/8k/drakensberg_solitary_mountain_8k.exr",
+        "md5": "a7f941c2c2b51e4ab148ed09d7beb51b"
+      }
+    },
+    "16k": {
+      "hdr": {
+        "size": 359485788,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/16k%2B/drakensberg_solitary_mountain_16k.hdr",
+        "md5": "12b6ca6c1abcebd38013f75e6bd3ac2b"
+      },
+      "exr": {
+        "size": 1238695043,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/16k%2B/drakensberg_solitary_mountain_16k.exr",
+        "md5": "b51d9904b47998d032c8b9020491fe90"
+      }
+    },
+    "4k": {
+      "hdr": {
+        "size": 24932350,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/drakensberg_solitary_mountain_4k.hdr",
+        "md5": "a77dd2d08b4edca0d9eed2c2e5a86c3e"
+      },
+      "exr": {
+        "size": 83215061,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/4k/drakensberg_solitary_mountain_4k.exr",
+        "md5": "788fe86ee7434ff06ef332daad2e5647"
+      }
+    },
+    "24k": {
+      "hdr": {
+        "size": 783389384,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/16k%2B/drakensberg_solitary_mountain_24k.hdr",
+        "md5": "92f6f5c1a20bbe9527ad868b30a923b2"
+      },
+      "exr": {
+        "size": 2790365030,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/16k%2B/drakensberg_solitary_mountain_24k.exr",
+        "md5": "81c41fe0db8d045e1f6eb5321800c6c2"
+      }
+    },
+    "2k": {
+      "hdr": {
+        "size": 6059339,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/drakensberg_solitary_mountain_2k.hdr",
+        "md5": "e1cf54e9ec1e57525a2aa7afbaeee6c8"
+      },
+      "exr": {
+        "size": 21563372,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/2k/drakensberg_solitary_mountain_2k.exr",
+        "md5": "db3a54dae6ee23c79c450f74e8e39810"
+      }
+    },
+    "1k": {
+      "hdr": {
+        "size": 1473279,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/drakensberg_solitary_mountain_1k.hdr",
+        "md5": "c827d35f664866d2a02e5549e8bee579"
+      },
+      "exr": {
+        "size": 5760617,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/1k/drakensberg_solitary_mountain_1k.exr",
+        "md5": "2da8ea4a2258f25cf890948fefaf76ca"
+      }
+    }
+  },
+  "colorchart": {
+    "size": 62386778,
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Color%20Charts/drakensberg_solitary_mountain.zip",
+    "md5": "769cb19b02def7de8babfa83febd84de"
+  }
+}

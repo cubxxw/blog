@@ -1,0 +1,75 @@
+{
+  "head": "500bcc79252321dfd18eab26519c408f96440f80",
+  "source": {
+    "from": "tests/e2e/space-onboarding.spec.ts",
+    "to": "tests/e2e/00-space-onboarding.spec.ts",
+    "sha256": "5b699bfc184689516dde3fd12cff49a475ee608f5246ef94460c7d8bf78715d2"
+  },
+  "scope": "test-only: two controlled-clock lifecycle fixtures, one bounded optional-asset readiness precondition, same file renamed for earlier execution",
+  "checks": {
+    "typecheck": 0,
+    "diffCheck": 0,
+    "discovery": "758 tests in 52 files",
+    "nodeBoundaries": "actual onboarding timers and entry revision source with controlled Node doubles; no browser"
+  },
+  "clock": {
+    "cancel": "install before navigation and allow real room readiness; pause at fixed future01:00; native44px/visible/enabled/center-hit clicks; advance1200+1500+550ms before cancellation assertions, then2000ms final entry; finally resume",
+    "reveal": "pause before navigation; real stage2 readiness≤30000ms; runFor16 real renderer frame, stage3; advance1405 original minimum before550ms reveal completes; real WEBGL_lose_context; finally resume"
+  },
+  "budgets": {
+    "journeyMs": 90000,
+    "actionNavigationMs": 30000,
+    "expectMs": 5000,
+    "stage2StartupMs": 30000,
+    "catAssetReadyMs": 30000,
+    "catMovementMs": 12000,
+    "catPauseMs": [
+      400,
+      200
+    ]
+  },
+  "unverified": [
+    "real Playwright Clock/rAF initialization",
+    "real WebGL first frame and context loss",
+    "native44px hit targets",
+    "cat decode/preparation cause",
+    "latest full CI"
+  ],
+  "artifacts": [
+    {
+      "path": "integration-onboarding-clock-typecheck.log",
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "path": "integration-onboarding-clock-diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "integration-onboarding-clock-discovery.log",
+      "sha256": "740b2ff5d8e2db673dc93b8d1e8abe6fc554863c7d9955db7507f99fdd256b3f"
+    },
+    {
+      "path": "integration-onboarding-clock-boundaries.log",
+      "sha256": "bf2fc99e659f6b1b41d71ab7efdd2a5a657a372f77ff2e2513768cf2338b5c97"
+    },
+    {
+      "path": "integration-onboarding-clock-scope.log",
+      "sha256": "0c7292fc037bbcf1c7b7459bd04154c0e18775ab83aa7a4e594c8e0f0f839bae"
+    },
+    {
+      "path": "integration-onboarding-clock-diff.log.gz",
+      "sha256": "8ea3adda77da57456a17bc4f03220cf9e6e6146e9c706453e12ce19ce9d74069",
+      "bytes": 1966,
+      "decodedRaw": {
+        "originalName": "integration-onboarding-clock-diff.log",
+        "bytes": 6811,
+        "sha256": "ecbfb813fe4343c741088cc76d1dd99da63c11486a0ce312e36bd7607b2cb4f4"
+      }
+    }
+  ],
+  "originalPermanentManifest": {
+    "path": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-500-attempt2/integration-onboarding-clock-manifest.json",
+    "sha256": "3571c22f97011d5f2b886a407c6226b242cbb65e3a4c4861f7212030caf218c0"
+  },
+  "packagingNote": "Raw unified diff has legitimate single-space context lines. Gzip preserves its exact bytes without whitespace-check failures on the evidence file; permanent original log/manifest retained. This changes evidence packaging only."
+}

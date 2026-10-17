@@ -1,0 +1,17 @@
+{
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-send.json": "f6262f35fa4ac3e64ad13a2bc0d385254f5b1c3fc5ba439b78bfd398b7555494",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-send.log": "616ede50385f45827c5164eee2044560aba15d23c4113a0e79b49057d203cef7",
+    "docs/ux-audit/2026-10-16/probe-e13-send.browser.mjs": "62507dbbcb04a19ee08067fa46bacbe23d6c8431061e790a7c29c732834bbb6f"
+  },
+  "images": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-send-before-click.png": "d31403c46ab2dd4dee5baccc0cc32dbe0d00e886b309bf21d319f85add024a18",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-send-clicked-and-busy.png": "0b163cfe6c0a74ce0ec194850fc714161bc81008d9f3877895480a35df7ea672",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-send-after-1199.png": "571347909c317b7ccfc184ec094b24cc6123795163786a09aa987380d4280a0f"
+  },
+  "sourceManifest": "batch-e13b-source.json",
+  "servedJS_SHA256": "fda55b9eb5571e90087bade56579794eea72e883902fdf7b72cca60e359bdda0",
+  "observed": "Mouse Send1440→1199: sameRoot/input/messages,1request/noabort,busytrue, newroot in inert closed compact sheet;focusBODY; originalactiveAI unreachable untilmanuallyopen. before sentfocusdisabled BUTTON; mechanism not yet proved.",
+  "status": "confirmed-local-owner-negative; not requestlost or wholefamilycert",
+  "parentReadAll3PNG": true
+}

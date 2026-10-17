@@ -1,0 +1,15 @@
+
+Running 8 tests using 1 worker
+
+(node:77242) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/footnote-preview-contracts.spec.ts:32:7 › zh coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back (837ms)
+  ✓  2 tests/e2e/footnote-preview-contracts.spec.ts:32:7 › en coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back (8.0s)
+  ✓  3 tests/e2e/footnote-preview-contracts.spec.ts:49:7 › zh fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening (1.3s)
+  ✓  4 tests/e2e/footnote-preview-contracts.spec.ts:49:7 › en fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening (1.0s)
+  ✓  5 tests/e2e/footnote-preview-contracts.spec.ts:65:7 › bounded short-screen footnote › a long-note fixture scrolls inside the region without moving the article or clipping More (1.5s)
+  ✓  6 tests/e2e/footnote-preview-contracts.spec.ts:82:7 › coarse click intent › modifiers, non-primary, AT, Space and missing or malformed definitions retain native intent (512ms)
+  ✓  7 tests/e2e/footnote-preview-contracts.spec.ts:97:7 › native fallback without JavaScript › the original marker navigates to the complete note and browser Back restores its reading point (448ms)
+  ✓  8 tests/e2e/footnote-preview-contracts.spec.ts:106:7 › owned preview timers › an old hover timer cannot replace a newer focused marker or hide its citation; existing ARIA survives (567ms)
+
+  8 passed (14.9s)

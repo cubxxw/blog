@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-16T00:11:50.532732+00:00",
+  "sourceManifest": "batch-e15b-source.json",
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-e15b-reload.browser.mjs": "07a1a78fa9f65a18585d043d60a294d235c892689bc807448954c9c47e83c3b3",
+    "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload-after-reload.png": "ee09e35d1f9fe20009d913e52a980a804acda01a48ca79448332378a9b7a5d99",
+    "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload-before-reload.png": "d1770f7275f53b4736aacc17c6a92f98c39a85674ea20715ec9313cdf71af9c1",
+    "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload.json": "66549fb3c2f3001d033b6f74d7b388d2555d4254c25906baf338e95c659df6c4",
+    "docs/ux-audit/2026-10-16/evidence/probe-e15b-reload.log": "beea35439c63a6dc38b7ee20c748feef3e017024a0bbce6b26f58b8678577e25"
+  },
+  "parentRead2PNG": true,
+  "observed": "1440zh reduce real wheel850 then reload: storage850, preworld newlist top850/clientHeight375/scrollHeight2589, nexttwoRAF top850. Afterworldready/realenter listtop0 while storage850 remains. Exact reparent timing and overwriting storage are not observed; source identifies subsequent world DOM adoption as candidate mechanism. No production fix yet."
+}

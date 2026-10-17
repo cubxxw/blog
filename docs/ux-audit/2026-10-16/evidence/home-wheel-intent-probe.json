@@ -1,0 +1,84 @@
+{
+  "source": "batch-e61-source.json",
+  "viewport": {
+    "width": 568,
+    "height": 320
+  },
+  "lang": "en",
+  "motion": "reduce",
+  "kind": "Exploratory scroll-intent probe, not a passing contract. Actual wheel + isolated delayed JSON, no paid backend.",
+  "afterSend": {
+    "scrollY": 2183,
+    "focused": "hp-bear-chat",
+    "chat": {
+      "x": 20,
+      "y": 64.65625,
+      "width": 528,
+      "height": 243,
+      "top": 64.65625,
+      "right": 548,
+      "bottom": 307.65625,
+      "left": 20
+    },
+    "books": {
+      "x": 20,
+      "y": 360.65625,
+      "width": 528,
+      "height": 704.625,
+      "top": 360.65625,
+      "right": 548,
+      "bottom": 1065.28125,
+      "left": 20
+    }
+  },
+  "afterWheel": {
+    "scrollY": 2803,
+    "focused": "hp-bear-chat",
+    "chat": {
+      "x": 20,
+      "y": -555.34375,
+      "width": 528,
+      "height": 243,
+      "top": -555.34375,
+      "right": 548,
+      "bottom": -312.34375,
+      "left": 20
+    },
+    "books": {
+      "x": 20,
+      "y": -259.34375,
+      "width": 528,
+      "height": 704.625,
+      "top": -259.34375,
+      "right": 548,
+      "bottom": 445.28125,
+      "left": 20
+    }
+  },
+  "afterComplete": {
+    "scrollY": 2183,
+    "focused": "hp-bear-chat-input",
+    "chat": {
+      "x": 20,
+      "y": 64.65625,
+      "width": 528,
+      "height": 243,
+      "top": 64.65625,
+      "right": 548,
+      "bottom": 307.65625,
+      "left": 20
+    },
+    "books": {
+      "x": 20,
+      "y": 360.65625,
+      "width": 528,
+      "height": 704.625,
+      "top": 360.65625,
+      "right": 548,
+      "bottom": 1065.28125,
+      "left": 20
+    }
+  },
+  "completionScrollDelta": -620,
+  "limits": "One Chromium simulated short viewport; no OS keyboard/physical phone claim."
+}

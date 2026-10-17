@@ -1,7 +1,7 @@
-import { languageDestination } from './entry.mjs';
+import { languageDestination, handoffEntryFocus } from './entry.mjs';
 import { mountCafe } from './cafe.js';
 import { publicFocus } from './companion.mjs';
-import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect } from './state.mjs';
+import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, planWindowArrangement } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
 import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
 
@@ -62,6 +62,34 @@ function mountDesktop(root) {
     persist(); if (redraw) render();
     root.dispatchEvent(new CustomEvent('bear:workspace-change',{ detail:{type:action.type,active:state.active} }));
   }
+  function arrangementLabel(plan) {
+    if (plan.mode === 'overview') return t('窗口概览','Window overview');
+    return plan.rectangles.length === 1 ? t('适应工作区','Fit window') : t('窗口并排','Arrange windows');
+  }
+  function syncArrangementControls() {
+    const plan = planWindowArrangement(state,viewport()), label = arrangementLabel(plan);
+    root.querySelectorAll('[data-window-action="arrange"],[data-space-arrange]').forEach(button => {
+      button.setAttribute('aria-label',label); button.title = label;
+      if (plan.mode === 'overview') button.setAttribute('aria-haspopup','dialog');
+      else button.removeAttribute('aria-haspopup');
+      if (button.hasAttribute('data-space-arrange')) {
+        button.textContent = label;
+        // Overview already has a dedicated menu entry. Keep one visible path
+        // instead of presenting two identical actions when tiling cannot fit.
+        const hide = menuPanel.contains(button) && plan.mode === 'overview';
+        if (hide && document.activeElement === button) menuPanel.querySelector('[data-space-overview-trigger]')?.focus({preventScroll:true});
+        button.hidden = hide;
+      }
+    });
+  }
+  function arrangeWindows() {
+    // Phones use a virtual stateViewport to preserve desktop rectangles.
+    // Capacity is always based on the actual visible desktop instead.
+    const plan = planWindowArrangement(state,viewport());
+    if (plan.mode === 'overview') { showOverview(); return t('已打开窗口概览。','Window overview opened.'); }
+    update({type:'arrange'});
+    return plan.rectangles.length === 1 ? t('窗口已适应工作区。','Window fitted to the workspace.') : t('窗口已并排。','Windows arranged.');
+  }
   function render() {
     root.dataset.theme = state.theme; root.dataset.wallpaper = state.wallpaper;
     for (const [id,entry] of nodes) {
@@ -95,6 +123,7 @@ function mountDesktop(root) {
       else button.removeAttribute('aria-current');
     });
     if (launchpad.open) drawLaunchpad();
+    syncArrangementControls();
   }
   function open(app,payload) {
     if (!APPS.includes(app)) return t('没有这个应用。','Unknown application.');
@@ -121,7 +150,7 @@ function mountDesktop(root) {
     if (name === 'search') { showSearch(arg); return t('已打开搜索。','Search opened.'); }
     if (name === 'launchpad') { showLaunchpad(arg); return t('已打开所有应用。','All apps opened.'); }
     if (name === 'note') { update({type:'note',text:state.note+(state.note?'\n':'')+arg}); const existing=nodes.get('notes'); if(existing){existing.rendered=false;render();} return t('已追加到你的笔记。','Added to your note.'); }
-    if (name === 'arrange') { execute('arrange'); return t('窗口已并排。','Windows arranged.'); }
+    if (name === 'arrange') return arrangeWindows();
     if (name === 'export') { execute('export'); return t('已导出工作区文件。','Workspace exported.'); }
     if (name === 'clear') { root.querySelector('[data-terminal-output]')?.replaceChildren(); return ''; }
     return t(`未知命令：${name}。输入 help 查看命令。`,`Unknown command: ${name}. Type help.`);
@@ -148,15 +177,14 @@ function mountDesktop(root) {
       const typingDraft = name === 'draft' && document.activeElement?.matches('[data-message-draft]') && document.activeElement.value === state.draft;
       if (entry && !typingDraft) {
         if (name === 'favorite' && entry.payload) {
-          const favorite = entry.el.querySelector('[data-reader-favorite]');
-          if (favorite) favorite.textContent = `${state.favorites.includes(entry.payload) ? '★' : '☆'} ${t('收藏','Save')}`;
+          apps.syncFavorite(entry.el, entry.payload);
         } else { entry.rendered = false; render(); }
       }
       return true;
     }
     if (['theme','wallpaper'].includes(name)) { update({type:name,...args}); return true; }
     if (name === 'close') { completeEntry(); update({type:'close',id:args.id}); return true; }
-    if (name === 'arrange') { if(root.clientWidth<=640)showOverview();else update({type:'arrange'}); return true; }
+    if (name === 'arrange') { arrangeWindows(); return true; }
     if (name === 'search') { showSearch(args.query || ''); return true; }
     if (name === 'launchpad') { showLaunchpad(args.query || ''); return true; }
     if (name === 'run') return runSandbox(args.command);
@@ -296,7 +324,7 @@ function mountDesktop(root) {
   function toggleMenu(){menuPanel.hidden=!menuPanel.hidden;menu.setAttribute('aria-expanded',String(!menuPanel.hidden));if(!menuPanel.hidden)menuPanel.querySelector('button')?.focus({preventScroll:true});}
   menu.addEventListener('keydown',event=>{if(event.key==='ArrowDown'){event.preventDefault();if(menuPanel.hidden)toggleMenu();else menuPanel.querySelector('button')?.focus();}});
   menuPanel.addEventListener('keydown',event=>{
-    const items=[...menuPanel.querySelectorAll('button,a')];
+    const items=[...menuPanel.querySelectorAll('button,a')].filter(item=>!item.hidden&&!item.disabled&&item.getClientRects().length);
     if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();items[resultIndex(items.indexOf(document.activeElement),event.key==='ArrowDown'?1:-1,items.length)]?.focus();}
     if(event.key==='Home'||event.key==='End'){event.preventDefault();items[event.key==='Home'?0:items.length-1]?.focus();}
   });
@@ -374,7 +402,7 @@ function mountDesktop(root) {
       event.preventDefault();setView('lab');lab.querySelector('[data-bks-enter]')?.focus({preventScroll:true});return;
     }
     if(productRoot.dataset.productView!=='bear')return;
-    if(event.isComposing)return;
+    if(event.isComposing||event.keyCode===229)return;
     if(cafe?.modalOpen)return;
     const editing=isEditableTarget(event.target);
     if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();showSearch();return;}
@@ -434,7 +462,16 @@ function mountDesktop(root) {
     catch{if(current())host.innerHTML=`<p class="space-app">${t('知识空间暂时无法加载。','The knowledge space could not load.')}</p><button data-product-view-button="lab">${t('返回 Product Lab','Back to Product Lab')}</button>`;}
     finally{if(generation===knowledgeGeneration)knowledgePending=false;}
   }
-  productRoot.addEventListener('click',event=>{const b=event.target.closest('[data-product-view-button]');if(!b)return;setView(b.dataset.productViewButton);const target=b.dataset.productViewButton==='bear'?menu:productRoot.querySelector('.product-view-switch [data-product-view-button="lab"]');target?.focus({preventScroll:true});});
+  productRoot.addEventListener('click',async event=>{
+    const b=event.target.closest('[data-product-view-button]');if(!b)return;
+    setView(b.dataset.productViewButton);
+    if(b.dataset.productViewButton==='bear'){
+      // The hidden Lab may have deferred the first real frame. Its controls
+      // become focusable only after the spatial workspace is ready.
+      const entered=await cafe?.enterDesktop();
+      if(entered!==false&&!root.hidden&&(document.activeElement===b||document.activeElement===document.body))menu.focus({preventScroll:true});
+    }else productRoot.querySelector('.product-view-switch [data-product-view-button="lab"]')?.focus({preventScroll:true});
+  });
   function applyHash(restoreLocale = false){
     const entry=new URLSearchParams(location.search).get('profile')==='about'?'about':'';
     const route=resolveSpaceRoute(location.hash,catalog.products,entry);
@@ -448,14 +485,18 @@ function mountDesktop(root) {
   const entryRoute = resolveSpaceRoute(location.hash,catalog.products,new URLSearchParams(location.search).get('profile') === 'about' ? 'about' : '');
   const navigationType = performance.getEntriesByType('navigation')[0]?.type;
   let resumeCafe = false;
-  try { resumeCafe = navigationType === 'reload' && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
+  try { resumeCafe = navigationType === 'reload' && !entryRoute.app && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
   if (!state.initialized) home(); else render();
   applyHash(localeResume || resumeCafe);
-  cafe = mountCafe({ root, route:entryRoute, navigation:navigationType, localeResume, execute,
+  const initialTarget=entryRoute.app&&!localeResume&&!resumeCafe?nodes.get(entryRoute.app)?.el:null,initialOrigin=document.activeElement;
+  const entryFocusManaged=Boolean(initialTarget);
+  cafe = mountCafe({ root, route:entryRoute, navigation:navigationType, localeResume, execute, entryFocusManaged,
     onEnter:()=>{completeEntry();render();},
     beforeVisit:()=>{closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);},
     focusDesktop:()=>nodes.get(state.active)?.el || menu
   });
+  const focusEntryURL=location.href;
+  if(entryFocusManaged)handoffEntryFocus({ready:cafe.ready,target:initialTarget,origin:initialOrigin,document,window,isCurrent:()=>location.href===focusEntryURL&&state.active===entryRoute.app&&root.dataset.cafeMode==='desktop'&&!root.hidden,focus:()=>focusWindow(entryRoute.app)});
   root.dataset.ready='true';
   if(saveFailure)notify(t('无法使用浏览器存储。笔记可导出，但刷新后可能丢失。','Browser storage is unavailable. Export notes before reloading.'));
 }

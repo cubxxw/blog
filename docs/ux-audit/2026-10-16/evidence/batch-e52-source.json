@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-15T17:54:48.601670+00:00",
+  "base": "94e644e50bc4ee1731d3250f2746db68653cd182",
+  "files": {
+    "assets/css/space-cafe.css": "05eda0f61d39ea74c1643f92bcee252bb7dc4eabd271af413afdaad0b053439c",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+    "assets/css/space-media.css": "787430661224c666ca8032d62e3ac8e589c2a0bb19e7265c168ca5a4bb922ffa",
+    "assets/css/extended/article-faq.css": "7a9fb97b202a4818cbba94c9e3856223fc99052d5f1e05e622d95f3aa9791254",
+    "layouts/partials/space/cafe.html": "6375fae1136e99d37f6568c11bb79d6949ba02042e8b96f066b4c535a834abc8",
+    "static/js/article-faq.js": "cf79db877307d40638a8c82c7610ecfa189088ef83b4f08f37e4fa6fa540f7ee",
+    "tests/e2e/space-reading-contracts.spec.ts": "27685f0ce7cf58f32773e731579e2edbe7da7407bda469a3e496a765214e5268",
+    "tests/e2e/faq-motion-contracts.spec.ts": "d7847d16f9651c9cc000a6cc821b6a9038737482ecb7dfc7d48c6e51bca9bf84",
+    "tests/e2e/space-boundary-contracts.spec.ts": "28c586c6125aaa909d6489426b234995549a63169e2bdeff65730ef4e6dbe94f"
+  }
+}

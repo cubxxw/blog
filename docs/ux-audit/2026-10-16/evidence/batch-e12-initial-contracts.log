@@ -1,0 +1,59 @@
+
+Running 8 tests using 1 worker
+
+(node:76400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/footnote-preview-contracts.spec.ts:31:7 › zh coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back (1.1s)
+  ✓  2 tests/e2e/footnote-preview-contracts.spec.ts:31:7 › en coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back (8.0s)
+  ✓  3 tests/e2e/footnote-preview-contracts.spec.ts:48:7 › zh fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening (1.1s)
+  ✓  4 tests/e2e/footnote-preview-contracts.spec.ts:48:7 › en fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening (1.1s)
+  ✘  5 tests/e2e/footnote-preview-contracts.spec.ts:64:7 › bounded short-screen footnote › a long-note fixture scrolls inside the region without moving the article or clipping More (1.5s)
+(node:76445) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/e2e/footnote-preview-contracts.spec.ts:78:7 › coarse click intent › modifiers, non-primary, AT, Space and missing or malformed definitions retain native intent (602ms)
+  ✘  7 tests/e2e/footnote-preview-contracts.spec.ts:93:7 › native fallback without JavaScript › the original marker navigates to the complete note and browser Back restores its reading point (30.1s)
+(node:76512) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  8 tests/e2e/footnote-preview-contracts.spec.ts:102:7 › owned preview timers › an old hover timer cannot replace a newer focused marker or hide its citation; existing ARIA survives (643ms)
+
+
+  1) tests/e2e/footnote-preview-contracts.spec.ts:64:7 › bounded short-screen footnote › a long-note fixture scrolls inside the region without moving the article or clipping More 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2367
+    Received: 2319
+
+      70 |     expect(await body.evaluate(el=>el.scrollHeight>el.clientHeight)).toBe(true);const bounds=(await body.boundingBox())!;await page.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await page.mouse.wheel(0,420);await expect.poll(()=>body.evaluate(el=>el.scrollTop)).toBeGreaterThan(0);expect(await page.evaluate(()=>scrollY)).toBe(before.y);expect(await page.evaluate(()=>location.hash)).toBe(before.hash);await expect(pop).toHaveAttribute('aria-hidden','false');await actionGeometry(more(page));
+      71 |     await page.emulateMedia({reducedMotion:'reduce'});await expect.poll(()=>pop.evaluate(el=>getComputedStyle(el).transform)).toBe('none');await actionGeometry(more(page));await body.focus();await page.keyboard.press('End');await expect.poll(()=>body.evaluate(el=>Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop)<2)).toBe(true);
+    > 72 |     await page.mouse.wheel(0,420);await page.waitForTimeout(100);expect(await page.evaluate(()=>scrollY)).toBe(before.y);expect(await page.evaluate(()=>location.hash)).toBe(before.hash);await expect(pop).toHaveAttribute('aria-hidden','false');await actionGeometry(more(page));await page.keyboard.press('Escape');await expect(ref).toBeFocused();await expect(pop).toHaveAttribute('aria-hidden','true');
+         |                                                                                                           ^
+      73 |   });
+      74 | });
+      75 |
+        at <SOURCE_WORKTREE>/tests/e2e/footnote-preview-contracts.spec.ts:72:107
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/footnote-preview-contracts-87303-he-article-or-clipping-More/error-context.md
+
+  2) tests/e2e/footnote-preview-contracts.spec.ts:93:7 › native fallback without JavaScript › the original marker navigates to the complete note and browser Back restores its reading point 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.evaluate: Test timeout of 30000ms exceeded.
+
+       9 |   await ref.scrollIntoViewIfNeeded();
+      10 |   await ref.evaluate(el=>{const r=el.getBoundingClientRect();scrollTo({top:scrollY+r.y+r.height/2-innerHeight/2,behavior:'instant'});});
+    > 11 |   await ref.page().evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));
+         |                    ^
+      12 | }
+      13 | async function tap(ref:Locator){
+      14 |   const box=(await ref.boundingBox())!;await ref.page().touchscreen.tap(box.x+box.width/2,box.y+box.height/2);
+        at center (<SOURCE_WORKTREE>/tests/e2e/footnote-preview-contracts.spec.ts:11:20)
+        at <SOURCE_WORKTREE>/tests/e2e/footnote-preview-contracts.spec.ts:94:90
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/footnote-preview-contracts-9d979--restores-its-reading-point/error-context.md
+
+  2 failed
+    tests/e2e/footnote-preview-contracts.spec.ts:64:7 › bounded short-screen footnote › a long-note fixture scrolls inside the region without moving the article or clipping More 
+    tests/e2e/footnote-preview-contracts.spec.ts:93:7 › native fallback without JavaScript › the original marker navigates to the complete note and browser Back restores its reading point 
+  6 passed (45.8s)

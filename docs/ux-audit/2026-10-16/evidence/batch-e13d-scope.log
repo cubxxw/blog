@@ -1,0 +1,65 @@
+{
+  "scope": "Only article-chat.js before-unavailable focus and invalid owned-control fallback; two actual-click entry contracts appended. Original 10 contract bytes unchanged.",
+  "checks": [
+    {
+      "file": "layouts/partials/article/editorial-tools.html",
+      "sha256": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "layouts/_default/single.html",
+      "sha256": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "static/js/article-chat.js",
+      "sha256": "92dc733d5df1b43a9ac4c85bee529a074d3f3c7a85c6fd9daa9cc5265f972aa6",
+      "unchangedFromE13c": false
+    },
+    {
+      "file": "static/js/reading-companion.js",
+      "sha256": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "static/js/article-bottom-sheet.js",
+      "sha256": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "assets/css/extended/editorial-tools.css",
+      "sha256": "5f8f8b81690cd0665b1f848024ce7c94d24d8069080916710c96a69b206fce14",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "assets/css/extended/article-bottom-sheet.css",
+      "sha256": "526c39c57662025613d428841012e4627eb6ae4a83125eb1cb7b166be5a4028e",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "tests/e2e/article-chat-continuity-contracts.spec.ts",
+      "sha256": "a0a8c748d9f9fa90dc1ef82c7b5e652c147d2cd02ee061b6d7276b1526254637",
+      "unchangedFromE13c": false
+    },
+    {
+      "file": "tests/e2e/article-selection.spec.ts",
+      "sha256": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "static/js/article-ai-client.js",
+      "sha256": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+      "unchangedFromE13c": true
+    },
+    {
+      "file": "static/js/article-tabs.js",
+      "sha256": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d",
+      "unchangedFromE13c": true
+    }
+  ],
+  "distinctCases": 12,
+  "defaultConfigProjectEntries": 24,
+  "originalTenByteIdentical": true,
+  "browserRun": false,
+  "hugoBuild": false
+}

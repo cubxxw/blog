@@ -1,0 +1,143 @@
+{
+  "at": "2026-10-16T01:21:42.175105+00:00",
+  "batch": "E14 production ENposts optional candidate; independent pending",
+  "files": {
+    "layouts/partials/extend_head.html": "f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417",
+    "static/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css": "52b2ee5f12e90dcd606c28bfd2d2ddce2182a4022a5342595b384a2365f56720",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "875e31471f281957b6328ff5e2c23271406c58ae143d7590599a4ce47ff2ce05",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "tests/e2e/article-font-stability-contracts.spec.ts": "2a1634e23e9130b1d6aabd58b7c6f0e74d2038e140573086254c127f94dc90e5",
+    "docs/ux-audit/2026-10-16/batch-e14b-production.actual.mjs": "c312d4ab5c14ef3d7cdf833180bebccb85970083c2332a0a83890b502a0b14d5",
+    "docs/ux-audit/2026-10-16/batch-e14b-production.zh-smoke.mjs": "5d11a7879d540242b323b2223ae7464bd7f4ff7faa888d88814db8dc7766407e",
+    "docs/ux-audit/2026-10-16/article-font-qa.config.mjs": "7de100b1f00d68c57f087b797039b4fd88fac2449e83714e70b0380365f17e53",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-before.png": "26c2dfc0a0362d2e8553ab2480551361f83f4194b0e0049ef49a16204a2f02d8",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-terminal.png": "26c2dfc0a0362d2e8553ab2480551361f83f4194b0e0049ef49a16204a2f02d8",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-title-surface.png": "e1b5e78a30edbe4f3082ef94f857fe5385c72c4dd2cb342d38916fcf336ef61c",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-code-surface.png": "997e1fea558937ba0806e4dc6d44a1664f9468de80c4df48455b6a5e6fdeb8db",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-immediate-before.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-immediate-terminal.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-1200ms-before.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-1200ms-registered-font-held.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-1200ms-terminal.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-success-font-404-before.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-success-font-404-terminal.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-404-before.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-404-terminal.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-title.png": "4ced945f6c570052bc31e915cc09833c28bda40c18c86651468de6083a2aedb9",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-mixed-prose.png": "2c22ccf093ac6b4dd179bab897af792e419e2a4cce14492964e08a23ef7ca235",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-code.png": "33f6f56692dc73f3bcb7e7651612ceead92f342230fba0d2cdcaa66b5b9064b5",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-contract.json": "b6a7f3b8dc4cfc0db7e9f30be9886364808d831e2da7f80e53bba4d069f606ef",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-actual.json": "3e09f72f1ef9785fff259c39769c93007138d6972d58b06646bd125f43e7f146",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-actual.log": "997f5d102140b0a9d81148de323ac97696486d988859e4f81d08aca03aa903c7",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-smoke.json": "0c8ab950dd5e0d72ba61ebde2bd3e508b46cdecce39edebdf862c94e7fc6228f",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-smoke.log": "7d2e39da1a5285a0f3cc8aa76f0b6b86cf3084ccc5d0b09b9e442ecbbbbdafb1",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-served-head.json": "a44a404e030525bfbfd3edf7d3b67376821286196abe6002a2379a2b24a46fce",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-build.log": "72609c38b49f78d84074bf792bdfa31b3172d7d158f0dfa410cd1f0fca027a3f",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-initial-contracts.log": "b2711a50c6eaa04a8e53423a552a417bd59aa0350a8062fd5e61695f18f14c04",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-initial-contracts.spec.ts": "c73e51c23d8e1d11b200d65ca13aa82d5f842844752572c9daf9098acd385edd",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-initial-contract.json": "a186234d72474fd858acb52d9a30369823df07ac69eab13dc98d0dd5372aae9c",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-initial-error-context.md": "c89154934c82d8cd36cd0e27b9126cf73f4c2445fc8e1e6df68c188084812214",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14a-production-scope.log": "0d95af1285413f3287d6e437cee1db751493e1cd95aac1e758d94f1faee03e7a",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-contract.json": "5ce8f5cfd6816852c7dbbdbf5aef7b5c1f99e9e86e5dc5d9b732790024312ae2",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-actual.json": "70dc61480cd7a678b99842bd0debae35cdae3d7ac1559fa9ed0863bbe715a66b",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-actual.log": "3703e725ae7d216307f4cd6b4b05e95b920365e3797f7ee484acba0aa0f59319",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-fixture-manifest.json": "dac3ad26c1a2d6d4f765e28d314a9b1ea91d4896e2328a893af8cd62dfac6120",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-google-full.css": "df40f8b52b40b6a61627c0942f7abdce6e87e1402fb86ff144fcfcdafd6f6c69",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-google-optional.css": "36132094a2a20705d708954f4f7e0ccceb55dcc2b65d2d82948893fb65b7ce03",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle.json": "71f50e58374b6c1d3a0e8c637a014cd368d77a4b89c2ce42ab79268794eaa206",
+    "docs/ux-audit/2026-10-16/evidence/boundary-font-bundle-provenance.json": "f57017624a554c0aeb4017bdd221b7c6e6da617a00e799df250581ead65d2b4c",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-fast-before-reading-before.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-fast-before-reading-terminal.png": "62e4ef0f60e533348dbb93457de6979cb496e300a0fea90479aba128ff079125",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-fast-before-reading-title-surface.png": "3b8e33c4d3b7d6980d3ab99ee14cb25d49951f1600a0d28469ff60608d74f308",
+    "docs/ux-audit/2026-10-16/batch-e14-production.actual.mjs": "b8b588e9aa063f42978903cb2acccae2fe48747fe3e5f0eda3b0951c521fcc97"
+  },
+  "parentImagesRead": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-before.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-terminal.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-title-surface.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-fast-before-reading-code-surface.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-immediate-before.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-immediate-terminal.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-1200ms-before.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-1200ms-registered-font-held.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-late-font-1200ms-terminal.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-success-font-404-before.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-success-font-404-terminal.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-404-before.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-css-404-terminal.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-title.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-mixed-prose.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-code.png"
+  ],
+  "initialExtraPhotoFixtureFailure": "First productionfast row measured0delta/7fonts/CDP with2phase+title3images valid; unavailableprecode extra locator timedout; initialraw/script/log retained; B only extra photo chooses real previouslytaggedinlinecode. B5 completecases13PNG, sources8 unchanged, strict0.5/root0 gates intact. Initial3PNG separately parentread; pairSHA differs from B and no identicalcapture claim; no initialcontextpass or newfeature count claim.",
+  "contractComposition": "Initial4=3behaviorpass1minified-handler-stringfixturefail4.4s. Test-onlyA scope semantic isolatedhandler dispatch1pass1.0s; original3helper/body byte-identical, not rerun. 4distinctcontracts total, no skips. 9servedHTTP routes recorded.",
+  "actual": {
+    "coldENRows": 5,
+    "coldENImages": 13,
+    "ZHsmoke": 1,
+    "ZHimages": 3,
+    "deltas": [
+      {
+        "case": "fast-before-reading",
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      },
+      {
+        "case": "css-late-font-immediate",
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      },
+      {
+        "case": "css-late-font-1200ms",
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      },
+      {
+        "case": "css-success-font-404",
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      },
+      {
+        "case": "css-404",
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      }
+    ],
+    "fontRequests": [
+      7,
+      15,
+      15,
+      15,
+      0
+    ],
+    "actualGlyphFamilies": "All5EN rows heading/prose Georgia and code Courier (CDP actualused glyphs), includingfast-before-reading. ZH actual glyphs in separate smoke receipt; no localabsence claim.",
+    "unknownNeededFontURLs": 0,
+    "pageErrors": 0,
+    "applicationDenied": 0
+  },
+  "limits": [
+    "Five named EN390dark/reduced cold contexts and oneZH390light/normal settled smoke only",
+    "fast-before-reading not HTTPwarmcache or beforefirstpaint",
+    "PhasePNG only namedtime, not continuousFOIT/fullCLS/FPS",
+    "Computed CSS font shorthand empty in receipt is not font-size proof; CDP actualglyph attribution independent; no exacttypefloor claim from it",
+    "No allroute/AT/Safari/physicaldevice/localCJKabsence/full96 certification; original experimental discovery/humanchoice remainunreviewed"
+  ],
+  "initialFailureImagesParentRead": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-fast-before-reading-before.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-fast-before-reading-terminal.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14-production-fast-before-reading-title-surface.png"
+  ]
+}

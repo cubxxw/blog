@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:46545) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×320 (1.9s)
+  ✓  2 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×320 (1.1s)
+  ✓  3 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×256 (1.0s)
+  ✓  4 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×256 (1.1s)
+  ✓  5 tests/e2e/home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 390px (496ms)
+  ✓  6 tests/e2e/home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 1440px (559ms)
+
+  6 passed (7.7s)

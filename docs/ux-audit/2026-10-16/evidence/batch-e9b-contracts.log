@@ -1,0 +1,14 @@
+
+Running 7 tests using 1 worker
+
+(node:61365) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/space-preferences-contact-contracts.spec.ts:45:7 › 320×844 zh light preferences and contact › preferences update in place while drafts, status and real channel destinations survive (3.1s)
+  ✓  2 tests/e2e/space-preferences-contact-contracts.spec.ts:45:7 › 390×844 en light preferences and contact › preferences update in place while drafts, status and real channel destinations survive (2.6s)
+  ✓  3 tests/e2e/space-preferences-contact-contracts.spec.ts:45:7 › 620×844 zh dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive (2.5s)
+  ✓  4 tests/e2e/space-preferences-contact-contracts.spec.ts:45:7 › 844×390 en dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive (2.4s)
+  ✓  5 tests/e2e/space-preferences-contact-contracts.spec.ts:45:7 › 1440×900 zh light preferences and contact › preferences update in place while drafts, status and real channel destinations survive (2.4s)
+  ✓  6 tests/e2e/space-preferences-contact-contracts.spec.ts:45:7 › 1440×900 en dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive (2.4s)
+  ✓  7 tests/e2e/space-preferences-contact-contracts.spec.ts:137:7 › pending settings status lifecycle › closing aborts the owned check and a late result cannot update a new mount (676ms)
+
+  7 passed (17.1s)

@@ -1,0 +1,27 @@
+
+Running 20 tests using 1 worker
+
+(node:42508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › zh accessible chat streams safely and locks the complete turn (6.8s)
+  ✓   2 tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › en accessible chat streams safely and locks the complete turn (10.6s)
+  ✓   3 tests/e2e/home-about-experience.spec.ts:73:7 › Homepage runtime and progressive decoration › close and clear isolate stale replies from a subsequent conversation (9.4s)
+  ✓   4 tests/e2e/home-about-experience.spec.ts:103:7 › Homepage runtime and progressive decoration › a completed reply does not steal focus after the visitor leaves chat (21.2s)
+  ✓   5 tests/e2e/home-about-experience.spec.ts:118:7 › Homepage runtime and progressive decoration › bfcache restoration synchronizes a canceled streaming composer (26.6s)
+  ✓   6 tests/e2e/home-about-experience.spec.ts:143:7 › Homepage runtime and progressive decoration › a failed stream exposes a usable retry (26.2s)
+  ✓   7 tests/e2e/home-about-experience.spec.ts:160:7 › Homepage runtime and progressive decoration › desktop decoration waits for conversation visibility and intent, then responds to motion preference changes (8.9s)
+  ✓   8 tests/e2e/home-about-experience.spec.ts:199:9 › Homepage runtime and progressive decoration › phone retains chat without downloading Three.js (4.4s)
+  ✓   9 tests/e2e/home-about-experience.spec.ts:199:9 › Homepage runtime and progressive decoration › motion retains chat without downloading Three.js (3.7s)
+  ✓  10 tests/e2e/home-about-experience.spec.ts:199:9 › Homepage runtime and progressive decoration › saveData retains chat without downloading Three.js (4.6s)
+  ✓  11 tests/e2e/home-about-experience.spec.ts:199:9 › Homepage runtime and progressive decoration › slowConnection retains chat without downloading Three.js (5.1s)
+  ✓  12 tests/e2e/home-about-experience.spec.ts:199:9 › Homepage runtime and progressive decoration › coarsePointer retains chat without downloading Three.js (5.9s)
+  ✓  13 tests/e2e/home-about-experience.spec.ts:199:9 › Homepage runtime and progressive decoration › noWebGL retains chat without downloading Three.js (13.0s)
+  ✓  14 tests/e2e/home-reading-contracts.spec.ts:6:39 › a server-rendered reading entrance › zh practice title is a real article link without scripts (2.3s)
+  ✓  15 tests/e2e/home-reading-contracts.spec.ts:6:39 › a server-rendered reading entrance › en practice title is a real article link without scripts (962ms)
+  ✓  16 tests/e2e/home-reading-contracts.spec.ts:17:7 › zh reading precedes all contact targets at 320px (3.9s)
+  ✓  17 tests/e2e/home-reading-contracts.spec.ts:17:7 › en reading precedes all contact targets at 320px (3.7s)
+  ✓  18 tests/e2e/home-reading-contracts.spec.ts:17:7 › zh reading precedes all contact targets at 390px (1.0s)
+  ✓  19 tests/e2e/home-reading-contracts.spec.ts:17:7 › en reading precedes all contact targets at 390px (1.0s)
+  ✓  20 tests/e2e/home-reading-contracts.spec.ts:51:5 › Bear follows the writing with the same conversation and restores its question opener (986ms)
+
+  20 passed (2.9m)

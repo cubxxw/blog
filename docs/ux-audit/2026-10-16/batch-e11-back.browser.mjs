@@ -1,0 +1,24 @@
+import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {chromium} from 'playwright';
+const out='docs/ux-audit/2026-10-16/evidence';
+// Local installed Playwright coreBundle.js normally disables BFCache. This
+// isolated diagnostic omits only that default flag; it does not promise that
+// Chromium accepts this no-store preview page into its cache.
+const browser=await chromium.launch({channel:'chromium',ignoreDefaultArgs:['--disable-back-forward-cache']});
+try{
+const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce',serviceWorkers:'block'});
+await context.addInitScript(()=>{
+ localStorage.setItem('pref-theme','dark');window.__uxDocumentToken=Math.random();window.__uxAiCalls=[];
+ const record=(name,e)=>{const key='ux-e11-navigation-events';const events=JSON.parse(sessionStorage.getItem(key)||'[]');events.push({name,persisted:e.persisted,path:location.pathname,token:window.__uxDocumentToken});sessionStorage.setItem(key,JSON.stringify(events));};
+ window.addEventListener('pageshow',e=>record('pageshow',e));window.addEventListener('pagehide',e=>record('pagehide',e));
+ const original=window.fetch.bind(window);window.fetch=(input,options)=>{const u=new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url,location.href);if(u.pathname.startsWith('/.netlify/functions/')){if(u.pathname==='/.netlify/functions/blog-ai'){window.__uxAiCalls.push(JSON.parse(options.body));return Promise.resolve(new Response(JSON.stringify({answer:'CONTROLLED_E11_CONTEXT_REPLY',candidates:[]}),{headers:{'Content-Type':'application/json'}}));}return Promise.resolve(new Response('{}',{status:503}));}return original(input,options);};
+});
+const page=await context.newPage();page.setDefaultTimeout(12000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:1317/zh/articles/',{waitUntil:'domcontentloaded'});await page.locator('[data-search-trigger="nav"]:visible').first().click();const query=page.locator('.search-palette__input');await query.fill('Kubernetes');await page.locator('.search-palette__result').first().waitFor();await query.press('Control+Enter');
+const followup=page.locator('.search-palette__followup-input');await followup.waitFor();await followup.fill('UNSENT_E11_SYNTHETIC_CONTINUATION');await followup.evaluate(e=>{window.__uxOriginalFollowup=e;window.__uxOriginalContent=document.querySelector('#search-ai-content');});
+const snapshot=()=>page.evaluate(()=>({token:window.__uxDocumentToken,query:document.querySelector('.search-palette__input')?.value,paletteOpen:!document.querySelector('#search-command-palette')?.hidden,answer:document.querySelector('#search-ai-content')?.textContent,followup:document.querySelector('.search-palette__followup-input')?.value,sameInput:window.__uxOriginalFollowup===document.querySelector('.search-palette__followup-input'),sameContent:window.__uxOriginalContent===document.querySelector('#search-ai-content'),calls:window.__uxAiCalls,events:JSON.parse(sessionStorage.getItem('ux-e11-navigation-events')||'[]'),navigation:performance.getEntriesByType('navigation').map(n=>({type:n.type,notRestoredReasons:n.notRestoredReasons?.toJSON?.()}))}));
+const before=await snapshot();await page.screenshot({path:out+'/batch-e11-back-before-1440-zh.png'});
+await page.goto('http://127.0.0.1:1317/zh/engineering/posts/use-go-tools-dlv/',{waitUntil:'domcontentloaded'});await page.goBack({waitUntil:'domcontentloaded'});const after=await snapshot();const event=after.events.at(-1);const restored=event?.name==='pageshow'&&event.persisted===true&&before.token===after.token;
+await page.screenshot({path:out+'/batch-e11-back-after-1440-zh.png'});
+let afterFollowup=null;if(restored){assert(after.paletteOpen);assert.equal(after.query,before.query);assert.equal(after.followup,before.followup);assert(after.sameInput&&after.sameContent);await page.locator('.search-palette__followup-input').press('Enter');await page.waitForFunction(()=>window.__uxAiCalls.length===2);afterFollowup=await snapshot();const last=afterFollowup.calls.at(-1);assert(last.context.some(m=>m.content==='CONTROLLED_E11_CONTEXT_REPLY'));assert(last.context.some(m=>m.role==='user'&&m.content==='Kubernetes'));}
+await fs.writeFile(out+'/batch-e11-back.json',JSON.stringify({at:new Date().toISOString(),before,after,restored,afterFollowup,errors,limits:'One Chromium1440 zh/dark/reduce actual same-local navigation/Back attempt; completed AI and followup are deterministic fetch mock, no paid/backend calls. BFCache certified only if pageshow.persisted true and original document token matches. If browser reloads instead, original DOM restoration remains unverified; no product persistence claim across hard reload.'},null,2)+'\n');console.log(JSON.stringify({restored,errors,events:after.events}));await context.close();
+}finally{await browser.close();}

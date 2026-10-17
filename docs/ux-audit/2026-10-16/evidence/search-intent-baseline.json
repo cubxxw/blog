@@ -1,0 +1,27 @@
+{
+  "source": "assets/js/search-palette.js",
+  "sourceSHA256": "0c448966d5ff9a2b15569fc759f39a63633cf2bf078c4e7767cdbcfdf2b39c6c",
+  "previewCheckpoint": "b5b6fa34 global file; E10 source WIP not built",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "lang": "zh",
+  "motion": "reduce",
+  "clock": "paused only after actual index results; intended debounce 150ms has not fired",
+  "oldFirst": {
+    "href": "https://cubxxw.com/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+    "title": "Kubernetes一篇快速入门的文章\n          Kubernetes（k8s）是 Google 基于内部 Borg 系统开源的容器编排引擎，由 CNCF 托管，用声明式 API 自动完成容器化应用的部署、扩缩…\n          BlogKubernetesCloud Native2022-04-28"
+  },
+  "newQuery": "zz_no_matching_topic_981254",
+  "beforeEnter": {
+    "query": "zz_no_matching_topic_981254",
+    "results": 10,
+    "firstHref": "https://cubxxw.com/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+    "active": null,
+    "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes"
+  },
+  "navigationURL": "https://cubxxw.com/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+  "navigatedToOldFirst": true,
+  "limits": "Exploratory actual local-index query change/Enter with clock held inside150ms. Navigation intercepted and aborted locally, no public-site request. Not a passing test or physical-device/full-keyboard certification."
+}

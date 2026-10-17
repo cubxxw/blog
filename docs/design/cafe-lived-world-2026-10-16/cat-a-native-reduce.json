@@ -1,0 +1,20 @@
+{
+  "beforePose": "{\"x\":0.85,\"y\":1.52,\"z\":2.45,\"yaw\":0.785,\"pitch\":-0.337,\"fov\":54}",
+  "pet": {
+    "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+    "frames": "29",
+    "interaction": "petted-still",
+    "pose": "{\"x\":1.25,\"y\":0.78,\"z\":2.672,\"yaw\":0,\"pitch\":-0.466,\"fov\":42}",
+    "reduce": true,
+    "state": "look",
+    "status": "它眯起眼睛，抬头看着你。"
+  },
+  "framesLater": "29",
+  "return": {
+    "focus": "cat",
+    "inspect": null,
+    "pose": "{\"x\":0.85,\"y\":1.52,\"z\":2.45,\"yaw\":0.785,\"pitch\":-0.337,\"fov\":54}"
+  },
+  "visualAccepted": false,
+  "reason": "eye local Y scale compensation overwritten; framing clips ears; A2 required"
+}

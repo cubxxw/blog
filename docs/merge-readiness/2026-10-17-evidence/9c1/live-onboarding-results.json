@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-17T10:05:15.041Z",
+  "head": "9c1f56390039085746e02c0f730ceafd91895e62",
+  "run": 39022522727,
+  "job": 117366998724,
+  "results": [
+    "3618\n  ✓   11 [desktop] › tests/e2e/00-space-onboarding.spec.ts:18:5 › the terminal stays visible until a real scene frame, with a direct writing escape (15.9s)\n",
+    "3619\n  ✓   12 [desktop] › tests/e2e/00-space-onboarding.spec.ts:34:5 › opening a seat or terrace from the workspace preserves notes and allows returning (22.6s)\n",
+    "3620\n  ✓   13 [desktop] › tests/e2e/00-space-onboarding.spec.ts:51:5 › a cancelled read transition cannot steal a replayed café visit (21.5s)\n",
+    "3621\n  ✓   14 [desktop] › tests/e2e/00-space-onboarding.spec.ts:73:5 › a completed onboarding recovers immediately after graphics context loss (11.9s)\n",
+    "3622\n  ✓   15 [desktop] › tests/e2e/00-space-onboarding.spec.ts:84:5 › module failure offers an ordinary workspace and reading link (376ms)\n",
+    "3623\n  ✓   16 [desktop] › tests/e2e/00-space-onboarding.spec.ts:93:5 › the optional resident can fail without blocking the room or workspace (14.3s)\n",
+    "3624\n  ✘   17 [desktop] › tests/e2e/00-space-onboarding.spec.ts:100:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (35.1s)\n",
+    "3625\n  ✘   18 [desktop] › tests/e2e/00-space-onboarding.spec.ts:100:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (retry #1) (42.0s)\n",
+    "3626\n  ✘   19 [desktop] › tests/e2e/00-space-onboarding.spec.ts:100:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (retry #2) (35.7s)\n",
+    "3627\n  ✓   20 [desktop] › tests/e2e/00-space-onboarding.spec.ts:118:5 › a graphics failure during the reveal cannot leave an invisible modal behind (7.9s)\n",
+    "3628\n  ✓   21 [desktop] › tests/e2e/00-space-onboarding.spec.ts:136:5 › graphics recovery preserves the original editor, focus and selection (15.9s)\n",
+    "3629\n  ✓   22 [desktop] › tests/e2e/00-space-onboarding.spec.ts:149:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry (8.8s)\n"
+  ]
+}

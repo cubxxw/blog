@@ -1,0 +1,24 @@
+
+Running 17 tests using 1 worker
+
+(node:67439) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / reduce › both full portraits contain focus, restore the opener and survive immediate reopen (779ms)
+  ✓   2 tests/e2e/travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / no-preference › both full portraits contain focus, restore the opener and survive immediate reopen (3.9s)
+  ✓   3 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / reduce › both complete portrait posters and the real close target fit the bounded card (557ms)
+  ✓   4 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / no-preference › both complete portrait posters and the real close target fit the bounded card (1.3s)
+  ✓   5 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / reduce › both complete portrait posters and the real close target fit the bounded card (416ms)
+  ✓   6 tests/e2e/travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / no-preference › both complete portrait posters and the real close target fit the bounded card (1.3s)
+  ✓   7 tests/e2e/travel-qr-contracts.spec.ts:91:7 › runtime preference and page lifecycle › runtime reduce completes entrance, immediate close cancels its frame, and pagehide restores overflow (1.2s)
+  ✓   8 tests/e2e/travel-qr-contracts.spec.ts:109:7 › unavailable image transport › pending and 404 images keep real metadata and close usable without reopening later (390ms)
+  ✓   9 tests/e2e/travel-qr-contracts.spec.ts:125:5 › the actual English Travel page keeps its four non-QR channels (240ms)
+  ✓  10 tests/e2e/travel-qr-contracts.spec.ts:173:46 › local image recovery › 404 retries keep a stable portrait region and respect retry focus on success (504ms)
+  ✓  11 tests/e2e/travel-qr-contracts.spec.ts:173:46 › local image recovery › 404 retries keep a stable portrait region and respect details focus on success (521ms)
+  ✓  12 tests/e2e/travel-qr-contracts.spec.ts:202:7 › local image recovery › the 15-second deadline clears each old node and cannot overwrite a later attempt (429ms)
+  ✓  13 tests/e2e/travel-qr-contracts.spec.ts:226:7 › local image recovery › closing a pending image clears its owned listeners and a late old event cannot replace the next channel (477ms)
+  ✓  14 tests/e2e/travel-qr-contracts.spec.ts:243:7 › image failure at 568×256 / reduce › failure, the account and a 44px retry remain readable and reachable for both channels (554ms)
+  ✓  15 tests/e2e/travel-qr-contracts.spec.ts:243:7 › image failure at 568×256 / no-preference › failure, the account and a 44px retry remain readable and reachable for both channels (1.3s)
+  ✓  16 tests/e2e/travel-qr-contracts.spec.ts:243:7 › image failure at 568×224 / reduce › failure, the account and a 44px retry remain readable and reachable for both channels (575ms)
+  ✓  17 tests/e2e/travel-qr-contracts.spec.ts:243:7 › image failure at 568×224 / no-preference › failure, the account and a 44px retry remain readable and reachable for both channels (1.3s)
+
+  17 passed (16.6s)

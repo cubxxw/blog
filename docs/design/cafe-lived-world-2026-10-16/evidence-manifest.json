@@ -1,0 +1,519 @@
+{
+  "candidate": "G",
+  "at": "2026-10-16T18:14:48.407850+00:00",
+  "baseCommit": "75e82d563bfaae4c70fe0019f13a682f9b77fd68",
+  "sourceSnapshot": "source-snapshot.json",
+  "reviewSha256": "6cc80fe1213b025ba57f8e2a9287d33b0684e496c2f22e606f2cf8c75d7cde97",
+  "distinctNode": 63,
+  "pass": 63,
+  "actualFinalSceneCount": 6,
+  "actualFinalPngCount": 15,
+  "overall96Achieved": false,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7436,
+      "sha256": "355391f55b556d48b27a6f5543a9bdd5872e0240c312a6fe520074d7d6dfb33e"
+    },
+    {
+      "path": "actual-acceptance.json",
+      "bytes": 12358,
+      "sha256": "dd19911d8c2f66c79ac5ed37f60afd0415ceb7f90370c4266c91269a0c872295"
+    },
+    {
+      "path": "aerial_grass_rock-files.json",
+      "bytes": 38540,
+      "sha256": "01777da6b2342752696a147b06fb1dae73ce6b0319f693c7c2dfb1c81ac780ac"
+    },
+    {
+      "path": "before-room-1440.png",
+      "bytes": 984306,
+      "sha256": "fc89af3e73f31def9d2d923e3a9ecf8b159b47735366a3e8ce948a14e7f16958"
+    },
+    {
+      "path": "before-room-390.png",
+      "bytes": 238112,
+      "sha256": "a62a7348c13e785fbf1ffd58d1091eeed20a75d9bf448b25216473a768691293"
+    },
+    {
+      "path": "brown_mud_rocks_01-files.json",
+      "bytes": 41614,
+      "sha256": "c3e87fe4a7e77a82329f7c8ec9fc283bd0b93d9525748bc2e10abcc3b7dce24d"
+    },
+    {
+      "path": "c1-room-390.png",
+      "bytes": 379465,
+      "sha256": "70f2b0f0147d95f5e4f29931f42d37a668bef02c5cd8db0c29da9c9e6b6534d5"
+    },
+    {
+      "path": "c2-desk-1440.png",
+      "bytes": 1607775,
+      "sha256": "d0beb9bbdb8184224c89717674666d6f856ed4d7147aff735af872ad29ed52e8"
+    },
+    {
+      "path": "cat-a-meet-1440.png",
+      "bytes": 751861,
+      "sha256": "d0275285debf4130d5d7c5ce8da60fa136dd53a9c96627716a4735d92df26f6e"
+    },
+    {
+      "path": "cat-a-native-reduce.json",
+      "bytes": 695,
+      "sha256": "17441e5fe0a2f1299456f6befb75de0c5c60de00abbf77850bc5cbb069f49ced"
+    },
+    {
+      "path": "cat-a-pet-1440.png",
+      "bytes": 750314,
+      "sha256": "a864848594e1ffcc95ee8b80d5438b63404707e26eec2657988c55007021a61a"
+    },
+    {
+      "path": "cat-a1-actual.json",
+      "bytes": 2391,
+      "sha256": "6fcdae05af65a07f71e2a5f58d4e48c8997e317407a4051394fd6a852164ef6c"
+    },
+    {
+      "path": "cat-a1-meet-390.png",
+      "bytes": 242120,
+      "sha256": "878fa3ff0a509fc3cb7dadf8d51438e020587f58016205ff4971766f3c218e27"
+    },
+    {
+      "path": "cat-a2-meet-1440.png",
+      "bytes": 1347321,
+      "sha256": "70c98ff83ef4f902930a0b39e457450ddc0f32e020831804bf3857322b6d878e"
+    },
+    {
+      "path": "cat-a2-meet-390.png",
+      "bytes": 391844,
+      "sha256": "a65f9483220341eef2ee94404bff9cb2c494bc5866e2fd005ed21e8c96ade63e"
+    },
+    {
+      "path": "cleanup-receipt.json",
+      "bytes": 424,
+      "sha256": "39d76aae06a9abf89090d6f6780114bd054184fe70a7a405c3176ce6a2431814"
+    },
+    {
+      "path": "d-lake-1440.png",
+      "bytes": 991035,
+      "sha256": "42ed0c41088b45f2762f647ae90eca43c780d4cee266881b109c91ee01df652a"
+    },
+    {
+      "path": "d-mountain-1440.png",
+      "bytes": 1540012,
+      "sha256": "71045e84ca5b5ca820b6758311d62d61f572fb945a21db531032429f79316c41"
+    },
+    {
+      "path": "d-room-1440.png",
+      "bytes": 1674213,
+      "sha256": "79d58d3b3fa1377c709173896ab40799962e3042d92dac4f6ba8053922c86515"
+    },
+    {
+      "path": "d-zen-1440.png",
+      "bytes": 1570471,
+      "sha256": "71da0236fb079bf8feb6f4594634e71875e4f54a16821f18495531cf0f3487df"
+    },
+    {
+      "path": "direction.md",
+      "bytes": 4656,
+      "sha256": "29c88833c023406f55bca31f2ab5e92aa09079dada56984becbc16d76c2ec724"
+    },
+    {
+      "path": "drakensberg_solitary_mountain-files.json",
+      "bytes": 3063,
+      "sha256": "51add645218a0437526dd57d739143b2413cdc7b1aa0381fccc5e50a6d0c96d3"
+    },
+    {
+      "path": "e-acceptance.json",
+      "bytes": 15194,
+      "sha256": "0d99f7d126f73b96d8e4613a8f1a9c71a177252a67116ddc654b7bf1d9596432"
+    },
+    {
+      "path": "e-browser-errors.json",
+      "bytes": 291,
+      "sha256": "e771d0570de4ff0a2a57666c88780c334ffbbc2e2b3026a0a3ab23479c3eb7a5"
+    },
+    {
+      "path": "e-cat-390.png",
+      "bytes": 328606,
+      "sha256": "2bbc7175ae8416e64c270cf52aef324c2a2c1734e651bb982caf350907e3de2c"
+    },
+    {
+      "path": "e-cat-en-390.png",
+      "bytes": 329026,
+      "sha256": "33beb74abef75e1b67ed3509b4c5b4aa512c1988b190156f6325893c31404917"
+    },
+    {
+      "path": "e-cat-touch-390.png",
+      "bytes": 330067,
+      "sha256": "9c798027e866331937830954aed14b7a8de2eda239346755ff9bd0abc71654b4"
+    },
+    {
+      "path": "e-coast-1440.png",
+      "bytes": 923361,
+      "sha256": "ecbc4ebd1cb80fa4ec456a3588044f81493314e0c572e9b8938bcd98cb5060e9"
+    },
+    {
+      "path": "e-context-loss-390.png",
+      "bytes": 83834,
+      "sha256": "22855d013e280c637bd5bfb17cb36cc38856b93597881960dd3c777f2c3f6185"
+    },
+    {
+      "path": "e-fallback-materials-390.png",
+      "bytes": 226703,
+      "sha256": "5ae448368e81f7663abd45c8e1938f1a908b52ed2105b93c70f229d4e4b048ab"
+    },
+    {
+      "path": "e-garden-1440.png",
+      "bytes": 1280320,
+      "sha256": "60dd91dbdb2e1992ee9251a1eaef06fdd27fda1d420de84d2215fdd652ea6972"
+    },
+    {
+      "path": "e-lake-1440.png",
+      "bytes": 991035,
+      "sha256": "42ed0c41088b45f2762f647ae90eca43c780d4cee266881b109c91ee01df652a"
+    },
+    {
+      "path": "e-mountain-1440.png",
+      "bytes": 1540012,
+      "sha256": "71045e84ca5b5ca820b6758311d62d61f572fb945a21db531032429f79316c41"
+    },
+    {
+      "path": "e-rain-1440.png",
+      "bytes": 172115,
+      "sha256": "45572b57960e6fc9a3e48a62194a3217be4ed591e74abad3a42dd0e5a1dde73b"
+    },
+    {
+      "path": "e-rain-room-1440.png",
+      "bytes": 1434349,
+      "sha256": "fc2676b60777f3dcb65dad50c36db40f1abdcfa53a797e7b9ba5d8f5ab7d696f"
+    },
+    {
+      "path": "e-room-390.png",
+      "bytes": 371745,
+      "sha256": "2b95f36ad44a2d0c984d191b1c4200d1776b72de3cb34b3162648bd70f14a281"
+    },
+    {
+      "path": "e-zen-1440.png",
+      "bytes": 1569293,
+      "sha256": "b315f474d97537b134af31bbdef0b1f38b3162cf3e8e061903898580117d44cf"
+    },
+    {
+      "path": "environment-b-coast-1440.png",
+      "bytes": 941661,
+      "sha256": "cc751ce90b5c6b775228cad5461b1876b27165f1fe0b1d85c6c74660741360d1"
+    },
+    {
+      "path": "environment-b-desk-1440.png",
+      "bytes": 1546178,
+      "sha256": "03bfb968b54f41364e0b86197750e93ed795ee565936cc987c436caedd7d88cc"
+    },
+    {
+      "path": "environment-b-lake-1440.png",
+      "bytes": 952393,
+      "sha256": "ea50a736f77868d58d322bae77101bca79ea8c943cab6d327d98083388eb6bb0"
+    },
+    {
+      "path": "environment-b-mountain-1440.png",
+      "bytes": 1457290,
+      "sha256": "05c43a5ee52f0f3d8af630e204762458f553959578f009a24743156894ad00f0"
+    },
+    {
+      "path": "environment-b-room-1440.png",
+      "bytes": 1623356,
+      "sha256": "697e98dc952a91049dc58deac1136590e32847aede0710ebb22c4751fc1aece4"
+    },
+    {
+      "path": "environment-b-zen-terrace-1440.png",
+      "bytes": 1373135,
+      "sha256": "2569fdb04a6320eef7013a498f8dbf8ff4c1e11ca6f308eaf122da14c4f3013c"
+    },
+    {
+      "path": "environment-c-room-1440.png",
+      "bytes": 1698971,
+      "sha256": "82122a63cd3080e267b6022fc288c0729836016d2d5320288bdcf57046be5ae0"
+    },
+    {
+      "path": "environment-c1-coast-1440.png",
+      "bytes": 1297626,
+      "sha256": "1f968c3568aa2b9f5bd9a999f84d217e8716ace94c47b9c27fd2d2d04899b9eb"
+    },
+    {
+      "path": "environment-c1-lake-1440.png",
+      "bytes": 1380710,
+      "sha256": "3df075cc65d567c1b69535f365057f19ebbf4448e58aefc85f49d6dc42c96db2"
+    },
+    {
+      "path": "environment-c1-mountain-1440.png",
+      "bytes": 1968876,
+      "sha256": "cf3d81403108267582ae4694144335b1ced857c96adeab94053987d324f094d5"
+    },
+    {
+      "path": "environment-c1-scenes.json",
+      "bytes": 3611,
+      "sha256": "673a97b577a482cff06469e8d4d677eb0c572e4d52da0940c27e31fbf1055b49"
+    },
+    {
+      "path": "environment-c1-zen-terrace-1440.png",
+      "bytes": 1997766,
+      "sha256": "a036789e02b5205f2ffd457695fbe247d32c9fcf3f8b219697c603e00049526a"
+    },
+    {
+      "path": "environment-contract.md",
+      "bytes": 4789,
+      "sha256": "653b7ca108aea736b867d1f16b20d69bd4a6dfec5c35d7f3d4422ccd1006a275"
+    },
+    {
+      "path": "f-acceptance.json",
+      "bytes": 5702,
+      "sha256": "64fba0ff9ebdde25ced48e811d313ea6b403b09c4fb805808c34ca4fa09b6977"
+    },
+    {
+      "path": "f-day-restored-1440.png",
+      "bytes": 1675605,
+      "sha256": "7110df69a7ea959900eca4da219d8df941ec247e571e73bafb5a74fdeb0ebf85"
+    },
+    {
+      "path": "f-garden-1440.png",
+      "bytes": 1457149,
+      "sha256": "3db4436b34fcc0c854cec24f786a6359db2e056fa7ed928a7cc3ef88f362b66f"
+    },
+    {
+      "path": "f-garden-bamboo-1440.png",
+      "bytes": 1207885,
+      "sha256": "a2bb6a202c1da7e5dc448da98a2508adc5f906bbe4d4a62fd064bb02ba6871ad"
+    },
+    {
+      "path": "f-rain-1440.png",
+      "bytes": 294349,
+      "sha256": "a33140d106d116e8f40868bcd445ef1fb50375b661ea6eeca586e2617e6837d9"
+    },
+    {
+      "path": "f-rain-room-1440.png",
+      "bytes": 1317487,
+      "sha256": "c2be88d0e92dcbcb863423d4be5d96c0b2a12c2505500bc000334905bc2156d3"
+    },
+    {
+      "path": "f-room-1440.png",
+      "bytes": 1675605,
+      "sha256": "7110df69a7ea959900eca4da219d8df941ec247e571e73bafb5a74fdeb0ebf85"
+    },
+    {
+      "path": "final-cat-pet-1440.png",
+      "bytes": 1464939,
+      "sha256": "140102427561e7cbee7e7aef21b0b22154ca16a3f85e9bda7e54ee369407d67b"
+    },
+    {
+      "path": "final-lake-1440.png",
+      "bytes": 1345433,
+      "sha256": "4f03881e3c08b1a0689fcc72b2adf30baf084b33f7fb5f117cd6971cace0c138"
+    },
+    {
+      "path": "final-mountain-1440.png",
+      "bytes": 1885913,
+      "sha256": "466a000218dda59ffd10167a599a45201e63961e5a90aa43437706680b18e135"
+    },
+    {
+      "path": "final-room-1440.png",
+      "bytes": 1699920,
+      "sha256": "ac45872df99873a3c4fcc1e591248b2849ee593e761bdb172dfaaac8143f905d"
+    },
+    {
+      "path": "final-zen-1440.png",
+      "bytes": 1730294,
+      "sha256": "227aff2b1f98adce1ddd79954464cdb1f4df499f675c76a0e25d7117c2a86ce7"
+    },
+    {
+      "path": "forest_grove-files.json",
+      "bytes": 2827,
+      "sha256": "4b60095069b8278119bb590265417daf69d7ed8c2dd56a8d7c56cb38dc03094b"
+    },
+    {
+      "path": "forest_leaves_04-files.json",
+      "bytes": 35394,
+      "sha256": "1fa4fa8b06e4b8b912399d16869b2417e17912f6bf68f3b6c184614954b48480"
+    },
+    {
+      "path": "g-acceptance.json",
+      "bytes": 9590,
+      "sha256": "f4ce4d75c636812a7f4be7f7996c7a4c4be123a0d33f11fe07866688d78918a2"
+    },
+    {
+      "path": "g-books-1440.png",
+      "bytes": 1589850,
+      "sha256": "48e6a5793d7816d19cf511b79df9ec5c9f1a214f87887dd1edc59b9c34e4460c"
+    },
+    {
+      "path": "g-browser-log.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "g-cat-touch-390.png",
+      "bytes": 330067,
+      "sha256": "9c798027e866331937830954aed14b7a8de2eda239346755ff9bd0abc71654b4"
+    },
+    {
+      "path": "g-coast-1440.png",
+      "bytes": 923361,
+      "sha256": "ecbc4ebd1cb80fa4ec456a3588044f81493314e0c572e9b8938bcd98cb5060e9"
+    },
+    {
+      "path": "g-coffee-1440.png",
+      "bytes": 1384373,
+      "sha256": "fd1d24f1840191459d5f9047c31144ef04f0eda75c41e2c5d6e0df8965d5fbc0"
+    },
+    {
+      "path": "g-deliverable-native.png",
+      "bytes": 1203446,
+      "sha256": "88622ca86c589727b52ae9f1accdd229ffec7d2dc8c7c009cf9fecfbfccf2260"
+    },
+    {
+      "path": "g-desk-1440.png",
+      "bytes": 1483375,
+      "sha256": "b2f114aedad110c8bc9c57e7232d6993d797d98637ae7cacf18fdb80e9f4cf5e"
+    },
+    {
+      "path": "g-garden-1440.png",
+      "bytes": 1456941,
+      "sha256": "ae4debff44a18dcc9ffd8244e4920ad682a4330f0858cc183d0b7e2acac6127e"
+    },
+    {
+      "path": "g-garden-390.png",
+      "bytes": 401160,
+      "sha256": "2cc540b757cce92fa3e3080435bc7f40add080558b7ff2f067fb4dec0959530c"
+    },
+    {
+      "path": "g-lake-1440.png",
+      "bytes": 991035,
+      "sha256": "42ed0c41088b45f2762f647ae90eca43c780d4cee266881b109c91ee01df652a"
+    },
+    {
+      "path": "g-mountain-1440.png",
+      "bytes": 1540012,
+      "sha256": "71045e84ca5b5ca820b6758311d62d61f572fb945a21db531032429f79316c41"
+    },
+    {
+      "path": "g-rain-1440.png",
+      "bytes": 294653,
+      "sha256": "1308bd22a0df99c5c9a3b8c9f1d3d9576e6dc6c8bbcfc4c79e09e6aff2321fa6"
+    },
+    {
+      "path": "g-rain-390.png",
+      "bytes": 76105,
+      "sha256": "758a0d1c8a16d39fcff928f20346363343aed021ad220181f9ee79ab092db072"
+    },
+    {
+      "path": "g-room-1440.png",
+      "bytes": 1676383,
+      "sha256": "c0a42930074feddbeab3439a3880338460c8f9cf782b739b0031925f746a656f"
+    },
+    {
+      "path": "g-room-390.png",
+      "bytes": 371869,
+      "sha256": "489f926101ab0d13fbadf85524a284278a7c0dddb3c4468b642b96f5d74eb81a"
+    },
+    {
+      "path": "g-zen-1440.png",
+      "bytes": 1569293,
+      "sha256": "b315f474d97537b134af31bbdef0b1f38b3162cf3e8e061903898580117d44cf"
+    },
+    {
+      "path": "hdris-catalog-selection.json",
+      "bytes": 4808,
+      "sha256": "dbb2f8369424f4ca052c5c5d8c36e77df65eda4a8505846d877960de84d232e9"
+    },
+    {
+      "path": "invalid-viewport-before-room.png",
+      "bytes": 608645,
+      "sha256": "d3b7e608bf67f08942286122982c449c03e825cc439bef6c082a8f1c401f78e5"
+    },
+    {
+      "path": "inventory.md",
+      "bytes": 19431,
+      "sha256": "c98186218e5ac7e9f4526aafc53ffcb0d4a84eb122667f0989f517854b473c87"
+    },
+    {
+      "path": "kloofendal_overcast_puresky-files.json",
+      "bytes": 2831,
+      "sha256": "b6ea8e9aeb184c7c24863fdb7fa1160cb04cf10c1b64faded4988aa50c0b4ece"
+    },
+    {
+      "path": "material-assets.json",
+      "bytes": 15622,
+      "sha256": "26820e4497fe198a8ac1e63aeebcf11184125a56b0f729d0afeee1bf6c937645"
+    },
+    {
+      "path": "models-catalog-selection.json",
+      "bytes": 309,
+      "sha256": "634dc124fcec0402fb24feda63f31c3428a5153a3440f60ff9dbfdf35558792c"
+    },
+    {
+      "path": "painted_plaster_wall-files.json",
+      "bytes": 46012,
+      "sha256": "2f7a0d673402fffe320aa81212c3c3e43ac232656edec403dcfe8fe6ac91ffa6"
+    },
+    {
+      "path": "pine_tree_01-files.json",
+      "bytes": 164643,
+      "sha256": "85a31ebca63b74511fe632573983bcf6665df0e78e9fa687f17c32afab885098"
+    },
+    {
+      "path": "review.md",
+      "bytes": 58451,
+      "sha256": "6cc80fe1213b025ba57f8e2a9287d33b0684e496c2f22e606f2cf8c75d7cde97"
+    },
+    {
+      "path": "rgbe-provenance.json",
+      "bytes": 336,
+      "sha256": "0d57b2e51342d409c1a2476f779700988d66f36d68c6e8d54c2e95b64374d485"
+    },
+    {
+      "path": "rock_boulder_dry-files.json",
+      "bytes": 44344,
+      "sha256": "57d63f0856d5ff469250e43bbf808a17bef333d552ce818a049979d3efc93c7c"
+    },
+    {
+      "path": "secluded_beach-files.json",
+      "bytes": 18078,
+      "sha256": "dcec3c66bf696d8a416a8c69dfb5f57e8c80fe4003a4bae5cb25bdc12b24656b"
+    },
+    {
+      "path": "shudu_lake-files.json",
+      "bytes": 13029,
+      "sha256": "32e5748df11cdaa7626507f52cfb4394bd8ac6f2012df737e08e59653f79f854"
+    },
+    {
+      "path": "source-snapshot.json",
+      "bytes": 9775,
+      "sha256": "d307558427d4cd6c6a99b8246ad698a896580b3d9303e279bd5bd0031952a8b1"
+    },
+    {
+      "path": "terrain-texture-catalog.json",
+      "bytes": 913,
+      "sha256": "173b0be04d6e0d046802ef6bc198d4af6db1f3409731d5d08fd3c5e6386aa19c"
+    },
+    {
+      "path": "validation-log-manifest.json",
+      "bytes": 13169,
+      "sha256": "b36b6e01c5b2b00a4cf9e91504d0355e654c4338f296315e1a11ba0761ae202c"
+    },
+    {
+      "path": "validation-logs.tar.gz",
+      "bytes": 426881,
+      "sha256": "76d9347edce6777d9369f34686bc10d0eae05583193880f7a80588130013b56d"
+    },
+    {
+      "path": "wood_floor-files.json",
+      "bytes": 33377,
+      "sha256": "0771c2cf03490763849756c9d3439dbb8cd108c191c75ef09b958457241fb67e"
+    },
+    {
+      "path": "wood_table_001-files.json",
+      "bytes": 43491,
+      "sha256": "4b2fad27807733f45ed3e196a8722605cfdb5d9b642aada280d2e840a3a65bc1"
+    },
+    {
+      "path": "work-state.json",
+      "bytes": 1571,
+      "sha256": "d1ec50244c7c1b92b95d78ee62fe4c1eed9dd767e7b21ed3888620e66d452eca"
+    }
+  ]
+}

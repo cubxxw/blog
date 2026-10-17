@@ -83,6 +83,7 @@
       if (d > 0.5) offset = Math.round(d) + 8;
     }
     tools.style.right = offset + 'px';
+    container.style.setProperty('--code-tools-offset', offset + 'px');
   }
 
   function refresh(code) {
@@ -94,9 +95,11 @@
     var overflows = pre.scrollWidth - pre.clientWidth > 2;
     if (wrapped || overflows) {
       var tools = ensureTools(code);
+      container.dataset.codeTools = 'true';
       tools.style.display = '';
       positionTools(container, tools);
     } else {
+      delete container.dataset.codeTools;
       var tools2 = container.querySelector(':scope > .code-tools');
       if (tools2) tools2.style.display = 'none';
     }
@@ -111,13 +114,15 @@
   var backdrop = null;
   var zoom = ZOOM_DEFAULT;
   var lastFocus = null;
+  var previousOverflow = '';
 
   function buildReader() {
-    backdrop = document.createElement('div');
+    backdrop = document.createElement('dialog');
     backdrop.className = 'code-fs-backdrop';
     backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.setAttribute('aria-label', T.expand);
     backdrop.innerHTML = [
-      '<div class="code-fs-stage" role="dialog" aria-modal="true" aria-label="', T.expand, '">',
+      '<div class="code-fs-stage">',
         '<div class="code-fs-bar">',
           '<span class="code-fs-lang"></span>',
           '<button type="button" class="code-fs-zoom-out" aria-label="', T.zoomOut, '">A−</button>',
@@ -133,8 +138,18 @@
     backdrop.querySelector('.code-fs-zoom-in').addEventListener('click', function () { setZoom(zoom + ZOOM_STEP); });
     backdrop.querySelector('.code-fs-zoom-out').addEventListener('click', function () { setZoom(zoom - ZOOM_STEP); });
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && backdrop.classList.contains('is-open')) closeReader();
+    backdrop.addEventListener('cancel', function (e) {
+      e.preventDefault(); closeReader();
+    });
+    backdrop.addEventListener('keydown', function (event) {
+      if (event.key !== 'Tab' || !backdrop.open) return;
+      var stops = Array.prototype.filter.call(backdrop.querySelectorAll('button, a[href], input, textarea, select, [tabindex]'), function (node) {
+        return !node.disabled && node.tabIndex >= 0 && node.getClientRects().length && window.getComputedStyle(node).visibility === 'visible';
+      });
+      if (!stops.length) {event.preventDefault(); backdrop.tabIndex = -1; backdrop.focus(); return;}
+      var first = stops[0], last = stops[stops.length - 1], active = document.activeElement;
+      if (event.shiftKey && (active === first || active === backdrop)) {event.preventDefault(); last.focus();}
+      else if (!event.shiftKey && (active === last || active === backdrop)) {event.preventDefault(); first.focus();}
     });
 
     /* Pinch → font-size. Manual tracking: with two fingers down we
@@ -184,7 +199,7 @@
        theme classes come along, and the .post-content wrapper class
        inside the reader lets all four code themes resolve. */
     var clone = container.cloneNode(true);
-    clone.querySelectorAll('.copy-code, .code-tools').forEach(function (n) { n.remove(); });
+    clone.querySelectorAll('.copy-code, .code-tools, .code-copy-status').forEach(function (n) { n.remove(); });
     clone.classList.remove('x-scroll');
     clone.querySelectorAll('.x-scroll').forEach(function (n) { n.classList.remove('x-scroll'); });
     clone.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
@@ -205,8 +220,10 @@
     setZoom(zoom);
 
     lastFocus = document.activeElement;
+    previousOverflow = document.body.style.overflow;
     bd.classList.add('is-open');
     bd.setAttribute('aria-hidden', 'false');
+    if (!bd.open) bd.showModal();
     document.body.style.overflow = 'hidden';
     bd.querySelector('.code-fs-close').focus();
   }
@@ -215,8 +232,10 @@
     if (!backdrop) return;
     backdrop.classList.remove('is-open');
     backdrop.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    if (backdrop.open) backdrop.close();
+    document.body.style.overflow = previousOverflow;
+    if (lastFocus && lastFocus.isConnected) lastFocus.focus({preventScroll: true});
+    lastFocus = null;
   }
 
   /* ── Init ─────────────────────────────────────────────────── */

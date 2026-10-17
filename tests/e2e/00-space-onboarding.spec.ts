@@ -1,0 +1,196 @@
+import {test,expect} from '../helpers/frozen-site';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
+
+test.use({channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.beforeEach(({page})=>reserveWorldJourney(page));
+const root='[data-bear-workspace]';
+const room=async(page:import('@playwright/test').Page)=>{
+  await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
+  await expect(page.locator(root)).toHaveAttribute('data-world-rendered-mode','roam');
+};
+const clickWithClockPaused=async(control:import('@playwright/test').Locator)=>{
+  await expect(control).toBeVisible();await expect(control).toBeEnabled();
+  const point=await control.evaluate(el=>{const r=el.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;return {x,y,width:r.width,height:r.height,inside:x>=0&&y>=0&&x<innerWidth&&y<innerHeight,hit:el.contains(document.elementFromPoint(x,y))};});
+  expect(point.width).toBeGreaterThanOrEqual(44);expect(point.height).toBeGreaterThanOrEqual(44);expect(point.inside).toBe(true);expect(point.hit).toBe(true);
+  await control.page().mouse.click(point.x,point.y);
+};
+
+test('the terminal stays visible until a real scene frame, with a direct writing escape',async({page})=>{
+  let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
+  await page.route('**/world-cafe.*.js',async route=>{await gate;await route.continue();});
+  await page.goto('/zh/projects/');
+  try {
+    await expect(page.locator('[data-space-boot]')).toBeVisible();
+    await expect(page.locator('[data-boot-skip]')).toBeDisabled();
+    await expect(page.locator('[data-space-boot] a').last()).toHaveAttribute('href','/zh/articles/');
+    await expect(page.locator(root)).not.toHaveAttribute('data-world-ready','true');
+    expect(await page.locator('[data-space-boot]').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
+  }finally{release();}
+  await room(page);await expect(page.locator(root)).toHaveAttribute('data-world-ready','true');
+  await expect(page.locator('[data-space-boot]')).toBeHidden();
+  await expect(page.locator('[data-cafe-read]')).toBeVisible();
+});
+
+test('opening a seat or terrace from the workspace preserves notes and allows returning',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/zh/projects/');await enterWorkspace(page);
+  await page.evaluate(()=>(window as unknown as {BearSpace:{execute:(n:string,a:object)=>void}}).BearSpace.execute('open',{app:'notes'}));
+  await page.locator('[data-note-editor]').fill('The same private draft.');
+  await page.locator('[data-note-editor]').evaluate(el=>(el as HTMLElement).dataset.instance='resident');
+  for(const place of ['outside','start']){
+    await page.locator('.space-world-hud__workspace [data-cafe-picker]').click();
+    await page.locator(`[data-cafe-${place}]`).click();await room(page);
+    await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','cafe');
+    await page.locator('[data-cafe-enter]').click();
+    await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+    await expect(page.locator(root)).toHaveAttribute('data-world-mode','workspace');
+    await expect(page.locator('[data-note-editor]')).toHaveAttribute('data-instance','resident');
+    await expect(page.locator('[data-note-editor]')).toHaveValue('The same private draft.');
+  }
+});
+
+test('a cancelled read transition cannot steal a replayed café visit',async({page})=>{
+  await page.clock.install({time:new Date('2026-10-17T00:00:00Z')});
+  try{
+    await page.goto('/zh/projects/');await room(page);
+    await page.clock.pauseAt(new Date('2026-10-17T01:00:00Z'));
+    await clickWithClockPaused(page.locator('[data-cafe-read]'));
+    await expect(page.locator(root)).toHaveAttribute('data-world-travel','true');
+    await clickWithClockPaused(page.locator('.space-cafe__utilities [data-cafe-picker]'));
+    await clickWithClockPaused(page.locator('[data-cafe-replay]'));
+    // Complete the real replacement seat travel, then its original boot/reveal
+    // timers. Paused time keeps CDP latency from consuming those short states.
+    await page.clock.fastForward(1200);await expect(page.locator(root)).toHaveAttribute('data-boot-state','loading');
+    await page.clock.fastForward(1500);await expect(page.locator(root)).toHaveAttribute('data-boot-state','revealing');
+    await page.clock.runFor(550);await room(page);
+    await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','cafe');
+    const snapshot=await page.evaluate(()=>(window as unknown as {BearSpace:{snapshot:()=>{active:string;windows:{id:string}[]}}}).BearSpace.snapshot());
+    expect(snapshot.active).not.toBe('reader');
+    await expect(page.locator('[data-space-window="reader"]')).toHaveCount(0);
+    await clickWithClockPaused(page.locator('[data-cafe-enter]'));await page.clock.fastForward(2000);await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  }finally{await page.clock.resume();}
+});
+
+test('a completed onboarding recovers immediately after graphics context loss',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/zh/projects/');await room(page);
+  await page.locator('.space-world__canvas').evaluate(canvas=>(canvas as HTMLCanvasElement).getContext('webgl2')!.getExtension('WEBGL_lose_context')!.loseContext());
+  await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
+  await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  await expect(page.locator('.space-world')).toHaveCount(0);
+  await expect(page.locator('[data-space-toast]')).toBeVisible();
+  await page.evaluate(()=>(window as unknown as {BearSpace:{execute:(n:string,a:object)=>void}}).BearSpace.execute('open',{app:'notes'}));
+  await page.locator('[data-note-editor]').fill('Still usable after losing the GPU.');
+});
+
+test('module failure offers an ordinary workspace and reading link',async({page})=>{
+  await page.route('**/world-cafe.*.js',route=>route.abort());
+  await page.goto('/zh/projects/');await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
+  await expect(page.locator('[data-boot-status]')).toContainText('仍可阅读');
+  await page.locator('[data-boot-skip]').click();await expect(page.locator('[data-space-boot]')).toBeHidden();
+  await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  await expect(page.locator('[data-space-menu-trigger]')).toBeVisible();
+});
+
+test('the optional resident can fail without blocking the room or workspace',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.route('**/models/space/cat.glb',route=>route.abort());
+  await page.goto('/zh/projects/');await room(page);await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','false');
+  await page.locator('[data-cafe-read]').click();await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  await expect(page.locator('[data-space-window="reader"]')).toBeVisible();
+});
+
+test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>{
+  reserveWorldJourney(page);
+  await page.addInitScript(()=>{
+    const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null};
+    (window as unknown as {__catMotionObservation:typeof observation}).__catMotionObservation=observation;
+    const startupDeadline=performance.now()+60000;
+    let target:Element|null=null,done=false,timer:ReturnType<typeof setTimeout>;
+    const finish=(status:string)=>{
+      if(done)return;done=true;observation.status=status;
+      observer.disconnect();clearTimeout(timer);removeEventListener('pagehide',onPageHide);
+    };
+    const onPageHide=()=>finish('pagehide');
+    const sample=()=>{
+      if(done)return;
+      const now=performance.now();if(observation.initialTime===null&&now>startupDeadline){finish('startup-timeout');return;}
+      if(!target){
+        target=document.querySelector('[data-bear-workspace]');if(!target)return;
+        observer.disconnect();observer.observe(target,{attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
+      }
+      const loaded=target.getAttribute('data-cat-loaded'),active=target.getAttribute('data-cat-active'),pose=target.getAttribute('data-cat-pose');
+      if(observation.initialTime===null){
+        if(loaded!=='true'||active!=='true'||!pose)return;
+        observation.initialPose=pose;observation.initialTime=now;observation.status='watching';
+        clearTimeout(timer);timer=setTimeout(()=>finish('motion-timeout'),12000);return;
+      }
+      if(now-observation.initialTime>12000){finish('motion-timeout');return;}
+      if(loaded==='true'&&active==='true'&&pose&&pose!==observation.initialPose){
+        observation.changedPose=pose;observation.changedTime=now;finish('changed');
+      }
+    };
+    const observer=new MutationObserver(sample);
+    // Only collect actual attributes: no layout reads, frame loops or product writes.
+    observer.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
+    addEventListener('pagehide',onPageHide,{once:true});timer=setTimeout(()=>finish('startup-timeout'),60000);sample();
+  });
+  await page.goto('/zh/projects/');await room(page);
+  await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
+  await expect.poll(()=>page.evaluate(()=>(window as unknown as {__catMotionObservation:{status:string}}).__catMotionObservation.status),{timeout:12000}).toBe('changed');
+  const movement=await page.evaluate(()=>(window as unknown as {__catMotionObservation:{initialPose:string;initialTime:number;changedPose:string;changedTime:number}}).__catMotionObservation);
+  const movementMs=movement.changedTime-movement.initialTime;
+  expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
+  expect(movement.changedPose).not.toBe(movement.initialPose);
+  const pose=()=>page.locator(root).getAttribute('data-cat-pose');
+  await page.locator('[data-cafe-quiet]').click();await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
+  const quiet=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(quiet);
+  const frames=await page.locator(root).getAttribute('data-world-frames');await page.waitForTimeout(200);expect(await page.locator(root).getAttribute('data-world-frames')).toBe(frames);
+  await page.locator('[data-cafe-quiet]').click();
+  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
+  await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');const modal=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(modal);
+  await page.locator('[data-cafe-picker-close]').click();
+  await page.emulateMedia({reducedMotion:'reduce'});await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
+  const reduced=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(reduced);
+  await page.locator('[data-cafe-enter]').click();await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  const desk=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(desk);
+});
+
+test('a graphics failure during the reveal cannot leave an invisible modal behind',async({page})=>{
+  await page.clock.install({time:new Date('2026-10-17T00:00:00Z')});
+  await page.clock.pauseAt(new Date('2026-10-17T01:00:00Z'));
+  try{
+    await page.goto('/zh/projects/');
+    await expect(page.locator(root)).toHaveAttribute('data-boot-stage','2',{timeout:30000});
+    await page.clock.runFor(16);await expect(page.locator(root)).toHaveAttribute('data-boot-stage','3');
+    // The first actual frame is ready; preserve the original 1400ms minimum
+    // before holding the real 550ms reveal window for context-loss injection.
+    await page.clock.fastForward(1405);
+    await expect(page.locator(root)).toHaveAttribute('data-boot-state','revealing');
+    await page.locator('.space-world__canvas').evaluate(canvas=>(canvas as HTMLCanvasElement).getContext('webgl2')!.getExtension('WEBGL_lose_context')!.loseContext());
+    await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
+    await expect(page.locator('[data-space-boot]')).toBeHidden();
+    await page.keyboard.press('Control+k');await expect(page.locator('[data-space-search]')).toBeVisible();
+  }finally{await page.clock.resume();}
+});
+
+test('graphics recovery preserves the original editor, focus and selection',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/zh/projects/');await enterWorkspace(page);
+  await page.evaluate(()=>(window as unknown as {BearSpace:{execute:(n:string,a:object)=>void}}).BearSpace.execute('open',{app:'notes'}));
+  const editor=page.locator('[data-note-editor]');await editor.click();await page.keyboard.type('A quiet draft.');
+  await expect(editor).toBeFocused();
+  await editor.evaluate(el=>{(el as HTMLTextAreaElement).setSelectionRange(2,7);(el as HTMLElement).dataset.instance='same';});
+  await page.locator('.space-world__canvas').evaluate(canvas=>(canvas as HTMLCanvasElement).getContext('webgl2')!.getExtension('WEBGL_lose_context')!.loseContext());
+  await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
+  await expect(editor).toBeFocused();await expect(editor).toHaveAttribute('data-instance','same');
+  expect(await editor.evaluate(el=>[(el as HTMLTextAreaElement).selectionStart,(el as HTMLTextAreaElement).selectionEnd])).toEqual([2,7]);
+  await page.keyboard.type('calm');await expect(editor).toHaveValue('A calm draft.');
+});
+
+test('returning from a hidden Product Lab waits for readiness and restores keyboard entry',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/zh/projects/#product-lab');
+  await expect(page.locator(root)).toHaveAttribute('data-ready','true');
+  await expect(page.locator(root)).toBeHidden();
+  await page.setViewportSize({width:568,height:320});
+  await page.locator('.product-view-switch [data-product-view-button="bear"]').click();
+  await expect(page.locator(root)).toHaveAttribute('data-world-rendered-mode','workspace');
+  await expect(page.locator('[data-space-menu-trigger]')).toBeFocused();
+  await page.keyboard.press('Enter');await expect(page.locator('.space-menu')).toBeVisible();
+});

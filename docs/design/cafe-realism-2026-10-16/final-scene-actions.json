@@ -1,0 +1,56 @@
+[
+  {
+    "canvases": 1,
+    "catLoaded": "true",
+    "leafTexture": "scan",
+    "mode": "roam",
+    "reflection": "room",
+    "theme": "garden",
+    "triangles": "167868"
+  },
+  {
+    "canvases": 1,
+    "catLoaded": "true",
+    "leafTexture": "scan",
+    "mode": "roam",
+    "reflection": "room",
+    "theme": "coast",
+    "triangles": "9736"
+  },
+  {
+    "canvases": 1,
+    "catLoaded": "true",
+    "leafTexture": "scan",
+    "mode": "roam",
+    "reflection": "room",
+    "theme": "mountain",
+    "triangles": "20588"
+  },
+  {
+    "canvases": 1,
+    "catLoaded": "true",
+    "leafTexture": "scan",
+    "mode": "roam",
+    "reflection": "room",
+    "theme": "lake",
+    "triangles": "9480"
+  },
+  {
+    "canvases": 1,
+    "catLoaded": "true",
+    "leafTexture": "scan",
+    "mode": "roam",
+    "reflection": "room",
+    "theme": "rain",
+    "triangles": "4368"
+  },
+  {
+    "canvases": 1,
+    "catLoaded": "true",
+    "leafTexture": "scan",
+    "mode": "roam",
+    "reflection": "room",
+    "theme": "zen",
+    "triangles": "164848"
+  }
+]

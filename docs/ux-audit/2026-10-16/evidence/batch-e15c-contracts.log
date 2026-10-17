@@ -1,0 +1,17 @@
+
+Running 10 tests using 1 worker
+
+(node:94472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 320×844 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles (1.5s)
+  ✓   2 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 390×844 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles (1.3s)
+  ✓   3 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 620×844 zh dark library/profile › real writing and profile remain readable with reachable choices and complete titles (1.4s)
+  ✓   4 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 844×390 en light library/profile › real writing and profile remain readable with reachable choices and complete titles (1.5s)
+  ✓   5 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 1440×900 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles (1.5s)
+  ✓   6 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 1440×900 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles (1.5s)
+  ✓   7 tests/e2e/space-library-profile-contracts.spec.ts:59:7 › 390 English bookmark semantics and recovery › Save, favorites, reload and remove expose the actual persistent state (1.2s)
+  ✓   8 tests/e2e/space-library-profile-contracts.spec.ts:67:5 › the real library scroller restores reading position while Notes and Books keep their own documents (1.7s)
+  ✓   9 tests/e2e/space-library-profile-contracts.spec.ts:74:5 › the original public favorite action synchronizes state and semantics without replacing the reader (657ms)
+  ✓  10 tests/e2e/space-library-profile-contracts.spec.ts:81:5 › a minimized library restores after reload once, then follows a new real reading scroll (1.5s)
+
+  10 passed (14.5s)

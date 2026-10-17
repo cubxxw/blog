@@ -1,0 +1,7 @@
+PASS existing task records migrate intact and opening history sends no model request
+PASS a follow-up sees the preceding reply and performs only the new tool call
+PASS new conversations keep their own messages and unsent drafts
+PASS reopening and reloading resume the selected session without replaying tasks
+PASS search, export and returning to an old conversation retain the full stored history
+PASS language and a narrow screen preserve the same sessions and drafts
+6 session browser checks passed.

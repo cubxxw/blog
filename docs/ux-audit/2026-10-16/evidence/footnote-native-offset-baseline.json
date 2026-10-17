@@ -1,0 +1,38 @@
+{
+  "sources": {
+    "static/js/footnote-preview.js": "83255aa5ec1a292c4482118689ac316eabda1e0abac23070627f0df32c8bc88a",
+    "layouts/partials/footer.html": "fedadada1ba3642177b887fa5b9dfe7a94842b1261ac20af06d500d912ba1999",
+    "assets/css/extended/zzz-footnote-preview.css": "7c91e706f1e4e7c55dacc72a177d63b5cd8033b2d28024d4e68643b89e5f00d1"
+  },
+  "sourceCheckpoint": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653",
+  "preview": "acceptedE11c; E12 source WIP not built",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "javaScriptEnabled": false,
+  "motion": "reduce",
+  "href": "#fn:1",
+  "state": {
+    "scrollY": 18972,
+    "hash": "#fn:1",
+    "htmlClass": "",
+    "target": {
+      "top": 72.140625,
+      "bottom": 225.390625,
+      "height": 153.25,
+      "scrollMarginTop": "0px",
+      "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+    },
+    "header": {
+      "top": 0,
+      "bottom": 52,
+      "height": 52,
+      "position": "static"
+    },
+    "topHit": {
+      "tag": "P"
+    }
+  },
+  "limits": "One real native anchor activation without page JS in Chromium touch emulation; target/header geometry observation, not a failing all-anchor or AT certification."
+}

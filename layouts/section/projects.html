@@ -116,7 +116,8 @@
 {{- $knowledgeJS := resources.Get "js/bear-knowledge-space.js" | fingerprint -}}
 
 <script>document.body.classList.add('products-view-bear');</script>
-<div class="product-space" data-product-space data-product-view="bear">
+{{- /* Legacy product-entry links target the real Space root; the hash router opens Products. */ -}}
+<div id="studio-products" class="product-space" data-product-space data-product-view="bear">
   <h1 class="product-space__title" id="products-title">{{ if $isZh }}空间 · CUBXXW OS{{ else }}Space · CUBXXW OS{{ end }}</h1>
 
   <nav class="product-view-switch" aria-label="{{ if $isZh }}选择产品视图{{ else }}Choose product view{{ end }}">

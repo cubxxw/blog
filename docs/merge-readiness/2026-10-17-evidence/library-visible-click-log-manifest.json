@@ -1,0 +1,43 @@
+{
+  "source": {
+    "tests/e2e/00-space-library-profile-contracts.spec.ts": "9a5a7435020d47d2026b6ae25aef07b2d5bbcd687500b6dabedcca21d3624d08"
+  },
+  "archive": {
+    "file": "library-visible-click-logs.tar.gz",
+    "bytes": 20819,
+    "sha256": "054017545904d912d3b3dd3e58dc61cb385bbad323c2c4d337c36b4de3f88bc3"
+  },
+  "logs": [
+    {
+      "file": "integration-library-visible-click-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "integration-library-visible-click-discovery.log",
+      "bytes": 104411,
+      "sha256": "25b77867ff702f99bd2b2a707782f77f46d6b37e37bfcabaa00940af42be6030"
+    },
+    {
+      "file": "integration-library-visible-click-geometry.log",
+      "bytes": 438,
+      "sha256": "98249f4e6112c49a3af9041d4f3866e796e201e9f1f102a8e7bc6081175a4758"
+    },
+    {
+      "file": "integration-library-visible-click-parent-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "file": "integration-library-visible-click-scope.log",
+      "bytes": 363,
+      "sha256": "236d981b9958d93c7e7afb94dbe7192bf0cdfaab8aa0e2f4a1643623bd714c01"
+    },
+    {
+      "file": "integration-library-visible-click-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    }
+  ],
+  "scope": "fixture selection only; original850/300,5s,1px and remaining testbody unchanged; discovery758/52 unchanged; no new fullCI result"
+}

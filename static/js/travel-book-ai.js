@@ -26,11 +26,13 @@
     zh: {
       placeholder: '追问这本书…',
       send: '发送',
+      stop: '停止生成',
+      stopped: '已停止生成，可以修改问题后重试。',
       thinking: '思考中',
       noAnswer: '（未收到回复）',
       timeout: '请求超时，请稍后重试。',
       genericError: '请求失败，请稍后重试。',
-      notFound: 'AI 函数未找到，请确认 netlify dev 正在运行',
+      notFound: 'AI 暂时无法使用，请稍后重试。',
       you: '你',
       ai: 'AI',
       retry: '重试',
@@ -43,11 +45,13 @@
     en: {
       placeholder: 'Ask more about this book…',
       send: 'Send',
+      stop: 'Stop generating',
+      stopped: 'Generation stopped. Edit your question to try again.',
       thinking: 'Thinking',
       noAnswer: '(No answer received)',
       timeout: 'Request timed out. Please try again.',
       genericError: 'Request failed. Please try again.',
-      notFound: 'AI function not found. Make sure netlify dev is running.',
+      notFound: 'AI is unavailable. Please try again later.',
       you: 'You',
       ai: 'AI',
       retry: 'Retry',
@@ -63,17 +67,17 @@
   /* ── Minimal Markdown → HTML (subset shared with article-faq.js) ── */
   function parseMarkdown(text) {
     function safeHref(url) {
-      if (/^https?:\/\//i.test(url) || /^\//.test(url)) return url;
-      return null;
+      if (!/^https?:\/\//i.test(url) && !/^\/(?!\/)/.test(url)) return null;
+      try { new URL(url, window.location.origin); return url; } catch (_) { return null; }
     }
     function inline(s) {
       return s
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
         .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
           var href = safeHref(url);
           if (!href) return label;
-          var ext = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
-          return '<a href="' + href + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
+          var ext = /^https?:\/\//i.test(href) && new URL(href).origin !== window.location.origin;
+          return '<a href="' + href + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + label + '</a>';
         })
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
@@ -117,6 +121,7 @@
   var titleEl = modal.querySelector('.tw-book-ai__title');
   var authorEl = modal.querySelector('.tw-book-ai__author');
   var threadEl = modal.querySelector('.tw-book-ai__thread');
+  var conversationEl = modal.querySelector('.tw-book-ai__conversation');
   var chipsEl = modal.querySelector('.tw-book-ai__chips');
   var inputEl = modal.querySelector('.tw-book-ai__input');
   var sendEl = modal.querySelector('.tw-book-ai__send');
@@ -127,6 +132,9 @@
   var history = [];     // [{role, content}]
   var busy = false;
   var lastTrigger = null;
+  var requestSerial = 0, activeRequest = null, viewSerial = 0, hideTimer = 0, previousOverflow = '', closing = false, hideDone = null;
+  var sendIcon = sendEl ? sendEl.innerHTML : '';
+  if (inputEl) inputEl.setAttribute('aria-label', t('placeholder'));
 
   function buildBookContext(title, author, note) {
     var lines = [t('cardIntro'), t('cardTitle') + '：' + title];
@@ -149,7 +157,7 @@
     msg.appendChild(tag);
     msg.appendChild(body);
     threadEl.appendChild(msg);
-    threadEl.scrollTop = threadEl.scrollHeight;
+    conversationEl.scrollTop = conversationEl.scrollHeight;
     return body;
   }
 
@@ -159,7 +167,7 @@
     el.innerHTML = '<span></span><span></span><span></span>';
     el.setAttribute('aria-label', t('thinking'));
     threadEl.appendChild(el);
-    threadEl.scrollTop = threadEl.scrollHeight;
+    conversationEl.scrollTop = conversationEl.scrollHeight;
     return el;
   }
 
@@ -178,7 +186,7 @@
       el.appendChild(btn);
     }
     threadEl.appendChild(el);
-    threadEl.scrollTop = threadEl.scrollHeight;
+    conversationEl.scrollTop = conversationEl.scrollHeight;
   }
 
   /* ── Chips (seed prompts AND follow-ups share this — both {label,msg}) ── */
@@ -203,108 +211,87 @@
 
   function setBusy(v) {
     busy = v;
-    if (sendEl) sendEl.disabled = v;
+    modal.setAttribute('aria-busy', String(v));
+    if (sendEl) {
+      sendEl.disabled = false;
+      sendEl.setAttribute('aria-label', t(v ? 'stop' : 'send'));
+      sendEl.innerHTML = v ? '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1" fill="currentColor"/></svg>' : sendIcon;
+    }
     if (inputEl) inputEl.disabled = v;
   }
 
-  /* ── Abort helper ── */
-  function createAbort(ms) {
-    var ctrl = ('AbortController' in window) ? new AbortController() : null;
-    var timer = ctrl ? window.setTimeout(function () { ctrl.abort(); }, ms) : null;
-    return { signal: ctrl ? ctrl.signal : undefined, done: function () { if (timer) window.clearTimeout(timer); } };
+  function cancelRequest(restore) {
+    requestSerial++;
+    var previous = activeRequest;
+    activeRequest = null;
+    if (previous) {
+      previous.controller.abort();
+      previous.thinking.remove();
+      if (restore && inputEl && !inputEl.value) inputEl.value = previous.question;
+      if (restore) {
+        var note = document.createElement('p');
+        note.className = 'tw-book-ai__error';
+        note.setAttribute('role', 'status');
+        note.textContent = t('stopped');
+        threadEl.appendChild(note);
+      }
+    }
+    setBusy(false);
   }
 
-  /* ── Send a question, stream the answer, render follow-ups ── */
+  /* Each book owns one request. Late chunks cannot enter a different book. */
   async function send(q) {
     q = String(q || '').trim().slice(0, MAX_INPUT);
-    if (!q || busy || !current) return;
+    if (!q || busy || !current || closing) return;
     clearChips();
     addBubble('user', q);
     if (inputEl) inputEl.value = '';
     setBusy(true);
     var thinkingEl = showThinking();
-    var abort = createAbort(25000);
-    var answer = '';
-    var pendingFollowups = null;
-
+    var controller = new AbortController(), serial = ++requestSerial;
+    var streamBody = null;
+    activeRequest = {controller: controller, question: q, thinking: thinkingEl};
+    var book = current;
+    function valid() {return serial === requestSerial && !controller.signal.aborted && !modal.hidden;}
     try {
-      var res = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        signal: abort.signal,
-        body: JSON.stringify({
-          question: q,
-          language: language,
-          articleTitle: current.title,
-          articleContent: current.context,
-          pagePath: window.location.pathname,
-          context: history.slice(-10),
-          wantFollowups: true
-        })
-      });
-
-      if (res.status === 404) { thinkingEl.remove(); showError(t('notFound')); setBusy(false); return; }
-      if (!res.ok) {
+      if (!window.ArticleAIClient) throw new Error(t('genericError'));
+      var result = await window.ArticleAIClient.request({
+        question: q, language: language, articleTitle: book.title,
+        articleContent: book.context, pagePath: window.location.pathname,
+        context: history.slice(-10), wantFollowups: true
+      }, {signal: controller.signal, timeoutMs: 25000, onDelta: function (answer) {
+        if (!valid()) return;
         thinkingEl.remove();
-        var errText = t('genericError');
-        try { var ej = await res.json(); if (ej && ej.error) errText = ej.error; } catch (_e) {}
-        showError(errText, function () { send(q); });
-        setBusy(false);
-        return;
-      }
-
-      var contentType = res.headers.get('content-type') || '';
-      if (contentType.indexOf('text/event-stream') !== -1 && res.body && res.body.getReader) {
-        thinkingEl.remove();
-        var streamBody = addBubble('ai', '');
-        var reader = res.body.getReader();
-        var decoder = new TextDecoder();
-        var buffer = '';
-        sse: while (true) {
-          var chunk = await reader.read();
-          if (chunk.done) break;
-          buffer += decoder.decode(chunk.value, { stream: true });
-          var lns = buffer.split('\n');
-          buffer = lns.pop();
-          for (var li = 0; li < lns.length; li++) {
-            var line = lns[li];
-            if (line.indexOf('data: ') !== 0) continue;
-            var data = line.slice(6).trim();
-            if (data === '[DONE]') break sse;
-            try {
-              var json = JSON.parse(data);
-              if (json.followups) { pendingFollowups = json.followups; continue; }
-              var delta = json.delta || '';
-              if (delta) { answer += delta; streamBody.innerHTML = parseMarkdown(answer); threadEl.scrollTop = threadEl.scrollHeight; }
-            } catch (_e2) {}
-          }
-        }
-        if (!answer) streamBody.textContent = t('noAnswer');
-      } else {
-        // Non-streaming fallback
-        thinkingEl.remove();
-        var payload = await res.json();
-        answer = (payload && payload.answer) || '';
-        if (payload && payload.followups) pendingFollowups = payload.followups;
-        addBubble('ai', answer || t('noAnswer'));
-      }
-
-      if (answer) {
-        history.push({ role: 'user', content: q });
-        history.push({ role: 'assistant', content: answer });
-      }
-      if (pendingFollowups && pendingFollowups.length) renderChips(pendingFollowups);
-    } catch (err) {
+        if (!streamBody) streamBody = addBubble('ai', '');
+        streamBody.innerHTML = parseMarkdown(answer);
+        conversationEl.scrollTop = conversationEl.scrollHeight;
+      }});
+      if (!valid()) return;
       thinkingEl.remove();
-      showError(err && err.name === 'AbortError' ? t('timeout') : t('genericError'), function () { send(q); });
+      if (streamBody) streamBody.innerHTML = parseMarkdown(result.answer);
+      else addBubble('ai', result.answer);
+      history.push({role: 'user', content: q}, {role: 'assistant', content: result.answer});
+      if (result.followups) renderChips(result.followups);
+    } catch (err) {
+      if (!valid()) return;
+      thinkingEl.remove();
+      showError(err && err.name === 'TimeoutError' ? t('timeout') : t('genericError'), function () {send(q);});
+      if (inputEl && !inputEl.value) inputEl.value = q;
     } finally {
-      abort.done();
-      setBusy(false);
+      if (serial === requestSerial) {activeRequest = null; setBusy(false);}
     }
   }
 
   /* ── Open / close (mirrors the QR popover in travel.html) ── */
   function openForBook(btn) {
+    cancelRequest(false);
+    closing = false;
+    card.inert = false;
+    var view = ++viewSerial;
+    window.clearTimeout(hideTimer);
+    if (hideDone) {modal.removeEventListener('transitionend', hideDone); hideDone = null;}
+    modal.querySelector('.tw-book-ai__x').disabled = false;
+    if (lastTrigger) lastTrigger.setAttribute('aria-expanded', 'false');
     var d = btn.dataset;
     var prompts = [];
     try { prompts = JSON.parse(d.bookPrompts || '[]') || []; } catch (_e) { prompts = []; }
@@ -325,20 +312,47 @@
     busy = false;
 
     modal.hidden = false;
+    if (!modal.open) {
+      previousOverflow = document.body.style.overflow;
+      modal.showModal();
+    }
+    conversationEl.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
     if (reduceMotion) { modal.classList.add('is-open'); }
-    else { requestAnimationFrame(function () { modal.classList.add('is-open'); }); }
+    else { requestAnimationFrame(function () { if (view === viewSerial && !modal.hidden) modal.classList.add('is-open'); }); }
     btn.setAttribute('aria-expanded', 'true');
     lastTrigger = btn;
     if (inputEl) { try { inputEl.focus(); } catch (_e) {} }
   }
 
   function close() {
+    if (closing || modal.hidden) return;
+    closing = true;
+    cancelRequest(false);
+    card.inert = true;
+    modal.querySelector('.tw-book-ai__x').disabled = true;
+    var view = ++viewSerial;
     modal.classList.remove('is-open');
     if (lastTrigger) lastTrigger.setAttribute('aria-expanded', 'false');
-    var done = function () { modal.hidden = true; modal.removeEventListener('transitionend', done); };
-    if (reduceMotion) done(); else modal.addEventListener('transitionend', done);
-    if (lastTrigger) { try { lastTrigger.focus(); } catch (_e) {} lastTrigger = null; }
+    var returnTo = lastTrigger;
+    lastTrigger = null;
+    var done = function (event) {
+      if (event && event.target !== modal) return;
+      if (view !== viewSerial) return;
+      modal.removeEventListener('transitionend', done);
+      window.clearTimeout(hideTimer); hideDone = null;
+      if (modal.open) modal.close();
+      modal.hidden = true;
+      closing = false;
+      document.body.style.overflow = previousOverflow;
+      if (returnTo && returnTo.isConnected) returnTo.focus({preventScroll: true});
+    };
+    window.clearTimeout(hideTimer);
+    if (reduceMotion) done();
+    else {hideDone = done; modal.addEventListener('transitionend', done); hideTimer = window.setTimeout(done, 220);}
   }
+
+  window.addEventListener('pagehide', function () {cancelRequest(false);});
 
   /* ── Wire up ── */
   document.querySelectorAll('.tw-tome__ask').forEach(function (btn) {
@@ -349,12 +363,22 @@
     el.addEventListener('click', close);
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.hidden) close();
+    if (e.key === 'Tab' && modal.open && !closing) {
+      var stops = Array.prototype.filter.call(card.querySelectorAll('button, a[href], input, textarea, select, [tabindex]'), function (node) {
+        return !node.disabled && node.tabIndex >= 0 && node.getClientRects().length && window.getComputedStyle(node).visibility === 'visible';
+      });
+      if (!stops.length) {e.preventDefault(); modal.tabIndex = -1; modal.focus(); return;}
+      var first = stops[0], last = stops[stops.length - 1], active = document.activeElement;
+      if (e.shiftKey && (active === first || active === modal || active === document.body)) {e.preventDefault(); last.focus();}
+      else if (!e.shiftKey && (active === last || active === modal || active === document.body)) {e.preventDefault(); first.focus();}
+    }
+    if (e.key === 'Escape' && !e.isComposing && e.keyCode !== 229 && !modal.hidden) {e.preventDefault(); close();}
   });
-  if (sendEl) sendEl.addEventListener('click', function () { if (inputEl) send(inputEl.value); });
+  modal.addEventListener('cancel', function (e) {e.preventDefault(); close();});
+  if (sendEl) sendEl.addEventListener('click', function () { if (busy) cancelRequest(true); else if (inputEl) send(inputEl.value); });
   if (inputEl) {
     inputEl.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(inputEl.value); }
+      if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && e.keyCode !== 229) { e.preventDefault(); send(inputEl.value); }
     });
   }
 })();

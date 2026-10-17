@@ -1,0 +1,1865 @@
+{
+  "at": "2026-10-15T22:02:09.010Z",
+  "source": "batch-e12-source.json;production unchanged",
+  "rows": [
+    {
+      "motion": "no-preference",
+      "states": {
+        "centered": {
+          "scrollY": 3713,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "",
+          "card": {
+            "x": 0,
+            "y": -3709,
+            "width": 114.90625,
+            "height": 69.171875
+          },
+          "body": {
+            "x": 14.59375,
+            "y": -3696.8125,
+            "width": 85.71875,
+            "height": 0,
+            "scrollTop": 0,
+            "scrollHeight": 0,
+            "clientHeight": 0,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 14.59375,
+            "y": -3694.421875,
+            "width": 85.71875,
+            "height": 44,
+            "href": null,
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "dark nav-hidden",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 4)",
+          "overflowX": false,
+          "metrics": {
+            "time": 611.5,
+            "rect": {
+              "x": 283.671875,
+              "y": 414.28125,
+              "width": 9.46875,
+              "height": 16,
+              "top": 414.28125,
+              "right": 293.140625,
+              "bottom": 430.28125,
+              "left": 283.671875
+            },
+            "docH": 30674,
+            "fontstatus": "loading",
+            "fonts": [],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "afterBeforeShot": {
+          "scrollY": 3652,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "",
+          "card": {
+            "x": 0,
+            "y": -3648,
+            "width": 117,
+            "height": 69.171875
+          },
+          "body": {
+            "x": 14.59375,
+            "y": -3635.8125,
+            "width": 87.8125,
+            "height": 0,
+            "scrollTop": 0,
+            "scrollHeight": 0,
+            "clientHeight": 0,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 14.59375,
+            "y": -3633.421875,
+            "width": 87.8125,
+            "height": 44,
+            "href": null,
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "dark nav-hidden",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 4)",
+          "overflowX": false,
+          "metrics": {
+            "time": 1167.5,
+            "rect": {
+              "x": 110.296875,
+              "y": 627.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 627.9375,
+              "right": 120.828125,
+              "bottom": 646.9375,
+              "left": 110.296875
+            },
+            "docH": 31731,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "immediate": {
+          "scrollY": 3652,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 468.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 481.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 567.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 2,
+          "transform": "matrix(1, 0, 0, 1, 0, 4)",
+          "overflowX": false,
+          "metrics": {
+            "time": 1197.2000002861023,
+            "rect": {
+              "x": 110.296875,
+              "y": 627.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 627.9375,
+              "right": 120.828125,
+              "bottom": 646.9375,
+              "left": 110.296875
+            },
+            "docH": 31731,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "after300": {
+          "scrollY": 3652,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 464.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 477.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 563.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "overflowX": false,
+          "metrics": {
+            "time": 1508.0999999046326,
+            "rect": {
+              "x": 110.296875,
+              "y": 627.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 627.9375,
+              "right": 120.828125,
+              "bottom": 646.9375,
+              "left": 110.296875
+            },
+            "docH": 31731,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "afterOpenShot": {
+          "scrollY": 3652,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 464.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 477.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 563.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "overflowX": false,
+          "metrics": {
+            "time": 1542.5999999046326,
+            "rect": {
+              "x": 110.296875,
+              "y": 627.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 627.9375,
+              "right": 120.828125,
+              "bottom": 646.9375,
+              "left": 110.296875
+            },
+            "docH": 31731,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "after600": {
+          "scrollY": 3652,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 464.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 477.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 563.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "overflowX": false,
+          "metrics": {
+            "time": 2156.7000002861023,
+            "rect": {
+              "x": 110.296875,
+              "y": 627.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 627.9375,
+              "right": 120.828125,
+              "bottom": 646.9375,
+              "left": 110.296875
+            },
+            "docH": 31731,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        }
+      },
+      "events": [
+        {
+          "name": "scroll",
+          "time": 590.8000001907349,
+          "y": 3713
+        },
+        {
+          "name": "scroll",
+          "time": 987.4000000953674,
+          "y": 3678
+        },
+        {
+          "name": "scroll",
+          "time": 1037.2000002861023,
+          "y": 3635
+        },
+        {
+          "name": "scroll",
+          "time": 1092.4000000953674,
+          "y": 3625
+        },
+        {
+          "name": "loadingdone",
+          "time": 1126,
+          "y": 3652,
+          "fonts": [
+            {
+              "family": "Noto Serif",
+              "status": "loaded"
+            },
+            {
+              "family": "Fraunces",
+              "status": "loaded"
+            },
+            {
+              "family": "JetBrains Mono",
+              "status": "loaded"
+            },
+            {
+              "family": "Fraunces",
+              "status": "loaded"
+            },
+            {
+              "family": "Fraunces",
+              "status": "loaded"
+            },
+            {
+              "family": "Inter",
+              "status": "loaded"
+            },
+            {
+              "family": "Fraunces",
+              "status": "loaded"
+            },
+            {
+              "family": "Inter",
+              "status": "loaded"
+            },
+            {
+              "family": "Inter",
+              "status": "loaded"
+            },
+            {
+              "family": "Noto Serif",
+              "status": "loaded"
+            },
+            {
+              "family": "JetBrains Mono",
+              "status": "loaded"
+            },
+            {
+              "family": "Noto Serif",
+              "status": "loaded"
+            },
+            {
+              "family": "JetBrains Mono",
+              "status": "loaded"
+            },
+            {
+              "family": "Inter",
+              "status": "loaded"
+            },
+            {
+              "family": "Noto Serif",
+              "status": "loaded"
+            }
+          ]
+        },
+        {
+          "name": "scroll",
+          "time": 1140.3000001907349,
+          "y": 3652
+        },
+        {
+          "name": "focusin",
+          "time": 1193,
+          "y": 3652,
+          "target": "footnote-ref"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "motion": "reduce",
+      "states": {
+        "centered": {
+          "scrollY": 3867,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "",
+          "card": {
+            "x": 0,
+            "y": -3867,
+            "width": 117,
+            "height": 69.171875
+          },
+          "body": {
+            "x": 14.59375,
+            "y": -3854.8125,
+            "width": 87.8125,
+            "height": 0,
+            "scrollTop": 0,
+            "scrollHeight": 0,
+            "clientHeight": 0,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 14.59375,
+            "y": -3852.421875,
+            "width": 87.8125,
+            "height": 44,
+            "href": null,
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "dark",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false,
+          "metrics": {
+            "time": 919.1999998092651,
+            "rect": {
+              "x": 110.296875,
+              "y": 412.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 412.9375,
+              "right": 120.828125,
+              "bottom": 431.9375,
+              "left": 110.296875
+            },
+            "docH": 31715,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "afterBeforeShot": {
+          "scrollY": 3867,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "",
+          "card": {
+            "x": 0,
+            "y": -3867,
+            "width": 117,
+            "height": 69.171875
+          },
+          "body": {
+            "x": 14.59375,
+            "y": -3854.8125,
+            "width": 87.8125,
+            "height": 0,
+            "scrollTop": 0,
+            "scrollHeight": 0,
+            "clientHeight": 0,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 14.59375,
+            "y": -3852.421875,
+            "width": 87.8125,
+            "height": 44,
+            "href": null,
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "dark",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false,
+          "metrics": {
+            "time": 950.3000001907349,
+            "rect": {
+              "x": 110.296875,
+              "y": 412.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 412.9375,
+              "right": 120.828125,
+              "bottom": 431.9375,
+              "left": 110.296875
+            },
+            "docH": 31715,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "immediate": {
+          "scrollY": 3867,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 249.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 262.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 348.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false,
+          "metrics": {
+            "time": 971.0999999046326,
+            "rect": {
+              "x": 110.296875,
+              "y": 412.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 412.9375,
+              "right": 120.828125,
+              "bottom": 431.9375,
+              "left": 110.296875
+            },
+            "docH": 31715,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "after300": {
+          "scrollY": 3867,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 249.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 262.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 348.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false,
+          "metrics": {
+            "time": 1281.8000001907349,
+            "rect": {
+              "x": 110.296875,
+              "y": 412.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 412.9375,
+              "right": 120.828125,
+              "bottom": 431.9375,
+              "left": 110.296875
+            },
+            "docH": 31715,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "afterOpenShot": {
+          "scrollY": 3867,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 249.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 262.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 348.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false,
+          "metrics": {
+            "time": 1317.5,
+            "rect": {
+              "x": 110.296875,
+              "y": 412.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 412.9375,
+              "right": 120.828125,
+              "bottom": 431.9375,
+              "left": 110.296875
+            },
+            "docH": 31715,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        },
+        "after600": {
+          "scrollY": 3867,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 249.9375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 262.125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 348.515625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false,
+          "metrics": {
+            "time": 1927.9000000953674,
+            "rect": {
+              "x": 110.296875,
+              "y": 412.9375,
+              "width": 10.53125,
+              "height": 19,
+              "top": 412.9375,
+              "right": 120.828125,
+              "bottom": 431.9375,
+              "left": 110.296875
+            },
+            "docH": 31715,
+            "fontstatus": "loaded",
+            "fonts": [
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "italic",
+                "weight": "700"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Fraunces",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "600"
+              },
+              {
+                "family": "Inter",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "500"
+              },
+              {
+                "family": "JetBrains Mono",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "italic",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              },
+              {
+                "family": "Noto Serif",
+                "style": "normal",
+                "weight": "700"
+              }
+            ],
+            "prose": "",
+            "htmlFont": "16px",
+            "visual": {
+              "height": 844,
+              "scale": 1,
+              "offsetTop": 0
+            }
+          }
+        }
+      },
+      "events": [
+        {
+          "name": "scroll",
+          "time": 899.6999998092651,
+          "y": 3867
+        },
+        {
+          "name": "focusin",
+          "time": 967.5999999046326,
+          "y": 3867,
+          "target": "footnote-ref"
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

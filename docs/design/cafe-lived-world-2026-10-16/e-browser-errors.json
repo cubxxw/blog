@@ -1,0 +1,8 @@
+[
+  {
+    "level": "warn",
+    "message": "THREE.WebGLRenderer: WEBGL_lose_context extension not supported.",
+    "timestamp": "2026-10-16T11:43:57.761Z",
+    "url": "http://127.0.0.1:1317/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js"
+  }
+]

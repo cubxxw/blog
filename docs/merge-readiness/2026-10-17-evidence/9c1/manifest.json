@@ -1,0 +1,223 @@
+{
+  "baselineHead": "9c1f56390039085746e02c0f730ceafd91895e62",
+  "run": 39022522727,
+  "job": 117366998724,
+  "conclusion": "cancelled",
+  "originalManifest": {
+    "source": "original-ci-manifest.json",
+    "permanentPath": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-9c1/manifest.json",
+    "sha256": "7a411da9ecd51457ff45510bb32021d6cfaf8817921b6d23f15de2cd8599f453",
+    "note": "Original preserved; early cause=under_investigation superseded by causeEvidence and cat-frame-observations.json."
+  },
+  "fullArtifact": {
+    "permanentPath": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-9c1/quality.zip",
+    "bytes": 11500448,
+    "sha256": "ebef9f8b90438f1d7e35a558799b2bb736a1a64c6b837a4d11426c8106ba3689",
+    "githubUploadDigestMatched": true,
+    "notCopiedIntoGit": true
+  },
+  "actual": "48 quality passed; legacy incomplete203 pass attempts/3 failed cat attempts/8 skipped; other9 onboarding first-pass, Library31.7/31.0s. Not full758 pass.",
+  "rootCause": "Loaded/active cat only12 paints across17.184284s; old.04/frame cap<=.48 simulated seconds below3s initial look. Observed mean, not measured per-frame maximum.",
+  "productionFix": "Cat-only raw elapsed, bounded<=2s/50 substeps<=.04 per paint, no debt; lifecycle resets, one final render. Other animation timing unchanged.",
+  "observationFixture": "Cat first loaded&&active pose/time recorded passively before goto; actual movement delta>0 and<=12000. The previous production-freeze manifest E2E SHA is historical; final frozen E2E SHA is observer manifest. Pause400/200 and other9 cases byte-identical.",
+  "validationLimit": "23 targeted Node tests plus6 exact-inline mock-observer tests, TS/diff/discovery758/52; no new actual browser/full CI pass yet.",
+  "files": [
+    {
+      "file": "artifact-9c1-fast-central.json",
+      "bytes": 4400,
+      "sha256": "565b7c61a71e7448e6c13c4ac1106ebae6b64f6c0c198e21f6015d7e5ced8ec8"
+    },
+    {
+      "file": "artifact-9c1-fast-entries.json",
+      "bytes": 5338,
+      "sha256": "8945b0f4e08cb22ba2e104da5dfd1f4262b72c82cee60f68938b9b6d3edc010e"
+    },
+    {
+      "file": "cancelled.log.gz",
+      "bytes": 87087,
+      "sha256": "2649c311405d63f61a87a4c99338563e1b99bdb16f436cb50d0f4de156ecfb57"
+    },
+    {
+      "file": "cat-clock-local-proof.tar.gz",
+      "bytes": 67476,
+      "sha256": "76f17d6cbbe33212dcadf5e579214a3c7aa12f65f2189d8b0b40e196ba3b70e5"
+    },
+    {
+      "file": "cat-frame-observations.json",
+      "bytes": 9019,
+      "sha256": "c99963f21bc8b9bd5755814bd8514f592c19ea30b6ad7ad6f6796e041f32d868"
+    },
+    {
+      "file": "cat-motion-observer-manifest.json",
+      "bytes": 4846,
+      "sha256": "03ee584f27f6299c1b82a004712e532e9923ab23ececb884bfcdd71015f3d738"
+    },
+    {
+      "file": "integration-cat-clock-manifest.json",
+      "bytes": 4969,
+      "sha256": "fefbe451c2fd2e33d9433e544442524f5190cd51f86407fe2b936b15752f7b64"
+    },
+    {
+      "file": "integration-cat-clock-red-manifest.json",
+      "bytes": 797,
+      "sha256": "f9d843732f149b849a0baff08f5e20ac5ba05a7b2eef9ae531668e82ca15070f"
+    },
+    {
+      "file": "live-onboarding-results.json",
+      "bytes": 2249,
+      "sha256": "a3b76b38950fbdf2fc3be91054b05724d12eb0a5c6278ada11e1ac409f2f7ade"
+    },
+    {
+      "file": "original-ci-manifest.json",
+      "bytes": 2863,
+      "sha256": "7a411da9ecd51457ff45510bb32021d6cfaf8817921b6d23f15de2cd8599f453"
+    },
+    {
+      "file": "reports.tar.gz",
+      "bytes": 73244,
+      "sha256": "a1a04fdca7e8ad76d3b8da06082b5ab71db353fce26aa39a3dbb251535346124"
+    }
+  ],
+  "archiveMembers": [
+    {
+      "file": "cat-motion-observer-checks.json",
+      "bytes": 961,
+      "sha256": "73b2e2743e5fa86c62b53e3c51f12095be43f1047b95bbb495d58ab9172ecb86"
+    },
+    {
+      "file": "cat-motion-observer-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cat-motion-observer-diff.patch",
+      "bytes": 4198,
+      "sha256": "1bb2fdca457bf6d126bfeef83b0b2b6211ed31dae7a018e6e5870c586067d1e4"
+    },
+    {
+      "file": "cat-motion-observer-discovery.log",
+      "bytes": 104473,
+      "sha256": "f6274201af364ae995ea52f12235a9a1c424c6742285fe46fe63690789bd2976"
+    },
+    {
+      "file": "cat-motion-observer-frozen.spec.ts",
+      "bytes": 14697,
+      "sha256": "5985d7d015e18bced5aaacc81815e50e225fba52ff328ea2910d1afa4703f430"
+    },
+    {
+      "file": "cat-motion-observer-green.log",
+      "bytes": 1609,
+      "sha256": "a3e475d88ef5191f15777f52d782cbb26f1e987dd6cb1bb06afb8ab108f9ced3"
+    },
+    {
+      "file": "cat-motion-observer-manifest.json",
+      "bytes": 4846,
+      "sha256": "03ee584f27f6299c1b82a004712e532e9923ab23ececb884bfcdd71015f3d738"
+    },
+    {
+      "file": "cat-motion-observer-proof.mjs",
+      "bytes": 5177,
+      "sha256": "f9ccae03cdb77b9ee5943465c28290d946365900593c24af35fa8f24f0e59c41"
+    },
+    {
+      "file": "cat-motion-observer-scope.log",
+      "bytes": 843,
+      "sha256": "c1ab86a76512aaf9439c077d5350c26f4eadab56f6a19f40ca86033b38d7ff11"
+    },
+    {
+      "file": "cat-motion-observer-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "file": "cat-rest-counterexample-red.log",
+      "bytes": 916,
+      "sha256": "b4597b9202a5e835ddfbb059a870d8055ff5e9165bc1ffbb9a4ba976cea04a3c"
+    },
+    {
+      "file": "cat-rest-counterexample.mjs",
+      "bytes": 1053,
+      "sha256": "729c96e8fcd8ed900fd5a27031368b79d57d5da4666e2cb920e33513759eb629"
+    },
+    {
+      "file": "integration-cat-clock-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "integration-cat-clock-diff.log",
+      "bytes": 22252,
+      "sha256": "0e75d136a5a623c9135d02b190f8ec40c750941c1f3d90d1cebd2d99ca2dcf72"
+    },
+    {
+      "file": "integration-cat-clock-discovery.log",
+      "bytes": 104473,
+      "sha256": "740b2ff5d8e2db673dc93b8d1e8abe6fc554863c7d9955db7507f99fdd256b3f"
+    },
+    {
+      "file": "integration-cat-clock-green-final.log",
+      "bytes": 6541,
+      "sha256": "529d6006032793896a2416cdcc7dc1599cf13c6c8e7ea062920410bcf5de0650"
+    },
+    {
+      "file": "integration-cat-clock-green-initial.log",
+      "bytes": 4616,
+      "sha256": "f61f7ee63cc6e7ec291308d24f2949c1bff2036a1ebb4d639634847bb5980e2d"
+    },
+    {
+      "file": "integration-cat-clock-green.log",
+      "bytes": 4894,
+      "sha256": "7d290578bc1f1ef492b9e345522372bfc9299b5a46b55f4bbab7438b02f3a55f"
+    },
+    {
+      "file": "integration-cat-clock-manifest.json",
+      "bytes": 4969,
+      "sha256": "fefbe451c2fd2e33d9433e544442524f5190cd51f86407fe2b936b15752f7b64"
+    },
+    {
+      "file": "integration-cat-clock-red-manifest.json",
+      "bytes": 797,
+      "sha256": "f9d843732f149b849a0baff08f5e20ac5ba05a7b2eef9ae531668e82ca15070f"
+    },
+    {
+      "file": "integration-cat-clock-red-test.mjs",
+      "bytes": 11563,
+      "sha256": "8297d66654ba9197ed4d3543ccbb8b94472c950ad9a723d2e0738d6943b3b934"
+    },
+    {
+      "file": "integration-cat-clock-red-world.log",
+      "bytes": 5426,
+      "sha256": "a79981a4df08ca71e439a015d61e490f503281b94085092dc2f4f9040195bdfc"
+    },
+    {
+      "file": "integration-cat-clock-red.log",
+      "bytes": 4093,
+      "sha256": "ac4057643366334f4eaf35773f0f887c2d4aff490953cd5fe14544f2bac34334"
+    },
+    {
+      "file": "integration-cat-clock-resident-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "integration-cat-clock-runner.sh",
+      "bytes": 164,
+      "sha256": "b16db954589caf4113d9e4d9407bd34498de1b89eb4649365845bf1d2e9d9a77"
+    },
+    {
+      "file": "integration-cat-clock-scope.log",
+      "bytes": 1173,
+      "sha256": "2a4b1b9573211065a24432306156c74e52d159ac6ce6b8fc8ee6c2c989bdd1a3"
+    },
+    {
+      "file": "integration-cat-clock-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "file": "integration-cat-clock-world-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

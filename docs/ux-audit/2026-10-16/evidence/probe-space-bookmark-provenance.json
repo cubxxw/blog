@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-15T23:37:27.864532+00:00",
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-space-bookmark.browser.mjs": "e85a0ee3dd4581730ba796f2599843a9fb7460e0f947e79557ebb294de077d9f",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark.json": "6ed42b650ffffe064fb4da99d5ba2651e55c81c5f9c8e786df7da45995b51ec9",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark.log": "45e26cf18ecf22a44d15f46836ae4858bcdc7e0a8f1f03bc85ee468d14f53d2b",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-before-save.png": "233db9d756d356c771c25640c35774d4cf7d900f4bac5cce2899f790dc692144",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-saved.png": "7514b188cbf70712b0f570c0f7020bcda1690d6a1b395ce294dfe93ea0d24807",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-favorites.png": "19833148e6910429c1ef91affb3ca4971b07883fdb65108e128eb9cd06b47baf",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-reloaded-favorites.png": "2f02f47dae5f35b26e6cf542990756a306cecf50f27f947e409c46b8edcdf64b",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-removed.png": "f572eaaf37de05057fbadab9537670809764f701309dc095a77706be1a554ca6",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-bookmark-empty-favorites.png": "3b5bd89876c39c19e43be7d93052ee114ed3cb4ce8590e3af4516772918c2f36"
+  },
+  "sources": {
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/css/space.css": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258"
+  },
+  "parentReadAll6PNG": true,
+  "observations": "Named390en actual bookmark save/favorites/reload/remove/empty works; rawaria-pressed/label absent in eacharticle state. Tinytitle/meta/controls reaffirmUX048, no AT transcript or behavior failure. No production changed."
+}

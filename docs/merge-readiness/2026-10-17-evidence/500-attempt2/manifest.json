@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-17T09:36:58.849686+00:00",
+  "head": "500bcc79252321dfd18eab26519c408f96440f80",
+  "base": "9a909dfdbbb64505d34e68a1b47d1ae4fd059192",
+  "run": 39015837987,
+  "attempt": 2,
+  "job": 117354561848,
+  "conclusion": "cancelled",
+  "cancellationReason": "Three onboarding cases each failed on first attempt and both retries. Actual repeated failures established, not inferred from stale UI.",
+  "artifact": {
+    "id": 12097165511,
+    "bytes": 32738234,
+    "sha256": "0461c2dca07e7b3bf931155704fa5e4712dec112cd1de44addbb378f02136290",
+    "githubUploadDigestMatched": true,
+    "centralMembers": 27,
+    "selectedReports": 23,
+    "allSelectedMatchedFullZipCRCBytesSHA": true
+  },
+  "rawLog": {
+    "bytes": 483728,
+    "sha256": "5d84eece2ccca4b036bbe07de88a1bdb0900759c44289f17f03a26dfc74dd39d",
+    "legacySummaryComplete": false,
+    "observedAttemptCounts": {
+      "passedAttempts": 349,
+      "failedAttempts": 9,
+      "skipped": 13
+    },
+    "lastPrintedTest": 371,
+    "lastPrintedAtUTC": "2026-10-17T09:26:31.3851693Z"
+  },
+  "realBreakpoints": [
+    {
+      "case": "cancelled read transition",
+      "attempts": 3,
+      "line": 48,
+      "actual": "worldTravel false; desktop/reader already open",
+      "notReached": "picker/replay and cancellation assertions",
+      "traceTiming": "click action done1986850.467; navigationwait/click returns1990301.572; next expect begins1993134.492. Production travel1850ms. Attribute transition itself not instrumented; sampling is late."
+    },
+    {
+      "case": "resident wanders and pauses",
+      "attempts": 3,
+      "line": 87,
+      "actual": "catLoaded null, expectedtrue under default5s",
+      "notReached": "12s pose motion and pause/quiet/dialog/reduce/workspace checks",
+      "network": "cat.glb200,280840bytes,78.42ms; asynchronous decode/preprocessing readiness boundary not resolved bytrace; no exactCPU/parse diagnosis"
+    },
+    {
+      "case": "graphics failure during reveal",
+      "attempts": 3,
+      "line": 105,
+      "actual": "revealing not observed; loading first/retry2, complete retry1",
+      "notReached": "actual WebGL context loss and modal recovery"
+    }
+  ],
+  "notClosed": "Old footnote P2 rootcause still unknown; current attempt2 all10 desktop footnote cases first-attempt passed, EN8.2s. Passing rerun is not root fix.",
+  "files": [
+    {
+      "file": "reports.tar.gz",
+      "bytes": 73786,
+      "sha256": "84ff2ff3ae7d6d3683f26081fb3402ce36f358f0cdc421481630379a6cf17ab8"
+    },
+    {
+      "file": "cancelled.log.gz",
+      "bytes": 94927,
+      "sha256": "a63143d0c43e568614b22f6a2138bfc4d1defc80ae9b4582cb72123d5fc2eab6"
+    },
+    {
+      "file": "artifact-500-2-entries.json",
+      "bytes": 7055,
+      "sha256": "6c4f3f211294bd0731ae5f0b39a00de4331db9d873d51d0784c966941cd5547e"
+    },
+    {
+      "file": "artifact-500-2-fast-entries.json",
+      "bytes": 7458,
+      "sha256": "b926d65d8017898cc1a0a532a582fc0ce2e59573744d9c513cb50aa4360ac35d"
+    },
+    {
+      "file": "artifact-500-2-fast-central.json",
+      "bytes": 6575,
+      "sha256": "9b47c7bc2564db90b5b9c9aee8a5195521a76a6722aec77589d1914ca11fa91d"
+    }
+  ],
+  "sourceScope": "executor authorized only two transient-state test fixtures; production frozen; cat fixture/readiness remains under independent review. Full758/all gates not completed.",
+  "originalPermanentManifest": {
+    "path": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-500-attempt2/manifest.json",
+    "sha256": "b3028bbe96a6598554e7b2fc773ea16189ebd3ae6da0ca9690558c80dd9dceee"
+  },
+  "permanentFullZip": {
+    "file": "quality.zip",
+    "bytes": 32738234,
+    "sha256": "0461c2dca07e7b3bf931155704fa5e4712dec112cd1de44addbb378f02136290",
+    "path": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-500-attempt2/quality.zip"
+  }
+}

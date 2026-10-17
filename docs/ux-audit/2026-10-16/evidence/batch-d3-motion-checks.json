@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "id": "D3.prose-readable-with-motion-enabled",
+      "passed": true,
+      "source": "batch-d3-source.json",
+      "route": "http://127.0.0.1:1317/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "reducedMotion": "no-preference",
+      "count": 18
+    },
+    {
+      "id": "D3.native-theme-control-no-global-ripple",
+      "passed": true,
+      "source": "batch-d3-source.json"
+    }
+  ],
+  "observations": [
+    {
+      "id": "NEXT.faq-runtime-reduce",
+      "reproduced": true,
+      "animations": [
+        {
+          "state": "running",
+          "property": [
+            "offset",
+            "easing",
+            "composite",
+            "height",
+            "computedOffset"
+          ]
+        }
+      ],
+      "source": "batch-d3-source.json",
+      "note": "Existing cached preference requires a narrow follow-up; not a D3 motion-removal regression."
+    }
+  ]
+}

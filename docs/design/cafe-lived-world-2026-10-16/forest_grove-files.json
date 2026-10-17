@@ -1,0 +1,86 @@
+{
+  "tonemapped": {
+    "size": 59443753,
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/forest_grove.jpg",
+    "md5": "abd435e3b75442e5ba017c8ef5b620b5"
+  },
+  "hdri": {
+    "8k": {
+      "hdr": {
+        "size": 114181877,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/8k/forest_grove_8k.hdr",
+        "md5": "20f7eaddbaee5c790cd55cf6c0223929"
+      },
+      "exr": {
+        "size": 389418594,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/8k/forest_grove_8k.exr",
+        "md5": "c7cab2b0cf24fb02f892e0acf03c14ef"
+      }
+    },
+    "16k": {
+      "hdr": {
+        "size": 430666488,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/16k%2B/forest_grove_16k.hdr",
+        "md5": "e3ae9785b2512be355783c1c558f2cd8"
+      },
+      "exr": {
+        "size": 1533654808,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/16k%2B/forest_grove_16k.exr",
+        "md5": "8b99d697bbf5be5d0553a45cc95e8e44"
+      }
+    },
+    "4k": {
+      "hdr": {
+        "size": 29836683,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/forest_grove_4k.hdr",
+        "md5": "6094214f5dd5cb6f60a04a77e31c2841"
+      },
+      "exr": {
+        "size": 98123675,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/4k/forest_grove_4k.exr",
+        "md5": "ab04844f765e6e57932393d8c2673106"
+      }
+    },
+    "2k": {
+      "hdr": {
+        "size": 7632285,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/forest_grove_2k.hdr",
+        "md5": "2720267c902baed37a1bbb6decdf6dea"
+      },
+      "exr": {
+        "size": 24640573,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/2k/forest_grove_2k.exr",
+        "md5": "99dcef5a8ebbf21721c60af313b5c8c3"
+      }
+    },
+    "1k": {
+      "hdr": {
+        "size": 1922024,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/forest_grove_1k.hdr",
+        "md5": "e1b083a9c3e307558ba434b9d7bc9f2e"
+      },
+      "exr": {
+        "size": 6174855,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/1k/forest_grove_1k.exr",
+        "md5": "bf6c783c43c791f07b69b3e03fa81f5b"
+      }
+    },
+    "20k": {
+      "hdr": {
+        "size": 660352596,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/16k%2B/forest_grove_20k.hdr",
+        "md5": "32d8547a8eb05a5ac33ea54111d590a6"
+      },
+      "exr": {
+        "size": 2375693058,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/16k%2B/forest_grove_20k.exr",
+        "md5": "e046095b98bfbd04728fde03425edf36"
+      }
+    }
+  },
+  "colorchart": {
+    "size": 193216608,
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Color%20Charts/forest_grove.zip",
+    "md5": "73c2b423667b62bc5d7b95d1b8e24b00"
+  }
+}

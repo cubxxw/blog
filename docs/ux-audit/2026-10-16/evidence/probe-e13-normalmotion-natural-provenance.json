@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-15T23:29:26.736240+00:00",
+  "sourceManifest": "batch-e13d1-actual-source.json",
+  "producer": "/root AI",
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-e13-normalmotion.browser.mjs": "a57d0a833fba1315809f67bcf4fcf299911656663868bb15b71d6364c5f5f44c",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion-natural.json": "610da0d23a537fd883d41695709149e7531aaf4fe0812eed9530dfc0dfbabe4e",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion-natural.log": "999d0c23aa73e0577a1e5d26c6e1688c7f310dd11a10b4e69e1ba456437d845d",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion-natural-two-frames.png": "3f13daa73d2d29b88c8d5946fd033dde3737ebc048115c9626ee9a327f1f9935",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-normalmotion-natural-settled.png": "d4dc95c68bd55dffa9b35d52d52995733f8525866253105a428c1bc4561029bc"
+  },
+  "parentReadAllNamedPNG": true,
+  "limits": "FrozenD1/en/dark/normal/1199→1200 actualTab→1199; natural geometry timeline with screenshot animations:allow. Prior initial helper used animations:disabled and prematurely finished transition; its raw result retained separately, no natural duration claim. No source change."
+}

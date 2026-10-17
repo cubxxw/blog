@@ -1,0 +1,29 @@
+{
+  "head": "272221722b3e7a86b2d1e8e016dc887098c709d5",
+  "url": "https://6ad31fa9228d7d7a6a35fa41--cubxxw.netlify.app/zh/projects/",
+  "method": "1440x900 fresh query reset; native1page wheel; native coordinate click on same Hugo item; toolbar Back",
+  "before": {
+    "center": [
+      617.4999237060547,
+      385.6299591064453
+    ],
+    "scrollTop": 0
+  },
+  "clicked": {
+    "center": [
+      617.4999237060547,
+      398.58338928222656
+    ],
+    "hit": true,
+    "scrollTop": 900,
+    "title": "Hugo 的高级教程",
+    "visibleHeight": 154.80075073242188
+  },
+  "afterReturn": {
+    "bodyScrollTop": 0,
+    "filter": "true",
+    "query": "Go",
+    "scrollTop": 900
+  },
+  "comparison": "Earlier locator.click path changed900→916; same native-coordinate path preserved900. No injected event listener, JS click, or scrollTop write."
+}

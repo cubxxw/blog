@@ -1,0 +1,321 @@
+{
+  "head": "9c1f56390039085746e02c0f730ceafd91895e62",
+  "run": 39022522727,
+  "job": 117366998724,
+  "traceMember": "browser/legacy/results/00-space-onboarding-the-re-d65fd-ed-motion-and-the-workspace-desktop-retry1/trace.zip",
+  "rows": [
+    {
+      "timestamp": 317328.3,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "loading"
+      }
+    },
+    {
+      "timestamp": 326793.892,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "loading",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "false",
+        "data-world-frames": "26"
+      }
+    },
+    {
+      "timestamp": 329439.218,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "loading",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "false",
+        "data-world-frames": "69"
+      }
+    },
+    {
+      "timestamp": 332387.181,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "loading",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "false",
+        "data-world-frames": "71"
+      }
+    },
+    {
+      "timestamp": 333822.837,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "loading",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "false",
+        "data-world-frames": "72"
+      }
+    },
+    {
+      "timestamp": 339489.401,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "76",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 340885.648,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "77",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 343833.535,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "79",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 345324.066,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "80",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 348184.615,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "82",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 349592.876,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "83",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 352385.058,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "85",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 353857.083,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "86",
+        "data-cat-loaded": "true"
+      }
+    },
+    {
+      "timestamp": 356673.685,
+      "explicitOpenDialogs": 0,
+      "attrs": {
+        "data-cafe-mode": "cafe",
+        "data-environment-paused": "false",
+        "data-boot-state": "complete",
+        "data-world-mode": "roam",
+        "data-cat-interaction": "ready",
+        "data-cat-state": "look",
+        "data-cat-pose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+        "data-cat-active": "true",
+        "data-world-frames": "88",
+        "data-cat-loaded": "true"
+      }
+    }
+  ],
+  "testAPIs": [
+    {
+      "callId": "pw:api@39",
+      "start": 316991.755,
+      "end": 317331.294,
+      "title": "Navigate",
+      "lines": [
+        101
+      ],
+      "failed": false
+    },
+    {
+      "callId": "expect@84",
+      "start": 332388.542,
+      "end": 339489.892,
+      "title": "Expect \"toHaveAttribute\"",
+      "lines": [
+        102
+      ],
+      "failed": false
+    },
+    {
+      "callId": "pw:api@85",
+      "start": 339490.951,
+      "end": 343833.98,
+      "title": "Get attribute \"data-cat-pose\"",
+      "lines": [
+        103
+      ],
+      "failed": false
+    },
+    {
+      "callId": "pw:api@87",
+      "start": 343837.518,
+      "end": 348185.005,
+      "title": "Get attribute \"data-cat-pose\"",
+      "lines": [
+        103
+      ],
+      "failed": false
+    },
+    {
+      "callId": "expect@88",
+      "start": 348185.493,
+      "end": 348186.547,
+      "title": "Expect \"not toBe\"",
+      "lines": [
+        104
+      ],
+      "failed": true
+    },
+    {
+      "callId": "pw:api@89",
+      "start": 348287.796,
+      "end": 352385.466,
+      "title": "Get attribute \"data-cat-pose\"",
+      "lines": [
+        103
+      ],
+      "failed": false
+    },
+    {
+      "callId": "expect@90",
+      "start": 352385.821,
+      "end": 352386.104,
+      "title": "Expect \"not toBe\"",
+      "lines": [
+        104
+      ],
+      "failed": true
+    },
+    {
+      "callId": "expect@86",
+      "start": 343834.836,
+      "end": 355835.728,
+      "title": "Expect \"poll not toBe\"",
+      "lines": [
+        104
+      ],
+      "failed": true
+    },
+    {
+      "callId": "pw:api@91",
+      "start": 352636.442,
+      "end": 356674.037,
+      "title": "Get attribute \"data-cat-pose\"",
+      "lines": [
+        103
+      ],
+      "failed": false
+    }
+  ],
+  "sampledLoadedSpan": {
+    "seconds": 17.184283999999984,
+    "framesAdvanced": 12,
+    "meanPaintHz": 0.6983124813346899,
+    "maxSimulatedSecondsFromOriginalCap": 0.48,
+    "originalInitialLookSeconds": 3
+  },
+  "limits": "Snapshot rows are observations, not per-rAF timestamps or exact maximum frame intervals. Open-dialog count only counts explicitly serialized nodes; active=true is the stronger source-bound gating evidence. No new runtime instrumentation or browser rerun."
+}

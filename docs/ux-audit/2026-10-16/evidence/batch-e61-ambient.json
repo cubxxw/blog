@@ -1,0 +1,41 @@
+{
+  "source": "batch-e61-source.json",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "zh",
+  "theme": "light",
+  "kind": "Real Chromium Metal WebGL modules, not stubbed; viewport CSSpx, simulated media changes",
+  "firstHeroAfterTrustedIntentAnd3s": {
+    "rendererRequests": 0
+  },
+  "afterBearVisible": {
+    "requests": [
+      "http://127.0.0.1:1317/js/three/hero-field.2393a380124ae7c58829c6c24cfa7642f529cb76ea85e56126f916d1b090aa00.js",
+      "http://127.0.0.1:1317/js/three/bear-orb.f67f7bbab2b75d407b72c70b149dd9829bb61a87c1dddc0f41e35701ac27c0a0.js"
+    ],
+    "canvases": [
+      {
+        "width": 420,
+        "height": 420,
+        "display": {
+          "width": 420,
+          "height": 420
+        }
+      },
+      {
+        "width": 420,
+        "height": 420,
+        "display": {
+          "width": 420,
+          "height": 420
+        }
+      }
+    ]
+  },
+  "runtimeReduce": "disposed both canvases",
+  "runtimeRestore": "mounted both again then disposed on final reduce",
+  "pageErrors": [],
+  "limits": "Canvas existence/dimensions and actual screenshot are not a frame-rate/INP/physical-device benchmark; posts-neutral is a separately aligned real action after pointer reset."
+}

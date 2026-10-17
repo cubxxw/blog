@@ -1,0 +1,376 @@
+{
+  "observations": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844,
+        "locale": "zh",
+        "batch": "batch-d4b"
+      },
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "source": "batch-d4b-source.json",
+      "reducedMotion": "reduce",
+      "boxes": [
+        {
+          "class": "tw-book-ai__card",
+          "text": "问 AI · 关于这本书越南熊鑫伟 · 自著这本游记里，越南给作者留下最深的一个瞬间是什么？两个月慢走越南，和打卡式旅游最大的不同在哪？如果我只有一周时间去越南，作者会建议怎么走？",
+          "x": 16,
+          "y": 220.09375,
+          "w": 288,
+          "h": 403.796875,
+          "bottom": 623.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__x",
+          "text": "",
+          "x": 247,
+          "y": 233.09375,
+          "w": 44,
+          "h": 44,
+          "bottom": 277.09375,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__head",
+          "text": "问 AI · 关于这本书越南熊鑫伟 · 自著",
+          "x": 41,
+          "y": 247.09375,
+          "w": 238,
+          "h": 72.796875,
+          "bottom": 319.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "这本游记里，越南给作者留下最深的一个瞬间是什么？",
+          "x": 41,
+          "y": 345.890625,
+          "w": 238,
+          "h": 61,
+          "bottom": 406.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "两个月慢走越南，和打卡式旅游最大的不同在哪？",
+          "x": 41,
+          "y": 413.890625,
+          "w": 238,
+          "h": 61,
+          "bottom": 474.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "如果我只有一周时间去越南，作者会建议怎么走？",
+          "x": 41,
+          "y": 483.890625,
+          "w": 238,
+          "h": 61,
+          "bottom": 544.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__composer",
+          "text": "",
+          "x": 41,
+          "y": 558.890625,
+          "w": 238,
+          "h": 44,
+          "bottom": 602.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__send",
+          "text": "",
+          "x": 235,
+          "y": 558.890625,
+          "w": 44,
+          "h": 44,
+          "bottom": 602.890625,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "locale": "zh",
+        "batch": "batch-d4b"
+      },
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "source": "batch-d4b-source.json",
+      "reducedMotion": "reduce",
+      "boxes": [
+        {
+          "class": "tw-book-ai__card",
+          "text": "问 AI · 关于这本书越南熊鑫伟 · 自著这本游记里，越南给作者留下最深的一个瞬间是什么？两个月慢走越南，和打卡式旅游最大的不同在哪？如果我只有一周时间去越南，作者会建议怎么走？",
+          "x": 16,
+          "y": 220.09375,
+          "w": 358,
+          "h": 403.796875,
+          "bottom": 623.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__x",
+          "text": "",
+          "x": 317,
+          "y": 233.09375,
+          "w": 44,
+          "h": 44,
+          "bottom": 277.09375,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__head",
+          "text": "问 AI · 关于这本书越南熊鑫伟 · 自著",
+          "x": 41,
+          "y": 247.09375,
+          "w": 308,
+          "h": 72.796875,
+          "bottom": 319.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "这本游记里，越南给作者留下最深的一个瞬间是什么？",
+          "x": 41,
+          "y": 345.890625,
+          "w": 308,
+          "h": 61,
+          "bottom": 406.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "两个月慢走越南，和打卡式旅游最大的不同在哪？",
+          "x": 41,
+          "y": 413.890625,
+          "w": 308,
+          "h": 61,
+          "bottom": 474.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "如果我只有一周时间去越南，作者会建议怎么走？",
+          "x": 41,
+          "y": 483.890625,
+          "w": 308,
+          "h": 61,
+          "bottom": 544.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__composer",
+          "text": "",
+          "x": 41,
+          "y": 558.890625,
+          "w": 308,
+          "h": 44,
+          "bottom": 602.890625,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__send",
+          "text": "",
+          "x": 305,
+          "y": 558.890625,
+          "w": 44,
+          "h": 44,
+          "bottom": 602.890625,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320,
+        "locale": "zh",
+        "batch": "batch-d4b"
+      },
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "source": "batch-d4b-source.json",
+      "reducedMotion": "reduce",
+      "boxes": [
+        {
+          "class": "tw-book-ai__card",
+          "text": "问 AI · 关于这本书越南熊鑫伟 · 自著这本游记里，越南给作者留下最深的一个瞬间是什么？两个月慢走越南，和打卡式旅游最大的不同在哪？如果我只有一周时间去越南，作者会建议怎么走？",
+          "x": 16,
+          "y": 16,
+          "w": 536,
+          "h": 288,
+          "bottom": 304,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__x",
+          "text": "",
+          "x": 495,
+          "y": 29,
+          "w": 44,
+          "h": 44,
+          "bottom": 73,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__head",
+          "text": "问 AI · 关于这本书越南熊鑫伟 · 自著",
+          "x": 41,
+          "y": 33,
+          "w": 486,
+          "h": 68.796875,
+          "bottom": 101.796875,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "这本游记里，越南给作者留下最深的一个瞬间是什么？",
+          "x": 41,
+          "y": 121.796875,
+          "w": 486,
+          "h": 44,
+          "bottom": 165.796875,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "两个月慢走越南，和打卡式旅游最大的不同在哪？",
+          "x": 41,
+          "y": 172.796875,
+          "w": 486,
+          "h": 44,
+          "bottom": 216.796875,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "如果我只有一周时间去越南，作者会建议怎么走？",
+          "x": 41,
+          "y": 225.796875,
+          "w": 486,
+          "h": 44,
+          "bottom": 269.796875,
+          "hit": false
+        },
+        {
+          "class": "tw-book-ai__composer",
+          "text": "",
+          "x": 41,
+          "y": 243,
+          "w": 486,
+          "h": 44,
+          "bottom": 287,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__send",
+          "text": "",
+          "x": 483,
+          "y": 243,
+          "w": 44,
+          "h": 44,
+          "bottom": 287,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320,
+        "locale": "en",
+        "batch": "batch-d4b"
+      },
+      "route": "http://127.0.0.1:1317/travel/",
+      "source": "batch-d4b-source.json",
+      "reducedMotion": "reduce",
+      "boxes": [
+        {
+          "class": "tw-book-ai__card",
+          "text": "Ask AI · about this bookVietnamXinwei Xiong · self-writtenWhat single moment in Vietnam left the deepest mark on the author?How does two months of slow travel differ from checklist tourism?If I only had a week in Vietnam, what would the author suggest?",
+          "x": 16,
+          "y": 16,
+          "w": 536,
+          "h": 288,
+          "bottom": 304,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__x",
+          "text": "",
+          "x": 495,
+          "y": 29,
+          "w": 44,
+          "h": 44,
+          "bottom": 73,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__head",
+          "text": "Ask AI · about this bookVietnamXinwei Xiong · self-written",
+          "x": 41,
+          "y": 33,
+          "w": 486,
+          "h": 68.796875,
+          "bottom": 101.796875,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "What single moment in Vietnam left the deepest mark on the author?",
+          "x": 41,
+          "y": 121.796875,
+          "w": 486,
+          "h": 44,
+          "bottom": 165.796875,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "How does two months of slow travel differ from checklist tourism?",
+          "x": 41,
+          "y": 172.796875,
+          "w": 486,
+          "h": 44,
+          "bottom": 216.796875,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__chip",
+          "text": "If I only had a week in Vietnam, what would the author suggest?",
+          "x": 41,
+          "y": 225.796875,
+          "w": 486,
+          "h": 44,
+          "bottom": 269.796875,
+          "hit": false
+        },
+        {
+          "class": "tw-book-ai__composer",
+          "text": "",
+          "x": 41,
+          "y": 243,
+          "w": 486,
+          "h": 44,
+          "bottom": 287,
+          "hit": true
+        },
+        {
+          "class": "tw-book-ai__send",
+          "text": "",
+          "x": 483,
+          "y": 243,
+          "w": 44,
+          "h": 44,
+          "bottom": 287,
+          "hit": true
+        }
+      ]
+    }
+  ]
+}

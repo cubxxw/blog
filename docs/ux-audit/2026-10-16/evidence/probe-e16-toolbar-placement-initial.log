@@ -1,0 +1,62 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#article-fab')[22m
+[2m    - locator resolved to <button aria-label="目录" id="article-fab" aria-expanded="false" aria-controls="article-bottom-sheet" class="article-fab article-fab--hidden">…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <h1 class="post-title post-title--long">拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问</h1> from <div class="article-layout">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <h1 class="post-title post-title--long">拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问</h1> from <div class="article-layout">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    58 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <h1 class="post-title post-title--long">拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问</h1> from <div class="article-layout">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/probe-e16-toolbar-placement.browser.mjs:6:211 {
+  log: [
+    "  - waiting for locator('#article-fab')",
+    '    - locator resolved to <button aria-label="目录" id="article-fab" aria-expanded="false" aria-controls="article-bottom-sheet" class="article-fab article-fab--hidden">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <h1 class="post-title post-title--long">拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问</h1> from <div class="article-layout">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <h1 class="post-title post-title--long">拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问</h1> from <div class="article-layout">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    58 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <h1 class="post-title post-title--long">拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问</h1> from <div class="article-layout">…</div> subtree intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.2

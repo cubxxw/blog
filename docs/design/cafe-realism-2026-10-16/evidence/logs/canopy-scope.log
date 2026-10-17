@@ -1,0 +1,24 @@
+PASS world reverse-scope: only maple branch geometry, shared moss microtexture and zen/garden moss pose change
+PASS outer RNG, 64,990 leaf counts, texture normals/sizes/shades algorithm unchanged; local crown fork and moss pose intentionally change
+PASS assets/js/space/world-details.js unchanged from candidate 5
+PASS assets/js/space/world-details.mjs unchanged from candidate 5
+PASS assets/js/space/cafe.js unchanged from candidate 5
+PASS layouts/partials/space/cafe.html unchanged from candidate 5
+PASS assets/css/space-cafe.css unchanged from candidate 5
+PASS scripts/space-cafe-details.test.mjs unchanged from candidate 5
+PASS tests/e2e/space-cafe-details-contracts.spec.ts unchanged from candidate 5
+PASS assets/js/space/world-cat.js unchanged from accepted HEAD
+PASS assets/js/space/world-state.mjs unchanged from accepted HEAD
+PASS assets/js/space/desktop.js unchanged from accepted HEAD
+PASS assets/js/space/apps.js unchanged from accepted HEAD
+PASS data/travel.yml unchanged from accepted HEAD
+SHA256 7f1da1a2b2f8efb2c49dffd2fe6a0af18292fd41706005c099c4c8883a664a63 assets/js/space/world-cafe.js
+SHA256 9ad8469a349649dbd24f47d7528cc6feb9bbf45f86b5b0ca2e55fd8f285f03f9 assets/js/space/world-garden.mjs
+SHA256 cb8639c12a3ed8de9c0d822f023eab0e35064ad80b43a2865d61e11e5701b166 scripts/space-world-garden.test.mjs
+SHA256 efb6d4622ca5bc920da7e5b665efa205b4592f31d95d8c4c942f06903b333d43 assets/js/space/world-details.js
+SHA256 79473344e575ff108ef38fcd0e857469111336f6ad63f9fea885b92443653982 assets/js/space/world-details.mjs
+SHA256 b495f569df6d4947c90f101e33dc69c98bce7ef3095e7cb7d2cddb7100d29d62 assets/js/space/cafe.js
+SHA256 230a2833ae04644f6d264925cd67258d472cf13dd9e549cdb5de8e990a11af43 layouts/partials/space/cafe.html
+SHA256 afa3cfbecd76d1a383740cf152c567e6bcd8b3295640e77c79fbc8ec28f153d2 assets/css/space-cafe.css
+SHA256 17660412d37a0e280698efd2fb6d075cd3f15ac872726b4ba9cf08412c6141b5 scripts/space-cafe-details.test.mjs
+SHA256 fd5cda6f7368ef3fec85b09b0d63dda197438af04a3f0e67c45019d1a471711f tests/e2e/space-cafe-details-contracts.spec.ts

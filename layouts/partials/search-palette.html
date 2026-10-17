@@ -13,7 +13,6 @@
   <div class="search-palette__panel">
     <div class="search-palette__header">
       <div>
-        <p class="search-palette__eyebrow">{{ if $isZh }}The Quiet Collector / 静默收藏者{{ else }}The Quiet Collector / Global Repository{{ end }}</p>
         <h2 id="search-palette-title">{{ if $isZh }}搜索文章、笔记与关键词{{ else }}Search articles, notes, and keywords{{ end }}</h2>
       </div>
       <button type="button" class="search-palette__close" aria-label="{{ $closeLabel }}">
@@ -62,6 +61,7 @@
           <span class="search-palette__ai-icon" aria-hidden="true">✦</span>
           <span>{{ if $isZh }}AI 回答{{ else }}AI answer{{ end }}</span>
         </div>
+        <button type="button" class="search-palette__ai-stop" id="search-ai-stop" hidden>{{ if $isZh }}停止生成{{ else }}Stop generating{{ end }}</button>
         <button type="button" class="search-palette__ai-close" id="search-ai-close"
                 aria-label="{{ if $isZh }}关闭 AI 回答{{ else }}Close AI answer{{ end }}">&times;</button>
       </div>
@@ -89,7 +89,7 @@
     {{- end }}
 
     <div class="search-palette__meta">
-      <span id="search-result-summary" aria-live="polite" aria-atomic="true">
+      <span id="search-result-summary" aria-live="polite" aria-atomic="true" hidden>
         {{ if $isZh }}找到 <span id="search-result-count">0</span> 条结果{{ else }}Found <span id="search-result-count">0</span> results{{ end }}
       </span>
       <a class="search-palette__full-link" id="search-full-link" href="{{ "search/" | absLangURL }}">
@@ -101,5 +101,6 @@
     <p class="search-palette__empty" id="search-empty" role="status" hidden>
       {{ if $isZh }}没有找到匹配结果{{ else }}No matching results{{ end }}
     </p>
+    <button type="button" class="search-palette__index-retry" id="search-index-retry" hidden>{{ if $isZh }}重试搜索{{ else }}Retry search{{ end }}</button>
   </div>
 </div>

@@ -61,7 +61,7 @@ for (const width of [390, 1280]) {
       await route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: '这是结合文章上下文的解释。' }) });
     });
     await page.setViewportSize({ width, height: 844 }); await page.goto(article);
-    const prefix = width < 1200 ? 'abs' : 'rc', panel = page.locator('.' + prefix + '-ai-panel');
+    const prefix = 'rc', panel = page.locator('[data-article-chat]');
     if (width >= 1200) { await page.locator('#rc-tab-ai').click(); await panel.locator('textarea').fill('尚未发送的问题'); }
     await select(page); const y = await page.evaluate(() => scrollY);
     await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
@@ -202,8 +202,9 @@ test('failed AI retry avoids duplicate question and poisoned history', async ({ 
   });
   await page.goto(article); await select(page);
   await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  const prefix = await page.evaluate(() => innerWidth < 1200 ? 'abs' : 'rc');
-  const panel = page.locator('.' + prefix + '-ai-panel'); await panel.getByRole('button', { name: '重试', exact: true }).click();
+  const prefix = 'rc', panel = page.locator('[data-article-chat]');
+  await expect(panel).toHaveCount(1); await expect(panel).toBeVisible();
+  await panel.getByRole('button', { name: '重试', exact: true }).click();
   await expect(panel.locator('.' + prefix + '-ai-answer-body')).toHaveText('回复完整。'); await expect(panel.locator('.' + prefix + '-ai-msg--user')).toHaveCount(1);
   expect(requests[1].context).toEqual([]);
 });

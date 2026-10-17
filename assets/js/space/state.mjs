@@ -9,6 +9,32 @@ export function fitRect(rect = {}, viewport = {}) {
   const height = clamp(finite(rect.height, 470), Math.min(260, availableHeight), availableHeight);
   return { x: clamp(finite(rect.x, 150), 0, availableWidth - width), y: clamp(finite(rect.y, 70), 0, availableHeight - height), width, height };
 }
+// Plan against the real desktop, before fitRect can enlarge undersized cells.
+// The 100px lower chrome reserve matches fitRect's usable workspace height.
+export function planWindowArrangement(state, viewport = {}) {
+  // Focus changes z-order, not the visitor's spatial arrangement. Sort only
+  // this copy so arranging again cannot shuffle windows after editing one.
+  const visible = state.windows.filter(win => !win.minimized).sort((a,b) =>
+    a.rect.y - b.rect.y || a.rect.x - b.rect.x || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  const width = finite(viewport.width, 1280), height = finite(viewport.height, 800);
+  if (!visible.length || width <= 640) return { mode: 'overview', rectangles: [] };
+  const preferred = Math.min(2, visible.length);
+  const candidates = [...new Set([preferred, ...visible.map((_, i) => i + 1)])];
+  for (const columns of candidates) {
+    const rows = Math.ceil(visible.length / columns);
+    const cellWidth = (width - 16 - (columns - 1) * 4) / columns;
+    const cellHeight = (height - 100 - 20 - (rows - 1) * 4) / rows;
+    if (cellWidth < 320 || cellHeight < 260) continue;
+    return {
+      mode: 'tile',
+      rectangles: visible.map((win, i) => ({
+        id: win.id,
+        rect: { x: 8 + (i % columns) * (cellWidth + 4), y: 12 + Math.floor(i / columns) * (cellHeight + 4), width: cellWidth, height: cellHeight },
+      })),
+    };
+  }
+  return { mode: 'overview', rectangles: [] };
+}
 function seed() {
   return { version: 1, windows: [], active: null, note: '', draft: '', favorites: [], theme: 'light', wallpaper: 'dawn', initialized: false };
 }
@@ -63,13 +89,11 @@ export function reduceWorkspace(state, action, viewport) {
     w.rect = fitRect(action.rect, viewport);
     w.maximized = false;
   } else if (action.type === 'arrange') {
-    const visible = next.windows.filter(win => !win.minimized);
-    const columns = visible.length <= 2 ? visible.length : 2;
-    const rows = Math.ceil(visible.length / Math.max(1, columns));
-    visible.forEach((win, i) => {
-      const width = (viewport.width - 24) / Math.max(1, columns);
-      const height = (viewport.height - 128) / Math.max(1, rows);
-      win.rect = fitRect({ x: 8 + (i % columns) * (width + 4), y: 12 + Math.floor(i / columns) * (height + 4), width, height }, viewport);
+    const plan = planWindowArrangement(state, viewport);
+    if (plan.mode !== 'tile') return state;
+    plan.rectangles.forEach(({ id, rect }) => {
+      const win = next.windows.find(win => win.id === id);
+      win.rect = rect;
       win.maximized = false;
     });
   } else if (action.type === 'viewport') {

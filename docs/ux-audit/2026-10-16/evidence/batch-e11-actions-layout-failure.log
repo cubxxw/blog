@@ -1,0 +1,20 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'top'
+- 'search-index-retry'
+
+    at file://<SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/batch-e11-actions.browser.mjs:44:449 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'top',
+  expected: 'search-index-retry',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

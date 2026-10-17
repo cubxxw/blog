@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-15T20:09:37.409195+00:00",
+  "base": "39a7bd07c09d495b1085d1e7db233d5183b9e63d",
+  "batch": "E9c",
+  "files": {
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "tests/e2e/space-wallpaper-contracts.spec.ts": "92ae6907bf9c5375cf0445f66f418ab579d205ebc236bcda498f180c2f4372a8"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "a6b4673639ad7591dcdc7f16daaf432009dfc117eec2f3779283f5cd8f832822",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "preserved": "Only spatial-screen background: existing six classic colors; no window paper/chrome/world/model/JS delta"
+}

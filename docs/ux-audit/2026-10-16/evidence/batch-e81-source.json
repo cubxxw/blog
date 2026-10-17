@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-15T19:09:05.674309+00:00",
+  "base": "aff16e05b32229baab2da82298e2f14990f955df",
+  "batch": "E8.1",
+  "files": {
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+    "assets/css/space.css": "92c22c9acf248d200c4a29648589d0d28b8101f7cf626bfe740d6067c0c257c3",
+    "scripts/bear-workspace-state.test.mjs": "ac633dc33fad2d426c77ea47877478b558745b7c16b0d126bdb73342684fa52f",
+    "tests/e2e/space-arrangement-contracts.spec.ts": "cb38f8b9dd77133029c0c99bc026ff8ef99d60a6aafbdf12d005acc32b806648"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "28ffa8b8c8091af5f06f2ae13af8b1a8eb7a4621fc09356e0c3c418fee3dd879",
+    "defaultViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "workers": 1,
+    "browser": "Chromium Metal"
+  }
+}

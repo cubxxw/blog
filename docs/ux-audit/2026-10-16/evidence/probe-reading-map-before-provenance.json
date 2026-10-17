@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-16T02:34:05.406447+00:00",
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-reading-map-before.browser.mjs": "25b244259dbd2fbc49cf2e4278ecf44b64c6e11a1561fb8f24a2e8e62f12ecd6",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before.json": "660e2dead75ccc7eb5d14c8533e6f22d598d75de7102ccfad06b04342421019f",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-320-zh-normal.png": "9ed9ece0395f3a5cb2e86d527a17e934ea15b5ba4061109c4ab2f1f36c4170d9",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-390-en-focus.png": "5e2b0631936d1335ad694822d6e6d1635b488b0413799f792554f6693e82b662",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-1440-en-focus.png": "3f73de8947638db1dd6ec85bfe6c56deba73ac5c424bf36945fe2a3e7ca4adaf",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-320-zh-focus.png": "5aacd7cfc480c8b54978bb201aba8bd6caa1e1d9c52179f1861dea5626e30799",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-1440-en-normal.png": "53c216b18ff20aae1f6835f58dcbf4c9f61b4276d72dbc1adead2e9fb97e53cc",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-390-en-hover.png": "89801aae116ec8d2ab331e7a4d1b0624fcd51eb3d61025a460dbe7c7713e9a71",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-390-en-normal.png": "55b0caddd4e7170fcbf430c9a8aac5cea57e0dad79c825b3f255a0956118c067",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-320-zh-hover.png": "e90b8282fe4c94b89472f21b59c700f445fa77cebe09947edd4560f859c46d11",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before-1440-en-hover.png": "225290b047c88ee90f0ce97ee2225027fe63a8bc2dea7a9734b890177efb8162",
+    "docs/ux-audit/2026-10-16/evidence/probe-reading-map-before.log": "d7b3c81abce1c058339090d62abef49642ea6babc6e6a8939d6351236da6fbb0"
+  },
+  "sourceGitBase": "4ffc2c0b38f3e13194ee1ff565bc96364166034b",
+  "sources": {
+    "assets/css/space-profile.css": "8989a78db83d72540115d04eae012e6cc721660389093263cbd914ffdef28c7f",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "layouts/partials/space/profile.html": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205",
+    "layouts/shortcodes/start-here.html": "4173d0103f94f820ab0f76bf76233d0c6c6cfa81eb77f4511dba8bea4df9ed8a",
+    "layouts/partials/space/desktop.html": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21"
+  },
+  "actual": "3completecontexts9PNG allparentread; currentinline20px sameweightspans, wholehoverunderline, nativefocusoutline repeatsperline; nativeEnter+click trustedlocaloriginalhref intentpreventDefault, originalNotes DOM/value/backwardcaret preserved. Notpresetfunctionalbug; layout improvement proposal supported by visible hierarchy.",
+  "limits": "Current before-design observation, not preset productfailure. Named3Chromium viewport/theme seeds readback/native localTab and trusted link intent prevented. No realnavigation/AT/physical/Safari/wholepageTab/model/fullscore."
+}

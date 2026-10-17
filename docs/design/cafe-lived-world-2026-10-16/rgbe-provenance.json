@@ -1,0 +1,8 @@
+{
+  "file": "assets/js/vendor/RGBELoader.js",
+  "source": "https://raw.githubusercontent.com/mrdoob/three.js/r160/examples/jsm/loaders/RGBELoader.js",
+  "version": "r160",
+  "license": "MIT; existing assets/js/vendor/three-LICENSE.txt",
+  "bytes": 11377,
+  "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4"
+}

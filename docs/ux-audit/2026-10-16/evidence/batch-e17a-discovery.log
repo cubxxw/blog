@@ -1,0 +1,9 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'playwright' test --config=docs/ux-audit/2026-10-16/space-media-qa.config.mjs --list
+Listing tests:
+  space-media-legibility-contracts.spec.ts:48:7 › 1440px zh image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success
+  space-media-legibility-contracts.spec.ts:48:7 › 390px en image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success
+  space-media-legibility-contracts.spec.ts:67:5 › completed 404 retry and detached events cannot overwrite another reopened photo; synthetic complete/error is a separate branch
+  space-media-legibility-contracts.spec.ts:91:7 › phone native photo navigation › Next Enter then ArrowRight and Escape retain the existing window keyboard route and Notes node
+  space-media-legibility-contracts.spec.ts:99:5 › the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work
+Total: 5 tests in 1 file

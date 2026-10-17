@@ -1,0 +1,32 @@
+{
+  "sources": {
+    "assets/js/space/world-cafe.js": "c6388bc5aa09c98c94ae9b17f27beb18e5f0c37ce990476d4048e578249eb95b",
+    "assets/js/space/cafe.js": "dbde12314836e989ebc40d6d7c051fa3d08f39b860ce8a6197d3f885fe5a503d",
+    "assets/js/space/onboarding.js": "d717c1243b89e00678a470b5d0261d618dbe539a405e353b8aea14387923b940",
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "layouts/partials/space/cafe.html": "6375fae1136e99d37f6568c11bb79d6949ba02042e8b96f066b4c535a834abc8"
+  },
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer.json": "4f8cdd83d7f8fccc53e70d651820c24bbbf297ef0ba3e138f6b960c0a4e59f0f",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-commands.json": "048f8e15c49d40f6e9a821c29027373ebdd44842fc62cb8f62429424f5c5bbc8",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer.log": "42f417bbc7f65997f1da6417755016298863e17f870f490bedd3df5c733cba84",
+    "docs/ux-audit/2026-10-16/probe-space-computer.browser.mjs": "a31c5fd5ceac5f5397183e9184ce9b1d0e8f8ec445b9b4bf3706976f15e91572"
+  },
+  "images": {
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-initial.png": "9c5ceed51223e21e5ee0ca9db103895a946574b91d7b6a8a50d3bbd2f3e4e5aa",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-screen-hover.png": "9c5ceed51223e21e5ee0ca9db103895a946574b91d7b6a8a50d3bbd2f3e4e5aa",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-clicked-screen.png": "b861eca3745fe715ae2d0af84da08577b45fd78c137da3ac67d4d22f0813640f",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-reader-open.png": "4d8ec7f5224d00fc75a97186786d668ee51c5125b34a798e2d2112b40ab615d6",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-article-loaded.png": "9368827109daebd1f26aa672d5052dd658d005ef1da5ad66911afafe72f5c3b5",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-returned-cafe.png": "621c235992e0a691b75d0466081aff8b3bb021179fbdbee503671aef9ff14d5c",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-screen-drag-does-not-enter.png": "bdf17583384d816a540aacb2785af5403bd2cdfb5235abae991f26064a6006ba"
+  },
+  "parentReadAll7PNG": true,
+  "scope": "one1440zh/reduce actual point1180,325 hits screen; realDock→firstarticle→return;50px drag changespose withoutentry. No production change.",
+  "verdict": "named action chain passes; does not certify fullfamily,normalmotion,otheroccluders,pointerthresholdedge,keyboard/fullmatrix",
+  "derivedChecks": "Parent asserts on unchanged rawstates afterrunnerexit, separate from runner-generated JSON.",
+  "visibleButtonsFieldLimit": "Raw visibleButtons filter tests layout/hidden/inert/CSSvisibility only; does not check clipping/viewport/occlusion. It is layout-present entries, not a census of visually available buttons.",
+  "rootScore": null
+}

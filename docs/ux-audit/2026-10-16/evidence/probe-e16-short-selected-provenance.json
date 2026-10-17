@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-16T00:21:59.993478+00:00",
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-e16-short-selected.browser.mjs": "62703026ddc61af68e4e075cd59c70653e5bdeca808a382cbf3814e671e17c11",
+    "docs/ux-audit/2026-10-16/probe-e16-short-selected-settled.browser.mjs": "3a7bf3bddc6801692fcadf4424a614ab126a519ff9768ca89813706582b31cdc",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected.png": "b902f4851ce74633712993587bd12908f6a56a5c595043d4821978897d105b56",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected-settled.log": "fd498ac8be4a0aa74371f48701f182f94db9d33224bd945f604cb5881458a2b1",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected.json": "bbc7713208ae1d87351c1d2b590e336bc601ccc8dc8a4973855acc550322b04c",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected-settled.png": "397c022ad54d9a249a5d50f7949b5031eb31b2ea4ef1ff47e6fc463e23cb32ea",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected-settled.json": "09db686be637d31a85dba2a8a14714e51c28b5b48333228563c5c1c2b4b58e76",
+    "docs/ux-audit/2026-10-16/evidence/probe-e16-short-selected.log": "fd498ac8be4a0aa74371f48701f182f94db9d33224bd945f604cb5881458a2b1"
+  },
+  "sources": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "5f8f8b81690cd0665b1f848024ce7c94d24d8069080916710c96a69b206fce14",
+    "assets/css/extended/article-bottom-sheet.css": "526c39c57662025613d428841012e4627eb6ae4a83125eb1cb7b166be5a4028e",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d"
+  },
+  "parentReadInitialAndSettledPNG": true,
+  "observed": "One actual568x320 zh dark reduce selectedpublicparagraph\u2192toolbar\u2192controlledreply. Both initial and explicitly sheettransform0/opacity1/no roottransition+2RAF selectedstate input y344.64..404.23 and Send y360.23..404.23 outside320viewport/no centerhit. Referencepart y302.53..323.64 partly outside. Message80pxminimum, layoutoverflows. Initial screenshot transitional paint kept; settled image separately viewed, no transition misclassification for geometry. No E16 source changed.",
+  "limits": "One shortemulatedcontext; OSkeyboard/AT/physical/fullmatrix/continuouspaint unknown; quote selected DOMRange thenrealtoolbar. Source diagnosis and fix pending independent review.",
+  "additionalBaseline3CSS": {
+    "assets/css/extended/editorial-tools.css": "5f8f8b81690cd0665b1f848024ce7c94d24d8069080916710c96a69b206fce14",
+    "assets/css/extended/article-selection.css": "2ce1e0daf8f5eaa261f1697a4be0abaf8c6155222861e54e40bd7f49a3eaae22",
+    "assets/css/extended/article-bottom-sheet.css": "526c39c57662025613d428841012e4627eb6ae4a83125eb1cb7b166be5a4028e"
+  },
+  "additionalBaselineMethod": "Parent read-only annotation before independent E16 diagnosis: all3 CSS currentbytes equal immutable d5b Git blobs, including article-selection not in E13 source manifest; raw two probe receipts unchanged."
+}

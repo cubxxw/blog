@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-15T19:03:18.094623+00:00",
+  "base": "aff16e05b32229baab2da82298e2f14990f955df",
+  "batch": "E8",
+  "files": {
+    "assets/js/space/state.mjs": "230f1ef3b7bc4c44af4d69af24e06cc4d1258a2d62c1c193bde30fb4adc828a1",
+    "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+    "scripts/bear-workspace-state.test.mjs": "734b710608169434ecc5045c634b282621908b79ebf51bd39e2b7b919129c2a2",
+    "tests/e2e/space-arrangement-contracts.spec.ts": "5cc4899dd92b445f7f5e88529722d6532fec3cad7e487f045cea6ff482dd2e24"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "28ffa8b8c8091af5f06f2ae13af8b1a8eb7a4621fc09356e0c3c418fee3dd879",
+    "defaultViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "workers": 1,
+    "browser": "Chromium Metal"
+  }
+}

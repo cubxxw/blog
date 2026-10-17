@@ -1,0 +1,380 @@
+{
+  "checks": [
+    {
+      "id": "SPACE.notes-minimize-restores-same-DOM",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d2b-source.json",
+      "passed": true
+    },
+    {
+      "id": "SPACE.maximize-restore",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d2b-source.json",
+      "passed": true
+    },
+    {
+      "id": "SPACE.notes-close-reopen-persists-text",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d2b-source.json",
+      "passed": true
+    },
+    {
+      "id": "SPACE.notes-minimize-restores-same-DOM",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d2b-source.json",
+      "passed": true
+    },
+    {
+      "id": "SPACE.maximize-restore",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d2b-source.json",
+      "passed": true
+    },
+    {
+      "id": "SPACE.notes-close-reopen-persists-text",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d2b-source.json",
+      "passed": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "SPACE.window-targets",
+      "width": 1440,
+      "rects": [
+        {
+          "action": "close",
+          "x": 280.4796447753906,
+          "y": 148.64976501464844,
+          "w": 22.96002197265625,
+          "h": 22.96002197265625,
+          "hit": true
+        },
+        {
+          "action": "minimize",
+          "x": 303.4396667480469,
+          "y": 148.64976501464844,
+          "w": 22.96002197265625,
+          "h": 22.96002197265625,
+          "hit": true
+        },
+        {
+          "action": "maximize",
+          "x": 326.3996887207031,
+          "y": 148.64976501464844,
+          "w": 22.96002197265625,
+          "h": 22.96002197265625,
+          "hit": true
+        },
+        {
+          "action": "arrange",
+          "x": 767.56005859375,
+          "y": 148.64976501464844,
+          "w": 22.96002197265625,
+          "h": 22.96002197265625,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "id": "SPACE.map-targets",
+      "width": 1440,
+      "geo": [
+        {
+          "selector": "pin",
+          "label": "西藏高原",
+          "x": 453.97021484375,
+          "y": 405.630126953125,
+          "w": 30.553131103515625,
+          "h": 14.158660888671875,
+          "visible": true,
+          "hit": false
+        },
+        {
+          "selector": "pin",
+          "label": "日本列岛",
+          "x": 658.6309814453125,
+          "y": 381.07427978515625,
+          "w": 30.34405517578125,
+          "h": 14.158660888671875,
+          "visible": true,
+          "hit": false
+        },
+        {
+          "selector": "pin",
+          "label": "东南亚",
+          "x": 502.60882568359375,
+          "y": 451.7745361328125,
+          "w": 26.43896484375,
+          "h": 14.158660888671875,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "zoom",
+          "label": "放大地图",
+          "x": 332.9596862792969,
+          "y": 314.4436340332031,
+          "w": 22.1400146484375,
+          "h": 22.1400146484375,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "zoom",
+          "label": "缩小地图",
+          "x": 358.3797302246094,
+          "y": 314.4436340332031,
+          "w": 22.1400146484375,
+          "h": 22.1400146484375,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "fit",
+          "label": "查看所有区域",
+          "x": 383.79974365234375,
+          "y": 314.4436340332031,
+          "w": 59.0400390625,
+          "h": 22.1400146484375,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "reset",
+          "label": "世界",
+          "x": 446.1197814941406,
+          "y": 314.4436340332031,
+          "w": 26.240020751953125,
+          "h": 22.1400146484375,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "region",
+          "label": "01西藏高原2 张照片",
+          "x": 319.8396911621094,
+          "y": 555.5238037109375,
+          "w": 159.61825561523438,
+          "h": 46.74005126953125,
+          "visible": true,
+          "hit": false
+        },
+        {
+          "selector": "region",
+          "label": "02日本列岛2 张照片",
+          "x": 483.5579528808594,
+          "y": 555.5238037109375,
+          "w": 159.63107299804688,
+          "h": 46.74005126953125,
+          "visible": true,
+          "hit": false
+        },
+        {
+          "selector": "region",
+          "label": "03东南亚4 张照片",
+          "x": 647.2890014648438,
+          "y": 555.5238037109375,
+          "w": 159.63104248046875,
+          "h": 46.74005126953125,
+          "visible": true,
+          "hit": false
+        }
+      ]
+    },
+    {
+      "id": "SPACE.window-targets",
+      "width": 390,
+      "rects": [
+        {
+          "action": "close",
+          "x": 46.57988357543945,
+          "y": 89.6097183227539,
+          "w": 44.280033111572266,
+          "h": 44.28003692626953,
+          "hit": true
+        },
+        {
+          "action": "minimize",
+          "x": 90.85991668701172,
+          "y": 89.6097183227539,
+          "w": 44.28003692626953,
+          "h": 44.28003692626953,
+          "hit": true
+        },
+        {
+          "action": "maximize",
+          "x": 135.13995361328125,
+          "y": 89.6097183227539,
+          "w": 44.280029296875,
+          "h": 44.28003692626953,
+          "hit": true
+        },
+        {
+          "action": "arrange",
+          "x": 299.14007568359375,
+          "y": 89.6097183227539,
+          "w": 44.280029296875,
+          "h": 44.28003692626953,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "id": "SPACE.map-targets",
+      "width": 390,
+      "geo": [
+        {
+          "selector": "pin",
+          "label": "西藏高原",
+          "x": 131.42410278320312,
+          "y": 299.59246826171875,
+          "w": 8.344833374023438,
+          "h": 8.227325439453125,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "pin",
+          "label": "日本列岛",
+          "x": 250.3485870361328,
+          "y": 285.32354736328125,
+          "w": 8.344863891601562,
+          "h": 8.227325439453125,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "pin",
+          "label": "东南亚",
+          "x": 159.6870880126953,
+          "y": 326.4060974121094,
+          "w": 8.3448486328125,
+          "h": 8.22735595703125,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "zoom",
+          "label": "放大地图",
+          "x": 63.799896240234375,
+          "y": 234.33982849121094,
+          "w": 22.1400146484375,
+          "h": 44.28004455566406,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "zoom",
+          "label": "缩小地图",
+          "x": 86.75991821289062,
+          "y": 234.33982849121094,
+          "w": 22.1400146484375,
+          "h": 44.28004455566406,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "fit",
+          "label": "查看所有区域",
+          "x": 109.71993255615234,
+          "y": 234.33982849121094,
+          "w": 57.400047302246094,
+          "h": 44.28004455566406,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "reset",
+          "label": "世界",
+          "x": 167.93997192382812,
+          "y": 234.33982849121094,
+          "w": 24.600021362304688,
+          "h": 44.28004455566406,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "region",
+          "label": "01西藏高原2 张照片",
+          "x": 53.139888763427734,
+          "y": 404.4771423339844,
+          "w": 91.84007263183594,
+          "h": 44.280029296875,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "region",
+          "label": "02日本列岛2 张照片",
+          "x": 149.07997131347656,
+          "y": 404.4771423339844,
+          "w": 91.84005737304688,
+          "h": 44.280029296875,
+          "visible": true,
+          "hit": true
+        },
+        {
+          "selector": "region",
+          "label": "03东南亚4 张照片",
+          "x": 245.02003479003906,
+          "y": 404.4771423339844,
+          "w": 91.84007263183594,
+          "h": 44.280029296875,
+          "visible": true,
+          "hit": true
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "limits": "Exploratory exact-route UX checks. Geometry observations are not automatic target-size passes. No real data/backend mutation."
+}

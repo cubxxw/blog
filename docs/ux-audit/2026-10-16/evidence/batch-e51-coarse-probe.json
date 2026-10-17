@@ -1,0 +1,60 @@
+{
+  "source": "batch-e51-source.json",
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "coarse": true,
+  "windows": [
+    {
+      "action": "close",
+      "w": 26.239837646484375,
+      "h": 26.23984146118164,
+      "hit": true,
+      "top": "<button type=\"button\" data-window-action=\"close\" aria-label=\"关闭窗口\"></button>"
+    },
+    {
+      "action": "minimize",
+      "w": 26.239852905273438,
+      "h": 26.23984146118164,
+      "hit": true,
+      "top": "<button type=\"button\" data-window-action=\"minimize\" aria-label=\"最小化窗口\"></button>"
+    },
+    {
+      "action": "maximize",
+      "w": 26.239837646484375,
+      "h": 26.23984146118164,
+      "hit": true,
+      "top": "<button type=\"button\" data-window-action=\"maximize\" aria-label=\"最大化或恢复窗口\"></button>"
+    },
+    {
+      "action": "arrange",
+      "w": 26.2398681640625,
+      "h": 26.23984146118164,
+      "hit": false,
+      "top": "<button type=\"button\" data-cafe-picker=\"\">换个风景 ↗</button>"
+    }
+  ],
+  "map": [
+    {
+      "label": "放大地图",
+      "w": 26.2398681640625,
+      "h": 26.239852905273438
+    },
+    {
+      "label": "缩小地图",
+      "w": 26.239837646484375,
+      "h": 26.239852905273438
+    },
+    {
+      "label": "查看所有区域",
+      "w": 63.959625244140625,
+      "h": 26.239852905273438
+    },
+    {
+      "label": "世界",
+      "w": 27.87982177734375,
+      "h": 26.239852905273438
+    }
+  ]
+}

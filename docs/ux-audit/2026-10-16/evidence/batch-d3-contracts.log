@@ -1,0 +1,23 @@
+
+Running 14 tests using 1 worker
+
+(node:25910) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/control-contracts.spec.ts:6:5 › article tabs expose one stop and support Arrow, Home and End (544ms)
+  ✓   2 tests/e2e/control-contracts.spec.ts:23:5 › compact tools retain focus around the selected tab and name each panel (435ms)
+  ✓   3 tests/e2e/control-contracts.spec.ts:41:5 › mobile navigation is a dismissible named disclosure (570ms)
+  ✓   4 tests/e2e/control-contracts.spec.ts:55:5 › refused clipboard copy leaves code selected with a truthful recovery (457ms)
+  ✓   5 tests/e2e/control-contracts.spec.ts:69:5 › closed compact tools cannot receive focus before opening or after dismissal (460ms)
+  ✓   6 tests/e2e/control-contracts.spec.ts:80:5 › fullscreen code uses a native modal and restores its expand trigger (600ms)
+  ✓   7 tests/e2e/control-contracts.spec.ts:88:5 › book AI uses a native modal with keyboard containment and a 44px exit (334ms)
+  ✓   8 tests/e2e/ime-contracts.spec.ts:4:5 › book AI keeps the composing draft until a deliberate Enter (341ms)
+  ✓   9 tests/e2e/ime-contracts.spec.ts:14:5 › FAQ AI ignores both composing Enter and Safari keyCode 229 (385ms)
+  ✓  10 tests/e2e/knowledge-filter-contracts.spec.ts:5:7 › knowledge filters match their real collections at 390px (517ms)
+  ✓  11 tests/e2e/knowledge-filter-contracts.spec.ts:5:7 › knowledge filters match their real collections at 1440px (646ms)
+(node:25966) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  12 tests/e2e/control-recovery.spec.ts:7:5 › share link refusal preserves the URL and returns focus after dismissal (723ms)
+  ✓  13 tests/e2e/control-recovery.spec.ts:25:5 › newsletter timeout releases the busy form and preserves the email (363ms)
+  ✓  14 tests/e2e/control-recovery.spec.ts:39:5 › library empty search and empty bookmarks offer a working way back (636ms)
+
+  14 passed (8.3s)

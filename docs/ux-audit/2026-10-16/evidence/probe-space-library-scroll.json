@@ -1,0 +1,2553 @@
+{
+  "at": "2026-10-15T23:44:07.283Z",
+  "sources": {
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/css/space.css": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258"
+  },
+  "view": {
+    "width": 390,
+    "height": 844,
+    "locale": "en",
+    "coarse": true,
+    "motion": "reduce"
+  },
+  "url": "/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+  "steps": [
+    {
+      "name": "before",
+      "readingScroll": {
+        "ancestors": [
+          {
+            "tag": "DIV",
+            "cls": "space-list",
+            "scrollTop": 0,
+            "scrollHeight": 28185,
+            "clientHeight": 28185,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-finder",
+            "scrollTop": 0,
+            "scrollHeight": 28185,
+            "clientHeight": 28185,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-window__body",
+            "scrollTop": 0,
+            "scrollHeight": 28246,
+            "clientHeight": 678,
+            "overflowY": "auto"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "scrollTop": 0,
+            "scrollHeight": 734,
+            "clientHeight": 734,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-window-layer",
+            "scrollTop": 0,
+            "scrollHeight": 842,
+            "clientHeight": 842,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-spatial-screen",
+            "scrollTop": 0,
+            "scrollHeight": 842,
+            "clientHeight": 842,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "DIV",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 1860,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-world__css",
+            "scrollTop": 0,
+            "scrollHeight": 1860,
+            "clientHeight": 844,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-world",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "space",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "DIV",
+            "cls": "product-space",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "main",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "BODY",
+            "cls": "list products-view-bear",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "HTML",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "scroll"
+          }
+        ],
+        "saved": {
+          "filter": "all",
+          "query": "",
+          "scroll": 0
+        }
+      },
+      "bookmark": null,
+      "library": [
+        {
+          "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+          "url": "/growth/posts/2026-10-thought-notes/"
+        },
+        {
+          "title": "Nango in Practice: Let Users Add Their Own MCP Servers in Chat",
+          "url": "/ai-agent/posts/nango-user-defined-mcp-integration/"
+        },
+        {
+          "title": "Personal Agent Technical Research: How OpenClaw Connects One Run to Long-Lived Work",
+          "url": "/ai-agent/posts/personal-agent-harness-openclaw/"
+        },
+        {
+          "title": "Personal Agent Product Research: How Instinct Makes People Willing to Delegate Again",
+          "url": "/ai-agent/posts/personal-agent-product-delegation/"
+        },
+        {
+          "title": "September 2026 Thought Notes: AI and Agent Systems, Daily Notes, Engineering and Open Source",
+          "url": "/growth/posts/2026-09-thought-notes/"
+        },
+        {
+          "title": "Why Opus 5.5 Makes Better Animations: What Real Projects Reveal",
+          "url": "/ai-agent/posts/opus-55-visual-capability/"
+        },
+        {
+          "title": "Maintaining a UI on Your Own: A Design System with Figma, Figwright, and AI",
+          "url": "/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+        },
+        {
+          "title": "IMStage: Editable Chat Scenes",
+          "url": "/projects/imstage/"
+        },
+        {
+          "title": "August 2026 Thought Notes: Agent Harness, Product and Self-Knowledge",
+          "url": "/growth/posts/2026-08-thought-notes/"
+        },
+        {
+          "title": "AI Made Me Smarter—and Slower to Meet Reality",
+          "url": "/growth/posts/2026-08-15-ai-made-me-smarter-later-to-reality/"
+        },
+        {
+          "title": "OpenClaw's Long-Running Gateway: Continuity Does Not Mean One Shared Session",
+          "url": "/ai-agent/posts/agent-system-design-openclaw/"
+        },
+        {
+          "title": "n8n's Deterministic Exoskeleton: Why Queues and Workers Do Not Guarantee Exactly-Once Side Effects",
+          "url": "/ai-agent/posts/agent-system-design-n8n/"
+        },
+        {
+          "title": "Pi by Subtraction: What the Minimal Agent Kernel Keeps and Who Takes Responsibility",
+          "url": "/ai-agent/posts/agent-system-design-pi/"
+        },
+        {
+          "title": "Claude Tag Deep Dive: From Shared Slack AI to an Organizational Agent Runtime",
+          "url": "/ai-agent/posts/claude-tag-organizational-agent-runtime/"
+        },
+        {
+          "title": "I Don't Have an Execution Problem. I Need a Battlefield That Can Say No",
+          "url": "/growth/posts/2026-08-03-a-battlefield-that-can-say-no/"
+        },
+        {
+          "title": "Reading Hongyi in Quanzhou: Seeing Through, Then Taking Life Seriously",
+          "url": "/growth/posts/2026-08-03-hongyi-quanzhou-game-of-life/"
+        },
+        {
+          "title": "Common Sense Is Not the Mechanism: Rebuilding Industries Around Demand, Constraints, and Scarcity",
+          "url": "/ai-agent/posts/common-sense-ai-industry-reconstruction/"
+        },
+        {
+          "title": "The Scoreboard You Choose Will Eventually Choose You: How Incentives Reshape an Organization",
+          "url": "/growth/posts/2026-07-31-incentives-colonize-founders/"
+        },
+        {
+          "title": "The Opposite of Freedom Isn’t Constraint—It’s the Defaults That Live Your Day for You",
+          "url": "/growth/posts/2026-07-31-freedom-and-defaults/"
+        },
+        {
+          "title": "A Second Brain Preserves Your Decision Function",
+          "url": "/growth/posts/2026-07-31-second-brain-as-survival-strategy/"
+        },
+        {
+          "title": "When Generation Becomes Infinite, Authentic Experiences Begin to Command Value",
+          "url": "/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/"
+        },
+        {
+          "title": "Risk Preference Isn't About Enjoying Danger: What Truly Enables Taking a Bet",
+          "url": "/growth/posts/2026-07-31-risk-is-not-danger/"
+        },
+        {
+          "title": "The Cost of Observation: Why the More You Understand, the Harder It Is to Enter Life",
+          "url": "/growth/posts/2026-07-31-the-observer-cannot-enter-life/"
+        },
+        {
+          "title": "Creators Don’t Lack Applause—They Lack an Accurate Witness",
+          "url": "/growth/posts/2026-07-31-creators-need-accurate-witnesses/"
+        },
+        {
+          "title": "Forgetting Is Harder Than Remembering: Why a Living System Must Know When to Let Go",
+          "url": "/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability/"
+        },
+        {
+          "title": "Records Are Not Mirrors, But Scissors: What Tool You Use Ultimately Shapes Who You Become",
+          "url": "/growth/posts/2026-07-31-recording-tools-shape-the-self/"
+        },
+        {
+          "title": "Environment as the Hidden Author: Why Moving Cities Feels Like Becoming Someone Else",
+          "url": "/growth/posts/2026-07-31-environment-is-the-hidden-author/"
+        },
+        {
+          "title": "When Distance No Longer Changes You: What Keeps Life Moving After Exploration Fails",
+          "url": "/growth/posts/2026-07-31-when-exploration-stops-changing-you/"
+        },
+        {
+          "title": "July 2026 Thought Notes: Engineering, Content and Cash Flow",
+          "url": "/growth/posts/2026-07-thought-notes/"
+        },
+        {
+          "title": "Every Path Has a Price",
+          "url": "/growth/posts/2026-07-26-every-path-has-a-price/"
+        },
+        {
+          "title": "After AI Solves a Problem, Where Does the Bottleneck Move?",
+          "url": "/growth/posts/2026-07-26-bottlenecks-after-ai/"
+        },
+        {
+          "title": "The Fastest Numbers Are Often Furthest from the Outcome",
+          "url": "/growth/posts/2026-07-26-fast-feedback-slow-results/"
+        },
+        {
+          "title": "Action Does Not Automatically Lead to Truth",
+          "url": "/growth/posts/2026-07-26-action-and-evidence/"
+        },
+        {
+          "title": "The Escape Routes of Smart People: Applying Ability to the Wrong Problem",
+          "url": "/growth/posts/2026-07-26-competence-trap/"
+        },
+        {
+          "title": "What Does Profit Actually Prove?",
+          "url": "/growth/posts/2026-07-26-profit-and-value/"
+        },
+        {
+          "title": "What Should I Do Next? A Debate About Money, Action, and Ideals",
+          "url": "/growth/posts/2026-07-26-what-to-do-next/"
+        },
+        {
+          "title": "Open Design 0.16.1: A Design Harness for Coding Agents",
+          "url": "/ai-agent/posts/open-design/"
+        },
+        {
+          "title": "Claude Code Playbook: 10 Configurations for Reliable Agent Workflows",
+          "url": "/ai-agent/posts/claude-code-boris-121-tips-playbook/"
+        },
+        {
+          "title": "Loop Engineering for Solo Builders: Verifiers, State, and Safe Automation",
+          "url": "/ai-agent/posts/prompt-loop-engineering-practice/"
+        },
+        {
+          "title": "You Think You're the Player — But \"Player\" Is Also a Role: Rereading the Samādhi of Play",
+          "url": "/growth/posts/2026-07-20-the-player-is-also-a-role/"
+        },
+        {
+          "title": "A Solo Creator's AI Video Editing Pipeline That Actually Works",
+          "url": "/ai-agent/posts/solo-creator-video-pipeline/"
+        },
+        {
+          "title": "When Anyone Can Build the Thing, \"He Built It\" Becomes the Signal",
+          "url": "/ai-agent/posts/super-individual-stack-reputation/"
+        },
+        {
+          "title": "Distribution for Solo Builders: Your Readers Can't Be Copied",
+          "url": "/ai-agent/posts/super-individual-stack-distribution/"
+        },
+        {
+          "title": "AI Writes Requirements for Free, and That's the Most Dangerous Part",
+          "url": "/ai-agent/posts/super-individual-stack-judgment/"
+        },
+        {
+          "title": "I Ran Ten Agents Overnight, Woke Up to Ten PRs, and Then I Got Stuck",
+          "url": "/ai-agent/posts/super-individual-stack-production/"
+        },
+        {
+          "title": "The Four-Layer AI Stack for Super Individuals: What Actually Compounds",
+          "url": "/ai-agent/posts/super-individual-stack-four-layers/"
+        },
+        {
+          "title": "Designing devbox-doctor: A Safer Mac Toolchain Audit",
+          "url": "/ai-agent/posts/devbox-doctor-design/"
+        },
+        {
+          "title": "Agent Skill Design: What a Dangerous SKILL.md Taught Me",
+          "url": "/ai-agent/posts/designing-valuable-agent-skills/"
+        },
+        {
+          "title": "Building an AI Knowledge Base: From Notes to Executable Workflows",
+          "url": "/ai-agent/posts/info-to-creation-arsenal/"
+        },
+        {
+          "title": "How AI Agents Rebuilt My 120-Post Blog From Scratch",
+          "url": "/ai-agent/posts/ai-native-blog-rebuild/"
+        },
+        {
+          "title": "Where AI Agents Still Have a Blue Ocean",
+          "url": "/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/"
+        },
+        {
+          "title": "How to Build Real Trust in Unattended AI Agents That Act",
+          "url": "/ai-agent/posts/trusting-unattended-ai-agent/"
+        },
+        {
+          "title": "Build a Personal Intelligence System That Leads to Action",
+          "url": "/ai-agent/posts/super-individual-intelligence-system/"
+        },
+        {
+          "title": "Agent Fleet Economics in 2026: Testing Low-Cost APIs and Open-Weight Options",
+          "url": "/ai-agent/posts/open-model-cost-collapse-agent-fleet/"
+        },
+        {
+          "title": "When the AI Agent Starts Prompting You, What Has Actually Changed",
+          "url": "/ai-agent/posts/proactive-agent-it-prompts-you/"
+        },
+        {
+          "title": "AI News Pipelines: Automation Limits and Human Judgment",
+          "url": "/ai-agent/posts/ai-auto-news-pipeline-limits/"
+        },
+        {
+          "title": "What Remains When You Take It All Apart: On No-Self, Suffering, and \"You Could Say It Either Way\"",
+          "url": "/growth/posts/2026-07-14-what-remains-when-taken-apart/"
+        },
+        {
+          "title": "From Chatbot to Agent to Skill: Turning Judgment into a System",
+          "url": "/ai-agent/posts/from-chatbot-to-agent-to-skill/"
+        },
+        {
+          "title": "Give AI Tasks, Not Just Direction: Define Done First",
+          "url": "/ai-agent/posts/give-ai-tasks-not-directions/"
+        },
+        {
+          "title": "Friction Is Growth: When AI Removes All Resistance for You, Deliberately Keep Some",
+          "url": "/growth/posts/friction-is-growth/"
+        },
+        {
+          "title": "AI Workflow Quality Gates: A Practical Engineering Guide",
+          "url": "/ai-agent/posts/engineering-discipline-ai-workflow/"
+        },
+        {
+          "title": "Build an AI Second Brain with Claude and Obsidian",
+          "url": "/ai-agent/posts/ai-second-brain-build/"
+        },
+        {
+          "title": "AI Content Creation Workflow: Turning Knowledge Into Work People Want",
+          "url": "/ai-agent/posts/info-to-creation-creation/"
+        },
+        {
+          "title": "AI Knowledge Base Workflow: Turn Notes Into Verified, Reusable Capability",
+          "url": "/ai-agent/posts/info-to-creation-knowledge/"
+        },
+        {
+          "title": "AI Note-Taking Workflow: Turn Fleeting Inputs Into Verifiable Records",
+          "url": "/ai-agent/posts/info-to-creation-record/"
+        },
+        {
+          "title": "AI Information Filtering Workflow: Capture Signal Without a Noise Archive",
+          "url": "/ai-agent/posts/info-to-creation-information/"
+        },
+        {
+          "title": "AI Knowledge Workflow: From Information to Records, Knowledge, and Creation",
+          "url": "/ai-agent/posts/info-to-creation-the-framework/"
+        },
+        {
+          "title": "GEO Measurement in 2026: A Reproducible Citation and Referral Protocol",
+          "url": "/ai-agent/posts/geo-measurement-and-tools/"
+        },
+        {
+          "title": "GEO Blog Rebuild Case Study: Running the Five-Layer Model on Real Data",
+          "url": "/ai-agent/posts/geo-blog-rebuild-case-study/"
+        },
+        {
+          "title": "Off-Site Trust for GEO: Identity, Evidence, and Ethical Distribution",
+          "url": "/ai-agent/posts/geo-trust-and-endorsement/"
+        },
+        {
+          "title": "Structured Content for GEO: A Reader-First Playbook",
+          "url": "/ai-agent/posts/geo-structured-content-tactics/"
+        },
+        {
+          "title": "How AI Search Retrieves and Cites Sources: A Testable GEO Model",
+          "url": "/ai-agent/posts/geo-how-ai-retrieves-and-cites/"
+        },
+        {
+          "title": "GEO in 2026: Evidence, Limits, and a Practical Workflow",
+          "url": "/ai-agent/posts/geo-generative-engine-optimization-guide/"
+        },
+        {
+          "title": "2026 June Thought Notes: The Pushing-Away Comes Before the Reason for Pushing Away",
+          "url": "/growth/posts/2026-06-thought-notes/"
+        },
+        {
+          "title": "Inside open-lovable: Search, Text Protocols, and Sandboxes",
+          "url": "/ai-agent/posts/dissecting-open-lovable/"
+        },
+        {
+          "title": "Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-3-anxious/"
+        },
+        {
+          "title": "Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/"
+        },
+        {
+          "title": "Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/"
+        },
+        {
+          "title": "The Super-Individual Stack: AI-Native Product Directions and Solo Builder Ops in 2026",
+          "url": "/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+        },
+        {
+          "title": "Relay Agent Architecture in 2026: A Local Implementation Audit",
+          "url": "/ai-agent/posts/relay-agent-architecture-design/"
+        },
+        {
+          "title": "Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis",
+          "url": "/growth/posts/love-seen-clearly-loved-deeply/"
+        },
+        {
+          "title": "Context Engineering: The New Foundation for AI Agents",
+          "url": "/ai-agent/posts/context-engineering-the-new-foundation/"
+        },
+        {
+          "title": "Agent Engineering Harness: The Eight Pillars Behind the 98.4%",
+          "url": "/ai-agent/posts/agent-engineering-the-98-percent-harness/"
+        },
+        {
+          "title": "2026 May Thought Notes: On the Edge, I Recognize Myself Through Action",
+          "url": "/growth/posts/2026-05-thought-notes/"
+        },
+        {
+          "title": "April 2026 Thought Notes: Living in Laos, Borders, AI and Agents",
+          "url": "/growth/posts/2026-04-thought-notes/"
+        },
+        {
+          "title": "Agent Identity: From Locke to OpenClaw",
+          "url": "/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+        },
+        {
+          "title": "Maintaining Self-Worth in the Age of AI",
+          "url": "/growth/posts/weight-of-self-in-ai-age/"
+        },
+        {
+          "title": "March 2026 Thought Notes: Money, Genocide Memory, Southeast Asia",
+          "url": "/growth/posts/2026-03-thought-notes/"
+        },
+        {
+          "title": "Lhasa: Slow and Heavy",
+          "url": "/growth/posts/2026-03-27-lhasa-slow-and-heavy/"
+        },
+        {
+          "title": "Wandering & Growing: 2025-2026 Annual Review",
+          "url": "/growth/posts/2025-annual-review/"
+        },
+        {
+          "title": "AI and Self-Identity: Who Am I in the AI Age",
+          "url": "/growth/posts/ai-and-self-identity/"
+        },
+        {
+          "title": "February 2026 Thought Notes",
+          "url": "/growth/posts/2026-02-thought-notes/"
+        },
+        {
+          "title": "January 2026 Thought Notes",
+          "url": "/growth/posts/2026-01-thought-notes/"
+        },
+        {
+          "title": "December 2025 Thought Notes",
+          "url": "/growth/posts/2025-12-thought-notes/"
+        },
+        {
+          "title": "Japan Travel Notes — Learning to Be with Time Through Wood, Fire, and Gaps",
+          "url": "/growth/posts/japan-travel-2025/"
+        },
+        {
+          "title": "November 2025 Thought Notes: Ideas and History, Daily Life, Cities",
+          "url": "/growth/posts/2025-11-thought-notes/"
+        },
+        {
+          "title": "October 2025 Thought Notes: Ideas and History, Daily Life, Self-Knowledge",
+          "url": "/growth/posts/2025-10-thought-notes/"
+        },
+        {
+          "title": "September 2025 Thought Notes: Self-Knowledge, Ideas and History, Cities",
+          "url": "/growth/posts/2025-09-thought-notes/"
+        },
+        {
+          "title": "August 2025 Thought Notes: Self-Knowledge, Daily Life, AI and Agent Systems",
+          "url": "/growth/posts/2025-08-thought-notes/"
+        },
+        {
+          "title": "July 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+          "url": "/growth/posts/2025-07-thought-notes/"
+        },
+        {
+          "title": "June 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+          "url": "/growth/posts/2025-06-thought-notes/"
+        },
+        {
+          "title": "How I Learned to Observe My Own Thinking: A Four-Month Metacognitive Shift",
+          "url": "/growth/posts/metacognitive-transformation-review/"
+        },
+        {
+          "title": "May 2025 Thought Notes: Self-Knowledge, Engineering, AI and Agent Systems",
+          "url": "/growth/posts/2025-05-thought-notes/"
+        },
+        {
+          "title": "Mem0 OSS v3 in Practice: Memory Architecture, Retrieval, and Trade-offs",
+          "url": "/projects/mem0/"
+        },
+        {
+          "title": "Microsoft UFO³ Explained: From Windows Desktop AgentOS to a Multi-Device Agent Galaxy",
+          "url": "/projects/ufo/"
+        },
+        {
+          "title": "Argo CD in Production: GitOps Sync, ApplicationSets, Rollbacks, and Security",
+          "url": "/engineering/posts/argo-cd/"
+        },
+        {
+          "title": "April 2025 Thought Notes: Self-Knowledge, AI and Agent Systems, Engineering",
+          "url": "/growth/posts/2025-04-thought-notes/"
+        },
+        {
+          "title": "LLM Recommendation Systems: Retrieval, Ranking, RAG, and Evaluation",
+          "url": "/ai-agent/posts/ai-recommend/"
+        },
+        {
+          "title": "Gemini Notebook (Formerly NotebookLM): A Source-Grounded Research Workflow",
+          "url": "/projects/notebooklm/"
+        },
+        {
+          "title": "Test-Driven Development for AI and LLM Applications: A Practical 2026 Guide",
+          "url": "/projects/tdd/"
+        },
+        {
+          "title": "Microsoft MarkItDown 0.1.6: A Practical Document-to-Markdown Guide",
+          "url": "/projects/markitdown/"
+        },
+        {
+          "title": "LangGraph Architecture in 2026: StateGraph, Persistence, and Recovery",
+          "url": "/projects/langgraph/"
+        },
+        {
+          "title": "LangChain 1.x in Production: Choosing Models, Agents, and LangGraph",
+          "url": "/projects/langchain/"
+        },
+        {
+          "title": "AI Gateway Guide: LiteLLM, Kong, APISIX, Cloudflare, or Portkey?",
+          "url": "/ai-agent/posts/ai-gateway/"
+        },
+        {
+          "title": "Independent Developer Roadmap: From Problem Validation to a Maintainable MVP",
+          "url": "/ai-agent/posts/independent-developer/"
+        },
+        {
+          "title": "GPT Researcher Guide: Python, Docker, MCP, Costs & Limits",
+          "url": "/ai-agent/posts/gpt-researcher/"
+        },
+        {
+          "title": "Jina AI in 2026: Embeddings, Reranking, Reader, and Jina Serve",
+          "url": "/ai-agent/posts/jina/"
+        },
+        {
+          "title": "March 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+          "url": "/growth/posts/2025-03-thought-notes/"
+        },
+        {
+          "title": "February 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+          "url": "/growth/posts/2025-02-thought-notes/"
+        },
+        {
+          "title": "2024 Annual Review",
+          "url": "/growth/posts/2024-annual-review/"
+        },
+        {
+          "title": "Kubernetes Resources and Learning Path Summary",
+          "url": "/engineering/posts/kubernetes-learning/"
+        },
+        {
+          "title": "LangChain 1.x in Practice: A Developer Guide to Reliable Agents",
+          "url": "/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/"
+        },
+        {
+          "title": "From Language Models to RAG: Capabilities, Limits, and Engineering",
+          "url": "/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/"
+        },
+        {
+          "title": "Open Source Resume Builders & Career Tips",
+          "url": "/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/"
+        },
+        {
+          "title": "Troubleshooting Guide for OpenIM",
+          "url": "/engineering/posts/troubleshooting-guide-for-openim/"
+        },
+        {
+          "title": "Navigating the Open Source Landscape",
+          "url": "/engineering/posts/navigating-the-open-source-landscape/"
+        },
+        {
+          "title": "SoraEase After Sora: A Prompt Archive and Developer Migration Guide",
+          "url": "/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/"
+        },
+        {
+          "title": "In 2023, I Was Wandering at the Edge of the World",
+          "url": "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/"
+        },
+        {
+          "title": "Sora Retrospective: From Research Preview and Sora 2 to Shutdown",
+          "url": "/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/"
+        },
+        {
+          "title": "Combining GitHub and Google Workspace for Effective Project Management",
+          "url": "/growth/posts/combining-github-and-google-workspace-for-project-management/"
+        },
+        {
+          "title": "Brain-Friendly English Learning Strategies",
+          "url": "/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/"
+        },
+        {
+          "title": "Flow State: Deep Focus and Happiness Guide",
+          "url": "/growth/posts/flow-state/"
+        },
+        {
+          "title": "GTD and the Quadrant Method Practice",
+          "url": "/growth/posts/gtd-and-the-four-quadrant-rule-practice/"
+        },
+        {
+          "title": "Go Directives & Automation Tools Deep Dive",
+          "url": "/engineering/posts/directives-and-the-use-of-automation-tools/"
+        },
+        {
+          "title": "Concurrent Type Checking and Cross-Platform Development in Go",
+          "url": "/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+        },
+        {
+          "title": "Vector Database Learning",
+          "url": "/ai-agent/posts/vector-database-learning/"
+        },
+        {
+          "title": "OpenIM: Version Control & Testing Workflow",
+          "url": "/engineering/posts/openim-building-an-efficient-version-control-and-testing-workflow/"
+        },
+        {
+          "title": "2024 AI Field Notes, Reassessed: From Emergence to Production RAG",
+          "url": "/ai-agent/posts/emerging-challenges-and-trends-in-2024/"
+        },
+        {
+          "title": "2023 Annual Summary Reflections and Aspirations",
+          "url": "/growth/posts/2023-annual-summary-reflections-and-aspirations/"
+        },
+        {
+          "title": "GitOps & Kubernetes Deployment Strategies",
+          "url": "/engineering/posts/gitops-practice-theory-part/"
+        },
+        {
+          "title": "Deployment and Design of Management Backend and Monitoring",
+          "url": "/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/"
+        },
+        {
+          "title": "Hugo Advanced Tutorial",
+          "url": "/engineering/posts/hugo-advanced-tutorial/"
+        },
+        {
+          "title": "Kubernetes for Kustomize Learning",
+          "url": "/engineering/posts/kubernetes-for-kustomize-learning/"
+        },
+        {
+          "title": "OpenIM Use Harbor Build Enterprise Mirror Repositories",
+          "url": "/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/"
+        },
+        {
+          "title": "Learn About Automated Testing",
+          "url": "/engineering/posts/learn-about-automated-testing/"
+        },
+        {
+          "title": "Kubernetes Control Plane - Scheduler",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/"
+        },
+        {
+          "title": "Kubernetes Control Plane - Detailed Analysis of Kubelet",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/"
+        },
+        {
+          "title": "Deep Dive into Kubernetes CNI, CRI, CSI Components",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+        },
+        {
+          "title": "Kubernetes kube-apiserver: Deep Dive into API Server Components",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/"
+        },
+        {
+          "title": "Deep Dive Into the Components of Kubernetes Etcd",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/"
+        },
+        {
+          "title": "Kubernetes Port Config via Config Files",
+          "url": "/engineering/posts/openim-cluster-deployment-parameter-passing-policy/"
+        },
+        {
+          "title": "OpenIM clustering design Kubernetes deploy concludes",
+          "url": "/engineering/posts/openim-cluster-deployment-scheme-of/"
+        },
+        {
+          "title": "Open Source Business: From Community to Revenue",
+          "url": "/engineering/posts/openim-open-source-business-journey/"
+        },
+        {
+          "title": "The Art of Asking Questions in Open Source Communities",
+          "url": "/engineering/posts/the-art-of-asking-questions-in-open-source-communities/"
+        },
+        {
+          "title": "Open Source Contribution Guidelines",
+          "url": "/engineering/posts/open-source-contribution-guidelines/"
+        },
+        {
+          "title": "Cross Platform Compilation",
+          "url": "/engineering/posts/cross-platform-compilation/"
+        },
+        {
+          "title": "Github Actions Advanced Techniques",
+          "url": "/engineering/posts/github-actions-advanced-techniques/"
+        },
+        {
+          "title": "Openim Devops Design",
+          "url": "/engineering/posts/openim-devops-design/"
+        },
+        {
+          "title": "GoReleaser v2 + GitHub Actions: Go Release Guide",
+          "url": "/engineering/posts/go-release-tools/"
+        },
+        {
+          "title": "Openim Multi Process Management",
+          "url": "/engineering/posts/openim-multi-process-management/"
+        },
+        {
+          "title": "About My Blog",
+          "url": "/growth/posts/my-first-blog/"
+        },
+        {
+          "title": "About My Hugo teaching",
+          "url": "/engineering/posts/my-hugo/"
+        },
+        {
+          "title": "Openkf Multi Architecture Image",
+          "url": "/engineering/posts/openkf-multi-architecture-image/"
+        },
+        {
+          "title": "Prow Ecological Learning",
+          "url": "/engineering/posts/prow-ecological-learning/"
+        },
+        {
+          "title": "Openim Remote Work Culture",
+          "url": "/engineering/posts/openim-remote-work-culture/"
+        },
+        {
+          "title": "Advanced Githook Design",
+          "url": "/engineering/posts/advanced-githook-design/"
+        },
+        {
+          "title": "Openim Offline Deployment Design",
+          "url": "/engineering/posts/openim-offline-deployment-design/"
+        },
+        {
+          "title": "Read Openim Project Sealos Openim Source Code",
+          "url": "/engineering/posts/read-openim-project-sealos-openim-source-code/"
+        },
+        {
+          "title": "Project Management From Theory to Practice",
+          "url": "/growth/posts/project-management-from-theory-to-practice/"
+        },
+        {
+          "title": "Stage Growth of Open Source",
+          "url": "/growth/posts/stage-growth-of-open-source/"
+        },
+        {
+          "title": "AutoGPT in 2026: From the Classic Experiment to the Platform",
+          "url": "/ai-agent/posts/use-auto-gpt/"
+        },
+        {
+          "title": "Use Go Tools Dlv",
+          "url": "/engineering/posts/use-go-tools-dlv/"
+        },
+        {
+          "title": "Participating in This Project",
+          "url": "/engineering/posts/participating-in-this-project/"
+        },
+        {
+          "title": "Kubernetes an Article to Get Started Quickly",
+          "url": "/engineering/posts/kubernetes-an-article-to-get-started-quickly/"
+        }
+      ],
+      "filter": "all"
+    },
+    {
+      "name": "after-wheel",
+      "readingScroll": {
+        "ancestors": [
+          {
+            "tag": "DIV",
+            "cls": "space-list",
+            "scrollTop": 0,
+            "scrollHeight": 28185,
+            "clientHeight": 28185,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-finder",
+            "scrollTop": 0,
+            "scrollHeight": 28185,
+            "clientHeight": 28185,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-window__body",
+            "scrollTop": 911,
+            "scrollHeight": 28246,
+            "clientHeight": 678,
+            "overflowY": "auto"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "scrollTop": 0,
+            "scrollHeight": 734,
+            "clientHeight": 734,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-window-layer",
+            "scrollTop": 0,
+            "scrollHeight": 842,
+            "clientHeight": 842,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-spatial-screen",
+            "scrollTop": 0,
+            "scrollHeight": 842,
+            "clientHeight": 842,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "DIV",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 1860,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-world__css",
+            "scrollTop": 0,
+            "scrollHeight": 1860,
+            "clientHeight": 844,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-world",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "space",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "DIV",
+            "cls": "product-space",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "main",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "BODY",
+            "cls": "list products-view-bear",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "HTML",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "scroll"
+          }
+        ],
+        "saved": {
+          "filter": "all",
+          "query": "",
+          "scroll": 0
+        }
+      },
+      "bookmark": null,
+      "library": [
+        {
+          "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+          "url": "/growth/posts/2026-10-thought-notes/"
+        },
+        {
+          "title": "Nango in Practice: Let Users Add Their Own MCP Servers in Chat",
+          "url": "/ai-agent/posts/nango-user-defined-mcp-integration/"
+        },
+        {
+          "title": "Personal Agent Technical Research: How OpenClaw Connects One Run to Long-Lived Work",
+          "url": "/ai-agent/posts/personal-agent-harness-openclaw/"
+        },
+        {
+          "title": "Personal Agent Product Research: How Instinct Makes People Willing to Delegate Again",
+          "url": "/ai-agent/posts/personal-agent-product-delegation/"
+        },
+        {
+          "title": "September 2026 Thought Notes: AI and Agent Systems, Daily Notes, Engineering and Open Source",
+          "url": "/growth/posts/2026-09-thought-notes/"
+        },
+        {
+          "title": "Why Opus 5.5 Makes Better Animations: What Real Projects Reveal",
+          "url": "/ai-agent/posts/opus-55-visual-capability/"
+        },
+        {
+          "title": "Maintaining a UI on Your Own: A Design System with Figma, Figwright, and AI",
+          "url": "/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+        },
+        {
+          "title": "IMStage: Editable Chat Scenes",
+          "url": "/projects/imstage/"
+        },
+        {
+          "title": "August 2026 Thought Notes: Agent Harness, Product and Self-Knowledge",
+          "url": "/growth/posts/2026-08-thought-notes/"
+        },
+        {
+          "title": "AI Made Me Smarter—and Slower to Meet Reality",
+          "url": "/growth/posts/2026-08-15-ai-made-me-smarter-later-to-reality/"
+        },
+        {
+          "title": "OpenClaw's Long-Running Gateway: Continuity Does Not Mean One Shared Session",
+          "url": "/ai-agent/posts/agent-system-design-openclaw/"
+        },
+        {
+          "title": "n8n's Deterministic Exoskeleton: Why Queues and Workers Do Not Guarantee Exactly-Once Side Effects",
+          "url": "/ai-agent/posts/agent-system-design-n8n/"
+        },
+        {
+          "title": "Pi by Subtraction: What the Minimal Agent Kernel Keeps and Who Takes Responsibility",
+          "url": "/ai-agent/posts/agent-system-design-pi/"
+        },
+        {
+          "title": "Claude Tag Deep Dive: From Shared Slack AI to an Organizational Agent Runtime",
+          "url": "/ai-agent/posts/claude-tag-organizational-agent-runtime/"
+        },
+        {
+          "title": "I Don't Have an Execution Problem. I Need a Battlefield That Can Say No",
+          "url": "/growth/posts/2026-08-03-a-battlefield-that-can-say-no/"
+        },
+        {
+          "title": "Reading Hongyi in Quanzhou: Seeing Through, Then Taking Life Seriously",
+          "url": "/growth/posts/2026-08-03-hongyi-quanzhou-game-of-life/"
+        },
+        {
+          "title": "Common Sense Is Not the Mechanism: Rebuilding Industries Around Demand, Constraints, and Scarcity",
+          "url": "/ai-agent/posts/common-sense-ai-industry-reconstruction/"
+        },
+        {
+          "title": "The Scoreboard You Choose Will Eventually Choose You: How Incentives Reshape an Organization",
+          "url": "/growth/posts/2026-07-31-incentives-colonize-founders/"
+        },
+        {
+          "title": "The Opposite of Freedom Isn’t Constraint—It’s the Defaults That Live Your Day for You",
+          "url": "/growth/posts/2026-07-31-freedom-and-defaults/"
+        },
+        {
+          "title": "A Second Brain Preserves Your Decision Function",
+          "url": "/growth/posts/2026-07-31-second-brain-as-survival-strategy/"
+        },
+        {
+          "title": "When Generation Becomes Infinite, Authentic Experiences Begin to Command Value",
+          "url": "/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/"
+        },
+        {
+          "title": "Risk Preference Isn't About Enjoying Danger: What Truly Enables Taking a Bet",
+          "url": "/growth/posts/2026-07-31-risk-is-not-danger/"
+        },
+        {
+          "title": "The Cost of Observation: Why the More You Understand, the Harder It Is to Enter Life",
+          "url": "/growth/posts/2026-07-31-the-observer-cannot-enter-life/"
+        },
+        {
+          "title": "Creators Don’t Lack Applause—They Lack an Accurate Witness",
+          "url": "/growth/posts/2026-07-31-creators-need-accurate-witnesses/"
+        },
+        {
+          "title": "Forgetting Is Harder Than Remembering: Why a Living System Must Know When to Let Go",
+          "url": "/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability/"
+        },
+        {
+          "title": "Records Are Not Mirrors, But Scissors: What Tool You Use Ultimately Shapes Who You Become",
+          "url": "/growth/posts/2026-07-31-recording-tools-shape-the-self/"
+        },
+        {
+          "title": "Environment as the Hidden Author: Why Moving Cities Feels Like Becoming Someone Else",
+          "url": "/growth/posts/2026-07-31-environment-is-the-hidden-author/"
+        },
+        {
+          "title": "When Distance No Longer Changes You: What Keeps Life Moving After Exploration Fails",
+          "url": "/growth/posts/2026-07-31-when-exploration-stops-changing-you/"
+        },
+        {
+          "title": "July 2026 Thought Notes: Engineering, Content and Cash Flow",
+          "url": "/growth/posts/2026-07-thought-notes/"
+        },
+        {
+          "title": "Every Path Has a Price",
+          "url": "/growth/posts/2026-07-26-every-path-has-a-price/"
+        },
+        {
+          "title": "After AI Solves a Problem, Where Does the Bottleneck Move?",
+          "url": "/growth/posts/2026-07-26-bottlenecks-after-ai/"
+        },
+        {
+          "title": "The Fastest Numbers Are Often Furthest from the Outcome",
+          "url": "/growth/posts/2026-07-26-fast-feedback-slow-results/"
+        },
+        {
+          "title": "Action Does Not Automatically Lead to Truth",
+          "url": "/growth/posts/2026-07-26-action-and-evidence/"
+        },
+        {
+          "title": "The Escape Routes of Smart People: Applying Ability to the Wrong Problem",
+          "url": "/growth/posts/2026-07-26-competence-trap/"
+        },
+        {
+          "title": "What Does Profit Actually Prove?",
+          "url": "/growth/posts/2026-07-26-profit-and-value/"
+        },
+        {
+          "title": "What Should I Do Next? A Debate About Money, Action, and Ideals",
+          "url": "/growth/posts/2026-07-26-what-to-do-next/"
+        },
+        {
+          "title": "Open Design 0.16.1: A Design Harness for Coding Agents",
+          "url": "/ai-agent/posts/open-design/"
+        },
+        {
+          "title": "Claude Code Playbook: 10 Configurations for Reliable Agent Workflows",
+          "url": "/ai-agent/posts/claude-code-boris-121-tips-playbook/"
+        },
+        {
+          "title": "Loop Engineering for Solo Builders: Verifiers, State, and Safe Automation",
+          "url": "/ai-agent/posts/prompt-loop-engineering-practice/"
+        },
+        {
+          "title": "You Think You're the Player — But \"Player\" Is Also a Role: Rereading the Samādhi of Play",
+          "url": "/growth/posts/2026-07-20-the-player-is-also-a-role/"
+        },
+        {
+          "title": "A Solo Creator's AI Video Editing Pipeline That Actually Works",
+          "url": "/ai-agent/posts/solo-creator-video-pipeline/"
+        },
+        {
+          "title": "When Anyone Can Build the Thing, \"He Built It\" Becomes the Signal",
+          "url": "/ai-agent/posts/super-individual-stack-reputation/"
+        },
+        {
+          "title": "Distribution for Solo Builders: Your Readers Can't Be Copied",
+          "url": "/ai-agent/posts/super-individual-stack-distribution/"
+        },
+        {
+          "title": "AI Writes Requirements for Free, and That's the Most Dangerous Part",
+          "url": "/ai-agent/posts/super-individual-stack-judgment/"
+        },
+        {
+          "title": "I Ran Ten Agents Overnight, Woke Up to Ten PRs, and Then I Got Stuck",
+          "url": "/ai-agent/posts/super-individual-stack-production/"
+        },
+        {
+          "title": "The Four-Layer AI Stack for Super Individuals: What Actually Compounds",
+          "url": "/ai-agent/posts/super-individual-stack-four-layers/"
+        },
+        {
+          "title": "Designing devbox-doctor: A Safer Mac Toolchain Audit",
+          "url": "/ai-agent/posts/devbox-doctor-design/"
+        },
+        {
+          "title": "Agent Skill Design: What a Dangerous SKILL.md Taught Me",
+          "url": "/ai-agent/posts/designing-valuable-agent-skills/"
+        },
+        {
+          "title": "Building an AI Knowledge Base: From Notes to Executable Workflows",
+          "url": "/ai-agent/posts/info-to-creation-arsenal/"
+        },
+        {
+          "title": "How AI Agents Rebuilt My 120-Post Blog From Scratch",
+          "url": "/ai-agent/posts/ai-native-blog-rebuild/"
+        },
+        {
+          "title": "Where AI Agents Still Have a Blue Ocean",
+          "url": "/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/"
+        },
+        {
+          "title": "How to Build Real Trust in Unattended AI Agents That Act",
+          "url": "/ai-agent/posts/trusting-unattended-ai-agent/"
+        },
+        {
+          "title": "Build a Personal Intelligence System That Leads to Action",
+          "url": "/ai-agent/posts/super-individual-intelligence-system/"
+        },
+        {
+          "title": "Agent Fleet Economics in 2026: Testing Low-Cost APIs and Open-Weight Options",
+          "url": "/ai-agent/posts/open-model-cost-collapse-agent-fleet/"
+        },
+        {
+          "title": "When the AI Agent Starts Prompting You, What Has Actually Changed",
+          "url": "/ai-agent/posts/proactive-agent-it-prompts-you/"
+        },
+        {
+          "title": "AI News Pipelines: Automation Limits and Human Judgment",
+          "url": "/ai-agent/posts/ai-auto-news-pipeline-limits/"
+        },
+        {
+          "title": "What Remains When You Take It All Apart: On No-Self, Suffering, and \"You Could Say It Either Way\"",
+          "url": "/growth/posts/2026-07-14-what-remains-when-taken-apart/"
+        },
+        {
+          "title": "From Chatbot to Agent to Skill: Turning Judgment into a System",
+          "url": "/ai-agent/posts/from-chatbot-to-agent-to-skill/"
+        },
+        {
+          "title": "Give AI Tasks, Not Just Direction: Define Done First",
+          "url": "/ai-agent/posts/give-ai-tasks-not-directions/"
+        },
+        {
+          "title": "Friction Is Growth: When AI Removes All Resistance for You, Deliberately Keep Some",
+          "url": "/growth/posts/friction-is-growth/"
+        },
+        {
+          "title": "AI Workflow Quality Gates: A Practical Engineering Guide",
+          "url": "/ai-agent/posts/engineering-discipline-ai-workflow/"
+        },
+        {
+          "title": "Build an AI Second Brain with Claude and Obsidian",
+          "url": "/ai-agent/posts/ai-second-brain-build/"
+        },
+        {
+          "title": "AI Content Creation Workflow: Turning Knowledge Into Work People Want",
+          "url": "/ai-agent/posts/info-to-creation-creation/"
+        },
+        {
+          "title": "AI Knowledge Base Workflow: Turn Notes Into Verified, Reusable Capability",
+          "url": "/ai-agent/posts/info-to-creation-knowledge/"
+        },
+        {
+          "title": "AI Note-Taking Workflow: Turn Fleeting Inputs Into Verifiable Records",
+          "url": "/ai-agent/posts/info-to-creation-record/"
+        },
+        {
+          "title": "AI Information Filtering Workflow: Capture Signal Without a Noise Archive",
+          "url": "/ai-agent/posts/info-to-creation-information/"
+        },
+        {
+          "title": "AI Knowledge Workflow: From Information to Records, Knowledge, and Creation",
+          "url": "/ai-agent/posts/info-to-creation-the-framework/"
+        },
+        {
+          "title": "GEO Measurement in 2026: A Reproducible Citation and Referral Protocol",
+          "url": "/ai-agent/posts/geo-measurement-and-tools/"
+        },
+        {
+          "title": "GEO Blog Rebuild Case Study: Running the Five-Layer Model on Real Data",
+          "url": "/ai-agent/posts/geo-blog-rebuild-case-study/"
+        },
+        {
+          "title": "Off-Site Trust for GEO: Identity, Evidence, and Ethical Distribution",
+          "url": "/ai-agent/posts/geo-trust-and-endorsement/"
+        },
+        {
+          "title": "Structured Content for GEO: A Reader-First Playbook",
+          "url": "/ai-agent/posts/geo-structured-content-tactics/"
+        },
+        {
+          "title": "How AI Search Retrieves and Cites Sources: A Testable GEO Model",
+          "url": "/ai-agent/posts/geo-how-ai-retrieves-and-cites/"
+        },
+        {
+          "title": "GEO in 2026: Evidence, Limits, and a Practical Workflow",
+          "url": "/ai-agent/posts/geo-generative-engine-optimization-guide/"
+        },
+        {
+          "title": "2026 June Thought Notes: The Pushing-Away Comes Before the Reason for Pushing Away",
+          "url": "/growth/posts/2026-06-thought-notes/"
+        },
+        {
+          "title": "Inside open-lovable: Search, Text Protocols, and Sandboxes",
+          "url": "/ai-agent/posts/dissecting-open-lovable/"
+        },
+        {
+          "title": "Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-3-anxious/"
+        },
+        {
+          "title": "Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/"
+        },
+        {
+          "title": "Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/"
+        },
+        {
+          "title": "The Super-Individual Stack: AI-Native Product Directions and Solo Builder Ops in 2026",
+          "url": "/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+        },
+        {
+          "title": "Relay Agent Architecture in 2026: A Local Implementation Audit",
+          "url": "/ai-agent/posts/relay-agent-architecture-design/"
+        },
+        {
+          "title": "Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis",
+          "url": "/growth/posts/love-seen-clearly-loved-deeply/"
+        },
+        {
+          "title": "Context Engineering: The New Foundation for AI Agents",
+          "url": "/ai-agent/posts/context-engineering-the-new-foundation/"
+        },
+        {
+          "title": "Agent Engineering Harness: The Eight Pillars Behind the 98.4%",
+          "url": "/ai-agent/posts/agent-engineering-the-98-percent-harness/"
+        },
+        {
+          "title": "2026 May Thought Notes: On the Edge, I Recognize Myself Through Action",
+          "url": "/growth/posts/2026-05-thought-notes/"
+        },
+        {
+          "title": "April 2026 Thought Notes: Living in Laos, Borders, AI and Agents",
+          "url": "/growth/posts/2026-04-thought-notes/"
+        },
+        {
+          "title": "Agent Identity: From Locke to OpenClaw",
+          "url": "/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+        },
+        {
+          "title": "Maintaining Self-Worth in the Age of AI",
+          "url": "/growth/posts/weight-of-self-in-ai-age/"
+        },
+        {
+          "title": "March 2026 Thought Notes: Money, Genocide Memory, Southeast Asia",
+          "url": "/growth/posts/2026-03-thought-notes/"
+        },
+        {
+          "title": "Lhasa: Slow and Heavy",
+          "url": "/growth/posts/2026-03-27-lhasa-slow-and-heavy/"
+        },
+        {
+          "title": "Wandering & Growing: 2025-2026 Annual Review",
+          "url": "/growth/posts/2025-annual-review/"
+        },
+        {
+          "title": "AI and Self-Identity: Who Am I in the AI Age",
+          "url": "/growth/posts/ai-and-self-identity/"
+        },
+        {
+          "title": "February 2026 Thought Notes",
+          "url": "/growth/posts/2026-02-thought-notes/"
+        },
+        {
+          "title": "January 2026 Thought Notes",
+          "url": "/growth/posts/2026-01-thought-notes/"
+        },
+        {
+          "title": "December 2025 Thought Notes",
+          "url": "/growth/posts/2025-12-thought-notes/"
+        },
+        {
+          "title": "Japan Travel Notes — Learning to Be with Time Through Wood, Fire, and Gaps",
+          "url": "/growth/posts/japan-travel-2025/"
+        },
+        {
+          "title": "November 2025 Thought Notes: Ideas and History, Daily Life, Cities",
+          "url": "/growth/posts/2025-11-thought-notes/"
+        },
+        {
+          "title": "October 2025 Thought Notes: Ideas and History, Daily Life, Self-Knowledge",
+          "url": "/growth/posts/2025-10-thought-notes/"
+        },
+        {
+          "title": "September 2025 Thought Notes: Self-Knowledge, Ideas and History, Cities",
+          "url": "/growth/posts/2025-09-thought-notes/"
+        },
+        {
+          "title": "August 2025 Thought Notes: Self-Knowledge, Daily Life, AI and Agent Systems",
+          "url": "/growth/posts/2025-08-thought-notes/"
+        },
+        {
+          "title": "July 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+          "url": "/growth/posts/2025-07-thought-notes/"
+        },
+        {
+          "title": "June 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+          "url": "/growth/posts/2025-06-thought-notes/"
+        },
+        {
+          "title": "How I Learned to Observe My Own Thinking: A Four-Month Metacognitive Shift",
+          "url": "/growth/posts/metacognitive-transformation-review/"
+        },
+        {
+          "title": "May 2025 Thought Notes: Self-Knowledge, Engineering, AI and Agent Systems",
+          "url": "/growth/posts/2025-05-thought-notes/"
+        },
+        {
+          "title": "Mem0 OSS v3 in Practice: Memory Architecture, Retrieval, and Trade-offs",
+          "url": "/projects/mem0/"
+        },
+        {
+          "title": "Microsoft UFO³ Explained: From Windows Desktop AgentOS to a Multi-Device Agent Galaxy",
+          "url": "/projects/ufo/"
+        },
+        {
+          "title": "Argo CD in Production: GitOps Sync, ApplicationSets, Rollbacks, and Security",
+          "url": "/engineering/posts/argo-cd/"
+        },
+        {
+          "title": "April 2025 Thought Notes: Self-Knowledge, AI and Agent Systems, Engineering",
+          "url": "/growth/posts/2025-04-thought-notes/"
+        },
+        {
+          "title": "LLM Recommendation Systems: Retrieval, Ranking, RAG, and Evaluation",
+          "url": "/ai-agent/posts/ai-recommend/"
+        },
+        {
+          "title": "Gemini Notebook (Formerly NotebookLM): A Source-Grounded Research Workflow",
+          "url": "/projects/notebooklm/"
+        },
+        {
+          "title": "Test-Driven Development for AI and LLM Applications: A Practical 2026 Guide",
+          "url": "/projects/tdd/"
+        },
+        {
+          "title": "Microsoft MarkItDown 0.1.6: A Practical Document-to-Markdown Guide",
+          "url": "/projects/markitdown/"
+        },
+        {
+          "title": "LangGraph Architecture in 2026: StateGraph, Persistence, and Recovery",
+          "url": "/projects/langgraph/"
+        },
+        {
+          "title": "LangChain 1.x in Production: Choosing Models, Agents, and LangGraph",
+          "url": "/projects/langchain/"
+        },
+        {
+          "title": "AI Gateway Guide: LiteLLM, Kong, APISIX, Cloudflare, or Portkey?",
+          "url": "/ai-agent/posts/ai-gateway/"
+        },
+        {
+          "title": "Independent Developer Roadmap: From Problem Validation to a Maintainable MVP",
+          "url": "/ai-agent/posts/independent-developer/"
+        },
+        {
+          "title": "GPT Researcher Guide: Python, Docker, MCP, Costs & Limits",
+          "url": "/ai-agent/posts/gpt-researcher/"
+        },
+        {
+          "title": "Jina AI in 2026: Embeddings, Reranking, Reader, and Jina Serve",
+          "url": "/ai-agent/posts/jina/"
+        },
+        {
+          "title": "March 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+          "url": "/growth/posts/2025-03-thought-notes/"
+        },
+        {
+          "title": "February 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+          "url": "/growth/posts/2025-02-thought-notes/"
+        },
+        {
+          "title": "2024 Annual Review",
+          "url": "/growth/posts/2024-annual-review/"
+        },
+        {
+          "title": "Kubernetes Resources and Learning Path Summary",
+          "url": "/engineering/posts/kubernetes-learning/"
+        },
+        {
+          "title": "LangChain 1.x in Practice: A Developer Guide to Reliable Agents",
+          "url": "/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/"
+        },
+        {
+          "title": "From Language Models to RAG: Capabilities, Limits, and Engineering",
+          "url": "/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/"
+        },
+        {
+          "title": "Open Source Resume Builders & Career Tips",
+          "url": "/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/"
+        },
+        {
+          "title": "Troubleshooting Guide for OpenIM",
+          "url": "/engineering/posts/troubleshooting-guide-for-openim/"
+        },
+        {
+          "title": "Navigating the Open Source Landscape",
+          "url": "/engineering/posts/navigating-the-open-source-landscape/"
+        },
+        {
+          "title": "SoraEase After Sora: A Prompt Archive and Developer Migration Guide",
+          "url": "/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/"
+        },
+        {
+          "title": "In 2023, I Was Wandering at the Edge of the World",
+          "url": "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/"
+        },
+        {
+          "title": "Sora Retrospective: From Research Preview and Sora 2 to Shutdown",
+          "url": "/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/"
+        },
+        {
+          "title": "Combining GitHub and Google Workspace for Effective Project Management",
+          "url": "/growth/posts/combining-github-and-google-workspace-for-project-management/"
+        },
+        {
+          "title": "Brain-Friendly English Learning Strategies",
+          "url": "/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/"
+        },
+        {
+          "title": "Flow State: Deep Focus and Happiness Guide",
+          "url": "/growth/posts/flow-state/"
+        },
+        {
+          "title": "GTD and the Quadrant Method Practice",
+          "url": "/growth/posts/gtd-and-the-four-quadrant-rule-practice/"
+        },
+        {
+          "title": "Go Directives & Automation Tools Deep Dive",
+          "url": "/engineering/posts/directives-and-the-use-of-automation-tools/"
+        },
+        {
+          "title": "Concurrent Type Checking and Cross-Platform Development in Go",
+          "url": "/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+        },
+        {
+          "title": "Vector Database Learning",
+          "url": "/ai-agent/posts/vector-database-learning/"
+        },
+        {
+          "title": "OpenIM: Version Control & Testing Workflow",
+          "url": "/engineering/posts/openim-building-an-efficient-version-control-and-testing-workflow/"
+        },
+        {
+          "title": "2024 AI Field Notes, Reassessed: From Emergence to Production RAG",
+          "url": "/ai-agent/posts/emerging-challenges-and-trends-in-2024/"
+        },
+        {
+          "title": "2023 Annual Summary Reflections and Aspirations",
+          "url": "/growth/posts/2023-annual-summary-reflections-and-aspirations/"
+        },
+        {
+          "title": "GitOps & Kubernetes Deployment Strategies",
+          "url": "/engineering/posts/gitops-practice-theory-part/"
+        },
+        {
+          "title": "Deployment and Design of Management Backend and Monitoring",
+          "url": "/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/"
+        },
+        {
+          "title": "Hugo Advanced Tutorial",
+          "url": "/engineering/posts/hugo-advanced-tutorial/"
+        },
+        {
+          "title": "Kubernetes for Kustomize Learning",
+          "url": "/engineering/posts/kubernetes-for-kustomize-learning/"
+        },
+        {
+          "title": "OpenIM Use Harbor Build Enterprise Mirror Repositories",
+          "url": "/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/"
+        },
+        {
+          "title": "Learn About Automated Testing",
+          "url": "/engineering/posts/learn-about-automated-testing/"
+        },
+        {
+          "title": "Kubernetes Control Plane - Scheduler",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/"
+        },
+        {
+          "title": "Kubernetes Control Plane - Detailed Analysis of Kubelet",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/"
+        },
+        {
+          "title": "Deep Dive into Kubernetes CNI, CRI, CSI Components",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+        },
+        {
+          "title": "Kubernetes kube-apiserver: Deep Dive into API Server Components",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/"
+        },
+        {
+          "title": "Deep Dive Into the Components of Kubernetes Etcd",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/"
+        },
+        {
+          "title": "Kubernetes Port Config via Config Files",
+          "url": "/engineering/posts/openim-cluster-deployment-parameter-passing-policy/"
+        },
+        {
+          "title": "OpenIM clustering design Kubernetes deploy concludes",
+          "url": "/engineering/posts/openim-cluster-deployment-scheme-of/"
+        },
+        {
+          "title": "Open Source Business: From Community to Revenue",
+          "url": "/engineering/posts/openim-open-source-business-journey/"
+        },
+        {
+          "title": "The Art of Asking Questions in Open Source Communities",
+          "url": "/engineering/posts/the-art-of-asking-questions-in-open-source-communities/"
+        },
+        {
+          "title": "Open Source Contribution Guidelines",
+          "url": "/engineering/posts/open-source-contribution-guidelines/"
+        },
+        {
+          "title": "Cross Platform Compilation",
+          "url": "/engineering/posts/cross-platform-compilation/"
+        },
+        {
+          "title": "Github Actions Advanced Techniques",
+          "url": "/engineering/posts/github-actions-advanced-techniques/"
+        },
+        {
+          "title": "Openim Devops Design",
+          "url": "/engineering/posts/openim-devops-design/"
+        },
+        {
+          "title": "GoReleaser v2 + GitHub Actions: Go Release Guide",
+          "url": "/engineering/posts/go-release-tools/"
+        },
+        {
+          "title": "Openim Multi Process Management",
+          "url": "/engineering/posts/openim-multi-process-management/"
+        },
+        {
+          "title": "About My Blog",
+          "url": "/growth/posts/my-first-blog/"
+        },
+        {
+          "title": "About My Hugo teaching",
+          "url": "/engineering/posts/my-hugo/"
+        },
+        {
+          "title": "Openkf Multi Architecture Image",
+          "url": "/engineering/posts/openkf-multi-architecture-image/"
+        },
+        {
+          "title": "Prow Ecological Learning",
+          "url": "/engineering/posts/prow-ecological-learning/"
+        },
+        {
+          "title": "Openim Remote Work Culture",
+          "url": "/engineering/posts/openim-remote-work-culture/"
+        },
+        {
+          "title": "Advanced Githook Design",
+          "url": "/engineering/posts/advanced-githook-design/"
+        },
+        {
+          "title": "Openim Offline Deployment Design",
+          "url": "/engineering/posts/openim-offline-deployment-design/"
+        },
+        {
+          "title": "Read Openim Project Sealos Openim Source Code",
+          "url": "/engineering/posts/read-openim-project-sealos-openim-source-code/"
+        },
+        {
+          "title": "Project Management From Theory to Practice",
+          "url": "/growth/posts/project-management-from-theory-to-practice/"
+        },
+        {
+          "title": "Stage Growth of Open Source",
+          "url": "/growth/posts/stage-growth-of-open-source/"
+        },
+        {
+          "title": "AutoGPT in 2026: From the Classic Experiment to the Platform",
+          "url": "/ai-agent/posts/use-auto-gpt/"
+        },
+        {
+          "title": "Use Go Tools Dlv",
+          "url": "/engineering/posts/use-go-tools-dlv/"
+        },
+        {
+          "title": "Participating in This Project",
+          "url": "/engineering/posts/participating-in-this-project/"
+        },
+        {
+          "title": "Kubernetes an Article to Get Started Quickly",
+          "url": "/engineering/posts/kubernetes-an-article-to-get-started-quickly/"
+        }
+      ],
+      "filter": "all"
+    },
+    {
+      "name": "opened-scrolled-article",
+      "readingScroll": {
+        "ancestors": [],
+        "saved": {
+          "filter": "all",
+          "query": "",
+          "scroll": 0
+        }
+      },
+      "title": "Maintaining a UI on Your Own: A Design System with Figma, Figwright, and AI",
+      "bookmark": {
+        "text": "☆ Save",
+        "pressed": null,
+        "label": null,
+        "box": {
+          "x": 300.3199462890625,
+          "y": 138.27679443359375,
+          "width": 32.441619873046875,
+          "height": 44.28050231933594,
+          "top": 138.27679443359375,
+          "right": 332.7615661621094,
+          "bottom": 182.5572967529297,
+          "left": 300.3199462890625
+        },
+        "hit": true
+      },
+      "library": []
+    },
+    {
+      "name": "returned-library",
+      "readingScroll": {
+        "ancestors": [
+          {
+            "tag": "DIV",
+            "cls": "space-list",
+            "scrollTop": 0,
+            "scrollHeight": 28185,
+            "clientHeight": 28185,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-finder",
+            "scrollTop": 0,
+            "scrollHeight": 28185,
+            "clientHeight": 28185,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-window__body",
+            "scrollTop": 0,
+            "scrollHeight": 28246,
+            "clientHeight": 678,
+            "overflowY": "auto"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "scrollTop": 0,
+            "scrollHeight": 734,
+            "clientHeight": 734,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-window-layer",
+            "scrollTop": 0,
+            "scrollHeight": 842,
+            "clientHeight": 842,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-spatial-screen",
+            "scrollTop": 0,
+            "scrollHeight": 842,
+            "clientHeight": 842,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "DIV",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 1860,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-world__css",
+            "scrollTop": 0,
+            "scrollHeight": 1860,
+            "clientHeight": 844,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "DIV",
+            "cls": "space-world",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "clip"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "space",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "DIV",
+            "cls": "product-space",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "main",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "visible"
+          },
+          {
+            "tag": "BODY",
+            "cls": "list products-view-bear",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "hidden"
+          },
+          {
+            "tag": "HTML",
+            "cls": "",
+            "scrollTop": 0,
+            "scrollHeight": 844,
+            "clientHeight": 844,
+            "overflowY": "scroll"
+          }
+        ],
+        "saved": {
+          "filter": "all",
+          "query": "",
+          "scroll": 0
+        }
+      },
+      "bookmark": null,
+      "library": [
+        {
+          "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+          "url": "/growth/posts/2026-10-thought-notes/"
+        },
+        {
+          "title": "Nango in Practice: Let Users Add Their Own MCP Servers in Chat",
+          "url": "/ai-agent/posts/nango-user-defined-mcp-integration/"
+        },
+        {
+          "title": "Personal Agent Technical Research: How OpenClaw Connects One Run to Long-Lived Work",
+          "url": "/ai-agent/posts/personal-agent-harness-openclaw/"
+        },
+        {
+          "title": "Personal Agent Product Research: How Instinct Makes People Willing to Delegate Again",
+          "url": "/ai-agent/posts/personal-agent-product-delegation/"
+        },
+        {
+          "title": "September 2026 Thought Notes: AI and Agent Systems, Daily Notes, Engineering and Open Source",
+          "url": "/growth/posts/2026-09-thought-notes/"
+        },
+        {
+          "title": "Why Opus 5.5 Makes Better Animations: What Real Projects Reveal",
+          "url": "/ai-agent/posts/opus-55-visual-capability/"
+        },
+        {
+          "title": "Maintaining a UI on Your Own: A Design System with Figma, Figwright, and AI",
+          "url": "/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+        },
+        {
+          "title": "IMStage: Editable Chat Scenes",
+          "url": "/projects/imstage/"
+        },
+        {
+          "title": "August 2026 Thought Notes: Agent Harness, Product and Self-Knowledge",
+          "url": "/growth/posts/2026-08-thought-notes/"
+        },
+        {
+          "title": "AI Made Me Smarter—and Slower to Meet Reality",
+          "url": "/growth/posts/2026-08-15-ai-made-me-smarter-later-to-reality/"
+        },
+        {
+          "title": "OpenClaw's Long-Running Gateway: Continuity Does Not Mean One Shared Session",
+          "url": "/ai-agent/posts/agent-system-design-openclaw/"
+        },
+        {
+          "title": "n8n's Deterministic Exoskeleton: Why Queues and Workers Do Not Guarantee Exactly-Once Side Effects",
+          "url": "/ai-agent/posts/agent-system-design-n8n/"
+        },
+        {
+          "title": "Pi by Subtraction: What the Minimal Agent Kernel Keeps and Who Takes Responsibility",
+          "url": "/ai-agent/posts/agent-system-design-pi/"
+        },
+        {
+          "title": "Claude Tag Deep Dive: From Shared Slack AI to an Organizational Agent Runtime",
+          "url": "/ai-agent/posts/claude-tag-organizational-agent-runtime/"
+        },
+        {
+          "title": "I Don't Have an Execution Problem. I Need a Battlefield That Can Say No",
+          "url": "/growth/posts/2026-08-03-a-battlefield-that-can-say-no/"
+        },
+        {
+          "title": "Reading Hongyi in Quanzhou: Seeing Through, Then Taking Life Seriously",
+          "url": "/growth/posts/2026-08-03-hongyi-quanzhou-game-of-life/"
+        },
+        {
+          "title": "Common Sense Is Not the Mechanism: Rebuilding Industries Around Demand, Constraints, and Scarcity",
+          "url": "/ai-agent/posts/common-sense-ai-industry-reconstruction/"
+        },
+        {
+          "title": "The Scoreboard You Choose Will Eventually Choose You: How Incentives Reshape an Organization",
+          "url": "/growth/posts/2026-07-31-incentives-colonize-founders/"
+        },
+        {
+          "title": "The Opposite of Freedom Isn’t Constraint—It’s the Defaults That Live Your Day for You",
+          "url": "/growth/posts/2026-07-31-freedom-and-defaults/"
+        },
+        {
+          "title": "A Second Brain Preserves Your Decision Function",
+          "url": "/growth/posts/2026-07-31-second-brain-as-survival-strategy/"
+        },
+        {
+          "title": "When Generation Becomes Infinite, Authentic Experiences Begin to Command Value",
+          "url": "/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/"
+        },
+        {
+          "title": "Risk Preference Isn't About Enjoying Danger: What Truly Enables Taking a Bet",
+          "url": "/growth/posts/2026-07-31-risk-is-not-danger/"
+        },
+        {
+          "title": "The Cost of Observation: Why the More You Understand, the Harder It Is to Enter Life",
+          "url": "/growth/posts/2026-07-31-the-observer-cannot-enter-life/"
+        },
+        {
+          "title": "Creators Don’t Lack Applause—They Lack an Accurate Witness",
+          "url": "/growth/posts/2026-07-31-creators-need-accurate-witnesses/"
+        },
+        {
+          "title": "Forgetting Is Harder Than Remembering: Why a Living System Must Know When to Let Go",
+          "url": "/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability/"
+        },
+        {
+          "title": "Records Are Not Mirrors, But Scissors: What Tool You Use Ultimately Shapes Who You Become",
+          "url": "/growth/posts/2026-07-31-recording-tools-shape-the-self/"
+        },
+        {
+          "title": "Environment as the Hidden Author: Why Moving Cities Feels Like Becoming Someone Else",
+          "url": "/growth/posts/2026-07-31-environment-is-the-hidden-author/"
+        },
+        {
+          "title": "When Distance No Longer Changes You: What Keeps Life Moving After Exploration Fails",
+          "url": "/growth/posts/2026-07-31-when-exploration-stops-changing-you/"
+        },
+        {
+          "title": "July 2026 Thought Notes: Engineering, Content and Cash Flow",
+          "url": "/growth/posts/2026-07-thought-notes/"
+        },
+        {
+          "title": "Every Path Has a Price",
+          "url": "/growth/posts/2026-07-26-every-path-has-a-price/"
+        },
+        {
+          "title": "After AI Solves a Problem, Where Does the Bottleneck Move?",
+          "url": "/growth/posts/2026-07-26-bottlenecks-after-ai/"
+        },
+        {
+          "title": "The Fastest Numbers Are Often Furthest from the Outcome",
+          "url": "/growth/posts/2026-07-26-fast-feedback-slow-results/"
+        },
+        {
+          "title": "Action Does Not Automatically Lead to Truth",
+          "url": "/growth/posts/2026-07-26-action-and-evidence/"
+        },
+        {
+          "title": "The Escape Routes of Smart People: Applying Ability to the Wrong Problem",
+          "url": "/growth/posts/2026-07-26-competence-trap/"
+        },
+        {
+          "title": "What Does Profit Actually Prove?",
+          "url": "/growth/posts/2026-07-26-profit-and-value/"
+        },
+        {
+          "title": "What Should I Do Next? A Debate About Money, Action, and Ideals",
+          "url": "/growth/posts/2026-07-26-what-to-do-next/"
+        },
+        {
+          "title": "Open Design 0.16.1: A Design Harness for Coding Agents",
+          "url": "/ai-agent/posts/open-design/"
+        },
+        {
+          "title": "Claude Code Playbook: 10 Configurations for Reliable Agent Workflows",
+          "url": "/ai-agent/posts/claude-code-boris-121-tips-playbook/"
+        },
+        {
+          "title": "Loop Engineering for Solo Builders: Verifiers, State, and Safe Automation",
+          "url": "/ai-agent/posts/prompt-loop-engineering-practice/"
+        },
+        {
+          "title": "You Think You're the Player — But \"Player\" Is Also a Role: Rereading the Samādhi of Play",
+          "url": "/growth/posts/2026-07-20-the-player-is-also-a-role/"
+        },
+        {
+          "title": "A Solo Creator's AI Video Editing Pipeline That Actually Works",
+          "url": "/ai-agent/posts/solo-creator-video-pipeline/"
+        },
+        {
+          "title": "When Anyone Can Build the Thing, \"He Built It\" Becomes the Signal",
+          "url": "/ai-agent/posts/super-individual-stack-reputation/"
+        },
+        {
+          "title": "Distribution for Solo Builders: Your Readers Can't Be Copied",
+          "url": "/ai-agent/posts/super-individual-stack-distribution/"
+        },
+        {
+          "title": "AI Writes Requirements for Free, and That's the Most Dangerous Part",
+          "url": "/ai-agent/posts/super-individual-stack-judgment/"
+        },
+        {
+          "title": "I Ran Ten Agents Overnight, Woke Up to Ten PRs, and Then I Got Stuck",
+          "url": "/ai-agent/posts/super-individual-stack-production/"
+        },
+        {
+          "title": "The Four-Layer AI Stack for Super Individuals: What Actually Compounds",
+          "url": "/ai-agent/posts/super-individual-stack-four-layers/"
+        },
+        {
+          "title": "Designing devbox-doctor: A Safer Mac Toolchain Audit",
+          "url": "/ai-agent/posts/devbox-doctor-design/"
+        },
+        {
+          "title": "Agent Skill Design: What a Dangerous SKILL.md Taught Me",
+          "url": "/ai-agent/posts/designing-valuable-agent-skills/"
+        },
+        {
+          "title": "Building an AI Knowledge Base: From Notes to Executable Workflows",
+          "url": "/ai-agent/posts/info-to-creation-arsenal/"
+        },
+        {
+          "title": "How AI Agents Rebuilt My 120-Post Blog From Scratch",
+          "url": "/ai-agent/posts/ai-native-blog-rebuild/"
+        },
+        {
+          "title": "Where AI Agents Still Have a Blue Ocean",
+          "url": "/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/"
+        },
+        {
+          "title": "How to Build Real Trust in Unattended AI Agents That Act",
+          "url": "/ai-agent/posts/trusting-unattended-ai-agent/"
+        },
+        {
+          "title": "Build a Personal Intelligence System That Leads to Action",
+          "url": "/ai-agent/posts/super-individual-intelligence-system/"
+        },
+        {
+          "title": "Agent Fleet Economics in 2026: Testing Low-Cost APIs and Open-Weight Options",
+          "url": "/ai-agent/posts/open-model-cost-collapse-agent-fleet/"
+        },
+        {
+          "title": "When the AI Agent Starts Prompting You, What Has Actually Changed",
+          "url": "/ai-agent/posts/proactive-agent-it-prompts-you/"
+        },
+        {
+          "title": "AI News Pipelines: Automation Limits and Human Judgment",
+          "url": "/ai-agent/posts/ai-auto-news-pipeline-limits/"
+        },
+        {
+          "title": "What Remains When You Take It All Apart: On No-Self, Suffering, and \"You Could Say It Either Way\"",
+          "url": "/growth/posts/2026-07-14-what-remains-when-taken-apart/"
+        },
+        {
+          "title": "From Chatbot to Agent to Skill: Turning Judgment into a System",
+          "url": "/ai-agent/posts/from-chatbot-to-agent-to-skill/"
+        },
+        {
+          "title": "Give AI Tasks, Not Just Direction: Define Done First",
+          "url": "/ai-agent/posts/give-ai-tasks-not-directions/"
+        },
+        {
+          "title": "Friction Is Growth: When AI Removes All Resistance for You, Deliberately Keep Some",
+          "url": "/growth/posts/friction-is-growth/"
+        },
+        {
+          "title": "AI Workflow Quality Gates: A Practical Engineering Guide",
+          "url": "/ai-agent/posts/engineering-discipline-ai-workflow/"
+        },
+        {
+          "title": "Build an AI Second Brain with Claude and Obsidian",
+          "url": "/ai-agent/posts/ai-second-brain-build/"
+        },
+        {
+          "title": "AI Content Creation Workflow: Turning Knowledge Into Work People Want",
+          "url": "/ai-agent/posts/info-to-creation-creation/"
+        },
+        {
+          "title": "AI Knowledge Base Workflow: Turn Notes Into Verified, Reusable Capability",
+          "url": "/ai-agent/posts/info-to-creation-knowledge/"
+        },
+        {
+          "title": "AI Note-Taking Workflow: Turn Fleeting Inputs Into Verifiable Records",
+          "url": "/ai-agent/posts/info-to-creation-record/"
+        },
+        {
+          "title": "AI Information Filtering Workflow: Capture Signal Without a Noise Archive",
+          "url": "/ai-agent/posts/info-to-creation-information/"
+        },
+        {
+          "title": "AI Knowledge Workflow: From Information to Records, Knowledge, and Creation",
+          "url": "/ai-agent/posts/info-to-creation-the-framework/"
+        },
+        {
+          "title": "GEO Measurement in 2026: A Reproducible Citation and Referral Protocol",
+          "url": "/ai-agent/posts/geo-measurement-and-tools/"
+        },
+        {
+          "title": "GEO Blog Rebuild Case Study: Running the Five-Layer Model on Real Data",
+          "url": "/ai-agent/posts/geo-blog-rebuild-case-study/"
+        },
+        {
+          "title": "Off-Site Trust for GEO: Identity, Evidence, and Ethical Distribution",
+          "url": "/ai-agent/posts/geo-trust-and-endorsement/"
+        },
+        {
+          "title": "Structured Content for GEO: A Reader-First Playbook",
+          "url": "/ai-agent/posts/geo-structured-content-tactics/"
+        },
+        {
+          "title": "How AI Search Retrieves and Cites Sources: A Testable GEO Model",
+          "url": "/ai-agent/posts/geo-how-ai-retrieves-and-cites/"
+        },
+        {
+          "title": "GEO in 2026: Evidence, Limits, and a Practical Workflow",
+          "url": "/ai-agent/posts/geo-generative-engine-optimization-guide/"
+        },
+        {
+          "title": "2026 June Thought Notes: The Pushing-Away Comes Before the Reason for Pushing Away",
+          "url": "/growth/posts/2026-06-thought-notes/"
+        },
+        {
+          "title": "Inside open-lovable: Search, Text Protocols, and Sandboxes",
+          "url": "/ai-agent/posts/dissecting-open-lovable/"
+        },
+        {
+          "title": "Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-3-anxious/"
+        },
+        {
+          "title": "Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/"
+        },
+        {
+          "title": "Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close",
+          "url": "/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/"
+        },
+        {
+          "title": "The Super-Individual Stack: AI-Native Product Directions and Solo Builder Ops in 2026",
+          "url": "/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+        },
+        {
+          "title": "Relay Agent Architecture in 2026: A Local Implementation Audit",
+          "url": "/ai-agent/posts/relay-agent-architecture-design/"
+        },
+        {
+          "title": "Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis",
+          "url": "/growth/posts/love-seen-clearly-loved-deeply/"
+        },
+        {
+          "title": "Context Engineering: The New Foundation for AI Agents",
+          "url": "/ai-agent/posts/context-engineering-the-new-foundation/"
+        },
+        {
+          "title": "Agent Engineering Harness: The Eight Pillars Behind the 98.4%",
+          "url": "/ai-agent/posts/agent-engineering-the-98-percent-harness/"
+        },
+        {
+          "title": "2026 May Thought Notes: On the Edge, I Recognize Myself Through Action",
+          "url": "/growth/posts/2026-05-thought-notes/"
+        },
+        {
+          "title": "April 2026 Thought Notes: Living in Laos, Borders, AI and Agents",
+          "url": "/growth/posts/2026-04-thought-notes/"
+        },
+        {
+          "title": "Agent Identity: From Locke to OpenClaw",
+          "url": "/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+        },
+        {
+          "title": "Maintaining Self-Worth in the Age of AI",
+          "url": "/growth/posts/weight-of-self-in-ai-age/"
+        },
+        {
+          "title": "March 2026 Thought Notes: Money, Genocide Memory, Southeast Asia",
+          "url": "/growth/posts/2026-03-thought-notes/"
+        },
+        {
+          "title": "Lhasa: Slow and Heavy",
+          "url": "/growth/posts/2026-03-27-lhasa-slow-and-heavy/"
+        },
+        {
+          "title": "Wandering & Growing: 2025-2026 Annual Review",
+          "url": "/growth/posts/2025-annual-review/"
+        },
+        {
+          "title": "AI and Self-Identity: Who Am I in the AI Age",
+          "url": "/growth/posts/ai-and-self-identity/"
+        },
+        {
+          "title": "February 2026 Thought Notes",
+          "url": "/growth/posts/2026-02-thought-notes/"
+        },
+        {
+          "title": "January 2026 Thought Notes",
+          "url": "/growth/posts/2026-01-thought-notes/"
+        },
+        {
+          "title": "December 2025 Thought Notes",
+          "url": "/growth/posts/2025-12-thought-notes/"
+        },
+        {
+          "title": "Japan Travel Notes — Learning to Be with Time Through Wood, Fire, and Gaps",
+          "url": "/growth/posts/japan-travel-2025/"
+        },
+        {
+          "title": "November 2025 Thought Notes: Ideas and History, Daily Life, Cities",
+          "url": "/growth/posts/2025-11-thought-notes/"
+        },
+        {
+          "title": "October 2025 Thought Notes: Ideas and History, Daily Life, Self-Knowledge",
+          "url": "/growth/posts/2025-10-thought-notes/"
+        },
+        {
+          "title": "September 2025 Thought Notes: Self-Knowledge, Ideas and History, Cities",
+          "url": "/growth/posts/2025-09-thought-notes/"
+        },
+        {
+          "title": "August 2025 Thought Notes: Self-Knowledge, Daily Life, AI and Agent Systems",
+          "url": "/growth/posts/2025-08-thought-notes/"
+        },
+        {
+          "title": "July 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+          "url": "/growth/posts/2025-07-thought-notes/"
+        },
+        {
+          "title": "June 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+          "url": "/growth/posts/2025-06-thought-notes/"
+        },
+        {
+          "title": "How I Learned to Observe My Own Thinking: A Four-Month Metacognitive Shift",
+          "url": "/growth/posts/metacognitive-transformation-review/"
+        },
+        {
+          "title": "May 2025 Thought Notes: Self-Knowledge, Engineering, AI and Agent Systems",
+          "url": "/growth/posts/2025-05-thought-notes/"
+        },
+        {
+          "title": "Mem0 OSS v3 in Practice: Memory Architecture, Retrieval, and Trade-offs",
+          "url": "/projects/mem0/"
+        },
+        {
+          "title": "Microsoft UFO³ Explained: From Windows Desktop AgentOS to a Multi-Device Agent Galaxy",
+          "url": "/projects/ufo/"
+        },
+        {
+          "title": "Argo CD in Production: GitOps Sync, ApplicationSets, Rollbacks, and Security",
+          "url": "/engineering/posts/argo-cd/"
+        },
+        {
+          "title": "April 2025 Thought Notes: Self-Knowledge, AI and Agent Systems, Engineering",
+          "url": "/growth/posts/2025-04-thought-notes/"
+        },
+        {
+          "title": "LLM Recommendation Systems: Retrieval, Ranking, RAG, and Evaluation",
+          "url": "/ai-agent/posts/ai-recommend/"
+        },
+        {
+          "title": "Gemini Notebook (Formerly NotebookLM): A Source-Grounded Research Workflow",
+          "url": "/projects/notebooklm/"
+        },
+        {
+          "title": "Test-Driven Development for AI and LLM Applications: A Practical 2026 Guide",
+          "url": "/projects/tdd/"
+        },
+        {
+          "title": "Microsoft MarkItDown 0.1.6: A Practical Document-to-Markdown Guide",
+          "url": "/projects/markitdown/"
+        },
+        {
+          "title": "LangGraph Architecture in 2026: StateGraph, Persistence, and Recovery",
+          "url": "/projects/langgraph/"
+        },
+        {
+          "title": "LangChain 1.x in Production: Choosing Models, Agents, and LangGraph",
+          "url": "/projects/langchain/"
+        },
+        {
+          "title": "AI Gateway Guide: LiteLLM, Kong, APISIX, Cloudflare, or Portkey?",
+          "url": "/ai-agent/posts/ai-gateway/"
+        },
+        {
+          "title": "Independent Developer Roadmap: From Problem Validation to a Maintainable MVP",
+          "url": "/ai-agent/posts/independent-developer/"
+        },
+        {
+          "title": "GPT Researcher Guide: Python, Docker, MCP, Costs & Limits",
+          "url": "/ai-agent/posts/gpt-researcher/"
+        },
+        {
+          "title": "Jina AI in 2026: Embeddings, Reranking, Reader, and Jina Serve",
+          "url": "/ai-agent/posts/jina/"
+        },
+        {
+          "title": "March 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+          "url": "/growth/posts/2025-03-thought-notes/"
+        },
+        {
+          "title": "February 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+          "url": "/growth/posts/2025-02-thought-notes/"
+        },
+        {
+          "title": "2024 Annual Review",
+          "url": "/growth/posts/2024-annual-review/"
+        },
+        {
+          "title": "Kubernetes Resources and Learning Path Summary",
+          "url": "/engineering/posts/kubernetes-learning/"
+        },
+        {
+          "title": "LangChain 1.x in Practice: A Developer Guide to Reliable Agents",
+          "url": "/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/"
+        },
+        {
+          "title": "From Language Models to RAG: Capabilities, Limits, and Engineering",
+          "url": "/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/"
+        },
+        {
+          "title": "Open Source Resume Builders & Career Tips",
+          "url": "/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/"
+        },
+        {
+          "title": "Troubleshooting Guide for OpenIM",
+          "url": "/engineering/posts/troubleshooting-guide-for-openim/"
+        },
+        {
+          "title": "Navigating the Open Source Landscape",
+          "url": "/engineering/posts/navigating-the-open-source-landscape/"
+        },
+        {
+          "title": "SoraEase After Sora: A Prompt Archive and Developer Migration Guide",
+          "url": "/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/"
+        },
+        {
+          "title": "In 2023, I Was Wandering at the Edge of the World",
+          "url": "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/"
+        },
+        {
+          "title": "Sora Retrospective: From Research Preview and Sora 2 to Shutdown",
+          "url": "/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/"
+        },
+        {
+          "title": "Combining GitHub and Google Workspace for Effective Project Management",
+          "url": "/growth/posts/combining-github-and-google-workspace-for-project-management/"
+        },
+        {
+          "title": "Brain-Friendly English Learning Strategies",
+          "url": "/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/"
+        },
+        {
+          "title": "Flow State: Deep Focus and Happiness Guide",
+          "url": "/growth/posts/flow-state/"
+        },
+        {
+          "title": "GTD and the Quadrant Method Practice",
+          "url": "/growth/posts/gtd-and-the-four-quadrant-rule-practice/"
+        },
+        {
+          "title": "Go Directives & Automation Tools Deep Dive",
+          "url": "/engineering/posts/directives-and-the-use-of-automation-tools/"
+        },
+        {
+          "title": "Concurrent Type Checking and Cross-Platform Development in Go",
+          "url": "/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+        },
+        {
+          "title": "Vector Database Learning",
+          "url": "/ai-agent/posts/vector-database-learning/"
+        },
+        {
+          "title": "OpenIM: Version Control & Testing Workflow",
+          "url": "/engineering/posts/openim-building-an-efficient-version-control-and-testing-workflow/"
+        },
+        {
+          "title": "2024 AI Field Notes, Reassessed: From Emergence to Production RAG",
+          "url": "/ai-agent/posts/emerging-challenges-and-trends-in-2024/"
+        },
+        {
+          "title": "2023 Annual Summary Reflections and Aspirations",
+          "url": "/growth/posts/2023-annual-summary-reflections-and-aspirations/"
+        },
+        {
+          "title": "GitOps & Kubernetes Deployment Strategies",
+          "url": "/engineering/posts/gitops-practice-theory-part/"
+        },
+        {
+          "title": "Deployment and Design of Management Backend and Monitoring",
+          "url": "/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/"
+        },
+        {
+          "title": "Hugo Advanced Tutorial",
+          "url": "/engineering/posts/hugo-advanced-tutorial/"
+        },
+        {
+          "title": "Kubernetes for Kustomize Learning",
+          "url": "/engineering/posts/kubernetes-for-kustomize-learning/"
+        },
+        {
+          "title": "OpenIM Use Harbor Build Enterprise Mirror Repositories",
+          "url": "/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/"
+        },
+        {
+          "title": "Learn About Automated Testing",
+          "url": "/engineering/posts/learn-about-automated-testing/"
+        },
+        {
+          "title": "Kubernetes Control Plane - Scheduler",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/"
+        },
+        {
+          "title": "Kubernetes Control Plane - Detailed Analysis of Kubelet",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/"
+        },
+        {
+          "title": "Deep Dive into Kubernetes CNI, CRI, CSI Components",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+        },
+        {
+          "title": "Kubernetes kube-apiserver: Deep Dive into API Server Components",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/"
+        },
+        {
+          "title": "Deep Dive Into the Components of Kubernetes Etcd",
+          "url": "/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/"
+        },
+        {
+          "title": "Kubernetes Port Config via Config Files",
+          "url": "/engineering/posts/openim-cluster-deployment-parameter-passing-policy/"
+        },
+        {
+          "title": "OpenIM clustering design Kubernetes deploy concludes",
+          "url": "/engineering/posts/openim-cluster-deployment-scheme-of/"
+        },
+        {
+          "title": "Open Source Business: From Community to Revenue",
+          "url": "/engineering/posts/openim-open-source-business-journey/"
+        },
+        {
+          "title": "The Art of Asking Questions in Open Source Communities",
+          "url": "/engineering/posts/the-art-of-asking-questions-in-open-source-communities/"
+        },
+        {
+          "title": "Open Source Contribution Guidelines",
+          "url": "/engineering/posts/open-source-contribution-guidelines/"
+        },
+        {
+          "title": "Cross Platform Compilation",
+          "url": "/engineering/posts/cross-platform-compilation/"
+        },
+        {
+          "title": "Github Actions Advanced Techniques",
+          "url": "/engineering/posts/github-actions-advanced-techniques/"
+        },
+        {
+          "title": "Openim Devops Design",
+          "url": "/engineering/posts/openim-devops-design/"
+        },
+        {
+          "title": "GoReleaser v2 + GitHub Actions: Go Release Guide",
+          "url": "/engineering/posts/go-release-tools/"
+        },
+        {
+          "title": "Openim Multi Process Management",
+          "url": "/engineering/posts/openim-multi-process-management/"
+        },
+        {
+          "title": "About My Blog",
+          "url": "/growth/posts/my-first-blog/"
+        },
+        {
+          "title": "About My Hugo teaching",
+          "url": "/engineering/posts/my-hugo/"
+        },
+        {
+          "title": "Openkf Multi Architecture Image",
+          "url": "/engineering/posts/openkf-multi-architecture-image/"
+        },
+        {
+          "title": "Prow Ecological Learning",
+          "url": "/engineering/posts/prow-ecological-learning/"
+        },
+        {
+          "title": "Openim Remote Work Culture",
+          "url": "/engineering/posts/openim-remote-work-culture/"
+        },
+        {
+          "title": "Advanced Githook Design",
+          "url": "/engineering/posts/advanced-githook-design/"
+        },
+        {
+          "title": "Openim Offline Deployment Design",
+          "url": "/engineering/posts/openim-offline-deployment-design/"
+        },
+        {
+          "title": "Read Openim Project Sealos Openim Source Code",
+          "url": "/engineering/posts/read-openim-project-sealos-openim-source-code/"
+        },
+        {
+          "title": "Project Management From Theory to Practice",
+          "url": "/growth/posts/project-management-from-theory-to-practice/"
+        },
+        {
+          "title": "Stage Growth of Open Source",
+          "url": "/growth/posts/stage-growth-of-open-source/"
+        },
+        {
+          "title": "AutoGPT in 2026: From the Classic Experiment to the Platform",
+          "url": "/ai-agent/posts/use-auto-gpt/"
+        },
+        {
+          "title": "Use Go Tools Dlv",
+          "url": "/engineering/posts/use-go-tools-dlv/"
+        },
+        {
+          "title": "Participating in This Project",
+          "url": "/engineering/posts/participating-in-this-project/"
+        },
+        {
+          "title": "Kubernetes an Article to Get Started Quickly",
+          "url": "/engineering/posts/kubernetes-an-article-to-get-started-quickly/"
+        }
+      ],
+      "filter": "all"
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-before.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-after-wheel.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-opened-scrolled-article.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-returned-library.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One fresh390en isolatedChromium actualwheel850→visible laterarticleclick→real Library return; original public article fetch, localstorage only. Raw ancestor scroll positions and saved preference compare actual ownership; observed completion is not a pass assertion for persistence/AT/fullmatrix."
+}

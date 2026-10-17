@@ -1,0 +1,5 @@
+PASS actual mountOnboarding normal reveal boundary 549ms visible / 550ms complete
+PASS actual mountOnboarding normal reveal boundary failure cancels pending hide safely
+PASS actual replay original minimum/reveal timers complete with the chosen controlled advances
+PASS actual enterDesktop/visit source: replacing an owned pending read with seat visit resolves old entry false and retains café
+Limits: controlled Node timer/DOM doubles validate source sequencing only. No Playwright browser clock, real WebGL first frame, native hit targets, or remote CI claimed here.

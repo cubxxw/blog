@@ -1,0 +1,76 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('#article-fab')
+    - locator resolved to <button aria-label="目录" id="article-fab" aria-expanded="false" aria-controls="article-bottom-sheet" class="article-fab article-fab--hidden">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <section class="related-posts">…</section> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <section class="related-posts">…</section> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <section class="related-posts">…</section> intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+    56 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="article-layout">…</div> intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+    at <SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/probe-article-resize.browser.mjs:25:88 {
+  log: [
+    "  - waiting for locator('#article-fab')",
+    '    - locator resolved to <button aria-label="目录" id="article-fab" aria-expanded="false" aria-controls="article-bottom-sheet" class="article-fab article-fab--hidden">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <section class="related-posts">…</section> intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <section class="related-posts">…</section> intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <section class="related-posts">…</section> intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 500ms',
+    '    56 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <div class="article-layout">…</div> intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.2

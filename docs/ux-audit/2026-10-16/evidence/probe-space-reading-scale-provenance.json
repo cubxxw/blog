@@ -1,0 +1,24 @@
+{
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-scale.json": "3c754f87782cc6c7c7d409910b3bd23902e05462a59ba5660de1f658859ca848",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-scale.log": "3f4ccaa76a54c3df3ff6c596c3ba330c4b5600a7c6b3d0f3af0157897097825e",
+    "docs/ux-audit/2026-10-16/probe-space-reading-scale.browser.mjs": "9738e7ebe6ebe613a9b78ceb61242ccacd8583e4bdb6572d7c8457df92ce07d9"
+  },
+  "sources": {
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/css/space.css": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "layouts/partials/space/profile.html": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205"
+  },
+  "images": {
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-1440-zh-welcome.png": "a5496b441a673d385285f62bc1673ea884680a6a2656df2a65fd6b1054a50790",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-1440-zh-library.png": "4d8ec7f5224d00fc75a97186786d668ee51c5125b34a798e2d2112b40ab615d6",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-390-en-welcome.png": "7cceb7192a67db844482ac3f4810ef1efc51ca889dea0c229cd7196ff2eb5baa",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-reading-390-en-library.png": "fbe92f1ebda33ca2c0feb0ff02d5212d486da00df1472088a5000e3feef25a70"
+  },
+  "parentReadAll4PNG": true,
+  "observation": "1440zh profile description~10.66/action~8.95 viewportCSSpx; library title~10.66/date~7.42/filter~9.02/description~8.2.390en librarytitle~9.84/date~7.42/filter~8.2/description~8.2; large44phonehit does not imply legible label.",
+  "measurementLimit": "Planar bbox.width/offsetWidth ratio has CSS integer offsetWidth rounding, especially short inline small/action; values approximate projected CSSfont size, not exact glyph rasterheight. Many-pixel deficit is also visibly confirmed in four PNGs.",
+  "scope": "Onlynamedfirstvisibletext/control samples and currentnormalwindow sizes; true full scroll/filter/favorite state/matrix not checked. UX046/source unrelated.",
+  "productionChanged": false
+}

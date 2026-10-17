@@ -1,0 +1,30 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'playwright' test tests/e2e/article-chat-continuity-contracts.spec.ts --list
+Listing tests:
+  [desktop] › article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly
+  [desktop] › article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly
+  [desktop] › article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI
+  [desktop] › article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI
+  [desktop] › article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout
+  [desktop] › article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts
+  [desktop] › article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once
+  [desktop] › article-chat-continuity-contracts.spec.ts:97:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts
+  [desktop] › article-chat-continuity-contracts.spec.ts:102:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request
+  [desktop] › article-chat-continuity-contracts.spec.ts:109:5 › delayed shared initialization and two entry calls still create one root, controller and selection request
+  [desktop] › article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside
+  [desktop] › article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside
+  [desktop] › article-chat-continuity-contracts.spec.ts:131:5 › a real compact selection toolbar analysis owns focus, preserves the draft and closes with Escape
+  [mobile] › article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly
+  [mobile] › article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly
+  [mobile] › article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI
+  [mobile] › article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI
+  [mobile] › article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout
+  [mobile] › article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts
+  [mobile] › article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once
+  [mobile] › article-chat-continuity-contracts.spec.ts:97:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts
+  [mobile] › article-chat-continuity-contracts.spec.ts:102:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request
+  [mobile] › article-chat-continuity-contracts.spec.ts:109:5 › delayed shared initialization and two entry calls still create one root, controller and selection request
+  [mobile] › article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside
+  [mobile] › article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside
+  [mobile] › article-chat-continuity-contracts.spec.ts:131:5 › a real compact selection toolbar analysis owns focus, preserves the draft and closes with Escape
+Total: 26 tests in 1 file

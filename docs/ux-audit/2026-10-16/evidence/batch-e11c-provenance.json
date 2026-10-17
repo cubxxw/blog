@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-15T21:39:55.361453+00:00",
+  "type": "explicit provenance erratum; no test/source mutation",
+  "receipt": {
+    "path": "batch-e11c-actions.json",
+    "sha256": "b25141c5e831abcb60233a14f43d132075f830a25ec0d0a9d4145e35876cd9c3",
+    "reportedLiteral": "batch-e11-source.json"
+  },
+  "verifiedSourceManifest": {
+    "path": "batch-e11c-source.json",
+    "sha256": "4378ef0084f310290fd865f3a208910e52a4925b9e1c974dbd631ee6e0dacbfc"
+  },
+  "executedRunner": {
+    "path": "../batch-e11c-actions.browser.mjs",
+    "sha256": "6306bd68b887074bafb3822a7d0bbd66d616a7866ff4d708c32888e9af02c148",
+    "binding": "lines5–7 read `${prefix}-source.json` with prefix=batch-e11c and assert every frozen file SHA before launching browser"
+  },
+  "explanation": "The result metadata retains a copied b literal. The actual executable input is c and all four frozen hashes match. Original raw receipt, runner and b evidence remain unchanged; use verifiedSourceManifest for this run. Not a production defect and no behavior rerun is claimed."
+}

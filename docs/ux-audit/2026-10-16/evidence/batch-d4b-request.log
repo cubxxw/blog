@@ -1,0 +1,5 @@
+PASS D1.share-late-refusal-no-modal
+PASS D1.travel-stop-preserves-question
+PASS D1.travel-close-switch-isolates-request
+PASS D1.faq-stream-stop-restores-input
+PASS D1.search-close-cancels-and-clears

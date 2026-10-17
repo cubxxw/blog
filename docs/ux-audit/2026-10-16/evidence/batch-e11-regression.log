@@ -1,0 +1,9 @@
+
+Running 2 tests using 1 worker
+
+(node:73082) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › tests/e2e/header-search.spec.ts:47:7 › Header Search Interaction › desktop - arrow keys select results and Enter opens the selected article (1.1s)
+  ✓  2 [desktop] › tests/e2e/header-search.spec.ts:78:7 › Header Search Interaction › desktop - Control+Enter asks AI without opening a result (1.1s)
+
+  2 passed (2.8s)

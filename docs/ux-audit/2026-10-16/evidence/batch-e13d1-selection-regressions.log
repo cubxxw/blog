@@ -1,0 +1,11 @@
+
+Running 4 tests using 1 worker
+
+(node:87095) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/article-selection.spec.ts:57:7 › 390px: selected AI uses existing chat, preserves draft and follows up (971ms)
+  ✓  2 tests/e2e/article-selection.spec.ts:57:7 › 1280px: selected AI uses existing chat, preserves draft and follows up (719ms)
+  ✓  3 tests/e2e/article-selection.spec.ts:197:5 › failed AI retry avoids duplicate question and poisoned history (661ms)
+  ✓  4 tests/e2e/article-selection.spec.ts:211:5 › a brief curve connects the passage to desktop chat and then clears (1.4s)
+
+  4 passed (4.5s)

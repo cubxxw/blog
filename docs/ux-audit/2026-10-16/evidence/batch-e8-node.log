@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: opening two applications retains both and gives the latest window focus
+ok 1 - opening two applications retains both and gives the latest window focus
+  ---
+  duration_ms: 5.109084
+  type: 'test'
+  ...
+# Subtest: a minimized application restores its original geometry without duplicating itself
+ok 2 - a minimized application restores its original geometry without duplicating itself
+  ---
+  duration_ms: 0.329084
+  type: 'test'
+  ...
+# Subtest: a persisted window from a large screen stays reachable after resizing
+ok 3 - a persisted window from a large screen stays reachable after resizing
+  ---
+  duration_ms: 0.345416
+  type: 'test'
+  ...
+# Subtest: corrupt snapshots and unknown applications do not poison the workspace
+ok 4 - corrupt snapshots and unknown applications do not poison the workspace
+  ---
+  duration_ms: 0.973542
+  type: 'test'
+  ...
+# Subtest: local writing survives serialization and respects the storage size boundary
+ok 5 - local writing survives serialization and respects the storage size boundary
+  ---
+  duration_ms: 0.314458
+  type: 'test'
+  ...
+# Subtest: maximize and restore returns to the pre-maximize rectangle
+ok 6 - maximize and restore returns to the pre-maximize rectangle
+  ---
+  duration_ms: 0.122209
+  type: 'test'
+  ...
+# Subtest: closing the active window focuses the next visible window
+ok 7 - closing the active window focuses the next visible window
+  ---
+  duration_ms: 0.075708
+  type: 'test'
+  ...
+# Subtest: only safe site and HTTPS links can be opened
+ok 8 - only safe site and HTTPS links can be opened
+  ---
+  duration_ms: 0.126
+  type: 'test'
+  ...
+# Subtest: reader links resolved to the local site retain their safe HTTP URLs
+ok 9 - reader links resolved to the local site retain their safe HTTP URLs
+  ---
+  duration_ms: 0.199625
+  type: 'test'
+  ...
+# Subtest: short desktops fall back without mutating rectangles, maximize state or local writing
+ok 10 - short desktops fall back without mutating rectangles, maximize state or local writing
+  ---
+  duration_ms: 1.541708
+  type: 'test'
+  ...
+# Subtest: ordinary two- and four-window desktops tile within the real usable area
+ok 11 - ordinary two- and four-window desktops tile within the real usable area
+  ---
+  duration_ms: 0.833333
+  type: 'test'
+  ...
+# Subtest: zero windows use overview and one eligible window fits the workspace
+ok 12 - zero windows use overview and one eligible window fits the workspace
+  ---
+  duration_ms: 0.152542
+  type: 'test'
+  ...
+# Subtest: the raw 320 by 260 cell boundary is enforced before fitRect can enlarge it
+ok 13 - the raw 320 by 260 cell boundary is enforced before fitRect can enlarge it
+  ---
+  duration_ms: 0.1235
+  type: 'test'
+  ...
+# Subtest: a wider short desktop may use a valid alternative column count
+ok 14 - a wider short desktop may use a valid alternative column count
+  ---
+  duration_ms: 1.361833
+  type: 'test'
+  ...
+# Subtest: minimized windows keep their rectangles and do not consume a tiling cell
+ok 15 - minimized windows keep their rectangles and do not consume a tiling cell
+  ---
+  duration_ms: 0.277917
+  type: 'test'
+  ...
+# Subtest: phone capacity uses the real viewport while retaining larger stored rectangles
+ok 16 - phone capacity uses the real viewport while retaining larger stored rectangles
+  ---
+  duration_ms: 0.083
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 203.228458

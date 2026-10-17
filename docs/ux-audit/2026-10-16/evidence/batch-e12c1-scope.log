@@ -1,0 +1,4 @@
+JS differs from frozen E12c only by fractional preview width/height measurement via getBoundingClientRect. Reversing those3 lines recovers5f472b53 exactly.
+assets/css/extended/zzz-footnote-preview.css: byte-identical to frozen E12c.
+tests/e2e/footnote-preview-contracts.spec.ts: byte-identical to frozen E12c.
+layouts/partials/footer.html: byte-identical to frozen E12c.

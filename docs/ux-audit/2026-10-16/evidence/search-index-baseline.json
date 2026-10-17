@@ -1,0 +1,83 @@
+{
+  "sources": {
+    "assets/js/search-palette.js": "0c448966d5ff9a2b15569fc759f39a63633cf2bf078c4e7767cdbcfdf2b39c6c",
+    "layouts/partials/search-palette.html": "a2dcaf5f07f656cdd56db2fcbe86bd383f96eefc697ff9d3e29ddbb22d9257aa",
+    "themes/PaperMod/assets/css/common/header.css": "3708186f89820caef71b40a29d1be23506bd568419bb37f1cc144094cd2eb15a"
+  },
+  "previewCheckpoint": "b5b6fa34; E10 Travel source WIP never built and disjoint from these frozen global search files",
+  "observations": [
+    {
+      "kind": "controlled indefinitely pending search-index request",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "zh",
+      "motion": "reduce",
+      "initial": {
+        "hidden": false,
+        "busy": "true",
+        "value": "Kubernetes",
+        "emptyVisible": false,
+        "emptyText": "没有找到匹配结果",
+        "count": "0",
+        "fullHref": "https://cubxxw.com/zh/search/",
+        "focusInside": true,
+        "text": "THE QUIET COLLECTOR / 静默收藏者\n\n搜索文章、笔记与关键词\nESC\n✦\n\n使用上下方向键选择结果，按回车打开。按 Command 或 Control 加回车询问 AI。\n\n找到 0 条结果\n完整搜索 →"
+      },
+      "afterVirtual60s": {
+        "hidden": false,
+        "busy": "true",
+        "value": "Kubernetes",
+        "emptyVisible": false,
+        "emptyText": "没有找到匹配结果",
+        "count": "0",
+        "fullHref": "https://cubxxw.com/zh/search/?q=Kubernetes",
+        "focusInside": true,
+        "text": "THE QUIET COLLECTOR / 静默收藏者\n\n搜索文章、笔记与关键词\nESC\n✦\n\n使用上下方向键选择结果，按回车打开。按 Command 或 Control 加回车询问 AI。\n\n找到 0 条结果\n完整搜索 →"
+      },
+      "closeReturned": true,
+      "reopened": {
+        "hidden": false,
+        "busy": "true",
+        "value": "AI Agent",
+        "emptyVisible": false,
+        "emptyText": "没有找到匹配结果",
+        "count": "0",
+        "fullHref": "https://cubxxw.com/zh/search/?q=AI%20Agent",
+        "focusInside": true,
+        "text": "THE QUIET COLLECTOR / 静默收藏者\n\n搜索文章、笔记与关键词\nESC\n✦\n\n使用上下方向键选择结果，按回车打开。按 Command 或 Control 加回车询问 AI。\n\n找到 0 条结果\n完整搜索 →"
+      },
+      "indexRequests": 2,
+      "virtualClockMs": 120000
+    },
+    {
+      "kind": "actual available index, Home/End observation only; editable combobox APG allows optional popup variants, no automatic violation classification",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "zh",
+      "results": 10,
+      "beforeHome": {
+        "value": "Kubernetes",
+        "start": 9,
+        "end": 9,
+        "active": null
+      },
+      "afterHome": {
+        "value": "Kubernetes",
+        "start": 9,
+        "end": 9,
+        "active": "search-result-option-0"
+      },
+      "afterEnd": {
+        "value": "Kubernetes",
+        "start": 9,
+        "end": 9,
+        "active": "search-result-option-9"
+      }
+    }
+  ],
+  "limits": "Exploratory observations, not passing acceptance. Sixty-second intervals are browser virtual-clock advances with an intentionally pending intercepted local index. No real outage, backend/model request, physical phone or full keyboard certification."
+}

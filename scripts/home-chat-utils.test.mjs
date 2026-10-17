@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createSSEParser, renderMessage, safeLink } from '../assets/js/home-chat-utils.mjs';
+import { createSSEParser, renderMessage, safeLink, createIdleRequest } from '../assets/js/home-chat-utils.mjs';
 import * as chatUtils from '../assets/js/home-chat-utils.mjs';
 
 test('question sampling returns six distinct eligible questions without changing the pool', () => {
@@ -61,4 +61,37 @@ test('article cards and inline links preserve safe URLs and escape ampersands on
   assert.match(rendered, /href="https:\/\/example.com\/docs\?a=1&amp;b=2"/);
   assert.match(rendered, /<strong>today<\/strong>/);
   assert.equal((rendered.match(/<p /g) || []).length, (rendered.match(/<\/p>/g) || []).length);
+});
+
+test('idle deadline races an uncooperative operation and aborts its signal at 25s', async t => {
+  t.mock.timers.enable({apis:['setTimeout']});
+  const request=createIdleRequest(),pending=request.wait(new Promise(()=>{}));
+  const rejected=assert.rejects(pending,{name:'TimeoutError'});
+  t.mock.timers.tick(24_999);assert.equal(request.signal.aborted,false);
+  t.mock.timers.tick(1);await rejected;assert.equal(request.signal.aborted,true);
+  assert.equal(request.reason.name,'TimeoutError');request.dispose();
+});
+
+test('headers and subsequent chunks each renew the idle deadline', async t => {
+  t.mock.timers.enable({apis:['setTimeout']});
+  const request=createIdleRequest(),rejected=assert.rejects(request.wait(new Promise(()=>{})),{name:'TimeoutError'});
+  for(let i=0;i<3;i++) {t.mock.timers.tick(24_000);assert.equal(request.signal.aborted,false);request.touch();}
+  t.mock.timers.tick(24_999);assert.equal(request.signal.aborted,false);
+  t.mock.timers.tick(1);await rejected;request.dispose();
+});
+
+test('explicit stop settles immediately even if the original operation later resolves', async t => {
+  t.mock.timers.enable({apis:['setTimeout']});
+  let resolve;
+  const request=createIdleRequest(),operation=new Promise(done=>{resolve=done;});
+  const rejected=assert.rejects(request.wait(operation),{name:'AbortError'});
+  request.abort();await rejected;resolve('late reply');await operation;
+  assert.equal(request.signal.aborted,true);request.dispose();
+});
+
+test('completed work disposes its deadline without aborting a successful request', async t => {
+  t.mock.timers.enable({apis:['setTimeout']});
+  const request=createIdleRequest();assert.equal(await request.wait(Promise.resolve('done')),'done');
+  request.dispose();t.mock.timers.tick(100_000);assert.equal(request.signal.aborted,false);
+  request.touch();request.abort();assert.equal(request.signal.aborted,false);
 });

@@ -1,0 +1,8 @@
+{
+  "path": "integration-onboarding-clock-boundaries.mjs",
+  "sha256": "29f58700de13a046eced2b4614ee65512f43578b1ae2140733f1bfe971052a1b",
+  "provenance": "Exact source body executed through node --input-type=module stdin in worktree; original stdin was not saved. Reconstructed verbatim from that executed tool invocation, with no refactoring or rerun.",
+  "originalLog": "integration-onboarding-clock-boundaries.log",
+  "replayFromWorktree": "node --input-type=module < /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-500-attempt2/integration-onboarding-clock-boundaries.mjs",
+  "limits": "Source/timer/DOM doubles only; no real browser or Playwright Clock validation."
+}

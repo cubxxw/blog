@@ -1,0 +1,1381 @@
+{
+  "kind": "Exploratory normal-state app capture, not functional certification; backend503 isolated; no external action",
+  "observations": [
+    {
+      "app": "products",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 1422,
+        "height": 748,
+        "scrollHeight": 1085,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "产品目录",
+          "tag": "P",
+          "cssFont": "9px",
+          "physicalFont": 7.3800056554094144,
+          "width": 85.28007507324219,
+          "height": 11.070022583007812
+        },
+        {
+          "text": "Talent Signal",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.290023803710938
+        },
+        {
+          "text": "IMStage",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.290023803710938
+        },
+        {
+          "text": "Solo Compass",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.290023803710938
+        },
+        {
+          "text": "DayPage",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.290023803710938
+        },
+        {
+          "text": "Telepace",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.290008544921875
+        },
+        {
+          "text": "Apply Agent",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.290008544921875
+        },
+        {
+          "text": "Agent Diff Guard",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.290008544921875
+        },
+        {
+          "text": "继续探索",
+          "tag": "P",
+          "cssFont": "9px",
+          "physicalFont": 7.3800056554094144,
+          "width": 85.28007507324219,
+          "height": 11.07000732421875
+        },
+        {
+          "text": "构建笔记",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.2900390625
+        },
+        {
+          "text": "我的书架",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 100.04008483886719,
+          "height": 28.2900390625
+        },
+        {
+          "text": "测试中",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480008797303533,
+          "width": 1012.7008056640625,
+          "height": 21.230331420898438
+        },
+        {
+          "text": "Talent Signal",
+          "tag": "H2",
+          "cssFont": "25px",
+          "physicalFont": 20.500015709470595,
+          "width": 1012.7008056640625,
+          "height": 24.600006103515625
+        },
+        {
+          "text": "知道现在谁需要你，以及为什么。",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480008797303533,
+          "width": 1012.7008056640625,
+          "height": 21.230331420898438
+        },
+        {
+          "text": "面向独立猎头的关系智能工具，把关键对话变成可核对的候选人动态、证据链和一个明确下一步，同时把最终判断留给猎头。",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480008797303533,
+          "width": 1012.7008056640625,
+          "height": 21.2303466796875
+        },
+        {
+          "text": "打开真实产品 ↗",
+          "tag": "A",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 93.92852783203125,
+          "height": 29.52001953125
+        },
+        {
+          "text": "测试预览 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 45.625335693359375,
+          "height": 13.530029296875
+        },
+        {
+          "text": "源码 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 27.5853271484375,
+          "height": 13.530029296875
+        },
+        {
+          "text": "✳ 聊聊这个产品",
+          "tag": "BUTTON",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 93.78759765625,
+          "height": 29.52001953125
+        },
+        {
+          "text": "当前边界：当前使用合成数据验证产品语言、审阅状态和跨端流程，还不是生产候选人数据系统。",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480008797303533,
+          "width": 1012.7008056640625,
+          "height": 21.2303466796875
+        }
+      ]
+    },
+    {
+      "app": "books",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 1422,
+        "height": 748,
+        "scrollHeight": 748,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "文章目录",
+          "tag": "BUTTON",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 63.9599609375,
+          "height": 29.52001953125
+        },
+        {
+          "text": "BEAR / 01",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.840011596679688
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.84002685546875
+        },
+        {
+          "text": "胡志明的车流、大叻的雾、会安的灯——两个月慢火炖出来的湄公河随笔。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.200006283788237,
+          "width": 268.639892578125,
+          "height": 12.300018310546875
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 45.62535095214844,
+          "height": 13.530029296875
+        },
+        {
+          "text": "BEAR / 02",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.840011596679688
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.84002685546875
+        },
+        {
+          "text": "石头、树根与帝国——走过吴哥的庙宇与废墟，听一个逝去帝国的回声。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.200006283788237,
+          "width": 260.43988037109375,
+          "height": 12.300018310546875
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 45.6253662109375,
+          "height": 13.530029296875
+        },
+        {
+          "text": "BEAR / 03",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.84002685546875
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.84002685546875
+        },
+        {
+          "text": "海拔 3650 米的拉萨——被高原强制降速的一段路，看云、看人、看信仰怎么落进日子里。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.200006283788237,
+          "width": 327.21868896484375,
+          "height": 12.29998779296875
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 45.62535095214844,
+          "height": 13.530029296875
+        },
+        {
+          "text": "BEAR / 04",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.84002685546875
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.5600050270305905,
+          "width": 81.1800537109375,
+          "height": 9.84002685546875
+        },
+        {
+          "text": "一部写后周太祖郭威的历史长篇——从颈刺飞雀的潞州孤儿，到碎玉罢租、薄葬嵩陵的开国天子。史实为骨，文学为肉。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.200006283788237,
+          "width": 432.64007568359375,
+          "height": 12.29998779296875
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 45.6253662109375,
+          "height": 13.530029296875
+        }
+      ]
+    },
+    {
+      "app": "contact",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 1422,
+        "height": 748,
+        "scrollHeight": 748,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "SAY HELLO",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.200006283788237,
+          "width": 1116.8409423828125,
+          "height": 15.170013427734375
+        },
+        {
+          "text": "有想法，就聊聊。",
+          "tag": "H2",
+          "cssFont": "25px",
+          "physicalFont": 20.500015709470595,
+          "width": 1116.8409423828125,
+          "height": 28.700027465820312
+        },
+        {
+          "text": "产品反馈、文章讨论，或者分享一段路上的故事。",
+          "tag": "P",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 1116.8409423828125,
+          "height": 18.193771362304688
+        },
+        {
+          "text": "GitHub ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 59.270660400390625,
+          "height": 25.010009765625
+        },
+        {
+          "text": "X ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 35.40095520019531,
+          "height": 25.010009765625
+        },
+        {
+          "text": "知乎 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 47.265350341796875,
+          "height": 25.010009765625
+        },
+        {
+          "text": "LinkedIn ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 65.30535888671875,
+          "height": 25.010009765625
+        },
+        {
+          "text": "Bilibili ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 54.5941162109375,
+          "height": 25.010009765625
+        },
+        {
+          "text": "YouTube ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 65.65127563476562,
+          "height": 25.010009765625
+        },
+        {
+          "text": "Instagram ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 72.05755615234375,
+          "height": 25.010009765625
+        },
+        {
+          "text": "Polarsteps ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 74.55596923828125,
+          "height": 25.010009765625
+        },
+        {
+          "text": "先写一张便笺",
+          "tag": "H3",
+          "cssFont": "14px",
+          "physicalFont": 11.480008797303533,
+          "width": 1116.8409423828125,
+          "height": 13.7734375
+        },
+        {
+          "text": "通过邮件发给我 ↗",
+          "tag": "A",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 103.76852416992188,
+          "height": 29.52001953125
+        },
+        {
+          "text": "在 GitHub 公开留言 ↗",
+          "tag": "A",
+          "cssFont": "14px",
+          "physicalFont": 11.480008797303533,
+          "width": 112.48104858398438,
+          "height": 17.22003173828125
+        },
+        {
+          "text": "WhatsApp ↗",
+          "tag": "A",
+          "cssFont": "14px",
+          "physicalFont": 11.480008797303533,
+          "width": 66.67630004882812,
+          "height": 17.22003173828125
+        },
+        {
+          "text": "草稿保存在你的浏览器。选择渠道后，由你确认发送；这里不会代发，也不会显示虚假的送达状态。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.200006283788237,
+          "width": 1116.8409423828125,
+          "height": 15.170013427734375
+        },
+        {
+          "text": "想先了解我？和 AI 向导聊聊",
+          "tag": "BUTTON",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 147.6385498046875,
+          "height": 29.52001953125
+        }
+      ]
+    },
+    {
+      "app": "settings",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 1422,
+        "height": 748,
+        "scrollHeight": 814,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "MAKE YOURSELF AT HOME",
+          "tag": "P",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 1126.680908203125,
+          "height": 16.233444213867188
+        },
+        {
+          "text": "你的工作区，你来安排。",
+          "tag": "H2",
+          "cssFont": "21px",
+          "physicalFont": 17.2200131959553,
+          "width": 1126.680908203125,
+          "height": 20.653762817382812
+        },
+        {
+          "text": "语言",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 1126.680908203125,
+          "height": 11.800323486328125
+        },
+        {
+          "text": "中文✓",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 106.60009765625,
+          "height": 36.08003234863281
+        },
+        {
+          "text": "English",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 106.60006713867188,
+          "height": 36.08003234863281
+        },
+        {
+          "text": "切换语言，笔记和窗口会留在原处。",
+          "tag": "P",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 1126.680908203125,
+          "height": 16.233428955078125
+        },
+        {
+          "text": "咖啡馆",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 1126.680908203125,
+          "height": 11.80029296875
+        },
+        {
+          "text": "换个地方",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 62.32005310058594,
+          "height": 36.08001708984375
+        },
+        {
+          "text": "回到咖啡馆",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 71.34004211425781,
+          "height": 36.08001708984375
+        },
+        {
+          "text": "应用外观",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 1126.680908203125,
+          "height": 11.800323486328125
+        },
+        {
+          "text": "经典浅色",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 62.32005310058594,
+          "height": 36.080047607421875
+        },
+        {
+          "text": "深色",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 44.28004455566406,
+          "height": 36.080047607421875
+        },
+        {
+          "text": "桌面颜色",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 1126.680908203125,
+          "height": 11.800323486328125
+        },
+        {
+          "text": "经典青绿",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 62.32005310058594,
+          "height": 36.08001708984375
+        },
+        {
+          "text": "暮蓝",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 44.28004455566406,
+          "height": 36.08001708984375
+        },
+        {
+          "text": "鼠尾草",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 53.300048828125,
+          "height": 36.08001708984375
+        },
+        {
+          "text": "当前可用范围",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840007540545885,
+          "width": 1126.680908203125,
+          "height": 11.80029296875
+        },
+        {
+          "text": "当前浏览器保存",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.516675160141313,
+          "width": 52.58251953125,
+          "height": 11.2750244140625
+        },
+        {
+          "text": "尚未接入",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.516675160141313,
+          "width": 30.0452880859375,
+          "height": 11.2750244140625
+        },
+        {
+          "text": "在相册中加载公开内容",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.516675160141313,
+          "width": 75.1197509765625,
+          "height": 11.2750244140625
+        },
+        {
+          "text": "未连接（仅本地开发可用）",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.516675160141313,
+          "width": 90.135986328125,
+          "height": 11.2750244140625
+        },
+        {
+          "text": "工作区会记住你的布局和笔记。清除网站数据会移除它们，可以先导出一份。AI 向导可以读公开资料；不会替你发布内容或操作个人账户。",
+          "tag": "P",
+          "cssFont": "11px",
+          "physicalFont": 9.020006912167062,
+          "width": 1126.680908203125,
+          "height": 16.23345947265625
+        }
+      ]
+    },
+    {
+      "app": "products",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 370,
+        "height": 678,
+        "scrollHeight": 678,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "产品目录",
+          "tag": "P",
+          "cssFont": "9px",
+          "physicalFont": 7.3800837336359795,
+          "width": 57.4006462097168,
+          "height": 11.070114135742188
+        },
+        {
+          "text": "Talent Signal",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.28050231933594
+        },
+        {
+          "text": "IMStage",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.28050231933594
+        },
+        {
+          "text": "Solo Compass",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.280487060546875
+        },
+        {
+          "text": "DayPage",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.280487060546875
+        },
+        {
+          "text": "Telepace",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.280487060546875
+        },
+        {
+          "text": "Apply Agent",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.280487060546875
+        },
+        {
+          "text": "Agent Diff Guard",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.280517578125
+        },
+        {
+          "text": "继续探索",
+          "tag": "P",
+          "cssFont": "9px",
+          "physicalFont": 7.3800837336359795,
+          "width": 57.4006462097168,
+          "height": 11.07012939453125
+        },
+        {
+          "text": "构建笔记",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.28045654296875
+        },
+        {
+          "text": "我的书架",
+          "tag": "BUTTON",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 72.16081237792969,
+          "height": 44.28045654296875
+        },
+        {
+          "text": "测试中",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480130252322635,
+          "width": 194.3422088623047,
+          "height": 21.230560302734375
+        },
+        {
+          "text": "Talent Signal",
+          "tag": "H2",
+          "cssFont": "21px",
+          "physicalFont": 17.22019537848395,
+          "width": 194.3422088623047,
+          "height": 20.653976440429688
+        },
+        {
+          "text": "知道现在谁需要你，以及为什么。",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480130252322635,
+          "width": 194.3422088623047,
+          "height": 21.230560302734375
+        },
+        {
+          "text": "面向独立猎头的关系智能工具，把关键对话变成可核对的候选人动态、证据链和一个明确下一步，同时把最终判断留给猎头。",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480130252322635,
+          "width": 194.3422088623047,
+          "height": 84.92221069335938
+        },
+        {
+          "text": "打开真实产品 ↗",
+          "tag": "A",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 93.92950439453125,
+          "height": 29.520355224609375
+        },
+        {
+          "text": "测试预览 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 45.625823974609375,
+          "height": 13.530181884765625
+        },
+        {
+          "text": "源码 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 27.58563232421875,
+          "height": 13.530181884765625
+        },
+        {
+          "text": "✳ 聊聊这个产品",
+          "tag": "BUTTON",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 93.78855895996094,
+          "height": 44.280517578125
+        },
+        {
+          "text": "当前边界：当前使用合成数据验证产品语言、审阅状态和跨端流程，还不是生产候选人数据系统。",
+          "tag": "P",
+          "cssFont": "14px",
+          "physicalFont": 11.480130252322635,
+          "width": 194.3422088623047,
+          "height": 63.69171142578125
+        }
+      ]
+    },
+    {
+      "app": "books",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 370,
+        "height": 678,
+        "scrollHeight": 678,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "文章目录",
+          "tag": "BUTTON",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 63.960723876953125,
+          "height": 44.28050231933594
+        },
+        {
+          "text": "BEAR / 01",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08086395263672,
+          "height": 9.840118408203125
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08086395263672,
+          "height": 9.840118408203125
+        },
+        {
+          "text": "胡志明的车流、大叻的雾、会安的灯——两个月慢火炖出来的湄公河随笔。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 129.15145874023438,
+          "height": 36.900421142578125
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 45.62582778930664,
+          "height": 13.5301513671875
+        },
+        {
+          "text": "BEAR / 02",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08085632324219,
+          "height": 9.840118408203125
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08085632324219,
+          "height": 9.840118408203125
+        },
+        {
+          "text": "石头、树根与帝国——走过吴哥的庙宇与废墟，听一个逝去帝国的回声。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 129.15147399902344,
+          "height": 36.900421142578125
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 45.625823974609375,
+          "height": 13.5301513671875
+        },
+        {
+          "text": "BEAR / 03",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08086395263672,
+          "height": 9.840118408203125
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08086395263672,
+          "height": 9.840087890625
+        },
+        {
+          "text": "海拔 3650 米的拉萨——被高原强制降速的一段路，看云、看人、看信仰怎么落进日子里。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 129.15145874023438,
+          "height": 36.900390625
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 45.62582778930664,
+          "height": 13.5301513671875
+        },
+        {
+          "text": "BEAR / 04",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08085632324219,
+          "height": 9.840118408203125
+        },
+        {
+          "text": "熊鑫伟 · 自著",
+          "tag": "SMALL",
+          "cssFont": "8px",
+          "physicalFont": 6.560074429898648,
+          "width": 77.08085632324219,
+          "height": 9.840087890625
+        },
+        {
+          "text": "一部写后周太祖郭威的历史长篇——从颈刺飞雀的潞州孤儿，到碎玉罢租、薄葬嵩陵的开国天子。史实为骨，文学为肉。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 129.15147399902344,
+          "height": 49.2005615234375
+        },
+        {
+          "text": "开始阅读 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 45.625823974609375,
+          "height": 13.5301513671875
+        }
+      ]
+    },
+    {
+      "app": "contact",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 370,
+        "height": 678,
+        "scrollHeight": 708,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "SAY HELLO",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 268.9630126953125,
+          "height": 15.170166015625
+        },
+        {
+          "text": "有想法，就聊聊。",
+          "tag": "H2",
+          "cssFont": "25px",
+          "physicalFont": 20.500232593433275,
+          "width": 268.9630126953125,
+          "height": 28.7003173828125
+        },
+        {
+          "text": "产品反馈、文章讨论，或者分享一段路上的故事。",
+          "tag": "P",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 268.9630126953125,
+          "height": 18.193954467773438
+        },
+        {
+          "text": "GitHub ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 59.271297454833984,
+          "height": 36.08039855957031
+        },
+        {
+          "text": "X ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 35.401336669921875,
+          "height": 36.08039855957031
+        },
+        {
+          "text": "知乎 ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 47.265838623046875,
+          "height": 36.08039855957031
+        },
+        {
+          "text": "LinkedIn ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 65.30606079101562,
+          "height": 36.08039855957031
+        },
+        {
+          "text": "Bilibili ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 54.59467697143555,
+          "height": 36.080413818359375
+        },
+        {
+          "text": "YouTube ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 65.65199279785156,
+          "height": 36.080413818359375
+        },
+        {
+          "text": "Instagram ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 72.05830383300781,
+          "height": 36.080413818359375
+        },
+        {
+          "text": "Polarsteps ↗",
+          "tag": "A",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 74.55677795410156,
+          "height": 36.080413818359375
+        },
+        {
+          "text": "先写一张便笺",
+          "tag": "H3",
+          "cssFont": "14px",
+          "physicalFont": 11.480130252322635,
+          "width": 268.9630126953125,
+          "height": 13.773590087890625
+        },
+        {
+          "text": "通过邮件发给我 ↗",
+          "tag": "A",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 103.76960754394531,
+          "height": 36.08038330078125
+        },
+        {
+          "text": "在 GitHub 公开留言 ↗",
+          "tag": "A",
+          "cssFont": "14px",
+          "physicalFont": 11.480130252322635,
+          "width": 112.48220825195312,
+          "height": 36.08038330078125
+        },
+        {
+          "text": "WhatsApp ↗",
+          "tag": "A",
+          "cssFont": "14px",
+          "physicalFont": 11.480130252322635,
+          "width": 66.677001953125,
+          "height": 36.0804443359375
+        },
+        {
+          "text": "草稿保存在你的浏览器。选择渠道后，由你确认发送；这里不会代发，也不会显示虚假的送达状态。",
+          "tag": "P",
+          "cssFont": "10px",
+          "physicalFont": 8.20009303737331,
+          "width": 268.9630126953125,
+          "height": 30.34033203125
+        },
+        {
+          "text": "想先了解我？和 AI 向导聊聊",
+          "tag": "BUTTON",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 147.64010620117188,
+          "height": 44.280517578125
+        }
+      ]
+    },
+    {
+      "app": "settings",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "77bf94c2 / E5.2 unchanged Space source",
+      "locale": "zh",
+      "theme": "light",
+      "motion": "reduce",
+      "state": "normal maximized",
+      "body": {
+        "width": 370,
+        "height": 678,
+        "scrollHeight": 911,
+        "overflowX": false
+      },
+      "textSamples": [
+        {
+          "text": "MAKE YOURSELF AT HOME",
+          "tag": "P",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 264.04296875,
+          "height": 16.233627319335938
+        },
+        {
+          "text": "你的工作区，你来安排。",
+          "tag": "H2",
+          "cssFont": "21px",
+          "physicalFont": 17.22019537848395,
+          "width": 264.04296875,
+          "height": 20.653976440429688
+        },
+        {
+          "text": "语言",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 264.04296875,
+          "height": 11.800445556640625
+        },
+        {
+          "text": "中文✓",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 106.60120391845703,
+          "height": 44.280517578125
+        },
+        {
+          "text": "English",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 106.60121154785156,
+          "height": 44.280517578125
+        },
+        {
+          "text": "切换语言，笔记和窗口会留在原处。",
+          "tag": "P",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 264.04296875,
+          "height": 16.233642578125
+        },
+        {
+          "text": "咖啡馆",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 264.04296875,
+          "height": 11.800445556640625
+        },
+        {
+          "text": "换个地方",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 62.320701599121094,
+          "height": 44.280487060546875
+        },
+        {
+          "text": "回到咖啡馆",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 71.34080505371094,
+          "height": 44.280487060546875
+        },
+        {
+          "text": "应用外观",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 264.04296875,
+          "height": 11.800445556640625
+        },
+        {
+          "text": "经典浅色",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 62.320701599121094,
+          "height": 44.280517578125
+        },
+        {
+          "text": "深色",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 44.28050231933594,
+          "height": 44.280517578125
+        },
+        {
+          "text": "桌面颜色",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 264.04296875,
+          "height": 11.800445556640625
+        },
+        {
+          "text": "经典青绿",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 62.320701599121094,
+          "height": 44.280517578125
+        },
+        {
+          "text": "暮蓝",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 44.28050231933594,
+          "height": 44.280517578125
+        },
+        {
+          "text": "鼠尾草",
+          "tag": "BUTTON",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 53.30061340332031,
+          "height": 44.280517578125
+        },
+        {
+          "text": "当前可用范围",
+          "tag": "H3",
+          "cssFont": "12px",
+          "physicalFont": 9.840111644847973,
+          "width": 264.04296875,
+          "height": 11.8004150390625
+        },
+        {
+          "text": "当前浏览器保存",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.5167546842898805,
+          "width": 52.583099365234375,
+          "height": 11.275146484375
+        },
+        {
+          "text": "尚未接入",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.5167546842898805,
+          "width": 30.045654296875,
+          "height": 11.27508544921875
+        },
+        {
+          "text": "在相册中加载公开内容",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.5167546842898805,
+          "width": 75.12052917480469,
+          "height": 11.275146484375
+        },
+        {
+          "text": "未连接（仅本地开发可用）",
+          "tag": "SMALL",
+          "cssFont": "9.16667px",
+          "physicalFont": 7.5167546842898805,
+          "width": 90.13694763183594,
+          "height": 11.275146484375
+        },
+        {
+          "text": "工作区会记住你的布局和笔记。清除网站数据会移除它们，可以先导出一份。AI 向导可以读公开资料；不会替你发布内容或操作个人账户。",
+          "tag": "P",
+          "cssFont": "11px",
+          "physicalFont": 9.020102341110642,
+          "width": 264.04296875,
+          "height": 48.70086669921875
+        }
+      ]
+    }
+  ]
+}

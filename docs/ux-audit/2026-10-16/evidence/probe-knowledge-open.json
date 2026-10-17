@@ -1,0 +1,247 @@
+{
+  "at": "2026-10-16T00:35:07.279Z",
+  "sources": {
+    "assets/js/bear-knowledge-space.js": "469e07785e9cd5ac55cb9ef08b5f1b6589b448375e3caca9e0883ec67939b3c3",
+    "assets/css/extended/bear-knowledge-space.css": "648000f9b99828f6afb28a3554f40b9323c2bb3425026f1e9c0124cb454e8120",
+    "layouts/section/projects.html": "462a369523f23c4b8cc6491985c50b77f91ea37c671f47a9578ee5dda6f429e5",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a"
+  },
+  "previewCheckpoint": "08dca5f0 accepted; E16articleCSS WIP not built",
+  "rows": [
+    {
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "lang": "zh",
+        "dark": false,
+        "coarse": false
+      },
+      "steps": [
+        {
+          "kind": "product",
+          "node": {
+            "id": "agent-diff-guard",
+            "title": "Agent Diff Guard",
+            "url": "https://github.com/cubxxw/agent-diff-guard"
+          },
+          "actualOpen": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "target": "_blank",
+            "rel": "noopener",
+            "text": "打开",
+            "box": {
+              "x": 934.546875,
+              "y": 594.421875,
+              "width": 62,
+              "height": 44,
+              "top": 594.421875,
+              "right": 996.546875,
+              "bottom": 638.421875,
+              "left": 934.546875
+            },
+            "hit": true,
+            "font": "14px"
+          },
+          "captured": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "target": "_blank",
+            "rel": "noopener",
+            "trusted": true
+          },
+          "activation": "actualpointerclick"
+        },
+        {
+          "kind": "writing",
+          "node": {
+            "id": "article:/zh/growth/posts/2025-annual-review/",
+            "title": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+            "url": "/zh/growth/posts/2025-annual-review/"
+          },
+          "actualOpen": {
+            "href": "http://127.0.0.1:1317/zh/growth/posts/2025-annual-review/",
+            "target": "_self",
+            "rel": "",
+            "text": "打开",
+            "box": {
+              "x": 934.546875,
+              "y": 605,
+              "width": 62,
+              "height": 44,
+              "top": 605,
+              "right": 996.546875,
+              "bottom": 649,
+              "left": 934.546875
+            },
+            "hit": true,
+            "font": "14px"
+          },
+          "captured": {
+            "href": "http://127.0.0.1:1317/zh/growth/posts/2025-annual-review/",
+            "target": "_self",
+            "rel": "",
+            "trusted": true
+          },
+          "activation": "focused control actualEnter"
+        },
+        {
+          "kind": "series",
+          "node": {
+            "id": "article:/zh/ai-agent/posts/geo-generative-engine-optimization-guide/",
+            "title": "2026 GEO 实证指南：证据、边界与可执行工作流",
+            "url": "/zh/ai-agent/posts/geo-generative-engine-optimization-guide/"
+          },
+          "actualOpen": {
+            "href": "http://127.0.0.1:1317/zh/ai-agent/posts/geo-generative-engine-optimization-guide/",
+            "target": "_self",
+            "rel": "",
+            "text": "打开",
+            "box": {
+              "x": 934.546875,
+              "y": 653.96875,
+              "width": 62,
+              "height": 44,
+              "top": 653.96875,
+              "right": 996.546875,
+              "bottom": 697.96875,
+              "left": 934.546875
+            },
+            "hit": true,
+            "font": "14px"
+          },
+          "captured": {
+            "href": "http://127.0.0.1:1317/zh/ai-agent/posts/geo-generative-engine-optimization-guide/",
+            "target": "_self",
+            "rel": "",
+            "trusted": true
+          },
+          "activation": "actualpointerclick"
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "dark": true,
+        "coarse": true
+      },
+      "steps": [
+        {
+          "kind": "product",
+          "node": {
+            "id": "agent-diff-guard",
+            "title": "Agent Diff Guard",
+            "url": "https://github.com/cubxxw/agent-diff-guard"
+          },
+          "actualOpen": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "target": "_blank",
+            "rel": "noopener",
+            "text": "Open",
+            "box": {
+              "x": 40,
+              "y": 625.203125,
+              "width": 70.078125,
+              "height": 44,
+              "top": 625.203125,
+              "right": 110.078125,
+              "bottom": 669.203125,
+              "left": 40
+            },
+            "hit": true,
+            "font": "14px"
+          },
+          "captured": {
+            "href": "https://github.com/cubxxw/agent-diff-guard",
+            "target": "_blank",
+            "rel": "noopener",
+            "trusted": true
+          },
+          "activation": "actualpointerclick"
+        },
+        {
+          "kind": "writing",
+          "node": {
+            "id": "article:/growth/posts/2025-annual-review/",
+            "title": "Wandering & Growing: 2025-2026 Annual Review",
+            "url": "/growth/posts/2025-annual-review/"
+          },
+          "actualOpen": {
+            "href": "http://127.0.0.1:1317/growth/posts/2025-annual-review/",
+            "target": "_self",
+            "rel": "",
+            "text": "Open",
+            "box": {
+              "x": 40,
+              "y": 625.03125,
+              "width": 70.078125,
+              "height": 44,
+              "top": 625.03125,
+              "right": 110.078125,
+              "bottom": 669.03125,
+              "left": 40
+            },
+            "hit": true,
+            "font": "14px"
+          },
+          "captured": {
+            "href": "http://127.0.0.1:1317/growth/posts/2025-annual-review/",
+            "target": "_self",
+            "rel": "",
+            "trusted": true
+          },
+          "activation": "focused control actualEnter"
+        },
+        {
+          "kind": "series",
+          "node": {
+            "id": "article:/ai-agent/posts/geo-generative-engine-optimization-guide/",
+            "title": "GEO in 2026: Evidence, Limits, and a Practical Workflow",
+            "url": "/ai-agent/posts/geo-generative-engine-optimization-guide/"
+          },
+          "actualOpen": {
+            "href": "http://127.0.0.1:1317/ai-agent/posts/geo-generative-engine-optimization-guide/",
+            "target": "_self",
+            "rel": "",
+            "text": "Open",
+            "box": {
+              "x": 40,
+              "y": 624.859375,
+              "width": 70.078125,
+              "height": 44,
+              "top": 624.859375,
+              "right": 110.078125,
+              "bottom": 668.859375,
+              "left": 40
+            },
+            "hit": true,
+            "font": "14px"
+          },
+          "captured": {
+            "href": "http://127.0.0.1:1317/ai-agent/posts/geo-generative-engine-optimization-guide/",
+            "target": "_self",
+            "rel": "",
+            "trusted": true
+          },
+          "activation": "actualpointerclick"
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "pass": true
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-1440-zh-product.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-1440-zh-writing.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-1440-zh-series.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-390-en-product.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-390-en-writing.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-knowledge-open-390-en-series.png"
+  ],
+  "limits": "Two Chromium emulated reducedmotion contexts, three existing real product/writing/series nodes each. Original control realclick or actualEnter on programmaticallyfocused Open captured with preventDefault; no destination followed/popup opened/externalwrite, backend/model call or full keyboard/AT/physical/FPS claim. Existingfiltercount tests not re-counted as newfeature."
+}

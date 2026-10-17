@@ -1,0 +1,16 @@
+
+Running 7 tests using 1 worker
+
+(node:23109) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/control-contracts.spec.ts:6:5 › article tabs expose one stop and support Arrow, Home and End (923ms)
+  ✓  2 tests/e2e/control-contracts.spec.ts:23:5 › compact tools retain focus around the selected tab and name each panel (476ms)
+  ✓  3 tests/e2e/control-contracts.spec.ts:41:5 › mobile navigation is a dismissible named disclosure (563ms)
+  ✓  4 tests/e2e/control-contracts.spec.ts:55:5 › refused clipboard copy leaves code selected with a truthful recovery (424ms)
+(node:23138) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/control-recovery.spec.ts:7:5 › share link refusal preserves the URL and returns focus after dismissal (738ms)
+  ✓  6 tests/e2e/control-recovery.spec.ts:25:5 › newsletter timeout releases the busy form and preserves the email (427ms)
+  ✓  7 tests/e2e/control-recovery.spec.ts:39:5 › library empty search and empty bookmarks offer a working way back (786ms)
+
+  7 passed (6.0s)

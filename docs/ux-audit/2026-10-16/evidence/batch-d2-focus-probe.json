@@ -1,0 +1,164 @@
+[
+  {
+    "route": "/zh/travel/",
+    "selector": "#tw-book-ai",
+    "states": [
+      {
+        "key": "INIT",
+        "active": "<textarea class=\"tw-book-ai__input\" rows=\"1\" maxlength=\"400\" placeholder=\"追问这本书…\" aria-label=\"追问这本书…\"></textarea>",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Shift+Tab",
+        "active": "<button type=\"button\" class=\"tw-book-ai__chip\">如果我只有一周时间去越南，作者会建议怎么走？</button>",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<textarea class=\"tw-book-ai__input\" rows=\"1\" maxlength=\"400\" placeholder=\"追问这本书…\" aria-label=\"追问这本书…\"></textarea>",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"tw-book-ai__send\" aria-label=\"发送\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"12\" y1=\"19",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<body id=\"top\" style=\"overflow: hidden;\"><script>localStorage.getItem(\"pref-theme\")===\"dark\"?document.body.classList.add(\"dark\"):localStorage.getItem(\"pref-theme\")===\"light\"?document.body.classList.remove(\"dark\"):window.matchMedia(\"(prefers-color-sch",
+        "inDialog": false,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"tw-book-ai__x\" data-bai-close=\"\" aria-label=\"关闭\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2.2\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"tw-book-ai__chip\">这本游记里，越南给作者留下最深的一个瞬间是什么？</button>",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"tw-book-ai__chip\">两个月慢走越南，和打卡式旅游最大的不同在哪？</button>",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"tw-book-ai__chip\">如果我只有一周时间去越南，作者会建议怎么走？</button>",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<textarea class=\"tw-book-ai__input\" rows=\"1\" maxlength=\"400\" placeholder=\"追问这本书…\" aria-label=\"追问这本书…\"></textarea>",
+        "inDialog": true,
+        "open": true,
+        "modal": true,
+        "bodyInert": false
+      }
+    ]
+  },
+  {
+    "route": "/zh/engineering/posts/use-go-tools-dlv/",
+    "selector": ".code-fs-stage",
+    "states": [
+      {
+        "key": "INIT",
+        "active": "<button type=\"button\" class=\"code-fs-close\" aria-label=\"关闭\">×</button>",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Shift+Tab",
+        "active": "<button type=\"button\" class=\"code-fs-zoom-in\" aria-label=\"放大\">A+</button>",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"code-fs-close\" aria-label=\"关闭\">×</button>",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<pre tabindex=\"0\" class=\"chroma\" style=\"--x-fade-l: 0px; --x-fade-r: 28px;\"><code class=\"language-go hljs\" data-lang=\"go\"><span class=\"line\"><span class=\"cl\"><span class=\"kn\"><span class=\"hljs-keyword\">package</span></span> <span class=\"nx\">main</spa",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"code-fs-zoom-out\" aria-label=\"缩小\">A−</button>",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"code-fs-zoom-in\" aria-label=\"放大\">A+</button>",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"code-fs-close\" aria-label=\"关闭\">×</button>",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<pre tabindex=\"0\" class=\"chroma\" style=\"--x-fade-l: 0px; --x-fade-r: 28px;\"><code class=\"language-go hljs\" data-lang=\"go\"><span class=\"line\"><span class=\"cl\"><span class=\"kn\"><span class=\"hljs-keyword\">package</span></span> <span class=\"nx\">main</spa",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<body id=\"top\" style=\"overflow: hidden;\"><script>localStorage.getItem(\"pref-theme\")===\"dark\"?document.body.classList.add(\"dark\"):localStorage.getItem(\"pref-theme\")===\"light\"?document.body.classList.remove(\"dark\"):window.matchMedia(\"(prefers-color-sch",
+        "inDialog": false,
+        "modal": false,
+        "bodyInert": false
+      },
+      {
+        "key": "Tab",
+        "active": "<button type=\"button\" class=\"code-fs-zoom-out\" aria-label=\"缩小\">A−</button>",
+        "inDialog": true,
+        "modal": false,
+        "bodyInert": false
+      }
+    ]
+  }
+]

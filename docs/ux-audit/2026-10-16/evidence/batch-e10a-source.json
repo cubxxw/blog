@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-15T20:42:13.263784+00:00",
+  "batch": "E10a",
+  "base": "b5b6fa34808f0fbb9fbbaa88bfa472b4afd3dae6",
+  "priorFrozen": "batch-e10-source.json",
+  "files": {
+    "layouts/page/travel.html": "626bb786e656dbe339e1a7d02a88f0dd9b2560bab7796f09a3aa140312db5af8",
+    "assets/css/extended/zzz-travel-world.css": "bb7cb70c5e5272982b01f5395055d66ac4934ad8447a0d539b77468bc517a765",
+    "tests/e2e/travel-qr-contracts.spec.ts": "f01f5d87b59f67034f66e1f71fe317b7e65e8033e7e21c120a5cd6860c0ec92f"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "12c7f8d42490aec110474fb55e543601abae71441a8c7ef5a21e76d32fe851f8",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "parentActionRunners": {
+    "batch-e10-actions.browser.mjs": "30c1f238f2f4c990ca3f2bbf0cd9085322ac356268b5d5dfd50e12535b53c212",
+    "batch-e10a-recovery.browser.mjs": "bf799744c831c7566ce5a4dfdfb51142b686a81f9fc76e769be64771116e9af3",
+    "batch-e10-image-state.browser.mjs": "a66db518b5eea58e4012bf6a97149fa9d16aa1bc8943b22082b5f718bd245425"
+  },
+  "scope": "QR only, inherited E10 native/focus/full portraits + loading/error/15s/retry/attempt isolation. Original QR sources and channel data, Book AI/map/reveal unchanged.",
+  "parentRunnersFrozenAt": "2026-10-15T20:46:43.911672+00:00"
+}

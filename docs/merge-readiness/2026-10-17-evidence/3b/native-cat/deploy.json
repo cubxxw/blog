@@ -1,0 +1,11 @@
+{
+  "id": "6ad34dd3af6d1784b13a15f9",
+  "state": "ready",
+  "commit_ref": "3b924aaea7dcdd2e938421734ec82b9055f3cd64",
+  "deploy_ssl_url": "https://deploy-preview-458--cubxxw.netlify.app",
+  "created_at": "2026-10-17T10:28:35.643Z",
+  "published_at": null,
+  "error_message": null,
+  "verifiedAt": "2026-10-17T10:33:23.616743+00:00",
+  "immutableUrl": "https://6ad34dd3af6d1784b13a15f9--cubxxw.netlify.app/zh/projects/"
+}

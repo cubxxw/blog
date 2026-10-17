@@ -1,0 +1,116 @@
+{
+  "baselineHead": "9c1f56390039085746e02c0f730ceafd91895e62",
+  "scope": "TEST ONLY: cat case observation origin; five production fix files remain frozen",
+  "source": {
+    "path": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/00-space-onboarding.spec.ts",
+    "sha256": "5985d7d015e18bced5aaacc81815e50e225fba52ff328ea2910d1afa4703f430"
+  },
+  "counterexample": {
+    "method": "Unmodified createCatState(79) and stepCat(.02), natural first rest; original arbitrary-sampling predicate deliberately asserted",
+    "firstRestEntrySeconds": 8.099999999999916,
+    "restAtSamplingSeconds": 22.659944554790854,
+    "motionObservationSeconds": 12,
+    "remainingAfterObservationSeconds": 10.65994455479111,
+    "poseUnchanged": true,
+    "expectedRunnerExit": 1,
+    "meaning": "Old arbitrary phase fixture predicate is invalid; not the observed 9c1 initial-look product defect and not proof that the elapsed production fix failed"
+  },
+  "newObservation": {
+    "installedBeforeGoto": true,
+    "initialOrigin": "First actual data-cat-loaded=true && data-cat-active=true with nonempty pose",
+    "lockOnce": true,
+    "startupMaxMs": 60000,
+    "movementMaxMs": 12000,
+    "nodePollBudgetMs": 12000,
+    "success": "First different actual pose with finite actual performance.now delta >0 and <=12000",
+    "cleanup": [
+      "success",
+      "startup deadline",
+      "movement deadline",
+      "pagehide"
+    ],
+    "queuedLateCallback": "done guard prevents further result mutation",
+    "reads": "Only three cat attributes, root query and performance.now; no layout/RAF/product writes"
+  },
+  "validation": {
+    "exactInlineObserverVMTests": {
+      "pass": 6,
+      "fail": 0,
+      "runner": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-9c1/cat-motion-observer-proof.mjs",
+      "command": [
+        "node",
+        "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-9c1/cat-motion-observer-proof.mjs",
+        "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree"
+      ]
+    },
+    "typecheckExit": 0,
+    "diffCheckExit": 0,
+    "discoveryExit": 0,
+    "discoveredTests": 758,
+    "discoveredFiles": 52,
+    "preserved": "All nine other test bodies and cat quiet/dialog/reduce/workspace assertions from first quiet click onward byte-identical; original 400/200ms checks, 30s assetReady, 90s journey/config intact"
+  },
+  "limits": [
+    "No browser/Hugo/full-suite rerun; parent owns actual CI and browser evidence",
+    "VM executes extracted current inline observer with mock DOM observer/timers; it does not establish actual browser callback scheduling",
+    "Passive attribute observer may slightly affect scheduling; it does not advance product time or mutate product state",
+    "Observation origin intentionally changed; E2E no longer byte-identical to baseline. Production five-file frozen SHAs unchanged."
+  ],
+  "artifacts": [
+    {
+      "file": "cat-rest-counterexample.mjs",
+      "sha256": "729c96e8fcd8ed900fd5a27031368b79d57d5da4666e2cb920e33513759eb629",
+      "bytes": 1053
+    },
+    {
+      "file": "cat-rest-counterexample-red.log",
+      "sha256": "b4597b9202a5e835ddfbb059a870d8055ff5e9165bc1ffbb9a4ba976cea04a3c",
+      "bytes": 916
+    },
+    {
+      "file": "cat-motion-observer-proof.mjs",
+      "sha256": "f9ccae03cdb77b9ee5943465c28290d946365900593c24af35fa8f24f0e59c41",
+      "bytes": 5177
+    },
+    {
+      "file": "cat-motion-observer-green.log",
+      "sha256": "a3e475d88ef5191f15777f52d782cbb26f1e987dd6cb1bb06afb8ab108f9ced3",
+      "bytes": 1609
+    },
+    {
+      "file": "cat-motion-observer-typecheck.log",
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400",
+      "bytes": 269
+    },
+    {
+      "file": "cat-motion-observer-diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "cat-motion-observer-discovery.log",
+      "sha256": "f6274201af364ae995ea52f12235a9a1c424c6742285fe46fe63690789bd2976",
+      "bytes": 104473
+    },
+    {
+      "file": "cat-motion-observer-scope.log",
+      "sha256": "c1ab86a76512aaf9439c077d5350c26f4eadab56f6a19f40ca86033b38d7ff11",
+      "bytes": 843
+    },
+    {
+      "file": "cat-motion-observer-checks.json",
+      "sha256": "73b2e2743e5fa86c62b53e3c51f12095be43f1047b95bbb495d58ab9172ecb86",
+      "bytes": 961
+    },
+    {
+      "file": "cat-motion-observer-diff.patch",
+      "sha256": "1bb2fdca457bf6d126bfeef83b0b2b6211ed31dae7a018e6e5870c586067d1e4",
+      "bytes": 4198
+    },
+    {
+      "file": "cat-motion-observer-frozen.spec.ts",
+      "sha256": "5985d7d015e18bced5aaacc81815e50e225fba52ff328ea2910d1afa4703f430",
+      "bytes": 14697
+    }
+  ]
+}

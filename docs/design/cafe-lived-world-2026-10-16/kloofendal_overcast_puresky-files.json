@@ -1,0 +1,81 @@
+{
+  "tonemapped": {
+    "size": 16892196,
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/kloofendal_overcast_puresky.jpg",
+    "md5": "61b14cf4deed54ca8bd1a0c3314f8a21"
+  },
+  "hdri": {
+    "8k": {
+      "hdr": {
+        "size": 64660146,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/8k/kloofendal_overcast_puresky_8k.hdr",
+        "md5": "1c2f198f98a83db45b7ff41a031780ed"
+      },
+      "exr": {
+        "size": 268431819,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/8k/kloofendal_overcast_puresky_8k.exr",
+        "md5": "7296603ddc6e39cf989908f8b4d405ee"
+      }
+    },
+    "16k": {
+      "hdr": {
+        "size": 211592363,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/16k%2B/kloofendal_overcast_puresky_16k.hdr",
+        "md5": "5ea03f106f7b496023e598f33b0d3949"
+      },
+      "exr": {
+        "size": 1025502227,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/16k%2B/kloofendal_overcast_puresky_16k.exr",
+        "md5": "77edff4ff8a9e770fa392fe0167a4695"
+      }
+    },
+    "4k": {
+      "hdr": {
+        "size": 16953534,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/kloofendal_overcast_puresky_4k.hdr",
+        "md5": "6678d8e9a87f9b8cdfc4fc4038591d59"
+      },
+      "exr": {
+        "size": 69187040,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/4k/kloofendal_overcast_puresky_4k.exr",
+        "md5": "317ea135d530793867eeae358ba89a12"
+      }
+    },
+    "24k": {
+      "hdr": {
+        "size": 477509021,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/16k%2B/kloofendal_overcast_puresky_24k.hdr",
+        "md5": "7009374f53cca4adbddc2cba39f1cff7"
+      },
+      "exr": {
+        "size": 2326082408,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/16k%2B/kloofendal_overcast_puresky_24k.exr",
+        "md5": "67e2f2354b607b6e65fe3c5235e366cf"
+      }
+    },
+    "2k": {
+      "hdr": {
+        "size": 4335717,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloofendal_overcast_puresky_2k.hdr",
+        "md5": "26462123fc5ce757a331553d05e4db37"
+      },
+      "exr": {
+        "size": 18287299,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/2k/kloofendal_overcast_puresky_2k.exr",
+        "md5": "7b29d213e2f31c4b9e44445a4dbb5960"
+      }
+    },
+    "1k": {
+      "hdr": {
+        "size": 1174053,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloofendal_overcast_puresky_1k.hdr",
+        "md5": "d5c53f6432193893e7dc17eb65e67409"
+      },
+      "exr": {
+        "size": 5012263,
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/exr/1k/kloofendal_overcast_puresky_1k.exr",
+        "md5": "d420095239e8e734d390a5581a3a1945"
+      }
+    }
+  }
+}

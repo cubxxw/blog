@@ -1,0 +1,1676 @@
+{
+  "at": "2026-10-15T23:31:52.592Z",
+  "sourceManifest": "batch-e13e-source.json",
+  "contexts": [
+    {
+      "kind": "actual-active-draft-repeated-breakpoint-and-user-close",
+      "view": {
+        "width": 1199,
+        "height": 900,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "priorOverflow": {
+        "value": "",
+        "priority": ""
+      },
+      "before": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818,
+          "width": 622,
+          "height": 60,
+          "top": 818,
+          "right": 886.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 496.421875,
+            "width": 694,
+            "height": 299.578125,
+            "top": 496.421875,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 300,
+          "clientHeight": 300,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-toc"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "desktop": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 113,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": 113,
+          "right": 1146,
+          "bottom": 446.890625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 376.890625,
+          "width": 199.609375,
+          "height": 60,
+          "top": 376.890625,
+          "right": 1099,
+          "bottom": 436.890625,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 308.09375,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": 308.09375,
+            "right": 1146,
+            "bottom": 354.890625,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "afterActualTab": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 113,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": 113,
+          "right": 1146,
+          "bottom": 446.890625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 376.890625,
+          "width": 199.609375,
+          "height": 60,
+          "top": 376.890625,
+          "right": 1099,
+          "bottom": 436.890625,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 308.09375,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": 308.09375,
+            "right": 1146,
+            "bottom": 354.890625,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false,
+        "viewportFocus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "bbox": {
+            "x": 1106,
+            "y": 405.890625,
+            "width": 31,
+            "height": 31,
+            "top": 405.890625,
+            "right": 1137,
+            "bottom": 436.890625,
+            "left": 1106
+          },
+          "viewport": {
+            "width": 1200,
+            "height": 900
+          },
+          "fullViewport": true,
+          "hit": true,
+          "cssVisible": true,
+          "inert": false,
+          "disabled": false
+        }
+      },
+      "compact": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818,
+          "width": 622,
+          "height": 60,
+          "top": 818,
+          "right": 886.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 496.421875,
+            "width": 694,
+            "height": 299.578125,
+            "top": 496.421875,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 300,
+          "clientHeight": 300,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "closed": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "article-fab",
+          "cls": "article-fab",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": false,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 985.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 985.328125,
+          "right": 946.5,
+          "bottom": 1590,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 1521,
+          "width": 622,
+          "height": 60,
+          "top": 1521,
+          "right": 886.5,
+          "bottom": 1581,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 1198.421875,
+            "width": 694,
+            "height": 299.578125,
+            "top": 1198.421875,
+            "right": 946.5,
+            "bottom": 1498,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 300,
+          "clientHeight": 300,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "reopened": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "abs-tab-ai",
+          "cls": "abs-tab abs-tab--active",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": false,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 819,
+          "width": 622,
+          "height": 60,
+          "top": 819,
+          "right": 886.5,
+          "bottom": 879,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 496.421875,
+            "width": 694,
+            "height": 299.578125,
+            "top": 496.421875,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 300,
+          "clientHeight": 300,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "kind": "actual-active-draft-repeated-breakpoint-and-user-close",
+      "view": {
+        "width": 1199,
+        "height": 900,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "priorOverflow": {
+        "value": "",
+        "priority": ""
+      },
+      "before": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 819,
+          "width": 622,
+          "height": 60,
+          "top": 819,
+          "right": 886.5,
+          "bottom": 879,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 494.9375,
+            "width": 694,
+            "height": 301.0625,
+            "top": 494.9375,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 301,
+          "clientHeight": 301,
+          "text": "Start with the article, and ask about a detail that matters to you."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-toc"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "desktop": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 111.390625,
+          "width": 258.609375,
+          "height": 379.546875,
+          "top": 111.390625,
+          "right": 1146,
+          "bottom": 490.9375,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 421.37921142578125,
+          "width": 199.609375,
+          "height": 60,
+          "top": 421.37921142578125,
+          "right": 1099,
+          "bottom": 481.37921142578125,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 334,
+            "width": 258.609375,
+            "height": 64.9375,
+            "top": 334,
+            "right": 1146,
+            "bottom": 398.9375,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 65,
+          "clientHeight": 65,
+          "text": "Start with the article, and ask about a detail that matters to you."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "afterActualTab": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 111.390625,
+          "width": 258.609375,
+          "height": 379.546875,
+          "top": 111.390625,
+          "right": 1146,
+          "bottom": 490.9375,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 420.9375,
+          "width": 199.609375,
+          "height": 60,
+          "top": 420.9375,
+          "right": 1099,
+          "bottom": 480.9375,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 334,
+            "width": 258.609375,
+            "height": 64.9375,
+            "top": 334,
+            "right": 1146,
+            "bottom": 398.9375,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 65,
+          "clientHeight": 65,
+          "text": "Start with the article, and ask about a detail that matters to you."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false,
+        "viewportFocus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "bbox": {
+            "x": 1106,
+            "y": 449.9375,
+            "width": 31,
+            "height": 31,
+            "top": 449.9375,
+            "right": 1137,
+            "bottom": 480.9375,
+            "left": 1106
+          },
+          "viewport": {
+            "width": 1200,
+            "height": 900
+          },
+          "fullViewport": true,
+          "hit": true,
+          "cssVisible": true,
+          "inert": false,
+          "disabled": false
+        }
+      },
+      "compact": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818,
+          "width": 622,
+          "height": 60,
+          "top": 818,
+          "right": 886.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 494.9375,
+            "width": 694,
+            "height": 301.0625,
+            "top": 494.9375,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 301,
+          "clientHeight": 301,
+          "text": "Start with the article, and ask about a detail that matters to you."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "closed": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "article-fab",
+          "cls": "article-fab",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": false,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 291.48333740234375,
+          "width": 694,
+          "height": 604.671875,
+          "top": 291.48333740234375,
+          "right": 946.5,
+          "bottom": 896.1552124023438,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 826.4700317382812,
+          "width": 622,
+          "height": 60,
+          "top": 826.4700317382812,
+          "right": 886.5,
+          "bottom": 886.4700317382812,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 503.09271240234375,
+            "width": 694,
+            "height": 301.0625,
+            "top": 503.09271240234375,
+            "right": 946.5,
+            "bottom": 804.1552124023438,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 301,
+          "clientHeight": 301,
+          "text": "Start with the article, and ask about a detail that matters to you."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "reopened": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "E13 未发送 / original editing draft",
+        "selection": [
+          4,
+          18,
+          "backward"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "abs-tab-ai",
+          "cls": "abs-tab abs-tab--active",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": false,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 819,
+          "width": 622,
+          "height": 60,
+          "top": 819,
+          "right": 886.5,
+          "bottom": 879,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 494.9375,
+            "width": 694,
+            "height": 301.0625,
+            "top": 494.9375,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 301,
+          "clientHeight": 301,
+          "text": "Start with the article, and ask about a detail that matters to you."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "kind": "completed-general-history-follows-original-DOM",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "before": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Follow up after changing the layout",
+        "selection": [
+          35,
+          35,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 111.390625,
+          "width": 286.734375,
+          "height": 472.0625,
+          "top": 111.390625,
+          "right": 1328,
+          "bottom": 583.453125,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 525.1368408203125,
+          "width": 227.734375,
+          "height": 49,
+          "top": 525.1368408203125,
+          "right": 1281,
+          "bottom": 574.1368408203125,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 111.390625,
+            "width": 286.734375,
+            "height": 391.0625,
+            "top": 111.390625,
+            "right": 1328,
+            "bottom": 502.453125,
+            "left": 1041.265625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 391,
+          "clientHeight": 391,
+          "text": "Your questionExplain a debugging workflowAIReading togetherShare insightUse a breakpoint to inspect the current state.Then step through the call and compare the result.Keep askingCan you give an example?What is the counter-argument?How does this apply in practice?"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-toc"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 1,
+            "method": "POST",
+            "payload": {
+              "question": "Explain a debugging workflow",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "compact": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Follow up after changing the layout",
+        "selection": [
+          35,
+          35,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 829,
+          "width": 622,
+          "height": 49,
+          "top": 829,
+          "right": 886.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 283.328125,
+            "width": 694,
+            "height": 523.671875,
+            "top": 283.328125,
+            "right": 946.5,
+            "bottom": 807,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 524,
+          "clientHeight": 524,
+          "text": "Your questionExplain a debugging workflowAIReading togetherShare insightUse a breakpoint to inspect the current state.Then step through the call and compare the result.Keep askingCan you give an example?What is the counter-argument?How does this apply in practice?"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 1,
+            "method": "POST",
+            "payload": {
+              "question": "Explain a debugging workflow",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "continued": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 111.390625,
+          "width": 258.609375,
+          "height": 476.75,
+          "top": 111.390625,
+          "right": 1146,
+          "bottom": 588.140625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 529.6632690429688,
+          "width": 199.609375,
+          "height": 48.75,
+          "top": 529.6632690429688,
+          "right": 1099,
+          "bottom": 578.4132690429688,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 111.390625,
+            "width": 258.609375,
+            "height": 396,
+            "top": 111.390625,
+            "right": 1146,
+            "bottom": 507.390625,
+            "left": 887.390625
+          },
+          "scrollTop": 201,
+          "scrollHeight": 597,
+          "clientHeight": 396,
+          "text": "Your questionExplain a debugging workflowAIReading togetherShare insightUse a breakpoint to inspect the current state.Then step through the call and compare the result.Your questionFollow up after changing the layoutAIReading togetherShare insightThe same conversation continues after resizing.Keep a"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 1,
+            "method": "POST",
+            "payload": {
+              "question": "Explain a debugging workflow",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          },
+          {
+            "aborts": 0,
+            "cancels": 1,
+            "method": "POST",
+            "payload": {
+              "question": "Follow up after changing the layout",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [
+                {
+                  "role": "user",
+                  "content": "Explain a debugging workflow"
+                },
+                {
+                  "role": "assistant",
+                  "content": "Use a breakpoint to inspect the current state.\n\nThen step through the call and compare the result."
+                }
+              ],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-1199-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-1200-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-return-1199-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-reopened-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-1199-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-1200-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-return-1199-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-draft-reopened-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-history-before-desktop-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-history-in-compact-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-history-continued-desktop-en.png"
+  ],
+  "limits": "Three named Chromium actual contexts; real FAB/tabs/keys/resize, synthetic draft and controlled Response/ReadableStream with original ArticleAIClient. No paid/live backend. Original selection direction asserted on first handoff; no OS composition, physical device, Safari, fullmatrix or BFCache claim. Settled-font setup does not resolve UX046."
+}

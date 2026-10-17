@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "deadline": "2026-10-16T12:00:00+08:00",
+  "automationId": "12-00",
+  "branch": "codex/blog-experience-20261016",
+  "checkpoint": "8ed671cb6e625027b56914fd73de4f85187d0e62",
+  "phase": "Deadline reached; heartbeat PAUSED readback; no production WIP",
+  "batch": "E17-space-media-recovery-type",
+  "agents": {
+    "inventory": "/root/blog_inventory",
+    "executor": "/root/blog_executor",
+    "score": "/root/space_review"
+  },
+  "pending": [
+    "C2 shortAI thirdsuggestion externalfocusring bottom slightclip D2.4=90; pending one scoped CSS rule/nativeEnter positive verification.",
+    "E18 readingmap sameinline title/hook/meta/CTA nohierarchy; 3context9PNGbefore source-backed. PriorD1/D4=94.5/93.",
+    "E17 defaultshortdesktop photo fullimage/caption requires ownbody scroll/maximize; local94.5/94.5. Classic404 recovery/image-own-timeout unknown; mapdetailtype outside scope.",
+    "E15 shortdirectory D1=90.5/D4=94.5 remains.",
+    "E14 warm/CJKlate/physical/AT/Safari/fullmotion/fullmatrix unknown; E12originalBack10s unexplained."
+  ],
+  "lastAcceptedEvidence": "docs/ux-audit/2026-10-16/evidence/batch-e17-provenance.json",
+  "previewPort": 1317,
+  "updatedAt": "2026-10-16T04:07:07.904235+00:00",
+  "previewSource": "Accepted E17 +C1/E16b/E14. C2/E18/titlebalance NOT implemented.",
+  "localOnly": true,
+  "liveBackendTested": false,
+  "physicalPhoneTested": false,
+  "review": "UX052 only named3spatial404 recovery closed; 4contexts22primary26includinghistory PNG independent read. Recovery localD1/D4=96/96; shortdesktop photo preview scroll/maximize94.5/94.5 retained. Fullscore null.",
+  "previewBatch": "E17 Hugo4460ms/5distinct/4actual22primaryPNG",
+  "executorOwnership": [],
+  "latestActualEvidence": "evidence/batch-e17-provenance.json",
+  "inventorySummary": {
+    "families": 309,
+    "selectorEntries": 369,
+    "cumulativeStateEvidenceRows": 394,
+    "partiallyCoveredFamilies": 93,
+    "fullyCertifiedFamilies": 0,
+    "independentSurfaceObservations": 4
+  },
+  "scoreSummary": {
+    "checks": 259,
+    "historicalExpertVisualFragments": 116,
+    "findings": 53,
+    "fullScore": null
+  },
+  "acceptedSinceCheckpoint": "E17 2media sources/new5spec and finalcards accepted; nextC2 singleoutlineoffset pending",
+  "checkpointCorrection": "Initial source checkpoint committed after raw-whitespace check failed because parent used wrong root .gitattributes path and shell continued. Exact6 raw-path exceptions corrected in existing nested attributes; raw bytes unchanged, subsequent git show/check passes.",
+  "automationStatus": "PAUSED",
+  "acceptedSourceCheckpoint": "8ed671cb6e625027b56914fd73de4f85187d0e62",
+  "closeoutCheckpoint": "dcfa75208b2bc4d8a7f69f368c24c07befcb5263",
+  "deadlineReceipt": "evidence/final-deadline-receipt.json",
+  "temporaryArtifactRemoved": true,
+  "permanentValidation": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/final-validation"
+}

@@ -1,0 +1,3 @@
+{"case":"normal-zh390","observation":{"beforeLineChars":[9,13,13,1],"afterLineChars":[9,10,8,9],"heightDelta":0,"widthDelta":0,"overflow":false,"engineLimitCase":false,"notCertification":true}}
+{"case":"edge-en390","observation":{"beforeLineChars":[7,12,6,13,8],"afterLineChars":[7,12,6,10,11],"heightDelta":0,"widthDelta":0,"overflow":false,"engineLimitCase":false,"notCertification":true}}
+{"case":"failure-long-en320","observation":{"beforeLineChars":[9,14,10,9,12,8,10,8,9],"afterLineChars":[9,14,10,9,12,8,10,8,9],"heightDelta":0,"widthDelta":0,"overflow":false,"engineLimitCase":true,"notCertification":true}}

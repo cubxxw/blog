@@ -28,37 +28,63 @@
   var refs = content.querySelectorAll('a.footnote-ref[href^="#"]');
   if (!refs.length) return;
 
-  var prefersReduced =
-    window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Coarse pointer (phones / tablets) → tap-to-open; otherwise hover.
-  var isTouch =
-    (window.matchMedia && window.matchMedia('(hover: none)').matches) ||
-    'ontouchstart' in window;
+  function isCoarse() {
+    return window.matchMedia && window.matchMedia('(pointer: coarse), (hover: none)').matches;
+  }
 
   var isZh =
     (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
 
-  /* --- One shared popover, lazily built ----------------------------- */
+  /* --- One shared, non-modal preview ------------------------------- */
   var pop = null;
   var popBody = null;
   var popMore = null;
+  var popHint = null;
   var currentRef = null; // marker the popover is bound to right now
   var showTimer = 0;
   var hideTimer = 0;
   var popId = 'fn-preview-popover';
+  var helpId = 'fn-preview-keyboard-help';
+  var ownedExpanded = new WeakSet();
+  var generation = 0;
+  var hoveredRef = null;
+  var hoveringPop = false;
+  var suppressFocusRef = null;
+
+  function addToken(ref, name, token) {
+    var values = (ref.getAttribute(name) || '').split(/\s+/).filter(Boolean);
+    if (values.indexOf(token) === -1) values.push(token);
+    ref.setAttribute(name, values.join(' '));
+  }
+
+  function expanded(ref, value) {
+    if (ref && ownedExpanded.has(ref)) ref.setAttribute('aria-expanded', String(value));
+  }
 
   function buildPop() {
     if (pop) return pop;
     pop = document.createElement('div');
     pop.className = 'fn-popover';
     pop.id = popId;
-    pop.setAttribute('role', 'tooltip');
+    pop.style.left = '0px';
+    pop.style.top = '0px';
+    pop.setAttribute('role', 'region');
+    pop.setAttribute('aria-label', isZh ? '脚注预览' : 'Footnote preview');
     pop.setAttribute('aria-hidden', 'true');
+    pop.inert = true;
+
+    popHint = document.createElement('span');
+    popHint.className = 'fn-popover__keyboard-hint';
+    popHint.textContent = isZh ? '在标记上按 ↓ 进入预览' : 'At the marker, press ↓ to enter.';
+    popHint.setAttribute('aria-hidden', 'true');
+    popHint.hidden = true;
+    pop.appendChild(popHint);
 
     popBody = document.createElement('div');
     popBody.className = 'fn-popover__body';
+    popBody.tabIndex = 0;
+    popBody.setAttribute('role', 'group');
+    popBody.setAttribute('aria-label', isZh ? '脚注内容' : 'Note content');
     pop.appendChild(popBody);
 
     popMore = document.createElement('a');
@@ -69,19 +95,34 @@
     // Keep the card open while the pointer is inside it (desktop), so
     // links/citations within the note can be clicked.
     pop.addEventListener('mouseenter', function () {
+      hoveringPop = true;
       window.clearTimeout(hideTimer);
     });
     pop.addEventListener('mouseleave', function () {
-      if (!isTouch) scheduleHide();
+      hoveringPop = false;
+      if (!isCoarse()) scheduleHide();
+    });
+    pop.addEventListener('focusin', function () {
+      window.clearTimeout(hideTimer);
+    });
+    pop.addEventListener('focusout', function (event) {
+      if (!pop.contains(event.relatedTarget) && event.relatedTarget !== currentRef) scheduleHide();
     });
 
     document.body.appendChild(pop);
+    var help = document.createElement('span');
+    help.id = helpId;
+    help.className = 'fn-preview-keyboard-help';
+    help.textContent = isZh ? '按向下方向键进入脚注预览，按回车跳到脚注。' : 'Press Arrow Down to enter the preview, or Enter to go to the note.';
+    document.body.appendChild(help);
     return pop;
   }
 
   /* --- Extract a note's text from its <li id="fn:N"> ----------------- */
   function noteHtmlFor(ref) {
-    var id = decodeURIComponent((ref.getAttribute('href') || '').slice(1));
+    var id;
+    try { id = decodeURIComponent((ref.getAttribute('href') || '').slice(1)); }
+    catch (_) { return null; }
     if (!id) return null;
     var def = document.getElementById(id);
     if (!def) return null;
@@ -105,8 +146,9 @@
     // Let the card size to its content first (CSS caps the max width).
     pop.style.left = '0px';
     pop.style.top = '0px';
-    var pw = pop.offsetWidth;
-    var ph = pop.offsetHeight;
+    var bounds = pop.getBoundingClientRect();
+    var pw = bounds.width;
+    var ph = bounds.height;
 
     var r = ref.getBoundingClientRect();
     var refCx = r.left + r.width / 2;
@@ -125,115 +167,139 @@
     var arrowX = Math.max(14, Math.min(refCx - left, pw - 14));
     pop.style.setProperty('--fn-arrow-x', arrowX + 'px');
 
-    pop.style.left = left + window.scrollX + 'px';
-    pop.style.top = top + window.scrollY + 'px';
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
   }
 
   /* --- Show / hide --------------------------------------------------- */
-  function show(ref) {
+  function show(ref, keyboard) {
     var html = noteHtmlFor(ref);
-    if (!html) return; // nothing to preview → leave the link alone
+    if (!html) return false; // nothing to preview → leave the link alone
     buildPop();
+    generation++;
+    window.clearTimeout(showTimer);
     window.clearTimeout(hideTimer);
-
-    popBody.innerHTML = html;
+    // Refocusing the same marker must not recreate a citation being read.
+    if (currentRef !== ref) {
+      expanded(currentRef, false);
+      popBody.innerHTML = html;
+      popBody.scrollTop = 0;
+      popHint.hidden = !keyboard;
+    } else if (keyboard) {
+      popHint.hidden = false;
+    }
     popMore.setAttribute('href', ref.getAttribute('href'));
     currentRef = ref;
-    ref.setAttribute('aria-describedby', popId);
+    expanded(ref, true);
 
     placePop(ref);
+    pop.inert = false;
     pop.setAttribute('aria-hidden', 'false');
     // Reflow so the entrance transition replays from the hidden state.
     void pop.offsetWidth;
     pop.classList.add('is-visible');
+    return true;
   }
 
-  function hide() {
+  function hide(returnFocus) {
+    generation++;
     window.clearTimeout(showTimer);
     window.clearTimeout(hideTimer);
     if (!pop) return;
+    var ref = currentRef;
+    expanded(ref, false);
+    currentRef = null;
     pop.classList.remove('is-visible');
+    pop.inert = true;
     pop.setAttribute('aria-hidden', 'true');
-    if (currentRef) {
-      currentRef.removeAttribute('aria-describedby');
-      currentRef = null;
+    hoveringPop = false;
+    if (returnFocus && ref && ref.isConnected) {
+      suppressFocusRef = ref;
+      try { ref.focus({preventScroll: true}); }
+      finally { suppressFocusRef = null; }
     }
   }
 
   function scheduleShow(ref) {
+    if (pop && pop.contains(document.activeElement)) return;
     window.clearTimeout(showTimer);
+    var owner = ++generation;
     showTimer = window.setTimeout(function () {
-      show(ref);
+      if (owner === generation && hoveredRef === ref) show(ref);
     }, 120);
   }
   function scheduleHide() {
     window.clearTimeout(hideTimer);
-    hideTimer = window.setTimeout(hide, 180);
+    var owner = generation, ref = currentRef;
+    hideTimer = window.setTimeout(function () {
+      if (owner !== generation || currentRef !== ref || !ref) return;
+      if (document.activeElement === ref || pop.contains(document.activeElement) || hoveringPop || hoveredRef === ref) return;
+      hide();
+    }, 180);
   }
 
   /* --- Wiring -------------------------------------------------------- */
-  if (isTouch) {
-    // Tap to open (keeping the reader's place). A second tap on the same
-    // marker, or tapping the "go to note" link, follows through.
-    refs.forEach(function (ref) {
-      ref.addEventListener('click', function (e) {
-        if (currentRef === ref && pop && pop.classList.contains('is-visible')) {
-          // Second tap → let the native jump happen.
-          hide();
-          return;
-        }
-        e.preventDefault();
-        show(ref);
-      });
+  refs.forEach(function (ref) {
+    if (noteHtmlFor(ref)) {
+      buildPop();
+      addToken(ref, 'aria-controls', popId);
+      addToken(ref, 'aria-describedby', helpId);
+      addToken(ref, 'aria-keyshortcuts', 'ArrowDown');
+      if (!ref.hasAttribute('aria-expanded')) {
+        ownedExpanded.add(ref);
+        expanded(ref, false);
+      }
+    }
+    ref.addEventListener('click', function (event) {
+      // Keyboard/AT activation (detail 0), modifier clicks and non-primary
+      // buttons keep the original anchor's browser behaviour.
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || ref.hasAttribute('download') || ref.target && ref.target !== '_self') return;
+      if (!isCoarse() || event.detail === 0) { hide(); return; }
+      if (currentRef === ref && pop && pop.classList.contains('is-visible')) { hide(); return; }
+      if (show(ref)) event.preventDefault();
+      else hide();
     });
-    // Tap outside the card (and not on a marker) closes it.
-    document.addEventListener(
-      'click',
-      function (e) {
-        if (!pop || !pop.classList.contains('is-visible')) return;
-        if (pop.contains(e.target)) return;
-        if (e.target.closest && e.target.closest('a.footnote-ref')) return;
-        hide();
-      },
-      true
-    );
-    // Reposition / dismiss on scroll so the card never strands mid-page.
-    window.addEventListener(
-      'scroll',
-      function () {
-        if (pop && pop.classList.contains('is-visible')) hide();
-      },
-      { passive: true }
-    );
-  } else {
-    // Desktop: hover + keyboard focus.
-    refs.forEach(function (ref) {
-      ref.addEventListener('mouseenter', function () {
-        scheduleShow(ref);
-      });
-      ref.addEventListener('mouseleave', function () {
-        window.clearTimeout(showTimer);
-        scheduleHide();
-      });
-      ref.addEventListener('focus', function () {
-        show(ref);
-      });
-      ref.addEventListener('blur', function () {
-        scheduleHide();
-      });
+    ref.addEventListener('mouseenter', function () {
+      if (isCoarse()) return;
+      hoveredRef = ref;
+      scheduleShow(ref);
     });
-    window.addEventListener(
-      'scroll',
-      function () {
-        if (currentRef) placePop(currentRef);
-      },
-      { passive: true }
-    );
-  }
+    ref.addEventListener('mouseleave', function () {
+      if (hoveredRef === ref) hoveredRef = null;
+      window.clearTimeout(showTimer);
+      if (!isCoarse()) scheduleHide();
+    });
+    ref.addEventListener('focus', function () {
+      if (suppressFocusRef !== ref && !isCoarse()) show(ref, ref.matches(':focus-visible'));
+    });
+    ref.addEventListener('blur', scheduleHide);
+    ref.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowDown' || event.isComposing || event.keyCode === 229 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      if (show(ref, true)) { event.preventDefault(); popBody.focus({preventScroll: true}); }
+    });
+  });
 
-  // Esc always closes; resizing re-anchors a live card.
+  document.addEventListener('click', function (event) {
+    if (!currentRef || !pop || pop.contains(event.target)) return;
+    var marker = event.target.closest && event.target.closest('a.footnote-ref');
+    if (marker && content.contains(marker)) return;
+    hide();
+  }, true);
+
+  window.addEventListener('scroll', function () {
+    if (!currentRef) return;
+    if (isCoarse() && !pop.contains(document.activeElement)) hide();
+    else placePop(currentRef);
+  }, {passive: true});
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' || e.keyCode === 27) hide();
+    if (!currentRef || e.isComposing || e.keyCode === 229) return;
+    if (e.key !== 'Escape' && e.keyCode !== 27) return;
+    var inside = pop.contains(document.activeElement);
+    if (inside || document.activeElement === currentRef) {
+      e.preventDefault();
+      hide(inside);
+    }
   });
   window.addEventListener(
     'resize',
@@ -245,8 +311,7 @@
     { passive: true }
   );
 
-  // Expose the motion preference to CSS via a hook class on the popover
-  // host. (CSS also re-checks the media query — this is just belt-and-
-  // braces for engines that mis-handle the query at load.)
-  if (prefersReduced && pop) pop.classList.add('fn-popover--no-motion');
+  window.addEventListener('pagehide', function () { hide(); });
+  // Native anchors finish their own navigation before the preview closes.
+  window.addEventListener('hashchange', function () { hide(); });
 })();

@@ -1,0 +1,103 @@
+{
+  "at": "2026-10-16T02:10:49.767Z",
+  "base": "4ffc2c0b; media WIP not built or exercised",
+  "sources": {
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "assets/js/space/navigation.mjs": "9323eaccb344d110391b9ebf2146113614e2c9731b96c53cd9071f13acf9d5ca",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "layouts/partials/space/desktop.html": "dab403288b4bf8d48ddb496fd226ce93a636da110efd3cf3836474fee2840b21",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519"
+  },
+  "rows": [
+    {
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "motion": "reduce"
+      },
+      "steps": [
+        {
+          "name": "actual-app-theme",
+          "theme": "light"
+        },
+        {
+          "name": "original-note",
+          "before": {
+            "value": "A local reading note.\nKeep this second line untouched.",
+            "start": 3,
+            "end": 18,
+            "direction": "backward"
+          }
+        },
+        {
+          "name": "native-arrow-result-0",
+          "target": {
+            "kind": "article",
+            "payload": "/ai-agent/posts/context-engineering-the-new-foundation/"
+          }
+        },
+        {
+          "name": "actual-article-reader",
+          "actual": {
+            "title": "Context Engineering: The New Foundation for AI Agents",
+            "original": "http://127.0.0.1:1317/ai-agent/posts/context-engineering-the-new-foundation/",
+            "body": "Context engineering is the set of strategies for curating, ordering, and evicting the tokens that enter an LLM’s context window on each inference call—system instructions, retrieved documents, convers",
+            "insideFocus": true,
+            "activeTag": "SECTION"
+          }
+        },
+        {
+          "name": "same-note-after-search",
+          "after": {
+            "same": true,
+            "value": "A local reading note.\nKeep this second line untouched.",
+            "start": 3,
+            "end": 18,
+            "direction": "backward"
+          }
+        },
+        {
+          "name": "empty-query-enter-keeps-reader",
+          "status": "0 results",
+          "focusTag": "INPUT"
+        },
+        {
+          "name": "escape-restores-current-owner",
+          "focus": {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "insideWorkspace": true,
+            "inert": false
+          }
+        }
+      ],
+      "errors": [],
+      "denied": [],
+      "article": {
+        "date": "2026.06.22",
+        "description": "Learn how context engineering improves AI agents through retrieval, compaction, memory, and token budgeting—and why high-signal context beats a larger window.\n",
+        "id": "/ai-agent/posts/context-engineering-the-new-foundation/",
+        "section": "ai-agent",
+        "tags": [
+          "Context Engineering",
+          "AI",
+          "LLM",
+          "Agent",
+          "MCP"
+        ],
+        "title": "Context Engineering: The New Foundation for AI Agents",
+        "url": "/ai-agent/posts/context-engineering-the-new-foundation/"
+      },
+      "pass": true
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a-focused-article.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a-reader.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-search-article-a-empty-enter.png"
+  ],
+  "limits": "One emulated Chromium public article search variant from actual keyboard palette, original local Notes preserved. No model/backend/contact/export/share. Theme read back from app, not inferred from global preference. No full matrix or fullscore."
+}

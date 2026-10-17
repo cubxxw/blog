@@ -1,0 +1,64 @@
+{
+  "source": "batch-e10a-source.json",
+  "input": "batch-e10a-recovery.json",
+  "observations": [
+    {
+      "scope": "390-light-error",
+      "computed": {
+        "status": "rgb(108, 91, 78)",
+        "statusOpacity": "1",
+        "feedbackOpacity": "1",
+        "retry": "rgb(53, 0, 3)",
+        "retryOpacity": "1",
+        "card": "rgb(255, 253, 249)",
+        "cardOpacity": "1"
+      },
+      "statusRatio": 6.371623070570725,
+      "enabledRetryRatio": 17.93196138534278
+    },
+    {
+      "scope": "568x224-dark-rednote",
+      "computed": {
+        "status": "rgb(168, 162, 158)",
+        "statusOpacity": "1",
+        "feedbackOpacity": "1",
+        "retry": "rgb(245, 243, 238)",
+        "retryOpacity": "1",
+        "card": "rgb(27, 33, 44)",
+        "cardOpacity": "1"
+      },
+      "statusRatio": 6.402713138745165,
+      "enabledRetryRatio": 14.561420266815729
+    },
+    {
+      "scope": "568x224-dark-wechat",
+      "computed": {
+        "status": "rgb(168, 162, 158)",
+        "statusOpacity": "1",
+        "feedbackOpacity": "1",
+        "retry": "rgb(245, 243, 238)",
+        "retryOpacity": "1",
+        "card": "rgb(27, 33, 44)",
+        "cardOpacity": "1"
+      },
+      "statusRatio": 6.402713138745165,
+      "enabledRetryRatio": 14.561420266815729
+    },
+    {
+      "scope": "390-light-timeout",
+      "computed": {
+        "status": "rgb(108, 91, 78)",
+        "statusOpacity": "1",
+        "feedbackOpacity": "1",
+        "retry": "rgb(53, 0, 3)",
+        "retryOpacity": "1",
+        "card": "rgb(255, 253, 249)",
+        "cardOpacity": "1"
+      },
+      "statusRatio": 6.371623070570725,
+      "enabledRetryRatio": 17.93196138534278
+    }
+  ],
+  "minimum": 6.371623070570725,
+  "limits": "Derived from recorded computed opaque text/card colors and opacity checks in named reduced-motion Chromium error/timeout scopes. Status and enabled Retry only; no image artwork, whole-page contrast, anti-alias pixels, display calibration, or inactive Retry contrast certification."
+}

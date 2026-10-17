@@ -1,0 +1,582 @@
+{
+  "at": "2026-10-15T22:05:20.530Z",
+  "sourceManifest": "batch-e12-source.json",
+  "contexts": [
+    {
+      "kind": "existing-longest-note-shortbody-wheel-overscroll-runtime-reduce",
+      "view": {
+        "width": 568,
+        "height": 224,
+        "coarse": true,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "longest": {
+        "index": 18,
+        "length": 166,
+        "href": "#fn:12"
+      },
+      "at224": {
+        "scrollY": 10425,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+        "card": {
+          "x": 117,
+          "y": 59,
+          "width": 360,
+          "height": 153.171875
+        },
+        "body": {
+          "x": 131.59375,
+          "y": 71.1875,
+          "width": 330.8125,
+          "height": 84,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 84,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 131.59375,
+          "y": 157.578125,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:12",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:12",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:12"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false
+      },
+      "at150": {
+        "scrollY": 10425,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+        "card": {
+          "x": 117,
+          "y": 12,
+          "width": 360,
+          "height": 126
+        },
+        "body": {
+          "x": 131.59375,
+          "y": 24.1875,
+          "width": 330.8125,
+          "height": 56.828125,
+          "scrollTop": 0,
+          "scrollHeight": 84,
+          "clientHeight": 57,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 131.59375,
+          "y": 83.40625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:12",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:12",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:12"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false
+      },
+      "scrolled": {
+        "scrollY": 10425,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+        "card": {
+          "x": 117,
+          "y": 12,
+          "width": 360,
+          "height": 126
+        },
+        "body": {
+          "x": 131.59375,
+          "y": 24.1875,
+          "width": 330.8125,
+          "height": 56.828125,
+          "scrollTop": 27,
+          "scrollHeight": 84,
+          "clientHeight": 57,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 131.59375,
+          "y": 83.40625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:12",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:12",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:12"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false
+      },
+      "afterOverscroll": {
+        "scrollY": 10425,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+        "card": {
+          "x": 117,
+          "y": 12,
+          "width": 360,
+          "height": 126
+        },
+        "body": {
+          "x": 131.59375,
+          "y": 24.1875,
+          "width": 330.8125,
+          "height": 56.828125,
+          "scrollTop": 27,
+          "scrollHeight": 84,
+          "clientHeight": 57,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 131.59375,
+          "y": 83.40625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:12",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:12",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:12"
+        ],
+        "runningAnimations": 0,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "overflowX": false
+      },
+      "reduced": {
+        "scrollY": 10425,
+        "hash": "",
+        "historyLength": 2,
+        "visible": true,
+        "inert": false,
+        "ariaHidden": "false",
+        "role": "region",
+        "name": "Footnote preview",
+        "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+        "card": {
+          "x": 117,
+          "y": 12,
+          "width": 360,
+          "height": 126
+        },
+        "body": {
+          "x": 131.59375,
+          "y": 24.1875,
+          "width": 330.8125,
+          "height": 56.828125,
+          "scrollTop": 27,
+          "scrollHeight": 84,
+          "clientHeight": 57,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 131.59375,
+          "y": 83.40625,
+          "width": 87.8125,
+          "height": 44,
+          "href": "#fn:12",
+          "text": "Go to note ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:12",
+          "insidePopover": false
+        },
+        "expanded": [
+          "#fn:12"
+        ],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "target": {
+        "hash": "#fn:12",
+        "scrollY": 18392,
+        "target": {
+          "x": 52.34375,
+          "y": 145.15625,
+          "width": 485.65625,
+          "height": 119,
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": -1
+      },
+      "errors": [],
+      "denied": [],
+      "limits": "224 actual original note geometry; additional150px height deliberately exercises overflow without injecting or changing public article. Wheel at body then second bottom wheel; no background lock."
+    },
+    {
+      "kind": "trusted-mac-meta-popup-and-coarse-keyboard-native",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "coarse": true,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "platform": "darwin",
+      "href": "#fn:1",
+      "before": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "",
+        "card": {
+          "x": 0,
+          "y": -2813,
+          "width": 105.53125,
+          "height": 69.171875
+        },
+        "body": {
+          "x": 14.59375,
+          "y": -2800.8125,
+          "width": 76.34375,
+          "height": 0,
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 14.59375,
+          "y": -2798.421875,
+          "width": 76.34375,
+          "height": 44,
+          "href": null,
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "popupURL": "http://127.0.0.1:1317/zh/ai-agent/posts/context-engineering-the-new-foundation/#fn:1",
+      "afterMeta": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "",
+        "card": {
+          "x": 0,
+          "y": -2813,
+          "width": 105.53125,
+          "height": 69.171875
+        },
+        "body": {
+          "x": 14.59375,
+          "y": -2800.8125,
+          "width": 76.34375,
+          "height": 0,
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 14.59375,
+          "y": -2798.421875,
+          "width": 76.34375,
+          "height": 44,
+          "href": null,
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "beforeSpace": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "",
+        "card": {
+          "x": 0,
+          "y": -2813,
+          "width": 105.53125,
+          "height": 69.171875
+        },
+        "body": {
+          "x": 14.59375,
+          "y": -2800.8125,
+          "width": 76.34375,
+          "height": 0,
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 14.59375,
+          "y": -2798.421875,
+          "width": 76.34375,
+          "height": 44,
+          "href": null,
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "afterSpace": {
+        "scrollY": 3545,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "inert": true,
+        "ariaHidden": "true",
+        "role": "region",
+        "name": "脚注预览",
+        "text": "",
+        "card": {
+          "x": 0,
+          "y": -3545,
+          "width": 105.53125,
+          "height": 69.171875
+        },
+        "body": {
+          "x": 14.59375,
+          "y": -3532.8125,
+          "width": 76.34375,
+          "height": 0,
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0,
+          "fontSize": "14px"
+        },
+        "more": {
+          "x": 14.59375,
+          "y": -3530.421875,
+          "width": 76.34375,
+          "height": 44,
+          "href": null,
+          "text": "查看脚注 ↓",
+          "fontSize": "14px",
+          "display": "flex"
+        },
+        "focus": {
+          "tag": "A",
+          "id": "",
+          "className": "footnote-ref",
+          "href": "#fn:1",
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": "none",
+        "overflowX": false
+      },
+      "enterTarget": {
+        "hash": "#fn:1",
+        "scrollY": 18972,
+        "target": {
+          "x": 54.296875,
+          "y": 72.140625,
+          "width": 305.703125,
+          "height": 153.25,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": 52
+      },
+      "errors": [],
+      "denied": [],
+      "setup": "Existing marker focus setup; trusted Mac Meta+click opened one same-local popup and closed; actual Space/Enter kept anchor semantics. No public/citation navigation."
+    },
+    {
+      "kind": "no-page-js-native-anchor-back",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "coarse": true,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "href": "#fn:1",
+      "before": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 2,
+        "visible": false,
+        "card": null,
+        "body": null,
+        "more": null,
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": null,
+        "overflowX": false
+      },
+      "target": {
+        "hash": "#fn:1",
+        "scrollY": 18972,
+        "target": {
+          "x": 54.296875,
+          "y": 72.140625,
+          "width": 305.703125,
+          "height": 153.25,
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n ↩︎ ↩︎ ↩︎"
+        },
+        "headerBottom": 52
+      },
+      "returned": {
+        "scrollY": 2813,
+        "hash": "",
+        "historyLength": 3,
+        "visible": false,
+        "card": null,
+        "body": null,
+        "more": null,
+        "focus": {
+          "tag": "BODY",
+          "id": "top",
+          "className": "",
+          "href": null,
+          "insidePopover": false
+        },
+        "expanded": [],
+        "runningAnimations": 0,
+        "transform": null,
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e12-short-224-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-body-scroll-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12-short-150-runtime-reduce-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12-coarse-native-enter-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e12-nojs-native-zh.png"
+  ],
+  "limits": "Three Chromium contexts; actual existing note text/viewport/native anchors/keys, no AI/model/contact/share/citation requests. NoJS is page JavaScript disabled; evaluation only reads/setup from test harness. Short150 is an explicitly additional viewport, not224 overflow certification."
+}

@@ -1,0 +1,6 @@
+HEAD 500bcc79252321dfd18eab26519c408f96440f80
+Source SHA256 5b699bfc184689516dde3fd12cff49a475ee608f5246ef94460c7d8bf78715d2 tests/e2e/00-space-onboarding.spec.ts
+PASS rename preserves all 10 distinct titles; 7 other test bodies byte-identical; resident only assetReady timeout5000→30000, all12s/pause assertions byte-identical.
+PASS cancel/reveal retain original intermediate/final assertions, real44px/centerhit/native-mouse click under Clock; old1850ms read/reveal deadlines exceeded before cancellation assertions; first renderer frame and original1400ms/550ms timers driven, no state/event fabrication. No production/helper/config/workflow edits.
+Total: 758 tests in 52 files
+UNVERIFIED: real browser Clock/rAF initialization, WebGL first-frame/context-loss timing, native hit targets, optional cat decode/preparation, full CI.

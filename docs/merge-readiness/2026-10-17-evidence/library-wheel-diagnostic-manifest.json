@@ -1,0 +1,44 @@
+{
+  "head": "d780a65ac4f4a3d1833259b486a60a4d02976a53",
+  "file": "tests/e2e/00-space-library-profile-contracts.spec.ts",
+  "sha256": "515aebad6a0af373ef6a55f9eb23818cfac4d52e1ec4498e1c3c80b5c96b0482",
+  "scope": "test-only bounded observation; same original native input/assertions; no production fix claimed",
+  "rename": "same existing10 tests (20project instances) moved to00prefix; bothprojects758total52files; no skip/config/workflow/timeout change",
+  "logs": [
+    {
+      "name": "integration-library-wheel-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "name": "integration-library-wheel-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "integration-library-wheel-discovery.log",
+      "bytes": 104351,
+      "sha256": "25dd871660d3b142e68918afe738b4326f9e4d8b2f67d72b80c0a9f621afbda8"
+    },
+    {
+      "name": "integration-library-wheel-scope.log",
+      "bytes": 1014,
+      "sha256": "21b1817a27089640465e1e09683b704b89d4da7e9cf8bbc4e57ec07a539239ea"
+    },
+    {
+      "name": "integration-library-wheel-renamed-discovery.log",
+      "bytes": 104411,
+      "sha256": "6c8007419ca8777ce8c086058ae62740af03025e5712d21e683af2e6fada1085"
+    }
+  ],
+  "archive": {
+    "bytes": 39745,
+    "sha256": "7bd5bd57c262d5acc520606d53e5bcdcc6be2f0068a1f1f334587df0ad4bc7a1"
+  },
+  "localChecks": {
+    "typecheck": "exit0",
+    "diffCheck": "exit0",
+    "discovery": "758tests52files; not execution"
+  },
+  "limitation": "Observer adds layout reads/passive listeners/16rAF scheduling and may alter timing/compositor routing. A pass alone cannot establish cause or a production repair."
+}

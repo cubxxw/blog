@@ -1,0 +1,4 @@
+PASS a hidden Product Lab retains attached app DOM through resize and return
+PASS the companion shortcut accepts actual typing after the camera arrives
+PASS an idle computer stops GPU drawing and resumes for a scene change or walking
+PASS focus and article scrolling cannot move the camera viewport

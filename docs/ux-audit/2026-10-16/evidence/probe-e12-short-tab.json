@@ -1,0 +1,340 @@
+{
+  "at": "2026-10-15T22:15:42.060Z",
+  "sourceManifest": "batch-e12-source.json",
+  "contexts": [
+    {
+      "view": {
+        "width": 568,
+        "height": 150,
+        "coarse": false,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "markerIndex": 18,
+      "states": {
+        "entered": {
+          "scrollY": 10462,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 10431,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 10431,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:12",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-e12-short-tab-fine.png",
+      "errors": [],
+      "denied": [],
+      "limits": "Existing longest note; explicit additional150px boundary, not a physical device claim. Marker setup focus prevents scroll; actual ArrowDown/Tab/Tab keys."
+    },
+    {
+      "view": {
+        "width": 568,
+        "height": 150,
+        "coarse": true,
+        "locale": "en",
+        "dark": true,
+        "motion": "reduce"
+      },
+      "markerIndex": 18,
+      "states": {
+        "entered": {
+          "scrollY": 10462,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "citation": {
+          "scrollY": 10431,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "",
+            "href": "https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "more": {
+          "scrollY": 10431,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "Footnote preview",
+          "text": "Manus, “Context Engineering for AI Agents: Lessons from Building Manus.” https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+          "card": {
+            "x": 117,
+            "y": 12,
+            "width": 360,
+            "height": 126
+          },
+          "body": {
+            "x": 131.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 56.828125,
+            "scrollTop": 26,
+            "scrollHeight": 84,
+            "clientHeight": 57,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 131.59375,
+            "y": 83.40625,
+            "width": 87.8125,
+            "height": 44,
+            "href": "#fn:12",
+            "text": "Go to note ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "fn-popover__more",
+            "href": "#fn:12",
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:12"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-e12-short-tab-coarse.png",
+      "errors": [],
+      "denied": [],
+      "limits": "Existing longest note; explicit additional150px boundary, not a physical device claim. Marker setup focus prevents scroll; actual ArrowDown/Tab/Tab keys."
+    }
+  ]
+}

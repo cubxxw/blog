@@ -1,0 +1,13 @@
+
+Running 4 tests using 1 worker
+
+(node:96915) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › tests/e2e/space-onboarding.spec.ts:84:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (8.4s)
+  ✓  2 [desktop] › tests/e2e/space-onboarding.spec.ts:124:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry (469ms)
+(node:96945) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [mobile] › tests/e2e/space-onboarding.spec.ts:84:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (7.7s)
+  ✓  4 [mobile] › tests/e2e/space-onboarding.spec.ts:124:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry (487ms)
+
+  4 passed (18.3s)

@@ -1,0 +1,6 @@
+PASS D2.faq-outer-collapse-cancels
+PASS D2.search-completion-keeps-current-focus
+PASS D2.travel-dialog-double-escape
+PASS D2.travel-quick-reopen
+PASS D2.travel-dialog-double-escape
+PASS D2.travel-quick-reopen

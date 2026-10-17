@@ -1,0 +1,21 @@
+
+Running 12 tests using 1 worker
+
+(node:24476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/control-contracts.spec.ts:6:5 › article tabs expose one stop and support Arrow, Home and End (888ms)
+  ✓   2 tests/e2e/control-contracts.spec.ts:23:5 › compact tools retain focus around the selected tab and name each panel (533ms)
+  ✓   3 tests/e2e/control-contracts.spec.ts:41:5 › mobile navigation is a dismissible named disclosure (564ms)
+  ✓   4 tests/e2e/control-contracts.spec.ts:55:5 › refused clipboard copy leaves code selected with a truthful recovery (426ms)
+  ✓   5 tests/e2e/control-contracts.spec.ts:69:5 › closed compact tools cannot receive focus before opening or after dismissal (422ms)
+  ✓   6 tests/e2e/control-contracts.spec.ts:80:5 › fullscreen code uses a native modal and restores its expand trigger (558ms)
+  ✓   7 tests/e2e/control-contracts.spec.ts:88:5 › book AI uses a native modal with keyboard containment and a 44px exit (348ms)
+  ✓   8 tests/e2e/ime-contracts.spec.ts:4:5 › book AI keeps the composing draft until a deliberate Enter (351ms)
+  ✓   9 tests/e2e/ime-contracts.spec.ts:14:5 › FAQ AI ignores both composing Enter and Safari keyCode 229 (390ms)
+(node:24580) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 tests/e2e/control-recovery.spec.ts:7:5 › share link refusal preserves the URL and returns focus after dismissal (845ms)
+  ✓  11 tests/e2e/control-recovery.spec.ts:25:5 › newsletter timeout releases the busy form and preserves the email (373ms)
+  ✓  12 tests/e2e/control-recovery.spec.ts:39:5 › library empty search and empty bookmarks offer a working way back (616ms)
+
+  12 passed (7.9s)

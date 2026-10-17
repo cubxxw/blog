@@ -1,0 +1,90 @@
+
+Running 21 tests using 1 worker
+
+(node:50738) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › zh accessible chat streams safely and locks the complete turn (760ms)
+  ✓   2 tests/e2e/home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › en accessible chat streams safely and locks the complete turn (503ms)
+  ✓   3 tests/e2e/home-about-experience.spec.ts:79:7 › Homepage runtime and progressive decoration › close and clear isolate stale replies from a subsequent conversation (565ms)
+  ✓   4 tests/e2e/home-about-experience.spec.ts:109:7 › Homepage runtime and progressive decoration › a completed reply does not steal focus after the visitor leaves chat (391ms)
+  ✓   5 tests/e2e/home-about-experience.spec.ts:124:7 › Homepage runtime and progressive decoration › bfcache restoration synchronizes a canceled streaming composer (358ms)
+  ✓   6 tests/e2e/home-about-experience.spec.ts:149:7 › Homepage runtime and progressive decoration › a failed stream exposes a usable retry (445ms)
+  ✓   7 tests/e2e/home-chat-recovery.spec.ts:45:37 › zh draft survives close and IME Enter/Escape retains composition (514ms)
+  ✓   8 tests/e2e/home-chat-recovery.spec.ts:45:37 › en draft survives close and IME Enter/Escape retains composition (570ms)
+  ✘   9 tests/e2e/home-chat-recovery.spec.ts:60:5 › a 25s header stall unlocks retry and a late response cannot overwrite it (5.4s)
+(node:50812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 tests/e2e/home-chat-recovery.spec.ts:74:39 › SSE idle deadline covers the first chunk without awaiting stuck cancellation (5.5s)
+(node:50830) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 tests/e2e/home-chat-recovery.spec.ts:74:39 › SSE idle deadline covers a later chunk without awaiting stuck cancellation (508ms)
+  ✓  12 tests/e2e/home-chat-recovery.spec.ts:92:5 › a JSON body stall also races the idle deadline and ignores late JSON (385ms)
+  ✓  13 tests/e2e/home-chat-recovery.spec.ts:100:5 › short-screen Stop is the enabled sender target and preserves a partial answer for retry (443ms)
+  ✓  14 tests/e2e/home-chat-recovery.spec.ts:122:5 › [DONE] completes before EOF even when reader cancellation never settles (373ms)
+  ✓  15 tests/e2e/home-chat-recovery.spec.ts:132:5 › finishing a short-screen reply preserves a wheel departure toward the books (527ms)
+  ✓  16 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×320 (1.0s)
+  ✓  17 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×320 (1.0s)
+  ✓  18 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×256 (991ms)
+  ✓  19 tests/e2e/home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×256 (967ms)
+  ✓  20 tests/e2e/home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 390px (480ms)
+  ✓  21 tests/e2e/home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 1440px (512ms)
+
+
+  1) tests/e2e/home-chat-recovery.spec.ts:60:5 › a 25s header stall unlocks retry and a late response cannot overwrite it
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('#hp-chat-body')
+    Expected: "true"
+    Received: "false"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('#hp-chat-body') with timeout 5000ms
+      - waiting for locator('#hp-chat-body')
+        14 × locator resolved to <div id="hp-chat-body" aria-busy="false" class="hp-bear-chat-body">…</div>
+           - unexpected value "false"
+
+
+      61 |   await page.clock.install();await installTransport(page,'headers',true);await open(page);
+      62 |   await page.locator('#hp-chat-input').fill('header timeout question');await page.locator('#hp-chat-input').press('Enter');await expect.poll(()=>count(page)).toBe(1);
+    > 63 |   await page.clock.fastForward(24999);await expect(page.locator('#hp-chat-body')).toHaveAttribute('aria-busy','true');
+         |                                                                                   ^
+      64 |   await page.clock.fastForward(1);await expectIdle(page);await expect(page.locator('.hp-bear-chat-recovery')).toContainText('超时');
+      65 |   expect(await page.evaluate(()=>(window as any).homeRecovery.turns[0].aborts)).toBe(1);
+      66 |   await page.evaluate(()=>{const state=(window as any).homeRecovery;state.mode='sse';state.headers(0);});
+        at <SOURCE_WORKTREE>/tests/e2e/home-chat-recovery.spec.ts:63:83
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/home-chat-recovery-a-25s-h-e953c-esponse-cannot-overwrite-it/error-context.md
+
+  2) tests/e2e/home-chat-recovery.spec.ts:74:39 › SSE idle deadline covers the first chunk without awaiting stuck cancellation
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('#hp-chat-body')
+    Expected: "true"
+    Received: "false"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('#hp-chat-body') with timeout 5000ms
+      - waiting for locator('#hp-chat-body')
+        14 × locator resolved to <div id="hp-chat-body" aria-busy="false" class="hp-bear-chat-body">…</div>
+           - unexpected value "false"
+
+
+      79 |     await expect(page.locator('#hp-chat-body .hp-bear-chat-bubble')).toContainText(['stream timeout question','已收到的片段。']);
+      80 |   }
+    > 81 |   await page.clock.fastForward(24999);await expect(page.locator('#hp-chat-body')).toHaveAttribute('aria-busy','true');
+         |                                                                                   ^
+      82 |   await page.clock.fastForward(1);await expectIdle(page);await expect(page.locator('.hp-bear-chat-recovery')).toContainText('超时');
+      83 |   expect(await page.evaluate(()=>(window as any).homeRecovery.turns[0].cancels)).toBe(1);
+      84 |   await expect(page.locator('#hp-chat-body')).toContainText('stream timeout question');
+        at <SOURCE_WORKTREE>/tests/e2e/home-chat-recovery.spec.ts:81:83
+
+    Error Context: ../../../../../../../..<REGISTERED_ARTIFACT>/playwright/home-chat-recovery-SSE-idl-93dca-awaiting-stuck-cancellation/error-context.md
+
+  2 failed
+    tests/e2e/home-chat-recovery.spec.ts:60:5 › a 25s header stall unlocks retry and a late response cannot overwrite it
+    tests/e2e/home-chat-recovery.spec.ts:74:39 › SSE idle deadline covers the first chunk without awaiting stuck cancellation
+  19 passed (24.7s)

@@ -1,0 +1,30 @@
+{
+  "base": "c5202308b02c4262dacf166e9d6ec477fc0d2a8b",
+  "files": {
+    ".github/workflows/main.yaml": "fa0f726ab470eed7b57a61b695af1900fc84da1484e1a45317b6fd2507e3c11e"
+  },
+  "logs": [
+    {
+      "name": "integration-scene-selector-ci-workflow.log",
+      "bytes": 1199,
+      "sha256": "3c9a973dec7306a071df27d14d418dcdd33a78e7af1e1668ec6b0e2265b35970"
+    },
+    {
+      "name": "integration-scene-selector-actionlint.log",
+      "bytes": 37,
+      "sha256": "0c8cb767a68681dbd7f0b8baa915f87d3671a1beaf685fa3e919bb4dec5c6326"
+    },
+    {
+      "name": "integration-scene-selector-infra-scope.log",
+      "bytes": 547,
+      "sha256": "115d144c9100ef503be73cf748f8917a197697651e675b4ad276d92011ee2e5e"
+    }
+  ],
+  "archiveSha256": "0ecb939f1a06bf7548ffdf05a33816f7d16a404b954b95d6b52b78c7d895612e",
+  "results": {
+    "workflowContracts": "5pass0fail0skip",
+    "yamlAndInverseScope": "pass",
+    "actionlint": "unavailable local exit127; original required remote actionlint must pass"
+  },
+  "reason": "33min cancelled run had9.1min prerequisites and~335desktop instances completed; full758 requires enough sequential infrastructure budget. 120min capacity is not an observed full duration or product-performance certification. All per-step assertions remain."
+}

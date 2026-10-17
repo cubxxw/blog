@@ -1,0 +1,785 @@
+{
+  "observations": [
+    {
+      "source": "batch-e6-source.json",
+      "route": "http://127.0.0.1:1317/zh/",
+      "locale": "zh",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "kind": "actual frozen E6",
+      "feature": {
+        "text": "Nango 接入实战：让用户在聊天中添加自己的 MCP",
+        "href": "/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+        "box": {
+          "x": 814.671875,
+          "y": 144.875,
+          "width": 473.3125,
+          "height": 318.375
+        }
+      },
+      "overflow": false,
+      "loadedFonts": [],
+      "actions": [
+        {
+          "text": "开始阅读 ↓",
+          "width": 129.140625,
+          "height": 48,
+          "x": 152,
+          "y": 357.125,
+          "overflow": false
+        },
+        {
+          "text": "探索产品 →",
+          "width": 130.875,
+          "height": 48,
+          "x": 293.140625,
+          "y": 357.125,
+          "overflow": false
+        }
+      ],
+      "social": [
+        {
+          "label": "Github",
+          "href": "https://github.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 152,
+          "y": 471.125
+        },
+        {
+          "label": "Zhihu",
+          "href": "https://www.zhihu.com/people/3293172751",
+          "width": 44,
+          "height": 44,
+          "x": 204,
+          "y": 471.125
+        },
+        {
+          "label": "Bilibili",
+          "href": "https://space.bilibili.com/1233089591",
+          "width": 44,
+          "height": 44,
+          "x": 256,
+          "y": 471.125
+        },
+        {
+          "label": "Youtube",
+          "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+          "width": 44,
+          "height": 44,
+          "x": 308,
+          "y": 471.125
+        },
+        {
+          "label": "Buymeacoffee",
+          "href": "https://www.buymeacoffee.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 360,
+          "y": 471.125
+        },
+        {
+          "label": "Email",
+          "href": "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com",
+          "width": 44,
+          "height": 44,
+          "x": 412,
+          "y": 471.125
+        },
+        {
+          "label": "小红书 / RedNote",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 464,
+          "y": 471.125
+        },
+        {
+          "label": "微信 / WeChat",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 516,
+          "y": 471.125
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 568,
+          "y": 471.125
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 620,
+          "y": 471.125
+        }
+      ],
+      "readingAction": {
+        "focus": "hp-posts",
+        "headingTop": 130.125
+      },
+      "conversation": "opened/sent mocked answer/closed/reopened; same Bear root, retained question+answer, opener focused"
+    },
+    {
+      "source": "batch-e6-source.json",
+      "route": "http://127.0.0.1:1317/",
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "dark",
+      "motion": "reduce",
+      "zoom": 1,
+      "kind": "actual frozen E6",
+      "feature": {
+        "text": "Nango in Practice: Let Users Add Their Own MCP Servers in Chat",
+        "href": "/ai-agent/posts/nango-user-defined-mcp-integration/",
+        "box": {
+          "x": 814.671875,
+          "y": 192.59375,
+          "width": 473.3125,
+          "height": 288.78125
+        }
+      },
+      "overflow": false,
+      "loadedFonts": [],
+      "actions": [
+        {
+          "text": "Start reading ↓",
+          "width": 158.921875,
+          "height": 48,
+          "x": 152,
+          "y": 422.96875,
+          "overflow": false
+        },
+        {
+          "text": "Explore products →",
+          "width": 186.546875,
+          "height": 48,
+          "x": 322.921875,
+          "y": 422.96875,
+          "overflow": false
+        }
+      ],
+      "social": [
+        {
+          "label": "Github",
+          "href": "https://github.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 152,
+          "y": 536.96875
+        },
+        {
+          "label": "Zhihu",
+          "href": "https://www.zhihu.com/people/3293172751",
+          "width": 44,
+          "height": 44,
+          "x": 204,
+          "y": 536.96875
+        },
+        {
+          "label": "Bilibili",
+          "href": "https://space.bilibili.com/1233089591",
+          "width": 44,
+          "height": 44,
+          "x": 256,
+          "y": 536.96875
+        },
+        {
+          "label": "Youtube",
+          "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+          "width": 44,
+          "height": 44,
+          "x": 308,
+          "y": 536.96875
+        },
+        {
+          "label": "Buymeacoffee",
+          "href": "https://www.buymeacoffee.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 360,
+          "y": 536.96875
+        },
+        {
+          "label": "Email",
+          "href": "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com",
+          "width": 44,
+          "height": 44,
+          "x": 412,
+          "y": 536.96875
+        },
+        {
+          "label": "小红书 / RedNote",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 464,
+          "y": 536.96875
+        },
+        {
+          "label": "微信 / WeChat",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 516,
+          "y": 536.96875
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 568,
+          "y": 536.96875
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 620,
+          "y": 536.96875
+        }
+      ],
+      "readingAction": {
+        "focus": "hp-posts",
+        "headingTop": 129.96875
+      },
+      "conversation": "opened/sent mocked answer/closed/reopened; same Bear root, retained question+answer, opener focused"
+    },
+    {
+      "source": "batch-e6-source.json",
+      "route": "http://127.0.0.1:1317/zh/",
+      "locale": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "kind": "actual frozen E6",
+      "feature": {
+        "text": "Nango 接入实战：让用户在聊天中添加自己的 MCP",
+        "href": "/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+        "box": {
+          "x": 20,
+          "y": 518.453125,
+          "width": 350,
+          "height": 320.34375
+        }
+      },
+      "overflow": false,
+      "loadedFonts": [],
+      "actions": [
+        {
+          "text": "开始阅读 ↓",
+          "width": 169,
+          "height": 48,
+          "x": 20,
+          "y": 375.453125,
+          "overflow": false
+        },
+        {
+          "text": "探索产品 →",
+          "width": 169,
+          "height": 48,
+          "x": 201,
+          "y": 375.453125,
+          "overflow": false
+        }
+      ],
+      "social": [
+        {
+          "label": "Github",
+          "href": "https://github.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 20,
+          "y": 866.796875
+        },
+        {
+          "label": "Zhihu",
+          "href": "https://www.zhihu.com/people/3293172751",
+          "width": 44,
+          "height": 44,
+          "x": 72,
+          "y": 866.796875
+        },
+        {
+          "label": "Bilibili",
+          "href": "https://space.bilibili.com/1233089591",
+          "width": 44,
+          "height": 44,
+          "x": 124,
+          "y": 866.796875
+        },
+        {
+          "label": "Youtube",
+          "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+          "width": 44,
+          "height": 44,
+          "x": 176,
+          "y": 866.796875
+        },
+        {
+          "label": "Buymeacoffee",
+          "href": "https://www.buymeacoffee.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 228,
+          "y": 866.796875
+        },
+        {
+          "label": "Email",
+          "href": "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com",
+          "width": 44,
+          "height": 44,
+          "x": 280,
+          "y": 866.796875
+        },
+        {
+          "label": "小红书 / RedNote",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 20,
+          "y": 918.796875
+        },
+        {
+          "label": "微信 / WeChat",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 72,
+          "y": 918.796875
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 124,
+          "y": 918.796875
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 176,
+          "y": 918.796875
+        }
+      ],
+      "readingAction": {
+        "focus": "hp-posts",
+        "headingTop": 129.796875
+      },
+      "conversation": "opened/sent mocked answer/closed/reopened; same Bear root, retained question+answer, opener focused"
+    },
+    {
+      "source": "batch-e6-source.json",
+      "route": "http://127.0.0.1:1317/zh/",
+      "locale": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "motion": "reduce",
+      "zoom": 1,
+      "kind": "actual frozen E6",
+      "feature": {
+        "text": "Nango 接入实战：让用户在聊天中添加自己的 MCP",
+        "href": "/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+        "box": {
+          "x": 20,
+          "y": 518.453125,
+          "width": 350,
+          "height": 320.34375
+        }
+      },
+      "overflow": false,
+      "loadedFonts": [],
+      "actions": [
+        {
+          "text": "开始阅读 ↓",
+          "width": 169,
+          "height": 48,
+          "x": 20,
+          "y": 375.453125,
+          "overflow": false
+        },
+        {
+          "text": "探索产品 →",
+          "width": 169,
+          "height": 48,
+          "x": 201,
+          "y": 375.453125,
+          "overflow": false
+        }
+      ],
+      "social": [
+        {
+          "label": "Github",
+          "href": "https://github.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 20,
+          "y": 866.796875
+        },
+        {
+          "label": "Zhihu",
+          "href": "https://www.zhihu.com/people/3293172751",
+          "width": 44,
+          "height": 44,
+          "x": 72,
+          "y": 866.796875
+        },
+        {
+          "label": "Bilibili",
+          "href": "https://space.bilibili.com/1233089591",
+          "width": 44,
+          "height": 44,
+          "x": 124,
+          "y": 866.796875
+        },
+        {
+          "label": "Youtube",
+          "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+          "width": 44,
+          "height": 44,
+          "x": 176,
+          "y": 866.796875
+        },
+        {
+          "label": "Buymeacoffee",
+          "href": "https://www.buymeacoffee.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 228,
+          "y": 866.796875
+        },
+        {
+          "label": "Email",
+          "href": "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com",
+          "width": 44,
+          "height": 44,
+          "x": 280,
+          "y": 866.796875
+        },
+        {
+          "label": "小红书 / RedNote",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 20,
+          "y": 918.796875
+        },
+        {
+          "label": "微信 / WeChat",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 72,
+          "y": 918.796875
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 124,
+          "y": 918.796875
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 176,
+          "y": 918.796875
+        }
+      ],
+      "readingAction": {
+        "focus": "hp-posts",
+        "headingTop": 129.796875
+      },
+      "conversation": "opened/sent mocked answer/closed/reopened; same Bear root, retained question+answer, opener focused"
+    },
+    {
+      "source": "batch-e6-source.json",
+      "route": "http://127.0.0.1:1317/",
+      "locale": "en",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "kind": "actual frozen E6",
+      "feature": {
+        "text": "Nango in Practice: Let Users Add Their Own MCP Servers in Chat",
+        "href": "/ai-agent/posts/nango-user-defined-mcp-integration/",
+        "box": {
+          "x": 20,
+          "y": 636.40625,
+          "width": 280,
+          "height": 352.53125
+        }
+      },
+      "overflow": false,
+      "loadedFonts": [],
+      "actions": [
+        {
+          "text": "Start reading ↓",
+          "width": 280,
+          "height": 48,
+          "x": 20,
+          "y": 433.40625,
+          "overflow": false
+        },
+        {
+          "text": "Explore products →",
+          "width": 280,
+          "height": 48,
+          "x": 20,
+          "y": 493.40625,
+          "overflow": false
+        }
+      ],
+      "social": [
+        {
+          "label": "Github",
+          "href": "https://github.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 20,
+          "y": 1016.9375
+        },
+        {
+          "label": "Zhihu",
+          "href": "https://www.zhihu.com/people/3293172751",
+          "width": 44,
+          "height": 44,
+          "x": 72,
+          "y": 1016.9375
+        },
+        {
+          "label": "Bilibili",
+          "href": "https://space.bilibili.com/1233089591",
+          "width": 44,
+          "height": 44,
+          "x": 124,
+          "y": 1016.9375
+        },
+        {
+          "label": "Youtube",
+          "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+          "width": 44,
+          "height": 44,
+          "x": 176,
+          "y": 1016.9375
+        },
+        {
+          "label": "Buymeacoffee",
+          "href": "https://www.buymeacoffee.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 228,
+          "y": 1016.9375
+        },
+        {
+          "label": "Email",
+          "href": "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com",
+          "width": 44,
+          "height": 44,
+          "x": 20,
+          "y": 1068.9375
+        },
+        {
+          "label": "小红书 / RedNote",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 72,
+          "y": 1068.9375
+        },
+        {
+          "label": "微信 / WeChat",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 124,
+          "y": 1068.9375
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 176,
+          "y": 1068.9375
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 228,
+          "y": 1068.9375
+        }
+      ],
+      "readingAction": {
+        "focus": "hp-posts",
+        "headingTop": 129.9375
+      },
+      "conversation": "opened/sent mocked answer/closed/reopened; same Bear root, retained question+answer, opener focused"
+    },
+    {
+      "source": "batch-e6-source.json",
+      "route": "http://127.0.0.1:1317/",
+      "locale": "en",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "theme": "light",
+      "motion": "reduce",
+      "zoom": 1,
+      "kind": "actual frozen E6",
+      "feature": {
+        "text": "Nango in Practice: Let Users Add Their Own MCP Servers in Chat",
+        "href": "/ai-agent/posts/nango-user-defined-mcp-integration/",
+        "box": {
+          "x": 20,
+          "y": 534.1875,
+          "width": 528,
+          "height": 261.15625
+        }
+      },
+      "overflow": false,
+      "loadedFonts": [],
+      "actions": [
+        {
+          "text": "Start reading ↓",
+          "width": 258,
+          "height": 48,
+          "x": 20,
+          "y": 391.1875,
+          "overflow": false
+        },
+        {
+          "text": "Explore products →",
+          "width": 258,
+          "height": 48,
+          "x": 290,
+          "y": 391.1875,
+          "overflow": false
+        }
+      ],
+      "social": [
+        {
+          "label": "Github",
+          "href": "https://github.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 20,
+          "y": 823.34375
+        },
+        {
+          "label": "Zhihu",
+          "href": "https://www.zhihu.com/people/3293172751",
+          "width": 44,
+          "height": 44,
+          "x": 72,
+          "y": 823.34375
+        },
+        {
+          "label": "Bilibili",
+          "href": "https://space.bilibili.com/1233089591",
+          "width": 44,
+          "height": 44,
+          "x": 124,
+          "y": 823.34375
+        },
+        {
+          "label": "Youtube",
+          "href": "https://www.youtube.com/channel/UC6l7tlUTrJFdDTMlR-X2MZQ",
+          "width": 44,
+          "height": 44,
+          "x": 176,
+          "y": 823.34375
+        },
+        {
+          "label": "Buymeacoffee",
+          "href": "https://www.buymeacoffee.com/cubxxw",
+          "width": 44,
+          "height": 44,
+          "x": 228,
+          "y": 823.34375
+        },
+        {
+          "label": "Email",
+          "href": "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com",
+          "width": 44,
+          "height": 44,
+          "x": 280,
+          "y": 823.34375
+        },
+        {
+          "label": "小红书 / RedNote",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 332,
+          "y": 823.34375
+        },
+        {
+          "label": "微信 / WeChat",
+          "href": null,
+          "width": 44,
+          "height": 44,
+          "x": 384,
+          "y": 823.34375
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 436,
+          "y": 823.34375
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cubxxw/",
+          "width": 44,
+          "height": 44,
+          "x": 488,
+          "y": 823.34375
+        }
+      ],
+      "readingAction": {
+        "focus": "hp-posts",
+        "headingTop": 130.34375
+      },
+      "conversation": "opened/sent mocked answer/closed/reopened; same Bear root, retained question+answer, opener focused"
+    }
+  ],
+  "limits": "Six scoped browser viewport/locale/theme journeys, synthetic isolated API. No real AI/physical phone/200% zoom/Safari claim; conversation/books screenshots manually align section to112px for consistent comparison."
+}

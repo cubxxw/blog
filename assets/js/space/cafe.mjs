@@ -2,10 +2,13 @@ export const CAFE_THEMES = Object.freeze(['zen', 'garden', 'coast', 'mountain', 
 export function cafeTheme(value) { return CAFE_THEMES.includes(value) ? value : 'zen'; }
 export function cafeEntryMode({ route, navigation, saved, localeResume = false }) {
   if (route.view !== 'bear') return 'desktop';
-  if ((localeResume || navigation === 'reload') && ['cafe', 'desktop'].includes(saved)) return saved;
+  if (localeResume && ['cafe', 'desktop'].includes(saved)) return saved;
+  // Old About URLs historically remained in the address bar on leaving the
+  // screen. Preserve that one legacy return, but never swallow a reader link.
+  if (navigation==='reload' && saved==='cafe' && route.app==='welcome' && route.payload==='identity') return 'cafe';
   if (route.app) return 'desktop';
-  if (!localeResume && navigation === 'navigate') return 'cafe';
-  return saved === 'desktop' ? 'desktop' : 'cafe';
+  if (navigation === 'back_forward' && ['cafe', 'desktop'].includes(saved)) return saved;
+  return 'cafe';
 }
 // Only the most recent successfully loaded scene may change the view or storage.
 export function createSceneSelection({ load, commit }) {

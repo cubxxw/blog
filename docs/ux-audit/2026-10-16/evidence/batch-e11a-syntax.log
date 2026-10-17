@@ -1,0 +1,3 @@
+JS and TypeScript syntax checks: passed.
+AI transport, conversation and Markdown: byte-identical to the accepted checkpoint.
+Fuse fallback search: byte-identical to the accepted checkpoint.

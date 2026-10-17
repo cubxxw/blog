@@ -47,7 +47,6 @@ test.describe('Homepage runtime and progressive decoration', () => {
       await expect(page.locator('main')).toHaveCount(1);
       await page.getByRole('button', { name: language === 'zh' ? '与 Bear 对话' : 'Talk to Bear', exact: true }).click();
       const input = page.getByRole('textbox', { name: language === 'zh' ? '给 Bear 的消息' : 'Message Bear' });
-      const send = page.getByRole('button', { name: language === 'zh' ? '发送消息' : 'Send message', exact: true });
       await expect(input).toBeFocused();
       await input.fill('推荐文章');
       await input.press('Enter');
@@ -57,7 +56,14 @@ test.describe('Homepage runtime and progressive decoration', () => {
       await push(page, 0, { delta: '你好，熊 🐻\n\n' });
       await expect(page.locator('#hp-chat-body')).toContainText('你好，熊 🐻');
       await expect(input).toBeDisabled();
-      await expect(send).toBeDisabled();
+      await expect(page.getByRole('button', { name: language === 'zh' ? '发送消息' : 'Send message', exact: true })).toHaveCount(0);
+      const stop = page.getByRole('button', { name: language === 'zh' ? '停止回复' : 'Stop reply', exact: true });
+      await expect(stop).toBeEnabled();
+      const stopBox = (await stop.boundingBox())!;
+      expect(stopBox.width).toBeGreaterThanOrEqual(44);expect(stopBox.height).toBeGreaterThanOrEqual(44);
+      await expect(page.locator('.hp-bear-chat-quick-btn[data-msg]').first()).toBeDisabled();
+      await page.locator('.hp-bear-chat-quick-btn[data-msg]').first().evaluate((el:HTMLButtonElement)=>el.click());
+      expect(await page.evaluate(()=>(window as any).homeTestRequests)).toBe(1);
       await push(page, 0, { delta: '[unsafe](https://example.com/" onmouseover="alert(1))\n\n[safe](/about/?a=1&b=2)' }, true);
       await expect(input).toBeEnabled();
       await expect(input).toBeFocused();
@@ -157,7 +163,7 @@ test.describe('Homepage runtime and progressive decoration', () => {
     await expect(page.locator('#hp-chat-input')).toBeEnabled();
   });
 
-  test('desktop decoration waits for intent, then disposes and remounts when motion preference changes', async ({ page }) => {
+  test('desktop decoration waits for conversation visibility and intent, then responds to motion preference changes', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.addInitScript(() => {
@@ -181,16 +187,17 @@ test.describe('Homepage runtime and progressive decoration', () => {
       body: `function mount(host) { window.homeTestMounts = (window.homeTestMounts || 0) + 1; const canvas = document.createElement('canvas'); host.append(canvas); return {dispose() {canvas.remove();}}; } export {mount as mountHeroField, mount as mountBearOrb};`,
     }));
     await page.goto('/zh/', { waitUntil: 'domcontentloaded' });
-    await page.waitForTimeout(3000);
-    await expect(page.locator('#hp-about canvas')).toHaveCount(0);
-    expect(await page.evaluate(() => (window as any).homeTestMounts || 0)).toBe(0);
     await page.keyboard.press('Tab');
-    await expect(page.locator('#hp-about canvas')).toHaveCount(2);
+    await page.waitForTimeout(3000);
+    await expect(page.locator('#hp-conversation canvas')).toHaveCount(0);
+    expect(await page.evaluate(() => (window as any).homeTestMounts || 0)).toBe(0);
+    await page.locator('#hp-bear-ai').scrollIntoViewIfNeeded();
+    await expect(page.locator('#hp-conversation canvas')).toHaveCount(2);
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await expect(page.locator('#hp-about canvas')).toHaveCount(0);
+    await expect(page.locator('#hp-conversation canvas')).toHaveCount(0);
     await expect(page.locator('#hp-bear-ai')).not.toHaveClass(/has-orb/);
     await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await expect(page.locator('#hp-about canvas')).toHaveCount(2);
+    await expect(page.locator('#hp-conversation canvas')).toHaveCount(2);
     await expect.poll(() => page.evaluate(() => (window as any).homeTestMounts)).toBe(4);
   });
 

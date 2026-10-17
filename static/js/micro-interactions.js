@@ -5,7 +5,6 @@
  *  2. Article images fade in once loaded
  *  3. Swipe left / right to navigate prev / next article (touch)
  *  4. Tap / click ripple feedback (mobile + desktop)
- *  5. Copy-code button success pop
  *  6. Homepage "scroll for more" cue (bobbing chevron)
  *
  * Everything is a progressive enhancement and fully disabled
@@ -97,94 +96,6 @@
 
     // Safety net: reveal anything still hidden after 2.5s.
     setTimeout(revealAllImmediately, 2500);
-  }
-
-  /* ---------------------------------------------------------
-   * 1b. In-article block reveal
-   *     Structural prose blocks (headings, blockquotes, code,
-   *     tables, figures) gently fade up as they scroll into
-   *     view, giving long reads a sense of unfolding rhythm.
-   *     Paragraphs are intentionally excluded so body text never
-   *     flickers while reading. Gated behind .motion-reveal, so
-   *     no-JS / reduced-motion visitors see everything statically.
-   * ------------------------------------------------------- */
-  var PROSE_REVEAL_SELECTOR = [
-    '.post-content > h2',
-    '.post-content > h3',
-    '.post-content > h4',
-    '.post-content > blockquote',
-    '.post-content > figure',
-    '.post-content > .highlight',
-    '.post-content > pre',
-    '.post-content > table',
-    '.post-content > hr',
-    '.post-content > .reading-companion'
-  ].join(',');
-
-  function initProseReveal() {
-    var blocks = Array.prototype.slice.call(
-      document.querySelectorAll(PROSE_REVEAL_SELECTOR)
-    );
-    if (!blocks.length) return;
-
-    function revealAll() {
-      blocks.forEach(function (el) {
-        el.classList.add('is-revealed');
-      });
-    }
-
-    blocks.forEach(function (el) {
-      el.classList.add('reveal-block');
-    });
-
-    if (!('IntersectionObserver' in window)) {
-      revealAll();
-      return;
-    }
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { root: null, rootMargin: '0px 0px -6% 0px', threshold: 0.06 }
-    );
-
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    blocks.forEach(function (el) {
-      // Anything already on the first screen is shown at once so the
-      // article never paints with a half-empty viewport.
-      if (el.getBoundingClientRect().top < vh) {
-        el.classList.add('is-revealed');
-      } else {
-        observer.observe(el);
-      }
-    });
-
-    // If we land on an in-page anchor, reveal the target (and anything
-    // above it) immediately so deep links never point at hidden content.
-    if (window.location.hash) {
-      try {
-        var target = document.getElementById(
-          decodeURIComponent(window.location.hash.slice(1))
-        );
-        if (target) {
-          var top = target.getBoundingClientRect().top + window.scrollY;
-          blocks.forEach(function (el) {
-            if (el.getBoundingClientRect().top + window.scrollY <= top + 4) {
-              el.classList.add('is-revealed');
-            }
-          });
-        }
-      } catch (e) {}
-    }
-
-    // Safety net: never leave prose hidden.
-    setTimeout(revealAll, 2500);
   }
 
   /* ---------------------------------------------------------
@@ -362,22 +273,11 @@
   /* ---------------------------------------------------------
    * 4. Tap / click ripple (mobile + desktop)
    *    A material-style ripple that originates at the pointer
-   *    for buttons, tags, pagination and CTAs. Pure feedback —
+   *    only for controls that explicitly opt in with data-ripple. —
    *    it never blocks the click and is delegated so it covers
    *    dynamically-added elements too.
    * ------------------------------------------------------- */
-  var RIPPLE_SELECTOR = [
-    'button',
-    '.button',
-    'input[type="submit"]',
-    '.post-tag',
-    '.post-category',
-    '.top-link',
-    '.paginav a',
-    '.share-button',
-    '.hp-subscribe-btn',
-    '.share-buttons a'
-  ].join(',');
+  var RIPPLE_SELECTOR = '[data-ripple]';
 
   function spawnRipple(host, clientX, clientY) {
     // Pill/button hosts need a clip + stacking context for the ripple.
@@ -429,35 +329,6 @@
         // Skip disabled controls.
         if (host.disabled || host.getAttribute('aria-disabled') === 'true') return;
         spawnRipple(host, e.clientX, e.clientY);
-      },
-      { passive: true }
-    );
-  }
-
-  /* ---------------------------------------------------------
-   * 5. Copy-code button: success feedback (mobile + desktop)
-   *    The theme's copy button only swaps its label to "copied!".
-   *    Add a quick tactile "pop + accent flash" by toggling a
-   *    transient `.is-copied` class the CSS animates. Delegated so
-   *    it covers buttons the theme injects after load. Pure feedback
-   *    — the copy itself is handled by the theme; we never touch it.
-   * ------------------------------------------------------- */
-  function initCopyFeedback() {
-    document.addEventListener(
-      'click',
-      function (e) {
-        var btn = e.target.closest && e.target.closest('.copy-code');
-        if (!btn) return;
-        // Restart the animation cleanly on rapid re-clicks.
-        btn.classList.remove('is-copied');
-        // Force reflow so re-adding the class replays the keyframes.
-        void btn.offsetWidth;
-        btn.classList.add('is-copied');
-        // Matches the theme's 2s label-reset window.
-        window.clearTimeout(btn.__copiedTimer);
-        btn.__copiedTimer = window.setTimeout(function () {
-          btn.classList.remove('is-copied');
-        }, 2000);
       },
       { passive: true }
     );
@@ -635,20 +506,15 @@
     if (prefersReduced) {
       // Honour the preference: show everything statically.
       revealAllImmediately();
-      document.querySelectorAll(PROSE_REVEAL_SELECTOR).forEach(function (el) {
-        el.classList.add('reveal-block', 'is-revealed');
-      });
       document.querySelectorAll('.post-content img').forEach(function (img) {
         img.classList.add('img-loaded');
       });
       return;
     }
     initReveal();
-    initProseReveal();
     initImageFade();
     initSwipeNav();
     initRipple();
-    initCopyFeedback();
     initScrollCue();
   }
 

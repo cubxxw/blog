@@ -1,0 +1,17 @@
+{
+  "question": "Does a viewport-fixed preview preserve the article reading point during real internal Tab focus, compared with the current document-absolute preview?",
+  "mode": "boundary",
+  "alternatives": ["A: current absolute positioning with document coordinates", "B: fixed positioning with viewport coordinates"],
+  "decisionChangingEvidence": "The same actual ArrowDown / Tab / Tab / Escape sequence, same article, fonts and case input retains windowY and hash in B, while reproducing the known A short-screen shift, and normal focus/More visibility stays valid.",
+  "smallestFailure": "Any windowY/hash change between entered preview and internal citation focus, or clipped More/focus owner lost.",
+  "timeboxMinutes": 5,
+  "stopRule": "Run each of three cases once per variant, save all observations including failed assertions, stop without a production edit; do not loop to get a preferred outcome.",
+  "cases": [
+    {"id":"normal-first-note", "case_type":"normal", "source":"real", "split":"discovery", "review":{"status":"unreviewed"}, "viewport":[1440,900], "coarse":false},
+    {"id":"edge-existing-longest", "case_type":"edge", "source":"real", "split":"discovery", "review":{"status":"unreviewed"}, "viewport":[568,150], "coarse":false},
+    {"id":"failure-long-note", "case_type":"failure", "source":"synthetic", "split":"discovery", "review":{"status":"unreviewed"}, "viewport":[568,224], "coarse":true, "fixture":"24 local paragraphs added to a cloned-browser public note only; no source article edit"}
+  ],
+  "networkScope":"Existing127.0.0.1:1317 read-only preview and its public font assets. All Netlify endpoints blocked503, no credentials/model/share/contact/citation navigation.",
+  "outOfScope":["production source edits", "native More/history certification", "full keyboard/AT/device matrices", "cold font load fix", "Gold or human-confirmed promotion"],
+  "productionAuthorization":"The user already authorized iterative blog interaction fixes and Codex agents through noon. This experiment remains discovery/unreviewed; any production implementation must be rewritten and separately tested/reviewed under that scope, not copied as a promoted demo."
+}

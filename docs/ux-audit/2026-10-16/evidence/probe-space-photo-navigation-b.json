@@ -1,0 +1,110 @@
+{
+  "at": "2026-10-16T01:57:16.483Z",
+  "preview": "C1 article candidate; Space7source immutable08dc and unchanged",
+  "sources": {
+    "assets/js/space/media.js": "e0b32becab65efe9c0e90c298081f770e8ad8a72e7e8733befb3cb7d71841996",
+    "assets/js/space/media-state.mjs": "2154203c2999b5af5185ba31c5978ab8997dd4c3b774ffb3e28a47bb89c4bd6e",
+    "assets/css/space-media.css": "787430661224c666ca8032d62e3ac8e589c2a0bb19e7265c168ca5a4bb922ffa",
+    "assets/js/space/apps.js": "022162311a8461a69aa6a8873e80d6741b95a7b55188867c20733be6bd44b49b",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519"
+  },
+  "rows": [
+    {
+      "view": {
+        "id": "390-en",
+        "width": 390,
+        "height": 844,
+        "locale": "en",
+        "dark": true,
+        "motion": "no-preference"
+      },
+      "steps": [
+        {
+          "name": "next-local-keyboard-entry",
+          "title": "Kumano Kodo",
+          "src": "http://127.0.0.1:1317/images/about/journey/06-kumano.webp",
+          "active": {
+            "tag": "BUTTON",
+            "cls": "",
+            "text": "→",
+            "insideWindow": true
+          },
+          "next": {
+            "font": "11px",
+            "box": {
+              "x": 310.6213073730469,
+              "y": 216.17767333984375,
+              "width": 26.24029541015625,
+              "height": 44.280517578125,
+              "top": 216.17767333984375,
+              "right": 336.8616027832031,
+              "bottom": 260.45819091796875,
+              "left": 310.6213073730469
+            },
+            "focused": true
+          }
+        },
+        {
+          "name": "after-first-next-enter",
+          "title": "Slow days in Vang Vieng",
+          "src": "http://127.0.0.1:1317/images/about/journey/09-vangvieng.webp",
+          "active": {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "text": "Slow days in Vang Vieng◫BEAR / FIELD ARCHIVESlow days in Vang ViengExplore places ↗← Back to photographs2 / 8←→Loading p",
+            "insideWindow": true
+          },
+          "next": {
+            "font": "11px",
+            "box": {
+              "x": 310.6213073730469,
+              "y": 216.17767333984375,
+              "width": 26.24029541015625,
+              "height": 44.280517578125,
+              "top": 216.17767333984375,
+              "right": 336.8616027832031,
+              "bottom": 260.45819091796875,
+              "left": 310.6213073730469
+            },
+            "focused": false
+          }
+        },
+        {
+          "name": "after-next-arrow-right",
+          "title": "Stone and roots",
+          "src": "http://127.0.0.1:1317/images/about/journey/10-taprohm.webp",
+          "active": {
+            "tag": "SECTION",
+            "cls": "space-window",
+            "text": "Stone and roots◫BEAR / FIELD ARCHIVEStone and rootsExplore places ↗← Back to photographs3 / 8←→Retry photographStone and",
+            "insideWindow": true
+          },
+          "next": {
+            "font": "11px",
+            "box": {
+              "x": 310.6213073730469,
+              "y": 216.17767333984375,
+              "width": 26.24029541015625,
+              "height": 44.280517578125,
+              "top": 216.17767333984375,
+              "right": 336.8616027832031,
+              "bottom": 260.45819091796875,
+              "left": 310.6213073730469
+            },
+            "focused": false
+          }
+        }
+      ],
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-gallery.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-after-next.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-photo-navigation-b-390-en-after-arrow.png"
+  ],
+  "limits": "Two emulatedChromium localkeyboardNextEnter→ArrowRight tasks. Focus seeded on existingNext, not wholepageTab; publiclocalphotos only, no Immich/model calls. Observations not preassigned failure or fullscope scores."
+}

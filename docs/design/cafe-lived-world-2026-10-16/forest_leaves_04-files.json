@@ -1,0 +1,846 @@
+{
+  "Diffuse": {
+    "8k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_diff_8k.jpg",
+        "size": 15764253,
+        "md5": "ee47c7b328d5a7352083ad75a882e7b4"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_diff_8k.png",
+        "size": 330504536,
+        "md5": "d77650b050bf2e028478e91eeab57b6d"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_diff_8k.exr",
+        "size": 95664512,
+        "md5": "24c7a3ecfe8041f3660d6b97986f2f4f"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_diff_4k.jpg",
+        "size": 4971662,
+        "md5": "aa8d48b1b785e198c79a5abf8fcc6669"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_diff_4k.png",
+        "size": 91492189,
+        "md5": "feac450002eed2c3e0a6b20105a4ef53"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_diff_4k.exr",
+        "size": 28555904,
+        "md5": "efce542648b76c6bd7f7e3e04c33ef9b"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_diff_2k.jpg",
+        "size": 1539210,
+        "md5": "a6cfde9e6846f5aa27bcbe0a58fe9907"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_diff_2k.png",
+        "size": 23631474,
+        "md5": "8e8bb44c218cf80224c90fd19eb21e12"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_diff_2k.exr",
+        "size": 8727367,
+        "md5": "460f58229b5aa63775486fc1ba4ef6e6"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_diff_1k.jpg",
+        "size": 423500,
+        "md5": "4ab1368d2d0d7fee652caa5f71f706bf"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_diff_1k.png",
+        "size": 5986404,
+        "md5": "5dc54014ddb90528571d0a4bfe9b8c04"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_diff_1k.exr",
+        "size": 2360871,
+        "md5": "f628e7b7a1598f20377ec9279e3041c9"
+      }
+    }
+  },
+  "nor_dx": {
+    "8k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_nor_dx_8k.jpg",
+        "size": 22962557,
+        "md5": "420ce2ca623ab1c39d71983d3f39d925"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_nor_dx_8k.png",
+        "size": 351624551,
+        "md5": "f3a93bc080a186a41f32e1b713ce05e0"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_nor_dx_8k.exr",
+        "size": 133424687,
+        "md5": "99890bc7a970b07a23ef4e764f4636d2"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_nor_dx_4k.jpg",
+        "size": 7505754,
+        "md5": "de8eb8bc2c8d9d4e6a53f0b89b3a3d47"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_nor_dx_4k.png",
+        "size": 94928014,
+        "md5": "92d9639181f47b029c9ed33468f331a3"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_nor_dx_4k.exr",
+        "size": 39863397,
+        "md5": "4a703d0f7d0a29e539a783b4df20c522"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_nor_dx_2k.jpg",
+        "size": 2207426,
+        "md5": "a2a95e99dbef49d5feda0ad35e171007"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_nor_dx_2k.png",
+        "size": 24187534,
+        "md5": "0626b7b7db3da996a35ac7678df5cdd4"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_nor_dx_2k.exr",
+        "size": 10773752,
+        "md5": "a338cbc2832a878bac3ad4f7582a351c"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_nor_dx_1k.jpg",
+        "size": 587183,
+        "md5": "0815d172699fab0da6adb39da43fa3e5"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_nor_dx_1k.png",
+        "size": 6110327,
+        "md5": "ade658051a74b459830a63a8c92397eb"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_nor_dx_1k.exr",
+        "size": 2809279,
+        "md5": "e387f387d7b4264c7fa8e8099af53d46"
+      }
+    }
+  },
+  "blend": {
+    "8k": {
+      "blend": {
+        "include": {
+          "textures/forest_leaves_04_disp_8k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_disp_8k.png",
+            "size": 86576848,
+            "md5": "8271f6540a988b83fb45dbd05448ec3d"
+          },
+          "textures/forest_leaves_04_rough_8k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_rough_8k.jpg",
+            "size": 12431062,
+            "md5": "6cb7b39f3593c3db31b95047030f1494"
+          },
+          "textures/forest_leaves_04_nor_gl_8k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_nor_gl_8k.exr",
+            "size": 133821399,
+            "md5": "617e32375036b7e0aae87cbfea4d9e3b"
+          },
+          "textures/forest_leaves_04_diff_8k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_diff_8k.jpg",
+            "size": 15764253,
+            "md5": "ee47c7b328d5a7352083ad75a882e7b4"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/8k/forest_leaves_04/forest_leaves_04_8k.blend",
+        "size": 278628,
+        "md5": "963923fee78cb87d559b6897352a5372"
+      }
+    },
+    "4k": {
+      "blend": {
+        "include": {
+          "textures/forest_leaves_04_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_diff_4k.jpg",
+            "size": 4971662,
+            "md5": "aa8d48b1b785e198c79a5abf8fcc6669"
+          },
+          "textures/forest_leaves_04_disp_4k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_disp_4k.png",
+            "size": 25135067,
+            "md5": "4047ce2d0a254998bdf307182f0a384e"
+          },
+          "textures/forest_leaves_04_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_nor_gl_4k.exr",
+            "size": 39994915,
+            "md5": "7f601019dcdbf770f99438d0f75776c3"
+          },
+          "textures/forest_leaves_04_rough_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_rough_4k.jpg",
+            "size": 3951624,
+            "md5": "45034eb591e272362b3f297d012f6b77"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/4k/forest_leaves_04/forest_leaves_04_4k.blend",
+        "size": 278576,
+        "md5": "54029a29ba2ac104734d0159327d39a6"
+      }
+    },
+    "2k": {
+      "blend": {
+        "include": {
+          "textures/forest_leaves_04_disp_2k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_disp_2k.png",
+            "size": 6671341,
+            "md5": "4d36f558b5fcdc64e488b558ffc38309"
+          },
+          "textures/forest_leaves_04_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_diff_2k.jpg",
+            "size": 1539210,
+            "md5": "a6cfde9e6846f5aa27bcbe0a58fe9907"
+          },
+          "textures/forest_leaves_04_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_nor_gl_2k.exr",
+            "size": 10832256,
+            "md5": "db1314516d9d2c6fc484c02eea02ac91"
+          },
+          "textures/forest_leaves_04_rough_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_rough_2k.jpg",
+            "size": 1227328,
+            "md5": "af02739e88a39f8760df09f28c64fee6"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/2k/forest_leaves_04/forest_leaves_04_2k.blend",
+        "size": 278633,
+        "md5": "a615f45f815da265d27174d034d8c54d"
+      }
+    },
+    "1k": {
+      "blend": {
+        "include": {
+          "textures/forest_leaves_04_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_diff_1k.jpg",
+            "size": 423500,
+            "md5": "4ab1368d2d0d7fee652caa5f71f706bf"
+          },
+          "textures/forest_leaves_04_disp_1k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_disp_1k.png",
+            "size": 1761188,
+            "md5": "fa02a3f09c73b00be96309dac111a784"
+          },
+          "textures/forest_leaves_04_rough_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_rough_1k.jpg",
+            "size": 333423,
+            "md5": "60a2f7467861802b99c55480f8ac0801"
+          },
+          "textures/forest_leaves_04_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_nor_gl_1k.exr",
+            "size": 2824204,
+            "md5": "109ed3e0f2debec3cb8e808454cbb55e"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/blend/1k/forest_leaves_04/forest_leaves_04_1k.blend",
+        "size": 278607,
+        "md5": "eca3c659f6af9267c88eaa13e6ddc616"
+      }
+    }
+  },
+  "gltf": {
+    "8k": {
+      "gltf": {
+        "include": {
+          "textures/forest_leaves_04_arm_8k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_arm_8k.jpg",
+            "size": 13121119,
+            "md5": "1fe6ea246e2b25069a2b7e7faedf8776"
+          },
+          "textures/forest_leaves_04_nor_gl_8k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_nor_gl_8k.jpg",
+            "size": 22971964,
+            "md5": "febbb1d661e008b23a7ee1742cccbd52"
+          },
+          "forest_leaves_04.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/forest_leaves_04/forest_leaves_04.bin",
+            "size": 2369908,
+            "md5": "469a9a98a0b4cc3f7cdb55c8bfcbe83c"
+          },
+          "textures/forest_leaves_04_diff_8k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_diff_8k.jpg",
+            "size": 15764253,
+            "md5": "ee47c7b328d5a7352083ad75a882e7b4"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/forest_leaves_04/forest_leaves_04_8k.gltf",
+        "size": 2729,
+        "md5": "5e7e0bcaeb2677850c5b4424377a81fe"
+      }
+    },
+    "4k": {
+      "gltf": {
+        "include": {
+          "textures/forest_leaves_04_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_diff_4k.jpg",
+            "size": 4971662,
+            "md5": "aa8d48b1b785e198c79a5abf8fcc6669"
+          },
+          "textures/forest_leaves_04_nor_gl_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_nor_gl_4k.jpg",
+            "size": 7464092,
+            "md5": "a73a6480d22f8a75e3620fb00a61237f"
+          },
+          "forest_leaves_04.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/forest_leaves_04/forest_leaves_04.bin",
+            "size": 2369908,
+            "md5": "469a9a98a0b4cc3f7cdb55c8bfcbe83c"
+          },
+          "textures/forest_leaves_04_arm_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_arm_4k.jpg",
+            "size": 4240393,
+            "md5": "e2d1f2e313d1dcfcbf60ef50a8602709"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/4k/forest_leaves_04/forest_leaves_04_4k.gltf",
+        "size": 2729,
+        "md5": "23c108f6cc4e6fd06df7302b2d53fd9a"
+      }
+    },
+    "2k": {
+      "gltf": {
+        "include": {
+          "textures/forest_leaves_04_nor_gl_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_nor_gl_2k.jpg",
+            "size": 2187173,
+            "md5": "556be132fa21f23036afc33cd12cd4d8"
+          },
+          "textures/forest_leaves_04_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_diff_2k.jpg",
+            "size": 1539210,
+            "md5": "a6cfde9e6846f5aa27bcbe0a58fe9907"
+          },
+          "textures/forest_leaves_04_arm_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_arm_2k.jpg",
+            "size": 1292204,
+            "md5": "5557c84b6b0ed29b934ddaf154bc8438"
+          },
+          "forest_leaves_04.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/forest_leaves_04/forest_leaves_04.bin",
+            "size": 2369908,
+            "md5": "469a9a98a0b4cc3f7cdb55c8bfcbe83c"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/2k/forest_leaves_04/forest_leaves_04_2k.gltf",
+        "size": 2729,
+        "md5": "0b7a041427d39ef21f9add5fbd941dbc"
+      }
+    },
+    "1k": {
+      "gltf": {
+        "include": {
+          "textures/forest_leaves_04_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_diff_1k.jpg",
+            "size": 423500,
+            "md5": "4ab1368d2d0d7fee652caa5f71f706bf"
+          },
+          "forest_leaves_04.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/8k/forest_leaves_04/forest_leaves_04.bin",
+            "size": 2369908,
+            "md5": "469a9a98a0b4cc3f7cdb55c8bfcbe83c"
+          },
+          "textures/forest_leaves_04_arm_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_arm_1k.jpg",
+            "size": 355419,
+            "md5": "9acce765bc598c57f7ddd7fe75a2fc3e"
+          },
+          "textures/forest_leaves_04_nor_gl_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_nor_gl_1k.jpg",
+            "size": 581919,
+            "md5": "ca21a728629bf25d9dcbe327e0f005db"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/gltf/1k/forest_leaves_04/forest_leaves_04_1k.gltf",
+        "size": 2729,
+        "md5": "b2df2375b909f338c56872e88718bceb"
+      }
+    }
+  },
+  "Rough": {
+    "8k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_rough_8k.jpg",
+        "size": 12431062,
+        "md5": "6cb7b39f3593c3db31b95047030f1494"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_rough_8k.png",
+        "size": 106549293,
+        "md5": "a0a2da31aabf18e7dee384a813404c34"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_rough_8k.exr",
+        "size": 72422333,
+        "md5": "4e5041ad9df87dc7223effdb4d413563"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_rough_4k.jpg",
+        "size": 3951624,
+        "md5": "45034eb591e272362b3f297d012f6b77"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_rough_4k.png",
+        "size": 30151213,
+        "md5": "45cb9430da5799b1b0df48ea6d12ed7f"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_rough_4k.exr",
+        "size": 19555180,
+        "md5": "fce84b433ba84670d23ab19760396ace"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_rough_2k.jpg",
+        "size": 1227328,
+        "md5": "af02739e88a39f8760df09f28c64fee6"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_rough_2k.png",
+        "size": 7773515,
+        "md5": "86ce81fd592f04291f61ee29d8de73c6"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_rough_2k.exr",
+        "size": 5115360,
+        "md5": "94d8849b7dfc4e8de6cff36dc5a0bf0f"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_rough_1k.jpg",
+        "size": 333423,
+        "md5": "60a2f7467861802b99c55480f8ac0801"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_rough_1k.png",
+        "size": 1965494,
+        "md5": "ddfcfb083e87b61e67a2a413c2cd8605"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_rough_1k.exr",
+        "size": 1293738,
+        "md5": "d93f351face2c40628bb658bd8f1ead9"
+      }
+    }
+  },
+  "AO": {
+    "8k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_ao_8k.jpg",
+        "size": 11367735,
+        "md5": "967cf905fd5432149284c934ef3528c4"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_ao_8k.png",
+        "size": 175095620,
+        "md5": "8fc03a38a940b2818377b73b796a9211"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_ao_8k.exr",
+        "size": 37279952,
+        "md5": "341eebec80ccd1f1bcaabf784fe51dd5"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_ao_4k.jpg",
+        "size": 3931475,
+        "md5": "55d2637c15b10bc3b108fcfa0f0d8e26"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_ao_4k.png",
+        "size": 39005740,
+        "md5": "9ebe2fb561f4d7db16755cb7a2ea5363"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_ao_4k.exr",
+        "size": 11548926,
+        "md5": "95cdd50e11ec9d060fbdab93feab22cc"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_ao_2k.jpg",
+        "size": 1343251,
+        "md5": "cd50521f3040e8f61cba62ea4dac0ae9"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_ao_2k.png",
+        "size": 10346607,
+        "md5": "9c6e7ebf6840877f1da1f2ba257ef8f6"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_ao_2k.exr",
+        "size": 3531949,
+        "md5": "4e060ec5cf8b989e523902342695a099"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_ao_1k.jpg",
+        "size": 431609,
+        "md5": "9a0b8379cafa212fbf85e257e3fb1774"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_ao_1k.png",
+        "size": 2651380,
+        "md5": "0e5b7f04b8b58edc1059953cdaf159f7"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_ao_1k.exr",
+        "size": 1028444,
+        "md5": "4bdfe8b25034b348c676ca7afaebf9cd"
+      }
+    }
+  },
+  "Displacement": {
+    "8k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_disp_8k.jpg",
+        "size": 2855605,
+        "md5": "33d4364f275b467dc8265f02ca47962d"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_disp_8k.png",
+        "size": 86576848,
+        "md5": "8271f6540a988b83fb45dbd05448ec3d"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_disp_8k.exr",
+        "size": 43198956,
+        "md5": "64deca0cb04cfbd6aaa448b108c3df2b"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_disp_4k.jpg",
+        "size": 1110120,
+        "md5": "271da7ef557ec89840422f438dd6572d"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_disp_4k.png",
+        "size": 25135067,
+        "md5": "4047ce2d0a254998bdf307182f0a384e"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_disp_4k.exr",
+        "size": 13296075,
+        "md5": "46f3bd288232a464ab66d9d8d876dbac"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_disp_2k.jpg",
+        "size": 416672,
+        "md5": "1777c60f9d0aa03c92929280b1bbee17"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_disp_2k.png",
+        "size": 6671341,
+        "md5": "4d36f558b5fcdc64e488b558ffc38309"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_disp_2k.exr",
+        "size": 4066451,
+        "md5": "f2d200d4f682b3fd8168dd1ee49be7e6"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_disp_1k.jpg",
+        "size": 146105,
+        "md5": "419bc897710e8c8ab9d03da0cd22d9e4"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_disp_1k.png",
+        "size": 1761188,
+        "md5": "fa02a3f09c73b00be96309dac111a784"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_disp_1k.exr",
+        "size": 1134897,
+        "md5": "67ce9a4e75d91430d8bc6df1c0d729ba"
+      }
+    }
+  },
+  "nor_gl": {
+    "8k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_nor_gl_8k.jpg",
+        "size": 22971964,
+        "md5": "febbb1d661e008b23a7ee1742cccbd52"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_nor_gl_8k.png",
+        "size": 350189466,
+        "md5": "51c5e2b1088e94e41d3490a75a795d28"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_nor_gl_8k.exr",
+        "size": 133821399,
+        "md5": "617e32375036b7e0aae87cbfea4d9e3b"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_nor_gl_4k.jpg",
+        "size": 7464092,
+        "md5": "a73a6480d22f8a75e3620fb00a61237f"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_nor_gl_4k.png",
+        "size": 94929182,
+        "md5": "960de536f0a5d774a4817c0b078bb3fc"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_nor_gl_4k.exr",
+        "size": 39994915,
+        "md5": "7f601019dcdbf770f99438d0f75776c3"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_nor_gl_2k.jpg",
+        "size": 2187173,
+        "md5": "556be132fa21f23036afc33cd12cd4d8"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_nor_gl_2k.png",
+        "size": 24187753,
+        "md5": "b218e95118db6c855144da3702653032"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_nor_gl_2k.exr",
+        "size": 10832256,
+        "md5": "db1314516d9d2c6fc484c02eea02ac91"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_nor_gl_1k.jpg",
+        "size": 581919,
+        "md5": "ca21a728629bf25d9dcbe327e0f005db"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_nor_gl_1k.png",
+        "size": 6110038,
+        "md5": "8f906368fa451c3f0896cc905b5f1d4e"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_nor_gl_1k.exr",
+        "size": 2824204,
+        "md5": "109ed3e0f2debec3cb8e808454cbb55e"
+      }
+    }
+  },
+  "arm": {
+    "8k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_arm_8k.jpg",
+        "size": 13121119,
+        "md5": "1fe6ea246e2b25069a2b7e7faedf8776"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_arm_8k.png",
+        "size": 236437196,
+        "md5": "e27f4e6d13a88cf150b773776db6d788"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_arm_8k.exr",
+        "size": 90628398,
+        "md5": "7488c048a351a0b120700db3dc7be25a"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_arm_4k.jpg",
+        "size": 4240393,
+        "md5": "e2d1f2e313d1dcfcbf60ef50a8602709"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_arm_4k.png",
+        "size": 68242335,
+        "md5": "3663e1a0cf23ee7bc702a48c00265cc4"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_arm_4k.exr",
+        "size": 27284466,
+        "md5": "002d192e9e9e4b36e3e84296bfb2b086"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_arm_2k.jpg",
+        "size": 1292204,
+        "md5": "5557c84b6b0ed29b934ddaf154bc8438"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_arm_2k.png",
+        "size": 18447837,
+        "md5": "08a8296b7fa3d778d00ee8f235c01516"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_arm_2k.exr",
+        "size": 8324128,
+        "md5": "ccdbce99861c40e975375d936f9fb5a4"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_arm_1k.jpg",
+        "size": 355419,
+        "md5": "9acce765bc598c57f7ddd7fe75a2fc3e"
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_arm_1k.png",
+        "size": 4766729,
+        "md5": "c148484e2228d4cf2347a13da2fa1358"
+      },
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_arm_1k.exr",
+        "size": 2270325,
+        "md5": "d453c50586e6ce8d270d351e4522096b"
+      }
+    }
+  },
+  "mtlx": {
+    "8k": {
+      "mtlx": {
+        "include": {
+          "textures/forest_leaves_04_disp_8k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/8k/forest_leaves_04/forest_leaves_04_disp_8k.png",
+            "size": 86576848,
+            "md5": "8271f6540a988b83fb45dbd05448ec3d"
+          },
+          "textures/forest_leaves_04_rough_8k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_rough_8k.jpg",
+            "size": 12431062,
+            "md5": "6cb7b39f3593c3db31b95047030f1494"
+          },
+          "textures/forest_leaves_04_nor_gl_8k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/8k/forest_leaves_04/forest_leaves_04_nor_gl_8k.exr",
+            "size": 133821399,
+            "md5": "617e32375036b7e0aae87cbfea4d9e3b"
+          },
+          "textures/forest_leaves_04_diff_8k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/8k/forest_leaves_04/forest_leaves_04_diff_8k.jpg",
+            "size": 15764253,
+            "md5": "ee47c7b328d5a7352083ad75a882e7b4"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/8k/forest_leaves_04/forest_leaves_04_8k.mtlx",
+        "size": 4755,
+        "md5": "581661f6122665a8643927ac246595f1"
+      }
+    },
+    "4k": {
+      "mtlx": {
+        "include": {
+          "textures/forest_leaves_04_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_diff_4k.jpg",
+            "size": 4971662,
+            "md5": "aa8d48b1b785e198c79a5abf8fcc6669"
+          },
+          "textures/forest_leaves_04_disp_4k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/forest_leaves_04/forest_leaves_04_disp_4k.png",
+            "size": 25135067,
+            "md5": "4047ce2d0a254998bdf307182f0a384e"
+          },
+          "textures/forest_leaves_04_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/4k/forest_leaves_04/forest_leaves_04_nor_gl_4k.exr",
+            "size": 39994915,
+            "md5": "7f601019dcdbf770f99438d0f75776c3"
+          },
+          "textures/forest_leaves_04_rough_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/forest_leaves_04/forest_leaves_04_rough_4k.jpg",
+            "size": 3951624,
+            "md5": "45034eb591e272362b3f297d012f6b77"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/4k/forest_leaves_04/forest_leaves_04_4k.mtlx",
+        "size": 4755,
+        "md5": "ef3c3ff7630834977531f3dd0cb7c84f"
+      }
+    },
+    "2k": {
+      "mtlx": {
+        "include": {
+          "textures/forest_leaves_04_disp_2k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/forest_leaves_04/forest_leaves_04_disp_2k.png",
+            "size": 6671341,
+            "md5": "4d36f558b5fcdc64e488b558ffc38309"
+          },
+          "textures/forest_leaves_04_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_diff_2k.jpg",
+            "size": 1539210,
+            "md5": "a6cfde9e6846f5aa27bcbe0a58fe9907"
+          },
+          "textures/forest_leaves_04_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/2k/forest_leaves_04/forest_leaves_04_nor_gl_2k.exr",
+            "size": 10832256,
+            "md5": "db1314516d9d2c6fc484c02eea02ac91"
+          },
+          "textures/forest_leaves_04_rough_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_leaves_04/forest_leaves_04_rough_2k.jpg",
+            "size": 1227328,
+            "md5": "af02739e88a39f8760df09f28c64fee6"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/2k/forest_leaves_04/forest_leaves_04_2k.mtlx",
+        "size": 4755,
+        "md5": "203aff84fb98a5a9b15796fa3cf58aa3"
+      }
+    },
+    "1k": {
+      "mtlx": {
+        "include": {
+          "textures/forest_leaves_04_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_diff_1k.jpg",
+            "size": 423500,
+            "md5": "4ab1368d2d0d7fee652caa5f71f706bf"
+          },
+          "textures/forest_leaves_04_disp_1k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/forest_leaves_04/forest_leaves_04_disp_1k.png",
+            "size": 1761188,
+            "md5": "fa02a3f09c73b00be96309dac111a784"
+          },
+          "textures/forest_leaves_04_rough_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_leaves_04/forest_leaves_04_rough_1k.jpg",
+            "size": 333423,
+            "md5": "60a2f7467861802b99c55480f8ac0801"
+          },
+          "textures/forest_leaves_04_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/exr/1k/forest_leaves_04/forest_leaves_04_nor_gl_1k.exr",
+            "size": 2824204,
+            "md5": "109ed3e0f2debec3cb8e808454cbb55e"
+          }
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/mtlx/1k/forest_leaves_04/forest_leaves_04_1k.mtlx",
+        "size": 4755,
+        "md5": "4aa588cd1463ad9796d2803aa5c0b62e"
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "mobileHit": {
+    "frames": "28",
+    "state": "petted-still",
+    "status": "它眯起眼睛，抬头看着你。"
+  },
+  "normal": {
+    "start": {
+      "catPose": "{\"x\":1.2162223326120554,\"z\":3.3998019433465334,\"yaw\":1.564932855482981}",
+      "mode": "inspect",
+      "pose": "{\"x\":1.761,\"y\":1.151,\"z\":2.791,\"pitch\":-0.245,\"fov\":49.752,\"yaw\":1.061}"
+    },
+    "request": {
+      "catPose": "{\"x\":1.2409320933653556,\"z\":3.336641921754218,\"yaw\":2.204854455482889}",
+      "frames": "5227",
+      "interaction": "approaching",
+      "state": "walk",
+      "status": "它正沿过道走过来。"
+    },
+    "end": {
+      "catPose": "{\"x\":1.3714256070268758,\"z\":3.00309060886189,\"yaw\":-2.3856550417386435}",
+      "frames": "5465",
+      "interaction": "arrived",
+      "state": "look",
+      "status": "它在你身边停了下来。"
+    },
+    "pet": {
+      "frames": "5481",
+      "state": "petting"
+    }
+  },
+  "quiet": {
+    "start": {
+      "active": "false",
+      "catPose": "{\"x\":1.3714256070268758,\"z\":3.00309060886189,\"yaw\":1.564932855482981}",
+      "frames": "5485",
+      "interaction": "petting",
+      "state": "look"
+    },
+    "laterFrame": "5485",
+    "keyboardPet": {
+      "catPose": "{\"x\":1.3714256070268758,\"z\":3.00309060886189,\"yaw\":1.564932855482981}",
+      "controls": [
+        {
+          "box": {
+            "bottom": 839,
+            "height": 44,
+            "left": 73.59375,
+            "right": 129.59375,
+            "top": 795,
+            "width": 56,
+            "x": 73.59375,
+            "y": 795
+          },
+          "name": "叫猫过来"
+        },
+        {
+          "box": {
+            "bottom": 839,
+            "height": 44,
+            "left": 149.59375,
+            "right": 193.59375,
+            "top": 795,
+            "width": 44,
+            "x": 149.59375,
+            "y": 795
+          },
+          "name": "摸摸猫"
+        }
+      ],
+      "frames": "5486",
+      "interaction": "petted-still",
+      "status": "它眯起眼睛，抬头看着你。"
+    }
+  },
+  "restored": {
+    "canvas": 1,
+    "mode": "roam",
+    "pose": "{\"x\":0.85,\"y\":1.52,\"z\":2.45,\"yaw\":0.785,\"pitch\":-0.337,\"fov\":54}",
+    "quiet": "false",
+    "reduce": true
+  },
+  "visualAccepted": false,
+  "defects": [
+    "eye placement below nose",
+    "quiet settle left petting wording"
+  ]
+}

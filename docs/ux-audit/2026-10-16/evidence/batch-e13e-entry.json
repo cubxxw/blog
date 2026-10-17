@@ -1,0 +1,1154 @@
+{
+  "at": "2026-10-15T23:32:37.435Z",
+  "sourceManifest": "batch-e13e-source.json",
+  "contexts": [
+    {
+      "entry": "send",
+      "view": {
+        "width": 1440,
+        "height": 900,
+        "locale": "en",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "to": 1199,
+      "before": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Keep this independent synthetic question",
+        "selection": [
+          40,
+          40,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 111.390625,
+          "width": 286.734375,
+          "height": 357.359375,
+          "top": 111.390625,
+          "right": 1328,
+          "bottom": 468.75,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 409.75,
+          "width": 227.734375,
+          "height": 49,
+          "top": 409.75,
+          "right": 1281,
+          "bottom": 458.75,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 322.8125,
+            "width": 286.734375,
+            "height": 64.9375,
+            "top": 322.8125,
+            "right": 1328,
+            "bottom": 387.75,
+            "left": 1041.265625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 65,
+          "clientHeight": 65,
+          "text": "Start with the article, and ask about a detail that matters to you."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-toc"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "sent": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 111.390625,
+          "width": 286.734375,
+          "height": 255.75,
+          "top": 111.390625,
+          "right": 1328,
+          "bottom": 367.140625,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 308.390625,
+          "width": 187.71875,
+          "height": 48.75,
+          "top": 308.390625,
+          "right": 1240.984375,
+          "bottom": 357.140625,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 111.390625,
+            "width": 286.734375,
+            "height": 175,
+            "top": 111.390625,
+            "right": 1328,
+            "bottom": 286.390625,
+            "left": 1041.265625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 175,
+          "clientHeight": 175,
+          "text": "Your questionKeep this independent synthetic questionAIReading togetherA controlled partial reply stays in the same conversation."
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 1285.984375,
+            "y": 325.140625,
+            "width": 33.015625,
+            "height": 32,
+            "top": 325.140625,
+            "right": 1319,
+            "bottom": 357.140625,
+            "left": 1285.984375
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-toc"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep this independent synthetic question",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "migrated": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818.40625,
+          "width": 571,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 835.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 283.328125,
+            "width": 694,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 946.5,
+            "bottom": 796.40625,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 513,
+          "clientHeight": 513,
+          "text": "Your questionKeep this independent synthetic questionAIReading togetherA controlled partial reply stays in the same conversation."
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 893.5,
+            "y": 834,
+            "width": 44,
+            "height": 44,
+            "top": 834,
+            "right": 937.5,
+            "bottom": 878,
+            "left": 893.5
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep this independent synthetic question",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "stopped": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818.40625,
+          "width": 622,
+          "height": 59.59375,
+          "top": 818.40625,
+          "right": 886.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 283.328125,
+            "width": 694,
+            "height": 513.078125,
+            "top": 283.328125,
+            "right": 946.5,
+            "bottom": 796.40625,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 513,
+          "clientHeight": 513,
+          "text": "Your questionKeep this independent synthetic questionAIReading togetherStopped."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 1,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep this independent synthetic question",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "returned": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 497,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "",
+        "selection": [
+          0,
+          0,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 111.390625,
+          "width": 286.734375,
+          "height": 230.5625,
+          "top": 111.390625,
+          "right": 1328,
+          "bottom": 341.953125,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 283.203125,
+          "width": 227.734375,
+          "height": 48.75,
+          "top": 283.203125,
+          "right": 1281,
+          "bottom": 331.953125,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 111.390625,
+            "width": 286.734375,
+            "height": 149.8125,
+            "top": 111.390625,
+            "right": 1328,
+            "bottom": 261.203125,
+            "left": 1041.265625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 150,
+          "clientHeight": 150,
+          "text": "Your questionKeep this independent synthetic questionAIReading togetherStopped."
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 1,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "Keep this independent synthetic question",
+              "language": "en",
+              "pagePath": "/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Use Go Tools Dlv"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "entry": "quick",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "locale": "zh",
+        "dark": true,
+        "motion": "no-preference",
+        "coarse": true
+      },
+      "to": 1440,
+      "before": {
+        "width": 390,
+        "height": 844,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Keep this independent synthetic question",
+        "selection": [
+          40,
+          40,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 271.015625,
+          "width": 364,
+          "height": 560.984375,
+          "top": 271.015625,
+          "right": 377,
+          "bottom": 832,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 763,
+          "width": 292,
+          "height": 60,
+          "top": 763,
+          "right": 317,
+          "bottom": 823,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 484.109375,
+            "width": 364,
+            "height": 255.890625,
+            "top": 484.109375,
+            "right": 377,
+            "bottom": 740,
+            "left": 13
+          },
+          "scrollTop": 0,
+          "scrollHeight": 256,
+          "clientHeight": 256,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-toc"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "sent": {
+        "width": 390,
+        "height": 844,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Keep this independent synthetic question",
+        "selection": [
+          40,
+          40,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 271.015625,
+          "width": 364,
+          "height": 560.984375,
+          "top": 271.015625,
+          "right": 377,
+          "bottom": 832,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 762,
+          "width": 241,
+          "height": 60,
+          "top": 762,
+          "right": 266,
+          "bottom": 822,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 271.015625,
+            "width": 364,
+            "height": 468.984375,
+            "top": 271.015625,
+            "right": 377,
+            "bottom": 740,
+            "left": 13
+          },
+          "scrollTop": 0,
+          "scrollHeight": 469,
+          "clientHeight": 469,
+          "text": "你的问题用几句话聊聊这篇文章最值得记住的想法。AI一起读懂A controlled partial reply stays in the same conversation."
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 324,
+            "y": 778,
+            "width": 44,
+            "height": 44,
+            "top": 778,
+            "right": 368,
+            "bottom": 822,
+            "left": 324
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-toc"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "用几句话聊聊这篇文章最值得记住的想法。",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "migrated": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "true",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Keep this independent synthetic question",
+        "selection": [
+          40,
+          40,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 267,
+          "top": 113,
+          "right": 1328,
+          "bottom": 380,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 310.44195556640625,
+          "width": 189.6875,
+          "height": 60,
+          "top": 310.44195556640625,
+          "right": 1242.953125,
+          "bottom": 370.44195556640625,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 113,
+            "width": 286.734375,
+            "height": 175,
+            "top": 113,
+            "right": 1328,
+            "bottom": 288,
+            "left": 1041.265625
+          },
+          "scrollTop": 5,
+          "scrollHeight": 180,
+          "clientHeight": 175,
+          "text": "你的问题用几句话聊聊这篇文章最值得记住的想法。AI一起读懂A controlled partial reply stays in the same conversation."
+        },
+        "stop": {
+          "visible": true,
+          "box": {
+            "x": 1287.953125,
+            "y": 338.44195556640625,
+            "width": 31.046875,
+            "height": 32,
+            "top": 338.44195556640625,
+            "right": 1319,
+            "bottom": 370.44195556640625,
+            "left": 1287.953125
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 0,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "用几句话聊聊这篇文章最值得记住的想法。",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "stopped": {
+        "width": 1440,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Keep this independent synthetic question",
+        "selection": [
+          40,
+          40,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 1041.265625,
+          "y": 113,
+          "width": 286.734375,
+          "height": 241.8125,
+          "top": 113,
+          "right": 1328,
+          "bottom": 354.8125,
+          "left": 1041.265625
+        },
+        "inputBox": {
+          "x": 1053.265625,
+          "y": 284.8125,
+          "width": 227.734375,
+          "height": 60,
+          "top": 284.8125,
+          "right": 1281,
+          "bottom": 344.8125,
+          "left": 1053.265625
+        },
+        "messages": {
+          "box": {
+            "x": 1041.265625,
+            "y": 113,
+            "width": 286.734375,
+            "height": 149.8125,
+            "top": 113,
+            "right": 1328,
+            "bottom": 262.8125,
+            "left": 1041.265625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 150,
+          "clientHeight": 150,
+          "text": "你的问题用几句话聊聊这篇文章最值得记住的想法。AI一起读懂已停止。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 1,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "用几句话聊聊这篇文章最值得记住的想法。",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "returned": {
+        "width": 390,
+        "height": 844,
+        "rootY": 423,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "Keep this independent synthetic question",
+        "selection": [
+          40,
+          40,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 13,
+          "y": 271.015625,
+          "width": 364,
+          "height": 560.984375,
+          "top": 271.015625,
+          "right": 377,
+          "bottom": 832,
+          "left": 13
+        },
+        "inputBox": {
+          "x": 25,
+          "y": 762,
+          "width": 292,
+          "height": 60,
+          "top": 762,
+          "right": 317,
+          "bottom": 822,
+          "left": 25
+        },
+        "messages": {
+          "box": {
+            "x": 13,
+            "y": 271.015625,
+            "width": 364,
+            "height": 468.984375,
+            "top": 271.015625,
+            "right": 377,
+            "bottom": 740,
+            "left": 13
+          },
+          "scrollTop": 0,
+          "scrollHeight": 469,
+          "clientHeight": 469,
+          "text": "你的问题用几句话聊聊这篇文章最值得记住的想法。AI一起读懂已停止。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [
+          {
+            "aborts": 1,
+            "cancels": 0,
+            "method": "POST",
+            "payload": {
+              "question": "用几句话聊聊这篇文章最值得记住的想法。",
+              "language": "zh",
+              "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+              "context": [],
+              "articleContentLength": 5403,
+              "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+            }
+          }
+        ],
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-send-entry-before-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-send-entry-migrated-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-send-entry-stop-returned-en.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-quick-entry-before-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-quick-entry-migrated-zh.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e13e-quick-entry-stop-returned-zh.png"
+  ],
+  "limits": "Two actual mouse/touch-capable named contexts (Send desktop en, quickchip mobile zh); real Playwright pointer click, not Enter; responsive handoff and self-hidden Stop return. Controlled partial Response through original client, no live model. Touch-capable pointer click is not native OS touch gesture/IME or fullmatrix."
+}

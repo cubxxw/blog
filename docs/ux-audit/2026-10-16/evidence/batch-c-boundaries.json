@@ -1,0 +1,70 @@
+{
+  "stage": "Frozen C, expected defects before D1/D2",
+  "source": "batch-c-source.json",
+  "route": "http://127.0.0.1:1317/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "reducedMotion": "reduce",
+  "records": [
+    {
+      "id": "UX-014.closed-sheet-focus",
+      "reproduced": true,
+      "active": "<button class=\"abs-tab abs-tab--active\" role=\"tab\" id=\"abs-tab-toc\" tabindex=\"0\" data-tab=\"toc\" aria-selected=\"true\" aria-controls=\"abs-panel-toc\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"8\" y1=\"6\" x2=\"21\" y2=\"6\"></line><line x1=\"8\" y1=\"1",
+      "inClosedSheet": true,
+      "sheetOpen": false
+    },
+    {
+      "id": "UX-013.fullscreen-focus-exit",
+      "reproduced": true,
+      "focus": [
+        {
+          "tag": "PRE",
+          "class": "chroma",
+          "inDialog": true
+        },
+        {
+          "tag": "BODY",
+          "class": "",
+          "inDialog": false
+        },
+        {
+          "tag": "A",
+          "class": "skip-link",
+          "inDialog": false
+        },
+        {
+          "tag": "A",
+          "class": "",
+          "inDialog": false
+        },
+        {
+          "tag": "BUTTON",
+          "class": "nav-search-trigger",
+          "inDialog": false
+        },
+        {
+          "tag": "BUTTON",
+          "class": "",
+          "inDialog": false
+        },
+        {
+          "tag": "A",
+          "class": "",
+          "inDialog": false
+        },
+        {
+          "tag": "BUTTON",
+          "class": "hamburger-menu",
+          "inDialog": false
+        }
+      ]
+    },
+    {
+      "id": "D1.share-late-modal",
+      "reproduced": true,
+      "lateModalOpened": true
+    }
+  ]
+}

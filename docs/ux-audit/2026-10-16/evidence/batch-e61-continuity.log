@@ -1,0 +1,10 @@
+
+Running 3 tests using 1 worker
+
+(node:46589) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/home-about-experience.spec.ts:73:7 › Homepage runtime and progressive decoration › close and clear isolate stale replies from a subsequent conversation (657ms)
+  ✓  2 tests/e2e/home-about-experience.spec.ts:103:7 › Homepage runtime and progressive decoration › a completed reply does not steal focus after the visitor leaves chat (393ms)
+  ✓  3 tests/e2e/home-about-experience.spec.ts:118:7 › Homepage runtime and progressive decoration › bfcache restoration synchronizes a canceled streaming composer (371ms)
+
+  3 passed (1.9s)

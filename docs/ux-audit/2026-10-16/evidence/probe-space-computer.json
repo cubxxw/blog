@@ -1,0 +1,1547 @@
+{
+  "at": "2026-10-15T22:53:03.809Z",
+  "sources": {
+    "assets/js/space/world-cafe.js": "c6388bc5aa09c98c94ae9b17f27beb18e5f0c37ce990476d4048e578249eb95b",
+    "assets/js/space/cafe.js": "dbde12314836e989ebc40d6d7c051fa3d08f39b860ce8a6197d3f885fe5a503d",
+    "assets/js/space/onboarding.js": "d717c1243b89e00678a470b5d0261d618dbe539a405e353b8aea14387923b940",
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/js/space/desktop.js": "9645fbb2cc6315de22396fa7e4466e80cee4b31d9a5f6a257c10e8c068fbc194",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "layouts/partials/space/cafe.html": "6375fae1136e99d37f6568c11bb79d6949ba02042e8b96f066b4c535a834abc8"
+  },
+  "previewCheckpoint": "9ec879f3 accepted; E13 WIP not built",
+  "steps": [
+    {
+      "name": "initial",
+      "state": {
+        "dataset": {
+          "productPanel": "bear",
+          "bearWorkspace": "",
+          "theme": "light",
+          "wallpaper": "dawn",
+          "cafeMode": "cafe",
+          "cafeTheme": "zen",
+          "environmentPaused": "false",
+          "bootState": "complete",
+          "bootStage": "3",
+          "ready": "true",
+          "worldTheme": "zen",
+          "worldObjects": "224",
+          "worldMode": "roam",
+          "worldTravel": "false",
+          "worldRenderedMode": "roam",
+          "worldReady": "true",
+          "catState": "look",
+          "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+          "catActive": "false",
+          "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.329}",
+          "worldFrames": "3",
+          "worldTriangles": "104272",
+          "worldDraws": "102",
+          "catLoaded": "true"
+        },
+        "focus": {
+          "tag": "BODY",
+          "cls": "list products-view-bear",
+          "id": "top",
+          "inert": false
+        },
+        "rootY": 0,
+        "hash": "",
+        "canvases": [
+          {
+            "class": "space-world__canvas",
+            "bbox": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "cursor": "auto"
+          }
+        ],
+        "visibleButtons": [
+          {
+            "text": "SPACECAFÉ",
+            "label": "返回博客",
+            "data": {}
+          },
+          {
+            "text": "EN",
+            "label": "切换到英文",
+            "data": {
+              "cafeLanguage": ""
+            }
+          },
+          {
+            "text": "安静模式",
+            "label": null,
+            "data": {
+              "cafeQuiet": ""
+            }
+          },
+          {
+            "text": "换个地方",
+            "label": "换个地方",
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "禅庭⌄",
+            "label": null,
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "坐下，读一篇 ↗",
+            "label": null,
+            "data": {
+              "cafeRead": ""
+            }
+          },
+          {
+            "text": "打开工作区 ↗",
+            "label": null,
+            "data": {
+              "cafeEnter": ""
+            }
+          }
+        ],
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "minimized": false
+          }
+        ]
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-space-computer-initial.png"
+    },
+    {
+      "name": "screen-hover",
+      "state": {
+        "dataset": {
+          "productPanel": "bear",
+          "bearWorkspace": "",
+          "theme": "light",
+          "wallpaper": "dawn",
+          "cafeMode": "cafe",
+          "cafeTheme": "zen",
+          "environmentPaused": "false",
+          "bootState": "complete",
+          "bootStage": "3",
+          "ready": "true",
+          "worldTheme": "zen",
+          "worldObjects": "224",
+          "worldMode": "roam",
+          "worldTravel": "false",
+          "worldRenderedMode": "roam",
+          "worldReady": "true",
+          "catState": "look",
+          "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+          "catActive": "false",
+          "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.329}",
+          "worldFrames": "3",
+          "worldTriangles": "104272",
+          "worldDraws": "102",
+          "catLoaded": "true"
+        },
+        "focus": {
+          "tag": "BODY",
+          "cls": "list products-view-bear",
+          "id": "top",
+          "inert": false
+        },
+        "rootY": 0,
+        "hash": "",
+        "canvases": [
+          {
+            "class": "space-world__canvas",
+            "bbox": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "cursor": "pointer"
+          }
+        ],
+        "visibleButtons": [
+          {
+            "text": "SPACECAFÉ",
+            "label": "返回博客",
+            "data": {}
+          },
+          {
+            "text": "EN",
+            "label": "切换到英文",
+            "data": {
+              "cafeLanguage": ""
+            }
+          },
+          {
+            "text": "安静模式",
+            "label": null,
+            "data": {
+              "cafeQuiet": ""
+            }
+          },
+          {
+            "text": "换个地方",
+            "label": "换个地方",
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "禅庭⌄",
+            "label": null,
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "坐下，读一篇 ↗",
+            "label": null,
+            "data": {
+              "cafeRead": ""
+            }
+          },
+          {
+            "text": "打开工作区 ↗",
+            "label": null,
+            "data": {
+              "cafeEnter": ""
+            }
+          }
+        ],
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "minimized": false
+          }
+        ]
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-space-computer-screen-hover.png"
+    },
+    {
+      "name": "clicked-screen",
+      "state": {
+        "dataset": {
+          "productPanel": "bear",
+          "bearWorkspace": "",
+          "theme": "light",
+          "wallpaper": "dawn",
+          "cafeMode": "desktop",
+          "cafeTheme": "zen",
+          "environmentPaused": "false",
+          "bootState": "complete",
+          "bootStage": "3",
+          "ready": "true",
+          "worldTheme": "zen",
+          "worldObjects": "224",
+          "worldMode": "workspace",
+          "worldTravel": "false",
+          "worldRenderedMode": "workspace",
+          "worldReady": "true",
+          "catState": "look",
+          "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+          "catActive": "false",
+          "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+          "worldFrames": "4",
+          "worldTriangles": "96268",
+          "worldDraws": "67",
+          "catLoaded": "true"
+        },
+        "focus": {
+          "tag": "SECTION",
+          "cls": "space-window",
+          "id": "",
+          "inert": false
+        },
+        "rootY": 0,
+        "hash": "",
+        "canvases": [
+          {
+            "class": "space-world__canvas",
+            "bbox": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "cursor": "pointer"
+          }
+        ],
+        "visibleButtons": [
+          {
+            "text": "",
+            "label": "关闭窗口",
+            "data": {
+              "windowAction": "close"
+            }
+          },
+          {
+            "text": "",
+            "label": "最小化窗口",
+            "data": {
+              "windowAction": "minimize"
+            }
+          },
+          {
+            "text": "",
+            "label": "最大化或恢复窗口",
+            "data": {
+              "windowAction": "maximize"
+            }
+          },
+          {
+            "text": "◫",
+            "label": "适应工作区",
+            "data": {
+              "windowAction": "arrange"
+            }
+          },
+          {
+            "text": "关于我 ↗",
+            "label": null,
+            "data": {
+              "open": "welcome",
+              "payload": "identity"
+            }
+          },
+          {
+            "text": "个人档案",
+            "label": null,
+            "data": {
+              "profileTarget": "identity"
+            }
+          },
+          {
+            "text": "这些年",
+            "label": null,
+            "data": {
+              "profileTarget": "story"
+            }
+          },
+          {
+            "text": "阅读地图",
+            "label": null,
+            "data": {
+              "profileTarget": "start-here"
+            }
+          },
+          {
+            "text": "简历与项目证据 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "GitHub ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "联系我 ↗",
+            "label": null,
+            "data": {
+              "open": "contact"
+            }
+          },
+          {
+            "text": "identity.json ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "逐周公开时间线 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读《我的第一个博客》 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2023 年度总结 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2024 年度回顾 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2025-2026 年度总结 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读《不会让恐惧替我做决定》 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\nMarkItDown 文档转 Markdown 实战：0.1.6 机制基线与 0.1.7 状态\n微软 Ma",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n2026 LangGraph 架构指南：StateGraph、持久化与故障恢复\nLangGraph 设计、",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\nGemini Notebook（原 NotebookLM）：从来源到决策的研究工作流\nGoogle Not",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\nAgent 的自我：从洛克到 OpenClaw\n从洛克的人格同一性谈到 AI 智能体的身份——一篇署名之作",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "5\nMem0 OSS v3 实践：记忆架构、混合检索与生产取舍\n给 AI 装上记忆：mem0 架构与原理拆解。",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部 AI Agent 文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n关于我的 Hugo 博客 (教程)\n这个博客是怎么搭起来的：Hugo 建站的完整实践。\n约 9 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\nKubernetes一篇快速入门的文章\n零基础快速理解 Kubernetes 的长青入门篇。\n约 20 分",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\nGoReleaser v2 教程：用 GitHub Actions 自动发布 Go\nGo 发布工具链与工程",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\n在开源社区中学会如何提问\n在开源社区高效提问的艺术——参与开源的第一课。\n约 36 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部工程文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n在不被需要的时代，如何维持自我的重量\n当 AI 什么都会，「我」的重量在哪里？\n约 8 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n心流状态的魔力：专注与幸福感提升指南\n如何进入并保持心流——一份完整指南。\n约 10 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\n我如何学会观察自己的思考：四个月的元认知转变复盘\n我如何学会观察自己的思考：四个月的元认知转变复盘。\n约 ",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\nGTD与四象限法则实践\nGTD 与四象限的落地实践，真正跑得通的生产力系统。\n约 24 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "5\n超级个体的栈：2026 年 AI 原生 Solo Builder 的产品方向与运营全图\n超级个体：一个人 ",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部成长与思考文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n旅行 · 世界这场游戏\n跨越 9 个国家的互动足迹地图——从这里俯瞰全部旅程。\n互动地图",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n2023年，我的旅行起点 - 2023年的我漫步在世界边缘\n在世界边缘流浪的一年——数字游民生活实录。\n约",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\n日本旅居笔记 - 用木头、火与缺口和时间共处\n富士山登顶与日本行记。\n约 10 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\n拉萨——一座城市的慢与重\n拉萨：慢与重——高原上的观察手记。\n约 7 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "查看完整旅行记录→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "RSS 订阅",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "邮件联系",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "CUBXXW OSOS",
+            "label": "CUBXXW OS 空间菜单",
+            "data": {
+              "spaceMenuTrigger": ""
+            }
+          },
+          {
+            "text": "欢迎空间",
+            "label": "欢迎",
+            "data": {
+              "open": "welcome",
+              "mobileDestination": "welcome",
+              "running": "",
+              "active": ""
+            }
+          },
+          {
+            "text": "文章与思考文章",
+            "label": "文章与思考",
+            "data": {
+              "open": "reader",
+              "mobileDestination": "reader"
+            }
+          },
+          {
+            "text": "产品产品",
+            "label": "产品",
+            "data": {
+              "open": "products",
+              "mobileDestination": "products"
+            }
+          },
+          {
+            "text": "旅途相册",
+            "label": "旅途相册",
+            "data": {
+              "open": "photos"
+            }
+          },
+          {
+            "text": "你的笔记",
+            "label": "你的笔记",
+            "data": {
+              "open": "notes"
+            }
+          },
+          {
+            "text": "空间助手助手",
+            "label": "空间助手",
+            "data": {
+              "open": "agent",
+              "mobileDestination": "agent"
+            }
+          }
+        ],
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "minimized": false
+          }
+        ]
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-space-computer-clicked-screen.png"
+    },
+    {
+      "name": "reader-open",
+      "state": {
+        "dataset": {
+          "productPanel": "bear",
+          "bearWorkspace": "",
+          "theme": "light",
+          "wallpaper": "dawn",
+          "cafeMode": "desktop",
+          "cafeTheme": "zen",
+          "environmentPaused": "false",
+          "bootState": "complete",
+          "bootStage": "3",
+          "ready": "true",
+          "worldTheme": "zen",
+          "worldObjects": "224",
+          "worldMode": "workspace",
+          "worldTravel": "false",
+          "worldRenderedMode": "workspace",
+          "worldReady": "true",
+          "catState": "look",
+          "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+          "catActive": "false",
+          "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+          "worldFrames": "4",
+          "worldTriangles": "96268",
+          "worldDraws": "67",
+          "catLoaded": "true"
+        },
+        "focus": {
+          "tag": "SECTION",
+          "cls": "space-window",
+          "id": "",
+          "inert": false
+        },
+        "rootY": 0,
+        "hash": "",
+        "canvases": [
+          {
+            "class": "space-world__canvas",
+            "bbox": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "cursor": "pointer"
+          }
+        ],
+        "visibleButtons": [
+          {
+            "text": "",
+            "label": "关闭窗口",
+            "data": {
+              "windowAction": "close"
+            }
+          },
+          {
+            "text": "",
+            "label": "最小化窗口",
+            "data": {
+              "windowAction": "minimize"
+            }
+          },
+          {
+            "text": "",
+            "label": "最大化或恢复窗口",
+            "data": {
+              "windowAction": "maximize"
+            }
+          },
+          {
+            "text": "◫",
+            "label": "窗口并排",
+            "data": {
+              "windowAction": "arrange"
+            }
+          },
+          {
+            "text": "关于我 ↗",
+            "label": null,
+            "data": {
+              "open": "welcome",
+              "payload": "identity"
+            }
+          },
+          {
+            "text": "个人档案",
+            "label": null,
+            "data": {
+              "profileTarget": "identity"
+            }
+          },
+          {
+            "text": "这些年",
+            "label": null,
+            "data": {
+              "profileTarget": "story"
+            }
+          },
+          {
+            "text": "阅读地图",
+            "label": null,
+            "data": {
+              "profileTarget": "start-here"
+            }
+          },
+          {
+            "text": "简历与项目证据 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "GitHub ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "联系我 ↗",
+            "label": null,
+            "data": {
+              "open": "contact"
+            }
+          },
+          {
+            "text": "identity.json ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "逐周公开时间线 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读《我的第一个博客》 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2023 年度总结 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2024 年度回顾 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2025-2026 年度总结 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读《不会让恐惧替我做决定》 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\nMarkItDown 文档转 Markdown 实战：0.1.6 机制基线与 0.1.7 状态\n微软 Ma",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n2026 LangGraph 架构指南：StateGraph、持久化与故障恢复\nLangGraph 设计、",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\nGemini Notebook（原 NotebookLM）：从来源到决策的研究工作流\nGoogle Not",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\nAgent 的自我：从洛克到 OpenClaw\n从洛克的人格同一性谈到 AI 智能体的身份——一篇署名之作",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "5\nMem0 OSS v3 实践：记忆架构、混合检索与生产取舍\n给 AI 装上记忆：mem0 架构与原理拆解。",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部 AI Agent 文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n关于我的 Hugo 博客 (教程)\n这个博客是怎么搭起来的：Hugo 建站的完整实践。\n约 9 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\nKubernetes一篇快速入门的文章\n零基础快速理解 Kubernetes 的长青入门篇。\n约 20 分",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\nGoReleaser v2 教程：用 GitHub Actions 自动发布 Go\nGo 发布工具链与工程",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\n在开源社区中学会如何提问\n在开源社区高效提问的艺术——参与开源的第一课。\n约 36 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部工程文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n在不被需要的时代，如何维持自我的重量\n当 AI 什么都会，「我」的重量在哪里？\n约 8 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n心流状态的魔力：专注与幸福感提升指南\n如何进入并保持心流——一份完整指南。\n约 10 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\n我如何学会观察自己的思考：四个月的元认知转变复盘\n我如何学会观察自己的思考：四个月的元认知转变复盘。\n约 ",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\nGTD与四象限法则实践\nGTD 与四象限的落地实践，真正跑得通的生产力系统。\n约 24 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "5\n超级个体的栈：2026 年 AI 原生 Solo Builder 的产品方向与运营全图\n超级个体：一个人 ",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部成长与思考文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n旅行 · 世界这场游戏\n跨越 9 个国家的互动足迹地图——从这里俯瞰全部旅程。\n互动地图",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n2023年，我的旅行起点 - 2023年的我漫步在世界边缘\n在世界边缘流浪的一年——数字游民生活实录。\n约",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\n日本旅居笔记 - 用木头、火与缺口和时间共处\n富士山登顶与日本行记。\n约 10 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\n拉萨——一座城市的慢与重\n拉萨：慢与重——高原上的观察手记。\n约 7 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "查看完整旅行记录→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "RSS 订阅",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "邮件联系",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "",
+            "label": "关闭窗口",
+            "data": {
+              "windowAction": "close"
+            }
+          },
+          {
+            "text": "",
+            "label": "最小化窗口",
+            "data": {
+              "windowAction": "minimize"
+            }
+          },
+          {
+            "text": "",
+            "label": "最大化或恢复窗口",
+            "data": {
+              "windowAction": "maximize"
+            }
+          },
+          {
+            "text": "◫",
+            "label": "窗口并排",
+            "data": {
+              "windowAction": "arrange"
+            }
+          },
+          {
+            "text": "全部文章",
+            "label": null,
+            "data": {
+              "libraryFilter": "all"
+            }
+          },
+          {
+            "text": "AI Agent",
+            "label": null,
+            "data": {
+              "libraryFilter": "ai-agent"
+            }
+          },
+          {
+            "text": "工程实践",
+            "label": null,
+            "data": {
+              "libraryFilter": "engineering"
+            }
+          }
+        ],
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "minimized": false
+          },
+          {
+            "id": "reader",
+            "app": "reader",
+            "minimized": false
+          }
+        ]
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-space-computer-reader-open.png"
+    },
+    {
+      "name": "article-loaded",
+      "state": {
+        "dataset": {
+          "productPanel": "bear",
+          "bearWorkspace": "",
+          "theme": "light",
+          "wallpaper": "dawn",
+          "cafeMode": "desktop",
+          "cafeTheme": "zen",
+          "environmentPaused": "false",
+          "bootState": "complete",
+          "bootStage": "3",
+          "ready": "true",
+          "worldTheme": "zen",
+          "worldObjects": "224",
+          "worldMode": "workspace",
+          "worldTravel": "false",
+          "worldRenderedMode": "workspace",
+          "worldReady": "true",
+          "catState": "look",
+          "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+          "catActive": "false",
+          "worldPose": "{\"x\":3.65,\"z\":1.688,\"yaw\":0}",
+          "worldFrames": "4",
+          "worldTriangles": "96268",
+          "worldDraws": "67",
+          "catLoaded": "true"
+        },
+        "focus": {
+          "tag": "SECTION",
+          "cls": "space-window",
+          "id": "",
+          "inert": false
+        },
+        "rootY": 0,
+        "hash": "",
+        "canvases": [
+          {
+            "class": "space-world__canvas",
+            "bbox": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "cursor": "pointer"
+          }
+        ],
+        "visibleButtons": [
+          {
+            "text": "",
+            "label": "关闭窗口",
+            "data": {
+              "windowAction": "close"
+            }
+          },
+          {
+            "text": "",
+            "label": "最小化窗口",
+            "data": {
+              "windowAction": "minimize"
+            }
+          },
+          {
+            "text": "",
+            "label": "最大化或恢复窗口",
+            "data": {
+              "windowAction": "maximize"
+            }
+          },
+          {
+            "text": "◫",
+            "label": "窗口并排",
+            "data": {
+              "windowAction": "arrange"
+            }
+          },
+          {
+            "text": "关于我 ↗",
+            "label": null,
+            "data": {
+              "open": "welcome",
+              "payload": "identity"
+            }
+          },
+          {
+            "text": "个人档案",
+            "label": null,
+            "data": {
+              "profileTarget": "identity"
+            }
+          },
+          {
+            "text": "这些年",
+            "label": null,
+            "data": {
+              "profileTarget": "story"
+            }
+          },
+          {
+            "text": "阅读地图",
+            "label": null,
+            "data": {
+              "profileTarget": "start-here"
+            }
+          },
+          {
+            "text": "简历与项目证据 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "GitHub ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "联系我 ↗",
+            "label": null,
+            "data": {
+              "open": "contact"
+            }
+          },
+          {
+            "text": "identity.json ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "逐周公开时间线 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读《我的第一个博客》 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2023 年度总结 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2024 年度回顾 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读 2025-2026 年度总结 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "阅读《不会让恐惧替我做决定》 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "只想先读一篇？\n我在游荡，但我没有迷路 — 2025-2026 年度总结\n一年的深度复盘——技术、成长、旅行都",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\nMarkItDown 文档转 Markdown 实战：0.1.6 机制基线与 0.1.7 状态\n微软 Ma",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n2026 LangGraph 架构指南：StateGraph、持久化与故障恢复\nLangGraph 设计、",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\nGemini Notebook（原 NotebookLM）：从来源到决策的研究工作流\nGoogle Not",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\nAgent 的自我：从洛克到 OpenClaw\n从洛克的人格同一性谈到 AI 智能体的身份——一篇署名之作",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "5\nMem0 OSS v3 实践：记忆架构、混合检索与生产取舍\n给 AI 装上记忆：mem0 架构与原理拆解。",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部 AI Agent 文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n关于我的 Hugo 博客 (教程)\n这个博客是怎么搭起来的：Hugo 建站的完整实践。\n约 9 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\nKubernetes一篇快速入门的文章\n零基础快速理解 Kubernetes 的长青入门篇。\n约 20 分",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\nGoReleaser v2 教程：用 GitHub Actions 自动发布 Go\nGo 发布工具链与工程",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\n在开源社区中学会如何提问\n在开源社区高效提问的艺术——参与开源的第一课。\n约 36 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部工程文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n在不被需要的时代，如何维持自我的重量\n当 AI 什么都会，「我」的重量在哪里？\n约 8 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n心流状态的魔力：专注与幸福感提升指南\n如何进入并保持心流——一份完整指南。\n约 10 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\n我如何学会观察自己的思考：四个月的元认知转变复盘\n我如何学会观察自己的思考：四个月的元认知转变复盘。\n约 ",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\nGTD与四象限法则实践\nGTD 与四象限的落地实践，真正跑得通的生产力系统。\n约 24 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "5\n超级个体的栈：2026 年 AI 原生 Solo Builder 的产品方向与运营全图\n超级个体：一个人 ",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "浏览全部成长与思考文章→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "1\n旅行 · 世界这场游戏\n跨越 9 个国家的互动足迹地图——从这里俯瞰全部旅程。\n互动地图",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "2\n2023年，我的旅行起点 - 2023年的我漫步在世界边缘\n在世界边缘流浪的一年——数字游民生活实录。\n约",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "3\n日本旅居笔记 - 用木头、火与缺口和时间共处\n富士山登顶与日本行记。\n约 10 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "4\n拉萨——一座城市的慢与重\n拉萨：慢与重——高原上的观察手记。\n约 7 分钟",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "查看完整旅行记录→",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "RSS 订阅",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "邮件联系",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "",
+            "label": "关闭窗口",
+            "data": {
+              "windowAction": "close"
+            }
+          },
+          {
+            "text": "",
+            "label": "最小化窗口",
+            "data": {
+              "windowAction": "minimize"
+            }
+          },
+          {
+            "text": "",
+            "label": "最大化或恢复窗口",
+            "data": {
+              "windowAction": "maximize"
+            }
+          },
+          {
+            "text": "◫",
+            "label": "窗口并排",
+            "data": {
+              "windowAction": "arrange"
+            }
+          },
+          {
+            "text": "← 阅读目录",
+            "label": null,
+            "data": {
+              "open": "reader",
+              "payload": ""
+            }
+          },
+          {
+            "text": "原文 ↗",
+            "label": null,
+            "data": {}
+          },
+          {
+            "text": "☆ 收藏",
+            "label": null,
+            "data": {
+              "readerFavorite": ""
+            }
+          }
+        ],
+        "readerText": "截至 10 月 8 日共 68 条公开笔记 | 记录时间：2026-10-01 — 2026-10-08主题分布：日常与其他 20 条 · AI 与 Agent 系统 18 条 · 产品、工程与开源 11 条 · 自我认知与心理 10 条 · 阅读、思想与历史 3 条 · 旅行、地理与城市 3 条 · 内容、创作与记录 2 条 · 身体、健康与日常 1 条以下保留截至 10 月 8 日的阅读摘录、产品设想和个人感受，按主题归档，条目内保留原始时间戳。本月仍在继续记录，一条私人谈话中的未核实指控未",
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "minimized": false
+          },
+          {
+            "id": "reader",
+            "app": "reader",
+            "minimized": false
+          }
+        ]
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-space-computer-article-loaded.png"
+    },
+    {
+      "name": "returned-cafe",
+      "state": {
+        "dataset": {
+          "productPanel": "bear",
+          "bearWorkspace": "",
+          "theme": "light",
+          "wallpaper": "dawn",
+          "cafeMode": "cafe",
+          "cafeTheme": "zen",
+          "environmentPaused": "false",
+          "bootState": "complete",
+          "bootStage": "3",
+          "ready": "true",
+          "worldTheme": "zen",
+          "worldObjects": "224",
+          "worldMode": "roam",
+          "worldTravel": "false",
+          "worldRenderedMode": "roam",
+          "worldReady": "true",
+          "catState": "look",
+          "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+          "catActive": "false",
+          "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.329}",
+          "worldFrames": "5",
+          "worldTriangles": "104272",
+          "worldDraws": "102",
+          "catLoaded": "true"
+        },
+        "focus": {
+          "tag": "CANVAS",
+          "cls": "space-world__canvas",
+          "id": "",
+          "inert": false
+        },
+        "rootY": 0,
+        "hash": "",
+        "canvases": [
+          {
+            "class": "space-world__canvas",
+            "bbox": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "cursor": "pointer"
+          }
+        ],
+        "visibleButtons": [
+          {
+            "text": "SPACECAFÉ",
+            "label": "返回博客",
+            "data": {}
+          },
+          {
+            "text": "EN",
+            "label": "切换到英文",
+            "data": {
+              "cafeLanguage": ""
+            }
+          },
+          {
+            "text": "安静模式",
+            "label": null,
+            "data": {
+              "cafeQuiet": ""
+            }
+          },
+          {
+            "text": "换个地方",
+            "label": "换个地方",
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "禅庭⌄",
+            "label": null,
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "坐下，读一篇 ↗",
+            "label": null,
+            "data": {
+              "cafeRead": ""
+            }
+          },
+          {
+            "text": "打开工作区 ↗",
+            "label": null,
+            "data": {
+              "cafeEnter": ""
+            }
+          }
+        ],
+        "readerText": "截至 10 月 8 日共 68 条公开笔记 | 记录时间：2026-10-01 — 2026-10-08主题分布：日常与其他 20 条 · AI 与 Agent 系统 18 条 · 产品、工程与开源 11 条 · 自我认知与心理 10 条 · 阅读、思想与历史 3 条 · 旅行、地理与城市 3 条 · 内容、创作与记录 2 条 · 身体、健康与日常 1 条以下保留截至 10 月 8 日的阅读摘录、产品设想和个人感受，按主题归档，条目内保留原始时间戳。本月仍在继续记录，一条私人谈话中的未核实指控未",
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "minimized": false
+          },
+          {
+            "id": "reader",
+            "app": "reader",
+            "minimized": false
+          }
+        ]
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-space-computer-returned-cafe.png"
+    },
+    {
+      "name": "screen-drag-does-not-enter",
+      "state": {
+        "dataset": {
+          "productPanel": "bear",
+          "bearWorkspace": "",
+          "theme": "light",
+          "wallpaper": "dawn",
+          "cafeMode": "cafe",
+          "cafeTheme": "zen",
+          "environmentPaused": "false",
+          "bootState": "complete",
+          "bootStage": "3",
+          "ready": "true",
+          "worldTheme": "zen",
+          "worldObjects": "224",
+          "worldMode": "roam",
+          "worldTravel": "false",
+          "worldRenderedMode": "roam",
+          "worldReady": "true",
+          "catState": "look",
+          "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+          "catActive": "false",
+          "worldPose": "{\"x\":2.6,\"z\":4.65,\"yaw\":0.154}",
+          "worldFrames": "17",
+          "worldTriangles": "107556",
+          "worldDraws": "97",
+          "catLoaded": "true"
+        },
+        "focus": {
+          "tag": "CANVAS",
+          "cls": "space-world__canvas",
+          "id": "",
+          "inert": false
+        },
+        "rootY": 0,
+        "hash": "",
+        "canvases": [
+          {
+            "class": "space-world__canvas",
+            "bbox": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "cursor": "pointer"
+          }
+        ],
+        "visibleButtons": [
+          {
+            "text": "SPACECAFÉ",
+            "label": "返回博客",
+            "data": {}
+          },
+          {
+            "text": "EN",
+            "label": "切换到英文",
+            "data": {
+              "cafeLanguage": ""
+            }
+          },
+          {
+            "text": "安静模式",
+            "label": null,
+            "data": {
+              "cafeQuiet": ""
+            }
+          },
+          {
+            "text": "换个地方",
+            "label": "换个地方",
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "禅庭⌄",
+            "label": null,
+            "data": {
+              "cafePicker": ""
+            }
+          },
+          {
+            "text": "坐下，读一篇 ↗",
+            "label": null,
+            "data": {
+              "cafeRead": ""
+            }
+          },
+          {
+            "text": "打开工作区 ↗",
+            "label": null,
+            "data": {
+              "cafeEnter": ""
+            }
+          }
+        ],
+        "readerText": "截至 10 月 8 日共 68 条公开笔记 | 记录时间：2026-10-01 — 2026-10-08主题分布：日常与其他 20 条 · AI 与 Agent 系统 18 条 · 产品、工程与开源 11 条 · 自我认知与心理 10 条 · 阅读、思想与历史 3 条 · 旅行、地理与城市 3 条 · 内容、创作与记录 2 条 · 身体、健康与日常 1 条以下保留截至 10 月 8 日的阅读摘录、产品设想和个人感受，按主题归档，条目内保留原始时间戳。本月仍在继续记录，一条私人谈话中的未核实指控未",
+        "windows": [
+          {
+            "id": "welcome",
+            "app": "welcome",
+            "minimized": false
+          },
+          {
+            "id": "reader",
+            "app": "reader",
+            "minimized": false
+          }
+        ]
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-space-computer-screen-drag-does-not-enter.png"
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-initial.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-screen-hover.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-clicked-screen.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-reader-open.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-article-loaded.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-returned-cafe.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-computer-screen-drag-does-not-enter.png"
+  ],
+  "errors": [],
+  "denied": [],
+  "limits": "One1440zh/reduce Chromium Metal discovery journey; source frozen, real pointer coordinates. No full matrix/physical/FPS/raycast other occluders claimed."
+}

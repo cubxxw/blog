@@ -1,0 +1,7 @@
+PASS exactly one scoped CSS rule added; all previous Space CSS byte-identical
+PASS assets/js/space/world-cafe.js unchanged from candidate 6
+PASS assets/js/space/world-garden.mjs unchanged from candidate 6
+PASS scripts/space-world-garden.test.mjs unchanged from candidate 6
+PASS assets/js/space/desktop.js unchanged; existing setView owns body classes
+PASS layouts/section/projects.html unchanged; existing setView owns body classes
+SHA256 aeeb126e086fb1d78e546d935f3bfe6823a9f82fcc85b8c8b3c46508db4aafdb assets/css/space.css

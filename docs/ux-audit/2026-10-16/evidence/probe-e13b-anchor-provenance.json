@@ -1,0 +1,21 @@
+{
+  "files": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor.json": "d6cbc0d4b0d61b362d5a7cc7abde9487a39fdfe766383a5a26d98b20cb8c7ee3",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor.log": "9f90f419c011f6c12d6c2c62d63bfde4e83342f19373d090aec7fcb63f2d50a6",
+    "docs/ux-audit/2026-10-16/probe-e13b-anchor.browser.mjs": "23bf15d3728f51fc0ff6d4fbfa3f5e809a10291ae81417e6bfc4638fa387606f"
+  },
+  "images": {
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-before.png": "80f183ba48d3e8b37f24f6745a880b3cd110333f78489375c45f49107e7819ea",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-resize-1199-2frames.png": "b92e93c472b7216c30822dda458f307199776ce3596aba476b183a7ee5c080cb",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-resize-1440-2frames.png": "80f183ba48d3e8b37f24f6745a880b3cd110333f78489375c45f49107e7819ea",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-resize-390-2frames.png": "bc77f8bfab5fcdf062efb2d3d5bcd170710708bae0cfe357b39cfc6a2b3f8941",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-second-wheel-before.png": "e37c87dda947fbda2a99dd0fec5386b5fedb7d70a425cc3350395e2bc30af343",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-second-resize-1440-2frames.png": "58cd5eb5890b250f8cd06a575498093a184b499445b9536f34ffa8820d97d083",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-second-resize-1199-2frames.png": "b97c892b34b91f6e8b69d71843a8031e1bc71b99bf5140c4262210cca7a30d7e",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13b-anchor-second-resize-390-2frames.png": "7c0dd6500bc0f9c0f66662e0bc9326701d8305edfdcdf27850e33ea7d46a0644"
+  },
+  "sourceManifest": "batch-e13b-source.json",
+  "observed": "Firstp070 allthreewidths≤.25;truewheel700 picksnewp062;new1440delta-.375/1199+.375;last1199→390samehost+2175 stable120ms, no breakpoint listener; originalroot/request preserved.",
+  "status": "confirmed-samehost-width-reflow-negative",
+  "parentReadAll8PNG": true
+}

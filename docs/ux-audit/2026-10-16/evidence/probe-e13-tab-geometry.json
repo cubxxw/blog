@@ -1,0 +1,1255 @@
+{
+  "at": "2026-10-15T23:20:04.599Z",
+  "sourceManifest": "batch-e13-source.json",
+  "rows": [
+    {
+      "prior": "default",
+      "compact": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818,
+          "width": 622,
+          "height": 60,
+          "top": 818,
+          "right": 886.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 496.421875,
+            "width": 694,
+            "height": 299.578125,
+            "top": 496.421875,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 300,
+          "clientHeight": 300,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-toc"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "before": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 113,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": 113,
+          "right": 1146,
+          "bottom": 446.890625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 376.890625,
+          "width": 199.609375,
+          "height": 60,
+          "top": 376.890625,
+          "right": 1099,
+          "bottom": 436.890625,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 308.09375,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": 308.09375,
+            "right": 1146,
+            "bottom": 354.890625,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "geometry": {
+        "html": {
+          "bbox": {
+            "x": 0,
+            "y": -500,
+            "width": 1200,
+            "height": 27499.921875,
+            "top": -500,
+            "right": 1200,
+            "bottom": 26999.921875,
+            "left": 0
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "hidden",
+          "overflowY": "auto",
+          "height": "27499.9px",
+          "clientHeight": 900,
+          "scrollHeight": 27500,
+          "scrollTop": 500,
+          "hit": false
+        },
+        "body": {
+          "bbox": {
+            "x": 0,
+            "y": -500,
+            "width": 1200,
+            "height": 27499.921875,
+            "top": -500,
+            "right": 1200,
+            "bottom": 26999.921875,
+            "left": 0
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "clip",
+          "overflowY": "visible",
+          "height": "27499.9px",
+          "clientHeight": 27500,
+          "scrollHeight": 27500,
+          "scrollTop": 0,
+          "hit": false
+        },
+        "header": {
+          "bbox": {
+            "x": 0,
+            "y": 0,
+            "width": 1200,
+            "height": 44.59375,
+            "top": 0,
+            "right": 1200,
+            "bottom": 44.59375,
+            "left": 0
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "44.5938px",
+          "clientHeight": 45,
+          "scrollHeight": 223,
+          "scrollTop": 0,
+          "offsetParent": "header-wrapper nav-scrolled",
+          "hit": true
+        },
+        ".article-layout": {
+          "bbox": {
+            "x": 24,
+            "y": -430.40625,
+            "width": 1152,
+            "height": 26227.609375,
+            "top": -430.40625,
+            "right": 1176,
+            "bottom": 25797.203125,
+            "left": 24
+          },
+          "position": "static",
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "26227.6px",
+          "clientHeight": 26228,
+          "scrollHeight": 26228,
+          "scrollTop": 0,
+          "offsetParent": "main",
+          "hit": false
+        },
+        ".article-tools": {
+          "bbox": {
+            "x": 887.390625,
+            "y": 70,
+            "width": 258.609375,
+            "height": 376.890625,
+            "top": 70,
+            "right": 1146,
+            "bottom": 446.890625,
+            "left": 887.390625
+          },
+          "position": "sticky",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "hidden",
+          "overflowY": "auto",
+          "height": "376.891px",
+          "clientHeight": 377,
+          "scrollHeight": 377,
+          "scrollTop": 0,
+          "offsetParent": "main",
+          "hit": true
+        },
+        ".editorial-tools-panel": {
+          "bbox": {
+            "x": 887.390625,
+            "y": 70,
+            "width": 258.609375,
+            "height": 376.890625,
+            "top": 70,
+            "right": 1146,
+            "bottom": 446.890625,
+            "left": 887.390625
+          },
+          "position": "sticky",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "auto",
+          "overflowY": "auto",
+          "height": "376.891px",
+          "clientHeight": 377,
+          "scrollHeight": 377,
+          "scrollTop": 0,
+          "offsetParent": "article-tools",
+          "hit": true
+        },
+        "[data-article-chat]": {
+          "bbox": {
+            "x": 887.390625,
+            "y": 113,
+            "width": 258.609375,
+            "height": 333.890625,
+            "top": 113,
+            "right": 1146,
+            "bottom": 446.890625,
+            "left": 887.390625
+          },
+          "position": "relative",
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "333.891px",
+          "clientHeight": 334,
+          "scrollHeight": 334,
+          "scrollTop": 0,
+          "offsetParent": "reading-companion editorial-tools-panel",
+          "hit": true
+        },
+        ".rc-ai-textarea": {
+          "bbox": {
+            "x": 899.390625,
+            "y": 376.890625,
+            "width": 199.609375,
+            "height": 60,
+            "top": 376.890625,
+            "right": 1099,
+            "bottom": 436.890625,
+            "left": 899.390625
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "auto",
+          "overflowY": "auto",
+          "height": "60px",
+          "clientHeight": 60,
+          "scrollHeight": 60,
+          "scrollTop": 0,
+          "offsetParent": "rc-ai-input-area",
+          "hit": true
+        },
+        ".rc-ai-send": {
+          "bbox": {
+            "x": 1106,
+            "y": 405.890625,
+            "width": 31,
+            "height": 31,
+            "top": 405.890625,
+            "right": 1137,
+            "bottom": 436.890625,
+            "left": 1106
+          },
+          "position": "static",
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "31px",
+          "clientHeight": 31,
+          "scrollHeight": 31,
+          "scrollTop": 0,
+          "offsetParent": "rc-ai-input-area",
+          "hit": true
+        }
+      },
+      "after": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 113,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": 113,
+          "right": 1146,
+          "bottom": 446.890625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 376.890625,
+          "width": 199.609375,
+          "height": 60,
+          "top": 376.890625,
+          "right": 1099,
+          "bottom": 436.890625,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 308.09375,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": 308.09375,
+            "right": 1146,
+            "bottom": 354.890625,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "settled": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 113,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": 113,
+          "right": 1146,
+          "bottom": 446.890625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 376.890625,
+          "width": 199.609375,
+          "height": 60,
+          "top": 376.890625,
+          "right": 1099,
+          "bottom": 436.890625,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 308.09375,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": 308.09375,
+            "right": 1146,
+            "bottom": 354.890625,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "",
+          "priority": ""
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    },
+    {
+      "prior": "inline-auto-important",
+      "compact": {
+        "width": 1199,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "abs-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 252.5,
+          "y": 283.328125,
+          "width": 694,
+          "height": 604.671875,
+          "top": 283.328125,
+          "right": 946.5,
+          "bottom": 888,
+          "left": 252.5
+        },
+        "inputBox": {
+          "x": 264.5,
+          "y": 818,
+          "width": 622,
+          "height": 60,
+          "top": 818,
+          "right": 886.5,
+          "bottom": 878,
+          "left": 264.5
+        },
+        "messages": {
+          "box": {
+            "x": 252.5,
+            "y": 496.421875,
+            "width": 694,
+            "height": 299.578125,
+            "top": 496.421875,
+            "right": 946.5,
+            "bottom": 796,
+            "left": 252.5
+          },
+          "scrollTop": 0,
+          "scrollHeight": 300,
+          "clientHeight": 300,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "hidden",
+          "priority": ""
+        },
+        "sheet": {
+          "open": true,
+          "inert": false,
+          "ariaHidden": "false"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-toc"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "before": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 500,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "TEXTAREA",
+          "id": "",
+          "cls": "rc-ai-textarea",
+          "originalInput": true,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": -387,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": -387,
+          "right": 1146,
+          "bottom": -53.109375,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": -123.109375,
+          "width": 199.609375,
+          "height": 60,
+          "top": -123.109375,
+          "right": 1099,
+          "bottom": -63.109375,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": -191.90625,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": -191.90625,
+            "right": 1146,
+            "bottom": -145.109375,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "auto",
+          "priority": "important"
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "geometry": {
+        "html": {
+          "bbox": {
+            "x": 0,
+            "y": -500,
+            "width": 1200,
+            "height": 27499.921875,
+            "top": -500,
+            "right": 1200,
+            "bottom": 26999.921875,
+            "left": 0
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "hidden",
+          "overflowY": "auto",
+          "height": "27499.9px",
+          "clientHeight": 900,
+          "scrollHeight": 27500,
+          "scrollTop": 500,
+          "hit": false
+        },
+        "body": {
+          "bbox": {
+            "x": 0,
+            "y": -500,
+            "width": 1200,
+            "height": 27499.921875,
+            "top": -500,
+            "right": 1200,
+            "bottom": 26999.921875,
+            "left": 0
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "auto",
+          "overflowY": "auto",
+          "height": "27499.9px",
+          "clientHeight": 27500,
+          "scrollHeight": 27500,
+          "scrollTop": 0,
+          "hit": false
+        },
+        "header": {
+          "bbox": {
+            "x": 0,
+            "y": -500,
+            "width": 1200,
+            "height": 44.59375,
+            "top": -500,
+            "right": 1200,
+            "bottom": -455.40625,
+            "left": 0
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "44.5938px",
+          "clientHeight": 45,
+          "scrollHeight": 223,
+          "scrollTop": 0,
+          "offsetParent": "header-wrapper nav-scrolled",
+          "hit": false
+        },
+        ".article-layout": {
+          "bbox": {
+            "x": 24,
+            "y": -430.40625,
+            "width": 1152,
+            "height": 26227.609375,
+            "top": -430.40625,
+            "right": 1176,
+            "bottom": 25797.203125,
+            "left": 24
+          },
+          "position": "static",
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "26227.6px",
+          "clientHeight": 26228,
+          "scrollHeight": 26228,
+          "scrollTop": 0,
+          "offsetParent": "main",
+          "hit": false
+        },
+        ".article-tools": {
+          "bbox": {
+            "x": 887.390625,
+            "y": -430,
+            "width": 258.609375,
+            "height": 376.890625,
+            "top": -430,
+            "right": 1146,
+            "bottom": -53.109375,
+            "left": 887.390625
+          },
+          "position": "sticky",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "hidden",
+          "overflowY": "auto",
+          "height": "376.891px",
+          "clientHeight": 377,
+          "scrollHeight": 377,
+          "scrollTop": 0,
+          "offsetParent": "main",
+          "hit": false
+        },
+        ".editorial-tools-panel": {
+          "bbox": {
+            "x": 887.390625,
+            "y": -430,
+            "width": 258.609375,
+            "height": 376.890625,
+            "top": -430,
+            "right": 1146,
+            "bottom": -53.109375,
+            "left": 887.390625
+          },
+          "position": "sticky",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "auto",
+          "overflowY": "auto",
+          "height": "376.891px",
+          "clientHeight": 377,
+          "scrollHeight": 377,
+          "scrollTop": 0,
+          "offsetParent": "article-tools",
+          "hit": false
+        },
+        "[data-article-chat]": {
+          "bbox": {
+            "x": 887.390625,
+            "y": -387,
+            "width": 258.609375,
+            "height": 333.890625,
+            "top": -387,
+            "right": 1146,
+            "bottom": -53.109375,
+            "left": 887.390625
+          },
+          "position": "relative",
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "333.891px",
+          "clientHeight": 334,
+          "scrollHeight": 334,
+          "scrollTop": 0,
+          "offsetParent": "reading-companion editorial-tools-panel",
+          "hit": false
+        },
+        ".rc-ai-textarea": {
+          "bbox": {
+            "x": 899.390625,
+            "y": -123.109375,
+            "width": 199.609375,
+            "height": 60,
+            "top": -123.109375,
+            "right": 1099,
+            "bottom": -63.109375,
+            "left": 899.390625
+          },
+          "position": "static",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "auto",
+          "overflowY": "auto",
+          "height": "60px",
+          "clientHeight": 60,
+          "scrollHeight": 60,
+          "scrollTop": 0,
+          "offsetParent": "rc-ai-input-area",
+          "hit": false
+        },
+        ".rc-ai-send": {
+          "bbox": {
+            "x": 1106,
+            "y": -94.109375,
+            "width": 31,
+            "height": 31,
+            "top": -94.109375,
+            "right": 1137,
+            "bottom": -63.109375,
+            "left": 1106
+          },
+          "position": "static",
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "height": "31px",
+          "clientHeight": 31,
+          "scrollHeight": 31,
+          "scrollTop": 0,
+          "offsetParent": "rc-ai-input-area",
+          "hit": false
+        }
+      },
+      "after": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 0,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 113,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": 113,
+          "right": 1146,
+          "bottom": 446.890625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 376.890625,
+          "width": 199.609375,
+          "height": 60,
+          "top": 376.890625,
+          "right": 1099,
+          "bottom": 436.890625,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 308.09375,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": 308.09375,
+            "right": 1146,
+            "bottom": 354.890625,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "auto",
+          "priority": "important"
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "settled": {
+        "width": 1200,
+        "height": 900,
+        "rootY": 0,
+        "hash": "",
+        "history": 2,
+        "host": "rc-panel-ai",
+        "rootCount": 1,
+        "inputCount": 1,
+        "busy": "false",
+        "originalIdentity": {
+          "root": true,
+          "input": true,
+          "messages": true
+        },
+        "value": "A real local Tab after the layout changes",
+        "selection": [
+          41,
+          41,
+          "none"
+        ],
+        "focus": {
+          "tag": "BUTTON",
+          "id": "",
+          "cls": "rc-ai-send",
+          "originalInput": false,
+          "visible": true,
+          "insideAI": true,
+          "inInert": false
+        },
+        "rootBox": {
+          "x": 887.390625,
+          "y": 113,
+          "width": 258.609375,
+          "height": 333.890625,
+          "top": 113,
+          "right": 1146,
+          "bottom": 446.890625,
+          "left": 887.390625
+        },
+        "inputBox": {
+          "x": 899.390625,
+          "y": 376.890625,
+          "width": 199.609375,
+          "height": 60,
+          "top": 376.890625,
+          "right": 1099,
+          "bottom": 436.890625,
+          "left": 899.390625
+        },
+        "messages": {
+          "box": {
+            "x": 887.390625,
+            "y": 308.09375,
+            "width": 258.609375,
+            "height": 46.796875,
+            "top": 308.09375,
+            "right": 1146,
+            "bottom": 354.890625,
+            "left": 887.390625
+          },
+          "scrollTop": 0,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "text": "从文章出发，聊聊你在意的细节。"
+        },
+        "stop": {
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "disabled": false
+        },
+        "overflow": {
+          "value": "auto",
+          "priority": "important"
+        },
+        "sheet": {
+          "open": false,
+          "inert": true,
+          "ariaHidden": "true"
+        },
+        "tabs": {
+          "rc": [
+            "rc-tab-ai"
+          ],
+          "abs": [
+            "abs-tab-ai"
+          ]
+        },
+        "turns": [],
+        "overflowX": false
+      },
+      "errors": [],
+      "denied": []
+    }
+  ],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-default-before.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-default-after.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-inline-auto-important-before.png",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-inline-auto-important-after.png"
+  ],
+  "limits": "Two same-source1199→1200zh/reduce cases compare default body overflow and synthetic inline auto!important fixture; actual Tab; no source changed. Geometry diagnosis not a production fix."
+}

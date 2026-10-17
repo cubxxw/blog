@@ -1,0 +1,82 @@
+{
+  "base_head": "b55f57d23c74bf7e75518fbf6e93787c65336619",
+  "logs": [
+    {
+      "name": "integration-render-entry-after.log",
+      "bytes": 9577,
+      "sha256": "6182187298299045e9016752d93c33a8d1f4132686bbcc2c361232fb10549174"
+    },
+    {
+      "name": "integration-render-entry-bear-test-full.log",
+      "bytes": 57709,
+      "sha256": "127bb08b936ce085a490eb8d32133beb3f56fe23d335bb0d5b6fdbebf5f44ae9"
+    },
+    {
+      "name": "integration-render-entry-before.log",
+      "bytes": 8037,
+      "sha256": "8d6b525d0ca1a9131e5810912e1031a337d7f3d986d35e4c629dc692e5cc69f0"
+    },
+    {
+      "name": "integration-render-entry-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "integration-render-entry-discovery.log",
+      "bytes": 8186,
+      "sha256": "20d7c40b2b84f16db6e1915d1f978388747114024ed5d25a99987cebc411d3c0"
+    },
+    {
+      "name": "integration-render-entry-modules.log",
+      "bytes": 496,
+      "sha256": "34ee6339d357f2e6bc478cd803cfd8e60587472152c9067a3c5941f928e68cbc"
+    },
+    {
+      "name": "integration-render-entry-scope.log",
+      "bytes": 3089,
+      "sha256": "bcf234ee419c199a0ee94cc0bfb77acdb6900c4c3a1a5917e27d48f620ce7ec2"
+    },
+    {
+      "name": "integration-render-entry-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "name": "integration-render-entry-ux-test-full.log",
+      "bytes": 9516,
+      "sha256": "ae97e6454e94991cac5b0f32ce247685bdf26a962b5e5df1fc325d52ebd7335e"
+    }
+  ],
+  "notes": [
+    "Before log fails on missing new helper export/module; it does not prove six product behavior failures. Actual negative evidence is the b55 CI reports and complete selected traces.",
+    "Latest browser CI pending for these changes; software latency improvement has not yet been measured."
+  ],
+  "ci_negative": {
+    "run": 38995065853,
+    "artifact_id": 12087853812,
+    "conclusion": "cancelled after repeated failures, not pass",
+    "original_artifact_url": "https://github.com/cubxxw/blog/actions/runs/38995065853/artifacts/12087853812",
+    "trace_receipts": {
+      "ci-b55-cancelled.log": {
+        "bytes": 860826,
+        "sha256": "1debf4c9051965273df49b77b83b641d51ee6e109a252b4b5aa8782e05106ba3"
+      },
+      "first-failed-trace.zip": {
+        "bytes": 9758110,
+        "sha256": "c3664a401fca208319e1c8e97cf74043aa603942ad58fa5891bf6b59cc867a89"
+      },
+      "selected-reports.tar.gz": {
+        "bytes": 269654,
+        "sha256": "cb407948544c222919e90bc458e4bf541ec44e21a97ed9110dd08a9ede260dc9"
+      },
+      "cafe-desktop-failed-trace.zip": {
+        "bytes": 9694944,
+        "sha256": "486d79e2894cc0cd4ef8af3c2aed104b1f5fb582ee35773bbe194a9ff4a58f35"
+      },
+      "artifact-entries.json": {
+        "bytes": 16602,
+        "sha256": "d1ab303dd0972e606e33e47cada22ddd0ec3f1b664491222fe91776f17a89093"
+      }
+    }
+  }
+}

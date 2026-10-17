@@ -1,0 +1,88 @@
+{
+  "source": "anchor-intent-source.json",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "lang": "zh",
+  "theme": "light",
+  "motion": "reduce (article toggled at runtime)",
+  "observations": [
+    {
+      "kind": "Archives native Meta/new tab then plain reduced anchor/Back",
+      "href": "#year-2026",
+      "before": {
+        "url": "http://127.0.0.1:1317/zh/archives/",
+        "y": 0
+      },
+      "popupURL": "http://127.0.0.1:1317/zh/archives/#year-2026",
+      "afterMeta": {
+        "url": "http://127.0.0.1:1317/zh/archives/",
+        "y": 0,
+        "calls": [],
+        "events": [
+          {
+            "href": "#year-2026",
+            "prevented": false,
+            "meta": true,
+            "ctrl": false,
+            "button": 0
+          }
+        ]
+      },
+      "afterPlain": {
+        "url": "http://127.0.0.1:1317/zh/archives/#year-2026",
+        "y": 365,
+        "calls": [
+          {
+            "id": "year-2026",
+            "options": null
+          }
+        ],
+        "events": [
+          {
+            "href": "#year-2026",
+            "prevented": false,
+            "meta": true,
+            "ctrl": false,
+            "button": 0
+          },
+          {
+            "href": "#year-2026",
+            "prevented": true,
+            "meta": false,
+            "ctrl": false,
+            "button": 0
+          }
+        ],
+        "scrollBehavior": "auto"
+      },
+      "afterBack": "http://127.0.0.1:1317/zh/archives/"
+    },
+    {
+      "kind": "Actual right-side article TOC after runtime reduce",
+      "href": "#%e8%b0%83%e8%af%95go%e5%b7%a5%e7%a8%8b",
+      "after": {
+        "url": "http://127.0.0.1:1317/zh/engineering/posts/use-go-tools-dlv/#%E8%B0%83%E8%AF%95go%E5%B7%A5%E7%A8%8B",
+        "y": 692,
+        "calls": [
+          {
+            "id": "调试go工程",
+            "options": null
+          }
+        ],
+        "events": [
+          {
+            "href": "#%e8%b0%83%e8%af%95go%e5%b7%a5%e7%a8%8b",
+            "prevented": true,
+            "meta": false,
+            "ctrl": false,
+            "button": 0
+          }
+        ],
+        "scrollBehavior": "auto"
+      }
+    }
+  ],
+  "limits": "Two exact Chromium journeys; Meta is trusted Mac native interaction. No physical phone/other themes/legacy sidebar or all archive years claim."
+}

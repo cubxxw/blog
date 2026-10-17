@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';import{chromium}from'playwright';
+const browser=await chromium.launch({channel:'chromium',args:['--enable-gpu','--use-angle=metal']}),observations=[];
+try{for(const[width,height]of[[568,320],[620,844]]){
+ const page=await browser.newPage({viewport:{width,height},reducedMotion:'reduce'});page.setDefaultTimeout(10000);
+ await page.goto('http://127.0.0.1:1317/zh/projects/?profile=about');await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.cafeMode==='desktop');
+ async function app(name){await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-space-launchpad-trigger]').click();await page.locator(`[data-launchpad-app="${name}"]`).click();return page.locator(`[data-space-window="${name}"]`);}
+ if(width===568){const win=await app('notes'),close=win.locator('[data-window-action="close"]');const before=await close.evaluate(e=>{const b=e.getBoundingClientRect(),x=b.x+b.width/2,y=b.y+b.height/2,t=document.elementFromPoint(x,y);return{x,y,width:b.width,height:b.height,hit:e.contains(t),top:t?.outerHTML.slice(0,450)};});await page.mouse.click(before.x,before.y);await page.waitForTimeout(150);observations.push({id:'E5.short-HUD-intercepts-close',source:'batch-e5-source.json',viewport:{width,height},before,after:{cafeMode:await page.locator('[data-bear-workspace]').getAttribute('data-cafe-mode'),notesCount:await page.locator('[data-space-window="notes"]').count()}});}
+ else{const map=await app('map');observations.push({id:'E5.map-breakpoint-620',source:'batch-e5-source.json',viewport:{width,height},controls:await map.locator('.sp-map-controls button').evaluateAll(ns=>ns.map(e=>{const b=e.getBoundingClientRect();return{label:e.getAttribute('aria-label')||e.textContent,width:b.width,height:b.height};}))});}
+ await page.close();
+}await fs.writeFile('docs/ux-audit/2026-10-16/evidence/batch-e5-boundary-probe.json',JSON.stringify({kind:'Exploratory regression findings; not a pass receipt',observations},null,2)+'\n');console.log(JSON.stringify(observations));}finally{await browser.close();}

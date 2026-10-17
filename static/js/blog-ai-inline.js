@@ -79,9 +79,9 @@
     if (!text) return "";
 
     const escapeHtml = (str) => {
-      const div = document.createElement("div");
-      div.textContent = str;
-      return div.innerHTML;
+      return String(str).replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      })[character]);
     };
 
     let html = escapeHtml(text)
@@ -94,8 +94,11 @@
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (m, label, url) {
         // Whitelist http(s)/site-relative targets; drop javascript:/data: etc.
-        if (!/^https?:\/\//i.test(url) && !/^\//.test(url)) return label;
-        return "<a href='" + url + "' target='_blank' rel='noopener noreferrer' style='color:inherit;text-decoration:underline'>" + label + "</a>";
+        if (!/^https?:\/\//i.test(url) && !/^\/(?!\/)/.test(url)) return label;
+        // Markdown code spans may have introduced fresh markup before this
+        // link pass. Escape at the attribute sink as well as at text input.
+        const href = url.replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return "<a href='" + href + "' target='_blank' rel='noopener noreferrer' style='color:inherit;text-decoration:underline'>" + label + "</a>";
       })
       .replace(/^\s*[-*+]\s+(.*$)/gim, "<li>$1</li>")
       .replace(/\n/gim, "<br>");

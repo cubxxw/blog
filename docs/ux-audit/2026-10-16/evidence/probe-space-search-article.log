@@ -1,0 +1,20 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'http://127.0.0.1:1317/ai-agent/posts/context-engineering-the-new-foundation/'
+- '/ai-agent/posts/context-engineering-the-new-foundation/'
+
+    at file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/probe-space-search-article.browser.mjs:7:2198 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'http://127.0.0.1:1317/ai-agent/posts/context-engineering-the-new-foundation/',
+  expected: '/ai-agent/posts/context-engineering-the-new-foundation/',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

@@ -1,0 +1,898 @@
+{
+  "at": "2026-10-15T21:58:54.470Z",
+  "sourceManifest": "batch-e12-initial-source.json",
+  "scope": "Initial frozen production only; diagnosis, not acceptance. Local long-note fixture unchanged article source. Default focus contrasted actual ArrowDown. Native samehash path.",
+  "rows": [
+    {
+      "kind": "default-focus-fixture",
+      "view": {
+        "width": 568,
+        "height": 224,
+        "coarse": true,
+        "locale": "zh",
+        "dark": false,
+        "motion": "no-preference"
+      },
+      "states": {
+        "before": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "",
+          "card": {
+            "x": 0,
+            "y": -2363,
+            "width": 105.53125,
+            "height": 69.171875
+          },
+          "body": {
+            "x": 14.59375,
+            "y": -2350.8125,
+            "width": 76.34375,
+            "height": 0,
+            "scrollTop": 0,
+            "scrollHeight": 0,
+            "clientHeight": 0,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 14.59375,
+            "y": -2348.421875,
+            "width": 76.34375,
+            "height": 44,
+            "href": null,
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "nav-hidden",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 4)",
+          "overflowX": false
+        },
+        "open": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "overflowX": false
+        },
+        "wheel": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 420,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "overflowX": false
+        },
+        "reduce": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 420,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "enter": {
+          "scrollY": 2319,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 420,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "end": {
+          "scrollY": 2319,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 1113,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "bottomWheel": {
+          "scrollY": 2319,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 1114,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-e12-default-focus-fixture.png",
+      "errors": [],
+      "denied": []
+    },
+    {
+      "kind": "trusted-arrowdown-fixture",
+      "view": {
+        "width": 568,
+        "height": 224,
+        "coarse": true,
+        "locale": "zh",
+        "dark": false,
+        "motion": "no-preference"
+      },
+      "states": {
+        "before": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "",
+          "card": {
+            "x": 0,
+            "y": -2363,
+            "width": 105.53125,
+            "height": 69.171875
+          },
+          "body": {
+            "x": 14.59375,
+            "y": -2350.8125,
+            "width": 76.34375,
+            "height": 0,
+            "scrollTop": 0,
+            "scrollHeight": 0,
+            "clientHeight": 0,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 14.59375,
+            "y": -2348.421875,
+            "width": 76.34375,
+            "height": 44,
+            "href": null,
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "nav-hidden",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 4)",
+          "overflowX": false
+        },
+        "open": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 0,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "overflowX": false
+        },
+        "wheel": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 420,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "overflowX": false
+        },
+        "reduce": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 420,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "enter": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 420,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "end": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 1114,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "bottomWheel": {
+          "scrollY": 2367,
+          "hash": "",
+          "historyLength": 2,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents\n   Long note fixture 0: reference context remains readable in the bounded preview.Long note fixture 1: reference context remains readable in the bounded preview.Long note fixture 2: reference context remains readable in the bounded preview.Long note fixture 3: reference context remains readable in the bounded preview.Long note fixture 4: reference context remains readable in the bounded preview.Long note fixture 5: reference context remains readable in the bounded preview.Long note fixture 6: reference context remains readable in the bounded preview.Long note fixture 7: reference context remains readable in the bounded preview.Long note fixture 8: reference context remains readable in the bounded preview.Long note fixture 9: reference context remains readable in the bounded preview.Long note fixture 10: reference context remains readable in the bounded preview.Long note fixture 11: reference context remains readable in the bounded preview.Long note fixture 12: reference context remains readable in the bounded preview.Long note fixture 13: reference context remains readable in the bounded preview.Long note fixture 14: reference context remains readable in the bounded preview.Long note fixture 15: reference context remains readable in the bounded preview.Long note fixture 16: reference context remains readable in the bounded preview.Long note fixture 17: reference context remains readable in the bounded preview.Long note fixture 18: reference context remains readable in the bounded preview.Long note fixture 19: reference context remains readable in the bounded preview.Long note fixture 20: reference context remains readable in the bounded preview.Long note fixture 21: reference context remains readable in the bounded preview.Long note fixture 22: reference context remains readable in the bounded preview.Long note fixture 23: reference context remains readable in the bounded preview.",
+          "card": {
+            "x": 12,
+            "y": 12,
+            "width": 360,
+            "height": 200
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 24.1875,
+            "width": 330.8125,
+            "height": 130.828125,
+            "scrollTop": 1114,
+            "scrollHeight": 1245,
+            "clientHeight": 131,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 157.40625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "DIV",
+            "id": "",
+            "className": "fn-popover__body",
+            "href": null,
+            "insidePopover": true
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-e12-trusted-arrowdown-fixture.png",
+      "errors": [],
+      "denied": []
+    },
+    {
+      "kind": "samehash-more",
+      "view": {
+        "width": 390,
+        "height": 844,
+        "coarse": true,
+        "locale": "zh",
+        "dark": false,
+        "motion": "reduce"
+      },
+      "href": "#fn:1",
+      "states": {
+        "initialNative": {
+          "scrollY": 18972,
+          "hash": "#fn:1",
+          "historyLength": 3,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": -15910.140625,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": -15897.953125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": -15811.5625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "sameHashOpen": {
+          "scrollY": 2813,
+          "hash": "#fn:1",
+          "historyLength": 3,
+          "visible": true,
+          "inert": false,
+          "ariaHidden": "false",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": 248.859375,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": 261.046875,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": 347.4375,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "A",
+            "id": "",
+            "className": "footnote-ref",
+            "href": "#fn:1",
+            "insidePopover": false
+          },
+          "expanded": [
+            "#fn:1"
+          ],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        },
+        "sameHashMore": {
+          "scrollY": 18972,
+          "hash": "#fn:1",
+          "historyLength": 3,
+          "visible": false,
+          "inert": true,
+          "ariaHidden": "true",
+          "role": "region",
+          "name": "脚注预览",
+          "text": "Anthropic, “Effective context engineering for AI agents.” https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "card": {
+            "x": 12,
+            "y": -15910.140625,
+            "width": 360,
+            "height": 153.171875
+          },
+          "body": {
+            "x": 26.59375,
+            "y": -15897.953125,
+            "width": 330.8125,
+            "height": 84,
+            "scrollTop": 0,
+            "scrollHeight": 84,
+            "clientHeight": 84,
+            "fontSize": "14px"
+          },
+          "more": {
+            "x": 26.59375,
+            "y": -15811.5625,
+            "width": 76.34375,
+            "height": 44,
+            "href": "#fn:1",
+            "text": "查看脚注 ↓",
+            "fontSize": "14px",
+            "display": "flex"
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": "top",
+            "className": "",
+            "href": null,
+            "insidePopover": false
+          },
+          "expanded": [],
+          "runningAnimations": 0,
+          "transform": "none",
+          "overflowX": false
+        }
+      },
+      "image": "docs/ux-audit/2026-10-16/evidence/probe-e12-samehash-more.png",
+      "errors": [],
+      "denied": []
+    }
+  ]
+}

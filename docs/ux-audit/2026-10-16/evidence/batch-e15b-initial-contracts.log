@@ -1,0 +1,42 @@
+
+Running 9 tests using 1 worker
+
+(node:93657) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 320×844 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles (2.2s)
+  ✓  2 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 390×844 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles (1.3s)
+  ✓  3 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 620×844 zh dark library/profile › real writing and profile remain readable with reachable choices and complete titles (1.3s)
+  ✓  4 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 844×390 en light library/profile › real writing and profile remain readable with reachable choices and complete titles (1.5s)
+  ✓  5 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 1440×900 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles (1.6s)
+  ✓  6 tests/e2e/space-library-profile-contracts.spec.ts:38:7 › 1440×900 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles (1.6s)
+  ✓  7 tests/e2e/space-library-profile-contracts.spec.ts:59:7 › 390 English bookmark semantics and recovery › Save, favorites, reload and remove expose the actual persistent state (1.3s)
+  ✘  8 tests/e2e/space-library-profile-contracts.spec.ts:67:5 › the real library scroller restores reading position while Notes and Books keep their own documents (6.5s)
+(node:93748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  9 tests/e2e/space-library-profile-contracts.spec.ts:74:5 › the original public favorite action synchronizes state and semantics without replacing the reader (771ms)
+
+
+  1) tests/e2e/space-library-profile-contracts.spec.ts:67:5 › the real library scroller restores reading position while Notes and Books keep their own documents 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    850
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      69 |   const url=await list.evaluate(el=>{const r=el.getBoundingClientRect();return [...el.querySelectorAll<HTMLElement>('.space-list-item')].find(item=>{const b=item.getBoundingClientRect();return b.top>=r.top&&b.bottom<=r.bottom;})!.dataset.payload!;});await list.locator(`[data-payload="${url}"]`).click();const back=reader.locator('.space-reader-toolbar [data-open="reader"]');await hit(back);await back.click();await expect(reader.locator('[data-library-query]')).toHaveValue('Go');await expect(reader.locator('[data-library-filter="engineering"]')).toHaveAttribute('aria-pressed','true');await expect.poll(()=>list.evaluate((el,expected)=>Math.abs(el.scrollTop-expected),readingScroll)).toBeLessThanOrEqual(1);const originalList=await list.elementHandle();
+      70 |   await reader.locator('[data-window-action="minimize"]').click();await openApp(page,'reader');expect(await list.evaluate((el,old)=>el===old,originalList)).toBe(true);await expect.poll(()=>list.evaluate((el,expected)=>Math.abs(el.scrollTop-expected),readingScroll)).toBeLessThanOrEqual(1);const noteEntry=reader.locator('.space-library-actions [data-open="notes"]');await hit(noteEntry);await noteEntry.click();expect(await editor.evaluate((el,old)=>el===old,originalEditor)).toBe(true);await expect(editor).toHaveValue(draft);await editor.press('End');await editor.pressSequentially('继续。');await openApp(page,'reader');const bookEntry=reader.locator('.space-library-actions [data-open="books"]');await hit(bookEntry);await bookEntry.click();const books=page.locator('[data-space-window="books"]');await expect(books.locator('.space-book')).toHaveCount(4);await books.locator('.space-books-toolbar [data-open="reader"]').click();await expect.poll(()=>list.evaluate((el,expected)=>Math.abs(el.scrollTop-expected),readingScroll)).toBeLessThanOrEqual(1);
+    > 71 |   await page.reload();await enterWorkspace(page);await openApp(page,'reader');await expect(reader.locator('[data-library-query]')).toHaveValue('Go');await expect(reader.locator('[data-library-filter="engineering"]')).toHaveAttribute('aria-pressed','true');await expect.poll(()=>list.evaluate((el,expected)=>Math.abs(el.scrollTop-expected),readingScroll)).toBeLessThanOrEqual(1);await openApp(page,'notes');await expect(editor).toHaveValue(draft+'继续。');
+         |                                                                                                                                                                                                                                                                                                                                                                    ^
+      72 | });
+      73 |
+      74 | test('the original public favorite action synchronizes state and semantics without replacing the reader',async({page})=>{
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/space-library-profile-contracts.spec.ts:71:356
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright-e15/space-library-profile-cont-0c649-ks-keep-their-own-documents/error-context.md
+
+  1 failed
+    tests/e2e/space-library-profile-contracts.spec.ts:67:5 › the real library scroller restores reading position while Notes and Books keep their own documents 
+  8 passed (19.6s)

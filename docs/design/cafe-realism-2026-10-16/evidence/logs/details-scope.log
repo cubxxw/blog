@@ -1,0 +1,22 @@
+PASS assets/js/space/world-cat.js matches accepted HEAD
+PASS assets/js/space/world-state.mjs matches accepted HEAD
+PASS assets/js/space/desktop.js matches accepted HEAD
+PASS assets/js/space/apps.js matches accepted HEAD
+PASS assets/js/space/media.js matches accepted HEAD
+PASS assets/js/space/state.mjs matches accepted HEAD
+PASS data/travel.yml matches accepted HEAD
+PASS layouts/partials/space/desktop.html matches accepted HEAD
+PASS static/js/article-chat.js matches accepted HEAD
+PASS assets/css/space.css matches accepted HEAD
+PASS existing workspace CSS retained; inspect CSS is appended
+PASS all tracked production/test edits are inside ownership
+PASS parent-owned latte JPEG unchanged
+HEAD 7f2900b2af8333e0afa3ee218ff02bdae840eaf0
+SHA256 afc27fabcc7c2aec377ddfedfbd4d77beef750825a17ddf036fdbfcd2fe6ee1b assets/js/space/world-cafe.js
+SHA256 5e907ea240f6487c7e3a363dcd8254db560b7bd88925ad0b3f1bf5789ddb0631 assets/js/space/world-details.js
+SHA256 fee98344b32e005eb7ce94234990825e1a9039a4122f5fd6725701d68fba0508 assets/js/space/world-details.mjs
+SHA256 eccbf8d440fcb30aee54379952408feca40d0cfdcc78d9251415124eee912259 assets/js/space/cafe.js
+SHA256 78e9869fabe35f0b4f7cc3b68ab94c3e603cf95417cf6a834d007be41c7cb115 layouts/partials/space/cafe.html
+SHA256 ccf9388cc83c4baaca17dde8b49da74fd8f48cb7982596535964f7f48ab5e7a5 assets/css/space-cafe.css
+SHA256 eb010427ef23e88d6f3db4fa84f5f8e775ae713b062bb3822145d66c08ff4ef0 scripts/space-cafe-details.test.mjs
+SHA256 dedbb9d09c00f8b1891809698daae11b9d087e30b0dd0d5ce9a6a5a8ef1dc99f tests/e2e/space-cafe-details-contracts.spec.ts

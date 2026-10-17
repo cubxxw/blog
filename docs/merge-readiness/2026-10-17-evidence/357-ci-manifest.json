@@ -1,0 +1,139 @@
+{
+  "head": "35758f09995f945e6663d8fce457b584622ed60f",
+  "run": 39000205983,
+  "conclusion": "cancelled",
+  "reports": [
+    {
+      "name": "browser/legacy/results/footnote-preview-contracts-e0941-ain-native-history-and-Back-desktop/error-context.md",
+      "bytes": 94930,
+      "sha256": "a69e050b43e4c185cbcf084ef89500dd0a678b4d2b3fde010f8b19ed46725d07",
+      "zipCRC32": 4218938427
+    },
+    {
+      "name": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-62f6f-e-work-and-the-open-article-desktop/error-context.md",
+      "bytes": 149846,
+      "sha256": "91c3d74eb924e5eb12ff92222e5cf4a2b641ce9f3892efec7d58074dadb9cc70",
+      "zipCRC32": 426904595
+    },
+    {
+      "name": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-62f6f-e-work-and-the-open-article-desktop-retry1/error-context.md",
+      "bytes": 137552,
+      "sha256": "7979fb5993e33d373c1a13f27223fd55cc3a1ee54dcf9331c4c017eaadaf9ef3",
+      "zipCRC32": 1595814953
+    },
+    {
+      "name": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-62f6f-e-work-and-the-open-article-desktop-retry2/error-context.md",
+      "bytes": 137552,
+      "sha256": "7979fb5993e33d373c1a13f27223fd55cc3a1ee54dcf9331c4c017eaadaf9ef3",
+      "zipCRC32": 1595814953
+    },
+    {
+      "name": "browser/legacy/results/page-wayfinder-Home-and-Ab-6f2d8-n-usable-without-JavaScript-desktop/error-context.md",
+      "bytes": 37451,
+      "sha256": "96d5bda3fda8d63429e0d669ed51dbdc3abdcb823b1d0cfb5cdc6bc355222e7c",
+      "zipCRC32": 2166589779
+    },
+    {
+      "name": "browser/legacy/results/page-wayfinder-Home-and-Ab-6f2d8-n-usable-without-JavaScript-desktop-retry1/error-context.md",
+      "bytes": 37451,
+      "sha256": "96d5bda3fda8d63429e0d669ed51dbdc3abdcb823b1d0cfb5cdc6bc355222e7c",
+      "zipCRC32": 2166589779
+    },
+    {
+      "name": "browser/legacy/results/page-wayfinder-Home-and-Ab-6f2d8-n-usable-without-JavaScript-desktop-retry2/error-context.md",
+      "bytes": 37451,
+      "sha256": "96d5bda3fda8d63429e0d669ed51dbdc3abdcb823b1d0cfb5cdc6bc355222e7c",
+      "zipCRC32": 2166589779
+    },
+    {
+      "name": "browser/pages.json",
+      "bytes": 209,
+      "sha256": "3f2186964944eb96717f2cb44336b1a3156cc03d6ae3c71a193b11c7cac5e4b2",
+      "zipCRC32": 4170702164
+    },
+    {
+      "name": "changes.json",
+      "bytes": 290566,
+      "sha256": "e11b60643a41ac0aeba07bb6bc823daaf24a93939e459e80460087cf8fa9ccaf",
+      "zipCRC32": 326259258
+    },
+    {
+      "name": "functions-report.json",
+      "bytes": 96,
+      "sha256": "fee362c136342344d219385c3e39044a268b7363254ad513cb124515b6db5e4a",
+      "zipCRC32": 27900681
+    },
+    {
+      "name": "plan.json",
+      "bytes": 360,
+      "sha256": "a3e73e83d6f9a4ce6040b2d574d16e3acb02edd0f32225e73c9663ffdf8b17e2",
+      "zipCRC32": 1946898558
+    },
+    {
+      "name": "seo-report.json",
+      "bytes": 90,
+      "sha256": "1286b65d3458083a76862230c3eaffa021764b6dc1d44b628f535521bbb8480e",
+      "zipCRC32": 1328484573
+    },
+    {
+      "name": "site/output-report.json",
+      "bytes": 34994,
+      "sha256": "1d0f2942ba40582767a6b3f574dc319be9c86cfaa60415b27d4404ca8568f884",
+      "zipCRC32": 3242033645
+    },
+    {
+      "name": "source-report.json",
+      "bytes": 200043,
+      "sha256": "b4899236a2d97b3088317cc9d356268eb55d6eb6b41374cfee679b190bfd2aa5",
+      "zipCRC32": 323995665
+    },
+    {
+      "name": "workflow-report.json",
+      "bytes": 95,
+      "sha256": "69f34dbf825a106f950cc3202fd1ff106462a22acd7dac4a1aa18ec3b76524d3",
+      "zipCRC32": 3400014332
+    }
+  ],
+  "traces": [
+    {
+      "local": "357-nojs-trace.zip",
+      "artifactMember": "browser/legacy/results/page-wayfinder-Home-and-Ab-6f2d8-n-usable-without-JavaScript-desktop-retry1/trace.zip",
+      "bytes": 5224401,
+      "sha256": "cd68e6214c6ac6908b30558ed08952a0b630f59717351a0f497b383855e1f382",
+      "zipCRC32": 893476254
+    },
+    {
+      "local": "357-language-trace.zip",
+      "artifactMember": "browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-62f6f-e-work-and-the-open-article-desktop-retry1/trace.zip",
+      "bytes": 10671799,
+      "sha256": "3aa109a78264eb54895f8d8f1a636f3efcd8f35b679342ef3d9991d2bf854361",
+      "zipCRC32": 839052152
+    },
+    {
+      "local": "357-footnote-trace.zip",
+      "artifactMember": "browser/legacy/results/footnote-preview-contracts-e0941-ain-native-history-and-Back-desktop-retry1/trace.zip",
+      "bytes": 18570896,
+      "sha256": "ec670df113ad17cd46c6fc04b6622b13520c3477f28f2e54a2a4e3ae6ce0a3b0",
+      "zipCRC32": 2577233254
+    }
+  ],
+  "reportArchive": {
+    "bytes": 236696,
+    "sha256": "d36182fab7f28c19d7a96d2aba29ea091249fb9171a1720404e6a54a98d1d6dd"
+  },
+  "diagnosis": {
+    "bytes": 2207,
+    "sha256": "b52fa25ea7a87b2f6e8e36edc3cdd30b2ace4c2b73592a04ee3eca13fc11f0b9"
+  },
+  "note": "Selected artifact members validated by outer ZIP CRC and byte size. Private signed download URL excluded. Complete traces retained outside Git.",
+  "ciLog": {
+    "compressedFile": {
+      "bytes": 97379,
+      "sha256": "54729609db51e2d6183b8aebbb4d562ae0f4a753f9347d0be71a6de45702abd3"
+    },
+    "decodedRaw": {
+      "bytes": 842963,
+      "sha256": "c1755574bba2f3bfaeec889e354311d23852b151a5dd4c1f184ead8a8346c254"
+    }
+  }
+}

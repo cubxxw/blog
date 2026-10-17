@@ -1,0 +1,5 @@
+assets/js/search-palette.js: byte-identical to accepted E11b checkpoint after reversing only approved localized copy replacements.
+layouts/partials/search-palette.html: byte-identical to accepted E11b checkpoint after reversing only approved localized copy replacements.
+tests/e2e/search-index-contracts.spec.ts: byte-identical to accepted E11b checkpoint after reversing only approved localized copy replacements.
+themes/PaperMod/assets/css/common/header.css: completely unchanged.
+15 contract definitions and algorithms/layout/footprint/AI/Fuse/interaction are unchanged.

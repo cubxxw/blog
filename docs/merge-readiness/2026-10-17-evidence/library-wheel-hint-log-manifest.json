@@ -1,0 +1,47 @@
+{
+  "source": {
+    "assets/css/space-cafe.css": "3f6f01a095f8ef92a729c4aa14f69fd80a7c6ecca7e4945f3d591eaa138f8e22",
+    "tests/e2e/00-space-library-profile-contracts.spec.ts": "6dc4b56b7e36271d751785bdc5d625d4bd3978db7651edf2845f3469b65d3729",
+    "docs/merge-readiness/probes/library-wheel-boundary.ts": "52d2915730d56841296e633753725b0b7be05b986afb204f5e7f32a555c4b5c5"
+  },
+  "archive": {
+    "file": "library-wheel-hint-logs.tar.gz",
+    "bytes": 20975,
+    "sha256": "c9e87cf2811a5fcaa9bc14c61fcb67b2af6e8815167a3bfdf353d6ce8e7b9139"
+  },
+  "logs": [
+    {
+      "file": "integration-library-hint-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "integration-library-hint-discovery.log",
+      "bytes": 104411,
+      "sha256": "df6f416ad6807621d22e640ab91dc0a3124325e1da8610fd04a28c9fe23f5e65"
+    },
+    {
+      "file": "integration-library-hint-ownership.log",
+      "bytes": 364,
+      "sha256": "f0de5fa4b079bb43764ff9b185b9a8e6bdc194aae81607eca32fe986561aa190"
+    },
+    {
+      "file": "integration-library-hint-parent-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "file": "integration-library-hint-scope.log",
+      "bytes": 643,
+      "sha256": "c8c32c0f3805b6c3b5e890b215b2e7a69d669e75aebffb9e1e2f7ba69337a208"
+    },
+    {
+      "file": "integration-library-hint-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    }
+  ],
+  "limitations": [
+    "Local typecheck, source-scope, test-discovery and synthetic error ownership only. No local browser/build or latest full CI pass claimed."
+  ]
+}

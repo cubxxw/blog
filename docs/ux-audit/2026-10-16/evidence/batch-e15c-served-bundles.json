@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-16T00:17:30.594375+00:00",
+  "sourceManifest": "batch-e15c-source.json",
+  "served": [
+    {
+      "path": "/css/bear-os.min.c94c52b8b496c1e431ed1fe0c47150c65024416454e100433e9c1211d54b24ad.css",
+      "bytes": 113103,
+      "sha256": "c94c52b8b496c1e431ed1fe0c47150c65024416454e100433e9c1211d54b24ad",
+      "sameOutputFile": true
+    },
+    {
+      "path": "/js/bear-workspace.fbbcb31c977c15f71f8d480cfd5b2d144a300d3aafeef420c4adc9c2248dc150.js",
+      "bytes": 183649,
+      "sha256": "fbbcb31c977c15f71f8d480cfd5b2d144a300d3aafeef420c4adc9c2248dc150",
+      "sameOutputFile": true
+    }
+  ],
+  "method": "HTMLParser parses minified quoted or unquoted attrs; initial quotedonly regex found0 and produced no proof; no browser or source rerun."
+}

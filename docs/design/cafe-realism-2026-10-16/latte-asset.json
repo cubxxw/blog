@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-16T04:33:23.543286+00:00",
+  "method": "built-in image_gen.imagegen",
+  "generatedOriginal": "/Users/cubxxw/.codex/generated_images/01a13ec1-4c36-7410-915a-d52653d3129f/exec-86738519-ecc5-4ac7-8c07-05b3bb311eae.png",
+  "asset": "static/images/space/cafe/latte-rosetta-v1.jpg",
+  "sha256": "6b649ffd3b9e061b9b8998d1ca08836ebfd644af6dc722910bcf02ad999eeea0",
+  "bytes": 529195,
+  "technicalProcessing": "sips JPEG90, downsample1024; original retained, no semantic image editing",
+  "prompt": "Production albedo texture; square exact orthographic TOP DOWN level espresso surface fills allcorners. Competition-quality free-pour wingedrosetta/tulip in central78% with clean nestedmilk leaves, three layeredtulip crowns, naturalpull-through stem, silkyivory microfoam/caramelcrema; realisticmicrobubbles and organicmilkedgelines; flat neutraldiffuse light, no directionalshadow/highlight. No cup/rim/handle/saucer/table/text/logo/border. Texturecroppedbyactual3D circular liquidmesh, no claimedaward or namedartist reproduction."
+}

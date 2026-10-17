@@ -344,7 +344,7 @@ roots.forEach((root) => {
   });
 
   answer.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter" || event.shiftKey || event.isComposing) return;
+    if (event.key !== "Enter" || event.shiftKey || event.isComposing || event.keyCode === 229) return;
     event.preventDefault();
     form.requestSubmit();
   });

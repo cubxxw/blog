@@ -1,0 +1,24 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
++ ]
+- []
+
+    at file://<SOURCE_WORKTREE>/docs/ux-audit/2026-10-16/batch-e11-actions.browser.mjs:38:291 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

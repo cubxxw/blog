@@ -1,0 +1,297 @@
+{
+  "observations": [
+    {
+      "app": "notes",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "fontCSS": "20px",
+      "fontPhysical": 16.40001255143025,
+      "plane": "rgb(238, 239, 235)",
+      "controls": [
+        {
+          "action": "close",
+          "width": 26.240020751953125,
+          "height": 26.240020751953125
+        },
+        {
+          "action": "minimize",
+          "width": 26.240020751953125,
+          "height": 26.240020751953125
+        },
+        {
+          "action": "maximize",
+          "width": 26.240020751953125,
+          "height": 26.240020751953125
+        },
+        {
+          "action": "arrange",
+          "width": 26.24005126953125,
+          "height": 26.240020751953125
+        }
+      ]
+    },
+    {
+      "app": "map",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "controls": [
+        {
+          "label": "放大地图",
+          "width": 26.240020751953125,
+          "height": 26.240020751953125
+        },
+        {
+          "label": "缩小地图",
+          "width": 26.240020751953125,
+          "height": 26.240020751953125
+        },
+        {
+          "label": "查看所有区域",
+          "width": 63.96002197265625,
+          "height": 26.240020751953125
+        },
+        {
+          "label": "世界",
+          "width": 27.8800048828125,
+          "height": 26.240020751953125
+        }
+      ]
+    },
+    {
+      "app": "notes",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "fontCSS": "20px",
+      "fontPhysical": 16.400014516469593,
+      "plane": "rgb(238, 239, 235)",
+      "controls": [
+        {
+          "action": "close",
+          "width": 44.280033111572266,
+          "height": 44.28003692626953
+        },
+        {
+          "action": "minimize",
+          "width": 44.28003692626953,
+          "height": 44.28003692626953
+        },
+        {
+          "action": "maximize",
+          "width": 44.280029296875,
+          "height": 44.28003692626953
+        },
+        {
+          "action": "arrange",
+          "width": 44.280029296875,
+          "height": 44.28003692626953
+        }
+      ]
+    },
+    {
+      "app": "map",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "controls": [
+        {
+          "label": "放大地图",
+          "width": 44.28003692626953,
+          "height": 44.28004455566406
+        },
+        {
+          "label": "缩小地图",
+          "width": 44.280029296875,
+          "height": 44.28004455566406
+        },
+        {
+          "label": "查看所有区域",
+          "width": 62.32005310058594,
+          "height": 44.28004455566406
+        },
+        {
+          "label": "世界",
+          "width": 44.280029296875,
+          "height": 44.28004455566406
+        }
+      ]
+    },
+    {
+      "app": "notes",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "fontCSS": "20px",
+      "fontPhysical": 16.400186157226564,
+      "plane": "rgb(238, 239, 235)",
+      "controls": [
+        {
+          "action": "close",
+          "width": 44.28050231933594,
+          "height": 44.28050231933594
+        },
+        {
+          "action": "minimize",
+          "width": 44.280494689941406,
+          "height": 44.28050231933594
+        },
+        {
+          "action": "maximize",
+          "width": 44.28050231933594,
+          "height": 44.28050231933594
+        },
+        {
+          "action": "arrange",
+          "width": 44.280487060546875,
+          "height": 44.28050231933594
+        }
+      ]
+    },
+    {
+      "app": "map",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "controls": [
+        {
+          "label": "放大地图",
+          "width": 44.28049850463867,
+          "height": 44.280517578125
+        },
+        {
+          "label": "缩小地图",
+          "width": 44.28050231933594,
+          "height": 44.280517578125
+        },
+        {
+          "label": "查看所有区域",
+          "width": 62.320709228515625,
+          "height": 44.280517578125
+        },
+        {
+          "label": "世界",
+          "width": 44.28050231933594,
+          "height": 44.280517578125
+        }
+      ]
+    },
+    {
+      "app": "notes",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "fontCSS": "20px",
+      "fontPhysical": 16.39997941734147,
+      "plane": "rgb(238, 239, 235)",
+      "controls": [
+        {
+          "action": "close",
+          "width": 44.27994155883789,
+          "height": 44.27994155883789
+        },
+        {
+          "action": "minimize",
+          "width": 44.27995300292969,
+          "height": 44.27994155883789
+        },
+        {
+          "action": "maximize",
+          "width": 44.279937744140625,
+          "height": 44.27994155883789
+        },
+        {
+          "action": "arrange",
+          "width": 44.279937744140625,
+          "height": 44.27994155883789
+        }
+      ]
+    },
+    {
+      "app": "map",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "source": "batch-e5-source.json",
+      "route": "http://127.0.0.1:1317/zh/projects/?profile=about",
+      "locale": "zh",
+      "theme": "light",
+      "reducedMotion": "reduce",
+      "zoom": 1,
+      "controls": [
+        {
+          "label": "放大地图",
+          "width": 44.279945373535156,
+          "height": 44.27995300292969
+        },
+        {
+          "label": "缩小地图",
+          "width": 44.27995300292969,
+          "height": 44.27995300292969
+        },
+        {
+          "label": "查看所有区域",
+          "width": 62.319915771484375,
+          "height": 44.27995300292969
+        },
+        {
+          "label": "世界",
+          "width": 44.279937744140625,
+          "height": 44.27995300292969
+        }
+      ]
+    }
+  ],
+  "kind": "Actual frozen E5 browser captures; observations are scoped, not full-family scores."
+}

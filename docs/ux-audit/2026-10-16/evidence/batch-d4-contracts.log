@@ -1,0 +1,45 @@
+
+Running 6 tests using 1 worker
+
+(node:27602) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/product-entry-contracts.spec.ts:11:7 › Chinese home introduction opens the actual products app in the current tab (937ms)
+  ✓  2 tests/e2e/product-entry-contracts.spec.ts:11:7 › English home products section opens the actual products app in the current tab (740ms)
+  ✘  3 tests/e2e/product-entry-contracts.spec.ts:11:7 › Chinese shared footer opens the actual products app in the current tab (5.2s)
+(node:27636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/product-entry-contracts.spec.ts:25:5 › the unqualified Space entrance still begins in the café in both languages (654ms)
+(node:27659) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 320px (495ms)
+  ✓  6 tests/e2e/travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 390px (407ms)
+
+
+  1) tests/e2e/product-entry-contracts.spec.ts:11:7 › Chinese shared footer opens the actual products app in the current tab
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: locator('.sf-more[href$="#studio-products"]')
+    Expected: "/zh/projects/#studio-products"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" locator('.sf-more[href$="#studio-products"]') with timeout 5000ms
+      - waiting for locator('.sf-more[href$="#studio-products"]')
+
+
+      11 |   test(`${entry.name} opens the actual products app in the current tab`,async({page,context})=>{
+      12 |     await page.setViewportSize({width:1440,height:900});await page.goto(entry.path);
+    > 13 |     const link=page.locator(entry.selector);await expect(link).toHaveAttribute('href',entry.destination);
+         |                                                                ^
+      14 |     expect(await link.getAttribute('target')).not.toBe('_blank');
+      15 |     const pages=context.pages().length;await link.click();await expect(page).toHaveURL(entry.destination);
+      16 |     await enterWorkspace(page);
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/product-entry-contracts.spec.ts:13:64
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright/product-entry-contracts-Ch-e8a2c-ucts-app-in-the-current-tab/error-context.md
+
+  1 failed
+    tests/e2e/product-entry-contracts.spec.ts:11:7 › Chinese shared footer opens the actual products app in the current tab
+  5 passed (10.2s)

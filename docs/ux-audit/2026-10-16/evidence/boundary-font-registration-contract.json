@@ -1,0 +1,59 @@
+{
+  "question": "For already-visible English article prose, is optional on a late async face registration alone sufficient to preserve the reading point, or is early registration a necessary candidate?",
+  "mode": "boundary",
+  "sourceBaseline": "9ec879f3 accepted preview; extend_head/font tokens/typography immutable SHA captured; E13 WIP not built",
+  "variants": {
+    "A": "late async @font-face, swap",
+    "B": "same late async @font-face, optional",
+    "C": "same @font-face optional registered in head before initial layout"
+  },
+  "controlledScope": "One real public Noto Serif regular400 Latin WOFF2, all other Google faces withheld equally, article original real content/markup. Tests discovery timing, not full brand-font design or all-page remedy. Browser-only document/route overlay; no production edit.",
+  "cases": [
+    {
+      "id": "normal-fast",
+      "case_type": "normal",
+      "source": "synthetic",
+      "stimulus": "face registered and ready before reading anchor is centered"
+    },
+    {
+      "id": "edge-cached-late-registration",
+      "case_type": "edge",
+      "source": "synthetic",
+      "stimulus": "stylesheet release after reader centered; font bytes immediately available from deterministic fixture"
+    },
+    {
+      "id": "failure-slow-font",
+      "case_type": "failure",
+      "source": "synthetic",
+      "stimulus": "stylesheet release after reader centered; font bytes held another1200ms, exceeding optional short block period"
+    }
+  ],
+  "lifecycle": {
+    "split": "discovery",
+    "review": {
+      "status": "unreviewed"
+    },
+    "humanChoice": "unreviewed"
+  },
+  "decisionEvidence": "Compare original marker docY/viewportY, rootY, document height and prose text range metrics before and after controlled registration+font readiness. Identical no-input anchor rect afterlate swap rejects instability hypothesis; B late reflow disproves URL optional alone; C stability supports early-registration candidate only under fixtures.",
+  "smallestFailure": "No input/wheel/focus change, but original marker viewport or document coordinate changes >0.5CSSpx after font registration. Root scroll alone is insufficient due scroll anchoring.",
+  "checks": [
+    "same original footnote node remains connected",
+    "zero model/subscription/contact endpoint calls",
+    "no real external navigation",
+    "visible original article text remains available throughout",
+    "facts/auto verdict/human choice/AI hypothesis separated"
+  ],
+  "timebox": "25min maximum; 3variants x3cases once; stop if font/fixture/trace invalid, retain failure; one browser sequential",
+  "outOfScope": [
+    "whole Google family set",
+    "CJK/local installed fonts",
+    "production implementation",
+    "CLS benchmark",
+    "warm production cache/real network distributions",
+    "AT/Safari/physical devices",
+    "font license redistribution; fetched binary fixture only in registered tmp"
+  ],
+  "networkScope": "Read-only local preview and exactly one Google Fonts CSS + chosen public WOFF2 download for deterministic fixture, bounded fetch. Stub GA scripts, block model/contact/subscription endpoints and other remote resource reads. No credentials or paid calls.",
+  "at": "2026-10-15T22:45:21.119266+00:00"
+}

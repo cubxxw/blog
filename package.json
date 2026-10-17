@@ -25,7 +25,7 @@
     "seo:output:check": "node scripts/check-generated-seo.mjs",
     "performance:check": "node --test scripts/performance-seo.test.mjs",
     "products:check": "node scripts/check-product-integration.mjs",
-    "bear:test": "node --test scripts/bear-agent-loop.test.mjs scripts/bear-agent.test.mjs scripts/bear-media.test.cjs scripts/bear-media-state.test.mjs scripts/bear-media-lifecycle.test.mjs scripts/bear-runtime-lifecycle.test.mjs scripts/bear-runtime.test.mjs scripts/bear-runtime-proxy.test.mjs scripts/bear-navigation.test.mjs scripts/bear-workspace-state.test.mjs scripts/space-profile-route.test.mjs scripts/space-entry.test.mjs scripts/blog-ai-stream.test.mjs scripts/article-ai.test.mjs scripts/deepseek-transport.test.mjs scripts/space-companion.test.mjs scripts/space-cafe.test.mjs scripts/space-sessions.test.mjs",
+    "bear:test": "node --test scripts/bear-agent-loop.test.mjs scripts/bear-agent.test.mjs scripts/bear-media.test.cjs scripts/bear-media-state.test.mjs scripts/bear-media-lifecycle.test.mjs scripts/bear-runtime-lifecycle.test.mjs scripts/bear-runtime.test.mjs scripts/bear-runtime-proxy.test.mjs scripts/bear-navigation.test.mjs scripts/bear-workspace-state.test.mjs scripts/space-profile-route.test.mjs scripts/space-entry.test.mjs scripts/blog-ai-stream.test.mjs scripts/article-ai.test.mjs scripts/deepseek-transport.test.mjs scripts/space-companion.test.mjs scripts/space-cafe.test.mjs scripts/space-sessions.test.mjs scripts/space-world.test.mjs scripts/space-onboarding.test.mjs scripts/space-onboarding-dom.test.mjs scripts/space-cat.test.mjs scripts/space-cafe-details.test.mjs scripts/space-world-garden.test.mjs scripts/space-cat-interaction.test.mjs scripts/space-environment.test.mjs scripts/space-places.test.mjs",
     "flavor:check": "node scripts/check-ai-flavor.mjs --changed --check",
     "flavor:scan": "node scripts/check-ai-flavor.mjs",
     "geo:audit": "node scripts/geo-audit.mjs",
@@ -58,6 +58,7 @@
     "quality:test": "node --test scripts/ci-changes.test.mjs scripts/ci-workflows.test.mjs scripts/content-source.test.mjs scripts/content-quality-report.test.mjs scripts/content-output.test.mjs scripts/site-build.test.mjs scripts/site-artifact.test.mjs scripts/site-verify.test.mjs scripts/site-release.test.mjs scripts/newsletter-state.test.mjs scripts/release-followups.test.mjs scripts/backup-site.test.mjs scripts/generate-content-index.test.mjs scripts/audit-public-site.test.mjs scripts/search-delivery.test.mjs scripts/live-site-probes.test.mjs scripts/tag-workflow.test.mjs scripts/netlify-build-control.test.mjs scripts/author-voice.test.mjs scripts/author-voice-studio.test.mjs scripts/author-audio-render.test.mjs scripts/reader-audio.test.mjs",
     "site:build": "node scripts/site-build.mjs",
     "site:verify": "node scripts/site-verify.mjs",
+    "ux:test": "node --test scripts/code-copy.test.mjs scripts/article-share-link.test.mjs scripts/article-tabs.test.mjs scripts/footer-subscribe.test.mjs scripts/article-ai-client.test.mjs scripts/ai-markdown-security.test.mjs scripts/home-chat-utils.test.mjs",
     "voice": "node scripts/author-voice-studio.mjs",
     "voice:test": "node --test scripts/author-voice.test.mjs scripts/author-voice-studio.test.mjs scripts/author-audio-render.test.mjs scripts/reader-audio.test.mjs"
   },

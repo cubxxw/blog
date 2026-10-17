@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-15T23:44:25.331815+00:00",
+  "sources": {
+    "assets/js/space/apps.js": "79d8352b540db4f37f93dda477f15f0e3fed12a4f613afa1e27fb8a6e22c9c52",
+    "assets/css/space.css": "7eb3d1d0697810f6ac947823d71e0431206d92504d3e086c8ff1e456b96f49ef",
+    "assets/css/space-cafe.css": "b34dc36f525cc3f0cb157486f2ef2e8b54618993ade6262cdd254938aba9517c",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258"
+  },
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-space-library-scroll.browser.mjs": "f620c4c7654ef43875c9e7a8342a657560d8351c01925bcec83d8fa29c99683d",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll.json": "e89d9e76fdb5a5abb1c5a77952a59ace9e36eb63d91ddbf5fab00edd00c10fc9",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll.log": "bf43cd1a4f4f5222b90772fa489b13c7f0973af42d69ef15779ec7f0c9346ffb",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-before.png": "fbe92f1ebda33ca2c0feb0ff02d5212d486da00df1472088a5000e3feef25a70",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-after-wheel.png": "1a6e6e9181f07924a856d2504276a18b75ba1ef1191f1426c575816a879fa9ee",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-opened-scrolled-article.png": "d6582d1141ed05ba299f1c20237a72a49298113f2026a2ca16459fe3011a3ed1",
+    "docs/ux-audit/2026-10-16/evidence/probe-space-library-scroll-returned-library.png": "0f9ceb7fa06cd2cec3e52a306aa5f5eec312ff4ff9b5490886af30aa779207d6"
+  },
+  "parentReadAll4PNG": true,
+  "observation": "Original390en publicdirectory actualwheel yields windowbody.scrollTop911 while list scrollTop0/scrollHeight=clientHeight28185/overflowvisible and savedscroll0. Click actuallaterarticle then realLibrary return:windowbody0/saved0. Functional readingposition loss in thisnamedcase, no universal/allscrollmethods claim.",
+  "limits": "One fresh390en isolatedChromium actualwheel850→visible laterarticleclick→real Library return; original public article fetch, localstorage only. Raw ancestor scroll positions and saved preference compare actual ownership; observed completion is not a pass assertion for persistence/AT/fullmatrix."
+}

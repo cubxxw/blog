@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-16T00:09:16.488199+00:00",
+  "base": "d5b35f94cee3a203938eff63f4932a016df71fb3",
+  "batch": "E15b Space public bookmark shared renderer plus E15a strict scroller contracts",
+  "files": {
+    "assets/js/space/apps.js": "05b1684c901db1ef17f1b30e711ec1b6a2a1138aff9f37dcccb4395f09f0930d",
+    "assets/css/space.css": "4944163b7709f49f5b2544570f232244c5675e720532189255f3def1d9bb6d8a",
+    "assets/css/space-cafe.css": "2757b978af94029aad40d75c13f26e8d3e0aee9763596fe33174942a6bbac519",
+    "tests/e2e/space-library-profile-contracts.spec.ts": "42d8f6ea1f014a16583c4aede06825c47add2379d6c42477ef7d39f4744a6c7e",
+    "layouts/partials/space/profile.html": "4f44edbb6bdbdbdb8f73b3dcab9f9a67b79a3ed8f5101e0ce1cc6ef25dfed205",
+    "assets/css/space-profile.css": "8989a78db83d72540115d04eae012e6cc721660389093263cbd914ffdef28c7f",
+    "assets/css/space-classic.css": "8b257d25410d20a3fa5110859d209525a1905378c98bfdebb9c088c26b7ab3b3",
+    "assets/js/space/state.mjs": "d967c0df16588fcc598b89649666f2e6a9ff776bf645ec3194fa7666cbeb0258",
+    "assets/js/space/desktop.js": "c096a3c2fd87dd58c74275ea6412a9e265c16fd2bed5b5825fc092c3a99f710a",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec"
+  },
+  "qaConfig": {
+    "docs/ux-audit/2026-10-16/space-library-qa.config.mjs": "2abde05c04b9c33bb4389d06e73427fd85e7259859b2c518fd4d8cd9e7f4068a"
+  },
+  "scope": "4production/new9distinctspec; E15a first8 bytepreserved. Other5 sources unchanged against accepted checkpoint. Initial and fixturefailure files immutable; candidate not accepted."
+}

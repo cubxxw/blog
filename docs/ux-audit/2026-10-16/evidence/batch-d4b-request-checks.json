@@ -1,0 +1,76 @@
+{
+  "checks": [
+    {
+      "id": "D1.share-late-refusal-no-modal",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d4b-source.json"
+    },
+    {
+      "id": "D1.travel-stop-preserves-question",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d4b-source.json"
+    },
+    {
+      "id": "D1.travel-close-switch-isolates-request",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/travel/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d4b-source.json"
+    },
+    {
+      "id": "D1.faq-stream-stop-restores-input",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/engineering/posts/kubernetes-an-article-to-get-started-quickly/",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d4b-source.json"
+    },
+    {
+      "id": "D1.search-close-cancels-and-clears",
+      "passed": true,
+      "route": "http://127.0.0.1:1317/zh/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "locale": "zh",
+      "theme": "light",
+      "zoom": 1,
+      "reducedMotion": "reduce",
+      "source": "batch-d4b-source.json"
+    }
+  ],
+  "errors": [],
+  "limits": "Controlled isolated AI streams and Clipboard; no real API, subscription or clipboard mutation. Only the exact frozen source and recorded flows; additional states are not implied."
+}

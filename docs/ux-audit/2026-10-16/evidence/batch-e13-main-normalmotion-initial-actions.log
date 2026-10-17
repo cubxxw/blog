@@ -1,0 +1,16 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Actual focused control is not fully visible and hittable: {"tag":"TEXTAREA","id":"","cls":"rc-ai-textarea","bbox":{"x":264.5,"y":1481.790771484375,"width":622,"height":60,"top":1481.790771484375,"right":886.5,"bottom":1541.790771484375,"left":264.5},"viewport":{"width":1199,"height":900},"fullViewport":false,"hit":false,"cssVisible":true,"inert":false,"disabled":false}
+    at assertVisibleFocus (file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/article-qa-visible-focus.mjs:2:562)
+    at async file:///Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/docs/ux-audit/2026-10-16/batch-e13-actions.browser.mjs:11:29 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.2

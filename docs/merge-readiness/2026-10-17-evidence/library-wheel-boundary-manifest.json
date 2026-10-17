@@ -1,0 +1,85 @@
+{
+  "head": "d2bcef4ac46b4cfa4829346bf2e657d22c370fab",
+  "sources": [
+    {
+      "name": "tests/e2e/00-space-library-profile-contracts.spec.ts",
+      "bytes": 26072,
+      "sha256": "1647d431064b4e6294181ec44abbc405c00eb845f2e732631dd56ae260b00dab"
+    },
+    {
+      "name": "docs/merge-readiness/probes/library-wheel-boundary.ts",
+      "bytes": 7490,
+      "sha256": "52d2915730d56841296e633753725b0b7be05b986afb204f5e7f32a555c4b5c5"
+    }
+  ],
+  "logs": [
+    {
+      "name": "integration-library-boundary-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "name": "integration-library-boundary-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "integration-library-boundary-discovery.log",
+      "bytes": 104411,
+      "sha256": "859d20f853ada4c751420427235d681dd490d632e59485f0d62b6e5ad4889107"
+    },
+    {
+      "name": "integration-library-boundary-scope.log",
+      "bytes": 729,
+      "sha256": "7fc14968c5af27fa75b60eb23a595e0e968b393c6a2899fa7019606a8256b9b0"
+    },
+    {
+      "name": "integration-library-boundary-ownership.log",
+      "bytes": 1005,
+      "sha256": "669d08cd9f712a85b7d1377bd930605f0b4a85c919b9ac2c1c5bd6a1859cdd47"
+    },
+    {
+      "name": "integration-library-boundary-ownership-final.log",
+      "bytes": 359,
+      "sha256": "575ae2b91a0c00d64ac47e06b26296bb4cfdf7686ae66af7a3a25f3aa06b74c2"
+    },
+    {
+      "name": "integration-library-boundary-parent-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "name": "integration-library-boundary-parent-discovery.log",
+      "bytes": 104411,
+      "sha256": "859d20f853ada4c751420427235d681dd490d632e59485f0d62b6e5ad4889107"
+    },
+    {
+      "name": "integration-library-boundary-parent-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "archive": {
+    "bytes": 40983,
+    "sha256": "cb8a88620decf1923ee22be36981ceb336be5f76f125ea4cee9dfecd4f99b422"
+  },
+  "checks": {
+    "typecheck": "parent final tool exit0",
+    "diffCheck": "empty diagnostics",
+    "discovery": "758project instances52files; not execution",
+    "ownership": "actual helper fiveerror/cleanup paths,fourqualification exclusions,success physicalattachment; final harness passed; initial TS7 API startup failure retained, not productred"
+  },
+  "scope": "Original test bodies, native850/300, original5s, restore1px unchanged; no production/config/workflow edits. Post-failure retry0 firstcase only A0/H/A1/F/A2 then always rethrow original.",
+  "lifecycle": {
+    "split": "discovery",
+    "reviewStatus": "unreviewed",
+    "automatedPromotion": "none"
+  },
+  "timebox": "One CI evidence run then stop. Local25s observation deadline includes resets and cancellable double-rAF; poll<=5sofremaining. Protocol delivery/cleanup remain under unchanged90s whole-test limit, not a hard realtime25s guarantee.",
+  "decision": "inconclusive; browser counterfactual not yet executed",
+  "limitations": [
+    "will-change only a hint; no LayerTree measured",
+    "Only reversible A-fail/B-pass/A-fail with matched geometry and full negative windows can support a candidate",
+    "No programmatic scrollTop assignments or passing replacement for original failing contract"
+  ]
+}

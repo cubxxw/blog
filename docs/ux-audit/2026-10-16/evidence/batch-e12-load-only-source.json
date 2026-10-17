@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-15T22:01:19.272006+00:00",
+  "batch": "E12",
+  "base": "9d43d0cc2e4b090b0196b2fe36a09c9dece26653",
+  "files": {
+    "layouts/partials/footer.html": "a2f0695f95f4171fb6bd0350f57142d5092949a2c687be37cc85280f68778cc1",
+    "static/js/footnote-preview.js": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662",
+    "assets/css/extended/zzz-footnote-preview.css": "511ee027f33a74dc965571a1a7f0fb73a0021600a183e656f544b433b2c91671",
+    "tests/e2e/footnote-preview-contracts.spec.ts": "357bf59487877da8fc4164eac52a779c8fc7d2a9579cd44e389290b874b01bbb"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "2dba0659c33166b69bed67b2327cd6a038e71ad52f9e852e59ba7208eebf25fc",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "parentActionRunners": {
+    "footnote-qa.browser-helpers.mjs": "50dcec218b37cb29fdc24629409a4aacb2c30ec3eaec54b013b442a46ba7b4ac",
+    "batch-e12-actions.browser.mjs": "fd81ed324d3e2908ec7b2b8ca15f8a40b77f207ab8a82a71aa8822519d3c67a3",
+    "batch-e12-boundaries.browser.mjs": "3323b17c479b3a61366c298e1ff1d63234524c64928ac81178ec3d45e347200e"
+  },
+  "scope": "Footnote preview intent/focus/ownedtimers/semantics/bodyoverflow, one footer exclusion.8newcases;article content,TOC,AI,search,Space unchanged.",
+  "iteration": "E12b: production unchanged from initial; precise NoJS/smooth-setup/defaultfocus harness corrections retained in evidence",
+  "parentSetup": "Actual main acceptance waits document load then document.fonts.ready before placing existing marker; earlier domcontentloaded-only screenshots moved after async Google Font stylesheet arrived. Preserve initial failure, do not treat cold font transition as settled acceptance."
+}

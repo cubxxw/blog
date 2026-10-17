@@ -1,0 +1,34 @@
+{
+  "head": "3b924aaea7dcdd2e938421734ec82b9055f3cd64",
+  "url": "https://6ad34dd3af6d1784b13a15f9--cubxxw.netlify.app/zh/projects/",
+  "viewport": [
+    390,
+    844
+  ],
+  "method": "Actual CUA field fill, visible native selectOption and button clicks; read-only DOM attributes; original screenshots",
+  "clear": {
+    "at": "2026-10-17T11:28:10.131Z",
+    "desktopFavoritesVisible": false,
+    "items": 189,
+    "pickerValue": "all",
+    "pickerVisible": true,
+    "query": "",
+    "queryFocused": true
+  },
+  "favorites": {
+    "at": "2026-10-17T11:28:28.969Z",
+    "empty": "还没有收藏文章阅读文章时，点击“收藏”就能在这里找到它。查看全部文章",
+    "items": 0,
+    "pressed": "true",
+    "value": "favorites"
+  },
+  "all": {
+    "active": "筛选文章",
+    "at": "2026-10-17T11:28:47.552Z",
+    "firstVisible": true,
+    "items": 189,
+    "pressed": "true",
+    "value": "all"
+  },
+  "limits": "Mac IAB native journey, not Linux full CI."
+}

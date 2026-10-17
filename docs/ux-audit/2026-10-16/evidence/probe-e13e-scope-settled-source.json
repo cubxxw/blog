@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-15T23:31:00.163178+00:00",
+  "batch": "E13e explicit selected-passage focus plus canonical continuity",
+  "base": "9ec879f3c4c04c622523dc9e98222d58bb90ba3f",
+  "files": {
+    "layouts/partials/article/editorial-tools.html": "450b3093c60ca727532b8259e4e20135bc90b248e5fd700f2cd5fa89c094acd8",
+    "layouts/_default/single.html": "fe042c9f93b394ce644b98819d3a2d6759715a05d465d31c75b960343566a6c8",
+    "static/js/article-chat.js": "f4e2417767b6ba67e487007611cae7ecb89e50fcef39e7bb121419505bfe0bec",
+    "static/js/reading-companion.js": "31fae7c51e7aa9aa500961c77e405815f2ac7605a0a80ef29e0907e31923e960",
+    "static/js/article-bottom-sheet.js": "4450beb82426f4ba1325c6941af8a27892288086c0526e1acbff068545035b16",
+    "assets/css/extended/editorial-tools.css": "5f8f8b81690cd0665b1f848024ce7c94d24d8069080916710c96a69b206fce14",
+    "assets/css/extended/article-bottom-sheet.css": "526c39c57662025613d428841012e4627eb6ae4a83125eb1cb7b166be5a4028e",
+    "tests/e2e/article-chat-continuity-contracts.spec.ts": "cc02f417ecb27aad52bc44da6e4d51dd314600e5489dccd28535afa4d12d9abd",
+    "tests/e2e/article-selection.spec.ts": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed",
+    "static/js/article-ai-client.js": "b74a12f7eb3365ae956d654426702167d129546617c31159dd0c993bd7542a18",
+    "static/js/article-tabs.js": "7fbb21ca574febdc4d6f887aa55e7c236505115f14bf0214c66ac31d39772a5d"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/article-continuity-qa.config.mjs",
+    "sha256": "1698df4609aec570f80ed0b34df8ce545424e250596bdfd19fea25f0a3b645cb",
+    "workers": 1,
+    "browser": "ChromiumMetal"
+  },
+  "parentActionRunners": {
+    "article-qa.browser-helpers.mjs": "237a292a8df3e2ada3432a3a293d51e871cabe372a7ee5f43d91e6142ac1fedd",
+    "article-qa-visible-focus.mjs": "52b7b6211b70c9392230a05277c5e56db23cd1692a21c1ed96422b7a82f4887e",
+    "batch-e13e-actions.browser.mjs": "c1344b5975f18fb746406d5645ed5a320900aaebf6177728354ebb193da831a3",
+    "batch-e13e-stream.browser.mjs": "e03743f6aa20f2197ef8d5220bdd0731ccf6a7b201499cb057bf84454e9a78af",
+    "batch-e13e-scope.browser.mjs": "1cedf6bc94b357e5685a229a46d046f7485f60d789fad4adec6a22e70b16f8ea",
+    "batch-e13e-entry.browser.mjs": "cf0e10b5a3414e62b79dc71160ba06520bd1e1543de97605277ec9dda6c4ceda"
+  },
+  "scope": "7production+new10contracts+oldselection locator only;AIClient/ArticleTabs immutable. Same root/controller/scopes/general/stream; layout handoff differs from userclose. No live model/paid/contact/share/subscription.",
+  "iteration": "E13d1 +one explicit analyze focus line +13th realtoolbar contract;source frozen",
+  "parentActualPrecondition": "Default inline body overflow for normal user journey; synthetic auto!important exact owner restoration stays in unchanged contract9. Controlled two-case geometry shows auto!important itself changes sticky viewport input y376→-123/rootY Tab500→0, default remains500. Initial actualrunner/source/log2PNG and diagnostic4PNG preserved. New independent visible-focus helper asserts full viewport/centerhit/notinert/notdisabled rather than layout-presence alone; no production changes or rootY tolerance.",
+  "parentMotionGate": "Actual normal motion helper now waits open noninert sheet transform m42<=0.1/no running transform transition, bounded1500ms, then same strict fullviewport+centerhit assertion. Natural timeline probe at33.39ms/input1481.7,183.39ms/input843.0,settled818 verifies transition rather than product defect. Initial helper animations:disabled probe separately preserved with limitation; no source or contract change.",
+  "parentRunnerManifestTiming": "All6parent runners saved before finalE13e launch;runtimeverify checks11 source hashes. Final provenance additionally binds6runner bytes.",
+  "scopeFixtureCorrection": "Original raw textContent paragraph includes source newlines which rendered normal-white-space selection collapses. Initial assertion failure preserved. Actual scope runner now independently captures innerText and live getSelection().toString().trim(), asserts those identical, and exact payload.selectedText equals that real browser selection; selectionContext normalized-text inclusion follows unchanged public source behavior. No production/contracts change.",
+  "scopeToolbarDiagnostic": "Rendered selection exact matches after fixture correction. Later B actual toolbar click outsideviewport timedout, no weakened gate or force. Parent catches to save actual state/geometry/PNG beforethrow; rerun diagnostic, no production change."
+}

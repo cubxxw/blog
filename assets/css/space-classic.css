@@ -14,7 +14,10 @@
 .space-window__bar { position:relative; background:var(--sp-chrome); border-bottom:1px solid var(--sp-line); height:42px; padding:0 8px; }
 .space-window__bar strong { width:max-content; max-width:100%; justify-self:center; padding:0 12px; background:var(--sp-chrome); z-index:1; font-size:12px; }
 .space-window__bar::before { content:''; position:absolute; inset:12px 116px 12px 112px; background:repeating-linear-gradient(to bottom,transparent 0 2px,var(--sp-line) 2px 3px,transparent 3px 4px); opacity:.65; pointer-events:none; }
-.space-window-controls button::before { border-radius:3px; border:1px solid #53665b80; box-shadow:inset 1px 1px 0 #fff9,inset -1px -1px 0 #0002; }
+.space-window-controls button { width:32px; height:32px; }
+.space-window-controls button::before { inset:0; margin:auto; border-radius:3px; border:1px solid #53665b80; box-shadow:inset 1px 1px 0 #fff9,inset -1px -1px 0 #0002; }
+.space-window-controls button::after { display:grid; place-items:center; line-height:1; }
+.space-window__layout { min-width:32px; min-height:32px; }
 .space-window__body { height:calc(100% - 42px); }
 .space-bottom { justify-content:center; bottom:20px; left:12px; right:12px; }
 .space-dock { gap:8px; align-items:center; padding:9px 12px 6px; border-radius:8px; border:1px solid #51675d; background:var(--sp-chrome); backdrop-filter:none; box-shadow:inset 1px 1px 0 #fff9,inset -1px -1px 0 #0002,0 8px 24px #163c3426; }

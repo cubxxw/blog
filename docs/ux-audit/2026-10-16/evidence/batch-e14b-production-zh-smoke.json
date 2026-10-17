@@ -1,0 +1,127 @@
+{
+  "at": "2026-10-16T01:19:05.074Z",
+  "sources": {
+    "layouts/partials/extend_head.html": "f9b09295a0f52968950de4ab967a4a1a5fa6e02e4f14e9cc85d340ce4edbe7e5",
+    "assets/css/extended/tokens.css": "5d25745d00c0a53304623371ba90e1a0c7f9df32e18b212947359a51654aff58",
+    "assets/css/extended/article-typography.css": "29efb987d522f044c19146d49bb7e64b081a71a6b0e73d6554b5898b4e8b6417",
+    "static/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css": "52b2ee5f12e90dcd606c28bfd2d2ddce2182a4022a5342595b384a2365f56720",
+    "assets/css/extended/editorial-tools.css": "de74c66f8c53c66464da3bff60a8c3d90bdec7fb8311ebe9cc3549143632f7f6",
+    "assets/css/extended/article-bottom-sheet.css": "875e31471f281957b6328ff5e2c23271406c58ae143d7590599a4ce47ff2ce05",
+    "assets/css/extended/article-selection.css": "bd24da0dece69a1ba009b89a2b1ac3e98e25b979c52eb78c2a5afc876a9262dc",
+    "tests/e2e/article-font-stability-contracts.spec.ts": "2a1634e23e9130b1d6aabd58b7c6f0e74d2038e140573086254c127f94dc90e5"
+  },
+  "view": {
+    "width": 390,
+    "height": 844,
+    "locale": "zh",
+    "motion": "no-preference",
+    "theme": "light"
+  },
+  "steps": [
+    {
+      "name": "title",
+      "actualGlyphFonts": [
+        {
+          "familyName": "Source Han Serif SC SemiBold",
+          "postScriptName": "SourceHanSerifSC-SemiBold",
+          "isCustomFont": false,
+          "glyphCount": 40
+        }
+      ],
+      "geometry": {
+        "text": "Context 不是 Prompt：上下文工程如何成为 AI Agent 的新地基",
+        "font": "",
+        "box": {
+          "x": 30,
+          "y": 195.96875,
+          "width": 330,
+          "height": 154.3125,
+          "top": 195.96875,
+          "right": 360,
+          "bottom": 350.28125,
+          "left": 30
+        },
+        "docWidth": 390,
+        "width": 390,
+        "localManifest": "http://127.0.0.1:1317/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css"
+      }
+    },
+    {
+      "name": "mixed-prose",
+      "actualGlyphFonts": [
+        {
+          "familyName": "Source Han Serif SC",
+          "postScriptName": "SourceHanSerifSC-Regular",
+          "isCustomFont": false,
+          "glyphCount": 109
+        },
+        {
+          "familyName": "Source Han Serif SC SemiBold",
+          "postScriptName": "SourceHanSerifSC-SemiBold",
+          "isCustomFont": false,
+          "glyphCount": 103
+        }
+      ],
+      "geometry": {
+        "text": "上下文工程（Context Engineering）是在 LLM 每一次推理时，对进入上下文窗口的最优 token 集合——系统提示、检索文档、对话历史、工具定义与记忆——进行筛选、排序与淘汰的一整套工程策略。 它与提示词工程的区别一句话讲清：提示词工程优化「一句话的措辞」，上下文工程优化「整扇窗口的布线」。这个定义来自 Anthropic 的工程文章，Karpathy 也公开背书了这次改名。下文把这门正在成形的学科完整拆开。",
+        "font": "",
+        "box": {
+          "x": 30,
+          "y": 291.96875,
+          "width": 330,
+          "height": 332.75,
+          "top": 291.96875,
+          "right": 360,
+          "bottom": 624.71875,
+          "left": 30
+        },
+        "docWidth": 390,
+        "width": 390,
+        "localManifest": "http://127.0.0.1:1317/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css"
+      }
+    },
+    {
+      "name": "code",
+      "actualGlyphFonts": [
+        {
+          "familyName": "JetBrains Mono",
+          "postScriptName": "JetBrainsMono-Regular",
+          "isCustomFont": true,
+          "glyphCount": 31
+        }
+      ],
+      "geometry": {
+        "text": "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+        "font": "",
+        "box": {
+          "x": 34,
+          "y": 445.453125,
+          "width": 304.078125,
+          "height": 26.03125,
+          "top": 445.453125,
+          "right": 338.078125,
+          "bottom": 471.484375,
+          "left": 34
+        },
+        "docWidth": 390,
+        "width": 390,
+        "localManifest": "http://127.0.0.1:1317/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css"
+      }
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2",
+      "sha256": "2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4"
+    }
+  ],
+  "unknown": [],
+  "denied": [],
+  "errors": [],
+  "images": [
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-title.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-mixed-prose.png",
+    "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-zh-code.png"
+  ],
+  "limits": "One current macOS emulatedChromium normalmotion mixedZH smoke with exact original Google swap CSS+knownfontfixtures and unchanged localCJK manifest/slices. Not WindowsAndroid absentlocalface, noJS or CJKlate-swap stability proof. Fontsready used only explicit settled smoke, not production remedy."
+}

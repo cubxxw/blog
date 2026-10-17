@@ -1,0 +1,85 @@
+{
+  "observations": [
+    {
+      "source": "batch-e62-source.json",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "zh",
+      "theme": "light",
+      "kind": "real Chromium Metal WebGL, viewport CSSpx; simulated media changes",
+      "firstHeroAfterTrustedIntentAnd3s": {
+        "rendererRequests": 0
+      },
+      "afterBearVisible": {
+        "requests": [
+          "http://127.0.0.1:1317/js/three/hero-field.2393a380124ae7c58829c6c24cfa7642f529cb76ea85e56126f916d1b090aa00.js",
+          "http://127.0.0.1:1317/js/three/bear-orb.2e61694df683fe987791269c51ad755bceec7d34626edc84a68c1c4f39da85ca.js"
+        ],
+        "canvases": [
+          {
+            "width": 420,
+            "height": 420,
+            "display": {
+              "width": 420,
+              "height": 420
+            }
+          },
+          {
+            "width": 420,
+            "height": 420,
+            "display": {
+              "width": 420,
+              "height": 420
+            }
+          }
+        ]
+      },
+      "runtimeReduce": "disposed both canvases",
+      "runtimeRestore": "mounted both again then disposed on final reduce",
+      "pageErrors": []
+    },
+    {
+      "source": "batch-e62-source.json",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "zh",
+      "theme": "dark",
+      "kind": "real Chromium Metal WebGL, viewport CSSpx; simulated media changes",
+      "firstHeroAfterTrustedIntentAnd3s": {
+        "rendererRequests": 0
+      },
+      "afterBearVisible": {
+        "requests": [
+          "http://127.0.0.1:1317/js/three/hero-field.2393a380124ae7c58829c6c24cfa7642f529cb76ea85e56126f916d1b090aa00.js",
+          "http://127.0.0.1:1317/js/three/bear-orb.2e61694df683fe987791269c51ad755bceec7d34626edc84a68c1c4f39da85ca.js"
+        ],
+        "canvases": [
+          {
+            "width": 420,
+            "height": 420,
+            "display": {
+              "width": 420,
+              "height": 420
+            }
+          },
+          {
+            "width": 420,
+            "height": 420,
+            "display": {
+              "width": 420,
+              "height": 420
+            }
+          }
+        ]
+      },
+      "runtimeReduce": "disposed both canvases",
+      "runtimeRestore": "mounted both again then disposed on final reduce",
+      "pageErrors": []
+    }
+  ],
+  "limits": "Two real GPU theme scopes; canvas lifecycle and images do not certify FPS, INP, physical devices or a full functional score."
+}

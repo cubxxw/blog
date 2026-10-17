@@ -1,0 +1,220 @@
+{
+  "at": "2026-10-15T23:28:05.010Z",
+  "index": 4,
+  "paragraph": {
+    "index": 17,
+    "rawText": "::: tip\nWhen applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process.\n:::",
+    "text": "::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::"
+  },
+  "diagnostic": {
+    "scrollY": 7340,
+    "bodyOverflow": "hidden",
+    "active": {
+      "tag": "BUTTON",
+      "cls": "article-fab"
+    },
+    "selection": "::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::",
+    "selectionRect": {
+      "x": 53.96875,
+      "y": 401.375,
+      "width": 739.46875,
+      "height": 170,
+      "top": 401.375,
+      "right": 793.4375,
+      "bottom": 571.375,
+      "left": 53.96875
+    },
+    "toolbar": [
+      {
+        "box": {
+          "x": 54,
+          "y": 908,
+          "width": 205.078125,
+          "height": 46,
+          "top": 908,
+          "right": 259.078125,
+          "bottom": 954,
+          "left": 54
+        },
+        "css": {
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "position": "fixed"
+        },
+        "classes": "asel-toolbar",
+        "html": "<div class=\"asel-toolbar\" role=\"toolbar\" aria-label=\"文章选区工具\" aria-hidden=\"false\" style=\"visibility: visible; left: 54px; top: 908px;\"><button class=\"asel-btn\" type=\"button\" data-asel-action=\"share\">分享</button><button class=\"asel-btn\" type=\"button\" data-asel-action=\"ai\">AI 分析</button><button class=\"asel-btn\" type=\"button\" data-asel-action=\"comment\">评论</button><span class=\"asel-btn-sep\" aria-hidden=\"true\"></span><button class=\"asel-btn\" type=\"button\" data-asel-action=\"more\" aria-haspopup=\"menu\" aria-expanded=\"false\">更多</button></div>"
+      }
+    ]
+  },
+  "snapshot": {
+    "width": 1199,
+    "height": 900,
+    "rootY": 7340,
+    "hash": "",
+    "history": 2,
+    "host": "abs-panel-ai",
+    "rootCount": 1,
+    "inputCount": 1,
+    "busy": "false",
+    "originalIdentity": {
+      "root": true,
+      "input": true,
+      "messages": true
+    },
+    "value": "",
+    "selection": [
+      0,
+      0,
+      "none"
+    ],
+    "focus": {
+      "tag": "BUTTON",
+      "id": "article-fab",
+      "cls": "article-fab",
+      "originalInput": false,
+      "visible": true,
+      "insideAI": false,
+      "inInert": false
+    },
+    "rootBox": {
+      "x": 252.5,
+      "y": 283.328125,
+      "width": 694,
+      "height": 604.671875,
+      "top": 283.328125,
+      "right": 946.5,
+      "bottom": 888,
+      "left": 252.5
+    },
+    "inputBox": {
+      "x": 264.5,
+      "y": 819.40625,
+      "width": 620,
+      "height": 59.59375,
+      "top": 819.40625,
+      "right": 884.5,
+      "bottom": 879,
+      "left": 264.5
+    },
+    "messages": {
+      "box": {
+        "x": 252.5,
+        "y": 283.328125,
+        "width": 694,
+        "height": 405.0625,
+        "top": 283.328125,
+        "right": 946.5,
+        "bottom": 688.390625,
+        "left": 252.5
+      },
+      "scrollTop": 677,
+      "scrollHeight": 1082,
+      "clientHeight": 405,
+      "text": "你的问题General context before selected passagesAI一起读懂生成分享卡General context answer.关于这段文字::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try "
+    },
+    "stop": {
+      "visible": false,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "disabled": false
+    },
+    "overflow": {
+      "value": "hidden",
+      "priority": ""
+    },
+    "sheet": {
+      "open": true,
+      "inert": false,
+      "ariaHidden": "false"
+    },
+    "tabs": {
+      "rc": [
+        "rc-tab-ai"
+      ],
+      "abs": [
+        "abs-tab-ai"
+      ]
+    },
+    "turns": [
+      {
+        "aborts": 0,
+        "cancels": 1,
+        "method": "POST",
+        "payload": {
+          "question": "General context before selected passages",
+          "language": "zh",
+          "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "articleContentLength": 5403,
+          "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+        }
+      },
+      {
+        "aborts": 0,
+        "cancels": 1,
+        "method": "POST",
+        "payload": {
+          "question": "结合这篇文章，帮我理解这段话。",
+          "language": "zh",
+          "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "selectedText": "::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::",
+          "selectionContext": "[文章开头节选]\n调试Go工程 ::: tip prepare： vscode golang 1.92 ::: demo go mod init test 复制 In main.go file package main import ( \"fmt\" ) // Swap functions func swap(x, y *string) (string, string) { //XOR exchange *x, *y = *y, *x } func main() { fmt.Println(\"Hello, world!\") //Swap functions for i := 0; i < 10; i++ { a := \"a\" b := \"b\" swap(&a, &b) fmt.Println(a, b) } } 复制 vscode一键生成测试 >gotest for package/function 复制 ::: tip 分别是为包生成测试单元，为函数生成测试单元。 ::: 生成如下： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { got, got1 := swap(tt.args.x, tt.args.y) if got != tt.want { t.Errorf(\"swap() got = %v, want %v\", got, tt.want) } if got1 != tt.want1 { t.Errorf(\"swap() got1 = %v, want %v\", got1, tt.want1) } }) } } 复制 我们在 TODO: Add test cases. 那边给出测试就好了： 也有快捷键，我们先加入一个 {}： >go:file struct 复制 生成： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. { name: \"test\", }, } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. { name: \"afsdfwe\", args: args{ x: 12, y: 214, }, want: \n\n[选文上下文]\n需要指定 test 参数，来指定具体的测试函数：\n选文：::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::\n::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::\n首先我们需要先启动一个 devle server",
+          "articleContentLength": 5403,
+          "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+        }
+      },
+      {
+        "aborts": 0,
+        "cancels": 1,
+        "method": "POST",
+        "payload": {
+          "question": "Follow up on the same actual passage A",
+          "language": "zh",
+          "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+          "context": [
+            {
+              "role": "user",
+              "content": "结合这篇文章，帮我理解这段话。"
+            },
+            {
+              "role": "assistant",
+              "content": "Controlled explanation of actual passage A."
+            }
+          ],
+          "selectedText": "::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::",
+          "selectionContext": "[文章开头节选]\n调试Go工程 ::: tip prepare： vscode golang 1.92 ::: demo go mod init test 复制 In main.go file package main import ( \"fmt\" ) // Swap functions func swap(x, y *string) (string, string) { //XOR exchange *x, *y = *y, *x } func main() { fmt.Println(\"Hello, world!\") //Swap functions for i := 0; i < 10; i++ { a := \"a\" b := \"b\" swap(&a, &b) fmt.Println(a, b) } } 复制 vscode一键生成测试 >gotest for package/function 复制 ::: tip 分别是为包生成测试单元，为函数生成测试单元。 ::: 生成如下： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { got, got1 := swap(tt.args.x, tt.args.y) if got != tt.want { t.Errorf(\"swap() got = %v, want %v\", got, tt.want) } if got1 != tt.want1 { t.Errorf(\"swap() got1 = %v, want %v\", got1, tt.want1) } }) } } 复制 我们在 TODO: Add test cases. 那边给出测试就好了： 也有快捷键，我们先加入一个 {}： >go:file struct 复制 生成： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. { name: \"test\", }, } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. { name: \"afsdfwe\", args: args{ x: 12, y: 214, }, want: \n\n[选文上下文]\n需要指定 test 参数，来指定具体的测试函数：\n选文：::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::\n::: tip When applied to remote-attach configurations, will look for “dlv … –headless –listen=:” server started externally. In dlv-dap mode, this will apply to all other configurations as well. The extension will try to connect to an external server started with “dlv dap –listen=:” to ask it to launch/attach to the target process. :::\n首先我们需要先启动一个 devle server",
+          "articleContentLength": 5403,
+          "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+        }
+      },
+      {
+        "aborts": 0,
+        "cancels": 1,
+        "method": "POST",
+        "payload": {
+          "question": "结合这篇文章，帮我理解这段话。",
+          "language": "zh",
+          "pagePath": "/zh/engineering/posts/use-go-tools-dlv/",
+          "context": [],
+          "selectedText": "::: tip 需要的问题 项目需要 gcc/c++ 环境，或者是大型的项目需要构建（sealos、sealer、kubernets、prometheus ）",
+          "selectionContext": "[文章开头节选]\n调试Go工程 ::: tip prepare： vscode golang 1.92 ::: demo go mod init test 复制 In main.go file package main import ( \"fmt\" ) // Swap functions func swap(x, y *string) (string, string) { //XOR exchange *x, *y = *y, *x } func main() { fmt.Println(\"Hello, world!\") //Swap functions for i := 0; i < 10; i++ { a := \"a\" b := \"b\" swap(&a, &b) fmt.Println(a, b) } } 复制 vscode一键生成测试 >gotest for package/function 复制 ::: tip 分别是为包生成测试单元，为函数生成测试单元。 ::: 生成如下： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { got, got1 := swap(tt.args.x, tt.args.y) if got != tt.want { t.Errorf(\"swap() got = %v, want %v\", got, tt.want) } if got1 != tt.want1 { t.Errorf(\"swap() got1 = %v, want %v\", got1, tt.want1) } }) } } 复制 我们在 TODO: Add test cases. 那边给出测试就好了： 也有快捷键，我们先加入一个 {}： >go:file struct 复制 生成： package main import ( \"testing\" ) func Test_main(t *testing.T) { tests := []struct { name string }{ // TODO: Add test cases. { name: \"test\", }, } for _, tt := range tests { t.Run(tt.name, func(t *testing.T) { main() }) } } func Test_swap(t *testing.T) { type args struct { x *string y *string } tests := []struct { name string args args want string want1 string }{ // TODO: Add test cases. { name: \"afsdfwe\", args: args{ x: 12, y: 214, }, want: \n\n[选文上下文]\n:::\n选文：::: tip 需要的问题 项目需要 gcc/c++ 环境，或者是大型的项目需要构建（sealos、sealer、kubernets、prometheus ）\n::: tip 需要的问题 项目需要 gcc/c++ 环境，或者是大型的项目需要构建（sealos、sealer、kubernets、prometheus ）\n**我需要： ** 使用vscode编辑器编写go，然后进行编译、调试（打断点）。",
+          "articleContentLength": 5403,
+          "articleTitle": "Go 调试测试以及调试工具 dlv 学习"
+        }
+      }
+    ],
+    "overflowX": false
+  },
+  "error": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"asel-btn\" data-asel-action=\"ai\">AI 分析</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    19 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - element is outside of the viewport\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "sourceManifest": "batch-e13-source.json"
+}

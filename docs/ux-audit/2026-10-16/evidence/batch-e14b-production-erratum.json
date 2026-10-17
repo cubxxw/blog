@@ -1,0 +1,383 @@
+{
+  "at": "2026-10-16T01:26:44.621675+00:00",
+  "kind": "Parent metadata factual correction; no raw/source/runner mutation or rerun",
+  "corrects": {
+    "path": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-provenance.json",
+    "sha256": "2b53d4934fb2206520bd1d4da4c45778ab45528cf291ddd32dedf9c81191ddca",
+    "field": "actual.actualGlyphFamilies",
+    "originalIncorrectText": "All5EN rows heading/prose Georgia and code Courier includingfast-before-reading"
+  },
+  "raw": {
+    "path": "docs/ux-audit/2026-10-16/evidence/batch-e14b-production-actual.json",
+    "sha256": "3e09f72f1ef9785fff259c39769c93007138d6972d58b06646bd125f43e7f146"
+  },
+  "correction": "In finalB production fast-before-reading row, heading actualGeorgia but prose actualNotoSerif and code actualJetBrainsMono, bothbefore+terminal; the4late/font404/CSS404 rows useGeorgia/Courier. All5 marker doc/view/root/docH delta0. Earlier initialfast and original readonlyexperimentfast happenedallfallback; those independent raw observations must not be generalized to finalBfast. Cold timing can use somewebfonts; no warmcache/brandfontguarantee.",
+  "rows": [
+    {
+      "case": "fast-before-reading",
+      "before": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Noto Serif",
+            "postScriptName": "NotoSerif-Bold",
+            "isCustomFont": true,
+            "glyphCount": 202
+          },
+          {
+            "familyName": "Noto Serif",
+            "postScriptName": "NotoSerif-Regular",
+            "isCustomFont": true,
+            "glyphCount": 260
+          }
+        ],
+        "code": [
+          {
+            "familyName": "JetBrains Mono",
+            "postScriptName": "JetBrainsMono-Regular",
+            "isCustomFont": true,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "terminal": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Noto Serif",
+            "postScriptName": "NotoSerif-Bold",
+            "isCustomFont": true,
+            "glyphCount": 202
+          },
+          {
+            "familyName": "Noto Serif",
+            "postScriptName": "NotoSerif-Regular",
+            "isCustomFont": true,
+            "glyphCount": 260
+          }
+        ],
+        "code": [
+          {
+            "familyName": "JetBrains Mono",
+            "postScriptName": "JetBrainsMono-Regular",
+            "isCustomFont": true,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "delta": {
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      }
+    },
+    {
+      "case": "css-late-font-immediate",
+      "before": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "terminal": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "delta": {
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      }
+    },
+    {
+      "case": "css-late-font-1200ms",
+      "before": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "terminal": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "delta": {
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      }
+    },
+    {
+      "case": "css-success-font-404",
+      "before": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "terminal": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "delta": {
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      }
+    },
+    {
+      "case": "css-404",
+      "before": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "terminal": {
+        "heading": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 49
+          }
+        ],
+        "prose": [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 203
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 257
+          }
+        ],
+        "code": [
+          {
+            "familyName": "Courier",
+            "postScriptName": "Courier",
+            "isCustomFont": false,
+            "glyphCount": 31
+          }
+        ]
+      },
+      "delta": {
+        "document": 0,
+        "viewport": 0,
+        "root": 0,
+        "docHeight": 0
+      }
+    }
+  ],
+  "reason": "Parent summarized from earlier initialfast/oldexperiment plus latefinalrows without individually reading finalBfast CDP map; inventory independentlycaught. Raw remains immutable; conclusions now perrow."
+}

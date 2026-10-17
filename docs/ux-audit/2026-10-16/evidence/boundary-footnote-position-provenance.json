@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-15T22:19:26.040429+00:00",
+  "base": "50a08fbbfb19b5f59d2dc95202071f6132466655",
+  "files": {
+    "evidence/boundary-footnote-position-contract.json": "b8ffdfb3c396eda9c4218da64cbe5e44386372fd1ed47c67be52a207316d2456",
+    "boundary-footnote-position.browser.mjs": "c7c9c750e8a8e401b68aaa3124cb7424bef458b0bee3fd8d5584363cd6292838",
+    "evidence/boundary-footnote-position.json": "ba149ba946f80e2c114d42769e3d631cfad02ccbe48f1b1f2a6422d62a858c60",
+    "static/js/footnote-preview.js": "e008d79a66f76319dd6465644f6dcc507755734fd41f45417cc513160b192662",
+    "assets/css/extended/zzz-footnote-preview.css": "511ee027f33a74dc965571a1a7f0fb73a0021600a183e656f544b433b2c91671"
+  },
+  "observed": "3pairedcases/6runs, absolute fails2 short scopes, fixedpasses3; parent6imagesread; no productionwrites",
+  "humanChoice": "unreviewed; discovery labels unchanged; no Gold/regression promotion",
+  "productionScope": "Existing user authorized iterative blog source fixes, but experiment shell is not shipped. Executor must implement separately and run production contracts/actual/independentreview."
+}

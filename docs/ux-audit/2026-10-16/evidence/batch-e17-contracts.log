@@ -1,0 +1,104 @@
+
+Running 5 tests using 1 worker
+
+(node:17481) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 1440px zh image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success (1.5s)
+(node:17505) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 390px en image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success (4.9s)
+(node:17534) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/space-media-legibility-contracts.spec.ts:67:5 › a synthetic already-complete error and detached old-attempt events cannot overwrite a reopened real photo (5.6s)
+(node:17666) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/space-media-legibility-contracts.spec.ts:86:7 › phone native photo navigation › Next Enter then ArrowRight and Escape retain the existing window keyboard route and Notes node (946ms)
+  ✘  5 tests/e2e/space-media-legibility-contracts.spec.ts:94:5 › the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work (874ms)
+
+
+  1) tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 1440px zh image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      52 |       await openApp(page,'photos');await galleryTypography(page,photo);await win(page).locator(`[data-photo-select="${photo.id}"]`).click();await expect(preview(page)).toHaveAttribute('data-image-state','error');
+      53 |       await expect(status(page)).toHaveAttribute('role','status');await expect(status(page)).toHaveAttribute('aria-live','polite');await expect(status(page)).toHaveAttribute('aria-atomic','true');await visibleText(status(page),14);
+    > 54 |       const original=await retry(page).elementHandle(),before=await hit(retry(page),44,false);await visibleText(retry(page),14);await retry(page).click();await expect(preview(page)).toHaveAttribute('data-image-state','loading');await expect(retry(page)).toBeFocused();await expect(retry(page)).toHaveAttribute('aria-disabled','true');expect(await retry(page).isDisabled()).toBe(false);
+         |                                                                                                                                                                                                                                                                                                                                                                                      ^
+      55 |       const pending=await hit(retry(page),44,false);expect(Math.abs(pending.x-before.x)).toBeLessThanOrEqual(.1);expect(Math.abs(pending.y-before.y)).toBeLessThanOrEqual(.1);expect(pending.width).toBe(before.width);expect(pending.height).toBe(before.height);expect(await retry(page).evaluate((el,old)=>el===old,original)).toBe(true);
+      56 |       await retry(page).press('Enter');await retry(page).press('Enter');await frames(page);expect(requests).toHaveLength(2);await expect(retry(page)).toBeFocused();
+      57 |       let away:Awaited<ReturnType<Page['evaluateHandle']>>|undefined;
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/space-media-legibility-contracts.spec.ts:54:374
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright-e17/space-media-legibility-con-959af-er-receives-decoded-success/error-context.md
+
+  2) tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 390px en image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      52 |       await openApp(page,'photos');await galleryTypography(page,photo);await win(page).locator(`[data-photo-select="${photo.id}"]`).click();await expect(preview(page)).toHaveAttribute('data-image-state','error');
+      53 |       await expect(status(page)).toHaveAttribute('role','status');await expect(status(page)).toHaveAttribute('aria-live','polite');await expect(status(page)).toHaveAttribute('aria-atomic','true');await visibleText(status(page),14);
+    > 54 |       const original=await retry(page).elementHandle(),before=await hit(retry(page),44,false);await visibleText(retry(page),14);await retry(page).click();await expect(preview(page)).toHaveAttribute('data-image-state','loading');await expect(retry(page)).toBeFocused();await expect(retry(page)).toHaveAttribute('aria-disabled','true');expect(await retry(page).isDisabled()).toBe(false);
+         |                                                                                                                                                                                                                                                                                                                                                                                      ^
+      55 |       const pending=await hit(retry(page),44,false);expect(Math.abs(pending.x-before.x)).toBeLessThanOrEqual(.1);expect(Math.abs(pending.y-before.y)).toBeLessThanOrEqual(.1);expect(pending.width).toBe(before.width);expect(pending.height).toBe(before.height);expect(await retry(page).evaluate((el,old)=>el===old,original)).toBe(true);
+      56 |       await retry(page).press('Enter');await retry(page).press('Enter');await frames(page);expect(requests).toHaveLength(2);await expect(retry(page)).toBeFocused();
+      57 |       let away:Awaited<ReturnType<Page['evaluateHandle']>>|undefined;
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/space-media-legibility-contracts.spec.ts:54:374
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright-e17/space-media-legibility-con-17583-er-receives-decoded-success/error-context.md
+
+  3) tests/e2e/space-media-legibility-contracts.spec.ts:67:5 › a synthetic already-complete error and detached old-attempt events cannot overwrite a reopened real photo 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 1
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      74 |   try{
+      75 |     await openApp(page,'photos');await page.evaluate(()=>(window as any).__completeError=true);await win(page).locator(`[data-photo-select="${photo.id}"]`).click();await expect(preview(page)).toHaveAttribute('data-image-state','error');await expect(retry(page)).toBeVisible();await expect.poll(()=>requests.length).toBe(1);const first=await image(page).elementHandle();
+    > 76 |     await page.evaluate(()=>(window as any).__completeError=false);await retry(page).click();await expect(preview(page)).toHaveAttribute('data-image-state','loading');await expect.poll(()=>requests.length).toBe(2);const second=await image(page).elementHandle();expect(await first!.getAttribute('src')).toBe(null);
+         |                                                                                                                                                                                                               ^
+      77 |     await first!.evaluate(el=>{el.dispatchEvent(new Event('load'));el.dispatchEvent(new Event('error'));});await expect(preview(page)).toHaveAttribute('data-image-state','loading');await expect(retry(page)).toBeFocused();
+      78 |     await win(page).locator('[data-window-action="close"]').click();await expect(win(page)).toHaveCount(0);expect(await second!.getAttribute('src')).toBe(null);
+      79 |     await openApp(page,'photos');await win(page).locator(`[data-photo-select="${photo.id}"]`).click();await expect(preview(page)).toHaveAttribute('data-image-state','ready');const current=await image(page).elementHandle();await win(page).locator('[data-photo-next]').focus();const focused=await page.evaluateHandle(()=>document.activeElement);
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/space-media-legibility-contracts.spec.ts:76:207
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright-e17/space-media-legibility-con-eba70-write-a-reopened-real-photo/error-context.md
+
+  4) tests/e2e/space-media-legibility-contracts.spec.ts:94:5 › the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work 
+
+    Error: locator.evaluate: Error: strict mode violation: locator('[data-space-window="map"]').locator('.sp-media-kicker') resolved to 2 elements:
+        1) <p class="sp-media-kicker">BEAR / PLACES & FIELD NOTES</p> aka getByText('BEAR / PLACES & FIELD NOTES')
+        2) <p class="sp-media-kicker">35.36°N / 138.73°E</p> aka getByText('°N / 138.73°E')
+
+    Call log:
+      - waiting for locator('[data-space-window="map"]').locator('.sp-media-kicker')
+
+
+      24 | }
+      25 | async function projectedFontCSS(control:Locator){
+    > 26 |   return control.evaluate((el:HTMLElement)=>{const font=parseFloat(getComputedStyle(el).fontSize);if(!el.closest('.space-spatial-screen'))return font;for(let box:HTMLElement|null=el;box;box=box.parentElement){const style=getComputedStyle(box);let width=parseFloat(style.width);if(!Number.isFinite(width)||!width)continue;if(style.boxSizing!=='border-box')width+=parseFloat(style.paddingLeft)+parseFloat(style.paddingRight)+parseFloat(style.borderLeftWidth)+parseFloat(style.borderRightWidth);return font*box.getBoundingClientRect().width/width;}throw Error('No measurable layout box for projected text');});
+         |                  ^
+      27 | }
+      28 | async function hit(control:Locator,min=44,scroll=true){
+      29 |   if(scroll)await control.scrollIntoViewIfNeeded();await expect(control).toBeVisible();const box=(await control.boundingBox())!;
+        at projectedFontCSS (/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/space-media-legibility-contracts.spec.ts:26:18)
+        at visibleText (/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/space-media-legibility-contracts.spec.ts:32:69)
+        at /Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/worktree/tests/e2e/space-media-legibility-contracts.spec.ts:98:117
+
+    Error Context: ../../../../../../../../private/tmp/ai-test-blog-ux-20261016.d8VJru/playwright-e17/space-media-legibility-con-25ace-nd-original-zoom-still-work/error-context.md
+
+  4 failed
+    tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 1440px zh image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success 
+    tests/e2e/space-media-legibility-contracts.spec.ts:48:7 › 390px en image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success 
+    tests/e2e/space-media-legibility-contracts.spec.ts:67:5 › a synthetic already-complete error and detached old-attempt events cannot overwrite a reopened real photo 
+    tests/e2e/space-media-legibility-contracts.spec.ts:94:5 › the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work 
+  1 passed (16.0s)

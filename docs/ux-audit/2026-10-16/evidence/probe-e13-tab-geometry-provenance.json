@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-15T23:29:26.733093+00:00",
+  "sourceManifest": "batch-e13d1-actual-source.json",
+  "producer": "/root AI",
+  "files": {
+    "docs/ux-audit/2026-10-16/probe-e13-tab-geometry.browser.mjs": "ff5f3937c23d138c78b5ce397cbc126f5dda1da6a28b4d89561b507ace355ba2",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-geometry.json": "f4df6cb0c0fa26ffaa89eaf30ae95a4af0515dbb3302957d8ffbf29c89535fe4",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-geometry.log": "ab96be4607cab577bba3146894886ef2194266ad38ae8c2cb40e41648b92163d",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-default-before.png": "e31e11fae42d0427b3a68527afd8778782c6b98cfdf39a76e0bbf94c258a8194",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-default-after.png": "b4021852bd601d46ce0fddf38433afbfebb553c60db5e2b43aa58c48c1f15242",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-inline-auto-important-before.png": "fcf859b162c50f70f9cae807177edaaebd13b1df559fb7ec41612fac543871ac",
+    "docs/ux-audit/2026-10-16/evidence/probe-e13-tab-inline-auto-important-after.png": "f8a889a4e0708ca68e3a1a3d47e1fd92f8d3b2b97582a75cf6dc27df1ffb8146"
+  },
+  "parentReadAllNamedPNG": true,
+  "limits": "Two same-source1199→1200zh/reduce cases compare default body overflow and synthetic inline auto!important fixture; actual Tab; no source changed. Geometry diagnosis not a production fix."
+}

@@ -8,6 +8,7 @@
 
   var fab, sheet, overlay, tabs, panels;
   var lastFocused = null;
+  var overflowBefore = null;
 
   var prefersReduced =
     window.matchMedia &&
@@ -22,21 +23,11 @@
     tabs   = sheet.querySelectorAll('.abs-tab');
     panels = sheet.querySelectorAll('.abs-panel');
 
-    fab.addEventListener('click', openSheet);
-    overlay.addEventListener('click', closeSheet);
+    fab.addEventListener('click', function () { openSheet(); });
+    overlay.addEventListener('click', function () { closeSheet('user'); });
 
-    // Tab switching — keep aria-selected in sync so assistive tech reports
-    // the active tab correctly (previously only the visual class changed).
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var target = tab.dataset.tab;
-        tabs.forEach(function (t) {
-          var on = t.dataset.tab === target;
-          t.classList.toggle('abs-tab--active', on);
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        panels.forEach(function (p) { p.hidden = p.id !== 'abs-panel-' + target; });
-      });
+    if (window.ArticleTabs) window.ArticleTabs.mount({
+      tabs: tabs, panels: panels, tabClass: 'abs-tab--active', panelPrefix: 'abs-panel-'
     });
 
     initDragToClose();
@@ -50,15 +41,9 @@
     // CSS alone can hide the sheet, but it cannot restore document scrolling.
     var persistentTools = window.matchMedia('(min-width: 1200px)');
     var onLayoutChange = function (event) {
-      if (!event.matches || !sheet.classList.contains('abs--open')) return;
-      sheet.classList.remove('abs--open', 'abs--dragging');
-      sheet.style.transform = '';
-      overlay.style.opacity = '';
-      overlay.classList.remove('abs-overlay--visible');
-      fab.classList.remove('article-fab--hidden');
-      fab.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      lastFocused = null;
+      // The chat moves synchronously before the old host becomes inert.
+      document.dispatchEvent(new CustomEvent('article:tools-layout'));
+      if (event.matches) closeSheet('layout');
     };
     if (persistentTools.addEventListener) {
       persistentTools.addEventListener('change', onLayoutChange);
@@ -76,7 +61,16 @@
     // should get out of the way rather than sit over the discussion.
     initEndZoneFade();
 
-    initMobileAi();
+    window.ArticleSheet = {
+      open: function (tab, options) {
+        if (persistentTools.matches) return;
+        var target = sheet.querySelector('.abs-tab[data-tab="' + tab + '"]');
+        if (target) target.click();
+        openSheet(options);
+      },
+      closeForLayout: function () { closeSheet('layout'); }
+    };
+    document.dispatchEvent(new CustomEvent('article:sheet-ready'));
   }
 
   /* ── Hide the FAB in the end-of-article zone ──────────────────
@@ -160,14 +154,15 @@
       sheet.classList.remove('abs--dragging');
       sheet.style.transform = '';
       overlay.style.opacity = '';
-      if (delta > SWIPE_CLOSE || flick) closeSheet();
+      if (delta > SWIPE_CLOSE || flick) closeSheet('user');
     }, { passive: true });
   }
 
   function onSheetKeydown(e) {
+    if (!sheet.classList.contains('abs--open') || e.isComposing || e.keyCode === 229) return;
     if (e.key === 'Escape' || e.key === 'Esc') {
       e.preventDefault();
-      closeSheet();
+      closeSheet('user');
       return;
     }
     if (e.key !== 'Tab') return;
@@ -178,7 +173,7 @@
       sheet.querySelectorAll(
         'button:not([disabled]), a[href], textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
       ),
-      function (el) { return el.offsetParent !== null || el === document.activeElement; }
+      function (el) { return el.tabIndex >= 0 && (el.offsetParent !== null || el === document.activeElement); }
     );
     if (!focusables.length) return;
     var first = focusables[0];
@@ -192,17 +187,13 @@
     }
   }
 
-  // ─── Mobile AI companion ──────────────────────────────────────────────────
-  // The bottom-sheet AI panel previously had no behaviour wired up at all —
-  // typing and tapping send did nothing. This connects it to the same
-  // /article-ai function the desktop companion uses, with streaming.
-  function initMobileAi() {
-    var panel = document.getElementById('abs-panel-ai');
-    if (panel && window.ArticleChat) window.ArticleChat.init(panel, { prefix: 'abs' });
-  }
-
-  function openSheet() {
-    lastFocused = document.activeElement;
+  function openSheet(options) {
+    if (sheet.classList.contains('abs--open') || innerWidth >= 1200) return;
+    options = options || {};
+    lastFocused = options.opener || document.activeElement;
+    overflowBefore = {value:document.body.style.getPropertyValue('overflow'), priority:document.body.style.getPropertyPriority('overflow')};
+    sheet.inert = false;
+    sheet.setAttribute('aria-hidden', 'false');
     fab.classList.add('article-fab--hidden');
     sheet.classList.add('abs--open');
     overlay.classList.add('abs-overlay--visible');
@@ -211,21 +202,28 @@
     // Move focus into the dialog so keyboard / screen-reader users land
     // inside it; the active tab is the natural entry point.
     var activeTab = sheet.querySelector('.abs-tab--active') || tabs[0];
-    if (activeTab) {
+    if (activeTab && options.focus !== false) {
       try { activeTab.focus({ preventScroll: true }); } catch (e) { activeTab.focus(); }
     }
   }
 
-  function closeSheet() {
+  function closeSheet(reason) {
+    if (!sheet.classList.contains('abs--open')) return;
     sheet.classList.remove('abs--open', 'abs--dragging');
+    sheet.inert = true;
+    sheet.setAttribute('aria-hidden', 'true');
     sheet.style.transform = '';
     overlay.style.opacity = '';
     overlay.classList.remove('abs-overlay--visible');
     fab.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    if (overflowBefore && overflowBefore.value) document.body.style.setProperty('overflow', overflowBefore.value, overflowBefore.priority);
+    else document.body.style.removeProperty('overflow');
+    overflowBefore = null;
+    sheet.dispatchEvent(new CustomEvent('article:sheet-close', {bubbles:true, detail:{reason:reason || 'user'}}));
     setTimeout(onScroll, 260);
     // Return focus to the control that opened the sheet.
-    if (lastFocused && lastFocused.focus) {
+    if (reason === 'layout') { lastFocused = null; return; }
+    if (lastFocused && lastFocused.focus && lastFocused.getClientRects().length && !lastFocused.closest('[hidden],[inert]') && getComputedStyle(lastFocused).visibility !== 'hidden') {
       try { lastFocused.focus({ preventScroll: true }); } catch (e) { lastFocused.focus(); }
     } else {
       fab.focus();
@@ -246,7 +244,7 @@
     fab.classList.toggle('article-fab--hidden', hide);
   }
 
-  if (document.readyState !== 'complete') {
+  if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
     init();

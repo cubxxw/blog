@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-15T21:13:06.121944+00:00",
+  "batch": "E11",
+  "base": "e5fafdc2766172c6253e533a7a3c8cfc9e10cfef",
+  "files": {
+    "assets/js/search-palette.js": "098dc2babfe419e6d87aab05638d1ea9d452f6ec69c36e0d345ae618f2de2b50",
+    "layouts/partials/search-palette.html": "3104d3bf601335b1a960c5568f25f1da7776b731395be5d716159f7ea6437d46",
+    "themes/PaperMod/assets/css/common/header.css": "8ffe940d21521de816f1940a92cead74b3edecce8f8769fcba003c8812e48002",
+    "tests/e2e/search-index-contracts.spec.ts": "2e1dbe8747b44b70add15380527270de096d2546596aa2bc8597bca438a49492"
+  },
+  "qaConfig": {
+    "path": "docs/ux-audit/2026-10-16/local-qa.config.mjs",
+    "sha256": "30455a6b7840d4fc07d6d290e8d3da9dfb09112747238a305e7bff56f7cd953b",
+    "workers": 1,
+    "browser": "Chromium Metal"
+  },
+  "parentActionRunners": {
+    "batch-e11-actions.browser.mjs": "482d20d78df0b97744424a9a8397616481f092769170266135d511a7adfae1d0"
+  },
+  "scope": "Local index lifetime, truthful status,Retry,current result intent. AI core/markdown/history/fallback and public content unchanged."
+}

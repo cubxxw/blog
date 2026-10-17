@@ -1,0 +1,50 @@
+{
+  "base": "c5202308b02c4262dacf166e9d6ec477fc0d2a8b",
+  "files": {
+    "tests/e2e/space-cafe-details-contracts.spec.ts": "bb91f1eb31e833e2d0dc4e768f46f666458e57d01a850d01fc17b9fec3e60c66"
+  },
+  "members": [
+    {
+      "name": "integration-scene-selector-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "integration-scene-selector-discovery.log",
+      "bytes": 104343,
+      "sha256": "d6478e3b479d6ed122f1044b98f9d810ce4eb0f0b6d1ae7727c539b0663d3a24"
+    },
+    {
+      "name": "integration-scene-selector-dom-initial.log",
+      "bytes": 637,
+      "sha256": "272ade4e722729010ad8912faecd8c433ab8a32d5cc04572949d1abb0ba0deb0"
+    },
+    {
+      "name": "integration-scene-selector-dom.log",
+      "bytes": 930,
+      "sha256": "ab576c7096bbaa09ce8362186d4902ea924caade53b414fcde4d0ecc2b88fad4"
+    },
+    {
+      "name": "integration-scene-selector-scan.log",
+      "bytes": 1236,
+      "sha256": "33ffb4e1c5edefe4a844f462260c92d211b11b6fc2850ed86da90061ff10868e"
+    },
+    {
+      "name": "integration-scene-selector-scope.log",
+      "bytes": 607,
+      "sha256": "72669f3c39a718b6f685f9807b39d304ace70a1976b39892cfcaadf15f6b7ec7"
+    },
+    {
+      "name": "integration-scene-selector-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "name": "integration-scene-selector-dom.mjs",
+      "bytes": 3780,
+      "sha256": "05e8be9a1e4c7279bcc06ebb9f8e8c36af0c066a886db7c312a30b86d3f42e7f"
+    }
+  ],
+  "archiveSha256": "fc4821a4701e03c7dd0cc115c3534def7051782776f5afd14e717cdd9c6975bf",
+  "note": "dom-initial log is an early fixture regex truncation failure, not a product failure. Final deterministic DOM uses actual template/openPicker/data and captured workspace attributes. No browser run for corrected selector yet."
+}

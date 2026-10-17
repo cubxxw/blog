@@ -1,0 +1,19 @@
+PASS world factory/roam camera/chairs/cat/lighting unchanged from third freeze
+PASS pure geometry only adds spines inspect camera; coffee/whole shelf/stand/tabletop unchanged
+PASS render helper only changes spine text fit/aspect; full front covers, 10 book placements and materials retained
+PASS template only adds one native zoom action
+PASS CSS only reduces bookbar gap to fit 320px
+PASS controller only adds bookshelf family sync and direct internal zoom; external trigger/restore owner unchanged
+PASS assets/js/space/world-cat.js unchanged from accepted HEAD
+PASS assets/js/space/world-state.mjs unchanged from accepted HEAD
+PASS assets/js/space/desktop.js unchanged from accepted HEAD
+PASS assets/js/space/apps.js unchanged from accepted HEAD
+PASS data/travel.yml unchanged from accepted HEAD
+SHA256 12beb0bdb6da74174fdea426d5a44beaa5ac8a8ea19b51c36128fa79574645df assets/js/space/world-cafe.js
+SHA256 efb6d4622ca5bc920da7e5b665efa205b4592f31d95d8c4c942f06903b333d43 assets/js/space/world-details.js
+SHA256 94c17b2abbb33a54acfc52071eb71020342de8fa84f2b6624eb41f89d15e84b7 assets/js/space/world-details.mjs
+SHA256 ad7e4eaa76cf31948c9bf5d14f0ea4c0597d5bde47c4d2aeb59f372010f60e70 assets/js/space/cafe.js
+SHA256 5500130689314e62c49de82bf9a441e4418bed7e86d81bd8c2020aaa5c56ccf1 layouts/partials/space/cafe.html
+SHA256 afa3cfbecd76d1a383740cf152c567e6bcd8b3295640e77c79fbc8ec28f153d2 assets/css/space-cafe.css
+SHA256 dfae9ea5a54978cdec40bb78724dec3d0dfe5dcc2e8505318db05f4286de6555 scripts/space-cafe-details.test.mjs
+SHA256 fd5cda6f7368ef3fec85b09b0d63dda197438af04a3f0e67c45019d1a471711f tests/e2e/space-cafe-details-contracts.spec.ts

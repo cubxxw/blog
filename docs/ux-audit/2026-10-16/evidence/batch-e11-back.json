@@ -1,0 +1,126 @@
+{
+  "at": "2026-10-15T21:26:07.290Z",
+  "before": {
+    "token": 0.2807019820862643,
+    "query": "Kubernetes",
+    "paletteOpen": true,
+    "answer": "\n        \n          你\n          Kubernetes\n        \n      \n        \n          AI\n          CONTROLLED_E11_CONTEXT_REPLY\n        \n      \n      \n        \n        发送\n        \n          \n            \n            \n          \n        \n      \n    ",
+    "followup": "UNSENT_E11_SYNTHETIC_CONTINUATION",
+    "sameInput": true,
+    "sameContent": true,
+    "calls": [
+      {
+        "question": "Kubernetes",
+        "language": "zh",
+        "context": [
+          {
+            "role": "user",
+            "content": "Kubernetes"
+          }
+        ],
+        "searchContext": [
+          {
+            "title": "Kubernetes一篇快速入门的文章",
+            "summary": "<p><strong>Kubernetes（k8s）是 Google 基于内部 Borg 系统开源的容器编排引擎，由 CNCF 托管，用声明式 API 自动完成容器化应用的部署、扩缩容、故障转移与自愈。</strong> 你只需描述集群的期望状态，它负责把系统驱动并维持在这个状态——这也是它被称为「云操作系统内核」的原因。下文从架构、组件到核心资源对象，带你一篇入门。</p>",
+            "content": "Kubernetes（k8s）是 Google 基于内部 Borg 系统开源的容器编排引擎，由 CNCF 托管，用声明式 API 自动完成容器化应用的部署、扩缩容、故障转移与自愈。 你只需描述集群的期望状态，它负责把系统驱动并维持在这个状态——这也是它被称为「云操作系统内核」的原因。下文从架构、组件到核心资源对象，带你一篇入门。\n正片开始~ Kubernetes 是 Google 团队发起的一个开源项目，它的目标是管理跨多个主机的容器，用于自动部署、扩展和管理容器化的应用程序，主要实现语言为 Go 语言。Kubernetes 的组件和架构还是相对较复杂的。要慢慢学习~\n我们急需编排一个容器~\n为什么 kubernetes 弃用了 docker ::: tip 很意外 听到 Kubernetes 从 Kubernetes 版本 1.20 开始弃用对 Docker 作为容器运行时的支持，这似乎有点令人震惊。\nKubernetes 正在删除对 Docker 作为容器运行时的支持。Kubernetes 实际上并不处理在机器上运行容器的过程。相反，它依赖于另一个称为容器运行时的软件。.\n:::\n"
+          },
+          {
+            "title": "深入了解Kubernetes等组件之ETCD",
+            "summary": "<h2 id=\"开始前\">开始前</h2>\n<blockquote>\n<p>ETCD 是 Kubernetes 中所有组件中最难的，因为 ETCD 是有状态的，而不是无状态的。</p></blockquote>\n<p>我在之前做 k3s runtime 设计的时候，了解了一些关于 ETCD 和 Raft 算法相关的概念，作为前奏知识，请分别前往 <a href=\"https://docker.cubxxw.com/Cloud-Native-k8s/24.html\" target=\"_blank\" rel=\"noopener noreferrer\">ETCD</a>\n 以及 <a href=\"https://docker.cubxxw.com/Cloud-Native-k8s/25.html\" target=\"_blank\" rel=\"noopener noreferrer\">Raft算法</a>\n 进行前奏学习。</p>",
+            "content": "开始前 ETCD 是 Kubernetes 中所有组件中最难的，因为 ETCD 是有状态的，而不是无状态的。\n我在之前做 k3s runtime 设计的时候，了解了一些关于 ETCD 和 Raft 算法相关的概念，作为前奏知识，请分别前往 ETCD 以及 Raft算法 进行前奏学习。\n这一篇来深入并且贯穿的讲解 ETCD 和 Raft。并且站在 Kubernetes 的角度来深入 剖析 ETCD。\nETCD 介绍 Etcd是CoreOS基于Raft开发的分布式key-value存储，可用于服务发现、共享配置以及一致性保障（如数据库选主、分布式锁等）。\n包含的功能以及特性 前奏 都有学过，看下 Kubernetes 最关心的 存储：\n主要功能 基本的key-value存储 监听机制 key的过期及续约机制，用于监控和服务发现 原子Compare And Swap和Compare And Delete，用于分布式锁和leader选举 使用场景 可以用于键值对存储，应用程序可以读取和写入 etcd 中的数据 etcd 比较多的应用场景是用于服务注册与发现 基于监听机制的分布式异步系统 etc"
+          },
+          {
+            "title": "Kubernetes 资源与学习路径总结",
+            "summary": "<h2 id=\"需求\"><strong>需求</strong></h2>\n<aside>\n🔥 我们需要对 kubernetes 进一步的学习和深造，看源码是必须的道路。\n</aside>\n<p><strong>👀   与其重要的，是对 kubernetes 资源的收集。</strong></p>\n<hr>\n<p><em><strong>⚠️   所有资源均是采用外链连接，书本资源或不放连接，其他均为自己感受和总结。如有侵权请联系删除。</strong></em></p>",
+            "content": "需求 🔥 我们需要对 kubernetes 进一步的学习和深造，看源码是必须的道路。 👀 与其重要的，是对 kubernetes 资源的收集。\n⚠️ 所有资源均是采用外链连接，书本资源或不放连接，其他均为自己感受和总结。如有侵权请联系删除。\n🚧 ⚠️ **注意，这篇文章将永久保存在 notion，将会不断地更新下去，提供了可写通道，如果你有更好的资源，欢迎补充在notion上 ~** CloudNative 学习途径 关于kubernetes：\n官网 GitHub 社区维护的 kubernetes 学习资源合集 Kubernetes源码必读的 Google 大规模集群管理器 Borg etcd：从应用场景到实现原理的全方位解读 和 ZooKeeper典型应用场景一览 关于 CNCF 的贡献，你需要签署 CLA\nKubernetes CLA 的签署流程 官方开发者向导 markdown 文件 Kubernetes ownes 所有者md介绍 自己写作的一些资源：\n云原生学习 golang 学习 都收纳到 awesome 仓库中，覆盖 📚 菜鸟成长手册🚀 CS系列 、云原生系列、"
+          },
+          {
+            "title": "通过配置文件简化 Kubernetes 部署的参数端口配置",
+            "summary": "<h2 id=\"介绍\">介绍</h2>\n<p>当前模块的执行中，直接传递了众多端口（ws、api、rpc、Prometheus）。 这种方法可能很麻烦，并且不符合 Kubernetes 的最佳实践，即 pod 通常只公开一个端口（80 或 443）。 该提案建议过渡到以配置文件为中心的方法，同时仍然保留在需要时直接传递端口的功能。</p>",
+            "content": "介绍 当前模块的执行中，直接传递了众多端口（ws、api、rpc、Prometheus）。 这种方法可能很麻烦，并且不符合 Kubernetes 的最佳实践，即 pod 通常只公开一个端口（80 或 443）。 该提案建议过渡到以配置文件为中心的方法，同时仍然保留在需要时直接传递端口的功能。\n目标 简化Kubernetes部署的端口配置。 作为参数传递的端口值优先于配置文件值。 为希望使用传统的基于端口或基于环境变量的部署的用户提供灵活性。 建议的解决方案 1.配置文件 不会直接传递多个端口，而是引入一个配置文件。 默认情况下，该文件将包含预定义的端口。 可以使用 Kubernetes 的“ConfigMap”将该配置文件传递给模块。\n配置文件示例：\nws_端口：3000 api_端口：3001 rpc_端口：3002 普罗米修斯端口：9090 直接传递端口 虽然 Kubernetes 部署建议使用配置文件方式，但用户仍然可以直接传递端口。 如果端口作为参数传递，这些值将覆盖配置文件中的值。\n3.基于环境变量的部署 对于喜欢使用环境变量进行源代码部署的用户，该模块可以设计为读取 Lin"
+          },
+          {
+            "title": "Kubernetes Kustomize 学习指南",
+            "summary": "<h2 id=\"介绍\">介绍</h2>\n<p><strong>关于 kustomize</strong></p>\n<ul>\n<li><a href=\"https://github.com/kubernetes-sigs/kustomize\" target=\"_blank\" rel=\"noopener noreferrer\">github 地址</a>\n</li>\n<li><a href=\"https://kubectl.docs.kubernetes.io/zh/installation/\" target=\"_blank\" rel=\"noopener noreferrer\">Get Started </a>\n</li>\n</ul>\n<p>Kustomize 是一个专为 Kubernetes 设计的开源配置管理工具，它能帮助用户定制 Kubernetes 对象，并以声明式的方式管理这些对象，而无需修改原始的 <a href=\"https://devopscube.com/kustomize-tutorial/\" target=\"_blank\" rel=\"noopener noreferrer\">YAML 文件1</a>\n。这意味着你可以保留应用和组件的基本设置，同时通过应用名为“补丁”的声明式 YAML 文档来覆盖默认设置，而不会<a href=\"https://www.densify.com/kubernetes-tools/kustomize\" target=\"_blank\" rel=\"noopener noreferrer\">更改原始文件</a>\n。Kustomize 提供了一种声明式的方法，符合 Kubernetes 的哲学，并且能够以一种可重用、快速生成、易于调试和可伸缩的方式定制 Kubernetes 配置。</p>",
+            "content": "介绍 关于 kustomize\ngithub 地址 Get Started Kustomize 是一个专为 Kubernetes 设计的开源配置管理工具，它能帮助用户定制 Kubernetes 对象，并以声明式的方式管理这些对象，而无需修改原始的 YAML 文件1 。这意味着你可以保留应用和组件的基本设置，同时通过应用名为“补丁”的声明式 YAML 文档来覆盖默认设置，而不会更改原始文件 。Kustomize 提供了一种声明式的方法，符合 Kubernetes 的哲学，并且能够以一种可重用、快速生成、易于调试和可伸缩的方式定制 Kubernetes 配置。\nKustomize 的主要功能包括:\n声明式配置: 允许你以声明式的方式定义和管理 Kubernetes 对象，例如部署、Daemonsets、服务、ConfigMaps 等，为多个环境提供支持，而无需修改原始的 YAML 文件 配置层叠: 通过利用层叠来保留应用和组件的基本设置，并通过覆盖声明式的 YAML 文档（称为补丁）来选择性地覆盖默认设置 集成与独立使用: Kustomize 可以作为一个独立的工具使用，或者与 kubec"
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "pageshow",
+        "persisted": false,
+        "path": "/zh/articles/",
+        "token": 0.2807019820862643
+      }
+    ],
+    "navigation": [
+      {
+        "type": "navigate"
+      }
+    ]
+  },
+  "after": {
+    "token": 0.6392699658347321,
+    "query": "",
+    "paletteOpen": false,
+    "answer": "",
+    "sameInput": false,
+    "sameContent": false,
+    "calls": [],
+    "events": [
+      {
+        "name": "pageshow",
+        "persisted": false,
+        "path": "/zh/articles/",
+        "token": 0.2807019820862643
+      },
+      {
+        "name": "pagehide",
+        "persisted": false,
+        "path": "/zh/articles/",
+        "token": 0.2807019820862643
+      },
+      {
+        "name": "pagehide",
+        "persisted": false,
+        "path": "/zh/engineering/posts/use-go-tools-dlv/",
+        "token": 0.09836923647694218
+      },
+      {
+        "name": "pageshow",
+        "persisted": false,
+        "path": "/zh/articles/",
+        "token": 0.6392699658347321
+      }
+    ],
+    "navigation": [
+      {
+        "type": "back_forward",
+        "notRestoredReasons": {
+          "src": null,
+          "id": null,
+          "url": "http://127.0.0.1:1317/zh/articles/",
+          "name": null,
+          "reasons": [
+            {
+              "reason": "masked"
+            },
+            {
+              "reason": "response-cache-control-no-store"
+            },
+            {
+              "reason": "response-cache-control-no-store-with-js-network-request"
+            }
+          ],
+          "children": []
+        }
+      }
+    ]
+  },
+  "restored": false,
+  "afterFollowup": null,
+  "errors": [],
+  "limits": "One Chromium1440 zh/dark/reduce actual same-local navigation/Back attempt; completed AI and followup are deterministic fetch mock, no paid/backend calls. BFCache certified only if pageshow.persisted true and original document token matches. If browser reloads instead, original DOM restoration remains unverified; no product persistence claim across hard reload."
+}

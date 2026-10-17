@@ -1,0 +1,150 @@
+{
+  "head": "3f87c204ce0d33c05a1f9f94378b62e0f80d00ae",
+  "run": 39014131746,
+  "conclusion": "cancelled",
+  "reason": "Remote main advanced to9a909dfd during run; superseded for integrated-base CI, not a reported Library failure.",
+  "artifact": {
+    "id": 12094592434,
+    "bytes": 318484,
+    "sha256": "0c3be9ff54407c8d480eb87c17d036e67091015b73de2e314da2526c36f7703d",
+    "digestMatchedUploadLog": true
+  },
+  "reports": [
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-300-89f0e8104106ea429ffb7b82993d7f3828e800d0.json",
+      "bytes": 26908,
+      "compressed": 2368,
+      "crc32": 923078685,
+      "sha256": "07c2c204db2ff33128dff8477fe23a849b60ac301fcb1107b0a73ef593197d94"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-850-44ae59bb13ba140980e146d08fae46698b7e86b4.json",
+      "bytes": 26900,
+      "compressed": 2357,
+      "crc32": 757269904,
+      "sha256": "60fd575c8b734d7fd2f8de3d08e26d8ed534cac6bbb98a670f701dbe837e5be6"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-300.json",
+      "bytes": 26908,
+      "compressed": 2368,
+      "crc32": 923078685,
+      "sha256": "07c2c204db2ff33128dff8477fe23a849b60ac301fcb1107b0a73ef593197d94"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-850.json",
+      "bytes": 26900,
+      "compressed": 2357,
+      "crc32": 757269904,
+      "sha256": "60fd575c8b734d7fd2f8de3d08e26d8ed534cac6bbb98a670f701dbe837e5be6"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/attachments/library-native-wheel-850-673ed2035d7162a655974b9e721bb514f08adb88.json",
+      "bytes": 26973,
+      "compressed": 2347,
+      "crc32": 3421930095,
+      "sha256": "836dcb65fe81085d716444936f36397fce95ffb6965f7826291f30f95d2382c8"
+    },
+    {
+      "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/library-native-wheel-850.json",
+      "bytes": 26973,
+      "compressed": 2347,
+      "crc32": 3421930095,
+      "sha256": "836dcb65fe81085d716444936f36397fce95ffb6965f7826291f30f95d2382c8"
+    },
+    {
+      "name": "browser/pages.json",
+      "bytes": 209,
+      "compressed": 91,
+      "crc32": 4170702164,
+      "sha256": "3f2186964944eb96717f2cb44336b1a3156cc03d6ae3c71a193b11c7cac5e4b2"
+    },
+    {
+      "name": "changes.json",
+      "bytes": 295913,
+      "compressed": 16796,
+      "crc32": 3577997692,
+      "sha256": "b61f5dfa4eff6da6c608f669f60a2d9e22b1d52954159caae76bea653fb6e0a6"
+    },
+    {
+      "name": "functions-report.json",
+      "bytes": 96,
+      "compressed": 79,
+      "crc32": 27900681,
+      "sha256": "fee362c136342344d219385c3e39044a268b7363254ad513cb124515b6db5e4a"
+    },
+    {
+      "name": "plan.json",
+      "bytes": 360,
+      "compressed": 245,
+      "crc32": 2908519643,
+      "sha256": "ddca33d7a703a39b725f47125ee4fc4f5b0f370bb57b51cbd67159573a426f5f"
+    },
+    {
+      "name": "seo-report.json",
+      "bytes": 90,
+      "compressed": 76,
+      "crc32": 1328484573,
+      "sha256": "1286b65d3458083a76862230c3eaffa021764b6dc1d44b628f535521bbb8480e"
+    },
+    {
+      "name": "site/output-report.json",
+      "bytes": 34994,
+      "compressed": 5026,
+      "crc32": 3242033645,
+      "sha256": "1d0f2942ba40582767a6b3f574dc319be9c86cfaa60415b27d4404ca8568f884"
+    },
+    {
+      "name": "source-report.json",
+      "bytes": 200043,
+      "compressed": 43919,
+      "crc32": 323995665,
+      "sha256": "b4899236a2d97b3088317cc9d356268eb55d6eb6b41374cfee679b190bfd2aa5"
+    },
+    {
+      "name": "workflow-report.json",
+      "bytes": 95,
+      "compressed": 79,
+      "crc32": 3400014332,
+      "sha256": "69f34dbf825a106f950cc3202fd1ff106462a22acd7dac4a1aa18ec3b76524d3"
+    }
+  ],
+  "archive": {
+    "file": "3f87-ci-reports.tar.gz",
+    "bytes": 68627,
+    "sha256": "3f4951df5eca0de138b11e99fc0a93b94d9b51511915015fabb0d3eeb0cea9c0"
+  },
+  "rawLog": {
+    "file": "ci-3f87-cancelled.log",
+    "bytes": 843569,
+    "sha256": "04824194ef24dac200ad2bae4ca849c2be49d63b53241d0adc955ce1e3793c80"
+  },
+  "compressedLog": {
+    "file": "3f87-ci-cancelled.log.gz",
+    "bytes": 97306,
+    "sha256": "64b92a2b53e3417dc7b170065b7310b199dd8fb04e3e4afeff5cc71ed1f344ef"
+  },
+  "partialLegacy": {
+    "passed": 300,
+    "failed": 0,
+    "skipped": 13,
+    "totalDiscovered": 758,
+    "complete": false
+  },
+  "criticalFirstAttempt": {
+    "LibraryFullRestoreAndNotesBooks": 43.0,
+    "minimizedReloadThen850and300": 43.9
+  },
+  "otherPositiveScope": [
+    "325 quality/build Nodepassed0fail0skip",
+    "48 frozencontent browserpassed2.7min",
+    "Both original strict Library flows passed firstattempt; including1px restoration and original850/300"
+  ],
+  "newBase": "9a909dfdbbb64505d34e68a1b47d1ae4fd059192",
+  "limitations": [
+    "Partial execution only; not full758 or a passing workflow.",
+    "Latest integrated merge must pass its own checks.",
+    "Native272 source only supports unchangedSpace assets; it does not verify new main audio/article UI.",
+    "Signed artifact URL excluded."
+  ]
+}
