@@ -12,6 +12,15 @@ import { parseEnv } from "node:util";
 import { spawn } from "node:child_process";
 import { parseDocument } from "yaml";
 
+import {
+  readerSections,
+  makeAudioPrompt,
+  updateAudioTracks,
+  setYamlField,
+  READER_KINDS,
+  validAudioId,
+} from "./reader-audio.mjs";
+
 export const VOICE_MODEL = "gemini-3.8-flash-tts";
 const endpoint = "https://generativelanguage.googleapis.com/v1beta/";
 const hash = (value) => createHash("sha256").update(value).digest("hex");
@@ -66,7 +75,7 @@ export function wavInfo(bytes) {
   )
     throw fail("请使用完整的 WAV 录音。");
   let format, data;
-  for (let at = 12; at + 8 <= bytes.length; ) {
+  for (let at = 12; at + 8 <= bytes.length;) {
     const size = bytes.readUInt32LE(at + 4),
       end = at + 8 + size;
     if (end > bytes.length) throw fail("录音文件不完整。");
@@ -187,6 +196,8 @@ function readSource(text) {
   const body = text.slice(match[0].length);
   return {
     title: meta.title,
+    document,
+    yamlOffset: match[0].indexOf(match[1]),
     body,
     sourceHash: hash(meta.title + "\n" + body.trim()),
     header: match[0],
@@ -252,6 +263,9 @@ export async function createAuthorVoice({
     article: j.article,
     title: j.title,
     kind: j.kind,
+    sectionKey: j.sectionKey,
+    sectionTitle: j.sectionTitle,
+    sourceHash: j.sourceHash,
     text: j.text,
     completed: j.completed || 0,
     total: j.total || 0,
@@ -303,7 +317,9 @@ export async function createAuthorVoice({
               file: row.file,
               title: row.title,
               date: row.meta.date || "",
-              hasAudio: !!row.meta.authorAudio,
+              hasAudio: !!(
+                row.meta.authorAudio || row.meta.authorAudioTracks?.length
+              ),
             });
           } catch {}
         }
@@ -342,7 +358,17 @@ export async function createAuthorVoice({
         : AbortSignal.timeout(75000),
       body: JSON.stringify(body),
     });
-    if (!response.ok)
+    if (!response.ok) {
+      const diagnostic = await response.text().catch(() => "");
+      if (
+        route === "voices" &&
+        /Consent flow failed|recorded phrase didn't match|FINISH_REASON_INPUT_VR_TAKEDOWN/i.test(
+          diagnostic,
+        )
+      )
+        throw fail(
+          "Google 未通过授权录音核验。请单独、完整地读出授权句，不加介绍或其他话；不会自动重试。",
+        );
       throw fail(
         response.status === 429
           ? "Google 当前额度不足或繁忙；不会自动重试。"
@@ -352,6 +378,7 @@ export async function createAuthorVoice({
               ? "Google 未接受这次内容或录音，请核对录音与授权语句。"
               : "Google 请求未能确认；再次提交可能再次计费。",
       );
+    }
     return response.json();
   }
   async function existing(input, signature) {
@@ -403,6 +430,7 @@ export async function createAuthorVoice({
           model: VOICE_MODEL,
           type: "replicated",
           display_name: "Xinwei author voice",
+          language_code: "zh-CN",
           replicated: {
             source_audio: {
               mime_type: "audio/wav",
@@ -449,14 +477,25 @@ export async function createAuthorVoice({
     const recording = origin === "recorded" ? decodeAudio(input.audio) : null;
     if (recording && wavInfo(recording).duration > 900)
       throw fail("原声请分成不超过 15 分钟的片段。");
-    const kind = input.kind === "afterword" ? "afterword" : "intro",
-      style = "自然、平静，像和朋友聊天；保留原有音色，避免播音腔。",
+    if (input.sourceHash && input.sourceHash !== source.sourceHash)
+      throw fail("正文已经更新，请重新整理讲解稿。");
+    const kind = [...READER_KINDS, "afterword", "intro"].includes(input.kind)
+      ? input.kind
+      : "intro";
+    const section =
+      kind === "section"
+        ? readerSections(source.body).find((s) => s.key === input.sectionKey)
+        : null;
+    if (kind === "section" && !section)
+      throw fail("这一节已变化，请重新选择。");
+    const style = "自然、平静，像和朋友聊天；保留原有音色，避免播音腔。",
       signature = hash(
         JSON.stringify([
           source.file,
           source.sourceHash,
           input.text,
           kind,
+          section?.key || null,
           origin,
           origin === "synthetic" ? p?.id || null : null,
           recording ? hash(recording) : null,
@@ -477,6 +516,9 @@ export async function createAuthorVoice({
         sourceHash: source.sourceHash,
         text: input.text,
         kind,
+        sectionKey: section?.key,
+        sectionTitle: section?.title,
+        sectionOccurrence: section?.occurrence,
         status: "preparing",
         createdAt: new Date().toISOString(),
         completed: 0,
@@ -555,6 +597,7 @@ export async function createAuthorVoice({
             j.audioSha256,
             j.sourceHash,
             j.kind,
+            j.sectionKey || null,
             j.text,
             j.origin,
           ]),
@@ -626,7 +669,10 @@ export async function createAuthorVoice({
     await mkdir(directory, { recursive: true });
     await writeFile(path.join(directory, j.assetId + ".mp3"), bytes);
     await save(path.join(directory, j.assetId + ".json"), {
-      version: 1,
+      version: READER_KINDS.includes(j.kind) ? 2 : 1,
+      sectionKey: j.sectionKey,
+      sectionTitle: j.sectionTitle,
+      sectionOccurrence: j.sectionOccurrence,
       src: "/audio/author/" + j.assetId + ".mp3",
       sourceHash: j.sourceHash,
       title: j.title,
@@ -638,21 +684,115 @@ export async function createAuthorVoice({
       sha256: j.audioSha256,
       reviewed: true,
     });
-    const oldLine = /^authoraudio\s*:.*/im,
-      header = source.header;
-    const next = oldLine.test(header)
-      ? header.replace(oldLine, "authorAudio: " + j.assetId)
-      : header.replace(
-          /\r?\n---(\r?\n|$)$/,
-          "\nauthorAudio: " + j.assetId + "\n---$1",
-        );
+    let updated;
+    if (READER_KINDS.includes(j.kind)) {
+      const keys = Object.keys(source.meta).filter(
+        (k) => k.toLowerCase() === "authoraudiotracks",
+      );
+      const ids = source.meta[keys[0]] || [];
+      if (
+        keys.length > 1 ||
+        !Array.isArray(ids) ||
+        ids.some((id) => !validAudioId(id))
+      )
+        throw fail("文章已有其他音频配置，请先人工检查。");
+      const previous = [];
+      for (const id of ids) {
+        const manifest = await json(path.join(directory, id + ".json"));
+        if (!manifest || manifest.version !== 2)
+          throw fail("已有讲解音频缺少清单，请先检查。");
+        previous.push({ ...manifest, id });
+      }
+      updated = setYamlField(
+        source,
+        keys[0] || "authorAudioTracks",
+        updateAudioTracks(previous, {
+          id: j.assetId,
+          kind: j.kind,
+          sectionKey: j.sectionKey,
+        }),
+      );
+    } else {
+      const oldLine = /^authoraudio\s*:.*/im,
+        header = source.header;
+      const next = oldLine.test(header)
+        ? header.replace(oldLine, "authorAudio: " + j.assetId)
+        : header.replace(
+            /\r?\n---(\r?\n|$)$/,
+            "\nauthorAudio: " + j.assetId + "\n---$1",
+          );
+      updated = next + source.body;
+    }
     // Check again after preparing files: do not overwrite an editor's concurrent changes.
     if ((await readFile(source.actual, "utf8")) !== source.text)
       throw fail("文章正在编辑，未覆盖正文。请重新确认。");
-    await writeFile(source.actual, next + source.body);
+    await writeFile(source.actual, updated);
     j.published = true;
     await save(path.join(jobsDir, id + ".json"), j);
     return publicJob(j);
+  }
+  async function draft(input) {
+    const source = await article(input.article),
+      prompt = makeAudioPrompt(source, input);
+    const signature = hash(
+      JSON.stringify([
+        source.file,
+        source.sourceHash,
+        input.kind,
+        input.sectionKey || null,
+        "script-v1",
+      ]),
+    );
+    const old = await existing(input, signature);
+    if (old) return publicJob(old);
+    if (busy) throw fail("已有操作正在准备，请等它完成。");
+    busy = true;
+    const j = {
+      id: input.requestId,
+      signature,
+      type: "script",
+      status: "preparing",
+      article: source.file,
+      title: source.title,
+      sourceHash: source.sourceHash,
+      kind: input.kind,
+      sectionKey: prompt.section?.key,
+      sectionTitle: prompt.section?.title,
+      createdAt: new Date().toISOString(),
+    };
+    try {
+      await save(path.join(jobsDir, j.id + ".json"), j);
+      const result = await provider("models/gemini-3.8-flash:generateContent", {
+        systemInstruction: { parts: [{ text: prompt.instruction }] },
+        contents: [{ role: "user", parts: [{ text: prompt.context }] }],
+        generationConfig: { temperature: 0.2, maxOutputTokens: 4096 },
+      });
+      const candidate = result.candidates?.[0];
+      const text = candidate?.content?.parts
+        ?.filter((p) => !p.thought)
+        .map((p) => p.text || "")
+        .join("")
+        .trim();
+      if (
+        !text ||
+        text.length > 12000 ||
+        (candidate.finishReason && candidate.finishReason !== "STOP")
+      )
+        throw fail("讲解稿未完整返回，请检查后重新整理；不会自动重试。");
+      if ((await article(source.file)).sourceHash !== source.sourceHash)
+        throw fail("正文已经更新，请重新整理讲解稿。");
+      j.text = text;
+      j.status = "ready";
+      await save(path.join(jobsDir, j.id + ".json"), j);
+      return publicJob(j);
+    } catch (error) {
+      j.status = "failed";
+      j.error = safe(error);
+      await save(path.join(jobsDir, j.id + ".json"), j);
+      throw fail(j.error);
+    } finally {
+      busy = false;
+    }
   }
   return {
     state,
@@ -663,6 +803,10 @@ export async function createAuthorVoice({
         file: row.file,
         title: row.title,
         sourceHash: row.sourceHash,
+        sections: readerSections(row.body).map(({ key, title }) => ({
+          key,
+          title,
+        })),
         questions: [
           "你为什么想写《" + row.title + "》？",
           "哪段亲身经历最能说明这篇文章的判断？",
@@ -671,6 +815,7 @@ export async function createAuthorVoice({
       };
     },
     job,
+    draft,
     createVoice,
     generate: (input) => begin(input, "synthetic"),
     importRecording: (input) => begin(input, "recorded"),

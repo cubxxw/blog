@@ -1,34 +1,71 @@
 {{- $page := .page -}}
 {{- $placement := .placement -}}
-{{- $id := $page.Params.authoraudio | default "" -}}
-{{- if and (eq (printf "%T" $id) "string") (findRE `^[a-f0-9]{64}$` $id) -}}
-  {{- $manifestPath := printf "static/audio/author/%s.json" $id -}}
-  {{- $audioPath := printf "static/audio/author/%s.mp3" $id -}}
-  {{- if and (fileExists $manifestPath) (fileExists $audioPath) -}}
-    {{- $audio := transform.Unmarshal (readFile $manifestPath) -}}
-    {{- if and (eq (int $audio.version) 1) (eq $audio.reviewed true) (eq $audio.kind $placement) -}}
-      {{- $zh := eq $page.Lang "zh" -}}
-      {{- $title := cond (eq $placement "afterword") (cond $zh "作者后记" "An author's afterword") (cond $zh "听我聊聊这篇" "A note from the author") -}}
-      {{- $origin := cond (eq $audio.origin "recorded") (cond $zh "作者原声" "Recorded by the author") (cond $zh "作者审核 · AI 合成声音" "Author reviewed · AI-generated voice") -}}
-      {{- $sourceHash := sha256 (printf "%s\n%s" $page.Title (strings.TrimSpace $page.RawContent)) -}}
-      {{- $src := printf "/audio/author/%s.mp3" $id | relURL -}}
-      {{- $seconds := int (math.Round $audio.durationSeconds) -}}
-      {{- $duration := printf "%d:%02d" (int (math.Floor (div $seconds 60.0))) (mod $seconds 60) -}}
-      {{- $css := resources.Get "css/author-audio.css" | minify | fingerprint -}}
-      {{- $js := resources.Get "js/author-audio.js" | minify | fingerprint -}}
-      <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-      <details class="author-audio" data-author-audio>
-        <summary><span class="author-audio-play" aria-hidden="true">▶</span><span>{{ $title }}</span><span class="author-audio-duration">{{ $duration }}</span></summary>
-        <div class="author-audio-body">
-          <p class="author-audio-origin">{{ $origin }}</p>
-          {{- if ne $sourceHash $audio.sourceHash }}<p class="author-audio-stale">{{ if $zh }}正文已更新，这段声音对应较早的文章版本。{{ else }}The article has changed since this audio was recorded.{{ end }}</p>{{ end -}}
-          <audio controls preload="none" aria-label="{{ $title }}"><source src="{{ $src }}" type="audio/mpeg"></audio>
-          <div class="author-audio-tools"><label>{{ if $zh }}倍速{{ else }}Speed{{ end }} <select data-audio-speed aria-label="{{ if $zh }}音频播放速度{{ else }}Audio playback speed{{ end }}"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label><a href="{{ $src }}" download>{{ if $zh }}下载音频{{ else }}Download audio{{ end }}</a></div>
-          <p data-audio-status role="status" aria-live="polite"></p>
-          <details class="author-audio-transcript"><summary>{{ if $zh }}文字稿{{ else }}Transcript{{ end }}</summary><p>{{ $audio.text }}</p></details>
-        </div>
-      </details>
-      <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- $rows := slice -}}
+{{- $ids := slice -}}
+{{- with $page.Params.authoraudio }}{{ if eq (printf "%T" .) "string" }}{{ $ids = $ids | append . }}{{ end }}{{ end -}}
+{{- if eq $placement "intro" -}}
+  {{- with $page.Params.authoraudiotracks }}{{ if reflect.IsSlice . }}{{ range . }}{{ if eq (printf "%T" .) "string" }}{{ $ids = $ids | append . }}{{ end }}{{ end }}{{ end }}{{ end -}}
+{{- end -}}
+{{- $sourceHash := sha256 (printf "%s\n%s" $page.Title (strings.TrimSpace $page.RawContent)) -}}
+{{- $zh := eq $page.Lang "zh" -}}
+{{- $headings := findRESubmatch `(?s)<h[23]\b[^>]*id="([^"]+)"[^>]*>(.*?)</h[23]>` $page.Content -}}
+{{- range $ids | uniq -}}
+  {{- $id := . -}}
+  {{- if findRE `^[a-f0-9]{64}$` $id -}}
+    {{- $manifest := printf "static/audio/author/%s.json" $id -}}
+    {{- if and (fileExists $manifest) (fileExists (printf "static/audio/author/%s.mp3" $id)) -}}
+      {{- $audio := transform.Unmarshal (readFile $manifest) -}}
+      {{- $legacy := and (eq (int $audio.version) 1) (eq $audio.kind $placement) -}}
+      {{- $reader := and (eq $placement "intro") (eq (int $audio.version) 2) (in (slice "summary" "dialogue" "section") $audio.kind) -}}
+      {{- if and (eq $audio.reviewed true) (or $legacy $reader) -}}
+        {{- $title := cond $zh "听我聊聊这篇" "An author's note" -}}
+        {{- if eq $audio.kind "afterword" }}{{ $title = cond $zh "作者后记" "An author's afterword" }}{{ end -}}
+        {{- if eq $audio.kind "summary" }}{{ $title = cond $zh "听重点" "Hear the essentials" }}{{ end -}}
+        {{- if eq $audio.kind "dialogue" }}{{ $title = cond $zh "问答讲解" "Questions, answered" }}{{ end -}}
+        {{- if eq $audio.kind "section" }}{{ $title = printf "%s%s" (cond $zh "这一节：" "Section: ") $audio.sectionTitle }}{{ end -}}
+        {{- $anchor := "" -}}
+        {{- if and (eq $sourceHash $audio.sourceHash) (eq $audio.kind "section") -}}
+          {{- $occurrence := 0 -}}
+          {{- range $headings -}}
+            {{- if eq (htmlUnescape (plainify (index . 2))) $audio.sectionTitle -}}
+              {{- $occurrence = add $occurrence 1 -}}
+              {{- if eq $occurrence (int $audio.sectionOccurrence) }}{{ $anchor = index . 1 }}{{ end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $rank := 4 -}}{{ if eq $audio.kind "summary" }}{{ $rank = 1 }}{{ else if eq $audio.kind "dialogue" }}{{ $rank = 2 }}{{ else if eq $audio.kind "section" }}{{ $rank = 3 }}{{ end -}}
+        {{- $rows = $rows | append (dict "id" $id "audio" $audio "title" $title "anchor" $anchor "rank" $rank) -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
+{{- end -}}
+{{- with sort $rows "rank" -}}
+  {{- $css := resources.Get "css/author-audio.css" | minify | fingerprint -}}
+  {{- $js := resources.Get "js/author-audio.js" | minify | fingerprint -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- $firstSeconds := int (math.Round (index . 0).audio.durationSeconds) -}}
+  {{- $firstDuration := printf "%d:%02d" (int (math.Floor (div $firstSeconds 60.0))) (mod $firstSeconds 60) -}}
+  <details class="author-audio" data-author-audio>
+    <summary><span class="author-audio-play" aria-hidden="true">▶</span><span data-audio-label>{{ (index . 0).title }}</span><span class="author-audio-duration" data-audio-duration>{{ $firstDuration }}</span></summary>
+    <div class="author-audio-body">
+      {{- if gt (len .) 1 }}
+      <label class="author-audio-choice">{{ if $zh }}想听什么{{ else }}Choose what to hear{{ end }} <select data-audio-track-select aria-label="{{ if $zh }}选择音频{{ else }}Choose audio{{ end }}">{{ range . }}<option value="{{ .id }}">{{ .title }}</option>{{ end }}</select></label>
+      {{- end }}
+      {{- range . -}}
+        {{- $audio := .audio -}}
+        {{- $seconds := int (math.Round $audio.durationSeconds) -}}
+        {{- $duration := printf "%d:%02d" (int (math.Floor (div $seconds 60.0))) (mod $seconds 60) -}}
+        {{- $src := printf "/audio/author/%s.mp3" .id | relURL -}}
+        <section data-audio-track="{{ .id }}" data-audio-title="{{ .title }}" data-audio-length="{{ $duration }}"{{ with .anchor }} data-audio-anchor="{{ . }}"{{ end }} aria-label="{{ .title }}">
+          <p class="author-audio-origin">{{ if eq $audio.origin "recorded" }}{{ if $zh }}作者原声{{ else }}Recorded by the author{{ end }}{{ else }}{{ if $zh }}作者音色合成 · 内容经作者核对{{ else }}Author's AI voice · Content reviewed by the author{{ end }}{{ end }} · {{ $duration }}</p>
+          {{- if ne $sourceHash $audio.sourceHash }}<p class="author-audio-stale">{{ if $zh }}正文已更新，这段声音对应较早的文章版本。{{ else }}The article has changed since this audio was prepared.{{ end }}</p>{{ end -}}
+          <audio controls preload="none" aria-label="{{ .title }}"><source src="{{ $src }}" type="audio/mpeg"></audio>
+          <div class="author-audio-tools"><label>{{ if $zh }}倍速{{ else }}Speed{{ end }} <select data-audio-speed aria-label="{{ if $zh }}音频播放速度{{ else }}Audio playback speed{{ end }}"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label><a href="{{ $src }}" download>{{ if $zh }}下载音频{{ else }}Download audio{{ end }}</a>{{ with .anchor }}<a href="#{{ . }}">{{ if $zh }}回到这一节{{ else }}Read this section{{ end }}</a>{{ end }}</div>
+          <p data-audio-status role="status" aria-live="polite"></p>
+          <details class="author-audio-transcript"><summary>{{ if $zh }}文字稿{{ else }}Transcript{{ end }}</summary><p>{{ $audio.text }}</p></details>
+        </section>
+      {{- end }}
+    </div>
+  </details>
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 {{- end -}}

@@ -2,6 +2,11 @@ const $ = (id) => document.getElementById(id),
   recordings = new Map();
 let articles = [],
   current = null,
+  articleVersion = null,
+  draftVersion = null,
+  drafting = false,
+  scopeKey = null,
+  scriptDrafts = new Map(),
   timer,
   recordingActive = false;
 const notice = (text) => {
@@ -165,7 +170,7 @@ for (const box of document.querySelectorAll("[data-slot]")) {
     stream?.getTracks().forEach((t) => t.stop());
   });
 }
-function showArticles() {
+function showArticles(load = true) {
   const search = $("article-search").value.toLowerCase(),
     before = $("article").value;
   $("article").replaceChildren();
@@ -179,15 +184,26 @@ function showArticles() {
   }
   if ([...$("article").options].some((o) => o.value === before))
     $("article").value = before;
-  loadArticle();
+  if (load) loadArticle();
 }
 async function loadArticle() {
   const file = $("article").value;
   $("questions").replaceChildren();
+
+  articleVersion = null;
+  $("section").replaceChildren();
   if (!file) return;
   try {
     const a = await api("article?file=" + encodeURIComponent(file));
     if (file !== $("article").value) return;
+    articleVersion = a.sourceHash;
+    for (const section of a.sections || []) {
+      const option = document.createElement("option");
+      option.value = section.key;
+      option.textContent = section.title;
+      $("section").append(option);
+    }
+    switchScriptScope();
     for (const q of a.questions) {
       const li = document.createElement("li");
       li.textContent = q;
@@ -229,23 +245,59 @@ async function refresh() {
   $("voice-state").textContent = state.voice.ready
     ? "你的个人声音已保存，之后的文章会复用它。"
     : "尚未创建个人声音。也可以直接使用你亲口录制的原声。";
-  $("generate").disabled = !state.voice.ready || state.busy;
+  $("generate").disabled = !state.voice.ready || state.busy || drafting;
+  $("draft-script").disabled =
+    state.busy ||
+    drafting ||
+    !state.configured ||
+    !["summary", "section", "dialogue"].includes($("kind").value);
   $("create-voice").disabled = state.busy;
   $("use-recording").disabled = state.busy;
   $("history").replaceChildren();
-  for (const j of state.jobs.filter((j) => j.type === "audio")) {
+  for (const j of state.jobs.filter(
+    (j) => j.type === "audio" || j.type === "script",
+  )) {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent =
-      (j.title || "音频") +
+      (j.type === "script" ? "讲解稿 · " : "声音 · ") +
+      (j.title || "文章") +
       " · " +
       ({
-        ready: "可试听",
+        ready: j.type === "script" ? "可编辑" : "可试听",
         preparing: "正在准备",
         failed: "未完成",
         interrupted: "已中断",
       }[j.status] || j.status);
-    button.onclick = () => renderJob(j);
+    button.onclick = async () => {
+      if (j.type !== "script") {
+        renderJob(j);
+        return;
+      }
+      if (j.status !== "ready") {
+        notice(j.error || "稿件未准备好。");
+        return;
+      }
+      $("article-search").value = "";
+      showArticles(false);
+      $("article").value = j.article;
+      await loadArticle();
+      $("kind").value = j.kind;
+      $("section").value = j.sectionKey || "";
+      const section = j.kind === "section";
+      $("section").hidden = !section;
+      $("section-label").hidden = !section;
+      switchScriptScope();
+      $("script").value = j.text;
+      draftVersion = j.sourceHash;
+      $("script").dispatchEvent(new Event("input"));
+      notice(
+        articleVersion === j.sourceHash
+          ? "已恢复讲解稿，请核对后生成声音。"
+          : "正文已变化，这份旧稿仅供参考，请重新整理。",
+      );
+      await refresh();
+    };
     $("history").append(button);
   }
   if (current) {
@@ -299,7 +351,61 @@ const input = () => ({
   article: $("article").value,
   text: $("script").value,
   kind: $("kind").value,
+  sectionKey: $("section").value,
+  sourceHash: draftVersion || articleVersion,
 });
+$("draft-script").onclick = () =>
+  action($("draft-script"), async () => {
+    if ($("script").value.trim()) {
+      notice("请先保留或清空当前稿件，再重新整理。");
+      return;
+    }
+    drafting = true;
+    $("generate").disabled = true;
+    notice("正在依据原文整理讲解稿…");
+    try {
+      const request = input();
+      const draft = await api("draft", request);
+      if (
+        request.article !== $("article").value ||
+        request.kind !== $("kind").value ||
+        request.sectionKey !== $("section").value
+      )
+        throw Error("文章或章节已切换，未覆盖当前稿件。原稿保存在本机任务中。");
+      if (draft.status !== "ready")
+        throw Error(draft.error || "稿件尚未准备好。");
+      $("script").value = draft.text;
+      draftVersion = draft.sourceHash;
+      $("script").dispatchEvent(new Event("input"));
+      notice("讲解稿已整理，请核对原文并修改，再用你的声音生成。");
+    } finally {
+      drafting = false;
+    }
+  });
+function switchScriptScope() {
+  if (scopeKey)
+    scriptDrafts.set(scopeKey, {
+      text: $("script").value,
+      version: draftVersion,
+    });
+  scopeKey = JSON.stringify([
+    $("article").value,
+    $("kind").value,
+    $("kind").value === "section" ? $("section").value : "",
+  ]);
+  const saved = scriptDrafts.get(scopeKey);
+  $("script").value = saved?.text || "";
+  draftVersion = saved?.version || null;
+  $("script").dispatchEvent(new Event("input"));
+}
+$("section").onchange = switchScriptScope;
+$("kind").onchange = () => {
+  const isSection = $("kind").value === "section";
+  $("section").hidden = !isSection;
+  $("section-label").hidden = !isSection;
+  switchScriptScope();
+  refresh().catch((e) => notice(e.message));
+};
 $("generate").onclick = () =>
   action($("generate"), async () => {
     renderJob(await api("generate", input()));

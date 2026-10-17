@@ -12,7 +12,7 @@
       <header>
         <a href="https://cubxxw.com" target="_blank" rel="noreferrer">cubxxw</a>
         <h1>作者声音</h1>
-        <p>给文章留下一段你想亲口说的话。</p>
+        <p>让读者用你的声音听重点、理解难点。</p>
         <p id="connection" role="status">正在连接本机工具…</p>
       </header>
       <section aria-labelledby="voice-title">
@@ -38,6 +38,16 @@
             <blockquote>
               我是此声音的拥有者并授权谷歌使用此声音创建语音合成模型
             </blockquote>
+            <details>
+              <summary>中文核验未通过时，可尝试英文授权句</summary>
+              <blockquote>
+                I am the owner of this voice and I consent to Google using this
+                voice to create a synthetic voice model.
+              </blockquote>
+              <p>
+                授权片段只读这句话，不加介绍。参考录音与授权录音尽量在同一安静环境录制。
+              </p>
+            </details>
             <button type="button" data-record>开始录音</button
             ><button type="button" data-stop hidden>结束录音</button
             ><label class="upload"
@@ -68,16 +78,26 @@
           <ul id="questions"></ul>
           <p>可以照着问题自由说几分钟，再整理成一段短稿。</p>
         </details>
-        <label for="kind">放在文章哪里</label
+        <label for="kind">读者想听什么</label
         ><select id="kind">
-          <option value="intro">开头 · 听我聊聊这篇</option>
-          <option value="afterword">结尾 · 作者后记</option>
+          <option value="summary">听重点 · 先判断值不值得细读</option>
+          <option value="section">听这一节 · 理解一个难点</option>
+          <option value="dialogue">问答讲解 · 顺着读者的问题理解长文</option>
+          <option value="intro">作者的话 · 开头</option>
+          <option value="afterword">作者后记 · 结尾</option>
         </select>
+        <label id="section-label" for="section" hidden>选择章节</label
+        ><select id="section" hidden></select>
+        <button id="draft-script" type="button">根据原文整理讲解稿</button>
+        <p id="draft-note">
+          整理时只把所选原文交给
+          Google，按实际用量计费。请先核对文字，再用已保存的个人音色配音。读者播放时直接复用音频。
+        </p>
         <label for="script">口播稿或录音文字稿</label
         ><textarea
           id="script"
           rows="8"
-          placeholder="写下你确认过、想亲口表达的内容。不会自动朗读整篇文章。"
+          placeholder="先从原文整理讲解稿，或填写你已确认的稿件。"
         ></textarea>
         <p id="estimate">建议先准备 150–600 字。长稿会自动分段，不丢内容。</p>
         <div class="actions">

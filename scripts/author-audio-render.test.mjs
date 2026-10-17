@@ -80,6 +80,43 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
     path.join(root, "static/audio/author", "b".repeat(64) + ".json"),
     JSON.stringify({ ...manifest, reviewed: false }),
   );
+  const summaryId = "c".repeat(64),
+    sectionId = "d".repeat(64);
+  const sectionBody = "## 一个难点\n\n正文。";
+  const sectionHash = createHash("sha256")
+    .update("我的故事\n" + sectionBody)
+    .digest("hex");
+  for (const [id, kind] of [
+    [summaryId, "summary"],
+    [sectionId, "section"],
+  ]) {
+    await writeFile(
+      path.join(root, "static/audio/author", id + ".mp3"),
+      "fixture",
+    );
+    await writeFile(
+      path.join(root, "static/audio/author", id + ".json"),
+      JSON.stringify({
+        ...manifest,
+        version: 2,
+        kind,
+        sourceHash: sectionHash,
+        sectionTitle: "一个难点",
+        sectionKey: "s0",
+        sectionOccurrence: 1,
+      }),
+    );
+  }
+  await writeFile(
+    path.join(root, "content/multi.md"),
+    "---\ntitle: 我的故事\nauthorAudioTracks: [" +
+      sectionId +
+      ", " +
+      summaryId +
+      "]\n---\n\n" +
+      sectionBody +
+      "\n",
+  );
   const result = spawnSync(
     process.env.HUGO_BIN || "hugo",
     ["--source", root, "--destination", path.join(root, "public")],
@@ -91,7 +128,7 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
     "utf8",
   );
   assert.match(html, /听我聊聊这篇/);
-  assert.match(html, /AI 合成声音/);
+  assert.match(html, /作者音色合成/);
   assert.match(html, /1:12/);
   assert.match(html, /preload="none"/);
   assert.ok(!html.includes("autoplay"));
@@ -102,6 +139,17 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
     await readFile(path.join(root, "public/stale/index.html"), "utf8"),
     /正文已更新/,
   );
+  const multi = await readFile(
+    path.join(root, "public/multi/index.html"),
+    "utf8",
+  );
+  assert.match(multi, /data-audio-track-select/);
+  assert.match(multi, /data-audio-anchor="一个难点"/);
+  assert.ok(
+    multi.indexOf('value="' + summaryId + '"') <
+      multi.indexOf('value="' + sectionId + '"'),
+  );
+  assert.ok(decodeURIComponent(multi).includes('href="#一个难点"'));
   for (const name of ["plain", "unreviewed"])
     assert.ok(
       !(

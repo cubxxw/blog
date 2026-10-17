@@ -125,6 +125,7 @@ test("creation requires real-length reference, consent confirmation, and persist
   assert.equal(calls.length, 1);
   assert.equal(calls[0].body.store, true);
   assert.equal(calls[0].body.voice.type, "replicated");
+  assert.equal(calls[0].body.voice.language_code, "zh-CN");
   const fresh = await createAuthorVoice({
     root: f.root,
     apiKey: "fixture-secret",
@@ -407,4 +408,163 @@ test("a damaged saved profile cannot substitute a prebuilt voice", async (t) => 
     /声音/,
   );
   assert.equal(calls, 0);
+});
+
+test("reader drafts use the full selected section, remain private and do not silently become audio", async (t) => {
+  const calls = [];
+  const f = await fixture(t, async (url, options) => {
+    calls.push({ url, body: JSON.parse(options.body) });
+    return Response.json({
+      candidates: [
+        {
+          finishReason: "STOP",
+          content: { parts: [{ text: "这是依据原文整理的解释。" }] },
+        },
+      ],
+    });
+  });
+  await writeFile(
+    path.join(f.root, f.article),
+    "---\ntitle: 我的故事\n---\n\n## 第一节\nFIRST\n## 第二节\nSECOND",
+  );
+  const source = await f.service.article(f.article);
+  const request = {
+    requestId: "draft-section",
+    article: f.article,
+    kind: "section",
+    sectionKey: source.sections[1].key,
+  };
+  const draft = await f.service.draft(request);
+  assert.equal(draft.type, "script");
+  assert.equal(draft.status, "ready");
+  assert.equal(draft.sectionTitle, "第二节");
+  assert.ok(calls[0].body.contents[0].parts[0].text.includes("SECOND"));
+  assert.ok(!calls[0].body.contents[0].parts[0].text.includes("FIRST"));
+  assert.match(calls[0].url, /models\/gemini-3.8-flash:generateContent$/);
+  await f.service.draft(request);
+  assert.equal(calls.length, 1);
+  await assert.rejects(f.service.media(draft.id));
+  await assert.rejects(f.service.publish({ id: draft.id, reviewed: true }));
+  await addVoice(f);
+  await writeFile(
+    path.join(f.root, f.article),
+    "---\ntitle: 我的故事\n---\n\n正文变了",
+  );
+  await assert.rejects(
+    f.service.generate({
+      ...request,
+      requestId: "old-script",
+      text: draft.text,
+      sourceHash: draft.sourceHash,
+    }),
+    /正文已经更新/,
+  );
+});
+
+test("multiple reader audio modes coexist, replace their own scope, preserve legacy audio and exact article prose", async (t) => {
+  const f = await fixture(t, async () => speech());
+  await addVoice(f);
+  const file = path.join(f.root, f.article);
+  const body = "\n\n## 一个难点\n原文正文\n";
+  await writeFile(
+    file,
+    '---\ntitle: 我的故事\ncustom: "preserve" # keep this\nauthorAudio: ' +
+      "a".repeat(64) +
+      "\n---" +
+      body,
+  );
+  const section = (await f.service.article(f.article)).sections[0].key;
+  async function publish(kind, id, sectionKey) {
+    await f.service.generate({
+      requestId: id,
+      article: f.article,
+      kind,
+      sectionKey,
+      text: "一份确认过的口播稿。",
+    });
+    const ready = await settle(f.service, id);
+    assert.equal(ready.status, "ready", ready.error);
+    await f.service.publish({ id, reviewed: true });
+    return ready;
+  }
+  const summary = await publish("summary", "summary1");
+  const sectionJob = await publish("section", "section1", section);
+  const dialogue = await publish("dialogue", "dialogue1");
+  const text = await readFile(file, "utf8");
+  assert.ok(text.endsWith(body));
+  assert.match(text, /custom: "preserve" # keep this/);
+  assert.match(text, new RegExp("authorAudio: " + "a".repeat(64)));
+  const { parse } = await import("yaml");
+  const meta = parse(text.split("---")[1]);
+  assert.equal(meta.authorAudioTracks.length, 3);
+  assert.ok(meta.authorAudioTracks.includes(summary.assetId));
+  assert.ok(meta.authorAudioTracks.includes(sectionJob.assetId));
+  assert.ok(meta.authorAudioTracks.includes(dialogue.assetId));
+  await f.service.publish({ id: "summary1", reviewed: true });
+  assert.equal(
+    parse((await readFile(file, "utf8")).split("---")[1]).authorAudioTracks
+      .length,
+    3,
+  );
+  const manifest = JSON.parse(
+    await readFile(
+      path.join(f.root, "static/audio/author", sectionJob.assetId + ".json"),
+      "utf8",
+    ),
+  );
+  assert.equal(manifest.version, 2);
+  assert.equal(manifest.sectionTitle, "一个难点");
+  assert.equal(manifest.sectionOccurrence, 1);
+  assert.ok(!JSON.stringify(manifest).includes("voice_fixture"));
+});
+
+test("a truncated draft is never accepted as a complete script or automatically retried", async (t) => {
+  let calls = 0;
+  const f = await fixture(t, async () => {
+    calls++;
+    return Response.json({
+      candidates: [
+        { finishReason: "MAX_TOKENS", content: { parts: [{ text: "半段" }] } },
+      ],
+    });
+  });
+  const input = {
+    requestId: "truncated-draft",
+    article: f.article,
+    kind: "summary",
+  };
+  await assert.rejects(f.service.draft(input), /未完整返回/);
+  assert.equal((await f.service.draft(input)).status, "failed");
+  assert.equal(calls, 1);
+});
+
+test("Google wrapped consent failures are actionable and never trigger automatic retries", async (t) => {
+  let calls = 0;
+  const f = await fixture(t, async () => {
+    calls++;
+    return Response.json(
+      {
+        error: {
+          code: 500,
+          details: [
+            {
+              detail:
+                "Original error: Consent flow failed. The recorded phrase didn't match the text on screen.",
+            },
+          ],
+        },
+      },
+      { status: 500 },
+    );
+  });
+  const input = {
+    requestId: "consent-rejected",
+    reference: wav(10).toString("base64"),
+    consent: wav(5).toString("base64"),
+    confirmed: true,
+  };
+  await assert.rejects(f.service.createVoice(input), /未通过授权录音核验/);
+  assert.equal((await f.service.createVoice(input)).status, "failed");
+  assert.equal(calls, 1);
+  assert.equal((await f.service.state()).voice.ready, false);
 });

@@ -122,6 +122,10 @@ export function createStudioServer({ token, service }) {
             send(200, await service.createVoice(input));
             return;
           }
+          if (url.pathname === "/api/draft") {
+            send(200, await service.draft(input));
+            return;
+          }
           if (url.pathname === "/api/generate") {
             send(202, await service.generate(input));
             return;
