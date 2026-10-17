@@ -62,7 +62,10 @@ test('refused clipboard copy leaves code selected with a truthful recovery', asy
   await copy.click();
   await expect(copy).not.toHaveClass(/is-copied/);
   await expect(copy).toBeEnabled();
-  await expect(page.locator('.code-copy-status').first()).toContainText('代码已选中');
+  const coarse=await page.evaluate(()=>matchMedia('(pointer: coarse)').matches);
+  await expect(page.locator('.code-copy-status').first()).toHaveText(coarse
+    ? '自动复制不可用。请长按代码，选择“复制”。'
+    : '自动复制不可用，代码已选中。请按 Ctrl / ⌘ + C 复制。');
   expect(await page.evaluate(() => window.getSelection()?.toString().length || 0)).toBeGreaterThan(0);
 });
 

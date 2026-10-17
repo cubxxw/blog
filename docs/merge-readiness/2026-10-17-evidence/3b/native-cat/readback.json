@@ -1,0 +1,128 @@
+{
+  "head": "3b924aaea7dcdd2e938421734ec82b9055f3cd64",
+  "url": "https://6ad34dd3af6d1784b13a15f9--cubxxw.netlify.app/zh/projects/",
+  "method": "Native CUA clicks, read-only DOM attributes and actual screenshot; readback values manually transcribed from tool outputs after CUA kernel resets. Image is original bytes. No local product-state writes.",
+  "viewport": [
+    1440,
+    900
+  ],
+  "initial": {
+    "at": "2026-10-17T10:35:29.491Z",
+    "visible": "visible",
+    "reduced": true,
+    "theme": "zen",
+    "active": false,
+    "loaded": true,
+    "pose": {
+      "x": 1.25,
+      "z": 1.5,
+      "yaw": 0
+    },
+    "frames": 73
+  },
+  "temporaryMediaOverride": {
+    "method": "CDP Emulation.setEmulatedMedia",
+    "value": "no-preference",
+    "activeReadback": {
+      "at": "2026-10-17T10:36:46.163Z",
+      "reduced": false,
+      "active": true,
+      "pose": {
+        "x": 1.25,
+        "z": 3.3659988466580626,
+        "yaw": 0
+      },
+      "phase": "rest",
+      "frames": 526
+    },
+    "meaning": "Position actually changed; this manual sample does not measure first movement within12s or low-FPS performance."
+  },
+  "nativeCall": {
+    "at": "2026-10-17T10:38:20.361Z",
+    "mode": "inspect",
+    "active": true,
+    "interaction": "arrived",
+    "pose": {
+      "x": 1.0290301685788246,
+      "z": 1.7024483543693754,
+      "yaw": -0.23506146748738468
+    },
+    "text": "它在你身边停了下来。"
+  },
+  "nativePet": {
+    "at": "2026-10-17T10:38:49.528Z",
+    "mode": "inspect",
+    "active": true,
+    "interaction": "petted",
+    "text": "它眯了眯眼，安静地陪着你。",
+    "image": "cat-pet.png"
+  },
+  "quiet": {
+    "first": {
+      "at": "2026-10-17T10:39:52.445Z",
+      "active": false,
+      "frames": 3359,
+      "paused": true,
+      "pose": {
+        "x": 1.2499557873252443,
+        "z": 4.3878195236238,
+        "yaw": 0.000394120919207907
+      }
+    },
+    "second": {
+      "at": "2026-10-17T10:40:14.218Z",
+      "active": false,
+      "frames": 3359,
+      "paused": true,
+      "pose": {
+        "x": 1.2499557873252443,
+        "z": 4.3878195236238,
+        "yaw": 0.000394120919207907
+      }
+    },
+    "stable": true
+  },
+  "quietResume": {
+    "at": "2026-10-17T10:40:34.584Z",
+    "active": true,
+    "frames": 3816,
+    "paused": false,
+    "pose": {
+      "x": 1.2499995766622536,
+      "z": 3.4332570949896586,
+      "yaw": 3.1415799243437035
+    }
+  },
+  "dialog": {
+    "at": "2026-10-17T10:43:21.413Z",
+    "active": false,
+    "frames": 4284,
+    "openDialogs": 1,
+    "pose": {
+      "x": 1.249999892432404,
+      "z": 1.9912290949907834,
+      "yaw": 3.1415924346133584
+    },
+    "limit": "Only one open-dialog DOM sample saved. Combined follow-up CUA tool timed out/reset; dialog-close/resume is not certified by this manual journey."
+  },
+  "restore": {
+    "method": "CDP media features=[]; viewport.reset",
+    "readback": {
+      "at": "2026-10-17T10:46:11.357Z",
+      "viewport": [
+        1280,
+        720
+      ],
+      "reduced": true,
+      "active": false,
+      "dialogs": 0
+    },
+    "navigatedAwayToCI": true
+  },
+  "limitations": [
+    "Stylized world; no photorealism/96-point rating.",
+    "Native Mac journey does not replace Linux CI and758 full suite.",
+    "Role=checkbox native AX representation did not match DOM button locator; recovered using fresh AX native click.",
+    "CUA combined commands exceeded execution windows; no product failure inferred from tool timeouts."
+  ]
+}

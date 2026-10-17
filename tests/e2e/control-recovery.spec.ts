@@ -46,9 +46,14 @@ test('library empty search and empty bookmarks offer a working way back',async({
   await reader.getByRole('button',{name:'清除搜索'}).click();
   await expect(query).toHaveValue('');await expect(query).toBeFocused();
   await expect(reader.locator('.space-list-item').first()).toBeVisible();
-  await reader.locator('[data-library-filter="favorites"]').click();
+  const categoryPicker=reader.locator('[data-library-select]'),nativePicker=await categoryPicker.isVisible();
+  if(nativePicker){
+    await expect(categoryPicker).toBeVisible();await categoryPicker.selectOption('favorites');
+    await expect(categoryPicker).toHaveValue('favorites');
+  }else await reader.locator('[data-library-filter="favorites"]').click();
   await expect(reader.locator('.space-library-empty')).toContainText('还没有收藏文章');
   await reader.getByRole('button',{name:'查看全部文章'}).click();
   await expect(reader.locator('[data-library-filter="all"]')).toHaveAttribute('aria-pressed','true');
+  if(nativePicker)await expect(categoryPicker).toHaveValue('all');
   await expect(reader.locator('.space-list-item').first()).toBeVisible();
 });

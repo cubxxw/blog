@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-17T11:13:12.326Z",
+  "run": 39025034021,
+  "head": "3b924aaea7dcdd2e938421734ec82b9055f3cd64",
+  "lines": [
+    "4000\n  ✓  392 [mobile] › tests/e2e/00-space-onboarding.spec.ts:18:5 › the terminal stays visible until a real scene frame, with a direct writing escape (11.0s)\n",
+    "4001\n  ✓  393 [mobile] › tests/e2e/00-space-onboarding.spec.ts:34:5 › opening a seat or terrace from the workspace preserves notes and allows returning (16.1s)\n",
+    "4002\n  ✓  394 [mobile] › tests/e2e/00-space-onboarding.spec.ts:51:5 › a cancelled read transition cannot steal a replayed café visit (13.8s)\n",
+    "4003\n  ✓  395 [mobile] › tests/e2e/00-space-onboarding.spec.ts:73:5 › a completed onboarding recovers immediately after graphics context loss (9.3s)\n",
+    "4004\n  ✓  396 [mobile] › tests/e2e/00-space-onboarding.spec.ts:84:5 › module failure offers an ordinary workspace and reading link (425ms)\n",
+    "4005\n  ✓  397 [mobile] › tests/e2e/00-space-onboarding.spec.ts:93:5 › the optional resident can fail without blocking the room or workspace (9.4s)\n",
+    "4006\n  ✓  398 [mobile] › tests/e2e/00-space-onboarding.spec.ts:100:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace (33.7s)\n",
+    "4007\n  ✓  399 [mobile] › tests/e2e/00-space-onboarding.spec.ts:156:5 › a graphics failure during the reveal cannot leave an invisible modal behind (6.6s)\n",
+    "4008\n  ✓  400 [mobile] › tests/e2e/00-space-onboarding.spec.ts:174:5 › graphics recovery preserves the original editor, focus and selection (11.9s)\n",
+    "4009\n  ✓  401 [mobile] › tests/e2e/00-space-onboarding.spec.ts:187:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry (8.1s)\n"
+  ]
+}

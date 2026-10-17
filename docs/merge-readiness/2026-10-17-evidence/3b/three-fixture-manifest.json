@@ -1,0 +1,237 @@
+{
+  "baselineHead": "3b924aaea7dcdd2e938421734ec82b9055f3cd64",
+  "status": "Frozen test-only candidate; independent review/native browser/CI pending",
+  "sourceScope": {
+    "onlyChangedFiles": [
+      "tests/e2e/article-selection.spec.ts",
+      "tests/e2e/control-contracts.spec.ts",
+      "tests/e2e/control-recovery.spec.ts"
+    ],
+    "retryReverseToExactOldSource": true,
+    "copyReverseToExactOldSource": true,
+    "pickerOriginalFreezeSHAUnchanged": true,
+    "preserved": "503 mock; complete reply; one user message; context=[]; copy not-is-copied/enabled/real Selection>0; all other test bodies/config/budgets/production untouched",
+    "sources": [
+      {
+        "path": "tests/e2e/article-selection.spec.ts",
+        "sha256": "4b4bebd2605cadb6ab6e0c3d04ab483e7e0395e4c6a1432ab02926b45441658a"
+      },
+      {
+        "path": "tests/e2e/control-contracts.spec.ts",
+        "sha256": "ba7fa0bf4087d50f9861be86215cc706804aa0a1b209175ef8ab74c3c734bec0"
+      },
+      {
+        "path": "tests/e2e/control-recovery.spec.ts",
+        "sha256": "9fb0a7efe355a13f0489578016566c1ffd127984be1088c8c5a835197eff4ff4"
+      }
+    ]
+  },
+  "families": [
+    {
+      "test": "control-recovery library empty search and bookmarks",
+      "actualRed": "Three mobile line49 hidden desktop category button click failures",
+      "change": "Visible native category select with exact selected and recovered values; original desktop button route remains",
+      "mockBoundaryPass": 3,
+      "receipt": "library-native-picker-manifest.json"
+    },
+    {
+      "test": "article-selection failed AI retry",
+      "actualRed": "Three mobile attempts waiting on obsolete .abs-ai-panel retry button",
+      "change": "Unique visible [data-article-chat], fixed rc selectors; same 503/retry/reply/user/context contract",
+      "proof": "article-control-fixtures-proof.mjs"
+    },
+    {
+      "test": "control-contracts refused clipboard copy",
+      "actualRed": "Three mobile attempts received exact truthful coarse recovery text, old desktop-only substring missing",
+      "change": "Actual matchMedia(pointer:coarse) selects exact localized coarse/fine recovery text; copied/enabled/realSelection assertions untouched",
+      "proof": "article-control-fixtures-proof.mjs"
+    }
+  ],
+  "validation": {
+    "newTwoFamilyProofPass": 6,
+    "proofFail": 0,
+    "typecheckExit": 0,
+    "diffCheckExit": 0,
+    "discoveryExit": 0,
+    "registeredTests": 758,
+    "registeredFiles": 52,
+    "productionChanges": false,
+    "budgetChanges": false,
+    "browserRun": false,
+    "buildRun": false,
+    "commitOrPush": false
+  },
+  "limitations": "Executable VM/mock proofs validate the exact extracted new branches and old-source failure assumptions. They do not execute real native pickers, clipboard or AI transport. Actual red artifacts are separately preserved; parent owns native same-head validation and remote CI.",
+  "artifacts": [
+    {
+      "file": "article-control-fixtures-proof.log",
+      "bytes": 1391,
+      "sha256": "f99a4c6ea242f291ed30bbb6c481f92e8f4ba25dcc185e60ed266643828c832c"
+    },
+    {
+      "file": "article-control-fixtures-proof.mjs",
+      "bytes": 4391,
+      "sha256": "429f89d2bdd82f8bb688b84bbcd1e327dbe944c7f1ecb7b6a25f80f1122a2a96"
+    },
+    {
+      "file": "article-control-two-fixtures-red-manifest.json",
+      "bytes": 2379,
+      "sha256": "790b9fbced2276bad9a6c415dc37a18c16c9b1e40d1036ec17796c368577d4f8"
+    },
+    {
+      "file": "copy-pointer-before.spec.ts",
+      "bytes": 5336,
+      "sha256": "3df348327f1f3c37554c098ca4ae2615ba4b380a534bc0783115c03346218a05"
+    },
+    {
+      "file": "copy-pointer-frozen.spec.ts",
+      "bytes": 5557,
+      "sha256": "ba7fa0bf4087d50f9861be86215cc706804aa0a1b209175ef8ab74c3c734bec0"
+    },
+    {
+      "file": "copy-pointer-red-initial.md",
+      "bytes": 7269,
+      "sha256": "2495f5a681a9c1e24a815e0d8af607baf66746a2eb731bc6a5626b15f51f7d5a"
+    },
+    {
+      "file": "copy-pointer-red-retry1.md",
+      "bytes": 7269,
+      "sha256": "2495f5a681a9c1e24a815e0d8af607baf66746a2eb731bc6a5626b15f51f7d5a"
+    },
+    {
+      "file": "copy-pointer-red-retry2.md",
+      "bytes": 7269,
+      "sha256": "2495f5a681a9c1e24a815e0d8af607baf66746a2eb731bc6a5626b15f51f7d5a"
+    },
+    {
+      "file": "library-native-picker-before.spec.ts",
+      "bytes": 3208,
+      "sha256": "03e4837b4b064d0ed83fec9b4e43ac3a06e59724a5413b5562ee27919cdfe393"
+    },
+    {
+      "file": "library-native-picker-checks.json",
+      "bytes": 866,
+      "sha256": "9092b67bbd95a4d3ac755ed7b5cc87b3fb5ea61e3aa495a47d093272fa163bc1"
+    },
+    {
+      "file": "library-native-picker-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "library-native-picker-diff.patch",
+      "bytes": 1369,
+      "sha256": "e783b1ce500f041a559e47a2fa32f4bed2951bd839f940ab29c159a3804432a1"
+    },
+    {
+      "file": "library-native-picker-discovery.log",
+      "bytes": 104473,
+      "sha256": "f6274201af364ae995ea52f12235a9a1c424c6742285fe46fe63690789bd2976"
+    },
+    {
+      "file": "library-native-picker-frozen.spec.ts",
+      "bytes": 3565,
+      "sha256": "9fb0a7efe355a13f0489578016566c1ffd127984be1088c8c5a835197eff4ff4"
+    },
+    {
+      "file": "library-native-picker-manifest.json",
+      "bytes": 4081,
+      "sha256": "be4f23f7d4328dbcfbee0542b38e84b1470bd87d9e28b20f7698e4f078bea76d"
+    },
+    {
+      "file": "library-native-picker-proof.log",
+      "bytes": 775,
+      "sha256": "110b32749236fb49252fc509fa808d4ac788118a2917921a43cd89a041b52df8"
+    },
+    {
+      "file": "library-native-picker-proof.mjs",
+      "bytes": 2844,
+      "sha256": "4cc7df3017d5a6884812e8daad88d5d82c62fc82c2acbce42d46fc09b31acde1"
+    },
+    {
+      "file": "library-native-picker-red-initial.md",
+      "bytes": 205567,
+      "sha256": "fad2089a2318dfbce7f1629b8f1f33f61a8af924fe2760813edfa7490f90e33d"
+    },
+    {
+      "file": "library-native-picker-red-manifest.json",
+      "bytes": 1567,
+      "sha256": "44862ea66b5349b3d78d954a6fedd2c2aeb4bd8338e3023484ef5a038235e112"
+    },
+    {
+      "file": "library-native-picker-red-retry1.md",
+      "bytes": 205567,
+      "sha256": "fad2089a2318dfbce7f1629b8f1f33f61a8af924fe2760813edfa7490f90e33d"
+    },
+    {
+      "file": "library-native-picker-red-retry2.md",
+      "bytes": 205567,
+      "sha256": "fad2089a2318dfbce7f1629b8f1f33f61a8af924fe2760813edfa7490f90e33d"
+    },
+    {
+      "file": "library-native-picker-scope.json",
+      "bytes": 422,
+      "sha256": "ba5ffeb64f899c64b5a776383033dc1dc1d6d112b9ca730d4a2d9a50a2631fd8"
+    },
+    {
+      "file": "library-native-picker-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    },
+    {
+      "file": "retry-canonical-before.spec.ts",
+      "bytes": 18677,
+      "sha256": "613748b5f0d6226487afda2912c42d940bc8fd6aebc8f4662b596221b39f5eed"
+    },
+    {
+      "file": "retry-canonical-frozen.spec.ts",
+      "bytes": 18684,
+      "sha256": "4b4bebd2605cadb6ab6e0c3d04ab483e7e0395e4c6a1432ab02926b45441658a"
+    },
+    {
+      "file": "retry-canonical-red-initial.md",
+      "bytes": 56616,
+      "sha256": "c12a1e2896ba1e364eb8546c55d702fa78abca67612517867f78e214c9c9a0ff"
+    },
+    {
+      "file": "retry-canonical-red-retry1.md",
+      "bytes": 56616,
+      "sha256": "c12a1e2896ba1e364eb8546c55d702fa78abca67612517867f78e214c9c9a0ff"
+    },
+    {
+      "file": "retry-canonical-red-retry2.md",
+      "bytes": 56616,
+      "sha256": "c12a1e2896ba1e364eb8546c55d702fa78abca67612517867f78e214c9c9a0ff"
+    },
+    {
+      "file": "three-fixture-checks.json",
+      "bytes": 503,
+      "sha256": "65154479e1ae4c7d9b58f3d388e23f9d2de28477c44f79758e06935ec26a75a4"
+    },
+    {
+      "file": "three-fixture-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "three-fixture-diff.patch",
+      "bytes": 3417,
+      "sha256": "34828e6a183e693fab4cefa11320b88b277f3dcd70e1e989eff15ae0c30090ae"
+    },
+    {
+      "file": "three-fixture-discovery.log",
+      "bytes": 104473,
+      "sha256": "06b5f1454a0548d05bef0fdcb375cf0301ab2a5973aceddd94b00cc1ec1da393"
+    },
+    {
+      "file": "three-fixture-scope.json",
+      "bytes": 924,
+      "sha256": "285f985a867ba95fe71b098e03a4b3974210226a5aebf6819d257fee1977ec9e"
+    },
+    {
+      "file": "three-fixture-typecheck.log",
+      "bytes": 269,
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400"
+    }
+  ]
+}
