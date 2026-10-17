@@ -1,0 +1,31 @@
+{
+  "records": [
+    {
+      "path": "integration-anchor-diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "integration-anchor-discovery.log",
+      "sha256": "f9fb3cbeb5ee85317c293b69eae5a4364370875dd20a5fc84c2c11fcf3913140",
+      "bytes": 1092
+    },
+    {
+      "path": "integration-anchor-scope.log",
+      "sha256": "5a642a036b11254033eabea7f015d13e9c2bb49deb81907e4bb4504b8f10ee99",
+      "bytes": 1149
+    },
+    {
+      "path": "integration-anchor-typecheck.log",
+      "sha256": "cc5f9cc6dd5671cccea8d46d648249e7a6cd0bf9aec02585988e07aa4b6d6400",
+      "bytes": 269
+    },
+    {
+      "path": "integration-anchor-workflow.log",
+      "sha256": "728121e8cb4bf71f14484aff3ad58e465346b53d4a52d136391601e96a1eccdd",
+      "bytes": 1198
+    }
+  ],
+  "byteVerified": true,
+  "sourceValidation": "static/source; remote output and browser pending"
+}

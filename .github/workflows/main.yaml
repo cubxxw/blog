@@ -69,6 +69,7 @@ jobs:
           name: blog-quality-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             tests/.artifacts/ci/*-report.json
+            tests/.artifacts/ci/site/output-report.json
             tests/.artifacts/ci/changes.json
             tests/.artifacts/ci/plan.json
             tests/.artifacts/ci/browser/

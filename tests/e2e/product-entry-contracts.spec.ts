@@ -13,9 +13,14 @@ for(const entry of [
     const link=page.locator(entry.selector);await expect(link).toHaveAttribute('href',entry.destination);
     expect(await link.getAttribute('target')).not.toBe('_blank');
     const pages=context.pages().length;await link.click();await expect(page).toHaveURL(entry.destination);
+    await expect(page.locator('#studio-products')).toHaveCount(1);
+    const space=page.locator('#studio-products[data-product-space]');await expect(space).toHaveCount(1);
+    await expect(space).toHaveAttribute('data-product-view','bear');await expect(space.locator('[data-bear-workspace]')).toHaveCount(1);
     await enterWorkspace(page);
     const products=page.locator('[data-space-window="products"]');await expect(products).toBeVisible();
     await expect(products).toHaveAttribute('aria-label',entry.label);
+    await expect(space.locator('[data-space-window="products"]')).toBeVisible();
+    await expect.poll(()=>products.evaluate(el=>el.contains(document.activeElement))).toBe(true);
     await expect(products.locator('.space-product h2')).not.toBeEmpty();
     await expect(page.locator('[data-space-dock] [data-open="products"]')).toHaveAttribute('aria-label',entry.label);
     expect(context.pages()).toHaveLength(pages);
