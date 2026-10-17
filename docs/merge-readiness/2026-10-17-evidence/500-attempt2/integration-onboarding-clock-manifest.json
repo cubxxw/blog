@@ -57,8 +57,19 @@
       "sha256": "0c7292fc037bbcf1c7b7459bd04154c0e18775ab83aa7a4e594c8e0f0f839bae"
     },
     {
-      "path": "integration-onboarding-clock-diff.log",
-      "sha256": "ecbfb813fe4343c741088cc76d1dd99da63c11486a0ce312e36bd7607b2cb4f4"
+      "path": "integration-onboarding-clock-diff.log.gz",
+      "sha256": "8ea3adda77da57456a17bc4f03220cf9e6e6146e9c706453e12ce19ce9d74069",
+      "bytes": 1966,
+      "decodedRaw": {
+        "originalName": "integration-onboarding-clock-diff.log",
+        "bytes": 6811,
+        "sha256": "ecbfb813fe4343c741088cc76d1dd99da63c11486a0ce312e36bd7607b2cb4f4"
+      }
     }
-  ]
+  ],
+  "originalPermanentManifest": {
+    "path": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-500-attempt2/integration-onboarding-clock-manifest.json",
+    "sha256": "3571c22f97011d5f2b886a407c6226b242cbb65e3a4c4861f7212030caf218c0"
+  },
+  "packagingNote": "Raw unified diff has legitimate single-space context lines. Gzip preserves its exact bytes without whitespace-check failures on the evidence file; permanent original log/manifest retained. This changes evidence packaging only."
 }
