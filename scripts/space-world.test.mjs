@@ -35,3 +35,18 @@ test('the floating workspace fits narrow and wide cameras without changing priva
     assert.ok(fit.visibleFraction>.55 && fit.visibleFraction<.9);
   }
 });
+
+test('only an explicitly identified software WebGL renderer receives the bounded raster budget',async()=>{
+  const {worldRenderBudget}=await import('../assets/js/space/world-render-budget.mjs');
+  const gl=name=>({getExtension:()=>({UNMASKED_RENDERER_WEBGL:0x9246}),getParameter:()=>name});
+  for(const name of ['ANGLE (Google, Vulkan SwiftShader Device)','llvmpipe (LLVM 18.1.8, 256 bits)','softpipe','Mesa swrast'])assert.deepEqual(worldRenderBudget(gl(name)),{maxPixels:384000,maxPixelRatio:1.5,shadowSize:512});
+  for(const context of [undefined,{getExtension:()=>null},{getExtension(){throw new Error('privacy blocked');}},gl('ANGLE (NVIDIA GeForce RTX 4060)'),gl('Apple M3'),gl('')])assert.deepEqual(worldRenderBudget(context),{maxPixels:Infinity,maxPixelRatio:1.5,shadowSize:1536});
+});
+
+test('software resize and DPR changes never exceed the pixel limit while hardware retains the native capped drawing buffer',async()=>{
+  const {worldRenderBudget,worldPixelRatio}=await import('../assets/js/space/world-render-budget.mjs'),soft=worldRenderBudget({getExtension:()=>({UNMASKED_RENDERER_WEBGL:1}),getParameter:()=> 'SwiftShader'}),normal=worldRenderBudget();
+  for(const [width,height] of [[320,740],[390,844],[844,390],[1280,800],[1440,900],[3840,2160]])for(const dpr of [1,1.25,1.5,2,3]){
+    const ratio=worldPixelRatio(width,height,dpr,soft);assert.ok(ratio>0&&ratio<=Math.min(dpr,1.5));assert.ok(Math.floor(width*ratio)*Math.floor(height*ratio)<=384000);assert.equal(worldPixelRatio(width,height,dpr,normal),Math.min(dpr,1.5));
+  }
+  assert.equal(worldPixelRatio(320,740,1,soft),1,'a small native viewport does not lose detail unnecessarily');
+});

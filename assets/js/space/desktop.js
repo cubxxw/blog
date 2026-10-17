@@ -1,4 +1,4 @@
-import { languageDestination } from './entry.mjs';
+import { languageDestination, handoffEntryFocus } from './entry.mjs';
 import { mountCafe } from './cafe.js';
 import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, planWindowArrangement } from './state.mjs';
@@ -488,11 +488,15 @@ function mountDesktop(root) {
   try { resumeCafe = navigationType === 'reload' && !entryRoute.app && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
   if (!state.initialized) home(); else render();
   applyHash(localeResume || resumeCafe);
-  cafe = mountCafe({ root, route:entryRoute, navigation:navigationType, localeResume, execute,
+  const initialTarget=entryRoute.app&&!localeResume&&!resumeCafe?nodes.get(entryRoute.app)?.el:null,initialOrigin=document.activeElement;
+  const entryFocusManaged=Boolean(initialTarget);
+  cafe = mountCafe({ root, route:entryRoute, navigation:navigationType, localeResume, execute, entryFocusManaged,
     onEnter:()=>{completeEntry();render();},
     beforeVisit:()=>{closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);},
     focusDesktop:()=>nodes.get(state.active)?.el || menu
   });
+  const focusEntryURL=location.href;
+  if(entryFocusManaged)handoffEntryFocus({ready:cafe.ready,target:initialTarget,origin:initialOrigin,document,window,isCurrent:()=>location.href===focusEntryURL&&state.active===entryRoute.app&&root.dataset.cafeMode==='desktop'&&!root.hidden,focus:()=>focusWindow(entryRoute.app)});
   root.dataset.ready='true';
   if(saveFailure)notify(t('无法使用浏览器存储。笔记可导出，但刷新后可能丢失。','Browser storage is unavailable. Export notes before reloading.'));
 }

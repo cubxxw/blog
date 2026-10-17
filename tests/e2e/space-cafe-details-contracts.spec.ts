@@ -29,7 +29,19 @@ async function point(page:Page,position:number[]){
 for(const view of [{width:1440,height:900,lang:'zh'},{width:390,height:844,lang:'en'},{width:320,height:740,lang:'zh'}])test.describe(`${view.width}px true café detail entry`,()=>{
   test.use({viewport:{width:view.width,height:view.height},isMobile:view.width<640,hasTouch:view.width<640});
   test('the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger',async({page})=>{
-    await ready(page,view.lang);const source=parse(readFileSync('data/travel.yml','utf8')).books,books=await page.locator('[data-cafe-catalog]').evaluate(el=>JSON.parse(el.textContent!).books);
+    await ready(page,view.lang);
+    const raster=await page.locator('.space-world__canvas').evaluate((canvas:HTMLCanvasElement)=>{
+      // An initialized canvas returns its existing context; a different context
+      // type returns null. Do not create a probe canvas or a second renderer.
+      const gl=(canvas.getContext('webgl2')||canvas.getContext('webgl')) as WebGL2RenderingContext|WebGLRenderingContext|null;
+      let renderer='';try{const debug=gl?.getExtension('WEBGL_debug_renderer_info');if(debug)renderer=String(gl!.getParameter(debug.UNMASKED_RENDERER_WEBGL)||'');}catch{}
+      const root=canvas.closest<HTMLElement>('[data-bear-workspace]')!;
+      return {renderer,software:/SwiftShader|llvmpipe|softpipe|swrast|software rasterizer/i.test(renderer),width:canvas.width,height:canvas.height,cssWidth:canvas.clientWidth,cssHeight:canvas.clientHeight,rootWidth:root.clientWidth,rootHeight:root.clientHeight,dpr:devicePixelRatio};
+    });
+    expect(raster.cssWidth).toBe(raster.rootWidth);expect(raster.cssHeight).toBe(raster.rootHeight);
+    if(raster.software)expect(raster.width*raster.height,raster.renderer).toBeLessThanOrEqual(384000);
+    else{expect(raster.width).toBe(Math.floor(raster.cssWidth*Math.min(raster.dpr,1.5)));expect(raster.height).toBe(Math.floor(raster.cssHeight*Math.min(raster.dpr,1.5)));}
+    const source=parse(readFileSync('data/travel.yml','utf8')).books,books=await page.locator('[data-cafe-catalog]').evaluate(el=>JSON.parse(el.textContent!).books);
     expect(books).toEqual(source.map((b:any)=>({title:b[`title_${view.lang}`],author:b[`author_${view.lang}`],own:b.own===true,url:b.url||''})));expect(books).toHaveLength(10);
     const osBooks=await page.locator('[data-space-catalog]').evaluate(el=>JSON.parse(el.textContent!).books);expect(osBooks).toHaveLength(4);expect(osBooks.map((b:any)=>b.title)).toEqual(books.filter((b:any)=>b.own).map((b:any)=>b.title));
     await expect(root(page)).toHaveAttribute('data-world-reflection','room');const before=await pose(page);expect(before.y).toBe(1.52);expect(before.pitch).toBeGreaterThan(-.35);await inspect(page,'coffee');await expect(exit(page)).toBeFocused();await expect(page.locator('[data-cafe-inspect-coffee]')).toBeVisible();await page.keyboard.press('Escape');await samePose(page,before);await expect(detail(page,'coffee')).toBeFocused();

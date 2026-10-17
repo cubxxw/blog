@@ -1,14 +1,14 @@
 import { cafeTheme, cafeEntryMode } from './cafe.mjs';
 import { mountOnboarding } from './onboarding.js';
 
-export function mountCafe({root,route,navigation,localeResume,execute,onEnter,beforeVisit,focusDesktop}) {
+export function mountCafe({root,route,navigation,localeResume,execute,onEnter,beforeVisit,focusDesktop,entryFocusManaged=false}) {
   const surface=root.querySelector('[data-space-cafe]'),dialog=root.querySelector('[data-cafe-dialog]');
   const catalog=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent),themes=catalog.themes;
   const zh=JSON.parse(root.querySelector('[data-space-catalog]').textContent).language==='zh';
   const t=(cn,en)=>zh?cn:en,choices=root.querySelector('[data-cafe-choices]');
   const pickerStatus=root.querySelector('[data-cafe-picker-status]');
   const desktop=[root.querySelector('[data-space-windows]'),root.querySelector('.space-bottom'),root.querySelector('.space-menu')];
-  const abort=new AbortController();let disposed=false;
+  const abort=new AbortController();let disposed=false,initializing=true,failureFocusManaged=false;
   let theme='zen',savedMode,mode,desiredMode,world,failed=false,trigger,revision=0,quiet=false,inspectTrigger,catCode='loading',catTravel=false;
   const inspectPanel=root.querySelector('[data-cafe-inspect-panel]');
   function syncInspect(kind){
@@ -54,7 +54,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   }
   commit(theme);setQuiet(quiet);desiredMode=cafeEntryMode({route,navigation,saved:savedMode,localeResume});setMode(desiredMode);
   const boot=mountOnboarding({root,enabled:mode==='cafe'&&!localeResume&&navigation!=='back_forward',onReveal:result=>{
-    if(result?.failed){desiredMode='desktop';setMode('desktop');onEnter();focusDesktop()?.focus({preventScroll:true});}
+    if(result?.failed){desiredMode='desktop';setMode('desktop');onEnter();if(!failureFocusManaged)focusDesktop()?.focus({preventScroll:true});}
     world?.wake();
   }});
   root.dataset.worldLoading='true';desktop.forEach(el=>{el.inert=true;});
@@ -62,6 +62,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(disposed||failed)return;
     const focused=document.activeElement;
     const selection=typeof focused?.selectionStart==='number'?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
+    failureFocusManaged=initializing&&entryFocusManaged;
     failed=true;++revision;world?.dispose();world=null;root.dataset.worldFailed='true';syncCat('unavailable');
     for(const key of ['worldReady','worldMode','worldTravel','worldLoading'])delete root.dataset[key];
     // A completed onboarding cannot display a second failure state. Restore the
@@ -71,7 +72,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     pickerStatus.textContent=message;
     root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=false;});
     const toast=root.querySelector('[data-space-toast]');toast.textContent=message;toast.hidden=false;
-    if(!boot.active){
+    if(!boot.active&&!failureFocusManaged){
       const target=focused?.isConnected&&root.contains(focused)&&!focused.closest('[inert]')&&focused.getClientRects().length&&getComputedStyle(focused).visibility==='visible'?focused:focusDesktop();
       target?.focus({preventScroll:true});
       if(selection&&target===focused)focused.setSelectionRange(...selection);
@@ -109,7 +110,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     } catch(error) {
       failWorld(t('场景暂时无法启动，可以直接阅读或打开工作区。','The room could not start. You can read or open the workspace.'));
       return null;
-    }
+    } finally {initializing=false;}
   })();
   function closePicker(){dialog.close();}
   dialog.addEventListener('close',()=>{
@@ -182,5 +183,5 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(choice){await ready;if(disposed)return;const id=choice.dataset.cafeTheme;if(world)world.setTheme(id);commit(id);pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);closePicker();}
   },{signal:abort.signal});
   window.addEventListener('pagehide',event=>{if(!event.persisted){disposed=true;abort.abort();boot.dispose();world?.dispose();}},{signal:abort.signal});
-  return {get active(){return mode==='cafe';},get modalOpen(){return dialog.open||boot.active;},get mode(){return mode;},get spatial(){return Boolean(world);},enterDesktop,visit,openPicker,escape(){if(world?.mode==='inspect')restoreInspect();else if(world?.mode==='roam')world.start();}};
+  return {ready,get active(){return mode==='cafe';},get modalOpen(){return dialog.open||boot.active;},get mode(){return mode;},get spatial(){return Boolean(world);},enterDesktop,visit,openPicker,escape(){if(world?.mode==='inspect')restoreInspect();else if(world?.mode==='roam')world.start();}};
 }

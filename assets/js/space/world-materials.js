@@ -88,7 +88,7 @@ export function createWorldMaterials({base,renderer,resources,textures,isDispose
       const id=key+':'+channel;if(maps.has(id)){apply(record,channel,maps.get(id));continue;}if(loading.has(id))continue;loading.add(id);
       new THREE.TextureLoader().load(base+key+'-'+channel+'.jpg',map=>{
         if(gone()){map.dispose();return;}map.colorSpace=channel==='color'?THREE.SRGBColorSpace:THREE.NoColorSpace;map.wrapS=map.wrapT=THREE.RepeatWrapping;map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.add(map);maps.set(id,map);
-        for(const target of targets.get(key)||[])apply(target,channel,map);root.dataset.worldPbrMaps=String(++loaded);renderer.shadowMap.needsUpdate=true;wake();
+        for(const target of targets.get(key)||[])apply(target,channel,map);root.dataset.worldPbrMaps=String(++loaded);wake();
       },undefined,()=>{});
     }return material;
   }

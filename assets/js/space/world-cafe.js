@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { CSS3DRenderer, CSS3DObject } from '../vendor/CSS3DRenderer.js';
+import { worldRenderBudget, worldPixelRatio } from './world-render-budget.mjs';
 import { stepWalk, travelPose, screenFit } from './world-state.mjs';
 import { createCafeResident } from './world-cat.js';
 import { createCafeDetails } from './world-details.js';
@@ -27,7 +28,8 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   const host=document.createElement('div');host.className='space-world';
   const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
   root.prepend(host);
-  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  const renderBudget=worldRenderBudget(renderer.getContext());
+  renderer.setPixelRatio(worldPixelRatio(root.clientWidth||innerWidth,root.clientHeight||innerHeight,devicePixelRatio,renderBudget));
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=1.08;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.shadowMap.autoUpdate=false;
@@ -184,7 +186,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   addLivedDetails({room,resources,pbr,materials:{wood:walnut,cloth:linen,steel}});
   const ambient=new THREE.HemisphereLight('#d7e3e1','#70695b',CAFE_LIGHT.ambient);scene.add(ambient);
   const sun=new THREE.DirectionalLight('#fff8e9',CAFE_LIGHT.sun);sun.position.set(-8,11,-9);sun.castShadow=true;sun.target.position.set(0,.5,0);scene.add(sun.target);
-  sun.shadow.mapSize.set(1536,1536);Object.assign(sun.shadow.camera,CAFE_LIGHT.shadow);sun.shadow.radius=3;sun.shadow.bias=-.0003;sun.shadow.normalBias=.006;scene.add(sun);
+  sun.shadow.mapSize.set(renderBudget.shadowSize,renderBudget.shadowSize);Object.assign(sun.shadow.camera,CAFE_LIGHT.shadow);sun.shadow.radius=3;sun.shadow.bias=-.0003;sun.shadow.normalBias=.006;scene.add(sun);
   const skyMaterial=new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,uniforms:{top:{value:new THREE.Color('#a7c6c3')},bottom:{value:new THREE.Color('#e3e2cc')}},vertexShader:'varying vec3 p;void main(){p=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'uniform vec3 top;uniform vec3 bottom;varying vec3 p;void main(){float t=smoothstep(-.08,.7,normalize(p).y);gl_FragColor=vec4(mix(bottom,top,t),1.);}' });resources.add(skyMaterial);
   const skyDome=mesh(geometry(new THREE.SphereGeometry(180,24,16)),skyMaterial,0,0,0,scene);skyDome.castShadow=false;pbr.sky(scene,skyDome,theme);
   const leafCanvas=document.createElement('canvas');leafCanvas.width=leafCanvas.height=128;const lc=leafCanvas.getContext('2d');
@@ -347,7 +349,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   const cssObject=new CSS3DObject(screen);screen.style.userSelect='auto';cssObject.position.set(3.65,1.98,-1.5);scene.add(cssObject);
   let fit=screenFit({width:root.clientWidth||innerWidth,height:root.clientHeight||innerHeight});function resize() {
     const width=root.clientWidth||innerWidth,height=root.clientHeight||innerHeight;if(!width||!height)return;
-    camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height);css.setSize(width,height);
+    camera.aspect=width/height;camera.updateProjectionMatrix();const ratio=worldPixelRatio(width,height,devicePixelRatio,renderBudget);if(renderer.getPixelRatio()!==ratio)renderer.setPixelRatio(ratio);renderer.setSize(width,height);css.setSize(width,height);
     screen.style.width=width+'px';screen.style.height=height+'px';fit=screenFit({width,height});cssObject.scale.setScalar(fit.scale);
     if(mode==='workspace')applyPose(workspacePose());
     else if(inspection){finishMoving();applyPose(detailPose(inspection.kind));setMode('inspect');}

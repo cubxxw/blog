@@ -161,10 +161,15 @@ test.describe('Home and About reading navigation', () => {
     const page = await context.newPage();
     await page.goto('/zh/');
     await expect(page.locator('.hp-entry-actions a').first()).toHaveAttribute('href', '#hp-posts');
-    await expect(page.locator('.hp-entry-actions a').nth(1)).toHaveAttribute('href', '/zh/projects/');
+    await expect(page.locator('.hp-entry-actions a').nth(1)).toHaveAttribute('href', '/zh/projects/#studio-products');
     await page.locator('[data-page-wayfinder] a[href="#hp-books"]').click();
     await expect(page).toHaveURL(/#hp-books$/);
     await expect(page.locator('#hp-books')).toBeVisible();
+    const pages=context.pages().length;await page.locator('.hp-entry-actions a').nth(1).click();
+    await expect(page).toHaveURL('/zh/projects/#studio-products');await expect(page.locator('#studio-products')).toHaveCount(1);
+    await expect(page.locator('#studio-products[data-product-space]')).toBeVisible();
+    await expect(page.locator('#studio-products .space-nojs')).toBeVisible();
+    await expect(page.locator('#studio-products .space-nojs a[href="/zh/articles/"]')).toBeVisible();expect(context.pages()).toHaveLength(pages);
     await context.close();
   });
 });
