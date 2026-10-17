@@ -1,10 +1,14 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
 import {enterWorkspace} from '../helpers/space-entry';
+import {readFileSync} from 'node:fs';
+import {parse} from 'yaml';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
 type Product={id:string,name:string,headline:string,description:string,url:string,demo:string,github:string,image:string,alt:string};
 type Book={title:string,author:string,description:string,url:string};
+type SourceProduct={id:string,name:string,url:string,url_zh?:string,url_en?:string,demo?:string,github?:string,headline_zh:string,headline_en:string,desc_zh:string,desc_en:string};
+const sourceProducts=parse(readFileSync('data/products.yml','utf8')).products as SourceProduct[];
 
 async function openApp(page:Page,app:string) {
   const dock=page.locator(`[data-space-dock] [data-open="${app}"]`);
@@ -54,7 +58,13 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
     await page.evaluate(theme=>(window as any).BearSpace.execute('theme',{value:theme}),view.theme);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-theme',view.theme);
     const catalog=await page.locator('[data-space-catalog]').evaluate(el=>JSON.parse(el.textContent||'{}')) as {products:Product[],books:Book[]};
-    expect(catalog.products).toHaveLength(7);expect(catalog.books).toHaveLength(4);
+    const locale=view.locale==='zh'?'zh':'en';
+    const expectedProducts=sourceProducts.map(product=>({id:product.id,name:product.name,headline:product[`headline_${locale}`],description:product[`desc_${locale}`],url:product[`url_${locale}`]||product.url,demo:product.demo||'',github:product.github||''}));
+    expect(catalog.products.length).toBeGreaterThan(0);expect(catalog.products).toHaveLength(sourceProducts.length);
+    expect(new Set(catalog.products.map(product=>product.id)).size).toBe(sourceProducts.length);
+    expect(catalog.products.map(({id,name,headline,description,url,demo,github})=>({id,name,headline,description,url,demo,github}))).toEqual(expectedProducts);
+    expect(catalog.products.find(product=>product.id==='leafhour')).toMatchObject({name:'Leafhour',url:locale==='zh'?'https://leafhour.com':'https://leafhour.com/en',demo:'https://leafhour.com/read?book=gutenberg-alice',github:'https://github.com/getyak/leafhour'});
+    expect(catalog.books).toHaveLength(4);
     const notes=await openApp(page,'notes'),editor=notes.locator('[data-note-editor]');await editor.fill('同一个输入框，先读产品和书，再接着写。');
     const original=await editor.elementHandle(),products=await openApp(page,'products');
     // Capture real clicks at the document boundary so no external product,
@@ -69,9 +79,10 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
     const compact=view.width<=640||view.coarse&&view.height<=420,picker=products.locator('[data-product-select]');
     const directory=products.locator('.space-product-directory');
     if(compact) {
-      await expect(directory).toBeHidden();await expect(picker).toBeVisible();await expect(picker.locator('option')).toHaveCount(7);
+      await expect(directory).toBeHidden();await expect(picker).toBeVisible();await expect(picker.locator('option')).toHaveCount(sourceProducts.length);
       expect(await picker.locator('option').evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).toEqual(catalog.products.map(p=>p.id));
-    } else {await expect(directory).toBeVisible();await expect(picker).toBeHidden();await expect(directory.locator('button')).toHaveCount(7);}
+    } else {await expect(directory).toBeVisible();await expect(picker).toBeHidden();await expect(directory.locator('button')).toHaveCount(sourceProducts.length);
+      expect(await directory.locator('[data-select-product]').evaluateAll(nodes=>nodes.map(node=>node.getAttribute('data-select-product')))).toEqual(sourceProducts.map(product=>product.id));}
     for(let i=0;i<catalog.products.length;i++) {
       const product=catalog.products[i];
       if(compact) {

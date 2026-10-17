@@ -119,6 +119,32 @@
     if (aiStop) aiStop.hidden = true;
   }
 
+  function pauseActiveAI() {
+    if (!aiRequest && !isAiThinking) return;
+    const question = lastAiQuery;
+    const pendingQuestion = conversationHistory[conversationHistory.length - 1];
+    cancelAI();
+    aiContent.removeAttribute('aria-busy');
+    // Pending headers have no answer yet. A stream already owns visible
+    // content, so retain that same partial node rather than replacing it.
+    if (aiContent.querySelector('.search-palette__ai-loading')) aiContent.innerHTML = renderConversation();
+    const recovery = document.createElement('div');
+    recovery.className = 'search-palette__ai-error';
+    recovery.setAttribute('role', 'status');
+    recovery.textContent = isZh ? '已停止生成，可以重试。' : 'Generation stopped. You can retry.';
+    const retry = document.createElement('button');
+    retry.type = 'button'; retry.className = 'ai-retry-btn'; retry.textContent = labels.retry;
+    retry.addEventListener('click', () => {
+      if (!isOpen || aiBox.hidden || isAiThinking || !recovery.isConnected) return;
+      if (document.activeElement === retry) input?.focus({preventScroll:true});
+      // Keep completed context; retry the owned pending question once.
+      if (pendingQuestion?.role === 'user' && conversationHistory[conversationHistory.length - 1] === pendingQuestion) conversationHistory.pop();
+      askAI(question, true);
+    });
+    recovery.appendChild(retry); aiContent.appendChild(recovery);
+    updateAiTrigger();
+  }
+
   function escapeHtml(value) {
     return String(value == null ? '' : value).replace(/[&<>"']/g, character => ({
       '&': '&amp;',
@@ -859,7 +885,7 @@
     updateAiTrigger();
   });
   window.addEventListener('pagehide', () => {
-    cancelSearchIntent(); cancelIndex(); cancelAI();
+    cancelSearchIntent(); cancelIndex(); pauseActiveAI();
   });
   window.addEventListener('pageshow', () => {
     if (!isOpen) return;

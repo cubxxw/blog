@@ -154,3 +154,55 @@ for(const missing of [false,true])test(`Enter within the debounce opens only the
   else expect(destination.pathname).toBe('/zh/engineering/posts/use-go-tools-dlv/');
   expect(aiRequests).toBe(0);
 });
+
+// Synthetic lifecycle coverage: an offline fetch/reader deliberately ignores
+// abort/cancel. This verifies UI ownership, not a real browser BFCache entry.
+for(const phase of ['pending-headers','partial-sse'] as const)test(`synthetic pagehide/pageshow leaves ${phase} AI recoverably stopped with its question and completed context`,async({page})=>{
+  const locale=phase==='pending-headers'?'zh':'en';await page.setViewportSize({width:locale==='zh'?390:1440,height:locale==='zh'?844:900});await installIndex(page);
+  await page.addInitScript(()=>{
+    const original=window.fetch.bind(window),state:any={turns:[]};(window as any).__lifecycleAI=state;
+    window.fetch=(input,options)=>{
+      const address=typeof input==='string'?input:input instanceof URL?input.href:input.url;
+      if(new URL(address,location.href).pathname!=='/.netlify/functions/blog-ai')return original(input,options);
+      const turn:any={payload:JSON.parse(String(options?.body)),aborts:0,cancels:0};state.turns.push(turn);
+      options?.signal?.addEventListener('abort',()=>turn.aborts++,{once:true});
+      return new Promise<Response>(resolve=>{
+        turn.json=(answer:string)=>resolve(new Response(JSON.stringify({answer,candidates:[]}),{headers:{'Content-Type':'application/json'}}));
+        turn.stream=()=>{
+          let controller:ReadableStreamDefaultController<Uint8Array>;
+          const stream=new ReadableStream<Uint8Array>({start(value){controller=value;}}),reader=stream.getReader();
+          const response=new Response(null,{headers:{'Content-Type':'text/event-stream'}});
+          Object.defineProperty(response,'body',{value:{getReader:()=>({read:()=>reader.read(),cancel:()=>{turn.cancels++;return Promise.resolve();},releaseLock:()=>reader.releaseLock()})}});
+          turn.delta=(text:string)=>controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify({delta:text})}\n\n`));
+          turn.finish=()=>controller.close();resolve(response);
+        };
+      });
+    };
+  });
+  const trigger=await prepare(page,locale),query=input(page),question='Kubernetes',answer='Completed context before the interruption.',followup='Keep this pending question.';
+  await trigger.click();await query.fill(question);await expect.poll(()=>turnCount(page)).toBe(1);await reply(page,0,documents(locale));await expect(options(page)).toHaveCount(10);
+  await page.locator('#search-ai-btn').click();await expect.poll(()=>page.evaluate(()=>(window as any).__lifecycleAI.turns.length)).toBe(1);
+  await page.evaluate(answer=>(window as any).__lifecycleAI.turns[0].json(answer),answer);
+  const content=page.locator('#search-ai-content');await expect(content).toContainText(answer);await expect(content).not.toHaveAttribute('aria-busy',/./);
+  await content.locator('.search-palette__followup-input').fill(followup);await content.locator('.search-palette__followup-input').press('Enter');await expect.poll(()=>page.evaluate(()=>(window as any).__lifecycleAI.turns.length)).toBe(2);
+  const partial='Retain this incomplete streamed sentence.';
+  let partialNode;
+  if(phase==='partial-sse'){
+    await page.evaluate(()=>(window as any).__lifecycleAI.turns[1].stream());await expect(content.locator('#ai-streaming-target')).toBeAttached();
+    await page.evaluate(partial=>(window as any).__lifecycleAI.turns[1].delta(partial),partial);await expect(content.locator('#ai-streaming-target')).toHaveText(partial);partialNode=await content.locator('#ai-streaming-target').elementHandle();
+  }else await expect(content.locator('.search-palette__ai-loading')).toBeVisible();
+  await expect(content).toHaveAttribute('aria-busy','true');await expect(page.locator('#search-ai-btn')).toBeDisabled();await expect(page.locator('#search-ai-stop')).toBeVisible();
+  await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true})));
+  await expect(content).not.toHaveAttribute('aria-busy',/./);await expect(content.locator('.search-palette__ai-loading')).toHaveCount(0);await expect(page.locator('#search-ai-stop')).toBeHidden();await expect(page.locator('#search-ai-btn')).toBeEnabled();
+  await expect(query).toHaveValue(question);await expect(content).toContainText(answer);await expect(content.locator('.search-palette__conversation-message.user').last()).toContainText(followup);
+  const recovery=content.locator('[role="status"]');await expect(recovery).toContainText(locale==='zh'?'已停止生成，可以重试。':'Generation stopped. You can retry.');
+  if(partialNode){expect(await content.locator('#ai-streaming-target').evaluate((el,original)=>el===original,partialNode)).toBe(true);await expect(content.locator('#ai-streaming-target')).toHaveText(partial);}
+  expect(await page.evaluate(()=>(window as any).__lifecycleAI.turns[1].aborts)).toBe(1);
+  await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));await expect(page.locator('#search-ai-btn')).toBeEnabled();expect(await page.evaluate(()=>(window as any).__lifecycleAI.turns.length)).toBe(2);
+  const retry=recovery.getByRole('button',{name:locale==='zh'?'重试':'Retry',exact:true});await retry.click();await expect.poll(()=>page.evaluate(()=>(window as any).__lifecycleAI.turns.length)).toBe(3);await expect(query).toBeFocused();
+  const expectedContext=[{role:'user',content:question},{role:'assistant',content:answer},{role:'user',content:followup}];
+  expect(await page.evaluate(()=>(window as any).__lifecycleAI.turns[2].payload.context)).toEqual(expectedContext);expect(await page.evaluate(()=>(window as any).__lifecycleAI.turns[2].payload.question)).toBe(followup);
+  await page.evaluate(()=>(window as any).__lifecycleAI.turns[2].json('Recovered answer.'));await expect(content).toContainText('Recovered answer.');await expect(content).not.toHaveAttribute('aria-busy',/./);await expect(page.locator('#search-ai-btn')).toBeEnabled();
+  await page.evaluate(phase=>{const old=(window as any).__lifecycleAI.turns[1];if(phase==='pending-headers')old.json('OLD late answer');else{old.delta('OLD late answer');old.finish();}},phase);await settlePromises(page);
+  await expect(content).toContainText('Recovered answer.');await expect(content).not.toContainText('OLD late answer');await expect(content.locator('[role="status"]')).toHaveCount(0);expect(await page.evaluate(()=>(window as any).__lifecycleAI.turns.length)).toBe(3);
+});
