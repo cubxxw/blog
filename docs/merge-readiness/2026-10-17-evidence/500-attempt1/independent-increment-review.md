@@ -1,0 +1,9 @@
+# 500 attempt1 独立增量审查 · 2026-10-17
+
+审查绑定冻结源码 **`500bcc79252321dfd18eab26519c408f96440f80`**，base `9a909dfdbbb64505d34e68a1b47d1ae4fd059192`；[run 39015837987 attempt1](https://github.com/cubxxw/blog/actions/runs/39015837987/attempts/1)／job `117347649690` 的结论是 **cancelled，非完整通过**。本增量只核永久证据、脚注及 storage 相关源；未启动 browser／build、重复测试、使用付费模型或修改 worktree。当前同 head 的 attempt2／job `117354561848` 于 **08:39:57 UTC** 启动，审查交接时仍 pending，必须读取它的完整适用门禁后才可判断合并条件。
+
+**撤回 hang 与隐藏 Settings 判断。** 完整原 log 明确记录 desktop storage 两项 **314 local 20.2s、315 session 35.9s 首轮通过**；后续继续到 **335／08:32:31 UTC**，不是停止在 live UI 的 313／08:24:11。早先由停更 UI 推断 job stalled／storage hang 的判断不成立，不能据此修改产品路径。当前 `layouts/partials/space/desktop.html:5` 的 `$mobileLabels` 明确包含 `settings`，第72行会赋 `data-mobile-destination`，所以 `space.css:436` 隐藏“没有该属性”的按钮规则不构成 Settings 隐藏证据。**本 reviewer 先前的相反判断已撤回**；没有足够依据把两 storage case 改成“已证隐藏入口修复”。保留现有故障注入、快照、导航和恢复断言，不改测试／生产。
+
+**脚注 P2 保留，根因未确认。** 英文 coarse／normal-motion case 首轮 **260／7.6s** 在原五秒轮询内收到 `scrollY=22407`，预期3373、误差要求小于0.5px；retry1 **261／9.8s** 通过。首失败只有 error context；测试42／45行两个 Back 的相同位置断言无法由该 context 区分，不把成功 retry trace 当首轮时序证明。当前 footnote runtime 没有主动 history／scroll restoration 写入，原测试在 hash 更新及目标进入视区后立即 Back；smooth 尚未完成的竞态只是候选，尚不是确定根因。增加“跳转终态再 Back”会收窄为另一条旅程，不能替换原 rapid-Back 路径后宣称已修。**保留原动作、normal motion、五秒／小于0.5px，不补 scroll、不改全局 CSS，不以 retry 关闭此 P2。** 相关 footnote JS／CSS／测试和 storage 测试已核从3f87至本 head 无改动。
+
+**证据核验与实际边界。** [manifest](manifest.json) 登记的四文件 SHA／bytes已逐项匹配；[reports.tar.gz](reports.tar.gz) 的 **15 个 selected members** 与 central／entries 的 CRC／bytes／SHA相等；[cancelled.log.gz](cancelled.log.gz) 解压为 **851215 bytes**，SHA256 `1b92789365169bcdf45211c928f7979ccf6dcdc2075e289515af80bca35c6fb3`。只验证这些 selected members，**没有完整 ZIP／full-artifact digest 声明**。原 log 的325个前置Node、48 quality、两项严格Library首轮43.0／41.7s等局部正证据保留；legacy未完成，不能扩成758全过。本次限定源审／证据复核未发现新增 confirmed P0／P1；已复现但原因未明的脚注 P2不降级为“假失败”也不升级成无证据的 P1。所有生产与原审查文档保持冻结，本文件到此停止写入。

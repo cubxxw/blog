@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-17T09:44:28.553Z",
+  "head": "500bcc79252321dfd18eab26519c408f96440f80",
+  "deploy": "6ad32b74f784be315a678481",
+  "url": "https://6ad32b74f784be315a678481--cubxxw.netlify.app/zh/projects/",
+  "before": {
+    "boot": "complete",
+    "catLoaded": "true",
+    "center": [
+      271,
+      730.09375
+    ],
+    "hit": true,
+    "inside": true,
+    "rect": {
+      "height": 44,
+      "width": 74,
+      "x": 234,
+      "y": 708.09375
+    },
+    "viewport": [
+      375,
+      812
+    ]
+  },
+  "input": {
+    "kind": "native-coordinate-click",
+    "point": [
+      271,
+      730.09375
+    ]
+  },
+  "after": {
+    "boot": "complete",
+    "cafe": "cafe",
+    "catLoaded": "true",
+    "dialogOpen": false,
+    "readerCount": 0,
+    "rendered": "roam",
+    "travel": "false",
+    "world": "roam"
+  },
+  "scope": "Mac IAB375x812 actual modal geometry and reachable Replay only; no Clock/rapid cancellation/WebGL loss or Linux certification"
+}

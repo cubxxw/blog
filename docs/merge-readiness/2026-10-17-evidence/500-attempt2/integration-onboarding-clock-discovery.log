@@ -1,0 +1,760 @@
+Listing tests:
+  [desktop] › 00-space-library-profile-contracts.spec.ts:83:7 › 320×844 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › 00-space-library-profile-contracts.spec.ts:83:7 › 390×844 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › 00-space-library-profile-contracts.spec.ts:83:7 › 620×844 zh dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › 00-space-library-profile-contracts.spec.ts:83:7 › 844×390 en light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › 00-space-library-profile-contracts.spec.ts:83:7 › 1440×900 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › 00-space-library-profile-contracts.spec.ts:83:7 › 1440×900 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [desktop] › 00-space-library-profile-contracts.spec.ts:104:7 › 390 English bookmark semantics and recovery › Save, favorites, reload and remove expose the actual persistent state
+  [desktop] › 00-space-library-profile-contracts.spec.ts:112:5 › the real library scroller restores reading position while Notes and Books keep their own documents
+  [desktop] › 00-space-library-profile-contracts.spec.ts:124:5 › the original public favorite action synchronizes state and semantics without replacing the reader
+  [desktop] › 00-space-library-profile-contracts.spec.ts:131:5 › a minimized library restores after reload once, then follows a new real reading scroll
+  [desktop] › 00-space-onboarding.spec.ts:18:5 › the terminal stays visible until a real scene frame, with a direct writing escape
+  [desktop] › 00-space-onboarding.spec.ts:34:5 › opening a seat or terrace from the workspace preserves notes and allows returning
+  [desktop] › 00-space-onboarding.spec.ts:51:5 › a cancelled read transition cannot steal a replayed café visit
+  [desktop] › 00-space-onboarding.spec.ts:73:5 › a completed onboarding recovers immediately after graphics context loss
+  [desktop] › 00-space-onboarding.spec.ts:84:5 › module failure offers an ordinary workspace and reading link
+  [desktop] › 00-space-onboarding.spec.ts:93:5 › the optional resident can fail without blocking the room or workspace
+  [desktop] › 00-space-onboarding.spec.ts:100:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace
+  [desktop] › 00-space-onboarding.spec.ts:118:5 › a graphics failure during the reveal cannot leave an invisible modal behind
+  [desktop] › 00-space-onboarding.spec.ts:136:5 › graphics recovery preserves the original editor, focus and selection
+  [desktop] › 00-space-onboarding.spec.ts:149:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry
+  [desktop] › about-experience.spec.ts:17:9 › About deck interaction › /about/ closed mobile navigation cannot intercept page content or focus
+  [desktop] › about-experience.spec.ts:51:9 › About deck interaction › /about/ keeps real product links and distinguishes clicks from drags
+  [desktop] › about-experience.spec.ts:17:9 › About deck interaction › /zh/about/ closed mobile navigation cannot intercept page content or focus
+  [desktop] › about-experience.spec.ts:51:9 › About deck interaction › /zh/about/ keeps real product links and distinguishes clicks from drags
+  [desktop] › about-natural-experience.spec.ts:30:9 › About natural albums › /about/ starts with the person, real photos and optional detail
+  [desktop] › about-natural-experience.spec.ts:53:9 › About natural albums › /about/ supports track-local keys, choices and focus without inaccessible cards
+  [desktop] › about-natural-experience.spec.ts:100:9 › About natural albums › /about/ a pointer click on a partly visible product does not move it before toggling
+  [desktop] › about-natural-experience.spec.ts:122:9 › About natural albums › /about/ real phone gestures browse every rail and retain vertical scrolling
+  [desktop] › about-natural-experience.spec.ts:142:9 › About natural albums › /about/ does not rotate over time or after a motion preference change
+  [desktop] › about-natural-experience.spec.ts:158:9 › About natural albums › /about/ public story and identity remain complete behind short summaries
+  [desktop] › about-natural-experience.spec.ts:178:11 › About natural albums › /about/ no JavaScript keeps every card in readable document flow
+  [desktop] › about-natural-experience.spec.ts:178:11 › About natural albums › /about/ blocked module keeps every card in readable document flow
+  [desktop] › about-natural-experience.spec.ts:30:9 › About natural albums › /zh/about/ starts with the person, real photos and optional detail
+  [desktop] › about-natural-experience.spec.ts:53:9 › About natural albums › /zh/about/ supports track-local keys, choices and focus without inaccessible cards
+  [desktop] › about-natural-experience.spec.ts:100:9 › About natural albums › /zh/about/ a pointer click on a partly visible product does not move it before toggling
+  [desktop] › about-natural-experience.spec.ts:122:9 › About natural albums › /zh/about/ real phone gestures browse every rail and retain vertical scrolling
+  [desktop] › about-natural-experience.spec.ts:142:9 › About natural albums › /zh/about/ does not rotate over time or after a motion preference change
+  [desktop] › about-natural-experience.spec.ts:158:9 › About natural albums › /zh/about/ public story and identity remain complete behind short summaries
+  [desktop] › about-natural-experience.spec.ts:178:11 › About natural albums › /zh/about/ no JavaScript keeps every card in readable document flow
+  [desktop] › about-natural-experience.spec.ts:178:11 › About natural albums › /zh/about/ blocked module keeps every card in readable document flow
+  [desktop] › article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly
+  [desktop] › article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly
+  [desktop] › article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI
+  [desktop] › article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI
+  [desktop] › article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout
+  [desktop] › article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts
+  [desktop] › article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once
+  [desktop] › article-chat-continuity-contracts.spec.ts:97:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts
+  [desktop] › article-chat-continuity-contracts.spec.ts:102:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request
+  [desktop] › article-chat-continuity-contracts.spec.ts:109:5 › delayed shared initialization and two entry calls still create one root, controller and selection request
+  [desktop] › article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside
+  [desktop] › article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside
+  [desktop] › article-chat-continuity-contracts.spec.ts:131:5 › a real compact selection toolbar analysis owns focus, preserves the draft and closes with Escape
+  [desktop] › article-chat-legibility-contracts.spec.ts:150:5 › desktop bilingual light/dark supporting copy, full passage and answer sharing keep a readable hierarchy
+  [desktop] › article-chat-legibility-contracts.spec.ts:162:7 › compact article reading › 390px bilingual conversation keeps 16px editing, full quote and 44px local actions
+  [desktop] › article-chat-legibility-contracts.spec.ts:172:7 › compact article reading › 568px short AI keeps initial, held selection, Stop, full quote, Clear and 503 Retry within 320/256/224px
+  [desktop] › article-chat-reply-landing-contracts.spec.ts:71:5 › short bilingual completed replies land on their actual final line; all three original suggestions and related links remain reachable
+  [desktop] › article-chat-reply-landing-contracts.spec.ts:117:5 › finishing a held long reply and resizing preserves a genuine wheel-owned reading anchor; a later wheel changes ownership
+  [desktop] › article-chat-reply-landing-contracts.spec.ts:132:5 › initial lenses and later suggestions keep a bilingual two-line draft; only its direct Send consumes it
+  [desktop] › article-disclosure.spec.ts:48:7 › Article disclosure — ZH/EN editorial strip › zh: flat strip, 展开/收起 action, click and keyboard toggle
+  [desktop] › article-disclosure.spec.ts:119:7 › Article disclosure — ZH/EN editorial strip › en: English Expand/Collapse action label
+  [desktop] › article-disclosure.spec.ts:137:7 › Article disclosure — ZH/EN editorial strip › bottom collapse button returns focus to summary without scroll jumps
+  [desktop] › article-disclosure.spec.ts:193:7 › Article disclosure — ZH/EN editorial strip › dark focus, readable actions, and reduced motion
+  [desktop] › article-disclosure.spec.ts:213:7 › Article disclosure — ZH/EN editorial strip › enhancement excludes classed details and stays idempotent
+  [desktop] › article-disclosure.spec.ts:230:7 › Article disclosure — ZH/EN editorial strip › specialized classed details (FAQ) stay outside the disclosure treatment
+  [desktop] › article-disclosure.spec.ts:258:7 › Article disclosure — progressive enhancement › no-JS fallback stays polished and fully usable
+  [desktop] › article-disclosure.spec.ts:285:7 › Article disclosure — progressive enhancement › mobile: long summary title wraps without colliding with the reserved action
+  [desktop] › article-font-stability-contracts.spec.ts:24:5 › served font policy is optional only for English posts and the existing home bundle; async/noscript/families stay intact
+  [desktop] › article-font-stability-contracts.spec.ts:73:7 › late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable
+  [desktop] › article-font-stability-contracts.spec.ts:73:7 › late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable
+  [desktop] › article-font-stability-contracts.spec.ts:73:7 › CSS 404: the original article marker, document/viewport read point, hash and focus stay stable
+  [desktop] › article-selection-state.spec.ts:21:7 › comment draft and iframe browsing context survive repeated drawer moves (native move available)
+  [desktop] › article-selection-state.spec.ts:21:7 › comment draft and iframe browsing context survive repeated drawer moves (compatibility path)
+  [desktop] › article-selection-state.spec.ts:60:5 › a native pointer drag produces actions only after release; ordinary reading clicks stay quiet
+  [desktop] › article-selection-state.spec.ts:79:5 › inline-code drag waits for pointer release without blocking native selection
+  [desktop] › article-selection.spec.ts:26:7 › 320px: selection/menu/card preserve prose geometry and fit viewport
+  [desktop] › article-selection.spec.ts:26:7 › 390px: selection/menu/card preserve prose geometry and fit viewport
+  [desktop] › article-selection.spec.ts:26:7 › 1280px: selection/menu/card preserve prose geometry and fit viewport
+  [desktop] › article-selection.spec.ts:57:7 › 390px: selected AI uses existing chat, preserves draft and follows up
+  [desktop] › article-selection.spec.ts:57:7 › 1280px: selected AI uses existing chat, preserves draft and follows up
+  [desktop] › article-selection.spec.ts:90:5 › share exports complete PNG with original canonical passage source
+  [desktop] › article-selection.spec.ts:100:5 › share copy refusal and rapid reopen keep current quote and handlers
+  [desktop] › article-selection.spec.ts:113:5 › font preparation keeps focus inside share editor
+  [desktop] › article-selection.spec.ts:122:5 › over-limit excerpt has no canvas and retains full copy
+  [desktop] › article-selection.spec.ts:129:5 › comments preserve reading position, refresh failed copy and respect topmost share
+  [desktop] › article-selection.spec.ts:147:5 › drag uses actual range and Escape preserves native text
+  [desktop] › article-selection.spec.ts:163:5 › dark share matches article surface
+  [desktop] › article-selection.spec.ts:170:5 › footer card uses same local editor and Escape closes cleanly
+  [desktop] › article-selection.spec.ts:179:7 › native touch selection › toolbar clears system menu zone and compact comments fit
+  [desktop] › article-selection.spec.ts:189:5 › unsupported selection is rejected and English controls are localized
+  [desktop] › article-selection.spec.ts:197:5 › failed AI retry avoids duplicate question and poisoned history
+  [desktop] › article-selection.spec.ts:211:5 › a brief curve connects the passage to desktop chat and then clears
+  [desktop] › article-selection.spec.ts:224:5 › a late clipboard rejection cannot restore an old comment quote
+  [desktop] › article-selection.spec.ts:239:5 › compact share tray has a local article-card entry and retains its open state
+  [desktop] › article-toc.spec.ts:6:7 › Article TOC Navigation › desktop - clicking TOC item scrolls to heading
+  [desktop] › control-contracts.spec.ts:6:5 › article tabs expose one stop and support Arrow, Home and End
+  [desktop] › control-contracts.spec.ts:23:5 › compact tools retain focus around the selected tab and name each panel
+  [desktop] › control-contracts.spec.ts:41:5 › mobile navigation is a dismissible named disclosure
+  [desktop] › control-contracts.spec.ts:55:5 › refused clipboard copy leaves code selected with a truthful recovery
+  [desktop] › control-contracts.spec.ts:69:5 › closed compact tools cannot receive focus before opening or after dismissal
+  [desktop] › control-contracts.spec.ts:80:5 › fullscreen code uses a native modal and restores its expand trigger
+  [desktop] › control-contracts.spec.ts:88:5 › book AI uses a native modal with keyboard containment and a 44px exit
+  [desktop] › control-recovery.spec.ts:7:5 › share link refusal preserves the URL and returns focus after dismissal
+  [desktop] › control-recovery.spec.ts:25:5 › newsletter timeout releases the busy form and preserves the email
+  [desktop] › control-recovery.spec.ts:39:5 › library empty search and empty bookmarks offer a working way back
+  [desktop] › faq-motion-contracts.spec.ts:5:5 › FAQ reads runtime motion preferences and settles interrupted opening and closing
+  [desktop] › faq-motion-contracts.spec.ts:23:5 › runtime reduced motion keeps FAQ focus intent, draft recovery and request cancellation
+  [desktop] › footnote-preview-contracts.spec.ts:34:7 › zh coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back
+  [desktop] › footnote-preview-contracts.spec.ts:34:7 › en coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back
+  [desktop] › footnote-preview-contracts.spec.ts:51:7 › zh fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening
+  [desktop] › footnote-preview-contracts.spec.ts:51:7 › en fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening
+  [desktop] › footnote-preview-contracts.spec.ts:68:7 › bounded short-screen footnote › a long-note fixture scrolls inside the region without moving the article or clipping More
+  [desktop] › footnote-preview-contracts.spec.ts:87:7 › fine real short-screen Tab › the existing longest English note keeps native internal Tab off the document scroll chain
+  [desktop] › footnote-preview-contracts.spec.ts:87:7 › coarse real short-screen Tab › the existing longest English note keeps native internal Tab off the document scroll chain
+  [desktop] › footnote-preview-contracts.spec.ts:105:7 › coarse click intent › modifiers, non-primary, AT, Space and missing or malformed definitions retain native intent
+  [desktop] › footnote-preview-contracts.spec.ts:120:7 › native fallback without JavaScript › the original marker navigates to the complete note and browser Back restores its reading point
+  [desktop] › footnote-preview-contracts.spec.ts:129:7 › owned preview timers › an old hover timer cannot replace a newer focused marker or hide its citation; existing ARIA survives
+  [desktop] › header-lang.spec.ts:4:7 › Header Language Switch › desktop - switch from EN to ZH changes URL to /zh/
+  [desktop] › header-lang.spec.ts:19:7 › Header Language Switch › desktop - switch from ZH to EN changes URL to /
+  [desktop] › header-lang.spec.ts:34:7 › Header Language Switch › mobile - switch from EN to ZH changes URL to /zh/
+  [desktop] › header-search.spec.ts:4:7 › Header Search Interaction › desktop - search panel opens, accepts input, closes with Esc
+  [desktop] › header-search.spec.ts:27:7 › Header Search Interaction › mobile - search panel opens and closes with Esc
+  [desktop] › header-search.spec.ts:47:7 › Header Search Interaction › desktop - arrow keys select results and Enter opens the selected article
+  [desktop] › header-search.spec.ts:78:7 › Header Search Interaction › desktop - Control+Enter asks AI without opening a result
+  [desktop] › header-search.spec.ts:99:7 › Header Search Interaction › Chinese palette exposes localized names and combobox semantics
+  [desktop] › header-theme.spec.ts:4:7 › Header Theme Toggle › desktop - toggle dark mode applies dark class to body
+  [desktop] › header-theme.spec.ts:20:7 › Header Theme Toggle › mobile - toggle dark mode applies dark class to body
+  [desktop] › home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › zh accessible chat streams safely and locks the complete turn
+  [desktop] › home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › en accessible chat streams safely and locks the complete turn
+  [desktop] › home-about-experience.spec.ts:79:7 › Homepage runtime and progressive decoration › close and clear isolate stale replies from a subsequent conversation
+  [desktop] › home-about-experience.spec.ts:109:7 › Homepage runtime and progressive decoration › a completed reply does not steal focus after the visitor leaves chat
+  [desktop] › home-about-experience.spec.ts:124:7 › Homepage runtime and progressive decoration › bfcache restoration synchronizes a canceled streaming composer
+  [desktop] › home-about-experience.spec.ts:149:7 › Homepage runtime and progressive decoration › a failed stream exposes a usable retry
+  [desktop] › home-about-experience.spec.ts:166:7 › Homepage runtime and progressive decoration › desktop decoration waits for conversation visibility and intent, then responds to motion preference changes
+  [desktop] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › phone retains chat without downloading Three.js
+  [desktop] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › motion retains chat without downloading Three.js
+  [desktop] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › saveData retains chat without downloading Three.js
+  [desktop] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › slowConnection retains chat without downloading Three.js
+  [desktop] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › coarsePointer retains chat without downloading Three.js
+  [desktop] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › noWebGL retains chat without downloading Three.js
+  [desktop] › home-chat-recovery.spec.ts:51:37 › zh draft survives close and IME Enter/Escape retains composition
+  [desktop] › home-chat-recovery.spec.ts:51:37 › en draft survives close and IME Enter/Escape retains composition
+  [desktop] › home-chat-recovery.spec.ts:66:5 › a 25s header stall unlocks retry and a late response cannot overwrite it
+  [desktop] › home-chat-recovery.spec.ts:81:39 › SSE idle deadline covers the first chunk without awaiting stuck cancellation
+  [desktop] › home-chat-recovery.spec.ts:81:39 › SSE idle deadline covers a later chunk without awaiting stuck cancellation
+  [desktop] › home-chat-recovery.spec.ts:100:5 › a JSON body stall also races the idle deadline and ignores late JSON
+  [desktop] › home-chat-recovery.spec.ts:109:5 › short-screen Stop is the enabled sender target and preserves a partial answer for retry
+  [desktop] › home-chat-recovery.spec.ts:131:5 › [DONE] completes before EOF even when reader cancellation never settles
+  [desktop] › home-chat-recovery.spec.ts:142:5 › finishing a short-screen reply preserves a wheel departure toward the books
+  [desktop] › home-first-paint.spec.ts:3:5 › mobile AI enhancement occupies its reserved space without moving the books below it
+  [desktop] › home-first-paint.spec.ts:29:5 › mobile primary links remain readable within stable columns
+  [desktop] › home-first-paint.spec.ts:51:5 › Chinese first-screen text has a loaded webfont fallback before any reading scroll
+  [desktop] › home-first-paint.spec.ts:69:5 › cold navigation does not synchronously write an absent menu scroll position
+  [desktop] › home-product-images.spec.ts:4:7 › / product thumbnails load responsive WebP without changing the card geometry
+  [desktop] › home-product-images.spec.ts:4:7 › /zh/ product thumbnails load responsive WebP without changing the card geometry
+  [desktop] › home-reading-contracts.spec.ts:6:39 › a server-rendered reading entrance › zh practice title is a real article link without scripts
+  [desktop] › home-reading-contracts.spec.ts:6:39 › a server-rendered reading entrance › en practice title is a real article link without scripts
+  [desktop] › home-reading-contracts.spec.ts:17:7 › zh reading precedes all contact targets at 320px
+  [desktop] › home-reading-contracts.spec.ts:17:7 › en reading precedes all contact targets at 320px
+  [desktop] › home-reading-contracts.spec.ts:17:7 › zh reading precedes all contact targets at 390px
+  [desktop] › home-reading-contracts.spec.ts:17:7 › en reading precedes all contact targets at 390px
+  [desktop] › home-reading-contracts.spec.ts:51:5 › Bear follows the writing with the same conversation and restores its question opener
+  [desktop] › home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×320
+  [desktop] › home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×320
+  [desktop] › home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×256
+  [desktop] › home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×256
+  [desktop] › home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 390px
+  [desktop] › home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 1440px
+  [desktop] › ime-contracts.spec.ts:4:5 › book AI keeps the composing draft until a deliberate Enter
+  [desktop] › ime-contracts.spec.ts:14:5 › FAQ AI ignores both composing Enter and Safari keyCode 229
+  [desktop] › knowledge-filter-contracts.spec.ts:5:7 › knowledge filters match their real collections at 390px
+  [desktop] › knowledge-filter-contracts.spec.ts:5:7 › knowledge filters match their real collections at 1440px
+  [desktop] › p1-p2-ux.spec.ts:9:7 › P1-P2 UX regression › newsletter validation exposes and clears an accessible error
+  [desktop] › p1-p2-ux.spec.ts:26:7 › P1-P2 UX regression › contact dialog preloads its QR, traps focus, and restores the trigger
+  [desktop] › p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact
+  [desktop] › p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target
+  [desktop] › p1-p2-ux.spec.ts:122:7 › P1-P2 UX regression › space defaults to CUBXXW OS and switches to Product Lab and back
+  [desktop] › p1-p2-ux.spec.ts:156:7 › P1-P2 UX regression › BEAR OS product search uses workspace search and restores the selected product
+  [desktop] › p1-p2-ux.spec.ts:205:7 › P1-P2 UX regression › Space language changes preserve private work and the open article
+  [desktop] › p1-p2-ux.spec.ts:246:9 › P1-P2 UX regression › Space preserves work when local storage fails during a language change
+  [desktop] › p1-p2-ux.spec.ts:246:9 › P1-P2 UX regression › Space preserves work when session storage fails during a language change
+  [desktop] › p1-p2-ux.spec.ts:278:7 › P1-P2 UX regression › Product Lab can enter BEAR knowledge space and return without leaving lab
+  [desktop] › p1-p2-ux.spec.ts:303:7 › P1-P2 UX regression › an already open global search owns shortcuts above the BEAR workspace
+  [desktop] › p1-p2-ux.spec.ts:323:7 › P1-P2 UX regression › knowledge space stays closed when the reader exits before its module loads
+  [desktop] › p1-p2-ux.spec.ts:342:7 › P1-P2 UX regression › a pending knowledge mount cannot clear an immediate reopen or a later BEAR view
+  [desktop] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › / side index waits for reading, recedes at rest, and returns on intent
+  [desktop] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/ side index waits for reading, recedes at rest, and returns on intent
+  [desktop] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /about/ side index waits for reading, recedes at rest, and returns on intent
+  [desktop] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/about/ side index waits for reading, recedes at rest, and returns on intent
+  [desktop] › page-wayfinder.spec.ts:38:7 › Home and About reading navigation › side index remains accessible without scripts and with reduced motion
+  [desktop] › page-wayfinder.spec.ts:65:9 › Home and About reading navigation › / reading index leaves content unobstructed at every width
+  [desktop] › page-wayfinder.spec.ts:65:9 › Home and About reading navigation › /about/ reading index leaves content unobstructed at every width
+  [desktop] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/ native index, focus, and scroll position
+  [desktop] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/about/ native index, focus, and scroll position
+  [desktop] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/ native index, focus, and scroll position
+  [desktop] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/about/ native index, focus, and scroll position
+  [desktop] › page-wayfinder.spec.ts:139:7 › Home and About reading navigation › About deep links and Enter navigation work with ordinary motion
+  [desktop] › page-wayfinder.spec.ts:159:7 › Home and About reading navigation › homepage primary routes and navigation remain usable without JavaScript
+  [desktop] › page-wayfinder.spec.ts:199:7 › /about/ a short final destination stays current at the native document boundary
+  [desktop] › page-wayfinder.spec.ts:199:7 › /zh/about/ a short final destination stays current at the native document boundary
+  [desktop] › performance-pages.spec.ts:4:7 › /ai-agent/ keeps responsive channel layout and theme after CSS scoping
+  [desktop] › performance-pages.spec.ts:4:7 › /zh/ai-agent/ keeps responsive channel layout and theme after CSS scoping
+  [desktop] › performance-pages.spec.ts:4:7 › /engineering/ keeps responsive channel layout and theme after CSS scoping
+  [desktop] › performance-pages.spec.ts:4:7 › /zh/engineering/ keeps responsive channel layout and theme after CSS scoping
+  [desktop] › performance-pages.spec.ts:4:7 › /columns/agent-engineering/ keeps responsive channel layout and theme after CSS scoping
+  [desktop] › performance-pages.spec.ts:4:7 › /zh/columns/agent-engineering/ keeps responsive channel layout and theme after CSS scoping
+  [desktop] › product-entry-contracts.spec.ts:11:7 › Chinese home introduction opens the actual products app in the current tab
+  [desktop] › product-entry-contracts.spec.ts:11:7 › English home products section opens the actual products app in the current tab
+  [desktop] › product-entry-contracts.spec.ts:11:7 › Chinese shared footer opens the actual products app in the current tab
+  [desktop] › product-entry-contracts.spec.ts:30:5 › the unqualified Space entrance still begins in the café in both languages
+  [desktop] › search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [desktop] › search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [desktop] › search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [desktop] › search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [desktop] › search-index-contracts.spec.ts:80:37 › zh status text size 200% keeps the same Retry target through loading and timeout
+  [desktop] › search-index-contracts.spec.ts:80:37 › en status text size 200% keeps the same Retry target through loading and timeout
+  [desktop] › search-index-contracts.spec.ts:90:80 › a late fetch-failure cannot overwrite the newer successful index
+  [desktop] › search-index-contracts.spec.ts:90:80 › a late json-failure cannot overwrite the newer successful index
+  [desktop] › search-index-contracts.spec.ts:90:80 › a late json-success cannot overwrite the newer successful index
+  [desktop] › search-index-contracts.spec.ts:101:52 › the 15000ms total index deadline also releases a non-cooperating headers stage
+  [desktop] › search-index-contracts.spec.ts:101:52 › the 15000ms total index deadline also releases a non-cooperating json stage
+  [desktop] › search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner
+  [desktop] › search-index-contracts.spec.ts:127:5 › pagehide and pageshow preserve a completed AI conversation, its draft and the next follow-up context
+  [desktop] › search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article
+  [desktop] › search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query
+  [desktop] › search-index-contracts.spec.ts:160:67 › synthetic pagehide/pageshow leaves pending-headers AI recoverably stopped with its question and completed context
+  [desktop] › search-index-contracts.spec.ts:160:67 › synthetic pagehide/pageshow leaves partial-sse AI recoverably stopped with its question and completed context
+  [desktop] › series-hub-routes.spec.ts:5:9 › /personal-agent-product-delegation retains the series name without an unpublished hub link
+  [desktop] › series-hub-routes.spec.ts:5:9 › /personal-agent-harness-openclaw retains the series name without an unpublished hub link
+  [desktop] › series-hub-routes.spec.ts:14:7 ›  an existing series hub keeps its real link
+  [desktop] › series-hub-routes.spec.ts:5:9 › /zh/personal-agent-product-delegation retains the series name without an unpublished hub link
+  [desktop] › series-hub-routes.spec.ts:5:9 › /zh/personal-agent-harness-openclaw retains the series name without an unpublished hub link
+  [desktop] › series-hub-routes.spec.ts:14:7 › /zh an existing series hub keeps its real link
+  [desktop] › space-app-reading-contracts.spec.ts:52:7 › 320×844 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+  [desktop] › space-app-reading-contracts.spec.ts:52:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links
+  [desktop] › space-app-reading-contracts.spec.ts:52:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links
+  [desktop] › space-app-reading-contracts.spec.ts:52:7 › 844×390 en dark products and books › real choices retain focus, readable content and distinct reachable reading links
+  [desktop] › space-app-reading-contracts.spec.ts:52:7 › 1440×900 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+  [desktop] › space-app-reading-contracts.spec.ts:52:7 › 1440×900 en dark products and books › real choices retain focus, readable content and distinct reachable reading links
+  [desktop] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 3 windows use overview without rewriting their documents or geometry
+  [desktop] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 3 windows use overview without rewriting their documents or geometry
+  [desktop] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 4 windows use overview without rewriting their documents or geometry
+  [desktop] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 4 windows use overview without rewriting their documents or geometry
+  [desktop] › space-arrangement-contracts.spec.ts:76:30 › a 1440×900 desktop tiles 2 windows with reachable controls and the original note
+  [desktop] › space-arrangement-contracts.spec.ts:76:30 › a 1440×900 desktop tiles 4 windows with reachable controls and the original note
+  [desktop] › space-boundary-contracts.spec.ts:19:37 › short-screen window close and compact café navigation have separate real hit targets in zh
+  [desktop] › space-boundary-contracts.spec.ts:19:37 › short-screen window close and compact café navigation have separate real hit targets in en
+  [desktop] › space-boundary-contracts.spec.ts:36:5 › all map controls remain 44px and clickable in the 600–640px boundary
+  [desktop] › space-boundary-contracts.spec.ts:48:7 › coarse landscape pointer › window chrome and every map control provide an actual 44px touch target
+  [desktop] › space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [desktop] › space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [desktop] › space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [desktop] › space-cafe-details-contracts.spec.ts:55:5 › the actual cup and book raycasts enter the same detail views; a drag retains the computer hit instead of creating a click
+  [desktop] › space-cafe-details-contracts.spec.ts:62:5 › six scene changes and both detail views preserve the original Notes node, draft and selection through the live workspace
+  [desktop] › space-cafe-details-contracts.spec.ts:70:5 › runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop
+  [desktop] › space-cafe-details-contracts.spec.ts:76:5 › a held then failed latte image never blocks the first room; simulated context loss restores the same Notes document
+  [desktop] › space-cafe.spec.ts:7:7 › Space café › the café entry offers six scenes, then opens the real workspace search
+  [desktop] › space-cafe.spec.ts:21:7 › Space café › the landscape room controls stay clickable at low height
+  [desktop] › space-cafe.spec.ts:33:7 › Space café › an old About route can return to the room across language and reload
+  [desktop] › space-cafe.spec.ts:44:7 › Space café › visiting the room preserves the exact note editor and private workspace
+  [desktop] › space-media-legibility-contracts.spec.ts:48:7 › 1440px zh image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success
+  [desktop] › space-media-legibility-contracts.spec.ts:48:7 › 390px en image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success
+  [desktop] › space-media-legibility-contracts.spec.ts:67:5 › completed 404 retry and detached events cannot overwrite another reopened photo; synthetic complete/error is a separate branch
+  [desktop] › space-media-legibility-contracts.spec.ts:91:7 › phone native photo navigation › Next Enter then ArrowRight and Escape retain the existing window keyboard route and Notes node
+  [desktop] › space-media-legibility-contracts.spec.ts:99:5 › the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work
+  [desktop] › space-preferences-contact-contracts.spec.ts:45:7 › 320×844 zh light preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [desktop] › space-preferences-contact-contracts.spec.ts:45:7 › 390×844 en light preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [desktop] › space-preferences-contact-contracts.spec.ts:45:7 › 620×844 zh dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [desktop] › space-preferences-contact-contracts.spec.ts:45:7 › 844×390 en dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [desktop] › space-preferences-contact-contracts.spec.ts:45:7 › 1440×900 zh light preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [desktop] › space-preferences-contact-contracts.spec.ts:45:7 › 1440×900 en dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [desktop] › space-preferences-contact-contracts.spec.ts:137:7 › pending settings status lifecycle › closing aborts the owned check and a late result cannot update a new mount
+  [desktop] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 320×844
+  [desktop] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 390×844
+  [desktop] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 568×320
+  [desktop] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 1440×900
+  [desktop] › space-reading-contracts.spec.ts:72:5 › the unscaled graphics fallback retains its reading type sizes
+  [desktop] › space-wallpaper-contracts.spec.ts:41:7 › 1440×900 zh live monitor wallpaper › all six existing colors reach the monitor without recoloring documents or replacing editors
+  [desktop] › space-wallpaper-contracts.spec.ts:41:7 › 390×844 en live monitor wallpaper › all six existing colors reach the monitor without recoloring documents or replacing editors
+  [desktop] › space-wallpaper-contracts.spec.ts:82:7 › graphics recovery desktop › forced WebGL failure keeps the original visible six-color landscape palette
+  [desktop] › travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 320px
+  [desktop] › travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 390px
+  [desktop] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in zh at 568×320
+  [desktop] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in en at 568×320
+  [desktop] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in zh at 568×256
+  [desktop] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in en at 568×256
+  [desktop] › travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / reduce › both full portraits contain focus, restore the opener and survive immediate reopen
+  [desktop] › travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / no-preference › both full portraits contain focus, restore the opener and survive immediate reopen
+  [desktop] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / reduce › both complete portrait posters and the real close target fit the bounded card
+  [desktop] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / no-preference › both complete portrait posters and the real close target fit the bounded card
+  [desktop] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / reduce › both complete portrait posters and the real close target fit the bounded card
+  [desktop] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / no-preference › both complete portrait posters and the real close target fit the bounded card
+  [desktop] › travel-qr-contracts.spec.ts:91:7 › runtime preference and page lifecycle › runtime reduce completes entrance, immediate close cancels its frame, and pagehide restores overflow
+  [desktop] › travel-qr-contracts.spec.ts:109:7 › unavailable image transport › pending and 404 images keep real metadata and close usable without reopening later
+  [desktop] › travel-qr-contracts.spec.ts:125:5 › the actual English Travel page keeps its four non-QR channels
+  [desktop] › travel-qr-contracts.spec.ts:173:46 › local image recovery › 404 retries keep a stable portrait region and respect retry focus on success
+  [desktop] › travel-qr-contracts.spec.ts:173:46 › local image recovery › 404 retries keep a stable portrait region and respect details focus on success
+  [desktop] › travel-qr-contracts.spec.ts:202:7 › local image recovery › the 15-second deadline clears each old node and cannot overwrite a later attempt
+  [desktop] › travel-qr-contracts.spec.ts:226:7 › local image recovery › closing a pending image clears its owned listeners and a late old event cannot replace the next channel
+  [desktop] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×256 / reduce › failure, the account and a 44px retry remain readable and reachable for both channels
+  [desktop] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×256 / no-preference › failure, the account and a 44px retry remain readable and reachable for both channels
+  [desktop] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×224 / reduce › failure, the account and a 44px retry remain readable and reachable for both channels
+  [desktop] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×224 / no-preference › failure, the account and a 44px retry remain readable and reachable for both channels
+  [desktop] › us026-fonts.spec.ts:7:7 › US-026 Font loading › EN article page: post-title uses Fraunces as first font
+  [desktop] › us026-fonts.spec.ts:21:7 › US-026 Font loading › ZH article title and prose retain a self-hosted CJK fallback
+  [desktop] › us026-fonts.spec.ts:39:7 › US-026 Font loading › ZH page head contains Noto Serif SC font link
+  [desktop] › us026-fonts.spec.ts:45:7 › US-026 Font loading › EN page head does NOT contain Noto Serif SC font link
+  [desktop] › us026-fonts.spec.ts:51:7 › US-026 Font loading › EN page head contains Fraunces font link
+  [desktop] › us027-layout.spec.ts:23:5 › desktop-1680: EN article has article-layout grid
+  [desktop] › us027-layout.spec.ts:31:5 › desktop-1680: ZH article has article-layout grid
+  [desktop] › us027-layout.spec.ts:40:5 › tablet-1024: article renders without overflow
+  [desktop] › us027-layout.spec.ts:48:5 › mobile-414: article renders in single column
+  [desktop] › us027-layout.spec.ts:58:5 › no console errors on EN article
+  [desktop] › us027-layout.spec.ts:68:5 › no console errors on ZH article
+  [desktop] › us028-marginalia.spec.ts:23:5 › EN desktop: marginalia visible with English labels
+  [desktop] › us028-marginalia.spec.ts:35:5 › ZH desktop: marginalia visible with Chinese labels
+  [desktop] › us028-marginalia.spec.ts:47:5 › EN mobile: compact marginalia visible, aside hidden
+  [desktop] › us028-marginalia.spec.ts:58:5 › ZH mobile: compact marginalia visible
+  [desktop] › us028-marginalia.spec.ts:66:5 › EN: marginalia date formatted as English
+  [desktop] › us028-marginalia.spec.ts:75:5 › ZH: marginalia date formatted as Chinese
+  [desktop] › us028-marginalia.spec.ts:85:5 › EN: no console errors
+  [desktop] › us028-marginalia.spec.ts:95:5 › ZH: no console errors
+  [desktop] › us029-typography.spec.ts:25:5 › EN: post-title uses display font (Fraunces)
+  [desktop] › us029-typography.spec.ts:36:5 › ZH: post-title uses display font (Noto Serif SC or fallback)
+  [desktop] › us029-typography.spec.ts:48:5 › EN: post-title has large font size
+  [desktop] › us029-typography.spec.ts:59:5 › ZH: post-title has heavy font weight
+  [desktop] › us029-typography.spec.ts:69:5 › EN: post-description is italic
+  [desktop] › us029-typography.spec.ts:83:5 › EN: first paragraph has drop-cap class
+  [desktop] › us029-typography.spec.ts:91:5 › ZH: first paragraph has drop-cap class
+  [desktop] › us029-typography.spec.ts:99:5 › EN: inline code has accent-soft background
+  [desktop] › us029-typography.spec.ts:114:5 › EN: 0 console errors
+  [desktop] › us029-typography.spec.ts:124:5 › ZH: 0 console errors
+  [desktop] › us030-editorial-tools.spec.ts:20:5 › EN desktop: article-tools visible at 1680px
+  [desktop] › us030-editorial-tools.spec.ts:28:5 › ZH desktop: article-tools visible at 1680px
+  [desktop] › us030-editorial-tools.spec.ts:36:5 › EN: tools tab shows English group names
+  [desktop] › us030-editorial-tools.spec.ts:45:5 › ZH: tools panel shows Chinese group names
+  [desktop] › us030-editorial-tools.spec.ts:54:5 › EN: TOC items are rendered in editorial tools
+  [desktop] › us030-editorial-tools.spec.ts:68:5 › EN: clicking AI tab shows AI input panel
+  [desktop] › us030-editorial-tools.spec.ts:81:5 › ZH: AI textarea placeholder is in Chinese
+  [desktop] › us030-editorial-tools.spec.ts:93:5 › tools hidden at 1024px viewport
+  [desktop] › us030-editorial-tools.spec.ts:100:5 › EN: 0 console errors
+  [desktop] › us030-editorial-tools.spec.ts:109:5 › ZH: 0 console errors
+  [desktop] › us031-bottom-sheet.spec.ts:21:5 › EN 375px: FAB is present in DOM
+  [desktop] › us031-bottom-sheet.spec.ts:32:5 › EN 414px: FAB is present in DOM
+  [desktop] › us031-bottom-sheet.spec.ts:44:5 › EN 375px: bottom sheet opens on FAB click
+  [desktop] › us031-bottom-sheet.spec.ts:61:5 › EN 414px: bottom sheet opens on FAB click
+  [desktop] › us031-bottom-sheet.spec.ts:78:5 › EN 375px: bottom sheet closes on overlay click
+  [desktop] › us031-bottom-sheet.spec.ts:100:5 › EN: bottom sheet has TOC / AI / Share tabs
+  [desktop] › us031-bottom-sheet.spec.ts:110:5 › ZH: bottom sheet has TOC / AI / Share tabs
+  [desktop] › us031-bottom-sheet.spec.ts:122:5 › FAB hidden on desktop (1680px)
+  [desktop] › us031-bottom-sheet.spec.ts:130:5 › open sheet clears modal state when resized to desktop
+  [desktop] › us031-bottom-sheet.spec.ts:155:5 › EN 375px: mobile compact marginalia visible
+  [desktop] › us031-bottom-sheet.spec.ts:161:5 › ZH 375px: mobile compact marginalia visible
+  [desktop] › us031-bottom-sheet.spec.ts:169:5 › 0 console errors on EN mobile
+  [desktop] › us031-bottom-sheet.spec.ts:178:5 › 0 console errors on ZH mobile
+  [desktop] › us032-dark-mode.spec.ts:30:5 › EN light: --color-accent is dark olive (not dark override)
+  [desktop] › us032-dark-mode.spec.ts:46:5 › EN dark: --color-paper is dark (#121413)
+  [desktop] › us032-dark-mode.spec.ts:58:5 › EN dark: --color-ink is light (#e2e3e1)
+  [desktop] › us032-dark-mode.spec.ts:70:5 › EN dark: --color-accent is sky blue (#7dd3fc)
+  [desktop] › us032-dark-mode.spec.ts:82:5 › EN dark: drop-cap uses var(--color-accent) — color changes with dark
+  [desktop] › us032-dark-mode.spec.ts:99:5 › EN dark: full page screenshot
+  [desktop] › us032-dark-mode.spec.ts:109:5 › ZH light: --color-accent is crimson (#862122)
+  [desktop] › us032-dark-mode.spec.ts:122:5 › ZH dark: --color-paper is warm dark (#1c1917)
+  [desktop] › us032-dark-mode.spec.ts:134:5 › ZH dark: --color-ink is warm white (#f5f3ee)
+  [desktop] › us032-dark-mode.spec.ts:146:5 › ZH dark: --color-accent is red (#ff6b6b)
+  [desktop] › us032-dark-mode.spec.ts:158:5 › ZH dark: full page screenshot
+  [desktop] › us032-dark-mode.spec.ts:168:5 › EN: dark class toggle changes --color-paper token
+  [desktop] › us032-dark-mode.spec.ts:193:5 › ZH dark: h2 uses light ink with no decorative left border
+  [desktop] › us032-dark-mode.spec.ts:210:5 › EN dark: 0 console errors
+  [desktop] › us032-dark-mode.spec.ts:223:5 › ZH dark: 0 console errors
+  [desktop] › visual/aesthetic-agent.spec.ts:32:5 › en-light-desktop: EN article title uses Fraunces
+  [desktop] › visual/aesthetic-agent.spec.ts:50:5 › en-light-mobile: EN article renders on mobile
+  [desktop] › visual/aesthetic-agent.spec.ts:64:5 › zh-light-desktop: ZH article title uses Noto Serif SC
+  [desktop] › visual/aesthetic-agent.spec.ts:78:5 › zh-light-mobile: ZH article renders on mobile
+  [desktop] › visual/aesthetic-agent.spec.ts:92:5 › en-dark-desktop: EN dark mode applies correct tokens
+  [desktop] › visual/aesthetic-agent.spec.ts:113:5 › en-dark-mobile: EN dark mobile renders without errors
+  [desktop] › visual/aesthetic-agent.spec.ts:127:5 › zh-dark-desktop: ZH dark mode applies correct tokens
+  [desktop] › visual/aesthetic-agent.spec.ts:148:5 › zh-dark-mobile: ZH dark mobile renders without errors
+  [desktop] › visual/aesthetic-agent.spec.ts:162:5 › generate comparison report
+  [mobile] › 00-space-library-profile-contracts.spec.ts:83:7 › 320×844 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › 00-space-library-profile-contracts.spec.ts:83:7 › 390×844 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › 00-space-library-profile-contracts.spec.ts:83:7 › 620×844 zh dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › 00-space-library-profile-contracts.spec.ts:83:7 › 844×390 en light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › 00-space-library-profile-contracts.spec.ts:83:7 › 1440×900 zh light library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › 00-space-library-profile-contracts.spec.ts:83:7 › 1440×900 en dark library/profile › real writing and profile remain readable with reachable choices and complete titles
+  [mobile] › 00-space-library-profile-contracts.spec.ts:104:7 › 390 English bookmark semantics and recovery › Save, favorites, reload and remove expose the actual persistent state
+  [mobile] › 00-space-library-profile-contracts.spec.ts:112:5 › the real library scroller restores reading position while Notes and Books keep their own documents
+  [mobile] › 00-space-library-profile-contracts.spec.ts:124:5 › the original public favorite action synchronizes state and semantics without replacing the reader
+  [mobile] › 00-space-library-profile-contracts.spec.ts:131:5 › a minimized library restores after reload once, then follows a new real reading scroll
+  [mobile] › 00-space-onboarding.spec.ts:18:5 › the terminal stays visible until a real scene frame, with a direct writing escape
+  [mobile] › 00-space-onboarding.spec.ts:34:5 › opening a seat or terrace from the workspace preserves notes and allows returning
+  [mobile] › 00-space-onboarding.spec.ts:51:5 › a cancelled read transition cannot steal a replayed café visit
+  [mobile] › 00-space-onboarding.spec.ts:73:5 › a completed onboarding recovers immediately after graphics context loss
+  [mobile] › 00-space-onboarding.spec.ts:84:5 › module failure offers an ordinary workspace and reading link
+  [mobile] › 00-space-onboarding.spec.ts:93:5 › the optional resident can fail without blocking the room or workspace
+  [mobile] › 00-space-onboarding.spec.ts:100:5 › the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace
+  [mobile] › 00-space-onboarding.spec.ts:118:5 › a graphics failure during the reveal cannot leave an invisible modal behind
+  [mobile] › 00-space-onboarding.spec.ts:136:5 › graphics recovery preserves the original editor, focus and selection
+  [mobile] › 00-space-onboarding.spec.ts:149:5 › returning from a hidden Product Lab waits for readiness and restores keyboard entry
+  [mobile] › about-experience.spec.ts:17:9 › About deck interaction › /about/ closed mobile navigation cannot intercept page content or focus
+  [mobile] › about-experience.spec.ts:51:9 › About deck interaction › /about/ keeps real product links and distinguishes clicks from drags
+  [mobile] › about-experience.spec.ts:17:9 › About deck interaction › /zh/about/ closed mobile navigation cannot intercept page content or focus
+  [mobile] › about-experience.spec.ts:51:9 › About deck interaction › /zh/about/ keeps real product links and distinguishes clicks from drags
+  [mobile] › about-natural-experience.spec.ts:30:9 › About natural albums › /about/ starts with the person, real photos and optional detail
+  [mobile] › about-natural-experience.spec.ts:53:9 › About natural albums › /about/ supports track-local keys, choices and focus without inaccessible cards
+  [mobile] › about-natural-experience.spec.ts:100:9 › About natural albums › /about/ a pointer click on a partly visible product does not move it before toggling
+  [mobile] › about-natural-experience.spec.ts:122:9 › About natural albums › /about/ real phone gestures browse every rail and retain vertical scrolling
+  [mobile] › about-natural-experience.spec.ts:142:9 › About natural albums › /about/ does not rotate over time or after a motion preference change
+  [mobile] › about-natural-experience.spec.ts:158:9 › About natural albums › /about/ public story and identity remain complete behind short summaries
+  [mobile] › about-natural-experience.spec.ts:178:11 › About natural albums › /about/ no JavaScript keeps every card in readable document flow
+  [mobile] › about-natural-experience.spec.ts:178:11 › About natural albums › /about/ blocked module keeps every card in readable document flow
+  [mobile] › about-natural-experience.spec.ts:30:9 › About natural albums › /zh/about/ starts with the person, real photos and optional detail
+  [mobile] › about-natural-experience.spec.ts:53:9 › About natural albums › /zh/about/ supports track-local keys, choices and focus without inaccessible cards
+  [mobile] › about-natural-experience.spec.ts:100:9 › About natural albums › /zh/about/ a pointer click on a partly visible product does not move it before toggling
+  [mobile] › about-natural-experience.spec.ts:122:9 › About natural albums › /zh/about/ real phone gestures browse every rail and retain vertical scrolling
+  [mobile] › about-natural-experience.spec.ts:142:9 › About natural albums › /zh/about/ does not rotate over time or after a motion preference change
+  [mobile] › about-natural-experience.spec.ts:158:9 › About natural albums › /zh/about/ public story and identity remain complete behind short summaries
+  [mobile] › about-natural-experience.spec.ts:178:11 › About natural albums › /zh/about/ no JavaScript keeps every card in readable document flow
+  [mobile] › about-natural-experience.spec.ts:178:11 › About natural albums › /zh/about/ blocked module keeps every card in readable document flow
+  [mobile] › article-chat-continuity-contracts.spec.ts:51:37 › zh active draft, selection and the same nodes follow both directions repeatedly
+  [mobile] › article-chat-continuity-contracts.spec.ts:51:37 › en active draft, selection and the same nodes follow both directions repeatedly
+  [mobile] › article-chat-continuity-contracts.spec.ts:60:35 › 1199px non-AI tools use visible equivalent focus without opening AI
+  [mobile] › article-chat-continuity-contracts.spec.ts:60:35 › 1200px non-AI tools use visible equivalent focus without opening AI
+  [mobile] › article-chat-continuity-contracts.spec.ts:66:5 › a completed general conversation remains the actual follow-up context in the other layout
+  [mobile] › article-chat-continuity-contracts.spec.ts:72:5 › quoted A/B scopes and general history stay owned by one controller across layouts
+  [mobile] › article-chat-continuity-contracts.spec.ts:81:5 › a held long stream preserves the visible text anchor after user scroll and handoff, then Stop aborts once
+  [mobile] › article-chat-continuity-contracts.spec.ts:97:5 › synthetic composition and keyCode229 cannot submit while the same draft crosses layouts
+  [mobile] › article-chat-continuity-contracts.spec.ts:102:5 › layout handoff restores the exact overflow owner; an explicit compact Escape alone cancels the request
+  [mobile] › article-chat-continuity-contracts.spec.ts:109:5 › delayed shared initialization and two entry calls still create one root, controller and selection request
+  [mobile] › article-chat-continuity-contracts.spec.ts:119:46 › actual Send clicks retain AI ownership across layouts until the user clicks outside
+  [mobile] › article-chat-continuity-contracts.spec.ts:119:46 › actual quick chip clicks retain AI ownership across layouts until the user clicks outside
+  [mobile] › article-chat-continuity-contracts.spec.ts:131:5 › a real compact selection toolbar analysis owns focus, preserves the draft and closes with Escape
+  [mobile] › article-chat-legibility-contracts.spec.ts:150:5 › desktop bilingual light/dark supporting copy, full passage and answer sharing keep a readable hierarchy
+  [mobile] › article-chat-legibility-contracts.spec.ts:162:7 › compact article reading › 390px bilingual conversation keeps 16px editing, full quote and 44px local actions
+  [mobile] › article-chat-legibility-contracts.spec.ts:172:7 › compact article reading › 568px short AI keeps initial, held selection, Stop, full quote, Clear and 503 Retry within 320/256/224px
+  [mobile] › article-chat-reply-landing-contracts.spec.ts:71:5 › short bilingual completed replies land on their actual final line; all three original suggestions and related links remain reachable
+  [mobile] › article-chat-reply-landing-contracts.spec.ts:117:5 › finishing a held long reply and resizing preserves a genuine wheel-owned reading anchor; a later wheel changes ownership
+  [mobile] › article-chat-reply-landing-contracts.spec.ts:132:5 › initial lenses and later suggestions keep a bilingual two-line draft; only its direct Send consumes it
+  [mobile] › article-disclosure.spec.ts:48:7 › Article disclosure — ZH/EN editorial strip › zh: flat strip, 展开/收起 action, click and keyboard toggle
+  [mobile] › article-disclosure.spec.ts:119:7 › Article disclosure — ZH/EN editorial strip › en: English Expand/Collapse action label
+  [mobile] › article-disclosure.spec.ts:137:7 › Article disclosure — ZH/EN editorial strip › bottom collapse button returns focus to summary without scroll jumps
+  [mobile] › article-disclosure.spec.ts:193:7 › Article disclosure — ZH/EN editorial strip › dark focus, readable actions, and reduced motion
+  [mobile] › article-disclosure.spec.ts:213:7 › Article disclosure — ZH/EN editorial strip › enhancement excludes classed details and stays idempotent
+  [mobile] › article-disclosure.spec.ts:230:7 › Article disclosure — ZH/EN editorial strip › specialized classed details (FAQ) stay outside the disclosure treatment
+  [mobile] › article-disclosure.spec.ts:258:7 › Article disclosure — progressive enhancement › no-JS fallback stays polished and fully usable
+  [mobile] › article-disclosure.spec.ts:285:7 › Article disclosure — progressive enhancement › mobile: long summary title wraps without colliding with the reserved action
+  [mobile] › article-font-stability-contracts.spec.ts:24:5 › served font policy is optional only for English posts and the existing home bundle; async/noscript/families stay intact
+  [mobile] › article-font-stability-contracts.spec.ts:73:7 › late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable
+  [mobile] › article-font-stability-contracts.spec.ts:73:7 › late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable
+  [mobile] › article-font-stability-contracts.spec.ts:73:7 › CSS 404: the original article marker, document/viewport read point, hash and focus stay stable
+  [mobile] › article-selection-state.spec.ts:21:7 › comment draft and iframe browsing context survive repeated drawer moves (native move available)
+  [mobile] › article-selection-state.spec.ts:21:7 › comment draft and iframe browsing context survive repeated drawer moves (compatibility path)
+  [mobile] › article-selection-state.spec.ts:60:5 › a native pointer drag produces actions only after release; ordinary reading clicks stay quiet
+  [mobile] › article-selection-state.spec.ts:79:5 › inline-code drag waits for pointer release without blocking native selection
+  [mobile] › article-selection.spec.ts:26:7 › 320px: selection/menu/card preserve prose geometry and fit viewport
+  [mobile] › article-selection.spec.ts:26:7 › 390px: selection/menu/card preserve prose geometry and fit viewport
+  [mobile] › article-selection.spec.ts:26:7 › 1280px: selection/menu/card preserve prose geometry and fit viewport
+  [mobile] › article-selection.spec.ts:57:7 › 390px: selected AI uses existing chat, preserves draft and follows up
+  [mobile] › article-selection.spec.ts:57:7 › 1280px: selected AI uses existing chat, preserves draft and follows up
+  [mobile] › article-selection.spec.ts:90:5 › share exports complete PNG with original canonical passage source
+  [mobile] › article-selection.spec.ts:100:5 › share copy refusal and rapid reopen keep current quote and handlers
+  [mobile] › article-selection.spec.ts:113:5 › font preparation keeps focus inside share editor
+  [mobile] › article-selection.spec.ts:122:5 › over-limit excerpt has no canvas and retains full copy
+  [mobile] › article-selection.spec.ts:129:5 › comments preserve reading position, refresh failed copy and respect topmost share
+  [mobile] › article-selection.spec.ts:147:5 › drag uses actual range and Escape preserves native text
+  [mobile] › article-selection.spec.ts:163:5 › dark share matches article surface
+  [mobile] › article-selection.spec.ts:170:5 › footer card uses same local editor and Escape closes cleanly
+  [mobile] › article-selection.spec.ts:179:7 › native touch selection › toolbar clears system menu zone and compact comments fit
+  [mobile] › article-selection.spec.ts:189:5 › unsupported selection is rejected and English controls are localized
+  [mobile] › article-selection.spec.ts:197:5 › failed AI retry avoids duplicate question and poisoned history
+  [mobile] › article-selection.spec.ts:211:5 › a brief curve connects the passage to desktop chat and then clears
+  [mobile] › article-selection.spec.ts:224:5 › a late clipboard rejection cannot restore an old comment quote
+  [mobile] › article-selection.spec.ts:239:5 › compact share tray has a local article-card entry and retains its open state
+  [mobile] › article-toc.spec.ts:6:7 › Article TOC Navigation › desktop - clicking TOC item scrolls to heading
+  [mobile] › control-contracts.spec.ts:6:5 › article tabs expose one stop and support Arrow, Home and End
+  [mobile] › control-contracts.spec.ts:23:5 › compact tools retain focus around the selected tab and name each panel
+  [mobile] › control-contracts.spec.ts:41:5 › mobile navigation is a dismissible named disclosure
+  [mobile] › control-contracts.spec.ts:55:5 › refused clipboard copy leaves code selected with a truthful recovery
+  [mobile] › control-contracts.spec.ts:69:5 › closed compact tools cannot receive focus before opening or after dismissal
+  [mobile] › control-contracts.spec.ts:80:5 › fullscreen code uses a native modal and restores its expand trigger
+  [mobile] › control-contracts.spec.ts:88:5 › book AI uses a native modal with keyboard containment and a 44px exit
+  [mobile] › control-recovery.spec.ts:7:5 › share link refusal preserves the URL and returns focus after dismissal
+  [mobile] › control-recovery.spec.ts:25:5 › newsletter timeout releases the busy form and preserves the email
+  [mobile] › control-recovery.spec.ts:39:5 › library empty search and empty bookmarks offer a working way back
+  [mobile] › faq-motion-contracts.spec.ts:5:5 › FAQ reads runtime motion preferences and settles interrupted opening and closing
+  [mobile] › faq-motion-contracts.spec.ts:23:5 › runtime reduced motion keeps FAQ focus intent, draft recovery and request cancellation
+  [mobile] › footnote-preview-contracts.spec.ts:34:7 › zh coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back
+  [mobile] › footnote-preview-contracts.spec.ts:34:7 › en coarse native footnotes › first tap keeps the reading point; second tap and More retain native history and Back
+  [mobile] › footnote-preview-contracts.spec.ts:51:7 › zh fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening
+  [mobile] › footnote-preview-contracts.spec.ts:51:7 › en fine keyboard footnotes › Tab discovers ArrowDown entry; internal citation focus survives and Escape returns without reopening
+  [mobile] › footnote-preview-contracts.spec.ts:68:7 › bounded short-screen footnote › a long-note fixture scrolls inside the region without moving the article or clipping More
+  [mobile] › footnote-preview-contracts.spec.ts:87:7 › fine real short-screen Tab › the existing longest English note keeps native internal Tab off the document scroll chain
+  [mobile] › footnote-preview-contracts.spec.ts:87:7 › coarse real short-screen Tab › the existing longest English note keeps native internal Tab off the document scroll chain
+  [mobile] › footnote-preview-contracts.spec.ts:105:7 › coarse click intent › modifiers, non-primary, AT, Space and missing or malformed definitions retain native intent
+  [mobile] › footnote-preview-contracts.spec.ts:120:7 › native fallback without JavaScript › the original marker navigates to the complete note and browser Back restores its reading point
+  [mobile] › footnote-preview-contracts.spec.ts:129:7 › owned preview timers › an old hover timer cannot replace a newer focused marker or hide its citation; existing ARIA survives
+  [mobile] › header-lang.spec.ts:4:7 › Header Language Switch › desktop - switch from EN to ZH changes URL to /zh/
+  [mobile] › header-lang.spec.ts:19:7 › Header Language Switch › desktop - switch from ZH to EN changes URL to /
+  [mobile] › header-lang.spec.ts:34:7 › Header Language Switch › mobile - switch from EN to ZH changes URL to /zh/
+  [mobile] › header-search.spec.ts:4:7 › Header Search Interaction › desktop - search panel opens, accepts input, closes with Esc
+  [mobile] › header-search.spec.ts:27:7 › Header Search Interaction › mobile - search panel opens and closes with Esc
+  [mobile] › header-search.spec.ts:47:7 › Header Search Interaction › desktop - arrow keys select results and Enter opens the selected article
+  [mobile] › header-search.spec.ts:78:7 › Header Search Interaction › desktop - Control+Enter asks AI without opening a result
+  [mobile] › header-search.spec.ts:99:7 › Header Search Interaction › Chinese palette exposes localized names and combobox semantics
+  [mobile] › header-theme.spec.ts:4:7 › Header Theme Toggle › desktop - toggle dark mode applies dark class to body
+  [mobile] › header-theme.spec.ts:20:7 › Header Theme Toggle › mobile - toggle dark mode applies dark class to body
+  [mobile] › home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › zh accessible chat streams safely and locks the complete turn
+  [mobile] › home-about-experience.spec.ts:43:9 › Homepage runtime and progressive decoration › en accessible chat streams safely and locks the complete turn
+  [mobile] › home-about-experience.spec.ts:79:7 › Homepage runtime and progressive decoration › close and clear isolate stale replies from a subsequent conversation
+  [mobile] › home-about-experience.spec.ts:109:7 › Homepage runtime and progressive decoration › a completed reply does not steal focus after the visitor leaves chat
+  [mobile] › home-about-experience.spec.ts:124:7 › Homepage runtime and progressive decoration › bfcache restoration synchronizes a canceled streaming composer
+  [mobile] › home-about-experience.spec.ts:149:7 › Homepage runtime and progressive decoration › a failed stream exposes a usable retry
+  [mobile] › home-about-experience.spec.ts:166:7 › Homepage runtime and progressive decoration › desktop decoration waits for conversation visibility and intent, then responds to motion preference changes
+  [mobile] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › phone retains chat without downloading Three.js
+  [mobile] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › motion retains chat without downloading Three.js
+  [mobile] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › saveData retains chat without downloading Three.js
+  [mobile] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › slowConnection retains chat without downloading Three.js
+  [mobile] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › coarsePointer retains chat without downloading Three.js
+  [mobile] › home-about-experience.spec.ts:205:9 › Homepage runtime and progressive decoration › noWebGL retains chat without downloading Three.js
+  [mobile] › home-chat-recovery.spec.ts:51:37 › zh draft survives close and IME Enter/Escape retains composition
+  [mobile] › home-chat-recovery.spec.ts:51:37 › en draft survives close and IME Enter/Escape retains composition
+  [mobile] › home-chat-recovery.spec.ts:66:5 › a 25s header stall unlocks retry and a late response cannot overwrite it
+  [mobile] › home-chat-recovery.spec.ts:81:39 › SSE idle deadline covers the first chunk without awaiting stuck cancellation
+  [mobile] › home-chat-recovery.spec.ts:81:39 › SSE idle deadline covers a later chunk without awaiting stuck cancellation
+  [mobile] › home-chat-recovery.spec.ts:100:5 › a JSON body stall also races the idle deadline and ignores late JSON
+  [mobile] › home-chat-recovery.spec.ts:109:5 › short-screen Stop is the enabled sender target and preserves a partial answer for retry
+  [mobile] › home-chat-recovery.spec.ts:131:5 › [DONE] completes before EOF even when reader cancellation never settles
+  [mobile] › home-chat-recovery.spec.ts:142:5 › finishing a short-screen reply preserves a wheel departure toward the books
+  [mobile] › home-first-paint.spec.ts:3:5 › mobile AI enhancement occupies its reserved space without moving the books below it
+  [mobile] › home-first-paint.spec.ts:29:5 › mobile primary links remain readable within stable columns
+  [mobile] › home-first-paint.spec.ts:51:5 › Chinese first-screen text has a loaded webfont fallback before any reading scroll
+  [mobile] › home-first-paint.spec.ts:69:5 › cold navigation does not synchronously write an absent menu scroll position
+  [mobile] › home-product-images.spec.ts:4:7 › / product thumbnails load responsive WebP without changing the card geometry
+  [mobile] › home-product-images.spec.ts:4:7 › /zh/ product thumbnails load responsive WebP without changing the card geometry
+  [mobile] › home-reading-contracts.spec.ts:6:39 › a server-rendered reading entrance › zh practice title is a real article link without scripts
+  [mobile] › home-reading-contracts.spec.ts:6:39 › a server-rendered reading entrance › en practice title is a real article link without scripts
+  [mobile] › home-reading-contracts.spec.ts:17:7 › zh reading precedes all contact targets at 320px
+  [mobile] › home-reading-contracts.spec.ts:17:7 › en reading precedes all contact targets at 320px
+  [mobile] › home-reading-contracts.spec.ts:17:7 › zh reading precedes all contact targets at 390px
+  [mobile] › home-reading-contracts.spec.ts:17:7 › en reading precedes all contact targets at 390px
+  [mobile] › home-reading-contracts.spec.ts:51:5 › Bear follows the writing with the same conversation and restores its question opener
+  [mobile] › home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×320
+  [mobile] › home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×320
+  [mobile] › home-short-chat-contracts.spec.ts:23:7 › zh homepage chat keeps real close and composer reachable at 568×256
+  [mobile] › home-short-chat-contracts.spec.ts:23:7 › en homepage chat keeps real close and composer reachable at 568×256
+  [mobile] › home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 390px
+  [mobile] › home-short-chat-contracts.spec.ts:64:7 › normal-height homepage chat retains its layout and conversation at 1440px
+  [mobile] › ime-contracts.spec.ts:4:5 › book AI keeps the composing draft until a deliberate Enter
+  [mobile] › ime-contracts.spec.ts:14:5 › FAQ AI ignores both composing Enter and Safari keyCode 229
+  [mobile] › knowledge-filter-contracts.spec.ts:5:7 › knowledge filters match their real collections at 390px
+  [mobile] › knowledge-filter-contracts.spec.ts:5:7 › knowledge filters match their real collections at 1440px
+  [mobile] › p1-p2-ux.spec.ts:9:7 › P1-P2 UX regression › newsletter validation exposes and clears an accessible error
+  [mobile] › p1-p2-ux.spec.ts:26:7 › P1-P2 UX regression › contact dialog preloads its QR, traps focus, and restores the trigger
+  [mobile] › p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact
+  [mobile] › p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target
+  [mobile] › p1-p2-ux.spec.ts:122:7 › P1-P2 UX regression › space defaults to CUBXXW OS and switches to Product Lab and back
+  [mobile] › p1-p2-ux.spec.ts:156:7 › P1-P2 UX regression › BEAR OS product search uses workspace search and restores the selected product
+  [mobile] › p1-p2-ux.spec.ts:205:7 › P1-P2 UX regression › Space language changes preserve private work and the open article
+  [mobile] › p1-p2-ux.spec.ts:246:9 › P1-P2 UX regression › Space preserves work when local storage fails during a language change
+  [mobile] › p1-p2-ux.spec.ts:246:9 › P1-P2 UX regression › Space preserves work when session storage fails during a language change
+  [mobile] › p1-p2-ux.spec.ts:278:7 › P1-P2 UX regression › Product Lab can enter BEAR knowledge space and return without leaving lab
+  [mobile] › p1-p2-ux.spec.ts:303:7 › P1-P2 UX regression › an already open global search owns shortcuts above the BEAR workspace
+  [mobile] › p1-p2-ux.spec.ts:323:7 › P1-P2 UX regression › knowledge space stays closed when the reader exits before its module loads
+  [mobile] › p1-p2-ux.spec.ts:342:7 › P1-P2 UX regression › a pending knowledge mount cannot clear an immediate reopen or a later BEAR view
+  [mobile] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › / side index waits for reading, recedes at rest, and returns on intent
+  [mobile] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/ side index waits for reading, recedes at rest, and returns on intent
+  [mobile] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /about/ side index waits for reading, recedes at rest, and returns on intent
+  [mobile] › page-wayfinder.spec.ts:6:9 › Home and About reading navigation › /zh/about/ side index waits for reading, recedes at rest, and returns on intent
+  [mobile] › page-wayfinder.spec.ts:38:7 › Home and About reading navigation › side index remains accessible without scripts and with reduced motion
+  [mobile] › page-wayfinder.spec.ts:65:9 › Home and About reading navigation › / reading index leaves content unobstructed at every width
+  [mobile] › page-wayfinder.spec.ts:65:9 › Home and About reading navigation › /about/ reading index leaves content unobstructed at every width
+  [mobile] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/ native index, focus, and scroll position
+  [mobile] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › en/about/ native index, focus, and scroll position
+  [mobile] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/ native index, focus, and scroll position
+  [mobile] › page-wayfinder.spec.ts:101:11 › Home and About reading navigation › /zh/about/ native index, focus, and scroll position
+  [mobile] › page-wayfinder.spec.ts:139:7 › Home and About reading navigation › About deep links and Enter navigation work with ordinary motion
+  [mobile] › page-wayfinder.spec.ts:159:7 › Home and About reading navigation › homepage primary routes and navigation remain usable without JavaScript
+  [mobile] › page-wayfinder.spec.ts:199:7 › /about/ a short final destination stays current at the native document boundary
+  [mobile] › page-wayfinder.spec.ts:199:7 › /zh/about/ a short final destination stays current at the native document boundary
+  [mobile] › performance-pages.spec.ts:4:7 › /ai-agent/ keeps responsive channel layout and theme after CSS scoping
+  [mobile] › performance-pages.spec.ts:4:7 › /zh/ai-agent/ keeps responsive channel layout and theme after CSS scoping
+  [mobile] › performance-pages.spec.ts:4:7 › /engineering/ keeps responsive channel layout and theme after CSS scoping
+  [mobile] › performance-pages.spec.ts:4:7 › /zh/engineering/ keeps responsive channel layout and theme after CSS scoping
+  [mobile] › performance-pages.spec.ts:4:7 › /columns/agent-engineering/ keeps responsive channel layout and theme after CSS scoping
+  [mobile] › performance-pages.spec.ts:4:7 › /zh/columns/agent-engineering/ keeps responsive channel layout and theme after CSS scoping
+  [mobile] › product-entry-contracts.spec.ts:11:7 › Chinese home introduction opens the actual products app in the current tab
+  [mobile] › product-entry-contracts.spec.ts:11:7 › English home products section opens the actual products app in the current tab
+  [mobile] › product-entry-contracts.spec.ts:11:7 › Chinese shared footer opens the actual products app in the current tab
+  [mobile] › product-entry-contracts.spec.ts:30:5 › the unqualified Space entrance still begins in the café in both languages
+  [mobile] › search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [mobile] › search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [mobile] › search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [mobile] › search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+  [mobile] › search-index-contracts.spec.ts:80:37 › zh status text size 200% keeps the same Retry target through loading and timeout
+  [mobile] › search-index-contracts.spec.ts:80:37 › en status text size 200% keeps the same Retry target through loading and timeout
+  [mobile] › search-index-contracts.spec.ts:90:80 › a late fetch-failure cannot overwrite the newer successful index
+  [mobile] › search-index-contracts.spec.ts:90:80 › a late json-failure cannot overwrite the newer successful index
+  [mobile] › search-index-contracts.spec.ts:90:80 › a late json-success cannot overwrite the newer successful index
+  [mobile] › search-index-contracts.spec.ts:101:52 › the 15000ms total index deadline also releases a non-cooperating headers stage
+  [mobile] › search-index-contracts.spec.ts:101:52 › the 15000ms total index deadline also releases a non-cooperating json stage
+  [mobile] › search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner
+  [mobile] › search-index-contracts.spec.ts:127:5 › pagehide and pageshow preserve a completed AI conversation, its draft and the next follow-up context
+  [mobile] › search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article
+  [mobile] › search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query
+  [mobile] › search-index-contracts.spec.ts:160:67 › synthetic pagehide/pageshow leaves pending-headers AI recoverably stopped with its question and completed context
+  [mobile] › search-index-contracts.spec.ts:160:67 › synthetic pagehide/pageshow leaves partial-sse AI recoverably stopped with its question and completed context
+  [mobile] › series-hub-routes.spec.ts:5:9 › /personal-agent-product-delegation retains the series name without an unpublished hub link
+  [mobile] › series-hub-routes.spec.ts:5:9 › /personal-agent-harness-openclaw retains the series name without an unpublished hub link
+  [mobile] › series-hub-routes.spec.ts:14:7 ›  an existing series hub keeps its real link
+  [mobile] › series-hub-routes.spec.ts:5:9 › /zh/personal-agent-product-delegation retains the series name without an unpublished hub link
+  [mobile] › series-hub-routes.spec.ts:5:9 › /zh/personal-agent-harness-openclaw retains the series name without an unpublished hub link
+  [mobile] › series-hub-routes.spec.ts:14:7 › /zh an existing series hub keeps its real link
+  [mobile] › space-app-reading-contracts.spec.ts:52:7 › 320×844 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+  [mobile] › space-app-reading-contracts.spec.ts:52:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links
+  [mobile] › space-app-reading-contracts.spec.ts:52:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links
+  [mobile] › space-app-reading-contracts.spec.ts:52:7 › 844×390 en dark products and books › real choices retain focus, readable content and distinct reachable reading links
+  [mobile] › space-app-reading-contracts.spec.ts:52:7 › 1440×900 zh light products and books › real choices retain focus, readable content and distinct reachable reading links
+  [mobile] › space-app-reading-contracts.spec.ts:52:7 › 1440×900 en dark products and books › real choices retain focus, readable content and distinct reachable reading links
+  [mobile] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 3 windows use overview without rewriting their documents or geometry
+  [mobile] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 3 windows use overview without rewriting their documents or geometry
+  [mobile] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › zh 4 windows use overview without rewriting their documents or geometry
+  [mobile] › space-arrangement-contracts.spec.ts:35:64 › limited landscape workspace › en 4 windows use overview without rewriting their documents or geometry
+  [mobile] › space-arrangement-contracts.spec.ts:76:30 › a 1440×900 desktop tiles 2 windows with reachable controls and the original note
+  [mobile] › space-arrangement-contracts.spec.ts:76:30 › a 1440×900 desktop tiles 4 windows with reachable controls and the original note
+  [mobile] › space-boundary-contracts.spec.ts:19:37 › short-screen window close and compact café navigation have separate real hit targets in zh
+  [mobile] › space-boundary-contracts.spec.ts:19:37 › short-screen window close and compact café navigation have separate real hit targets in en
+  [mobile] › space-boundary-contracts.spec.ts:36:5 › all map controls remain 44px and clickable in the 600–640px boundary
+  [mobile] › space-boundary-contracts.spec.ts:48:7 › coarse landscape pointer › window chrome and every map control provide an actual 44px touch target
+  [mobile] › space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [mobile] › space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [mobile] › space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+  [mobile] › space-cafe-details-contracts.spec.ts:55:5 › the actual cup and book raycasts enter the same detail views; a drag retains the computer hit instead of creating a click
+  [mobile] › space-cafe-details-contracts.spec.ts:62:5 › six scene changes and both detail views preserve the original Notes node, draft and selection through the live workspace
+  [mobile] › space-cafe-details-contracts.spec.ts:70:5 › runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop
+  [mobile] › space-cafe-details-contracts.spec.ts:76:5 › a held then failed latte image never blocks the first room; simulated context loss restores the same Notes document
+  [mobile] › space-cafe.spec.ts:7:7 › Space café › the café entry offers six scenes, then opens the real workspace search
+  [mobile] › space-cafe.spec.ts:21:7 › Space café › the landscape room controls stay clickable at low height
+  [mobile] › space-cafe.spec.ts:33:7 › Space café › an old About route can return to the room across language and reload
+  [mobile] › space-cafe.spec.ts:44:7 › Space café › visiting the room preserves the exact note editor and private workspace
+  [mobile] › space-media-legibility-contracts.spec.ts:48:7 › 1440px zh image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success
+  [mobile] › space-media-legibility-contracts.spec.ts:48:7 › 390px en image recovery › 404 recovery keeps one stable reachable Retry; only its remaining focus owner receives decoded success
+  [mobile] › space-media-legibility-contracts.spec.ts:67:5 › completed 404 retry and detached events cannot overwrite another reopened photo; synthetic complete/error is a separate branch
+  [mobile] › space-media-legibility-contracts.spec.ts:91:7 › phone native photo navigation › Next Enter then ArrowRight and Escape retain the existing window keyboard route and Notes node
+  [mobile] › space-media-legibility-contracts.spec.ts:99:5 › the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work
+  [mobile] › space-preferences-contact-contracts.spec.ts:45:7 › 320×844 zh light preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [mobile] › space-preferences-contact-contracts.spec.ts:45:7 › 390×844 en light preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [mobile] › space-preferences-contact-contracts.spec.ts:45:7 › 620×844 zh dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [mobile] › space-preferences-contact-contracts.spec.ts:45:7 › 844×390 en dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [mobile] › space-preferences-contact-contracts.spec.ts:45:7 › 1440×900 zh light preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [mobile] › space-preferences-contact-contracts.spec.ts:45:7 › 1440×900 en dark preferences and contact › preferences update in place while drafts, status and real channel destinations survive
+  [mobile] › space-preferences-contact-contracts.spec.ts:137:7 › pending settings status lifecycle › closing aborts the owned check and a late result cannot update a new mount
+  [mobile] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 320×844
+  [mobile] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 390×844
+  [mobile] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 568×320
+  [mobile] › space-reading-contracts.spec.ts:20:7 › Space reading, controls and private input remain usable at 1440×900
+  [mobile] › space-reading-contracts.spec.ts:72:5 › the unscaled graphics fallback retains its reading type sizes
+  [mobile] › space-wallpaper-contracts.spec.ts:41:7 › 1440×900 zh live monitor wallpaper › all six existing colors reach the monitor without recoloring documents or replacing editors
+  [mobile] › space-wallpaper-contracts.spec.ts:41:7 › 390×844 en live monitor wallpaper › all six existing colors reach the monitor without recoloring documents or replacing editors
+  [mobile] › space-wallpaper-contracts.spec.ts:82:7 › graphics recovery desktop › forced WebGL failure keeps the original visible six-color landscape palette
+  [mobile] › travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 320px
+  [mobile] › travel-composer-contracts.spec.ts:5:7 › book prompts and Send/Stop have room for touch at 390px
+  [mobile] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in zh at 568×320
+  [mobile] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in en at 568×320
+  [mobile] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in zh at 568×256
+  [mobile] › travel-composer-contracts.spec.ts:43:7 › book conversation scrolls inside its card in en at 568×256
+  [mobile] › travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / reduce › both full portraits contain focus, restore the opener and survive immediate reopen
+  [mobile] › travel-qr-contracts.spec.ts:53:7 › actual Chinese QR channels at 390px / no-preference › both full portraits contain focus, restore the opener and survive immediate reopen
+  [mobile] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / reduce › both complete portrait posters and the real close target fit the bounded card
+  [mobile] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×256 / no-preference › both complete portrait posters and the real close target fit the bounded card
+  [mobile] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / reduce › both complete portrait posters and the real close target fit the bounded card
+  [mobile] › travel-qr-contracts.spec.ts:78:7 › short landscape 568×224 / no-preference › both complete portrait posters and the real close target fit the bounded card
+  [mobile] › travel-qr-contracts.spec.ts:91:7 › runtime preference and page lifecycle › runtime reduce completes entrance, immediate close cancels its frame, and pagehide restores overflow
+  [mobile] › travel-qr-contracts.spec.ts:109:7 › unavailable image transport › pending and 404 images keep real metadata and close usable without reopening later
+  [mobile] › travel-qr-contracts.spec.ts:125:5 › the actual English Travel page keeps its four non-QR channels
+  [mobile] › travel-qr-contracts.spec.ts:173:46 › local image recovery › 404 retries keep a stable portrait region and respect retry focus on success
+  [mobile] › travel-qr-contracts.spec.ts:173:46 › local image recovery › 404 retries keep a stable portrait region and respect details focus on success
+  [mobile] › travel-qr-contracts.spec.ts:202:7 › local image recovery › the 15-second deadline clears each old node and cannot overwrite a later attempt
+  [mobile] › travel-qr-contracts.spec.ts:226:7 › local image recovery › closing a pending image clears its owned listeners and a late old event cannot replace the next channel
+  [mobile] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×256 / reduce › failure, the account and a 44px retry remain readable and reachable for both channels
+  [mobile] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×256 / no-preference › failure, the account and a 44px retry remain readable and reachable for both channels
+  [mobile] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×224 / reduce › failure, the account and a 44px retry remain readable and reachable for both channels
+  [mobile] › travel-qr-contracts.spec.ts:243:7 › image failure at 568×224 / no-preference › failure, the account and a 44px retry remain readable and reachable for both channels
+  [mobile] › us026-fonts.spec.ts:7:7 › US-026 Font loading › EN article page: post-title uses Fraunces as first font
+  [mobile] › us026-fonts.spec.ts:21:7 › US-026 Font loading › ZH article title and prose retain a self-hosted CJK fallback
+  [mobile] › us026-fonts.spec.ts:39:7 › US-026 Font loading › ZH page head contains Noto Serif SC font link
+  [mobile] › us026-fonts.spec.ts:45:7 › US-026 Font loading › EN page head does NOT contain Noto Serif SC font link
+  [mobile] › us026-fonts.spec.ts:51:7 › US-026 Font loading › EN page head contains Fraunces font link
+  [mobile] › us027-layout.spec.ts:23:5 › desktop-1680: EN article has article-layout grid
+  [mobile] › us027-layout.spec.ts:31:5 › desktop-1680: ZH article has article-layout grid
+  [mobile] › us027-layout.spec.ts:40:5 › tablet-1024: article renders without overflow
+  [mobile] › us027-layout.spec.ts:48:5 › mobile-414: article renders in single column
+  [mobile] › us027-layout.spec.ts:58:5 › no console errors on EN article
+  [mobile] › us027-layout.spec.ts:68:5 › no console errors on ZH article
+  [mobile] › us028-marginalia.spec.ts:23:5 › EN desktop: marginalia visible with English labels
+  [mobile] › us028-marginalia.spec.ts:35:5 › ZH desktop: marginalia visible with Chinese labels
+  [mobile] › us028-marginalia.spec.ts:47:5 › EN mobile: compact marginalia visible, aside hidden
+  [mobile] › us028-marginalia.spec.ts:58:5 › ZH mobile: compact marginalia visible
+  [mobile] › us028-marginalia.spec.ts:66:5 › EN: marginalia date formatted as English
+  [mobile] › us028-marginalia.spec.ts:75:5 › ZH: marginalia date formatted as Chinese
+  [mobile] › us028-marginalia.spec.ts:85:5 › EN: no console errors
+  [mobile] › us028-marginalia.spec.ts:95:5 › ZH: no console errors
+  [mobile] › us029-typography.spec.ts:25:5 › EN: post-title uses display font (Fraunces)
+  [mobile] › us029-typography.spec.ts:36:5 › ZH: post-title uses display font (Noto Serif SC or fallback)
+  [mobile] › us029-typography.spec.ts:48:5 › EN: post-title has large font size
+  [mobile] › us029-typography.spec.ts:59:5 › ZH: post-title has heavy font weight
+  [mobile] › us029-typography.spec.ts:69:5 › EN: post-description is italic
+  [mobile] › us029-typography.spec.ts:83:5 › EN: first paragraph has drop-cap class
+  [mobile] › us029-typography.spec.ts:91:5 › ZH: first paragraph has drop-cap class
+  [mobile] › us029-typography.spec.ts:99:5 › EN: inline code has accent-soft background
+  [mobile] › us029-typography.spec.ts:114:5 › EN: 0 console errors
+  [mobile] › us029-typography.spec.ts:124:5 › ZH: 0 console errors
+  [mobile] › us030-editorial-tools.spec.ts:20:5 › EN desktop: article-tools visible at 1680px
+  [mobile] › us030-editorial-tools.spec.ts:28:5 › ZH desktop: article-tools visible at 1680px
+  [mobile] › us030-editorial-tools.spec.ts:36:5 › EN: tools tab shows English group names
+  [mobile] › us030-editorial-tools.spec.ts:45:5 › ZH: tools panel shows Chinese group names
+  [mobile] › us030-editorial-tools.spec.ts:54:5 › EN: TOC items are rendered in editorial tools
+  [mobile] › us030-editorial-tools.spec.ts:68:5 › EN: clicking AI tab shows AI input panel
+  [mobile] › us030-editorial-tools.spec.ts:81:5 › ZH: AI textarea placeholder is in Chinese
+  [mobile] › us030-editorial-tools.spec.ts:93:5 › tools hidden at 1024px viewport
+  [mobile] › us030-editorial-tools.spec.ts:100:5 › EN: 0 console errors
+  [mobile] › us030-editorial-tools.spec.ts:109:5 › ZH: 0 console errors
+  [mobile] › us031-bottom-sheet.spec.ts:21:5 › EN 375px: FAB is present in DOM
+  [mobile] › us031-bottom-sheet.spec.ts:32:5 › EN 414px: FAB is present in DOM
+  [mobile] › us031-bottom-sheet.spec.ts:44:5 › EN 375px: bottom sheet opens on FAB click
+  [mobile] › us031-bottom-sheet.spec.ts:61:5 › EN 414px: bottom sheet opens on FAB click
+  [mobile] › us031-bottom-sheet.spec.ts:78:5 › EN 375px: bottom sheet closes on overlay click
+  [mobile] › us031-bottom-sheet.spec.ts:100:5 › EN: bottom sheet has TOC / AI / Share tabs
+  [mobile] › us031-bottom-sheet.spec.ts:110:5 › ZH: bottom sheet has TOC / AI / Share tabs
+  [mobile] › us031-bottom-sheet.spec.ts:122:5 › FAB hidden on desktop (1680px)
+  [mobile] › us031-bottom-sheet.spec.ts:130:5 › open sheet clears modal state when resized to desktop
+  [mobile] › us031-bottom-sheet.spec.ts:155:5 › EN 375px: mobile compact marginalia visible
+  [mobile] › us031-bottom-sheet.spec.ts:161:5 › ZH 375px: mobile compact marginalia visible
+  [mobile] › us031-bottom-sheet.spec.ts:169:5 › 0 console errors on EN mobile
+  [mobile] › us031-bottom-sheet.spec.ts:178:5 › 0 console errors on ZH mobile
+  [mobile] › us032-dark-mode.spec.ts:30:5 › EN light: --color-accent is dark olive (not dark override)
+  [mobile] › us032-dark-mode.spec.ts:46:5 › EN dark: --color-paper is dark (#121413)
+  [mobile] › us032-dark-mode.spec.ts:58:5 › EN dark: --color-ink is light (#e2e3e1)
+  [mobile] › us032-dark-mode.spec.ts:70:5 › EN dark: --color-accent is sky blue (#7dd3fc)
+  [mobile] › us032-dark-mode.spec.ts:82:5 › EN dark: drop-cap uses var(--color-accent) — color changes with dark
+  [mobile] › us032-dark-mode.spec.ts:99:5 › EN dark: full page screenshot
+  [mobile] › us032-dark-mode.spec.ts:109:5 › ZH light: --color-accent is crimson (#862122)
+  [mobile] › us032-dark-mode.spec.ts:122:5 › ZH dark: --color-paper is warm dark (#1c1917)
+  [mobile] › us032-dark-mode.spec.ts:134:5 › ZH dark: --color-ink is warm white (#f5f3ee)
+  [mobile] › us032-dark-mode.spec.ts:146:5 › ZH dark: --color-accent is red (#ff6b6b)
+  [mobile] › us032-dark-mode.spec.ts:158:5 › ZH dark: full page screenshot
+  [mobile] › us032-dark-mode.spec.ts:168:5 › EN: dark class toggle changes --color-paper token
+  [mobile] › us032-dark-mode.spec.ts:193:5 › ZH dark: h2 uses light ink with no decorative left border
+  [mobile] › us032-dark-mode.spec.ts:210:5 › EN dark: 0 console errors
+  [mobile] › us032-dark-mode.spec.ts:223:5 › ZH dark: 0 console errors
+  [mobile] › visual/aesthetic-agent.spec.ts:32:5 › en-light-desktop: EN article title uses Fraunces
+  [mobile] › visual/aesthetic-agent.spec.ts:50:5 › en-light-mobile: EN article renders on mobile
+  [mobile] › visual/aesthetic-agent.spec.ts:64:5 › zh-light-desktop: ZH article title uses Noto Serif SC
+  [mobile] › visual/aesthetic-agent.spec.ts:78:5 › zh-light-mobile: ZH article renders on mobile
+  [mobile] › visual/aesthetic-agent.spec.ts:92:5 › en-dark-desktop: EN dark mode applies correct tokens
+  [mobile] › visual/aesthetic-agent.spec.ts:113:5 › en-dark-mobile: EN dark mobile renders without errors
+  [mobile] › visual/aesthetic-agent.spec.ts:127:5 › zh-dark-desktop: ZH dark mode applies correct tokens
+  [mobile] › visual/aesthetic-agent.spec.ts:148:5 › zh-dark-mobile: ZH dark mobile renders without errors
+  [mobile] › visual/aesthetic-agent.spec.ts:162:5 › generate comparison report
+Total: 758 tests in 52 files

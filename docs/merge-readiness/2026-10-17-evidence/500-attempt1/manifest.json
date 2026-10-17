@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-17T08:42:44.132571+00:00",
+  "head": "500bcc79252321dfd18eab26519c408f96440f80",
+  "base": "9a909dfdbbb64505d34e68a1b47d1ae4fd059192",
+  "run": 39015837987,
+  "attempt": 1,
+  "job": 117347649690,
+  "conclusion": "cancelled",
+  "artifact": {
+    "id": 12094869744,
+    "reportedBytes": 19066872,
+    "centralMembers": 17,
+    "selectedMembers": 15,
+    "selectedCRCBytesSHAVerified": true,
+    "fullZipDownloaded": false,
+    "fullZipDigestVerified": false,
+    "limitation": "Whole ZIP download failed after 16/19 in-memory chunks due TLS unexpected EOF. No complete ZIP or full-artifact digest claim; selected members fetched by exact byte range and individually verified against ZIP central CRC/bytes/SHA."
+  },
+  "rawLog": {
+    "bytes": 851215,
+    "sha256": "1b92789365169bcdf45211c928f7979ccf6dcdc2075e289515af80bca35c6fb3"
+  },
+  "files": [
+    {
+      "file": "reports.tar.gz",
+      "bytes": 92367,
+      "sha256": "3963d748600c6764086522ceb930f3c2b55f13bfbdfcff423c2959e7e45375eb"
+    },
+    {
+      "file": "cancelled.log.gz",
+      "bytes": 98616,
+      "sha256": "de83e71a264d77d8e1a4db3d3f5acd2f927c1ad6bcf4d5a6057cd00f0b1d55bd"
+    },
+    {
+      "file": "artifact-500-fast-central.json",
+      "bytes": 3865,
+      "sha256": "88c6149dc6dd77898c3b7ceda29e6db6467f77e836add6593b10a34ee155260f"
+    },
+    {
+      "file": "artifact-500-fast-entries.json",
+      "bytes": 4639,
+      "sha256": "4e269e1159e1001378969ad7c7f2840da6e88dfa951d9f964432e90eb95f21e4"
+    }
+  ],
+  "actualResults": {
+    "nodePassed": 325,
+    "qualityBrowserPassed": 48,
+    "legacyComplete": false,
+    "legacyLastPrintedTest": 335,
+    "legacyLastPrintedAtUTC": "2026-10-17T08:32:31Z",
+    "strictLibraryFirstAttemptPassedSeconds": [
+      43.0,
+      41.7
+    ],
+    "storageFailureFirstAttemptPassedSeconds": {
+      "localStorage": 20.2,
+      "sessionStorage": 35.9
+    },
+    "englishCoarseNativeFootnote": {
+      "firstAttempt": "failed: expected scrollY3373 received22407; 5s poll, precision0",
+      "retry1": "passed in9.8s",
+      "firstFailedBackNumber": "unverified",
+      "rootCause": "unverified",
+      "retainedTrace": "only successful retry1, not fetched; cannot locate first-failure Back"
+    }
+  },
+  "cancellationCorrection": "Parent mistook stale live GitHub log page at test313/08:24:11 for execution stall and cancelled prematurely. Completed raw log proves storage cases314/315 passed and progress through335 at08:32:31. No evidence of storage hang; previous assumption withdrawn.",
+  "reviewCorrection": "Current mobileLabels includes settings. Reviewer withdrew hidden-Settings fixture defect; no test/production edit justified by that hypothesis.",
+  "nativeArticleEvidence": "../500-native-article/readback.json",
+  "next": "Attempt2 of same frozen head started08:39:57UTC; full required gate pending. Keep original footnote actions and5s/.5px; do not claim root fix from retry.",
+  "originalPermanentManifest": {
+    "path": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261015-210720-6087ab60/merge-ci-evidence/2026-10-17-500-attempt1/manifest.json",
+    "sha256": "576109f07245f5bcef90ee458537eda42df9984c5b027f012f0bdc4751127948"
+  }
+}

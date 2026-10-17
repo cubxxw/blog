@@ -1,0 +1,26 @@
+{
+  "head": "500bcc79252321dfd18eab26519c408f96440f80",
+  "url": "https://6ad32b74f784be315a678481--cubxxw.netlify.app/zh/engineering/posts/go-release-tools/",
+  "open": {
+    "activeId": "abs-tab-toc",
+    "documentWidth": 390,
+    "expanded": "true",
+    "sheetHidden": "false",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "closed": {
+    "activeId": "article-fab",
+    "documentWidth": 390,
+    "expanded": "false",
+    "scrollY": 844,
+    "sheetHidden": "true"
+  },
+  "limitations": [
+    "One real390x844 article TOC open/Escape smoke only. No audio published fixture or real model request tested; fullCI still required.",
+    "TOC entry intentionally appears after entering正文; initial header click was not an open-state pass.",
+    "Initial navigation timed out waiting but actual page finished loading; dev error/warn log empty."
+  ]
+}

@@ -1,0 +1,155 @@
+[
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-300-89f0e8104106ea429ffb7b82993d7f3828e800d0.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2956629220,
+    "compressed": 2374,
+    "bytes": 26981,
+    "localOffset": 0
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-300.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2956629220,
+    "compressed": 2374,
+    "bytes": 26981,
+    "localOffset": 2594
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/attachments/library-native-wheel-850-44ae59bb13ba140980e146d08fae46698b7e86b4.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 1387158005,
+    "compressed": 2367,
+    "bytes": 26911,
+    "localOffset": 5135
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-0d5ae-s-a-new-real-reading-scroll-desktop/library-native-wheel-850.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 1387158005,
+    "compressed": 2367,
+    "bytes": 26911,
+    "localOffset": 7722
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/attachments/library-native-wheel-850-673ed2035d7162a655974b9e721bb514f08adb88.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 1105058287,
+    "compressed": 2368,
+    "bytes": 27089,
+    "localOffset": 10256
+  },
+  {
+    "name": "browser/legacy/results/00-space-library-profile-c-6d9e8-ks-keep-their-own-documents-desktop/library-native-wheel-850.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 1105058287,
+    "compressed": 2368,
+    "bytes": 27089,
+    "localOffset": 12844
+  },
+  {
+    "name": "browser/legacy/results/footnote-preview-contracts-e0941-ain-native-history-and-Back-desktop/error-context.md",
+    "flags": 8,
+    "method": 8,
+    "crc32": 4218938427,
+    "compressed": 24189,
+    "bytes": 94930,
+    "localOffset": 15379
+  },
+  {
+    "name": "browser/legacy/results/footnote-preview-contracts-e0941-ain-native-history-and-Back-desktop-retry1/trace.zip",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3634814807,
+    "compressed": 18723469,
+    "bytes": 18755565,
+    "localOffset": 39722
+  },
+  {
+    "name": "browser/quality/html/index.html",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2639748795,
+    "compressed": 234535,
+    "bytes": 572683,
+    "localOffset": 18763345
+  },
+  {
+    "name": "browser/pages.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 4170702164,
+    "compressed": 91,
+    "bytes": 209,
+    "localOffset": 18997957
+  },
+  {
+    "name": "changes.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 2269126853,
+    "compressed": 16824,
+    "bytes": 296605,
+    "localOffset": 18998112
+  },
+  {
+    "name": "functions-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 27900681,
+    "compressed": 79,
+    "bytes": 96,
+    "localOffset": 19014994
+  },
+  {
+    "name": "plan.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3593397159,
+    "compressed": 245,
+    "bytes": 360,
+    "localOffset": 19015140
+  },
+  {
+    "name": "seo-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 1328484573,
+    "compressed": 76,
+    "bytes": 90,
+    "localOffset": 19015440
+  },
+  {
+    "name": "site/output-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3242033645,
+    "compressed": 5026,
+    "bytes": 34994,
+    "localOffset": 19015577
+  },
+  {
+    "name": "source-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 323995665,
+    "compressed": 43919,
+    "bytes": 200043,
+    "localOffset": 19020672
+  },
+  {
+    "name": "workflow-report.json",
+    "flags": 8,
+    "method": 8,
+    "crc32": 3400014332,
+    "compressed": 79,
+    "bytes": 95,
+    "localOffset": 19064655
+  }
+]
