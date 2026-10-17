@@ -5,6 +5,9 @@ import {
   rename,
   readdir,
   realpath,
+  stat,
+  chmod,
+  unlink,
 } from "node:fs/promises";
 import path from "node:path";
 import { createHash, randomUUID } from "node:crypto";
@@ -51,6 +54,30 @@ async function saveBytes(file, bytes) {
   const temp = file + "." + randomUUID() + ".tmp";
   await writeFile(temp, bytes, { mode: 0o600 });
   await rename(temp, file);
+}
+
+// Public files keep normal permissions. A failed preparation never truncates the target.
+export async function atomicPublicWrite(file, bytes, { mode, expected } = {}) {
+  const previous = await stat(file).catch((error) => {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  });
+  const permissions = mode ?? (previous ? previous.mode & 0o777 : 0o644);
+  const temporary = path.join(
+    path.dirname(file),
+    "." + path.basename(file) + "." + randomUUID() + ".tmp",
+  );
+  try {
+    await writeFile(temporary, bytes, { mode: permissions });
+    await chmod(temporary, permissions);
+    if (expected !== undefined && (await readFile(file, "utf8")) !== expected)
+      throw fail("文章正在编辑，未覆盖正文。请重新确认。");
+    await rename(temporary, file);
+  } finally {
+    await unlink(temporary).catch((error) => {
+      if (error.code !== "ENOENT") throw error;
+    });
+  }
 }
 
 // Read only the requested key; never merge another application's secrets into process.env.
@@ -667,8 +694,10 @@ export async function createAuthorVoice({
     if (hash(bytes) !== j.audioSha256) throw fail("音频文件校验失败。");
     const directory = path.join(root, "static/audio/author");
     await mkdir(directory, { recursive: true });
-    await writeFile(path.join(directory, j.assetId + ".mp3"), bytes);
-    await save(path.join(directory, j.assetId + ".json"), {
+    await atomicPublicWrite(path.join(directory, j.assetId + ".mp3"), bytes, {
+      mode: 0o644,
+    });
+    const publicManifest = {
       version: READER_KINDS.includes(j.kind) ? 2 : 1,
       sectionKey: j.sectionKey,
       sectionTitle: j.sectionTitle,
@@ -683,7 +712,12 @@ export async function createAuthorVoice({
       durationSeconds: j.durationSeconds,
       sha256: j.audioSha256,
       reviewed: true,
-    });
+    };
+    await atomicPublicWrite(
+      path.join(directory, j.assetId + ".json"),
+      JSON.stringify(publicManifest, null, 2) + "\n",
+      { mode: 0o644 },
+    );
     let updated;
     if (READER_KINDS.includes(j.kind)) {
       const keys = Object.keys(source.meta).filter(
@@ -710,6 +744,8 @@ export async function createAuthorVoice({
           id: j.assetId,
           kind: j.kind,
           sectionKey: j.sectionKey,
+          sectionTitle: j.sectionTitle,
+          sectionOccurrence: j.sectionOccurrence,
         }),
       );
     } else {
@@ -723,10 +759,8 @@ export async function createAuthorVoice({
           );
       updated = next + source.body;
     }
-    // Check again after preparing files: do not overwrite an editor's concurrent changes.
-    if ((await readFile(source.actual, "utf8")) !== source.text)
-      throw fail("文章正在编辑，未覆盖正文。请重新确认。");
-    await writeFile(source.actual, updated);
+    // Check after preparing the replacement, immediately before the atomic rename.
+    await atomicPublicWrite(source.actual, updated, { expected: source.text });
     j.published = true;
     await save(path.join(jobsDir, id + ".json"), j);
     return publicJob(j);

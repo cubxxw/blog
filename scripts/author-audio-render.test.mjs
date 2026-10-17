@@ -156,4 +156,23 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
         await readFile(path.join(root, "public", name, "index.html"), "utf8")
       ).includes("data-author-audio"),
     );
+  const subpath = spawnSync(
+    process.env.HUGO_BIN || "hugo",
+    [
+      "--source",
+      root,
+      "--baseURL",
+      "https://example.test/blog/",
+      "--destination",
+      path.join(root, "public-subpath"),
+    ],
+    { encoding: "utf8", timeout: 20000 },
+  );
+  assert.equal(subpath.status, 0, subpath.stdout + subpath.stderr);
+  const nested = await readFile(
+    path.join(root, "public-subpath/ready/index.html"),
+    "utf8",
+  );
+  assert.ok(nested.includes('src="/blog/audio/author/' + id + '.mp3"'));
+  assert.ok(nested.includes('href="/blog/audio/author/' + id + '.mp3"'));
 });

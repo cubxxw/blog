@@ -78,7 +78,9 @@ export function updateAudioTracks(previous, next) {
   const rows = previous.filter(
     (t) =>
       t.kind !== next.kind ||
-      (next.kind === "section" && t.sectionKey !== next.sectionKey),
+      (next.kind === "section" &&
+        (t.sectionTitle !== next.sectionTitle ||
+          t.sectionOccurrence !== next.sectionOccurrence)),
   );
   const ids = [next.id, ...rows.map((t) => t.id)];
   return [...new Set(ids)];

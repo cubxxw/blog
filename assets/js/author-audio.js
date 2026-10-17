@@ -15,6 +15,25 @@
         : localStorage.setItem(key, JSON.stringify(value));
     } catch {}
   };
+  const validSpeed = (value) =>
+    Number.isFinite(value) && value >= 0.25 && value <= 3;
+  function syncSpeedChoice(track, value) {
+    const select = track.querySelector("[data-audio-speed]");
+    if (![...select.options].some((option) => Number(option.value) === value)) {
+      const option = document.createElement("option");
+      option.value = String(value);
+      option.textContent = value + "×";
+      select.append(option);
+    }
+    select.value = String(value);
+  }
+  function applyPreferredSpeed(track) {
+    const value = read("author-audio:speed");
+    if (validSpeed(value)) {
+      track.querySelector("audio").playbackRate = value;
+      syncSpeedChoice(track, value);
+    }
+  }
   const all = () => document.querySelectorAll("[data-author-audio] audio");
   for (const panel of document.querySelectorAll("[data-author-audio]")) {
     if (panel.dataset.audioBound) continue;
@@ -29,11 +48,7 @@
         if (track !== next) track.querySelector("audio").pause();
       }
       current = next;
-      const preferredSpeed = read("author-audio:speed");
-      if ([1, 1.25, 1.5, 2].includes(preferredSpeed)) {
-        next.querySelector("audio").playbackRate = preferredSpeed;
-        next.querySelector("[data-audio-speed]").value = String(preferredSpeed);
-      }
+      applyPreferredSpeed(next);
       if (select) select.value = next.dataset.audioTrack;
       panel.querySelector("[data-audio-label]").textContent =
         next.dataset.audioTitle;
@@ -77,11 +92,7 @@
           "播放时会从上次停下的位置继续。",
           "Playback resumes where you left off.",
         );
-      const savedSpeed = read("author-audio:speed");
-      if ([1, 1.25, 1.5, 2].includes(savedSpeed)) {
-        audio.playbackRate = savedSpeed;
-        speed.value = String(savedSpeed);
-      }
+      applyPreferredSpeed(track);
       let lastSaved = 0;
       const remember = () => {
         if (audio.currentTime >= 5 && !audio.ended)
@@ -107,7 +118,14 @@
       });
       audio.addEventListener("pause", remember);
       audio.addEventListener("ended", () => write(key, null));
+      audio.addEventListener("ratechange", () => {
+        if (validSpeed(audio.playbackRate)) {
+          syncSpeedChoice(track, audio.playbackRate);
+          write("author-audio:speed", audio.playbackRate);
+        }
+      });
       audio.addEventListener("play", () => {
+        applyPreferredSpeed(track);
         for (const other of all()) if (other !== audio) other.pause();
         status.textContent = "";
         if ("mediaSession" in navigator && "MediaMetadata" in window)

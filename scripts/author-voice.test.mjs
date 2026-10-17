@@ -8,6 +8,7 @@ import {
   loadGeminiKey,
   wavInfo,
   joinWav,
+  atomicPublicWrite,
 } from "./lib/author-voice.mjs";
 
 function wav(seconds = 1) {
@@ -567,4 +568,63 @@ test("Google wrapped consent failures are actionable and never trigger automatic
   assert.equal((await f.service.createVoice(input)).status, "failed");
   assert.equal(calls, 1);
   assert.equal((await f.service.state()).voice.ready, false);
+});
+
+test("atomic publication preserves source permissions and leaves concurrent edits intact", async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), "voice-atomic-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const { stat, chmod, readdir } = await import("node:fs/promises");
+  const file = path.join(root, "story.md");
+  await writeFile(file, "original");
+  await chmod(file, 0o640);
+  await atomicPublicWrite(file, "updated", { expected: "original" });
+  assert.equal(await readFile(file, "utf8"), "updated");
+  assert.equal((await stat(file)).mode & 0o777, 0o640);
+  await assert.rejects(
+    atomicPublicWrite(file, "must not replace", { expected: "original" }),
+    /文章正在编辑/,
+  );
+  assert.equal(await readFile(file, "utf8"), "updated");
+  assert.deepEqual(await readdir(root), ["story.md"]);
+  const asset = path.join(root, "public.mp3");
+  await atomicPublicWrite(asset, Buffer.from("fixture"), { mode: 0o644 });
+  assert.equal((await stat(asset)).mode & 0o777, 0o644);
+});
+
+test("republishing a section after inserting earlier prose replaces only that section", async (t) => {
+  const f = await fixture(t, async () => speech());
+  await addVoice(f);
+  const file = path.join(f.root, f.article);
+  await writeFile(
+    file,
+    "---\ntitle: 我的故事\n---\n\n## 第一节\n甲\n## 第二节\n乙\n",
+  );
+  async function publish(index, id) {
+    const s = await f.service.article(f.article);
+    await f.service.generate({
+      requestId: id,
+      article: f.article,
+      kind: "section",
+      sectionKey: s.sections[index].key,
+      text: "确认过的章节说明。",
+    });
+    const j = await settle(f.service, id);
+    assert.equal(j.status, "ready", j.error);
+    await f.service.publish({ id, reviewed: true });
+    return j.assetId;
+  }
+  const oldA = await publish(0, "shift-first");
+  const oldB = await publish(1, "shift-second");
+  const text = await readFile(file, "utf8");
+  await writeFile(
+    file,
+    text.replace("## 第一节", "前面新增的文字。\n\n## 第一节"),
+  );
+  const newA = await publish(0, "shift-first-new");
+  assert.notEqual(newA, oldA);
+  const { parse } = await import("yaml");
+  const ids = parse(
+    (await readFile(file, "utf8")).split("---")[1],
+  ).authorAudioTracks;
+  assert.deepEqual(ids, [newA, oldB]);
 });

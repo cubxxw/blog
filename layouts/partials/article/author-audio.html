@@ -55,7 +55,7 @@
         {{- $audio := .audio -}}
         {{- $seconds := int (math.Round $audio.durationSeconds) -}}
         {{- $duration := printf "%d:%02d" (int (math.Floor (div $seconds 60.0))) (mod $seconds 60) -}}
-        {{- $src := printf "/audio/author/%s.mp3" .id | relURL -}}
+        {{- $src := printf "audio/author/%s.mp3" .id | relURL -}}
         <section data-audio-track="{{ .id }}" data-audio-title="{{ .title }}" data-audio-length="{{ $duration }}"{{ with .anchor }} data-audio-anchor="{{ . }}"{{ end }} aria-label="{{ .title }}">
           <p class="author-audio-origin">{{ if eq $audio.origin "recorded" }}{{ if $zh }}作者原声{{ else }}Recorded by the author{{ end }}{{ else }}{{ if $zh }}作者音色合成 · 内容经作者核对{{ else }}Author's AI voice · Content reviewed by the author{{ end }}{{ end }} · {{ $duration }}</p>
           {{- if ne $sourceHash $audio.sourceHash }}<p class="author-audio-stale">{{ if $zh }}正文已更新，这段声音对应较早的文章版本。{{ else }}The article has changed since this audio was prepared.{{ end }}</p>{{ end -}}

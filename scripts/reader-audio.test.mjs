@@ -55,3 +55,35 @@ test("publishing another reader mode retains existing tracks and replaces only t
     }),
   );
 });
+
+test("section replacement survives line shifts and does not remove another section at the same old line", () => {
+  const a = "a".repeat(64),
+    b = "b".repeat(64),
+    c = "c".repeat(64);
+  const previous = [
+    {
+      id: a,
+      kind: "section",
+      sectionKey: "s2",
+      sectionTitle: "First",
+      sectionOccurrence: 1,
+    },
+    {
+      id: b,
+      kind: "section",
+      sectionKey: "s4",
+      sectionTitle: "Second",
+      sectionOccurrence: 1,
+    },
+  ];
+  assert.deepEqual(
+    updateAudioTracks(previous, {
+      id: c,
+      kind: "section",
+      sectionKey: "s4",
+      sectionTitle: "First",
+      sectionOccurrence: 1,
+    }),
+    [c, b],
+  );
+});
