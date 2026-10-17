@@ -12,7 +12,7 @@
   <div class="hp-page">
 
     {{/* ── Hero ─────────────────────────────────────────── */}}
-    <section class="hp-hero" id="hp-about" data-home-conversation>
+    <section class="hp-hero{{ if $capabilities.ai }} hp-hero--with-bear{{ end }}" id="hp-about" data-home-conversation>
       <div class="hp-hero-intro">
         <h1>
           <span class="hp-hero-name-row">

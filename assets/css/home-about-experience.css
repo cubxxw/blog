@@ -53,7 +53,8 @@
 }
 
 /* Give the visitor an immediate route into the work; keep Bear's identity. */
-.homepage-root .hp-hero { padding: 48px 0 44px; gap: 24px 48px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-areas: "intro bear" "social bear"; align-items: center; }
+.homepage-root .hp-hero { padding: 48px 0 44px; gap: 24px 48px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "social"; align-items: center; }
+.homepage-root .hp-hero--with-bear { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-areas: "intro bear" "social bear"; }
 .hp-hero-intro { grid-area: intro; min-width: 0; }
 .homepage-root .hp-hero > .hp-bear-orbit-wrap { grid-area: bear; min-width: 0; }
 .homepage-root .hp-hero h1 { font-size: clamp(42px, 4.4vw, 64px); line-height: 1.06; }
@@ -100,7 +101,7 @@
 }
 @media (max-width: 768px) {
   .homepage-root .hp-hero { min-height: 0; padding: 38px 0 32px; gap: 28px; }
-  .homepage-root .hp-hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "social" "bear"; }
+  .homepage-root .hp-hero--with-bear { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "social" "bear"; }
   .homepage-root .hp-hero h1 { font-size: clamp(32px, 8.5vw, 48px); }
   .homepage-root .hp-hero-motto { font-size: 23px; }
   /* Content determines button height, never which row a late font uses. */

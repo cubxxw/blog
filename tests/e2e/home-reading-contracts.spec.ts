@@ -120,6 +120,23 @@ for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
   });
 }
 
+test('hero grid follows rendered capability without empty columns or rows', async ({ page }) => {
+  for (const locale of ['zh', 'en']) for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto(home(locale));
+    const hero = page.locator('#hp-about'), hasBear = await hero.locator('#hp-bear-ai').count() === 1;
+    const columns = await hero.evaluate(el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
+    expect(columns).toBe(hasBear && width > 768 ? 2 : 1);
+    if (hasBear) await expect(hero).toHaveClass(/hp-hero--with-bear/);
+    else {
+      await expect(hero).not.toHaveClass(/hp-hero--with-bear/);
+      expect(await hero.evaluate(el => getComputedStyle(el).gridTemplateAreas)).not.toContain('bear');
+      const outer = (await hero.boundingBox())!, intro = (await hero.locator('.hp-hero-intro').boundingBox())!;
+      expect(Math.abs(outer.width - intro.width)).toBeLessThanOrEqual(1);
+    }
+  }
+});
+
 test('hero Bear retains its question, reply and focus across chat reopening', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.route('**/.netlify/functions/blog-ai', route => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ answer: '这是一条用于验证原会话的受控回复。' }) }));

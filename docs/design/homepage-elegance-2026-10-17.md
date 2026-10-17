@@ -48,6 +48,8 @@ editorial identity rather than introducing a new design system.
 - Keep all ten contact targets at 44px with 8px spacing and wrapped grouping.
   Preserve the Chinese no-break word, compact mobile chat, reserved first-paint
   space, product anchor and all existing chat recovery and focus behavior.
+- Enable the two-column hero only when the AI capability renders Bear. The
+  static backup uses intro/social only, including on phones.
 - Size the portrait with its narrow column at 769–1024px, keeping a square
   hit area clear of the side questions without increasing the hero height.
   Check all 36 real prompts in every slot at each desktop/tablet breakpoint,
@@ -56,7 +58,7 @@ editorial identity rather than introducing a new design system.
 ## Local validation
 
 Hugo 0.145.0 extended production minification passed (344 EN / 367 ZH pages).
-The four affected browser suites passed **86 tests** with two workers in 55.6s.
+The four affected browser suites passed **88 tests** with two workers in 53.6s.
 They include both locales and themes at 320, 390, 768, 769, 900, 901, 1024 and 1440px,
 real no-script featured article navigation, ten reachable contact targets,
 contact-dialog focus, deferred chat reservation, chat reply/reopening and
@@ -75,8 +77,9 @@ source/configuration relaxation.
 Independent source review and actual browser inspection found no confirmed
 P0/P1/P2 functional issues. The independent check exercised both locales at
 769, 900, 901, 1024 and 1025px, including mocked long chat replies, control hit testing
-and zero page errors. No-script and backup capability fallbacks were also
-inspected in source; the production test pass does not certify every deployment.
+and zero page errors. An actual static backup build also passed two capability-layout tests, covering
+both locales at 1440/390px: no Bear modifier, no empty column/row and full-width
+introduction. These checks do not certify every deployment.
 
 ## Captures
 
