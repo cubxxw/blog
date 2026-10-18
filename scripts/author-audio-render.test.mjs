@@ -139,6 +139,9 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
   assert.ok(!narrated.includes("内容经作者核对"));
   assert.match(html, /1:12/);
   assert.match(html, /preload="none"/);
+  assert.match(html, /data-audio-copy/);
+  assert.match(html, /data-audio-player/);
+  assert.ok(!html.includes('<details class="author-audio-transcript"'), 'transcript is readable without a second disclosure');
   assert.ok(!html.includes("autoplay"));
   assert.ok(!html.includes("正文已更新"));
   assert.match(html, /&lt;script&gt;/);
@@ -151,11 +154,11 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
     path.join(root, "public/multi/index.html"),
     "utf8",
   );
-  assert.match(multi, /data-audio-track-select/);
+  assert.match(multi, /data-audio-track-button/);
   assert.match(multi, /data-audio-anchor="一个难点"/);
   assert.ok(
-    multi.indexOf('value="' + summaryId + '"') <
-      multi.indexOf('value="' + sectionId + '"'),
+    multi.indexOf('data-audio-track-button="' + summaryId + '"') <
+      multi.indexOf('data-audio-track-button="' + sectionId + '"'),
   );
   assert.ok(decodeURIComponent(multi).includes('href="#一个难点"'));
   for (const name of ["plain", "unreviewed"])

@@ -44,26 +44,44 @@
   {{- $css := resources.Get "css/author-audio.css" | minify | fingerprint -}}
   {{- $js := resources.Get "js/author-audio.js" | minify | fingerprint -}}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-  {{- $firstSeconds := int (math.Round (index . 0).audio.durationSeconds) -}}
-  {{- $firstDuration := printf "%d:%02d" (int (math.Floor (div $firstSeconds 60.0))) (mod $firstSeconds 60) -}}
   <details class="author-audio" data-author-audio>
-    <summary><span class="author-audio-play" aria-hidden="true">▶</span><span data-audio-label>{{ (index . 0).title }}</span><span class="author-audio-duration" data-audio-duration>{{ $firstDuration }}</span></summary>
+    <summary>
+      <span class="author-audio-summary-title">{{ if $zh }}音频讲解{{ else }}Audio explanation{{ end }}</span>
+      <span class="author-audio-summary-hint">{{ if $zh }}含文字稿{{ else }}Transcript included{{ end }}</span>
+      <span class="author-audio-disclosure"><span class="audio-when-closed">{{ if $zh }}展开{{ else }}Open{{ end }}</span><span class="audio-when-open">{{ if $zh }}收起{{ else }}Close{{ end }}</span><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></span>
+    </summary>
     <div class="author-audio-body">
       {{- if gt (len .) 1 }}
-      <label class="author-audio-choice">{{ if $zh }}想听什么{{ else }}Choose what to hear{{ end }} <select data-audio-track-select aria-label="{{ if $zh }}选择音频{{ else }}Choose audio{{ end }}">{{ range . }}<option value="{{ .id }}">{{ .title }}</option>{{ end }}</select></label>
+      <div class="author-audio-choices" role="group" aria-label="{{ if $zh }}选择讲解{{ else }}Choose an explanation{{ end }}" hidden data-audio-choices>
+        {{- range $index, $row := . }}
+        <button type="button" data-audio-track-button="{{ .id }}" aria-pressed="{{ eq $index 0 }}" aria-label="{{ .title }}" title="{{ .title }}">{{ if eq .audio.kind "summary" }}{{ if $zh }}重点{{ else }}Essentials{{ end }}{{ else if eq .audio.kind "dialogue" }}{{ if $zh }}问答{{ else }}Q&amp;A{{ end }}{{ else if eq .audio.kind "section" }}{{ if $zh }}章节{{ else }}Section{{ end }}{{ if gt (len (where $rows "audio.kind" "section")) 1 }} · {{ .audio.sectionTitle }}{{ end }}{{ else }}{{ .title }}{{ end }}</button>
+        {{- end }}
+      </div>
       {{- end }}
       {{- range . -}}
         {{- $audio := .audio -}}
         {{- $seconds := int (math.Round $audio.durationSeconds) -}}
         {{- $duration := printf "%d:%02d" (int (math.Floor (div $seconds 60.0))) (mod $seconds 60) -}}
         {{- $src := printf "audio/author/%s.mp3" .id | relURL -}}
-        <section data-audio-track="{{ .id }}" data-audio-title="{{ .title }}" data-audio-length="{{ $duration }}"{{ with .anchor }} data-audio-anchor="{{ . }}"{{ end }} aria-label="{{ .title }}">
-          <p class="author-audio-origin">{{ if eq $audio.origin "recorded" }}{{ if $zh }}作者原声{{ else }}Recorded by the author{{ end }}{{ else if eq $audio.voiceType "prebuilt" }}{{ if $zh }}AI 旁白{{ else }}AI narration{{ end }}{{ else }}{{ if $zh }}作者音色合成 · 内容经作者核对{{ else }}Author's AI voice · Content reviewed by the author{{ end }}{{ end }} · {{ $duration }}</p>
+        <section data-audio-track="{{ .id }}" data-audio-title="{{ .title }}" data-audio-length="{{ $duration }}" data-audio-seconds="{{ $audio.durationSeconds }}"{{ with .anchor }} data-audio-anchor="{{ . }}"{{ end }} aria-label="{{ .title }}">
+          <h3 class="author-audio-track-title">{{ .title }}</h3>
+          <p class="author-audio-origin">{{ if eq $audio.origin "recorded" }}{{ if $zh }}作者原声{{ else }}Recorded by the author{{ end }}{{ else if eq $audio.voiceType "prebuilt" }}{{ if $zh }}AI 旁白{{ else }}AI narration{{ end }}{{ else }}{{ if $zh }}作者音色合成 · 内容经作者核对{{ else }}Author's AI voice · Content reviewed by the author{{ end }}{{ end }}<span class="author-audio-fallback-duration"> · {{ $duration }}</span></p>
           {{- if ne $sourceHash $audio.sourceHash }}<p class="author-audio-stale">{{ if $zh }}正文已更新，这段声音对应较早的文章版本。{{ else }}The article has changed since this audio was prepared.{{ end }}</p>{{ end -}}
           <audio controls preload="none" aria-label="{{ .title }}"><source src="{{ $src }}" type="audio/mpeg"></audio>
-          <div class="author-audio-tools"><label>{{ if $zh }}倍速{{ else }}Speed{{ end }} <select data-audio-speed aria-label="{{ if $zh }}音频播放速度{{ else }}Audio playback speed{{ end }}"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label><a href="{{ $src }}" download>{{ if $zh }}下载音频{{ else }}Download audio{{ end }}</a>{{ with .anchor }}<a href="#{{ . }}">{{ if $zh }}回到这一节{{ else }}Read this section{{ end }}</a>{{ end }}</div>
+          <div class="author-audio-player" data-audio-player data-state="paused" hidden>
+            <button type="button" class="author-audio-toggle" data-audio-toggle aria-label="{{ if $zh }}播放讲解{{ else }}Play explanation{{ end }}" aria-pressed="false">
+              <svg class="audio-play-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="audio-pause-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+            </button>
+            <div class="author-audio-timeline"><input type="range" min="0" max="{{ $audio.durationSeconds }}" step="0.1" value="0" data-audio-seek aria-label="{{ if $zh }}播放进度{{ else }}Playback position{{ end }}"><span class="author-audio-clock" data-audio-clock aria-hidden="true">0:00 / {{ $duration }}</span></div>
+            <select data-audio-speed aria-label="{{ if $zh }}音频播放速度{{ else }}Audio playback speed{{ end }}"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+          </div>
           <p data-audio-status role="status" aria-live="polite"></p>
-          <details class="author-audio-transcript"><summary>{{ if $zh }}文字稿{{ else }}Transcript{{ end }}</summary><p>{{ $audio.text }}</p></details>
+          <div class="author-audio-transcript">
+            <div class="author-audio-transcript-heading"><h4>{{ if $zh }}文字稿{{ else }}Transcript{{ end }}</h4><button type="button" data-audio-copy hidden>{{ if $zh }}复制文字{{ else }}Copy text{{ end }}</button></div>
+            <div class="author-audio-transcript-text" data-audio-transcript-text>{{ range split $audio.text "\n\n" }}{{ if strings.TrimSpace . }}<p>{{ . }}</p>{{ end }}{{ end }}</div>
+          </div>
+          <div class="author-audio-tools"><a href="{{ $src }}" download>{{ if $zh }}下载音频{{ else }}Download audio{{ end }}</a>{{ with .anchor }}<a href="#{{ . }}">{{ if $zh }}回到这一节{{ else }}Read this section{{ end }}</a>{{ end }}</div>
         </section>
       {{- end }}
     </div>
