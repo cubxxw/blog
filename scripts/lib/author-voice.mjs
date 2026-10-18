@@ -241,7 +241,8 @@ function chunks(text) {
   let tail = text;
   while (tail.length) {
     const units = Array.from(tail);
-    let take = Math.min(units.length, 450);
+    // Keep spoken turns short enough for the per-request provider deadline.
+    let take = Math.min(units.length, 180);
     if (take < units.length) {
       const probe = units.slice(0, take).join(""),
         at = Math.max(
@@ -386,13 +387,15 @@ export async function createAuthorVoice({
   }
   async function provider(route, body, signal) {
     if (!apiKey) throw fail("尚未配置 Gemini 密钥来源。");
+    // The WAV response body can take longer than text, even after HTTP 200.
+    const deadline = AbortSignal.timeout(route === "interactions" ? 180000 : 75000);
     const response = await fetcher(endpoint + route, {
       method: "POST",
       redirect: "error",
       headers: { "x-goog-api-key": apiKey, "Content-Type": "application/json" },
       signal: signal
-        ? AbortSignal.any([signal, AbortSignal.timeout(75000)])
-        : AbortSignal.timeout(75000),
+        ? AbortSignal.any([signal, deadline])
+        : deadline,
       body: JSON.stringify(body),
     });
     if (!response.ok) {

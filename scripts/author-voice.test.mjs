@@ -164,6 +164,28 @@ test("default narration uses Charon without voice enrollment and publishes hones
   assert.equal(manifest.origin, "synthetic");
   assert.ok(!JSON.stringify(manifest).includes("fixture-secret"));
 });
+test("audio transfer gets a longer deadline while text drafting keeps its bounded wait", async (t) => {
+  const deadlines = [];
+  t.mock.method(AbortSignal, "timeout", (ms) => {
+    deadlines.push(ms);
+    return new AbortController().signal;
+  });
+  const f = await fixture(t, async (url) =>
+    url.endsWith("/interactions")
+      ? speech()
+      : Response.json({
+          candidates: [{ finishReason: "STOP", content: { parts: [{ text: "原文的重点。" }] } }],
+        }),
+  );
+  const start = await f.service.generate({
+    requestId: "audio-transfer-budget", article: f.article,
+    kind: "summary", text: "原文的重点。",
+  });
+  assert.equal((await settle(f.service, start.id)).status, "ready");
+  assert.ok(deadlines[0] >= 180000, "audio transfer needs a three-minute budget");
+  await f.service.draft({ requestId: "text-budget", article: f.article, kind: "summary" });
+  assert.equal(deadlines[1], 75000);
+});
 async function addVoice(f) {
   await mkdir(path.join(f.root, ".author-voice"), { recursive: true });
   await writeFile(
@@ -171,6 +193,30 @@ async function addVoice(f) {
     JSON.stringify({ id: "voice_fixture", name: "我的声音" }),
   );
 }
+test("long narration fits bounded provider turns without dropping Unicode text", async (t) => {
+  const submitted = [];
+  const f = await fixture(t, async (_url, options) => {
+    const text = JSON.parse(options.body).input[0].content[0].text;
+    submitted.push(text);
+    // Larger spoken turns exceeded the live provider request deadline.
+    if (Array.from(text).length > 180) throw Error("provider deadline exceeded");
+    return speech();
+  });
+  const text = Array.from({ length: 40 }, (_, i) =>
+    `第${i + 1}次探索🧭与执行需要不同的标准。`,
+  ).join("");
+  const start = await f.service.generate({
+    requestId: "bounded-turns",
+    article: f.article,
+    text,
+    kind: "summary",
+  });
+  const result = await settle(f.service, start.id);
+  assert.equal(result.status, "ready", result.error);
+  assert.equal(submitted.join(""), text);
+  assert.ok(submitted.every((part) => part.endsWith("。")));
+  assert.ok(submitted.every((part) => !part.includes("\uFFFD")));
+});
 test("generation is reusable, keeps the full script, and publication requires review against the same article", async (t) => {
   const calls = [],
     f = await fixture(t, async (url, options) => {
@@ -178,7 +224,9 @@ test("generation is reusable, keeps the full script, and publication requires re
       return speech();
     });
   await addVoice(f);
-  const text = "这是作者的口头补充。".repeat(85),
+  const text = Array.from({ length: 85 }, (_, i) =>
+      `这是作者第${i + 1}条口头补充。`,
+    ).join(""),
     request = {
       requestId: "generate-1",
       article: f.article,

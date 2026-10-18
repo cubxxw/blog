@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "sectionKey": "s25",
+  "sectionTitle": "一张可以复制的任务卡",
+  "sectionOccurrence": 1,
+  "src": "/audio/author/4a23dd324b43e68f0e626eed5b7554bc5af300e76aac685f0e37c9d3b907fde2.mp3",
+  "sourceHash": "a5e2b43d34b76f6fa5ac81878dbc3a4f6ea86592b79370b94bb17c8da532be9c",
+  "title": "给 AI 任务，不只给方向：用完成态把协作落到结果",
+  "text": "这一节讲怎样写出一张可以复制的任务卡。\n\n目标要回答，这次任务解决什么问题，为谁产生什么价值。\n\n输入要说明，AI 可以使用哪些原文、数据、链接与背景，哪些只是参考。\n\n约束要写清，哪些事实、语气、长度、范围和禁区不能改变。\n\n输出要说明，交付物是什么格式，包含哪些部分，放在哪里。\n\n验收要写出，用哪些可以观察的条件判断通过，哪些由脚本检查，哪些由人判断。\n\n最后是停止条件，何时必须暂停并向人确认，最多尝试几轮，缺少证据时怎么处理。\n\n这六格里，最容易漏掉的是停止条件。没有它，Agent 可能在错误假设上继续工作；有了它，“不知道”就成了一次及时交还控制权。",
+  "kind": "section",
+  "origin": "synthetic",
+  "voiceType": "prebuilt",
+  "createdAt": "2026-10-18T06:18:25.373Z",
+  "durationSeconds": 58.68,
+  "sha256": "2df584f7341ff237f4ee48bc94cff06c7ceb3a047c3a0caddb4814a892e7f0c7",
+  "reviewed": true
+}

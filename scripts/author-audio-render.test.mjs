@@ -136,6 +136,7 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
   const narrated = await readFile(path.join(root, "public/narrated/index.html"), "utf8");
   assert.match(narrated, /AI 旁白/);
   assert.ok(!narrated.includes("作者音色合成"));
+  assert.ok(!narrated.includes("内容经作者核对"));
   assert.match(html, /1:12/);
   assert.match(html, /preload="none"/);
   assert.ok(!html.includes("autoplay"));
