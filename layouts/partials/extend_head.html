@@ -29,8 +29,10 @@
 {{- end }}
 
 {{- /* Preconnect hints for external resources */ -}}
+{{- $isChinesePost := and .IsPage (eq .Type "posts") (eq .Lang "zh") -}}
+{{- $needsGoogleFonts := not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding $isChinesePost) -}}
 <link rel="preconnect" href="https://www.googletagmanager.com" />
-{{- if not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding) }}
+{{- if $needsGoogleFonts }}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 {{- end }}
@@ -57,7 +59,7 @@
 {{- /* Google Fonts — async with JavaScript; a direct stylesheet without it.
        The noscript fallback must not rely on an onload handler to apply
        screen styles when scripting is disabled. */ -}}
-{{- if not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding) }}
+{{- if $needsGoogleFonts }}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $baseFonts }}">
 <noscript><link rel="stylesheet" href="{{ $baseFonts }}"></noscript>
 {{- end }}
@@ -70,11 +72,15 @@
        The version is baked into the path (immutable cache) — upgrading the
        font means bumping the directory name in static/fonts/. */ -}}
 {{- if and (eq .Lang "zh") (not (or .IsHome $isLeanAbout $isArticlesLibrary $isProjectsLanding)) }}
-{{- $zhFonts := "/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" | relURL -}}
-{{- /* Register CJK faces as soon as the manifest arrives. Local fonts may
-     be absent; first-screen titles and précis need the webfont fallback. */ -}}
-<link id="zh-prose-fonts" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
-<noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>
+{{- /* Register before text layout, then allow a cold/slow font to keep the
+     platform fallback for this visit. Late font downloads must not move the
+     reader's paragraph. Fingerprint a derived manifest rather than mutate
+     the immutable versioned source shared with older cached pages. */ -}}
+{{- $zhSource := readFile "static/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" -}}
+{{- $zhSource = replace $zhSource "font-display: swap;" "font-display: optional;" -}}
+{{- $zhSource = replace $zhSource "url(./files/" "url(/fonts/noto-serif-sc/v5.2.8/files/" -}}
+{{- $zhFonts := resources.FromString "assets/fonts/noto-serif-sc-reading.css" $zhSource | resources.Minify | fingerprint -}}
+<link id="zh-prose-fonts" rel="stylesheet" href="{{ $zhFonts.RelPermalink }}" integrity="{{ $zhFonts.Data.Integrity }}" crossorigin="anonymous">
 {{- end }}
 
 {{- /* SEO Structured Data handled by seo.html → seo/structured-data.html */ -}}

@@ -90,24 +90,6 @@
     </span>
   </div>
 
-  {{/* ── Dialect (Language Switch) ── */}}
-  {{- if $page.IsTranslated }}
-  <div class="marginalia-group">
-    <span class="marginalia-label">{{ i18n "marginalia.dialect" | default "Dialect" }}</span>
-    <span class="marginalia-value marginalia-dialect">
-      <span class="dialect-current">
-        {{- if eq $page.Lang "zh" -}}中{{- else -}}EN{{- end -}}
-      </span>
-      {{- range $page.Translations }}
-      <span class="dialect-sep"> | </span>
-      <a href="{{ .Permalink }}" class="dialect-link" hreflang="{{ .Lang }}">
-        {{- if eq .Lang "zh" -}}中{{- else -}}EN{{- end -}}
-      </a>
-      {{- end }}
-    </span>
-  </div>
-  {{- end }}
-
   {{/* ── Series (multi-part essay group, collapsible) ── */}}
   {{- $seriesP := $page.Params.series }}
   {{- if and $seriesP $seriesP.slug }}

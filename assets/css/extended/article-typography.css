@@ -24,27 +24,22 @@ html:lang(en) .post-title--very-long {
   line-height: 1.12;
 }
 
-/* ZH title: weight 700, not 900 — the 900 request resolved per-glyph to
-   Songti/Source Han Black for Latin but a lighter cut for CJK (or vice
-   versa depending on installed weights), producing visibly mismatched
-   grey between "Agent" and 汉字. Bold (700) exists in every font of the
-   stack — local Songti/Source Han AND the Noto Serif SC webfont — so both
-   scripts always render from the same real cut. */
+/* The self-hosted serif has a real 700 cut for both Chinese and Latin. */
 html:lang(zh) .post-title {
-  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-size: clamp(1.875rem, 1.25rem + 2.2vw, 2.75rem);
   font-weight: 700;
-  letter-spacing: 0.03em;
-  line-height: 1.25;
+  letter-spacing: 0;
+  line-height: 1.35;
+  font-feature-settings: "palt";
+  text-wrap: balance;
 }
 
 html:lang(zh) .post-title--long {
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
-  line-height: 1.3;
+  font-size: clamp(1.875rem, 1.25rem + 2vw, 2.75rem);
 }
 
 html:lang(zh) .post-title--very-long {
-  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
-  line-height: 1.34;
+  font-size: clamp(1.75rem, 1.25rem + 1.8vw, 2.5rem);
 }
 
 /* ─── Post Description — editorial lead-in, no box ───────────── */
@@ -55,7 +50,7 @@ html:lang(zh) .post-title--very-long {
   line-height: 1.7;
   color: var(--color-ink-muted, #5e5e63);
   max-width: 62ch;
-  margin: 0.5rem 0 2.25rem;
+  margin: 0.5rem 0 1.5rem;
   padding: 0.1rem 0 0.1rem 1.1rem;
   border-left: 2px solid var(--color-rule, rgba(30, 35, 30, 0.15));
   background: transparent;
@@ -64,11 +59,13 @@ html:lang(zh) .post-title--very-long {
 }
 
 html:lang(zh) .post-description {
-  font-family: var(--font-display);
+  font-family: var(--font-prose);
   font-style: normal;
   font-size: 1rem;
-  line-height: 1.9;
-  letter-spacing: 0.005em;
+  line-height: 1.8;
+  letter-spacing: 0;
+  max-width: 40em;
+  text-wrap: pretty;
 }
 
 body.dark .post-description {
@@ -118,16 +115,47 @@ html:lang(en) .post-content p {
    serif voice too (ZH posts are list-heavy; sans list items next to serif
    paragraphs read as two different articles). Tables, captions, code and
    all UI chrome stay on the sans/mono voices. */
-html:lang(zh) .post-content p,
-html:lang(zh) .post-content li,
-html:lang(zh) .post-content dd {
+html:lang(zh) .post-single .post-content {
+  --prose-size: 1.125rem;
+  --prose-leading: 1.8;
   font-family: var(--font-prose);
+  font-size: var(--prose-size);
+  line-height: var(--prose-leading);
   color: var(--color-ink, #1a1c1b);
 }
 
-/* 宋体 needs more leading than the sans it replaces. */
+html:lang(zh) .post-content :is(p, li, dd) {
+  font-family: var(--font-prose);
+  font-size: inherit;
+  line-height: var(--prose-leading);
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+/* Bound the complete prose flow rather than individual list items. Code,
+   figures and interactive components can still use the full article column. */
+html:lang(zh) .post-single .post-content > :is(p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6),
+html:lang(zh) .post-content > :is(details, .article-disclosure) {
+  max-width: calc(36 * var(--prose-size));
+}
+
 html:lang(zh) .post-content p {
-  line-height: var(--line-height-prose, 2);
+  margin-bottom: 1.15em;
+}
+
+html:lang(zh) .post-content li > p {
+  margin-bottom: 0.5em;
+}
+
+html:lang(zh) .post-content li > :is(ul, ol) {
+  margin-block: 0.5em 0;
+}
+
+html:lang(zh) .post-content :is(h2, h3, h4, h5, h6) {
+  text-wrap: pretty;
+  font-feature-settings: "palt";
 }
 
 /* Reading measure: the .article-main column is ~888px at ≥1440px, so unbounded

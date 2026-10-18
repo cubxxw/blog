@@ -67,11 +67,11 @@ test('first-screen font and cover contracts avoid late swaps and oversized mobil
   const cover = nodes.find(n => n.tagName === 'img' && attribute(n, 'fetchpriority') === 'high');
   assert.equal(attribute(cover, 'loading'), 'eager');
   const sizes = attribute(cover, 'sizes');
-  assert.ok(sizes.startsWith('(max-width: 640px) calc(100vw - 60px),'));
-  // At the CI's 412px / 1.75 DPR the reading column needs 616 image pixels,
+  assert.ok(sizes.startsWith('(max-width: 768px) calc(100vw - 40px),'));
+  // At the CI's 412px / 1.75 DPR the reading column needs 651 image pixels,
   // below 720; using 100vw would ask for 721 and promote the 1080 candidate.
   const widths = attribute(cover, 'srcset').split(',').map(s => Number(s.trim().split(/\s+/).at(-1).slice(0, -1)));
-  assert.equal(widths.filter(w => w >= (412 - 60) * 1.75).sort((a, b) => a - b)[0], 720);
+  assert.equal(widths.filter(w => w >= (412 - 40) * 1.75).sort((a, b) => a - b)[0], 720);
 });
 
 test('landing pages omit article-only series, sharing, and FAQ styles', () => {
@@ -145,7 +145,11 @@ test('Chinese first viewport keeps a timely webfont fallback when local CJK font
   const nodes=page('/zh/growth/posts/2025-annual-review/');
   const fonts=nodes.find(n=>n.tagName==='link'&&attribute(n,'id')==='zh-prose-fonts');
   assert.ok(fonts);
-  assert.match(attribute(fonts,'onload')||'',/rel=["']stylesheet["']/,'face registration must not depend on scrolling');
+  assert.equal(attribute(fonts,'rel'),'stylesheet','register faces before text layout');
+  const fontCSS=fs.readFileSync(path.join(root,attribute(fonts,'href')),'utf8');
+  assert.match(fontCSS,/font-display:optional/);
+  assert.doesNotMatch(fontCSS,/font-display:swap|url\(\.\//);
+  assert.ok(!nodes.some(n=>n.tagName==='link'&&(attribute(n,'href')||'').includes('fonts.googleapis.com')));
   const linked=css('/zh/growth/posts/2025-annual-review/',false);
   assert.doesNotMatch(linked,/html:lang\(zh\) \.article-tldr,html:lang\(zh\) \.article-main \.post-title\{font-family:[^}]*SimSun,serif\}/,'first-screen fallback cannot be local-only');
   assert.match(linked,/--font-display:[^}]*Noto Serif SC/);

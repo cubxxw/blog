@@ -1,24 +1,14 @@
 /* ============================================================
    zzz-mobile-reading.css — phone reading rhythm + quiet anchors
    ------------------------------------------------------------
-   Two mobile-only refinements, both scoped so desktop / tablet
-   reading is byte-for-byte unchanged. Loads last in the extended
+   Mobile reading rhythm and touch anchors. Loads late in the extended
    bundle (zzz- prefix) so it cleanly overrides article-typography
    and zzz-heading-anchor-touch.
 
    1. READING RHYTHM (≤ 768px)
-      The base prose is tuned for a wide editorial column: p is
-      18px / line-height 1.8 with a 2rem (≈1.78em) paragraph gap,
-      and Chinese pushes line-height to 2.0 via --line-height-prose.
-      On a 390px phone that reads loose and airy — paragraphs drift
-      apart and the eye has to travel too far between lines.
-
-      Tighten toward the WeChat / Medium mobile convention that
-      long-form CJK readers expect: slightly smaller body, calmer
-      line-height (≈1.75), and a paragraph gap around 1.4em. These
-      are established comfortable-reading values for narrow screens,
-      not guesses — dense enough to feel like a single passage,
-      open enough to breathe.
+      English keeps its 17px body. Chinese sets a shared 16px/1.75
+      prose token so paragraphs, list items and definition text
+      stay the same size; article-typography owns the 1.15em gap.
 
    2. QUIET HEADING ANCHORS (touch)
       zzz-heading-anchor-touch.css reveals the "#" permalink
@@ -39,11 +29,10 @@
     margin-bottom: 1.4rem;     /* ≈1.4em paragraph gap — one continuous passage */
   }
 
-  /* Chinese base line-height token resolves to 2.0 for the wide column;
-     rein it in for the phone so CJK lines sit closer together. */
-  html:lang(zh) .post-content p {
-    line-height: 1.78;
-    letter-spacing: 0.01em;    /* was 0.02em — a touch tighter reads cleaner */
+  /* One phone-size source for Chinese paragraphs and lists. */
+  html:lang(zh) .post-single .post-content {
+    --prose-size: 1rem;
+    --prose-leading: 1.75;
   }
 
   /* Headings: shrink the generous desktop lead-in so a new section
@@ -74,7 +63,7 @@
     line-height: 1.75;
   }
   html:lang(zh) .post-content li {
-    line-height: 1.78;
+    line-height: var(--prose-leading);
   }
   .post-content li + li {
     margin-top: 0.4rem;

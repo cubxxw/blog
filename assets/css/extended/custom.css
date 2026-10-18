@@ -2409,10 +2409,9 @@ details summary,
 .post-meta {
     font-family: var(--font-sans);
     font-size: 0.78rem;
-    color: var(--secondary);
-    opacity: 0.7;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.01em;
+    text-transform: none;
     font-variant-numeric: tabular-nums;
     margin-bottom: 0;
 }
@@ -2427,7 +2426,7 @@ details summary,
 .post-header-rule {
     height: 1px;
     background: var(--border);
-    margin-top: var(--space-8);
+    margin-top: var(--space-6);
     opacity: 0.4;
 }
 
@@ -3272,7 +3271,6 @@ html {
 .logo-switches {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
 }
 
 /* RSS Button - Toned down, consistent with theme */
@@ -3358,10 +3356,6 @@ html {
         align-items: center;
         justify-content: center;
         order: 99;
-    }
-
-    .logo-switches {
-        gap: 8px !important;
     }
 
     .nav-search-trigger__label {

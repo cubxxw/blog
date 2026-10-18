@@ -101,13 +101,13 @@
   }
 }
 
-/* ─── <1024px: compact metadata above the title ──────────────── */
+/* ─── <1024px: compact metadata below the title ──────────────── */
 @media (max-width: 1023px) {
   .article-main {
     max-width: 860px;
   }
 
-  /* Compact Marginalia above the title is the mobile metadata source.
+  /* Compact Marginalia below the title is the mobile metadata source.
      The regular PaperMod meta row repeats the same date, author, reading
      time and language, so keep only the compact version. */
   .article-main .post-header .post-meta {
@@ -123,9 +123,8 @@
   font-size: 0.75rem;
   color: var(--color-ink-muted, #5e5e63);
   font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  margin-block: -0.25rem 1.25rem;
+  line-height: 1.6;
 }
 
 .marginalia-mobile-row1,
@@ -148,18 +147,15 @@
   opacity: 0.5;
 }
 
-.dialect-current-inline {
-  font-weight: 700;
-  color: var(--color-accent, #2e352e);
-}
+/* Own the mobile gutter once, instead of stacking PaperMod + article padding. */
+@media (max-width: 768px) {
+  .main:has(.article-layout) {
+    padding-inline: 0;
+  }
 
-.dialect-link-inline {
-  color: var(--color-ink-muted, #5e5e63);
-  text-decoration: none;
-}
-
-.dialect-link-inline:hover {
-  color: var(--color-accent, #2e352e);
+  .article-layout {
+    padding-inline: 20px;
+  }
 }
 
 /* ─── Large screens: hide mobile compact, show desktop aside ── */
