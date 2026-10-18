@@ -80,6 +80,10 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
     path.join(root, "static/audio/author", "b".repeat(64) + ".json"),
     JSON.stringify({ ...manifest, reviewed: false }),
   );
+  const narratorId = "e".repeat(64);
+  await writeFile(path.join(root, "static/audio/author", narratorId + ".mp3"), "fixture");
+  await writeFile(path.join(root, "static/audio/author", narratorId + ".json"), JSON.stringify({ ...manifest, voiceType: "prebuilt" }));
+  await writeFile(path.join(root, "content/narrated.md"), "---\ntitle: 我的故事\nauthorAudio: " + narratorId + "\n---\n\n" + body + "\n");
   const summaryId = "c".repeat(64),
     sectionId = "d".repeat(64);
   const sectionBody = "## 一个难点\n\n正文。";
@@ -129,6 +133,9 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
   );
   assert.match(html, /听我聊聊这篇/);
   assert.match(html, /作者音色合成/);
+  const narrated = await readFile(path.join(root, "public/narrated/index.html"), "utf8");
+  assert.match(narrated, /AI 旁白/);
+  assert.ok(!narrated.includes("作者音色合成"));
   assert.match(html, /1:12/);
   assert.match(html, /preload="none"/);
   assert.ok(!html.includes("autoplay"));

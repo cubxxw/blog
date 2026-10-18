@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>作者声音 · cubxxw</title>
+    <title>文章声音 · cubxxw</title>
     <link rel="stylesheet" href="/studio.css" />
     <script src="/studio.js" type="module"></script>
   </head>
@@ -11,17 +11,17 @@
     <main>
       <header>
         <a href="https://cubxxw.com" target="_blank" rel="noreferrer">cubxxw</a>
-        <h1>作者声音</h1>
-        <p>让读者用你的声音听重点、理解难点。</p>
+        <h1>文章声音</h1>
+        <p>让读者听重点、理解难点。</p>
         <p id="connection" role="status">正在连接本机工具…</p>
       </header>
       <section aria-labelledby="voice-title">
-        <h2 id="voice-title">先留下你的声音</h2>
+        <h2 id="voice-title">旁白音色</h2>
         <p id="voice-state">
-          创建一次，以后的文章都能复用。录音仅在你点击创建后交给 Google。
+          默认使用 Charon 通用旁白。个人音色也可以作为可选设置；录音仅在你点击创建后交给 Google。
         </p>
         <details id="voice-setup">
-          <summary>创建或更新我的声音</summary>
+          <summary>可选：创建或更新个人音色</summary>
           <div class="recording" data-slot="reference">
             <h3>参考录音</h3>
             <p>自然说话 10–30 秒，像给朋友发一条语音。保持安静，不加配乐。</p>
@@ -91,7 +91,7 @@
         <button id="draft-script" type="button">根据原文整理讲解稿</button>
         <p id="draft-note">
           整理时只把所选原文交给
-          Google，按实际用量计费。请先核对文字，再用已保存的个人音色配音。读者播放时直接复用音频。
+          Google，按实际用量计费。请先核对文字，再用所选音色配音。读者播放时直接复用音频。
         </p>
         <label for="script">口播稿或录音文字稿</label
         ><textarea
@@ -102,7 +102,7 @@
         <p id="estimate">建议先准备 150–600 字。长稿会自动分段，不丢内容。</p>
         <div class="actions">
           <button id="generate" type="button" class="primary">
-            用我的声音生成
+            生成讲解试听
           </button>
         </div>
         <p>

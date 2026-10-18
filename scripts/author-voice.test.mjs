@@ -137,21 +137,32 @@ test("creation requires real-length reference, consent confirmation, and persist
   assert.equal((await fresh.state()).voice.ready, true);
   assert.ok(!JSON.stringify(await fresh.state()).includes("fixture-secret"));
 });
-test("a missing own voice cannot silently use a stock voice", async (t) => {
-  let calls = 0;
-  const f = await fixture(t, async () => {
-    calls++;
+test("default narration uses Charon without voice enrollment and publishes honest AI provenance", async (t) => {
+  const calls = [];
+  const f = await fixture(t, async (url, options) => {
+    calls.push({ url, body: JSON.parse(options.body) });
     return speech();
   });
-  await assert.rejects(
-    f.service.generate({
-      requestId: "g",
-      article: f.article,
-      text: "这是我的补充。",
-    }),
-    /声音/,
-  );
-  assert.equal(calls, 0);
+  const state = await f.service.state();
+  assert.equal(state.voice.ready, true);
+  assert.equal(state.voice.type, "prebuilt");
+  const started = await f.service.generate({
+    requestId: "default-narration",
+    article: f.article,
+    text: "这是文章的重点讲解。",
+    kind: "summary",
+  });
+  const ready = await settle(f.service, started.id);
+  assert.equal(ready.status, "ready", ready.error);
+  assert.equal(calls.length, 1);
+  assert.ok(calls[0].url.endsWith("/interactions"));
+  assert.equal(calls[0].body.generation_config.speech_config[0].voice, "Charon");
+  await assert.rejects(f.service.publish({ id: ready.id, reviewed: false }));
+  await f.service.publish({ id: ready.id, reviewed: true });
+  const manifest = JSON.parse(await readFile(path.join(f.root, "static/audio/author", ready.assetId + ".json"), "utf8"));
+  assert.equal(manifest.voiceType, "prebuilt");
+  assert.equal(manifest.origin, "synthetic");
+  assert.ok(!JSON.stringify(manifest).includes("fixture-secret"));
 });
 async function addVoice(f) {
   await mkdir(path.join(f.root, ".author-voice"), { recursive: true });
@@ -395,19 +406,21 @@ test("a damaged saved profile cannot substitute a prebuilt voice", async (t) => 
     return speech();
   });
   await mkdir(path.join(f.root, ".author-voice"), { recursive: true });
-  await writeFile(
-    path.join(f.root, ".author-voice/profile.json"),
-    JSON.stringify({ id: "Charon" }),
-  );
-  assert.equal((await f.service.state()).voice.ready, false);
-  await assert.rejects(
-    f.service.generate({
-      requestId: "wrong-voice",
-      article: f.article,
-      text: "我的声音。",
-    }),
-    /声音/,
-  );
+  for (const [index, value] of [{ id: "Charon" }, null, false, 0, ""].entries()) {
+    await writeFile(
+      path.join(f.root, ".author-voice/profile.json"),
+      JSON.stringify(value),
+    );
+    assert.equal((await f.service.state()).voice.ready, false);
+    await assert.rejects(
+      f.service.generate({
+        requestId: "wrong-voice-" + index,
+        article: f.article,
+        text: "我的声音。",
+      }),
+      /声音/,
+    );
+  }
   assert.equal(calls, 0);
 });
 
@@ -567,7 +580,8 @@ test("Google wrapped consent failures are actionable and never trigger automatic
   await assert.rejects(f.service.createVoice(input), /未通过授权录音核验/);
   assert.equal((await f.service.createVoice(input)).status, "failed");
   assert.equal(calls, 1);
-  assert.equal((await f.service.state()).voice.ready, false);
+  assert.equal((await f.service.state()).voice.ready, true);
+  assert.equal((await f.service.state()).voice.type, "prebuilt");
 });
 
 test("atomic publication preserves source permissions and leaves concurrent edits intact", async (t) => {
