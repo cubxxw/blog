@@ -21,7 +21,7 @@
 <div class="article-layout">
 
   {{/* ─── Left: Marginalia ──────────────────────────────────────── */}}
-  <aside class="article-marginalia" aria-label="Article metadata">
+  <aside id="article-marginalia" class="article-marginalia" aria-label="Article metadata">
     {{- partial "article/marginalia.html" . -}}
   </aside>
 
@@ -185,12 +185,22 @@
 
   {{/* ─── Right: Editorial Tools ────────────────────────────────── */}}
   <aside class="article-tools" aria-label="Editorial tools">
-    {{- partial "article/editorial-tools.html" . -}}
+    <div class="article-sidebar-controls" data-sidebar-controls hidden>
+      <button class="article-sidebar-toggle" type="button"
+              aria-controls="article-marginalia article-tools-content"
+              aria-expanded="true" aria-pressed="false">
+        {{- if eq .Lang "zh" }}固定侧栏{{ else }}Pin sidebars{{ end -}}
+      </button>
+    </div>
+    <div id="article-tools-content" class="article-tools-content">
+      {{- partial "article/editorial-tools.html" . -}}
+    </div>
   </aside>
 
 </div>
 
 <script src="{{ "/js/article-share-link.js" | relURL }}?v={{ readFile "static/js/article-share-link.js" | sha256 }}" defer></script>
+<script src="{{ "/js/article-sidebars.js" | relURL }}?v={{ readFile "static/js/article-sidebars.js" | sha256 }}" defer></script>
 
 {{/* ─── US-031: Compact-layout FAB + Bottom Sheet (&lt;1200px) ──── */}}
 

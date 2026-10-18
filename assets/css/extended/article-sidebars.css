@@ -1,0 +1,81 @@
+/* Keep the reading column's geometry identical in every sidebar state. */
+.article-sidebar-controls[hidden] {
+  display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .article-layout[data-sidebar-enhanced] .article-tools {
+    /* The panel owns its scroll; the restore control stays outside it. */
+    max-height: none;
+    overflow: visible;
+  }
+
+  .article-sidebar-controls {
+    display: flex;
+    justify-content: flex-end;
+    min-height: 44px;
+    margin-block: -8px 8px;
+  }
+
+  .article-sidebar-toggle {
+    min-height: 44px;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm, 4px);
+    background: transparent;
+    color: var(--color-ink-muted, #5e5e63);
+    font-family: var(--font-meta, system-ui, sans-serif);
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .article-sidebar-toggle:hover,
+  .article-sidebar-toggle[aria-pressed="true"] {
+    color: var(--color-accent, #2e352e);
+    border-color: var(--color-rule, rgba(30, 35, 30, .12));
+  }
+
+  .article-sidebar-toggle:focus-visible {
+    outline: 2px solid var(--color-accent, #2e352e);
+    outline-offset: 2px;
+  }
+
+  .article-layout[data-sidebar-enhanced] .article-tools-content > .editorial-tools-panel {
+    position: static;
+    max-height: calc(100vh - var(--header-height, 60px) - 92px);
+    max-height: calc(100dvh - var(--header-height, 60px) - 92px);
+    overscroll-behavior-y: contain;
+  }
+
+  .article-layout[data-sidebar-enhanced] :is(.article-marginalia, .article-tools-content) {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 180ms ease, visibility 0s;
+  }
+
+  .article-layout[data-sidebars-hidden] :is(.article-marginalia, .article-tools-content) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 180ms ease, visibility 0s linear 180ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-layout :is(.article-marginalia, .article-tools-content) {
+    transition: none;
+  }
+}
+
+@media print {
+  .article-layout .article-sidebar-controls {
+    display: none;
+  }
+
+  .article-layout :is(.article-marginalia, .article-tools-content) {
+    opacity: 1;
+    visibility: visible;
+    transition: none;
+  }
+}
