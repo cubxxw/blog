@@ -1,0 +1,84 @@
+{
+  "schema": "blog-http-seo-audit/1",
+  "observedAt": "2026-10-19T20:28:46.551493+00:00",
+  "deploymentSha": "unverified",
+  "pages": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "decodedBytes": 468423,
+      "sha256": "bfdd5031e284bf678d5cb2fb813c38b733ec061441d55731e848d355e251bdf3",
+      "canonical": [
+        "https://cubxxw.com/engineering/posts/go-release-tools/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/go-release-tools/"
+      },
+      "schemaTypes": [
+        "BlogPosting",
+        "WebSite",
+        "Person",
+        "BreadcrumbList"
+      ],
+      "descriptionCharacters": 158,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+      "decodedBytes": 916126,
+      "sha256": "4d7134139bf3744d4842d0a32c0016fb001ad8cae46340b049e956f44fca17c3",
+      "canonical": [
+        "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/growth/posts/2026-03-thought-notes/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+        "x-default": "https://cubxxw.com/growth/posts/2026-03-thought-notes/"
+      },
+      "schemaTypes": [
+        "BlogPosting",
+        "WebSite",
+        "Person",
+        "BreadcrumbList"
+      ],
+      "descriptionCharacters": 178,
+      "errors": []
+    }
+  ],
+  "alternateTargets": [
+    {
+      "url": "https://cubxxw.com/growth/posts/2026-03-thought-notes/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/growth/posts/2026-03-thought-notes/"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/engineering/posts/go-release-tools/"
+    }
+  ],
+  "discovery": {
+    "/robots.txt": {
+      "status": 200,
+      "bytes": 2360,
+      "sha256": "bbb75dbc2723488c1883139851fe93a09430bbc5ab614aebef2d60a36689d637",
+      "crawlerGroupCount": 29
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "bytes": 304116,
+      "sha256": "b62d3461d259df2e6a062001501f0cfab47db23ea09dd701495874db01a734ce",
+      "root": "urlset",
+      "locEntryCount": 675,
+      "uniqueUrlCount": 572,
+      "uniqueImageUrlCount": 139,
+      "uniqueNonImageUrlCount": 433,
+      "imageClassification": "URL pathname image extension; includes nested image loc entries"
+    }
+  }
+}

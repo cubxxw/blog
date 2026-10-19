@@ -1,0 +1,18 @@
+{
+  "version": "Version 7.0.2",
+  "declaredVersion": "7.0.2",
+  "records": [
+    {
+      "command": "tsc --noEmit",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "tsc --ignoreConfig --noEmit --strict --esModuleInterop --skipLibCheck --module NodeNext --moduleResolution NodeNext --target ES2020 --types node,@playwright/test playwright.interactive.config.ts",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "schema": "blog-http-seo-audit/1",
+  "observedAt": "2026-10-19T20:21:02.436294+00:00",
+  "deploymentSha": "unverified",
+  "pages": [
+    {
+      "url": "https://cubxxw.com/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/",
+      "decodedBytes": 179739,
+      "sha256": "8139dfd273f5e6a559c17be400d076a70c1dc89cb8ce6e8f98a3d99a2ed0cf15",
+      "canonical": [
+        "https://cubxxw.com/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/",
+        "zh": "https://cubxxw.com/zh/",
+        "x-default": "https://cubxxw.com/"
+      },
+      "schemaTypes": [
+        "WebSite",
+        "Person"
+      ],
+      "descriptionCharacters": 137,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/",
+      "decodedBytes": 185831,
+      "sha256": "3a801831e2f0a977c18a936a6876a15f892c405fe1c6bc7effda1c24493b5c31",
+      "canonical": [
+        "https://cubxxw.com/zh/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/",
+        "zh": "https://cubxxw.com/zh/",
+        "x-default": "https://cubxxw.com/"
+      },
+      "schemaTypes": [
+        "WebSite",
+        "Person"
+      ],
+      "descriptionCharacters": 59,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/engineering/",
+      "decodedBytes": 77537,
+      "sha256": "4570a81ef76f911256ceb9e2f6441df22d11f0e6520613e0c5989633a221c23b",
+      "canonical": [
+        "https://cubxxw.com/engineering/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/engineering/",
+        "zh": "https://cubxxw.com/zh/engineering/",
+        "x-default": "https://cubxxw.com/engineering/"
+      },
+      "schemaTypes": [
+        "FAQPage",
+        "WebSite",
+        "Person",
+        "BreadcrumbList",
+        "CollectionPage"
+      ],
+      "descriptionCharacters": 158,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/engineering/",
+      "decodedBytes": 78634,
+      "sha256": "3e74fd0f6f679ec197c904fa9d1f2edf0b6cfa39b928ac699ad166f415c6f8ac",
+      "canonical": [
+        "https://cubxxw.com/zh/engineering/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/engineering/",
+        "zh": "https://cubxxw.com/zh/engineering/",
+        "x-default": "https://cubxxw.com/engineering/"
+      },
+      "schemaTypes": [
+        "FAQPage",
+        "WebSite",
+        "Person",
+        "BreadcrumbList",
+        "CollectionPage"
+      ],
+      "descriptionCharacters": 64,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/projects/",
+      "decodedBytes": 262279,
+      "sha256": "35fecc938ea3337040d165d16a4ff8263c4fb58638048314ab7590c8d9ca9b5e",
+      "canonical": [
+        "https://cubxxw.com/projects/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/projects/",
+        "zh": "https://cubxxw.com/zh/projects/",
+        "x-default": "https://cubxxw.com/projects/"
+      },
+      "schemaTypes": [
+        "WebSite",
+        "Person",
+        "BreadcrumbList",
+        "CollectionPage",
+        "CollectionPage"
+      ],
+      "descriptionCharacters": 152,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/projects/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/projects/",
+      "decodedBytes": 296140,
+      "sha256": "034fc5bd7c280c5ac4e2840ffba6839246d295378e946cc4979fdf110485aab3",
+      "canonical": [
+        "https://cubxxw.com/zh/projects/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/projects/",
+        "zh": "https://cubxxw.com/zh/projects/",
+        "x-default": "https://cubxxw.com/projects/"
+      },
+      "schemaTypes": [
+        "WebSite",
+        "Person",
+        "BreadcrumbList",
+        "CollectionPage",
+        "CollectionPage"
+      ],
+      "descriptionCharacters": 62,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "decodedBytes": 139657,
+      "sha256": "365d1129f55514af9ebed02846b50a966d6d7051f5ce360a7315070d85cdda73",
+      "canonical": [
+        "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "zh": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "x-default": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      },
+      "schemaTypes": [
+        "BlogPosting",
+        "WebSite",
+        "Person",
+        "BreadcrumbList"
+      ],
+      "descriptionCharacters": 157,
+      "errors": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "decodedBytes": 142038,
+      "sha256": "c8a338fbafda5048447404dfe70170578f6e1dd133ca40683f94826891792e3c",
+      "canonical": [
+        "https://cubxxw.com/zh/growth/posts/2025-annual-review/"
+      ],
+      "alternates": {
+        "en": "https://cubxxw.com/growth/posts/2025-annual-review/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "x-default": "https://cubxxw.com/growth/posts/2025-annual-review/"
+      },
+      "schemaTypes": [
+        "BlogPosting",
+        "WebSite",
+        "Person",
+        "BreadcrumbList"
+      ],
+      "descriptionCharacters": 55,
+      "errors": []
+    }
+  ],
+  "alternateTargets": [
+    {
+      "url": "https://cubxxw.com/growth/posts/2025-annual-review/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/growth/posts/2025-annual-review/"
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+    }
+  ],
+  "discovery": {
+    "/robots.txt": {
+      "status": 200,
+      "bytes": 2360,
+      "sha256": "bbb75dbc2723488c1883139851fe93a09430bbc5ab614aebef2d60a36689d637",
+      "crawlerGroupCount": 29
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "bytes": 304116,
+      "sha256": "b62d3461d259df2e6a062001501f0cfab47db23ea09dd701495874db01a734ce",
+      "root": "urlset",
+      "locEntryCount": 675,
+      "uniqueUrlCount": 572,
+      "uniqueImageUrlCount": 139,
+      "uniqueNonImageUrlCount": 433,
+      "imageClassification": "URL pathname image extension; includes nested image loc entries"
+    }
+  }
+}

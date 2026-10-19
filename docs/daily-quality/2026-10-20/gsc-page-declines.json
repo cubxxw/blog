@@ -1,0 +1,81 @@
+{
+  "basis": "main-host byPage response aggregation, complete nonoverlapping windows; no query rows",
+  "previous": {
+    "clicks": 147,
+    "impressions": 95745,
+    "ctr": 0.0015353282155726147,
+    "position": 10.904496318345606
+  },
+  "current": {
+    "clicks": 146,
+    "impressions": 37066,
+    "ctr": 0.00393891976474397,
+    "position": 8.85755139480926
+  },
+  "topReturnedPageDeclines": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "previousImpressions": 13757,
+      "currentImpressions": 1075,
+      "impressionsDelta": -12682,
+      "previousClicks": 2,
+      "currentClicks": 0
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+      "previousImpressions": 11925,
+      "currentImpressions": 2736,
+      "impressionsDelta": -9189,
+      "previousClicks": 10,
+      "currentClicks": 4
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+      "previousImpressions": 4484,
+      "currentImpressions": 329,
+      "impressionsDelta": -4155,
+      "previousClicks": 0,
+      "currentClicks": 0
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/",
+      "previousImpressions": 4316,
+      "currentImpressions": 1756,
+      "impressionsDelta": -2560,
+      "previousClicks": 1,
+      "currentClicks": 2
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/",
+      "previousImpressions": 3583,
+      "currentImpressions": 1271,
+      "impressionsDelta": -2312,
+      "previousClicks": 4,
+      "currentClicks": 1
+    },
+    {
+      "url": "https://cubxxw.com/projects/langgraph/",
+      "previousImpressions": 1941,
+      "currentImpressions": 151,
+      "impressionsDelta": -1790,
+      "previousClicks": 0,
+      "currentClicks": 0
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/hugo-advanced-tutorial/",
+      "previousImpressions": 1844,
+      "currentImpressions": 221,
+      "impressionsDelta": -1623,
+      "previousClicks": 0,
+      "currentClicks": 2
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/",
+      "previousImpressions": 1629,
+      "currentImpressions": 204,
+      "impressionsDelta": -1425,
+      "previousClicks": 2,
+      "currentClicks": 0
+    }
+  ]
+}

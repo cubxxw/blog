@@ -1,0 +1,166 @@
+{
+  "schema": "daily-quality-receipt/1",
+  "date": "2026-10-20",
+  "timezone": "Asia/Singapore",
+  "branch": "codex/blog-daily-quality-20261019",
+  "mergedMainSha": "33d5f34816e52a308070677f208724d7d49e8a2e",
+  "workingBaseSha": "d7391b54d99f888fbcbe4536b252c70f569791a4",
+  "liveSuiteBaseSha": "b1359a94076e033e8fc3f52a31a7dd28712b717d",
+  "productionSha": null,
+  "productionShaProbe": {
+    "url": "https://cubxxw.com/__release.json",
+    "httpStatus": 404
+  },
+  "sourceSha256": {
+    "layouts/partials/comments.html": "6ab1d8e50a3e81271a65d3de1a668cc7060aacd5d7f15d49701f875b2ea09fc0",
+    "scripts/comments-loading.test.mjs": "7e1acb3e8b01c8dd6e0fe2f06a0230982e0a86a6b1107e2de2c1c4ccc569b2d2",
+    "tests/e2e/comments-loading.spec.ts": "ed46b7f1cf355bf8214fb378a7289b2499d9f69aa4400e694c5cf5537bdd3e79",
+    "tests/daily/reader-navigation.spec.ts": "9b5261318190014bc4a52d9460d90f083fe819f313aaa12d80c1e91b8c825a99",
+    "package.json": "6d9dbe7e7be373dea104091f0bd020abd923d5ba2c9d5ca0e7a5f986e34613a2",
+    "tsconfig.json": "0826b79d901fa1f006374471b211812399102d3ea5d66bc885975387c46d635f"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "playwright": "1.63.0",
+    "sharedTypescript": "5.9.3",
+    "isolatedDeclaredTypescript": "7.0.2",
+    "hugo": "0.145.0 extended"
+  },
+  "resourceBaseline": {
+    "freeGiB": 32,
+    "nodeNpmProcesses": 91,
+    "swapUsedGiB": 12.66,
+    "iOSStarted": false,
+    "browserWorkers": 1
+  },
+  "rawEvidence": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20",
+  "checks": [
+    {
+      "command": "npm run test:daily (original live-quality.spec.ts)",
+      "exitCode": 0,
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "report": "live-baseline.json"
+    },
+    {
+      "command": "npm run test:daily -- tests/daily/reader-navigation.spec.ts",
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "report": "live-navigation-ready.json"
+    },
+    {
+      "command": "node --test scripts/comments-loading.test.mjs (before fix)",
+      "exitCode": 1,
+      "passed": 1,
+      "failed": 2,
+      "report": "comments-red.tap"
+    },
+    {
+      "command": "npm run ux:test",
+      "exitCode": 0,
+      "passed": 55,
+      "failed": 0,
+      "skipped": 0,
+      "report": "ux-tests.tap"
+    },
+    {
+      "command": "node --test scripts/seo-report.test.mjs scripts/seo-autofix-gate.test.mjs scripts/lighthouse-report-to-issue.test.mjs",
+      "exitCode": 0,
+      "passed": 65,
+      "failed": 0,
+      "skipped": 0,
+      "report": "seo-contracts.tap"
+    },
+    {
+      "command": "hugo --minify --source <task>/comments-fixture --destination <task>/comments-fixture/public",
+      "exitCode": 0,
+      "scope": "actual partial in minimal bilingual Hugo fixture",
+      "report": "comments-hugo.log"
+    },
+    {
+      "command": "SITE_OUTPUT_DIR=<task>/comments-fixture/public SITE_PORT=14327 SITE_TEST_RESULTS=<task>/comments-e2e COMMENT_PROBE_ROUTES=[/probe/,/zh/probe/] playwright test tests/e2e/comments-loading.spec.ts --workers=1 --reporter=list",
+      "exitCode": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "local actual-partial integration; not full production artifact",
+      "report": "comments-e2e.log"
+    },
+    {
+      "command": "npm run typecheck (shared TypeScript 5.9.3)",
+      "exitCode": 1,
+      "reason": "second stage --ignoreConfig unsupported by shared compiler",
+      "report": "npm-typecheck.log"
+    },
+    {
+      "command": "both package typecheck stages with isolated declared TypeScript 7.0.2",
+      "exitCode": 0,
+      "report": "typescript7-verification.json"
+    },
+    {
+      "command": "SITE_OUTPUT_DIR=/Users/cubxxw/data/blog/public npm run performance:check",
+      "exitCode": 1,
+      "passed": 5,
+      "failed": 4,
+      "skipped": 1,
+      "scope": "historical Oct14 artifact only; not current source acceptance",
+      "report": "historical-performance.tap"
+    },
+    {
+      "command": "node scripts/seo-report.mjs --dir data/seo --start 2026-08-22 --end 2026-10-16 --as-of 2026-10-19T20:15:45.242Z --run-date 2026-10-20 --gsc-response-aggregation byPage --out <task>/seo-report.json --markdown-out <task>/seo-report.md",
+      "exitCode": 2,
+      "reason": "PSI partial and CrUX unknown",
+      "report": "seo-report.json"
+    },
+    {
+      "command": "python3 <task>/http-seo-audit.py",
+      "exitCode": 0,
+      "pages": 8,
+      "alternateTargets": 2,
+      "errors": 0,
+      "report": "http-seo-audit.json"
+    },
+    {
+      "command": "python3 <task>/http-seo-audit.py --routes [go-release-tools,2026-03-thought-notes] --output <task>/http-seo-priority.json",
+      "exitCode": 0,
+      "pages": 2,
+      "alternateTargets": 2,
+      "errors": 0,
+      "report": "http-seo-priority.json"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "review": {
+    "reviewer": "/root/review_daily_quality",
+    "confirmedP2Closed": [
+      "search must verify document HTTP 200 and real article body",
+      "wire comments script contracts into ux:test",
+      "Products test must support existing worldFailed desktop fallback"
+    ],
+    "remainingConfirmedP0P1P2": 0
+  },
+  "limitations": [
+    "No full frozen production build or latest-head CI execution",
+    "No verified production release SHA",
+    "No field CrUX samples",
+    "No shipped performance improvement claimed",
+    "No remote push, PR, publish, or Linear state change"
+  ],
+  "cleanup": {
+    "registeredTempPath": "/private/tmp/ai-test-blog-daily-quality-20261020.2EmfnH",
+    "removed": true,
+    "removeArtifactExitCode": 0,
+    "pruneSimulatorsExitCode": 0,
+    "simulatorDevicesDeleted": 0,
+    "ownBrowserAndServerProcessesRemaining": 0,
+    "rootHeadUnchanged": "7f2a27b6f9bb74d8c302d51a6cc959e9797e6710",
+    "rootUntrackedOutputPreserved": true,
+    "rawManifestVerifiedFiles": 65
+  }
+}

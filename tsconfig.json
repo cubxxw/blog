@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["ES2020", "DOM"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "strict": true,
@@ -10,6 +10,6 @@
     "noEmit": true,
     "types": ["node", "@playwright/test"]
   },
-  "include": ["playwright.config.ts", "playwright.quality.config.ts", "tests/**/*.ts"],
+  "include": ["playwright.config.ts", "playwright.quality.config.ts", "playwright.daily.config.ts", "tests/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

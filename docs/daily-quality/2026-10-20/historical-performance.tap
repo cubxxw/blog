@@ -1,0 +1,153 @@
+npm notice run cubxxw-blog@1.0.0 performance:check
+npm notice run node --test scripts/performance-seo.test.mjs
+TAP version 13
+# Subtest: channel styles stay on their landing pages and preserve source/reset/press order
+ok 1 - channel styles stay on their landing pages and preserve source/reset/press order
+  ---
+  duration_ms: 108.827292
+  type: 'test'
+  ...
+# Subtest: ordinary articles omit unrelated channel/decorative CSS and column articles retain navigation
+ok 2 - ordinary articles omit unrelated channel/decorative CSS and column articles retain navigation
+  ---
+  duration_ms: 44.014041
+  type: 'test'
+  ...
+# Subtest: first-screen font and cover contracts avoid late swaps and oversized mobile requests
+not ok 3 - first-screen font and cover contracts avoid late swaps and oversized mobile requests
+  ---
+  duration_ms: 27.228125
+  type: 'test'
+  location: '/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:60:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+
+      assert.ok(sizes.startsWith('(max-width: 768px) calc(100vw - 40px),'))
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:70:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: landing pages omit article-only series, sharing, and FAQ styles
+ok 4 - landing pages omit article-only series, sharing, and FAQ styles
+  ---
+  duration_ms: 15.387041
+  type: 'test'
+  ...
+# Subtest: all production crawler groups preserve private path exclusions
+not ok 5 - all production crawler groups preserve private path exclusions
+  ---
+  duration_ms: 0.612625
+  type: 'test'
+  location: '/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:88:1'
+  failureType: 'testCodeFailure'
+  error: '*: admin excluded'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:92:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: bilingual homes preserve self canonical, translations, index policy, and current social identity cards
+not ok 6 - bilingual homes preserve self canonical, translations, index policy, and current social identity cards
+  ---
+  duration_ms: 4.314875
+  type: 'test'
+  location: '/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:98:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'http://localhost:8898/'
+    - 'https://cubxxw.com/'
+           ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'https://cubxxw.com/'
+  actual: 'http://localhost:8898/'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:101:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: article JSON-LD is valid, local images exist, and no inert SearchAction or zero dates are emitted
+ok 7 - article JSON-LD is valid, local images exist, and no inert SearchAction or zero dates are emitted
+  ---
+  duration_ms: 5178.304417
+  type: 'test'
+  ...
+# Subtest: preview homes and every crawler group fail closed
+ok 8 - preview homes and every crawler group fail closed # SKIP
+  ---
+  duration_ms: 0.751959
+  type: 'test'
+  ...
+# Subtest: Chinese first viewport keeps a timely webfont fallback when local CJK fonts are absent
+not ok 9 - Chinese first viewport keeps a timely webfont fallback when local CJK fonts are absent
+  ---
+  duration_ms: 8.803292
+  type: 'test'
+  location: '/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:144:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    register faces before text layout
+    + actual - expected
+
+    + 'preload'
+    - 'stylesheet'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'stylesheet'
+  actual: 'preload'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/scripts/performance-seo.test.mjs:148:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: mobile top-link breakpoint guard avoids layout width reads and desktop behavior survives
+ok 10 - mobile top-link breakpoint guard avoids layout width reads and desktop behavior survives
+  ---
+  duration_ms: 14.095583
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 5
+# fail 4
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 5530.753917

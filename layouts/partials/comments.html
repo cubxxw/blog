@@ -23,12 +23,13 @@
   <script>
   (function () {
     var REPO = "cubxxw/blog";
+    var loaded = false;
     function currentTheme() {
       return document.body.classList.contains("dark") ? "github-dark" : "github-light";
     }
     function load() {
       var host = document.getElementById("post-comments-body");
-      if (!host || host.querySelector("script[src*='utteranc.es']")) return;
+      if (loaded || !host || host.querySelector("script[src*='utteranc.es']")) return;
       var s = document.createElement("script");
       s.src = "https://utteranc.es/client.js";
       s.setAttribute("repo", REPO);
@@ -38,6 +39,7 @@
       s.setAttribute("crossorigin", "anonymous");
       s.async = true;
       host.appendChild(s);
+      loaded = true;
     }
     function applyTheme() {
       var frame = document.querySelector(".utterances-frame");
@@ -47,7 +49,22 @@
         "https://utteranc.es"
       );
     }
-    load();
+    // Comments are below the article. Start their third-party request only
+    // when the reader approaches the section, rather than during first paint.
+    var host = document.getElementById("post-comments-body");
+    if (!host) return;
+    if (typeof window.IntersectionObserver === "function") {
+      var observer = new window.IntersectionObserver(function (entries) {
+        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+        load();
+        observer.disconnect();
+      }, { rootMargin: "300px 0px" });
+      observer.observe(host.closest(".post-comments") || host);
+    } else if (document.readyState === "complete") {
+      load();
+    } else {
+      window.addEventListener("load", load, { once: true });
+    }
     // Re-theme the already-loaded comment widget when body.dark toggles.
     var mo = new MutationObserver(applyTheme);
     mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });

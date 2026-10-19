@@ -1,0 +1,344 @@
+npm notice run cubxxw-blog@1.0.0 ux:test
+npm notice run node --test scripts/code-copy.test.mjs scripts/article-share-link.test.mjs scripts/article-tabs.test.mjs scripts/article-sidebars.test.mjs scripts/footer-subscribe.test.mjs scripts/article-ai-client.test.mjs scripts/ai-markdown-security.test.mjs scripts/home-chat-utils.test.mjs scripts/comments-loading.test.mjs
+TAP version 13
+# Subtest: travel-book-ai.js: generated attributes cannot escape an AI Markdown URL
+ok 1 - travel-book-ai.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 3.201375
+  type: 'test'
+  ...
+# Subtest: travel-book-ai.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 2 - travel-book-ai.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.813791
+  type: 'test'
+  ...
+# Subtest: article-faq.js: generated attributes cannot escape an AI Markdown URL
+ok 3 - article-faq.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 0.904
+  type: 'test'
+  ...
+# Subtest: article-faq.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 4 - article-faq.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.294917
+  type: 'test'
+  ...
+# Subtest: blog-ai-inline.js: generated attributes cannot escape an AI Markdown URL
+ok 5 - blog-ai-inline.js: generated attributes cannot escape an AI Markdown URL
+  ---
+  duration_ms: 0.785875
+  type: 'test'
+  ...
+# Subtest: blog-ai-inline.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+ok 6 - blog-ai-inline.js: protocol-relative and executable URLs are plain text; lookalike origins are external
+  ---
+  duration_ms: 0.173084
+  type: 'test'
+  ...
+# Subtest: JSON preserves request selection fields and validates answer
+ok 7 - JSON preserves request selection fields and validates answer
+  ---
+  duration_ms: 28.005041
+  type: 'test'
+  ...
+# Subtest: SSE handles byte-split UTF-8, CRLF, metadata, DONE and EOF tails
+ok 8 - SSE handles byte-split UTF-8, CRLF, metadata, DONE and EOF tails
+  ---
+  duration_ms: 6.684292
+  type: 'test'
+  ...
+# Subtest: abort invalidates late JSON even when a transport ignores cancellation
+ok 9 - abort invalidates late JSON even when a transport ignores cancellation
+  ---
+  duration_ms: 0.544458
+  type: 'test'
+  ...
+# Subtest: idle response-header timeout aborts and reports a retryable timeout
+ok 10 - idle response-header timeout aborts and reports a retryable timeout
+  ---
+  duration_ms: 15.943542
+  type: 'test'
+  ...
+# Subtest: SSE malformed data and empty streams cannot become successful history
+ok 11 - SSE malformed data and empty streams cannot become successful history
+  ---
+  duration_ms: 1.072458
+  type: 'test'
+  ...
+# Subtest: optional book suggestions survive both transports without changing ordinary response keys
+ok 12 - optional book suggestions survive both transports without changing ordinary response keys
+  ---
+  duration_ms: 1.257042
+  type: 'test'
+  ...
+# Subtest: an idle SSE body times out and releases its reader after headers
+ok 13 - an idle SSE body times out and releases its reader after headers
+  ---
+  duration_ms: 16.406584
+  type: 'test'
+  ...
+# Subtest: an idle SSE body times out and releases its reader after a delta
+ok 14 - an idle SSE body times out and releases its reader after a delta
+  ---
+  duration_ms: 16.039167
+  type: 'test'
+  ...
+# Subtest: share copy confirms the resolved operation in the page language
+ok 15 - share copy confirms the resolved operation in the page language
+  ---
+  duration_ms: 1.664417
+  type: 'test'
+  ...
+# Subtest: refused share copy preserves a selectable URL in a dismissible dialog
+ok 16 - refused share copy preserves a selectable URL in a dismissible dialog
+  ---
+  duration_ms: 1.694042
+  type: 'test'
+  ...
+# Subtest: legacy copy must return true before English success is announced
+ok 17 - legacy copy must return true before English success is announced
+  ---
+  duration_ms: 1.075333
+  type: 'test'
+  ...
+# Subtest: a late clipboard refusal cannot reopen a modal after focus has moved
+ok 18 - a late clipboard refusal cannot reopen a modal after focus has moved
+  ---
+  duration_ms: 0.736709
+  type: 'test'
+  ...
+# Subtest: small downward movements accumulate, while a small reversal does not flash the sidebars
+ok 19 - small downward movements accumulate, while a small reversal does not flash the sidebars
+  ---
+  duration_ms: 5.398083
+  type: 'test'
+  ...
+# Subtest: scrolling the opening cannot pre-accumulate a hide when the prose starts
+ok 20 - scrolling the opening cannot pre-accumulate a hide when the prose starts
+  ---
+  duration_ms: 0.20825
+  type: 'test'
+  ...
+# Subtest: leaving the prose reveals the tools, and returning starts with a fresh gesture
+ok 21 - leaving the prose reveals the tools, and returning starts with a fresh gesture
+  ---
+  duration_ms: 0.064709
+  type: 'test'
+  ...
+# Subtest: sidebar interaction reveals immediately and cannot hide a focused or busy tool
+ok 22 - sidebar interaction reveals immediately and cannot hide a focused or busy tool
+  ---
+  duration_ms: 0.069667
+  type: 'test'
+  ...
+# Subtest: explicit reveal pins the tools until the reader opts back into automatic hiding
+ok 23 - explicit reveal pins the tools until the reader opts back into automatic hiding
+  ---
+  duration_ms: 0.062042
+  type: 'test'
+  ...
+# Subtest: a stored pin keeps the first reading gesture expanded
+ok 24 - a stored pin keeps the first reading gesture expanded
+  ---
+  duration_ms: 0.203916
+  type: 'test'
+  ...
+# Subtest: compact layouts and reduced motion restore the sidebars without losing the explicit pin
+ok 25 - compact layouts and reduced motion restore the sidebars without losing the explicit pin
+  ---
+  duration_ms: 0.056542
+  type: 'test'
+  ...
+# Subtest: resizing a hidden desktop layout cannot leave compact metadata inert
+ok 26 - resizing a hidden desktop layout cannot leave compact metadata inert
+  ---
+  duration_ms: 0.048875
+  type: 'test'
+  ...
+# Subtest: navigation and page restoration reveal without treating the restored offset as reading
+ok 27 - navigation and page restoration reveal without treating the restored offset as reading
+  ---
+  duration_ms: 0.265917
+  type: 'test'
+  ...
+# Subtest: overscroll at the top reveals and does not count as an upward reading gesture
+ok 28 - overscroll at the top reveals and does not count as an upward reading gesture
+  ---
+  duration_ms: 0.823791
+  type: 'test'
+  ...
+# Subtest: unchanged context and ordinary scroll frames do not trigger DOM render callbacks
+ok 29 - unchanged context and ordinary scroll frames do not trigger DOM render callbacks
+  ---
+  duration_ms: 0.36375
+  type: 'test'
+  ...
+# Subtest: a tablist has one keyboard stop and a matching visible panel
+ok 30 - a tablist has one keyboard stop and a matching visible panel
+  ---
+  duration_ms: 4.229833
+  type: 'test'
+  ...
+# Subtest: arrows wrap, Home and End move focus with selection, ordinary Tab stays native
+ok 31 - arrows wrap, Home and End move focus with selection, ordinary Tab stays native
+  ---
+  duration_ms: 0.429875
+  type: 'test'
+  ...
+# Subtest: copy confirms only after the clipboard promise succeeds and blocks duplicate presses
+ok 32 - copy confirms only after the clipboard promise succeeds and blocks duplicate presses
+  ---
+  duration_ms: 2.4185
+  type: 'test'
+  ...
+# Subtest: clipboard refusal and failed legacy copy never claim success; code remains selected
+ok 33 - clipboard refusal and failed legacy copy never claim success; code remains selected
+  ---
+  duration_ms: 1.078708
+  type: 'test'
+  ...
+# Subtest: a successful legacy copy uses the same confirmation and clears the temporary selection
+ok 34 - a successful legacy copy uses the same confirmation and clears the temporary selection
+  ---
+  duration_ms: 0.549084
+  type: 'test'
+  ...
+# Subtest: a late clipboard rejection cannot select code after focus moves to another input
+ok 35 - a late clipboard rejection cannot select code after focus moves to another input
+  ---
+  duration_ms: 1.657583
+  type: 'test'
+  ...
+# Subtest: a new reading selection invalidates a pending fallback even when focus stays on the original button
+ok 36 - a new reading selection invalidates a pending fallback even when focus stays on the original button
+  ---
+  duration_ms: 0.966958
+  type: 'test'
+  ...
+# Subtest: late clipboard success keeps its truthful confirmation without changing newer focus or selection
+ok 37 - late clipboard success keeps its truthful confirmation without changing newer focus or selection
+  ---
+  duration_ms: 0.781666
+  type: 'test'
+  ...
+# Subtest: a mouse copy that did not focus the button still has a valid immediate legacy fallback
+ok 38 - a mouse copy that did not focus the button still has a valid immediate legacy fallback
+  ---
+  duration_ms: 0.638125
+  type: 'test'
+  ...
+# Subtest: a newer copy button owns the fallback while an earlier pending rejection only releases its own busy state
+ok 39 - a newer copy button owns the fallback while an earlier pending rejection only releases its own busy state
+  ---
+  duration_ms: 3.035709
+  type: 'test'
+  ...
+# Subtest: below-fold comments do not request the third-party client until approaching the section
+ok 40 - below-fold comments do not request the third-party client until approaching the section
+  ---
+  duration_ms: 0.969042
+  type: 'test'
+  ...
+# Subtest: without IntersectionObserver comments wait for load, then still support the widget
+ok 41 - without IntersectionObserver comments wait for load, then still support the widget
+  ---
+  duration_ms: 1.306625
+  type: 'test'
+  ...
+# Subtest: an already-loaded fallback document mounts once and a missing host remains harmless
+ok 42 - an already-loaded fallback document mounts once and a missing host remains harmless
+  ---
+  duration_ms: 1.17325
+  type: 'test'
+  ...
+# Subtest: a request deadline restores the form even when the transport never settles
+ok 43 - a request deadline restores the form even when the transport never settles
+  ---
+  duration_ms: 2.420083
+  type: 'test'
+  ...
+# Subtest: a late timed-out response cannot overwrite the result of the next attempt
+ok 44 - a late timed-out response cannot overwrite the result of the next attempt
+  ---
+  duration_ms: 1.207125
+  type: 'test'
+  ...
+# Subtest: network rejection releases pending state and keeps a usable retry
+ok 45 - network rejection releases pending state and keeps a usable retry
+  ---
+  duration_ms: 1.217125
+  type: 'test'
+  ...
+# (node:28683) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: question sampling returns six distinct eligible questions without changing the pool
+ok 46 - question sampling returns six distinct eligible questions without changing the pool
+  ---
+  duration_ms: 4.517166
+  type: 'test'
+  ...
+# Subtest: all 36 questions can be selected and new draws can change the set
+ok 47 - all 36 questions can be selected and new draws can change the set
+  ---
+  duration_ms: 0.504292
+  type: 'test'
+  ...
+# Subtest: SSE preserves every UTF-8 byte boundary, CRLF and unterminated final event
+ok 48 - SSE preserves every UTF-8 byte boundary, CRLF and unterminated final event
+  ---
+  duration_ms: 7.281208
+  type: 'test'
+  ...
+# Subtest: SSE joins multiline data and accepts lone CR without leaking event metadata
+ok 49 - SSE joins multiline data and accepts lone CR without leaking event metadata
+  ---
+  duration_ms: 0.206
+  type: 'test'
+  ...
+# Subtest: links reject injected attributes and unsafe protocols, preserving plain text
+ok 50 - links reject injected attributes and unsafe protocols, preserving plain text
+  ---
+  duration_ms: 0.567459
+  type: 'test'
+  ...
+# Subtest: article cards and inline links preserve safe URLs and escape ampersands once
+ok 51 - article cards and inline links preserve safe URLs and escape ampersands once
+  ---
+  duration_ms: 0.124792
+  type: 'test'
+  ...
+# Subtest: idle deadline races an uncooperative operation and aborts its signal at 25s
+ok 52 - idle deadline races an uncooperative operation and aborts its signal at 25s
+  ---
+  duration_ms: 1.353292
+  type: 'test'
+  ...
+# Subtest: headers and subsequent chunks each renew the idle deadline
+ok 53 - headers and subsequent chunks each renew the idle deadline
+  ---
+  duration_ms: 0.430292
+  type: 'test'
+  ...
+# Subtest: explicit stop settles immediately even if the original operation later resolves
+ok 54 - explicit stop settles immediately even if the original operation later resolves
+  ---
+  duration_ms: 0.54725
+  type: 'test'
+  ...
+# Subtest: completed work disposes its deadline without aborting a successful request
+ok 55 - completed work disposes its deadline without aborting a successful request
+  ---
+  duration_ms: 0.437417
+  type: 'test'
+  ...
+1..55
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 634.396542

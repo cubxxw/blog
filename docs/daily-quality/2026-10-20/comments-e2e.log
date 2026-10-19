@@ -1,0 +1,15 @@
+[WebServer] (node:28541) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:28542) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /probe/ (878ms)
+  ✓  2 [desktop] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /zh/probe/ (440ms)
+(node:28559) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [mobile] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /probe/ (416ms)
+  ✓  4 [mobile] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /zh/probe/ (400ms)
+
+  4 passed (3.7s)

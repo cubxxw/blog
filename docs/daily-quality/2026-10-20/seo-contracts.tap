@@ -1,0 +1,401 @@
+TAP version 13
+# Closed stale daily issue \#41
+# Subtest: resolveReportPath maps runner-absolute paths to the artifact-local basename only
+ok 1 - resolveReportPath maps runner-absolute paths to the artifact-local basename only
+  ---
+  duration_ms: 1.874875
+  type: 'test'
+  ...
+# Subtest: readDetails reads only the artifact-local report and preserves diagnostics
+ok 2 - readDetails reads only the artifact-local report and preserves diagnostics
+  ---
+  duration_ms: 1.07925
+  type: 'test'
+  ...
+# Subtest: buildSection keeps the five category columns and reports missing details honestly
+ok 3 - buildSection keeps the five category columns and reports missing details honestly
+  ---
+  duration_ms: 0.321209
+  type: 'test'
+  ...
+# Subtest: buildMissingSection publishes the honest missing-measurement state
+ok 4 - buildMissingSection publishes the honest missing-measurement state
+  ---
+  duration_ms: 0.135583
+  type: 'test'
+  ...
+# Subtest: 13-LHR artifact-local positive control publishes scores+diagnostics and exits 0
+ok 5 - 13-LHR artifact-local positive control publishes scores+diagnostics and exits 0
+  ---
+  duration_ms: 3.05
+  type: 'test'
+  ...
+# Subtest: frozen date reaches the daily issue identity and only strictly older issues close
+ok 6 - frozen date reaches the daily issue identity and only strictly older issues close
+  ---
+  duration_ms: 1.086833
+  type: 'test'
+  ...
+# Subtest: empty manifest or zero representative runs publishes the missing state and exits nonzero
+ok 7 - empty manifest or zero representative runs publishes the missing state and exits nonzero
+  ---
+  duration_ms: 0.58325
+  type: 'test'
+  ...
+# Subtest: missing or malformed manifest publishes the missing state and exits nonzero
+ok 8 - missing or malformed manifest publishes the missing state and exits nonzero
+  ---
+  duration_ms: 0.424
+  type: 'test'
+  ...
+# Subtest: missing GITHUB_REPOSITORY fails clearly without touching gh
+ok 9 - missing GITHUB_REPOSITORY fails clearly without touching gh
+  ---
+  duration_ms: 0.456625
+  type: 'test'
+  ...
+# Subtest: owned URL validation: HTTPS production origin only, no creds/port/query/fragment, no case folding
+ok 10 - owned URL validation: HTTPS production origin only, no creds/port/query/fragment, no case folding
+  ---
+  duration_ms: 1.614916
+  type: 'test'
+  ...
+# Subtest: source path validation: relative POSIX Markdown under content/en|zh only
+ok 11 - source path validation: relative POSIX Markdown under content/en|zh only
+  ---
+  duration_ms: 0.253208
+  type: 'test'
+  ...
+# Subtest: page map: conflicting associations are isolated, duplicates deduped, unrelated targets preserved
+ok 12 - page map: conflicting associations are isolated, duplicates deduped, unrelated targets preserved
+  ---
+  duration_ms: 1.687042
+  type: 'test'
+  ...
+# Subtest: page map: empty/failed/incomplete/over-cap maps are unusable and visible
+ok 13 - page map: empty/failed/incomplete/over-cap maps are unusable and visible
+  ---
+  duration_ms: 1.044916
+  type: 'test'
+  ...
+# Subtest: POSITIVE: mapped meta-description proposal resolves the real override sourcePath
+ok 14 - POSITIVE: mapped meta-description proposal resolves the real override sourcePath
+  ---
+  duration_ms: 2.129459
+  type: 'test'
+  ...
+# Subtest: POSITIVE: bilingual overrides, uppercase UFO.md/lowercase URL, ordinary article and bundle all resolve exactly
+ok 15 - POSITIVE: bilingual overrides, uppercase UFO.md/lowercase URL, ordinary article and bundle all resolve exactly
+  ---
+  duration_ms: 2.4865
+  type: 'test'
+  ...
+# Subtest: POSITIVE: grounded title intent with real query×page evidence yields a mapped proposal despite CrUX no-sample
+ok 16 - POSITIVE: grounded title intent with real query×page evidence yields a mapped proposal despite CrUX no-sample
+  ---
+  duration_ms: 17.340333
+  type: 'test'
+  ...
+# Subtest: POSITIVE: valid unrelated and merged proposals never block; backlog 2 stays under the limit
+ok 17 - POSITIVE: valid unrelated and merged proposals never block; backlog 2 stays under the limit
+  ---
+  duration_ms: 0.683292
+  type: 'test'
+  ...
+# Subtest: POSITIVE: performance regression with a matching current comparison and actual regressing delta
+ok 18 - POSITIVE: performance regression with a matching current comparison and actual regressing delta
+  ---
+  duration_ms: 0.496167
+  type: 'test'
+  ...
+# Subtest: missing page map, wrong SHA, foreign clock and foreign repository all visibly skip
+ok 19 - missing page map, wrong SHA, foreign clock and foreign repository all visibly skip
+  ---
+  duration_ms: 1.382292
+  type: 'test'
+  ...
+# Subtest: external URL, non-page kind and future publishDate skip with explicit reasons
+ok 20 - external URL, non-page kind and future publishDate skip with explicit reasons
+  ---
+  duration_ms: 2.084
+  type: 'test'
+  ...
+# Subtest: open or recently-rejected overlap on the REAL sourcePath blocks; old rejection does not
+ok 21 - open or recently-rejected overlap on the REAL sourcePath blocks; old rejection does not
+  ---
+  duration_ms: 1.257167
+  type: 'test'
+  ...
+# Subtest: model targetPaths never borrow another page and conflicts are rejected
+ok 22 - model targetPaths never borrow another page and conflicts are rejected
+  ---
+  duration_ms: 0.446125
+  type: 'test'
+  ...
+# Subtest: closed-unmerged overlap without closedAt is unknown recency: incomplete review state, visible skip
+ok 23 - closed-unmerged overlap without closedAt is unknown recency: incomplete review state, visible skip
+  ---
+  duration_ms: 0.1155
+  type: 'test'
+  ...
+# Subtest: missing/failed/truncated/incomplete review state is a visible safe skip, never a zero default
+ok 24 - missing/failed/truncated/incomplete review state is a visible safe skip, never a zero default
+  ---
+  duration_ms: 0.384708
+  type: 'test'
+  ...
+# Subtest: reviewState never exceeds the decision time — even by one second
+ok 25 - reviewState never exceeds the decision time — even by one second
+  ---
+  duration_ms: 0.203791
+  type: 'test'
+  ...
+# Subtest: close/merge timestamps must be consistent and never exceed the observed review time
+ok 26 - close/merge timestamps must be consistent and never exceed the observed review time
+  ---
+  duration_ms: 0.330709
+  type: 'test'
+  ...
+# Subtest: backlog 2 allows; backlog 3 blocks (review bottleneck)
+ok 27 - backlog 2 allows; backlog 3 blocks (review bottleneck)
+  ---
+  duration_ms: 0.611333
+  type: 'test'
+  ...
+# Subtest: old report replay: fresh flags and new wrappers never freshen old data at a later decision
+ok 28 - old report replay: fresh flags and new wrappers never freshen old data at a later decision
+  ---
+  duration_ms: 0.473417
+  type: 'test'
+  ...
+# Subtest: explicit historical decision time authorizes; a later-generated map is just calculation
+ok 29 - explicit historical decision time authorizes; a later-generated map is just calculation
+  ---
+  duration_ms: 0.333958
+  type: 'test'
+  ...
+# Subtest: own current certified fresh audit0 is required; healthy audit never proposes from intent text
+ok 30 - own current certified fresh audit0 is required; healthy audit never proposes from intent text
+  ---
+  duration_ms: 1.5585
+  type: 'test'
+  ...
+# Subtest: URL×strategy identity is preserved: fresh mobile never authorizes a stale desktop target
+ok 31 - URL×strategy identity is preserved: fresh mobile never authorizes a stale desktop target
+  ---
+  duration_ms: 1.049209
+  type: 'test'
+  ...
+# Subtest: query evidence: other-page, previous-window, stale group and multi-context ambiguity all skip
+ok 32 - query evidence: other-page, previous-window, stale group and multi-context ambiguity all skip
+  ---
+  duration_ms: 2.51925
+  type: 'test'
+  ...
+# Subtest: low CTR alone never authorizes a copy change
+ok 33 - low CTR alone never authorizes a copy change
+  ---
+  duration_ms: 0.504125
+  type: 'test'
+  ...
+# Subtest: query freshness uses Pacific calendar days at the six-day boundary
+ok 34 - query freshness uses Pacific calendar days at the six-day boundary
+  ---
+  duration_ms: 3.712458
+  type: 'test'
+  ...
+# Subtest: performance regression needs an actual regressing delta, not intent plus any comparison
+ok 35 - performance regression needs an actual regressing delta, not intent plus any comparison
+  ---
+  duration_ms: 1.033833
+  type: 'test'
+  ...
+# Subtest: strategy-less performance intent pairs freshness with regression (mobileRegression=false)
+ok 36 - strategy-less performance intent pairs freshness with regression (mobileRegression=false)
+  ---
+  duration_ms: 0.675625
+  type: 'test'
+  ...
+# Subtest: strategy-less performance intent pairs freshness with regression (mobileRegression=true)
+ok 37 - strategy-less performance intent pairs freshness with regression (mobileRegression=true)
+  ---
+  duration_ms: 1.314541
+  type: 'test'
+  ...
+# Subtest: finite candidate budget: overflow is a visible skip, zero candidates is safe
+ok 38 - finite candidate budget: overflow is a visible skip, zero candidates is safe
+  ---
+  duration_ms: 0.7005
+  type: 'test'
+  ...
+# Subtest: intent input is untrusted: bounded text, strict schema, unknown kinds visible
+ok 39 - intent input is untrusted: bounded text, strict schema, unknown kinds visible
+  ---
+  duration_ms: 0.342959
+  type: 'test'
+  ...
+# Subtest: CLI: new frozen inputs are required; valid run writes a proposal-only decision
+ok 40 - CLI: new frozen inputs are required; valid run writes a proposal-only decision
+  ---
+  duration_ms: 762.340875
+  type: 'test'
+  ...
+# Subtest: current PSI freshness uses the latest plan while retired real routes remain historical evidence
+ok 41 - current PSI freshness uses the latest plan while retired real routes remain historical evidence
+  ---
+  duration_ms: 552.467333
+  type: 'test'
+  ...
+# Subtest: a recently measured retired target with complete comparable provenance stays non-actionable
+ok 42 - a recently measured retired target with complete comparable provenance stays non-actionable
+  ---
+  duration_ms: 2.1415
+  type: 'test'
+  ...
+# Subtest: latest missing, failed or invalid active PSI slots cannot borrow older successful freshness
+ok 43 - latest missing, failed or invalid active PSI slots cannot borrow older successful freshness
+  ---
+  duration_ms: 23.69975
+  type: 'test'
+  ...
+# Subtest: latest unrecorded, malformed or undated PSI plan never falls back to the latest good plan
+ok 44 - latest unrecorded, malformed or undated PSI plan never falls back to the latest good plan
+  ---
+  duration_ms: 17.325917
+  type: 'test'
+  ...
+# Subtest: buildSeoReport is deterministic: identical inputs produce identical bytes
+ok 45 - buildSeoReport is deterministic: identical inputs produce identical bytes
+  ---
+  duration_ms: 1.648708
+  type: 'test'
+  ...
+# Subtest: as-of is a recorded input: explicit and default run-clock bases are visible
+ok 46 - as-of is a recorded input: explicit and default run-clock bases are visible
+  ---
+  duration_ms: 1383.44025
+  type: 'test'
+  ...
+# Subtest: CLI: unknown arguments exit 1, --help exits 0 (guarded main)
+ok 47 - CLI: unknown arguments exit 1, --help exits 0 (guarded main)
+  ---
+  duration_ms: 82.616167
+  type: 'test'
+  ...
+# Subtest: freshness: fresh/stale/missing/unknown/partial are classified with thresholds and reasons
+ok 48 - freshness: fresh/stale/missing/unknown/partial are classified with thresholds and reasons
+  ---
+  duration_ms: 1.452333
+  type: 'test'
+  ...
+# Subtest: trend: adequate coverage compares current/prior non-overlapping windows; gaps are not a false trend
+ok 49 - trend: adequate coverage compares current/prior non-overlapping windows; gaps are not a false trend
+  ---
+  duration_ms: 0.370209
+  type: 'test'
+  ...
+# Subtest: query evidence preserves real query×page associations bound to their exact context; nothing is ever inferred or blended
+ok 50 - query evidence preserves real query×page associations bound to their exact context; nothing is ever inferred or blended
+  ---
+  duration_ms: 0.722416
+  type: 'test'
+  ...
+# Subtest: PSI section reports denominators by strategy and keeps current failure separate from labelled last-good
+ok 51 - PSI section reports denominators by strategy and keeps current failure separate from labelled last-good
+  ---
+  duration_ms: 0.186083
+  type: 'test'
+  ...
+# Subtest: PSI comparisons: compatible samples yield deltas; mismatches land in the preserved missing set
+ok 52 - PSI comparisons: compatible samples yield deltas; mismatches land in the preserved missing set
+  ---
+  duration_ms: 0.175792
+  type: 'test'
+  ...
+# Subtest: observations: missing description and compatible-sample regression are actionable; low CTR alone is not
+ok 53 - observations: missing description and compatible-sample regression are actionable; low CTR alone is not
+  ---
+  duration_ms: 0.25525
+  type: 'test'
+  ...
+# Subtest: CrUX section refuses mixed origins and reports the actual latest period
+ok 54 - CrUX section refuses mixed origins and reports the actual latest period
+  ---
+  duration_ms: 0.070541
+  type: 'test'
+  ...
+# Subtest: prepared Markdown is deterministic, bounded and cannot break daily-report sections
+ok 55 - prepared Markdown is deterministic, bounded and cannot break daily-report sections
+  ---
+  duration_ms: 0.536625
+  type: 'test'
+  ...
+# Subtest: writeMarkdown refuses to overwrite differing section content (other sections stay safe)
+ok 56 - writeMarkdown refuses to overwrite differing section content (other sections stay safe)
+  ---
+  duration_ms: 5.197125
+  type: 'test'
+  ...
+# Subtest: full report assembles sources, windows and notes; degraded inputs stay in-band
+ok 57 - full report assembles sources, windows and notes; degraded inputs stay in-band
+  ---
+  duration_ms: 0.374
+  type: 'test'
+  ...
+# Subtest: real history regression at frozen cutoff 2026-09-24T00:00:00Z stays honest
+ok 58 - real history regression at frozen cutoff 2026-09-24T00:00:00Z stays honest
+  ---
+  duration_ms: 695.880375
+  type: 'test'
+  ...
+# Subtest: R1: a newer filtered context never refreshes the selected domain-wide summary
+ok 59 - R1: a newer filtered context never refreshes the selected domain-wide summary
+  ---
+  duration_ms: 0.481834
+  type: 'test'
+  ...
+# Subtest: R2: uncertified/incomplete CrUX collections never certify a fresh source; distinct statuses preserved
+ok 60 - R2: uncertified/incomplete CrUX collections never certify a fresh source; distinct statuses preserved
+  ---
+  duration_ms: 0.542584
+  type: 'test'
+  ...
+# Subtest: R2: buildSeoReport and the CLI propagate uncertified CrUX as degraded evidence
+ok 61 - R2: buildSeoReport and the CLI propagate uncertified CrUX as degraded evidence
+  ---
+  duration_ms: 2.850417
+  type: 'test'
+  ...
+# Subtest: R3: uncertified historical-supplement targets stay historical; certified current regressions stay actionable
+ok 62 - R3: uncertified historical-supplement targets stay historical; certified current regressions stay actionable
+  ---
+  duration_ms: 0.2335
+  type: 'test'
+  ...
+# Subtest: explicit aggregation freshness uses only selected recorded provenance and fails closed on ambiguity
+ok 63 - explicit aggregation freshness uses only selected recorded provenance and fails closed on ambiguity
+  ---
+  duration_ms: 0.359125
+  type: 'test'
+  ...
+# Subtest: explicit aggregation cannot treat schema-unproven provenance as collector-recorded
+ok 64 - explicit aggregation cannot treat schema-unproven provenance as collector-recorded
+  ---
+  duration_ms: 0.106333
+  type: 'test'
+  ...
+# Subtest: SEO CLI records and validates explicit GSC response aggregation selection
+ok 65 - SEO CLI records and validates explicit GSC response aggregation selection
+  ---
+  duration_ms: 445.003584
+  type: 'test'
+  ...
+1..65
+# tests 65
+# suites 0
+# pass 65
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3343.9035

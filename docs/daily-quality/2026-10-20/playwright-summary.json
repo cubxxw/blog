@@ -1,0 +1,949 @@
+{
+  "live-baseline": {
+    "exitCode": 0,
+    "stats": {
+      "startTime": "2026-10-19T20:14:13.170Z",
+      "duration": 255774.999,
+      "expected": 28,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "rawReport": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-baseline.json",
+    "tests": [
+      {
+        "title": "live SEO /",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 5289,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2987,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /engineering/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3413,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/engineering/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3331,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /projects/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3460,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/projects/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3138,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4829,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4326,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live reader can switch theme and home language",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4284,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6785,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6469,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 32651,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 37254,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 8248,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live SEO /",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3687,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3350,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /engineering/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2403,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/engineering/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3001,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /projects/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3858,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/projects/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1735,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4885,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3313,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live reader can switch theme and home language",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 5110,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6660,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6723,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 28947,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 42785,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 8375,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "live-lab-performance",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "live-navigation-ready": {
+    "exitCode": 0,
+    "stats": {
+      "startTime": "2026-10-19T20:26:09.872Z",
+      "duration": 242229.71899999998,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "rawReport": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-ready.json",
+    "tests": [
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 11798,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 54426,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "world-readiness",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 9698,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 59691,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "world-readiness",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6742,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 45585,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "world-readiness",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 9761,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 41769,
+            "errors": [],
+            "attachments": [
+              {
+                "name": "world-readiness",
+                "contentType": "application/json"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "live-navigation": {
+    "exitCode": 130,
+    "stats": {
+      "startTime": "2026-10-19T20:20:20.098Z",
+      "duration": 140042.655,
+      "expected": 3,
+      "skipped": 3,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "rawReport": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation.json",
+    "tests": [
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 11763,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "durationMs": 46030,
+            "errors": [
+              {
+                "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+              },
+              {
+                "location": {
+                  "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts",
+                  "column": 81,
+                  "line": 47
+                },
+                "message": "Error: locator.click: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-product-space]').locator('.product-view-switch [data-product-view-button=\"lab\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-pressed=\"false\" data-product-view-button=\"lab\">Product Lab</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    8 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\n\n  45 |     await expect(root).toHaveAttribute('data-product-view', 'bear');\n  46 |     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-ready', 'true', { timeout: 30_000 });\n> 47 |     await root.locator('.product-view-switch [data-product-view-button=\"lab\"]').click();\n     |                                                                                 ^\n  48 |     await expect(root).toHaveAttribute('data-product-view', 'lab');\n  49 |     await expect(root.locator('[data-product-panel=\"lab\"]')).toBeVisible();\n  50 |     await root.locator('.product-view-switch [data-product-view-button=\"bear\"]').click();\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:47:81"
+              }
+            ],
+            "attachments": [
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-desktop/error-context.md"
+              },
+              {
+                "name": "trace",
+                "contentType": "application/zip",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-desktop/trace.zip"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 9253,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "durationMs": 46055,
+            "errors": [
+              {
+                "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+              },
+              {
+                "location": {
+                  "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts",
+                  "column": 81,
+                  "line": 47
+                },
+                "message": "Error: locator.click: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-product-space]').locator('.product-view-switch [data-product-view-button=\"lab\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-pressed=\"false\" data-product-view-button=\"lab\">Product Lab</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    6 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\n\n  45 |     await expect(root).toHaveAttribute('data-product-view', 'bear');\n  46 |     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-ready', 'true', { timeout: 30_000 });\n> 47 |     await root.locator('.product-view-switch [data-product-view-button=\"lab\"]').click();\n     |                                                                                 ^\n  48 |     await expect(root).toHaveAttribute('data-product-view', 'lab');\n  49 |     await expect(root.locator('[data-product-panel=\"lab\"]')).toBeVisible();\n  50 |     await root.locator('.product-view-switch [data-product-view-button=\"bear\"]').click();\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:47:81"
+              }
+            ],
+            "attachments": [
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation/reader-navigation-live-Pro-8bb43-S-and-switches-both-ways-zh-desktop/error-context.md"
+              },
+              {
+                "name": "trace",
+                "contentType": "application/zip",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation/reader-navigation-live-Pro-8bb43-S-and-switches-both-ways-zh-desktop/trace.zip"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 10004,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "mobile",
+        "status": "skipped",
+        "results": [
+          {
+            "status": "interrupted",
+            "durationMs": 12921,
+            "errors": [
+              {
+                "location": {
+                  "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts",
+                  "column": 81,
+                  "line": 47
+                },
+                "message": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[data-product-space]').locator('.product-view-switch [data-product-view-button=\"lab\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-pressed=\"false\" data-product-view-button=\"lab\">Product Lab</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n\n  45 |     test.setTimeout(90_000);\n  46 |     page.setDefaultTimeout(30_000);\n> 47 |     page.setDefaultNavigationTimeout(30_000);\n     |                                              ^\n  48 |     await page.goto(`${prefix}/projects/`, { waitUntil: 'domcontentloaded' });\n  49 |     const root = page.locator('[data-product-space]');\n  50 |     await expect(root).toHaveAttribute('data-product-view', 'bear');\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:47:81"
+              }
+            ],
+            "attachments": [
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-mobile/error-context.md"
+              },
+              {
+                "name": "trace",
+                "contentType": "application/zip",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-mobile/trace.zip"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "mobile",
+        "status": "skipped",
+        "results": []
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "mobile",
+        "status": "skipped",
+        "results": []
+      }
+    ]
+  },
+  "navigation-canary": {
+    "exitCode": 130,
+    "stats": {
+      "startTime": "2026-10-19T20:22:58.994Z",
+      "duration": 20348.864,
+      "expected": 0,
+      "skipped": 1,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "rawReport": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/navigation-canary.json",
+    "tests": [
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "desktop",
+        "status": "skipped",
+        "results": [
+          {
+            "status": "interrupted",
+            "durationMs": 18505,
+            "errors": [
+              {
+                "location": {
+                  "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts",
+                  "column": 45,
+                  "line": 54
+                },
+                "message": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[data-cafe-enter]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-cafe-enter=\"\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    4 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\n\n  52 |     await expect(workspace).toHaveAttribute('data-ready', 'true', { timeout: 30_000 });\n  53 |     // Enter through the visible café control. BEAR OS exposes Product Lab in\n> 54 |     // its native menu; its separate Lab view switch is deliberately hidden.\n     |                                             ^\n  55 |     await page.locator('[data-cafe-enter]').click();\n  56 |     await expect(workspace).toHaveAttribute('data-cafe-mode', 'desktop', { timeout: 30_000 });\n  57 |     await page.locator('[data-space-menu-trigger]').click();\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:54:45"
+              }
+            ],
+            "attachments": [
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/navigation-canary/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-desktop/error-context.md"
+              },
+              {
+                "name": "trace",
+                "contentType": "application/zip",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/navigation-canary/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-desktop/trace.zip"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "live-navigation-final": {
+    "exitCode": 130,
+    "stats": {
+      "startTime": "2026-10-19T20:23:39.042Z",
+      "duration": 128206.112,
+      "expected": 3,
+      "skipped": 3,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "rawReport": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-final.json",
+    "tests": [
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 12735,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 35028,
+            "errors": [
+              {
+                "location": {
+                  "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts",
+                  "column": 45,
+                  "line": 55
+                },
+                "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-cafe-enter]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-cafe-enter=\"\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\n\n  53 |     // Enter through the visible café control. BEAR OS exposes Product Lab in\n  54 |     // its native menu; its separate Lab view switch is deliberately hidden.\n> 55 |     await page.locator('[data-cafe-enter]').click();\n     |                                             ^\n  56 |     await expect(workspace).toHaveAttribute('data-cafe-mode', 'desktop', { timeout: 30_000 });\n  57 |     await page.locator('[data-space-menu-trigger]').click();\n  58 |     await page.locator('.space-menu [data-product-view-button=\"lab\"]').click();\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:55:45"
+              }
+            ],
+            "attachments": [
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-final/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-desktop/error-context.md"
+              },
+              {
+                "name": "trace",
+                "contentType": "application/zip",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-final/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-desktop/trace.zip"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 10167,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 33786,
+            "errors": [
+              {
+                "location": {
+                  "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts",
+                  "column": 45,
+                  "line": 55
+                },
+                "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-cafe-enter]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-cafe-enter=\"\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\n\n  53 |     // Enter through the visible café control. BEAR OS exposes Product Lab in\n  54 |     // its native menu; its separate Lab view switch is deliberately hidden.\n> 55 |     await page.locator('[data-cafe-enter]').click();\n     |                                             ^\n  56 |     await expect(workspace).toHaveAttribute('data-cafe-mode', 'desktop', { timeout: 30_000 });\n  57 |     await page.locator('[data-space-menu-trigger]').click();\n  58 |     await page.locator('.space-menu [data-product-view-button=\"lab\"]').click();\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:55:45"
+              }
+            ],
+            "attachments": [
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-final/reader-navigation-live-Pro-8bb43-S-and-switches-both-ways-zh-desktop/error-context.md"
+              },
+              {
+                "name": "trace",
+                "contentType": "application/zip",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-final/reader-navigation-live-Pro-8bb43-S-and-switches-both-ways-zh-desktop/trace.zip"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6646,
+            "errors": [],
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "mobile",
+        "status": "skipped",
+        "results": [
+          {
+            "status": "interrupted",
+            "durationMs": 25071,
+            "errors": [
+              {
+                "location": {
+                  "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts",
+                  "column": 45,
+                  "line": 55
+                },
+                "message": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[data-cafe-enter]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-cafe-enter=\"\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\n\n  53 |     let readinessError = '';\n  54 |     await page.waitForFunction(() => {\n> 55 |       const state = document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;\n     |                                             ^\n  56 |       return state?.worldFailed === 'true' || (Number(state?.worldFrames) > 0 && !state?.worldLoading && state?.bootState === 'complete');\n  57 |     }, undefined, { timeout: 30_000 }).catch(error => { readinessError = String(error.message); });\n  58 |     await testInfo.attach('world-readiness', { contentType: 'application/json', body: JSON.stringify({\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:55:45"
+              }
+            ],
+            "attachments": [
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-final/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-mobile/error-context.md"
+              },
+              {
+                "name": "trace",
+                "contentType": "application/zip",
+                "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20/live-navigation-final/reader-navigation-live-Pro-573ee-S-and-switches-both-ways-en-mobile/trace.zip"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "mobile",
+        "status": "skipped",
+        "results": []
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "mobile",
+        "status": "skipped",
+        "results": []
+      }
+    ]
+  }
+}
