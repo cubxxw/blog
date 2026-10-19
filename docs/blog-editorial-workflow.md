@@ -49,6 +49,15 @@ Use `.claude/skills/write-blog-from-brief/references/review-rubric.md`. Choose `
 
 ## 4. Validate and hand off
 
+After the Chinese content and structure are stable, read and apply
+`.claude/skills/lieflat-less-ai-tone/SKILL.md` before handoff. This is the author's
+default finishing step for new, rewritten, and revised articles. Follow the author's
+voice guidance first and make only the skill's minimal whitelist changes. Preserve
+structure, facts, viewpoints, qualifications, quotations, code, foreign-language text,
+machine metadata, and resource paths. Recheck meaning and citations after cleanup;
+repeat it if further prose edits occur before handoff. Record completion in the brief.
+The detector below provides clues and does not replace this pass.
+
 For ordinary Markdown:
 
 ```bash

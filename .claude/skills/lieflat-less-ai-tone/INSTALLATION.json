@@ -1,0 +1,19 @@
+{
+  "source_page": "https://moxt.ai/hub?type=skill&id=lieflat-less-ai-tone",
+  "download_url": "https://static.moxtcontent.com/public/resource/ai/gen/bc1c2008-157c-4c5f-ae31-66a2c021fdb1.zip",
+  "archive_sha256": "e53343f89f581b3fc958fd7a08bbd081f23aa77203ea2110688c34bc94097bc7",
+  "installed_at": "2026-10-01",
+  "license": "MIT",
+  "note": "Installed exact Moxt archive. GitHub HEAD differed at installation; upstream files retained byte-for-byte.",
+  "file_sha256": {
+    "LICENSE": "ea0bb158cb3b86076842202461a9bef2bd96d560dc76b3ef5d7a2c0f326c55b9",
+    "README.en.md": "273798bd52439633b8fe5ac19606aa5d5f709972c5017f43b822b6f2885fa22a",
+    "README.md": "6638f179590167c08fecf3c0bdcd537e43f60b0ef2df292de9d87f8c9d664311",
+    "RESEARCH.en.md": "46669f029cad07d1c0f1637738ecd17de81dcd93c9b4bd38a61946c61e7a155a",
+    "RESEARCH.md": "d1e31dac80af7cbc20404c90dcabd40ac4fe303f7f7b0ef997421c4a7ba57926",
+    "SKILL.md": "a8b676679a822e64797413a7fdce886a6b5638d0a4d9a578393e1a4e43e081b9",
+    "scripts/check-structure.py": "287fc3bbc8299bdadb1b9ad660b3c3b7ed6a030259b3398bb05bc23cc0b9a7ec",
+    "scripts/check-translationese.py": "09233c35e5f2e341f301265482a1a3e124dcd32d312102d86447f0c5bc0667bf",
+    "scripts/compare-human-ai.py": "aca850a2a2ee56b7469c4327ef37105708e590fe744004f16672f81acbdde701"
+  }
+}

@@ -79,6 +79,8 @@ Use canonical tags, a reached Shanghai `+08:00` timestamp, plain-text descriptio
 
 Finish the Chinese article only. After author approval, delegate English translation and optional bilingual rendering to `../translate-and-format-blog/SKILL.md`; do not make this writing pass produce the English edition.
 
+Before handing off any new or revised Chinese article, read and apply `../lieflat-less-ai-tone/SKILL.md` after the content and structure are stable. This is the author's default requirement; do not ask again. Read the author's voice guidance first, change only explicit whitelist matches, and preserve unmatched text, structure, claims, facts, qualifications, quotations, code, foreign-language passages, machine metadata, and resource paths. Only Chinese visible copy is in scope; the author's documented style takes precedence. Recheck factual meaning and citations afterward. Repeat the cleanup if further prose edits occur before handoff. Record completion in the brief's checks; the existing detector alone does not satisfy this step.
+
 For standard Markdown, run:
 
 ```bash
