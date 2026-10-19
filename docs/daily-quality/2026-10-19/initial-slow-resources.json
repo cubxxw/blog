@@ -1,0 +1,194 @@
+[
+  {
+    "resource": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "durationMs": 3009.8550000000005,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js",
+    "durationMs": 5151.67,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/assets/css/stylesheet-28729e74df17.min.5968f4e7774e6dee0bf9126ff265498698519afca5fcb27eb06bcf94a982087d.css",
+    "durationMs": 6013.976,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/assets/fonts/noto-serif-sc-reading.min.c421d809486bad7eb8d8ecc052c1cfa7fefe8b5fde5ad0a6ffa65890a6bf2250.css",
+    "durationMs": 6013.776,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/images/covers/growth/2025/2025-annual-review_hu_1d6046f5bc7a8183.webp",
+    "durationMs": 8326.059000000001,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/js/lang-redirect.js",
+    "durationMs": 8329.083999999999,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/js/article-selection.js",
+    "durationMs": 8485.289999999999,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+    "durationMs": 8819.868999999999,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/js/article-share-link.js",
+    "durationMs": 8329.272,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/js/article-sidebars.js",
+    "durationMs": 8481.335,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-latin-700-normal.woff2",
+    "durationMs": 3553.621,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-118-400-normal.woff2",
+    "durationMs": 5168.401,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-latin-400-normal.woff2",
+    "durationMs": 6025.959,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-117-400-normal.woff2",
+    "durationMs": 8048.445,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-119-400-normal.woff2",
+    "durationMs": 10192.926,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-115-400-normal.woff2",
+    "durationMs": 12082.191,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-116-400-normal.woff2",
+    "durationMs": 13182.555,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-114-400-normal.woff2",
+    "durationMs": 14739.851999999999,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-104-400-normal.woff2",
+    "durationMs": 16962.326999999997,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://utteranc.es/client.js",
+    "durationMs": 19435.735,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-103-400-normal.woff2",
+    "durationMs": 18571.643,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-106-400-normal.woff2",
+    "durationMs": 23946.152000000002,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-110-400-normal.woff2",
+    "durationMs": 24793.907,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-108-400-normal.woff2",
+    "durationMs": 24844.582,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://www.googletagmanager.com/gtag/js",
+    "durationMs": 23107.152000000002,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-111-400-normal.woff2",
+    "durationMs": 27222.259,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-107-400-normal.woff2",
+    "durationMs": 28898.024,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-101-400-normal.woff2",
+    "durationMs": 30646.43,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-109-400-normal.woff2",
+    "durationMs": 30711.465,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-112-400-normal.woff2",
+    "durationMs": 32835.347,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-113-400-normal.woff2",
+    "durationMs": 35426.16,
+    "status": 200,
+    "failure": null
+  },
+  {
+    "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-105-400-normal.woff2",
+    "durationMs": 36975.449,
+    "status": 200,
+    "failure": null
+  }
+]

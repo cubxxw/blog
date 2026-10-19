@@ -1,0 +1,54 @@
+{
+  "sourceTestBase": "7f2a27b6f9bb74d8c302d51a6cc959e9797e6710",
+  "initial": {
+    "exitCode": 1,
+    "passed": 19,
+    "failed": 1,
+    "skipped": 0
+  },
+  "seoContracts": {
+    "exitCode": 0,
+    "passed": 65,
+    "failed": 0
+  },
+  "seoReport": {
+    "exitCode": 2,
+    "asOf": "2026-10-19T02:53:10.821Z",
+    "currentWindowCountedDays": 27,
+    "currentWindowDays": 28,
+    "psiFailedSlots": 2,
+    "crux": "unknown"
+  },
+  "trace": {
+    "file": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-19/initial-mobile-annual-timeout.trace.zip",
+    "sha256": "17009712114ce535073f499336e4653148cc9874ed2adc1f10b2042532a0e94a"
+  },
+  "review": {
+    "confirmedP0": 0,
+    "confirmedP1": 0,
+    "confirmedP2": 0,
+    "iterations": 2
+  },
+  "versions": {
+    "node": "22.23.2",
+    "playwright": "1.63.0",
+    "typescript": "5.9.3"
+  },
+  "followup": {
+    "exitCode": 0,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "all 10 final performance cases plus four new Products SEO cases"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "compiler": "5.9.3",
+    "scope": [
+      "playwright.daily.config.ts",
+      "tests/daily/live-quality.spec.ts"
+    ]
+  },
+  "finalSuiteCount": 28,
+  "reportAttachmentPaths": "Copied JSON reports remap ephemeral attachment paths to permanent local evidence; original failures and results are retained."
+}

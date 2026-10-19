@@ -1,0 +1,54 @@
+{
+  "schema": "blog-browser/1",
+  "mode": "enforce",
+  "ok": true,
+  "pages": [
+    "/",
+    "/about/",
+    "/ai-agent/posts/give-ai-tasks-not-directions/",
+    "/articles/",
+    "/engineering/",
+    "/engineering/posts/go-release-tools/",
+    "/projects/",
+    "/zh/",
+    "/zh/about/",
+    "/zh/ai-agent/posts/give-ai-tasks-not-directions/",
+    "/zh/articles/",
+    "/zh/engineering/",
+    "/zh/engineering/posts/go-release-tools/",
+    "/zh/projects/"
+  ],
+  "projects": [
+    "desktop",
+    "mobile",
+    "desktop-dark",
+    "mobile-dark"
+  ],
+  "legacy": {
+    "required": true,
+    "reason": "Shared frontend or unknown/full history: preserve legacy non-visual-regression coverage."
+  },
+  "suites": [
+    {
+      "name": "quality",
+      "projects": [
+        "desktop",
+        "mobile",
+        "desktop-dark",
+        "mobile-dark"
+      ],
+      "status": "success",
+      "exitCode": 0
+    },
+    {
+      "name": "legacy",
+      "projects": [
+        "desktop",
+        "mobile"
+      ],
+      "status": "success",
+      "exitCode": 0
+    }
+  ],
+  "exitCode": 0
+}

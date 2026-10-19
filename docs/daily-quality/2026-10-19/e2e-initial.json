@@ -1,0 +1,839 @@
+{
+  "config": {
+    "argv": [
+      "/Users/cubxxw/Library/pnpm/store/v11/links/@/node-bin-darwin-arm64/22.23.2/28a1e843c80aa6c5ab77582f26e556c9c70038e2997a20f9f3edb7f1f39f00c7/node_modules/node-bin-darwin-arm64/bin/node",
+      "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/node_modules/.bin/playwright",
+      "test",
+      "--config=playwright.daily.config.ts"
+    ],
+    "configFile": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/playwright.daily.config.ts",
+    "rootDir": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/private/tmp/ai-test-blog-daily-quality-20261019.9S7lt7/e2e",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/private/tmp/ai-test-blog-daily-quality-20261019.9S7lt7/e2e",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/private/tmp/ai-test-blog-daily-quality-20261019.9S7lt7/e2e.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "live-quality.spec.ts",
+      "file": "live-quality.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "live SEO /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6740,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:51:50.527Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-6b8ed9e48181d772f7d7",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /zh/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8637,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:51:58.571Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-2602c981cdc6662eaeb3",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /engineering/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3257,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:52:07.217Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-7fabdd5aff056d174491",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /zh/engineering/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3226,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:52:10.484Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-b6f0585aaf1841d3303c",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13007,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:52:13.721Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-3e7ebefb16f984a8bc7c",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /zh/growth/posts/2025-annual-review/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22442,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:52:26.738Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-599b645aabd5056460e9",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live reader can switch theme and home language",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8008,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:52:49.188Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-15153cf03c72123822a3",
+          "file": "live-quality.spec.ts",
+          "line": 39,
+          "column": 5
+        },
+        {
+          "title": "live lab performance sample /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:52:57.204Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "live-lab-performance",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwczovL2N1Ynh4dy5jb20vIiwiZW52aXJvbm1lbnQiOiJsaXZlIENocm9taXVtOyB1bnRocm90dGxlZDsgZnJlc2ggY29udGV4dDsgcm91dGVkIHJlYWQtb25seTsgdGhyZWUgc2Vjb25kcyBhZnRlciBsb2FkOyBzb3VyY2UgU0hBIHVudmVyaWZpZWQiLCJzYW1wbGUiOnsibGNwTXMiOjYwMTYsImNscyI6MCwibG9uZ1Rhc2tNcyI6MzI3LCJ3aW5kb3dTdGFydCI6MCwibGFzdFNoaWZ0IjowLCJ3aW5kb3dTY29yZSI6MCwib2JzZXJ2YXRpb25NcyI6MTE1NDMsImRvbUVsZW1lbnRzIjoxNDk2LCJyZXNvdXJjZXMiOjE3LCJuYXZpZ2F0aW9uIjpbeyJuYW1lIjoiaHR0cHM6Ly9jdWJ4eHcuY29tLyIsImVudHJ5VHlwZSI6Im5hdmlnYXRpb24iLCJzdGFydFRpbWUiOjAsImR1cmF0aW9uIjo4NDY5LjEwMDAwMDM4MTQ3LCJuYXZpZ2F0aW9uSWQiOjgyMiwiaW5pdGlhdG9yVHlwZSI6Im5hdmlnYXRpb24iLCJkZWxpdmVyeVR5cGUiOiIiLCJuZXh0SG9wUHJvdG9jb2wiOiJoMiIsInJlbmRlckJsb2NraW5nU3RhdHVzIjoibm9uLWJsb2NraW5nIiwiY29udGVudFR5cGUiOiJ0ZXh0L2h0bWwiLCJjb250ZW50RW5jb2RpbmciOiJiciIsIndvcmtlclN0YXJ0IjowLCJ3b3JrZXJSb3V0ZXJFdmFsdWF0aW9uU3RhcnQiOjAsIndvcmtlckNhY2hlTG9va3VwU3RhcnQiOjAsIndvcmtlck1hdGNoZWRTb3VyY2VUeXBlIjoiIiwid29ya2VyRmluYWxTb3VyY2VUeXBlIjoiIiwicmVkaXJlY3RTdGFydCI6MCwicmVkaXJlY3RFbmQiOjAsImZldGNoU3RhcnQiOjIuMTAwMDAwMzgxNDY5NzI2NiwiZG9tYWluTG9va3VwU3RhcnQiOjIuMTAwMDAwMzgxNDY5NzI2NiwiZG9tYWluTG9va3VwRW5kIjoyLjEwMDAwMDM4MTQ2OTcyNjYsImNvbm5lY3RTdGFydCI6My41LCJzZWN1cmVDb25uZWN0aW9uU3RhcnQiOjMuOTAwMDAwMDk1MzY3NDMxNiwiY29ubmVjdEVuZCI6MTUxNC42MDAwMDAzODE0Njk3LCJyZXF1ZXN0U3RhcnQiOjE1MTQuOTAwMDAwMDk1MzY3NCwicmVzcG9uc2VTdGFydCI6MjE2Ny41LCJmaXJzdEludGVyaW1SZXNwb25zZVN0YXJ0IjowLCJmaW5hbFJlc3BvbnNlSGVhZGVyc1N0YXJ0IjoyMTY3LjUsInJlc3BvbnNlRW5kIjozNDQwLjUsInRyYW5zZmVyU2l6ZSI6NTE2MzIsImVuY29kZWRCb2R5U2l6ZSI6NTEzMzIsImRlY29kZWRCb2R5U2l6ZSI6MTc5NzM5LCJyZXNwb25zZVN0YXR1cyI6MjAwLCJzZXJ2ZXJUaW1pbmciOltdLCJ1bmxvYWRFdmVudFN0YXJ0IjowLCJ1bmxvYWRFdmVudEVuZCI6MCwiZG9tSW50ZXJhY3RpdmUiOjYwMjYuODAwMDAwMTkwNzM1LCJkb21Db250ZW50TG9hZGVkRXZlbnRTdGFydCI6NjUzNy40MDAwMDAwOTUzNjcsImRvbUNvbnRlbnRMb2FkZWRFdmVudEVuZCI6NjUzNy40MDAwMDAwOTUzNjcsImRvbUNvbXBsZXRlIjo4NDY4LCJsb2FkRXZlbnRTdGFydCI6ODQ2OCwibG9hZEV2ZW50RW5kIjo4NDY5LjEwMDAwMDM4MTQ3LCJ0eXBlIjoibmF2aWdhdGUiLCJyZWRpcmVjdENvdW50IjowLCJhY3RpdmF0aW9uU3RhcnQiOjAsImNyaXRpY2FsQ0hSZXN0YXJ0IjowLCJub3RSZXN0b3JlZFJlYXNvbnMiOm51bGwsImNvbmZpZGVuY2UiOnsicmFuZG9taXplZFRyaWdnZXJSYXRlIjowLjQ5OTQ3OTgsInZhbHVlIjoibG93In19XX19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-3f625ffc31235ffc3ea0",
+          "file": "live-quality.spec.ts",
+          "line": 50,
+          "column": 7
+        },
+        {
+          "title": "live lab performance sample /zh/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18181,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:53:08.897Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "live-lab-performance",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwczovL2N1Ynh4dy5jb20vemgvIiwiZW52aXJvbm1lbnQiOiJsaXZlIENocm9taXVtOyB1bnRocm90dGxlZDsgZnJlc2ggY29udGV4dDsgcm91dGVkIHJlYWQtb25seTsgdGhyZWUgc2Vjb25kcyBhZnRlciBsb2FkOyBzb3VyY2UgU0hBIHVudmVyaWZpZWQiLCJzYW1wbGUiOnsibGNwTXMiOjM5NzYsImNscyI6MCwibG9uZ1Rhc2tNcyI6MCwid2luZG93U3RhcnQiOjAsImxhc3RTaGlmdCI6MCwid2luZG93U2NvcmUiOjAsIm9ic2VydmF0aW9uTXMiOjE3OTE1LjMwMDAwMDE5MDczNSwiZG9tRWxlbWVudHMiOjE0OTgsInJlc291cmNlcyI6MjMsIm5hdmlnYXRpb24iOlt7Im5hbWUiOiJodHRwczovL2N1Ynh4dy5jb20vemgvIiwiZW50cnlUeXBlIjoibmF2aWdhdGlvbiIsInN0YXJ0VGltZSI6MCwiZHVyYXRpb24iOjE0ODQzLjcwMDAwMDI4NjEwMiwibmF2aWdhdGlvbklkIjo3NTcwLCJpbml0aWF0b3JUeXBlIjoibmF2aWdhdGlvbiIsImRlbGl2ZXJ5VHlwZSI6IiIsIm5leHRIb3BQcm90b2NvbCI6ImgyIiwicmVuZGVyQmxvY2tpbmdTdGF0dXMiOiJub24tYmxvY2tpbmciLCJjb250ZW50VHlwZSI6InRleHQvaHRtbCIsImNvbnRlbnRFbmNvZGluZyI6ImJyIiwid29ya2VyU3RhcnQiOjAsIndvcmtlclJvdXRlckV2YWx1YXRpb25TdGFydCI6MCwid29ya2VyQ2FjaGVMb29rdXBTdGFydCI6MCwid29ya2VyTWF0Y2hlZFNvdXJjZVR5cGUiOiIiLCJ3b3JrZXJGaW5hbFNvdXJjZVR5cGUiOiIiLCJyZWRpcmVjdFN0YXJ0IjowLCJyZWRpcmVjdEVuZCI6MCwiZmV0Y2hTdGFydCI6MC4zMDAwMDAxOTA3MzQ4NjMzLCJkb21haW5Mb29rdXBTdGFydCI6MC4zMDAwMDAxOTA3MzQ4NjMzLCJkb21haW5Mb29rdXBFbmQiOjAuMzAwMDAwMTkwNzM0ODYzMywiY29ubmVjdFN0YXJ0Ijo0LjA5OTk5OTkwNDYzMjU2OCwic2VjdXJlQ29ubmVjdGlvblN0YXJ0Ijo1LjIwMDAwMDI4NjEwMjI5NSwiY29ubmVjdEVuZCI6Nzg1LjMwMDAwMDE5MDczNDksInJlcXVlc3RTdGFydCI6Nzg1LjQwMDAwMDA5NTM2NzQsInJlc3BvbnNlU3RhcnQiOjE2NDQuNzAwMDAwMjg2MTAyMywiZmlyc3RJbnRlcmltUmVzcG9uc2VTdGFydCI6MCwiZmluYWxSZXNwb25zZUhlYWRlcnNTdGFydCI6MTY0NC43MDAwMDAyODYxMDIzLCJyZXNwb25zZUVuZCI6Mjk3MS4wOTk5OTk5MDQ2MzI2LCJ0cmFuc2ZlclNpemUiOjU0Nzk1LCJlbmNvZGVkQm9keVNpemUiOjU0NDk1LCJkZWNvZGVkQm9keVNpemUiOjE4NTgzMSwicmVzcG9uc2VTdGF0dXMiOjIwMCwic2VydmVyVGltaW5nIjpbXSwidW5sb2FkRXZlbnRTdGFydCI6MCwidW5sb2FkRXZlbnRFbmQiOjAsImRvbUludGVyYWN0aXZlIjozOTc2LjUsImRvbUNvbnRlbnRMb2FkZWRFdmVudFN0YXJ0Ijo1Mzc1LjQwMDAwMDA5NTM2NywiZG9tQ29udGVudExvYWRlZEV2ZW50RW5kIjo1Mzc1LjQwMDAwMDA5NTM2NywiZG9tQ29tcGxldGUiOjE0ODQyLjcwMDAwMDI4NjEwMiwibG9hZEV2ZW50U3RhcnQiOjE0ODQyLjgwMDAwMDE5MDczNSwibG9hZEV2ZW50RW5kIjoxNDg0My43MDAwMDAyODYxMDIsInR5cGUiOiJuYXZpZ2F0ZSIsInJlZGlyZWN0Q291bnQiOjAsImFjdGl2YXRpb25TdGFydCI6MCwiY3JpdGljYWxDSFJlc3RhcnQiOjAsIm5vdFJlc3RvcmVkUmVhc29ucyI6bnVsbCwiY29uZmlkZW5jZSI6eyJyYW5kb21pemVkVHJpZ2dlclJhdGUiOjAuNDk5NDc5OCwidmFsdWUiOiJoaWdoIn19XX19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-a4eb8373cbfe6860468b",
+          "file": "live-quality.spec.ts",
+          "line": 50,
+          "column": 7
+        },
+        {
+          "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18648,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:53:27.115Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "live-lab-performance",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwczovL2N1Ynh4dy5jb20vemgvZ3Jvd3RoL3Bvc3RzLzIwMjUtYW5udWFsLXJldmlldy8iLCJlbnZpcm9ubWVudCI6ImxpdmUgQ2hyb21pdW07IHVudGhyb3R0bGVkOyBmcmVzaCBjb250ZXh0OyByb3V0ZWQgcmVhZC1vbmx5OyB0aHJlZSBzZWNvbmRzIGFmdGVyIGxvYWQ7IHNvdXJjZSBTSEEgdW52ZXJpZmllZCIsInNhbXBsZSI6eyJsY3BNcyI6Mjk5MiwiY2xzIjowLjAwNjE1NzgwOTc4NzMyNjM5LCJsb25nVGFza01zIjo3NzcsIndpbmRvd1N0YXJ0IjoyOTc3LjE5OTk5OTgwOTI2NSwibGFzdFNoaWZ0IjoyOTc3LjE5OTk5OTgwOTI2NSwid2luZG93U2NvcmUiOjAuMDA2MTU3ODA5Nzg3MzI2MzksIm9ic2VydmF0aW9uTXMiOjE4MTYyLjA5OTk5OTkwNDYzMywiZG9tRWxlbWVudHMiOjEwNzksInJlc291cmNlcyI6NjksIm5hdmlnYXRpb24iOlt7Im5hbWUiOiJodHRwczovL2N1Ynh4dy5jb20vemgvZ3Jvd3RoL3Bvc3RzLzIwMjUtYW5udWFsLXJldmlldy8iLCJlbnRyeVR5cGUiOiJuYXZpZ2F0aW9uIiwic3RhcnRUaW1lIjowLCJkdXJhdGlvbiI6MTUwNTAuNTk5OTk5OTA0NjMzLCJuYXZpZ2F0aW9uSWQiOjg0MjYsImluaXRpYXRvclR5cGUiOiJuYXZpZ2F0aW9uIiwiZGVsaXZlcnlUeXBlIjoiIiwibmV4dEhvcFByb3RvY29sIjoiaDIiLCJyZW5kZXJCbG9ja2luZ1N0YXR1cyI6Im5vbi1ibG9ja2luZyIsImNvbnRlbnRUeXBlIjoidGV4dC9odG1sIiwiY29udGVudEVuY29kaW5nIjoiYnIiLCJ3b3JrZXJTdGFydCI6MCwid29ya2VyUm91dGVyRXZhbHVhdGlvblN0YXJ0IjowLCJ3b3JrZXJDYWNoZUxvb2t1cFN0YXJ0IjowLCJ3b3JrZXJNYXRjaGVkU291cmNlVHlwZSI6IiIsIndvcmtlckZpbmFsU291cmNlVHlwZSI6IiIsInJlZGlyZWN0U3RhcnQiOjAsInJlZGlyZWN0RW5kIjowLCJmZXRjaFN0YXJ0IjowLCJkb21haW5Mb29rdXBTdGFydCI6MCwiZG9tYWluTG9va3VwRW5kIjowLCJjb25uZWN0U3RhcnQiOjUuMzk5OTk5NjE4NTMwMjczLCJzZWN1cmVDb25uZWN0aW9uU3RhcnQiOjYuNTk5OTk5OTA0NjMyNTY4LCJjb25uZWN0RW5kIjo2NTIuNTk5OTk5OTA0NjMyNiwicmVxdWVzdFN0YXJ0Ijo2NTIuNjk5OTk5ODA5MjY1MSwicmVzcG9uc2VTdGFydCI6MTEwMS4zOTk5OTk2MTg1MzAzLCJmaXJzdEludGVyaW1SZXNwb25zZVN0YXJ0IjowLCJmaW5hbFJlc3BvbnNlSGVhZGVyc1N0YXJ0IjoxMTAxLjM5OTk5OTYxODUzMDMsInJlc3BvbnNlRW5kIjoxMzEwLjE5OTk5OTgwOTI2NTEsInRyYW5zZmVyU2l6ZSI6NDE1OTYsImVuY29kZWRCb2R5U2l6ZSI6NDEyOTYsImRlY29kZWRCb2R5U2l6ZSI6MTQyMDM4LCJyZXNwb25zZVN0YXR1cyI6MjAwLCJzZXJ2ZXJUaW1pbmciOltdLCJ1bmxvYWRFdmVudFN0YXJ0IjowLCJ1bmxvYWRFdmVudEVuZCI6MCwiZG9tSW50ZXJhY3RpdmUiOjI5NjUuMTk5OTk5ODA5MjY1LCJkb21Db250ZW50TG9hZGVkRXZlbnRTdGFydCI6MzUwOC44OTk5OTk2MTg1MzAzLCJkb21Db250ZW50TG9hZGVkRXZlbnRFbmQiOjM1MDksImRvbUNvbXBsZXRlIjoxNTA0Ny42OTk5OTk4MDkyNjUsImxvYWRFdmVudFN0YXJ0IjoxNTA1MC4zOTk5OTk2MTg1MywibG9hZEV2ZW50RW5kIjoxNTA1MC41OTk5OTk5MDQ2MzMsInR5cGUiOiJuYXZpZ2F0ZSIsInJlZGlyZWN0Q291bnQiOjAsImFjdGl2YXRpb25TdGFydCI6MCwiY3JpdGljYWxDSFJlc3RhcnQiOjAsIm5vdFJlc3RvcmVkUmVhc29ucyI6bnVsbCwiY29uZmlkZW5jZSI6eyJyYW5kb21pemVkVHJpZ2dlclJhdGUiOjAuNDk5NDc5OCwidmFsdWUiOiJsb3cifX1dfX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-2c86a7fe9fc4609a1976",
+          "file": "live-quality.spec.ts",
+          "line": 50,
+          "column": 7
+        },
+        {
+          "title": "live SEO /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:53:48.109Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-f5e31caa9d2c8046f111",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /zh/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8853,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:53:52.154Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-4882b9443cafb690bce0",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /engineering/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2932,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:54:01.014Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-853a818311d9b0e8387a",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /zh/engineering/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2711,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:54:03.953Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-6beee1b0b92fa68beee6",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:54:06.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-4af85e66e68415f7d027",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live SEO /zh/growth/posts/2025-annual-review/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33774,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:54:17.057Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-790dac4597a9b74af9a2",
+          "file": "live-quality.spec.ts",
+          "line": 17,
+          "column": 7
+        },
+        {
+          "title": "live reader can switch theme and home language",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6287,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:54:50.858Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-988dc2faf3489a0e08ce",
+          "file": "live-quality.spec.ts",
+          "line": 39,
+          "column": 5
+        },
+        {
+          "title": "live lab performance sample /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:54:57.170Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "live-lab-performance",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwczovL2N1Ynh4dy5jb20vIiwiZW52aXJvbm1lbnQiOiJsaXZlIENocm9taXVtOyB1bnRocm90dGxlZDsgZnJlc2ggY29udGV4dDsgcm91dGVkIHJlYWQtb25seTsgdGhyZWUgc2Vjb25kcyBhZnRlciBsb2FkOyBzb3VyY2UgU0hBIHVudmVyaWZpZWQiLCJzYW1wbGUiOnsibGNwTXMiOjIyNjAsImNscyI6MCwibG9uZ1Rhc2tNcyI6MTQ4LCJ3aW5kb3dTdGFydCI6MCwibGFzdFNoaWZ0IjowLCJ3aW5kb3dTY29yZSI6MCwib2JzZXJ2YXRpb25NcyI6NzE3MS4xMDAwMDAzODE0NywiZG9tRWxlbWVudHMiOjE0OTYsInJlc291cmNlcyI6MTYsIm5hdmlnYXRpb24iOlt7Im5hbWUiOiJodHRwczovL2N1Ynh4dy5jb20vIiwiZW50cnlUeXBlIjoibmF2aWdhdGlvbiIsInN0YXJ0VGltZSI6MCwiZHVyYXRpb24iOjQxMTkuOTAwMDAwMDk1MzY3LCJuYXZpZ2F0aW9uSWQiOjM0NDMsImluaXRpYXRvclR5cGUiOiJuYXZpZ2F0aW9uIiwiZGVsaXZlcnlUeXBlIjoiIiwibmV4dEhvcFByb3RvY29sIjoiaDIiLCJyZW5kZXJCbG9ja2luZ1N0YXR1cyI6Im5vbi1ibG9ja2luZyIsImNvbnRlbnRUeXBlIjoidGV4dC9odG1sIiwiY29udGVudEVuY29kaW5nIjoiYnIiLCJ3b3JrZXJTdGFydCI6MCwid29ya2VyUm91dGVyRXZhbHVhdGlvblN0YXJ0IjowLCJ3b3JrZXJDYWNoZUxvb2t1cFN0YXJ0IjowLCJ3b3JrZXJNYXRjaGVkU291cmNlVHlwZSI6IiIsIndvcmtlckZpbmFsU291cmNlVHlwZSI6IiIsInJlZGlyZWN0U3RhcnQiOjAsInJlZGlyZWN0RW5kIjowLCJmZXRjaFN0YXJ0IjoyLjUsImRvbWFpbkxvb2t1cFN0YXJ0IjoyLjUsImRvbWFpbkxvb2t1cEVuZCI6Mi41LCJjb25uZWN0U3RhcnQiOjMuODAwMDAwMTkwNzM0ODYzMywic2VjdXJlQ29ubmVjdGlvblN0YXJ0Ijo0OC40MDAwMDAwOTUzNjc0MywiY29ubmVjdEVuZCI6NzQ4LjcwMDAwMDI4NjEwMjMsInJlcXVlc3RTdGFydCI6NzQ4LjgwMDAwMDE5MDczNDksInJlc3BvbnNlU3RhcnQiOjExOTEuNSwiZmlyc3RJbnRlcmltUmVzcG9uc2VTdGFydCI6MCwiZmluYWxSZXNwb25zZUhlYWRlcnNTdGFydCI6MTE5MS41LCJyZXNwb25zZUVuZCI6MTY3OC41LCJ0cmFuc2ZlclNpemUiOjUxNTM2LCJlbmNvZGVkQm9keVNpemUiOjUxMjM2LCJkZWNvZGVkQm9keVNpemUiOjE3OTczOSwicmVzcG9uc2VTdGF0dXMiOjIwMCwic2VydmVyVGltaW5nIjpbXSwidW5sb2FkRXZlbnRTdGFydCI6MCwidW5sb2FkRXZlbnRFbmQiOjAsImRvbUludGVyYWN0aXZlIjoyMjkyLjQwMDAwMDA5NTM2NzQsImRvbUNvbnRlbnRMb2FkZWRFdmVudFN0YXJ0IjoyOTcxLjQwMDAwMDA5NTM2NzQsImRvbUNvbnRlbnRMb2FkZWRFdmVudEVuZCI6Mjk3MS40MDAwMDAwOTUzNjc0LCJkb21Db21wbGV0ZSI6NDExOS41LCJsb2FkRXZlbnRTdGFydCI6NDExOS41LCJsb2FkRXZlbnRFbmQiOjQxMTkuOTAwMDAwMDk1MzY3LCJ0eXBlIjoibmF2aWdhdGUiLCJyZWRpcmVjdENvdW50IjowLCJhY3RpdmF0aW9uU3RhcnQiOjAsImNyaXRpY2FsQ0hSZXN0YXJ0IjowLCJub3RSZXN0b3JlZFJlYXNvbnMiOm51bGwsImNvbmZpZGVuY2UiOnsicmFuZG9taXplZFRyaWdnZXJSYXRlIjowLjQ5OTQ3OTgsInZhbHVlIjoibG93In19XX19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-a71467be5d74b93d6310",
+          "file": "live-quality.spec.ts",
+          "line": 50,
+          "column": 7
+        },
+        {
+          "title": "live lab performance sample /zh/",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:55:04.523Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "live-lab-performance",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwczovL2N1Ynh4dy5jb20vemgvIiwiZW52aXJvbm1lbnQiOiJsaXZlIENocm9taXVtOyB1bnRocm90dGxlZDsgZnJlc2ggY29udGV4dDsgcm91dGVkIHJlYWQtb25seTsgdGhyZWUgc2Vjb25kcyBhZnRlciBsb2FkOyBzb3VyY2UgU0hBIHVudmVyaWZpZWQiLCJzYW1wbGUiOnsibGNwTXMiOjE5NDAsImNscyI6MCwibG9uZ1Rhc2tNcyI6MCwid2luZG93U3RhcnQiOjAsImxhc3RTaGlmdCI6MCwid2luZG93U2NvcmUiOjAsIm9ic2VydmF0aW9uTXMiOjc2OTMuNTk5OTk5OTA0NjMzLCJkb21FbGVtZW50cyI6MTQ5OCwicmVzb3VyY2VzIjoxOCwibmF2aWdhdGlvbiI6W3sibmFtZSI6Imh0dHBzOi8vY3VieHh3LmNvbS96aC8iLCJlbnRyeVR5cGUiOiJuYXZpZ2F0aW9uIiwic3RhcnRUaW1lIjowLCJkdXJhdGlvbiI6NDY0Ny43OTk5OTk3MTM4OTgsIm5hdmlnYXRpb25JZCI6NTExNSwiaW5pdGlhdG9yVHlwZSI6Im5hdmlnYXRpb24iLCJkZWxpdmVyeVR5cGUiOiIiLCJuZXh0SG9wUHJvdG9jb2wiOiJoMiIsInJlbmRlckJsb2NraW5nU3RhdHVzIjoibm9uLWJsb2NraW5nIiwiY29udGVudFR5cGUiOiJ0ZXh0L2h0bWwiLCJjb250ZW50RW5jb2RpbmciOiJiciIsIndvcmtlclN0YXJ0IjowLCJ3b3JrZXJSb3V0ZXJFdmFsdWF0aW9uU3RhcnQiOjAsIndvcmtlckNhY2hlTG9va3VwU3RhcnQiOjAsIndvcmtlck1hdGNoZWRTb3VyY2VUeXBlIjoiIiwid29ya2VyRmluYWxTb3VyY2VUeXBlIjoiIiwicmVkaXJlY3RTdGFydCI6MCwicmVkaXJlY3RFbmQiOjAsImZldGNoU3RhcnQiOjUuMjk5OTk5NzEzODk3NzA1LCJkb21haW5Mb29rdXBTdGFydCI6NS4yOTk5OTk3MTM4OTc3MDUsImRvbWFpbkxvb2t1cEVuZCI6NS4yOTk5OTk3MTM4OTc3MDUsImNvbm5lY3RTdGFydCI6MTIuMjk5OTk5NzEzODk3NzA1LCJzZWN1cmVDb25uZWN0aW9uU3RhcnQiOjM1LjY5OTk5OTgwOTI2NTE0LCJjb25uZWN0RW5kIjo3NTkuOTAwMDAwMDk1MzY3NCwicmVxdWVzdFN0YXJ0Ijo3NjAsInJlc3BvbnNlU3RhcnQiOjEyMTYuNzk5OTk5NzEzODk3NywiZmlyc3RJbnRlcmltUmVzcG9uc2VTdGFydCI6MCwiZmluYWxSZXNwb25zZUhlYWRlcnNTdGFydCI6MTIxNi43OTk5OTk3MTM4OTc3LCJyZXNwb25zZUVuZCI6MTcxNi4yOTk5OTk3MTM4OTc3LCJ0cmFuc2ZlclNpemUiOjU0OTA3LCJlbmNvZGVkQm9keVNpemUiOjU0NjA3LCJkZWNvZGVkQm9keVNpemUiOjE4NTgzMSwicmVzcG9uc2VTdGF0dXMiOjIwMCwic2VydmVyVGltaW5nIjpbXSwidW5sb2FkRXZlbnRTdGFydCI6MCwidW5sb2FkRXZlbnRFbmQiOjAsImRvbUludGVyYWN0aXZlIjoxOTUwLjUsImRvbUNvbnRlbnRMb2FkZWRFdmVudFN0YXJ0IjoyMzkzLjUsImRvbUNvbnRlbnRMb2FkZWRFdmVudEVuZCI6MjM5My41LCJkb21Db21wbGV0ZSI6NDY0Ny40MDAwMDAwOTUzNjcsImxvYWRFdmVudFN0YXJ0Ijo0NjQ3LjUsImxvYWRFdmVudEVuZCI6NDY0Ny43OTk5OTk3MTM4OTgsInR5cGUiOiJuYXZpZ2F0ZSIsInJlZGlyZWN0Q291bnQiOjAsImFjdGl2YXRpb25TdGFydCI6MCwiY3JpdGljYWxDSFJlc3RhcnQiOjAsIm5vdFJlc3RvcmVkUmVhc29ucyI6bnVsbCwiY29uZmlkZW5jZSI6eyJyYW5kb21pemVkVHJpZ2dlclJhdGUiOjAuNDk5NDc5OCwidmFsdWUiOiJsb3cifX1dfX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-b1d51f862ac985129e6c",
+          "file": "live-quality.spec.ts",
+          "line": 50,
+          "column": 7
+        },
+        {
+          "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 45641,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/live-quality.spec.ts",
+                        "column": 33,
+                        "line": 74
+                      },
+                      "message": "Error: page.goto: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://cubxxw.com/zh/growth/posts/2025-annual-review/\", waiting until \"load\"\u001b[22m\n\n\n  72 |       }).observe({ type: 'longtask', buffered: true });\n  73 |     });\n> 74 |     const response = await page.goto(route, { waitUntil: 'load' });\n     |                                 ^\n  75 |     expect(response?.status()).toBe(200);\n  76 |     // A bounded observation window; this is not a full-page or field CWV claim.\n  77 |     await page.waitForTimeout(3000);\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/live-quality.spec.ts:74:33"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T02:55:12.610Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-19/e2e-live-quality-live-lab-perf-b9e7b-h-posts-2025-annual-review--mobile-error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-19/initial-mobile-annual-timeout.trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0e12b698f0712772606f-7e6f8409849f100bcbd9",
+          "file": "live-quality.spec.ts",
+          "line": 50,
+          "column": 7
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-19T02:51:50.057Z",
+    "duration": 249629.917,
+    "expected": 19,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

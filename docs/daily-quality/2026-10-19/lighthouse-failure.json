@@ -1,0 +1,10 @@
+{
+  "run": "https://github.com/cubxxw/blog/actions/runs/39126024011",
+  "sourceSha": "1565d48b1f93775f221553e7cac5b786e971ab7b",
+  "url": "https://cubxxw.com/projects/",
+  "errorCode": "PROTOCOL_TIMEOUT",
+  "method": "Network.getResponseBody",
+  "manifestAvailable": false,
+  "measureJob": "failure",
+  "publishJob": "failure"
+}

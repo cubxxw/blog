@@ -1,0 +1,387 @@
+[
+  {
+    "run": "e2e.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 6016,
+    "cls": 0,
+    "longTaskMs": 327,
+    "observationMs": 11543,
+    "domElements": 1496,
+    "resourceCount": 17,
+    "loadCompleted": true,
+    "loadEventEndMs": 8469.10000038147,
+    "topSlowResources": []
+  },
+  {
+    "run": "e2e.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 3976,
+    "cls": 0,
+    "longTaskMs": 0,
+    "observationMs": 17915.300000190735,
+    "domElements": 1498,
+    "resourceCount": 23,
+    "loadCompleted": true,
+    "loadEventEndMs": 14843.700000286102,
+    "topSlowResources": []
+  },
+  {
+    "run": "e2e.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 2992,
+    "cls": 0.00615780978732639,
+    "longTaskMs": 777,
+    "observationMs": 18162.099999904633,
+    "domElements": 1079,
+    "resourceCount": 69,
+    "loadCompleted": true,
+    "loadEventEndMs": 15050.599999904633,
+    "topSlowResources": []
+  },
+  {
+    "run": "e2e.json",
+    "project": "mobile",
+    "status": "passed",
+    "url": "https://cubxxw.com/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 2260,
+    "cls": 0,
+    "longTaskMs": 148,
+    "observationMs": 7171.10000038147,
+    "domElements": 1496,
+    "resourceCount": 16,
+    "loadCompleted": true,
+    "loadEventEndMs": 4119.900000095367,
+    "topSlowResources": []
+  },
+  {
+    "run": "e2e.json",
+    "project": "mobile",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 1940,
+    "cls": 0,
+    "longTaskMs": 0,
+    "observationMs": 7693.599999904633,
+    "domElements": 1498,
+    "resourceCount": 18,
+    "loadCompleted": true,
+    "loadEventEndMs": 4647.799999713898,
+    "topSlowResources": []
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 5600,
+    "cls": 0.017578125,
+    "longTaskMs": 497,
+    "observationMs": 16619.300000190735,
+    "domElements": 1496,
+    "resourceCount": 22,
+    "loadCompleted": true,
+    "loadEventEndMs": 13386.5,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/images/products/telepace_hu_c8866e47d90c45e5.webp",
+        "durationMs": 10359.700000286102
+      },
+      {
+        "resource": "https://cubxxw.com/images/products/daypage_hu_a8ac88aee87cc688.webp",
+        "durationMs": 9474
+      },
+      {
+        "resource": "https://cubxxw.com/images/products/solo-compass_hu_22bce1343507709d.webp",
+        "durationMs": 7441.099999904633
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 2304,
+    "cls": 0.017578125,
+    "longTaskMs": 133,
+    "observationMs": 14064.099999904633,
+    "domElements": 1498,
+    "resourceCount": 27,
+    "loadCompleted": true,
+    "loadEventEndMs": 10987.700000286102,
+    "topSlowResources": [
+      {
+        "resource": "https://www.googletagmanager.com/gtag/js",
+        "durationMs": 4964.099999904633
+      },
+      {
+        "resource": "https://cubxxw.com/images/products/telepace_hu_c8866e47d90c45e5.webp",
+        "durationMs": 4242.900000095367
+      },
+      {
+        "resource": "https://cubxxw.com/images/products/apply-agent_hu_f0d9c4679b361b16.webp",
+        "durationMs": 4242.800000190735
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/projects/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 3044,
+    "cls": 0.03515625,
+    "longTaskMs": 59,
+    "observationMs": 10299.299999713898,
+    "domElements": 892,
+    "resourceCount": 10,
+    "loadCompleted": true,
+    "loadEventEndMs": 7252.299999713898,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/js/bear-workspace.3df3eb02fc7b1055e540bc70ed130f274087fd58cc065dc351d6216b96412c8a.js",
+        "durationMs": 4675.5
+      },
+      {
+        "resource": "https://cubxxw.com/css/bear-os.min.2ddb6d509e85bfeb1ecfbedc4ca13d653ba2b260ed382e24add63846671f043a.css",
+        "durationMs": 2907.800000190735
+      },
+      {
+        "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+        "durationMs": 1838.2999997138977
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/projects/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 3096,
+    "cls": 0,
+    "longTaskMs": 0,
+    "observationMs": 7405.200000286102,
+    "domElements": 892,
+    "resourceCount": 10,
+    "loadCompleted": true,
+    "loadEventEndMs": 4336.400000095367,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/js/lang-redirect.js",
+        "durationMs": 2090.1000003814697
+      },
+      {
+        "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+        "durationMs": 2090
+      },
+      {
+        "resource": "https://cubxxw.com/js/bear-workspace.3df3eb02fc7b1055e540bc70ed130f274087fd58cc065dc351d6216b96412c8a.js",
+        "durationMs": 1907.5999999046326
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "desktop",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 3280,
+    "cls": 0.00615780978732639,
+    "longTaskMs": 638,
+    "observationMs": 41777.800000190735,
+    "domElements": 1079,
+    "resourceCount": 69,
+    "loadCompleted": true,
+    "loadEventEndMs": 38426.5,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/social/paper_hu_9df27d3979c1bb9e.png",
+        "durationMs": 38844.5
+      },
+      {
+        "resource": "https://cubxxw.com/js/blog-ai-inline.js",
+        "durationMs": 36548.09999990463
+      },
+      {
+        "resource": "https://cubxxw.com/js/wide-content-scroll.js",
+        "durationMs": 36237.59999990463
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "mobile",
+    "status": "passed",
+    "url": "https://cubxxw.com/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 2804,
+    "cls": 0,
+    "longTaskMs": 272,
+    "observationMs": 8549.799999713898,
+    "domElements": 1496,
+    "resourceCount": 16,
+    "loadCompleted": true,
+    "loadEventEndMs": 5509.199999809265,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/images/products/talent-signal_hu_497398c2ea9eec1.webp",
+        "durationMs": 2716.199999809265
+      },
+      {
+        "resource": "https://cubxxw.com/css/home-about-experience.min.4613168f7544bf46cc6c79bb33a4cba8c989b79553e0f4e0321a1946587016f1.css",
+        "durationMs": 2397.699999809265
+      },
+      {
+        "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+        "durationMs": 2068.2999997138977
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "mobile",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 5176,
+    "cls": 0,
+    "longTaskMs": 212,
+    "observationMs": 11226.699999809265,
+    "domElements": 1498,
+    "resourceCount": 16,
+    "loadCompleted": true,
+    "loadEventEndMs": 8185.400000095367,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/images/products/talent-signal_hu_497398c2ea9eec1.webp",
+        "durationMs": 3442.4000000953674
+      },
+      {
+        "resource": "https://cubxxw.com/js/lang-redirect.js",
+        "durationMs": 3415
+      },
+      {
+        "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+        "durationMs": 3135
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "mobile",
+    "status": "passed",
+    "url": "https://cubxxw.com/projects/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 2500,
+    "cls": 0,
+    "longTaskMs": 0,
+    "observationMs": 6467.699999809265,
+    "domElements": 892,
+    "resourceCount": 10,
+    "loadCompleted": true,
+    "loadEventEndMs": 3414.7999997138977,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+        "durationMs": 1749.6999998092651
+      },
+      {
+        "resource": "https://cubxxw.com/js/lang-redirect.js",
+        "durationMs": 1749.1999998092651
+      },
+      {
+        "resource": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+        "durationMs": 1510.5
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "mobile",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/projects/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 1756,
+    "cls": 0.00025928221145657344,
+    "longTaskMs": 15663,
+    "observationMs": 20966.39999961853,
+    "domElements": 898,
+    "resourceCount": 11,
+    "loadCompleted": true,
+    "loadEventEndMs": 2355.2999997138977,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+        "durationMs": 1928.4000000953674
+      },
+      {
+        "resource": "https://cubxxw.com/js/lang-redirect.js",
+        "durationMs": 1444.4000000953674
+      },
+      {
+        "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+        "durationMs": 1444.3000001907349
+      }
+    ]
+  },
+  {
+    "run": "e2e-followup.json",
+    "project": "mobile",
+    "status": "passed",
+    "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+    "navigationError": "",
+    "lcpMs": 5852,
+    "cls": 0,
+    "longTaskMs": 152,
+    "observationMs": 38378.5,
+    "domElements": 1079,
+    "resourceCount": 69,
+    "loadCompleted": true,
+    "loadEventEndMs": 35264.7000002861,
+    "topSlowResources": [
+      {
+        "resource": "https://cubxxw.com/js/article-bottom-sheet.js",
+        "durationMs": 32784
+      },
+      {
+        "resource": "https://cubxxw.com/js/article-tabs.js",
+        "durationMs": 32783.90000009537
+      },
+      {
+        "resource": "https://cubxxw.com/js/cover-parallax.d6ac8293a7cd4cacd06a6fc6f40520363997697d6bfd64e248cb9efd3f7dcefe.js",
+        "durationMs": 32783.699999809265
+      }
+    ]
+  }
+]

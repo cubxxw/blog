@@ -60,7 +60,8 @@
     "site:verify": "node scripts/site-verify.mjs",
     "ux:test": "node --test scripts/code-copy.test.mjs scripts/article-share-link.test.mjs scripts/article-tabs.test.mjs scripts/footer-subscribe.test.mjs scripts/article-ai-client.test.mjs scripts/ai-markdown-security.test.mjs scripts/home-chat-utils.test.mjs",
     "voice": "node scripts/author-voice-studio.mjs",
-    "voice:test": "node --test scripts/author-voice.test.mjs scripts/author-voice-studio.test.mjs scripts/author-audio-render.test.mjs scripts/reader-audio.test.mjs"
+    "voice:test": "node --test scripts/author-voice.test.mjs scripts/author-voice-studio.test.mjs scripts/author-audio-render.test.mjs scripts/reader-audio.test.mjs",
+    "test:daily": "playwright test --config=playwright.daily.config.ts"
   },
   "overrides": {
     "ts-api-utils": {
