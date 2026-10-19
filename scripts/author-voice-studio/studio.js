@@ -243,9 +243,11 @@ async function refresh() {
     ? "Google 官方 Gemini · 已读取本机配置"
     : "尚未配置 Gemini";
   $("voice-state").textContent = state.voice.ready
-    ? "你的个人声音已保存，之后的文章会复用它。"
-    : "尚未创建个人声音。也可以直接使用你亲口录制的原声。";
-  $("generate").disabled = !state.voice.ready || state.busy || drafting;
+    ? state.voice.type === "prebuilt"
+      ? "当前旁白：" + state.voice.name + " · 通用 AI 音色，清晰、平静地讲解文章。"
+      : "你的个人声音已保存，之后的文章会复用它。"
+    : "保存的声音配置无效，请检查配置，或使用你亲口录制的原声。";
+  $("generate").disabled = !state.configured || !state.voice.ready || state.busy || drafting;
   $("draft-script").disabled =
     state.busy ||
     drafting ||

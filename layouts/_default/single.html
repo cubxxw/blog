@@ -21,62 +21,15 @@
 <div class="article-layout">
 
   {{/* ─── Left: Marginalia ──────────────────────────────────────── */}}
-  <aside class="article-marginalia" aria-label="Article metadata">
+  <aside id="article-marginalia" class="article-marginalia" aria-label="Article metadata">
     {{- partial "article/marginalia.html" . -}}
   </aside>
 
   {{/* ─── Centre: Article ──────────────────────────────────────── */}}
   <article class="post-single article-main">
 
-    {{/* Compact marginalia for mobile (< 1024px): line1 author · date; line2 reading time · words · lang */}}
-    <div class="article-marginalia-mobile">
-      <div class="marginalia-mobile-row1">
-        {{- $mobileAuthorRaw := .Params.author | default site.Params.author -}}
-        {{- $mobileAuthor := "" -}}
-        {{- if reflect.IsSlice $mobileAuthorRaw -}}
-          {{- range $mobileAuthorRaw -}}
-            {{- $candidate := trim . " " -}}
-            {{- if and (not $mobileAuthor) $candidate (not (in (slice "Me" "me" "我" "我自己") $candidate)) -}}
-              {{- $mobileAuthor = $candidate -}}
-            {{- end -}}
-          {{- end -}}
-        {{- else if $mobileAuthorRaw -}}
-          {{- $mobileAuthor = trim (replaceRE "[，,]\\s*(我|Me|me)\\s*$" "" (printf "%v" $mobileAuthorRaw)) " " -}}
-        {{- end -}}
-        {{- with $mobileAuthor }}<span class="marginalia-author">{{ . }}</span>{{- end }}
-        <span class="marginalia-sep">·</span>
-        <span class="marginalia-date">
-          {{- if eq .Lang "zh" -}}
-            {{ .Date.Format "2006 年 1 月 2 日" }}
-          {{- else -}}
-            {{ .Date.Format "January 2, 2006" }}
-          {{- end -}}
-        </span>
-      </div>
-      <div class="marginalia-mobile-row2">
-        <span class="marginalia-dims">
-          {{- if eq .Lang "zh" -}}
-            {{ .ReadingTime }} 分钟 · {{ .WordCount }} 字
-          {{- else -}}
-            {{ .ReadingTime }} min · {{ .WordCount }} words
-          {{- end -}}
-        </span>
-        {{- if .IsTranslated }}
-        <span class="marginalia-sep">·</span>
-        <span class="marginalia-dialect-inline">
-          <span class="dialect-current-inline">{{- if eq .Lang "zh" -}}中{{- else -}}EN{{- end -}}</span>
-          {{- range .Translations }}
-          <span class="dialect-sep"> | </span>
-          <a href="{{ .Permalink }}" hreflang="{{ .Lang }}" class="dialect-link-inline">
-            {{- if eq .Lang "zh" -}}中{{- else -}}EN{{- end -}}
-          </a>
-          {{- end }}
-        </span>
-        {{- end }}
-      </div>
-    </div>
-
-
+    {{/* Compact metadata below the title on mobile; language belongs to the header. */}}
+    {{- $compactMeta := partial "article/compact-meta.html" . -}}
     <header class="post-header">
       {{ partial "breadcrumbs.html" . }}
       {{- $titleLength := strings.RuneCount .Title -}}
@@ -85,6 +38,7 @@
       <h1{{ with $contentHeadingID }} id="{{ . }}"{{ end }} class="post-title{{ if gt $titleLength $longTitleThreshold }} post-title--long{{ end }}{{ if gt $titleLength $veryLongTitleThreshold }} post-title--very-long{{ end }}">
         {{ .Title }}
       </h1>
+      {{ $compactMeta }}
       {{- if .Description }}
       <p class="post-description">
         {{ .Description }}
@@ -93,8 +47,6 @@
       {{- if not (.Param "hideMeta") }}
       <div class="post-meta">
         {{- partial "post_meta.html" . -}}
-        {{- partial "translation_list.html" . -}}
-        {{- partial "edit_post.html" . -}}
         {{- partial "post_canonical.html" . -}}
       </div>
       {{- end }}
@@ -113,9 +65,8 @@
     {{- partial "article/series-nav.html" . }}
 
     {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
-    {{- /* Mobile main gutters (14px) plus article gutters (16px below
-         640px, then 2.5vw) determine the cover's actual CSS width. */ -}}
-    {{- $coverSizes := "(max-width: 640px) calc(100vw - 60px), (max-width: 768px) calc(95vw - 28px), 900px" -}}
+    {{- /* The article owns one 20px gutter on phones. */ -}}
+    {{- $coverSizes := "(max-width: 768px) calc(100vw - 40px), 900px" -}}
     {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden "sizesAttr" $coverSizes) }}
 
     {{- if (.Param "ShowToc") }}
@@ -185,12 +136,22 @@
 
   {{/* ─── Right: Editorial Tools ────────────────────────────────── */}}
   <aside class="article-tools" aria-label="Editorial tools">
-    {{- partial "article/editorial-tools.html" . -}}
+    <div class="article-sidebar-controls" data-sidebar-controls hidden>
+      <button class="article-sidebar-toggle" type="button"
+              aria-controls="article-marginalia article-tools-content"
+              aria-expanded="true" aria-pressed="false">
+        {{- if eq .Lang "zh" }}固定侧栏{{ else }}Pin sidebars{{ end -}}
+      </button>
+    </div>
+    <div id="article-tools-content" class="article-tools-content">
+      {{- partial "article/editorial-tools.html" . -}}
+    </div>
   </aside>
 
 </div>
 
 <script src="{{ "/js/article-share-link.js" | relURL }}?v={{ readFile "static/js/article-share-link.js" | sha256 }}" defer></script>
+<script src="{{ "/js/article-sidebars.js" | relURL }}?v={{ readFile "static/js/article-sidebars.js" | sha256 }}" defer></script>
 
 {{/* ─── US-031: Compact-layout FAB + Bottom Sheet (&lt;1200px) ──── */}}
 

@@ -1,0 +1,20 @@
+{{- if not (.Param "hideMeta") -}}
+<div class="article-marginalia-mobile">
+  <div class="marginalia-mobile-row1">
+    {{- with partial "author.html" . }}
+    <span class="marginalia-author">{{ . }}</span>
+    <span class="marginalia-sep" aria-hidden="true">·</span>
+    {{- end }}
+    {{- if not .Date.IsZero }}
+    <time class="marginalia-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+      {{- if eq .Lang "zh" -}}{{ .Date.Format "2006 年 1 月 2 日" }}{{- else -}}{{ .Date.Format "January 2, 2006" }}{{- end -}}
+    </time>
+    {{- end }}
+  </div>
+  <div class="marginalia-mobile-row2">
+    <span class="marginalia-dims">
+      {{- if eq .Lang "zh" -}}{{ .ReadingTime }} 分钟 · {{ .WordCount }} 字{{- else -}}{{ .ReadingTime }} min · {{ .WordCount }} words{{- end -}}
+    </span>
+  </div>
+</div>
+{{- end -}}

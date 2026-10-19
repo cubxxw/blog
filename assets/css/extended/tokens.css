@@ -99,29 +99,25 @@
 /* ─── Light / Chinese override ─────────────────────────────── */
 html:lang(zh) {
   --color-paper:        #fbf9f4;
-  --color-ink:          #350003;
+  --color-ink:          #2e2320;
   --color-ink-muted:    #6c5b4e;
   --color-accent:       #862122;
   --color-accent-soft:  #eae8e3;
   --color-rule:         rgba(53, 0, 3, 0.10);
 
-  /* Prefer installed CJK serifs when available. The self-hosted Noto SC
-     fallback is required on devices without those glyphs; in that case its
-     loading can affect title/prose LCP. Keep timely face registration and
-     measure actual readable text rather than assuming network-free paint. */
-  --font-display: 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun',
-                  'Noto Serif SC', 'PingFang SC', 'Hiragino Sans GB',
+  /* One self-hosted serif across platforms, with installed fonts as fallbacks.
+     The optional face manifest is registered before text is laid out. */
+  --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun',
+                  'PingFang SC', 'Hiragino Sans GB',
                   'Microsoft YaHei', serif;
-  /* Keep the webfont fallback for devices without local CJK glyphs.
-     Prose/title font loading can affect LCP; readability takes priority. */
-  --font-prose:   'Source Han Serif SC', 'Songti SC', 'STSong',
-                  'Noto Serif SC', 'SimSun', 'PingFang SC', serif;
+  --font-prose:   'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong',
+                  'SimSun', 'PingFang SC', serif;
   --font-body:    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
                   system-ui, sans-serif;
   --font-meta:    'PingFang SC', 'Hiragino Sans GB', system-ui, sans-serif;
 
-  --line-height-prose: 2.0;
-  --tracking-prose:    0.02em;
+  --line-height-prose: 1.8;
+  --tracking-prose:    0.01em;
   --drop-cap-size:     4.5rem;
 }
 

@@ -25,6 +25,11 @@ import {
 } from "./reader-audio.mjs";
 
 export const VOICE_MODEL = "gemini-3.8-flash-tts";
+const DEFAULT_NARRATOR = Object.freeze({
+  id: "Charon",
+  name: "Charon",
+  type: "prebuilt",
+});
 const endpoint = "https://generativelanguage.googleapis.com/v1beta/";
 const hash = (value) => createHash("sha256").update(value).digest("hex");
 const fail = (message) => Object.assign(new Error(message), { public: true });
@@ -236,7 +241,8 @@ function chunks(text) {
   let tail = text;
   while (tail.length) {
     const units = Array.from(tail);
-    let take = Math.min(units.length, 450);
+    // Keep spoken turns short enough for the per-request provider deadline.
+    let take = Math.min(units.length, 180);
     if (take < units.length) {
       const probe = units.slice(0, take).join(""),
         at = Math.max(
@@ -280,13 +286,18 @@ export async function createAuthorVoice({
     }
   }
   const profile = async () => {
-    const value = await json(path.join(privateDir, "profile.json"));
-    return /^voice_[A-Za-z0-9_-]+$/.test(value?.id || "") ? value : null;
+    const bytes = await exists(path.join(privateDir, "profile.json"));
+    if (bytes === null) return DEFAULT_NARRATOR;
+    const value = JSON.parse(bytes.toString("utf8"));
+    return typeof value?.id === "string" && /^voice_[A-Za-z0-9_-]+$/.test(value.id)
+      ? { ...value, type: "replicated" }
+      : null;
   };
   const publicJob = (j) => ({
     id: j.id,
     status: j.status,
     type: j.type,
+    voiceType: j.voiceType,
     article: j.article,
     title: j.title,
     kind: j.kind,
@@ -366,7 +377,7 @@ export async function createAuthorVoice({
     }
     return {
       configured: !!apiKey,
-      voice: { ready: !!p?.id, name: p?.name || "我的声音" },
+      voice: { ready: !!p?.id, name: p?.name || "未配置音色", type: p?.type },
       busy,
       jobs: rows
         .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
@@ -376,13 +387,15 @@ export async function createAuthorVoice({
   }
   async function provider(route, body, signal) {
     if (!apiKey) throw fail("尚未配置 Gemini 密钥来源。");
+    // The WAV response body can take longer than text, even after HTTP 200.
+    const deadline = AbortSignal.timeout(route === "interactions" ? 180000 : 75000);
     const response = await fetcher(endpoint + route, {
       method: "POST",
       redirect: "error",
       headers: { "x-goog-api-key": apiKey, "Content-Type": "application/json" },
       signal: signal
-        ? AbortSignal.any([signal, AbortSignal.timeout(75000)])
-        : AbortSignal.timeout(75000),
+        ? AbortSignal.any([signal, deadline])
+        : deadline,
       body: JSON.stringify(body),
     });
     if (!response.ok) {
@@ -500,7 +513,7 @@ export async function createAuthorVoice({
     const source = await article(input.article),
       p = origin === "synthetic" ? await profile() : null;
     if (origin === "synthetic" && !p?.id)
-      throw fail("请先创建你的个人声音，或上传真人原声。");
+      throw fail("保存的声音配置无效，请检查音色配置，或上传真人原声。");
     const recording = origin === "recorded" ? decodeAudio(input.audio) : null;
     if (recording && wavInfo(recording).duration > 900)
       throw fail("原声请分成不超过 15 分钟的片段。");
@@ -515,7 +528,7 @@ export async function createAuthorVoice({
         : null;
     if (kind === "section" && !section)
       throw fail("这一节已变化，请重新选择。");
-    const style = "自然、平静，像和朋友聊天；保留原有音色，避免播音腔。",
+    const style = "calm, clear, conversational",
       signature = hash(
         JSON.stringify([
           source.file,
@@ -538,6 +551,7 @@ export async function createAuthorVoice({
         signature,
         type: "audio",
         origin,
+        voiceType: p?.type,
         article: source.file,
         title: source.title,
         sourceHash: source.sourceHash,
@@ -715,6 +729,7 @@ export async function createAuthorVoice({
       text: j.text,
       kind: j.kind,
       origin: j.origin,
+      voiceType: j.voiceType,
       createdAt: j.createdAt,
       durationSeconds: j.durationSeconds,
       sha256: j.audioSha256,

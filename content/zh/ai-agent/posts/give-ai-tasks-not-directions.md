@@ -27,6 +27,7 @@ tldr:
   - AI 的回答有波动，重要任务应通过多轮试验、确定性检查与人工复核验收。
   - 对话有没有价值，不取决于聊了多久，而取决于它是否改变了判断，或留下了可检查的结果。
 maturity: budding
+authorAudioTracks: ["4a23dd324b43e68f0e626eed5b7554bc5af300e76aac685f0e37c9d3b907fde2","5b7f463d9a667c97dfe6500d7eadbbf64505a83d9f6a8a4205fbad9040dec8a2","4bd7e5c136fc0fa987267d259f44df70d54b9cfe2122fe5456f032c520535986"]
 ---
 
 ## 聊了很久，手里留下了什么

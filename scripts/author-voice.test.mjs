@@ -137,21 +137,54 @@ test("creation requires real-length reference, consent confirmation, and persist
   assert.equal((await fresh.state()).voice.ready, true);
   assert.ok(!JSON.stringify(await fresh.state()).includes("fixture-secret"));
 });
-test("a missing own voice cannot silently use a stock voice", async (t) => {
-  let calls = 0;
-  const f = await fixture(t, async () => {
-    calls++;
+test("default narration uses Charon without voice enrollment and publishes honest AI provenance", async (t) => {
+  const calls = [];
+  const f = await fixture(t, async (url, options) => {
+    calls.push({ url, body: JSON.parse(options.body) });
     return speech();
   });
-  await assert.rejects(
-    f.service.generate({
-      requestId: "g",
-      article: f.article,
-      text: "这是我的补充。",
-    }),
-    /声音/,
+  const state = await f.service.state();
+  assert.equal(state.voice.ready, true);
+  assert.equal(state.voice.type, "prebuilt");
+  const started = await f.service.generate({
+    requestId: "default-narration",
+    article: f.article,
+    text: "这是文章的重点讲解。",
+    kind: "summary",
+  });
+  const ready = await settle(f.service, started.id);
+  assert.equal(ready.status, "ready", ready.error);
+  assert.equal(calls.length, 1);
+  assert.ok(calls[0].url.endsWith("/interactions"));
+  assert.equal(calls[0].body.generation_config.speech_config[0].voice, "Charon");
+  await assert.rejects(f.service.publish({ id: ready.id, reviewed: false }));
+  await f.service.publish({ id: ready.id, reviewed: true });
+  const manifest = JSON.parse(await readFile(path.join(f.root, "static/audio/author", ready.assetId + ".json"), "utf8"));
+  assert.equal(manifest.voiceType, "prebuilt");
+  assert.equal(manifest.origin, "synthetic");
+  assert.ok(!JSON.stringify(manifest).includes("fixture-secret"));
+});
+test("audio transfer gets a longer deadline while text drafting keeps its bounded wait", async (t) => {
+  const deadlines = [];
+  t.mock.method(AbortSignal, "timeout", (ms) => {
+    deadlines.push(ms);
+    return new AbortController().signal;
+  });
+  const f = await fixture(t, async (url) =>
+    url.endsWith("/interactions")
+      ? speech()
+      : Response.json({
+          candidates: [{ finishReason: "STOP", content: { parts: [{ text: "原文的重点。" }] } }],
+        }),
   );
-  assert.equal(calls, 0);
+  const start = await f.service.generate({
+    requestId: "audio-transfer-budget", article: f.article,
+    kind: "summary", text: "原文的重点。",
+  });
+  assert.equal((await settle(f.service, start.id)).status, "ready");
+  assert.ok(deadlines[0] >= 180000, "audio transfer needs a three-minute budget");
+  await f.service.draft({ requestId: "text-budget", article: f.article, kind: "summary" });
+  assert.equal(deadlines[1], 75000);
 });
 async function addVoice(f) {
   await mkdir(path.join(f.root, ".author-voice"), { recursive: true });
@@ -160,6 +193,30 @@ async function addVoice(f) {
     JSON.stringify({ id: "voice_fixture", name: "我的声音" }),
   );
 }
+test("long narration fits bounded provider turns without dropping Unicode text", async (t) => {
+  const submitted = [];
+  const f = await fixture(t, async (_url, options) => {
+    const text = JSON.parse(options.body).input[0].content[0].text;
+    submitted.push(text);
+    // Larger spoken turns exceeded the live provider request deadline.
+    if (Array.from(text).length > 180) throw Error("provider deadline exceeded");
+    return speech();
+  });
+  const text = Array.from({ length: 40 }, (_, i) =>
+    `第${i + 1}次探索🧭与执行需要不同的标准。`,
+  ).join("");
+  const start = await f.service.generate({
+    requestId: "bounded-turns",
+    article: f.article,
+    text,
+    kind: "summary",
+  });
+  const result = await settle(f.service, start.id);
+  assert.equal(result.status, "ready", result.error);
+  assert.equal(submitted.join(""), text);
+  assert.ok(submitted.every((part) => part.endsWith("。")));
+  assert.ok(submitted.every((part) => !part.includes("\uFFFD")));
+});
 test("generation is reusable, keeps the full script, and publication requires review against the same article", async (t) => {
   const calls = [],
     f = await fixture(t, async (url, options) => {
@@ -167,7 +224,9 @@ test("generation is reusable, keeps the full script, and publication requires re
       return speech();
     });
   await addVoice(f);
-  const text = "这是作者的口头补充。".repeat(85),
+  const text = Array.from({ length: 85 }, (_, i) =>
+      `这是作者第${i + 1}条口头补充。`,
+    ).join(""),
     request = {
       requestId: "generate-1",
       article: f.article,
@@ -395,19 +454,21 @@ test("a damaged saved profile cannot substitute a prebuilt voice", async (t) => 
     return speech();
   });
   await mkdir(path.join(f.root, ".author-voice"), { recursive: true });
-  await writeFile(
-    path.join(f.root, ".author-voice/profile.json"),
-    JSON.stringify({ id: "Charon" }),
-  );
-  assert.equal((await f.service.state()).voice.ready, false);
-  await assert.rejects(
-    f.service.generate({
-      requestId: "wrong-voice",
-      article: f.article,
-      text: "我的声音。",
-    }),
-    /声音/,
-  );
+  for (const [index, value] of [{ id: "Charon" }, null, false, 0, ""].entries()) {
+    await writeFile(
+      path.join(f.root, ".author-voice/profile.json"),
+      JSON.stringify(value),
+    );
+    assert.equal((await f.service.state()).voice.ready, false);
+    await assert.rejects(
+      f.service.generate({
+        requestId: "wrong-voice-" + index,
+        article: f.article,
+        text: "我的声音。",
+      }),
+      /声音/,
+    );
+  }
   assert.equal(calls, 0);
 });
 
@@ -567,7 +628,8 @@ test("Google wrapped consent failures are actionable and never trigger automatic
   await assert.rejects(f.service.createVoice(input), /未通过授权录音核验/);
   assert.equal((await f.service.createVoice(input)).status, "failed");
   assert.equal(calls, 1);
-  assert.equal((await f.service.state()).voice.ready, false);
+  assert.equal((await f.service.state()).voice.ready, true);
+  assert.equal((await f.service.state()).voice.type, "prebuilt");
 });
 
 test("atomic publication preserves source permissions and leaves concurrent edits intact", async (t) => {

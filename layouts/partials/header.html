@@ -185,15 +185,15 @@
             </button>
             {{- end }}
 
-            {{/* LANGUAGE SELECTOR — bilingual pill, current language sealed in cinnabar */}}
+            {{/* Stable 中文 / EN order, independent of the current language. */}}
             {{ if gt (len .Site.Languages) 1 }}
                 {{ $currentLang := .Lang }}
                 {{ $allTranslations := .Translations }}
 
-                <ul class="lang-switch" aria-label="Language">
-                    {{ range $anySiteLang := .Site.Home.AllTranslations }}
+                <ul class="lang-switch" aria-label="{{ if eq .Lang "zh" }}切换语言{{ else }}Language{{ end }}">
+                    {{ range $anySiteLang := sort .Site.Home.AllTranslations "Lang" "desc" }}
                         {{ $code := .Lang }}
-                        {{ $glyph := cond (eq $code "zh") "中" (.Lang | upper) }}
+                        {{ $glyph := cond (eq $code "zh") "中文" (.Lang | upper) }}
                         {{ $aria := .Language.LanguageName | default (.Lang | upper) }}
                         {{ if eq $currentLang $code }}
                             <li class="lang-switch__item lang-switch__item--active lang-switch__item--{{ $code }}">

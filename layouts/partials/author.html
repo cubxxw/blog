@@ -1,0 +1,14 @@
+{{- /* Front matter's historical "Me" token is not a second author. */ -}}
+{{- $raw := .Params.author | default site.Params.author -}}
+{{- $names := slice -}}
+{{- if reflect.IsSlice $raw -}}
+  {{- range $raw -}}
+    {{- $name := trim (printf "%v" .) " " -}}
+    {{- if and $name (not (in (slice "me" "我" "我自己") (lower $name))) -}}
+      {{- $names = $names | append $name -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if $raw -}}
+  {{- $names = $names | append (trim (replaceRE "(?i)[，,]\\s*(我|Me)\\s*$" "" (printf "%v" $raw)) " ") -}}
+{{- end -}}
+{{- return (delimit $names ", ") -}}

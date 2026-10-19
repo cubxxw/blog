@@ -80,6 +80,10 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
     path.join(root, "static/audio/author", "b".repeat(64) + ".json"),
     JSON.stringify({ ...manifest, reviewed: false }),
   );
+  const narratorId = "e".repeat(64);
+  await writeFile(path.join(root, "static/audio/author", narratorId + ".mp3"), "fixture");
+  await writeFile(path.join(root, "static/audio/author", narratorId + ".json"), JSON.stringify({ ...manifest, voiceType: "prebuilt" }));
+  await writeFile(path.join(root, "content/narrated.md"), "---\ntitle: 我的故事\nauthorAudio: " + narratorId + "\n---\n\n" + body + "\n");
   const summaryId = "c".repeat(64),
     sectionId = "d".repeat(64);
   const sectionBody = "## 一个难点\n\n正文。";
@@ -129,8 +133,15 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
   );
   assert.match(html, /听我聊聊这篇/);
   assert.match(html, /作者音色合成/);
+  const narrated = await readFile(path.join(root, "public/narrated/index.html"), "utf8");
+  assert.match(narrated, /AI 旁白/);
+  assert.ok(!narrated.includes("作者音色合成"));
+  assert.ok(!narrated.includes("内容经作者核对"));
   assert.match(html, /1:12/);
   assert.match(html, /preload="none"/);
+  assert.match(html, /data-audio-copy/);
+  assert.match(html, /data-audio-player/);
+  assert.ok(!html.includes('<details class="author-audio-transcript"'), 'transcript is readable without a second disclosure');
   assert.ok(!html.includes("autoplay"));
   assert.ok(!html.includes("正文已更新"));
   assert.match(html, /&lt;script&gt;/);
@@ -143,11 +154,11 @@ test("the real Hugo partial emits only reviewed audio, source-change notices and
     path.join(root, "public/multi/index.html"),
     "utf8",
   );
-  assert.match(multi, /data-audio-track-select/);
+  assert.match(multi, /data-audio-track-button/);
   assert.match(multi, /data-audio-anchor="一个难点"/);
   assert.ok(
-    multi.indexOf('value="' + summaryId + '"') <
-      multi.indexOf('value="' + sectionId + '"'),
+    multi.indexOf('data-audio-track-button="' + summaryId + '"') <
+      multi.indexOf('data-audio-track-button="' + sectionId + '"'),
   );
   assert.ok(decodeURIComponent(multi).includes('href="#一个难点"'));
   for (const name of ["plain", "unreviewed"])

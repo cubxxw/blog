@@ -430,6 +430,10 @@ body.dark .nav-search-trigger kbd {
     align-items: center;
 }
 
+.nav .logo-switches > button {
+    margin: 0;
+}
+
 #theme-toggle {
     display: inline-flex;
     align-items: center;
@@ -457,42 +461,25 @@ body.dark #theme-toggle:hover {
     width: 16px;
     height: 16px;
 }
-
-/* Language Switcher — a typographic pair, 中 / EN, divided by a faint
-   slash. The current language is set in the page's accent ink; the
-   other waits in muted grey. No pill, no seal: a persistent saturated
-   badge in the periphery taxes attention on every page — the accent
-   colored glyph says "current" at a fraction of the visual cost. */
+/* Language is a single, stable 中文 · EN pair on every viewport. */
 .lang-switch {
     flex-shrink: 0;
     display: inline-flex;
-    align-items: center;
-    gap: 0;
+    align-items: stretch;
+    gap: 2px;
     margin: 0;
-    padding: 0;
+    padding: 3px;
     list-style: none;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-ink) 5%, var(--color-paper));
     line-height: 1;
 }
 
-.lang-switch__item {
-    display: inline-flex;
-    align-items: center;
+.lang-switch > .lang-switch__item {
+    display: flex;
     margin: 0;
     padding: 0;
-    opacity: 1;
-    color: inherit;
-}
-
-/* Hairline slash between the two glyphs */
-.lang-switch__item + .lang-switch__item::before {
-    content: "/";
-    margin: 0 5px;
-    font-size: 11px;
-    color: var(--color-ink-muted, var(--secondary));
-    opacity: 0.4;
 }
 
 .lang-switch__item > a,
@@ -500,90 +487,47 @@ body.dark #theme-toggle:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 0;
-    height: auto;
-    padding: 3px 2px;
-    border-radius: 0;
+    min-width: 44px;
+    min-height: 30px;
+    width: 44px;
+    margin: 0;
+    padding: 0;
+    border-radius: 999px;
+    font-family: var(--font-meta);
     font-size: 12.5px;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.03em;
-    color: var(--color-ink-muted, var(--secondary));
-    background: transparent;
-    box-shadow: none;
-    text-decoration: none;
-    opacity: 1;
-    transition: color 180ms ease, opacity 180ms ease;
-}
-
-.lang-switch__item > a {
-    color: #5f554d !important;
-}
-
-/* Chinese glyph (中) gets a serif face for character feel */
-.lang-switch__item--zh > a,
-.lang-switch__item--zh > span {
-    font-family: "Source Han Serif SC", "Songti SC", "Noto Serif SC", var(--font-serif, serif);
-    font-size: 13.5px;
     letter-spacing: 0;
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color 160ms ease, background-color 160ms ease;
 }
 
-/* English glyph picks up the site's display serif */
-.lang-switch__item--en > a,
-.lang-switch__item--en > span {
-    font-family: var(--font-display, "Fraunces", serif);
-    font-feature-settings: "ss01" on, "kern" on;
-}
-
-/* Inactive hover: ink arrives */
-.lang-switch__item > a:hover,
-.lang-switch__item > a:focus-visible {
-    color: var(--color-ink, var(--primary));
-    background: transparent;
-    box-shadow: none;
-    opacity: 1;
-}
-
-.lang-switch__item > a:focus-visible {
-    outline: 1.5px solid color-mix(in oklab, var(--color-accent, #862122) 55%, transparent);
-    outline-offset: 2px;
-}
-
-/* Active: the accent ink of the current language's design system */
 .lang-switch__item--active > span {
-    color: var(--color-accent, #862122);
-    font-weight: 600;
-    background: transparent;
-    box-shadow: none;
-    opacity: 1;
-}
-
-/* Dark mode inherits the same logic through the accent token */
-body.dark .lang-switch {
-    background: transparent;
-    box-shadow: none;
-}
-
-body.dark .lang-switch__item > a,
-body.dark .lang-switch__item > span {
-    color: var(--color-ink-muted, var(--secondary));
-}
-
-body.dark .lang-switch__item > a {
-    color: #d1cbc4 !important;
-}
-
-body.dark .lang-switch__item > a:hover,
-body.dark .lang-switch__item > a:focus-visible {
-    color: var(--color-ink, var(--primary));
-    background: transparent;
-    box-shadow: none;
+    color: var(--color-ink);
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(30, 25, 20, 0.10);
 }
 
 body.dark .lang-switch__item--active > span {
-    color: var(--color-accent, #ff6b6b);
-    background: transparent;
-    box-shadow: none;
+    background: color-mix(in srgb, var(--color-ink) 12%, var(--color-paper));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .lang-switch__item > a:hover {
+        color: var(--color-ink);
+        background: color-mix(in srgb, var(--color-ink) 7%, transparent);
+    }
+}
+
+.lang-switch__item > a:active {
+    background: color-mix(in srgb, var(--color-ink) 12%, transparent);
+}
+
+.lang-switch__item > a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -597,7 +541,19 @@ body.dark .lang-switch__item--active > span {
 @media (max-width: 768px) {
     .nav {
         position: relative;
-        line-height: 52px;
+        line-height: 60px;
+        padding-inline: 16px;
+        gap: 0;
+        flex-wrap: nowrap;
+    }
+
+    .logo-switches {
+        gap: 2px;
+        margin-right: 0;
+    }
+
+    .nav .hamburger-menu {
+        margin-left: 0;
     }
 
     /* Search button: icon-only on mobile, no label or keyboard shortcut */
@@ -623,7 +579,8 @@ body.dark .lang-switch__item--active > span {
         min-height: 44px;
     }
 
-    .lang-switch__item > a {
+    .lang-switch__item > a,
+    .lang-switch__item > span {
         min-width: 44px;
         min-height: 44px;
         padding: 0;
@@ -770,23 +727,19 @@ body.dark .lang-switch__item--active > span {
     }
 }
 
-/* Compact phones cannot fit brand + search + theme + two-language status +
-   hamburger while preserving 44px utility targets. Show only the actionable
-   target language: the current language is already conveyed by page content
-   and `<html lang>`, while the remaining glyph still switches languages.
-   This saves ~56px and keeps the hamburger fully inside a 320px viewport. */
+/* Preserve both language labels and 44px targets even on compact phones. */
 @media (max-width: 360px) {
+    .nav {
+        padding-inline: 12px;
+    }
+
+    .logo a {
+        font-size: 15px;
+    }
+
     .logo-switches {
-        gap: 4px !important;
+        gap: 0;
         margin-right: 0;
-    }
-
-    .lang-switch__item--active {
-        display: none !important;
-    }
-
-    .lang-switch__item + .lang-switch__item::before {
-        display: none;
     }
 
     .lang-switch__item > a {
