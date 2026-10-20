@@ -44,13 +44,16 @@ import * as params from '@params';
 
   function activate() {
     if (!owned) return;
-    owned = false; intent++;
+    owned = false; intent++; status.style.minHeight = '';
     document.dispatchEvent(new CustomEvent('search:activate', { detail: { returnFocus } }));
     returnFocus = null;
   }
 
   function start() {
     if (state === 'loading') return;
+    // Keep the retry target still when a wrapped error becomes a shorter
+    // loading message (mobile widths and enlarged reader text).
+    if (state === 'error') status.style.minHeight = getComputedStyle(status).height;
     state = 'loading'; const current = ++intent;
     input.setAttribute('aria-busy', 'true');
     status.hidden = false;
@@ -71,7 +74,7 @@ import * as params from '@params';
     owned = true; returnFocus = trigger || document.activeElement; state = 'idle';
     palette.removeAttribute('hidden'); document.body.classList.add('search-palette-open');
     triggers.forEach(t => t.setAttribute('aria-expanded', 'true'));
-    retry.hidden = true; input.focus(); start();
+    retry.hidden = true; status.style.minHeight = ''; input.focus(); start();
   }
 
   function close() {
@@ -79,7 +82,7 @@ import * as params from '@params';
     palette.setAttribute('hidden', ''); document.body.classList.remove('search-palette-open');
     triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
     input.value = ''; input.setAttribute('aria-busy', 'false');
-    status.hidden = true; retry.hidden = true;
+    status.hidden = true; status.style.minHeight = ''; retry.hidden = true;
     if (fullLink) { const url = new URL(fullLink.href); url.searchParams.delete('q'); fullLink.href = url.href; }
     returnFocus?.focus({ preventScroll: true }); returnFocus = null;
   }

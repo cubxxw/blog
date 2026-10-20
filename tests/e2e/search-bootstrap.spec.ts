@@ -80,6 +80,8 @@ for (const prefix of ['', '/zh']) {
     await page.locator('#search-empty').evaluate(node => {
       (node as HTMLElement).style.fontSize = `${parseFloat(getComputedStyle(node).fontSize) * 2}px`;
     });
+    // Compare layout after the normal entry animation has completed.
+    await panel.evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished)));
     const before = await retry.boundingBox();
     await retry.click();
     await expect(retry).toBeFocused();
