@@ -1,6 +1,7 @@
 ---
-title: 'IMStage: Editable Chat Scenes'
+title: 'IMStage: Synthetic Conversations for Tests and Evaluation'
 date: 2026-09-23T09:00:00+08:00
+lastmod: 2026-10-20T00:00:00+08:00
 showtoc: true
 tocopen: false
 type: posts
@@ -10,35 +11,37 @@ tags:
   - AI
   - Agent
   - MCP
-  - Open Source
+  - Developer Tools
   - Product Strategy
 product: imstage
 description: >
-  Create editable chat scenes with IMStage. Generate dialogue and photos, reuse templates, make project variations, and export PNGs with automatic draft saving.
+  Create synthetic chat scenes for tests, teaching and evaluation. Use templates, export PNG or JSON, and connect via MCP. Non-commercial source-available tool.
 ---
 
-The same support demo needs a WeChat version, a WhatsApp version, and different people and photos. The dialogue barely changes, but the image has to be rebuilt. IMStage keeps those changes inside an editable scene for product demos, teaching materials and fictional stories.
+A chat-screenshot test needs different messages, people and timestamps. IMStage keeps those variations in editable synthetic scenes for software tests, teaching and evaluation datasets. [Current project overview](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
-Describe a moment in [IMStage](https://imstage.org/?lang=en). AI opens the workspace and generates the dialogue and imagery. You can then edit messages, people, photos and layout directly, or ask for another change in plain language.
+In [IMStage](https://imstage.org/?lang=en), edit messages, people, avatars and device settings directly, or sign in to let the hosted Agent draft and revise a scene. Previews and exports carry an “AI-generated / Fictional” label by default. [Features and usage boundaries](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
-{{< figure src="/images/products/imstage-en.jpg" alt="IMStage in English: a scene prompt beside a WhatsApp conversation and generated photo" caption="The English example uses WhatsApp. Characters and photos are fictional, AI-generated material displayed by the actual scene renderer." width="1440" height="900" >}}
+{{< figure src="/images/products/imstage-en.jpg" alt="An earlier IMStage English homepage showing a scene prompt and a synthetic chat preview" caption="An earlier interface from September 2026, with fictional people and synthetic photos. Current features and licensing are described below." width="1440" height="900" >}}
 
 ## A scene you can keep changing
 
-Rewrite a reply, replace an avatar, or adjust the time and device status without starting over. Preview and export read the same scene. Export a standard screenshot or a long PNG of the full conversation.
+Rewrite a reply, replace an avatar, or adjust the time and device status without starting over. Export a standard frame, a long PNG, or editable JSON. [Editing and export](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
-Workspace drafts save automatically in the current browser. After sign-in, scenes, people and project settings sync to the server. If syncing fails, the status stays visible and the local draft is retained. The homepage demo resets on reload.
+Local sessions stay in the current browser; the hosted service saves scenes and projects for signed-in accounts. Manual editing and PNG export need no model key. The hosted Agent requires server configuration and sign-in. [Hosting and local use](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
 ## One premise, different stories
 
-Save a scene as a template and reuse names, images and other content as variables. A project holds the shared premise, so each variation only needs to describe what changes. A series of chats before a meeting can share a plot while using different people, photos and dialogue. Localized support examples work the same way.
+Save a scene as a template and reuse names, images and other content as variables. A project holds shared rules for batch variations, letting one test scene cover different messages and people. [Templates and projects](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
-An existing screenshot can be a starting point: reconstruct an approximate editable layout, or retain the original image and edit selected regions. This supports further creation without promising pixel-perfect reconstruction of any app.
+Public real-screenshot reference editing is disabled, and payment, transfer, red-packet and balance messages have been removed. Use fictional or authorised assets; synthetic output must never be presented as evidence of a real conversation. [Current restrictions](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
 ## Self-host it or connect your AI tools
 
-IMStage is MIT-licensed. The Web workspace and MCP share a scene renderer. For MCP, the calling AI supplies the content to save in batches or render; access uses an administrator-configured instance token and a separate scene store.
+Account MCP uses OAuth sign-in and shares saved scenes with the Web workspace. Self-hosted instance MCP retains an administrator token and a separate scene store. These connections have different account and storage boundaries. [MCP connections](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
-Manual local editing and export need no model key. Hosted AI creation requires sign-in, account credits and a model configured on the server. The tool creates demo images; it does not send messages to WeChat or WhatsApp.
+Current versions use a source-available non-commercial license for testing, learning and research. New versions no longer use MIT; earlier MIT releases retain their original terms. [License notes](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md#license-and-commercial-use)
 
-[Source code and deployment docs on GitHub](https://github.com/kubbot/imstage).
+## References
+
+- [IMStage features, connections and licensing (October 18, 2026 revision)](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)

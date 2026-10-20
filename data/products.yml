@@ -1,35 +1,35 @@
 products:
   - id: talent-signal
-    name: Talent Signal
+    name: capri
     featured: true
-    stage_zh: 测试中
-    stage_en: In testing
-    headline_zh: 知道现在谁需要你，以及为什么。
-    headline_en: Know who needs you now, and why.
-    os_thesis_zh: AI 整理线索，判断仍属于人。
-    os_thesis_en: AI organizes the signals. People keep the judgment.
-    desc_zh: 面向独立猎头的关系智能工具，把关键对话变成可核对的候选人动态、证据链和一个明确下一步，同时把最终判断留给猎头。
-    desc_en: Relationship intelligence for independent recruiters, turning meaningful conversations into reviewable momentum, source-linked evidence, and one clear next move.
-    audience_zh: 独立猎头 · 搜寻顾问
-    audience_en: Independent recruiters · Search partners
-    stack: Next.js · SwiftUI · Agent system
+    stage_zh: 早期使用申请
+    stage_en: Early access by request
+    headline_zh: 接住重要的人和未完的事。
+    headline_en: Keep important people and unfinished things close.
+    os_thesis_zh: 留下你选择的背景，接续下一次交流。
+    os_thesis_en: Keep the context you choose. Continue the conversation.
+    desc_zh: 从你分享的聊天截图中整理认识背景、答应的事情和后来的变化，先看有来源的理解，再决定留下什么。capri 正在构建能接续同一个人、同一件事的个人 Agent。
+    desc_en: Share a chat screenshot, review its sourced context, and choose what to keep. capri is building a personal Agent for remembering people, promises, and changes before the next conversation.
+    audience_zh: 独立从业者 · 小团队创始人
+    audience_en: Independent professionals · Small-team founders
+    stack: Next.js · SwiftUI · TypeScript
     color: rust
-    mark: TS
+    mark: CA
     url: https://gettalentsignal.com
-    github: https://github.com/getyak/talent-signal
+    github: https://github.com/getyak/capir
     demo: https://gettalentsignal.com/demo
-    image_alt_zh: Talent Signal 首页，左侧呈现产品主张，右侧用证据关系图展示四条确认事实汇聚成一个下一步行动
-    image_alt_en: Talent Signal homepage showing its product claim beside an evidence map where four confirmed facts converge on one next action
-    question_zh: 带来源的候选人动态与一个最小下一步，能否减少对话之间的上下文重建，同时保留猎头自己的关系判断？
-    question_en: Can source-linked candidate momentum and one smallest next move reduce reconstruction between conversations while preserving recruiter judgment?
-    boundary_zh: 当前使用合成数据验证产品语言、审阅状态和跨端流程，还不是生产候选人数据系统。
-    boundary_en: The current foundation uses synthetic data to test product language, review states, and the cross-platform loop. It is not yet a production candidate-data system.
+    image_alt_zh: capri 前身 Talent Signal 的早期首页截图，展示产品主张与证据关系图
+    image_alt_en: An earlier Talent Signal homepage, before the capri rebrand, showing the product claim and an evidence map
+    question_zh: 一张聊天截图能否留下值得记住的背景，让下一次交流接得上，并让新回复更新同一件未完事项？
+    question_en: Can a shared screenshot preserve useful context for the next conversation and let a later reply update the same unfinished thing?
+    boundary_zh: 公开演示使用合成案例；真实工作空间需申请，完整接续体验仍在验证。确认事实和授权外部发送是两个独立决定。
+    boundary_en: Public demos use synthetic cases. Real workspaces require access approval, and the complete continuity journey is still being validated. Fact confirmation and permission to send are separate decisions.
     contract:
       - { zh: 每个重要判断都能回到来源, en: Every consequential claim resolves to its source }
-      - { zh: 每次状态变化都由人确认, en: Every state change remains human-confirmed }
-      - { zh: 每轮只推进一个明确下一步, en: Each cycle advances one clear next move }
+      - { zh: 由你选择值得留下的背景与未完事项, en: You choose the context and unfinished things worth keeping }
+      - { zh: 等待、暂停和没有下一步都是正常结果, en: Waiting, pausing, and having no next step are valid outcomes }
     related: []
-    tags: [agent, ai, career]
+    tags: [agent, ai, personal-productivity]
 
   - id: leafhour
     name: Leafhour
@@ -39,8 +39,8 @@ products:
     headline_en: Stay with a book.
     os_thesis_zh: AI 帮你读下去，理解由自己形成。
     os_thesis_en: AI helps you keep reading. Understanding remains your own.
-    desc_zh: 一个有 AI 陪伴的私人阅读书房。回到上次读到的地方，在原文、译文和自己的旁注之间往返，遇到难点再展开阅读对话，让问题留在对应的书页旁。
-    desc_en: A personal reading room with AI by your side. Resume where you left off, move between the original, translations and your own notes, and open a reading conversation when a passage needs more attention.
+    desc_zh: 从上次停下的原句继续读一本书。导入 PDF、EPUB、TXT 或 Markdown，按需查看直译与意译，把自己的理解和问题留在原文旁，也可以开启阅读对话。
+    desc_en: Continue a book from the sentence where you stopped. Import PDF, EPUB, TXT, or Markdown, compare literal and interpretive translations, and keep notes, questions, and reading conversations beside the source.
     audience_zh: 深度阅读者 · 原文阅读与语言学习
     audience_en: Deep readers · Original-language reading and language learning
     stack: Node.js · DeepSeek · Supabase · MCP
@@ -55,8 +55,8 @@ products:
     image_alt_en: Leafhour homepage with the forest-green headline Stay with a book. beside an open book by a sunlit window
     question_zh: 中断几天后，能否从同一段原文和上次留下的问题继续，让 AI 的解释帮助自己形成理解？
     question_en: After a few days away, can returning to the same passage and an unfinished question help readers form their own understanding with AI support?
-    boundary_zh: 应用以中文为主；AI 翻译与解释需要核对原文，阅读时长不能证明理解。Google 新品牌审核仍待通过。
-    boundary_en: The app is primarily in Chinese. AI translations and explanations need checking against the original; reading time does not establish understanding. Google branding review remains pending.
+    boundary_zh: AI 译文与解释需要核对原文；翻译按需生成。扫描版 PDF、加密文件和带 DRM 的电子书暂不支持。
+    boundary_en: Check AI translations and explanations against the source; translations are generated on request. Scanned PDFs, encrypted files, and DRM-protected books are not supported.
     related:
       - /growth/posts/ai-english-learning
     tags: [ai, learning, open-source]
@@ -65,14 +65,14 @@ products:
     name: IMStage
     stage_zh: 已上线
     stage_en: Live
-    headline_zh: 把对话做成可编辑的画面。
-    headline_en: Turn a conversation into an editable scene.
-    os_thesis_zh: 把对话变成可编辑的创作材料。
-    os_thesis_en: Turn a conversation into something you can edit.
-    desc_zh: 从一句情节开始，生成对白、人物与照片。逐条编辑，复用模板，或在同一个项目里创作一组不同的故事，最后导出 PNG。
-    desc_en: Start with a premise. Generate dialogue, people and photos, edit each detail, reuse a template, or make a series of stories in one project. Export the result as a PNG.
-    audience_zh: 产品演示 · 教学 · 叙事创作
-    audience_en: Product demos · Teaching · Storytelling
+    headline_zh: 为测试与评测，创作可编辑的合成对话。
+    headline_en: Create editable synthetic conversations for tests and evaluation.
+    os_thesis_zh: 把虚构对话变成可复用的测试材料。
+    os_thesis_en: Turn fictional conversations into reusable test material.
+    desc_zh: 为软件测试、教学与评测数据集创作合成聊天场景。逐条编辑消息，复用人物与模板，批量制作项目变体，再导出带默认虚构标识的 PNG 或可编辑 JSON。
+    desc_en: Author synthetic chat scenes for software tests, teaching, and evaluation datasets. Edit messages, reuse people and templates, create project variations, and export PNGs with a default fictional label or editable JSON.
+    audience_zh: 软件测试 · 教学 · AI 评测
+    audience_en: Software testing · Teaching · AI evaluation
     stack: React · Node · MCP
     color: rust
     mark: IM
@@ -83,30 +83,32 @@ products:
     image_fit: contain
     image_zh: /images/products/imstage-zh.jpg
     image_en: /images/products/imstage-en.jpg
-    image_alt_zh: IMStage 首页的场景输入框与微信聊天预览，展示虚构人物和 AI 合成照片
-    image_alt_en: The IMStage scene prompt beside a WhatsApp preview with fictional characters and an AI-generated photo
-    boundary_zh: 用于演示与虚构创作。AI 生成需要账号额度；参考截图重建为可编辑的近似布局。
-    boundary_en: For demos and fiction. AI generation uses account credits; screenshot reconstruction creates an approximate editable layout.
+    image_alt_zh: IMStage 早期首页的场景输入框与合成聊天预览，人物和照片均为虚构素材
+    image_alt_en: An earlier IMStage homepage with a scene prompt, synthetic chat preview, fictional characters, and an AI-generated photo
+    boundary_zh: 当前版本源码可用，仅限非商业测试、学习与研究；公开入口已禁用真实截图编辑，预览与导出默认带虚构标识。
+    boundary_en: Current versions are source-available for non-commercial testing, learning, and research. Public real-screenshot editing is disabled; previews and exports carry a fictional label by default.
     related: []
     tags: [agent, ai, product-strategy]
 
   - id: solo-compass
-    name: Solo Compass
+    name: Roamorrow
     stage_zh: TestFlight 准备中
     stage_en: TestFlight prep
-    headline_zh: 打开地图，找到附近真正值得去做的事。
-    headline_en: Open the map. Find what is truly worth doing nearby.
+    headline_zh: 找到自己的方向，在路上也能自在生活。
+    headline_en: Find your way. Feel at home.
     os_thesis_zh: AI 缩小选择，路线仍由你决定。
     os_thesis_en: AI narrows the options. You choose the route.
-    desc_zh: 面向独自旅行者的活地图：把附近地点变成具体、有故事感的体验，并用 AI 缩小选择范围，而不是替你做决定。
-    desc_en: A living map for solo travelers that turns nearby places into concrete, story-rich experiences and uses AI to narrow the field without making the decision.
+    desc_zh: 从 Solo Compass 演进而来的独行旅行伙伴。以地图为入口，把附近地点整理成具体可做的体验，用 AI 帮你筛选，并把地点来源和不确定性留在判断旁。
+    desc_en: Evolved from Solo Compass, Roamorrow is a map-first companion for solo travel and life on the move. Discover concrete things to do nearby, with AI curation, source context, and uncertainty kept visible.
     audience_zh: 独自旅行者 · 数字游民
     audience_en: Solo travelers · Digital nomads
-    stack: SwiftUI · MapKit · AI
+    stack: SwiftUI · MapKit · Supabase
     color: cobalt
-    mark: SC
-    url: https://github.com/getyak/solo-compass
-    github: https://github.com/getyak/solo-compass
+    mark: RM
+    url: https://roamorrow.com
+    github: https://github.com/getyak/roamorrow
+    boundary_zh: iOS 仍处于 TestFlight 准备阶段；地点信息与 AI 建议需要结合来源和当地实际情况核对。
+    boundary_en: The iOS app remains in TestFlight preparation. Check place information and AI suggestions against their sources and local conditions.
     related:
       - /growth/posts/metacognitive-transformation-review
       - /growth/posts/2026-07-14-what-remains-when-taken-apart
@@ -121,21 +123,23 @@ products:
 
   - id: daypage
     name: DayPage
-    stage_zh: 已上线
-    stage_en: Live
+    stage_zh: 持续开发
+    stage_en: In development
     headline_zh: 不管理人生，只接住今天。
     headline_en: Don't manage your life. Hold on to today.
     os_thesis_zh: 先接住今天，再看见自己的变化。
     os_thesis_en: Hold on to today. See how you change.
-    desc_zh: 面向日常记录与自我觉察的轻量空间，让念头、情绪和行动自然沉淀为可回看的时间线。
-    desc_en: A lightweight space for daily reflection where thoughts, emotions, and actions settle into a timeline worth revisiting.
-    audience_zh: 日常记录 · 自我觉察
-    audience_en: Daily reflection · Self-awareness
-    stack: Next.js · Mobile
+    desc_zh: 以本地文件为基础的个人记忆系统。收下文字、语音、照片与日常背景，再用 AI 编译成每日页面、人物与主题页面，以及可以继续探索的知识图谱。
+    desc_en: A local-first personal memory system that captures text, voice, photos, and daily context, then compiles them into Daily Pages, entity pages, and an explorable knowledge graph.
+    audience_zh: 日常记录 · 个人知识积累
+    audience_en: Daily capture · Personal knowledge
+    stack: SwiftUI · Kotlin · Next.js · MCP
     color: amber
     mark: DP
     url: https://daypage.cubxxw.com
     github: https://github.com/getyak/daypage
+    boundary_zh: 各客户端仍在持续开发，能力不完全一致；AI 编译结果需要回到原始记录核对。
+    boundary_en: Clients are still evolving and do not all offer the same capabilities. Check AI-compiled pages against the original captures.
     related:
       - /growth/posts/2026-06-thought-notes
       - /growth/posts/2025-05-thought-notes
@@ -150,21 +154,23 @@ products:
 
   - id: telepace
     name: Telepace
-    stage_zh: 公开测试
-    stage_en: Public beta
-    headline_zh: 让产品团队持续听见真实用户。
-    headline_en: Keep real customer voices inside every product decision.
-    os_thesis_zh: 让用户原声进入每一次产品判断。
-    os_thesis_en: Bring customer voices into every product decision.
-    desc_zh: Voice-native、Agent-first 的用户研究基础设施，从访谈招募、执行到洞察交付形成自动化闭环。
-    desc_en: Voice-native, agent-first research infrastructure automating recruitment, interviews, synthesis, and insight delivery.
-    audience_zh: 产品团队 · 用户研究
-    audience_en: Product teams · User research
-    stack: Python · Next.js · Voice AI
+    stage_zh: 持续开发
+    stage_en: In development
+    headline_zh: 把一次真实失败，变成下一次发布的检验。
+    headline_en: Turn a real failure into a check for the next release.
+    os_thesis_zh: 让真实证据进入 AI 的评测与发布判断。
+    os_thesis_en: Bring real evidence into AI evaluation and release decisions.
+    desc_zh: 面向 AI 产品的 evidence-to-eval 工具。先定义什么算正确，再把生产问题、专家修正和用户意图编译成可回放的 Eval Pack，保留来源、评分标准与版本化发布门禁。
+    desc_en: Evidence-to-eval infrastructure for AI products. Define correctness, then compile production failures, expert corrections, and user intent into replayable Eval Packs with provenance, rubrics, and versioned release gates.
+    audience_zh: AI 产品团队 · 评测与质量负责人
+    audience_en: AI product teams · Evaluation and quality leads
+    stack: Python · Next.js · REST API · MCP
     color: sage
     mark: TP
     url: https://telepace.cubxxw.com
     github: https://github.com/getyak/telepace-next
+    boundary_zh: 评测需要明确用例、权威来源和人工校准；访谈只用于补齐已识别的证据缺口。
+    boundary_en: Evaluations need explicit cases, authoritative evidence, and human calibration. Interviews collect only the evidence needed to close identified gaps.
     related:
       - /ai-agent/posts/relay-agent-architecture-design
       - /growth/posts/super-individual-ai-product-and-solo-builder-stack
@@ -178,22 +184,24 @@ products:
       - { zh: 团队协作与工作区, en: Team workspaces, done: false }
 
   - id: apply-agent
-    name: Apply Agent
-    stage_zh: 公开测试
-    stage_en: Public beta
-    headline_zh: 把求职流程交给一个可信赖的智能体。
-    headline_en: A trustworthy agent for the repetitive work of finding your next role.
+    name: Vantage
+    stage_zh: 持续开发
+    stage_en: In development
+    headline_zh: 从真实经历出发，准备下一次职业机会。
+    headline_en: Build your next opportunity on real career evidence.
     os_thesis_zh: Agent 处理重复工作，机会由你决定。
     os_thesis_en: Let the agent handle repetition. You choose the opportunity.
-    desc_zh: 面向求职者的智能工作台，协助整理机会、匹配岗位、准备材料并追踪每一次申请。
-    desc_en: An intelligent job-search workspace for organizing opportunities, matching roles, preparing materials, and tracking applications.
+    desc_zh: Relay 开源求职系统的产品界面。先审阅简历中的事实，再匹配岗位、准备定制材料与面试练习；浏览器扩展协助填表，最终投递由你在雇主网站确认。
+    desc_en: The product interface for Relay, an open-source job-search system. Review career facts, match roles, prepare tailored materials and interviews, and use a browser extension to prepare forms before submitting yourself.
     audience_zh: 求职者 · 职业转型
     audience_en: Job seekers · Career transitions
-    stack: Next.js · Python · Agents
+    stack: Next.js · Hono · LangGraph
     color: coral
-    mark: AA
+    mark: VA
     url: https://apply.cubxxw.com
     github: https://github.com/getyak/apply-agent
+    boundary_zh: 职业事实需本人审阅；不会编造经历、保存招聘平台密码或绕过验证码，最终提交保留在你的浏览器里。
+    boundary_en: You review career facts. The system does not invent experience, store job-platform passwords, bypass CAPTCHAs, or submit applications for you.
     related:
       - /growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips
       - /ai-agent/posts/independent-developer
@@ -214,8 +222,8 @@ products:
     headline_en: See which agent crossed the line and which project is burning tokens.
     os_thesis_zh: 让 Agent 的改动与成本都有据可查。
     os_thesis_en: Make agent changes and costs inspectable.
-    desc_zh: 本地 Agent 治理工具，在 push 前拦截高风险改动；解析 session 日志，按 message.id 去重并汇总各项目与会话的 token 和估算成本排行。
-    desc_en: A local agent-governance tool that gates risky changes before push, deduplicates session usage by message ID, and ranks projects and sessions by token use and estimated cost.
+    desc_zh: 在 push 前检查 Agent 是否改了 CI、密钥或测试，以及改动是否偏离任务。为持续运行的 Agent 声明范围、预算和停止条件，再结合本机会话日志查看越界记录、token 用量与估算成本。
+    desc_en: Check risky CI, secret, and test changes before push, and compare edits with the assigned task. Define scope, budget, and stop conditions for agent loops, then inspect local policy events, token use, and estimated costs.
     audience_zh: 独立开发者 · Agent 操作者
     audience_en: Solo builders · Agent operators
     stack: Bun · TypeScript · Git · MCP
@@ -223,6 +231,8 @@ products:
     mark: DG
     url: https://github.com/cubxxw/agent-diff-guard
     github: https://github.com/cubxxw/agent-diff-guard
+    boundary_zh: 目前从源码运行；token 与成本按日志估算，守门检查不能替代完整代码审查。
+    boundary_en: Run from source. Token use and costs are log-based estimates; the guard does not replace a complete code review.
     related: []
     tags: [agent, developer-tools, ai]
     progress: 72
