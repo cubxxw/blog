@@ -59,7 +59,11 @@
         load();
         observer.disconnect();
       }, { rootMargin: "300px 0px" });
-      observer.observe(host.closest(".post-comments") || host);
+      var section = host.closest(".post-comments");
+      if (section) observer.observe(section);
+      // Passage comments fix this same host into a visible drawer while its
+      // original section stays below the fold. That reader intent must load it.
+      observer.observe(host);
     } else if (document.readyState === "complete") {
       load();
     } else {

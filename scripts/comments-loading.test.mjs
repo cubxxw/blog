@@ -25,7 +25,8 @@ function fixture({ intersection = true, readyState = 'loading', missing = false 
   const window = { addEventListener: (name, callback) => events.set(name, callback) };
   if (intersection) window.IntersectionObserver = class {
     constructor(callback, options) { this.callback = callback; this.options = options; observer = this; }
-    observe(target) { this.target = target; }
+    targets = [];
+    observe(target) { this.targets.push(target); }
     disconnect() { this.disconnected = true; }
   };
   class MutationObserver {
@@ -33,8 +34,9 @@ function fixture({ intersection = true, readyState = 'loading', missing = false 
     observe() {}
   }
   vm.runInNewContext(source, { window, document, MutationObserver });
-  return { scripts, messages, events, section, get observer() { return observer; },
+  return { scripts, messages, events, section, host, get observer() { return observer; },
     intersect(value) { observer.callback([{ isIntersecting: value }]); },
+    showHost() { if (observer.targets.includes(host)) observer.callback([{ target: section, isIntersecting: false }, { target: host, isIntersecting: true }]); },
     theme(value) { dark = value; mutation?.(); },
   };
 }
@@ -42,7 +44,7 @@ function fixture({ intersection = true, readyState = 'loading', missing = false 
 test('below-fold comments do not request the third-party client until approaching the section', () => {
   const f = fixture();
   assert.equal(f.scripts.length, 0);
-  assert.equal(f.observer.target, f.section);
+  assert.ok(f.observer.targets.includes(f.section));
   assert.equal(f.observer.options.rootMargin, '300px 0px');
   f.intersect(false);
   assert.equal(f.scripts.length, 0);
@@ -59,6 +61,18 @@ test('below-fold comments do not request the third-party client until approachin
   f.theme(false);
   assert.equal(f.messages.at(-1)[0].theme, 'github-light');
   assert.equal(f.messages.at(-1)[1], 'https://utteranc.es');
+});
+
+test('opening the fixed comment host loads once while its original section stays below the fold', () => {
+  const f = fixture();
+  f.intersect(false);
+  assert.equal(f.scripts.length, 0);
+  f.showHost();
+  assert.equal(f.scripts.length, 1);
+  assert.equal(f.observer.disconnected, true);
+  f.showHost();
+  f.intersect(true);
+  assert.equal(f.scripts.length, 1);
 });
 
 test('without IntersectionObserver comments wait for load, then still support the widget', () => {

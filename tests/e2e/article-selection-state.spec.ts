@@ -17,6 +17,29 @@ async function selectPassage(page: Page) {
   await expect(page.getByRole('toolbar')).toBeVisible();
 }
 
+test('opening passage comments loads the provider before the reader reaches the footer', async ({ page }) => {
+  let requests = 0;
+  await page.route('https://utteranc.es/client.js', async route => {
+    requests++;
+    await route.fulfill({ contentType: 'text/javascript', body: '/* Provider request only; no remote comments or writes. */' });
+  });
+  await page.goto(article);
+  await selectPassage(page);
+  const readingY = await page.evaluate(() => scrollY);
+  const section = page.locator('.post-comments');
+  expect(await section.evaluate(el => el.getBoundingClientRect().top)).toBeGreaterThan(await page.evaluate(() => innerHeight + 300));
+  expect(requests).toBe(0);
+  await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: '关于这段文字的评论' })).toBeVisible();
+  await expect.poll(() => requests).toBe(1);
+  expect(await page.evaluate(() => scrollY)).toBe(readingY);
+  await page.keyboard.press('Escape');
+  await selectPassage(page);
+  await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+  expect(requests).toBe(1);
+  expect(await page.evaluate(() => scrollY)).toBe(readingY);
+});
+
 for (const nativeMove of [true, false]) {
   test(`comment draft and iframe browsing context survive repeated drawer moves (${nativeMove ? 'native move available' : 'compatibility path'})`, async ({ page }) => {
     if (!nativeMove) {
