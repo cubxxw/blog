@@ -1,0 +1,12 @@
+{
+  "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "inputDigest": "09b7554654740a1012e3eae1c4baf209ab811be2c7279b72aa05a3e045f506b0",
+  "manifestContract": "pass",
+  "manifestFileSetDigest": "pass",
+  "pageMapDigest": "pass",
+  "requiredReportDigestsVerified": 7,
+  "selectedHtmlFilesVerified": 3,
+  "totalManifestFiles": 3758,
+  "fullArchiveDownloaded": false,
+  "allDeploymentBytesRehashedLocally": false
+}

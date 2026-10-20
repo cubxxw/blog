@@ -1,0 +1,83 @@
+{
+  "observedAt": "2026-10-20T12:25:53.280449+00:00",
+  "publishedDeploy": {
+    "id": "6ad758060edd3125c8f06f77",
+    "state": "ready",
+    "context": "production",
+    "branch": "main",
+    "commit_ref": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+    "published_at": "2026-10-20T12:04:14.967Z"
+  },
+  "pages": [
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "observedAt": "2026-10-20T12:25:53.281581+00:00",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "headers": {
+        "Cache-Control": "public,max-age=0,s-maxage=3600,stale-while-revalidate=86400",
+        "Date": "Tue, 20 Oct 2026 12:25:55 GMT",
+        "Etag": "\"465b8b36c05863a50030a2a4fd1a5e6c-ssl\"",
+        "Server": "Netlify",
+        "X-Nf-Request-Id": "01M5CMD0H107J37YYAZ7GJEZKS"
+      },
+      "htmlBytes": 139642,
+      "htmlSha256": "65ce76a9483aac579740b2fd3be26fe7440c0b9ecb8cce2e09e1584e88e92273",
+      "commentScriptCount": 1,
+      "commentScriptSha256": [
+        "ee34dc3b444b1493302f3be6bd431ff306a6067b3cabdbc0d3e8753179e097f8"
+      ],
+      "observerCallCounts": [
+        1
+      ]
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "observedAt": "2026-10-20T12:26:05.773735+00:00",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "headers": {
+        "Cache-Control": "public,max-age=0,s-maxage=3600,stale-while-revalidate=86400",
+        "Date": "Tue, 20 Oct 2026 12:26:08 GMT",
+        "Etag": "\"25b020b2f1a8e0c8555a002d88791692-ssl\"",
+        "Server": "Netlify",
+        "X-Nf-Request-Id": "01M5CMDCJ92WYAE2F650HMHYRH"
+      },
+      "htmlBytes": 142023,
+      "htmlSha256": "03d91bc078707c8d4913344102720882a48ad2163457fa74c6b3b101dc65748f",
+      "commentScriptCount": 1,
+      "commentScriptSha256": [
+        "ee34dc3b444b1493302f3be6bd431ff306a6067b3cabdbc0d3e8753179e097f8"
+      ],
+      "observerCallCounts": [
+        1
+      ]
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/",
+      "observedAt": "2026-10-20T12:26:18.731002+00:00",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/",
+      "headers": {
+        "Cache-Control": "public,max-age=0,s-maxage=3600,stale-while-revalidate=86400",
+        "Date": "Tue, 20 Oct 2026 12:26:21 GMT",
+        "Etag": "\"22bc6dc9b3928b23f05fdd37da7468f4-ssl\"",
+        "Server": "Netlify",
+        "X-Nf-Request-Id": "01M5CMDSGRSH2GVH8ASBWMS858"
+      },
+      "htmlBytes": 139615,
+      "htmlSha256": "b95f2d1821e4ff8ab6d3c04f4be6eea34f82c0055f4a84c7f46292061ca8b526",
+      "commentScriptCount": 1,
+      "commentScriptSha256": [
+        "ee34dc3b444b1493302f3be6bd431ff306a6067b3cabdbc0d3e8753179e097f8"
+      ],
+      "observerCallCounts": [
+        1
+      ]
+    }
+  ],
+  "expectedSourceSha": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+  "expectedCommentScriptSha256": "ee34dc3b444b1493302f3be6bd431ff306a6067b3cabdbc0d3e8753179e097f8",
+  "sourceMatches": true,
+  "pageChecksPassed": true
+}

@@ -1,0 +1,17 @@
+{
+  "observedAt": "2026-10-20T10:09:39.955Z",
+  "browserVersion": "153.0.8010.12",
+  "launch": {
+    "headless": true,
+    "channel": "chromium",
+    "args": [
+      "--enable-gpu"
+    ]
+  },
+  "scope": "supplemental environment diagnostic only; does not replace default test gates",
+  "webglAvailable": true,
+  "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "vendor": "Google Inc. (Apple)",
+  "parallelShaderCompile": true
+}

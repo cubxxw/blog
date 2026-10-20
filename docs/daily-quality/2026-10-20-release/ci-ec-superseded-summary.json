@@ -1,0 +1,21 @@
+{
+  "runId": 39416208580,
+  "sourceSha": "ec141ff967409c4701017c7af5946aa0ebb3871e",
+  "status": "completed",
+  "conclusion": "cancelled",
+  "reason": "superseded by latest published product changes, not passed",
+  "quality": {
+    "passed": 48,
+    "failed": 0,
+    "skipped": 0
+  },
+  "legacy": {
+    "planned": 796,
+    "loggedPassed": 389,
+    "loggedSkipped": 13,
+    "loggedFailedAttempts": 0,
+    "remaining": "uncompleted; partial counts from logs, not full pass"
+  },
+  "interactive": "not run",
+  "laterVoiceBearUx": "not run"
+}

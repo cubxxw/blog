@@ -1,0 +1,53 @@
+{
+  "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "preflightRunId": 39421917844,
+  "preflightConclusion": "success",
+  "jobStartedAt": "2026-10-20T12:23:50Z",
+  "jobCompletedAt": "2026-10-20T14:02:42Z",
+  "quality": {
+    "passed": 48,
+    "reportedDurationMinutes": 2.2
+  },
+  "legacy": {
+    "planned": 796,
+    "passed": 772,
+    "skipped": 24,
+    "reportedDurationHours": 1.2
+  },
+  "interactive": {
+    "planned": 573,
+    "passed": 573,
+    "reportedDurationMinutes": 15.4
+  },
+  "performanceContracts": {
+    "passed": 9,
+    "skipped": 1
+  },
+  "voice": {
+    "passed": 28
+  },
+  "bear": {
+    "passed": 248
+  },
+  "ux": {
+    "passed": 56
+  },
+  "verifiedDeploymentFiles": 3758,
+  "mainPushExitCode": 0,
+  "mainDeliveryRunId": 39435829373,
+  "productionDeployedVerified": true,
+  "htmlReportCountsPendingIndependentParse": false,
+  "observedAt": "2026-10-20T14:25:15.110303+00:00",
+  "productionDeployId": "6ad774b474944c0d9a5392c7",
+  "firstAttemptPassCounts": {
+    "quality": 48,
+    "legacy": 772,
+    "interactive": 573
+  },
+  "retriedTests": 0,
+  "sourceCheck": {
+    "files": 402,
+    "errors": 0,
+    "warnings": 266
+  }
+}

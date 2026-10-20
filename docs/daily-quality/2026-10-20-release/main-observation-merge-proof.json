@@ -1,0 +1,14 @@
+{
+  "testedSha": "54244bf9e669977257a8af9b75ab5389c0b9533d",
+  "mergedSha": "1858bee6ea9b3b02ec482fde859a2ef3b73e4421",
+  "mainSnapshotSha": "65384d36b81db7ce542ff250dca21017efc7e65e",
+  "files": [
+    "data/seo/crux-2026-10-20.json",
+    "data/seo/gsc-2026-10-20.json",
+    "data/seo/psi-2026-10-20.json"
+  ],
+  "testedInputDigest": "f32be769d196aac272ccb294bdea91444230cc07382a3780749976273c390250",
+  "mergedInputDigest": "f32be769d196aac272ccb294bdea91444230cc07382a3780749976273c390250",
+  "scope": "publication input equivalence, not a claim that the merged SHA has passed GitHub CI",
+  "identicalPublicationInputs": true
+}

@@ -1,0 +1,341 @@
+{
+  "startedAt": "2026-10-20T09:09:59.122Z",
+  "finishedAt": "2026-10-20T09:10:35.972Z",
+  "url": "https://cubxxw.com/projects/",
+  "status": 200,
+  "sourceSha": null,
+  "scope": "single unthrottled desktop live diagnostic with CDP Profiler enabled; not baseline, field INP, or causality proof",
+  "readinessError": null,
+  "world": {
+    "productPanel": "bear",
+    "bearWorkspace": "",
+    "theme": "light",
+    "wallpaper": "dawn",
+    "cafeMode": "cafe",
+    "cafeTheme": "zen",
+    "environmentPaused": "false",
+    "bootState": "complete",
+    "bootStage": "3",
+    "ready": "true",
+    "worldSky": "gradient",
+    "worldMapleTexture": "fallback",
+    "worldMapleTrees": "17",
+    "worldMapleLeaves": "64990",
+    "worldMapleLeafTriangles": "129980",
+    "worldTheme": "zen",
+    "worldObjects": "115",
+    "worldReflection": "room",
+    "worldMode": "roam",
+    "worldTravel": "false",
+    "catInteraction": "loading",
+    "worldRenderedMode": "roam",
+    "worldReady": "true",
+    "catState": "look",
+    "catPose": "{\"x\":1.25,\"z\":1.5,\"yaw\":0}",
+    "catActive": "false",
+    "worldPose": "{\"x\":0.85,\"y\":1.52,\"z\":2.45,\"yaw\":0.785,\"pitch\":-0.337,\"fov\":54}",
+    "worldFrames": "27",
+    "worldTriangles": "260305",
+    "worldDraws": "128"
+  },
+  "longTasks": [
+    {
+      "startTime": 7969.300000190735,
+      "duration": 64
+    },
+    {
+      "startTime": 9840.5,
+      "duration": 54
+    },
+    {
+      "startTime": 18754.5,
+      "duration": 628
+    },
+    {
+      "startTime": 19386.300000190735,
+      "duration": 12936
+    },
+    {
+      "startTime": 32337.599999904633,
+      "duration": 2293
+    },
+    {
+      "startTime": 34666.90000009537,
+      "duration": 724
+    }
+  ],
+  "navigation": [
+    {
+      "name": "https://cubxxw.com/projects/",
+      "entryType": "navigation",
+      "startTime": 0,
+      "duration": 9908.400000095367,
+      "navigationId": 4514,
+      "initiatorType": "navigation",
+      "deliveryType": "",
+      "nextHopProtocol": "h2",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/html",
+      "contentEncoding": "br",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 0.09999990463256836,
+      "domainLookupStart": 0.09999990463256836,
+      "domainLookupEnd": 0.09999990463256836,
+      "connectStart": 5246.099999904633,
+      "secureConnectionStart": 5246.699999809265,
+      "connectEnd": 6023.800000190735,
+      "requestStart": 6030,
+      "responseStart": 7002.400000095367,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 7002.400000095367,
+      "responseEnd": 7556.099999904633,
+      "transferSize": 60307,
+      "encodedBodySize": 60007,
+      "decodedBodySize": 262279,
+      "responseStatus": 200,
+      "serverTiming": [],
+      "unloadEventStart": 0,
+      "unloadEventEnd": 0,
+      "domInteractive": 8481.099999904633,
+      "domContentLoadedEventStart": 9893.199999809265,
+      "domContentLoadedEventEnd": 9893.199999809265,
+      "domComplete": 9908.300000190735,
+      "loadEventStart": 9908.400000095367,
+      "loadEventEnd": 9908.400000095367,
+      "type": "navigate",
+      "redirectCount": 0,
+      "activationStart": 0,
+      "criticalCHRestart": 0,
+      "notRestoredReasons": null,
+      "confidence": {
+        "randomizedTriggerRate": 0.4994798,
+        "value": "low"
+      }
+    }
+  ],
+  "profileSampleCount": 23571,
+  "profileDurationMs": 29671.521,
+  "topSampledSelfTime": [
+    {
+      "functionName": "(program)",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "sampledSelfMs": 16587.60900000014
+    },
+    {
+      "functionName": "(idle)",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "sampledSelfMs": 11316.500000000124
+    },
+    {
+      "functionName": "A",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 5,
+      "columnNumber": 341950,
+      "sampledSelfMs": 1126.5369999999994
+    },
+    {
+      "functionName": "ko",
+      "scriptId": "32",
+      "url": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+      "lineNumber": 54,
+      "columnNumber": 6226,
+      "sampledSelfMs": 75.63599999999998
+    },
+    {
+      "functionName": "n",
+      "scriptId": "9",
+      "url": "https://cubxxw.com/projects/",
+      "lineNumber": 7,
+      "columnNumber": 3012,
+      "sampledSelfMs": 50.27000000000001
+    },
+    {
+      "functionName": "(garbage collector)",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "sampledSelfMs": 43.641
+    },
+    {
+      "functionName": "texSubImage2D",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 5,
+      "columnNumber": 377916,
+      "sampledSelfMs": 25.131999999999998
+    },
+    {
+      "functionName": "Ve",
+      "scriptId": "16",
+      "url": "https://cubxxw.com/js/bear-workspace.3df3eb02fc7b1055e540bc70ed130f274087fd58cc065dc351d6216b96412c8a.js",
+      "lineNumber": 57,
+      "columnNumber": 15992,
+      "sampledSelfMs": 25.068999999999996
+    },
+    {
+      "functionName": "cc",
+      "scriptId": "32",
+      "url": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+      "lineNumber": 59,
+      "columnNumber": 15968,
+      "sampledSelfMs": 21.564
+    },
+    {
+      "functionName": "",
+      "scriptId": "32",
+      "url": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+      "lineNumber": 0,
+      "columnNumber": 68451,
+      "sampledSelfMs": 21.079
+    },
+    {
+      "functionName": "St",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 5,
+      "columnNumber": 431052,
+      "sampledSelfMs": 16.283
+    },
+    {
+      "functionName": "On",
+      "scriptId": "32",
+      "url": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+      "lineNumber": 59,
+      "columnNumber": 44039,
+      "sampledSelfMs": 16.128999999999998
+    },
+    {
+      "functionName": "l",
+      "scriptId": "32",
+      "url": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+      "lineNumber": 54,
+      "columnNumber": 6650,
+      "sampledSelfMs": 14.751999999999999
+    },
+    {
+      "functionName": "qr",
+      "scriptId": "32",
+      "url": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+      "lineNumber": 0,
+      "columnNumber": 71747,
+      "sampledSelfMs": 14.538
+    },
+    {
+      "functionName": "next",
+      "scriptId": "27",
+      "url": "",
+      "lineNumber": 24,
+      "columnNumber": 25,
+      "sampledSelfMs": 8.722999999999999
+    },
+    {
+      "functionName": "i",
+      "scriptId": "16",
+      "url": "https://cubxxw.com/js/bear-workspace.3df3eb02fc7b1055e540bc70ed130f274087fd58cc065dc351d6216b96412c8a.js",
+      "lineNumber": 51,
+      "columnNumber": 11667,
+      "sampledSelfMs": 8.693999999999999
+    },
+    {
+      "functionName": "ul",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 5,
+      "columnNumber": 327791,
+      "sampledSelfMs": 8.466999999999999
+    },
+    {
+      "functionName": "Ia",
+      "scriptId": "16",
+      "url": "https://cubxxw.com/js/bear-workspace.3df3eb02fc7b1055e540bc70ed130f274087fd58cc065dc351d6216b96412c8a.js",
+      "lineNumber": 51,
+      "columnNumber": 11467,
+      "sampledSelfMs": 7.5489999999999995
+    },
+    {
+      "functionName": "",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 5,
+      "columnNumber": 567077,
+      "sampledSelfMs": 6.996
+    },
+    {
+      "functionName": "Bs",
+      "scriptId": "32",
+      "url": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+      "lineNumber": 59,
+      "columnNumber": 32749,
+      "sampledSelfMs": 6.514
+    },
+    {
+      "functionName": "",
+      "scriptId": "28",
+      "url": "",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "sampledSelfMs": 6.308
+    },
+    {
+      "functionName": "rl",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 5,
+      "columnNumber": 326365,
+      "sampledSelfMs": 6.212999999999999
+    },
+    {
+      "functionName": "Jl.renderBufferDirect",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 5,
+      "columnNumber": 436512,
+      "sampledSelfMs": 5.728999999999999
+    },
+    {
+      "functionName": "querySelector",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "sampledSelfMs": 5.036
+    },
+    {
+      "functionName": "",
+      "scriptId": "33",
+      "url": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "sampledSelfMs": 4.913
+    }
+  ],
+  "interpretation": {
+    "confirmed": [
+      "single diagnostic reported six long tasks totaling 16699ms",
+      "largest observed task 12936ms",
+      "128 reported world draw calls and 260305 triangles",
+      "Three.js function A is program/link diagnostics and attribute introspection in matching local vendor bytes"
+    ],
+    "limitations": [
+      "Profiler(program) sampled self time is unresolved, not proof that all long task time is shader compilation",
+      "single unthrottled local sample with profiler; no field INP or comparable before/after baseline",
+      "production release source SHA still unverified"
+    ],
+    "nextExperiment": "capture GPU/render trace; verify KHR_parallel_shader_compile and compare compileAsync prewarm on one frozen artifact with three controlled cold starts",
+    "officialReference": "https://threejs.org/docs/pages/WebGLRenderer#compileAsync"
+  }
+}

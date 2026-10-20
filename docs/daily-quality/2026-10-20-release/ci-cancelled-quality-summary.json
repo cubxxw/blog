@@ -1,0 +1,29 @@
+{
+  "reportPath": "/private/tmp/ai-test-blog-daily-release-20261020.49QWXr/ci-cancelled-evidence/browser/quality/html/index.html",
+  "stats": {
+    "total": 1612,
+    "expected": 1612,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "startTime": 1792487204673,
+  "durationMs": 625641.223,
+  "projects": {
+    "desktop": {
+      "expected": 403
+    },
+    "mobile": {
+      "expected": 403
+    },
+    "desktop-dark": {
+      "expected": 403
+    },
+    "mobile-dark": {
+      "expected": 403
+    }
+  },
+  "nonFirstPass": [],
+  "errors": []
+}

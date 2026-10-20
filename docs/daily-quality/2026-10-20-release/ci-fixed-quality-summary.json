@@ -1,0 +1,37 @@
+{
+  "reportPath": "/private/tmp/ai-test-blog-daily-release-20261020.49QWXr/ci-fixed-partial/browser/quality/html/index.html",
+  "stats": {
+    "total": 48,
+    "expected": 48,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "startTime": 1792490274939,
+  "durationMs": 109564.30099999999,
+  "projects": {
+    "desktop": {
+      "expected": 12
+    },
+    "mobile": {
+      "expected": 12
+    },
+    "desktop-dark": {
+      "expected": 12
+    },
+    "mobile-dark": {
+      "expected": 12
+    }
+  },
+  "actualFinalStatuses": {
+    "passed": 48
+  },
+  "allAttemptStatuses": {
+    "passed": 48
+  },
+  "firstAttemptPassCount": 48,
+  "retriedTestCount": 0,
+  "nonFirstPass": [],
+  "errors": []
+}

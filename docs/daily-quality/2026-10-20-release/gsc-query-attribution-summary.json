@@ -1,0 +1,237 @@
+{
+  "command": "node scripts/gsc-report.mjs --dir data/seo --start 2026-08-22 --end 2026-10-16 --as-of 2026-10-19T20:15:45.242Z --summary-response-aggregation byPage --include-query-rows",
+  "exitCode": 0,
+  "sourceReportSha256": "4eaf7763562c466412fff379b1b8060740c01b92c2f574902624f7c6d018412a",
+  "windows": {
+    "previous": {
+      "start": "2026-08-22",
+      "end": "2026-09-18",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-09-19",
+      "end": "2026-10-16",
+      "days": 28
+    }
+  },
+  "queryMetrics": {
+    "previous": {
+      "clicks": 24,
+      "impressions": 8381,
+      "ctr": 0.002863620093067653,
+      "position": 22.191623911227776
+    },
+    "current": {
+      "clicks": 35,
+      "impressions": 3690,
+      "ctr": 0.009485094850948509,
+      "position": 16.20379403794038
+    }
+  },
+  "labels": {
+    "ambiguous-anomalous-heuristic": {
+      "previous": {
+        "queries": 88,
+        "clicks": 0,
+        "impressions": 302
+      },
+      "current": {
+        "queries": 93,
+        "clicks": 0,
+        "impressions": 260
+      }
+    },
+    "brand": {
+      "previous": {
+        "queries": 1,
+        "clicks": 1,
+        "impressions": 5
+      },
+      "current": {
+        "queries": 0,
+        "clicks": 0,
+        "impressions": 0,
+        "note": "not returned in selected rows; not proof of zero brand demand"
+      }
+    },
+    "nonbrand": {
+      "previous": {
+        "queries": 688,
+        "clicks": 23,
+        "impressions": 4305
+      },
+      "current": {
+        "queries": 576,
+        "clicks": 35,
+        "impressions": 2594
+      }
+    },
+    "site-maintenance": {
+      "previous": {
+        "queries": 42,
+        "clicks": 0,
+        "impressions": 3769
+      },
+      "current": {
+        "queries": 48,
+        "clicks": 0,
+        "impressions": 836
+      }
+    }
+  },
+  "queryImpressionDecline": 4691,
+  "siteQueryImpressionDecline": 2933,
+  "siteShareOfObservedQueryDecline": 0.6252398209337028,
+  "limitations": [
+    "Query rows are incomplete because of anonymous queries/internal limits even though all 56 day observations are complete.",
+    "Query metrics cannot be substituted for the page total decline of58679.",
+    "Matched pairs below must occur in both top500 query-page tables; pair tables are truncated. Missing rows do not imply zero.",
+    "Heuristic labels describe query strings, not intent or traffic quality."
+  ],
+  "commonReturnedNonbrandPairDeclines": [
+    {
+      "query": "obsidian second brain",
+      "page": "https://cubxxw.com/ai-agent/posts/ai-second-brain-build/",
+      "previousImpressions": 129,
+      "currentImpressions": 47,
+      "impressionsDelta": -82,
+      "previousPosition": 22.643410852713178,
+      "currentPosition": 24.74468085106383,
+      "previousClicks": 0,
+      "currentClicks": 0
+    },
+    {
+      "query": "second brain obsidian",
+      "page": "https://cubxxw.com/ai-agent/posts/ai-second-brain-build/",
+      "previousImpressions": 78,
+      "currentImpressions": 18,
+      "impressionsDelta": -60,
+      "previousPosition": 34.1025641025641,
+      "currentPosition": 29.944444444444443,
+      "previousClicks": 0,
+      "currentClicks": 0
+    },
+    {
+      "query": "argo security distribution",
+      "page": "https://cubxxw.com/engineering/posts/argo-cd/",
+      "previousImpressions": 28,
+      "currentImpressions": 2,
+      "impressionsDelta": -26,
+      "previousPosition": 26.392857142857142,
+      "currentPosition": 24.5,
+      "previousClicks": 0,
+      "currentClicks": 0
+    },
+    {
+      "query": "goreleaser",
+      "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "previousImpressions": 36,
+      "currentImpressions": 11,
+      "impressionsDelta": -25,
+      "previousPosition": 6.361111111111111,
+      "currentPosition": 7,
+      "previousClicks": 0,
+      "currentClicks": 0
+    },
+    {
+      "query": "relayagent",
+      "page": "https://cubxxw.com/ai-agent/posts/relay-agent-architecture-design/",
+      "previousImpressions": 41,
+      "currentImpressions": 17,
+      "impressionsDelta": -24,
+      "previousPosition": 3.024390243902439,
+      "currentPosition": 2.764705882352941,
+      "previousClicks": 1,
+      "currentClicks": 0
+    },
+    {
+      "query": "cloudflare ai gateway alternative",
+      "page": "https://cubxxw.com/ai-agent/posts/ai-gateway/",
+      "previousImpressions": 34,
+      "currentImpressions": 11,
+      "impressionsDelta": -23,
+      "previousPosition": 76.5,
+      "currentPosition": 71.36363636363636,
+      "previousClicks": 0,
+      "currentClicks": 0
+    },
+    {
+      "query": "mem0 oss",
+      "page": "https://cubxxw.com/projects/mem0/",
+      "previousImpressions": 125,
+      "currentImpressions": 102,
+      "impressionsDelta": -23,
+      "previousPosition": 7.712,
+      "currentPosition": 8.186274509803921,
+      "previousClicks": 2,
+      "currentClicks": 0
+    },
+    {
+      "query": "github to google sheets integrations",
+      "page": "https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/",
+      "previousImpressions": 36,
+      "currentImpressions": 16,
+      "impressionsDelta": -20,
+      "previousPosition": 28.444444444444443,
+      "currentPosition": 26.6875,
+      "previousClicks": 0,
+      "currentClicks": 0
+    }
+  ],
+  "priorityPagePositionMix": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "previous": {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 2,
+        "impressions": 13757,
+        "ctr": 0.0001453805335465581,
+        "position": 6.943228901650069
+      },
+      "current": {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 1075,
+        "ctr": 0,
+        "position": 7.162790697674419
+      },
+      "note": "Impression-weighted page positions summarize different query mixes; they do not establish matched-query rank changes."
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+      "previous": {
+        "page": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+        "clicks": 10,
+        "impressions": 11925,
+        "ctr": 0.0008385744234800838,
+        "position": 9.161425576519916
+      },
+      "current": {
+        "page": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+        "clicks": 4,
+        "impressions": 2736,
+        "ctr": 0.0014619883040935672,
+        "position": 8.45687134502924
+      },
+      "note": "Impression-weighted page positions summarize different query mixes; they do not establish matched-query rank changes."
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+      "previous": {
+        "page": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+        "clicks": 0,
+        "impressions": 4484,
+        "ctr": 0,
+        "position": 8.798171275646745
+      },
+      "current": {
+        "page": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+        "clicks": 0,
+        "impressions": 329,
+        "ctr": 0,
+        "position": 7.069908814589666
+      },
+      "note": "Impression-weighted page positions summarize different query mixes; they do not establish matched-query rank changes."
+    }
+  ]
+}

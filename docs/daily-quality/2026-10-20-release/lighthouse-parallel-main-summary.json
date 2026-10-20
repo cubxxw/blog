@@ -1,0 +1,17 @@
+{
+  "runId": 39425424215,
+  "sourceSha": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+  "conclusion": "failure",
+  "url": "https://github.com/cubxxw/blog/actions/runs/39425424215",
+  "lighthouseVersion": "12.6.1",
+  "requestedUrl": "https://cubxxw.com/projects/",
+  "runtimeError": "PROTOCOL_TIMEOUT: Network.getResponseBody",
+  "fetchTime": "2026-10-20T12:54:02.679Z",
+  "nineEarlierUrlsLoggedDone": true,
+  "finalManifestPresent": false,
+  "publisherExitCode": 1,
+  "publisherReason": "No publishable measurement artifacts; missing or unparsable manifest",
+  "dailyIssueUpdated": 465,
+  "measuresOurCommentRelease": false,
+  "metricsOrPassingBudgetClaimed": false
+}

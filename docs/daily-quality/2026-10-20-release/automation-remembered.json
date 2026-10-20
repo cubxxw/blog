@@ -1,0 +1,12 @@
+{
+  "id": "e2e-seo",
+  "status": "ACTIVE",
+  "schedule": "每天04:00 Asia/Singapore",
+  "sameTargetThread": true,
+  "oldWorktreePathPresent": false,
+  "publicationLoopRemembered": true,
+  "existingBacklogExplicit": true,
+  "unattendedTokenPlanForbidden": true,
+  "promptSha256": "ea37a2dde4cfc69c8646ab199afc0ce938e8c69132d6c961a77c608028710d2f",
+  "search32of36Remembered": true
+}

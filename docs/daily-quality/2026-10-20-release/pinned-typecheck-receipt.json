@@ -1,0 +1,40 @@
+{
+  "observedAt": "2026-10-20T13:25:05.251749+00:00",
+  "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "compilerVersion": "Version 7.0.2",
+  "scope": "package typecheck two original argument lists; isolated declared compiler; existing workspace type dependencies",
+  "commands": [
+    {
+      "command": [
+        "node",
+        "/private/tmp/ai-test-blog-daily-release-20261020.49QWXr/pinned-typescript7/package/bin/tsc",
+        "--noEmit"
+      ],
+      "exitCode": 0,
+      "log": "pinned-typecheck-1.log"
+    },
+    {
+      "command": [
+        "node",
+        "/private/tmp/ai-test-blog-daily-release-20261020.49QWXr/pinned-typescript7/package/bin/tsc",
+        "--ignoreConfig",
+        "--noEmit",
+        "--strict",
+        "--esModuleInterop",
+        "--skipLibCheck",
+        "--module",
+        "NodeNext",
+        "--moduleResolution",
+        "NodeNext",
+        "--target",
+        "ES2020",
+        "--types",
+        "node,@playwright/test",
+        "playwright.interactive.config.ts"
+      ],
+      "exitCode": 0,
+      "log": "pinned-typecheck-2.log"
+    }
+  ],
+  "sharedNodeModulesChanged": false
+}

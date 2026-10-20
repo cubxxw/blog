@@ -1,0 +1,17 @@
+[WebServer] (node:27874) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:27875) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer (3.2s)
+  ✓  2 [desktop] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /probe/ (387ms)
+  ✓  3 [desktop] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /zh/probe/ (302ms)
+(node:27886) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [mobile] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer (742ms)
+  ✓  5 [mobile] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /probe/ (305ms)
+  ✓  6 [mobile] › tests/e2e/comments-loading.spec.ts:8:7 › comments load near the reader and preserve the selected theme: /zh/probe/ (324ms)
+
+  6 passed (6.5s)

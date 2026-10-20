@@ -1,0 +1,1700 @@
+{
+  "sourcePerRequestVerified": false,
+  "beforePlatformSourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "afterPlatformCheckPending": false,
+  "environment": "Chromium live; unthrottled; fresh contexts; one worker; routed read-only; 3s observation after load",
+  "lcpUpperBudgetEnforced": false,
+  "fieldData": null,
+  "samples": [
+    {
+      "project": "desktop",
+      "title": "live lab performance sample /",
+      "data": {
+        "url": "https://cubxxw.com/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 3296,
+          "cls": 0,
+          "longTaskMs": 64,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 12992.400000095367,
+          "loadCompleted": true,
+          "domElements": 1497,
+          "resources": 24,
+          "slowResources": [
+            {
+              "resource": "https://fonts.googleapis.com/css2",
+              "durationMs": 3029.5
+            },
+            {
+              "resource": "https://cubxxw.com/js/page-wayfinder.64e39ff032fa270781f62189c87efa2608c9788c7f39290e6795b84c3fb081c8.js",
+              "durationMs": 1465.3999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/js/micro-interactions.js",
+              "durationMs": 1119
+            },
+            {
+              "resource": "https://cubxxw.com/js/blog-ai-inline.js",
+              "durationMs": 1393.1999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/solo-compass_hu_22bce1343507709d.webp",
+              "durationMs": 1580.6999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/talent-signal_hu_497398c2ea9eec1.webp",
+              "durationMs": 1676.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/daypage_hu_a8ac88aee87cc688.webp",
+              "durationMs": 1969.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/imstage-en_hu_37cacb55b15f1652.webp",
+              "durationMs": 1970.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/leafhour-en_hu_ea18e52a16989b05.webp",
+              "durationMs": 2464.2999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/telepace_hu_c8866e47d90c45e5.webp",
+              "durationMs": 2800.199999809265
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/apply-agent_hu_f0d9c4679b361b16.webp",
+              "durationMs": 3318.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/xinwei-hiking-avatar.webp",
+              "durationMs": 1608.6999998092651
+            },
+            {
+              "resource": "https://www.googletagmanager.com/gtag/js",
+              "durationMs": 2712.9000000953674
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 9952.300000190735,
+              "navigationId": 6220,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.10000038146972656,
+              "domainLookupStart": 0.10000038146972656,
+              "domainLookupEnd": 0.10000038146972656,
+              "connectStart": 1.5,
+              "secureConnectionStart": 1.9000000953674316,
+              "connectEnd": 1345.6000003814697,
+              "requestStart": 1345.8000001907349,
+              "responseStart": 2188.1000003814697,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 2188.1000003814697,
+              "responseEnd": 2488,
+              "transferSize": 51896,
+              "encodedBodySize": 51596,
+              "decodedBodySize": 180227,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 3297.4000000953674,
+              "domContentLoadedEventStart": 4143.200000286102,
+              "domContentLoadedEventEnd": 4143.300000190735,
+              "domComplete": 9951.900000095367,
+              "loadEventStart": 9952,
+              "loadEventEnd": 9952.300000190735,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "low"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "desktop",
+      "title": "live lab performance sample /zh/",
+      "data": {
+        "url": "https://cubxxw.com/zh/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 2672,
+          "cls": 0,
+          "longTaskMs": 0,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 7330.200000286102,
+          "loadCompleted": true,
+          "domElements": 1499,
+          "resources": 22,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/lang-redirect.js",
+              "durationMs": 1227.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+              "durationMs": 1253.1999998092651
+            },
+            {
+              "resource": "https://fonts.googleapis.com/css2",
+              "durationMs": 3855.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/css/home-about-experience.min.4613168f7544bf46cc6c79bb33a4cba8c989b79553e0f4e0321a1946587016f1.css",
+              "durationMs": 2067.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/talent-signal_hu_497398c2ea9eec1.webp",
+              "durationMs": 1100.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/solo-compass_hu_22bce1343507709d.webp",
+              "durationMs": 1138.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/leafhour_hu_6084fa85df10df46.webp",
+              "durationMs": 1299.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/imstage-zh_hu_b44906cca4e26de4.webp",
+              "durationMs": 1299.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/daypage_hu_a8ac88aee87cc688.webp",
+              "durationMs": 1329
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/telepace_hu_c8866e47d90c45e5.webp",
+              "durationMs": 1929.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/apply-agent_hu_f0d9c4679b361b16.webp",
+              "durationMs": 2029.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/xinwei-hiking-avatar.webp",
+              "durationMs": 1046.0999999046326
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 4300,
+              "navigationId": 5205,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.3000001907348633,
+              "domainLookupStart": 0.3000001907348633,
+              "domainLookupEnd": 0.3000001907348633,
+              "connectStart": 4,
+              "secureConnectionStart": 4.400000095367432,
+              "connectEnd": 870.7000002861023,
+              "requestStart": 870.8000001907349,
+              "responseStart": 1735.8000001907349,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1735.8000001907349,
+              "responseEnd": 2589.7000002861023,
+              "transferSize": 54935,
+              "encodedBodySize": 54635,
+              "decodedBodySize": 186306,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 2672.0999999046326,
+              "domContentLoadedEventStart": 3255.300000190735,
+              "domContentLoadedEventEnd": 3255.300000190735,
+              "domComplete": 4299.700000286102,
+              "loadEventStart": 4299.800000190735,
+              "loadEventEnd": 4300,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "desktop",
+      "title": "live lab performance sample /projects/",
+      "data": {
+        "url": "https://cubxxw.com/projects/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 5680,
+          "cls": 0.03515625,
+          "longTaskMs": 17331,
+          "windowStart": 5649.099999904633,
+          "lastShift": 5649.099999904633,
+          "windowScore": 0.03515625,
+          "observationMs": 28414.099999904633,
+          "loadCompleted": true,
+          "domElements": 898,
+          "resources": 26,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/css/extended/products-bear.min.3fa46e0908fb1aa71d9affeb44e4e5db457019110cb17d31e67f75b9856192a9.css",
+              "durationMs": 1101
+            },
+            {
+              "resource": "https://cubxxw.com/js/lang-redirect.js",
+              "durationMs": 1810
+            },
+            {
+              "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+              "durationMs": 1810.1999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/css/bear-os.min.2ddb6d509e85bfeb1ecfbedc4ca13d653ba2b260ed382e24add63846671f043a.css",
+              "durationMs": 1808.5
+            },
+            {
+              "resource": "https://cubxxw.com/js/bear-workspace.3df3eb02fc7b1055e540bc70ed130f274087fd58cc065dc351d6216b96412c8a.js",
+              "durationMs": 1318.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/css/bear-os.min.2ddb6d509e85bfeb1ecfbedc4ca13d653ba2b260ed382e24add63846671f043a.css",
+              "durationMs": 1238.3999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+              "durationMs": 1205.3999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+              "durationMs": 1110.2999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/overcast-sky-1k.hdr",
+              "durationMs": 3801.7999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/forest_grove-1k.hdr",
+              "durationMs": 7068.799999713898
+            },
+            {
+              "resource": "https://cubxxw.com/models/space/cat.glb",
+              "durationMs": 1118.5999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-normal.jpg",
+              "durationMs": 6666.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-color.jpg",
+              "durationMs": 7292.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+              "durationMs": 9634
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-roughness.jpg",
+              "durationMs": 7560
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-normal.jpg",
+              "durationMs": 7643.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-normal.jpg",
+              "durationMs": 9634.599999904633
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-roughness.jpg",
+              "durationMs": 9731.599999904633
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-roughness.jpg",
+              "durationMs": 10582
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/latte-rosetta-v1.jpg",
+              "durationMs": 13290.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-color.jpg",
+              "durationMs": 14195.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor-color.jpg",
+              "durationMs": 16789.299999713898
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor-normal.jpg",
+              "durationMs": 16485.699999809265
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 5688.900000095367,
+              "navigationId": 6440,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.19999980926513672,
+              "domainLookupStart": 0.19999980926513672,
+              "domainLookupEnd": 0.19999980926513672,
+              "connectStart": 4.800000190734863,
+              "secureConnectionStart": 5.199999809265137,
+              "connectEnd": 3281.4000000953674,
+              "requestStart": 3281.5,
+              "responseStart": 3686.9000000953674,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 3686.9000000953674,
+              "responseEnd": 4326.599999904633,
+              "transferSize": 60889,
+              "encodedBodySize": 60589,
+              "decodedBodySize": 264395,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 5669.800000190735,
+              "domContentLoadedEventStart": 5688,
+              "domContentLoadedEventEnd": 5688,
+              "domComplete": 5688.900000095367,
+              "loadEventStart": 5688.900000095367,
+              "loadEventEnd": 5688.900000095367,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "desktop",
+      "title": "live lab performance sample /zh/projects/",
+      "data": {
+        "url": "https://cubxxw.com/zh/projects/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 2136,
+          "cls": 8.504231770833333e-05,
+          "longTaskMs": 14404,
+          "windowStart": 6935.599999904633,
+          "lastShift": 6935.599999904633,
+          "windowScore": 8.504231770833333e-05,
+          "observationMs": 22919.300000190735,
+          "loadCompleted": true,
+          "domElements": 898,
+          "resources": 21,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+              "durationMs": 1869.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/overcast-sky-1k.hdr",
+              "durationMs": 7926.200000286102
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/forest_grove-1k.hdr",
+              "durationMs": 12807.5
+            },
+            {
+              "resource": "https://cubxxw.com/models/space/cat.glb",
+              "durationMs": 3561.699999809265
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-color.jpg",
+              "durationMs": 13210.699999809265
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-normal.jpg",
+              "durationMs": 13254.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-roughness.jpg",
+              "durationMs": 13516.299999713898
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-normal.jpg",
+              "durationMs": 13585.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+              "durationMs": 15301.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-roughness.jpg",
+              "durationMs": 15442.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-normal.jpg",
+              "durationMs": 16192.599999904633
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 2821,
+              "navigationId": 807,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.09999990463256836,
+              "domainLookupStart": 0.09999990463256836,
+              "domainLookupEnd": 0.09999990463256836,
+              "connectStart": 2.8000001907348633,
+              "secureConnectionStart": 3.3000001907348633,
+              "connectEnd": 615.2000002861023,
+              "requestStart": 615.3000001907349,
+              "responseStart": 1276.2000002861023,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1276.2000002861023,
+              "responseEnd": 2066.5999999046326,
+              "transferSize": 76972,
+              "encodedBodySize": 76672,
+              "decodedBodySize": 298498,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 2124.0999999046326,
+              "domContentLoadedEventStart": 2817.5999999046326,
+              "domContentLoadedEventEnd": 2817.5999999046326,
+              "domComplete": 2821,
+              "loadEventStart": 2821,
+              "loadEventEnd": 2821,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "desktop",
+      "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+      "data": {
+        "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 3880,
+          "cls": 0.00615780978732639,
+          "longTaskMs": 64,
+          "windowStart": 4417.699999809265,
+          "lastShift": 4417.699999809265,
+          "windowScore": 0.00615780978732639,
+          "observationMs": 18769.199999809265,
+          "loadCompleted": true,
+          "domElements": 1076,
+          "resources": 68,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/assets/css/stylesheet-28729e74df17.min.5968f4e7774e6dee0bf9126ff265498698519afca5fcb27eb06bcf94a982087d.css",
+              "durationMs": 1577.7999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/js/lang-redirect.js",
+              "durationMs": 2055.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+              "durationMs": 2056
+            },
+            {
+              "resource": "https://cubxxw.com/images/covers/growth/2025/2025-annual-review_hu_1d6046f5bc7a8183.webp",
+              "durationMs": 1087
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-selection.js",
+              "durationMs": 2207.199999809265
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-share-link.js",
+              "durationMs": 2055.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-sidebars.js",
+              "durationMs": 2055.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/cover-parallax.d6ac8293a7cd4cacd06a6fc6f40520363997697d6bfd64e248cb9efd3f7dcefe.js",
+              "durationMs": 1945.1000003814697
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-tabs.js",
+              "durationMs": 1945.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-bottom-sheet.js",
+              "durationMs": 2055.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/micro-interactions.js",
+              "durationMs": 9510.400000095367
+            },
+            {
+              "resource": "https://cubxxw.com/js/blog-ai-inline.js",
+              "durationMs": 9550.5
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-ai-client.js",
+              "durationMs": 9864
+            },
+            {
+              "resource": "https://cubxxw.com/js/toc-highlight.js",
+              "durationMs": 9863.89999961853
+            },
+            {
+              "resource": "https://cubxxw.com/js/reading-companion.js",
+              "durationMs": 9864.199999809265
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-chat.js",
+              "durationMs": 9864.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/js/wide-content-scroll.js",
+              "durationMs": 9909.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/js/image-lightbox.js",
+              "durationMs": 9909.799999713898
+            },
+            {
+              "resource": "https://cubxxw.com/js/code-mobile.js",
+              "durationMs": 10013.699999809265
+            },
+            {
+              "resource": "https://cubxxw.com/js/footnote-preview.js",
+              "durationMs": 10380.400000095367
+            },
+            {
+              "resource": "https://cubxxw.com/js/link-preview.js",
+              "durationMs": 10842.5
+            },
+            {
+              "resource": "https://cubxxw.com/js/code-copy.js",
+              "durationMs": 10754.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-118-400-normal.woff2",
+              "durationMs": 1141.2000002861023
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-119-400-normal.woff2",
+              "durationMs": 1314.8000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-latin-400-normal.woff2",
+              "durationMs": 1141.1000003814697
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-116-400-normal.woff2",
+              "durationMs": 1028.6999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-117-400-normal.woff2",
+              "durationMs": 1203.6999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-103-400-normal.woff2",
+              "durationMs": 4472.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-114-400-normal.woff2",
+              "durationMs": 4472.299999713898
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-115-400-normal.woff2",
+              "durationMs": 4472.400000095367
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-104-400-normal.woff2",
+              "durationMs": 6977.5
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-113-400-normal.woff2",
+              "durationMs": 4364.900000095367
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-111-400-normal.woff2",
+              "durationMs": 5410.5
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-108-400-normal.woff2",
+              "durationMs": 6590.900000095367
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-112-400-normal.woff2",
+              "durationMs": 7231.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-109-400-normal.woff2",
+              "durationMs": 4470
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-106-400-normal.woff2",
+              "durationMs": 4470.10000038147
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-68-400-normal.woff2",
+              "durationMs": 4470.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-110-400-normal.woff2",
+              "durationMs": 6847.900000095367
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-107-400-normal.woff2",
+              "durationMs": 7184.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-105-400-normal.woff2",
+              "durationMs": 4466.200000286102
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-101-400-normal.woff2",
+              "durationMs": 3423.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-77-400-normal.woff2",
+              "durationMs": 3417.8999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-100-400-normal.woff2",
+              "durationMs": 4453.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-47-400-normal.woff2",
+              "durationMs": 4452.599999904633
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-73-400-normal.woff2",
+              "durationMs": 4922.799999713898
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-80-400-normal.woff2",
+              "durationMs": 5857.89999961853
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-61-400-normal.woff2",
+              "durationMs": 5136
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-36-400-normal.woff2",
+              "durationMs": 4834.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-86-400-normal.woff2",
+              "durationMs": 5136.299999713898
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-84-400-normal.woff2",
+              "durationMs": 6439.699999809265
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-102-400-normal.woff2",
+              "durationMs": 1528.6999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-43-400-normal.woff2",
+              "durationMs": 4338.400000095367
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-83-400-normal.woff2",
+              "durationMs": 5131.599999904633
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-59-400-normal.woff2",
+              "durationMs": 4440.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-65-400-normal.woff2",
+              "durationMs": 4331.699999809265
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-70-400-normal.woff2",
+              "durationMs": 6341.299999713898
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-63-400-normal.woff2",
+              "durationMs": 1985.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-69-400-normal.woff2",
+              "durationMs": 7198.400000095367
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-82-400-normal.woff2",
+              "durationMs": 5938.5
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-81-400-normal.woff2",
+              "durationMs": 4814.699999809265
+            },
+            {
+              "resource": "https://cubxxw.com/social/paper_hu_9df27d3979c1bb9e.png",
+              "durationMs": 9143.900000095367
+            },
+            {
+              "resource": "https://www.googletagmanager.com/gtag/js",
+              "durationMs": 7939.799999713898
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 15727.699999809265,
+              "navigationId": 6744,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.09999990463256836,
+              "domainLookupStart": 0.09999990463256836,
+              "domainLookupEnd": 0.09999990463256836,
+              "connectStart": 1.5,
+              "secureConnectionStart": 2,
+              "connectEnd": 1568.0999999046326,
+              "requestStart": 1568.1999998092651,
+              "responseStart": 2141,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 2141,
+              "responseEnd": 2257.5999999046326,
+              "transferSize": 42738,
+              "encodedBodySize": 42438,
+              "decodedBodySize": 142439,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 3869.7999997138977,
+              "domContentLoadedEventStart": 13101.699999809265,
+              "domContentLoadedEventEnd": 13101.699999809265,
+              "domComplete": 15727.5,
+              "loadEventStart": 15727.599999904633,
+              "loadEventEnd": 15727.699999809265,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "mobile",
+      "title": "live lab performance sample /",
+      "data": {
+        "url": "https://cubxxw.com/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 2660,
+          "cls": 0,
+          "longTaskMs": 59,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 8447,
+          "loadCompleted": true,
+          "domElements": 1497,
+          "resources": 19,
+          "slowResources": [
+            {
+              "resource": "https://fonts.googleapis.com/css2",
+              "durationMs": 1349.1999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/images/xinwei-hiking-avatar.webp",
+              "durationMs": 1500.2000002861023
+            },
+            {
+              "resource": "https://www.googletagmanager.com/gtag/js",
+              "durationMs": 1391.0999999046326
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 5414,
+              "navigationId": 5678,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0,
+              "domainLookupStart": 0,
+              "domainLookupEnd": 0,
+              "connectStart": 1.700000286102295,
+              "secureConnectionStart": 2.0999999046325684,
+              "connectEnd": 1947,
+              "requestStart": 1947.2000002861023,
+              "responseStart": 2220.800000190735,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 2220.800000190735,
+              "responseEnd": 2518.7000002861023,
+              "transferSize": 51673,
+              "encodedBodySize": 51373,
+              "decodedBodySize": 180227,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 2662.4000000953674,
+              "domContentLoadedEventStart": 3003.800000190735,
+              "domContentLoadedEventEnd": 3003.800000190735,
+              "domComplete": 5413.800000190735,
+              "loadEventStart": 5413.800000190735,
+              "loadEventEnd": 5414,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "mobile",
+      "title": "live lab performance sample /zh/",
+      "data": {
+        "url": "https://cubxxw.com/zh/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 2480,
+          "cls": 0,
+          "longTaskMs": 0,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 6734.900000095367,
+          "loadCompleted": true,
+          "domElements": 1499,
+          "resources": 16,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+              "durationMs": 1313.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/js/lang-redirect.js",
+              "durationMs": 1327.9000000953674
+            },
+            {
+              "resource": "https://fonts.googleapis.com/css2",
+              "durationMs": 2843.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/js/page-wayfinder.64e39ff032fa270781f62189c87efa2608c9788c7f39290e6795b84c3fb081c8.js",
+              "durationMs": 1135.8999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/images/products/talent-signal_hu_497398c2ea9eec1.webp",
+              "durationMs": 1196.7000002861023
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 3696.5,
+              "navigationId": 9945,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.10000038146972656,
+              "domainLookupStart": 0.10000038146972656,
+              "domainLookupEnd": 0.10000038146972656,
+              "connectStart": 2.3000001907348633,
+              "secureConnectionStart": 3,
+              "connectEnd": 905.6000003814697,
+              "requestStart": 905.7000002861023,
+              "responseStart": 1561,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1561,
+              "responseEnd": 2106.2000002861023,
+              "transferSize": 54860,
+              "encodedBodySize": 54560,
+              "decodedBodySize": 186306,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 2479.1000003814697,
+              "domContentLoadedEventStart": 3089.5,
+              "domContentLoadedEventEnd": 3089.6000003814697,
+              "domComplete": 3696.4000000953674,
+              "loadEventStart": 3696.4000000953674,
+              "loadEventEnd": 3696.5,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "mobile",
+      "title": "live lab performance sample /projects/",
+      "data": {
+        "url": "https://cubxxw.com/projects/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 2360,
+          "cls": 0,
+          "longTaskMs": 13634,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 20042.200000286102,
+          "loadCompleted": true,
+          "domElements": 898,
+          "resources": 13,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/css/bear-os.min.2ddb6d509e85bfeb1ecfbedc4ca13d653ba2b260ed382e24add63846671f043a.css",
+              "durationMs": 1011.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+              "durationMs": 1071.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+              "durationMs": 1806
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/overcast-sky-1k.hdr",
+              "durationMs": 9547.199999809265
+            },
+            {
+              "resource": "https://cubxxw.com/models/space/cat.glb",
+              "durationMs": 4023.199999809265
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 2945.7000002861023,
+              "navigationId": 3278,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.20000028610229492,
+              "domainLookupStart": 0.20000028610229492,
+              "domainLookupEnd": 0.20000028610229492,
+              "connectStart": 1.4000000953674316,
+              "secureConnectionStart": 1.8000001907348633,
+              "connectEnd": 701.2000002861023,
+              "requestStart": 701.4000000953674,
+              "responseStart": 1085.2000002861023,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1085.2000002861023,
+              "responseEnd": 1986.7000002861023,
+              "transferSize": 60882,
+              "encodedBodySize": 60582,
+              "decodedBodySize": 264395,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 2353.7000002861023,
+              "domContentLoadedEventStart": 2941.7000002861023,
+              "domContentLoadedEventEnd": 2941.800000190735,
+              "domComplete": 2945.7000002861023,
+              "loadEventStart": 2945.7000002861023,
+              "loadEventEnd": 2945.7000002861023,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "low"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "mobile",
+      "title": "live lab performance sample /zh/projects/",
+      "data": {
+        "url": "https://cubxxw.com/zh/projects/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 2760,
+          "cls": 0.00025928221145657344,
+          "longTaskMs": 14728,
+          "windowStart": 7074,
+          "lastShift": 7074,
+          "windowScore": 0.00025928221145657344,
+          "observationMs": 23320,
+          "loadCompleted": true,
+          "domElements": 898,
+          "resources": 40,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/lang-redirect.js",
+              "durationMs": 1156.2999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+              "durationMs": 1156.6999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/css/bear-os.min.2ddb6d509e85bfeb1ecfbedc4ca13d653ba2b260ed382e24add63846671f043a.css",
+              "durationMs": 1010.8000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/js/space/world-cafe.f6c32e0475405d39196ebcf63e5914d3e5a49e09234e646fb40aa173cf21ccd2.js",
+              "durationMs": 1060.8999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+              "durationMs": 1036.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/overcast-sky-1k.hdr",
+              "durationMs": 2067.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/forest_grove-1k.hdr",
+              "durationMs": 2425.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/models/space/cat.glb",
+              "durationMs": 1544.1999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-normal.jpg",
+              "durationMs": 2191.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-color.jpg",
+              "durationMs": 2424.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-roughness.jpg",
+              "durationMs": 2426.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-normal.jpg",
+              "durationMs": 2426.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+              "durationMs": 2654.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-color.jpg",
+              "durationMs": 2892.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-roughness.jpg",
+              "durationMs": 2893
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-normal.jpg",
+              "durationMs": 2905.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-roughness.jpg",
+              "durationMs": 2941.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor-color.jpg",
+              "durationMs": 3388.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/latte-rosetta-v1.jpg",
+              "durationMs": 3471.7000002861023
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor-normal.jpg",
+              "durationMs": 2942
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor-roughness.jpg",
+              "durationMs": 3477.7999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/brown_mud_rocks_01-color.jpg",
+              "durationMs": 3946.2999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/images/about/journey/06-kumano-480.webp",
+              "durationMs": 3946.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/brown_mud_rocks_01-normal.jpg",
+              "durationMs": 3991.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/brown_mud_rocks_01-roughness.jpg",
+              "durationMs": 4044.699999809265
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/pine-twig-color.jpg",
+              "durationMs": 4045.2999997138977
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/pine-twig-alpha.jpg",
+              "durationMs": 4045.5999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/maple-leaf-v1.png",
+              "durationMs": 4075
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/aerial_grass_rock-color.jpg",
+              "durationMs": 4771.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/aerial_grass_rock-normal.jpg",
+              "durationMs": 4772.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/aerial_grass_rock-roughness.jpg",
+              "durationMs": 4982.099999904633
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/forest_leaves_04-color.jpg",
+              "durationMs": 5043
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/forest_leaves_04-normal.jpg",
+              "durationMs": 5043.900000095367
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/forest_leaves_04-roughness.jpg",
+              "durationMs": 5043.900000095367
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 3733.2999997138977,
+              "navigationId": 5928,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.09999990463256836,
+              "domainLookupStart": 0.09999990463256836,
+              "domainLookupEnd": 0.09999990463256836,
+              "connectStart": 1.799999713897705,
+              "secureConnectionStart": 2.3999996185302734,
+              "connectEnd": 1644.3999996185303,
+              "requestStart": 1644.7999997138977,
+              "responseStart": 2033.2999997138977,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 2033.2999997138977,
+              "responseEnd": 3123.699999809265,
+              "transferSize": 77210,
+              "encodedBodySize": 76910,
+              "decodedBodySize": 298498,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 3125.7999997138977,
+              "domContentLoadedEventStart": 3727.8999996185303,
+              "domContentLoadedEventEnd": 3727.8999996185303,
+              "domComplete": 3733.199999809265,
+              "loadEventStart": 3733.2999997138977,
+              "loadEventEnd": 3733.2999997138977,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "project": "mobile",
+      "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+      "data": {
+        "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "navigationError": "",
+        "responseStatus": 200,
+        "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+        "sample": {
+          "lcpMs": 2724,
+          "cls": 0,
+          "longTaskMs": 75,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 8681.299999713898,
+          "loadCompleted": true,
+          "domElements": 1076,
+          "resources": 65,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/lang-redirect.js",
+              "durationMs": 1128
+            },
+            {
+              "resource": "https://cubxxw.com/js/search-bootstrap.455ddfde6fd1862a4ff604d605c2c9a43167af23369d4670ab4486cb4a0b914e.js",
+              "durationMs": 1174.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/images/covers/growth/2025/2025-annual-review_hu_1d6046f5bc7a8183.webp",
+              "durationMs": 1034.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-selection.js",
+              "durationMs": 1426.8000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-share-link.js",
+              "durationMs": 1278
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-sidebars.js",
+              "durationMs": 1277.8000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-tabs.js",
+              "durationMs": 3055.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/micro-interactions.js",
+              "durationMs": 2843.2000002861023
+            },
+            {
+              "resource": "https://cubxxw.com/js/cover-parallax.d6ac8293a7cd4cacd06a6fc6f40520363997697d6bfd64e248cb9efd3f7dcefe.js",
+              "durationMs": 3207.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-bottom-sheet.js",
+              "durationMs": 3208.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/js/blog-ai-inline.js",
+              "durationMs": 2979.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/js/reading-companion.js",
+              "durationMs": 3204
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-ai-client.js",
+              "durationMs": 3205.8999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-chat.js",
+              "durationMs": 3207.3999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/js/toc-highlight.js",
+              "durationMs": 3363.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/image-lightbox.js",
+              "durationMs": 3371.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/js/wide-content-scroll.js",
+              "durationMs": 3448.800000190735
+            },
+            {
+              "resource": "https://cubxxw.com/js/footnote-preview.js",
+              "durationMs": 3735.300000190735
+            },
+            {
+              "resource": "https://cubxxw.com/js/code-mobile.js",
+              "durationMs": 3736.5
+            },
+            {
+              "resource": "https://cubxxw.com/js/link-preview.js",
+              "durationMs": 3736.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/js/code-copy.js",
+              "durationMs": 3737.1000003814697
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-latin-700-normal.woff2",
+              "durationMs": 1225.1999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-117-400-normal.woff2",
+              "durationMs": 1184.8999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-103-400-normal.woff2",
+              "durationMs": 1798.1999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-113-400-normal.woff2",
+              "durationMs": 1183.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-112-400-normal.woff2",
+              "durationMs": 1796.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-108-400-normal.woff2",
+              "durationMs": 1316.7000002861023
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-111-400-normal.woff2",
+              "durationMs": 1905.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-106-400-normal.woff2",
+              "durationMs": 1905
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-68-400-normal.woff2",
+              "durationMs": 1451
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-110-400-normal.woff2",
+              "durationMs": 1181.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-107-400-normal.woff2",
+              "durationMs": 1634.5
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-105-400-normal.woff2",
+              "durationMs": 1901.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-101-400-normal.woff2",
+              "durationMs": 1178.4000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-77-400-normal.woff2",
+              "durationMs": 1551.8999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-100-400-normal.woff2",
+              "durationMs": 1778.3999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-47-400-normal.woff2",
+              "durationMs": 1886.3000001907349
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-80-400-normal.woff2",
+              "durationMs": 1544.1999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-73-400-normal.woff2",
+              "durationMs": 1615.6999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-61-400-normal.woff2",
+              "durationMs": 1428
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-86-400-normal.woff2",
+              "durationMs": 1540.6999998092651
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-36-400-normal.woff2",
+              "durationMs": 1543
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-84-400-normal.woff2",
+              "durationMs": 1542
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-102-400-normal.woff2",
+              "durationMs": 1878
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-43-400-normal.woff2",
+              "durationMs": 1155.3999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-83-400-normal.woff2",
+              "durationMs": 1158.5
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-59-400-normal.woff2",
+              "durationMs": 1150.5999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-70-400-normal.woff2",
+              "durationMs": 1599.6000003814697
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-65-400-normal.woff2",
+              "durationMs": 1150.8999996185303
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-69-400-normal.woff2",
+              "durationMs": 1869.0999999046326
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-63-400-normal.woff2",
+              "durationMs": 1528
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-82-400-normal.woff2",
+              "durationMs": 1139.7000002861023
+            },
+            {
+              "resource": "https://cubxxw.com/fonts/noto-serif-sc/v5.2.8/files/noto-serif-sc-81-400-normal.woff2",
+              "durationMs": 1521.9000000953674
+            },
+            {
+              "resource": "https://cubxxw.com/social/paper_hu_9df27d3979c1bb9e.png",
+              "durationMs": 3270.699999809265
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 5602.099999904633,
+              "navigationId": 9005,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.19999980926513672,
+              "domainLookupStart": 0.19999980926513672,
+              "domainLookupEnd": 0.19999980926513672,
+              "connectStart": 2.0999999046325684,
+              "secureConnectionStart": 2.5999999046325684,
+              "connectEnd": 1180.6999998092651,
+              "requestStart": 1180.7999997138977,
+              "responseStart": 1584.2999997138977,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 1584.2999997138977,
+              "responseEnd": 1860.7999997138977,
+              "transferSize": 42738,
+              "encodedBodySize": 42438,
+              "decodedBodySize": 142439,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 2713.5999999046326,
+              "domContentLoadedEventStart": 5601.599999904633,
+              "domContentLoadedEventEnd": 5601.699999809265,
+              "domComplete": 5601.699999809265,
+              "loadEventStart": 5601.900000095367,
+              "loadEventEnd": 5602.099999904633,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "afterPlatformSourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "afterPlatformReadAt": "2026-10-20T14:19:57.018214+00:00",
+  "afterOrdinaryHtmlCheck": {
+    "passed": 2,
+    "failed": 1,
+    "exitCode": 1,
+    "failure": "annual article URLError; initial pre-validation3/3 and real comments6/6 retained"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "runId": 39397700706,
+  "sourceSha": "6e5471104890055839b0ed9a26c6f4b7bd971277",
+  "conclusion": "cancelled",
+  "quality": {
+    "planned": 1612,
+    "passed": 1612,
+    "durationMinutes": 10.4
+  },
+  "legacy": {
+    "planned": 796,
+    "loggedCompleted": 401,
+    "loggedPass": 401,
+    "loggedFailures": 0,
+    "remainingStatus": "not completed; cancelled; no full-suite green claim",
+    "loggedSkipped": 13,
+    "observedRows": 414
+  },
+  "reason": "superseded by reviewed dispatch-baseline fix at54244bf9, not a passed gate",
+  "scopeCorrection": "The old scope issue cost10.4min in quality scanning; after that the dominant observed wait was the unchanged serial796-case legacy suite. This fix does not remove that bottleneck."
+}

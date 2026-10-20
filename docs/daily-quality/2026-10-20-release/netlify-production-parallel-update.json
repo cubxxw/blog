@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-10-20T12:21:31.498178+00:00",
+  "publishedDeploy": {
+    "id": "6ad758060edd3125c8f06f77",
+    "state": "ready",
+    "context": "production",
+    "branch": "main",
+    "commit_ref": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+    "published_at": "2026-10-20T12:04:14.967Z",
+    "deploy_ssl_url": "https://main--cubxxw.netlify.app"
+  }
+}

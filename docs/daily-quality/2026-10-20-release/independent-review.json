@@ -1,0 +1,56 @@
+{
+  "reviewer": "independent Codex sub-agent /root/review_daily_quality",
+  "comments": {
+    "sourceSha": "6e5471104890055839b0ed9a26c6f4b7bd971277",
+    "finding": "P1 selection drawer could display an empty host while footer section remained outside viewport",
+    "resolution": "Observe real host and section with shared idempotent loader",
+    "status": "closed",
+    "remainingConfirmedP0P1": 0
+  },
+  "ciDispatch": {
+    "baseSha": "6e5471104890055839b0ed9a26c6f4b7bd971277",
+    "sourceSha": "54244bf9e669977257a8af9b75ab5389c0b9533d",
+    "files": {
+      "scripts/lib/ci-changes.mjs": "084f7f4f410e11d316b0aaee86052b5f0b8706db",
+      "scripts/ci-run.mjs": "ae7565a715095380b84ccc4fe9503e69b460a3b2",
+      "scripts/ci-changes.test.mjs": "89920b237eac009ed323e7e35783e3ec606d8113"
+    },
+    "confirmedP0P1P2": 0,
+    "scope": "static independent review; test execution is parent/Pi evidence, not a reviewer claim"
+  },
+  "reportEvidence": {
+    "finding": "P2 two preview rounds had equal counts but different passed cases",
+    "resolution": "separate timestamp, source SHA, deploy ID and six per-case outcomes; latest drawer remains unverified in preview",
+    "status": "closed"
+  },
+  "observationMerge": {
+    "mergedSha": "1858bee6ea9b3b02ec482fde859a2ef3b73e4421",
+    "mainSnapshotSha": "65384d36b81db7ce542ff250dca21017efc7e65e",
+    "scope": "three SEO observation JSON files; both parents preserved; equal publication input digest does not certify merged-SHA CI",
+    "confirmedP0P1": 0
+  },
+  "finalPendingReportReview": {
+    "reviewer": "/root/review_daily_quality",
+    "reviewedAt": "2026-10-20T11:17Z",
+    "confirmedP0P1": 0,
+    "newActualP2": 0,
+    "scope": "report and evidence consistency; full CI and production acceptance remain pending"
+  },
+  "fontAndEvidenceFix": {
+    "sourceSha": "ec141ff967409c4701017c7af5946aa0ebb3871e",
+    "confirmedP0P1P2": 0,
+    "files": {
+      ".github/workflows/main.yaml": "f03a6904e2a9188b0394270382b66cf054f88d77",
+      "scripts/ci-workflows.test.mjs": "6c2dd2b71159b6eefac6e55a375322a6ab3d083a",
+      "tests/e2e/interactive-articles.spec.ts": "5096322dd4023bd46c45d71a7a9cca4a17e60555",
+      "tests/e2e/interactive-expansion.spec.ts": "1976719f6501116c7e91d3f2bf45c889805b2eb0"
+    },
+    "limitation": "HTML attachments may duplicate raw traces in retained evidence; actual storage size to measure, retention unchanged30days"
+  },
+  "parallelProductMerge": {
+    "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+    "mainSha": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+    "confirmedP0P1P2": 0,
+    "proof": "parallel-product-merge-proof.json"
+  }
+}

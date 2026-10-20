@@ -1,0 +1,568 @@
+{
+  "workflowSourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "productionDeployId": "6ad774b474944c0d9a5392c7",
+  "commandExitCode": 1,
+  "stats": {
+    "startTime": "2026-10-20T14:10:22.138Z",
+    "duration": 479744.50999999995,
+    "expected": 32,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "actualFinalStatuses": {
+    "passed": 32,
+    "failed": 4
+  },
+  "retriedTests": 0,
+  "cases": [
+    {
+      "title": "live SEO /",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 6267,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 2859,
+      "errors": []
+    },
+    {
+      "title": "live SEO /engineering/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 5478,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/engineering/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 4594,
+      "errors": []
+    },
+    {
+      "title": "live SEO /projects/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 5786,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/projects/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 3305,
+      "errors": []
+    },
+    {
+      "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 8865,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/growth/posts/2025-annual-review/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 9241,
+      "errors": []
+    },
+    {
+      "title": "live reader can switch theme and home language",
+      "file": "live-quality.spec.ts",
+      "line": 39,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 7198,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 13063,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /zh/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 7417,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /projects/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 29506,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /zh/projects/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 24603,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 18864,
+      "errors": []
+    },
+    {
+      "title": "live SEO /",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 4772,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 5072,
+      "errors": []
+    },
+    {
+      "title": "live SEO /engineering/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 4095,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/engineering/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 2635,
+      "errors": []
+    },
+    {
+      "title": "live SEO /projects/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 7198,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/projects/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 1862,
+      "errors": []
+    },
+    {
+      "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 6455,
+      "errors": []
+    },
+    {
+      "title": "live SEO /zh/growth/posts/2025-annual-review/",
+      "file": "live-quality.spec.ts",
+      "line": 17,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 6481,
+      "errors": []
+    },
+    {
+      "title": "live reader can switch theme and home language",
+      "file": "live-quality.spec.ts",
+      "line": 39,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 4294,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 8506,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /zh/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 6821,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /projects/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 20380,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /zh/projects/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 23836,
+      "errors": []
+    },
+    {
+      "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+      "file": "live-quality.spec.ts",
+      "line": 50,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 8778,
+      "errors": []
+    },
+    {
+      "title": "live search opens a real article readable in both themes: /en",
+      "file": "reader-navigation.spec.ts",
+      "line": 13,
+      "project": "desktop",
+      "outcome": "unexpected",
+      "attemptStatuses": [
+        "failed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 8546,
+      "errors": [
+        "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#search-command-palette')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#search-command-palette') with timeout 5000ms\n  - waiting for locator('#search-command-palette')\n    13 × locator resolved to <div hidden=\"\" role=\"dialog\" aria-modal=\"true\" class=\"search-palette\" data-ai-enabled=\"true\" aria-label=\"Site search\" id=\"search-command-palette\" aria-labelledby=\"search-palette-title\">…</div>\n       - unexpected value \"hidden\"\n\n\n  15 |     await page.locator('[data-search-trigger=\"nav\"]').click();\n  16 |     const panel = page.locator('#search-command-palette');\n> 17 |     await expect(panel).toBeVisible();\n     |                         ^\n  18 |     await panel.locator('.search-palette__input').fill('AI');\n  19 |     const result = page.locator('#search-results-list [role=\"option\"]').first();\n  20 |     await expect(result).toBeVisible({ timeout: 15_000 });\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:17:25"
+      ]
+    },
+    {
+      "title": "live Products defaults to BEAR OS and switches both ways: /en",
+      "file": "reader-navigation.spec.ts",
+      "line": 42,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 43137,
+      "errors": []
+    },
+    {
+      "title": "live search opens a real article readable in both themes: /zh",
+      "file": "reader-navigation.spec.ts",
+      "line": 13,
+      "project": "desktop",
+      "outcome": "unexpected",
+      "attemptStatuses": [
+        "failed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 21783,
+      "errors": [
+        "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('#search-results-list [role=\"option\"]').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('#search-results-list [role=\"option\"]').first() with timeout 15000ms\n  - waiting for locator('#search-results-list [role=\"option\"]').first()\n\n\n  18 |     await panel.locator('.search-palette__input').fill('AI');\n  19 |     const result = page.locator('#search-results-list [role=\"option\"]').first();\n> 20 |     await expect(result).toBeVisible({ timeout: 15_000 });\n     |                          ^\n  21 |     const destination = new URL((await result.getAttribute('href'))!, baseURL);\n  22 |     expect(destination.origin).toBe(new URL(baseURL!).origin);\n  23 |     const [documentResponse] = await Promise.all([\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:20:26"
+      ]
+    },
+    {
+      "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+      "file": "reader-navigation.spec.ts",
+      "line": 42,
+      "project": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 48433,
+      "errors": []
+    },
+    {
+      "title": "live search opens a real article readable in both themes: /en",
+      "file": "reader-navigation.spec.ts",
+      "line": 13,
+      "project": "mobile",
+      "outcome": "unexpected",
+      "attemptStatuses": [
+        "failed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 12820,
+      "errors": [
+        "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#search-command-palette')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#search-command-palette') with timeout 5000ms\n  - waiting for locator('#search-command-palette')\n    13 × locator resolved to <div hidden=\"\" role=\"dialog\" aria-modal=\"true\" class=\"search-palette\" data-ai-enabled=\"true\" aria-label=\"Site search\" id=\"search-command-palette\" aria-labelledby=\"search-palette-title\">…</div>\n       - unexpected value \"hidden\"\n\n\n  15 |     await page.locator('[data-search-trigger=\"nav\"]').click();\n  16 |     const panel = page.locator('#search-command-palette');\n> 17 |     await expect(panel).toBeVisible();\n     |                         ^\n  18 |     await panel.locator('.search-palette__input').fill('AI');\n  19 |     const result = page.locator('#search-results-list [role=\"option\"]').first();\n  20 |     await expect(result).toBeVisible({ timeout: 15_000 });\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:17:25"
+      ]
+    },
+    {
+      "title": "live Products defaults to BEAR OS and switches both ways: /en",
+      "file": "reader-navigation.spec.ts",
+      "line": 42,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 29509,
+      "errors": []
+    },
+    {
+      "title": "live search opens a real article readable in both themes: /zh",
+      "file": "reader-navigation.spec.ts",
+      "line": 13,
+      "project": "mobile",
+      "outcome": "unexpected",
+      "attemptStatuses": [
+        "failed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 21172,
+      "errors": [
+        "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('#search-results-list [role=\"option\"]').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('#search-results-list [role=\"option\"]').first() with timeout 15000ms\n  - waiting for locator('#search-results-list [role=\"option\"]').first()\n\n\n  18 |     await panel.locator('.search-palette__input').fill('AI');\n  19 |     const result = page.locator('#search-results-list [role=\"option\"]').first();\n> 20 |     await expect(result).toBeVisible({ timeout: 15_000 });\n     |                          ^\n  21 |     const destination = new URL((await result.getAttribute('href'))!, baseURL);\n  22 |     expect(destination.origin).toBe(new URL(baseURL!).origin);\n  23 |     const [documentResponse] = await Promise.all([\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/daily/reader-navigation.spec.ts:20:26"
+      ]
+    },
+    {
+      "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+      "file": "reader-navigation.spec.ts",
+      "line": 42,
+      "project": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ],
+      "lastDurationMs": 32332,
+      "errors": []
+    }
+  ]
+}

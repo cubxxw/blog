@@ -1,0 +1,33 @@
+{
+  "observedAt": "2026-10-20T12:23:45.537793+00:00",
+  "mergedSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "parents": [
+    "ec141ff967409c4701017c7af5946aa0ebb3871e",
+    "5b4bc2197563161f5e401cd545ef6a5ce0dd825c"
+  ],
+  "mainSha": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+  "preservedMainBlobs": {
+    "content/en/projects/imstage.md": "026c6e1997c853c3fc8966c35135f0e6fc9657ca",
+    "content/zh/projects/imstage.md": "a4d31423c493929faa989352dae31415ff43c30d",
+    "data/products.yml": "e235e67b12112dbc92c872877cbc72ae5adf8a49",
+    "docs/acceptance/2026-10-20-project-descriptions.md": "43a0386a6e576cc72c338d58694bfc24740b6a20",
+    "scripts/bear-workspace.browser.mjs": "410771ef5c8565cb10a2fb698aa02ecfa91d54ce",
+    "scripts/check-product-integration.mjs": "8153f19e6e9fd1e1c83e7c5022b41287f9df228d",
+    "tests/e2e/p1-p2-ux.spec.ts": "da731ec50f5e1a016084840f4d437f08ab7d16f3"
+  },
+  "tsconfig": {
+    "blob": "c6cc94d357fa8d8d28e4f8968ab78da401f2848d",
+    "DOM.Iterable": true,
+    "dailyConfigIncluded": true
+  },
+  "publicationInputDigest": "09b7554654740a1012e3eae1c4baf209ab811be2c7279b72aa05a3e045f506b0",
+  "priorCandidateRun": {
+    "id": 39416208580,
+    "sourceSha": "ec141ff967409c4701017c7af5946aa0ebb3871e",
+    "status": "completed",
+    "conclusion": "cancelled",
+    "reason": "superseded by published product changes, not a test pass"
+  },
+  "newCandidateRequiresFullVerification": true,
+  "independentReviewConfirmedP0P1P2": 0
+}

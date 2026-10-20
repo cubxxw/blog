@@ -1,0 +1,58 @@
+[WebServer] (node:27775) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:27776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [desktop] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer (7.2s)
+(node:27800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [mobile] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer (5.4s)
+
+
+  1) [desktop] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      32 |   await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+      33 |   await expect(page.getByRole('dialog', { name: '关于这段文字的评论' })).toBeVisible();
+    > 34 |   await expect.poll(() => requests).toBe(1);
+         |                                     ^
+      35 |   expect(await page.evaluate(() => scrollY)).toBe(readingY);
+      36 |   await page.keyboard.press('Escape');
+      37 |   await selectPassage(page);
+        at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/e2e/article-selection-state.spec.ts:34:37
+
+    Error Context: ../../../../../../private/tmp/ai-test-blog-daily-release-20261020.49QWXr/drawer-browser-red/article-selection-state-op-2d3d5-e-reader-reaches-the-footer-desktop/error-context.md
+
+  2) [mobile] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      32 |   await page.getByRole('toolbar').getByRole('button', { name: '评论', exact: true }).click();
+      33 |   await expect(page.getByRole('dialog', { name: '关于这段文字的评论' })).toBeVisible();
+    > 34 |   await expect.poll(() => requests).toBe(1);
+         |                                     ^
+      35 |   expect(await page.evaluate(() => scrollY)).toBe(readingY);
+      36 |   await page.keyboard.press('Escape');
+      37 |   await selectPassage(page);
+        at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/e2e/article-selection-state.spec.ts:34:37
+
+    Error Context: ../../../../../../private/tmp/ai-test-blog-daily-release-20261020.49QWXr/drawer-browser-red/article-selection-state-op-2d3d5-e-reader-reaches-the-footer-mobile/error-context.md
+
+  2 failed
+    [desktop] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer
+    [mobile] › tests/e2e/article-selection-state.spec.ts:20:5 › opening passage comments loads the provider before the reader reaches the footer

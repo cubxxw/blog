@@ -1,0 +1,542 @@
+{
+  "stats": {
+    "total": 796,
+    "expected": 772,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 24,
+    "ok": true
+  },
+  "startTime": 1792499508469,
+  "durationMs": 4466816.79,
+  "projects": {
+    "desktop": {
+      "expected": 385,
+      "skipped": 13
+    },
+    "mobile": {
+      "expected": 387,
+      "skipped": 11
+    }
+  },
+  "actualFinalStatuses": {
+    "passed": 772,
+    "skipped": 24
+  },
+  "allAttemptStatuses": {
+    "passed": 772,
+    "skipped": 24
+  },
+  "firstAttemptPassCount": 772,
+  "retriedTestCount": 0,
+  "errors": [],
+  "artifactId": 12269543337,
+  "artifactEntry": "tests/.artifacts/ci/browser/legacy/html/index.html",
+  "localReportPath": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/ci-merged-quality/tests/.artifacts/ci/browser/legacy/html/index.html",
+  "nonFirstPass": [
+    {
+      "title": "/about/ closed mobile navigation cannot intercept page content or focus",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-experience.spec.ts",
+        "line": 17,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "The mobile menu has an inline submenu",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-experience.spec.ts",
+            "line": 18,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "/zh/about/ closed mobile navigation cannot intercept page content or focus",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-experience.spec.ts",
+        "line": 17,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "The mobile menu has an inline submenu",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-experience.spec.ts",
+            "line": 18,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "/about/ real phone gestures browse every rail and retain vertical scrolling",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-natural-experience.spec.ts",
+        "line": 122,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Touch acceptance uses the phone viewport",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-natural-experience.spec.ts",
+            "line": 123,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "/zh/about/ real phone gestures browse every rail and retain vertical scrolling",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-natural-experience.spec.ts",
+        "line": 122,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Touch acceptance uses the phone viewport",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-natural-experience.spec.ts",
+            "line": 123,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile: long summary title wraps without colliding with the reserved action",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-disclosure.spec.ts",
+        "line": 285,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile viewport only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-disclosure.spec.ts",
+            "line": 286,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "CSS 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "CSS 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - clicking TOC item scrolls to heading",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-toc.spec.ts",
+        "line": 6,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-toc.spec.ts",
+            "line": 7,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile - switch from EN to ZH changes URL to /zh/",
+      "projectName": "desktop",
+      "location": {
+        "file": "header-lang.spec.ts",
+        "line": 34,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+            "line": 35,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - switch from EN to ZH changes URL to /zh/",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-lang.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+            "line": 5,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - switch from ZH to EN changes URL to /",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-lang.spec.ts",
+        "line": 19,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+            "line": 20,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile - search panel opens and closes with Esc",
+      "projectName": "desktop",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 27,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 28,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - search panel opens, accepts input, closes with Esc",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 5,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - arrow keys select results and Enter opens the selected article",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 47,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 48,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - Control+Enter asks AI without opening a result",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 78,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 79,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "Chinese palette exposes localized names and combobox semantics",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 99,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 100,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile - toggle dark mode applies dark class to body",
+      "projectName": "desktop",
+      "location": {
+        "file": "header-theme.spec.ts",
+        "line": 20,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-theme.spec.ts",
+            "line": 21,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - toggle dark mode applies dark class to body",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-theme.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-theme.spec.ts",
+            "line": 5,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile article library keeps filters discoverable and cards compact",
+      "projectName": "desktop",
+      "location": {
+        "file": "p1-p2-ux.spec.ts",
+        "line": 51,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/p1-p2-ux.spec.ts",
+            "line": 52,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile product workspace exposes 44px actions and a close target",
+      "projectName": "desktop",
+      "location": {
+        "file": "p1-p2-ux.spec.ts",
+        "line": 67,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/p1-p2-ux.spec.ts",
+            "line": 68,
+            "column": 10
+          }
+        }
+      ]
+    }
+  ]
+}

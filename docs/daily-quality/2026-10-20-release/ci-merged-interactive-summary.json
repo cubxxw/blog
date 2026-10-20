@@ -1,0 +1,36 @@
+{
+  "stats": {
+    "total": 573,
+    "expected": 573,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "startTime": 1792503992975,
+  "durationMs": 923728.46,
+  "projects": {
+    "chromium": {
+      "expected": 191
+    },
+    "firefox": {
+      "expected": 191
+    },
+    "webkit": {
+      "expected": 191
+    }
+  },
+  "actualFinalStatuses": {
+    "passed": 573
+  },
+  "allAttemptStatuses": {
+    "passed": 573
+  },
+  "firstAttemptPassCount": 573,
+  "retriedTestCount": 0,
+  "errors": [],
+  "artifactId": 12269543337,
+  "artifactEntry": "playwright-report/interactive/index.html",
+  "localReportPath": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/ci-merged-quality/playwright-report/interactive/index.html",
+  "nonFirstPass": []
+}

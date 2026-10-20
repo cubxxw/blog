@@ -1,0 +1,1963 @@
+TAP version 13
+# Closed stale daily issue \#1
+# Closed stale daily issue \#2
+# Subtest: section replacement preserves literal $& without copying neighboring evidence
+ok 1 - section replacement preserves literal $& without copying neighboring evidence
+  ---
+  duration_ms: 1.326084
+  type: 'test'
+  ...
+# Subtest: section replacement preserves literal $' without copying neighboring evidence
+ok 2 - section replacement preserves literal $' without copying neighboring evidence
+  ---
+  duration_ms: 1.118667
+  type: 'test'
+  ...
+# Subtest: section replacement preserves literal $` without copying neighboring evidence
+ok 3 - section replacement preserves literal $` without copying neighboring evidence
+  ---
+  duration_ms: 0.123875
+  type: 'test'
+  ...
+# Subtest: section replacement preserves literal $$ without copying neighboring evidence
+ok 4 - section replacement preserves literal $$ without copying neighboring evidence
+  ---
+  duration_ms: 0.062125
+  type: 'test'
+  ...
+# Subtest: section replacement preserves literal $1 without copying neighboring evidence
+ok 5 - section replacement preserves literal $1 without copying neighboring evidence
+  ---
+  duration_ms: 0.175875
+  type: 'test'
+  ...
+# Subtest: quoted marker cannot escape the SEO section or consume another section on rerun
+ok 6 - quoted marker cannot escape the SEO section or consume another section on rerun
+  ---
+  duration_ms: 0.263917
+  type: 'test'
+  ...
+# Subtest: first publication and repeated publication retain other sections and literal tokens
+ok 7 - first publication and repeated publication retain other sections and literal tokens
+  ---
+  duration_ms: 0.391917
+  type: 'test'
+  ...
+# Subtest: dailyTitle accepts the frozen UTC date and rejects sloppy ones
+ok 8 - dailyTitle accepts the frozen UTC date and rejects sloppy ones
+  ---
+  duration_ms: 0.28875
+  type: 'test'
+  ...
+# Subtest: ensureDailyIssue uses the frozen report date and never re-creates an existing day
+ok 9 - ensureDailyIssue uses the frozen report date and never re-creates an existing day
+  ---
+  duration_ms: 0.403084
+  type: 'test'
+  ...
+# Subtest: upsertSection is idempotent per section and preserves neighboring sections (mocked gh)
+ok 10 - upsertSection is idempotent per section and preserves neighboring sections (mocked gh)
+  ---
+  duration_ms: 0.325959
+  type: 'test'
+  ...
+# Subtest: closeStaleDailyIssues reaps strictly older days only — a delayed run never closes a newer issue
+ok 11 - closeStaleDailyIssues reaps strictly older days only — a delayed run never closes a newer issue
+  ---
+  duration_ms: 1.011458
+  type: 'test'
+  ...
+# Subtest: delayed rerun of a closed frozen date adopts the existing issue (never duplicates it)
+ok 12 - delayed rerun of a closed frozen date adopts the existing issue (never duplicates it)
+  ---
+  duration_ms: 0.694917
+  type: 'test'
+  ...
+# Subtest: duplicate same-day issues deterministically prefer the open one
+ok 13 - duplicate same-day issues deterministically prefer the open one
+  ---
+  duration_ms: 0.072
+  type: 'test'
+  ...
+# Subtest: parseDateArg accepts exactly YYYY-MM-DD real dates
+ok 14 - parseDateArg accepts exactly YYYY-MM-DD real dates
+  ---
+  duration_ms: 1.779541
+  type: 'test'
+  ...
+# Subtest: parseDateArg rejects trailing garbage and loose forms
+ok 15 - parseDateArg rejects trailing garbage and loose forms
+  ---
+  duration_ms: 1.268875
+  type: 'test'
+  ...
+# Subtest: parseDateArg rejects impossible calendar dates
+ok 16 - parseDateArg rejects impossible calendar dates
+  ---
+  duration_ms: 0.6445
+  type: 'test'
+  ...
+# Subtest: parseDateArg rejects NaN, empty and non-string values
+ok 17 - parseDateArg rejects NaN, empty and non-string values
+  ---
+  duration_ms: 3.926041
+  type: 'test'
+  ...
+# Subtest: parseLookback: 27 -> 28 days, 55 -> 56 days
+ok 18 - parseLookback: 27 -> 28 days, 55 -> 56 days
+  ---
+  duration_ms: 19.936583
+  type: 'test'
+  ...
+# Subtest: parseLookback rejects negative, NaN and trailing characters
+ok 19 - parseLookback rejects negative, NaN and trailing characters
+  ---
+  duration_ms: 0.293042
+  type: 'test'
+  ...
+# Subtest: defaults use Search Console calendar dates, not UTC traffic dates
+ok 20 - defaults use Search Console calendar dates, not UTC traffic dates
+  ---
+  duration_ms: 0.823792
+  type: 'test'
+  ...
+# Subtest: default windows stay calendar-correct across DST transitions
+ok 21 - default windows stay calendar-correct across DST transitions
+  ---
+  duration_ms: 2.282625
+  type: 'test'
+  ...
+# Subtest: validateRequestRange rejects inverted ranges and future end dates
+ok 22 - validateRequestRange rejects inverted ranges and future end dates
+  ---
+  duration_ms: 1.340041
+  type: 'test'
+  ...
+# Subtest: splitWindow yields two non-overlapping halves (28+28 for 56 days)
+ok 23 - splitWindow yields two non-overlapping halves (28+28 for 56 days)
+  ---
+  duration_ms: 1.005792
+  type: 'test'
+  ...
+# Subtest: redactSecrets strips tokens, keys, JWTs and endpoint query strings
+ok 24 - redactSecrets strips tokens, keys, JWTs and endpoint query strings
+  ---
+  duration_ms: 0.330542
+  type: 'test'
+  ...
+# Subtest: GscError and safeErrorMessage never echo credential-bearing detail
+ok 25 - GscError and safeErrorMessage never echo credential-bearing detail
+  ---
+  duration_ms: 0.13675
+  type: 'test'
+  ...
+# Subtest: escapeRe2 escapes regex metacharacters
+ok 26 - escapeRe2 escapes regex metacharacters
+  ---
+  duration_ms: 0.126584
+  type: 'test'
+  ...
+# Subtest: host filter matches only exact cubxxw.com with a path boundary
+ok 27 - host filter matches only exact cubxxw.com with a path boundary
+  ---
+  duration_ms: 0.153791
+  type: 'test'
+  ...
+# Subtest: aggregation constraints: byProperty is refused with a page filter
+ok 28 - aggregation constraints: byProperty is refused with a page filter
+  ---
+  duration_ms: 0.132667
+  type: 'test'
+  ...
+# Subtest: slice plan: property totals unfiltered; blog slices host-filtered byPage
+ok 29 - slice plan: property totals unfiltered; blog slices host-filtered byPage
+  ---
+  duration_ms: 0.192083
+  type: 'test'
+  ...
+# Subtest: device and country cuts are explicit optional separate page-based slices
+ok 30 - device and country cuts are explicit optional separate page-based slices
+  ---
+  duration_ms: 0.108125
+  type: 'test'
+  ...
+# Subtest: semantic selection key covers request context + slice + day only
+ok 31 - semantic selection key covers request context + slice + day only
+  ---
+  duration_ms: 0.209125
+  type: 'test'
+  ...
+# Subtest: buildSearchAnalyticsBody enforces rowLimit bounds and body shape
+ok 32 - buildSearchAnalyticsBody enforces rowLimit bounds and body shape
+  ---
+  duration_ms: 0.187
+  type: 'test'
+  ...
+# Subtest: pagination: full first page + next rows + terminal short page
+ok 33 - pagination: full first page + next rows + terminal short page
+  ---
+  duration_ms: 0.661833
+  type: 'test'
+  ...
+# Subtest: pagination: exact multiple ends on terminal empty page
+ok 34 - pagination: exact multiple ends on terminal empty page
+  ---
+  duration_ms: 0.150625
+  type: 'test'
+  ...
+# Subtest: pagination at the API row limit (25,000) pages via startRow
+ok 35 - pagination at the API row limit (25,000) pages via startRow
+  ---
+  duration_ms: 54.651833
+  type: 'test'
+  ...
+# Subtest: pagination: malformed responses fail the slice with parse evidence
+ok 36 - pagination: malformed responses fail the slice with parse evidence
+  ---
+  duration_ms: 1.002
+  type: 'test'
+  ...
+# Subtest: pagination: safety cap marks truncation, never a full day
+ok 37 - pagination: safety cap marks truncation, never a full day
+  ---
+  duration_ms: 0.240125
+  type: 'test'
+  ...
+# Subtest: pagination: second-page failure keeps partial rows and never claims a full day
+ok 38 - pagination: second-page failure keeps partial rows and never claims a full day
+  ---
+  duration_ms: 0.256166
+  type: 'test'
+  ...
+# Subtest: pagination: duplicate dimension keys across pages mark conflict, not a falsely complete sum
+ok 39 - pagination: duplicate dimension keys across pages mark conflict, not a falsely complete sum
+  ---
+  duration_ms: 0.120792
+  type: 'test'
+  ...
+# Subtest: pagination: changing responseAggregationType across pages marks conflict/incomplete
+ok 40 - pagination: changing responseAggregationType across pages marks conflict/incomplete
+  ---
+  duration_ms: 0.0905
+  type: 'test'
+  ...
+# Subtest: successful empty is a distinct observed state, not failure
+ok 41 - successful empty is a distinct observed state, not failure
+  ---
+  duration_ms: 0.051584
+  type: 'test'
+  ...
+# Subtest: transient 5xx responses retry within budget and then succeed
+ok 42 - transient 5xx responses retry within budget and then succeed
+  ---
+  duration_ms: 0.173167
+  type: 'test'
+  ...
+# Subtest: retry budget is bounded: exhausted transient failures stop clearly
+ok 43 - retry budget is bounded: exhausted transient failures stop clearly
+  ---
+  duration_ms: 0.217291
+  type: 'test'
+  ...
+# Subtest: timeouts abort via injected timers and never wait in real time
+ok 44 - timeouts abort via injected timers and never wait in real time
+  ---
+  duration_ms: 0.59125
+  type: 'test'
+  ...
+# Subtest: auth failure is clear and never prints tokens, keys or endpoint queries
+ok 45 - auth failure is clear and never prints tokens, keys or endpoint queries
+  ---
+  duration_ms: 134.257625
+  type: 'test'
+  ...
+# Subtest: Search Analytics auth/transport errors are redacted and scoped
+ok 46 - Search Analytics auth/transport errors are redacted and scoped
+  ---
+  duration_ms: 0.17
+  type: 'test'
+  ...
+# Subtest: service-account parsing rejects bad blobs without echoing them
+ok 47 - service-account parsing rejects bad blobs without echoing them
+  ---
+  duration_ms: 0.133917
+  type: 'test'
+  ...
+# Subtest: availability probe records observed cutoff over the bounded 10-day window
+ok 48 - availability probe records observed cutoff over the bounded 10-day window
+  ---
+  duration_ms: 0.533083
+  type: 'test'
+  ...
+# Subtest: availability probe failure yields unknown availability, not a fake cutoff
+ok 49 - availability probe failure yields unknown availability, not a fake cutoff
+  ---
+  duration_ms: 0.074958
+  type: 'test'
+  ...
+# Subtest: parseCliArgs: strict lookback, ranges and flags
+ok 50 - parseCliArgs: strict lookback, ranges and flags
+  ---
+  duration_ms: 0.336083
+  type: 'test'
+  ...
+# Subtest: pickSnapshotPath: conventional name, append-only same-day rerun, never overwrite --out
+ok 51 - pickSnapshotPath: conventional name, append-only same-day rerun, never overwrite --out
+  ---
+  duration_ms: 0.270416
+  type: 'test'
+  ...
+# Subtest: atomicWriteJson: full JSON, invisible interruption, no-clobber publication
+ok 52 - atomicWriteJson: full JSON, invisible interruption, no-clobber publication
+  ---
+  duration_ms: 2.660375
+  type: 'test'
+  ...
+# Subtest: runFetch: explicit metadata and per-slice/per-day scope on success
+ok 53 - runFetch: explicit metadata and per-slice/per-day scope on success
+  ---
+  duration_ms: 3.588167
+  type: 'test'
+  ...
+# Subtest: runFetch: empty days past the availability cutoff are unavailable-unknown, never complete-zero
+ok 54 - runFetch: empty days past the availability cutoff are unavailable-unknown, never complete-zero
+  ---
+  duration_ms: 2.083666
+  type: 'test'
+  ...
+# Subtest: runFetch: available-day empty blog response is observed empty on an available date
+ok 55 - runFetch: available-day empty blog response is observed empty on an available date
+  ---
+  duration_ms: 2.503458
+  type: 'test'
+  ...
+# Subtest: runFetch: required slice failure persists a status artifact and exits non-zero
+ok 56 - runFetch: required slice failure persists a status artifact and exits non-zero
+  ---
+  duration_ms: 3.405042
+  type: 'test'
+  ...
+# Subtest: runFetch: optional slice failures are explicit degradation, not success silence
+ok 57 - runFetch: optional slice failures are explicit degradation, not success silence
+  ---
+  duration_ms: 2.375625
+  type: 'test'
+  ...
+# Subtest: runFetch: total auth failure leaves evidence and exits non-zero without secrets
+ok 58 - runFetch: total auth failure leaves evidence and exits non-zero without secrets
+  ---
+  duration_ms: 2.092208
+  type: 'test'
+  ...
+# Subtest: runFetch: availability probe failure is unknown availability, independent of transport success
+ok 59 - runFetch: availability probe failure is unknown availability, independent of transport success
+  ---
+  duration_ms: 2.025042
+  type: 'test'
+  ...
+# Subtest: runFetch: existing explicit --out fails before any request is made
+ok 60 - runFetch: existing explicit --out fails before any request is made
+  ---
+  duration_ms: 0.598542
+  type: 'test'
+  ...
+# Subtest: real CLI writes: two same-day runs append; later failure preserves success evidence
+ok 61 - real CLI writes: two same-day runs append; later failure preserves success evidence
+  ---
+  duration_ms: 264.33175
+  type: 'test'
+  ...
+# Subtest: legal omitted rows normalize to successful empty (first page, terminal page, probe)
+ok 62 - legal omitted rows normalize to successful empty (first page, terminal page, probe)
+  ---
+  duration_ms: 0.401875
+  type: 'test'
+  ...
+# Subtest: deadline covers the response body: hanging body is a transport timeout, not parse
+ok 63 - deadline covers the response body: hanging body is a transport timeout, not parse
+  ---
+  duration_ms: 0.395458
+  type: 'test'
+  ...
+# Subtest: unlabeled opaque tokens in transport exceptions are never interpolated
+ok 64 - unlabeled opaque tokens in transport exceptions are never interpolated
+  ---
+  duration_ms: 0.404208
+  type: 'test'
+  ...
+# Subtest: exhausted transient HTTP failures keep their status and kind
+ok 65 - exhausted transient HTTP failures keep their status and kind
+  ---
+  duration_ms: 0.163917
+  type: 'test'
+  ...
+# Subtest: wrong-day rows and wrong key counts are rejected, never a complete day
+ok 66 - wrong-day rows and wrong key counts are rejected, never a complete day
+  ---
+  duration_ms: 0.225291
+  type: 'test'
+  ...
+# Subtest: availability probe segregates invalid and out-of-window dates before the cutoff
+ok 67 - availability probe segregates invalid and out-of-window dates before the cutoff
+  ---
+  duration_ms: 0.174834
+  type: 'test'
+  ...
+# Subtest: response aggregation incompatible with the context is segregated even when stable across pages
+ok 68 - response aggregation incompatible with the context is segregated even when stable across pages
+  ---
+  duration_ms: 0.150292
+  type: 'test'
+  ...
+# Subtest: no-clobber: competing writer on the daily name keeps prior evidence; run retries a fresh default name
+ok 69 - no-clobber: competing writer on the daily name keeps prior evidence; run retries a fresh default name
+  ---
+  duration_ms: 3.955584
+  type: 'test'
+  ...
+# Subtest: no-clobber: explicit --out collision at publication exits non-zero and keeps prior evidence
+ok 70 - no-clobber: explicit --out collision at publication exits non-zero and keeps prior evidence
+  ---
+  duration_ms: 2.229292
+  type: 'test'
+  ...
+# Subtest: single canary uses readonly OAuth and official inspection POST, records exact provenance and allowlisted Google fields
+ok 71 - single canary uses readonly OAuth and official inspection POST, records exact provenance and allowlisted Google fields
+  ---
+  duration_ms: 12.116875
+  type: 'test'
+  ...
+# Subtest: missing canonical stays unknown; negative Google verdict is a successful observation, not process failure
+ok 72 - missing canonical stays unknown; negative Google verdict is a successful observation, not process failure
+  ---
+  duration_ms: 4.803625
+  type: 'test'
+  ...
+# Subtest: malformed JSON remains an unknown failed observation and never indexed from HTTP 200
+ok 73 - malformed JSON remains an unknown failed observation and never indexed from HTTP 200
+  ---
+  duration_ms: 2.065
+  type: 'test'
+  ...
+# Subtest: absent top data remains an unknown failed observation and never indexed from HTTP 200
+ok 74 - absent top data remains an unknown failed observation and never indexed from HTTP 200
+  ---
+  duration_ms: 3.527042
+  type: 'test'
+  ...
+# Subtest: null top data remains an unknown failed observation and never indexed from HTTP 200
+ok 75 - null top data remains an unknown failed observation and never indexed from HTTP 200
+  ---
+  duration_ms: 2.185125
+  type: 'test'
+  ...
+# Subtest: absent indexStatus remains an unknown failed observation and never indexed from HTTP 200
+ok 76 - absent indexStatus remains an unknown failed observation and never indexed from HTTP 200
+  ---
+  duration_ms: 2.220583
+  type: 'test'
+  ...
+# Subtest: empty indexStatus remains an unknown failed observation and never indexed from HTTP 200
+ok 77 - empty indexStatus remains an unknown failed observation and never indexed from HTTP 200
+  ---
+  duration_ms: 0.971208
+  type: 'test'
+  ...
+# Subtest: wrong field type remains an unknown failed observation and never indexed from HTTP 200
+ok 78 - wrong field type remains an unknown failed observation and never indexed from HTTP 200
+  ---
+  duration_ms: 0.967083
+  type: 'test'
+  ...
+# Subtest: unknown verdict remains an unknown failed observation and never indexed from HTTP 200
+ok 79 - unknown verdict remains an unknown failed observation and never indexed from HTTP 200
+  ---
+  duration_ms: 0.875
+  type: 'test'
+  ...
+# Subtest: HTTP 401 preserves process failure and sanitized diagnostics
+ok 80 - HTTP 401 preserves process failure and sanitized diagnostics
+  ---
+  duration_ms: 1.047917
+  type: 'test'
+  ...
+# Subtest: HTTP 403 preserves process failure and sanitized diagnostics
+ok 81 - HTTP 403 preserves process failure and sanitized diagnostics
+  ---
+  duration_ms: 0.925625
+  type: 'test'
+  ...
+# Subtest: HTTP 404 preserves process failure and sanitized diagnostics
+ok 82 - HTTP 404 preserves process failure and sanitized diagnostics
+  ---
+  duration_ms: 0.697667
+  type: 'test'
+  ...
+# Subtest: HTTP 429 preserves process failure and sanitized diagnostics
+ok 83 - HTTP 429 preserves process failure and sanitized diagnostics
+  ---
+  duration_ms: 1.318625
+  type: 'test'
+  ...
+# Subtest: HTTP 500 preserves process failure and sanitized diagnostics
+ok 84 - HTTP 500 preserves process failure and sanitized diagnostics
+  ---
+  duration_ms: 1.188625
+  type: 'test'
+  ...
+# Subtest: network and body deadline failure are bounded and never serialize raw exception text
+ok 85 - network and body deadline failure are bounded and never serialize raw exception text
+  ---
+  duration_ms: 15.597625
+  type: 'test'
+  ...
+# Subtest: the first URL is the batch canary; permission, quota and invalid indexStatus stop with blocked remainder
+ok 86 - the first URL is the batch canary; permission, quota and invalid indexStatus stop with blocked remainder
+  ---
+  duration_ms: 7.870708
+  type: 'test'
+  ...
+# Subtest: valid canary allows bounded batch, preserves subsequent per-URL failure and stops later permission failures
+ok 87 - valid canary allows bounded batch, preserves subsequent per-URL failure and stops later permission failures
+  ---
+  duration_ms: 1.206792
+  type: 'test'
+  ...
+# Subtest: URL and input validation rejects all non-owned and malformed requests before authentication
+ok 88 - URL and input validation rejects all non-owned and malformed requests before authentication
+  ---
+  duration_ms: 1.162291
+  type: 'test'
+  ...
+# Subtest: CLI writes auth failures as unknown evidence, preserves old evidence and exits nonzero
+ok 89 - CLI writes auth failures as unknown evidence, preserves old evidence and exits nonzero
+  ---
+  duration_ms: 2.7405
+  type: 'test'
+  ...
+# Subtest: CLI multiline URLs enter only through env, exactly match planned rows and cannot be shell-expanded
+ok 90 - CLI multiline URLs enter only through env, exactly match planned rows and cannot be shell-expanded
+  ---
+  duration_ms: 0.819208
+  type: 'test'
+  ...
+# Subtest: OAuth permission and malformed token responses block every URL without leaking response data
+ok 91 - OAuth permission and malformed token responses block every URL without leaking response data
+  ---
+  duration_ms: 3.289792
+  type: 'test'
+  ...
+# Subtest: body read timeout remains transport failure inside the bounded request deadline
+ok 92 - body read timeout remains transport failure inside the bounded request deadline
+  ---
+  duration_ms: 13.505292
+  type: 'test'
+  ...
+# Subtest: workflow shell produces exact process evidence, always gates failure, and passes multiline inputs without shell execution
+ok 93 - workflow shell produces exact process evidence, always gates failure, and passes multiline inputs without shell execution
+  ---
+  duration_ms: 584.970291
+  type: 'test'
+  ...
+# Subtest: weighted metrics: CTR from sums, position impression-weighted, zero-impression position null
+ok 94 - weighted metrics: CTR from sums, position impression-weighted, zero-impression position null
+  ---
+  duration_ms: 1.404458
+  type: 'test'
+  ...
+# Subtest: query labels: transparent rule order site: > brand > anomaly > nonbrand
+ok 95 - query labels: transparent rule order site: > brand > anomaly > nonbrand
+  ---
+  duration_ms: 1.025709
+  type: 'test'
+  ...
+# Subtest: same-day whole-slice replacement removes obsolete rows; shuffled input order is identical
+ok 96 - same-day whole-slice replacement removes obsolete rows; shuffled input order is identical
+  ---
+  duration_ms: 17.353042
+  type: 'test'
+  ...
+# Subtest: duplicate snapshots are counted once and recorded
+ok 97 - duplicate snapshots are counted once and recorded
+  ---
+  duration_ms: 2.58325
+  type: 'test'
+  ...
+# Subtest: newer successful empty replaces obsolete rows only with established availability
+ok 98 - newer successful empty replaces obsolete rows only with established availability
+  ---
+  duration_ms: 2.586209
+  type: 'test'
+  ...
+# Subtest: later partial/failure never replaces a success but stays visible; missing day is not zero
+ok 99 - later partial/failure never replaces a success but stays visible; missing day is not zero
+  ---
+  duration_ms: 1.160375
+  type: 'test'
+  ...
+# Subtest: day evidence from a 3-day and a 56-day request with different page sizes replaces by recency only
+ok 100 - day evidence from a 3-day and a 56-day request with different page sizes replaces by recency only
+  ---
+  duration_ms: 2.963417
+  type: 'test'
+  ...
+# Subtest: context partition: property/filter/dimensions/type/aggregation mismatch is never blended
+ok 101 - context partition: property/filter/dimensions/type/aggregation mismatch is never blended
+  ---
+  duration_ms: 4.1355
+  type: 'test'
+  ...
+# Subtest: response aggregation mismatch partitions blend groups and surfaces incompatibilities
+ok 102 - response aggregation mismatch partitions blend groups and surfaces incompatibilities
+  ---
+  duration_ms: 2.805917
+  type: 'test'
+  ...
+# Subtest: main-host table is strict hostname equality; other hosts stay separate
+ok 103 - main-host table is strict hostname equality; other hosts stay separate
+  ---
+  duration_ms: 2.430042
+  type: 'test'
+  ...
+# Subtest: legacy query evidence: labels without page dimension, never inferred landing pages
+ok 104 - legacy query evidence: labels without page dimension, never inferred landing pages
+  ---
+  duration_ms: 2.152125
+  type: 'test'
+  ...
+# Subtest: deterministic report: no build clock, repeated builds byte-identical
+ok 105 - deterministic report: no build clock, repeated builds byte-identical
+  ---
+  duration_ms: 1.306916
+  type: 'test'
+  ...
+# Subtest: real history: 28+28 windows reproduce 141/93,015 and 119/61,892 (read-only, frozen cutoff)
+ok 106 - real history: 28+28 windows reproduce 141/93,015 and 119/61,892 (read-only, frozen cutoff)
+  ---
+  duration_ms: 987.41525
+  type: 'test'
+  ...
+# Subtest: report CLI args are strict
+ok 107 - report CLI args are strict
+  ---
+  duration_ms: 0.836167
+  type: 'test'
+  ...
+# Subtest: writeReport: never overwrites differing content; identical regeneration is a no-op
+ok 108 - writeReport: never overwrites differing content; identical regeneration is a no-op
+  ---
+  duration_ms: 988.548958
+  type: 'test'
+  ...
+# Subtest: R1: newer legacy empty window never erases rows and never claims complete zeros
+ok 109 - R1: newer legacy empty window never erases rows and never claims complete zeros
+  ---
+  duration_ms: 63.081292
+  type: 'test'
+  ...
+# Subtest: R2: failures and missing days never produce success zeros in tables or summary
+ok 110 - R2: failures and missing days never produce success zeros in tables or summary
+  ---
+  duration_ms: 67.176292
+  type: 'test'
+  ...
+# Subtest: R3: cross-source comparisons require identity and host-scope compatibility
+ok 111 - R3: cross-source comparisons require identity and host-scope compatibility
+  ---
+  duration_ms: 8.106
+  type: 'test'
+  ...
+# Subtest: R4: availability is scoped to the report property and keeps probe identity
+ok 112 - R4: availability is scoped to the report property and keeps probe identity
+  ---
+  duration_ms: 17.576208
+  type: 'test'
+  ...
+# Subtest: R5: opt-in query×page pairs keep real URLs; default baseline leaks no raw queries
+ok 113 - R5: opt-in query×page pairs keep real URLs; default baseline leaks no raw queries
+  ---
+  duration_ms: 15.501291
+  type: 'test'
+  ...
+# Subtest: R6: distinct contents never merge (hash collision guard); identical bytes dedupe
+ok 114 - R6: distinct contents never merge (hash collision guard); identical bytes dedupe
+  ---
+  duration_ms: 1.490708
+  type: 'test'
+  ...
+# Subtest: R7: same-day response aggregation semantics stay visible; failures attach without erasing
+ok 115 - R7: same-day response aggregation semantics stay visible; failures attach without erasing
+  ---
+  duration_ms: 2.191958
+  type: 'test'
+  ...
+# Subtest: as-of: observation cutoff excludes later and unprovable observations consistently
+ok 116 - as-of: observation cutoff excludes later and unprovable observations consistently
+  ---
+  duration_ms: 3.190292
+  type: 'test'
+  ...
+# Subtest: as-of: CLI validates strict UTC timestamps only
+ok 117 - as-of: CLI validates strict UTC timestamps only
+  ---
+  duration_ms: 0.253292
+  type: 'test'
+  ...
+# Subtest: F1: core as-of is fail-closed; preloaded evidence cannot bypass the cutoff
+ok 118 - F1: core as-of is fail-closed; preloaded evidence cannot bypass the cutoff
+  ---
+  duration_ms: 1.429083
+  type: 'test'
+  ...
+# Subtest: F2: availability selects the exact property+searchType+dataState identity
+ok 119 - F2: availability selects the exact property+searchType+dataState identity
+  ---
+  duration_ms: 2.029584
+  type: 'test'
+  ...
+# Subtest: F3: comparison eligibility is conservative (exact filters, identity, window proof)
+ok 120 - F3: comparison eligibility is conservative (exact filters, identity, window proof)
+  ---
+  duration_ms: 4.625042
+  type: 'test'
+  ...
+# Subtest: explicit byPage selects recorded rows without merging legacy and retains both groups
+ok 121 - explicit byPage selects recorded rows without merging legacy and retains both groups
+  ---
+  duration_ms: 1.1335
+  type: 'test'
+  ...
+# Subtest: explicit aggregation cannot resolve multiple unfiltered request contexts or unmatched aggregation
+ok 122 - explicit aggregation cannot resolve multiple unfiltered request contexts or unmatched aggregation
+  ---
+  duration_ms: 5.022292
+  type: 'test'
+  ...
+# Subtest: CLI opt-in aggregation is strict and produces the selected report
+ok 123 - CLI opt-in aggregation is strict and produces the selected report
+  ---
+  duration_ms: 6.2665
+  type: 'test'
+  ...
+# Subtest: explicit byPage gaps remain gaps even when newer legacy rows cover the missing day
+ok 124 - explicit byPage gaps remain gaps even when newer legacy rows cover the missing day
+  ---
+  duration_ms: 1.112584
+  type: 'test'
+  ...
+# Subtest: opt-in pending collection reflects proven host query×page windows, while default retains historical gates
+ok 125 - opt-in pending collection reflects proven host query×page windows, while default retains historical gates
+  ---
+  duration_ms: 3.773292
+  type: 'test'
+  ...
+# Closed stale daily issue \#41
+# Subtest: resolveReportPath maps runner-absolute paths to the artifact-local basename only
+ok 126 - resolveReportPath maps runner-absolute paths to the artifact-local basename only
+  ---
+  duration_ms: 2.146917
+  type: 'test'
+  ...
+# Subtest: readDetails reads only the artifact-local report and preserves diagnostics
+ok 127 - readDetails reads only the artifact-local report and preserves diagnostics
+  ---
+  duration_ms: 1.369834
+  type: 'test'
+  ...
+# Subtest: buildSection keeps the five category columns and reports missing details honestly
+ok 128 - buildSection keeps the five category columns and reports missing details honestly
+  ---
+  duration_ms: 0.575958
+  type: 'test'
+  ...
+# Subtest: buildMissingSection publishes the honest missing-measurement state
+ok 129 - buildMissingSection publishes the honest missing-measurement state
+  ---
+  duration_ms: 0.145792
+  type: 'test'
+  ...
+# Subtest: 13-LHR artifact-local positive control publishes scores+diagnostics and exits 0
+ok 130 - 13-LHR artifact-local positive control publishes scores+diagnostics and exits 0
+  ---
+  duration_ms: 3.259042
+  type: 'test'
+  ...
+# Subtest: frozen date reaches the daily issue identity and only strictly older issues close
+ok 131 - frozen date reaches the daily issue identity and only strictly older issues close
+  ---
+  duration_ms: 0.963417
+  type: 'test'
+  ...
+# Subtest: empty manifest or zero representative runs publishes the missing state and exits nonzero
+ok 132 - empty manifest or zero representative runs publishes the missing state and exits nonzero
+  ---
+  duration_ms: 0.639125
+  type: 'test'
+  ...
+# Subtest: missing or malformed manifest publishes the missing state and exits nonzero
+ok 133 - missing or malformed manifest publishes the missing state and exits nonzero
+  ---
+  duration_ms: 0.39275
+  type: 'test'
+  ...
+# Subtest: missing GITHUB_REPOSITORY fails clearly without touching gh
+ok 134 - missing GITHUB_REPOSITORY fails clearly without touching gh
+  ---
+  duration_ms: 0.42725
+  type: 'test'
+  ...
+# Subtest: planMeasurements uses the actual configured URL count and de-duplicates URL×strategy
+ok 135 - planMeasurements uses the actual configured URL count and de-duplicates URL×strategy
+  ---
+  duration_ms: 1.98825
+  type: 'test'
+  ...
+# Subtest: planMeasurements rejects empty URL lists and unknown strategies
+ok 136 - planMeasurements rejects empty URL lists and unknown strategies
+  ---
+  duration_ms: 0.531292
+  type: 'test'
+  ...
+# Subtest: CLS stays fractional (0.212 remains 0.212) with an explicit unitless unit
+ok 137 - CLS stays fractional (0.212 remains 0.212) with an explicit unitless unit
+  ---
+  duration_ms: 1.355042
+  type: 'test'
+  ...
+# Subtest: null stays unknown: absent audits, empty field data and missing settings are never zero
+ok 138 - null stays unknown: absent audits, empty field data and missing settings are never zero
+  ---
+  duration_ms: 0.633375
+  type: 'test'
+  ...
+# Subtest: field data with samples records percentiles independently of lab collection
+ok 139 - field data with samples records percentiles independently of lab collection
+  ---
+  duration_ms: 0.477958
+  type: 'test'
+  ...
+# Subtest: official PSI 13.5.0 config shape collects successfully but cannot compare samples
+ok 140 - official PSI 13.5.0 config shape collects successfully but cannot compare samples
+  ---
+  duration_ms: 2.470917
+  type: 'test'
+  ...
+# Subtest: invalid performance and negative core metrics cannot become successful measurements
+ok 141 - invalid performance and negative core metrics cannot become successful measurements
+  ---
+  duration_ms: 1.398459
+  type: 'test'
+  ...
+# Subtest: costs: zero-ms/nonzero-byte survives; numericValue is read via its own numericUnit; totals are never labelled waste
+ok 142 - costs: zero-ms/nonzero-byte survives; numericValue is read via its own numericUnit; totals are never labelled waste
+  ---
+  duration_ms: 0.376166
+  type: 'test'
+  ...
+# Subtest: costs: byte and millisecond values never share a field
+ok 143 - costs: byte and millisecond values never share a field
+  ---
+  duration_ms: 0.576334
+  type: 'test'
+  ...
+# Subtest: provenance preserves allowlisted settings; CPU/RTT/DPR/locale differences stay distinguishable
+ok 144 - provenance preserves allowlisted settings; CPU/RTT/DPR/locale differences stay distinguishable
+  ---
+  duration_ms: 2.099708
+  type: 'test'
+  ...
+# Subtest: arbitrary config keys (extraHeaders etc.) are never retained in provenance
+ok 145 - arbitrary config keys (extraHeaders etc.) are never retained in provenance
+  ---
+  duration_ms: 0.339916
+  type: 'test'
+  ...
+# Subtest: missing/invalid fetchTime is partial, not retained, and blocks compatibility claims
+ok 146 - missing/invalid fetchTime is partial, not retained, and blocks compatibility claims
+  ---
+  duration_ms: 0.337917
+  type: 'test'
+  ...
+# Subtest: invalid or missing measured-page URLs stay partial with comparison provenance incomplete
+ok 147 - invalid or missing measured-page URLs stay partial with comparison provenance incomplete
+  ---
+  duration_ms: 0.542667
+  type: 'test'
+  ...
+# Subtest: LCP node: legacy flat/nested, insight-only direct node, deterministic precedence, never fabricated
+ok 148 - LCP node: legacy flat/nested, insight-only direct node, deterministic precedence, never fabricated
+  ---
+  duration_ms: 0.254041
+  type: 'test'
+  ...
+# Subtest: HTTP 200 with an empty payload is malformed-measurement, never success
+ok 149 - HTTP 200 with an empty payload is malformed-measurement, never success
+  ---
+  duration_ms: 0.117416
+  type: 'test'
+  ...
+# Subtest: HTTP 200 with lighthouseResult.runtimeError is a Lighthouse navigation failure (allowlisted code only)
+ok 150 - HTTP 200 with lighthouseResult.runtimeError is a Lighthouse navigation failure (allowlisted code only)
+  ---
+  duration_ms: 0.116833
+  type: 'test'
+  ...
+# Subtest: missing required performance/LCP/CLS measurements is an incomplete measurement
+ok 151 - missing required performance/LCP/CLS measurements is an incomplete measurement
+  ---
+  duration_ms: 0.087792
+  type: 'test'
+  ...
+# Subtest: PSI API 500 retries are bounded at 3 attempts and the run still fails
+ok 152 - PSI API 500 retries are bounded at 3 attempts and the run still fails
+  ---
+  duration_ms: 0.621042
+  type: 'test'
+  ...
+# Subtest: 429 is retryable; 400 is not and never loops
+ok 153 - 429 is retryable; 400 is not and never loops
+  ---
+  duration_ms: 0.34675
+  type: 'test'
+  ...
+# Subtest: network timeout is classified as timeout and retried within the bound
+ok 154 - network timeout is classified as timeout and retried within the bound
+  ---
+  duration_ms: 0.19475
+  type: 'test'
+  ...
+# Subtest: a stalled 200 body is bounded by the per-attempt deadline (never success)
+ok 155 - a stalled 200 body is bounded by the per-attempt deadline (never success)
+  ---
+  duration_ms: 22.331542
+  type: 'test'
+  ...
+# Subtest: a stalled non-200 body keeps the known PSI status and stays timeout-classified
+ok 156 - a stalled non-200 body keeps the known PSI status and stays timeout-classified
+  ---
+  duration_ms: 34.093292
+  type: 'test'
+  ...
+# Subtest: a body transport reset is retried and recovers — never degraded into empty malformed JSON
+ok 157 - a body transport reset is retried and recovers — never degraded into empty malformed JSON
+  ---
+  duration_ms: 0.666583
+  type: 'test'
+  ...
+# Subtest: persistent body resets exhaust the bounded budget as transport failures (no raw text)
+ok 158 - persistent body resets exhaust the bounded budget as transport failures (no raw text)
+  ---
+  duration_ms: 0.456334
+  type: 'test'
+  ...
+# Subtest: genuine malformed HTTP 200 is non-retryable even with attempts remaining
+ok 159 - genuine malformed HTTP 200 is non-retryable even with attempts remaining
+  ---
+  duration_ms: 0.219458
+  type: 'test'
+  ...
+# Subtest: runtimeError and malformed 200 payloads are final, not retried
+ok 160 - runtimeError and malformed 200 payloads are final, not retried
+  ---
+  duration_ms: 0.630167
+  type: 'test'
+  ...
+# Subtest: classifyHttpStatus/TransportError keep API status and origin status apart
+ok 161 - classifyHttpStatus/TransportError keep API status and origin status apart
+  ---
+  duration_ms: 0.1475
+  type: 'test'
+  ...
+# Subtest: PSI HTTP status is recorded as the API status and never as the origin status
+ok 162 - PSI HTTP status is recorded as the API status and never as the origin status
+  ---
+  duration_ms: 0.302542
+  type: 'test'
+  ...
+# Subtest: entries never retain provider bodies, exception text or runtimeError messages
+ok 163 - entries never retain provider bodies, exception text or runtimeError messages
+  ---
+  duration_ms: 0.492
+  type: 'test'
+  ...
+# Subtest: CLI logs and written snapshots never contain provider text (HTTP, transport, runtime-error) with the default clock
+ok 164 - CLI logs and written snapshots never contain provider text (HTTP, transport, runtime-error) with the default clock
+  ---
+  duration_ms: 4.520333
+  type: 'test'
+  ...
+# Subtest: denominators: a 15/26 run is partial and never green
+ok 165 - denominators: a 15/26 run is partial and never green
+  ---
+  duration_ms: 0.558625
+  type: 'test'
+  ...
+# Subtest: denominators: 22/26 fresh shape is partial; all failures can never be a green run
+ok 166 - denominators: 22/26 fresh shape is partial; all failures can never be a green run
+  ---
+  duration_ms: 0.334042
+  type: 'test'
+  ...
+# Subtest: buildSnapshot freezes the planned denominator and separates statuses
+ok 167 - buildSnapshot freezes the planned denominator and separates statuses
+  ---
+  duration_ms: 0.124708
+  type: 'test'
+  ...
+# Subtest: CLI: unknown arguments exit 1 with usage, --help exits 0 (guarded main, no import side effects)
+ok 168 - CLI: unknown arguments exit 1 with usage, --help exits 0 (guarded main, no import side effects)
+  ---
+  duration_ms: 121.698333
+  type: 'test'
+  ...
+# Subtest: CLI arg validation: bad --timeout-ms / --max-attempts / missing values fail clearly
+ok 169 - CLI arg validation: bad --timeout-ms / --max-attempts / missing values fail clearly
+  ---
+  duration_ms: 0.545083
+  type: 'test'
+  ...
+# Subtest: readConfiguredUrls reads the actual configured list and refuses to guess an empty one
+ok 170 - readConfiguredUrls reads the actual configured list and refuses to guess an empty one
+  ---
+  duration_ms: 0.858708
+  type: 'test'
+  ...
+# Subtest: main() dry-run reports the run status without writing (injected clock)
+ok 171 - main() dry-run reports the run status without writing (injected clock)
+  ---
+  duration_ms: 0.59825
+  type: 'test'
+  ...
+# Subtest: same-day rerun appends a unique observation name and never replaces the first
+ok 172 - same-day rerun appends a unique observation name and never replaces the first
+  ---
+  duration_ms: 1.067208
+  type: 'test'
+  ...
+# Subtest: explicit --out that exists is refused; atomic writes never clobber
+ok 173 - explicit --out that exists is refused; atomic writes never clobber
+  ---
+  duration_ms: 1.749
+  type: 'test'
+  ...
+# Subtest: buildRequestEndpoint carries the key only on the request URL (never stored in entries)
+ok 174 - buildRequestEndpoint carries the key only on the request URL (never stored in entries)
+  ---
+  duration_ms: 0.051334
+  type: 'test'
+  ...
+# Subtest: discovery matches frozen legacy daily and unique PSI/CrUX filenames only
+ok 175 - discovery matches frozen legacy daily and unique PSI/CrUX filenames only
+  ---
+  duration_ms: 1.172875
+  type: 'test'
+  ...
+# Subtest: legacy CLS is precision-unknown with displayValue recovery only as explicit derived provenance
+ok 176 - legacy CLS is precision-unknown with displayValue recovery only as explicit derived provenance
+  ---
+  duration_ms: 1.0725
+  type: 'test'
+  ...
+# Subtest: legacy failure rows republish only fixed classification, never raw collector text
+ok 177 - legacy failure rows republish only fixed classification, never raw collector text
+  ---
+  duration_ms: 0.203292
+  type: 'test'
+  ...
+# Subtest: real history: psi-2026-09-23.json reads as 15 usable / 11 failed of 26 planned
+ok 178 - real history: psi-2026-09-23.json reads as 15 usable / 11 failed of 26 planned
+  ---
+  duration_ms: 1.010041
+  type: 'test'
+  ...
+# Subtest: real history: psi-2026-09-24.json reads as 22 usable / 4 failed of 26 planned
+ok 179 - real history: psi-2026-09-24.json reads as 22 usable / 4 failed of 26 planned
+  ---
+  duration_ms: 0.588375
+  type: 'test'
+  ...
+# Subtest: same-day observations: cutoff between them replays the first, later cutoff exposes the failure
+ok 180 - same-day observations: cutoff between them replays the first, later cutoff exposes the failure
+  ---
+  duration_ms: 3.163708
+  type: 'test'
+  ...
+# Subtest: a failed stage with no new file cannot be substituted by an old daily observation
+ok 181 - a failed stage with no new file cannot be substituted by an old daily observation
+  ---
+  duration_ms: 1.396458
+  type: 'test'
+  ...
+# Subtest: missing/invalid fetchedAt cannot prove eligibility and is excluded fail-closed
+ok 182 - missing/invalid fetchedAt cannot prove eligibility and is excluded fail-closed
+  ---
+  duration_ms: 1.304333
+  type: 'test'
+  ...
+# Subtest: CrUX validator: notEligible is a successful query with no sample; error/invalid records are not success
+ok 183 - CrUX validator: notEligible is a successful query with no sample; error/invalid records are not success
+  ---
+  duration_ms: 11.06775
+  type: 'test'
+  ...
+# Subtest: CrUX History shape: period-aligned values, numeric-string CLS, latest period for freshness
+ok 184 - CrUX History shape: period-aligned values, numeric-string CLS, latest period for freshness
+  ---
+  duration_ms: 0.798792
+  type: 'test'
+  ...
+# Subtest: CrUX strict validation: overlapping rolling windows are labelled; reversed/duplicate/unordered and mismatched lengths are never sampled success
+ok 185 - CrUX strict validation: overlapping rolling windows are labelled; reversed/duplicate/unordered and mismatched lengths are never sampled success
+  ---
+  duration_ms: 0.844875
+  type: 'test'
+  ...
+# Subtest: CrUX official nested fractionTimeseries: aligned values preserved, NaN is no sample
+ok 186 - CrUX official nested fractionTimeseries: aligned values preserved, NaN is no sample
+  ---
+  duration_ms: 0.917625
+  type: 'test'
+  ...
+# Subtest: CrUX plan/identity: missing factors cannot certify ok; record key must match the observation identity
+ok 187 - CrUX plan/identity: missing factors cannot certify ok; record key must match the observation identity
+  ---
+  duration_ms: 0.167291
+  type: 'test'
+  ...
+# Subtest: CrUX selection groups by origin; different origins are never blended
+ok 188 - CrUX selection groups by origin; different origins are never blended
+  ---
+  duration_ms: 1.520666
+  type: 'test'
+  ...
+# Subtest: PSI planned slots: 1 of 2 cannot certify ok; duplicates/unplanned rows never inflate the denominator
+ok 189 - PSI planned slots: 1 of 2 cannot certify ok; duplicates/unplanned rows never inflate the denominator
+  ---
+  duration_ms: 0.477292
+  type: 'test'
+  ...
+# Subtest: a later planned slot with no row is current unknown — never backfilled from an older success
+ok 190 - a later planned slot with no row is current unknown — never backfilled from an older success
+  ---
+  duration_ms: 4.517834
+  type: 'test'
+  ...
+# Subtest: normalizePsiSnapshot keeps the recorded plan and flags duplicate/unplanned rows
+ok 191 - normalizePsiSnapshot keeps the recorded plan and flags duplicate/unplanned rows
+  ---
+  duration_ms: 0.582792
+  type: 'test'
+  ...
+# Subtest: CrUX selection keeps current and labelled last-good per form factor
+ok 192 - CrUX selection keeps current and labelled last-good per form factor
+  ---
+  duration_ms: 0.632917
+  type: 'test'
+  ...
+# Subtest: compatible-sample comparison: complete matching provenance compares, all mismatches withheld
+ok 193 - compatible-sample comparison: complete matching provenance compares, all mismatches withheld
+  ---
+  duration_ms: 0.576084
+  type: 'test'
+  ...
+# Subtest: comparisons refuse rounded CLS without display precision but allow labelled display-derived
+ok 194 - comparisons refuse rounded CLS without display precision but allow labelled display-derived
+  ---
+  duration_ms: 0.089583
+  type: 'test'
+  ...
+# Subtest: real 26/26 provenance-only partial artifact succeeds with explicit comparison degradation
+ok 195 - real 26/26 provenance-only partial artifact succeeds with explicit comparison degradation
+  ---
+  duration_ms: 8.781375
+  type: 'test'
+  ...
+# Subtest: collection success never makes API settings unknowns comparable or creates regression work
+ok 196 - collection success never makes API settings unknowns comparable or creates regression work
+  ---
+  duration_ms: 3.793166
+  type: 'test'
+  ...
+# Subtest: complete newly collected API-shaped samples pass the stage at exit 0
+ok 197 - complete newly collected API-shaped samples pass the stage at exit 0
+  ---
+  duration_ms: 5.941875
+  type: 'test'
+  ...
+# Subtest: PSI degraded acceptance rejects invalid current metrics, URLs, timestamps and failure evidence
+ok 198 - PSI degraded acceptance rejects invalid current metrics, URLs, timestamps and failure evidence
+  ---
+  duration_ms: 24.838375
+  type: 'test'
+  ...
+# Subtest: a partial row with complete comparison provenance cannot claim provenance-only degradation
+ok 199 - a partial row with complete comparison provenance cannot claim provenance-only degradation
+  ---
+  duration_ms: 5.601833
+  type: 'test'
+  ...
+# Subtest: PSI degraded acceptance requires every planned slot exactly once and the exact new v2 artifact
+ok 200 - PSI degraded acceptance requires every planned slot exactly once and the exact new v2 artifact
+  ---
+  duration_ms: 12.04075
+  type: 'test'
+  ...
+# Subtest: owned URL validation: HTTPS production origin only, no creds/port/query/fragment, no case folding
+ok 201 - owned URL validation: HTTPS production origin only, no creds/port/query/fragment, no case folding
+  ---
+  duration_ms: 1.166709
+  type: 'test'
+  ...
+# Subtest: source path validation: relative POSIX Markdown under content/en|zh only
+ok 202 - source path validation: relative POSIX Markdown under content/en|zh only
+  ---
+  duration_ms: 0.225417
+  type: 'test'
+  ...
+# Subtest: page map: conflicting associations are isolated, duplicates deduped, unrelated targets preserved
+ok 203 - page map: conflicting associations are isolated, duplicates deduped, unrelated targets preserved
+  ---
+  duration_ms: 1.360792
+  type: 'test'
+  ...
+# Subtest: page map: empty/failed/incomplete/over-cap maps are unusable and visible
+ok 204 - page map: empty/failed/incomplete/over-cap maps are unusable and visible
+  ---
+  duration_ms: 0.567
+  type: 'test'
+  ...
+# Subtest: POSITIVE: mapped meta-description proposal resolves the real override sourcePath
+ok 205 - POSITIVE: mapped meta-description proposal resolves the real override sourcePath
+  ---
+  duration_ms: 4.399542
+  type: 'test'
+  ...
+# Subtest: POSITIVE: bilingual overrides, uppercase UFO.md/lowercase URL, ordinary article and bundle all resolve exactly
+ok 206 - POSITIVE: bilingual overrides, uppercase UFO.md/lowercase URL, ordinary article and bundle all resolve exactly
+  ---
+  duration_ms: 3.304333
+  type: 'test'
+  ...
+# Subtest: POSITIVE: grounded title intent with real query×page evidence yields a mapped proposal despite CrUX no-sample
+ok 207 - POSITIVE: grounded title intent with real query×page evidence yields a mapped proposal despite CrUX no-sample
+  ---
+  duration_ms: 19.492208
+  type: 'test'
+  ...
+# Subtest: POSITIVE: valid unrelated and merged proposals never block; backlog 2 stays under the limit
+ok 208 - POSITIVE: valid unrelated and merged proposals never block; backlog 2 stays under the limit
+  ---
+  duration_ms: 0.595208
+  type: 'test'
+  ...
+# Subtest: POSITIVE: performance regression with a matching current comparison and actual regressing delta
+ok 209 - POSITIVE: performance regression with a matching current comparison and actual regressing delta
+  ---
+  duration_ms: 0.406583
+  type: 'test'
+  ...
+# Subtest: missing page map, wrong SHA, foreign clock and foreign repository all visibly skip
+ok 210 - missing page map, wrong SHA, foreign clock and foreign repository all visibly skip
+  ---
+  duration_ms: 1.188083
+  type: 'test'
+  ...
+# Subtest: external URL, non-page kind and future publishDate skip with explicit reasons
+ok 211 - external URL, non-page kind and future publishDate skip with explicit reasons
+  ---
+  duration_ms: 0.830459
+  type: 'test'
+  ...
+# Subtest: open or recently-rejected overlap on the REAL sourcePath blocks; old rejection does not
+ok 212 - open or recently-rejected overlap on the REAL sourcePath blocks; old rejection does not
+  ---
+  duration_ms: 1.711083
+  type: 'test'
+  ...
+# Subtest: model targetPaths never borrow another page and conflicts are rejected
+ok 213 - model targetPaths never borrow another page and conflicts are rejected
+  ---
+  duration_ms: 2.047167
+  type: 'test'
+  ...
+# Subtest: closed-unmerged overlap without closedAt is unknown recency: incomplete review state, visible skip
+ok 214 - closed-unmerged overlap without closedAt is unknown recency: incomplete review state, visible skip
+  ---
+  duration_ms: 0.234916
+  type: 'test'
+  ...
+# Subtest: missing/failed/truncated/incomplete review state is a visible safe skip, never a zero default
+ok 215 - missing/failed/truncated/incomplete review state is a visible safe skip, never a zero default
+  ---
+  duration_ms: 0.374541
+  type: 'test'
+  ...
+# Subtest: reviewState never exceeds the decision time — even by one second
+ok 216 - reviewState never exceeds the decision time — even by one second
+  ---
+  duration_ms: 0.125958
+  type: 'test'
+  ...
+# Subtest: close/merge timestamps must be consistent and never exceed the observed review time
+ok 217 - close/merge timestamps must be consistent and never exceed the observed review time
+  ---
+  duration_ms: 0.079917
+  type: 'test'
+  ...
+# Subtest: backlog 2 allows; backlog 3 blocks (review bottleneck)
+ok 218 - backlog 2 allows; backlog 3 blocks (review bottleneck)
+  ---
+  duration_ms: 0.118333
+  type: 'test'
+  ...
+# Subtest: old report replay: fresh flags and new wrappers never freshen old data at a later decision
+ok 219 - old report replay: fresh flags and new wrappers never freshen old data at a later decision
+  ---
+  duration_ms: 0.158458
+  type: 'test'
+  ...
+# Subtest: explicit historical decision time authorizes; a later-generated map is just calculation
+ok 220 - explicit historical decision time authorizes; a later-generated map is just calculation
+  ---
+  duration_ms: 0.121708
+  type: 'test'
+  ...
+# Subtest: own current certified fresh audit0 is required; healthy audit never proposes from intent text
+ok 221 - own current certified fresh audit0 is required; healthy audit never proposes from intent text
+  ---
+  duration_ms: 1.351375
+  type: 'test'
+  ...
+# Subtest: URL×strategy identity is preserved: fresh mobile never authorizes a stale desktop target
+ok 222 - URL×strategy identity is preserved: fresh mobile never authorizes a stale desktop target
+  ---
+  duration_ms: 0.336542
+  type: 'test'
+  ...
+# Subtest: query evidence: other-page, previous-window, stale group and multi-context ambiguity all skip
+ok 223 - query evidence: other-page, previous-window, stale group and multi-context ambiguity all skip
+  ---
+  duration_ms: 1.479833
+  type: 'test'
+  ...
+# Subtest: low CTR alone never authorizes a copy change
+ok 224 - low CTR alone never authorizes a copy change
+  ---
+  duration_ms: 0.596875
+  type: 'test'
+  ...
+# Subtest: query freshness uses Pacific calendar days at the six-day boundary
+ok 225 - query freshness uses Pacific calendar days at the six-day boundary
+  ---
+  duration_ms: 1.518125
+  type: 'test'
+  ...
+# Subtest: performance regression needs an actual regressing delta, not intent plus any comparison
+ok 226 - performance regression needs an actual regressing delta, not intent plus any comparison
+  ---
+  duration_ms: 0.555417
+  type: 'test'
+  ...
+# Subtest: strategy-less performance intent pairs freshness with regression (mobileRegression=false)
+ok 227 - strategy-less performance intent pairs freshness with regression (mobileRegression=false)
+  ---
+  duration_ms: 0.474125
+  type: 'test'
+  ...
+# Subtest: strategy-less performance intent pairs freshness with regression (mobileRegression=true)
+ok 228 - strategy-less performance intent pairs freshness with regression (mobileRegression=true)
+  ---
+  duration_ms: 0.4325
+  type: 'test'
+  ...
+# Subtest: finite candidate budget: overflow is a visible skip, zero candidates is safe
+ok 229 - finite candidate budget: overflow is a visible skip, zero candidates is safe
+  ---
+  duration_ms: 1.003542
+  type: 'test'
+  ...
+# Subtest: intent input is untrusted: bounded text, strict schema, unknown kinds visible
+ok 230 - intent input is untrusted: bounded text, strict schema, unknown kinds visible
+  ---
+  duration_ms: 0.091209
+  type: 'test'
+  ...
+# Subtest: CLI: new frozen inputs are required; valid run writes a proposal-only decision
+ok 231 - CLI: new frozen inputs are required; valid run writes a proposal-only decision
+  ---
+  duration_ms: 384.027125
+  type: 'test'
+  ...
+# Subtest: planRun freezes the report date and plans exact unique collector artifacts
+ok 232 - planRun freezes the report date and plans exact unique collector artifacts
+  ---
+  duration_ms: 4.923292
+  type: 'test'
+  ...
+# Subtest: planRun refuses unsafe run ids and unfrozen dates
+ok 233 - planRun refuses unsafe run ids and unfrozen dates
+  ---
+  duration_ms: 1.024333
+  type: 'test'
+  ...
+# Subtest: frozen UTC helpers and the 56-day inclusive report window are deterministic
+ok 234 - frozen UTC helpers and the 56-day inclusive report window are deterministic
+  ---
+  duration_ms: 16.865042
+  type: 'test'
+  ...
+# Subtest: inspectPlannedArtifact binds only this run attempt’s exact new artifact
+ok 235 - inspectPlannedArtifact binds only this run attempt’s exact new artifact
+  ---
+  duration_ms: 0.578083
+  type: 'test'
+  ...
+# Subtest: case 1: two certified notEligible rows → collector success/no-sample
+ok 236 - case 1: two certified notEligible rows → collector success/no-sample
+  ---
+  duration_ms: 1.064333
+  type: 'test'
+  ...
+# Subtest: case 2a: results[].error rows with raw exit 0 → failed/partial stage, aggregate nonzero
+ok 237 - case 2a: results[].error rows with raw exit 0 → failed/partial stage, aggregate nonzero
+  ---
+  duration_ms: 0.39125
+  type: 'test'
+  ...
+# Subtest: case 2b: HTTP-200 record:null rows → failed/invalid collection (never Google HTTP failure)
+ok 238 - case 2b: HTTP-200 record:null rows → failed/invalid collection (never Google HTTP failure)
+  ---
+  duration_ms: 0.088667
+  type: 'test'
+  ...
+# Subtest: case 3: a failed stage with no new artifact never borrows the older daily file
+ok 239 - case 3: a failed stage with no new artifact never borrows the older daily file
+  ---
+  duration_ms: 0.09125
+  type: 'test'
+  ...
+# Subtest: A GSC success → ok; optional-slice degraded is success with a distinct outcome
+ok 240 - A GSC success → ok; optional-slice degraded is success with a distinct outcome
+  ---
+  duration_ms: 0.390125
+  type: 'test'
+  ...
+# Subtest: A GSC required failure and auth failure stay failed; inconsistent artifacts are invalid
+ok 241 - A GSC required failure and auth failure stay failed; inconsistent artifacts are invalid
+  ---
+  duration_ms: 1.16275
+  type: 'test'
+  ...
+# Subtest: PSI complete plan → ok; 22 partial-usable + 4 failed is partial evidence, never green
+ok 242 - PSI complete plan → ok; 22 partial-usable + 4 failed is partial evidence, never green
+  ---
+  duration_ms: 2.864792
+  type: 'test'
+  ...
+# Subtest: PSI counterexample: measurements deleted under unchanged summary counts are rejected
+ok 243 - PSI counterexample: measurements deleted under unchanged summary counts are rejected
+  ---
+  duration_ms: 0.593667
+  type: 'test'
+  ...
+# Subtest: PSI exit/content disagreement and uncertified plans are never success
+ok 244 - PSI exit/content disagreement and uncertified plans are never success
+  ---
+  duration_ms: 0.574875
+  type: 'test'
+  ...
+# Subtest: actual B1 CLI over real data: exit 2 report is generated/degraded with matching markdown
+ok 245 - actual B1 CLI over real data: exit 2 report is generated/degraded with matching markdown
+  ---
+  duration_ms: 667.59975
+  type: 'test'
+  ...
+# Subtest: report counterexample: schema+params shell is never generated
+ok 246 - report counterexample: schema+params shell is never generated
+  ---
+  duration_ms: 421.0075
+  type: 'test'
+  ...
+# Subtest: report markdown correspondence and exit/freshness consistency are enforced
+ok 247 - report markdown correspondence and exit/freshness consistency are enforced
+  ---
+  duration_ms: 366.660875
+  type: 'test'
+  ...
+# Subtest: actual action execution-file format is a pretty JSON messages array (NDJSON still compatible)
+ok 248 - actual action execution-file format is a pretty JSON messages array (NDJSON still compatible)
+  ---
+  duration_ms: 0.328709
+  type: 'test'
+  ...
+# Subtest: result.errors causes classify transiently to a constant enum (raw text never persists)
+ok 249 - result.errors causes classify transiently to a constant enum (raw text never persists)
+  ---
+  duration_ms: 0.403292
+  type: 'test'
+  ...
+# Subtest: validated explanation accepts exactly the schema instance with a non-blank string
+ok 250 - validated explanation accepts exactly the schema instance with a non-blank string
+  ---
+  duration_ms: 0.074584
+  type: 'test'
+  ...
+# Subtest: malformed / extra-key / wrong-type / blank / overlong / missing output each fail with a constant class
+ok 251 - malformed / extra-key / wrong-type / blank / overlong / missing output each fail with a constant class
+  ---
+  duration_ms: 0.154917
+  type: 'test'
+  ...
+# Subtest: a failed action is a failed interpretation even when structured output exists (text withheld)
+ok 252 - a failed action is a failed interpretation even when structured output exists (text withheld)
+  ---
+  duration_ms: 0.363792
+  type: 'test'
+  ...
+# Subtest: recognized auth cause survives the ordinary failed-action branch
+ok 253 - recognized auth cause survives the ordinary failed-action branch
+  ---
+  duration_ms: 0.069667
+  type: 'test'
+  ...
+# Subtest: explicit unsuccessful result subtype cannot be called success even with valid output
+ok 254 - explicit unsuccessful result subtype cannot be called success even with valid output
+  ---
+  duration_ms: 0.0455
+  type: 'test'
+  ...
+# Subtest: missing optional metadata does not reject otherwise proven successful output
+ok 255 - missing optional metadata does not reject otherwise proven successful output
+  ---
+  duration_ms: 0.036583
+  type: 'test'
+  ...
+# Subtest: untrusted keys/values never persist; diagnostics are revalidated enums
+ok 256 - untrusted keys/values never persist; diagnostics are revalidated enums
+  ---
+  duration_ms: 2.287083
+  type: 'test'
+  ...
+# Subtest: valid output on a successful action is accepted and bounded
+ok 257 - valid output on a successful action is accepted and bounded
+  ---
+  duration_ms: 0.062667
+  type: 'test'
+  ...
+# Subtest: error classification is pattern→constant only
+ok 258 - error classification is pattern→constant only
+  ---
+  duration_ms: 0.229167
+  type: 'test'
+  ...
+# Subtest: defangMarkers keeps quoted section markers inert
+ok 259 - defangMarkers keeps quoted section markers inert
+  ---
+  duration_ms: 0.038291
+  type: 'test'
+  ...
+# Subtest: prompt is allowlisted and public-safe: validated identity/as-of/status values only
+ok 260 - prompt is allowlisted and public-safe: validated identity/as-of/status values only
+  ---
+  duration_ms: 0.339417
+  type: 'test'
+  ...
+# Subtest: prompt drops URLs with query payloads and unvalidated values entirely
+ok 261 - prompt drops URLs with query payloads and unvalidated values entirely
+  ---
+  duration_ms: 0.092333
+  type: 'test'
+  ...
+# Subtest: prompt hard byte limit includes truncation suffix and keeps complete UTF-8
+ok 262 - prompt hard byte limit includes truncation suffix and keeps complete UTF-8
+  ---
+  duration_ms: 1.46875
+  type: 'test'
+  ...
+# Subtest: case 4: failed interpretation keeps deterministic evidence and stays explicitly failed
+ok 263 - case 4: failed interpretation keeps deterministic evidence and stays explicitly failed
+  ---
+  duration_ms: 0.129209
+  type: 'test'
+  ...
+# Subtest: publish failure always fails the aggregate
+ok 264 - publish failure always fails the aggregate
+  ---
+  duration_ms: 0.04175
+  type: 'test'
+  ...
+# Subtest: review adapter: a full bounded list is never silently complete (sentinel row)
+ok 265 - review adapter: a full bounded list is never silently complete (sentinel row)
+  ---
+  duration_ms: 0.624333
+  type: 'test'
+  ...
+# Subtest: review adapter: rename rows contribute old AND new paths (actual overlap evidence)
+ok 266 - review adapter: rename rows contribute old AND new paths (actual overlap evidence)
+  ---
+  duration_ms: 0.074958
+  type: 'test'
+  ...
+# Subtest: review adapter: failed/malformed changed-file reads never become complete empty sets
+ok 267 - review adapter: failed/malformed changed-file reads never become complete empty sets
+  ---
+  duration_ms: 0.186041
+  type: 'test'
+  ...
+# Subtest: review adapter: failed listing is fail-closed (no zero backlog, no empty proposals)
+ok 268 - review adapter: failed listing is fail-closed (no zero backlog, no empty proposals)
+  ---
+  duration_ms: 0.183291
+  type: 'test'
+  ...
+# Subtest: composeSeoSection keeps deterministic evidence primary and labels failed interpretation
+ok 269 - composeSeoSection keeps deterministic evidence primary and labels failed interpretation
+  ---
+  duration_ms: 0.348584
+  type: 'test'
+  ...
+# Subtest: composeAutofixSection is public-safe (no raw query strings) and proposal-only
+ok 270 - composeAutofixSection is public-safe (no raw query strings) and proposal-only
+  ---
+  duration_ms: 0.134125
+  type: 'test'
+  ...
+# Subtest: composeFailureSection publishes an honest minimal failure state
+ok 271 - composeFailureSection publishes an honest minimal failure state
+  ---
+  duration_ms: 0.05075
+  type: 'test'
+  ...
+# Subtest: workflow YAML parses with YAML 1.2 (on: stays a string key) and unique keys
+ok 272 - workflow YAML parses with YAML 1.2 (on: stays a string key) and unique keys
+  ---
+  duration_ms: 15.893792
+  type: 'test'
+  ...
+# Subtest: snapshot workflow plans exact artifacts, validates each stage and aggregates explicitly
+ok 273 - snapshot workflow plans exact artifacts, validates each stage and aggregates explicitly
+  ---
+  duration_ms: 3.456792
+  type: 'test'
+  ...
+# Subtest: actual Snapshot shell refuses collection and persistence without a successful exact-path plan
+ok 274 - actual Snapshot shell refuses collection and persistence without a successful exact-path plan
+  ---
+  duration_ms: 51.406
+  type: 'test'
+  ...
+# Subtest: analyze workflow binds the verified action pin, boundary argv and prepared prompt
+ok 275 - analyze workflow binds the verified action pin, boundary argv and prepared prompt
+  ---
+  duration_ms: 2.698083
+  type: 'test'
+  ...
+# Subtest: autofix workflow is proposal-only with review-state first and one shared decision instant
+ok 276 - autofix workflow is proposal-only with review-state first and one shared decision instant
+  ---
+  duration_ms: 1.724417
+  type: 'test'
+  ...
+# Subtest: lighthouse workflow keeps the per-push gate and serializes only publication
+ok 277 - lighthouse workflow keeps the per-push gate and serializes only publication
+  ---
+  duration_ms: 1.616625
+  type: 'test'
+  ...
+# Subtest: seo-contracts runs the targeted offline suites with no credentials
+ok 278 - seo-contracts runs the targeted offline suites with no credentials
+  ---
+  duration_ms: 0.378208
+  type: 'test'
+  ...
+# Subtest: page-map producer: overrides, uppercase UFO.md, bundle and CSV quoting convert correctly
+ok 279 - page-map producer: overrides, uppercase UFO.md, bundle and CSV quoting convert correctly
+  ---
+  duration_ms: 230.524542
+  type: 'test'
+  ...
+# Subtest: page-map producer: conflicts pass through for B1 isolation (never first-row picked)
+ok 280 - page-map producer: conflicts pass through for B1 isolation (never first-row picked)
+  ---
+  duration_ms: 362.86175
+  type: 'test'
+  ...
+# Subtest: page-map producer: untracked/wrong-case/symlink/escaping paths are excluded with recorded reasons
+ok 281 - page-map producer: untracked/wrong-case/symlink/escaping paths are excluded with recorded reasons
+  ---
+  duration_ms: 144.955625
+  type: 'test'
+  ...
+# Subtest: page-map producer: failed or partial reads never become complete empty maps
+ok 282 - page-map producer: failed or partial reads never become complete empty maps
+  ---
+  duration_ms: 335.057
+  type: 'test'
+  ...
+# Subtest: CLI plan+stage round trip binds the exact produced artifact to the run attempt
+ok 283 - CLI plan+stage round trip binds the exact produced artifact to the run attempt
+  ---
+  duration_ms: 0.997625
+  type: 'test'
+  ...
+# Subtest: CLI freeze enforces collection/review ordering and shares one decision instant
+ok 284 - CLI freeze enforces collection/review ordering and shares one decision instant
+  ---
+  duration_ms: 0.779834
+  type: 'test'
+  ...
+# Subtest: CLI interpretation reads structured output from the environment only
+ok 285 - CLI interpretation reads structured output from the environment only
+  ---
+  duration_ms: 0.311791
+  type: 'test'
+  ...
+# Subtest: CLI aggregate treats the optional interpretation as non-blocking but explicit
+ok 286 - CLI aggregate treats the optional interpretation as non-blocking but explicit
+  ---
+  duration_ms: 0.3875
+  type: 'test'
+  ...
+# Subtest: actual CLI report adapter: real B1 exit-2 report passes; identity drift fails
+ok 287 - actual CLI report adapter: real B1 exit-2 report passes; identity drift fails
+  ---
+  duration_ms: 361.205792
+  type: 'test'
+  ...
+# Subtest: actual CLI aggregate preserves repeated --stage files in both orders; any failure is nonzero
+ok 288 - actual CLI aggregate preserves repeated --stage files in both orders; any failure is nonzero
+  ---
+  duration_ms: 146.941416
+  type: 'test'
+  ...
+# Subtest: actual CLI interpretation classifies result.errors from the real execution-file format
+ok 289 - actual CLI interpretation classifies result.errors from the real execution-file format
+  ---
+  duration_ms: 117.433708
+  type: 'test'
+  ...
+# Subtest: actual CLI compose: malformed optional interpretation is withheld and never blocks
+ok 290 - actual CLI compose: malformed optional interpretation is withheld and never blocks
+  ---
+  duration_ms: 291.367917
+  type: 'test'
+  ...
+# Subtest: actual CLI aggregate: corrupt optional records never decide required-stage success
+ok 291 - actual CLI aggregate: corrupt optional records never decide required-stage success
+  ---
+  duration_ms: 176.990291
+  type: 'test'
+  ...
+# Subtest: actual Autofix publisher shell: invalid evidence publishes a failure on the frozen day
+ok 292 - actual Autofix publisher shell: invalid evidence publishes a failure on the frozen day
+  ---
+  duration_ms: 543.410167
+  type: 'test'
+  ...
+# Subtest: actual CLI compose: an existing-but-rejected report publishes the minimal failure block
+ok 293 - actual CLI compose: an existing-but-rejected report publishes the minimal failure block
+  ---
+  duration_ms: 320.388791
+  type: 'test'
+  ...
+# Subtest: live success-subtype error flag remains primary when action fails and structured output is absent
+ok 294 - live success-subtype error flag remains primary when action fails and structured output is absent
+  ---
+  duration_ms: 0.136625
+  type: 'test'
+  ...
+# Subtest: runtime error flag keeps recognized auth/quota classification and never accepts valid failed output
+ok 295 - runtime error flag keeps recognized auth/quota classification and never accepts valid failed output
+  ---
+  duration_ms: 0.082833
+  type: 'test'
+  ...
+# Subtest: current PSI freshness uses the latest plan while retired real routes remain historical evidence
+ok 296 - current PSI freshness uses the latest plan while retired real routes remain historical evidence
+  ---
+  duration_ms: 211.971708
+  type: 'test'
+  ...
+# Subtest: a recently measured retired target with complete comparable provenance stays non-actionable
+ok 297 - a recently measured retired target with complete comparable provenance stays non-actionable
+  ---
+  duration_ms: 1.431125
+  type: 'test'
+  ...
+# Subtest: latest missing, failed or invalid active PSI slots cannot borrow older successful freshness
+ok 298 - latest missing, failed or invalid active PSI slots cannot borrow older successful freshness
+  ---
+  duration_ms: 17.326291
+  type: 'test'
+  ...
+# Subtest: latest unrecorded, malformed or undated PSI plan never falls back to the latest good plan
+ok 299 - latest unrecorded, malformed or undated PSI plan never falls back to the latest good plan
+  ---
+  duration_ms: 9.735208
+  type: 'test'
+  ...
+# Subtest: buildSeoReport is deterministic: identical inputs produce identical bytes
+ok 300 - buildSeoReport is deterministic: identical inputs produce identical bytes
+  ---
+  duration_ms: 2.029
+  type: 'test'
+  ...
+# Subtest: as-of is a recorded input: explicit and default run-clock bases are visible
+ok 301 - as-of is a recorded input: explicit and default run-clock bases are visible
+  ---
+  duration_ms: 783.562958
+  type: 'test'
+  ...
+# Subtest: CLI: unknown arguments exit 1, --help exits 0 (guarded main)
+ok 302 - CLI: unknown arguments exit 1, --help exits 0 (guarded main)
+  ---
+  duration_ms: 132.6405
+  type: 'test'
+  ...
+# Subtest: freshness: fresh/stale/missing/unknown/partial are classified with thresholds and reasons
+ok 303 - freshness: fresh/stale/missing/unknown/partial are classified with thresholds and reasons
+  ---
+  duration_ms: 0.79775
+  type: 'test'
+  ...
+# Subtest: trend: adequate coverage compares current/prior non-overlapping windows; gaps are not a false trend
+ok 304 - trend: adequate coverage compares current/prior non-overlapping windows; gaps are not a false trend
+  ---
+  duration_ms: 0.246458
+  type: 'test'
+  ...
+# Subtest: query evidence preserves real query×page associations bound to their exact context; nothing is ever inferred or blended
+ok 305 - query evidence preserves real query×page associations bound to their exact context; nothing is ever inferred or blended
+  ---
+  duration_ms: 0.697125
+  type: 'test'
+  ...
+# Subtest: PSI section reports denominators by strategy and keeps current failure separate from labelled last-good
+ok 306 - PSI section reports denominators by strategy and keeps current failure separate from labelled last-good
+  ---
+  duration_ms: 0.174875
+  type: 'test'
+  ...
+# Subtest: PSI comparisons: compatible samples yield deltas; mismatches land in the preserved missing set
+ok 307 - PSI comparisons: compatible samples yield deltas; mismatches land in the preserved missing set
+  ---
+  duration_ms: 0.148208
+  type: 'test'
+  ...
+# Subtest: observations: missing description and compatible-sample regression are actionable; low CTR alone is not
+ok 308 - observations: missing description and compatible-sample regression are actionable; low CTR alone is not
+  ---
+  duration_ms: 0.177209
+  type: 'test'
+  ...
+# Subtest: CrUX section refuses mixed origins and reports the actual latest period
+ok 309 - CrUX section refuses mixed origins and reports the actual latest period
+  ---
+  duration_ms: 0.061917
+  type: 'test'
+  ...
+# Subtest: prepared Markdown is deterministic, bounded and cannot break daily-report sections
+ok 310 - prepared Markdown is deterministic, bounded and cannot break daily-report sections
+  ---
+  duration_ms: 0.856708
+  type: 'test'
+  ...
+# Subtest: writeMarkdown refuses to overwrite differing section content (other sections stay safe)
+ok 311 - writeMarkdown refuses to overwrite differing section content (other sections stay safe)
+  ---
+  duration_ms: 3.339542
+  type: 'test'
+  ...
+# Subtest: full report assembles sources, windows and notes; degraded inputs stay in-band
+ok 312 - full report assembles sources, windows and notes; degraded inputs stay in-band
+  ---
+  duration_ms: 0.550125
+  type: 'test'
+  ...
+# Subtest: real history regression at frozen cutoff 2026-09-24T00:00:00Z stays honest
+ok 313 - real history regression at frozen cutoff 2026-09-24T00:00:00Z stays honest
+  ---
+  duration_ms: 700.90925
+  type: 'test'
+  ...
+# Subtest: R1: a newer filtered context never refreshes the selected domain-wide summary
+ok 314 - R1: a newer filtered context never refreshes the selected domain-wide summary
+  ---
+  duration_ms: 0.475167
+  type: 'test'
+  ...
+# Subtest: R2: uncertified/incomplete CrUX collections never certify a fresh source; distinct statuses preserved
+ok 315 - R2: uncertified/incomplete CrUX collections never certify a fresh source; distinct statuses preserved
+  ---
+  duration_ms: 1.11775
+  type: 'test'
+  ...
+# Subtest: R2: buildSeoReport and the CLI propagate uncertified CrUX as degraded evidence
+ok 316 - R2: buildSeoReport and the CLI propagate uncertified CrUX as degraded evidence
+  ---
+  duration_ms: 2.531792
+  type: 'test'
+  ...
+# Subtest: R3: uncertified historical-supplement targets stay historical; certified current regressions stay actionable
+ok 317 - R3: uncertified historical-supplement targets stay historical; certified current regressions stay actionable
+  ---
+  duration_ms: 0.237625
+  type: 'test'
+  ...
+# Subtest: explicit aggregation freshness uses only selected recorded provenance and fails closed on ambiguity
+ok 318 - explicit aggregation freshness uses only selected recorded provenance and fails closed on ambiguity
+  ---
+  duration_ms: 0.377709
+  type: 'test'
+  ...
+# Subtest: explicit aggregation cannot treat schema-unproven provenance as collector-recorded
+ok 319 - explicit aggregation cannot treat schema-unproven provenance as collector-recorded
+  ---
+  duration_ms: 0.109417
+  type: 'test'
+  ...
+# Subtest: SEO CLI records and validates explicit GSC response aggregation selection
+ok 320 - SEO CLI records and validates explicit GSC response aggregation selection
+  ---
+  duration_ms: 464.31025
+  type: 'test'
+  ...
+# Subtest: valid shared PNG metadata and backup prefix
+ok 321 - valid shared PNG metadata and backup prefix
+  ---
+  duration_ms: 7.518833
+  type: 'test'
+  ...
+# Subtest: reject stale card, mismatched platform images, duplicate tags and missing files
+ok 322 - reject stale card, mismatched platform images, duplicate tags and missing files
+  ---
+  duration_ms: 4.3165
+  type: 'test'
+  ...
+# Subtest: reject false dimensions, SVG bytes, missing alt and insecure URL
+ok 323 - reject false dimensions, SVG bytes, missing alt and insecure URL
+  ---
+  duration_ms: 2.085167
+  type: 'test'
+  ...
+# Subtest: Hugo wraps Chinese, Latin words and wide-letter long tokens within three lines
+ok 324 - Hugo wraps Chinese, Latin words and wide-letter long tokens within three lines
+  ---
+  duration_ms: 338.299208
+  type: 'test'
+  ...
+# Subtest: native identity cards localize home/about and keep per-article title cards
+ok 325 - native identity cards localize home/about and keep per-article title cards
+  ---
+  duration_ms: 1804.278375
+  type: 'test'
+  ...
+1..325
+# tests 325
+# suites 0
+# pass 325
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4749.934708

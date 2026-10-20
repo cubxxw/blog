@@ -1,0 +1,55 @@
+{
+  "scope": "actual predicate extracted from both specs, actual pinned Hugo minified CSS, Chromium only; not full article E2E",
+  "checks": [
+    {
+      "file": "tests/e2e/interactive-articles.spec.ts",
+      "case": "Hugo-minified",
+      "oldPredicate": false,
+      "fixedPredicate": true,
+      "families": [
+        "noto serif sc"
+      ]
+    },
+    {
+      "file": "tests/e2e/interactive-articles.spec.ts",
+      "case": "authored-case",
+      "oldPredicate": true,
+      "fixedPredicate": true,
+      "families": [
+        "Noto Serif SC"
+      ]
+    },
+    {
+      "file": "tests/e2e/interactive-articles.spec.ts",
+      "case": "missing-face",
+      "oldPredicate": false,
+      "fixedPredicate": false,
+      "families": []
+    },
+    {
+      "file": "tests/e2e/interactive-expansion.spec.ts",
+      "case": "Hugo-minified",
+      "oldPredicate": false,
+      "fixedPredicate": true,
+      "families": [
+        "noto serif sc"
+      ]
+    },
+    {
+      "file": "tests/e2e/interactive-expansion.spec.ts",
+      "case": "authored-case",
+      "oldPredicate": true,
+      "fixedPredicate": true,
+      "families": [
+        "Noto Serif SC"
+      ]
+    },
+    {
+      "file": "tests/e2e/interactive-expansion.spec.ts",
+      "case": "missing-face",
+      "oldPredicate": false,
+      "fixedPredicate": false,
+      "families": []
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "productionDeployId": "6ad774b474944c0d9a5392c7",
+  "stats": {
+    "startTime": "2026-10-20T14:09:06.853Z",
+    "duration": 57726.939000000006,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "actualFinalStatuses": {
+    "passed": 6
+  },
+  "retriedTests": 0,
+  "cases": [
+    {
+      "title": "opening passage comments loads the provider before the reader reaches the footer",
+      "file": "article-selection-state.spec.ts",
+      "projectName": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ]
+    },
+    {
+      "title": "opening passage comments loads the provider before the reader reaches the footer",
+      "file": "article-selection-state.spec.ts",
+      "projectName": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ]
+    },
+    {
+      "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "file": "comments-loading.spec.ts",
+      "projectName": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ]
+    },
+    {
+      "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+      "file": "comments-loading.spec.ts",
+      "projectName": "desktop",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ]
+    },
+    {
+      "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "file": "comments-loading.spec.ts",
+      "projectName": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ]
+    },
+    {
+      "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+      "file": "comments-loading.spec.ts",
+      "projectName": "mobile",
+      "outcome": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "retries": [
+        0
+      ]
+    }
+  ],
+  "commandExitCode": 0
+}

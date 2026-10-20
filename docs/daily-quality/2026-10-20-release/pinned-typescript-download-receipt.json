@@ -1,0 +1,19 @@
+{
+  "observedAt": "2026-10-20T13:21:29.279839+00:00",
+  "packages": [
+    {
+      "package": "typescript",
+      "version": "7.0.2",
+      "archiveBytes": 365612,
+      "sha256": "da2513f4b95176d6dde8b51aab7afe8a927656c9d277369793f77f7e59371c08",
+      "lockIntegrityVerified": true
+    },
+    {
+      "package": "@typescript/typescript-darwin-arm64",
+      "version": "7.0.2",
+      "archiveBytes": 9270373,
+      "sha256": "902e2fe1cf0799198ef902c6b8c310a450fef629a6baba41d45641ef75c04ebd",
+      "lockIntegrityVerified": true
+    }
+  ]
+}

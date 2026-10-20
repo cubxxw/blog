@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-20T15:37:10.955287+00:00",
+  "repository": "/Users/cubxxw/data/blog",
+  "worktree": "/Users/cubxxw/.local/state/pi-delegate/tasks/20261020-174024-396768ce/worktree",
+  "branch": "codex/pi-20261020-174024-396768ce",
+  "baseHead": "6e5471104890055839b0ed9a26c6f4b7bd971277",
+  "stashOid": "c86ea9267895404ab59f229477845e9543f1310a",
+  "acceptedCommit": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "verifiedFiles": [
+    {
+      "path": "scripts/ci-changes.test.mjs",
+      "acceptedBlob": "89920b237eac009ed323e7e35783e3ec606d8113"
+    },
+    {
+      "path": "scripts/ci-run.mjs",
+      "acceptedBlob": "ae7565a715095380b84ccc4fe9503e69b460a3b2"
+    },
+    {
+      "path": "scripts/lib/ci-changes.mjs",
+      "acceptedBlob": "084f7f4f410e11d316b0aaee86052b5f0b8706db"
+    }
+  ],
+  "validation": "accepted patch in successful full preflight39421917844 and deployed447af; exact blob match; no active open files",
+  "allocatedBytesBeforeRemoval": 546836480,
+  "recovery": "git worktree add <new-isolated-path> 6e5471104890055839b0ed9a26c6f4b7bd971277; in that worktree git stash apply c86ea9267895404ab59f229477845e9543f1310a",
+  "state": "worktree removed without force; local branch deleted",
+  "removedAt": "2026-10-20T15:37:28.411868+00:00",
+  "allocatedBytesRemoved": 546836480,
+  "branchDeleteNote": "first nonforce deletion refused because primary checkout is older; verified ancestor origin/main and set own branch upstream to origin/main; nonforce deletion succeeded"
+}

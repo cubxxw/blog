@@ -1,0 +1,39 @@
+{
+  "stats": {
+    "total": 48,
+    "expected": 48,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "startTime": 1792499374088,
+  "durationMs": 133465.955,
+  "projects": {
+    "desktop": {
+      "expected": 12
+    },
+    "mobile": {
+      "expected": 12
+    },
+    "desktop-dark": {
+      "expected": 12
+    },
+    "mobile-dark": {
+      "expected": 12
+    }
+  },
+  "actualFinalStatuses": {
+    "passed": 48
+  },
+  "allAttemptStatuses": {
+    "passed": 48
+  },
+  "firstAttemptPassCount": 48,
+  "retriedTestCount": 0,
+  "errors": [],
+  "artifactId": 12269543337,
+  "artifactEntry": "tests/.artifacts/ci/browser/quality/html/index.html",
+  "localReportPath": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/ci-merged-quality/tests/.artifacts/ci/browser/quality/html/index.html",
+  "nonFirstPass": []
+}

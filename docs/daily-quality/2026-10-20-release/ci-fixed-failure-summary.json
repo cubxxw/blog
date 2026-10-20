@@ -1,0 +1,36 @@
+{
+  "sourceSha": "54244bf9e669977257a8af9b75ab5389c0b9533d",
+  "runId": 39403813139,
+  "conclusion": "failure",
+  "quality": {
+    "passed": 48,
+    "failed": 0,
+    "skipped": 0,
+    "durationMinutes": 1.8
+  },
+  "legacy": {
+    "passed": 772,
+    "failed": 0,
+    "skipped": 24
+  },
+  "interactive": {
+    "planned": 573,
+    "passed": 537,
+    "failed": 36,
+    "retriesPerFailedCase": 1,
+    "durationMinutes": 27.0
+  },
+  "performance": {
+    "tests": 10,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 1
+  },
+  "artifact": {
+    "id": 12261201285,
+    "bytes": 4095690,
+    "includesInteractiveReportOrTraces": false
+  },
+  "verifiedSiteArtifactProduced": false,
+  "laterVoiceBearUxSteps": "skipped due to failed prerequisite, not passed"
+}

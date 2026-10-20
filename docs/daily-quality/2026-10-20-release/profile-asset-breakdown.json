@@ -1,0 +1,134 @@
+{
+  "runId": 39425424215,
+  "workflowSourceSha": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+  "overallRun": "failure",
+  "singleLabSamplePerRoute": true,
+  "allOther3DResourcesCounted": false,
+  "improvementMeasured": false,
+  "rows": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "fetchTime": "2026-10-20T12:51:55.861Z",
+      "networkTableTransferBytes": 9486662,
+      "cafeAssetRequests": 27,
+      "cafeAssetTransferBytes": 8708293,
+      "cafeAssetTransferFraction": 0.9179512245719306,
+      "cafeAssetTypeCounts": {
+        "Fetch": 2,
+        "Image": 25
+      },
+      "largestCafeAssets": [
+        {
+          "path": "/images/space/cafe/materials-v1/forest_grove-1k.hdr",
+          "type": "Fetch",
+          "transferBytes": 1623355,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/brown_mud_rocks_01-color.jpg",
+          "type": "Image",
+          "transferBytes": 887802,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/rock_boulder_dry-color.jpg",
+          "type": "Image",
+          "transferBytes": 859915,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/wood_floor-color.jpg",
+          "type": "Image",
+          "transferBytes": 734998,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+          "type": "Image",
+          "transferBytes": 687214,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/aerial_grass_rock-color.jpg",
+          "type": "Image",
+          "transferBytes": 667203,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/overcast-sky-1k.hdr",
+          "type": "Fetch",
+          "transferBytes": 656393,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/latte-rosetta-v1.jpg",
+          "type": "Image",
+          "transferBytes": 529604,
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "fetchTime": "2026-10-20T12:52:26.006Z",
+      "networkTableTransferBytes": 9504093,
+      "cafeAssetRequests": 27,
+      "cafeAssetTransferBytes": 8708922,
+      "cafeAssetTransferFraction": 0.9163338363797576,
+      "cafeAssetTypeCounts": {
+        "Fetch": 2,
+        "Image": 25
+      },
+      "largestCafeAssets": [
+        {
+          "path": "/images/space/cafe/materials-v1/forest_grove-1k.hdr",
+          "type": "Fetch",
+          "transferBytes": 1623640,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/brown_mud_rocks_01-color.jpg",
+          "type": "Image",
+          "transferBytes": 887802,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/rock_boulder_dry-color.jpg",
+          "type": "Image",
+          "transferBytes": 859797,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/wood_floor-color.jpg",
+          "type": "Image",
+          "transferBytes": 734999,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+          "type": "Image",
+          "transferBytes": 687208,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/aerial_grass_rock-color.jpg",
+          "type": "Image",
+          "transferBytes": 667134,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/materials-v1/overcast-sky-1k.hdr",
+          "type": "Fetch",
+          "transferBytes": 656905,
+          "statusCode": 200
+        },
+        {
+          "path": "/images/space/cafe/latte-rosetta-v1.jpg",
+          "type": "Image",
+          "transferBytes": 529584,
+          "statusCode": 200
+        }
+      ]
+    }
+  ]
+}

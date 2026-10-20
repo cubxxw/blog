@@ -1,0 +1,316 @@
+TAP version 13
+# Switched to a new branch 'other'
+# HEAD is now at 10de3f8 test
+# Switched to a new branch 'elsewhere'
+# HEAD is now at 67c4c22 test
+# HEAD is now at 633a361 test
+# HEAD is now at 633a361 test
+# Subtest: maintenance and observation changes skip publishing, policy changes do not
+ok 1 - maintenance and observation changes skip publishing, policy changes do not
+  ---
+  duration_ms: 1.387084
+  type: 'test'
+  ...
+# Subtest: incomplete history and deletion never silently select an empty check scope
+ok 2 - incomplete history and deletion never silently select an empty check scope
+  ---
+  duration_ms: 0.539583
+  type: 'test'
+  ...
+# Subtest: an article is targeted but shared rendering expands test coverage
+ok 3 - an article is targeted but shared rendering expands test coverage
+  ---
+  duration_ms: 1.313083
+  type: 'test'
+  ...
+# Subtest: multi-commit push includes a real bilingual pair and exact Unicode/space paths
+ok 4 - multi-commit push includes a real bilingual pair and exact Unicode/space paths
+  ---
+  duration_ms: 697.084166
+  type: 'test'
+  ...
+# Subtest: rename preserves old path and triggers backlink coverage
+ok 5 - rename preserves old path and triggers backlink coverage
+  ---
+  duration_ms: 479.688083
+  type: 'test'
+  ...
+# Subtest: first push and missing or non-ancestor before fail toward a full scan
+ok 6 - first push and missing or non-ancestor before fail toward a full scan
+  ---
+  duration_ms: 1053.700375
+  type: 'test'
+  ...
+# Subtest: pull requests use merge-base, not the target tip as changed-file baseline
+ok 7 - pull requests use merge-base, not the target tip as changed-file baseline
+  ---
+  duration_ms: 587.501375
+  type: 'test'
+  ...
+# Subtest: publication input digest is stable across bookkeeping but changes with article bytes
+ok 8 - publication input digest is stable across bookkeeping but changes with article bytes
+  ---
+  duration_ms: 610.508583
+  type: 'test'
+  ...
+# Subtest: ambiguous references and malformed contracts are rejected
+ok 9 - ambiguous references and malformed contracts are rejected
+  ---
+  duration_ms: 238.416792
+  type: 'test'
+  ...
+# Subtest: release defaults to shadow and mandatory skipped checks cannot pass
+ok 10 - release defaults to shadow and mandatory skipped checks cannot pass
+  ---
+  duration_ms: 0.377042
+  type: 'test'
+  ...
+# Subtest: workflow_dispatch on a non-main branch resolves the origin/main diff so shared changes keep representative browser scope
+ok 11 - workflow_dispatch on a non-main branch resolves the origin/main diff so shared changes keep representative browser scope
+  ---
+  duration_ms: 855.633417
+  type: 'test'
+  ...
+# Subtest: missing, noncommit or non-ancestral origin/main keeps the unproven inventory fallback
+ok 12 - missing, noncommit or non-ancestral origin/main keeps the unproven inventory fallback
+  ---
+  duration_ms: 1687.71875
+  type: 'test'
+  ...
+# Subtest: main dispatch, tag dispatch, other events and omitted context never take the dispatch baseline
+ok 13 - main dispatch, tag dispatch, other events and omitted context never take the dispatch baseline
+  ---
+  duration_ms: 1241.365916
+  type: 'test'
+  ...
+# Subtest: an established push or pull request baseline is never overridden by the dispatch fallback
+ok 14 - an established push or pull request baseline is never overridden by the dispatch fallback
+  ---
+  duration_ms: 992.598458
+  type: 'test'
+  ...
+# Subtest: dispatch diffs keep bilingual targeting and deletion/rename backlink coverage
+ok 15 - dispatch diffs keep bilingual targeting and deletion/rename backlink coverage
+  ---
+  duration_ms: 1358.718583
+  type: 'test'
+  ...
+# Subtest: documentation does not build or publish while shadow cannot publish production
+ok 16 - documentation does not build or publish while shadow cannot publish production
+  ---
+  duration_ms: 1.928334
+  type: 'test'
+  ...
+# Subtest: a cancelled or skipped mandatory check is never a green gate
+ok 17 - a cancelled or skipped mandatory check is never a green gate
+  ---
+  duration_ms: 0.165167
+  type: 'test'
+  ...
+# Subtest: production reusable workflow is isolated and gated behind verified main artifacts
+ok 18 - production reusable workflow is isolated and gated behind verified main artifacts
+  ---
+  duration_ms: 93.606667
+  type: 'test'
+  ...
+# Subtest: manual backup applies the source gate before building
+ok 19 - manual backup applies the source gate before building
+  ---
+  duration_ms: 2.420375
+  type: 'test'
+  ...
+# Subtest: Lighthouse publish reruns bind to the producer artifact and fail closed before issue writes
+ok 20 - Lighthouse publish reruns bind to the producer artifact and fail closed before issue writes
+  ---
+  duration_ms: 4.114375
+  type: 'test'
+  ...
+# Subtest: failed interactive checks retain their HTML report and traces
+ok 21 - failed interactive checks retain their HTML report and traces
+  ---
+  duration_ms: 5.277625
+  type: 'test'
+  ...
+# Subtest: precise baseline survives moved lines but never changed evidence
+ok 22 - precise baseline survives moved lines but never changed evidence
+  ---
+  duration_ms: 8.201125
+  type: 'test'
+  ...
+# Subtest: report-only stays distinguishable and does not erase errors
+ok 23 - report-only stays distinguishable and does not erase errors
+  ---
+  duration_ms: 2.754959
+  type: 'test'
+  ...
+# Subtest: unknown rules, missing explanations and hard gate waivers fail closed
+ok 24 - unknown rules, missing explanations and hard gate waivers fail closed
+  ---
+  duration_ms: 0.390291
+  type: 'test'
+  ...
+# Subtest: annotations cannot inject commands and reports sort stably
+ok 25 - annotations cannot inject commands and reports sort stably
+  ---
+  duration_ms: 1.829542
+  type: 'test'
+  ...
+# Subtest: source runner rejects ambiguous or implicit scope
+ok 26 - source runner rejects ambiguous or implicit scope
+  ---
+  duration_ms: 0.505167
+  type: 'test'
+  ...
+# Subtest: verified receipts need deployment identity and all evidence; preview/failed evidence is rejected
+ok 27 - verified receipts need deployment identity and all evidence; preview/failed evidence is rejected
+  ---
+  duration_ms: 2.174958
+  type: 'test'
+  ...
+# Subtest: current production must match the receipt site, deploy, SHA and origin
+ok 28 - current production must match the receipt site, deploy, SHA and origin
+  ---
+  duration_ms: 0.881792
+  type: 'test'
+  ...
+# Subtest: Netlify ready is insufficient when primary domain still serves the previous source
+ok 29 - Netlify ready is insufficient when primary domain still serves the previous source
+  ---
+  duration_ms: 26.008584
+  type: 'test'
+  ...
+# Subtest: matching production deployment and domain marker produce a verified receipt
+ok 30 - matching production deployment and domain marker produce a verified receipt
+  ---
+  duration_ms: 1.735709
+  type: 'test'
+  ...
+# Subtest: permalink success cannot override a newer primary deploy
+ok 31 - permalink success cannot override a newer primary deploy
+  ---
+  duration_ms: 0.580375
+  type: 'test'
+  ...
+# Subtest: the previous production deploy during propagation is retried, not misreported as superseded
+ok 32 - the previous production deploy during propagation is retried, not misreported as superseded
+  ---
+  duration_ms: 1.382167
+  type: 'test'
+  ...
+# Subtest: network failure times out honestly without creating verified evidence
+ok 33 - network failure times out honestly without creating verified evidence
+  ---
+  duration_ms: 0.295667
+  type: 'test'
+  ...
+# Subtest: failed page/function probes block release even if version marker is correct
+ok 34 - failed page/function probes block release even if version marker is correct
+  ---
+  duration_ms: 1.900041
+  type: 'test'
+  ...
+# Subtest: invalid final evidence cannot leave a verified status after validation throws
+ok 35 - invalid final evidence cannot leave a verified status after validation throws
+  ---
+  duration_ms: 4.221708
+  type: 'test'
+  ...
+# Subtest: publication rejects PR provenance and absent trusted policy before any side effect
+ok 36 - publication rejects PR provenance and absent trusted policy before any side effect
+  ---
+  duration_ms: 1.254417
+  type: 'test'
+  ...
+# Subtest: rollback requires a previously verified receipt for the same site
+ok 37 - rollback requires a previously verified receipt for the same site
+  ---
+  duration_ms: 0.433875
+  type: 'test'
+  ...
+# Subtest: publishing reuses verified ZIPs and cannot replace a later build of the same source
+ok 38 - publishing reuses verified ZIPs and cannot replace a later build of the same source
+  ---
+  duration_ms: 125.66825
+  type: 'test'
+  ...
+# Subtest: rollback publication records retain original artifact proof and a new operation identity
+ok 39 - rollback publication records retain original artifact proof and a new operation identity
+  ---
+  duration_ms: 0.53425
+  type: 'test'
+  ...
+# Subtest: draft qualification probes the immutable URL and never mints a production receipt
+ok 40 - draft qualification probes the immutable URL and never mints a production receipt
+  ---
+  duration_ms: 0.24775
+  type: 'test'
+  ...
+# Subtest: changed article selects its existing bilingual pair
+ok 41 - changed article selects its existing bilingual pair
+  ---
+  duration_ms: 0.731917
+  type: 'test'
+  ...
+# Subtest: shared rendering selects representative pages in both languages
+ok 42 - shared rendering selects representative pages in both languages
+  ---
+  duration_ms: 0.248708
+  type: 'test'
+  ...
+# Subtest: static server reads frozen bytes and rejects traversal and escaping symlinks
+ok 43 - static server reads frozen bytes and rejects traversal and escaping symlinks
+  ---
+  duration_ms: 162.418458
+  type: 'test'
+  ...
+# Subtest: verification invokes only Playwright and rejects mutated production bytes
+ok 44 - verification invokes only Playwright and rejects mutated production bytes
+  ---
+  duration_ms: 7.159834
+  type: 'test'
+  ...
+# Subtest: missing input scope and incomplete page maps fail closed
+ok 45 - missing input scope and incomplete page maps fail closed
+  ---
+  duration_ms: 0.192709
+  type: 'test'
+  ...
+# Subtest: shared fullScan uses representatives instead of every article from source scope
+ok 46 - shared fullScan uses representatives instead of every article from source scope
+  ---
+  duration_ms: 0.512333
+  type: 'test'
+  ...
+# Subtest: article-only changes run the four-project quality suite without legacy rebuild or coverage expansion
+ok 47 - article-only changes run the four-project quality suite without legacy rebuild or coverage expansion
+  ---
+  duration_ms: 2.7625
+  type: 'test'
+  ...
+# Subtest: shared frontend changes retain legacy desktop/mobile coverage on the exact same public output
+ok 48 - shared frontend changes retain legacy desktop/mobile coverage on the exact same public output
+  ---
+  duration_ms: 4.200292
+  type: 'test'
+  ...
+# Subtest: successful content checks cannot hide a failing required legacy suite
+ok 49 - successful content checks cannot hide a failing required legacy suite
+  ---
+  duration_ms: 2.048792
+  type: 'test'
+  ...
+# Subtest: backup uses its own capability coverage and explicitly omits production legacy assertions
+ok 50 - backup uses its own capability coverage and explicitly omits production legacy assertions
+  ---
+  duration_ms: 1.819292
+  type: 'test'
+  ...
+1..50
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9899.59625

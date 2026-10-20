@@ -1,0 +1,63 @@
+{
+  "observedAt": "2026-10-20T14:25:15.106013+00:00",
+  "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "comparedBase": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+  "sourceFiles": [
+    {
+      "path": "assets/js/search-bootstrap.js",
+      "beforeBlob": "aba019ca1b8f32e128eab21025721ae77479df64",
+      "afterBlob": "aba019ca1b8f32e128eab21025721ae77479df64",
+      "unchanged": true
+    },
+    {
+      "path": "assets/js/search-palette.js",
+      "beforeBlob": "9bf178704f5267a9a74c74feeb3e7b5f56e65263",
+      "afterBlob": "9bf178704f5267a9a74c74feeb3e7b5f56e65263",
+      "unchanged": true
+    },
+    {
+      "path": "layouts/_default/index.json",
+      "beforeBlob": "43977b39548dc93b01d06c859c3012afc94a10fe",
+      "afterBlob": "43977b39548dc93b01d06c859c3012afc94a10fe",
+      "unchanged": true
+    }
+  ],
+  "priority": "P1 unresolved search loading bottleneck",
+  "currentBatchRegressionEstablished": false,
+  "indirectDeploymentOrEnvironmentEffectExcluded": false,
+  "observedFailures": {
+    "desktopEnglish": "palette hidden after5s",
+    "mobileEnglish": "palette hidden after5s",
+    "desktopChinese": "no result after15s; headers200 and body incomplete/aborted",
+    "mobileChinese": "no result after15s; timeout/retry UI visible"
+  },
+  "frozenUncompressedIndexBytes": {
+    "en": 8744778,
+    "zh": 7541909
+  },
+  "networkTransferBytesKnown": false,
+  "reviewer": "/root/review_daily_quality",
+  "reviewConclusion": "production failures real; no same-condition prior deployment control to attribute regression; prioritize instrumented loading/index work",
+  "failureTraces": [
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/production-daily/artifacts/reader-navigation-live-sea-400f1--readable-in-both-themes-zh-desktop/trace.zip",
+      "sha256": "687e92003614aa3fc5fbf954d9c128e153c9a398458e6a9b6da09c31928657ac",
+      "bytes": 8087782
+    },
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/production-daily/artifacts/reader-navigation-live-sea-de45e--readable-in-both-themes-en-desktop/trace.zip",
+      "sha256": "f900efd4f043f7d5ceebd19ee52668513901b466f87c6dc4d95daea9821e7fd8",
+      "bytes": 8538780
+    },
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/production-daily/artifacts/reader-navigation-live-sea-400f1--readable-in-both-themes-zh-mobile/trace.zip",
+      "sha256": "c96a7e2dbebcba89c72f725ab7cd936f1526e48276567f99e38510ebdbe29725",
+      "bytes": 7281606
+    },
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/production-daily/artifacts/reader-navigation-live-sea-de45e--readable-in-both-themes-en-mobile/trace.zip",
+      "sha256": "39252e92325fcbd101ce479c9c9943bf9e95a156f9b3e13221fae2923dadb542",
+      "bytes": 6437028
+    }
+  ]
+}

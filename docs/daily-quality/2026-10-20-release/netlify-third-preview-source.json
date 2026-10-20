@@ -1,0 +1,15 @@
+{
+  "observedAt": "2026-10-20T12:26:38.111164+00:00",
+  "branchDeploys": [
+    {
+      "id": "6ad75d1e5ddf24946408838c",
+      "state": "ready",
+      "context": "branch-deploy",
+      "branch": "codex/blog-daily-quality-20261019",
+      "commit_ref": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+      "created_at": "2026-10-20T12:22:54.218Z",
+      "updated_at": "2026-10-20T12:25:38.773Z",
+      "deploy_ssl_url": "https://codex-blog-daily-quality-20261019--cubxxw.netlify.app"
+    }
+  ]
+}

@@ -1,0 +1,4309 @@
+{
+  "reportPath": "/private/tmp/ai-test-blog-daily-release-20261020.49QWXr/ci-fixed-partial/browser/legacy/html/index.html",
+  "stats": {
+    "total": 796,
+    "expected": 772,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 24,
+    "ok": true
+  },
+  "startTime": 1792490385237,
+  "durationMs": 3687160.212,
+  "projects": {
+    "desktop": {
+      "expected": 385,
+      "skipped": 13
+    },
+    "mobile": {
+      "expected": 387,
+      "skipped": 11
+    }
+  },
+  "actualFinalStatuses": {
+    "passed": 772,
+    "skipped": 24
+  },
+  "allAttemptStatuses": {
+    "passed": 772,
+    "skipped": 24
+  },
+  "firstAttemptPassCount": 772,
+  "retriedTestCount": 0,
+  "nonFirstPass": [
+    {
+      "title": "/about/ closed mobile navigation cannot intercept page content or focus",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-experience.spec.ts",
+        "line": 17,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 72,
+          "startTime": "2026-10-20T10:05:47.518Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:05:47.534Z",
+              "duration": 125,
+              "steps": [
+                {
+                  "title": "Fixture \"browser\"",
+                  "startTime": "2026-10-20T10:05:47.542Z",
+                  "duration": 61,
+                  "steps": [
+                    {
+                      "title": "Launch browser",
+                      "startTime": "2026-10-20T10:05:47.544Z",
+                      "duration": 59,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:47.604Z",
+                  "duration": 16,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:05:47.606Z",
+                      "duration": 10,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:47.620Z",
+                  "duration": 3,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:47.624Z",
+                  "duration": 35,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:05:47.625Z",
+                      "duration": 34,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:05:47.660Z",
+              "duration": 21,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:47.661Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:47.661Z",
+                  "duration": 3,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:47.664Z",
+                  "duration": 13,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:05:47.668Z",
+                      "duration": 9,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "The mobile menu has an inline submenu",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/about-experience.spec.ts",
+                "line": 18,
+                "column": 12
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "The mobile menu has an inline submenu",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-experience.spec.ts",
+            "line": 18,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "/zh/about/ closed mobile navigation cannot intercept page content or focus",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-experience.spec.ts",
+        "line": 17,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 40,
+          "startTime": "2026-10-20T10:05:48.389Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:05:48.390Z",
+              "duration": 39,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:48.396Z",
+                  "duration": 7,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:05:48.400Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:48.403Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:48.404Z",
+                  "duration": 25,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:05:48.404Z",
+                      "duration": 25,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:05:48.429Z",
+              "duration": 9,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:48.430Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:48.430Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:48.431Z",
+                  "duration": 5,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:05:48.432Z",
+                      "duration": 4,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "The mobile menu has an inline submenu",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/about-experience.spec.ts",
+                "line": 18,
+                "column": 12
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "The mobile menu has an inline submenu",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-experience.spec.ts",
+            "line": 18,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "/about/ real phone gestures browse every rail and retain vertical scrolling",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-natural-experience.spec.ts",
+        "line": 122,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 38,
+          "startTime": "2026-10-20T10:05:50.511Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:05:50.512Z",
+              "duration": 31,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:50.513Z",
+                  "duration": 3,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:05:50.514Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:50.516Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:50.517Z",
+                  "duration": 26,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:05:50.517Z",
+                      "duration": 26,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:05:50.544Z",
+              "duration": 12,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:50.544Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:50.544Z",
+                  "duration": 3,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:50.547Z",
+                  "duration": 5,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:05:50.549Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Touch acceptance uses the phone viewport",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/about-natural-experience.spec.ts",
+                "line": 123,
+                "column": 12
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Touch acceptance uses the phone viewport",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-natural-experience.spec.ts",
+            "line": 123,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "/zh/about/ real phone gestures browse every rail and retain vertical scrolling",
+      "projectName": "desktop",
+      "location": {
+        "file": "about-natural-experience.spec.ts",
+        "line": 122,
+        "column": 9
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 42,
+          "startTime": "2026-10-20T10:05:53.560Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:05:53.560Z",
+              "duration": 37,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:53.562Z",
+                  "duration": 3,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:05:53.562Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:53.565Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:53.566Z",
+                  "duration": 31,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:05:53.566Z",
+                      "duration": 31,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:05:53.598Z",
+              "duration": 9,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:05:53.598Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:53.598Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:05:53.600Z",
+                  "duration": 5,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:05:53.601Z",
+                      "duration": 4,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Touch acceptance uses the phone viewport",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/about-natural-experience.spec.ts",
+                "line": 123,
+                "column": 12
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Touch acceptance uses the phone viewport",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/about-natural-experience.spec.ts",
+            "line": 123,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile: long summary title wraps without colliding with the reserved action",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-disclosure.spec.ts",
+        "line": 285,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 39,
+          "startTime": "2026-10-20T10:06:04.809Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:06:04.810Z",
+              "duration": 32,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:04.812Z",
+                  "duration": 2,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:06:04.812Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:04.815Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:04.815Z",
+                  "duration": 27,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:06:04.816Z",
+                      "duration": 26,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:06:04.843Z",
+              "duration": 11,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:04.843Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:04.843Z",
+                  "duration": 3,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:04.846Z",
+                  "duration": 6,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:06:04.848Z",
+                      "duration": 4,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "mobile viewport only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-disclosure.spec.ts",
+                "line": 286,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile viewport only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-disclosure.spec.ts",
+            "line": 286,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 100,
+          "startTime": "2026-10-20T10:10:19.172Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:10:19.172Z",
+              "duration": 91,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.175Z",
+                  "duration": 10,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:10:19.175Z",
+                      "duration": 10,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.185Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:10:19.186Z",
+                  "duration": 77,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:10:19.186Z",
+                      "duration": 77,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:10:19.265Z",
+              "duration": 15,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:10:19.267Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.267Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.269Z",
+                  "duration": 8,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:10:19.270Z",
+                      "duration": 7,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"viewport\"",
+                  "startTime": "2026-10-20T10:10:19.278Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:10:19.278Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"isMobile\"",
+                  "startTime": "2026-10-20T10:10:19.279Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"hasTouch\"",
+                  "startTime": "2026-10-20T10:10:19.279Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+                "line": 80,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 3
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 107,
+          "startTime": "2026-10-20T10:10:19.285Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:10:19.285Z",
+              "duration": 99,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.288Z",
+                  "duration": 14,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:10:19.288Z",
+                      "duration": 14,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.302Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:10:19.303Z",
+                  "duration": 81,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:10:19.303Z",
+                      "duration": 81,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:10:19.384Z",
+              "duration": 18,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:10:19.385Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.385Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.388Z",
+                  "duration": 8,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:10:19.389Z",
+                      "duration": 7,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"viewport\"",
+                  "startTime": "2026-10-20T10:10:19.397Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:10:19.399Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"isMobile\"",
+                  "startTime": "2026-10-20T10:10:19.399Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"hasTouch\"",
+                  "startTime": "2026-10-20T10:10:19.402Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+                "line": 80,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 3
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "CSS 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "desktop",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 98,
+          "startTime": "2026-10-20T10:10:19.407Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:10:19.408Z",
+              "duration": 83,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.410Z",
+                  "duration": 13,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:10:19.410Z",
+                      "duration": 13,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.423Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:10:19.424Z",
+                  "duration": 67,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:10:19.424Z",
+                      "duration": 67,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:10:19.492Z",
+              "duration": 25,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:10:19.492Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.494Z",
+                  "duration": 8,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:10:19.503Z",
+                  "duration": 9,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:10:19.505Z",
+                      "duration": 7,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"viewport\"",
+                  "startTime": "2026-10-20T10:10:19.513Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:10:19.514Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"isMobile\"",
+                  "startTime": "2026-10-20T10:10:19.516Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"hasTouch\"",
+                  "startTime": "2026-10-20T10:10:19.516Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+                "line": 80,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 3
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late CSS with approved fonts: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 109,
+          "startTime": "2026-10-20T10:41:16.049Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:41:16.052Z",
+              "duration": 98,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.054Z",
+                  "duration": 12,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:41:16.054Z",
+                      "duration": 12,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.066Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:41:16.067Z",
+                  "duration": 83,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:41:16.067Z",
+                      "duration": 83,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:41:16.151Z",
+              "duration": 20,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:41:16.152Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.152Z",
+                  "duration": 4,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.157Z",
+                  "duration": 7,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:41:16.158Z",
+                      "duration": 6,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"viewport\"",
+                  "startTime": "2026-10-20T10:41:16.166Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:41:16.166Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"isMobile\"",
+                  "startTime": "2026-10-20T10:41:16.167Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"hasTouch\"",
+                  "startTime": "2026-10-20T10:41:16.167Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+                "line": 80,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 19
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "late fonts held 1200ms then 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 100,
+          "startTime": "2026-10-20T10:41:16.173Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:41:16.174Z",
+              "duration": 86,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.176Z",
+                  "duration": 13,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:41:16.177Z",
+                      "duration": 12,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.189Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:41:16.190Z",
+                  "duration": 70,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:41:16.190Z",
+                      "duration": 70,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:41:16.260Z",
+              "duration": 20,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:41:16.261Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.261Z",
+                  "duration": 6,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.267Z",
+                  "duration": 10,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:41:16.269Z",
+                      "duration": 8,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"viewport\"",
+                  "startTime": "2026-10-20T10:41:16.278Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:41:16.278Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"isMobile\"",
+                  "startTime": "2026-10-20T10:41:16.279Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"hasTouch\"",
+                  "startTime": "2026-10-20T10:41:16.279Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+                "line": 80,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 19
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "CSS 404: the original article marker, document/viewport read point, hash and focus stay stable",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-font-stability-contracts.spec.ts",
+        "line": 79,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 113,
+          "startTime": "2026-10-20T10:41:16.282Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:41:16.283Z",
+              "duration": 107,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.285Z",
+                  "duration": 23,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:41:16.286Z",
+                      "duration": 22,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.308Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:41:16.309Z",
+                  "duration": 81,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:41:16.309Z",
+                      "duration": 81,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:41:16.390Z",
+              "duration": 12,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:41:16.391Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.391Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:41:16.393Z",
+                  "duration": 6,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:41:16.395Z",
+                      "duration": 4,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"viewport\"",
+                  "startTime": "2026-10-20T10:41:16.400Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:41:16.400Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"isMobile\"",
+                  "startTime": "2026-10-20T10:41:16.400Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                },
+                {
+                  "title": "Fixture \"hasTouch\"",
+                  "startTime": "2026-10-20T10:41:16.401Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "article-font-stability-contracts.spec.ts",
+                    "line": 7,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  6 |\u001b[39m\n \u001b[90m  7 |\u001b[39m test\u001b[33m.\u001b[39muse({channel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mviewport\u001b[33m:\u001b[39m{width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m}\u001b[33m,\u001b[39mreducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39misMobile\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39mhasTouch\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  8 |\u001b[39m \u001b[36mconst\u001b[39m article\u001b[33m=\u001b[39m\u001b[32m'/ai-agent/posts/context-engineering-the-new-foundation/'\u001b[39m\u001b[33m;\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+                "line": 80,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 19
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "Provide the approved offline 7-file bundle via ARTICLE_FONT_BUNDLE_MANIFEST; no external font fetch fallback.",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-font-stability-contracts.spec.ts",
+            "line": 80,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - clicking TOC item scrolls to heading",
+      "projectName": "mobile",
+      "location": {
+        "file": "article-toc.spec.ts",
+        "line": 6,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 34,
+          "startTime": "2026-10-20T10:36:56.137Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:36:56.137Z",
+              "duration": 32,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:36:56.139Z",
+                  "duration": 4,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:36:56.140Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:36:56.143Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:36:56.144Z",
+                  "duration": 25,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:36:56.144Z",
+                      "duration": 25,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:36:56.170Z",
+              "duration": 7,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:36:56.170Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:36:56.170Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:36:56.171Z",
+                  "duration": 4,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:36:56.172Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/article-toc.spec.ts",
+                "line": 7,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/article-toc.spec.ts",
+            "line": 7,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile - switch from EN to ZH changes URL to /zh/",
+      "projectName": "desktop",
+      "location": {
+        "file": "header-lang.spec.ts",
+        "line": 34,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 51,
+          "startTime": "2026-10-20T10:06:48.936Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:06:48.937Z",
+              "duration": 35,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:48.938Z",
+                  "duration": 3,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:06:48.939Z",
+                      "duration": 1,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:48.941Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:48.941Z",
+                  "duration": 31,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:06:48.942Z",
+                      "duration": 29,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:06:48.972Z",
+              "duration": 23,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:48.973Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:48.973Z",
+                  "duration": 3,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:48.976Z",
+                  "duration": 14,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:06:48.980Z",
+                      "duration": 10,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "mobile only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+                "line": 35,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+            "line": 35,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - switch from EN to ZH changes URL to /zh/",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-lang.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 36,
+          "startTime": "2026-10-20T10:37:06.640Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:37:06.640Z",
+              "duration": 31,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.642Z",
+                  "duration": 3,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:37:06.642Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.645Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:06.645Z",
+                  "duration": 26,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:37:06.646Z",
+                      "duration": 25,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:37:06.673Z",
+              "duration": 8,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:06.673Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.673Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.674Z",
+                  "duration": 5,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:37:06.676Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+                "line": 5,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+            "line": 5,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - switch from ZH to EN changes URL to /",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-lang.spec.ts",
+        "line": 19,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 32,
+          "startTime": "2026-10-20T10:37:06.682Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:37:06.682Z",
+              "duration": 29,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.685Z",
+                  "duration": 2,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:37:06.685Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.687Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:06.688Z",
+                  "duration": 23,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:37:06.688Z",
+                      "duration": 23,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:37:06.711Z",
+              "duration": 8,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:06.711Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.711Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:06.713Z",
+                  "duration": 5,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:37:06.714Z",
+                      "duration": 4,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+                "line": 20,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-lang.spec.ts",
+            "line": 20,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile - search panel opens and closes with Esc",
+      "projectName": "desktop",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 27,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 48,
+          "startTime": "2026-10-20T10:06:50.215Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:06:50.216Z",
+              "duration": 43,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:50.218Z",
+                  "duration": 4,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:06:50.219Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:50.222Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:50.223Z",
+                  "duration": 36,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:06:50.224Z",
+                      "duration": 35,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:06:50.260Z",
+              "duration": 10,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:50.260Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:50.260Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:50.262Z",
+                  "duration": 6,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:06:50.264Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "mobile only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+                "line": 28,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 28,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - search panel opens, accepts input, closes with Esc",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 33,
+          "startTime": "2026-10-20T10:37:08.114Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:37:08.114Z",
+              "duration": 30,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:08.116Z",
+                  "duration": 4,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:37:08.116Z",
+                      "duration": 4,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:08.120Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:08.121Z",
+                  "duration": 23,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:37:08.121Z",
+                      "duration": 23,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:37:08.145Z",
+              "duration": 8,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:08.145Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:08.145Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:08.147Z",
+                  "duration": 3,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:37:08.148Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+                "line": 5,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 5,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - arrow keys select results and Enter opens the selected article",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 47,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 39,
+          "startTime": "2026-10-20T10:37:09.095Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:37:09.096Z",
+              "duration": 34,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.098Z",
+                  "duration": 5,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:37:09.098Z",
+                      "duration": 4,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.103Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.103Z",
+                  "duration": 27,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:37:09.104Z",
+                      "duration": 26,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:37:09.130Z",
+              "duration": 10,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.130Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.130Z",
+                  "duration": 3,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.133Z",
+                  "duration": 5,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:37:09.135Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+                "line": 48,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 48,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - Control+Enter asks AI without opening a result",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 78,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 37,
+          "startTime": "2026-10-20T10:37:09.141Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:37:09.141Z",
+              "duration": 31,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.143Z",
+                  "duration": 3,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:37:09.143Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.146Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.146Z",
+                  "duration": 26,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:37:09.146Z",
+                      "duration": 26,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:37:09.173Z",
+              "duration": 10,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.173Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.173Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.175Z",
+                  "duration": 6,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:37:09.176Z",
+                      "duration": 5,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+                "line": 79,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 79,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "Chinese palette exposes localized names and combobox semantics",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-search.spec.ts",
+        "line": 99,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 32,
+          "startTime": "2026-10-20T10:37:09.184Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:37:09.184Z",
+              "duration": 28,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.186Z",
+                  "duration": 2,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:37:09.186Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.188Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.189Z",
+                  "duration": 23,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:37:09.189Z",
+                      "duration": 23,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:37:09.213Z",
+              "duration": 8,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.213Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.213Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.215Z",
+                  "duration": 4,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:37:09.216Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+                "line": 100,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-search.spec.ts",
+            "line": 100,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile - toggle dark mode applies dark class to body",
+      "projectName": "desktop",
+      "location": {
+        "file": "header-theme.spec.ts",
+        "line": 20,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 45,
+          "startTime": "2026-10-20T10:06:54.563Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:06:54.564Z",
+              "duration": 39,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:54.566Z",
+                  "duration": 4,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:06:54.566Z",
+                      "duration": 3,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:54.570Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:54.571Z",
+                  "duration": 32,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:06:54.573Z",
+                      "duration": 30,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:06:54.604Z",
+              "duration": 12,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:06:54.604Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:54.604Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:06:54.607Z",
+                  "duration": 6,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:06:54.608Z",
+                      "duration": 5,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "mobile only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-theme.spec.ts",
+                "line": 21,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 2
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-theme.spec.ts",
+            "line": 21,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "desktop - toggle dark mode applies dark class to body",
+      "projectName": "mobile",
+      "location": {
+        "file": "header-theme.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 34,
+          "startTime": "2026-10-20T10:37:09.223Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:37:09.223Z",
+              "duration": 28,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.225Z",
+                  "duration": 3,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:37:09.225Z",
+                      "duration": 2,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.228Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.228Z",
+                  "duration": 23,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:37:09.229Z",
+                      "duration": 22,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:37:09.252Z",
+              "duration": 9,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:37:09.252Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.252Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:37:09.254Z",
+                  "duration": 6,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:37:09.255Z",
+                      "duration": 5,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "desktop only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/header-theme.spec.ts",
+                "line": 5,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 18
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "desktop only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/header-theme.spec.ts",
+            "line": 5,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile article library keeps filters discoverable and cards compact",
+      "projectName": "desktop",
+      "location": {
+        "file": "p1-p2-ux.spec.ts",
+        "line": 51,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 124,
+          "startTime": "2026-10-20T10:11:30.907Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:11:30.909Z",
+              "duration": 112,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:30.912Z",
+                  "duration": 23,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:11:30.913Z",
+                      "duration": 22,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:30.935Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:11:30.936Z",
+                  "duration": 85,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:11:30.937Z",
+                      "duration": 84,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:11:31.022Z",
+              "duration": 19,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:11:31.022Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:31.022Z",
+                  "duration": 8,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:31.031Z",
+                  "duration": 7,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:11:31.032Z",
+                      "duration": 6,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:11:31.039Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "p1-p2-ux.spec.ts",
+                    "line": 6,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  5 |\u001b[39m \u001b[90m// Space world tests; honor reduced motion and use Chromium's real renderer.\u001b[39m\n \u001b[90m  6 |\u001b[39m test\u001b[33m.\u001b[39muse({reducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39mchannel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mlaunchOptions\u001b[33m:\u001b[39m{args\u001b[33m:\u001b[39mprocess\u001b[33m.\u001b[39mplatform\u001b[33m===\u001b[39m\u001b[32m'darwin'\u001b[39m\u001b[33m?\u001b[39m[\u001b[32m'--enable-gpu'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'--use-angle=metal'\u001b[39m]\u001b[33m:\u001b[39m[\u001b[32m'--enable-unsafe-swiftshader'\u001b[39m]}})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  7 |\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "mobile only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/p1-p2-ux.spec.ts",
+                "line": 52,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 5
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/p1-p2-ux.spec.ts",
+            "line": 52,
+            "column": 10
+          }
+        }
+      ]
+    },
+    {
+      "title": "mobile product workspace exposes 44px actions and a close target",
+      "projectName": "desktop",
+      "location": {
+        "file": "p1-p2-ux.spec.ts",
+        "line": 67,
+        "column": 7
+      },
+      "outcome": "skipped",
+      "results": [
+        {
+          "duration": 107,
+          "startTime": "2026-10-20T10:11:31.048Z",
+          "retry": 0,
+          "steps": [
+            {
+              "title": "Before Hooks",
+              "startTime": "2026-10-20T10:11:31.050Z",
+              "duration": 96,
+              "steps": [
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:31.057Z",
+                  "duration": 12,
+                  "steps": [
+                    {
+                      "title": "Create context",
+                      "startTime": "2026-10-20T10:11:31.057Z",
+                      "duration": 12,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:31.069Z",
+                  "duration": 1,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:11:31.070Z",
+                  "duration": 76,
+                  "steps": [
+                    {
+                      "title": "Create page",
+                      "startTime": "2026-10-20T10:11:31.070Z",
+                      "duration": 76,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            },
+            {
+              "title": "After Hooks",
+              "startTime": "2026-10-20T10:11:31.149Z",
+              "duration": 18,
+              "steps": [
+                {
+                  "title": "Fixture \"page\"",
+                  "startTime": "2026-10-20T10:11:31.150Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:31.150Z",
+                  "duration": 2,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "../helpers/frozen-site.ts",
+                    "line": 133,
+                    "column": 26
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m 132 |\u001b[39m\n \u001b[90m 133 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m test \u001b[33m=\u001b[39m base\u001b[33m.\u001b[39mextend({\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m                         ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m 134 |\u001b[39m   context\u001b[33m:\u001b[39m \u001b[36masync\u001b[39m ({ context\u001b[33m,\u001b[39m baseURL }\u001b[33m,\u001b[39m use\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                },
+                {
+                  "title": "Fixture \"context\"",
+                  "startTime": "2026-10-20T10:11:31.152Z",
+                  "duration": 12,
+                  "steps": [
+                    {
+                      "title": "Close context",
+                      "startTime": "2026-10-20T10:11:31.154Z",
+                      "duration": 10,
+                      "steps": [],
+                      "attachments": [],
+                      "count": 1,
+                      "skipped": false
+                    }
+                  ],
+                  "attachments": [],
+                  "count": 1,
+                  "skipped": false
+                },
+                {
+                  "title": "Fixture \"reducedMotion\"",
+                  "startTime": "2026-10-20T10:11:31.166Z",
+                  "duration": 0,
+                  "steps": [],
+                  "attachments": [],
+                  "location": {
+                    "file": "p1-p2-ux.spec.ts",
+                    "line": 6,
+                    "column": 6
+                  },
+                  "count": 1,
+                  "skipped": false,
+                  "snippet": " \u001b[90m  5 |\u001b[39m \u001b[90m// Space world tests; honor reduced motion and use Chromium's real renderer.\u001b[39m\n \u001b[90m  6 |\u001b[39m test\u001b[33m.\u001b[39muse({reducedMotion\u001b[33m:\u001b[39m\u001b[32m'reduce'\u001b[39m\u001b[33m,\u001b[39mchannel\u001b[33m:\u001b[39m\u001b[32m'chromium'\u001b[39m\u001b[33m,\u001b[39mlaunchOptions\u001b[33m:\u001b[39m{args\u001b[33m:\u001b[39mprocess\u001b[33m.\u001b[39mplatform\u001b[33m===\u001b[39m\u001b[32m'darwin'\u001b[39m\u001b[33m?\u001b[39m[\u001b[32m'--enable-gpu'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'--use-angle=metal'\u001b[39m]\u001b[33m:\u001b[39m[\u001b[32m'--enable-unsafe-swiftshader'\u001b[39m]}})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m     ^\u001b[22m\u001b[39m\u001b[0m\n \u001b[90m  7 |\u001b[39m"
+                }
+              ],
+              "attachments": [],
+              "count": 1,
+              "skipped": false
+            }
+          ],
+          "errors": [],
+          "status": "skipped",
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "mobile only",
+              "location": {
+                "file": "/home/runner/work/blog/blog/tests/e2e/p1-p2-ux.spec.ts",
+                "line": 68,
+                "column": 10
+              }
+            }
+          ],
+          "attachments": [],
+          "workerIndex": 5
+        }
+      ],
+      "annotations": [
+        {
+          "type": "skip",
+          "description": "mobile only",
+          "location": {
+            "file": "/home/runner/work/blog/blog/tests/e2e/p1-p2-ux.spec.ts",
+            "line": 68,
+            "column": 10
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

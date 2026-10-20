@@ -1,0 +1,238 @@
+{
+  "runId": 39425424215,
+  "workflowSourceSha": "5b4bc2197563161f5e401cd545ef6a5ce0dd825c",
+  "pageSourceVerifiedPerRequest": false,
+  "overallRun": "failure",
+  "completeManifest": false,
+  "singleReportCount": 9,
+  "isBeforeOurRelease": true,
+  "sameConditionBeforeAfterComparison": false,
+  "fieldMetrics": null,
+  "rows": [
+    {
+      "url": "https://cubxxw.com/",
+      "finalUrl": "https://cubxxw.com/",
+      "fetchTime": "2026-10-20T12:51:24.324Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 3228.0649999999996,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 1073.2115,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 355560,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500696880.json"
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "finalUrl": "https://cubxxw.com/zh/",
+      "fetchTime": "2026-10-20T12:51:40.746Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 1545.7110000000002,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 24.5,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 406899,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500712839.json"
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "finalUrl": "https://cubxxw.com/projects/?profile=about",
+      "fetchTime": "2026-10-20T12:51:55.861Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 22290.941,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 43720.5,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 9486662,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500742942.json"
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "finalUrl": "https://cubxxw.com/zh/projects/?profile=about",
+      "fetchTime": "2026-10-20T12:52:26.006Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 19367.027000000002,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 41205,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 9504093,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500771356.json"
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/",
+      "finalUrl": "https://cubxxw.com/ai-agent/",
+      "fetchTime": "2026-10-20T12:52:54.397Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 3393.109,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 0,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 245948,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500785757.json"
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "finalUrl": "https://cubxxw.com/engineering/",
+      "fetchTime": "2026-10-20T12:53:08.803Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 3391.1269999999995,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 0,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 240528,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500799182.json"
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "finalUrl": "https://cubxxw.com/zh/ai-agent/",
+      "fetchTime": "2026-10-20T12:53:22.237Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 3078.7729999999992,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 6.783946342520414e-06,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 2,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 496693,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500812962.json"
+    },
+    {
+      "url": "https://cubxxw.com/growth/",
+      "finalUrl": "https://cubxxw.com/growth/",
+      "fetchTime": "2026-10-20T12:53:36.017Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 2933.2185,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0.0006372535495542336,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 0,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 327518,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500826246.json"
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/",
+      "finalUrl": "https://cubxxw.com/zh/growth/",
+      "fetchTime": "2026-10-20T12:53:49.292Z",
+      "runtimeError": null,
+      "lcp": {
+        "value": 2203.2570000000005,
+        "unit": "millisecond"
+      },
+      "cls": {
+        "value": 0.0003008173478622563,
+        "unit": "unitless"
+      },
+      "tbt": {
+        "value": 0,
+        "unit": "millisecond"
+      },
+      "transfer": {
+        "value": 767382,
+        "unit": "byte"
+      },
+      "throttlingMethod": "simulate",
+      "formFactor": "mobile",
+      "rawFile": "lhr-1792500839628.json"
+    }
+  ]
+}

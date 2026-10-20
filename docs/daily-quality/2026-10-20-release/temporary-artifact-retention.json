@@ -1,0 +1,10 @@
+{
+  "observedAt": "2026-10-20T15:49:28.045352+00:00",
+  "command": "dev-storage-guard remove-artifact /private/tmp/ai-test-blog-daily-release-20261020.49QWXr",
+  "exitCode": 65,
+  "output": "Refusing artifact directory containing non-package Git metadata: /private/tmp/ai-test-blog-daily-release-20261020.49QWXr\n",
+  "removed": false,
+  "allocatedBytesRemoved": 0,
+  "reason": "six synthetic Git fixture repositories inside registered artifact; guard refuses non-package Git metadata; no manual override",
+  "preservedFormalEvidence": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-20-release/raw-closeout"
+}

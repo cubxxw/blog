@@ -1,0 +1,52 @@
+{
+  "observedAt": "2026-10-20T16:03:49.749288+00:00",
+  "runId": 39435829373,
+  "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+  "conclusion": "success",
+  "startedAt": "2026-10-20T14:03:37Z",
+  "completedAt": "2026-10-20T16:00:53Z",
+  "quality": {
+    "passed": 48
+  },
+  "legacy": {
+    "planned": 796,
+    "passed": 772,
+    "skipped": 24
+  },
+  "interactive": {
+    "planned": 573,
+    "passed": 573
+  },
+  "performanceContracts": {
+    "passed": 9,
+    "skipped": 1,
+    "notCwvGate": true
+  },
+  "interactiveNode": {
+    "passed": 178
+  },
+  "voice": {
+    "passed": 28
+  },
+  "bear": {
+    "passed": 248
+  },
+  "ux": {
+    "passed": 56
+  },
+  "verifiedDeploymentFiles": 3758,
+  "sourceSeo": {
+    "files": 402,
+    "errors": 0,
+    "warnings": 266
+  },
+  "generatedSeo": {
+    "files": 645,
+    "errors": 0,
+    "warnings": 0
+  },
+  "siteArtifactId": 12278374503,
+  "qualityArtifactId": 12278014145,
+  "retryCounts": "pending embedded HTML parse; no assumption from preflight",
+  "releaseAndFollowups": "skipped under existing shadow mode; native production verified separately"
+}

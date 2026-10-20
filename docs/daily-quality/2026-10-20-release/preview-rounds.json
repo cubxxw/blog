@@ -1,0 +1,312 @@
+{
+  "scope": "three separate live preview reproductions; all failed navigation precedes comment behavior assertion; not production acceptance",
+  "rounds": [
+    {
+      "sourceSha": "6e5471104890055839b0ed9a26c6f4b7bd971277",
+      "deployId": "6ad72df5751877c35fc012c4",
+      "context": "branch-deploy, not production",
+      "stats": {
+        "startTime": "2026-10-20T09:30:23.650Z",
+        "duration": 213411.314,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "exitCode": 1,
+      "cases": [
+        {
+          "title": "opening passage comments loads the provider before the reader reaches the footer",
+          "file": "article-selection-state.spec.ts",
+          "project": "desktop",
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "durationMs": 43603,
+              "retry": 0,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "title": "opening passage comments loads the provider before the reader reaches the footer",
+          "file": "article-selection-state.spec.ts",
+          "project": "mobile",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45221,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "file": "comments-loading.spec.ts",
+          "project": "desktop",
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "durationMs": 22398,
+              "retry": 0,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+          "file": "comments-loading.spec.ts",
+          "project": "desktop",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45412,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "file": "comments-loading.spec.ts",
+          "project": "mobile",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "failed",
+              "durationMs": 8127,
+              "retry": 0,
+              "error": "Error: page.goto: net::ERR_CONNECTION_CLOSED at https://codex-blog-daily-quality-20261019--cubxxw.netlify.app/ai-agent/posts/agent-identity-from-locke-to-openclaw/\nCall log:\n\u001b[2m  - navigating to \"https://codex-blog-daily-quality-20261019--cubxxw.netlify.app/ai-agent/posts/agent-identity-from-locke-to-openclaw/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+          "file": "comments-loading.spec.ts",
+          "project": "mobile",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45250,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sourceSha": "54244bf9e669977257a8af9b75ab5389c0b9533d",
+      "deployId": "6ad739b575d9117addc14142",
+      "context": "branch-deploy, not production",
+      "stats": {
+        "startTime": "2026-10-20T09:58:36.727Z",
+        "duration": 207177.516,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "exitCode": 1,
+      "cases": [
+        {
+          "title": "opening passage comments loads the provider before the reader reaches the footer",
+          "file": "article-selection-state.spec.ts",
+          "project": "desktop",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45117,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+            }
+          ]
+        },
+        {
+          "title": "opening passage comments loads the provider before the reader reaches the footer",
+          "file": "article-selection-state.spec.ts",
+          "project": "mobile",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45120,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "file": "comments-loading.spec.ts",
+          "project": "desktop",
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "durationMs": 10797,
+              "retry": 0,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+          "file": "comments-loading.spec.ts",
+          "project": "desktop",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45159,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "file": "comments-loading.spec.ts",
+          "project": "mobile",
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "durationMs": 14170,
+              "retry": 0,
+              "error": ""
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+          "file": "comments-loading.spec.ts",
+          "project": "mobile",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45143,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sourceSha": "447af0e361f1e8032aecf05655caef747e3d8d9e",
+      "deployId": "6ad75d1e5ddf24946408838c",
+      "deployReadyAt": "2026-10-20T12:25:38.773Z",
+      "context": "branch-deploy, not production",
+      "stats": {
+        "startTime": "2026-10-20T12:27:44.347Z",
+        "duration": 211614.106,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "exitCode": 1,
+      "cases": [
+        {
+          "title": "opening passage comments loads the provider before the reader reaches the footer",
+          "file": "article-selection-state.spec.ts",
+          "project": "desktop",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45149,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+              "navigationError": "Error: page.goto: Test timeout of 45000ms exceeded.\nCall log:\n  - navigating to \"https://codex-blog-daily-quality-20261019--cubxxw.netlify.app/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/\", waiting until \"load\"\n\n\n  24 |     await route.fulfill({ contentType: 'text/javascript', body: '/* Provider request only; no remote comments or writes. */' });\n  25 |   });\n> 26 |   await page.goto(article);\n     |              ^\n  27 |   await selectPassage(page);\n  28 |   const readingY = await page.evaluate(() => scrollY);\n  29 |   const section = page.locator('.post-comments');\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/e2e/article-selection-state.spec.ts:26:14"
+            }
+          ]
+        },
+        {
+          "title": "opening passage comments loads the provider before the reader reaches the footer",
+          "file": "article-selection-state.spec.ts",
+          "project": "mobile",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45099,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+              "navigationError": "Error: page.goto: Test timeout of 45000ms exceeded.\nCall log:\n  - navigating to \"https://codex-blog-daily-quality-20261019--cubxxw.netlify.app/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/\", waiting until \"load\"\n\n\n  24 |     await route.fulfill({ contentType: 'text/javascript', body: '/* Provider request only; no remote comments or writes. */' });\n  25 |   });\n> 26 |   await page.goto(article);\n     |              ^\n  27 |   await selectPassage(page);\n  28 |   const readingY = await page.evaluate(() => scrollY);\n  29 |   const section = page.locator('.post-comments');\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/e2e/article-selection-state.spec.ts:26:14"
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "file": "comments-loading.spec.ts",
+          "project": "desktop",
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "durationMs": 20756,
+              "retry": 0,
+              "error": "",
+              "navigationError": ""
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+          "file": "comments-loading.spec.ts",
+          "project": "desktop",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45150,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+              "navigationError": "Error: page.goto: Test timeout of 45000ms exceeded.\nCall log:\n  - navigating to \"https://codex-blog-daily-quality-20261019--cubxxw.netlify.app/zh/growth/posts/2025-annual-review/\", waiting until \"domcontentloaded\"\n\n\n  13 |       await request.fulfill({ contentType: 'text/javascript', body: '/* No third-party widget or remote writes in verification. */' });\n  14 |     });\n> 15 |     await page.goto(route, { waitUntil: 'domcontentloaded' });\n     |                ^\n  16 |     await expect(page.locator('main')).toBeVisible();\n  17 |     await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  18 |     expect(requests, 'a below-fold comment widget must not compete with initial reading').toBe(0);\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/e2e/comments-loading.spec.ts:15:16"
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "file": "comments-loading.spec.ts",
+          "project": "mobile",
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "durationMs": 8590,
+              "retry": 0,
+              "error": "",
+              "navigationError": ""
+            }
+          ]
+        },
+        {
+          "title": "comments load near the reader and preserve the selected theme: /zh/growth/posts/2025-annual-review/",
+          "file": "comments-loading.spec.ts",
+          "project": "mobile",
+          "outcome": "unexpected",
+          "results": [
+            {
+              "status": "timedOut",
+              "durationMs": 45146,
+              "retry": 0,
+              "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+              "navigationError": "Error: page.goto: Test timeout of 45000ms exceeded.\nCall log:\n  - navigating to \"https://codex-blog-daily-quality-20261019--cubxxw.netlify.app/zh/growth/posts/2025-annual-review/\", waiting until \"domcontentloaded\"\n\n\n  13 |       await request.fulfill({ contentType: 'text/javascript', body: '/* No third-party widget or remote writes in verification. */' });\n  14 |     });\n> 15 |     await page.goto(route, { waitUntil: 'domcontentloaded' });\n     |                ^\n  16 |     await expect(page.locator('main')).toBeVisible();\n  17 |     await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  18 |     expect(requests, 'a below-fold comment widget must not compete with initial reading').toBe(0);\n    at /Users/cubxxw/.codex/worktrees/blog-daily-quality/blog/tests/e2e/comments-loading.spec.ts:15:16"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

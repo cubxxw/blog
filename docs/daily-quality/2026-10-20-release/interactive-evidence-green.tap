@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: documentation does not build or publish while shadow cannot publish production
+ok 1 - documentation does not build or publish while shadow cannot publish production
+  ---
+  duration_ms: 0.744042
+  type: 'test'
+  ...
+# Subtest: a cancelled or skipped mandatory check is never a green gate
+ok 2 - a cancelled or skipped mandatory check is never a green gate
+  ---
+  duration_ms: 0.071042
+  type: 'test'
+  ...
+# Subtest: production reusable workflow is isolated and gated behind verified main artifacts
+ok 3 - production reusable workflow is isolated and gated behind verified main artifacts
+  ---
+  duration_ms: 7.1485
+  type: 'test'
+  ...
+# Subtest: manual backup applies the source gate before building
+ok 4 - manual backup applies the source gate before building
+  ---
+  duration_ms: 0.873291
+  type: 'test'
+  ...
+# Subtest: Lighthouse publish reruns bind to the producer artifact and fail closed before issue writes
+ok 5 - Lighthouse publish reruns bind to the producer artifact and fail closed before issue writes
+  ---
+  duration_ms: 2.151166
+  type: 'test'
+  ...
+# Subtest: failed interactive checks retain their HTML report and traces
+ok 6 - failed interactive checks retain their HTML report and traces
+  ---
+  duration_ms: 1.949625
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 61.266459
