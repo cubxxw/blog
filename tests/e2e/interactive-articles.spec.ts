@@ -69,7 +69,7 @@ test('pilot article: offline interaction stays local (zh context article)', asyn
   await expect.poll(() => page.evaluate(() => {
     let registered = false;
     document.fonts.forEach(face => {
-      if (face.family.replace(/["']/g, '') === 'Noto Serif SC') registered = true;
+      if (face.family.replace(/["']/g, '').toLowerCase() === 'noto serif sc') registered = true;
     });
     return registered;
   })).toBe(true);

@@ -61,3 +61,13 @@ test('Lighthouse publish reruns bind to the producer artifact and fail closed be
     assert.equal(resolve(ctx),artifactId);
   }
 });
+
+
+test('failed interactive checks retain their HTML report and traces', () => {
+  const workflow = YAML.parse(fs.readFileSync('.github/workflows/main.yaml', 'utf8'));
+  const evidence = workflow.jobs.verify.steps.find(step => step.name === 'Preserve verification evidence');
+  assert.equal(evidence.if, 'always()', 'failure must still upload evidence');
+  const paths = evidence.with.path.split('\n').map(value => value.trim()).filter(Boolean);
+  assert.ok(paths.includes('playwright-report/interactive/'), 'cross-engine report must survive the runner');
+  assert.ok(paths.includes('test-results/'), 'failed interactive traces must survive the runner');
+});

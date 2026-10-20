@@ -75,6 +75,8 @@ jobs:
             tests/.artifacts/ci/changes.json
             tests/.artifacts/ci/plan.json
             tests/.artifacts/ci/browser/
+            playwright-report/interactive/
+            test-results/
           if-no-files-found: warn
           retention-days: 30
 
