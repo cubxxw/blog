@@ -72,6 +72,7 @@ for(const size of [{width:320,height:844},{width:390,height:844},{width:568,heig
 test('the unscaled graphics fallback retains its reading type sizes',async({page})=>{
   await page.setViewportSize({width:1440,height:900});
   await page.addInitScript(()=>{
+    localStorage.setItem('space:cafe:theme:v2','zen');
     const original=HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]) {
       if(type==='webgl'||type==='webgl2'||type==='experimental-webgl')return null;

@@ -4,14 +4,14 @@ test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.
 test.beforeEach(({page})=>reserveWorldJourney(page));
 
 test.describe('Space café',()=>{
-  test('the café entry offers six scenes, then opens the real workspace search',async({page})=>{
+  test('the café entry offers the night room and six spatial scenes, then opens the real workspace search',async({page})=>{
     await page.goto('/zh/projects/');const space=page.locator('[data-bear-workspace]');
     await expect(space).toHaveAttribute('data-ready','true');await expect(space).toHaveAttribute('data-cafe-mode','cafe');
     await expect(page.locator('[data-space-dock]')).toBeHidden();
     expect(await page.locator('[data-space-windows]').evaluate(el=>(el as HTMLElement).inert)).toBe(true);
     await expect(page.locator('[data-cafe-image]')).toHaveCount(0);
     await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
-    await expect(page.locator('button[data-cafe-theme]')).toHaveCount(6);
+    await expect(page.locator('button[data-cafe-theme]')).toHaveCount(7);
     await page.locator('button[data-cafe-theme="coast"]').click();await expect(space).toHaveAttribute('data-cafe-theme','coast');
     await expect(page.locator('[data-cafe-dialog]')).toBeHidden();
     await page.keyboard.press('Control+k');await expect(space).toHaveAttribute('data-cafe-mode','desktop');

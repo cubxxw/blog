@@ -10,7 +10,7 @@ const exit=(page:Page)=>page.locator('[data-cafe-inspect-exit]');
 const frames=(page:Page,count=2)=>page.evaluate(count=>new Promise<void>(done=>{const next=()=>--count?requestAnimationFrame(next):done();requestAnimationFrame(next);}),count);
 async function settled(page:Page,mode:string){await expect(root(page)).toHaveAttribute('data-world-mode',mode);await expect(root(page)).toHaveAttribute('data-world-rendered-mode',mode);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
 async function ready(page:Page,lang='zh'){
-  reserveWorldJourney(page);
+  await reserveWorldJourney(page);
   await page.goto(`${lang==='zh'?'/zh':''}/projects/`);await page.waitForFunction(()=>{const d=document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;return d?.worldReady==='true'&&d.bootState==='complete'&&!d.worldLoading;},undefined,{timeout:30_000});await settled(page,'roam');
 }
 async function hit(button:Locator){
@@ -60,7 +60,7 @@ test('the actual cup and book raycasts enter the same detail views; a drag retai
 });
 
 test('six scene changes and both detail views preserve the original Notes node, draft and selection through the live workspace',async({page})=>{
-  reserveWorldJourney(page,120_000);
+  await reserveWorldJourney(page,120_000);
   await page.setViewportSize({width:1440,height:900});await ready(page);await enterWorkspace(page);await page.locator('[data-space-dock] [data-open="notes"]').click();const editor=page.locator('[data-note-editor]'),original=await editor.elementHandle(),draft='Coffee on the table.\nContinue this same notebook.';await editor.fill(draft);await editor.evaluate((el:HTMLTextAreaElement)=>el.setSelectionRange(3,18,'backward'));const selection=await editor.evaluate((el:HTMLTextAreaElement)=>[el.selectionStart,el.selectionEnd,el.selectionDirection]);
   await page.locator('.space-world-hud [data-cafe-visit]').click();await settled(page,'roam');const before=await pose(page);await inspect(page,'coffee');await exit(page).click();await samePose(page,before);await inspect(page,'books');await page.keyboard.press('Escape');await samePose(page,before);
   for(const id of ['zen','garden','coast','mountain','lake','rain']){await page.locator('.space-cafe__utilities [data-cafe-picker]').click();const choice=page.locator('[data-cafe-dialog]').locator(`button[data-cafe-theme="${id}"]`);await expect(choice).toHaveCount(1);await choice.click();await expect(root(page)).toHaveAttribute('data-world-theme',id);await expect(page.locator('[data-cafe-dialog]')).not.toHaveAttribute('open');}

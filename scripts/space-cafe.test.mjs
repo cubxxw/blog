@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { cafeTheme, cafeEntryMode, createSceneSelection } from '../assets/js/space/cafe.mjs';
 
-test('only six known cafés can be restored from browser storage', () => {
-  for (const id of ['zen', 'garden', 'coast', 'mountain', 'lake', 'rain']) assert.equal(cafeTheme(id), id);
-  for (const value of [null, '', '__proto__', 'https://other.example/image', {}, '<script>']) assert.equal(cafeTheme(value), 'zen');
+test('the night room is the default and all six spatial cafés remain restorable', () => {
+  for (const id of ['jiangnan', 'zen', 'garden', 'coast', 'mountain', 'lake', 'rain']) assert.equal(cafeTheme(id), id);
+  for (const value of [null, '', '__proto__', 'https://other.example/image', {}, '<script>']) assert.equal(cafeTheme(value), 'jiangnan');
 });
 test('direct content routes take priority over a café visit', () => {
   assert.equal(cafeEntryMode({ route: { view: 'bear', app: 'reader' }, navigation: 'navigate' }), 'desktop');

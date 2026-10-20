@@ -8,8 +8,11 @@ const evidence=path.resolve(process.env.WORLD_EVIDENCE_DIR||'output/playwright/s
 // Full Chromium uses the Mac GPU; its headless shell software fallback can
 // spend tens of seconds compiling the same scene and distort input timing.
 const browser=await chromium.launch({channel:'chromium',args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']});
+// This standalone probe owns the six navigable 3D rooms. The new photographic
+// default is exercised by space-night-cafe.spec.ts.
+const spatialContext=async options=>{const context=await browser.newContext(options);await context.addInitScript(()=>{if(!localStorage.getItem('space:cafe:theme:v2'))localStorage.setItem('space:cafe:theme:v2','zen');});return context;};
 const errors=[],checks=[];
-const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce'});
+const context=await spatialContext({viewport:{width:1440,height:900},reducedMotion:'reduce'});
 const page=await context.newPage();page.on('pageerror',error=>{errors.push(error.message);console.log('PAGE ERROR',error.message);});
 page.on('console',message=>{if(message.type()==='error'||message.text().includes('Space world unavailable'))console.log('BROWSER',message.text());});
 const root=page.locator('[data-bear-workspace]');
@@ -77,7 +80,7 @@ try {
     assert.equal(await page.locator('[data-note-editor]').inputValue(),'LOCAL 3D café — a draft that stays with me.');
   });
   await check('touch movement and the floating workspace fit a phone',async()=>{
-    const phone=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+    const phone=await spatialContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
     const mobile=await phone.newPage();mobile.on('pageerror',error=>errors.push(error.message));
     await mobile.goto(base+'/zh/projects/');await ready(mobile);
     await mode(mobile,'roam');
@@ -93,21 +96,21 @@ try {
     await mobile.screenshot({path:path.join(evidence,'06-phone-computer.png')});await phone.close();
   });
   await check('module failure retains a usable ordinary workspace',async()=>{
-    const fallback=await browser.newContext({viewport:{width:1280,height:800}}),p=await fallback.newPage();
+    const fallback=await spatialContext({viewport:{width:1280,height:800}}),p=await fallback.newPage();
     await p.route('**/world-cafe.*.js',route=>route.abort());
     await p.goto(base+'/zh/projects/');await p.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.worldFailed==='true');
     await p.locator('[data-boot-skip]').click();await p.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     await p.locator('[data-space-dock] [data-open="notes"]').click();await p.locator('[data-note-editor]').fill('Fallback still works.');await fallback.close();
   });
   await check('camera travel is continuous and settles at the desk',async()=>{
-    const cinematic=await browser.newContext({viewport:{width:1280,height:800}}),p=await cinematic.newPage();
+    const cinematic=await spatialContext({viewport:{width:1280,height:800}}),p=await cinematic.newPage();
     await p.goto(base+'/zh/projects/');await ready(p);const initial=await p.locator('[data-bear-workspace]').getAttribute('data-world-pose');
     await p.locator('[data-cafe-enter]').click();await p.waitForTimeout(550);
     assert.notEqual(await p.locator('[data-bear-workspace]').getAttribute('data-world-pose'),initial);
     assert.equal(await p.locator('[data-bear-workspace]').getAttribute('data-world-travel'),'true');await mode(p,'workspace');await cinematic.close();
   });
   await check('a lost graphics context releases travel and preserves a usable workspace',async()=>{
-    const loss=await browser.newContext({viewport:{width:1280,height:800},reducedMotion:'reduce'}),p=await loss.newPage();
+    const loss=await spatialContext({viewport:{width:1280,height:800},reducedMotion:'reduce'}),p=await loss.newPage();
     await p.goto(base+'/zh/projects/');await ready(p);await mode(p,'roam');
     await p.locator('.space-world__canvas').evaluate(canvas=>canvas.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext());
     await p.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.worldFailed==='true');

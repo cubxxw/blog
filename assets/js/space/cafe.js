@@ -9,7 +9,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   const pickerStatus=root.querySelector('[data-cafe-picker-status]');
   const desktop=[root.querySelector('[data-space-windows]'),root.querySelector('.space-bottom'),root.querySelector('.space-menu')];
   const abort=new AbortController();let disposed=false,initializing=true,failureFocusManaged=false;
-  let theme='zen',savedMode,mode,desiredMode,world,failed=false,trigger,revision=0,quiet=false,inspectTrigger,catCode='loading',catTravel=false;
+  let theme='jiangnan',savedMode,mode,desiredMode,world,failed=false,trigger,revision=0,quiet=false,inspectTrigger,catCode='loading',catTravel=false;
   const inspectPanel=root.querySelector('[data-cafe-inspect-panel]');
   function syncInspect(kind){
     const shelf=kind==='books'||kind==='spines',zoom=root.querySelector('[data-cafe-bookzoom]');
@@ -27,7 +27,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     root.querySelectorAll('[data-cafe-cat-action]').forEach(button=>{button.setAttribute('aria-disabled',String(unavailable||busy||catTravel));button.setAttribute('aria-busy',String(busy||catTravel));});
   }
 
-  try{theme=cafeTheme(localStorage.getItem('space:cafe:theme:v1'));quiet=localStorage.getItem('space:cafe:quiet:v1')==='yes';}catch{}
+  try{theme=cafeTheme(localStorage.getItem('space:cafe:theme:v2'));quiet=localStorage.getItem('space:cafe:quiet:v1')==='yes';}catch{}
   try{savedMode=sessionStorage.getItem('space:cafe:mode');}catch{}
   const url=new URL(location.href);
   if(localeResume&&url.searchParams.has('space-cafe'))savedMode=url.searchParams.get('space-cafe');
@@ -42,7 +42,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     root.querySelector('[data-cafe-name]').textContent=scene.name;
     root.querySelector('[data-cafe-note]').textContent=scene.note;
     choices.querySelectorAll('[data-cafe-theme]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.cafeTheme===id)));
-    try{localStorage.setItem('space:cafe:theme:v1',id);}catch{}
+    try{localStorage.setItem('space:cafe:theme:v2',id);}catch{}
   }
   function setQuiet(value) {
     quiet=value;root.dataset.environmentPaused=String(value);
@@ -98,13 +98,13 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);let timer;
       const module=await Promise.race([import(config.module),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('3D module timed out')),15000);})]).finally(()=>clearTimeout(timer));
       if(disposed)return null;boot.event('module');
-      world=module.createCafeWorld({root,theme,catAsset:catalog.catAsset,photoAsset:catalog.photoAsset,latteAsset:catalog.latteAsset,mapleAsset:catalog.mapleAsset,materialBase:catalog.materialBase,books:catalog.books,onDetail:(kind,source)=>inspect(kind,source),onInspect:syncInspect,onCat:syncCat,onComputer:()=>enterDesktop(true),onFailure:()=>failWorld(t('三维渲染已暂停，工作区仍可使用。','3D rendering paused. Your workspace is available.')),
+      world=module.createCafeWorld({root,theme,catAsset:catalog.catAsset,photoAsset:catalog.photoAsset,latteAsset:catalog.latteAsset,mapleAsset:catalog.mapleAsset,materialBase:catalog.materialBase,books:catalog.books,onDetail:(kind,source)=>inspect(kind,source),onInspect:syncInspect,onCat:syncCat,onComputer:()=>enterDesktop(true),onPhoto:async id=>{if(await enterDesktop())execute('open',{app:'photos',payload:id});},onFailure:()=>failWorld(t('场景已暂停，工作区仍可使用。','The room has paused. Your workspace is available.')),
         isBlocked:()=>boot.active||dialog.open||Boolean(root.querySelector('dialog[open]'))||root.hidden,
         onTravel:busy=>{catTravel=busy;syncCat();root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=busy;});}
       });
       boot.event('room');world.setQuiet(quiet);
-      if(desiredMode==='desktop')world.focus(false);else await world.start({animate:false,focus:false});
-      if(!await firstVisibleFrame(world.firstFrame))throw new Error('Rendering stopped');
+      const startup=desiredMode==='desktop'?world.focus(false):world.start({animate:false,focus:false});
+      if(!await firstVisibleFrame(Promise.all([Promise.resolve(startup),world.firstFrame]).then(([,painted])=>painted)))throw new Error('Rendering stopped');
       if(disposed||failed)return null;
       delete root.dataset.worldLoading;setMode(desiredMode);boot.event('frame');return world;
     } catch(error) {
@@ -172,6 +172,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(target.closest('[data-cafe-start]'))visit('seat');
     if(target.closest('[data-cafe-enter]'))enterDesktop(true);
     if(target.closest('[data-cafe-read]')){if(await enterDesktop())execute('open',{app:'reader'});}
+    if(target.closest('[data-cafe-photos]')){if(await enterDesktop())execute('open',{app:'photos'});}
     if(target.closest('[data-cafe-visit]'))visit();
     if(target.closest('[data-cafe-picker]'))openPicker(target.closest('[data-cafe-picker]'));
     if(target.closest('[data-cafe-picker-close]'))closePicker();
@@ -180,7 +181,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(target.closest('[data-cafe-replay]')){if(await visit('seat'))boot.replay();}
     if(target.closest('[data-cafe-outside]'))visit('outside');
     const choice=target.closest('button[data-cafe-theme]');
-    if(choice){await ready;if(disposed)return;const id=choice.dataset.cafeTheme;if(world)world.setTheme(id);commit(id);pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);closePicker();}
+    if(choice){await ready;if(disposed)return;const id=choice.dataset.cafeTheme,current=++revision;if(world&&await world.setTheme(id)===false)return;if(disposed||current!==revision)return;commit(id);pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);closePicker();}
   },{signal:abort.signal});
   window.addEventListener('pagehide',event=>{if(!event.persisted){disposed=true;abort.abort();boot.dispose();world?.dispose();}},{signal:abort.signal});
   return {ready,get active(){return mode==='cafe';},get modalOpen(){return dialog.open||boot.active;},get mode(){return mode;},get spatial(){return Boolean(world);},enterDesktop,visit,openPicker,escape(){if(world?.mode==='inspect')restoreInspect();else if(world?.mode==='roam')world.start();}};

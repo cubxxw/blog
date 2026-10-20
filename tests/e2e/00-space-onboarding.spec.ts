@@ -10,6 +10,9 @@ const room=async(page:import('@playwright/test').Page)=>{
 };
 const clickWithClockPaused=async(control:import('@playwright/test').Locator)=>{
   await expect(control).toBeVisible();await expect(control).toBeEnabled();
+  // Seven scenes make the native picker scroll on narrow screens. Scroll
+  // without smooth animation while the application's clock is held still.
+  await control.evaluate(el=>el.scrollIntoView({block:'nearest',behavior:'instant'}));
   const point=await control.evaluate(el=>{const r=el.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;return {x,y,width:r.width,height:r.height,inside:x>=0&&y>=0&&x<innerWidth&&y<innerHeight,hit:el.contains(document.elementFromPoint(x,y))};});
   expect(point.width).toBeGreaterThanOrEqual(44);expect(point.height).toBeGreaterThanOrEqual(44);expect(point.inside).toBe(true);expect(point.hit).toBe(true);
   await control.page().mouse.click(point.x,point.y);
@@ -98,7 +101,7 @@ test('the optional resident can fail without blocking the room or workspace',asy
 });
 
 test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>{
-  reserveWorldJourney(page);
+  await reserveWorldJourney(page);
   await page.addInitScript(()=>{
     const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null};
     (window as unknown as {__catMotionObservation:typeof observation}).__catMotionObservation=observation;
@@ -159,6 +162,9 @@ test('a graphics failure during the reveal cannot leave an invisible modal behin
   try{
     await page.goto('/zh/projects/');
     await expect(page.locator(root)).toHaveAttribute('data-boot-stage','2',{timeout:30000});
+    // The router now loads the spatial engine lazily after this stage.
+    // Wait for its actual canvas before advancing the paused animation clock.
+    await expect(page.locator('.space-world__canvas')).toBeAttached();
     await page.clock.runFor(16);await expect(page.locator(root)).toHaveAttribute('data-boot-stage','3');
     // The first actual frame is ready; preserve the original 1400ms minimum
     // before holding the real 550ms reveal window for context-loss injection.
