@@ -195,7 +195,7 @@ try {
     await enterWorkspace(page);
     await page.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     await page.locator('[data-space-dock] [data-open="products"]').click();
-    assert.ok((await page.locator('[data-space-window="products"]').innerText()).includes('Talent Signal'));
+    assert.ok((await page.locator('[data-space-window="products"]').innerText()).includes('capri'));
   });
   await check('an unavailable AI service reports failure while the workspace stays usable',async()=>{
     const matcher=`${base}/.netlify/functions/bear-agent`;

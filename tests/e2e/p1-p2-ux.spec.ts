@@ -174,17 +174,17 @@ test.describe('P1-P2 UX regression', () => {
     await searchTrigger.click();
     await workspace.locator('.space-menu [data-space-search-trigger]').click();
     await expect(dialog).toBeVisible();
-    await dialog.locator('[data-space-search-input]').fill('solo');
+    await dialog.locator('[data-space-search-input]').fill('roamorrow');
     const result = dialog.locator('[data-search-kind="product"][data-search-payload="solo-compass"]');
     await expect(result).toHaveCount(1);
-    await expect(result).toContainText('Solo Compass');
+    await expect(result).toContainText('Roamorrow');
     await page.keyboard.press('ArrowDown');
     await expect(result).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(dialog).toBeHidden();
     const product = workspace.locator('[data-space-window="products"]');
     await expect(product).toBeVisible();
-    await expect(product.locator('.space-product h2')).toHaveText('Solo Compass');
+    await expect(product.locator('.space-product h2')).toHaveText('Roamorrow');
     await expect(product.locator('[data-select-product="solo-compass"]')).toHaveAttribute('aria-pressed', 'true');
     const productState = () => page.evaluate(() => {
       const state = (window as unknown as {
@@ -198,7 +198,7 @@ test.describe('P1-P2 UX regression', () => {
     await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: true });
     await workspace.locator('[data-space-dock] [data-open="products"]').click();
     await expect(product).toBeVisible();
-    await expect(product.locator('.space-product h2')).toHaveText('Solo Compass');
+    await expect(product.locator('.space-product h2')).toHaveText('Roamorrow');
     await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: false });
   });
 
