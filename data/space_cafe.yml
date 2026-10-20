@@ -1,4 +1,9 @@
 themes:
+  - id: jiangnan
+    name_zh: 江南夜雨
+    name_en: Jiangnan at Night
+    note_zh: 雨落在河上，灯留在桌边。
+    note_en: Rain on the river. A light beside the desk.
   - id: zen
     name_zh: 禅庭
     name_en: Zen Courtyard

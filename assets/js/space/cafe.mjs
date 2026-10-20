@@ -1,5 +1,5 @@
-export const CAFE_THEMES = Object.freeze(['zen', 'garden', 'coast', 'mountain', 'lake', 'rain']);
-export function cafeTheme(value) { return CAFE_THEMES.includes(value) ? value : 'zen'; }
+export const CAFE_THEMES = Object.freeze(['jiangnan', 'zen', 'garden', 'coast', 'mountain', 'lake', 'rain']);
+export function cafeTheme(value) { return CAFE_THEMES.includes(value) ? value : 'jiangnan'; }
 export function cafeEntryMode({ route, navigation, saved, localeResume = false }) {
   if (route.view !== 'bear') return 'desktop';
   if (localeResume && ['cafe', 'desktop'].includes(saved)) return saved;

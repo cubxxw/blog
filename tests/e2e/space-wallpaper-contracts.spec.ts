@@ -81,6 +81,7 @@ test.describe('graphics recovery desktop',()=>{
   test.use({viewport:{width:1440,height:900},hasTouch:false,isMobile:false});
   test('forced WebGL failure keeps the original visible six-color landscape palette',async({page})=>{
     await page.addInitScript(()=>{
+      localStorage.setItem('space:cafe:theme:v2','zen');
       const original=HTMLCanvasElement.prototype.getContext;
       HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]) {
         if(type==='webgl'||type==='webgl2'||type==='experimental-webgl')return null;
