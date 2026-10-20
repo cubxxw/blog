@@ -25,7 +25,7 @@ async function main() {
   const root=process.cwd(),dir=path.resolve(get('--run-dir')??'tests/.artifacts/ci');
   if(stage==='plan') {
     const sourceSha=get('--sha')??process.env.GITHUB_SHA;
-    const changes=await resolveChangeSet({repoRoot:root,eventPath:process.env.GITHUB_EVENT_PATH,headSha:sourceSha});
+    const changes=await resolveChangeSet({repoRoot:root,eventPath:process.env.GITHUB_EVENT_PATH,headSha:sourceSha,eventName:process.env.GITHUB_EVENT_NAME,ref:process.env.GITHUB_REF});
     const plan=compileExecutionPlan({changeSet:changes,mode:process.env.BLOG_RELEASE_MODE});
     const clock=new Date().toISOString();
     write(path.join(dir,'changes.json'),changes);write(path.join(dir,'plan.json'),{...plan,clock,sourceSha,inputDigest:publicationInputDigest({repoRoot:root,sha:sourceSha})});

@@ -33,7 +33,7 @@ function diffFiles(repoRoot,base,head) {
   }
   return files;
 }
-export async function resolveChangeSet({repoRoot,eventPath,headSha}) {
+export async function resolveChangeSet({repoRoot,eventPath,headSha,eventName,ref}) {
   assertSha(headSha);
   git(repoRoot,['cat-file','-e',`${headSha}^{commit}`]);
   const event=eventPath?JSON.parse(readFileSync(eventPath,'utf8')):{};
@@ -42,6 +42,15 @@ export async function resolveChangeSet({repoRoot,eventPath,headSha}) {
     const target=event.pull_request.base?.sha;
     if(SHA.test(target ?? '')){try{baseSha=git(repoRoot,['merge-base',target,headSha]).trim();}catch{/* full scan */}}
   } else if(SHA.test(event.before ?? '') && !/^0+$/.test(event.before) && ancestor(repoRoot,event.before,headSha)) baseSha=event.before;
+  // workflow_dispatch on a non-main branch has no event baseline. Only with
+  // explicit event context, fall back to the fixed origin/main commit; any
+  // missing, invalid, noncommit or non-ancestral ref keeps the full fallback.
+  if(!baseSha && eventName==='workflow_dispatch' && typeof ref==='string' && /^refs\/heads\/\S+$/.test(ref) && ref!=='refs/heads/main') {
+    try {
+      const originMain=git(repoRoot,['rev-parse','--verify','refs/remotes/origin/main^{commit}']).trim();
+      if(SHA.test(originMain) && ancestor(repoRoot,originMain,headSha)) baseSha=originMain;
+    } catch {/* retain full U-inventory fallback */}
+  }
   const inventory=tracked(repoRoot,headSha);
   const names=new Set(inventory.map(f=>f.path));
   // U is an unproven inventory entry, not an assertion that an old article
