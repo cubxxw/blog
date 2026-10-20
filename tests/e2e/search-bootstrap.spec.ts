@@ -58,7 +58,7 @@ for (const prefix of ['', '/zh']) {
     } finally { release(); }
   });
 
-  test(`failed search engine preserves the query and an explicit retry recovers: ${prefix || 'en'}`, async ({ page }) => {
+  test(`failed search engine preserves the query and an explicit retry recovers: ${prefix || 'en'}`, async ({ page }, testInfo) => {
     const indexRequests = await indexFixture(page, prefix);
     let engineRequests = 0;
     let release!: () => void;
@@ -78,13 +78,27 @@ for (const prefix of ['', '/zh']) {
     await expect(input).toHaveAttribute('aria-busy', 'false');
     await expect(input).toHaveValue(marker);
     await page.locator('#search-empty').evaluate(node => {
-      (node as HTMLElement).style.fontSize = `${parseFloat(getComputedStyle(node).fontSize) * 2}px`;
+      const status = node as HTMLElement;
+      status.style.fontSize = `${parseFloat(getComputedStyle(node).fontSize) * 2}px`;
+      // Preserve layout-unit precision as well as multiline text: computed
+      // height strings may round down before being assigned as a minimum.
+      const height = status.getBoundingClientRect().height;
+      const padding = parseFloat(getComputedStyle(status).paddingBottom);
+      status.style.paddingBottom = `${padding + Math.ceil(height) + 0.328125 - height}px`;
     });
     // Compare layout after the normal entry animation has completed.
     await panel.evaluate(node => Promise.all(node.getAnimations().map(animation => animation.finished)));
     const before = await retry.boundingBox();
+    await testInfo.attach('retry-geometry-before', { contentType: 'application/json', body: JSON.stringify(await page.locator('#search-empty').evaluate(node => ({
+      rect: node.getBoundingClientRect().toJSON(), height: getComputedStyle(node).height,
+      boxSizing: getComputedStyle(node).boxSizing, minHeight: (node as HTMLElement).style.minHeight,
+    }))) });
     await retry.click();
     await expect(retry).toBeFocused();
+    await testInfo.attach('retry-geometry-after', { contentType: 'application/json', body: JSON.stringify(await page.locator('#search-empty').evaluate(node => ({
+      rect: node.getBoundingClientRect().toJSON(), height: getComputedStyle(node).height,
+      boxSizing: getComputedStyle(node).boxSizing, minHeight: (node as HTMLElement).style.minHeight,
+    }))) });
     expect(await retry.boundingBox()).toEqual(before);
     await expect.poll(() => engineRequests).toBe(2);
     // A locator click waits for aria-disabled to clear. Use the physical

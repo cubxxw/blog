@@ -53,7 +53,9 @@ import * as params from '@params';
     if (state === 'loading') return;
     // Keep the retry target still when a wrapped error becomes a shorter
     // loading message (mobile widths and enlarged reader text).
-    if (state === 'error') status.style.minHeight = getComputedStyle(status).height;
+    // Computed height strings can round down by a layout unit. The shared
+    // reset uses border-box; retain the precise measured border-box height.
+    if (state === 'error') status.style.minHeight = `${status.getBoundingClientRect().height}px`;
     state = 'loading'; const current = ++intent;
     input.setAttribute('aria-busy', 'true');
     status.hidden = false;
