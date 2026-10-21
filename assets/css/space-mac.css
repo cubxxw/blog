@@ -126,7 +126,7 @@
   .space .space-mac-menubar { padding:0 4px; }
   .space .space-mac-menubar button { min-height:44px; min-width:44px; padding:0 7px; font-size:13px; }
   .space .space-mac-active { padding:0 5px; max-width:70px; font-size:13px; }
-  .space .space-mac-menubar [data-mac-menu="edit"],.space .space-mac-menubar [data-mac-menu="go"],.space .space-mac-menubar [data-mac-menu="window"],.space .space-mac-menubar [data-mac-menu="help"],.space-mac-menubar__right time,.space .space-mac-return { display:none; }
+  .space .space-mac-menubar [data-mac-menu="edit"],.space .space-mac-menubar [data-mac-menu="go"],.space .space-mac-menubar [data-mac-menu="window"],.space-mac-menubar__right time,.space .space-mac-return { display:none; }
   .space-mac-menubar__right { gap:0; }
   .space .space-mac-menu { min-width:240px; }
   .space .space-mac-menu button,.space .space-menu button,.space .space-menu a { min-height:44px; font-size:16px; }

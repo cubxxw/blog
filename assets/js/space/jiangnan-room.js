@@ -49,6 +49,30 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   };
   const lathe = (points, m, x, y, z, parent = group, segments = 48) =>
     mesh(keep(new THREE.LatheGeometry(points.map(p => new THREE.Vector2(...p)), segments)), m, x, y, z, parent);
+  // Static, same-material craft details share a draw call. Keep their original
+  // geometry in the resource set so the world's normal disposal owns it all.
+  const batch = objects => {
+    if (objects.length < 2) return;
+    const positions = [], normals = [], uvs = [], indices = [];
+    let offset = 0;
+    for (const o of objects) {
+      o.updateMatrix();
+      const g = o.geometry.clone().applyMatrix4(o.matrix);
+      positions.push(...g.attributes.position.array); normals.push(...g.attributes.normal.array);
+      uvs.push(...g.attributes.uv.array);
+      if (g.index) for (const i of g.index.array) indices.push(i + offset);
+      else for (let i = 0; i < g.attributes.position.count; i++) indices.push(i + offset);
+      offset += g.attributes.position.count; g.dispose();
+    }
+    const merged = keep(new THREE.BufferGeometry());
+    merged.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    merged.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+    merged.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2)); merged.setIndex(indices);
+    const combined = mesh(merged, objects[0].material, 0, 0, 0, objects[0].parent);
+    combined.castShadow = objects.some(o => o.castShadow); combined.receiveShadow = objects.some(o => o.receiveShadow);
+    for (const o of objects) o.removeFromParent();
+    return combined;
+  };
   const makeGroup = (name, x = 0, y = 0, z = 0, parent = group, action) => {
     const o = new THREE.Group(); o.name = name; o.position.set(x, y, z); if (action) o.userData.action = action; parent.add(o); return o;
   };
@@ -67,7 +91,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     }
   });
   linenMap.wrapS = linenMap.wrapT = THREE.RepeatWrapping; linenMap.repeat.set(3, 3);
-  const walnut = mapped('#c8ad86', 'wood_table_001', { metres: .72, roughness: .48, normal: .16 });
+  const walnut = mapped('#c8ad86', 'wood_table_001', { metres: .72, roughness: .63, normal: .12 });
   const darkWood = mapped('#a28a65', 'wood_table_001', { metres: .64, roughness: .66 });
   const ash = mapped('#decca7', 'wood_table_001', { metres: .57, roughness: .64 });
   const floorWood = mapped('#c1b398', 'wood_floor', { metres: 1.65, roughness: .72, normal: .16 });
@@ -93,8 +117,12 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     dummy.position.set(-3.1 + i * .2, -.017, -.3); dummy.updateMatrix(); planks.setMatrixAt(i, dummy.matrix);
   }
   planks.castShadow = false; planks.receiveShadow = true; group.add(planks);
-  for (let i = 0; i < 32; i++) for (const z of [-1.6 + i % 3 * .39, .3 + i % 4 * .27])
-    box(-3.1 + i * .2, .006, z, .19, .0015, .0016, seam, group, .0002).castShadow = false;
+  const floorJoints = [];
+  for (let i = 0; i < 32; i++) for (const z of [-1.6 + i % 3 * .39, .3 + i % 4 * .27]) {
+    const joint = box(-3.1 + i * .2, .006, z, .19, .0015, .0016, seam, group, .0002);
+    joint.castShadow = false; floorJoints.push(joint);
+  }
+  batch(floorJoints);
   box(-3.28, 1.425, -.3, .18, 2.85, 4.78, plaster);
   box(3.28, 1.425, -.3, .18, 2.85, 4.78, plaster);
   box(0, 1.425, 2.09, 6.65, 2.85, .18, plaster);
@@ -144,36 +172,127 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   });
   const rug = material('#c1b89d', 1, { map: rugMap, bumpMap: rugMap, bumpScale: .001 });
   box(-.05, .014, .42, 4.55, .018, 2.50, rug, group, .006).castShadow = false;
-  for (let i = 0; i < 32; i++) for (const z of [-.864, 1.704])
-    tube([[-2.245 + i * .1415, .025, z], [-2.235 + i * .1415, .023, z + (z > 0 ? .04 : -.04)]], .0028, paper, group, 2).castShadow = false;
+  const fringe = [];
+  for (let i = 0; i < 32; i++) for (const z of [-.864, 1.704]) {
+    const thread = tube([[-2.245 + i * .1415, .025, z], [-2.235 + i * .1415, .023, z + (z > 0 ? .04 : -.04)]], .0028, paper, group, 2);
+    thread.castShadow = false; fringe.push(thread);
+  }
+  batch(fringe);
 
-  // The desk is a thick, softened slab with joinery, storage and a woven basket.
+  // A cabinetmaker's desk: a restrained solid top, breadboard end grain,
+  // tapered legs and recessed drawers. Its working surface stays at .8275m.
   const desk = makeGroup('old-walnut-writing-desk');
-  const top = box(1.465, .78, -1.58, 2.43, .095, 1.32, walnut, desk, .024);
-  top.rotation.z = -.0018;
-  box(1.465, .708, -2.08, 2.20, .095, .09, darkWood, desk);
-  box(.41, .377, -1.57, .105, .70, 1.09, darkWood, desk, .02);
-  box(.41, .08, -1.57, .29, .09, 1.16, walnut, desk);
+  box(1.465, .795, -1.58, 2.43, .065, 1.32, walnut, desk, .010);
+  box(1.465, .731, -2.08, 2.20, .075, .065, darkWood, desk, .007);
+  box(1.465, .747, -.99, 2.20, .045, .045, walnut, desk, .006);
+  for (const z of [-2.08, -1.08]) {
+    const leg = cylinder(.41, .386, z, .030, .75, walnut, desk, .044, 12);
+    leg.rotation.z = z < -1.5 ? -.018 : .015;
+  }
+  box(.41, .255, -1.58, .045, .055, 1.01, walnut, desk, .006);
+  box(.41, .724, -1.58, .070, .080, 1.12, walnut, desk, .008);
   box(2.30, .405, -1.69, .58, .66, .96, darkWood, desk, .018);
   for (let i = 0; i < 3; i++) {
-    box(2.30, .207 + i * .202, -1.198, .53, .182, .036, walnut, desk, .008);
-    tube([[2.23, .228 + i * .202, -1.168], [2.23, .25 + i * .202, -1.15], [2.37, .25 + i * .202, -1.15], [2.37, .228 + i * .202, -1.168]], .007, agedBrass, desk, 12);
+    box(2.30, .207 + i * .202, -1.198, .530, .175, .031, walnut, desk, .005);
+    box(2.30, .251 + i * .202, -1.179, .126, .015, .008, seam, desk, .004);
+    box(2.30, .242 + i * .202, -1.171, .138, .012, .023, darkWood, desk, .004);
+  }
+  const endGrain = canvasTexture(128, 512, (c, w, h) => {
+    c.fillStyle = '#b38e62'; c.fillRect(0, 0, w, h);
+    for (let i = 0; i < 38; i++) {
+      c.strokeStyle = i % 4 ? '#6a47251b' : '#ead0a338'; c.lineWidth = .7;
+      c.beginPath(); c.ellipse(w * .39, h * .56, 14 + i * 4.1, 70 + i * 13, .035, 0, Math.PI * 2); c.stroke();
+    }
+  });
+  const endWood = material('#bfa37e', .79, { map: endGrain, bumpMap: endGrain, bumpScale: .0003 });
+  for (const x of [.251, 2.679]) {
+    const end = mesh(geometry('desk-endgrain', () => new THREE.PlaneGeometry(1.29, .041)), endWood, x, .794, -1.58, desk);
+    end.rotation.y = x < 1 ? -Math.PI / 2 : Math.PI / 2;
   }
   for (const x of [2.06, 2.53]) for (const z of [-2.08, -1.30]) cylinder(x, .061, z, .022, .11, darkWood, desk, .026, 16);
   const basket = makeGroup('woven-paper-basket', .79, .22, -1.90, desk);
-  const basketMat = material('#9d8c66', .98);
-  const basketShell = cylinder(0, 0, 0, .18, .37, basketMat, basket, .205, 32);
-  basketShell.material.side = THREE.DoubleSide;
-  const basketTop = cylinder(0, .187, 0, .18, .006, darkWood, basket); basketTop.scale.set(1, 1, 1);
+  const basketMat = material('#9d8c66', .98, { map: linenMap, bumpMap: linenMap, bumpScale: .001 });
+  lathe([[.180, -.184], [.205, .180], [.205, .187], [.198, .187], [.174, -.174], [0, -.174]], basketMat, 0, 0, 0, basket, 32);
+  ring(0, .185, 0, .203, .0055, basketMat, basket).rotation.x = Math.PI / 2;
+  const basketWeave = [];
   for (let i = 0; i < 20; i++) {
     const a = i / 20 * Math.PI * 2;
-    tube([[Math.cos(a) * .181, -.17, Math.sin(a) * .181], [Math.cos(a) * .203, .18, Math.sin(a) * .203]], .004, ash, basket, 3);
+    basketWeave.push(tube([[Math.cos(a) * .181, -.17, Math.sin(a) * .181], [Math.cos(a) * .203, .18, Math.sin(a) * .203]], .0027, basketMat, basket, 3));
   }
-  for (let i = 0; i < 11; i++) ring(0, -.16 + i * .032, 0, .182 + i * .002, .0035, basketMat, basket).rotation.x = Math.PI / 2;
+  for (let i = 0; i < 11; i++) {const weave = ring(0, -.16 + i * .032, 0, .182 + i * .002, .0022, basketMat, basket); weave.rotation.x = Math.PI / 2; basketWeave.push(weave);}
+  batch(basketWeave);
   for (let i = 0; i < 3; i++) { const page = box(-.07 + i * .054, .20 + i * .01, 0, .10, .10, .006, paper, basket, .001); page.rotation.set(.35, .15, -.2 + i * .25); }
 
   function chair({ name, x, z, wide = false, rotation = 0 }) {
     const c = makeGroup(name, x, 0, z); c.rotation.y = rotation;
+    if (!wide) {
+      // The continuous crest changes section as it turns: a broad, thin back
+      // becomes a comfortable horizontal arm, rather than a round bent pipe.
+      const curve = new THREE.CatmullRomCurve3([
+        [-.305, .665, -.205], [-.311, .695, -.015], [-.282, .757, .172],
+        [-.171, .806, .257], [0, .819, .281], [.171, .806, .257],
+        [.282, .757, .172], [.311, .695, -.015], [.305, .665, -.205]
+      ].map(p => new THREE.Vector3(...p)), false, 'centripetal');
+      const points = [], indices = [], uvs = [], steps = 80, sides = 12;
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps, p = curve.getPointAt(t), tangent = curve.getTangentAt(t);
+        const across = new THREE.Vector3().crossVectors(tangent, new THREE.Vector3(0, 1, 0)).normalize();
+        const up = new THREE.Vector3().crossVectors(across, tangent).normalize();
+        const back = Math.pow(Math.sin(t * Math.PI), 5);
+        const horizontal = .031 - back * .014, vertical = .017 + back * .044;
+        for (let j = 0; j <= sides; j++) {
+          const a = j / sides * Math.PI * 2;
+          const v = p.clone().addScaledVector(across, Math.cos(a) * horizontal).addScaledVector(up, Math.sin(a) * vertical);
+          points.push(v.x, v.y, v.z); uvs.push(t * 4, j / sides);
+          if (i < steps && j < sides) {
+            const k = i * (sides + 1) + j;
+            indices.push(k, k + sides + 1, k + 1, k + 1, k + sides + 1, k + sides + 2);
+          }
+        }
+      }
+      for (const i of [0, steps]) for (let j = 1; j < sides - 1; j++) {
+        const base = i * (sides + 1);
+        if (i === 0) indices.push(base, base + j + 1, base + j);
+        else indices.push(base, base + j, base + j + 1);
+      }
+      const carved = keep(new THREE.BufferGeometry());
+      carved.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
+      carved.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2)); carved.setIndex(indices); carved.computeVertexNormals();
+      mesh(carved, walnut, 0, 0, 0, c).name = 'continuous-carved-walnut-crest';
+      for (const sx of [-1, 1]) {
+        tube([[sx * .253, .035, -.232], [sx * .232, .409, -.200], [sx * .277, .665, -.159]], .020, walnut, c, 18);
+        tube([[sx * .260, .035, .234], [sx * .224, .428, .196], [sx * .238, .740, .213]], .021, walnut, c, 18);
+        // Shallow dowel ends and a recessed seat rail expose how it is made.
+        const peg = cylinder(sx * .258, .681, -.154, .004, .002, darkWood, c, .004, 12); peg.rotation.z = Math.PI / 2;
+        tube([[sx * .23, .423, -.205], [sx * .24, .423, .06], [sx * .22, .433, .217]], .019, darkWood, c, 16);
+      }
+      for (const z of [-.204, .200]) tube([[-.235, .426, z], [0, .417, z], [.235, .426, z]], .018, walnut, c, 16);
+      // A soft superellipse gives the linen a rounded crown and tapered edge.
+      const seatPoints = [], seatUvs = [], seatIndices = [], segments = 64, rings = 10;
+      const seatOutline = (a, radius = 1) => {
+        const cs = Math.cos(a), sn = Math.sin(a);
+        return [Math.sign(cs) * Math.pow(Math.abs(cs), .53) * .252 * radius * (1 - .055 * sn), Math.sign(sn) * Math.pow(Math.abs(sn), .53) * .226 * radius];
+      };
+      for (let row = 0; row <= rings * 2; row++) {
+        const theta = row / (rings * 2) * Math.PI, radial = Math.sin(theta);
+        const y = .466 + Math.cos(theta) * .032;
+        for (let j = 0; j <= segments; j++) {
+          const [px, pz] = seatOutline(j / segments * Math.PI * 2, radial);
+          seatPoints.push(px, y, pz); seatUvs.push(px * 1.8 + .5, pz * 1.8 + .5);
+          if (row < rings * 2 && j < segments) {
+            const k = row * (segments + 1) + j;
+            seatIndices.push(k, k + 1, k + segments + 1, k + 1, k + segments + 2, k + segments + 1);
+          }
+        }
+      }
+      const cushion = keep(new THREE.BufferGeometry());
+      cushion.setAttribute('position', new THREE.Float32BufferAttribute(seatPoints, 3));
+      cushion.setAttribute('uv', new THREE.Float32BufferAttribute(seatUvs, 2)); cushion.setIndex(seatIndices); cushion.computeVertexNormals();
+      mesh(cushion, linen, 0, 0, 0, c).name = 'linen-seat-with-soft-crown';
+      const piping = Array.from({length: 65}, (_, i) => {const [px, pz] = seatOutline(i / 64 * Math.PI * 2); return [px, .466, pz];});
+      tube(piping, .0018, paper, c, 64).castShadow = false;
+      return c;
+    }
     const w = wide ? .69 : .55, d = wide ? .65 : .51, y = wide ? .39 : .465;
     for (const sx of [-1, 1]) for (const sz of [-1, 1])
       tube([[sx * w * .46, .045, sz * d * .43], [sx * w * .40, y - .08, sz * d * .36], [sx * w * .40, y + .04, sz * d * .36]], .023, ash, c, 10);
@@ -273,18 +392,17 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   box(1.87, .835, -1.188, .18, .005, .24, darkLinen, computer, .025).castShadow = false;
   contact(1.87, .8377, -1.18, .092, .16);
 
-  // Paper and brass task lamp, an amber island in the cool rainy room.
-  const lamp = makeGroup('paper-brass-task-lamp', .34, .829, -1.75);
-  cylinder(0, .022, 0, .106, .04, agedBrass, lamp, .095);
-  cylinder(0, .047, 0, .072, .017, brass, lamp);
-  tube([[0, .055, 0], [0, .24, -.018], [.06, .34, -.035], [.065, .39, -.035]], .013, brass, lamp, 24);
-  const shadeMat = material('#d6bd8e', .88, { map: linenMap, emissive: '#ffc36c', emissiveIntensity: .30, side: THREE.DoubleSide });
-  const shade = mesh(geometry('desk-lamp-shade', () => new THREE.CylinderGeometry(.084, .178, .188, 48, 1, true)), shadeMat, .065, .431, -.035, lamp);
+  // Opaline glass diffuses across its complete rounded surface. The practical
+  // keeps the original single point light; its glow requires no extra pass.
+  const lamp = makeGroup('opaline-brass-table-lamp', .34, .829, -1.75);
+  lathe([[0, .004], [.102, .004], [.107, .012], [.103, .028], [.075, .040], [.026, .046], [.018, .074], [.018, .31], [.026, .329]], brass, 0, 0, 0, lamp);
+  ring(0, .014, 0, .104, .002, agedBrass, lamp).rotation.x = Math.PI / 2;
+  const shadeMat = material('#f0d6ac', .48, { emissive: '#ffc880', emissiveIntensity: .47, side: THREE.DoubleSide });
+  const shade = lathe([[.029, .447], [.078, .445], [.125, .429], [.161, .401], [.184, .361], [.190, .328], [.185, .314], [.168, .310], [.165, .324], [.159, .350], [.137, .381], [.105, .401], [.056, .416], [.029, .416]], shadeMat, 0, 0, 0, lamp, 64);
   shade.castShadow = false;
-  ring(.065, .337, -.035, .177, .005, agedBrass, lamp).rotation.x = Math.PI / 2;
-  ring(.065, .525, -.035, .084, .003, brass, lamp).rotation.x = Math.PI / 2;
-  sphere(.065, .365, -.035, .029, basic('#ffe1a4'), lamp).castShadow = false;
-  const taskLight = new THREE.PointLight('#ffd29a', 2.35, 3.1, 2); taskLight.position.set(.065, .338, -.035); lamp.add(taskLight);
+  ring(0, .314, 0, .182, .003, ivory, lamp).rotation.x = Math.PI / 2;
+  sphere(0, .329, 0, .028, basic('#ffe8bd'), lamp).castShadow = false;
+  const taskLight = new THREE.PointLight('#ffd29a', 2.35, 3.1, 2); taskLight.position.set(0, .313, 0); lamp.add(taskLight);
   tube([[0, .02, .08], [-.10, .02, .24], [-.15, .014, .44], [-.16, -.26, .47]], .003, black, lamp, 18);
 
   function picture(parent, center, width, height, source, action) {
@@ -327,9 +445,13 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   box(-3.155, 1.155, -1.30, .07, 2.31, 2.20, walnut, cabinet);
   for (const z of [-2.39, -.21]) box(-2.87, 1.155, z, .62, 2.31, .055, walnut, cabinet);
   for (const y of [.075, .63, 1.01, 1.53, 2.16]) box(-2.87, y, -1.30, .62, .045, 2.20, walnut, cabinet);
-  box(-2.87, .304, -2.09, .60, .42, .52, walnut, cabinet);
-  box(-2.547, .32, -2.09, .02, .40, .49, darkWood, cabinet);
-  cylinder(-2.53, .35, -2.09, .014, .03, brass, cabinet).rotation.z = Math.PI / 2;
+  box(-2.85, .33, -1.30, .56, .51, 2.10, darkWood, cabinet, .006);
+  for (const z of [-1.825, -.775]) {
+    box(-2.551, .34, z, .028, .478, 1.020, walnut, cabinet, .005);
+    for (const dz of [-.476, .476]) box(-2.532, .34, z + dz, .009, .435, .026, darkWood, cabinet, .003);
+    for (const y of [.123, .558]) box(-2.531, y, z, .009, .025, .97, darkWood, cabinet, .003);
+    const knob = cylinder(-2.522, .386, z + .36, .011, .021, agedBrass, cabinet, .009, 16); knob.rotation.z = Math.PI / 2;
+  }
   const shelfGlow = basic('#d6a76c', { transparent: true, opacity: .50 });
   box(-2.76, 1.505, -1.30, .24, .005, 1.95, shelfGlow, cabinet, .001).castShadow = false;
   const shelfLight = new THREE.PointLight('#e9ba80', .65, 2.25, 2); shelfLight.position.set(-2.62, 1.47, -1.1); group.add(shelfLight);
@@ -347,7 +469,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   });
   const spineMaterial = material('#e5dfcc', .93, { map: bookAtlas });
   for (let i = 0; i < 10; i++) {
-    const h = .31 + (i * 7 % 5) * .018, t = .064 + i % 3 * .013, z = -1.66 + i * .143;
+    const h = .31 + (i * 7 % 5) * .018, t = .064 + i % 3 * .013, z = -1.71 + i * .098;
     const book = makeGroup('travel-book-' + (i + 1), -2.725, 1.034 + h / 2, z, cabinet, 'books');
     book.rotation.x = i === 0 ? -.13 : i === 9 ? .11 : 0;
     const cover = material(palette[i], .92);
@@ -362,19 +484,45 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   // A vintage turntable occupies the lower open bay, with a real grooved disc.
   const record = makeGroup('walnut-record-player', -2.82, .68, -.76, cabinet);
   box(0, 0, 0, .47, .078, .62, walnut, record, .018);
-  cylinder(0, .050, .05, .203, .018, black, record, .203, 64);
+  for (const z of [-.265, .265]) cylinder(.005, -.045, z, .034, .021, black, record, .030, 20);
+  const platter = makeGroup('vinyl-platter', 0, .050, .05, record);
+  cylinder(0, 0, 0, .203, .018, black, platter, .203, 64);
   const vinyl = material('#242922', .36, { metalness: .09 });
-  for (let i = 0; i < 9; i++) ring(0, .061, .05, .096 + i * .011, .0008, vinyl, record).rotation.x = Math.PI / 2;
-  cylinder(0, .062, .05, .053, .0015, material('#9b8a60', .92), record, .053, 32);
-  cylinder(0, .066, .05, .003, .008, brass, record, .003, 12);
+  const grooves = [];
+  for (let i = 0; i < 9; i++) {const groove = ring(0, .011, 0, .096 + i * .011, .0008, vinyl, platter); groove.rotation.x = Math.PI / 2; grooves.push(groove);}
+  batch(grooves);
+  cylinder(0, .012, 0, .053, .0015, material('#9b8a60', .92), platter, .053, 32);
+  const labelMark = box(.022, .013, .011, .022, .001, .007, paper, platter, .0002); labelMark.castShadow = false;
+  cylinder(0, .016, 0, .003, .008, brass, platter, .003, 12);
   cylinder(.145, .067, -.19, .028, .045, brass, record);
   tube([[.145, .09, -.19], [.16, .10, -.10], [.105, .09, .10], [.075, .082, .17]], .005, aluminum, record, 22);
   box(.073, .079, .18, .018, .018, .043, black, record, .004);
-  for (const z of [-1.60, -.26]) {
-    box(-2.84, .33, z, .43, .43, .17, darkWood, cabinet, .014);
-    const speaker = cylinder(-2.615, .33, z, .126, .012, darkLinen, cabinet, .126, 40); speaker.rotation.z = Math.PI / 2;
-    const cone = cylinder(-2.605, .33, z, .064, .014, black, cabinet, .064, 40); cone.rotation.z = Math.PI / 2;
-  }
+  const speedKnob = cylinder(.245, .006, -.19, .018, .010, aluminum, record, .018, 20); speedKnob.rotation.z = Math.PI / 2;
+  // A real horn and walnut enclosure are the room's sound control. The mouth
+  // has an invisible raycast disk, so its open centre is as clickable as its lip.
+  const hornSpeaker = makeGroup('vintage-horn-speaker', -.74, 1.034, -2.11, group, 'speaker');
+  hornSpeaker.rotation.y = -Math.PI / 2;
+  box(0, -.531, 0, .31, .974, .32, darkWood, hornSpeaker, .007);
+  box(.160, -.531, 0, .012, .876, .264, walnut, hornSpeaker, .005);
+  for (const z of [-.127, .127]) box(.169, -.531, z, .009, .865, .009, agedBrass, hornSpeaker, .002);
+  box(0, -.020, 0, .35, .032, .35, walnut, hornSpeaker, .006);
+  box(0, -.998, 0, .33, .035, .34, walnut, hornSpeaker, .005);
+  box(0, .082, 0, .34, .154, .33, walnut, hornSpeaker, .010);
+  box(.176, .082, 0, .008, .125, .295, darkLinen, hornSpeaker, .004);
+  const hornMetal = material('#79523b', .48, { metalness: .67, side: THREE.DoubleSide, envMapIntensity: .45 });
+  const horn = lathe([[.023, 0], [.026, .045], [.040, .095], [.075, .140], [.125, .182], [.171, .204], [.177, .213], [.171, .220], [.165, .208], [.119, .192], [.067, .151], [.034, .103], [.020, .045], [.018, .005]], hornMetal, .055, .276, 0, hornSpeaker, 64);
+  horn.rotation.z = -Math.PI / 2;
+  const hornLip = ring(.271, .276, 0, .173, .0033, brass, hornSpeaker); hornLip.rotation.y = Math.PI / 2;
+  const throat = cylinder(.060, .276, 0, .019, .003, black, hornSpeaker, .019, 24); throat.rotation.z = Math.PI / 2;
+  tube([[.045, .150, 0], [.040, .231, 0], [.061, .276, 0]], .011, agedBrass, hornSpeaker, 14);
+  const speakerHit = mesh(geometry('speaker-mouth-hit', () => new THREE.CircleGeometry(.178, 32)), basic('#000000', { transparent: true, opacity: 0, depthWrite: false, colorWrite: false, side: THREE.DoubleSide }), .278, .276, 0, hornSpeaker);
+  speakerHit.rotation.y = Math.PI / 2; speakerHit.userData.action = 'speaker'; speakerHit.castShadow = speakerHit.receiveShadow = false;
+  const indicatorMat = material('#4e4635', .56, { emissive: '#9d5f28', emissiveIntensity: 0 });
+  const indicator = sphere(.184, .080, -.115, .006, indicatorMat, hornSpeaker); indicator.scale.x = .35; indicator.castShadow = false;
+  const control = cylinder(.190, .079, .105, .019, .018, agedBrass, hornSpeaker, .017, 24); control.rotation.z = Math.PI / 2;
+  tube([[.202, .079, .105], [.202, .091, .105]], .0013, paper, hornSpeaker, 2).castShadow = false;
+  const soundTarget = [-.74, 1.310, -1.832];
+  let audioPlaying = false, lastAudioTime;
   // Brass espresso machine, aged enamel and a small ribbed grinder.
   const espresso = makeGroup('vintage-espresso-corner', -2.84, 1.035, -2.06, cabinet);
   const enamel = material('#617265', .40, { metalness: .28 });
@@ -395,6 +543,22 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     const tiny = lathe([[.022, 0], [.032, .008], [.036, .055], [.032, .06], [.028, .054], [.024, .009]], ivory, 0, .41, z, espresso, 28);
     tiny.castShadow = true;
   }
+  const demitasse = lathe([[.017, 0], [.024, .005], [.026, .043], [.023, .047], [.020, .042], [.017, .006]], ivory, .282, .065, -.11, espresso, 24);
+  const demitasseHandle = ring(.285, .088, -.079, .014, .003, ivory, espresso, Math.PI * 1.65); demitasseHandle.rotation.y = Math.PI / 2;
+  cylinder(.282, .064, -.11, .036, .004, aluminum, espresso, .036, 24);
+  // Fluted cast grinder and smoked hopper occupy the sparse upper left bay.
+  const grinder = makeGroup('ribbed-coffee-grinder', -2.84, 1.56, -2.08, cabinet);
+  box(0, .020, 0, .27, .040, .25, black, grinder, .009);
+  cylinder(0, .143, 0, .080, .21, enamel, grinder, .076, 32);
+  const flutes = [];
+  for (let i = 0; i < 14; i++) {
+    const a = i / 14 * Math.PI * 2;
+    flutes.push(cylinder(Math.cos(a) * .078, .143, Math.sin(a) * .078, .004, .18, agedBrass, grinder, .004, 6));
+  }
+  batch(flutes);
+  lathe([[.031, .246], [.073, .270], [.076, .366], [.069, .376], [.066, .370], [.066, .277], [.028, .253]], material('#625a45', .27, { metalness: .10 }), 0, 0, 0, grinder, 32);
+  cylinder(0, .379, 0, .077, .010, darkWood, grinder, .074, 32);
+  box(.096, .172, 0, .096, .032, .044, aluminum, grinder, .005);
   // A short stack of well-thumbed paperbacks breaks the shelf's regularity.
   for (let i = 0; i < 3; i++) {
     const paperback = makeGroup('well-thumbed-paperback-' + i, -2.82, 1.57 + i * .034, -1.12, cabinet);
@@ -420,14 +584,16 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   cylinder(0, .89, 0, .025, .13, fanWood, fan, .028, 24);
   tube([[-.265, 1.20, .01], [-.265, 1.055, .01], [-.17, .98, .01], [0, .94, .01], [.17, .98, .01], [.265, 1.055, .01], [.265, 1.20, .01]], .015, fanWood, fan, 32);
   const head = makeGroup('oscillating-wood-fan-head', 0, 1.20, 0, fan); head.rotation.y = -.22;
+  const fanWires = [];
   for (const z of [-.057, .066]) {
     ring(0, 0, z, .278, .013, fanWood, head);
     for (const r of [.091, .155, .214, .265]) ring(0, 0, z + (z > 0 ? .013 : -.013), r, .0027, fanWood, head);
     for (let i = 0; i < 20; i++) {
       const a = i / 20 * Math.PI * 2;
-      tube([[Math.cos(a) * .037, Math.sin(a) * .037, z + .015], [Math.cos(a) * .16, Math.sin(a) * .16, z + .026], [Math.cos(a) * .272, Math.sin(a) * .272, z]], .0028, fanWood, head, 5);
+      fanWires.push(tube([[Math.cos(a) * .037, Math.sin(a) * .037, z + .015], [Math.cos(a) * .16, Math.sin(a) * .16, z + .026], [Math.cos(a) * .272, Math.sin(a) * .272, z]], .0028, fanWood, head, 5));
     }
   }
+  batch(fanWires);
   for (let i = 0; i < 6; i++) {
     const a = i / 6 * Math.PI * 2;
     tube([[Math.cos(a) * .276, Math.sin(a) * .276, -.057], [Math.cos(a) * .286, Math.sin(a) * .286, 0], [Math.cos(a) * .276, Math.sin(a) * .276, .066]], .006, fanDark, head, 7);
@@ -467,14 +633,66 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   box(0, 0, 0, .20, .004, .145, paper, postcards, .001).castShadow = false;
   const postcard = box(.008, .004, -.007, .20, .004, .145, ivory, postcards, .001); postcard.rotation.y = -.09; postcard.castShadow = false;
 
+  // A single open branch arrangement balances the lamp. Leaves share one
+  // small geometry and one draw call; the monitor and coffee remain clear.
+  const glazeMap = canvasTexture(256, 256, (c, w, h) => {
+    c.fillStyle = '#a8a18b'; c.fillRect(0, 0, w, h);
+    for (let i = 0; i < 720; i++) {
+      const x = (i * 73.37) % w, y = (i * 29.73 + i * i * .011) % h;
+      c.fillStyle = i % 5 ? '#4b493526' : '#e2d5b74a'; c.beginPath(); c.arc(x, y, i % 7 ? .48 : 1.15, 0, Math.PI * 2); c.fill();
+    }
+  });
+  const stoneware = material('#c8bfa6', .74, { map: glazeMap, bumpMap: glazeMap, bumpScale: .00065 });
+  const branches = makeGroup('wild-olive-in-stoneware', .68, .829, -2.08);
+  lathe([[.055, 0], [.076, .014], [.105, .064], [.108, .120], [.086, .181], [.044, .211], [.042, .235], [.048, .241], [.040, .245], [.034, .237], [.035, .218], [.066, .188]], stoneware, 0, 0, 0, branches, 48);
+  const branchWood = material('#65533a', .96);
+  const branchPaths = [
+    [[0, .18, 0], [-.040, .37, -.008], [-.115, .54, .005], [-.237, .658, .012]],
+    [[0, .18, 0], [.045, .40, -.008], [.145, .57, -.030], [.185, .76, -.045]],
+    [[.022, .28, -.005], [.17, .42, -.025], [.268, .47, -.052]],
+    [[-.035, .35, 0], [-.19, .40, .015], [-.29, .46, .045]],
+    [[.091, .48, -.020], [.018, .63, -.015], [-.022, .72, -.025]]
+  ];
+  const stems = branchPaths.map(path => tube(path, .0025, branchWood, branches, 18)); batch(stems);
+  const leafGeometry = geometry('olive-leaf', () => {
+    const shape = new THREE.Shape(); shape.moveTo(0, -.022); shape.quadraticCurveTo(.010, -.008, .006, .010); shape.quadraticCurveTo(.004, .023, 0, .029); shape.quadraticCurveTo(-.010, .009, -.006, -.006); shape.quadraticCurveTo(-.004, -.017, 0, -.022);
+    const g = new THREE.ShapeGeometry(shape, 3); return g;
+  });
+  const leafMat = material('#737c50', .91, { side: THREE.DoubleSide });
+  const leaves = keep(new THREE.InstancedMesh(leafGeometry, leafMat, 34));
+  let leafIndex = 0;
+  branchPaths.forEach((path, branchIndex) => {
+    const curve = new THREE.CatmullRomCurve3(path.map(p => new THREE.Vector3(...p)));
+    const count = branchIndex < 2 ? 8 : 6;
+    for (let i = 0; i < count; i++) {
+      const p = curve.getPoint(.45 + i / count * .53), side = i % 2 ? 1 : -1;
+      dummy.position.copy(p).add(new THREE.Vector3(side * .014, .002, 0));
+      dummy.rotation.set(.25 + (i % 3) * .31, -.55 + branchIndex * .29, side * (.55 + i % 3 * .18));
+      dummy.scale.setScalar(.80 + (i % 4) * .10); dummy.updateMatrix(); leaves.setMatrixAt(leafIndex++, dummy.matrix);
+    }
+  });
+  leaves.count = leafIndex; leaves.castShadow = false; leaves.receiveShadow = true; branches.add(leaves);
+  dummy.rotation.set(0, 0, 0); dummy.scale.setScalar(1);
+
   return {
     group,
+    soundTarget,
     screen: { position: [...JIANGNAN_TARGETS.computer], width: .80, height: .50 },
+    setAudioState({playing = false, wanted = false, blocked = false, status} = {}) {
+      audioPlaying = Boolean(playing);
+      const unavailable = blocked || status === 'blocked' || status === 'error';
+      indicatorMat.color.set(playing ? '#b1b885' : unavailable ? '#916046' : wanted ? '#aa8a50' : '#4e4635');
+      indicatorMat.emissive.set(playing ? '#c1cd8f' : unavailable ? '#aa522a' : '#a57832');
+      indicatorMat.emissiveIntensity = playing ? .65 : wanted ? .16 : 0;
+      wake();
+    },
     update(time) {
       rotor.rotation.z = -time * 1.12;
       head.rotation.y = -.22 + Math.sin(time * .14) * .11;
       steam.rotation.y = Math.sin(time * .32) * .12;
       steam.scale.y = .90 + Math.sin(time * .65) * .10;
+      if (lastAudioTime !== undefined && audioPlaying) platter.rotation.y += Math.min(.10, Math.max(0, time - lastAudioTime)) * 3.49;
+      lastAudioTime = time;
     }
   };
 }

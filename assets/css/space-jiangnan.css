@@ -24,6 +24,12 @@
 .space[data-world-renderer="jiangnan"] .space-world-hud__roam { display:none; }
 .space[data-world-renderer="jiangnan"] .space-world-hud__details { display:none; }
 .space[data-world-renderer="jiangnan"] .space-world-hud__workspace { display:none; }
+/* Room actions belong to its objects. The native computer retains its menus. */
+.space[data-world-renderer="jiangnan"] :is(.space-cafe__header,.space-cafe__footer,.jiangnan-guidance,.space-world-touch),
+.space[data-world-renderer="jiangnan"]>.space-fullscreen { display:none!important; }
+.space[data-cafe-theme="jiangnan"] .space-boot { background:#17140f; }
+.space[data-cafe-theme="jiangnan"]:not([data-world-failed="true"]) .space-boot :is(.space-boot__header,.space-boot__body,.space-boot__footer) { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.space[data-world-renderer="jiangnan"] .space-cafe::after { background:radial-gradient(ellipse at 52% 48%,transparent 48%,#120c0624 100%); }
 .space[data-world-renderer="jiangnan"] .space-world-hud__details { top:calc(max(30px,env(safe-area-inset-top)) + 58px); }
 .space[data-world-renderer="jiangnan"] .space-world-hud__details button { border:1px solid #d1b98726; background:#211b134a; color:#eee2c7; font-size:12px; }
 .space[data-world-renderer="jiangnan"][data-world-mode="workspace"][data-computer-view="expanded"] .space-world--jiangnan { opacity:.12; pointer-events:none; }
@@ -54,6 +60,10 @@
 .space-room-credits>div { position:absolute; bottom:52px; right:0; width:min(340px,calc(100vw - 32px)); padding:18px; color:#e9dec7; background:#221c13f5; border:1px solid #88725666; border-radius:7px; line-height:1.7; box-shadow:0 10px 35px #09070480; }
 .space-room-credits a { color:#e3c78f; text-decoration:underline; text-underline-offset:3px; }
 .space-room-credits p { font-size:11px!important; margin:8px 0 0!important; }
+.space-mac-menu .space-room-credits { margin:0; color:var(--sp-ink); }
+.space-mac-menu .space-room-credits summary { justify-content:flex-start; padding:7px 12px; font-size:14px; }
+.space-mac-menu .space-room-credits>div { position:static; width:auto; padding:12px; border:0; box-shadow:none; color:var(--sp-ink); background:var(--sp-surface); font-size:12px; }
+.space-mac-menu .space-room-credits a { color:var(--sp-accent); }
 
 @media(max-width:640px) {
   .space[data-world-mode="workspace"][data-cafe-mode="desktop"][data-computer-view="framed"]>.jiangnan-computer-expand { position:absolute; z-index:106; top:max(12px,env(safe-area-inset-top)); right:max(12px,env(safe-area-inset-right)); display:flex; align-items:center; justify-content:center; min-height:44px; padding:0 16px; border:1px solid #eee2c766; border-radius:8px; background:#25251fe8; color:#fff7e3; font-size:13px; box-shadow:0 4px 16px #0003; }

@@ -14,10 +14,16 @@ async function openRoom(page:Page,lang='zh'){
   await page.goto(lang==='zh'?'/zh/projects/':'/projects/');
   await expect(root(page)).toHaveAttribute('data-boot-state','complete');
 }
+async function computerMenu(page:Page){
+  await page.keyboard.press('Control+k');await page.locator('[data-space-search-close]').click();
+  if(await page.locator('.jiangnan-computer-expand').isVisible())await page.locator('.jiangnan-computer-expand').click();
+  await page.locator('[data-space-menu-trigger]').click();
+}
+async function speaker(page:Page){const p=await page.evaluate(async()=>{const specifier='three',T=await import(specifier),r=document.querySelector<HTMLElement>('[data-bear-workspace]')!,p=JSON.parse(r.dataset.worldPose!),c=new T.PerspectiveCamera(p.fov,r.clientWidth/r.clientHeight,.04,160);c.position.set(p.x,p.y,p.z);c.rotation.set(p.pitch,p.yaw,0,'YXZ');c.updateMatrixWorld();const v=new T.Vector3(...JSON.parse(r.dataset.worldTargets!).speaker).project(c);return{x:(v.x+1)*r.clientWidth/2,y:(1-v.y)*r.clientHeight/2};});await page.mouse.click(p.x,p.y);}
 
 test('native fullscreen and OS-menu exit retain the original note and selection',async({page})=>{
   await openRoom(page);
-  await roomControl(page).click();
+  await page.keyboard.press('f');
   await expect.poll(()=>page.evaluate(()=>document.fullscreenElement?.matches('[data-bear-workspace]')||false)).toBe(true);
   await expect(roomControl(page)).toHaveAttribute('aria-pressed','true');
   await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));
@@ -40,18 +46,19 @@ test('native fullscreen and OS-menu exit retain the original note and selection'
 test('browser-driven fullscreen exit updates both controls without rebuilding the room',async({page})=>{
   await openRoom(page,'en');
   const canvas=await page.locator('.space-world__canvas').elementHandle();
-  await expect(roomControl(page)).toBeVisible();
-  await roomControl(page).click();
+  await expect(roomControl(page)).toBeHidden();
+  await page.keyboard.press('f');
   await expect(roomControl(page)).toHaveAttribute('aria-pressed','true');
   await page.evaluate(()=>document.exitFullscreen());
   await expect(roomControl(page)).toHaveAttribute('aria-pressed','false');
-  await expect(roomControl(page)).toHaveAccessibleName('Enter fullscreen');
+  await expect(roomControl(page)).toHaveAttribute('aria-label','Enter fullscreen');
   await expect(page.locator('.space-menu [data-space-fullscreen]')).toHaveAttribute('aria-pressed','false');
+  await computerMenu(page);await expect(page.locator('.space-menu [data-space-fullscreen]')).toHaveAccessibleName('Enter fullscreen');
   expect(await page.locator('.space-world__canvas').evaluate((el,old)=>el===old,canvas)).toBe(true);
 });
 
 test('switching from a fullscreen room to Product Lab releases the hidden fullscreen owner',async({page})=>{
-  await openRoom(page);await roomControl(page).click();
+  await openRoom(page);await page.keyboard.press('f');
   await expect.poll(()=>page.evaluate(()=>document.fullscreenElement!==null)).toBe(true);
   await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));
   const note=page.locator('[data-note-editor]');await note.fill('This note crosses both views.');const original=await note.elementHandle();
@@ -65,7 +72,8 @@ test('unsupported system fullscreen leaves a viewport-filling usable workspace',
   await page.addInitScript(()=>Object.defineProperty(Element.prototype,'requestFullscreen',{configurable:true,value:undefined}));
   await openRoom(page);
   await expect(roomControl(page)).toBeDisabled();
-  await expect(roomControl(page)).toHaveAccessibleName('浏览器不支持系统全屏');
+  await expect(roomControl(page)).toHaveAttribute('aria-label','浏览器不支持系统全屏');
+  await computerMenu(page);await expect(page.locator('.space-menu [data-space-fullscreen]')).toBeDisabled();await expect(page.locator('.space-menu [data-space-fullscreen]')).toHaveAccessibleName('浏览器不支持系统全屏');await page.keyboard.press('Escape');
   const dimensions=await root(page).evaluate(el=>({width:el.clientWidth,height:el.clientHeight,viewportWidth:innerWidth,viewportHeight:innerHeight}));
   expect(dimensions.width).toBe(dimensions.viewportWidth);expect(dimensions.height).toBe(dimensions.viewportHeight);
   await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));
@@ -77,19 +85,21 @@ test('a rejected fullscreen request keeps the current room usable and allows ret
     Element.prototype.requestFullscreen=function(){return Promise.reject(new DOMException('Fullscreen denied','NotAllowedError'));};
   });
   await openRoom(page);
-  await roomControl(page).click();
+  await page.keyboard.press('f');
   await expect(roomControl(page)).toBeEnabled();
   await expect(roomControl(page)).toHaveAttribute('aria-pressed','false');
   await expect(page.getByRole('status').filter({hasText:'未能切换系统全屏'})).toBeVisible();
-  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
+  await computerMenu(page);await page.locator('.space-menu [data-cafe-picker]').click();
   await expect(page.locator('[data-cafe-dialog]')).toBeVisible();
 });
 
-test('the room header keeps fullscreen and scene controls reachable at 320 pixels in both languages',async({page})=>{
+test('a 320 pixel room hides external chrome and keeps scene and fullscreen actions in the computer',async({page})=>{
   await page.setViewportSize({width:320,height:700});
   for(const lang of ['zh','en']){
     await openRoom(page,lang);
-    for(const control of await page.locator('.space-cafe__utilities button,.space-fullscreen').all()){
+    await expect(page.locator('.space-cafe__header')).toBeHidden();await expect(roomControl(page)).toBeHidden();
+    await computerMenu(page);
+    for(const control of await page.locator('.space-menu [data-cafe-picker],.space-menu [data-space-fullscreen]').all()){
       const box=await control.boundingBox();expect(box).not.toBeNull();
       expect(box!.width).toBeGreaterThanOrEqual(44);expect(box!.height).toBeGreaterThanOrEqual(44);
       expect(box!.x).toBeGreaterThanOrEqual(0);expect(box!.x+box!.width).toBeLessThanOrEqual(320);
@@ -98,13 +108,13 @@ test('the room header keeps fullscreen and scene controls reachable at 320 pixel
   }
 });
 
-test('room audio needs an explicit click, survives workspace use and stops when hidden or quiet',async({page})=>{
+test('default room audio survives workspace use and stops when hidden or quiet',async({page})=>{
   await page.addInitScript(()=>localStorage.setItem('space:cafe:theme:v2','jiangnan'));
   await openRoom(page);
-  const audio=page.locator('.space-room-audio audio'),sound=page.locator('[data-room-sound]');
+  const audio=page.locator('.space-room-audio audio');
   await expect(audio).toHaveCount(2);
-  expect(await audio.evaluateAll(nodes=>nodes.every(node=>(node as HTMLAudioElement).paused))).toBe(true);
-  await sound.click();await expect(sound).toHaveAttribute('aria-pressed','true');
+  await expect.poll(()=>root(page).getAttribute('data-room-sound')).toMatch(/playing|blocked/);
+  if(await root(page).getAttribute('data-room-sound')==='blocked')await speaker(page);
   await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>!(node as HTMLAudioElement).paused))).toBe(true);
   await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));
   await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
@@ -113,8 +123,7 @@ test('room audio needs an explicit click, survives workspace use and stops when 
   await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>(node as HTMLAudioElement).paused))).toBe(true);
   await root(page).evaluate(el=>(el as HTMLElement).hidden=false);
   await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>!(node as HTMLAudioElement).paused))).toBe(true);
-  await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-visit]').click();
-  await page.locator('[data-cafe-quiet]').click();
+  await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-quiet]').click();
   await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>(node as HTMLAudioElement).paused))).toBe(true);
-  await expect(sound).toHaveAttribute('aria-pressed','false');
+  await expect(root(page)).toHaveAttribute('data-room-sound','paused');
 });

@@ -1,6 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {JIANGNAN_BOUNDS,JIANGNAN_COLLIDERS,jiangnanWalk,jiangnanLook,JIANGNAN_TARGETS,jiangnanBoat,canJiangnanNavigate} from '../assets/js/space/jiangnan-state.mjs';
+import {JIANGNAN_BOUNDS,JIANGNAN_COLLIDERS,jiangnanWalk,jiangnanLook,JIANGNAN_TARGETS,jiangnanBoat,canJiangnanNavigate,jiangnanDestination} from '../assets/js/space/jiangnan-state.mjs';
+
+test('a touch floor destination follows the same bounded walk without crossing furniture',()=>{
+ const p={x:0,y:1.43,z:1.5,yaw:.2,pitch:-.05,fov:57};
+ const clear=jiangnanDestination(p,{x:-.5,z:-1.5});assert.ok(clear.z<-1);assert.equal(clear.y,p.y);assert.equal(clear.yaw,p.yaw);
+ const blocked=jiangnanDestination({...p,x:1.9},{x:1.9,z:-2});assert.ok(blocked.z>=JIANGNAN_COLLIDERS.find(b=>b.id==='desk').maxZ+.17);
+ const outside=jiangnanDestination(p,{x:1e6,z:1e6});assert.ok(outside.x<=JIANGNAN_BOUNDS.maxX&&outside.z<=JIANGNAN_BOUNDS.maxZ);
+ assert.deepEqual(jiangnanDestination(p,{x:NaN,z:0}),p);
+});
+test('the entire eased floor-tap segment retains furniture clearance on a grazing diagonal',()=>{
+ const start={x:1.9,y:1.43,z:-.7,yaw:0,pitch:0,fov:60},end=jiangnanDestination(start,{x:-2.1,z:-1.4});
+ for(let i=1;i<=200;i++){
+  const x=start.x+(end.x-start.x)*i/200,z=start.z+(end.z-start.z)*i/200;
+  assert.equal(JIANGNAN_COLLIDERS.some(b=>x>b.minX-.18&&x<b.maxX+.18&&z>b.minZ-.18&&z<b.maxZ+.18),false,`segment enters furniture at ${i}/200`);
+ }
+});
+test('a floor-tap segment cannot cut the corner between valid axis steps',()=>{
+ const start={x:-1.45,y:1.43,z:1.37,yaw:0,pitch:0,fov:60},end=jiangnanDestination(start,{x:.25,z:-.74});
+ for(let i=1;i<=200;i++){
+  const x=start.x+(end.x-start.x)*i/200,z=start.z+(end.z-start.z)*i/200;
+  assert.equal(JIANGNAN_COLLIDERS.some(b=>x>b.minX-.18&&x<b.maxX+.18&&z>b.minZ-.18&&z<b.maxZ+.18),false);
+ }
+});
 
 test('walking changes actual position, normalizes diagonal speed and stops at room walls',()=>{
   const start={x:0,y:1.55,z:1.7,yaw:0,pitch:0,fov:58};

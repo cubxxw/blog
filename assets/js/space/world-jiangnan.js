@@ -3,7 +3,7 @@ import {CSS3DRenderer,CSS3DObject} from '../vendor/CSS3DRenderer.js';
 import {createWorldMaterials} from './world-materials.js';
 import {worldRenderBudget,worldPixelRatio} from './world-render-budget.mjs';
 import {travelPose} from './world-state.mjs';
-import {JIANGNAN_ENTRY,JIANGNAN_TARGETS,jiangnanLook,jiangnanWalk,canJiangnanNavigate} from './jiangnan-state.mjs';
+import {JIANGNAN_ENTRY,JIANGNAN_TARGETS,jiangnanLook,jiangnanWalk,jiangnanDestination,canJiangnanNavigate} from './jiangnan-state.mjs';
 import {buildJiangnanRoom} from './jiangnan-room.js';
 import {buildJiangnanExterior} from './jiangnan-exterior.js';
 import {mountRoomAudio} from './room-audio.js';
@@ -96,7 +96,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     if(quiet||reduced.matches||duration===0){applyPose(to);finish?.();root.dataset.worldTravel='false';onTravel?.(false);wake();return Promise.resolve(true);}
     return new Promise(resolve=>{moving={from:{...pose},to:{...to},elapsed:0,duration,finish,resolve};wake();});
   }
-  const entry=()=>root.clientWidth<700?jiangnanLook([-1.3,1.5,.9],[1.8,1.15,-1.5],72):jiangnanLook([-1.3,1.5,.9],[1.15,1.23,-1.55],58);
+  const entry=()=>root.clientWidth<700?jiangnanLook([-.25,1.42,1.65],[.55,1.25,-1.6],104):jiangnanLook([.15,1.30,.85],[.7,1.2,-1.5],60);
   function resetInspection(){inspection=null;delete root.dataset.worldInspect;onInspect?.(null);}
   function start({animate=true,focus=false}={}){resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
   function focus(animate=true){
@@ -121,10 +121,11 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   function activate(kind,source=renderer.domElement){
     if(!navigate())return;
     if(kind==='computer')onComputer?.();
+    else if(kind==='speaker')audio?.toggle();
     else if(kind==='photo'){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent);onPhoto?.(data.photos?.[0]?.id);}
     else if(kind)onDetail?.(kind,source);
   }
-  function hit(event){const b=renderer.domElement.getBoundingClientRect();pointer.set((event.clientX-b.left)/b.width*2-1,-(event.clientY-b.top)/b.height*2+1);ray.setFromCamera(pointer,camera);return ray.intersectObjects(room.group.children,true).find(h=>h.object.visible&&(!h.object.material?.transparent||h.object.material.opacity>.5));}
+  function hit(event){const b=renderer.domElement.getBoundingClientRect();pointer.set((event.clientX-b.left)/b.width*2-1,-(event.clientY-b.top)/b.height*2+1);ray.setFromCamera(pointer,camera);return ray.intersectObjects(room.group.children,true).find(h=>h.object.visible&&(h.object.userData.action==='speaker'||!h.object.material?.transparent||h.object.material.opacity>.5));}
   function screenVisibility(){
     if(!cssObject)return;scene.updateMatrixWorld();
     const center=new THREE.Vector3().fromArray(room.screen.position),front=camera.position.z>center.z+.03;
@@ -233,14 +234,15 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     host=document.createElement('div');host.className='space-world space-world--jiangnan';root.prepend(host);renderer.domElement.className='space-world__canvas';renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label',t('三维咖啡馆。拖动环视，方向键或 WASD 行走，点击电脑和相框。','3D café. Drag to look, arrows or WASD to walk. Click the Mac or photograph.'));renderer.domElement.setAttribute('aria-describedby','jiangnan-controls');host.append(renderer.domElement);
     const guidance=document.createElement('p');guidance.id='jiangnan-controls';guidance.className='jiangnan-guidance';guidance.textContent=t('拖动环视，方向键或 WASD 移动。','Drag to look. Arrows or WASD to walk.');host.append(guidance);
     objectControls=document.createElement('nav');objectControls.className='jiangnan-object-controls';objectControls.setAttribute('aria-label',t('房间里的物件','Objects in the room'));host.append(objectControls);
-    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
+    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
     css=new CSS3DRenderer();css.domElement.className='space-world__css';css.domElement.style.pointerEvents='none';host.append(css.domElement);
     root.dataset.worldRenderer='jiangnan';root.dataset.worldTheme='jiangnan';root.dataset.worldTargets=JSON.stringify(targets);root.dataset.worldPbrMaps='0';root.dataset.worldTravel='false';
     pbr=createWorldMaterials({base:materialBase,renderer,resources,textures,isDisposed:()=>disposed,wake,root});
-    scene.add(new THREE.HemisphereLight('#9eb9d2','#4d3525',1.15));const moon=new THREE.DirectionalLight('#b2cce8',1.25);moon.position.set(-8,15,-18);scene.add(moon);
-    const windowFill=new THREE.DirectionalLight('#88aaca',.7);windowFill.position.set(6,9,6);scene.add(windowFill);
-    const key=new THREE.SpotLight('#ffd3a0',25,9,1.15,.8,2);key.position.set(-.5,2.68,.35);key.target.position.set(1,.3,-1.4);key.castShadow=true;key.shadow.mapSize.setScalar(budget.shadowSize);key.shadow.bias=-.00008;key.shadow.normalBias=.025;scene.add(key,key.target);
+    scene.add(new THREE.HemisphereLight('#a8bbc7','#60412b',.82));const moon=new THREE.DirectionalLight('#a4c6dd',1.05);moon.position.set(-8,15,-18);scene.add(moon);
+    const windowFill=new THREE.DirectionalLight('#93b6ca',.38);windowFill.position.set(6,9,6);scene.add(windowFill);
+    const key=new THREE.SpotLight('#ffcc8b',31,9,1.12,.88,2);key.position.set(-.5,2.68,.35);key.target.position.set(.45,.65,-1.4);key.castShadow=true;key.shadow.mapSize.setScalar(budget.shadowSize);key.shadow.bias=-.00008;key.shadow.normalBias=.025;scene.add(key,key.target);
     room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photoAsset,books,zh,isDisposed:()=>disposed});exterior=buildJiangnanExterior({scene,pbr,resources,textures,software});
+    if(room.soundTarget){targets.speaker=[...room.soundTarget];root.dataset.worldTargets=JSON.stringify(targets);}
     if(software)room.group.traverse(o=>{if(o.isPointLight)o.castShadow=false;});
     workspace=document.createElement('div');workspace.className='space-spatial-screen jiangnan-workspace';workspace.setAttribute('aria-label','CUBXXW OS');
     // Clipping a CSS3DObject itself breaks Chromium's transformed hit testing.
@@ -248,14 +250,15 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     const viewport=document.createElement('div');viewport.className='jiangnan-workspace__viewport';workspace.append(viewport);
     for(const node of [root.querySelector('[data-space-windows]'),root.querySelector('[data-space-snap]'),root.querySelector('.space-bottom'),root.querySelector('.space-menu')]){const anchor=document.createComment('jiangnan workspace return');node.before(anchor);anchors.push([node,anchor]);viewport.append(node);}
     computerExpand=document.createElement('button');computerExpand.type='button';computerExpand.className='jiangnan-computer-expand';computerExpand.dataset.computerDisplay='expanded';computerExpand.textContent=t('放大屏幕','Enlarge screen');root.append(computerExpand);
-    attachMonitor();const catalog=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent);audio=mountRoomAudio({root,assets:catalog.night,zh});
+    attachMonitor();const catalog=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent);
+    firstFrame.then(painted=>{if(!painted||disposed)return;audio=mountRoomAudio({root,assets:catalog.night,zh,defaultEnabled:true,initialQuiet:quiet,embedded:true,onStateChange:state=>{room.setAudioState?.(state);wake();}});if(audio.credits)root.querySelector('[data-mac-panel="help"]')?.append(audio.credits);});
     listen(root,'click',event=>{const button=event.target.closest('[data-computer-display]');if(button)changeComputerView(button.dataset.computerDisplay);});
     if(outsideButton)outsideButton.textContent=t('去窗边看看 ↗','Look out the window ↗');onCat?.('unavailable');
     listen(renderer.domElement,'pointerdown',event=>{if(!navigate()||event.button!==0)return;cancelTravel();drag={id:event.pointerId,x:event.clientX,y:event.clientY,distance:0};renderer.domElement.setPointerCapture(event.pointerId);});
     listen(renderer.domElement,'pointermove',event=>{if(!drag){if(navigate())renderer.domElement.style.cursor=action(hit(event)?.object)?'pointer':'grab';return;}const dx=event.clientX-drag.x,dy=event.clientY-drag.y;drag.distance+=Math.abs(dx)+Math.abs(dy);drag.x=event.clientX;drag.y=event.clientY;if(!navigate())return;applyPose({...pose,yaw:pose.yaw-dx*.0035,pitch:Math.max(-.9,Math.min(.85,pose.pitch-dy*.003))});wake();});
-    listen(renderer.domElement,'pointerup',event=>{if(drag?.id!==event.pointerId)return;const click=drag.distance<6;drag=null;if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);if(click&&navigate())activate(action(hit(event)?.object));});
+    listen(renderer.domElement,'pointerup',event=>{if(drag?.id!==event.pointerId)return;const click=drag.distance<6;drag=null;if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);if(click&&navigate()){const target=hit(event),kind=action(target?.object);if(kind)activate(kind);else if(event.pointerType==='touch'&&target?.point.y<.06&&target.point.y>-.06)travel(jiangnanDestination(pose,target.point),650);}});
     listen(renderer.domElement,'pointercancel',()=>{drag=null;});
-    listen(document,'keydown',event=>{if(!navigate()||event.metaKey||event.ctrlKey||event.altKey||event.target.closest('input,textarea,[contenteditable="true"]'))return;if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();cancelTravel();keys.add(event.code);wake();}});
+    listen(document,'keydown',event=>{if(!navigate()||event.metaKey||event.ctrlKey||event.altKey||event.target.closest('input,textarea,[contenteditable="true"]'))return;if(event.code==='KeyF'){event.preventDefault();root.querySelector('[data-space-fullscreen]')?.click();}if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();cancelTravel();keys.add(event.code);wake();}});
     listen(document,'keyup',event=>keys.delete(event.code));listen(window,'blur',()=>{keys.clear();touchKeys.clear();drag=null;});
     for(const button of root.querySelectorAll('[data-world-walk]')){listen(button,'pointerdown',event=>{if(!navigate())return;event.preventDefault();cancelTravel();touchKeys.add(button.dataset.worldWalk);button.setPointerCapture(event.pointerId);wake();});for(const name of ['pointerup','pointercancel','lostpointercapture'])listen(button,name,()=>touchKeys.delete(button.dataset.worldWalk));}
     listen(document,'visibilitychange',visibility);listen(reduced,'change',()=>{if(reduced.matches)finishTravel();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();settleFirst(false);onFailure?.();});

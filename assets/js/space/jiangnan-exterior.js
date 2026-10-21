@@ -19,7 +19,7 @@ export function buildJiangnanExterior({scene,pbr,resources,textures,software=fal
   const roof=standard('#17232b','rock_boulder_dry',{roughness:.74}),tileEdge=standard('#26343c',null,{roughness:.65});
   const timber=standard('#342e29','wood_table_001'),wood=standard('#493b2a','wood_table_001'),slats=standard('#62503a','wood_table_001');
   const iron=standard('#1d292d',null,{metalness:.25,roughness:.72});
-  const warm=standard('#a17b45',null,{emissive:'#b28a4d',emissiveIntensity:.8,roughness:1});
+  const warm=standard('#b98a50',null,{emissive:'#e0a15b',emissiveIntensity:1.35,roughness:1});
   const dimWindow=standard('#3c4d54',null,{emissive:'#4b666d',emissiveIntensity:.12});
   const lanternPaper=standard('#a68a58',null,{emissive:'#e4a34e',emissiveIntensity:1.55,roughness:1});
   const boxGeometry=geometry(new THREE.BoxGeometry(1,1,1)),cylinderGeometry=geometry(new THREE.CylinderGeometry(1,1,1,8));
@@ -121,6 +121,24 @@ export function buildJiangnanExterior({scene,pbr,resources,textures,software=fal
     }
   });
 
+  // A willow grows beyond the bay's right edge. Its irregular hanging sprays
+  // frame the rain instead of repeating another row of architectural modules.
+  const willow=standard('#263b31',null,{side:THREE.DoubleSide,roughness:1});
+  const leafShape=new THREE.Shape();leafShape.moveTo(0,-.5);leafShape.quadraticCurveTo(.16,-.02,0,.5);leafShape.quadraticCurveTo(-.12,.04,0,-.5);
+  const willowLeaf=geometry(new THREE.ShapeGeometry(leafShape,4));
+  branch(timber,v3(4.7,.0,-5.4),v3(4.4,4.2,-5.2),.10);
+  branch(timber,v3(4.4,3.4,-5.2),v3(.8,3.55,-5.0),.035);
+  for(let i=0;i<11;i++){
+    const x=.95+i*.36,top=3.45+Math.sin(i*.8)*.19,length=1.12+hash(i+401)*1.3;
+    const mid=v3(x+.12,top-length*.52,-4.94),end=v3(x-.03,top-length,-4.88);
+    branch(timber,v3(x,top,-5),mid,.006);branch(timber,mid,end,.004);
+    for(let n=0;n<13;n++){
+      const t=(n+.6)/13,y=top-t*length,side=n%2===0?1:-1;
+      const q=new THREE.Quaternion().setFromEuler(new THREE.Euler(.12*Math.sin(n),0,side*(.3+hash(i*19+n)*.5)));
+      batch(willowLeaf,willow,[x+side*.045+Math.sin(t*Math.PI)*.08,y,-4.9],[.23,.20+hash(n+i*11)*.12,1],q);
+    }
+  }
+
   // A continuous extruded arch leaves a real opening under the bridge.
   const bridgeTop=t=>.03+2.17*Math.sin(Math.PI*t),bridgeBottom=t=>-.64+2.25*Math.sin(Math.PI*t);
   const arch=new THREE.Shape();arch.moveTo(-6,bridgeTop(0));
@@ -161,9 +179,9 @@ export function buildJiangnanExterior({scene,pbr,resources,textures,software=fal
 void main(){vec4 p=modelMatrix*vec4(position,1.0);p.y+=sin(p.x*1.5+p.z*2.1+time*.7)*.009+sin(p.x*3.5-p.z*2.7+time*.9)*.005;river=p.xyz;gl_Position=projectionMatrix*viewMatrix*p;}`,
     fragmentShader:`uniform float time;uniform vec3 boat;uniform vec4 warmLights[4];varying vec3 river;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-void main(){vec2 p=river.xz;float chop=sin(p.x*7.2+p.y*13.0+sin(p.y*3.0-time*.7))*sin(p.y*9.3-time*1.2);float soft=sin(p.x*.8+p.y*1.7+time*.32);vec3 col=mix(vec3(.012,.026,.035),vec3(.032,.053,.063),.45+soft*.15+chop*.08);
-float moon=exp(-abs(p.x-5.0+soft*.75)*.32)*pow(max(0.0,chop),14.0);col+=vec3(.14,.21,.24)*moon*.52;
-for(int i=0;i<4;i++){vec4 lamp=warmLights[i];float distance=max(0.0,p.y-lamp.y);float shimmer=sin(p.y*14.0+sin(p.x*8.0+time*.6)*2.0-time*.6);float strip=exp(-pow((p.x-lamp.x+soft*.22)/(lamp.w+distance*.025),2.0)*2.4);col+=vec3(.35,.21,.075)*strip*exp(-distance*.15)*smoothstep(.15,.95,shimmer)*lamp.z;}
+void main(){vec2 p=river.xz;float chop=sin(p.x*7.2+p.y*13.0+sin(p.y*3.0-time*.7))*sin(p.y*9.3-time*1.2);float soft=sin(p.x*.8+p.y*1.7+time*.32);vec3 col=mix(vec3(.019,.039,.052),vec3(.044,.081,.105),.45+soft*.15+chop*.08);
+float moon=exp(-abs(p.x-5.0+soft*.75)*.32)*pow(max(0.0,chop),14.0);col+=vec3(.17,.25,.31)*moon*.65;
+for(int i=0;i<4;i++){vec4 lamp=warmLights[i];float distance=max(0.0,p.y-lamp.y);float shimmer=sin(p.y*14.0+sin(p.x*8.0+time*.6)*2.0-time*.6);float strip=exp(-pow((p.x-lamp.x+soft*.22)/(lamp.w+distance*.025),2.0)*2.4);col+=vec3(.56,.28,.075)*strip*exp(-distance*.13)*smoothstep(.15,.95,shimmer)*lamp.z;}
 vec2 cell=floor(p*2.7),local=fract(p*2.7)-.5;float phase=fract(time*.8+hash(cell));float ring=exp(-abs(length(local)-phase*.46)*100.0)*(1.0-phase);col+=vec3(.045,.075,.09)*ring*.3;
 float trail=p.x-boat.x;float wake=exp(-abs(abs(p.y-boat.z)-(.2+max(0.0,trail)*.15))*24.0)*exp(-max(0.0,trail)*.6)*step(0.0,trail);col+=vec3(.095,.13,.15)*wake*.34;
 float horizon=1.0-smoothstep(-31.0,-5.0,p.y);col=mix(col,vec3(.045,.065,.08),horizon*.3);gl_FragColor=vec4(col,1.0);
@@ -180,15 +198,40 @@ float horizon=1.0-smoothstep(-31.0,-5.0,p.y);col=mix(col,vec3(.045,.065,.08),hor
 
   // Every rain segment is outside the room, with a deterministic seed and a
   // world-space descent. Nearby drops read longer and brighter at the window.
-  const count=software?1200:3200,rainPositions=new Float32Array(count*6),rainColors=new Float32Array(count*6);
+  const count=software?1800:5200,rainPositions=new Float32Array(count*6),rainColors=new Float32Array(count*6);
   const drops=Array.from({length:count},(_,i)=>{
     const near=i<count*.68,x=(hash(i+17)-.5)*(near?26:66),z=near?-3.6-hash(i+971)*16:-17-hash(i+971)*21;
     const brightness=.48+hash(i+141)*.38;for(let j=0;j<2;j++)rainColors.set([brightness*.68,brightness*.84,brightness],i*6+j*3);
-    return {x,z,y:hash(i+193)*14,length:.3+hash(i+481)*.4,speed:7.4+hash(i+593)*1.4};
+    return {x,z,y:hash(i+193)*14,length:.20+hash(i+481)*.33,speed:7.4+hash(i+593)*1.4};
   });
   const rainGeometry=geometry(new THREE.BufferGeometry());rainGeometry.setAttribute('position',new THREE.BufferAttribute(rainPositions,3).setUsage(THREE.DynamicDrawUsage));rainGeometry.setAttribute('color',new THREE.BufferAttribute(rainColors,3));
   const rainMaterial=material(new THREE.LineBasicMaterial({color:'#99bacb',vertexColors:true,transparent:true,opacity:.46,depthWrite:false,fog:true}));
   const rain=new THREE.LineSegments(rainGeometry,rainMaterial);rain.frustumCulled=false;rain.name='outside heavy rainfall';group.add(rain);
+
+  // Small beads cling to the actual bay glass. Thin runnels catch cool sky and
+  // warm lamplight while leaving the river and its depth visible behind them.
+  const glassRain=material(new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,uniforms:{time:{value:0}},
+    vertexShader:'varying vec2 glassUv;void main(){glassUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
+    fragmentShader:`uniform float time;varying vec2 glassUv;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+void main(){
+ vec2 g=glassUv*vec2(57.0,22.0),cell=floor(g),p=fract(g)-.5;float seed=h(cell);
+ p-=vec2((seed-.5)*.54,(h(cell+7.0)-.5)*.45);
+ float size=.085+seed*.065;vec2 bead=p/vec2(size,size*1.48);float d=length(bead);
+ float rim=(smoothstep(.54,.82,d)-smoothstep(.82,1.05,d))*step(.30,seed);
+ float glint=pow(max(0.0,1.0-length(bead-vec2(-.27,.35))*1.65),4.0)*step(.30,seed);
+ float shadow=pow(max(0.0,1.0-length(bead-vec2(.25,-.25))*1.3),3.0)*step(.30,seed);
+ float column=floor(glassUv.x*71.0),random=h(vec2(column,3.0));
+ float x=fract(glassUv.x*71.0)-(.25+random*.5);
+ float run=exp(-abs(x)*165.0)*step(.90,random)*smoothstep(.6,1.0,sin(glassUv.y*14.0+time*.37+random*9.0));
+ float edge=smoothstep(0.0,.025,glassUv.x)*(1.0-smoothstep(.975,1.0,glassUv.x));
+ vec3 light=mix(vec3(.48,.65,.74),vec3(.86,.67,.39),(1.0-smoothstep(.1,.64,glassUv.x))*.35);
+ float alpha=(rim*.17+glint*.45+shadow*.11+run*.18)*edge;
+ gl_FragColor=vec4(light*(1.0-shadow*.55)+glint*.28,alpha);
+ #include <tonemapping_fragment>
+ #include <colorspace_fragment>
+}` }));
+  const beadedGlass=mesh(geometry(new THREE.PlaneGeometry(4.04,1.63)),glassRain,.80,1.67,-2.606);beadedGlass.name='rain beads and runnels on window';beadedGlass.renderOrder=5;beadedGlass.castShadow=beadedGlass.receiveShadow=false;
 
   const boat=new THREE.Group();boat.name='old boatman and open wooden sampan';group.add(boat);
   for(const side of [-1,1]){
@@ -246,7 +289,7 @@ float horizon=1.0-smoothstep(-31.0,-5.0,p.y);col=mix(col,vec3(.045,.065,.08),hor
       const hand=v3(arm.side<0?-.73:-.49,.24,arm.side<0?.035:.0).applyEuler(oar.rotation).add(oar.position),shoulder=v3(.60,.77,arm.side*.14),elbow=shoulder.clone().lerp(hand,.55);elbow.y-=.075;elbow.z+=arm.side*.035;
       poseLimb(arm.upper,shoulder,elbow);poseLimb(arm.fore,elbow,hand);arm.hand.position.copy(hand);
     }
-    waterUniforms.time.value=seconds;waterUniforms.boat.value.copy(boat.position);mistMaterial.uniforms.time.value=seconds;
+    waterUniforms.time.value=seconds;waterUniforms.boat.value.copy(boat.position);mistMaterial.uniforms.time.value=seconds;glassRain.uniforms.time.value=seconds;
     for(let i=0;i<count;i++){
       const drop=drops[i],y=frac((drop.y-seconds*drop.speed)/14)*14-.5,wind=Math.sin(seconds*.09)*.055,x=drop.x+Math.sin(seconds*.23+drop.z)*.08;
       rainPositions.set([x,y,drop.z,x+.065+wind,y+drop.length,drop.z+.025],i*6);

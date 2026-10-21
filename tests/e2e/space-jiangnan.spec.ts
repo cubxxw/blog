@@ -18,6 +18,7 @@ async function point(page:Page,name:string){return page.evaluate(async name=>{
 },name);}
 async function hit(page:Page,name:string){const p=await point(page,name);expect(p.x).toBeGreaterThanOrEqual(0);expect(p.y).toBeGreaterThanOrEqual(0);await page.mouse.click(p.x,p.y);}
 async function back(page:Page){await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-visit]').click();await expect(root(page)).toHaveAttribute('data-world-mode','roam');await expect(root(page)).toHaveAttribute('data-world-travel','false');}
+async function menu(page:Page){await page.keyboard.press('Control+k');await page.locator('[data-space-search-close]').click();if(await page.locator('.jiangnan-computer-expand').isVisible())await page.locator('.jiangnan-computer-expand').click();await page.locator('[data-space-menu-trigger]').click();}
 
 test('the default room is actual full-viewport WebGL geometry without a photographic stage',async({page})=>{
   const plates:string[]=[],errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));page.on('console',msg=>{if(msg.type()==='error'&&/THREE.WebGLProgram|Shader Error/.test(msg.text()))errors.push(msg.text());});page.on('request',r=>{if(/jiangnan-night|jiangnan-boat-v2/.test(r.url()))plates.push(r.url());});await ready(page);
@@ -78,28 +79,29 @@ test('keyboard object controls appear only on focus and use the same real Mac',a
   await computer.press('Enter');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(page.locator('[data-space-dock]')).toBeVisible();
 });
 
-test('the touch direction pad advances a physical position and releasing stops it',async({page})=>{
-  await page.setViewportSize({width:390,height:844});await ready(page);const button=page.locator('[data-world-walk="forward"]'),b=(await button.boundingBox())!,a=await pose(page);
-  await page.mouse.move(b.x+b.width/2,b.y+b.height/2);await page.mouse.down();try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-a.x,p.z-a.z);},{timeout:10_000}).toBeGreaterThan(.1);}finally{await page.mouse.up();}
+test.describe('room touch navigation',()=>{test.use({hasTouch:true,isMobile:true});test('a touch floor tap moves through the real room without visible direction buttons',async({page})=>{
+  await page.setViewportSize({width:390,height:844});await ready(page);await expect(page.locator('.space-world-touch')).toBeHidden();const a=await pose(page);
+  const p=await page.evaluate(async()=>{const specifier='three',T=await import(specifier),r=document.querySelector<HTMLElement>('[data-bear-workspace]')!,p=JSON.parse(r.dataset.worldPose!),c=new T.PerspectiveCamera(p.fov,r.clientWidth/r.clientHeight,.04,160);c.position.set(p.x,p.y,p.z);c.rotation.set(p.pitch,p.yaw,0,'YXZ');c.updateMatrixWorld();const v=new T.Vector3(-.1,.025,0).project(c);return{x:(v.x+1)*r.clientWidth/2,y:(1-v.y)*r.clientHeight/2};});
+  expect(p.x).toBeGreaterThan(0);expect(p.x).toBeLessThan(390);expect(p.y).toBeGreaterThan(0);expect(p.y).toBeLessThan(844);await page.touchscreen.tap(p.x,p.y);
   const after=await pose(page);expect(Math.hypot(after.x-a.x,after.z-a.z)).toBeGreaterThan(.1);await page.waitForTimeout(150);expect(await pose(page)).toEqual(after);
-});
+});});
 
 test('quiet freezes rain, fan and boat while intentional movement still works',async({page})=>{
   await ready(page);await page.emulateMedia({reducedMotion:'no-preference'});const first=await root(page).getAttribute('data-room-boat-pose');await expect.poll(()=>root(page).getAttribute('data-room-boat-pose')).not.toBe(first);
-  await page.locator('[data-cafe-quiet]').click();const frozen=await root(page).getAttribute('data-room-boat-pose');await page.waitForTimeout(250);expect(await root(page).getAttribute('data-room-boat-pose')).toBe(frozen);
+  await menu(page);await page.locator('.space-menu [data-cafe-quiet]').click();await page.locator('.space-menu [data-cafe-visit]').click();await expect(root(page)).toHaveAttribute('data-world-travel','false');const frozen=await root(page).getAttribute('data-room-boat-pose');await page.waitForTimeout(250);expect(await root(page).getAttribute('data-room-boat-pose')).toBe(frozen);
   const a=await pose(page);await page.keyboard.down('KeyW');try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-a.x,p.z-a.z);},{timeout:10_000}).toBeGreaterThan(.1);}finally{await page.keyboard.up('KeyW');}
 });
 
 test('keyboard motion pauses for a dialog and a native workspace',async({page})=>{
   await ready(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');const before=await pose(page);await page.keyboard.down('KeyW');await page.waitForTimeout(200);await page.keyboard.up('KeyW');expect(await pose(page)).toEqual(before);
-  await back(page);await page.locator('.space-cafe__utilities [data-cafe-picker]').click();const p=await pose(page);await page.keyboard.down('KeyW');await page.waitForTimeout(200);await page.keyboard.up('KeyW');expect(await pose(page)).toEqual(p);await page.keyboard.press('Escape');
+  await back(page);await menu(page);await page.locator('.space-menu [data-cafe-picker]').click();const p=await pose(page);await page.keyboard.down('KeyW');await page.waitForTimeout(200);await page.keyboard.up('KeyW');expect(await pose(page)).toEqual(p);await page.keyboard.press('Escape');
 });
 
 test('scene switches keep one renderer and keep the same notebook',async({page})=>{
   await ready(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));const note=page.locator('[data-note-editor]');await note.fill('The same desk in seven places.');const original=await note.elementHandle();await back(page);
-  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();await page.locator('[data-cafe-theme="zen"]').click();await expect(root(page)).toHaveAttribute('data-cafe-theme','zen',{timeout:30_000});
-  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();await page.locator('[data-cafe-theme="jiangnan"]').click();await expect(root(page)).toHaveAttribute('data-cafe-theme','jiangnan',{timeout:30_000});await expect(page.locator('.space-world')).toHaveCount(1);
-  await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');expect(await note.evaluate((el,old)=>el===old,original)).toBe(true);await expect(note).toHaveValue('The same desk in seven places.');
+  await menu(page);await page.locator('.space-menu [data-cafe-picker]').click();await page.locator('[data-cafe-theme="zen"]').click();await expect(root(page)).toHaveAttribute('data-cafe-theme','zen',{timeout:30_000});
+  await menu(page);await page.locator('.space-menu [data-cafe-picker]').click();await page.locator('[data-cafe-theme="jiangnan"]').click();await expect(root(page)).toHaveAttribute('data-cafe-theme','jiangnan',{timeout:30_000});await expect(page.locator('.space-world')).toHaveCount(1);
+  await back(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');expect(await note.evaluate((el,old)=>el===old,original)).toBe(true);await expect(note).toHaveValue('The same desk in seven places.');
 });
 
 test('a failed WebGL context restores the ordinary usable workspace',async({page})=>{

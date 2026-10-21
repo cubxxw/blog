@@ -6,6 +6,7 @@ export function mountClassicDesktop({root,execute,notify}) {
   let current=null,editing=null,selected='',selectionOwner=null;
   const editable=el=>el?.matches?.('textarea,input:not([type=button]):not([type=submit]),[contenteditable=true]');
   const activeWindow=()=>root.querySelector('[data-space-window][data-active="true"]:not([hidden])');
+  const menuItems=panel=>[...panel.querySelectorAll('button:not(:disabled),summary,a[href]')].filter(item=>item.getClientRects().length&&!item.closest('[hidden]'));
   function capture(){
     selectionOwner=activeWindow();const active=document.activeElement;
     if(editable(active)&&selectionOwner?.contains(active))editing=active;
@@ -29,7 +30,7 @@ export function mountClassicDesktop({root,execute,notify}) {
     }
     close();panel.hidden=false;button.setAttribute('aria-expanded','true');current={button,panel};
     const layer=root.querySelector('[data-space-windows]');panel.style.left=Math.max(4,Math.min(button.offsetLeft,layer.clientWidth-panel.offsetWidth-4))+'px';
-    if(focus)panel.querySelector('button:not(:disabled)')?.focus({preventScroll:true});
+    if(focus)menuItems(panel)[0]?.focus({preventScroll:true});
   }
   for(const button of buttons){
     listen(button,'pointerdown',capture);
@@ -60,7 +61,7 @@ export function mountClassicDesktop({root,execute,notify}) {
     if(event.key==='Escape'){event.preventDefault();close(true);return;}
     if(['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();const visible=buttons.filter(button=>button.getClientRects().length),index=visible.indexOf(current.button),next=(index+(event.key==='ArrowRight'?1:-1)+visible.length)%visible.length;open(visible[next],true);return;}
     if(['ArrowDown','ArrowUp','Home','End'].includes(event.key)){
-      event.preventDefault();const items=[...current.panel.querySelectorAll('button:not(:disabled)')],index=items.indexOf(document.activeElement);
+      event.preventDefault();const items=menuItems(current.panel),index=items.indexOf(document.activeElement);
       const next=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowDown'?1:-1)+items.length)%items.length;items[next]?.focus({preventScroll:true});
     }
     if(event.key==='Tab')close();
