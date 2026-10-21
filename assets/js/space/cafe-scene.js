@@ -1,12 +1,10 @@
-import {createRainRoom} from './rain-room.js';
 import {createRendererController} from './rain-room-state.mjs';
 
-// The photographic room and six spatial rooms use the same workspace owner.
-// Three.js is fetched only when a spatial room is selected.
+// The private night room and the six outdoor variants share one live workspace.
 export function createCafeWorld(options) {
   const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);
   const controller=createRendererController({
-    load:async id=>id==='jiangnan'?createRainRoom:(await import(config.spatial)).createCafeWorld,
+    load:async id=>(await import(id==='jiangnan'?config.jiangnan:config.spatial)).createCafeWorld,
     create:(factory,theme)=>factory({...options,theme}),onBusy:value=>options.onTravel?.(value)
   });
   const initial=controller.select(options.theme);

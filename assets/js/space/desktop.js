@@ -1,5 +1,6 @@
 import { languageDestination, handoffEntryFocus } from './entry.mjs';
 import { mountCafe } from './cafe.js';
+import { mountFullscreen } from './fullscreen.js';
 import { cafeTheme } from './cafe.mjs';
 import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, planWindowArrangement } from './state.mjs';
@@ -9,6 +10,7 @@ import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escap
 const root = document.querySelector('[data-bear-workspace]');
 if (root) mountDesktop(root);
 function mountDesktop(root) {
+  mountFullscreen(root);
   const catalog = JSON.parse(root.querySelector('[data-space-catalog]').textContent);
   const productRoot = root.closest('[data-product-space]');
   const labels = catalog.labels, zh = catalog.language === 'zh';

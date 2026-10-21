@@ -41,7 +41,7 @@
 {{- range site.Data.travel.regions -}}
  {{- $places = $places | append (dict "id" .slug "name" (cond $zh .name_zh .name_en) "description" (cond $zh .tagline_zh .tagline_en) "lat" .lat "lon" .lon "match" .match) -}}
 {{- end -}}
-{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") (resources.Get "css/space-classic.css") (resources.Get "css/space-companion.css") (resources.Get "css/space-cafe.css") (resources.Get "css/space-rain-room.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
+{{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") (resources.Get "css/space-classic.css") (resources.Get "css/space-companion.css") (resources.Get "css/space-cafe.css") (resources.Get "css/space-rain-room.css") (resources.Get "css/space-jiangnan.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 <section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" data-cafe-mode="cafe" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
   <div class="space-landscape" aria-hidden="true"></div>
@@ -57,6 +57,7 @@
     <button data-space-overview-trigger aria-haspopup="dialog">{{ if $zh }}窗口概览{{ else }}All windows{{ end }}</button>
     <button data-space-arrange>{{ if $zh }}窗口并排{{ else }}Arrange windows{{ end }}</button>
     <button data-space-show-desktop>{{ if $zh }}显示桌面{{ else }}Show desktop{{ end }}</button>
+    <button type="button" data-space-fullscreen aria-pressed="false"><span data-space-fullscreen-label>{{ if $zh }}进入全屏{{ else }}Enter fullscreen{{ end }}</span></button>
     <hr>
     <button data-open="settings">{{ index $labels "settings" }}</button>
     <button data-product-view-button="lab" aria-pressed="false">Product Lab <span class="space-menu__hint">↗</span></button>

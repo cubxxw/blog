@@ -7,7 +7,7 @@ export async function reserveWorldJourney(page:Page,timeout=90_000) {
   page.setDefaultTimeout(30_000);
   page.setDefaultNavigationTimeout(30_000);
   // These legacy contracts intentionally exercise the six navigable 3D rooms.
-  // The cinematic default has its own entry and real-device interaction suite.
+  // The Jiangnan default has its own geometry, navigation and interaction suite.
   await page.addInitScript(()=>{if(!localStorage.getItem('space:cafe:theme:v2'))localStorage.setItem('space:cafe:theme:v2','zen');});
 }
 export async function enterWorkspace(page:Page) {

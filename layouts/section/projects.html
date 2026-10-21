@@ -363,7 +363,8 @@
 <script type="application/json" data-space-entrance>{{ dict "module" $entrance.RelPermalink | jsonify | safeJS }}</script>
 {{- $world := resources.Get "js/space/world-cafe.js" | js.Build (dict "format" "esm" "minify" true "externals" (slice "three")) | fingerprint -}}
 {{- $scene := resources.Get "js/space/cafe-scene.js" | js.Build (dict "format" "esm" "minify" true) | fingerprint -}}
-<script type="application/json" data-space-world-module>{{ dict "module" $scene.RelPermalink "spatial" $world.RelPermalink | jsonify | safeJS }}</script>
+{{- $jiangnan := resources.Get "js/space/world-jiangnan.js" | js.Build (dict "format" "esm" "minify" true "externals" (slice "three")) | fingerprint -}}
+<script type="application/json" data-space-world-module>{{ dict "module" $scene.RelPermalink "spatial" $world.RelPermalink "jiangnan" $jiangnan.RelPermalink | jsonify | safeJS }}</script>
 {{- $workspaceJS := resources.Get "js/space/desktop.js" | js.Build (dict "targetPath" "js/bear-workspace.js" "minify" true) | fingerprint -}}
 <script type="module" src="{{ $workspaceJS.RelPermalink }}" integrity="{{ $workspaceJS.Data.Integrity }}"></script>
 {{- end }}

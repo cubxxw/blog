@@ -1,0 +1,108 @@
+import {test,expect,type Page} from '../helpers/frozen-site';
+test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'&&process.env.SPACE_SOFTWARE_QA!=='1'?['--enable-gpu','--use-angle=metal']:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']}});
+const pageErrors=new WeakMap<Page,string[]>();
+test.beforeEach(async({page})=>{test.setTimeout(90_000);const errors:string[]=[];pageErrors.set(page,errors);page.on('pageerror',error=>errors.push(error.message));await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});});
+test.afterEach(async({page})=>{expect(pageErrors.get(page)).toEqual([]);});
+const root=(page:Page)=>page.locator('[data-bear-workspace]');
+const pose=async(page:Page)=>JSON.parse((await root(page).getAttribute('data-world-pose'))!);
+async function ready(page:Page,lang='zh'){
+  await page.goto(lang==='zh'?'/zh/projects/':'/projects/');
+  await expect(root(page)).toHaveAttribute('data-world-renderer','jiangnan',{timeout:30_000});
+  await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
+  await expect(root(page)).toHaveAttribute('data-world-travel','false');
+}
+async function point(page:Page,name:string){return page.evaluate(async name=>{
+  const specifier='three',THREE=await import(specifier),el=document.querySelector<HTMLElement>('[data-bear-workspace]')!,p=JSON.parse(el.dataset.worldPose!),target=JSON.parse(el.dataset.worldTargets!)[name];
+  const camera=new THREE.PerspectiveCamera(p.fov,el.clientWidth/el.clientHeight,.04,160);camera.position.set(p.x,p.y,p.z);camera.rotation.set(p.pitch,p.yaw,0,'YXZ');camera.updateMatrixWorld();
+  const v=new THREE.Vector3(...target).project(camera),b=el.getBoundingClientRect();return {x:b.x+(v.x+1)*b.width/2,y:b.y+(1-v.y)*b.height/2};
+},name);}
+async function hit(page:Page,name:string){const p=await point(page,name);expect(p.x).toBeGreaterThanOrEqual(0);expect(p.y).toBeGreaterThanOrEqual(0);await page.mouse.click(p.x,p.y);}
+async function back(page:Page){await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-visit]').click();await expect(root(page)).toHaveAttribute('data-world-mode','roam');await expect(root(page)).toHaveAttribute('data-world-travel','false');}
+
+test('the default room is actual full-viewport WebGL geometry without a photographic stage',async({page})=>{
+  const plates:string[]=[],errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));page.on('console',msg=>{if(msg.type()==='error'&&/THREE.WebGLProgram|Shader Error/.test(msg.text()))errors.push(msg.text());});page.on('request',r=>{if(/jiangnan-night|jiangnan-boat-v2/.test(r.url()))plates.push(r.url());});await ready(page);
+  const canvas=page.locator('.space-world__canvas');expect(await canvas.evaluate(el=>!!(el as HTMLCanvasElement).getContext('webgl2'))).toBe(true);
+  expect(Number(await root(page).getAttribute('data-world-triangles'))).toBeGreaterThan(20_000);await expect(page.locator('.rain-room,.rain-room__image')).toHaveCount(0);expect(plates).toEqual([]);
+  const a=(await root(page).boundingBox())!,b=(await canvas.boundingBox())!;expect(Math.abs(a.width-b.width)).toBeLessThan(1);expect(Math.abs(a.height-b.height)).toBeLessThan(1);
+  await expect(page.locator('.space-world-hud__roam')).toBeHidden();expect(errors).toEqual([]);await page.screenshot({path:`.netlify/space-3d-${test.info().project.name}.png`});
+});
+
+test('walking and dragging change position and angle with different near/far parallax',async({page})=>{
+  await ready(page);const a=await pose(page),near=await point(page,'computer'),far=await point(page,'bridge');
+  await page.keyboard.down('KeyW');try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-a.x,p.z-a.z);},{timeout:10_000}).toBeGreaterThan(.15);}finally{await page.keyboard.up('KeyW');}const b=await pose(page);
+  expect(Math.hypot(b.x-a.x,b.z-a.z)).toBeGreaterThan(.15);
+  const n2=await point(page,'computer'),f2=await point(page,'bridge');expect(Math.abs((n2.x-near.x)-(f2.x-far.x))).toBeGreaterThan(1);
+  const box=(await page.locator('.space-world__canvas').boundingBox())!;await page.mouse.move(box.x+box.width*.4,box.y+box.height*.45);await page.mouse.down();await page.mouse.move(box.x+box.width*.4+110,box.y+box.height*.45+25,{steps:5});await page.mouse.up();
+  expect(Math.abs((await pose(page)).yaw-b.yaw)).toBeGreaterThan(.2);
+});
+
+test('the physical Mac opens the same real desktop and returning retains the editor and selection',async({page})=>{
+  await ready(page);await expect(page.locator('.jiangnan-workspace[data-surface="monitor"]')).toBeVisible();
+  await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
+  await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));const note=page.locator('[data-note-editor]');await note.fill('A real room around the same notebook.');const original=await note.elementHandle();await note.evaluate((el:HTMLTextAreaElement)=>el.setSelectionRange(2,9,'backward'));
+  await back(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
+  expect(await note.evaluate((el,old)=>el===old,original)).toBe(true);await expect(note).toHaveValue('A real room around the same notebook.');expect(await note.evaluate((el:HTMLTextAreaElement)=>[el.selectionStart,el.selectionEnd])).toEqual([2,9]);
+});
+
+test('the physical photo frame opens its actual catalog photograph',async({page})=>{
+  await ready(page);await hit(page,'photo');await expect(page.locator('.sp-photo-detail')).toBeVisible();
+  expect(await page.evaluate(()=>(window as any).BearSpace.snapshot().windows.find((w:any)=>w.app==='photos')?.payload)).toBe('kumano');await back(page);await expect(root(page)).toHaveAttribute('data-world-renderer','jiangnan');
+});
+
+test('returning keeps the native workspace connected before the next frame and accepts an immediate search',async({page})=>{
+  await ready(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
+  await page.locator('[data-space-menu-trigger]').click();
+  const connected=await page.evaluate(async()=>{
+    document.querySelector<HTMLButtonElement>('.space-menu [data-cafe-visit]')!.click();await Promise.resolve();await Promise.resolve();
+    const el=document.querySelector('[data-bear-workspace]')!;return Boolean(el.querySelector('[data-space-windows]')&&el.querySelector('[data-active-label]'));
+  });
+  expect(connected).toBe(true);await page.keyboard.press('Control+k');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(page.locator('[data-space-search]')).toBeVisible();
+});
+
+test('real coffee and bookshelf hits open a close view and return to the same camera',async({page})=>{
+  await ready(page);const before=await pose(page);await hit(page,'coffee');await expect(root(page)).toHaveAttribute('data-world-inspect','coffee');
+  await expect(page.locator('[data-cafe-inspect-coffee]')).toBeVisible();await page.keyboard.press('Escape');expect(await pose(page)).toEqual(before);
+  // Turn to the opposite wall; this is an actual camera rotation before the hit.
+  const target=await point(page,'books');if(target.x<0||target.x>page.viewportSize()!.width){
+    const p=await pose(page),yaw=Math.atan2(-(-2.56-p.x),-(-1.1-p.z)),b=(await root(page).boundingBox())!;
+    await page.mouse.move(b.width/2,b.height/2);await page.mouse.down();await page.mouse.move(b.width/2-(yaw-p.yaw)/.0035,b.height/2,{steps:12});await page.mouse.up();
+  }
+  const atShelf=await pose(page);await hit(page,'books');await expect(root(page)).toHaveAttribute('data-world-inspect','books');
+  await page.locator('[data-cafe-booklist-toggle]').click();await expect(page.locator('#space-cafe-booklist li')).toHaveCount(10);
+  await page.locator('[data-cafe-inspect-exit]').click();expect(await pose(page)).toEqual(atShelf);
+});
+
+test('keyboard object controls appear only on focus and use the same real Mac',async({page})=>{
+  await ready(page);const controls=page.locator('.jiangnan-object-controls'),computer=controls.locator('[data-room-object="computer"]');
+  expect(await controls.evaluate(el=>getComputedStyle(el).clipPath)).toBe('inset(50%)');await computer.focus();expect(await controls.evaluate(el=>getComputedStyle(el).clipPath)).toBe('none');
+  await computer.press('Enter');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(page.locator('[data-space-dock]')).toBeVisible();
+});
+
+test('the touch direction pad advances a physical position and releasing stops it',async({page})=>{
+  await page.setViewportSize({width:390,height:844});await ready(page);const button=page.locator('[data-world-walk="forward"]'),b=(await button.boundingBox())!,a=await pose(page);
+  await page.mouse.move(b.x+b.width/2,b.y+b.height/2);await page.mouse.down();try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-a.x,p.z-a.z);},{timeout:10_000}).toBeGreaterThan(.1);}finally{await page.mouse.up();}
+  const after=await pose(page);expect(Math.hypot(after.x-a.x,after.z-a.z)).toBeGreaterThan(.1);await page.waitForTimeout(150);expect(await pose(page)).toEqual(after);
+});
+
+test('quiet freezes rain, fan and boat while intentional movement still works',async({page})=>{
+  await ready(page);await page.emulateMedia({reducedMotion:'no-preference'});const first=await root(page).getAttribute('data-room-boat-pose');await expect.poll(()=>root(page).getAttribute('data-room-boat-pose')).not.toBe(first);
+  await page.locator('[data-cafe-quiet]').click();const frozen=await root(page).getAttribute('data-room-boat-pose');await page.waitForTimeout(250);expect(await root(page).getAttribute('data-room-boat-pose')).toBe(frozen);
+  const a=await pose(page);await page.keyboard.down('KeyW');try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-a.x,p.z-a.z);},{timeout:10_000}).toBeGreaterThan(.1);}finally{await page.keyboard.up('KeyW');}
+});
+
+test('keyboard motion pauses for a dialog and a native workspace',async({page})=>{
+  await ready(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');const before=await pose(page);await page.keyboard.down('KeyW');await page.waitForTimeout(200);await page.keyboard.up('KeyW');expect(await pose(page)).toEqual(before);
+  await back(page);await page.locator('.space-cafe__utilities [data-cafe-picker]').click();const p=await pose(page);await page.keyboard.down('KeyW');await page.waitForTimeout(200);await page.keyboard.up('KeyW');expect(await pose(page)).toEqual(p);await page.keyboard.press('Escape');
+});
+
+test('scene switches keep one renderer and keep the same notebook',async({page})=>{
+  await ready(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));const note=page.locator('[data-note-editor]');await note.fill('The same desk in seven places.');const original=await note.elementHandle();await back(page);
+  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();await page.locator('[data-cafe-theme="zen"]').click();await expect(root(page)).toHaveAttribute('data-cafe-theme','zen',{timeout:30_000});
+  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();await page.locator('[data-cafe-theme="jiangnan"]').click();await expect(root(page)).toHaveAttribute('data-cafe-theme','jiangnan',{timeout:30_000});await expect(page.locator('.space-world')).toHaveCount(1);
+  await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');expect(await note.evaluate((el,old)=>el===old,original)).toBe(true);await expect(note).toHaveValue('The same desk in seven places.');
+});
+
+test('a failed WebGL context restores the ordinary usable workspace',async({page})=>{
+  await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:any[]){return /webgl/.test(type)?null:Reflect.apply(get,this,[type,...args]);} as typeof get;});
+  await page.goto('/zh/projects/');await expect(root(page)).toHaveAttribute('data-world-failed','true');if(await page.locator('[data-boot-skip]').isVisible())await page.locator('[data-boot-skip]').click();await expect(page.locator('[data-space-dock]')).toBeVisible();await expect(page.locator('.jiangnan-workspace')).toHaveCount(0);
+});
