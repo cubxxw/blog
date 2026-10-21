@@ -50,14 +50,18 @@
 
 - [x] Independently review actual screen ownership, menus, safe catalog rendering, profile routes, camera/input and accessibility.
 - [x] Run targeted runtime/viewport/reading/theme/window cases, TypeScript, product checks, production Hugo output and diff checks.
-- [ ] Deliver through the repository's direct-main path and read back the published source plus live desktop/mobile journeys.
+- [x] Deliver through the repository's direct-main path and read back the published source plus live desktop/mobile journeys.
 
 ## Verification record
 
 The author approved the complete retro Mac direction and requested a fixed seated view with a softer real background. The renderer now uses the same live scene, depth-aware defocus and one original interactive screen; the camera position stays fixed across viewport changes. The material refinement retains an actual screen opening and adds no new assets or packages.
 
-Local acceptance: 106 distinct browser cases passed across desktop/mobile projects (46 reading/profile/product/wallpaper cases, 14 classic Mac cases, 14 fullscreen cases, 24 Jiangnan cases and 8 boundary cases). Three additional classic Mac cases passed with forced software WebGL. The existing 259 runtime tests, TypeScript, bilingual product integration, production Hugo build and diff checks passed. Independent final review found no remaining actionable P1/P2 issues.
+Local acceptance: 162 distinct browser cases passed across desktop/mobile projects (46 reading/profile/product/wallpaper cases, 14 classic Mac cases, 14 fullscreen cases, 24 Jiangnan cases, 8 boundary cases and 56 existing onboarding/window/reading/preferences cases). Three additional classic Mac cases passed with forced software WebGL. The existing 259 runtime tests, TypeScript, bilingual product integration, production Hugo build and diff checks passed. Independent final review found no remaining actionable P1/P2 issues. The existing window-menu focus assertion now names its actual system menu because the classic Window menu also offers Show Desktop; all 12 arrangement cases pass with the focused assertion.
 
 The original reload reading-position regression was also reproduced on the previous published source. Restoration now waits for the interactive surface and follows the latest saved position when the original scroller moves; real user input cancels pending restoration. Desktop/mobile reload and minimized-reader cases pass.
 
 Full automatic site checks and deployment readback are recorded separately from local acceptance; local checks alone do not establish the published version.
+
+Production acceptance: source `1c67baa97edada3d33b41f571896528cfdce5fc6` was published by native Netlify deploy `6ad88031a5e4a59deda2fef7` at `2026-10-21T17:07:46+08:00`. At `17:09:11+08:00`, real Chromium journeys on `https://cubxxw.com` passed at 1440×960 Chinese, 390×844 English and 844×390 English dark. The published CSS and world-module fingerprints matched the verified source. Each journey checked real screen/photo hits, complete monitor, fixed seated pose, live depth blur and boat, six Finder folders, eight real products, Leafhour, same Notes node/selection through both views, and explicit audio playback. No page or shader errors were observed. A separate local software-rendered journey also passed and its real pixels were inspected.
+
+The main checkout's 191 pre-existing output files retained their hashes. The automatic full-site quality and Lighthouse jobs were still running when this acceptance record was written; no CI-green claim is made here.

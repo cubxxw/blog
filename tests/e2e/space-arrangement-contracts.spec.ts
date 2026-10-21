@@ -57,7 +57,7 @@ test.describe('limited landscape workspace',()=>{
     await page.locator('[data-space-menu-trigger]').click();
     const overviewMenu=page.locator('.space-menu [data-space-overview-trigger]');await expect(overviewMenu).toBeVisible();
     await expect(page.locator('.space-menu [data-space-arrange]')).toBeHidden();
-    await overviewMenu.focus();await page.keyboard.press('ArrowDown');await expect(page.locator('[data-space-show-desktop]')).toBeFocused();
+    await overviewMenu.focus();await page.keyboard.press('ArrowDown');await expect(page.locator('.space-menu [data-space-show-desktop]')).toBeFocused();
     await page.keyboard.press('Escape');
     if(count===4) {
       const terminal=await openApp(page,'terminal');await terminal.locator('[data-terminal-input]').fill('arrange');await terminal.locator('[data-terminal-input]').press('Enter');
