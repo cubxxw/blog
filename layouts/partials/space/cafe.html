@@ -3,10 +3,11 @@
 {{- range site.Data.space_cafe.themes -}}
   {{- $themes = $themes | append (dict "id" .id "name" (cond $zh .name_zh .name_en) "note" (cond $zh .note_zh .note_en)) -}}
 {{- end -}}
-{{- $nightImage := resources.Get "images/space-cafe/jiangnan-night-v1.png" -}}
+{{- $nightImage := resources.Get "images/space-cafe/jiangnan-night-plate-v2.png" -}}
 {{- $nightLarge := $nightImage.Resize "1933x webp q88" -}}
 {{- $nightSmall := $nightImage.Resize "960x webp q85" -}}
-{{- $night := dict "image" $nightLarge.RelPermalink "srcset" (printf "%s 960w, %s 1933w" $nightSmall.RelPermalink $nightLarge.RelPermalink) "music" ("/audio/space/night-on-the-docks-sax.mp3" | relURL) "ambience" ("/audio/space/night-rain-and-fan.mp3" | relURL) -}}
+{{- $boat := (resources.Get "images/space-cafe/jiangnan-boat-v2.png").Resize "900x webp q90" -}}
+{{- $night := dict "image" $nightLarge.RelPermalink "srcset" (printf "%s 960w, %s 1933w" $nightSmall.RelPermalink $nightLarge.RelPermalink) "boat" $boat.RelPermalink "music" ("/audio/space/night-on-the-docks-sax.mp3" | relURL) "ambience" ("/audio/space/night-rain-and-fan.mp3" | relURL) -}}
 {{- $books := slice -}}
 {{- range site.Data.travel.books -}}
   {{- $books = $books | append (dict "title" (cond $zh .title_zh .title_en) "author" (cond $zh .author_zh .author_en) "own" (default false .own) "url" (default "" .url)) -}}

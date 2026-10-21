@@ -1,5 +1,6 @@
 import { languageDestination, handoffEntryFocus } from './entry.mjs';
 import { mountCafe } from './cafe.js';
+import { cafeTheme } from './cafe.mjs';
 import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, planWindowArrangement } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
@@ -200,10 +201,10 @@ function mountDesktop(root) {
       return `${result.stdout||''}${result.stderr?'\n'+result.stderr:''}\n[exit ${result.exitCode} · /workspace]`;
     } catch {return t('本地沙盒未响应，命令没有得到确认。','The sandbox did not respond; execution is unconfirmed.');}
   }
-  function home() {
+  function home(payload=root.querySelector('[data-space-cafe]')?'identity':'') {
     const width = root.clientWidth <= 640 ? 1280 : viewport().width;
     const height = Math.min(600, Math.max(380, viewport().height - 140));
-    update({type:'open',app:'welcome',payload:root.querySelector('[data-space-cafe]')?'identity':'',rect:{x:Math.max(16,(width-680)/2),y:Math.max(16,(viewport().height-height-85)/2),width:Math.min(680,width-32),height}});
+    update({type:'open',app:'welcome',payload,rect:{x:Math.max(16,(width-680)/2),y:Math.max(16,(viewport().height-height-85)/2),width:Math.min(680,width-32),height}});
     update({type:'focus',id:'welcome'});
     update({type:'initialized'});
   }
@@ -214,16 +215,17 @@ function mountDesktop(root) {
     (button?.getClientRects().length ? button : fallback)?.focus({preventScroll:true});
   }
   function showDialog(dialog, input, fallback) {
-    cafe?.enterDesktop();
+    const fromRoom=cafe?.active,ready=cafe?.enterDesktop();
     completeEntry(); render();
     if (!dialog.open) {
       const active = document.activeElement;
       const sourceDialog = active?.closest('dialog');
       const source = menuPanel.contains(active) ? menu : sourceDialog ? dialogFocus.get(sourceDialog)?.trigger : active;
-      dialogFocus.set(dialog,{ trigger:root.contains(source) && source?.getClientRects().length ? source : fallback, restore:true });
+      dialogFocus.set(dialog,{ trigger:!fromRoom&&root.contains(source)&&!source?.closest('[inert]')&&source?.getClientRects().length ? source : fallback, restore:true,ready });
       for (const other of [search,launchpad,overview]) if (other !== dialog && other.open) closeDialog(other,false);
       closeMenu(); dialog.showModal();
     }
+    const pending=dialogFocus.get(dialog);if(pending)pending.ready=ready;
     (input || dialog.querySelector('button'))?.focus({preventScroll:true});
   }
   function closeDialog(dialog, restore = true) {
@@ -240,7 +242,13 @@ function mountDesktop(root) {
     dialog.addEventListener('cancel',event=>{event.preventDefault();closeDialog(dialog);});
     dialog.addEventListener('close',()=>{
       const saved = dialogFocus.get(dialog); dialogFocus.delete(dialog);
-      if (saved?.restore && saved.trigger?.isConnected && !root.hidden) saved.trigger.focus({preventScroll:true});
+      if(!saved?.restore||root.hidden)return;
+      // A closing dialog can retain its hidden input until the next paint.
+      // Release only that owned focus before waiting for the screen to expand.
+      if(dialog.contains(document.activeElement))document.activeElement.blur();
+      const usable=el=>el?.isConnected&&!el.closest('[inert]')&&el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden';
+      const target=usable(saved.trigger)?saved.trigger:menu;
+      handoffEntryFocus({ready:saved.ready,target,origin:document.activeElement,document,window,isCurrent:()=>!root.hidden&&![search,launchpad,overview].some(panel=>panel.open)&&usable(target),focus:()=>target.focus({preventScroll:true})});
     });
   }
   function showSearch(query = '') {
@@ -486,7 +494,9 @@ function mountDesktop(root) {
   const navigationType = performance.getEntriesByType('navigation')[0]?.type;
   let resumeCafe = false;
   try { resumeCafe = navigationType === 'reload' && !entryRoute.app && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
-  if (!state.initialized) home(); else render();
+  let preferredScene='jiangnan';try{preferredScene=cafeTheme(localStorage.getItem('space:cafe:theme:v2'));}catch{}
+  const roomHome=preferredScene==='jiangnan'&&!entryRoute.app&&!localeResume&&(resumeCafe||!['reload','back_forward'].includes(navigationType));
+  if (!state.initialized||roomHome) home(preferredScene==='jiangnan'?'':undefined); else render();
   applyHash(localeResume || resumeCafe);
   const initialTarget=entryRoute.app&&!localeResume&&!resumeCafe?nodes.get(entryRoute.app)?.el:null,initialOrigin=document.activeElement;
   const entryFocusManaged=Boolean(initialTarget);
