@@ -21,6 +21,8 @@ for(const entry of [
     await expect(products).toHaveAttribute('aria-label',entry.label);
     await expect(space.locator('[data-space-window="products"]')).toBeVisible();
     await expect.poll(()=>products.evaluate(el=>el.contains(document.activeElement))).toBe(true);
+    await expect(products.locator('[data-product-home] [data-select-product]')).toHaveCount(8);
+    await products.locator('[data-product-home] [data-select-product]').first().click();
     await expect(products.locator('.space-product h2')).not.toBeEmpty();
     await expect(page.locator('[data-space-dock] [data-open="products"]')).toHaveAttribute('aria-label',entry.label);
     expect(context.pages()).toHaveLength(pages);

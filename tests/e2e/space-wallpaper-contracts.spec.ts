@@ -61,7 +61,7 @@ for(const view of [{width:1440,height:900,locale:'zh',coarse:false},{width:390,h
         const minimize=settings.locator('[data-window-action="minimize"]'),minBox=await hit(minimize,view.coarse?44:24);
         await page.mouse.click(minBox.x+minBox.width/2,minBox.y+minBox.height/2);await expect(settings).toBeHidden();
         await expect(page.locator('[data-space-window]:visible')).toHaveCount(0);
-        const exposed=await screen.evaluate(el=>{const rect=el.getBoundingClientRect();return document.elementFromPoint(rect.x+rect.width/2,rect.y+rect.height*.3)===el;});
+        const exposed=await screen.evaluate(el=>{const rect=el.getBoundingClientRect(),hit=document.elementFromPoint(rect.x+rect.width/2,rect.y+rect.height*.3);return Boolean(hit&&el.contains(hit)&&!hit.closest('[data-space-window]'));});
         expect(exposed).toBe(true);
         const color=await screen.evaluate(el=>getComputedStyle(el).backgroundColor);expect(color).toBe(palettes[theme][wallpaper]);colors.push(color);
         expect(await screen.evaluate(el=>getComputedStyle(el).backgroundImage)).toBe('none');

@@ -199,31 +199,79 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
 
   // Physical computer: its front is exactly aligned with the live DOM plane.
   const computer = makeGroup('physical-computer', 0, 0, 0, group, 'computer');
-  const aluminum = material('#a8a99e', .29, { metalness: .76, envMapIntensity: .65 });
-  box(1.45, .844, -1.91, .40, .025, .27, aluminum, computer, .01);
-  const stem = box(1.45, .916, -1.92, .10, .145, .047, aluminum, computer, .012); stem.rotation.x = -.13;
-  box(1.45, 1.21, -1.855, .91, .61, .052, aluminum, computer, .019);
-  for (const x of [1.039, 1.861]) box(x, 1.22, -1.819, .026, .535, .008, black, computer, .004);
-  box(1.45, 1.483, -1.819, .85, .027, .008, black, computer, .004);
-  box(1.45, .957, -1.819, .85, .027, .008, black, computer, .004);
-  box(1.45, .928, -1.814, .85, .044, .011, aluminum, computer, .008);
+  // A softly aged painted shell stays diffuse under the warm lamp. Highly
+  // metallic grey turned bronze here because the room is deliberately dim.
+  const caseWear = canvasTexture(256, 128, (c, w, h) => {
+    c.fillStyle = '#d7d7d7'; c.fillRect(0, 0, w, h);
+    c.strokeStyle = '#c9c9c9'; c.lineWidth = .6;
+    for (let i = 0; i < 13; i++) {
+      const x = 14 + i * 17, y = 9 + (i * 29 % 107);
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x + 4 + i % 5, y + .5); c.stroke();
+    }
+    c.fillStyle = '#dedede'; c.fillRect(1, 1, w - 2, 2);
+  });
+  caseWear.colorSpace = THREE.NoColorSpace;
+  const caseShell = material('#e3e2d7', .82, { metalness: .055, envMapIntensity: .30, roughnessMap: caseWear, bumpMap: caseWear, bumpScale: .00015 });
+  const caseBack = material('#c4c9bd', .74, { metalness: .06, envMapIntensity: .25 });
+  const caseStand = material('#d8ddd2', .67, { metalness: .12, envMapIntensity: .28, roughnessMap: caseWear });
+  const screenTrim = material('#68766e', .70, { metalness: .035 });
+  // This shell has its own corner radius, independent of its thin depth.
+  // A genuine aperture lets the display sit just inside the rounded rim.
+  const softCaseGeometry = (key, w, h, d, corner, edge, aperture) => geometry(key, () => {
+    const roundedPath = (Path, width, height, r, offsetY = 0) => {
+      const p = new Path(), a = width / 2, b = height / 2;
+      p.moveTo(-a + r, -b + offsetY); p.lineTo(a - r, -b + offsetY); p.quadraticCurveTo(a, -b + offsetY, a, -b + r + offsetY);
+      p.lineTo(a, b - r + offsetY); p.quadraticCurveTo(a, b + offsetY, a - r, b + offsetY);
+      p.lineTo(-a + r, b + offsetY); p.quadraticCurveTo(-a, b + offsetY, -a, b - r + offsetY);
+      p.lineTo(-a, -b + r + offsetY); p.quadraticCurveTo(-a, -b + offsetY, -a + r, -b + offsetY);
+      return p;
+    };
+    const shape = roundedPath(THREE.Shape, w - edge * 2, h - edge * 2, corner);
+    if (aperture) shape.holes.push(roundedPath(THREE.Path, aperture[0], aperture[1], .005, aperture[2]));
+    const g = new THREE.ExtrudeGeometry(shape, { depth: d - edge * 2, bevelEnabled: true, bevelSegments: w < .05 ? 1 : 3, bevelSize: edge, bevelThickness: edge, curveSegments: w < .05 ? 2 : 8 });
+    g.translate(0, 0, -d / 2 + edge); return g;
+  });
+  const foot = mesh(softCaseGeometry('mac-rounded-foot', .40, .27, .025, .028, .003), caseStand, 1.45, .844, -1.91, computer); foot.rotation.x = -Math.PI / 2;
+  const stem = box(1.45, .916, -1.92, .10, .145, .047, caseStand, computer, .012); stem.rotation.x = -.13;
+  mesh(softCaseGeometry('mac-painted-shell-aperture', .91, .61, .066, .024, .003, [.815, .515, .01]), caseShell, 1.45, 1.21, -1.847, computer);
+  box(1.45, 1.21, -1.875, .866, .565, .012, caseBack, computer, .012);
+  for (const x of [1.045, 1.855]) box(x, 1.22, -1.816, .010, .516, .006, screenTrim, computer, .0015);
+  box(1.45, 1.4755, -1.816, .82, .011, .006, screenTrim, computer, .0015);
+  box(1.45, .9645, -1.816, .82, .011, .006, screenTrim, computer, .0015);
+  box(1.45, .928, -1.812, .85, .044, .008, caseShell, computer, .0015);
   const [screenX, screenY, screenZ] = JIANGNAN_TARGETS.computer;
   const display = mesh(geometry('computer-screen', () => new THREE.PlaneGeometry(.80, .50)), material('#101d1b', .22, { metalness: .12 }), screenX, screenY, screenZ - .002, computer);
   display.userData.action = 'computer'; display.castShadow = false;
-  const lens = sphere(1.45, 1.502, -1.817, .003, basic('#111b19'), computer); lens.scale.z = .3;
-  box(1.45, .831, -1.34, 1.16, .005, .49, darkLinen, computer, .018).castShadow = false;
-  box(1.45, .842, -1.19, .55, .026, .19, aluminum, computer, .009);
-  const keyMat = material('#c6c7bb', .61), keyGeo = geometry('keyboard-key', () => new THREE.BoxGeometry(.029, .009, .027));
-  const keys = keep(new THREE.InstancedMesh(keyGeo, keyMat, 56));
+  const lens = sphere(1.45, 1.502, -1.811, .0025, basic('#39483f'), computer); lens.scale.z = .3;
+  const status = sphere(1.813, .928, -1.806, .0013, material('#87a388', .65, { emissive: '#72916c', emissiveIntensity: .2 }), computer); status.scale.z = .35; status.castShadow = false;
+  // Soft local contact, not a new light or a shadow-map pass.
+  const contactMap = canvasTexture(128, 128, c => {
+    const gradient = c.createRadialGradient(64, 64, 12, 64, 64, 63);
+    gradient.addColorStop(0, 'rgba(32,34,28,.30)'); gradient.addColorStop(.58, 'rgba(32,34,28,.16)'); gradient.addColorStop(1, 'rgba(32,34,28,0)');
+    c.fillStyle = gradient; c.fillRect(0, 0, 128, 128);
+  });
+  const contactMaterial = keep(new THREE.MeshBasicMaterial({ map: contactMap, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+  const contact = (x, y, z, w, d) => {
+    const shadow = mesh(geometry('mac-contact-plane', () => new THREE.PlaneGeometry(1, 1)), contactMaterial, x, y, z, computer);
+    shadow.rotation.x = -Math.PI / 2; shadow.scale.set(w, d, 1); shadow.castShadow = shadow.receiveShadow = false;
+  };
+  contact(1.45, .8284, -1.91, .48, .33);
+  box(1.45, .8305, -1.34, 1.16, .003, .49, darkLinen, computer, .018).castShadow = false;
+  contact(1.45, .8322, -1.19, .59, .23);
+  box(1.45, .845, -1.19, .55, .026, .19, caseShell, computer, .009);
+  const keyMat = material('#e3e3d6', .68), keyGeo = softCaseGeometry('keyboard-soft-key', .029, .009, .027, .0015, .0007);
+  const keys = keep(new THREE.InstancedMesh(keyGeo, keyMat, 46));
   let keyIndex = 0;
   for (let row = 0; row < 4; row++) for (let col = 0; col < 14; col++) {
-    dummy.position.set(1.219 + col * .035, .859, -1.254 + row * .039); dummy.updateMatrix(); keys.setMatrixAt(keyIndex++, dummy.matrix);
+    if (row === 3 && col > 1 && col < 12) continue;
+    dummy.position.set(1.219 + col * .035, .862, -1.254 + row * .039); dummy.updateMatrix(); keys.setMatrixAt(keyIndex++, dummy.matrix);
   }
   keys.castShadow = keys.receiveShadow = true; computer.add(keys);
-  box(1.45, .864, -1.126, .20, .007, .024, ivory, computer, .002);
-  const mouse = sphere(1.87, .857, -1.18, .055, ivory, computer); mouse.scale.set(.85, .35, 1.5);
-  tube([[1.87, .876, -1.24], [1.87, .88, -1.21], [1.87, .88, -1.19]], .0009, aluminum, computer, 8).castShadow = false;
+  box(1.45, .8635, -1.137, .24, .007, .027, keyMat, computer, .002);
+  const mouse = sphere(1.87, .857, -1.18, .055, caseShell, computer); mouse.scale.set(.85, .35, 1.5);
+  tube([[1.87, .876, -1.24], [1.87, .88, -1.21], [1.87, .88, -1.19]], .0009, caseBack, computer, 8).castShadow = false;
   box(1.87, .835, -1.188, .18, .005, .24, darkLinen, computer, .025).castShadow = false;
+  contact(1.87, .8377, -1.18, .092, .16);
 
   // Paper and brass task lamp, an amber island in the cool rainy room.
   const lamp = makeGroup('paper-brass-task-lamp', .34, .829, -1.75);
@@ -310,6 +358,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     for (let n = 0; n < uv.count; n++) uv.setX(n, (i * 100 + uv.getX(n) * 100) / 1024);
     const spine = mesh(g, spineMaterial, .151, 0, 0, book); spine.rotation.y = Math.PI / 2;
   }
+  const aluminum = material('#a8a99e', .29, { metalness: .76, envMapIntensity: .65 });
   // A vintage turntable occupies the lower open bay, with a real grooved disc.
   const record = makeGroup('walnut-record-player', -2.82, .68, -.76, cabinet);
   box(0, 0, 0, .47, .078, .62, walnut, record, .018);

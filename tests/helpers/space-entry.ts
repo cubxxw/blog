@@ -14,8 +14,17 @@ export async function enterWorkspace(page:Page) {
   await reserveWorldJourney(page);
   await page.waitForFunction(()=>{const d=document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;return d?.ready==='true'&&(d.worldFailed==='true'||(Number(d.worldFrames)>0&&!d.worldLoading&&d.bootState==='complete'));},undefined,{timeout:30_000});
   if(await page.locator('[data-bear-workspace]').getAttribute('data-world-failed')==='true'&&await page.locator('[data-boot-skip]').isVisible())await page.locator('[data-boot-skip]').click();
-  if(await page.locator('[data-bear-workspace]').getAttribute('data-cafe-mode')==='desktop')return;
-  await page.keyboard.press('Control+k');
-  await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode','desktop');
-  await page.locator('[data-space-search-close]').click();
+  if(await page.locator('[data-bear-workspace]').getAttribute('data-cafe-mode')!=='desktop'){
+    await page.keyboard.press('Control+k');
+    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode','desktop');
+    await page.locator('[data-space-search-close]').click();
+  }
+  // These contracts inspect the native reading surface; the physical monitor
+  // has a separate exact-input/whole-bezel suite.
+  if(await page.locator('[data-bear-workspace]').getAttribute('data-computer-view')==='framed'){
+    // Change the fixture's presentation without taking focus from its entry
+    // route. Dedicated classic-Mac cases exercise the real menu hit targets.
+    await page.locator('[data-mac-panel="view"] [data-computer-display="expanded"]').evaluate((el:HTMLButtonElement)=>el.click());
+    await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-computer-view','expanded');
+  }
 }

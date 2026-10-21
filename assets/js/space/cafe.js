@@ -63,7 +63,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     const focused=document.activeElement;
     const selection=typeof focused?.selectionStart==='number'?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
     failureFocusManaged=initializing&&entryFocusManaged;
-    failed=true;++revision;world?.dispose();world=null;root.dataset.worldFailed='true';syncCat('unavailable');
+    failed=true;++revision;world?.dispose();world=null;root.dataset.worldFailed='true';root.dataset.computerView='expanded';syncCat('unavailable');
     for(const key of ['worldReady','worldMode','worldTravel','worldLoading'])delete root.dataset[key];
     // A completed onboarding cannot display a second failure state. Restore the
     // ordinary DOM workspace immediately, including after context loss.

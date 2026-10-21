@@ -1,0 +1,44 @@
+{{- $zh := eq .Lang "zh" -}}
+<header class="space-menubar space-mac-menubar" data-mac-menubar aria-label="{{ if $zh }}电脑菜单栏{{ else }}Computer menu bar{{ end }}">
+  <div class="space-mac-menubar__left">
+    <button type="button" class="space-mac-system" data-space-menu-trigger aria-label="{{ if $zh }}CUBXXW OS 空间菜单{{ else }}CUBXXW OS Space menu{{ end }}" aria-expanded="false" aria-controls="space-menu"><svg width="19" height="21" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M16.4 4.6c1.2-1.4 1.2-3 1.2-3s-1.8.1-3 1.5c-1.2 1.2-1.3 2.8-1.3 2.8s1.8.1 3.1-1.3ZM19.3 14c-.1-3.3 2.7-4.9 2.8-5-1.5-2.2-3.8-2.5-4.6-2.5-1.9-.2-3.6 1.1-4.5 1.1-1 0-2.4-1.1-4-1.1-2.1 0-4 1.3-5 3.2-2.2 3.8-.6 9.4 1.5 12.5 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1 1.8 0 2.4 1 4 1 1.7-.1 2.7-1.5 3.8-3 .9-1.3 1.6-2.8 2-4.2-.1 0-3.7-1.5-3.8-4Z"/></svg></button>
+    <strong class="space-mac-active" data-mac-active-app>Finder</strong>
+    {{ range slice (dict "id" "file" "zh" "文件" "en" "File") (dict "id" "edit" "zh" "编辑" "en" "Edit") (dict "id" "view" "zh" "显示" "en" "View") (dict "id" "go" "zh" "前往" "en" "Go") (dict "id" "window" "zh" "窗口" "en" "Window") (dict "id" "help" "zh" "帮助" "en" "Help") }}
+    <button type="button" data-mac-menu="{{ .id }}" aria-haspopup="menu" aria-expanded="false" aria-controls="space-mac-menu-{{ .id }}">{{ if $zh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</button>
+    {{ end }}
+  </div>
+  <div class="space-mac-menubar__right"><button type="button" class="space-mac-return" data-cafe-visit>{{ if $zh }}回到咖啡馆{{ else }}Back to café{{ end }}</button><time data-space-clock></time><button type="button" class="space-mac-search" data-space-search-trigger aria-label="{{ if $zh }}搜索工作区{{ else }}Search workspace{{ end }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button></div>
+</header>
+<div class="space-mac-menu" data-mac-panel="file" id="space-mac-menu-file" role="menu" hidden>
+  <button type="button" role="menuitem" data-open="products">{{ if $zh }}打开作品{{ else }}Open Projects{{ end }}</button>
+  <button type="button" role="menuitem" data-open="reader">{{ if $zh }}打开文章目录{{ else }}Open Writing{{ end }}</button>
+  <button type="button" role="menuitem" data-open="notes">{{ if $zh }}打开笔记{{ else }}Open Notes{{ end }}</button><hr>
+  <button type="button" role="menuitem" data-space-export>{{ if $zh }}导出工作区…{{ else }}Export Workspace…{{ end }}</button>
+</div>
+<div class="space-mac-menu" data-mac-panel="edit" id="space-mac-menu-edit" role="menu" hidden>
+  <button type="button" role="menuitem" data-mac-edit="copy">{{ if $zh }}复制{{ else }}Copy{{ end }}<kbd>⌘ C</kbd></button>
+  <button type="button" role="menuitem" data-mac-edit="all">{{ if $zh }}全选{{ else }}Select All{{ end }}<kbd>⌘ A</kbd></button>
+</div>
+<div class="space-mac-menu" data-mac-panel="view" id="space-mac-menu-view" role="menu" hidden>
+  <button type="button" role="menuitem" data-computer-display="framed">{{ if $zh }}查看整台电脑{{ else }}Show Whole Computer{{ end }}</button>
+  <button type="button" role="menuitem" data-computer-display="expanded">{{ if $zh }}放大电脑屏幕{{ else }}Enlarge Computer Screen{{ end }}</button><hr>
+  <button type="button" role="menuitem" data-mac-theme="light">{{ if $zh }}浅色外观{{ else }}Light Appearance{{ end }}</button>
+  <button type="button" role="menuitem" data-mac-theme="dark">{{ if $zh }}深色外观{{ else }}Dark Appearance{{ end }}</button><hr>
+  <button type="button" role="menuitem" data-space-fullscreen aria-pressed="false"><span data-space-fullscreen-label>{{ if $zh }}进入全屏{{ else }}Enter Fullscreen{{ end }}</span></button>
+</div>
+<div class="space-mac-menu" data-mac-panel="go" id="space-mac-menu-go" role="menu" hidden>
+  <button type="button" role="menuitem" data-open="welcome" data-payload="">{{ if $zh }}我的空间{{ else }}My Space{{ end }}</button>
+  {{ range slice (dict "app" "products" "zh" "作品" "en" "Projects") (dict "app" "reader" "zh" "文章" "en" "Writing") (dict "app" "photos" "zh" "旅途相册" "en" "Photos") (dict "app" "books" "zh" "书架" "en" "Books") (dict "app" "contact" "zh" "联系我" "en" "Contact") }}<button type="button" role="menuitem" data-open="{{ .app }}">{{ if $zh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</button>{{ end }}
+</div>
+<div class="space-mac-menu" data-mac-panel="window" id="space-mac-menu-window" role="menu" hidden>
+  <button type="button" role="menuitem" data-space-overview-trigger>{{ if $zh }}所有窗口{{ else }}All Windows{{ end }}</button>
+  <button type="button" role="menuitem" data-space-arrange>{{ if $zh }}窗口并排{{ else }}Arrange Windows{{ end }}</button>
+  <button type="button" role="menuitem" data-space-show-desktop>{{ if $zh }}显示桌面{{ else }}Show Desktop{{ end }}</button>
+</div>
+<div class="space-mac-menu" data-mac-panel="help" id="space-mac-menu-help" role="menu" hidden>
+  <button type="button" role="menuitem" data-open="welcome" data-payload="start-here">{{ if $zh }}使用这个空间{{ else }}Using This Space{{ end }}</button>
+  <button type="button" role="menuitem" data-open="welcome" data-payload="identity">{{ if $zh }}关于熊鑫伟{{ else }}About Xinwei{{ end }}</button>
+</div>
+<nav class="space-desktop-icons space-mac-desktop-icons" data-mac-desktop-icons aria-label="{{ if $zh }}桌面文件{{ else }}Desktop files{{ end }}">
+  {{ range slice (dict "app" "products" "zh" "作品" "en" "Projects") (dict "app" "reader" "zh" "文章" "en" "Writing") (dict "app" "photos" "zh" "旅途相册" "en" "Photos") }}<button type="button" data-open="{{ .app }}">{{ partial "space/icon.html" .app }}<span>{{ if $zh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</span></button>{{ end }}
+</nav>

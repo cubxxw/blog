@@ -11,7 +11,7 @@ import {mountRoomAudio} from './room-audio.js';
 export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,isBlocked=()=>false,materialBase,photoAsset,books=[]}) {
   const abort=new AbortController(),resources=new Set(),textures=new Set(),anchors=[];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)'),zh=document.documentElement.lang.startsWith('zh'),t=(cn,en)=>zh?cn:en;
-  let renderer,css,scene,camera,host,workspace,cssObject,pbr,room,exterior,audio,objectControls,observer,blockedObserver,hiddenObserver;
+  let renderer,css,scene,camera,host,workspace,cssObject,pbr,room,exterior,audio,objectControls,computerExpand,observer,blockedObserver,hiddenObserver,depthBlur;
   let disposed=false,mode='roam',quiet=false,frame=0,last=0,environmentTime=0,frames=0,moving=null,drag=null,inspection=null,reflectionDone=false,firstPending=true,resolveFirst,firstTimer;
   let pose={...JIANGNAN_ENTRY},returnPose={...pose};const keys=new Set(),touchKeys=new Set();
   const firstFrame=new Promise(resolve=>{resolveFirst=resolve;});
@@ -26,20 +26,68 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   function wake(){if(!disposed&&renderer&&visible()&&!frame)frame=requestAnimationFrame(tick);}
   function applyPose(next){pose={...next};camera.position.set(pose.x,pose.y,pose.z);camera.rotation.set(pose.pitch,pose.yaw,0,'YXZ');if(camera.fov!==pose.fov){camera.fov=pose.fov;camera.updateProjectionMatrix();}root.dataset.worldPose=JSON.stringify(Object.fromEntries(Object.entries(pose).map(([key,value])=>[key,+value.toFixed(5)])));}
   function syncMode(next){mode=next;root.dataset.worldMode=next;if(objectControls)objectControls.inert=next!=='roam';keys.clear();touchKeys.clear();drag=null;}
-  function attachMonitor(){
-    const active=document.activeElement;
-    if(workspace.dataset.surface==='desktop'&&(workspace.contains(active)||active===document.body))renderer.domElement.focus({preventScroll:true});
+  const computerView=()=>['framed','expanded'].includes(root.dataset.computerView)?root.dataset.computerView:root.dataset.computerDefault==='framed'?'framed':'expanded';
+  function surfaceChanged(){root.dispatchEvent(new CustomEvent('space:surfacechange'));}
+  function rememberFocus(){
+    const active=document.activeElement;if(!workspace.contains(active))return()=>{};
+    const selection=typeof active.selectionStart==='number'?[active.selectionStart,active.selectionEnd,active.selectionDirection]:null;
+    const selected=window.getSelection(),ranges=!selection&&selected?.anchorNode&&workspace.contains(selected.anchorNode)?Array.from({length:selected.rangeCount},(_,i)=>selected.getRangeAt(i).cloneRange()):[];
+    return()=>{if(!active.isConnected||active.closest('[inert],[hidden]')||!active.getClientRects().length)return;active.focus({preventScroll:true});if(selection)active.setSelectionRange(...selection);if(ranges.length){selected.removeAllRanges();for(const range of ranges)selected.addRange(range);}};
+  }
+  function clearScreenBounds(){
+    delete root.dataset.computerScreenBounds;
+    for(const name of ['left','top','width','height'])root.style.removeProperty('--computer-'+name);
+  }
+  function screenBounds(){
+    if(workspace.dataset.surface!=='computer'){clearScreenBounds();return;}
+    camera.updateMatrixWorld();
+    const [x,y,z]=room.screen.position,halfWidth=room.screen.width/2,halfHeight=room.screen.height/2;
+    const points=[[-1,-1],[-1,1],[1,-1],[1,1]].map(([dx,dy])=>new THREE.Vector3(x+dx*halfWidth,y+dy*halfHeight,z).project(camera));
+    const xs=points.map(p=>(p.x+1)*root.clientWidth/2),ys=points.map(p=>(1-p.y)*root.clientHeight/2);
+    const bounds={x:Math.min(...xs),y:Math.min(...ys),width:Math.max(...xs)-Math.min(...xs),height:Math.max(...ys)-Math.min(...ys)};
+    root.dataset.computerScreenBounds=JSON.stringify(Object.fromEntries(Object.entries(bounds).map(([key,value])=>[key,+value.toFixed(3)])));
+    for(const [name,value]of Object.entries({left:bounds.x,top:bounds.y,width:bounds.width,height:bounds.height}))root.style.setProperty('--computer-'+name,value+'px');
+  }
+  function attachScreen(surface){
     cssObject?.removeFromParent();workspace.remove();
-    Object.assign(workspace.style,{width:'1280px',height:'800px',left:'',top:'',visibility:'visible',display:'',transform:''});
-    workspace.dataset.surface='monitor';workspace.inert=true;workspace.setAttribute('aria-hidden','true');
-    cssObject=new CSS3DObject(workspace);cssObject.position.fromArray(room.screen.position);cssObject.scale.setScalar(room.screen.width/1280);scene.add(cssObject);
-    // CSS3DRenderer reparents into its camera on the next frame. Keep the live
-    // workspace connected now: desktop events can run before that frame.
+    Object.assign(workspace.style,{width:'1280px',height:'800px',left:'',top:'',visibility:'visible',display:'',transform:'',userSelect:'auto'});
+    workspace.dataset.surface=surface;workspace.inert=surface==='monitor';workspace.setAttribute('aria-hidden',String(surface==='monitor'));
+    cssObject=new CSS3DObject(workspace);workspace.style.userSelect='auto';cssObject.position.fromArray(room.screen.position);cssObject.scale.setScalar(room.screen.width/1280);scene.add(cssObject);
+    // Keep the original app nodes connected before the renderer's next frame.
     css.domElement.append(workspace);
   }
+  function attachMonitor(){
+    const active=document.activeElement;
+    if(['desktop','computer'].includes(workspace.dataset.surface)&&(workspace.contains(active)||active===document.body))renderer.domElement.focus({preventScroll:true});
+    attachScreen('monitor');clearScreenBounds();surfaceChanged();
+  }
   function attachDesktop(){
+    const restoreFocus=rememberFocus();
     cssObject?.removeFromParent();cssObject=null;root.append(workspace);workspace.dataset.surface='desktop';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
     Object.assign(workspace.style,{left:'0',top:'0',width:root.clientWidth+'px',height:root.clientHeight+'px',transform:'none',display:'',visibility:'visible'});
+    clearScreenBounds();surfaceChanged();restoreFocus();
+  }
+  function framedPose(){
+    // A level, seated view keeps pointer movement identical to the DOM axes.
+    // Fit the complete monitor and its foot, including the nearest bezel edge.
+    const [x,screenY,z]=room.screen.position,distance=.36/Math.tan(THREE.MathUtils.degToRad(20));
+    // Widen the lens on narrow screens instead of moving behind the chair.
+    const tangent=Math.max(.36,.515/camera.aspect)/distance,fov=THREE.MathUtils.radToDeg(2*Math.atan(tangent));
+    return {x,y:screenY-.05,z:z+distance+.04,yaw:0,pitch:0,fov};
+  }
+  function attachComputer(){
+    const restoreFocus=rememberFocus();attachScreen('computer');screenVisibility();css.render(scene,camera);screenBounds();surfaceChanged();restoreFocus();
+  }
+  function showComputer(view=computerView()){
+    root.dataset.computerView=view;
+    if(view==='framed'){applyPose(framedPose());attachComputer();}
+    else attachDesktop();
+    wake();
+  }
+  function changeComputerView(view){
+    if(!['framed','expanded'].includes(view))return;
+    root.dataset.computerView=view;
+    if(mode==='workspace'){cancelTravel();showComputer(view);}
   }
   function cancelTravel(){if(!moving)return;const previous=moving;moving=null;root.dataset.worldTravel='false';onTravel?.(false);previous.resolve(false);}
   function finishTravel(){if(!moving)return;const previous=moving;moving=null;applyPose(previous.to);previous.finish?.();root.dataset.worldTravel='false';onTravel?.(false);previous.resolve(true);wake();}
@@ -50,14 +98,15 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   }
   const entry=()=>root.clientWidth<700?jiangnanLook([-1.3,1.5,.9],[1.8,1.15,-1.5],72):jiangnanLook([-1.3,1.5,.9],[1.15,1.23,-1.55],58);
   function resetInspection(){inspection=null;delete root.dataset.worldInspect;onInspect?.(null);}
-  function start({animate=true,focus=false}={}){resetInspection();if(workspace.dataset.surface==='desktop')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
+  function start({animate=true,focus=false}={}){resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
   function focus(animate=true){
     if(mode==='workspace'&&!moving)return Promise.resolve(true);
     if(mode==='roam'||mode==='inspect')returnPose=inspection?.pose||{...pose};resetInspection();syncMode('workspace');
-    return travel(jiangnanLook([1.45,1.43,-.65],JIANGNAN_TARGETS.computer,42),animate?850:0,attachDesktop);
+    const view=computerView();root.dataset.computerView=view;
+    return travel(view==='framed'?framedPose():jiangnanLook([1.45,1.43,-.65],JIANGNAN_TARGETS.computer,42),animate?850:0,()=>showComputer(view));
   }
   function leave(){const previous=document.activeElement;resetInspection();attachMonitor();syncMode('roam');const pending=travel(returnPose,800);pending.then(()=>{if(!disposed&&[previous,document.body].includes(document.activeElement))renderer.domElement.focus({preventScroll:true});});return pending;}
-  function outside(){resetInspection();if(workspace.dataset.surface==='desktop')attachMonitor();syncMode('roam');return travel(jiangnanLook([-.65,1.55,-2.08],[0,1.1,-20],62),1000);}
+  function outside(){resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');return travel(jiangnanLook([-.65,1.55,-2.08],[0,1.1,-20],62),1000);}
   function inspect(kind){
     if(!['coffee','books','spines'].includes(kind)||isBlocked()||!['roam','inspect'].includes(mode))return Promise.resolve(false);
     if(!inspection)inspection={pose:{...pose},kind};else inspection.kind=kind;
@@ -86,7 +135,59 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   function resize(){
     if(disposed||!renderer)return;const width=root.clientWidth||innerWidth,height=root.clientHeight||innerHeight;
     camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setPixelRatio(worldPixelRatio(width,height,devicePixelRatio,worldRenderBudget(renderer.getContext())));renderer.setSize(width,height);css.setSize(width,height);
-    if(workspace?.dataset.surface==='desktop')Object.assign(workspace.style,{width:width+'px',height:height+'px'});wake();
+    if(workspace?.dataset.surface==='desktop')Object.assign(workspace.style,{width:width+'px',height:height+'px'});
+    else if(workspace?.dataset.surface==='computer'){applyPose(framedPose());screenBounds();}
+    if(depthBlur)depthBlur.resize();surfaceChanged();wake();
+  }
+  function createDepthBlur(){
+    const target=new THREE.WebGLRenderTarget(1,1,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,type:THREE.HalfFloatType});
+    target.samples=renderer.capabilities.isWebGL2&&!Number.isFinite(worldRenderBudget(renderer.getContext()).maxPixels)?4:0;
+    // Match WebGL2's 24-bit multisample depth buffer for a valid depth resolve.
+    target.depthTexture=new THREE.DepthTexture(1,1,THREE.UnsignedIntType);
+    const uniforms={color:{value:target.texture},depth:{value:target.depthTexture},pixel:{value:new THREE.Vector2()},near:{value:camera.near},far:{value:camera.far},focusBack:{value:0}};
+    const material=new THREE.ShaderMaterial({uniforms,depthTest:false,depthWrite:false,vertexShader:'varying vec2 vUv; void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}',fragmentShader:`
+      #include <packing>
+      varying vec2 vUv;
+      uniform sampler2D color;
+      uniform sampler2D depth;
+      uniform vec2 pixel;
+      uniform float near;
+      uniform float far;
+      uniform float focusBack;
+      float distanceAt(vec2 uv){return -perspectiveDepthToViewZ(texture2D(depth,uv).x,near,far);}
+      void main(){
+        vec4 sharp=texture2D(color,vUv);
+        float blur=smoothstep(focusBack,focusBack+.65,distanceAt(vUv));
+        vec4 total=sharp;
+        float weight=1.0;
+        // Depth-gated disk samples never pull a sharp bezel into the scenery.
+        for(int i=0;i<12;i++){
+          float angle=float(i)*2.39996323;
+          float radius=sqrt((float(i)+.5)/12.0)*11.0*blur;
+          vec2 sampleUv=vUv+vec2(cos(angle),sin(angle))*pixel*radius;
+          float sampleWeight=smoothstep(focusBack,focusBack+.12,distanceAt(sampleUv));
+          total+=texture2D(color,sampleUv)*sampleWeight;weight+=sampleWeight;
+        }
+        gl_FragColor=mix(sharp,total/weight,blur);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+      }`});
+    const geometry=new THREE.PlaneGeometry(2,2),postScene=new THREE.Scene(),postCamera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+    postScene.add(new THREE.Mesh(geometry,material));
+    for(const resource of [target,target.depthTexture,material,geometry])resources.add(resource);
+    function resize(){const size=renderer.getDrawingBufferSize(new THREE.Vector2());target.setSize(size.x,size.y);uniforms.pixel.value.set(renderer.getPixelRatio()/size.x,renderer.getPixelRatio()/size.y);}
+    resize();
+    return {resize,render(){
+      uniforms.focusBack.value=camera.position.z-room.screen.position[2]+.13;
+      renderer.setRenderTarget(target);renderer.render(scene,camera);
+      const info={triangles:renderer.info.render.triangles,calls:renderer.info.render.calls};
+      renderer.setRenderTarget(null);renderer.render(postScene,postCamera);return info;
+    }};
+  }
+  function renderRoom(){
+    const blurred=workspace.dataset.surface==='computer';root.dataset.computerDepthBlur=String(blurred);
+    if(blurred){depthBlur??=createDepthBlur();return depthBlur.render();}
+    renderer.render(scene,camera);return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls};
   }
   function reflectRoom(){
     reflectionDone=true;const cube=new THREE.WebGLCubeRenderTarget(128),capture=new THREE.CubeCamera(.05,30,cube),generator=new THREE.PMREMGenerator(renderer),shadows=renderer.shadowMap.enabled;
@@ -94,8 +195,14 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     finally{capture.removeFromParent();cube.dispose();generator.dispose();exterior.group.visible=true;renderer.shadowMap.enabled=shadows;renderer.shadowMap.needsUpdate=true;}
   }
   function tick(stamp){
-    frame=0;if(disposed||!visible())return;const delta=last?Math.min((stamp-last)/1000,.12):0;last=stamp;
-    const environmentActive=!quiet&&!reduced.matches&&!isBlocked()&&mode!=='workspace';
+    frame=0;if(disposed||!visible())return;
+    const framed=mode==='workspace'&&workspace.dataset.surface==='computer';
+    const environmentActive=!quiet&&!reduced.matches&&!isBlocked()&&(mode!=='workspace'||framed);
+    // While reading at the desk, scenery keeps moving at a quieter 30fps.
+    // Navigation remains disabled by workspace mode, and intentional travel
+    // still receives the ordinary frame cadence.
+    if(framed&&environmentActive&&!moving&&last&&stamp-last<1000/30-.8){frame=requestAnimationFrame(tick);return;}
+    const delta=last?Math.min((stamp-last)/1000,.12):0;last=stamp;
     if(environmentActive)environmentTime+=delta;
     if(moving){moving.elapsed+=delta*1000;const progress=Math.min(1,moving.elapsed/moving.duration);applyPose(travelPose(moving.from,moving.to,progress));if(progress===1)finishTravel();}
     else if(navigate()&&(keys.size||touchKeys.size)){
@@ -105,8 +212,8 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     room.update(environmentTime);exterior.update(environmentTime);
     const readyMaps=Number(root.dataset.worldPbrMaps)>=5||performance.now()-startTime>2200;
     if(!reflectionDone&&readyMaps&&!Number.isFinite(worldRenderBudget(renderer.getContext()).maxPixels))reflectRoom();
-    try{screenVisibility();renderer.render(scene,camera);css.render(scene,camera);}catch(error){settleFirst(false);onFailure?.();return;}
-    root.dataset.worldFrames=String(++frames);root.dataset.worldTriangles=String(renderer.info.render.triangles);root.dataset.worldDraws=String(renderer.info.render.calls);root.dataset.worldRenderedMode=mode;
+    let info;try{screenVisibility();info=renderRoom();css.render(scene,camera);}catch(error){renderer.setRenderTarget(null);settleFirst(false);onFailure?.();return;}
+    root.dataset.worldFrames=String(++frames);root.dataset.worldTriangles=String(info.triangles);root.dataset.worldDraws=String(info.calls);root.dataset.worldRenderedMode=mode;
     root.dataset.roomBoatPose=JSON.stringify([+exterior.boat.position.x.toFixed(3),+exterior.boat.position.y.toFixed(3),+exterior.boat.position.z.toFixed(3)]);root.dataset.roomBoat='ready';root.dataset.worldEnvironmentTime=environmentTime.toFixed(3);
     if(readyMaps){root.dataset.worldReady='true';settleFirst(true);}
     if(!disposed&&(moving||environmentActive||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
@@ -114,9 +221,10 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   function visibility(){stop();keys.clear();touchKeys.clear();drag=null;if(visible())wake();}
   function dispose(){
     if(disposed)return;disposed=true;stop();cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();
-    cssObject?.removeFromParent();for(const [node,anchor] of anchors)if(anchor.isConnected)anchor.replaceWith(node);workspace?.remove();pbr?.dispose();for(const object of resources)object.dispose?.();for(const map of textures)map.dispose();renderer?.dispose();renderer?.forceContextLoss();host?.remove();settleFirst(false);
+    cssObject?.removeFromParent();for(const [node,anchor] of anchors)if(anchor.isConnected)anchor.replaceWith(node);workspace?.remove();computerExpand?.remove();pbr?.dispose();for(const object of resources)object.dispose?.();for(const map of textures)map.dispose();renderer?.dispose();renderer?.forceContextLoss();host?.remove();settleFirst(false);
     if(outsideButton)outsideButton.textContent=outsideLabel;
-    for(const key of ['worldRenderer','worldScreenVisible','worldTargets','worldEnvironmentTime','roomBoat','roomBoatPose'])delete root.dataset[key];
+    clearScreenBounds();surfaceChanged();
+    for(const key of ['worldRenderer','worldScreenVisible','worldTargets','worldEnvironmentTime','roomBoat','roomBoatPose','computerDepthBlur'])delete root.dataset[key];
   }
   try {
     renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
@@ -135,8 +243,13 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photoAsset,books,zh,isDisposed:()=>disposed});exterior=buildJiangnanExterior({scene,pbr,resources,textures,software});
     if(software)room.group.traverse(o=>{if(o.isPointLight)o.castShadow=false;});
     workspace=document.createElement('div');workspace.className='space-spatial-screen jiangnan-workspace';workspace.setAttribute('aria-label','CUBXXW OS');
-    for(const node of [root.querySelector('[data-space-windows]'),root.querySelector('[data-space-snap]'),root.querySelector('.space-bottom'),root.querySelector('.space-menu')]){const anchor=document.createComment('jiangnan workspace return');node.before(anchor);anchors.push([node,anchor]);workspace.append(node);}
+    // Clipping a CSS3DObject itself breaks Chromium's transformed hit testing.
+    // A flat inner viewport clips the exact same live nodes to the glass.
+    const viewport=document.createElement('div');viewport.className='jiangnan-workspace__viewport';workspace.append(viewport);
+    for(const node of [root.querySelector('[data-space-windows]'),root.querySelector('[data-space-snap]'),root.querySelector('.space-bottom'),root.querySelector('.space-menu')]){const anchor=document.createComment('jiangnan workspace return');node.before(anchor);anchors.push([node,anchor]);viewport.append(node);}
+    computerExpand=document.createElement('button');computerExpand.type='button';computerExpand.className='jiangnan-computer-expand';computerExpand.dataset.computerDisplay='expanded';computerExpand.textContent=t('放大屏幕','Enlarge screen');root.append(computerExpand);
     attachMonitor();const catalog=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent);audio=mountRoomAudio({root,assets:catalog.night,zh});
+    listen(root,'click',event=>{const button=event.target.closest('[data-computer-display]');if(button)changeComputerView(button.dataset.computerDisplay);});
     if(outsideButton)outsideButton.textContent=t('去窗边看看 ↗','Look out the window ↗');onCat?.('unavailable');
     listen(renderer.domElement,'pointerdown',event=>{if(!navigate()||event.button!==0)return;cancelTravel();drag={id:event.pointerId,x:event.clientX,y:event.clientY,distance:0};renderer.domElement.setPointerCapture(event.pointerId);});
     listen(renderer.domElement,'pointermove',event=>{if(!drag){if(navigate())renderer.domElement.style.cursor=action(hit(event)?.object)?'pointer':'grab';return;}const dx=event.clientX-drag.x,dy=event.clientY-drag.y;drag.distance+=Math.abs(dx)+Math.abs(dy);drag.x=event.clientX;drag.y=event.clientY;if(!navigate())return;applyPose({...pose,yaw:pose.yaw-dx*.0035,pitch:Math.max(-.9,Math.min(.85,pose.pitch-dy*.003))});wake();});
