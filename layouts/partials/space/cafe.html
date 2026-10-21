@@ -3,10 +3,11 @@
 {{- range site.Data.space_cafe.themes -}}
   {{- $themes = $themes | append (dict "id" .id "name" (cond $zh .name_zh .name_en) "note" (cond $zh .note_zh .note_en)) -}}
 {{- end -}}
-{{- $nightImage := resources.Get "images/space-cafe/jiangnan-night-v1.png" -}}
+{{- $nightImage := resources.Get "images/space-cafe/jiangnan-night-plate-v2.png" -}}
 {{- $nightLarge := $nightImage.Resize "1933x webp q88" -}}
 {{- $nightSmall := $nightImage.Resize "960x webp q85" -}}
-{{- $night := dict "image" $nightLarge.RelPermalink "srcset" (printf "%s 960w, %s 1933w" $nightSmall.RelPermalink $nightLarge.RelPermalink) "music" ("/audio/space/night-on-the-docks-sax.mp3" | relURL) "ambience" ("/audio/space/night-rain-and-fan.mp3" | relURL) -}}
+{{- $boat := (resources.Get "images/space-cafe/jiangnan-boat-v2.png").Resize "900x webp q90" -}}
+{{- $night := dict "image" $nightLarge.RelPermalink "srcset" (printf "%s 960w, %s 1933w" $nightSmall.RelPermalink $nightLarge.RelPermalink) "boat" $boat.RelPermalink "music" ("/audio/space/night-on-the-docks-sax.mp3" | relURL) "ambience" ("/audio/space/night-rain-and-fan.mp3" | relURL) -}}
 {{- $books := slice -}}
 {{- range site.Data.travel.books -}}
   {{- $books = $books | append (dict "title" (cond $zh .title_zh .title_en) "author" (cond $zh .author_zh .author_en) "own" (default false .own) "url" (default "" .url)) -}}
@@ -37,6 +38,7 @@
   </header>
   <footer class="space-cafe__footer"><div><p class="space-cafe__eyebrow">A PLACE TO STAY A LITTLE</p><button type="button" class="space-cafe__place" data-cafe-picker aria-haspopup="dialog"><span data-cafe-name></span><span aria-hidden="true">⌄</span></button><p data-cafe-note></p></div><p class="space-cafe__resident" data-cafe-resident>{{ if $zh }}不赶时间。坐一会儿。{{ else }}No hurry. Stay a little.{{ end }}</p></footer>
 </div>
+<button type="button" class="space-fullscreen" data-space-fullscreen aria-pressed="false" aria-label="{{ if $zh }}进入全屏{{ else }}Enter fullscreen{{ end }}" title="{{ if $zh }}进入全屏{{ else }}Enter fullscreen{{ end }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="space-fullscreen__expand" d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/><path class="space-fullscreen__contract" d="M3 8h5V3m8 0v5h5M8 21v-5H3m18 0h-5v5"/></svg><span class="space-sr-only" data-space-fullscreen-label>{{ if $zh }}进入全屏{{ else }}Enter fullscreen{{ end }}</span></button>
 <nav class="space-world-hud" aria-label="{{ if $zh }}咖啡馆导览{{ else }}Café navigation{{ end }}">
   <div class="space-world-hud__workspace">
     <button type="button" data-cafe-visit aria-label="{{ if $zh }}回到咖啡馆{{ else }}Back to the café{{ end }}" title="{{ if $zh }}回到咖啡馆{{ else }}Back to the café{{ end }}"><span class="space-world-hud__label" aria-hidden="true">← {{ if $zh }}回到咖啡馆{{ else }}Back to the café{{ end }}</span><svg class="space-world-hud__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button>

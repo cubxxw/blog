@@ -1,6 +1,7 @@
 import { safeURL } from './state.mjs';
 import { mountMedia } from './media.js';
 import { mountAgent } from './agent-panel.js';
+import { mountFinderHome } from './finder-home.js';
 
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const html = escapeHTML;
@@ -34,10 +35,12 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
     control.setAttribute('aria-label', t('收藏文章：','Bookmark article: ') + article.title);
     control.innerHTML = `<span aria-hidden="true">${saved ? '★' : '☆'}</span> ${saved ? t('已收藏','Saved') : t('收藏','Save')}`;
   }
-  function showProducts(host, selectedID) {
-    const selected = productByID(selectedID);
-    host.innerHTML = `<div class="space-finder space-products"><aside class="space-sidebar"><div class="space-product-directory"><p>${t('产品目录','Products')}</p>${catalog.products.map(p => `<button data-select-product="${html(p.id)}" aria-pressed="${p.id === selected.id}">${html(p.name)}</button>`).join('')}</div><label class="space-product-picker"><span>${t('产品','Product')}</span><select data-product-select aria-label="${t('选择产品','Choose a product')}">${catalog.products.map(p=>`<option value="${html(p.id)}"${p.id===selected.id?' selected':''}>${html(p.name)}</option>`).join('')}</select></label><nav class="space-product-explore" aria-label="${t('继续探索','Explore more')}"><button data-open="reader">${t('构建笔记','Build notes')}</button><button data-open="books">${t('我的书架','Books')}</button></nav></aside><article class="space-product"><p class="space-product__stage">${html(selected.stage)}</p><h2>${html(selected.name)}</h2><p>${html(selected.headline)}</p>${selected.image ? `<img class="space-product__shot" src="${html(selected.image)}" alt="${html(selected.alt)}" loading="lazy">` : ''}<p>${html(selected.description)}</p><div class="space-product__links">${link(selected.url,t('打开真实产品','Open the product'),'space-button')}${link(selected.demo,t('测试预览','Try the demo'))}${link(selected.github,t('源码','Source'))}</div>${selected.boundary ? `<p class="space-product__boundary">${t('当前边界：','Current boundary: ')}${html(selected.boundary)}</p>` : ''}${selected.related?.length ? `<h3>${t('从构建到思考','Related writing')}</h3>${selected.related.map(url => { const a = articleByURL(url); return a ? listItem(a,`data-open="reader" data-payload="${html(url)}"`) : ''; }).join('')}` : ''}</article></div>`;
-    function choose(control,id) {
+  function showProducts(host, selectedID, windowID) {
+    const products = catalog.products || [];
+    const selected = selectedID ? productByID(selectedID) : null;
+    const controller = new AbortController();
+    disposers.set(windowID, () => controller.abort());
+    function choose(control,id,focusID=id) {
       const focused = document.activeElement === control;
       const picker = control.matches('select');
       execute('open', { app: 'products', payload: id });
@@ -46,14 +49,21 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
       queueMicrotask(() => {
         const region = host.closest('[data-space-window]');
         if (!focused || !host.isConnected || getState().active !== 'products' || !getState().windows.some(win=>win.app==='products'&&win.payload===id) || ![control,region].includes(document.activeElement)) return;
-        const replacement = picker ? host.querySelector('[data-product-select]') : [...host.querySelectorAll('[data-select-product]')].find(button=>button.dataset.selectProduct===id);
+        const replacement = picker ? host.querySelector('[data-product-select]') : [...host.querySelectorAll('[data-select-product]')].find(button=>button.dataset.selectProduct===focusID);
         replacement?.focus({preventScroll:true});
       });
     }
-    host.querySelectorAll('[data-select-product]').forEach(b => b.addEventListener('click', () => choose(b,b.dataset.selectProduct)));
-    const picker=host.querySelector('[data-product-select]');picker.addEventListener('change',()=>choose(picker,picker.value));
+    if (!selected) {
+      host.innerHTML = `<section class="space-product-home" data-product-home><header class="space-finder-toolbar"><strong>${t('作品','Projects')}</strong><button type="button" data-space-search-trigger aria-haspopup="dialog">${t('搜索','Search')} <span aria-hidden="true">⌕</span></button></header><div class="space-finder-home__body"><aside class="space-finder-home__sidebar"><p>${t('个人收藏','Favorites')}</p><nav aria-label="${t('个人收藏','Favorites')}"><button type="button" data-open="welcome" data-payload="">${icon('welcome')}<span>${t('我的空间','My Space')}</span></button><button type="button" data-open="products" data-payload="" aria-current="page">${icon('products')}<span>${t('作品','Projects')}</span></button><button type="button" data-open="reader" data-payload="">${icon('reader')}<span>${t('文章与思考','Writing')}</span></button><button type="button" data-open="books">${icon('books')}<span>${t('书架','Books')}</span></button></nav></aside><div class="space-finder-home__files" aria-label="${t('产品目录','Product directory')}">${products.map(p => `<button type="button" class="space-finder-home__item" data-select-product="${html(p.id)}"><span class="finder-folder" data-product-color="${html(p.color || '')}" aria-hidden="true"><span class="finder-folder__mark">${html(p.mark || '')}</span></span><strong>${html(p.name)}</strong>${p.stage ? `<small>${html(p.stage)}</small>` : ''}</button>`).join('')}${products.length ? '' : `<p class="space-finder-empty">${t('暂无作品','No projects yet')}</p>`}</div></div><footer class="space-finder-status"><span>${t(`${products.length} 个项目`,`${products.length} items`)}</span></footer></section>`;
+      host.querySelectorAll('[data-select-product]').forEach(b => b.addEventListener('click', () => choose(b,b.dataset.selectProduct), {signal:controller.signal}));
+      return;
+    }
+    host.innerHTML = `<div class="space-product-view"><header class="space-finder-toolbar"><button type="button" data-product-back>← ${t('返回产品目录','Back to projects')}</button><strong>${html(selected.name)}</strong></header><div class="space-finder space-products"><aside class="space-sidebar"><div class="space-product-directory"><p>${t('产品目录','Products')}</p>${products.map(p => `<button type="button" data-select-product="${html(p.id)}" aria-pressed="${p.id === selected.id}">${html(p.name)}</button>`).join('')}</div><label class="space-product-picker"><span>${t('产品','Product')}</span><select data-product-select aria-label="${t('选择产品','Choose a product')}">${products.map(p=>`<option value="${html(p.id)}"${p.id===selected.id?' selected':''}>${html(p.name)}</option>`).join('')}</select></label><nav class="space-product-explore" aria-label="${t('继续探索','Explore more')}"><button type="button" data-open="reader">${t('构建笔记','Build notes')}</button><button type="button" data-open="books">${t('我的书架','Books')}</button></nav></aside><article class="space-product"><p class="space-product__stage">${html(selected.stage)}</p><h2>${html(selected.name)}</h2><p>${html(selected.headline)}</p>${selected.image ? `<img class="space-product__shot" src="${html(selected.image)}" alt="${html(selected.alt)}" loading="lazy">` : ''}<p>${html(selected.description)}</p><div class="space-product__links">${link(selected.url,t('打开真实产品','Open the product'),'space-button')}${link(selected.demo,t('测试预览','Try the demo'))}${link(selected.github,t('源码','Source'))}</div>${selected.boundary ? `<p class="space-product__boundary">${t('当前边界：','Current boundary: ')}${html(selected.boundary)}</p>` : ''}${selected.related?.length ? `<h3>${t('从构建到思考','Related writing')}</h3>${selected.related.map(url => { const a = articleByURL(url); return a ? listItem(a,`data-open="reader" data-payload="${html(url)}"`) : ''; }).join('')}` : ''}</article></div></div>`;
+    host.querySelectorAll('[data-select-product]').forEach(b => b.addEventListener('click', () => choose(b,b.dataset.selectProduct), {signal:controller.signal}));
+    const picker=host.querySelector('[data-product-select]');picker.addEventListener('change',()=>choose(picker,picker.value), {signal:controller.signal});
+    const back=host.querySelector('[data-product-back]');back.addEventListener('click',()=>choose(back,'',selected.id), {signal:controller.signal});
     const ask = document.createElement('button'); ask.type='button';ask.className='space-button space-button--secondary';ask.dataset.productAsk='';ask.textContent=t('✳ 聊聊这个产品','✳ Ask about this project');
-    ask.addEventListener('click',()=>execute('ask',{question:t('介绍这个产品，它解决什么问题？','What does this project do, and who is it for?')}));
+    ask.addEventListener('click',()=>execute('ask',{question:t('介绍这个产品，它解决什么问题？','What does this project do, and who is it for?')}), {signal:controller.signal});
     host.querySelector('.space-product__links').append(ask);
   }
   function showLibrary(host, filter = libraryView.filter) {
@@ -81,20 +91,32 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
       restoreFrame = requestAnimationFrame(() => {
         restoreFrame = 0;
         if (disposed || !restoring || !listHost.isConnected) return;
-        // The room re-parents the original windows before its first frame.
-        // A positive size in the old host is not the final reading surface.
-        if (root.querySelector('[data-space-cafe]') && (!root.hasAttribute('data-world-ready') && !root.hasAttribute('data-world-failed') || root.hasAttribute('data-world-loading'))) return;
+        // A visible monitor preview is still read-only. Its original nodes
+        // move again on entry, so restore only on the interactive desktop.
+        if (root.querySelector('[data-space-cafe]') && (root.dataset.cafeMode !== 'desktop' || !root.hasAttribute('data-world-ready') && !root.hasAttribute('data-world-failed') || root.hasAttribute('data-world-loading'))) return;
         if (!listHost.clientWidth || !listHost.clientHeight) return;
         listHost.scrollTop = libraryView.scroll;
         stopRestoring();
       });
     }
-    layoutObserver.observe(root, {attributes:true,attributeFilter:['data-world-ready','data-world-failed','data-world-loading','hidden']});
-    if (windowElement) layoutObserver.observe(windowElement, {attributes:true,attributeFilter:['hidden','data-active','style']});
-    sizeObserver?.observe(listHost);
-    for (const type of ['wheel','touchmove','pointerdown']) listHost.addEventListener(type, userReading, {passive:true});
-    listHost.addEventListener('keydown', userReading);
-    disposers.set(windowElement?.dataset.spaceWindow || 'reader', () => { disposed = true; stopRestoring(); });
+    function observeRestore() {
+      layoutObserver.observe(root, {attributes:true,attributeFilter:['data-world-ready','data-world-failed','data-world-loading','data-cafe-mode','hidden']});
+      if (windowElement) layoutObserver.observe(windowElement, {attributes:true,attributeFilter:['hidden','data-active','style']});
+      sizeObserver?.observe(listHost);
+      for (const type of ['wheel','touchmove','pointerdown']) listHost.addEventListener(type, userReading, {passive:true});
+      listHost.addEventListener('keydown', userReading);
+    }
+    function surfaceChanged() {
+      if (disposed) return;
+      // Re-parenting keeps the scroller node but can clear its scroll offset.
+      // Use the latest reading position, never the value captured at mount.
+      restoring = true;
+      observeRestore();
+      scheduleRestore();
+    }
+    observeRestore();
+    root.addEventListener('space:surfacechange', surfaceChanged);
+    disposers.set(windowElement?.dataset.spaceWindow || 'reader', () => { disposed = true; stopRestoring(); root.removeEventListener('space:surfacechange', surfaceChanged); });
     const draw = () => {
       libraryView.query = queryInput.value; saveLibrary();
       const query = queryInput.value.trim().toLocaleLowerCase();
@@ -270,36 +292,8 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
   function render(win, host) {
     disposers.get(win.id)?.(); disposers.delete(win.id);
     if (win.app === 'welcome') {
-      host.innerHTML = `<article class="space-welcome space-app"><div class="space-onboarding"><p class="space-eyebrow">CUBXXW OS <span>PERSONAL SPACE / 01</span></p><div class="space-entry-art" data-space-entry-art aria-hidden="true"><div class="space-entry-cube"><i></i><i></i><i></i></div><span class="space-entry-orbit"></span></div><h2>${t('欢迎来到我的空间。','Welcome to my space.')}</h2><p class="space-welcome__intro">${t('我是熊鑫伟，写代码，做产品，也去路上走走。<br>我的作品、思考和旅途，都放在这里。','I’m Xinwei. I write code, build things, and wander.<br>Here are my projects, thoughts, and places along the way.')}</p><button class="space-button space-enter" data-enter-space>${t('进入空间','Enter Space')} <span aria-hidden="true">↗</span></button><p class="space-entry-hint">${t('从下面的 Dock 出发，或让 AI 向导带你逛逛。','Start with the Dock, or ask the AI guide to show you around.')}</p><div class="space-welcome__routes">${[['reader',t('文章','Writing')],['products',t('作品','Projects')],['agent',t('AI 向导','AI guide')]].map(([app,title]) => `<button data-open="${app}">${title}<span aria-hidden="true">↗</span></button>`).join('')}</div></div><footer class="space-welcome__foot"><span>Xinwei Xiong / cubxxw</span><button data-open="welcome" data-payload="identity">${t('关于我','About me')} ↗</button></footer></article>`;
-      host.querySelector('[data-enter-space]').addEventListener('click', () => execute('enter'));
-      const template = root.querySelector('[data-space-profile-template]');
-      if (template) {
-        const profile = template.content.cloneNode(true);
-        // Desktop routes use data-profile-section. Keep native fragment focus
-        // from stealing a restored window when the interface language changes.
-        const ids = new Set([...profile.querySelectorAll('[data-profile-section][id]')].map(element => element.id));
-        profile.querySelectorAll('[data-profile-section][id]').forEach(element => { element.id = `space-profile-${element.id}`; });
-        profile.querySelectorAll('a[href^="#"]').forEach(link => { if (ids.has(link.hash.slice(1))) link.setAttribute('href', `#space-profile-${link.hash.slice(1)}`); });
-        host.querySelector('.space-welcome').append(profile);
-      }
-      const reveal = payload => {
-        const profile = host.querySelector('[data-space-profile]');
-        const target = [...host.querySelectorAll('[data-profile-section]')].find(element => element.dataset.profileSection === payload);
-        if (!profile || !target) return;
-        profile.open = true;
-        if (payload === 'start-here') target.querySelector('details')?.setAttribute('open', '');
-        target.tabIndex = -1;
-        requestAnimationFrame(() => {
-          if (host.isConnected && getState().active === 'welcome') {
-            target.scrollIntoView({ block: 'start', behavior: 'instant' });
-            target.focus({ preventScroll: true });
-          }
-        });
-      };
-      host.querySelectorAll('[data-profile-target]').forEach(control => control.addEventListener('click', () => reveal(control.dataset.profileTarget)));
-      host.querySelector('.space-welcome__foot [data-payload="identity"]').addEventListener('click', () => reveal('identity'));
-      if (win.payload) reveal(win.payload);
-    } else if (win.app === 'products') showProducts(host,win.payload);
+      disposers.set(win.id, mountFinderHome({ root, host, catalog, execute, getState, escapeHTML, icon, payload: win.payload }));
+    } else if (win.app === 'products') showProducts(host,win.payload,win.id);
     else if (win.app === 'reader') { if (win.payload && articleByURL(win.payload)) showReader(host,win.payload,win.id); else showLibrary(host,win.payload === 'growth' ? 'growth' : libraryView.filter); }
     else if (win.app === 'photos') media.renderPhotos(host,win.payload,win.id);
     else if (win.app === 'map') media.renderMap(host,win.payload,win.id);

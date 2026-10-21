@@ -1,6 +1,8 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+// These compact navigation contracts belong to the original spatial rooms.
+test.beforeEach(async({page})=>{await reserveWorldJourney(page);});
 
 async function openApp(page:Page,app:string) {
   const dock=page.locator(`[data-space-dock] [data-open="${app}"]`);

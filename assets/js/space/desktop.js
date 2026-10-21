@@ -1,5 +1,8 @@
 import { languageDestination, handoffEntryFocus } from './entry.mjs';
 import { mountCafe } from './cafe.js';
+import { mountFullscreen } from './fullscreen.js';
+import { mountClassicDesktop } from './classic-desktop.js';
+import { cafeTheme } from './cafe.mjs';
 import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, planWindowArrangement } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
@@ -8,12 +11,19 @@ import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escap
 const root = document.querySelector('[data-bear-workspace]');
 if (root) mountDesktop(root);
 function mountDesktop(root) {
+  mountFullscreen(root);
   const catalog = JSON.parse(root.querySelector('[data-space-catalog]').textContent);
   const productRoot = root.closest('[data-product-space]');
   const labels = catalog.labels, zh = catalog.language === 'zh';
   const t = (cn,en) => zh ? cn : en;
   const layer = root.querySelector('[data-space-windows]');
-  const viewport = () => ({ width: root.clientWidth, height: root.clientHeight });
+  const viewport = () => {
+    const screen=root.querySelector('.jiangnan-workspace');
+    const framed=root.dataset.computerView==='framed'&&root.dataset.cafeMode==='desktop'&&screen;
+    const width=framed?screen.clientWidth:root.clientWidth,height=framed?screen.clientHeight:root.clientHeight;
+    return {width,height:Math.max(240,height-(root.clientWidth<=640?44:32))};
+  };
+  mountClassicDesktop({root,execute,notify});
   const stateViewport = () => root.clientWidth <= 640 ? { width: 10000, height: 10000 } : viewport();
   const storageKey = 'bear-space:v1';
   let saved, saveFailure = false;
@@ -115,6 +125,7 @@ function mountDesktop(root) {
       }
     });
     root.querySelector('[data-active-label]').textContent = state.windows.find(w => w.id === state.active)?.app ? labels[state.windows.find(w => w.id === state.active).app] : t('工作区','Workspace');
+    root.querySelector('[data-mac-active-app]').textContent=state.active&&state.active!=='welcome'?labels[state.windows.find(w=>w.id===state.active)?.app]||'Finder':'Finder';
     root.querySelectorAll('[data-space-dock] [data-open]').forEach(button => {
       const app = button.dataset.open;
       button.toggleAttribute('data-running',state.windows.some(w => w.app === app));
@@ -200,10 +211,10 @@ function mountDesktop(root) {
       return `${result.stdout||''}${result.stderr?'\n'+result.stderr:''}\n[exit ${result.exitCode} · /workspace]`;
     } catch {return t('本地沙盒未响应，命令没有得到确认。','The sandbox did not respond; execution is unconfirmed.');}
   }
-  function home() {
-    const width = root.clientWidth <= 640 ? 1280 : viewport().width;
-    const height = Math.min(600, Math.max(380, viewport().height - 140));
-    update({type:'open',app:'welcome',payload:root.querySelector('[data-space-cafe]')?'identity':'',rect:{x:Math.max(16,(width-680)/2),y:Math.max(16,(viewport().height-height-85)/2),width:Math.min(680,width-32),height}});
+  function home(payload='') {
+    const width = root.clientWidth <= 640 ? 1280 : Math.min(1280,viewport().width);
+    const availableHeight=Math.min(800,viewport().height),height = Math.min(500, Math.max(340, availableHeight - 160));
+    update({type:'open',app:'welcome',payload,rect:{x:Math.max(16,(width-840)/2),y:Math.max(30,(availableHeight-height-110)/2),width:Math.min(840,width-48),height}});
     update({type:'focus',id:'welcome'});
     update({type:'initialized'});
   }
@@ -214,16 +225,17 @@ function mountDesktop(root) {
     (button?.getClientRects().length ? button : fallback)?.focus({preventScroll:true});
   }
   function showDialog(dialog, input, fallback) {
-    cafe?.enterDesktop();
+    const fromRoom=cafe?.active,ready=cafe?.enterDesktop();
     completeEntry(); render();
     if (!dialog.open) {
       const active = document.activeElement;
       const sourceDialog = active?.closest('dialog');
       const source = menuPanel.contains(active) ? menu : sourceDialog ? dialogFocus.get(sourceDialog)?.trigger : active;
-      dialogFocus.set(dialog,{ trigger:root.contains(source) && source?.getClientRects().length ? source : fallback, restore:true });
+      dialogFocus.set(dialog,{ trigger:!fromRoom&&root.contains(source)&&!source?.closest('[inert]')&&source?.getClientRects().length ? source : fallback, restore:true,ready });
       for (const other of [search,launchpad,overview]) if (other !== dialog && other.open) closeDialog(other,false);
       closeMenu(); dialog.showModal();
     }
+    const pending=dialogFocus.get(dialog);if(pending)pending.ready=ready;
     (input || dialog.querySelector('button'))?.focus({preventScroll:true});
   }
   function closeDialog(dialog, restore = true) {
@@ -240,7 +252,13 @@ function mountDesktop(root) {
     dialog.addEventListener('cancel',event=>{event.preventDefault();closeDialog(dialog);});
     dialog.addEventListener('close',()=>{
       const saved = dialogFocus.get(dialog); dialogFocus.delete(dialog);
-      if (saved?.restore && saved.trigger?.isConnected && !root.hidden) saved.trigger.focus({preventScroll:true});
+      if(!saved?.restore||root.hidden)return;
+      // A closing dialog can retain its hidden input until the next paint.
+      // Release only that owned focus before waiting for the screen to expand.
+      if(dialog.contains(document.activeElement))document.activeElement.blur();
+      const usable=el=>el?.isConnected&&!el.closest('[inert]')&&el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden';
+      const target=usable(saved.trigger)?saved.trigger:menu;
+      handoffEntryFocus({ready:saved.ready,target,origin:document.activeElement,document,window,isCurrent:()=>!root.hidden&&![search,launchpad,overview].some(panel=>panel.open)&&usable(target),focus:()=>target.focus({preventScroll:true})});
     });
   }
   function showSearch(query = '') {
@@ -382,7 +400,7 @@ function mountDesktop(root) {
     drag.next=fitRect(rect,viewport());
     Object.assign(drag.el.style,{width:`${drag.next.width}px`,height:`${drag.next.height}px`,transform:`translate(${drag.next.x}px,${drag.next.y}px)`});
     const preview=root.querySelector('[data-space-snap]');
-    const pointerX=(event.clientX-(bounds?.left||0))/ratio,pointerY=(event.clientY-(bounds?.top||0))/ratio;
+    const pointerX=(event.clientX-(bounds?.left||0))/ratio,pointerY=(event.clientY-(bounds?.top||0))/ratio-(root.clientWidth<=640?44:32);
     drag.snap=drag.kind==='move'?(pointerX<25?'left':pointerX>viewport().width-25?'right':pointerY<49?'max':null):null;
     preview.hidden=!drag.snap;
     if(drag.snap){preview.style.left=drag.snap==='right'?'calc(50% + 4px)':'8px';preview.style.width=drag.snap==='max'?'calc(100% - 16px)':'calc(50% - 12px)';}
@@ -425,6 +443,7 @@ function mountDesktop(root) {
   });
   let resizeTimer;
   window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{finishDrag(true);update({type:'viewport'});},100);});
+  root.addEventListener('space:surfacechange',()=>{finishDrag(true);update({type:'viewport'});});
   window.addEventListener('storage',event=>{if(event.key===storageKey&&event.newValue){const localEditing=root.contains(document.activeElement)&&isEditableTarget(document.activeElement);if(localEditing){notify(t('另一个标签页更新了空间。刷新后可以载入。','Another tab updated this space. Reload to load it.'));return;}state=createWorkspace(event.newValue,stateViewport());const note=nodes.get('notes');if(note)note.rendered=false;const contact=nodes.get('contact');if(contact)contact.rendered=false;render();}});
   function setView(view,writeHash=true){
     knowledgeGeneration++;knowledgePending=false;
@@ -479,14 +498,16 @@ function mountDesktop(root) {
     else {setView(route.view,false);if(route.app && !restoreLocale)open(route.app,route.payload);}
   }
   window.addEventListener('hashchange',()=>applyHash());
-  const clock=()=>{root.querySelector('[data-space-clock]').textContent=new Intl.DateTimeFormat(zh?'zh-CN':'en-GB',{weekday:'short',hour:'2-digit',minute:'2-digit'}).format(new Date());};clock();setInterval(clock,60000);
+  const clock=()=>{const text=new Intl.DateTimeFormat(zh?'zh-CN':'en-GB',{weekday:'short',hour:'2-digit',minute:'2-digit'}).format(new Date());root.querySelectorAll('[data-space-clock]').forEach(node=>{node.textContent=text;});};clock();setInterval(clock,60000);
   // Public capability descriptions are data; only the registered operations execute.
   window.BearSpace=Object.freeze({ version:1, tools:Object.freeze([{name:'open',description:'Open an app',apps:[...APPS]},{name:'search',description:'Search public writing'},{name:'launchpad',description:'Browse all workspace applications'},{name:'note',description:'Replace this visitor’s local note'},{name:'arrange',description:'Arrange open windows'},{name:'export',description:'Download workspace state'},{name:'run',description:'Execute in the connected local Docker sandbox; never on the host'}]), execute, snapshot:()=>JSON.parse(serializeWorkspace(state)) });
   const entryRoute = resolveSpaceRoute(location.hash,catalog.products,new URLSearchParams(location.search).get('profile') === 'about' ? 'about' : '');
   const navigationType = performance.getEntriesByType('navigation')[0]?.type;
   let resumeCafe = false;
   try { resumeCafe = navigationType === 'reload' && !entryRoute.app && sessionStorage.getItem('space:cafe:mode') === 'cafe'; } catch {}
-  if (!state.initialized) home(); else render();
+  let preferredScene='jiangnan';try{preferredScene=cafeTheme(localStorage.getItem('space:cafe:theme:v2'));}catch{}
+  const roomHome=preferredScene==='jiangnan'&&!entryRoute.app&&!localeResume&&(resumeCafe||!['reload','back_forward'].includes(navigationType));
+  if (!state.initialized||roomHome) home(preferredScene==='jiangnan'?'':undefined); else render();
   applyHash(localeResume || resumeCafe);
   const initialTarget=entryRoute.app&&!localeResume&&!resumeCafe?nodes.get(entryRoute.app)?.el:null,initialOrigin=document.activeElement;
   const entryFocusManaged=Boolean(initialTarget);

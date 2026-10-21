@@ -143,10 +143,10 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
   expect(movement.changedPose).not.toBe(movement.initialPose);
   const pose=()=>page.locator(root).getAttribute('data-cat-pose');
-  await page.locator('[data-cafe-quiet]').click();await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
+  await page.locator('.space-cafe__utilities [data-cafe-quiet]').click();await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
   const quiet=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(quiet);
   const frames=await page.locator(root).getAttribute('data-world-frames');await page.waitForTimeout(200);expect(await page.locator(root).getAttribute('data-world-frames')).toBe(frames);
-  await page.locator('[data-cafe-quiet]').click();
+  await page.locator('.space-cafe__utilities [data-cafe-quiet]').click();
   await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
   await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');const modal=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(modal);
   await page.locator('[data-cafe-picker-close]').click();

@@ -67,6 +67,8 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
     expect(catalog.books).toHaveLength(4);
     const notes=await openApp(page,'notes'),editor=notes.locator('[data-note-editor]');await editor.fill('同一个输入框，先读产品和书，再接着写。');
     const original=await editor.elementHandle(),products=await openApp(page,'products');
+    await expect(products.locator('[data-product-home] [data-select-product]')).toHaveCount(sourceProducts.length);
+    await products.locator('[data-product-home] [data-select-product]').first().click();
     // Capture real clicks at the document boundary so no external product,
     // bookstore or API is contacted during this offline verification.
     await page.evaluate(()=>{

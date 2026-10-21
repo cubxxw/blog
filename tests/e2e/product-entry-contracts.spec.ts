@@ -21,6 +21,8 @@ for(const entry of [
     await expect(products).toHaveAttribute('aria-label',entry.label);
     await expect(space.locator('[data-space-window="products"]')).toBeVisible();
     await expect.poll(()=>products.evaluate(el=>el.contains(document.activeElement))).toBe(true);
+    await expect(products.locator('[data-product-home] [data-select-product]')).toHaveCount(8);
+    await products.locator('[data-product-home] [data-select-product]').first().click();
     await expect(products.locator('.space-product h2')).not.toBeEmpty();
     await expect(page.locator('[data-space-dock] [data-open="products"]')).toHaveAttribute('aria-label',entry.label);
     expect(context.pages()).toHaveLength(pages);
@@ -28,12 +30,16 @@ for(const entry of [
 }
 
 test('the unqualified Space entrance still begins in the café in both languages',async({page})=>{
+  test.setTimeout(90_000);
   await page.setViewportSize({width:390,height:844});
   for(const path of ['/zh/projects/','/projects/']) {
     await page.goto(path);const space=page.locator('[data-bear-workspace]');
     await expect(space).toHaveAttribute('data-ready','true');
     await expect(space).toHaveAttribute('data-cafe-mode','cafe');
-    await expect(page.locator('[data-space-dock]')).toBeHidden();
+    // The real workspace is visible inside the physical Mac. It is inert
+    // until the visitor uses that computer, rather than hidden from the room.
+    await expect(space).toHaveAttribute('data-world-ready','true',{timeout:30_000});
+    expect(await page.locator('[data-space-dock]').evaluate(el=>Boolean(el.closest('[inert]')))).toBe(true);
     await expect(page.locator('[data-space-window="products"]')).toBeHidden();
   }
 });

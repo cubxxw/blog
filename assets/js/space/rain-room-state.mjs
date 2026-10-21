@@ -1,4 +1,17 @@
 export const RAIN_ROOM_SIZE = Object.freeze({width:1933,height:814});
+export const ROOM_SCREEN_QUAD=Object.freeze([[1097,322],[1314,326],[1301,454],[1081,439]].map(Object.freeze));
+
+export function roomScreenQuad(view,scrollLeft=0,{zoom=1,origin=[0,0]}={}) {
+  return ROOM_SCREEN_QUAD.map(([x,y])=>[
+    view.left-scrollLeft+(origin[0]+(x-origin[0])*zoom)*view.scale,
+    view.top+(origin[1]+(y-origin[1])*zoom)*view.scale
+  ]);
+}
+
+export function boatPose(time) {
+  const p=((time/128+.32)%1+1)%1,width=260*(1-p*.12);
+  return {x:1800-p*1120,y:300+(1-p)*25+Math.sin(time*.68)*.65,width,height:width/3,angle:Math.sin(time*.55)*.004};
+}
 
 export function roomViewport({width,height}) {
   width=Math.max(1,width);height=Math.max(1,height);

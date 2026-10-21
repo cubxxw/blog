@@ -1,6 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {roomViewport, projectQuad, createRendererController} from '../assets/js/space/rain-room-state.mjs';
+import {roomViewport, projectQuad, createRendererController,roomScreenQuad,boatPose} from '../assets/js/space/rain-room-state.mjs';
+
+test('the real display remains registered to the monitor through portrait panning and a closer room view',()=>{
+  const source=[[1097,322],[1314,326],[1301,454],[1081,439]];
+  for(const [width,height,scroll] of [[1440,900,0],[390,844,360],[568,320,0]]){
+    const g=roomViewport({width,height});
+    for(const zoom of [1,1.18]){
+      const origin=[1933*.76,814*.25],quad=roomScreenQuad(g,scroll,{zoom,origin});
+      source.forEach(([x,y],i)=>{assert.ok(Math.abs(quad[i][0]-(g.left-scroll+(origin[0]+(x-origin[0])*zoom)*g.scale))<1e-6);assert.ok(Math.abs(quad[i][1]-(g.top+(origin[1]+(y-origin[1])*zoom)*g.scale))<1e-6);});
+    }
+  }
+});
+
+test('the sampan moves in one direction at a gentle pace and wraps only outside the window',()=>{
+  for(let time=0;time<128;time+=.5){
+    const a=boatPose(time),b=boatPose(time+.05);assert.ok([a.x,a.y,a.width,a.height,a.angle].every(Number.isFinite));
+    if(b.x<a.x){assert.ok(a.x-b.x<1);assert.ok(Math.abs(b.y-a.y)<.3);}
+    else{assert.ok(a.x+a.width<984);assert.ok(b.x>1751);}
+  }
+});
 
 test('wide view retains the entire café and portrait opens at the computer and photo frame',()=>{
   for(const [width,height] of [[1440,900],[1280,800],[568,320],[1920,1080]]){
