@@ -335,8 +335,8 @@
       return response.text();
     }).then(function (html) {
       var doc = new DOMParser().parseFromString(html, 'text/html');
-      loadedURLs[path] = true;
       appendDocument(doc, options.animate !== false);
+      loadedURLs[path] = true;
       return true;
     });
   }
