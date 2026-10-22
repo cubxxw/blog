@@ -83,6 +83,7 @@ source_refs:
 - editorial_verdict: KEEP；中文发展编辑及完整英文独立只读审读通过，无待解决的阻断项
 - source_trail: 精确 source_refs 谱系仅当前任务卡；本轮核读 23 个保留的官方公开来源，逐项证据能力见 docs/verification/2026-10-23-tana-product-teardown.md；未读取 brain 或私有目标
 - checks: frontmatter、canonical tags、目标及 changed 中文 flavor 检查通过（1 篇，0 错误、0 警告）；目标 brief 校验通过（1 张，0 错误）；diff 检查通过；双语各 11 个 H2、23 个去重参考、2 张正文图片、5 步实验和6行数据关系对应；描述159/160字符，日期已到达，封面与资源路径一致；已执行指定去 AI 味白名单并于事实修订后复查
+  本批编辑复核：将“大纲里的一条节点”改为“大纲中的一个节点”；修正段落按指定 lieflat-less-ai-tone 白名单复查，无额外明确命中。三篇定向 flavor 扫描 0 错误、0 警告，frontmatter、tags、diff 检查通过。
 - published_at: 未发布
 - retro_notes: 用虚构青苔项目串联对象身份、查询、会议产出与执行；复现步骤未亲测，建议模型不冒充后端。独立审读发现当前 MCP 文档另有显式授权后的 autoApprove 例外，主 executor 读回并修正素材包 F29 的概括；普通修改请求仍不算跳过审核，部分工具不支持参数。未生成私人素材，未改变文章目标；按定向 dispatch 停在 ready-to-publish，交协调者统一审查发布
 - verification: docs/verification/2026-10-23-tana-product-teardown.md

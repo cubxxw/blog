@@ -23,7 +23,7 @@ Whether a budget proposal is ready to send depends on whether an assistant can c
 
 Consider a completely fictional assignment. A team discusses an event, tentatively sets a budget of 30,000 yuan, and asks for venue comparisons and a draft cost estimate by Friday. After the meeting, the budget drops to 20,000 yuan, while the venue remains undecided. You want the assistant to keep things moving and update the proposal as new quotes arrive. The polished meeting summary in the chat window is still a long way from delivery.
 
-Ambi is worth examining through this assignment. It brings listening, personal memory and background work into one product story, trying to let what has already happened inform what happens next. [Official features](https://www.ambi.ai/en/features) My concern here is how those parts connect, and what those connections cost to build.
+Ambi is worth examining through this assignment. It brings listening, personal memory and background work into one product story, trying to let what has already happened inform what happens next. [Official features](https://www.ambi.ai/en/features). My concern here is how those parts connect, and what those connections cost to build.
 
 The product discussed is Mistlabs’ [Ambi](https://www.ambi.ai/en), with public sources checked as of October 23, 2026. I did not sign in, connect applications or run real tasks; the images come from its website. Every event-budget example below is synthetic, and the engineering approach is my proposed implementation. The website helps establish product intent. Reliability still needs to be examined in actual workflows.
 
@@ -47,7 +47,7 @@ I would rather let the assistant continue with an explicit gap. It can compare v
 
 ## Before listening starts, explain where the audio goes
 
-Ambi’s Listening requires the user to turn it on. The website emphasizes a visible state and the ability to switch it off; it does not describe the feature as unlimited listening enabled by default. [Official features](https://www.ambi.ai/en/features) In the budget meeting, that control should let everyone present know when capture begins and when it has ended.
+Ambi’s Listening requires the user to turn it on. The website emphasizes a visible state and the ability to switch it off; it does not describe the feature as unlimited listening enabled by default. [Official features](https://www.ambi.ai/en/features). In the budget meeting, that control should let everyone present know when capture begins and when it has ended.
 
 The privacy policy distinguishes two audio entry points. Listening streams audio to Soniox for real-time transcription, while Recording lets users explicitly save audio. Both require microphone permission and user activation. [Privacy Policy, §2](https://www.ambi.ai/en/privacy)
 
@@ -57,7 +57,7 @@ Under §6 of the policy, unsaved raw Listening audio is deleted when the session
 
 If you are building a similar entry point, the interface should explain these differences in plain language before capture starts. Choosing to retain raw audio changes how one type of data is saved. Asking for a meeting to stop influencing future answers also involves content derived from it. Putting both under a vague “privacy mode” makes the consequences hard to predict.
 
-Audio also brings in information about other people. Agreeing to attend a meeting does not automatically mean agreeing to have one’s voice processed in the cloud. Ambi’s terms require users to obtain necessary permissions; the app’s own recording indicator does not replace that responsibility. [Terms of Service, §1](https://www.ambi.ai/en/terms) The product can make starting, pausing and stopping clear, and give people who do not want to be captured a practical way to opt out.
+Audio also brings in information about other people. Agreeing to attend a meeting does not automatically mean agreeing to have one’s voice processed in the cloud. Ambi’s terms require users to obtain necessary permissions; the app’s own recording indicator does not replace that responsibility. [Terms of Service, §1](https://www.ambi.ai/en/terms). The product can make starting, pausing and stopping clear, and give people who do not want to be captured a practical way to opt out.
 
 ## Memory needs its sources and room to become outdated
 
@@ -77,7 +77,7 @@ The event budget can then have two moments in its history. Someone proposed 30,0
 
 Preferences are even easier to overgeneralize. “Choose a cheaper venue this time” applies to this event. Stored as “The user always prioritizes low prices,” it can skew every later recommendation. The scope in which a memory is valid should travel with it. Information belonging to one task should not quietly turn into a lasting judgment about someone’s personality.
 
-Ambi’s policy says Memory can be saved explicitly by users or extracted or inferred from interactions, and acknowledges that it can be wrong. Users can request access, correction and deletion where self-service controls are unavailable. [Privacy Policy, §2 and §8](https://www.ambi.ai/en/privacy) That does not justify saying every memory item can be edited directly in the interface; the public commitment does not establish that.
+Ambi’s policy says Memory can be saved explicitly by users or extracted or inferred from interactions, and acknowledges that it can be wrong. Users can request access, correction and deletion where self-service controls are unavailable. [Privacy Policy, §2 and §8](https://www.ambi.ai/en/privacy). That does not justify saying every memory item can be edited directly in the interface; the public commitment does not establish that.
 
 If a correction affects only the next conversation, the budget draft already in progress may continue under the old conditions. My proposal is to let a correction identify affected tasks and mark outdated outputs. The user should not need to explain everything again, and the assistant should not need to regenerate the entire history. A changed budget need not change a venue’s address. The system needs to know which part of the work the correction actually affects.
 
@@ -107,7 +107,7 @@ The difficulty becomes clearer in the interface. Suppose a synthetic quote docum
 
 Confirmation also needs to bind to a specific output. If the user approves a 20,000-yuan draft and the backend later generates a 30,000-yuan version, the old approval cannot authorize sending the new content. I would save the recipient together with the output version and invalidate the approval if either material detail changes. This version constraint is also my proposal. The existence of the terms does not establish that Ambi implements it this way.
 
-Revocation also happens along a timeline. If a user revokes email permission, a send waiting to happen should stop. An action already submitted to an external service may be impossible to recall. Ambi’s terms preserve this distinction too. [Terms of Service, §1](https://www.ambi.ai/en/terms) Showing “cancelled” in every case could leave users believing the recipient definitely received nothing.
+Revocation also happens along a timeline. If a user revokes email permission, a send waiting to happen should stop. An action already submitted to an external service may be impossible to recall. Ambi’s terms preserve this distinction too. [Terms of Service, §1](https://www.ambi.ai/en/terms). Showing “cancelled” in every case could leave users believing the recipient definitely received nothing.
 
 I would want the cancellation result to say where the process stopped. An action not yet submitted can be stopped definitively. For one already accepted by an external service, the user needs a route to inspect the actual result. If the network fails after submission and the system cannot tell whether it succeeded, it should retain an uncertain state, check the result, and only then decide whether to retry. A duplicate email is harder to undo than an honest “checking the result.”
 
@@ -119,13 +119,13 @@ I would write the standing brief as a time-limited delegation: during event prep
 
 Notifications also need a reason. A quote with only formatting changes can remain in the update history. A total over budget is worth an interruption. If the task has been stuck for two days waiting for a quote, it should say which document is missing rather than repeat that it is trying. Attention is limited. The more proactive the background work, the more a notification needs to explain why it deserves attention now.
 
-Usage allowances directly affect continuity. The website says processing such as Listening shares Credits with Tasks and Routines; paid-plan allowances reset every seven days, and credit-consuming features pause when the balance runs out. Basic recording and transcription from user-initiated sessions have separate rules. [Official Credits explanation](https://www.ambi.ai/en/features) A paused task therefore needs a visible reason and a condition for resuming. A standing delegation should not silently disappear.
+Usage allowances directly affect continuity. The website says processing such as Listening shares Credits with Tasks and Routines; paid-plan allowances reset every seven days, and credit-consuming features pause when the balance runs out. Basic recording and transcription from user-initiated sessions have separate rules. [Official Credits explanation](https://www.ambi.ai/en/features). A paused task therefore needs a visible reason and a condition for resuming. A standing delegation should not silently disappear.
 
 These requirements can be examined with a simple question: can someone return after a few days and pick up the work? They should be able to find the latest valid requirements, open the existing draft and see what is still missing. Another “memory updated” message matters less.
 
-Leaving a data connection is part of this handoff too. Ambi’s policy says it stops obtaining new Google data after disconnection and deletes previously obtained Google data within thirty days, except where retention is legally required. Disconnecting should not be equated with immediately erasing all historical content. [Privacy Policy, §2 and §6](https://www.ambi.ai/en/privacy) If a user wants to retain a proposal that can stand on its own, the product needs to explain its relationship to the disconnected source.
+Leaving a data connection is part of this handoff too. Ambi’s policy says it stops obtaining new Google data after disconnection and deletes previously obtained Google data within thirty days, except where retention is legally required. Disconnecting should not be equated with immediately erasing all historical content. [Privacy Policy, §2 and §6](https://www.ambi.ai/en/privacy). If a user wants to retain a proposal that can stand on its own, the product needs to explain its relationship to the disconnected source.
 
-The Trust page emphasizes user control and says retained data is encrypted and stored on US servers. These remain company statements, not evidence of end-to-end encryption or an independent security audit. [Trust page](https://www.ambi.ai/en/trust) The privacy policy also discloses restricted access by personnel in China to account-linked identifiers and usage information. US storage must not be generalized into a claim that only US personnel can access any processing. [Privacy Policy, §7](https://www.ambi.ai/en/privacy)
+The Trust page emphasizes user control and says retained data is encrypted and stored on US servers. These remain company statements, not evidence of end-to-end encryption or an independent security audit. [Trust page](https://www.ambi.ai/en/trust). The privacy policy also discloses restricted access by personnel in China to account-linked identifiers and usage information. US storage must not be generalized into a claim that only US personnel can access any processing. [Privacy Policy, §7](https://www.ambi.ai/en/privacy)
 
 ## If I were building it, I would start with one task
 
@@ -139,7 +139,7 @@ Execution can start with one well-defined job. Save its output when finished, th
 
 Then add one long-term trigger, such as a daily check for changes to public quotes actively provided by the user. Process only new changes each time, record the update and notify only when necessary. Once this constrained workflow can recover, consider email connections and external writes. This order follows the uncertainties we need to reduce; it does not describe Ambi’s actual architecture.
 
-The public policy names model, speech and cloud providers, but cannot tell us which database, retrieval strategy or task queue the product uses. [Privacy Policy, §2](https://www.ambi.ai/en/privacy) The more useful thing to learn from is an observable division of responsibility: what the user decides, what the backend saves, and which changes require fresh confirmation. A provider list will not make those design decisions for us.
+The public policy names model, speech and cloud providers, but cannot tell us which database, retrieval strategy or task queue the product uses. [Privacy Policy, §2](https://www.ambi.ai/en/privacy). The more useful thing to learn from is an observable division of responsibility: what the user decides, what the backend saves, and which changes require fresh confirmation. A provider list will not make those design decisions for us.
 
 ## Acceptance should deliberately invalidate the old answer
 

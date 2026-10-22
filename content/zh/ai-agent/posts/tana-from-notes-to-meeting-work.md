@@ -44,7 +44,7 @@ cover:
 
 ## 先让任务拥有自己的身份
 
-Outliner 的基本单位是 node，也就是大纲里的一条节点。每个节点创建时就有唯一标识，同名内容可以是不同对象；reference 则让同一个节点出现在别处。编辑任何一处引用，会更新同一对象的其他呈现。[Nodes and references](https://outliner.tana.inc/learn/features/nodes-and-references)
+Outliner 的基本单位是 node，也就是大纲中的一个节点。每个节点创建时就有唯一标识，同名内容可以是不同对象；reference 则让同一个节点出现在别处。编辑任何一处引用，会更新同一对象的其他呈现。[Nodes and references](https://outliner.tana.inc/learn/features/nodes-and-references)
 
 于是，青苔项目里的“补上提交去重”可以留在会议原来的位置，同时供另一个界面使用。会议保存它的来由，任务界面提供处理入口。这个关系成立的前提，是两处指向同一个对象。
 
