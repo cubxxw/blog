@@ -1,0 +1,192 @@
+{
+  "schema": "blog-regression-followups/1",
+  "status": "pending",
+  "source_run": 39830855910,
+  "source_artifact": 12455303879,
+  "main_authority_run": 39830855910,
+  "main_authority_status": "cancelled",
+  "fixed_test_implementation_errors": {
+    "status": "verified_targeted",
+    "commit": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+    "evidence": "targeted-repair-results.json",
+    "targeted_passed": 22,
+    "typecheck_exit_code": 0,
+    "first_20_evidence": "targeted-repair-results.json",
+    "additional_2_evidence": "mobile-contracts-repair-results.json",
+    "commit_note": "90c194b contains the first 20-case search/catalog repairs; the mobile expectation repairs are in the commit containing this record."
+  },
+  "coverage": {
+    "legacy_planned": 1058,
+    "worker_count": 1,
+    "job_time_limit_minutes": 120,
+    "complete": false,
+    "note": "Baseline, PR and merged-version main runs reached the existing 120-minute job limit. Scope, retries, thresholds, workers and timeout are unchanged.",
+    "observed_passed": 960,
+    "observed_failed": 27,
+    "observed_skipped": 24,
+    "planned_without_observed_result": 47,
+    "content_matrix_passed": 72,
+    "counts_are_partial": true
+  },
+  "diagnostic_observations": [
+    {
+      "group": "Motion and camera",
+      "observation": "Main traces expected data-world-travel=true but saw false; camera resize expected >1 target update but saw 1.",
+      "causal_diagnosis": "not complete"
+    },
+    {
+      "group": "Cat state",
+      "observation": "Main trace expected arrived within 45,000ms; last observed waking.",
+      "causal_diagnosis": "not complete"
+    },
+    {
+      "group": "Audio source continuity",
+      "observation": "Desktop speaker-volume trace expected rain source identity 1, observed 2; mobile browser trace timed out at roomAudioSources/page.evaluate (90,000ms).",
+      "causal_diagnosis": "not complete"
+    }
+  ],
+  "additional_unexecuted_coverage": "47 of 1,058 planned legacy cases have no recorded result in the interrupted merged-version main run.",
+  "preserved_parallel_work": [
+    "https://github.com/cubxxw/blog/pull/472",
+    "https://github.com/cubxxw/blog/pull/474"
+  ],
+  "guard": "Do not close these items or label regression passed based on publication, targeted checks or the documentation-only CI.",
+  "lighthouse_measurement_stability": {
+    "status": "open_failed_after_retry",
+    "observation": "Article-source retry succeeded. Repair-source attempts 1 and 2 both failed collecting /projects/ with Network.getResponseBody PROTOCOL_TIMEOUT; attempt 2 produced only nine completed reports and did not reach all-scope assertions. Underlying cause is not fully established.",
+    "repair_run": 39843952208,
+    "repair_run_attempt": 2,
+    "failure_artifact": 12455770798,
+    "source_application_unchanged": true,
+    "check_rules_unchanged": true,
+    "repair_run_conclusion": "failure",
+    "failure_artifacts": [
+      12455770798,
+      12456407357
+    ],
+    "third_retry_requested": false
+  },
+  "historical_pr_unrecovered_after_first_repairs": [
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T18:18:05.1729554Z   ✘   428 [desktop] › tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links (retry #2) (1.5m)",
+      "alsoUnrecoveredBeforePublication": true
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T18:22:43.3531831Z   ✘   431 [desktop] › tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links (retry #2) (1.5m)",
+      "alsoUnrecoveredBeforePublication": true
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-fullscreen.spec.ts:113:5 › default outdoor rain survives workspace use and pauses when hidden or quiet",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:00:42.0290258Z   ✘   491 [desktop] › tests/e2e/space-fullscreen.spec.ts:113:5 › default outdoor rain survives workspace use and pauses when hidden or quiet (retry #2) (21.3s)",
+      "alsoUnrecoveredBeforePublication": false
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:12:51.0382825Z   ✘   515 [desktop] › tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf (retry #2) (46.7s)",
+      "alsoUnrecoveredBeforePublication": true
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:15:48.1162523Z   ✘   519 [desktop] › tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump (retry #2) (38.3s)",
+      "alsoUnrecoveredBeforePublication": true
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-object-living.spec.ts:44:5 › returning to the present can be interrupted by a new clock gesture",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:24:21.2448933Z   ✘   531 [desktop] › tests/e2e/space-object-living.spec.ts:44:5 › returning to the present can be interrupted by a new clock gesture (retry #2) (58.9s)",
+      "alsoUnrecoveredBeforePublication": false
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:28:59.2784924Z   ✘   535 [desktop] › tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over (retry #2) (1.2m)",
+      "alsoUnrecoveredBeforePublication": true
+    }
+  ],
+  "main_authority_reason": "GitHub maximum execution time of 2h0m0s exceeded",
+  "main_authority_source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "remaining_observed_cases": [
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:12:38.2268676Z   ✘   506 [desktop] › tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf (retry #2) (27.6s)"
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:14:31.6656251Z   ✘   510 [desktop] › tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump (retry #2) (35.2s)"
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:21:31.7155581Z   ✘   524 [desktop] › tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over (retry #2) (1.0m)"
+    },
+    {
+      "project": "desktop",
+      "test": "tests/e2e/space-speaker-volume.spec.ts:16:5 › speaker volume can grow to full gain during playback without replacing music or rain",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T19:31:43.9991796Z   ✘   549 [desktop] › tests/e2e/space-speaker-volume.spec.ts:16:5 › speaker volume can grow to full gain during playback without replacing music or rain (retry #2) (23.7s)"
+    },
+    {
+      "project": "mobile",
+      "test": "tests/e2e/space-browser.spec.ts:61:48 › a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible)",
+      "attempts": 3,
+      "seenFailure": true,
+      "status": "failed",
+      "lastLog": "2026-10-22T20:07:38.5331357Z   ✘  1007 [mobile] › tests/e2e/space-browser.spec.ts:61:48 › a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible) (retry #2) (1.5m)"
+    }
+  ],
+  "latest_full_ci": {
+    "id": 39843952273,
+    "name": "Blog Quality and Release",
+    "head_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+    "status": "in_progress",
+    "conclusion": null,
+    "run_attempt": 1,
+    "created_at": "2026-10-22T19:52:57Z",
+    "run_started_at": "2026-10-22T19:52:57Z",
+    "updated_at": "2026-10-22T19:53:02Z",
+    "html_url": "https://github.com/cubxxw/blog/actions/runs/39843952273",
+    "observed_at": "2026-10-22T20:37:31.023809+00:00"
+  },
+  "observed_at": "2026-10-22T20:37:31.023809+00:00"
+}

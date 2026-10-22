@@ -1,0 +1,30 @@
+2026-10-22T19:55:49.9123646Z Running Lighthouse 1 time(s) on https://cubxxw.com/
+2026-10-22T19:56:20.8873293Z Run #1...done.
+2026-10-22T19:56:20.8875487Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/
+2026-10-22T19:56:35.2729121Z Run #1...done.
+2026-10-22T19:56:35.2729876Z Running Lighthouse 1 time(s) on https://cubxxw.com/about/
+2026-10-22T19:58:54.1198516Z Run #1...done.
+2026-10-22T19:58:54.1200613Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/about/
+2026-10-22T20:01:13.4564813Z Run #1...done.
+2026-10-22T20:01:13.4565811Z Running Lighthouse 1 time(s) on https://cubxxw.com/ai-agent/
+2026-10-22T20:01:28.1396881Z Run #1...done.
+2026-10-22T20:01:28.1399198Z Running Lighthouse 1 time(s) on https://cubxxw.com/engineering/
+2026-10-22T20:01:41.8206827Z Run #1...done.
+2026-10-22T20:01:41.8208598Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/ai-agent/
+2026-10-22T20:01:55.7050458Z Run #1...done.
+2026-10-22T20:01:55.7057418Z Running Lighthouse 1 time(s) on https://cubxxw.com/growth/
+2026-10-22T20:02:10.0094311Z Run #1...done.
+2026-10-22T20:02:10.0094852Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/growth/
+2026-10-22T20:02:23.7576663Z Run #1...done.
+2026-10-22T20:02:23.7578938Z Running Lighthouse 1 time(s) on https://cubxxw.com/projects/
+2026-10-22T20:09:10.7164448Z Run #1...failed!
+2026-10-22T20:09:10.7178691Z   "requestedUrl": "https://cubxxw.com/projects/",
+2026-10-22T20:09:10.7182530Z   "runtimeError": {
+2026-10-22T20:09:10.7182986Z     "code": "PROTOCOL_TIMEOUT",
+2026-10-22T20:09:10.7184077Z     "message": "Waiting for DevTools protocol response has exceeded the allotted time. (Method: Network.getResponseBody)"
+2026-10-22T20:09:10.7252360Z 2026-10-22T20:04:13.745Z LH:MainDocumentContent:error PROTOCOL_TIMEOUT
+2026-10-22T20:09:10.7255588Z 2026-10-22T20:04:20.152Z LH:ResponseCompression:error PROTOCOL_TIMEOUT
+2026-10-22T20:09:10.7444946Z 2026-10-22T20:05:20.021Z LH:Runner:warn ResponseCompression gatherer, required by audit uses-text-compression, encountered an error: PROTOCOL_TIMEOUT
+2026-10-22T20:09:10.7451039Z 2026-10-22T20:05:20.137Z LH:Runner:warn MainDocumentContent gatherer, required by audit charset, encountered an error: PROTOCOL_TIMEOUT
+2026-10-22T20:09:10.7474215Z Runtime error encountered: Waiting for DevTools protocol response has exceeded the allotted time. (Method: Network.getResponseBody)
+2026-10-22T20:09:10.7484369Z ##[error]Process completed with exit code 1.

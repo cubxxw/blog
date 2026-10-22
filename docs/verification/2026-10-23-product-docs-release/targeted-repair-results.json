@@ -314,7 +314,7 @@
   "limits": [
     "Targeted checks against the immutable production deployment do not establish full frozen-artifact CI acceptance.",
     "The first local setup attempt could not launch three cafe cases because their file-level launch options select the Playwright browser cache. The task-local cache was pointed at installed Chromium; no repository or CI browser setup was changed.",
-    "The merged-version main regression remains a separate pending result."
+    "The merged-version main regression ended cancelled at its 2h job limit with observed failures; these targeted passes do not change that result."
   ],
   "invocation": {
     "command": "node node_modules/@playwright/test/cli.js test --config=<task diagnostic config> --grep \"truthful content|pagehide preserves the open query|Enter within|ten real source books\"",

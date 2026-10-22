@@ -92,6 +92,7 @@ source_refs:
 - deployment_id: 6ada5484e1776686525b58a4
 - publication_verification: docs/verification/2026-10-23-product-docs-release.md
 - content_receipt: docs/content-receipts/pending/2026-10-23-ambi-product-teardown.json
+- whole_site_regression: 未通过；合并版主运行 39830855910 达到既有 2 小时时限结束 cancelled，失败与未完成覆盖见收尾记录，不以 published 代替回归通过。
 - reader_feedback: pending；尚未取得读者反馈，保持待观察。
 - retro_notes: 本轮未登录、连接账户、录音或执行实际任务；记忆纠错、后台恢复与外部发送的验收题均明确标为尚未执行。实现路线属于设计建议，未推断 Ambi 后端。保留本卡研究附录与原有配图交接；无额外私人素材或待追加授权事项。成稿使用独立 slug `ambi-memory-to-work`，规避现有队列检查对同 slug 双语文章的重复误报；最终 briefs:check 对本卡无报错，全库仍有 pi、n8n、openclaw 三条既有英文重复提示，未修改其他任务或共享脚本。
 

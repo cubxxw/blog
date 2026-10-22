@@ -1,0 +1,42 @@
+{
+  "artifact_id": 12455303879,
+  "bytes": 125977484,
+  "sha256": "b889af5fb2acc5ad6d840d2d16ed23c0886dda88866ac66f3b2a471917f97562",
+  "verified": true,
+  "plan": {
+    "requiredChecks": [
+      "source",
+      "output",
+      "browser",
+      "interactive",
+      "functions",
+      "seo",
+      "workflow"
+    ],
+    "runSite": true,
+    "production": false,
+    "clock": "2026-10-22T18:23:27.470Z",
+    "sourceSha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "inputDigest": "2089b658ececc9083722476e39679b2cfda134f318c2eb75054bbf6445d93b3b"
+  },
+  "reports": {
+    "tests/.artifacts/ci/source-report.json": {
+      "schema": "blog-quality/1",
+      "mode": "enforce",
+      "ok": true,
+      "sha256": "3618eecebbc3f0df25c2af499af2061fedea6e670daf83d368b6cf7a30a1ac37",
+      "generatedSeo": null
+    },
+    "tests/.artifacts/ci/site/output-report.json": {
+      "schema": "blog-quality/1",
+      "mode": "enforce",
+      "ok": true,
+      "sha256": "89e81d1198d50088ccb1bf26591ed727d4003b6b86e3b75ed75c3e3f7e4dc0e2",
+      "generatedSeo": {
+        "target": "production",
+        "status": "success"
+      }
+    }
+  },
+  "trace_count": 27
+}

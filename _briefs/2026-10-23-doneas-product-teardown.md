@@ -92,6 +92,7 @@ source_refs:
 - deployment_id: 6ada5484e1776686525b58a4
 - publication_verification: docs/verification/2026-10-23-product-docs-release.md
 - content_receipt: docs/content-receipts/pending/2026-10-23-doneas-product-teardown.json
+- whole_site_regression: 未通过；合并版主运行 39830855910 达到既有 2 小时时限结束 cancelled，失败与未完成覆盖见收尾记录，不以 published 代替回归通过。
 - reader_feedback: pending；尚未取得读者反馈，保持待观察。
 - retro_notes: 中文正文与参考合计约 5142 汉字，英文约 3475 词，英文完整翻译。两张官方公开图已目视核对，均注明官方示意、来源与获取日期；未使用真实圈子成员资料。本文明确保留 Monday noon 时区未明、两问/三问并存、目录 6 of 5 与详情 5 of 5 不一致、缺席与计费未实测等限制。WeeklyPlan 等为本文建议对象，未冒充原站实现。成稿采用 doneas-weekly-commitments 文件名，避免任务卡同 slug 双语文章被队列校验误报为重复；未改共享脚本。剩余动作是协调者终审、提交发布与线上验收，本次无需新增翻译授权。
 

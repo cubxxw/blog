@@ -1,0 +1,63 @@
+{
+  "run": 39843952208,
+  "attempt": 2,
+  "conclusion": "failure",
+  "reports": [
+    {
+      "file": "lhr-1792700108827.json",
+      "url": "https://cubxxw.com/",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:14:56.022Z"
+    },
+    {
+      "file": "lhr-1792700123805.json",
+      "url": "https://cubxxw.com/zh/",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:15:12.468Z"
+    },
+    {
+      "file": "lhr-1792700264359.json",
+      "url": "https://cubxxw.com/projects/?profile=about",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:15:26.863Z"
+    },
+    {
+      "file": "lhr-1792700403930.json",
+      "url": "https://cubxxw.com/zh/projects/?profile=about",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:17:47.369Z"
+    },
+    {
+      "file": "lhr-1792700418799.json",
+      "url": "https://cubxxw.com/ai-agent/",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:20:06.951Z"
+    },
+    {
+      "file": "lhr-1792700432096.json",
+      "url": "https://cubxxw.com/engineering/",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:20:21.850Z"
+    },
+    {
+      "file": "lhr-1792700446837.json",
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:20:35.110Z"
+    },
+    {
+      "file": "lhr-1792700474956.json",
+      "url": "https://cubxxw.com/zh/growth/",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:21:03.516Z"
+    },
+    {
+      "file": "lhr-1792700460491.json",
+      "url": "https://cubxxw.com/growth/",
+      "runtimeError": null,
+      "fetchTime": "2026-10-22T20:20:49.870Z"
+    }
+  ],
+  "scope_complete": false,
+  "assertions_complete": false
+}

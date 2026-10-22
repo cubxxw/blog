@@ -92,6 +92,7 @@ source_refs:
 - deployment_id: 6ada5484e1776686525b58a4
 - publication_verification: docs/verification/2026-10-23-product-docs-release.md
 - content_receipt: docs/content-receipts/pending/2026-10-23-tana-product-teardown.json
+- whole_site_regression: 未通过；合并版主运行 39830855910 达到既有 2 小时时限结束 cancelled，失败与未完成覆盖见收尾记录，不以 published 代替回归通过。
 - reader_feedback: pending；尚未取得读者反馈，保持待观察。
 - retro_notes: 用虚构青苔项目串联对象身份、查询、会议产出与执行；复现步骤未亲测，建议模型不冒充后端。独立审读发现当前 MCP 文档另有显式授权后的 autoApprove 例外，主 executor 读回并修正素材包 F29 的概括；普通修改请求仍不算跳过审核，部分工具不支持参数。未生成私人素材，未改变文章目标；按定向 dispatch 停在 ready-to-publish，交协调者统一审查发布
 - verification: docs/verification/2026-10-23-tana-product-teardown.md

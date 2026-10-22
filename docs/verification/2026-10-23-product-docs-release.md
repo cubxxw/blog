@@ -22,6 +22,8 @@
 
 首份收尾记录已提交为 `7a87412036a4592ed906e49ae491300cb394da4f` 并部署；README 自动更新随后产生 `b5411e75d5a72f671d7ccbb4e03a4cc55afbee78`，于 `2026-10-23T02:58:28.200+08:00` 部署，Netlify deployment 为 `6ada5b95d54024e7a01183a7`。这两个提交只涉及 brief、收尾证据与 README。相对首次文章发布版本的文件差异未包含文章或原图；线上 Tana 中文 HTML 与首次验收逐字节相同。见带观察时刻的 [收尾后生产读回](2026-10-23-product-docs-release/production-after-closeout.json)。`published_at` 与三张回执仍记录首次文章实际发布时刻。
 
+校验修复与诊断提交 `90c194b9d3f89f198cd786c483ec39e7230a619d` 于 `2026-10-23T03:55:57.286+08:00` 部署，Netlify deployment 为 `6ada69992b9b95778fb14a90`。相对首次文章发布，文章、原图与应用实现无变化，Tana 中文页的线上 HTML 仍与首次验收相同。见 [修复后生产读回](2026-10-23-product-docs-release/production-after-repairs.json)。
+
 ## 正式站浏览器验收
 
 目标流程：进入每篇正式文章 → 确认全文、图片与参考资料 → 实际点击中英文切换 → 确认同篇对应语言；另以手机尺寸阅读三篇中文。
@@ -34,7 +36,7 @@
 | 正文完整性 | 6/6 正文可见，所有 H2 与定稿顺序相同：Tana 各 11、Doneas 各 8、Ambi 各 9；参考资料存在 |
 | 图片 | 每页封面及两张正文图片成功解码，alt 和图注存在；六张线上原图 MIME 为 image/png，SHA-256 与合并版本一致 |
 | 语言切换 | 6/6 实际点击 `.lang-switch`，目标 URL、语言、标题与非空正文正确 |
-| 手机中文 | 390×844；3/3 标题、正文、图注、图片与参考资料可读，无横向溢出、正文超宽或覆盖 |
+| 手机中文 | 390×844；3/3 标题、正文、图注、图片与参考资料可读，无横向溢出或正文超宽，未发现阻断阅读的裁切 |
 | 运行健康 | 9 个页面状态均无框架错误层、控制台 error/warning、pageerror 或失败请求 |
 | 截图复核 | 逐项目视检查六页桌面首屏与正文配图，以及三篇中文手机首屏、正文配图和参考资料 |
 
@@ -53,7 +55,11 @@ Hugo 响应式图片的 `_hu_<hash>` 文件名通过原始图片名称归一确�
 
 ## 回归检查
 
-最终依据是合并版本的主分支 [Blog Quality and Release / 39830855910](https://github.com/cubxxw/blog/actions/runs/39830855910)，当前仍在运行。PR 头版本的 [39824062985](https://github.com/cubxxw/blog/actions/runs/39824062985) 已因既有 2 小时 job 时限被平台终止，结论为 cancelled；该结果不能记为通过，也不能替代主分支结果。快照见 [main](2026-10-23-product-docs-release/main-quality.json) 与 [PR](2026-10-23-product-docs-release/pr-quality.json)。
+最终依据是合并版本的主分支 [Blog Quality and Release / 39830855910](https://github.com/cubxxw/blog/actions/runs/39830855910)。该运行于 `2026-10-23T04:24:23+08:00` 结束，平台结论为 **cancelled，整站回归未通过**；[平台注释](2026-10-23-product-docs-release/main-annotations.json) 确认达到既有 2 小时 job 时限，非本轮手动取消。PR 头版本的 [39824062985](https://github.com/cubxxw/blog/actions/runs/39824062985) 同样因 2 小时时限结束为 cancelled。快照见 [main](2026-10-23-product-docs-release/main-quality.json) 与 [PR](2026-10-23-product-docs-release/pr-quality.json)。
+
+主分支 artifact 的冻结源码精确为 `db80e3fbfed57e9f75f15ab83ef8a192a0316059`，source、output enforce 报告均为 ok，generated SEO 为 success，内容矩阵 72/72 passed。legacy 计划 1,058 项；中断前日志记录到 960 passed、27 个最后仍失败的唯一场景、24 skipped，另有 47 项没有记录结果。此为部分日志统计，不是已完成 suite 的总结。失败包括过时测试预期及 Space 动画、音频、交互超时，不能把回归失败只归结为时限。[完整部分统计](2026-10-23-product-docs-release/main-test-summary.json) 与 [剩余 trace 摘录](2026-10-23-product-docs-release/main-remaining-failure-excerpts.json) 已保存。
+
+先保留原日志与 [artifact 12455303879](https://github.com/cubxxw/blog/actions/runs/39830855910/artifacts/12455303879)，下载 125,977,484 字节并核对 SHA-256 `b889af5fb2acc5ad6d840d2d16ed23c0886dda88866ac66f3b2a471917f97562` 一致，再分析失败。冻结计划、报告摘要与 trace 数量见 [产物核验](2026-10-23-product-docs-release/main-artifact-verification.json)。
 
 PR 其余现有检查中：Netlify preview、Header rules、Redirect rules、GitGuardian、create-pr 和 Mergify Summary 已成功；Pages changed 与 Mergify Merge Queue 为 neutral。CodeRabbit 的 status 为 success，但描述是 `Review rate limited`，不能据此说它完成了独立代码审查。完整 [PR check-runs](2026-10-23-product-docs-release/pr-check-runs.json)、[PR statuses](2026-10-23-product-docs-release/pr-statuses.json)、[合并信息](2026-10-23-product-docs-release/pr471.json) 与 [main check-runs](2026-10-23-product-docs-release/main-check-runs.json) 随记录保存。其他工作流成功不代替 Required blog quality。
 
@@ -63,24 +69,30 @@ Lighthouse [39830855352](https://github.com/cubxxw/blog/actions/runs/39830855352
 
 同版 `/projects/` 独立浏览器复核 HTTP 200、load 约 0.91 秒且无 pageerror。保存首次失败证据后，仅重试失败 job；第 2 次于 `2026-10-23T02:57:43+08:00` 完成，运行结论为 success。13/13 URL 完成采集并按原规则检查，保留 6 项 performance 警告；未调整工作流、断言、阈值、范围或超时。首次失败属于本次采集未完成，重试通过不删除原失败。见 [首次采集摘要](2026-10-23-product-docs-release/lighthouse-attempt1-summary.json)、[重试快照](2026-10-23-product-docs-release/lighthouse-current.json)、[重试日志摘录](2026-10-23-product-docs-release/lighthouse-attempt2-excerpt.log) 与 [13 页结果](2026-10-23-product-docs-release/lighthouse-attempt2-summary.json)。第 2 次原 artifact 为 [12449974618](https://github.com/cubxxw/blog/actions/runs/39830855352/artifacts/12449974618)，下载后核对 digest `sha256:a2f019c9f0f581c21e942cb9a7406952fc784ef1518eb0c47cb71a96aadd9fb5` 一致。
 
-`published` 只表示文章正式发布与本批正式页验收；**整站回归尚无通过结论**。不因合并成功、Netlify ready 或定向浏览器通过而改写该状态。
+`published` 只表示文章正式发布与本批正式页验收；**合并版本整站回归未通过**。不因合并成功、Netlify ready 或定向浏览器通过而改写该状态。
 
 Lighthouse 第 2 次测量期间，生产站于 `02:55:38.130+08:00` 更新到首份收尾记录提交 `7a874120…`。虽然该提交没有改动正文、配图或应用实现，Lighthouse 的 success 仍只是这次在线工作流的结论，不应被当作精确冻结 `db80e3fb…` 产物的替代验收。合并版本的主分支 Required blog quality 仍是最终依据。
 
-## PR 超时诊断与必要修复
+## 超时诊断与必要修复
 
 PR 的 [平台注释](2026-10-23-product-docs-release/pr-annotations.json) 明确记录 `The job has exceeded the maximum execution time of 2h0m0s`。先保存日志和 [artifact 12452548853](https://github.com/cubxxw/blog/actions/runs/39824062985/artifacts/12452548853)，下载 132,577,491 字节并核对 SHA-256 `cf67f877b5f01cef7012c74354252480cf86cd94673e628dfa3165b2a1ae4275` 一致，再检查失败 trace。
 
 该 PR 运行的实际冻结源码为 `9bf31c062a3d825552dba4c018ac9d79fa43e479`，workflow head 为 `424d891a…`。source 与 output 报告均为 enforce / ok，generated SEO 为 success；四项目内容矩阵 72/72 passed。之后计划运行 1,058 项 legacy E2E，尚未完成即到达 job 时限。日志中有 17 个最后仍失败的唯一场景，包含搜索校验及 Space 阅读、书籍、雨声、镜头、时钟和猫的状态；其中 15 项也在文章发布前基线 [39793923387](https://github.com/cubxxw/blog/actions/runs/39793923387) 留有未恢复失败。统计来自已打印结果，不是完整 suite 的最终计数，不将超时归结为只有性能问题。[详细部分统计](2026-10-23-product-docs-release/pr-test-summary.json)。
 
-必要修复仅涉及两份测试实现：
+第一批必要修复涉及两份测试实现：
 
 - 搜索测试把合法的相对 href 直接交给 Node 的 `new URL()`，7 个场景因此在校验查询参数之前抛出 `TypeError: Invalid URL`。四处解析补上 `page.url()` 作为基址，保留全部查询与导航断言。
 - 书籍测试的严格对象比较未包含模板已存在的 `id` 和 `note` 字段。补齐对这两项的期望值，继续核对全部标题、作者、自著标记、链接及 10 本数量，并增加对当前字段的严格核对。
 
 在绑定 `db80e3fb…` 的不可变 Netlify 原部署上，先复现 7 个搜索 TypeError 与一个桌面书籍字段差异，再验证原有相关场景：desktop/mobile 两个项目共 20/20 passed，0 failed、0 flaky、0 skipped；`npm run typecheck` 退出 0。两文件的 expect 调用数前后均为 242，场景名称、GPU 预算、全站范围、断言阈值与工作流时限保持不变。应用实现、三篇正文、完整英文及原图均未修改。见 [修复回执](2026-10-23-product-docs-release/targeted-repair-results.json)、[搜索修复前](2026-10-23-product-docs-release/targeted-before.log)、[书籍修复前](2026-10-23-product-docs-release/cafe-before.log)、[修复后 20 项](2026-10-23-product-docs-release/targeted-after.log) 与 [类型检查](2026-10-23-product-docs-release/typecheck.log)。
 
+主分支最终 trace 又定位到 `p1-p2-ux.spec.ts` 的两处旧版预期：手机按钮的计数已隐藏，可访问名称为“工程”和“成长与生活”，旧正则要求尾部空格；当前注册表已包含 browser，共 12 个应用，旧测试仍要求 11。先在同一不可变部署复现两项失败，再修正名称、逐个核对 12 个应用 ID。手机分类行实测 `clientWidth = scrollWidth = 287`，无需滚动提示；测试核对工程和成长分类可见、分类行不溢出且提示隐藏，展开后仍核对溢出标签行的提示可见，并保留卡片高度、44px 控件、主题持久化和关闭行为。两项均 passed，0 failed/flaky/skipped；最终 typecheck 退出 0。见 [两项修复回执](2026-10-23-product-docs-release/mobile-contracts-repair-results.json)、[修复前](2026-10-23-product-docs-release/mobile-contracts-before.log)、[修复后](2026-10-23-product-docs-release/mobile-contracts-after.log) 与 [布局实测](2026-10-23-product-docs-release/mobile-library-diagnostic.json)。三份测试文件合计 22 项定向验证通过；检查范围、重试次数、GPU 设置、超时和尺寸阈值均未放宽。
+
 这次定向修复验证不替代冻结产物的完整 CI。其余 Space 时序与交互失败、完整 legacy 未执行部分及运行预算问题仍需继续跟踪；没有删除场景、调低阈值或把未完成结果写为通过。现有 Space 工作 [#472](https://github.com/cubxxw/blog/pull/472) 与文章分页工作 [#474](https://github.com/cubxxw/blog/pull/474) 保持各自范围，未合并或覆盖这些并行改动。
+
+修复提交 `90c194b9…` 的新主分支运行 [39843952273](https://github.com/cubxxw/blog/actions/runs/39843952273) 已启动，当前 [快照](2026-10-23-product-docs-release/repair-ci.json) 为 in_progress，不能作为通过证据。原版主运行仍是本批最终判定依据。[剩余回归待办](2026-10-23-product-docs-release/regression-followups.json) 按主分支结果保留 5 个未解决的已观察场景：靠近/拖拽动画、缩放时重定向镜头、猫唤醒后到达、音量调整保持音源身份、手机浏览器连续音频超时；并保留未完成覆盖与未确认的底层原因。PR 独有但主分支已通过的失败单独存为历史上下文，不混入主分支最终失败数。
+
+修复提交的 Lighthouse [39843952208](https://github.com/cubxxw/blog/actions/runs/39843952208) 第 1 次再次在 `/projects/` 采集时出现 DevTools `Network.getResponseBody` 的 `PROTOCOL_TIMEOUT`，没有完成整套测量。先保留 [日志摘录](2026-10-23-product-docs-release/repair-lighthouse-attempt1-excerpt.log) 及 [artifact 12455770798 元信息](2026-10-23-product-docs-release/repair-lighthouse-attempt1-artifact.json)，下载 3,920,747 字节并核对 SHA-256 `3784776a11299ddd7795e767c6439af92e9ad8af0ed315fa707b453cb9c73c67` 一致，再仅重试失败 job。第 2 次于 `2026-10-23T04:30:25+08:00` 仍以相同采集错误结束，failure；只产生前 9 页报告，未到整套断言。[第 2 次日志](2026-10-23-product-docs-release/repair-lighthouse-attempt2-excerpt.log)、[报告清单](2026-10-23-product-docs-release/repair-lighthouse-attempt2-summary.json) 与 [artifact 12456407357 核验](2026-10-23-product-docs-release/repair-lighthouse-attempt2-artifact.json) 已保存，下载 SHA-256 `214e6d3cb56beb7102baab0738fdfdd1d9a130c58e2872722782d789c1e11bbd` 一致。见最终 [快照](2026-10-23-product-docs-release/repair-lighthouse.json)。采集不稳定继续跟踪，底层原因未完全确定，未直接归为基础设施故障，也未请求第 3 次盲目重跑或放宽规则。
 
 ## 内容回执与读者反馈
 
@@ -90,6 +102,12 @@ PR 的 [平台注释](2026-10-23-product-docs-release/pr-annotations.json) 明�
 
 ## 保存与清理边界
 
-本批修改范围为三张 brief、收尾记录、pending 回执、验证证据，以及两份测试文件中的必要校验实现修复。正文、英文翻译、配图、应用实现及 CI 范围、阈值、时限保持不变。
+本批修改范围为三张 brief、收尾记录、pending 回执、验证证据，以及三份测试文件中的必要校验实现修复。正文、英文翻译、配图、应用实现及 CI 范围、阈值、时限保持不变。
 
 交接目录及其中列明的临时工作区清单尚未取得，旧临时工作区未清理。当前工作区没有 Brain 检出，未接触既有合并冲突；其他任务和改动均未回退。核实清单、确认提交及证据已保存后，才处理明确列名的本批临时工作区。
+
+[清理回执](2026-10-23-product-docs-release/cleanup-receipt.json) 的删除清单为空；此前清理授权保留，待交接清单可读后按列名执行。当前云检出、原始 CI artifact 和完整浏览器证据也予以保留。
+
+## 独立凭据待办
+
+Figma 令牌曾进入本批私有工具日志，作者已确认未进入公开提交。已提示本人轮换；实际撤销、更换或轮换须先取得本人明确许可，本轮没有执行凭据变更，也没有读取或回显密钥。该项保持 pending，不与文章发布或回归结果混为一项。

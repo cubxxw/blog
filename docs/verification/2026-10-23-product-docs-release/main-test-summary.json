@@ -1,0 +1,269 @@
+{
+  "workflow_run_id": 39830855910,
+  "workflow_head_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "conclusion": "cancelled",
+  "reason": "GitHub maximum execution time of 2h0m0s exceeded",
+  "counts_are_partial": true,
+  "counts_note": "Observed last statuses only; interruption prevented a final Playwright suite summary.",
+  "suites": [
+    {
+      "planned": 72,
+      "workers": 1,
+      "lastPrintedIndex": 72,
+      "observedUnique": 72,
+      "observedPassed": 72,
+      "observedFlakyPasses": 0,
+      "observedSkipped": 0,
+      "observedUnrecoveredFailures": []
+    },
+    {
+      "planned": 1058,
+      "workers": 1,
+      "lastPrintedIndex": 1065,
+      "observedUnique": 1011,
+      "observedPassed": 960,
+      "observedFlakyPasses": 0,
+      "observedSkipped": 24,
+      "observedUnrecoveredFailures": [
+        {
+          "project": "desktop",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:40:54.0062021Z   ✘   359 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (471ms)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:40:56.9553368Z   ✘   362 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (479ms)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:41:00.0722148Z   ✘   365 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (501ms)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:41:03.0808414Z   ✘   368 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (463ms)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:41:09.8666101Z   ✘   378 [desktop] › tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner (retry #2) (563ms)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:41:13.7390982Z   ✘   382 [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article (retry #2) (526ms)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:41:16.9738322Z   ✘   385 [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query (retry #2) (534ms)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:55:44.5489404Z   ✘   448 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (retry #2) (11.4s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:56:13.1063099Z   ✘   451 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (retry #2) (9.1s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T18:56:41.2148270Z   ✘   454 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (retry #2) (8.8s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:12:38.2268676Z   ✘   506 [desktop] › tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf (retry #2) (27.6s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:14:31.6656251Z   ✘   510 [desktop] › tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump (retry #2) (35.2s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:21:31.7155581Z   ✘   524 [desktop] › tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over (retry #2) (1.0m)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-speaker-volume.spec.ts:16:5 › speaker volume can grow to full gain during playback without replacing music or rain",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:31:43.9991796Z   ✘   549 [desktop] › tests/e2e/space-speaker-volume.spec.ts:16:5 › speaker volume can grow to full gain during playback without replacing music or rain (retry #2) (23.7s)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:46:14.2655152Z   ✘   916 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (446ms)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:46:17.0366196Z   ✘   919 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (419ms)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:46:19.9282517Z   ✘   922 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (461ms)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:46:22.7717185Z   ✘   925 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (436ms)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:46:29.1156979Z   ✘   935 [mobile] › tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner (retry #2) (521ms)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:46:32.8007635Z   ✘   939 [mobile] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article (retry #2) (505ms)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:46:35.8747198Z   ✘   942 [mobile] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query (retry #2) (487ms)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:47:34.6975290Z   ✘   969 [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact (retry #2) (5.3s)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T19:48:38.6265738Z   ✘   972 [mobile] › tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target (retry #2) (19.5s)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/space-browser.spec.ts:61:48 › a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible)",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T20:07:38.5331357Z   ✘  1007 [mobile] › tests/e2e/space-browser.spec.ts:61:48 › a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible) (retry #2) (1.5m)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T20:08:40.0702660Z   ✘  1011 [mobile] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (retry #2) (12.6s)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T20:09:12.4117851Z   ✘  1014 [mobile] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (retry #2) (9.5s)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T20:09:43.2121295Z   ✘  1017 [mobile] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (retry #2) (9.6s)"
+        }
+      ]
+    }
+  ],
+  "artifact": {
+    "id": 12455303879,
+    "name": "blog-quality-39830855910-1",
+    "size_in_bytes": 125977484,
+    "url": "https://api.github.com/repos/cubxxw/blog/actions/artifacts/12455303879",
+    "archive_download_url": "https://api.github.com/repos/cubxxw/blog/actions/artifacts/12455303879/zip",
+    "expired": false,
+    "created_at": "2026-10-22T20:24:18Z",
+    "expires_at": "2026-11-21T20:24:12Z",
+    "updated_at": "2026-10-22T20:24:18Z",
+    "digest": "sha256:b889af5fb2acc5ad6d840d2d16ed23c0886dda88866ac66f3b2a471917f97562",
+    "workflow_run": {
+      "id": 39830855910,
+      "repository_id": 691353169,
+      "head_repository_id": 691353169,
+      "head_branch": "main",
+      "head_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059"
+    }
+  },
+  "frozen_source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "source_and_output_reports_ok": true,
+  "generated_seo_status": "success"
+}

@@ -1,0 +1,66 @@
+
+Running 2 tests using 1 worker
+
+(node:9197) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact (6.7s)
+(node:9343) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [mobile] › tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target (27.9s)
+
+
+  1) [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: /^工程 / })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: /^工程 / }) with timeout 5000ms
+      - waiting for getByRole('button', { name: /^工程 / })
+
+
+      53 |     await page.goto('/zh/articles/');
+      54 |
+    > 55 |     await expect(page.getByRole('button', { name: /^工程 / })).toBeVisible();
+         |                                                              ^
+      56 |     await expect(page.getByRole('button', { name: /^成长与生活 / })).toBeAttached();
+      57 |     await expect(page.locator('[data-filter-scroll-hint]').first()).toBeVisible();
+      58 |
+        at /workspace/blog/tests/e2e/p1-p2-ux.spec.ts:55:62
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/p1-p2-ux-P1-P2-UX-regressi-36a21-coverable-and-cards-compact-mobile/error-context.md
+
+  2) [mobile] › tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-bear-workspace]').locator('[data-space-launchpad]').locator('[data-launchpad-app]')
+    Expected: 11
+    Received: 12
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-bear-workspace]').locator('[data-space-launchpad]').locator('[data-launchpad-app]') with timeout 5000ms
+      - waiting for locator('[data-bear-workspace]').locator('[data-space-launchpad]').locator('[data-launchpad-app]')
+        9 × locator resolved to 12 elements
+          - unexpected value "12"
+
+
+      82 |     await workspace.locator('[data-space-menu-trigger]').click();
+      83 |     await allApps.click();
+    > 84 |     await expect(launchpad.locator('[data-launchpad-app]')).toHaveCount(11);
+         |                                                             ^
+      85 |     await launchpad.locator('[data-launchpad-app="settings"]').click();
+      86 |     const settings = workspace.locator('[data-space-window="settings"]');
+      87 |     await expect(settings).toBeVisible();
+        at /workspace/blog/tests/e2e/p1-p2-ux.spec.ts:84:61
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/p1-p2-ux-P1-P2-UX-regressi-64351--actions-and-a-close-target-mobile/error-context.md
+
+  2 failed
+    [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact
+    [mobile] › tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target

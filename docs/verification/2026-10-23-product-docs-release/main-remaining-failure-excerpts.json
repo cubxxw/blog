@@ -1,0 +1,99 @@
+{
+  "source_run": 39830855910,
+  "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "artifact_id": 12455303879,
+  "cases": [
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-browser-a-visitor-ca-3042e-ontinuous-sound-compatible--mobile-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Test timeout of 90000ms exceeded.",
+          "stack": []
+        },
+        {
+          "message": "Error: page.evaluate: Test timeout of 90000ms exceeded.",
+          "stack": [
+            {
+              "file": "tests/helpers/room-audio.ts",
+              "line": 19,
+              "column": 85,
+              "function": "roomAudioSources"
+            },
+            {
+              "file": "tests/helpers/room-audio.ts",
+              "line": 20,
+              "column": 59,
+              "function": "rainSource"
+            },
+            {
+              "file": "tests/e2e/space-browser.spec.ts",
+              "line": 82,
+              "column": 26
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-living-motion-approa-71bdd--continues-at-the-bookshelf-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"true\"\nReceived: \"false\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 5000ms\n  - waiting for locator('[data-bear-workspace]')\n    - locator resolved to <section class=\"space\" data-ready=\"true\" data-theme=\"light\" data-boot-stage=\"3\" data-wallpaper=\"dawn\" data-cafe-mode=\"cafe\" data-world-draws=\"51\" data-bear-workspace=\"\" data-cat-loaded=\"true\" data-world-frames=\"28\" data-room-boat=\"ready\" data-room-volume=\"0.6\" data-fullscreen=\"false\" data-world-ready=\"true\" data-world-pbr-maps=\"12\" data-world-vista=\"image\" data-room-sound=\"paused\" data-product-panel=\"bear\" data-world-travel=\"false\" data-world-mode=\"inspect\" data-cafe-theme=\"jiangnan\" data-boot-state=\"c…>…</section>\n    - unexpected value \"false\"\n    - locator resolved to <section class=\"space\" data-ready=\"true\" data-theme=\"light\" data-boot-stage=\"3\" data-wallpaper=\"dawn\" data-cafe-mode=\"cafe\" data-world-draws=\"51\" data-bear-workspace=\"\" data-cat-loaded=\"true\" data-world-frames=\"29\" data-room-boat=\"ready\" data-room-volume=\"0.6\" data-fullscreen=\"false\" data-world-ready=\"true\" data-world-pbr-maps=\"12\" data-world-vista=\"image\" data-room-sound=\"paused\" data-product-panel=\"bear\" data-world-travel=\"false\" data-world-mode=\"inspect\" data-cafe-theme=\"jiangnan\" data-boot-state=\"c…>…</section>\n    - unexpected value \"false\"\n    - locator resolved to <section class=\"space\" data-ready=\"true\" data-theme=\"light\" data-boot-stage=\"3\" data-wallpaper=\"dawn\" data-cafe-mode=\"cafe\" ",
+          "stack": [
+            {
+              "file": "tests/e2e/space-living-motion.spec.ts",
+              "line": 38,
+              "column": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-living-motion-resizi-fba10-era-without-an-arrival-jump-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 1\nReceived:   1",
+          "stack": [
+            {
+              "file": "tests/e2e/space-living-motion.spec.ts",
+              "line": 72,
+              "column": 62
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-object-living-the-ca-7e900-kes-it-before-it-comes-over-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"arrived\"\nReceived: \"waking\"\nTimeout:  45000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('[data-bear-workspace]') with timeout 45000ms\n  - waiting for locator('[data-bear-workspace]')\n    - locator resolved to <section class=\"space\" data-ready=\"true\" data-theme=\"light\" data-boot-stage=\"3\" data-wallpaper=\"dawn\" data-cafe-mode=\"cafe\" data-bear-workspace=\"\" data-world-mode=\"roam\" data-cat-loaded=\"true\" data-world-frames=\"26\" data-world-draws=\"270\" data-room-boat=\"ready\" data-room-volume=\"0.6\" data-fullscreen=\"false\" data-world-ready=\"true\" data-cat-state=\"waking\" data-world-pbr-maps=\"12\" data-world-vista=\"image\" data-room-sound=\"paused\" data-product-panel=\"bear\" data-world-travel=\"false\" data-cafe-theme=\"jiangn…>…</section>\n    - unexpected value \"waking\"\n    - locator resolved to <section class=\"space\" data-ready=\"true\" data-theme=\"light\" data-boot-stage=\"3\" data-wallpaper=\"dawn\" data-cafe-mode=\"cafe\" data-bear-workspace=\"\" data-world-mode=\"roam\" data-cat-loaded=\"true\" data-world-frames=\"27\" data-world-draws=\"270\" data-room-boat=\"ready\" data-room-volume=\"0.6\" data-fullscreen=\"false\" data-world-ready=\"true\" data-cat-state=\"waking\" data-world-pbr-maps=\"12\" data-world-vista=\"image\" data-room-sound=\"paused\" data-product-panel=\"bear\" data-world-travel=\"false\" data-cafe-theme=\"jiangn…>…</section>\n    - unexpected value \"waking\"\n    - locator resolved to <section class=\"space\" data-ready=\"true\" data-theme=\"light\" data-boot-stage=\"3\" data-wallpaper=\"dawn\" data-cafe-mode",
+          "stack": [
+            {
+              "file": "tests/e2e/space-object-living.spec.ts",
+              "line": 75,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-speaker-volume-speak-ee5af-out-replacing-music-or-rain-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 1\nReceived: 2",
+          "stack": [
+            {
+              "file": "tests/e2e/space-speaker-volume.spec.ts",
+              "line": 25,
+              "column": 58
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "underlying_causes": "Not yet fully established. These observed failures remain open; no assertions, timeouts or scenarios were relaxed."
+}

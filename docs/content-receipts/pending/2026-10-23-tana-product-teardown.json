@@ -23,7 +23,7 @@
   "verification": {
     "browser_status": "passed",
     "browser_evidence": "docs/verification/2026-10-23-product-docs-release/browser-acceptance.json",
-    "main_regression_status": "in_progress",
+    "main_regression_status": "cancelled",
     "main_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855910",
     "main_run_attempt": 1,
     "lighthouse_status": "success",
@@ -32,8 +32,32 @@
     "lighthouse_first_attempt": "failed: PROTOCOL_TIMEOUT on /projects/; preserved before retry",
     "pr_regression_status": "cancelled",
     "pr_regression_reason": "GitHub 2h job timeout; legacy suite incomplete with observed failures",
-    "targeted_harness_repair_status": "passed: 20/20 targeted cases and typecheck",
-    "targeted_harness_repair_evidence": "docs/verification/2026-10-23-product-docs-release/targeted-repair-results.json"
+    "targeted_harness_repair_status": "passed: 22/22 targeted cases across two runs, and typecheck; does not establish full regression pass",
+    "targeted_harness_repair_evidence": "docs/verification/2026-10-23-product-docs-release/targeted-repair-results.json",
+    "main_regression_reason": "GitHub maximum 2h job time exceeded; 27 observed legacy failures and 47 planned cases without a recorded result. Not passed.",
+    "main_regression_evidence": "docs/verification/2026-10-23-product-docs-release/main-test-summary.json",
+    "additional_mobile_repair_evidence": "docs/verification/2026-10-23-product-docs-release/mobile-contracts-repair-results.json",
+    "repair_full_ci": {
+      "id": 39843952273,
+      "name": "Blog Quality and Release",
+      "head_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_attempt": 1,
+      "created_at": "2026-10-22T19:52:57Z",
+      "run_started_at": "2026-10-22T19:52:57Z",
+      "updated_at": "2026-10-22T19:53:02Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39843952273",
+      "observed_at": "2026-10-22T20:37:31.023809+00:00"
+    },
+    "repair_lighthouse": {
+      "source_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+      "run_url": "https://github.com/cubxxw/blog/actions/runs/39843952208",
+      "attempt": 2,
+      "status": "failure",
+      "reason": "Repeated /projects/ CDP collection timeout; full assertions not reached.",
+      "evidence": "docs/verification/2026-10-23-product-docs-release/repair-lighthouse-attempt2-artifact.json"
+    }
   },
   "reader_feedback": {
     "status": "pending",
@@ -45,5 +69,6 @@
   "upstream_handoff": {
     "status": "pending",
     "note": "博客侧已建立可导入回执；当前环境未带入上游交接目录，未声称已导入 Brain。"
-  }
+  },
+  "updated_at": "2026-10-22T20:37:31.023809+00:00"
 }
