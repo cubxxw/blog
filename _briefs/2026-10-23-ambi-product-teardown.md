@@ -293,6 +293,6 @@ URL：https://www.ambi.ai/en/about
 
 - `/images/product-docs/2026/ambi-home.png`：官网公开页面，2026-10-23 获取。标明是官方演示，不是作者账户实测。
 
-- `/images/product-docs/2026/ambi-features.png`：官网公开页面，2026-10-23 获取。标明是官方演示，不是作者账户实测。
+- `/images/product-docs/2026/ambi-features.png`：官网 features 页的 Memory 官方示意原图，2026-10-23 获取。图中有 timeline、topics、files、skills，必须标明是官方示意，不是作者账户实测。原图来源为附录中的 Memory 素材 URL。
 
 图像可作本文封面，完整英文保留相同资源路径。不要再生成无关隐喻图。
