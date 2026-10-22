@@ -4,13 +4,13 @@ import { JSDOM } from 'jsdom';
 import { mountAgent, planArticleActions } from '../assets/js/space/agent-panel.js';
 import { createSessionStore } from '../assets/js/space/agent-sessions.mjs';
 import { mountMedia } from '../assets/js/space/media.js';
-import { contextualQuestion } from '../assets/js/space/companion.mjs';
+import { contextualQuestion, publicFocus } from '../assets/js/space/companion.mjs';
 
 const article = { title: '<img src=x onerror=alert(1)> · OpenClaw', url: '/zh/ai-agent/posts/openclaw/', date: '2026-10-22' };
 const catalog = { language: 'zh', articles: [article], photos: [], products: [], places: [] };
 const record = answer => ({ id: 'existing-task', question: '推荐一篇文章', answer, status: 'completed', steps: [], startedAt: '2026-10-22T10:00:00Z', endedAt: '2026-10-22T10:01:00Z', stopReason: 'answered' });
 
-function fixture({ touch = false, answer, draft, context, windows = [], fetchImpl } = {}) {
+function fixture({ touch = false, answer, draft, context, catalogSource = catalog, windows = [], fetchImpl } = {}) {
   const dom = new JSDOM('<main data-bear-workspace><section data-space-window="agent"><div data-host></div></section></main>', { url: 'https://blog.test/zh/projects/' });
   const previous = new Map();
   for (const [name, value] of Object.entries({ window: dom.window, document: dom.window.document, location: dom.window.location, localStorage: dom.window.localStorage, DOMParser: dom.window.DOMParser, CustomEvent: dom.window.CustomEvent, AbortController: dom.window.AbortController, getComputedStyle: dom.window.getComputedStyle.bind(dom.window), matchMedia: () => ({ matches: touch, addEventListener() {}, removeEventListener() {} }), ...(fetchImpl ? { fetch: fetchImpl } : {}) })) {
@@ -23,7 +23,7 @@ function fixture({ touch = false, answer, draft, context, windows = [], fetchImp
   if (draft) storage.saveDraft(storage.active().id, draft);
   const host = dom.window.document.querySelector('[data-host]'), calls = [];
   const execute = (name, args) => { calls.push({ name, args }); windows.push({ app: args.app, payload: args.payload }); return 'Opened reader.'; };
-  const dispose = mountAgent({ host, catalog, execute, getState: () => ({ windows }), getContext:()=>context });
+  const dispose = mountAgent({ host, catalog:catalogSource, execute, getState: () => ({ windows }), getContext:()=>context });
   return { dom, host, calls, cleanup() { dispose(); for (const [name, descriptor] of previous) descriptor ? Object.defineProperty(globalThis, name, descriptor) : delete globalThis[name]; dom.window.close(); } };
 }
 const turn = () => new Promise(resolve => setImmediate(resolve));
@@ -113,6 +113,31 @@ test('an old selection draft never invents a source; empty-conversation actions 
     assert.deepEqual(f.calls,[{name:'open',args:{app:'reader',payload:''}},{name:'open',args:{app:'reader',payload:article.url}}]);assert.equal(requests,0);
     assert.equal(f.host.querySelector('[data-agent-input]').value,'解释下面选中的段落。');assert.equal(f.host.querySelectorAll('[data-agent-task]').length,0);
   }finally{f.cleanup();}
+});
+
+test('a restored passage draft cannot inherit current reader B; explicit selection A and ordinary drafts keep their own context semantics',async()=>{
+  const currentB={title:'Current reader B',url:'/zh/engineering/posts/current-b/'},source={...catalog,articles:[article,currentB]};
+  const contextB=publicFocus({active:'reader',windows:[{id:'reader',app:'reader',payload:currentB.url}]},source);
+  for(const question of ['解释下面选中的段落。','Explain this selected passage.']){
+    const requests=[],f=fixture({draft:question,context:contextB,catalogSource:source,fetchImpl:async(_url,options)=>{requests.push(JSON.parse(options.body));return new Response(JSON.stringify({message:'Fixture answer.',toolCalls:[]}),{headers:{'Content-Type':'application/json'}});}});
+    try{
+      assert.equal(f.host.querySelector('[data-agent-context-bar]').hidden,true);assert.equal(f.host.querySelector('[data-agent-context-title]').textContent,'');assert.equal(f.host.querySelector('[data-agent-context-quote]').textContent,'');assert.match(f.host.querySelector('[data-agent-start-hint]').textContent,/没有附带原文/);
+      // A focus-only refresh cannot turn reader B into the old missing passage.
+      f.host.closest('[data-bear-workspace]').dispatchEvent(new f.dom.window.CustomEvent('bear:agent-prefill',{detail:{focus:contextB,question}}));
+      assert.equal(f.host.querySelector('[data-agent-context-bar]').hidden,true);
+      f.host.querySelector('[data-agent-send]').click();await turn();await turn();assert.equal(requests.length,1);assert.equal(requests[0].messages.at(-1).content,question);assert.ok(!requests[0].messages.at(-1).content.includes(currentB.url));
+    }finally{await turn();f.cleanup();}
+  }
+  for(const explicitSelection of [false,true]){
+    const requests=[],question=explicitSelection?'解释下面选中的段落。':'我想了解这篇文章的主要观点。';
+    const f=fixture({draft:question,context:contextB,catalogSource:source,fetchImpl:async(_url,options)=>{requests.push(JSON.parse(options.body));return new Response(JSON.stringify({message:'Fixture answer.',toolCalls:[]}),{headers:{'Content-Type':'application/json'}});}});
+    try{
+      const contextA={kind:'article',title:article.title,reference:article.url},selection='真实的新选段 A。';
+      if(explicitSelection)f.host.closest('[data-bear-workspace]').dispatchEvent(new f.dom.window.CustomEvent('bear:agent-prefill',{detail:{focus:contextA,selection,question}}));
+      assert.equal(f.host.querySelector('[data-agent-context-bar]').hidden,false);
+      f.host.querySelector('[data-agent-send]').click();await turn();await turn();assert.equal(requests[0].messages.at(-1).content,contextualQuestion(question,explicitSelection?contextA:contextB,explicitSelection?selection:''));
+    }finally{await turn();f.cleanup();}
+  }
 });
 
 test('photo detail fits the actual window, releases the old observer and leaves short windows scrollable', () => {

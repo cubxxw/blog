@@ -112,7 +112,10 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   let busy = false;
   let controller = null;
   let pendingApproval = null;
-  let focus = getContext?.() || null;
+  const passageQuestion = value => /^(解释下面选中的段落。|Explain this selected passage\.)$/.test(String(value || '').trim());
+  // Drafts store only their question. A reader open now is not evidence of
+  // which passage an earlier selection-based draft meant to explain.
+  let focus = passageQuestion(session.draft) ? null : getContext?.() || null;
   let selectedText = '';
   let recognition = null;
   const workspace = host.closest('[data-bear-workspace]');
@@ -209,7 +212,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   host.querySelector('[data-agent-session-export]').addEventListener('click',()=>{
     saveDraft();const url=URL.createObjectURL(new Blob([sessions.export()],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='space-conversations.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   });
-  input.addEventListener('input',()=>{draftDirty=true;clearTimeout(draftTimer);draftTimer=setTimeout(saveDraft,250);updateStartHint();});
+  input.addEventListener('input',()=>{draftDirty=true;clearTimeout(draftTimer);draftTimer=setTimeout(saveDraft,250);if(passageQuestion(input.value)&&!String(selectedText).trim()){focus=null;drawContext();}updateStartHint();});
   const flushDraft=()=>{if(!disposed)saveDraft();};window.addEventListener('pagehide',flushDraft);
   const drawContext = () => {
     contextBar.hidden = contextButton.hidden = !focus;
@@ -230,7 +233,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     if (disposed) return;
     if (!event.detail?.question && input.value.trim()) { input.focus({preventScroll:true});return; }
     selectedText = event.detail?.selection || '';
-    focus = event.detail?.focus || null; drawContext();
+    focus = passageQuestion(event.detail?.question || input.value) && !String(selectedText).trim() ? null : event.detail?.focus || null; drawContext();
     if (event.detail?.question) {input.value = event.detail.question.slice(0,4000);draftDirty=true;}
     saveDraft();updateStartHint();
     input.focus({preventScroll:true});
@@ -260,10 +263,10 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   function updateStartHint() {
     const hint = log.querySelector('[data-agent-start-hint]');
     if (!hint) return;
-    const missingPassage = !focus && /^(解释下面选中的段落。|Explain this selected passage\.)$/.test(input.value.trim());
-    hint.textContent = focus
-      ? t('引用已放在下方。可以先展开确认，再写下想了解的部分。', 'Your source is attached below. Check it, then ask what you would like to understand.')
-      : missingPassage ? t('这份草稿没有附带原文。请回文章重新选段，或直接写下问题。', 'This draft has no attached passage. Select it again in the article, or type your question.')
+    const missingPassage = passageQuestion(input.value) && !String(selectedText).trim();
+    hint.textContent = missingPassage
+      ? t('这份草稿没有附带原文。请回文章重新选段，或直接写下问题。', 'This draft has no attached passage. Select it again in the article, or type your question.')
+      : focus ? t('引用已放在下方。可以先展开确认，再写下想了解的部分。', 'Your source is attached below. Check it, then ask what you would like to understand.')
       : t('可以从一篇文章开始，也可以直接写下你的问题。', 'Start with an article, or write down a question.');
   }
 
@@ -517,7 +520,8 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     if (busy || disposed) return null;
     const raw = String(question ?? '').trim().slice(0, 4000);
     if (!raw) return null;
-    const text = contextualQuestion(raw,context ? focus : null,context ? selectedText : '');
+    const useContext = context && !(passageQuestion(raw) && !String(selectedText).trim());
+    const text = contextualQuestion(raw,useContext ? focus : null,useContext ? selectedText : '');
     if (!text) return null;
     const sessionId=session.id,history=sessionMessages(sessions.active());
     closeHistory();
