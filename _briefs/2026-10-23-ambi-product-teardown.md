@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-10-23-ambi-product-teardown
 title: Ambi 产品拆解：记住一件事之后，怎样把它做完
-status: ready
+status: ready-to-publish
 priority: normal
 language: zh-en
 section: ai-agent
@@ -68,22 +68,23 @@ source_refs:
 
 ## 验收标准
 
-- [ ] 核对政策与产品现状，官方声明、研究分析、建议实现和未知清楚
-- [ ] 中文稳定后执行 translate-and-format-blog，完整英文同路径同资源
-- [ ] 至少两张有解释作用且无私人信息的已检查配图，封面准确
-- [ ] 先读作者声音，再执行 lieflat-less-ai-tone 白名单检查；正文继续修改要复查
-- [ ] 引文、参考、标签、元信息、双语、资源及文章级检查通过
-- [ ] 不 commit、不 push、不发布，由协调者统一审查与执行本次已授权发布
+- [x] 核对政策与产品现状，官方声明、研究分析、建议实现和未知清楚
+- [x] 中文稳定后执行 translate-and-format-blog，完整英文同路径同资源
+- [x] 至少两张有解释作用且无私人信息的已检查配图，封面准确
+- [x] 先读作者声音，再执行 lieflat-less-ai-tone 白名单检查；正文继续修改要复查
+- [x] 引文、参考、标签、元信息、双语、资源及文章级检查通过
+- [x] 不 commit、不 push、不发布，由协调者统一审查与执行本次已授权发布
 
 ## 执行回执
 
-- article:
-- public_url:
-- editorial_verdict:
-- source_trail:
-- checks:
-- published_at:
-- retro_notes:
+- article: content/zh/ai-agent/posts/ambi-memory-to-work.md
+- english_article: content/en/ai-agent/posts/ambi-memory-to-work.md
+- public_url: 待协调者发布后填写。
+- editorial_verdict: KEEP。以一项合成预算工作贯穿输入、记忆更正和任务交付，解释授权与退出；避免功能大全。中文正文 5,105 汉字，英文正文约 3,378 词（均含图注、不含参考资料）；含参考资料分别为 5,163 汉字和约 3,433 词。执行侧审读通过，不冒充作者新增亲测或人工验收。
+- source_trail: 已运行本卡精确 source_refs trace，仓库内只有当前 brief，无旧文沿袭；未解析 brain://。直接复核官网 features、privacy、terms 和 trust；Recap 场景与首页依据本卡公开研究和配图交接。现行隐私政策为 2026-10-21，条款为 2026-10-12。功能页只支持产品声明与官方示意，不能证明后台可靠性；政策支持处理与保留规则，不能证明所有执行路径均已落实。
+- checks: 已按仓库写作约束与批准口吻逐段复读；中文稳定后完整读取并执行指定 lieflat-less-ai-tone 白名单，未发现需强行改写的明确命中，结构和限定词保留；检测器单篇扫描 0 错误、0 警告。translate-and-format-blog 完整翻译后对照检查，9 个二级标题对应，26 处外链顺序与两图路径一致，无残留中文。frontmatter:check、tags:check 和 git diff --check 通过；description 中 156 字符、英 150 字符；日期为已到达的 +08:00。两张已目视交接图片均为有效 PNG，尺寸分别为 1440×1000、712×1176，正文注明官方公开页面或 Memory 示意；封面使用首页图。普通 Markdown 未引入 shortcode 或新渲染实现，未运行全站构建及浏览器测试。
+- published_at: 尚未发布，由协调者统一完成提交、发布与线上读回。
+- retro_notes: 本轮未登录、连接账户、录音或执行实际任务；记忆纠错、后台恢复与外部发送的验收题均明确标为尚未执行。实现路线属于设计建议，未推断 Ambi 后端。保留本卡研究附录与原有配图交接；无额外私人素材或待追加授权事项。成稿使用独立 slug `ambi-memory-to-work`，规避现有队列检查对同 slug 双语文章的重复误报；最终 briefs:check 对本卡无报错，全库仍有 pi、n8n、openclaw 三条既有英文重复提示，未修改其他任务或共享脚本。
 
 ## 本次公开研究附录
 

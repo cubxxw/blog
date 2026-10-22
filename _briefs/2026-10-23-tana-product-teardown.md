@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-10-23-tana-product-teardown
 title: Tana 产品拆解：从结构化笔记到会议中的工作
-status: ready
+status: ready-to-publish
 priority: normal
 language: zh-en
 section: ai-agent
@@ -68,22 +68,25 @@ source_refs:
 
 ## 验收标准
 
-- [ ] 产品身份和事实按 2026-10-23 公开来源复核；示例、官方承诺和建议实现分明
-- [ ] 中文稳定后按 translate-and-format-blog 产出完整英文，同路径同资源
-- [ ] 每篇至少两张有解释作用的已检查配图，优先公开界面与产品细节；封面准确
-- [ ] 先读作者声音，再执行 lieflat-less-ai-tone 白名单检查；后续改正文要复查
-- [ ] 相邻引文、文末参考、标签、元信息、资源、双语一致性和文章级检查通过
-- [ ] 不 commit、不 push、不发布，由本批协调者统一审查和执行已授权发布
+- [x] 产品身份和事实按 2026-10-23 公开来源复核；示例、官方承诺和建议实现分明
+- [x] 中文稳定后按 translate-and-format-blog 产出完整英文，同路径同资源
+- [x] 每篇至少两张有解释作用的已检查配图，优先公开界面与产品细节；封面准确
+- [x] 先读作者声音，再执行 lieflat-less-ai-tone 白名单检查；后续改正文要复查
+- [x] 相邻引文、文末参考、标签、元信息、资源、双语一致性和文章级检查通过
+- [x] 不 commit、不 push、不发布，由本批协调者统一审查和执行已授权发布
 
 ## 执行回执
 
-- article:
-- public_url:
-- editorial_verdict:
-- source_trail:
-- checks:
-- published_at:
-- retro_notes:
+- article: content/zh/ai-agent/posts/tana-from-notes-to-meeting-work.md
+- article_en: content/en/ai-agent/posts/tana-from-notes-to-meeting-work.md
+- public_url: 未发布
+- editorial_verdict: KEEP；中文发展编辑及完整英文独立只读审读通过，无待解决的阻断项
+- source_trail: 精确 source_refs 谱系仅当前任务卡；本轮核读 23 个保留的官方公开来源，逐项证据能力见 docs/verification/2026-10-23-tana-product-teardown.md；未读取 brain 或私有目标
+- checks: frontmatter、canonical tags、目标及 changed 中文 flavor 检查通过（1 篇，0 错误、0 警告）；目标 brief 校验通过（1 张，0 错误）；diff 检查通过；双语各 11 个 H2、23 个去重参考、2 张正文图片、5 步实验和6行数据关系对应；描述159/160字符，日期已到达，封面与资源路径一致；已执行指定去 AI 味白名单并于事实修订后复查
+- published_at: 未发布
+- retro_notes: 用虚构青苔项目串联对象身份、查询、会议产出与执行；复现步骤未亲测，建议模型不冒充后端。独立审读发现当前 MCP 文档另有显式授权后的 autoApprove 例外，主 executor 读回并修正素材包 F29 的概括；普通修改请求仍不算跳过审核，部分工具不支持参数。未生成私人素材，未改变文章目标；按定向 dispatch 停在 ready-to-publish，交协调者统一审查发布
+- verification: docs/verification/2026-10-23-tana-product-teardown.md
+- delivery_boundary: 未 commit、push、合并或部署；无 CI、线上页面或账户功能实测结果；普通 Markdown 按仓库规定完成文章级检查，未运行全站构建和 E2E
 
 ## 本次公开研究附录
 
