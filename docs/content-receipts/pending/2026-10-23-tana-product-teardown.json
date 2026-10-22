@@ -29,7 +29,11 @@
     "lighthouse_status": "success",
     "lighthouse_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855352",
     "lighthouse_run_attempt": 2,
-    "lighthouse_first_attempt": "failed: PROTOCOL_TIMEOUT on /projects/; preserved before retry"
+    "lighthouse_first_attempt": "failed: PROTOCOL_TIMEOUT on /projects/; preserved before retry",
+    "pr_regression_status": "cancelled",
+    "pr_regression_reason": "GitHub 2h job timeout; legacy suite incomplete with observed failures",
+    "targeted_harness_repair_status": "passed: 20/20 targeted cases and typecheck",
+    "targeted_harness_repair_evidence": "docs/verification/2026-10-23-product-docs-release/targeted-repair-results.json"
   },
   "reader_feedback": {
     "status": "pending",

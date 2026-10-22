@@ -53,9 +53,11 @@ Hugo 响应式图片的 `_hu_<hash>` 文件名通过原始图片名称归一确�
 
 ## 回归检查
 
-最终依据是合并版本的主分支 [Blog Quality and Release / 39830855910](https://github.com/cubxxw/blog/actions/runs/39830855910)，当前仍在运行。PR 头版本的 [39824062985](https://github.com/cubxxw/blog/actions/runs/39824062985) 也仍在运行；它不能替代主分支结果。快照见 [main](2026-10-23-product-docs-release/main-quality.json) 与 [PR](2026-10-23-product-docs-release/pr-quality.json)。
+最终依据是合并版本的主分支 [Blog Quality and Release / 39830855910](https://github.com/cubxxw/blog/actions/runs/39830855910)，当前仍在运行。PR 头版本的 [39824062985](https://github.com/cubxxw/blog/actions/runs/39824062985) 已因既有 2 小时 job 时限被平台终止，结论为 cancelled；该结果不能记为通过，也不能替代主分支结果。快照见 [main](2026-10-23-product-docs-release/main-quality.json) 与 [PR](2026-10-23-product-docs-release/pr-quality.json)。
 
 PR 其余现有检查中：Netlify preview、Header rules、Redirect rules、GitGuardian、create-pr 和 Mergify Summary 已成功；Pages changed 与 Mergify Merge Queue 为 neutral。CodeRabbit 的 status 为 success，但描述是 `Review rate limited`，不能据此说它完成了独立代码审查。完整 [PR check-runs](2026-10-23-product-docs-release/pr-check-runs.json)、[PR statuses](2026-10-23-product-docs-release/pr-statuses.json)、[合并信息](2026-10-23-product-docs-release/pr471.json) 与 [main check-runs](2026-10-23-product-docs-release/main-check-runs.json) 随记录保存。其他工作流成功不代替 Required blog quality。
+
+收尾记录提交 `140f16ae0ae05193e4c334e8c05739207457c8d9` 自己的 [39837285225](https://github.com/cubxxw/blog/actions/runs/39837285225) 于 `2026-10-23T03:10:45+08:00` success；该次只有维护文档范围，未生成部署 bundle，release 和 followups 正常 skipped。见 [收尾提交检查](2026-10-23-product-docs-release/closeout-quality.json)。此成功不能替代合并版本的整站回归。
 
 Lighthouse [39830855352](https://github.com/cubxxw/blog/actions/runs/39830855352) 第 1 次在 `/projects/` 发生 DevTools `Network.getResponseBody` 的 `PROTOCOL_TIMEOUT`。失败发生在采集阶段，尚未完成整套测量。失败 [摘要](2026-10-23-product-docs-release/lighthouse-attempt1-excerpt.log) 及 [原 artifact 12449249813](https://github.com/cubxxw/blog/actions/runs/39830855352/artifacts/12449249813) 已保留，原 artifact digest 为 `sha256:8124aeee0c88e0558b8337b655deb140e27db32502e9cdeedf2ad6be098d6ae4`。
 
@@ -65,6 +67,21 @@ Lighthouse [39830855352](https://github.com/cubxxw/blog/actions/runs/39830855352
 
 Lighthouse 第 2 次测量期间，生产站于 `02:55:38.130+08:00` 更新到首份收尾记录提交 `7a874120…`。虽然该提交没有改动正文、配图或应用实现，Lighthouse 的 success 仍只是这次在线工作流的结论，不应被当作精确冻结 `db80e3fb…` 产物的替代验收。合并版本的主分支 Required blog quality 仍是最终依据。
 
+## PR 超时诊断与必要修复
+
+PR 的 [平台注释](2026-10-23-product-docs-release/pr-annotations.json) 明确记录 `The job has exceeded the maximum execution time of 2h0m0s`。先保存日志和 [artifact 12452548853](https://github.com/cubxxw/blog/actions/runs/39824062985/artifacts/12452548853)，下载 132,577,491 字节并核对 SHA-256 `cf67f877b5f01cef7012c74354252480cf86cd94673e628dfa3165b2a1ae4275` 一致，再检查失败 trace。
+
+该 PR 运行的实际冻结源码为 `9bf31c062a3d825552dba4c018ac9d79fa43e479`，workflow head 为 `424d891a…`。source 与 output 报告均为 enforce / ok，generated SEO 为 success；四项目内容矩阵 72/72 passed。之后计划运行 1,058 项 legacy E2E，尚未完成即到达 job 时限。日志中有 17 个最后仍失败的唯一场景，包含搜索校验及 Space 阅读、书籍、雨声、镜头、时钟和猫的状态；其中 15 项也在文章发布前基线 [39793923387](https://github.com/cubxxw/blog/actions/runs/39793923387) 留有未恢复失败。统计来自已打印结果，不是完整 suite 的最终计数，不将超时归结为只有性能问题。[详细部分统计](2026-10-23-product-docs-release/pr-test-summary.json)。
+
+必要修复仅涉及两份测试实现：
+
+- 搜索测试把合法的相对 href 直接交给 Node 的 `new URL()`，7 个场景因此在校验查询参数之前抛出 `TypeError: Invalid URL`。四处解析补上 `page.url()` 作为基址，保留全部查询与导航断言。
+- 书籍测试的严格对象比较未包含模板已存在的 `id` 和 `note` 字段。补齐对这两项的期望值，继续核对全部标题、作者、自著标记、链接及 10 本数量，并增加对当前字段的严格核对。
+
+在绑定 `db80e3fb…` 的不可变 Netlify 原部署上，先复现 7 个搜索 TypeError 与一个桌面书籍字段差异，再验证原有相关场景：desktop/mobile 两个项目共 20/20 passed，0 failed、0 flaky、0 skipped；`npm run typecheck` 退出 0。两文件的 expect 调用数前后均为 242，场景名称、GPU 预算、全站范围、断言阈值与工作流时限保持不变。应用实现、三篇正文、完整英文及原图均未修改。见 [修复回执](2026-10-23-product-docs-release/targeted-repair-results.json)、[搜索修复前](2026-10-23-product-docs-release/targeted-before.log)、[书籍修复前](2026-10-23-product-docs-release/cafe-before.log)、[修复后 20 项](2026-10-23-product-docs-release/targeted-after.log) 与 [类型检查](2026-10-23-product-docs-release/typecheck.log)。
+
+这次定向修复验证不替代冻结产物的完整 CI。其余 Space 时序与交互失败、完整 legacy 未执行部分及运行预算问题仍需继续跟踪；没有删除场景、调低阈值或把未完成结果写为通过。现有 Space 工作 [#472](https://github.com/cubxxw/blog/pull/472) 与文章分页工作 [#474](https://github.com/cubxxw/blog/pull/474) 保持各自范围，未合并或覆盖这些并行改动。
+
 ## 内容回执与读者反馈
 
 三张 brief 均回填 `published`、中英文正式链接、实际发布时间、部署版本与证据链接。三张博客侧内容回执放在 [pending](../content-receipts/pending/README.md)，`publication_status` 为 `published`，回执 `status` 与 `reader_feedback.status` 保持 `pending`，真实反馈列表为空。自动浏览器验收不作为读者反馈，也不证明文章所述产品的账户流程已经实测。
@@ -73,6 +90,6 @@ Lighthouse 第 2 次测量期间，生产站于 `02:55:38.130+08:00` 更新到�
 
 ## 保存与清理边界
 
-本批仅修改三张 brief 和本收尾记录、pending 回执及验证证据。正文、英文翻译、配图、CI 规则保持不变。
+本批修改范围为三张 brief、收尾记录、pending 回执、验证证据，以及两份测试文件中的必要校验实现修复。正文、英文翻译、配图、应用实现及 CI 范围、阈值、时限保持不变。
 
 交接目录及其中列明的临时工作区清单尚未取得，旧临时工作区未清理。当前工作区没有 Brain 检出，未接触既有合并冲突；其他任务和改动均未回退。核实清单、确认提交及证据已保存后，才处理明确列名的本批临时工作区。

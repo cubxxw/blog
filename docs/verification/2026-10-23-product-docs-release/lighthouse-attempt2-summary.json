@@ -1,7 +1,13 @@
 {
   "run_id": 39830855352,
   "run_attempt": 2,
-  "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "workflow_head_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "measurement_target": "live public site; not the frozen CI artifact",
+  "live_production_transition_during_measurement": {
+    "published_at": "2026-10-22T18:55:38.130Z",
+    "source_sha": "7a87412036a4592ed906e49ae491300cb394da4f",
+    "change_scope": "brief publication metadata and verification documents; no article, original image, or application changes"
+  },
   "artifact_id": 12449974618,
   "artifact_sha256": "a2f019c9f0f581c21e942cb9a7406952fc784ef1518eb0c47cb71a96aadd9fb5",
   "outcome": "success",

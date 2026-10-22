@@ -55,7 +55,7 @@ for(const view of [
     await installIndex(page);const trigger=await prepare(page,view.locale,view.dark),query=input(page),summary=page.locator('#search-result-summary'),status=page.locator('#search-empty'),retry=page.locator('#search-index-retry');
     await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);
     await expect(summary).toBeHidden();await expect(status).toHaveText(view.locale==='zh'?'正在准备搜索…':'Preparing search…');await expect(options(page)).toHaveCount(0);
-    await expect(retry).toBeHidden();expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
+    await expect(retry).toBeHidden();expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!,page.url()).searchParams.get('q')).toBe('Kubernetes');
     await reply(page,0,[],503);await expect(status).toHaveText(view.locale==='zh'?'暂时无法搜索，请重试。':'Search is unavailable. Please try again.');
     await expect(query).toHaveAttribute('aria-busy','false');await expect(summary).toBeHidden();await expect(query).toHaveValue('Kubernetes');
     const box=await retryHit(retry);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();await expect(retry).toHaveAttribute('aria-disabled','true');
@@ -65,7 +65,7 @@ for(const view of [
     await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
     await query.press('ArrowDown');await expect(query).toHaveAttribute('aria-activedescendant',/search-result-option/);await query.fill('Delve');
     await expect(options(page)).toHaveCount(0);await expect(query).not.toHaveAttribute('aria-activedescendant',/./);await expect(summary).toBeHidden();
-    await expect(status).toHaveText(view.locale==='zh'?'正在搜索…':'Searching…');expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Delve');
+    await expect(status).toHaveText(view.locale==='zh'?'正在搜索…':'Searching…');expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!,page.url()).searchParams.get('q')).toBe('Delve');
     await page.clock.fastForward(149);await expect(options(page)).toHaveCount(0);await page.clock.fastForward(1);await expect(options(page)).toHaveCount(10);
     await expect(options(page).first()).toContainText('Delve');await expect(status).toBeHidden();
     await query.fill('zz_no_matching_topic_981254');await page.clock.fastForward(150);await expect(options(page)).toHaveCount(0);await expect(summary).toBeVisible();await expect(page.locator('#search-result-count')).toHaveText('0');
@@ -120,7 +120,7 @@ test('pagehide preserves the open query and pageshow resumes without accepting t
   const originalQuery=await query.elementHandle(),palette=page.locator('#search-command-palette');
   await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true})));await expect(palette).toBeVisible();await expect(query).toHaveValue('Kubernetes');await expect(query).toHaveAttribute('aria-busy','false');expect(await query.evaluate((el,original)=>el===original,originalQuery)).toBe(true);expect(await page.evaluate(()=>(window as any).__localIndex.turns[0].aborts)).toBe(1);
   await page.clock.fastForward(20000);await reply(page,0,documents('zh','OLD '));await settlePromises(page);await expect(palette).toBeVisible();await expect(query).toHaveValue('Kubernetes');await expect(options(page)).toHaveCount(0);expect(await turnCount(page)).toBe(1);
-  await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));await expect.poll(()=>turnCount(page)).toBe(2);await expect(query).toHaveValue('Kubernetes');expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
+  await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));await expect.poll(()=>turnCount(page)).toBe(2);await expect(query).toHaveValue('Kubernetes');expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!,page.url()).searchParams.get('q')).toBe('Kubernetes');
   await reply(page,1,documents('zh','Current '));await expect(options(page)).toHaveCount(10);await expect(options(page).first()).toContainText('Current Kubernetes');await expect(options(page).first()).not.toContainText('OLD');await expect(query).toHaveAttribute('aria-busy','false');expect(await page.evaluate(()=>(window as any).__localIndex.aiCalls)).toBe(0);
 });
 
@@ -144,7 +144,7 @@ test('pagehide and pageshow preserve a completed AI conversation, its draft and 
 for(const missing of [false,true])test(`Enter within the debounce opens only the current ${missing?'full-search query':'matching article'}`,async({page})=>{
   await installIndex(page);const trigger=await prepare(page),query=input(page);await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);await reply(page,0,documents());await expect(options(page)).toHaveCount(10);
   const old=(await options(page).first().getAttribute('href'))!;await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
-  const current=missing?'zz_no_matching_topic_981254':'Delve';await query.fill(current);await expect(options(page)).toHaveCount(0);expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe(current);
+  const current=missing?'zz_no_matching_topic_981254':'Delve';await query.fill(current);await expect(options(page)).toHaveCount(0);expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!,page.url()).searchParams.get('q')).toBe(current);
   const navigations:string[]=[];let aiRequests=0;page.on('request',request=>{if(new URL(request.url()).pathname==='/.netlify/functions/blog-ai')aiRequests++;});
   await page.route('**/*',route=>{if(route.request().isNavigationRequest()&&route.request().frame()===page.mainFrame()){navigations.push(route.request().url());return route.abort();}return route.fallback();});
   await query.dispatchEvent('keydown',{key:'Enter',isComposing:true});await query.dispatchEvent('keydown',{key:'Enter',keyCode:229});expect(navigations).toHaveLength(0);

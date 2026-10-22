@@ -1,0 +1,329 @@
+{
+  "schema": "blog-targeted-repair/1",
+  "purpose": "Repair deterministic test implementation errors without weakening existing checks.",
+  "source_ci_run": 39824062985,
+  "source_ci_frozen_sha": "9bf31c062a3d825552dba4c018ac9d79fa43e479",
+  "target": {
+    "kind": "immutable original production deployment",
+    "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "netlify_deploy_id": "6ada5484e1776686525b58a4",
+    "base_url": "https://6ada5484e1776686525b58a4--cubxxw.netlify.app",
+    "browser": "Installed Chromium 154.0.8037.57",
+    "playwright": "1.63.0",
+    "tls_verification": true,
+    "frozen_route_helper": "tests/helpers/frozen-site.ts; provider endpoints remain stubbed"
+  },
+  "fixes": [
+    {
+      "file": "tests/e2e/search-index-contracts.spec.ts",
+      "cause": "new URL(relativeHref) throws TypeError in the Node test process.",
+      "repair": "Resolve four relative-link constructor sites against page.url(); preserve query and navigation assertions.",
+      "local_red": "Seven desktop search scenarios reproduced TypeError: Invalid URL."
+    },
+    {
+      "file": "tests/e2e/space-cafe-details-contracts.spec.ts",
+      "cause": "Strict catalog comparison expected an older field set, omitting the existing id and note fields.",
+      "repair": "Compare the complete current catalog with data/travel.yml and the existing template mapping, including id and note.",
+      "local_red": "The 1440px desktop case reproduced the same catalog-field mismatch as CI."
+    }
+  ],
+  "result": {
+    "exit_code": 0,
+    "stats": {
+      "startTime": "2026-10-22T19:46:23.012Z",
+      "duration": 147521.37000000002,
+      "expected": 20,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "pagehide preserves the open query and pageshow resumes without accepting the old index owner",
+        "file": "search-index-contracts.spec.ts",
+        "line": 118,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 931
+          }
+        ]
+      },
+      {
+        "title": "Enter within the debounce opens only the current matching article",
+        "file": "search-index-contracts.spec.ts",
+        "line": 144,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 803
+          }
+        ]
+      },
+      {
+        "title": "Enter within the debounce opens only the current full-search query",
+        "file": "search-index-contracts.spec.ts",
+        "line": 144,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1111
+          }
+        ]
+      },
+      {
+        "title": "pagehide preserves the open query and pageshow resumes without accepting the old index owner",
+        "file": "search-index-contracts.spec.ts",
+        "line": 118,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 844
+          }
+        ]
+      },
+      {
+        "title": "Enter within the debounce opens only the current matching article",
+        "file": "search-index-contracts.spec.ts",
+        "line": 144,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 940
+          }
+        ]
+      },
+      {
+        "title": "Enter within the debounce opens only the current full-search query",
+        "file": "search-index-contracts.spec.ts",
+        "line": 144,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 817
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1433
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1349
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1108
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1061
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1240
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1336
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1046
+          }
+        ]
+      },
+      {
+        "title": "loading, error, retry, calculation, real empty and idle have truthful content",
+        "file": "search-index-contracts.spec.ts",
+        "line": 54,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1013
+          }
+        ]
+      },
+      {
+        "title": "the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+        "file": "space-cafe-details-contracts.spec.ts",
+        "line": 32,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 27775
+          }
+        ]
+      },
+      {
+        "title": "the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+        "file": "space-cafe-details-contracts.spec.ts",
+        "line": 32,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 25762
+          }
+        ]
+      },
+      {
+        "title": "the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+        "file": "space-cafe-details-contracts.spec.ts",
+        "line": 32,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 19525
+          }
+        ]
+      },
+      {
+        "title": "the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+        "file": "space-cafe-details-contracts.spec.ts",
+        "line": 32,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 20130
+          }
+        ]
+      },
+      {
+        "title": "the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+        "file": "space-cafe-details-contracts.spec.ts",
+        "line": 32,
+        "project": "desktop",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 17492
+          }
+        ]
+      },
+      {
+        "title": "the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger",
+        "file": "space-cafe-details-contracts.spec.ts",
+        "line": 32,
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 18579
+          }
+        ]
+      }
+    ]
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exit_code": 0
+  },
+  "guards": {
+    "expect_calls_before": 242,
+    "expect_calls_after": 242,
+    "scenario_names_unchanged": true,
+    "workflow_scope_thresholds_and_timeouts_unchanged": true,
+    "application_articles_and_images_unchanged": true
+  },
+  "limits": [
+    "Targeted checks against the immutable production deployment do not establish full frozen-artifact CI acceptance.",
+    "The first local setup attempt could not launch three cafe cases because their file-level launch options select the Playwright browser cache. The task-local cache was pointed at installed Chromium; no repository or CI browser setup was changed.",
+    "The merged-version main regression remains a separate pending result."
+  ],
+  "invocation": {
+    "command": "node node_modules/@playwright/test/cli.js test --config=<task diagnostic config> --grep \"truthful content|pagehide preserves the open query|Enter within|ten real source books\"",
+    "projects": [
+      "desktop",
+      "mobile"
+    ],
+    "workers": 1,
+    "retries": 0,
+    "note": "Diagnostic config uses the repository projects and frozen route helper against the immutable Netlify deployment, with installed Chromium selected locally. Repository and CI configurations remain unchanged."
+  }
+}
