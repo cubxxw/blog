@@ -13,7 +13,7 @@ test('mobile AI enhancement occupies its reserved space without moving the writi
     const layer = page.locator('#hp-bear-layer');
     await expect(layer).toHaveCSS('min-height', '80px');
     await expect(layer.locator('#hp-orbit')).toHaveCount(0);
-    await expect(page.locator('.hp-posts-grid').first()).toHaveCSS('display','grid');
+    await expect(page.locator('.hp-posts-grid .hp-featured').first()).toBeVisible();
     const before = await page.locator('#hp-posts').boundingBox();
     releaseModule();
     await expect(layer.locator('#hp-avatar-btn')).toBeVisible();
@@ -35,14 +35,16 @@ test('mobile primary links remain readable within stable columns', async ({ page
     await expect(links).toHaveCount(2);
     const boxes = await links.evaluateAll(elements => elements.map(el => {
       const r = el.getBoundingClientRect();
-      return { y: r.y, width: r.width, height: r.height, overflow: el.scrollWidth > el.clientWidth };
+      return { x: r.x, y: r.y, right:r.right, bottom:r.bottom, width: r.width, height: r.height, overflow: el.scrollWidth > el.clientWidth };
     }));
     for (const box of boxes) {
       expect(box.height).toBeGreaterThanOrEqual(44);
       expect(box.overflow).toBe(false);
+      expect(box.x).toBeGreaterThanOrEqual(0);expect(box.right).toBeLessThanOrEqual(width);
     }
-    if (width > 360) expect(Math.abs(boxes[0].y - boxes[1].y)).toBeLessThanOrEqual(1);
-    else expect(boxes[1].y).toBeGreaterThan(boxes[0].y);
+    const overlapX=Math.min(boxes[0].right,boxes[1].right)-Math.max(boxes[0].x,boxes[1].x);
+    const overlapY=Math.min(boxes[0].bottom,boxes[1].bottom)-Math.max(boxes[0].y,boxes[1].y);
+    expect(overlapX>1&&overlapY>1).toBe(false);
     await expect(links.first()).toHaveAttribute('href', '#hp-posts');
     await expect(links.last()).toHaveAttribute('href', /\/projects\/#studio-products$/);
   }

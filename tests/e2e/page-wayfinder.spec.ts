@@ -19,6 +19,7 @@ test.describe('Home and About reading navigation', () => {
       });
       await page.mouse.wheel(0, distance);
       await expect(nav).toHaveCSS('opacity', '1');
+      await expect(nav).toBeInViewport();
       await expect.poll(() => inactive.evaluate(el => Number(getComputedStyle(el).opacity))).toBeLessThan(0.8);
       await expect(nav.locator('a').first()).toHaveCSS('opacity', '1');
       await inactive.hover();
@@ -74,7 +75,7 @@ test.describe('Home and About reading navigation', () => {
         await expect.poll(() => page.evaluate(selector => {
           const nav = document.querySelector('[data-page-wayfinder]')!.getBoundingClientRect();
           const content = document.querySelector(selector)!.getBoundingClientRect();
-          return nav.bottom <= 0 || nav.right <= content.left - 16;
+          return nav.bottom <= 0 || nav.top >= innerHeight || nav.right <= content.left - 16;
         }, destination), { message: `The index must not cover reading content at ${width}px` }).toBe(true);
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
         if (width === 1720) {

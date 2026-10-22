@@ -11,6 +11,7 @@
 </header>
 <div class="space-mac-menu" data-mac-panel="file" id="space-mac-menu-file" role="menu" hidden>
   <button type="button" role="menuitem" data-open="products">{{ if $zh }}打开作品{{ else }}Open Projects{{ end }}</button>
+  <button type="button" role="menuitem" data-open="browser">{{ if $zh }}打开浏览器{{ else }}Open Browser{{ end }}</button>
   <button type="button" role="menuitem" data-open="reader">{{ if $zh }}打开文章目录{{ else }}Open Writing{{ end }}</button>
   <button type="button" role="menuitem" data-open="notes">{{ if $zh }}打开笔记{{ else }}Open Notes{{ end }}</button><hr>
   <button type="button" role="menuitem" data-space-export>{{ if $zh }}导出工作区…{{ else }}Export Workspace…{{ end }}</button>
@@ -28,6 +29,7 @@
 </div>
 <div class="space-mac-menu" data-mac-panel="go" id="space-mac-menu-go" role="menu" hidden>
   <button type="button" role="menuitem" data-open="welcome" data-payload="">{{ if $zh }}我的空间{{ else }}My Space{{ end }}</button>
+  <button type="button" role="menuitem" data-open="browser">{{ if $zh }}浏览器{{ else }}Browser{{ end }}</button>
   {{ range slice (dict "app" "products" "zh" "作品" "en" "Projects") (dict "app" "reader" "zh" "文章" "en" "Writing") (dict "app" "photos" "zh" "旅途相册" "en" "Photos") (dict "app" "books" "zh" "书架" "en" "Books") (dict "app" "contact" "zh" "联系我" "en" "Contact") }}<button type="button" role="menuitem" data-open="{{ .app }}">{{ if $zh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</button>{{ end }}
 </div>
 <div class="space-mac-menu" data-mac-panel="window" id="space-mac-menu-window" role="menu" hidden>
@@ -40,5 +42,5 @@
   <button type="button" role="menuitem" data-open="welcome" data-payload="identity">{{ if $zh }}关于熊鑫伟{{ else }}About Xinwei{{ end }}</button>
 </div>
 <nav class="space-desktop-icons space-mac-desktop-icons" data-mac-desktop-icons aria-label="{{ if $zh }}桌面文件{{ else }}Desktop files{{ end }}">
-  {{ range slice (dict "app" "products" "zh" "作品" "en" "Projects") (dict "app" "reader" "zh" "文章" "en" "Writing") (dict "app" "photos" "zh" "旅途相册" "en" "Photos") }}<button type="button" data-open="{{ .app }}">{{ partial "space/icon.html" .app }}<span>{{ if $zh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</span></button>{{ end }}
+  {{ range slice (dict "app" "browser" "zh" "浏览器" "en" "Browser") (dict "app" "products" "zh" "作品" "en" "Projects") (dict "app" "reader" "zh" "文章" "en" "Writing") (dict "app" "photos" "zh" "旅途相册" "en" "Photos") }}<button type="button" data-open="{{ .app }}">{{ partial "space/icon.html" .app }}<span>{{ if $zh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</span></button>{{ end }}
 </nav>

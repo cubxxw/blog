@@ -4,7 +4,7 @@ import {JIANGNAN_BOUNDS,JIANGNAN_COLLIDERS,jiangnanWalk,jiangnanLook,JIANGNAN_TA
 
 test('a touch floor destination follows the same bounded walk without crossing furniture',()=>{
  const p={x:0,y:1.43,z:1.5,yaw:.2,pitch:-.05,fov:57};
- const clear=jiangnanDestination(p,{x:-.5,z:-1.5});assert.ok(clear.z<-1);assert.equal(clear.y,p.y);assert.equal(clear.yaw,p.yaw);
+ const clear=jiangnanDestination({...p,x:2.2},{x:2.2,z:-1.5});assert.ok(clear.z<-1);assert.equal(clear.y,p.y);assert.equal(clear.yaw,p.yaw);
  const blocked=jiangnanDestination({...p,x:1.9},{x:1.9,z:-2});assert.ok(blocked.z>=JIANGNAN_COLLIDERS.find(b=>b.id==='desk').maxZ+.17);
  const outside=jiangnanDestination(p,{x:1e6,z:1e6});assert.ok(outside.x<=JIANGNAN_BOUNDS.maxX&&outside.z<=JIANGNAN_BOUNDS.maxZ);
  assert.deepEqual(jiangnanDestination(p,{x:NaN,z:0}),p);
@@ -28,7 +28,7 @@ test('walking changes actual position, normalizes diagonal speed and stops at ro
   const start={x:0,y:1.55,z:1.7,yaw:0,pitch:0,fov:58};
   const a=jiangnanWalk(start,{forward:1},.04),b=jiangnanWalk(start,{forward:1,right:1},.04);
   assert.ok(a.z<start.z);assert.ok(Math.abs(Math.hypot(b.x-start.x,b.z-start.z)-Math.hypot(a.x-start.x,a.z-start.z))<1e-6);
-  let p={...start,x:-.8};for(let i=0;i<300;i++)p=jiangnanWalk(p,{forward:1},.04);
+  let p={...start,x:2.2};for(let i=0;i<300;i++)p=jiangnanWalk(p,{forward:1},.04);
   assert.ok(p.z>=JIANGNAN_BOUNDS.minZ);assert.ok(p.z<-1.6);assert.equal(p.y,1.55);
 });
 test('a visitor cannot walk through the desk or cabinetry and a long frame cannot tunnel',()=>{

@@ -1,5 +1,5 @@
 // The durable workspace contains values, never DOM nodes, credentials or executable code.
-export const APPS = ['welcome', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings'];
+export const APPS = ['welcome', 'browser', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings'];
 const finite = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 export function fitRect(rect = {}, viewport = {}) {

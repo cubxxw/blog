@@ -105,7 +105,7 @@
   [headers.values]
     Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
     X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
+    X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 # Fingerprinted CSS and JS (Hugo asset pipeline output).

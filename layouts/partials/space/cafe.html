@@ -7,10 +7,13 @@
 {{- $nightLarge := $nightImage.Resize "1933x webp q88" -}}
 {{- $nightSmall := $nightImage.Resize "960x webp q85" -}}
 {{- $boat := (resources.Get "images/space-cafe/jiangnan-boat-v2.png").Resize "900x webp q90" -}}
-{{- $night := dict "image" $nightLarge.RelPermalink "srcset" (printf "%s 960w, %s 1933w" $nightSmall.RelPermalink $nightLarge.RelPermalink) "boat" $boat.RelPermalink "music" ("/audio/space/night-on-the-docks-sax.mp3" | relURL) "ambience" ("/audio/space/night-rain-and-fan.mp3" | relURL) -}}
+{{- $night := dict "image" $nightLarge.RelPermalink "srcset" (printf "%s 960w, %s 1933w" $nightSmall.RelPermalink $nightLarge.RelPermalink) "boat" $boat.RelPermalink "music" ("/audio/space/night-on-the-docks-sax.mp3" | relURL) "ambience" ("/audio/space/night-rain-and-fan.mp3" | relURL) "rain" ("/audio/space/rain-distant-storm-loop.flac" | relURL) -}}
+{{- with resources.Get "images/space-cafe/jiangnan-vista-study-v2.png" -}}{{- $vista := .Process "webp q92" -}}{{- $night = merge $night (dict "vista" $vista.RelPermalink) -}}{{- end -}}
+{{- with resources.Get "images/space-cafe/jiangnan-vista-neutral-v1.png" -}}{{- $day := .Process "webp q90" -}}{{- $night = merge $night (dict "dayVista" $day.RelPermalink) -}}{{- end -}}
+{{- with resources.Get "images/space-cafe/jiangnan-vista-continuation-v1.png" -}}{{- $continuation := .Process "webp q92" -}}{{- $night = merge $night (dict "continuation" $continuation.RelPermalink) -}}{{- end -}}
 {{- $books := slice -}}
-{{- range site.Data.travel.books -}}
-  {{- $books = $books | append (dict "title" (cond $zh .title_zh .title_en) "author" (cond $zh .author_zh .author_en) "own" (default false .own) "url" (default "" .url)) -}}
+{{- range $index, $book := site.Data.travel.books -}}
+  {{- $books = $books | append (dict "id" (printf "book-%d" $index) "title" (cond $zh .title_zh .title_en) "author" (cond $zh .author_zh .author_en) "note" (cond $zh .note_zh .note_en) "own" (default false .own) "url" (default "" .url)) -}}
 {{- end -}}
 <section class="space-boot" data-space-boot aria-labelledby="space-boot-title">
   <header class="space-boot__header"><a href="{{ "/" | relLangURL }}">CUBXXW<span> / SPACE</span></a><span>PERSONAL CONNECTION</span></header>

@@ -1,0 +1,38 @@
+{
+  "title": "Long Stroll",
+  "artist": "Kevin MacLeod",
+  "isrc": "USUAN1100174",
+  "source": "https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1100174",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "downloadedFrom": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Long_Stroll_%28ISRC_USUAN1100174%29.mp3",
+  "originalSha1": "218e0c665a7a884f2753be919f3be842a1f565c8",
+  "originalSha256": "7a49e5469d77cde11619e543eb776ec7057e4143d62fd707620171df90bda7b7",
+  "originalBytes": 8972966,
+  "downloadIntegrity": "wikimedia-sha1",
+  "downloadIntegrityVerified": true,
+  "mirrorGitBlobSha": null,
+  "originalFormat": {
+    "duration": "254.720000",
+    "size": "8972966",
+    "bit_rate": "281814",
+    "tags": {
+      "title": "Long Stroll",
+      "artist": "Kevin MacLeod"
+    }
+  },
+  "file": "long-stroll.mp3",
+  "sha256": "2f197eb827854a3a4b1c3e4e5f1da8d90c34bf9a8bf9c5cf1c178fa8c3aa2b74",
+  "bytes": 4076439,
+  "format": {
+    "duration": "254.720000",
+    "size": "4076439",
+    "bit_rate": "128028",
+    "tags": {
+      "title": "Long Stroll",
+      "artist": "Kevin MacLeod"
+    }
+  },
+  "changes": "Re-encoded as stereo MP3 at 128 kbps / 44.1 kHz. Melody, timing and tempo unchanged. The player adjusts gain, trims only edge silence, blends the loop boundary over 2 seconds, and applies 60 ms start/stop gain fades.",
+  "attribution": "Long Stroll — Kevin MacLeod (incompetech.com) — CC BY 4.0. Re-encoded and loop boundary crossfaded by Xinwei Xiong."
+}

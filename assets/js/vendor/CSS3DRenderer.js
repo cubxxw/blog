@@ -6,6 +6,8 @@ import {
 	Quaternion,
 	Vector3
 } from 'three';
+// Local opt-in lifecycle patch: moving a live screen must not reload iframes.
+import { movePreservingState } from '../dom-transfer.mjs';
 
 /**
  * Based on http://www.emagix.net/academic/mscs-project/item/camera-sync-with-css3-and-webgl-threejs
@@ -34,7 +36,7 @@ class CSS3DObject extends Object3D {
 
 			this.traverse( function ( object ) {
 
-				if ( object.element instanceof Element && object.element.parentNode !== null ) {
+				if ( ! object.userData.preserveElement && object.element instanceof Element && object.element.parentNode !== null ) {
 
 					object.element.parentNode.removeChild( object.element );
 
@@ -306,7 +308,7 @@ class CSS3DRenderer {
 
 					if ( element.parentNode !== cameraElement ) {
 
-						cameraElement.appendChild( element );
+						movePreservingState( cameraElement, element );
 
 					}
 

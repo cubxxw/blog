@@ -1,0 +1,59 @@
+{
+  "title": "Distant storm in the city (5)",
+  "author": "Matucha",
+  "recorded": "2011-02-23",
+  "sourcePage": "https://commons.wikimedia.org/wiki/File:Distant_storm_in_the_city_(5).flac",
+  "originalSource": "https://freesound.org/people/matucha/sounds/115250/",
+  "originalDownload": "https://upload.wikimedia.org/wikipedia/commons/3/30/Distant_storm_in_the_city_%285%29.flac",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+  "originalSha1": "bda24ca82be3f1a1755ff8aa8920df03fc77efab",
+  "originalSha1Verified": true,
+  "originalBytes": 20820109,
+  "originalFormat": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "flac",
+        "sample_rate": "44100",
+        "channels": 2,
+        "bits_per_raw_sample": "24"
+      }
+    ],
+    "format": {
+      "duration": "121.672562"
+    }
+  },
+  "changes": "First 108 seconds excerpted; the ending, including the strong transient around source second 111, excluded. Original 44.1 kHz / 24-bit stereo preserved in lossless FLAC. The player applies one 8-second equal-power overlap to the decoded boundary; no synthesized noise or extra audio layer.",
+  "file": "rain-distant-storm-loop.flac",
+  "sha256": "163b7f4df1345f2d54a35ae041116987544eca12dc0397105537b4eb76c999fb",
+  "bytes": 18420389,
+  "format": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "flac",
+        "sample_rate": "44100",
+        "channels": 2,
+        "bits_per_raw_sample": "24"
+      }
+    ],
+    "format": {
+      "duration": "108.000000",
+      "size": "18420389"
+    }
+  },
+  "selection": {
+    "startSeconds": 0,
+    "endSeconds": 108,
+    "excludedEndingTransientAroundSeconds": 111
+  },
+  "runtimeLoop": {
+    "crossfadeSeconds": 8,
+    "loopSeconds": 100,
+    "contextSampleRate": 44100
+  },
+  "attribution": "Distant storm in the city (5) — Matucha — CC BY 3.0. Excerpted and loop boundary crossfaded by Xinwei Xiong."
+}

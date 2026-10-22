@@ -1,0 +1,38 @@
+{
+  "title": "Almost New",
+  "artist": "Kevin MacLeod",
+  "isrc": "USUAN1800008",
+  "source": "https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1800008",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "downloadedFrom": "https://raw.githubusercontent.com/noobsandnerdsgroup/audio/main/Almost%20New.mp3",
+  "originalSha1": "5c08e1591f67f537f481af6ddb61ca0610a4a9ce",
+  "originalSha256": "3cb29102881aa9cb56292753dfa6c92004eddf4e0ad367e979c7292b0e1ac1a0",
+  "originalBytes": 6483966,
+  "downloadIntegrity": "mirror-git-blob",
+  "downloadIntegrityVerified": true,
+  "mirrorGitBlobSha": "ba4426cef738ff3ede26d72d42e4c1805ac75c87",
+  "originalFormat": {
+    "duration": "202.553500",
+    "size": "6483966",
+    "bit_rate": "256089",
+    "tags": {
+      "title": "Almost New",
+      "artist": "Kevin MacLeod"
+    }
+  },
+  "file": "almost-new.mp3",
+  "sha256": "18497d20edf1f8f11e7125d21918bdc2d57e1892144b2e232576cd145c6ec7b9",
+  "bytes": 3242232,
+  "format": {
+    "duration": "202.579592",
+    "size": "3242232",
+    "bit_rate": "128037",
+    "tags": {
+      "title": "Almost New",
+      "artist": "Kevin MacLeod"
+    }
+  },
+  "changes": "Re-encoded as stereo MP3 at 128 kbps / 44.1 kHz. Melody, timing and tempo unchanged. The player adjusts gain, trims only edge silence, blends the loop boundary over 2 seconds, and applies 60 ms start/stop gain fades.",
+  "attribution": "Almost New — Kevin MacLeod (incompetech.com) — CC BY 4.0. Re-encoded and loop boundary crossfaded by Xinwei Xiong."
+}

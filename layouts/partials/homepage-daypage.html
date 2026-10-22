@@ -12,7 +12,7 @@
   <div class="hp-page">
 
     {{/* ── Hero ─────────────────────────────────────────── */}}
-    <section class="hp-hero{{ if $capabilities.ai }} hp-hero--with-bear{{ end }}" id="hp-about" data-home-conversation>
+    <section class="hp-hero" id="hp-about">
       <div class="hp-hero-intro">
         <h1>
           <span class="hp-hero-name-row">
@@ -54,105 +54,9 @@
           <a href="#hp-posts">{{ if $isZh }}开始阅读{{ else }}Start reading{{ end }} <span aria-hidden="true">↓</span></a>
           <a href="{{ "/projects/" | relLangURL }}#studio-products">{{ if $isZh }}探索产品{{ else }}Explore products{{ end }} <span aria-hidden="true">→</span></a>
         </nav>
-        <a class="hp-hero-cta" href="{{ "/projects/" | relLangURL }}?profile=about">
-          <span>{{ if $isZh }}了解这个博客{{ else }}About this blog{{ end }}</span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-
       </div>
 
-        {{- if site.Params.socialIcons }}
-        <div class="hp-hero-socials">
-          {{- range site.Params.socialIcons }}
-          {{- $platform := lower .name -}}
-          {{- if or (eq .name "wechat") (eq .name "xhs") }}
-          {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
-          {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
-          {{- $contactURL := cond (eq .name "xhs") (trim .url " ") "" -}}
-          {{- $qrSrc := .qr | relURL -}}
-          {{- with resources.Get $asset -}}
-            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
-            {{- if and hugo.IsExtended $prod -}}
-              {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
-            {{- else -}}
-              {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
-            {{- end -}}
-          {{- end -}}
-          <button type="button" class="hp-social-icon hp-social-icon--wechat hp-social-icon--{{ $platform }}"
-            title="{{ .title | default .name }}"
-            aria-label="{{ .title | default .name }}"
-            aria-haspopup="dialog"
-            aria-expanded="false"
-            data-contact-platform="{{ $platform }}"
-            data-contact-id="{{ $contactID }}"
-            data-contact-qr="{{ $qrSrc }}"
-            {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }}
-            onclick="openContactCard(this)">
-            {{ partial "svg.html" . }}
-          </button>
-          {{- else }}
-          <a class="hp-social-icon hp-social-icon--{{ $platform }}" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ .name | title }}">
-            {{ partial "svg.html" . }}
-          </a>
-          {{- end }}
-          {{- end }}
-        </div>
-        {{- end }}
-
-      {{- if $capabilities.ai }}
-      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
-        data-avatar-src="{{ "images/xinwei-hiking-avatar.webp" | relURL }}"
-        data-bubbles-en='{{ $d.ai.bubblesEn | jsonify }}'
-        data-bubbles-zh='{{ $d.ai.bubblesZh | jsonify }}'
-        data-sys-en="{{ $d.ai.sysPromptEn }}"
-        data-sys-zh="{{ $d.ai.sysPromptZh }}">
-        <div class="hp-hero-field" id="hp-hero-field" aria-hidden="true"></div>
-        {{/* Persistent 3D stage: the Three.js canvas lives here and is NEVER
-             torn down on orbit↔chat swaps. orbit and chat are DOM layers
-             rendered into #hp-bear-layer on top of it, so the same AI orb
-             flows continuously between states (recedes behind the chat
-             glass rather than disappearing). aria-hidden: purely ambient. */}}
-        <div id="hp-bear-stage" class="hp-bear-stage" aria-hidden="true"></div>
-        {{/* Plan A: a line-art "hiker looking up at the stars" figure, floating
-             in front of the orb as a quiet digital-twin silhouette. Pure DOM/SVG,
-             sits between the canvas (orb) and the DOM layer (bubbles/chat) so it
-             reads as holographically projected onto the sphere. */}}
-        <div class="hp-orb-avatar" aria-hidden="true">
-          <svg viewBox="0 0 200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M152 22 l3.4 9 9 3.4 -9 3.4 -3.4 9 -3.4 -9 -9 -3.4 9 -3.4 z"
-                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <circle cx="100" cy="82" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <!-- short masculine hair: cap with a slight fringe -->
-            <path d="M78 80 Q76 56 100 54 Q124 56 122 80 Q118 70 108 68 Q100 66 92 68 Q82 70 78 80 Z"
-                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M92 68 L93 77 M100 67 L100 78 M108 68 L107 77"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <!-- faint face hint: brows, eyes, nose -->
-            <path d="M91 85 q4 -2 8 0 M101 85 q4 -2 8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            <path d="M100 87 l-1.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            <path d="M100 104 L100 116" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- torso: broad shoulders, V-taper (masculine build) -->
-            <path d="M78 118 Q100 112 122 118 L127 196 Q100 204 73 196 Z"
-                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M122 126 Q147 130 145 168 Q143 192 124 194"
-                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M80 126 L62 182 L58 214" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M120 126 L144 104 L156 56" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M90 198 L82 270 L78 336" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M110 198 L118 268 L122 336" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div id="hp-bear-layer" class="hp-bear-layer"></div>
-        <span id="hp-chat-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"></span>
-      </div>
-      {{- end }}
     </section>
-
-    {{ partial "page-wayfinder.html" . }}
 
     {{/* ── Posts ───────────────────────────────────────── */}}
     <section class="hp-section" id="hp-posts">
@@ -235,6 +139,109 @@
       </div>
     </section>
 
+    {{/* Keep optional author connections after the writing, in reading order. */}}
+    <div class="hp-home-connections{{ if $capabilities.ai }} hp-home-connections--with-bear{{ end }}" data-home-conversation>
+      <div class="hp-home-connections-links">
+        <a class="hp-hero-cta" href="{{ "/projects/" | relLangURL }}?profile=about">
+          <span>{{ if $isZh }}了解这个博客{{ else }}About this blog{{ end }}</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        {{- if site.Params.socialIcons }}
+        <div class="hp-hero-socials">
+          {{- range site.Params.socialIcons }}
+          {{- $platform := lower .name -}}
+          {{- if or (eq .name "wechat") (eq .name "xhs") }}
+          {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
+          {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
+          {{- $contactURL := cond (eq .name "xhs") (trim .url " ") "" -}}
+          {{- $qrSrc := .qr | relURL -}}
+          {{- with resources.Get $asset -}}
+            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
+            {{- if and hugo.IsExtended $prod -}}
+              {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
+            {{- else -}}
+              {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
+            {{- end -}}
+          {{- end -}}
+          <button type="button" class="hp-social-icon hp-social-icon--wechat hp-social-icon--{{ $platform }}"
+            title="{{ .title | default .name }}"
+            aria-label="{{ .title | default .name }}"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            data-contact-platform="{{ $platform }}"
+            data-contact-id="{{ $contactID }}"
+            data-contact-qr="{{ $qrSrc }}"
+            {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }}
+            onclick="openContactCard(this)">
+            {{ partial "svg.html" . }}
+          </button>
+          {{- else }}
+          <a class="hp-social-icon hp-social-icon--{{ $platform }}" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ .name | title }}">
+            {{ partial "svg.html" . }}
+          </a>
+          {{- end }}
+          {{- end }}
+        </div>
+        {{- end }}
+
+      </div>
+
+      {{- if $capabilities.ai }}
+      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
+        data-avatar-src="{{ "images/xinwei-hiking-avatar.webp" | relURL }}"
+        data-bubbles-en='{{ $d.ai.bubblesEn | jsonify }}'
+        data-bubbles-zh='{{ $d.ai.bubblesZh | jsonify }}'
+        data-sys-en="{{ $d.ai.sysPromptEn }}"
+        data-sys-zh="{{ $d.ai.sysPromptZh }}">
+        <div class="hp-hero-field" id="hp-hero-field" aria-hidden="true"></div>
+        {{/* Persistent 3D stage: the Three.js canvas lives here and is NEVER
+             torn down on orbit↔chat swaps. orbit and chat are DOM layers
+             rendered into #hp-bear-layer on top of it, so the same AI orb
+             flows continuously between states (recedes behind the chat
+             glass rather than disappearing). aria-hidden: purely ambient. */}}
+        <div id="hp-bear-stage" class="hp-bear-stage" aria-hidden="true"></div>
+        {{/* Plan A: a line-art "hiker looking up at the stars" figure, floating
+             in front of the orb as a quiet digital-twin silhouette. Pure DOM/SVG,
+             sits between the canvas (orb) and the DOM layer (bubbles/chat) so it
+             reads as holographically projected onto the sphere. */}}
+        <div class="hp-orb-avatar" aria-hidden="true">
+          <svg viewBox="0 0 200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M152 22 l3.4 9 9 3.4 -9 3.4 -3.4 9 -3.4 -9 -9 -3.4 9 -3.4 z"
+                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="100" cy="82" r="22" stroke="currentColor" stroke-width="2.5"/>
+            <!-- short masculine hair: cap with a slight fringe -->
+            <path d="M78 80 Q76 56 100 54 Q124 56 122 80 Q118 70 108 68 Q100 66 92 68 Q82 70 78 80 Z"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M92 68 L93 77 M100 67 L100 78 M108 68 L107 77"
+                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <!-- faint face hint: brows, eyes, nose -->
+            <path d="M91 85 q4 -2 8 0 M101 85 q4 -2 8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M100 87 l-1.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M100 104 L100 116" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- torso: broad shoulders, V-taper (masculine build) -->
+            <path d="M78 118 Q100 112 122 118 L127 196 Q100 204 73 196 Z"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M122 126 Q147 130 145 168 Q143 192 124 194"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M80 126 L62 182 L58 214" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M120 126 L144 104 L156 56" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M90 198 L82 270 L78 336" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M110 198 L118 268 L122 336" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div id="hp-bear-layer" class="hp-bear-layer"></div>
+        <span id="hp-chat-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"></span>
+      </div>
+      {{- end }}
+    </div>
+
+    {{ partial "page-wayfinder.html" . }}
+
     <div class="hp-divider-fade"></div>
 
     {{/* ── Books ──────────────────────────────────────── */}}
@@ -287,7 +294,7 @@
         {{- $shot := partial "products/shot.html" (dict "product" . "lang" $lang) }}
         {{- $productUrl := partial "products/url.html" (dict "product" . "lang" $lang) }}
         <article class="hp-product hp-product--{{ .color }}{{ if .featured }} hp-product--featured{{ end }}">
-          <a class="hp-product__main" href="{{ printf "/projects/#%s" .id | relLangURL }}" target="_blank" rel="noopener">
+          <a class="hp-product__main" href="{{ $productUrl }}" target="_blank" rel="noopener">
             {{- if $shot.exists }}
             <span class="hp-product__shot">
               {{ partial "products/thumbnail.html" (dict "shot" $shot "featured" .featured) }}

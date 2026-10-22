@@ -1,28 +1,43 @@
 import * as THREE from 'three';
+import {movePreservingState} from '../dom-transfer.mjs';
+import {createJiangnanRoomLights} from './jiangnan-lighting.mjs';
 import {CSS3DRenderer,CSS3DObject} from '../vendor/CSS3DRenderer.js';
 import {createWorldMaterials} from './world-materials.js';
 import {worldRenderBudget,worldPixelRatio} from './world-render-budget.mjs';
-import {travelPose} from './world-state.mjs';
+import {createJiangnanCameraMove} from './jiangnan-camera-motion.mjs';
 import {JIANGNAN_ENTRY,JIANGNAN_TARGETS,jiangnanLook,jiangnanWalk,jiangnanDestination,canJiangnanNavigate} from './jiangnan-state.mjs';
+import {createJiangnanTime,watchJiangnanWeather} from './jiangnan-time.mjs';
+import {jiangnanWindowView,clampJiangnanWindowLook,jiangnanWindowRoute} from './jiangnan-window-view.mjs';
+import {mountMagicClock} from './magic-clock.js';
 import {buildJiangnanRoom} from './jiangnan-room.js';
 import {buildJiangnanExterior} from './jiangnan-exterior.js';
 import {mountRoomAudio} from './room-audio.js';
+import {createRecordCatalog} from './record-catalog.js';
+import {createJiangnanResident} from './jiangnan-cat.js';
 
-export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,isBlocked=()=>false,materialBase,photoAsset,books=[]}) {
+export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,onReturn,onNotebook,isBlocked=()=>false,materialBase,photoAsset,books=[]}) {
   const abort=new AbortController(),resources=new Set(),textures=new Set(),anchors=[];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)'),zh=document.documentElement.lang.startsWith('zh'),t=(cn,en)=>zh?cn:en;
-  let renderer,css,scene,camera,host,workspace,cssObject,pbr,room,exterior,audio,objectControls,computerExpand,observer,blockedObserver,hiddenObserver,depthBlur;
+  let renderer,css,scene,camera,host,workspace,cssObject,pbr,room,exterior,audio,resident,objectControls,computerExpand,observer,blockedObserver,hiddenObserver,depthBlur,roomLights,stopWeather,magicClock;
+  let clockReturn=null,standbyClock=null,lastHover=0;
+  let clockStorage;try{clockStorage=localStorage;}catch{}
+  const parameters=new URLSearchParams(location.search),previewHour=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)&&parameters.has('room-hour')?Number(parameters.get('room-hour')):undefined;
+  const roomTime=createJiangnanTime({storage:clockStorage,startHour:previewHour});
   let disposed=false,mode='roam',quiet=false,frame=0,last=0,environmentTime=0,frames=0,moving=null,drag=null,inspection=null,reflectionDone=false,firstPending=true,resolveFirst,firstTimer;
-  let pose={...JIANGNAN_ENTRY},returnPose={...pose};const keys=new Set(),touchKeys=new Set();
+  let pose={...JIANGNAN_ENTRY},returnPose={...pose},returnInspection=null;const keys=new Set(),touchKeys=new Set();
   const firstFrame=new Promise(resolve=>{resolveFirst=resolve;});
-  const settleFirst=value=>{if(firstPending){firstPending=false;clearTimeout(firstTimer);resolveFirst(value);}};
+  const settleFirst=value=>{if(firstPending){firstPending=false;if(!value||reflectionDone)clearTimeout(firstTimer);resolveFirst(value);}};
   const listen=(el,name,fn,options={})=>el.addEventListener(name,fn,{...options,signal:abort.signal});
   const outsideButton=root.querySelector('[data-cafe-outside]'),outsideLabel=outsideButton?.textContent;
   const startTime=performance.now();
-  const targets={...JIANGNAN_TARGETS,bridge:[-7,1.2,-13]};
-  const visible=()=>!document.hidden&&!root.hidden;
+  const targets={...JIANGNAN_TARGETS,bridge:[-3.2,1.2,-17.8]};
+  let readingPage=false,lastSwitchState='',ignoreOpeningClick=false;const touchPoints=new Map();let pinchStart=0,pinchUsed=false;
+  const records=createRecordCatalog();
+  const visible=()=>!document.hidden&&!root.hidden&&!readingPage;
   const navigate=()=>canJiangnanNavigate({mode,visible:visible(),blocked:isBlocked()});
-  function stop(){cancelAnimationFrame(frame);frame=0;last=0;}
+  const roomView=()=>inspection?.kind==='window';
+  const canLook=()=>navigate()||mode==='inspect'&&['window','clock'].includes(inspection?.kind)&&visible()&&!isBlocked();
+  function stop(){cancelAnimationFrame(frame);frame=0;last=0;if(moving)moving.started=null;}
   function wake(){if(!disposed&&renderer&&visible()&&!frame)frame=requestAnimationFrame(tick);}
   function applyPose(next){pose={...next};camera.position.set(pose.x,pose.y,pose.z);camera.rotation.set(pose.pitch,pose.yaw,0,'YXZ');if(camera.fov!==pose.fov){camera.fov=pose.fov;camera.updateProjectionMatrix();}root.dataset.worldPose=JSON.stringify(Object.fromEntries(Object.entries(pose).map(([key,value])=>[key,+value.toFixed(5)])));}
   function syncMode(next){mode=next;root.dataset.worldMode=next;if(objectControls)objectControls.inert=next!=='roam';keys.clear();touchKeys.clear();drag=null;}
@@ -47,14 +62,27 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     const bounds={x:Math.min(...xs),y:Math.min(...ys),width:Math.max(...xs)-Math.min(...xs),height:Math.max(...ys)-Math.min(...ys)};
     root.dataset.computerScreenBounds=JSON.stringify(Object.fromEntries(Object.entries(bounds).map(([key,value])=>[key,+value.toFixed(3)])));
     for(const [name,value]of Object.entries({left:bounds.x,top:bounds.y,width:bounds.width,height:bounds.height}))root.style.setProperty('--computer-'+name,value+'px');
+    if(!cssObject)Object.assign(workspace.style,{left:bounds.x+'px',top:bounds.y+'px',width:'1280px',height:'800px',transformOrigin:'0 0',transform:`scale(${bounds.width/1280},${bounds.height/800})`});
   }
   function attachScreen(surface){
-    cssObject?.removeFromParent();workspace.remove();
-    Object.assign(workspace.style,{width:'1280px',height:'800px',left:'',top:'',visibility:'visible',display:'',transform:'',userSelect:'auto'});
+    cssObject?.removeFromParent();
     workspace.dataset.surface=surface;workspace.inert=surface==='monitor';workspace.setAttribute('aria-hidden',String(surface==='monitor'));
-    cssObject=new CSS3DObject(workspace);workspace.style.userSelect='auto';cssObject.position.fromArray(room.screen.position);cssObject.scale.setScalar(room.screen.width/1280);scene.add(cssObject);
+    let element=workspace;
+    if(surface==='monitor'&&typeof root.moveBefore!=='function'&&workspace.querySelector('iframe')){
+      // Older engines reload a live iframe even when only its ancestor moves.
+      // Park the real desktop in place and show a quiet standby screen outside.
+      if(workspace.parentNode!==root)movePreservingState(root,workspace);
+      workspace.style.visibility='hidden';
+      element=document.createElement('div');element.className='jiangnan-monitor-standby';element.setAttribute('aria-hidden','true');element.inert=true;
+      standbyClock=document.createElement('time');standbyClock.textContent=roomTime.at().label;element.append(standbyClock);root.dataset.worldScreenPreview='standby';
+    }else{
+      Object.assign(workspace.style,{width:'1280px',height:'800px',left:'',top:'',visibility:'visible',display:'',transform:'',transformOrigin:'',userSelect:'auto'});
+      root.dataset.worldScreenPreview='live';
+    }
+    Object.assign(element.style,{width:'1280px',height:'800px'});
+    cssObject=new CSS3DObject(element);cssObject.userData.preserveElement=element===workspace;element.style.userSelect='auto';if(element!==workspace)element.style.pointerEvents='none';cssObject.position.fromArray(room.screen.position);cssObject.scale.setScalar(room.screen.width/1280);scene.add(cssObject);
     // Keep the original app nodes connected before the renderer's next frame.
-    css.domElement.append(workspace);
+    movePreservingState(css.domElement,element);
   }
   function attachMonitor(){
     const active=document.activeElement;
@@ -63,8 +91,9 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   }
   function attachDesktop(){
     const restoreFocus=rememberFocus();
-    cssObject?.removeFromParent();cssObject=null;root.append(workspace);workspace.dataset.surface='desktop';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
+    cssObject?.removeFromParent();cssObject=null;if(workspace.parentNode!==root)movePreservingState(root,workspace);workspace.dataset.surface='desktop';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
     Object.assign(workspace.style,{left:'0',top:'0',width:root.clientWidth+'px',height:root.clientHeight+'px',transform:'none',display:'',visibility:'visible'});
+    root.dataset.worldScreenPreview='live';
     clearScreenBounds();surfaceChanged();restoreFocus();
   }
   function framedPose(){
@@ -76,7 +105,14 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     return {x,y:screenY-.05,z:z+distance+.04,yaw:0,pitch:0,fov};
   }
   function attachComputer(){
-    const restoreFocus=rememberFocus();attachScreen('computer');screenVisibility();css.render(scene,camera);screenBounds();surfaceChanged();restoreFocus();
+    const restoreFocus=rememberFocus();
+    // The seated camera faces the glass squarely. A flat DOM surface can use
+    // its exact projected rectangle; Chromium's cross-origin frame hit tests
+    // otherwise miss their targets beneath a CSS3D perspective ancestor.
+    cssObject?.removeFromParent();cssObject=null;if(workspace.parentNode!==root)movePreservingState(root,workspace);workspace.dataset.surface='computer';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
+    Object.assign(workspace.style,{visibility:'visible',display:'',userSelect:'auto'});root.dataset.worldScreenVisible='true';
+    root.dataset.worldScreenPreview='live';
+    screenBounds();surfaceChanged();restoreFocus();
   }
   function showComputer(view=computerView()){
     root.dataset.computerView=view;
@@ -91,41 +127,101 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   }
   function cancelTravel(){if(!moving)return;const previous=moving;moving=null;root.dataset.worldTravel='false';onTravel?.(false);previous.resolve(false);}
   function finishTravel(){if(!moving)return;const previous=moving;moving=null;applyPose(previous.to);previous.finish?.();root.dataset.worldTravel='false';onTravel?.(false);previous.resolve(true);wake();}
-  function travel(to,duration=850,finish){
+  function travel(to,duration=850,finish,route=null){
+    const velocity=moving?.motion.velocityAt(moving.elapsed)||{};
     cancelTravel();root.dataset.worldTravel='true';onTravel?.(true);keys.clear();touchKeys.clear();
-    if(quiet||reduced.matches||duration===0){applyPose(to);finish?.();root.dataset.worldTravel='false';onTravel?.(false);wake();return Promise.resolve(true);}
-    return new Promise(resolve=>{moving={from:{...pose},to:{...to},elapsed:0,duration,finish,resolve};wake();});
+    const unchanged=Object.keys(to).every(key=>Math.abs(to[key]-pose[key])<.00001);
+    if(quiet||reduced.matches||duration===0||unchanged){applyPose(to);finish?.();root.dataset.worldTravel='false';onTravel?.(false);wake();return Promise.resolve(true);}
+    const motion=createJiangnanCameraMove(pose,to,{route:route||jiangnanWindowRoute(pose,to),duration,velocity});
+    return new Promise(resolve=>{moving={from:{...pose},to:{...to},motion,elapsed:0,started:performance.now(),duration:motion.duration,finish,resolve};wake();});
   }
-  const entry=()=>root.clientWidth<700?jiangnanLook([-.25,1.42,1.65],[.55,1.25,-1.6],104):jiangnanLook([.15,1.30,.85],[.7,1.2,-1.5],60);
-  function resetInspection(){inspection=null;delete root.dataset.worldInspect;onInspect?.(null);}
-  function start({animate=true,focus=false}={}){resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
+  const entry=()=>root.clientWidth<700?jiangnanLook([-.90,1.18,-.05],[.40,1.16,-1.94],root.clientWidth<350?58:56):Number.isFinite(worldRenderBudget(renderer.getContext()).maxPixels)?jiangnanLook([2.25,1.14,1.25],[.20,1.15,-1.65],THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(34))/camera.aspect))):jiangnanLook([1.20,1.34,1.65],[-.30,1.18,-1.40],Math.min(48,THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(42.5))/camera.aspect))));
+  function resetInspection(){magicClock?.hide();inspection=null;delete root.dataset.worldInspect;onInspect?.(null);}
+  function start({animate=true,focus=false}={}){returnInspection=null;resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
   function focus(animate=true){
     if(mode==='workspace'&&!moving)return Promise.resolve(true);
-    if(mode==='roam'||mode==='inspect')returnPose=inspection?.pose||{...pose};resetInspection();syncMode('workspace');
+    if(mode==='roam'||mode==='inspect'){
+      returnInspection=roomView()?{...inspection}:null;
+      returnPose=returnInspection?{...pose}:inspection?.pose||{...pose};
+    }
+    resetInspection();syncMode('workspace');
     const view=computerView();root.dataset.computerView=view;
-    return travel(view==='framed'?framedPose():jiangnanLook([1.45,1.43,-.65],JIANGNAN_TARGETS.computer,42),animate?850:0,()=>showComputer(view));
+    const [screenX,screenY,screenZ]=room.screen.position;
+    return travel(view==='framed'?framedPose():jiangnanLook([screenX,screenY+.21,screenZ+1.165],room.screen.position,42),animate?850:0,()=>showComputer(view));
   }
-  function leave(){const previous=document.activeElement;resetInspection();attachMonitor();syncMode('roam');const pending=travel(returnPose,800);pending.then(()=>{if(!disposed&&[previous,document.body].includes(document.activeElement))renderer.domElement.focus({preventScroll:true});});return pending;}
+  function leave(){const previous=document.activeElement,rest=returnInspection;returnInspection=null;resetInspection();attachMonitor();syncMode(rest?'inspect':'roam');if(rest){inspection=rest;root.dataset.worldInspect=rest.kind;onInspect?.(rest.kind);}const pending=travel(returnPose,800);pending.then(()=>{if(!disposed&&[previous,document.body].includes(document.activeElement))renderer.domElement.focus({preventScroll:true});});return pending;}
   function outside(){resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');return travel(jiangnanLook([-.65,1.55,-2.08],[0,1.1,-20],62),1000);}
+  const detailFamily=kind=>kind.startsWith('book:')?'books':kind.startsWith('record:')||kind==='vinyl'?'records':kind==='spines'?'books':kind;
   function inspect(kind){
-    if(!['coffee','books','spines'].includes(kind)||isBlocked()||!['roam','inspect'].includes(mode))return Promise.resolve(false);
+    const family=detailFamily(kind);
+    if(!['coffee','books','records','clock','vase','espresso','cat','window'].includes(family)||isBlocked()||!['roam','inspect'].includes(mode))return Promise.resolve(false);
+    if(family==='cat'&&!resident?.loaded)return Promise.resolve(false);
+    if(family!=='clock')magicClock?.hide();
     if(!inspection)inspection={pose:{...pose},kind};else inspection.kind=kind;
     syncMode('inspect');root.dataset.worldInspect=kind;onInspect?.(kind);
-    const view=kind==='coffee'?jiangnanLook([.2,1.25,-.35],JIANGNAN_TARGETS.coffee,39):jiangnanLook([-1.45,1.43,-.9],JIANGNAN_TARGETS.books,kind==='spines'?29:44);
-    return travel(view,700);
+    let view;
+    if(family==='window')view=jiangnanWindowView(camera.aspect);
+    else if(family==='cat'){resident.attend(pose);const close=resident.view(camera.aspect);view=jiangnanLook(close.position,close.target,close.fov);}
+    else if(family==='coffee')view=jiangnanLook([targets.coffee[0]-.35,targets.coffee[1]+.34,targets.coffee[2]+.93],targets.coffee,39);
+    else if(family==='books')view=jiangnanLook([camera.aspect<.8?-1.05:-1.48,1.15,-.6],targets[kind]||targets.books,kind==='books'?49:38);
+    else if(family==='records')view=jiangnanLook([camera.aspect<.8?-.8:-1.35,1.46,-.4],targets.vinyl, camera.aspect<.8?61:48);
+    else if(family==='espresso')view=jiangnanLook([-1.4,1.48,-1.55],targets.espresso,camera.aspect<.8?59:45);
+    else if(family==='clock'){view=jiangnanLook([-.60,1.35,-1.65],[.2,3,-20],camera.aspect<.8?65:52);magicClock.show();}
+    else view=jiangnanLook([targets.vase[0]-.23,targets.vase[1]+.35,targets.vase[2]+1.38],targets.vase,camera.aspect<.8?54:39);
+    return travel(view,family==='window'?1150:700,undefined,family==='window'?jiangnanWindowRoute(pose,view):null);
   }
-  function restoreInspection(){if(!inspection)return Promise.resolve(false);const previous=inspection.pose;resetInspection();syncMode('roam');return travel(previous,650);}
-  function setQuiet(value){quiet=value;audio?.setQuiet(value);if(value)finishTravel();last=0;wake();}
+  function restoreInspection(){if(!inspection)return Promise.resolve(false);const previous=inspection.pose,wasClock=inspection.kind==='clock',wasWindow=roomView(),route=wasWindow?jiangnanWindowRoute(pose,previous):null;resetInspection();syncMode('roam');const pending=travel(previous,wasWindow?1000:650,undefined,route);if(wasClock)pending.then(()=>{if(!disposed&&mode==='roam')renderer.domElement.focus({preventScroll:true});});return pending;}
+  function syncRoomTime(){const day=roomTime.at();root.dataset.roomTime=JSON.stringify({...day,rate:10});audio?.setRainLevel(day.rain);magicClock?.update(day);wake();}
+  function travelRoomTime(seconds){clockReturn=null;roomTime.travelTo(seconds,{persist:false});syncRoomTime();}
+  function returnPresent(){
+    if(quiet||reduced.matches){clockReturn=null;roomTime.returnNow();syncRoomTime();return;}
+    const from=roomTime.at().unwrapped,target=roomTime.presentAt().unwrapped,span=((target-from+43200)%86400+86400)%86400-43200;
+    clockReturn={from,span,at:performance.now()};wake();
+  }
+  function setQuiet(value){quiet=value;audio?.setQuiet(value);if(value){finishTravel();resident?.settle();}resident?.resetClock();last=0;wake();}
+  function publishObjects(force=false){
+    if(!room)return;const state=room.snapshotObjects?.();if(!state)return;
+    root.dataset.roomObjects=JSON.stringify(state);
+    const switches=JSON.stringify([state.lamp,state.fan,state['shelf-light'],state.espresso]);
+    if(force||switches!==lastSwitchState){lastSwitchState=switches;root.dispatchEvent(new CustomEvent('space:roomobjects',{detail:state}));}
+  }
+  function toggleObject(kind){const state=room?.toggleObject?.(kind);if(state){renderer.shadowMap.needsUpdate=true;publishObjects(true);wake();}return state;}
+  function selectRecord(id){return audio?.selectTrack(id);}
+  function toggleMusic(){return audio?.toggle();}
+  function interactCat(kind='pet'){if(!resident?.loaded)return false;const result=resident.interact(kind,pose,{instant:quiet||reduced.matches,nearby:mode==='inspect',now:performance.now()/1000});wake();return result;}
+  function retreat(){if(mode==='inspect')return restoreInspection();if(mode==='workspace'&&computerView()==='framed'){onReturn?.();return true;}return false;}
+  // A window can remove the clicked button before this event reaches the room.
+  // Its original event path still records that the input began in the screen.
+  const fromScreen=event=>event.composedPath().includes(workspace);
+  const fromClock=event=>Boolean(magicClock&&event.composedPath().includes(magicClock.element));
   const ray=new THREE.Raycaster(),pointer=new THREE.Vector2(),direction=new THREE.Vector3();
   function action(object){for(let node=object;node;node=node.parent)if(node.userData.action)return node.userData.action;return null;}
   function activate(kind,source=renderer.domElement){
-    if(!navigate())return;
-    if(kind==='computer')onComputer?.();
-    else if(kind==='speaker')audio?.toggle();
+    if(isBlocked()||!['roam','inspect'].includes(mode))return;
+    // Pointerup can attach the live monitor before the browser emits click.
+    // That same opening click must not immediately count as an outside click.
+    if(source===renderer.domElement&&['computer','seat','photo','painting','notebook'].includes(kind))ignoreOpeningClick=true;
+    if(kind==='computer'||kind==='seat')onComputer?.();
+    else if(kind==='speaker')toggleMusic();
+    else if(['lamp','fan','shelf-light'].includes(kind))toggleObject(kind);
+    else if(kind==='notebook')onNotebook?.();
+    else if(kind==='painting'){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent);onPhoto?.((data.photos?.find(photo=>photo.id==='fuji')||data.photos?.[0])?.id);}
     else if(kind==='photo'){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent);onPhoto?.(data.photos?.[0]?.id);}
+    else if(kind==='window'&&inspection?.kind==='window')restoreInspection();
+    else if(kind==='clock'&&inspection?.kind==='clock')restoreInspection();
+    else if(kind==='cat'||kind==='cat-bed'){
+      const cat=resident?.snapshot(),near=cat&&cat.phase!=='sleep'&&cat.phase!=='wake'&&Math.hypot(cat.x-pose.x,cat.z-pose.z)<1.1;
+      interactCat(mode==='inspect'&&inspection?.kind==='cat'||near?'pet':'call');
+    }
+    else if(kind?.startsWith('record:')){selectRecord(kind.slice(7));onDetail?.('records',source);}
+    else if(kind==='espresso'){toggleObject(kind);onDetail?.(kind,source);}
     else if(kind)onDetail?.(kind,source);
   }
-  function hit(event){const b=renderer.domElement.getBoundingClientRect();pointer.set((event.clientX-b.left)/b.width*2-1,-(event.clientY-b.top)/b.height*2+1);ray.setFromCamera(pointer,camera);return ray.intersectObjects(room.group.children,true).find(h=>h.object.visible&&(h.object.userData.action==='speaker'||!h.object.material?.transparent||h.object.material.opacity>.5));}
+  function hit(event){scene.updateMatrixWorld(true);camera.updateMatrixWorld(true);const b=renderer.domElement.getBoundingClientRect();pointer.set((event.clientX-b.left)/b.width*2-1,-(event.clientY-b.top)/b.height*2+1);ray.setFromCamera(pointer,camera);const physical=ray.intersectObjects(room.group.children,true).find(h=>h.object.visible&&(h.object.userData.action||!h.object.material?.transparent||h.object.material.opacity>.5)),cat=resident?.hit(ray);return cat&&(!physical||cat.distance<physical.distance)?{...cat,cat:true}:physical;}
+  function retargetTravel(to){
+    const previous=moving,motion=createJiangnanCameraMove(pose,to,{route:jiangnanWindowRoute(pose,to),duration:Math.max(250,previous.duration-previous.elapsed),velocity:previous.motion.velocityAt(previous.elapsed)});
+    Object.assign(previous,{from:{...pose},to:{...to},motion,elapsed:0,started:performance.now(),duration:motion.duration});
+  }
   function screenVisibility(){
     if(!cssObject)return;scene.updateMatrixWorld();
     const center=new THREE.Vector3().fromArray(room.screen.position),front=camera.position.z>center.z+.03;
@@ -138,6 +234,11 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setPixelRatio(worldPixelRatio(width,height,devicePixelRatio,worldRenderBudget(renderer.getContext())));renderer.setSize(width,height);css.setSize(width,height);
     if(workspace?.dataset.surface==='desktop')Object.assign(workspace.style,{width:width+'px',height:height+'px'});
     else if(workspace?.dataset.surface==='computer'){applyPose(framedPose());screenBounds();}
+    else if(moving&&mode==='workspace'&&computerView()==='framed')retargetTravel(framedPose());
+    else if(roomView()){
+      if(moving)retargetTravel(clampJiangnanWindowLook(moving.to,camera.aspect));
+      else applyPose(clampJiangnanWindowLook(pose,camera.aspect));
+    }
     if(depthBlur)depthBlur.resize();surfaceChanged();wake();
   }
   function createDepthBlur(){
@@ -191,7 +292,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     renderer.render(scene,camera);return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls};
   }
   function reflectRoom(){
-    reflectionDone=true;const cube=new THREE.WebGLCubeRenderTarget(128),capture=new THREE.CubeCamera(.05,30,cube),generator=new THREE.PMREMGenerator(renderer),shadows=renderer.shadowMap.enabled;
+    clearTimeout(firstTimer);reflectionDone=true;const cube=new THREE.WebGLCubeRenderTarget(128),capture=new THREE.CubeCamera(.05,30,cube),generator=new THREE.PMREMGenerator(renderer),shadows=renderer.shadowMap.enabled;
     try{renderer.shadowMap.enabled=false;exterior.group.visible=false;capture.position.set(.1,1.45,-.2);scene.add(capture);capture.update(renderer,scene);const env=generator.fromCubemap(cube.texture);resources.add(env);room.group.traverse(o=>{const list=Array.isArray(o.material)?o.material:[o.material];for(const material of list)if(material?.isMeshStandardMaterial){material.envMap=env.texture;material.envMapIntensity=.35;material.needsUpdate=true;}});}catch{/* Direct practical lights remain usable without reflections. */}
     finally{capture.removeFromParent();cube.dispose();generator.dispose();exterior.group.visible=true;renderer.shadowMap.enabled=shadows;renderer.shadowMap.needsUpdate=true;}
   }
@@ -202,46 +303,63 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     // While reading at the desk, scenery keeps moving at a quieter 30fps.
     // Navigation remains disabled by workspace mode, and intentional travel
     // still receives the ordinary frame cadence.
-    if(framed&&environmentActive&&!moving&&last&&stamp-last<1000/30-.8){frame=requestAnimationFrame(tick);return;}
-    const delta=last?Math.min((stamp-last)/1000,.12):0;last=stamp;
+    if(environmentActive&&!moving&&!keys.size&&!touchKeys.size&&last&&stamp-last<1000/(framed?30:60)-.8){frame=requestAnimationFrame(tick);return;}
+    const elapsed=last?Math.max(0,(stamp-last)/1000):0,delta=Math.min(elapsed,.12);last=stamp;
     if(environmentActive)environmentTime+=delta;
-    if(moving){moving.elapsed+=delta*1000;const progress=Math.min(1,moving.elapsed/moving.duration);applyPose(travelPose(moving.from,moving.to,progress));if(progress===1)finishTravel();}
+    // Physics uses bounded steps; a deliberate camera flight uses visible wall
+    // time. Otherwise a busy frame stretches a short approach into a long wait.
+    if(moving){if(moving.started===null)moving.started=stamp-moving.elapsed;moving.elapsed=Math.max(0,stamp-moving.started);applyPose(moving.motion.at(moving.elapsed));if(moving.elapsed>=moving.duration)finishTravel();}
     else if(navigate()&&(keys.size||touchKeys.size)){
       const has=(...codes)=>codes.some(c=>keys.has(c)||touchKeys.has(c));const input={forward:Number(has('KeyW','ArrowUp','forward'))-Number(has('KeyS','ArrowDown','back')),right:Number(has('KeyD','ArrowRight','right'))-Number(has('KeyA','ArrowLeft','left'))};
       for(let left=delta;left>0;left-=.04)pose=jiangnanWalk(pose,input,Math.min(.04,left));applyPose(pose);
     }
-    room.update(environmentTime);exterior.update(environmentTime);
+    if(clockReturn){const progress=Math.min(1,(stamp-clockReturn.at)/1400),eased=progress*progress*(3-2*progress);roomTime.travelTo(clockReturn.from+clockReturn.span*eased+(stamp-clockReturn.at)/1000*10,{persist:false});if(progress===1){roomTime.returnNow();clockReturn=null;}}
+    const day=roomTime.at();room.update(environmentTime,day);exterior.update(environmentTime,{...day,still:quiet||reduced.matches,windowFocus:roomView()});roomLights.update(day);magicClock?.update(day);
+    if(standbyClock?.isConnected&&standbyClock.textContent!==day.label)standbyClock.textContent=day.label;
+    root.dataset.roomTime=JSON.stringify({...day,rate:10});resident?.setRoutine(day.catRoutine);
+    const windowButton=objectControls.querySelector('[data-room-object="window"]'),windowText=day.rain>.1?t('看看窗外的雨','Watch the rain'):t('看看窗外的风景','Look out the window');
+    if(windowButton.textContent!==windowText)windowButton.textContent=windowText;
+    if(resident){resident.update(delta,{ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});const cat=resident.snapshot();root.dataset.catLoaded=String(cat.loaded);root.dataset.roomCat=JSON.stringify(cat);root.dataset.roomCatBreath=JSON.stringify(resident.breathing);if(cat.loaded){targets.cat=cat.target;root.dataset.worldTargets=JSON.stringify(targets);}}
+    if(frames%3===0)publishObjects();
     const readyMaps=Number(root.dataset.worldPbrMaps)>=5||performance.now()-startTime>2200;
-    if(!reflectionDone&&readyMaps&&!Number.isFinite(worldRenderBudget(renderer.getContext()).maxPixels))reflectRoom();
+    // Entry may paint early; its one reflection waits for complete materials.
+    const reflectionReady=Number(root.dataset.worldPbrMaps)>=12||performance.now()-startTime>2200;
+    if(!reflectionDone&&reflectionReady)reflectRoom();
     let info;try{screenVisibility();info=renderRoom();css.render(scene,camera);}catch(error){renderer.setRenderTarget(null);settleFirst(false);onFailure?.();return;}
-    root.dataset.worldFrames=String(++frames);root.dataset.worldTriangles=String(info.triangles);root.dataset.worldDraws=String(info.calls);root.dataset.worldRenderedMode=mode;
+    root.dataset.worldFrames=String(++frames);root.dataset.worldTriangles=String(info.triangles);root.dataset.worldDraws=String(info.calls);root.dataset.worldRenderedMode=mode;root.dataset.worldVista=exterior.vistaMode||'geometry';
     root.dataset.roomBoatPose=JSON.stringify([+exterior.boat.position.x.toFixed(3),+exterior.boat.position.y.toFixed(3),+exterior.boat.position.z.toFixed(3)]);root.dataset.roomBoat='ready';root.dataset.worldEnvironmentTime=environmentTime.toFixed(3);
+    root.dataset.roomBoatHeading=exterior.boat.rotation.y.toFixed(4);
     if(readyMaps){root.dataset.worldReady='true';settleFirst(true);}
-    if(!disposed&&(moving||environmentActive||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
+    if(!disposed&&(moving||clockReturn||environmentActive||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
   }
-  function visibility(){stop();keys.clear();touchKeys.clear();drag=null;if(visible())wake();}
+  function visibility(){stop();keys.clear();touchKeys.clear();drag=null;if(!visible()){magicClock?.settle();if(clockReturn){clockReturn=null;roomTime.returnNow();syncRoomTime();}}else wake();}
   function dispose(){
-    if(disposed)return;disposed=true;stop();cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();
-    cssObject?.removeFromParent();for(const [node,anchor] of anchors)if(anchor.isConnected)anchor.replaceWith(node);workspace?.remove();computerExpand?.remove();pbr?.dispose();for(const object of resources)object.dispose?.();for(const map of textures)map.dispose();renderer?.dispose();renderer?.forceContextLoss();host?.remove();settleFirst(false);
+    if(disposed)return;disposed=true;stop();stopWeather?.();magicClock?.dispose();clockReturn=null;cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();resident?.dispose();
+    cssObject?.removeFromParent();for(const [node,anchor] of anchors)if(anchor.isConnected){movePreservingState(anchor.parentNode,node,anchor);anchor.remove();}workspace?.remove();computerExpand?.remove();pbr?.dispose();for(const object of resources)object.dispose?.();for(const map of textures)map.dispose();renderer?.dispose();renderer?.forceContextLoss();host?.remove();settleFirst(false);
     if(outsideButton)outsideButton.textContent=outsideLabel;
     clearScreenBounds();surfaceChanged();
-    for(const key of ['worldRenderer','worldScreenVisible','worldTargets','worldEnvironmentTime','roomBoat','roomBoatPose','computerDepthBlur'])delete root.dataset[key];
+    for(const key of ['worldRenderer','worldScreenVisible','worldScreenPreview','worldTargets','worldEnvironmentTime','roomBoat','roomBoatPose','roomBoatHeading','computerDepthBlur','worldVista','roomObjects','roomCat','roomCatBreath','catLoaded','roomTime'])delete root.dataset[key];
   }
   try {
     renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
     const budget=worldRenderBudget(renderer.getContext()),software=Number.isFinite(budget.maxPixels);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.shadowMap.autoUpdate=false;
+    reflectionDone=software;
     scene=new THREE.Scene();scene.background=new THREE.Color('#192a3c');scene.fog=new THREE.FogExp2('#273d50',.019);camera=new THREE.PerspectiveCamera(63,1,.04,160);camera.rotation.order='YXZ';
     host=document.createElement('div');host.className='space-world space-world--jiangnan';root.prepend(host);renderer.domElement.className='space-world__canvas';renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label',t('三维咖啡馆。拖动环视，方向键或 WASD 行走，点击电脑和相框。','3D café. Drag to look, arrows or WASD to walk. Click the Mac or photograph.'));renderer.domElement.setAttribute('aria-describedby','jiangnan-controls');host.append(renderer.domElement);
     const guidance=document.createElement('p');guidance.id='jiangnan-controls';guidance.className='jiangnan-guidance';guidance.textContent=t('拖动环视，方向键或 WASD 移动。','Drag to look. Arrows or WASD to walk.');host.append(guidance);
     objectControls=document.createElement('nav');objectControls.className='jiangnan-object-controls';objectControls.setAttribute('aria-label',t('房间里的物件','Objects in the room'));host.append(objectControls);
-    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
+    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['records',t('挑选一张唱片','Choose a record')],['lamp',t('开关桌灯','Switch the desk lamp')],['fan',t('开关风扇','Switch the fan')],['shelf-light',t('开关书架照明','Switch the shelf lights')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')],['clock',t('看看木摆钟','Look at the pendulum clock')],['espresso',t('使用咖啡机','Use the espresso machine')],['cat',t('走近小猫','Meet the cat')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
+    objectControls.querySelector('[data-room-object="cat"]').textContent=t('轻轻叫醒小猫','Gently call the cat');
+    const windowControl=document.createElement('button');windowControl.type='button';windowControl.dataset.roomObject='window';windowControl.textContent=t('看看窗外的雨','Watch the rain');listen(windowControl,'click',()=>activate('window',windowControl));objectControls.append(windowControl);
     css=new CSS3DRenderer();css.domElement.className='space-world__css';css.domElement.style.pointerEvents='none';host.append(css.domElement);
     root.dataset.worldRenderer='jiangnan';root.dataset.worldTheme='jiangnan';root.dataset.worldTargets=JSON.stringify(targets);root.dataset.worldPbrMaps='0';root.dataset.worldTravel='false';
     pbr=createWorldMaterials({base:materialBase,renderer,resources,textures,isDisposed:()=>disposed,wake,root});
-    scene.add(new THREE.HemisphereLight('#a8bbc7','#60412b',.82));const moon=new THREE.DirectionalLight('#a4c6dd',1.05);moon.position.set(-8,15,-18);scene.add(moon);
-    const windowFill=new THREE.DirectionalLight('#93b6ca',.38);windowFill.position.set(6,9,6);scene.add(windowFill);
-    const key=new THREE.SpotLight('#ffcc8b',31,9,1.12,.88,2);key.position.set(-.5,2.68,.35);key.target.position.set(.45,.65,-1.4);key.castShadow=true;key.shadow.mapSize.setScalar(budget.shadowSize);key.shadow.bias=-.00008;key.shadow.normalBias=.025;scene.add(key,key.target);
-    room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photoAsset,books,zh,isDisposed:()=>disposed});exterior=buildJiangnanExterior({scene,pbr,resources,textures,software});
+    roomLights=createJiangnanRoomLights({THREE,scene});
+    room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photoAsset,books,records,zh,shadowSize:budget.shadowSize,isDisposed:()=>disposed});Object.assign(targets,room.targets);root.dataset.worldTargets=JSON.stringify(targets);publishObjects(true);
+    magicClock=mountMagicClock({root,zh,getTime:()=>roomTime.at(),onGrab:()=>{clockReturn=null;roomTime.hold();},onTravel:travelRoomTime,onCommit:()=>roomTime.commit(),onPresent:returnPresent,onClose:restoreInspection});
+    resident=createJiangnanResident({scene,wake,grounding:room.catSupport,onChange:code=>{root.dataset.catState=code;onCat?.(code);wake();}});resident.ready.then(loaded=>{if(disposed)return;root.dataset.catLoaded=String(loaded);onCat?.(loaded?'ready':'unavailable');wake();});
+    const nightAssets=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent).night,vistaMode=new URLSearchParams(location.search).get('vista')==='geometry'?'geometry':'image';
+    exterior=buildJiangnanExterior({scene,pbr,resources,textures,software,vistaAsset:nightAssets.vista,dayVistaAsset:nightAssets.dayVista,continuationAsset:nightAssets.continuation,vistaMode,wake,isDisposed:()=>disposed});root.dataset.worldVista=exterior.vistaMode;
     if(room.soundTarget){targets.speaker=[...room.soundTarget];root.dataset.worldTargets=JSON.stringify(targets);}
     if(software)room.group.traverse(o=>{if(o.isPointLight)o.castShadow=false;});
     workspace=document.createElement('div');workspace.className='space-spatial-screen jiangnan-workspace';workspace.setAttribute('aria-label','CUBXXW OS');
@@ -251,21 +369,38 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     for(const node of [root.querySelector('[data-space-windows]'),root.querySelector('[data-space-snap]'),root.querySelector('.space-bottom'),root.querySelector('.space-menu')]){const anchor=document.createComment('jiangnan workspace return');node.before(anchor);anchors.push([node,anchor]);viewport.append(node);}
     computerExpand=document.createElement('button');computerExpand.type='button';computerExpand.className='jiangnan-computer-expand';computerExpand.dataset.computerDisplay='expanded';computerExpand.textContent=t('放大屏幕','Enlarge screen');root.append(computerExpand);
     attachMonitor();const catalog=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent);
-    firstFrame.then(painted=>{if(!painted||disposed)return;audio=mountRoomAudio({root,assets:catalog.night,zh,defaultEnabled:true,initialQuiet:quiet,embedded:true,onStateChange:state=>{room.setAudioState?.(state);wake();}});if(audio.credits)root.querySelector('[data-mac-panel="help"]')?.append(audio.credits);});
+    firstFrame.then(painted=>{if(!painted||disposed)return;audio=mountRoomAudio({root,assets:{...catalog.night,ambience:catalog.night.rain||catalog.night.ambience},tracks:records,zh,defaultEnabled:false,independentAmbience:true,backgroundPlayback:true,initialQuiet:quiet,embedded:true,onStateChange:state=>{room.setAudioState?.(state);publishObjects();root.dispatchEvent(new CustomEvent('space:roomaudio',{detail:state}));wake();}});stopWeather=watchJiangnanWeather(roomTime,day=>{audio.setRainLevel(day.rain);root.dataset.roomTime=JSON.stringify({...day,rate:10});wake();});if(audio.credits)root.querySelector('[data-mac-panel="help"]')?.append(audio.credits);});
     listen(root,'click',event=>{const button=event.target.closest('[data-computer-display]');if(button)changeComputerView(button.dataset.computerDisplay);});
-    if(outsideButton)outsideButton.textContent=t('去窗边看看 ↗','Look out the window ↗');onCat?.('unavailable');
-    listen(renderer.domElement,'pointerdown',event=>{if(!navigate()||event.button!==0)return;cancelTravel();drag={id:event.pointerId,x:event.clientX,y:event.clientY,distance:0};renderer.domElement.setPointerCapture(event.pointerId);});
-    listen(renderer.domElement,'pointermove',event=>{if(!drag){if(navigate())renderer.domElement.style.cursor=action(hit(event)?.object)?'pointer':'grab';return;}const dx=event.clientX-drag.x,dy=event.clientY-drag.y;drag.distance+=Math.abs(dx)+Math.abs(dy);drag.x=event.clientX;drag.y=event.clientY;if(!navigate())return;applyPose({...pose,yaw:pose.yaw-dx*.0035,pitch:Math.max(-.9,Math.min(.85,pose.pitch-dy*.003))});wake();});
-    listen(renderer.domElement,'pointerup',event=>{if(drag?.id!==event.pointerId)return;const click=drag.distance<6;drag=null;if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);if(click&&navigate()){const target=hit(event),kind=action(target?.object);if(kind)activate(kind);else if(event.pointerType==='touch'&&target?.point.y<.06&&target.point.y>-.06)travel(jiangnanDestination(pose,target.point),650);}});
+    if(outsideButton)outsideButton.textContent=t('去窗边看看 ↗','Look out the window ↗');onCat?.('loading');
+    listen(renderer.domElement,'pointerdown',event=>{if(isBlocked()||!['roam','inspect'].includes(mode)||event.button!==0||touchPoints.size>1)return;drag={id:event.pointerId,x:event.clientX,y:event.clientY,distance:0};renderer.domElement.setPointerCapture(event.pointerId);});
+    listen(renderer.domElement,'pointermove',event=>{if(!drag){if(canLook()){if(moving)renderer.domElement.style.cursor='grab';else if(performance.now()-lastHover>60){lastHover=performance.now();renderer.domElement.style.cursor=action(hit(event)?.object)?'pointer':'grab';}}return;}const dx=event.clientX-drag.x,dy=event.clientY-drag.y;drag.distance+=Math.abs(dx)+Math.abs(dy);drag.x=event.clientX;drag.y=event.clientY;if(!canLook()||drag.distance<6)return;cancelTravel();const looking={...pose,yaw:pose.yaw-dx*(roomView()? .0026 : .0035),pitch:Math.max(-.9,Math.min(.85,pose.pitch-dy*(roomView()? .0022 : .003)))};const eye=roomView()?jiangnanWindowView(camera.aspect):null,atWindow=eye&&Math.hypot(pose.x-eye.x,pose.z-eye.z)<.12;applyPose(atWindow?clampJiangnanWindowLook(looking,camera.aspect):looking);wake();});
+    listen(renderer.domElement,'pointerup',event=>{
+      if(drag?.id!==event.pointerId)return;const click=drag.distance<6&&!pinchUsed;drag=null;
+      if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);
+      if(!click||isBlocked())return;const target=hit(event),kind=target?.cat?'cat':action(target?.object);
+      if(mode==='inspect'){
+        // The large glass pane remains an outside-click while seated.
+        if(kind==='window'&&inspection.kind!=='window')restoreInspection();
+        else if(kind&&(roomView()||detailFamily(kind)===detailFamily(inspection.kind)))activate(kind);else restoreInspection();
+      }else if(navigate()){
+        if(kind)activate(kind);else if(event.pointerType==='touch'&&target?.point.y<.06&&target.point.y>-.06)travel(jiangnanDestination(pose,target.point),650);
+      }
+    });
+    listen(root,'click',event=>{if(ignoreOpeningClick){ignoreOpeningClick=false;return;}if(mode==='workspace'&&computerView()==='framed'&&!fromScreen(event)&&!event.target.closest('dialog,[data-space-menu-trigger],.space-menu,.jiangnan-computer-expand,.jiangnan-object-controls'))retreat();});
+    listen(root,'wheel',event=>{if(isBlocked()||fromClock(event)||event.deltaY<=0||event.target.closest('.space-object-detail'))return;const inScreen=fromScreen(event);if(mode==='inspect'||mode==='workspace'&&computerView()==='framed'&&!inScreen){event.preventDefault();retreat();}},{passive:false});
+    listen(root,'pointerdown',event=>{if(event.pointerType!=='touch'||isBlocked()||fromClock(event))return;touchPoints.set(event.pointerId,{x:event.clientX,y:event.clientY,inScreen:fromScreen(event)});if(touchPoints.size===2){const [a,b]=[...touchPoints.values()];pinchStart=Math.hypot(a.x-b.x,a.y-b.y);pinchUsed=false;drag=null;}},{capture:true});
+    listen(root,'pointermove',event=>{const point=touchPoints.get(event.pointerId);if(!point)return;point.x=event.clientX;point.y=event.clientY;if(touchPoints.size!==2||!pinchStart||pinchUsed)return;const [a,b]=[...touchPoints.values()];if(mode==='workspace'&&(a.inScreen||b.inScreen))return;if(Math.hypot(a.x-b.x,a.y-b.y)<pinchStart*.78&&(mode==='inspect'||mode==='workspace'&&computerView()==='framed')){pinchUsed=true;event.preventDefault();retreat();}},{capture:true,passive:false});
+    for(const type of ['pointerup','pointercancel'])listen(root,type,event=>{touchPoints.delete(event.pointerId);if(!touchPoints.size){pinchStart=0;queueMicrotask(()=>{pinchUsed=false;});}},{capture:true});
+    listen(root,'space:readingpage',event=>{readingPage=Boolean(event.detail.active);visibility();resident?.resetClock();});
     listen(renderer.domElement,'pointercancel',()=>{drag=null;});
     listen(document,'keydown',event=>{if(!navigate()||event.metaKey||event.ctrlKey||event.altKey||event.target.closest('input,textarea,[contenteditable="true"]'))return;if(event.code==='KeyF'){event.preventDefault();root.querySelector('[data-space-fullscreen]')?.click();}if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();cancelTravel();keys.add(event.code);wake();}});
     listen(document,'keyup',event=>keys.delete(event.code));listen(window,'blur',()=>{keys.clear();touchKeys.clear();drag=null;});
     for(const button of root.querySelectorAll('[data-world-walk]')){listen(button,'pointerdown',event=>{if(!navigate())return;event.preventDefault();cancelTravel();touchKeys.add(button.dataset.worldWalk);button.setPointerCapture(event.pointerId);wake();});for(const name of ['pointerup','pointercancel','lostpointercapture'])listen(button,name,()=>touchKeys.delete(button.dataset.worldWalk));}
-    listen(document,'visibilitychange',visibility);listen(reduced,'change',()=>{if(reduced.matches)finishTravel();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();settleFirst(false);onFailure?.();});
+    listen(document,'visibilitychange',visibility);listen(reduced,'change',()=>{if(reduced.matches){finishTravel();resident?.settle();}resident?.resetClock();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();settleFirst(false);onFailure?.();});
     hiddenObserver=new MutationObserver(visibility);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
     blockedObserver=new MutationObserver(()=>{if(isBlocked()){keys.clear();touchKeys.clear();drag=null;}wake();});blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
     observer=new ResizeObserver(resize);observer.observe(root);pose=entry();returnPose={...pose};applyPose(pose);syncMode('roam');resize();renderer.shadowMap.needsUpdate=true;
     firstTimer=setTimeout(wake,2300);wake();
   } catch(error){dispose();throw error;}
-  return {firstFrame,start,focus,leave,outside,inspect,restoreInspection,setQuiet,wake,setTheme(){return true;},interactCat(){return false;},get mode(){return mode;},dispose};
+  return {firstFrame,start,focus,leave,outside,inspect,restoreInspection,setQuiet,wake,toggleObject,selectRecord,toggleMusic,setTheme(){return true;},interactCat,get mode(){return mode;},dispose};
 }
