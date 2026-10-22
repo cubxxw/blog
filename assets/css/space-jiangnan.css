@@ -27,8 +27,8 @@
 .space[data-world-renderer="jiangnan"] .space-world-hud__roam { display:none; }
 .space[data-world-renderer="jiangnan"] .space-world-hud__details { display:none; }
 .space[data-world-renderer="jiangnan"] .space-world-hud__workspace { display:none; }
-/* Room actions belong to its objects. The native computer retains its menus. */
-.space[data-world-renderer="jiangnan"] :is(.space-cafe__header,.space-cafe__footer,.jiangnan-guidance,.space-world-touch),
+/* The room remains the focus; its two everyday destinations stay discoverable. */
+.space[data-world-renderer="jiangnan"] :is(.space-cafe__footer,.jiangnan-guidance,.space-world-touch),
 .space[data-world-renderer="jiangnan"]>.space-fullscreen { display:none!important; }
 .space[data-cafe-theme="jiangnan"] .space-boot { background:#17140f; }
 .space[data-cafe-theme="jiangnan"]:not([data-world-failed="true"]) .space-boot :is(.space-boot__header,.space-boot__body,.space-boot__footer) { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
@@ -160,3 +160,41 @@
   .space[data-world-renderer="jiangnan"] .jiangnan-guidance { bottom:66px; left:180px; max-width:calc(100% - 196px); }
 }
 @media(prefers-reduced-motion:reduce) { .space[data-world-renderer="jiangnan"] .jiangnan-workspace { transition:none; } }
+
+/* Warm, small wayfinding slips leave the window, lamp and cat in the room. */
+.jiangnan-explore { display:none; }
+.space[data-world-renderer="jiangnan"] .space-cafe__header { display:none; }
+.space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .space-cafe__header { display:flex; top:max(20px,env(safe-area-inset-top)); right:max(20px,env(safe-area-inset-right)); left:auto; }
+.space[data-world-renderer="jiangnan"] .space-cafe__brand { display:none; }
+.space[data-world-renderer="jiangnan"] .space-cafe__utilities { gap:6px; margin:0; }
+.space[data-world-renderer="jiangnan"] .space-cafe__utilities button { min-width:44px; min-height:44px; padding:0 12px; border-color:transparent; border-radius:22px; color:#fff3db; background:transparent; backdrop-filter:none; text-shadow:0 1px 3px #100b07,0 0 10px #100b07; font-size:12px; }
+.space[data-world-renderer="jiangnan"] .space-cafe__utilities [data-cafe-quiet][aria-pressed="true"] { color:#2a2015; background:#e5d6b8; border-color:#e5d6b8; text-shadow:none; }
+.space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .space-world-hud__roam { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch; justify-content:start; gap:8px; left:max(20px,env(safe-area-inset-left)); right:auto; bottom:max(20px,env(safe-area-inset-bottom)); width:min(360px,calc(100% - 40px)); transform:none; }
+.space[data-world-renderer="jiangnan"] .space-world-hud__roam > :is(p,[data-cafe-photos]) { display:none; }
+.space[data-world-renderer="jiangnan"] .space-world-hud__roam :is([data-cafe-read],[data-cafe-enter]) { display:flex; align-items:center; justify-content:space-between; gap:8px; width:auto; min-width:0; min-height:48px; padding:11px 14px; border:1px solid #d1b98770; border-radius:5px; color:#eee2c7; background:#211b13d9; font-size:13px; line-height:1.4; text-align:left; white-space:normal; box-shadow:0 3px 14px #120d0726; }
+.space[data-world-renderer="jiangnan"] .space-world-hud__roam [data-cafe-read] { color:#2a2015; background:#e5d6b8; border-color:#e5d6b8; }
+.space[data-world-renderer="jiangnan"] .space-world-hud__roam [data-cafe-enter] { border-color:#d1b98724; box-shadow:none; }
+.space[data-world-renderer="jiangnan"] .space-world-hud__roam button > span { flex:none; opacity:.7; }
+.space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .jiangnan-explore { display:block; position:absolute; left:max(20px,env(safe-area-inset-left)); bottom:calc(max(20px,env(safe-area-inset-bottom)) + 56px); width:min(360px,calc(100% - 40px)); pointer-events:auto; }
+.jiangnan-explore summary { display:flex; align-items:center; gap:20px; width:fit-content; min-width:44px; min-height:44px; box-sizing:border-box; padding:8px 12px; border:1px solid transparent; border-radius:5px; color:#fff3db; background:#211b1370; backdrop-filter:blur(12px); text-shadow:0 1px 5px #100b07; cursor:pointer; list-style:none; font-size:12px; line-height:1.5; user-select:none; -webkit-tap-highlight-color:transparent; }
+.jiangnan-explore summary::-webkit-details-marker { display:none; }
+.jiangnan-explore summary > span { display:inline-block; color:#cdb68c; font-size:17px; line-height:1; transition:transform .16s ease-out; }
+.jiangnan-explore[open] summary > span { transform:rotate(45deg); }
+.jiangnan-explore summary:focus-visible,.space[data-world-renderer="jiangnan"] .space-cafe__utilities button:focus-visible,.space[data-world-renderer="jiangnan"] .space-world-hud__roam button:focus-visible { outline:2px solid #f2dfb2; outline-offset:4px; }
+.jiangnan-explore summary:active,.space[data-world-renderer="jiangnan"] .space-world-hud__roam button:active { transform:translateY(1px); filter:brightness(1.08); }
+.jiangnan-explore__guide { position:absolute; left:0; bottom:52px; width:100%; box-sizing:border-box; max-height:min(50dvh,300px); overflow:auto; overscroll-behavior:contain; padding:16px 18px; border:1px solid #d1b98755; border-radius:5px; color:#e4d8c2; background:#211b13f2; backdrop-filter:blur(14px); box-shadow:0 10px 32px #120d073d; }
+.jiangnan-explore__guide p { margin:0; font-size:13px; line-height:1.8; }
+.jiangnan-explore__guide p + p { margin-top:10px; color:#cabca3; }
+@media(max-width:640px) {
+  .space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .space-cafe__header { top:max(12px,env(safe-area-inset-top)); right:max(16px,env(safe-area-inset-right)); }
+  .space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] :is(.space-world-hud__roam,.jiangnan-explore) { left:max(16px,env(safe-area-inset-left)); width:calc(100% - 32px); max-width:360px; }
+  .space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .space-world-hud__roam { bottom:max(16px,env(safe-area-inset-bottom)); }
+  .space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .jiangnan-explore { bottom:calc(max(16px,env(safe-area-inset-bottom)) + 56px); }
+  .space[data-world-renderer="jiangnan"] .space-world-hud__roam :is([data-cafe-read],[data-cafe-enter]) { padding:11px 12px; }
+}
+@media(max-height:400px) {
+  .space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .space-world-hud__roam { bottom:max(8px,env(safe-area-inset-bottom)); }
+  .space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .jiangnan-explore { bottom:calc(max(8px,env(safe-area-inset-bottom)) + 56px); }
+}
+@media(prefers-reduced-motion:reduce) { .jiangnan-explore summary > span { transition:none; }.jiangnan-explore summary:active,.space[data-world-renderer="jiangnan"] .space-world-hud__roam button:active { transform:none; } }
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more) { .space[data-world-renderer="jiangnan"] .space-cafe__utilities button,.jiangnan-explore summary,.jiangnan-explore__guide { background:#211b13; backdrop-filter:none; border-color:#cdb68c; } }

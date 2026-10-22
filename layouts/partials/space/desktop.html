@@ -1,8 +1,8 @@
 {{- $zh := eq .Lang "zh" -}}
 {{- $languageRoutes := dict .Lang .RelPermalink -}}
 {{- range .Translations }}{{ $languageRoutes = merge $languageRoutes (dict .Lang .RelPermalink) }}{{ end -}}
-{{- $labels := dict "welcome" "Finder" "browser" (cond $zh "浏览器" "Browser") "products" (cond $zh "产品" "Products") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "空间助手" "Companion") "settings" (cond $zh "工作区设置" "Settings") -}}
-{{- $mobileLabels := dict "welcome" (cond $zh "空间" "Home") "reader" (cond $zh "文章" "Writing") "products" (cond $zh "产品" "Products") "settings" (cond $zh "设置" "Settings") "agent" (cond $zh "助手" "AI") -}}
+{{- $labels := dict "welcome" "Finder" "browser" (cond $zh "浏览器" "Browser") "products" (cond $zh "作品" "Projects") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "空间助手" "Companion") "settings" (cond $zh "工作区设置" "Settings") -}}
+{{- $mobileLabels := dict "welcome" (cond $zh "空间" "Home") "reader" (cond $zh "文章" "Writing") "products" (cond $zh "作品" "Projects") "settings" (cond $zh "设置" "Settings") "agent" (cond $zh "助手" "AI") -}}
 {{- $articles := slice -}}
 {{- range (where site.RegularPages "Type" "posts").ByDate.Reverse -}}
   {{- $articles = $articles | append (dict "id" .RelPermalink "title" .Title "url" .RelPermalink "description" (.Description | default (.Summary | plainify | truncate 180)) "date" (.Date.Format "2006.01.02") "section" .Section "tags" .Params.tags) -}}
@@ -43,7 +43,7 @@
 {{- end -}}
 {{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") (resources.Get "css/space-classic.css") (resources.Get "css/space-companion.css") (resources.Get "css/space-cafe.css") (resources.Get "css/space-rain-room.css") (resources.Get "css/space-jiangnan.css") (resources.Get "css/space-mac.css") (resources.Get "css/space-browser.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" data-cafe-mode="cafe" data-computer-default="framed" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
+<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" data-cafe-mode="cafe" data-computer-default="expanded" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
   <div class="space-landscape" aria-hidden="true"></div>
   {{ partial "space/cafe.html" . }}
   <nav class="space-menu" id="space-menu" aria-label="{{ if $zh }}空间菜单{{ else }}Space menu{{ end }}" hidden>

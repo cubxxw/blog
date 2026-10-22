@@ -1,3 +1,6 @@
+export function recentWriting(articles = [], limit = 3) {
+  return articles.filter(article=>typeof article.url==='string'&&article.url.startsWith('/')&&!article.url.startsWith('//')&&/^\d{4}[.-]\d{2}[.-]\d{2}$/.test(article.date || '')).slice().sort((a,b)=>b.date.replaceAll('.','-').localeCompare(a.date.replaceAll('.','-'))).slice(0,Math.max(0,limit));
+}
 export function mountFinderHome({ root, host, catalog, execute, getState, escapeHTML, icon, payload }) {
   const html = escapeHTML;
   const t = (cn, en) => catalog.language === 'zh' ? cn : en;
@@ -14,6 +17,18 @@ export function mountFinderHome({ root, host, catalog, execute, getState, escape
 
   const article = host.querySelector('[data-finder-home]');
   const overview = host.querySelector('.space-finder-home__overview');
+  const toolbar=overview.querySelector('.space-finder-toolbar');
+  const controls=document.createElement('div');controls.className='space-finder-home__controls';
+  const allApps=document.createElement('button');allApps.type='button';allApps.dataset.spaceLaunchpadTrigger='';allApps.setAttribute('aria-haspopup','dialog');allApps.textContent=t('所有应用','All apps');
+  const search=toolbar.querySelector('[data-space-search-trigger]');search.setAttribute('aria-label',t('搜索工作区','Search workspace'));search.title=t('搜索工作区','Search workspace');
+  search.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>';
+  controls.append(allApps,search);toolbar.append(controls);
+  const recent=recentWriting(catalog.articles);
+  if(recent.length){
+    const section=document.createElement('section');section.className='space-finder-recent';section.setAttribute('aria-label',t('最近写下的文章','Recent writing'));
+    section.innerHTML=`<header><h2>${t('最近写下的','Recent writing')}</h2><button type="button" data-open="reader">${t('全部文章','All writing')} <span aria-hidden="true">↗</span></button></header><div>${recent.map(article=>`<button type="button" data-open="reader" data-payload="${html(article.url)}"><time datetime="${html(article.date.replaceAll('.','-'))}">${html(article.date)}</time><strong>${html(article.title)}</strong><span aria-hidden="true">↗</span></button>`).join('')}</div>`;
+    overview.querySelector('.space-finder-home__body').after(section);
+  }
   const template = root.querySelector('[data-space-profile-template]');
   const windowElement = host.closest('[data-space-window]');
   const windowID = windowElement?.dataset.spaceWindow || 'welcome';

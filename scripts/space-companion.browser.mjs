@@ -26,7 +26,7 @@ try {
     await page.locator('[data-space-window="agent"] [data-window-action="close"]').click();
     await page.locator('[data-space-dock] [data-open="reader"]').click();await page.locator('[data-library-list] [data-open="reader"]').first().click();
     await page.locator('[data-reader-body] .post-content').waitFor();
-    await page.locator('[data-reader-ask]').click();assert.match(await page.locator('[data-agent-input]').inputValue(),/总结/);assert.equal(await page.locator('[data-agent-context]').isVisible(),true);
+    await page.locator('.space-reader-tools > summary').click();await page.locator('[data-reader-ask]').click();assert.match(await page.locator('[data-agent-input]').inputValue(),/总结/);assert.equal(await page.locator('[data-agent-context]').isVisible(),true);
     assert.equal(requests.length,0,'context action prefills and never auto-sends');
     await page.locator('[data-agent-send]').click();await page.locator('[data-agent-answer]').filter({hasText:'CONTEXT_ANSWER'}).waitFor();
     assert.equal(await page.locator('[data-companion-mode="expanded"]').count(),1);assert.ok(requests[0].messages[0].content.includes('Reference:'));
@@ -43,7 +43,7 @@ try {
   await check('explicit selection is copied from the public reader only',async()=>{
     await page.locator('[data-space-window="agent"] [data-window-action="close"]').click();
     await page.locator('[data-reader-body]').evaluate(el=>{const range=document.createRange();range.selectNodeContents(el.querySelector('p') || el);const selected=window.getSelection();selected.removeAllRanges();selected.addRange(range);});
-    await page.locator('[data-reader-explain]').waitFor();await page.locator('[data-reader-explain]').click();assert.match(await page.locator('[data-agent-context]').textContent(),/选中文字/);
+    await page.locator('.space-reader-tools > summary').click();await page.locator('[data-reader-explain]').waitFor();await page.locator('[data-reader-explain]').click();assert.match(await page.locator('[data-agent-context]').textContent(),/选中文字/);
   });
   await check('removing context also removes the reference and selection from the actual request',async()=>{
     await page.locator('[data-agent-context]').click();await page.locator('[data-agent-send]').click();await page.locator('[data-agent-task]').last().locator('[data-agent-badge][data-status="completed"]').waitFor();

@@ -160,6 +160,30 @@
 .space-world-hud__roam p { font-size:11px; color:#fff9e4; text-shadow:0 1px 6px #112c22; margin:0 6px 0 0; }
 .space-world-hud [data-cafe-enter] { color:#263e32; background:#f3eddc; border-color:#f3eddc; min-width:145px; display:flex; justify-content:space-between; gap:22px; }
 .space:not([data-world-mode="workspace"]) .space-world-hud__workspace,.space:not([data-world-mode="roam"]) .space-world-hud__roam,.space:not([data-world-mode="roam"]) .space-world-touch { display:none; }
+/* The back door's localized excursion panel: one warm card low on the glass,
+   never a modal. The deliberate action reads first; the quiet one stays close. */
+.space-cafe-door { position:absolute; z-index:106; left:50%; bottom:max(30px,env(safe-area-inset-bottom)); transform:translateX(-50%); width:min(430px,calc(100vw - 36px)); padding:20px 22px 18px; border:1px solid #fff1d12b; border-radius:16px; background:#14262157; backdrop-filter:blur(18px) saturate(125%); box-shadow:0 22px 70px #07131066; pointer-events:auto; font-family:var(--font-sans,system-ui,sans-serif); color:#fff8e8; animation:space-cafe-door-in .32s ease-out; }
+@keyframes space-cafe-door-in { from { opacity:0; transform:translate(-50%,10px); } }
+.space-cafe-door--still { animation:none; }
+.space-cafe-door__note { margin:0 0 14px; font-family:Georgia,'Songti SC','Noto Serif SC',serif; font-size:15px; line-height:1.75; letter-spacing:.01em; color:#fff9ec; }
+.space-cafe-door__actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px 20px; }
+.space-cafe-door button { pointer-events:auto; font:inherit; font-size:13px; min-height:44px; padding:8px 2px; border:0; background:transparent; color:#ffedc9; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.space-cafe-door button:first-of-type { padding:9px 22px; border-radius:26px; background:#f2ead6; color:#26382d; }
+.space-cafe-door button:hover { filter:brightness(1.06); }
+.space-cafe-door button:focus-visible { outline:2px solid #fff4ce; outline-offset:4px; border-radius:6px; }
+.space-cafe-door-water { position:absolute; inset:0; z-index:104; pointer-events:none; opacity:0; background:radial-gradient(ellipse at 50% 15%,transparent 20%,#234e6442 68%,#16374f85),linear-gradient(180deg,#83bcc52b,transparent 40%,#16344f4d); transition:opacity .48s ease; }
+.space-cafe-door-water::after { content:""; position:absolute; inset:0; opacity:.5; background:radial-gradient(ellipse at 13% 68%,#d1e8e04d 0 1px,transparent 3px),radial-gradient(ellipse at 81% 38%,#d1e8e040 0 2px,transparent 4px),radial-gradient(ellipse at 73% 81%,#d1e8e03d 0 1px,transparent 3px); }
+.space[data-room-door-state="submerged"] .space-cafe-door-water { opacity:1; }
+.space[data-world-mode="excursion"] :is(.space-cafe__welcome,.space-cafe__footer,.space-cafe-inspect) { visibility:hidden; }
+.space-cafe-door-exit { display:none; position:absolute; z-index:106; top:98px; left:4vw; min-height:44px; padding:8px 12px; border:1px solid #eee8d547; border-radius:3px; background:#182b23d9; color:#fff8e8; font:14px var(--font-sans,system-ui,sans-serif); cursor:pointer; }
+.space[data-world-mode="excursion"] .space-cafe-door-exit { display:block; }
+.space-cafe-door-exit:focus-visible { outline:2px solid #fff4ce; outline-offset:4px; }
+.space[data-room-door-state="returning"] .space-cafe-door-exit { visibility:hidden; }
+.space[data-room-door-still="true"] .space-cafe-door-water { transition:none; }
+@media (prefers-reduced-motion:reduce) { .space-cafe-door { animation:none; } }
+@media (prefers-reduced-motion:reduce) { .space-cafe-door-water { transition:none; } }
+@media (max-height:420px) { .space-cafe-door { bottom:max(12px,env(safe-area-inset-bottom)); padding:12px 18px; } .space-cafe-door__note { margin-bottom:8px; font-size:14px; line-height:1.5; } }
+@media (max-width:640px) { .space-cafe-door-exit { top:80px; left:14px; } }
 .space-world-touch { display:none; }
 .space[data-world-failed] .space-cafe { background:#203a31; }
 .space[data-world-lost] .space-world::after { content:'3D paused · reload to resume'; position:absolute; top:70px; left:24px; color:#fff; font-size:13px; }

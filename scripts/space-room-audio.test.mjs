@@ -10,7 +10,7 @@ function blocked(){return Object.assign(new Error('A gesture is required'),{name
 // can become audible after pause(), exposing stale-completion leaks in the real
 // audio controller rather than merely checking how often its methods are called.
 function fixture(options={}) {
-  const originals=new Map(),tracks=[],observers=[],states=[],contexts=[],requests=[];
+  const originals=new Map(),tracks=[],observers=[],states=[],contexts=[],requests=[],stored=new Map(),storageWrites=[];
   const replace=(key,value)=>{originals.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});};
   class Element extends EventTarget {
     constructor(tag='div'){super();this.tagName=tag.toUpperCase();this.dataset={};this.hidden=false;this.children=[];this.attributes=new Map();this.parentNode=null;}
@@ -40,6 +40,8 @@ function fixture(options={}) {
     load(){this.loadCalls++;}
   }
   replace('document',document);replace('Audio',Media);
+  if(options.savedVolume!==undefined)stored.set('space:cafe:music-volume:v1',String(options.savedVolume));
+  replace('localStorage',{getItem:key=>stored.get(key)??null,setItem(key,value){stored.set(key,value);storageWrites.push({key,value});}});
   if(options.independentAmbience){
     replace('navigator',{userActivation:{hasBeenActive:!options.blocked,isActive:!options.blocked}});
     class Buffer {
@@ -68,7 +70,7 @@ function fixture(options={}) {
   }
   replace('MutationObserver',class {constructor(callback){this.callback=callback;this.active=true;observers.push(this);}observe(){}disconnect(){this.active=false;}});
   const controller=mountRoomAudio({root,assets:{music:'/music.mp3',ambience:'/rain.ogg'},zh:true,defaultEnabled:true,embedded:true,onStateChange:state=>states.push(state),...options});
-  return {root,utilities,footer,tracks,states,controller,contexts,requests,
+  return {root,utilities,footer,tracks,states,controller,contexts,requests,stored,storageWrites,
     lane(volume){return contexts.flatMap(context=>context.sources).filter(source=>source.gain.gain.nominal===volume);},
     advance(seconds){for(const context of contexts){context.currentTime+=seconds;for(const source of context.sources)if(source.active&&source.stopAt<=context.currentTime)source.finish();}},
     unlock(){globalThis.navigator.userActivation.hasBeenActive=true;globalThis.navigator.userActivation.isActive=true;},
@@ -556,5 +558,87 @@ test('independent playback retains its default pause-on-hidden-tab policy withou
     await settle();f.advance(5);f.hide(true);f.advance(7);await settle();
     assert.equal(f.controller.state.playing,false);assert.equal(f.controller.state.ambientPlaying,false);assert.equal(f.controller.state.musicTime,5);assert.equal(f.controller.state.ambientTime,5);
     assert.equal(f.contexts[0].sources.filter(source=>source.active).length,0);
+  }finally{f.restore();}
+});
+
+test('moving outside smooths the two real gains independently without replacing sources or resetting their clocks',async()=>{
+  const f=fixture({independentAmbience:true,backgroundPlayback:true});try{
+    await settle();f.advance(2);const [music,rain]=f.contexts[0].sources;
+    const state=f.controller.setPerspective({music:.64,rain:1});
+    assert.deepEqual(state.perspective,{music:.64,rain:1});assert.ok(Object.isFrozen(state));assert.ok(Object.isFrozen(state.perspective));
+    f.advance(.275);assert.ok(Math.abs(music.gain.gain.value-.492)<1e-8,'music reaches half of its 550ms approach fade');
+    f.advance(.275);assert.ok(Math.abs(music.gain.gain.value-.384)<1e-8);
+    f.controller.setPerspective({music:.12,rain:.34});
+    f.advance(.325);assert.ok(Math.abs(rain.gain.gain.value-1.005)<1e-8,'rain reaches half of its 650ms immersion fade');
+    f.advance(.325);assert.ok(Math.abs(music.gain.gain.value-.072)<1e-8);assert.ok(Math.abs(rain.gain.gain.value-.51)<1e-8);
+    f.hide(true);f.advance(4);f.hide(false);await settle();
+    assert.deepEqual(f.contexts[0].sources,[music,rain]);assert.equal(music.active,true);assert.equal(rain.active,true);
+    assert.ok(Math.abs(f.controller.state.musicTime-7.2)<1e-8);assert.ok(Math.abs(f.controller.state.ambientTime-7.2)<1e-8);
+    assert.equal(f.controller.state.wanted,true);assert.equal(f.controller.state.ambientWanted,true);assert.equal(f.controller.state.volume,.6);
+    assert.deepEqual(f.storageWrites,[],'a camera move never rewrites the listener’s chosen volume');
+  }finally{f.restore();}
+});
+
+test('weather and the speaker slider keep their own values under a temporary perspective and return restores their actual gains',async()=>{
+  const f=fixture({independentAmbience:true,savedVolume:.43});try{
+    await settle();f.advance(2);const [music,rain]=f.contexts[0].sources;
+    f.controller.setPerspective({music:.12,rain:.34});f.advance(.65);
+    f.controller.setRainLevel(.4);f.controller.setVolume(.8);f.advance(.6);
+    assert.ok(Math.abs(music.gain.gain.value-.096)<1e-8);assert.ok(Math.abs(rain.gain.gain.value-.204)<1e-8);
+    assert.deepEqual(f.controller.state.perspective,{music:.12,rain:.34});assert.equal(f.controller.state.volume,.8);
+    assert.equal(f.stored.get('space:cafe:music-volume:v1'),'0.8');assert.equal(f.storageWrites.length,1);
+    const before=f.controller.state;f.controller.setPerspective();f.advance(.65);
+    assert.ok(Math.abs(music.gain.gain.value-.8)<1e-8);assert.ok(Math.abs(rain.gain.gain.value-.6)<1e-8);
+    assert.deepEqual(f.controller.state.perspective,{music:1,rain:1});assert.deepEqual(before.perspective,{music:.12,rain:.34},'older frozen snapshots remain stable');
+    assert.deepEqual(f.contexts[0].sources,[music,rain]);assert.equal(f.storageWrites.length,1);
+  }finally{f.restore();}
+});
+
+test('invalid perspectives are atomic and cannot pollute gains, state or saved volume',async()=>{
+  const f=fixture({independentAmbience:true});try{
+    await settle();f.advance(1);f.controller.setPerspective({music:.64,rain:.7});f.advance(1);
+    const before=f.controller.state,params=f.contexts[0].sources.map(source=>source.gain.gain),calls=params.map(param=>param.calls.length);
+    const getter={music:.5,get rain(){throw Error('must not run');}};
+    const invalid=[null,[],.5,'quiet',new Date(),Object.create({music:.4}),{music:NaN,rain:.2},{music:.5,rain:Infinity},{music:.5,rain:'0.4'},{music:false,rain:.5},getter,new Proxy({},{getPrototypeOf(){throw Error('unavailable');}})];
+    for(const value of invalid){const state=f.controller.setPerspective(value);assert.deepEqual(state.perspective,before.perspective);}
+    assert.deepEqual(params.map(param=>param.calls.length),calls);assert.deepEqual(f.storageWrites,[]);
+    f.advance(1);assert.ok(Math.abs(params[0].value-.384)<1e-8);assert.ok(Math.abs(params[1].value-1.05)<1e-8);
+  }finally{f.restore();}
+});
+
+test('plain perspective values clamp and round while omitted lanes recover their default multiplier',async()=>{
+  const f=fixture({independentAmbience:true});try{
+    await settle();f.advance(1);
+    assert.deepEqual(f.controller.setPerspective({music:-.1,rain:1.7}).perspective,{music:0,rain:1});
+    assert.deepEqual(f.controller.setPerspective(Object.assign(Object.create(null),{music:.12349,rain:.45671})).perspective,{music:.123,rain:.457});
+    assert.deepEqual(f.controller.setPerspective({music:.64}).perspective,{music:.64,rain:1});
+    assert.deepEqual(f.controller.setPerspective({music:undefined,rain:undefined}).perspective,{music:1,rain:1});
+  }finally{f.restore();}
+});
+
+test('late decoding and a newly selected record inherit the current perspective without restarting the rain',async()=>{
+  const decodeGate=deferred(),f=fixture({independentAmbience:true,tracks:recordTracks,decodeGate});try{
+    await settle();assert.equal(f.contexts[0].sources.length,0);
+    f.controller.setPerspective({music:.12,rain:.34});f.controller.setVolume(.8);f.controller.setRainLevel(.4);
+    decodeGate.resolve();await settle();f.advance(.1);
+    const [music,rain]=f.contexts[0].sources;assert.ok(Math.abs(music.gain.gain.value-.096)<1e-8);assert.ok(Math.abs(rain.gain.gain.value-.204)<1e-8);
+    f.advance(3);f.controller.selectTrack('piano');await settle();f.advance(.1);
+    const next=f.contexts[0].sources.at(-1);assert.notEqual(next,music);assert.equal(next.active,true);assert.ok(Math.abs(next.gain.gain.value-.096)<1e-8);
+    assert.equal(rain.active,true);assert.equal(f.contexts[0].sources.filter(source=>source===rain).length,1);
+    assert.ok(Math.abs(f.controller.state.ambientTime-3.2)<1e-8);assert.deepEqual(f.controller.state.perspective,{music:.12,rain:.34});
+  }finally{f.restore();}
+});
+
+test('returning indoors cannot unmute the speaker or override quiet mode and zero user volume',async()=>{
+  const f=fixture({independentAmbience:true});try{
+    await settle();f.advance(1);f.controller.toggle();f.controller.setVolume(0);f.controller.setQuiet(true);f.advance(.1);
+    const sources=[...f.contexts[0].sources],before=f.controller.state;
+    f.controller.setPerspective({music:.12,rain:.34});f.controller.setPerspective();await settle();f.advance(1);
+    assert.equal(f.controller.state.wanted,false);assert.equal(f.controller.state.quiet,true);assert.equal(f.controller.state.volume,0);
+    assert.equal(f.controller.state.playing,false);assert.equal(f.controller.state.ambientPlaying,false);assert.deepEqual(f.contexts[0].sources,sources);
+    assert.equal(f.controller.state.musicTime,before.musicTime);assert.equal(f.controller.state.ambientTime,before.ambientTime);
+    f.controller.setQuiet(false);await settle();f.advance(1);
+    assert.equal(f.controller.state.playing,false);assert.equal(f.controller.state.wanted,false);assert.equal(f.controller.state.ambientPlaying,true);
+    f.controller.toggle();await settle();f.advance(.1);assert.equal(f.contexts[0].sources.at(-1).gain.gain.value,0);
   }finally{f.restore();}
 });

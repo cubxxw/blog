@@ -4,6 +4,12 @@ import {readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 
 test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+async function captureReview(page:Page,name:string){
+  const path=test.info().outputPath(`${name}.png`);
+  await page.locator('[data-bear-workspace]').screenshot({path,animations:'disabled'});
+  await test.info().attach(name,{path,contentType:'image/png'});
+}
+
 type Photo={id:string;image:string;thumb:string;title:string;place:string;region:string};
 const win=(page:Page,app='photos')=>page.locator(`[data-space-window="${app}"]`);
 const frames=(page:Page)=>page.evaluate(()=>new Promise<void>(done=>requestAnimationFrame(()=>requestAnimationFrame(()=>done()))));
@@ -37,7 +43,7 @@ const image=(page:Page)=>preview(page).locator('[data-media-image]');
 function originalPhoto(photo:Photo){const path=new URL(photo.image,'http://local.test').pathname;expect(path.startsWith('/images/about/journey/')).toBe(true);return readFileSync(resolve('static','.'+path));}
 async function galleryTypography(page:Page,photo:Photo){
   const photos=win(page),card=photos.locator(`[data-photo-select="${photo.id}"]`);await expect(card.locator('strong')).toHaveText(photo.title);await expect(card.locator('.sp-photo-card__place')).toHaveText(photo.place);
-  await visibleText(card.locator('strong'),16);await visibleText(card.locator('.sp-photo-card__place'),12);await visibleText(photos.locator('.sp-media-kicker'),12);await hit(photos.locator('[data-photo-filter="all"]'));await visibleText(photos.locator('[data-photo-filter="all"]'),14);
+  await visibleText(card.locator('strong'),16);await visibleText(card.locator('.sp-photo-card__place'),12);await visibleText(photos.locator('.sp-media-kicker'),(page.viewportSize()?.width||0)<=640?11:12);await hit(photos.locator('[data-photo-filter="all"]'));await visibleText(photos.locator('[data-photo-filter="all"]'),14);
   await expect(photos.locator('.sp-photo-card [role="status"]')).toHaveCount(0);
   await visibleText(photos.locator('.sp-media-source p'),14);await hit(photos.locator('[data-media-load]'));await visibleText(photos.locator('.sp-media-footer'),12);
   expect(await photos.locator('[data-window-body]').evaluate(el=>el.scrollWidth<=el.clientWidth+1)).toBe(true);
@@ -59,7 +65,7 @@ for(const view of [{width:1440,height:900,lang:'zh',theme:'light',owned:true},{w
       release();await expect(preview(page)).toHaveAttribute('data-image-state','ready');await expect(retry(page)).toBeHidden();expect(await image(page).evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);expect(await image(page).evaluate(el=>getComputedStyle(el).objectFit)).toBe('contain');await expect(image(page)).toHaveAttribute('alt',photo.place||photo.title);
       if(view.owned)await expect(image(page)).toBeFocused();else expect(await page.evaluate(old=>document.activeElement===old,away!)).toBe(true);
       await expect(win(page).locator('figcaption strong')).toHaveText(photo.title);await visibleText(win(page).locator('figcaption strong'),16);await visibleText(win(page).locator('figcaption p'),12);
-      for(const control of await win(page).locator('.sp-photo-detail__nav button,figcaption button,.sp-media-link').all()){await hit(control);await visibleText(control,14);}expect(requests).toHaveLength(2);
+      for(const control of await win(page).locator('.sp-photo-detail__nav button,figcaption button,.sp-media-link:visible').all()){await hit(control);await visibleText(control,14);}expect(requests).toHaveLength(2);
     }finally{release();await page.unrouteAll({behavior:'wait'});}
   });
 });
@@ -96,10 +102,59 @@ test.describe('phone native photo navigation',()=>{
   });
 });
 
+test.describe('short phone photograph layout',()=>{
+  test.use({viewport:{width:390,height:568},isMobile:true,hasTouch:true});
+  test('all region choices fit the window and the complete photo, caption and navigation remain reachable',async({page})=>{
+    const catalog=await setup(page,'en','light');await openApp(page,'photos');
+    const filters=win(page).locator('[data-photo-filter]');expect(await filters.count()).toBe(4);
+    const body=win(page).locator('[data-window-body]');
+    const firstGrid=(await win(page).locator('.sp-photo-grid').boundingBox())!,bodyBox=(await body.boundingBox())!;
+    expect(bodyBox.y+bodyBox.height-firstGrid.y).toBeGreaterThanOrEqual(150);
+    expect(await win(page).locator('.sp-media-kicker').evaluate(el=>el.getBoundingClientRect().height/parseFloat(getComputedStyle(el).lineHeight))).toBeLessThanOrEqual(1.1);
+    for(const filter of await filters.all()){
+      const box=await hit(filter),bounds=(await body.boundingBox())!;
+      expect(box.x).toBeGreaterThanOrEqual(bounds.x);expect(box.x+box.width).toBeLessThanOrEqual(bounds.x+bounds.width+1);
+    }
+    await captureReview(page,'photo-gallery-short');await filters.last().click();await expect(win(page).locator('[data-photo-filter]').last()).toHaveAttribute('aria-pressed','true');
+    await win(page).locator('[data-photo-filter="all"]').click();await win(page).locator(`[data-photo-select="${catalog.photos[0].id}"]`).click();
+    await expect.poll(()=>body.evaluate(el=>el.scrollTop)).toBe(0);
+    await expect(win(page).locator('.sp-media-header')).toBeHidden();
+    const navigation=(await win(page).locator('.sp-photo-detail__nav').boundingBox())!,detailBounds=(await body.boundingBox())!;expect(navigation.y).toBeGreaterThanOrEqual(detailBounds.y);
+    await expect(preview(page)).toHaveAttribute('data-image-state','ready');expect(await image(page).evaluate(el=>getComputedStyle(el).objectFit)).toBe('contain');
+    await expect.poll(()=>image(page).evaluate(el=>el.getBoundingClientRect().height)).toBeGreaterThanOrEqual(180);
+    await win(page).locator('figcaption').scrollIntoViewIfNeeded();await expect(win(page).locator('figcaption strong')).toBeVisible();
+    for(const control of await win(page).locator('.sp-photo-detail__nav button,figcaption button').all())await hit(control);
+    for(const control of await win(page).locator('.sp-photo-detail__nav button').all())expect((await control.boundingBox())!.height).toBe(44);
+    expect(await body.evaluate(el=>el.scrollWidth<=el.clientWidth+1)).toBe(true);
+    await expect(win(page).locator('.sp-media-hint')).toBeHidden();await expect(win(page).locator('.sp-media-hint__keyboard')).toBeHidden();await body.evaluate(el=>{el.scrollTop=0;});await captureReview(page,'photo-detail-short');
+  });
+  test('opening a scrolled gallery photo resets detail and returning restores the same gallery position',async({page})=>{
+    const catalog=await setup(page,'zh','light');await openApp(page,'photos');
+    const body=win(page).locator('[data-window-body]'),last=win(page).locator('[data-photo-select]').last();await last.scrollIntoViewIfNeeded();
+    const selected=await last.getAttribute('data-photo-select'),savedTop=await body.evaluate(el=>el.scrollTop);expect(savedTop).toBeGreaterThan(0);await last.click();
+    await expect(preview(page)).toHaveAttribute('data-image-state','ready');await expect.poll(()=>body.evaluate(el=>el.scrollTop)).toBe(0);
+    await win(page).locator('[data-photo-next]').click();await expect.poll(()=>body.evaluate(el=>el.scrollTop)).toBe(0);
+    await win(page).locator('[data-photo-back]').click();await expect(win(page).locator('[data-photo-filter="all"]')).toHaveAttribute('aria-pressed','true');
+    await expect.poll(()=>body.evaluate(el=>el.scrollTop)).toBe(savedTop);
+    await expect(win(page).locator(`[data-photo-select="${selected}"]`)).toHaveCount(1);expect(catalog.photos.length).toBeGreaterThan(1);
+  });
+  test('selected map region is visible before scrolling and its controls leave the geography uncovered',async({page})=>{
+    await setup(page,'zh','light');await openApp(page,'map');const map=win(page,'map'),body=map.locator('[data-window-body]');
+    await map.locator('[data-place-select="japan"]').click();const current=map.locator('[data-place-current="japan"]');await expect(current).toBeVisible();
+    await captureReview(page,'map-selected-short');const selected=(await current.locator('strong').boundingBox())!,bounds=(await body.boundingBox())!;expect(selected.y).toBeGreaterThanOrEqual(bounds.y);expect(selected.y+selected.height).toBeLessThanOrEqual(bounds.y+bounds.height);
+    const viewport=map.locator('[data-map-viewport]');await viewport.scrollIntoViewIfNeeded();const geography=(await viewport.boundingBox())!,toolbar=(await map.locator('.sp-map-controls').boundingBox())!;expect(toolbar.y).toBeGreaterThanOrEqual(geography.y+geography.height-1);
+    for(const control of await map.locator('.sp-map-controls button').all()){await hit(control);expect((await control.boundingBox())!.height).toBe(44);await expect(control).toHaveCSS('font-size','14px');}
+    const original=await map.locator('[data-media-map]').getAttribute('viewBox');await map.locator('[data-map-zoom="in"]').click();expect(await map.locator('[data-media-map]').getAttribute('viewBox')).not.toBe(original);
+    await viewport.focus();await viewport.press('ArrowRight');await map.locator('[data-map-reset]').click();await expect(map.locator('[data-media-map]')).toHaveAttribute('viewBox','0 0 720 360');
+    await current.locator('[data-place-story]').click();await expect(map.locator('.sp-place-detail h3')).toBeFocused();await expect(map.locator('.sp-place-detail__intro')).toContainText('日本');
+    await hit(map.locator('.sp-place-photos button').first());expect(await body.evaluate(el=>el.scrollWidth<=el.clientWidth+1)).toBe(true);
+  });
+});
+
 test('the classic fallback keeps 14px actions and 44px targets; shared map reading and original zoom still work',async({page})=>{
   await page.setViewportSize({width:1440,height:900});await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','zen');const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]){if(type==='webgl'||type==='webgl2'||type==='experimental-webgl')return null;return Reflect.apply(original,this,[type,...args]);} as typeof original;});
   const catalog=await setup(page,'zh','light');await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-failed','true');await expect(page.locator('.space-spatial-screen')).toHaveCount(0);
-  await openApp(page,'photos');await galleryTypography(page,catalog.photos[0]);await win(page).locator(`[data-photo-select="${catalog.photos[0].id}"]`).click();await expect(preview(page)).toHaveAttribute('data-image-state','ready');for(const control of await win(page).locator('.sp-photo-detail__nav button,figcaption button,.sp-media-link').all()){await hit(control);await visibleText(control,14);}
+  await openApp(page,'photos');await galleryTypography(page,catalog.photos[0]);await win(page).locator(`[data-photo-select="${catalog.photos[0].id}"]`).click();await expect(preview(page)).toHaveAttribute('data-image-state','ready');for(const control of await win(page).locator('.sp-photo-detail__nav button,figcaption button,.sp-media-link:visible').all()){await hit(control);await visibleText(control,14);}
   await win(page).locator('.sp-media-link').click();const map=win(page,'map');await expect(map).toBeVisible();await visibleText(map.locator('.sp-media-header .sp-media-kicker'),12);await hit(map.locator('.sp-media-link'));await visibleText(map.locator('.sp-media-link'),14);await visibleText(map.locator('.sp-media-footer'),12);
   const viewport=map.locator('[data-map-viewport] svg'),before=await viewport.getAttribute('viewBox');await map.locator('[data-map-zoom="in"]').click();expect(await viewport.getAttribute('viewBox')).not.toBe(before);expect(await map.locator('[data-window-body]').evaluate(el=>el.scrollWidth<=el.clientWidth+1)).toBe(true);
 });

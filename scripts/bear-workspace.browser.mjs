@@ -292,10 +292,14 @@ try {
     await check('notes saved to the sandbox remain separate from later browser edits',async()=>{
       await page.locator('[data-space-dock] [data-open="notes"]').click();
       await page.locator('[data-note-editor]').fill('SANDBOX_NOTE_OK');
+      await page.locator('.space-note-advanced > summary').click();
+      await page.locator('[data-note-sandbox]').waitFor({state:'visible'});
+      await page.waitForFunction(()=>!document.querySelector('[data-note-sandbox]')?.disabled);
       await page.locator('[data-note-sandbox]').click();
-      await page.waitForFunction(()=>document.querySelector('[data-note-save]')?.textContent.includes('/workspace/note.md'),{},{timeout:25000});
+      await page.waitForFunction(()=>document.querySelector('[data-note-runtime]')?.textContent.includes('副本已保存'),{},{timeout:25000});
       await page.locator('[data-note-editor]').fill('ONLY_IN_BROWSER');
-      assert.ok(!(await page.locator('[data-note-save]').innerText()).includes('/workspace/note.md'));
+      assert.ok((await page.locator('[data-note-runtime]').innerText()).includes('未同步'));
+      assert.ok(!(await page.locator('[data-note-save]').innerText()).includes('沙盒'));
     });
     await check('browser terminal executes inside the real connected sandbox',async()=>{
       await page.setViewportSize({width:1280,height:850});

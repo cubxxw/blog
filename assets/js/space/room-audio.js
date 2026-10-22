@@ -17,14 +17,15 @@ function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded
   if(!embedded){root.querySelector('.space-cafe__utilities')?.prepend(sound);root.querySelector('.space-cafe__footer')?.append(credits);}
   const volumeKey='space:cafe:music-volume:v1';let volume=.6;
   try{const saved=localStorage.getItem(volumeKey),value=Number(saved);if(saved!==null&&saved.trim()!==''&&Number.isFinite(value)&&value>=0&&value<=1)volume=value;}catch{}
-  const musicLoop=track=>engine.createLoop({src:track.src,volume,crossfade:2,trimSilence:true,fadeSeconds:.06});
+  let perspective=Object.freeze({music:1,rain:1});
+  const musicLoop=track=>engine.createLoop({src:track.src,volume:volume*perspective.music,crossfade:2,trimSilence:true,fadeSeconds:.06});
   const music={audio:musicLoop(selected),wanted:Boolean(defaultEnabled),failure:null,attempt:null,generation:0};
   const rain={audio:engine.createLoop({src:assets.ambience,volume:1.5,crossfade:8}),wanted:true,failure:null,attempt:null,generation:0};
   const lanes=[music,rain];let quiet=Boolean(initialQuiet),disposed=false,lastState='',rainLevel=1;
   const available=()=>!quiet&&!disposed&&(backgroundPlayback||!document.hidden)&&!root.hidden;
   const canPlay=lane=>lane.wanted&&available();
   const status=lane=>disposed?'disposed':!canPlay(lane)?'paused':!lane.audio.paused?'playing':lane.failure||'wanted';
-  function snapshot(){return Object.freeze({wanted:music.wanted,playing:status(music)==='playing',status:status(music),trackId:selected.id,volume,quiet,ambientWanted:rain.wanted,ambientPlaying:status(rain)==='playing',ambientStatus:status(rain),musicTime:music.audio.currentTime,ambientTime:rain.audio.currentTime});}
+  function snapshot(){return Object.freeze({wanted:music.wanted,playing:status(music)==='playing',status:status(music),trackId:selected.id,volume,perspective,quiet,ambientWanted:rain.wanted,ambientPlaying:status(rain)==='playing',ambientStatus:status(rain),musicTime:music.audio.currentTime,ambientTime:rain.audio.currentTime});}
   function sync(){
     const state=snapshot();
     if(!disposed){root.dataset.roomSound=state.status;root.dataset.roomSoundWanted=String(music.wanted);root.dataset.roomTrack=selected.id;root.dataset.roomVolume=String(volume);root.dataset.roomAmbient=state.ambientStatus;root.dataset.roomAmbientWanted=String(rain.wanted);}
@@ -76,8 +77,33 @@ function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded
     if(disposed||!Number.isFinite(value))return snapshot();
     const next=Math.round(Math.max(0,Math.min(1,value))*1000)/1000;
     if(next===volume)return snapshot();
-    volume=next;music.audio.setVolume(volume,.08);
+    volume=next;music.audio.setVolume(volume*perspective.music,.08);
     try{localStorage.setItem(volumeKey,String(volume));}catch{}
+    sync();return snapshot();
+  }
+  function setPerspective(value={}){
+    if(disposed)return snapshot();
+    // A bad lane must never partially alter the other one. Read data properties
+    // only: perspective is a small value object, not an executable options bag.
+    let descriptors;
+    try{
+      if(value===null||typeof value!=='object')return snapshot();
+      const prototype=Object.getPrototypeOf(value);
+      if(prototype!==Object.prototype&&prototype!==null)return snapshot();
+      descriptors=Object.getOwnPropertyDescriptors(value);
+    }catch{return snapshot();}
+    const next={};
+    for(const lane of ['music','rain']){
+      const property=descriptors[lane];
+      if(property&&!Object.hasOwn(property,'value'))return snapshot();
+      const level=property?.value===undefined?1:property.value;
+      if(!Number.isFinite(level))return snapshot();
+      next[lane]=Math.round(Math.max(0,Math.min(1,level))*1000)/1000;
+    }
+    if(next.music===perspective.music&&next.rain===perspective.rain)return snapshot();
+    perspective=Object.freeze(next);
+    music.audio.setVolume(volume*perspective.music,.55);
+    rain.audio.setVolume(1.5*rainLevel*perspective.rain,.65);
     sync();return snapshot();
   }
   function gesture(event){
@@ -91,11 +117,11 @@ function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded
   document.addEventListener('visibilitychange',visibility,{signal:abort.signal});
   const observer=new MutationObserver(visibility);observer.observe(root,{attributes:true,attributeFilter:['hidden']});
   sync();queueMicrotask(()=>{if(!disposed)visibility();});
-  return {toggle,selectTrack,setVolume,tracks,snapshot,credits,get state(){return snapshot();},
+  return {toggle,selectTrack,setVolume,setPerspective,tracks,snapshot,credits,get state(){return snapshot();},
     setRainLevel(value){
       if(disposed||!Number.isFinite(value))return;
       const next=Math.round(Math.max(0,Math.min(1,value))*1000)/1000;if(next===rainLevel)return;
-      rainLevel=next;rain.audio.setVolume(1.5*next,.6);
+      rainLevel=next;rain.audio.setVolume(1.5*next*perspective.rain,.6);
       const wanted=next>.001;if(rain.wanted!==wanted){rain.wanted=wanted;visibility();}
     },
     setQuiet(value){if(disposed)return;quiet=Boolean(value);visibility();},

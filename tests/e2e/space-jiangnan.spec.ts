@@ -55,7 +55,8 @@ test('the physical Mac opens the same real desktop and returning retains the edi
 
 test('the close wooden working chair opens the same physical Mac and retreats naturally',async({page})=>{
   await ready(page);const chair=await lookAtRoomObject(page,'seat'),before=await pose(page);await page.mouse.click(chair.x,chair.y);
-  await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(root(page)).toHaveAttribute('data-computer-view','framed');
+  await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(root(page)).toHaveAttribute('data-computer-view','expanded');
+  await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expect(root(page)).toHaveAttribute('data-computer-view','framed');
   const seated=await pose(page);expect(seated.x).toBeCloseTo(.8,3);expect(seated.z).toBeGreaterThan(-1.10);expect(seated.z).toBeLessThan(-.90);
   await page.mouse.click(12,12);await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await pose(page)).toEqual(before);
 });

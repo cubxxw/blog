@@ -56,11 +56,45 @@ function createDOMArticleParser() {
   };
 }
 
+// A model may mention a URL, but only the current public catalog grants the
+// reader action. Return canonical catalog paths, never model-supplied payloads.
+export function planArticleActions(value, catalog, origin) {
+  const site = new URL(origin).origin;
+  const articlePath = value => {
+    const href = safeURL(value, origin);
+    if (!href) return null;
+    const parsed = new URL(href);
+    return parsed.origin === site ? parsed.pathname : null;
+  };
+  const known = new Map();
+  for (const article of Array.isArray(catalog?.articles) ? catalog.articles : []) {
+    if (!article || typeof article.url !== 'string' || typeof article.title !== 'string') continue;
+    const path = articlePath(article.url), title = article.title.trim().slice(0, 200);
+    if (path && title && !known.has(path)) known.set(path, { url: path, title, date: String(article.date || '').slice(0, 20) });
+  }
+  const references = new Set();
+  const text = String(value ?? '');
+  for (const segment of planAnswerSegments(text, origin)) {
+    if (segment.href) references.add(articlePath(segment.href));
+  }
+  // Bare paths are a common agent answer format. Require a token boundary so
+  // an external URL's path or a JavaScript string never becomes a local action.
+  const pattern = /(?:^|[\s([`：，、])((?:https?:\/\/|\/(?!\/))[^\s<>"'`\\，。；！？、]+)/g;
+  for (const match of text.matchAll(pattern)) {
+    references.add(articlePath(match[1].replace(/[\])},.;!?，。；！？]+$/u, '')));
+  }
+  return [...references].filter(path => known.has(path)).slice(0, 6).map(path => known.get(path));
+}
+
 export function mountAgent({ host, catalog, execute, getState, notify, getContext } = {}) {
   if (!host || typeof host.querySelector !== 'function') throw new TypeError('mountAgent needs a host element');
   const zh = catalog?.language === 'zh';
   const t = (cn, en) => (zh ? cn : en);
   const origin = typeof location !== 'undefined' ? location.origin : 'https://cubxxw.com';
+  const touchComposer = typeof matchMedia === 'function' ? matchMedia('(max-width: 640px), (pointer: coarse)') : null;
+  const idleHint = () => touchComposer?.matches
+    ? t('点击 ↑ 发送 · 回车换行', 'Tap ↑ to send · Return for a new line')
+    : t('⌘ / Ctrl J 唤起 · Enter 发送 · Shift Enter 换行', '⌘ / Ctrl J to open · Enter to send · Shift Enter for a new line');
   const publicContext = buildPublicContext(catalog);
   const sessions = createSessionStore({ storage: (() => { try { return typeof localStorage !== 'undefined' ? localStorage : null; } catch { return null; } })() });
   let session = sessions.active(), draftTimer, draftDirty=false, draftRevision=session.draftRevision;
@@ -98,7 +132,13 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
       <div class="bear-agent__body">
         <div class="bear-agent__log" data-chat-log role="log" aria-label="${t('任务记录', 'Task log')}"></div>
         <div class="bear-agent__composer">
-          <button type="button" class="bear-agent__context" data-agent-context hidden></button>
+          <div class="bear-agent__context-bar" data-agent-context-bar hidden>
+            <details class="bear-agent__context-source" data-agent-context-details>
+              <summary data-agent-context-toggle><span><strong data-agent-context-title></strong><small data-agent-context-preview></small></span></summary>
+              <div class="bear-agent__context-body"><p data-agent-context-reference></p><blockquote data-agent-context-quote hidden></blockquote></div>
+            </details>
+            <button type="button" class="bear-agent__context" data-agent-context hidden aria-label="${t('移除引用来源', 'Remove quoted source')}"><span class="space-sr-only" data-agent-context-label></span><span aria-hidden="true">×</span></button>
+          </div>
           <form>
             <textarea data-agent-input rows="2" maxlength="4000" aria-label="${t('给空间助手的任务', 'Task for the space companion')}" placeholder="${t('说说你的想法…', 'What’s on your mind?')}"></textarea>
             <div class="bear-agent__controls">
@@ -107,7 +147,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
               <button type="button" class="bear-agent__stop" data-agent-stop hidden>${t('停止', 'Stop')}</button>
             </div>
           </form>
-          <p class="bear-agent__status" data-agent-status role="status" aria-live="polite">${t('⌘ / Ctrl J 唤起 · Enter 发送','⌘ / Ctrl J to open · Enter to send')}</p>
+          <p class="bear-agent__status" data-agent-status role="status" aria-live="polite">${idleHint()}</p>
         </div>
       </div>
       <section class="bear-agent__sessions" data-agent-sessions hidden aria-label="${t('会话历史','Conversation history')}">
@@ -127,6 +167,9 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   const stop = host.querySelector('[data-agent-stop]');
   const status = host.querySelector('[data-agent-status]');
   const contextButton = host.querySelector('[data-agent-context]');
+  const contextBar = host.querySelector('[data-agent-context-bar]'), contextDetails = host.querySelector('[data-agent-context-details]');
+  const contextTitle = host.querySelector('[data-agent-context-title]'), contextPreview = host.querySelector('[data-agent-context-preview]');
+  const contextReference = host.querySelector('[data-agent-context-reference]'), contextQuote = host.querySelector('[data-agent-context-quote]');
   const historyPanel=host.querySelector('[data-agent-sessions]'),historyButton=host.querySelector('[data-agent-history]');
   const sessionList=host.querySelector('[data-agent-session-list]'),sessionSearch=host.querySelector('[data-agent-session-search]');
   const sessionTitle=host.querySelector('[data-agent-session-title]'),sessionSave=host.querySelector('[data-agent-session-save]');
@@ -153,7 +196,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   function drawSession(){
     session=sessions.active();sessionTitle.textContent=nameOf(session);log.replaceChildren();
     for(const record of session.tasks)renderRecord(record,{restored:true});
-    input.value=session.draft;draftRevision=session.draftRevision;draftDirty=false;if(session.tasks.length||session.draft)expand();drawSave();
+    input.value=session.draft;draftRevision=session.draftRevision;draftDirty=false;if(session.tasks.length||session.draft)expand();drawStart();drawSave();
   }
   function newSession(){if(busy)return;saveDraft();session=sessions.create();focus=null;selectedText='';drawContext();drawSession();closeHistory();setStatus(t('已开始新对话。之前的记录保留在历史里。','New conversation. Earlier conversations remain in history.'));}
   historyButton.addEventListener('click',()=>historyPanel.hidden?showHistory():closeHistory());
@@ -166,28 +209,43 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   host.querySelector('[data-agent-session-export]').addEventListener('click',()=>{
     saveDraft();const url=URL.createObjectURL(new Blob([sessions.export()],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='space-conversations.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   });
-  input.addEventListener('input',()=>{draftDirty=true;clearTimeout(draftTimer);draftTimer=setTimeout(saveDraft,250);});
+  input.addEventListener('input',()=>{draftDirty=true;clearTimeout(draftTimer);draftTimer=setTimeout(saveDraft,250);updateStartHint();});
   const flushDraft=()=>{if(!disposed)saveDraft();};window.addEventListener('pagehide',flushDraft);
-  const drawContext = () => { contextButton.hidden = !focus; contextButton.textContent = focus ? `${selectedText ? t('选中文字','Selected passage') : t('结合当前内容','With context')} · ${focus.title} ×` : ''; };
+  const drawContext = () => {
+    contextBar.hidden = contextButton.hidden = !focus;
+    const title = focus ? `${selectedText ? t('选中文字','Selected passage') : t('引用来源','Source')} · ${String(focus.title || '').slice(0,200)}` : '';
+    contextTitle.textContent = title;
+    host.querySelector('[data-agent-context-label]').textContent = title;
+    contextPreview.textContent = selectedText ? String(selectedText).replace(/\s+/g,' ').slice(0,88) : t('展开查看来源', 'Expand to view source');
+    contextReference.textContent = focus ? String(focus.reference || '').slice(0,600) : '';
+    contextQuote.textContent = focus ? String(selectedText || '').slice(0,1200) : '';
+    contextQuote.hidden = !focus || !selectedText;
+    if (!focus) contextDetails.open = false;
+    updateStartHint();
+  };
   drawContext();
   contextButton.addEventListener('click',()=>{focus=null;selectedText='';drawContext();input.focus();});
+  contextDetails.addEventListener('keydown',event=>{if(event.key==='Escape'&&contextDetails.open){event.preventDefault();event.stopPropagation();contextDetails.open=false;contextDetails.querySelector('summary').focus({preventScroll:true});}});
   const prefill = event => {
     if (disposed) return;
     if (!event.detail?.question && input.value.trim()) { input.focus({preventScroll:true});return; }
     selectedText = event.detail?.selection || '';
     focus = event.detail?.focus || null; drawContext();
     if (event.detail?.question) {input.value = event.detail.question.slice(0,4000);draftDirty=true;}
-    saveDraft();
+    saveDraft();updateStartHint();
     input.focus({preventScroll:true});
   };
   workspace?.addEventListener('bear:agent-prefill',prefill);
 
-  const setStatus = (text) => { status.textContent = text; };
+  let showingIdleHint = true;
+  const updateIdleHint = () => { if (showingIdleHint) status.textContent = idleHint(); };
+  touchComposer?.addEventListener('change', updateIdleHint);
+  const setStatus = (text) => { showingIdleHint = false; status.textContent = text; };
   const setBusy = (value) => {
     busy = value;
     send.disabled = value;
     stop.hidden = !value;
-    host.querySelectorAll('[data-agent-new],[data-agent-session-new],[data-agent-session]').forEach(button=>{button.disabled=value;});
+    host.querySelectorAll('[data-agent-new],[data-agent-session-new],[data-agent-session],[data-agent-prompt]').forEach(button=>{button.disabled=value;});
   };
 
   // ── Rendering helpers (textContent / safe links only) ──────────────────────
@@ -197,6 +255,43 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     if (className) node.className = className;
     if (text !== undefined) node.textContent = text;
     return node;
+  }
+
+  function updateStartHint() {
+    const hint = log.querySelector('[data-agent-start-hint]');
+    if (!hint) return;
+    const missingPassage = !focus && /^(解释下面选中的段落。|Explain this selected passage\.)$/.test(input.value.trim());
+    hint.textContent = focus
+      ? t('引用已放在下方。可以先展开确认，再写下想了解的部分。', 'Your source is attached below. Check it, then ask what you would like to understand.')
+      : missingPassage ? t('这份草稿没有附带原文。请回文章重新选段，或直接写下问题。', 'This draft has no attached passage. Select it again in the article, or type your question.')
+      : t('可以从一篇文章开始，也可以直接写下你的问题。', 'Start with an article, or write down a question.');
+  }
+
+  function drawStart() {
+    root.dataset.empty = String(!session.tasks.length);
+    if (session.tasks.length) return;
+    const start = el('div','bear-agent__start');start.dataset.agentStart='';
+    const hint = el('p','');hint.dataset.agentStartHint='';start.append(hint);
+    const actions = el('div','bear-agent__start-actions');
+    const browse = el('button','',t('找一篇文章 →','Find an article →'));browse.type='button';browse.dataset.agentBrowse='';
+    const openReader = async payload => {
+      if (disposed) return;
+      try {
+        if(payload)await executeTool('open_app',{app:'reader',payload});
+        else {
+          // An explicit empty payload opens the directory. The agent tool's
+          // omitted payload intentionally restores an existing article instead.
+          await execute('open',{app:'reader',payload:''});
+          const after=getState?.();
+          if(Array.isArray(after?.windows)&&!after.windows.some(win=>win.app==='reader'&&!win.payload))throw new Error('library-unavailable');
+        }
+      }
+      catch { if(!disposed)setStatus(t('文章目录未能打开。请关闭一个窗口后重试。','The library could not open. Close a window and try again.')); }
+    };
+    browse.addEventListener('click',()=>openReader(''));actions.append(browse);
+    const latest = (catalog?.articles || []).find(article=>typeof article?.url==='string'&&planArticleActions(article.url,catalog,origin).length);
+    if(latest){const read=el('button','',t('读最新一篇 →','Read the latest →'));read.type='button';read.dataset.agentLatest='';read.addEventListener('click',()=>{const action=planArticleActions(latest.url,catalog,origin)[0];if(action)openReader(action.url);});actions.append(read);}
+    start.append(actions);log.append(start);updateStartHint();
   }
 
   function previewFor(name, args) {
@@ -229,6 +324,31 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
         }
       }
     }
+    const articles = planArticleActions(text, catalog, origin);
+    if (!articles.length) return;
+    const actions = el('div', 'bear-agent__articles');
+    actions.setAttribute('aria-label', t('回答中提到的本站文章', 'Blog articles mentioned in this answer'));
+    for (const article of articles) {
+      const button = el('button', 'bear-agent__article');
+      button.type = 'button';
+      button.dataset.agentArticle = article.url;
+      button.setAttribute('aria-label', `${t('打开文章：', 'Open article: ')}${article.title}`);
+      button.append(el('strong', '', article.title), el('small', '', `${t('本站文章', 'Blog article')}${article.date ? ` · ${article.date}` : ''}`), el('span', '', t('打开文章 →', 'Open article →')));
+      button.addEventListener('click', async () => {
+        if (disposed || button.disabled) return;
+        const current = planArticleActions(article.url, catalog, origin).find(value => value.url === article.url);
+        if (!current) { setStatus(t('这篇文章已不在当前目录中，请重新搜索。', 'This article is no longer in the current catalog. Search again.')); return; }
+        button.disabled = true;
+        try {
+          await executeTool('open_app', { app: 'reader', payload: current.url });
+          if (!disposed) setStatus(t('文章已打开。回到助手后可以接着聊。', 'Article opened. Return to the companion to continue.'));
+        } catch {
+          if (!disposed) setStatus(t('文章未能打开。请关闭一个窗口后重试。', 'The article could not open. Close a window and try again.'));
+        } finally { if (!disposed) button.disabled = false; }
+      });
+      actions.append(button);
+    }
+    container.append(actions);
   }
 
   function createStepNode(taskNode, step) {
@@ -247,6 +367,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   }
 
   function createTaskNode(question, record) {
+    log.querySelector('[data-agent-start]')?.remove();root.dataset.empty='false';
     const section = el('section', 'bear-agent__task');
     section.dataset.agentTask = record?.id || '';
     const head = el('div', 'bear-agent__task-head');
@@ -549,6 +670,9 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   });
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' && !event.shiftKey && !event.isComposing && event.keyCode !== 229) {
+      // Mobile keyboards need their ordinary newline key. Sending remains an
+      // explicit visible action; a hardware Ctrl/Cmd Enter can still submit.
+      if (touchComposer?.matches && !event.ctrlKey && !event.metaKey) return;
       event.preventDefault();
       form.requestSubmit();
     }
@@ -585,9 +709,13 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   if (place?.name) chips.push({ label: t(`聊聊 ${place.name}`, `About ${place.name}`), question: t(`讲讲 ${place.name} 的旅途，配一张照片。`, `Tell me about the trip to ${place.name}, with a photo.`) });
   if (chips.length) {
     const chipRow = el('div', 'bear-agent__chips');
+    chipRow.append(el('p', 'bear-agent__prompt-hint', t('点击问题，立即开始提问', 'Choose a question to ask it now')));
     for (const chip of chips) {
-      const button = el('button', 'bear-agent__chip', chip.label);
+      const button = el('button', 'bear-agent__chip', `${chip.label} ↑`);
       button.type = 'button';
+      button.dataset.agentPrompt = '';
+      button.setAttribute('aria-label', `${t('立即提问：', 'Ask now: ')}${chip.label}`);
+      button.title = `${t('立即提问：', 'Ask now: ')}${chip.question}`;
       button.addEventListener('click', () => { if (!busy) runTask(chip.question,{context:false}); });
       chipRow.append(button);
     }
@@ -598,6 +726,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   return function dispose() {
     if (disposed) return;
     saveDraft();window.removeEventListener('pagehide',flushDraft);clearTimeout(draftTimer);
+    touchComposer?.removeEventListener('change', updateIdleHint);
     disposed = true;
     controller?.abort();
     recognition?.abort();

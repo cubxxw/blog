@@ -5,15 +5,17 @@ const failures=new WeakMap<Page,string[]>();
 test.beforeEach(async({page})=>{test.setTimeout(90_000);const errors:string[]=[];failures.set(page,errors);page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});});
 test.afterEach(async({page})=>expect(failures.get(page)).toEqual([]));
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
-async function desk(page:Page,lang='zh'){
+async function desk(page:Page,lang='zh',framed=false){
   await page.goto(lang==='zh'?'/zh/projects/':'/projects/');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});await expect(root(page)).toHaveAttribute('data-world-ready','true',{timeout:30_000});
   await page.keyboard.press('Control+k');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await page.locator('[data-space-search-close]').click();
-  if(page.viewportSize()!.width<=640)await page.locator('.jiangnan-computer-expand').click();
+  await expect(root(page)).toHaveAttribute('data-computer-view','expanded');
+  if(framed){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expect(root(page)).toHaveAttribute('data-computer-view','framed');}
 }
 async function home(page:Page){await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'welcome',payload:''}));}
 async function physicalDesk(page:Page){
   await page.goto('/zh/projects/?vista=image');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
   await expect(root(page)).toHaveAttribute('data-world-ready','true',{timeout:30_000});await hitRoomObject(page,'computer');
+  await expect(root(page)).toHaveAttribute('data-computer-view','expanded');await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();
   await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(root(page)).toHaveAttribute('data-computer-view','framed');
 }
 
@@ -48,7 +50,7 @@ test('classic menus support keyboard, appearance and exact app actions',async({p
 });
 
 test('the complete physical screen, native expansion and view menus preserve the same note and selection',async({page})=>{
-  await page.setViewportSize({width:1440,height:960});await desk(page);await expect(root(page)).toHaveAttribute('data-computer-view','framed');await expect(root(page)).toHaveAttribute('data-computer-depth-blur','true');
+  await page.setViewportSize({width:1440,height:960});await desk(page,'zh',true);await expect(root(page)).toHaveAttribute('data-computer-view','framed');await expect(root(page)).toHaveAttribute('data-computer-depth-blur','true');
   const bounds=JSON.parse((await root(page).getAttribute('data-computer-screen-bounds'))!);
   expect(bounds.x-bounds.width*.07).toBeGreaterThan(0);expect(bounds.x+bounds.width*1.07).toBeLessThan(1440);expect(bounds.y-bounds.height*.10).toBeGreaterThan(0);expect(bounds.y+bounds.height*1.28).toBeLessThan(960);
   await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));const note=page.locator('[data-note-editor]'),original=await note.elementHandle();await note.fill('The same notebook inside the whole Mac.');await note.evaluate((el:HTMLTextAreaElement)=>el.setSelectionRange(2,11,'backward'));
@@ -65,7 +67,7 @@ test('Finder folders open the real product directory, writing, photos and origin
 });
 
 test('a framed computer keeps the real rainy scenery moving and quiet mode pauses it',async({page})=>{
-  await page.setViewportSize({width:1440,height:960});await desk(page);await page.emulateMedia({reducedMotion:'no-preference'});const before=await root(page).getAttribute('data-room-boat-pose');await expect.poll(()=>root(page).getAttribute('data-room-boat-pose')).not.toBe(before);
+  await page.setViewportSize({width:1440,height:960});await desk(page,'zh',true);await page.emulateMedia({reducedMotion:'no-preference'});const before=await root(page).getAttribute('data-room-boat-pose');await expect.poll(()=>root(page).getAttribute('data-room-boat-pose')).not.toBe(before);
   await page.emulateMedia({reducedMotion:'reduce'});const frozen=await root(page).getAttribute('data-room-boat-pose');await page.waitForTimeout(180);expect(await root(page).getAttribute('data-room-boat-pose')).toBe(frozen);
 });
 

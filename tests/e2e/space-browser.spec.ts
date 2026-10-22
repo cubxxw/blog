@@ -11,8 +11,8 @@ async function desk(page:Page){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
  const speaker=page.locator('[data-room-object="speaker"]');await speaker.focus();await speaker.press('Enter');await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});
  await page.locator('.space-world__canvas').focus();
- await hitRoomObject(page,'computer');await expect(root(page)).toHaveAttribute('data-computer-view','framed');
- if(page.viewportSize()!.width<=640)await page.locator('.jiangnan-computer-expand').click();
+ await hitRoomObject(page,'computer');await expect(root(page)).toHaveAttribute('data-computer-view','expanded');
+ if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expect(root(page)).toHaveAttribute('data-computer-view','framed');}
 }
 async function capture(page:Page,name:string){if(!process.env.BROWSER_CRAFT_AUDIT_DIR)return;await fs.mkdir(process.env.BROWSER_CRAFT_AUDIT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.BROWSER_CRAFT_AUDIT_DIR,`${test.info().project.name}-${name}.png`)});}
 async function clickInWebPage(page:Page,control:Locator){

@@ -71,6 +71,7 @@ export function mountMedia({ catalog, execute, notify, requestTimeoutMs = 18000 
     });
     host.querySelectorAll('[data-media-load]').forEach(b => on(b, 'click', () => loadImmich()));
     host.querySelectorAll('[data-media-more]').forEach(b => on(b, 'click', () => loadImmich(b.dataset.mediaMore)));
+    on.signal = controller.signal;
     return on;
   }
   function sourcePanel() {
@@ -161,10 +162,11 @@ export function mountMedia({ catalog, execute, notify, requestTimeoutMs = 18000 
       if (state.app === 'photos') drawPhotos(state.host, id); else drawMap(state.host, id);
     }
   }
-  function drawPhotos(host, windowID) {
+  function drawPhotos(host, windowID, scrollTop = host.scrollTop || 0) {
     const state = windows.get(windowID), list = visiblePhotos(photos(), state.region), selected = photos().find(p => p.id === state.selectedID);
-    host.innerHTML = `<section class="sp-photos" aria-label="${t('旅途相册', 'Travel photographs')}"><header class="sp-media-header"><div><p class="sp-media-kicker">BEAR / FIELD ARCHIVE</p><h2>${selected ? html(selected.title) : t('把路上的光，带回来。', 'Light gathered along the way.')}</h2></div>${routeButton('map', selected?.region || (state.region === 'all' ? '' : state.region), t('去过的地方 ↗', 'Explore places ↗'), 'sp-media-link')}</header>${selected ? `<div class="sp-photo-detail"><nav class="sp-photo-detail__nav" aria-label="${t('照片导航', 'Photograph navigation')}"><button data-photo-back>← ${t('返回相册', 'Back to photographs')}</button><span>${Math.max(1, list.findIndex(p => p.id === selected.id) + 1)} / ${list.length}</span><div><button data-photo-prev aria-label="${t('上一张照片', 'Previous photograph')}">←</button><button data-photo-next aria-label="${t('下一张照片', 'Next photograph')}">→</button></div></nav><figure>${image(selected, 'sp-photo-detail__image', true)}<figcaption><div><strong>${html(selected.title)}</strong><p>${html(selected.place)} · ${selected.source === 'immich' ? t('作者选定的公开相册', 'Selected public album') : t('熊鑫伟 摄', 'Photograph by Xinwei')}</p></div>${selected.region ? routeButton('map', selected.region, t('查看旅行区域 ↗', 'See travel region ↗')) : `<span>${t('未指定旅行区域', 'No travel region assigned')}</span>`}</figcaption></figure><p class="sp-media-hint">${t('← → 切换照片 · Esc 返回相册', '← → browse photographs · Esc returns to the album')}</p></div>` : `${state.selectedID ? `<p class="sp-media-pending" role="status">${t('选中的公开相册照片尚未加载。加载相册后可以继续查看。', 'The selected public-album photograph is not loaded yet. Load its album to continue.')}</p>` : ''}<nav class="sp-photo-filters" aria-label="${t('按地区筛选照片', 'Filter photographs by region')}">${[['all', t('全部照片', 'All photographs')], ...places().map(p => [p.id, p.name])].map(([id, name]) => `<button data-photo-filter="${html(id)}" aria-pressed="${state.region === id}">${html(name)}<span>${visiblePhotos(photos(), id).length}</span></button>`).join('')}</nav><div class="sp-photo-grid">${list.length ? list.map((p, i) => `<article class="sp-photo-card"><button data-photo-select="${html(p.id)}" aria-label="${html(t('打开照片：', 'Open photograph: ') + p.title)}">${image(p)}<span class="sp-photo-card__index">${String(i + 1).padStart(2, '0')}</span><strong>${html(p.title)}</strong><span class="sp-photo-card__place">${html(p.place)}</span></button></article>`).join('') : `<p class="sp-media-empty">${t('这个区域暂时没有公开照片。', 'No public photographs in this region yet.')}</p>`}</div>${sourcePanel()}${connection.albums.some(a => a.nextCursor) ? `<div class="sp-media-pagination">${connection.albums.filter(a => a.nextCursor).map(a => `<button data-media-more="${html(a.slug)}">${t('继续加载', 'Load more')} · ${html(a.title)} ↓</button>`).join('')}</div>` : ''}<footer class="sp-media-footer">${t('旅行区域来自博客记录。照片未公开 GPS。', 'Travel regions come from the blog. Photo GPS is not published.')}<span>${photos().filter(p => p.source !== 'immich').length} ${t('张博客照片', 'blog photographs')}</span></footer>`}</section>`;
+    host.innerHTML = `<section class="sp-photos${selected ? ' sp-photos--detail' : ''}" aria-label="${t('旅途相册', 'Travel photographs')}"><header class="sp-media-header"><div><p class="sp-media-kicker">BEAR / FIELD ARCHIVE</p><h2>${selected ? html(selected.title) : t('把路上的光，带回来。', 'Light gathered along the way.')}</h2></div>${routeButton('map', selected?.region || (state.region === 'all' ? '' : state.region), t('去过的地方 ↗', 'Explore places ↗'), 'sp-media-link')}</header>${selected ? `<div class="sp-photo-detail"><nav class="sp-photo-detail__nav" aria-label="${t('照片导航', 'Photograph navigation')}"><button data-photo-back>← ${t('返回相册', 'Back to photographs')}</button><span>${Math.max(1, list.findIndex(p => p.id === selected.id) + 1)} / ${list.length}</span><div><button data-photo-prev aria-label="${t('上一张照片', 'Previous photograph')}">←</button><button data-photo-next aria-label="${t('下一张照片', 'Next photograph')}">→</button></div></nav><figure>${image(selected, 'sp-photo-detail__image', true)}<figcaption><div><strong>${html(selected.title)}</strong><p>${html(selected.place)} · ${selected.source === 'immich' ? t('作者选定的公开相册', 'Selected public album') : t('熊鑫伟 摄', 'Photograph by Xinwei')}</p></div>${selected.region ? routeButton('map', selected.region, t('查看旅行区域 ↗', 'See travel region ↗')) : `<span>${t('未指定旅行区域', 'No travel region assigned')}</span>`}</figcaption></figure><p class="sp-media-hint"><span class="sp-media-hint__keyboard">${t('← → 切换照片 · Esc 返回相册', '← → browse photographs · Esc returns to the album')}</span><span class="sp-media-hint__touch">${t('用上方箭头浏览 · 返回相册继续挑选', 'Use the arrows above to browse · Return to the album to choose another')}</span></p></div>` : `${state.selectedID ? `<p class="sp-media-pending" role="status">${t('选中的公开相册照片尚未加载。加载相册后可以继续查看。', 'The selected public-album photograph is not loaded yet. Load its album to continue.')}</p>` : ''}<nav class="sp-photo-filters" aria-label="${t('按地区筛选照片', 'Filter photographs by region')}">${[['all', t('全部照片', 'All photographs')], ...places().map(p => [p.id, p.name])].map(([id, name]) => `<button data-photo-filter="${html(id)}" aria-pressed="${state.region === id}">${html(name)}<span>${visiblePhotos(photos(), id).length}</span></button>`).join('')}</nav><div class="sp-photo-grid">${list.length ? list.map((p, i) => `<article class="sp-photo-card"><button data-photo-select="${html(p.id)}" aria-label="${html(t('打开照片：', 'Open photograph: ') + p.title)}">${image(p)}<span class="sp-photo-card__index">${String(i + 1).padStart(2, '0')}</span><strong>${html(p.title)}</strong><span class="sp-photo-card__place">${html(p.place)}</span></button></article>`).join('') : `<p class="sp-media-empty">${t('这个区域暂时没有公开照片。', 'No public photographs in this region yet.')}</p>`}</div>${sourcePanel()}${connection.albums.some(a => a.nextCursor) ? `<div class="sp-media-pagination">${connection.albums.filter(a => a.nextCursor).map(a => `<button data-media-more="${html(a.slug)}">${t('继续加载', 'Load more')} · ${html(a.title)} ↓</button>`).join('')}</div>` : ''}<footer class="sp-media-footer">${t('旅行区域来自博客记录。照片未公开 GPS。', 'Travel regions come from the blog. Photo GPS is not published.')}<span>${photos().filter(p => p.source !== 'immich').length} ${t('张博客照片', 'blog photographs')}</span></footer>`}</section>`;
     const on = bind(host, windowID);
+    if (selected) fitPhotoToWindow(host, on.signal);
     host.querySelectorAll('[data-photo-filter]').forEach(b => on(b, 'click', () => open('photos', `region:${b.dataset.photoFilter}`)));
     host.querySelectorAll('[data-photo-select]').forEach(b => on(b, 'click', () => open('photos', b.dataset.photoSelect)));
     const back = () => open('photos', `region:${state.region}`);
@@ -176,10 +178,39 @@ export function mountMedia({ catalog, execute, notify, requestTimeoutMs = 18000 
       if (!selected || event.target.closest('input,textarea,select')) return;
       if (['ArrowLeft', 'ArrowRight', 'Escape'].includes(event.key)) { event.preventDefault(); event.stopPropagation(); event.key === 'Escape' ? back() : step(event.key === 'ArrowLeft' ? -1 : 1); }
     });
+    host.scrollTop = scrollTop;
+  }
+  function fitPhotoToWindow(host, signal) {
+    const detail = host.querySelector('.sp-photo-detail');
+    if (!detail) return;
+    const header = host.querySelector('.sp-media-header'), nav = detail.querySelector('nav'), caption = detail.querySelector('figcaption'), hint = detail.querySelector('.sp-media-hint'), recovery = detail.querySelector('[data-image-recovery]');
+    const fit = () => {
+      if (signal.aborted || !host.isConnected || !host.clientHeight) return;
+      const style = getComputedStyle(detail);
+      const reserved = [header, nav, caption, hint, recovery].reduce((sum, node) => sum + (node?.offsetHeight || 0), 0) + (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+      // CSS pixels belong to the actual window, even when the entire desktop
+      // is projected into the café monitor. Tiny windows retain normal scroll.
+      detail.style.setProperty('--photo-image-height', `${Math.max(128, Math.min(460, host.clientHeight - reserved - 8))}px`);
+    };
+    fit();
+    if (typeof ResizeObserver === 'function') {
+      const observer = new ResizeObserver(fit);
+      for (const node of [host, header, nav, caption, hint, recovery]) if (node) observer.observe(node);
+      signal.addEventListener('abort', () => observer.disconnect(), { once: true });
+    } else window.addEventListener('resize', fit, { signal });
   }
   function renderPhotos(host, payload = '', windowID = 'photos') {
     const previous = windows.get(windowID);
-    windows.set(windowID, { app: 'photos', host, ...photoState(photos(), payload, previous || {}) }); drawPhotos(host, windowID);
+    const next = photoState(photos(), payload, previous || {}), galleryScrolls = previous?.galleryScrolls || new Map();
+    const currentTop = previous?.host?.scrollTop || 0;
+    if (previous?.app === 'photos' && !previous.selectedID) galleryScrolls.set(previous.region, currentTop);
+    // Window bodies survive app renders. A newly selected photograph must not
+    // inherit the gallery's scroll; returning restores that region's position.
+    const scrollTop = next.selectedID ? next.selectedID === previous?.selectedID ? currentTop : 0 : galleryScrolls.get(next.region) || 0;
+    const restoreFocus = previous?.selectedID && !next.selectedID && host.contains?.(document.activeElement);
+    const galleryReturnID = next.selectedID && previous?.selectedID && next.region === previous.region ? previous.galleryReturnID || previous.selectedID : next.selectedID;
+    windows.set(windowID, { app: 'photos', host, ...next, galleryScrolls, galleryReturnID }); drawPhotos(host, windowID, scrollTop);
+    if (restoreFocus) [...host.querySelectorAll('[data-photo-select]')].find(button => button.dataset.photoSelect === (previous.galleryReturnID || previous.selectedID))?.focus({ preventScroll: true });
   }
   function mapSVG(state) {
     const view = boundMap(state.view), pinSize = view.width / 120, textSize = view.width / 100;
@@ -193,8 +224,20 @@ export function mountMedia({ catalog, execute, notify, requestTimeoutMs = 18000 
     const state = windows.get(windowID), place = placeByID(state.placeID) || places()[0], related = photos().filter(p => p.region === place?.id), matches = writing(place);
     host.innerHTML = `<section class="sp-places"><header class="sp-media-header"><div><p class="sp-media-kicker">BEAR / PLACES & FIELD NOTES</p><h2>${t('从一段路，找到一个故事。', 'A place leads to a story.')}</h2></div>${routeButton('photos', place ? `region:${place.id}` : '', t('浏览相册 ↗', 'Photographs ↗'), 'sp-media-link')}</header><div class="sp-map-frame"><div class="sp-map-viewport" data-map-viewport tabindex="0" aria-label="${t('地图：方向键移动，加减号缩放', 'Map: arrow keys pan, plus and minus zoom')}">${mapSVG(state)}</div><div class="sp-map-controls" aria-label="${t('地图控制', 'Map controls')}"><button data-map-zoom="in" aria-label="${t('放大地图', 'Zoom in')}">+</button><button data-map-zoom="out" aria-label="${t('缩小地图', 'Zoom out')}">−</button><button data-map-fit>${t('查看所有区域', 'Fit places')}</button><button data-map-reset>${t('世界', 'World')}</button></div><span class="sp-map-caption">${t('等距经纬投影 · 区域中心', 'Equirectangular · region centers')}</span></div><nav class="sp-place-list" aria-label="${t('选择旅行区域', 'Choose a travel region')}">${places().map((p, i) => `<button data-place-select="${html(p.id)}" aria-pressed="${place?.id === p.id}"><span>${String(i + 1).padStart(2, '0')}</span><strong>${html(p.name)}</strong><small>${photos().filter(photo => photo.region === p.id).length} ${t('张照片', 'photos')}</small></button>`).join('')}</nav>${place ? `<article class="sp-place-detail"><div class="sp-place-detail__intro"><p class="sp-media-kicker">${html(Math.abs(place.lat).toFixed(2))}°${place.lat < 0 ? 'S' : 'N'} / ${html(Math.abs(place.lon).toFixed(2))}°${place.lon < 0 ? 'W' : 'E'}</p><h3>${html(place.name)}</h3><p>${html(place.description)}</p><div class="sp-place-counts"><span>${related.length} ${t('张公开照片', 'public photographs')}</span><span>${matches.length} ${t('篇相关写作', 'related articles')}</span></div></div><div class="sp-place-photos">${related.slice(0, 4).map(p => `<article><button data-media-open="photos" data-media-payload="${html(p.id)}" aria-label="${html(p.title)}">${image(p)}<span>${html(p.title)}</span></button></article>`).join('') || `<p class="sp-media-empty">${t('这个区域暂时没有公开照片。', 'No public photographs here yet.')}</p>`}</div>${matches.length ? `<div class="sp-place-writing"><h4>${t('走过之后，写了这些。', 'Writing from the journey.')}</h4>${matches.slice(0, 4).map(a => `<button data-media-open="reader" data-media-payload="${html(a.url)}"><div><small>${html(a.date || '')}</small><strong>${html(a.title)}</strong></div><span aria-hidden="true">↗</span></button>`).join('')}</div>` : `<p class="sp-media-empty">${t('相关游记还未收录在当前阅读目录。', 'Travel writing has not been included in this reading catalog yet.')}</p>`}</article>` : ''}<footer class="sp-media-footer"><span>${t('标记来自已公开旅行记录，代表区域中心；不是照片 GPS。', 'Markers are public travel region centers, not photo GPS.')}</span><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener noreferrer">Natural Earth 1:110m ↗</a></footer></section>`;
     const on = bind(host, windowID), viewport = host.querySelector('[data-map-viewport]');
+    if (place) {
+      const summary = document.createElement('div'); summary.className = 'sp-place-current'; summary.dataset.placeCurrent = place.id;
+      summary.innerHTML = `<div><small>${t('当前旅行区域', 'Selected travel region')}</small><strong>${html(place.name)}</strong><span>${related.length} ${t('张照片', 'photos')} · ${matches.length} ${t('篇写作', 'articles')}</span></div><button type="button" data-place-story>${t('看故事 ↓', 'Read the story ↓')}</button>`;
+      host.querySelector('.sp-map-frame').before(summary);
+      const detail = host.querySelector('.sp-place-detail'), heading = detail?.querySelector('h3');
+      if (heading) heading.tabIndex = -1;
+      on(summary.querySelector('[data-place-story]'), 'click', () => { detail?.scrollIntoView({ block: 'start', behavior: 'auto' }); heading?.focus({ preventScroll: true }); });
+    }
     const changeView = view => { state.view = boundMap(view); viewport.innerHTML = mapSVG(state); };
-    const select = id => { state.placeID = id; open('map', id); };
+    const select = id => {
+      const fromPin = document.activeElement?.closest?.('[data-map-pin]');
+      state.placeID = id; open('map', id); host.scrollTop = 0;
+      if (fromPin) [...host.querySelectorAll('[data-map-pin]')].find(pin => pin.dataset.mapPin === id)?.focus?.({ preventScroll: true });
+    };
     on(viewport, 'click', event => { const pin = event.target.closest('[data-map-pin]'); if (pin) select(pin.dataset.mapPin); });
     on(viewport, 'keydown', event => { const pin = event.target.closest('[data-map-pin]'); if (pin && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); event.stopPropagation(); select(pin.dataset.mapPin); } });
     host.querySelectorAll('[data-place-select]').forEach(b => on(b, 'click', () => select(b.dataset.placeSelect)));

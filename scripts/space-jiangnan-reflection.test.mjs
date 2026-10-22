@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {runInNewContext} from 'node:vm';
+import {createJiangnanDoorExcursion} from '../assets/js/space/jiangnan-door-state.mjs';
 
 const {parse}=createRequire(import.meta.url)('acorn');
 const worldURL=new URL('../assets/js/space/world-jiangnan.js',import.meta.url);
@@ -22,7 +23,7 @@ const locals=['disposed','mode','quiet','frame','last','environmentTime','frames
 // ownership. Only browser/GPU boundaries are faked; no readiness logic is copied.
 const runtime=`
   let ${locals.map(declaration).join(',')};
-  const ${['firstFrame','settleFirst','startTime','visible'].map(declaration).join(',')};
+  const ${['firstFrame','settleFirst','startTime','visible','excursion'].map(declaration).join(',')};
   ${['stop','wake'].map(functionSource).join('\n')}
   ${['finishTravel','reflectRoom','tick','visibility'].map(functionSource).join('\n')}
   ${softwareSetup}
@@ -57,7 +58,7 @@ function fixture({software=false}={}){
     PMREMGenerator:class{fromCubemap(){return {texture:{},dispose(){}};}dispose(){}}
   };
   const world=runInNewContext(runtime,{
-    performance:{now:()=>now},root,document,software,renderer,THREE,
+    performance:{now:()=>now},root,document,software,renderer,THREE,createJiangnanDoorExcursion,
     setTimeout(callback,delay){const id=++nextId;timers.set(id,{at:now+delay,callback});return id;},
     clearTimeout:id=>timers.delete(id),
     requestAnimationFrame(callback){const id=++nextId;frames.set(id,callback);return id;},
