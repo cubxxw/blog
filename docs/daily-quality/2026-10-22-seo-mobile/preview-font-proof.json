@@ -1,0 +1,50 @@
+{
+  "url": "https://deploy-preview-470--cubxxw.netlify.app/zh/growth/posts/2025-annual-review/",
+  "commit": "8bb71d9c0fa40295a2c41ecc9b9a58bb916d363a",
+  "note": "Live Netlify preview with actual network resources. Font CSS deliberately held to verify first paint without it. FCP is an uncontrolled single run and is not a production performance result.",
+  "result": {
+    "before": {
+      "rel": "preload",
+      "paints": [
+        {
+          "name": "first-paint",
+          "time": 10972
+        },
+        {
+          "name": "first-contentful-paint",
+          "time": 10972
+        }
+      ],
+      "h1": {
+        "x": 20,
+        "y": 148.59375,
+        "width": 372,
+        "height": 81,
+        "top": 148.59375,
+        "right": 392,
+        "bottom": 229.59375,
+        "left": 20
+      },
+      "faces": 0
+    },
+    "after": {
+      "rel": "preload",
+      "faces": 0
+    },
+    "fontEvents": [
+      {
+        "event": "held"
+      },
+      {
+        "event": "response",
+        "status": 200
+      }
+    ],
+    "errors": [],
+    "fontTags": [
+      "<link id=zh-prose-fonts rel=preload as=style href=/assets/fonts/noto-serif-sc-reading.min.c421d809486bad7eb8d8ecc052c1cfa7fefe8b5fde5ad0a6ffa65890a6bf2250.css integrity=\"sha256-xCHYCUhrrX642OzAUsHPp/7+i1/eWtCm/6ZYkKa/IlA=\" crossorigin=anonymous onload='this.onload=null,window.__readingFontsBeforeFrame&&(this.rel=\"stylesheet\",this.removeAttribute(\"as\"))'>",
+      "<link rel=stylesheet href=/assets/fonts/noto-serif-sc-reading.min.c421d809486bad7eb8d8ecc052c1cfa7fefe8b5fde5ad0a6ffa65890a6bf2250.css integrity=\"sha256-xCHYCUhrrX642OzAUsHPp/7+i1/eWtCm/6ZYkKa/IlA=\" crossorigin=anonymous>"
+    ],
+    "runtimeTag": "<script data-reading-fonts>\"function\"==typeof window.requestAnimationFrame&&(window.__readingFontsBeforeFrame=!0,window.requestAnimationFrame(function(){var e,n,o=document.getElementById(\"zh-prose-fonts\"),t=window.performance;if(o&&\"preload\"===o.rel&&t&&\"function\"==typeof t.getEntriesByName)for(n=t.getEntriesByName(o.href),e=0;e<n.length;e++)if(200===n[e].responseStatus&&0<n[e].responseEnd&&0<n[e].decodedBodySize){o.onload=null,o.rel=\"stylesheet\",o.removeAttribute(\"as\");break}window.__readingFontsBeforeFrame=!1}))</script>"
+  }
+}

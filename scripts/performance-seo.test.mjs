@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from 'parse5';
 import { attribute, htmlElements } from './lib/content-page-map.mjs';
+// The frozen-artifact CI invokes this entry point directly.
+import './reading-fonts.test.mjs';
 
 const root = path.resolve(process.env.SITE_OUTPUT_DIR || 'public');
 const page = route => htmlElements(parse(fs.readFileSync(path.join(root, route, 'index.html'), 'utf8')));

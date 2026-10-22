@@ -1,6 +1,6 @@
 # SEO 与移动端字体加载优化：2026-10-22
 
-状态：候选已实现并完成下述本地验证；独立审查、精确提交CI、生产发布与线上读回结果继续追加。当前不能标记已上线。
+状态：实现、定向验证与独立源码审查已完成。完整CI仍未完成；另已确认优化前main的全站门禁存在多项失败并在120分钟后取消。生产发布与线上生产读回未完成，当前不能标记已上线。
 
 ## 范围与选项
 
@@ -51,3 +51,18 @@ Hugo0.145.0 extended，固定时钟2026-10-22T13:00:00Z。隔离副本缺少Git�
 ## 发布与回滚
 
 分支codex/seo-mobile-loading-20261022，从远端0869043d575761c1ac6b3b915037fe674c76fdac创建；七个已有变更文件的远端blob均与本地基线相同。精确提交、独立审查、CI、部署与线上指纹在实际完成后追加。完整门禁未完成前不合main；失败继续修复，不回退其他任务的并行提交。当前没有发布成功或线上排名改善结论。
+
+### 交付进度（2026-10-22 22:01，新加坡时间）
+
+- 精确提交8bb71d9c0fa40295a2c41ecc9b9a58bb916d363a，已提交[PR470](https://github.com/cubxxw/blog/pull/470)，12个文件，未合并、未部署。原生Codex附件接口不可用，PR可通过链接查看。
+- 独立审查逐行核对最终runtime、模板和回归，未发现确认P0/P1/P2。绑定blob分别为9e71962f69ed51f9a2541d43facc9d7104871b2d、7b872490fa830fd3eac3f2024d0e2100401dfb83、694ec6074934fbb8530ee7098a8b9af94e716dcb。
+- [完整质量门禁39790850563](https://github.com/cubxxw/blog/actions/runs/39790850563)正在运行Enforce checks and verify one production artifact，尚无完整结果。本地最终生产/预览定向检查18/18通过、0跳过，TypeScript及生成SEO检查通过；这些不能替代云端全套验收。
+- 又核对到[10月20日上线续验](2026-10-20-release.md)中的历史Google记录：Go Release与三月随想当时均PASS/Submitted and indexed，自canonical一致，robots ALLOWED、INDEXING_ALLOWED、抓取SUCCESSFUL。对应检查[39399986976](https://github.com/cubxxw/blog/actions/runs/39399986976)、[39400292637](https://github.com/cubxxw/blog/actions/runs/39400292637)运行成功；最近抓取分别为10月17日15:10:18Z、10月14日21:21:51Z。这不是当前实时页面检查，也不能证明整个历史窗口没有索引变化；目前没有依据把曝光下降归因于这两页已脱离索引。
+
+### 补充验收与具体阻塞
+
+- 补做412px手机与1440px桌面、明暗主题共4个真实Chromium重放场景，4/4通过，无横向溢出，迟到清单前后阅读点一致。见[browser-font-themes.json](2026-10-22-seo-mobile/browser-font-themes.json)。
+- [Netlify在线预览](https://deploy-preview-470--cubxxw.netlify.app/zh/growth/posts/2025-annual-review/)返回200，包含本轮精确运行时代码、正确SRI和预览noindex/nofollow。在线扣住字体CSS仍可首绘；放行并返回200后仍保留preload，未在阅读中启用。这个单次非受控网络FCP不作为线上性能收益证据。见[preview-font-proof.json](2026-10-22-seo-mobile/preview-font-proof.json)。这不是正式站上线验收。
+- 发现冻结产物CI直接执行performance-seo.test.mjs，不经过npm脚本。因此该入口显式导入reading-fonts.test.mjs，npm脚本恢复单入口，保证新增8项回归进入真正门禁并避免重复。接线后重新运行18/18通过、0跳过；独立复核无P0/P1/P2。接线blob为bd83c192b59efb8fc6f93521509bcbe14c712699，package.json恢复为41be432dc38f9fc05821913de69eda166df0b766；runtime与模板未改。
+- 优化前main提交1bfde09c的[既有门禁39775469549](https://github.com/cubxxw/blog/actions/runs/39775469549)在2026-10-22T14:07:34Z记为cancelled。日志先运行48项quality，再以单worker运行1056项legacy；搜索状态及BEAR场景有多项失败和重试，约120分钟后The operation was canceled。没有完整最终测试计数，不将部分通过记为全套通过。摘录见[baseline-ci-blocker.json](2026-10-22-seo-mobile/baseline-ci-blocker.json)。这说明合并前已有全站门禁问题，不能代替本候选的CI结论，也未修改并行BEAR实现或跳过用例。
+- 尝试设置GitHub自动合并，服务返回Pull request is in unstable status，未启用。保持PR开放，未绕过门禁强制合并。本轮需要完整候选CI通过后再走现有main/Netlify发布链，并核对实际生产部署版本与页面指纹；这些仍未完成。
