@@ -26,7 +26,7 @@
     "main_regression_status": "in_progress",
     "main_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855910",
     "main_run_attempt": 1,
-    "lighthouse_status": "in_progress",
+    "lighthouse_status": "success",
     "lighthouse_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855352",
     "lighthouse_run_attempt": 2,
     "lighthouse_first_attempt": "failed: PROTOCOL_TIMEOUT on /projects/; preserved before retry"

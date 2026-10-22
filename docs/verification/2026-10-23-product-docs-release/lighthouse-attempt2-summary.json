@@ -1,0 +1,156 @@
+{
+  "run_id": 39830855352,
+  "run_attempt": 2,
+  "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "artifact_id": 12449974618,
+  "artifact_sha256": "a2f019c9f0f581c21e942cb9a7406952fc784ef1518eb0c47cb71a96aadd9fb5",
+  "outcome": "success",
+  "thresholds_unchanged": true,
+  "performance_warning_count": 6,
+  "method": "13 original lhr reports; ignore their duplicated filesystem export reports.",
+  "pages": [
+    {
+      "url": "https://cubxxw.com/",
+      "fetchTime": "2026-10-22T18:50:15.425Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.83,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "fetchTime": "2026-10-22T18:50:30.217Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.81,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "fetchTime": "2026-10-22T18:50:43.180Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.31,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "fetchTime": "2026-10-22T18:52:20.716Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.25,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/",
+      "fetchTime": "2026-10-22T18:53:59.224Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.83,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "fetchTime": "2026-10-22T18:54:11.987Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.84,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "fetchTime": "2026-10-22T18:54:24.136Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.98,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/growth/",
+      "fetchTime": "2026-10-22T18:54:36.570Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.78,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/",
+      "fetchTime": "2026-10-22T18:54:49.335Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.63,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "fetchTime": "2026-10-22T18:55:02.079Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.35,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/archives/",
+      "fetchTime": "2026-10-22T18:56:57.574Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.97,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "fetchTime": "2026-10-22T18:57:11.488Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.97,
+        "accessibility": 0.93,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "fetchTime": "2026-10-22T18:57:24.702Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.55,
+        "accessibility": 0.93,
+        "best-practices": 1,
+        "seo": 1
+      }
+    }
+  ]
+}

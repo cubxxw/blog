@@ -20,6 +20,8 @@
 - [Netlify 实际读回](2026-10-23-product-docs-release/netlify-production.json) 同时绑定当前 published deployment 和完整 commit。
 - 当前使用 Netlify 原生 Git 生产构建；公开 `__release.json` 返回 404。版本认定依据上面的平台 published deployment，未把 404 的 marker 或 HTTP 200 本身当作部署版本证明。
 
+首份收尾记录已提交为 `7a87412036a4592ed906e49ae491300cb394da4f` 并部署；README 自动更新随后产生 `b5411e75d5a72f671d7ccbb4e03a4cc55afbee78`，于 `2026-10-23T02:58:28.200+08:00` 部署，Netlify deployment 为 `6ada5b95d54024e7a01183a7`。这两个提交只涉及 brief、收尾证据与 README。相对首次文章发布版本的文件差异未包含文章或原图；线上 Tana 中文 HTML 与首次验收逐字节相同。见带观察时刻的 [收尾后生产读回](2026-10-23-product-docs-release/production-after-closeout.json)。`published_at` 与三张回执仍记录首次文章实际发布时刻。
+
 ## 正式站浏览器验收
 
 目标流程：进入每篇正式文章 → 确认全文、图片与参考资料 → 实际点击中英文切换 → 确认同篇对应语言；另以手机尺寸阅读三篇中文。
@@ -53,11 +55,15 @@ Hugo 响应式图片的 `_hu_<hash>` 文件名通过原始图片名称归一确�
 
 最终依据是合并版本的主分支 [Blog Quality and Release / 39830855910](https://github.com/cubxxw/blog/actions/runs/39830855910)，当前仍在运行。PR 头版本的 [39824062985](https://github.com/cubxxw/blog/actions/runs/39824062985) 也仍在运行；它不能替代主分支结果。快照见 [main](2026-10-23-product-docs-release/main-quality.json) 与 [PR](2026-10-23-product-docs-release/pr-quality.json)。
 
+PR 其余现有检查中：Netlify preview、Header rules、Redirect rules、GitGuardian、create-pr 和 Mergify Summary 已成功；Pages changed 与 Mergify Merge Queue 为 neutral。CodeRabbit 的 status 为 success，但描述是 `Review rate limited`，不能据此说它完成了独立代码审查。完整 [PR check-runs](2026-10-23-product-docs-release/pr-check-runs.json)、[PR statuses](2026-10-23-product-docs-release/pr-statuses.json)、[合并信息](2026-10-23-product-docs-release/pr471.json) 与 [main check-runs](2026-10-23-product-docs-release/main-check-runs.json) 随记录保存。其他工作流成功不代替 Required blog quality。
+
 Lighthouse [39830855352](https://github.com/cubxxw/blog/actions/runs/39830855352) 第 1 次在 `/projects/` 发生 DevTools `Network.getResponseBody` 的 `PROTOCOL_TIMEOUT`。失败发生在采集阶段，尚未完成整套测量。失败 [摘要](2026-10-23-product-docs-release/lighthouse-attempt1-excerpt.log) 及 [原 artifact 12449249813](https://github.com/cubxxw/blog/actions/runs/39830855352/artifacts/12449249813) 已保留，原 artifact digest 为 `sha256:8124aeee0c88e0558b8337b655deb140e27db32502e9cdeedf2ad6be098d6ae4`。
 
-同版 `/projects/` 独立浏览器复核 HTTP 200、load 约 0.91 秒且无 pageerror；这只证明普通加载能完成，不证明 Lighthouse 的受限环境测量通过。保存首次失败证据后，仅重试失败 job；第 2 次仍在执行，未调整工作流、断言、阈值、范围或超时。当前 [重试快照](2026-10-23-product-docs-release/lighthouse-current.json)。
+同版 `/projects/` 独立浏览器复核 HTTP 200、load 约 0.91 秒且无 pageerror。保存首次失败证据后，仅重试失败 job；第 2 次于 `2026-10-23T02:57:43+08:00` 完成，运行结论为 success。13/13 URL 完成采集并按原规则检查，保留 6 项 performance 警告；未调整工作流、断言、阈值、范围或超时。首次失败属于本次采集未完成，重试通过不删除原失败。见 [首次采集摘要](2026-10-23-product-docs-release/lighthouse-attempt1-summary.json)、[重试快照](2026-10-23-product-docs-release/lighthouse-current.json)、[重试日志摘录](2026-10-23-product-docs-release/lighthouse-attempt2-excerpt.log) 与 [13 页结果](2026-10-23-product-docs-release/lighthouse-attempt2-summary.json)。第 2 次原 artifact 为 [12449974618](https://github.com/cubxxw/blog/actions/runs/39830855352/artifacts/12449974618)，下载后核对 digest `sha256:a2f019c9f0f581c21e942cb9a7406952fc784ef1518eb0c47cb71a96aadd9fb5` 一致。
 
 `published` 只表示文章正式发布与本批正式页验收；**整站回归尚无通过结论**。不因合并成功、Netlify ready 或定向浏览器通过而改写该状态。
+
+Lighthouse 第 2 次测量期间，生产站于 `02:55:38.130+08:00` 更新到首份收尾记录提交 `7a874120…`。虽然该提交没有改动正文、配图或应用实现，Lighthouse 的 success 仍只是这次在线工作流的结论，不应被当作精确冻结 `db80e3fb…` 产物的替代验收。合并版本的主分支 Required blog quality 仍是最终依据。
 
 ## 内容回执与读者反馈
 
