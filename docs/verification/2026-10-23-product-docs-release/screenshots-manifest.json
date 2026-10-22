@@ -1,0 +1,92 @@
+[
+  {
+    "path": "screenshots/tana-from-notes-to-meeting-work-zh-desktop-top.png",
+    "bytes": 373603,
+    "sha256": "f4f15f4ea8c94362e5b1bf4079b094d1414b1e0ab6a35e6308029f3731108717"
+  },
+  {
+    "path": "screenshots/tana-from-notes-to-meeting-work-en-desktop-top.png",
+    "bytes": 327663,
+    "sha256": "c467e8aecf6d8637ce72f7e0bfeb10443336570235d4454848a871cd202be1fa"
+  },
+  {
+    "path": "screenshots/tana-from-notes-to-meeting-work-zh-mobile-top.png",
+    "bytes": 140025,
+    "sha256": "a47b84cab80d172fa22f1cdf8e233f727ec47a1dda4069352a3242ce59a83ea9"
+  },
+  {
+    "path": "screenshots/tana-from-notes-to-meeting-work-zh-desktop-image2.png",
+    "bytes": 395185,
+    "sha256": "fcdb6bb3e07e8923b4239a564f02204d0b3c3080f3c3f0165f0d836928208ade"
+  },
+  {
+    "path": "screenshots/tana-from-notes-to-meeting-work-en-desktop-image2.png",
+    "bytes": 300427,
+    "sha256": "9c16f49559a2938f4954e2f0bd2e7aeea30334d98c37d84d1a7fe453756fb384"
+  },
+  {
+    "path": "screenshots/tana-from-notes-to-meeting-work-zh-mobile-image2.png",
+    "bytes": 179729,
+    "sha256": "8362e2b4743796b58a43aabd70342ebce0d8ca9944c64250adefb3028c6f2c5b"
+  },
+  {
+    "path": "screenshots/doneas-weekly-commitments-zh-desktop-top.png",
+    "bytes": 296063,
+    "sha256": "74225ebd01b4cf527bc1866a235f359c4242ca927a9100a9606344a077f55d52"
+  },
+  {
+    "path": "screenshots/doneas-weekly-commitments-en-desktop-top.png",
+    "bytes": 251958,
+    "sha256": "7154a37452108af0a53017bf293dd060ff507ed05866660c1df5b673b3da6ef0"
+  },
+  {
+    "path": "screenshots/doneas-weekly-commitments-zh-mobile-top.png",
+    "bytes": 131621,
+    "sha256": "a60af5b5313a0ca5232259ba1cff5ed1f615447dc2d60dac4ac37616b761edaa"
+  },
+  {
+    "path": "screenshots/doneas-weekly-commitments-zh-desktop-image2.png",
+    "bytes": 264848,
+    "sha256": "288b57e918312445d452566690c69fe6116cfa8c57f8da74264d7ff91d89a414"
+  },
+  {
+    "path": "screenshots/doneas-weekly-commitments-en-desktop-image2.png",
+    "bytes": 192339,
+    "sha256": "dbd12d29a8f909964068e3728592b3167d3244be52f36ad83b8b9b366b2648eb"
+  },
+  {
+    "path": "screenshots/doneas-weekly-commitments-zh-mobile-image2.png",
+    "bytes": 137619,
+    "sha256": "1cdd3c67f8119d9e0bbc4a73f89badee58e3fe851188d58a7379f887b90340a9"
+  },
+  {
+    "path": "screenshots/ambi-memory-to-work-zh-desktop-top.png",
+    "bytes": 305311,
+    "sha256": "fbdebc08e012af553c737b76c6a797b2a6ae1a1ff8fc2ffc06de3adfbe8ea6bd"
+  },
+  {
+    "path": "screenshots/ambi-memory-to-work-en-desktop-top.png",
+    "bytes": 260151,
+    "sha256": "a3b7e5dba5e254b3c2bcc861a408bcd19b79ae08558c979625de6b04310e4b6d"
+  },
+  {
+    "path": "screenshots/ambi-memory-to-work-zh-mobile-top.png",
+    "bytes": 130085,
+    "sha256": "f145b114f9183690d59cb1fe49b2636b0c79aadb1c5bc6c59eb04ee124e18da1"
+  },
+  {
+    "path": "screenshots/ambi-memory-to-work-zh-desktop-image2.png",
+    "bytes": 229207,
+    "sha256": "a9ae82afc46c1fb71229d03376540c5336cfadcc0d9d90966bfd15cb0363e306"
+  },
+  {
+    "path": "screenshots/ambi-memory-to-work-en-desktop-image2.png",
+    "bytes": 168258,
+    "sha256": "e8a5b0d1ed27371b7ccec7229ba63a13ab6c095277da5e21888e181d4e0147e3"
+  },
+  {
+    "path": "screenshots/ambi-memory-to-work-zh-mobile-image2.png",
+    "bytes": 117490,
+    "sha256": "093aa151af438db2eaf4da6fad2e31564ea0e47b9ca060095d467ac27cae41d7"
+  }
+]

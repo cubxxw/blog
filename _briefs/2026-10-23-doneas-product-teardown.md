@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-10-23-doneas-product-teardown
 title: Doneas 产品拆解：一周计划怎样变成每天的承诺
-status: ready-to-publish
+status: published
 priority: normal
 language: zh-en
 section: ai-agent
@@ -77,14 +77,22 @@ source_refs:
 
 ## 执行回执
 
+编辑阶段的检查与交接边界保留为历史记录；本批协调发布的实际时间、部署及验收状态以以下发布字段和收尾记录为准。读者反馈仍待观察，整站回归结果单独记录。
+
 - article: content/zh/ai-agent/posts/doneas-weekly-commitments.md
 - english_article: content/en/ai-agent/posts/doneas-weekly-commitments.md
-- public_url: 待本批协调者统一发布与线上读回后填写。
+- public_url: https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/
+- public_url_en: https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/
 - editorial_verdict: KEEP。以一周的时间顺序承载规则与经营代价；从“保留最初承诺”转到固定同伴与缺席处理，再落到一个小组的一周验收。研究文没有补造作者经历；未解决问题留在证据边界内。
 - source_trail: briefs:trace 只找到本卡，没有继承既有文章。事实仅取本卡 2026-10-23 公开研究附录，未解析 brain://。成稿保留 12 项公开来源，相邻引用并在文末去重；S01–S06 支撑机制与价格，S07/S08/S13 支撑入口与展示差异，S11/S12 只作署名作者的自述，S15 只界定本次发现范围。全部未完成账户或小组验收，公开资料不支持留存、收入或效率结论。
 - checks: 中文可见文案按仓库 AGENTS/CLAUDE 的作者语气要求撰写；未发现独立文字声音指南（docs/author-voice.md 属音频功能说明）。中文稳定后已逐项执行指定 lieflat-less-ai-tone 白名单，最小处理顿号密集与前置话题壳；后续补充 Web 身份、官方 no AI 定位与摘要后再次复查。flavor 检测 0 错误、0 警告。frontmatter:check、tags:check、定向 briefs:check、git diff --check 均通过。额外核对双语 YAML、时间/作者/标签、8 个同层章节、12 项来源顺序、无重复参考、两张本地图片及共享封面、关键规则和标识符；英文无残留中文。普通 Markdown 未运行全站测试、Hugo 构建或浏览器。
   本批编辑复核：将“占据的时间”修正为“占据的席位”；修正段落按指定 lieflat-less-ai-tone 白名单复查，无额外明确命中。三篇定向 flavor 扫描 0 错误、0 警告，frontmatter、tags、diff 检查通过。
-- published_at: 未发布；本 executor 不 commit、push、merge 或 deploy。
+- published_at: 2026-10-23T02:26:13.131+08:00
+- deployment_commit: db80e3fbfed57e9f75f15ab83ef8a192a0316059
+- deployment_id: 6ada5484e1776686525b58a4
+- publication_verification: docs/verification/2026-10-23-product-docs-release.md
+- content_receipt: docs/content-receipts/pending/2026-10-23-doneas-product-teardown.json
+- reader_feedback: pending；尚未取得读者反馈，保持待观察。
 - retro_notes: 中文正文与参考合计约 5142 汉字，英文约 3475 词，英文完整翻译。两张官方公开图已目视核对，均注明官方示意、来源与获取日期；未使用真实圈子成员资料。本文明确保留 Monday noon 时区未明、两问/三问并存、目录 6 of 5 与详情 5 of 5 不一致、缺席与计费未实测等限制。WeeklyPlan 等为本文建议对象，未冒充原站实现。成稿采用 doneas-weekly-commitments 文件名，避免任务卡同 slug 双语文章被队列校验误报为重复；未改共享脚本。剩余动作是协调者终审、提交发布与线上验收，本次无需新增翻译授权。
 
 ## 本次公开研究附录

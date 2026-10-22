@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-10-23-ambi-product-teardown
 title: Ambi 产品拆解：记住一件事之后，怎样把它做完
-status: ready-to-publish
+status: published
 priority: normal
 language: zh-en
 section: ai-agent
@@ -77,14 +77,22 @@ source_refs:
 
 ## 执行回执
 
+编辑阶段的检查与交接边界保留为历史记录；本批协调发布的实际时间、部署及验收状态以以下发布字段和收尾记录为准。读者反馈仍待观察，整站回归结果单独记录。
+
 - article: content/zh/ai-agent/posts/ambi-memory-to-work.md
 - english_article: content/en/ai-agent/posts/ambi-memory-to-work.md
-- public_url: 待协调者发布后填写。
+- public_url: https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/
+- public_url_en: https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/
 - editorial_verdict: KEEP。以一项合成预算工作贯穿输入、记忆更正和任务交付，解释授权与退出；避免功能大全。中文正文 5,105 汉字，英文正文约 3,378 词（均含图注、不含参考资料）；含参考资料分别为 5,163 汉字和约 3,433 词。执行侧审读通过，不冒充作者新增亲测或人工验收。
 - source_trail: 已运行本卡精确 source_refs trace，仓库内只有当前 brief，无旧文沿袭；未解析 brain://。直接复核官网 features、privacy、terms 和 trust；Recap 场景与首页依据本卡公开研究和配图交接。现行隐私政策为 2026-10-21，条款为 2026-10-12。功能页只支持产品声明与官方示意，不能证明后台可靠性；政策支持处理与保留规则，不能证明所有执行路径均已落实。
 - checks: 已按仓库写作约束与批准口吻逐段复读；中文稳定后完整读取并执行指定 lieflat-less-ai-tone 白名单，未发现需强行改写的明确命中，结构和限定词保留；检测器单篇扫描 0 错误、0 警告。translate-and-format-blog 完整翻译后对照检查，9 个二级标题对应，26 处外链顺序与两图路径一致，无残留中文。frontmatter:check、tags:check 和 git diff --check 通过；description 中 156 字符、英 150 字符；日期为已到达的 +08:00。两张已目视交接图片均为有效 PNG，尺寸分别为 1440×1000、712×1176，正文注明官方公开页面或 Memory 示意；封面使用首页图。普通 Markdown 未引入 shortcode 或新渲染实现，未运行全站构建及浏览器测试。
   本批编辑复核：仅给英文段内 9 处独立来源链接补句号；段尾引用及正常句内链接保留。三篇定向 flavor 扫描 0 错误、0 警告，frontmatter、tags、diff 检查通过；本次无正文事实或结构改动。
-- published_at: 尚未发布，由协调者统一完成提交、发布与线上读回。
+- published_at: 2026-10-23T02:26:13.131+08:00
+- deployment_commit: db80e3fbfed57e9f75f15ab83ef8a192a0316059
+- deployment_id: 6ada5484e1776686525b58a4
+- publication_verification: docs/verification/2026-10-23-product-docs-release.md
+- content_receipt: docs/content-receipts/pending/2026-10-23-ambi-product-teardown.json
+- reader_feedback: pending；尚未取得读者反馈，保持待观察。
 - retro_notes: 本轮未登录、连接账户、录音或执行实际任务；记忆纠错、后台恢复与外部发送的验收题均明确标为尚未执行。实现路线属于设计建议，未推断 Ambi 后端。保留本卡研究附录与原有配图交接；无额外私人素材或待追加授权事项。成稿使用独立 slug `ambi-memory-to-work`，规避现有队列检查对同 slug 双语文章的重复误报；最终 briefs:check 对本卡无报错，全库仍有 pi、n8n、openclaw 三条既有英文重复提示，未修改其他任务或共享脚本。
 
 ## 本次公开研究附录

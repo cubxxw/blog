@@ -1,0 +1,45 @@
+{
+  "schema": "blog-content-receipt/v1",
+  "id": "2026-10-23-tana-product-teardown",
+  "status": "pending",
+  "publication_status": "published",
+  "created_at": "2026-10-23T02:51:14.772+08:00",
+  "published_at": "2026-10-23T02:26:13.131+08:00",
+  "brief": "_briefs/2026-10-23-tana-product-teardown.md",
+  "articles": {
+    "zh": "content/zh/ai-agent/posts/tana-from-notes-to-meeting-work.md",
+    "en": "content/en/ai-agent/posts/tana-from-notes-to-meeting-work.md"
+  },
+  "public_urls": {
+    "zh": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+    "en": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/"
+  },
+  "production": {
+    "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "netlify_deploy_id": "6ada5484e1776686525b58a4",
+    "state": "ready",
+    "evidence": "docs/verification/2026-10-23-product-docs-release/netlify-production.json"
+  },
+  "verification": {
+    "browser_status": "passed",
+    "browser_evidence": "docs/verification/2026-10-23-product-docs-release/browser-acceptance.json",
+    "main_regression_status": "in_progress",
+    "main_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855910",
+    "main_run_attempt": 1,
+    "lighthouse_status": "in_progress",
+    "lighthouse_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855352",
+    "lighthouse_run_attempt": 2,
+    "lighthouse_first_attempt": "failed: PROTOCOL_TIMEOUT on /projects/; preserved before retry"
+  },
+  "reader_feedback": {
+    "status": "pending",
+    "received_at": null,
+    "observations": [],
+    "watch_question": "读者能否分清 Tana 与 Tana Outliner，并据文中步骤找到同一任务的身份、提案和执行结果。",
+    "next_action": "取得真实读者反馈后记录来源、日期与需要修订之处；此前保持待观察，不推断阅读效果或产品实测结果。"
+  },
+  "upstream_handoff": {
+    "status": "pending",
+    "note": "博客侧已建立可导入回执；当前环境未带入上游交接目录，未声称已导入 Brain。"
+  }
+}
