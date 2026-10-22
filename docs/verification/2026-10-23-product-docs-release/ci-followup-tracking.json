@@ -1,0 +1,60 @@
+{
+  "schema": "blog-ci-followup-tracking/1",
+  "observed_at": "2026-10-22T20:47:10.167907+00:00",
+  "original_main_authority": {
+    "conclusion": "cancelled",
+    "created_at": "2026-10-22T18:23:01Z",
+    "event": "push",
+    "head_branch": "main",
+    "head_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "html_url": "https://github.com/cubxxw/blog/actions/runs/39830855910",
+    "id": 39830855910,
+    "name": "Blog Quality and Release",
+    "run_attempt": 1,
+    "status": "completed",
+    "updated_at": "2026-10-22T20:24:23Z"
+  },
+  "repair_runs": [
+    {
+      "id": 39843952273,
+      "name": "Blog Quality and Release",
+      "head_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_attempt": 1,
+      "created_at": "2026-10-22T19:52:57Z",
+      "run_started_at": "2026-10-22T19:52:57Z",
+      "updated_at": "2026-10-22T19:53:02Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39843952273",
+      "observed_at": "2026-10-22T20:47:10.167907+00:00"
+    },
+    {
+      "id": 39850588715,
+      "name": "Blog Quality and Release",
+      "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_attempt": 1,
+      "created_at": "2026-10-22T20:38:22Z",
+      "run_started_at": "2026-10-22T20:38:22Z",
+      "updated_at": "2026-10-22T20:38:26Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588715",
+      "observed_at": "2026-10-22T20:47:10.167907+00:00"
+    },
+    {
+      "id": 39850588644,
+      "name": "Lighthouse CI",
+      "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_attempt": 1,
+      "created_at": "2026-10-22T20:38:22Z",
+      "run_started_at": "2026-10-22T20:38:22Z",
+      "updated_at": "2026-10-22T20:38:26Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588644",
+      "observed_at": "2026-10-22T20:47:10.167907+00:00"
+    }
+  ],
+  "result_source": "GitHub run/check records linked below are the durable result source. These snapshots describe only observed_at; a running state is not a pass.",
+  "rules_unchanged": true
+}

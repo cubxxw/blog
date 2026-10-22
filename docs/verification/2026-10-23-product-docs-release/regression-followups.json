@@ -41,7 +41,7 @@
     },
     {
       "group": "Audio source continuity",
-      "observation": "Desktop speaker-volume trace expected rain source identity 1, observed 2; mobile browser trace timed out at roomAudioSources/page.evaluate (90,000ms).",
+      "observation": "Desktop speaker-volume trace expected music source identity 1, observed 2 at later.id == music.id (line 25, column 58); the rain identity assertion had not yet run. Mobile browser trace timed out at roomAudioSources/page.evaluate (90,000ms).",
       "causal_diagnosis": "not complete"
     }
   ],
@@ -186,7 +186,39 @@
     "run_started_at": "2026-10-22T19:52:57Z",
     "updated_at": "2026-10-22T19:53:02Z",
     "html_url": "https://github.com/cubxxw/blog/actions/runs/39843952273",
-    "observed_at": "2026-10-22T20:37:31.023809+00:00"
+    "observed_at": "2026-10-22T20:47:10.167907+00:00"
   },
-  "observed_at": "2026-10-22T20:37:31.023809+00:00"
+  "observed_at": "2026-10-22T20:47:10.167907+00:00",
+  "source_review_notes": [
+    {
+      "file": "assets/js/space/world-jiangnan.js:307,322",
+      "observation": "The scene clamps elapsed time to 0.12 seconds before passing it to the resident; createCatClock can substep up to 2 seconds but receives this clamped delta. This can slow cat progress under sparse software-rendered frames.",
+      "status": "candidate cause; not repaired or claimed fully causal"
+    },
+    {
+      "file": "tests/e2e/space-living-motion.spec.ts:38,72",
+      "observation": "Approach failure occurs immediately after the keyboard activation; resize sampling sees only one frame. Both scenarios reproduced on the immutable original deployment.",
+      "status": "unresolved; no increased waits or relaxed sampling assertions"
+    },
+    {
+      "file": "tests/e2e/space-speaker-volume.spec.ts:20,25",
+      "observation": "Music identity is captured before the physical vinyl entry. The later comparison fails for music (not rain). Opening/selection side effects still require isolation from the gain change.",
+      "status": "unresolved; do not remove source continuity assertion"
+    }
+  ],
+  "additional_diagnostic_evidence": "remaining-space-diagnostics.json",
+  "latest_mobile_repair_ci": {
+    "id": 39850588715,
+    "name": "Blog Quality and Release",
+    "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+    "status": "in_progress",
+    "conclusion": null,
+    "run_attempt": 1,
+    "created_at": "2026-10-22T20:38:22Z",
+    "run_started_at": "2026-10-22T20:38:22Z",
+    "updated_at": "2026-10-22T20:38:26Z",
+    "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588715",
+    "observed_at": "2026-10-22T20:47:10.167907+00:00"
+  },
+  "live_result_source": "ci-followup-tracking.json and its linked GitHub run/check records; snapshots are explicitly as-of observations."
 }

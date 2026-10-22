@@ -48,7 +48,7 @@
       "run_started_at": "2026-10-22T19:52:57Z",
       "updated_at": "2026-10-22T19:53:02Z",
       "html_url": "https://github.com/cubxxw/blog/actions/runs/39843952273",
-      "observed_at": "2026-10-22T20:37:31.023809+00:00"
+      "observed_at": "2026-10-22T20:47:10.167907+00:00"
     },
     "repair_lighthouse": {
       "source_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
@@ -57,7 +57,22 @@
       "status": "failure",
       "reason": "Repeated /projects/ CDP collection timeout; full assertions not reached.",
       "evidence": "docs/verification/2026-10-23-product-docs-release/repair-lighthouse-attempt2-artifact.json"
-    }
+    },
+    "mobile_repair_full_ci": {
+      "id": 39850588715,
+      "name": "Blog Quality and Release",
+      "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_attempt": 1,
+      "created_at": "2026-10-22T20:38:22Z",
+      "run_started_at": "2026-10-22T20:38:22Z",
+      "updated_at": "2026-10-22T20:38:26Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588715",
+      "observed_at": "2026-10-22T20:47:10.167907+00:00"
+    },
+    "ci_result_tracking": "docs/verification/2026-10-23-product-docs-release/ci-followup-tracking.json",
+    "later_production_readback": "docs/verification/2026-10-23-product-docs-release/production-after-final-test-repairs.json"
   },
   "reader_feedback": {
     "status": "pending",
@@ -70,5 +85,5 @@
     "status": "pending",
     "note": "博客侧已建立可导入回执；当前环境未带入上游交接目录，未声称已导入 Brain。"
   },
-  "updated_at": "2026-10-22T20:37:31.023809+00:00"
+  "updated_at": "2026-10-22T20:47:10.167907+00:00"
 }

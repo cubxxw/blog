@@ -24,6 +24,8 @@
 
 校验修复与诊断提交 `90c194b9d3f89f198cd786c483ec39e7230a619d` 于 `2026-10-23T03:55:57.286+08:00` 部署，Netlify deployment 为 `6ada69992b9b95778fb14a90`。相对首次文章发布，文章、原图与应用实现无变化，Tana 中文页的线上 HTML 仍与首次验收相同。见 [修复后生产读回](2026-10-23-product-docs-release/production-after-repairs.json)。
 
+手机测试修复与主回归终态证据提交 `08783e4e190f587527fdf8aeecae1b5b6279d3fb` 于 `2026-10-23T04:41:17.158+08:00` 部署，Netlify deployment 为 `6ada743df7250e29aced2af2`、ready。随后读回六个正式链接：6/6 HTTP 200，语言、canonical、标题与全部定稿 H2 顺序正确；六张原图 MIME/SHA-256 一致，Tana 中文 HTML 仍与首次验收逐字节相同，读回期间部署未变。文章、原图、应用与工作流相对 `db80e3fb…` 均无差异，见 [六页再次读回](2026-10-23-product-docs-release/production-after-final-test-repairs.json)。平台快照均标注观察时间；后续收尾记录提交不改写首次文章的 `published_at`。
+
 ## 正式站浏览器验收
 
 目标流程：进入每篇正式文章 → 确认全文、图片与参考资料 → 实际点击中英文切换 → 确认同篇对应语言；另以手机尺寸阅读三篇中文。
@@ -90,7 +92,11 @@ PR 的 [平台注释](2026-10-23-product-docs-release/pr-annotations.json) 明�
 
 这次定向修复验证不替代冻结产物的完整 CI。其余 Space 时序与交互失败、完整 legacy 未执行部分及运行预算问题仍需继续跟踪；没有删除场景、调低阈值或把未完成结果写为通过。现有 Space 工作 [#472](https://github.com/cubxxw/blog/pull/472) 与文章分页工作 [#474](https://github.com/cubxxw/blog/pull/474) 保持各自范围，未合并或覆盖这些并行改动。
 
-修复提交 `90c194b9…` 的新主分支运行 [39843952273](https://github.com/cubxxw/blog/actions/runs/39843952273) 已启动，当前 [快照](2026-10-23-product-docs-release/repair-ci.json) 为 in_progress，不能作为通过证据。原版主运行仍是本批最终判定依据。[剩余回归待办](2026-10-23-product-docs-release/regression-followups.json) 按主分支结果保留 5 个未解决的已观察场景：靠近/拖拽动画、缩放时重定向镜头、猫唤醒后到达、音量调整保持音源身份、手机浏览器连续音频超时；并保留未完成覆盖与未确认的底层原因。PR 独有但主分支已通过的失败单独存为历史上下文，不混入主分支最终失败数。
+修复提交 `90c194b9…` 的新主分支运行 [39843952273](https://github.com/cubxxw/blog/actions/runs/39843952273) 已启动，在本记录采样时 [快照](2026-10-23-product-docs-release/repair-ci.json) 为 in_progress，不能作为通过证据。手机修复提交 `08783e4e…` 也已触发完整检查 [39850588715](https://github.com/cubxxw/blog/actions/runs/39850588715) 与 Lighthouse [39850588644](https://github.com/cubxxw/blog/actions/runs/39850588644)。带观察时刻的 [追踪记录](2026-10-23-product-docs-release/ci-followup-tracking.json) 保存三个快照；各链接对应的 GitHub run/check 记录保留后续实际终态，不用采样中的运行状态推断通过。
+
+原版主运行仍是本批最终判定依据。[剩余回归待办](2026-10-23-product-docs-release/regression-followups.json) 按主分支结果保留 5 个未解决的已观察场景：靠近/拖拽动画、缩放时重定向镜头、猫唤醒后到达、音量调整保持音源身份、手机浏览器连续音频超时；并保留未完成覆盖与未确认的底层原因。PR 独有但主分支已通过的失败单独存为历史上下文，不混入主分支最终失败数。
+
+额外诊断在不可变原部署上使用未经修改的原场景，四项桌面均再次失败；手机 native/compatible 两项也超时，其中 compatible 本地在房间鼠标移动阶段超时，主分支原 trace 则在后续音频读回超时。此差异与本地额外 native 失败分别记录，不改写主分支 27 项失败数，也不据此断言底层原因完全相同。[诊断摘要](2026-10-23-product-docs-release/remaining-space-diagnostics.json) 保留结果与原始日志 SHA-256。进一步源码检查发现猫时钟收到先被截为 0.12 秒的场景 delta，这是稀疏渲染下动作偏慢的候选原因；音乐身份校验的失败位于 `later.id == music.id`，不是尚未执行的雨声音源断言。相关原因仍待隔离验证，应用实现、场景、超时和音源连续性断言均未修改。
 
 修复提交的 Lighthouse [39843952208](https://github.com/cubxxw/blog/actions/runs/39843952208) 第 1 次再次在 `/projects/` 采集时出现 DevTools `Network.getResponseBody` 的 `PROTOCOL_TIMEOUT`，没有完成整套测量。先保留 [日志摘录](2026-10-23-product-docs-release/repair-lighthouse-attempt1-excerpt.log) 及 [artifact 12455770798 元信息](2026-10-23-product-docs-release/repair-lighthouse-attempt1-artifact.json)，下载 3,920,747 字节并核对 SHA-256 `3784776a11299ddd7795e767c6439af92e9ad8af0ed315fa707b453cb9c73c67` 一致，再仅重试失败 job。第 2 次于 `2026-10-23T04:30:25+08:00` 仍以相同采集错误结束，failure；只产生前 9 页报告，未到整套断言。[第 2 次日志](2026-10-23-product-docs-release/repair-lighthouse-attempt2-excerpt.log)、[报告清单](2026-10-23-product-docs-release/repair-lighthouse-attempt2-summary.json) 与 [artifact 12456407357 核验](2026-10-23-product-docs-release/repair-lighthouse-attempt2-artifact.json) 已保存，下载 SHA-256 `214e6d3cb56beb7102baab0738fdfdd1d9a130c58e2872722782d789c1e11bbd` 一致。见最终 [快照](2026-10-23-product-docs-release/repair-lighthouse.json)。采集不稳定继续跟踪，底层原因未完全确定，未直接归为基础设施故障，也未请求第 3 次盲目重跑或放宽规则。
 
