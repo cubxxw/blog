@@ -62,10 +62,19 @@ for (const prefix of ['', '/zh']) {
     if (await workspace.getAttribute('data-world-failed') === 'true' && await page.locator('[data-boot-skip]').isVisible()) {
       await page.locator('[data-boot-skip]').click();
     }
-    // Enter through the visible café control. BEAR OS exposes Product Lab in
-    // its native menu; its separate Lab view switch is deliberately hidden.
-    if (await workspace.getAttribute('data-cafe-mode') !== 'desktop') await page.locator('[data-cafe-enter]').click();
+    // The Jiangnan room hides the legacy floating entry. Use its supported
+    // keyboard journey, then operate the real native menu. Other rooms retain
+    // the visible entry; keep the same readiness and per-operation deadlines.
+    if (await workspace.getAttribute('data-cafe-mode') !== 'desktop') {
+      if (await workspace.getAttribute('data-world-renderer') === 'jiangnan') {
+        await page.keyboard.press('Control+k');
+        await expect(page.locator('[data-space-search]')).toBeVisible();
+        await page.locator('[data-space-search-close]').click();
+      } else await page.locator('[data-cafe-enter]').click();
+    }
     await expect(workspace).toHaveAttribute('data-cafe-mode', 'desktop', { timeout: 30_000 });
+    const expand = page.locator('.jiangnan-computer-expand');
+    if (await expand.isVisible()) await expand.click();
     await page.locator('[data-space-menu-trigger]').click();
     await page.locator('.space-menu [data-product-view-button="lab"]').click();
     await expect(root).toHaveAttribute('data-product-view', 'lab');

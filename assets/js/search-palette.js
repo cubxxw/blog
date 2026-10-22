@@ -23,9 +23,8 @@
     catch { return window.location.origin; }
   })();
 
-  if (!palette) return;
+  if (!palette || window.__searchPaletteReady) return;
   const aiEnabled = palette.dataset.aiEnabled !== 'false';
-  window.__searchPaletteReady = true;
 
   const isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
   const labels = isZh ? {
@@ -871,6 +870,10 @@
   });
 
   // Events
+  document.addEventListener('search:activate', event => {
+    if (event.detail?.returnFocus) lastFocusedElement = event.detail.returnFocus;
+    openPalette();
+  });
   triggers.forEach(t => t.addEventListener('click', (e) => {
     e.preventDefault();
     openPalette();
@@ -927,4 +930,6 @@
   });
 
   updateAiTrigger();
+  window.__searchPaletteReady = true;
+  document.dispatchEvent(new Event('search:controller-ready'));
 })();

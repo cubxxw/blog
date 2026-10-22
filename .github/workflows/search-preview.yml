@@ -1,0 +1,89 @@
+name: Search preview diagnostics
+
+# Fast Linux feedback for daily search branches. The full frozen-artifact gate
+# remains required; this read-only preview job never publishes or calls AI.
+on:
+  push:
+    branches: ['codex/blog-daily-*']
+    paths:
+      - 'assets/js/search-*.js'
+      - 'layouts/partials/extend_head.html'
+      - 'tests/e2e/search-bootstrap.spec.ts'
+      - 'playwright.search-preview.config.ts'
+      - '.github/workflows/search-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: search-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.23.1'
+          cache: npm
+      - name: Install locked test tools
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx --no-install playwright install --with-deps chromium
+      - name: Resolve this exact source preview
+        env:
+          SEARCH_EXPECTED_SHA: ${{ github.sha }}
+          SEARCH_EXPECTED_BRANCH: ${{ github.ref_name }}
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          for (let attempt = 0; attempt < 24; attempt++) {
+            const response = await fetch('https://api.netlify.com/api/v1/sites/cubxxw.netlify.app/deploys?per_page=30', { signal: AbortSignal.timeout(15000) });
+            if (!response.ok) throw new Error(`Netlify read failed: ${response.status}`);
+            const rows = await response.json();
+            const latest = rows.find(row => row.branch === process.env.SEARCH_EXPECTED_BRANCH && row.state === 'ready');
+            if (latest?.commit_ref === process.env.SEARCH_EXPECTED_SHA) {
+              const url = new URL(latest.deploy_ssl_url);
+              if (url.protocol !== 'https:' || !url.hostname.endsWith('.netlify.app')) throw new Error('Unexpected preview origin');
+              fs.writeFileSync('search-preview-before.json', JSON.stringify({ id: latest.id, sourceSha: latest.commit_ref, branch: latest.branch, url: url.origin }));
+              fs.appendFileSync(process.env.GITHUB_ENV, `SEARCH_PREVIEW_URL=${url.origin}\n`);
+              break;
+            }
+            if (attempt === 23) throw new Error('This SHA preview did not become ready');
+            await new Promise(resolve => setTimeout(resolve, 25000));
+          }
+          JS
+      - name: Exercise real code with controlled failure and index inputs
+        run: npx --no-install playwright test --config=playwright.search-preview.config.ts
+      - name: Verify the preview was not replaced
+        if: always()
+        env:
+          SEARCH_EXPECTED_SHA: ${{ github.sha }}
+          SEARCH_EXPECTED_BRANCH: ${{ github.ref_name }}
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          if (!fs.existsSync('search-preview-before.json')) throw new Error('Preview identity was not established');
+          const before = JSON.parse(fs.readFileSync('search-preview-before.json', 'utf8'));
+          const response = await fetch('https://api.netlify.com/api/v1/sites/cubxxw.netlify.app/deploys?per_page=30', { signal: AbortSignal.timeout(15000) });
+          if (!response.ok) throw new Error(`Netlify read failed: ${response.status}`);
+          const rows = await response.json();
+          const latest = rows.find(row => row.branch === process.env.SEARCH_EXPECTED_BRANCH && row.state === 'ready');
+          fs.writeFileSync('search-preview-after.json', JSON.stringify({ id: latest?.id, sourceSha: latest?.commit_ref }));
+          if (latest?.id !== before.id || latest?.commit_ref !== process.env.SEARCH_EXPECTED_SHA) throw new Error('Preview changed during diagnostics');
+          JS
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: search-preview-${{ github.run_id }}
+          path: |
+            search-preview-before.json
+            search-preview-after.json
+            test-results/search-preview/
+          retention-days: 30

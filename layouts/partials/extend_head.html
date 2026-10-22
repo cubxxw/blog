@@ -91,20 +91,18 @@
 {{- end }}
 
 {{- /* Search Command Palette dependencies.
-       Search is an explicit interaction, so do not parse Fuse and the full
-       palette controller during initial page load. A tiny bootstrap listens
-       for the search button / keyboard shortcut, loads both fingerprinted
-       files in order, then replays the user's action. This removes roughly
-       47 KB of JavaScript from the critical path on every non-search page. */ -}}
-{{- $fuseJS := resources.Get "js/vendor/fuse.min.js" | fingerprint }}
-{{- $searchPaletteJS := resources.Get "js/search-palette.js" | minify | fingerprint }}
+       The small bootstrap opens an accessible loading dialog immediately.
+       Fuse and the controller stay lazy, in one fingerprinted request; no
+       sequential engine/controller waterfall or synthetic click replay. */ -}}
+{{- /* Minify our controller before concatenation so the vendored Fuse
+       copyright/license notice remains verbatim in the served bundle. */ -}}
+{{- $searchPaletteJS := resources.Get "js/search-palette.js" | minify }}
+{{- $searchControllerJS := slice (resources.Get "js/vendor/fuse.min.js") $searchPaletteJS | resources.Concat "js/search-controller.js" | fingerprint }}
 {{- $searchBootstrapJS := resources.Get "js/search-bootstrap.js" | js.Build (dict
       "minify" hugo.IsProduction
       "params" (dict
-        "fuseSrc" $fuseJS.RelPermalink
-        "fuseIntegrity" $fuseJS.Data.Integrity
-        "paletteSrc" $searchPaletteJS.RelPermalink
-        "paletteIntegrity" $searchPaletteJS.Data.Integrity
+        "controllerSrc" $searchControllerJS.RelPermalink
+        "controllerIntegrity" $searchControllerJS.Data.Integrity
       )
     ) | fingerprint }}
 <script defer src="{{ $searchBootstrapJS.RelPermalink }}" integrity="{{ $searchBootstrapJS.Data.Integrity }}"></script>
