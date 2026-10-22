@@ -145,7 +145,8 @@ test('Chinese first viewport keeps a timely webfont fallback when local CJK font
   const nodes=page('/zh/growth/posts/2025-annual-review/');
   const fonts=nodes.find(n=>n.tagName==='link'&&attribute(n,'id')==='zh-prose-fonts');
   assert.ok(fonts);
-  assert.equal(attribute(fonts,'rel'),'stylesheet','register faces before text layout');
+  assert.equal(attribute(fonts,'rel'),'preload','a cold font manifest cannot block first paint');
+  assert.equal(attribute(fonts,'as'),'style');
   const fontCSS=fs.readFileSync(path.join(root,attribute(fonts,'href')),'utf8');
   assert.match(fontCSS,/font-display:optional/);
   assert.doesNotMatch(fontCSS,/font-display:swap|url\(\.\//);

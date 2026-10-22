@@ -21,7 +21,7 @@ function headLinks(html:string){
   };walk(parse(html,{scriptingEnabled:false}));return links;
 }
 
-test('font policy keeps optional English fonts and synchronous self-hosted Chinese article fonts',async({page})=>{
+test('font policy keeps optional English fonts and Chinese fonts that cannot block first paint',async({page})=>{
   const fullFamilies=['Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700','Inter:wght@400;500;600;700','Noto Serif:ital,wght@0,400;0,700;1,400','JetBrains Mono:wght@400;500;700','Space Grotesk:wght@500;600;700'];
   const homeFamilies=['Inter:wght@400;500;600;700','JetBrains Mono:wght@400;500;700','Space Grotesk:wght@500;600;700'];
   for(const row of [
@@ -54,7 +54,9 @@ test('font policy keeps optional English fonts and synchronous self-hosted Chine
     }
     const chinese=links.filter(link=>link.id==='zh-prose-fonts');expect(chinese).toHaveLength(row.zh?1:0);
     if(row.zh){
-      expect(chinese[0].rel).toBe('stylesheet');expect(chinese[0].noscript).toBe(false);expect(chinese[0].onload).toBe('');
+      expect(chinese[0].rel).toBe('preload');expect(chinese[0].as).toBe('style');expect(chinese[0].noscript).toBe(false);
+      const fallback=links.filter(link=>link.noscript&&link.href===chinese[0].href);
+      expect(fallback).toHaveLength(1);expect(fallback[0].rel).toBe('stylesheet');
       expect(chinese[0].href).toMatch(/^\/assets\/fonts\/noto-serif-sc-reading\.min\.[a-f0-9]+\.css$/);
       const manifest=await page.request.get(chinese[0].href);expect(manifest.ok()).toBe(true);
       const css=await manifest.text();expect(css).toContain('font-display:optional');expect(css).not.toContain('font-display:swap');

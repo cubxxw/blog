@@ -1,0 +1,436 @@
+{
+  "scope": {
+    "host": "cubxxw.com",
+    "responseAggregation": "byPage",
+    "start": "2026-08-24",
+    "end": "2026-10-18",
+    "asOf": "2026-10-22T12:00:00Z",
+    "note": "Whole snapshot collection, not the three-day 2026-10-22 file alone; returned page rows, not property chart totals"
+  },
+  "totals": {
+    "previous": {
+      "metrics": {
+        "clicks": 141,
+        "impressions": 93015,
+        "ctr": 0.0015158845347524592,
+        "position": 10.647368703972477
+      },
+      "pageCount": 511,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-08-24",
+          "2026-08-25",
+          "2026-08-26",
+          "2026-08-27",
+          "2026-08-28",
+          "2026-08-29",
+          "2026-08-30",
+          "2026-08-31",
+          "2026-09-01",
+          "2026-09-02",
+          "2026-09-03",
+          "2026-09-04",
+          "2026-09-05",
+          "2026-09-06",
+          "2026-09-07",
+          "2026-09-08",
+          "2026-09-09",
+          "2026-09-10",
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-13",
+          "2026-09-14",
+          "2026-09-15",
+          "2026-09-16",
+          "2026-09-17",
+          "2026-09-18",
+          "2026-09-19",
+          "2026-09-20"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "current": {
+      "metrics": {
+        "clicks": 141,
+        "impressions": 35653,
+        "ctr": 0.003954786413485541,
+        "position": 8.906964350826017
+      },
+      "pageCount": 449,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24",
+          "2026-09-25",
+          "2026-09-26",
+          "2026-09-27",
+          "2026-09-28",
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04",
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08",
+          "2026-10-09",
+          "2026-10-10",
+          "2026-10-11",
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "host": "cubxxw.com"
+  },
+  "declines": [
+    {
+      "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "previous": {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 2,
+        "impressions": 13115,
+        "ctr": 0.0001524971406786123,
+        "position": 6.977201677468547
+      },
+      "current": {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 1021,
+        "ctr": 0,
+        "position": 7.189030362389814
+      },
+      "impressionDelta": -12094
+    },
+    {
+      "page": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+      "previous": {
+        "page": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+        "clicks": 10,
+        "impressions": 11964,
+        "ctr": 0.0008358408559010365,
+        "position": 9.009361417586092
+      },
+      "current": {
+        "page": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+        "clicks": 3,
+        "impressions": 2501,
+        "ctr": 0.0011995201919232307,
+        "position": 8.445421831267494
+      },
+      "impressionDelta": -9463
+    },
+    {
+      "page": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+      "previous": {
+        "page": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+        "clicks": 0,
+        "impressions": 4198,
+        "ctr": 0,
+        "position": 8.692234397332063
+      },
+      "current": {
+        "page": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+        "clicks": 0,
+        "impressions": 282,
+        "ctr": 0,
+        "position": 7.223404255319149
+      },
+      "impressionDelta": -3916
+    },
+    {
+      "page": "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/",
+      "previous": {
+        "page": "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/",
+        "clicks": 1,
+        "impressions": 4349,
+        "ctr": 0.00022993791676247414,
+        "position": 11.414118188089216
+      },
+      "current": {
+        "page": "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/",
+        "clicks": 3,
+        "impressions": 1662,
+        "ctr": 0.0018050541516245488,
+        "position": 7.551143200962696
+      },
+      "impressionDelta": -2687
+    },
+    {
+      "page": "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/",
+      "previous": {
+        "page": "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/",
+        "clicks": 3,
+        "impressions": 3419,
+        "ctr": 0.0008774495466510676,
+        "position": 8.358876864580287
+      },
+      "current": {
+        "page": "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/",
+        "clicks": 1,
+        "impressions": 1216,
+        "ctr": 0.0008223684210526315,
+        "position": 8.25
+      },
+      "impressionDelta": -2203
+    }
+  ],
+  "queryCoverage": {
+    "previous": {
+      "comparable": true,
+      "reason": null,
+      "host": "cubxxw.com",
+      "querySource": {
+        "identity": {
+          "property": "sc-domain:cubxxw.com",
+          "searchType": "web",
+          "dataState": "final"
+        },
+        "scope": {
+          "kind": "host",
+          "host": "cubxxw.com"
+        },
+        "metrics": {
+          "clicks": 21,
+          "impressions": 8949,
+          "ctr": 0.0023466309084813944,
+          "position": 21.4402726561627
+        },
+        "coverage": {
+          "daysCounted": 28,
+          "countedDates": [
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26",
+            "2026-08-27",
+            "2026-08-28",
+            "2026-08-29",
+            "2026-08-30",
+            "2026-08-31",
+            "2026-09-01",
+            "2026-09-02",
+            "2026-09-03",
+            "2026-09-04",
+            "2026-09-05",
+            "2026-09-06",
+            "2026-09-07",
+            "2026-09-08",
+            "2026-09-09",
+            "2026-09-10",
+            "2026-09-11",
+            "2026-09-12",
+            "2026-09-13",
+            "2026-09-14",
+            "2026-09-15",
+            "2026-09-16",
+            "2026-09-17",
+            "2026-09-18",
+            "2026-09-19",
+            "2026-09-20"
+          ],
+          "provenCompleteDays": 28,
+          "expectedDays": 28,
+          "metricsComplete": true,
+          "partial": false
+        },
+        "basis": "hostname-filtered query×page rows (page-filtered byPage semantics); returned query rows are incomplete (anonymous queries, internal row limits)"
+      },
+      "pageSource": {
+        "identity": {
+          "property": "sc-domain:cubxxw.com",
+          "searchType": "web",
+          "dataState": "final"
+        },
+        "scope": {
+          "kind": "host",
+          "host": "cubxxw.com"
+        },
+        "metrics": {
+          "clicks": 141,
+          "impressions": 93015,
+          "ctr": 0.0015158845347524592,
+          "position": 10.647368703972477
+        },
+        "coverage": {
+          "daysCounted": 28,
+          "countedDates": [
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26",
+            "2026-08-27",
+            "2026-08-28",
+            "2026-08-29",
+            "2026-08-30",
+            "2026-08-31",
+            "2026-09-01",
+            "2026-09-02",
+            "2026-09-03",
+            "2026-09-04",
+            "2026-09-05",
+            "2026-09-06",
+            "2026-09-07",
+            "2026-09-08",
+            "2026-09-09",
+            "2026-09-10",
+            "2026-09-11",
+            "2026-09-12",
+            "2026-09-13",
+            "2026-09-14",
+            "2026-09-15",
+            "2026-09-16",
+            "2026-09-17",
+            "2026-09-18",
+            "2026-09-19",
+            "2026-09-20"
+          ],
+          "provenCompleteDays": 28,
+          "expectedDays": 28,
+          "metricsComplete": true,
+          "partial": false
+        },
+        "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+      },
+      "note": "the gap between query rows and page rows is NOT a measured coverage loss: returned query rows are incomplete (anonymous queries and internal row limits) and must not be treated as zero traffic or substituted for page totals"
+    },
+    "current": {
+      "comparable": true,
+      "reason": null,
+      "host": "cubxxw.com",
+      "querySource": {
+        "identity": {
+          "property": "sc-domain:cubxxw.com",
+          "searchType": "web",
+          "dataState": "final"
+        },
+        "scope": {
+          "kind": "host",
+          "host": "cubxxw.com"
+        },
+        "metrics": {
+          "clicks": 35,
+          "impressions": 3009,
+          "ctr": 0.01163177135260884,
+          "position": 16.825191093386508
+        },
+        "coverage": {
+          "daysCounted": 28,
+          "countedDates": [
+            "2026-09-21",
+            "2026-09-22",
+            "2026-09-23",
+            "2026-09-24",
+            "2026-09-25",
+            "2026-09-26",
+            "2026-09-27",
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30",
+            "2026-10-01",
+            "2026-10-02",
+            "2026-10-03",
+            "2026-10-04",
+            "2026-10-05",
+            "2026-10-06",
+            "2026-10-07",
+            "2026-10-08",
+            "2026-10-09",
+            "2026-10-10",
+            "2026-10-11",
+            "2026-10-12",
+            "2026-10-13",
+            "2026-10-14",
+            "2026-10-15",
+            "2026-10-16",
+            "2026-10-17",
+            "2026-10-18"
+          ],
+          "provenCompleteDays": 28,
+          "expectedDays": 28,
+          "metricsComplete": true,
+          "partial": false
+        },
+        "basis": "hostname-filtered query×page rows (page-filtered byPage semantics); returned query rows are incomplete (anonymous queries, internal row limits)"
+      },
+      "pageSource": {
+        "identity": {
+          "property": "sc-domain:cubxxw.com",
+          "searchType": "web",
+          "dataState": "final"
+        },
+        "scope": {
+          "kind": "host",
+          "host": "cubxxw.com"
+        },
+        "metrics": {
+          "clicks": 141,
+          "impressions": 35653,
+          "ctr": 0.003954786413485541,
+          "position": 8.906964350826017
+        },
+        "coverage": {
+          "daysCounted": 28,
+          "countedDates": [
+            "2026-09-21",
+            "2026-09-22",
+            "2026-09-23",
+            "2026-09-24",
+            "2026-09-25",
+            "2026-09-26",
+            "2026-09-27",
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30",
+            "2026-10-01",
+            "2026-10-02",
+            "2026-10-03",
+            "2026-10-04",
+            "2026-10-05",
+            "2026-10-06",
+            "2026-10-07",
+            "2026-10-08",
+            "2026-10-09",
+            "2026-10-10",
+            "2026-10-11",
+            "2026-10-12",
+            "2026-10-13",
+            "2026-10-14",
+            "2026-10-15",
+            "2026-10-16",
+            "2026-10-17",
+            "2026-10-18"
+          ],
+          "provenCompleteDays": 28,
+          "expectedDays": 28,
+          "metricsComplete": true,
+          "partial": false
+        },
+        "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+      },
+      "note": "the gap between query rows and page rows is NOT a measured coverage loss: returned query rows are incomplete (anonymous queries and internal row limits) and must not be treated as zero traffic or substituted for page totals"
+    }
+  },
+  "pending": [
+    "GSC UI verification on the same filter/date basis is pending (parent-owned live gate)"
+  ]
+}

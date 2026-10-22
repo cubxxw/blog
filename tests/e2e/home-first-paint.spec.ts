@@ -50,10 +50,13 @@ test('mobile primary links remain readable within stable columns', async ({ page
   }
 });
 
-test('Chinese first-screen text has a loaded webfont fallback before any reading scroll', async ({ page }) => {
+test.describe('Chinese fonts without JavaScript', () => {
+test.use({ javaScriptEnabled: false });
+test('Chinese first-screen text retains the original complete self-hosted font coverage', async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 823 });
   await page.goto('/zh/growth/posts/2025-annual-review/');
-  await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'stylesheet');
+  const fontCSS = await page.locator('#zh-prose-fonts').getAttribute('href');
+  await expect(page.locator(`noscript link[href="${fontCSS}"]`)).toHaveAttribute('rel', 'stylesheet');
   const title = page.locator('.post-title');
   const summary = page.locator('.article-tldr');
   await expect(title).toBeVisible();
@@ -66,6 +69,37 @@ test('Chinese first-screen text has a loaded webfont fallback before any reading
   for (const result of coverage) { expect(result.count).toBeGreaterThan(0); expect(result.loaded).toBe(true); }
   expect(await title.evaluate(el => getComputedStyle(el).fontFamily)).toContain('Noto Serif SC');
   expect(await summary.evaluate(el => getComputedStyle(el).fontFamily)).toContain('Noto Serif SC');
+});
+});
+
+test('slow Chinese font CSS cannot delay visible text or move an established read point', async ({ page }) => {
+  await page.setViewportSize({ width: 412, height: 823 });
+  let releaseCSS!: () => void;
+  const paused = new Promise<void>(resolve => { releaseCSS = resolve; });
+  await page.route('**/noto-serif-sc-reading*.css', async route => {
+    await paused;
+    await route.fallback();
+  });
+  try {
+    await page.goto('/zh/growth/posts/2025-annual-review/', { waitUntil: 'commit' });
+    const title = page.locator('.post-title');
+    await expect(title).toBeVisible();
+    const marker = page.locator('.post-content > p').first();
+    await marker.scrollIntoViewIfNeeded();
+    const position = () => marker.evaluate(el => ({ top: el.getBoundingClientRect().top, scroll: scrollY, text: el.textContent }));
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    const before = await position();
+    const response = page.waitForResponse(response => /noto-serif-sc-reading.*\.css/.test(response.url()));
+    releaseCSS();
+    expect((await response).ok()).toBe(true);
+    await page.waitForLoadState('load');
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    expect(await position()).toEqual(before);
+    await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'preload');
+    expect(await page.evaluate(() => Array.from(document.fonts).some(face => face.family.replace(/["']/g, '').toLowerCase() === 'noto serif sc'))).toBe(false);
+  } finally {
+    releaseCSS();
+  }
 });
 
 test('cold navigation does not synchronously write an absent menu scroll position', async ({ page }) => {
