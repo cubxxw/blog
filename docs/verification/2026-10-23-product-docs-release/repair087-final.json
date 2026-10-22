@@ -1,0 +1,96 @@
+{
+  "run_id": 39850588715,
+  "source_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+  "url": "https://github.com/cubxxw/blog/actions/runs/39850588715",
+  "status": "completed",
+  "conclusion": "cancelled",
+  "reason": "Maximum execution time of2h0m0s exceeded; platform annotations retained",
+  "counts_are_partial": true,
+  "suites": [
+    {
+      "planned": 48,
+      "workers": 1,
+      "lastPrintedIndex": 48,
+      "observedUnique": 48,
+      "observedPassed": 48,
+      "observedFlakyPasses": 0,
+      "observedSkipped": 0,
+      "observedUnrecoveredFailures": [],
+      "plannedWithoutObservedResult": 0
+    },
+    {
+      "planned": 1058,
+      "workers": 1,
+      "lastPrintedIndex": 531,
+      "observedUnique": 518,
+      "observedPassed": 499,
+      "observedFlakyPasses": 1,
+      "observedSkipped": 13,
+      "observedUnrecoveredFailures": [
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:18:16.6796329Z   ✘   414 [desktop] › tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 390×844 en light products and books › real choices retain focus, readable content and distinct reachable reading links (retry #2) (1.5m)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:22:54.3543238Z   ✘   417 [desktop] › tests/e2e/space-app-reading-contracts.spec.ts:52:7 › 620×844 zh dark products and books › real choices retain focus, readable content and distinct reachable reading links (retry #2) (1.5m)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-fullscreen.spec.ts:113:5 › default outdoor rain survives workspace use and pauses when hidden or quiet",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:55:53.6297324Z   ✘   469 [desktop] › tests/e2e/space-fullscreen.spec.ts:113:5 › default outdoor rain survives workspace use and pauses when hidden or quiet (retry #2) (18.4s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T22:07:30.9974004Z   ✘   492 [desktop] › tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf (retry #2) (46.9s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T22:10:13.9757637Z   ✘   496 [desktop] › tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump (retry #2) (40.9s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T22:21:12.6621475Z   ✘   510 [desktop] › tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over (retry #2) (1.2m)"
+        }
+      ],
+      "plannedWithoutObservedResult": 540
+    }
+  ],
+  "source_and_output_reports_ok": true,
+  "generated_seo": {
+    "target": "production",
+    "status": "success"
+  },
+  "artifact": {
+    "id": 12463918112,
+    "bytes": 72056950,
+    "sha256": "c3a8cc73a663cdc1c0362fd65dd5429a6e8f7bc28520ad9dab546619d1ce8f10",
+    "verified": true
+  },
+  "focused_search_catalog_cases_observed_passed": 10,
+  "mobile_project_reached": false,
+  "note": "Mobile project was not reached. Two mobile harness repairs passed targeted verification; this interrupted full CI cannot confirm their frozen-suite acceptance."
+}

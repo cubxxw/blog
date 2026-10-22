@@ -2,12 +2,10 @@
   "id": 39850588715,
   "name": "Blog Quality and Release",
   "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
-  "status": "in_progress",
-  "conclusion": null,
+  "status": "completed",
+  "conclusion": "cancelled",
   "run_attempt": 1,
-  "created_at": "2026-10-22T20:38:22Z",
-  "run_started_at": "2026-10-22T20:38:22Z",
-  "updated_at": "2026-10-22T20:38:26Z",
+  "updated_at": "2026-10-22T22:38:48Z",
   "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588715",
-  "observed_at": "2026-10-22T20:47:10.167907+00:00"
+  "observed_at": "2026-10-23T06:45:25.142448+08:00"
 }

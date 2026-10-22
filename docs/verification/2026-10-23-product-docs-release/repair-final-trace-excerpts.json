@@ -1,0 +1,200 @@
+{
+  "repair90": [
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-36a21-coverable-and-cards-compact-mobile-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: /^工程 / })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\n",
+          "stack": [
+            {
+              "file": "tests/e2e/p1-p2-ux.spec.ts",
+              "line": 55,
+              "column": 62
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/p1-p2-ux-P1-P2-UX-regressi-64351--actions-and-a-close-target-mobile-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[data-bear-workspace]').locator('[data-space-launchpad]').locator('[data-launchpad-app]')\nExpected: 11\nReceived: 12\nTimeout:  5000ms\n\n",
+          "stack": [
+            {
+              "file": "tests/e2e/p1-p2-ux.spec.ts",
+              "line": 84,
+              "column": 61
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-living-motion-approa-71bdd--continues-at-the-bookshelf-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"true\"\nReceived: \"false\"\nTimeout:  5000ms\n\n",
+          "stack": [
+            {
+              "file": "tests/e2e/space-living-motion.spec.ts",
+              "line": 38,
+              "column": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-living-motion-resizi-fba10-era-without-an-arrival-jump-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 1\nReceived:   1",
+          "stack": [
+            {
+              "file": "tests/e2e/space-living-motion.spec.ts",
+              "line": 72,
+              "column": 62
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-object-living-the-ca-7e900-kes-it-before-it-comes-over-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"arrived\"\nReceived: \"waking\"\nTimeout:  45000ms\n\n",
+          "stack": [
+            {
+              "file": "tests/e2e/space-object-living.spec.ts",
+              "line": 75,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-speaker-volume-speak-ee5af-out-replacing-music-or-rain-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 1\nReceived: 2",
+          "stack": [
+            {
+              "file": "tests/e2e/space-speaker-volume.spec.ts",
+              "line": 25,
+              "column": 58
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "repair087": [
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-app-reading-contract-c8758-nct-reachable-reading-links-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: Test timeout of 90000ms exceeded",
+          "stack": [
+            {
+              "file": "tests/e2e/space-app-reading-contracts.spec.ts",
+              "line": 123,
+              "column": 102
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-app-reading-contract-cf3d9-nct-reachable-reading-links-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Test timeout of 90000ms exceeded.",
+          "stack": []
+        },
+        {
+          "message": "Error: locator.evaluate: Test timeout of 90000ms exceeded.\n",
+          "stack": [
+            {
+              "file": "tests/e2e/space-app-reading-contracts.spec.ts",
+              "line": 23,
+              "column": 45,
+              "function": "projectedFontCSS"
+            },
+            {
+              "file": "tests/e2e/space-app-reading-contracts.spec.ts",
+              "line": 131,
+              "column": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-fullscreen-default-o-d6027-pauses-when-hidden-or-quiet-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(received).toMatch(expected)\n\nExpected pattern: /playing|blocked/\nReceived string:  \"wanted\"\n\n",
+          "stack": [
+            {
+              "file": "tests/e2e/space-fullscreen.spec.ts",
+              "line": 117,
+              "column": 71
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-living-motion-approa-71bdd--continues-at-the-bookshelf-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"true\"\nReceived: \"false\"\nTimeout:  5000ms\n\n",
+          "stack": [
+            {
+              "file": "tests/e2e/space-living-motion.spec.ts",
+              "line": 38,
+              "column": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-living-motion-resizi-fba10-era-without-an-arrival-jump-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 1\nReceived:   1",
+          "stack": [
+            {
+              "file": "tests/e2e/space-living-motion.spec.ts",
+              "line": 72,
+              "column": 62
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "tests/.artifacts/ci/browser/legacy/results/space-object-living-the-ca-7e900-kes-it-before-it-comes-over-desktop-retry1/trace.zip",
+      "errors": [
+        {
+          "message": "Test timeout of 90000ms exceeded.",
+          "stack": []
+        },
+        {
+          "message": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"arrived\"\nReceived: \"waking\"\n\n",
+          "stack": [
+            {
+              "file": "tests/e2e/space-object-living.spec.ts",
+              "line": 75,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

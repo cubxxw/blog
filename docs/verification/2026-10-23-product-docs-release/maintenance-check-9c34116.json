@@ -1,0 +1,49 @@
+{
+  "run_id": 39854328929,
+  "conclusion": "success",
+  "source_sha": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+  "artifact": {
+    "id": 12459625160,
+    "bytes": 1068,
+    "sha256": "540b28af656b19fbf0e49710ca775e3318667c092e441bab39a8118bd5d1eb6d",
+    "verified": true
+  },
+  "reports": {
+    "tests/.artifacts/ci/changes.json": {
+      "schema": "blog-change-set/1",
+      "sourceSha": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+      "baseSha": "83c11e55f65726f3cfbf5c02058e3c04af90c2fa",
+      "files": [
+        {
+          "status": "M",
+          "oldPath": null,
+          "path": "docs/verification/2026-10-23-product-docs-release.md"
+        }
+      ],
+      "sourceFiles": [],
+      "fullScan": false,
+      "suites": [
+        "workflow"
+      ],
+      "publish": false,
+      "reason": "Only maintenance or observation inputs changed"
+    },
+    "tests/.artifacts/ci/plan.json": {
+      "requiredChecks": [
+        "workflow"
+      ],
+      "runSite": false,
+      "production": false,
+      "clock": "2026-10-22T21:05:30.086Z",
+      "sourceSha": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+      "inputDigest": "d39c856eeb90e9793216a77753a447b8841903a22510c54d16a7523dbc250a51"
+    },
+    "tests/.artifacts/ci/workflow-report.json": {
+      "schema": "blog-test-report/1",
+      "mode": "enforce",
+      "ok": true,
+      "suite": "workflow"
+    }
+  },
+  "limit": "Workflow-only maintenance check; no frozen production-site regression was run in this job."
+}

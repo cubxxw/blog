@@ -2,6 +2,8 @@
 
 三篇文章已于 `2026-10-23T02:26:13.131+08:00` 正式发布。PR [#471](https://github.com/cubxxw/blog/pull/471) 于 `2026-10-23T02:22:57+08:00` 合并。作者已明确允许先合并发布、在后台继续整站回归；发布与回归通过分别记录。
 
+整站回归终态为 **未通过**：原合并版主检查和两轮测试修复的完整检查均已达到既有两小时时限后 cancelled，仍有失败与未完成覆盖。原合并版主检查继续作为最终依据；文末补充修复后终态。
+
 正文、完整英文、六张配图保持合并版本原样。文件校验值见 [定稿清单](2026-10-23-product-docs-release/final-content-before.sha256)。
 
 ## 正式链接与 brief
@@ -113,3 +115,25 @@ PR 的 [平台注释](2026-10-23-product-docs-release/pr-annotations.json) 明�
 交接目录及其中列明的临时工作区清单尚未取得，旧临时工作区未清理。当前工作区没有 Brain 检出，未接触既有合并冲突；其他任务和改动均未回退。核实清单、确认提交及证据已保存后，才处理明确列名的本批临时工作区。
 
 [清理回执](2026-10-23-product-docs-release/cleanup-receipt.json) 的删除清单为空；此前清理授权保留，待交接清单可读后按列名执行。当前云检出、原始 CI artifact 和完整浏览器证据也予以保留。
+
+## 修复后整站检查终态
+
+原合并版本的主运行继续作为最终依据。两轮测试修复的完整检查也已结束，没有手动取消任务或延长时限；文档范围检查的 success 不替代这些结果。
+
+| 冻结源码 / 运行 | 内容检查 | legacy 已打印结果 | 未取得结果 | 结论 |
+| --- | --- | --- | --- | --- |
+| db80e3fb / 39830855910 | 72/72 passed | 960 passed、27 failed、24 skipped | 47 | cancelled，2h |
+| 90c194b9 / 39843952273 | 48/48 passed | 909 passed、6 failed、24 skipped；其中 2 项重试恢复 | 119 | cancelled，2h |
+| 08783e4e / 39850588715 | 48/48 passed | 499 passed、6 failed、13 skipped；其中 1 项重试恢复 | 540 | cancelled，2h |
+
+各行是独立冻结运行的部分日志统计，pass 数已包含重试恢复项；不合并统计，也不以打印序号代替完成覆盖。后两行内容矩阵由既有范围判定规则选择为 48 项，legacy 范围仍为 1,058 项、单 worker、原重试策略和 120 分钟上限。source、output、workflow 的 enforce 报告均为 ok，generated SEO 为 success。
+
+[首轮终态](2026-10-23-product-docs-release/repair90-final.json) · [手机修复版终态](2026-10-23-product-docs-release/repair087-final.json) · [平台注释](2026-10-23-product-docs-release/repair-final-annotations.json) · [trace 摘录](2026-10-23-product-docs-release/repair-final-trace-excerpts.json)。首轮 artifact 12462355011 下载 67,652,632 字节，SHA-256 为 `724a4c1b18544bc21b0d115b6d22527744d86c12feeb81a4c936433a166a27cf`；手机修复版 artifact 12463918112 下载 72,056,950 字节，SHA-256 为 `c3a8cc73a663cdc1c0362fd65dd5429a6e8f7bc28520ad9dab546619d1ce8f10`，均与 GitHub digest 一致，冻结源码分别为 90c194b9… 和 08783e4e…。
+
+首轮仍失败的两项旧版手机预期已在后续 08783e4e 修正；但 08783e4e 的运行未抵达 mobile 项目，不能声称两项已通过冻结全量 CI。22/22 定向验证和 typecheck 通过保持为独立证据。08783e4e 还记录到两个 Space 阅读场景 90 秒超时、雨声停留 wanted、两个镜头动画失败和猫未到达；与原合并版本的音源身份、手机音频问题一并保留待办，不因覆盖中断或一次重试恢复而关闭。
+
+文档提交 9c341164 的[范围检查 39854328929](https://github.com/cubxxw/blog/actions/runs/39854328929) 为 success；[产物](2026-10-23-product-docs-release/maintenance-check-9c34116.json) 确认仅 `requiredChecks=[workflow]`、`runSite=false`。9c341164 的 [Lighthouse 39854328809](https://github.com/cubxxw/blog/actions/runs/39854328809) 于 `2026-10-23T05:27:05+08:00` 为 failure，仍在 `/projects/` 采集时发生 `Network.getResponseBody` 的 `PROTOCOL_TIMEOUT`，只完成前 9 页，未进入完整断言。[采集证据](2026-10-23-product-docs-release/final-lighthouse.json) 保留 artifact 12459364361 及核验 SHA-256 `1900827a76bbe05e6cd4bf8369b634f40d4a8aeab430fec7a1c949c09443bf58`。未再次手动重跑或放宽规则。
+
+9c34116444bb7a9506c5ae187e34cec37c5cf9fd 于 `2026-10-23T05:07:57.415+08:00` 部署为 Netlify `6ada7a80eeb39307a5eb844e`、ready；[六页及原图读回](2026-10-23-product-docs-release/production-before-terminal-evidence.json) 通过，文章、原图、应用和工作流相对首次发布无差异。此为明确观察时刻的平台快照；本次最终证据提交不改写三篇首次 `published_at`。
+
+三张回执的发布状态保留 published，原合并版及修复版回归均如实记录未通过；真实读者反馈和上游导入继续 pending。交接清单仍不可读，清理回执删除列表为空，Brain 既有冲突及未列名工作区未触碰。
