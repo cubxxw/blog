@@ -1,0 +1,198 @@
+{
+  "schema": "reading-font-browser-probe/1",
+  "scope": "Offline replay of real Hugo artifacts in Chromium; controlled CSS delays, not production PSI or field Core Web Vitals",
+  "buildClock": "2026-10-22T13:00:00Z",
+  "baselineSource": "1bfde09c60ef5c8901635b8c081ab8704357ef0e",
+  "viewport": {
+    "width": 412,
+    "height": 823
+  },
+  "isMobile": true,
+  "reducedMotion": "reduce",
+  "baselineFontCssDelayAfterCommitMs": 1500,
+  "optimizedFontCssGate": "Released only after first contentful paint and read-point capture",
+  "fastManifestOtherCssDelayMs": 400,
+  "expectedScenarios": 8,
+  "passedScenarios": 8,
+  "scenarios": [
+    {
+      "variant": "baseline",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": false,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 1708,
+        "rel": "stylesheet",
+        "faces": 202
+      },
+      "coverage": null,
+      "elapsedMs": 2346,
+      "missingResources": []
+    },
+    {
+      "variant": "optimized",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": true,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 64,
+        "rel": "preload",
+        "faces": 0
+      },
+      "coverage": null,
+      "elapsedMs": 357,
+      "missingResources": []
+    },
+    {
+      "variant": "baseline",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": false,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 1572,
+        "rel": "stylesheet",
+        "faces": 202
+      },
+      "coverage": null,
+      "elapsedMs": 1909,
+      "missingResources": []
+    },
+    {
+      "variant": "optimized",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": true,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 72,
+        "rel": "preload",
+        "faces": 0
+      },
+      "coverage": null,
+      "elapsedMs": 320,
+      "missingResources": []
+    },
+    {
+      "variant": "baseline",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": false,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 1564,
+        "rel": "stylesheet",
+        "faces": 202
+      },
+      "coverage": null,
+      "elapsedMs": 2448,
+      "missingResources": []
+    },
+    {
+      "variant": "optimized",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": true,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 140,
+        "rel": "preload",
+        "faces": 0
+      },
+      "coverage": null,
+      "elapsedMs": 451,
+      "missingResources": []
+    },
+    {
+      "variant": "fast-manifest",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": false,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 508,
+        "rel": "stylesheet",
+        "faces": 202
+      },
+      "coverage": null,
+      "elapsedMs": 830,
+      "missingResources": []
+    },
+    {
+      "variant": "no-js",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": false,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 220,
+        "rel": "preload",
+        "faces": 202
+      },
+      "coverage": {
+        "count": 7,
+        "loaded": true
+      },
+      "elapsedMs": 324,
+      "missingResources": []
+    }
+  ]
+}

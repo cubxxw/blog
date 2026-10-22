@@ -1,0 +1,32 @@
+{
+  "source_sha": "1bfde09c60ef5c8901635b8c081ab8704357ef0e",
+  "workflow_run": 39775469549,
+  "job_id": 119813173425,
+  "url": "https://github.com/cubxxw/blog/actions/runs/39775469549",
+  "conclusion": "cancelled",
+  "run_started_at": "2026-10-22T12:04:56Z",
+  "run_updated_at": "2026-10-22T14:07:34Z",
+  "evidence_note": "Pre-optimization main; log excerpts only, not a completed test report. Includes retries. Candidate CI remains separate and incomplete.",
+  "suite_start_lines": [
+    "2026-10-22T12:11:18.4706872Z Running 48 tests using 1 worker",
+    "2026-10-22T12:13:38.4793762Z Running 1056 tests using 1 worker"
+  ],
+  "observed_failure_attempts": 61,
+  "first_failure_attempts": [
+    "2026-10-22T12:26:17.2691035Z   ✘    88 [desktop] › tests/e2e/articles-index-sorting.spec.ts:105:5 › load next appends original records without duplicate article links (410ms)",
+    "2026-10-22T12:31:35.3432998Z   ✘   357 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (519ms)",
+    "2026-10-22T12:31:37.0095015Z   ✘   358 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #1) (897ms)",
+    "2026-10-22T12:31:38.3695375Z   ✘   359 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (639ms)",
+    "2026-10-22T12:31:39.7494812Z   ✘   360 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (651ms)",
+    "2026-10-22T12:31:41.2465512Z   ✘   361 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #1) (755ms)",
+    "2026-10-22T12:31:42.5791445Z   ✘   362 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (616ms)",
+    "2026-10-22T12:31:44.0129544Z   ✘   363 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (703ms)",
+    "2026-10-22T12:31:45.6643573Z   ✘   364 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #1) (887ms)",
+    "2026-10-22T12:31:47.0921233Z   ✘   365 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #2) (696ms)",
+    "2026-10-22T12:31:48.4610391Z   ✘   366 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (630ms)",
+    "2026-10-22T12:31:50.0470377Z   ✘   367 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (retry #1) (813ms)"
+  ],
+  "cancellation_lines": [
+    "2026-10-22T14:05:18.1402805Z ##[error]The operation was canceled."
+  ]
+}

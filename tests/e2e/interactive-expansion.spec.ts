@@ -158,14 +158,15 @@ for (const [section, slug, kind] of representatives) {
     // Stabilize the viewport-activated prose font before clicking disclosure
     // geometry; fonts.ready before scrolling can resolve before activation.
     await root.scrollIntoViewIfNeeded();
-    await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'stylesheet');
+    const fontPolicy = await page.locator('#zh-prose-fonts').getAttribute('rel');
+    expect(fontPolicy).toMatch(/^(preload|stylesheet)$/);
     await expect.poll(() => page.evaluate(() => {
       let registered = false;
       document.fonts.forEach(face => {
         if (face.family.replace(/["']/g, '').toLowerCase() === 'noto serif sc') registered = true;
       });
       return registered;
-    })).toBe(true);
+    })).toBe(fontPolicy === 'stylesheet');
     await page.evaluate(() => document.fonts.ready);
     await page.waitForLoadState('networkidle');
     const reference = root.locator('details.ib-reference');

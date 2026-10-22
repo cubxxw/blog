@@ -62,17 +62,18 @@ test('pilot article: offline interaction stays local (zh context article)', asyn
   await page.goto(PAGES.contextZh);
   await expect(page.locator('blog-context-budget[data-enhanced]').first()).toBeAttached({ timeout: 15_000 });
   const root = page.locator('blog-context-budget').first();
-  // Enter the reading viewport online: Chinese prose fonts activate there,
-  // so an earlier fonts.ready would describe the unactivated font set.
+  // Settle the selected reading font before freezing the network. A late
+  // manifest keeps the platform fallback for this entire reading session.
   await root.scrollIntoViewIfNeeded();
-  await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'stylesheet');
+  const fontPolicy = await page.locator('#zh-prose-fonts').getAttribute('rel');
+  expect(fontPolicy).toMatch(/^(preload|stylesheet)$/);
   await expect.poll(() => page.evaluate(() => {
     let registered = false;
     document.fonts.forEach(face => {
       if (face.family.replace(/["']/g, '').toLowerCase() === 'noto serif sc') registered = true;
     });
     return registered;
-  })).toBe(true);
+  })).toBe(fontPolicy === 'stylesheet');
   // Issue protocol: freeze the network only AFTER the page's and the
   // components' static resources have loaded (the site's webfont slices load
   // lazily in unicode-range batches).
