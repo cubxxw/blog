@@ -28,6 +28,14 @@ test('browser addresses reject scripts, credentials, scheme-relative URLs and co
  const marks=model.browserBookmarks(products,origin);
  for(const value of ['javascript:alert(1)','data:text/html,bad','//evil.test','https://user:pass@leafhour.com','https://leafhour.com\\@evil.test','https://leafhour.com\n.evil.test'])assert.equal(model.browserDestination(value,marks,origin).kind,'invalid',value);
 });
+test('legacy room redirects never start another Space inside the browser window',()=>{
+ const marks=model.browserBookmarks(products,origin);
+ for(const path of ['/about','/about/','/zh/about','/zh/about/','/start-here','/start-here/','/zh/start-here','/zh/start-here/']) {
+  assert.equal(model.browserDestination(path+'?from=browser#story',marks,origin).kind,'external',path);
+ }
+ for(const path of ['/zh/articles/','/articles/about/','/zh/growth/posts/start-here/'])assert.equal(model.browserDestination(path,marks,origin).kind,'page',path);
+ assert.equal(model.browserDestination('https://leafhour.com/about/',marks,origin).kind,'page');
+});
 test('browser history supports home, back, forward, branching and duplicate navigation',()=>{
  assert.ok(model?.createBrowserHistory);
  const h=model.createBrowserHistory();assert.equal(h.current(),'');assert.equal(h.canBack(),false);

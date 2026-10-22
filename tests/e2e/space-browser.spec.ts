@@ -28,6 +28,20 @@ test.beforeEach(async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});
 });
 
+test('legacy room addresses open outside the embedded browser without requesting a second room',async({page})=>{
+ await desk(page);await app(page,'browser');
+ const browser=page.locator('[data-space-browser]'),nested:string[]=[];
+ page.on('request',request=>{if(request.isNavigationRequest()&&request.frame()!==page.mainFrame())nested.push(request.url());});
+ for(const address of ['/about/','/zh/about/','/start-here/','/zh/start-here/']){
+  const popupPromise=page.waitForEvent('popup');
+  await browser.locator('[data-browser-address]').fill(address);await browser.locator('[data-browser-address]').press('Enter');
+  const popup=await popupPromise;await popup.close();
+  await expect(browser).toHaveAttribute('data-browser-view','external');await expect(browser.locator('iframe')).toHaveCount(0);
+  await expect(browser.locator('[data-browser-external]')).toHaveAttribute('href',new URL(address,page.url()).href);
+ }
+ expect(nested).toEqual([]);await expect(page.locator('.space-world__canvas')).toHaveCount(1);
+});
+
 test('the Mac browser has real project bookmarks, address navigation and site history while sound continues',async({page})=>{
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
  await page.route('https://leafhour.com/**',route=>route.fulfill({contentType:'text/html',body:'<!doctype html><html><head><title>Leafhour controlled test</title></head><body><h1>Controlled Leafhour fixture</h1><button onclick="this.textContent=\'Reading\'">Read a book</button></body></html>'}));

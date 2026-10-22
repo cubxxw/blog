@@ -1,0 +1,398 @@
+TAP version 13
+# Subtest: the five mobile destinations are registered and the full launcher exposes every application
+ok 1 - the five mobile destinations are registered and the full launcher exposes every application
+  ---
+  duration_ms: 0.913667
+  type: 'test'
+  ...
+# Subtest: application search matches Chinese labels and normalizes wide Latin characters
+ok 2 - application search matches Chinese labels and normalizes wide Latin characters
+  ---
+  duration_ms: 0.755125
+  type: 'test'
+  ...
+# Subtest: workspace search preserves app document context and identifies explicit product and article navigation
+ok 3 - workspace search preserves app document context and identifies explicit product and article navigation
+  ---
+  duration_ms: 0.1895
+  type: 'test'
+  ...
+# Subtest: sparse catalogs and empty keyboard result lists stay navigable
+ok 4 - sparse catalogs and empty keyboard result lists stay navigable
+  ---
+  duration_ms: 0.063417
+  type: 'test'
+  ...
+# Subtest: Escape dismisses the active overlay before considering a window
+ok 5 - Escape dismisses the active overlay before considering a window
+  ---
+  duration_ms: 0.0695
+  type: 'test'
+  ...
+# Subtest: text editing and contenteditable suppress destructive window shortcuts
+ok 6 - text editing and contenteditable suppress destructive window shortcuts
+  ---
+  duration_ms: 0.062708
+  type: 'test'
+  ...
+# Subtest: opening two applications retains both and gives the latest window focus
+ok 7 - opening two applications retains both and gives the latest window focus
+  ---
+  duration_ms: 1.107833
+  type: 'test'
+  ...
+# Subtest: a minimized application restores its original geometry without duplicating itself
+ok 8 - a minimized application restores its original geometry without duplicating itself
+  ---
+  duration_ms: 0.12425
+  type: 'test'
+  ...
+# Subtest: a persisted window from a large screen stays reachable after resizing
+ok 9 - a persisted window from a large screen stays reachable after resizing
+  ---
+  duration_ms: 0.151958
+  type: 'test'
+  ...
+# Subtest: corrupt snapshots and unknown applications do not poison the workspace
+ok 10 - corrupt snapshots and unknown applications do not poison the workspace
+  ---
+  duration_ms: 0.0675
+  type: 'test'
+  ...
+# Subtest: local writing survives serialization and respects the storage size boundary
+ok 11 - local writing survives serialization and respects the storage size boundary
+  ---
+  duration_ms: 0.181416
+  type: 'test'
+  ...
+# Subtest: maximize and restore returns to the pre-maximize rectangle
+ok 12 - maximize and restore returns to the pre-maximize rectangle
+  ---
+  duration_ms: 0.097917
+  type: 'test'
+  ...
+# Subtest: closing the active window focuses the next visible window
+ok 13 - closing the active window focuses the next visible window
+  ---
+  duration_ms: 0.087584
+  type: 'test'
+  ...
+# Subtest: only safe site and HTTPS links can be opened
+ok 14 - only safe site and HTTPS links can be opened
+  ---
+  duration_ms: 0.089916
+  type: 'test'
+  ...
+# Subtest: reader links resolved to the local site retain their safe HTTP URLs
+ok 15 - reader links resolved to the local site retain their safe HTTP URLs
+  ---
+  duration_ms: 0.195292
+  type: 'test'
+  ...
+# Subtest: short desktops fall back without mutating rectangles, maximize state or local writing
+ok 16 - short desktops fall back without mutating rectangles, maximize state or local writing
+  ---
+  duration_ms: 0.405375
+  type: 'test'
+  ...
+# Subtest: ordinary two- and four-window desktops tile within the real usable area
+ok 17 - ordinary two- and four-window desktops tile within the real usable area
+  ---
+  duration_ms: 0.323084
+  type: 'test'
+  ...
+# Subtest: zero windows use overview and one eligible window fits the workspace
+ok 18 - zero windows use overview and one eligible window fits the workspace
+  ---
+  duration_ms: 0.053625
+  type: 'test'
+  ...
+# Subtest: the raw 320 by 260 cell boundary is enforced before fitRect can enlarge it
+ok 19 - the raw 320 by 260 cell boundary is enforced before fitRect can enlarge it
+  ---
+  duration_ms: 0.46925
+  type: 'test'
+  ...
+# Subtest: a wider short desktop may use a valid alternative column count
+ok 20 - a wider short desktop may use a valid alternative column count
+  ---
+  duration_ms: 0.074958
+  type: 'test'
+  ...
+# Subtest: minimized windows keep their rectangles and do not consume a tiling cell
+ok 21 - minimized windows keep their rectangles and do not consume a tiling cell
+  ---
+  duration_ms: 0.069125
+  type: 'test'
+  ...
+# Subtest: phone capacity uses the real viewport while retaining larger stored rectangles
+ok 22 - phone capacity uses the real viewport while retaining larger stored rectangles
+  ---
+  duration_ms: 0.043166
+  type: 'test'
+  ...
+# Subtest: focusing an already tiled document does not reshuffle its next arrangement
+ok 23 - focusing an already tiled document does not reshuffle its next arrangement
+  ---
+  duration_ms: 0.088
+  type: 'test'
+  ...
+# Subtest: the night room is the default and all six spatial cafés remain restorable
+ok 24 - the night room is the default and all six spatial cafés remain restorable
+  ---
+  duration_ms: 0.335042
+  type: 'test'
+  ...
+# Subtest: direct content routes take priority over a café visit
+ok 25 - direct content routes take priority over a café visit
+  ---
+  duration_ms: 0.062417
+  type: 'test'
+  ...
+# Subtest: root visits and reloads enter the café while language changes preserve the current place
+ok 26 - root visits and reloads enter the café while language changes preserve the current place
+  ---
+  duration_ms: 0.051166
+  type: 'test'
+  ...
+# Subtest: an explicit reader deep link beats stale café storage on reload
+ok 27 - an explicit reader deep link beats stale café storage on reload
+  ---
+  duration_ms: 0.040625
+  type: 'test'
+  ...
+# Subtest: returning to the café from an old About URL survives reload and language changes
+ok 28 - returning to the café from an old About URL survives reload and language changes
+  ---
+  duration_ms: 0.050167
+  type: 'test'
+  ...
+# Subtest: a slow previous scene cannot overwrite the latest selection
+ok 29 - a slow previous scene cannot overwrite the latest selection
+  ---
+  duration_ms: 0.465625
+  type: 'test'
+  ...
+# Subtest: a failed scene keeps the previous view; selecting the current scene cancels an older load
+ok 30 - a failed scene keeps the previous view; selecting the current scene cancels an older load
+  ---
+  duration_ms: 0.08075
+  type: 'test'
+  ...
+# (node:68988) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/data/blog/assets/js/space/listening-pages.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/data/blog/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: only actual same-origin public HTML routes can enter the listening session
+ok 31 - only actual same-origin public HTML routes can enter the listening session
+  ---
+  duration_ms: 0.9835
+  type: 'test'
+  ...
+# Subtest: normal trusted clicks enter while hashes, modifiers, downloads, targets and external links keep native semantics
+ok 32 - normal trusted clicks enter while hashes, modifiers, downloads, targets and external links keep native semantics
+  ---
+  duration_ms: 25.987125
+  type: 'test'
+  ...
+# Subtest: reading keeps the original café and audio DOM connected outside the active page layer
+ok 33 - reading keeps the original café and audio DOM connected outside the active page layer
+  ---
+  duration_ms: 14.510709
+  type: 'test'
+  ...
+# Subtest: browser back and forward restore real page routes without disconnecting the original room
+ok 34 - browser back and forward restore real page routes without disconnecting the original room
+  ---
+  duration_ms: 20.741542
+  type: 'test'
+  ...
+# Subtest: late iframe loads cannot take over a newer page, and Space URLs return the existing scene
+ok 35 - late iframe loads cannot take over a newer page, and Space URLs return the existing scene
+  ---
+  duration_ms: 12.177042
+  type: 'test'
+  ...
+# Subtest: Escape inside the real child document returns and cleanup removes interception and restores focus
+ok 36 - Escape inside the real child document returns and cleanup removes interception and restores focus
+  ---
+  duration_ms: 9.667875
+  type: 'test'
+  ...
+# Subtest: browser forward restores the page scroll captured when Back left that page
+ok 37 - browser forward restores the page scroll captured when Back left that page
+  ---
+  duration_ms: 12.337166
+  type: 'test'
+  ...
+# Subtest: a late child search-palette handler receives Escape before the reading session can close
+ok 38 - a late child search-palette handler receives Escape before the reading session can close
+  ---
+  duration_ms: 13.958375
+  type: 'test'
+  ...
+# Subtest: an inactive child dialog does not swallow article Escape: <div role="dialog" hidden></div>
+ok 39 - an inactive child dialog does not swallow article Escape: <div role="dialog" hidden></div>
+  ---
+  duration_ms: 8.188917
+  type: 'test'
+  ...
+# Subtest: an inactive child dialog does not swallow article Escape: <div hidden><div role="dialog"></div></div>
+ok 40 - an inactive child dialog does not swallow article Escape: <div hidden><div role="dialog"></div></div>
+  ---
+  duration_ms: 5.590958
+  type: 'test'
+  ...
+# Subtest: an inactive child dialog does not swallow article Escape: <div role="dialog" aria-hidden="true"></div>
+ok 41 - an inactive child dialog does not swallow article Escape: <div role="dialog" aria-hidden="true"></div>
+  ---
+  duration_ms: 5.534333
+  type: 'test'
+  ...
+# Subtest: an inactive child dialog does not swallow article Escape: <div role="dialog" style="display:none"></div>
+ok 42 - an inactive child dialog does not swallow article Escape: <div role="dialog" style="display:none"></div>
+  ---
+  duration_ms: 10.715334
+  type: 'test'
+  ...
+# Subtest: an inactive child dialog does not swallow article Escape: <div style="display:none"><div role="dialog"></div></div>
+ok 43 - an inactive child dialog does not swallow article Escape: <div style="display:none"><div role="dialog"></div></div>
+  ---
+  duration_ms: 6.308291
+  type: 'test'
+  ...
+# Subtest: an inactive child dialog does not swallow article Escape: <div role="dialog" style="visibility:hidden"></div>
+ok 44 - an inactive child dialog does not swallow article Escape: <div role="dialog" style="visibility:hidden"></div>
+  ---
+  duration_ms: 7.224375
+  type: 'test'
+  ...
+# Subtest: an article editor retains its own Escape handling and composition without leaving the listening session
+ok 45 - an article editor retains its own Escape handling and composition without leaving the listening session
+  ---
+  duration_ms: 8.388
+  type: 'test'
+  ...
+# Subtest: one persistent child browsing context survives reading links and room return for native history
+ok 46 - one persistent child browsing context survives reading links and room return for native history
+  ---
+  duration_ms: 5.049
+  type: 'test'
+  ...
+# Subtest: child filters using native replaceState keep outer URL and the existing history entry aligned
+ok 47 - child filters using native replaceState keep outer URL and the existing history entry aligned
+  ---
+  duration_ms: 5.397167
+  type: 'test'
+  ...
+# Subtest: native child traversal reuses the visited entry marker instead of reallocating its cursor ownership
+ok 48 - native child traversal reuses the visited entry marker instead of reallocating its cursor ownership
+  ---
+  duration_ms: 7.066834
+  type: 'test'
+  ...
+# Subtest: child pushState preserves child router state and creates no duplicate parent history step
+ok 49 - child pushState preserves child router state and creates no duplicate parent history step
+  ---
+  duration_ms: 4.431625
+  type: 'test'
+  ...
+# Subtest: disposal restores the current child History API instead of retaining shell interception
+ok 50 - disposal restores the current child History API instead of retaining shell interception
+  ---
+  duration_ms: 4.0885
+  type: 'test'
+  ...
+# (node:68989) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/data/blog/assets/js/space/room-audio-loop.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/data/blog/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the blended tail ends at the head sample immediately before the loop restart
+ok 51 - the blended tail ends at the head sample immediately before the loop restart
+  ---
+  duration_ms: 0.653042
+  type: 'test'
+  ...
+# Subtest: music removes only edge silence before blending so decoder padding cannot create a silent seam
+ok 52 - music removes only edge silence before blending so decoder padding cannot create a silent seam
+  ---
+  duration_ms: 0.084209
+  type: 'test'
+  ...
+# Subtest: an entirely quiet or very short buffer stays finite and playable
+ok 53 - an entirely quiet or very short buffer stays finite and playable
+  ---
+  duration_ms: 0.065917
+  type: 'test'
+  ...
+# (node:68990) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/data/blog/assets/js/space/room-audio.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/data/blog/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: a new speaker starts at 60 percent while outdoor rain keeps its own gain
+ok 54 - a new speaker starts at 60 percent while outdoor rain keeps its own gain
+  ---
+  duration_ms: 3.429042
+  type: 'test'
+  ...
+# Subtest: raising or muting the playing speaker changes gain without replacing either source or resetting its cursor
+ok 55 - raising or muting the playing speaker changes gain without replacing either source or resetting its cursor
+  ---
+  duration_ms: 1.411041
+  type: 'test'
+  ...
+# Subtest: zero volume is remembered across records and the next room visit
+ok 56 - zero volume is remembered across records and the next room visit
+  ---
+  duration_ms: 0.962375
+  type: 'test'
+  ...
+# Subtest: the inspection volume event changes the real gain and clamps the public range
+ok 57 - the inspection volume event changes the real gain and clamps the public range
+  ---
+  duration_ms: 0.554542
+  type: 'test'
+  ...
+# Subtest: unavailable storage and malformed saved values leave the speaker usable
+ok 58 - unavailable storage and malformed saved values leave the speaker usable
+  ---
+  duration_ms: 1.98
+  type: 'test'
+  ...
+# (node:68991) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/data/blog/assets/js/vendor/three.module.min.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/data/blog/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the window eye stands in the clear aisle, close to the physical glass
+ok 59 - the window eye stands in the clear aisle, close to the physical glass
+  ---
+  duration_ms: 0.455333
+  type: 'test'
+  ...
+# Subtest: portrait, landscape and resized window looks stay inside the photographed sky and real sash
+ok 60 - portrait, landscape and resized window looks stay inside the photographed sky and real sash
+  ---
+  duration_ms: 0.295208
+  type: 'test'
+  ...
+# Subtest: approaching and retreating from the window follow the aisle rather than passing through furniture
+ok 61 - approaching and retreating from the window follow the aisle rather than passing through furniture
+  ---
+  duration_ms: 6.00275
+  type: 'test'
+  ...
+# Subtest: pitched corner rays stay inside the actual 120 metre photographic dome on ultrawide displays
+ok 62 - pitched corner rays stay inside the actual 120 metre photographic dome on ultrawide displays
+  ---
+  duration_ms: 0.752125
+  type: 'test'
+  ...
+1..62
+# tests 62
+# suites 0
+# pass 62
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 792.178666

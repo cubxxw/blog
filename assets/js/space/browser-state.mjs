@@ -16,7 +16,9 @@ export function browserDestination(value,bookmarks,origin){
  const url=safeURL(input,origin);if(!url)return {kind:'invalid'};
  const target=new URL(url),project=bookmarks.find(p=>new URL(p.url).origin===target.origin);
  const local=target.origin===new URL(origin).origin;
- const recursive=local&&/^(?:\/(?:zh|en))?\/projects(?:\/|$)/.test(target.pathname);
+ // About and Start Here redirect to the room too. Reject these entrances
+ // before creating an iframe, rather than loading a second world first.
+ const recursive=local&&/^(?:\/(?:zh|en))?\/(?:projects(?:\/|$)|(?:about|start-here)\/?$)/.test(target.pathname);
  return {kind:!recursive&&(local||project?.embed)?'page':'external',url,title:project?.name||target.hostname,project};
 }
 export function createBrowserHistory(initial=''){

@@ -1,0 +1,59 @@
+diff --git a/assets/js/space/browser-state.mjs b/assets/js/space/browser-state.mjs
+index 45bf6b02..b0842430 100644
+--- a/assets/js/space/browser-state.mjs
++++ b/assets/js/space/browser-state.mjs
+@@ -16,7 +16,9 @@ export function browserDestination(value,bookmarks,origin){
+  const url=safeURL(input,origin);if(!url)return {kind:'invalid'};
+  const target=new URL(url),project=bookmarks.find(p=>new URL(p.url).origin===target.origin);
+  const local=target.origin===new URL(origin).origin;
+- const recursive=local&&/^(?:\/(?:zh|en))?\/projects(?:\/|$)/.test(target.pathname);
++ // About and Start Here redirect to the room too. Reject these entrances
++ // before creating an iframe, rather than loading a second world first.
++ const recursive=local&&/^(?:\/(?:zh|en))?\/(?:projects(?:\/|$)|(?:about|start-here)\/?$)/.test(target.pathname);
+  return {kind:!recursive&&(local||project?.embed)?'page':'external',url,title:project?.name||target.hostname,project};
+ }
+ export function createBrowserHistory(initial=''){
+diff --git a/scripts/space-browser.test.mjs b/scripts/space-browser.test.mjs
+index abe5cd8b..b08a8135 100644
+--- a/scripts/space-browser.test.mjs
++++ b/scripts/space-browser.test.mjs
+@@ -28,6 +28,14 @@ test('browser addresses reject scripts, credentials, scheme-relative URLs and co
+  const marks=model.browserBookmarks(products,origin);
+  for(const value of ['javascript:alert(1)','data:text/html,bad','//evil.test','https://user:pass@leafhour.com','https://leafhour.com\\@evil.test','https://leafhour.com\n.evil.test'])assert.equal(model.browserDestination(value,marks,origin).kind,'invalid',value);
+ });
++test('legacy room redirects never start another Space inside the browser window',()=>{
++ const marks=model.browserBookmarks(products,origin);
++ for(const path of ['/about','/about/','/zh/about','/zh/about/','/start-here','/start-here/','/zh/start-here','/zh/start-here/']) {
++  assert.equal(model.browserDestination(path+'?from=browser#story',marks,origin).kind,'external',path);
++ }
++ for(const path of ['/zh/articles/','/articles/about/','/zh/growth/posts/start-here/'])assert.equal(model.browserDestination(path,marks,origin).kind,'page',path);
++ assert.equal(model.browserDestination('https://leafhour.com/about/',marks,origin).kind,'page');
++});
+ test('browser history supports home, back, forward, branching and duplicate navigation',()=>{
+  assert.ok(model?.createBrowserHistory);
+  const h=model.createBrowserHistory();assert.equal(h.current(),'');assert.equal(h.canBack(),false);
+diff --git a/tests/e2e/space-browser.spec.ts b/tests/e2e/space-browser.spec.ts
+index 4f48eb6b..3bfe9dee 100644
+--- a/tests/e2e/space-browser.spec.ts
++++ b/tests/e2e/space-browser.spec.ts
+@@ -28,6 +28,20 @@ test.beforeEach(async({page})=>{
+  await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});
+ });
+ 
++test('legacy room addresses open outside the embedded browser without requesting a second room',async({page})=>{
++ await desk(page);await app(page,'browser');
++ const browser=page.locator('[data-space-browser]'),nested:string[]=[];
++ page.on('request',request=>{if(request.isNavigationRequest()&&request.frame()!==page.mainFrame())nested.push(request.url());});
++ for(const address of ['/about/','/zh/about/','/start-here/','/zh/start-here/']){
++  const popupPromise=page.waitForEvent('popup');
++  await browser.locator('[data-browser-address]').fill(address);await browser.locator('[data-browser-address]').press('Enter');
++  const popup=await popupPromise;await popup.close();
++  await expect(browser).toHaveAttribute('data-browser-view','external');await expect(browser.locator('iframe')).toHaveCount(0);
++  await expect(browser.locator('[data-browser-external]')).toHaveAttribute('href',new URL(address,page.url()).href);
++ }
++ expect(nested).toEqual([]);await expect(page.locator('.space-world__canvas')).toHaveCount(1);
++});
++
+ test('the Mac browser has real project bookmarks, address navigation and site history while sound continues',async({page})=>{
+  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.route('https://leafhour.com/**',route=>route.fulfill({contentType:'text/html',body:'<!doctype html><html><head><title>Leafhour controlled test</title></head><body><h1>Controlled Leafhour fixture</h1><button onclick="this.textContent=\'Reading\'">Read a book</button></body></html>'}));

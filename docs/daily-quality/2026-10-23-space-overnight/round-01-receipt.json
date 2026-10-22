@@ -1,0 +1,102 @@
+{
+  "recordedAt": "2026-10-22T18:57:00.063729+00:00",
+  "branch": "codex/space-overnight-20261023",
+  "baseSha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "testResults": [
+    {
+      "phase": "baseline",
+      "pass": 30,
+      "fail": 0,
+      "skip": 0,
+      "file": "round-01-host-tests.tap"
+    },
+    {
+      "phase": "red",
+      "pass": 4,
+      "fail": 1,
+      "skip": 0,
+      "file": "round-01-browser-red.tap"
+    },
+    {
+      "phase": "after",
+      "pass": 37,
+      "fail": 0,
+      "skip": 0,
+      "file": "round-01-after-tests.tap"
+    },
+    {
+      "phase": "additional",
+      "pass": 62,
+      "fail": 0,
+      "skip": 0,
+      "file": "round-01-additional-host-tests.tap"
+    }
+  ],
+  "independentPostFixHostTests": 99,
+  "browserE2E": "full-Space-not-run; IAB real-module boundary 3 cases passed",
+  "review": "passed-no-P0-P1-P2",
+  "commit": "not-created",
+  "ci": "not-run",
+  "deployment": "not-run",
+  "pauseFileExists": false,
+  "servicesStarted": [
+    {
+      "pid": 71083,
+      "startedAt": "2026-10-22T18:54:54.654Z",
+      "url": "http://127.0.0.1:58978/",
+      "temporary": true
+    }
+  ],
+  "browsersStarted": [
+    "current-thread IAB boundary tab"
+  ],
+  "pidsTerminated": [],
+  "reclaimedGiB": 0,
+  "files": [
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/browser-alias-after.jpg",
+      "bytes": 28691,
+      "sha256": "ba4c5359e4ea1bf86b60acc958bd92780cc5c0a473c3cd1c72367ae1a60b1764"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/browser-boundary-server.mjs",
+      "bytes": 2776,
+      "sha256": "c3be8b37185cd2da046fb9d5bb49070dfddb7f6e7a85fbd86c377c3006221f15"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/round-01-additional-host-tests.tap",
+      "bytes": 16392,
+      "sha256": "becea9e9f23e7cb7784ca68387a9f607919d5f8c3afa41ace25545389b825952"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/round-01-after-tests.tap",
+      "bytes": 9305,
+      "sha256": "2f4d40cd23b21c0ccc38388f0ca032c3856a8eb9f8c1aa98d2266b4e4a1d1388"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/round-01-browser-red.tap",
+      "bytes": 2067,
+      "sha256": "f3787760edbfeeb53163d1e13363bdc34e954576f79186cb9ad5299f9fdcc68b"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/round-01-changes.patch",
+      "bytes": 4445,
+      "sha256": "cade0a66e32b9cd94d91f863ee556045036d0b87edac481a542b7525248548c2"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/round-01-host-tests.tap",
+      "bytes": 7663,
+      "sha256": "a2646b7d586cdebf68cfa3dcb5593404d383fe5ed1467ed32ef247c1e8a2c23e"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/round-01-http-audit.json",
+      "bytes": 13585,
+      "sha256": "71b65eead087936ea5b26eccef050b33c06f4a9f980bec1a8eaba344787b88ed"
+    },
+    {
+      "path": "docs/daily-quality/2026-10-23-space-overnight/round-01-review.md",
+      "bytes": 1135,
+      "sha256": "e6ad458dc55109469313e6ccfd18791da80255e20fb9496cb3e67ab7a7c04a6b"
+    }
+  ]
+}

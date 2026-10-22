@@ -1,0 +1,194 @@
+TAP version 13
+# Subtest: language changes keep the current profile route and query on this site
+ok 1 - language changes keep the current profile route and query on this site
+  ---
+  duration_ms: 0.666792
+  type: 'test'
+  ...
+# Subtest: language selection respects a backup deployment prefix without allowing a different root
+ok 2 - language selection respects a backup deployment prefix without allowing a different root
+  ---
+  duration_ms: 0.410083
+  type: 'test'
+  ...
+# Subtest: the optional 3D entrance costs nothing for motion, bandwidth and mobile opt-outs
+ok 3 - the optional 3D entrance costs nothing for motion, bandwidth and mobile opt-outs
+  ---
+  duration_ms: 0.0975
+  type: 'test'
+  ...
+# Subtest: the original entry regains focus only after its real ready boundary releases the inert workspace
+ok 4 - the original entry regains focus only after its real ready boundary releases the inert workspace
+  ---
+  duration_ms: 0.797709
+  type: 'test'
+  ...
+# Subtest: late ready and failed fallback never reclaim a newer focus intent even if focus later returns to body
+ok 5 - late ready and failed fallback never reclaim a newer focus intent even if focus later returns to body
+  ---
+  duration_ms: 0.429625
+  type: 'test'
+  ...
+# Subtest: pointer, keyboard, route and page departure each cancel the pending initial entry handoff
+ok 6 - pointer, keyboard, route and page departure each cancel the pending initial entry handoff
+  ---
+  duration_ms: 0.29175
+  type: 'test'
+  ...
+# Subtest: a disconnected or still-hidden entry cannot acquire focus after ready
+ok 7 - a disconnected or still-hidden entry cannot acquire focus after ready
+  ---
+  duration_ms: 0.125542
+  type: 'test'
+  ...
+# Subtest: the actual initial failure path leaves focus to the owned ready handoff instead of grabbing it during reveal
+ok 8 - the actual initial failure path leaves focus to the owned ready handoff instead of grabbing it during reveal
+  ---
+  duration_ms: 4.722792
+  type: 'test'
+  ...
+# Subtest: a valid initial deep link can acquire its first focus after ready when the early focus was already body
+ok 9 - a valid initial deep link can acquire its first focus after ready when the early focus was already body
+  ---
+  duration_ms: 0.268625
+  type: 'test'
+  ...
+# Subtest: an entry with an existing external focus never acquires ownership on success or failure
+ok 10 - an entry with an existing external focus never acquires ownership on success or failure
+  ---
+  duration_ms: 0.309375
+  type: 'test'
+  ...
+# (node:66351) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/data/blog/assets/js/space/onboarding.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/data/blog/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: failure after the first frame stops presentation timers and retains a usable escape
+ok 11 - failure after the first frame stops presentation timers and retains a usable escape
+  ---
+  duration_ms: 0.74225
+  type: 'test'
+  ...
+# Subtest: failure during the reveal releases the modal even when its fade timer is cancelled
+ok 12 - failure during the reveal releases the modal even when its fade timer is cancelled
+  ---
+  duration_ms: 0.653
+  type: 'test'
+  ...
+# Subtest: leaving during preparation removes pending work and cannot reopen the panel
+ok 13 - leaving during preparation removes pending work and cannot reopen the panel
+  ---
+  duration_ms: 0.189333
+  type: 'test'
+  ...
+# Subtest: skip and elapsed presentation cannot declare an unrendered room ready
+ok 14 - skip and elapsed presentation cannot declare an unrendered room ready
+  ---
+  duration_ms: 0.447833
+  type: 'test'
+  ...
+# Subtest: fresh presentation finishes only after real readiness and a short optional duration
+ok 15 - fresh presentation finishes only after real readiness and a short optional duration
+  ---
+  duration_ms: 0.093084
+  type: 'test'
+  ...
+# Subtest: revisit and reduced motion have no artificial presentation delay
+ok 16 - revisit and reduced motion have no artificial presentation delay
+  ---
+  duration_ms: 0.053333
+  type: 'test'
+  ...
+# Subtest: failure stays distinct from readiness and cannot be overwritten by late success
+ok 17 - failure stays distinct from readiness and cannot be overwritten by late success
+  ---
+  duration_ms: 0.041
+  type: 'test'
+  ...
+# Subtest: legacy records migrate once without deleting the original data or inventing sessions
+ok 18 - legacy records migrate once without deleting the original data or inventing sessions
+  ---
+  duration_ms: 1.885959
+  type: 'test'
+  ...
+# Subtest: migration preserves every valid record still present in legacy storage
+ok 19 - migration preserves every valid record still present in legacy storage
+  ---
+  duration_ms: 0.814
+  type: 'test'
+  ...
+# Subtest: sessions survive reload, retain more than twelve turns, and isolate conversation drafts
+ok 20 - sessions survive reload, retain more than twelve turns, and isolate conversation drafts
+  ---
+  duration_ms: 1.537041
+  type: 'test'
+  ...
+# Subtest: a partially saved migration completes after storage becomes available again
+ok 21 - a partially saved migration completes after storage becomes available again
+  ---
+  duration_ms: 0.267042
+  type: 'test'
+  ...
+# Subtest: snapshot migration retains the selected session and never revives a migrated old draft
+ok 22 - snapshot migration retains the selected session and never revives a migrated old draft
+  ---
+  duration_ms: 0.347375
+  type: 'test'
+  ...
+# Subtest: storage failure is explicit and keeps previous records plus an exportable memory copy
+ok 23 - storage failure is explicit and keeps previous records plus an exportable memory copy
+  ---
+  duration_ms: 0.1955
+  type: 'test'
+  ...
+# Subtest: a pending task restores as interrupted and selecting history never runs its tools
+ok 24 - a pending task restores as interrupted and selecting history never runs its tools
+  ---
+  duration_ms: 0.3965
+  type: 'test'
+  ...
+# Subtest: two tabs merge distinct tasks without replacing each other’s history
+ok 25 - two tabs merge distinct tasks without replacing each other’s history
+  ---
+  duration_ms: 0.13225
+  type: 'test'
+  ...
+# Subtest: a write interleaved between another tab’s read and commit cannot erase its task
+ok 26 - a write interleaved between another tab’s read and commit cannot erase its task
+  ---
+  duration_ms: 0.32425
+  type: 'test'
+  ...
+# Subtest: an untouched stale draft cannot erase another tab’s edited draft
+ok 27 - an untouched stale draft cannot erase another tab’s edited draft
+  ---
+  duration_ms: 0.292
+  type: 'test'
+  ...
+# Subtest: concurrent intentional edits preserve both draft versions instead of overwriting data
+ok 28 - concurrent intentional edits preserve both draft versions instead of overwriting data
+  ---
+  duration_ms: 0.184875
+  type: 'test'
+  ...
+# Subtest: a follow-up carries prior visible dialogue without trusting saved roles or replaying old tools
+ok 29 - a follow-up carries prior visible dialogue without trusting saved roles or replaying old tools
+  ---
+  duration_ms: 5.452917
+  type: 'test'
+  ...
+# Subtest: long history remains complete locally while model context stays inside the turn adapter budget
+ok 30 - long history remains complete locally while model context stays inside the turn adapter budget
+  ---
+  duration_ms: 0.344541
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 156.274333

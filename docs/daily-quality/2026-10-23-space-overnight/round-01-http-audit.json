@@ -1,0 +1,463 @@
+{
+  "checkedAt": "2026-10-22T18:51:40.075752+00:00",
+  "method": "GET, serial, 15 second timeout per request, no browser JS or API calls",
+  "sourceSha": "db80e3fb",
+  "pages": [
+    {
+      "path": "/__release.json",
+      "status": 404,
+      "error": "HTTP Error 404: Not Found",
+      "durationSeconds": 0.895
+    },
+    {
+      "path": "/zh/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/",
+      "bytesRead": 186364,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "熊鑫伟（cubxxw）· 公开的实践与思想档案",
+        "description": [
+          "熊鑫伟的公开实践与思想档案，记录 AI 工作流、真实项目、工程方法、系统思维，以及关于个人成长、哲学与人生的长期思考。"
+        ],
+        "canonical": [
+          "https://cubxxw.com/zh/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "zh"
+      },
+      "durationSeconds": 1.277
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/",
+      "bytesRead": 180594,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "Xinwei Xiong (cubxxw) · An Open Archive of Practice and Thought",
+        "description": [
+          "Xinwei Xiong's open archive of AI workflows, real projects, engineering methods, systems thinking, personal growth, philosophy, and life."
+        ],
+        "canonical": [
+          "https://cubxxw.com/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "en"
+      },
+      "durationSeconds": 1.145
+    },
+    {
+      "path": "/zh/projects/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/projects/",
+      "bytesRead": 311062,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "空间 · CUBXXW OS | cubxxw",
+        "description": [
+          "进入熊鑫伟的 CUBXXW OS 空间，了解个人经历，浏览正在构建的产品与公开文章，也可以看看旅途照片，写下一点自己的想法。"
+        ],
+        "canonical": [
+          "https://cubxxw.com/zh/projects/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/projects/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/projects/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/projects/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "zh"
+      },
+      "durationSeconds": 0.875
+    },
+    {
+      "path": "/projects/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/projects/",
+      "bytesRead": 276187,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "Space · CUBXXW OS | cubxxw",
+        "description": [
+          "Enter Xinwei Xiong's CUBXXW OS space: meet the person, explore real products and public writing, browse travel photographs, and keep a note of your own."
+        ],
+        "canonical": [
+          "https://cubxxw.com/projects/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/projects/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/projects/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/projects/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "en"
+      },
+      "durationSeconds": 2.343
+    },
+    {
+      "path": "/zh/about/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/projects/?profile=about",
+      "bytesRead": 311062,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "空间 · CUBXXW OS | cubxxw",
+        "description": [
+          "进入熊鑫伟的 CUBXXW OS 空间，了解个人经历，浏览正在构建的产品与公开文章，也可以看看旅途照片，写下一点自己的想法。"
+        ],
+        "canonical": [
+          "https://cubxxw.com/zh/projects/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/projects/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/projects/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/projects/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "zh"
+      },
+      "durationSeconds": 2.813
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/projects/?profile=about",
+      "bytesRead": 276187,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "Space · CUBXXW OS | cubxxw",
+        "description": [
+          "Enter Xinwei Xiong's CUBXXW OS space: meet the person, explore real products and public writing, browse travel photographs, and keep a note of your own."
+        ],
+        "canonical": [
+          "https://cubxxw.com/projects/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/projects/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/projects/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/projects/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "en"
+      },
+      "durationSeconds": 2.616
+    },
+    {
+      "path": "/zh/start-here/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/projects/#start-here",
+      "bytesRead": 311062,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "空间 · CUBXXW OS | cubxxw",
+        "description": [
+          "进入熊鑫伟的 CUBXXW OS 空间，了解个人经历，浏览正在构建的产品与公开文章，也可以看看旅途照片，写下一点自己的想法。"
+        ],
+        "canonical": [
+          "https://cubxxw.com/zh/projects/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/projects/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/projects/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/projects/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "zh"
+      },
+      "durationSeconds": 2.147
+    },
+    {
+      "path": "/start-here/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/projects/#start-here",
+      "bytesRead": 276187,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "Space · CUBXXW OS | cubxxw",
+        "description": [
+          "Enter Xinwei Xiong's CUBXXW OS space: meet the person, explore real products and public writing, browse travel photographs, and keep a note of your own."
+        ],
+        "canonical": [
+          "https://cubxxw.com/projects/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/projects/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/projects/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/projects/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "en"
+      },
+      "durationSeconds": 2.067
+    },
+    {
+      "path": "/zh/articles/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/articles/",
+      "bytesRead": 49931,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "所有文章 | cubxxw",
+        "description": [
+          "浏览 AI 技术、成长与生活、AI 项目的全部内容"
+        ],
+        "canonical": [
+          "https://cubxxw.com/zh/articles/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/articles/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/articles/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/articles/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "zh"
+      },
+      "durationSeconds": 1.108
+    },
+    {
+      "path": "/articles/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/articles/",
+      "bytesRead": 48370,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "All Articles | cubxxw",
+        "description": [
+          "Browse all writing across AI Technology, Growth & Life, and AI Projects"
+        ],
+        "canonical": [
+          "https://cubxxw.com/articles/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/articles/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/articles/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/articles/"
+          }
+        ],
+        "robots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "lang": "en"
+      },
+      "durationSeconds": 1.048
+    },
+    {
+      "path": "/zh/search/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/zh/search/",
+      "bytesRead": 46820,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "Xinwei Xiong 博客搜索 | cubxxw",
+        "description": [
+          "这是 Xinwei Xiong 博客搜索系统，用于查找相关博客内容"
+        ],
+        "canonical": [
+          "https://cubxxw.com/zh/search/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/search/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/search/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/search/"
+          }
+        ],
+        "robots": [
+          "noindex, follow"
+        ],
+        "lang": "zh"
+      },
+      "durationSeconds": 0.983
+    },
+    {
+      "path": "/search/",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/search/",
+      "bytesRead": 45515,
+      "contentType": "text/html; charset=UTF-8",
+      "xRobotsTag": null,
+      "head": {
+        "title": "Xinwei Xiong Blog Search | cubxxw",
+        "description": [
+          "This is the Xinwei Xiong Blog Search system for finding related blog content"
+        ],
+        "canonical": [
+          "https://cubxxw.com/search/"
+        ],
+        "alternate": [
+          {
+            "language": "en",
+            "href": "https://cubxxw.com/search/"
+          },
+          {
+            "language": "zh",
+            "href": "https://cubxxw.com/zh/search/"
+          },
+          {
+            "language": "x-default",
+            "href": "https://cubxxw.com/search/"
+          }
+        ],
+        "robots": [
+          "noindex, follow"
+        ],
+        "lang": "en"
+      },
+      "durationSeconds": 0.964
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/robots.txt",
+      "bytesRead": 2360,
+      "contentType": "text/plain; charset=UTF-8",
+      "xRobotsTag": null,
+      "durationSeconds": 0.952
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "finalUrl": "https://cubxxw.com/sitemap.xml",
+      "bytesRead": 309168,
+      "contentType": "application/xml",
+      "xRobotsTag": null,
+      "durationSeconds": 1.686
+    }
+  ]
+}
