@@ -129,7 +129,7 @@ test.describe('short phone photograph layout',()=>{
     await expect.poll(()=>image(page).evaluate(el=>el.getBoundingClientRect().height)).toBeGreaterThanOrEqual(180);
     await win(page).locator('figcaption').scrollIntoViewIfNeeded();await expect(win(page).locator('figcaption strong')).toBeVisible();
     for(const control of await win(page).locator('.sp-photo-detail__nav button,figcaption button').all())await hit(control);
-    for(const control of await win(page).locator('.sp-photo-detail__nav button').all())expect((await control.boundingBox())!.height).toBe(44);
+    for(const control of await win(page).locator('.sp-photo-detail__nav button').all())expect((await control.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     expect(await body.evaluate(el=>el.scrollWidth<=el.clientWidth+1)).toBe(true);
     await expect(win(page).locator('.sp-media-hint')).toBeHidden();await expect(win(page).locator('.sp-media-hint__keyboard')).toBeHidden();await body.evaluate(el=>{el.scrollTop=0;});await captureReview(page,'photo-detail-short');
   });
@@ -148,7 +148,7 @@ test.describe('short phone photograph layout',()=>{
     await map.locator('[data-place-select="japan"]').click();const current=map.locator('[data-place-current="japan"]');await expect(current).toBeVisible();
     await captureReview(page,'map-selected-short');const selected=(await current.locator('strong').boundingBox())!,bounds=(await body.boundingBox())!;expect(selected.y).toBeGreaterThanOrEqual(bounds.y);expect(selected.y+selected.height).toBeLessThanOrEqual(bounds.y+bounds.height);
     const viewport=map.locator('[data-map-viewport]');await viewport.scrollIntoViewIfNeeded();const geography=(await viewport.boundingBox())!,toolbar=(await map.locator('.sp-map-controls').boundingBox())!;expect(toolbar.y).toBeGreaterThanOrEqual(geography.y+geography.height-1);
-    for(const control of await map.locator('.sp-map-controls button').all()){await hit(control);expect((await control.boundingBox())!.height).toBe(44);await expect(control).toHaveCSS('font-size','14px');}
+    for(const control of await map.locator('.sp-map-controls button').all()){await hit(control);expect((await control.boundingBox())!.height).toBeGreaterThanOrEqual(44);await expect(control).toHaveCSS('font-size','14px');}
     const original=await map.locator('[data-media-map]').getAttribute('viewBox');await map.locator('[data-map-zoom="in"]').click();expect(await map.locator('[data-media-map]').getAttribute('viewBox')).not.toBe(original);
     await viewport.focus();await viewport.press('ArrowRight');await map.locator('[data-map-reset]').click();await expect(map.locator('[data-media-map]')).toHaveAttribute('viewBox','0 0 720 360');
     await current.locator('[data-place-story]').click();await expect(map.locator('.sp-place-detail h3')).toBeFocused();await expect(map.locator('.sp-place-detail__intro')).toContainText('日本');

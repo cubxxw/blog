@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {movePreservingState} from '../dom-transfer.mjs';
+import {createWorkspaceScrollState} from './workspace-scroll-state.mjs';
 import {createJiangnanRoomLights} from './jiangnan-lighting.mjs';
 import {CSS3DRenderer,CSS3DObject} from '../vendor/CSS3DRenderer.js';
 import {createWorldMaterials} from './world-materials.js';
@@ -40,6 +41,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   const doorFade=createJiangnanDoorFade({still:()=>quiet||reduced.matches,onChange:opacity=>{if(doorWater)doorWater.style.opacity=String(opacity);}});
   const excursion=createJiangnanDoorExcursion({onPhase:phase=>{root.dataset.roomDoorState=phase;doorFade.setPhase(phase,{at:performance.now()/1000});wake();},still:()=>quiet||reduced.matches});
   const records=createRecordCatalog();
+  const workspaceScroll=createWorkspaceScrollState();
   const visible=()=>!document.hidden&&!root.hidden&&!readingPage;
   const navigate=()=>canJiangnanNavigate({mode,visible:visible(),blocked:isBlocked()});
   const roomView=()=>inspection?.kind==='window';
@@ -92,16 +94,18 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     movePreservingState(css.domElement,element);
   }
   function attachMonitor(){
+    if(['desktop','computer'].includes(workspace.dataset.surface))workspaceScroll.capture(workspace);
     const active=document.activeElement;
     if(['desktop','computer'].includes(workspace.dataset.surface)&&(workspace.contains(active)||active===document.body))renderer.domElement.focus({preventScroll:true});
     attachScreen('monitor');clearScreenBounds();surfaceChanged();
   }
   function attachDesktop(){
+    if(['desktop','computer'].includes(workspace.dataset.surface))workspaceScroll.capture(workspace);
     const restoreFocus=rememberFocus();
     cssObject?.removeFromParent();cssObject=null;if(workspace.parentNode!==root)movePreservingState(root,workspace);workspace.dataset.surface='desktop';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
     Object.assign(workspace.style,{left:'0',top:'0',width:root.clientWidth+'px',height:root.clientHeight+'px',transform:'none',display:'',visibility:'visible'});
     root.dataset.worldScreenPreview='live';
-    clearScreenBounds();surfaceChanged();restoreFocus();
+    clearScreenBounds();surfaceChanged();restoreFocus();workspaceScroll.restore(workspace);
   }
   function framedPose(){
     // A level, seated view keeps pointer movement identical to the DOM axes.
@@ -112,6 +116,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     return {x,y:screenY-.05,z:z+distance+.04,yaw:0,pitch:0,fov};
   }
   function attachComputer(){
+    if(['desktop','computer'].includes(workspace.dataset.surface))workspaceScroll.capture(workspace);
     const restoreFocus=rememberFocus();
     // The seated camera faces the glass squarely. A flat DOM surface can use
     // its exact projected rectangle; Chromium's cross-origin frame hit tests
@@ -119,7 +124,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     cssObject?.removeFromParent();cssObject=null;if(workspace.parentNode!==root)movePreservingState(root,workspace);workspace.dataset.surface='computer';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
     Object.assign(workspace.style,{visibility:'visible',display:'',userSelect:'auto'});root.dataset.worldScreenVisible='true';
     root.dataset.worldScreenPreview='live';
-    screenBounds();surfaceChanged();restoreFocus();
+    screenBounds();surfaceChanged();restoreFocus();workspaceScroll.restore(workspace);
   }
   function showComputer(view=computerView()){
     root.dataset.computerView=view;
@@ -465,7 +470,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   }
   function visibility(){doorFade.setActive(visible()&&!isBlocked(),{at:performance.now()/1000});excursion.setPaused(!visible());stop();keys.clear();touchKeys.clear();drag=null;if(!visible()){magicClock?.settle();if(clockReturn){clockReturn=null;roomTime.returnNow();syncRoomTime();}}else wake();}
   function dispose(){
-    if(disposed)return;disposed=true;stop();stopWeather?.();magicClock?.dispose();clockReturn=null;excursion.dispose();doorFade.dispose();hideDoorPanel();doorWater?.remove();doorWater=null;doorExit?.remove();doorExit=null;doorReturn=null;cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();resident?.dispose();
+    if(disposed)return;disposed=true;stop();stopWeather?.();magicClock?.dispose();clockReturn=null;excursion.dispose();doorFade.dispose();workspaceScroll.dispose();hideDoorPanel();doorWater?.remove();doorWater=null;doorExit?.remove();doorExit=null;doorReturn=null;cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();resident?.dispose();
     cssObject?.removeFromParent();for(const [node,anchor] of anchors)if(anchor.isConnected){movePreservingState(anchor.parentNode,node,anchor);anchor.remove();}workspace?.remove();computerExpand?.remove();pbr?.dispose();for(const object of resources)object.dispose?.();for(const map of textures)map.dispose();renderer?.dispose();renderer?.forceContextLoss();host?.remove();settleFirst(false);
     if(outsideButton)outsideButton.textContent=outsideLabel;
     clearScreenBounds();surfaceChanged();
