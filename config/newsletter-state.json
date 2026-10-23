@@ -4850,6 +4850,14 @@
       "mode": "draft",
       "providerId": "em_3ea62dqxr88hp8sjz1js8qz582",
       "completedAt": "2026-10-23T17:34:07.138Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "status": "pending",
+      "attemptId": "4e81722b-65ab-4b86-bb27-10d98eeeb3ac",
+      "at": "2026-10-23T17:34:07.138Z",
+      "mode": "draft"
     }
   }
 }
