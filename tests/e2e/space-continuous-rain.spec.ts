@@ -25,7 +25,19 @@ test('quiet and a hidden room pause sources then resume rain at its retained off
 });
 
 test('a later real gesture recovers a transient rain failure without starting indoor music',async({page})=>{
- let requests=0;await page.route('**/rain-distant-storm-loop.flac',route=>++requests===1?route.fulfill({status:503,body:'temporarily unavailable'}):route.continue());
- await ready(page);await expect(root(page)).toHaveAttribute('data-room-ambient','error');expect(requests).toBe(1);await expect(root(page)).toHaveAttribute('data-room-sound','paused');
- await page.locator('.space-world__canvas').click({position:{x:20,y:20}});await expect(root(page)).toHaveAttribute('data-room-ambient','playing',{timeout:30_000});expect(requests).toBe(2);expect(await rainSource(page)).toBeTruthy();await expect(root(page)).toHaveAttribute('data-room-sound','paused');
+ let requests=0,release!:()=>void,handled!:()=>void;
+ const responseGate=new Promise<void>(resolve=>release=resolve),firstHandled=new Promise<void>(resolve=>handled=resolve);
+ await page.route('**/rain-distant-storm-loop.flac',async route=>{
+  if(++requests!==1){await route.continue();return;}
+  try{await responseGate;await route.fulfill({status:503,body:'temporarily unavailable'});}finally{handled();}
+ });
+ try{
+  await ready(page);await expect.poll(()=>requests).toBe(1);
+  // Keep autoplay permission separate from the HTTP failure under test. A
+  // trusted gesture unlocks the native context while the first response waits.
+  await page.locator('.space-world__canvas').click({position:{x:20,y:20}});
+  expect(await page.evaluate(()=>navigator.userActivation.hasBeenActive)).toBe(true);
+  release();await expect(root(page)).toHaveAttribute('data-room-ambient','error');expect(requests).toBe(1);await expect(root(page)).toHaveAttribute('data-room-sound','paused');
+  await page.locator('.space-world__canvas').click({position:{x:20,y:20}});await expect(root(page)).toHaveAttribute('data-room-ambient','playing',{timeout:30_000});expect(requests).toBe(2);expect(await rainSource(page)).toBeTruthy();await expect(root(page)).toHaveAttribute('data-room-sound','paused');
+ }finally{release();if(requests)await firstHandled;}
 });

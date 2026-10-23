@@ -42,15 +42,31 @@ for(const [name,hour]of [['rain',21],['sunset',17.2]] as const)test(`the ${name}
 
 test('the window survives a resize and a drag during its approach, then retreats with a touch pinch',async({page})=>{
  test.setTimeout(90000);
- await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});
+ await page.clock.install();
+ try{
+ await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:quiet:v1','no');});
  await page.goto('/zh/projects/?vista=image&room-hour=21');const root=page.locator('[data-bear-workspace]');await expect(root).toHaveAttribute('data-boot-state','complete',{timeout:30000});
- const at=await lookAtRoomObject(page,'window');await page.emulateMedia({reducedMotion:'no-preference'});await page.mouse.click(at.x,at.y);
+ const at=await lookAtRoomObject(page,'window');await page.emulateMedia({reducedMotion:'no-preference'});
+ expect(await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches)).toBe(false);await expect(root).toHaveAttribute('data-environment-paused','false');
+ // Observe the real intermediate flight independently of slow WebGL/CDP reply
+ // timing, using the same clock bridge as the camera-motion contracts.
+ const stamp=Date.now();await page.clock.setFixedTime(stamp);await page.clock.pauseAt(stamp);await page.clock.setSystemTime(stamp);
+ await page.mouse.click(at.x,at.y);
  await expect(root).toHaveAttribute('data-world-travel','true');
+ for(let i=0;i<36;i++){
+  await page.clock.fastForward(50);
+  const sample=await root.evaluate((r:HTMLElement)=>({z:JSON.parse(r.dataset.worldPose!).z,travelling:r.dataset.worldTravel==='true'}));
+  if(sample.travelling&&Math.abs(sample.z+2.606)<.85)break;
+ }
+ await expect(root).toHaveAttribute('data-world-travel','true');
+ expect(Math.abs(JSON.parse((await root.getAttribute('data-world-pose'))!).z+2.606)).toBeLessThan(.85);
+ const beforeDrag=JSON.parse((await root.getAttribute('data-world-pose'))!);
  const size=page.viewportSize()!;await page.mouse.move(size.width*.5,size.height*.4);await page.mouse.down();await page.mouse.move(size.width*.7,size.height*.5,{steps:3});await page.mouse.up();
+ await page.clock.fastForward(16);
  await expect(root).toHaveAttribute('data-world-travel','false');
- const eye=JSON.parse((await root.getAttribute('data-world-pose'))!);expect(eye.z+2.606).toBeLessThan(.9);
+ const eye=JSON.parse((await root.getAttribute('data-world-pose'))!);expect(eye.z+2.606).toBeLessThan(.9);expect(eye.yaw).not.toBe(beforeDrag.yaw);
  await page.setViewportSize({width:size.height,height:size.width});
- await expect.poll(async()=>JSON.parse((await root.getAttribute('data-world-pose'))!).fov).not.toBe(eye.fov);
+ await expect.poll(async()=>{await page.clock.fastForward(16);return JSON.parse((await root.getAttribute('data-world-pose'))!).fov;}).not.toBe(eye.fov);
  expect(JSON.parse((await root.getAttribute('data-world-pose'))!).z).toBe(eye.z);
  // Dispatch real touch input through the browser so the two-finger ownership
  // and canvas pointer capture run as they do on a phone or touch screen.
@@ -60,5 +76,6 @@ test('the window survives a resize and a drag during its approach, then retreats
   await s.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{id:1,x:x-35,y},{id:2,x:x+35,y}]});
   await s.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
  }finally{await s.detach();}
- await expect(root).toHaveAttribute('data-world-mode','roam');await expect(root).toHaveAttribute('data-world-travel','false');
+ await expect(root).toHaveAttribute('data-world-mode','roam');await page.clock.fastForward(2000);await expect(root).toHaveAttribute('data-world-travel','false');
+ }finally{await page.clock.resume();}
 });
