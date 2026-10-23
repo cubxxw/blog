@@ -40,6 +40,8 @@ Independent review found and then verified fixes for three P2 issues: a stalled 
 
 The reviewer also verified the terminal-exit reflection gate in three lifecycle cases: normal fade, completion while hidden, and material fallback before terminal completion. All captured exactly once after the proper wake. The final 24 real WebGL cases were rerun after this render scheduling change and passed in 1.1 minutes.
 
+Remote preflight `39972971697` exposed a missing virtual-clock advance in the modified cancelled-read/replay test: the real scene was ready, but the paused test clock left the 160 ms exit at `revealing`. The test now asserts that intermediate state and advances the actual exit timer, preserving all reader-race and final-workspace assertions. Both desktop and mobile replay cases then passed locally without retries (2 cases, 6.4 seconds). This adds the replay scenario omitted from the earlier 24-case targeted selection; the failed CI run is not treated as a passing release gate.
+
 ## Remaining delivery gates
 
 The initial machine-wide `.agent-pause` marker was present. The initial resource snapshot showed 139 Node/npm processes, 8.13 GiB swap, and 37.84 GiB free disk. Work first stopped after lightweight checks. The author then explicitly authorized this task's targeted build, page acceptance, and independent review. The global pause marker remains untouched. Builds reused the existing Hugo/dependencies and image cache; browser work was serial and used the same frozen site through Netlify dev.

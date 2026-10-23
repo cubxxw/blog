@@ -122,7 +122,9 @@ test('a cancelled read transition cannot steal a replayed café visit',async({pa
     await clickWithClockPaused(page.locator('.space-cafe__utilities [data-cafe-picker]'));
     await clickWithClockPaused(page.locator('[data-cafe-replay]'));
     // A replay uses the already rendered room and must not add a boot delay.
-    await page.clock.fastForward(2000);await room(page);
+    await page.clock.fastForward(2000);
+    await expect(page.locator(root)).toHaveAttribute('data-boot-state','revealing');
+    await page.clock.runFor(160);await room(page);
     await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','cafe');
     const snapshot=await page.evaluate(()=>(window as unknown as {BearSpace:{snapshot:()=>{active:string;windows:{id:string}[]}}}).BearSpace.snapshot());
     expect(snapshot.active).not.toBe('reader');
