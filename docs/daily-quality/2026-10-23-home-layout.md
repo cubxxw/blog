@@ -16,7 +16,7 @@ Selected: restore the homepage arrangement from the parent of `e845a5e`, then mo
 
 Deferred: redesigning the contact block. It would require a new product decision and would conflict with the author's request to use the previous layout. No unrelated café, article, font-loading or product-destination changes were reverted.
 
-The homepage template before the book section matches the previous layout; after it, the product cards retain their current direct product destinations. Conversation behavior, streaming safety and short-screen recovery remain current. The caption is a sibling of the orbit on desktop; the existing compact mobile label remains inside the conversation layer.
+The homepage template before the book section matches the previous layout; after it, the product cards retain their current direct product destinations. Conversation behavior, streaming safety and short-screen recovery remain current. The caption is a sibling of the orbit on desktop; the existing compact mobile label remains inside the conversation layer. The desktop orbit also uses the available column width, capped at 420px, while retaining the existing taller narrow-desktop geometry needed for long questions.
 
 ## Validation
 
@@ -30,6 +30,8 @@ The homepage template before the book section matches the previous layout; after
 - Checked Chinese/English, light/dark, 320–1440px in browser contracts, plus manual renders at 375, 800, 1440 and 1710px. All six orbit slots were checked against every real localized question, rather than only the random visible sample.
 - Manual renders: meaningful localized content, grid cards, one hero conversation, zero horizontal overflow, zero page runtime errors. Covered chat opening/closing, focus recovery, channel navigation, social contact dialogs, article navigation and no-JavaScript links in browser tests.
 - Browser plugin was unavailable; validation used the repository's Playwright workflow. This is browser emulation, not real-device Safari verification.
+- Remote review identified a narrow-desktop clipping defect after the caption change: at 800px the fixed 420px orbit ended at x=821.64, beyond the viewport. Hidden horizontal overflow masked this from the scroll-width check. Reproduced this failure, added all-question column-boundary assertions and the 800px breakpoint, then constrained the orbit width. Verified its right edge is within the viewport at 769, 800, 900, 901, 1024 and 1440px. The final homepage rerun passed 108 tests across desktop and mobile; the earlier direct-product-link and wayfinder results remain above.
+- Cloud branch-preview acceptance passed at EN 1710px, ZH 1440px and ZH dark 375px, including chat open/close, focus and channel changes. Production acceptance is still pending.
 - `git diff --check` passed. Screenshots and transient logs are outside the repository under `/tmp/blog-home-debug/`.
 
 ## Delivery

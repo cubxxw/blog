@@ -76,7 +76,7 @@
    On phones it remains the label inside the compact conversation button. */
 @media (min-width: 769px) {
   .homepage-root .hp-bear-layer { flex-direction: column; height: auto; gap: 24px; }
-  .homepage-root .hp-bear-orbit { flex-shrink: 0; }
+  .homepage-root .hp-bear-orbit { width: 100%; max-width: 420px; flex-shrink: 0; }
   .homepage-root .hp-bear-cta-line { position: static; transform: none; max-width: 100%; white-space: normal; text-align: center; }
 }
 /* The normal transcript keeps its existing scroll behavior. On a short

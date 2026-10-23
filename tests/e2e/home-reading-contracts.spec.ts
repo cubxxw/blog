@@ -70,7 +70,7 @@ for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
   test(`${locale} ${theme} hero and writing retain their hierarchy across breakpoints`, async ({ page }) => {
     await page.addInitScript(mode => localStorage.setItem('pref-theme', mode), theme);
     await page.goto(home(locale));
-    for (const width of [320, 390, 768, 769, 900, 901, 1024, 1440]) {
+    for (const width of [320, 390, 768, 769, 800, 900, 901, 1024, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       const hero = page.locator('#hp-about');
       await expect(hero.locator('#hp-bear-ai')).toHaveCount(1);
@@ -87,6 +87,7 @@ for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
         const collisions = await hero.locator('#hp-orbit').evaluate(orbit => {
           const root = orbit.closest<HTMLElement>('#hp-bear-ai')!;
           const pool: string[] = JSON.parse(root.dataset.lang === 'zh' ? root.dataset.bubblesZh! : root.dataset.bubblesEn!);
+          const boundary = root.getBoundingClientRect();
           const avatar = orbit.querySelector('#hp-avatar-btn')!.getBoundingClientRect();
           const caption = root.querySelector('.hp-bear-cta-line')!.getBoundingClientRect();
           const failures: { slot: string | undefined; question: string; target: string }[] = [];
@@ -95,6 +96,9 @@ for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
             for (const question of pool) {
               button.textContent = question;
               const box = button.getBoundingClientRect();
+              if (box.left < boundary.left - 1 || box.right > boundary.right + 1) {
+                failures.push({ slot: button.dataset.slot, question, target: 'column boundary' });
+              }
               const overlapX = Math.min(box.right, avatar.right) - Math.max(box.left, avatar.left);
               const overlapY = Math.min(box.bottom, avatar.bottom) - Math.max(box.top, avatar.top);
               if (overlapX > 1 && overlapY > 1) failures.push({ slot: button.dataset.slot, question, target: 'portrait' });
@@ -106,7 +110,7 @@ for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
           }
           return failures;
         });
-        expect(collisions, `${locale} questions overlap the portrait or caption at ${width}px`).toEqual([]);
+        expect(collisions, `${locale} questions must fit the column and clear the portrait and caption at ${width}px`).toEqual([]);
       } else expect(bear.y).toBeGreaterThanOrEqual(social.y + social.height - 1);
       const heroBox = (await hero.boundingBox())!, postsBox = (await page.locator('#hp-posts').boundingBox())!;
       expect(postsBox.y).toBeGreaterThanOrEqual(heroBox.y + heroBox.height - 1);
