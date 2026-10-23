@@ -63,17 +63,25 @@ test('daylight water and clouds move in the actual window while the boat keeps i
  expect(errors).toEqual([]);
 });
 
-test('approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf',async({page},info)=>{
+test('approach can be reversed mid-flight to its entry pose',async({page})=>{
  test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  await object(page,'window');await expect(root(page)).toHaveAttribute('data-world-travel','true');
  await page.clock.fastForward(180);await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);
  await page.mouse.move(8,8);await page.mouse.down();await expect(root(page)).toHaveAttribute('data-world-travel','true');await page.mouse.up();
  await expect(root(page)).toHaveAttribute('data-world-mode','roam');await expect(root(page)).toHaveAttribute('data-world-travel','true');await finishFlight(page);expect(await pose(page)).toEqual(entry);
  expect(Math.hypot(approaching.x-entry.x,approaching.z-entry.z)).toBeGreaterThan(.001);
+});
+
+test('approach can be grabbed mid-flight and Escape restores its entry pose',async({page})=>{
+ test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  const size=page.viewportSize()!;await page.mouse.move(size.width*.5,size.height*.4);
  await object(page,'window');await page.clock.fastForward(120);await expect(root(page)).toHaveAttribute('data-world-travel','true');const grabbing=await pose(page);expect(Math.hypot(grabbing.x-entry.x,grabbing.z-entry.z)).toBeGreaterThan(.001);await page.mouse.down();await page.mouse.move(size.width*.5+55,size.height*.4+12);await page.mouse.up();
  await expect(root(page)).toHaveAttribute('data-world-travel','false');const looking=await pose(page);expect(looking.yaw).not.toBe(grabbing.yaw);await page.clock.fastForward(200);const stopped=await pose(page);expect(stopped.x).toBe(looking.x);expect(stopped.z).toBe(looking.z);
  await page.keyboard.press('Escape');await finishFlight(page);expect(await pose(page)).toEqual(entry);
+});
+
+test('sleeping breath continues at the bookshelf and wheel restores its entry pose',async({page},info)=>{
+ test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  await object(page,'books');await finishFlight(page);await page.clock.resume();
  // Sample the live resident on its resumed clock without a CDP/trace round
  // trip between each of the same twelve real 400ms observation intervals.

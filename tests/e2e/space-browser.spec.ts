@@ -58,32 +58,57 @@ test('the project directory exposes previews and direct website actions before o
  await app(page,'products');const popupPromise=page.waitForEvent('popup');await gallery.locator('[data-project-card="talent-signal"] .space-project-card__actions a').first().click();const popup=await popupPromise;await expect(popup).toHaveURL('https://gettalentsignal.com/');await popup.close();await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
 });
 
-for(const mover of ['native','compatible'])test(`a visitor can leave a web draft, look out the window and resume the same page with continuous sound (${mover})`,async({page})=>{
+async function openVisitorDraft(page:Page,mover:string){
  if(mover==='compatible')await page.addInitScript(()=>Object.defineProperty(Element.prototype,'moveBefore',{configurable:true,value:undefined}));
  let requests=0;const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
  await page.route('https://leafhour.com/**',route=>{requests++;return route.fulfill({contentType:'text/html',body:'<!doctype html><html><body><h1>Quiet reading check</h1><label>A thought to return to <textarea aria-label="A thought to return to"></textarea></label><button onclick="this.textContent=\'Kept open\'">Keep this page open</button></body></html>'});});
  await desk(page);await app(page,'browser');await page.locator('[data-browser-bookmark="leafhour"]').click();
- const frame=page.frameLocator('.space-browser__page'),note=frame.getByRole('textbox',{name:'A thought to return to'});
- await clickInWebPage(page,note);await page.keyboard.type('The same page, when I come back.');await clickInWebPage(page,frame.getByRole('button'));await expect(frame.getByRole('button')).toHaveText('Kept open');
+ const frame=page.frameLocator('.space-browser__page'),note=frame.getByRole('textbox',{name:'A thought to return to'}),button=frame.getByRole('button');
+ await clickInWebPage(page,note);await page.keyboard.type('The same page, when I come back.');await clickInWebPage(page,button);await expect(button).toHaveText('Kept open');
  const rain=(await rainSource(page))!,music=(await roomAudioSources(page)).find(s=>!s.stopped&&Math.abs(s.duration-100)>.05)!,before=requests;
- await capture(page,'visitor-before-standing');
+ return {note,button,rain,music,before,requests:()=>requests,errors};
+}
+async function leaveVisitorDraft(page:Page,mover:string){
  if(page.viewportSize()!.width<=640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();}
  await page.mouse.click(8,8);
  await expect(root(page)).toHaveAttribute('data-world-mode','roam');
  await expect(root(page)).toHaveAttribute('data-world-screen-preview',mover==='compatible'?'standby':'live');
- if(mover==='compatible'){await expect(page.locator('[data-space-window="browser"]')).toBeHidden();await expect(page.locator('[data-space-dock]')).toBeHidden();await capture(page,'visitor-compatible-standby');}
- const objects=JSON.parse((await root(page).getAttribute('data-room-objects'))!);
- for(const name of ['lamp','fan']){await hitRoomObject(page,name);await expect.poll(async()=>JSON.parse((await root(page).getAttribute('data-room-objects'))!)[name]).not.toBe(objects[name]);}
- await hitRoomObject(page,'books');await expect(page.locator('[data-room-inspection]')).toBeVisible();await page.keyboard.press('Escape');
- await hitRoomObject(page,'window');await expect(root(page)).toHaveAttribute('data-world-inspect','window');await page.keyboard.press('Escape');
+ if(mover==='compatible'){await expect(page.locator('[data-space-window="browser"]')).toBeHidden();await expect(page.locator('[data-space-dock]')).toBeHidden();}
+}
+type VisitorDraft=Awaited<ReturnType<typeof openVisitorDraft>>;
+async function assertVisitorDraft(state:VisitorDraft){
+ await expect(state.note).toHaveValue('The same page, when I come back.');await expect(state.button).toHaveText('Kept open');expect(state.requests()).toBe(state.before);expect(state.errors).toEqual([]);
+}
+async function resumeVisitorDraft(page:Page,state:VisitorDraft){
  await hitRoomObject(page,'computer');await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
- await capture(page,'visitor-returned-state');
- await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);
- expect((await rainSource(page))!.id).toBe(rain.id);expect((await roomAudioSources(page)).some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);await capture(page,'visitor-after-returning');
- if(mover==='native'){
+ await assertVisitorDraft(state);
+ expect((await rainSource(page))!.id).toBe(state.rain.id);expect((await roomAudioSources(page)).some(s=>s.id===state.music.id&&!s.stopped)).toBe(true);
+}
+
+// Each excursion begins with its own real iframe draft and returns to that
+// same page with both audio sources. Separate complete journeys keep unrelated
+// room turns from sharing one 90-second budget on software-rendered runners.
+for(const excursion of [
+ {id:'window',action:'look out the window'},
+ {id:'controls',action:'use the lamp and fan'},
+ {id:'books',action:'look through the bookshelf'},
+])for(const mover of ['native','compatible'])test(`a visitor can leave a web draft, ${excursion.action} and resume the same page with continuous sound (${mover})`,async({page})=>{
+ const state=await openVisitorDraft(page,mover),prefix=`visitor-${excursion.id}-${mover}`;
+ await capture(page,`${prefix}-before-standing`);await leaveVisitorDraft(page,mover);
+ if(mover==='compatible')await capture(page,`${prefix}-compatible-standby`);
+ if(excursion.id==='controls'){
+  const objects=JSON.parse((await root(page).getAttribute('data-room-objects'))!);
+  for(const name of ['lamp','fan']){await hitRoomObject(page,name);await expect.poll(async()=>JSON.parse((await root(page).getAttribute('data-room-objects'))!)[name]).not.toBe(objects[name]);}
+ }else if(excursion.id==='books'){
+  await hitRoomObject(page,'books');await expect(page.locator('[data-room-inspection]')).toBeVisible();await page.keyboard.press('Escape');
+ }else{
+  await hitRoomObject(page,'window');await expect(root(page)).toHaveAttribute('data-world-inspect','window');await page.keyboard.press('Escape');
+ }
+ await resumeVisitorDraft(page,state);await capture(page,`${prefix}-after-returning`);
+ if(excursion.id==='window'&&mover==='native'){
   // Fault injection exercises the same anchored-node restoration as a lost GPU.
   await page.locator('.space-world__canvas').evaluate(el=>el.dispatchEvent(new Event('webglcontextlost',{cancelable:true})));await expect(root(page)).toHaveAttribute('data-world-failed','true');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
-  await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);expect(errors).toEqual([]);await capture(page,'visitor-graphics-recovery');
+  await assertVisitorDraft(state);await capture(page,`${prefix}-graphics-recovery`);
  }
 });
 
