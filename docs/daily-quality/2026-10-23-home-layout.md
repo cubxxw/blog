@@ -49,6 +49,12 @@ Confirmed fixes:
 
 Local release-blocker validation: 447 BEAR/Space Node tests passed; 46 actual desktop/mobile living-motion, object-living and speaker-volume browser tests passed in 9.9 minutes; TypeScript checks passed. Independent read-only review found no new blocker, with the stated limitation that controlled camera timing does not measure real-device frame rate. Generic workspace regression and final remote results are still pending; no interrupted run counts as passing.
 
+## Verification pipeline timeout repair
+
+The previous job executed quality, 1,058 legacy cases and three interactive browser engines sequentially within one 120-minute limit. Retain that coverage and one worker per runner, while preparing the production bundle once and distributing browser verification across quality, four legacy partitions and Chromium/Firefox/WebKit interactive partitions. The final `Required blog quality` job checks all required jobs succeeded, rejects missing/duplicate/unknown/failed partition evidence, verifies every report is bound to the same source, plan, build clock and deployment bytes, then creates the verified manifest. Source/workflow/function/SEO checks and author-audio/BEAR/public-interaction checks remain required; release mode and main-only publication gating remain unchanged.
+
+CI partition and workflow validation: 109 tests executed, 108 passed, one existing skip, zero failed. This includes real final aggregation/packaging and rejection of missing evidence. Pinned actionlint 1.7.12 and diff-format checks passed. This restructuring is a timeout repair, not evidence that uncompleted browser suites passed. Final remote results are pending below.
+
 ## Delivery
 
 Pending final remote checks, merge, deployment version verification and production read-back. Do not treat the local checks as production acceptance.
