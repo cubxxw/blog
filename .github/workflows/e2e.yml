@@ -44,7 +44,7 @@ jobs:
         run: >-
           npx playwright test tests/e2e/space-living-motion.spec.ts
           --grep 'approach can be reversed|resizing during a window'
-          --project=desktop --project=mobile --workers=1 --retries=0 --trace=on
+          --project=desktop --project=mobile --workers=1 --retries=0
           --reporter=line,json
       - uses: actions/upload-artifact@v7
         if: always()
