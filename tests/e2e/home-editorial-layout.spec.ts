@@ -56,8 +56,8 @@ async function swipeChannels(page: Page, rail: Locator) {
 for (const locale of ['zh', 'en'] as const) {
   for (const theme of ['light', 'dark']) {
     for (const width of [320, 375, 768, 1024, 1440]) {
-      // Catches an expanded hero or optional utilities displacing actual writing.
-      test(`${locale} ${theme} ${width}px introduces the author before a first-screen article`, async ({ page }) => {
+      // Preserve the established introduction and two-column hero before the writing.
+      test(`${locale} ${theme} ${width}px keeps the established author introduction before the article cards`, async ({ page }) => {
         await page.setViewportSize({ width, height: width <= 375 ? 812 : 1000 });
         await page.addInitScript(mode => localStorage.setItem('pref-theme', mode), theme);
         await page.goto(home(locale));
@@ -65,15 +65,22 @@ for (const locale of ['zh', 'en'] as const) {
         const intro = page.getByText(copy[locale].bio, { exact: true });
         const title = page.locator('#hp-posts').getByRole('heading', { level: 3 }).first();
         await expect(page.getByRole('heading', { level: 1 })).toBeInViewport();
-        await expect(intro).toBeInViewport();
+        await expect(intro).toBeVisible();
         expect(await intro.evaluate(el => !!(el.compareDocumentPosition(document.getElementById('hp-posts')!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
         await expect(title).toBeVisible();
-        const exposure = await title.evaluate(el => {
-          const bounds = el.getBoundingClientRect();
-          return { top: bounds.top, firstLineBottom: bounds.top + parseFloat(getComputedStyle(el).lineHeight), viewport: innerHeight };
-        });
-        expect(exposure.top).toBeGreaterThanOrEqual(0);
-        expect(exposure.firstLineBottom).toBeLessThanOrEqual(exposure.viewport);
+        const hero = page.locator('#hp-about');
+        await expect(hero.locator('#hp-bear-ai')).toHaveCount(1);
+        await expect(hero.locator('.hp-hero-socials')).toHaveCount(1);
+        await expect(page.locator('.hp-home-connections')).toHaveCount(0);
+        const heroBox = (await hero.boundingBox())!;
+        const writingBox = (await page.locator('#hp-posts').boundingBox())!;
+        expect(writingBox.y).toBeGreaterThanOrEqual(heroBox.y + heroBox.height - 1);
+        if (width > 768) {
+          const cards = await page.locator('.hp-channel-panel.is-active .hp-post-card').evaluateAll(elements => elements.map(el => el.getBoundingClientRect().toJSON()));
+          expect(cards[1].x).toBeGreaterThan(cards[0].x);
+          if (width <= 1024) expect(cards[2].y).toBeGreaterThan(cards[1].y);
+          else expect(Math.abs(cards[2].y - cards[1].y)).toBeLessThanOrEqual(1);
+        }
         expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
       });
     }
@@ -106,7 +113,7 @@ for (const locale of ['zh', 'en'] as const) {
 
     const social = page.locator('.hp-hero-socials');
     await expect(social.locator('a,button')).toHaveCount(10);
-    expect(await social.evaluate(el => !!(document.getElementById('hp-posts')!.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+    expect(await social.evaluate(el => !!(el.compareDocumentPosition(document.getElementById('hp-posts')!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
     for (const control of await social.locator('a,button').all()) {
       await expect(control).toBeVisible();
       const box = (await control.boundingBox())!;

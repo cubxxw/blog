@@ -1,5 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
@@ -52,6 +52,7 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
       runtimeJobs.push(job);return job;
     });
     try {
+      await reserveWorldJourney(page);
       await page.goto(view.locale==='zh'?'/zh/projects/':'/projects/');await enterWorkspace(page);
       await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true');
       expect(await page.evaluate(()=>matchMedia('(pointer:coarse)').matches)).toBe(view.coarse);
@@ -151,6 +152,7 @@ test.describe('pending settings status lifecycle',()=>{
         });
       };
     });
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');await enterWorkspace(page);
     const settings=await openApp(page,'settings'),status=settings.locator('[data-runtime-status]');
     await expect.poll(()=>page.evaluate(()=>(window as any).__runtimeChecks.length)).toBe(1);

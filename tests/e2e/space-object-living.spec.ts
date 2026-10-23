@@ -68,15 +68,47 @@ test('a return to the present completes offscreen and Escape from its center res
 
 test('the cat sleeps by default and a real nest click wakes it before it comes over',async({page})=>{
  await ready(page);await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
- const cat=async()=>JSON.parse((await root(page).getAttribute('data-room-cat'))!);
- expect((await cat()).phase).toBe('sleep');const home=await cat();
- await page.emulateMedia({reducedMotion:'no-preference'});const at=await face(page,'cat-bed'),before=await root(page).getAttribute('data-world-pose');await page.mouse.click(at.x,at.y);
- await expect(root(page)).toHaveAttribute('data-cat-state','waking');expect((await cat()).x).toBe(home.x);
- await expect(root(page)).toHaveAttribute('data-cat-state','arrived',{timeout:45000});
- expect(Math.hypot((await cat()).x-home.x,(await cat()).z-home.z)).toBeGreaterThan(.3);
- await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await root(page).getAttribute('data-world-pose')).toBe(before);
- await expect(page.locator('[data-room-inspection]')).toBeHidden();
- await object(page,'cat');await expect(root(page)).toHaveAttribute('data-cat-state','petting');
+ const initial=await page.evaluate(()=>({home:JSON.parse(document.querySelector<HTMLElement>('[data-bear-workspace]')!.dataset.roomCat!),controls:document.querySelectorAll('[data-room-object="cat"]').length}));
+ const home=initial.home;expect(home.phase).toBe('sleep');expect(initial.controls).toBe(1);
+ const catButton=page.locator('[data-room-object="cat"]');
+ await page.emulateMedia({reducedMotion:'no-preference'});const at=await face(page,'cat-bed');
+ // Keep the first presented wake frame: a later CDP read can arrive after walking starts.
+ const wakeObservation=await page.evaluateHandle(()=>{
+  const room=document.querySelector<HTMLElement>('[data-bear-workspace]')!,before=room.dataset.worldPose;
+  let firstWake:{x:number;z:number;phase:string;stage:string;state:string|undefined}|null=null;
+  let firstPetting:{stage:string;kind:string;state:string|undefined}|null=null;
+  const observer=new MutationObserver(()=>{
+   const snapshot=JSON.parse(room.dataset.roomCat||'null');
+   if(!firstWake&&snapshot?.phase==='wake')firstWake={x:snapshot.x,z:snapshot.z,phase:snapshot.phase,stage:snapshot.interaction?.stage,state:room.dataset.catState};
+   if(!firstPetting&&snapshot?.interaction?.stage==='respond')firstPetting={stage:snapshot.interaction.stage,kind:snapshot.interaction.kind,state:room.dataset.catState};
+  });
+  observer.observe(room,{attributes:true,attributeFilter:['data-room-cat']});
+  return {snapshot:()=>firstWake,petting:()=>firstPetting,disconnect:()=>observer.disconnect(),arrival:()=>{
+   const cat=JSON.parse(room.dataset.roomCat!);
+   return {x:cat.x,z:cat.z,mode:room.dataset.worldMode,pose:room.dataset.worldPose,before,connected:room.isConnected,focused:document.activeElement===room.querySelector('[data-room-object="cat"]')};
+  }};
+ });
+ try{
+  await page.mouse.click(at.x,at.y);
+  // Prepare the real keyboard control during the approach, before its finite nearby rest.
+  await catButton.focus();
+  await expect.poll(()=>wakeObservation.evaluate(observation=>observation.snapshot())).toEqual({phase:'wake',stage:'wake',state:'waking',x:home.x,z:home.z});
+  await expect(root(page)).toHaveAttribute('data-cat-state','arrived',{timeout:45000});
+  const arrival=await wakeObservation.evaluate(observation=>observation.arrival());
+  expect(arrival.connected).toBe(true);
+  expect(arrival.focused).toBe(true);await page.keyboard.press('Enter');
+  expect(Math.hypot(arrival.x-home.x,arrival.z-home.z)).toBeGreaterThan(.3);
+  expect(arrival.mode).toBe('roam');expect(arrival.pose).toBe(arrival.before);
+  // Native input can finish its brief response before a slow protocol read returns.
+  await expect.poll(()=>wakeObservation.evaluate(observation=>observation.petting())).toEqual({stage:'respond',kind:'pet',state:'petting'});
+  await expect(page.locator('[data-room-inspection]')).toBeHidden();
+ }finally{
+  try{if(!page.isClosed())await wakeObservation.evaluate(observation=>observation.disconnect());}
+  catch(error){
+   const targetClosed=error instanceof Error&&(error.name==='TargetClosedError'||error.message.includes('Target page, context or browser has been closed'));
+   if(!page.isClosed()||!targetClosed)throw error;
+  }finally{await wakeObservation.dispose();}
+ }
 });
 
 test('a reduced-motion call acknowledges the visitor without moving the cat or camera',async({page})=>{
@@ -112,7 +144,7 @@ test('dawn stops rain while reading without interrupting the record or drawing h
 });
 
 test('the cat advances at the room clock rate during normal motion',async({page})=>{
- await ready(page);await expect(root(page)).toHaveAttribute('data-cat-loaded','true');await page.emulateMedia({reducedMotion:'no-preference'});const sample=()=>root(page).evaluate(r=>({cat:JSON.parse((r as HTMLElement).dataset.roomCat!).elapsed,world:Number((r as HTMLElement).dataset.worldEnvironmentTime)}));const a=await sample();await page.waitForTimeout(250);const b=await sample();expect(b.cat-a.cat).toBeLessThanOrEqual(b.world-a.world+.01);
+ await ready(page);await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});await page.emulateMedia({reducedMotion:'no-preference'});const sample=()=>root(page).evaluate(r=>({cat:JSON.parse((r as HTMLElement).dataset.roomCat!).elapsed,world:Number((r as HTMLElement).dataset.worldEnvironmentTime)}));const a=await sample();await page.waitForTimeout(250);const b=await sample();expect(b.cat-a.cat).toBeLessThanOrEqual(b.world-a.world+.01);
 });
 
 test('book details and the computer retreat naturally without a room Back button',async({page})=>{

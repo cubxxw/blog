@@ -163,7 +163,7 @@ test.describe('Homepage runtime and progressive decoration', () => {
     await expect(page.locator('#hp-chat-input')).toBeEnabled();
   });
 
-  test('desktop decoration waits for connection visibility and intent, then responds to motion preference changes', async ({ page }) => {
+  test('desktop decoration waits for hero visibility and intent, then responds to motion preference changes', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.addInitScript(() => {
@@ -188,17 +188,15 @@ test.describe('Homepage runtime and progressive decoration', () => {
     }));
     await page.goto('/zh/', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(3000);
-    await expect(page.locator('[data-home-conversation] canvas')).toHaveCount(0);
+    await expect(page.locator('#hp-about canvas')).toHaveCount(0);
     expect(await page.evaluate(() => (window as any).homeTestMounts || 0)).toBe(0);
     await page.keyboard.press('Tab');
-    await expect(page.locator('[data-home-conversation] canvas')).toHaveCount(0);
-    await page.locator('#hp-bear-ai').scrollIntoViewIfNeeded();
-    await expect(page.locator('[data-home-conversation] canvas')).toHaveCount(2);
+    await expect(page.locator('#hp-about canvas')).toHaveCount(2);
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await expect(page.locator('[data-home-conversation] canvas')).toHaveCount(0);
+    await expect(page.locator('#hp-about canvas')).toHaveCount(0);
     await expect(page.locator('#hp-bear-ai')).not.toHaveClass(/has-orb/);
     await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await expect(page.locator('[data-home-conversation] canvas')).toHaveCount(2);
+    await expect(page.locator('#hp-about canvas')).toHaveCount(2);
     await expect.poll(() => page.evaluate(() => (window as any).homeTestMounts)).toBe(4);
   });
 

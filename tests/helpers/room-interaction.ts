@@ -13,9 +13,13 @@ export async function lookAtRoomObject(page:Page,name:string){
   const p=await projectRoomObject(page,name),size=page.viewportSize()!;
   if(p.inFront&&p.x>8&&p.x<size.width-8&&p.y>8&&p.y<size.height-8)return p;
   // Projected x reverses behind the camera; turn by the actual shorter angle.
-  const dx=Math.max(-100,Math.min(100,-p.yawDelta/.0035));
+  // Use the available canvas width for a large turn instead of repeatedly
+  // releasing and grabbing after 100px. Keep every real pointer step inside
+  // the viewport; software rendering pays for each of those six steps.
+  const reach=size.width-32,dx=Math.max(-reach,Math.min(reach,-p.yawDelta/.0035));
   const dy=Math.max(-100,Math.min(100,-p.pitchDelta/.003));
-  await page.mouse.move(size.width/2,size.height*.4);await page.mouse.down();await page.mouse.move(size.width/2+dx,size.height*.4+dy,{steps:6});await page.mouse.up();
+  const x=size.width/2-dx/2,y=size.height*.4;
+  await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+dx,y+dy,{steps:6});await page.mouse.up();
  }
  throw new Error(`Room object ${name} could not be brought into view`);
 }

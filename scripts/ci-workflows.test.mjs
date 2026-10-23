@@ -65,9 +65,27 @@ test('Lighthouse publish reruns bind to the producer artifact and fail closed be
 
 test('failed interactive checks retain their HTML report and traces', () => {
   const workflow = YAML.parse(fs.readFileSync('.github/workflows/main.yaml', 'utf8'));
-  const evidence = workflow.jobs.verify.steps.find(step => step.name === 'Preserve verification evidence');
+  const evidence = workflow.jobs.browser.steps.find(step => step.name === 'Preserve verification evidence');
   assert.equal(evidence.if, 'always()', 'failure must still upload evidence');
   const paths = evidence.with.path.split('\n').map(value => value.trim()).filter(Boolean);
   assert.ok(paths.includes('playwright-report/interactive/'), 'cross-engine report must survive the runner');
   assert.ok(paths.includes('test-results/'), 'failed interactive traces must survive the runner');
+});
+
+test('one frozen producer feeds isolated runners and only the final required gate can publish',()=>{
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8')),jobs=workflow.jobs;
+  assert.equal(jobs.verify.name,'Required blog quality');
+  assert.deepEqual(jobs.verify.needs,['prepare','browser']);assert.match(jobs.verify.if,/always\(\)/);
+  assert.equal(jobs.browser.strategy['fail-fast'],false);
+  assert.equal(jobs.browser.strategy.matrix,'${{ fromJSON(needs.prepare.outputs.browser_matrix) }}');
+  assert.equal(jobs.browser['timeout-minutes'],120);
+  const commands=jobs.prepare.steps.map(s=>s.run||'').join('\n');
+  for(const required of ['ci-run.mjs prepare','voice:test','bear:test','ux:test'])assert.ok(commands.includes(required));
+  assert.ok(!commands.includes('ci-run.mjs verify'));
+  const download=jobs.browser.steps.find(s=>s.uses?.startsWith('actions/download-artifact@'));
+  assert.equal(download.with['artifact-ids'],'${{ needs.prepare.outputs.artifact_id }}');
+  const finish=jobs.verify.steps.find(s=>s.run?.includes('ci-run.mjs finalize'));
+  assert.ok(finish);assert.equal(finish['continue-on-error'],undefined);
+  const upload=jobs.verify.steps.find(s=>s.id==='artifact');assert.ok(upload);
+  assert.equal(jobs.release.with.artifact_id,'${{ needs.verify.outputs.artifact_id }}');
 });

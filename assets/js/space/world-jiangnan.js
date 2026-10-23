@@ -305,7 +305,9 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     // still receives the ordinary frame cadence.
     if(environmentActive&&!moving&&!keys.size&&!touchKeys.size&&last&&stamp-last<1000/(framed?30:60)-.8){frame=requestAnimationFrame(tick);return;}
     const elapsed=last?Math.max(0,(stamp-last)/1000):0,delta=Math.min(elapsed,.12);last=stamp;
-    if(environmentActive)environmentTime+=delta;
+    // Scenery is analytical; the resident owns its own bounded substeps.
+    // Preserve visible wall time here even when a software-rendered frame is slow.
+    if(environmentActive)environmentTime+=elapsed;
     // Physics uses bounded steps; a deliberate camera flight uses visible wall
     // time. Otherwise a busy frame stretches a short approach into a long wait.
     if(moving){if(moving.started===null)moving.started=stamp-moving.elapsed;moving.elapsed=Math.max(0,stamp-moving.started);applyPose(moving.motion.at(moving.elapsed));if(moving.elapsed>=moving.duration)finishTravel();}
@@ -319,7 +321,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     root.dataset.roomTime=JSON.stringify({...day,rate:10});resident?.setRoutine(day.catRoutine);
     const windowButton=objectControls.querySelector('[data-room-object="window"]'),windowText=day.rain>.1?t('看看窗外的雨','Watch the rain'):t('看看窗外的风景','Look out the window');
     if(windowButton.textContent!==windowText)windowButton.textContent=windowText;
-    if(resident){resident.update(delta,{ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});const cat=resident.snapshot();root.dataset.catLoaded=String(cat.loaded);root.dataset.roomCat=JSON.stringify(cat);root.dataset.roomCatBreath=JSON.stringify(resident.breathing);if(cat.loaded){targets.cat=cat.target;root.dataset.worldTargets=JSON.stringify(targets);}}
+    if(resident){resident.update(elapsed,{ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});const cat=resident.snapshot();root.dataset.catLoaded=String(cat.loaded);root.dataset.roomCat=JSON.stringify(cat);root.dataset.roomCatBreath=JSON.stringify(resident.breathing);if(cat.loaded){targets.cat=cat.target;root.dataset.worldTargets=JSON.stringify(targets);}}
     if(frames%3===0)publishObjects();
     const readyMaps=Number(root.dataset.worldPbrMaps)>=5||performance.now()-startTime>2200;
     // Entry may paint early; its one reflection waits for complete materials.

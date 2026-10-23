@@ -1,4 +1,4 @@
-import { enterWorkspace } from '../helpers/space-entry';
+import { enterWorkspace, reserveWorldJourney } from '../helpers/space-entry';
 import { test, expect } from '../helpers/frozen-site';
 
 // These cases verify controls and persistence. Camera motion has its own
@@ -72,6 +72,7 @@ test.describe('P1-P2 UX regression', () => {
     test.skip(testInfo.project.name !== 'mobile', 'mobile only');
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');
     await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
@@ -127,6 +128,7 @@ test.describe('P1-P2 UX regression', () => {
   });
 
   test('space defaults to CUBXXW OS and switches to Product Lab and back', async ({ page }) => {
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');
     await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
@@ -161,6 +163,7 @@ test.describe('P1-P2 UX regression', () => {
   });
 
   test('BEAR OS product search uses workspace search and restores the selected product', async ({ page }) => {
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');
     await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
@@ -210,6 +213,7 @@ test.describe('P1-P2 UX regression', () => {
   });
 
   test('Space language changes preserve private work and the open article', async ({ page }) => {
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/?profile=about#identity');
     const workspace = page.locator('[data-bear-workspace]');
     await expect(workspace).toHaveAttribute('data-ready', 'true');
@@ -260,6 +264,7 @@ test.describe('P1-P2 UX regression', () => {
           return original.call(this, key, value);
         };
       }, blocked);
+      await reserveWorldJourney(page);
       await page.goto('/zh/projects/?profile=about#identity');
       const workspace = page.locator('[data-bear-workspace]');
       await expect(workspace).toHaveAttribute('data-ready', 'true');
@@ -283,6 +288,7 @@ test.describe('P1-P2 UX regression', () => {
   }
 
   test('Product Lab can enter BEAR knowledge space and return without leaving lab', async ({ page }) => {
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');
     await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
@@ -308,6 +314,7 @@ test.describe('P1-P2 UX regression', () => {
   });
 
   test('an already open global search owns shortcuts above the BEAR workspace', async ({ page }) => {
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');
     await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
@@ -332,6 +339,7 @@ test.describe('P1-P2 UX regression', () => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       await route.fallback();
     });
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');
     await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');
@@ -351,6 +359,7 @@ test.describe('P1-P2 UX regression', () => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       await route.fallback();
     });
+    await reserveWorldJourney(page);
     await page.goto('/zh/projects/');
     await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-mode', 'desktop');

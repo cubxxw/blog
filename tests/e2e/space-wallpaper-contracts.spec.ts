@@ -1,5 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
@@ -40,6 +40,7 @@ for(const view of [{width:1440,height:900,locale:'zh',coarse:false},{width:390,h
   test.use({viewport:{width:view.width,height:view.height},hasTouch:view.coarse,isMobile:view.coarse});
   test('all six existing colors reach the monitor without recoloring documents or replacing editors',async({page})=>{
     await page.route('**/.netlify/functions/bear-runtime',route=>route.fulfill({status:200,contentType:'application/json',body:'{"available":false}'}));
+    await reserveWorldJourney(page);
     await page.goto(view.locale==='zh'?'/zh/projects/':'/projects/');await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true');
     const screen=page.locator('.space-spatial-screen');await expect(screen).toBeVisible();
