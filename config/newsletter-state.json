@@ -4835,6 +4835,14 @@
       "mode": "draft",
       "providerId": "em_7xmb55a5mm8768v16zekk0zxnm",
       "completedAt": "2026-10-23T17:34:07.138Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "status": "pending",
+      "attemptId": "052a9169-c98a-4e51-b80b-7693e9a45136",
+      "at": "2026-10-23T17:34:07.138Z",
+      "mode": "draft"
     }
   }
 }
