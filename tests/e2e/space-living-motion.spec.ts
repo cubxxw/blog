@@ -8,38 +8,39 @@ async function open(page:Page){
  await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:quiet:v1','no');});
  await page.goto('/zh/projects/?vista=image&room-hour=14');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
 }
-// A trusted key press can take >3s to return on software WebGL while the
-// camera correctly finishes in <=1.8s. These two mid-flight contracts own the
-// official frame clock, so protocol latency cannot skip the very state under
-// test. The real renderer, input handlers, movement and hit targets still run.
-async function openControlled(page:Page){
- await page.clock.install({time:new Date('2026-10-23T00:00:00Z')});
- await open(page);await page.clock.pauseAt(new Date('2026-10-23T00:05:00Z'));
+// Keep short camera states observable even when a software renderer takes longer
+// than the flight to acknowledge a native input or viewport command. The real
+// timers/render loop load normally, then only the test controls their timeline.
+async function openWithPausedClock(page:Page){
+ await page.clock.install();await open(page);
+ // A Date.now()+lead target can expire during slow renderer/CDP replies.
+ // Bridge with a fixed wall time so pauseAt has no deadline, then restore
+ // Date progression while animation time remains paused.
+ const at=Date.now();await page.clock.setFixedTime(at);await page.clock.pauseAt(at);await page.clock.setSystemTime(at);
 }
 async function advanceFrames(page:Page,milliseconds:number){
- // A fixed 10Hz presentation still exercises every real render and safe
- // physics step, without demanding 60 software-WebGL paints per test second.
+ // Preserve real intermediate paints at 10Hz on the controlled timeline.
  for(let left=milliseconds;left>0;left-=100)await page.clock.fastForward(Math.min(100,left));
 }
 async function finishFlight(page:Page){await page.clock.fastForward(2000);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
 type FlightFrame={fov:number;at:number;frame:string|undefined;travel:string|undefined};
+type FlightSamples={samples:FlightFrame[];done:boolean};
 async function armFlightSamples(page:Page){
  await page.evaluate(()=>{
-  const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!,state={samples:[] as FlightFrame[],done:false};
-  (window as unknown as {cameraFlight:typeof state}).cameraFlight=state;
+  const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!,state:FlightSamples={samples:[],done:false};
+  (window as unknown as {cameraFlight:FlightSamples}).cameraFlight=state;
   const sample=(stamp:number)=>{state.samples.push({fov:JSON.parse(root.dataset.worldPose!).fov,at:stamp,frame:root.dataset.worldFrames,travel:root.dataset.worldTravel});if(root.dataset.worldTravel==='true')requestAnimationFrame(sample);else state.done=true;};
   const observer=new MutationObserver(()=>{if(root.dataset.worldTravel==='true'){observer.disconnect();requestAnimationFrame(sample);}});
   observer.observe(root,{attributes:true,attributeFilter:['data-world-travel']});
  });
 }
 async function collectFlightSamples(page:Page){
- // Sparse real animation frames avoid forcing 100+ expensive WebGL draws. The
- // 50ms tail still measures the existing final-lens velocity contract.
+ // Keep every real 50ms animation frame and the original 42-step budget.
  for(let i=0;i<42;i++){
-  if(await page.evaluate(()=>(window as unknown as {cameraFlight:{done:boolean}}).cameraFlight.done))break;
+  if(await page.evaluate(()=>(window as unknown as {cameraFlight:FlightSamples}).cameraFlight.done))break;
   await page.clock.fastForward(50);
  }
- return page.evaluate(()=>{const state=(window as unknown as {cameraFlight:{samples:FlightFrame[];done:boolean}}).cameraFlight;if(!state.done)throw new Error('Camera did not finish on its controlled timeline');return state.samples;});
+ return page.evaluate(()=>{const state=(window as unknown as {cameraFlight:FlightSamples}).cameraFlight;if(!state.done)throw new Error('Camera did not finish on its controlled timeline');return state.samples;});
 }
 async function changed(page:Page,a:Buffer,b:Buffer,box:{x:number;y:number;width:number;height:number}){
  return page.evaluate(async({a,b,box})=>{
@@ -66,24 +67,37 @@ test('daylight water and clouds move in the actual window while the boat keeps i
  expect(errors).toEqual([]);
 });
 
-test('approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf',async({page},info)=>{
- test.setTimeout(150000);await openControlled(page);const entry=await pose(page);
+test('approach can be reversed mid-flight to its entry pose',async({page})=>{
+ test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  await object(page,'window');await expect(root(page)).toHaveAttribute('data-world-travel','true');
  await advanceFrames(page,180);await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);
  await page.mouse.move(8,8);await page.mouse.down();await expect(root(page)).toHaveAttribute('data-world-travel','true');await page.mouse.up();
  await expect(root(page)).toHaveAttribute('data-world-mode','roam');await expect(root(page)).toHaveAttribute('data-world-travel','true');await finishFlight(page);expect(await pose(page)).toEqual(entry);
  expect(Math.hypot(approaching.x-entry.x,approaching.z-entry.z)).toBeGreaterThan(.001);
+});
+
+test('approach can be grabbed mid-flight and Escape restores its entry pose',async({page})=>{
+ test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  const size=page.viewportSize()!;await page.mouse.move(size.width*.5,size.height*.4);
  await object(page,'window');await advanceFrames(page,120);await expect(root(page)).toHaveAttribute('data-world-travel','true');const grabbing=await pose(page);expect(Math.hypot(grabbing.x-entry.x,grabbing.z-entry.z)).toBeGreaterThan(.001);await page.mouse.down();await page.mouse.move(size.width*.5+55,size.height*.4+12);await page.mouse.up();
  await expect(root(page)).toHaveAttribute('data-world-travel','false');const looking=await pose(page);expect(looking.yaw).not.toBe(grabbing.yaw);await page.clock.fastForward(200);const stopped=await pose(page);expect(stopped.x).toBe(looking.x);expect(stopped.z).toBe(looking.z);
  await page.keyboard.press('Escape');await finishFlight(page);expect(await pose(page)).toEqual(entry);
- await object(page,'books');await finishFlight(page);
- const before=JSON.parse((await root(page).getAttribute('data-room-cat'))!),samples:number[]=[];
- for(let i=0;i<12;i++){await advanceFrames(page,400);samples.push(JSON.parse((await root(page).getAttribute('data-room-cat-breath'))!).chest);}
- const cat=JSON.parse((await root(page).getAttribute('data-room-cat'))!);expect(cat.phase).toBe('sleep');expect(cat.x).toBe(before.x);expect(cat.z).toBe(before.z);expect(cat.elapsed).toBe(before.elapsed);
+});
+
+test('sleeping breath continues at the bookshelf and wheel restores its entry pose',async({page},info)=>{
+ test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
+ await object(page,'books');await finishFlight(page);await page.clock.resume();
+ // Sample the live resident on its resumed clock without a CDP/trace round
+ // trip between each of the same twelve real 400ms observation intervals.
+ const {before,samples,cat}=await page.evaluate(async()=>{
+  const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!,before=JSON.parse(root.dataset.roomCat!),samples:number[]=[];
+  for(let i=0;i<12;i++){await new Promise<void>(resolve=>setTimeout(resolve,400));samples.push(JSON.parse(root.dataset.roomCatBreath!).chest);}
+  return {before,samples,cat:JSON.parse(root.dataset.roomCat!)};
+ });
+ expect(samples).toHaveLength(12);expect(cat.phase).toBe('sleep');expect(cat.x).toBe(before.x);expect(cat.z).toBe(before.z);expect(cat.elapsed).toBe(before.elapsed);
  expect(Math.max(...samples)-Math.min(...samples)).toBeGreaterThan(.025);
  await page.screenshot({path:info.outputPath('sleeping-at-bookshelf.png')});
- await page.mouse.move(8,8);await page.mouse.wheel(0,150);await advanceFrames(page,2000);await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(await pose(page)).toEqual(entry);
+ await page.mouse.move(8,8);await page.mouse.wheel(0,150);await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(await pose(page)).toEqual(entry);
 });
 
 test('reduced motion freezes environmental movement and retains immediate object navigation',async({page})=>{
@@ -94,18 +108,20 @@ test('reduced motion freezes environmental movement and retains immediate object
  await page.keyboard.press('Escape');await expect(root(page)).toHaveAttribute('data-world-mode','roam');
 });
 
-test('resizing during a window or computer approach retargets the live camera without an arrival jump',async({page},info)=>{
- test.setTimeout(150000);await openControlled(page);const original=page.viewportSize()!,other=original.width>700?{width:420,height:800}:{width:1000,height:650};
- for(const kind of ['window','computer']){
-  await armFlightSamples(page);const from=await pose(page);await object(page,kind);await advanceFrames(page,170);
-  await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);expect(Math.hypot(approaching.x-from.x,approaching.z-from.z)).toBeGreaterThan(.001);
-  await page.setViewportSize(kind==='window'?other:original);
-  await expect(root(page)).toHaveAttribute('data-world-travel','true');
-  const samples=await collectFlightSamples(page);await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(samples.length).toBeGreaterThan(1);expect(samples[0].travel).toBe('true');expect(samples[samples.length-1].travel).toBe('false');
-  expect(new Set(samples.map(sample=>sample.frame)).size).toBeGreaterThan(1);
-  await writeFile(info.outputPath(kind+'-resize-frames.json'),JSON.stringify(samples,null,2));
-  const end=samples[samples.length-1],previous=samples[samples.length-2];
-  expect(Math.abs(end.fov-previous.fov)/Math.max(.001,(end.at-previous.at)/1000)).toBeLessThan(8);
-  if(kind==='window'){await page.keyboard.press('Escape');await finishFlight(page);}
- }
+for(const kind of ['window','computer'])test(`resizing during a ${kind} approach retargets the live camera without an arrival jump`,async({page},info)=>{
+ test.setTimeout(90000);const original=page.viewportSize()!,other=original.width>700?{width:420,height:800}:{width:1000,height:650};
+ // Preserve both resize directions: the computer starts at the alternate
+ // size and returns to the original viewport.
+ if(kind==='computer')await page.setViewportSize(other);
+ await openWithPausedClock(page);
+ await armFlightSamples(page);const from=await pose(page);await object(page,kind);await advanceFrames(page,170);
+ await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);expect(Math.hypot(approaching.x-from.x,approaching.z-from.z)).toBeGreaterThan(.001);
+ await page.setViewportSize(kind==='window'?other:original);
+ await expect(root(page)).toHaveAttribute('data-world-travel','true');
+ const samples=await collectFlightSamples(page);await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(samples.length).toBeGreaterThan(1);expect(samples[0].travel).toBe('true');expect(samples[samples.length-1].travel).toBe('false');
+ expect(new Set(samples.map(sample=>sample.frame)).size).toBeGreaterThan(1);
+ await writeFile(info.outputPath(kind+'-resize-frames.json'),JSON.stringify(samples,null,2));
+ const end=samples[samples.length-1],previous=samples[samples.length-2];
+ expect(Math.abs(end.fov-previous.fov)/Math.max(.001,(end.at-previous.at)/1000)).toBeLessThan(8);
+ if(kind==='window'){await page.keyboard.press('Escape');await finishFlight(page);}
 });

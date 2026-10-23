@@ -446,7 +446,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     root.dataset.roomTime=JSON.stringify({...day,rate:10});resident?.setRoutine(day.catRoutine);
     const windowButton=objectControls.querySelector('[data-room-object="window"]'),windowText=day.rain>.1?t('看看窗外的雨','Watch the rain'):t('看看窗外的风景','Look out the window');
     if(windowButton.textContent!==windowText)windowButton.textContent=windowText;
-    if(resident){resident.update(delta,{interactionSeconds:elapsed,ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});const cat=resident.snapshot();root.dataset.catLoaded=String(cat.loaded);root.dataset.roomCat=JSON.stringify(cat);root.dataset.roomCatBreath=JSON.stringify(resident.breathing);if(cat.loaded){targets.cat=cat.target;root.dataset.worldTargets=JSON.stringify(targets);}}
+    if(resident){resident.update(delta,{interactionSeconds:elapsed,breathingSeconds:elapsed,ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});const cat=resident.snapshot();root.dataset.catLoaded=String(cat.loaded);root.dataset.roomCat=JSON.stringify(cat);root.dataset.roomCatBreath=JSON.stringify(resident.breathing);if(cat.loaded){targets.cat=cat.target;root.dataset.worldTargets=JSON.stringify(targets);}}
     if(frames%3===0)publishObjects();
     const readyMaps=Number(root.dataset.worldPbrMaps)>=5||performance.now()-startTime>2200;
     // Entry may paint early; its one reflection waits for complete materials.

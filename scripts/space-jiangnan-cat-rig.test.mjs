@@ -41,6 +41,43 @@ test('the actual resident loads its rig into the small room, owns its clock, and
     assert.ok(Math.max(...samples.map(s=>s[1]))-Math.min(...samples.map(s=>s[1]))>.018,'the belly follows the breath');
     const still=chest.scale.clone();for(let i=0;i<20;i++)resident.update(.5,{active:false,ambient:false});assert.deepEqual(chest.scale.toArray(),still.toArray(),'paused motion does not breathe or accumulate scale');
   });
+  await t.test('visible breathing keeps the same real chest and belly pose at 60, 1 and 0.7 paints per second',async()=>{
+    const reference=[];
+    for(const hz of [60,1,.7]){
+      const ownScene=new THREE.Scene(),own=createJiangnanResident({scene:ownScene,asset});assert.equal(await own.ready,true);
+      try{
+        const before=own.snapshot(),chest=ownScene.getObjectByName('chest'),belly=ownScene.getObjectByName('belly');let elapsed=0;
+        own.update(0,{ambient:true});
+        for(const [index,until]of [1,2,4.6,5.2,9.2].entries()){
+          while(elapsed<until){const dt=Math.min(1/hz,until-elapsed);own.update(Math.min(.12,dt),{ambient:true,breathingSeconds:dt});elapsed+=dt;}
+          const breath=own.breathing;
+          assert.ok(Math.abs(breath.time-until)<1e-9,`${hz}fps: ${until} visible seconds must remain ${until} breathing seconds; got ${breath.time}`);
+          assert.equal(breath.chest,chest.scale.z);assert.equal(breath.belly,belly.scale.z);
+          if(hz===60)reference.push(breath);
+          else for(const key of ['chest','belly'])assert.ok(Math.abs(breath[key]-reference[index][key])<1e-9,`${hz}fps ${key} must match the real 60fps pose at ${until}s`);
+          assert.deepEqual(own.snapshot(),before,'ambient breathing never advances the sleeping routine or position');
+        }
+      }finally{own.dispose();}
+    }
+  });
+  await t.test('breathing excludes paused intervals and lifecycle resets without changing bounded routine motion',async()=>{
+    const ownScene=new THREE.Scene(),own=createJiangnanResident({scene:ownScene,asset});assert.equal(await own.ready,true);
+    try{
+      const before=own.snapshot();own.update(0,{ambient:true});own.update(.04,{ambient:true});const paused=own.breathing;
+      for(let i=0;i<3;i++)own.update(3600,{active:false,ambient:false});
+      assert.deepEqual(own.breathing,paused,'paused frames do not advance time or deform the real breathing bones');
+      own.update(3600,{ambient:true});assert.deepEqual(own.breathing,paused,'the first resumed frame excludes the hidden interval');
+      own.update(1,{ambient:true});assert.ok(Math.abs(own.breathing.time-paused.time-1)<1e-9);
+      own.resetClock();const hidden=own.breathing;
+      own.update(3600,{ambient:true});assert.deepEqual(own.breathing,hidden,'a lifecycle reset excludes hidden time even without an inactive paint');
+      own.update(.04,{ambient:true});assert.ok(Math.abs(own.breathing.time-hidden.time-.04)<1e-9);
+      assert.deepEqual(own.snapshot(),before,'ambient respiration cannot advance or move the sleeping resident');
+      own.update(0,{active:true});const active=own.snapshot();own.update(3600,{active:true});const after=own.snapshot();
+      assert.ok(after.elapsed-active.elapsed<=2+1e-9,'an active stall retains the existing finite routine budget');
+      assert.ok(jiangnanCatPositionClear(after.x,after.z));
+      assert.ok(Math.hypot(after.x-active.x,after.z-active.z)<=.64+1e-9,'unclamped analytical breathing cannot enlarge the physics movement budget');
+    }finally{own.dispose();}
+  });
   await t.test('sleeping lowers the real body onto its support instead of leaving tucked paws suspended',()=>{
     scene.updateMatrixWorld(true);const body=scene.getObjectByName('Cat'),sleepBounds=new THREE.Box3().setFromObject(body,true);
     assert.equal(resident.snapshot().phase,'sleep');

@@ -11,7 +11,7 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
   const adapter=routeAdapter||{create:createCatState,step:stepCat,request:requestCat,settle:settleCatInteraction};
   const natural=appearance.natural===true,cozy=appearance.cozy===true;
   const anchor=new THREE.Group();anchor.name='cafe-resident';scene.add(anchor);
-  let state=adapter.create(),model,mixer,idle,disposed=false,loaded=false,blend=0,wasActive=false,bodyBounds,modelBaseY=0,grounder=null,sleepPose=null,breathTime=0;
+  let state=adapter.create(),model,mixer,idle,disposed=false,loaded=false,blend=0,wasActive=false,bodyBounds,modelBaseY=0,grounder=null,sleepPose=null,breathTime=0,breathRunning=false;
   const clock=createCatClock();
   const loadAbort=new AbortController();
   const owned=new Set(),bones=[],expressionBones=[],eyes=[],breathBones=[];
@@ -168,9 +168,13 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
     grounder?.apply(groundDt,(model?.position.y||0)-modelBaseY,nap>.1);
   }
   function resetExpression(){sleepPose?.reset();for(const {bone,base} of expressionBones)bone.quaternion.copy(base);}
-  function update(seconds,{active=false,interactive=false,ambient=false,interactionSeconds=seconds}={}) {
+  function update(seconds,{active=false,interactive=false,ambient=false,interactionSeconds=seconds,breathingSeconds=seconds}={}) {
     if(disposed||!loaded){clock.reset();return;}
-    if((active||interactive||ambient)&&Number.isFinite(seconds))breathTime+=Math.min(.12,Math.max(0,seconds));
+    // Respiration is evaluated analytically, so slow visible frames retain
+    // their full interval. A resumed first frame excludes pre-pause time.
+    const breathing=Boolean(active||interactive||ambient)&&Number.isFinite(breathingSeconds)&&breathingSeconds>=0;
+    if(breathing&&breathRunning)breathTime+=breathingSeconds;
+    breathRunning=breathing;
     grounder?.reset();
     if(!active&&!interactive){
       clock.reset();
@@ -181,7 +185,7 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
     // A deliberate call must keep its visible pace on a slow renderer. The
     // room's .12s visual-delta cap should not stretch a 2.6s wake into minutes.
     // The resident clock still bounds catch-up to 2s in <=40ms safe steps;
-    // ordinary routines and ambient breathing retain their original clock.
+    // Ordinary routines retain their bounded clock; breathing is analytical.
     const interacting=state.interaction&&!state.interaction.instant;
     const elapsed=interacting&&Number.isFinite(interactionSeconds)?Math.max(seconds,interactionSeconds):seconds;
     wasActive=true;const dt=clock.advance(elapsed,true,step=>{
@@ -223,5 +227,5 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
   }
   // Thin decorative whiskers use LineSegments. Three's default line raycast
   // tolerance is one metre, so only actual mesh surfaces may select the cat.
-  return {ready,update,interact,attend,settle,view,dispose,setRoutine(routine){if(['nap','explore'].includes(routine))state={...state,routine};},resetClock:clock.reset,hit(raycaster){return loaded&&!disposed?(raycaster.intersectObject(model,true).find(hit=>hit.object.isMesh)||null):null;},get breathing(){return {time:breathTime,chest:breathBones[1]?.bone.scale.z||1,belly:breathBones[0]?.bone.scale.z||1};},get pending(){return !disposed&&Boolean(state.interaction&&!state.interaction.instant&&(state.interaction.stage==='approach'||state.interaction.remaining>0));},get loaded(){return loaded&&!disposed;},snapshot(){return {...state,loaded:loaded&&!disposed};}};
+  return {ready,update,interact,attend,settle,view,dispose,setRoutine(routine){if(['nap','explore'].includes(routine))state={...state,routine};},resetClock(){clock.reset();breathRunning=false;},hit(raycaster){return loaded&&!disposed?(raycaster.intersectObject(model,true).find(hit=>hit.object.isMesh)||null):null;},get breathing(){return {time:breathTime,chest:breathBones[1]?.bone.scale.z||1,belly:breathBones[0]?.bone.scale.z||1};},get pending(){return !disposed&&Boolean(state.interaction&&!state.interaction.instant&&(state.interaction.stage==='approach'||state.interaction.remaining>0));},get loaded(){return loaded&&!disposed;},snapshot(){return {...state,loaded:loaded&&!disposed};}};
 }
