@@ -50,7 +50,7 @@ jobs:
         run: >-
           npx playwright test tests/e2e/space-living-motion.spec.ts
           tests/e2e/space-browser.spec.ts
-          --grep 'approach can be reversed|resizing during a window|a visitor can leave a web draft'
+          --grep 'approach can be reversed|resizing during a (window|computer)|a visitor can leave a web draft'
           --project=desktop --project=mobile --workers=1 --retries=0
           --trace="$DIAGNOSTIC_TRACE"
           --reporter=line,json
