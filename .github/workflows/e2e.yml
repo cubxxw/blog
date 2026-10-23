@@ -1,4 +1,4 @@
-name: Diagnose physical cat call on frozen candidate
+name: Diagnose resident readiness on frozen candidate
 on:
   workflow_dispatch:
     inputs:
@@ -42,14 +42,14 @@ jobs:
           github-token: ${{ github.token }}
           path: tests/.artifacts/camera-input
           merge-multiple: true
-      - name: Reproduce physical cat call without rebuilding production
+      - name: Reproduce resident readiness without rebuilding production
         env:
           SITE_OUTPUT_DIR: ${{ github.workspace }}/tests/.artifacts/camera-input/site/public
           PLAYWRIGHT_JSON_OUTPUT_FILE: tests/.artifacts/camera-report.json
           DIAGNOSTIC_TRACE: ${{ inputs.trace_mode }}
         run: >-
           npx playwright test tests/e2e/space-object-living.spec.ts
-          --grep 'the cat sleeps by default' --repeat-each=2
+          --grep 'the cat advances at the room clock rate' --repeat-each=2
           --project=desktop --project=mobile --workers=1 --retries=0
           --trace="$DIAGNOSTIC_TRACE"
           --reporter=line,json
