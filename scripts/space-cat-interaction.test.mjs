@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {CAT_PLACES,CAT_COLLIDERS,createCatState,stepCat,requestCat,settleCatInteraction,catPositionClear,catSegmentClear} from '../assets/js/space/cat-state.mjs';
+import {createJiangnanDoorFade} from '../assets/js/space/jiangnan-door-fade.mjs';
 
 test('an explicit still interaction responds immediately without moving or advancing the autonomous random route',()=>{
   const cat=createCatState(),visitor={x:3,z:2,yaw:0};
@@ -100,7 +101,7 @@ test('the Jiangnan tick advances visible time and the resident through slow fram
       assert.ok(jiangnanCatPositionClear(state.x,state.z));assert.ok(jiangnanCatSegmentClear(before,state));
       if(arrived===null&&state.interaction?.stage==='near')arrived=wall;
     });assert.ok(steps<=50);},snapshot:()=>({...state,loaded:true,target:[state.x,.23,state.z]}),breathing:{}};
-    const noop=()=>{},context={disposed:false,frame:0,visible:()=>true,mode:'roam',workspace:{dataset:{surface:'monitor'}},quiet:false,reduced:{matches:false},isBlocked:()=>false,moving:null,keys:new Set(['KeyW']),touchKeys:new Set(),last:0,environmentTime:0,navigate:()=>true,clockReturn:null,roomTime:{at:()=>({catRoutine:'nap',rain:0})},room:{update:noop},exterior:{update:noop,boat:{position:{x:0,y:0,z:0},rotation:{y:0}}},roomLights:{update:noop},magicClock:null,standbyClock:null,root:{dataset:{worldPbrMaps:12}},resident,targets:{},objectControls:{querySelector:()=>({textContent:'Watch the rain'})},t:(a,b)=>b,frames:0,publishObjects:noop,startTime:0,performance:{now:()=>0},reflectionDone:true,roomView:()=>false,screenVisibility:noop,renderRoom:()=>({triangles:0,calls:0}),css:{render:noop},scene:{},camera:{},settleFirst:noop,requestAnimationFrame:()=>1,pose:visitor,jiangnanWalk:(...args)=>{walkSteps.push(args[2]);return jiangnanWalk(...args);},applyPose:noop};
+    const noop=()=>{},context={disposed:false,frame:0,visible:()=>true,mode:'roam',workspace:{dataset:{surface:'monitor'}},quiet:false,reduced:{matches:false},isBlocked:()=>false,doorFade:createJiangnanDoorFade(),moving:null,keys:new Set(['KeyW']),touchKeys:new Set(),last:0,environmentTime:0,navigate:()=>true,clockReturn:null,roomTime:{at:()=>({catRoutine:'nap',rain:0})},room:{update:noop},exterior:{update:noop,boat:{position:{x:0,y:0,z:0},rotation:{y:0}}},roomLights:{update:noop},magicClock:null,standbyClock:null,root:{dataset:{worldPbrMaps:12}},resident,targets:{},objectControls:{querySelector:()=>({textContent:'Watch the rain'})},t:(a,b)=>b,frames:0,publishObjects:noop,startTime:0,performance:{now:()=>0},reflectionDone:true,roomView:()=>false,screenVisibility:noop,renderRoom:()=>({triangles:0,calls:0}),css:{render:noop},scene:{},camera:{},settleFirst:noop,requestAnimationFrame:()=>1,pose:visitor,jiangnanWalk:(...args)=>{walkSteps.push(args[2]);return jiangnanWalk(...args);},applyPose:noop};
     const run=runInNewContext(tick+'\ntick;',context);run(1000);
     for(let frame=1;wall<24;frame++){wall=frame/hz;run(1000+wall*1000);}
     assert.ok(arrived!==null&&arrived<=20,`${hz}fps must complete the actual resident call in visible time; arrived=${arrived}`);

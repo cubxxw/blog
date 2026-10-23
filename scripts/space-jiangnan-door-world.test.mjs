@@ -5,6 +5,7 @@ import {createRequire} from 'node:module';
 import {runInNewContext} from 'node:vm';
 import * as THREE from '../assets/js/vendor/three.module.min.js';
 import {createJiangnanDoorExcursion, jiangnanDoorPoses} from '../assets/js/space/jiangnan-door-state.mjs';
+import {createJiangnanDoorFade} from '../assets/js/space/jiangnan-door-fade.mjs';
 import {jiangnanLook} from '../assets/js/space/jiangnan-state.mjs';
 import {jiangnanWindowRoute} from '../assets/js/space/jiangnan-window-view.mjs';
 
@@ -38,6 +39,7 @@ function fixture({inspectionKind=null,viewPose=originalPose,inspectionPose=origi
     let doorReturn=null,doorPanel=null,quiet=false,drag=null,moving=null,disposed=false;
     let returnPose={x:1.2,y:1.34,z:1.65,yaw:0,pitch:0,fov:48},returnInspection=null;
     const keys=new Set(),touchKeys=new Set();
+    const doorFade=makeFade({still:()=>quiet||reduced.matches});
     const excursion=makeMachine({onPhase:phase=>{root.dataset.roomDoorState=phase;},still:()=>quiet||reduced.matches});
     async function travel(to,duration,finish){await Promise.resolve();pose={...to};finish?.();return true;}
     const roomView=()=>inspection?.kind==='window';
@@ -52,6 +54,7 @@ function fixture({inspectionKind=null,viewPose=originalPose,inspectionPose=origi
   const camera={aspect:1.6};
   const world=runInNewContext(runtime,{initialPose:viewPose,inspectionPose,initialInspection:inspectionKind,root,document,Element,workspace,
     makeMachine:options=>createJiangnanDoorExcursion({...options,now:()=>now,setTimer:schedule,clearTimer:key=>timers.delete(key)}),
+    makeFade:createJiangnanDoorFade,
     jiangnanDoorPoses,jiangnanLook,jiangnanWindowRoute,camera,renderer:{domElement:canvas},reduced:{matches:false},objectControls:{inert:false},magicClock:null,
     computerView:()=> 'expanded',showComputer(){workspace.dataset.surface='desktop';},attachMonitor(){workspace.dataset.surface='monitor';},
     visible:()=>true,isBlocked:()=>false,onInspect(){},listen:(node,event,callback)=>node.addEventListener(event,callback),t:cn=>cn,

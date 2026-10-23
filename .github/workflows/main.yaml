@@ -68,7 +68,7 @@ jobs:
           verifyFrozenProof({bundleRoot,plan,changeSet,proof});
           const result=spawnSync(process.execPath,[
             'node_modules/@playwright/test/cli.js','test','tests/e2e/space-door-excursion.spec.ts',
-            '--project=desktop','--workers=1','--retries=2','--repeat-each=3',
+            '--project=desktop','--workers=1','--retries=0','--repeat-each=3',
             '--grep=1440px / no-preference.*the real rear door, deliberate step, splash and safe return form one repeatable journey'
           ],{stdio:'inherit',env:{
             ...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),

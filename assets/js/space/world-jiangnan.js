@@ -16,6 +16,7 @@ import {createRecordCatalog} from './record-catalog.js';
 import {createJiangnanResident} from './jiangnan-cat.js';
 import {buildJiangnanDoor} from './jiangnan-door.js';
 import {createJiangnanDoorExcursion,jiangnanDoorPoses} from './jiangnan-door-state.mjs';
+import {createJiangnanDoorFade} from './jiangnan-door-fade.mjs';
 import {createPracticalLightRamp} from './jiangnan-practical-light.mjs';
 
 export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,onReturn,onNotebook,isBlocked=()=>false,materialBase,photoAsset,books=[]}) {
@@ -35,8 +36,9 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   const startTime=performance.now();
   const targets={...JIANGNAN_TARGETS,bridge:[-3.2,1.2,-17.8]};
   let readingPage=false,lastSwitchState='',ignoreOpeningClick=false;const touchPoints=new Map();let pinchStart=0,pinchUsed=false;
-  const excursion=createJiangnanDoorExcursion({onPhase:phase=>{root.dataset.roomDoorState=phase;},still:()=>quiet||reduced.matches});
   let doorReturn=null,doorPanel=null,doorWater=null,doorExit=null;
+  const doorFade=createJiangnanDoorFade({still:()=>quiet||reduced.matches,onChange:opacity=>{if(doorWater)doorWater.style.opacity=String(opacity);}});
+  const excursion=createJiangnanDoorExcursion({onPhase:phase=>{root.dataset.roomDoorState=phase;doorFade.setPhase(phase,{at:performance.now()/1000});wake();},still:()=>quiet||reduced.matches});
   const records=createRecordCatalog();
   const visible=()=>!document.hidden&&!root.hidden&&!readingPage;
   const navigate=()=>canJiangnanNavigate({mode,visible:visible(),blocked:isBlocked()});
@@ -142,7 +144,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   }
   const entry=()=>root.clientWidth<700?jiangnanLook([-.90,1.18,-.05],[.40,1.16,-1.94],root.clientWidth<350?58:56):Number.isFinite(worldRenderBudget(renderer.getContext()).maxPixels)?jiangnanLook([2.25,1.14,1.25],[.20,1.15,-1.65],THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(34))/camera.aspect))):jiangnanLook([1.20,1.34,1.65],[-.30,1.18,-1.40],Math.min(48,THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(42.5))/camera.aspect))));
   function resetInspection(){magicClock?.hide();inspection=null;delete root.dataset.worldInspect;onInspect?.(null);}
-  function syncDoorStill(){const still=excursion.setStill(quiet||reduced.matches);root.dataset.roomDoorStill=String(still);doorPanel?.classList.toggle('space-cafe-door--still',still);}
+  function syncDoorStill(){const still=excursion.setStill(quiet||reduced.matches);doorFade.update(0);root.dataset.roomDoorStill=String(still);doorPanel?.classList.toggle('space-cafe-door--still',still);}
   function start({animate=true,focus=false}={}){abandonDoorExcursion();returnInspection=null;resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
   function focus(animate=true){
     // A workspace shortcut may interrupt any door beat. Keep the place we
@@ -266,6 +268,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     return true;
   }
   function abandonDoorExcursion(){
+    doorFade.setPhase('indoor',{instant:true});
     if(excursion.phase==='indoor')return false;
     excursion.abort();hideDoorPanel();doorReturn=null;
     audio?.setPerspective?.({music:1,rain:1});
@@ -433,6 +436,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     // Scenery is analytical; the resident owns its own bounded substeps.
     // Preserve visible wall time here even when a software-rendered frame is slow.
     if(environmentActive)environmentTime+=elapsed;
+    doorFade.update(elapsed,{at:stamp/1000,active:!isBlocked()});
     // Physics uses bounded steps; a deliberate camera flight uses visible wall
     // time. Otherwise a busy frame stretches a short approach into a long wait.
     if(moving){if(moving.started===null)moving.started=stamp-moving.elapsed;moving.elapsed=Math.max(0,stamp-moving.started);applyPose(moving.motion.at(moving.elapsed));if(moving.elapsed>=moving.duration)finishTravel();}
@@ -457,11 +461,11 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     root.dataset.roomBoatPose=JSON.stringify([+exterior.boat.position.x.toFixed(3),+exterior.boat.position.y.toFixed(3),+exterior.boat.position.z.toFixed(3)]);root.dataset.roomBoat='ready';root.dataset.worldEnvironmentTime=environmentTime.toFixed(3);
     root.dataset.roomBoatHeading=exterior.boat.rotation.y.toFixed(4);
     if(readyMaps){root.dataset.worldReady='true';settleFirst(true);}
-    if(!disposed&&(moving||clockReturn||environmentActive||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
+    if(!disposed&&(moving||clockReturn||environmentActive||doorFade.pending&&!isBlocked()||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
   }
-  function visibility(){excursion.setPaused(!visible());stop();keys.clear();touchKeys.clear();drag=null;if(!visible()){magicClock?.settle();if(clockReturn){clockReturn=null;roomTime.returnNow();syncRoomTime();}}else wake();}
+  function visibility(){doorFade.setActive(visible()&&!isBlocked(),{at:performance.now()/1000});excursion.setPaused(!visible());stop();keys.clear();touchKeys.clear();drag=null;if(!visible()){magicClock?.settle();if(clockReturn){clockReturn=null;roomTime.returnNow();syncRoomTime();}}else wake();}
   function dispose(){
-    if(disposed)return;disposed=true;stop();stopWeather?.();magicClock?.dispose();clockReturn=null;excursion.dispose();hideDoorPanel();doorWater?.remove();doorWater=null;doorExit?.remove();doorExit=null;doorReturn=null;cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();resident?.dispose();
+    if(disposed)return;disposed=true;stop();stopWeather?.();magicClock?.dispose();clockReturn=null;excursion.dispose();doorFade.dispose();hideDoorPanel();doorWater?.remove();doorWater=null;doorExit?.remove();doorExit=null;doorReturn=null;cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();resident?.dispose();
     cssObject?.removeFromParent();for(const [node,anchor] of anchors)if(anchor.isConnected){movePreservingState(anchor.parentNode,node,anchor);anchor.remove();}workspace?.remove();computerExpand?.remove();pbr?.dispose();for(const object of resources)object.dispose?.();for(const map of textures)map.dispose();renderer?.dispose();renderer?.forceContextLoss();host?.remove();settleFirst(false);
     if(outsideButton)outsideButton.textContent=outsideLabel;
     clearScreenBounds();surfaceChanged();
@@ -473,7 +477,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     reflectionDone=software;
     scene=new THREE.Scene();scene.background=new THREE.Color('#192a3c');scene.fog=new THREE.FogExp2('#273d50',.019);camera=new THREE.PerspectiveCamera(63,1,.04,160);camera.rotation.order='YXZ';
     host=document.createElement('div');host.className='space-world space-world--jiangnan';root.prepend(host);renderer.domElement.className='space-world__canvas';renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label',t('三维咖啡馆。拖动环视，方向键或 WASD 行走，点击电脑和相框。','3D café. Drag to look, arrows or WASD to walk. Click the Mac or photograph.'));renderer.domElement.setAttribute('aria-describedby','jiangnan-controls');host.append(renderer.domElement);
-    doorWater=document.createElement('div');doorWater.className='space-cafe-door-water';doorWater.setAttribute('aria-hidden','true');root.append(doorWater);root.dataset.roomDoorState='indoor';syncDoorStill();
+    doorWater=document.createElement('div');doorWater.className='space-cafe-door-water';doorWater.style.opacity=String(doorFade.value);doorWater.setAttribute('aria-hidden','true');root.append(doorWater);root.dataset.roomDoorState='indoor';syncDoorStill();
     doorExit=document.createElement('button');doorExit.type='button';doorExit.className='space-cafe-door-exit';doorExit.textContent=t('回到暖光里','Back to the warm light');listen(doorExit,'click',escapeDoorExcursion);root.append(doorExit);
     const guidance=document.createElement('p');guidance.id='jiangnan-controls';guidance.className='jiangnan-guidance';guidance.textContent=t('拖动环视，方向键或 WASD 移动。','Drag to look. Arrows or WASD to walk.');host.append(guidance);
     objectControls=document.createElement('nav');objectControls.className='jiangnan-object-controls';objectControls.setAttribute('aria-label',t('房间里的物件','Objects in the room'));host.append(objectControls);
@@ -528,7 +532,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     for(const button of root.querySelectorAll('[data-world-walk]')){listen(button,'pointerdown',event=>{if(!navigate())return;event.preventDefault();cancelTravel();touchKeys.add(button.dataset.worldWalk);button.setPointerCapture(event.pointerId);wake();});for(const name of ['pointerup','pointercancel','lostpointercapture'])listen(button,name,()=>touchKeys.delete(button.dataset.worldWalk));}
     listen(document,'visibilitychange',onVisibilityChange);listen(reduced,'change',()=>{syncDoorStill();if(reduced.matches){finishTravel();resident?.settle();}resident?.resetClock();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();settleFirst(false);onFailure?.();});
     hiddenObserver=new MutationObserver(onVisibilityChange);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
-    blockedObserver=new MutationObserver(()=>{if(isBlocked()){keys.clear();touchKeys.clear();drag=null;clearGestureState();escapeDoorExcursion();}wake();});blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
+    blockedObserver=new MutationObserver(()=>{doorFade.setActive(visible()&&!isBlocked(),{at:performance.now()/1000});if(isBlocked()){keys.clear();touchKeys.clear();drag=null;clearGestureState();escapeDoorExcursion();}wake();});blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
     observer=new ResizeObserver(resize);observer.observe(root);pose=entry();returnPose={...pose};applyPose(pose);syncMode('roam');resize();renderer.shadowMap.needsUpdate=true;
     firstTimer=setTimeout(wake,2300);wake();
   } catch(error){dispose();throw error;}

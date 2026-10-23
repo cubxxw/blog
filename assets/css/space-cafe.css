@@ -171,7 +171,7 @@
 .space-cafe-door button:first-of-type { padding:9px 22px; border-radius:26px; background:#f2ead6; color:#26382d; }
 .space-cafe-door button:hover { filter:brightness(1.06); }
 .space-cafe-door button:focus-visible { outline:2px solid #fff4ce; outline-offset:4px; border-radius:6px; }
-.space-cafe-door-water { position:absolute; inset:0; z-index:104; pointer-events:none; opacity:0; background:radial-gradient(ellipse at 50% 15%,transparent 20%,#234e6442 68%,#16374f85),linear-gradient(180deg,#83bcc52b,transparent 40%,#16344f4d); transition:opacity .48s ease; }
+.space-cafe-door-water { position:absolute; inset:0; z-index:104; pointer-events:none; opacity:0; background:radial-gradient(ellipse at 50% 15%,transparent 20%,#234e6442 68%,#16374f85),linear-gradient(180deg,#83bcc52b,transparent 40%,#16344f4d); }
 .space-cafe-door-water::after { content:""; position:absolute; inset:0; opacity:.5; background:radial-gradient(ellipse at 13% 68%,#d1e8e04d 0 1px,transparent 3px),radial-gradient(ellipse at 81% 38%,#d1e8e040 0 2px,transparent 4px),radial-gradient(ellipse at 73% 81%,#d1e8e03d 0 1px,transparent 3px); }
 .space[data-room-door-state="submerged"] .space-cafe-door-water { opacity:1; }
 .space[data-world-mode="excursion"] :is(.space-cafe__welcome,.space-cafe__footer,.space-cafe-inspect) { visibility:hidden; }
@@ -179,9 +179,7 @@
 .space[data-world-mode="excursion"] .space-cafe-door-exit { display:block; }
 .space-cafe-door-exit:focus-visible { outline:2px solid #fff4ce; outline-offset:4px; }
 .space[data-room-door-state="returning"] .space-cafe-door-exit { visibility:hidden; }
-.space[data-room-door-still="true"] .space-cafe-door-water { transition:none; }
 @media (prefers-reduced-motion:reduce) { .space-cafe-door { animation:none; } }
-@media (prefers-reduced-motion:reduce) { .space-cafe-door-water { transition:none; } }
 @media (max-height:420px) { .space-cafe-door { bottom:max(12px,env(safe-area-inset-bottom)); padding:12px 18px; } .space-cafe-door__note { margin-bottom:8px; font-size:14px; line-height:1.5; } }
 @media (max-width:640px) { .space-cafe-door-exit { top:80px; left:14px; } }
 .space-world-touch { display:none; }
