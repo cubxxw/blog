@@ -1,19 +1,64 @@
-name: Diagnose public audio delivery
+name: Diagnose physical cat call on frozen candidate
 on:
   workflow_dispatch:
+    inputs:
+      run_id:
+        description: Frozen candidate producer run
+        required: true
+        type: string
+      artifact_id:
+        description: Immutable frozen input artifact
+        required: true
+        type: string
+      source_sha:
+        description: Exact candidate test source
+        required: true
+        type: string
+      trace_mode:
+        description: Trace policy for the focused diagnostic
+        type: choice
+        options: ['on', 'on-first-retry']
+        default: 'on'
 permissions:
   contents: read
+  actions: read
 jobs:
   diagnose:
-    name: Public audio network audit (never a release gate)
+    name: Diagnostic only (never a release gate)
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 30
     steps:
-      - name: Download real unchanged audio from production and verify bytes
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl --fail --silent --show-error --max-time 150 --output /tmp/rain.flac --write-out 'rain http=%{http_code} bytes=%{size_download} ttfb=%{time_starttransfer}s total=%{time_total}s\n' https://cubxxw.com/audio/space/rain-distant-storm-loop.flac
-          echo '163b7f4df1345f2d54a35ae041116987544eca12dc0397105537b4eb76c999fb  /tmp/rain.flac' | sha256sum --check
-          curl --fail --silent --show-error --max-time 90 --output /tmp/music.mp3 --write-out 'music http=%{http_code} bytes=%{size_download} ttfb=%{time_starttransfer}s total=%{time_total}s\n' https://cubxxw.com/audio/space/night-on-the-docks-sax.mp3
-          echo '8ccfb78466fe24e22b621672d4784f78d8954f6a93a5d4bc7adccaea1b0fdb18  /tmp/music.mp3' | sha256sum --check
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.source_sha }}
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blog
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ inputs.artifact_id }}
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ github.token }}
+          path: tests/.artifacts/camera-input
+          merge-multiple: true
+      - name: Reproduce physical cat call without rebuilding production
+        env:
+          SITE_OUTPUT_DIR: ${{ github.workspace }}/tests/.artifacts/camera-input/site/public
+          PLAYWRIGHT_JSON_OUTPUT_FILE: tests/.artifacts/camera-report.json
+          DIAGNOSTIC_TRACE: ${{ inputs.trace_mode }}
+        run: >-
+          npx playwright test tests/e2e/space-object-living.spec.ts
+          --grep 'the cat sleeps by default' --repeat-each=2
+          --project=desktop --project=mobile --workers=1 --retries=0
+          --trace="$DIAGNOSTIC_TRACE"
+          --reporter=line,json
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: camera-diagnostic-${{ github.run_id }}
+          path: |
+            tests/.artifacts/camera-report.json
+            test-results/
+          if-no-files-found: error
+          retention-days: 7
