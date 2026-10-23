@@ -1,5 +1,5 @@
 import {test, expect} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 
 const article='/zh/engineering/posts/use-go-tools-dlv/';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
@@ -37,6 +37,7 @@ test('newsletter timeout releases the busy form and preserves the email',async({
 });
 
 test('library empty search and empty bookmarks offer a working way back',async({page})=>{
+  await reserveWorldJourney(page);
   await page.goto('/zh/projects/');await enterWorkspace(page);
   await page.locator('[data-space-dock] [data-open="reader"]').click();
   const reader=page.locator('[data-space-window="reader"]');

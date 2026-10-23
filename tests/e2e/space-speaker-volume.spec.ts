@@ -16,9 +16,11 @@ test.beforeEach(async({page})=>{
 test('speaker volume can grow to full gain during playback without replacing music or rain',async({page})=>{
  await ready(page);await object(page,'speaker');await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});await expect(root(page)).toHaveAttribute('data-room-ambient','playing');
  await expect.poll(async()=>(await musicSource(page))?.gain).toBeCloseTo(.6,2);const music=(await musicSource(page))!,rain=(await rainSource(page))!;expect(music).toBeTruthy();
+ const track=await root(page).getAttribute('data-room-track');expect(track).toBeTruthy();
  // Finish the keyboard menu interaction before aiming a pointer at the room;
  // its expanded accessible object list otherwise covers the physical player.
  await page.locator('.space-world__canvas').focus();await hitRoomObject(page,'vinyl');
+ expect(await root(page).getAttribute('data-room-track')).toBe(track);expect((await musicSource(page))!.id).toBe(music.id);
  const slider=page.getByRole('slider',{name:'音箱音量',exact:true});await expect(slider).toHaveValue('60');await expect(page.locator('[data-room-volume-value]')).toHaveText('60%');
  await slider.focus();await slider.press('End');await expect(slider).toHaveValue('100');await expect(slider).toBeFocused();await expect(page.locator('[data-room-volume-value]')).toHaveText('100%');
  await expect.poll(async()=>(await musicSource(page))?.gain).toBeCloseTo(1,2);

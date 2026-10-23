@@ -8,6 +8,32 @@ async function open(page:Page){
  await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:quiet:v1','no');});
  await page.goto('/zh/projects/?vista=image&room-hour=14');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
 }
+// Keep short camera states observable even when a software renderer takes longer
+// than the flight to acknowledge a native input or viewport command. The real
+// timers/render loop load normally, then only the test controls their timeline.
+async function openWithPausedClock(page:Page){
+ await page.clock.install();await open(page);await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
+}
+async function finishFlight(page:Page){await page.clock.fastForward(2000);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
+type FlightFrame={fov:number;at:number;frame:string|undefined;travel:string|undefined};
+async function armFlightSamples(page:Page){
+ await page.evaluate(()=>{
+  const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!,state={samples:[] as FlightFrame[],done:false};
+  (window as unknown as {cameraFlight:typeof state}).cameraFlight=state;
+  const sample=(stamp:number)=>{state.samples.push({fov:JSON.parse(root.dataset.worldPose!).fov,at:stamp,frame:root.dataset.worldFrames,travel:root.dataset.worldTravel});if(root.dataset.worldTravel==='true')requestAnimationFrame(sample);else state.done=true;};
+  const observer=new MutationObserver(()=>{if(root.dataset.worldTravel==='true'){observer.disconnect();requestAnimationFrame(sample);}});
+  observer.observe(root,{attributes:true,attributeFilter:['data-world-travel']});
+ });
+}
+async function collectFlightSamples(page:Page){
+ // Sparse real animation frames avoid forcing 100+ expensive WebGL draws. The
+ // 50ms tail still measures the existing final-lens velocity contract.
+ for(let i=0;i<42;i++){
+  if(await page.evaluate(()=>(window as unknown as {cameraFlight:{done:boolean}}).cameraFlight.done))break;
+  await page.clock.fastForward(50);
+ }
+ return page.evaluate(()=>{const state=(window as unknown as {cameraFlight:{samples:FlightFrame[];done:boolean}}).cameraFlight;if(!state.done)throw new Error('Camera did not finish on its controlled timeline');return state.samples;});
+}
 async function changed(page:Page,a:Buffer,b:Buffer,box:{x:number;y:number;width:number;height:number}){
  return page.evaluate(async({a,b,box})=>{
   const decode=async(source:string)=>{const image=new Image();image.src='data:image/png;base64,'+source;await image.decode();const canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;const ctx=canvas.getContext('2d')!;ctx.drawImage(image,0,0);return ctx.getImageData(0,0,image.width,image.height);};
@@ -34,17 +60,17 @@ test('daylight water and clouds move in the actual window while the boat keeps i
 });
 
 test('approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf',async({page},info)=>{
- test.setTimeout(90000);await open(page);const entry=await pose(page);
+ test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  await object(page,'window');await expect(root(page)).toHaveAttribute('data-world-travel','true');
- await page.waitForTimeout(180);const approaching=await pose(page);
+ await page.clock.fastForward(180);await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);
  await page.mouse.move(8,8);await page.mouse.down();await expect(root(page)).toHaveAttribute('data-world-travel','true');await page.mouse.up();
- await expect(root(page)).toHaveAttribute('data-world-mode','roam');await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(await pose(page)).toEqual(entry);
+ await expect(root(page)).toHaveAttribute('data-world-mode','roam');await expect(root(page)).toHaveAttribute('data-world-travel','true');await finishFlight(page);expect(await pose(page)).toEqual(entry);
  expect(Math.hypot(approaching.x-entry.x,approaching.z-entry.z)).toBeGreaterThan(.001);
  const size=page.viewportSize()!;await page.mouse.move(size.width*.5,size.height*.4);
- await object(page,'window');await page.waitForTimeout(120);await page.mouse.down();await page.mouse.move(size.width*.5+55,size.height*.4+12);await page.mouse.up();
- await expect(root(page)).toHaveAttribute('data-world-travel','false');const looking=await pose(page);await page.waitForTimeout(200);const stopped=await pose(page);expect(stopped.x).toBe(looking.x);expect(stopped.z).toBe(looking.z);
- await page.keyboard.press('Escape');await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(await pose(page)).toEqual(entry);
- await object(page,'books');await expect(root(page)).toHaveAttribute('data-world-travel','false');
+ await object(page,'window');await page.clock.fastForward(120);await expect(root(page)).toHaveAttribute('data-world-travel','true');const grabbing=await pose(page);expect(Math.hypot(grabbing.x-entry.x,grabbing.z-entry.z)).toBeGreaterThan(.001);await page.mouse.down();await page.mouse.move(size.width*.5+55,size.height*.4+12);await page.mouse.up();
+ await expect(root(page)).toHaveAttribute('data-world-travel','false');const looking=await pose(page);expect(looking.yaw).not.toBe(grabbing.yaw);await page.clock.fastForward(200);const stopped=await pose(page);expect(stopped.x).toBe(looking.x);expect(stopped.z).toBe(looking.z);
+ await page.keyboard.press('Escape');await finishFlight(page);expect(await pose(page)).toEqual(entry);
+ await object(page,'books');await finishFlight(page);await page.clock.resume();
  const before=JSON.parse((await root(page).getAttribute('data-room-cat'))!),samples:number[]=[];
  for(let i=0;i<12;i++){await page.waitForTimeout(400);samples.push(JSON.parse((await root(page).getAttribute('data-room-cat-breath'))!).chest);}
  const cat=JSON.parse((await root(page).getAttribute('data-room-cat'))!);expect(cat.phase).toBe('sleep');expect(cat.x).toBe(before.x);expect(cat.z).toBe(before.z);expect(cat.elapsed).toBe(before.elapsed);
@@ -62,17 +88,17 @@ test('reduced motion freezes environmental movement and retains immediate object
 });
 
 test('resizing during a window or computer approach retargets the live camera without an arrival jump',async({page},info)=>{
- test.setTimeout(90000);await open(page);const original=page.viewportSize()!,other=original.width>700?{width:420,height:800}:{width:1000,height:650};
- const finishSamples=()=>page.evaluate(()=>new Promise<{fov:number;at:number;frame:string|undefined}[]>(resolve=>{
-  const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!,samples:{fov:number;at:number;frame:string|undefined}[]=[];
-  const sample=(stamp:number)=>{samples.push({fov:JSON.parse(root.dataset.worldPose!).fov,at:stamp,frame:root.dataset.worldFrames});if(root.dataset.worldTravel==='true')requestAnimationFrame(sample);else resolve(samples);};requestAnimationFrame(sample);
- }));
+ test.setTimeout(90000);await openWithPausedClock(page);const original=page.viewportSize()!,other=original.width>700?{width:420,height:800}:{width:1000,height:650};
  for(const kind of ['window','computer']){
-  await object(page,kind);await page.waitForTimeout(170);await page.setViewportSize(kind==='window'?other:original);
-  const samples=await finishSamples();expect(samples.length).toBeGreaterThan(1);
+  await armFlightSamples(page);const from=await pose(page);await object(page,kind);await page.clock.fastForward(170);
+  await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);expect(Math.hypot(approaching.x-from.x,approaching.z-from.z)).toBeGreaterThan(.001);
+  await page.setViewportSize(kind==='window'?other:original);
+  await expect(root(page)).toHaveAttribute('data-world-travel','true');
+  const samples=await collectFlightSamples(page);expect(samples.length).toBeGreaterThan(1);expect(samples[0].travel).toBe('true');expect(samples[samples.length-1].travel).toBe('false');
+  expect(new Set(samples.map(sample=>sample.frame)).size).toBeGreaterThan(1);
   await writeFile(info.outputPath(kind+'-resize-frames.json'),JSON.stringify(samples,null,2));
   const end=samples[samples.length-1],previous=samples[samples.length-2];
   expect(Math.abs(end.fov-previous.fov)/Math.max(.001,(end.at-previous.at)/1000)).toBeLessThan(8);
-  if(kind==='window'){await page.keyboard.press('Escape');await expect(root(page)).toHaveAttribute('data-world-travel','false');}
+  if(kind==='window'){await page.keyboard.press('Escape');await finishFlight(page);}
  }
 });

@@ -1,5 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 
@@ -8,6 +8,7 @@ type Photo={id:string;image:string;thumb:string;title:string;place:string;region
 const win=(page:Page,app='photos')=>page.locator(`[data-space-window="${app}"]`);
 const frames=(page:Page)=>page.evaluate(()=>new Promise<void>(done=>requestAnimationFrame(()=>requestAnimationFrame(()=>done()))));
 async function setup(page:Page,lang='zh',theme='light'){
+  await reserveWorldJourney(page);
   await page.goto(`${lang==='zh'?'/zh':''}/projects/`);await enterWorkspace(page);
   await page.evaluate(value=>(window as any).BearSpace.execute('theme',{value}),theme);await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-theme',theme);
   return page.locator('[data-space-catalog]').evaluate(el=>JSON.parse(el.textContent||'{}')) as Promise<{photos:Photo[];labels:Record<string,string>}>;
