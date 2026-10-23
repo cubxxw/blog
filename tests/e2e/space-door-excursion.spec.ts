@@ -61,6 +61,7 @@ async function threshold(page:Page) {
   await expect(root(page)).toHaveAttribute('data-world-travel','false',{timeout:30_000});
   await expect(panel(page,'threshold')).toHaveCount(1);
   await expect(stepButton(page)).toBeVisible();
+  for(const selector of ['.space-cafe__header','.space-world-hud__roam','.space-world-hud__workspace'])await expect(root(page).locator(selector)).toBeHidden();
   await expect(safeExit(page)).toBeVisible();
 }
 

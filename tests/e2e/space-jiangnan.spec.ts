@@ -27,7 +27,10 @@ test('the full-viewport explorable room renders its distant environment inside t
   expect(Number(await root(page).getAttribute('data-world-triangles'))).toBeGreaterThan(20_000);await expect(page.locator('.rain-room,.rain-room__image')).toHaveCount(0);expect(plates).toEqual([]);
   await expect(root(page)).toHaveAttribute('data-world-vista','image',{timeout:30_000});
   const a=(await root(page).boundingBox())!,b=(await canvas.boundingBox())!;expect(Math.abs(a.width-b.width)).toBeLessThan(1);expect(Math.abs(a.height-b.height)).toBeLessThan(1);
-  await expect(page.locator('.space-world-hud__roam')).toBeHidden();expect(errors).toEqual([]);await page.screenshot({path:`.netlify/space-3d-${test.info().project.name}.png`});
+  const roam=page.locator('.space-world-hud__roam');await expect(roam).toBeVisible();
+  for(const action of ['read','enter'])await expect(roam.locator(`[data-cafe-${action}]`)).toBeVisible();
+  await expect(roam.locator('[data-cafe-photos]')).toBeHidden();await expect(page.locator('.space-world-hud__workspace')).toBeHidden();
+  expect(errors).toEqual([]);await page.screenshot({path:`.netlify/space-3d-${test.info().project.name}.png`});
 });
 
 test('a failed distant environment falls back to geometry and remains explorable',async({page})=>{
@@ -56,7 +59,7 @@ test('the physical Mac opens the same real desktop and returning retains the edi
 test('the close wooden working chair opens the same physical Mac and retreats naturally',async({page})=>{
   await ready(page);const chair=await lookAtRoomObject(page,'seat'),before=await pose(page);await page.mouse.click(chair.x,chair.y);
   await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(root(page)).toHaveAttribute('data-computer-view','expanded');
-  await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expect(root(page)).toHaveAttribute('data-computer-view','framed');
+  await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();await expect(root(page)).toHaveAttribute('data-computer-view','framed');
   const seated=await pose(page);expect(seated.x).toBeCloseTo(.8,3);expect(seated.z).toBeGreaterThan(-1.10);expect(seated.z).toBeLessThan(-.90);
   await page.mouse.click(12,12);await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await pose(page)).toEqual(before);
 });
@@ -78,7 +81,9 @@ test('returning keeps the native workspace connected before the next frame and a
 
 test('real coffee and bookshelf hits open a close view and return to the same camera',async({page})=>{
   await ready(page);const before=await pose(page);await hit(page,'coffee');await expect(root(page)).toHaveAttribute('data-world-inspect','coffee');
-  await expect(page.locator('[data-room-inspection][data-kind="coffee"]')).toBeVisible();await page.keyboard.press('Escape');expect(await pose(page)).toEqual(before);
+  await expect(page.locator('[data-room-inspection][data-kind="coffee"]')).toBeVisible();
+  for(const selector of ['.space-cafe__header','.space-world-hud__roam','.space-world-hud__workspace'])await expect(page.locator(selector)).toBeHidden();
+  await page.keyboard.press('Escape');expect(await pose(page)).toEqual(before);
   // Turn to the opposite wall; this is an actual camera rotation before the hit.
   const target=await point(page,'books');if(target.x<0||target.x>page.viewportSize()!.width){
     const p=await pose(page),yaw=Math.atan2(-(-2.56-p.x),-(-1.1-p.z)),b=(await root(page).boundingBox())!;

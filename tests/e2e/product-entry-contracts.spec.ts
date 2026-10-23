@@ -4,9 +4,9 @@ import {enterWorkspace} from '../helpers/space-entry';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
 for(const entry of [
-  {name:'Chinese home introduction',path:'/zh/',selector:'.hp-entry-actions a[href$="#studio-products"]',destination:'/zh/projects/#studio-products',label:'产品'},
-  {name:'English home products section',path:'/',selector:'#hp-projects .hp-section-action',destination:'/projects/#studio-products',label:'Products'},
-  {name:'Chinese shared footer',path:'/zh/engineering/posts/use-go-tools-dlv/',selector:'.sf-more[href$="#studio-products"]',destination:'/zh/projects/#studio-products',label:'产品'},
+  {name:'Chinese home introduction',path:'/zh/',selector:'.hp-entry-actions a[href$="#studio-products"]',destination:'/zh/projects/#studio-products',label:'作品'},
+  {name:'English home products section',path:'/',selector:'#hp-projects .hp-section-action',destination:'/projects/#studio-products',label:'Projects'},
+  {name:'Chinese shared footer',path:'/zh/engineering/posts/use-go-tools-dlv/',selector:'.sf-more[href$="#studio-products"]',destination:'/zh/projects/#studio-products',label:'作品'},
 ]) {
   test(`${entry.name} opens the actual products app in the current tab`,async({page,context})=>{
     await page.setViewportSize({width:1440,height:900});await page.goto(entry.path);

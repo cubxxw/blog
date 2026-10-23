@@ -10,9 +10,15 @@ async function ready(page:Page){await page.goto('/zh/projects/');await expect(ro
 async function point(page:Page,name:string){return page.evaluate(async name=>{const specifier='three',THREE=await import(specifier),el=document.querySelector<HTMLElement>('[data-bear-workspace]')!,p=JSON.parse(el.dataset.worldPose!),target=JSON.parse(el.dataset.worldTargets!)[name];const c=new THREE.PerspectiveCamera(p.fov,el.clientWidth/el.clientHeight,.04,160);c.position.set(p.x,p.y,p.z);c.rotation.set(p.pitch,p.yaw,0,'YXZ');c.updateMatrixWorld();const v=new THREE.Vector3(...target).project(c),b=el.getBoundingClientRect();return{x:b.x+(v.x+1)*b.width/2,y:b.y+(1-v.y)*b.height/2};},name);}
 async function hit(page:Page,name:string){await hitRoomObject(page,name);}
 
-test('the room opens as an uninterrupted space with no external navigation',async({page})=>{
+test('the room opens with two light entry actions and quiet scene utilities',async({page})=>{
  await ready(page);
- for(const selector of ['.space-cafe__header','.space-cafe__footer','.space-fullscreen','.jiangnan-guidance','.space-world-touch','.space-world-hud__roam','.space-world-hud__workspace'])await expect(page.locator(selector)).toBeHidden();
+ for(const selector of ['.space-cafe__footer','.space-fullscreen','.jiangnan-guidance','.space-world-touch','.space-world-hud__workspace'])await expect(page.locator(selector)).toBeHidden();
+ await expect(page.locator('.space-cafe__header')).toBeVisible();await expect(page.locator('.space-cafe__brand')).toBeHidden();
+ const utilities=page.locator('.space-cafe__utilities');
+ for(const action of ['language','quiet','picker'])await expect(utilities.locator(`[data-cafe-${action}]`)).toBeVisible();
+ const roam=page.locator('.space-world-hud__roam');await expect(roam).toBeVisible();
+ for(const action of ['read','enter'])await expect(roam.locator(`[data-cafe-${action}]`)).toBeVisible();
+ await expect(roam.locator('[data-cafe-photos]')).toBeHidden();await expect(roam.locator('p')).toBeHidden();
   await expect(page.locator('.space-room-audio')).toHaveCount(1);await expect(page.locator('button[data-room-sound]')).toHaveCount(0);
  await expect(root(page)).toHaveAttribute('data-room-sound','paused');
  await expect(root(page)).toHaveAttribute('data-room-ambient',/blocked|playing|wanted/);
@@ -34,6 +40,7 @@ test('a keyboard speaker activation owns its first blocked start and can pause a
 
 test('the real computer and photograph remain reachable without room buttons',async({page})=>{
  await ready(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
+ for(const selector of ['.space-cafe__header','.space-world-hud__roam','.space-world-hud__workspace'])await expect(page.locator(selector)).toBeHidden();
  if(await page.locator('.jiangnan-computer-expand').isVisible())await page.locator('.jiangnan-computer-expand').click();
  await page.locator('[data-mac-menu="file"]').click();await page.locator('[data-mac-panel="file"] [data-open="notes"]').click();const editor=page.locator('[data-note-editor]'),original=await editor.elementHandle();await editor.fill('留在这间房里的笔记。');await editor.evaluate((e:HTMLTextAreaElement)=>e.setSelectionRange(1,6,'backward'));
  await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-visit]').click();await expect(root(page)).toHaveAttribute('data-world-travel','false');await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');expect(await editor.evaluate((e,old)=>e===old,original)).toBe(true);await expect(editor).toHaveValue('留在这间房里的笔记。');expect(await editor.evaluate((e:HTMLTextAreaElement)=>[e.selectionStart,e.selectionEnd,e.selectionDirection])).toEqual([1,6,'backward']);
