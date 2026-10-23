@@ -72,7 +72,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(disposed||failed)return;
     const focused=document.activeElement;
     const selection=typeof focused?.selectionStart==='number'?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
-    failureFocusManaged=initializing&&entryFocusManaged;
+    failureFocusManaged=initializing&&entryFocusManaged&&!boot.active;
     failed=true;++revision;world?.dispose();world=null;root.dataset.worldFailed='true';root.dataset.computerView='expanded';syncCat('unavailable');
     for(const key of ['worldReady','worldMode','worldTravel','worldLoading'])delete root.dataset[key];
     // A completed onboarding cannot display a second failure state. Restore the
@@ -199,7 +199,12 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       // throughout the real download/build/first-frame handoff.
       const replacing=world&&(id==='jiangnan')!==(theme==='jiangnan');
       if(replacing){closePicker();boot.begin();}
-      if(world&&await world.setTheme(id)===false)return;
+      try{
+        if(world&&await firstVisibleFrame(world.setTheme(id))===false)return;
+      }catch{
+        if(!disposed&&current===revision)failWorld(t('场景切换未能完成，仍可阅读或打开工作区。','The scene could not finish loading. You can still read or open the workspace.'));
+        return;
+      }
       if(disposed||current!==revision)return;
       commit(id);if(replacing)boot.event('frame');
       pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);

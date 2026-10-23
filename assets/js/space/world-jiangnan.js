@@ -460,7 +460,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     const reflectionReady=Number(root.dataset.worldPbrMaps)>=12||performance.now()-startTime>2200;
     // A cubemap renders the room six more times. Never charge that work to the
     // first visible frame, even when all textures arrive from cache together.
-    if(frames>0&&!reflectionDone&&reflectionReady)reflectRoom();
+    if(!reflectionDone&&reflectionReady&&!firstPending)reflectRoom();
     let info;try{screenVisibility();info=renderRoom();css.render(scene,camera);}catch(error){renderer.setRenderTarget(null);settleFirst(false);onFailure?.();return;}
     root.dataset.worldFrames=String(++frames);root.dataset.worldTriangles=String(info.triangles);root.dataset.worldDraws=String(info.calls);root.dataset.worldRenderedMode=mode;root.dataset.worldVista=exterior.vistaMode||'geometry';
     root.dataset.roomBoatPose=JSON.stringify([+exterior.boat.position.x.toFixed(3),+exterior.boat.position.y.toFixed(3),+exterior.boat.position.z.toFixed(3)]);root.dataset.roomBoat='ready';root.dataset.worldEnvironmentTime=environmentTime.toFixed(3);

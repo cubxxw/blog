@@ -1,5 +1,7 @@
 import {test,expect} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 test.use({channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 test.beforeEach(({page})=>reserveWorldJourney(page));
@@ -17,6 +19,27 @@ const clickWithClockPaused=async(control:import('@playwright/test').Locator)=>{
   expect(point.width).toBeGreaterThanOrEqual(44);expect(point.height).toBeGreaterThanOrEqual(44);expect(point.inside).toBe(true);expect(point.hit).toBe(true);
   await control.page().mouse.click(point.x,point.y);
 };
+
+for(const language of ['zh','en'])test(`the default personal room boots visibly in ${language}`,async({page})=>{
+  await page.addInitScript(()=>localStorage.setItem('space:cafe:theme:v2','jiangnan'));
+  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+  let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
+  await page.route('**/world-jiangnan.*.js',async route=>{await gate;await route.continue();});
+  const evidence=process.env.SPACE_BOOT_EVIDENCE_DIR;
+  await page.goto(language==='zh'?'/zh/projects/':'/projects/');
+  try{
+    await expect(page.locator('.space-boot__body')).toBeVisible();
+    await expect(page.locator('.space-boot__intro')).toContainText(language==='zh'?'熊鑫伟':'Xinwei Xiong');
+    await expect(page.locator('[data-boot-skip]')).toBeHidden();
+    expect(await page.locator('[data-space-boot]').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
+    if(evidence){await fs.mkdir(evidence,{recursive:true});await page.screenshot({path:path.join(evidence,`${test.info().project.name}-${language}-terminal.png`)});}
+  }finally{release();}
+  await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
+  await expect(page.locator(root)).toHaveAttribute('data-world-renderer','jiangnan');
+  await expect(page.locator('[data-space-boot]')).toBeHidden();
+  if(evidence)await page.screenshot({path:path.join(evidence,`${test.info().project.name}-${language}-room.png`)});
+  expect(errors).toEqual([]);
+});
 
 test('the terminal stays visible until a real scene frame, with a direct writing escape',async({page})=>{
   let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
@@ -51,6 +74,25 @@ test('changing renderer keeps the terminal visible until the replacement room pa
   await expect(page.locator(root)).toHaveAttribute('data-world-renderer','jiangnan');
   await expect(page.locator('[data-space-boot]')).toBeHidden();
   await expect(page.locator('.space-world__canvas')).toBeFocused();
+});
+
+test('a stalled replacement renderer times out to a usable workspace',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/zh/projects/');await room(page);
+  await page.clock.install();
+  let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
+  await page.route('**/world-jiangnan.*.js',async route=>{await gate;await route.continue();});
+  try{
+    await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
+    await page.locator('button[data-cafe-theme="jiangnan"]').click();
+    await expect(page.locator('[data-space-boot]')).toBeVisible();
+    await page.clock.fastForward(30005);
+    await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
+    await expect(page.locator('[data-boot-skip]')).toBeVisible();
+    await page.locator('[data-boot-skip]').click();
+    await expect(page.locator('[data-space-boot]')).toBeHidden();
+    await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+    await expect(page.locator('.space-world__canvas')).toHaveCount(0);
+  }finally{release();await page.clock.resume();}
 });
 
 test('opening a seat or terrace from the workspace preserves notes and allows returning',async({page})=>{
@@ -107,6 +149,15 @@ test('module failure offers an ordinary workspace and reading link',async({page}
   await page.locator('[data-boot-skip]').click();await expect(page.locator('[data-space-boot]')).toBeHidden();
   await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   await expect(page.locator('[data-space-menu-trigger]')).toBeVisible();
+});
+
+test('a failed deep link restores focus to its document after explicit recovery',async({page})=>{
+  await page.route('**/world-cafe.*.js',route=>route.abort());
+  await page.goto('/zh/projects/#identity');
+  await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
+  await page.locator('[data-boot-skip]').click();
+  await expect(page.locator('[data-space-window="welcome"]')).toBeVisible();
+  await expect(page.locator('[data-space-window="welcome"]')).toBeFocused();
 });
 
 test('the optional resident can fail without blocking the room or workspace',async({page})=>{
@@ -182,9 +233,7 @@ test('a graphics failure during the reveal cannot leave an invisible modal behin
     // Wait for its actual canvas before advancing the paused animation clock.
     await expect(page.locator('.space-world__canvas')).toBeAttached();
     await page.clock.runFor(16);await expect(page.locator(root)).toHaveAttribute('data-boot-stage','3');
-    // The first actual frame is ready; preserve the original 1400ms minimum
-    // before holding the real 550ms reveal window for context-loss injection.
-    await page.clock.fastForward(1405);
+    // Hold the actual short reveal window immediately after the ready frame.
     await expect(page.locator(root)).toHaveAttribute('data-boot-state','revealing');
     await page.locator('.space-world__canvas').evaluate(canvas=>(canvas as HTMLCanvasElement).getContext('webgl2')!.getExtension('WEBGL_lose_context')!.loseContext());
     await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');

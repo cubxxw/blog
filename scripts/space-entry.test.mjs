@@ -55,7 +55,7 @@ test('a disconnected or still-hidden entry cannot acquire focus after ready',asy
   const {handoffEntryFocus}=await import('../assets/js/space/entry.mjs');for(const state of ['removed','inert','no-rect']){const f=focusFixture(),pending=handoffEntryFocus(f.args);if(state==='removed')f.target.isConnected=false;if(state==='inert')f.target.closest=()=>({});if(state==='no-rect')f.target.getClientRects=()=>[];f.resolve({});assert.equal(await pending,false);assert.deepEqual(f.focusCalls,[]);assert.equal(f.cleaned(),true);}
 });
 
-test('the actual initial failure path leaves focus to the owned ready handoff instead of grabbing it during reveal',async()=>{
+test('failure preserves an existing ready handoff only when no terminal needs explicit recovery',async()=>{
   const {readFile}=await import('node:fs/promises'),vm=await import('node:vm'),source=await readFile(new URL('../assets/js/space/cafe.js',import.meta.url),'utf8');
   const failure=source.slice(source.indexOf('  function failWorld('),source.indexOf('  // Background tabs'));
   const reveal=source.match(/onReveal:result=>\{([\s\S]*?)\n  \}\}\);/)[1];
@@ -63,7 +63,7 @@ test('the actual initial failure path leaves focus to the owned ready handoff in
     const other={},button={disabled:true},toast={},focusCalls=[],document={activeElement:other},root={dataset:{worldLoading:'true'},contains:()=>false,querySelectorAll:()=>[button],querySelector:()=>toast};
     const context={disposed:false,failed:false,initializing:true,entryFocusManaged:true,failureFocusManaged:false,revision:0,world:{dispose(){}},root,document,boot:{active,event(){}},pickerStatus:{},syncCat(){},setMode(){},onEnter(){},focusDesktop:()=>({focus(){focusCalls.push('fallback');}}),getComputedStyle:()=>({visibility:'visible'})};
     vm.runInNewContext(failure+`\nfailWorld('offline'); initializing=false; (result=>{${reveal}})({failed:true});`,context);
-    assert.equal(context.failureFocusManaged,true);assert.equal(root.dataset.worldFailed,'true');assert.equal(button.disabled,false);assert.equal(document.activeElement,other);assert.deepEqual(focusCalls,[]);
+    assert.equal(context.failureFocusManaged,!active);assert.equal(root.dataset.worldFailed,'true');assert.equal(button.disabled,false);assert.equal(document.activeElement,other);assert.deepEqual(focusCalls,active?['fallback']:[]);
   }
 });
 

@@ -99,6 +99,14 @@ test('cached textures still paint a first frame before the six-view reflection c
   assert.equal(f.reflected,true,'the ordinary reflection remains available after entry');
 });
 
+test('an unready early draw cannot move reflection work ahead of the first ready frame',async()=>{
+  const f=fixture();let ready=false;const completed=f.world.firstFrame.then(value=>{ready=value;});
+  f.flush();assert.equal(f.draws,1);assert.equal(ready,false);
+  f.world.setMaps(12);f.flush();await completed;
+  assert.equal(ready,true);assert.equal(f.draws,2);assert.equal(f.captures.length,0);
+  f.advance(2300);f.flush();assert.equal(f.captures.length,1);
+});
+
 test('early boot keeps its pending reflection deadline and captures fallback only once',async()=>{
   const f=fixture();
   f.world.setMaps(11);f.flush();

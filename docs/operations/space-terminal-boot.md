@@ -1,6 +1,6 @@
 # Space terminal startup
 
-Status on 2026-10-23: implementation and lightweight checks passed. Full Hugo/Netlify rendering, real WebGL acceptance, independent review, CI, and production delivery remain pending. This is not a production release receipt.
+Status on 2026-10-23: implementation, independent review, production build, and targeted real WebGL acceptance passed. Remote CI and production delivery remain pending. This is not a production release receipt.
 
 ## Behavior
 
@@ -18,7 +18,7 @@ Status on 2026-10-23: implementation and lightweight checks passed. Full Hugo/Ne
 
 ## Verification
 
-The combined targeted Node run passed **79 tests, 0 failures**. Coverage includes boot state and timers, slow connections, failure recovery, reduced motion, keyboard focus, replacement-renderer readiness, theme/preload selection, denied storage, nested pages, reflection capture order, door transitions, resident interaction, and CI workflow contracts.
+The combined targeted Node run passed **80 tests, 0 failures**. Coverage includes boot state and timers, slow connections, failure recovery, reduced motion, keyboard focus, replacement-renderer readiness, theme/preload selection, denied storage, nested pages, reflection capture order, door transitions, resident interaction, and CI workflow contracts.
 
 ```sh
 npm run space:boot:test
@@ -30,10 +30,12 @@ Syntax checks passed for the changed preload, onboarding, café, and renderer-co
 
 An isolated browser fixture used the actual CSS and onboarding controller, with the terminal template's bilingual values resolved locally. It did **not** build the Hugo page or load a 3D scene. Checks at 1440 px desktop, 390 px Chinese mobile, and 320 px English mobile found no horizontal overflow; normal startup had zero visible buttons. Runtime checkpoint and failure interactions worked, with no captured console errors. Screenshots and the full TAP receipt were saved in the task's persistent local visualization artifact directory.
 
-The existing onboarding E2E contracts were updated, and a replacement-renderer test was added. They have **not** been run in this task.
+The production Hugo build passed (349 English and 372 Chinese pages) and was served through offline Netlify dev, with no backend functions. A single Chromium worker passed **24 real WebGL cases without retries**: ten startup/switch/failure/deep-link/graphics-recovery contracts at desktop and mobile, plus the default Jiangnan boot at both sizes in Chinese and English. Those real pages also had zero horizontal overflow, a visible terminal during a held renderer request, zero normal loading buttons, automatic first-frame entry, and no page runtime errors. Actual terminal and room screenshots are retained separately from the earlier isolated fixture.
+
+Independent review found and then verified fixes for three P2 issues: a stalled replacement renderer now shares the visible-time deadline and releases its controller on failure; explicit deep-link recovery restores document focus; reflection capture waits for the first ready frame rather than an earlier unready draw. A new maps=0 to maps=12 regression covers that last distinction. The reviewer independently passed 39 focused Node tests and found no remaining P0-P2 issues.
 
 ## Remaining delivery gates
 
-The machine-wide `.agent-pause` marker was present. The resource snapshot showed 139 Node/npm processes, 8.13 GiB swap, and 37.84 GiB free disk. The repository's task lifecycle rule prohibits starting new builds or delegation while that marker remains effective. This task therefore did not start a Hugo/Netlify build, WebGL browser suite, or independent delegate/reviewer, and did not push to main or claim deployment.
+The initial machine-wide `.agent-pause` marker was present. The initial resource snapshot showed 139 Node/npm processes, 8.13 GiB swap, and 37.84 GiB free disk. Work first stopped after lightweight checks. The author then explicitly authorized this task's targeted build, page acceptance, and independent review. The global pause marker remains untouched. Builds reused the existing Hugo/dependencies and image cache; browser work was serial and used the same frozen site through Netlify dev.
 
-After that restriction is lifted or an explicit task-specific exception is authorized, complete independent review, the targeted production build, real initial-load/switch/failure/deep-link acceptance, the applicable current-head CI checks, and production revision readback. Keep the current main checkout and unrelated work intact. The initial task baseline was `01952d12`.
+Complete the applicable current-head CI checks and production revision readback before claiming delivery. Keep the current main checkout and unrelated work intact. The initial task baseline was `01952d12`. The local Netlify CLI has no valid site authorization; the repository's existing native Git publisher remains the configured release path. Production currently returns 404 for `__release.json`, so use the actual native deployment identity plus exact built asset readback rather than treating that endpoint as available.
