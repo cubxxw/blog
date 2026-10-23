@@ -9,7 +9,7 @@ import { JIANGNAN_WINDOW, JIANGNAN_DESK, JIANGNAN_WORK_CHAIR, JIANGNAN_READING_C
 
 // Furniture is built in metres. The live desktop belongs to the world runtime;
 // this module supplies its physical display, cabinetry and the surrounding room.
-export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photoAsset, books = [], records = [], zh = true, isDisposed, shadowSize = 1536 }) {
+export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photoAsset, books = [], records = [], zh = true, isDisposed, shadowSize = 1536, buildDoor = null, createLightRamp = null, isStill = () => true }) {
   const group = new THREE.Group();
   group.name = 'jiangnan-private-room';
   scene.add(group);
@@ -234,7 +234,13 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   const dummy = new THREE.Object3D();
   box(-3.28, 1.425, -.3, .18, 2.85, 4.78, plaster);
   box(3.28, 1.425, -.3, .18, 2.85, 4.78, plaster);
-  box(0, 1.425, 2.09, 6.65, 2.85, .18, plaster);
+  // A rear-door architecture may replace the solid south wall and skirting;
+  // it owns their split segments together with the real opening, leaf and
+  // landing. Without it the plain wall keeps its uninterrupted surface.
+  const door = buildDoor ? buildDoor({ group, resources, wake, isDisposed, still: isStill,
+    materials: { plaster, darkWood, walnut, joineryTimber, frameTimber, sashTimber, agedBrass, stone, seam } }) : null;
+  if (door?.target) targets.door = [...door.target];
+  if (!buildDoor) box(0, 1.425, 2.09, 6.65, 2.85, .18, plaster);
   box(0, 2.94, -.3, 6.65, .18, 4.78, plaster);
   box(-2.69, 1.425, -2.69, 1.02, 2.85, .18, plaster);
   box(-1.72, .40, -2.69, .94, .80, .18, plaster);
@@ -247,7 +253,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     box(x, 2.73, -.3, .13, .20, 4.65, darkWood);
   }
   for (const z of [-2.56, -.28, 1.9]) box(0, 2.74, z, 6.4, .19, .13, walnut);
-  box(0, .085, 1.96, 6.32, .17, .07, darkWood);
+  if (!buildDoor) box(0, .085, 1.96, 6.32, .17, .07, darkWood);
   for (const x of [-3.13, 3.13]) box(x, 1.43, -2.56, .095, 2.85, .14, darkWood);
   // Paper and glass share one sill/header, with a real opening behind each.
   // Paired meeting stiles sit under the two bamboo rolls. Their lower tongues
@@ -773,6 +779,8 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   // A serviceable walnut plinth, machined silver deck and isolated feet sit on
   // the counter. Only the platter rotates; the arm and controls stay fixed.
   const record = makeGroup('walnut-silver-record-player', -2.82, 1.015, -.50, cabinet, 'vinyl');
+  // Aim at the physical platter, not the air above its near edge. A shallow
+  // ray through that old point continued into a different record sleeve.
   targets.vinyl = [-2.82, 1.086, -.45];
   box(0, 0, 0, .49, .078, .66, joineryTimber, record, .011);
   box(0, .043, 0, .475, .010, .643, aluminum, record, .005);
@@ -1178,6 +1186,18 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   };
   applyRecordLabel(objects.snapshot().recordId);
   const shelfEmitterLevels = shelfBulbs.map(emitter => emitter.emissiveIntensity);
+  // Toggles glide the practical intensities over a short moment on the single
+  // room clock. Without an injected ramp (plain geometry use) switches snap.
+  const lightRamp = createLightRamp ? createLightRamp({ duration: .24, still: isStill }) : null;
+  if (lightRamp) {
+    lightRamp.seed('table', taskLight.intensity);
+    lightRamp.seed('pool', lampPool.intensity);
+    lightRamp.seed('shade', shadeMat.emissiveIntensity);
+    shelfLights.forEach((light, index) => lightRamp.seed('shelf:' + index, light.intensity));
+    shelfBulbs.forEach((emitter, index) => lightRamp.seed('emitter:' + index, emitter.emissiveIntensity));
+  }
+  let shadowDirty = false;
+  let lightClock;
   const catSupport=createCatSupport({THREE,floor:planks,rug:rugBody}),floorSample=catSupport.sample;
   catBed.updateWorldMatrix(true,true);
   const cushionRay=new THREE.Raycaster(new THREE.Vector3(),new THREE.Vector3(0,-1,0),0,.4);
@@ -1188,15 +1208,28 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     }
     return y;
   };
+  const writePracticals = ({ table, pool, shade, shelves, emitters }) => {
+    if (taskLight.intensity !== table || lampPool.intensity !== pool ||
+      shelfLights.some((light, index) => light.intensity !== shelves[index])) shadowDirty = true;
+    taskLight.intensity = table;
+    lampPool.intensity = pool;
+    lampPool.visible = pool > 0;
+    shadeMat.emissiveIntensity = shade;
+    shelfLights.forEach((light, index) => { light.intensity = shelves[index]; });
+    shelfBulbs.forEach((emitter, index) => { emitter.emissiveIntensity = emitters[index]; });
+  };
   const applySwitches = () => {
     const state = objects.snapshot();
-    taskLight.intensity = state.lamp ? JIANGNAN_TABLE_LIGHT.diffuse : 0;
-    lampPool.intensity = state.lamp ? JIANGNAN_TABLE_LIGHT.pool : 0;
-    lampPool.visible = state.lamp;
-    shadeMat.emissiveIntensity = state.lamp ? .47 : 0;
+    const ramp = (key, target) => lightRamp ? lightRamp.set(key, target) : target;
+    // Switch targets stay meaningful booleans; the visible values below glide.
     bulbMat.color.set(state.lamp ? '#ffe8bd' : '#a69b84');
-    shelfLights.forEach(light => { light.intensity = state['shelf-light'] ? light.userData.baseIntensity : 0; });
-    shelfBulbs.forEach((emitter, index) => { emitter.emissiveIntensity = state['shelf-light'] ? shelfEmitterLevels[index] : 0; });
+    writePracticals({
+      table: ramp('table', state.lamp ? JIANGNAN_TABLE_LIGHT.diffuse : 0),
+      pool: ramp('pool', state.lamp ? JIANGNAN_TABLE_LIGHT.pool : 0),
+      shade: ramp('shade', state.lamp ? .47 : 0),
+      shelves: shelfLights.map((light, index) => ramp('shelf:' + index, state['shelf-light'] ? light.userData.baseIntensity : 0)),
+      emitters: shelfBulbs.map((emitter, index) => ramp('emitter:' + index, state['shelf-light'] ? shelfEmitterLevels[index] : 0))
+    });
     brewStream.visible = state.espresso; brewSteam.visible = state.espresso;
   };
   return {
@@ -1205,7 +1238,17 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     targets,
     resources,
     soundTarget,
+    door,
     screen: { position: [...JIANGNAN_TARGETS.computer], width: .80, height: .50 },
+    // While a practical is gliding or the leaf is still swinging, the one
+    // shadow pass keeps up; once settled it stays untouched.
+    shadowRefresh() {
+      const dirty = shadowDirty || Boolean(lightRamp?.pending);
+      shadowDirty = false;
+      // Consume the leaf's dirty latch even when another practical is dirty.
+      const doorDirty = door?.shadowRefresh?.() ?? Boolean(door?.moving);
+      return dirty || doorDirty;
+    },
     toggleObject(kind) {
       const state = objects.toggle(kind);
       if (state) { applySwitches(); wake(); }
@@ -1228,6 +1271,18 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     },
     update(time,day) {
       objects.update(time);
+      if (lightRamp) {
+        const dt = lightClock === undefined ? 0 : Math.max(0, time - lightClock);
+        lightClock = time;
+        if (lightRamp.update(dt)) {
+          writePracticals({
+            table: lightRamp.value('table'), pool: lightRamp.value('pool'), shade: lightRamp.value('shade'),
+            shelves: shelfLights.map((light, index) => lightRamp.value('shelf:' + index)),
+            emitters: shelfBulbs.map((emitter, index) => lightRamp.value('emitter:' + index))
+          });
+        }
+      }
+      door?.update(time, day);
       const state = objects.snapshot();
       rotor.rotation.z = -state.fanPhase;
       head.rotation.y = -.22 + Math.sin(state.fanPhase * .017) * .11;

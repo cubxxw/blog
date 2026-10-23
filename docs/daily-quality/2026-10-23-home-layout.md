@@ -137,6 +137,13 @@ Current required run prepared exact merge `a6cd68b1d928c16b78555cfff0f5afd31024a
 
 ## Delivery
 
+### Space C integration stage
+
+The Space C integration includes the original PR head `5e8c0e891a99f3078342faba15dd4f18390fce90`. It retains the two original, complete native/compatible multi-object draft journeys: the integration's bounded single-move room gesture already completed those unchanged 90-second contracts in 37.3s and 40.0s on historical head `8fc62f29`. The proposed three-way browser-journey split is therefore not adopted in this combined branch. Independent camera/respiration cases and the deadline-free clock pause are retained, including intermediate movement, actual rendered frames, both resize directions, terminal `data-world-travel=false`, and the unchanged lens-velocity threshold. Analytical breathing receives its own uncapped visible interval while routine motion retains capped delta and deliberate interaction retains bounded catch-up. The real-rig cadence regression exercises that same capped-delta/raw-breathing combination. Current integration checks: 32 targeted Node tests and TypeScript passed; a new complete remote gate is required after this integration. Earlier partial runs and deployed previews remain historical evidence.
+
+The combined Space C branch still requires its own complete remote checks, merge and production acceptance; the separate homepage delivery below does not satisfy that gate.
+### Independent homepage release
+
 Required verification [39923729889](https://github.com/cubxxw/blog/actions/runs/39923729889) succeeded. Verified bundle artifact: `12492687218`, 448,542,293 bytes, for synthetic merge `a6cd68b1`. PR [#475](https://github.com/cubxxw/blog/pull/475) merged at 2026-10-23T09:40:36Z as `3c2968ae8b2f9de604c226697109fb7e8f2bba3b`. Main was re-fetched before merging; it remained `d3acf2c`. The actual merge tree is byte-for-byte identical to the tested synthetic merge, and its publication input digest remains `4a07f996349c6f689c706ed3e1e89e1530b0801474e1730058b9ae3d7479bb27`.
 
 Native Netlify production deploy `6adb2b963b06c04b22c044ce` published that exact merge at 2026-10-23T09:43:43.785Z and is ready. Publisher configuration is unchanged and native builds remain enabled.

@@ -95,12 +95,21 @@ test('a rejected fullscreen request keeps the current room usable and allows ret
   await expect(page.locator('[data-cafe-dialog]')).toBeVisible();
 });
 
-test('a 320 pixel room hides external chrome and keeps scene and fullscreen actions in the computer',async({page})=>{
+test('a 320 pixel room keeps light utilities usable and fullscreen inside the computer',async({page})=>{
   await page.setViewportSize({width:320,height:700});
   for(const lang of ['zh','en']){
     await openRoom(page,lang);
-    await expect(page.locator('.space-cafe__header')).toBeHidden();await expect(roomControl(page)).toBeHidden();
+    await expect(page.locator('.space-cafe__header')).toBeVisible();await expect(roomControl(page)).toBeHidden();
+    await expect(page.locator('.space-cafe__brand')).toBeHidden();
+    const utilities=page.locator('.space-cafe__utilities > button');await expect(utilities).toHaveCount(3);
+    for(const control of await utilities.all()){
+      await expect(control).toBeVisible();const box=await control.boundingBox();expect(box).not.toBeNull();
+      expect(box!.width).toBeGreaterThanOrEqual(44);expect(box!.height).toBeGreaterThanOrEqual(44);
+      expect(box!.x).toBeGreaterThanOrEqual(0);expect(box!.x+box!.width).toBeLessThanOrEqual(320);
+      expect(await control.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);
+    }
     await computerMenu(page);
+    await expect(page.locator('.space-cafe__header')).toBeHidden();await expect(page.locator('.space-world-hud__roam')).toBeHidden();
     for(const control of await page.locator('.space-menu [data-cafe-picker],.space-menu [data-space-fullscreen]').all()){
       const box=await control.boundingBox();expect(box).not.toBeNull();
       expect(box!.width).toBeGreaterThanOrEqual(44);expect(box!.height).toBeGreaterThanOrEqual(44);

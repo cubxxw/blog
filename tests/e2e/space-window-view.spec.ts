@@ -32,6 +32,11 @@ test('the actual window retreats naturally, preserves audio and keeps Mac contro
  await page.locator('[data-mac-menu="file"]').click();await page.locator('[data-mac-panel="file"] [data-open="notes"]').click();const editor=page.locator('[data-note-editor]');await editor.fill('Rain outside the same quiet working room.');
  await page.locator('[data-space-window="notes"] [data-window-action="close"]').click();await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
  await page.locator('[data-mac-menu="file"]').click();await page.locator('[data-mac-panel="file"] [data-open="notes"]').click();await expect(editor).toHaveValue('Rain outside the same quiet working room.');
+ // The default expanded Mac fills the viewport. Select its real framed view
+ // before testing the room-background retreat gesture.
+ await expect(root(page)).toHaveAttribute('data-computer-view','expanded');
+ await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();
+ await expect(root(page)).toHaveAttribute('data-computer-view','framed');
  await page.mouse.click(8,8);await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await pose(page)).toBe(deskPose);
  expect((await rainSource(page))!.id).toBe(rain.id);expect((await roomAudioSources(page)).some(s=>s.id===music.id&&!s.stopped)).toBe(true);
  await expect(editor).toHaveValue('Rain outside the same quiet working room.');

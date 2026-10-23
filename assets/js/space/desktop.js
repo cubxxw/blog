@@ -7,6 +7,7 @@ import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, planWindowArrangement } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
 import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
+import { usesSingleWindow } from './reading-layout.mjs';
 
 const root = document.querySelector('[data-bear-workspace]');
 // Space belongs to a full page. Its own browser may show the blog, whose links
@@ -15,6 +16,7 @@ if (root && window.parent===window) mountDesktop(root);
 function mountDesktop(root) {
   mountFullscreen(root);
   const catalog = JSON.parse(root.querySelector('[data-space-catalog]').textContent);
+  const readingURLs = new Set([...catalog.articles,...(catalog.readingDocuments || [])].map(article=>article.url));
   const productRoot = root.closest('[data-product-space]');
   const labels = catalog.labels, zh = catalog.language === 'zh';
   const t = (cn,en) => zh ? cn : en;
@@ -26,13 +28,13 @@ function mountDesktop(root) {
     return {width,height:Math.max(240,height-(root.clientWidth<=640?44:32))};
   };
   mountClassicDesktop({root,execute,notify});
-  const stateViewport = () => root.clientWidth <= 640 ? { width: 10000, height: 10000 } : viewport();
+  const stateViewport = () => usesSingleWindow(root.clientWidth) ? { width: 10000, height: 10000 } : viewport();
   const storageKey = 'bear-space:v1';
   let saved, saveFailure = false;
   try { saved = localStorage.getItem(storageKey); } catch { saveFailure = true; }
   let state = createWorkspace(saved,stateViewport());
   const nodes = new Map();
-  let onboarding = false, cafe;
+  let onboarding = false, cafe, readingFocus = false, readingFocusReturn = null;
   let companionFocus = null;
   const entryURL = new URL(location.href);
   let localeResume = entryURL.searchParams.get('space-resume') === catalog.language;
@@ -54,13 +56,13 @@ function mountDesktop(root) {
     const toast = root.querySelector('[data-space-toast]'); toast.textContent = message; toast.hidden = false;
     clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; },4000);
   }
-  const apps = mountApps({ root,catalog,execute,getState:()=>state,getContext:()=>companionFocus,updateNote:text=>update({type:'note',text},false),notify,icon });
+  const apps = mountApps({ root,catalog,execute,getState:()=>state,getContext:()=>companionFocus,getStorageStatus:()=>!saveFailure,updateNote:text=>update({type:'note',text},false),notify,icon });
   root.addEventListener('bear:agent-status',event=>{
     const button=root.querySelector('[data-space-dock] [data-open="agent"]');
     if(button){button.dataset.agentState=event.detail.state;button.title=t('空间助手','Space companion')+' · '+({working:t('进行中','Working'),waiting:t('等待确认','Approval needed'),done:t('已完成','Done'),error:t('未完成','Failed'),stopped:t('已停止','Stopped'),idle:t('就绪','Ready')}[event.detail.state] || '');}
   });
   function persist() {
-    try { localStorage.setItem(storageKey,serializeWorkspace(state)); return true; }
+    try { localStorage.setItem(storageKey,serializeWorkspace(state)); saveFailure=false; return true; }
     catch { if (!saveFailure) notify(t('浏览器未能保存。请导出一份笔记。','Browser storage failed. Please export your notes.')); saveFailure = true; return false; }
   }
   function title(win) {
@@ -71,15 +73,17 @@ function mountDesktop(root) {
   }
   function update(action, redraw = true) {
     state = reduceWorkspace(state,action,stateViewport());
-    persist(); if (redraw) render();
+    const saved=persist(); if (redraw) render();
     root.dispatchEvent(new CustomEvent('bear:workspace-change',{ detail:{type:action.type,active:state.active} }));
+    return saved;
   }
   function arrangementLabel(plan) {
     if (plan.mode === 'overview') return t('窗口概览','Window overview');
     return plan.rectangles.length === 1 ? t('适应工作区','Fit window') : t('窗口并排','Arrange windows');
   }
+  const arrangementPlan = () => usesSingleWindow(root.clientWidth) || root.dataset.readingFocus === 'true' ? {mode:'overview',rectangles:[]} : planWindowArrangement(state,viewport());
   function syncArrangementControls() {
-    const plan = planWindowArrangement(state,viewport()), label = arrangementLabel(plan);
+    const plan = arrangementPlan(), label = arrangementLabel(plan);
     root.querySelectorAll('[data-window-action="arrange"],[data-space-arrange]').forEach(button => {
       button.setAttribute('aria-label',label); button.title = label;
       if (plan.mode === 'overview') button.setAttribute('aria-haspopup','dialog');
@@ -97,13 +101,18 @@ function mountDesktop(root) {
   function arrangeWindows() {
     // Phones use a virtual stateViewport to preserve desktop rectangles.
     // Capacity is always based on the actual visible desktop instead.
-    const plan = planWindowArrangement(state,viewport());
+    const plan = arrangementPlan();
     if (plan.mode === 'overview') { showOverview(); return t('已打开窗口概览。','Window overview opened.'); }
     update({type:'arrange'});
     return plan.rectangles.length === 1 ? t('窗口已适应工作区。','Window fitted to the workspace.') : t('窗口已并排。','Windows arranged.');
   }
   function render() {
     root.dataset.theme = state.theme; root.dataset.wallpaper = state.wallpaper;
+    root.dataset.workspaceLayout = usesSingleWindow(root.clientWidth) ? 'single' : 'windows';
+    const focusedReader = state.windows.find(win => win.app === 'reader' && readingURLs.has(win.payload) && !win.minimized);
+    if (!focusedReader) { readingFocus = false; readingFocusReturn = null; }
+    if (readingFocusReturn && readingFocusReturn.payload !== focusedReader?.payload) readingFocusReturn = null;
+    root.dataset.readingFocus = String(readingFocus && state.active === focusedReader?.id);
     for (const [id,entry] of nodes) {
       if (!state.windows.some(w => w.id === id)) { apps.dispose(id); entry.el.remove(); nodes.delete(id); }
     }
@@ -118,6 +127,7 @@ function mountDesktop(root) {
       }
       const {el} = entry;
       el.hidden = win.minimized || (onboarding && win.app !== 'welcome'); el.dataset.active = String(win.id === state.active);
+      el.dataset.app = win.app;
       const name = title(win); el.setAttribute('aria-label',name); el.querySelector('header strong').textContent = name;
       const rect = win.maximized ? { x:8,y:8,width:viewport().width-16,height:viewport().height-108 } : win.rect;
       Object.assign(el.style,{ left:'0px',top:'0px',width:`${rect.width}px`,height:`${rect.height}px`,transform:`translate(${rect.x}px,${rect.y}px)`,zIndex:String(10+index) });
@@ -137,7 +147,40 @@ function mountDesktop(root) {
       else button.removeAttribute('aria-current');
     });
     if (launchpad.open) drawLaunchpad();
+    syncReadingFocus();
     syncArrangementControls();
+  }
+  function syncReadingFocus() {
+    root.querySelectorAll('[data-reader-focus]').forEach(button => {
+      button.setAttribute('aria-pressed',String(readingFocus));
+      button.textContent=readingFocus?t('退出专注','Exit focus'):t('专注阅读','Focus');
+      button.title=readingFocus?t('退出专注阅读（Esc）','Exit reading focus (Esc)'):t('展开文章，专注阅读','Expand the article for focused reading');
+    });
+  }
+  function setReadingFocus(value) {
+    value=Boolean(value);
+    if(value===readingFocus)return;
+    const scroller=nodes.get('reader')?.el.querySelector('[data-window-body]');
+    const articleBody=scroller?.querySelector('[data-reader-body]'),selected=window.getSelection();
+    const payload=state.windows.find(win=>win.app==='reader')?.payload;
+    const endpoints=selected?.rangeCount&&!selected.isCollapsed&&articleBody?.contains(selected.anchorNode)&&articleBody.contains(selected.focusNode)?{anchor:selected.anchorNode,anchorOffset:selected.anchorOffset,focus:selected.focusNode,focusOffset:selected.focusOffset}:null;
+    const capture=()=>{
+      const top=scroller?.getBoundingClientRect().top||0;
+      const anchor=scroller&&[...scroller.querySelectorAll('[data-reader-body] .post-content > *')].find(node=>node.getBoundingClientRect().bottom>top+64);
+      return {anchor,offset:anchor?anchor.getBoundingClientRect().top-top:0};
+    };
+    const {anchor,offset}=capture(),back=readingFocusReturn;
+    const unchanged=!value&&back&&back.scroller===scroller&&back.articleBody===articleBody&&back.payload===payload&&Math.abs(scroller.scrollTop-back.focusedScrollTop)<.5&&anchor===back.focusedAnchor&&Math.abs(offset-back.focusedOffset)<.5;
+    if(value)readingFocusReturn={scroller,articleBody,payload,scrollTop:scroller?.scrollTop||0};
+    readingFocus=value;render();
+    if(unchanged)scroller.scrollTop=back.scrollTop;
+    else if(anchor?.isConnected&&scroller)scroller.scrollTop+=anchor.getBoundingClientRect().top-scroller.getBoundingClientRect().top-offset;
+    if(value&&readingFocusReturn){
+      const focused=capture();
+      Object.assign(readingFocusReturn,{focusedScrollTop:scroller?.scrollTop||0,focusedAnchor:focused.anchor,focusedOffset:focused.offset});
+    }else readingFocusReturn=null;
+    root.querySelector('[data-space-window="reader"] [data-reader-focus]')?.focus({preventScroll:true});
+    if(endpoints&&articleBody?.contains(endpoints.anchor)&&articleBody.contains(endpoints.focus))selected.setBaseAndExtent(endpoints.anchor,endpoints.anchorOffset,endpoints.focus,endpoints.focusOffset);
   }
   function open(app,payload) {
     if (!APPS.includes(app)) return t('没有这个应用。','Unknown application.');
@@ -255,6 +298,8 @@ function mountDesktop(root) {
   for (const dialog of [search,launchpad,overview]) {
     dialog.addEventListener('cancel',event=>{event.preventDefault();closeDialog(dialog);});
     dialog.addEventListener('close',()=>{
+      // The queued close event may belong to a previous opening of this dialog.
+      if(dialog.open)return;
       const saved = dialogFocus.get(dialog); dialogFocus.delete(dialog);
       if(!saved?.restore||root.hidden)return;
       // A closing dialog can retain its hidden input until the next paint.
@@ -308,7 +353,7 @@ function mountDesktop(root) {
       const win=state.windows.find(w=>w.app===app);
       const status=win ? win.minimized?t('已最小化','Minimized'):t('打开中','Open') : t('打开应用','Open app');
       return `<button type="button" class="space-launchpad__app" data-launchpad-app="${app}"${win?' data-running':''}>${icon(app)}<strong>${escapeHTML(labels[app])}</strong><small>${status}</small></button>`;
-    }).join('') || `<div class="space-search-empty"><strong>${t('没有找到这个应用','No matching app')}</strong><p>${t('清空搜索，查看全部 11 个应用。','Clear the search to see all 11 applications.')}</p><button type="button" class="space-button" data-space-launchpad-reset>${t('查看所有应用','Show all apps')}</button></div>`;
+    }).join('') || `<div class="space-search-empty"><strong>${t('没有找到这个应用','No matching app')}</strong><p>${t(`清空搜索，查看全部 ${APPS.length} 个应用。`,`Clear the search to see all ${APPS.length} applications.`)}</p><button type="button" class="space-button" data-space-launchpad-reset>${t('查看所有应用','Show all apps')}</button></div>`;
     if(focusedApp)launchpad.querySelector(`[data-launchpad-app="${focusedApp}"]`)?.focus({preventScroll:true});
   }
   function showLaunchpad(query = '') {
@@ -361,6 +406,7 @@ function mountDesktop(root) {
   });
   root.addEventListener('click',event=>{
     const target=event.target;
+    if(target.closest('[data-reader-focus]')){setReadingFocus(!readingFocus);return;}
     if(target.closest('[data-space-menu-trigger]')){toggleMenu();return;}
     const opener=target.closest('[data-open]');
     if(opener){closeMenu();open(opener.dataset.open,opener.hasAttribute('data-payload') ? opener.dataset.payload : undefined);return;}
@@ -383,7 +429,7 @@ function mountDesktop(root) {
     if(id==='agent')return;
     const resize=event.target.closest('[data-window-resize]');
     const bar=event.target.closest('[data-window-drag]');
-    if(viewport().width<=640||(!resize&&!bar)||event.target.closest('button,a')||isEditableTarget(event.target))return;
+    if(usesSingleWindow(root.clientWidth)||root.dataset.readingFocus==='true'||(!resize&&!bar)||event.target.closest('button,a')||isEditableTarget(event.target))return;
     const w=state.windows.find(w=>w.id===id);if(w.maximized)return;
     event.preventDefault(); const control=resize||bar;control.setPointerCapture(event.pointerId);
     drag={id,el,control,kind:resize?resize.dataset.windowResize:'move',x:event.clientX,y:event.clientY,rect:{...w.rect},next:{...w.rect},snap:null};el.dataset.dragging='true';
@@ -431,6 +477,9 @@ function mountDesktop(root) {
     if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='j'){event.preventDefault();closeMenu();for(const dialog of [search,launchpad,overview])if(dialog.open)closeDialog(dialog,false);open('agent');return;}
     if(cafe?.active){if(event.key==='Escape')cafe.escape();return;}
     if(event.key==='Escape'){
+      const readerTools=root.querySelector('[data-space-window="reader"][data-active="true"] .space-reader-tools[open]');
+      if(readerTools&&!search.open&&!launchpad.open&&!overview.open&&menuPanel.hidden){event.preventDefault();readerTools.open=false;readerTools.querySelector('summary')?.focus({preventScroll:true});return;}
+      if(readingFocus&&state.active==='reader'&&!search.open&&!launchpad.open&&!overview.open&&menuPanel.hidden){event.preventDefault();setReadingFocus(false);return;}
       if(cafe?.spatial&&!editing&&!search.open&&!launchpad.open&&!overview.open&&menuPanel.hidden){event.preventDefault();cafe.visit();return;}
       const action=escapeAction({searchOpen:search.open,launchpadOpen:launchpad.open,overviewOpen:overview.open,menuOpen:!menuPanel.hidden,editing,hasActive:Boolean(state.active)});
       if(!action)return;

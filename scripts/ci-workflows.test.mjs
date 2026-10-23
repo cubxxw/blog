@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
+import { runInNewContext } from 'node:vm';
 import YAML from 'yaml';
 import { compileExecutionPlan } from './ci-run.mjs';
 import { requiredJobsPassed } from './lib/ci-contracts.mjs';
@@ -14,6 +16,34 @@ test('documentation does not build or publish while shadow cannot publish produc
 });
 test('a cancelled or skipped mandatory check is never a green gate',()=>{
   for(const state of ['cancelled','skipped','failure',undefined])assert.equal(requiredJobsPassed({source:state},['source']),false);
+});
+test('the actual door preflight requires three first attempts and propagates a failed browser exit',()=>{
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
+  const step=workflow.jobs.prepare.steps.find(s=>s.name==='Diagnose the desktop rear-door journey before browser fan-out');
+  assert.ok(step);assert.equal(step['continue-on-error'],undefined);
+  const inline=step.run.match(/<<'NODE'\n([\s\S]+)\nNODE\s*$/)?.[1];
+  assert.ok(inline);
+  // Run the workflow's own program with only filesystem/process boundaries
+  // replaced; no Playwright, production build or network is started here.
+  const program=inline.replace(/^import [^\n]+\n/gm,'');
+  for(const status of [0,1,null]){
+    let checks=0,launches=0;
+    const process={execPath:'/node',env:{},exitCode:undefined};
+    const input={'plan.json':{},'changes.json':{},'frozen.json':{},'page-map.json':{baseUrl:'https://example.test/'}};
+    runInNewContext(program,{path,URL,process,
+      fs:{readFileSync:file=>JSON.stringify(input[path.basename(file)])},
+      verifyFrozenProof:()=>{checks++;},
+      spawnSync:(executable,args)=>{
+        launches++;assert.equal(executable,'/node');
+        assert.equal(args.find(arg=>arg.startsWith('--retries=')),'--retries=0');
+        assert.equal(args.find(arg=>arg.startsWith('--repeat-each=')),'--repeat-each=3');
+        assert.ok(args.includes('tests/e2e/space-door-excursion.spec.ts'));
+        return {status};
+      }
+    });
+    assert.equal(launches,1);assert.equal(checks,2);
+    assert.equal(process.exitCode,status??1);
+  }
 });
 test('production reusable workflow is isolated and gated behind verified main artifacts',()=>{
   const main=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));

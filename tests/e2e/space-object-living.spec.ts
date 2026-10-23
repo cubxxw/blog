@@ -150,7 +150,9 @@ test('the cat advances at the room clock rate during normal motion',async({page}
 test('book details and the computer retreat naturally without a room Back button',async({page})=>{
  await ready(page);const before=await root(page).getAttribute('data-world-pose');await object(page,'books');await expect(root(page)).toHaveAttribute('data-world-mode','inspect');await expect(page.locator('[data-cafe-inspect-exit]')).toBeHidden();await page.locator('[data-room-book]').first().click();await expect(page.locator('[data-room-book-detail]')).toBeVisible();
  await page.mouse.move(12,12);await page.mouse.wheel(0,160);await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await root(page).getAttribute('data-world-pose')).toBe(before);
- await object(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await page.mouse.click(12,12);await expect(root(page)).toHaveAttribute('data-cafe-mode','cafe');await expect(root(page)).toHaveAttribute('data-world-mode','roam');
+ await object(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(root(page)).toHaveAttribute('data-computer-view','expanded');
+ await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();await expect(root(page)).toHaveAttribute('data-computer-view','framed');
+ await page.mouse.click(12,12);await expect(root(page)).toHaveAttribute('data-cafe-mode','cafe');await expect(root(page)).toHaveAttribute('data-world-mode','roam');
 });
 
 test('choosing real records keeps the outdoor source and drives the platter',async({page})=>{

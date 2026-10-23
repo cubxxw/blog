@@ -20,7 +20,7 @@ test('speaker volume can grow to full gain during playback without replacing mus
  // Finish the keyboard menu interaction before aiming a pointer at the room;
  // its expanded accessible object list otherwise covers the physical player.
  await page.locator('.space-world__canvas').focus();await hitRoomObject(page,'vinyl');
- expect(await root(page).getAttribute('data-room-track')).toBe(track);expect((await musicSource(page))!.id).toBe(music.id);
+ await expect(root(page)).toHaveAttribute('data-world-inspect','vinyl');await expect(root(page)).toHaveAttribute('data-room-track',track!);expect((await musicSource(page))!.id).toBe(music.id);
  const slider=page.getByRole('slider',{name:'音箱音量',exact:true});await expect(slider).toHaveValue('60');await expect(page.locator('[data-room-volume-value]')).toHaveText('60%');
  await slider.focus();await slider.press('End');await expect(slider).toHaveValue('100');await expect(slider).toBeFocused();await expect(page.locator('[data-room-volume-value]')).toHaveText('100%');
  await expect.poll(async()=>(await musicSource(page))?.gain).toBeCloseTo(1,2);

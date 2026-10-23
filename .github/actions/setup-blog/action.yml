@@ -15,7 +15,9 @@ runs:
     - uses: actions/setup-node@v7
       with:
         node-version: ${{ steps.versions.outputs.node }}
-        cache: npm
+        # A cache outage must not block the locked install or every browser
+        # partition. npm ci below remains the dependency source of truth.
+        package-manager-cache: false
     - uses: peaceiris/actions-hugo@v3
       with:
         hugo-version: ${{ steps.versions.outputs.hugo }}

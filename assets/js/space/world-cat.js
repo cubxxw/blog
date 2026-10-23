@@ -168,12 +168,12 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
     grounder?.apply(groundDt,(model?.position.y||0)-modelBaseY,nap>.1);
   }
   function resetExpression(){sleepPose?.reset();for(const {bone,base} of expressionBones)bone.quaternion.copy(base);}
-  function update(seconds,{active=false,interactive=false,ambient=false}={}) {
+  function update(seconds,{active=false,interactive=false,ambient=false,interactionSeconds=seconds,breathingSeconds=seconds}={}) {
     if(disposed||!loaded){clock.reset();return;}
     // Respiration is evaluated analytically, so slow visible frames retain
     // their full interval. A resumed first frame excludes pre-pause time.
-    const breathing=Boolean(active||interactive||ambient)&&Number.isFinite(seconds)&&seconds>=0;
-    if(breathing&&breathRunning)breathTime+=seconds;
+    const breathing=Boolean(active||interactive||ambient)&&Number.isFinite(breathingSeconds)&&breathingSeconds>=0;
+    if(breathing&&breathRunning)breathTime+=breathingSeconds;
     breathRunning=breathing;
     grounder?.reset();
     if(!active&&!interactive){
@@ -182,7 +182,13 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
       resetExpression();expression();
       wasActive=false;return;
     }
-    wasActive=true;const dt=clock.advance(seconds,true,step=>{
+    // A deliberate call must keep its visible pace on a slow renderer. The
+    // room's .12s visual-delta cap should not stretch a 2.6s wake into minutes.
+    // The resident clock still bounds catch-up to 2s in <=40ms safe steps;
+    // Ordinary routines retain their bounded clock; breathing is analytical.
+    const interacting=state.interaction&&!state.interaction.instant;
+    const elapsed=interacting&&Number.isFinite(interactionSeconds)?Math.max(seconds,interactionSeconds):seconds;
+    wasActive=true;const dt=clock.advance(elapsed,true,step=>{
       const before=state.interaction?.stage;state=adapter.step(state,step);
       if(before==='approach'&&state.interaction?.stage==='near')onChange('arrived');
       if(before==='respond'&&!state.interaction)onChange('petted');

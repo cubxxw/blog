@@ -36,7 +36,7 @@
 .space .bear-agent__identity small {display:block;color:var(--ba-muted);font:10px/1.4 ui-monospace,monospace;letter-spacing:.03em;}
 .space .bear-agent__orb {display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;color:#167875;background:linear-gradient(135deg,#cbede6,#eaf5f0);box-shadow:inset 0 1px 0 #fff8;font-size:27px;}
 .space[data-theme="dark"] .bear-agent__orb {background:#264b4c;color:#a8e4dc;}
-.space .bear-agent__identity button {border:0;background:transparent;color:var(--ba-muted);font-size:24px;width:36px;}
+.space .bear-agent__identity button {border:0;background:transparent;color:var(--ba-muted);font-size:24px;width:44px;min-width:44px;min-height:44px;}
 .space .bear-agent__session-title {font-size:11px!important;line-height:1.6!important;margin:10px 0 0!important;color:var(--ba-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .space [data-companion-mode="compact"] .bear-agent__session-title {display:none;}
 .space [data-companion-mode="expanded"] .bear-agent__header>.bear-agent__session-title,.space .bear-agent__header>.bear-agent__persistence {display:block;}
@@ -49,7 +49,7 @@
 .space .bear-agent__sessions>header {display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .space .bear-agent__sessions>header p {font:9px ui-monospace,monospace;letter-spacing:.12em;color:var(--ba-muted);margin:0 0 8px;}
 .space .bear-agent__sessions h3 {font-size:22px;line-height:1.4;margin:0;font-weight:600;}
-.space .bear-agent__sessions>header button {width:40px;height:40px;border:0;background:transparent;color:var(--ba-muted);font-size:24px;}
+.space .bear-agent__sessions>header button {width:44px;min-width:44px;height:44px;min-height:44px;border:0;background:transparent;color:var(--ba-muted);font-size:24px;}
 .space .bear-agent__session-new {border:1px solid var(--ba-line);border-radius:9px;background:var(--ba-surface);color:var(--ba-accent);padding:10px 14px;text-align:left;font-size:13px;}
 .space .bear-agent__session-search input {width:100%;min-height:40px;border:0;border-bottom:1px solid var(--ba-line);background:transparent;color:var(--ba-ink);font:inherit;font-size:12px;line-height:1.6;padding:8px 0;}
 .space .bear-agent__session-list {flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px;}

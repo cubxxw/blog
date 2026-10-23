@@ -18,6 +18,10 @@ async function openWithPausedClock(page:Page){
  // Date progression while animation time remains paused.
  const at=Date.now();await page.clock.setFixedTime(at);await page.clock.pauseAt(at);await page.clock.setSystemTime(at);
 }
+async function advanceFrames(page:Page,milliseconds:number){
+ // Preserve real intermediate paints at 10Hz on the controlled timeline.
+ for(let left=milliseconds;left>0;left-=100)await page.clock.fastForward(Math.min(100,left));
+}
 async function finishFlight(page:Page){await page.clock.fastForward(2000);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
 type FlightFrame={fov:number;at:number;frame:string|undefined;travel:string|undefined};
 type FlightSamples={samples:FlightFrame[];done:boolean};
@@ -66,7 +70,7 @@ test('daylight water and clouds move in the actual window while the boat keeps i
 test('approach can be reversed mid-flight to its entry pose',async({page})=>{
  test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  await object(page,'window');await expect(root(page)).toHaveAttribute('data-world-travel','true');
- await page.clock.fastForward(180);await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);
+ await advanceFrames(page,180);await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);
  await page.mouse.move(8,8);await page.mouse.down();await expect(root(page)).toHaveAttribute('data-world-travel','true');await page.mouse.up();
  await expect(root(page)).toHaveAttribute('data-world-mode','roam');await expect(root(page)).toHaveAttribute('data-world-travel','true');await finishFlight(page);expect(await pose(page)).toEqual(entry);
  expect(Math.hypot(approaching.x-entry.x,approaching.z-entry.z)).toBeGreaterThan(.001);
@@ -75,7 +79,7 @@ test('approach can be reversed mid-flight to its entry pose',async({page})=>{
 test('approach can be grabbed mid-flight and Escape restores its entry pose',async({page})=>{
  test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
  const size=page.viewportSize()!;await page.mouse.move(size.width*.5,size.height*.4);
- await object(page,'window');await page.clock.fastForward(120);await expect(root(page)).toHaveAttribute('data-world-travel','true');const grabbing=await pose(page);expect(Math.hypot(grabbing.x-entry.x,grabbing.z-entry.z)).toBeGreaterThan(.001);await page.mouse.down();await page.mouse.move(size.width*.5+55,size.height*.4+12);await page.mouse.up();
+ await object(page,'window');await advanceFrames(page,120);await expect(root(page)).toHaveAttribute('data-world-travel','true');const grabbing=await pose(page);expect(Math.hypot(grabbing.x-entry.x,grabbing.z-entry.z)).toBeGreaterThan(.001);await page.mouse.down();await page.mouse.move(size.width*.5+55,size.height*.4+12);await page.mouse.up();
  await expect(root(page)).toHaveAttribute('data-world-travel','false');const looking=await pose(page);expect(looking.yaw).not.toBe(grabbing.yaw);await page.clock.fastForward(200);const stopped=await pose(page);expect(stopped.x).toBe(looking.x);expect(stopped.z).toBe(looking.z);
  await page.keyboard.press('Escape');await finishFlight(page);expect(await pose(page)).toEqual(entry);
 });
@@ -110,11 +114,11 @@ for(const kind of ['window','computer'])test(`resizing during a ${kind} approach
  // size and returns to the original viewport.
  if(kind==='computer')await page.setViewportSize(other);
  await openWithPausedClock(page);
- await armFlightSamples(page);const from=await pose(page);await object(page,kind);await page.clock.fastForward(170);
+ await armFlightSamples(page);const from=await pose(page);await object(page,kind);await advanceFrames(page,170);
  await expect(root(page)).toHaveAttribute('data-world-travel','true');const approaching=await pose(page);expect(Math.hypot(approaching.x-from.x,approaching.z-from.z)).toBeGreaterThan(.001);
  await page.setViewportSize(kind==='window'?other:original);
  await expect(root(page)).toHaveAttribute('data-world-travel','true');
- const samples=await collectFlightSamples(page);expect(samples.length).toBeGreaterThan(1);expect(samples[0].travel).toBe('true');expect(samples[samples.length-1].travel).toBe('false');
+ const samples=await collectFlightSamples(page);await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(samples.length).toBeGreaterThan(1);expect(samples[0].travel).toBe('true');expect(samples[samples.length-1].travel).toBe('false');
  expect(new Set(samples.map(sample=>sample.frame)).size).toBeGreaterThan(1);
  await writeFile(info.outputPath(kind+'-resize-frames.json'),JSON.stringify(samples,null,2));
  const end=samples[samples.length-1],previous=samples[samples.length-2];

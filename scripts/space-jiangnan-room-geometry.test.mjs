@@ -258,6 +258,7 @@ test('real raycasts reach each sleeve, platter, speaker, lamp, fan and book acti
   }
   const cases = [
     ['vinyl',[-1.8,1.55,-.50],room.targets.vinyl],
+    ['vinyl',[2.25,1.14,1.25],room.targets.vinyl],
     ['speaker',[-1.6,1.31,.31],room.targets.speaker],
     ['lamp',[-.11,1.093,-1.05],room.targets.lamp],
     ['fan',[2.80,1.20,.4],room.targets.fan],

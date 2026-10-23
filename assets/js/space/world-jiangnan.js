@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {movePreservingState} from '../dom-transfer.mjs';
+import {createWorkspaceScrollState} from './workspace-scroll-state.mjs';
 import {createJiangnanRoomLights} from './jiangnan-lighting.mjs';
 import {CSS3DRenderer,CSS3DObject} from '../vendor/CSS3DRenderer.js';
 import {createWorldMaterials} from './world-materials.js';
@@ -14,6 +15,10 @@ import {buildJiangnanExterior} from './jiangnan-exterior.js';
 import {mountRoomAudio} from './room-audio.js';
 import {createRecordCatalog} from './record-catalog.js';
 import {createJiangnanResident} from './jiangnan-cat.js';
+import {buildJiangnanDoor} from './jiangnan-door.js';
+import {createJiangnanDoorExcursion,jiangnanDoorPoses} from './jiangnan-door-state.mjs';
+import {createJiangnanDoorFade} from './jiangnan-door-fade.mjs';
+import {createPracticalLightRamp} from './jiangnan-practical-light.mjs';
 
 export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,onReturn,onNotebook,isBlocked=()=>false,materialBase,photoAsset,books=[]}) {
   const abort=new AbortController(),resources=new Set(),textures=new Set(),anchors=[];
@@ -32,7 +37,11 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   const startTime=performance.now();
   const targets={...JIANGNAN_TARGETS,bridge:[-3.2,1.2,-17.8]};
   let readingPage=false,lastSwitchState='',ignoreOpeningClick=false;const touchPoints=new Map();let pinchStart=0,pinchUsed=false;
+  let doorReturn=null,doorPanel=null,doorWater=null,doorExit=null;
+  const doorFade=createJiangnanDoorFade({still:()=>quiet||reduced.matches,onChange:opacity=>{if(doorWater)doorWater.style.opacity=String(opacity);}});
+  const excursion=createJiangnanDoorExcursion({onPhase:phase=>{root.dataset.roomDoorState=phase;doorFade.setPhase(phase,{at:performance.now()/1000});wake();},still:()=>quiet||reduced.matches});
   const records=createRecordCatalog();
+  const workspaceScroll=createWorkspaceScrollState();
   const visible=()=>!document.hidden&&!root.hidden&&!readingPage;
   const navigate=()=>canJiangnanNavigate({mode,visible:visible(),blocked:isBlocked()});
   const roomView=()=>inspection?.kind==='window';
@@ -85,16 +94,18 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     movePreservingState(css.domElement,element);
   }
   function attachMonitor(){
+    if(['desktop','computer'].includes(workspace.dataset.surface))workspaceScroll.capture(workspace);
     const active=document.activeElement;
     if(['desktop','computer'].includes(workspace.dataset.surface)&&(workspace.contains(active)||active===document.body))renderer.domElement.focus({preventScroll:true});
     attachScreen('monitor');clearScreenBounds();surfaceChanged();
   }
   function attachDesktop(){
+    if(['desktop','computer'].includes(workspace.dataset.surface))workspaceScroll.capture(workspace);
     const restoreFocus=rememberFocus();
     cssObject?.removeFromParent();cssObject=null;if(workspace.parentNode!==root)movePreservingState(root,workspace);workspace.dataset.surface='desktop';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
     Object.assign(workspace.style,{left:'0',top:'0',width:root.clientWidth+'px',height:root.clientHeight+'px',transform:'none',display:'',visibility:'visible'});
     root.dataset.worldScreenPreview='live';
-    clearScreenBounds();surfaceChanged();restoreFocus();
+    clearScreenBounds();surfaceChanged();restoreFocus();workspaceScroll.restore(workspace);
   }
   function framedPose(){
     // A level, seated view keeps pointer movement identical to the DOM axes.
@@ -105,6 +116,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     return {x,y:screenY-.05,z:z+distance+.04,yaw:0,pitch:0,fov};
   }
   function attachComputer(){
+    if(['desktop','computer'].includes(workspace.dataset.surface))workspaceScroll.capture(workspace);
     const restoreFocus=rememberFocus();
     // The seated camera faces the glass squarely. A flat DOM surface can use
     // its exact projected rectangle; Chromium's cross-origin frame hit tests
@@ -112,7 +124,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     cssObject?.removeFromParent();cssObject=null;if(workspace.parentNode!==root)movePreservingState(root,workspace);workspace.dataset.surface='computer';workspace.inert=false;workspace.setAttribute('aria-hidden','false');
     Object.assign(workspace.style,{visibility:'visible',display:'',userSelect:'auto'});root.dataset.worldScreenVisible='true';
     root.dataset.worldScreenPreview='live';
-    screenBounds();surfaceChanged();restoreFocus();
+    screenBounds();surfaceChanged();restoreFocus();workspaceScroll.restore(workspace);
   }
   function showComputer(view=computerView()){
     root.dataset.computerView=view;
@@ -133,24 +145,31 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     const unchanged=Object.keys(to).every(key=>Math.abs(to[key]-pose[key])<.00001);
     if(quiet||reduced.matches||duration===0||unchanged){applyPose(to);finish?.();root.dataset.worldTravel='false';onTravel?.(false);wake();return Promise.resolve(true);}
     const motion=createJiangnanCameraMove(pose,to,{route:route||jiangnanWindowRoute(pose,to),duration,velocity});
-    return new Promise(resolve=>{moving={from:{...pose},to:{...to},motion,elapsed:0,started:performance.now(),duration:motion.duration,finish,resolve};wake();});
+    return new Promise(resolve=>{moving={from:{...pose},to:{...to},motion,elapsed:0,started:visible()?performance.now():null,duration:motion.duration,finish,resolve};wake();});
   }
   const entry=()=>root.clientWidth<700?jiangnanLook([-.90,1.18,-.05],[.40,1.16,-1.94],root.clientWidth<350?58:56):Number.isFinite(worldRenderBudget(renderer.getContext()).maxPixels)?jiangnanLook([2.25,1.14,1.25],[.20,1.15,-1.65],THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(34))/camera.aspect))):jiangnanLook([1.20,1.34,1.65],[-.30,1.18,-1.40],Math.min(48,THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(42.5))/camera.aspect))));
   function resetInspection(){magicClock?.hide();inspection=null;delete root.dataset.worldInspect;onInspect?.(null);}
-  function start({animate=true,focus=false}={}){returnInspection=null;resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
+  function syncDoorStill(){const still=excursion.setStill(quiet||reduced.matches);doorFade.update(0);root.dataset.roomDoorStill=String(still);doorPanel?.classList.toggle('space-cafe-door--still',still);}
+  function start({animate=true,focus=false}={}){abandonDoorExcursion();returnInspection=null;resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');const pending=travel(entry(),animate?850:0);if(focus)renderer.domElement.focus({preventScroll:true});return pending;}
   function focus(animate=true){
+    // A workspace shortcut may interrupt any door beat. Keep the place we
+    // left indoors before abort clears it; the transient doorway/water camera
+    // must never replace that workspace return destination.
+    const beforeDoor=doorReturn;
+    abandonDoorExcursion();
     if(mode==='workspace'&&!moving)return Promise.resolve(true);
-    if(mode==='roam'||mode==='inspect'){
-      returnInspection=roomView()?{...inspection}:null;
-      returnPose=returnInspection?{...pose}:inspection?.pose||{...pose};
+    if(beforeDoor||mode==='roam'||mode==='inspect'){
+      const previous=beforeDoor||{pose,inspection};
+      returnInspection=previous.inspection?.kind==='window'?{...previous.inspection}:null;
+      returnPose=returnInspection?{...previous.pose}:previous.inspection?.pose||{...previous.pose};
     }
     resetInspection();syncMode('workspace');
     const view=computerView();root.dataset.computerView=view;
     const [screenX,screenY,screenZ]=room.screen.position;
     return travel(view==='framed'?framedPose():jiangnanLook([screenX,screenY+.21,screenZ+1.165],room.screen.position,42),animate?850:0,()=>showComputer(view));
   }
-  function leave(){const previous=document.activeElement,rest=returnInspection;returnInspection=null;resetInspection();attachMonitor();syncMode(rest?'inspect':'roam');if(rest){inspection=rest;root.dataset.worldInspect=rest.kind;onInspect?.(rest.kind);}const pending=travel(returnPose,800);pending.then(()=>{if(!disposed&&[previous,document.body].includes(document.activeElement))renderer.domElement.focus({preventScroll:true});});return pending;}
-  function outside(){resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');return travel(jiangnanLook([-.65,1.55,-2.08],[0,1.1,-20],62),1000);}
+  function leave(){abandonDoorExcursion();const previous=document.activeElement,rest=returnInspection;returnInspection=null;resetInspection();attachMonitor();syncMode(rest?'inspect':'roam');if(rest){inspection=rest;root.dataset.worldInspect=rest.kind;onInspect?.(rest.kind);if(rest.kind==='clock')magicClock?.show();}const pending=travel(returnPose,800);pending.then(()=>{if(!disposed&&[previous,document.body].includes(document.activeElement))renderer.domElement.focus({preventScroll:true});});return pending;}
+  function outside(){abandonDoorExcursion();resetInspection();if(workspace.dataset.surface!=='monitor')attachMonitor();syncMode('roam');return travel(jiangnanLook([-.65,1.55,-2.08],[0,1.1,-20],62),1000);}
   const detailFamily=kind=>kind.startsWith('book:')?'books':kind.startsWith('record:')||kind==='vinyl'?'records':kind==='spines'?'books':kind;
   function inspect(kind){
     const family=detailFamily(kind);
@@ -178,7 +197,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     const from=roomTime.at().unwrapped,target=roomTime.presentAt().unwrapped,span=((target-from+43200)%86400+86400)%86400-43200;
     clockReturn={from,span,at:performance.now()};wake();
   }
-  function setQuiet(value){quiet=value;audio?.setQuiet(value);if(value){finishTravel();resident?.settle();}resident?.resetClock();last=0;wake();}
+  function setQuiet(value){quiet=value;syncDoorStill();audio?.setQuiet(value);if(value){finishTravel();resident?.settle();}resident?.resetClock();last=0;wake();}
   function publishObjects(force=false){
     if(!room)return;const state=room.snapshotObjects?.();if(!state)return;
     root.dataset.roomObjects=JSON.stringify(state);
@@ -190,6 +209,112 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   function toggleMusic(){return audio?.toggle();}
   function interactCat(kind='pet'){if(!resident?.loaded)return false;const result=resident.interact(kind,pose,{instant:quiet||reduced.matches,nearby:mode==='inspect',now:performance.now()/1000});wake();return result;}
   function retreat(){if(mode==='inspect')return restoreInspection();if(mode==='workspace'&&computerView()==='framed'){onReturn?.();return true;}return false;}
+  // The rear-door excursion is one localized, repeatable story. Every awaited
+  // beat holds the machine's run token, so escape, scene switches and disposal
+  // can interrupt anywhere — including mid-transition — and land safely back
+  // in the warm room with the exact pre-door pose, mode, focus and music.
+  function hideDoorPanel(){doorPanel?.remove();doorPanel=null;}
+  function showDoorPanel(kind){
+    hideDoorPanel();
+    const panel=document.createElement('div');panel.className='space-cafe-door';panel.dataset.doorPanel=kind;
+    panel.setAttribute('role','region');panel.setAttribute('aria-label',t(kind==='threshold'?'后门外':'落水小插曲',kind==='threshold'?'Outside the back door':'A little splash'));
+    const note=document.createElement('p');note.className='space-cafe-door__note';
+    const actions=document.createElement('div');actions.className='space-cafe-door__actions';
+    const button=(label,action)=>{const node=document.createElement('button');node.type='button';node.textContent=label;listen(node,'click',action);return node;};
+    if(kind==='threshold'){
+      note.textContent=t('门外有夜风，还有一小片安静的蓝水。','Night air waits outside, over a quiet patch of blue water.');
+      actions.append(button(t('到外面走一步','Take a step outside'),()=>stepOutOfDoor()),button(t('留在暖光里','Stay by the warm light'),()=>returnFromDoor()));
+    }else{
+      note.setAttribute('role','status');
+      note.textContent=t('哎呀——水花小小的，鱼却都看见了。','A tidy little splash. The fish were impressed.');
+      actions.append(button(t('回到咖啡馆','Back to the café'),()=>returnFromDoor()));
+    }
+    panel.append(note,actions);root.append(panel);doorPanel=panel;
+    if(excursion.still)panel.classList.add('space-cafe-door--still');
+    actions.querySelector('button')?.focus({preventScroll:true});
+  }
+  function restoreRoomFromDoor(){
+    const back=doorReturn;doorReturn=null;
+    hideDoorPanel();
+    const rest=back?.inspection||null;
+    if(rest){inspection={...rest};root.dataset.worldInspect=rest.kind;onInspect?.(rest.kind);if(rest.kind==='clock')magicClock?.show();}else resetInspection();
+    syncMode(rest?'inspect':'roam');
+    const trigger=back?.focus?.isConnected?back.focus:back?.trigger;
+    if(trigger?.isConnected&&!trigger.closest('[inert]')&&trigger.getClientRects().length)trigger.focus({preventScroll:true});
+    else renderer.domElement.focus({preventScroll:true});
+  }
+  async function travelOrRecover(run,to,duration){
+    const arrived=await travel(to,duration);
+    if(!arrived&&excursion.check(run))escapeDoorExcursion();
+    // A resolved camera promise can resume after the tab was hidden. The
+    // narrative's visibility gate prevents it revealing the next beat unseen.
+    return arrived&&excursion.check(run)&&await excursion.wait(run,0);
+  }
+  async function resumeCafe(run){
+    hideDoorPanel();
+    audio?.setPerspective?.({music:1,rain:1});
+    room?.door?.close?.();
+    if(doorReturn&&!await travelOrRecover(run,doorReturn.pose,900))return;
+    if(!excursion.check(run))return;
+    restoreRoomFromDoor();
+    excursion.advance(run,'indoor');
+  }
+  function returnFromDoor(){
+    const run=excursion.token;
+    if(!run||!excursion.advance(run,'returning'))return;
+    void resumeCafe(run);
+  }
+  function escapeDoorExcursion(){
+    const run=excursion.recover();
+    if(!run)return false;
+    void resumeCafe(run);
+    return true;
+  }
+  function abandonDoorExcursion(){
+    doorFade.setPhase('indoor',{instant:true});
+    if(excursion.phase==='indoor')return false;
+    excursion.abort();hideDoorPanel();doorReturn=null;
+    audio?.setPerspective?.({music:1,rain:1});
+    room?.door?.close?.({immediate:true});
+    return true;
+  }
+  function beginDoorExcursion(source=renderer.domElement){
+    if(isBlocked()||!visible()||!['roam','inspect'].includes(mode)||excursion.phase!=='indoor')return false;
+    const run=excursion.begin();
+    if(!run)return false;
+    doorReturn={pose:{...pose},mode,inspection:inspection?{...inspection}:null,trigger:source instanceof Element?source:null,focus:document.activeElement instanceof Element&&document.activeElement!==document.body?document.activeElement:null};
+    if(inspection)resetInspection();
+    syncMode('excursion');
+    audio?.setPerspective?.({music:.64,rain:1});
+    void approachDoor(run);
+    return true;
+  }
+  async function approachDoor(run){
+    const poses=jiangnanDoorPoses(camera.aspect);
+    if(!await travelOrRecover(run,poses.rear,950))return;
+    if(!excursion.check(run)||!excursion.advance(run,'opening'))return;
+    room?.door?.open?.();
+    if(!await excursion.wait(run,680))return;
+    if(!excursion.check(run)||!excursion.advance(run,'threshold'))return;
+    if(!await travelOrRecover(run,jiangnanDoorPoses(camera.aspect).threshold,720))return;
+    if(excursion.check(run))showDoorPanel('threshold');
+  }
+  function stepOutOfDoor(){
+    const run=excursion.token;
+    if(!run||!excursion.advance(run,'falling'))return;
+    hideDoorPanel();
+    audio?.setPerspective?.({music:.12,rain:.34});
+    void (async()=>{
+      const poses=jiangnanDoorPoses(camera.aspect);
+      if(!await travelOrRecover(run,poses.water,560))return;
+      if(!excursion.check(run))return;
+      room?.door?.splash?.();
+      if(!excursion.advance(run,'submerged'))return;
+      showDoorPanel('submerged');
+    })();
+  }
+  function clearGestureState(){touchPoints.clear();pinchStart=0;pinchUsed=false;}
+  function onVisibilityChange(){clearGestureState();visibility();}
   // A window can remove the clicked button before this event reaches the room.
   // Its original event path still records that the input began in the screen.
   const fromScreen=event=>event.composedPath().includes(workspace);
@@ -208,6 +333,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     else if(kind==='painting'){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent);onPhoto?.((data.photos?.find(photo=>photo.id==='fuji')||data.photos?.[0])?.id);}
     else if(kind==='photo'){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent);onPhoto?.(data.photos?.[0]?.id);}
     else if(kind==='window'&&inspection?.kind==='window')restoreInspection();
+    else if(kind==='door')beginDoorExcursion(source);
     else if(kind==='clock'&&inspection?.kind==='clock')restoreInspection();
     else if(kind==='cat'||kind==='cat-bed'){
       const cat=resident?.snapshot(),near=cat&&cat.phase!=='sleep'&&cat.phase!=='wake'&&Math.hypot(cat.x-pose.x,cat.z-pose.z)<1.1;
@@ -234,6 +360,11 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setPixelRatio(worldPixelRatio(width,height,devicePixelRatio,worldRenderBudget(renderer.getContext())));renderer.setSize(width,height);css.setSize(width,height);
     if(workspace?.dataset.surface==='desktop')Object.assign(workspace.style,{width:width+'px',height:height+'px'});
     else if(workspace?.dataset.surface==='computer'){applyPose(framedPose());screenBounds();}
+    else if(mode==='excursion'&&excursion.phase!=='returning'){
+      const key=['falling','submerged'].includes(excursion.phase)?'water':excursion.phase==='threshold'?'threshold':'rear';
+      const target=jiangnanDoorPoses(camera.aspect)[key];
+      if(moving)retargetTravel(target);else applyPose(target);
+    }
     else if(moving&&mode==='workspace'&&computerView()==='framed')retargetTravel(framedPose());
     else if(roomView()){
       if(moving)retargetTravel(clampJiangnanWindowLook(moving.to,camera.aspect));
@@ -308,6 +439,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     // Scenery is analytical; the resident owns its own bounded substeps.
     // Preserve visible wall time here even when a software-rendered frame is slow.
     if(environmentActive)environmentTime+=elapsed;
+    doorFade.update(elapsed,{at:stamp/1000,active:!isBlocked()});
     // Physics uses bounded steps; a deliberate camera flight uses visible wall
     // time. Otherwise a busy frame stretches a short approach into a long wait.
     if(moving){if(moving.started===null)moving.started=stamp-moving.elapsed;moving.elapsed=Math.max(0,stamp-moving.started);applyPose(moving.motion.at(moving.elapsed));if(moving.elapsed>=moving.duration)finishTravel();}
@@ -316,12 +448,12 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
       for(let left=delta;left>0;left-=.04)pose=jiangnanWalk(pose,input,Math.min(.04,left));applyPose(pose);
     }
     if(clockReturn){const progress=Math.min(1,(stamp-clockReturn.at)/1400),eased=progress*progress*(3-2*progress);roomTime.travelTo(clockReturn.from+clockReturn.span*eased+(stamp-clockReturn.at)/1000*10,{persist:false});if(progress===1){roomTime.returnNow();clockReturn=null;}}
-    const day=roomTime.at();room.update(environmentTime,day);exterior.update(environmentTime,{...day,still:quiet||reduced.matches,windowFocus:roomView()});roomLights.update(day);magicClock?.update(day);
+    const day=roomTime.at();room.update(environmentTime,day);if(room.shadowRefresh?.())renderer.shadowMap.needsUpdate=true;exterior.update(environmentTime,{...day,still:quiet||reduced.matches,windowFocus:roomView()});roomLights.update(day);magicClock?.update(day);
     if(standbyClock?.isConnected&&standbyClock.textContent!==day.label)standbyClock.textContent=day.label;
     root.dataset.roomTime=JSON.stringify({...day,rate:10});resident?.setRoutine(day.catRoutine);
     const windowButton=objectControls.querySelector('[data-room-object="window"]'),windowText=day.rain>.1?t('看看窗外的雨','Watch the rain'):t('看看窗外的风景','Look out the window');
     if(windowButton.textContent!==windowText)windowButton.textContent=windowText;
-    if(resident){resident.update(elapsed,{ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});const cat=resident.snapshot();root.dataset.catLoaded=String(cat.loaded);root.dataset.roomCat=JSON.stringify(cat);root.dataset.roomCatBreath=JSON.stringify(resident.breathing);if(cat.loaded){targets.cat=cat.target;root.dataset.worldTargets=JSON.stringify(targets);}}
+    if(resident){resident.update(delta,{interactionSeconds:elapsed,breathingSeconds:elapsed,ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});const cat=resident.snapshot();root.dataset.catLoaded=String(cat.loaded);root.dataset.roomCat=JSON.stringify(cat);root.dataset.roomCatBreath=JSON.stringify(resident.breathing);if(cat.loaded){targets.cat=cat.target;root.dataset.worldTargets=JSON.stringify(targets);}}
     if(frames%3===0)publishObjects();
     const readyMaps=Number(root.dataset.worldPbrMaps)>=5||performance.now()-startTime>2200;
     // Entry may paint early; its one reflection waits for complete materials.
@@ -332,15 +464,15 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     root.dataset.roomBoatPose=JSON.stringify([+exterior.boat.position.x.toFixed(3),+exterior.boat.position.y.toFixed(3),+exterior.boat.position.z.toFixed(3)]);root.dataset.roomBoat='ready';root.dataset.worldEnvironmentTime=environmentTime.toFixed(3);
     root.dataset.roomBoatHeading=exterior.boat.rotation.y.toFixed(4);
     if(readyMaps){root.dataset.worldReady='true';settleFirst(true);}
-    if(!disposed&&(moving||clockReturn||environmentActive||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
+    if(!disposed&&(moving||clockReturn||environmentActive||doorFade.pending&&!isBlocked()||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
   }
-  function visibility(){stop();keys.clear();touchKeys.clear();drag=null;if(!visible()){magicClock?.settle();if(clockReturn){clockReturn=null;roomTime.returnNow();syncRoomTime();}}else wake();}
+  function visibility(){doorFade.setActive(visible()&&!isBlocked(),{at:performance.now()/1000});excursion.setPaused(!visible());stop();keys.clear();touchKeys.clear();drag=null;if(!visible()){magicClock?.settle();if(clockReturn){clockReturn=null;roomTime.returnNow();syncRoomTime();}}else wake();}
   function dispose(){
-    if(disposed)return;disposed=true;stop();stopWeather?.();magicClock?.dispose();clockReturn=null;cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();resident?.dispose();
+    if(disposed)return;disposed=true;stop();stopWeather?.();magicClock?.dispose();clockReturn=null;excursion.dispose();doorFade.dispose();workspaceScroll.dispose();hideDoorPanel();doorWater?.remove();doorWater=null;doorExit?.remove();doorExit=null;doorReturn=null;cancelTravel();clearTimeout(firstTimer);abort.abort();observer?.disconnect();blockedObserver?.disconnect();hiddenObserver?.disconnect();audio?.dispose();resident?.dispose();
     cssObject?.removeFromParent();for(const [node,anchor] of anchors)if(anchor.isConnected){movePreservingState(anchor.parentNode,node,anchor);anchor.remove();}workspace?.remove();computerExpand?.remove();pbr?.dispose();for(const object of resources)object.dispose?.();for(const map of textures)map.dispose();renderer?.dispose();renderer?.forceContextLoss();host?.remove();settleFirst(false);
     if(outsideButton)outsideButton.textContent=outsideLabel;
     clearScreenBounds();surfaceChanged();
-    for(const key of ['worldRenderer','worldScreenVisible','worldScreenPreview','worldTargets','worldEnvironmentTime','roomBoat','roomBoatPose','roomBoatHeading','computerDepthBlur','worldVista','roomObjects','roomCat','roomCatBreath','catLoaded','roomTime'])delete root.dataset[key];
+    for(const key of ['worldRenderer','worldScreenVisible','worldScreenPreview','worldTargets','worldEnvironmentTime','roomBoat','roomBoatPose','roomBoatHeading','computerDepthBlur','worldVista','roomObjects','roomCat','roomCatBreath','catLoaded','roomTime','roomDoorState','roomDoorStill'])delete root.dataset[key];
   }
   try {
     renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
@@ -348,16 +480,18 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     reflectionDone=software;
     scene=new THREE.Scene();scene.background=new THREE.Color('#192a3c');scene.fog=new THREE.FogExp2('#273d50',.019);camera=new THREE.PerspectiveCamera(63,1,.04,160);camera.rotation.order='YXZ';
     host=document.createElement('div');host.className='space-world space-world--jiangnan';root.prepend(host);renderer.domElement.className='space-world__canvas';renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label',t('三维咖啡馆。拖动环视，方向键或 WASD 行走，点击电脑和相框。','3D café. Drag to look, arrows or WASD to walk. Click the Mac or photograph.'));renderer.domElement.setAttribute('aria-describedby','jiangnan-controls');host.append(renderer.domElement);
+    doorWater=document.createElement('div');doorWater.className='space-cafe-door-water';doorWater.style.opacity=String(doorFade.value);doorWater.setAttribute('aria-hidden','true');root.append(doorWater);root.dataset.roomDoorState='indoor';syncDoorStill();
+    doorExit=document.createElement('button');doorExit.type='button';doorExit.className='space-cafe-door-exit';doorExit.textContent=t('回到暖光里','Back to the warm light');listen(doorExit,'click',escapeDoorExcursion);root.append(doorExit);
     const guidance=document.createElement('p');guidance.id='jiangnan-controls';guidance.className='jiangnan-guidance';guidance.textContent=t('拖动环视，方向键或 WASD 移动。','Drag to look. Arrows or WASD to walk.');host.append(guidance);
     objectControls=document.createElement('nav');objectControls.className='jiangnan-object-controls';objectControls.setAttribute('aria-label',t('房间里的物件','Objects in the room'));host.append(objectControls);
-    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['records',t('挑选一张唱片','Choose a record')],['lamp',t('开关桌灯','Switch the desk lamp')],['fan',t('开关风扇','Switch the fan')],['shelf-light',t('开关书架照明','Switch the shelf lights')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')],['clock',t('看看木摆钟','Look at the pendulum clock')],['espresso',t('使用咖啡机','Use the espresso machine')],['cat',t('走近小猫','Meet the cat')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
+    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['records',t('挑选一张唱片','Choose a record')],['lamp',t('开关桌灯','Switch the desk lamp')],['fan',t('开关风扇','Switch the fan')],['shelf-light',t('开关书架照明','Switch the shelf lights')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')],['clock',t('看看木摆钟','Look at the pendulum clock')],['espresso',t('使用咖啡机','Use the espresso machine')],['cat',t('走近小猫','Meet the cat')],['door',t('打开后门','Open the back door')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
     objectControls.querySelector('[data-room-object="cat"]').textContent=t('轻轻叫醒小猫','Gently call the cat');
     const windowControl=document.createElement('button');windowControl.type='button';windowControl.dataset.roomObject='window';windowControl.textContent=t('看看窗外的雨','Watch the rain');listen(windowControl,'click',()=>activate('window',windowControl));objectControls.append(windowControl);
     css=new CSS3DRenderer();css.domElement.className='space-world__css';css.domElement.style.pointerEvents='none';host.append(css.domElement);
     root.dataset.worldRenderer='jiangnan';root.dataset.worldTheme='jiangnan';root.dataset.worldTargets=JSON.stringify(targets);root.dataset.worldPbrMaps='0';root.dataset.worldTravel='false';
     pbr=createWorldMaterials({base:materialBase,renderer,resources,textures,isDisposed:()=>disposed,wake,root});
     roomLights=createJiangnanRoomLights({THREE,scene});
-    room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photoAsset,books,records,zh,shadowSize:budget.shadowSize,isDisposed:()=>disposed});Object.assign(targets,room.targets);root.dataset.worldTargets=JSON.stringify(targets);publishObjects(true);
+    room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photoAsset,books,records,zh,shadowSize:budget.shadowSize,isDisposed:()=>disposed,buildDoor:buildJiangnanDoor,createLightRamp:createPracticalLightRamp,isStill:()=>quiet||reduced.matches});Object.assign(targets,room.targets);root.dataset.worldTargets=JSON.stringify(targets);publishObjects(true);
     magicClock=mountMagicClock({root,zh,getTime:()=>roomTime.at(),onGrab:()=>{clockReturn=null;roomTime.hold();},onTravel:travelRoomTime,onCommit:()=>roomTime.commit(),onPresent:returnPresent,onClose:restoreInspection});
     resident=createJiangnanResident({scene,wake,grounding:room.catSupport,onChange:code=>{root.dataset.catState=code;onCat?.(code);wake();}});resident.ready.then(loaded=>{if(disposed)return;root.dataset.catLoaded=String(loaded);onCat?.(loaded?'ready':'unavailable');wake();});
     const nightAssets=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent).night,vistaMode=new URLSearchParams(location.search).get('vista')==='geometry'?'geometry':'image';
@@ -392,15 +526,16 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     listen(root,'wheel',event=>{if(isBlocked()||fromClock(event)||event.deltaY<=0||event.target.closest('.space-object-detail'))return;const inScreen=fromScreen(event);if(mode==='inspect'||mode==='workspace'&&computerView()==='framed'&&!inScreen){event.preventDefault();retreat();}},{passive:false});
     listen(root,'pointerdown',event=>{if(event.pointerType!=='touch'||isBlocked()||fromClock(event))return;touchPoints.set(event.pointerId,{x:event.clientX,y:event.clientY,inScreen:fromScreen(event)});if(touchPoints.size===2){const [a,b]=[...touchPoints.values()];pinchStart=Math.hypot(a.x-b.x,a.y-b.y);pinchUsed=false;drag=null;}},{capture:true});
     listen(root,'pointermove',event=>{const point=touchPoints.get(event.pointerId);if(!point)return;point.x=event.clientX;point.y=event.clientY;if(touchPoints.size!==2||!pinchStart||pinchUsed)return;const [a,b]=[...touchPoints.values()];if(mode==='workspace'&&(a.inScreen||b.inScreen))return;if(Math.hypot(a.x-b.x,a.y-b.y)<pinchStart*.78&&(mode==='inspect'||mode==='workspace'&&computerView()==='framed')){pinchUsed=true;event.preventDefault();retreat();}},{capture:true,passive:false});
-    for(const type of ['pointerup','pointercancel'])listen(root,type,event=>{touchPoints.delete(event.pointerId);if(!touchPoints.size){pinchStart=0;queueMicrotask(()=>{pinchUsed=false;});}},{capture:true});
-    listen(root,'space:readingpage',event=>{readingPage=Boolean(event.detail.active);visibility();resident?.resetClock();});
-    listen(renderer.domElement,'pointercancel',()=>{drag=null;});
+    for(const type of ['pointerup','pointercancel'])listen(root,type,event=>{if(type==='pointercancel')clearGestureState();else touchPoints.delete(event.pointerId);if(!touchPoints.size){pinchStart=0;queueMicrotask(()=>{pinchUsed=false;});}},{capture:true});
+    listen(root,'space:readingpage',event=>{readingPage=Boolean(event.detail.active);clearGestureState();visibility();resident?.resetClock();});
+    listen(renderer.domElement,'pointercancel',()=>{drag=null;clearGestureState();});
+    listen(document,'keydown',event=>{if(event.key!=='Escape'||excursion.phase==='indoor')return;if(escapeDoorExcursion())event.preventDefault();});
     listen(document,'keydown',event=>{if(!navigate()||event.metaKey||event.ctrlKey||event.altKey||event.target.closest('input,textarea,[contenteditable="true"]'))return;if(event.code==='KeyF'){event.preventDefault();root.querySelector('[data-space-fullscreen]')?.click();}if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();cancelTravel();keys.add(event.code);wake();}});
-    listen(document,'keyup',event=>keys.delete(event.code));listen(window,'blur',()=>{keys.clear();touchKeys.clear();drag=null;});
+    listen(document,'keyup',event=>keys.delete(event.code));listen(window,'blur',()=>{keys.clear();touchKeys.clear();drag=null;clearGestureState();});
     for(const button of root.querySelectorAll('[data-world-walk]')){listen(button,'pointerdown',event=>{if(!navigate())return;event.preventDefault();cancelTravel();touchKeys.add(button.dataset.worldWalk);button.setPointerCapture(event.pointerId);wake();});for(const name of ['pointerup','pointercancel','lostpointercapture'])listen(button,name,()=>touchKeys.delete(button.dataset.worldWalk));}
-    listen(document,'visibilitychange',visibility);listen(reduced,'change',()=>{if(reduced.matches){finishTravel();resident?.settle();}resident?.resetClock();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();settleFirst(false);onFailure?.();});
-    hiddenObserver=new MutationObserver(visibility);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
-    blockedObserver=new MutationObserver(()=>{if(isBlocked()){keys.clear();touchKeys.clear();drag=null;}wake();});blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
+    listen(document,'visibilitychange',onVisibilityChange);listen(reduced,'change',()=>{syncDoorStill();if(reduced.matches){finishTravel();resident?.settle();}resident?.resetClock();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();settleFirst(false);onFailure?.();});
+    hiddenObserver=new MutationObserver(onVisibilityChange);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
+    blockedObserver=new MutationObserver(()=>{doorFade.setActive(visible()&&!isBlocked(),{at:performance.now()/1000});if(isBlocked()){keys.clear();touchKeys.clear();drag=null;clearGestureState();escapeDoorExcursion();}wake();});blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
     observer=new ResizeObserver(resize);observer.observe(root);pose=entry();returnPose={...pose};applyPose(pose);syncMode('roam');resize();renderer.shadowMap.needsUpdate=true;
     firstTimer=setTimeout(wake,2300);wake();
   } catch(error){dispose();throw error;}
