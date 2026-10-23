@@ -38,6 +38,7 @@ const runtime=`
     beginFlight(duration){moving={elapsed:0,started:performance.now(),duration,to:{},motion:{at(){return {};}},resolve(){}};wake();},
     get travelling(){return Boolean(moving);},
     setFlowing(value){quiet=!value;wake();},
+    setBoot(value){root.dataset.bootState=value;wake();},
     get environmentTime(){return environmentTime;}
   });
 `;
@@ -45,7 +46,7 @@ const runtime=`
 function fixture({software=false}={}){
   let now=0,nextId=0,draws=0;
   const timers=new Map(),frames=new Map(),captures=[];
-  const root={hidden:false,dataset:{worldPbrMaps:'0'}},document={hidden:false};
+  const root={hidden:false,dataset:{worldPbrMaps:'0',bootState:'complete'}},document={hidden:false};
   const material={isMeshStandardMaterial:true};
   const renderer={shadowMap:{enabled:true},getContext(){return {};},setRenderTarget(){}};
   const noop=()=>{};
@@ -105,6 +106,22 @@ test('an unready early draw cannot move reflection work ahead of the first ready
   f.world.setMaps(12);f.flush();await completed;
   assert.equal(ready,true);assert.equal(f.draws,2);assert.equal(f.captures.length,0);
   f.advance(2300);f.flush();assert.equal(f.captures.length,1);
+});
+
+test('reflection waits for the terminal to finish fading and resumes on the reveal wake',async()=>{
+  const f=fixture();f.world.setBoot('revealing');f.world.setMaps(12);f.flush();
+  assert.equal(await f.world.firstFrame,true);f.advance(2300);f.flush();
+  assert.equal(f.captures.length,0,'a large cubemap must not block the terminal fade');
+  f.world.setBoot('complete');f.flush();assert.equal(f.captures.length,1);
+  f.world.setBoot('complete');f.flush();assert.equal(f.captures.length,1);
+});
+
+test('completing the terminal while hidden captures once after the room becomes visible',async()=>{
+  const f=fixture();f.world.setBoot('loading');f.world.setMaps(12);f.flush();
+  assert.equal(await f.world.firstFrame,true);f.world.hide(true);f.world.setBoot('complete');
+  f.advance(3000);f.flush();assert.equal(f.captures.length,0);
+  f.world.hide(false);f.flush();assert.equal(f.captures.length,1);
+  f.world.hide(true);f.world.hide(false);f.flush();assert.equal(f.captures.length,1);
 });
 
 test('early boot keeps its pending reflection deadline and captures fallback only once',async()=>{

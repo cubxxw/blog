@@ -14,11 +14,11 @@ Status on 2026-10-23: implementation, independent review, production build, and 
 1. Removed the Jiangnan CSS rule that clipped all terminal content to an invisible 1 px region.
 2. Removed the 1,400 ms minimum presentation period. Reduced the separate fade from 550 ms to 160 ms. The minimum period only affected first frames arriving before that deadline; this is not a measured 1,400 ms improvement for every visit.
 3. Preload the workspace bundle, scene controller, shared Three.js module, and selected renderer during HTML parsing, before the large catalog/template content. Saved theme selection is validated; denied storage uses the default. Embedded pages do not start these preloads. The other renderer remains lazy. Preloading does not evaluate a renderer or create a GPU context.
-4. Defer the six-view cubemap reflection capture until after the first scene frame. Existing material readiness, fallback deadlines, software-renderer budgets, and final reflection behavior remain intact.
+4. Defer the six-view cubemap reflection capture until after the first ready scene frame and the terminal fade. Existing material readiness, fallback deadlines, software-renderer budgets, and final reflection behavior remain intact. The reveal wake and visibility lifecycle still complete the single reflection capture.
 
 ## Verification
 
-The combined targeted Node run passed **80 tests, 0 failures**. Coverage includes boot state and timers, slow connections, failure recovery, reduced motion, keyboard focus, replacement-renderer readiness, theme/preload selection, denied storage, nested pages, reflection capture order, door transitions, resident interaction, and CI workflow contracts.
+The combined targeted Node run passed **82 tests, 0 failures**. Coverage includes boot state and timers, slow connections, failure recovery, reduced motion, keyboard focus, replacement-renderer readiness, theme/preload selection, denied storage, nested pages, reflection capture order, hidden-page reveal, door transitions, resident interaction, and CI workflow contracts.
 
 ```sh
 npm run space:boot:test
@@ -32,7 +32,13 @@ An isolated browser fixture used the actual CSS and onboarding controller, with 
 
 The production Hugo build passed (349 English and 372 Chinese pages) and was served through offline Netlify dev, with no backend functions. A single Chromium worker passed **24 real WebGL cases without retries**: ten startup/switch/failure/deep-link/graphics-recovery contracts at desktop and mobile, plus the default Jiangnan boot at both sizes in Chinese and English. Those real pages also had zero horizontal overflow, a visible terminal during a held renderer request, zero normal loading buttons, automatic first-frame entry, and no page runtime errors. Actual terminal and room screenshots are retained separately from the earlier isolated fixture.
 
+The complete type check passed with the locked TypeScript 7.0.2 compiler. The shared existing dependencies contained 5.9.3, which rejected `--ignoreConfig`; the correct compiler and macOS ARM package were installed only in the registered task artifact directory. Project dependencies and global settings were not modified.
+
+A local cold-context probe observed one request per startup module, parallel controller/vendor/selected-renderer fetches, no request for the other renderer, and exactly one scene canvas. After moving reflection out of the fade, one observed reveal-to-complete interval was 174.6 ms (the configured timer is 160 ms). These are local frozen-site observations on a busy host, not a WAN benchmark, a controlled before/after comparison, or a universal startup-time guarantee.
+
 Independent review found and then verified fixes for three P2 issues: a stalled replacement renderer now shares the visible-time deadline and releases its controller on failure; explicit deep-link recovery restores document focus; reflection capture waits for the first ready frame rather than an earlier unready draw. A new maps=0 to maps=12 regression covers that last distinction. The reviewer independently passed 39 focused Node tests and found no remaining P0-P2 issues.
+
+The reviewer also verified the terminal-exit reflection gate in three lifecycle cases: normal fade, completion while hidden, and material fallback before terminal completion. All captured exactly once after the proper wake. The final 24 real WebGL cases were rerun after this render scheduling change and passed in 1.1 minutes.
 
 ## Remaining delivery gates
 
