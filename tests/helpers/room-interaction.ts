@@ -13,9 +13,15 @@ export async function lookAtRoomObject(page:Page,name:string){
   const p=await projectRoomObject(page,name),size=page.viewportSize()!;
   if(p.inFront&&p.x>8&&p.x<size.width-8&&p.y>8&&p.y<size.height-8)return p;
   // Projected x reverses behind the camera; turn by the actual shorter angle.
-  const dx=Math.max(-100,Math.min(100,-p.yawDelta/.0035));
-  const dy=Math.max(-100,Math.min(100,-p.pitchDelta/.003));
-  await page.mouse.move(size.width/2,size.height*.4);await page.mouse.down();await page.mouse.move(size.width/2+dx,size.height*.4+dy,{steps:6});await page.mouse.up();
+  // Use the available width in one real gesture; interpolated software-WebGL
+  // paints can take longer than the whole interaction's existing time budget.
+  const marginX=Math.min(24,size.width/4),maxDx=size.width-2*marginX;
+  const dx=Math.max(-maxDx,Math.min(maxDx,-p.yawDelta/.0035));
+  const x=dx>=0?marginX:size.width-marginX,y=size.height*.4,marginY=Math.min(24,size.height/4);
+  const dy=Math.max(-Math.min(100,y-marginY),Math.min(Math.min(100,size.height-marginY-y),-p.pitchDelta/.003));
+  // A keyboard object's focus-within menu otherwise covers the left start.
+  if(i===0)await page.locator('.space-world__canvas').focus();
+  await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+dx,y+dy);await page.mouse.up();
  }
  throw new Error(`Room object ${name} could not be brought into view`);
 }
