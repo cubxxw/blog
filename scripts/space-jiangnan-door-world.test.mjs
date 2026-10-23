@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {runInNewContext} from 'node:vm';
+import * as THREE from '../assets/js/vendor/three.module.min.js';
 import {createJiangnanDoorExcursion, jiangnanDoorPoses} from '../assets/js/space/jiangnan-door-state.mjs';
 import {jiangnanLook} from '../assets/js/space/jiangnan-state.mjs';
 import {jiangnanWindowRoute} from '../assets/js/space/jiangnan-window-view.mjs';
@@ -18,7 +19,7 @@ const functions=['syncMode','resetInspection','syncDoorStill','hideDoorPanel','s
   'returnFromDoor','escapeDoorExcursion','abandonDoorExcursion','beginDoorExcursion','approachDoor','stepOutOfDoor','focus','leave','restoreInspection'];
 const originalPose={x:.5,y:1.34,z:1.25,yaw:.8,pitch:.1,fov:48};
 
-function fixture({inspectionKind=null,viewPose=originalPose,inspectionPose=originalPose}={}) {
+function fixture({inspectionKind=null,viewPose=originalPose,inspectionPose=originalPose,physicalDoor=null}={}) {
   let now=0,id=0; const timers=new Map(), mixes=[], doorActions=[], nodes=[];
   const document={};
   class Element extends EventTarget {
@@ -54,7 +55,7 @@ function fixture({inspectionKind=null,viewPose=originalPose,inspectionPose=origi
     jiangnanDoorPoses,jiangnanLook,jiangnanWindowRoute,camera,renderer:{domElement:canvas},reduced:{matches:false},objectControls:{inert:false},magicClock:null,
     computerView:()=> 'expanded',showComputer(){workspace.dataset.surface='desktop';},attachMonitor(){workspace.dataset.surface='monitor';},
     visible:()=>true,isBlocked:()=>false,onInspect(){},listen:(node,event,callback)=>node.addEventListener(event,callback),t:cn=>cn,
-    audio:{setPerspective:mix=>mixes.push(mix)},room:{screen:{position:[.8,1.16,-2.05]},door:{open:()=>doorActions.push('open'),close:()=>doorActions.push('close'),splash:()=>doorActions.push('splash')}}});
+    audio:{setPerspective:mix=>mixes.push(mix)},room:{screen:{position:[.8,1.16,-2.05]},door:physicalDoor??{open:()=>doorActions.push('open'),close:()=>doorActions.push('close'),splash:()=>doorActions.push('splash')}}});
   async function pump(ms=0) {
     const target=now+ms;
     // Every zero-delay visibility gate and Promise continuation is allowed its
@@ -148,5 +149,38 @@ test('ordinary workspace entry retains existing roam and inspection return seman
     assert.equal(f.world.mode,kind==='window'?'inspect':'roam');
     assert.deepEqual({...f.world.pose},kind==='coffee'?roomPose:originalPose);
     assert.equal(f.world.inspection?.kind??null,kind==='window'?'window':null);
+  }
+});
+
+
+test('a workspace shortcut immediately seals the real door and cancels its splash at every interrupted beat',async()=>{
+  const url=new URL('../assets/js/space/jiangnan-door.js',import.meta.url);
+  const moduleSource=readFileSync(url,'utf8').replace(/from (['"])([^'"]+)\1/g,(all,quote,specifier)=>{
+    const target=specifier==='three'?new URL('../assets/js/vendor/three.module.min.js',import.meta.url):specifier.startsWith('.')?new URL(specifier,url):null;
+    return target?`from '${target.href}'`:all;
+  });
+  const {buildJiangnanDoor}=await import('data:text/javascript;base64,'+Buffer.from(moduleSource).toString('base64'));
+  for(const beat of ['opening','threshold','submerged']){
+    const group=new THREE.Group(),resources=new Set();let wakes=0;
+    const door=buildJiangnanDoor({group,resources,still:()=>false,isDisposed:()=>false,wake:()=>{wakes++;}});
+    try{
+      const f=fixture({physicalDoor:door});door.update(0);f.world.begin();await f.pump();
+      for(let i=1;i<=2;i++)door.update(i/10);
+      assert.ok(door.openAmount>0&&door.openAmount<1);
+      if(beat!=='opening'){await f.pump(680);assert.equal(f.world.phase,'threshold');for(let i=3;i<=8;i++)door.update(i/10);}
+      if(beat==='submerged'){f.world.step();await f.pump();door.update(.9);assert.equal(group.getObjectByName('door-step-ripples').visible,true);}
+      door.shadowRefresh();const beforeWake=wakes;
+      await f.world.focus(false);
+      assert.equal(f.world.mode,'workspace');assert.equal(f.workspace.dataset.surface,'desktop');
+      assert.equal(f.world.phase,'indoor');assert.equal(f.world.panel,null);assert.equal(f.timers.size,0);
+      assert.equal(door.openAmount,0,beat+' must not leave a leaf frozen behind expanded workspace');
+      assert.equal(Math.abs(door.group.rotation.y),0);assert.equal(door.moving,false);
+      assert.equal(group.getObjectByName('door-step-ripples').visible,false);
+      assert.equal(door.shadowRefresh(),true,'the final closed geometry invalidates its shadow once');assert.equal(door.shadowRefresh(),false);
+      assert.equal(wakes,beforeWake+1,'an interrupt only requests the closing presentation once');
+      for(let i=0;i<4;i++)door.update(.9); // The expanded workspace intentionally freezes ambient time.
+      assert.equal(door.openAmount,0);assert.equal(door.moving,false);assert.equal(wakes,beforeWake+1);
+      await f.world.leave();assert.deepEqual({...f.world.pose},originalPose);await f.pump(2000);assert.equal(f.world.panel,null);
+    }finally{for(const resource of resources)resource.dispose?.();}
   }
 });

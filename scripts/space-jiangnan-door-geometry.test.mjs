@@ -52,6 +52,22 @@ test('door motion retains its hinge, reverses without a position jump, and refre
   } finally {f.dispose();}
 });
 
+test('an explicit story abort settles the leaf and splash without an ambient clock or ongoing wake', () => {
+  const f=doorFixture(); try {
+    f.door.update(0); f.door.open();
+    for(let i=1;i<=8;i++)f.door.update(i/10);
+    assert.equal(f.door.openAmount,1);f.door.splash();f.door.update(.9);
+    assert.equal(f.group.getObjectByName('door-step-ripples').visible,true);
+    f.door.close();assert.equal(f.door.openAmount,1);assert.equal(f.door.moving,true,'the ordinary return still closes with motion');
+    f.door.shadowRefresh();const wakes=f.wakes;
+    f.door.close({immediate:true});assert.equal(f.door.openAmount,0);assert.equal(Math.abs(f.door.group.rotation.y),0);
+    assert.equal(f.door.moving,false);assert.equal(f.group.getObjectByName('door-step-ripples').visible,false);
+    assert.equal(f.door.shadowRefresh(),true);assert.equal(f.door.shadowRefresh(),false);
+    for(let i=0;i<4;i++)f.door.update(.9);
+    assert.equal(f.door.moving,false);assert.equal(f.wakes,wakes+1);
+  } finally {f.dispose();}
+});
+
 test('still changes settle the leaf and splash without losing instantaneous shadow dirtiness', () => {
   const f=doorFixture(); try {
     f.door.update(0); f.door.open(); f.door.update(.1); f.door.shadowRefresh();

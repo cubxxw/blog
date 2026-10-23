@@ -293,7 +293,14 @@ export function buildJiangnanDoor({ group, resources = new Set(), wake = () => {
     get moving() { return doorAmount !== doorTarget || splashElapsed < SPLASH_SECONDS; },
     shadowRefresh() { const dirty = shadowDirty || doorAmount !== doorTarget; shadowDirty = false; return dirty; },
     open() { doorFrom = doorAmount; doorTarget = 1; doorElapsed = 0; if (still()) doorAmount = doorTarget; applyDoor(); wake(); },
-    close() { doorFrom = doorAmount; doorTarget = 0; doorElapsed = 0; if (still()) doorAmount = doorTarget; applyDoor(); wake(); },
+    close({immediate = false} = {}) {
+      doorFrom = doorAmount; doorTarget = 0; doorElapsed = 0;
+      // Abandoning the story may enter a workspace with no ambient clock or
+      // animation frames. Seal that boundary now, including any old splash.
+      if (immediate || still()) doorAmount = doorTarget;
+      if (immediate) splashElapsed = SPLASH_SECONDS;
+      applyDoor(); applySplash(); wake();
+    },
     splash() { splashElapsed = still() ? SPLASH_SECONDS : 0; applySplash(); wake(); },
     update(time) {
       if (isDisposed?.()) return;

@@ -269,7 +269,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     if(excursion.phase==='indoor')return false;
     excursion.abort();hideDoorPanel();doorReturn=null;
     audio?.setPerspective?.({music:1,rain:1});
-    room?.door?.close?.();
+    room?.door?.close?.({immediate:true});
     return true;
   }
   function beginDoorExcursion(source=renderer.domElement){
