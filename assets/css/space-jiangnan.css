@@ -30,8 +30,6 @@
 /* The room remains the focus; its two everyday destinations stay discoverable. */
 .space[data-world-renderer="jiangnan"] :is(.space-cafe__footer,.jiangnan-guidance,.space-world-touch),
 .space[data-world-renderer="jiangnan"]>.space-fullscreen { display:none!important; }
-.space[data-cafe-theme="jiangnan"] .space-boot { background:#17140f; }
-.space[data-cafe-theme="jiangnan"]:not([data-world-failed="true"]) .space-boot :is(.space-boot__header,.space-boot__body,.space-boot__footer) { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
 .space[data-world-renderer="jiangnan"] .space-cafe::after { background:radial-gradient(ellipse at 52% 48%,transparent 48%,#120c0624 100%); }
 .space[data-world-renderer="jiangnan"][data-world-inspect="window"] .space-cafe::after { background:radial-gradient(ellipse at 52% 48%,transparent 62%,#0c182012 100%); }
 .space[data-world-renderer="jiangnan"] .space-world-hud__details { top:calc(max(30px,env(safe-area-inset-top)) + 58px); }

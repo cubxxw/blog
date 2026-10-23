@@ -2,7 +2,8 @@ export function createBoot(startedAt,{seen=false,reduced=false}={}) {
   return {startedAt,quick:seen||reduced,stage:0,ready:false,skip:false,failed:false,finished:false};
 }
 export function bootRemaining(state,now) {
-  return state.ready ? Math.max(0,(state.quick||state.skip?0:1400)-(now-state.startedAt)) : null;
+  // Presentation must never hold a painted room behind an artificial deadline.
+  return state.ready ? 0 : null;
 }
 export function advanceBoot(state,event,now) {
   if(state.finished||state.failed)return state;

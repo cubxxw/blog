@@ -4,8 +4,13 @@ import {createRendererController} from './rain-room-state.mjs';
 export function createCafeWorld(options) {
   const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);
   const controller=createRendererController({
-    load:async id=>(await import(id==='jiangnan'?config.jiangnan:config.spatial)).createCafeWorld,
-    create:(factory,theme)=>factory({...options,theme}),onBusy:value=>options.onTravel?.(value)
+    load:async id=>{
+      const module=await import(id==='jiangnan'?config.jiangnan:config.spatial);
+      options.onBootStage?.('module');return module.createCafeWorld;
+    },
+    create:(factory,theme)=>{
+      const world=factory({...options,theme});options.onBootStage?.('room');return world;
+    },onBusy:value=>options.onTravel?.(value)
   });
   const initial=controller.select(options.theme);
   const firstFrame=initial.then(result=>{if(result.status!=='ready')throw result.error||new Error('Scene unavailable');return true;});

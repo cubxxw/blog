@@ -10,10 +10,9 @@ test('skip and elapsed presentation cannot declare an unrendered room ready',()=
   assert.equal(s.finished,false);s=advanceBoot(s,'frame',6003);
   assert.equal(s.finished,true);assert.equal(s.ready,true);
 });
-test('fresh presentation finishes only after real readiness and a short optional duration',()=>{
+test('a fresh visit finishes at the first real frame without a minimum duration',()=>{
   let s=createBoot(0);s=advanceBoot(s,'module',50);s=advanceBoot(s,'room',100);s=advanceBoot(s,'frame',200);
-  assert.equal(s.finished,false);assert.equal(bootRemaining(s,200),1200);
-  s=advanceBoot(s,'tick',1400);assert.equal(s.finished,true);
+  assert.equal(s.finished,true);assert.equal(bootRemaining(s,200),0);
   assert.equal(advanceBoot(s,'room',1500),s);
 });
 test('revisit and reduced motion have no artificial presentation delay',()=>{

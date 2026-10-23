@@ -63,7 +63,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     try{localStorage.setItem('space:cafe:quiet:v1',value?'yes':'no');}catch{}
   }
   commit(theme);setQuiet(quiet);desiredMode=cafeEntryMode({route,navigation,saved:savedMode,localeResume});setMode(desiredMode);
-  const boot=mountOnboarding({root,enabled:mode==='cafe'&&!localeResume&&navigation!=='back_forward',onReveal:result=>{
+  const boot=mountOnboarding({root,enabled:true,onReveal:result=>{
     if(result?.failed){desiredMode='desktop';setMode('desktop');onEnter();if(!failureFocusManaged)focusDesktop()?.focus({preventScroll:true});}
     world?.wake();
   }});
@@ -107,12 +107,13 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     try {
       const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);let timer;
       const module=await Promise.race([import(config.module),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('3D module timed out')),15000);})]).finally(()=>clearTimeout(timer));
-      if(disposed)return null;boot.event('module');
+      if(disposed)return null;
       world=module.createCafeWorld({root,theme,catAsset:catalog.catAsset,photoAsset:catalog.photoAsset,latteAsset:catalog.latteAsset,mapleAsset:catalog.mapleAsset,materialBase:catalog.materialBase,books:catalog.books,onDetail:(kind,source)=>inspect(kind,source),onInspect:syncInspect,onCat:syncCat,onComputer:()=>enterDesktop(true),onReturn:()=>visit(),onNotebook:async()=>{if(await enterDesktop())execute('open',{app:'notes'});},onPhoto:async id=>{if(await enterDesktop())execute('open',{app:'photos',payload:id});},onFailure:()=>failWorld(t('场景已暂停，工作区仍可使用。','The room has paused. Your workspace is available.')),
+        onBootStage:stage=>{if(!disposed&&!failed)boot.event(stage);},
         isBlocked:()=>boot.active||dialog.open||Boolean(root.querySelector('dialog[open]'))||root.hidden||root.dataset.roomPageOpen==='true',
         onTravel:busy=>{catTravel=busy;syncCat();root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=busy;});}
       });
-      boot.event('room');world.setQuiet(quiet);
+      world.setQuiet(quiet);
       const startup=desiredMode==='desktop'?world.focus(false):world.start({animate:false,focus:false});
       if(!await firstVisibleFrame(Promise.all([Promise.resolve(startup),world.firstFrame]).then(([,painted])=>painted)))throw new Error('Rendering stopped');
       if(disposed||failed)return null;
@@ -191,7 +192,19 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(target.closest('[data-cafe-replay]')){if(await visit('seat'))boot.replay();}
     if(target.closest('[data-cafe-outside]'))visit('outside');
     const choice=target.closest('button[data-cafe-theme]');
-    if(choice){await ready;if(disposed)return;const id=choice.dataset.cafeTheme,current=++revision;if(world&&await world.setTheme(id)===false)return;if(disposed||current!==revision)return;commit(id);pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);closePicker();}
+    if(choice){
+      await ready;if(disposed)return;
+      const id=choice.dataset.cafeTheme,current=++revision;
+      // A change of renderer replaces the old canvas. Keep the terminal visible
+      // throughout the real download/build/first-frame handoff.
+      const replacing=world&&(id==='jiangnan')!==(theme==='jiangnan');
+      if(replacing){closePicker();boot.begin();}
+      if(world&&await world.setTheme(id)===false)return;
+      if(disposed||current!==revision)return;
+      commit(id);if(replacing)boot.event('frame');
+      pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);
+      if(dialog.open)closePicker();
+    }
   },{signal:abort.signal});
   window.addEventListener('pagehide',event=>{if(!event.persisted){disposed=true;abort.abort();boot.dispose();roomInspection.dispose();listeningPages.dispose();world?.dispose();}},{signal:abort.signal});
   return {ready,get active(){return mode==='cafe';},get modalOpen(){return dialog.open||boot.active;},get mode(){return mode;},get spatial(){return Boolean(world);},enterDesktop,visit,openPicker,escape(){if(world?.mode==='inspect')restoreInspect();else if(world?.mode==='roam')world.start();}};

@@ -48,7 +48,6 @@
 .space[data-world-renderer="cinematic"] .space-world-hud__details,.space[data-world-renderer="cinematic"] .space-world-touch,.space[data-world-renderer="cinematic"] .space-world-hud__roam>p,.space[data-world-renderer="cinematic"] .space-world-hud__workspace{display:none}
 .space[data-world-renderer="cinematic"] .space-world-hud__roam{display:none}
 .space:not([data-world-renderer="cinematic"]) [data-cafe-photos]{display:none}
-.space[data-world-renderer="cinematic"] .space-boot__prompt,.space[data-cafe-theme="jiangnan"] .space-boot__steps code{display:none}
 .space-cafe-swatch[data-scene="jiangnan"]{background:linear-gradient(140deg,#80502c 0 45%,#1c344c 46% 75%,#a67b40 76%)}
 @media(max-width:960px) and (orientation:portrait){
   .rain-room__viewport{overflow-x:auto}

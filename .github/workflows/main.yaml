@@ -83,7 +83,9 @@ jobs:
       - name: Verify reusable author audio
         run: npm run voice:test
       - name: Verify BEAR OS tool and media boundaries
-        run: npm run bear:test
+        run: |
+          npm run bear:test
+          node --test --test-concurrency=1 scripts/space-preload.test.mjs scripts/space-boot-stages.test.mjs
       - name: Verify public interaction and AI rendering contracts
         run: npm run ux:test
       - name: Upload frozen verification input (not a releasable artifact)

@@ -24,7 +24,9 @@ test('the terminal stays visible until a real scene frame, with a direct writing
   await page.goto('/zh/projects/');
   try {
     await expect(page.locator('[data-space-boot]')).toBeVisible();
-    await expect(page.locator('[data-boot-skip]')).toBeDisabled();
+    await expect(page.locator('[data-boot-skip]')).toBeHidden();
+    await expect(page.locator('[data-boot-step]').first()).toHaveAttribute('data-state','current');
+    await expect(page.locator('.space-boot__identity')).toContainText('cubxxw');
     await expect(page.locator('[data-space-boot] a').last()).toHaveAttribute('href','/zh/articles/');
     await expect(page.locator(root)).not.toHaveAttribute('data-world-ready','true');
     expect(await page.locator('[data-space-boot]').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
@@ -32,6 +34,23 @@ test('the terminal stays visible until a real scene frame, with a direct writing
   await room(page);await expect(page.locator(root)).toHaveAttribute('data-world-ready','true');
   await expect(page.locator('[data-space-boot]')).toBeHidden();
   await expect(page.locator('[data-cafe-read]')).toBeVisible();
+});
+
+test('changing renderer keeps the terminal visible until the replacement room paints',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/zh/projects/');await room(page);
+  let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
+  await page.route('**/world-jiangnan.*.js',async route=>{await gate;await route.continue();});
+  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
+  await page.locator('button[data-cafe-theme="jiangnan"]').click();
+  try{
+    await expect(page.locator('[data-space-boot]')).toBeVisible();
+    await expect(page.locator('[data-boot-skip]')).toBeHidden();
+    await expect(page.locator('[data-boot-step]').first()).toHaveAttribute('data-state','current');
+  }finally{release();}
+  await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
+  await expect(page.locator(root)).toHaveAttribute('data-world-renderer','jiangnan');
+  await expect(page.locator('[data-space-boot]')).toBeHidden();
+  await expect(page.locator('.space-world__canvas')).toBeFocused();
 });
 
 test('opening a seat or terrace from the workspace preserves notes and allows returning',async({page})=>{
@@ -60,11 +79,8 @@ test('a cancelled read transition cannot steal a replayed café visit',async({pa
     await expect(page.locator(root)).toHaveAttribute('data-world-travel','true');
     await clickWithClockPaused(page.locator('.space-cafe__utilities [data-cafe-picker]'));
     await clickWithClockPaused(page.locator('[data-cafe-replay]'));
-    // Complete the real replacement seat travel, then its original boot/reveal
-    // timers. Paused time keeps CDP latency from consuming those short states.
-    await page.clock.fastForward(1200);await expect(page.locator(root)).toHaveAttribute('data-boot-state','loading');
-    await page.clock.fastForward(1500);await expect(page.locator(root)).toHaveAttribute('data-boot-state','revealing');
-    await page.clock.runFor(550);await room(page);
+    // A replay uses the already rendered room and must not add a boot delay.
+    await page.clock.fastForward(2000);await room(page);
     await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','cafe');
     const snapshot=await page.evaluate(()=>(window as unknown as {BearSpace:{snapshot:()=>{active:string;windows:{id:string}[]}}}).BearSpace.snapshot());
     expect(snapshot.active).not.toBe('reader');

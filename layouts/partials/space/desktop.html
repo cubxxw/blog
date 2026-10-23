@@ -43,7 +43,7 @@
 {{- end -}}
 {{- $css := slice (resources.Get "css/space.css") (resources.Get "css/space-profile.css") (resources.Get "css/space-media.css") (resources.Get "css/space-agent.css") (resources.Get "css/space-classic.css") (resources.Get "css/space-companion.css") (resources.Get "css/space-cafe.css") (resources.Get "css/space-rain-room.css") (resources.Get "css/space-jiangnan.css") (resources.Get "css/space-mac.css") (resources.Get "css/space-browser.css") | resources.Concat "css/bear-os.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" data-cafe-mode="cafe" data-computer-default="expanded" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
+<section class="space" data-product-panel="bear" data-bear-workspace data-boot-state="loading" data-theme="light" data-wallpaper="dawn" data-cafe-mode="cafe" data-computer-default="expanded" aria-label="{{ if $zh }}CUBXXW OS 个人工作区{{ else }}CUBXXW OS personal workspace{{ end }}">
   <div class="space-landscape" aria-hidden="true"></div>
   {{ partial "space/cafe.html" . }}
   <nav class="space-menu" id="space-menu" aria-label="{{ if $zh }}空间菜单{{ else }}Space menu{{ end }}" hidden>

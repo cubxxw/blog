@@ -91,6 +91,14 @@ function fixture({software=false}={}){
   };
 }
 
+test('cached textures still paint a first frame before the six-view reflection capture',async()=>{
+  const f=fixture();f.world.setMaps(12);f.flush();
+  assert.equal(await f.world.firstFrame,true);assert.equal(f.draws,1);
+  assert.equal(f.captures.length,0,'the initial display must not wait for a cubemap');
+  f.advance(2300);f.flush();assert.equal(f.captures.length,1);
+  assert.equal(f.reflected,true,'the ordinary reflection remains available after entry');
+});
+
 test('early boot keeps its pending reflection deadline and captures fallback only once',async()=>{
   const f=fixture();
   f.world.setMaps(11);f.flush();

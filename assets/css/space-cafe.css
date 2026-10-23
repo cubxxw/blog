@@ -231,38 +231,43 @@
 }
 
 /* The terminal is present in the HTML; the room renders independently below. */
-.space-boot { position:absolute; inset:0; z-index:300; display:flex; flex-direction:column; padding:clamp(24px,4vw,62px); color:#e9ece0; background:radial-gradient(ellipse at 90% 100%,#24332855,transparent 60%),#101714; font-family:var(--font-mono,'SFMono-Regular',Consolas,monospace); transition:opacity .55s,transform .55s; overflow:auto; }
+.space-boot { position:absolute; inset:0; z-index:300; display:flex; flex-direction:column; gap:24px; padding:clamp(24px,4vw,62px); color:#d4d8d1; background:#171b1a; font:13px/1.7 ui-monospace,'SFMono-Regular',Consolas,monospace; transition:opacity .16s; overflow:auto; color-scheme:dark; }
 .space-boot[hidden] { display:none; }
-.space-boot::before { content:''; position:absolute; top:0; bottom:0; left:clamp(24px,4vw,62px); border-left:1px solid #c4d2bd0b; pointer-events:none; }
-.space-boot__header { display:flex; justify-content:space-between; gap:20px; align-items:center; font-size:10px; letter-spacing:.13em; position:relative; }
+.space-boot__header { display:flex; justify-content:space-between; gap:20px; align-items:center; padding-bottom:16px; border-bottom:1px solid #ffffff12; font-size:10px; letter-spacing:.08em; }
 .space-boot__header a { color:#f1eee0; text-decoration:none; font-size:13px; font-weight:600; }
 .space-boot__header a span,.space-boot__header>span { color:#a3afa3; font-weight:400; }
-.space-boot__body { margin:auto 0; padding:52px 0 42px clamp(0px,5vw,80px); position:relative; }
-.space-boot__prompt { color:#a5b3a5; font-size:12px; margin:0 0 22px; }
-.space-boot__prompt>span { color:#d8c6a3; }
-.space .space-boot h2 { margin:0; font:400 clamp(30px,4.5vw,67px)/1.18 var(--font-mono,'SFMono-Regular',Consolas,monospace); letter-spacing:-.055em; color:#f0eee2; }
-.space-boot h2 em { font-style:normal; color:#c6d7b1; }
+.space-boot__body { margin:0 0 auto; padding:24px 0; width:100%; max-width:820px; }
+.space-boot__prompt { color:#9ca99e; font-size:12px; margin:0 0 24px; overflow-wrap:anywhere; }
+.space-boot__prompt>span:first-child { color:#b0cfa2; }
+.space .space-boot h2 { margin:0; font:500 clamp(19px,2.1vw,28px)/1.5 ui-monospace,'SFMono-Regular',Consolas,monospace; letter-spacing:-.03em; color:#f0eee2; }
+.space-boot h2 span { color:#9fa89d; font-weight:400; }
 .space-boot__chevron { color:#91ad8b; }
-.space-boot__caret { display:inline-block; width:.45em; height:.84em; margin-left:.18em; background:#c6d7b1; vertical-align:-.03em; animation:space-caret 1s steps(1) 3; }
+.space-boot__caret { display:inline-block; width:.55em; height:1em; margin-left:.5em; background:#aec69e; vertical-align:-.12em; animation:space-caret 1.2s steps(1) infinite; }
 @keyframes space-caret { 50% { opacity:0; } }
-.space-boot__intro { margin:22px 0 36px; font:14px/1.8 var(--font-sans,system-ui,sans-serif); color:#bbc3b5; }
-.space-boot__steps { list-style:none; padding:0; margin:0; display:grid; gap:15px; }
-.space-boot__steps li { display:grid; grid-template-columns:12px 74px 1fr; gap:16px; align-items:center; font-size:12px; color:#cbd4c2; transition:opacity .3s,color .3s; }
-.space-boot__steps li[data-state="waiting"] { opacity:.35; }
-.space-boot__steps li[data-state="done"] { color:#8da28a; }
-.space-boot__steps li>span:last-child { font:13px/1.5 var(--font-sans,system-ui,sans-serif); }
-.space-boot__steps code { background:none; padding:0; color:inherit; font:inherit; }
-.space-boot__mark { width:5px; height:5px; background:currentColor; border-radius:50%; }
-.space-boot__steps [data-state="done"] .space-boot__mark { width:7px; height:4px; border-left:1px solid currentColor; border-bottom:1px solid currentColor; border-radius:0; background:none; transform:rotate(-45deg); }
-.space-boot__status { min-height:24px; margin:22px 0 0; font:12px/1.7 var(--font-sans,system-ui,sans-serif); color:#d9c7a7; }
+.space-boot__intro { margin:6px 0 28px; font:inherit; color:#a8b0a5; }
+.space-boot__identity { margin:0 0 20px; padding-bottom:20px; border-bottom:1px solid #ffffff0d; }
+.space-boot__identity p { display:flex; flex-wrap:wrap; gap:0 12px; margin:6px 0; }
+.space-boot__identity p>span:last-child { color:#b2baaf; overflow-wrap:anywhere; }
+.space-boot__ok { color:#a7c99b; white-space:pre; }
+.space-boot__steps { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+.space-boot__steps li { display:grid; grid-template-columns:6ch 10ch minmax(0,1fr) auto; gap:12px; align-items:baseline; font:inherit; color:#d4d8d1; }
+.space-boot__steps li[data-state="waiting"] { color:#98a094; }
+.space-boot__steps [data-state="done"] .space-boot__mark { color:#a7c99b; }
+.space-boot__steps [data-state="current"] .space-boot__mark { color:#dcc393; }
+.space-boot__steps [data-state="failed"] .space-boot__mark { color:#edb29f; }
+.space-boot :is(code,time) { background:none; padding:0; margin:0; color:inherit; font:inherit; }
+.space-boot__mark { white-space:pre; }
+.space-boot__steps time { color:#98a094; font-size:11px; }
+.space-boot__status { min-height:24px; margin:24px 0 0; font:inherit; color:#d8c9aa; }
 .space-boot__footer { display:flex; justify-content:space-between; gap:24px; align-items:center; position:relative; }
 .space-boot__footer p { color:#9da99c; font:12px/1.6 var(--font-sans,system-ui,sans-serif); margin:0; }
 .space-boot__footer>div { display:flex; align-items:center; gap:24px; }
 .space-boot__footer a { color:#d7dfcf; font:12px var(--font-sans,system-ui,sans-serif); min-height:44px; display:inline-flex; align-items:center; text-decoration:none; }
 .space-boot__footer button { min-height:44px; border:1px solid #b8c7ac; background:#c8d7b4; color:#172218; padding:10px 20px; border-radius:3px; font:12px var(--font-sans,system-ui,sans-serif); cursor:pointer; }
 .space-boot__footer button:disabled { border-color:#6c7e6b; background:transparent; color:#aab8a6; cursor:wait; }
+.space-boot__footer button[hidden] { display:none; }
 .space-boot :is(a,button):focus-visible { outline:2px solid #e8d4aa; outline-offset:5px; }
-.space[data-boot-state="revealing"] .space-boot { opacity:0; transform:translateY(-10px); pointer-events:none; }
+.space[data-boot-state="revealing"] .space-boot { opacity:0; pointer-events:none; }
 .space[data-boot-state="loading"] :is(.space-cafe,.space-world-hud,.space-window-layer,.space-bottom,.space-menu) { visibility:hidden; }
 .space[data-world-mode="roam"] .space-cafe::after { opacity:1; background:linear-gradient(180deg,#11201b70,transparent 20%,transparent 65%,#11201ba6); }
 .space-cafe__footer { justify-content:space-between; align-items:flex-end; }
@@ -280,13 +285,16 @@
 .space-cafe-picker footer a { color:inherit; text-decoration:underline; }
 .space:has(.space-nojs) .space-boot { display:none; }
 @media(max-width:640px) {
-  .space-boot { padding:26px 24px 24px; }
+  .space-boot { padding:24px 20px; font-size:12px; }
   .space-boot__header>span { display:none; }
-  .space-boot__body { padding:45px 0 30px; }
-  .space .space-boot h2 { font-size:clamp(27px,7.5vw,43px); line-height:1.3; }
-  .space-boot__intro { font-size:13px; margin:18px 0 30px; }
-  .space-boot__steps li { grid-template-columns:8px 60px 1fr; gap:10px; font-size:11px; }
-  .space-boot__steps li>span:last-child { font-size:12px; }
+  .space-boot__body { padding:12px 0; }
+  .space .space-boot h2 { font-size:20px; }
+  .space-boot__intro { margin:6px 0 24px; }
+  .space-boot__identity p { column-gap:10px; }
+  .space-boot__identity p>span:last-child { flex-basis:100%; margin-left:calc(6ch + 10px); }
+  .space-boot__steps li { grid-template-columns:6ch minmax(0,1fr) auto; gap:0 10px; }
+  .space-boot__steps li>span:nth-of-type(2) { grid-column:2; }
+  .space-boot__steps time { grid-column:3; grid-row:auto; }
   .space-boot__footer { flex-direction:column; align-items:flex-start; gap:15px; }
   .space-boot__footer>div { justify-content:space-between; width:100%; gap:16px; }
   .space-cafe__header { left:18px; right:18px; }
@@ -308,7 +316,7 @@
 @media(max-height:520px) {
   .space-boot { padding:20px 28px; }
   .space-boot__body { padding:20px 0; }
-  .space .space-boot h2 { font-size:30px; }
+  .space .space-boot h2 { font-size:20px; }
   .space-boot__intro { margin:12px 0 15px; }
   .space-boot__steps { gap:7px; }
   .space-boot__status { margin-top:12px; }

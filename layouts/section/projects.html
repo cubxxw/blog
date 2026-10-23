@@ -1,5 +1,14 @@
 {{- define "main" }}
 {{- $isZh := eq .Lang "zh" -}}
+{{- $three := resources.Get "js/vendor/three.module.min.js" | fingerprint -}}
+{{- $world := resources.Get "js/space/world-cafe.js" | js.Build (dict "format" "esm" "minify" true "externals" (slice "three")) | fingerprint -}}
+{{- $scene := resources.Get "js/space/cafe-scene.js" | js.Build (dict "format" "esm" "minify" true) | fingerprint -}}
+{{- $jiangnan := resources.Get "js/space/world-jiangnan.js" | js.Build (dict "format" "esm" "minify" true "externals" (slice "three")) | fingerprint -}}
+{{- $workspaceJS := resources.Get "js/space/desktop.js" | js.Build (dict "targetPath" "js/bear-workspace.js" "minify" true) | fingerprint -}}
+<script type="importmap">{{ dict "imports" (dict "three" $three.RelPermalink) | jsonify | safeHTML }}</script>
+<script type="application/json" data-space-world-module>{{ dict "module" $scene.RelPermalink "spatial" $world.RelPermalink "jiangnan" $jiangnan.RelPermalink "vendor" $three.RelPermalink "workspace" $workspaceJS.RelPermalink | jsonify | safeJS }}</script>
+{{- $preload := resources.Get "js/space/preload.js" | minify -}}
+<script>{{ $preload.Content | safeJS }}</script>
 {{- $products := site.Data.products.products -}}
 {{- $featuredProducts := where $products "featured" true -}}
 {{- $featured := index $featuredProducts 0 -}}
@@ -357,14 +366,7 @@
 </template>
 <script type="application/json" data-space-knowledge>{{ dict "nodes" $graph "module" $knowledgeJS.RelPermalink | jsonify | safeJS }}</script>
 </div>
-{{- $three := resources.Get "js/vendor/three.module.min.js" | fingerprint -}}
 {{- $entrance := resources.Get "js/space/entrance.js" | js.Build (dict "format" "esm" "minify" true "externals" (slice "three")) | fingerprint -}}
-<script type="importmap">{{ dict "imports" (dict "three" $three.RelPermalink) | jsonify | safeHTML }}</script>
 <script type="application/json" data-space-entrance>{{ dict "module" $entrance.RelPermalink | jsonify | safeJS }}</script>
-{{- $world := resources.Get "js/space/world-cafe.js" | js.Build (dict "format" "esm" "minify" true "externals" (slice "three")) | fingerprint -}}
-{{- $scene := resources.Get "js/space/cafe-scene.js" | js.Build (dict "format" "esm" "minify" true) | fingerprint -}}
-{{- $jiangnan := resources.Get "js/space/world-jiangnan.js" | js.Build (dict "format" "esm" "minify" true "externals" (slice "three")) | fingerprint -}}
-<script type="application/json" data-space-world-module>{{ dict "module" $scene.RelPermalink "spatial" $world.RelPermalink "jiangnan" $jiangnan.RelPermalink | jsonify | safeJS }}</script>
-{{- $workspaceJS := resources.Get "js/space/desktop.js" | js.Build (dict "targetPath" "js/bear-workspace.js" "minify" true) | fingerprint -}}
 <script type="module" src="{{ $workspaceJS.RelPermalink }}" integrity="{{ $workspaceJS.Data.Integrity }}"></script>
 {{- end }}

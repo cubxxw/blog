@@ -18,7 +18,7 @@ try{
     await page.route('**/world-cafe.*.js',async route=>{await gate;await route.continue();});
     try{
       await page.goto(base+'/zh/projects/');await page.locator('[data-space-boot]').waitFor();
-      assert.equal(await page.locator('[data-boot-skip]').isDisabled(),true);
+      assert.equal(await page.locator('[data-boot-skip]').isVisible(),false);
       await page.screenshot({path:path.join(evidence,`terminal-${name}.png`)});
     }finally{release();}
     await page.waitForFunction(()=>{const d=document.querySelector('[data-bear-workspace]')?.dataset;return d?.bootState==='complete'&&d.catLoaded==='true';});
