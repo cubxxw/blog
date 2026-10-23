@@ -39,9 +39,10 @@ async function ready(page:Page) {
 }
 
 async function savedScreenshot(page:Page,name:string) {
-  // Artifacts for human review; these deliberately are not pixel baselines.
+  // Human review artifacts must observe the live journey without finishing or
+  // cancelling its animations. These deliberately are not pixel baselines.
   const path=test.info().outputPath(`${name}.png`);
-  await root(page).screenshot({path,animations:'disabled'});
+  await root(page).screenshot({path,animations:'allow'});
   await test.info().attach(name,{path,contentType:'image/png'});
 }
 
