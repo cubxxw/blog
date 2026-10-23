@@ -52,6 +52,34 @@ jobs:
           browsers: ${{ steps.plan.outputs.browser_engines }}
       - name: Enforce offline checks and build one frozen production bundle
         run: node scripts/ci-run.mjs prepare
+      - name: Diagnose the desktop rear-door journey before browser fan-out
+        if: steps.plan.outputs.run_site == 'true'
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import {spawnSync} from 'node:child_process';
+          import {verifyFrozenProof} from './scripts/ci-shards.mjs';
+          const dir=path.resolve('tests/.artifacts/ci'),bundleRoot=path.join(dir,'site');
+          const read=name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
+          const plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
+          const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl);
+          const evidence=path.resolve('tests/.artifacts/door-preflight');
+          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
+          const result=spawnSync(process.execPath,[
+            'node_modules/@playwright/test/cli.js','test','tests/e2e/space-door-excursion.spec.ts',
+            '--project=desktop','--workers=1','--retries=2',
+            '--grep=1440px / no-preference.*the real rear door, deliberate step, splash and safe return form one repeatable journey'
+          ],{stdio:'inherit',env:{
+            ...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),
+            NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),
+            SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,
+            SITE_TEST_RESULTS:path.join(evidence,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(evidence,'html')
+          }});
+          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
+          if(result.error)throw result.error;
+          process.exitCode=result.status??1;
+          NODE
       - name: Verify reusable author audio
         run: npm run voice:test
       - name: Verify BEAR OS tool and media boundaries
@@ -72,7 +100,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: blog-prepare-failure-${{ github.run_id }}-${{ github.run_attempt }}
-          path: tests/.artifacts/ci/
+          path: |
+            tests/.artifacts/ci/
+            tests/.artifacts/door-preflight/
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 30

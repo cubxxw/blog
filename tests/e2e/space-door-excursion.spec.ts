@@ -45,6 +45,54 @@ async function savedScreenshot(page:Page,name:string) {
   await test.info().attach(name,{path,contentType:'image/png'});
 }
 
+// Read-only observations: never settle, seek, finish or otherwise control an
+// animation. A diagnostic failure must not replace the original CSS assertion.
+async function recordWaterState(page:Page,label:string,includeDOM=false) {
+  try {
+    const state=await page.evaluate(includeDOM=>{
+      const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!;
+      const water=root.querySelector<HTMLElement>('.space-cafe-door-water')!;
+      const selector='.space[data-room-door-state="submerged"] .space-cafe-door-water';
+      const attributes=['id','class','style','hidden','inert','data-room-door-state','data-room-door-still','data-world-mode','data-world-travel','data-world-frames','data-world-pose','data-cafe-mode'];
+      const rootAttributes=Object.fromEntries(attributes.map(name=>[name,root.getAttribute(name)]));
+      const properties=['opacity','display','visibility','transition','transition-property','transition-duration','transition-delay','transition-timing-function','transition-behavior','animation','animation-name','animation-duration','animation-delay','animation-play-state','animation-fill-mode','animation-timing-function','animation-iteration-count'];
+      const styles=(node:Element)=>{const computed=getComputedStyle(node);return Object.fromEntries(properties.map(name=>[name,computed.getPropertyValue(name)]));};
+      const animations=water.getAnimations({subtree:true}).map(animation=>{
+        const effect=animation.effect,frames=effect instanceof KeyframeEffect?effect.getKeyframes():null;
+        const target=effect instanceof KeyframeEffect?effect.target:null;
+        return {id:animation.id,type:animation.constructor.name,playState:animation.playState,pending:animation.pending,
+          currentTime:animation.currentTime,startTime:animation.startTime,playbackRate:animation.playbackRate,
+          // Promise state has no synchronous observer. Retain its type and the
+          // animation's pending flag without awaiting a possibly stalled ready.
+          ready:Object.prototype.toString.call(animation.ready),
+          target:target?{tag:target.tagName,id:target.id,class:target.getAttribute('class')}:null,
+          timing:effect?.getTiming(),computedTiming:effect?.getComputedTiming(),keyframes:frames};
+      });
+      let rootDOM:string|undefined;
+      if(includeDOM){
+        // Keep the exact relevant DOM while omitting unrelated catalog/app data.
+        // Only a detached clone is edited; the live root is never mutated.
+        const clone=root.cloneNode(false) as HTMLElement;
+        for(const attribute of [...clone.attributes])if(!attributes.includes(attribute.name))clone.removeAttribute(attribute.name);
+        for(const node of root.querySelectorAll('.space-cafe-door-water,.space-cafe-door'))clone.append(node.cloneNode(true));
+        rootDOM=clone.outerHTML;
+      }
+      return {rootAttributes,waterCount:root.querySelectorAll('.space-cafe-door-water').length,
+        selector:{value:selector,matches:water.matches(selector),count:document.querySelectorAll(selector).length},
+        water:{connected:water.isConnected,styles:styles(water),bounds:water.getBoundingClientRect().toJSON(),outerHTML:includeDOM?water.outerHTML:undefined},
+        rootStyles:styles(root),rootDOM,animations,
+        environment:{innerWidth,innerHeight,devicePixelRatio,reducedMotion:matchMedia('(prefers-reduced-motion:reduce)').matches,
+          visibilityState:document.visibilityState,hidden:document.hidden,timelineTime:document.timeline.currentTime,performanceNow:performance.now(),dateNow:Date.now()}};
+    },includeDOM);
+    const info=test.info(),observation={label,project:info.project.name,retry:info.retry,browserVersion:page.context().browser()?.version(),...state};
+    const json=JSON.stringify(observation,(_key,value)=>typeof value==='number'&&!Number.isFinite(value)?String(value):value,2);
+    console.info(`[door-water] ${json}`);
+    await info.attach(`door-water-${label}`,{body:json,contentType:'application/json'});
+  } catch(error) {
+    console.warn(`[door-water] ${label}: diagnostic collection failed: ${error instanceof Error?error.message:String(error)}`);
+  }
+}
+
 async function clickPhysicalDoor(page:Page,{touch=false,double=false}={}) {
   const point=await lookAtRoomObject(page,'door');
   const before=await pose(page);
@@ -100,7 +148,9 @@ for(const width of [1440,390]) for(const motion of ['no-preference','reduce'] as
       const before=await clickPhysicalDoor(page,{touch,double:true});
       await threshold(page);
       await expect(panel(page,'submerged')).toHaveCount(0);
+      await recordWaterState(page,'threshold-before-screenshot');
       await savedScreenshot(page,'threshold');
+      await recordWaterState(page,'threshold-after-screenshot');
       if(width===1440&&motion==='reduce') {
         const widePose=await pose(page);
         await page.setViewportSize({width:390,height:844});
@@ -117,11 +167,17 @@ for(const width of [1440,390]) for(const motion of ['no-preference','reduce'] as
         await stepButton(page).tap();
       } else await stepButton(page).click();
       await phase(page,'submerged');
+      await recordWaterState(page,'submerged-entered');
       await expect(root(page)).toHaveAttribute('data-world-travel','false');
       await expect(panel(page,'threshold')).toHaveCount(0);
       await expect(panel(page,'submerged')).toHaveCount(1);
       await expect(panel(page,'submerged').getByRole('status')).toContainText('鱼却都看见了');
-      await expect(root(page).locator('.space-cafe-door-water')).toHaveCSS('opacity','1');
+      try {
+        await expect(root(page).locator('.space-cafe-door-water')).toHaveCSS('opacity','1');
+      } catch(error) {
+        await recordWaterState(page,'opacity-assertion-failed',true);
+        throw error;
+      }
       await savedScreenshot(page,'submerged');
       const recover=panel(page,'submerged').getByRole('button',{name:'回到咖啡馆',exact:true});
       if(touch) {await isReachable(recover);await recover.tap();} else await recover.click();
