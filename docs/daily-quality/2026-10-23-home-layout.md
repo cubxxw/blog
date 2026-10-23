@@ -31,7 +31,7 @@ The homepage template before the book section matches the previous layout; after
 - Manual renders: meaningful localized content, grid cards, one hero conversation, zero horizontal overflow, zero page runtime errors. Covered chat opening/closing, focus recovery, channel navigation, social contact dialogs, article navigation and no-JavaScript links in browser tests.
 - Browser plugin was unavailable; validation used the repository's Playwright workflow. This is browser emulation, not real-device Safari verification.
 - Remote review identified a narrow-desktop clipping defect after the caption change: at 800px the fixed 420px orbit ended at x=821.64, beyond the viewport. Hidden horizontal overflow masked this from the scroll-width check. Reproduced this failure, added all-question column-boundary assertions and the 800px breakpoint, then constrained the orbit width. Verified its right edge is within the viewport at 769, 800, 900, 901, 1024 and 1440px. The final homepage rerun passed 108 tests across desktop and mobile; the earlier direct-product-link and wayfinder results remain above.
-- Cloud branch-preview acceptance passed at EN 1710px, ZH 1440px and ZH dark 375px, including chat open/close, focus and channel changes. Production acceptance is still pending.
+- Cloud branch-preview acceptance passed at EN 1710px, ZH 1440px and ZH dark 375px, including chat open/close, focus and channel changes. Production acceptance is recorded in the final Delivery section below.
 - `git diff --check` passed. Screenshots and transient logs are outside the repository under `/tmp/blog-home-debug/`.
 
 ## Release blockers included with author approval
@@ -55,7 +55,7 @@ The previous job executed quality, 1,058 legacy cases and three interactive brow
 
 CI partition and workflow validation: 109 tests executed, 108 passed, one existing skip, zero failed. This includes real final aggregation/packaging and rejection of missing evidence. Pinned actionlint 1.7.12 and diff-format checks passed. This restructuring is a timeout repair, not evidence that uncompleted browser suites passed. Final remote results are pending below.
 
-## Latest remote acceptance
+## Earlier remote acceptance
 
 Latest branch head: `d6b1fd8387d7802a95a24184e96f20236272567c`. Required run: https://github.com/cubxxw/blog/actions/runs/39900186412. GitHub tests its synthetic merge `c77bd8b670d07db6cb20990cfbe0f80b6b204e2c` against main `d3acf2c`. Frozen input artifact ID: `12478264246` (448,374,171 bytes); all partitions download that exact producer ID.
 
@@ -127,8 +127,30 @@ Its supplemental exact-source Linux diagnostic [39921465126](https://github.com/
 
 The existing pre-input observer now also latches the first actual rendered `respond` snapshot, recording its stage, kind and published state without filtering away an incorrect first response. The assertion requires exactly `respond`/`pet`/`petting`; `petted` alone, a missing response or an incorrect first response cannot pass. There is no earlier pet input in this journey. Native mouse/keyboard input, model-frame observations, movement/camera/focus/inspection checks and all deadlines remain. No product state or animation duration is overwritten. Local full-trace validation passed four desktop/mobile cases without retries in 51.7s, type checking and independent review passed. Corrected Linux validation is pending.
 
+## Corrected interaction candidate acceptance
+
+Exact candidate `ede1552be4fb0184391a00b9925434b1bf432939` passed all eight repeated desktop/mobile wake and clock cases on Linux, without retries and with full traces, in 5.1 minutes: [39922881877](https://github.com/cubxxw/blog/actions/runs/39922881877). It reused producer artifact `12482903128`, whose publication inputs match the corrected candidate. This confirms the strict real model-frame wake and pet-response witnesses with real native input; it is a focused diagnostic, not the release gate.
+
+The candidate is now pushed to PR #475. The prior `3401e58` verification is superseded by the source update and must not be described as passing. Current required run: [39923729889](https://github.com/cubxxw/blog/actions/runs/39923729889). Main was re-fetched immediately before updating the PR and remained `d3acf2c`. Complete required verification, merge and production read-back are pending. No publication rendering input changed after `b03a7fd`.
+
+Current required run prepared exact merge `a6cd68b1d928c16b78555cfff0f5afd31024ab62` against unchanged main `d3acf2c`, with frozen artifact `12488803613` (448,374,914 bytes). Both the PR head and actual synthetic merge have publication input digest `4a07f996349c6f689c706ed3e1e89e1530b0801474e1730058b9ae3d7479bb27`. Preparation passed all 449 BEAR/Space checks. Final required results: quality 48 passed; Chromium, Firefox and WebKit passed 191 each; legacy 1/4 and 3/4 passed 260 each with eight existing skips each; legacy 2/4 passed 262 with one retry pass and five existing skips; legacy 4/4 passed 265 with three existing skips. All required jobs and final aggregation succeeded. Twelve browser excursions, ten camera/respiration cases, both rain readiness cases and both real cat journeys passed on their first formal attempts. The single retry pass was the existing legacy product-search focus case: its input was inactive after five seconds on the first attempt, then the unchanged retry passed. Its cause remains unproven and is retained as a nonblocking observation; no retry, focus or timeout assertion was changed for it. This is not a claim of entirely clean first-attempt execution.
+
 ## Delivery
+
+### Space C integration stage
 
 The Space C integration includes the original PR head `5e8c0e891a99f3078342faba15dd4f18390fce90`. It retains the two original, complete native/compatible multi-object draft journeys: the integration's bounded single-move room gesture already completed those unchanged 90-second contracts in 37.3s and 40.0s on historical head `8fc62f29`. The proposed three-way browser-journey split is therefore not adopted in this combined branch. Independent camera/respiration cases and the deadline-free clock pause are retained, including intermediate movement, actual rendered frames, both resize directions, terminal `data-world-travel=false`, and the unchanged lens-velocity threshold. Analytical breathing receives its own uncapped visible interval while routine motion retains capped delta and deliberate interaction retains bounded catch-up. The real-rig cadence regression exercises that same capped-delta/raw-breathing combination. Current integration checks: 32 targeted Node tests and TypeScript passed; a new complete remote gate is required after this integration. Earlier partial runs and deployed previews remain historical evidence.
 
-Pending final remote checks, merge, deployment version verification and production read-back. Do not treat the local checks as production acceptance.
+The combined Space C branch still requires its own complete remote checks, merge and production acceptance; the separate homepage delivery below does not satisfy that gate.
+### Independent homepage release
+
+Required verification [39923729889](https://github.com/cubxxw/blog/actions/runs/39923729889) succeeded. Verified bundle artifact: `12492687218`, 448,542,293 bytes, for synthetic merge `a6cd68b1`. PR [#475](https://github.com/cubxxw/blog/pull/475) merged at 2026-10-23T09:40:36Z as `3c2968ae8b2f9de604c226697109fb7e8f2bba3b`. Main was re-fetched before merging; it remained `d3acf2c`. The actual merge tree is byte-for-byte identical to the tested synthetic merge, and its publication input digest remains `4a07f996349c6f689c706ed3e1e89e1530b0801474e1730058b9ae3d7479bb27`.
+
+Native Netlify production deploy `6adb2b963b06c04b22c044ce` published that exact merge at 2026-10-23T09:43:43.785Z and is ready. Publisher configuration is unchanged and native builds remain enabled.
+
+Live production acceptance passed all four samples: EN 1440 light, ZH 1440 light, EN 800 light and ZH 375 dark. Every sample checked actual canonical/language/index metadata, decoded portrait image, approved hero/social/card arrangement, every real localized orbit question against column/portrait/caption boundaries, zero horizontal overflow, actual chat opening/closing and focus, channel changes and article navigation. There were zero page runtime errors. The settled production desktop and mobile-dark screenshots were visually reviewed. Evidence was retained outside the repository as `homepage-production-checks.json`, `homepage-restored-desktop.png` and `homepage-restored-mobile-dark.png` in the task's visualization directory.
+
+The author's requested prevention rule is merged in `AGENTS.md:13`: keep the approved homepage layout during unrelated feature, quality and performance changes; redesign requires explicit author approval; tests protect the approved arrangement rather than changing assertions to conceal a regression. The final delivery-record commit changes documentation only and retains the verified publication input digest above.
+
+
+A final instrumented native production Space probe on the actual merged deployment loaded the real cat model, activated the real speaker with native Enter, downloaded both original audio bodies completely and observed both music and ambient states `playing`, with no page runtime errors. Music transferred in approximately 6.91s and rain in 25.81s; the real decoders and native sources completed. This desktop observation confirms playback on this run, while earlier access-path failures and download variability remain recorded above. It does not establish every client/network path or replace the required interaction suite. Probe evidence: `space-production-audio-probe.json` in the retained task visualization directory.
