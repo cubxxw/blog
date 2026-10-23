@@ -168,7 +168,7 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
     grounder?.apply(groundDt,(model?.position.y||0)-modelBaseY,nap>.1);
   }
   function resetExpression(){sleepPose?.reset();for(const {bone,base} of expressionBones)bone.quaternion.copy(base);}
-  function update(seconds,{active=false,interactive=false,ambient=false}={}) {
+  function update(seconds,{active=false,interactive=false,ambient=false,interactionSeconds=seconds}={}) {
     if(disposed||!loaded){clock.reset();return;}
     if((active||interactive||ambient)&&Number.isFinite(seconds))breathTime+=Math.min(.12,Math.max(0,seconds));
     grounder?.reset();
@@ -178,7 +178,13 @@ export function createCafeResident({scene,asset='/models/space/cat.glb',wake=()=
       resetExpression();expression();
       wasActive=false;return;
     }
-    wasActive=true;const dt=clock.advance(seconds,true,step=>{
+    // A deliberate call must keep its visible pace on a slow renderer. The
+    // room's .12s visual-delta cap should not stretch a 2.6s wake into minutes.
+    // The resident clock still bounds catch-up to 2s in <=40ms safe steps;
+    // ordinary routines and ambient breathing retain their original clock.
+    const interacting=state.interaction&&!state.interaction.instant;
+    const elapsed=interacting&&Number.isFinite(interactionSeconds)?Math.max(seconds,interactionSeconds):seconds;
+    wasActive=true;const dt=clock.advance(elapsed,true,step=>{
       const before=state.interaction?.stage;state=adapter.step(state,step);
       if(before==='approach'&&state.interaction?.stage==='near')onChange('arrived');
       if(before==='respond'&&!state.interaction)onChange('petted');

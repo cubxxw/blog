@@ -140,7 +140,7 @@ test('a restored passage draft cannot inherit current reader B; explicit selecti
   }
 });
 
-test('photo detail fits the actual window, releases the old observer and leaves short windows scrollable', () => {
+test('photo detail keeps a 180px reading floor, fits larger windows and releases its old observer', () => {
   const f = fixture(); let observers = [];
   const previous = Object.getOwnPropertyDescriptor(globalThis, 'ResizeObserver');
   class Observer {
@@ -156,7 +156,7 @@ test('photo detail fits the actual window, releases the old observer and leaves 
     const detail = f.host.querySelector('.sp-photo-detail');
     const reserved = [[f.host.querySelector('.sp-media-header'), 80], [detail.querySelector('nav'), 60], [detail.querySelector('figcaption'), 80], [detail.querySelector('.sp-media-hint'), 24], [detail.querySelector('[data-image-recovery]'), 60]];
     for (const [node, value] of reserved) Object.defineProperty(node, 'offsetHeight', { configurable: true, value });
-    observers[0].callback(); assert.equal(detail.style.getPropertyValue('--photo-image-height'), '128px');
+    observers[0].callback(); assert.equal(detail.style.getPropertyValue('--photo-image-height'), '180px','short windows scroll the caption instead of shrinking the photograph below its reading floor');
     Object.defineProperty(f.host, 'clientHeight', { configurable: true, value: 700 });
     observers[0].callback(); assert.equal(detail.style.getPropertyValue('--photo-image-height'), '388px');
     const header=f.host.querySelector('.sp-media-header');

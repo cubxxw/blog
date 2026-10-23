@@ -175,7 +175,7 @@
 .space-cafe-door-water::after { content:""; position:absolute; inset:0; opacity:.5; background:radial-gradient(ellipse at 13% 68%,#d1e8e04d 0 1px,transparent 3px),radial-gradient(ellipse at 81% 38%,#d1e8e040 0 2px,transparent 4px),radial-gradient(ellipse at 73% 81%,#d1e8e03d 0 1px,transparent 3px); }
 .space[data-room-door-state="submerged"] .space-cafe-door-water { opacity:1; }
 .space[data-world-mode="excursion"] :is(.space-cafe__welcome,.space-cafe__footer,.space-cafe-inspect) { visibility:hidden; }
-.space-cafe-door-exit { display:none; position:absolute; z-index:106; top:98px; left:4vw; min-height:44px; padding:8px 12px; border:1px solid #eee8d547; border-radius:3px; background:#182b23d9; color:#fff8e8; font:14px var(--font-sans,system-ui,sans-serif); cursor:pointer; }
+.space .space-cafe-door-exit { display:none; position:absolute; z-index:106; top:98px; left:4vw; min-height:44px; padding:8px 12px; border:1px solid #eee8d547; border-radius:3px; background:#182b23d9; color:#fff8e8; font:14px var(--font-sans,system-ui,sans-serif); cursor:pointer; }
 .space[data-world-mode="excursion"] .space-cafe-door-exit { display:block; }
 .space-cafe-door-exit:focus-visible { outline:2px solid #fff4ce; outline-offset:4px; }
 .space[data-room-door-state="returning"] .space-cafe-door-exit { visibility:hidden; }

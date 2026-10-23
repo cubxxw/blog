@@ -34,3 +34,49 @@ test('a late daytime texture releases after disposal without reviving the room',
  const b=make(null,undefined,false,'/day.webp');b.dispose();const wakes=b.wakes;b.extra.load(b.extra.texture);
  assert.equal(b.wakes,wakes);assert.equal(b.extra.releases,1);assert.equal(b.material.uniforms.dayReady.value,0);
 });
+
+test('the actual dome shader preserves every original front-window projection exactly',()=>{
+ const b=make(null);try{
+  const body=b.material.fragmentShader.match(/float jiangnanPhotographicU\(vec3 d\)\{([^}]+)\}/)?.[1];
+  assert.ok(body,'the photographic shader owns the projection branch');
+  const project=new Function('d','vec3','atan',body),vec3=(x,y,z)=>({x,y,z});
+  for(let i=-150;i<=150;i++)for(const y of [-.6,0,.6]){
+   const angle=i/100,d={x:Math.sin(angle),y,z:-Math.cos(angle)};
+   assert.equal(project(d,vec3,Math.atan2),.5+(Math.atan2(d.x,-d.z)-.03)/1.95,'front-window registration must not move');
+  }
+  assert.match(b.material.fragmentShader,/float u=jiangnanPhotographicU\(d\)/,'the tested function feeds the texture lookup');
+ }finally{b.dispose();}
+});
+
+test('rear-door sky rays use a continuous interior part of the same texture without added ownership',()=>{
+ for(const software of [false,true]){
+  const b=make(null,undefined,software);try{
+   const body=b.material.fragmentShader.match(/float jiangnanPhotographicU\(vec3 d\)\{([^}]+)\}/)?.[1];
+   const project=new Function('d','vec3','atan',body),vec3=(x,y,z)=>({x,y,z}),samples=[];
+   for(let i=-65;i<=65;i++){
+    const angle=i/100,d={x:Math.sin(angle),y:.2,z:Math.cos(angle)},u=project(d,vec3,Math.atan2);
+    assert.ok(u>.1&&u<.9,'the visible rear cone must not clamp into an image-edge stripe');
+    assert.equal(u,.5+(Math.atan2(-d.x,d.z)-.03)/1.95);samples.push(u);
+   }
+   for(let i=1;i<samples.length;i++)assert.ok(samples[i]<samples[i-1],'rear UVs vary continuously instead of repeating the edge pixel');
+   assert.equal(b.requests.length,1,'reusing the plate adds no texture request');
+   b.photo.load(b.photo.texture);assert.equal(b.resources.size,primaryOwnership.resources);assert.equal(b.textures.size,primaryOwnership.textures);
+  }finally{b.dispose();}
+ }
+});
+
+
+test('views beyond the photographic plate dissolve before its repeated edge reaches the dome pole',()=>{
+ const b=make(null);try{
+  const smoothstep=(a,c,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(c-a)));return t*t*(3-2*t);};
+  const skyBody=b.material.fragmentShader.match(/float jiangnanPlateSkyFade\(float v\)\{([^}]+)\}/)?.[1];
+  const sideBody=b.material.fragmentShader.match(/float jiangnanPlateEdgeFade\(float u\)\{([^}]+)\}/)?.[1];
+  assert.ok(skyBody&&sideBody);
+  const sky=new Function('v','smoothstep',skyBody),side=new Function('u','smoothstep','abs',sideBody);
+  for(const v of [0,.38,.75,.99])assert.equal(sky(v,smoothstep),0,'in-plate image remains unchanged');
+  for(const v of [1.12,1.5,2.3])assert.equal(sky(v,smoothstep),1,'high-angle rays have no repeated photographic row');
+  for(const u of [.01,.2,.5,.8,.99])assert.equal(side(u,smoothstep,Math.abs),0);
+  for(const u of [-.06,1.06])assert.equal(side(u,smoothstep,Math.abs),1);
+  assert.match(b.material.fragmentShader,/max\(jiangnanPlateSkyFade\(v\),jiangnanPlateEdgeFade\(u\)\)/,'both edge guards feed the final sky blend');
+ }finally{b.dispose();}
+});

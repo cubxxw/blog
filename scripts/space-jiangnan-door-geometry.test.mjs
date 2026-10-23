@@ -194,3 +194,57 @@ test('every C geometry and material belongs to the world disposal set exactly on
   const after=new THREE.Box3().setFromObject(art);f.door.update(100);
   assert.ok(new THREE.Box3().setFromObject(art).equals(after),'disposed updates cannot move the artwork');
 });
+
+test('the threshold view includes both door jambs and keeps the small paper fish below the top edge',()=>{
+ const f=doorFixture();try{
+  f.setStill(true);f.door.open();f.group.updateMatrixWorld(true);
+  const paper=f.group.getObjectByName('rear-door-folded-paper'),positions=paper.geometry.attributes.position;
+  for(const aspect of [1440/900,390/844,320/568]){
+   const p=jiangnanDoorPoses(aspect).threshold,camera=new THREE.PerspectiveCamera(p.fov,aspect,.04,160);
+   camera.position.set(p.x,p.y,p.z);camera.rotation.order='YXZ';camera.rotation.set(p.pitch,p.yaw,0);camera.updateMatrixWorld(true);
+   const points=[];
+   for(let i=0;i<positions.count;i++)points.push(new THREE.Vector3().fromBufferAttribute(positions,i).applyMatrix4(paper.matrixWorld).project(camera));
+   const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
+   assert.ok(Math.max(...xs)-Math.min(...xs)<.70,'the fish occupies less than 35 percent of the frame width');
+   assert.ok(Math.max(...ys)<.75&&Math.min(...ys)>-.75,'all paper folds have space above and below');
+   for(const x of [JIANGNAN_DOOR.opening.minX,JIANGNAN_DOOR.opening.maxX]){
+    const projected=new THREE.Vector3(x,1.3,JIANGNAN_DOOR.wall.z-.09).project(camera);
+    assert.ok(Math.abs(projected.x)<.98,`both jambs remain in frame at ${aspect}`);
+   }
+  }
+ }finally{f.dispose();}
+});
+
+test('rear water dissolves into the photographic river before its finite far edge',()=>{
+ const f=doorFixture();try{
+  const water=f.group.getObjectByName('quiet-blue-water'),positions=water.geometry.attributes.position,colors=water.geometry.attributes.color,rows=new Map();
+  assert.equal(colors.itemSize,4);assert.equal(colors.count,positions.count);assert.ok(positions.count<=64,'the haze is a small subdivided version of the original plane');
+  assert.equal(water.material.vertexColors,true);assert.equal(water.material.transparent,true);assert.equal(water.material.depthWrite,false);
+  assert.match(THREE.ShaderChunk.color_fragment,/USE_COLOR_ALPHA/,'the vendored renderer supports RGBA vertex alpha');
+  for(let i=0;i<positions.count;i++){
+   const z=water.position.z-positions.getY(i),alpha=colors.getW(i);rows.set(z,alpha);
+   assert.ok(Number.isFinite(alpha)&&alpha>=0&&alpha<=1);
+   if(z<5.8)assert.equal(alpha,1,'the landing and near water remain solid');
+   if(z>15.6)assert.equal(alpha,0,'the far boundary cannot cut an opaque horizontal line');
+  }
+  const ordered=[...rows].sort((a,b)=>a[0]-b[0]);let fades=0;
+  for(let i=1;i<ordered.length;i++){
+   const difference=ordered[i-1][1]-ordered[i][1];assert.ok(difference>=0&&difference<=.10,'the haze converges gradually with no alpha step');
+   if(ordered[i][1]>0&&ordered[i][1]<1)fades++;
+  }
+  assert.ok(fades>=12,'the photographic hand-off spans many shallow-perspective rows');
+ }finally{f.dispose();}
+});
+
+test('the moon keeps a softly transparent limb and restrained fixed surface tones',()=>{
+ const f=doorFixture();try{
+  const moon=f.group.getObjectByName('rear-door-distant-moon'),colors=moon.geometry.attributes.color;
+  assert.equal(colors.itemSize,4);assert.equal(moon.material.vertexColors,true);assert.equal(moon.material.transparent,true);
+  assert.equal(moon.material.depthWrite,false);assert.equal(moon.material.side,THREE.FrontSide);assert.ok(moon.material.opacity<.9);
+  const alphas=[],tones=[];
+  for(let i=0;i<colors.count;i++){alphas.push(colors.getW(i));tones.push(colors.getX(i));}
+  assert.ok(alphas.some(a=>a===0)&&alphas.some(a=>a>0&&a<1)&&alphas.some(a=>a===1),'the curved limb softens into the background');
+  assert.ok(Math.max(...tones)<.95&&Math.max(...tones)-Math.min(...tones)>.10,'the small moon has quiet shading rather than a solid white disk');
+  assert.equal(moon.material.map,null,'the mist and tonal grain need no new texture');
+ }finally{f.dispose();}
+});

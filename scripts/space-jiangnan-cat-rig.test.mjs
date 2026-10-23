@@ -15,6 +15,24 @@ test('the actual resident loads its rig into the small room, owns its clock, and
   globalThis.document={createElement(){return {width:0,height:0,getContext(){return {createRadialGradient(){return {addColorStop(){}};},fillRect(){},createImageData(w,h){return {data:new Uint8ClampedArray(w*h*4)};},putImageData(){}};}};}};
   const bytes=fs.readFileSync(path.join(cwd,'static/models/space/cat.glb')),asset='data:model/gltf-binary;base64,'+bytes.toString('base64'),scene=new THREE.Scene(),events=[],resident=createJiangnanResident({scene,asset,onChange:code=>events.push(code)});t.after(()=>resident.dispose());
   assert.equal(await resident.ready,true);assert.equal(resident.loaded,true);assert.ok(jiangnanCatPositionClear(resident.snapshot().x,resident.snapshot().z));
+  await t.test('a deliberate call keeps its visible pace when room paints are one second apart',async()=>{
+    const events=[],own=createJiangnanResident({scene:new THREE.Scene(),asset,onChange:code=>events.push(code)});assert.equal(await own.ready,true);
+    try{
+      const home=own.snapshot(),visitor={x:2.25,z:1.25,yaw:.61534};
+      assert.equal(own.interact('call',visitor,{now:100}),'waking');own.update(0,{active:true});
+      const sleeping=own.snapshot();own.update(.12,{active:false,ambient:true,interactionSeconds:60});assert.deepEqual(own.snapshot(),sleeping,'an inactive room never banks an old interaction interval');
+      own.update(0,{active:true});
+      let paints=0;
+      for(;paints<45&&!events.includes('arrived');paints++){
+        const before=own.snapshot();own.update(.12,{active:true,interactionSeconds:1});
+        const after=own.snapshot();assert.ok(jiangnanCatPositionClear(after.x,after.z));
+        assert.ok(after.elapsed-before.elapsed<=1.000001,'safe substeps consume only the visible interval');
+      }
+      assert.ok(events.includes('arrived'),'the existing call arrives within 45 visible seconds on a slow renderer');
+      assert.ok(Math.hypot(own.snapshot().x-home.x,own.snapshot().z-home.z)>.3);
+      const before=own.snapshot();own.update(.12,{active:true,interactionSeconds:3600});assert.ok(own.snapshot().elapsed-before.elapsed<=2.000001,'even an interactive stall retains the two-second catch-up bound');
+    }finally{own.dispose();}
+  });
   await t.test('sleeping breath moves the real chest while an inspected animal stays in its bed',()=>{
     const before=resident.snapshot(),chest=scene.getObjectByName('chest'),belly=scene.getObjectByName('belly'),samples=[];
     for(let i=0;i<125;i++){resident.update(.04,{ambient:true});samples.push([chest.scale.z,belly.scale.z]);}

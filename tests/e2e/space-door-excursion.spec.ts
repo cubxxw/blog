@@ -63,6 +63,8 @@ async function threshold(page:Page) {
   await expect(stepButton(page)).toBeVisible();
   for(const selector of ['.space-cafe__header','.space-world-hud__roam','.space-world-hud__workspace'])await expect(root(page).locator(selector)).toBeHidden();
   await expect(safeExit(page)).toBeVisible();
+  await expect(safeExit(page)).toHaveCSS('color','rgb(255, 248, 232)');
+  await expect(safeExit(page)).toHaveCSS('background-color','rgba(24, 43, 35, 0.85)');
 }
 
 async function returned(page:Page,before:Record<string,number>) {
@@ -99,6 +101,14 @@ for(const width of [1440,390]) for(const motion of ['no-preference','reduce'] as
       await threshold(page);
       await expect(panel(page,'submerged')).toHaveCount(0);
       await savedScreenshot(page,'threshold');
+      if(width===1440&&motion==='reduce') {
+        const widePose=await pose(page);
+        await page.setViewportSize({width:390,height:844});
+        await expect.poll(async()=>(await pose(page)).z).toBeLessThan(widePose.z-.3);
+        await isReachable(safeExit(page));
+        await page.setViewportSize({width,height:900});
+        await expect.poll(()=>pose(page)).toEqual(widePose);
+      }
       if(touch) {
         for(const button of await panel(page,'threshold').getByRole('button').all())await isReachable(button);
         await isReachable(safeExit(page));

@@ -34,7 +34,7 @@ function mountDesktop(root) {
   try { saved = localStorage.getItem(storageKey); } catch { saveFailure = true; }
   let state = createWorkspace(saved,stateViewport());
   const nodes = new Map();
-  let onboarding = false, cafe, readingFocus = false;
+  let onboarding = false, cafe, readingFocus = false, readingFocusReturn = null;
   let companionFocus = null;
   const entryURL = new URL(location.href);
   let localeResume = entryURL.searchParams.get('space-resume') === catalog.language;
@@ -110,7 +110,8 @@ function mountDesktop(root) {
     root.dataset.theme = state.theme; root.dataset.wallpaper = state.wallpaper;
     root.dataset.workspaceLayout = usesSingleWindow(root.clientWidth) ? 'single' : 'windows';
     const focusedReader = state.windows.find(win => win.app === 'reader' && readingURLs.has(win.payload) && !win.minimized);
-    if (!focusedReader) readingFocus = false;
+    if (!focusedReader) { readingFocus = false; readingFocusReturn = null; }
+    if (readingFocusReturn && readingFocusReturn.payload !== focusedReader?.payload) readingFocusReturn = null;
     root.dataset.readingFocus = String(readingFocus && state.active === focusedReader?.id);
     for (const [id,entry] of nodes) {
       if (!state.windows.some(w => w.id === id)) { apps.dispose(id); entry.el.remove(); nodes.delete(id); }
@@ -157,14 +158,27 @@ function mountDesktop(root) {
     });
   }
   function setReadingFocus(value) {
+    value=Boolean(value);
+    if(value===readingFocus)return;
     const scroller=nodes.get('reader')?.el.querySelector('[data-window-body]');
     const articleBody=scroller?.querySelector('[data-reader-body]'),selected=window.getSelection();
+    const payload=state.windows.find(win=>win.app==='reader')?.payload;
     const endpoints=selected?.rangeCount&&!selected.isCollapsed&&articleBody?.contains(selected.anchorNode)&&articleBody.contains(selected.focusNode)?{anchor:selected.anchorNode,anchorOffset:selected.anchorOffset,focus:selected.focusNode,focusOffset:selected.focusOffset}:null;
-    const top=scroller?.getBoundingClientRect().top || 0;
-    const anchor=scroller && [...scroller.querySelectorAll('[data-reader-body] .post-content > *')].find(node=>node.getBoundingClientRect().bottom>top+64);
-    const offset=anchor?anchor.getBoundingClientRect().top-top:0;
+    const capture=()=>{
+      const top=scroller?.getBoundingClientRect().top||0;
+      const anchor=scroller&&[...scroller.querySelectorAll('[data-reader-body] .post-content > *')].find(node=>node.getBoundingClientRect().bottom>top+64);
+      return {anchor,offset:anchor?anchor.getBoundingClientRect().top-top:0};
+    };
+    const {anchor,offset}=capture(),back=readingFocusReturn;
+    const unchanged=!value&&back&&back.scroller===scroller&&back.articleBody===articleBody&&back.payload===payload&&Math.abs(scroller.scrollTop-back.focusedScrollTop)<.5&&anchor===back.focusedAnchor&&Math.abs(offset-back.focusedOffset)<.5;
+    if(value)readingFocusReturn={scroller,articleBody,payload,scrollTop:scroller?.scrollTop||0};
     readingFocus=value;render();
-    if(anchor?.isConnected&&scroller)scroller.scrollTop+=anchor.getBoundingClientRect().top-scroller.getBoundingClientRect().top-offset;
+    if(unchanged)scroller.scrollTop=back.scrollTop;
+    else if(anchor?.isConnected&&scroller)scroller.scrollTop+=anchor.getBoundingClientRect().top-scroller.getBoundingClientRect().top-offset;
+    if(value&&readingFocusReturn){
+      const focused=capture();
+      Object.assign(readingFocusReturn,{focusedScrollTop:scroller?.scrollTop||0,focusedAnchor:focused.anchor,focusedOffset:focused.offset});
+    }else readingFocusReturn=null;
     root.querySelector('[data-space-window="reader"] [data-reader-focus]')?.focus({preventScroll:true});
     if(endpoints&&articleBody?.contains(endpoints.anchor)&&articleBody.contains(endpoints.focus))selected.setBaseAndExtent(endpoints.anchor,endpoints.anchorOffset,endpoints.focus,endpoints.focusOffset);
   }
@@ -337,7 +351,7 @@ function mountDesktop(root) {
       const win=state.windows.find(w=>w.app===app);
       const status=win ? win.minimized?t('已最小化','Minimized'):t('打开中','Open') : t('打开应用','Open app');
       return `<button type="button" class="space-launchpad__app" data-launchpad-app="${app}"${win?' data-running':''}>${icon(app)}<strong>${escapeHTML(labels[app])}</strong><small>${status}</small></button>`;
-    }).join('') || `<div class="space-search-empty"><strong>${t('没有找到这个应用','No matching app')}</strong><p>${t('清空搜索，查看全部 11 个应用。','Clear the search to see all 11 applications.')}</p><button type="button" class="space-button" data-space-launchpad-reset>${t('查看所有应用','Show all apps')}</button></div>`;
+    }).join('') || `<div class="space-search-empty"><strong>${t('没有找到这个应用','No matching app')}</strong><p>${t(`清空搜索，查看全部 ${APPS.length} 个应用。`,`Clear the search to see all ${APPS.length} applications.`)}</p><button type="button" class="space-button" data-space-launchpad-reset>${t('查看所有应用','Show all apps')}</button></div>`;
     if(focusedApp)launchpad.querySelector(`[data-launchpad-app="${focusedApp}"]`)?.focus({preventScroll:true});
   }
   function showLaunchpad(query = '') {

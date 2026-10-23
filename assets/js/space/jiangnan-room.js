@@ -779,7 +779,9 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   // A serviceable walnut plinth, machined silver deck and isolated feet sit on
   // the counter. Only the platter rotates; the arm and controls stay fixed.
   const record = makeGroup('walnut-silver-record-player', -2.82, 1.015, -.50, cabinet, 'vinyl');
-  targets.vinyl = [-2.52, 1.10, -.50];
+  // Aim at the physical platter, not the air above its near edge. A shallow
+  // ray through that old point continued into a different record sleeve.
+  targets.vinyl = [-2.82, 1.086, -.45];
   box(0, 0, 0, .49, .078, .66, joineryTimber, record, .011);
   box(0, .043, 0, .475, .010, .643, aluminum, record, .005);
   const feet = [], isolationRings = [];

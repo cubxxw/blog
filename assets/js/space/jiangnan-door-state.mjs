@@ -27,13 +27,18 @@ export const JIANGNAN_DOOR_TRANSITIONS = Object.freeze({
 // the quiet surface so the warm doorway and the splash rings share the frame.
 const DOOR_POSE_ANCHORS = Object.freeze({
   rear: Object.freeze([[1.06, 1.42, .78], [1.8, 1.24, 2.09], 52]),
-  threshold: Object.freeze([[1.58, 1.34, 1.66], [1.82, 1.02, 3.4], 56]),
-  water: Object.freeze([[1.84, -.30, 2.92], [1.78, .98, 2.16], 60])
+  threshold: Object.freeze([[1.80, 1.34, 1.05], [1.80, 1.20, 3.4], 56]),
+  water: Object.freeze([[1.84, -.30, 3.60], [1.78, .25, 2.16], 60])
 });
 export function jiangnanDoorPoses(aspect = 1.6) {
   const safe = Number.isFinite(aspect) && aspect > 0 ? aspect : 1.6;
   const widen = fov => Math.min(74, +(fov + Math.max(0, 1.2 - Math.min(safe, 1.2)) * 22).toFixed(3));
-  return Object.fromEntries(Object.entries(DOOR_POSE_ANCHORS).map(([key, [position, target, fov]]) => [key, jiangnanLook(position, target, widen(fov))]));
+  return Object.fromEntries(Object.entries(DOOR_POSE_ANCHORS).map(([key, [position, target, fov]]) => {
+    // A portrait doorway needs a little more breathing room, rather than
+    // cutting off both jambs or enlarging the small hanging paper sculpture.
+    const framed = key === 'threshold' && safe < .75 ? [position[0], position[1], position[2] - Math.min(.55, (.75 - safe) * 1.6)] : position;
+    return [key, jiangnanLook(framed, target, widen(fov))];
+  }));
 }
 
 // The tokenized excursion controller. Every awaited step holds a run token and

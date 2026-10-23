@@ -35,7 +35,11 @@ async function hit(control:Locator,min=44,scroll=true){
   if(scroll)await control.scrollIntoViewIfNeeded();await expect(control).toBeVisible();const box=(await control.boundingBox())!;
   expect(box.width).toBeGreaterThanOrEqual(min);expect(box.height).toBeGreaterThanOrEqual(min);expect(await control.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);return box;
 }
-async function visibleText(control:Locator,min:number){expect(await projectedFontCSS(control)).toBeGreaterThanOrEqual(min);}
+async function visibleText(control:Locator,min:number){
+  // CSS3D can report 10.999993px for a declared 11px glyph after projection.
+  // Keep the readability threshold; allow only sub-hundredth-pixel rounding.
+  expect(await projectedFontCSS(control)).toBeGreaterThanOrEqual(min-.01);
+}
 const preview=(page:Page)=>win(page).locator('.sp-photo-detail__image');
 const retry=(page:Page)=>preview(page).locator('[data-image-retry]');
 const status=(page:Page)=>preview(page).locator('[data-image-feedback]');

@@ -304,10 +304,19 @@ gl_FragColor=vec4(col,max(mix(1.0,.22,imageBlend),min(.82,sparkle*.44)));
 ${waterExtension?JIANGNAN_VISTA_WATER_GLSL:''}
 ${SOLAR_GLSL}
 ${WATER_PHOTO_GLSL}
-void main(){vec3 d=normalize(vistaDirection);float u=.5+(atan(d.x,-d.z)-.03)/1.95;float v=.38+asin(clamp(d.y,-1.0,1.0))/.82;vec2 lakeUV=mcLakeUV(vec2(u,v));gl_FragColor=texture2D(vista,clamp(lakeUV,vec2(.001),vec2(.999)));${waterExtension?'if(continuationReady>.5){vec3 water=jiangnanVistaWaterContinuation(lakeUV);if(water.z>0.)gl_FragColor=mix(gl_FragColor,texture2D(continuation,water.xy),water.z);}':''}gl_FragColor.rgb*=.78;if(dayReady>.5){
+// The original plate composes the front window. Reuse its angular field
+// behind the rear door after a half-turn, instead of clamping the two image
+// edges into horizontal stripes. Every front-hemisphere ray stays unchanged.
+float jiangnanPhotographicU(vec3 d){if(d.z>0.)d=vec3(-d.x,d.y,-d.z);return .5+(atan(d.x,-d.z)-.03)/1.95;}
+float jiangnanPlateSkyFade(float v){return smoothstep(.995,1.12,v);}
+float jiangnanPlateEdgeFade(float u){return smoothstep(.985,1.10,abs(u-.5)*2.);}
+void main(){vec3 d=normalize(vistaDirection);float u=jiangnanPhotographicU(d);float v=.38+asin(clamp(d.y,-1.0,1.0))/.82;vec2 lakeUV=mcLakeUV(vec2(u,v));gl_FragColor=texture2D(vista,clamp(lakeUV,vec2(.001),vec2(.999)));${waterExtension?'if(continuationReady>.5){vec3 water=jiangnanVistaWaterContinuation(lakeUV);if(water.z>0.)gl_FragColor=mix(gl_FragColor,texture2D(continuation,water.xy),water.z);}':''}gl_FragColor.rgb*=.78;if(dayReady>.5){
  // Reflect the pure-water band across its matching edge. Compressing a tiny
  // bottom strip stretched every wave into vertical streaks when looking down.
  vec2 dayUV=clamp(vec2(lakeUV.x,abs(lakeUV.y)),vec2(.001),vec2(.999));vec3 base=texture2D(dayVista,dayUV).rgb;gl_FragColor.rgb=mcEnvironment(base*.90,gl_FragColor.rgb,d,vec2(u,v),daylight,mcSkyMask(base,vec2(u,v)));}gl_FragColor.rgb+=mcLakeGlint(vec2(u,v))*mix(vec3(.26,.38,.48),vec3(.48,.64,.65),daylight);
+// Looking back up from the water reaches beyond this photographic plate.
+// Dissolve its top edge into sky before the dome's pole repeats one row.
+gl_FragColor.rgb=mix(gl_FragColor.rgb,mix(vec3(.035,.055,.07),vec3(.55,.65,.67),daylight),max(jiangnanPlateSkyFade(v),jiangnanPlateEdgeFade(u)));
 #include <colorspace_fragment>
 }` }));
     const vista=mesh(geometry(new THREE.SphereGeometry(120,80,40)),vistaMaterial,0,1.3,0);vista.visible=false;vista.castShadow=vista.receiveShadow=false;vista.renderOrder=-10;vista.name='photographic environment study';

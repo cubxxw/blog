@@ -80,9 +80,22 @@ export function buildJiangnanDoor({ group, resources = new Set(), wake = () => {
   // Small outside landing, then quiet blue water beyond.
   box((landing.minX + landing.maxX) / 2, landing.topY - .033, landing.z + landing.depth / 2,
     landing.maxX - landing.minX, .066, landing.depth, stone, group, .008);
-  const waterMat = material('#2c4a63', .22, { metalness: .26, emissive: '#16324a', emissiveIntensity: .55 });
-  const water = mesh(geometry('rear-door-quiet-water', () => new THREE.PlaneGeometry(26, 15)), waterMat,
-    1.8, JIANGNAN_DOOR.waterY, landing.z + 7.4, group);
+  // The near water belongs to the room; the far water belongs to the photo.
+  // Vertex alpha dissolves their join over metres of shallow perspective,
+  // rather than leaving a finite opaque plane's straight edge in the view.
+  // Three's RGBA vertex colours supply the soft haze without another texture,
+  // shader clock, mesh or material pass.
+  const waterMat = material('#2c4a63', .22, { metalness: .26, emissive: '#16324a', emissiveIntensity: .55,
+    transparent: true, depthWrite: false, vertexColors: true });
+  const water = mesh(geometry('rear-door-quiet-water', () => {
+    const g = new THREE.PlaneGeometry(26, 15, 1, 24), positions = g.attributes.position, colors = [];
+    for (let i = 0; i < positions.count; i++) {
+      const worldZ = landing.z + 7.4 - positions.getY(i);
+      const p = THREE.MathUtils.clamp((worldZ - 5.8) / 9.8, 0, 1), haze = p * p * (3 - 2 * p);
+      colors.push(1 - haze * .14, 1 - haze * .08, 1 - haze * .03, 1 - haze);
+    }
+    g.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4)); return g;
+  }), waterMat, 1.8, JIANGNAN_DOOR.waterY, landing.z + 7.4, group);
   water.rotation.x = -Math.PI / 2; water.name = 'quiet-blue-water'; water.castShadow = water.receiveShadow = false;
 
 
@@ -143,8 +156,21 @@ export function buildJiangnanDoor({ group, resources = new Set(), wake = () => {
   const string = new THREE.Line(stringGeometry, keep(new THREE.LineBasicMaterial({ color: '#aea28b', transparent: true, opacity: .64 })));
   string.name = 'rear-door-fish-suspension'; art.add(string);
 
-  const moon = mesh(geometry('rear-door-distant-moon', () => new THREE.SphereGeometry(.24, 24, 16)),
-    basic('#c6d0cf'), 1.40, 3.46, 11.8, art);
+  const moon = mesh(geometry('rear-door-distant-moon', () => {
+    const g = new THREE.SphereGeometry(.24, 32, 20), normals = g.attributes.normal, colors = [];
+    const facing = new THREE.Vector3(.04, -.19, -.98).normalize(), normal = new THREE.Vector3();
+    for (let i = 0; i < normals.count; i++) {
+      normal.fromBufferAttribute(normals, i);
+      const edge = THREE.MathUtils.clamp(normal.dot(facing) / .38, 0, 1), alpha = edge * edge * (3 - 2 * edge);
+      // A very small fixed tonal variation and a shaded limb read as a distant
+      // moon through mist, instead of a white, flat interface marker.
+      const grain = Math.sin(normal.x * 19 + normal.y * 7) * Math.sin(normal.y * 23 - normal.z * 11) * .025;
+      const shade = .79 + normal.y * .07 - normal.x * .04 + grain;
+      colors.push(shade, shade, shade, alpha);
+    }
+    g.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4)); return g;
+  }), basic('#abbac5', { vertexColors: true, transparent: true, opacity: .82, depthWrite: false }),
+    1.40, 3.46, 11.8, art);
   moon.name = 'rear-door-distant-moon'; moon.castShadow = moon.receiveShadow = false;
   // One broad, shadow-free light only reaches the outer water. The warm room
   // keeps its existing practical-light hierarchy even when the leaf is shut.
