@@ -84,6 +84,7 @@ test('resizing during a window or computer approach retargets the live camera wi
  for(const kind of ['window','computer']){
   await object(page,kind);await expect(root(page)).toHaveAttribute('data-world-travel','true');await advanceFrames(page,170);await page.setViewportSize(kind==='window'?other:original);
   await expect(root(page)).toHaveAttribute('data-world-travel','true');await beginSamples();await advanceFrames(page,2000);
+  await expect(root(page)).toHaveAttribute('data-world-travel','false');
   const samples=await page.evaluate(()=>(window as any).__resizeMotionSamples as {fov:number;at:number;frame:string|undefined}[]);expect(samples.length).toBeGreaterThan(1);
   await writeFile(info.outputPath(kind+'-resize-frames.json'),JSON.stringify(samples,null,2));
   const end=samples[samples.length-1],previous=samples[samples.length-2];
