@@ -1,5 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
@@ -24,6 +24,7 @@ const fitsHorizontally=(node:Locator)=>node.evaluate(el=>el.scrollWidth<=el.clie
 
 for(const size of [{width:320,height:568},{width:320,height:844},{width:390,height:844},{width:568,height:320},{width:768,height:1024},{width:1440,height:900}]) {
   test(`Space reading, controls and private input remain usable at ${size.width}×${size.height}`,async({page})=>{
+    await reserveWorldJourney(page);
     await page.setViewportSize(size);await page.goto('/zh/projects/');await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true');
     const notes=await openApp(page,'notes'),editor=notes.locator('[data-note-editor]');

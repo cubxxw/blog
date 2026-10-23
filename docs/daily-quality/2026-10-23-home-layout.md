@@ -34,6 +34,27 @@ The homepage template before the book section matches the previous layout; after
 - Cloud branch-preview acceptance passed at EN 1710px, ZH 1440px and ZH dark 375px, including chat open/close, focus and channel changes. Production acceptance is still pending.
 - `git diff --check` passed. Screenshots and transient logs are outside the repository under `/tmp/blog-home-debug/`.
 
+## Release blockers included with author approval
+
+The author explicitly extended this task to repair release blockers and finish production delivery. The branch incorporates main's article pagination retry fix (`d3acf2c`) without reverting it.
+
+Evidence from the two interrupted full-site runs showed that the 120-minute verification job did not complete. The original authority artifact was recovered and its SHA256 matched the recorded digest. Its log shows the clock-interruption desktop case passed (36.6 seconds) and all 12 article-reading desktop/mobile cases passed (36.5–59.9 seconds); missing traces do not establish failures in those cases.
+
+Confirmed fixes:
+
+- Ten generic workspace test files installed their existing legacy-room fixture after their first navigation, so the newly default Jiangnan room was already persisted. Install the same fixture before navigation at 19 entry points. The dedicated default-Jiangnan and room behavior suites retain their actual scene. Assertions and timeouts are unchanged.
+- The Jiangnan render loop clipped elapsed time to 120ms before passing it to the resident's already bounded clock. At one rendered frame per second, 45 seconds advanced the cat only 5.4 seconds. Pass visible elapsed time to the resident clock and analytical scenery; retain the visitor's collision steps and the resident clock's own substeps. A regression executing the real render-loop body failed before correction and passes at 60, 1 and 0.7 frames per second, checking arrival within 20 visible seconds and bounded collision steps.
+- The published vinyl hit target intersected a neighboring record from the software-rendering camera position. Correct the public target and test it from all three camera positions. The audio contract now checks track/source identity immediately after clicking the turntable, before adjusting volume.
+- Camera tests observed a short flight only after an expensive input/resize command returned, which can miss the entire flight on software rendering. Arm observation before input and control the browser clock while checking actual intermediate movement, reversal, dragging, resize continuity, render frames and the unchanged terminal lens velocity threshold. Sleeping breath still uses the real clock.
+
+Local release-blocker validation: 447 BEAR/Space Node tests passed; 46 actual desktop/mobile living-motion, object-living and speaker-volume browser tests passed in 9.9 minutes; TypeScript checks passed. Independent read-only review found no new blocker, with the stated limitation that controlled camera timing does not measure real-device frame rate. Generic workspace regression and final remote results are still pending; no interrupted run counts as passing.
+
+## Verification pipeline timeout repair
+
+The previous job executed quality, 1,058 legacy cases and three interactive browser engines sequentially within one 120-minute limit. Retain that coverage and one worker per runner, while preparing the production bundle once and distributing browser verification across quality, four legacy partitions and Chromium/Firefox/WebKit interactive partitions. The final `Required blog quality` job checks all required jobs succeeded, rejects missing/duplicate/unknown/failed partition evidence, verifies every report is bound to the same source, plan, build clock and deployment bytes, then creates the verified manifest. Source/workflow/function/SEO checks and author-audio/BEAR/public-interaction checks remain required; release mode and main-only publication gating remain unchanged.
+
+CI partition and workflow validation: 109 tests executed, 108 passed, one existing skip, zero failed. This includes real final aggregation/packaging and rejection of missing evidence. Pinned actionlint 1.7.12 and diff-format checks passed. This restructuring is a timeout repair, not evidence that uncompleted browser suites passed. Final remote results are pending below.
+
 ## Delivery
 
-Pending remote checks, merge, deployment version verification and production read-back. Do not treat the local checks as production acceptance.
+Pending final remote checks, merge, deployment version verification and production read-back. Do not treat the local checks as production acceptance.

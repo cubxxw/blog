@@ -1,5 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {writeFile} from 'node:fs/promises';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
@@ -14,6 +14,7 @@ async function openApp(page:Page,app:string){
   const win=page.locator(`[data-space-window="${app}"]`);await expect(win).toBeVisible();return win;
 }
 async function setup(page:Page,locale='zh',theme='light'){
+  await reserveWorldJourney(page);
   await page.goto(locale==='zh'?'/zh/projects/':'/projects/');await enterWorkspace(page);await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true');
   await page.evaluate(theme=>(window as any).BearSpace.execute('theme',{value:theme}),theme);
 }

@@ -17,22 +17,24 @@ permissions:
 env:
   BLOG_RELEASE_MODE: ${{ vars.BLOG_RELEASE_MODE || 'shadow' }}
 
+# A PR update cancels its complete old verification graph. Main runs retain
+# their own run-id queue, including bookkeeping and failed-job-only reruns.
+concurrency:
+  group: blog-pipeline-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  verify:
-    name: Required blog quality
-    # Keep the supported browser host stable as ubuntu-latest migrates to 26.04.
+  prepare:
+    name: Freeze production bytes and verify offline contracts
+    # Keep the build and browser host stable while ubuntu-latest migrates.
     runs-on: ubuntu-24.04
-    # The complete serial desktop/mobile matrix includes software-rendered 3D journeys.
-    # Keep every suite required and allow the measured run to finish.
-    timeout-minutes: 240
-    concurrency:
-      group: blog-verify-${{ github.event.pull_request.number || github.run_id }}
-      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    timeout-minutes: 120
     outputs:
       publish: ${{ steps.plan.outputs.publish }}
+      run_site: ${{ steps.plan.outputs.run_site }}
       source_sha: ${{ steps.plan.outputs.source_sha }}
-      artifact_id: ${{ steps.artifact.outputs.artifact-id }}
-      manifest_digest: ${{ steps.verify.outputs.manifest_digest }}
+      browser_matrix: ${{ steps.plan.outputs.browser_matrix }}
+      artifact_id: ${{ steps.frozen.outputs.artifact-id }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -48,18 +50,125 @@ jobs:
       - uses: ./.github/actions/setup-blog
         with:
           browsers: ${{ steps.plan.outputs.browser_engines }}
-      - name: Enforce checks and verify one production artifact
-        id: verify
-        run: node scripts/ci-run.mjs verify
+      - name: Enforce offline checks and build one frozen production bundle
+        run: node scripts/ci-run.mjs prepare
       - name: Verify reusable author audio
         run: npm run voice:test
       - name: Verify BEAR OS tool and media boundaries
         run: npm run bear:test
       - name: Verify public interaction and AI rendering contracts
         run: npm run ux:test
+      - name: Upload frozen verification input (not a releasable artifact)
+        id: frozen
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-frozen-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tests/.artifacts/ci/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve offline failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-prepare-failure-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tests/.artifacts/ci/
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+
+  browser:
+    name: Browser ${{ matrix.id }}
+    needs: [prepare]
+    if: needs.prepare.outputs.run_site == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.browser_matrix) }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: ${{ matrix.project || 'chromium' }}
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
+          path: tests/.artifacts/ci
+          merge-multiple: true
+      - name: Verify one partition on the exact frozen bytes
+        env:
+          BLOG_SHARD_ID: ${{ matrix.id }}
+        run: node scripts/ci-run.mjs browser-shard --shard-id "$BLOG_SHARD_ID"
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          # Bind all attempts to the exact producer artifact, not a consumer's
+          # run_attempt. The aggregator selects the latest result per shard.
+          name: blog-browser-${{ github.run_id }}-${{ needs.prepare.outputs.artifact_id }}-${{ matrix.id }}-${{ github.run_attempt }}
+          path: |
+            tests/.artifacts/ci/shard/
+            playwright-report/interactive/
+            test-results/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+
+  verify:
+    name: Required blog quality
+    needs: [prepare, browser]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    concurrency:
+      group: blog-verify-${{ github.event.pull_request.number || github.run_id }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    outputs:
+      publish: ${{ needs.prepare.outputs.publish }}
+      source_sha: ${{ needs.prepare.outputs.source_sha }}
+      artifact_id: ${{ steps.artifact.outputs.artifact-id }}
+      manifest_digest: ${{ steps.verify.outputs.manifest_digest }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.23.1'
+          cache: npm
+      - name: Reject incomplete or unsuccessful required jobs
+        env:
+          BLOG_PREPARE_RESULT: ${{ needs.prepare.result }}
+          BLOG_BROWSER_RESULT: ${{ needs.browser.result }}
+          BLOG_RUN_SITE: ${{ needs.prepare.outputs.run_site }}
+        run: >-
+          node --input-type=module -e 'import {assertVerificationJobs} from "./scripts/ci-shards.mjs";
+          assertVerificationJobs({prepare:process.env.BLOG_PREPARE_RESULT,browser:process.env.BLOG_BROWSER_RESULT,runSite:process.env.BLOG_RUN_SITE==="true"});'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
+          path: tests/.artifacts/ci
+          merge-multiple: true
+      - uses: actions/download-artifact@v8
+        if: needs.prepare.outputs.run_site == 'true'
+        with:
+          pattern: blog-browser-${{ github.run_id }}-${{ needs.prepare.outputs.artifact_id }}-*
+          path: tests/.artifacts/ci/shard-downloads
+          merge-multiple: false
+      - name: Aggregate every required partition and verify frozen identity
+        id: verify
+        run: node scripts/ci-run.mjs finalize
       - name: Upload the verified deployment bundle
         id: artifact
-        if: steps.plan.outputs.run_site == 'true'
+        if: needs.prepare.outputs.run_site == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: blog-site-${{ github.sha }}-${{ github.run_attempt }}
@@ -67,19 +176,17 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
-      - name: Preserve verification evidence
+      - name: Preserve final verification evidence
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: blog-quality-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             tests/.artifacts/ci/*-report.json
-            tests/.artifacts/ci/site/output-report.json
+            tests/.artifacts/ci/site/*-report.json
             tests/.artifacts/ci/changes.json
             tests/.artifacts/ci/plan.json
-            tests/.artifacts/ci/browser/
-            playwright-report/interactive/
-            test-results/
+            tests/.artifacts/ci/frozen.json
           if-no-files-found: warn
           retention-days: 30
 

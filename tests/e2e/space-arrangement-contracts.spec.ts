@@ -1,5 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
@@ -21,6 +21,7 @@ async function hit(control:Locator,minimum=44) {
   return box;
 }
 async function setup(page:Page,count:number,locale='zh') {
+  await reserveWorldJourney(page);
   await page.goto(locale==='zh'?'/zh/projects/':'/projects/');await enterWorkspace(page);
   await expect(page.locator('[data-space-window="welcome"]')).toHaveCount(1);
   const notes=await openApp(page,'notes'),editor=notes.locator('[data-note-editor]');await editor.fill('这份笔记和窗口一起保留。');

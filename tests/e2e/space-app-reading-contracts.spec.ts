@@ -1,5 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
-import {enterWorkspace} from '../helpers/space-entry';
+import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {readFileSync} from 'node:fs';
 import {parse} from 'yaml';
 
@@ -50,6 +50,7 @@ const cases=[
 for(const view of cases)test.describe(`${view.width}×${view.height} ${view.locale} ${view.theme} products and books`,()=>{
   test.use({viewport:{width:view.width,height:view.height},hasTouch:view.coarse,isMobile:view.coarse});
   test('real choices retain focus, readable content and distinct reachable reading links',async({page})=>{
+    await reserveWorldJourney(page);
     await page.goto(view.locale==='zh'?'/zh/projects/':'/projects/');await enterWorkspace(page);
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true');
     expect(await page.evaluate(()=>matchMedia('(pointer:coarse)').matches)).toBe(view.coarse);

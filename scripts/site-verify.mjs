@@ -141,8 +141,15 @@ export async function verifySite({
   pageMapPath,
   changeSetPath,
   reportDir,
+  suite: selectedSuite,
+  shard,
   exec = execute,
 }) {
+  if(selectedSuite!==undefined&&!['quality','legacy'].includes(selectedSuite))throw new Error('Unknown browser suite selector');
+  if(shard!==undefined) {
+    const match=/^([1-9]\d*)\/([1-9]\d*)$/.exec(shard);
+    if(selectedSuite!=='legacy'||!match||Number(match[1])>Number(match[2]))throw new Error('Invalid legacy shard selector');
+  }
   publicDir = path.resolve(publicDir);
   reportDir = path.resolve(
     reportDir || "tests/.artifacts/browser-verification",
@@ -173,8 +180,10 @@ export async function verifySite({
       projects: ["desktop", "mobile"],
       args: ["--grep-invert", "Visual Regression"],
     });
+  if(selectedSuite&&!suites.some(s=>s.name===selectedSuite))throw new Error('Selected browser suite is not required');
+  const selectedSuites=selectedSuite?suites.filter(s=>s.name===selectedSuite):suites;
   const results = [];
-  for (const suite of suites) {
+  for (const suite of selectedSuites) {
     if (results.some((result) => result.status !== "success")) {
       results.push({
         name: suite.name,
@@ -193,6 +202,8 @@ export async function verifySite({
         "test",
         `--config=${suite.config}`,
         ...suite.args,
+        ...(selectedSuite?['--workers=1']:[]),
+        ...(shard?[`--shard=${shard}`]:[]),
       ],
       cwd: process.cwd(),
       env: {
@@ -223,7 +234,7 @@ export async function verifySite({
   }
   const reportPath = path.join(reportDir, "browser-report.json");
   const ok =
-    results.length === suites.length &&
+    results.length === selectedSuites.length &&
     results.every((result) => result.status === "success");
   fs.writeFileSync(
     reportPath,

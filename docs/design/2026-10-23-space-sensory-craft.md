@@ -74,9 +74,9 @@ main 的实际浏览器读回（本地最终源码，非生产验收）：
 - 后门/摄影生命周期最后定向组：45/45 通过。艺术、媒体、阅读与 lock 独立 review 未发现尚未关闭的已确认 P0/P1/P2。
 - quality:test 首跑因 Hugo 未在 PATH，12 项失败；voice:test 同一原因 1 项失败。使用已安装的 pinned Hugo 0.145.0 修正测试环境后只重跑受影响组，受影响组重跑 27 通过、1 项既有条件跳过，0 失败。未修改测试以掩盖缺失二进制。
 - 首轮远程 run `39823444301`：生产构建、645 个输出文件审计与 48 项 quality 浏览器检查通过；完整 legacy 被 120 分钟 job 上限取消。9 项新增后门 E2E 在 desktop project 通过，但不代表 mobile project 已执行。先前失败根因逐项处理后必须完整重跑。
-- 完整 desktop/mobile 矩阵保留，job 预算调整为 240 分钟。没有移除强制检查、减少重试或用旧提交绿灯替代最终 head。
+- 完整 desktop/mobile 矩阵保留；起初将串行 job 预算调整为 240 分钟。随后 #475 更新将同一份冻结生产产物交给 quality、四个 legacy 分区和三个 interactive 引擎并行验收，每个 runner 仍只有一个 worker，每个 job 120 分钟。最终门禁必须收到全部成功且身份匹配的结果，才创建可发布 manifest；没有移除强制检查、减少重试或用旧提交绿灯替代最终 head。
 - 最后独审补回动画测试的移动完成断言，并修复 approach/opening 中旋转后仍使用旧 aspect 的门槛取景；真实生产函数的两时窗回归所在组 8/8 通过，两个 P2 已独立复核关闭。
-- 新 run 日志读回实际宿主已是 Ubuntu 26.04.1，浏览器依赖安装 13 分钟仍在下载 142MB/185 个新包。verify 固定 `ubuntu-24.04`，保留三个引擎和全部检查；这是 [GitHub 的明确镜像标签](https://github.com/actions/runner-images#available-images)，本地 Playwright 1.64.1 也声明支持此平台。该固定减少环境漂移，不保证网络速度，仍需实际 CI 验收。
+- 新 run 日志读回实际宿主已是 Ubuntu 26.04.1，浏览器依赖安装 13 分钟仍在下载 142MB/185 个新包。prepare、browser 与 verify 统一固定 `ubuntu-24.04`，保留三个引擎和全部检查；这是 [GitHub 的明确镜像标签](https://github.com/actions/runner-images#available-images)，本地 Playwright 1.64.1 也声明支持此平台。该固定减少环境漂移，不保证网络速度，仍需实际 CI 验收。
 - 音频状态/包络及实际音源身份由测试验证；没有人工实听，不能宣称声学质量或整体 99 分验收。
 
 最终 CI、远程 merge、部署版本、线上验收与资源收尾将在明确后补记。当前报告不等于已上线。

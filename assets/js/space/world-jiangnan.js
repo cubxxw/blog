@@ -430,7 +430,9 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     // still receives the ordinary frame cadence.
     if(environmentActive&&!moving&&!keys.size&&!touchKeys.size&&last&&stamp-last<1000/(framed?30:60)-.8){frame=requestAnimationFrame(tick);return;}
     const elapsed=last?Math.max(0,(stamp-last)/1000):0,delta=Math.min(elapsed,.12);last=stamp;
-    if(environmentActive)environmentTime+=delta;
+    // Scenery is analytical; the resident owns its own bounded substeps.
+    // Preserve visible wall time here even when a software-rendered frame is slow.
+    if(environmentActive)environmentTime+=elapsed;
     // Physics uses bounded steps; a deliberate camera flight uses visible wall
     // time. Otherwise a busy frame stretches a short approach into a long wait.
     if(moving){if(moving.started===null)moving.started=stamp-moving.elapsed;moving.elapsed=Math.max(0,stamp-moving.started);applyPose(moving.motion.at(moving.elapsed));if(moving.elapsed>=moving.duration)finishTravel();}

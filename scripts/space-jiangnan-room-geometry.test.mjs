@@ -257,7 +257,7 @@ test('real raycasts reach each sleeve, platter, speaker, lamp, fan and book acti
     assert.equal(action(rayHit([-1.8,target[1],target[2]], target)?.object),'record:'+album.id);
   }
   const cases = [
-    ['vinyl',[-1.8,1.55,-.50],[-2.82,1.086,-.45]],
+    ['vinyl',[-1.8,1.55,-.50],room.targets.vinyl],
     ['vinyl',[2.25,1.14,1.25],room.targets.vinyl],
     ['speaker',[-1.6,1.31,.31],room.targets.speaker],
     ['lamp',[-.11,1.093,-1.05],room.targets.lamp],
@@ -267,6 +267,14 @@ test('real raycasts reach each sleeve, platter, speaker, lamp, fan and book acti
     ['book:real-book',[-1.8,.68,-1.16],room.targets['book:real-book']]
   ];
   for(const [kind,from,target] of cases) assert.equal(action(rayHit(from,target)?.object),kind,kind);
+});
+
+for(const [view,origin] of [
+  ['hardware',[1.2,1.34,1.65]],
+  ['software',[2.25,1.14,1.25]],
+  ['mobile',[-.9,1.18,-.05]]
+])test(`the published vinyl target reaches the player from the ${view} view without selecting a record`,()=>{
+  assert.equal(action(rayHit(origin,room.targets.vinyl)?.object),'vinyl');
 });
 
 test('the table lamp owns the single local shadow and turns off its complete light pool', () => {
