@@ -298,6 +298,8 @@ function mountDesktop(root) {
   for (const dialog of [search,launchpad,overview]) {
     dialog.addEventListener('cancel',event=>{event.preventDefault();closeDialog(dialog);});
     dialog.addEventListener('close',()=>{
+      // The queued close event may belong to a previous opening of this dialog.
+      if(dialog.open)return;
       const saved = dialogFocus.get(dialog); dialogFocus.delete(dialog);
       if(!saved?.restore||root.hidden)return;
       // A closing dialog can retain its hidden input until the next paint.
