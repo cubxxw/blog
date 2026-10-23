@@ -17,8 +17,8 @@ on:
       trace_mode:
         description: Trace policy for the focused diagnostic
         type: choice
-        options: [on, on-first-retry]
-        default: on
+        options: ['on', 'on-first-retry']
+        default: 'on'
 permissions:
   contents: read
   actions: read
