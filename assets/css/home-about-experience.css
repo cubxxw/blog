@@ -52,89 +52,32 @@
   .page-wayfinder { --wayfinder-rest-opacity: 1; }
 }
 
-/* The author introduces the work; writing is the first full-width surface. */
-.homepage-root { --home-page-width: 1184px; }
-.homepage-root .hp-page { max-width: var(--home-page-width); }
-.homepage-root .hp-hero { display: block; min-height: 0; padding: 32px 0 22px; }
-.homepage-root .hp-hero-intro { position: relative; min-width: 0; max-width: 800px; }
-.homepage-root .hp-hero h1 { font-size: 42px; line-height: 1.12; letter-spacing: -1px; }
-.homepage-root .hp-hero-name-row { gap: 10px; }
-.homepage-root .hp-hero-chibi { width: 34px; height: 34px; }
-.homepage-root .hp-hero-name-zh { margin-top: 8px; font-size: 14px; letter-spacing: 1.5px; }
-.homepage-root .hp-hero-motto { max-width: none; margin-top: 22px; font-size: 26px; line-height: 1.4; text-wrap: balance; }
-.homepage-root .hp-hero-bio { max-width: 48em; margin-top: 12px; font-size: 16px; line-height: 1.75; }
-.homepage-root .hp-hero-motto,
-.homepage-root .hp-section-title,
-.homepage-root .hp-post-title { font-family: var(--font-prose); }
+/* Give the visitor an immediate route into the work; keep Bear's identity. */
+.homepage-root .hp-hero { padding: 48px 0 44px; gap: 24px 48px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "social"; align-items: center; }
+.homepage-root .hp-hero--with-bear { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-areas: "intro bear" "social bear"; }
+.hp-hero-intro { grid-area: intro; min-width: 0; }
+.homepage-root .hp-hero > .hp-bear-orbit-wrap { grid-area: bear; min-width: 0; }
+.homepage-root .hp-hero h1 { font-size: clamp(42px, 4.4vw, 64px); line-height: 1.06; }
+.homepage-root .hp-hero-name-row { gap: 6px; }
+.homepage-root .hp-hero-chibi { width: 42px; height: 42px; }
+.homepage-root .hp-hero-name-zh { font-size: 18px; margin-top: 14px; }
+.homepage-root .hp-hero-motto { max-width: 19em; font-size: 28px; text-wrap: balance; }
 .hp-keep-word { white-space: nowrap; }
-.homepage-root .hp-hero-cta { min-height: 44px; margin: 0 0 12px; }
-.homepage-root .hp-hero-socials { display: flex; flex-wrap: wrap; gap: 8px; max-width: 100%; margin: 0; }
-.homepage-root .hp-hero-socials .hp-social-icon { display: flex; flex: 0 0 44px; border-color: transparent; border-radius: 4px; background: none; box-shadow: none; }
+.homepage-root .hp-hero-socials { grid-area: social; align-self: start; margin: 0; gap: 8px; }
+.homepage-root .hp-hero-socials .hp-social-icon { display: flex; flex: 0 0 44px; box-shadow: none; }
 .homepage-root .hp-hero-socials .hp-social-icon:hover { background: var(--accent-soft); border-color: var(--border-default); }
-.hp-entry-actions { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; }
-.hp-entry-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 44px; padding: 0 22px; border: 1px solid var(--border-default); border-radius: 4px; font-size: 14px; font-weight: 600; transition: background-color 160ms ease, border-color 160ms ease; }
+.hp-entry-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.hp-entry-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 0 22px; border: 1px solid var(--border-default); border-radius: 6px; font-size: 14px; font-weight: 600; transition: background-color 160ms ease, border-color 160ms ease; }
 .hp-entry-actions a:first-child { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
 .hp-entry-actions a:first-child:hover { background: var(--accent-hover); }
-.hp-entry-actions a + a { padding-inline: 8px; background: transparent; border-color: transparent; }
-.hp-entry-actions a + a:hover { text-decoration: underline; text-underline-offset: 5px; }
-.homepage-root .hp-section { padding-top: 30px; }
-.homepage-root .hp-section-head { flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-bottom: 18px; padding-bottom: 16px; }
-.homepage-root .hp-section-action { flex: 0 0 auto; width: auto; min-height: 44px; margin-left: auto; }
-.homepage-root #hp-posts { padding-top: 22px; border-top: 1px solid var(--border-default); }
-
-/* Channels remain real links. The current channel is carried by an underline. */
-.homepage-root .hp-rail { gap: 12px; margin-bottom: 20px; }
-.homepage-root .hp-rail-track { justify-content: flex-start; gap: 10px; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
-.homepage-root .hp-rail-tab { gap: 6px; min-height: 44px; padding: 0 9px; border-radius: 0; transform: none; }
-.homepage-root .hp-rail-tab.is-active { color: var(--accent); box-shadow: inset 0 -2px currentColor; }
-.homepage-root .hp-rail-indicator { opacity: 0; }
-.homepage-root .hp-rail-tab-count { padding: 0; border: 0; background: none; font-size: 10px; }
-.homepage-root .hp-rail-tab-icon { font-size: 12px; transform: none; }
-.homepage-root .hp-rail-tab-go { width: 9px; }
-.homepage-root .hp-rail-arrow { width: 44px; height: 44px; border-radius: 4px; }
-
-/* Dates form a quiet margin beside the author's continuous writing record. */
-.homepage-root .hp-posts-grid { display: block; }
-.homepage-root .hp-post-card,
-.homepage-root .hp-post-card.hp-featured { display: grid; grid-template-columns: 142px minmax(0, 1fr) 90px; gap: 10px 26px; padding: 24px 0; border: 0; border-bottom: 1px solid var(--border-default); border-radius: 0; background: none; box-shadow: none; }
-.homepage-root .hp-post-card:hover { transform: none; box-shadow: none; }
-.homepage-root .hp-post-card:hover .hp-post-title { color: var(--accent); }
-.homepage-root .hp-post-card .hp-post-meta { grid-column: 1; grid-row: 1 / span 3; flex-wrap: wrap; align-content: start; padding-top: 6px; line-height: 1.7; letter-spacing: .8px; }
-.homepage-root .hp-post-card .hp-post-meta .hp-cat { flex-basis: 100%; padding: 0; background: none; }
-.homepage-root .hp-post-card .hp-post-title { grid-column: 2; font-size: 23px; line-height: 1.5; }
-.homepage-root .hp-post-card.hp-featured .hp-post-title { font-size: 29px; line-height: 1.45; text-wrap: balance; }
+.hp-entry-actions a + a:hover { background: var(--accent-soft); border-color: var(--accent); }
+.homepage-root .hp-section { padding-top: 38px; }
+/* The caption follows the orbit in flow, clear of every question card.
+   On phones it remains the label inside the compact conversation button. */
 @media (min-width: 769px) {
-  html:lang(zh) .homepage-root .hp-post-card.hp-featured .hp-post-title {
-    word-break: keep-all;
-    overflow-wrap: anywhere;
-  }
-}
-.homepage-root .hp-post-card .hp-post-excerpt { grid-column: 2; max-width: 48em; font-size: 14px; line-height: 1.8; -webkit-line-clamp: 2; }
-.homepage-root .hp-post-foot,
-.homepage-root .hp-column-card-foot { display: flex; grid-column: 3; grid-row: 1 / span 3; align-self: center; justify-content: end; gap: 12px; margin: 0; }
-.homepage-root .hp-column-card-subtitle { grid-column: 2; }
-.homepage-root .hp-column-card-dots { display: none; }
-.homepage-root .hp-posts-list { margin-top: 0; border: 0; border-radius: 0; background: none; }
-.homepage-root .hp-posts-list-row { min-height: 64px; padding-block: 18px; }
-.homepage-root .hp-post-card:focus-visible,
-.homepage-root .hp-posts-list-row:focus-visible,
-.homepage-root .hp-social-icon:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-
-/* About, all social contacts and the original conversation follow the writing. */
-.homepage-root .hp-home-connections { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 48px; margin-block: 28px 12px; padding-block: 28px; border-block: 1px solid var(--border-default); }
-.homepage-root .hp-home-connections--with-bear { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.homepage-root .hp-home-connections .hp-bear-orbit-wrap { width: 100%; min-width: 0; }
-.homepage-root .hp-home-connections .hp-bear-cta-line { text-transform: none; }
-.homepage-root .page-wayfinder { padding-block: 4px; border-bottom: 0; }
-.homepage-root .page-wayfinder a { min-width: 44px; }
-.homepage-root .page-wayfinder-slot { margin-block: 0 18px; }
-/* The connections follow writing in the document. At wide desktop sizes,
-   their page index belongs in the outer margin as soon as reading starts. */
-@media (min-width: 1600px) {
-  .homepage-root .page-wayfinder-slot {
-    position: fixed;
-    left: calc((100% - var(--home-page-width)) / 2 + 32px);
-  }
+  .homepage-root .hp-bear-layer { flex-direction: column; height: auto; gap: 24px; }
+  .homepage-root .hp-bear-orbit { flex-shrink: 0; }
+  .homepage-root .hp-bear-cta-line { position: static; transform: none; max-width: 100%; white-space: normal; text-align: center; }
 }
 /* The normal transcript keeps its existing scroll behavior. On a short
    viewport, the transcript and suggestions share the available middle. */
@@ -164,37 +107,16 @@
   .homepage-root .hp-bear-avatar-core { width: calc(100% - 12px); height: calc(100% - 12px); }
 }
 @media (max-width: 768px) {
-  .homepage-root .hp-page { padding-inline: 20px; }
-  .homepage-root .hp-hero { padding: 26px 0 20px; }
-  .homepage-root .hp-hero h1 { font-size: 32px; }
-  .homepage-root .hp-hero-name-zh { margin-top: 8px; font-size: 13px; }
-  .homepage-root .hp-hero-motto { margin-top: 18px; font-size: 21px; line-height: 1.5; }
-  .homepage-root .hp-hero-bio { margin-top: 10px; font-size: 14px; line-height: 1.75; }
-  .hp-entry-actions { gap: 10px; margin-top: 14px; }
-  .hp-entry-actions a { gap: 8px; padding-inline: 14px; }
-  .homepage-root .hp-section { padding-top: 22px; }
-  .homepage-root .hp-section-title { font-size: 26px; }
-  .homepage-root .hp-section-head { margin-bottom: 12px; padding-bottom: 10px; }
-  .homepage-root #hp-posts { padding-top: 16px; }
-  .homepage-root .hp-rail { gap: 6px; margin-bottom: 10px; }
-  .homepage-root .hp-rail-track { gap: 2px; }
-  .homepage-root .hp-rail-tab { padding-inline: 6px; font-size: 12px; }
-  .homepage-root .hp-rail-tab-go { display: none; }
-  .homepage-root .hp-rail-ctrl { gap: 4px; }
-  .homepage-root .hp-rail-counter { display: none; }
-  .homepage-root .hp-post-card,
-  .homepage-root .hp-post-card.hp-featured { grid-template-columns: minmax(0, 1fr) auto; gap: 10px 12px; padding: 20px 0; }
-  .homepage-root .hp-post-card .hp-post-meta { grid-column: 1 / -1; grid-row: auto; flex-wrap: nowrap; padding: 0; }
-  .homepage-root .hp-post-card .hp-post-meta .hp-cat { flex-basis: auto; }
-  .homepage-root .hp-post-card .hp-post-title,
-  .homepage-root .hp-post-card.hp-featured .hp-post-title { grid-column: 1 / -1; font-size: 21px; line-height: 1.5; }
-  .homepage-root .hp-post-card .hp-post-excerpt { grid-column: 1 / -1; font-size: 13px; }
-  .homepage-root .hp-post-foot,
-  .homepage-root .hp-column-card-foot { grid-column: 1 / -1; grid-row: auto; justify-content: space-between; }
-  .homepage-root .hp-column-card-subtitle { grid-column: 1 / -1; }
-  .homepage-root .hp-home-connections { display: block; margin-top: 22px; padding-block: 20px; }
-  .homepage-root .hp-home-connections .hp-bear-orbit-wrap { margin-top: 18px; }
-  .homepage-root .page-wayfinder-slot { margin-bottom: 6px; }
+  .homepage-root .hp-hero { min-height: 0; padding: 38px 0 32px; gap: 28px; }
+  .homepage-root .hp-hero--with-bear { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "social" "bear"; }
+  .homepage-root .hp-hero h1 { font-size: clamp(32px, 8.5vw, 48px); }
+  .homepage-root .hp-hero-motto { font-size: 23px; }
+  /* Content determines button height, never which row a late font uses. */
+  .hp-entry-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hp-entry-actions a { padding-inline: 10px; gap: 8px; }
+  .homepage-root .hp-hero-chibi { width: 34px; height: 34px; }
+  .homepage-root .hp-hero-socials { flex-wrap: wrap; gap: 8px; overflow: visible; padding: 0; margin: 0; }
+  .homepage-root .hp-hero-socials .hp-social-icon { flex: 0 0 44px; }
   /* Keep useful chat on phones without the 420px decorative orbit. The
      existing avatar button spans the compact card, including its label. */
   .homepage-root .hp-bear-orbit-wrap { display: block; min-height: 0; max-width: none; }
@@ -216,6 +138,9 @@
   .page-wayfinder ol { width: 100%; gap: 8px; justify-content: space-between; }
   .page-wayfinder a { font-size: 13px; padding-inline: 4px; }
   .about-studio .studio-hero { min-height: 0; }
+}
+@media (max-width: 360px) {
+  .hp-entry-actions { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-height: 420px) {
   .homepage-root .is-chat-open .hp-bear-chat {
