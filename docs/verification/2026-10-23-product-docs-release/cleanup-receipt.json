@@ -1,0 +1,16 @@
+{
+  "schema": "blog-publication-cleanup/1",
+  "status": "blocked_missing_handoff_manifest",
+  "saved_remote_evidence_commit": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+  "handoff_manifest": null,
+  "deleted_workspaces": [],
+  "reason": "The prior handoff directory and its explicit batch workspace list were not attached to this cloud environment. A text clarification is pending.",
+  "preserved": [
+    "All unlisted workspaces and changes",
+    "Brain's pre-existing merge conflicts; Brain was not accessed or modified",
+    "The current cloud checkout, raw CI artifacts and browser evidence"
+  ],
+  "next_action": "When the exact handoff list becomes accessible, confirm each listed workspace's unique results are saved, then clean only those batch workspaces. Existing cleanup authorization remains in effect.",
+  "observed_at": "2026-10-23T06:45:25.142448+08:00",
+  "terminal_evidence_note": "Additional terminal evidence is in the commit carrying this updated record. Cleanup authorization is unchanged; exact handoff workspace names remain unavailable."
+}

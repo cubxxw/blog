@@ -2,6 +2,8 @@ import { safeURL } from './state.mjs';
 import { mountMedia } from './media.js';
 import { mountAgent } from './agent-panel.js';
 import { mountFinderHome } from './finder-home.js';
+import { mountBrowser } from './browser.js';
+import { projectHomeHTML } from './project-home.js';
 
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const html = escapeHTML;
@@ -9,6 +11,7 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
   const zh = catalog.language === 'zh';
   const t = (cn, en) => zh ? cn : en;
   const disposers = new Map();
+  const browserViews = new Map();
   const media = mountMedia({ catalog, execute, notify });
   let libraryView = { filter: 'all', query: '', scroll: 0 };
   try {
@@ -54,7 +57,7 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
       });
     }
     if (!selected) {
-      host.innerHTML = `<section class="space-product-home" data-product-home><header class="space-finder-toolbar"><strong>${t('作品','Projects')}</strong><button type="button" data-space-search-trigger aria-haspopup="dialog">${t('搜索','Search')} <span aria-hidden="true">⌕</span></button></header><div class="space-finder-home__body"><aside class="space-finder-home__sidebar"><p>${t('个人收藏','Favorites')}</p><nav aria-label="${t('个人收藏','Favorites')}"><button type="button" data-open="welcome" data-payload="">${icon('welcome')}<span>${t('我的空间','My Space')}</span></button><button type="button" data-open="products" data-payload="" aria-current="page">${icon('products')}<span>${t('作品','Projects')}</span></button><button type="button" data-open="reader" data-payload="">${icon('reader')}<span>${t('文章与思考','Writing')}</span></button><button type="button" data-open="books">${icon('books')}<span>${t('书架','Books')}</span></button></nav></aside><div class="space-finder-home__files" aria-label="${t('产品目录','Product directory')}">${products.map(p => `<button type="button" class="space-finder-home__item" data-select-product="${html(p.id)}"><span class="finder-folder" data-product-color="${html(p.color || '')}" aria-hidden="true"><span class="finder-folder__mark">${html(p.mark || '')}</span></span><strong>${html(p.name)}</strong>${p.stage ? `<small>${html(p.stage)}</small>` : ''}</button>`).join('')}${products.length ? '' : `<p class="space-finder-empty">${t('暂无作品','No projects yet')}</p>`}</div></div><footer class="space-finder-status"><span>${t(`${products.length} 个项目`,`${products.length} items`)}</span></footer></section>`;
+      host.innerHTML = projectHomeHTML({products,zh,escapeHTML,origin:location.origin});
       host.querySelectorAll('[data-select-product]').forEach(b => b.addEventListener('click', () => choose(b,b.dataset.selectProduct), {signal:controller.signal}));
       return;
     }
@@ -291,9 +294,11 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
   }
   function render(win, host) {
     disposers.get(win.id)?.(); disposers.delete(win.id);
+    browserViews.delete(win.id);
     if (win.app === 'welcome') {
       disposers.set(win.id, mountFinderHome({ root, host, catalog, execute, getState, escapeHTML, icon, payload: win.payload }));
-    } else if (win.app === 'products') showProducts(host,win.payload,win.id);
+    } else if (win.app === 'browser') {const browser=mountBrowser({host,catalog,escapeHTML,payload:win.payload});browserViews.set(win.id,browser);disposers.set(win.id,()=>browser.dispose());}
+    else if (win.app === 'products') showProducts(host,win.payload,win.id);
     else if (win.app === 'reader') { if (win.payload && articleByURL(win.payload)) showReader(host,win.payload,win.id); else showLibrary(host,win.payload === 'growth' ? 'growth' : libraryView.filter); }
     else if (win.app === 'photos') media.renderPhotos(host,win.payload,win.id);
     else if (win.app === 'map') media.renderMap(host,win.payload,win.id);
@@ -304,5 +309,5 @@ export function mountApps({ root, catalog, execute, getState, getContext, update
     else if (win.app === 'agent') showAgent(host,win.id,win.payload);
     else if (win.app === 'settings') showSettings(host,win.id);
   }
-  return { render, download, syncFavorite, dispose(id) { disposers.get(id)?.(); disposers.delete(id); media.dispose(id); } };
+  return { render, download, syncFavorite, navigateBrowser(id,url){browserViews.get(id)?.visit(url);},dispose(id) { disposers.get(id)?.(); disposers.delete(id);browserViews.delete(id); media.dispose(id); } };
 }

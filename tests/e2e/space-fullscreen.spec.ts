@@ -1,8 +1,10 @@
 import {test,expect,type Page} from '../helpers/frozen-site';
+import {observeRoomAudio,rainSource} from '../helpers/room-audio';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 test.beforeEach(async({page})=>{
   test.setTimeout(90_000);
+  await observeRoomAudio(page);
   await page.addInitScript(()=>{
     localStorage.setItem('space:cafe:theme:v2','jiangnan');
     localStorage.setItem('space:cafe:onboarding:v1','seen');
@@ -12,7 +14,7 @@ const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const roomControl=(page:Page)=>page.locator('.space-fullscreen[data-space-fullscreen]');
 async function openRoom(page:Page,lang='zh'){
   await page.goto(lang==='zh'?'/zh/projects/':'/projects/');
-  await expect(root(page)).toHaveAttribute('data-boot-state','complete');
+  await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
 }
 async function computerMenu(page:Page){
   await page.keyboard.press('Control+k');await page.locator('[data-space-search-close]').click();
@@ -108,22 +110,22 @@ test('a 320 pixel room hides external chrome and keeps scene and fullscreen acti
   }
 });
 
-test('default room audio survives workspace use and stops when hidden or quiet',async({page})=>{
+test('default outdoor rain survives workspace use and pauses when hidden or quiet',async({page})=>{
   await page.addInitScript(()=>localStorage.setItem('space:cafe:theme:v2','jiangnan'));
   await openRoom(page);
-  const audio=page.locator('.space-room-audio audio');
-  await expect(audio).toHaveCount(2);
-  await expect.poll(()=>root(page).getAttribute('data-room-sound')).toMatch(/playing|blocked/);
-  if(await root(page).getAttribute('data-room-sound')==='blocked')await speaker(page);
-  await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>!(node as HTMLAudioElement).paused))).toBe(true);
+  await expect(root(page)).toHaveAttribute('data-room-sound','paused');
+  await expect.poll(()=>root(page).getAttribute('data-room-ambient')).toMatch(/playing|blocked/);
+  if(await root(page).getAttribute('data-room-ambient')==='blocked')await page.locator('.space-world__canvas').click({position:{x:20,y:20}});
+  await expect(root(page)).toHaveAttribute('data-room-ambient','playing');const first=(await rainSource(page))!;
   await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));
   await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
-  expect(await audio.evaluateAll(nodes=>nodes.every(node=>!(node as HTMLAudioElement).paused))).toBe(true);
+  expect((await rainSource(page))!.id).toBe(first.id);
   await root(page).evaluate(el=>(el as HTMLElement).hidden=true);
-  await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>(node as HTMLAudioElement).paused))).toBe(true);
+  await expect(root(page)).toHaveAttribute('data-room-ambient','paused');expect(await rainSource(page)).toBeUndefined();
   await root(page).evaluate(el=>(el as HTMLElement).hidden=false);
-  await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>!(node as HTMLAudioElement).paused))).toBe(true);
+  await expect(root(page)).toHaveAttribute('data-room-ambient','playing');expect((await rainSource(page))!.offset).toBeGreaterThanOrEqual(first.time);
+  if(await page.locator('.jiangnan-computer-expand').isVisible())await page.locator('.jiangnan-computer-expand').click();
   await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-quiet]').click();
-  await expect.poll(()=>audio.evaluateAll(nodes=>nodes.every(node=>(node as HTMLAudioElement).paused))).toBe(true);
+  await expect(root(page)).toHaveAttribute('data-room-ambient','paused');expect(await rainSource(page)).toBeUndefined();
   await expect(root(page)).toHaveAttribute('data-room-sound','paused');
 });

@@ -47,6 +47,7 @@ products:
     color: sage
     mark: LH
     url: https://leafhour.com
+    browser_embed: true
     url_en: https://leafhour.com/en
     github: https://github.com/getyak/leafhour
     demo: https://leafhour.com/read?book=gutenberg-alice
@@ -77,6 +78,7 @@ products:
     color: rust
     mark: IM
     url: https://imstage.org
+    browser_embed: true
     url_zh: https://imstage.org/?lang=zh
     url_en: https://imstage.org/?lang=en
     github: https://github.com/kubbot/imstage
@@ -106,6 +108,7 @@ products:
     color: cobalt
     mark: RM
     url: https://roamorrow.com
+    browser_embed: true
     github: https://github.com/getyak/roamorrow
     boundary_zh: iOS 仍处于 TestFlight 准备阶段；地点信息与 AI 建议需要结合来源和当地实际情况核对。
     boundary_en: The iOS app remains in TestFlight preparation. Check place information and AI suggestions against their sources and local conditions.

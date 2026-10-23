@@ -1,0 +1,41 @@
+
+Running 2 tests using 1 worker
+
+(node:9566) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact (5.9s)
+(node:9698) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [mobile] › tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target (1.2m)
+
+
+  1) [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('[data-filter-scroll-hint]').first()
+    Expected: visible
+    Received: hidden
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeVisible" locator('[data-filter-scroll-hint]').first() with timeout 5000ms
+      - waiting for locator('[data-filter-scroll-hint]').first()
+        14 × locator resolved to <span hidden="" data-filter-scroll-hint="" class="library-filter__scroll-hint">…</span>
+           - unexpected value "hidden"
+
+
+      55 |     await expect(page.getByRole('button', { name: '工程', exact: true })).toBeVisible();
+      56 |     await expect(page.getByRole('button', { name: '成长与生活', exact: true })).toBeAttached();
+    > 57 |     await expect(page.locator('[data-filter-scroll-hint]').first()).toBeVisible();
+         |                                                                     ^
+      58 |
+      59 |     await page.getByRole('button', { name: '筛选' }).click();
+      60 |     await expect(page.locator('.library-filter__scroll-shell--tags [data-filter-scroll-hint]')).toBeVisible();
+        at /workspace/blog/tests/e2e/p1-p2-ux.spec.ts:57:69
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/p1-p2-ux-P1-P2-UX-regressi-36a21-coverable-and-cards-compact-mobile/error-context.md
+
+  1 failed
+    [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact
+  1 passed (1.3m)

@@ -15,6 +15,13 @@
   const closeBtn = palette?.querySelector('.search-palette__close');
   const backdrop = palette?.querySelector('.search-palette__backdrop');
   const fullLink = document.getElementById('search-full-link');
+  // Hugo's static index keeps production absolute permalinks on preview hosts.
+  // The site-owned full-search link declares that origin before we relativize
+  // it; ordinary external results keep their native external destination.
+  const siteOrigin = (() => {
+    try { return new URL(fullLink?.href || window.location.href).origin; }
+    catch { return window.location.origin; }
+  })();
 
   if (!palette || window.__searchPaletteReady) return;
   const aiEnabled = palette.dataset.aiEnabled !== 'false';
@@ -158,7 +165,7 @@
     try {
       const url = new URL(String(value || ''), window.location.origin);
       if (url.protocol !== 'http:' && url.protocol !== 'https:') return '#';
-      return url.origin === window.location.origin
+      return url.origin === window.location.origin || url.origin === siteOrigin
         ? `${url.pathname}${url.search}${url.hash}`
         : url.href;
     } catch (error) {
@@ -692,7 +699,7 @@
   // Update Full Search link with current query
   function updateFullSearchLink(query) {
     if (!fullLink) return;
-    const baseHref = fullLink.getAttribute('href').split('?')[0];
+    const baseHref = safeHref(fullLink.getAttribute('href')).split('?')[0];
     fullLink.href = query.trim() ? `${baseHref}?q=${encodeURIComponent(query.trim())}` : baseHref;
   }
 

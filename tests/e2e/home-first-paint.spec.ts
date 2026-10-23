@@ -13,7 +13,7 @@ test('mobile AI enhancement occupies its reserved space without moving the writi
     const layer = page.locator('#hp-bear-layer');
     await expect(layer).toHaveCSS('min-height', '80px');
     await expect(layer.locator('#hp-orbit')).toHaveCount(0);
-    await expect(page.locator('.hp-posts-grid').first()).toHaveCSS('display','grid');
+    await expect(page.locator('.hp-posts-grid .hp-featured').first()).toBeVisible();
     const before = await page.locator('#hp-posts').boundingBox();
     releaseModule();
     await expect(layer.locator('#hp-avatar-btn')).toBeVisible();
@@ -35,23 +35,28 @@ test('mobile primary links remain readable within stable columns', async ({ page
     await expect(links).toHaveCount(2);
     const boxes = await links.evaluateAll(elements => elements.map(el => {
       const r = el.getBoundingClientRect();
-      return { y: r.y, width: r.width, height: r.height, overflow: el.scrollWidth > el.clientWidth };
+      return { x: r.x, y: r.y, right:r.right, bottom:r.bottom, width: r.width, height: r.height, overflow: el.scrollWidth > el.clientWidth };
     }));
     for (const box of boxes) {
       expect(box.height).toBeGreaterThanOrEqual(44);
       expect(box.overflow).toBe(false);
+      expect(box.x).toBeGreaterThanOrEqual(0);expect(box.right).toBeLessThanOrEqual(width);
     }
-    if (width > 360) expect(Math.abs(boxes[0].y - boxes[1].y)).toBeLessThanOrEqual(1);
-    else expect(boxes[1].y).toBeGreaterThan(boxes[0].y);
+    const overlapX=Math.min(boxes[0].right,boxes[1].right)-Math.max(boxes[0].x,boxes[1].x);
+    const overlapY=Math.min(boxes[0].bottom,boxes[1].bottom)-Math.max(boxes[0].y,boxes[1].y);
+    expect(overlapX>1&&overlapY>1).toBe(false);
     await expect(links.first()).toHaveAttribute('href', '#hp-posts');
     await expect(links.last()).toHaveAttribute('href', /\/projects\/#studio-products$/);
   }
 });
 
-test('Chinese first-screen text has a loaded webfont fallback before any reading scroll', async ({ page }) => {
+test.describe('Chinese fonts without JavaScript', () => {
+test.use({ javaScriptEnabled: false });
+test('Chinese first-screen text retains the original complete self-hosted font coverage', async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 823 });
   await page.goto('/zh/growth/posts/2025-annual-review/');
-  await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'stylesheet');
+  const fontCSS = await page.locator('#zh-prose-fonts').getAttribute('href');
+  await expect(page.locator(`noscript link[href="${fontCSS}"]`)).toHaveAttribute('rel', 'stylesheet');
   const title = page.locator('.post-title');
   const summary = page.locator('.article-tldr');
   await expect(title).toBeVisible();
@@ -64,6 +69,37 @@ test('Chinese first-screen text has a loaded webfont fallback before any reading
   for (const result of coverage) { expect(result.count).toBeGreaterThan(0); expect(result.loaded).toBe(true); }
   expect(await title.evaluate(el => getComputedStyle(el).fontFamily)).toContain('Noto Serif SC');
   expect(await summary.evaluate(el => getComputedStyle(el).fontFamily)).toContain('Noto Serif SC');
+});
+});
+
+test('slow Chinese font CSS cannot delay visible text or move an established read point', async ({ page }) => {
+  await page.setViewportSize({ width: 412, height: 823 });
+  let releaseCSS!: () => void;
+  const paused = new Promise<void>(resolve => { releaseCSS = resolve; });
+  await page.route('**/noto-serif-sc-reading*.css', async route => {
+    await paused;
+    await route.fallback();
+  });
+  try {
+    await page.goto('/zh/growth/posts/2025-annual-review/', { waitUntil: 'commit' });
+    const title = page.locator('.post-title');
+    await expect(title).toBeVisible();
+    const marker = page.locator('.post-content > p').first();
+    await marker.scrollIntoViewIfNeeded();
+    const position = () => marker.evaluate(el => ({ top: el.getBoundingClientRect().top, scroll: scrollY, text: el.textContent }));
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    const before = await position();
+    const response = page.waitForResponse(response => /noto-serif-sc-reading.*\.css/.test(response.url()));
+    releaseCSS();
+    expect((await response).ok()).toBe(true);
+    await page.waitForLoadState('load');
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    expect(await position()).toEqual(before);
+    await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'preload');
+    expect(await page.evaluate(() => Array.from(document.fonts).some(face => face.family.replace(/["']/g, '').toLowerCase() === 'noto serif sc'))).toBe(false);
+  } finally {
+    releaseCSS();
+  }
 });
 
 test('cold navigation does not synchronously write an absent menu scroll position', async ({ page }) => {

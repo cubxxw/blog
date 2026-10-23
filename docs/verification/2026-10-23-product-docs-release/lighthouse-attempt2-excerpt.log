@@ -1,0 +1,36 @@
+2026-10-22T18:49:58.0918589Z Running Lighthouse 1 time(s) on https://cubxxw.com/
+2026-10-22T18:50:27.8419957Z Run #1...done.
+2026-10-22T18:50:27.8420251Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/
+2026-10-22T18:50:40.8391435Z Run #1...done.
+2026-10-22T18:50:40.8391883Z Running Lighthouse 1 time(s) on https://cubxxw.com/about/
+2026-10-22T18:52:18.3935041Z Run #1...done.
+2026-10-22T18:52:18.3935803Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/about/
+2026-10-22T18:53:56.8826828Z Run #1...done.
+2026-10-22T18:53:56.8827266Z Running Lighthouse 1 time(s) on https://cubxxw.com/ai-agent/
+2026-10-22T18:54:09.6503952Z Run #1...done.
+2026-10-22T18:54:09.6504396Z Running Lighthouse 1 time(s) on https://cubxxw.com/engineering/
+2026-10-22T18:54:21.8028604Z Run #1...done.
+2026-10-22T18:54:21.8029090Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/ai-agent/
+2026-10-22T18:54:34.2320578Z Run #1...done.
+2026-10-22T18:54:34.2321018Z Running Lighthouse 1 time(s) on https://cubxxw.com/growth/
+2026-10-22T18:54:46.9819791Z Run #1...done.
+2026-10-22T18:54:46.9820107Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/growth/
+2026-10-22T18:54:59.7468844Z Run #1...done.
+2026-10-22T18:54:59.7469172Z Running Lighthouse 1 time(s) on https://cubxxw.com/projects/
+2026-10-22T18:56:55.2449899Z Run #1...done.
+2026-10-22T18:56:55.2450248Z Running Lighthouse 1 time(s) on https://cubxxw.com/archives/
+2026-10-22T18:57:09.1439169Z Run #1...done.
+2026-10-22T18:57:09.1439602Z Running Lighthouse 1 time(s) on https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/
+2026-10-22T18:57:22.3552934Z Run #1...done.
+2026-10-22T18:57:22.3553490Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/growth/posts/2025-annual-review/
+2026-10-22T18:57:35.5392359Z Run #1...done.
+2026-10-22T18:57:35.5392677Z Done running Lighthouse!
+2026-10-22T18:57:35.7309777Z Checking assertions against 13 URL(s), 13 total run(s)
+2026-10-22T18:57:35.7313379Z   ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+2026-10-22T18:57:35.7315384Z   ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+2026-10-22T18:57:35.7316623Z   ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+2026-10-22T18:57:35.7318382Z   ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+2026-10-22T18:57:35.7319441Z   ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+2026-10-22T18:57:35.7320593Z   ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+2026-10-22T18:57:35.7321306Z All results processed!
+2026-10-22T18:57:36.3265482Z Done running autorun.

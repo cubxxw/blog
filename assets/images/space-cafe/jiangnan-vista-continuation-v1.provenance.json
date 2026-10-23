@@ -1,0 +1,70 @@
+{
+  "asset": "assets/images/space-cafe/jiangnan-vista-continuation-v1.png",
+  "dimensions": [
+    1774,
+    887
+  ],
+  "sha256": "1582cdeff284439b5f69b2fb22f16f0afa26d4f58638355a7435d4fc5e93332c",
+  "generation": {
+    "tool": "built-in imagegen",
+    "sourceStudy": "river-outpaint-study-v2.png",
+    "prompt": "Edit the supplied rainy Jiangnan river image by OUTPAINTING ONLY. This is an extension of this exact shot, not a new interpretation, and NOT a 360 panorama. Preserve the existing composition, bridge, mountains, tree silhouettes, shore architecture, blue luminance, orange lamps, reflection scale and exact camera horizon. The supplied entire original photograph must occupy a central rectangle of the new image: 62.5% of total width, 47.619% of total height, with its top-left at (18.75% width,14.286% height). In other words, extend the source canvas by 30% of source width to EACH side, by 30% of source height above, and by 80% of source height below. Target overall landscape aspect 2:1 at the highest available resolution. Do not crop, zoom, enlarge the bridge, or add a second bridge. The centre must look exactly like the source, with no change of perspective or rescaled buildings. Seamlessly CONTINUE the existing nearest wet stone banks, house facades, overhanging willows and trees to the left and right; continue the same river ripples and sparse broken amber reflections downward into foreground water. Extend only low cloudy blue sky above. Edges of the old image must dissolve into new content with continuous lines, matching colors, matching water ripple wavelength, matching reflection placement, and no visible rectangle, blur strips, seams, frames, mirrored borders, stretched pixels or duplicated structures. Keep the distant mountains and layers of pale mist as in the original. Quiet photographic rainy dusk, restrained contrast, real stone and wood, convincing water. No boats, people, animals, heavy baked rain streaks, window glass, raindrops on lens, room, UI, border or text.\n"
+  },
+  "reference": {
+    "path": "assets/images/space-cafe/jiangnan-vista-study-v2.png",
+    "dimensions": [
+      2032,
+      774
+    ],
+    "sha256": "16ebe0af64c5ebaeaf19a8ebdfb9195cc559932aacad05c6cf4f9638d58ad350"
+  },
+  "observedLimits": [
+    "The requested central crop proportions were not achieved and are not calibration facts.",
+    "The image provides almost no rightward extension after registration.",
+    "The central mountain ridge differs by approximately 27 pixels after the architecture fit."
+  ],
+  "registration": {
+    "method": "mutual SIFT correspondences followed by USAC_MAGSAC homography",
+    "opencv": "4.11.0",
+    "correspondences": 429,
+    "inliers": 313,
+    "uniqueInlierSourceCoordinates": 281,
+    "medianResidualPixels": 1.835985779762268,
+    "rmsePixels": 2.318974733352661,
+    "homographyPixels": [
+      [
+        0.6532478592692752,
+        0.012539929119232508,
+        247.3786895209
+      ],
+      [
+        -0.021937336113722707,
+        0.6948083467149065,
+        127.90036903064943
+      ],
+      [
+        -5.601470183535135e-05,
+        1.4720558873565473e-05,
+        1.0
+      ]
+    ],
+    "homographyBottomLeftUV": [
+      [
+        0.7398230086540338,
+        -0.005409562930747441,
+        0.1432854817268656
+      ],
+      [
+        -0.06285023325126388,
+        0.5881972767022035,
+        0.25796743765045316
+      ],
+      [
+        -0.11253962993344745,
+        -0.01126535831353812,
+        1.0
+      ]
+    ]
+  },
+  "intendedUsage": "Optional continuation only below the original photograph, limited to available pure-water pixels; the original image, sky and side banks remain unchanged."
+}

@@ -1,4 +1,109 @@
-export function mountRoomAudio({root,assets,zh,defaultEnabled=false,embedded=false,initialQuiet=false,onStateChange}) {
+import {createRoomLoopAudio} from './room-audio-loop.js';
+
+export function mountRoomAudio(options) {
+  return options.independentAmbience ? mountIndependentRoomAudio(options) : mountLegacyRoomAudio(options);
+}
+
+function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded=false,initialQuiet=false,onStateChange,tracks:recordTracks,backgroundPlayback=false}) {
+  const tracks=Object.freeze((recordTracks?.length?recordTracks:[{id:"night-on-the-docks-sax",title:"Night on the Docks - Sax",titleEn:"Night on the Docks - Sax",artist:"Kevin MacLeod",src:assets.music}]).map(track=>Object.freeze({...track})));
+  let selected=tracks[0];
+  const t=(cn,en)=>zh?cn:en,abort=new AbortController(),engine=createRoomLoopAudio();
+  const host=document.createElement('div');host.className='space-room-audio';host.hidden=true;host.setAttribute('aria-hidden','true');root.append(host);
+  const sound=document.createElement('button');sound.type='button';sound.dataset.roomSound='';
+  const credits=document.createElement('details');credits.className='space-room-credits';
+  const escape=value=>String(value).replace(/[&<>"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
+  const musicCredits=tracks.map(track=>`<p><a href="${escape(track.source||'https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1100137')}" target="_blank" rel="noopener">${escape(track.titleEn||track.title)} · ${escape(track.artist||'Kevin MacLeod')}</a> · <a href="${escape(track.licenseUrl||'https://creativecommons.org/licenses/by/4.0/')}" target="_blank" rel="noopener">${escape(track.license||'CC BY 4.0')}</a></p>`).join('');
+  credits.innerHTML=`<summary>${t('声音来源','Sound credits')}</summary><div>${musicCredits}<p>${t('音乐：压缩编码、音量调整，移除首尾静音，首尾交叠循环。唱片封面使用作者的旅行照片。','Music: re-encoded, level adjusted, edge silence trimmed, overlapping loop boundary. Record sleeves use the author’s travel photographs.')}</p><p><a href="https://commons.wikimedia.org/wiki/File:Distant_storm_in_the_city_(5).flac" target="_blank" rel="noopener">${t('雨声：Matucha · Distant storm in the city (5)','Rain: Matucha · Distant storm in the city (5)')}</a></p><p><a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a> · ${t('截取，首尾交叠循环','Excerpted; overlapping loop boundary')}</p></div>`;
+  if(!embedded){root.querySelector('.space-cafe__utilities')?.prepend(sound);root.querySelector('.space-cafe__footer')?.append(credits);}
+  const volumeKey='space:cafe:music-volume:v1';let volume=.6;
+  try{const saved=localStorage.getItem(volumeKey),value=Number(saved);if(saved!==null&&saved.trim()!==''&&Number.isFinite(value)&&value>=0&&value<=1)volume=value;}catch{}
+  const musicLoop=track=>engine.createLoop({src:track.src,volume,crossfade:2,trimSilence:true,fadeSeconds:.06});
+  const music={audio:musicLoop(selected),wanted:Boolean(defaultEnabled),failure:null,attempt:null,generation:0};
+  const rain={audio:engine.createLoop({src:assets.ambience,volume:1.5,crossfade:8}),wanted:true,failure:null,attempt:null,generation:0};
+  const lanes=[music,rain];let quiet=Boolean(initialQuiet),disposed=false,lastState='',rainLevel=1;
+  const available=()=>!quiet&&!disposed&&(backgroundPlayback||!document.hidden)&&!root.hidden;
+  const canPlay=lane=>lane.wanted&&available();
+  const status=lane=>disposed?'disposed':!canPlay(lane)?'paused':!lane.audio.paused?'playing':lane.failure||'wanted';
+  function snapshot(){return Object.freeze({wanted:music.wanted,playing:status(music)==='playing',status:status(music),trackId:selected.id,volume,quiet,ambientWanted:rain.wanted,ambientPlaying:status(rain)==='playing',ambientStatus:status(rain),musicTime:music.audio.currentTime,ambientTime:rain.audio.currentTime});}
+  function sync(){
+    const state=snapshot();
+    if(!disposed){root.dataset.roomSound=state.status;root.dataset.roomSoundWanted=String(music.wanted);root.dataset.roomTrack=selected.id;root.dataset.roomVolume=String(volume);root.dataset.roomAmbient=state.ambientStatus;root.dataset.roomAmbientWanted=String(rain.wanted);}
+    sound.setAttribute('aria-pressed',String(music.wanted));sound.disabled=quiet;sound.textContent=state.playing?t('关闭音乐','Pause music'):t('播放音乐','Play music');
+    sound.setAttribute('aria-label',state.playing?t('关闭室内音乐','Pause indoor music'):t('播放室内音乐','Play indoor music'));
+    sound.title=quiet?t('关闭安静模式后可以播放音乐','Turn off quiet mode to play music'):sound.getAttribute('aria-label');
+    if(music.failure&&!quiet)sound.title=t('音乐未能播放，请再点一次。','Music could not start. Click to try again.');
+    // Time is read live by snapshot(); frame-by-frame clock updates must not
+    // turn onStateChange into an animation loop or recreate either audio lane.
+    const key=JSON.stringify({...state,musicTime:0,ambientTime:0});if(key!==lastState){lastState=key;onStateChange?.(state);}
+  }
+  function pause(lane){lane.generation++;lane.attempt=null;lane.audio.pause();}
+  function play(lane){
+    if(!canPlay(lane)||lane.attempt||!lane.audio.paused)return;
+    const current=++lane.generation;lane.attempt=current;lane.failure=null;sync();
+    let result;try{result=lane.audio.play();}catch(error){result=Promise.reject(error);}
+    Promise.resolve(result).then(()=>{
+      if(disposed||current!==lane.generation)return;
+      lane.attempt=null;
+      if(!canPlay(lane))pause(lane);else if(lane.audio.paused)lane.failure='error';
+      sync();
+    }).catch(error=>{
+      if(disposed||current!==lane.generation)return;
+      lane.failure=error?.name==='NotAllowedError'?'blocked':'error';pause(lane);sync();
+    });
+  }
+  function visibility(){for(const lane of lanes){if(!canPlay(lane))pause(lane);else if(!lane.failure||(lane.failure==='blocked'&&globalThis.navigator?.userActivation?.isActive))play(lane);}sync();}
+  function toggle(){
+    if(quiet||disposed)return snapshot();
+    if(!music.audio.paused||(music.wanted&&music.attempt)){music.wanted=false;music.failure=null;pause(music);}
+    else{music.wanted=true;music.failure=null;play(music);}
+    // A speaker action is also a trusted opportunity to unlock outdoor rain;
+    // it never changes the rain's intent or touches an already playing source.
+    if(rain.failure==='blocked'&&canPlay(rain))play(rain);
+    sync();return snapshot();
+  }
+  function selectTrack(id){
+    const next=tracks.find(track=>track.id===id);
+    if(disposed||!next)return snapshot();
+    if(next.id!==selected.id){
+      ++music.generation;music.attempt=null;music.audio.dispose({fade:true});
+      selected=next;music.audio=musicLoop(next);
+    }
+    music.wanted=true;music.failure=null;play(music);
+    if(rain.failure==='blocked'&&canPlay(rain))play(rain);
+    sync();return snapshot();
+  }
+  function setVolume(value){
+    if(disposed||!Number.isFinite(value))return snapshot();
+    const next=Math.round(Math.max(0,Math.min(1,value))*1000)/1000;
+    if(next===volume)return snapshot();
+    volume=next;music.audio.setVolume(volume,.08);
+    try{localStorage.setItem(volumeKey,String(volume));}catch{}
+    sync();return snapshot();
+  }
+  function gesture(event){
+    if(!event.isTrusted)return;
+    if((rain.failure==='blocked'||rain.failure==='error')&&canPlay(rain))play(rain);
+    if(event.target?.closest?.('button[data-room-sound], [data-room-object="speaker"]'))return;
+    if(music.failure==='blocked'&&canPlay(music))play(music);
+  }
+  sound.addEventListener('click',toggle,{signal:abort.signal});root.addEventListener('click',gesture,{signal:abort.signal,capture:true});root.addEventListener('keydown',gesture,{signal:abort.signal,capture:true});
+  root.addEventListener('space:roomvolume',event=>setVolume(event.detail?.volume),{signal:abort.signal});
+  document.addEventListener('visibilitychange',visibility,{signal:abort.signal});
+  const observer=new MutationObserver(visibility);observer.observe(root,{attributes:true,attributeFilter:['hidden']});
+  sync();queueMicrotask(()=>{if(!disposed)visibility();});
+  return {toggle,selectTrack,setVolume,tracks,snapshot,credits,get state(){return snapshot();},
+    setRainLevel(value){
+      if(disposed||!Number.isFinite(value))return;
+      const next=Math.round(Math.max(0,Math.min(1,value))*1000)/1000;if(next===rainLevel)return;
+      rainLevel=next;rain.audio.setVolume(1.5*next,.6);
+      const wanted=next>.001;if(rain.wanted!==wanted){rain.wanted=wanted;visibility();}
+    },
+    setQuiet(value){if(disposed)return;quiet=Boolean(value);visibility();},
+    dispose(){if(disposed)return;disposed=true;for(const lane of lanes){lane.wanted=false;pause(lane);}abort.abort();observer.disconnect();engine.dispose();host.remove();sound.remove();credits.remove();delete root.dataset.roomSound;delete root.dataset.roomSoundWanted;delete root.dataset.roomTrack;delete root.dataset.roomVolume;delete root.dataset.roomAmbient;delete root.dataset.roomAmbientWanted;sync();}
+  };
+}
+
+function mountLegacyRoomAudio({root,assets,zh,defaultEnabled=false,embedded=false,initialQuiet=false,onStateChange}) {
   const t = (cn,en) => zh ? cn : en;
   const abort = new AbortController();
   const host = document.createElement('div');host.className = 'space-room-audio';host.hidden = true;host.setAttribute('aria-hidden','true');

@@ -1,0 +1,193 @@
+
+Running 10 tests using 1 worker
+
+(node:4650) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.8s)
+(node:4800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.4s)
+(node:4935) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.1s)
+(node:5067) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.2s)
+(node:5196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 [desktop] › tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner (1.1s)
+(node:5329) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   6 [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article (1.3s)
+(node:5459) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query (1.1s)
+(node:5588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (3ms)
+(node:5600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (2ms)
+(node:5612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (2ms)
+
+
+  1) [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+
+    TypeError: Invalid URL
+
+      56 |     await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);
+      57 |     await expect(summary).toBeHidden();await expect(status).toHaveText(view.locale==='zh'?'正在准备搜索…':'Preparing search…');await expect(options(page)).toHaveCount(0);
+    > 58 |     await expect(retry).toBeHidden();expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
+         |                                             ^
+      59 |     await reply(page,0,[],503);await expect(status).toHaveText(view.locale==='zh'?'暂时无法搜索，请重试。':'Search is unavailable. Please try again.');
+      60 |     await expect(query).toHaveAttribute('aria-busy','false');await expect(summary).toBeHidden();await expect(query).toHaveValue('Kubernetes');
+      61 |     const box=await retryHit(retry);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();await expect(retry).toHaveAttribute('aria-disabled','true');
+        at /workspace/blog/tests/e2e/search-index-contracts.spec.ts:58:45
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/search-index-contracts-390-f632a--idle-have-truthful-content-desktop/error-context.md
+
+  2) [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+
+    TypeError: Invalid URL
+
+      56 |     await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);
+      57 |     await expect(summary).toBeHidden();await expect(status).toHaveText(view.locale==='zh'?'正在准备搜索…':'Preparing search…');await expect(options(page)).toHaveCount(0);
+    > 58 |     await expect(retry).toBeHidden();expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
+         |                                             ^
+      59 |     await reply(page,0,[],503);await expect(status).toHaveText(view.locale==='zh'?'暂时无法搜索，请重试。':'Search is unavailable. Please try again.');
+      60 |     await expect(query).toHaveAttribute('aria-busy','false');await expect(summary).toBeHidden();await expect(query).toHaveValue('Kubernetes');
+      61 |     const box=await retryHit(retry);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();await expect(retry).toHaveAttribute('aria-disabled','true');
+        at /workspace/blog/tests/e2e/search-index-contracts.spec.ts:58:45
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/search-index-contracts-390-fbaec--idle-have-truthful-content-desktop/error-context.md
+
+  3) [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+
+    TypeError: Invalid URL
+
+      56 |     await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);
+      57 |     await expect(summary).toBeHidden();await expect(status).toHaveText(view.locale==='zh'?'正在准备搜索…':'Preparing search…');await expect(options(page)).toHaveCount(0);
+    > 58 |     await expect(retry).toBeHidden();expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
+         |                                             ^
+      59 |     await reply(page,0,[],503);await expect(status).toHaveText(view.locale==='zh'?'暂时无法搜索，请重试。':'Search is unavailable. Please try again.');
+      60 |     await expect(query).toHaveAttribute('aria-busy','false');await expect(summary).toBeHidden();await expect(query).toHaveValue('Kubernetes');
+      61 |     const box=await retryHit(retry);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();await expect(retry).toHaveAttribute('aria-disabled','true');
+        at /workspace/blog/tests/e2e/search-index-contracts.spec.ts:58:45
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/search-index-contracts-144-40247--idle-have-truthful-content-desktop/error-context.md
+
+  4) [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+
+    TypeError: Invalid URL
+
+      56 |     await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);
+      57 |     await expect(summary).toBeHidden();await expect(status).toHaveText(view.locale==='zh'?'正在准备搜索…':'Preparing search…');await expect(options(page)).toHaveCount(0);
+    > 58 |     await expect(retry).toBeHidden();expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
+         |                                             ^
+      59 |     await reply(page,0,[],503);await expect(status).toHaveText(view.locale==='zh'?'暂时无法搜索，请重试。':'Search is unavailable. Please try again.');
+      60 |     await expect(query).toHaveAttribute('aria-busy','false');await expect(summary).toBeHidden();await expect(query).toHaveValue('Kubernetes');
+      61 |     const box=await retryHit(retry);await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await expect(retry).toBeFocused();await expect(retry).toHaveAttribute('aria-disabled','true');
+        at /workspace/blog/tests/e2e/search-index-contracts.spec.ts:58:45
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/search-index-contracts-144-a30e5--idle-have-truthful-content-desktop/error-context.md
+
+  5) [desktop] › tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner
+
+    TypeError: Invalid URL
+
+      121 |   await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true})));await expect(palette).toBeVisible();await expect(query).toHaveValue('Kubernetes');await expect(query).toHaveAttribute('aria-busy','false');expect(await query.evaluate((el,original)=>el===original,originalQuery)).toBe(true);expect(await page.evaluate(()=>(window as any).__localIndex.turns[0].aborts)).toBe(1);
+      122 |   await page.clock.fastForward(20000);await reply(page,0,documents('zh','OLD '));await settlePromises(page);await expect(palette).toBeVisible();await expect(query).toHaveValue('Kubernetes');await expect(options(page)).toHaveCount(0);expect(await turnCount(page)).toBe(1);
+    > 123 |   await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));await expect.poll(()=>turnCount(page)).toBe(2);await expect(query).toHaveValue('Kubernetes');expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe('Kubernetes');
+          |                                                                                                                                                                                                           ^
+      124 |   await reply(page,1,documents('zh','Current '));await expect(options(page)).toHaveCount(10);await expect(options(page).first()).toContainText('Current Kubernetes');await expect(options(page).first()).not.toContainText('OLD');await expect(query).toHaveAttribute('aria-busy','false');expect(await page.evaluate(()=>(window as any).__localIndex.aiCalls)).toBe(0);
+      125 | });
+      126 |
+        at /workspace/blog/tests/e2e/search-index-contracts.spec.ts:123:203
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/search-index-contracts-pag-1bb97-cepting-the-old-index-owner-desktop/error-context.md
+
+  6) [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article
+
+    TypeError: Invalid URL
+
+      145 |   await installIndex(page);const trigger=await prepare(page),query=input(page);await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);await reply(page,0,documents());await expect(options(page)).toHaveCount(10);
+      146 |   const old=(await options(page).first().getAttribute('href'))!;await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
+    > 147 |   const current=missing?'zz_no_matching_topic_981254':'Delve';await query.fill(current);await expect(options(page)).toHaveCount(0);expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe(current);
+          |                                                                                                                                           ^
+      148 |   const navigations:string[]=[];let aiRequests=0;page.on('request',request=>{if(new URL(request.url()).pathname==='/.netlify/functions/blog-ai')aiRequests++;});
+      149 |   await page.route('**/*',route=>{if(route.request().isNavigationRequest()&&route.request().frame()===page.mainFrame()){navigations.push(route.request().url());return route.abort();}return route.fallback();});
+      150 |   await query.dispatchEvent('keydown',{key:'Enter',isComposing:true});await query.dispatchEvent('keydown',{key:'Enter',keyCode:229});expect(navigations).toHaveLength(0);
+        at /workspace/blog/tests/e2e/search-index-contracts.spec.ts:147:139
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/search-index-contracts-Ent-b24df-he-current-matching-article-desktop/error-context.md
+
+  7) [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query
+
+    TypeError: Invalid URL
+
+      145 |   await installIndex(page);const trigger=await prepare(page),query=input(page);await trigger.click();await query.fill('Kubernetes');await expect.poll(()=>turnCount(page)).toBe(1);await reply(page,0,documents());await expect(options(page)).toHaveCount(10);
+      146 |   const old=(await options(page).first().getAttribute('href'))!;await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
+    > 147 |   const current=missing?'zz_no_matching_topic_981254':'Delve';await query.fill(current);await expect(options(page)).toHaveCount(0);expect(new URL((await page.locator('#search-full-link').getAttribute('href'))!).searchParams.get('q')).toBe(current);
+          |                                                                                                                                           ^
+      148 |   const navigations:string[]=[];let aiRequests=0;page.on('request',request=>{if(new URL(request.url()).pathname==='/.netlify/functions/blog-ai')aiRequests++;});
+      149 |   await page.route('**/*',route=>{if(route.request().isNavigationRequest()&&route.request().frame()===page.mainFrame()){navigations.push(route.request().url());return route.abort();}return route.fallback();});
+      150 |   await query.dispatchEvent('keydown',{key:'Enter',isComposing:true});await query.dispatchEvent('keydown',{key:'Enter',keyCode:229});expect(navigations).toHaveLength(0);
+        at /workspace/blog/tests/e2e/search-index-contracts.spec.ts:147:139
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/search-index-contracts-Ent-d2a78-e-current-full-search-query-desktop/error-context.md
+
+  8) [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/space-cafe-details-contrac-80327-oam-pose-and-native-trigger-desktop/error-context.md
+
+  9) [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/space-cafe-details-contrac-32566-oam-pose-and-native-trigger-desktop/error-context.md
+
+  10) [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: ../scratch/product-publication-closeout-20261022/targeted-results/space-cafe-details-contrac-54213-oam-pose-and-native-trigger-desktop/error-context.md
+
+  10 failed
+    [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+    [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+    [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content
+    [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content
+    [desktop] › tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner
+    [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article
+    [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query
+    [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+    [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger
+    [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger

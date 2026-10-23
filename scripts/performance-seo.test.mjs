@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from 'parse5';
 import { attribute, htmlElements } from './lib/content-page-map.mjs';
+// The frozen-artifact CI invokes this entry point directly.
+import './reading-fonts.test.mjs';
 
 const root = path.resolve(process.env.SITE_OUTPUT_DIR || 'public');
 const page = route => htmlElements(parse(fs.readFileSync(path.join(root, route, 'index.html'), 'utf8')));
@@ -145,7 +147,8 @@ test('Chinese first viewport keeps a timely webfont fallback when local CJK font
   const nodes=page('/zh/growth/posts/2025-annual-review/');
   const fonts=nodes.find(n=>n.tagName==='link'&&attribute(n,'id')==='zh-prose-fonts');
   assert.ok(fonts);
-  assert.equal(attribute(fonts,'rel'),'stylesheet','register faces before text layout');
+  assert.equal(attribute(fonts,'rel'),'preload','a cold font manifest cannot block first paint');
+  assert.equal(attribute(fonts,'as'),'style');
   const fontCSS=fs.readFileSync(path.join(root,attribute(fonts,'href')),'utf8');
   assert.match(fontCSS,/font-display:optional/);
   assert.doesNotMatch(fontCSS,/font-display:swap|url\(\.\//);

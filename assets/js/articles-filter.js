@@ -368,7 +368,11 @@
   }
 
   function loadCompleteIndex() {
-    if (cards.length >= total) return Promise.resolve();
+    if (cards.length >= total) {
+      sortCards();
+      applyFilters();
+      return Promise.resolve();
+    }
     if (bulkPromise) return bulkPromise;
     var missing = pageURLs.filter(function (url) {
       return !loadedURLs[normalizedPath(url)];

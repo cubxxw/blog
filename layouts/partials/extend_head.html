@@ -72,15 +72,18 @@
        The version is baked into the path (immutable cache) — upgrading the
        font means bumping the directory name in static/fonts/. */ -}}
 {{- if and (eq .Lang "zh") (not (or .IsHome $isLeanAbout $isArticlesLibrary $isProjectsLanding)) }}
-{{- /* Register before text layout, then allow a cold/slow font to keep the
-     platform fallback for this visit. Late font downloads must not move the
-     reader's paragraph. Fingerprint a derived manifest rather than mutate
-     the immutable versioned source shared with older cached pages. */ -}}
+{{- /* Do not block first paint on the CJK manifest. Apply it only before
+     the first frame; a cold/slow manifest keeps the platform fallback for
+     this visit so late CSS cannot move the reader's paragraph. No-JS readers
+     retain a direct stylesheet. Keep the versioned font files immutable. */ -}}
 {{- $zhSource := readFile "static/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" -}}
 {{- $zhSource = replace $zhSource "font-display: swap;" "font-display: optional;" -}}
 {{- $zhSource = replace $zhSource "url(./files/" "url(/fonts/noto-serif-sc/v5.2.8/files/" -}}
 {{- $zhFonts := resources.FromString "assets/fonts/noto-serif-sc-reading.css" $zhSource | resources.Minify | fingerprint -}}
-<link id="zh-prose-fonts" rel="stylesheet" href="{{ $zhFonts.RelPermalink }}" integrity="{{ $zhFonts.Data.Integrity }}" crossorigin="anonymous">
+{{- $readingFonts := resources.Get "js/reading-fonts.js" | minify -}}
+<script data-reading-fonts>{{ $readingFonts.Content | safeJS }}</script>
+<link id="zh-prose-fonts" rel="preload" as="style" href="{{ $zhFonts.RelPermalink }}" integrity="{{ $zhFonts.Data.Integrity }}" crossorigin="anonymous" onload="this.onload=null;if(window.__readingFontsBeforeFrame){this.rel='stylesheet';this.removeAttribute('as')}">
+<noscript><link rel="stylesheet" href="{{ $zhFonts.RelPermalink }}" integrity="{{ $zhFonts.Data.Integrity }}" crossorigin="anonymous"></noscript>
 {{- end }}
 
 {{- /* SEO Structured Data handled by seo.html → seo/structured-data.html */ -}}

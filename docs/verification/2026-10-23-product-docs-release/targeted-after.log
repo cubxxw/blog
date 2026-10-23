@@ -1,0 +1,33 @@
+
+Running 20 tests using 1 worker
+
+(node:5995) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.4s)
+  ✓   2 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.1s)
+  ✓   3 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.2s)
+  ✓   4 [desktop] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.0s)
+  ✓   5 [desktop] › tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner (931ms)
+  ✓   6 [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article (803ms)
+  ✓   7 [desktop] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query (1.1s)
+(node:6359) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (27.8s)
+  ✓   9 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (19.5s)
+  ✓  10 [desktop] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (17.5s)
+(node:6653) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px zh dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.3s)
+  ✓  12 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 390px en light local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.1s)
+  ✓  13 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px zh light local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.3s)
+  ✓  14 [mobile] › tests/e2e/search-index-contracts.spec.ts:54:7 › 1440px en dark local search states › loading, error, retry, calculation, real empty and idle have truthful content (1.0s)
+  ✓  15 [mobile] › tests/e2e/search-index-contracts.spec.ts:118:5 › pagehide preserves the open query and pageshow resumes without accepting the old index owner (844ms)
+  ✓  16 [mobile] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current matching article (940ms)
+  ✓  17 [mobile] › tests/e2e/search-index-contracts.spec.ts:144:39 › Enter within the debounce opens only the current full-search query (817ms)
+(node:7030) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  18 [mobile] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 1440px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (25.8s)
+  ✓  19 [mobile] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 390px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (20.1s)
+  ✓  20 [mobile] › tests/e2e/space-cafe-details-contracts.spec.ts:32:7 › 320px true café detail entry › the ten real source books and coffee views have reachable exits and restore their exact roam pose and native trigger (18.6s)
+
+  20 passed (2.5m)

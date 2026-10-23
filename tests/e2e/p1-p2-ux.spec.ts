@@ -52,9 +52,13 @@ test.describe('P1-P2 UX regression', () => {
     test.skip(testInfo.project.name !== 'mobile', 'mobile only');
     await page.goto('/zh/articles/');
 
-    await expect(page.getByRole('button', { name: /^工程 / })).toBeVisible();
-    await expect(page.getByRole('button', { name: /^成长与生活 / })).toBeAttached();
-    await expect(page.locator('[data-filter-scroll-hint]').first()).toBeVisible();
+    await expect(page.getByRole('button', { name: '工程', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: '成长与生活', exact: true })).toBeInViewport();
+    // Mobile chips hide their counts and fit this viewport; only overflowing
+    // tracks need a scroll hint. The expanded tag track below still overflows.
+    const categories = page.locator('#filter-categories');
+    expect(await categories.evaluate(track => track.scrollWidth - track.clientWidth)).toBeLessThanOrEqual(2);
+    await expect(page.locator('[data-filter-scroll-hint]').first()).toBeHidden();
 
     await page.getByRole('button', { name: '筛选' }).click();
     await expect(page.locator('.library-filter__scroll-shell--tags [data-filter-scroll-hint]')).toBeVisible();
@@ -81,7 +85,10 @@ test.describe('P1-P2 UX regression', () => {
     const launchpad = workspace.locator('[data-space-launchpad]');
     await workspace.locator('[data-space-menu-trigger]').click();
     await allApps.click();
-    await expect(launchpad.locator('[data-launchpad-app]')).toHaveCount(11);
+    await expect(launchpad.locator('[data-launchpad-app]')).toHaveCount(12);
+    expect(await launchpad.locator('[data-launchpad-app]').evaluateAll(buttons =>
+      buttons.map(button => button.getAttribute('data-launchpad-app')).sort()
+    )).toEqual(['welcome', 'browser', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings'].sort());
     await launchpad.locator('[data-launchpad-app="settings"]').click();
     const settings = workspace.locator('[data-space-window="settings"]');
     await expect(settings).toBeVisible();

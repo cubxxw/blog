@@ -27,7 +27,10 @@ for (const width of [320, 390]) for (const locale of ['zh', 'en']) {
     const intro = (await page.locator('.hp-hero-intro').boundingBox())!;
     const social = page.locator('.hp-hero-socials');
     const socialBox = (await social.boundingBox())!;
-    const bear = (await page.locator('#hp-about #hp-bear-ai').boundingBox())!;
+    const posts = (await page.locator('#hp-posts').boundingBox())!;
+    const bear = (await page.locator('.hp-home-connections #hp-bear-ai').boundingBox())!;
+    expect(posts.y).toBeGreaterThanOrEqual(intro.y + intro.height - 1);
+    expect(socialBox.y).toBeGreaterThanOrEqual(posts.y + posts.height - 1);
     expect(socialBox.y).toBeGreaterThanOrEqual(intro.y + intro.height - 1);
     expect(bear.y).toBeGreaterThanOrEqual(socialBox.y + socialBox.height - 1);
     const controls = social.locator('a,button');
@@ -73,18 +76,19 @@ for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
     for (const width of [320, 390, 768, 769, 900, 901, 1024, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       const hero = page.locator('#hp-about');
-      await expect(hero.locator('#hp-bear-ai')).toHaveCount(1);
+      const connection = page.locator('.hp-home-connections');
+      await expect(hero.locator('#hp-bear-ai')).toHaveCount(0);
+      await expect(connection.locator('#hp-bear-ai')).toHaveCount(1);
       await expect(page.locator('#hp-bear-ai')).toHaveCount(1);
       await expect(page.locator('.hp-reading-start, #hp-conversation')).toHaveCount(0);
       const intro = (await hero.locator('.hp-hero-intro').boundingBox())!;
-      const bear = (await hero.locator('#hp-bear-ai').boundingBox())!;
-      const social = (await hero.locator('.hp-hero-socials').boundingBox())!;
+      const bear = (await connection.locator('#hp-bear-ai').boundingBox())!;
+      const social = (await connection.locator('.hp-hero-socials').boundingBox())!;
       if (width > 768) {
-        expect(bear.x).toBeGreaterThanOrEqual(intro.x + intro.width - 1);
         expect(bear.x).toBeGreaterThanOrEqual(social.x + social.width - 1);
         // Every real prompt must fit every slot; random sampling alone can
         // miss a long English label at the narrowest two-column width.
-        const collisions = await hero.locator('#hp-orbit').evaluate(orbit => {
+        const collisions = await connection.locator('#hp-orbit').evaluate(orbit => {
           const root = orbit.closest<HTMLElement>('#hp-bear-ai')!;
           const pool: string[] = JSON.parse(root.dataset.lang === 'zh' ? root.dataset.bubblesZh! : root.dataset.bubblesEn!);
           const avatar = orbit.querySelector('#hp-avatar-btn')!.getBoundingClientRect();
@@ -106,34 +110,36 @@ for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
       } else expect(bear.y).toBeGreaterThanOrEqual(social.y + social.height - 1);
       const heroBox = (await hero.boundingBox())!, postsBox = (await page.locator('#hp-posts').boundingBox())!;
       expect(postsBox.y).toBeGreaterThanOrEqual(heroBox.y + heroBox.height - 1);
+      expect(social.y).toBeGreaterThanOrEqual(postsBox.y + postsBox.height - 1);
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       const cards = page.locator('.hp-channel-panel.is-active .hp-post-card');
       await expect(cards).toHaveCount(3);
       for (const card of await cards.all()) {
-        await expect(card).toHaveCSS('border-top-width', '1px');
+        await expect(card).toHaveCSS('border-bottom-width', '1px');
         await expect(card.locator('.hp-post-excerpt')).toBeVisible();
       }
-      const featured = await cards.first().evaluate(el => getComputedStyle(el).backgroundColor);
-      const secondary = await cards.nth(1).evaluate(el => getComputedStyle(el).backgroundColor);
-      expect(featured).not.toBe(secondary);
+      const featured = await cards.first().locator('h3').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+      const secondary = await cards.nth(1).locator('h3').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+      expect(featured).toBeGreaterThanOrEqual(secondary);
     }
   });
 }
 
-test('hero grid follows rendered capability without empty columns or rows', async ({ page }) => {
+test('the author introduction stays single-column and optional connections follow rendered capability', async ({ page }) => {
   for (const locale of ['zh', 'en']) for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto(home(locale));
-    const hero = page.locator('#hp-about'), hasBear = await hero.locator('#hp-bear-ai').count() === 1;
-    const columns = await hero.evaluate(el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
-    expect(columns).toBe(hasBear && width > 768 ? 2 : 1);
-    if (hasBear) await expect(hero).toHaveClass(/hp-hero--with-bear/);
-    else {
-      await expect(hero).not.toHaveClass(/hp-hero--with-bear/);
-      expect(await hero.evaluate(el => getComputedStyle(el).gridTemplateAreas)).not.toContain('bear');
-      const outer = (await hero.boundingBox())!, intro = (await hero.locator('.hp-hero-intro').boundingBox())!;
-      expect(Math.abs(outer.width - intro.width)).toBeLessThanOrEqual(1);
-    }
+    const hero = page.locator('#hp-about'), connection = page.locator('.hp-home-connections');
+    await expect(hero).not.toHaveClass(/hp-hero--with-bear/);
+    await expect(hero.locator('#hp-bear-ai')).toHaveCount(0);
+    const hasBear = await connection.locator('#hp-bear-ai').count() === 1;
+    const display = await connection.evaluate(el => getComputedStyle(el).display);
+    if(width>768) {
+      expect(display).toBe('grid');
+      const columns = await connection.evaluate(el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
+      expect(columns).toBe(hasBear ? 2 : 1);
+    } else expect(display).toBe('block');
+    expect(await connection.evaluate(el => el.classList.contains('hp-home-connections--with-bear'))).toBe(hasBear);
   }
 });
 
@@ -143,7 +149,7 @@ test('hero Bear retains its question, reply and focus across chat reopening', as
   await page.goto('/zh/');
   expect(await page.evaluate(() => {
     const posts = document.getElementById('hp-posts')!, bear = document.getElementById('hp-bear-ai')!;
-    return !!(bear.compareDocumentPosition(posts) & Node.DOCUMENT_POSITION_FOLLOWING);
+    return !!(posts.compareDocumentPosition(bear) & Node.DOCUMENT_POSITION_FOLLOWING);
   })).toBe(true);
   const root = page.locator('#hp-bear-ai'), original = await root.elementHandle();
   await expect(root.locator('.hp-bear-avatar-status')).toHaveText('AI 分身');

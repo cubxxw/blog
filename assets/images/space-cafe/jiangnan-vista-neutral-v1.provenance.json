@@ -1,0 +1,8 @@
+{
+  "kind": "generated-neutral-solar-backplate",
+  "created": "2026-10-22",
+  "source": "jiangnan-vista-day-v1.png",
+  "generator": "OpenAI image generation",
+  "changes": "Removed fixed sun and directional reflection; retained village, bridge, mountain and vegetation composition for continuous procedural solar/cloud/water effects.",
+  "sha256": "d3a1d28b76f74aecc38f12a7fb82eaae29ef05d71dc96b944e6d5270bd4fc051"
+}

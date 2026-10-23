@@ -1,0 +1,9 @@
+{
+  "id": 39850588644,
+  "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+  "status": "completed",
+  "conclusion": "failure",
+  "run_attempt": 1,
+  "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588644",
+  "observed_at": "2026-10-23T06:45:25.142448+08:00"
+}

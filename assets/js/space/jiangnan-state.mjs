@@ -1,13 +1,14 @@
+import {JIANGNAN_DESK,JIANGNAN_WORK_CHAIR,JIANGNAN_CAT_BED,JIANGNAN_WORKSTATION} from './jiangnan-layout.mjs';
 export const JIANGNAN_BOUNDS=Object.freeze({minX:-2.98,maxX:2.98,minZ:-2.34,maxZ:1.82});
 export const JIANGNAN_COLLIDERS=Object.freeze([
-  {id:'desk',minX:.25,maxX:2.68,minZ:-2.24,maxZ:-.92},
-  {id:'cabinet',minX:-3.2,maxX:-2.56,minZ:-2.4,maxZ:-.2},
-  {id:'reading-chair',minX:-2.48,maxX:-1.6,minZ:.2,maxZ:1.18},
-  {id:'desk-chair',minX:.7,maxX:1.58,minZ:-.4,maxZ:.4},
+  {id:'desk',minX:JIANGNAN_DESK.centerX-JIANGNAN_DESK.width/2,maxX:JIANGNAN_DESK.centerX+JIANGNAN_DESK.width/2,minZ:JIANGNAN_DESK.backZ,maxZ:JIANGNAN_DESK.frontZ},
+  {id:'cabinet',minX:-3.19,maxX:-2.45,minZ:-2.46,maxZ:.05},
+  {id:'cat-bed',minX:JIANGNAN_CAT_BED.x-.46,maxX:JIANGNAN_CAT_BED.x+.46,minZ:JIANGNAN_CAT_BED.z-.30,maxZ:JIANGNAN_CAT_BED.z+.30},
+  {id:'desk-chair',minX:JIANGNAN_WORK_CHAIR.minX,maxX:JIANGNAN_WORK_CHAIR.maxX,minZ:JIANGNAN_WORK_CHAIR.minZ,maxZ:JIANGNAN_WORK_CHAIR.maxZ},
   {id:'fan',minX:2.55,maxX:3.05,minZ:-.8,maxZ:-.3},
-  {id:'speaker',minX:-.90,maxX:-.58,minZ:-2.265,maxZ:-1.955}
+  {id:'speaker',minX:-3.06,maxX:-2.60,minZ:.08,maxZ:.55}
 ]);
-export const JIANGNAN_TARGETS=Object.freeze({computer:[1.45,1.22,-1.815],photo:[2.31,1.045,-1.28],coffee:[.55,.91,-1.28],books:[-2.56,1.2,-1.1]});
+export const JIANGNAN_TARGETS=Object.freeze({computer:JIANGNAN_WORKSTATION.computer,photo:JIANGNAN_WORKSTATION.photo,coffee:JIANGNAN_WORKSTATION.coffee,books:[-2.48,.59,-.80]});
 export function jiangnanLook(position,target,fov=58){const [x,y,z]=position,dx=target[0]-x,dy=target[1]-y,dz=target[2]-z;return {x,y,z,yaw:Math.atan2(-dx,-dz),pitch:Math.atan2(dy,Math.hypot(dx,dz)),fov};}
 export const JIANGNAN_ENTRY=Object.freeze(jiangnanLook([-1.7,1.55,1.7],[1.0,1.17,-1.6],58));
 export function canJiangnanNavigate({mode,visible,blocked=false}){return mode==='roam'&&visible&&!blocked;}
@@ -40,4 +41,12 @@ export function jiangnanDestination(pose,point){
   }
   return next;
 }
-export function jiangnanBoat(seconds){const phase=((seconds/135+.42)%1+1)%1;return {x:21-phase*43,y:-.46+Math.sin(seconds*.7)*.018,z:-10.8+Math.sin(phase*Math.PI)*.7,roll:Math.sin(seconds*.6)*.009,stroke:Math.sin(seconds*.85)*.16};}
+// Incommensurate currents make a bounded, non-repeating wander. A visit keeps
+// one seed; neither a render frame nor a clock adjustment selects a new goal.
+export function jiangnanBoat(seconds,seed=79){
+ const t=Number.isFinite(seconds)?Math.max(0,seconds):0,phase=(Math.imul((seed>>>0)^79,2654435761)>>>0)/4294967296*Math.PI*2;
+ const a=t*.027+2.03+phase,b=t*.0141+.5+phase*.73,c=t*.0207+.4+phase*.61,d=t*.0093+1.2+phase*.37;
+ const x=3.65*Math.sin(a)+.68*Math.sin(b),z=-17.3+3.1*Math.sin(c)+.62*Math.sin(d);
+ const vx=3.65*.027*Math.cos(a)+.68*.0141*Math.cos(b),vz=3.1*.0207*Math.cos(c)+.62*.0093*Math.cos(d),speed=Math.hypot(vx,vz);
+ return {x,y:-.46+Math.sin(t*.7)*.014,z,yaw:Math.atan2(vz,-vx),speed,roll:Math.sin(t*.6)*.007,stroke:Math.sin(t*.85)*.16};
+}

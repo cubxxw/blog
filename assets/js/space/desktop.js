@@ -9,7 +9,9 @@ import { mountApps, escapeHTML } from './apps.js';
 import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
 
 const root = document.querySelector('[data-bear-workspace]');
-if (root) mountDesktop(root);
+// Space belongs to a full page. Its own browser may show the blog, whose links
+// must never boot another room, sound engine or WebGL context inside the Mac.
+if (root && window.parent===window) mountDesktop(root);
 function mountDesktop(root) {
   mountFullscreen(root);
   const catalog = JSON.parse(root.querySelector('[data-space-catalog]').textContent);
@@ -120,7 +122,8 @@ function mountDesktop(root) {
       const rect = win.maximized ? { x:8,y:8,width:viewport().width-16,height:viewport().height-108 } : win.rect;
       Object.assign(el.style,{ left:'0px',top:'0px',width:`${rect.width}px`,height:`${rect.height}px`,transform:`translate(${rect.x}px,${rect.y}px)`,zIndex:String(10+index) });
       el.dataset.maximized = String(win.maximized);
-      if (entry.payload !== win.payload || !entry.rendered) {
+      if(entry.rendered&&win.app==='browser'&&entry.payload!==win.payload){apps.navigateBrowser(win.id,win.payload);entry.payload=win.payload;}
+      else if (entry.payload !== win.payload || !entry.rendered) {
         apps.render(win,el.querySelector('[data-window-body]')); entry.payload = win.payload; entry.rendered = true;
       }
     });
@@ -143,7 +146,8 @@ function mountDesktop(root) {
     const previous = state.windows.find(w => w.app === app);
     if(app==='agent' && state.active !== 'agent')companionFocus=publicFocus(state,catalog);
     // Dock restores the existing document; an explicit payload navigates that app.
-    update({ type:'open',app,payload:app==='agent' ? '' : payload === undefined ? previous?.payload || '' : payload });
+    update({ type:'open',app,payload:app==='agent' ? '' : payload === undefined ? previous?.payload || '' : payload,...(!previous&&['browser','products'].includes(app)?{rect:{x:70,y:36,width:860,height:590}}:{}) });
+    if(app==='browser'&&payload!==undefined)apps.navigateBrowser(app,payload);
     if (!state.windows.some(w => w.app === app)) return t('窗口已满。先关闭一个窗口。','Close a window before opening another.');
     if(entering)entering.then(()=>{if(state.active===app)focusWindow(app);});else focusWindow(app);
     if(app==='agent')root.dispatchEvent(new CustomEvent('bear:agent-prefill',{detail:{focus:companionFocus,question:payload || ''}}));

@@ -1,0 +1,109 @@
+{
+  "note": "Actual generated-artifact offline Chromium replay; four device/theme scenarios, separate from full runner.",
+  "results": [
+    {
+      "variant": "mobile-light",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": true,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 104,
+        "rel": "preload",
+        "theme": "light",
+        "background": "rgb(251, 249, 244)",
+        "viewport": 412,
+        "overflow": false,
+        "faces": 0
+      },
+      "coverage": null,
+      "elapsedMs": 650,
+      "missingResources": []
+    },
+    {
+      "variant": "mobile-dark",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": true,
+      "stable": true,
+      "positionBefore": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "positionAfter": {
+        "top": 419.25,
+        "scroll": 607
+      },
+      "metrics": {
+        "fcp": 884,
+        "rel": "preload",
+        "theme": "dark",
+        "background": "rgb(28, 25, 23)",
+        "viewport": 412,
+        "overflow": false,
+        "faces": 0
+      },
+      "coverage": null,
+      "elapsedMs": 1012,
+      "missingResources": []
+    },
+    {
+      "variant": "desktop-light",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": true,
+      "stable": true,
+      "positionBefore": {
+        "top": 453.921875,
+        "scroll": 688
+      },
+      "positionAfter": {
+        "top": 453.921875,
+        "scroll": 688
+      },
+      "metrics": {
+        "fcp": 192,
+        "rel": "preload",
+        "theme": "light",
+        "background": "rgb(251, 249, 244)",
+        "viewport": 1440,
+        "overflow": false,
+        "faces": 0
+      },
+      "coverage": null,
+      "elapsedMs": 397,
+      "missingResources": []
+    },
+    {
+      "variant": "desktop-dark",
+      "cssRequested": true,
+      "visibleBeforeFontCSS": true,
+      "stable": true,
+      "positionBefore": {
+        "top": 453.921875,
+        "scroll": 688
+      },
+      "positionAfter": {
+        "top": 453.921875,
+        "scroll": 688
+      },
+      "metrics": {
+        "fcp": 76,
+        "rel": "preload",
+        "theme": "dark",
+        "background": "rgb(28, 25, 23)",
+        "viewport": 1440,
+        "overflow": false,
+        "faces": 0
+      },
+      "coverage": null,
+      "elapsedMs": 281,
+      "missingResources": []
+    }
+  ]
+}

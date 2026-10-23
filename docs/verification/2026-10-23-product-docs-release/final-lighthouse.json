@@ -1,0 +1,23 @@
+{
+  "run": 39854328809,
+  "url": "https://github.com/cubxxw/blog/actions/runs/39854328809",
+  "job": 120091220899,
+  "workflow_head_sha": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+  "attempt": 1,
+  "conclusion": "failure",
+  "stage": "collection",
+  "failed_page": "https://cubxxw.com/projects/",
+  "error": "PROTOCOL_TIMEOUT",
+  "method": "Network.getResponseBody",
+  "completed_reports": 9,
+  "full_assertions_reached": false,
+  "artifact": {
+    "id": 12459364361,
+    "bytes": 4047675,
+    "sha256": "1900827a76bbe05e6cd4bf8369b634f40d4a8aeab430fec7a1c949c09443bf58",
+    "verified": true
+  },
+  "underlying_cause": "Unresolved; application source was unchanged. Do not infer infrastructure-only failure or change thresholds.",
+  "manual_retry_requested": false,
+  "observed_at": "2026-10-22T21:28:58.321949+00:00"
+}

@@ -15,8 +15,8 @@
   /* Down in the corner, clear of the home-indicator safe area. */
   bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
   right: 1rem;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   /* Translucent accent so the paper shows through — a hint, not a slab.
      color-mix keeps it on-brand (accent) while cutting its weight; the

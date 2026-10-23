@@ -1,0 +1,261 @@
+{
+  "provider": "Poly Haven",
+  "author": "Dimitrios Savva",
+  "sourcePage": "https://polyhaven.com/a/wood_floor",
+  "license": "CC0",
+  "licenseUrl": "https://polyhaven.com/license",
+  "licenseChecked": "2026-10-22",
+  "sourceManifest": "docs/design/cafe-lived-world-2026-10-16/material-assets.json",
+  "recipe": {
+    "crops1024": [
+      [
+        8,
+        6,
+        96,
+        880
+      ],
+      [
+        126,
+        10,
+        90,
+        690
+      ],
+      [
+        240,
+        400,
+        90,
+        610
+      ],
+      [
+        354,
+        8,
+        90,
+        900
+      ],
+      [
+        468,
+        8,
+        90,
+        670
+      ],
+      [
+        582,
+        400,
+        90,
+        610
+      ],
+      [
+        696,
+        160,
+        90,
+        850
+      ],
+      [
+        810,
+        8,
+        90,
+        950
+      ]
+    ],
+    "overlap": 0.125,
+    "cropResample": "Pillow BICUBIC EXTENT, same normalized source rectangles in every channel",
+    "loopBlend": "crop output samples to first 87.5 percent; replace first 12.5 percent with a smoothstep blend of last overlap and first overlap, then resize to square output height",
+    "colorBlend": "decode sRGB to linear, blend, reencode sRGB",
+    "normalBlend": "decode RGB to signed vectors, blend, normalize, reencode RGB; OpenGL tangent convention retained, no rotation or reflection",
+    "roughnessBlend": "linear scalar RGB blend",
+    "jpeg": {
+      "quality": 95,
+      "subsampling": 0,
+      "optimize": true
+    },
+    "tools": {
+      "Pillow": "10.0.1",
+      "numpy": "1.26.4"
+    }
+  },
+  "channels": [
+    {
+      "channel": "color",
+      "file": "wood_floor_grain-color.jpg",
+      "sourceFile": "wood_floor-color.jpg",
+      "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_diff_1k.jpg",
+      "sourceSha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789",
+      "sha256": "e6e96aa4fca219edc2d0ce0ae8c51f97f1935b564bec915aade7044a20bbb29a",
+      "bytes": 380176,
+      "width": 1024,
+      "height": 1024,
+      "normalizedCrops": [
+        [
+          0.0078125,
+          0.005859375,
+          0.09375,
+          0.859375
+        ],
+        [
+          0.123046875,
+          0.009765625,
+          0.087890625,
+          0.673828125
+        ],
+        [
+          0.234375,
+          0.390625,
+          0.087890625,
+          0.595703125
+        ],
+        [
+          0.345703125,
+          0.0078125,
+          0.087890625,
+          0.87890625
+        ],
+        [
+          0.45703125,
+          0.0078125,
+          0.087890625,
+          0.654296875
+        ],
+        [
+          0.568359375,
+          0.390625,
+          0.087890625,
+          0.595703125
+        ],
+        [
+          0.6796875,
+          0.15625,
+          0.087890625,
+          0.830078125
+        ],
+        [
+          0.791015625,
+          0.0078125,
+          0.087890625,
+          0.927734375
+        ]
+      ]
+    },
+    {
+      "channel": "normal",
+      "file": "wood_floor_grain-normal.jpg",
+      "sourceFile": "wood_floor-normal.jpg",
+      "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_nor_gl_1k.jpg",
+      "sourceSha256": "e6eba761dd4fb23cbb3db16ce6c98c83983ef11f9be4ae8014721ee4cac94a54",
+      "sha256": "e06f81c31b60afb777a4f067dd1702c055a2b592cb4fac01ec7ccda5e46c953f",
+      "bytes": 28501,
+      "width": 512,
+      "height": 512,
+      "normalizedCrops": [
+        [
+          0.0078125,
+          0.005859375,
+          0.09375,
+          0.859375
+        ],
+        [
+          0.123046875,
+          0.009765625,
+          0.087890625,
+          0.673828125
+        ],
+        [
+          0.234375,
+          0.390625,
+          0.087890625,
+          0.595703125
+        ],
+        [
+          0.345703125,
+          0.0078125,
+          0.087890625,
+          0.87890625
+        ],
+        [
+          0.45703125,
+          0.0078125,
+          0.087890625,
+          0.654296875
+        ],
+        [
+          0.568359375,
+          0.390625,
+          0.087890625,
+          0.595703125
+        ],
+        [
+          0.6796875,
+          0.15625,
+          0.087890625,
+          0.830078125
+        ],
+        [
+          0.791015625,
+          0.0078125,
+          0.087890625,
+          0.927734375
+        ]
+      ]
+    },
+    {
+      "channel": "roughness",
+      "file": "wood_floor_grain-roughness.jpg",
+      "sourceFile": "wood_floor-roughness.jpg",
+      "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_rough_1k.jpg",
+      "sourceSha256": "b3d117148f083dfe5e26f116a55d1eb8100944676b4b42095fb3d50a5ebe9483",
+      "sha256": "b29d1ebcb645085c7f35e73f30da699d815586d1e5ecf09ef37f9d7745a5827e",
+      "bytes": 50568,
+      "width": 512,
+      "height": 512,
+      "normalizedCrops": [
+        [
+          0.0078125,
+          0.005859375,
+          0.09375,
+          0.859375
+        ],
+        [
+          0.123046875,
+          0.009765625,
+          0.087890625,
+          0.673828125
+        ],
+        [
+          0.234375,
+          0.390625,
+          0.087890625,
+          0.595703125
+        ],
+        [
+          0.345703125,
+          0.0078125,
+          0.087890625,
+          0.87890625
+        ],
+        [
+          0.45703125,
+          0.0078125,
+          0.087890625,
+          0.654296875
+        ],
+        [
+          0.568359375,
+          0.390625,
+          0.087890625,
+          0.595703125
+        ],
+        [
+          0.6796875,
+          0.15625,
+          0.087890625,
+          0.830078125
+        ],
+        [
+          0.791015625,
+          0.0078125,
+          0.087890625,
+          0.927734375
+        ]
+      ]
+    }
+  ]
+}

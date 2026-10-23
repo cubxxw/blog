@@ -1,0 +1,96 @@
+{
+  "run_id": 39843952273,
+  "source_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+  "url": "https://github.com/cubxxw/blog/actions/runs/39843952273",
+  "status": "completed",
+  "conclusion": "cancelled",
+  "reason": "Maximum execution time of 2h0m0s exceeded; annotations retained",
+  "counts_are_partial": true,
+  "suites": [
+    {
+      "planned": 48,
+      "workers": 1,
+      "lastPrintedIndex": 48,
+      "observedUnique": 48,
+      "observedPassed": 48,
+      "observedFlakyPasses": 0,
+      "observedSkipped": 0,
+      "observedUnrecoveredFailures": [],
+      "plannedWithoutObservedResult": 0
+    },
+    {
+      "planned": 1058,
+      "workers": 1,
+      "lastPrintedIndex": 953,
+      "observedUnique": 939,
+      "observedPassed": 909,
+      "observedFlakyPasses": 2,
+      "observedSkipped": 24,
+      "observedUnrecoveredFailures": [
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T20:58:40.2075585Z   ✘   487 [desktop] › tests/e2e/space-living-motion.spec.ts:36:5 › approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf (retry #2) (34.7s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:01:12.5632329Z   ✘   491 [desktop] › tests/e2e/space-living-motion.spec.ts:64:5 › resizing during a window or computer approach retargets the live camera without an arrival jump (retry #2) (43.4s)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:10:51.4800126Z   ✘   506 [desktop] › tests/e2e/space-object-living.spec.ts:69:5 › the cat sleeps by default and a real nest click wakes it before it comes over (retry #2) (1.1m)"
+        },
+        {
+          "project": "desktop",
+          "test": "tests/e2e/space-speaker-volume.spec.ts:16:5 › speaker volume can grow to full gain during playback without replacing music or rain",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:25:49.1080743Z   ✘   531 [desktop] › tests/e2e/space-speaker-volume.spec.ts:16:5 › speaker volume can grow to full gain during playback without replacing music or rain (retry #2) (42.9s)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:45:33.0635078Z   ✘   937 [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact (retry #2) (5.3s)"
+        },
+        {
+          "project": "mobile",
+          "test": "tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target",
+          "attempts": 3,
+          "seenFailure": true,
+          "status": "failed",
+          "lastLog": "2026-10-22T21:46:57.0949023Z   ✘   940 [mobile] › tests/e2e/p1-p2-ux.spec.ts:67:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target (retry #2) (26.6s)"
+        }
+      ],
+      "plannedWithoutObservedResult": 119
+    }
+  ],
+  "source_and_output_reports_ok": true,
+  "generated_seo": {
+    "target": "production",
+    "status": "success"
+  },
+  "artifact": {
+    "id": 12462355011,
+    "bytes": 67652632,
+    "sha256": "724a4c1b18544bc21b0d115b6d22527744d86c12feeb81a4c936433a166a27cf",
+    "verified": true
+  },
+  "fixed_search_catalog_target_cases_observed_passed": 17,
+  "fixed_search_catalog_target_cases_not_reached": 3,
+  "note": "Two failed P1-P2 mobile cases in this commit were repaired later in08783e4 and passed targeted verification. Four Space failures remain unresolved; two additional Space cases recovered on retry."
+}

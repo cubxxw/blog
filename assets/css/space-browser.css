@@ -1,0 +1,66 @@
+.space .space-icon[data-icon="browser"] { color:#397a98; background:linear-gradient(145deg,#e1f1ee,#9dc7d3); }
+.space-browser { display:flex; flex-direction:column; height:100%; min-height:260px; color:var(--sp-ink); background:var(--sp-paper); }
+.space-browser__chrome { display:flex; align-items:center; gap:7px; flex-shrink:0; padding:9px 10px; background:linear-gradient(var(--sp-paper),var(--sp-chrome)); border-bottom:1px solid var(--sp-line); }
+.space-browser__navigation { display:flex; gap:2px; }
+.space .space-browser__chrome button,.space .space-browser__chrome>a { display:grid; place-items:center; min-width:34px; height:34px; padding:0 8px; border:1px solid var(--sp-line); border-radius:5px; color:var(--sp-ink); background:var(--sp-surface); font:20px/1 system-ui,sans-serif; text-decoration:none; }
+.space .space-browser__chrome button:disabled { opacity:.35; cursor:default; }
+.space .space-browser__chrome>a[hidden] { display:none; }
+.space-browser__address { display:flex; flex:1; min-width:0; margin:0; padding:0; border:1px solid var(--sp-line); border-radius:6px; background:var(--sp-paper); box-shadow:inset 0 1px 2px #142d3910; }
+.space-browser__address label { display:flex; flex:1; min-width:0; margin:0; }
+.space .space-browser__address input { width:100%; min-width:0; height:34px; margin:0; padding:5px 10px; border:0; border-radius:6px; color:var(--sp-ink); background:transparent; font:12px/1.5 var(--font-sans,system-ui,sans-serif); box-shadow:none; }
+.space .space-browser__address button { height:34px; min-width:30px; border:0; background:transparent; font-size:17px; }
+.space .space-browser input:focus-visible,.space .space-browser a:focus-visible,.space .space-browser button:focus-visible { outline:2px solid var(--sp-accent); outline-offset:2px; }
+.space .space-browser input[aria-invalid="true"] { outline:2px solid #b6654e; outline-offset:-2px; }
+.space-browser__content { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; }
+.space-browser[data-browser-loading="true"] .space-browser__content::before { content:''; position:absolute; z-index:2; top:0; left:0; height:2px; width:26%; background:var(--sp-accent); opacity:.7; pointer-events:none; animation:space-browser-connecting 1.7s linear infinite; }
+@keyframes space-browser-connecting { from { transform:translateX(-110%); } to { transform:translateX(410%); } }
+.space-browser__page { display:block; width:100%; height:100%; min-height:240px; border:0; background:#fff; }
+.space-browser__status { flex-shrink:0; min-height:25px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin:0!important; padding:6px 11px; border-top:1px solid var(--sp-line); color:var(--sp-muted); background:var(--sp-surface); font:10px/1.5 var(--font-sans,system-ui,sans-serif)!important; }
+.space-browser-home { max-width:900px; margin:0 auto; padding:22px clamp(18px,5%,44px) 20px; }
+.space .space-browser-home h2 { margin:0 0 5px; color:var(--sp-ink); font:500 clamp(21px,3vw,24px)/1.3 Georgia,'Songti SC',serif; letter-spacing:-.025em; }
+.space-browser-home>header>p:last-child { margin:0!important; color:var(--sp-muted); font:12px/1.6 var(--font-sans,system-ui,sans-serif)!important; }
+.space-browser-home__places { display:flex; flex-wrap:wrap; align-items:center; gap:6px 20px; margin:14px 0 20px; padding:8px 0; border-block:1px solid var(--sp-line); }
+.space .space-browser-home__places :is(a,button) { min-height:30px; padding:5px 0; color:var(--sp-ink); background:none; font:12px/1.6 var(--font-sans,system-ui,sans-serif); text-decoration:none; }
+.space-browser-bookmarks { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:20px; }
+.space .space-browser-bookmark { display:flex; flex-direction:column; min-width:0; color:var(--sp-ink); text-decoration:none; background:none; border:0; box-shadow:none; }
+.space-browser-bookmark__picture { display:grid; place-items:center; aspect-ratio:2.2; overflow:hidden; border:1px solid var(--sp-line); border-radius:7px; background:var(--sp-soft); box-shadow:0 3px 8px #28473c0c; }
+.space-browser-bookmark__picture img { width:100%; height:100%; margin:0; object-fit:cover; object-position:top; transition:transform .2s ease; }
+.space-browser-bookmark__picture>span { color:var(--sp-accent); font:500 28px/1 Georgia,serif; }
+.space-browser-bookmark__name { display:flex; justify-content:space-between; gap:10px; margin:10px 0 3px; font:550 13px/1.4 var(--font-sans,system-ui,sans-serif); }
+.space-browser-bookmark__name>span { color:var(--sp-muted); font-size:12px; }
+.space-browser-bookmark small { overflow:hidden; text-overflow:ellipsis; color:var(--sp-muted); font:10px/1.6 var(--font-sans,system-ui,sans-serif); }
+.space-browser-bookmark:hover .space-browser-bookmark__picture img { transform:scale(1.025); }
+.space-browser-outbound { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100%; padding:32px 20px; text-align:center; }
+.space-browser-outbound__mark { color:var(--sp-accent); font:40px/1 Georgia,serif; }
+.space-browser-outbound h2 { margin:18px 0 6px; font-size:24px; }
+.space-browser-outbound p { color:var(--sp-muted); font-size:12px; }
+.space-browser-outbound a { margin-top:14px; }
+
+/* The project directory shows the work before asking visitors to open a detail. */
+.space .space-project-gallery { min-height:100%; background:var(--sp-paper); }
+.space-project-gallery__head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 25px 18px; border-bottom:1px solid var(--sp-line); }
+.space-project-gallery__head h2 { margin:0 0 5px; font:500 23px/1.4 Georgia,'Songti SC',serif; }
+.space-project-gallery__head p { margin:0!important; color:var(--sp-muted); font:12px/1.7 var(--font-sans,system-ui,sans-serif)!important; }
+.space .space-project-gallery__head button { flex-shrink:0; min-height:36px; padding:7px 11px; border:1px solid var(--sp-line); border-radius:5px; background:var(--sp-surface); font-size:12px; }
+.space-project-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); gap:25px 22px; padding:24px 25px 30px; }
+.space-project-card { display:flex; flex-direction:column; min-width:0; border:0; }
+.space .space-project-card__main { display:flex; flex-direction:column; align-items:stretch; gap:0; min-width:0; padding:0; border:0; background:none; color:var(--sp-ink); text-align:left; }
+.space-project-card__picture { display:grid; place-items:center; aspect-ratio:1.85; overflow:hidden; border:1px solid var(--sp-line); border-radius:5px; background:var(--sp-soft); }
+.space-project-card__picture img { width:100%; height:100%; margin:0; object-fit:cover; object-position:top; }
+.space-project-card__picture>span { color:var(--sp-accent); font:32px/1 Georgia,serif; }
+.space-project-card__title { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:13px; }
+.space-project-card__title strong { font:600 16px/1.4 var(--font-sans,system-ui,sans-serif); }
+.space-project-card__title small { color:var(--sp-muted); font:10px/1.4 var(--font-sans,system-ui,sans-serif); }
+.space .space-project-card>p { margin:7px 0 13px; color:var(--sp-muted); font:12px/1.8 var(--font-sans,system-ui,sans-serif); }
+.space-project-card__actions { display:flex; align-items:center; gap:18px; margin-top:auto; }
+.space .space-project-card__actions :is(a,button) { min-height:32px; padding:5px 0; border:0; color:var(--sp-accent); background:none; text-decoration:none; font:550 12px/1.6 var(--font-sans,system-ui,sans-serif); }
+.space .space-project-card__actions a:last-child { color:var(--sp-muted); font-weight:400; }
+@media(max-width:640px) {
+ .space-browser__chrome { gap:4px; padding:7px 6px; }
+ .space .space-browser__chrome button,.space .space-browser__chrome>a { min-width:28px; }
+ .space-browser-bookmarks { grid-template-columns:repeat(2,minmax(0,1fr)); gap:23px 16px; }
+ .space-project-gallery__head { padding:18px; }
+ .space-project-gallery__head button { max-width:104px; }
+ .space-project-grid { padding:20px 18px; }
+}
+@media(prefers-reduced-motion:reduce) { .space-browser-bookmark__picture img { transition:none; } .space-browser[data-browser-loading="true"] .space-browser__content::before { animation:none; width:100%; opacity:.35; } }

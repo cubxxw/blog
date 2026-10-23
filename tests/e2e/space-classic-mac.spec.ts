@@ -1,4 +1,5 @@
 import {test,expect,type Page} from '../helpers/frozen-site';
+import {hitRoomObject} from '../helpers/room-interaction';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'&&process.env.SPACE_SOFTWARE_QA!=='1'?['--enable-gpu','--use-angle=metal']:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']}});
 const failures=new WeakMap<Page,string[]>();
 test.beforeEach(async({page})=>{test.setTimeout(90_000);const errors:string[]=[];failures.set(page,errors);page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});});
@@ -10,6 +11,11 @@ async function desk(page:Page,lang='zh'){
   if(page.viewportSize()!.width<=640)await page.locator('.jiangnan-computer-expand').click();
 }
 async function home(page:Page){await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'welcome',payload:''}));}
+async function physicalDesk(page:Page){
+  await page.goto('/zh/projects/?vista=image');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
+  await expect(root(page)).toHaveAttribute('data-world-ready','true',{timeout:30_000});await hitRoomObject(page,'computer');
+  await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');await expect(root(page)).toHaveAttribute('data-computer-view','framed');
+}
 
 test('the first desktop is a familiar Finder with a complete menu and labelled Dock',async({page})=>{
   await page.setViewportSize({width:1440,height:960});await desk(page);
@@ -61,6 +67,37 @@ test('Finder folders open the real product directory, writing, photos and origin
 test('a framed computer keeps the real rainy scenery moving and quiet mode pauses it',async({page})=>{
   await page.setViewportSize({width:1440,height:960});await desk(page);await page.emulateMedia({reducedMotion:'no-preference'});const before=await root(page).getAttribute('data-room-boat-pose');await expect.poll(()=>root(page).getAttribute('data-room-boat-pose')).not.toBe(before);
   await page.emulateMedia({reducedMotion:'reduce'});const frozen=await root(page).getAttribute('data-room-boat-pose');await page.waitForTimeout(180);expect(await root(page).getAttribute('data-room-boat-pose')).toBe(frozen);
+});
+
+for(const action of ['close','minimize'])test(`a native window ${action} stays inside the physical computer`,async({page})=>{
+  await physicalDesk(page);
+  await page.evaluate(()=>(window as any).BearSpace.execute('open',{app:'notes'}));
+  await page.locator('[data-note-editor]').fill('Keep using the computer.');
+  await page.locator(`[data-space-window="notes"] [data-window-action="${action}"]`).click();
+  await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
+  await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+  await expect(page.locator('[data-note-editor]')).toBeHidden();
+  await page.locator('[data-mac-menu="file"]').click();
+  await page.locator('[data-mac-panel="file"] [data-open="notes"]').click();
+  await expect(page.locator('[data-note-editor]')).toHaveValue('Keep using the computer.');
+  await page.mouse.click(12,12);await expect(root(page)).toHaveAttribute('data-world-mode','roam');
+});
+
+test('scroll and two-finger gestures inside the screen keep control of the Mac',async({page})=>{
+  await physicalDesk(page);
+  const bounds=JSON.parse((await root(page).getAttribute('data-computer-screen-bounds'))!),cx=bounds.x+bounds.width*.65,cy=bounds.y+bounds.height*.72;
+  await page.mouse.move(cx,cy);await page.mouse.wheel(0,180);await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+  const session=await page.context().newCDPSession(page);
+  async function pinch(x:number,y:number,span:number){
+    await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:x-span,y},{x:x+span,y}]});
+    await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-span*.55,y},{x:x+span*.55,y}]});
+    await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  }
+  try{
+    await pinch(cx,cy,Math.min(50,bounds.width*.10));
+    await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+    await pinch(60,60,24);await expect(root(page)).toHaveAttribute('data-world-mode','roam');
+  }finally{await session.detach();}
 });
 
 test('graphics recovery and an ordinary scene change release framed dialog coordinates',async({page})=>{

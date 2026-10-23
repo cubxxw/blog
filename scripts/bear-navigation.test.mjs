@@ -8,7 +8,7 @@ const labels = { welcome: '关于我', reader: '文章与思考', products: '产
 test('the five mobile destinations are registered and the full launcher exposes every application', () => {
   assert.deepEqual(MOBILE_APPS, ['welcome', 'reader', 'products', 'agent', 'settings']);
   assert.ok(MOBILE_APPS.every(app => APPS.includes(app)));
-  assert.equal(APPS.length, 11);
+  assert.equal(APPS.length, 12);
   assert.deepEqual(findApplications(APPS, labels), APPS);
   for (const app of ['notes', 'books', 'contact', 'settings', 'terminal']) {
     assert.deepEqual(findApplications(APPS, labels, app), [app]);

@@ -1,5 +1,8 @@
 import { cafeTheme, cafeEntryMode } from './cafe.mjs';
 import { mountOnboarding } from './onboarding.js';
+import {mountRoomInspection} from './room-inspection.js';
+import {createRecordCatalog} from './record-catalog.js';
+import {mountListeningPages} from './listening-pages.js';
 
 export function mountCafe({root,route,navigation,localeResume,execute,onEnter,beforeVisit,focusDesktop,entryFocusManaged=false}) {
   const surface=root.querySelector('[data-space-cafe]'),dialog=root.querySelector('[data-cafe-dialog]');
@@ -11,7 +14,13 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   const abort=new AbortController();let disposed=false,initializing=true,failureFocusManaged=false;
   let theme='jiangnan',savedMode,mode,desiredMode,world,failed=false,trigger,revision=0,quiet=false,inspectTrigger,catCode='loading',catTravel=false;
   const inspectPanel=root.querySelector('[data-cafe-inspect-panel]');
+  const roomInspection=mountRoomInspection({root,books:catalog.books,records:createRecordCatalog(),zh,
+    onInspect:(kind,source)=>inspect(kind,source),onSelectRecord:id=>world?.selectRecord(id),onPlayback:()=>world?.toggleMusic(),onToggleObject:kind=>world?.toggleObject(kind)});
+  const listeningPages=mountListeningPages({root,zh,returnFocus:()=>root.querySelector('.space-world__canvas')});
+  root.addEventListener('space:readingpage',()=>world?.wake(),{signal:abort.signal});
   function syncInspect(kind){
+    if(kind==='reading-seat'||kind==='window')kind=null;
+    if(root.dataset.worldRenderer==='jiangnan')roomInspection.show(kind);else roomInspection.show(null);
     const shelf=kind==='books'||kind==='spines',zoom=root.querySelector('[data-cafe-bookzoom]');
     root.querySelector('[data-cafe-booklist-toggle]').setAttribute('aria-expanded','false');root.querySelector('#space-cafe-booklist').hidden=true;
     inspectPanel.hidden=!kind;root.querySelector('[data-cafe-inspect-coffee]').hidden=kind!=='coffee';root.querySelector('[data-cafe-inspect-books]').hidden=!shelf;root.querySelector('[data-cafe-inspect-cat]').hidden=kind!=='cat';
@@ -22,7 +31,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     catCode=code;
     const messages={loading:t('小猫还在找座位。','The cat is finding its spot.'),ready:t('小猫在这里。','The cat is here.'),watching:t('它抬头望着你。','You have its attention.'),approaching:t('它正沿过道走过来。','It is coming along the aisle.'),arrived:t('它在你身边停了下来。','It has stopped nearby.'),petting:t('它眯起眼睛，轻轻摆着尾巴。','It narrows its eyes and gently sways its tail.'),petted:t('它眯了眯眼，安静地陪着你。','It blinked slowly. It is staying with you.'),'petted-still':t('它眯起眼睛，抬头看着你。','It narrows its eyes and looks up at you.'),noticed:t('它停下来，望着你。','It pauses and looks at you.'),distant:t('先走近它，或点“看看小猫”。','Come closer, or choose “Meet the cat”.'),unreachable:t('它留在店里。回咖啡馆再叫它吧。','It is staying inside. Call again from the café.'),cooldown:t('它刚回应过，稍等片刻。','Give it a moment before asking again.'),unavailable:t('小猫暂时没出现，咖啡馆仍可继续逛。','The cat is not here right now. You can still explore the café.')};
     root.querySelector('[data-cafe-cat-status]').textContent=messages[code]||messages.ready;
-    const unavailable=code==='loading'||code==='unavailable',busy=code==='approaching';
+    const unavailable=code==='loading'||code==='unavailable',busy=code==='approaching'||code==='waking';
     root.querySelector('[data-cafe-inspect="cat"]').setAttribute('aria-disabled',String(unavailable));
     root.querySelectorAll('[data-cafe-cat-action]').forEach(button=>{button.setAttribute('aria-disabled',String(unavailable||busy||catTravel));button.setAttribute('aria-busy',String(busy||catTravel));});
   }
@@ -99,8 +108,8 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);let timer;
       const module=await Promise.race([import(config.module),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('3D module timed out')),15000);})]).finally(()=>clearTimeout(timer));
       if(disposed)return null;boot.event('module');
-      world=module.createCafeWorld({root,theme,catAsset:catalog.catAsset,photoAsset:catalog.photoAsset,latteAsset:catalog.latteAsset,mapleAsset:catalog.mapleAsset,materialBase:catalog.materialBase,books:catalog.books,onDetail:(kind,source)=>inspect(kind,source),onInspect:syncInspect,onCat:syncCat,onComputer:()=>enterDesktop(true),onPhoto:async id=>{if(await enterDesktop())execute('open',{app:'photos',payload:id});},onFailure:()=>failWorld(t('场景已暂停，工作区仍可使用。','The room has paused. Your workspace is available.')),
-        isBlocked:()=>boot.active||dialog.open||Boolean(root.querySelector('dialog[open]'))||root.hidden,
+      world=module.createCafeWorld({root,theme,catAsset:catalog.catAsset,photoAsset:catalog.photoAsset,latteAsset:catalog.latteAsset,mapleAsset:catalog.mapleAsset,materialBase:catalog.materialBase,books:catalog.books,onDetail:(kind,source)=>inspect(kind,source),onInspect:syncInspect,onCat:syncCat,onComputer:()=>enterDesktop(true),onReturn:()=>visit(),onNotebook:async()=>{if(await enterDesktop())execute('open',{app:'notes'});},onPhoto:async id=>{if(await enterDesktop())execute('open',{app:'photos',payload:id});},onFailure:()=>failWorld(t('场景已暂停，工作区仍可使用。','The room has paused. Your workspace is available.')),
+        isBlocked:()=>boot.active||dialog.open||Boolean(root.querySelector('dialog[open]'))||root.hidden||root.dataset.roomPageOpen==='true',
         onTravel:busy=>{catTravel=busy;syncCat();root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=busy;});}
       });
       boot.event('room');world.setQuiet(quiet);
@@ -131,14 +140,14 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     pickerStatus.textContent='';dialog.showModal();choices.querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});
   }
   async function inspect(kind,source){
-    if(!['coffee','books','spines','cat'].includes(kind)||mode!=='cafe'||failed||boot.active)return false;
+    if((!['coffee','books','spines','cat','records','vinyl','clock','vase','espresso','reading-seat','window'].includes(kind)&&!kind.startsWith('book:'))||mode!=='cafe'||failed||boot.active)return false;
     if(kind==='cat'&&root.dataset.catLoaded!=='true')return false;
     const current=++revision;inspectTrigger=source;await ready;if(current!==revision||disposed||!world)return false;
     const ownsFocus=document.activeElement===source,pending=world.inspect(kind);
-    if(ownsFocus&&world.mode==='inspect')root.querySelector('[data-cafe-inspect-exit]').focus({preventScroll:true});return pending;
+    if(ownsFocus&&world.mode==='inspect'){if(kind==='reading-seat'||kind==='window')root.querySelector('.space-world__canvas').focus({preventScroll:true});else if(root.dataset.worldRenderer==='jiangnan')roomInspection.focus();else root.querySelector('[data-cafe-inspect-exit]').focus({preventScroll:true});}return pending;
   }
   async function restoreInspect(){
-    if(!world||world.mode!=='inspect')return false;++revision;const source=inspectTrigger,ownsFocus=inspectPanel.contains(document.activeElement);inspectTrigger=null;const pending=world.restoreInspection();
+    if(!world||world.mode!=='inspect')return false;++revision;const source=inspectTrigger,ownsFocus=inspectPanel.contains(document.activeElement)||roomInspection.contains(document.activeElement);inspectTrigger=null;const pending=world.restoreInspection();
     if(ownsFocus){const target=source?.isConnected&&source.getClientRects().length&&!source.closest('[inert]')?source:root.querySelector('.space-world__canvas');target?.focus({preventScroll:true});}return pending;
   }
   async function enterDesktop(focus=false){
@@ -184,6 +193,6 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     const choice=target.closest('button[data-cafe-theme]');
     if(choice){await ready;if(disposed)return;const id=choice.dataset.cafeTheme,current=++revision;if(world&&await world.setTheme(id)===false)return;if(disposed||current!==revision)return;commit(id);pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);closePicker();}
   },{signal:abort.signal});
-  window.addEventListener('pagehide',event=>{if(!event.persisted){disposed=true;abort.abort();boot.dispose();world?.dispose();}},{signal:abort.signal});
+  window.addEventListener('pagehide',event=>{if(!event.persisted){disposed=true;abort.abort();boot.dispose();roomInspection.dispose();listeningPages.dispose();world?.dispose();}},{signal:abort.signal});
   return {ready,get active(){return mode==='cafe';},get modalOpen(){return dialog.open||boot.active;},get mode(){return mode;},get spatial(){return Boolean(world);},enterDesktop,visit,openPicker,escape(){if(world?.mode==='inspect')restoreInspect();else if(world?.mode==='roam')world.start();}};
 }
