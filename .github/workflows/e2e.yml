@@ -15,10 +15,6 @@ on:
         description: Full source commit of that artifact
         required: true
         type: string
-      diagnostic:
-        description: Temporary isolated boot diagnosis; never release proof
-        type: boolean
-        default: false
 
 permissions:
   contents: read
@@ -26,7 +22,6 @@ permissions:
 
 jobs:
   recheck:
-    if: ${{ !inputs.diagnostic }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -54,68 +49,3 @@ jobs:
           name: site-recheck-${{ github.run_id }}
           path: tests/.artifacts/recheck-report/
           retention-days: 30
-
-  boot-diagnostic:
-    if: ${{ inputs.diagnostic }}
-    name: Diagnostic only - frozen runtime with revised test harness
-    runs-on: ubuntu-24.04
-    timeout-minutes: 40
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '22.23.1'
-          package-manager-cache: false
-      - name: Install locked test tools only
-        timeout-minutes: 10
-        run: |
-          npm ci --ignore-scripts --no-audit --no-fund
-          npx --no-install playwright install --with-deps chromium
-      - uses: actions/download-artifact@v8
-        timeout-minutes: 10
-        with:
-          artifact-ids: ${{ inputs.artifact_id }}
-          run-id: ${{ inputs.run_id }}
-          github-token: ${{ github.token }}
-          path: tests/.artifacts/boot-frozen
-          merge-multiple: true
-      - name: Verify unchanged runtime and write diagnostic configuration
-        env:
-          RECHECK_SHA: ${{ inputs.source_sha }}
-        run: |
-          node --input-type=module <<'JS'
-          import fs from 'node:fs';
-          import path from 'node:path';
-          import {execFileSync} from 'node:child_process';
-          import {verifyFrozenProof} from './scripts/ci-shards.mjs';
-          const runtime=process.env.RECHECK_SHA;
-          if(!/^[a-f0-9]{40}$/.test(runtime))throw new Error('Full runtime SHA required');
-          const changed=execFileSync('git',['diff','--name-only',runtime,'HEAD'],{encoding:'utf8'}).trim().split('\n').filter(Boolean);
-          const allowed=new Set(['.github/workflows/e2e.yml','tests/e2e/space-continuous-rain.spec.ts','tests/e2e/space-window-craft.spec.ts']);
-          if(changed.some(file=>!allowed.has(file)))throw new Error('Diagnostic requires unchanged product runtime');
-          const frozen=path.resolve('tests/.artifacts/boot-frozen'),out=path.resolve('tests/.artifacts/boot-diagnostic');
-          const read=name=>JSON.parse(fs.readFileSync(path.join(frozen,name),'utf8'));
-          const plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
-          if(proof.sourceSha!==runtime||plan.sourceSha!==runtime)throw new Error('Wrong frozen runtime source');
-          verifyFrozenProof({bundleRoot:path.join(frozen,'site'),plan,changeSet,proof});
-          fs.mkdirSync(out,{recursive:true});
-          fs.writeFileSync(path.join(out,'evidence.json'),JSON.stringify({releaseProof:false,runtimeSourceSha:runtime,harnessSourceSha:process.env.GITHUB_SHA,changed},null,2));
-          const config={testDir:path.resolve('tests/e2e'),testMatch:['space-continuous-rain.spec.ts','space-window-craft.spec.ts'],grep:/a later real gesture|the window survives a resize/,workers:1,retries:0,repeatEach:3,timeout:90000,outputDir:path.join(out,'results'),reporter:[['line'],['json',{outputFile:path.join(out,'results.json')}]],use:{baseURL:'http://127.0.0.1:4173',serviceWorkers:'block',trace:'retain-on-failure',screenshot:'only-on-failure'},projects:[{name:'desktop',use:{viewport:{width:1440,height:900}}},{name:'mobile',use:{viewport:{width:390,height:844},isMobile:true,hasTouch:true}}],webServer:{command:`node scripts/serve-site-output.mjs --public-dir ${path.join(frozen,'site/public')}`,cwd:process.cwd(),url:'http://127.0.0.1:4173/__site_ready',env:{SITE_PORT:'4173'},timeout:30000}};
-          const text='const config='+JSON.stringify({...config,grep:undefined})+';\nconfig.grep=/a later real gesture|the window survives a resize/;\nexport default config;\n';
-          fs.writeFileSync(path.join(process.env.RUNNER_TEMP,'space-boot-diagnostic.mjs'),text);
-          JS
-          npm run typecheck
-      - name: Run only the two diagnoses on desktop and mobile
-        timeout-minutes: 20
-        run: node node_modules/@playwright/test/cli.js test --config "$RUNNER_TEMP/space-boot-diagnostic.mjs"
-      - uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: boot-diagnostic-${{ github.run_id }}
-          path: tests/.artifacts/boot-diagnostic/
-          include-hidden-files: true
-          if-no-files-found: warn
-          retention-days: 7

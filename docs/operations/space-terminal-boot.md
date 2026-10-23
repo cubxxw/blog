@@ -1,6 +1,6 @@
 # Space terminal startup
 
-Status on 2026-10-23: implementation, independent review, production build, and targeted real WebGL acceptance passed. Remote CI and production delivery remain pending. This is not a production release receipt.
+Status on 2026-10-24: implementation, independent review, production build, targeted real WebGL acceptance, and the isolated fixture diagnosis passed. Final current-head CI and production delivery remain pending. This is not a production release receipt.
 
 ## Behavior
 
@@ -42,8 +42,16 @@ The reviewer also verified the terminal-exit reflection gate in three lifecycle 
 
 Remote preflight `39972971697` exposed a missing virtual-clock advance in the modified cancelled-read/replay test: the real scene was ready, but the paused test clock left the 160 ms exit at `revealing`. The test now asserts that intermediate state and advances the actual exit timer, preserving all reader-race and final-workspace assertions. Both desktop and mobile replay cases then passed locally without retries (2 cases, 6.4 seconds). This adds the replay scenario omitted from the earlier 24-case targeted selection; the failed CI run is not treated as a passing release gate.
 
+Full CI `39978587373` passed preparation, quality, all three interactive browser engines, and legacy partitions 1–3. Legacy partition 4 reported 275 passed, 3 skipped, one failed audio fixture, and one flaky camera fixture. The audio fixture raced autoplay permission against its injected HTTP 503; it now obtains a real gesture while holding that first response, observes the network error, and requires a second real gesture to recover rain without starting music. The camera fixture could miss its short approach on a slow software renderer; it now controls that timeline after normal boot, checks normal-motion prerequisites, and retains real drag, resize, and two-finger input. No production audio or camera behavior was changed for these fixture fixes.
+
+Isolated diagnostic `39996903172` verified the unchanged frozen runtime from `08434a8c` with test harness `76e89db5`. Both fixtures passed at desktop and mobile sizes, three times each: **12 passed, 0 failures, 0 retries, 0 flaky**, in 9.1 minutes. The independent reviewer found no P0–P2 issues in those changes. This diagnostic has `releaseProof: false` and does not replace the final full CI. Its temporary workflow extension was removed before that final run.
+
+The native Netlify branch preview was also checked in a real browser. Desktop Chinese, desktop English, and mobile Chinese passed on the first attempt. Mobile English timed out once during startup; the original probe did not record failed requests, so that attempt's exact cause is unknown. A targeted mobile-English repeat passed with no failed requests, page errors, or console errors. All six startup assets matched the locally verified runtime bytes. These are preview results, not production acceptance.
+
 ## Remaining delivery gates
 
 The initial machine-wide `.agent-pause` marker was present. The initial resource snapshot showed 139 Node/npm processes, 8.13 GiB swap, and 37.84 GiB free disk. Work first stopped after lightweight checks. The author then explicitly authorized this task's targeted build, page acceptance, and independent review. The global pause marker remains untouched. Builds reused the existing Hugo/dependencies and image cache; browser work was serial and used the same frozen site through Netlify dev.
 
 Complete the applicable current-head CI checks and production revision readback before claiming delivery. Keep the current main checkout and unrelated work intact. The initial task baseline was `01952d12`. The local Netlify CLI has no valid site authorization; the repository's existing native Git publisher remains the configured release path. Production currently returns 404 for `__release.json`, so use the actual native deployment identity plus exact built asset readback rather than treating that endpoint as available.
+
+Later resource snapshots exceeded the machine's pressure thresholds (over 200 Node/npm processes and over 13 GiB swap). Final CI runs in GitHub Actions. No new local browser, build, or implementation delegation is started while that pressure persists. Production readback will verify the native published deployment identity, bilingual terminal HTML, and the six runtime asset hashes; it will not be described as a new production browser run.
