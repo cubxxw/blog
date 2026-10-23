@@ -74,13 +74,16 @@ test('the cat sleeps by default and a real nest click wakes it before it comes o
  await page.emulateMedia({reducedMotion:'no-preference'});const at=await face(page,'cat-bed');
  // Keep the first presented wake frame: a later CDP read can arrive after walking starts.
  const wakeObservation=await page.evaluateHandle(()=>{
-  const room=document.querySelector<HTMLElement>('[data-bear-workspace]')!,before=room.dataset.worldPose;let firstWake:{x:number;z:number;phase:string;stage:string;state:string|undefined}|null=null;
+  const room=document.querySelector<HTMLElement>('[data-bear-workspace]')!,before=room.dataset.worldPose;
+  let firstWake:{x:number;z:number;phase:string;stage:string;state:string|undefined}|null=null;
+  let firstPetting:{stage:string;kind:string;state:string|undefined}|null=null;
   const observer=new MutationObserver(()=>{
-   if(firstWake)return;const snapshot=JSON.parse(room.dataset.roomCat||'null');
-   if(snapshot?.phase==='wake')firstWake={x:snapshot.x,z:snapshot.z,phase:snapshot.phase,stage:snapshot.interaction?.stage,state:room.dataset.catState};
+   const snapshot=JSON.parse(room.dataset.roomCat||'null');
+   if(!firstWake&&snapshot?.phase==='wake')firstWake={x:snapshot.x,z:snapshot.z,phase:snapshot.phase,stage:snapshot.interaction?.stage,state:room.dataset.catState};
+   if(!firstPetting&&snapshot?.interaction?.stage==='respond')firstPetting={stage:snapshot.interaction.stage,kind:snapshot.interaction.kind,state:room.dataset.catState};
   });
   observer.observe(room,{attributes:true,attributeFilter:['data-room-cat']});
-  return {snapshot:()=>firstWake,disconnect:()=>observer.disconnect(),arrival:()=>{
+  return {snapshot:()=>firstWake,petting:()=>firstPetting,disconnect:()=>observer.disconnect(),arrival:()=>{
    const cat=JSON.parse(room.dataset.roomCat!);
    return {x:cat.x,z:cat.z,mode:room.dataset.worldMode,pose:room.dataset.worldPose,before,connected:room.isConnected,focused:document.activeElement===room.querySelector('[data-room-object="cat"]')};
   }};
@@ -96,7 +99,8 @@ test('the cat sleeps by default and a real nest click wakes it before it comes o
   expect(arrival.focused).toBe(true);await page.keyboard.press('Enter');
   expect(Math.hypot(arrival.x-home.x,arrival.z-home.z)).toBeGreaterThan(.3);
   expect(arrival.mode).toBe('roam');expect(arrival.pose).toBe(arrival.before);
-  await expect(root(page)).toHaveAttribute('data-cat-state','petting');
+  // Native input can finish its brief response before a slow protocol read returns.
+  await expect.poll(()=>wakeObservation.evaluate(observation=>observation.petting())).toEqual({stage:'respond',kind:'pet',state:'petting'});
   await expect(page.locator('[data-room-inspection]')).toBeHidden();
  }finally{
   try{if(!page.isClosed())await wakeObservation.evaluate(observation=>observation.disconnect());}
