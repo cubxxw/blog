@@ -12,7 +12,11 @@ async function open(page:Page){
 // than the flight to acknowledge a native input or viewport command. The real
 // timers/render loop load normally, then only the test controls their timeline.
 async function openWithPausedClock(page:Page){
- await page.clock.install();await open(page);await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
+ await page.clock.install();await open(page);
+ // A Date.now()+lead target can expire during slow renderer/CDP replies.
+ // Bridge with a fixed wall time so pauseAt has no deadline, then restore
+ // Date progression while animation time remains paused.
+ const at=Date.now();await page.clock.setFixedTime(at);await page.clock.pauseAt(at);await page.clock.setSystemTime(at);
 }
 async function finishFlight(page:Page){await page.clock.fastForward(2000);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
 type FlightFrame={fov:number;at:number;frame:string|undefined;travel:string|undefined};
