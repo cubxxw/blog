@@ -1523,6 +1523,11 @@
       "at": "2026-10-23T17:34:07.138Z",
       "id": "em_3ea62dqxr88hp8sjz1js8qz582",
       "mode": "draft"
+    },
+    "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/": {
+      "at": "2026-10-23T17:34:07.138Z",
+      "id": "em_5ge69qmr0381xr4v6ywy5qgqpf",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4854,10 +4859,12 @@
     "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/\"]": {
       "language": "zh",
       "url": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "4e81722b-65ab-4b86-bb27-10d98eeeb3ac",
       "at": "2026-10-23T17:34:07.138Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_5ge69qmr0381xr4v6ywy5qgqpf",
+      "completedAt": "2026-10-23T17:34:07.138Z"
     }
   }
 }
