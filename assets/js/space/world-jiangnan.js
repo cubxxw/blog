@@ -290,7 +290,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     room?.door?.open?.();
     if(!await excursion.wait(run,680))return;
     if(!excursion.check(run)||!excursion.advance(run,'threshold'))return;
-    if(!await travelOrRecover(run,poses.threshold,720))return;
+    if(!await travelOrRecover(run,jiangnanDoorPoses(camera.aspect).threshold,720))return;
     if(excursion.check(run))showDoorPanel('threshold');
   }
   function stepOutOfDoor(){

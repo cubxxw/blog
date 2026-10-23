@@ -168,10 +168,12 @@ test.describe('escape during a moving excursion',()=>{
     }
   });
 
-  test('enabling reduced motion during opening keeps the explicit step and return reachable',async({page})=>{
+  test('resizing and enabling reduced motion during opening keeps the explicit step and return reachable',async({page})=>{
     await ready(page);const before=await clickPhysicalDoor(page);await phase(page,'opening');
+    await page.setViewportSize({width:390,height:844});
     await page.emulateMedia({reducedMotion:'reduce'});
     await threshold(page);await expect(root(page)).toHaveAttribute('data-room-door-still','true');
+    expect((await pose(page)).z).toBeLessThan(.75);
     await stepButton(page).click();await phase(page,'submerged');
     await expect(panel(page,'submerged').getByRole('button',{name:'回到咖啡馆',exact:true})).toBeVisible();
     await page.keyboard.press('Escape');await returned(page,before);

@@ -48,9 +48,10 @@ function fixture({inspectionKind=null,viewPose=originalPose,inspectionPose=origi
       get phase(){return excursion.phase;},get mode(){return mode;},get pose(){return pose;},get panel(){return doorPanel;},get inspection(){return inspection;},
       dispose(){disposed=true;excursion.dispose();hideDoorPanel();doorReturn=null;}
     });`;
+  const camera={aspect:1.6};
   const world=runInNewContext(runtime,{initialPose:viewPose,inspectionPose,initialInspection:inspectionKind,root,document,Element,workspace,
     makeMachine:options=>createJiangnanDoorExcursion({...options,now:()=>now,setTimer:schedule,clearTimer:key=>timers.delete(key)}),
-    jiangnanDoorPoses,jiangnanLook,jiangnanWindowRoute,camera:{aspect:1.6},renderer:{domElement:canvas},reduced:{matches:false},objectControls:{inert:false},magicClock:null,
+    jiangnanDoorPoses,jiangnanLook,jiangnanWindowRoute,camera,renderer:{domElement:canvas},reduced:{matches:false},objectControls:{inert:false},magicClock:null,
     computerView:()=> 'expanded',showComputer(){workspace.dataset.surface='desktop';},attachMonitor(){workspace.dataset.surface='monitor';},
     visible:()=>true,isBlocked:()=>false,onInspect(){},listen:(node,event,callback)=>node.addEventListener(event,callback),t:cn=>cn,
     audio:{setPerspective:mix=>mixes.push(mix)},room:{screen:{position:[.8,1.16,-2.05]},door:{open:()=>doorActions.push('open'),close:()=>doorActions.push('close'),splash:()=>doorActions.push('splash')}}});
@@ -64,8 +65,20 @@ function fixture({inspectionKind=null,viewPose=originalPose,inspectionPose=origi
     }
     now=target;
   }
-  return {world,document,originalFocus,workspace,canvas,timers,mixes,doorActions,pump};
+  return {world,document,originalFocus,workspace,canvas,camera,timers,mixes,doorActions,pump};
 }
+
+test('rotating during approach or opening uses the current portrait framing at the threshold',async()=>{
+  for(const during of ['approach','opening']){
+    const f=fixture();f.world.begin();
+    if(during==='opening'){await f.pump();assert.equal(f.world.phase,'opening');}
+    f.camera.aspect=390/844;
+    await f.pump();await f.pump(680);
+    assert.equal(f.world.phase,'threshold');
+    assert.deepEqual({...f.world.pose},jiangnanDoorPoses(390/844).threshold);
+    f.world.back();await f.pump();assert.deepEqual({...f.world.pose},originalPose);
+  }
+});
 
 test('the real world requires a second deliberate step before the splash, and returns pose, focus and audio', async () => {
   const f=fixture(); assert.equal(f.world.begin(),true); assert.equal(f.world.begin(),false);
