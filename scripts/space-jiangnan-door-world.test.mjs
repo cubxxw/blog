@@ -145,13 +145,38 @@ test('a shortcut from the doorway restores the original window inspection and it
 
 test('ordinary workspace entry retains existing roam and inspection return semantics', async () => {
   const roomPose={x:-.7,y:1.34,z:.5,yaw:.4,pitch:0,fov:48};
-  for(const kind of [null,'coffee','window']) {
+  for(const kind of [null,'coffee','books','clock','window']) {
     const f=fixture({inspectionKind:kind,viewPose:originalPose,inspectionPose:roomPose});
     await f.world.focus();assert.equal(f.world.mode,'workspace');
     await f.world.leave();
     assert.equal(f.world.mode,kind==='window'?'inspect':'roam');
-    assert.deepEqual({...f.world.pose},kind==='coffee'?roomPose:originalPose);
+    assert.deepEqual({...f.world.pose},kind&&kind!=='window'?roomPose:originalPose);
     assert.equal(f.world.inspection?.kind??null,kind==='window'?'window':null);
+  }
+});
+
+for(const kind of [null,'window','coffee','books','clock'])test(`door shortcuts retain ordinary focus/leave semantics from ${kind||'roam'} at every beat`,async()=>{
+  const roomPose={x:-.7,y:1.34,z:.5,yaw:.4,pitch:0,fov:48};
+  const expectedMode=kind==='window'?'inspect':'roam',expectedPose=kind&&kind!=='window'?roomPose:originalPose;
+  const expectedInspection=kind==='window'?{kind:'window',pose:roomPose}:null;
+  const check=(f,label)=>{
+    assert.equal(f.world.mode,expectedMode,label);
+    assert.deepEqual({...f.world.pose},expectedPose,label);
+    assert.deepEqual(f.world.inspection?{kind:f.world.inspection.kind,pose:{...f.world.inspection.pose}}:null,expectedInspection,label);
+  };
+  const ordinary=fixture({inspectionKind:kind,viewPose:originalPose,inspectionPose:roomPose});
+  await ordinary.world.focus(false);await ordinary.world.leave();check(ordinary,'ordinary entry');
+  for(const beat of ['approaching','opening','threshold','falling','submerged','returning']){
+    const f=fixture({inspectionKind:kind,viewPose:originalPose,inspectionPose:roomPose});f.world.begin();
+    if(beat!=='approaching')await f.pump();
+    if(['threshold','falling','submerged','returning'].includes(beat))await f.pump(680);
+    if(['falling','submerged'].includes(beat)){f.world.step();if(beat==='submerged')await f.pump();}
+    if(beat==='returning')f.world.back();
+    assert.equal(f.world.phase,beat);
+    await f.world.focus(false);assert.equal(f.world.mode,'workspace');assert.equal(f.world.phase,'indoor');
+    await f.world.leave();check(f,beat);
+    await f.pump(2000);check(f,beat+' after stale narrative work settles');
+    assert.equal(f.timers.size,0);assert.equal(f.world.panel,null);
   }
 });
 

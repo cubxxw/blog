@@ -158,12 +158,10 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     const beforeDoor=doorReturn;
     abandonDoorExcursion();
     if(mode==='workspace'&&!moving)return Promise.resolve(true);
-    if(beforeDoor){
-      returnPose={...beforeDoor.pose};
-      returnInspection=beforeDoor.inspection?{...beforeDoor.inspection}:null;
-    }else if(mode==='roam'||mode==='inspect'){
-      returnInspection=roomView()?{...inspection}:null;
-      returnPose=returnInspection?{...pose}:inspection?.pose||{...pose};
+    if(beforeDoor||mode==='roam'||mode==='inspect'){
+      const previous=beforeDoor||{pose,inspection};
+      returnInspection=previous.inspection?.kind==='window'?{...previous.inspection}:null;
+      returnPose=returnInspection?{...previous.pose}:previous.inspection?.pose||{...previous.pose};
     }
     resetInspection();syncMode('workspace');
     const view=computerView();root.dataset.computerView=view;
