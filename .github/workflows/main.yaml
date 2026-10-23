@@ -21,7 +21,9 @@ jobs:
   verify:
     name: Required blog quality
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # The complete serial desktop/mobile matrix includes software-rendered 3D journeys.
+    # Keep every suite required and allow the measured run to finish.
+    timeout-minutes: 240
     concurrency:
       group: blog-verify-${{ github.event.pull_request.number || github.run_id }}
       cancel-in-progress: ${{ github.event_name == 'pull_request' }}
