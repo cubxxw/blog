@@ -1,4 +1,10 @@
-name: Diagnose resident interaction on frozen candidate
+# Candidate only. Main agent creates codex/diagnose-notes-linux-20261023.
+# Base tree: codex/diagnose-camera-linux-20261023@83a713bdb9b03b63e5b7f410c8994f78ab435c52
+# Dispatch: run_id=39927419635, artifact_id=12490032443,
+# source_sha=594b9d2f7a93b2d82a7a42b85a18269d6ec8d7d2.
+# That producer source and 65126e9c3e0d972c4d3d3901bf58092113348b5e
+# share Git tree 67283a6ee6aff428a15477df3bc76eeef76a52ae.
+name: Diagnose Notes continuity on frozen candidate
 on:
   workflow_dispatch:
     inputs:
@@ -11,21 +17,16 @@ on:
         required: true
         type: string
       source_sha:
-        description: Exact candidate test source
+        description: Exact producer test source
         required: true
         type: string
-      trace_mode:
-        description: Trace policy for the focused diagnostic
-        type: choice
-        options: ['on', 'on-first-retry']
-        default: 'on'
 permissions:
   contents: read
   actions: read
 jobs:
   diagnose:
     name: Diagnostic only (never a release gate)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
@@ -35,30 +36,52 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/setup-blog
+        with:
+          browsers: chromium
       - uses: actions/download-artifact@v8
         with:
           artifact-ids: ${{ inputs.artifact_id }}
           run-id: ${{ inputs.run_id }}
           github-token: ${{ github.token }}
-          path: tests/.artifacts/camera-input
+          path: tests/.artifacts/notes-input
           merge-multiple: true
-      - name: Reproduce resident interaction without rebuilding production
+      - name: Reproduce the original Notes and reader continuity contract without rebuilding
         env:
-          SITE_OUTPUT_DIR: ${{ github.workspace }}/tests/.artifacts/camera-input/site/public
-          PLAYWRIGHT_JSON_OUTPUT_FILE: tests/.artifacts/camera-report.json
-          DIAGNOSTIC_TRACE: ${{ inputs.trace_mode }}
-        run: >-
-          npx playwright test tests/e2e/space-object-living.spec.ts
-          --grep 'the cat sleeps by default|the cat advances at the room clock rate' --repeat-each=2
-          --project=desktop --project=mobile --workers=1 --retries=0
-          --trace="$DIAGNOSTIC_TRACE"
-          --reporter=line,json
+          DIAGNOSTIC_PRODUCER: ${{ inputs.source_sha }}
+          DIAGNOSTIC_RUN: ${{ inputs.run_id }}
+          PLAYWRIGHT_JSON_OUTPUT_FILE: tests/.artifacts/notes-report.json
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import {spawnSync,execFileSync} from 'node:child_process';
+          import {verifyFrozenProof} from './scripts/ci-shards.mjs';
+          const dir=path.resolve('tests/.artifacts/notes-input'),bundleRoot=path.join(dir,'site');
+          const read=name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
+          const plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
+          const head=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+          if(head!==process.env.DIAGNOSTIC_PRODUCER||plan.sourceSha!==head||proof.runId!==process.env.DIAGNOSTIC_RUN)throw new Error('Diagnostic producer identity mismatch');
+          const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl);
+          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
+          const result=spawnSync(process.execPath,[
+            'node_modules/@playwright/test/cli.js','test','tests/e2e/space-door-excursion.spec.ts:281',
+            '--grep','Notes keeps its original DOM, draft and backward selection, and the reader keeps its article and scroll',
+            '--project=desktop','--workers=1','--retries=0','--trace=on','--reporter=line,json'
+          ],{stdio:'inherit',env:{
+            ...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),
+            NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),
+            SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin
+          }});
+          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
+          if(result.error)throw result.error;
+          process.exitCode=result.status??1;
+          NODE
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: camera-diagnostic-${{ github.run_id }}
+          name: notes-diagnostic-${{ github.run_id }}
           path: |
-            tests/.artifacts/camera-report.json
+            tests/.artifacts/notes-report.json
             test-results/
           if-no-files-found: error
           retention-days: 7
