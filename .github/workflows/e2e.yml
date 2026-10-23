@@ -26,7 +26,7 @@ jobs:
   diagnose:
     name: Diagnostic only (never a release gate)
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
         with:
@@ -50,7 +50,7 @@ jobs:
         run: >-
           npx playwright test tests/e2e/space-living-motion.spec.ts
           tests/e2e/space-browser.spec.ts
-          --grep 'approach can be reversed|resizing during a (window|computer)|a visitor can leave a web draft'
+          --grep 'mid-flight|sleeping breath|resizing during|a visitor can leave a web draft'
           --project=desktop --project=mobile --workers=1 --retries=0
           --trace="$DIAGNOSTIC_TRACE"
           --reporter=line,json
