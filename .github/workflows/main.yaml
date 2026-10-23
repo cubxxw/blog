@@ -20,7 +20,8 @@ env:
 jobs:
   verify:
     name: Required blog quality
-    runs-on: ubuntu-latest
+    # Keep the supported browser host stable as ubuntu-latest migrates to 26.04.
+    runs-on: ubuntu-24.04
     # The complete serial desktop/mobile matrix includes software-rendered 3D journeys.
     # Keep every suite required and allow the measured run to finish.
     timeout-minutes: 240
