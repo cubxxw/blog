@@ -1,0 +1,146 @@
+{
+  "observed_at": "2026-10-22T21:09:24.999176+00:00",
+  "published_deploy": {
+    "id": "6ada7a80eeb39307a5eb844e",
+    "state": "ready",
+    "context": "production",
+    "branch": "main",
+    "commit_ref": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+    "published_at": "2026-10-22T21:07:57.415Z"
+  },
+  "deployment_stable_during_readback": true,
+  "pages": [
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "status": 200,
+      "mime": "text/html",
+      "final_url": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "lang": "zh",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "h1": "Tana 产品拆解：一条任务怎样从笔记走到会议中的工作",
+      "source_headings_count": 11,
+      "all_source_headings_in_order": true,
+      "html_sha256": "5fa38e33252542852a72fc9bf2125eb2c8fcf6e1cd4d22f7222db55c0f5a8ea9",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "status": 200,
+      "mime": "text/html",
+      "final_url": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "lang": "en",
+      "canonical": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "h1": "Tana Product Teardown: Following a Task from Notes into Meeting Work",
+      "source_headings_count": 11,
+      "all_source_headings_in_order": true,
+      "html_sha256": "9b08c1234f6139216cf6a47b4739ead54783dd8ace27f39409845c71bd9f7f81",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "status": 200,
+      "mime": "text/html",
+      "final_url": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "lang": "zh",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "h1": "Doneas 产品拆解：一周计划怎样变成每天的承诺",
+      "source_headings_count": 8,
+      "all_source_headings_in_order": true,
+      "html_sha256": "10b3cfe49e1f0170ce1d61a718aec078d9a8feb75aab4d9b68f94f2761f01ea8",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+      "status": 200,
+      "mime": "text/html",
+      "final_url": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+      "lang": "en",
+      "canonical": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+      "h1": "Doneas Product Teardown: Turning a Weekly Plan into Daily Commitments",
+      "source_headings_count": 8,
+      "all_source_headings_in_order": true,
+      "html_sha256": "b87f91ad2e057eacef2986c7db9bf025ad955e3cd38b9916eb436faf3b1b0033",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "status": 200,
+      "mime": "text/html",
+      "final_url": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "lang": "zh",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "h1": "Ambi 产品拆解：记住一件事之后，怎样把它做完",
+      "source_headings_count": 9,
+      "all_source_headings_in_order": true,
+      "html_sha256": "92bf240615d101f81742b9bf5dacee6e05be711c896ad0617b5db956e234d7f4",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+      "status": 200,
+      "mime": "text/html",
+      "final_url": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+      "lang": "en",
+      "canonical": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+      "h1": "Ambi Product Teardown: From Remembering to Getting the Work Done",
+      "source_headings_count": 9,
+      "all_source_headings_in_order": true,
+      "html_sha256": "3f6e1f174d710af2cd8a9e3798a59f0cd1c2d0c29f04cf83e0f62d83afe019f3",
+      "passed": true
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/ambi-features.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "4f34306b84877d3a7dfa626a11670a24de441a50aacba46ed4f665050863a4c2",
+      "expected_sha256": "4f34306b84877d3a7dfa626a11670a24de441a50aacba46ed4f665050863a4c2",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/ambi-home.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "098070bd682cdf059d271dc3a04dc67ed9694f172fcfe739400c0db60a7ae02c",
+      "expected_sha256": "098070bd682cdf059d271dc3a04dc67ed9694f172fcfe739400c0db60a7ae02c",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/doneas-home.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "778925e5d4c09c227143bcd79de3ac28d1fc8d81fccdc300ee482c9e1e8a7015",
+      "expected_sha256": "778925e5d4c09c227143bcd79de3ac28d1fc8d81fccdc300ee482c9e1e8a7015",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/doneas-weekly.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "9d9e41828f48ee5943857c9c014cf43117e4b64299808acc7fadf24989fff882",
+      "expected_sha256": "9d9e41828f48ee5943857c9c014cf43117e4b64299808acc7fadf24989fff882",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/tana-home.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "1838d570318bca6fcdfcd373cd5262d58a157a610b83d01cd942a01cc8f584a6",
+      "expected_sha256": "1838d570318bca6fcdfcd373cd5262d58a157a610b83d01cd942a01cc8f584a6",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/tana-outliner.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "741bd12e0fd968a6444754c17be8485ebd85cb36473327114a2142693e82a924",
+      "expected_sha256": "741bd12e0fd968a6444754c17be8485ebd85cb36473327114a2142693e82a924",
+      "passed": true
+    }
+  ],
+  "article_image_application_workflow_changes": [],
+  "tana_zh_matches_first_acceptance_html": true,
+  "full_browser_acceptance": "browser-acceptance.json",
+  "passed": true
+}

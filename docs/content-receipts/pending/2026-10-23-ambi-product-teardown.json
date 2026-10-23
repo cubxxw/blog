@@ -1,0 +1,96 @@
+{
+  "schema": "blog-content-receipt/v1",
+  "id": "2026-10-23-ambi-product-teardown",
+  "status": "pending",
+  "publication_status": "published",
+  "created_at": "2026-10-23T02:51:14.772+08:00",
+  "published_at": "2026-10-23T02:26:13.131+08:00",
+  "brief": "_briefs/2026-10-23-ambi-product-teardown.md",
+  "articles": {
+    "zh": "content/zh/ai-agent/posts/ambi-memory-to-work.md",
+    "en": "content/en/ai-agent/posts/ambi-memory-to-work.md"
+  },
+  "public_urls": {
+    "zh": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+    "en": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/"
+  },
+  "production": {
+    "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "netlify_deploy_id": "6ada5484e1776686525b58a4",
+    "state": "ready",
+    "evidence": "docs/verification/2026-10-23-product-docs-release/netlify-production.json"
+  },
+  "verification": {
+    "browser_status": "passed",
+    "browser_evidence": "docs/verification/2026-10-23-product-docs-release/browser-acceptance.json",
+    "main_regression_status": "cancelled",
+    "main_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855910",
+    "main_run_attempt": 1,
+    "lighthouse_status": "success",
+    "lighthouse_run_url": "https://github.com/cubxxw/blog/actions/runs/39830855352",
+    "lighthouse_run_attempt": 2,
+    "lighthouse_first_attempt": "failed: PROTOCOL_TIMEOUT on /projects/; preserved before retry",
+    "pr_regression_status": "cancelled",
+    "pr_regression_reason": "GitHub 2h job timeout; legacy suite incomplete with observed failures",
+    "targeted_harness_repair_status": "passed: 22/22 targeted cases across two runs, and typecheck; does not establish full regression pass",
+    "targeted_harness_repair_evidence": "docs/verification/2026-10-23-product-docs-release/targeted-repair-results.json",
+    "main_regression_reason": "GitHub maximum 2h job time exceeded; 27 observed legacy failures and 47 planned cases without a recorded result. Not passed.",
+    "main_regression_evidence": "docs/verification/2026-10-23-product-docs-release/main-test-summary.json",
+    "additional_mobile_repair_evidence": "docs/verification/2026-10-23-product-docs-release/mobile-contracts-repair-results.json",
+    "repair_full_ci": {
+      "id": 39843952273,
+      "name": "Blog Quality and Release",
+      "head_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "run_attempt": 1,
+      "updated_at": "2026-10-22T21:53:30Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39843952273"
+    },
+    "repair_lighthouse": {
+      "source_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+      "run_url": "https://github.com/cubxxw/blog/actions/runs/39843952208",
+      "attempt": 2,
+      "status": "failure",
+      "reason": "Repeated /projects/ CDP collection timeout; full assertions not reached.",
+      "evidence": "docs/verification/2026-10-23-product-docs-release/repair-lighthouse-attempt2-artifact.json"
+    },
+    "mobile_repair_full_ci": {
+      "id": 39850588715,
+      "name": "Blog Quality and Release",
+      "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "run_attempt": 1,
+      "updated_at": "2026-10-22T22:38:48Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588715"
+    },
+    "ci_result_tracking": "docs/verification/2026-10-23-product-docs-release/ci-followup-tracking.json",
+    "later_production_readback": "docs/verification/2026-10-23-product-docs-release/production-before-terminal-evidence.json",
+    "repair_terminal_evidence": "docs/verification/2026-10-23-product-docs-release/repair087-final.json",
+    "latest_lighthouse": {
+      "id": 39854328809,
+      "name": "Lighthouse CI",
+      "head_sha": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "updated_at": "2026-10-22T21:27:05Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39854328809"
+    },
+    "latest_lighthouse_evidence": "docs/verification/2026-10-23-product-docs-release/final-lighthouse.json",
+    "full_regression_passed": false
+  },
+  "reader_feedback": {
+    "status": "pending",
+    "received_at": null,
+    "observations": [],
+    "watch_question": "读者能否分清来源、记忆、授权和任务交付，并识别尚需实际测试的可靠性问题。",
+    "next_action": "取得真实读者反馈后记录来源、日期与需要修订之处；此前保持待观察，不推断阅读效果或产品实测结果。"
+  },
+  "upstream_handoff": {
+    "status": "pending",
+    "note": "博客侧已建立可导入回执；当前环境未带入上游交接目录，未声称已导入 Brain。"
+  },
+  "updated_at": "2026-10-23T06:45:25.142448+08:00"
+}

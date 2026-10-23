@@ -1,0 +1,21 @@
+{
+  "read_at": "2026-10-22T18:46:24.299759+00:00",
+  "site_id": "10e9c8fc-0201-4d41-9240-5c35f10ee952",
+  "deploy_id": "6ada5484e1776686525b58a4",
+  "published_deploy": {
+    "id": "6ada5484e1776686525b58a4",
+    "site_id": "10e9c8fc-0201-4d41-9240-5c35f10ee952",
+    "state": "ready",
+    "context": "production",
+    "branch": "main",
+    "commit_ref": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "commit_url": "https://github.com/cubxxw/blog/commit/db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "created_at": "2026-10-22T18:23:00.086Z",
+    "updated_at": "2026-10-22T18:26:20.513Z",
+    "published_at": "2026-10-22T18:26:13.131Z",
+    "deploy_ssl_url": "https://main--cubxxw.netlify.app",
+    "ssl_url": null,
+    "url": "https://cubxxw.com",
+    "title": "Merge pull request #471 from cubxxw/codex/product-docs-bilingual-20261023\n\ndocs: publish Tana, Doneas and Ambi product teardowns in Chinese and English"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "blog-ci-followup-tracking/1",
+  "observed_at": "2026-10-23T06:45:25.142448+08:00",
+  "original_main_authority": {
+    "conclusion": "cancelled",
+    "created_at": "2026-10-22T18:23:01Z",
+    "event": "push",
+    "head_branch": "main",
+    "head_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "html_url": "https://github.com/cubxxw/blog/actions/runs/39830855910",
+    "id": 39830855910,
+    "name": "Blog Quality and Release",
+    "run_attempt": 1,
+    "status": "completed",
+    "updated_at": "2026-10-22T20:24:23Z"
+  },
+  "repair_runs": [
+    {
+      "id": 39843952273,
+      "name": "Blog Quality and Release",
+      "head_sha": "90c194b9d3f89f198cd786c483ec39e7230a619d",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "run_attempt": 1,
+      "updated_at": "2026-10-22T21:53:30Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39843952273"
+    },
+    {
+      "id": 39850588715,
+      "name": "Blog Quality and Release",
+      "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "run_attempt": 1,
+      "updated_at": "2026-10-22T22:38:48Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588715"
+    },
+    {
+      "id": 39850588644,
+      "head_sha": "08783e4e190f587527fdf8aeecae1b5b6279d3fb",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39850588644",
+      "observed_at": "2026-10-23T06:45:25.142448+08:00"
+    },
+    {
+      "id": 39854328809,
+      "name": "Lighthouse CI",
+      "head_sha": "9c34116444bb7a9506c5ae187e34cec37c5cf9fd",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "updated_at": "2026-10-22T21:27:05Z",
+      "html_url": "https://github.com/cubxxw/blog/actions/runs/39854328809"
+    }
+  ],
+  "result_source": "All listed full repair runs ended at the existing2h platform limit. Original merged-main39830855910 remains the final authority; document-scope successes and browser acceptance do not replace it.",
+  "rules_unchanged": true,
+  "verification_runs_wait_complete": true,
+  "all_site_regression_passed": false
+}

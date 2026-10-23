@@ -1,0 +1,166 @@
+{
+  "schema": "blog-space-regression-diagnostics/1",
+  "observed_at": "2026-10-22T20:47:10.167907+00:00",
+  "authority_run": 39830855910,
+  "authority_artifact": 12455303879,
+  "target": {
+    "kind": "immutable original production deployment",
+    "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "netlify_deploy_id": "6ada5484e1776686525b58a4",
+    "base_url": "https://6ada5484e1776686525b58a4--cubxxw.netlify.app",
+    "browser": "Installed Chromium 154.0.8037.57",
+    "playwright": "1.63.0",
+    "tls_verification": true,
+    "frozen_route_helper": "tests/helpers/frozen-site.ts; provider endpoints remain stubbed"
+  },
+  "application_test_sources_and_thresholds_unchanged": true,
+  "desktop": {
+    "stats": {
+      "startTime": "2026-10-22T20:39:11.656Z",
+      "duration": 200008.80099999998,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "approach can be reversed or grabbed mid-flight and sleeping breath continues at the bookshelf",
+        "file": "space-living-motion.spec.ts",
+        "line": 36,
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "duration": 43357,
+            "errors": [
+              "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"true\"\nReceived: \"false\"\nTimeout:  5000ms\n\n"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "resizing during a window or computer approach retargets the live camera without an arrival jump",
+        "file": "space-living-motion.spec.ts",
+        "line": 64,
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "duration": 37983,
+            "errors": [
+              "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 1\nReceived:   1\n\n  70 |  for(const kind of ['window','computer']){\n  71 |   await object(page,kind);await page.waitForTimeout(170);await page.setViewportSize(kind==='window'?other:original);\n> 72 |   const samples=await finishSamples();expect(samples.length).toBeGreaterThan(1);\n     |                                                              ^\n  73 |   await writeFile(info.outputPath(kind+'-resize-frames.json'),JSON.stringify(samples,null,2));\n  74 |   const end=samples[samples.length-1],previous=samples[samples.length-2];\n  75 |   expect(Math.abs(end.fov-previous.fov)/Math.max(.001,(end.at-previous.at)/1000)).toBeLessThan(8);\n    at /workspace/blog/tests/e2e/space-living-motion.spec.ts:72:62"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "the cat sleeps by default and a real nest click wakes it before it comes over",
+        "file": "space-object-living.spec.ts",
+        "line": 69,
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "duration": 83183,
+            "errors": [
+              "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-bear-workspace]')\nExpected: \"arrived\"\nReceived: \"waking\"\nTimeout:  45000ms\n\n"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "speaker volume can grow to full gain during playback without replacing music or rain",
+        "file": "space-speaker-volume.spec.ts",
+        "line": 16,
+        "project": "desktop",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "duration": 31133,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 1\nReceived: 2\n\n  23 |  await slider.focus();await slider.press('End');await expect(slider).toHaveValue('100');await expect(slider).toBeFocused();await expect(page.locator('[data-room-volume-value]')).toHaveText('100%');\n  24 |  await expect.poll(async()=>(await musicSource(page))?.gain).toBeCloseTo(1,2);\n> 25 |  const later=(await musicSource(page))!;expect(later.id).toBe(music.id);expect(later.time).toBeGreaterThan(music.time);expect((await rainSource(page))!.id).toBe(rain.id);expect((await rainSource(page))!.gain).toBeCloseTo(rain.gain,2);\n     |                                                          ^\n  26 |  // Repeated input during a real drag must retain the same focused range node.\n  27 |  await slider.evaluate(node=>{(window as any).__volumeSlider=node;});\n  28 |  const box=(await slider.boundingBox())!;await page.mouse.move(box.x+box.width-8,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width*.72,box.y+box.height/2,{steps:12});await page.mouse.up();\n    at /workspace/blog/tests/e2e/space-speaker-volume.spec.ts:25:58"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "stats": {
+      "startTime": "2026-10-22T20:42:49.288Z",
+      "duration": 186849.444,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "a visitor can leave a web draft, look out the window and resume the same page with continuous sound (native)",
+        "file": "space-browser.spec.ts",
+        "line": 61,
+        "project": "mobile",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 92794,
+            "errors": [
+              "Test timeout of 90000ms exceeded.",
+              "Error: mouse.move: Test timeout of 90000ms exceeded.\n\n   at ../helpers/room-interaction.ts:18\n\n  16 |   const dx=Math.max(-100,Math.min(100,-p.yawDelta/.0035));\n  17 |   const dy=Math.max(-100,Math.min(100,-p.pitchDelta/.003));\n> 18 |   await page.mouse.move(size.width/2,size.height*.4);await page.mouse.down();await page.mouse.move(size.width/2+dx,size.height*.4+dy,{steps:6});await page.mouse.up();\n     |                                                                                               ^\n  19 |  }\n  20 |  throw new Error(`Room object ${name} could not be brought into view`);\n  21 | }\n    at lookAtRoomObject (/workspace/blog/tests/helpers/room-interaction.ts:18:95)\n    at hitRoomObject (/workspace/blog/tests/helpers/room-interaction.ts:24:10)\n    at /workspace/blog/tests/e2e/space-browser.spec.ts:77:2"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible)",
+        "file": "space-browser.spec.ts",
+        "line": 61,
+        "project": "mobile",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 91483,
+            "errors": [
+              "Test timeout of 90000ms exceeded.",
+              "Error: mouse.move: Test timeout of 90000ms exceeded.\n\n   at ../helpers/room-interaction.ts:18\n\n  16 |   const dx=Math.max(-100,Math.min(100,-p.yawDelta/.0035));\n  17 |   const dy=Math.max(-100,Math.min(100,-p.pitchDelta/.003));\n> 18 |   await page.mouse.move(size.width/2,size.height*.4);await page.mouse.down();await page.mouse.move(size.width/2+dx,size.height*.4+dy,{steps:6});await page.mouse.up();\n     |                                                                                               ^\n  19 |  }\n  20 |  throw new Error(`Room object ${name} could not be brought into view`);\n  21 | }\n    at lookAtRoomObject (/workspace/blog/tests/helpers/room-interaction.ts:18:95)\n    at hitRoomObject (/workspace/blog/tests/helpers/room-interaction.ts:24:10)\n    at /workspace/blog/tests/e2e/space-browser.spec.ts:77:2"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "raw_evidence": [
+    {
+      "file": "remaining-desktop-diagnostic.log",
+      "sha256": "865390360f573166536373c8316d7f7a6f2a13667ba3dceceb135a370c5edf5b"
+    },
+    {
+      "file": "remaining-desktop-diagnostic.json",
+      "sha256": "61a47baca3ce7a9718287900285fae612c178444bc7722cd5e9d6a5dbdedb824"
+    },
+    {
+      "file": "remaining-mobile-diagnostic.log",
+      "sha256": "4e9ceacb3cf5cc77809534012cef9d6c2ed41e1d6fb85df6ab4c08495f9218d2"
+    },
+    {
+      "file": "remaining-mobile-diagnostic.json",
+      "sha256": "b41eace4913e4d0a1df3774faad8c7b59fa6f7d45301eeba86df703938a4c2dc"
+    }
+  ],
+  "interpretation": [
+    "All five unresolved merged-version scenarios also failed on the immutable original deployment in these local diagnostics.",
+    "The native mobile variant additionally timed out locally; this does not alter the original main count of 27 failed cases.",
+    "Mobile compatible failed locally during physical room pointer movement (line 77), while main failed at the later audio snapshot (line 82). Do not claim an identical underlying cause.",
+    "Desktop source-identity failure compares music, not rain: later.id versus music.id at line 25, column 58.",
+    "These diagnostic runs use installed Chromium with tracing; they do not substitute for complete frozen-artifact CI or establish that rendering performance is the sole cause.",
+    "Original raw logs and reports remain in the task evidence directory. Original main traces are retained in the hashed GitHub artifact."
+  ],
+  "status": "unresolved"
+}

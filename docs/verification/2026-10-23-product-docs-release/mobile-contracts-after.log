@@ -1,0 +1,9 @@
+
+Running 2 tests using 1 worker
+
+(node:10157) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [mobile] › tests/e2e/p1-p2-ux.spec.ts:51:7 › P1-P2 UX regression › mobile article library keeps filters discoverable and cards compact (1.2s)
+  ✓  2 [mobile] › tests/e2e/p1-p2-ux.spec.ts:71:7 › P1-P2 UX regression › mobile product workspace exposes 44px actions and a close target (1.2m)
+
+  2 passed (1.3m)

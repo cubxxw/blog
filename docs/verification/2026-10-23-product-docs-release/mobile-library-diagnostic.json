@@ -1,0 +1,246 @@
+{
+  "before": [
+    {
+      "track": "filter-categories",
+      "width": 287,
+      "scrollWidth": 287,
+      "scrollLeft": 0,
+      "hintHidden": true,
+      "visible": true,
+      "buttons": [
+        {
+          "name": "全部",
+          "left": 22,
+          "right": 66
+        },
+        {
+          "name": "AI Agent",
+          "left": 66,
+          "right": 128.421875
+        },
+        {
+          "name": "工程",
+          "left": 128.421875,
+          "right": 172.421875
+        },
+        {
+          "name": "成长与生活",
+          "left": 172.421875,
+          "right": 246.4375
+        },
+        {
+          "name": "AI 项目",
+          "left": 246.4375,
+          "right": 299.296875
+        }
+      ]
+    },
+    {
+      "track": "filter-tags",
+      "width": 315,
+      "scrollWidth": 747,
+      "scrollLeft": 0,
+      "hintHidden": false,
+      "visible": true,
+      "buttons": [
+        {
+          "name": "",
+          "left": 30,
+          "right": 74
+        },
+        {
+          "name": "",
+          "left": 78,
+          "right": 122
+        },
+        {
+          "name": "",
+          "left": 126,
+          "right": 170
+        },
+        {
+          "name": "",
+          "left": 174,
+          "right": 218
+        },
+        {
+          "name": "",
+          "left": 222,
+          "right": 266
+        },
+        {
+          "name": "",
+          "left": 270,
+          "right": 314
+        },
+        {
+          "name": "",
+          "left": 318,
+          "right": 362
+        },
+        {
+          "name": "",
+          "left": 366,
+          "right": 410
+        },
+        {
+          "name": "",
+          "left": 414,
+          "right": 458
+        },
+        {
+          "name": "",
+          "left": 462,
+          "right": 506
+        },
+        {
+          "name": "",
+          "left": 510,
+          "right": 554
+        },
+        {
+          "name": "",
+          "left": 558,
+          "right": 602
+        },
+        {
+          "name": "",
+          "left": 606,
+          "right": 650
+        },
+        {
+          "name": "",
+          "left": 654,
+          "right": 698
+        },
+        {
+          "name": "",
+          "left": 702,
+          "right": 746
+        }
+      ]
+    }
+  ],
+  "after": [
+    {
+      "track": "filter-categories",
+      "width": 287,
+      "scrollWidth": 287,
+      "scrollLeft": 0,
+      "hintHidden": true,
+      "visible": true,
+      "buttons": [
+        {
+          "name": "全部",
+          "left": 22,
+          "right": 66
+        },
+        {
+          "name": "AI Agent",
+          "left": 66,
+          "right": 128.421875
+        },
+        {
+          "name": "工程",
+          "left": 128.421875,
+          "right": 172.421875
+        },
+        {
+          "name": "成长与生活",
+          "left": 172.421875,
+          "right": 246.4375
+        },
+        {
+          "name": "AI 项目",
+          "left": 246.4375,
+          "right": 299.296875
+        }
+      ]
+    },
+    {
+      "track": "filter-tags",
+      "width": 315,
+      "scrollWidth": 747,
+      "scrollLeft": 0,
+      "hintHidden": false,
+      "visible": true,
+      "buttons": [
+        {
+          "name": "AI",
+          "left": 30,
+          "right": 74
+        },
+        {
+          "name": "Agent",
+          "left": 78,
+          "right": 122
+        },
+        {
+          "name": "Personal Growth",
+          "left": 126,
+          "right": 170
+        },
+        {
+          "name": "LLM",
+          "left": 174,
+          "right": 218
+        },
+        {
+          "name": "Blog",
+          "left": 222,
+          "right": 266
+        },
+        {
+          "name": "Personal Reflection",
+          "left": 270,
+          "right": 314
+        },
+        {
+          "name": "Product Strategy",
+          "left": 318,
+          "right": 362
+        },
+        {
+          "name": "Automation",
+          "left": 366,
+          "right": 410
+        },
+        {
+          "name": "Philosophy",
+          "left": 414,
+          "right": 458
+        },
+        {
+          "name": "Open Source",
+          "left": 462,
+          "right": 506
+        },
+        {
+          "name": "Self-Discovery",
+          "left": 510,
+          "right": 554
+        },
+        {
+          "name": "Development",
+          "left": 558,
+          "right": 602
+        },
+        {
+          "name": "Harness Engineering",
+          "left": 606,
+          "right": 650
+        },
+        {
+          "name": "Psychology",
+          "left": 654,
+          "right": 698
+        },
+        {
+          "name": "Solo Builder",
+          "left": 702,
+          "right": 746
+        }
+      ]
+    }
+  ]
+}

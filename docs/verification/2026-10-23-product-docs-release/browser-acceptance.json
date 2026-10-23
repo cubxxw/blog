@@ -1,0 +1,1084 @@
+{
+  "checkedAt": "2026-10-22T18:45:31.211365+00:00",
+  "origin": "https://cubxxw.com",
+  "browserPath": "Connected Browser runtime not callable (no js/browser/CUA tool exposed); task requests production browser acceptance without requiring a local browser. Used installed Chromium via Playwright.",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "pages": [
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "title": "Tana 产品拆解：一条任务怎样从笔记走到会议中的工作 | cubxxw",
+      "lang": "zh",
+      "h1": "Tana 产品拆解：一条任务怎样从笔记走到会议中的工作",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "textLength": 7211,
+      "headings": [
+        "两款产品，把结构化的成本放在不同地方",
+        "先让任务拥有自己的身份",
+        "Supertag 给记录一个类型，字段补上工作条件",
+        "查询把散落的任务聚到一起",
+        "新 Tana 从会议进入，同样需要可处理的对象",
+        "从草稿到改动，中间必须说清发生了什么",
+        "空间决定谁能看见，连接决定能做什么",
+        "做首版时，我会先保住这条任务的来路",
+        "长期使用，还要能离线和离开",
+        "先让一个人把一件事处理完",
+        "参考资料"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/tana-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-home_hu_1cc6f82cf2419b.webp",
+          "loaded": true,
+          "naturalWidth": 900,
+          "naturalHeight": 625,
+          "renderedWidth": 906.234375,
+          "renderedHeight": 388.375,
+          "alt": "Tana 官网演示：视频会议旁显示 Linear 工作项与邮件草稿"
+        },
+        {
+          "src": "/images/product-docs/2026/tana-outliner_hu_f4f2a66ccc8a5ef4.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-outliner_hu_67d029575d0402a.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 645.27392578125,
+          "renderedHeight": 447.8221435546875,
+          "alt": "Tana Outliner 官网首屏：左侧介绍结构化笔记，右侧展示会议记录中的字段与后续任务"
+        },
+        {
+          "src": "/images/product-docs/2026/tana-home_hu_d2f69cb22ae38fb3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-home_hu_3116cb806eb0463c.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 640.20849609375,
+          "renderedHeight": 444.306640625,
+          "alt": "新 Tana 官网首屏：视频会议旁有已发送的 Linear 工作项、待发送的邮件草稿与建议操作"
+        }
+      ],
+      "viewportWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyBounds": {
+        "left": 112,
+        "right": 1018.234375,
+        "width": 906.234375
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+          "lang": "en",
+          "text": "EN"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "tana-from-notes-to-meeting-work-zh-desktop",
+      "expected": {
+        "headings": [
+          "两款产品，把结构化的成本放在不同地方",
+          "先让任务拥有自己的身份",
+          "Supertag 给记录一个类型，字段补上工作条件",
+          "查询把散落的任务聚到一起",
+          "新 Tana 从会议进入，同样需要可处理的对象",
+          "从草稿到改动，中间必须说清发生了什么",
+          "空间决定谁能看见，连接决定能做什么",
+          "做首版时，我会先保住这条任务的来路",
+          "长期使用，还要能离线和离开",
+          "先让一个人把一件事处理完",
+          "参考资料"
+        ],
+        "images": [
+          "/images/product-docs/2026/tana-outliner.png",
+          "/images/product-docs/2026/tana-home.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/tana-home.png",
+          "/images/product-docs/2026/tana-outliner.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "title": "Tana Product Teardown: Following a Task from Notes… | cubxxw",
+      "lang": "en",
+      "h1": "Tana Product Teardown: Following a Task from Notes into Meeting Work",
+      "canonical": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "textLength": 21103,
+      "headings": [
+        "Two products distribute the cost of structure differently",
+        "Give the task an identity of its own",
+        "Supertags give notes a type; fields add working conditions",
+        "Queries bring scattered tasks together",
+        "The new Tana starts with meetings and still needs usable objects",
+        "Explain what happens between a draft and a change",
+        "Spaces determine visibility; connections determine capabilities",
+        "For a first release, preserve the task’s origin",
+        "Long-term use requires working offline and being able to leave",
+        "Let one person finish one piece of work first",
+        "References"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/tana-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-home_hu_1cc6f82cf2419b.webp",
+          "loaded": true,
+          "naturalWidth": 900,
+          "naturalHeight": 625,
+          "renderedWidth": 928.29443359375,
+          "renderedHeight": 397.8291015625,
+          "alt": "Tana website demo showing a Linear issue and an email draft beside a video meeting"
+        },
+        {
+          "src": "/images/product-docs/2026/tana-outliner_hu_f4f2a66ccc8a5ef4.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-outliner_hu_67d029575d0402a.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 606.53759765625,
+          "renderedHeight": 420.9384765625,
+          "alt": "Tana Outliner homepage introducing structured notes on the left and showing meeting fields and follow-up tasks on the right"
+        },
+        {
+          "src": "/images/product-docs/2026/tana-home_hu_d2f69cb22ae38fb3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-home_hu_3116cb806eb0463c.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 604.640625,
+          "renderedHeight": 419.6220703125,
+          "alt": "New Tana homepage showing a sent Linear issue, an email draft awaiting Send, and a suggested action beside a video meeting"
+        }
+      ],
+      "viewportWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyBounds": {
+        "left": 112,
+        "right": 1018.234375,
+        "width": 906.234375
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+          "lang": "zh",
+          "text": "中文"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "tana-from-notes-to-meeting-work-en-desktop",
+      "expected": {
+        "headings": [
+          "Two products distribute the cost of structure differently",
+          "Give the task an identity of its own",
+          "Supertags give notes a type; fields add working conditions",
+          "Queries bring scattered tasks together",
+          "The new Tana starts with meetings and still needs usable objects",
+          "Explain what happens between a draft and a change",
+          "Spaces determine visibility; connections determine capabilities",
+          "For a first release, preserve the task’s origin",
+          "Long-term use requires working offline and being able to leave",
+          "Let one person finish one piece of work first",
+          "References"
+        ],
+        "images": [
+          "/images/product-docs/2026/tana-outliner.png",
+          "/images/product-docs/2026/tana-home.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/tana-home.png",
+          "/images/product-docs/2026/tana-outliner.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "title": "Doneas 产品拆解：一周计划怎样变成每天的承诺 | cubxxw",
+      "lang": "zh",
+      "h1": "Doneas 产品拆解：一周计划怎样变成每天的承诺",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "textLength": 6610,
+      "headings": [
+        "周日，先决定这一周放弃什么",
+        "周一中午，计划开始留下痕迹",
+        "工作日，有人等你出现",
+        "缺席会被看见，也得允许合理离开",
+        "周五，回顾原来答应的事",
+        "每月二十五美元，服务要交付到什么程度",
+        "自己做，先跑通一个小组的一周",
+        "参考资料"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/doneas-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-home_hu_c6948b79a23a57cf.webp",
+          "loaded": true,
+          "naturalWidth": 900,
+          "naturalHeight": 625,
+          "renderedWidth": 910.593505859375,
+          "renderedHeight": 390.2431640625,
+          "alt": "Doneas 官网首屏，展示每日十五分钟通话与锁定的周计划示意"
+        },
+        {
+          "src": "/images/product-docs/2026/doneas-home_hu_6e342fa9dc0de923.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-home_hu_25debb2a1e6800d7.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 642.215576171875,
+          "renderedHeight": 445.69970703125,
+          "alt": "Doneas 官网首屏，左侧介绍每日问责通话，右侧展示锁定周计划的营销界面"
+        },
+        {
+          "src": "/images/product-docs/2026/doneas-weekly_hu_e82e592fb4c3a9b3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-weekly_hu_6b404d30a5606eaa.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 643.95361328125,
+          "renderedHeight": 446.906005859375,
+          "alt": "Doneas 官方周计划说明，依次列出 Plan、Lock、Ship、Reflect 四个阶段"
+        }
+      ],
+      "viewportWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyBounds": {
+        "left": 112,
+        "right": 1018.234375,
+        "width": 906.234375
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+          "lang": "en",
+          "text": "EN"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "doneas-weekly-commitments-zh-desktop",
+      "expected": {
+        "headings": [
+          "周日，先决定这一周放弃什么",
+          "周一中午，计划开始留下痕迹",
+          "工作日，有人等你出现",
+          "缺席会被看见，也得允许合理离开",
+          "周五，回顾原来答应的事",
+          "每月二十五美元，服务要交付到什么程度",
+          "自己做，先跑通一个小组的一周",
+          "参考资料"
+        ],
+        "images": [
+          "/images/product-docs/2026/doneas-home.png",
+          "/images/product-docs/2026/doneas-weekly.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/doneas-home.png",
+          "/images/product-docs/2026/doneas-weekly.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+      "title": "Doneas Product Teardown: Turning a Weekly Plan int… | cubxxw",
+      "lang": "en",
+      "h1": "Doneas Product Teardown: Turning a Weekly Plan into Daily Commitments",
+      "canonical": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+      "textLength": 21117,
+      "headings": [
+        "Sunday: decide what to leave out of the week",
+        "Monday noon: the plan starts leaving a record",
+        "Workdays: someone expects you to show up",
+        "Absence is visible, and leaving needs to be possible",
+        "Friday: revisit what was originally promised",
+        "At twenty-five dollars a month, what must the service deliver?",
+        "Building your own: run one group through one week first",
+        "References"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/doneas-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-home_hu_c6948b79a23a57cf.webp",
+          "loaded": true,
+          "naturalWidth": 900,
+          "naturalHeight": 625,
+          "renderedWidth": 931.001953125,
+          "renderedHeight": 398.9893798828125,
+          "alt": "Doneas homepage showing a daily fifteen-minute call and an illustrative locked weekly plan"
+        },
+        {
+          "src": "/images/product-docs/2026/doneas-home_hu_6e342fa9dc0de923.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-home_hu_25debb2a1e6800d7.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 606.53759765625,
+          "renderedHeight": 420.938720703125,
+          "alt": "Doneas homepage, with its daily accountability call on the left and an illustrative locked weekly plan on the right"
+        },
+        {
+          "src": "/images/product-docs/2026/doneas-weekly_hu_e82e592fb4c3a9b3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-weekly_hu_6b404d30a5606eaa.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 604.640625,
+          "renderedHeight": 419.6220703125,
+          "alt": "Doneas weekly planning page listing the four stages: Plan, Lock, Ship, and Reflect"
+        }
+      ],
+      "viewportWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyBounds": {
+        "left": 112,
+        "right": 1018.234375,
+        "width": 906.234375
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+          "lang": "zh",
+          "text": "中文"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "doneas-weekly-commitments-en-desktop",
+      "expected": {
+        "headings": [
+          "Sunday: decide what to leave out of the week",
+          "Monday noon: the plan starts leaving a record",
+          "Workdays: someone expects you to show up",
+          "Absence is visible, and leaving needs to be possible",
+          "Friday: revisit what was originally promised",
+          "At twenty-five dollars a month, what must the service deliver?",
+          "Building your own: run one group through one week first",
+          "References"
+        ],
+        "images": [
+          "/images/product-docs/2026/doneas-home.png",
+          "/images/product-docs/2026/doneas-weekly.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/doneas-home.png",
+          "/images/product-docs/2026/doneas-weekly.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "title": "Ambi 产品拆解：记住一件事之后，怎样把它做完 | cubxxw",
+      "lang": "zh",
+      "h1": "Ambi 产品拆解：记住一件事之后，怎样把它做完",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "textLength": 6605,
+      "headings": [
+        "先让工作有一个可以继续的起点",
+        "聆听开始之前，先说清楚声音会去哪里",
+        "记忆要留住出处，也要允许它变旧",
+        "从建议下一步，到把任务接住",
+        "读过一份文件，不等于获准照着它行动",
+        "长期工作需要一个能回来接手的地方",
+        "如果自己做，我会先缩到一项任务",
+        "验收要故意让旧答案失效",
+        "参考资料"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/ambi-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-home_hu_a6fdcd2a7c90ff92.webp",
+          "loaded": true,
+          "naturalWidth": 900,
+          "naturalHeight": 625,
+          "renderedWidth": 906.60546875,
+          "renderedHeight": 388.5340576171875,
+          "alt": "Ambi 官网公开首屏，展示产品定位，非作者账户实测"
+        },
+        {
+          "src": "/images/product-docs/2026/ambi-home_hu_d0269ecfb533a9c3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-home_hu_58a058fe3375e92d.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 646.571044921875,
+          "renderedHeight": 448.72216796875,
+          "alt": "Ambi 官网公开首屏，展示其 ambient intelligence 产品定位"
+        },
+        {
+          "src": "/images/product-docs/2026/ambi-features.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-features_hu_5f4a436d5f27ed8a.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 1652,
+          "renderedWidth": 299.0089111328125,
+          "renderedHeight": 494,
+          "alt": "Ambi 官网 Memory 示意，界面中显示 timeline、topics、files 和 skills 入口"
+        }
+      ],
+      "viewportWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyBounds": {
+        "left": 112,
+        "right": 1018.234375,
+        "width": 906.234375
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+          "lang": "en",
+          "text": "EN"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "ambi-memory-to-work-zh-desktop",
+      "expected": {
+        "headings": [
+          "先让工作有一个可以继续的起点",
+          "聆听开始之前，先说清楚声音会去哪里",
+          "记忆要留住出处，也要允许它变旧",
+          "从建议下一步，到把任务接住",
+          "读过一份文件，不等于获准照着它行动",
+          "长期工作需要一个能回来接手的地方",
+          "如果自己做，我会先缩到一项任务",
+          "验收要故意让旧答案失效",
+          "参考资料"
+        ],
+        "images": [
+          "/images/product-docs/2026/ambi-home.png",
+          "/images/product-docs/2026/ambi-features.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/ambi-features.png",
+          "/images/product-docs/2026/ambi-home.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+      "title": "Ambi Product Teardown: From Remembering to Getting… | cubxxw",
+      "lang": "en",
+      "h1": "Ambi Product Teardown: From Remembering to Getting the Work Done",
+      "canonical": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+      "textLength": 21856,
+      "headings": [
+        "Give the work a starting point it can continue from",
+        "Before listening starts, explain where the audio goes",
+        "Memory needs its sources and room to become outdated",
+        "From suggesting a next step to taking responsibility for a task",
+        "Reading a document does not authorize acting on its instructions",
+        "Long-running work needs somewhere the user can return to",
+        "If I were building it, I would start with one task",
+        "Acceptance should deliberately invalidate the old answer",
+        "References"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/ambi-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-home_hu_a6fdcd2a7c90ff92.webp",
+          "loaded": true,
+          "naturalWidth": 900,
+          "naturalHeight": 625,
+          "renderedWidth": 933.966796875,
+          "renderedHeight": 400.260009765625,
+          "alt": "Ambi’s public homepage showing its product positioning, not a test in the author’s account"
+        },
+        {
+          "src": "/images/product-docs/2026/ambi-home_hu_d0269ecfb533a9c3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-home_hu_58a058fe3375e92d.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 694,
+          "renderedWidth": 606.53759765625,
+          "renderedHeight": 420.9385986328125,
+          "alt": "Ambi’s public homepage presenting its ambient intelligence positioning"
+        },
+        {
+          "src": "/images/product-docs/2026/ambi-features.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-features_hu_5f4a436d5f27ed8a.webp",
+          "loaded": true,
+          "naturalWidth": 1000,
+          "naturalHeight": 1652,
+          "renderedWidth": 299.0089111328125,
+          "renderedHeight": 494,
+          "alt": "Ambi’s official Memory illustration, showing timeline, topics, files and skills"
+        }
+      ],
+      "viewportWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyBounds": {
+        "left": 112,
+        "right": 1018.234375,
+        "width": 906.234375
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+          "lang": "zh",
+          "text": "中文"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "ambi-memory-to-work-en-desktop",
+      "expected": {
+        "headings": [
+          "Give the work a starting point it can continue from",
+          "Before listening starts, explain where the audio goes",
+          "Memory needs its sources and room to become outdated",
+          "From suggesting a next step to taking responsibility for a task",
+          "Reading a document does not authorize acting on its instructions",
+          "Long-running work needs somewhere the user can return to",
+          "If I were building it, I would start with one task",
+          "Acceptance should deliberately invalidate the old answer",
+          "References"
+        ],
+        "images": [
+          "/images/product-docs/2026/ambi-home.png",
+          "/images/product-docs/2026/ambi-features.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/ambi-features.png",
+          "/images/product-docs/2026/ambi-home.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "title": "Tana 产品拆解：一条任务怎样从笔记走到会议中的工作 | cubxxw",
+      "lang": "zh",
+      "h1": "Tana 产品拆解：一条任务怎样从笔记走到会议中的工作",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "textLength": 7222,
+      "headings": [
+        "两款产品，把结构化的成本放在不同地方",
+        "先让任务拥有自己的身份",
+        "Supertag 给记录一个类型，字段补上工作条件",
+        "查询把散落的任务聚到一起",
+        "新 Tana 从会议进入，同样需要可处理的对象",
+        "从草稿到改动，中间必须说清发生了什么",
+        "空间决定谁能看见，连接决定能做什么",
+        "做首版时，我会先保住这条任务的来路",
+        "长期使用，还要能离线和离开",
+        "先让一个人把一件事处理完",
+        "参考资料"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/tana-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-home_hu_d66d0715e840b8e.webp",
+          "loaded": true,
+          "naturalWidth": 349,
+          "naturalHeight": 243,
+          "renderedWidth": 350,
+          "renderedHeight": 150,
+          "alt": "Tana 官网演示：视频会议旁显示 Linear 工作项与邮件草稿"
+        },
+        {
+          "src": "/images/product-docs/2026/tana-outliner_hu_f4f2a66ccc8a5ef4.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-outliner_hu_73d377bf816974de.webp",
+          "loaded": true,
+          "naturalWidth": 389,
+          "naturalHeight": 270,
+          "renderedWidth": 347.8226318359375,
+          "renderedHeight": 241.3017578125,
+          "alt": "Tana Outliner 官网首屏：左侧介绍结构化笔记，右侧展示会议记录中的字段与后续任务"
+        },
+        {
+          "src": "/images/product-docs/2026/tana-home_hu_d2f69cb22ae38fb3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/tana-home_hu_2ebe5e5b8b4b33fa.webp",
+          "loaded": true,
+          "naturalWidth": 389,
+          "naturalHeight": 270,
+          "renderedWidth": 345.79998779296875,
+          "renderedHeight": 239.8984375,
+          "alt": "新 Tana 官网首屏：视频会议旁有已发送的 Linear 工作项、待发送的邮件草稿与建议操作"
+        }
+      ],
+      "viewportWidth": 390,
+      "scrollWidth": 390,
+      "bodyBounds": {
+        "left": 20,
+        "right": 370,
+        "width": 350
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+          "lang": "en",
+          "text": "EN"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "tana-from-notes-to-meeting-work-zh-mobile",
+      "expected": {
+        "headings": [
+          "两款产品，把结构化的成本放在不同地方",
+          "先让任务拥有自己的身份",
+          "Supertag 给记录一个类型，字段补上工作条件",
+          "查询把散落的任务聚到一起",
+          "新 Tana 从会议进入，同样需要可处理的对象",
+          "从草稿到改动，中间必须说清发生了什么",
+          "空间决定谁能看见，连接决定能做什么",
+          "做首版时，我会先保住这条任务的来路",
+          "长期使用，还要能离线和离开",
+          "先让一个人把一件事处理完",
+          "参考资料"
+        ],
+        "images": [
+          "/images/product-docs/2026/tana-outliner.png",
+          "/images/product-docs/2026/tana-home.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/tana-home.png",
+          "/images/product-docs/2026/tana-outliner.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "title": "Doneas 产品拆解：一周计划怎样变成每天的承诺 | cubxxw",
+      "lang": "zh",
+      "h1": "Doneas 产品拆解：一周计划怎样变成每天的承诺",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "textLength": 6618,
+      "headings": [
+        "周日，先决定这一周放弃什么",
+        "周一中午，计划开始留下痕迹",
+        "工作日，有人等你出现",
+        "缺席会被看见，也得允许合理离开",
+        "周五，回顾原来答应的事",
+        "每月二十五美元，服务要交付到什么程度",
+        "自己做，先跑通一个小组的一周",
+        "参考资料"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/doneas-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-home_hu_4fe97ada16f8e780.webp",
+          "loaded": true,
+          "naturalWidth": 349,
+          "naturalHeight": 243,
+          "renderedWidth": 351.9759521484375,
+          "renderedHeight": 150.84686279296875,
+          "alt": "Doneas 官网首屏，展示每日十五分钟通话与锁定的周计划示意"
+        },
+        {
+          "src": "/images/product-docs/2026/doneas-home_hu_6e342fa9dc0de923.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-home_hu_b4ebba8c49e64f26.webp",
+          "loaded": true,
+          "naturalWidth": 389,
+          "naturalHeight": 270,
+          "renderedWidth": 347.822998046875,
+          "renderedHeight": 241.30224609375,
+          "alt": "Doneas 官网首屏，左侧介绍每日问责通话，右侧展示锁定周计划的营销界面"
+        },
+        {
+          "src": "/images/product-docs/2026/doneas-weekly_hu_e82e592fb4c3a9b3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/doneas-weekly_hu_2792dcf0eb8b8aac.webp",
+          "loaded": true,
+          "naturalWidth": 389,
+          "naturalHeight": 270,
+          "renderedWidth": 345.79998779296875,
+          "renderedHeight": 239.898681640625,
+          "alt": "Doneas 官方周计划说明，依次列出 Plan、Lock、Ship、Reflect 四个阶段"
+        }
+      ],
+      "viewportWidth": 390,
+      "scrollWidth": 390,
+      "bodyBounds": {
+        "left": 20,
+        "right": 370,
+        "width": 350
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+          "lang": "en",
+          "text": "EN"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "doneas-weekly-commitments-zh-mobile",
+      "expected": {
+        "headings": [
+          "周日，先决定这一周放弃什么",
+          "周一中午，计划开始留下痕迹",
+          "工作日，有人等你出现",
+          "缺席会被看见，也得允许合理离开",
+          "周五，回顾原来答应的事",
+          "每月二十五美元，服务要交付到什么程度",
+          "自己做，先跑通一个小组的一周",
+          "参考资料"
+        ],
+        "images": [
+          "/images/product-docs/2026/doneas-home.png",
+          "/images/product-docs/2026/doneas-weekly.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/doneas-home.png",
+          "/images/product-docs/2026/doneas-weekly.png"
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "title": "Ambi 产品拆解：记住一件事之后，怎样把它做完 | cubxxw",
+      "lang": "zh",
+      "h1": "Ambi 产品拆解：记住一件事之后，怎样把它做完",
+      "canonical": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "textLength": 6614,
+      "headings": [
+        "先让工作有一个可以继续的起点",
+        "聆听开始之前，先说清楚声音会去哪里",
+        "记忆要留住出处，也要允许它变旧",
+        "从建议下一步，到把任务接住",
+        "读过一份文件，不等于获准照着它行动",
+        "长期工作需要一个能回来接手的地方",
+        "如果自己做，我会先缩到一项任务",
+        "验收要故意让旧答案失效",
+        "参考资料"
+      ],
+      "images": [
+        {
+          "src": "/images/product-docs/2026/ambi-home.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-home_hu_e4f84f48d5bacf8b.webp",
+          "loaded": true,
+          "naturalWidth": 349,
+          "naturalHeight": 243,
+          "renderedWidth": 350,
+          "renderedHeight": 150,
+          "alt": "Ambi 官网公开首屏，展示产品定位，非作者账户实测"
+        },
+        {
+          "src": "/images/product-docs/2026/ambi-home_hu_d0269ecfb533a9c3.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-home_hu_7f4caf231de966b5.webp",
+          "loaded": true,
+          "naturalWidth": 389,
+          "naturalHeight": 270,
+          "renderedWidth": 346.88470458984375,
+          "renderedHeight": 240.6513671875,
+          "alt": "Ambi 官网公开首屏，展示其 ambient intelligence 产品定位"
+        },
+        {
+          "src": "/images/product-docs/2026/ambi-features.png",
+          "currentSrc": "https://cubxxw.com/images/product-docs/2026/ambi-features_hu_5f4a436d5f27ed8a.webp",
+          "loaded": true,
+          "naturalWidth": 389,
+          "naturalHeight": 644,
+          "renderedWidth": 299.0089111328125,
+          "renderedHeight": 494,
+          "alt": "Ambi 官网 Memory 示意，界面中显示 timeline、topics、files 和 skills 入口"
+        }
+      ],
+      "viewportWidth": 390,
+      "scrollWidth": 390,
+      "bodyBounds": {
+        "left": 20,
+        "right": 370,
+        "width": 350
+      },
+      "overlays": 0,
+      "languageLinks": [
+        {
+          "href": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+          "lang": "en",
+          "text": "EN"
+        }
+      ],
+      "clipped": [],
+      "status": 200,
+      "label": "ambi-memory-to-work-zh-mobile",
+      "expected": {
+        "headings": [
+          "先让工作有一个可以继续的起点",
+          "聆听开始之前，先说清楚声音会去哪里",
+          "记忆要留住出处，也要允许它变旧",
+          "从建议下一步，到把任务接住",
+          "读过一份文件，不等于获准照着它行动",
+          "长期工作需要一个能回来接手的地方",
+          "如果自己做，我会先缩到一项任务",
+          "验收要故意让旧答案失效",
+          "参考资料"
+        ],
+        "images": [
+          "/images/product-docs/2026/ambi-home.png",
+          "/images/product-docs/2026/ambi-features.png"
+        ]
+      },
+      "checks": {
+        "http": true,
+        "identity": true,
+        "body": true,
+        "headings": true,
+        "images": true,
+        "overlay": true,
+        "horizontalOverflow": true,
+        "bodyBounds": true
+      },
+      "console": [],
+      "requestFailures": [],
+      "imageSourceIdentity": {
+        "method": "Remove Hugo _hu_<hash> derivative suffix from captured src; validate original source bytes separately.",
+        "normalized": [
+          "/images/product-docs/2026/ambi-features.png",
+          "/images/product-docs/2026/ambi-home.png"
+        ]
+      }
+    }
+  ],
+  "switches": [
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "lang": "en",
+      "h1": "Tana Product Teardown: Following a Task from Notes into Meeting Work",
+      "textLength": 21103,
+      "slug": "tana-from-notes-to-meeting-work",
+      "from": "zh",
+      "to": "en",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "lang": "zh",
+      "h1": "Tana 产品拆解：一条任务怎样从笔记走到会议中的工作",
+      "textLength": 7211,
+      "slug": "tana-from-notes-to-meeting-work",
+      "from": "en",
+      "to": "zh",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+      "lang": "en",
+      "h1": "Doneas Product Teardown: Turning a Weekly Plan into Daily Commitments",
+      "textLength": 21117,
+      "slug": "doneas-weekly-commitments",
+      "from": "zh",
+      "to": "en",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/doneas-weekly-commitments/",
+      "lang": "zh",
+      "h1": "Doneas 产品拆解：一周计划怎样变成每天的承诺",
+      "textLength": 6610,
+      "slug": "doneas-weekly-commitments",
+      "from": "en",
+      "to": "zh",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+      "lang": "en",
+      "h1": "Ambi Product Teardown: From Remembering to Getting the Work Done",
+      "textLength": 21856,
+      "slug": "ambi-memory-to-work",
+      "from": "zh",
+      "to": "en",
+      "passed": true
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/ambi-memory-to-work/",
+      "lang": "zh",
+      "h1": "Ambi 产品拆解：记住一件事之后，怎样把它做完",
+      "textLength": 6605,
+      "slug": "ambi-memory-to-work",
+      "from": "en",
+      "to": "zh",
+      "passed": true
+    }
+  ],
+  "assetChecks": [
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/ambi-features.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "4f34306b84877d3a7dfa626a11670a24de441a50aacba46ed4f665050863a4c2",
+      "expected_sha256": "4f34306b84877d3a7dfa626a11670a24de441a50aacba46ed4f665050863a4c2",
+      "matched": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/ambi-home.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "098070bd682cdf059d271dc3a04dc67ed9694f172fcfe739400c0db60a7ae02c",
+      "expected_sha256": "098070bd682cdf059d271dc3a04dc67ed9694f172fcfe739400c0db60a7ae02c",
+      "matched": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/doneas-home.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "778925e5d4c09c227143bcd79de3ac28d1fc8d81fccdc300ee482c9e1e8a7015",
+      "expected_sha256": "778925e5d4c09c227143bcd79de3ac28d1fc8d81fccdc300ee482c9e1e8a7015",
+      "matched": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/doneas-weekly.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "9d9e41828f48ee5943857c9c014cf43117e4b64299808acc7fadf24989fff882",
+      "expected_sha256": "9d9e41828f48ee5943857c9c014cf43117e4b64299808acc7fadf24989fff882",
+      "matched": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/tana-home.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "1838d570318bca6fcdfcd373cd5262d58a157a610b83d01cd942a01cc8f584a6",
+      "expected_sha256": "1838d570318bca6fcdfcd373cd5262d58a157a610b83d01cd942a01cc8f584a6",
+      "matched": true
+    },
+    {
+      "url": "https://cubxxw.com/images/product-docs/2026/tana-outliner.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "741bd12e0fd968a6444754c17be8485ebd85cb36473327114a2142693e82a924",
+      "expected_sha256": "741bd12e0fd968a6444754c17be8485ebd85cb36473327114a2142693e82a924",
+      "matched": true
+    }
+  ],
+  "browserVersion": "154.0.8037.57",
+  "completedAt": "2026-10-22T18:46:06.788284+00:00",
+  "passed": true,
+  "analysisCompletedAt": "2026-10-22T18:47:11.674304+00:00"
+}

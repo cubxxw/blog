@@ -1,0 +1,125 @@
+{
+  "run_id": 39830855352,
+  "run_attempt": 1,
+  "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "artifact_id": 12449249813,
+  "artifact_sha256": "8124aeee0c88e0558b8337b655deb140e27db32502e9cdeedf2ad6be098d6ae4",
+  "collected_pages": [
+    {
+      "file": "lhr-1792693620889.json",
+      "url": "https://cubxxw.com/",
+      "fetchTime": "2026-10-22T18:26:44.774Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.54,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693636799.json",
+      "url": "https://cubxxw.com/zh/",
+      "fetchTime": "2026-10-22T18:27:04.728Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.87,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693775216.json",
+      "url": "https://cubxxw.com/about/",
+      "fetchTime": "2026-10-22T18:27:19.939Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.31,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693912954.json",
+      "url": "https://cubxxw.com/zh/about/",
+      "fetchTime": "2026-10-22T18:29:38.305Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.34,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693928504.json",
+      "url": "https://cubxxw.com/ai-agent/",
+      "fetchTime": "2026-10-22T18:31:56.054Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.8,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693941986.json",
+      "url": "https://cubxxw.com/engineering/",
+      "fetchTime": "2026-10-22T18:32:11.667Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.98,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693956864.json",
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "fetchTime": "2026-10-22T18:32:25.095Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.73,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693971507.json",
+      "url": "https://cubxxw.com/growth/",
+      "fetchTime": "2026-10-22T18:32:39.978Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.8,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      }
+    },
+    {
+      "file": "lhr-1792693986115.json",
+      "url": "https://cubxxw.com/zh/growth/",
+      "fetchTime": "2026-10-22T18:32:54.623Z",
+      "runtimeError": null,
+      "categories": {
+        "performance": 0.63,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      }
+    }
+  ],
+  "incomplete_page": {
+    "url": "https://cubxxw.com/projects/",
+    "code": "PROTOCOL_TIMEOUT",
+    "method": "Network.getResponseBody",
+    "evidence": "lighthouse-attempt1-excerpt.log"
+  },
+  "outcome": "failure",
+  "thresholds_unchanged": true
+}

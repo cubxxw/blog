@@ -1,0 +1,23 @@
+2026-10-22T20:14:45.7827553Z Running Lighthouse 1 time(s) on https://cubxxw.com/
+2026-10-22T20:15:09.4285485Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/
+2026-10-22T20:15:23.8183172Z Running Lighthouse 1 time(s) on https://cubxxw.com/about/
+2026-10-22T20:17:44.3732500Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/about/
+2026-10-22T20:20:03.9407909Z Running Lighthouse 1 time(s) on https://cubxxw.com/ai-agent/
+2026-10-22T20:20:18.8152612Z Running Lighthouse 1 time(s) on https://cubxxw.com/engineering/
+2026-10-22T20:20:32.1059630Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/ai-agent/
+2026-10-22T20:20:46.8542692Z Running Lighthouse 1 time(s) on https://cubxxw.com/growth/
+2026-10-22T20:21:00.5030547Z Running Lighthouse 1 time(s) on https://cubxxw.com/zh/growth/
+2026-10-22T20:21:14.9677655Z Running Lighthouse 1 time(s) on https://cubxxw.com/projects/
+2026-10-22T20:30:21.6441976Z Error: Lighthouse failed with exit code 1
+2026-10-22T20:30:21.6450556Z     "code": "PROTOCOL_TIMEOUT",
+2026-10-22T20:30:21.6451164Z     "message": "Waiting for DevTools protocol response has exceeded the allotted time. (Method: Network.getResponseBody)"
+2026-10-22T20:30:21.6518002Z 2026-10-22T20:22:03.129Z LH:waitFor:warn Timed out waiting for page load. Checking if page is hung...
+2026-10-22T20:30:21.6549434Z 2026-10-22T20:23:07.895Z LH:MainDocumentContent:error PROTOCOL_TIMEOUT
+2026-10-22T20:30:21.6555055Z 2026-10-22T20:23:14.632Z LH:ResponseCompression:error PROTOCOL_TIMEOUT
+2026-10-22T20:30:21.6731222Z 2026-10-22T20:24:16.897Z LH:Runner:warn ResponseCompression gatherer, required by audit uses-text-compression, encountered an error: PROTOCOL_TIMEOUT
+2026-10-22T20:30:21.6738519Z 2026-10-22T20:24:17.002Z LH:Runner:warn MainDocumentContent gatherer, required by audit charset, encountered an error: PROTOCOL_TIMEOUT
+2026-10-22T20:30:21.6764797Z Runtime error encountered: Waiting for DevTools protocol response has exceeded the allotted time. (Method: Network.getResponseBody)
+2026-10-22T20:30:21.6776823Z ##[error]Process completed with exit code 1.
+2026-10-22T20:30:22.8433463Z SHA256 digest of uploaded artifact is 214e6d3cb56beb7102baab0738fdfdd1d9a130c58e2872722782d789c1e11bbd
+2026-10-22T20:30:23.3135624Z Artifact lighthouse-results-39843952208-2 successfully finalized. Artifact ID 12456407357
+2026-10-22T20:30:23.3137146Z Artifact lighthouse-results-39843952208-2 has been successfully uploaded! Final size is 3989225 bytes. Artifact ID is 12456407357

@@ -1,0 +1,108 @@
+{
+  "schema": "blog-targeted-repair/1",
+  "source_run": 39830855910,
+  "source_artifact": 12455303879,
+  "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+  "target": {
+    "kind": "immutable original production deployment",
+    "source_sha": "db80e3fbfed57e9f75f15ab83ef8a192a0316059",
+    "netlify_deploy_id": "6ada5484e1776686525b58a4",
+    "base_url": "https://6ada5484e1776686525b58a4--cubxxw.netlify.app",
+    "browser": "Installed Chromium 154.0.8037.57",
+    "playwright": "1.63.0",
+    "tls_verification": true,
+    "frozen_route_helper": "tests/helpers/frozen-site.ts; provider endpoints remain stubbed"
+  },
+  "file": "tests/e2e/p1-p2-ux.spec.ts",
+  "file_sha256": "e87ba7bea5e5f99a517590dbe6ffcb6622d16b2eef538dedddc2fac033144208",
+  "causes": [
+    "Mobile chip counts are hidden; accessible category names have no trailing space.",
+    "The category track fits at the existing 375px viewport: clientWidth=scrollWidth=287, so its hint is intentionally hidden. The expanded overflowing tag track still requires a visible hint.",
+    "The existing launchpad registry includes browser: 12 apps, not the outdated 11."
+  ],
+  "source_references": [
+    "layouts/section/articles.html",
+    "assets/css/extended/section-articles.css",
+    "assets/js/articles-filter.js:syncScrollAffordance",
+    "assets/js/space/state.mjs"
+  ],
+  "before": {
+    "stats": {
+      "startTime": "2026-10-22T20:29:54.163Z",
+      "duration": 36397.363,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "evidence": "mobile-contracts-before.log"
+  },
+  "intermediate": {
+    "stats": {
+      "startTime": "2026-10-22T20:31:20.447Z",
+      "duration": 80289.866,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "note": "Name repair exposed the old unconditional category scroll-hint expectation; retained before verifying the non-overflow layout.",
+    "evidence": "mobile-contracts-intermediate.log"
+  },
+  "after": {
+    "exit_code": 0,
+    "stats": {
+      "startTime": "2026-10-22T20:34:46.568Z",
+      "duration": 77040.071,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "mobile article library keeps filters discoverable and cards compact",
+        "file": "p1-p2-ux.spec.ts",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1191
+          }
+        ]
+      },
+      {
+        "title": "mobile product workspace exposes 44px actions and a close target",
+        "file": "p1-p2-ux.spec.ts",
+        "project": "mobile",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 74866
+          }
+        ]
+      }
+    ],
+    "evidence": "mobile-contracts-after.log"
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exit_code": 0,
+    "evidence": "typecheck-final.log"
+  },
+  "guards": {
+    "original_scenarios_preserved": true,
+    "card_height_and_44px_control_assertions_preserved": true,
+    "theme_persistence_and_close_assertions_preserved": true,
+    "app_ids_strictly_compared": true,
+    "workflow_scope_retries_gpu_and_timeouts_unchanged": true,
+    "articles_images_and_application_unchanged": true
+  },
+  "limits": [
+    "Two targeted mobile tests against the immutable original deployment; this is not complete frozen CI acceptance."
+  ],
+  "observed_at": "2026-10-22T20:37:31.023809+00:00",
+  "log_normalization": "Committed logs strip trailing whitespace only; original raw logs remain in the task evidence directory."
+}

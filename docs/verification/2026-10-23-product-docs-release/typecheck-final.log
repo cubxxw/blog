@@ -1,0 +1,3 @@
+
+> cubxxw-blog@1.0.0 typecheck
+> tsc --noEmit && tsc --ignoreConfig --noEmit --strict --esModuleInterop --skipLibCheck --module NodeNext --moduleResolution NodeNext --target ES2020 --types node,@playwright/test playwright.interactive.config.ts
