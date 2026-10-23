@@ -70,13 +70,30 @@ test('the cat sleeps by default and a real nest click wakes it before it comes o
  await ready(page);await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
  const cat=async()=>JSON.parse((await root(page).getAttribute('data-room-cat'))!);
  expect((await cat()).phase).toBe('sleep');const home=await cat();
- await page.emulateMedia({reducedMotion:'no-preference'});const at=await face(page,'cat-bed'),before=await root(page).getAttribute('data-world-pose');await page.mouse.click(at.x,at.y);
- await expect(root(page)).toHaveAttribute('data-cat-state','waking');expect((await cat()).x).toBe(home.x);
- await expect(root(page)).toHaveAttribute('data-cat-state','arrived',{timeout:45000});
- expect(Math.hypot((await cat()).x-home.x,(await cat()).z-home.z)).toBeGreaterThan(.3);
- await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await root(page).getAttribute('data-world-pose')).toBe(before);
- await expect(page.locator('[data-room-inspection]')).toBeHidden();
- await object(page,'cat');await expect(root(page)).toHaveAttribute('data-cat-state','petting');
+ await page.emulateMedia({reducedMotion:'no-preference'});const at=await face(page,'cat-bed'),before=await root(page).getAttribute('data-world-pose');
+ // Keep the first presented wake frame: a later CDP read can arrive after walking starts.
+ const wakeObservation=await root(page).evaluateHandle(node=>{
+  const room=node as HTMLElement;let firstWake:{x:number;z:number;phase:string;stage:string;state:string|undefined}|null=null;
+  const observer=new MutationObserver(()=>{
+   if(firstWake)return;const snapshot=JSON.parse(room.dataset.roomCat||'null');
+   if(snapshot?.phase==='wake')firstWake={x:snapshot.x,z:snapshot.z,phase:snapshot.phase,stage:snapshot.interaction?.stage,state:room.dataset.catState};
+  });
+  observer.observe(room,{attributes:true,attributeFilter:['data-room-cat']});
+  return {snapshot:()=>firstWake,disconnect:()=>observer.disconnect()};
+ });
+ try{
+  await page.mouse.click(at.x,at.y);
+  await expect(root(page)).toHaveAttribute('data-cat-state','waking');
+  await expect.poll(()=>wakeObservation.evaluate(observation=>observation.snapshot())).not.toBeNull();
+  expect(await wakeObservation.evaluate(observation=>observation.snapshot())).toMatchObject({phase:'wake',stage:'wake',state:'waking',x:home.x,z:home.z});
+  await expect(root(page)).toHaveAttribute('data-cat-state','arrived',{timeout:45000});
+  expect(Math.hypot((await cat()).x-home.x,(await cat()).z-home.z)).toBeGreaterThan(.3);
+  await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await root(page).getAttribute('data-world-pose')).toBe(before);
+  await expect(page.locator('[data-room-inspection]')).toBeHidden();
+  await object(page,'cat');await expect(root(page)).toHaveAttribute('data-cat-state','petting');
+ }finally{
+  try{await wakeObservation.evaluate(observation=>observation.disconnect());}finally{await wakeObservation.dispose();}
+ }
 });
 
 test('a reduced-motion call acknowledges the visitor without moving the cat or camera',async({page})=>{
