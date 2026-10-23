@@ -1,32 +1,32 @@
-name: Recheck an existing site artifact
-
+name: Diagnose camera timing on frozen candidate
 on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: Original verified main workflow run ID
+        description: Frozen candidate producer run
         required: true
         type: string
       artifact_id:
-        description: Immutable deployment artifact ID from that run
+        description: Immutable frozen input artifact
         required: true
         type: string
       source_sha:
-        description: Full source commit of that artifact
+        description: Exact candidate test source
         required: true
         type: string
-
 permissions:
   contents: read
   actions: read
-
 jobs:
-  recheck:
+  diagnose:
+    name: Diagnostic only (never a release gate)
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
         with:
           ref: ${{ inputs.source_sha }}
+          submodules: recursive
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/setup-blog
@@ -35,17 +35,23 @@ jobs:
           artifact-ids: ${{ inputs.artifact_id }}
           run-id: ${{ inputs.run_id }}
           github-token: ${{ github.token }}
-          path: tests/.artifacts/recheck
+          path: tests/.artifacts/camera-input
           merge-multiple: true
-      - name: Check frozen production pages only
+      - name: Reproduce exact camera contracts without rebuilding production
         env:
-          RECHECK_SHA: ${{ inputs.source_sha }}
-        run: |
-          node scripts/ci-changes.mjs --head "$RECHECK_SHA" --out tests/.artifacts/recheck-changes.json
-          node scripts/site-verify.mjs --public-dir tests/.artifacts/recheck/public --page-map tests/.artifacts/recheck/page-map.json --change-set tests/.artifacts/recheck-changes.json --report-dir tests/.artifacts/recheck-report
+          SITE_OUTPUT_DIR: ${{ github.workspace }}/tests/.artifacts/camera-input/site/public
+          PLAYWRIGHT_JSON_OUTPUT_FILE: tests/.artifacts/camera-report.json
+        run: >-
+          npx playwright test tests/e2e/space-living-motion.spec.ts
+          --grep 'approach can be reversed|resizing during a window'
+          --project=desktop --project=mobile --workers=1 --retries=0 --trace=on
+          --reporter=line,json
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: site-recheck-${{ github.run_id }}
-          path: tests/.artifacts/recheck-report/
-          retention-days: 30
+          name: camera-diagnostic-${{ github.run_id }}
+          path: |
+            tests/.artifacts/camera-report.json
+            test-results/
+          if-no-files-found: error
+          retention-days: 7
