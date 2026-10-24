@@ -166,7 +166,14 @@
 .space[data-world-renderer="jiangnan"] .space-cafe__utilities { gap:6px; margin:0; }
 .space[data-world-renderer="jiangnan"] .space-cafe__utilities button { min-width:44px; min-height:44px; padding:0 12px; border-color:transparent; border-radius:22px; color:#fff3db; background:transparent; backdrop-filter:none; text-shadow:0 1px 3px #100b07,0 0 10px #100b07; font-size:12px; }
 .space[data-world-renderer="jiangnan"] .space-cafe__utilities [data-cafe-quiet][aria-pressed="true"] { color:#2a2015; background:#e5d6b8; border-color:#e5d6b8; text-shadow:none; }
+.space[data-world-renderer="jiangnan"] .space-cafe__utilities [data-cafe-photo-light] { gap:7px; border:1px solid #d8c39b45; background:#231c16a6; color:#d5c4a8; text-shadow:none; transition:background .2s,color .2s,border-color .2s; }
+.space[data-world-renderer="jiangnan"] .space-cafe__utilities [data-cafe-photo-light][aria-pressed="true"] { color:#ffe4ad; border-color:#e8c78970; background:#59432cba; }
+.space[data-world-renderer="jiangnan"] .space-cafe__utilities [data-cafe-photo-light]:hover { border-color:#f2d3a2; background:#624c35d6; }
+.space[data-world-renderer="jiangnan"] [data-cafe-photo-light] .photo-light-rays { opacity:0; transition:opacity .2s; }
+.space[data-world-renderer="jiangnan"] [data-cafe-photo-light][aria-pressed="true"] .photo-light-rays { opacity:1; }
 .space[data-world-renderer="jiangnan"] .space-cafe__utilities button:focus-visible { outline:2px solid #f2dfb2; outline-offset:4px; }
+@media(max-width:480px) { .space[data-world-renderer="jiangnan"] [data-cafe-photo-light] .photo-light-label { display:none; } }
+@media(prefers-reduced-motion:reduce) { .space[data-world-renderer="jiangnan"] .space-cafe__utilities [data-cafe-photo-light],.space[data-world-renderer="jiangnan"] [data-cafe-photo-light] .photo-light-rays { transition:none; } }
 @media(max-width:640px) {
   .space[data-world-renderer="jiangnan"][data-world-mode="roam"][data-cafe-mode="cafe"] .space-cafe__header { top:max(12px,env(safe-area-inset-top)); right:max(16px,env(safe-area-inset-right)); }
 }

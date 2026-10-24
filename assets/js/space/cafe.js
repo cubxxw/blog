@@ -51,8 +51,19 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     root.querySelector('[data-cafe-name]').textContent=scene.name;
     root.querySelector('[data-cafe-note]').textContent=scene.note;
     choices.querySelectorAll('[data-cafe-theme]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.cafeTheme===id)));
+    syncPhotoLight();
     try{localStorage.setItem('space:cafe:theme:v2',id);}catch{}
   }
+  function syncPhotoLight(state) {
+    if(!state){try{state=JSON.parse(root.dataset.roomObjects||'null');}catch{}}
+    root.querySelectorAll('[data-cafe-photo-light]').forEach(button=>{
+      button.hidden=theme!=='jiangnan'||failed||typeof state?.['photo-light']!=='boolean';
+      const on=state?.['photo-light']===true;
+      button.setAttribute('aria-pressed',String(on));
+      button.title=on?t('关闭照片墙暖光','Turn off the photo wall light'):t('打开照片墙暖光','Turn on the photo wall light');
+    });
+  }
+  root.addEventListener('space:roomobjects',event=>syncPhotoLight(event.detail),{signal:abort.signal});
   function setQuiet(value) {
     quiet=value;root.dataset.environmentPaused=String(value);
     root.querySelectorAll('[data-cafe-quiet]').forEach(button=>{
@@ -73,7 +84,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     const focused=document.activeElement;
     const selection=typeof focused?.selectionStart==='number'?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
     failureFocusManaged=initializing&&entryFocusManaged&&!boot.active;
-    failed=true;++revision;world?.dispose();world=null;root.dataset.worldFailed='true';root.dataset.computerView='expanded';syncCat('unavailable');
+    failed=true;++revision;world?.dispose();world=null;root.dataset.worldFailed='true';root.dataset.computerView='expanded';syncCat('unavailable');syncPhotoLight();
     for(const key of ['worldReady','worldMode','worldTravel','worldLoading'])delete root.dataset[key];
     // A completed onboarding cannot display a second failure state. Restore the
     // ordinary DOM workspace immediately, including after context loss.
@@ -189,6 +200,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(target.closest('[data-cafe-picker-close]'))closePicker();
     if(target.closest('[data-cafe-language]'))execute('language',{value:zh?'en':'zh'});
     if(target.closest('[data-cafe-quiet]'))setQuiet(!quiet);
+    if(target.closest('[data-cafe-photo-light]'))world?.toggleObject('photo-light');
     if(target.closest('[data-cafe-replay]')){if(await visit('seat'))boot.replay();}
     if(target.closest('[data-cafe-outside]'))visit('outside');
     const choice=target.closest('button[data-cafe-theme]');

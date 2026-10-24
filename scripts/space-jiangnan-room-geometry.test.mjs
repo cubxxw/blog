@@ -349,6 +349,23 @@ test('the table lamp owns the single local shadow and turns off its complete lig
   assert.deepEqual(room.snapshotObjects(),lit,'switching back must restore the same physical state');
 });
 
+test('the picture fitting is above the complete collage, pickable and lights the paper without another shadow pass', () => {
+  const fitting=room.group.getObjectByName('brass-photo-picture-light');assert.ok(fitting);
+  const hood=fitting.getObjectByName('photo-light-hood'),diffuser=fitting.getObjectByName('photo-light-diffuser');
+  const wash=fitting.getObjectByName('photo-gallery-wash');assert.ok(hood&&diffuser&&wash);
+  const collage=new THREE.Box3().setFromObject(room.group.getObjectByName('photo-lattice-north'));
+  assert.ok(new THREE.Box3().setFromObject(hood).min.y>collage.max.y,'the hood must not cover any print');
+  assert.equal(action(rayHit([1.2,1.34,1.65],room.targets['photo-light'])?.object),'photo-light');
+  assert.equal(wash.castShadow,false);
+  const direction=wash.target.getWorldPosition(new THREE.Vector3()).sub(wash.getWorldPosition(new THREE.Vector3())).normalize();
+  assert.ok(direction.y<-.5&&direction.z<-.5,'warm light must reach the front of the photographs');
+  const before=room.snapshotObjects();assert.ok(before.photoLight>0&&before.photoEmitter>0);
+  room.toggleObject('photo-light');
+  assert.equal(wash.intensity,0);assert.equal(diffuser.material.emissiveIntensity,0);
+  assert.equal(room.snapshotObjects().tableLight,before.tableLight);assert.equal(room.snapshotObjects().shelfLight,before.shelfLight);
+  room.toggleObject('photo-light');assert.deepEqual(room.snapshotObjects(),before);
+});
+
 test('light switches change the actual local lights and emitters, while mechanisms follow the passed clock', () => {
   const originalEmitters=room.snapshotObjects().shelfEmitters;
   room.toggleObject('lamp'); room.toggleObject('shelf-light');

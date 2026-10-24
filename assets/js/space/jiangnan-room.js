@@ -649,6 +649,20 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   for(let i=0;i<=6;i++)latticeParts.push(box(-.41+i*.82/6,0,.003,i===0||i===6?.018:.005,1.82,.010,latticeWood,lattice,.001));
   for(let i=0;i<=12;i++)latticeParts.push(box(0,-.91+i*1.82/12,.004,.82,i===0||i===12?.018:.005,.010,latticeWood,lattice,.001));
   batch(latticeParts).name='photo-lattice-joinery';
+  // A slim brass fitting sits on the beam above the prints. A broad wash
+  // approximates its line diffuser, keeping the bottom prints readable too.
+  // It shares the room clock and adds no shadow-map pass or floating glow.
+  const photoLamp=makeGroup('brass-photo-picture-light',-1.87,2.71,-2.49,group,'photo-light');
+  targets['photo-light']=[-1.87,2.69,-2.31];
+  box(0,0,0,.10,.052,.018,agedBrass,photoLamp,.004);
+  for(const x of [-.17,.17])tube([[x,0,0],[x,-.005,.09],[x,-.02,.18]],.0045,brass,photoLamp,12);
+  box(0,-.02,.18,.62,.030,.046,brass,photoLamp,.006).name='photo-light-hood';
+  const photoEmitter=material('#e3cfaa',.5,{emissive:'#ffe1ad',emissiveIntensity:.62});
+  const photoDiffuser=box(0,-.037,.182,.572,.006,.029,photoEmitter,photoLamp,.001);
+  photoDiffuser.name='photo-light-diffuser';photoDiffuser.castShadow=false;
+  const photoLight=new THREE.DirectionalLight('#ffe2b8',1.35);
+  photoLight.name='photo-gallery-wash';photoLight.position.set(0,-.035,.20);
+  photoLight.target.position.set(0,-.80,-.62);photoLamp.add(photoLight,photoLight.target);
   const printPaper=material('#e8dfce',.97),printFrames=[walnut,ash,material('#a89679',.94)],photoImages=new Map();
   function fitPrint(view,texture){
     const ratio=texture.image.width/texture.image.height,inset=view.small?.025:.095,maxW=view.width-inset,maxH=view.height-inset;
@@ -1200,6 +1214,8 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     lightRamp.seed('table', taskLight.intensity);
     lightRamp.seed('pool', lampPool.intensity);
     lightRamp.seed('shade', shadeMat.emissiveIntensity);
+    lightRamp.seed('photo', photoLight.intensity);
+    lightRamp.seed('photo-emitter', photoEmitter.emissiveIntensity);
     shelfLights.forEach((light, index) => lightRamp.seed('shelf:' + index, light.intensity));
     shelfBulbs.forEach((emitter, index) => lightRamp.seed('emitter:' + index, emitter.emissiveIntensity));
   }
@@ -1215,13 +1231,15 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     }
     return y;
   };
-  const writePracticals = ({ table, pool, shade, shelves, emitters }) => {
+  const writePracticals = ({ table, pool, shade, photo, photoGlow, shelves, emitters }) => {
     if (taskLight.intensity !== table || lampPool.intensity !== pool ||
       shelfLights.some((light, index) => light.intensity !== shelves[index])) shadowDirty = true;
     taskLight.intensity = table;
     lampPool.intensity = pool;
     lampPool.visible = pool > 0;
     shadeMat.emissiveIntensity = shade;
+    photoLight.intensity = photo;
+    photoEmitter.emissiveIntensity = photoGlow;
     shelfLights.forEach((light, index) => { light.intensity = shelves[index]; });
     shelfBulbs.forEach((emitter, index) => { emitter.emissiveIntensity = emitters[index]; });
   };
@@ -1234,6 +1252,8 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
       table: ramp('table', state.lamp ? JIANGNAN_TABLE_LIGHT.diffuse : 0),
       pool: ramp('pool', state.lamp ? JIANGNAN_TABLE_LIGHT.pool : 0),
       shade: ramp('shade', state.lamp ? .47 : 0),
+      photo: ramp('photo', state['photo-light'] ? 1.35 : 0),
+      photoGlow: ramp('photo-emitter', state['photo-light'] ? .62 : 0),
       shelves: shelfLights.map((light, index) => ramp('shelf:' + index, state['shelf-light'] ? light.userData.baseIntensity : 0)),
       emitters: shelfBulbs.map((emitter, index) => ramp('emitter:' + index, state['shelf-light'] ? shelfEmitterLevels[index] : 0))
     });
@@ -1263,6 +1283,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     },
     snapshotObjects() {
       return { ...objects.snapshot(), tableLight: taskLight.intensity, tablePool: lampPool.intensity, tablePoolVisible: lampPool.visible, shadeEmissive: shadeMat.emissiveIntensity,
+        photoLight: photoLight.intensity, photoEmitter: photoEmitter.emissiveIntensity,
         shelfLight: shelfLights.reduce((sum, light) => sum + light.intensity, 0), shelfEmitters: shelfBulbs.map(emitter => emitter.emissiveIntensity),
         rotorAngle: rotor.rotation.z, platterRotation: platter.rotation.y, pendulumRotation: pendulum.rotation.z,
         hourHand: hourHand.rotation.z, minuteHand: minuteHand.rotation.z, clockEpoch,
@@ -1284,6 +1305,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
         if (lightRamp.update(dt)) {
           writePracticals({
             table: lightRamp.value('table'), pool: lightRamp.value('pool'), shade: lightRamp.value('shade'),
+            photo: lightRamp.value('photo'), photoGlow: lightRamp.value('photo-emitter'),
             shelves: shelfLights.map((light, index) => lightRamp.value('shelf:' + index)),
             emitters: shelfBulbs.map((emitter, index) => lightRamp.value('emitter:' + index))
           });
