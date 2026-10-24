@@ -1528,6 +1528,11 @@
       "at": "2026-10-23T17:34:07.138Z",
       "id": "em_5ge69qmr0381xr4v6ywy5qgqpf",
       "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/": {
+      "at": "2026-10-24T16:19:33.113Z",
+      "id": "em_5tpx9mqat59e2s5phyg8qwwf4v",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4869,10 +4874,12 @@
     "[\"en\",\"https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/\"]": {
       "language": "en",
       "url": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "4a61d40c-e736-4670-ace0-6e72e546ca64",
       "at": "2026-10-24T16:19:33.113Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_5tpx9mqat59e2s5phyg8qwwf4v",
+      "completedAt": "2026-10-24T16:19:33.113Z"
     }
   }
 }
