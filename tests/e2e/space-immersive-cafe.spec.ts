@@ -26,7 +26,7 @@ test('the room opens without floating entry actions and keeps quiet scene utilit
  await page.screenshot({path:test.info().outputPath('room-photo-wall.png')});
 });
 
-test('photographs on both walls open their own journey from the physical frame',async({page})=>{
+test('small wall photographs open their own journey from the physical frame',async({page})=>{
  await ready(page);
  for(const [id,title] of [['kumano','熊野古道'],['fuji','富士山']]){
   const point=await lookAtRoomObject(page,'photo:'+id);
