@@ -5,11 +5,11 @@ import { buildJiangnanFloor } from './jiangnan-floor.mjs';
 import { createCatSupport } from './jiangnan-cat-grounding.mjs';
 import { createTimberFinish } from './jiangnan-timber-finish.mjs';
 import { createTablePool, JIANGNAN_TABLE_LIGHT } from './jiangnan-lighting.mjs';
-import { JIANGNAN_WINDOW, JIANGNAN_DESK, JIANGNAN_WORK_CHAIR, JIANGNAN_READING_CHAIR, JIANGNAN_CAT_BED, JIANGNAN_WORKSTATION } from './jiangnan-layout.mjs';
+import { JIANGNAN_WINDOW, JIANGNAN_DESK, JIANGNAN_WORK_CHAIR, JIANGNAN_READING_CHAIR, JIANGNAN_CAT_BED, JIANGNAN_WORKSTATION, JIANGNAN_PHOTO_WALL } from './jiangnan-layout.mjs';
 
 // Furniture is built in metres. The live desktop belongs to the world runtime;
 // this module supplies its physical display, cabinetry and the surrounding room.
-export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photoAsset, books = [], records = [], zh = true, isDisposed, shadowSize = 1536, buildDoor = null, createLightRamp = null, isStill = () => true }) {
+export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photos = [], books = [], records = [], zh = true, isDisposed, shadowSize = 1536, buildDoor = null, createLightRamp = null, isStill = () => true }) {
   const group = new THREE.Group();
   group.name = 'jiangnan-private-room';
   scene.add(group);
@@ -243,8 +243,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   if (!buildDoor) box(0, 1.425, 2.09, 6.65, 2.85, .18, plaster);
   box(0, 2.94, -.3, 6.65, .18, 4.78, plaster);
   box(-2.69, 1.425, -2.69, 1.02, 2.85, .18, plaster);
-  box(-1.72, .40, -2.69, .94, .80, .18, plaster);
-  box(-1.72, 2.72, -2.69, .94, .26, .18, plaster);
+  box(-1.72, 1.425, -2.69, .94, 2.85, .18, plaster).name='photo-wall-infill';
   box(3.055, 1.425, -2.69, .29, 2.85, .18, plaster);
   box(.80, .40, -2.69, 4.1, .80, .18, plaster);
   box(.80, 2.72, -2.69, 4.1, .26, .18, plaster);
@@ -255,15 +254,15 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   for (const z of [-2.56, -.28, 1.9]) box(0, 2.74, z, 6.4, .19, .13, walnut);
   if (!buildDoor) box(0, .085, 1.96, 6.32, .17, .07, darkWood);
   for (const x of [-3.13, 3.13]) box(x, 1.43, -2.56, .095, 2.85, .14, darkWood);
-  // Paper and glass share one sill/header, with a real opening behind each.
+  // The main glass bay keeps its own sill/header beside the solid photo wall.
   // Paired meeting stiles sit under the two bamboo rolls. Their lower tongues
   // run between low guide beads on the existing sill; glass stays in place.
   const windowJoinery = [], windowSash = [];
-  for (const [x,width] of [[-2.145,.07],[-1.28,.10],[2.875,.11]]) {
+  for (const [x,width] of [[-1.28,.10],[2.875,.11]]) {
     windowJoinery.push(grainAlong(box(x,1.67,-2.505,width,1.72,.205,windowTimber,group,.003),'y',1.72,.205));
   }
-  windowJoinery.push(grainAlong(box(.375,.810,-2.50,5.16,.090,.220,windowTimber,group,.006),'x',5.16,.22));
-  windowJoinery.push(grainAlong(box(.375,2.535,-2.505,5.16,.105,.190,windowTimber,group,.004),'x',5.16,.19));
+  windowJoinery.push(grainAlong(box(.8,.810,-2.50,4.31,.090,.220,windowTimber,group,.006),'x',4.31,.22));
+  windowJoinery.push(grainAlong(box(.8,2.535,-2.505,4.31,.105,.190,windowTimber,group,.004),'x',4.31,.19));
   for (const x of [-1.228,2.828]) windowSash.push(grainAlong(box(x,1.67,-2.583,.014,1.63,.024,sashTimber,group,.001),'y',1.63,.024));
   windowSash.push(grainAlong(box(.8,2.483,-2.589,4.04,.012,.024,sashTimber,group,.001),'x',4.04,.024));
   const guideTop=JIANGNAN_WINDOW.bottom+.004,sashHeight=JIANGNAN_WINDOW.top-guideTop,sashY=(JIANGNAN_WINDOW.top+guideTop)/2;
@@ -285,26 +284,6 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   box(3.176, .425, -.30, .025, .72, 4.43, walnut).castShadow = false;
   for (const y of [.10, .80]) box(3.155, y, -.30, .04, .034, 4.46, ash, group, .006).castShadow = false;
   for (let i = 0; i < 9; i++) box(3.153, .45, -2.33 + i * .52, .018, .67, .023, ash, group, .004).castShadow = false;
-  // Shoji stays beside the bay, rather than washing the whole view in white.
-  const paperMap = canvasTexture(512, 512, (c, w, h) => {
-    c.fillStyle = '#e6d8bd'; c.fillRect(0, 0, w, h);
-    for (let i = 0; i < 3700; i++) {
-      const x = (Math.sin(i * 17.13) * 43758.5 % 1 + 1) % 1 * w, y = (Math.sin(i * 9.71) * 13679.1 % 1 + 1) % 1 * h;
-      c.strokeStyle = i % 3 ? '#eee2bf21' : '#756c5010'; c.lineWidth = .3 + i % 3 * .2;
-      c.beginPath(); c.moveTo(x, y); c.lineTo(x + 1 + i % 9, y + Math.sin(i) * 3); c.stroke();
-    }
-  });
-  const shojiPaper = material('#fff0d2', .98, { map: paperMap, bumpMap: paperMap, bumpScale: .00035, side: THREE.DoubleSide });
-  shojiPaper.name='warm-ivory-paper';
-  box(-1.7275,1.67,-2.591,.775,1.63,.012,shojiPaper);
-  const shojiLattice=[],latticeWood=material('#81715b',.91),columns=3,rows=6,barWidth=.008;
-  for(const [x,width]of [[-2.112,.008],[-1.337,.014]])shojiLattice.push(box(x,1.67,-2.575,width,1.63,.014,latticeWood,group,.0006));
-  for(const y of [.859,2.481])shojiLattice.push(box(-1.726,y,-2.575,.764,.008,.014,latticeWood,group,.0006));
-  const shojiLeft=-2.108,shojiRight=-1.344,shojiBottom=.863,shojiTop=2.477;
-  const shojiCellWidth=(shojiRight-shojiLeft-(columns-1)*barWidth)/columns,shojiCellHeight=(shojiTop-shojiBottom-(rows-1)*barWidth)/rows;
-  for(let i=1;i<columns;i++)shojiLattice.push(box(shojiLeft+i*shojiCellWidth+(i-.5)*barWidth,1.67,-2.575,barWidth,shojiTop-shojiBottom,.014,latticeWood,group,.0006));
-  for(let i=1;i<rows;i++)shojiLattice.push(box((shojiLeft+shojiRight)/2,shojiBottom+i*shojiCellHeight+(i-.5)*barWidth,-2.573,shojiRight-shojiLeft,barWidth,.010,latticeWood,group,.0006));
-  batch(shojiLattice);
   // The raised blind remains a woven sheet when rolled: uneven reeds run
   // across the bay, and the fine dark warp continues around the whole bundle.
   const bamboo = [material('#9a8d70',.97),material('#ae9b77',.95),material('#8d8065',.99)];
@@ -678,9 +657,14 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     }, undefined, () => {});
     return frame;
   }
-  const photoFrame=picture(group,JIANGNAN_WORKSTATION.photo,.33,.39,photoAsset,'photo');
-  box(0,JIANGNAN_DESK.topY-JIANGNAN_WORKSTATION.photo[1]+.013,-.105,.21,.026,.21,chairTimber,photoFrame,.005).name='photo-stand-support';
-  const prop = box(0, -.08, -.14, .028, .28, .02, walnut, photoFrame, .003); prop.rotation.x = -.35;
+  const photoWall=makeGroup('travel-photo-wall');
+  photos.filter(photo=>photo?.id&&(photo.thumb||photo.image)).slice(0,JIANGNAN_PHOTO_WALL.length).forEach((photo,index)=>{
+    const slot=JIANGNAN_PHOTO_WALL[index],action='photo:'+photo.id;
+    const frame=picture(photoWall,slot.position,slot.width,slot.height,photo.thumb||photo.image,action);
+    frame.name='wall-photo-'+photo.id;frame.rotation.y=slot.yaw;
+    targets[action]=[...slot.position];
+    if(index===0)targets.photo=[...slot.position];
+  });
   // The coffee is open at the rim, with a real glazed inner wall and liquid.
   const coffee=makeGroup('hand-thrown-coffee-cup',...JIANGNAN_WORKSTATION.coffee,group,'coffee');
   const cupProfile = [[.032, -.074], [.050, -.070], [.057, -.053], [.064, .048], [.064, .062], [.061, .067], [.057, .062], [.056, .046], [.050, -.045], [.034, -.053]];
@@ -1099,10 +1083,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     const worn = ring(0, 0, .079, radius, .0022, ash, head, arc); worn.rotation.z = start; worn.castShadow = false;
   }
 
-  // A single muted print and a little closed notebook add personal scale.
-  const print = picture(group, [3.175, 1.85, -1.10], .62, .81, '/images/about/journey/05-fuji-480.webp');
-  print.rotation.y = -Math.PI / 2;
-  print.userData.action = 'painting'; targets.painting = [3.16, 1.85, -1.10];
+  // A little closed notebook keeps the workstation personal without a standing frame.
   const notebook=makeGroup('cloth-notebook',...JIANGNAN_WORKSTATION.notebook,group,'notebook');
   targets.notebook=[...JIANGNAN_WORKSTATION.notebook];
   notebook.rotation.y = -.17;

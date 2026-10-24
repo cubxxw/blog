@@ -58,7 +58,8 @@ function createFixture() {
 }
 const fixture=createFixture();
 const object=name=>{const o=fixture.room.group.getObjectByName(name);assert.ok(o,name);return o;};
-function materials(room=fixture.room){return [room.group.getObjectByName('aged-elm-desk-top').material,room.group.getObjectByName('carved-elm-crest-rail').material,room.group.getObjectByName('handscooped-elm-seat').material,room.group.getObjectByName('photo-stand-support').material];}
+function supportTimber(room=fixture.room){let support;room.group.traverse(o=>{if(o.isMesh&&o.material.name==='dry-elm-support')support??=o;});assert.ok(support,'physical desk and chair joinery');return support;}
+function materials(room=fixture.room){return [room.group.getObjectByName('aged-elm-desk-top').material,room.group.getObjectByName('carved-elm-crest-rail').material,room.group.getObjectByName('handscooped-elm-seat').material,supportTimber(room).material];}
 function channelMaps(room=fixture.room){return [...new Set(materials(room).flatMap(m=>[m.map,m.roughnessMap,m.bumpMap]))];}
 function geometryDigest(room=fixture.room){
   const hash=createHash('sha256');room.group.updateWorldMatrix(true,true);
@@ -102,9 +103,9 @@ test('actual desk-front and back rays receive different physical contact in the 
 test('actual arm and seat use is suppressed on the seat underside and supporting joinery',()=>{
   const arm=hit('carved-elm-crest-rail',[.50,.85,-.975],[0,-1,0]),seat=hit('handscooped-elm-seat',[.8,.6,-.975],[0,-1,0]),under=hit('handscooped-elm-seat',[.8,.35,-.975],[0,1,0]);
   assert.ok(contact(arm)>.5);assert.ok(contact(seat)>.6);assert.equal(contact(under),0,'overlapping seat UVs cannot polish the underside');
-  const support=object('photo-stand-support'),sample=shaderContact(support.material);let vertices=0;
+  const support=supportTimber(),sample=shaderContact(support.material);let vertices=0;
   fixture.room.group.traverse(o=>{if(!o.isMesh||o.material!==support.material)return;const p=o.geometry.attributes.position,n=o.geometry.attributes.normal;for(let i=0;i<p.count;i++){assert.equal(sample(new THREE.Vector3().fromBufferAttribute(p,i),new THREE.Vector3().fromBufferAttribute(n,i)),0,'supporting timber receives no hand polish');vertices++;}});
-  assert.ok(vertices>support.geometry.attributes.position.count,'check actual desk and chair joinery as well as the photo support');
+  assert.ok(vertices>support.geometry.attributes.position.count,'check the physical supporting joinery across the desk and chair');
 });
 
 test('the emitted contact function stays finite and bounded at every actual timber vertex',()=>{

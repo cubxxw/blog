@@ -20,7 +20,7 @@ import {createJiangnanDoorExcursion,jiangnanDoorPoses} from './jiangnan-door-sta
 import {createJiangnanDoorFade} from './jiangnan-door-fade.mjs';
 import {createPracticalLightRamp} from './jiangnan-practical-light.mjs';
 
-export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,onReturn,onNotebook,isBlocked=()=>false,materialBase,photoAsset,books=[]}) {
+export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,onReturn,onNotebook,isBlocked=()=>false,materialBase,books=[]}) {
   const abort=new AbortController(),resources=new Set(),textures=new Set(),anchors=[];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)'),zh=document.documentElement.lang.startsWith('zh'),t=(cn,en)=>zh?cn:en;
   let renderer,css,scene,camera,host,workspace,cssObject,pbr,room,exterior,audio,resident,objectControls,computerExpand,observer,blockedObserver,hiddenObserver,depthBlur,roomLights,stopWeather,magicClock;
@@ -325,13 +325,12 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     if(isBlocked()||!['roam','inspect'].includes(mode))return;
     // Pointerup can attach the live monitor before the browser emits click.
     // That same opening click must not immediately count as an outside click.
-    if(source===renderer.domElement&&['computer','seat','photo','painting','notebook'].includes(kind))ignoreOpeningClick=true;
+    if(source===renderer.domElement&&(['computer','seat','photo','notebook'].includes(kind)||kind.startsWith('photo:')))ignoreOpeningClick=true;
     if(kind==='computer'||kind==='seat')onComputer?.();
     else if(kind==='speaker')toggleMusic();
     else if(['lamp','fan','shelf-light'].includes(kind))toggleObject(kind);
     else if(kind==='notebook')onNotebook?.();
-    else if(kind==='painting'){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent);onPhoto?.((data.photos?.find(photo=>photo.id==='fuji')||data.photos?.[0])?.id);}
-    else if(kind==='photo'){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent);onPhoto?.(data.photos?.[0]?.id);}
+    else if(kind==='photo'||kind.startsWith('photo:')){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent),id=kind==='photo'?data.photos?.[0]?.id:kind.slice(6);if(data.photos?.some(photo=>photo.id===id))onPhoto?.(id);}
     else if(kind==='window'&&inspection?.kind==='window')restoreInspection();
     else if(kind==='door')beginDoorExcursion(source);
     else if(kind==='clock'&&inspection?.kind==='clock')restoreInspection();
@@ -493,7 +492,8 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     root.dataset.worldRenderer='jiangnan';root.dataset.worldTheme='jiangnan';root.dataset.worldTargets=JSON.stringify(targets);root.dataset.worldPbrMaps='0';root.dataset.worldTravel='false';
     pbr=createWorldMaterials({base:materialBase,renderer,resources,textures,isDisposed:()=>disposed,wake,root});
     roomLights=createJiangnanRoomLights({THREE,scene});
-    room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photoAsset,books,records,zh,shadowSize:budget.shadowSize,isDisposed:()=>disposed,buildDoor:buildJiangnanDoor,createLightRamp:createPracticalLightRamp,isStill:()=>quiet||reduced.matches});Object.assign(targets,room.targets);root.dataset.worldTargets=JSON.stringify(targets);publishObjects(true);
+    const photos=JSON.parse(root.querySelector('[data-space-catalog]').textContent).photos||[];
+    room=buildJiangnanRoom({scene,pbr,resources,textures,wake,photos,books,records,zh,shadowSize:budget.shadowSize,isDisposed:()=>disposed,buildDoor:buildJiangnanDoor,createLightRamp:createPracticalLightRamp,isStill:()=>quiet||reduced.matches});Object.assign(targets,room.targets);root.dataset.worldTargets=JSON.stringify(targets);publishObjects(true);
     magicClock=mountMagicClock({root,zh,getTime:()=>roomTime.at(),onGrab:()=>{clockReturn=null;roomTime.hold();},onTravel:travelRoomTime,onCommit:()=>roomTime.commit(),onPresent:returnPresent,onClose:restoreInspection});
     resident=createJiangnanResident({scene,wake,grounding:room.catSupport,onChange:code=>{root.dataset.catState=code;onCat?.(code);wake();}});resident.ready.then(loaded=>{if(disposed)return;root.dataset.catLoaded=String(loaded);onCat?.(loaded?'ready':'unavailable');wake();});
     const nightAssets=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent).night,vistaMode=new URLSearchParams(location.search).get('vista')==='geometry'?'geometry':'image';

@@ -1,4 +1,4 @@
-import {JIANGNAN_DESK,JIANGNAN_WORK_CHAIR,JIANGNAN_CAT_BED,JIANGNAN_WORKSTATION} from './jiangnan-layout.mjs';
+import {JIANGNAN_DESK,JIANGNAN_WORK_CHAIR,JIANGNAN_CAT_BED,JIANGNAN_WORKSTATION,JIANGNAN_PHOTO_WALL} from './jiangnan-layout.mjs';
 export const JIANGNAN_BOUNDS=Object.freeze({minX:-2.98,maxX:2.98,minZ:-2.34,maxZ:1.82});
 export const JIANGNAN_COLLIDERS=Object.freeze([
   {id:'desk',minX:JIANGNAN_DESK.centerX-JIANGNAN_DESK.width/2,maxX:JIANGNAN_DESK.centerX+JIANGNAN_DESK.width/2,minZ:JIANGNAN_DESK.backZ,maxZ:JIANGNAN_DESK.frontZ},
@@ -8,7 +8,7 @@ export const JIANGNAN_COLLIDERS=Object.freeze([
   {id:'fan',minX:2.55,maxX:3.05,minZ:-.8,maxZ:-.3},
   {id:'speaker',minX:-3.06,maxX:-2.60,minZ:.08,maxZ:.55}
 ]);
-export const JIANGNAN_TARGETS=Object.freeze({computer:JIANGNAN_WORKSTATION.computer,photo:JIANGNAN_WORKSTATION.photo,coffee:JIANGNAN_WORKSTATION.coffee,books:[-2.48,.59,-.80]});
+export const JIANGNAN_TARGETS=Object.freeze({computer:JIANGNAN_WORKSTATION.computer,photo:JIANGNAN_PHOTO_WALL[0].position,coffee:JIANGNAN_WORKSTATION.coffee,books:[-2.48,.59,-.80]});
 export function jiangnanLook(position,target,fov=58){const [x,y,z]=position,dx=target[0]-x,dy=target[1]-y,dz=target[2]-z;return {x,y,z,yaw:Math.atan2(-dx,-dz),pitch:Math.atan2(dy,Math.hypot(dx,dz)),fov};}
 export const JIANGNAN_ENTRY=Object.freeze(jiangnanLook([-1.7,1.55,1.7],[1.0,1.17,-1.6],58));
 export function canJiangnanNavigate({mode,visible,blocked=false}){return mode==='roam'&&visible&&!blocked;}

@@ -61,13 +61,6 @@
     <div class="space-cafe-inspect__caption" data-cafe-inspect-books hidden><div class="space-cafe-inspect__bookbar"><h2>{{ if $zh }}旅行书架{{ else }}Travel books{{ end }}</h2><button type="button" data-cafe-bookzoom aria-pressed="false">{{ if $zh }}走近书脊{{ else }}See spines{{ end }}</button><button type="button" data-cafe-booklist-toggle aria-expanded="false" aria-controls="space-cafe-booklist">{{ if $zh }}查看书目{{ else }}Book list{{ end }}</button></div><ul id="space-cafe-booklist" hidden tabindex="0" aria-label="{{ if $zh }}十本旅行书与作者{{ else }}Travel books and their authors{{ end }}">{{ range $books }}<li><strong>{{ .title }}</strong><span>{{ .author }}</span></li>{{ end }}</ul></div>
   </section>
   <div class="space-world-hud__roam"><p>{{ if $zh }}拖动看看四周，或用方向键散步。{{ else }}Drag to look around. Arrows to wander.{{ end }}</p><button type="button" data-cafe-read>{{ if $zh }}坐下，读一篇{{ else }}Sit down & read{{ end }} <span aria-hidden="true">↗</span></button><button type="button" data-cafe-enter>{{ if $zh }}打开工作区{{ else }}Open workspace{{ end }} <span aria-hidden="true">↗</span></button><button type="button" data-cafe-photos>{{ if $zh }}旅途相册{{ else }}Travel photos{{ end }}</button></div>
-  <details class="jiangnan-explore">
-    <summary>{{ if $zh }}探索房间{{ else }}Explore the room{{ end }}<span aria-hidden="true">＋</span></summary>
-    <div class="jiangnan-explore__guide">
-      <p>{{ if $zh }}拖动环视。轻点地板往前走，也可以用方向键散步。{{ else }}Drag to look around. Tap the floor to walk, or use the arrow keys.{{ end }}</p>
-      <p>{{ if $zh }}点亮台灯，挑一张唱片，走近书架；相框里藏着旅途，小猫也会回应你。{{ else }}Switch the lamp, choose a record, or browse the shelf. The photograph holds a journey; the cat has time for you, too.{{ end }}</p>
-    </div>
-  </details>
   <div class="space-world-touch" aria-label="{{ if $zh }}移动方向{{ else }}Movement{{ end }}"><button type="button" data-world-walk="forward" aria-label="{{ if $zh }}向前{{ else }}Forward{{ end }}">↑</button><button type="button" data-world-walk="left" aria-label="{{ if $zh }}向左{{ else }}Left{{ end }}">←</button><button type="button" data-world-walk="back" aria-label="{{ if $zh }}向后{{ else }}Back{{ end }}">↓</button><button type="button" data-world-walk="right" aria-label="{{ if $zh }}向右{{ else }}Right{{ end }}">→</button></div>
 </nav>
 <dialog class="space-cafe-picker" data-cafe-dialog aria-labelledby="space-cafe-picker-title">
