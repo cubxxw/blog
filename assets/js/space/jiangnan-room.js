@@ -644,7 +644,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
 
   // A full-height, fine timber lattice turns the former paper-window bay
   // into a domestic memory board. The plaster stays solid behind it.
-  const lattice=makeGroup('photo-lattice-north',-1.72,1.75,-2.573);
+  const lattice=makeGroup('photo-lattice-north',-1.87,1.75,-2.573);
   const latticePaper=material('#d8cbb0',.98,{map:linenMap,bumpMap:linenMap,bumpScale:.0003}),latticeWood=material('#8c7757',.93);
   box(0,0,-.012,.82,1.82,.024,latticePaper,lattice,.003).name='photo-lattice-backing';
   const latticeParts=[];
