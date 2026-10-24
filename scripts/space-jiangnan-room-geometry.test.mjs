@@ -56,7 +56,7 @@ function rayHit(from,to) {
 test('the working screen stays in place and the photograph moves off the desk onto the wall', () => {
   assert.deepEqual(room.screen, {position:[.8,1.16,-2.05],width:.8,height:.5});
   assert.equal(action(rayHit([.8,1.16,-1],room.screen.position).object),'computer');
-  assert.deepEqual(room.targets.photo,[-1.72,2.2,-2.565]);
+  assert.deepEqual(room.targets.photo,JIANGNAN_PHOTO_WALL[0].position);
   assert.equal(room.group.getObjectByName('photo-stand-support'),undefined);
   assert.equal('photo' in JIANGNAN_WORKSTATION,false);
   const display=room.group.getObjectByName('physical-computer').children.find(o=>o.geometry?.type==='PlaneGeometry'&&o.geometry.parameters.width===.8);
@@ -200,7 +200,7 @@ test('the rug has one bounded batch of fine fringe rooted in its real edge', t =
 
 test('solid plaster replaces the paper window while the main glass remains clear',()=>{
   const wallHits=new THREE.Raycaster(new THREE.Vector3(-1.72,1.36,-2.40),new THREE.Vector3(0,0,-1),0,.4).intersectObject(room.group,true);
-  assert.ok(wallHits.length);assert.equal(wallHits[0].object.name,'photo-wall-infill');
+  assert.ok(wallHits.some(hit=>hit.object.name==='photo-wall-infill'));
   let paper=false;room.group.traverse(object=>{if(object.material?.name==='warm-ivory-paper')paper=true;});assert.equal(paper,false);
   const panoramaHits=new THREE.Raycaster(new THREE.Vector3(1.87,1.67,-2.40),new THREE.Vector3(0,0,-1),0,.3).intersectObject(room.group,true);
   assert.ok(panoramaHits.length);assert.equal(panoramaHits[0].object.material.transparent,true);
@@ -212,8 +212,17 @@ test('solid plaster replaces the paper window while the main glass remains clear
 
 test('every wall photograph is backed by plaster and opens its matching catalog item',()=>{
   const gallery=room.group.getObjectByName('travel-photo-wall');assert.ok(gallery);
-  assert.equal(gallery.children.length,JIANGNAN_PHOTO_WALL.length);
-  for(const photo of photos.slice(0,JIANGNAN_PHOTO_WALL.length)){
+  const smallPrints=gallery.children.filter(frame=>frame.position.x<0);assert.equal(smallPrints.length,12);
+  const panel=room.group.getObjectByName('photo-lattice-north');assert.ok(panel);
+  const lattice=panel.getObjectByName('photo-lattice-joinery');assert.ok(lattice?.isMesh,'fine lattice shares one draw call');
+  const panelBounds=new THREE.Box3().setFromObject(panel);
+  for(const frame of smallPrints){
+    const bounds=new THREE.Box3().setFromObject(frame),size=bounds.getSize(new THREE.Vector3());
+    assert.ok(Math.max(size.x,size.y)<.24,'small prints must replace the old large frames');
+    assert.ok(bounds.min.x>panelBounds.min.x&&bounds.max.x<panelBounds.max.x);
+    assert.ok(bounds.min.y>panelBounds.min.y&&bounds.max.y<panelBounds.max.y);
+  }
+  for(const photo of photos){
     const frame=gallery.getObjectByName('wall-photo-'+photo.id);assert.ok(frame,photo.id);
     const center=frame.getWorldPosition(new THREE.Vector3()),normal=new THREE.Vector3(0,0,1).applyQuaternion(frame.getWorldQuaternion(new THREE.Quaternion()));
     const from=center.clone().addScaledVector(normal,.4),hit=rayHit(from.toArray(),center.toArray());
@@ -222,6 +231,7 @@ test('every wall photograph is backed by plaster and opens its matching catalog 
     const backing=new THREE.Raycaster(center,normal.clone().negate(),0,.25).intersectObject(room.group,true).find(hit=>hit.object.material===room.group.getObjectByName('photo-wall-infill').material);
     assert.ok(backing,photo.id+' must hang against a solid wall');
     assert.ok(pendingImages.some(image=>image.url===photo.thumb),photo.id+' must load its catalog thumbnail');
+    assert.equal(pendingImages.filter(image=>image.url===photo.thumb).length,1,'repeated prints reuse their loaded texture');
   }
 });
 

@@ -642,35 +642,60 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   const lampPool = createTablePool({ THREE, lamp, resources, shadowSize });
   tube([[0, .02, .08], [-.10, .02, .24], [-.15, .014, .44], [-.16, -.26, .47]], .003, black, lamp, 18);
 
-  function picture(parent, center, width, height, source, action, mount) {
+  // A full-height, fine timber lattice turns the former paper-window bay
+  // into a domestic memory board. The plaster stays solid behind it.
+  const lattice=makeGroup('photo-lattice-north',-1.72,1.75,-2.573);
+  const latticePaper=material('#d8cbb0',.98,{map:linenMap,bumpMap:linenMap,bumpScale:.0003}),latticeWood=material('#8c7757',.93);
+  box(0,0,-.012,.82,1.82,.024,latticePaper,lattice,.003).name='photo-lattice-backing';
+  const latticeParts=[];
+  for(let i=0;i<=6;i++)latticeParts.push(box(-.41+i*.82/6,0,.003,i===0||i===6?.018:.005,1.82,.010,latticeWood,lattice,.001));
+  for(let i=0;i<=12;i++)latticeParts.push(box(0,-.91+i*1.82/12,.004,.82,i===0||i===12?.018:.005,.010,latticeWood,lattice,.001));
+  batch(latticeParts).name='photo-lattice-joinery';
+  const printPaper=material('#e8dfce',.97),printFrames=[walnut,ash,material('#a89679',.94)],photoImages=new Map();
+  function fitPrint(view,texture){
+    const ratio=texture.image.width/texture.image.height,inset=view.small?.025:.095,maxW=view.mount?.imageWidth??view.width-inset,maxH=view.mount?.imageHeight??view.height-inset;
+    view.mesh.scale.set(Math.min(maxW,maxH*ratio),Math.min(maxH,maxW/ratio),1);
+    view.material.map=texture;view.material.color.set(view.mount?'#ffffff':view.small?'#fffdf6':'#d1c8b5');view.material.needsUpdate=true;view.mesh.visible=true;
+  }
+  function picture(parent, center, width, height, source, action, small=false,style=0,mount=null) {
     const frame = makeGroup(mount ? 'klee-wall-artwork' : action ? 'travel-photo-frame' : 'framed-travel-print', ...center, parent, action);
-    box(0, 0, -.022, width, height, .041, mount ? artOak : walnut, frame, .009);
-    if (!mount) box(0, 0, .002, width - .030, height - .030, .009, agedBrass, frame, .003);
-    box(0, 0, .008, width - (mount ? mount.border * 2 : .052), height - (mount ? mount.border * 2 : .052), .005, paper, frame, .002);
+    if(small){
+      box(0,0,-.004,width,height,.013,printFrames[style%3],frame,.002);
+      box(0,0,.004,width-.009,height-.009,.004,printPaper,frame,.001);
+      box(0,height/2-.006,-.007,.008,.025,.024,agedBrass,frame,.001).name='photo-hanging-clip';
+    }else{
+      box(0, 0, -.022, width, height, .041, mount ? artOak : walnut, frame, .009);
+      if (!mount) box(0, 0, .002, width - .030, height - .030, .009, agedBrass, frame, .003);
+      box(0, 0, .008, width - (mount ? mount.border * 2 : .052), height - (mount ? mount.border * 2 : .052), .005, paper, frame, .002);
+    }
     const photoMat = material('#777d6b', .91);
-    const photo = mesh(geometry('photo-plane', () => new THREE.PlaneGeometry(1, 1)), photoMat, 0, 0, .013, frame);
-    const maxW = mount ? mount.imageWidth : width - .095, maxH = mount ? mount.imageHeight : height - .095;
+    const photo = mesh(geometry('photo-plane', () => new THREE.PlaneGeometry(1, 1)), photoMat, 0, small?.003:0, small?.007:.013, frame);
     if (mount) photo.name = 'klee-print-surface';
-    photo.scale.set(maxW, maxH, 1); photo.visible = false; photo.castShadow = false;
-    if (source) new THREE.TextureLoader().load(source, texture => {
-      if (isDisposed?.()) { texture.dispose(); return; }
-      texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4; textures.add(texture);
-      const ratio = texture.image.width / texture.image.height;
-      photo.scale.set(Math.min(maxW, maxH * ratio), Math.min(maxH, maxW / ratio), 1);
-      photoMat.map = texture; photoMat.color.set(mount ? '#ffffff' : '#d1c8b5'); photoMat.needsUpdate = true; photo.visible = true; wake();
-    }, undefined, () => {});
+    photo.scale.set(width - .095, height - .095, 1); photo.visible = false; photo.castShadow = false;
+    if(source){
+      if(!photoImages.has(source))photoImages.set(source,{texture:null,loading:false,views:[]});
+      const image=photoImages.get(source),view={mesh:photo,material:photoMat,width,height,small,mount};
+      if(image.texture)fitPrint(view,image.texture);
+      else{image.views.push(view);if(!image.loading){image.loading=true;new THREE.TextureLoader().load(source,texture=>{
+        if(isDisposed?.()){texture.dispose();return;}
+        texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;textures.add(texture);image.texture=texture;
+        image.views.forEach(view=>fitPrint(view,texture));image.views.length=0;wake();
+      },undefined,()=>{});}}
+    }
     return frame;
   }
   const photoWall=makeGroup('travel-photo-wall');
-  photos.filter(photo=>photo?.id&&(photo.thumb||photo.image)).slice(0,JIANGNAN_PHOTO_WALL.length).forEach((photo,index)=>{
-    const slot=JIANGNAN_PHOTO_WALL[index],action='photo:'+photo.id;
-    const frame=picture(photoWall,slot.position,slot.width,slot.height,photo.thumb||photo.image,action);
-    frame.name='wall-photo-'+photo.id;frame.rotation.y=slot.yaw;
-    targets[action]=[...slot.position];
+  const wallPhotos=photos.filter(photo=>photo?.id&&(photo.thumb||photo.image)),placedPhotos=new Set();
+  JIANGNAN_PHOTO_WALL.forEach((slot,index)=>{
+    const photo=wallPhotos.find(photo=>photo.id===slot.photoId)||wallPhotos[index%wallPhotos.length];if(!photo)return;
+    const action='photo:'+photo.id,first=!placedPhotos.has(photo.id);
+    const frame=picture(photoWall,slot.position,slot.width,slot.height,photo.thumb||photo.image,action,slot.small,index);
+    frame.name='wall-photo-'+photo.id+(first?'':'-'+index);frame.rotation.set(0,slot.yaw,slot.tilt||0);
+    if(first)targets[action]=[...slot.position];placedPhotos.add(photo.id);
     if(index===0)targets.photo=[...slot.position];
   });
   const artwork = picture(group, JIANGNAN_ARTWORK.position, JIANGNAN_ARTWORK.width, JIANGNAN_ARTWORK.height,
-    JIANGNAN_ARTWORK.image, 'painting', JIANGNAN_ARTWORK);
+    JIANGNAN_ARTWORK.image, 'painting', false, 0, JIANGNAN_ARTWORK);
   artwork.rotation.y = -Math.PI / 2;
   targets.painting = [...JIANGNAN_ARTWORK.position];
   // A small physical fitting lights the paper, without adding a shadow pass.
