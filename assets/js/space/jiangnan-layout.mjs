@@ -8,12 +8,7 @@ export const JIANGNAN_CAT_BED=Object.freeze({x:-1.45,z:-1.93,width:.88,depth:.58
 export const JIANGNAN_PHOTO_WALL=Object.freeze([
  {position:[-1.72,2.2,-2.565],width:.64,height:.46,yaw:0},
  {position:[-1.72,1.64,-2.565],width:.64,height:.46,yaw:0},
- {position:[-1.72,1.08,-2.565],width:.64,height:.46,yaw:0},
- {position:[3.15,2.22,-1.55],width:.64,height:.48,yaw:-Math.PI/2},
- {position:[3.15,2.22,-.78],width:.64,height:.48,yaw:-Math.PI/2},
- {position:[3.15,2.22,-.01],width:.64,height:.48,yaw:-Math.PI/2},
- {position:[3.15,1.57,-1.16],width:.68,height:.52,yaw:-Math.PI/2},
- {position:[3.15,1.57,-.31],width:.68,height:.52,yaw:-Math.PI/2}
+ {position:[-1.72,1.08,-2.565],width:.64,height:.46,yaw:0}
 ].map(slot=>Object.freeze({...slot,position:Object.freeze(slot.position)})));
 export const JIANGNAN_WORKSTATION=Object.freeze({
  computer:Object.freeze([.8,1.16,-2.05]),

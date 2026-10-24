@@ -108,6 +108,9 @@
 .room-book-detail__others { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:18px; border-top:1px solid #c9ad7d26; padding-top:14px; }
 .space-object-detail[data-kind="coffee"],.space-object-detail[data-kind="clock"],.space-object-detail[data-kind="vase"],.space-object-detail[data-kind="cat"] { width:fit-content; max-width:340px; padding:14px 20px; }
 .space-object-detail[data-kind="coffee"] h2,.space-object-detail[data-kind="clock"] h2,.space-object-detail[data-kind="vase"] h2,.space-object-detail[data-kind="cat"] h2 { font-size:16px; margin-bottom:4px; }
+.space-object-detail[data-kind="painting"] { width:300px; max-width:calc(100% - 32px); padding:14px 20px; }
+.space-object-detail[data-kind="painting"] h2 { font-size:16px; margin-bottom:4px; }
+.space-object-detail[data-kind="painting"] small { color:#a89d88; }
 .room-object-caption p { margin:4px 0 0; font-size:12px; }
 @media(max-width:640px) { .space-object-detail { left:16px; right:16px; bottom:max(16px,env(safe-area-inset-bottom)); width:auto; max-height:44vh; padding:16px; }.room-records__sleeves{gap:12px}.space .space-object-detail h2{font-size:17px}.room-record__cover>span{font-size:10px;left:10px;bottom:8px}.space .room-book{padding:10px}.room-book strong{font-size:13px}.room-records__footer{gap:8px}.room-records__footer a{font-size:11px} }
 @media(prefers-reduced-motion:reduce){.room-record__cover,.space[data-world-renderer="jiangnan"] .space-object-detail{transition:none;transform:none}}

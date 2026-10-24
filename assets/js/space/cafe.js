@@ -141,7 +141,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     pickerStatus.textContent='';dialog.showModal();choices.querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});
   }
   async function inspect(kind,source){
-    if((!['coffee','books','spines','cat','records','vinyl','clock','vase','espresso','reading-seat','window'].includes(kind)&&!kind.startsWith('book:'))||mode!=='cafe'||failed||boot.active)return false;
+    if((!['coffee','books','spines','cat','records','vinyl','clock','vase','espresso','reading-seat','window','painting'].includes(kind)&&!kind.startsWith('book:'))||mode!=='cafe'||failed||boot.active)return false;
     if(kind==='cat'&&root.dataset.catLoaded!=='true')return false;
     const current=++revision;inspectTrigger=source;await ready;if(current!==revision||disposed||!world)return false;
     const ownsFocus=document.activeElement===source,pending=world.inspect(kind);

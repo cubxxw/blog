@@ -1,3 +1,5 @@
+import {JIANGNAN_ARTWORK} from './jiangnan-artwork.mjs';
+
 const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const localImage=value=>typeof value==='string'&&value.startsWith('/')&&!value.startsWith('//')?value:'';
 const bookAddress=value=>{if(!value)return '';try{const url=new URL(value,location.origin);return /^https?:$/.test(url.protocol)?url.href:'';}catch{return '';}};
@@ -22,6 +24,9 @@ export function mountRoomInspection({root,books=[],records=[],zh=true,onInspect,
    const id=current.includes(':')?current.slice(current.indexOf(':')+1):null,selected=books.find(book=>book.id===id);
    if(selected){const url=bookAddress(selected.url);host.innerHTML=`<article class="room-book-detail" data-room-book-detail>${title(selected.title)}<p class="room-book-detail__author">${escape(selected.author)}</p>${selected.note?`<p>${escape(selected.note)}</p>`:''}${url?`<a href="${escape(url)}" target="_blank" rel="noopener">${t('打开这本书','Open this book')} ↗</a>`:''}<div class="room-book-detail__others">${books.filter(book=>book.id!==id).slice(0,4).map(bookCard).join('')}</div></article>`;}
    else host.innerHTML=`<div class="room-booklist">${title(t('书架','The bookshelf'))}<div class="room-booklist__volumes">${books.map(bookCard).join('')}</div></div>`;
+  }else if(family==='painting'){
+   const art=JIANGNAN_ARTWORK;
+   host.innerHTML=`<div class="room-object-caption">${title(t(art.title,art.englishTitle))}<p>${escape(art.artist)} · ${art.year}</p><p>${t('我有想去的地方，也愿意认真走过那些支路。','I have somewhere to go, and I am willing to explore the paths along the way.')}<br><small>${t('个人寄语','A personal reflection')}</small></p><a href="${escape(art.source)}" target="_blank" rel="noopener noreferrer">${t('作品资料','About the artwork')} ↗</a></div>`;
   }else{
    const captions={coffee:[t('一杯咖啡','A coffee'),t('慢慢喝，雨还会下一会儿。','Take your time. The rain will stay a while.')],espresso:[t('咖啡角','The coffee corner'),t('按一下咖啡机，看一杯浓缩慢慢落下。','Touch the machine and watch the espresso pour.')],clock:[t('木壳摆钟','The walnut clock'),t('摆锤轻轻摇着。','The pendulum moves quietly.')],vase:[t('窗边的一枝','A branch by the window'),''],cat:[t('小猫','The cat'),t('靠近一点，再轻轻摸摸它。','Come closer and give it a gentle touch.')]};
    const caption=captions[family];if(!caption){host.hidden=true;host.replaceChildren();return;}

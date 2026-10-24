@@ -5,6 +5,7 @@ import { buildJiangnanFloor } from './jiangnan-floor.mjs';
 import { createCatSupport } from './jiangnan-cat-grounding.mjs';
 import { createTimberFinish } from './jiangnan-timber-finish.mjs';
 import { createTablePool, JIANGNAN_TABLE_LIGHT } from './jiangnan-lighting.mjs';
+import { JIANGNAN_ARTWORK } from './jiangnan-artwork.mjs';
 import { JIANGNAN_WINDOW, JIANGNAN_DESK, JIANGNAN_WORK_CHAIR, JIANGNAN_READING_CHAIR, JIANGNAN_CAT_BED, JIANGNAN_WORKSTATION, JIANGNAN_PHOTO_WALL } from './jiangnan-layout.mjs';
 
 // Furniture is built in metres. The live desktop belongs to the world runtime;
@@ -180,6 +181,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   const windowTimber = timber('#514737', 8.4, true);
   const joineryTimber = timber('#775438', 6.3);
   const frameTimber = timber('#4c3d2e', 9.4);
+  const artOak = timber('#c4aa80', 13.2);
   const sashTimber = timber('#302a20', 4.7);
   // Keep the photograph's real fibres, without its red pigment or its former
   // small repeated world tile. Only this hidden donor uses PBR's map registry;
@@ -640,20 +642,22 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   const lampPool = createTablePool({ THREE, lamp, resources, shadowSize });
   tube([[0, .02, .08], [-.10, .02, .24], [-.15, .014, .44], [-.16, -.26, .47]], .003, black, lamp, 18);
 
-  function picture(parent, center, width, height, source, action) {
-    const frame = makeGroup(action ? 'travel-photo-frame' : 'framed-travel-print', ...center, parent, action);
-    box(0, 0, -.022, width, height, .041, walnut, frame, .009);
-    box(0, 0, .002, width - .030, height - .030, .009, agedBrass, frame, .003);
-    box(0, 0, .008, width - .052, height - .052, .005, paper, frame, .002);
+  function picture(parent, center, width, height, source, action, mount) {
+    const frame = makeGroup(mount ? 'klee-wall-artwork' : action ? 'travel-photo-frame' : 'framed-travel-print', ...center, parent, action);
+    box(0, 0, -.022, width, height, .041, mount ? artOak : walnut, frame, .009);
+    if (!mount) box(0, 0, .002, width - .030, height - .030, .009, agedBrass, frame, .003);
+    box(0, 0, .008, width - (mount ? mount.border * 2 : .052), height - (mount ? mount.border * 2 : .052), .005, paper, frame, .002);
     const photoMat = material('#777d6b', .91);
     const photo = mesh(geometry('photo-plane', () => new THREE.PlaneGeometry(1, 1)), photoMat, 0, 0, .013, frame);
-    photo.scale.set(width - .095, height - .095, 1); photo.visible = false; photo.castShadow = false;
+    const maxW = mount ? mount.imageWidth : width - .095, maxH = mount ? mount.imageHeight : height - .095;
+    if (mount) photo.name = 'klee-print-surface';
+    photo.scale.set(maxW, maxH, 1); photo.visible = false; photo.castShadow = false;
     if (source) new THREE.TextureLoader().load(source, texture => {
       if (isDisposed?.()) { texture.dispose(); return; }
       texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4; textures.add(texture);
-      const ratio = texture.image.width / texture.image.height, maxW = width - .095, maxH = height - .095;
+      const ratio = texture.image.width / texture.image.height;
       photo.scale.set(Math.min(maxW, maxH * ratio), Math.min(maxH, maxW / ratio), 1);
-      photoMat.map = texture; photoMat.color.set('#d1c8b5'); photoMat.needsUpdate = true; photo.visible = true; wake();
+      photoMat.map = texture; photoMat.color.set(mount ? '#ffffff' : '#d1c8b5'); photoMat.needsUpdate = true; photo.visible = true; wake();
     }, undefined, () => {});
     return frame;
   }
@@ -665,6 +669,19 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     targets[action]=[...slot.position];
     if(index===0)targets.photo=[...slot.position];
   });
+  const artwork = picture(group, JIANGNAN_ARTWORK.position, JIANGNAN_ARTWORK.width, JIANGNAN_ARTWORK.height,
+    JIANGNAN_ARTWORK.image, 'painting', JIANGNAN_ARTWORK);
+  artwork.rotation.y = -Math.PI / 2;
+  targets.painting = [...JIANGNAN_ARTWORK.position];
+  // A small physical fitting lights the paper, without adding a shadow pass.
+  const pictureLight = makeGroup('klee-picture-light', 0, JIANGNAN_ARTWORK.height / 2 + .105, 0, artwork);
+  box(0, 0, -.018, .048, .064, .025, agedBrass, pictureLight, .004);
+  tube([[0, .01, 0], [0, .035, .08], [0, 0, .145]], .005, brass, pictureLight, 12);
+  box(0, 0, .145, .38, .024, .038, brass, pictureLight, .006);
+  box(0, -.013, .145, .34, .002, .025, basic('#ffe7c0'), pictureLight, .0005).castShadow = false;
+  const artLight = new THREE.SpotLight('#ffe8ca', 1.05, 1.5, .9, .9, 1);
+  artLight.name = 'klee-paper-light'; artLight.position.set(0, -.018, .18);
+  artLight.target.position.set(0, -.54, .013); pictureLight.add(artLight, artLight.target);
   // The coffee is open at the rim, with a real glazed inner wall and liquid.
   const coffee=makeGroup('hand-thrown-coffee-cup',...JIANGNAN_WORKSTATION.coffee,group,'coffee');
   const cupProfile = [[.032, -.074], [.050, -.070], [.057, -.053], [.064, .048], [.064, .062], [.061, .067], [.057, .062], [.056, .046], [.050, -.045], [.034, -.053]];

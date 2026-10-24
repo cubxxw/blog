@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import * as THREE from '../assets/js/vendor/three.module.min.js';
-import {JIANGNAN_WINDOW,JIANGNAN_DESK,JIANGNAN_WORKSTATION} from '../assets/js/space/jiangnan-layout.mjs';
+import {JIANGNAN_WINDOW,JIANGNAN_DESK,JIANGNAN_WORKSTATION,JIANGNAN_PHOTO_WALL} from '../assets/js/space/jiangnan-layout.mjs';
+import {JIANGNAN_ARTWORK} from '../assets/js/space/jiangnan-artwork.mjs';
 
 // A canvas data surface is enough for geometry tests; browser rendering owns
 // the visual checks. The real Three meshes, matrices, lights and raycaster run.
@@ -28,6 +29,7 @@ const roomSource = (await readFile(new URL('../assets/js/space/jiangnan-room.js'
   .replace("from './jiangnan-cat-grounding.mjs'", `from '${new URL('../assets/js/space/jiangnan-cat-grounding.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-timber-finish.mjs'", `from '${new URL('../assets/js/space/jiangnan-timber-finish.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-lighting.mjs'", `from '${new URL('../assets/js/space/jiangnan-lighting.mjs',import.meta.url).href}'`)
+  .replace("from './jiangnan-artwork.mjs'", `from '${new URL('../assets/js/space/jiangnan-artwork.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-furnishings-state.mjs'", `from '${new URL('../assets/js/space/jiangnan-furnishings-state.mjs',import.meta.url).href}'`);
 const {buildJiangnanRoom} = await import('data:text/javascript;base64,'+Buffer.from(roomSource).toString('base64'));
 const pendingImages = [];
@@ -210,8 +212,8 @@ test('solid plaster replaces the paper window while the main glass remains clear
 
 test('every wall photograph is backed by plaster and opens its matching catalog item',()=>{
   const gallery=room.group.getObjectByName('travel-photo-wall');assert.ok(gallery);
-  assert.equal(gallery.children.length,photos.length);
-  for(const photo of photos){
+  assert.equal(gallery.children.length,JIANGNAN_PHOTO_WALL.length);
+  for(const photo of photos.slice(0,JIANGNAN_PHOTO_WALL.length)){
     const frame=gallery.getObjectByName('wall-photo-'+photo.id);assert.ok(frame,photo.id);
     const center=frame.getWorldPosition(new THREE.Vector3()),normal=new THREE.Vector3(0,0,1).applyQuaternion(frame.getWorldQuaternion(new THREE.Quaternion()));
     const from=center.clone().addScaledVector(normal,.4),hit=rayHit(from.toArray(),center.toArray());
@@ -221,6 +223,25 @@ test('every wall photograph is backed by plaster and opens its matching catalog 
     assert.ok(backing,photo.id+' must hang against a solid wall');
     assert.ok(pendingImages.some(image=>image.url===photo.thumb),photo.id+' must load its catalog thumbnail');
   }
+});
+
+test('the single right-wall artwork has its own physical hit, neutral full-image texture and warm light',()=>{
+  const art=room.group.getObjectByName('klee-wall-artwork');assert.ok(art);
+  assert.deepEqual(art.position.toArray(),JIANGNAN_ARTWORK.position);
+  assert.equal(action(rayHit([1.42,1.62,-1.10],JIANGNAN_ARTWORK.position)?.object),'painting');
+  assert.deepEqual(room.targets.painting,JIANGNAN_ARTWORK.position);
+  assert.ok(JIANGNAN_PHOTO_WALL.every(slot=>slot.position[0]<0),'travel photographs stay on the left wall');
+  const surface=art.getObjectByName('klee-print-surface'),request=pendingImages.find(image=>image.url===JIANGNAN_ARTWORK.image);
+  assert.ok(surface&&request);
+  const texture=new THREE.Texture({width:2447,height:3000});request.onLoad(texture);
+  assert.equal(surface.visible,true);assert.equal(surface.material.color.getHexString(),'ffffff');
+  assert.equal(surface.material.map,texture);assert.ok(textures.has(texture));
+  assert.ok(Math.abs(surface.scale.x/surface.scale.y-2447/3000)<1e-10,'the full artwork keeps its actual source aspect');
+  assert.ok(surface.scale.x<=JIANGNAN_ARTWORK.imageWidth&&surface.scale.y<=JIANGNAN_ARTWORK.imageHeight);
+  assert.equal(texture.repeat.x,1);assert.equal(texture.repeat.y,1);
+  const light=art.getObjectByName('klee-paper-light');assert.ok(light?.isSpotLight&&light.intensity>0);assert.equal(light.castShadow,false);
+  const backing=new THREE.Raycaster(new THREE.Vector3(3.16,1.62,-1.1),new THREE.Vector3(1,0,0),0,.2).intersectObject(room.group,true);
+  assert.ok(backing.length,'the frame hangs against the actual right wall');
 });
 
 test('the actual meeting wood and clear glass share the window action',()=>{

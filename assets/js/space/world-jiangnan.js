@@ -11,6 +11,7 @@ import {createJiangnanTime,watchJiangnanWeather} from './jiangnan-time.mjs';
 import {jiangnanWindowView,clampJiangnanWindowLook,jiangnanWindowRoute} from './jiangnan-window-view.mjs';
 import {mountMagicClock} from './magic-clock.js';
 import {buildJiangnanRoom} from './jiangnan-room.js';
+import {jiangnanArtworkView} from './jiangnan-artwork.mjs';
 import {buildJiangnanExterior} from './jiangnan-exterior.js';
 import {mountRoomAudio} from './room-audio.js';
 import {createRecordCatalog} from './record-catalog.js';
@@ -173,13 +174,14 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   const detailFamily=kind=>kind.startsWith('book:')?'books':kind.startsWith('record:')||kind==='vinyl'?'records':kind==='spines'?'books':kind;
   function inspect(kind){
     const family=detailFamily(kind);
-    if(!['coffee','books','records','clock','vase','espresso','cat','window'].includes(family)||isBlocked()||!['roam','inspect'].includes(mode))return Promise.resolve(false);
+    if(!['coffee','books','records','clock','vase','espresso','cat','window','painting'].includes(family)||isBlocked()||!['roam','inspect'].includes(mode))return Promise.resolve(false);
     if(family==='cat'&&!resident?.loaded)return Promise.resolve(false);
     if(family!=='clock')magicClock?.hide();
     if(!inspection)inspection={pose:{...pose},kind};else inspection.kind=kind;
     syncMode('inspect');root.dataset.worldInspect=kind;onInspect?.(kind);
     let view;
     if(family==='window')view=jiangnanWindowView(camera.aspect);
+    else if(family==='painting'){const close=jiangnanArtworkView(camera.aspect);view=jiangnanLook(close.position,close.target,close.fov);}
     else if(family==='cat'){resident.attend(pose);const close=resident.view(camera.aspect);view=jiangnanLook(close.position,close.target,close.fov);}
     else if(family==='coffee')view=jiangnanLook([targets.coffee[0]-.35,targets.coffee[1]+.34,targets.coffee[2]+.93],targets.coffee,39);
     else if(family==='books')view=jiangnanLook([camera.aspect<.8?-1.05:-1.48,1.15,-.6],targets[kind]||targets.books,kind==='books'?49:38);
@@ -369,6 +371,10 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
       if(moving)retargetTravel(clampJiangnanWindowLook(moving.to,camera.aspect));
       else applyPose(clampJiangnanWindowLook(pose,camera.aspect));
     }
+    else if(mode==='inspect'&&inspection?.kind==='painting'){
+      const close=jiangnanArtworkView(camera.aspect),view=jiangnanLook(close.position,close.target,close.fov);
+      if(moving)retargetTravel(view);else applyPose(view);
+    }
     if(depthBlur)depthBlur.resize();surfaceChanged();wake();
   }
   function createDepthBlur(){
@@ -487,6 +493,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     objectControls=document.createElement('nav');objectControls.className='jiangnan-object-controls';objectControls.setAttribute('aria-label',t('房间里的物件','Objects in the room'));host.append(objectControls);
     for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['records',t('挑选一张唱片','Choose a record')],['lamp',t('开关桌灯','Switch the desk lamp')],['fan',t('开关风扇','Switch the fan')],['shelf-light',t('开关书架照明','Switch the shelf lights')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')],['clock',t('看看木摆钟','Look at the pendulum clock')],['espresso',t('使用咖啡机','Use the espresso machine')],['cat',t('走近小猫','Meet the cat')],['door',t('打开后门','Open the back door')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
     objectControls.querySelector('[data-room-object="cat"]').textContent=t('轻轻叫醒小猫','Gently call the cat');
+    const paintingControl=document.createElement('button');paintingControl.type='button';paintingControl.dataset.roomObject='painting';paintingControl.textContent=t('近看《主路与支路》','View Main Path and Byways');listen(paintingControl,'click',()=>activate('painting',paintingControl));objectControls.append(paintingControl);
     const windowControl=document.createElement('button');windowControl.type='button';windowControl.dataset.roomObject='window';windowControl.textContent=t('看看窗外的雨','Watch the rain');listen(windowControl,'click',()=>activate('window',windowControl));objectControls.append(windowControl);
     css=new CSS3DRenderer();css.domElement.className='space-world__css';css.domElement.style.pointerEvents='none';host.append(css.domElement);
     root.dataset.worldRenderer='jiangnan';root.dataset.worldTheme='jiangnan';root.dataset.worldTargets=JSON.stringify(targets);root.dataset.worldPbrMaps='0';root.dataset.worldTravel='false';
