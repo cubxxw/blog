@@ -238,7 +238,9 @@ test('every wall photograph is backed by plaster and opens its matching catalog 
 test('the single right-wall artwork has its own physical hit, neutral full-image texture and warm light',()=>{
   const art=room.group.getObjectByName('klee-wall-artwork');assert.ok(art);
   assert.deepEqual(art.position.toArray(),JIANGNAN_ARTWORK.position);
-  assert.equal(action(rayHit([1.42,1.62,-1.10],JIANGNAN_ARTWORK.position)?.object),'painting');
+  for(const from of [[1.42,1.62,.55],[1.2,1.34,1.65],[-.90,1.18,-.05],[2.25,1.14,1.25],[-1.7,1.55,1.7]]){
+    assert.equal(action(rayHit(from,JIANGNAN_ARTWORK.position)?.object),'painting','the fan must not cover the artwork from either entry view');
+  }
   assert.deepEqual(room.targets.painting,JIANGNAN_ARTWORK.position);
   assert.ok(JIANGNAN_PHOTO_WALL.every(slot=>slot.position[0]<0),'travel photographs stay on the left wall');
   const surface=art.getObjectByName('klee-print-surface'),request=pendingImages.find(image=>image.url===JIANGNAN_ARTWORK.image);
@@ -250,7 +252,7 @@ test('the single right-wall artwork has its own physical hit, neutral full-image
   assert.ok(surface.scale.x<=JIANGNAN_ARTWORK.imageWidth&&surface.scale.y<=JIANGNAN_ARTWORK.imageHeight);
   assert.equal(texture.repeat.x,1);assert.equal(texture.repeat.y,1);
   const light=art.getObjectByName('klee-paper-light');assert.ok(light?.isSpotLight&&light.intensity>0);assert.equal(light.castShadow,false);
-  const backing=new THREE.Raycaster(new THREE.Vector3(3.16,1.62,-1.1),new THREE.Vector3(1,0,0),0,.2).intersectObject(room.group,true);
+  const backing=new THREE.Raycaster(new THREE.Vector3(3.16,1.62,JIANGNAN_ARTWORK.position[2]),new THREE.Vector3(1,0,0),0,.2).intersectObject(room.group,true);
   assert.ok(backing.length,'the frame hangs against the actual right wall');
 });
 

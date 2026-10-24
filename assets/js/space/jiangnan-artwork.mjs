@@ -5,7 +5,7 @@ export const JIANGNAN_ARTWORK = Object.freeze({
   artist: 'Paul Klee', year: 1929,
   image: '/images/space/art/paul-klee-main-path-and-byways-1929.jpg',
   source: 'https://geheimnis-der-bilder.zdf.de/museum-ludwig/paul-klee-hauptweg-und-nebenwege.html',
-  position: Object.freeze([3.15, 1.62, -1.10]),
+  position: Object.freeze([3.15, 1.62, .55]),
   width: .70, height: .83, imageWidth: .54, imageHeight: .67, border: .015
 });
 
