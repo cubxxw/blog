@@ -40,6 +40,7 @@
     <a class="space-cafe__brand" href="{{ "/" | relLangURL }}" aria-label="{{ if $zh }}返回博客{{ else }}Back to the blog{{ end }}">SPACE<span>CAFÉ</span></a>
     <div class="space-cafe__utilities">
       <button type="button" data-cafe-language aria-label="{{ if $zh }}切换到英文{{ else }}Switch to Chinese{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</button>
+      <button type="button" data-cafe-photo-light aria-pressed="true" aria-label="{{ if $zh }}照片墙照明{{ else }}Photo wall lighting{{ end }}" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17h6m-5 3h4M8.4 13.5a6 6 0 1 1 7.2 0c-.9.7-1.1 1.4-1.1 2.5h-5c0-1.1-.2-1.8-1.1-2.5Z"/><path class="photo-light-rays" d="M12 1v1M3.5 4.5l.8.8M1 11h1m19 0h1m-2.3-6.5-.8.8"/></svg><span class="photo-light-label">{{ if $zh }}暖光{{ else }}Warm light{{ end }}</span></button>
       <button type="button" data-cafe-quiet aria-pressed="false">{{ if $zh }}安静模式{{ else }}Quiet mode{{ end }}</button>
       <button type="button" data-cafe-picker aria-haspopup="dialog" aria-label="{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}"><span>{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}</span><span aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m4 18 5-5 4 3 3-5 4 7"/></svg></span></button>
     </div>

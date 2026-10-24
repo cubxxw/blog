@@ -8,6 +8,10 @@ test('each physical light toggles independently and unknown objects do not mutat
   assert.equal(room.snapshot().lamp, false);
   assert.equal(room.snapshot()['shelf-light'], true);
   assert.deepEqual(room.toggle('shelf-light'), { kind: 'shelf-light', on: false });
+  assert.equal(room.snapshot()['photo-light'], true);
+  assert.deepEqual(room.toggle('photo-light'), { kind: 'photo-light', on: false });
+  assert.equal(room.snapshot().lamp, false);
+  assert.equal(room.snapshot()['shelf-light'], false);
   const before = room.snapshot();
   assert.equal(room.toggle('unowned-object'), null);
   assert.deepEqual(room.snapshot(), before);

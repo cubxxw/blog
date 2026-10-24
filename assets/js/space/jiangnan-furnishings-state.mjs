@@ -1,7 +1,7 @@
 // One clock supplied by the world owns all physical motion. No timer survives
 // a hidden room, and repeating a paused time cannot advance a mechanism.
 export function createJiangnanObjectState({ recordIds = [] } = {}) {
-  const switches = { lamp: true, fan: true, 'shelf-light': true, espresso: false };
+  const switches = { lamp: true, fan: true, 'shelf-light': true, 'photo-light': true, espresso: false };
   const ids = new Set(recordIds);
   let lastTime, elapsed = 0, fanSpeed = 8.4, fanPhase = 0, platterAngle = 0;
   let playing = false, recordId = recordIds[0] || null, brewElapsed = 0;

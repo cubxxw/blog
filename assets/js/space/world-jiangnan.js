@@ -203,7 +203,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   function publishObjects(force=false){
     if(!room)return;const state=room.snapshotObjects?.();if(!state)return;
     root.dataset.roomObjects=JSON.stringify(state);
-    const switches=JSON.stringify([state.lamp,state.fan,state['shelf-light'],state.espresso]);
+    const switches=JSON.stringify([state.lamp,state.fan,state['shelf-light'],state['photo-light'],state.espresso]);
     if(force||switches!==lastSwitchState){lastSwitchState=switches;root.dispatchEvent(new CustomEvent('space:roomobjects',{detail:state}));}
   }
   function toggleObject(kind){const state=room?.toggleObject?.(kind);if(state){renderer.shadowMap.needsUpdate=true;publishObjects(true);wake();}return state;}
@@ -330,7 +330,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     if(source===renderer.domElement&&(['computer','seat','photo','notebook'].includes(kind)||kind.startsWith('photo:')))ignoreOpeningClick=true;
     if(kind==='computer'||kind==='seat')onComputer?.();
     else if(kind==='speaker')toggleMusic();
-    else if(['lamp','fan','shelf-light'].includes(kind))toggleObject(kind);
+    else if(['lamp','fan','shelf-light','photo-light'].includes(kind))toggleObject(kind);
     else if(kind==='notebook')onNotebook?.();
     else if(kind==='photo'||kind.startsWith('photo:')){const data=JSON.parse(root.querySelector('[data-space-catalog]').textContent),id=kind==='photo'?data.photos?.[0]?.id:kind.slice(6);if(data.photos?.some(photo=>photo.id===id))onPhoto?.(id);}
     else if(kind==='window'&&inspection?.kind==='window')restoreInspection();
@@ -491,7 +491,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     doorExit=document.createElement('button');doorExit.type='button';doorExit.className='space-cafe-door-exit';doorExit.textContent=t('回到暖光里','Back to the warm light');listen(doorExit,'click',escapeDoorExcursion);root.append(doorExit);
     const guidance=document.createElement('p');guidance.id='jiangnan-controls';guidance.className='jiangnan-guidance';guidance.textContent=t('拖动环视，方向键或 WASD 移动。','Drag to look. Arrows or WASD to walk.');host.append(guidance);
     objectControls=document.createElement('nav');objectControls.className='jiangnan-object-controls';objectControls.setAttribute('aria-label',t('房间里的物件','Objects in the room'));host.append(objectControls);
-    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['records',t('挑选一张唱片','Choose a record')],['lamp',t('开关桌灯','Switch the desk lamp')],['fan',t('开关风扇','Switch the fan')],['shelf-light',t('开关书架照明','Switch the shelf lights')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')],['clock',t('看看木摆钟','Look at the pendulum clock')],['espresso',t('使用咖啡机','Use the espresso machine')],['cat',t('走近小猫','Meet the cat')],['door',t('打开后门','Open the back door')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
+    for(const [kind,label]of [['computer',t('使用桌上的电脑','Use the Mac')],['photo',t('查看相框里的照片','View the framed photograph')],['speaker',t('播放或暂停音响','Play or pause the speaker')],['records',t('挑选一张唱片','Choose a record')],['lamp',t('开关桌灯','Switch the desk lamp')],['photo-light',t('开关照片墙照明','Switch the photo wall light')],['fan',t('开关风扇','Switch the fan')],['shelf-light',t('开关书架照明','Switch the shelf lights')],['coffee',t('看看桌上的咖啡','Look at the coffee')],['books',t('走近书架','Browse the bookshelf')],['clock',t('看看木摆钟','Look at the pendulum clock')],['espresso',t('使用咖啡机','Use the espresso machine')],['cat',t('走近小猫','Meet the cat')],['door',t('打开后门','Open the back door')]]){const button=document.createElement('button');button.type='button';button.dataset.roomObject=kind;button.textContent=label;listen(button,'click',()=>activate(kind,button));objectControls.append(button);}
     objectControls.querySelector('[data-room-object="cat"]').textContent=t('轻轻叫醒小猫','Gently call the cat');
     const paintingControl=document.createElement('button');paintingControl.type='button';paintingControl.dataset.roomObject='painting';paintingControl.textContent=t('近看《主路与支路》','View Main Path and Byways');listen(paintingControl,'click',()=>activate('painting',paintingControl));objectControls.append(paintingControl);
     const windowControl=document.createElement('button');windowControl.type='button';windowControl.dataset.roomObject='window';windowControl.textContent=t('看看窗外的雨','Watch the rain');listen(windowControl,'click',()=>activate('window',windowControl));objectControls.append(windowControl);

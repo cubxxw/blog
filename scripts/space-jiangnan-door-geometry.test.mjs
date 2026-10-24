@@ -110,6 +110,21 @@ test('the real room first-toggle glides every lamp component and refreshes the f
   } finally {f.dispose();}
 });
 
+test('the photo wash and its physical diffuser glide together and snap in reduced motion', () => {
+  const f=roomFixture();try{
+    f.room.update(0);const before=f.room.snapshotObjects();
+    f.room.toggleObject('photo-light');assert.equal(f.room.snapshotObjects()['photo-light'],false);
+    assert.equal(f.room.snapshotObjects().photoLight,before.photoLight);
+    f.room.update(.12);const half=f.room.snapshotObjects();
+    assert.ok(half.photoLight>0&&half.photoLight<before.photoLight);
+    assert.ok(half.photoEmitter>0&&half.photoEmitter<before.photoEmitter);
+    assert.equal(half.tableLight,before.tableLight);assert.equal(half.shelfLight,before.shelfLight);
+    f.room.update(.24);assert.equal(f.room.snapshotObjects().photoLight,0);assert.equal(f.room.snapshotObjects().photoEmitter,0);
+    f.setStill(true);f.room.toggleObject('photo-light');
+    assert.equal(f.room.snapshotObjects().photoLight,before.photoLight);assert.equal(f.room.snapshotObjects().photoEmitter,before.photoEmitter);
+  }finally{f.dispose();}
+});
+
 test('the real room keeps shadow refreshes for an immediate still toggle and door snap', () => {
   const f=roomFixture(); try {
     f.room.update(0); f.setStill(true); f.room.toggleObject('shelf-light');
