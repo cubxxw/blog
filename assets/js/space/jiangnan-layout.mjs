@@ -5,9 +5,30 @@ export const JIANGNAN_DESK=Object.freeze({centerX:.8,width:2.1,backZ:-2.34,front
 export const JIANGNAN_WORK_CHAIR=Object.freeze({x:.8,z:-.95,seatY:.455,minX:.48,maxX:1.12,minZ:-1.20,maxZ:-.65});
 export const JIANGNAN_READING_CHAIR=Object.freeze({x:-.75,z:-.85,yaw:-.5,seatY:.39,minX:-1.30,maxX:-.20,minZ:-1.37,maxZ:-.32});
 export const JIANGNAN_CAT_BED=Object.freeze({x:-1.45,z:-1.93,width:.88,depth:.58,cushionY:.122});
-const northPhotos=['kumano','vangvieng','taprohm','g318','flags','vientiane','danang','nantaihang','thorong-la','sakura-bar','fuji','tsukubai'];
+// Individual hanging positions keep this an accumulated home collage, with
+// varied formats and gaps. No shared row or column defines the composition.
+const northPhotos=[
+ ['kumano',.282,.393,.170,.235,-.055],
+ ['vangvieng',.034,.211,.155,.215,.035],
+ ['taprohm',-.093,.745,.180,.245,-.025],
+ ['g318',.233,-.118,.155,.215,.065],
+ ['flags',.300,-.664,.150,.205,-.040],
+ ['vientiane',.058,.457,.165,.225,.025],
+ ['danang',-.002,-.014,.250,.180,-.030],
+ ['nantaihang',-.272,-.739,.170,.230,.045],
+ ['thorong-la',.199,-.393,.215,.185,.045],
+ ['sakura-bar',.263,.108,.220,.165,.070],
+ ['fuji',-.300,.653,.145,.200,-.065],
+ ['tsukubai',-.291,.053,.170,.230,.030],
+ ['nam-xay',.075,-.774,.235,.175,-.055],
+ ['cave-mouth',-.022,-.514,.160,.225,-.035],
+ ['cliff-edge',-.240,-.402,.240,.180,.025],
+ ['cave-interior',.244,.764,.225,.170,-.050],
+ ['local-man',-.122,-.211,.220,.165,.040],
+ ['balloon-dusk',-.185,.349,.240,.175,-.020]
+];
 export const JIANGNAN_PHOTO_WALL=Object.freeze([
- ...northPhotos.map((photoId,i)=>({photoId,small:true,position:[-2.11+(i%3)*.24,2.38-Math.floor(i/3)*.41,-2.548],width:i%4===2||i===11?.155:.215,height:i%4===2||i===11?.215:.165,yaw:0,tilt:[-.018,.012,.016,-.010][i%4]})),
+ ...northPhotos.map(([photoId,x,y,width,height,tilt])=>({photoId,small:true,position:[-1.87+x,1.75+y,-2.548],width,height,yaw:0,tilt})),
  {photoId:'g318',position:[3.15,2.22,-1.55],width:.64,height:.48,yaw:-Math.PI/2},
  {photoId:'fuji',position:[3.15,2.22,-.78],width:.64,height:.48,yaw:-Math.PI/2},
  {photoId:'flags',position:[3.15,2.22,-.01],width:.64,height:.48,yaw:-Math.PI/2},
