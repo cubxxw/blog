@@ -32,7 +32,7 @@ test('small wall photographs open their own journey from the physical frame',asy
   const point=await lookAtRoomObject(page,'photo:'+id);
   await page.screenshot({path:test.info().outputPath('photo-wall-'+id+'.png')});
   await page.mouse.click(point.x,point.y);
-  await expect(page.locator('.sp-photo-detail h2')).toHaveText(title);
+  await expect(page.locator('.sp-photos--detail > .sp-media-header h2')).toHaveText(title);
   if(id==='kumano'){
    if(await page.locator('.jiangnan-computer-expand').isVisible())await page.locator('.jiangnan-computer-expand').click();
    await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-cafe-visit]').click();
