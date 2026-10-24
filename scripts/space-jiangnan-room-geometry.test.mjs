@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import * as THREE from '../assets/js/vendor/three.module.min.js';
 import {JIANGNAN_WINDOW,JIANGNAN_DESK,JIANGNAN_WORKSTATION,JIANGNAN_PHOTO_WALL} from '../assets/js/space/jiangnan-layout.mjs';
+import {JIANGNAN_ENTRY} from '../assets/js/space/jiangnan-state.mjs';
 
 // A canvas data surface is enough for geometry tests; browser rendering owns
 // the visual checks. The real Three meshes, matrices, lights and raycaster run.
@@ -219,6 +220,13 @@ test('every wall photograph is backed by plaster and opens its matching catalog 
     assert.ok(Math.max(size.x,size.y)<.24,'small prints must replace the old large frames');
     assert.ok(bounds.min.x>panelBounds.min.x&&bounds.max.x<panelBounds.max.x);
     assert.ok(bounds.min.y>panelBounds.min.y&&bounds.max.y<panelBounds.max.y);
+    for(const origin of [[JIANGNAN_ENTRY.x,JIANGNAN_ENTRY.y,JIANGNAN_ENTRY.z],[1.2,1.34,1.65]]){
+      for(const x of [-.44,.44])for(const y of [-.40,.40]){
+        const slot=JIANGNAN_PHOTO_WALL.find(slot=>slot.position.every((v,i)=>Math.abs(v-frame.position.getComponent(i))<1e-8));
+        const corner=new THREE.Vector3(x*slot.width,y*slot.height,.008).applyMatrix4(frame.matrixWorld);
+        assert.equal(action(rayHit(origin,corner.toArray())?.object),frame.userData.action,'both room entry views must show the whole print beyond the window stile');
+      }
+    }
   }
   for(const photo of photos){
     const frame=gallery.getObjectByName('wall-photo-'+photo.id);assert.ok(frame,photo.id);
