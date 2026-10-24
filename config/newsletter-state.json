@@ -1533,6 +1533,11 @@
       "at": "2026-10-24T16:19:33.113Z",
       "id": "em_5tpx9mqat59e2s5phyg8qwwf4v",
       "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/": {
+      "at": "2026-10-24T16:19:33.113Z",
+      "id": "em_51a7qfpszd8wys0pywept35ebm",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4884,10 +4889,12 @@
     "[\"en\",\"https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/\"]": {
       "language": "en",
       "url": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "1ca5b583-3130-44ad-9122-6108276e736a",
       "at": "2026-10-24T16:19:33.113Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_51a7qfpszd8wys0pywept35ebm",
+      "completedAt": "2026-10-24T16:19:33.113Z"
     }
   }
 }
