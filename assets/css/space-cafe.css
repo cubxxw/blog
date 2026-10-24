@@ -18,7 +18,7 @@
 .space-cafe__utilities [data-cafe-quiet][aria-pressed="true"] { background:#f4eee0; color:#26382d; border-color:#f4eee0; }
 .space-cafe__utilities [data-cafe-picker] svg { display:block; }
 .space-cafe__utilities svg { width:16px; height:16px; }
-.space-cafe__utilities [data-cafe-photo-light][hidden] { display:none; }
+.space .space-cafe__utilities [data-cafe-photo-light][hidden] { display:none; }
 .space-cafe__welcome { left:clamp(24px,6vw,96px); top:50%; transform:translateY(-40%); max-width:440px; }
 .space-cafe__eyebrow { font-size:10px; font-weight:500; letter-spacing:.18em; margin:0 0 24px; }
 .space-cafe__welcome h2 { font-family:Georgia,'Songti SC','Noto Serif SC',serif; font-weight:400; font-size:clamp(42px,5vw,72px); line-height:1.22; letter-spacing:.015em; margin:0 0 24px; text-shadow:0 2px 24px #172d2566; }
