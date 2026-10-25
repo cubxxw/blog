@@ -31,7 +31,7 @@ test('inventory collection uses the original filter before proving the partition
 });
 
 test('real Playwright multi-project JSON lists retain exactly the same identities when partitioned',()=>{
-  const require=createRequire(import.meta.url),dir=fs.mkdtempSync(path.join(os.tmpdir(),'inventory-projects-'));
+  const require=createRequire(import.meta.url),dir=fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(),'inventory-projects-')));
   try {
     fs.writeFileSync(path.join(dir,'sample.spec.cjs'),`const {test}=require(${JSON.stringify(require.resolve('@playwright/test'))});
 for(const name of ['alpha','beta'])test.describe(name,()=>test('same title',()=>{}));

@@ -19,7 +19,10 @@ export default defineConfig({
   use: {
     baseURL: `http://127.0.0.1:${process.env.SITE_PORT || 1313}`,
     serviceWorkers: 'block',
-    trace: 'retain-on-failure',
+    // Continuous screencasts force GPU readbacks on software WebGL. Keep
+    // first-attempt DOM/network/source traces and one actual failure image.
+    trace: { mode: 'retain-on-failure', screenshots: false, snapshots: true, sources: true },
+    screenshot: 'only-on-failure',
   },
 
   expect: {
