@@ -41,7 +41,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
   const targets={...JIANGNAN_TARGETS,bridge:[-3.2,1.2,-17.8]};
   let readingPage=false,lastSwitchState='',ignoreOpeningClick=false;const touchPoints=new Map();let pinchStart=0,pinchUsed=false;
   let doorReturn=null,doorPanel=null,doorWater=null,doorExit=null;
-  const doorFade=createJiangnanDoorFade({still:()=>quiet||reduced.matches,onChange:opacity=>{if(doorWater)doorWater.style.opacity=String(opacity);}});
+  const doorFade=createJiangnanDoorFade({now:()=>performance.now()/1000,setTimer:setTimeout,clearTimer:clearTimeout,still:()=>quiet||reduced.matches,onChange:opacity=>{if(doorWater)doorWater.style.opacity=String(opacity);}});
   const excursion=createJiangnanDoorExcursion({onPhase:phase=>{root.dataset.roomDoorState=phase;doorFade.setPhase(phase,{at:performance.now()/1000});wake();},still:()=>quiet||reduced.matches});
   const records=createRecordCatalog();
   const workspaceScroll=createWorkspaceScrollState();

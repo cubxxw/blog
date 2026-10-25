@@ -80,7 +80,7 @@ const blockedAssignment=body.filter(node=>node.type==='TryStatement').flatMap(no
 const blockedHandler=blockedAssignment.expression.right.arguments[0];
 
 function worldFixture() {
-  let now=10,shown=true,blocked=false,scheduled=0,cancelled=0,writes=0;
+  let now=10,shown=true,blocked=false,scheduled=0,cancelled=0,writes=0,timerId=0;const timers=new Map();
   const style={};Object.defineProperty(style,'opacity',{get(){return this._opacity;},set(value){this._opacity=value;writes++;}});
   const root={dataset:{worldPbrMaps:'12'}},water={style};
   const world=runInNewContext(`
@@ -116,9 +116,11 @@ function worldFixture() {
     });
   `,{root,water,createJiangnanDoorFade,createJiangnanDoorExcursion,
     visible:()=>shown,isBlocked:()=>blocked,performance:{now:()=>now*1000},
+    setTimeout:(callback,ms)=>{timers.set(++timerId,{at:now+ms/1000,callback});return timerId;},clearTimeout:id=>timers.delete(id),
     requestAnimationFrame:()=>++scheduled,cancelAnimationFrame:()=>{cancelled++;}});
   return {world,root,style,setNow(value){now=value;},tick(value){now=value;world.tick(value*1000);},
     visible(value){shown=value;world.visibility();},blocked(value){blocked=value;world.blockedChange();},
+    advanceTimers(value){now=value;for(const [id,timer]of [...timers])if(timer.at<=now){timers.delete(id);timer.callback();}},
     get scheduled(){return scheduled;},get cancelled(){return cancelled;},get writes(){return writes;}};
 }
 
@@ -171,4 +173,32 @@ test('CSS supplies static fallback opacity and no competing water transition', (
   assert.ok(waterRules.some(([,selector,rule])=>!selector.includes('::after')&&/opacity:0/.test(rule)));
   assert.ok(waterRules.some(([,selector,rule])=>selector.includes('submerged')&&/opacity:1/.test(rule)));
   for(const [,selector,rule]of waterRules)assert.doesNotMatch(rule,/\btransition\s*:/,selector);
+});
+
+function deadlineFixture(){
+ let now=0,id=0;const timers=new Map(),writes=[];let still=false;
+ const fade=createJiangnanDoorFade({now:()=>now,setTimer:(callback,ms)=>{timers.set(++id,{callback,at:now+ms/1000});return id;},clearTimer:key=>timers.delete(key),still:()=>still,onChange:value=>writes.push(value)});
+ return {fade,timers,writes,setStill:value=>{still=value;},advance(at){now=at;for(const [key,timer]of [...timers])if(timer.at<=now){timers.delete(key);timer.callback();}}};
+}
+test('a stalled GPU frame source cannot prevent either exact fade endpoint',()=>{
+ const f=deadlineFixture();f.fade.setPhase('submerged',{at:0});assert.equal(f.timers.size,1);f.advance(.479);assert.equal(f.fade.value,0);f.advance(.48);assert.equal(f.fade.value,1);assert.equal(f.timers.size,0);
+ f.fade.setPhase('returning',{at:.48});f.advance(.96);assert.equal(f.fade.value,0);assert.equal(f.timers.size,0);
+});
+test('deadline pauses preserve remaining visible time without charging rAF time twice',()=>{
+ const f=deadlineFixture();f.fade.setPhase('submerged',{at:0});f.advance(.12);f.fade.update(.12,{at:.12});const before=f.fade.value;f.fade.setActive(false,{at:.12});assert.equal(f.timers.size,0);f.advance(100);assert.equal(f.fade.value,before);
+ f.fade.setActive(true,{at:100});f.fade.setActive(true,{at:100});assert.equal(f.timers.size,1);f.advance(100.35);assert.equal(f.fade.value,before);f.advance(100.37);assert.equal(f.fade.value,1);assert.equal(f.timers.size,0);
+});
+test('reversal and disposal invalidate already delivered old deadline callbacks',()=>{
+ const f=deadlineFixture();f.fade.setPhase('submerged');const old=[...f.timers.values()][0].callback;f.advance(.12);f.fade.update(.12);const value=f.fade.value;f.fade.setPhase('returning');old();assert.equal(f.fade.value,value);assert.equal(f.timers.size,1);
+ const pending=[...f.timers.values()][0].callback;f.fade.dispose();const count=f.writes.length;pending();f.advance(1);assert.equal(f.writes.length,count);assert.equal(f.fade.value,0);assert.equal(f.timers.size,0);
+});
+test('ordinary frames and reduced motion retire the deadline without late writes',()=>{
+ for(const mode of ['frame','reduced']){const f=deadlineFixture();f.fade.setPhase('submerged');const stale=[...f.timers.values()][0].callback;if(mode==='reduced')f.setStill(true);f.fade.update(.48,{at:.48});assert.equal(f.fade.value,1);assert.equal(f.timers.size,0);const count=f.writes.length;stale();f.advance(1);assert.equal(f.writes.length,count);}
+});
+
+
+test('the production phase callback completes the water layer without another GPU frame',()=>{
+ const f=worldFixture();f.world.begin();assert.equal(f.world.opacity,0);const frames=f.scheduled;
+ f.advanceTimers(10.48);assert.equal(f.world.opacity,1);assert.equal(f.style.opacity,'1');assert.equal(f.scheduled,frames,'DOM deadline does not wake the renderer');
+ f.world.back();const returning=f.scheduled;f.advanceTimers(10.96);assert.equal(f.style.opacity,'0');assert.equal(f.scheduled,returning);
 });
