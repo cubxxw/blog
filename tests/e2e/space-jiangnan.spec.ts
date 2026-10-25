@@ -27,9 +27,17 @@ test('the full-viewport explorable room renders its distant environment inside t
   expect(Number(await root(page).getAttribute('data-world-triangles'))).toBeGreaterThan(20_000);await expect(page.locator('.rain-room,.rain-room__image')).toHaveCount(0);expect(plates).toEqual([]);
   await expect(root(page)).toHaveAttribute('data-world-vista','image',{timeout:30_000});
   const a=(await root(page).boundingBox())!,b=(await canvas.boundingBox())!;expect(Math.abs(a.width-b.width)).toBeLessThan(1);expect(Math.abs(a.height-b.height)).toBeLessThan(1);
-  const roam=page.locator('.space-world-hud__roam');await expect(roam).toBeVisible();
-  for(const action of ['read','enter'])await expect(roam.locator(`[data-cafe-${action}]`)).toBeVisible();
-  await expect(roam.locator('[data-cafe-photos]')).toBeHidden();await expect(page.locator('.space-world-hud__workspace')).toBeHidden();
+  // The accepted room uses its physical Mac; external entry cards stay hidden.
+  const roam=page.locator('.space-world-hud__roam');await expect(roam).toBeHidden();
+  await expect(page.locator('.space-cafe__header')).toBeVisible();
+  for(const name of ['language','photo-light','quiet','picker'])await expect(page.locator(`.space-cafe__utilities [data-cafe-${name}]`)).toBeVisible();
+  await expect(page.locator('.space-world-hud__workspace')).toBeHidden();
+  const windows=page.locator('[data-space-windows]'),original=await windows.elementHandle();expect(original).not.toBeNull();
+  await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
+  await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+  if(await page.locator('.jiangnan-computer-expand').isVisible())await page.locator('.jiangnan-computer-expand').click();
+  await back(page);await expect(page.locator('.space-cafe__header')).toBeVisible();
+  expect(await windows.evaluate((element,before)=>element===before,original)).toBe(true);
   expect(errors).toEqual([]);await page.screenshot({path:`.netlify/space-3d-${test.info().project.name}.png`});
 });
 
