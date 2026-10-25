@@ -3,17 +3,18 @@ import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-test.use({channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.use({channel:'chromium',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 test.beforeEach(({page})=>reserveWorldJourney(page));
 const root='[data-bear-workspace]';
 const room=async(page:import('@playwright/test').Page)=>{
   await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
   await expect(page.locator(root)).toHaveAttribute('data-world-rendered-mode','roam');
 };
-const clickWithClockPaused=async(control:import('@playwright/test').Locator)=>{
+const clickStaticRoomControl=async(control:import('@playwright/test').Locator)=>{
   await expect(control).toBeVisible();await expect(control).toBeEnabled();
-  // Seven scenes make the native picker scroll on narrow screens. Scroll
-  // without smooth animation while the application's clock is held still.
+  // Hit-test static DOM tools directly, including when a slow GPU cannot
+  // provide Playwright's extra stability frames. No clock is installed or
+  // advanced here. This helper is never used for moving 3D objects.
   await control.evaluate(el=>el.scrollIntoView({block:'nearest',behavior:'instant'}));
   const point=await control.evaluate(el=>{const r=el.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;return {x,y,width:r.width,height:r.height,inside:x>=0&&y>=0&&x<innerWidth&&y<innerHeight,hit:el.contains(document.elementFromPoint(x,y))};});
   expect(point.width).toBeGreaterThanOrEqual(44);expect(point.height).toBeGreaterThanOrEqual(44);expect(point.inside).toBe(true);expect(point.hit).toBe(true);
@@ -117,10 +118,10 @@ test('a cancelled read transition cannot steal a replayed café visit',async({pa
   try{
     await page.goto('/zh/projects/');await room(page);
     await page.clock.pauseAt(new Date('2026-10-17T01:00:00Z'));
-    await clickWithClockPaused(page.locator('[data-cafe-read]'));
+    await clickStaticRoomControl(page.locator('[data-cafe-read]'));
     await expect(page.locator(root)).toHaveAttribute('data-world-travel','true');
-    await clickWithClockPaused(page.locator('.space-cafe__utilities [data-cafe-picker]'));
-    await clickWithClockPaused(page.locator('[data-cafe-replay]'));
+    await clickStaticRoomControl(page.locator('.space-cafe__utilities [data-cafe-picker]'));
+    await clickStaticRoomControl(page.locator('[data-cafe-replay]'));
     // A replay uses the already rendered room and must not add a boot delay.
     await page.clock.fastForward(2000);
     await expect(page.locator(root)).toHaveAttribute('data-boot-state','revealing');
@@ -129,7 +130,7 @@ test('a cancelled read transition cannot steal a replayed café visit',async({pa
     const snapshot=await page.evaluate(()=>(window as unknown as {BearSpace:{snapshot:()=>{active:string;windows:{id:string}[]}}}).BearSpace.snapshot());
     expect(snapshot.active).not.toBe('reader');
     await expect(page.locator('[data-space-window="reader"]')).toHaveCount(0);
-    await clickWithClockPaused(page.locator('[data-cafe-enter]'));await page.clock.fastForward(2000);await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+    await clickStaticRoomControl(page.locator('[data-cafe-enter]'));await page.clock.fastForward(2000);await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   }finally{await page.clock.resume();}
 });
 
@@ -206,22 +207,29 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   });
   await page.goto('/zh/projects/');await room(page);
   await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
-  await expect.poll(()=>page.evaluate(()=>(window as unknown as {__catMotionObservation:{status:string}}).__catMotionObservation.status),{timeout:12000}).toBe('changed');
-  const movement=await page.evaluate(()=>(window as unknown as {__catMotionObservation:{initialPose:string;initialTime:number;changedPose:string;changedTime:number}}).__catMotionObservation);
+  type MotionObservation={status:string;initialPose:string;initialTime:number;changedPose:string;changedTime:number};
+  let observed:MotionObservation|undefined;
+  await expect.poll(async()=>{observed=await page.evaluate(()=>(window as unknown as {__catMotionObservation:MotionObservation}).__catMotionObservation);return observed.status;},{timeout:12000}).toBe('changed');
+  const movement=observed!;
   const movementMs=movement.changedTime-movement.initialTime;
   expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
   expect(movement.changedPose).not.toBe(movement.initialPose);
   const pose=()=>page.locator(root).getAttribute('data-cat-pose');
-  await page.locator('.space-cafe__utilities [data-cafe-quiet]').click();await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
+  await clickStaticRoomControl(page.locator('.space-cafe__utilities [data-cafe-quiet]'));await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
   const quiet=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(quiet);
   const frames=await page.locator(root).getAttribute('data-world-frames');await page.waitForTimeout(200);expect(await page.locator(root).getAttribute('data-world-frames')).toBe(frames);
-  await page.locator('.space-cafe__utilities [data-cafe-quiet]').click();
-  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
+  await clickStaticRoomControl(page.locator('.space-cafe__utilities [data-cafe-quiet]'));
+  await expect(page.locator('.space-cafe__utilities [data-cafe-quiet]')).toHaveAttribute('aria-pressed','false');
+  await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
+  await clickStaticRoomControl(page.locator('.space-cafe__utilities [data-cafe-picker]'));
   await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');const modal=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(modal);
   await page.locator('[data-cafe-picker-close]').click();
+  await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
   await page.emulateMedia({reducedMotion:'reduce'});await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
   const reduced=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(reduced);
-  await page.locator('[data-cafe-enter]').click();await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  await page.emulateMedia({reducedMotion:'no-preference'});await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
+  await clickStaticRoomControl(page.locator('[data-cafe-enter]'));await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
   const desk=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(desk);
 });
 
