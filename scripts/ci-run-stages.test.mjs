@@ -39,7 +39,7 @@ test('final aggregation packages the original frozen bytes only after every part
   write('site/page-map.json',{sourceSha:plan.sourceSha,clock:plan.clock,target:'production',baseUrl:'https://cubxxw.com',complete:true,pages:[]});
   write('site/output-report.json',{mode:'enforce',ok:true});
   const specs=browserShardPlan({plan,changeSet:changes});
-  const raw=Object.fromEntries(specs.map(spec=>[spec.id,{errors:[],suites:[{specs:[{id:spec.id,tests:[{projectName:spec.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]}]));
+  const raw=Object.fromEntries(specs.map(spec=>[spec.id,{errors:[],suites:[{specs:[{id:spec.id,file:'fixture.spec.ts',line:1,column:1,title:spec.id,tests:[{projectName:spec.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]}]));
   const evidence=Object.fromEntries(specs.map(spec=>[spec.id,summarizePlaywright(raw[spec.id])])),testInventory={schema:'blog-test-inventory/1',suites:{},shards:{}};
   for(const spec of specs){testInventory.shards[spec.id]=evidence[spec.id].inventory;(testInventory.suites[spec.suite]??=[]).push(...evidence[spec.id].inventory);}
   const proof=createFrozenProof({bundleRoot:bundle,plan,changeSet:changes,runId:'123',runAttempt:1,testInventory});write('frozen.json',proof);

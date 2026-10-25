@@ -12,7 +12,7 @@ function fixture(t) {
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'ci-shards-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   fs.mkdirSync(path.join(root,'public'));fs.writeFileSync(path.join(root,'public/index.html'),'frozen');
   const specs=api.browserShardPlan({plan,changeSet:changes});
-  const evidence=Object.fromEntries(specs.map(spec=>[spec.id,summarizePlaywright({errors:[],suites:[{specs:[{id:spec.id,tests:[{projectName:spec.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]})]));
+  const evidence=Object.fromEntries(specs.map(spec=>[spec.id,summarizePlaywright({errors:[],suites:[{specs:[{id:spec.id,file:'fixture.spec.ts',line:1,column:1,title:spec.id,tests:[{projectName:spec.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]})]));
   const testInventory={schema:'blog-test-inventory/1',suites:{},shards:{}};
   for(const spec of specs){testInventory.shards[spec.id]=evidence[spec.id].inventory;(testInventory.suites[spec.suite]??=[]).push(...evidence[spec.id].inventory);}
   const proof=api.createFrozenProof({bundleRoot:root,plan,changeSet:changes,runId:'123',runAttempt:1,testInventory});
@@ -52,7 +52,7 @@ test('an incomplete failed consumer remains retryable but a success requires mat
   const {root,proof,reports}=fixture(t),dir=path.join(root,'downloads');
   const write=(name,data)=>{const file=path.join(dir,name);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(data));};
   for(const report of reports) {
-    const raw={errors:[],suites:[{specs:[{id:report.id,tests:[{projectName:report.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]};
+    const raw={errors:[],suites:[{specs:[{id:report.id,file:'fixture.spec.ts',line:1,column:1,title:report.id,tests:[{projectName:report.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]};
     write(`${report.id}/shard-report.json`,report);write(`${report.id}/playwright-results.json`,raw);
   }
   write('older-failure/shard-report.json',{...reports[0],runAttempt:2,ok:false,exitCode:1,evidence:undefined});

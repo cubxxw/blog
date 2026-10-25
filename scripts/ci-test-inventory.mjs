@@ -3,13 +3,15 @@ import {spawnSync} from 'node:child_process';
 
 function cases(report) {
   const rows=[];
-  function visit(suites) {
+  function visit(suites, parents=[]) {
     for(const suite of suites??[]) {
       for(const spec of suite.specs??[])for(const test of spec.tests??[]) {
-        if(typeof spec.id!=='string'||!spec.id||typeof test.projectName!=='string'||!test.projectName)throw new Error('Missing Playwright test identity');
-        rows.push({id:`${spec.id}|${test.projectName}|${test.repeatEachIndex??0}`,test});
+        if(typeof spec.file!=='string'||!spec.file||typeof spec.title!=='string'||!Number.isInteger(spec.line)||!Number.isInteger(spec.column)||typeof test.projectName!=='string'||!test.projectName)throw new Error('Missing Playwright test identity');
+        // JSON reporter merges project specs and keeps only the first project's spec.id.
+        // Source location and title ancestry stay stable in whole-suite and project-only reports.
+        rows.push({id:JSON.stringify([spec.file,spec.line,spec.column,...parents,suite.title??'',spec.title,test.projectName,test.repeatEachIndex??0]),test});
       }
-      visit(suite.suites);
+      visit(suite.suites,[...parents,suite.title??'']);
     }
   }
   visit(report.suites);return rows;
