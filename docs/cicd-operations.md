@@ -38,6 +38,14 @@ npm run site:verify -- --public-dir tests/.artifacts/site/public --page-map test
 
 CLI 参数中的提交和时间必须填入本次实际值；不要将示例占位值写入回执。纯质量检查不会发布，也不会修正文案或回推 `main`。
 
+### 分片的测试覆盖凭据
+
+prepare 在同一冻结产物上按原配置、项目和过滤条件执行 Playwright `--list --reporter=json`，同时保存整套清单及各分片清单到 `frozen.json`。每套分片必须恰好覆盖整套清单一次，不能缺项、重复或额外混入测试。
+
+每个消费者保存 `playwright-results.json` 原始报告和从该报告生成的 evidence；最终聚合重新读取原始报告，与包装 evidence 和冻结清单核对。空结果、无实际执行的整片、缺测试、重复身份、全片跳过、报告级错误及未完成测试均阻止认证。首次通过、flaky、跳过、预期失败和实际重试次数分别统计；既有个别跳过仍单独记录，不计为通过，也不增加豁免。
+
+消费者仍按相同 producer artifact 和 frozen proof 复用先前成功的分片，采用每片最新 consumer attempt；较新失败不能退回旧成功。失败/取消消费者可能没有完整 JSON，只作为失败证据保留，后续成功必须提供完整且一致的原始 JSON。legacy/quality 从第一次失败保留 trace，interactive 继续保留原有失败 trace。此改动不改变发布模式、生产 artifact 格式、测试选择、worker 数或超时门限。
+
 原生 Netlify Git 构建与隔离构建共用 `--hugo-phase` 入口。该入口的目标默认是 `production`，可由 `BLOG_BUILD_TARGET` 指定；时刻优先读取 `BLOG_BUILD_CLOCK`，缺省使用当前 UTC 时间。base URL 按以下顺序取第一个非空值：
 
 - `production`：`BLOG_BUILD_BASE_URL` → `HUGO_BASEURL` → `https://cubxxw.com`，忽略 `DEPLOY_PRIME_URL`，避免 Netlify 的 `main--cubxxw.netlify.app` 分支别名覆盖生产域名。

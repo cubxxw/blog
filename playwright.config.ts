@@ -19,7 +19,7 @@ export default defineConfig({
   use: {
     baseURL: `http://127.0.0.1:${process.env.SITE_PORT || 1313}`,
     serviceWorkers: 'block',
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
   },
 
   expect: {

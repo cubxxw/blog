@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {summarizePlaywright} from './ci-test-inventory.mjs';
 const api = await import('./ci-shards.mjs').catch(() => ({}));
 const plan = {sourceSha:'a'.repeat(40),inputDigest:'b'.repeat(64),clock:'2026-10-23T00:00:00Z',runSite:true,requiredChecks:['source','output','browser','interactive']};
 const changes = {sourceSha:plan.sourceSha,fullScan:true,files:[],sourceFiles:[]};
@@ -10,9 +11,12 @@ function fixture(t) {
   assert.equal(typeof api.createFrozenProof,'function','frozen verification must expose the shard contract');
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'ci-shards-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   fs.mkdirSync(path.join(root,'public'));fs.writeFileSync(path.join(root,'public/index.html'),'frozen');
-  const proof=api.createFrozenProof({bundleRoot:root,plan,changeSet:changes,runId:'123',runAttempt:1});
   const specs=api.browserShardPlan({plan,changeSet:changes});
-  const reports=specs.map(spec=>api.createShardReport({spec,proof,runAttempt:1,exitCode:0,result:{mode:'enforce',ok:true}}));
+  const evidence=Object.fromEntries(specs.map(spec=>[spec.id,summarizePlaywright({errors:[],suites:[{specs:[{id:spec.id,tests:[{projectName:spec.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]})]));
+  const testInventory={schema:'blog-test-inventory/1',suites:{},shards:{}};
+  for(const spec of specs){testInventory.shards[spec.id]=evidence[spec.id].inventory;(testInventory.suites[spec.suite]??=[]).push(...evidence[spec.id].inventory);}
+  const proof=api.createFrozenProof({bundleRoot:root,plan,changeSet:changes,runId:'123',runAttempt:1,testInventory});
+  const reports=specs.map(spec=>api.createShardReport({spec,proof,runAttempt:1,exitCode:0,result:{mode:'enforce',ok:true},evidence:evidence[spec.id]}));
   return {root,proof,specs,reports};
 }
 test('all browser projects are partitioned without dropping legacy or any engine',t=>{
@@ -28,6 +32,11 @@ test('a complete set aggregates enforcing browser and three-engine reports',t=>{
   assert.equal(result.browser.ok,true);assert.equal(result.interactive.ok,true);
   assert.equal(result.browser.shards.length,5);assert.equal(result.interactive.shards.length,3);
 });
+test('boolean shard success without an enumerated test inventory cannot certify coverage',t=>{
+  const {proof,reports}=fixture(t);
+  for(const report of reports)delete report.evidence;
+  assert.throws(()=>api.aggregateShardReports({plan,changeSet:changes,proof,reports}),/inventory|evidence|coverage/i);
+});
 test('missing, duplicate, unknown, failed and mismatched shards cannot produce a manifest input',t=>{
   const {proof,reports}=fixture(t);
   const aggregate=rows=>api.aggregateShardReports({plan,changeSet:changes,proof,reports:rows});
@@ -38,6 +47,20 @@ test('failed-job reruns retain successful earlier shards but never revive an old
   const later={...reports[0],runAttempt:2};
   assert.equal(api.aggregateShardReports({plan,changeSet:changes,proof,reports:[...reports,later]}).browser.ok,true);
   assert.throws(()=>api.aggregateShardReports({plan,changeSet:changes,proof,reports:[...reports,{...later,ok:false,exitCode:1}]}));
+});
+test('an incomplete failed consumer remains retryable but a success requires matching raw results',t=>{
+  const {root,proof,reports}=fixture(t),dir=path.join(root,'downloads');
+  const write=(name,data)=>{const file=path.join(dir,name);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(data));};
+  for(const report of reports) {
+    const raw={errors:[],suites:[{specs:[{id:report.id,tests:[{projectName:report.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]};
+    write(`${report.id}/shard-report.json`,report);write(`${report.id}/playwright-results.json`,raw);
+  }
+  write('older-failure/shard-report.json',{...reports[0],runAttempt:2,ok:false,exitCode:1,evidence:undefined});
+  assert.throws(()=>api.aggregateShardReports({plan,changeSet:changes,proof,reports:api.readShardReports(dir)}));
+  write('new-success/shard-report.json',{...reports[0],runAttempt:3});
+  fs.copyFileSync(path.join(dir,'quality/playwright-results.json'),path.join(dir,'new-success/playwright-results.json'));
+  assert.equal(api.aggregateShardReports({plan,changeSet:changes,proof,reports:api.readShardReports(dir)}).browser.ok,true);
+  write('new-success/playwright-results.json',{errors:[],suites:[]});assert.throws(()=>api.readShardReports(dir));
 });
 test('any changed, added or missing frozen deployment byte is rejected on another runner',t=>{
   const {root,proof}=fixture(t),verify=()=>api.verifyFrozenProof({bundleRoot:root,plan,changeSet:changes,proof});

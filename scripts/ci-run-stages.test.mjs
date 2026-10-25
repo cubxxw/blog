@@ -7,6 +7,7 @@ import {spawnSync} from 'node:child_process';
 import {compileExecutionPlan} from './ci-run.mjs';
 import {browserShardPlan,createFrozenProof,createShardReport} from './ci-shards.mjs';
 import {writeReleaseMarker,verifyArtifact} from './lib/site-artifact.mjs';
+import {summarizePlaywright} from './ci-test-inventory.mjs';
 function offline(t) {
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'ci-offline-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
   const changes={schema:'blog-change-set/1',sourceSha:'a'.repeat(40),baseSha:null,fullScan:false,files:[],sourceFiles:[],suites:['workflow'],publish:false,reason:'maintenance'};
@@ -37,9 +38,12 @@ test('final aggregation packages the original frozen bytes only after every part
   writeReleaseMarker({bundleRoot:bundle,sourceSha:plan.sourceSha,releaseId:'123-1',clock:plan.clock});
   write('site/page-map.json',{sourceSha:plan.sourceSha,clock:plan.clock,target:'production',baseUrl:'https://cubxxw.com',complete:true,pages:[]});
   write('site/output-report.json',{mode:'enforce',ok:true});
-  const proof=createFrozenProof({bundleRoot:bundle,plan,changeSet:changes,runId:'123',runAttempt:1});write('frozen.json',proof);
   const specs=browserShardPlan({plan,changeSet:changes});
-  for(const spec of specs)write(`shard-downloads/${spec.id}/shard-report.json`,createShardReport({spec,proof,runAttempt:1,exitCode:0,result:{mode:'enforce',ok:true}}));
+  const raw=Object.fromEntries(specs.map(spec=>[spec.id,{errors:[],suites:[{specs:[{id:spec.id,tests:[{projectName:spec.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]}]));
+  const evidence=Object.fromEntries(specs.map(spec=>[spec.id,summarizePlaywright(raw[spec.id])])),testInventory={schema:'blog-test-inventory/1',suites:{},shards:{}};
+  for(const spec of specs){testInventory.shards[spec.id]=evidence[spec.id].inventory;(testInventory.suites[spec.suite]??=[]).push(...evidence[spec.id].inventory);}
+  const proof=createFrozenProof({bundleRoot:bundle,plan,changeSet:changes,runId:'123',runAttempt:1,testInventory});write('frozen.json',proof);
+  for(const spec of specs){write(`shard-downloads/${spec.id}/shard-report.json`,createShardReport({spec,proof,runAttempt:1,exitCode:0,result:{mode:'enforce',ok:true},evidence:evidence[spec.id]}));write(`shard-downloads/${spec.id}/playwright-results.json`,raw[spec.id]);}
   const result=execute();assert.equal(result.status,0,result.stderr);
   const manifest=read('site/manifest.json');
   assert.deepEqual(manifest.requiredChecks,['workflow','output','browser','interactive']);
@@ -47,6 +51,9 @@ test('final aggregation packages the original frozen bytes only after every part
   verifyArtifact({bundleRoot:bundle,manifest,expectedSha:plan.sourceSha,expectedTarget:'production',requiredChecks:plan.requiredChecks});
   assert.ok(fs.statSync(path.join(dir,'site.tar.gz')).size>0);
   fs.unlinkSync(path.join(bundle,'manifest.json'));fs.unlinkSync(path.join(dir,'site.tar.gz'));
+  write('shard-downloads/quality/playwright-results.json',{errors:[],suites:[]});
+  assert.notEqual(execute().status,0);assert.equal(fs.existsSync(path.join(bundle,'manifest.json')),false);
+  write('shard-downloads/quality/playwright-results.json',raw.quality);
   fs.unlinkSync(path.join(dir,'shard-downloads/legacy-4/shard-report.json'));
   assert.notEqual(execute().status,0);assert.equal(fs.existsSync(path.join(bundle,'manifest.json')),false);
   assert.equal(fs.existsSync(path.join(dir,'site.tar.gz')),false);
