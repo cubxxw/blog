@@ -40,8 +40,14 @@ for(const name of ['alpha','beta'])test.describe(name,()=>test('same title',()=>
     fs.writeFileSync(config,`module.exports=${JSON.stringify({testDir:dir,testMatch:'sample.spec.cjs',projects:['chromium','firefox','webkit'].map(name=>({name}))})};`);
     const list=(project)=>{
       const env={...process.env};delete env.PLAYWRIGHT_JSON_OUTPUT_FILE;
-      const result=spawnSync(process.execPath,[path.resolve('node_modules/@playwright/test/cli.js'),'test',`--config=${config}`,...(project?[`--project=${project}`]:[]),'--list','--reporter=json'],{env,encoding:'utf8'});
-      assert.equal(result.status,0,result.stderr);return enumerateTestIds(JSON.parse(result.stdout));
+      const result=spawnSync(process.execPath,[path.resolve('node_modules/@playwright/test/cli.js'),'test',`--config=${config}`,...(project?[`--project=${project}`]:[]),'--list','--reporter=json'],{env,cwd:dir,encoding:'utf8'});
+      assert.equal(result.status,0,result.stderr);
+      const report=JSON.parse(result.stdout);
+      if(!project){
+        const rows=[];const visit=suites=>{for(const suite of suites??[]){rows.push(...(suite.specs??[]));visit(suite.suites);}};visit(report.suites);
+        assert.equal(rows.length,2);assert.ok(rows.every(spec=>spec.tests.length===3),'whole JSON must merge three projects per spec');
+      }
+      return enumerateTestIds(report);
     };
     const whole=list(),partition=['chromium','firefox','webkit'].flatMap(list).sort();
     assert.equal(whole.length,6);assert.deepEqual(partition,whole);
