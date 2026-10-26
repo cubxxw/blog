@@ -170,3 +170,6 @@ draft 必须返回 `draft-verified`，验证的是独立部署 URL 的版本、�
 诊断固定选择居民暂停、浏览器native/compatible连续性、quiet/reduce/resize四个真实用例的desktop/mobile项目。先从producer清单确认每个目标唯一，再核对真实JSON的完整ID、全部首次通过、无skip/retry/全局错误；命令保留单worker、原页面与用例门限。清单缺项、首次失败或进程异常均阻断prepare。真实精确 `--list` 只用于校验选择，不算浏览器通过。
 
 前后校验同一冻结proof，证据保存在 `tests/.artifacts/ci/room-preflight/`，由已有成功/失败artifact路径保留，位于发布的 `site/` 之外。summary顶层ok同时要求进程成功和严格验证，不能用嵌套通用evidence.ok或退出码替代。该阶段是诊断，原完整8片与最终认证继续执行；预检计数单独记录，不与全量独立用例分母相加。正常push/PR默认不增加此诊断成本，发布仍沿现有shadow/原生Git流程。
+
+
+房间静态控件保留原生web-first等待，再读取一次几何/命中快照后发送实际鼠标点击；不要用相同5秒Node poll替代多个原生命令，因为trace/协议开销属于不同计时边界。移动3D目标仍按真实投影与输入验收。两个Chromium浏览器连续性用例可显式选择camera-only CDP拖动；其真实按下/移动/释放、最终PW点击和10次转头界限不变，其他helper调用默认原路径。CDP.send没有原生timeout参数，helper逐操作显式30秒，并在错误后释放/清理自有session、同步PW位置；迟到attach也必须清理。`room-native-input.spec.ts`覆盖可信事件、失败与真实30秒迟到连接，不能把这些小fixture当实际房间或生产验收。

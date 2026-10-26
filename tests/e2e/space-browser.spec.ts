@@ -74,6 +74,7 @@ test('the project directory exposes previews and direct website actions before o
 });
 
 for(const mover of ['native','compatible'])test(`a visitor can leave a web draft, look out the window and resume the same page with continuous sound (${mover})`,async({page})=>{
+ const hit=(name:string)=>hitRoomObject(page,name,{cdpDrag:true});
  if(mover==='compatible')await page.addInitScript(()=>Object.defineProperty(Element.prototype,'moveBefore',{configurable:true,value:undefined}));
  let requests=0;const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
  await page.route('https://leafhour.com/**',route=>{requests++;return route.fulfill({contentType:'text/html',body:'<!doctype html><html><body><h1>Quiet reading check</h1><label>A thought to return to <textarea aria-label="A thought to return to"></textarea></label><button onclick="this.textContent=\'Kept open\'">Keep this page open</button></body></html>'});});
@@ -88,10 +89,10 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await expect(root(page)).toHaveAttribute('data-world-screen-preview',mover==='compatible'?'standby':'live');
  if(mover==='compatible'){await expect(page.locator('[data-space-window="browser"]')).toBeHidden();await expect(page.locator('[data-space-dock]')).toBeHidden();await capture(page,'visitor-compatible-standby');}
  const objects=JSON.parse((await root(page).getAttribute('data-room-objects'))!);
- for(const name of ['lamp','fan']){await hitRoomObject(page,name);await expect.poll(async()=>JSON.parse((await root(page).getAttribute('data-room-objects'))!)[name]).not.toBe(objects[name]);}
- await hitRoomObject(page,'books');await expect(page.locator('[data-room-inspection]')).toBeVisible();await page.keyboard.press('Escape');
- await hitRoomObject(page,'window');await expect(root(page)).toHaveAttribute('data-world-inspect','window');await page.keyboard.press('Escape');
- await hitRoomObject(page,'computer');await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+ for(const name of ['lamp','fan']){await hit(name);await expect.poll(async()=>JSON.parse((await root(page).getAttribute('data-room-objects'))!)[name]).not.toBe(objects[name]);}
+ await hit('books');await expect(page.locator('[data-room-inspection]')).toBeVisible();await page.keyboard.press('Escape');
+ await hit('window');await expect(root(page)).toHaveAttribute('data-world-inspect','window');await page.keyboard.press('Escape');
+ await hit('computer');await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
  await capture(page,'visitor-returned-state');
  await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);
  const sourcesAfter=await roomAudioSources(page);expect(sourcesAfter.find(s=>!s.stopped&&Math.abs(s.duration-100)<.05)!.id).toBe(rain.id);expect(sourcesAfter.some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);await capture(page,'visitor-after-returning');

@@ -9,12 +9,7 @@ const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const detail=(page:Page,kind:string)=>page.locator(`[data-cafe-inspect="${kind}"]`);
 const exit=(page:Page)=>page.locator('[data-cafe-inspect-exit]');
 const frames=(page:Page,count=2)=>page.evaluate(count=>new Promise<void>(done=>{const next=()=>--count?requestAnimationFrame(next):done();requestAnimationFrame(next);}),count);
-async function settled(page:Page,mode:string){
-  await expect.poll(()=>page.evaluate(()=>{
-    const el=document.querySelector<HTMLElement>('[data-bear-workspace]');
-    return {mode:el?.getAttribute('data-world-mode')??null,rendered:el?.getAttribute('data-world-rendered-mode')??null,travel:el?.getAttribute('data-world-travel')??null};
-  }),{timeout:5000}).toEqual({mode,rendered:mode,travel:'false'});
-}
+async function settled(page:Page,mode:string){await expect(root(page)).toHaveAttribute('data-world-mode',mode);await expect(root(page)).toHaveAttribute('data-world-rendered-mode',mode);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
 async function ready(page:Page,lang='zh'){
   await reserveWorldJourney(page);
   await page.goto(`${lang==='zh'?'/zh':''}/projects/`);await page.waitForFunction(()=>{const d=document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;return d?.worldReady==='true'&&d.bootState==='complete'&&!d.worldLoading;},undefined,{timeout:30_000});await settled(page,'roam');
