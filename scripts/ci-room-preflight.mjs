@@ -11,6 +11,11 @@ const cases=[
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (native)'],
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible)'],
   ['space-cafe-details-contracts.spec.ts','runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop'],
+  ['space-jiangnan.spec.ts','a failed distant environment falls back to geometry and remains explorable'],
+  ['space-jiangnan.spec.ts','quiet freezes rain, fan and boat while intentional movement still works'],
+  ['space-object-living.spec.ts','returning to the present can be interrupted by a new clock gesture'],
+  ['space-object-living.spec.ts','changing motion preference during waking settles the old call and accepts a new one'],
+  ['space-object-living.spec.ts','choosing real records keeps the outdoor source and drives the platter'],
 ];
 export function selectRoomRegressions(inventory){
   const legacy=inventory?.suites?.legacy;assert.ok(Array.isArray(legacy),'Legacy inventory required for room preflight');

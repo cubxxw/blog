@@ -84,7 +84,6 @@ function worldFixture() {
   const style={};Object.defineProperty(style,'opacity',{get(){return this._opacity;},set(value){this._opacity=value;writes++;}});
   const root={dataset:{worldPbrMaps:'12'}},water={style};
   const world=runInNewContext(`
-    let shaderWarmup={ready:true,resume(){}};
     let quiet=false,disposed=false,frame=0,last=0,environmentTime=0,frames=1,moving=null,clockReturn=null,standbyClock=null;
     let mode='workspace',doorWater=water,doorReturn=null,doorPanel=null,drag=null;
     const keys=new Set(),touchKeys=new Set(),reduced={matches:false};

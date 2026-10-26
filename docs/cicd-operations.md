@@ -167,7 +167,7 @@ draft 必须返回 `draft-verified`，验证的是独立部署 URL 的版本、�
 
 已知房间流程正在修复时，可手动触发 `gh workflow run main.yaml --ref codex/<task> -f room_regressions=true`。该 boolean 输入默认false；仅实际构建站点且显式启用时，在已有后门预检后、完整浏览器分片前执行一次定向诊断。GitHub输入使用保留boolean类型的 [`inputs` 上下文](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts)。
 
-诊断固定选择居民暂停、浏览器native/compatible连续性、quiet/reduce/resize四个真实用例的desktop/mobile项目。先从producer清单确认每个目标唯一，再核对真实JSON的完整ID、全部首次通过、无skip/retry/全局错误；命令保留单worker、原页面与用例门限。清单缺项、首次失败或进程异常均阻断prepare。真实精确 `--list` 只用于校验选择，不算浏览器通过。
+诊断固定选择九个真实用例的desktop/mobile项目（18项）：居民暂停、浏览器native/compatible连续性、quiet/reduce/resize，以及完整门禁曾失败或重试的江南远景失败后移动、boat环境恢复、时钟返回中断、猫的motion切换恢复、唱片旋转。先从producer清单确认每个目标唯一，再核对真实JSON的完整ID、全部首次通过、无skip/retry/全局错误；命令保留单worker、原页面与用例门限。清单缺项、首次失败或进程异常均阻断prepare。真实精确 `--list` 只用于校验选择，不算浏览器通过。
 
 前后校验同一冻结proof，证据保存在 `tests/.artifacts/ci/room-preflight/`，由已有成功/失败artifact路径保留，位于发布的 `site/` 之外。summary顶层ok同时要求进程成功和严格验证，不能用嵌套通用evidence.ok或退出码替代。该阶段是诊断，原完整8片与最终认证继续执行；预检计数单独记录，不与全量独立用例分母相加。正常push/PR默认不增加此诊断成本，发布仍沿现有shadow/原生Git流程。
 

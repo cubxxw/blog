@@ -62,9 +62,16 @@ test('returning to the present can be interrupted by a new clock gesture',async(
  await page.mouse.move(cx,cy-r);await page.mouse.down();const state=()=>root(page).evaluate(r=>JSON.parse((r as HTMLElement).dataset.roomTime!));
  const held=(await state()).unwrapped;await page.waitForTimeout(1600);expect(Math.abs((await state()).unwrapped-held)).toBeLessThan(.1);
  await page.mouse.move(cx+r,cy,{steps:8});await page.mouse.up();
- const sample=()=>root(page).evaluate(r=>({time:JSON.parse((r as HTMLElement).dataset.roomTime!).unwrapped,at:Date.now()}));
+ const sample=()=>root(page).evaluate(r=>{const snapshot=JSON.parse((r as HTMLElement).dataset.roomTime!);return {time:snapshot.unwrapped,at:snapshot.sampledAt,readAt:Date.now()};});
  const chosen=await sample();await page.waitForTimeout(1600);const resumed=await sample();
- expect((await state()).borrowed).toBe(true);expect(Math.abs(resumed.time-chosen.time-(resumed.at-chosen.at)/100)).toBeLessThan(3);
+ expect((await state()).borrowed).toBe(true);
+ for(const snapshot of [chosen,resumed]){expect(Number.isFinite(snapshot.at)).toBe(true);expect(snapshot.at).toBeLessThanOrEqual(snapshot.readAt);}
+ expect(resumed.at).toBeGreaterThan(chosen.at);expect(resumed.time).toBeGreaterThan(chosen.time);
+ // Compare the two published samples, rather than assigning a later protocol
+ // read's wall time to an older frame/weather record. Keep the original rate
+ // tolerance and actual hold/resume windows; publish read age as evidence.
+ expect(Math.abs(resumed.time-chosen.time-(resumed.at-chosen.at)/100)).toBeLessThan(3);
+ await test.info().attach('room-clock-coherent-samples',{contentType:'application/json',body:JSON.stringify({chosen,resumed,readAgeMs:[chosen.readAt-chosen.at,resumed.readAt-resumed.at]})});
  await page.locator('[data-clock-present]').click();await expect.poll(async()=>(await state()).borrowed).toBe(false);
 });
 
@@ -82,8 +89,8 @@ test('a return to the present completes offscreen and Escape from its center res
 
 test('the cat sleeps by default and a real nest click wakes it before it comes over',async({page})=>{
  await ready(page);await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
- const initial=await page.evaluate(()=>({home:JSON.parse(document.querySelector<HTMLElement>('[data-bear-workspace]')!.dataset.roomCat!),controls:document.querySelectorAll('[data-room-object="cat"]').length}));
- const home=initial.home;expect(home.phase).toBe('sleep');expect(initial.controls).toBe(1);
+ const initial=await page.evaluate(()=>({home:JSON.parse(document.querySelector<HTMLElement>('[data-bear-workspace]')!.dataset.roomCat!),controls:document.querySelectorAll('[data-room-object="cat"]').length,action:document.querySelector<HTMLElement>('[data-room-object="cat"]')?.dataset.roomCatAction,label:document.querySelector('[data-room-object="cat"]')?.textContent}));
+ const home=initial.home;expect(home.phase).toBe('sleep');expect(initial.controls).toBe(1);expect(initial.action).toBe('call');expect(initial.label).toContain('叫醒');
  const catButton=page.locator('[data-room-object="cat"]');
  await page.emulateMedia({reducedMotion:'no-preference'});const at=await face(page,'cat-bed');
  // Keep the first presented wake frame: a later CDP read can arrive after walking starts.
@@ -99,7 +106,7 @@ test('the cat sleeps by default and a real nest click wakes it before it comes o
   observer.observe(room,{attributes:true,attributeFilter:['data-room-cat']});
   return {snapshot:()=>firstWake,petting:()=>firstPetting,disconnect:()=>observer.disconnect(),arrival:()=>{
    const cat=JSON.parse(room.dataset.roomCat!);
-   return {x:cat.x,z:cat.z,mode:room.dataset.worldMode,pose:room.dataset.worldPose,before,connected:room.isConnected,focused:document.activeElement===room.querySelector('[data-room-object="cat"]')};
+   return {x:cat.x,z:cat.z,mode:room.dataset.worldMode,pose:room.dataset.worldPose,before,connected:room.isConnected,focused:document.activeElement===room.querySelector('[data-room-object="cat"]'),action:room.querySelector<HTMLElement>('[data-room-object="cat"]')?.dataset.roomCatAction,label:room.querySelector('[data-room-object="cat"]')?.textContent};
   }};
  });
  try{
@@ -110,7 +117,7 @@ test('the cat sleeps by default and a real nest click wakes it before it comes o
   await expect(root(page)).toHaveAttribute('data-cat-state','arrived',{timeout:45000});
   const arrival=await wakeObservation.evaluate(observation=>observation.arrival());
   expect(arrival.connected).toBe(true);
-  expect(arrival.focused).toBe(true);await page.keyboard.press('Enter');
+  expect(arrival.focused).toBe(true);expect(arrival.action).toBe('pet');expect(arrival.label).toContain('抚摸');await page.keyboard.press('Enter');
   expect(Math.hypot(arrival.x-home.x,arrival.z-home.z)).toBeGreaterThan(.3);
   expect(arrival.mode).toBe('roam');expect(arrival.pose).toBe(arrival.before);
   // Native input can finish its brief response before a slow protocol read returns.
@@ -141,8 +148,21 @@ test('a sunny daytime view is silent outdoors while the same indoor record can p
 test('changing motion preference during waking settles the old call and accepts a new one',async({page})=>{
  await ready(page);await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
  await page.emulateMedia({reducedMotion:'no-preference'});await object(page,'cat');await expect(root(page)).toHaveAttribute('data-cat-state','waking');
- await page.emulateMedia({reducedMotion:'reduce'});await object(page,'cat');await expect(root(page)).toHaveAttribute('data-cat-state','noticed');
- const state=JSON.parse((await root(page).getAttribute('data-room-cat'))!);expect(state.interaction.stage).toBe('notice');expect(state.speed).toBe(0);
+ const action=await page.evaluateHandle(()=>{
+  const room=document.querySelector<HTMLElement>('[data-bear-workspace]')!,button=room.querySelector<HTMLElement>('[data-room-object="cat"]')!;
+  let selected:{kind:string|undefined;trusted:boolean;stateWrites:number}|null=null;
+  const capture=(event:KeyboardEvent)=>{if(event.key==='Enter')selected={kind:button.dataset.roomCatAction,trusted:event.isTrusted,stateWrites:0};};
+  const observer=new MutationObserver(records=>{if(selected)selected.stateWrites+=records.filter(record=>record.attributeName==='data-cat-state').length;});
+  observer.observe(room,{attributes:true,attributeFilter:['data-cat-state']});button.addEventListener('keydown',capture,{capture:true});
+  return {read:()=>selected,dispose(){observer.disconnect();button.removeEventListener('keydown',capture,{capture:true});}};
+ });
+ try{
+  await page.emulateMedia({reducedMotion:'reduce'});await object(page,'cat');
+  const selected=await action.evaluate(value=>value.read());expect(selected).not.toBeNull();expect(selected!.trusted).toBe(true);expect(['call','pet']).toContain(selected!.kind);expect(selected!.stateWrites).toBeGreaterThan(0);
+  await expect(root(page)).toHaveAttribute('data-cat-state',selected!.kind==='pet'?'petted-still':'noticed');
+  const state=JSON.parse((await root(page).getAttribute('data-room-cat'))!);expect(state.interaction.kind).toBe(selected!.kind);expect(state.interaction.stage).toBe('notice');expect(state.interaction.instant).toBe(true);expect(state.speed).toBe(0);
+  await test.info().attach('resident-selected-action',{contentType:'application/json',body:JSON.stringify({selected,interaction:state.interaction})});
+ }finally{try{await action.evaluate(value=>value.dispose());}finally{await action.dispose();}}
 });
 
 test('dawn stops rain while reading without interrupting the record or drawing hidden room frames',async({page})=>{

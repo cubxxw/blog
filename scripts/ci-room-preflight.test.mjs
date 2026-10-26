@@ -9,6 +9,11 @@ const cases=[
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (native)'],
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible)'],
   ['space-cafe-details-contracts.spec.ts','runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop'],
+  ['space-jiangnan.spec.ts','a failed distant environment falls back to geometry and remains explorable'],
+  ['space-jiangnan.spec.ts','quiet freezes rain, fan and boat while intentional movement still works'],
+  ['space-object-living.spec.ts','returning to the present can be interrupted by a new clock gesture'],
+  ['space-object-living.spec.ts','changing motion preference during waking settles the old call and accepts a new one'],
+  ['space-object-living.spec.ts','choosing real records keeps the outdoor source and drives the platter'],
 ];
 function raw(){return {errors:[],suites:[{title:'',specs:cases.map(([file,title],index)=>({file,title,line:index+1,column:1,tests:['desktop','mobile'].map(projectName=>({projectName,status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}))}))}]};}
 function expected(){return enumerateTestIds(raw());}
@@ -22,7 +27,7 @@ test('focused room preflight requires every named path in both real projects',()
 });
 test('focused evidence is raw, exact, first-pass and never all-skip or partial',()=>{
   assert.equal(typeof api.verifyRoomRegressionResult,'function');
-  assert.equal(api.verifyRoomRegressionResult(raw(),expected()).counts.firstPass,8);
+  assert.equal(api.verifyRoomRegressionResult(raw(),expected()).counts.firstPass,18);
   const skipped=raw();Object.assign(skipped.suites[0].specs[0].tests[0],{status:'skipped',expectedStatus:'skipped',results:[{status:'skipped',retry:0}]});
   assert.throws(()=>api.verifyRoomRegressionResult(skipped,expected()));
   const retry=raw();Object.assign(retry.suites[0].specs[0].tests[0],{status:'flaky',results:[{status:'failed',retry:0},{status:'passed',retry:1}]});
@@ -43,7 +48,7 @@ test('focused invocation keeps real inputs, original gates and independent diagn
   }
   assert.equal(grep.test('unrelated room test'),false);
   assert.ok(!args.some(arg=>/timeout|pass-with-no-tests|shard=/.test(arg)));
-  assert.equal(args.filter(arg=>arg.endsWith('.spec.ts')).length,3);
+  assert.equal(args.filter(arg=>arg.endsWith('.spec.ts')).length,5);
 });
 test('optional dispatch preflight defaults off and cannot replace the full graph',()=>{
   const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));

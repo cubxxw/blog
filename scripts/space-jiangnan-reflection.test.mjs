@@ -18,7 +18,7 @@ const assignmentTo=(statement,name)=>statement.type==='ExpressionStatement'&&sta
 const setup=world.body.find(node=>node.type==='TryStatement'&&node.block.body.some(statement=>assignmentTo(statement,'firstTimer'))).block.body;
 const softwareSetup=text(setup.find(statement=>assignmentTo(statement,'reflectionDone')));
 const timerSetup=text(setup.find(statement=>assignmentTo(statement,'firstTimer')));
-const locals=['shaderWarmup','disposed','mode','quiet','frame','last','environmentTime','frames','moving','drag','inspection','reflectionDone','firstPending','resolveFirst','firstTimer','readingPage','clockReturn','doorWater'];
+const locals=['disposed','mode','quiet','frame','last','environmentTime','frames','moving','drag','inspection','reflectionDone','firstPending','resolveFirst','firstTimer','readingPage','clockReturn','doorWater'];
 
 // Execute the current world functions, including the real gates and timer
 // ownership. Only browser/GPU boundaries are faked; no readiness logic is copied.
@@ -41,7 +41,6 @@ const runtime=`
     setFlowing(value){quiet=!value;wake();},
     setBoot(value){root.dataset.bootState=value;wake();},
     get environmentTime(){return environmentTime;},
-    setPreparation(value){shaderWarmup=value;wake();},
     forceTick:tick
   });
 `;
@@ -206,11 +205,4 @@ test('a hidden flight resumes from its previous visible time without catching up
  const f=fixture({software:true});f.world.setMaps(12);f.advance(10);f.world.beginFlight(1000);f.flush();f.advance(410);f.flush();
  f.world.hide(true);f.advance(20000);f.world.hide(false);f.flush();assert.equal(f.world.travelling,true);
  f.advance(20700);f.flush();assert.equal(f.world.travelling,false);
-});
-
-
-test('resize and material wakes cannot draw while software preparation is pending',()=>{
- const f=fixture({software:true});f.world.setPreparation({ready:false});f.flush();assert.equal(f.draws,0);
- f.world.setMaps(12);f.world.forceTick(100);assert.equal(f.draws,0);
- f.world.setPreparation({ready:true});f.flush();assert.equal(f.draws,1);
 });

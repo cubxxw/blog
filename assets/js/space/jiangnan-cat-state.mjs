@@ -131,3 +131,10 @@ export function stepJiangnanCat(state,seconds,{paused=false,colliders=floorObsta
   return moved;
 }
 export const JIANGNAN_CAT_ADAPTER=Object.freeze({create:createJiangnanCatState,step:stepJiangnanCat,request:requestJiangnanCat,settle:settleJiangnanCat,attend:attendJiangnanCat});
+
+// One action decision owns both the keyboard label and the physical response.
+// Sleeping/waking cats are called; the existing nearby/inspection pet remains.
+export function jiangnanCatAction(state,visitor,{inspecting=false}={}){
+  const near=state&&!['sleep','wake'].includes(state.phase)&&Math.hypot(state.x-visitor.x,state.z-visitor.z)<1.1;
+  return inspecting||near?'pet':'call';
+}
