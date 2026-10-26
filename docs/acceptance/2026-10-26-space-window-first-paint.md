@@ -20,3 +20,11 @@ The normal photographic path now omits town construction and waits for its prima
 `netlify dev --offline --port 8888` did not provide a stable preview: the local CLI repeatedly reported unexpected termination. It was stopped with its owned children. Browser verification therefore used the successful production build and the repository's frozen-output server. No deployment settings or dependencies were changed.
 
 These are local results; they do not establish completion of the remote release checks or production deployment. Physical devices, Safari and Firefox were not tested in this change.
+
+## Follow-up: centered loading progress
+
+The author requested only the loading progress in the middle of the screen. Removed the boot header, command prompt, title, author information, article/project counts, footer explanation and writing link from the template, together with their unused styles. The three real loading stages and live status remain in an intrinsically sized, centered block. A recovery button appears in that block only after failure; the loading section retains a localized accessible name.
+
+`space:boot:test` passed 18/18. The affected desktop/mobile bilingual boot, first-frame waiting and failure recovery browser journeys passed 8/8 after the final CSS change. The centering assertion first failed against the previous build. TypeScript, Hugo production compilation and diff checks passed. Desktop and mobile screenshots were inspected under `output/playwright/space-centered-boot-20261026/local/`.
+
+Independent review caught a recovery-button selector being overridden by the shared button reset; the selector and its hidden rule were corrected. Re-checks with the full Space stylesheet at 320, 375, 640 and 1280 pixels confirmed centering, no horizontal overflow, a visible recovery affordance and correct hiding during normal loading. These are local checks; production read-back is performed separately after publication.
