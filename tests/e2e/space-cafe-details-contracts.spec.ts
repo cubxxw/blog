@@ -1,14 +1,20 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
+import {clickStaticRoomControl} from '../helpers/static-room-control';
 import {readFileSync} from 'node:fs';
 import {parse} from 'yaml';
 
-test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const detail=(page:Page,kind:string)=>page.locator(`[data-cafe-inspect="${kind}"]`);
 const exit=(page:Page)=>page.locator('[data-cafe-inspect-exit]');
 const frames=(page:Page,count=2)=>page.evaluate(count=>new Promise<void>(done=>{const next=()=>--count?requestAnimationFrame(next):done();requestAnimationFrame(next);}),count);
-async function settled(page:Page,mode:string){await expect(root(page)).toHaveAttribute('data-world-mode',mode);await expect(root(page)).toHaveAttribute('data-world-rendered-mode',mode);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
+async function settled(page:Page,mode:string){
+  await expect.poll(()=>page.evaluate(()=>{
+    const el=document.querySelector<HTMLElement>('[data-bear-workspace]');
+    return {mode:el?.getAttribute('data-world-mode')??null,rendered:el?.getAttribute('data-world-rendered-mode')??null,travel:el?.getAttribute('data-world-travel')??null};
+  }),{timeout:5000}).toEqual({mode,rendered:mode,travel:'false'});
+}
 async function ready(page:Page,lang='zh'){
   await reserveWorldJourney(page);
   await page.goto(`${lang==='zh'?'/zh':''}/projects/`);await page.waitForFunction(()=>{const d=document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset;return d?.worldReady==='true'&&d.bootState==='complete'&&!d.worldLoading;},undefined,{timeout:30_000});await settled(page,'roam');
@@ -68,9 +74,13 @@ test('six scene changes and both detail views preserve the original Notes node, 
 });
 
 test('runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop',async({page})=>{
-  await page.setViewportSize({width:1440,height:900});await page.emulateMedia({reducedMotion:'no-preference'});await ready(page,'en');const before=await pose(page);await detail(page,'coffee').click();await expect(exit(page)).toBeFocused();const quiet=page.locator('.space-cafe__utilities [data-cafe-quiet]');await quiet.click();await expect(quiet).toHaveAttribute('aria-pressed','true');await settled(page,'inspect');await expect(quiet).toBeFocused();await page.setViewportSize({width:390,height:844});await frames(page);await expect(root(page)).toHaveAttribute('data-world-inspect','coffee');await expect(quiet).toBeFocused();
-  await expect.poll(async()=>{const value=await root(page).getAttribute('data-world-frames');await frames(page,6);return await root(page).getAttribute('data-world-frames')===value;}).toBe(true);await page.keyboard.press('Escape');await samePose(page,before);await expect(quiet).toBeFocused();
-  await quiet.click();await detail(page,'books').click();await expect(exit(page)).toBeFocused();await page.keyboard.press('Tab');const zoom=page.locator('[data-cafe-bookzoom]');await expect(zoom).toBeFocused();await zoom.press('Enter');await expect(root(page)).toHaveAttribute('data-world-inspect','spines');await expect(zoom).toBeFocused();await zoom.press('Enter');await expect(root(page)).toHaveAttribute('data-world-inspect','books');await page.keyboard.press('Tab');const toggle=page.locator('[data-cafe-booklist-toggle]');await expect(toggle).toBeFocused();await toggle.press('Enter');await expect(toggle).toHaveAttribute('aria-expanded','true');await page.keyboard.press('Tab');const list=page.locator('[data-cafe-inspect-books] ul');await expect(list).toBeFocused();await page.emulateMedia({reducedMotion:'reduce'});await settled(page,'inspect');await expect(list).toBeFocused();await page.setViewportSize({width:320,height:740});await frames(page);await expect(list).toBeFocused();await page.keyboard.press('Escape');await samePose(page,before);await expect(detail(page,'books')).toBeFocused();
+  await page.setViewportSize({width:1440,height:900});await page.emulateMedia({reducedMotion:'no-preference'});await ready(page,'en');const before=await pose(page);await clickStaticRoomControl(page,'[data-cafe-inspect="coffee"]');await expect(exit(page)).toBeFocused();const quiet=page.locator('.space-cafe__utilities [data-cafe-quiet]');await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');await expect(quiet).toHaveAttribute('aria-pressed','true');await settled(page,'inspect');await expect(quiet).toBeFocused();await page.setViewportSize({width:390,height:844});await frames(page);await expect(root(page)).toHaveAttribute('data-world-inspect','coffee');await expect(quiet).toBeFocused();
+  await expect.poll(()=>page.evaluate(()=>new Promise<boolean>(resolve=>{
+    const el=document.querySelector('[data-bear-workspace]'),before=el?.getAttribute('data-world-frames');
+    let remaining=6;const next=()=>{if(--remaining)requestAnimationFrame(next);else resolve(!!el&&before!==null&&before!==undefined&&document.querySelector('[data-bear-workspace]')===el&&el.getAttribute('data-world-frames')===before);};
+    requestAnimationFrame(next);
+  })),{timeout:5000}).toBe(true);await page.keyboard.press('Escape');await samePose(page,before);await expect(quiet).toBeFocused();
+  await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');await clickStaticRoomControl(page,'[data-cafe-inspect="books"]');await expect(exit(page)).toBeFocused();await page.keyboard.press('Tab');const zoom=page.locator('[data-cafe-bookzoom]');await expect(zoom).toBeFocused();await zoom.press('Enter');await expect(root(page)).toHaveAttribute('data-world-inspect','spines');await expect(zoom).toBeFocused();await zoom.press('Enter');await expect(root(page)).toHaveAttribute('data-world-inspect','books');await page.keyboard.press('Tab');const toggle=page.locator('[data-cafe-booklist-toggle]');await expect(toggle).toBeFocused();await toggle.press('Enter');await expect(toggle).toHaveAttribute('aria-expanded','true');await page.keyboard.press('Tab');const list=page.locator('[data-cafe-inspect-books] ul');await expect(list).toBeFocused();await page.emulateMedia({reducedMotion:'reduce'});await settled(page,'inspect');await expect(list).toBeFocused();await page.setViewportSize({width:320,height:740});await frames(page);await expect(list).toBeFocused();await page.keyboard.press('Escape');await samePose(page,before);await expect(detail(page,'books')).toBeFocused();
 });
 
 test('a held then failed latte image never blocks the first room; simulated context loss restores the same Notes document',async({page})=>{

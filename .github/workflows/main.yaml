@@ -10,6 +10,10 @@ on:
         description: Upload verified main artifact as a Netlify draft (never production)
         type: boolean
         default: false
+      room_regressions:
+        description: Diagnose known room regressions before the complete required browser graph
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -80,6 +84,9 @@ jobs:
           if(result.error)throw result.error;
           process.exitCode=result.status??1;
           NODE
+      - name: Diagnose known room regressions before browser fan-out
+        if: steps.plan.outputs.run_site == 'true' && inputs.room_regressions == true
+        run: node scripts/ci-room-preflight.mjs
       - name: Verify reusable author audio
         run: npm run voice:test
       - name: Verify BEAR OS tool and media boundaries

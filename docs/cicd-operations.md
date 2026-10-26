@@ -162,3 +162,11 @@ gh workflow run rollback-netlify.yml -f deployment_id=VERIFIED_GITHUB_DEPLOYMENT
 draft 必须返回 `draft-verified`，验证的是独立部署 URL 的版本、页面、资源与函数，不能拿“上传成功”代替，也不会生成生产回执。平台控制默认只读 inspect；pause 先保存当前部署检查点，再停止 Git builds，并检查仍在运行的原生构建。只有 `ready=true` 才具备切换条件。resume 要求 Actions 已不处于 active，防止双重发布。
 
 首次迁移以前的原生 Netlify 部署没有本协议回执。切换前保留其平台 deploy ID 作为人工恢复点；不能给旧版本伪造 GitHub 验证记录。以后由新链路生成的已验证版本才适用上述自动验证回退入口。
+
+### 候选房间回归预检
+
+已知房间流程正在修复时，可手动触发 `gh workflow run main.yaml --ref codex/<task> -f room_regressions=true`。该 boolean 输入默认false；仅实际构建站点且显式启用时，在已有后门预检后、完整浏览器分片前执行一次定向诊断。GitHub输入使用保留boolean类型的 [`inputs` 上下文](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts)。
+
+诊断固定选择居民暂停、浏览器native/compatible连续性、quiet/reduce/resize四个真实用例的desktop/mobile项目。先从producer清单确认每个目标唯一，再核对真实JSON的完整ID、全部首次通过、无skip/retry/全局错误；命令保留单worker、原页面与用例门限。清单缺项、首次失败或进程异常均阻断prepare。真实精确 `--list` 只用于校验选择，不算浏览器通过。
+
+前后校验同一冻结proof，证据保存在 `tests/.artifacts/ci/room-preflight/`，由已有成功/失败artifact路径保留，位于发布的 `site/` 之外。summary顶层ok同时要求进程成功和严格验证，不能用嵌套通用evidence.ok或退出码替代。该阶段是诊断，原完整8片与最终认证继续执行；预检计数单独记录，不与全量独立用例分母相加。正常push/PR默认不增加此诊断成本，发布仍沿现有shadow/原生Git流程。

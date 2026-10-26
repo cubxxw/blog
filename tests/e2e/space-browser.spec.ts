@@ -4,8 +4,9 @@ import {observeRoomAudio,rainSource,roomAudioSources} from '../helpers/room-audi
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
+const pointerEvidence=new WeakMap<Page,unknown[]>();
 async function app(page:Page,name:string){await page.locator('[data-mac-menu="file"]').click();await page.locator(`[data-mac-panel="file"] [data-open="${name}"]`).click();}
 async function desk(page:Page){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
@@ -25,8 +26,22 @@ async function clickInWebPage(page:Page,control:Locator){
 }
 test.beforeEach(async({page})=>{
  test.setTimeout(90000);await observeRoomAudio(page);
- await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});
+ const records:unknown[]=[];pointerEvidence.set(page,records);
+ page.on('console',message=>{const text=message.text(),prefix='__room_native_pointer__';if(!text.startsWith(prefix)||records.length>=80)return;try{records.push(JSON.parse(text.slice(prefix.length)));}catch{records.push({diagnosticError:'invalid pointer observation'});}});
+ await page.addInitScript(()=>{
+  localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');
+  for(const type of ['pointerdown','pointerup'])document.addEventListener(type,event=>{
+   const pointer=event as PointerEvent,room=document.querySelector<HTMLElement>('[data-bear-workspace]');if(!pointer.isTrusted||!room)return;
+   const target=pointer.target instanceof Element?pointer.target:null;
+   // Capture native dispatch identity without extra layout reads or input/state
+   // changes. Pointer-up may be retargeted by ordinary pointer capture.
+   console.debug('__room_native_pointer__'+JSON.stringify({type,trusted:pointer.isTrusted,x:pointer.clientX,y:pointer.clientY,
+    atEpochMs:performance.timeOrigin+performance.now(),target:{tag:target?.tagName,id:target?.id,class:target?.getAttribute('class')},canvasTarget:target===room.querySelector('.space-world__canvas'),
+    pose:room.dataset.worldPose,targets:room.dataset.worldTargets,objects:room.dataset.roomObjects,worldMode:room.dataset.worldMode,frames:room.dataset.worldFrames}));
+  },{capture:true,passive:true});
+ });
 });
+test.afterEach(async({page},info)=>{await info.attach('native-room-pointer-evidence',{contentType:'application/json',body:JSON.stringify({events:pointerEvidence.get(page)??[],limits:'passive native dispatch observations, not a raycast or proof that a later pointer-up was not captured'})});pointerEvidence.delete(page);});
 
 test('the Mac browser has real project bookmarks, address navigation and site history while sound continues',async({page})=>{
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
@@ -65,7 +80,7 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await desk(page);await app(page,'browser');await page.locator('[data-browser-bookmark="leafhour"]').click();
  const frame=page.frameLocator('.space-browser__page'),note=frame.getByRole('textbox',{name:'A thought to return to'});
  await clickInWebPage(page,note);await page.keyboard.type('The same page, when I come back.');await clickInWebPage(page,frame.getByRole('button'));await expect(frame.getByRole('button')).toHaveText('Kept open');
- const rain=(await rainSource(page))!,music=(await roomAudioSources(page)).find(s=>!s.stopped&&Math.abs(s.duration-100)>.05)!,before=requests;
+ const sourcesBefore=await roomAudioSources(page),rain=sourcesBefore.find(s=>!s.stopped&&Math.abs(s.duration-100)<.05)!,music=sourcesBefore.find(s=>!s.stopped&&Math.abs(s.duration-100)>.05)!,before=requests;
  await capture(page,'visitor-before-standing');
  if(page.viewportSize()!.width<=640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();}
  await page.mouse.click(8,8);
@@ -79,7 +94,7 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await hitRoomObject(page,'computer');await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
  await capture(page,'visitor-returned-state');
  await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);
- expect((await rainSource(page))!.id).toBe(rain.id);expect((await roomAudioSources(page)).some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);await capture(page,'visitor-after-returning');
+ const sourcesAfter=await roomAudioSources(page);expect(sourcesAfter.find(s=>!s.stopped&&Math.abs(s.duration-100)<.05)!.id).toBe(rain.id);expect(sourcesAfter.some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);await capture(page,'visitor-after-returning');
  if(mover==='native'){
   // Fault injection exercises the same anchored-node restoration as a lost GPU.
   await page.locator('.space-world__canvas').evaluate(el=>el.dispatchEvent(new Event('webglcontextlost',{cancelable:true})));await expect(root(page)).toHaveAttribute('data-world-failed','true');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
