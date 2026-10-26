@@ -13,7 +13,7 @@ async function app(page:Page,name:string){await page.locator('[data-mac-menu="fi
 async function desk(page:Page){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
  const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
- await page.locator('.space-world__canvas').focus();
+ // The physical canvas hit owns focus; offscreen projection still focuses before turning.
  await hitRoomObject(page,'computer');await expectRoomAttributes(page,{'data-computer-view':'expanded'});
  if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expectRoomAttributes(page,{'data-computer-view':'framed'});}
 }
