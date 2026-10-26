@@ -1,6 +1,7 @@
 import {test,expect} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {clickStaticRoomControl} from '../helpers/static-room-control';
+import {readRoomObservation} from '../helpers/room-observation';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -216,18 +217,28 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   });
   await page.goto('/zh/projects/');
   type MotionObservation={status:string;initialPose:string;initialTime:number;changedPose:string;changedTime:number;bootCompleteAt:number|null;renderedRoamAt:number|null;readinessError:string|null};
-  const handle=await page.waitForFunction(()=>{
+  const movement=await readRoomObservation(page,async()=>{
+    const deadline=performance.now()+30000;
+    for(;;){
+      if(performance.now()>deadline)throw new Error('Resident startup exceeded30000ms');
     const state=window as unknown as {__catMotionObservation:MotionObservation;__catMotionRoot:Element;__catReadinessRoot:Element},data=state.__catMotionObservation;
-    if(!data)return false;
+    if(!data)throw new Error('Resident startup observation missing');
     if(data.readinessError||['motion-timeout','startup-timeout','pagehide'].includes(data.status))throw new Error('Resident startup observation: '+(data.readinessError||data.status));
     if(data.bootCompleteAt!==null){
       if(data.renderedRoamAt===null&&performance.now()-data.bootCompleteAt>5000)throw new Error('Rendered roam exceeded5s after observed boot completion');
       if(data.renderedRoamAt!==null&&data.renderedRoamAt-data.bootCompleteAt>5000)throw new Error('Rendered roam arrived after5s');
     }
     const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]'),el=roots[0];
-    return roots.length===1&&el===state.__catMotionRoot&&el===state.__catReadinessRoot&&el.dataset.bootState==='complete'&&el.dataset.worldRenderedMode==='roam'&&el.dataset.catLoaded==='true'&&data.bootCompleteAt!==null&&data.renderedRoamAt!==null&&data.status==='changed'?data:false;
-  },undefined,{timeout:30000,polling:50});
-  let movement:MotionObservation;try{const value=await handle.jsonValue();if(!value)throw new Error('Resident startup wait returned no observation');movement=value;}finally{await handle.dispose();}
+    if(roots.length===1&&el===state.__catMotionRoot&&el===state.__catReadinessRoot&&el.dataset.bootState==='complete'&&el.dataset.worldRenderedMode==='roam'&&el.dataset.catLoaded==='true'&&data.bootCompleteAt!==null&&data.renderedRoamAt!==null&&data.status==='changed')return data;
+
+      const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Resident startup exceeded30000ms');
+      await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
+    }
+  },undefined,{timeout:30000,label:'Resident startup observation',validate:(value):value is MotionObservation=>{
+    if(!value||typeof value!=='object')return false;const data=value as Record<string,unknown>;
+    return data.status==='changed'&&typeof data.initialPose==='string'&&typeof data.changedPose==='string'&&['initialTime','changedTime','bootCompleteAt','renderedRoamAt'].every(key=>typeof data[key]==='number'&&Number.isFinite(data[key]))&&data.readinessError===null;
+  }});
+  await test.info().attach('resident-startup-observation',{contentType:'application/json',body:JSON.stringify(movement)});
   const movementMs=movement.changedTime-movement.initialTime;
   expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
   expect(movement.changedPose).not.toBe(movement.initialPose);
@@ -258,14 +269,22 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   };
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');await observePaused(true);
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');
-  const resumed=await page.waitForFunction(()=>document.querySelector('.space-cafe__utilities [data-cafe-quiet]')?.getAttribute('aria-pressed')==='false'&&document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset.catActive==='true',undefined,{timeout:5000,polling:50});
-  await resumed.dispose();
+  const waitForActive=async(requireQuietOff=false)=>readRoomObservation(page,async(requireQuietOff)=>{
+    const deadline=performance.now()+5000;
+    for(;;){
+      const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1)throw new Error('Resident recovery root missing or ambiguous');
+      if(roots[0].dataset.catActive==='true'&&(!requireQuietOff||document.querySelector('.space-cafe__utilities [data-cafe-quiet]')?.getAttribute('aria-pressed')==='false'))return true;
+      const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Resident recovery exceeded5000ms');
+      await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
+    }
+  },requireQuietOff,{timeout:5000,label:'Resident recovery observation',validate:(value):value is boolean=>value===true});
+  await waitForActive(true);
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-picker]');
   await observePaused();
   await page.locator('[data-cafe-picker-close]').click();
-  await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
+  await waitForActive();
   await page.emulateMedia({reducedMotion:'reduce'});await observePaused();
-  await page.emulateMedia({reducedMotion:'no-preference'});await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
+  await page.emulateMedia({reducedMotion:'no-preference'});await waitForActive();
   await clickStaticRoomControl(page,'[data-cafe-enter]');await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   await observePaused();
 });

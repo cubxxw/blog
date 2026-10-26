@@ -1,28 +1,9 @@
 import {expect,type Page} from '@playwright/test';
+import {readRoomObservation} from './room-observation';
 
 type ControlPoint={count:number,x:number,y:number,width:number,height:number,visible:boolean,enabled:boolean,inside:boolean,hit:boolean};
-
-// Only for Chromium room fixtures' stationary DOM tools, never 3D targets.
-// A hard Node5s budget covers attach, real DOM observation and value transport.
-// CDP avoids trace-hook/JSHandle round trips; the click remains native PW input.
-// https://playwright.dev/docs/api/class-cdpsession
+// Stationary DOM tools only. Keep the common hard5s and all original hit guards.
 async function staticPoint(page:Page,selector:string):Promise<ControlPoint>{
-  if(page.context().browser()?.browserType().name()!=='chromium')throw new Error('Static room protocol observation requires Chromium');
-  const deadline=performance.now()+5000;
-  const within=async<T>(operation:()=>Promise<T>)=>{
-    const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Static control observation exceeded5000ms');
-    let timer:ReturnType<typeof setTimeout>|undefined;
-    try{return await Promise.race([operation(),new Promise<never>((_,reject)=>{timer=setTimeout(()=>reject(new Error('Static control observation exceeded5000ms')),remaining);})]);}
-    finally{if(timer)clearTimeout(timer);}
-  };
-  const detach=async(session:Awaited<ReturnType<ReturnType<Page['context']>['newCDPSession']>>)=>{
-    let timer:ReturnType<typeof setTimeout>|undefined;
-    try{await Promise.race([session.detach(),new Promise<never>((_,reject)=>{timer=setTimeout(()=>reject(new Error('Static control session cleanup exceeded5000ms')),5000);})]);}
-    finally{if(timer)clearTimeout(timer);}
-  };
-  const attaching=page.context().newCDPSession(page);let session:Awaited<typeof attaching>;
-  try{session=await within(()=>attaching);}
-  catch(error){void attaching.then(detach).catch(cleanup=>console.warn('Static control late attach cleanup error',cleanup));throw error;}
   async function observe(selector:string){
     const deadline=performance.now()+5000;
     for(;;){
@@ -43,17 +24,10 @@ async function staticPoint(page:Page,selector:string):Promise<ControlPoint>{
       await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
     }
   }
-  let failed=false,detached=false;
-  try{
-    const result=await within(()=>session.send('Runtime.evaluate',{expression:'('+observe.toString()+')('+JSON.stringify(selector)+')',awaitPromise:true,returnByValue:true}));
-    if(result.exceptionDetails)throw new Error('Static control observation failed: '+(result.exceptionDetails.exception?.description||result.exceptionDetails.text));
-    const point=result.result.value as ControlPoint|undefined;
-    if(!point||!['count','x','y','width','height'].every(key=>typeof point[key as keyof ControlPoint]==='number'&&Number.isFinite(point[key as keyof ControlPoint]))||!['visible','enabled','inside','hit'].every(key=>typeof point[key as keyof ControlPoint]==='boolean'))throw new Error('Static control observation returned invalid geometry');
-    await within(()=>session.detach());detached=true;
-    if(performance.now()>deadline)throw new Error('Static control observation exceeded5000ms');
-    return point;
-  }catch(error){failed=true;throw error;}
-  finally{if(!detached)try{await detach(session);}catch(error){if(!failed)throw error;console.warn('Static control session cleanup error',error);}}
+  return readRoomObservation(page,observe,selector,{timeout:5000,label:'Static control observation',validate:(value):value is ControlPoint=>{
+    if(!value||typeof value!=='object')return false;const point=value as Record<string,unknown>;
+    return ['count','x','y','width','height'].every(key=>typeof point[key]==='number'&&Number.isFinite(point[key]))&&['visible','enabled','inside','hit'].every(key=>typeof point[key]==='boolean');
+  }});
 }
 export async function clickStaticRoomControl(page:Page,selector:string){
   const point=await staticPoint(page,selector);

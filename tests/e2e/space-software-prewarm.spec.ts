@@ -31,13 +31,13 @@ for(const fault of ['shader','context'] as const)test(`software GPU ${fault} fai
     }}).observe(document,{subtree:true,attributes:true,attributeFilter:['data-world-ready','data-world-failed']});
     if(fault==='shader'){
       const original=WebGL2RenderingContext.prototype.shaderSource;
-      WebGL2RenderingContext.prototype.shaderSource=function(shader,source){
+      WebGL2RenderingContext.prototype.shaderSource=function(this:WebGL2RenderingContext,shader,source){
         if(!probe.injected&&source.includes('float timberContactAt(')){probe.injected++;source+='\n#error intentional_gpu_preparation_failure\n';}
         return original.call(this,shader,source);
       };
     }else{
       const original=WebGL2RenderingContext.prototype.texSubImage2D;
-      WebGL2RenderingContext.prototype.texSubImage2D=function(...args:any[]){
+      WebGL2RenderingContext.prototype.texSubImage2D=function(this:WebGL2RenderingContext,...args:any[]){
         const result=Reflect.apply(original,this,args);
         if(!probe.injected&&this.canvas instanceof HTMLCanvasElement&&this.canvas.classList.contains('space-world__canvas')){
           probe.injected++;const extension=this.getExtension('WEBGL_lose_context');
