@@ -6,6 +6,17 @@ import {spawnSync} from 'node:child_process';
 import {verifyFrozenProof} from './ci-shards.mjs';
 import {objectDigest} from './lib/site-artifact.mjs';
 import {selectRoomRegressions,verifyRoomRegressionResult} from './ci-room-preflight.mjs';
+import {enumerateTestIds} from './ci-test-inventory.mjs';
+
+const doorListingArgs=repeat=>['node_modules/@playwright/test/cli.js','test','tests/e2e/space-door-excursion.spec.ts','--project=desktop','--workers=1','--retries=0',`--repeat-each=${repeat}`,'--grep=1440px / no-preference.*the real rear door, deliberate step, splash and safe return form one repeatable journey','--list','--reporter=json'];
+export function collectDoorSourceInventory(env,exec=spawnSync){
+ const actualEnv={...env};delete actualEnv.PLAYWRIGHT_JSON_OUTPUT_FILE;
+ const listed=exec(process.execPath,doorListingArgs(1),{encoding:'utf8',env:actualEnv,maxBuffer:8*1024*1024});
+ assert.equal(listed.status,0,'Door source inventory listing failed');
+ const door=enumerateTestIds(JSON.parse(listed.stdout));
+ doorPreflightInventory({testInventory:{preflight:{door}}});
+ return door;
+}
 
 function binding({proof,producerArtifactId,sourceSha,runId,roomRegressions}){
  assert.match(producerArtifactId||'',/^[1-9]\d*$/);assert.match(sourceSha||'',/^[0-9a-f]{40}$/);assert.match(String(runId),/^[1-9]\d*$/);
@@ -13,8 +24,11 @@ function binding({proof,producerArtifactId,sourceSha,runId,roomRegressions}){
  return {sourceSha,runId:String(runId),producerArtifactId,producerAttempt:proof.runAttempt,frozenDigest:objectDigest(proof),roomRegressions};
 }
 export function doorPreflightInventory(proof){
- const found=proof.testInventory?.suites?.legacy?.filter(id=>{const parts=JSON.parse(id);return parts[0]==='space-door-excursion.spec.ts'&&parts.at(-3)==='the real rear door, deliberate step, splash and safe return form one repeatable journey'&&parts.includes('1440px / no-preference')&&parts.at(-2)==='desktop'&&parts.at(-1)===0;});
+ const source=proof.testInventory?.preflight?.door;
+ assert.ok(Array.isArray(source)&&source.length===1,'Independent mandatory door inventory required');
+ const found=source.filter(id=>{const parts=JSON.parse(id);return parts[0]==='space-door-excursion.spec.ts'&&parts.at(-3)==='the real rear door, deliberate step, splash and safe return form one repeatable journey'&&parts.includes('1440px / no-preference')&&parts.at(-2)==='desktop'&&parts.at(-1)===0;});
  assert.equal(found?.length,1,'Exactly one original mandatory door path required');const parts=JSON.parse(found[0]);
+ if(proof.testInventory.suites?.legacy)assert.equal(proof.testInventory.suites.legacy.filter(id=>id===found[0]).length,1,'Full legacy inventory must retain the mandatory door');
  return [0,1,2].map(repeat=>JSON.stringify([...parts.slice(0,-1),repeat])).sort();
 }
 function doorEntries(raw,proof){
@@ -59,7 +73,7 @@ function main(){
  assert.ok(['true','false'].includes(process.env.BLOG_ROOM_REGRESSIONS),'Explicit optional-room scope required');const identity=binding(args);
  if(phase==='start'){
   const env={...process.env};delete env.PLAYWRIGHT_JSON_OUTPUT_FILE;
-  const listed=spawnSync(process.execPath,['node_modules/@playwright/test/cli.js','test','tests/e2e/space-door-excursion.spec.ts','--project=desktop','--workers=1','--retries=0','--repeat-each=3','--grep=1440px / no-preference.*the real rear door, deliberate step, splash and safe return form one repeatable journey','--list','--reporter=json'],{encoding:'utf8',env,maxBuffer:8*1024*1024});
+  const listed=spawnSync(process.execPath,doorListingArgs(3),{encoding:'utf8',env,maxBuffer:8*1024*1024});
   assert.equal(listed.status,0,'Door repeat listing failed');const list=JSON.parse(listed.stdout);validateDoorListing(list,proof);
   fs.writeFileSync(path.join(dir,'preflight-door-list.json'),listed.stdout,{flag:'wx'});
   fs.writeFileSync(path.join(dir,'preflight-input.json'),JSON.stringify({...identity,doorListDigest:objectDigest(list)},null,2),{flag:'wx'});return;

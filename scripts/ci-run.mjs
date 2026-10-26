@@ -8,7 +8,7 @@ import { resolveChangeSet, publicationInputDigest } from './lib/ci-changes.mjs';
 import { requiredChecksFor, releaseMode } from './lib/ci-contracts.mjs';
 import {browserShardPlan,createFrozenProof,verifyFrozenProof,createShardReport,aggregateShardReports,readShardReports} from './ci-shards.mjs';
 import {collectTestInventory,summarizePlaywright} from './ci-test-inventory.mjs';
-import {readPreflightReceipt} from './ci-preflight-receipt.mjs';
+import {readPreflightReceipt,collectDoorSourceInventory} from './ci-preflight-receipt.mjs';
 
 export function compileExecutionPlan({changeSet,mode}) {
   const state=releaseMode(mode),requiredChecks=requiredChecksFor(changeSet);
@@ -107,11 +107,15 @@ async function main() {
     const {selectBrowserPages}=await import('./site-verify.mjs');
     const pageMap=JSON.parse(fs.readFileSync(built.pageMapPath)),pageList=path.join(dir,'inventory-pages.json');
     write(pageList,selectBrowserPages({changeSet:changes,pageMap}));
-    const testInventory=collectTestInventory({specs:browserShardPlan({plan,changeSet:changes}),env:{
+    const inventoryEnv={
       ...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),
       CI:'true',NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:built.publicDir,SITE_PAGE_LIST:pageList,
       SITE_BASE_PATH:new URL(pageMap.baseUrl).pathname,SITE_CANONICAL_ORIGIN:new URL(pageMap.baseUrl).origin,
-    }});
+    };
+    const testInventory=collectTestInventory({specs:browserShardPlan({plan,changeSet:changes}),env:inventoryEnv});
+    // Article-only builds have quality coverage without a legacy partition.
+    // Freeze the always-required door source independently in every site build.
+    testInventory.preflight={door:collectDoorSourceInventory(inventoryEnv)};
     if(JSON.stringify(frozen)!==JSON.stringify(artifact.snapshotDeployment(bundle)))throw new Error('Deployment files changed during inventory collection');
     write(path.join(dir,'frozen.json'),createFrozenProof({bundleRoot:bundle,plan,changeSet:changes,runId:process.env.GITHUB_RUN_ID||'0',runAttempt:Number(process.env.GITHUB_RUN_ATTEMPT||1),testInventory}));
     console.log(`Prepared one frozen deployment for ${plan.sourceSha}; browser checks remain required`);

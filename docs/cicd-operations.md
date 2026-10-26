@@ -42,6 +42,8 @@ CLI 参数中的提交和时间必须填入本次实际值；不要将示例占�
 
 prepare仅执行离线检查、一次生产构建和宿主测试，再上传未认证冻结输入。真实后门与可选房间检查在独立Ubuntu24.04 preflight runner下载该精确artifact执行，避免与建站任务共享临时进程和资源状态；这不等于已证实建站污染为根因。原后门三次始终运行，optional18关闭时仅其标为未请求。全部浏览器片依赖preflight成功；没有站点时preflight与browser都应跳过。verify始终核对prepare/preflight/browser三者状态，失败、取消、缺失或不符合runSite的skip全部拒绝。
 
+prepare为每次站点构建独立列举并冻结`testInventory.preflight.door`，与quality/legacy分片选择无关。普通文章只有quality时仍执行原后门三次，不能因没有legacy清单而阻断合法文章路径，也不能通过增加全部legacy或跳过后门解决。完整legacy存在时，后门身份还必须恰好出现在该清单一次；缺失或错误的独立身份继续封闭。
+
 preflight绑定源码、run、producer artifact ID和frozen proof摘要，前后复核全部冻结字节；后门原始JSON必须与同次列举的三个单项目唯一spec.id精确匹配、规范源码身份等于冻结单一后门，并且三次首次通过（JSON省略repeatEachIndex时仅此入口按列举ID映射三个slot，不改变全站清单），可选18按原清单全部首次通过。最终聚合下载明确的preflight artifact ID，重读rawJSON和回执，核对当前producer身份和实际执行证据。同一producer可复用先前成功预检，不按consumer attempt误拒绝；新producer不能借旧回执。不会再构建一次站点，也不改变原120分钟job、页面/旅程门限、画质、输入、trace或分片选择。
 
 prepare 在同一冻结产物上按原配置、项目和过滤条件执行 Playwright `--list --reporter=json`，同时保存整套清单及各分片清单到 `frozen.json`。每套分片必须恰好覆盖整套清单一次，不能缺项、重复或额外混入测试。
