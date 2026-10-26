@@ -164,8 +164,25 @@ test('the optional resident can fail without blocking the room or workspace',asy
 test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>{
   await reserveWorldJourney(page);
   await page.addInitScript(()=>{
-    const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null};
+    const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null,bootCompleteAt:null as number|null,renderedRoamAt:null as number|null,readinessError:null as string|null};
     (window as unknown as {__catMotionObservation:typeof observation}).__catMotionObservation=observation;
+    // Passive timestamps retain the rendered-mode5s stage even when one
+    // native startup observation replaces several expensive protocol reads.
+    let readinessRoot:Element|null=null;
+    const stopReadiness=()=>{readinessObserver.disconnect();removeEventListener('pagehide',stopReadiness);};
+    const sampleReadiness=()=>{
+      const roots=document.querySelectorAll('[data-bear-workspace]');if(!roots.length)return;
+      if(roots.length!==1){observation.readinessError='ambiguous root';stopReadiness();return;}
+      const el=roots[0];if(readinessRoot&&el!==readinessRoot){observation.readinessError='root replaced';stopReadiness();return;}
+      readinessRoot=el;(window as unknown as {__catReadinessRoot:Element}).__catReadinessRoot=el;
+      const now=performance.now();
+      if(el.getAttribute('data-boot-state')==='complete'&&observation.bootCompleteAt===null)observation.bootCompleteAt=now;
+      if(observation.bootCompleteAt!==null&&el.getAttribute('data-world-rendered-mode')==='roam'&&observation.renderedRoamAt===null)observation.renderedRoamAt=now;
+      if(observation.bootCompleteAt!==null&&observation.renderedRoamAt!==null)stopReadiness();
+    };
+    const readinessObserver=new MutationObserver(sampleReadiness);
+    readinessObserver.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['data-boot-state','data-world-rendered-mode']});
+    addEventListener('pagehide',stopReadiness,{once:true});sampleReadiness();
     const startupDeadline=performance.now()+60000;
     let target:Element|null=null,done=false,timer:ReturnType<typeof setTimeout>;
     const finish=(status:string)=>{
@@ -178,6 +195,7 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
       const now=performance.now();if(observation.initialTime===null&&now>startupDeadline){finish('startup-timeout');return;}
       if(!target){
         target=document.querySelector('[data-bear-workspace]');if(!target)return;
+        (window as unknown as {__catMotionRoot:Element}).__catMotionRoot=target;
         observer.disconnect();observer.observe(target,{attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
       }
       const loaded=target.getAttribute('data-cat-loaded'),active=target.getAttribute('data-cat-active'),pose=target.getAttribute('data-cat-pose');
@@ -196,12 +214,20 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
     observer.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
     addEventListener('pagehide',onPageHide,{once:true});timer=setTimeout(()=>finish('startup-timeout'),60000);sample();
   });
-  await page.goto('/zh/projects/');await room(page);
-  await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
-  type MotionObservation={status:string;initialPose:string;initialTime:number;changedPose:string;changedTime:number};
-  let observed:MotionObservation|undefined;
-  await expect.poll(async()=>{observed=await page.evaluate(()=>(window as unknown as {__catMotionObservation:MotionObservation}).__catMotionObservation);return observed.status;},{timeout:12000}).toBe('changed');
-  const movement=observed!;
+  await page.goto('/zh/projects/');
+  type MotionObservation={status:string;initialPose:string;initialTime:number;changedPose:string;changedTime:number;bootCompleteAt:number|null;renderedRoamAt:number|null;readinessError:string|null};
+  const handle=await page.waitForFunction(()=>{
+    const state=window as unknown as {__catMotionObservation:MotionObservation;__catMotionRoot:Element;__catReadinessRoot:Element},data=state.__catMotionObservation;
+    if(!data)return false;
+    if(data.readinessError||['motion-timeout','startup-timeout','pagehide'].includes(data.status))throw new Error('Resident startup observation: '+(data.readinessError||data.status));
+    if(data.bootCompleteAt!==null){
+      if(data.renderedRoamAt===null&&performance.now()-data.bootCompleteAt>5000)throw new Error('Rendered roam exceeded5s after observed boot completion');
+      if(data.renderedRoamAt!==null&&data.renderedRoamAt-data.bootCompleteAt>5000)throw new Error('Rendered roam arrived after5s');
+    }
+    const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]'),el=roots[0];
+    return roots.length===1&&el===state.__catMotionRoot&&el===state.__catReadinessRoot&&el.dataset.bootState==='complete'&&el.dataset.worldRenderedMode==='roam'&&el.dataset.catLoaded==='true'&&data.bootCompleteAt!==null&&data.renderedRoamAt!==null&&data.status==='changed'?data:false;
+  },undefined,{timeout:30000,polling:50});
+  let movement:MotionObservation;try{movement=await handle.jsonValue();}finally{await handle.dispose();}
   const movementMs=movement.changedTime-movement.initialTime;
   expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
   expect(movement.changedPose).not.toBe(movement.initialPose);
@@ -210,8 +236,8 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   const quiet=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(quiet);
   const frames=await page.locator(root).getAttribute('data-world-frames');await page.waitForTimeout(200);expect(await page.locator(root).getAttribute('data-world-frames')).toBe(frames);
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');
-  await expect(page.locator('.space-cafe__utilities [data-cafe-quiet]')).toHaveAttribute('aria-pressed','false');
-  await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
+  const resumed=await page.waitForFunction(()=>document.querySelector('.space-cafe__utilities [data-cafe-quiet]')?.getAttribute('aria-pressed')==='false'&&document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset.catActive==='true',undefined,{timeout:5000,polling:50});
+  await resumed.dispose();
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-picker]');
   await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');const modal=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(modal);
   await page.locator('[data-cafe-picker-close]').click();

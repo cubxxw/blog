@@ -39,3 +39,14 @@ test('stationary room control rejects ambiguous selectors',async({page})=>{
   await expect(clickStaticRoomControl(page,'.tool')).rejects.toThrow();
   expect(await received(page)).toEqual([]);
 });
+
+test('stationary room control waits for a hidden disabled tool to recover',async({page})=>{
+  await fixture(page,'<button id="tool" hidden disabled>Tool</button>');
+  await page.evaluate(()=>{setTimeout(()=>document.querySelector<HTMLButtonElement>('#tool')!.hidden=false,120);setTimeout(()=>document.querySelector<HTMLButtonElement>('#tool')!.disabled=false,240);});
+  await clickStaticRoomControl(page,'#tool');expect(await received(page)).toEqual([{trusted:true,target:'tool'}]);
+});
+test('stationary room control recovery does not depend on animation frames',async({page})=>{
+  await fixture(page,'<button id="tool" hidden>Tool</button>');
+  await page.evaluate(()=>{window.requestAnimationFrame=()=>0;setTimeout(()=>document.querySelector<HTMLButtonElement>('#tool')!.hidden=false,120);});
+  await clickStaticRoomControl(page,'#tool');expect(await received(page)).toEqual([{trusted:true,target:'tool'}]);
+});

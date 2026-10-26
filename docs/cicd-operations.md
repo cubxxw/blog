@@ -172,4 +172,6 @@ draft 必须返回 `draft-verified`，验证的是独立部署 URL 的版本、�
 前后校验同一冻结proof，证据保存在 `tests/.artifacts/ci/room-preflight/`，由已有成功/失败artifact路径保留，位于发布的 `site/` 之外。summary顶层ok同时要求进程成功和严格验证，不能用嵌套通用evidence.ok或退出码替代。该阶段是诊断，原完整8片与最终认证继续执行；预检计数单独记录，不与全量独立用例分母相加。正常push/PR默认不增加此诊断成本，发布仍沿现有shadow/原生Git流程。
 
 
-房间静态控件保留原生web-first等待，再读取一次几何/命中快照后发送实际鼠标点击；不要用相同5秒Node poll替代多个原生命令，因为trace/协议开销属于不同计时边界。移动3D目标仍按真实投影与输入验收。两个Chromium浏览器连续性用例可显式选择camera-only CDP拖动；其真实按下/移动/释放、最终PW点击和10次转头界限不变，其他helper调用默认原路径。CDP.send没有原生timeout参数，helper逐操作显式30秒，并在错误后释放/清理自有session、同步PW位置；迟到attach也必须清理。`room-native-input.spec.ts`覆盖可信事件、失败与真实30秒迟到连接，不能把这些小fixture当实际房间或生产验收。
+房间静态控件使用一次原生5秒状态等待、50ms定时轮询，再读取geometry并释放handle、执行原44px与命中守卫和实际鼠标点击。共同5秒比顺序两个独立5秒更严格；不能用同5秒Node poll替代，因为trace/协议计时边界不同。移动3D目标仍按真实投影与输入验收。两个Chromium浏览器连续性用例显式选择camera-only CDP拖动；封闭scope由最后真实PWclick同步鼠标位置，失败恢复最后原生点；单独拖动默认立即同步。真实按下/移动/释放、10次转头、逐操作30秒和旅程90秒保持，其他调用默认原路径。迟到attach也必须清理自有session。`room-native-input.spec.ts`覆盖可信事件、失败与真实30秒迟到连接，小fixture不能当实际房间、完整Linux或生产验收。
+
+居民启动探针复用原被动motion窗口，并记录boot及其后roam绘制的首次观测时刻。一次原生30秒启动观察是更严格的共同截止，独立保留观测boot后5秒的roam要求、原12秒motion窗口、同一唯一root和所有实际输入；不是导航起30秒或现场性能达标声明。

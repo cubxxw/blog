@@ -1,5 +1,5 @@
 import {test,expect} from '@playwright/test';
-import {dragRoomMouse} from '../helpers/room-interaction';
+import {dragRoomMouse,clickAfterRoomDrags} from '../helpers/room-interaction';
 test.use({channel:'chromium'});
 async function fixture(page:import('@playwright/test').Page){
   await page.setContent('<div id="surface" style="position:fixed;inset:0;touch-action:none"></div><script>window.events=[];for(const type of ["pointerdown","pointermove","pointerup"])document.addEventListener(type,e=>{window.events.push({type,trusted:e.isTrusted,x:e.clientX,y:e.clientY,buttons:e.buttons});if(type==="pointerdown")e.target.setPointerCapture(e.pointerId);});</script>');
@@ -43,4 +43,26 @@ test('room protocol attach timeout detaches a late session without sending input
     await expect.poll(()=>detached,{timeout:5000}).toBe(true);
     expect((await events(page)).filter((event:any)=>event.type==='pointerdown')).toEqual([]);
   }finally{context.newCDPSession=create;deliver();if(!detached)await detach();}
+});
+
+test('camera drag scope ends in a real click and synchronizes the next Playwright down',async({page})=>{
+  await fixture(page);await clickAfterRoomDrags(page,async drag=>{await drag({x:60,y:60},{x:120,y:100});return {x:160,y:140};});
+  await page.mouse.down();await page.mouse.up();const actual=await events(page);
+  expect(actual).toContainEqual({type:'pointerdown',trusted:true,x:60,y:60,buttons:1});
+  expect(actual).toContainEqual({type:'pointermove',trusted:true,x:120,y:100,buttons:1});
+  expect(actual.filter((event:any)=>event.type==='pointerdown'&&event.x===160&&event.y===140)).toHaveLength(2);
+});
+test('camera target failure restores pointer position without a final click',async({page})=>{
+  await fixture(page);await expect(clickAfterRoomDrags(page,async drag=>{await drag({x:60,y:60},{x:120,y:100});throw new Error('target resolution failed');})).rejects.toThrow('target resolution failed');
+  expect((await events(page)).filter((event:any)=>event.type==='pointerdown')).toHaveLength(1);
+  await page.mouse.down();await page.mouse.up();expect(await events(page)).toContainEqual({type:'pointerdown',trusted:true,x:120,y:100,buttons:1});
+});
+
+test('a later attach failure restores the last successful camera drag position',async({page,context})=>{
+  await fixture(page);const create=context.newCDPSession.bind(context);let calls=0;
+  context.newCDPSession=async target=>{if(++calls===2)throw new Error('injected second attach failure');return create(target);};
+  try{await expect(clickAfterRoomDrags(page,async drag=>{await drag({x:60,y:60},{x:120,y:100});await drag({x:120,y:100},{x:180,y:140});return {x:200,y:180};})).rejects.toThrow('injected second attach failure');}
+  finally{context.newCDPSession=create;}
+  expect(calls).toBe(2);expect((await events(page)).filter((event:any)=>event.type==='pointerdown')).toHaveLength(1);
+  await page.mouse.down();await page.mouse.up();expect(await events(page)).toContainEqual({type:'pointerdown',trusted:true,x:120,y:100,buttons:1});
 });
