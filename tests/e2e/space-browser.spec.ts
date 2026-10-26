@@ -1,6 +1,7 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
 import {expectRoomAttributes,readRoomObservation,withRoomObservationSession} from '../helpers/room-observation';
 import {hitRoomObject} from '../helpers/room-interaction';
+import {withRoomPointerBatch} from '../helpers/room-pointer';
 import {observeRoomAudio,rainSource,roomAudioSources,readRoomAudioSources} from '../helpers/room-audio';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -77,7 +78,6 @@ test('the project directory exposes previews and direct website actions before o
 });
 
 for(const mover of ['native','compatible'])test(`a visitor can leave a web draft, look out the window and resume the same page with continuous sound (${mover})`,async({page})=>withRoomObservationSession(page,async()=>{
- const hit=(name:string)=>hitRoomObject(page,name,{cdpDrag:true});
  if(mover==='compatible')await page.addInitScript(()=>Object.defineProperty(Element.prototype,'moveBefore',{configurable:true,value:undefined}));
  let requests=0;const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
  await page.route('https://leafhour.com/**',route=>{requests++;return route.fulfill({contentType:'text/html',body:'<!doctype html><html><body><h1>Quiet reading check</h1><label>A thought to return to <textarea aria-label="A thought to return to"></textarea></label><button onclick="this.textContent=\'Kept open\'">Keep this page open</button></body></html>'});});
@@ -88,6 +88,8 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await capture(page,'visitor-before-standing');
  if(page.viewportSize()!.width<=640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();}
  await page.mouse.click(8,8);
+ await withRoomPointerBatch(page,async pointer=>{
+ const hit=(name:string)=>hitRoomObject(page,name,{cdpDrag:true,pointer});
  await expectRoomAttributes(page,{'data-world-mode':'roam'});
  await expectRoomAttributes(page,{'data-world-screen-preview':mover==='compatible'?'standby':'live'});
  if(mover==='compatible'){await expect(page.locator('[data-space-window="browser"]')).toBeHidden();await expect(page.locator('[data-space-dock]')).toBeHidden();await capture(page,'visitor-compatible-standby');}
@@ -108,6 +110,7 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await hit('books');await expect(page.locator('[data-room-inspection]')).toBeVisible();await page.keyboard.press('Escape');
  await hit('window');await expectRoomAttributes(page,{'data-world-inspect':'window'});await page.keyboard.press('Escape');
  await hit('computer');await expectRoomAttributes(page,{'data-world-mode':'workspace'});
+ });
  await capture(page,'visitor-returned-state');
  await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);
  const sourcesAfter=await readRoomAudioSources(page);expect(sourcesAfter.find(s=>!s.stopped&&Math.abs(s.duration-100)<.05)!.id).toBe(rain.id);expect(sourcesAfter.some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);await capture(page,'visitor-after-returning');

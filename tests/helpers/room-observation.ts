@@ -124,3 +124,27 @@ export async function waitForRoomObjectAdvance(page:Page,key:string,before:numbe
     }
   },{key,before},{timeout:5000,label:'Room object advance',validate:(value):value is number=>typeof value==='number'&&Number.isFinite(value)&&value>before});
 }
+
+export async function waitForRoomBoatMove(page:Page,before:string|null):Promise<string>{
+ let coordinates:unknown;
+ try{coordinates=typeof before==='string'?JSON.parse(before):null;}catch{}
+ const finitePose=(value:unknown):value is number[]=>Array.isArray(value)&&value.length===3&&value.every(n=>typeof n==='number'&&Number.isFinite(n));
+ if(typeof before!=='string'||!finitePose(coordinates))throw new Error('Boat baseline invalid');
+ return readRoomObservation(page,async({coordinates})=>{
+  const deadline=performance.now()+5000,roots=document.querySelectorAll('[data-bear-workspace]');
+  if(roots.length!==1)throw new Error('Boat root missing or ambiguous');
+  const root=roots[0];
+  for(;;){
+   const current=document.querySelectorAll('[data-bear-workspace]');if(current.length!==1||current[0]!==root)throw new Error('Boat root replaced');
+   const text=root.getAttribute('data-room-boat-pose');let pose;
+   try{pose=JSON.parse(text??'null');}catch{throw new Error('invalid boat pose');}
+   if(!Array.isArray(pose)||pose.length!==3||!pose.every(n=>typeof n==='number'&&Number.isFinite(n)))throw new Error('invalid boat pose');
+   if(pose.some((n,i)=>n!==coordinates[i]))return text!;
+   const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Boat movement exceeded5000ms');
+   await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
+  }
+ },{coordinates},{timeout:5000,label:'Room boat motion',validate:(value):value is string=>{
+  if(typeof value!=='string'||value===before)return false;
+  try{const pose:unknown=JSON.parse(value);return finitePose(pose)&&pose.some((n,i)=>n!==(coordinates as number[])[i]);}catch{return false;}
+ }});
+}

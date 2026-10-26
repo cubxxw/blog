@@ -1,5 +1,6 @@
 import {test,expect,type Page} from '../helpers/frozen-site';
 import {hitRoomObject,lookAtRoomObject,dragRoomTouch} from '../helpers/room-interaction';
+import {waitForRoomBoatMove,withRoomObservationSession} from '../helpers/room-observation';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'&&process.env.SPACE_SOFTWARE_QA!=='1'?['--enable-gpu','--use-angle=metal']:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']}});
 const pageErrors=new WeakMap<Page,string[]>();
 test.beforeEach(async({page})=>{test.setTimeout(90_000);const errors:string[]=[];pageErrors.set(page,errors);page.on('pageerror',error=>errors.push(error.message));await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});});
@@ -141,11 +142,11 @@ test.describe('room touch navigation',()=>{test.use({hasTouch:true,isMobile:true
   const after=await pose(page);expect(Math.hypot(after.x-a.x,after.z-a.z)).toBeGreaterThan(.5);await page.waitForTimeout(150);expect(await pose(page)).toEqual(after);
 });});
 
-test('quiet freezes rain, fan and boat while intentional movement still works',async({page})=>{
-  await ready(page);await page.emulateMedia({reducedMotion:'no-preference'});const first=await root(page).getAttribute('data-room-boat-pose');await expect.poll(()=>root(page).getAttribute('data-room-boat-pose')).not.toBe(first);
+test('quiet freezes rain, fan and boat while intentional movement still works',async({page})=>withRoomObservationSession(page,async()=>{
+  await ready(page);await page.emulateMedia({reducedMotion:'no-preference'});const first=await root(page).getAttribute('data-room-boat-pose');await waitForRoomBoatMove(page,first);
   await menu(page);await page.locator('.space-menu [data-cafe-quiet]').click();await page.locator('.space-menu [data-cafe-visit]').click();await expect(root(page)).toHaveAttribute('data-world-travel','false');const frozen=await root(page).getAttribute('data-room-boat-pose');await page.waitForTimeout(250);expect(await root(page).getAttribute('data-room-boat-pose')).toBe(frozen);
   const a=await pose(page);await page.keyboard.down('KeyW');try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-a.x,p.z-a.z);},{timeout:10_000}).toBeGreaterThan(.1);}finally{await page.keyboard.up('KeyW');}
-});
+}));
 
 test('keyboard motion pauses for a dialog and a native workspace',async({page})=>{
   await ready(page);await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');const before=await pose(page);await page.keyboard.down('KeyW');await page.waitForTimeout(200);await page.keyboard.up('KeyW');expect(await pose(page)).toEqual(before);

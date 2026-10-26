@@ -1,5 +1,6 @@
 import {expect,type Page} from '@playwright/test';
 import {readRoomObservation} from './room-observation';
+import type {RoomPointer} from './room-pointer';
 
 type ControlPoint={count:number,x:number,y:number,width:number,height:number,visible:boolean,enabled:boolean,inside:boolean,hit:boolean};
 // Stationary DOM tools only. Keep the common hard5s and all original hit guards.
@@ -29,10 +30,10 @@ async function staticPoint(page:Page,selector:string):Promise<ControlPoint>{
     return ['count','x','y','width','height'].every(key=>typeof point[key]==='number'&&Number.isFinite(point[key]))&&['visible','enabled','inside','hit'].every(key=>typeof point[key]==='boolean');
   }});
 }
-export async function clickStaticRoomControl(page:Page,selector:string){
+export async function clickStaticRoomControl(page:Page,selector:string,pointer?:RoomPointer){
   const point=await staticPoint(page,selector);
   expect({count:point.count,visible:point.visible,enabled:point.enabled}).toEqual({count:1,visible:true,enabled:true});
   expect(point.width).toBeGreaterThanOrEqual(44);expect(point.height).toBeGreaterThanOrEqual(44);
   expect(point.inside).toBe(true);expect(point.hit).toBe(true);
-  await page.mouse.click(point.x,point.y);
+  if(pointer)await pointer.click({x:point.x,y:point.y});else await page.mouse.click(point.x,point.y);
 }

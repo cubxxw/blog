@@ -2,6 +2,7 @@ import {test,expect} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {clickStaticRoomControl} from '../helpers/static-room-control';
 import {readRoomObservation,observePausedResident,withRoomObservationSession} from '../helpers/room-observation';
+import {withRoomPointerBatch} from '../helpers/room-pointer';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -244,8 +245,6 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   expect(movement.changedPose).not.toBe(movement.initialPose);
   // One hard5s budget includes readiness and the unchanged400/200ms windows.
   const observePaused=(checkFrames=false)=>observePausedResident(page,checkFrames);
-  await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');await observePaused(true);
-  await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');
   const waitForActive=async(requireQuietOff=false)=>readRoomObservation(page,async(requireQuietOff)=>{
     const deadline=performance.now()+5000;
     for(;;){
@@ -255,9 +254,11 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
       await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
     }
   },requireQuietOff,{timeout:5000,label:'Resident recovery observation',validate:(value):value is boolean=>value===true});
-  await waitForActive(true);
-  await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-picker]');
-  await observePaused();
+  await withRoomPointerBatch(page,async pointer=>{
+    await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]',pointer);await observePaused(true);
+    await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]',pointer);await waitForActive(true);
+    await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-picker]',pointer);await observePaused();
+  });
   await page.locator('[data-cafe-picker-close]').click();
   await waitForActive();
   await page.emulateMedia({reducedMotion:'reduce'});await observePaused();

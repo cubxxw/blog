@@ -1,8 +1,9 @@
 import type {Page} from '@playwright/test';
 import {readRoomObservation} from './room-observation';
+import type {RoomPointer} from './room-pointer';
 
 type Point={x:number;y:number};
-type RoomPointerOptions={cdpDrag?:boolean};
+type RoomPointerOptions={cdpDrag?:boolean;pointer?:RoomPointer};
 type RoomDrag=(from:Point,to:Point)=>Promise<void>;
 type PointerState={pending?:Point};
 async function bounded<T>(operation:Promise<T>,label:string){
@@ -61,7 +62,7 @@ export async function projectRoomObject(page:Page,name:string,focusBeforeTurn=fa
  return point;
  };
  const args={name,focusBeforeTurn,size};
- if(!options.cdpDrag)return page.evaluate(observe,args);
+ if(!options.cdpDrag&&!options.pointer)return page.evaluate(observe,args);
  // Same real Three projection for explicit CDP journeys. Keep the original
  // canvas focus outside this read; no pose/target is fabricated. The hard30s
  // read cap is additional to the original whole-case budget.
@@ -69,7 +70,9 @@ export async function projectRoomObject(page:Page,name:string,focusBeforeTurn=fa
   if(!value||typeof value!=='object')return false;const point=value as Record<string,unknown>;
   return ['x','y','yawDelta','pitchDelta'].every(key=>typeof point[key]==='number'&&Number.isFinite(point[key]))&&typeof point.inFront==='boolean';
  }});
- if(focusBeforeTurn&&!(point.inFront&&point.x>8&&point.x<size.width-8&&point.y>8&&point.y<size.height-8))await page.locator('.space-world__canvas').focus();
+ if(focusBeforeTurn&&!(point.inFront&&point.x>8&&point.x<size.width-8&&point.y>8&&point.y<size.height-8)){
+  if(options.pointer)await options.pointer.focusCanvas();else await page.locator('.space-world__canvas').focus();
+ }
  return point;
 }
 
@@ -87,10 +90,11 @@ async function locateRoomObject(page:Page,name:string,drag:RoomDrag,options:Room
 }
 const nativeDrag=(page:Page):RoomDrag=>async(from,to)=>{await page.mouse.move(from.x,from.y);await page.mouse.down();await page.mouse.move(to.x,to.y);await page.mouse.up();};
 export async function lookAtRoomObject(page:Page,name:string,options:RoomPointerOptions={}){
- return locateRoomObject(page,name,options.cdpDrag?(from,to)=>dragRoomMouse(page,from,to):nativeDrag(page),options);
+ return locateRoomObject(page,name,options.pointer?options.pointer.drag:options.cdpDrag?(from,to)=>dragRoomMouse(page,from,to):nativeDrag(page),options.pointer?{...options,cdpDrag:true}:options);
 }
 export async function hitRoomObject(page:Page,name:string,options:RoomPointerOptions={}){
- if(options.cdpDrag)await clickAfterRoomDrags(page,drag=>locateRoomObject(page,name,drag,options));
+ if(options.pointer){const point=await locateRoomObject(page,name,options.pointer.drag,{...options,cdpDrag:true});await options.pointer.click(point);}
+ else if(options.cdpDrag)await clickAfterRoomDrags(page,drag=>locateRoomObject(page,name,drag,options));
  else{const p=await lookAtRoomObject(page,name);await page.mouse.click(p.x,p.y);}
 }
 
