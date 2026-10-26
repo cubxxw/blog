@@ -1,4 +1,5 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
+import {expectRoomAttributes,readRoomObservation,withRoomObservationSession} from '../helpers/room-observation';
 import {hitRoomObject} from '../helpers/room-interaction';
 import {observeRoomAudio,rainSource,roomAudioSources} from '../helpers/room-audio';
 import fs from 'node:fs/promises';
@@ -9,11 +10,11 @@ const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const pointerEvidence=new WeakMap<Page,unknown[]>();
 async function app(page:Page,name:string){await page.locator('[data-mac-menu="file"]').click();await page.locator(`[data-mac-panel="file"] [data-open="${name}"]`).click();}
 async function desk(page:Page){
- await page.goto('/zh/projects/?vista=image&room-hour=21');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
- const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});
+ await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
+ const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
  await page.locator('.space-world__canvas').focus();
- await hitRoomObject(page,'computer');await expect(root(page)).toHaveAttribute('data-computer-view','expanded');
- if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expect(root(page)).toHaveAttribute('data-computer-view','framed');}
+ await hitRoomObject(page,'computer');await expectRoomAttributes(page,{'data-computer-view':'expanded'});
+ if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expectRoomAttributes(page,{'data-computer-view':'framed'});}
 }
 async function capture(page:Page,name:string){if(!process.env.BROWSER_CRAFT_AUDIT_DIR)return;await fs.mkdir(process.env.BROWSER_CRAFT_AUDIT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.BROWSER_CRAFT_AUDIT_DIR,`${test.info().project.name}-${name}.png`)});}
 async function clickInWebPage(page:Page,control:Locator){
@@ -57,11 +58,11 @@ test('the Mac browser has real project bookmarks, address navigation and site hi
  if(page.viewportSize()!.width>640){
   for(const view of ['expanded','framed']){await page.locator('[data-mac-menu="view"]').click();await page.locator(`[data-mac-panel="view"] [data-computer-display="${view}"]`).click();await expect(frame.getByRole('button')).toHaveText('Reading');}
  }
- await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+ await expectRoomAttributes(page,{'data-world-mode':'workspace'});
  const address=browser.locator('[data-browser-address]');await address.fill('javascript:alert(1)');await address.press('Enter');await expect(address).toHaveAttribute('aria-invalid','true');await expect(browser.locator('iframe')).toHaveAttribute('src','https://leafhour.com/');
  await browser.locator('[data-browser-back]').click();await expect(browser).toHaveAttribute('data-browser-view','home');await browser.locator('[data-browser-forward]').click();await expect(browser).toHaveAttribute('data-browser-view','page');
  await browser.locator('[data-browser-home]').click();const popupPromise=page.waitForEvent('popup');await browser.locator('[data-browser-bookmark="talent-signal"]').click();const popup=await popupPromise;await expect(popup).toHaveURL('https://gettalentsignal.com/');await popup.close();
- await expect(browser).toHaveAttribute('data-browser-view','home');await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+ await expect(browser).toHaveAttribute('data-browser-view','home');await expectRoomAttributes(page,{'data-world-mode':'workspace'});
  await browser.getByRole('link',{name:'博客首页',exact:true}).click();await expect(browser).toHaveAttribute('data-browser-view','page');
  await clickInWebPage(page,page.frameLocator('.space-browser__page').getByRole('link',{name:'探索产品',exact:false}));await expect(browser).toHaveAttribute('data-browser-view','external');await expect(browser.locator('iframe')).toHaveCount(0);await expect(page.locator('.space-world__canvas')).toHaveCount(1);
  expect((await rainSource(page))!.id).toBe(rain.id);expect((await roomAudioSources(page)).some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);
@@ -72,10 +73,10 @@ test('the project directory exposes previews and direct website actions before o
  const card=gallery.locator('[data-project-card="leafhour"]');await card.locator('[data-select-product]').click();await expect(page.locator('.space-product h2')).toHaveText('Leafhour');await page.locator('[data-product-back]').click();await expect(card.locator('[data-select-product]')).toBeFocused();
  await card.locator('[data-open="browser"]').click();await expect(page.locator('[data-space-browser]')).toHaveAttribute('data-browser-view','page');await expect(page.locator('.space-browser__page')).toHaveAttribute('src','https://leafhour.com/');
  await page.locator('[data-browser-home]').click();await app(page,'products');await card.locator('[data-open="browser"]').click();await expect(page.locator('[data-space-browser]')).toHaveAttribute('data-browser-view','page');
- await app(page,'products');const popupPromise=page.waitForEvent('popup');await gallery.locator('[data-project-card="talent-signal"] .space-project-card__actions a').first().click();const popup=await popupPromise;await expect(popup).toHaveURL('https://gettalentsignal.com/');await popup.close();await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+ await app(page,'products');const popupPromise=page.waitForEvent('popup');await gallery.locator('[data-project-card="talent-signal"] .space-project-card__actions a').first().click();const popup=await popupPromise;await expect(popup).toHaveURL('https://gettalentsignal.com/');await popup.close();await expectRoomAttributes(page,{'data-world-mode':'workspace'});
 });
 
-for(const mover of ['native','compatible'])test(`a visitor can leave a web draft, look out the window and resume the same page with continuous sound (${mover})`,async({page})=>{
+for(const mover of ['native','compatible'])test(`a visitor can leave a web draft, look out the window and resume the same page with continuous sound (${mover})`,async({page})=>withRoomObservationSession(page,async()=>{
  const hit=(name:string)=>hitRoomObject(page,name,{cdpDrag:true});
  if(mover==='compatible')await page.addInitScript(()=>Object.defineProperty(Element.prototype,'moveBefore',{configurable:true,value:undefined}));
  let requests=0;const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
@@ -87,30 +88,35 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await capture(page,'visitor-before-standing');
  if(page.viewportSize()!.width<=640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();}
  await page.mouse.click(8,8);
- await expect(root(page)).toHaveAttribute('data-world-mode','roam');
- await expect(root(page)).toHaveAttribute('data-world-screen-preview',mover==='compatible'?'standby':'live');
+ await expectRoomAttributes(page,{'data-world-mode':'roam'});
+ await expectRoomAttributes(page,{'data-world-screen-preview':mover==='compatible'?'standby':'live'});
  if(mover==='compatible'){await expect(page.locator('[data-space-window="browser"]')).toBeHidden();await expect(page.locator('[data-space-dock]')).toBeHidden();await capture(page,'visitor-compatible-standby');}
  const objects=JSON.parse((await root(page).getAttribute('data-room-objects'))!);
  for(const name of ['lamp','fan']){
   expect(typeof objects[name]).toBe('boolean');await hit(name);
-  const changed=await page.waitForFunction(({name,before})=>{
-   const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1)throw new Error('Room object root missing or ambiguous');
+  await readRoomObservation(page,async({name,before})=>{
+   const deadline=performance.now()+5000,initial=document.querySelector('[data-bear-workspace]');
+   for(;;){
+   const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1||roots[0]!==initial)throw new Error('Room object root missing, ambiguous or replaced');
    const value=JSON.parse(roots[0].dataset.roomObjects||'null');
-   return value&&typeof value[name]==='boolean'&&value[name]!==before;
-  },{name,before:objects[name]},{timeout:5000,polling:50});await changed.dispose();
+   if(value&&typeof value[name]==='boolean'&&value[name]!==before)return true;
+   const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Room object toggle exceeded5000ms');
+   await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
+   }
+  },{name,before:objects[name]},{timeout:5000,label:'Room object toggle',validate:(value):value is boolean=>value===true});
  }
  await hit('books');await expect(page.locator('[data-room-inspection]')).toBeVisible();await page.keyboard.press('Escape');
- await hit('window');await expect(root(page)).toHaveAttribute('data-world-inspect','window');await page.keyboard.press('Escape');
- await hit('computer');await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
+ await hit('window');await expectRoomAttributes(page,{'data-world-inspect':'window'});await page.keyboard.press('Escape');
+ await hit('computer');await expectRoomAttributes(page,{'data-world-mode':'workspace'});
  await capture(page,'visitor-returned-state');
  await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);
  const sourcesAfter=await roomAudioSources(page);expect(sourcesAfter.find(s=>!s.stopped&&Math.abs(s.duration-100)<.05)!.id).toBe(rain.id);expect(sourcesAfter.some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);await capture(page,'visitor-after-returning');
  if(mover==='native'){
   // Fault injection exercises the same anchored-node restoration as a lost GPU.
-  await page.locator('.space-world__canvas').evaluate(el=>el.dispatchEvent(new Event('webglcontextlost',{cancelable:true})));await expect(root(page)).toHaveAttribute('data-world-failed','true');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
+  await page.locator('.space-world__canvas').evaluate(el=>el.dispatchEvent(new Event('webglcontextlost',{cancelable:true})));await expectRoomAttributes(page,{'data-world-failed':'true'});await expectRoomAttributes(page,{'data-cafe-mode':'desktop'});
   await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);expect(errors).toEqual([]);await capture(page,'visitor-graphics-recovery');
  }
-});
+}));
 
 test('opening a website gives quiet feedback and retry really reloads the page without duplicate site history',async({page})=>{
  let release=()=>{},requests=0;const first=new Promise<void>(resolve=>{release=resolve;});

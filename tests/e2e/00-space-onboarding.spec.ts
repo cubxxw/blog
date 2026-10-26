@@ -1,7 +1,7 @@
 import {test,expect} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {clickStaticRoomControl} from '../helpers/static-room-control';
-import {readRoomObservation} from '../helpers/room-observation';
+import {readRoomObservation,observePausedResident,expectRoomAttributes,withRoomObservationSession} from '../helpers/room-observation';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -162,7 +162,7 @@ test('the optional resident can fail without blocking the room or workspace',asy
   await expect(page.locator('[data-space-window="reader"]')).toBeVisible();
 });
 
-test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>{
+test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>withRoomObservationSession(page,async()=>{
   await reserveWorldJourney(page);
   await page.addInitScript(()=>{
     const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null,bootCompleteAt:null as number|null,renderedRoamAt:null as number|null,readinessError:null as string|null};
@@ -242,31 +242,8 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   const movementMs=movement.changedTime-movement.initialTime;
   expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
   expect(movement.changedPose).not.toBe(movement.initialPose);
-  // Keep each real observation window in the browser. Splitting these reads
-  // across protocol calls adds unrelated trace-hook delay between samples.
-  // Keep the native5s readiness budget, then the original400/200ms windows.
-  const observePaused=async(checkFrames=false)=>{
-    const ready=await page.waitForFunction(()=>{
-      const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1)throw new Error('Resident pause root missing or ambiguous');
-      return roots[0].dataset.catActive==='false'?roots[0]:false;
-    },undefined,{timeout:5000,polling:50});
-    try{
-    const paused=await ready.evaluate(async(el,checkFrames)=>{
-      if(!el||el.dataset.catActive!=='false')throw new Error('Resident pause no longer active');
-      const pose=el.dataset.catPose;if(!pose)throw new Error('Resident pause pose missing');
-      const sameRoot=()=>{const current=document.querySelectorAll('[data-bear-workspace]');if(current.length!==1||current[0]!==el)throw new Error('Resident pause root replaced');};
-      await new Promise(resolve=>setTimeout(resolve,400));sameRoot();
-      if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose)throw new Error('Resident moved during400ms pause observation');
-      if(checkFrames){
-        const frames=el.dataset.worldFrames;if(!frames)throw new Error('Resident pause frame counter missing');
-        await new Promise(resolve=>setTimeout(resolve,200));sameRoot();
-        if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose||el.dataset.worldFrames!==frames)throw new Error('Quiet room rendered during200ms idle observation');
-      }
-      return true;
-    },checkFrames);
-    expect(paused).toBe(true);
-    }finally{await ready.dispose();}
-  };
+  // One hard5s budget includes readiness and the unchanged400/200ms windows.
+  const observePaused=(checkFrames=false)=>observePausedResident(page,checkFrames);
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');await observePaused(true);
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');
   const waitForActive=async(requireQuietOff=false)=>readRoomObservation(page,async(requireQuietOff)=>{
@@ -285,9 +262,9 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   await waitForActive();
   await page.emulateMedia({reducedMotion:'reduce'});await observePaused();
   await page.emulateMedia({reducedMotion:'no-preference'});await waitForActive();
-  await clickStaticRoomControl(page,'[data-cafe-enter]');await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  await clickStaticRoomControl(page,'[data-cafe-enter]');await expectRoomAttributes(page,{'data-cafe-mode':'desktop'});
   await observePaused();
-});
+}));
 
 test('a graphics failure during the reveal cannot leave an invisible modal behind',async({page})=>{
   await page.clock.install({time:new Date('2026-10-17T00:00:00Z')});
