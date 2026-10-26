@@ -1,7 +1,7 @@
 import {test,expect} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {clickStaticRoomControl} from '../helpers/static-room-control';
-import {readRoomObservation,observePausedResident,expectRoomAttributes,withRoomObservationSession} from '../helpers/room-observation';
+import {readRoomObservation,observePausedResident,withRoomObservationSession} from '../helpers/room-observation';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -262,7 +262,7 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   await waitForActive();
   await page.emulateMedia({reducedMotion:'reduce'});await observePaused();
   await page.emulateMedia({reducedMotion:'no-preference'});await waitForActive();
-  await clickStaticRoomControl(page,'[data-cafe-enter]');await expectRoomAttributes(page,{'data-cafe-mode':'desktop'});
+  await clickStaticRoomControl(page,'[data-cafe-enter]');await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   await observePaused();
 }));
 
