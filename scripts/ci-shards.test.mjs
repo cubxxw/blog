@@ -76,8 +76,13 @@ test('report identity binds the original frozen clock, scope and source, includi
 });
 test('the final required job rejects failed, cancelled, missing and unexpectedly skipped browser jobs',()=>{
   assert.equal(typeof api.assertVerificationJobs,'function');
-  api.assertVerificationJobs({prepare:'success',browser:'success',runSite:true});
-  api.assertVerificationJobs({prepare:'success',browser:'skipped',runSite:false});
-  for(const state of ['failure','cancelled','skipped',undefined])assert.throws(()=>api.assertVerificationJobs({prepare:state,browser:'success',runSite:true}));
-  for(const state of ['failure','cancelled','skipped',undefined])assert.throws(()=>api.assertVerificationJobs({prepare:'success',browser:state,runSite:true}));
+  api.assertVerificationJobs({prepare:'success',preflight:'success',browser:'success',runSite:true});
+  api.assertVerificationJobs({prepare:'success',preflight:'skipped',browser:'skipped',runSite:false});
+  for(const state of ['failure','cancelled','skipped',undefined])assert.throws(()=>api.assertVerificationJobs({prepare:state,preflight:'success',browser:'success',runSite:true}));
+  for(const state of ['failure','cancelled','skipped',undefined])assert.throws(()=>api.assertVerificationJobs({prepare:'success',preflight:'success',browser:state,runSite:true}));
+});
+
+test('missing or unsuccessful fresh preflight can never certify a release or no-site run',()=>{
+ for(const state of ['failure','cancelled','skipped',undefined])assert.throws(()=>api.assertVerificationJobs({prepare:'success',preflight:state,browser:'success',runSite:true}));
+ for(const state of ['failure','cancelled','success',undefined])assert.throws(()=>api.assertVerificationJobs({prepare:'success',preflight:state,browser:'skipped',runSite:false}));
 });

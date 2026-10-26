@@ -19,7 +19,7 @@ test('a cancelled or skipped mandatory check is never a green gate',()=>{
 });
 test('the actual door preflight requires three first attempts and propagates a failed browser exit',()=>{
   const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
-  const step=workflow.jobs.prepare.steps.find(s=>s.name==='Diagnose the desktop rear-door journey before browser fan-out');
+  const step=workflow.jobs.preflight?.steps.find(s=>s.name==='Diagnose the desktop rear-door journey before browser fan-out');
   assert.ok(step);assert.equal(step['continue-on-error'],undefined);
   const inline=step.run.match(/<<'NODE'\n([\s\S]+)\nNODE\s*$/)?.[1];
   assert.ok(inline);
@@ -105,7 +105,7 @@ test('failed interactive checks retain their HTML report and traces', () => {
 test('one frozen producer feeds isolated runners and only the final required gate can publish',()=>{
   const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8')),jobs=workflow.jobs;
   assert.equal(jobs.verify.name,'Required blog quality');
-  assert.deepEqual(jobs.verify.needs,['prepare','browser']);assert.match(jobs.verify.if,/always\(\)/);
+  assert.deepEqual(jobs.verify.needs,['prepare','preflight','browser']);assert.match(jobs.verify.if,/always\(\)/);
   assert.equal(jobs.browser.strategy['fail-fast'],false);
   assert.equal(jobs.browser.strategy.matrix,'${{ fromJSON(needs.prepare.outputs.browser_matrix) }}');
   assert.equal(jobs.browser['timeout-minutes'],120);
@@ -118,4 +118,24 @@ test('one frozen producer feeds isolated runners and only the final required gat
   assert.ok(finish);assert.equal(finish['continue-on-error'],undefined);
   const upload=jobs.verify.steps.find(s=>s.id==='artifact');assert.ok(upload);
   assert.equal(jobs.release.with.artifact_id,'${{ needs.verify.outputs.artifact_id }}');
+});
+
+
+test('browser preflights use the frozen producer on a fresh runner before every consumer',()=>{
+ const jobs=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8')).jobs;
+ assert.deepEqual(jobs.preflight?.needs,['prepare']);
+ assert.equal(jobs.preflight?.['runs-on'],'ubuntu-24.04');assert.equal(jobs.preflight?.['timeout-minutes'],120);
+ assert.equal(jobs.preflight?.if,"needs.prepare.outputs.run_site == 'true'");
+ assert.equal(jobs.preflight.steps.find(s=>s.name==='Diagnose the desktop rear-door journey before browser fan-out').if,undefined,'optional rooms disabled must still run mandatory rear-door3');
+ assert.deepEqual(jobs.browser.needs,['prepare','preflight']);
+ const download=jobs.preflight.steps.find(s=>s.uses?.startsWith('actions/download-artifact@'));
+ assert.equal(download.with['artifact-ids'],'${{ needs.prepare.outputs.artifact_id }}');
+ assert.equal(download.with.path,'tests/.artifacts/ci');
+ const commands=jobs.preflight.steps.map(s=>s.run||'').join('\n');
+ assert.ok(!/site-build|hugo --|ci-run\.mjs prepare/.test(commands),'no duplicate production build');
+ assert.ok(!jobs.prepare.steps.some(s=>/playwright|ci-room-preflight/.test(s.run||'')),'producer does not host active browser journeys');
+ const evidence=jobs.preflight.steps.find(s=>s.uses?.startsWith('actions/upload-artifact@'));
+ assert.equal(evidence.if,'always()');assert.match(evidence.with.path,/door-preflight/);assert.match(evidence.with.path,/room-preflight/);
+ const reject=jobs.verify.steps.find(s=>s.name==='Reject incomplete or unsuccessful required jobs');
+ assert.equal(reject.env.BLOG_PREFLIGHT_RESULT,'${{ needs.preflight.result }}');assert.match(reject.run,/preflight:process\.env\.BLOG_PREFLIGHT_RESULT/);
 });

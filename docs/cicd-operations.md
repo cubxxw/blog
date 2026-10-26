@@ -40,6 +40,10 @@ CLI 参数中的提交和时间必须填入本次实际值；不要将示例占�
 
 ### 分片的测试覆盖凭据
 
+prepare仅执行离线检查、一次生产构建和宿主测试，再上传未认证冻结输入。真实后门与可选房间检查在独立Ubuntu24.04 preflight runner下载该精确artifact执行，避免与建站任务共享临时进程和资源状态；这不等于已证实建站污染为根因。原后门三次始终运行，optional18关闭时仅其标为未请求。全部浏览器片依赖preflight成功；没有站点时preflight与browser都应跳过。verify始终核对prepare/preflight/browser三者状态，失败、取消、缺失或不符合runSite的skip全部拒绝。
+
+preflight绑定源码、run、producer artifact ID和frozen proof摘要，前后复核全部冻结字节；后门原始JSON必须与同次列举的三个单项目唯一spec.id精确匹配、规范源码身份等于冻结单一后门，并且三次首次通过（JSON省略repeatEachIndex时仅此入口按列举ID映射三个slot，不改变全站清单），可选18按原清单全部首次通过。最终聚合下载明确的preflight artifact ID，重读rawJSON和回执，核对当前producer身份和实际执行证据。同一producer可复用先前成功预检，不按consumer attempt误拒绝；新producer不能借旧回执。不会再构建一次站点，也不改变原120分钟job、页面/旅程门限、画质、输入、trace或分片选择。
+
 prepare 在同一冻结产物上按原配置、项目和过滤条件执行 Playwright `--list --reporter=json`，同时保存整套清单及各分片清单到 `frozen.json`。每套分片必须恰好覆盖整套清单一次，不能缺项、重复或额外混入测试。
 
 每个消费者保存 `playwright-results.json` 原始报告和从该报告生成的 evidence；最终聚合重新读取原始报告，与包装 evidence 和冻结清单核对。空结果、无实际执行的整片、缺测试、重复身份、全片跳过、报告级错误及未完成测试均阻止认证。首次通过、flaky、跳过、预期失败和实际重试次数分别统计；既有个别跳过仍单独记录，不计为通过，也不增加豁免。
@@ -167,9 +171,9 @@ draft 必须返回 `draft-verified`，验证的是独立部署 URL 的版本、�
 
 已知房间流程正在修复时，可手动触发 `gh workflow run main.yaml --ref codex/<task> -f room_regressions=true`。该 boolean 输入默认false；仅实际构建站点且显式启用时，在已有后门预检后、完整浏览器分片前执行一次定向诊断。GitHub输入使用保留boolean类型的 [`inputs` 上下文](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts)。
 
-诊断固定选择九个真实用例的desktop/mobile项目（18项）：居民暂停、浏览器native/compatible连续性、quiet/reduce/resize，以及完整门禁曾失败或重试的江南远景失败后移动、boat环境恢复、时钟返回中断、猫的motion切换恢复、唱片旋转。先从producer清单确认每个目标唯一，再核对真实JSON的完整ID、全部首次通过、无skip/retry/全局错误；命令保留单worker、原页面与用例门限。清单缺项、首次失败或进程异常均阻断prepare。真实精确 `--list` 只用于校验选择，不算浏览器通过。
+诊断固定选择九个真实用例的desktop/mobile项目（18项）：居民暂停、浏览器native/compatible连续性、quiet/reduce/resize，以及完整门禁曾失败或重试的江南远景失败后移动、boat环境恢复、时钟返回中断、猫的motion切换恢复、唱片旋转。先从producer清单确认每个目标唯一，再核对真实JSON的完整ID、全部首次通过、无skip/retry/全局错误；命令保留单worker、原页面与用例门限。清单缺项、首次失败或进程异常均阻断preflight及后续完整浏览器图。真实精确 `--list` 只用于校验选择，不算浏览器通过。
 
-前后校验同一冻结proof，证据保存在 `tests/.artifacts/ci/room-preflight/`，由已有成功/失败artifact路径保留，位于发布的 `site/` 之外。summary顶层ok同时要求进程成功和严格验证，不能用嵌套通用evidence.ok或退出码替代。该阶段是诊断，原完整8片与最终认证继续执行；预检计数单独记录，不与全量独立用例分母相加。正常push/PR默认不增加此诊断成本，发布仍沿现有shadow/原生Git流程。
+前后校验同一冻结proof，证据保存在 `tests/.artifacts/ci/room-preflight/`，由独立preflight artifact以always保留，位于发布的 `site/` 之外。summary顶层ok同时要求进程成功和严格验证，不能用嵌套通用evidence.ok或退出码替代。该阶段是诊断，原完整8片与最终认证继续执行；预检计数单独记录，不与全量独立用例分母相加。正常push/PR默认不增加此诊断成本，发布仍沿现有shadow/原生Git流程。
 
 
 房间静态控件使用一次原生5秒状态等待、50ms定时轮询，再读取geometry并释放handle、执行原44px与命中守卫和实际鼠标点击。共同5秒比顺序两个独立5秒更严格；不能用同5秒Node poll替代，因为trace/协议计时边界不同。移动3D目标仍按真实投影与输入验收。两个Chromium浏览器连续性用例显式选择camera-only CDP拖动；封闭scope由最后真实PWclick同步鼠标位置，失败恢复最后原生点；单独拖动默认立即同步。真实按下/移动/释放、10次转头、逐操作30秒和旅程90秒保持，其他调用默认原路径。迟到attach也必须清理自有session。`room-native-input.spec.ts`覆盖可信事件、失败与真实30秒迟到连接，小fixture不能当实际房间、完整Linux或生产验收。

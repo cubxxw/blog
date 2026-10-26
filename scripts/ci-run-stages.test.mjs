@@ -8,12 +8,13 @@ import {compileExecutionPlan} from './ci-run.mjs';
 import {browserShardPlan,createFrozenProof,createShardReport} from './ci-shards.mjs';
 import {writeReleaseMarker,verifyArtifact} from './lib/site-artifact.mjs';
 import {summarizePlaywright} from './ci-test-inventory.mjs';
+import {createPreflightReceipt} from './ci-preflight-receipt.mjs';
 function offline(t) {
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'ci-offline-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
   const changes={schema:'blog-change-set/1',sourceSha:'a'.repeat(40),baseSha:null,fullScan:false,files:[],sourceFiles:[],suites:['workflow'],publish:false,reason:'maintenance'};
   const plan={...compileExecutionPlan({changeSet:changes,mode:'shadow'}),sourceSha:changes.sourceSha,clock:'2026-10-23T00:00:00Z',inputDigest:'b'.repeat(64)};
   for(const [name,data] of Object.entries({'changes.json':changes,'plan.json':plan,'workflow-report.json':{mode:'enforce',ok:true}}))fs.writeFileSync(path.join(dir,name),JSON.stringify(data));
-  const execute=()=>spawnSync(process.execPath,['scripts/ci-run.mjs','finalize','--run-dir',dir],{encoding:'utf8',env:{...process.env,BLOG_RELEASE_MODE:'shadow'}});
+  const execute=()=>spawnSync(process.execPath,['scripts/ci-run.mjs','finalize','--run-dir',dir],{encoding:'utf8',env:{...process.env,BLOG_RELEASE_MODE:'shadow',BLOG_PRODUCER_ARTIFACT_ID:'789',BLOG_ROOM_REGRESSIONS:'false'}});
   return {dir,execute};
 }
 test('offline final aggregation checks existing reports without building a site or needing browser artifacts',t=>{
@@ -40,10 +41,15 @@ test('final aggregation packages the original frozen bytes only after every part
   write('site/output-report.json',{mode:'enforce',ok:true});
   const specs=browserShardPlan({plan,changeSet:changes});
   const raw=Object.fromEntries(specs.map(spec=>[spec.id,{errors:[],suites:[{specs:[{id:spec.id,file:'fixture.spec.ts',line:1,column:1,title:spec.id,tests:[{projectName:spec.project||'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}]}]}]));
+  const doorTitle='the real rear door, deliberate step, splash and safe return form one repeatable journey';
+  const rawDoor={errors:[],suites:[{title:'space-door-excursion.spec.ts',suites:[{title:'1440px / no-preference',specs:[0,1,2].map(i=>({id:'listed-repeat-'+i,file:'space-door-excursion.spec.ts',line:145,column:9,title:doorTitle,tests:[{projectName:'desktop',status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}]}))}]}]};
+  raw['legacy-1']=structuredClone(rawDoor);raw['legacy-1'].suites[0].suites[0].specs.length=1;
   const evidence=Object.fromEntries(specs.map(spec=>[spec.id,summarizePlaywright(raw[spec.id])])),testInventory={schema:'blog-test-inventory/1',suites:{},shards:{}};
   for(const spec of specs){testInventory.shards[spec.id]=evidence[spec.id].inventory;(testInventory.suites[spec.suite]??=[]).push(...evidence[spec.id].inventory);}
   const proof=createFrozenProof({bundleRoot:bundle,plan,changeSet:changes,runId:'123',runAttempt:1,testInventory});write('frozen.json',proof);
   for(const spec of specs){write(`shard-downloads/${spec.id}/shard-report.json`,createShardReport({spec,proof,runAttempt:1,exitCode:0,result:{mode:'enforce',ok:true},evidence:evidence[spec.id]}));write(`shard-downloads/${spec.id}/playwright-results.json`,raw[spec.id]);}
+  const preflight=createPreflightReceipt({proof,producerArtifactId:'789',sourceSha:proof.sourceSha,runId:proof.runId,roomRegressions:false,rawDoor,doorList:rawDoor});
+  write('preflight-download/ci/preflight-report.json',preflight);write('preflight-download/ci/preflight-door-list.json',rawDoor);write('preflight-download/door-preflight/playwright-results.json',rawDoor);
   const result=execute();assert.equal(result.status,0,result.stderr);
   const manifest=read('site/manifest.json');
   assert.deepEqual(manifest.requiredChecks,['workflow','output','browser','interactive']);
@@ -51,6 +57,9 @@ test('final aggregation packages the original frozen bytes only after every part
   verifyArtifact({bundleRoot:bundle,manifest,expectedSha:plan.sourceSha,expectedTarget:'production',requiredChecks:plan.requiredChecks});
   assert.ok(fs.statSync(path.join(dir,'site.tar.gz')).size>0);
   fs.unlinkSync(path.join(bundle,'manifest.json'));fs.unlinkSync(path.join(dir,'site.tar.gz'));
+  write('preflight-download/ci/preflight-report.json',{...preflight,producerArtifactId:'790'});
+  assert.notEqual(execute().status,0);assert.equal(fs.existsSync(path.join(bundle,'manifest.json')),false);
+  write('preflight-download/ci/preflight-report.json',preflight);
   write('shard-downloads/quality/playwright-results.json',{errors:[],suites:[]});
   assert.notEqual(execute().status,0);assert.equal(fs.existsSync(path.join(bundle,'manifest.json')),false);
   write('shard-downloads/quality/playwright-results.json',raw.quality);

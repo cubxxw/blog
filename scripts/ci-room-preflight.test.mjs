@@ -56,9 +56,9 @@ test('optional dispatch preflight defaults off and cannot replace the full graph
   const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
   assert.equal(workflow.on.workflow_dispatch.inputs.room_regressions?.type,'boolean');
   assert.equal(workflow.on.workflow_dispatch.inputs.room_regressions?.default,false);
-  const step=workflow.jobs.prepare.steps.find(s=>s.name==='Diagnose known room regressions before browser fan-out');
+  const step=workflow.jobs.preflight?.steps.find(s=>s.name==='Diagnose known room regressions before browser fan-out');
   assert.ok(step);assert.equal(step['continue-on-error'],undefined);
-  assert.equal(step.if,"steps.plan.outputs.run_site == 'true' && inputs.room_regressions == true");
+  assert.equal(step.if,"inputs.room_regressions == true");
   assert.equal(step.run,'node scripts/ci-room-preflight.mjs');
   assert.ok(workflow.jobs.verify.needs.includes('browser'));
   assert.ok(workflow.jobs.release.needs.includes('verify'));

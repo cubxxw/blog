@@ -8,6 +8,7 @@ import { resolveChangeSet, publicationInputDigest } from './lib/ci-changes.mjs';
 import { requiredChecksFor, releaseMode } from './lib/ci-contracts.mjs';
 import {browserShardPlan,createFrozenProof,verifyFrozenProof,createShardReport,aggregateShardReports,readShardReports} from './ci-shards.mjs';
 import {collectTestInventory,summarizePlaywright} from './ci-test-inventory.mjs';
+import {readPreflightReceipt} from './ci-preflight-receipt.mjs';
 
 export function compileExecutionPlan({changeSet,mode}) {
   const state=releaseMode(mode),requiredChecks=requiredChecksFor(changeSet);
@@ -17,7 +18,7 @@ const digest=value=>createHash('sha256').update(JSON.stringify(value)).digest('h
 const write=(file,value)=>{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n');};
 function run(command,args,options={}) {const r=spawnSync(command,args,{stdio:'inherit',...options});if(r.error||r.status!==0)throw new Error(`${command} ${args[0]} failed (${r.status??r.error?.code})`);}
 const tests={
-  workflow:['scripts/ci-changes.test.mjs','scripts/ci-workflows.test.mjs','scripts/ci-shards.test.mjs','scripts/ci-test-inventory.test.mjs','scripts/ci-room-preflight.test.mjs','scripts/ci-run-stages.test.mjs','scripts/site-release.test.mjs','scripts/site-artifact.test.mjs','scripts/site-build.test.mjs','scripts/site-verify.test.mjs','scripts/live-site-probes.test.mjs','scripts/tag-workflow.test.mjs','scripts/backup-site.test.mjs','scripts/netlify-build-control.test.mjs','scripts/frozen-routing.test.mjs'],
+  workflow:['scripts/ci-changes.test.mjs','scripts/ci-workflows.test.mjs','scripts/ci-shards.test.mjs','scripts/ci-test-inventory.test.mjs','scripts/ci-room-preflight.test.mjs','scripts/ci-preflight-receipt.test.mjs','scripts/ci-run-stages.test.mjs','scripts/site-release.test.mjs','scripts/site-artifact.test.mjs','scripts/site-build.test.mjs','scripts/site-verify.test.mjs','scripts/live-site-probes.test.mjs','scripts/tag-workflow.test.mjs','scripts/backup-site.test.mjs','scripts/netlify-build-control.test.mjs','scripts/frozen-routing.test.mjs'],
   functions:['scripts/home-chat-utils.test.mjs','scripts/article-ai.test.mjs','scripts/article-ai-client.test.mjs','scripts/share-conversation.test.mjs','scripts/reading-reply.test.mjs','scripts/buttondown-tags.test.mjs','scripts/newsletter-state.test.mjs','scripts/generate-content-index.test.mjs','scripts/release-followups.test.mjs','scripts/search-delivery.test.mjs','scripts/audit-public-site.test.mjs'],
   seo:['scripts/psi-fetch.test.mjs','scripts/psi-stage-contract.test.mjs','scripts/seo-report.test.mjs','scripts/seo-pipeline.test.mjs','scripts/seo-autofix-gate.test.mjs','scripts/daily-report-issue.test.mjs','scripts/lighthouse-report-to-issue.test.mjs','scripts/gsc-fetch.test.mjs','scripts/gsc-inspect.test.mjs','scripts/gsc-report.test.mjs','scripts/social-card-contracts.test.mjs','scripts/social-identity.test.mjs'],
 };
@@ -77,6 +78,7 @@ async function main() {
     if(!plan.runSite){console.log('Required offline checks passed; no site build or deployment');return;}
     const proof=JSON.parse(fs.readFileSync(path.join(dir,'frozen.json')));
     verifyFrozenProof({bundleRoot:bundle,plan,changeSet:changes,proof});
+    readPreflightReceipt(get('--preflight-reports')||path.join(dir,'preflight-download'),{proof,producerArtifactId:process.env.BLOG_PRODUCER_ARTIFACT_ID,roomRegressions:process.env.BLOG_ROOM_REGRESSIONS==='true'});
     Object.assign(reports,aggregateShardReports({plan,changeSet:changes,proof,reports:readShardReports(get('--shard-reports')||path.join(dir,'shard-downloads'))}));
     reports.output=JSON.parse(fs.readFileSync(path.join(bundle,'output-report.json')));
     await packageVerifiedBundle({plan,reports,bundle,dir,releaseId:`${proof.runId}-${proof.runAttempt}`});

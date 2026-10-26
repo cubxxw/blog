@@ -4,8 +4,8 @@ import {objectDigest,snapshotDeployment} from './lib/site-artifact.mjs';
 import {legacyBrowserScope} from './site-verify.mjs';
 import {assertTestInventory,assertShardEvidence,summarizePlaywright} from './ci-test-inventory.mjs';
 
-export function assertVerificationJobs({prepare,browser,runSite}) {
-  if(prepare!=='success'||browser!==(runSite?'success':'skipped'))throw new Error('Required verification job failed, was cancelled, or did not run');
+export function assertVerificationJobs({prepare,preflight,browser,runSite}) {
+  if(prepare!=='success'||preflight!==(runSite?'success':'skipped')||browser!==(runSite?'success':'skipped'))throw new Error('Required verification job failed, was cancelled, or did not run');
 }
 
 // These are execution partitions, not permission to omit any existing suite.
