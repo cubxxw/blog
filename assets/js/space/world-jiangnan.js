@@ -472,7 +472,9 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     root.dataset.worldFrames=String(++frames);root.dataset.worldTriangles=String(info.triangles);root.dataset.worldDraws=String(info.calls);root.dataset.worldRenderedMode=mode;root.dataset.worldVista=exterior.vistaMode||'geometry';
     root.dataset.roomBoatPose=JSON.stringify([+exterior.boat.position.x.toFixed(3),+exterior.boat.position.y.toFixed(3),+exterior.boat.position.z.toFixed(3)]);root.dataset.roomBoat='ready';root.dataset.worldEnvironmentTime=environmentTime.toFixed(3);
     root.dataset.roomBoatHeading=exterior.boat.rotation.y.toFixed(4);
-    if(readyMaps){root.dataset.worldReady='true';settleFirst(true);}
+    // Do not reveal an older environment while the selected window image loads.
+    // Its explicit failure fallback may enter; optional images never own boot.
+    if(readyMaps&&exterior.vistaMode!=='loading'){root.dataset.worldReady='true';settleFirst(true);}
     if(!disposed&&(moving||clockReturn||environmentActive||doorFade.pending&&!isBlocked()||navigate()&&(keys.size||touchKeys.size)))frame=requestAnimationFrame(tick);else last=0;
   }
   function visibility(){if(visible())shaderWarmup?.resume();doorFade.setActive(visible()&&!isBlocked(),{at:performance.now()/1000});excursion.setPaused(!visible());stop();keys.clear();touchKeys.clear();drag=null;if(!visible()){magicClock?.settle();if(clockReturn){clockReturn=null;roomTime.returnNow();syncRoomTime();}}else wake();}

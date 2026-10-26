@@ -5,6 +5,35 @@ const source=fs.readFileSync(sourcePath,'utf8').replace("from 'three'",`from '${
 const {buildJiangnanExterior}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 function make(continuationAsset,synchronous,software=false,dayVistaAsset=null){let dead=false,wakes=0;const requests=[],resources=new Set(),textures=new Set(),original=THREE.TextureLoader.prototype.load;THREE.TextureLoader.prototype.load=function(url,load,p,error){const texture=new THREE.Texture(),r={url,load,error,texture,releases:0};texture.addEventListener('dispose',()=>r.releases++);requests.push(r);if(requests.length===2&&synchronous)r[synchronous](texture);return texture;};let result;try{result=buildJiangnanExterior({scene:new THREE.Scene(),pbr:{bind(){}},resources,textures,vistaAsset:'/original.webp',dayVistaAsset,continuationAsset,vistaMode:'image',software,wake(){wakes++;},isDisposed:()=>dead});}finally{THREE.TextureLoader.prototype.load=original;}return{result,resources,textures,requests,photo:requests[0],extra:requests[1],material:result.group.getObjectByName('photographic environment study').material,get wakes(){return wakes;},dispose(){dead=true;for(const r of resources)r.dispose?.();for(const t of textures)t.dispose();}};}
 const original=make(null);original.photo.load(original.photo.texture);const primaryOwnership={resources:original.resources.size,textures:original.textures.size};original.dispose();
+test('the photographic room does not construct the previous town while its image loads',()=>{
+ const b=make(null);try{
+  assert.equal(b.result.vistaMode,'loading');
+  assert.ok(!b.result.group.getObjectByName('arched stone bridge'),'the previous town must not consume geometry or appear during normal entry');
+  assert.ok(!b.result.group.getObjectByName('distant mountain ridge 1'));
+  b.photo.load(b.photo.texture);
+  assert.ok(!b.result.group.getObjectByName('arched stone bridge'),'a successful photograph never needs a duplicate town');
+  assert.equal(b.result.group.getObjectByName('photographic environment study').visible,true);
+ }finally{b.dispose();}
+});
+test('pending or failed daylight imagery never replaces the loaded photograph with the previous town',()=>{
+ const b=make(null,undefined,false,'/day.webp');try{
+  b.photo.load(b.photo.texture);b.result.update(0,{daylight:1,rain:0});
+  assert.equal(b.result.group.getObjectByName('photographic environment study').visible,true,'the current photograph stays visible while daylight loads');
+  b.extra.error();b.result.update(1,{daylight:1,rain:0});
+  assert.equal(b.result.group.getObjectByName('photographic environment study').visible,true,'an optional image failure must not revive the previous design');
+  assert.equal(b.result.vistaMode,'image');
+ }finally{b.dispose();}
+});
+test('an actual primary-image failure creates the explorable fallback on demand',()=>{
+ const b=make(null);try{
+  assert.ok(!b.result.group.getObjectByName('arched stone bridge'));
+  b.photo.error();
+  assert.equal(b.result.vistaMode,'geometry-fallback');
+  assert.equal(b.result.group.getObjectByName('arched stone bridge').visible,true);
+  b.result.update(1,{daylight:1,rain:0});
+  assert.equal(b.result.group.getObjectByName('photographic environment study').visible,false);
+ }finally{b.dispose();}
+});
 test('absent or blank optional URL adds no request or ownership',()=>{for(const value of [undefined,null,'','   ']){const b=make(value);try{assert.equal(b.requests.length,1);b.photo.load(b.photo.texture);assert.equal(b.result.vistaMode,'image');assert.equal(b.resources.size,primaryOwnership.resources);assert.equal(b.textures.size,primaryOwnership.textures);}finally{b.dispose();}}});
 test('original photo establishes image mode before the optional request completes',()=>{const b=make(' /water.webp ');try{assert.equal(b.requests.length,2,'A supplied continuation URL must be requested independently.');assert.equal(b.extra.url,'/water.webp');b.photo.load(b.photo.texture);assert.equal(b.result.vistaMode,'image');assert.equal(b.material.uniforms.continuationReady.value,0);}finally{b.dispose();}});
 test('failure retains original photo and releases the unfinished texture once',()=>{const b=make('/water.webp');try{assert.ok(b.extra,'The optional request is required for this failure case.');b.photo.load(b.photo.texture);b.extra.error();assert.equal(b.result.vistaMode,'image');assert.equal(b.material.uniforms.continuationReady.value,0);assert.equal(b.resources.size,primaryOwnership.resources);assert.equal(b.textures.size,primaryOwnership.textures);assert.equal(b.extra.releases,1);}finally{b.dispose();}assert.equal(b.extra.releases,1);});

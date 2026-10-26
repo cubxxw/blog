@@ -30,7 +30,7 @@ export function mountOnboarding({root,enabled,onReveal}) {
     skip.disabled=!state.failed;
     skip.textContent=t('打开工作区','Open workspace');
     const messages=[t('正在载入场景引擎…','Loading the scene engine…'),t('正在初始化房间与个人工作区…','Initializing the room and personal workspace…'),t('正在提交第一帧画面…','Painting the first scene frame…'),t('画面已就绪，正在进入。','First frame ready. Entering your space.')];
-    const message=state.failed?t('场景暂时无法启动，仍可阅读或打开工作区。','The room is unavailable. You can still read or open the workspace.'):messages[state.stage];
+    const message=state.failed?t('场景暂时无法启动，可以直接打开工作区。','The room is unavailable. You can open the workspace.'):messages[state.stage];
     if(status.textContent!==message)status.textContent=message;
     if(state.finished)reveal();
   }
