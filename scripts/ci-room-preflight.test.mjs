@@ -33,6 +33,8 @@ test('focused evidence is raw, exact, first-pass and never all-skip or partial',
   const retry=raw();Object.assign(retry.suites[0].specs[0].tests[0],{status:'flaky',results:[{status:'failed',retry:0},{status:'passed',retry:1}]});
   assert.throws(()=>api.verifyRoomRegressionResult(retry,expected()));
   const error=raw();error.errors=[{message:'global failure'}];assert.throws(()=>api.verifyRoomRegressionResult(error,expected()));
+  const wrongIds=raw();wrongIds.suites[0].specs[0].title='different case with the same passing denominator';
+  assert.throws(()=>api.verifyRoomRegressionResult(wrongIds,expected()));
   const missing=raw();missing.suites[0].specs.pop();assert.throws(()=>api.verifyRoomRegressionResult(missing,expected()));
   const unfinished=raw();unfinished.suites[0].specs[0].tests[0].results=[];assert.throws(()=>api.verifyRoomRegressionResult(unfinished,expected()));
 });
