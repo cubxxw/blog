@@ -227,27 +227,47 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
     const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]'),el=roots[0];
     return roots.length===1&&el===state.__catMotionRoot&&el===state.__catReadinessRoot&&el.dataset.bootState==='complete'&&el.dataset.worldRenderedMode==='roam'&&el.dataset.catLoaded==='true'&&data.bootCompleteAt!==null&&data.renderedRoamAt!==null&&data.status==='changed'?data:false;
   },undefined,{timeout:30000,polling:50});
-  let movement:MotionObservation;try{movement=await handle.jsonValue();}finally{await handle.dispose();}
+  let movement:MotionObservation;try{const value=await handle.jsonValue();if(!value)throw new Error('Resident startup wait returned no observation');movement=value;}finally{await handle.dispose();}
   const movementMs=movement.changedTime-movement.initialTime;
   expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
   expect(movement.changedPose).not.toBe(movement.initialPose);
-  const pose=()=>page.locator(root).getAttribute('data-cat-pose');
-  await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
-  const quiet=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(quiet);
-  const frames=await page.locator(root).getAttribute('data-world-frames');await page.waitForTimeout(200);expect(await page.locator(root).getAttribute('data-world-frames')).toBe(frames);
+  // Keep each real observation window in the browser. Splitting these reads
+  // across protocol calls adds unrelated trace-hook delay between samples.
+  // Keep the native5s readiness budget, then the original400/200ms windows.
+  const observePaused=async(checkFrames=false)=>{
+    const ready=await page.waitForFunction(()=>{
+      const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1)throw new Error('Resident pause root missing or ambiguous');
+      return roots[0].dataset.catActive==='false'?roots[0]:false;
+    },undefined,{timeout:5000,polling:50});
+    try{
+    const paused=await ready.evaluate(async(el,checkFrames)=>{
+      if(!el||el.dataset.catActive!=='false')throw new Error('Resident pause no longer active');
+      const pose=el.dataset.catPose;if(!pose)throw new Error('Resident pause pose missing');
+      const sameRoot=()=>{const current=document.querySelectorAll('[data-bear-workspace]');if(current.length!==1||current[0]!==el)throw new Error('Resident pause root replaced');};
+      await new Promise(resolve=>setTimeout(resolve,400));sameRoot();
+      if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose)throw new Error('Resident moved during400ms pause observation');
+      if(checkFrames){
+        const frames=el.dataset.worldFrames;if(!frames)throw new Error('Resident pause frame counter missing');
+        await new Promise(resolve=>setTimeout(resolve,200));sameRoot();
+        if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose||el.dataset.worldFrames!==frames)throw new Error('Quiet room rendered during200ms idle observation');
+      }
+      return true;
+    },checkFrames);
+    expect(paused).toBe(true);
+    }finally{await ready.dispose();}
+  };
+  await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');await observePaused(true);
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-quiet]');
   const resumed=await page.waitForFunction(()=>document.querySelector('.space-cafe__utilities [data-cafe-quiet]')?.getAttribute('aria-pressed')==='false'&&document.querySelector<HTMLElement>('[data-bear-workspace]')?.dataset.catActive==='true',undefined,{timeout:5000,polling:50});
   await resumed.dispose();
   await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-picker]');
-  await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');const modal=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(modal);
+  await observePaused();
   await page.locator('[data-cafe-picker-close]').click();
   await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
-  await page.emulateMedia({reducedMotion:'reduce'});await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
-  const reduced=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(reduced);
+  await page.emulateMedia({reducedMotion:'reduce'});await observePaused();
   await page.emulateMedia({reducedMotion:'no-preference'});await expect(page.locator(root)).toHaveAttribute('data-cat-active','true');
   await clickStaticRoomControl(page,'[data-cafe-enter]');await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
-  await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
-  const desk=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(desk);
+  await observePaused();
 });
 
 test('a graphics failure during the reveal cannot leave an invisible modal behind',async({page})=>{

@@ -50,3 +50,39 @@ test('stationary room control recovery does not depend on animation frames',asyn
   await page.evaluate(()=>{window.requestAnimationFrame=()=>0;setTimeout(()=>document.querySelector<HTMLButtonElement>('#tool')!.hidden=false,120);});
   await clickStaticRoomControl(page,'#tool');expect(await received(page)).toEqual([{trusted:true,target:'tool'}]);
 });
+
+for(const stage of ['attach','send'] as const)test(`stationary room control rejects a real5s ${stage} delay and cleans its late session`,async({page})=>{
+  await fixture(page,'<button id="tool">Tool</button>');
+  const context=page.context(),original=context.newCDPSession.bind(context);let detached=0,late=false;
+  const pause=()=>new Promise(resolve=>setTimeout(resolve,5150));
+  context.newCDPSession=async target=>{
+    const session=await original(target),proxy=new Proxy(session,{get(object,key){
+      if(key==='detach')return async()=>{detached++;return object.detach();};
+      if(key==='send'&&stage==='send')return async()=>{await pause();late=true;return {result:{value:{count:1,x:30,y:30,width:44,height:44,visible:true,enabled:true,inside:true,hit:true}}};};
+      const value=Reflect.get(object,key);return typeof value==='function'?value.bind(object):value;
+    }});
+    if(stage==='attach'){await pause();late=true;}
+    return proxy;
+  };
+  try{
+    await expect(clickStaticRoomControl(page,'#tool')).rejects.toThrow('exceeded5000ms');
+    await expect.poll(()=>detached).toBe(1);await expect.poll(()=>late).toBe(true);
+    expect(await received(page)).toEqual([]);
+  }finally{context.newCDPSession=original;}
+});
+
+test('stationary room control rejects protocol exceptions and invalid values before input',async({page})=>{
+  await fixture(page,'<button id="tool">Tool</button>');
+  const context=page.context(),original=context.newCDPSession.bind(context);let detached=0;
+  try{
+    for(const result of [{result:{},exceptionDetails:{text:'controlled script error'}},{result:{value:{count:1}}}]){
+      context.newCDPSession=async target=>{const session=await original(target);return new Proxy(session,{get(object,key){
+        if(key==='send')return async()=>result;
+        if(key==='detach')return async()=>{detached++;return object.detach();};
+        const value=Reflect.get(object,key);return typeof value==='function'?value.bind(object):value;
+      }});};
+      await expect(clickStaticRoomControl(page,'#tool')).rejects.toThrow();
+    }
+    expect(detached).toBe(2);expect(await received(page)).toEqual([]);
+  }finally{context.newCDPSession=original;}
+});

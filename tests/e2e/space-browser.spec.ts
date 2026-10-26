@@ -19,10 +19,12 @@ async function capture(page:Page,name:string){if(!process.env.BROWSER_CRAFT_AUDI
 async function clickInWebPage(page:Page,control:Locator){
  // Chromium 153's frame locator omits the monitor's scale in boundingBox().
  // Map the child CSS rect to the actual iframe, then use a genuine mouse click.
- await control.scrollIntoViewIfNeeded();
+ // The child can be stable while its outer monitor is still resizing.
+ const frame=page.locator('.space-browser__page');await frame.scrollIntoViewIfNeeded();await control.scrollIntoViewIfNeeded();
  const local=await control.evaluate(el=>{const b=el.getBoundingClientRect();return {x:b.x+b.width/2,y:b.y+b.height/2};});
- const frame=page.locator('.space-browser__page'),box=(await frame.boundingBox())!,size=await frame.evaluate(el=>({width:el.clientWidth,height:el.clientHeight}));
- await page.mouse.click(box.x+local.x*box.width/size.width,box.y+local.y*box.height/size.height);
+ const geometry=await frame.evaluate(el=>{const b=el.getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,height:b.height,contentWidth:el.clientWidth,contentHeight:el.clientHeight};});
+ expect(geometry.contentWidth).toBeGreaterThan(0);expect(geometry.contentHeight).toBeGreaterThan(0);
+ await page.mouse.click(geometry.x+local.x*geometry.width/geometry.contentWidth,geometry.y+local.y*geometry.height/geometry.contentHeight);
 }
 test.beforeEach(async({page})=>{
  test.setTimeout(90000);await observeRoomAudio(page);
@@ -89,7 +91,14 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await expect(root(page)).toHaveAttribute('data-world-screen-preview',mover==='compatible'?'standby':'live');
  if(mover==='compatible'){await expect(page.locator('[data-space-window="browser"]')).toBeHidden();await expect(page.locator('[data-space-dock]')).toBeHidden();await capture(page,'visitor-compatible-standby');}
  const objects=JSON.parse((await root(page).getAttribute('data-room-objects'))!);
- for(const name of ['lamp','fan']){await hit(name);await expect.poll(async()=>JSON.parse((await root(page).getAttribute('data-room-objects'))!)[name]).not.toBe(objects[name]);}
+ for(const name of ['lamp','fan']){
+  expect(typeof objects[name]).toBe('boolean');await hit(name);
+  const changed=await page.waitForFunction(({name,before})=>{
+   const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1)throw new Error('Room object root missing or ambiguous');
+   const value=JSON.parse(roots[0].dataset.roomObjects||'null');
+   return value&&typeof value[name]==='boolean'&&value[name]!==before;
+  },{name,before:objects[name]},{timeout:5000,polling:50});await changed.dispose();
+ }
  await hit('books');await expect(page.locator('[data-room-inspection]')).toBeVisible();await page.keyboard.press('Escape');
  await hit('window');await expect(root(page)).toHaveAttribute('data-world-inspect','window');await page.keyboard.press('Escape');
  await hit('computer');await expect(root(page)).toHaveAttribute('data-world-mode','workspace');
