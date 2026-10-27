@@ -18,8 +18,15 @@ if(!process.env.ROOM_DIAG_VARIANT)test.use({trace:{mode:'retain-on-failure',snap
     try{
       const state=await Promise.race([page.evaluate(()=>{
         const el=document.querySelector('[data-bear-workspace]');
-        const names=['data-boot-state','data-world-ready','data-world-rendered-mode','data-world-frames','data-cafe-mode','data-cat-loaded','data-cat-active','data-cat-pose'];
+        const names=['data-boot-state','data-world-ready','data-world-rendered-mode','data-world-travel','data-world-frames','data-cafe-mode','data-cat-loaded','data-cat-active','data-cat-pose'];
+        const raw=(window as unknown as {__roomAttributeObservation?:Record<string,unknown>}).__roomAttributeObservation;
+        const numbers=['timeOrigin','startedAt','deadline','lastSampleAt','matchedAt','finishedAt','samples','rootCount'];
+        const attributeObservation=raw&&typeof raw==='object'?{
+          ...Object.fromEntries(numbers.map(key=>[key,typeof raw[key]==='number'&&Number.isFinite(raw[key])?raw[key]:null])),
+          initialMatch:typeof raw.initialMatch==='boolean'?raw.initialMatch:null,
+          status:typeof raw.status==='string'&&['waiting','matched','timeout','error'].includes(raw.status)?raw.status:null}:null;
         return {motion:(window as unknown as {__catMotionObservation:unknown}).__catMotionObservation,
+          attributeObservation,observedAt:performance.now(),
           rootCount:document.querySelectorAll('[data-bear-workspace]').length,
           attributes:el?Object.fromEntries(names.map(name=>[name,el.getAttribute(name)])):null};
       }),new Promise<never>((_,reject)=>{timer=setTimeout(()=>reject(new Error('Failure diagnostic unavailable after1000ms')),1000);})]);
