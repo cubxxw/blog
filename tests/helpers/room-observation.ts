@@ -73,15 +73,41 @@ export async function readRoomObservation<T,A>(page:Page,observation:(arg:A)=>T|
 export async function expectRoomAttributes(page:Page,attributes:Record<string,string>,timeout:5000|30000=5000){
   await readRoomObservation(page,async({attributes,timeout})=>{
     const deadline=performance.now()+timeout;let root:Element|undefined;
-    for(;;){
-      const roots=document.querySelectorAll('[data-bear-workspace]');
-      if(roots.length>1)throw new Error('Room attribute root ambiguous');
-      if(root&&roots[0]!==root)throw new Error('Room attribute root replaced');
-      root??=roots[0];
-      if(root&&Object.entries(attributes).every(([name,value])=>root!.getAttribute(name)===value))return true;
-      const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Room attributes exceeded'+timeout+'ms');
-      await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
-    }
+    const diagnostic={timeOrigin:performance.timeOrigin,startedAt:performance.now(),deadline,
+      lastSampleAt:null as number|null,matchedAt:null as number|null,finishedAt:null as number|null,
+      initialMatch:null as boolean|null,samples:0,rootCount:0,status:'waiting'};
+    (window as unknown as {__roomAttributeObservation:typeof diagnostic}).__roomAttributeObservation=diagnostic;
+    return new Promise<boolean>((resolve,reject)=>{
+      let settled=false,timer:ReturnType<typeof setTimeout>|undefined;
+      const finish=(ok:boolean,cause?:unknown,status=ok?'matched':'error')=>{
+        if(settled)return;settled=true;diagnostic.status=status;diagnostic.finishedAt=performance.now();
+        observer.disconnect();if(timer)clearTimeout(timer);if(ok)resolve(true);else reject(cause);
+      };
+      const sample=()=>{
+        if(settled)return;
+        try{
+          const now=performance.now();diagnostic.lastSampleAt=now;diagnostic.samples=Math.min(1024,diagnostic.samples+1);
+          if(now>deadline){finish(false,new Error('Room attributes exceeded'+timeout+'ms'),'timeout');return;}
+          const roots=document.querySelectorAll('[data-bear-workspace]');diagnostic.rootCount=Math.min(2,roots.length);
+          if(roots.length>1)throw new Error('Room attribute root ambiguous');
+          if(root&&roots[0]!==root)throw new Error('Room attribute root replaced');
+          root??=roots[0];
+          const matches=Boolean(root&&Object.entries(attributes).every(([name,value])=>root!.getAttribute(name)===value));
+          const checkedAt=performance.now();diagnostic.lastSampleAt=checkedAt;
+          if(checkedAt>deadline){finish(false,new Error('Room attributes exceeded'+timeout+'ms'),'timeout');return;}
+          if(diagnostic.initialMatch===null)diagnostic.initialMatch=matches;
+          if(matches){diagnostic.matchedAt=checkedAt;finish(true);}
+        }catch(cause){finish(false,cause);}
+      };
+      const observer=new MutationObserver(sample);
+      try{
+        // Observe only real DOM changes. The original Node gate still includes
+        // setup, dispatch and reply; a timely mutation cannot excuse a late reply.
+        observer.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:Object.keys(attributes)});
+        timer=setTimeout(()=>finish(false,new Error('Room attributes exceeded'+timeout+'ms'),'timeout'),Math.max(0,deadline-performance.now()));
+        sample();
+      }catch(cause){finish(false,cause);}
+    });
   },{attributes,timeout},{timeout,label:'Room attributes',validate:(value):value is boolean=>value===true});
 }
 
