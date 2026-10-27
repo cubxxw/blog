@@ -12,7 +12,7 @@ test('the window eye stands in the clear aisle, close to the physical glass',()=
  assert.ok(p.z-JIANGNAN_WINDOW.glassZ>.45&&p.z-JIANGNAN_WINDOW.glassZ<.9);
  assert.ok(p.y>1.5&&p.y<1.7);
  assert.ok(!JIANGNAN_COLLIDERS.some(b=>inside(p,b)),'the visitor must stand beside the desk and cat bed');
- for(const key of ['computer','lampTarget','photo']){
+ for(const key of ['computer','lampTarget']){
   const [x,y,z]=JIANGNAN_WORKSTATION[key],dx=x-p.x,dy=y-p.y,dz=z-p.z;
   const yaw=Math.atan2(-dx,-dz),pitch=Math.atan2(dy,Math.hypot(dx,dz));
   const halfV=p.fov*Math.PI/360,halfH=Math.atan(Math.tan(halfV)*1.6);

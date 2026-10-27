@@ -19,6 +19,20 @@ test('real lamp and fan surfaces respond to canvas hits',async({page})=>{
  await ready(page);for(const name of ['lamp','fan']){const p=await face(page,name);await page.mouse.click(p.x,p.y);await expect.poll(async()=>(await objects(page))[name],`${name} physical hit`).toBe(false);}await expect(root(page)).toHaveAttribute('data-world-mode','roam');
 });
 
+test('the top photo light control owns the real wash and stays in sync with the physical fitting',async({page})=>{
+ await ready(page);const control=page.getByRole('button',{name:'照片墙照明',exact:true}),before=await objects(page);
+ await expect(control).toBeVisible();await expect(control).toHaveAttribute('aria-pressed','true');expect(before.photoLight).toBeGreaterThan(0);
+ await control.focus();await control.press('Space');await expect(control).toHaveAttribute('aria-pressed','false');
+ await expect.poll(async()=>(await objects(page)).photoLight).toBe(0);expect((await objects(page)).photoEmitter).toBe(0);
+ expect((await objects(page)).tableLight).toBe(before.tableLight);expect((await objects(page)).shelfLight).toBe(before.shelfLight);
+ await object(page,'photo-light');await expect(control).toHaveAttribute('aria-pressed','true');
+ await expect.poll(async()=>(await objects(page)).photoLight).toBe(before.photoLight);
+ await page.setViewportSize({width:390,height:844});const bounds=(await control.boundingBox())!;
+ expect(bounds.width).toBeGreaterThanOrEqual(44);expect(bounds.height).toBeGreaterThanOrEqual(44);expect(bounds.x).toBeGreaterThanOrEqual(0);expect(bounds.x+bounds.width).toBeLessThanOrEqual(390);
+ await control.click();await expect.poll(async()=>(await objects(page)).photoLight).toBe(0);
+ await control.click();await expect.poll(async()=>(await objects(page)).photoLight).toBe(before.photoLight);
+});
+
 test('outside click and a real two-finger pinch both restore the prior room view',async({page})=>{
  await ready(page);const before=await root(page).getAttribute('data-world-pose');await object(page,'coffee');await page.mouse.click(12,12);await expect(root(page)).toHaveAttribute('data-world-mode','roam');expect(await root(page).getAttribute('data-world-pose')).toBe(before);
  await object(page,'clock');const size=page.viewportSize()!,cx=size.width*.5,cy=size.height*.35,span=Math.min(100,size.width*.24),session=await page.context().newCDPSession(page);

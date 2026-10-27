@@ -49,7 +49,7 @@ float mcLakeGlint(vec2 uv){float crest=sin(uv.y*310.-effectTime*1.12+sin(uv.x*61
 export function buildJiangnanExterior({scene,pbr,resources,textures,software=false,vistaAsset,dayVistaAsset=null,continuationAsset=null,vistaMode='geometry',boatSeed=(Math.random()*4294967296)>>>0,wake=()=>{},isDisposed=()=>false}) {
   const group=new THREE.Group();group.name='Jiangnan river and far bank';scene.add(group);
   const photographic=Boolean(vistaAsset&&vistaMode==='image');
-  let actualVista=photographic?'loading':'geometry',photographicMaterial=null,photographicDome=null;
+  let actualVista=photographic?'loading':'geometry',photographicMaterial=null;
   const own=value=>{resources.add(value);return value;};
   const geometry=value=>own(value),material=value=>own(value);
   const v3=(x=0,y=0,z=0)=>new THREE.Vector3(x,y,z);
@@ -60,17 +60,13 @@ export function buildJiangnanExterior({scene,pbr,resources,textures,software=fal
     if(key)pbr.bind(result,key,{metres:key==='wood_table_001'?.7:2.1,normal:.18,roughness:.8,tint:color,projection:'dominant'});
     return result;
   }
-  const stone=standard('#53636b','rock_boulder_dry'),coping=standard('#6e7778','rock_boulder_dry');
-  const plaster=[standard('#78848a','painted_plaster_wall'),standard('#68777f','painted_plaster_wall'),standard('#87908f','painted_plaster_wall')];
-  const roof=standard('#17232b','rock_boulder_dry',{roughness:.74}),tileEdge=standard('#26343c',null,{roughness:.65});
   const timber=standard('#342e29','wood_table_001'),wood=standard('#493b2a','wood_table_001'),slats=standard('#62503a','wood_table_001');
   const iron=standard('#1d292d',null,{metalness:.25,roughness:.72});
   const warm=standard('#b98a50',null,{emissive:'#e0a15b',emissiveIntensity:1.35,roughness:1});
-  const dimWindow=standard('#3c4d54',null,{emissive:'#4b666d',emissiveIntensity:.12});
   const lanternPaper=standard('#a68a58',null,{emissive:'#e4a34e',emissiveIntensity:1.55,roughness:1});
   const boxGeometry=geometry(new THREE.BoxGeometry(1,1,1)),cylinderGeometry=geometry(new THREE.CylinderGeometry(1,1,1,8));
   const matrix=new THREE.Matrix4(),normalMatrix=new THREE.Matrix3(),rotation=new THREE.Quaternion(),scale=new THREE.Vector3();
-  const batches=new Map(),riverLights=[];let houseFrame=null;
+  const batches=new Map(),riverLights=Array.from({length:12},()=>new THREE.Vector4(0,0,0,1));let houseFrame=null;
   function batch(source,mat,position,size=[1,1,1],quaternion=null) {
     let record=batches.get(mat);if(!record){record={positions:[],normals:[],uvs:[],indices:[]};batches.set(mat,record);}
     let p=v3(...position),q=quaternion||rotation.identity();
@@ -111,7 +107,17 @@ void main(){vec3 d=normalize(skyDirection);vec2 uv=vec2(.5+atan(d.x,-d.z)/1.95,.
 #include <tonemapping_fragment>
 #include <colorspace_fragment>
 }` }));
-  const cloudySky=mesh(geometry(new THREE.PlaneGeometry(220,60)),skyMaterial,0,17,-110);cloudySky.name='layered rain clouds';cloudySky.castShadow=cloudySky.receiveShadow=false;
+  const architecture=new THREE.Group();architecture.name='geometric fallback town';
+  // The current photographic room never constructs a second town. Only an
+  // explicit geometry view or a failed primary image needs these resources.
+  function buildArchitecture(){
+  if(architecture.children.length)return;
+  group.add(architecture);let riverLight=0;
+  const stone=standard('#53636b','rock_boulder_dry'),coping=standard('#6e7778','rock_boulder_dry');
+  const plaster=[standard('#78848a','painted_plaster_wall'),standard('#68777f','painted_plaster_wall'),standard('#87908f','painted_plaster_wall')];
+  const roof=standard('#17232b','rock_boulder_dry',{roughness:.74}),tileEdge=standard('#26343c',null,{roughness:.65});
+  const dimWindow=standard('#3c4d54',null,{emissive:'#4b666d',emissiveIntensity:.12});
+  const cloudySky=mesh(geometry(new THREE.PlaneGeometry(220,60)),skyMaterial,0,17,-110,architecture);cloudySky.name='layered rain clouds';cloudySky.castShadow=cloudySky.receiveShadow=false;
 
   // The banks lead into depth. A straight wall across the window made the
   // earlier village read like a stage backdrop and hid the canal's direction.
@@ -202,7 +208,7 @@ void main(){vec3 d=normalize(skyDirection);vec2 uv=vec2(.5+atan(d.x,-d.z)/1.95,.
         branch(timber,v3(lx,base+2.15,front),v3(lx,base+2.15,lz),.035);branch(iron,v3(lx,base+2.15,lz),v3(lx,ly+.3,lz),.013);
         batch(cylinderGeometry,lanternPaper,[lx,ly,lz],[.13,.43,.13]);
         for(const y of [ly-.23,ly+.23])batch(cylinderGeometry,iron,[lx,y,lz],[.155,.035,.155]);
-        const light=v3(lx,ly,lz).sub(houseFrame.center).applyQuaternion(houseFrame.rotation).add(houseFrame.center);riverLights.push(new THREE.Vector4(light.x,light.z,1.15,.22));
+        const light=v3(lx,ly,lz).sub(houseFrame.center).applyQuaternion(houseFrame.rotation).add(houseFrame.center);riverLights[riverLight++].set(light.x,light.z,1.15,.22);
       }
     }
     houseFrame=null;
@@ -232,7 +238,7 @@ void main(){vec3 d=normalize(skyDirection);vec2 uv=vec2(.5+atan(d.x,-d.z)/1.95,.
   for(let i=1;i<=40;i++)arch.lineTo(-span/2+i/40*span,bridgeTop(i/40));
   for(let i=40;i>=0;i--)arch.lineTo(-span/2+i/40*span,bridgeBottom(i/40));arch.closePath();
   const archGeometry=geometry(new THREE.ExtrudeGeometry(arch,{depth:1.35,bevelEnabled:false,curveSegments:32,steps:1}));
-  const archMesh=mesh(archGeometry,stone,bridgeX,0,bridgeZ-.675);archMesh.name='arched stone bridge';
+  const archMesh=mesh(archGeometry,stone,bridgeX,0,bridgeZ-.675,architecture);archMesh.name='arched stone bridge';
   for(const side of [-1,1]){
     const z=bridgeZ+side*.63;
     for(let i=0;i<=14;i++){
@@ -250,9 +256,9 @@ void main(){vec3 d=normalize(skyDirection);vec2 uv=vec2(.5+atan(d.x,-d.z)/1.95,.
     branch(iron,v3(x,1.75,bridgeZ+.66),v3(x,2.25,bridgeZ+.66),.025);
     batch(cylinderGeometry,lanternPaper,[x,2.15,bridgeZ+.67],[.10,.25,.10]);
     for(const y of [2.01,2.29])batch(cylinderGeometry,iron,[x,y,bridgeZ+.67],[.12,.025,.12]);
-    riverLights.push(new THREE.Vector4(x,bridgeZ+.67,.86,.20));
+    riverLights[riverLight++].set(x,bridgeZ+.67,.86,.20);
   }
-  finishBatches(group);
+  finishBatches(architecture);
 
   // Three distant terrain profiles overlap in depth. Their shapes are smooth,
   // irregular ridges; the dark silhouettes remain subordinate to the room.
@@ -264,10 +270,11 @@ void main(){vec3 d=normalize(skyDirection);vec2 uv=vec2(.5+atan(d.x,-d.z)/1.95,.
     }
     for(let i=0;i<segments;i++){const a=i,b=i+1,c=i+segments+1,d=c+1;indices.push(a,c,b,b,c,d);}
     const mat=material(new THREE.MeshBasicMaterial({color:['#223c4a','#2b4552','#3a515e'][layer],fog:true,side:THREE.DoubleSide}));
-    const ridge=mesh(surface(points,indices),mat);ridge.name='distant mountain ridge '+(layer+1);
+    const ridge=mesh(surface(points,indices),mat,0,0,0,architecture);ridge.name='distant mountain ridge '+(layer+1);
   }
+  }
+  if(!photographic)buildArchitecture();
 
-  const architecture=[...group.children];
   const waterUniforms={time:{value:0},boat:{value:v3()},boatDirection:{value:new THREE.Vector2(-1,0)},boatSpeed:{value:0},warmLights:{value:riverLights},imageBlend:{value:0},daylight:{value:0},rainfall:solarUniforms.rainfall,sunDirection:solarUniforms.sunDirection,golden:solarUniforms.golden,reflectionStrength:{value:0}};
   const waterMaterial=material(new THREE.ShaderMaterial({uniforms:waterUniforms,side:THREE.DoubleSide,transparent:photographic,depthWrite:!photographic,
     vertexShader:`uniform float time;varying vec3 river;
@@ -320,11 +327,11 @@ gl_FragColor.rgb=mix(gl_FragColor.rgb,mix(vec3(.035,.055,.07),vec3(.55,.65,.67),
 #include <colorspace_fragment>
 }` }));
     const vista=mesh(geometry(new THREE.SphereGeometry(120,80,40)),vistaMaterial,0,1.3,0);vista.visible=false;vista.castShadow=vista.receiveShadow=false;vista.renderOrder=-10;vista.name='photographic environment study';
-    photographicMaterial=vistaMaterial;photographicDome=vista;
+    photographicMaterial=vistaMaterial;
     new THREE.TextureLoader().load(vistaAsset,texture=>{
       if(isDisposed()){texture.dispose();return;}texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;textures.add(texture);vistaMaterial.uniforms.vista.value=texture;
-      for(const item of architecture)item.visible=false;vista.visible=true;waterUniforms.imageBlend.value=1;actualVista='image';wake();
-    },undefined,()=>{if(!isDisposed()){actualVista='geometry-fallback';wake();}});
+      architecture.visible=false;vista.visible=true;waterUniforms.imageBlend.value=1;actualVista='image';wake();
+    },undefined,()=>{if(!isDisposed()){buildArchitecture();actualVista='geometry-fallback';wake();}});
     if(dayVistaAsset){
       const owner={texture:null,transferred:false,released:false,disposed:false};
       const release=()=>{if(owner.texture&&!owner.released){owner.texture.dispose();owner.released=true;}};
@@ -459,8 +466,6 @@ void main(){
     for(const mat of [wood,slats,cape,trousers,skin,straw])mat.emissiveIntensity=.025+light*.20;
     if(photographicMaterial){
       photographicMaterial.uniforms.daylight.value=light;
-      const fallback=light>.5&&!photographicMaterial.uniforms.dayReady.value&&dayVistaAsset;
-      if(photographicMaterial.uniforms.vista.value){photographicDome.visible=!fallback;for(const item of architecture)item.visible=Boolean(fallback);}
     }
     boat.position.set(photographic?pose.x*.72:pose.x,pose.y,pose.z-(photographic?5.5:0));boat.rotation.z=pose.roll;
     waterUniforms.boatDirection.value.set(-Math.cos(pose.yaw)*(photographic?.72:1),Math.sin(pose.yaw)).normalize();

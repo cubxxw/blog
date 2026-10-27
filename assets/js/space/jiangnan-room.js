@@ -5,11 +5,12 @@ import { buildJiangnanFloor } from './jiangnan-floor.mjs';
 import { createCatSupport } from './jiangnan-cat-grounding.mjs';
 import { createTimberFinish } from './jiangnan-timber-finish.mjs';
 import { createTablePool, JIANGNAN_TABLE_LIGHT } from './jiangnan-lighting.mjs';
-import { JIANGNAN_WINDOW, JIANGNAN_DESK, JIANGNAN_WORK_CHAIR, JIANGNAN_READING_CHAIR, JIANGNAN_CAT_BED, JIANGNAN_WORKSTATION } from './jiangnan-layout.mjs';
+import { JIANGNAN_ARTWORK } from './jiangnan-artwork.mjs';
+import { JIANGNAN_WINDOW, JIANGNAN_DESK, JIANGNAN_WORK_CHAIR, JIANGNAN_READING_CHAIR, JIANGNAN_CAT_BED, JIANGNAN_WORKSTATION, JIANGNAN_PHOTO_WALL } from './jiangnan-layout.mjs';
 
 // Furniture is built in metres. The live desktop belongs to the world runtime;
 // this module supplies its physical display, cabinetry and the surrounding room.
-export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photoAsset, books = [], records = [], zh = true, isDisposed, shadowSize = 1536, buildDoor = null, createLightRamp = null, isStill = () => true }) {
+export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photos = [], books = [], records = [], zh = true, isDisposed, shadowSize = 1536, buildDoor = null, createLightRamp = null, isStill = () => true }) {
   const group = new THREE.Group();
   group.name = 'jiangnan-private-room';
   scene.add(group);
@@ -180,6 +181,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   const windowTimber = timber('#514737', 8.4, true);
   const joineryTimber = timber('#775438', 6.3);
   const frameTimber = timber('#4c3d2e', 9.4);
+  const artOak = timber('#c4aa80', 13.2);
   const sashTimber = timber('#302a20', 4.7);
   // Keep the photograph's real fibres, without its red pigment or its former
   // small repeated world tile. Only this hidden donor uses PBR's map registry;
@@ -243,8 +245,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   if (!buildDoor) box(0, 1.425, 2.09, 6.65, 2.85, .18, plaster);
   box(0, 2.94, -.3, 6.65, .18, 4.78, plaster);
   box(-2.69, 1.425, -2.69, 1.02, 2.85, .18, plaster);
-  box(-1.72, .40, -2.69, .94, .80, .18, plaster);
-  box(-1.72, 2.72, -2.69, .94, .26, .18, plaster);
+  box(-1.72, 1.425, -2.69, .94, 2.85, .18, plaster).name='photo-wall-infill';
   box(3.055, 1.425, -2.69, .29, 2.85, .18, plaster);
   box(.80, .40, -2.69, 4.1, .80, .18, plaster);
   box(.80, 2.72, -2.69, 4.1, .26, .18, plaster);
@@ -255,15 +256,15 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   for (const z of [-2.56, -.28, 1.9]) box(0, 2.74, z, 6.4, .19, .13, walnut);
   if (!buildDoor) box(0, .085, 1.96, 6.32, .17, .07, darkWood);
   for (const x of [-3.13, 3.13]) box(x, 1.43, -2.56, .095, 2.85, .14, darkWood);
-  // Paper and glass share one sill/header, with a real opening behind each.
+  // The main glass bay keeps its own sill/header beside the solid photo wall.
   // Paired meeting stiles sit under the two bamboo rolls. Their lower tongues
   // run between low guide beads on the existing sill; glass stays in place.
   const windowJoinery = [], windowSash = [];
-  for (const [x,width] of [[-2.145,.07],[-1.28,.10],[2.875,.11]]) {
+  for (const [x,width] of [[-1.28,.10],[2.875,.11]]) {
     windowJoinery.push(grainAlong(box(x,1.67,-2.505,width,1.72,.205,windowTimber,group,.003),'y',1.72,.205));
   }
-  windowJoinery.push(grainAlong(box(.375,.810,-2.50,5.16,.090,.220,windowTimber,group,.006),'x',5.16,.22));
-  windowJoinery.push(grainAlong(box(.375,2.535,-2.505,5.16,.105,.190,windowTimber,group,.004),'x',5.16,.19));
+  windowJoinery.push(grainAlong(box(.8,.810,-2.50,4.31,.090,.220,windowTimber,group,.006),'x',4.31,.22));
+  windowJoinery.push(grainAlong(box(.8,2.535,-2.505,4.31,.105,.190,windowTimber,group,.004),'x',4.31,.19));
   for (const x of [-1.228,2.828]) windowSash.push(grainAlong(box(x,1.67,-2.583,.014,1.63,.024,sashTimber,group,.001),'y',1.63,.024));
   windowSash.push(grainAlong(box(.8,2.483,-2.589,4.04,.012,.024,sashTimber,group,.001),'x',4.04,.024));
   const guideTop=JIANGNAN_WINDOW.bottom+.004,sashHeight=JIANGNAN_WINDOW.top-guideTop,sashY=(JIANGNAN_WINDOW.top+guideTop)/2;
@@ -285,26 +286,6 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   box(3.176, .425, -.30, .025, .72, 4.43, walnut).castShadow = false;
   for (const y of [.10, .80]) box(3.155, y, -.30, .04, .034, 4.46, ash, group, .006).castShadow = false;
   for (let i = 0; i < 9; i++) box(3.153, .45, -2.33 + i * .52, .018, .67, .023, ash, group, .004).castShadow = false;
-  // Shoji stays beside the bay, rather than washing the whole view in white.
-  const paperMap = canvasTexture(512, 512, (c, w, h) => {
-    c.fillStyle = '#e6d8bd'; c.fillRect(0, 0, w, h);
-    for (let i = 0; i < 3700; i++) {
-      const x = (Math.sin(i * 17.13) * 43758.5 % 1 + 1) % 1 * w, y = (Math.sin(i * 9.71) * 13679.1 % 1 + 1) % 1 * h;
-      c.strokeStyle = i % 3 ? '#eee2bf21' : '#756c5010'; c.lineWidth = .3 + i % 3 * .2;
-      c.beginPath(); c.moveTo(x, y); c.lineTo(x + 1 + i % 9, y + Math.sin(i) * 3); c.stroke();
-    }
-  });
-  const shojiPaper = material('#fff0d2', .98, { map: paperMap, bumpMap: paperMap, bumpScale: .00035, side: THREE.DoubleSide });
-  shojiPaper.name='warm-ivory-paper';
-  box(-1.7275,1.67,-2.591,.775,1.63,.012,shojiPaper);
-  const shojiLattice=[],latticeWood=material('#81715b',.91),columns=3,rows=6,barWidth=.008;
-  for(const [x,width]of [[-2.112,.008],[-1.337,.014]])shojiLattice.push(box(x,1.67,-2.575,width,1.63,.014,latticeWood,group,.0006));
-  for(const y of [.859,2.481])shojiLattice.push(box(-1.726,y,-2.575,.764,.008,.014,latticeWood,group,.0006));
-  const shojiLeft=-2.108,shojiRight=-1.344,shojiBottom=.863,shojiTop=2.477;
-  const shojiCellWidth=(shojiRight-shojiLeft-(columns-1)*barWidth)/columns,shojiCellHeight=(shojiTop-shojiBottom-(rows-1)*barWidth)/rows;
-  for(let i=1;i<columns;i++)shojiLattice.push(box(shojiLeft+i*shojiCellWidth+(i-.5)*barWidth,1.67,-2.575,barWidth,shojiTop-shojiBottom,.014,latticeWood,group,.0006));
-  for(let i=1;i<rows;i++)shojiLattice.push(box((shojiLeft+shojiRight)/2,shojiBottom+i*shojiCellHeight+(i-.5)*barWidth,-2.573,shojiRight-shojiLeft,barWidth,.010,latticeWood,group,.0006));
-  batch(shojiLattice);
   // The raised blind remains a woven sheet when rolled: uneven reeds run
   // across the bay, and the fine dark warp continues around the whole bundle.
   const bamboo = [material('#9a8d70',.97),material('#ae9b77',.95),material('#8d8065',.99)];
@@ -661,26 +642,85 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
   const lampPool = createTablePool({ THREE, lamp, resources, shadowSize });
   tube([[0, .02, .08], [-.10, .02, .24], [-.15, .014, .44], [-.16, -.26, .47]], .003, black, lamp, 18);
 
-  function picture(parent, center, width, height, source, action) {
-    const frame = makeGroup(action ? 'travel-photo-frame' : 'framed-travel-print', ...center, parent, action);
-    box(0, 0, -.022, width, height, .041, walnut, frame, .009);
-    box(0, 0, .002, width - .030, height - .030, .009, agedBrass, frame, .003);
-    box(0, 0, .008, width - .052, height - .052, .005, paper, frame, .002);
+  // A full-height, fine timber lattice turns the former paper-window bay
+  // into a domestic memory board. The plaster stays solid behind it.
+  const lattice=makeGroup('photo-lattice-north',-1.87,1.75,-2.573);
+  const latticePaper=material('#d8cbb0',.98,{map:linenMap,bumpMap:linenMap,bumpScale:.0003}),latticeWood=material('#8c7757',.93);
+  box(0,0,-.012,.82,1.82,.024,latticePaper,lattice,.003).name='photo-lattice-backing';
+  const latticeParts=[];
+  for(let i=0;i<=6;i++)latticeParts.push(box(-.41+i*.82/6,0,.003,i===0||i===6?.018:.005,1.82,.010,latticeWood,lattice,.001));
+  for(let i=0;i<=12;i++)latticeParts.push(box(0,-.91+i*1.82/12,.004,.82,i===0||i===12?.018:.005,.010,latticeWood,lattice,.001));
+  batch(latticeParts).name='photo-lattice-joinery';
+  // A slim brass fitting sits on the beam above the prints. A broad wash
+  // approximates its line diffuser, keeping the bottom prints readable too.
+  // It shares the room clock and adds no shadow-map pass or floating glow.
+  const photoLamp=makeGroup('brass-photo-picture-light',-1.87,2.71,-2.49,group,'photo-light');
+  targets['photo-light']=[-1.87,2.69,-2.31];
+  box(0,0,0,.10,.052,.018,agedBrass,photoLamp,.004);
+  for(const x of [-.17,.17])tube([[x,0,0],[x,-.005,.09],[x,-.02,.18]],.0045,brass,photoLamp,12);
+  box(0,-.02,.18,.62,.030,.046,brass,photoLamp,.006).name='photo-light-hood';
+  const photoEmitter=material('#e3cfaa',.5,{emissive:'#ffe1ad',emissiveIntensity:.62});
+  const photoDiffuser=box(0,-.037,.182,.572,.006,.029,photoEmitter,photoLamp,.001);
+  photoDiffuser.name='photo-light-diffuser';photoDiffuser.castShadow=false;
+  const photoLight=new THREE.DirectionalLight('#ffe2b8',1.35);
+  photoLight.name='photo-gallery-wash';photoLight.position.set(0,-.035,.20);
+  photoLight.target.position.set(0,-.80,-.62);photoLamp.add(photoLight,photoLight.target);
+  const printPaper=material('#e8dfce',.97),printFrames=[walnut,ash,material('#a89679',.94)],photoImages=new Map();
+  function fitPrint(view,texture){
+    const ratio=texture.image.width/texture.image.height,inset=view.small?.025:.095,maxW=view.mount?.imageWidth??view.width-inset,maxH=view.mount?.imageHeight??view.height-inset;
+    view.mesh.scale.set(Math.min(maxW,maxH*ratio),Math.min(maxH,maxW/ratio),1);
+    view.material.map=texture;view.material.color.set(view.mount?'#ffffff':view.small?'#fffdf6':'#d1c8b5');view.material.needsUpdate=true;view.mesh.visible=true;
+  }
+  function picture(parent, center, width, height, source, action, small=false,style=0,mount=null) {
+    const frame = makeGroup(mount ? 'klee-wall-artwork' : action ? 'travel-photo-frame' : 'framed-travel-print', ...center, parent, action);
+    if(small){
+      box(0,0,-.004,width,height,.013,printFrames[style%3],frame,.002);
+      box(0,0,.004,width-.009,height-.009,.004,printPaper,frame,.001);
+      box(0,height/2-.006,-.007,.008,.025,.024,agedBrass,frame,.001).name='photo-hanging-clip';
+    }else{
+      box(0, 0, -.022, width, height, .041, mount ? artOak : walnut, frame, .009);
+      if (!mount) box(0, 0, .002, width - .030, height - .030, .009, agedBrass, frame, .003);
+      box(0, 0, .008, width - (mount ? mount.border * 2 : .052), height - (mount ? mount.border * 2 : .052), .005, paper, frame, .002);
+    }
     const photoMat = material('#777d6b', .91);
-    const photo = mesh(geometry('photo-plane', () => new THREE.PlaneGeometry(1, 1)), photoMat, 0, 0, .013, frame);
+    const photo = mesh(geometry('photo-plane', () => new THREE.PlaneGeometry(1, 1)), photoMat, 0, small?.003:0, small?.007:.013, frame);
+    if (mount) photo.name = 'klee-print-surface';
     photo.scale.set(width - .095, height - .095, 1); photo.visible = false; photo.castShadow = false;
-    if (source) new THREE.TextureLoader().load(source, texture => {
-      if (isDisposed?.()) { texture.dispose(); return; }
-      texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4; textures.add(texture);
-      const ratio = texture.image.width / texture.image.height, maxW = width - .095, maxH = height - .095;
-      photo.scale.set(Math.min(maxW, maxH * ratio), Math.min(maxH, maxW / ratio), 1);
-      photoMat.map = texture; photoMat.color.set('#d1c8b5'); photoMat.needsUpdate = true; photo.visible = true; wake();
-    }, undefined, () => {});
+    if(source){
+      if(!photoImages.has(source))photoImages.set(source,{texture:null,loading:false,views:[]});
+      const image=photoImages.get(source),view={mesh:photo,material:photoMat,width,height,small,mount};
+      if(image.texture)fitPrint(view,image.texture);
+      else{image.views.push(view);if(!image.loading){image.loading=true;new THREE.TextureLoader().load(source,texture=>{
+        if(isDisposed?.()){texture.dispose();return;}
+        texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;textures.add(texture);image.texture=texture;
+        image.views.forEach(view=>fitPrint(view,texture));image.views.length=0;wake();
+      },undefined,()=>{});}}
+    }
     return frame;
   }
-  const photoFrame=picture(group,JIANGNAN_WORKSTATION.photo,.33,.39,photoAsset,'photo');
-  box(0,JIANGNAN_DESK.topY-JIANGNAN_WORKSTATION.photo[1]+.013,-.105,.21,.026,.21,chairTimber,photoFrame,.005).name='photo-stand-support';
-  const prop = box(0, -.08, -.14, .028, .28, .02, walnut, photoFrame, .003); prop.rotation.x = -.35;
+  const photoWall=makeGroup('travel-photo-wall');
+  const wallPhotos=photos.filter(photo=>photo?.id&&(photo.thumb||photo.image)),placedPhotos=new Set();
+  JIANGNAN_PHOTO_WALL.forEach((slot,index)=>{
+    const photo=wallPhotos.find(photo=>photo.id===slot.photoId)||wallPhotos[index%wallPhotos.length];if(!photo)return;
+    const action='photo:'+photo.id,first=!placedPhotos.has(photo.id);
+    const frame=picture(photoWall,slot.position,slot.width,slot.height,photo.thumb||photo.image,action,slot.small,index);
+    frame.name='wall-photo-'+photo.id+(first?'':'-'+index);frame.rotation.set(0,slot.yaw,slot.tilt||0);
+    if(first)targets[action]=[...slot.position];placedPhotos.add(photo.id);
+    if(index===0)targets.photo=[...slot.position];
+  });
+  const artwork = picture(group, JIANGNAN_ARTWORK.position, JIANGNAN_ARTWORK.width, JIANGNAN_ARTWORK.height,
+    JIANGNAN_ARTWORK.image, 'painting', false, 0, JIANGNAN_ARTWORK);
+  artwork.rotation.y = -Math.PI / 2;
+  targets.painting = [...JIANGNAN_ARTWORK.position];
+  // A small physical fitting lights the paper, without adding a shadow pass.
+  const pictureLight = makeGroup('klee-picture-light', 0, JIANGNAN_ARTWORK.height / 2 + .105, 0, artwork);
+  box(0, 0, -.018, .048, .064, .025, agedBrass, pictureLight, .004);
+  tube([[0, .01, 0], [0, .035, .08], [0, 0, .145]], .005, brass, pictureLight, 12);
+  box(0, 0, .145, .38, .024, .038, brass, pictureLight, .006);
+  box(0, -.013, .145, .34, .002, .025, basic('#ffe7c0'), pictureLight, .0005).castShadow = false;
+  const artLight = new THREE.SpotLight('#ffe8ca', 1.05, 1.5, .9, .9, 1);
+  artLight.name = 'klee-paper-light'; artLight.position.set(0, -.018, .18);
+  artLight.target.position.set(0, -.54, .013); pictureLight.add(artLight, artLight.target);
   // The coffee is open at the rim, with a real glazed inner wall and liquid.
   const coffee=makeGroup('hand-thrown-coffee-cup',...JIANGNAN_WORKSTATION.coffee,group,'coffee');
   const cupProfile = [[.032, -.074], [.050, -.070], [.057, -.053], [.064, .048], [.064, .062], [.061, .067], [.057, .062], [.056, .046], [.050, -.045], [.034, -.053]];
@@ -1099,10 +1139,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     const worn = ring(0, 0, .079, radius, .0022, ash, head, arc); worn.rotation.z = start; worn.castShadow = false;
   }
 
-  // A single muted print and a little closed notebook add personal scale.
-  const print = picture(group, [3.175, 1.85, -1.10], .62, .81, '/images/about/journey/05-fuji-480.webp');
-  print.rotation.y = -Math.PI / 2;
-  print.userData.action = 'painting'; targets.painting = [3.16, 1.85, -1.10];
+  // A little closed notebook keeps the workstation personal without a standing frame.
   const notebook=makeGroup('cloth-notebook',...JIANGNAN_WORKSTATION.notebook,group,'notebook');
   targets.notebook=[...JIANGNAN_WORKSTATION.notebook];
   notebook.rotation.y = -.17;
@@ -1193,6 +1230,8 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     lightRamp.seed('table', taskLight.intensity);
     lightRamp.seed('pool', lampPool.intensity);
     lightRamp.seed('shade', shadeMat.emissiveIntensity);
+    lightRamp.seed('photo', photoLight.intensity);
+    lightRamp.seed('photo-emitter', photoEmitter.emissiveIntensity);
     shelfLights.forEach((light, index) => lightRamp.seed('shelf:' + index, light.intensity));
     shelfBulbs.forEach((emitter, index) => lightRamp.seed('emitter:' + index, emitter.emissiveIntensity));
   }
@@ -1208,13 +1247,15 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     }
     return y;
   };
-  const writePracticals = ({ table, pool, shade, shelves, emitters }) => {
+  const writePracticals = ({ table, pool, shade, photo, photoGlow, shelves, emitters }) => {
     if (taskLight.intensity !== table || lampPool.intensity !== pool ||
       shelfLights.some((light, index) => light.intensity !== shelves[index])) shadowDirty = true;
     taskLight.intensity = table;
     lampPool.intensity = pool;
     lampPool.visible = pool > 0;
     shadeMat.emissiveIntensity = shade;
+    photoLight.intensity = photo;
+    photoEmitter.emissiveIntensity = photoGlow;
     shelfLights.forEach((light, index) => { light.intensity = shelves[index]; });
     shelfBulbs.forEach((emitter, index) => { emitter.emissiveIntensity = emitters[index]; });
   };
@@ -1227,6 +1268,8 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
       table: ramp('table', state.lamp ? JIANGNAN_TABLE_LIGHT.diffuse : 0),
       pool: ramp('pool', state.lamp ? JIANGNAN_TABLE_LIGHT.pool : 0),
       shade: ramp('shade', state.lamp ? .47 : 0),
+      photo: ramp('photo', state['photo-light'] ? 1.35 : 0),
+      photoGlow: ramp('photo-emitter', state['photo-light'] ? .62 : 0),
       shelves: shelfLights.map((light, index) => ramp('shelf:' + index, state['shelf-light'] ? light.userData.baseIntensity : 0)),
       emitters: shelfBulbs.map((emitter, index) => ramp('emitter:' + index, state['shelf-light'] ? shelfEmitterLevels[index] : 0))
     });
@@ -1256,6 +1299,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     },
     snapshotObjects() {
       return { ...objects.snapshot(), tableLight: taskLight.intensity, tablePool: lampPool.intensity, tablePoolVisible: lampPool.visible, shadeEmissive: shadeMat.emissiveIntensity,
+        photoLight: photoLight.intensity, photoEmitter: photoEmitter.emissiveIntensity,
         shelfLight: shelfLights.reduce((sum, light) => sum + light.intensity, 0), shelfEmitters: shelfBulbs.map(emitter => emitter.emissiveIntensity),
         rotorAngle: rotor.rotation.z, platterRotation: platter.rotation.y, pendulumRotation: pendulum.rotation.z,
         hourHand: hourHand.rotation.z, minuteHand: minuteHand.rotation.z, clockEpoch,
@@ -1277,6 +1321,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
         if (lightRamp.update(dt)) {
           writePracticals({
             table: lightRamp.value('table'), pool: lightRamp.value('pool'), shade: lightRamp.value('shade'),
+            photo: lightRamp.value('photo'), photoGlow: lightRamp.value('photo-emitter'),
             shelves: shelfLights.map((light, index) => lightRamp.value('shelf:' + index)),
             emitters: shelfBulbs.map((emitter, index) => lightRamp.value('emitter:' + index))
           });

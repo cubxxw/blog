@@ -15,31 +15,23 @@
 {{- range $index, $book := site.Data.travel.books -}}
   {{- $books = $books | append (dict "id" (printf "book-%d" $index) "title" (cond $zh .title_zh .title_en) "author" (cond $zh .author_zh .author_en) "note" (cond $zh .note_zh .note_en) "own" (default false .own) "url" (default "" .url)) -}}
 {{- end -}}
-<section class="space-boot" data-space-boot tabindex="-1" aria-labelledby="space-boot-title">
-  <header class="space-boot__header"><a href="{{ "/" | relLangURL }}">CUBXXW<span> / PERSONAL SYSTEM</span></a><span>TTY 01 · SPACE</span></header>
+<section class="space-boot" data-space-boot tabindex="-1" aria-label="{{ if $zh }}空间加载进度{{ else }}Room loading progress{{ end }}">
   <div class="space-boot__body">
-    <p class="space-boot__prompt"><span>cubxxw</span>@space:~$ <span>boot --personal</span></p>
-    <h2 id="space-boot-title">CUBXXW OS <span>/ {{ if $zh }}个人空间{{ else }}Personal space{{ end }}</span></h2>
-    <p class="space-boot__intro">{{ if $zh }}{{ site.Data.identity.person.name_zh }}{{ else }}{{ site.Data.identity.person.name }}{{ end }} · {{ site.Data.identity.person.jobTitle }}</p>
-    <div class="space-boot__identity" aria-label="{{ if $zh }}已载入的个人信息{{ else }}Personal information loaded{{ end }}">
-      <p><span class="space-boot__ok">[ OK ]</span> <code>/home/cubxxw</code> <span>{{ if $zh }}构建 AI 产品 · 写作 · 开源{{ else }}Building AI products · Writing · Open source{{ end }}</span></p>
-      <p><span class="space-boot__ok">[ OK ]</span> <code>/library</code> <span>{{ len (where site.RegularPages "Section" "in" (slice "ai-agent" "engineering" "growth")) }} {{ if $zh }}篇文章已索引{{ else }}articles indexed{{ end }}</span></p>
-      <p><span class="space-boot__ok">[ OK ]</span> <code>/projects</code> <span>{{ len site.Data.products.products }} {{ if $zh }}个项目已挂载{{ else }}projects mounted{{ end }}</span></p>
-    </div>
     <ol class="space-boot__steps" aria-label="{{ if $zh }}空间准备进度{{ else }}Room preparation{{ end }}">
       <li data-boot-step data-state="current"><span class="space-boot__mark" aria-hidden="true">[<span data-boot-mark> .. </span>]</span><code>engine</code><span>{{ if $zh }}载入场景引擎{{ else }}Load the scene engine{{ end }}</span><time data-boot-time></time></li>
       <li data-boot-step data-state="waiting"><span class="space-boot__mark" aria-hidden="true">[<span data-boot-mark>WAIT</span>]</span><code>workspace</code><span>{{ if $zh }}初始化房间与工作区{{ else }}Initialize room and workspace{{ end }}</span><time data-boot-time></time></li>
       <li data-boot-step data-state="waiting"><span class="space-boot__mark" aria-hidden="true">[<span data-boot-mark>WAIT</span>]</span><code>display</code><span>{{ if $zh }}提交第一帧画面{{ else }}Paint the first scene frame{{ end }}</span><time data-boot-time></time></li>
     </ol>
     <p class="space-boot__status" role="status" aria-live="polite" aria-atomic="true"><span class="space-boot__chevron" aria-hidden="true">›</span> <span data-boot-status>{{ if $zh }}正在载入场景引擎…{{ else }}Loading the scene engine…{{ end }}</span><span class="space-boot__caret" aria-hidden="true"></span></p>
+    <button type="button" class="space-boot__recovery" data-boot-skip hidden disabled>{{ if $zh }}打开工作区{{ else }}Open workspace{{ end }}</button>
   </div>
-  <footer class="space-boot__footer"><p>{{ if $zh }}画面就绪后自动进入。{{ else }}Enter automatically when the first frame is ready.{{ end }}</p><div><a href="{{ "/articles/" | relLangURL }}">{{ if $zh }}先读文章{{ else }}Read the writing{{ end }} ↗</a><button type="button" data-boot-skip hidden disabled>{{ if $zh }}打开工作区{{ else }}Open workspace{{ end }}</button></div></footer>
 </section>
 <div class="space-cafe" data-space-cafe>
   <header class="space-cafe__header">
     <a class="space-cafe__brand" href="{{ "/" | relLangURL }}" aria-label="{{ if $zh }}返回博客{{ else }}Back to the blog{{ end }}">SPACE<span>CAFÉ</span></a>
     <div class="space-cafe__utilities">
       <button type="button" data-cafe-language aria-label="{{ if $zh }}切换到英文{{ else }}Switch to Chinese{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</button>
+      <button type="button" data-cafe-photo-light aria-pressed="true" aria-label="{{ if $zh }}照片墙照明{{ else }}Photo wall lighting{{ end }}" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17h6m-5 3h4M8.4 13.5a6 6 0 1 1 7.2 0c-.9.7-1.1 1.4-1.1 2.5h-5c0-1.1-.2-1.8-1.1-2.5Z"/><path class="photo-light-rays" d="M12 1v1M3.5 4.5l.8.8M1 11h1m19 0h1m-2.3-6.5-.8.8"/></svg><span class="photo-light-label">{{ if $zh }}暖光{{ else }}Warm light{{ end }}</span></button>
       <button type="button" data-cafe-quiet aria-pressed="false">{{ if $zh }}安静模式{{ else }}Quiet mode{{ end }}</button>
       <button type="button" data-cafe-picker aria-haspopup="dialog" aria-label="{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}"><span>{{ if $zh }}换个地方{{ else }}Change the scene{{ end }}</span><span aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m4 18 5-5 4 3 3-5 4 7"/></svg></span></button>
     </div>
@@ -61,13 +53,6 @@
     <div class="space-cafe-inspect__caption" data-cafe-inspect-books hidden><div class="space-cafe-inspect__bookbar"><h2>{{ if $zh }}旅行书架{{ else }}Travel books{{ end }}</h2><button type="button" data-cafe-bookzoom aria-pressed="false">{{ if $zh }}走近书脊{{ else }}See spines{{ end }}</button><button type="button" data-cafe-booklist-toggle aria-expanded="false" aria-controls="space-cafe-booklist">{{ if $zh }}查看书目{{ else }}Book list{{ end }}</button></div><ul id="space-cafe-booklist" hidden tabindex="0" aria-label="{{ if $zh }}十本旅行书与作者{{ else }}Travel books and their authors{{ end }}">{{ range $books }}<li><strong>{{ .title }}</strong><span>{{ .author }}</span></li>{{ end }}</ul></div>
   </section>
   <div class="space-world-hud__roam"><p>{{ if $zh }}拖动看看四周，或用方向键散步。{{ else }}Drag to look around. Arrows to wander.{{ end }}</p><button type="button" data-cafe-read>{{ if $zh }}坐下，读一篇{{ else }}Sit down & read{{ end }} <span aria-hidden="true">↗</span></button><button type="button" data-cafe-enter>{{ if $zh }}打开工作区{{ else }}Open workspace{{ end }} <span aria-hidden="true">↗</span></button><button type="button" data-cafe-photos>{{ if $zh }}旅途相册{{ else }}Travel photos{{ end }}</button></div>
-  <details class="jiangnan-explore">
-    <summary>{{ if $zh }}探索房间{{ else }}Explore the room{{ end }}<span aria-hidden="true">＋</span></summary>
-    <div class="jiangnan-explore__guide">
-      <p>{{ if $zh }}拖动环视。轻点地板往前走，也可以用方向键散步。{{ else }}Drag to look around. Tap the floor to walk, or use the arrow keys.{{ end }}</p>
-      <p>{{ if $zh }}点亮台灯，挑一张唱片，走近书架；相框里藏着旅途，小猫也会回应你。{{ else }}Switch the lamp, choose a record, or browse the shelf. The photograph holds a journey; the cat has time for you, too.{{ end }}</p>
-    </div>
-  </details>
   <div class="space-world-touch" aria-label="{{ if $zh }}移动方向{{ else }}Movement{{ end }}"><button type="button" data-world-walk="forward" aria-label="{{ if $zh }}向前{{ else }}Forward{{ end }}">↑</button><button type="button" data-world-walk="left" aria-label="{{ if $zh }}向左{{ else }}Left{{ end }}">←</button><button type="button" data-world-walk="back" aria-label="{{ if $zh }}向后{{ else }}Back{{ end }}">↓</button><button type="button" data-world-walk="right" aria-label="{{ if $zh }}向右{{ else }}Right{{ end }}">→</button></div>
 </nav>
 <dialog class="space-cafe-picker" data-cafe-dialog aria-labelledby="space-cafe-picker-title">
