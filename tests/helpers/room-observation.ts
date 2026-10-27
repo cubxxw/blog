@@ -114,6 +114,8 @@ export async function expectRoomAttributes(page:Page,attributes:Record<string,st
 export async function observePausedResident(page:Page,checkFrames=false){
   await readRoomObservation(page,async(checkFrames)=>{
     const deadline=performance.now()+5000;
+    const diagnostic=(stage:string)=>{try{console.debug("ROOM_RESIDENT_PHASE",JSON.stringify({operation:"pause",stage,at:performance.now(),epoch:Date.now(),checkFrames}));}catch{}};
+    diagnostic("entered");
     const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');
     if(roots.length!==1)throw new Error('Resident pause root missing or ambiguous');
     const el=roots[0];
@@ -124,14 +126,19 @@ export async function observePausedResident(page:Page,checkFrames=false){
       if(remaining===0)throw new Error('Resident pause exceeded5000ms');
       await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
     }
-    sameRoot();const pose=el.dataset.catPose;if(!pose)throw new Error('Resident pause pose missing');
+    sameRoot();diagnostic("inactive");const pose=el.dataset.catPose;if(!pose)throw new Error('Resident pause pose missing');
+    diagnostic("pose-window-start");
     await new Promise(resolve=>setTimeout(resolve,400));sameRoot();
     if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose)throw new Error('Resident moved during400ms pause observation');
+    diagnostic("pose-stable");
     if(checkFrames){
       const frames=el.dataset.worldFrames;if(!frames)throw new Error('Resident pause frame counter missing');
+      diagnostic("frames-window-start");
       await new Promise(resolve=>setTimeout(resolve,200));sameRoot();
       if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose||el.dataset.worldFrames!==frames)throw new Error('Quiet room rendered during200ms idle observation');
+      diagnostic("frames-stable");
     }
+    diagnostic("complete");
     return true;
   // The state has its own5s deadline. Keep the subsequent400ms pose and
   // optional200ms idle windows complete, with bounded transport/cleanup room.
@@ -189,6 +196,8 @@ export async function observeResidentStartup(page:Page):Promise<ResidentStartupO
   for(const [phase,timeout]of stages){
     const value=await readRoomObservation(page,async({phase,timeout})=>{
       const deadline=performance.now()+timeout;
+      const diagnostic=(stage:string)=>{try{console.debug("ROOM_RESIDENT_PHASE",JSON.stringify({operation:"startup",phase,stage,at:performance.now(),epoch:Date.now()}));}catch{}};
+      diagnostic("entered");
       for(;;){
         if(performance.now()>deadline)throw new Error('Resident '+phase+' exceeded'+timeout+'ms');
         const state=window as unknown as {__catMotionObservation:ResidentStartupObservation;__catMotionRoot:Element;__catReadinessRoot:Element},data=state.__catMotionObservation;
@@ -204,10 +213,10 @@ export async function observeResidentStartup(page:Page):Promise<ResidentStartupO
         const owned=roots.length===1&&el===state.__catMotionRoot&&el===state.__catReadinessRoot;
         const boot=owned&&el.dataset.bootState==='complete'&&Number.isFinite(data.bootCompleteAt);
         const roam=boot&&el.dataset.worldRenderedMode==='roam'&&Number.isFinite(data.renderedRoamAt);
-        if(phase==='boot'&&boot)return true;
-        if(phase==='roam'&&roam)return true;
-        if(phase==='cat'&&roam&&el.dataset.catLoaded==='true')return true;
-        if(phase==='motion'&&roam&&el.dataset.catLoaded==='true'&&data.status==='changed')return data;
+        if(phase==='boot'&&boot){diagnostic("observed");return true;}
+        if(phase==='roam'&&roam){diagnostic("observed");return true;}
+        if(phase==='cat'&&roam&&el.dataset.catLoaded==='true'){diagnostic("observed");return true;}
+        if(phase==='motion'&&roam&&el.dataset.catLoaded==='true'&&data.status==='changed'){diagnostic("observed");return data;}
         const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Resident '+phase+' exceeded'+timeout+'ms');
         await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
       }
