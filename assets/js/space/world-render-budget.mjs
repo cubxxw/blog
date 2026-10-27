@@ -1,13 +1,21 @@
 const nativeBudget=Object.freeze({maxPixels:Infinity,maxPixelRatio:1.5,shadowSize:1536});
 const softwareBudget=Object.freeze({maxPixels:384000,maxPixelRatio:1.5,shadowSize:512});
+const contextBudgets=new WeakMap();
 
 // Capability-based, including ordinary visitors using software WebGL. Unknown
 // or privacy-restricted renderers keep the existing hardware rendering path.
 export function worldRenderBudget(gl){
+  const cacheable=gl&&(typeof gl==='object'||typeof gl==='function');
+  if(cacheable&&contextBudgets.has(gl))return contextBudgets.get(gl);
   try {
     const debug=gl?.getExtension('WEBGL_debug_renderer_info');
     const name=debug?String(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL)||''):'';
-    if(/SwiftShader|llvmpipe|softpipe|swrast|software rasterizer/i.test(name))return softwareBudget;
+    const budget=/SwiftShader|llvmpipe|softpipe|swrast|software rasterizer/i.test(name)?softwareBudget:nativeBudget;
+    // Capabilities are stable for this context. Re-reading them after queued
+    // draws can synchronously wait for the GPU. A thrown privacy/context query
+    // is deliberately not cached, so a transient failure can recover.
+    if(cacheable)contextBudgets.set(gl,budget);
+    return budget;
   }catch{}
   return nativeBudget;
 }

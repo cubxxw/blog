@@ -10,6 +10,10 @@ on:
         description: Upload verified main artifact as a Netlify draft (never production)
         type: boolean
         default: false
+      room_regressions:
+        description: Diagnose known room regressions before the complete required browser graph
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -52,34 +56,6 @@ jobs:
           browsers: ${{ steps.plan.outputs.browser_engines }}
       - name: Enforce offline checks and build one frozen production bundle
         run: node scripts/ci-run.mjs prepare
-      - name: Diagnose the desktop rear-door journey before browser fan-out
-        if: steps.plan.outputs.run_site == 'true'
-        run: |
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          import path from 'node:path';
-          import {spawnSync} from 'node:child_process';
-          import {verifyFrozenProof} from './scripts/ci-shards.mjs';
-          const dir=path.resolve('tests/.artifacts/ci'),bundleRoot=path.join(dir,'site');
-          const read=name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
-          const plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
-          const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl);
-          const evidence=path.resolve('tests/.artifacts/door-preflight');
-          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
-          const result=spawnSync(process.execPath,[
-            'node_modules/@playwright/test/cli.js','test','tests/e2e/space-door-excursion.spec.ts',
-            '--project=desktop','--workers=1','--retries=0','--repeat-each=3',
-            '--grep=1440px / no-preference.*the real rear door, deliberate step, splash and safe return form one repeatable journey'
-          ],{stdio:'inherit',env:{
-            ...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),
-            NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),
-            SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,
-            SITE_TEST_RESULTS:path.join(evidence,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(evidence,'html')
-          }});
-          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
-          if(result.error)throw result.error;
-          process.exitCode=result.status??1;
-          NODE
       - name: Verify reusable author audio
         run: npm run voice:test
       - name: Verify BEAR OS tool and media boundaries
@@ -109,9 +85,87 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
+  preflight:
+    name: Exercise room journeys on the frozen producer
+    needs: [prepare]
+    if: needs.prepare.outputs.run_site == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    outputs:
+      artifact_id: ${{ steps.evidence.outputs.artifact-id }}
+    env:
+      BLOG_PRODUCER_ARTIFACT_ID: ${{ needs.prepare.outputs.artifact_id }}
+      BLOG_ROOM_REGRESSIONS: ${{ inputs.room_regressions == true }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: chromium
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
+          path: tests/.artifacts/ci
+          merge-multiple: true
+      - name: Bind the exact producer before any browser input
+        run: node scripts/ci-preflight-receipt.mjs start
+      - name: Diagnose the desktop rear-door journey before browser fan-out
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import {spawnSync} from 'node:child_process';
+          import {verifyFrozenProof} from './scripts/ci-shards.mjs';
+          const dir=path.resolve('tests/.artifacts/ci'),bundleRoot=path.join(dir,'site');
+          const read=name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
+          const plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
+          const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl);
+          const evidence=path.resolve('tests/.artifacts/door-preflight');
+          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
+          const result=spawnSync(process.execPath,[
+            'node_modules/@playwright/test/cli.js','test','tests/e2e/space-door-excursion.spec.ts',
+            '--project=desktop','--workers=1','--retries=0','--repeat-each=3','--reporter=list,json,html',
+            '--grep=1440px / no-preference.*the real rear door, deliberate step, splash and safe return form one repeatable journey'
+          ],{stdio:'inherit',env:{
+            ...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),
+            NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),
+            SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,
+            SITE_TEST_RESULTS:path.join(evidence,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(evidence,'html'),
+            PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(evidence,'playwright-results.json')
+          }});
+          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
+          if(result.error)throw result.error;
+          process.exitCode=result.status??1;
+          NODE
+      - name: Diagnose known room regressions before browser fan-out
+        if: inputs.room_regressions == true
+        run: node scripts/ci-room-preflight.mjs
+      - name: Certify raw preflight results on the same producer
+        run: node scripts/ci-preflight-receipt.mjs finish
+      - name: Preserve original preflight evidence
+        id: evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-preflight-${{ github.run_id }}-${{ needs.prepare.outputs.artifact_id }}-${{ github.run_attempt }}
+          path: |
+            tests/.artifacts/ci/preflight-input.json
+            tests/.artifacts/ci/preflight-door-list.json
+            tests/.artifacts/ci/preflight-report.json
+            tests/.artifacts/ci/frozen.json
+            tests/.artifacts/ci/plan.json
+            tests/.artifacts/ci/room-preflight/
+            tests/.artifacts/door-preflight/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+
   browser:
     name: Browser ${{ matrix.id }}
-    needs: [prepare]
+    needs: [prepare, preflight]
     if: needs.prepare.outputs.run_site == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 120
@@ -153,7 +207,7 @@ jobs:
 
   verify:
     name: Required blog quality
-    needs: [prepare, browser]
+    needs: [prepare, preflight, browser]
     if: always()
     runs-on: ubuntu-24.04
     timeout-minutes: 120
@@ -178,11 +232,12 @@ jobs:
       - name: Reject incomplete or unsuccessful required jobs
         env:
           BLOG_PREPARE_RESULT: ${{ needs.prepare.result }}
+          BLOG_PREFLIGHT_RESULT: ${{ needs.preflight.result }}
           BLOG_BROWSER_RESULT: ${{ needs.browser.result }}
           BLOG_RUN_SITE: ${{ needs.prepare.outputs.run_site }}
         run: >-
           node --input-type=module -e 'import {assertVerificationJobs} from "./scripts/ci-shards.mjs";
-          assertVerificationJobs({prepare:process.env.BLOG_PREPARE_RESULT,browser:process.env.BLOG_BROWSER_RESULT,runSite:process.env.BLOG_RUN_SITE==="true"});'
+          assertVerificationJobs({prepare:process.env.BLOG_PREPARE_RESULT,preflight:process.env.BLOG_PREFLIGHT_RESULT,browser:process.env.BLOG_BROWSER_RESULT,runSite:process.env.BLOG_RUN_SITE==="true"});'
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - uses: actions/download-artifact@v8
         with:
@@ -195,8 +250,17 @@ jobs:
           pattern: blog-browser-${{ github.run_id }}-${{ needs.prepare.outputs.artifact_id }}-*
           path: tests/.artifacts/ci/shard-downloads
           merge-multiple: false
+      - uses: actions/download-artifact@v8
+        if: needs.prepare.outputs.run_site == 'true'
+        with:
+          artifact-ids: ${{ needs.preflight.outputs.artifact_id }}
+          path: tests/.artifacts/ci/preflight-download
+          merge-multiple: true
       - name: Aggregate every required partition and verify frozen identity
         id: verify
+        env:
+          BLOG_PRODUCER_ARTIFACT_ID: ${{ needs.prepare.outputs.artifact_id }}
+          BLOG_ROOM_REGRESSIONS: ${{ inputs.room_regressions == true }}
         run: node scripts/ci-run.mjs finalize
       - name: Upload the verified deployment bundle
         id: artifact
