@@ -13,12 +13,12 @@ async function scenario(options={}){
   const timers=new Map(),commands=[];
   const later=(fn,ms)=>{const id=++serial;timers.set(id,{at:now+ms,fn});return id;};
   const at=(time,fn)=>{if(time!==null&&time!==undefined)later(fn,Math.max(0,time-now));};
-  const root={dataset:{bootState:'loading',worldRenderedMode:'intro',catLoaded:'false',catActive:options.pauseAt===undefined?'false':'true',catPose:'rest',worldFrames:'7'}};
+  const root={dataset:{bootState:'loading',worldRenderedMode:'intro',catLoaded:'false',catActive:options.pauseAt===undefined?'false':'true',catPose:'rest',worldFrames:'7',cafeMode:'cafe'},getAttribute(name){return name==='data-cafe-mode'?this.dataset.cafeMode:null;}};
   let current=root,ambiguous=false,available=options.rootAt===undefined;
   const data={status:'startup',initialPose:null,initialTime:null,changedPose:null,changedTime:null,bootCompleteAt:null,renderedRoamAt:null,readinessError:null};
   const window={__catMotionObservation:options.missingObservation?undefined:data,__catMotionRoot:available?root:undefined,__catReadinessRoot:available?root:undefined};
   const context=vm.createContext({console:{warn(){}},performance:{now:()=>now},setTimeout:later,clearTimeout:id=>timers.delete(id),document:{querySelectorAll:()=>!available?[]:ambiguous?[current,root]:[current]},window});
-  vm.runInContext(executable+'\nglobalThis.api={readRoomObservation,withRoomObservationSession,observeResidentStartup,observePausedResident};',context);
+  vm.runInContext(executable+'\nglobalThis.api={readRoomObservation,withRoomObservationSession,observeResidentStartup,observePausedResident,expectRoomAttributes};',context);
   const boot=options.bootAt??1000,roam=options.roamAt??2000,cat=options.catAt??3000,motion=options.motionAt??5000;
   at(options.rootAt,()=>{available=true;window.__catMotionRoot=window.__catReadinessRoot=root;});
   at(boot,()=>{root.dataset.bootState='complete';data.bootCompleteAt=now;});
@@ -28,6 +28,7 @@ async function scenario(options={}){
     later(()=>{if(data.status==='watching')data.status='motion-timeout';},12000);
   });
   at(motion,()=>{if(data.status==='watching'){root.dataset.catPose='moved';data.changedPose='moved';data.changedTime=now;data.status='changed';}});
+  at(options.desktopAt,()=>{root.dataset.cafeMode='desktop';if(options.pauseAfter)root.dataset.catActive='false';});
   at(options.replaceAt,()=>{current={dataset:{...root.dataset}};});
   at(options.ambiguousAt,()=>{ambiguous=true;});
   at(options.readinessErrorAt,()=>{data.readinessError='controlled readiness error';});
@@ -38,6 +39,7 @@ async function scenario(options={}){
     detach:async()=>{detached++;},
     send:async(_method,{expression})=>{
       sends++;const call=sends;commands.push({at:now,expression});
+      if(options.executeDelay?.[call])await new Promise(resolve=>later(resolve,options.executeDelay[call]));
       let result;
       try{result={result:{value:await vm.runInContext(expression,context)}};}
       catch(error){result={result:{},exceptionDetails:{text:String(error.message)}};}
@@ -49,6 +51,7 @@ async function scenario(options={}){
   const page={context:()=>({browser:()=>({browserType:()=>({name:()=> 'chromium'})}),newCDPSession:async()=>{attached++;if(options.attachDelay)await new Promise(resolve=>later(resolve,options.attachDelay));return session;}})};
   const journey=context.api.withRoomObservationSession(page,async()=>{
     if(options.invalidateFirst){try{await context.api.readRoomObservation(page,()=>{throw Error('controlled first error');},undefined,{timeout:5000,label:'First',validate:()=>true});}catch{}}
+    if(options.attributeWait){await context.api.expectRoomAttributes(page,{'data-cafe-mode':'desktop'});if(options.pauseAfter)await context.api.observePausedResident(page,false);return true;}
     return options.pauseAt===undefined?context.api.observeResidentStartup(page):context.api.observePausedResident(page,options.checkFrames);
   });
   // This is the existing Playwright case deadline, starting before navigation.
@@ -117,4 +120,40 @@ for(const checkFrames of [false,true])test('late pause retains the full400ms pos
   const result=await scenario(input);assert.equal(result.ok,true,result.error);assert.ok(result.elapsed>=5100+(checkFrames?200:0));
   const moving=await scenario({...input,...(checkFrames?{frameAt:5250}:{poseAt:5050})});
   assert.equal(moving.ok,false);assert.match(moving.error,checkFrames?/rendered during200ms/:/moved during400ms/);
+});
+
+// The final desktop assertion uses the existing single-evaluation DOM reader.
+// Its one Node5s deadline includes setup, dispatch, polling and response time.
+test('desktop attributes can change during one in-browser poll without locator layout snapshots',async()=>{
+  const result=await scenario({attributeWait:true,desktopAt:1850,executeDelay:{1:1670}});
+  assert.equal(result.ok,true,result.error);assert.equal(result.elapsed,1870);
+  assert.equal(result.sends,1);assert.equal(result.attached,1);assert.equal(result.detached,1);
+  assert.ok(result.commands[0].expression.includes('getAttribute'));
+  assert.doesNotMatch(result.commands[0].expression,/getBoundingClientRect|getComputedStyle|ariaSnapshot|\.click\(/);
+});
+for(const [name,input,pattern]of [
+  ['unchanged attribute',{},/Room attributes exceeded5000ms/],
+  ['late actual conversion',{desktopAt:5001},/Room attributes exceeded5000ms/],
+  ['setup consumes the5s budget',{desktopAt:1000,attachDelay:5100,drainLate:true},/Room attributes exceeded5000ms/],
+  ['transport starts after5s',{desktopAt:1000,executeDelay:{1:5100},drainLate:true},/Room attributes exceeded5000ms/],
+  ['late response even for an early true value',{desktopAt:1000,sendDelay:{1:5100},drainLate:true},/Room attributes exceeded5000ms/],
+  ['root replaced',{desktopAt:1850,replaceAt:1000},/root replaced/],
+  ['ambiguous root',{desktopAt:1850,ambiguousAt:1000},/ambiguous/],
+  ['invalid protocol schema',{desktopAt:1850,invalidAt:1},/invalid value/],
+  ['invalidated scope',{desktopAt:1850,invalidateFirst:true},/controlled first error/],
+])test('desktop observation rejects '+name+' without fallback',async()=>{
+  const result=await scenario({attributeWait:true,...input});
+  assert.equal(result.ok,false);assert.match(result.error,pattern);
+  assert.equal(result.detached,1);assert.ok(result.sends<=1);
+  if(/5000ms/.test(pattern.source))assert.equal(result.elapsed,5000);
+});
+test('desktop gate retains the complete subsequent400ms resident pause',async()=>{
+  const result=await scenario({attributeWait:true,desktopAt:4700,pauseAfter:true,motionAt:20000});
+  assert.equal(result.ok,true,result.error);assert.equal(result.elapsed,5100);
+  const moving=await scenario({attributeWait:true,desktopAt:4700,pauseAfter:true,motionAt:20000,poseAt:5050});
+  assert.equal(moving.ok,false);assert.match(moving.error,/moved during400ms/);
+});
+test('desktop observation cannot escape the original90s journey budget',async()=>{
+  const result=await scenario({attributeWait:true,startAt:88000,desktopAt:90500});
+  assert.equal(result.ok,false);assert.match(result.error,/Test timeout90000ms/);assert.equal(result.elapsed,90000);
 });

@@ -79,3 +79,9 @@ test('optional dispatch preflight defaults off and cannot replace the full graph
   assert.ok(workflow.jobs.verify.needs.includes('browser'));
   assert.ok(workflow.jobs.release.needs.includes('verify'));
 });
+
+test('the resident desktop gate preserves native input, exact state and the following full pause with one5s observer',()=>{
+  const source=fs.readFileSync(new URL('../tests/e2e/00-space-resident-motion.spec.ts',import.meta.url),'utf8');
+  assert.match(source,/await clickStaticRoomControl\(page,'\[data-cafe-enter\]'\);await expectRoomAttributes\(page,\{'data-cafe-mode':'desktop'\}\);\s*await observePaused\(\)/);
+  assert.doesNotMatch(source,/toHaveAttribute\('data-cafe-mode','desktop'/);
+});
