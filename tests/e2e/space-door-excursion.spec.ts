@@ -308,3 +308,36 @@ test.describe('the working Mac survives the excursion',()=>{
     await expect(editor).toHaveValue(`${draft}\n继续写。`);
   });
 });
+
+test.describe('stalled renderer presentation',()=>{
+  test.use({viewport:{width:1440,height:900},isMobile:false,hasTouch:false,reducedMotion:'no-preference'});
+  test('the water fade completes without GPU frames and the real return still reaches a usable workspace',async({page})=>{
+    await page.addInitScript(()=>{
+      let paused=false,draws=0;
+      const pending:FrameRequestCallback[]=[],native=window.requestAnimationFrame.bind(window);
+      const probe={paused:false,drawsAtPause:0,get draws(){return draws;},resume(){paused=false;probe.paused=false;for(const callback of pending.splice(0))native(callback);}};
+      (window as any).__stalledRoomFrames=probe;
+      window.requestAnimationFrame=callback=>native(stamp=>{if(paused)pending.push(callback);else callback(stamp);});
+      for(const Type of [WebGLRenderingContext,WebGL2RenderingContext]){
+        for(const name of ['drawElements','drawArrays'] as const){const draw=Type.prototype[name];
+          (Type.prototype as any)[name]=function(...args:any[]){draws++;return Reflect.apply(draw,this,args);};}
+      }
+      new MutationObserver(records=>{
+        if(!paused&&records.some(record=>(record.target as HTMLElement).dataset?.roomDoorState==='submerged')){
+          paused=true;probe.paused=true;probe.drawsAtPause=draws;
+        }
+      }).observe(document,{subtree:true,attributes:true,attributeFilter:['data-room-door-state']});
+    });
+    await ready(page);await lookAtRoomObject(page,'door');const before=await clickPhysicalDoor(page,{touch:false});await threshold(page);
+    await stepButton(page).click();await phase(page,'submerged');
+    await expect(root(page).locator('.space-cafe-door-water')).toHaveCSS('opacity','1');
+    const state=await page.evaluate(()=>{const p=(window as any).__stalledRoomFrames;return {paused:p.paused,atPause:p.drawsAtPause,current:p.draws};});
+    expect(state.paused).toBe(true);expect(state.current).toBe(state.atPause);
+    await page.evaluate(()=>(window as any).__stalledRoomFrames.resume());
+    await panel(page,'submerged').getByRole('button',{name:'回到咖啡馆',exact:true}).click();await returned(page,before);
+    await page.keyboard.press('Control+k');await expect(page.locator('[data-space-search]')).toBeVisible();await page.locator('[data-space-search-close]').click();
+    const expand=page.locator('.jiangnan-computer-expand');if(await expand.isVisible())await expand.click();
+    await page.locator('[data-mac-menu="file"]').click();await page.locator('[data-mac-panel="file"] [data-open="notes"]').click();
+    await page.locator('[data-note-editor]').fill('The same workspace after a stalled frame.');await expect(page.locator('[data-note-editor]')).toHaveValue('The same workspace after a stalled frame.');
+  });
+});

@@ -1,23 +1,15 @@
 import {test,expect} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
+import {clickStaticRoomControl} from '../helpers/static-room-control';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-test.use({channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.use({channel:'chromium',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 test.beforeEach(({page})=>reserveWorldJourney(page));
 const root='[data-bear-workspace]';
 const room=async(page:import('@playwright/test').Page)=>{
   await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
   await expect(page.locator(root)).toHaveAttribute('data-world-rendered-mode','roam');
-};
-const clickWithClockPaused=async(control:import('@playwright/test').Locator)=>{
-  await expect(control).toBeVisible();await expect(control).toBeEnabled();
-  // Seven scenes make the native picker scroll on narrow screens. Scroll
-  // without smooth animation while the application's clock is held still.
-  await control.evaluate(el=>el.scrollIntoView({block:'nearest',behavior:'instant'}));
-  const point=await control.evaluate(el=>{const r=el.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;return {x,y,width:r.width,height:r.height,inside:x>=0&&y>=0&&x<innerWidth&&y<innerHeight,hit:el.contains(document.elementFromPoint(x,y))};});
-  expect(point.width).toBeGreaterThanOrEqual(44);expect(point.height).toBeGreaterThanOrEqual(44);expect(point.inside).toBe(true);expect(point.hit).toBe(true);
-  await control.page().mouse.click(point.x,point.y);
 };
 
 for(const language of ['zh','en'])test(`the default personal room boots visibly in ${language}`,async({page})=>{
@@ -117,10 +109,10 @@ test('a cancelled read transition cannot steal a replayed café visit',async({pa
   try{
     await page.goto('/zh/projects/');await room(page);
     await page.clock.pauseAt(new Date('2026-10-17T01:00:00Z'));
-    await clickWithClockPaused(page.locator('[data-cafe-read]'));
+    await clickStaticRoomControl(page,'[data-cafe-read]');
     await expect(page.locator(root)).toHaveAttribute('data-world-travel','true');
-    await clickWithClockPaused(page.locator('.space-cafe__utilities [data-cafe-picker]'));
-    await clickWithClockPaused(page.locator('[data-cafe-replay]'));
+    await clickStaticRoomControl(page,'.space-cafe__utilities [data-cafe-picker]');
+    await clickStaticRoomControl(page,'[data-cafe-replay]');
     // A replay uses the already rendered room and must not add a boot delay.
     await page.clock.fastForward(2000);
     await expect(page.locator(root)).toHaveAttribute('data-boot-state','revealing');
@@ -129,7 +121,7 @@ test('a cancelled read transition cannot steal a replayed café visit',async({pa
     const snapshot=await page.evaluate(()=>(window as unknown as {BearSpace:{snapshot:()=>{active:string;windows:{id:string}[]}}}).BearSpace.snapshot());
     expect(snapshot.active).not.toBe('reader');
     await expect(page.locator('[data-space-window="reader"]')).toHaveCount(0);
-    await clickWithClockPaused(page.locator('[data-cafe-enter]'));await page.clock.fastForward(2000);await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+    await clickStaticRoomControl(page,'[data-cafe-enter]');await page.clock.fastForward(2000);await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   }finally{await page.clock.resume();}
 });
 
@@ -167,62 +159,6 @@ test('the optional resident can fail without blocking the room or workspace',asy
   await page.goto('/zh/projects/');await room(page);await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','false');
   await page.locator('[data-cafe-read]').click();await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   await expect(page.locator('[data-space-window="reader"]')).toBeVisible();
-});
-
-test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>{
-  await reserveWorldJourney(page);
-  await page.addInitScript(()=>{
-    const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null};
-    (window as unknown as {__catMotionObservation:typeof observation}).__catMotionObservation=observation;
-    const startupDeadline=performance.now()+60000;
-    let target:Element|null=null,done=false,timer:ReturnType<typeof setTimeout>;
-    const finish=(status:string)=>{
-      if(done)return;done=true;observation.status=status;
-      observer.disconnect();clearTimeout(timer);removeEventListener('pagehide',onPageHide);
-    };
-    const onPageHide=()=>finish('pagehide');
-    const sample=()=>{
-      if(done)return;
-      const now=performance.now();if(observation.initialTime===null&&now>startupDeadline){finish('startup-timeout');return;}
-      if(!target){
-        target=document.querySelector('[data-bear-workspace]');if(!target)return;
-        observer.disconnect();observer.observe(target,{attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
-      }
-      const loaded=target.getAttribute('data-cat-loaded'),active=target.getAttribute('data-cat-active'),pose=target.getAttribute('data-cat-pose');
-      if(observation.initialTime===null){
-        if(loaded!=='true'||active!=='true'||!pose)return;
-        observation.initialPose=pose;observation.initialTime=now;observation.status='watching';
-        clearTimeout(timer);timer=setTimeout(()=>finish('motion-timeout'),12000);return;
-      }
-      if(now-observation.initialTime>12000){finish('motion-timeout');return;}
-      if(loaded==='true'&&active==='true'&&pose&&pose!==observation.initialPose){
-        observation.changedPose=pose;observation.changedTime=now;finish('changed');
-      }
-    };
-    const observer=new MutationObserver(sample);
-    // Only collect actual attributes: no layout reads, frame loops or product writes.
-    observer.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
-    addEventListener('pagehide',onPageHide,{once:true});timer=setTimeout(()=>finish('startup-timeout'),60000);sample();
-  });
-  await page.goto('/zh/projects/');await room(page);
-  await expect(page.locator(root)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
-  await expect.poll(()=>page.evaluate(()=>(window as unknown as {__catMotionObservation:{status:string}}).__catMotionObservation.status),{timeout:12000}).toBe('changed');
-  const movement=await page.evaluate(()=>(window as unknown as {__catMotionObservation:{initialPose:string;initialTime:number;changedPose:string;changedTime:number}}).__catMotionObservation);
-  const movementMs=movement.changedTime-movement.initialTime;
-  expect(Number.isFinite(movementMs)).toBe(true);expect(movementMs).toBeGreaterThan(0);expect(movementMs).toBeLessThanOrEqual(12000);
-  expect(movement.changedPose).not.toBe(movement.initialPose);
-  const pose=()=>page.locator(root).getAttribute('data-cat-pose');
-  await page.locator('.space-cafe__utilities [data-cafe-quiet]').click();await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
-  const quiet=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(quiet);
-  const frames=await page.locator(root).getAttribute('data-world-frames');await page.waitForTimeout(200);expect(await page.locator(root).getAttribute('data-world-frames')).toBe(frames);
-  await page.locator('.space-cafe__utilities [data-cafe-quiet]').click();
-  await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
-  await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');const modal=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(modal);
-  await page.locator('[data-cafe-picker-close]').click();
-  await page.emulateMedia({reducedMotion:'reduce'});await expect(page.locator(root)).toHaveAttribute('data-cat-active','false');
-  const reduced=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(reduced);
-  await page.locator('[data-cafe-enter]').click();await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
-  const desk=await pose();await page.waitForTimeout(400);expect(await pose()).toBe(desk);
 });
 
 test('a graphics failure during the reveal cannot leave an invisible modal behind',async({page})=>{

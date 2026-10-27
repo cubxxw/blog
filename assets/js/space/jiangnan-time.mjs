@@ -27,8 +27,8 @@ export function createJiangnanTime({now=Date.now(),storage,startHour}={}){
   const natural=stamp=>initial+Math.max(0,(Number.isFinite(stamp)?stamp:now)-epoch)/1000*10;
   const commit=(stamp=Date.now())=>{if(holding!==null){offset=holding-natural(stamp);holding=null;}if(Number.isFinite(startHour))return;try{storage?.setItem(OFFSET_KEY,JSON.stringify({epoch,initial,offset}));}catch{}};
   return {
-    at(stamp=Date.now()){const present=natural(stamp),unwrapped=holding??present+offset;return {...jiangnanTimeAt(unwrapped),unwrapped,borrowed:Math.abs(unwrapped-present)>.001};},
-    presentAt(stamp=Date.now()){const unwrapped=natural(stamp);return {...jiangnanTimeAt(unwrapped),unwrapped,borrowed:false};},
+    at(stamp=Date.now()){const sampledAt=Number.isFinite(stamp)?stamp:now,present=natural(sampledAt),unwrapped=holding??present+offset;return {...jiangnanTimeAt(unwrapped),unwrapped,borrowed:Math.abs(unwrapped-present)>.001,sampledAt};},
+    presentAt(stamp=Date.now()){const sampledAt=Number.isFinite(stamp)?stamp:now,unwrapped=natural(sampledAt);return {...jiangnanTimeAt(unwrapped),unwrapped,borrowed:false,sampledAt};},
     travelTo(seconds,{stamp=Date.now(),persist=true}={}){if(!Number.isFinite(seconds)||Math.abs(seconds)>DAY*3650)return;offset=seconds-natural(stamp);if(holding!==null)holding=seconds;if(persist)commit(stamp);},
     hold(stamp=Date.now()){holding=holding??natural(stamp)+offset;},
     returnNow(){holding=null;offset=0;commit();},commit
