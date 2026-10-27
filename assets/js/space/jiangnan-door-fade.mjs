@@ -15,19 +15,39 @@ function ease(progress) {
   return bezier((low + high) / 2, .1, 1);
 }
 
-// The world owns the only frame loop. This small presentation controller uses
-// its visible elapsed seconds, independently of CSS transition start times or
-// the bounded physics delta. Paused/inactive frames never accumulate time.
-export function createJiangnanDoorFade({ duration = JIANGNAN_DOOR_FADE_SECONDS, still = () => false, onChange = () => {} } = {}) {
+// The world owns the only frame loop. Ordinary frames present the ease curve.
+// An optional DOM-only deadline also completes it if GPU backpressure stalls
+// rAF; it never advances the world. Paused time belongs to neither clock.
+export function createJiangnanDoorFade({ duration = JIANGNAN_DOOR_FADE_SECONDS, still = () => false, onChange = () => {},
+  now = () => performance.now() / 1000, setTimer = null, clearTimer = clearTimeout } = {}) {
   const span = Number.isFinite(duration) && duration > 0 ? duration : JIANGNAN_DOOR_FADE_SECONDS;
   let value = 0, from = 0, target = 0, elapsed = 0, changedAt = null, active = true, disposed = false;
+  let timer = null, deadlineStarted = null, remaining = span, generation = 0;
+  const clearDeadline = (preserve = false) => {
+    if (preserve && deadlineStarted !== null) remaining = Math.max(0, remaining - Math.max(0, now() - deadlineStarted));
+    if (timer !== null) clearTimer(timer);
+    timer = null; deadlineStarted = null; generation++;
+  };
   const present = next => {
     if (next === value) return false;
     value = next; onChange(value); return true;
   };
   const settle = () => {
+    clearDeadline();
     from = target; elapsed = 0; changedAt = null;
     return present(target);
+  };
+  const armDeadline = () => {
+    clearDeadline();
+    if (!setTimer || disposed || !active || value === target) return;
+    const run = generation, expected = target;
+    deadlineStarted = now();
+    timer = setTimer(() => {
+      if (run !== generation || disposed || !active || target !== expected) return;
+      remaining = Math.max(0, remaining - Math.max(0, now() - deadlineStarted));
+      timer = null; deadlineStarted = null;
+      if (remaining > 1e-9) armDeadline(); else settle();
+    }, remaining * 1000);
   };
   return {
     get value() { return value; },
@@ -37,6 +57,7 @@ export function createJiangnanDoorFade({ duration = JIANGNAN_DOOR_FADE_SECONDS, 
       const next = Boolean(value);
       if (disposed || next === active) return active;
       active = next;
+      if (active) armDeadline(); else clearDeadline(true);
       // The world may keep rendering a camera flight behind a dialog. Resume
       // this fade's clock at the actual unblock event, without resetting the
       // camera, resident or shared frame clock.
@@ -50,6 +71,7 @@ export function createJiangnanDoorFade({ duration = JIANGNAN_DOOR_FADE_SECONDS, 
       if (next === target) return value;
       from = value; target = next; elapsed = 0;
       changedAt = Number.isFinite(at) ? at : null;
+      remaining = span; armDeadline();
       return value;
     },
     update(seconds, { active: frameActive = true, at } = {}) {

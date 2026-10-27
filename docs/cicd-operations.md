@@ -38,6 +38,20 @@ npm run site:verify -- --public-dir tests/.artifacts/site/public --page-map test
 
 CLI 参数中的提交和时间必须填入本次实际值；不要将示例占位值写入回执。纯质量检查不会发布，也不会修正文案或回推 `main`。
 
+### 分片的测试覆盖凭据
+
+prepare仅执行离线检查、一次生产构建和宿主测试，再上传未认证冻结输入。真实后门与可选房间检查在独立Ubuntu24.04 preflight runner下载该精确artifact执行，避免与建站任务共享临时进程和资源状态；这不等于已证实建站污染为根因。原后门三次始终运行，optional18关闭时仅其标为未请求。全部浏览器片依赖preflight成功；没有站点时preflight与browser都应跳过。verify始终核对prepare/preflight/browser三者状态，失败、取消、缺失或不符合runSite的skip全部拒绝。
+
+prepare为每次站点构建独立列举并冻结`testInventory.preflight.door`，与quality/legacy分片选择无关。普通文章只有quality时仍执行原后门三次，不能因没有legacy清单而阻断合法文章路径，也不能通过增加全部legacy或跳过后门解决。完整legacy存在时，后门身份还必须恰好出现在该清单一次；缺失或错误的独立身份继续封闭。
+
+preflight绑定源码、run、producer artifact ID和frozen proof摘要，前后复核全部冻结字节；后门原始JSON必须与同次列举的三个单项目唯一spec.id精确匹配、规范源码身份等于冻结单一后门，并且三次首次通过（JSON省略repeatEachIndex时仅此入口按列举ID映射三个slot，不改变全站清单），可选18按原清单全部首次通过。最终聚合下载明确的preflight artifact ID，重读rawJSON和回执，核对当前producer身份和实际执行证据。同一producer可复用先前成功预检，不按consumer attempt误拒绝；新producer不能借旧回执。不会再构建一次站点，也不改变原120分钟job、页面/旅程门限、画质、输入、trace或分片选择。
+
+prepare 在同一冻结产物上按原配置、项目和过滤条件执行 Playwright `--list --reporter=json`，同时保存整套清单及各分片清单到 `frozen.json`。每套分片必须恰好覆盖整套清单一次，不能缺项、重复或额外混入测试。
+
+每个消费者保存 `playwright-results.json` 原始报告和从该报告生成的 evidence；最终聚合重新读取原始报告，与包装 evidence 和冻结清单核对。空结果、无实际执行的整片、缺测试、重复身份、全片跳过、报告级错误及未完成测试均阻止认证。首次通过、flaky、跳过、预期失败和实际重试次数分别统计；既有个别跳过仍单独记录，不计为通过，也不增加豁免。
+
+消费者仍按相同 producer artifact 和 frozen proof 复用先前成功的分片，采用每片最新 consumer attempt；较新失败不能退回旧成功。失败/取消消费者可能没有完整 JSON，只作为失败证据保留，后续成功必须提供完整且一致的原始 JSON。legacy/quality 从第一次失败保留 trace，interactive 继续保留原有失败 trace。此改动不改变发布模式、生产 artifact 格式、测试选择、worker 数或超时门限。
+
 原生 Netlify Git 构建与隔离构建共用 `--hugo-phase` 入口。该入口的目标默认是 `production`，可由 `BLOG_BUILD_TARGET` 指定；时刻优先读取 `BLOG_BUILD_CLOCK`，缺省使用当前 UTC 时间。base URL 按以下顺序取第一个非空值：
 
 - `production`：`BLOG_BUILD_BASE_URL` → `HUGO_BASEURL` → `https://cubxxw.com`，忽略 `DEPLOY_PRIME_URL`，避免 Netlify 的 `main--cubxxw.netlify.app` 分支别名覆盖生产域名。
@@ -154,3 +168,16 @@ gh workflow run rollback-netlify.yml -f deployment_id=VERIFIED_GITHUB_DEPLOYMENT
 draft 必须返回 `draft-verified`，验证的是独立部署 URL 的版本、页面、资源与函数，不能拿“上传成功”代替，也不会生成生产回执。平台控制默认只读 inspect；pause 先保存当前部署检查点，再停止 Git builds，并检查仍在运行的原生构建。只有 `ready=true` 才具备切换条件。resume 要求 Actions 已不处于 active，防止双重发布。
 
 首次迁移以前的原生 Netlify 部署没有本协议回执。切换前保留其平台 deploy ID 作为人工恢复点；不能给旧版本伪造 GitHub 验证记录。以后由新链路生成的已验证版本才适用上述自动验证回退入口。
+
+### 候选房间回归预检
+
+已知房间流程正在修复时，可手动触发 `gh workflow run main.yaml --ref codex/<task> -f room_regressions=true`。该 boolean 输入默认false；仅实际构建站点且显式启用时，在已有后门预检后、完整浏览器分片前执行一次定向诊断。GitHub输入使用保留boolean类型的 [`inputs` 上下文](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts)。
+
+诊断固定选择九个真实用例的desktop/mobile项目（18项）：居民暂停、浏览器native/compatible连续性、quiet/reduce/resize，以及完整门禁曾失败或重试的江南远景失败后移动、boat环境恢复、时钟返回中断、猫的motion切换恢复、唱片旋转。先从producer清单确认每个目标唯一，再核对真实JSON的完整ID、全部首次通过、无skip/retry/全局错误；命令保留单worker、原页面与用例门限。清单缺项、首次失败或进程异常均阻断preflight及后续完整浏览器图。真实精确 `--list` 只用于校验选择，不算浏览器通过。
+
+前后校验同一冻结proof，证据保存在 `tests/.artifacts/ci/room-preflight/`，由独立preflight artifact以always保留，位于发布的 `site/` 之外。summary顶层ok同时要求进程成功和严格验证，不能用嵌套通用evidence.ok或退出码替代。该阶段是诊断，原完整8片与最终认证继续执行；预检计数单独记录，不与全量独立用例分母相加。正常push/PR默认不增加此诊断成本，发布仍沿现有shadow/原生Git流程。
+
+
+房间静态控件使用一次原生5秒状态等待、50ms定时轮询，再读取geometry并释放handle、执行原44px与命中守卫和实际鼠标点击。共同5秒比顺序两个独立5秒更严格；不能用同5秒Node poll替代，因为trace/协议计时边界不同。移动3D目标仍按真实投影与输入验收。两个Chromium浏览器连续性用例显式选择camera-only CDP拖动；封闭scope由最后真实PWclick同步鼠标位置，失败恢复最后原生点；单独拖动默认立即同步。真实按下/移动/释放、10次转头、逐操作30秒和旅程90秒保持，其他调用默认原路径。迟到attach也必须清理自有session。`room-native-input.spec.ts`覆盖可信事件、失败与真实30秒迟到连接，小fixture不能当实际房间、完整Linux或生产验收。
+
+居民启动探针复用原被动motion窗口，并记录boot及其后roam绘制的首次观测时刻。一次原生30秒启动观察是更严格的共同截止，独立保留观测boot后5秒的roam要求、原12秒motion窗口、同一唯一root和所有实际输入；不是导航起30秒或现场性能达标声明。

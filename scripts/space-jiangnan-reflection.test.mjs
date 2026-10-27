@@ -40,7 +40,8 @@ const runtime=`
     get travelling(){return Boolean(moving);},
     setFlowing(value){quiet=!value;wake();},
     setBoot(value){root.dataset.bootState=value;wake();},
-    get environmentTime(){return environmentTime;}
+    get environmentTime(){return environmentTime;},
+    forceTick:tick
   });
 `;
 

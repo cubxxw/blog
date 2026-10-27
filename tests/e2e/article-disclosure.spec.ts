@@ -174,8 +174,23 @@ test.describe('Article disclosure — ZH/EN editorial strip', () => {
     // Summary already visible: collapsing must not move the page.
     await summary.click();
     expect(await isOpen(page, 0)).toBe(true);
+    // Viewport-only visibility can leave the strip behind the sticky header.
+    // Establish the implementation's readable viewport before testing the
+    // already-visible branch, and stop any earlier deliberate smooth scroll.
+    await summary.evaluate((el) => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
+    // A compositor frame from the preceding off-screen smooth scroll can
+    // still be queued. Use native geometry stability before sampling the
+    // no-scroll branch, without waiting away a shift after the collapse.
     await summary.scrollIntoViewIfNeeded();
-    const before = await page.evaluate(() => window.scrollY);
+    const beforeState = await summary.evaluate((el) => {
+      const rect = el.getBoundingClientRect();
+      const visibleTop = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      return { scrollY, top: rect.top, bottom: rect.bottom, visibleTop, viewport: innerHeight, fontStatus: document.fonts.status };
+    });
+    expect(beforeState.top).toBeGreaterThanOrEqual(beforeState.visibleTop);
+    expect(beforeState.bottom).toBeLessThanOrEqual(beforeState.viewport);
+    await test.info().attach('already-visible-collapse-precondition', { contentType: 'application/json', body: JSON.stringify(beforeState) });
+    const before = beforeState.scrollY;
     await button.evaluate((el) => (el as HTMLElement).click());
     await expect
       .poll(() => isOpen(page, 0))
