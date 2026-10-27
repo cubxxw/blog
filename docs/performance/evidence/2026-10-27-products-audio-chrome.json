@@ -1,0 +1,38 @@
+{
+  "engine": "156.0.8078.48",
+  "origin": "http://127.0.0.1:4179",
+  "policy": "controlled autoplay denial; real native decoding and sources",
+  "checks": [
+    {
+      "name": "native blocked autoplay downloads no audio",
+      "state": {
+        "boot": "complete",
+        "sound": "blocked",
+        "ambient": "blocked"
+      },
+      "requests": []
+    },
+    {
+      "name": "first native gesture starts both real sources",
+      "state": {
+        "boot": "complete",
+        "sound": "playing",
+        "ambient": "playing"
+      }
+    },
+    {
+      "name": "record-panel pause remembers user choice"
+    },
+    {
+      "name": "slow download shows loading and cancel"
+    },
+    {
+      "name": "HTTP failure shows retry and retry starts real music"
+    },
+    {
+      "name": "mobile record controls rendered",
+      "screenshot": "products-records-mobile.png"
+    }
+  ],
+  "errors": []
+}

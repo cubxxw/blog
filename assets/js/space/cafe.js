@@ -169,9 +169,8 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       if(focus)focusDesktop()?.focus({preventScroll:true});return true;
     }
     onEnter();await ready;if(current!==revision||disposed)return false;
-    setMode('desktop');
     if(world)await world.focus();if(current!==revision||disposed)return false;
-    if(focus)focusDesktop()?.focus({preventScroll:true});return true;
+    setMode('desktop');if(focus)focusDesktop()?.focus({preventScroll:true});return true;
   }
   async function visit(place='return'){
     desiredMode='cafe';boot.dismiss();const current=++revision;beforeVisit();if(dialog.open)closePicker();

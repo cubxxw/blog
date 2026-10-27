@@ -32,3 +32,12 @@ test('the three recordings are distinct local audio files and derived masters ma
   }
   assert.equal(new Set(hashes).size,3,'record names must never be aliases for one audio file');
 });
+
+test('web rain retains its verified lossless master and ships a substantially smaller attributed copy',async()=>{
+  const receipt=JSON.parse(await readFile(new URL('../static/audio/space/rain-distant-storm-loop-web.json',import.meta.url),'utf8'));
+  const web=await readFile(new URL('../static/audio/space/'+receipt.file,import.meta.url));
+  const master=await readFile(new URL('../static/audio/space/'+receipt.master,import.meta.url));
+  assert.equal(receipt.bytes,web.byteLength);assert.equal(receipt.sha256,createHash('sha256').update(web).digest('hex'));
+  assert.equal(receipt.masterSha256,createHash('sha256').update(master).digest('hex'));
+  assert.ok(web.byteLength<master.byteLength*.1);assert.equal(receipt.license,'CC BY 3.0');
+});
