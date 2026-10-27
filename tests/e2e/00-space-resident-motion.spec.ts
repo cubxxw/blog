@@ -1,12 +1,11 @@
 import {test,expect} from '../helpers/frozen-site';
 import {reserveWorldJourney} from '../helpers/space-entry';
 import {clickStaticRoomControl} from '../helpers/static-room-control';
-import {readRoomObservation,observePausedResident,withRoomObservationSession,observeResidentStartup} from '../helpers/room-observation';
+import {readRoomObservation,observePausedResident,withRoomObservationSession,observeResidentStartup,expectRoomAttributes} from '../helpers/room-observation';
 import {withRoomPointerBatch} from '../helpers/room-pointer';
 
 test.use({channel:'chromium',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 test.beforeEach(({page})=>reserveWorldJourney(page));
-const root='[data-bear-workspace]';
 
 // Automatic DOM/screencast capture correlated with software-GPU stalls.
 // Keep it disabled here, retaining action/source traces and failure
@@ -108,6 +107,6 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   await waitForActive();
   await page.emulateMedia({reducedMotion:'reduce'});await observePaused();
   await page.emulateMedia({reducedMotion:'no-preference'});await waitForActive();
-  await clickStaticRoomControl(page,'[data-cafe-enter]');await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  await clickStaticRoomControl(page,'[data-cafe-enter]');await expectRoomAttributes(page,{'data-cafe-mode':'desktop'});
   await observePaused();
 }));

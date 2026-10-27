@@ -100,6 +100,8 @@
 .room-record[data-playing="true"] strong::before { content:'♪ '; color:#d6bc87; }
 .room-records__footer { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-top:12px; border-top:1px solid #c9ad7d26; padding-top:8px; }
 .space .room-records__footer button,.space .room-object-caption button { padding:8px 0; border:0; border-radius:0; color:#e4ce9e; background:transparent; font-size:13px; }
+.space .room-records__status { margin:4px 0 0; color:#cec2ad; font-size:12px; }
+.space .room-records__footer button:disabled { opacity:.6; cursor:default; }
 .room-booklist__volumes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
 .space .room-book { display:block; padding:12px 14px; min-width:0; min-height:68px; text-align:left; border:0; border-left:3px solid #95836466; border-radius:1px; background:#c9ad7d0a; color:#e9dfcd; }
 .room-book strong,.room-book span { display:block; font-size:14px; line-height:1.5; font-weight:400; }

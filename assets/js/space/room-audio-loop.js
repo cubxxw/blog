@@ -94,7 +94,9 @@ export function createRoomLoopAudio() {
         if(pending)return pending;
         const current=++token;
         const playing=(async()=>{
-          const [ctx,audio]=await Promise.all([resume(),load()]);
+          const ctx=await resume();
+          if(ended||disposed||current!==token)return;
+          const audio=await load();
           if(ended||disposed||current!==token||!audio)return;
           const now=ctx.currentTime,gain=ctx.createGain(),next=ctx.createBufferSource();
           gain.gain.value=volume;gain.connect(ctx.destination);

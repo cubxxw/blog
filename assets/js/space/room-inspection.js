@@ -35,7 +35,15 @@ export function mountRoomInspection({root,books=[],records=[],zh=true,onInspect,
  }
  function refreshAudio(){
   const state=audio();host.querySelectorAll('[data-room-record]').forEach(button=>{button.setAttribute('aria-pressed',String(button.dataset.roomRecord===state.trackId));button.dataset.playing=String(button.dataset.roomRecord===state.trackId&&state.playing);});
-  const playback=host.querySelector('[data-room-playback]');if(playback){playback.textContent=state.playing?t('暂停音乐','Pause music'):t('播放音乐','Play music');playback.setAttribute('aria-pressed',String(state.playing));}
+  const playback=host.querySelector('[data-room-playback]');if(playback){
+   const phase=root.dataset.roomSound,quiet=root.dataset.environmentPaused==='true',loading=phase==='wanted'&&!quiet;
+   playback.textContent=state.playing?t('暂停音乐','Pause music'):loading?t('取消载入','Cancel loading'):phase==='error'?t('重试播放','Retry playback'):t('播放音乐','Play music');
+   playback.setAttribute('aria-pressed',String(state.playing));playback.setAttribute('aria-busy',String(loading));playback.disabled=quiet;
+   let status=host.querySelector('[data-room-playback-status]');
+   if(!status){status=document.createElement('p');status.dataset.roomPlaybackStatus='';status.className='room-records__status';status.setAttribute('role','status');playback.parentElement.after(status);}
+   status.textContent=quiet?t('安静模式已开启，关闭后可播放。','Turn off quiet mode to play music.'):loading?t('正在载入音乐…','Loading music…'):phase==='error'?t('音乐未能载入，请重试。','Music could not load. Please retry.'):phase==='blocked'?t('点按播放，开启声音。','Press play to enable sound.'):state.playing&&state.volume===0?t('音箱已静音，可调高音量。','The speaker is muted. Raise the volume to listen.'):'';
+   status.hidden=!status.textContent;
+  }
   // Update the existing range in place: playback completion and gain changes
   // can arrive during a drag, when replacing its DOM would lose pointer/focus.
   const slider=host.querySelector('[data-room-volume]'),output=host.querySelector('[data-room-volume-value]');

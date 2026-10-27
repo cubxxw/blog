@@ -41,6 +41,7 @@ function fixture(options={}) {
   }
   replace('document',document);replace('Audio',Media);
   if(options.savedVolume!==undefined)stored.set('space:cafe:music-volume:v1',String(options.savedVolume));
+  if(options.savedMusic!==undefined)stored.set('space:cafe:music-enabled:v1',options.savedMusic);
   replace('localStorage',{getItem:key=>stored.get(key)??null,setItem(key,value){stored.set(key,value);storageWrites.push({key,value});}});
   if(options.independentAmbience){
     replace('navigator',{userActivation:{hasBeenActive:!options.blocked,isActive:!options.blocked}});
@@ -477,6 +478,36 @@ const recordTracks=Object.freeze([
   {id:'stroll',title:'Long Stroll',titleEn:'Long Stroll',artist:'Kevin MacLeod',src:'/music-stroll.mp3'},
   {id:'piano',title:'Almost New',titleEn:'Almost New',artist:'Kevin MacLeod',src:'/music-piano.mp3'},
 ]);
+
+test('blocked autoplay does not download either complete audio file before the first gesture',async()=>{
+  const f=fixture({independentAmbience:true,blocked:true});try{
+    await settle();assert.equal(f.controller.state.status,'blocked');assert.equal(f.requests.length,0);
+    f.unlock();f.click();await settle();
+    assert.equal(f.controller.state.playing,true);assert.equal(f.controller.state.ambientPlaying,true);
+    assert.equal(f.requests.length,2);
+  }finally{f.restore();}
+});
+
+test('a visitor who paused music stays paused on the next visit and can explicitly play a record',async()=>{
+  const f=fixture({independentAmbience:true,savedMusic:'no',tracks:recordTracks});try{
+    await settle();assert.equal(f.controller.state.wanted,false);assert.equal(f.controller.state.playing,false);
+    assert.equal(f.controller.state.ambientPlaying,true);
+    f.controller.selectTrack('stroll');await settle();assert.equal(f.controller.state.playing,true);
+    assert.equal(f.stored.get('space:cafe:music-enabled:v1'),'yes');
+    f.controller.toggle();assert.equal(f.stored.get('space:cafe:music-enabled:v1'),'no');
+  }finally{f.restore();}
+});
+
+test('a first real record-panel play click or key is owned by the play button rather than the gesture unlock',async()=>{
+  for(const type of ['click','key']){
+    const f=fixture({independentAmbience:true,blocked:true});try{
+      await settle();const button=f.objectControl('record-panel');button.dataset.roomPlayback='';f.unlock();
+      f[type](true,button);f.controller.toggle();await settle();
+      assert.equal(f.controller.state.playing,true);assert.equal(f.controller.state.ambientPlaying,true);
+      assert.equal(f.stored.get('space:cafe:music-enabled:v1'),'yes');assert.equal(f.lane(.6).length,1);
+    }finally{f.restore();}
+  }
+});
 
 test('selecting a real record changes only music and retains the original running rain source',async()=>{
   const f=fixture({independentAmbience:true,defaultEnabled:false,tracks:recordTracks});try{
