@@ -50,3 +50,13 @@ test('software resize and DPR changes never exceed the pixel limit while hardwar
   }
   assert.equal(worldPixelRatio(320,740,1,soft),1,'a small native viewport does not lose detail unnecessarily');
 });
+
+
+test('renderer capabilities are queried once per context without changing budgets',async()=>{
+ const {worldRenderBudget}=await import('../assets/js/space/world-render-budget.mjs');let calls=0;
+ const gl={getExtension:()=>({UNMASKED_RENDERER_WEBGL:1}),getParameter:()=>{calls++;return 'SwiftShader';}};
+ const budget=worldRenderBudget(gl);assert.equal(worldRenderBudget(gl),budget);assert.equal(calls,1);
+ assert.equal(worldRenderBudget({getExtension:()=>null}).maxPixels,Infinity);
+ let first=true;const recovering={getExtension(){if(first){first=false;throw Error('temporary');}return {UNMASKED_RENDERER_WEBGL:1};},getParameter:()=> 'SwiftShader'};
+ assert.equal(worldRenderBudget(recovering).maxPixels,Infinity);assert.equal(worldRenderBudget(recovering).maxPixels,384000);
+});

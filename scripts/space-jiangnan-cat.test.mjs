@@ -68,3 +68,11 @@ test('a direct encounter stops walking and looks at the visitor before resuming'
   for(let i=0;i<100;i++)state=cat.stepJiangnanCat(state,.04);
   assert.equal(state.x,x);assert.equal(state.z,z);
 });
+
+test('the advertised resident action follows sleeping, waking, nearby and inspected states',()=>{
+  assert.equal(typeof cat.jiangnanCatAction,'function');const visitor={x:0,z:0},near={x:.5,z:0},far={x:4,z:0};
+  for(const phase of ['sleep','wake'])assert.equal(cat.jiangnanCatAction({...near,phase},visitor),'call');
+  assert.equal(cat.jiangnanCatAction({...near,phase:'look'},visitor),'pet');
+  assert.equal(cat.jiangnanCatAction({...far,phase:'look'},visitor),'call');
+  assert.equal(cat.jiangnanCatAction({...far,phase:'sleep'},visitor,{inspecting:true}),'pet');
+});

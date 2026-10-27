@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
+import {waitQualityFonts,localImageFailures,hasHorizontalOverflow} from '../helpers/content-quality';
+import {withRoomObservationSession} from '../helpers/room-observation';
 
 const pages: string[] = process.env.SITE_PAGE_LIST
   ? JSON.parse(fs.readFileSync(process.env.SITE_PAGE_LIST, "utf8"))
@@ -73,9 +75,8 @@ for (const pathname of pages) {
       waitUntil: "domcontentloaded",
     });
     expect(response?.status(), "selected published page must exist").toBe(200);
-    await page.evaluate(async () => {
-      await document.fonts.ready;
-    });
+    await withRoomObservationSession(page,async()=>{
+    await waitQualityFonts(page);
     await expect(page.locator("body")).toBeVisible();
     if (pathname.includes("/go-release-tools/")) {
       const table = page
@@ -87,34 +88,10 @@ for (const pathname of pages) {
       await expect(table.locator("thead th")).toHaveCount(2);
       await expect(table).toContainText(".ReleaseNotes");
     }
-    const imageResults = await page
-      .locator("img")
-      .evaluateAll(async (images) => {
-        const failures: string[] = [];
-        for (const element of images) {
-          const image = element as HTMLImageElement;
-          if (!image.currentSrc && !image.src) continue;
-          const url = new URL(image.currentSrc || image.src, location.href);
-          if (
-            !["cubxxw.com", "www.cubxxw.com", location.hostname].includes(
-              url.hostname,
-            )
-          )
-            continue;
-          image.loading = "eager";
-          try {
-            await image.decode();
-          } catch {
-            failures.push(url.pathname);
-          }
-        }
-        return failures;
-      });
+    const imageResults = await localImageFailures(page);
     expect(imageResults, "local images must decode").toEqual([]);
     expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth + 1,
-      ),
+      !(await hasHorizontalOverflow(page)),
       "page must not overflow horizontally",
     ).toBeTruthy();
     expect(
@@ -126,5 +103,6 @@ for (const pathname of pages) {
         contentType: "application/json",
         body: JSON.stringify([...externalWarnings].sort()),
       });
+    });
   });
 }

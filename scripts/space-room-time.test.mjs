@@ -41,3 +41,17 @@ test('weather crosses dawn without a render frame, and disposal cancels its only
   assert.deepEqual(heard,[1,0]);assert.equal(pending.size,1);
   stop();assert.equal(pending.size,0);wake();assert.equal(heard.length,2);
 });
+
+test('published room-clock samples bind their rate to the actual sampling timestamp',()=>{
+  const clock=time.createJiangnanTime({now:1000});
+  const first=clock.at(1100),later=clock.at(2700);
+  assert.equal(first.sampledAt,1100);assert.equal(later.sampledAt,2700);
+  assert.ok(Math.abs((later.unwrapped-first.unwrapped)-(later.sampledAt-first.sampledAt)/100)<1e-8);
+  clock.travelTo(21600,{stamp:2700,persist:false});clock.hold(2800);
+  const held=clock.at(4400),present=clock.presentAt(4400);
+  assert.equal(held.sampledAt,4400);assert.equal(present.sampledAt,4400);
+  assert.equal(held.unwrapped,21601);assert.equal(held.borrowed,true);
+  for(const method of ['at','presentAt'])for(const stamp of [NaN,Infinity,-Infinity]){
+    const snapshot=clock[method](stamp);assert.equal(snapshot.sampledAt,1000);assert.ok(Number.isFinite(snapshot.unwrapped));
+  }
+});

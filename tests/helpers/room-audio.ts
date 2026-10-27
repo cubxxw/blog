@@ -1,4 +1,5 @@
 import type {Page} from '@playwright/test';
+import {readRoomObservation} from './room-observation';
 
 // Observe native sample-clock sources without replacing playback or its codec.
 export async function observeRoomAudio(page:Page){
@@ -16,7 +17,13 @@ export async function observeRoomAudio(page:Page){
  });
 }
 export type RoomSource={id:number;duration:number;loop:boolean;gain:number;stopped:boolean;offset:number;time:number;context:string};
-export async function roomAudioSources(page:Page):Promise<RoomSource[]>{return page.evaluate(()=>((window as any).__roomLoopSources||[]).filter((r:any)=>r.startTime!==null).map((r:any)=>({id:r.id,duration:r.duration,loop:r.node.loop,gain:r.gainNode?.gain.value||0,stopped:r.stopTime!==null,offset:r.offset,time:r.offset+Math.max(0,(r.stopTime??r.context.currentTime)-r.startTime),context:r.context.state})));}
+const snapshotRoomAudio=()=>((window as any).__roomLoopSources||[]).filter((r:any)=>r.startTime!==null).map((r:any)=>({id:r.id,duration:r.duration,loop:r.node.loop,gain:r.gainNode?.gain.value||0,stopped:r.stopTime!==null,offset:r.offset,time:r.offset+Math.max(0,(r.stopTime??r.context.currentTime)-r.startTime),context:r.context.state}));
+export async function roomAudioSources(page:Page):Promise<RoomSource[]>{return page.evaluate(snapshotRoomAudio);}
+export async function readRoomAudioSources(page:Page):Promise<RoomSource[]>{
+ return readRoomObservation(page,snapshotRoomAudio,undefined,{timeout:30000,label:'Room native audio snapshot',validate:(value):value is RoomSource[]=>Array.isArray(value)&&value.every(source=>
+  source&&typeof source==='object'&&['id','duration','gain','offset','time'].every(key=>typeof source[key]==='number'&&Number.isFinite(source[key]))&&typeof source.loop==='boolean'&&typeof source.stopped==='boolean'&&typeof source.context==='string')});
+}
+
 export async function rainSource(page:Page){return (await roomAudioSources(page)).find(r=>!r.stopped&&Math.abs(r.duration-100)<.05);}
 
 export async function blockRoomAudioUntilGesture(page:Page){

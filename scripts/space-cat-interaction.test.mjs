@@ -90,6 +90,7 @@ test('the Jiangnan tick advances visible time and the resident through slow fram
   const {jiangnanLook,jiangnanWalk}=await import('../assets/js/space/jiangnan-state.mjs');
   const source=readFileSync(new URL('../assets/js/space/world-jiangnan.js',import.meta.url),'utf8');
   const tick=source.slice(source.indexOf('  function tick(stamp)'),source.indexOf('  function visibility()'));
+  const publication=source.slice(source.indexOf('  function publishResident()'),source.indexOf("  function interactCat(kind='pet')"));
   for(const hz of [60,1,.7]){
     const clock=createCatClock(),visitor=jiangnanLook([2.25,1.14,1.25],[.20,1.15,-1.65],48),walkSteps=[];
     let state=requestJiangnanCat(createJiangnanCatState(),'call',visitor,{now:0}).state,wall=0,arrived=null,steps=0;
@@ -101,8 +102,8 @@ test('the Jiangnan tick advances visible time and the resident through slow fram
       assert.ok(jiangnanCatPositionClear(state.x,state.z));assert.ok(jiangnanCatSegmentClear(before,state));
       if(arrived===null&&state.interaction?.stage==='near')arrived=wall;
     });assert.ok(steps<=50);},snapshot:()=>({...state,loaded:true,target:[state.x,.23,state.z]}),breathing:{}};
-    const noop=()=>{},context={disposed:false,frame:0,visible:()=>true,mode:'roam',workspace:{dataset:{surface:'monitor'}},quiet:false,reduced:{matches:false},isBlocked:()=>false,doorFade:createJiangnanDoorFade(),moving:null,keys:new Set(['KeyW']),touchKeys:new Set(),last:0,environmentTime:0,navigate:()=>true,clockReturn:null,roomTime:{at:()=>({catRoutine:'nap',rain:0})},room:{update:noop},exterior:{update:noop,boat:{position:{x:0,y:0,z:0},rotation:{y:0}}},roomLights:{update:noop},magicClock:null,standbyClock:null,root:{dataset:{worldPbrMaps:12}},resident,targets:{},objectControls:{querySelector:()=>({textContent:'Watch the rain'})},t:(a,b)=>b,frames:0,publishObjects:noop,startTime:0,performance:{now:()=>0},reflectionDone:true,roomView:()=>false,screenVisibility:noop,renderRoom:()=>({triangles:0,calls:0}),css:{render:noop},scene:{},camera:{},settleFirst:noop,requestAnimationFrame:()=>1,pose:visitor,jiangnanWalk:(...args)=>{walkSteps.push(args[2]);return jiangnanWalk(...args);},applyPose:noop};
-    const run=runInNewContext(tick+'\ntick;',context);run(1000);
+    const noop=()=>{},context={disposed:false,frame:0,visible:()=>true,mode:'roam',workspace:{dataset:{surface:'monitor'}},quiet:false,reduced:{matches:false},isBlocked:()=>false,doorFade:createJiangnanDoorFade(),moving:null,keys:new Set(['KeyW']),touchKeys:new Set(),last:0,environmentTime:0,navigate:()=>true,clockReturn:null,roomTime:{at:()=>({catRoutine:'nap',rain:0})},room:{update:noop},exterior:{update:noop,boat:{position:{x:0,y:0,z:0},rotation:{y:0}}},roomLights:{update:noop},magicClock:null,standbyClock:null,root:{dataset:{worldPbrMaps:12}},resident,targets:{},objectControls:{querySelector:selector=>selector==='[data-room-object="cat"]'?null:{textContent:'Watch the rain'}},t:(a,b)=>b,frames:0,publishObjects:noop,startTime:0,performance:{now:()=>0},reflectionDone:true,roomView:()=>false,screenVisibility:noop,renderRoom:()=>({triangles:0,calls:0}),css:{render:noop},scene:{},camera:{},settleFirst:noop,requestAnimationFrame:()=>1,pose:visitor,jiangnanWalk:(...args)=>{walkSteps.push(args[2]);return jiangnanWalk(...args);},applyPose:noop};
+    const run=runInNewContext(publication+'\n'+tick+'\ntick;',context);run(1000);
     for(let frame=1;wall<24;frame++){wall=frame/hz;run(1000+wall*1000);}
     assert.ok(arrived!==null&&arrived<=20,`${hz}fps must complete the actual resident call in visible time; arrived=${arrived}`);
     assert.ok(Math.abs(context.environmentTime-wall)<1e-8,'analytical scenery uses visible elapsed time');
