@@ -8,6 +8,7 @@ test.beforeEach(async({page})=>{
   await page.addInitScript(()=>{
     localStorage.setItem('space:cafe:theme:v2','jiangnan');
     localStorage.setItem('space:cafe:onboarding:v1','seen');
+    localStorage.setItem('space:cafe:music-enabled:v1','no');
   });
 });
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
@@ -128,7 +129,7 @@ test('default outdoor rain survives workspace use and pauses when hidden or quie
   await page.addInitScript(()=>localStorage.setItem('space:cafe:theme:v2','jiangnan'));
   await openRoom(page);
   await expect(root(page)).toHaveAttribute('data-room-sound','paused');
-  // Room boot can finish before the lossless rain finishes loading and decoding.
+  // Room boot can finish before the rain finishes loading and decoding.
   // Match the existing audio cold-start budget; later pause/resume checks stay strict.
   await expect.poll(()=>root(page).getAttribute('data-room-ambient'),{timeout:30_000}).toMatch(/playing|blocked/);
   if(await root(page).getAttribute('data-room-ambient')==='blocked')await page.locator('.space-world__canvas').click({position:{x:20,y:20}});

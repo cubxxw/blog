@@ -71,3 +71,23 @@ test('unavailable storage and malformed saved values leave the speaker usable',a
   const f=fixture(options);try{await settle();assert.equal(f.controller.state.volume,.6);f.controller.setVolume(.8);assert.equal(f.sources[0].gain.gain.value,.8);}finally{f.restore();}
  }
 });
+
+import {JSDOM} from 'jsdom';
+import {mountRoomInspection} from '../assets/js/space/room-inspection.js';
+
+test('record controls distinguish a slow download, blocked playback, failure and quiet mode',()=>{
+  const dom=new JSDOM('<section></section>'),originals=new Map();
+  for(const key of ['document','AbortController']){originals.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{value:dom.window[key],configurable:true});}
+  const root=dom.window.document.querySelector('section');
+  const view=mountRoomInspection({root,records:[{id:'sax',title:'Sax'}],zh:true});
+  try{
+    view.show('records');const button=root.querySelector('[data-room-playback]');
+    const update=(status,quiet=false)=>{root.dataset.roomSound=status;root.dataset.environmentPaused=String(quiet);root.dispatchEvent(new dom.window.CustomEvent('space:roomaudio'));};
+    update('wanted');assert.equal(button.getAttribute('aria-busy'),'true');assert.equal(button.textContent,'取消载入');
+    assert.match(root.querySelector('[data-room-playback-status]').textContent,/载入/);
+    update('blocked');assert.equal(button.getAttribute('aria-busy'),'false');assert.equal(button.textContent,'播放音乐');
+    update('error');assert.equal(button.textContent,'重试播放');assert.match(root.querySelector('[data-room-playback-status]').textContent,/未能载入/);
+    update('paused',true);assert.equal(button.disabled,true);assert.match(root.querySelector('[data-room-playback-status]').textContent,/安静模式/);
+    update('playing');assert.equal(button.disabled,false);assert.equal(button.textContent,'暂停音乐');
+  }finally{view.dispose();dom.window.close();for(const [key,descriptor]of originals)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}
+});
