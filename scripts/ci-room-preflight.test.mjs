@@ -25,6 +25,15 @@ test('the relocated resident target remains registered in its real source file',
   assert.ok(source.includes(title),'Mandatory resident target no longer exists at its registered path');
   assert.equal(original.includes(title),false,'Resident target duplicated in its former file');
 });
+test('the real resident case uses independent original startup gates and preserves capture diagnostics',()=>{
+  const source=fs.readFileSync(new URL('../tests/e2e/00-space-resident-motion.spec.ts',import.meta.url),'utf8');
+  const helper=fs.readFileSync(new URL('../tests/helpers/room-observation.ts',import.meta.url),'utf8');
+  assert.match(source,/const movement=await observeResidentStartup\(page\)/);
+  assert.match(helper,/\[\['boot',30000\],\['roam',5000\],\['cat',30000\],\['motion',12000\]\]/);
+  assert.match(source,/if\(!process\.env\.ROOM_DIAG_VARIANT\)test\.use\(\{trace:\{mode:'retain-on-failure',snapshots:false,screenshots:false,sources:true\},screenshot:'only-on-failure'\}\)/);
+  assert.match(source,/observePausedResident\(page,checkFrames\)/);
+  assert.match(fs.readFileSync(new URL('../scripts/ci-run.mjs',import.meta.url),'utf8'),/'scripts\/room-resident-stages\.test\.mjs'/);
+});
 test('focused room preflight requires every named path in both real projects',()=>{
   assert.equal(typeof api.selectRoomRegressions,'function');
   const inventory={suites:{legacy:[...expected(),JSON.stringify(['other.spec.ts',1,1,'','other','desktop',0])]}};
