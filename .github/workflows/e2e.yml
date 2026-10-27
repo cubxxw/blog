@@ -15,6 +15,10 @@ on:
         description: Full source commit of that artifact
         required: true
         type: string
+      room_diagnostics:
+        description: Compare frozen room inputs and trace screencast cost; never certifies a release
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -22,6 +26,7 @@ permissions:
 
 jobs:
   recheck:
+    if: inputs.room_diagnostics != true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -48,4 +53,56 @@ jobs:
         with:
           name: site-recheck-${{ github.run_id }}
           path: tests/.artifacts/recheck-report/
+          retention-days: 30
+
+  room-diagnostics:
+    if: inputs.room_diagnostics == true
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: control-main-full
+            run: '40306707260'
+            artifact: '12642114130'
+            source: af6c4bb4c63f70d72d60c2031535d7022cb83541
+          - variant: candidate-full
+            run: ''
+            artifact: ''
+            source: ''
+          - variant: candidate-dom-trace
+            run: ''
+            artifact: ''
+            source: ''
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: chromium
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ matrix.artifact || inputs.artifact_id }}
+          run-id: ${{ matrix.run || inputs.run_id }}
+          github-token: ${{ github.token }}
+          path: tests/.artifacts/room-diagnostic-input
+          merge-multiple: true
+      - name: Compare original room paths on immutable inputs
+        env:
+          ROOM_DIAG_VARIANT: ${{ matrix.variant }}
+          ROOM_DIAG_RUN: ${{ matrix.run || inputs.run_id }}
+          ROOM_DIAG_ARTIFACT: ${{ matrix.artifact || inputs.artifact_id }}
+          ROOM_DIAG_SOURCE: ${{ matrix.source || inputs.source_sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/ci-room-diagnostic.mjs
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: room-diagnostic-${{ github.run_id }}-${{ matrix.variant }}
+          path: tests/.artifacts/room-diagnostic/
+          include-hidden-files: true
+          if-no-files-found: error
           retention-days: 30

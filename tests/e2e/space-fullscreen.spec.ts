@@ -101,7 +101,12 @@ test('a 320 pixel room keeps light utilities usable and fullscreen inside the co
     await openRoom(page,lang);
     await expect(page.locator('.space-cafe__header')).toBeVisible();await expect(roomControl(page)).toBeHidden();
     await expect(page.locator('.space-cafe__brand')).toBeHidden();
-    const utilities=page.locator('.space-cafe__utilities > button');await expect(utilities).toHaveCount(3);
+    // The author-added picture light is the fourth utility, including at 320px.
+    const utilities=page.locator('.space-cafe__utilities > button');await expect(utilities).toHaveCount(4);
+    for(const name of ['language','photo-light','quiet','picker'])await expect(page.locator(`.space-cafe__utilities > button[data-cafe-${name}]`)).toHaveCount(1);
+    const lamp=page.locator('.space-cafe__utilities [data-cafe-photo-light]');
+    await expect(lamp).toHaveAccessibleName(/^(照片墙照明|Photo wall lighting)$/);
+    await expect(lamp).toHaveAttribute('aria-pressed',/^(true|false)$/);
     for(const control of await utilities.all()){
       await expect(control).toBeVisible();const box=await control.boundingBox();expect(box).not.toBeNull();
       expect(box!.width).toBeGreaterThanOrEqual(44);expect(box!.height).toBeGreaterThanOrEqual(44);

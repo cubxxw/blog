@@ -19,7 +19,11 @@ export default defineConfig({
   use: {
     baseURL: `http://127.0.0.1:${process.env.SITE_PORT || 1313}`,
     serviceWorkers: 'block',
-    trace: 'on-first-retry',
+    // Keep first-attempt visual, DOM/network/source evidence. Software WebGL
+    // timing is sensitive to instrumentation; retain the original screenshot
+    // capture until controlled Linux evidence supports changing it.
+    trace: { mode: 'retain-on-failure', screenshots: true, snapshots: true, sources: true },
+    screenshot: 'only-on-failure',
   },
 
   expect: {

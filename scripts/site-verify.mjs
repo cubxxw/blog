@@ -144,6 +144,7 @@ export async function verifySite({
   suite: selectedSuite,
   shard,
   exec = execute,
+  jsonReportPath,
 }) {
   if(selectedSuite!==undefined&&!['quality','legacy'].includes(selectedSuite))throw new Error('Unknown browser suite selector');
   if(shard!==undefined) {
@@ -204,6 +205,7 @@ export async function verifySite({
         ...suite.args,
         ...(selectedSuite?['--workers=1']:[]),
         ...(shard?[`--shard=${shard}`]:[]),
+        '--reporter=list,html,json',
       ],
       cwd: process.cwd(),
       env: {
@@ -219,6 +221,7 @@ export async function verifySite({
         SITE_CANONICAL_ORIGIN: new URL(pageMap.baseUrl).origin,
         PLAYWRIGHT_HTML_OUTPUT_DIR: path.join(reportDir, suite.name, "html"),
         SITE_TEST_RESULTS: path.join(reportDir, suite.name, "results"),
+        PLAYWRIGHT_JSON_OUTPUT_FILE: jsonReportPath || path.join(reportDir,suite.name,'playwright-results.json'),
       },
     });
     if (snapshot(publicDir) !== before)
