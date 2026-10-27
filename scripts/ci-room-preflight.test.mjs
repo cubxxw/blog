@@ -5,7 +5,7 @@ import YAML from 'yaml';
 import {enumerateTestIds} from './ci-test-inventory.mjs';
 const api=await import('./ci-room-preflight.mjs').catch(()=>({}));
 const cases=[
-  ['00-space-onboarding.spec.ts','the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace'],
+  ['00-space-resident-motion.spec.ts','the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace'],
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (native)'],
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible)'],
   ['space-cafe-details-contracts.spec.ts','runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop'],
@@ -18,6 +18,13 @@ const cases=[
 function raw(){return {errors:[],suites:[{title:'',specs:cases.map(([file,title],index)=>({file,title,line:index+1,column:1,tests:['desktop','mobile'].map(projectName=>({projectName,status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}))}))}]};}
 function expected(){return enumerateTestIds(raw());}
 
+test('the relocated resident target remains registered in its real source file',()=>{
+  const [file,title]=cases[0];
+  const source=fs.readFileSync(new URL('../tests/e2e/'+file,import.meta.url),'utf8');
+  const original=fs.readFileSync(new URL('../tests/e2e/00-space-onboarding.spec.ts',import.meta.url),'utf8');
+  assert.ok(source.includes(title),'Mandatory resident target no longer exists at its registered path');
+  assert.equal(original.includes(title),false,'Resident target duplicated in its former file');
+});
 test('focused room preflight requires every named path in both real projects',()=>{
   assert.equal(typeof api.selectRoomRegressions,'function');
   const inventory={suites:{legacy:[...expected(),JSON.stringify(['other.spec.ts',1,1,'','other','desktop',0])]}};

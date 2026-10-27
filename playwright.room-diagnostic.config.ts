@@ -12,7 +12,7 @@ const titles=[
 ];
 const escape=(value:string)=>value.replace(/[.*+?^{}$()|[\]\\]/g,'\\$&');
 export default defineConfig({...base,
- testMatch:['00-space-onboarding.spec.ts','space-browser.spec.ts','space-jiangnan.spec.ts'],
+ testMatch:['00-space-resident-motion.spec.ts','00-space-onboarding.spec.ts','space-browser.spec.ts','space-jiangnan.spec.ts'],
  grep:new RegExp(titles.map(value=>escape(value)+'$').join('|')),
  workers:1,retries:0,
  use:{...base.use,trace:{mode:'retain-on-failure' as const,screenshots:variant!=='candidate-dom-trace',snapshots:true,sources:true},screenshot:'only-on-failure' as const},

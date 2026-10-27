@@ -7,7 +7,7 @@ import {verifyFrozenProof} from './ci-shards.mjs';
 import {summarizePlaywright} from './ci-test-inventory.mjs';
 
 const cases=[
-  ['00-space-onboarding.spec.ts','the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace'],
+  ['00-space-resident-motion.spec.ts','the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace'],
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (native)'],
   ['space-browser.spec.ts','a visitor can leave a web draft, look out the window and resume the same page with continuous sound (compatible)'],
   ['space-cafe-details-contracts.spec.ts','runtime quiet/reduce and resize settle inspection without a late focus grab or an idle render loop'],
