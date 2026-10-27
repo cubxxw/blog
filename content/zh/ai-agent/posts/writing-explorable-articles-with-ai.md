@@ -30,13 +30,13 @@ description: >
 
 最初讨论这个想法时，我想到的是 Claude 里那些可以点击、切换的 Artifact，也想给自己的文章加入类似的呈现。但我给实现加了一条限制：**不额外维护后端。** AI 可以在写作时帮忙处理，发布出去的文章仍然是一组静态文件。
 
-现在博客已经有上下文预算和 Agent 循环两类交互图解。沿着这两个小例子，可以往下拆出一条完整路径：作者选择要解释的关系，Agent 编写数据和程序，博客承载界面；如果操作还需要连接工具和对话，再进入 MCP Apps 的范围。
+现在博客已经有上下文预算和 Agent 循环两类交互图解。沿着这两个小例子，可以往下拆出一条完整路径：作者选择要解释的关系，Agent 编写数据和程序，博客承载界面。如果操作还需要连接工具和对话，再进入 MCP Apps 的范围。
 
 本文的博客实现以当前仓库为准，外部产品与协议说明核对于 **2026 年 9 月 24 日**。后面讨论的 MCP Apps 适配属于设计推演，当前博客没有接入 MCP 服务。
 
 ## 先找到一句值得让读者动手的解释
 
-“给这篇文章加一点动画”，很容易把创作带向装饰。标题淡入、卡片移动、箭头闪烁，都能让页面显得忙碌，却未必让一个概念更清楚。
+“给这篇文章加一点动画”，很容易把创作带向装饰。无论是标题淡入、卡片移动，还是箭头闪烁，都能让页面显得忙碌，却未必让一个概念更清楚。
 
 我更愿意从正文里挑一句话：读者理解它时，是否需要想象一个变化？
 
@@ -46,7 +46,7 @@ description: >
 
 如果要表达的是“系统由五个模块组成”，一张静态结构图可能就足够。若写的是一次经历和一个尚未想清楚的判断，文字也有自己的节奏，没必要把它改成选择题。
 
-这种写法有很长的来路。Bret Victor 在 *Explorable Explanations* 中讨论过，让读者改变文章背后的假设并查看后果；他也强调，正文需要提供解释，不能把读者丢进一个沙盒，让人自己猜作者想说什么。[原文](https://worrydream.com/ExplorableExplanations/)
+这种写法有很长的来路。Bret Victor 在 *Explorable Explanations* 中讨论过，让读者改变文章背后的假设并查看后果。他也强调，正文需要提供解释，不能把读者丢进一个沙盒，让人自己猜作者想说什么。[原文](https://worrydream.com/ExplorableExplanations/)
 
 Nicky Case 的创作方法则从具体体验开始，再逐步进入抽象概念。对我来说，这个顺序很实用：先让人操作一个可理解的例子，再给刚才发生的事情一个名字。[创作方法原文](https://blog.ncase.me/how-i-make-an-explorable-explanation/)
 
@@ -103,7 +103,7 @@ Artifacts 的范围更大。官方文档还描述了可调用 Claude、连接外
 
 前面的图解在你拖动时，没有向模型发送问题。
 
-它的运作过程是：作者与 Agent 准备正文和数据；Hugo 构建出静态 HTML；浏览器加载一小段 JavaScript，根据滑块位置更新数字与图形。当前值只需要放在页面内存里，没有账户、数据库或每次点击产生的模型调用。
+它的运作过程是：作者与 Agent 准备正文和数据。Hugo 构建出静态 HTML。浏览器加载一小段 JavaScript，根据滑块位置更新数字与图形。当前值只需要放在页面内存里，没有账户、数据库或每次点击产生的模型调用。
 
 这也解释了为什么“不加后端”仍然能有交互。静态部署描述的是文件如何交付；浏览器拿到文件后，仍然能够执行计算、响应点击和更新页面。
 
@@ -162,7 +162,7 @@ assets/css/components/                  图解样式
 
 数值模型与可见文案分开存放。翻译标题和观察提示时，公式不用跟着改；第二篇文章复用容量模型时，也不用生成第二份滑块代码。Agent 能修改的范围由文件和 schema 约束，错误类型、缺失语言或非法范围会被校验发现。[完整数据](https://github.com/cubxxw/blog/blob/main/data/interactive/context-window-v1.json)
 
-这是一种有限的生成方式：给已经验证过的显示程序准备数据。只有新内容需要不同的计算或交互语义时，才增加组件类型。`agent-loop` 的事件序列和容量计算不同，所以它有自己的 `kind`；没必要为了统一，把所有内容都塞进一份任意 JSON，再交给通用页面生成器猜怎么画。
+这是一种有限的生成方式：给已经验证过的显示程序准备数据。只有新内容需要不同的计算或交互语义时，才增加组件类型。`agent-loop` 的事件序列和容量计算不同，所以它有自己的 `kind`。没必要为了统一，把所有内容都塞进一份任意 JSON，再交给通用页面生成器猜怎么画。
 
 ### 构建时就把能读的内容输出出来
 
@@ -173,7 +173,7 @@ shortcode 先检查 `kind` 是否在允许列表里、`spec` 是否对应本地�
 
 第一份让页面刚到达时就有解释。第二份让组件知道该用哪种语言、有哪些场景和参数。它们来自同一个 spec，但静态模板和浏览器仍有各自的渲染路径，因此测试还要核对两边计算出的默认值一致。[shortcode 实现](https://github.com/cubxxw/blog/blob/main/layouts/shortcodes/interactive.html)
 
-数据嵌入 HTML 时还存在一个很具体的问题：即使 script 的类型是 JSON，内容中的结束标签也可能被 HTML 解析器识别。当前构建流程先进行 HTML 安全的 JSON 序列化，再输出数据块；浏览器使用 `JSON.parse` 读取，文本通过 `textContent` 显示。不能把模型给出的原始字符串直接标成“安全 HTML”。[配置输出](https://github.com/cubxxw/blog/blob/main/layouts/partials/interactive/config.html)
+数据嵌入 HTML 时还存在一个很具体的问题。即使 script 的类型是 JSON，内容中的结束标签也可能被 HTML 解析器识别。当前构建流程先进行 HTML 安全的 JSON 序列化，再输出数据块。浏览器使用 `JSON.parse` 读取，文本通过 `textContent` 显示。不能把模型给出的原始字符串直接标成“安全 HTML”。[配置输出](https://github.com/cubxxw/blog/blob/main/layouts/partials/interactive/config.html)
 
 ### 浏览器把一个静态图解升级成可操作的图解
 
@@ -215,7 +215,7 @@ JS
 
 ### 最后才决定这篇页面需要加载什么
 
-shortcode 在渲染正文时登记使用的组件类型。正文处理完后，资源 partial 按类型输出一次 CSS 和 ESM 脚本，并做压缩与内容指纹。没有使用图解的文章不引入这些组件资源；同类型的多个实例也不重复加载脚本。这里是**按页面需要加载**，并非进入视口后才下载的懒加载。[资源装配实现](https://github.com/cubxxw/blog/blob/main/layouts/partials/interactive/assets.html)
+shortcode 在渲染正文时登记使用的组件类型。正文处理完后，资源 partial 按类型输出一次 CSS 和 ESM 脚本，并做压缩与内容指纹。没有使用图解的文章不引入这些组件资源。同类型的多个实例也不重复加载脚本。这里是**按页面需要加载**，并非进入视口后才下载的懒加载。[资源装配实现](https://github.com/cubxxw/blog/blob/main/layouts/partials/interactive/assets.html)
 
 这些细节共同决定了后续的创作成本。复用一个实例时，作者通常只动正文与数据；样式、计算、键盘操作和失败回退留在经过验证的组件里。
 
@@ -241,7 +241,7 @@ shortcode 在渲染正文时登记使用的组件类型。正文处理完后，�
 
 当前预算图没有只靠红绿两种颜色区分结果。色块有纹理和文字，容量参照保持固定，超额需求另用溢出条呈现。读者把输入从 40 增到 48 时，图形尺度不跟着悄悄改变。这同时是视觉设计和计算表达的问题。[预算图样式](https://github.com/cubxxw/blog/blob/main/assets/css/components/context-budget.css)
 
-Agent 图解采用“一个当前步骤，加一份完整轨迹参考”的结构。主区域专注当前事件，完整事件留在可展开区域。播放是用户主动启动的；离开视口或隐藏页面会暂停，不自动恢复。系统偏好减少动态效果时，保留手动步进，禁用自动播放。[循环组件实现](https://github.com/cubxxw/blog/blob/main/assets/js/components/agent-loop.mjs)
+Agent 图解采用“一个当前步骤，加一份完整轨迹参考”的结构。主区域专注当前事件，完整事件留在可展开区域。播放是用户主动启动的。离开视口或隐藏页面会暂停，不自动恢复。系统偏好减少动态效果时，保留手动步进，禁用自动播放。[循环组件实现](https://github.com/cubxxw/blog/blob/main/assets/js/components/agent-loop.mjs)
 
 这些行为背后有几条可以复用的设计判断：
 
@@ -253,7 +253,7 @@ Agent 图解采用“一个当前步骤，加一份完整轨迹参考”的结�
 | 比较全部场景 | 展开静态参考表或轨迹 | 参考内容独立于播放状态 |
 | 顺畅继续阅读 | 不抢滚动、不自动播放、不突然跳高 | 同尺寸控件占位，资源失败时回退 |
 
-Light DOM 让这些图解可以沿用博客的字体和主题变量，同时也要求 CSS 明确限定在组件根元素下面。如果把 UI 放入 iframe，它有独立文档，主题、尺寸、消息和可访问名称都要另行处理；安全边界还取决于同源关系、sandbox 和 CSP 配置。选择容器时，需要一起考虑这些实际工作。
+Light DOM 让这些图解可以沿用博客的字体和主题变量，同时也要求 CSS 明确限定在组件根元素下面。如果把 UI 放入 iframe，它有独立文档，主题、尺寸、消息和可访问名称都要另行处理。安全边界还取决于同源关系、sandbox 和 CSP 配置。选择容器时，需要一起考虑这些实际工作。
 
 对真实工具界面，还要在这套设计上增加等待、取消、权限拒绝、空结果和错误状态。这个要求正是从静态文章走到 MCP Apps 后最明显的变化。
 
@@ -280,9 +280,9 @@ MCP Apps 提供了这种连接。这里要分清三个角色：**MCP Server 提�
 }
 ```
 
-`ui://` 是 MCP 资源标识，不能当作普通网址填进浏览器的 iframe `src`。宿主通过 `resources/read` 获取对应 HTML；资源使用 `text/html;profile=mcp-app` 类型。工具执行结果与 UI 文件分开传递，界面可以重复用于不同结果。不支持该扩展的宿主仍需要有可用的文本工具结果。[MCP Apps 协议](https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx)
+`ui://` 是 MCP 资源标识，不能当作普通网址填进浏览器的 iframe `src`。宿主通过 `resources/read` 获取对应 HTML。资源使用 `text/html;profile=mcp-app` 类型。工具执行结果与 UI 文件分开传递，界面可以重复用于不同结果。不支持该扩展的宿主仍需要有可用的文本工具结果。[MCP Apps 协议](https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx)
 
-典型的数据流可以画成这样；宿主也可以提前获取 UI，因此它不必严格等待工具执行完才加载界面。
+典型的数据流可以画成这样。宿主也可以提前获取 UI，因此它不必严格等待工具执行完才加载界面。
 
 ```mermaid
 sequenceDiagram
@@ -316,7 +316,7 @@ App 与宿主使用基于 `postMessage` 的 JSON-RPC 通信；工具服务和宿
 
 官方 SDK 用 `App` 封装这条连接：接收 `toolresult` 通知可以更新界面；`callServerTool()` 请求工具；`updateModelContext()` 提供后续轮次可用的状态，本身不触发即时模型回答；`sendMessage()` 把消息送入对话。宿主可能拒绝请求，界面需要处理返回错误。事件处理应在 `connect()` 前注册。[App API](https://apps.extensions.modelcontextprotocol.io/api/classes/app.App.html)
 
-因此，我不会在每次滑块变化时都发起对话请求。一个更合适的设计是：本地计算持续更新，读者点“请解释”时，才提交当前参数、结果、单位和“教学示意”的限定。模型随后能知道读者看的究竟是哪一组条件。
+我因此不会在每次滑块变化时都发起对话请求。一个更合适的设计是：本地计算持续更新，读者点“请解释”时，才提交当前参数、结果、单位和“教学示意”的限定。模型随后能知道读者看的究竟是哪一组条件。
 
 不要指望模型自动看见 iframe 中的全部 DOM。也不要把整份页面 HTML 当成状态传回去。对这个例子，有用的交接数据是：
 
@@ -339,7 +339,7 @@ App 与宿主使用基于 `postMessage` 的 JSON-RPC 通信；工具服务和宿
 
 ### 真正实现时，还要补齐哪些文件
 
-官方入门项目将 `server.ts`、前端 HTML 和前端模块分开。服务端用 `registerAppTool` 关联工具与资源，用 `registerAppResource` 提供 HTML；前端接入 `App`。示例用 Vite 的单文件打包把 CSS、JavaScript 合入 HTML，也可以在正确配置 CSP 后加载外部资源。最终要在支持 MCP Apps 的宿主中测试，普通浏览器打开 HTML 不能验证工具桥接是否工作。[官方构建教程](https://modelcontextprotocol.io/extensions/apps/build)
+官方入门项目将 `server.ts`、前端 HTML 和前端模块分开。服务端用 `registerAppTool` 关联工具与资源，用 `registerAppResource` 提供 HTML。前端接入 `App`。示例用 Vite 的单文件打包把 CSS、JavaScript 合入 HTML，也可以在正确配置 CSP 后加载外部资源。最终要在支持 MCP Apps 的宿主中测试，普通浏览器打开 HTML 不能验证工具桥接是否工作。[官方构建教程](https://modelcontextprotocol.io/extensions/apps/build)
 
 对我们的例子，我会保留 `computeBudget()` 和已验证的数据规则，再为不同运行环境增加入口：
 
@@ -355,7 +355,7 @@ App 与宿主使用基于 `postMessage` 的 JSON-RPC 通信；工具服务和宿
 
 如果以后要让同一个解释进入 Agent 产品，我会把 MCP App 作为另一种交付入口。博客继续保存任何人都能阅读、操作和引用的版本。
 
-Web Components 与 MCP Apps 也不互相排斥：前者负责组织前端组件，后者规定界面怎样由工具交付、怎样与宿主通信。MCP App 的 HTML 里同样可以使用 Web Components。
+Web Components 与 MCP Apps 也不互相排斥。前者负责组织前端组件，后者规定界面怎样由工具交付、怎样与宿主通信。MCP App 的 HTML 里同样可以使用 Web Components。
 
 ## 把创作要求写成 Agent 能执行的任务
 
@@ -395,7 +395,7 @@ Web Components 与 MCP Apps 也不互相排斥：前者负责组织前端组件�
 
 如果从零开始写文章，也不必先要求 Agent 设计一个完整应用。先给它一个读者问题：例如“工具返回很长的结果，为什么会挤占历史的空间？”再要求它写出解释，并判断一个可操作例子能否让关系更清楚。
 
-在我的仓库里，复用还可以更具体：请 Agent 读取 `docs/interactive-articles.md`，查看已有 spec，语义相同就使用现成的 `kind`；需要新的数字和文案时，另建一个数据文件，保持文件名与 spec 的 `id` 一致，再用页面唯一的 shortcode ID 引入。不要为了新文章的默认值，顺手修改所有旧文章共享的示例。
+在我的仓库里，复用还可以更具体，请 Agent 读取 `docs/interactive-articles.md`，查看已有 spec，语义相同就使用现成的 `kind`；需要新的数字和文案时，另建一个数据文件，保持文件名与 spec 的 `id` 一致，再用页面唯一的 shortcode ID 引入。不要为了新文章的默认值，顺手修改所有旧文章共享的示例。
 
 如果已有两类组件都不适合，先回到解释目标。确实需要新的行为，再把组件、数据约束、静态显示和验证一起补齐。组件数量增长得慢一些，后面的文章才不必每篇维护一套小应用。
 
@@ -403,15 +403,15 @@ Web Components 与 MCP Apps 也不互相排斥：前者负责组织前端组件�
 
 我会先检查“它在解释什么”，再看界面是否好看。
 
-拿本文开头的例子，三次手算就能核对关键关系：工具结果为 32 时剩余 8，为 40 时剩余 0，为 48 时溢出 8。然后再切换场景，确认历史值随场景变化，滑块改变的仍然只有工具结果。
+拿本文开头的例子，三次手算就能核对关键关系。工具结果为 32 时剩余 8，为 40 时剩余 0，为 48 时溢出 8。然后再切换场景，确认历史值随场景变化，滑块改变的仍然只有工具结果。
 
-过程图解要核对另一件事：每一步的输入和结果是否接得上，停止时究竟完成了什么。一个工具返回成功，只说明那次调用成功；文章如果要声称任务完成，还需要相应的完成证据。
+过程图解要核对另一件事：每一步的输入和结果是否接得上，停止时究竟完成了什么。一个工具返回成功，只说明那次调用成功。文章如果要声称任务完成，还需要相应的完成证据。
 
-这些检查，不能由“按钮都可以点击”替代。反过来，解释正确也不代表交付完成：窄屏能否阅读、键盘能否操作、脚本加载失败后还剩下什么，都影响读者能否接触到解释。
+这些检查，不能由“按钮都可以点击”替代。反过来，解释正确也不代表交付完成。窄屏能否阅读、键盘能否操作、脚本加载失败后还剩下什么，都影响读者能否接触到解释。
 
-当前博客采用同一份数据生成静态内容，再由组件增强交互；静态说明和完整参考内容不依赖播放才能阅读。添加实例后运行 `npm run interactive:check`，检查受影响页面；改变共享组件行为时，还要运行 `npm run interactive:test`。具体约束和检查入口都在[组件指南](https://github.com/cubxxw/blog/blob/main/docs/interactive-articles.md)中。
+当前博客采用同一份数据生成静态内容，再由组件增强交互。静态说明和完整参考内容不依赖播放才能阅读。添加实例后运行 `npm run interactive:check`，检查受影响页面。改变共享组件行为时，还要运行 `npm run interactive:test`。具体约束和检查入口都在[组件指南](https://github.com/cubxxw/blog/blob/main/docs/interactive-articles.md)中。
 
-“已经上线”也有一个清楚的限度。页面正常工作，说明实现能用；读者是否因此理解得更好，还需要真实阅读反馈。我不会从一个滑块的存在推导出学习效果提升了多少。
+“已经上线”也有一个清楚的限度。页面正常工作，说明实现能用。读者是否因此理解得更好，还需要真实阅读反馈。我不会从一个滑块的存在推导出学习效果提升了多少。
 
 如果制作 MCP App，还要单独验证宿主连接：工具结果到达后能否正确渲染，取消与拒绝是否可见，重复请求时旧响应会不会覆盖新结果，传回对话的是否确实是当前选择。本文没有实现或运行这部分适配，博客图解的测试通过也不能替代 MCP 宿主测试。
 
@@ -421,7 +421,7 @@ Web Components 与 MCP Apps 也不互相排斥：前者负责组织前端组件�
 
 现在仓库中的三个 Skills 已经有了相应分工：`blog` 提供交互选择与实现规则，`write-blog-from-brief` 在写作时主动考虑是否适合操作或分步演示，`translate-and-format-blog` 翻译可见文字，并保持公式、数值假设和事件顺序一致。这些规则可以在[博客技能](https://github.com/cubxxw/blog/blob/main/.agents/skills/blog/SKILL.md)、[文章写作技能](https://github.com/cubxxw/blog/blob/main/.claude/skills/write-blog-from-brief/SKILL.md)和[翻译技能](https://github.com/cubxxw/blog/blob/main/.claude/skills/translate-and-format-blog/SKILL.md)中查看。
 
-我想保留下来的要求很简单：写到变化和过程时，多考虑一种表达手段；只有它真的帮助解释时，才放进文章。
+我想保留下来的要求很简单，写到变化和过程时，多考虑一种表达手段；只有它真的帮助解释时，才放进文章。
 
 这一点也改变了我理解 AI 辅助写作的方式。除了请它寻找资料、组织段落、修改文字，还可以请它把文中的一个关系做成读者能操作的东西。作者需要为那个关系提供依据，为简化模型划出边界，并在演示之后继续承担解释。
 

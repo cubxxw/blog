@@ -24,15 +24,15 @@ cover:
 
 我一般会先把整个字幕读一遍，弄清楚他们到底在讲什么。然后再听，主要是练习和回顾。最后，用自己的话把内容讲出来。
 
-学习英语和研究技术，可以用同一份材料往前走：先有想弄明白的问题，才去找文章、找视频；理解之后，再试着把它说清楚。翻译帮我进入内容，复述则让我继续整理它。
+学习英语和研究技术，可以用同一份材料往前走：先有想弄明白的问题，才去找文章、找视频。理解之后，再试着把它说清楚。翻译帮我进入内容，复述则让我继续整理它。
 
 ![YouTube 上的 Evaluation 访谈：播放器显示中英双语字幕，右侧为标注自动生成的英文转录](/images/posts/ai-english-learning/youtube-evals-english-transcript.png)
 
-*我的实际观看界面。右侧保留英文转录，方便通读和回看；视频来自 [Lenny’s Podcast 这期访谈](https://www.youtube.com/watch?v=BsWxPI9UM4c)。*
+*我的实际观看界面。右侧保留英文转录，方便通读和回看。视频来自 [Lenny’s Podcast 这期访谈](https://www.youtube.com/watch?v=BsWxPI9UM4c)。*
 
 ## 先有一个想弄明白的问题
 
-在研究 Evaluation 的过程中，我会主动找一手经验、讨论、论文、开源项目和文章。入口可以很简单：先在自己的知识库里提出一个问题，让 AI 帮忙调研相关资源。它找回的内容中也会有视频，我再顺着这些视频继续学，把有用的摘要补进去。
+在研究 Evaluation 的过程中，我会主动找一手经验和讨论，也找论文、开源项目和文章。入口可以很简单，先在自己的知识库里提出一个问题，让 AI 帮忙调研相关资源。它找回的内容中也会有视频，我再顺着这些视频继续学，把有用的摘要补进去。
 
 如果你也想试，可以先把问题缩到能拿一份资料来回答的程度。比如，与其一次研究“AI 评测的一切”，不如先问：“我手里有一批 AI 回答，该从哪里看出它的问题？”找到材料后，就有了一个判断：这篇文章、这一段访谈，能不能帮我往下做。
 
@@ -42,13 +42,13 @@ cover:
 
 ## 字幕读懂了，概念还可以再问一层
 
-我平常在电脑端用得多，看 YouTube 时会配合沉浸式翻译。它支持自行配置 DeepSeek；官方文档给出的方式是取得自己的 API Key，再填入扩展。想照着配置，可以直接看[接入说明](https://immersivetranslate.com/zh-Hans/docs/services/deepseek/)。
+我平常在电脑端用得多，看 YouTube 时会配合沉浸式翻译。它支持自行配置 DeepSeek。官方文档给出的方式是取得自己的 API Key，再填入扩展。想照着配置，可以直接看[接入说明](https://immersivetranslate.com/zh-Hans/docs/services/deepseek/)。
 
 ![同一段 Evaluation 访谈的双语界面：视频下方和右侧转录面板都显示英文及中文对照](/images/posts/ai-english-learning/youtube-evals-bilingual-transcript.png)
 
 *这张截图里，右侧转录也有了中英对照，可以顺着文字理解较长的一段。*
 
-双语对照能帮忙读下去，但有些词要放回具体工作里才明白。截图中的 open coding 就是一个例子。这里的 coding 属于定性分析语境，指对材料作初步记录和标记，与写程序不同；后面再把这些记录整理成较大的类别。节目页也把 open coding 和 axial coding 列为这次讨论的内容。[对应节目说明](https://www.lennysnewsletter.com/p/why-ai-evals-are-the-hottest-new-skill)
+双语对照能帮忙读下去，但有些词要放回具体工作里才明白。截图中的 open coding 就是一个例子。这里的 coding 属于定性分析语境，指对材料作初步记录和标记，与写程序不同。后面再把这些记录整理成较大的类别。节目页也把 open coding 和 axial coding 列为这次讨论的内容。[对应节目说明](https://www.lennysnewsletter.com/p/why-ai-evals-are-the-hottest-new-skill)
 
 遇到这样的词，可以把原句和前后文一起交给 AI，让它解释“这里的人具体在做什么”，再回到演示核对。只问一个词怎么翻译，得到“开放式编码”，问题可能还留在那里。换成一个动作问题，就能继续追问：读的是哪条记录，标出了什么，为什么把几条记录放在一起？
 
@@ -102,7 +102,7 @@ cover:
 
 复述已经在做一部分整理工作。要把一段话重新讲出来，就需要决定留下什么、怎样排列、哪个例子能说明它。笔记可以保留这些决定，不必只存一篇光滑的 AI 摘要。
 
-如果你暂时没有知识库，用一个普通文档也能开始。下面这个小模板可以复制；它是建议格式，不是我的仓库内部结构：
+如果你暂时没有知识库，用一个普通文档也能开始。下面这个小模板可以复制。它是建议格式，不是我的仓库内部结构：
 
 ```text
 我在解决的问题：
@@ -132,9 +132,9 @@ AI 反馈与本人修订：改了什么，为什么改，是否核对来源
 
 ## 电影也可以只是好好看一场
 
-不想一直看技术内容时，可以换电影。对 AI 故事还有兴趣，可以从 [AlphaGo 官方页面](https://deepmind.google/research/alphago/)进入完整纪录片；想换成职场和日常交流，可以看看《实习生》[The Intern](https://tv.apple.com/us/movie/the-intern/umc.cmc.1wsp9hqbc6n1c87rb9wrudikf)。后一个链接是 Apple TV 美国区页面，列有 English CC，实际所在地区的播放权和字幕需另行确认。
+不想一直看技术内容时，可以换电影。对 AI 故事还有兴趣，可以从 [AlphaGo 官方页面](https://deepmind.google/research/alphago/)进入完整纪录片。想换成职场和日常交流，可以看看《实习生》[The Intern](https://tv.apple.com/us/movie/the-intern/umc.cmc.1wsp9hqbc6n1c87rb9wrudikf)。后一个链接是 Apple TV 美国区页面，列有 English CC，实际所在地区的播放权和字幕需另行确认。
 
-找其他影片时，可以先按自己所在地区查询 [JustWatch](https://support.justwatch.com/article/what-is-just-watch)，再去对应服务看。它提供的是播放渠道导航，会区分订阅、租赁、购买等入口；片库里有一个条目，不等于你当前的订阅已经包含它。
+找其他影片时，可以先按自己所在地区查询 [JustWatch](https://support.justwatch.com/article/what-is-just-watch)，再去对应服务看。它提供的是播放渠道导航，会区分订阅、租赁、购买等入口。片库里有一个条目，不等于你当前的订阅已经包含它。
 
 电影可以放松着看，不用强迫自己逐句抄写。碰到一句想用的表达，再回听那个片段，试着换个场景说一遍。没有碰到，也可以把电影看完就结束。
 

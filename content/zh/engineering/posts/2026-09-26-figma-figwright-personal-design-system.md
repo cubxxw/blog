@@ -27,7 +27,7 @@ cover:
 
 我已经在使用免费 Figwright。[DayPage](https://github.com/getyak/daypage) 这个 iOS + Web 日志项目，可以作为讨论的具体载体。本文整理的是接下来可采用的工作流，其中的建议还需要通过实际任务验证。
 
-下面以 **DayPage 的 memo 卡片作为拟议练习**：一条记录有正文、时间、同步状态和操作入口；先实现包含失败状态的一版，再把重试入口从操作菜单移到错误提示旁。卡片结构、变量名称和接口都是演示方案，不代表 DayPage 当前实现。这样一个小改动，已经足以带我们走过设计、代码和后续维护。
+下面以 **DayPage 的 memo 卡片作为拟议练习**：一条记录有正文、时间、同步状态和操作入口。先实现包含失败状态的一版，再把重试入口从操作菜单移到错误提示旁。卡片结构、变量名称和接口都是演示方案，不代表 DayPage 当前实现。这样一个小改动，已经足以带我们走过设计、代码和后续维护。
 
 ## 想改一处界面，先知道去哪里改
 
@@ -47,11 +47,11 @@ cover:
 | 改变点击、重试、展开等行为 | 实际组件代码与状态示例 | 检查接口、交互和布局，再补齐 Figma 的状态图或注释 |
 | 修正“画布里的它对应哪段代码” | 组件与 token 映射记录 | 确认实际渲染正确，再保存对应关系；重命名时一起维护 |
 
-这里的“单一来源”应当按信息类型理解。Figma 很适合比较空间、层级和排列；代码才能证明键盘焦点、请求失败和屏幕适配实际怎样运行。把所有事实都挤进一个文件，会让这个文件迅速失去可维护性。
+这里的“单一来源”应当按信息类型理解。Figma 很适合比较空间、层级和排列。代码才能证明键盘焦点、请求失败和屏幕适配实际怎样运行。把所有事实都挤进一个文件，会让这个文件迅速失去可维护性。
 
 例如，想把失败提示改得更醒目，可以先在 Figma 的实验区比较“加粗文字”和“增加浅色背景”。本人选定后，如果只是调颜色，就修改对应的语义 token；如果还增加了重试按钮，就同时修改状态组件。生成产物、核对画布、检查真实页面，完成后再记录这次接受的版本。
 
-**生成的 CSS / Swift 是产物，修改要回到源文件。** 如果直接在生成后的 CSS 里修颜色，下次生成时修正可能被覆盖；若只改 Figma，产品实现又没有收到变化。暂时无法自动同步的部分，可以保留明确的人工步骤，完成后核对两边。
+**生成的 CSS / Swift 是产物，修改要回到源文件。** 如果直接在生成后的 CSS 里修颜色，下次生成时修正可能被覆盖。若只改 Figma，产品实现又没有收到变化。暂时无法自动同步的部分，可以保留明确的人工步骤，完成后核对两边。
 
 ### 给下一个 Agent 留一个入口
 
@@ -72,9 +72,9 @@ cover:
 
 ## 免费 Figma 足够起步，但文件要有秩序
 
-截至 2026 年 9 月 26 日，Figma Starter 不提供 Dev Mode 和团队库，版本历史为 30 天；它允许无限数量的 drafts，但 Starter 团队里的 Design 文件最多三页。“草稿数量不限”不能推导出“团队文件页数不限”。[Starter 说明](https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview)、[页面限制](https://help.figma.com/hc/en-us/articles/360038511293-Create-and-manage-pages)
+截至 2026 年 9 月 26 日，Figma Starter 不提供 Dev Mode 和团队库，版本历史为 30 天。它允许无限数量的 drafts，但 Starter 团队里的 Design 文件最多三页。“草稿数量不限”不能推导出“团队文件页数不限”。[Starter 说明](https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview)、[页面限制](https://help.figma.com/hc/en-us/articles/360038511293-Create-and-manage-pages)
 
-免费层仍能创建本地组件、样式和变量；限制在于不能把它们发布成供其他文件使用的库。[Figma 库基础说明](https://help.figma.com/hc/en-us/articles/39723547036055-Components-collection-Library-fundamentals)
+免费层仍能创建本地组件、样式和变量。限制在于不能把它们发布成供其他文件使用的库。[Figma 库基础说明](https://help.figma.com/hc/en-us/articles/39723547036055-Components-collection-Library-fundamentals)
 
 这使“一个产品先用一个文件”成为务实的起步方式。可以把三页安排成：
 
@@ -82,7 +82,7 @@ cover:
 - **Product**：当前接受的产品界面，按实际任务组织；memo 的 Web 与 iOS 方案放在可以并排比较的位置。
 - **Lab**：尚未接受的方向、参考与改版实验，用 section 区分批次。
 
-三页是本文建议的组织方式，并非 Figma 要求的设计系统模板。目的很简单：Agent 和人进入文件后，都能找到“正在使用的”“可以复用的”和“还在尝试的”。
+三页是本文建议的组织方式，并非 Figma 要求的设计系统模板。目的很简单，Agent 和人进入文件后，都能找到“正在使用的”“可以复用的”和“还在尝试的”。
 
 卡片也需要有能传递意图的结构。与其保留 `Frame 238` 和 `Group 17`，可以使用 `Memo/Card`、`Memo/Body`、`Memo/Status`。正文变长时，容器应如何扩展；窗口变窄时，状态和操作入口是否换行，都应通过 Auto Layout 和约束表达，再亲手缩放画布检查。Figma 官方指南明确建议用语义名称、变量与 Auto Layout，并用注释补充视觉无法传达的行为。[结构指南](https://developers.figma.com/docs/figma-mcp-server/structure-figma-file/)
 
@@ -92,7 +92,7 @@ cover:
 
 ## 让“优雅”变成可以讨论的设计决定
 
-“做得高级一点”没有告诉 Agent 应当牺牲什么。它可以加留白、减对比、缩小字号，也可以加渐变和动效；这些动作都可能改善一张展示图，也可能妨碍正在发生的任务。
+“做得高级一点”没有告诉 Agent 应当牺牲什么。它可以加留白、减对比，也可以缩小字号、加渐变和动效。这些动作都可能改善一张展示图，也可能妨碍正在发生的任务。
 
 因此，在继续操作画布之前，可以先为 memo 写一段短的设计说明。下面是练习用的普通 Markdown 文档，不是任何工具的专用配置：
 
@@ -118,11 +118,11 @@ cover:
 
 它的价值在于保留约束和判断依据。下一次换一个 Agent，它能够继续讨论“异常提示的可见性”，无需重新猜测“高级”的含义。
 
-`DESIGN.md` 这个名字也需要分清。项目自己写的设计说明，与某个仓库定义的格式，不会因为同名就自动兼容。例如，Google Labs 的 [design.md](https://github.com/google-labs-code/design.md) 定义了面向 coding agent 的视觉身份描述格式、token schema 和 CLI；本次核查时仍标为 `alpha`。使用它应当阅读其具体 schema，不能假设任意 Markdown 都能被它解析。
+`DESIGN.md` 这个名字也需要分清。项目自己写的设计说明，与某个仓库定义的格式，不会因为同名就自动兼容。例如，Google Labs 的 [design.md](https://github.com/google-labs-code/design.md) 定义了面向 coding agent 的视觉身份描述格式、token schema 和 CLI。本次核查时仍标为 `alpha`。使用它应当阅读其具体 schema，不能假设任意 Markdown 都能被它解析。
 
-一个值得用来练习描述的素材库是 VoltAgent 的 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md/blob/f6961238d5cddcf8042a74a70fc400ec67181abb/README.md)。它把公开网站的视觉分析整理成 DESIGN.md，内容包括色彩角色、排版、组件样式、布局和使用约束；收录了 Linear、Apple 等例子。可以借用它的描述维度，学习怎样把“感觉清爽”拆成可讨论的色彩、密度和层级。
+一个值得用来练习描述的素材库是 VoltAgent 的 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md/blob/f6961238d5cddcf8042a74a70fc400ec67181abb/README.md)。它把公开网站的视觉分析整理成 DESIGN.md，内容包括色彩角色、排版、组件样式、布局和使用约束。收录了 Linear、Apple 等例子。可以借用它的描述维度，学习怎样把“感觉清爽”拆成可讨论的色彩、密度和层级。
 
-取样边界同样要保留。例如，该集合的 [Apple 分析页](https://getdesign.md/apple/design-md)明确把内容定位为对公开可见模式的独立分析，并将适用场景指向产品展示页和营销网站；它没有获得 Apple 的背书。这样的参考不会自动补齐 memo 的失败重试、编辑中离开、长文本展开等交互。本文建议先写下“借用什么、在哪个任务下验证”，再把选中的规则改写为自己的项目说明。直接搬进整份品牌描述，容易连同不适用的展示逻辑一起带入。
+取样边界同样要保留。例如，该集合的 [Apple 分析页](https://getdesign.md/apple/design-md)明确把内容定位为对公开可见模式的独立分析，并将适用场景指向产品展示页和营销网站。它没有获得 Apple 的背书。这样的参考不会自动补齐 memo 的失败重试、编辑中离开、长文本展开等交互。本文建议先写下“借用什么、在哪个任务下验证”，再把选中的规则改写为自己的项目说明。直接搬进整份品牌描述，容易连同不适用的展示逻辑一起带入。
 
 ### 用同一份内容比较两个方向
 
@@ -147,7 +147,7 @@ cover:
 
 ## Figwright 怎样把 AI 接到免费 Figma 上
 
-可以把 Figwright 理解为接在 AI 客户端和 Figma 插件之间的一段连接程序。你在 Claude、Codex 等支持 MCP 的客户端里提出任务；Figwright 将工具调用送到 Figma 中运行的插件，插件负责实际读取或修改画布。它是独立的开源项目，采用插件路径，不要求 Dev Mode 席位。[Figwright 固定版本说明](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/README.md)
+可以把 Figwright 理解为接在 AI 客户端和 Figma 插件之间的一段连接程序。你在 Claude、Codex 等支持 MCP 的客户端里提出任务。Figwright 将工具调用送到 Figma 中运行的插件，插件负责实际读取或修改画布。它是独立的开源项目，采用插件路径，不要求 Dev Mode 席位。[Figwright 固定版本说明](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/README.md)
 
 这条链路可以画得很简单：
 
@@ -171,15 +171,15 @@ Figma 插件内部也有分工：能使用浏览器能力的界面层负责连�
 
 ### 读一张卡片，再试着改它的间距
 
-例如，在 Figma 中选中 memo，要求 Agent“读取这张卡片，说明正文和状态如何排列”。客户端会调用读取工具；本机 server 把请求交给插件，插件通过 API 读取对应节点的层级、布局与绑定信息，结果再返回客户端。这样，Agent 能拿到画布结构，不必只凭一张截图猜测。[设计读取工作流](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/skills/figma-codegen/SKILL.md)
+例如，在 Figma 中选中 memo，要求 Agent“读取这张卡片，说明正文和状态如何排列”。客户端会调用读取工具。本机 server 把请求交给插件，插件通过 API 读取对应节点的层级、布局与绑定信息，结果再返回客户端。这样，Agent 能拿到画布结构，不必只凭一张截图猜测。[设计读取工作流](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/skills/figma-codegen/SKILL.md)
 
-接着，在实验区要求“把正文与状态之间的间距从 16 试到 24”。这两个数只是演示：Agent 应先确认改的是哪层容器，以及间距有没有绑定变量，再调用写入工具，由插件修改布局属性或相应绑定。返回执行结果后，重新读取、截图，看长正文下的变化；写入成功还需要视觉核对。[画布写入工作流](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/skills/figma-build/SKILL.md)
+接着，在实验区要求“把正文与状态之间的间距从 16 试到 24”。这两个数只是演示：Agent 应先确认改的是哪层容器，以及间距有没有绑定变量，再调用写入工具，由插件修改布局属性或相应绑定。返回执行结果后，重新读取、截图，看长正文下的变化。写入成功还需要视觉核对。[画布写入工作流](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/skills/figma-build/SKILL.md)
 
 开始使用这条路径，需要让本机 server 运行，并在目标 Figma 文件中打开插件。该版本文档采用从 manifest 导入插件的方式，这一步需要 Figma 桌面版。连接成功后，再确认目标文件与选择区域。[设置说明](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/README.md)
 
 ### 免费的范围要分开看
 
-这套组合可以用免费 Figma 加开源 Figwright 起步。插件能力仍受账户、文档权限和 Plugin API 约束，共享库等 Starter 限制也依然存在。Claude/Codex 的模型订阅或调用费用要单独计算；接通工具只提供了执行路径，输出质量仍取决于设计材料、组件复用和审阅。
+这套组合可以用免费 Figma 加开源 Figwright 起步。插件能力仍受账户、文档权限和 Plugin API 约束，共享库等 Starter 限制也依然存在。Claude/Codex 的模型订阅或调用费用要单独计算。接通工具只提供了执行路径，输出质量仍取决于设计材料、组件复用和审阅。
 
 同时，Figma 官方远程 MCP 当前也给 Starter 提供有限访问额度，具体限制按套餐和 seat 区分。因此，“Starter 没有 Dev Mode”不等于“官方 MCP 全部必须付费”。本文围绕已经使用的 Figwright 插件路径展开，官方额度以其 [Rate limits & access](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/) 页面为准。
 
@@ -197,7 +197,7 @@ Figma 插件内部也有分工：能使用浏览器能力的界面层负责连�
 
 尤其要留意“看起来一样”的 token。`text.secondary` 与 `control.disabled` 当前可能都是同一种灰，但它们的含义不同。把时间文字绑定到禁用控件 token，今天看不出问题，下一次调整禁用态时就会误伤时间文字。
 
-[`token_map` 的实现](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/packages/mcp/src/tools/token-map.ts)会结合名字和值匹配；同色候选存在歧义时会提供提示。它读取的 `tokenSource` 包括 CSS、SCSS，以及 Tailwind / UnoCSS 配置。**任意 DTCG JSON 不是这里可直接代入的输入格式。**
+[`token_map` 的实现](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/packages/mcp/src/tools/token-map.ts)会结合名字和值匹配。同色候选存在歧义时会提供提示。它读取的 `tokenSource` 包括 CSS、SCSS，以及 Tailwind / UnoCSS 配置。**任意 DTCG JSON 不是这里可直接代入的输入格式。**
 
 如果项目先从 `tokens.json` 生成 CSS，可以让这个工具读取生成后的 CSS 做映射，同时继续把 JSON 当作数值维护入口。不要让“工具读哪个文件”改变“人应该修改哪个文件”。
 
@@ -208,11 +208,11 @@ token_map({
 })
 ```
 
-这里的 `PRODUCT_ROOT` 是产品仓库根目录，`GENERATED_CSS_PATH` 是相对于它的实际 CSS 路径，二者都是示意占位。尤其在多仓库环境里，要显式指定 `rootDir`；默认服务器工作目录未必就是正在实现的产品。
+这里的 `PRODUCT_ROOT` 是产品仓库根目录，`GENERATED_CSS_PATH` 是相对于它的实际 CSS 路径，二者都是示意占位。尤其在多仓库环境里，要显式指定 `rootDir`。默认服务器工作目录未必就是正在实现的产品。
 
 `token_map` 的输出是一份对应关系和缺口信息。它不会因此把 token 源、Figma 变量和 Swift 文件全部双向同步。映射、转换输出和同步存储应当分别验收。
 
-核实后的模糊对应关系还需要保存。上述 `figma-codegen` 工作流约定，`docs/figma-component-map.md` 用 `FigmaName | code/path` 记录组件，`docs/figma-token-map.md` 用 `FigmaName | ref` 记录 token。应在实际渲染、确认语义正确之后，再写入原本不确定的映射；这些记录会覆盖以后重新计算的匹配结果，错误记录也会被持续复用。[映射记录约定](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/skills/figma-codegen/SKILL.md)
+核实后的模糊对应关系还需要保存。上述 `figma-codegen` 工作流约定，`docs/figma-component-map.md` 用 `FigmaName | code/path` 记录组件，`docs/figma-token-map.md` 用 `FigmaName | ref` 记录 token。应在实际渲染、确认语义正确之后，再写入原本不确定的映射。这些记录会覆盖以后重新计算的匹配结果，错误记录也会被持续复用。[映射记录约定](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/skills/figma-codegen/SKILL.md)
 
 ### 回到画布：让实例和变量保留关系
 
@@ -220,11 +220,11 @@ token_map({
 
 假设正文颜色已有变量，Agent 应把正文绑定到它；如果 `Memo/Status` 已经是组件，就创建实例。把它们重新画成外观相同的文本和矩形，会丢掉以后集中修改的入口。
 
-这也是截图之外必须检查的事情：一张图能够展示最终外观，却无法证明每个颜色仍绑定到正确变量、每张卡片仍是同一个组件的实例。
+这也是截图之外必须检查的事情。一张图能够展示最终外观，却无法证明每个颜色仍绑定到正确变量、每张卡片仍是同一个组件的实例。
 
 ## 多端共享到语义，平台行为分别实现
 
-DayPage 的已有工程记录中，`tokens.json` 是数值的单一来源，再生成 Web 的 `globals.css` 和 iOS 的 `DSTokens.swift`，并有 CI 漂移检查。上述机制来自已有项目记录；本文没有重新运行项目或 CI。[项目公开入口](https://github.com/getyak/daypage)
+DayPage 的已有工程记录中，`tokens.json` 是数值的单一来源，再生成 Web 的 `globals.css` 和 iOS 的 `DSTokens.swift`，并有 CI 漂移检查。上述机制来自已有项目记录。本文没有重新运行项目或 CI。[项目公开入口](https://github.com/getyak/daypage)
 
 这套机制可以作为本文方案的起点，帮助控制数值漂移。Web 和 iOS 的输入方式、导航及组件行为，仍需要各端实现。
 
@@ -244,17 +244,17 @@ Figwright 在本次核查的 [`profile.ts`](https://github.com/awdr74100/figwrig
 
 ### token 格式统一之后，还要验证输出
 
-Design Tokens Community Group 的 [2025.10 格式](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/)为 token 的类型、值和引用等提供了交换约定。它是社区组发布的规范，不是 W3C Recommendation；采用这个格式，也不代表每个工具都完整支持它。
+Design Tokens Community Group 的 [2025.10 格式](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/)为 token 的类型、值和引用等提供了交换约定。它是社区组发布的规范，不是 W3C Recommendation。采用这个格式，也不代表每个工具都完整支持它。
 
 [Style Dictionary](https://styledictionary.com/)承担的是把 token 转换为多个平台输出的工作。项目可以使用这类工具，也可以继续使用已有生成器。本文建议把验收放在结果上：名称和引用是否正确解析，单位是否按目标平台处理，主题是否完整，重新生成是否能暴露手工改动。
 
 对 memo 练习，一个够用的检查是：修改源中的一枚语义 token，重新生成 CSS 与 Swift，确认受影响的两端组件都正确变化。再观察不相关的文字是否被误伤。这个小实验能同时检查命名、转换和消费关系，比确认“JSON 文件存在”更接近可维护性。
 
-不要为了工具兼容，同时手写 JSON、CSS、Swift 和 Figma 四套数值。无法自动贯通的那一段，可以暂时保留明确的人工更新步骤；成本至少应当看得见。
+不要为了工具兼容，同时手写 JSON、CSS、Swift 和 Figma 四套数值。无法自动贯通的那一段，可以暂时保留明确的人工更新步骤。成本至少应当看得见。
 
 ## 第一次实现，要把状态带进来
 
-选好视觉方向后，可以给 Claude 或 Codex 一份窄任务。岗位无需固定在某个模型身上；下面的任务也可以由同一个 Agent 先实现、再切换到审阅阶段完成。
+选好视觉方向后，可以给 Claude 或 Codex 一份窄任务。岗位无需固定在某个模型身上。下面的任务也可以由同一个 Agent 先实现、再切换到审阅阶段完成。
 
 ```text
 实现已选 memo 卡片方案。
@@ -272,7 +272,7 @@ Design Tokens Community Group 的 [2025.10 格式](https://www.w3.org/community/
 只有渲染并确认正确的模糊映射，才写入映射记录。
 ```
 
-其中“复用已存在的组件”需要真实入口。对于使用 shadcn/ui 的项目，其 [MCP 文档](https://ui.shadcn.com/docs/mcp)提供了浏览、搜索和安装 registry 组件的能力；它解决组件发现问题，不能替项目决定哪种交互适合日志卡片。已经有合适组件时，也没有必要为这篇文章再引入一套库。
+其中“复用已存在的组件”需要真实入口。对于使用 shadcn/ui 的项目，其 [MCP 文档](https://ui.shadcn.com/docs/mcp)提供了浏览、搜索和安装 registry 组件的能力。它解决组件发现问题，不能替项目决定哪种交互适合日志卡片。已经有合适组件时，也没有必要为这篇文章再引入一套库。
 
 Coinbase 提供了一个可参考的团队例子。其 [CDS 官方 AI 文档](https://cds.coinbase.com/getting-started/ai-overview)把 Agent Skills、组件 MCP 和分平台文档索引组织在一起：`cds-code` 识别 React / React Native 环境与可用包，指导组件选择，优先使用设计 token；MCP 则提供组件 API 上下文。
 
@@ -291,7 +291,7 @@ memo 可以先有一个很小的状态集合：
 
 如果项目已经有 Storybook，可以把这些状态做成可重复打开的 story。它的 [accessibility addon](https://storybook.js.org/docs/writing-tests/accessibility-testing)基于 axe-core，对渲染后的页面进行规则检查，并把无法自动确认的结果留待人工检查。没有 Storybook 时，一个只供开发使用的组件展示页也可以承载这些场景。
 
-审阅应分别回答三个问题：实现是否使用了正确资产，交互是否可用，视觉选择是否服务任务。截图有助于看出排版和间距差异；可访问性检查有助于发现规则问题；二者都不能独自决定哪个方向更有美感。
+审阅应分别回答三个问题：实现是否使用了正确资产，交互是否可用，视觉选择是否服务任务。截图有助于看出排版和间距差异。可访问性检查有助于发现规则问题。二者都不能独自决定哪个方向更有美感。
 
 ## 下一次改动，才开始检验系统是否存在
 
@@ -299,7 +299,7 @@ memo 可以先有一个很小的状态集合：
 
 这里适合使用 `design_diff`，但需要清楚它比较的对象。
 
-根据本次核查的 [实现源码](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/packages/mcp/src/tools/design-diff.ts)，它读取某个 Figma 节点的设计上下文，在产品仓库的 `.figwright/snapshots/` 下保存快照。第一次调用创建基线；后续调用比较同一节点的结构与属性，返回新增、删除及变化；`update: true` 接受当前设计作为新基线。
+根据本次核查的 [实现源码](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/packages/mcp/src/tools/design-diff.ts)，它读取某个 Figma 节点的设计上下文，在产品仓库的 `.figwright/snapshots/` 下保存快照。第一次调用创建基线。后续调用比较同一节点的结构与属性，返回新增、删除及变化。`update: true` 接受当前设计作为新基线。
 
 ```text
 // 首次实现并核对后：保存对应区域的设计快照
@@ -318,7 +318,7 @@ design_diff({
 
 这里比较的是**两次 Figma 设计上下文**。它不会检查产品代码是否已经同步，也不做像素截图比较。即便返回 `no-changes`，代码仍可能被别人改过，或者上一次实现就有遗漏。
 
-本文建议把接受基线放在实现和验证之后：先读变化，确定受影响组件，完成代码修改，检查相关状态，再更新快照。如果读完变化就立即 `update: true`，下一轮就难以再从原基线看清尚未落实的设计改动。
+本文建议把接受基线放在实现和验证之后。先读变化，确定受影响组件，完成代码修改，检查相关状态，再更新快照。如果读完变化就立即 `update: true`，下一轮就难以再从原基线看清尚未落实的设计改动。
 
 对这次 memo 修改，理想的审阅范围应当能够被说明：移动失败态操作、让状态组件接收重试动作、调整对应布局，并验证它没有改变正常态。若 Agent 重写了整个页面，至少应先解释为什么现有组件无法承载这次变化。
 
@@ -326,13 +326,13 @@ design_diff({
 
 ### 多个 Agent 共用资产时，减少同时写入
 
-让一个 Agent 做候选方案，另一个核对实现，是可以尝试的分工。但本文建议同一时刻只让一个执行者修改共享 token、基础组件或同一个 Figma 文件；其他执行者提出差异和建议。并行先用于相互独立的探索与检查，公共资产的变更集中审阅。
+让一个 Agent 做候选方案，另一个核对实现，是可以尝试的分工。但本文建议同一时刻只让一个执行者修改共享 token、基础组件或同一个 Figma 文件。其他执行者提出差异和建议。并行先用于相互独立的探索与检查，公共资产的变更集中审阅。
 
 Figwright 的文件选择机制能帮助调用落到指定文件，其 [固定版本说明](https://github.com/awdr74100/figwright/blob/ee1ad5708634f8c2c0c1ac517f048acd2d7fca65/README.md)介绍了 `list_files` / `use_file`。选择目标文件不应被当成共享资产的并发锁：两个 Agent 即使分别操作不同画布，仍可能同时修改同一份 token 源。
 
 ## 遇到明确瓶颈，再补工具
 
-到这里，起步组合已经很小：Figma 保存视觉方案，Figwright 连接画布，一个能访问产品仓库的 Agent 执行任务，仓库保存设计说明、token 和真实组件。本文建议等缺口具体出现，再选择补充工具：
+到这里，起步组合已经很小，Figma 保存视觉方案，Figwright 连接画布，一个能访问产品仓库的 Agent 执行任务，仓库保存设计说明、token 和真实组件。本文建议等缺口具体出现，再选择补充工具：
 
 | 已出现的瓶颈 | 可考虑的工具 | 应当验收的边界 |
 | --- | --- | --- |
@@ -356,7 +356,7 @@ Figwright 的文件选择机制能帮助调用落到指定文件，其 [固定�
 
 ## 参考资料
 
-以下资料核查于 2026 年 9 月 26 日。Figwright 的实现与工作流细节固定引用提交 `ee1ad5708634f8c2c0c1ac517f048acd2d7fca65`；产品套餐和工具能力仍应在实际采用时复核。
+以下资料核查于 2026 年 9 月 26 日。Figwright 的实现与工作流细节固定引用提交 `ee1ad5708634f8c2c0c1ac517f048acd2d7fca65`。产品套餐和工具能力仍应在实际采用时复核。
 
 1. [Figma：Structure your Figma file for better code](https://developers.figma.com/docs/figma-mcp-server/structure-figma-file/)——组件、变量、命名、Auto Layout 与行为注释。
 2. [DayPage 公开仓库](https://github.com/getyak/daypage)——项目入口；本文对同源 token 与 CI 的描述依据作者已有工程记录，未在本轮重跑验证。
