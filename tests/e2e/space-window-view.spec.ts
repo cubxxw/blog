@@ -13,7 +13,7 @@ async function glassPoint(page:Page,point:[number,number,number]=[.35,1.95,-2.60
 
 test('the actual window retreats naturally, preserves audio and keeps Mac controls inside the screen',async({page})=>{
  test.setTimeout(90000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await observeRoomAudio(page);
- await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});
+ await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:music-enabled:v1','no');});
  await page.goto('/zh/projects/?vista=image');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
  const speaker=page.locator('[data-room-object="speaker"]');await speaker.focus();await speaker.press('Enter');
  await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});await expect(root(page)).toHaveAttribute('data-room-ambient','playing');

@@ -33,7 +33,7 @@ test.beforeEach(async({page})=>{
  const records:unknown[]=[];pointerEvidence.set(page,records);
  page.on('console',message=>{const text=message.text(),prefix='__room_native_pointer__';if(!text.startsWith(prefix)||records.length>=80)return;try{records.push(JSON.parse(text.slice(prefix.length)));}catch{records.push({diagnosticError:'invalid pointer observation'});}});
  await page.addInitScript(()=>{
-  localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');
+  localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:music-enabled:v1','no');
   for(const type of ['pointerdown','pointerup'])document.addEventListener(type,event=>{
    const pointer=event as PointerEvent,room=document.querySelector<HTMLElement>('[data-bear-workspace]');if(!pointer.isTrusted||!room)return;
    const target=pointer.target instanceof Element?pointer.target:null;
