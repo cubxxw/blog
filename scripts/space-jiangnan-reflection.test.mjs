@@ -34,6 +34,7 @@ const runtime=`
   ({
     firstFrame,
     setMaps(value){root.dataset.worldPbrMaps=String(value);wake();},
+    setVista(value){exterior.vistaMode=value;wake();},
     hide(value){document.hidden=value;visibility();},
     beginFlight(duration){moving={elapsed:0,started:performance.now(),duration,to:{},motion:{at(){return {};}},resolve(){}};wake();},
     get travelling(){return Boolean(moving);},
@@ -98,6 +99,24 @@ test('cached textures still paint a first frame before the six-view reflection c
   assert.equal(f.captures.length,0,'the initial display must not wait for a cubemap');
   f.advance(2300);f.flush();assert.equal(f.captures.length,1);
   assert.equal(f.reflected,true,'the ordinary reflection remains available after entry');
+});
+
+test('room entry waits for the primary window image even after materials and their deadline are ready',async()=>{
+  const f=fixture();let ready=false;
+  const completed=f.world.firstFrame.then(value=>{ready=value;});
+  f.world.setVista('loading');f.world.setMaps(12);f.flush();await Promise.resolve();
+  assert.equal(ready,false,'material readiness must not reveal an unfinished window');
+  f.advance(3000);f.flush();await Promise.resolve();
+  assert.equal(ready,false,'the material deadline must not bypass primary-image loading');
+  assert.equal(f.captures.length,0,'reflection must not capture an unfinished environment');
+  f.world.setVista('image');f.flush();await completed;
+  assert.equal(ready,true);
+  assert.equal(f.captures.length,0,'the photographic first frame still precedes reflection');
+});
+
+test('a definitive window-image failure can complete entry with its recoverable fallback',async()=>{
+  const f=fixture();f.world.setVista('geometry-fallback');f.world.setMaps(12);f.flush();
+  assert.equal(await f.world.firstFrame,true,'an image error must not trap the visitor at boot');
 });
 
 test('an unready early draw cannot move reflection work ahead of the first ready frame',async()=>{

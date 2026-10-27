@@ -1528,6 +1528,21 @@
       "at": "2026-10-23T17:34:07.138Z",
       "id": "em_5ge69qmr0381xr4v6ywy5qgqpf",
       "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/": {
+      "at": "2026-10-24T16:19:33.113Z",
+      "id": "em_5tpx9mqat59e2s5phyg8qwwf4v",
+      "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/": {
+      "at": "2026-10-24T16:19:33.113Z",
+      "id": "em_51a7qfpszd8wys0pywept35ebm",
+      "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/": {
+      "at": "2026-10-24T16:19:33.113Z",
+      "id": "em_3cxz481ytx8ejbd251qeb4m1y0",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4865,6 +4880,36 @@
       "mode": "draft",
       "providerId": "em_5ge69qmr0381xr4v6ywy5qgqpf",
       "completedAt": "2026-10-23T17:34:07.138Z"
+    },
+    "[\"en\",\"https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/\"]": {
+      "language": "en",
+      "url": "https://cubxxw.com/ai-agent/posts/tana-from-notes-to-meeting-work/",
+      "status": "completed",
+      "attemptId": "4a61d40c-e736-4670-ace0-6e72e546ca64",
+      "at": "2026-10-24T16:19:33.113Z",
+      "mode": "draft",
+      "providerId": "em_5tpx9mqat59e2s5phyg8qwwf4v",
+      "completedAt": "2026-10-24T16:19:33.113Z"
+    },
+    "[\"en\",\"https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/\"]": {
+      "language": "en",
+      "url": "https://cubxxw.com/ai-agent/posts/doneas-weekly-commitments/",
+      "status": "completed",
+      "attemptId": "1ca5b583-3130-44ad-9122-6108276e736a",
+      "at": "2026-10-24T16:19:33.113Z",
+      "mode": "draft",
+      "providerId": "em_51a7qfpszd8wys0pywept35ebm",
+      "completedAt": "2026-10-24T16:19:33.113Z"
+    },
+    "[\"en\",\"https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/\"]": {
+      "language": "en",
+      "url": "https://cubxxw.com/ai-agent/posts/ambi-memory-to-work/",
+      "status": "completed",
+      "attemptId": "6a114efe-3489-496e-b4cf-b22dc7bf3a14",
+      "at": "2026-10-24T16:19:33.113Z",
+      "mode": "draft",
+      "providerId": "em_3cxz481ytx8ejbd251qeb4m1y0",
+      "completedAt": "2026-10-24T16:19:33.113Z"
     }
   }
 }

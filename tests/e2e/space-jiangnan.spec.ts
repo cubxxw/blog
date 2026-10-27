@@ -39,6 +39,26 @@ test('a failed distant environment falls back to geometry and remains explorable
   await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
 });
 
+test('cold entry keeps the room covered until its current photographic window is painted',async({page})=>{
+  let release!:()=>void;
+  const pending=new Promise<void>(resolve=>{release=resolve;});
+  const requested=page.waitForRequest(/jiangnan-vista-study-v\d+.*\.webp/);
+  await page.route(/jiangnan-vista-study-v\d+.*\.webp/,async route=>{await pending;await route.continue();});
+  try{
+    await page.goto('/projects/',{waitUntil:'domcontentloaded'});await requested;
+    await expect(root(page)).toHaveAttribute('data-world-frames',/^[1-9]\d*$/,{timeout:30_000});
+    await expect.poll(async()=>Number(await root(page).getAttribute('data-world-pbr-maps'))).toBeGreaterThanOrEqual(5);
+    await expect(root(page)).toHaveAttribute('data-boot-state','loading');
+    await expect(root(page)).toHaveAttribute('data-world-vista','loading');
+    await expect(page.locator('[data-space-boot]')).toBeVisible();
+    release();
+    await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
+    await expect(root(page)).toHaveAttribute('data-world-vista','image');
+    await expect(page.locator('[data-space-boot]')).toBeHidden();
+    await page.screenshot({path:test.info().outputPath('photographic-first-frame.png')});
+  }finally{release();}
+});
+
 test('walking and dragging change position and angle with different near/far parallax',async({page})=>{
   await ready(page);const a=await pose(page),near=await point(page,'computer'),far=await point(page,'bridge');
   await page.keyboard.down('KeyW');try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-a.x,p.z-a.z);},{timeout:10_000}).toBeGreaterThan(.15);}finally{await page.keyboard.up('KeyW');}const b=await pose(page);
