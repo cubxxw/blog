@@ -19,7 +19,10 @@ function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded
   try{const saved=localStorage.getItem(volumeKey),value=Number(saved);if(saved!==null&&saved.trim()!==''&&Number.isFinite(value)&&value>=0&&value<=1)volume=value;}catch{}
   let perspective=Object.freeze({music:1,rain:1});
   const musicLoop=track=>engine.createLoop({src:track.src,volume:volume*perspective.music,crossfade:2,trimSilence:true,fadeSeconds:.06});
-  const music={audio:musicLoop(selected),wanted:Boolean(defaultEnabled),failure:null,attempt:null,generation:0};
+  const enabledKey='space:cafe:music-enabled:v1';let musicEnabled=Boolean(defaultEnabled);
+  try{const saved=localStorage.getItem(enabledKey);if(saved==='yes'||saved==='no')musicEnabled=saved==='yes';}catch{}
+  const rememberMusic=()=>{try{localStorage.setItem(enabledKey,music.wanted?'yes':'no');}catch{}};
+  const music={audio:musicLoop(selected),wanted:musicEnabled,failure:null,attempt:null,generation:0};
   const rain={audio:engine.createLoop({src:assets.ambience,volume:1.5,crossfade:8}),wanted:true,failure:null,attempt:null,generation:0};
   const lanes=[music,rain];let quiet=Boolean(initialQuiet),disposed=false,lastState='',rainLevel=1;
   const available=()=>!quiet&&!disposed&&(backgroundPlayback||!document.hidden)&&!root.hidden;
@@ -57,6 +60,7 @@ function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded
     if(quiet||disposed)return snapshot();
     if(!music.audio.paused||(music.wanted&&music.attempt)){music.wanted=false;music.failure=null;pause(music);}
     else{music.wanted=true;music.failure=null;play(music);}
+    rememberMusic();
     // A speaker action is also a trusted opportunity to unlock outdoor rain;
     // it never changes the rain's intent or touches an already playing source.
     if(rain.failure==='blocked'&&canPlay(rain))play(rain);
@@ -70,6 +74,7 @@ function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded
       selected=next;music.audio=musicLoop(next);
     }
     music.wanted=true;music.failure=null;play(music);
+    rememberMusic();
     if(rain.failure==='blocked'&&canPlay(rain))play(rain);
     sync();return snapshot();
   }
@@ -109,7 +114,7 @@ function mountIndependentRoomAudio({root,assets,zh,defaultEnabled=false,embedded
   function gesture(event){
     if(!event.isTrusted)return;
     if((rain.failure==='blocked'||rain.failure==='error')&&canPlay(rain))play(rain);
-    if(event.target?.closest?.('button[data-room-sound], [data-room-object="speaker"]'))return;
+    if(event.target?.closest?.('button[data-room-sound], [data-room-object="speaker"], [data-room-playback], [data-room-record]'))return;
     if(music.failure==='blocked'&&canPlay(music))play(music);
   }
   sound.addEventListener('click',toggle,{signal:abort.signal});root.addEventListener('click',gesture,{signal:abort.signal,capture:true});root.addEventListener('keydown',gesture,{signal:abort.signal,capture:true});

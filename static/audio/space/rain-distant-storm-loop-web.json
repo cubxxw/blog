@@ -1,0 +1,15 @@
+{
+  "title": "Distant storm in the city (5)",
+  "author": "Matucha",
+  "sourcePage": "https://commons.wikimedia.org/wiki/File:Distant_storm_in_the_city_(5).flac",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+  "master": "rain-distant-storm-loop.flac",
+  "masterSha256": "163b7f4df1345f2d54a35ae041116987544eca12dc0397105537b4eb76c999fb",
+  "file": "rain-distant-storm-loop.mp3",
+  "sha256": "4a7b02688245991c6b6f78ef11b1a95bfd46dd68b1f1f55689da66052003c197",
+  "bytes": 1729140,
+  "changes": "Web delivery copy of the existing 108-second excerpt. Encoded with libmp3lame at 128 kbps, 44.1 kHz stereo. No new cut or normalization. The player retains its 8-second decoded-buffer crossfade. The original lossless master and source receipt are preserved.",
+  "command": "ffmpeg -nostdin -hide_banner -loglevel error -i rain-distant-storm-loop.flac -map_metadata -1 -c:a libmp3lame -b:a 128k rain-distant-storm-loop.mp3",
+  "attribution": "Distant storm in the city (5) — Matucha — CC BY 3.0. Excerpted, re-encoded and loop boundary crossfaded by Xinwei Xiong."
+}
