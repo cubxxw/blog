@@ -12,15 +12,23 @@ async function scenario(options={}){
   let now=options.startAt??0,serial=0,settled=false,outcome,attached=0,detached=0,sends=0;
   const timers=new Map(),commands=[];
   const later=(fn,ms)=>{const id=++serial;timers.set(id,{at:now+ms,fn});return id;};
+  const observers=new Set();
+  const notify=(type,attributeName)=>{for(const observer of observers){const o=observer.options;if(type==='childList'?o.childList:o.attributes&&(!o.attributeFilter||o.attributeFilter.includes(attributeName)))Promise.resolve().then(()=>{if(observers.has(observer))observer.callback([]);});}};
+  class MutationObserver{constructor(callback){this.callback=callback;}observe(_target,options){this.options=options;observers.add(this);}disconnect(){observers.delete(this);}}
+  const browserLater=(fn,ms)=>later(fn,ms+(options.browserTimerLag??0));
   const at=(time,fn)=>{if(time!==null&&time!==undefined)later(fn,Math.max(0,time-now));};
   const root={dataset:{bootState:'loading',worldRenderedMode:'intro',catLoaded:'false',catActive:options.pauseAt===undefined?'false':'true',catPose:'rest',worldFrames:'7',cafeMode:'cafe'},getAttribute(name){return name==='data-cafe-mode'?this.dataset.cafeMode:null;}};
+  root.dataset=new Proxy(root.dataset,{set(target,key,value){target[key]=value;notify('attributes','data-'+key.replace(/[A-Z]/g,c=>'-'+c.toLowerCase()));return true;}});
   let current=root,ambiguous=false,available=options.rootAt===undefined;
   const data={status:'startup',initialPose:null,initialTime:null,changedPose:null,changedTime:null,bootCompleteAt:null,renderedRoamAt:null,readinessError:null};
   const window={__catMotionObservation:options.missingObservation?undefined:data,__catMotionRoot:available?root:undefined,__catReadinessRoot:available?root:undefined};
-  const context=vm.createContext({console:{warn(){}},performance:{now:()=>now},setTimeout:later,clearTimeout:id=>timers.delete(id),document:{querySelectorAll:()=>!available?[]:ambiguous?[current,root]:[current]},window});
+  const globals={console:{warn(){}},performance:{now:()=>now,timeOrigin:1700000000000},clearTimeout:id=>timers.delete(id),MutationObserver,document:{querySelectorAll:()=>!available?[]:ambiguous?[current,root]:[current]},window};
+  // Browser task delays must never delay or reset the independent Node gate.
+  const context=vm.createContext({...globals,setTimeout:later});
+  const browserContext=vm.createContext({...globals,setTimeout:browserLater});
   vm.runInContext(executable+'\nglobalThis.api={readRoomObservation,withRoomObservationSession,observeResidentStartup,observePausedResident,expectRoomAttributes};',context);
   const boot=options.bootAt??1000,roam=options.roamAt??2000,cat=options.catAt??3000,motion=options.motionAt??5000;
-  at(options.rootAt,()=>{available=true;window.__catMotionRoot=window.__catReadinessRoot=root;});
+  at(options.rootAt,()=>{available=true;window.__catMotionRoot=window.__catReadinessRoot=root;notify('childList');});
   at(boot,()=>{root.dataset.bootState='complete';data.bootCompleteAt=now;});
   at(roam,()=>{root.dataset.worldRenderedMode='roam';data.renderedRoamAt=now;});
   at(cat,()=>{
@@ -29,8 +37,8 @@ async function scenario(options={}){
   });
   at(motion,()=>{if(data.status==='watching'){root.dataset.catPose='moved';data.changedPose='moved';data.changedTime=now;data.status='changed';}});
   at(options.desktopAt,()=>{root.dataset.cafeMode='desktop';if(options.pauseAfter)root.dataset.catActive='false';});
-  at(options.replaceAt,()=>{current={dataset:{...root.dataset}};});
-  at(options.ambiguousAt,()=>{ambiguous=true;});
+  at(options.replaceAt,()=>{current={dataset:{...root.dataset}};notify('childList');});
+  at(options.ambiguousAt,()=>{ambiguous=true;notify('childList');});
   at(options.readinessErrorAt,()=>{data.readinessError='controlled readiness error';});
   at(options.pauseAt,()=>{root.dataset.catActive='false';});
   at(options.poseAt,()=>{root.dataset.catPose='unexpected motion';});
@@ -41,7 +49,7 @@ async function scenario(options={}){
       sends++;const call=sends;commands.push({at:now,expression});
       if(options.executeDelay?.[call])await new Promise(resolve=>later(resolve,options.executeDelay[call]));
       let result;
-      try{result={result:{value:await vm.runInContext(expression,context)}};}
+      try{result={result:{value:await vm.runInContext(expression,browserContext)}};}
       catch(error){result={result:{},exceptionDetails:{text:String(error.message)}};}
       const lag=options.sendDelay?.[call]??0;if(lag)await new Promise(resolve=>later(resolve,lag));
       if(options.invalidAt===call)return {result:{value:{status:'changed',initialTime:NaN}}};
@@ -72,7 +80,7 @@ async function scenario(options={}){
   }
   await advance();assert.equal(settled,true);const elapsed=now;
   if(options.drainLate)await advance(false,100000);
-  return {...outcome,elapsed,attached,detached,sends,commands};
+  return {...outcome,elapsed,attached,detached,sends,commands,liveObservers:observers.size,attributeDiagnostic:window.__roomAttributeObservation};
 }
 
 test('individually legal startup stages may take more than one combined30s gate',async()=>{
@@ -124,9 +132,9 @@ for(const checkFrames of [false,true])test('late pause retains the full400ms pos
 
 // The final desktop assertion uses the existing single-evaluation DOM reader.
 // Its one Node5s deadline includes setup, dispatch, polling and response time.
-test('desktop attributes can change during one in-browser poll without locator layout snapshots',async()=>{
+test('desktop attributes observe actual DOM mutation without locator layout snapshots',async()=>{
   const result=await scenario({attributeWait:true,desktopAt:1850,executeDelay:{1:1670}});
-  assert.equal(result.ok,true,result.error);assert.equal(result.elapsed,1870);
+  assert.equal(result.ok,true,result.error);assert.equal(result.elapsed,1850);
   assert.equal(result.sends,1);assert.equal(result.attached,1);assert.equal(result.detached,1);
   assert.ok(result.commands[0].expression.includes('getAttribute'));
   assert.doesNotMatch(result.commands[0].expression,/getBoundingClientRect|getComputedStyle|ariaSnapshot|\.click\(/);
@@ -152,6 +160,34 @@ test('desktop gate retains the complete subsequent400ms resident pause',async()=
   assert.equal(result.ok,true,result.error);assert.equal(result.elapsed,5100);
   const moving=await scenario({attributeWait:true,desktopAt:4700,pauseAfter:true,motionAt:20000,poseAt:5050});
   assert.equal(moving.ok,false);assert.match(moving.error,/moved during400ms/);
+});
+test('a passive attribute transition is observed when browser timers are delayed without extending the Node5s budget',async()=>{
+  const result=await scenario({attributeWait:true,desktopAt:1850,browserTimerLag:1500,sendDelay:{1:2000}});
+  assert.equal(result.ok,true,result.error);assert.equal(result.elapsed,3850);assert.equal(result.liveObservers,0);
+});
+test('passive observation cannot turn a timely condition with a late response into a pass',async()=>{
+  const result=await scenario({attributeWait:true,desktopAt:1850,browserTimerLag:1500,sendDelay:{1:3300},drainLate:true});
+  assert.equal(result.ok,false);assert.match(result.error,/exceeded5000ms/);assert.equal(result.elapsed,5000);assert.equal(result.liveObservers,0);
+  assert.equal(result.attributeDiagnostic.matchedAt,1850,'diagnostics do not override the Node deadline');
+});
+test('a delayed appearance binds the original root and disconnects its passive observer',async()=>{
+  const result=await scenario({attributeWait:true,rootAt:500,desktopAt:1850});
+  assert.equal(result.ok,true,result.error);assert.equal(result.elapsed,1850);assert.equal(result.liveObservers,0);
+});
+for(const desktopAt of [5001,undefined])test('late or missing attribute still fails at Node5s when browser timers are delayed: '+desktopAt,async()=>{
+  const result=await scenario({attributeWait:true,desktopAt,browserTimerLag:1500,drainLate:true});
+  assert.equal(result.ok,false);assert.match(result.error,/exceeded5000ms/);assert.equal(result.elapsed,5000);assert.equal(result.liveObservers,0);
+  assert.equal(result.attributeDiagnostic.matchedAt,null);
+});
+test('failure attachment projects only finite readonly attribute timing fields',()=>{
+  const spec=stripTypeScriptTypes(fs.readFileSync(new URL('../tests/e2e/00-space-resident-motion.spec.ts',import.meta.url),'utf8'));
+  const start=spec.indexOf('page.evaluate(')+'page.evaluate('.length,end=spec.indexOf('}),new Promise',start);
+  assert.ok(end>start);
+  const raw={timeOrigin:{url:'DO_NOT_LEAK'},startedAt:1,deadline:5001,lastSampleAt:1850,matchedAt:'DO_NOT_LEAK',finishedAt:NaN,samples:2,rootCount:1,initialMatch:{private:'DO_NOT_LEAK'},status:{toString(){throw Error('must not coerce arbitrary metadata');}},output:'DO_NOT_LEAK'};
+  const observe=vm.runInNewContext('('+spec.slice(start,end+1)+')',{window:{__roomAttributeObservation:raw,__catMotionObservation:{}},performance:{now:()=>9000},document:{querySelector:()=>null,querySelectorAll:()=>[]}});
+  const result=observe();assert.equal(result.observedAt,9000);assert.equal(result.attributeObservation.startedAt,1);
+  for(const key of ['timeOrigin','matchedAt','finishedAt','initialMatch','status'])assert.equal(result.attributeObservation[key],null);
+  assert.equal(JSON.stringify(result).includes('DO_NOT_LEAK'),false);
 });
 test('desktop observation cannot escape the original90s journey budget',async()=>{
   const result=await scenario({attributeWait:true,startAt:88000,desktopAt:90500});
