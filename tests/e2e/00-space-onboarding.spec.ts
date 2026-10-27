@@ -29,7 +29,9 @@ for(const language of ['zh','en'])test(`the default personal room boots visibly 
   await page.goto(language==='zh'?'/zh/projects/':'/projects/');
   try{
     await expect(page.locator('.space-boot__body')).toBeVisible();
-    await expect(page.locator('.space-boot__intro')).toContainText(language==='zh'?'熊鑫伟':'Xinwei Xiong');
+    const panel=(await page.locator('[data-space-boot]').boundingBox())!,body=(await page.locator('.space-boot__body').boundingBox())!;
+    expect(Math.abs(body.x+body.width/2-panel.x-panel.width/2)).toBeLessThan(1);
+    expect(Math.abs(body.y+body.height/2-panel.y-panel.height/2)).toBeLessThan(1);
     await expect(page.locator('[data-boot-skip]')).toBeHidden();
     expect(await page.locator('[data-space-boot]').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
     if(evidence){await fs.mkdir(evidence,{recursive:true});await page.screenshot({path:path.join(evidence,`${test.info().project.name}-${language}-terminal.png`)});}
@@ -41,7 +43,7 @@ for(const language of ['zh','en'])test(`the default personal room boots visibly 
   expect(errors).toEqual([]);
 });
 
-test('the terminal stays visible until a real scene frame, with a direct writing escape',async({page})=>{
+test('the centered loader stays visible until a real scene frame',async({page})=>{
   let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
   await page.route('**/world-cafe.*.js',async route=>{await gate;await route.continue();});
   await page.goto('/zh/projects/');
@@ -49,8 +51,6 @@ test('the terminal stays visible until a real scene frame, with a direct writing
     await expect(page.locator('[data-space-boot]')).toBeVisible();
     await expect(page.locator('[data-boot-skip]')).toBeHidden();
     await expect(page.locator('[data-boot-step]').first()).toHaveAttribute('data-state','current');
-    await expect(page.locator('.space-boot__identity')).toContainText('cubxxw');
-    await expect(page.locator('[data-space-boot] a').last()).toHaveAttribute('href','/zh/articles/');
     await expect(page.locator(root)).not.toHaveAttribute('data-world-ready','true');
     expect(await page.locator('[data-space-boot]').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
   }finally{release();}
@@ -144,10 +144,10 @@ test('a completed onboarding recovers immediately after graphics context loss',a
   await page.locator('[data-note-editor]').fill('Still usable after losing the GPU.');
 });
 
-test('module failure offers an ordinary workspace and reading link',async({page})=>{
+test('module failure offers an ordinary workspace from the centered loader',async({page})=>{
   await page.route('**/world-cafe.*.js',route=>route.abort());
   await page.goto('/zh/projects/');await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
-  await expect(page.locator('[data-boot-status]')).toContainText('仍可阅读');
+  await expect(page.locator('[data-boot-status]')).toContainText('打开工作区');
   await page.locator('[data-boot-skip]').click();await expect(page.locator('[data-space-boot]')).toBeHidden();
   await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   await expect(page.locator('[data-space-menu-trigger]')).toBeVisible();

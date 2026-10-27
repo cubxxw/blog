@@ -15,25 +15,16 @@
 {{- range $index, $book := site.Data.travel.books -}}
   {{- $books = $books | append (dict "id" (printf "book-%d" $index) "title" (cond $zh .title_zh .title_en) "author" (cond $zh .author_zh .author_en) "note" (cond $zh .note_zh .note_en) "own" (default false .own) "url" (default "" .url)) -}}
 {{- end -}}
-<section class="space-boot" data-space-boot tabindex="-1" aria-labelledby="space-boot-title">
-  <header class="space-boot__header"><a href="{{ "/" | relLangURL }}">CUBXXW<span> / PERSONAL SYSTEM</span></a><span>TTY 01 · SPACE</span></header>
+<section class="space-boot" data-space-boot tabindex="-1" aria-label="{{ if $zh }}空间加载进度{{ else }}Room loading progress{{ end }}">
   <div class="space-boot__body">
-    <p class="space-boot__prompt"><span>cubxxw</span>@space:~$ <span>boot --personal</span></p>
-    <h2 id="space-boot-title">CUBXXW OS <span>/ {{ if $zh }}个人空间{{ else }}Personal space{{ end }}</span></h2>
-    <p class="space-boot__intro">{{ if $zh }}{{ site.Data.identity.person.name_zh }}{{ else }}{{ site.Data.identity.person.name }}{{ end }} · {{ site.Data.identity.person.jobTitle }}</p>
-    <div class="space-boot__identity" aria-label="{{ if $zh }}已载入的个人信息{{ else }}Personal information loaded{{ end }}">
-      <p><span class="space-boot__ok">[ OK ]</span> <code>/home/cubxxw</code> <span>{{ if $zh }}构建 AI 产品 · 写作 · 开源{{ else }}Building AI products · Writing · Open source{{ end }}</span></p>
-      <p><span class="space-boot__ok">[ OK ]</span> <code>/library</code> <span>{{ len (where site.RegularPages "Section" "in" (slice "ai-agent" "engineering" "growth")) }} {{ if $zh }}篇文章已索引{{ else }}articles indexed{{ end }}</span></p>
-      <p><span class="space-boot__ok">[ OK ]</span> <code>/projects</code> <span>{{ len site.Data.products.products }} {{ if $zh }}个项目已挂载{{ else }}projects mounted{{ end }}</span></p>
-    </div>
     <ol class="space-boot__steps" aria-label="{{ if $zh }}空间准备进度{{ else }}Room preparation{{ end }}">
       <li data-boot-step data-state="current"><span class="space-boot__mark" aria-hidden="true">[<span data-boot-mark> .. </span>]</span><code>engine</code><span>{{ if $zh }}载入场景引擎{{ else }}Load the scene engine{{ end }}</span><time data-boot-time></time></li>
       <li data-boot-step data-state="waiting"><span class="space-boot__mark" aria-hidden="true">[<span data-boot-mark>WAIT</span>]</span><code>workspace</code><span>{{ if $zh }}初始化房间与工作区{{ else }}Initialize room and workspace{{ end }}</span><time data-boot-time></time></li>
       <li data-boot-step data-state="waiting"><span class="space-boot__mark" aria-hidden="true">[<span data-boot-mark>WAIT</span>]</span><code>display</code><span>{{ if $zh }}提交第一帧画面{{ else }}Paint the first scene frame{{ end }}</span><time data-boot-time></time></li>
     </ol>
     <p class="space-boot__status" role="status" aria-live="polite" aria-atomic="true"><span class="space-boot__chevron" aria-hidden="true">›</span> <span data-boot-status>{{ if $zh }}正在载入场景引擎…{{ else }}Loading the scene engine…{{ end }}</span><span class="space-boot__caret" aria-hidden="true"></span></p>
+    <button type="button" class="space-boot__recovery" data-boot-skip hidden disabled>{{ if $zh }}打开工作区{{ else }}Open workspace{{ end }}</button>
   </div>
-  <footer class="space-boot__footer"><p>{{ if $zh }}画面就绪后自动进入。{{ else }}Enter automatically when the first frame is ready.{{ end }}</p><div><a href="{{ "/articles/" | relLangURL }}">{{ if $zh }}先读文章{{ else }}Read the writing{{ end }} ↗</a><button type="button" data-boot-skip hidden disabled>{{ if $zh }}打开工作区{{ else }}Open workspace{{ end }}</button></div></footer>
 </section>
 <div class="space-cafe" data-space-cafe>
   <header class="space-cafe__header">
