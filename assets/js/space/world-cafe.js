@@ -442,8 +442,8 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
   function tick(time) {
     if(disposed)return;frame=0;if(!active)return;
-    const lifeActive=mode==='roam'&&!quiet&&!reduced.matches&&!isBlocked();
-    const catInteractive=!quiet&&!reduced.matches&&!isBlocked()&&(mode==='roam'||mode==='inspect'&&inspection?.kind==='cat')&&resident.pending;
+    let lifeActive=mode==='roam'&&!quiet&&!reduced.matches&&!isBlocked();
+    let catInteractive=!quiet&&!reduced.matches&&!isBlocked()&&(mode==='roam'||mode==='inspect'&&inspection?.kind==='cat')&&resident.pending;
     // rAF timestamps fluctuate around the display interval. A 1 ms tolerance
     // avoids accidentally waiting a third refresh on a nominal 60 Hz display.
     if(lifeActive&&!moving&&!keys.size&&!touchKeys.size&&!drag&&time-lastPaint<1000/30-1){frame=requestAnimationFrame(tick);return;}
@@ -453,7 +453,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     const dt=last?Math.min((time-last)/1000,.04):0;last=time;elapsed+=dt;
     if(moving) {
       const t=Math.min(1,(time-moving.start)/moving.duration);applyPose(travelPose(moving.from,moving.to,t));
-      if(t===1){const done=moving;moving=null;setMode(done.nextMode);onTravel?.(false);done.resolve();}
+      if(t===1){const done=moving;moving=null;setMode(done.nextMode);onTravel?.(false);lifeActive=mode==='roam'&&!quiet&&!reduced.matches&&!isBlocked();catInteractive=!quiet&&!reduced.matches&&!isBlocked()&&(mode==='roam'||mode==='inspect'&&inspection?.kind==='cat')&&resident.pending;done.resolve();}
     } else if(mode==='roam'&&!isBlocked()) {
       const has=(...names)=>names.some(name=>keys.has(name)||touchKeys.has(name));
       const p=stepWalk(pose,pose.yaw,{forward:Number(has('KeyW','ArrowUp','forward'))-Number(has('KeyS','ArrowDown','back')),right:Number(has('KeyD','ArrowRight','right'))-Number(has('KeyA','ArrowLeft','left'))},dt);
