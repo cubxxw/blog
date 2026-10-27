@@ -10,7 +10,7 @@ const musicSource=async(page:Page)=>(await roomAudioSources(page)).find(source=>
 
 test.beforeEach(async({page})=>{
  test.setTimeout(90000);await observeRoomAudio(page);
- await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');});
+ await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:music-enabled:v1','no');});
 });
 
 test('speaker volume can grow to full gain during playback without replacing music or rain',async({page})=>{
