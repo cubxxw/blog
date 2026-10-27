@@ -2,9 +2,10 @@ import {test,expect,type Page} from '../helpers/frozen-site';
 import {hitRoomObject} from '../helpers/room-interaction';
 import {observeRoomAudio,rainSource,roomAudioSources,blockRoomAudioUntilGesture} from '../helpers/room-audio';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+// These journeys exercise a visitor's explicit music-off preference.
 test.beforeEach(async({page})=>{test.setTimeout(90_000);await observeRoomAudio(page);await page.addInitScript(()=>{localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:theme:v2','jiangnan');});});
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
-async function ready(page:Page){await page.goto('/zh/projects/');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});}
+async function ready(page:Page,musicOff=true){if(musicOff)await page.addInitScript(()=>localStorage.setItem('space:cafe:music-enabled:v1','no'));await page.goto('/zh/projects/');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});}
 async function point(page:Page,name:string){return page.evaluate(async name=>{const specifier='three',T=await import(specifier),r=document.querySelector<HTMLElement>('[data-bear-workspace]')!,p=JSON.parse(r.dataset.worldPose!),c=new T.PerspectiveCamera(p.fov,r.clientWidth/r.clientHeight,.04,160);c.position.set(p.x,p.y,p.z);c.rotation.set(p.pitch,p.yaw,0,'YXZ');c.updateMatrixWorld();const v=new T.Vector3(...JSON.parse(r.dataset.worldTargets!)[name]).project(c);return{x:(v.x+1)*r.clientWidth/2,y:(1-v.y)*r.clientHeight/2};},name);}
 async function hit(page:Page,name:string){await hitRoomObject(page,name);}
 
@@ -27,17 +28,31 @@ test('quiet and a hidden room pause sources then resume rain at its retained off
 test('a later real gesture recovers a transient rain failure without starting indoor music',async({page})=>{
  let requests=0,release!:()=>void,handled!:()=>void;
  const responseGate=new Promise<void>(resolve=>release=resolve),firstHandled=new Promise<void>(resolve=>handled=resolve);
- await page.route('**/rain-distant-storm-loop.flac',async route=>{
+ await page.route('**/rain-distant-storm-loop.mp3',async route=>{
   if(++requests!==1){await route.continue();return;}
   try{await responseGate;await route.fulfill({status:503,body:'temporarily unavailable'});}finally{handled();}
  });
  try{
-  await ready(page);await expect.poll(()=>requests).toBe(1);
+  await ready(page);
   // Keep autoplay permission separate from the HTTP failure under test. A
   // trusted gesture unlocks the native context while the first response waits.
   await page.locator('.space-world__canvas').click({position:{x:20,y:20}});
+  await expect.poll(()=>requests).toBe(1);
   expect(await page.evaluate(()=>navigator.userActivation.hasBeenActive)).toBe(true);
   release();await expect(root(page)).toHaveAttribute('data-room-ambient','error');expect(requests).toBe(1);await expect(root(page)).toHaveAttribute('data-room-sound','paused');
   await page.locator('.space-world__canvas').click({position:{x:20,y:20}});await expect(root(page)).toHaveAttribute('data-room-ambient','playing',{timeout:30_000});expect(requests).toBe(2);expect(await rainSource(page)).toBeTruthy();await expect(root(page)).toHaveAttribute('data-room-sound','paused');
  }finally{release();if(requests)await firstHandled;}
+});
+
+test('a new visitor keeps default music intent without downloading audio until a real gesture unlocks it',async({page})=>{
+ await blockRoomAudioUntilGesture(page);await ready(page,false);
+ await expect(root(page)).toHaveAttribute('data-room-sound','blocked');
+ expect(await page.evaluate(()=>performance.getEntriesByType('resource').filter(r=>/\/audio\/space\//.test(r.name)).length)).toBe(0);
+ await page.locator('.space-world__canvas').click({position:{x:20,y:20}});
+ await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});
+ await expect(root(page)).toHaveAttribute('data-room-ambient','playing',{timeout:30000});
+ const sources=await roomAudioSources(page);expect(sources.filter(s=>!s.stopped)).toHaveLength(2);
+ const speaker=page.locator('[data-room-object="speaker"]');await speaker.focus();await speaker.press('Enter');
+ await expect(root(page)).toHaveAttribute('data-room-sound','paused');
+ expect(await page.evaluate(()=>localStorage.getItem('space:cafe:music-enabled:v1'))).toBe('no');
 });
