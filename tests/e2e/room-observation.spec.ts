@@ -20,6 +20,27 @@ test('resident pause observes the full pose and quiet frame windows',async({page
   await room(page);await page.evaluate(()=>{setTimeout(()=>document.querySelector<HTMLElement>('main')!.dataset.worldFrames='8',500);});
   await expect(observePausedResident(page,true)).rejects.toThrow('Quiet room rendered during200ms');
 });
+test('a late resident pause retains the complete independent stability windows',async({page})=>{
+  for(const checkFrames of [false,true]){
+    await room(page);await page.evaluate(()=>{
+      const root=document.querySelector<HTMLElement>('main')!;root.dataset.catActive='true';
+      setTimeout(()=>root.dataset.catActive='false',4700);
+    });
+    await observePausedResident(page,checkFrames);
+  }
+});
+test('a late pause still rejects motion throughout the full stability windows',async({page})=>{
+  for(const checkFrames of [false,true]){
+    await room(page);await page.evaluate((checkFrames)=>{
+      const root=document.querySelector<HTMLElement>('main')!;root.dataset.catActive='true';
+      setTimeout(()=>{
+        root.dataset.catActive='false';
+        setTimeout(()=>{if(checkFrames)root.dataset.worldFrames='8';else root.dataset.catPose='moved';},checkFrames?550:350);
+      },4700);
+    },checkFrames);
+    await expect(observePausedResident(page,checkFrames)).rejects.toThrow(checkFrames?'rendered during200ms':'moved during400ms');
+  }
+});
 test('resident pause refuses a replacement room even if its attributes match',async({page})=>{
   await room(page);await page.evaluate(()=>{setTimeout(()=>{const root=document.querySelector('main')!;root.replaceWith(root.cloneNode(true));},200);});
   await expect(observePausedResident(page)).rejects.toThrow('root replaced');

@@ -12,7 +12,7 @@ function cleanupSession(session:CDPSession){
   })();cleanups.set(session,cleanup);return cleanup;
 }
 // Reuse one owned connection during an explicit journey. Observation deadlines
-// stay5s/30s; final detach is bounded5s and stays INSIDE the original case budget.
+// retain their caller budgets; final detach is bounded5s and stays INSIDE the original case budget.
 export async function withRoomObservationSession<T>(page:Page,journey:()=>Promise<T>):Promise<T>{
   if(scopes.has(page))throw new Error('Room observation session scope already active');
   const scope:ObservationScope={busy:false,invalid:false,closing:false};scopes.set(page,scope);let failed=false;
@@ -30,7 +30,7 @@ export async function withRoomObservationSession<T>(page:Page,journey:()=>Promis
 // validation and unscoped successful detach. Explicit journey scopes reuse the
 // owned connection and detach in their finally, inside the original case budget.
 // All input remains outside this helper and uses the original native actions.
-export async function readRoomObservation<T,A>(page:Page,observation:(arg:A)=>T|Promise<T>,arg:A,options:{timeout:5000|30000;label:string;validate:(value:unknown)=>value is T}):Promise<T>{
+export async function readRoomObservation<T,A>(page:Page,observation:(arg:A)=>T|Promise<T>,arg:A,options:{timeout:5000|6000|30000;label:string;validate:(value:unknown)=>value is T}):Promise<T>{
   if(page.context().browser()?.browserType().name()!=='chromium')throw new Error('Room protocol observation requires Chromium');
   const scope=scopes.get(page);
   const invalidate=(error:unknown)=>{if(scope&&!scope.invalid){scope.invalid=true;scope.error=error;}};
@@ -92,8 +92,10 @@ export async function observePausedResident(page:Page,checkFrames=false){
     if(roots.length!==1)throw new Error('Resident pause root missing or ambiguous');
     const el=roots[0];
     const sameRoot=()=>{const current=document.querySelectorAll('[data-bear-workspace]');if(current.length!==1||current[0]!==el)throw new Error('Resident pause root replaced');};
-    while(el.dataset.catActive!=='false'){
-      sameRoot();const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Resident pause exceeded5000ms');
+    for(;;){
+      sameRoot();const remaining=deadline-performance.now();if(remaining<0)throw new Error('Resident pause exceeded5000ms');
+      if(el.dataset.catActive==='false')break;
+      if(remaining===0)throw new Error('Resident pause exceeded5000ms');
       await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
     }
     sameRoot();const pose=el.dataset.catPose;if(!pose)throw new Error('Resident pause pose missing');
@@ -105,7 +107,10 @@ export async function observePausedResident(page:Page,checkFrames=false){
       if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose||el.dataset.worldFrames!==frames)throw new Error('Quiet room rendered during200ms idle observation');
     }
     return true;
-  },checkFrames,{timeout:5000,label:'Resident pause',validate:(value):value is boolean=>value===true});
+  // The state has its own5s deadline. Keep the subsequent400ms pose and
+  // optional200ms idle windows complete, with bounded transport/cleanup room.
+  // This combined read remains inside the unchanged90s journey deadline.
+  },checkFrames,{timeout:6000,label:'Resident pause',validate:(value):value is boolean=>value===true});
 }
 
 export async function waitForRoomObjectAdvance(page:Page,key:string,before:number){
