@@ -5,7 +5,7 @@ import {spawnSync} from 'node:child_process';
 import {verifyFrozenProof} from './ci-shards.mjs';
 
 const variant=process.env.RESIDENT_TRACE_DIAGNOSTIC;
-assert.ok(['current','off'].includes(variant));
+assert.ok(['current','half-pixels'].includes(variant));
 const dir=path.resolve('tests/.artifacts/resident-input');
 const read=name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
 const bundleRoot=path.join(dir,'site'),plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
@@ -17,7 +17,7 @@ assert.equal(metadata.status,200);
 const artifact=await metadata.json();assert.equal(String(artifact.workflow_run.id),proof.runId);assert.equal(artifact.workflow_run.head_sha,proof.sourceSha);assert.equal(artifact.expired,false);
 verifyFrozenProof({bundleRoot,plan,changeSet,proof});
 const base=new URL(read('site/page-map.json').baseUrl),out=path.resolve('tests/.artifacts/resident-pair');fs.mkdirSync(out,{recursive:true});
-fs.writeFileSync(path.join(out,'input.json'),JSON.stringify({mode:'diagnostic-only',releaseEligible:false,variant,source:proof.sourceSha,producer:proof.runId,artifact:process.env.DIAG_ARTIFACT,testSource:spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim(),playwright:JSON.parse(fs.readFileSync('node_modules/@playwright/test/package.json')).version,limits:'unchanged original assertions and timing budgets; two fresh-browser runs per variant'},null,2));
+fs.writeFileSync(path.join(out,'input.json'),JSON.stringify({mode:'diagnostic-only',releaseEligible:false,variant,source:proof.sourceSha,producer:proof.runId,artifact:process.env.DIAG_ARTIFACT,testSource:spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim(),playwright:JSON.parse(fs.readFileSync('node_modules/@playwright/test/package.json')).version,derivation:variant==='half-pixels'?'Response-only maxPixels:384e3 to192e3 in world-cafe; original and derived SHA256 logged per request. Never a releasable frozen artifact.':'Unmodified response control through the identical route handler.',limits:'unchanged original assertions and timing budgets; two fresh-browser runs per variant'},null,2));
 let failed=false;
 for(let repeat=1;repeat<=2;repeat++){
   const runDir=path.join(out,`run-${repeat}`);fs.mkdirSync(runDir,{recursive:true});

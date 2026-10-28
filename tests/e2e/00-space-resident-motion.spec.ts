@@ -3,6 +3,7 @@ import {reserveWorldJourney} from '../helpers/space-entry';
 import {clickStaticRoomControl} from '../helpers/static-room-control';
 import {readRoomObservation,observePausedResident,withRoomObservationSession} from '../helpers/room-observation';
 import {withRoomPointerBatch} from '../helpers/room-pointer';
+import {createHash} from 'node:crypto';
 
 test.use({channel:'chromium',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 test.beforeEach(({page})=>reserveWorldJourney(page));
@@ -32,11 +33,19 @@ else if(!process.env.ROOM_DIAG_VARIANT)test.use({trace:{mode:'retain-on-failure'
 
 test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>withRoomObservationSession(page,async()=>{
   const driverStart=performance.now();page.on('console',message=>{if(message.text().startsWith('[resident-phase]'))console.log('[resident-driver '+Math.round(performance.now()-driverStart)+'ms] '+message.text());});
+  await page.route('**/world-cafe*.js',async route=>{
+    const response=await route.fetch(),original=await response.text(),marker='maxPixels:384e3';
+    expect(original.split(marker).length-1).toBe(1);
+    const derived=process.env.RESIDENT_TRACE_DIAGNOSTIC==='half-pixels'?original.replace(marker,'maxPixels:192e3'):original;
+    const hash=(value:string)=>createHash('sha256').update(value).digest('hex');
+    console.log('[resident-derived-resource] '+JSON.stringify({path:new URL(route.request().url()).pathname,originalSha256:hash(original),servedSha256:hash(derived),releaseEligible:false,override:process.env.RESIDENT_TRACE_DIAGNOSTIC}));
+    await route.fulfill({response,body:derived});
+  });
   await reserveWorldJourney(page);
   await page.addInitScript(()=>{
     const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null,bootCompleteAt:null as number|null,renderedRoamAt:null as number|null,readinessError:null as string|null};
     (window as unknown as {__catMotionObservation:typeof observation}).__catMotionObservation=observation;
-    const emit=(phase:string)=>console.debug('[resident-phase] '+JSON.stringify({phase,at:performance.now(),...observation}));emit('init');
+    const emit=(phase:string)=>{const canvas=document.querySelector<HTMLCanvasElement>('.space-world__canvas');console.debug('[resident-phase] '+JSON.stringify({phase,topFrame:window===top,path:location.pathname,timeOrigin:performance.timeOrigin,at:performance.now(),canvas:canvas?{width:canvas.width,height:canvas.height,pixels:canvas.width*canvas.height}:null,...observation}));};emit('init');
     // Passive timestamps retain the rendered-mode5s stage even when one
     // native startup observation replaces several expensive protocol reads.
     let readinessRoot:Element|null=null;
@@ -55,7 +64,7 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
     readinessObserver.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['data-boot-state','data-world-rendered-mode']});
     addEventListener('pagehide',stopReadiness,{once:true});sampleReadiness();
     const startupDeadline=performance.now()+60000;
-    let target:Element|null=null,done=false,timer:ReturnType<typeof setTimeout>;
+    let target:Element|null=null,done=false,catLogged=false,timer:ReturnType<typeof setTimeout>;
     const finish=(status:string)=>{
       if(done)return;done=true;observation.status=status;emit('finish-'+status);
       observer.disconnect();clearTimeout(timer);removeEventListener('pagehide',onPageHide);
@@ -70,6 +79,7 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
         observer.disconnect();observer.observe(target,{attributes:true,attributeFilter:['data-cat-loaded','data-cat-active','data-cat-pose']});
       }
       const loaded=target.getAttribute('data-cat-loaded'),active=target.getAttribute('data-cat-active'),pose=target.getAttribute('data-cat-pose');
+      if(loaded==='true'&&!catLogged){catLogged=true;emit('cat-loaded');}
       if(observation.initialTime===null){
         if(loaded!=='true'||active!=='true'||!pose)return;
         observation.initialPose=pose;observation.initialTime=now;observation.status='watching';emit('initial-pose');
@@ -133,6 +143,6 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   await waitForActive();
   await page.emulateMedia({reducedMotion:'reduce'});await observePaused();
   await page.emulateMedia({reducedMotion:'no-preference'});await waitForActive();
-  await clickStaticRoomControl(page,'[data-cafe-enter]');await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
+  const entryStart=performance.now();await clickStaticRoomControl(page,'[data-cafe-enter]');await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');console.log('[resident-native-entry] '+JSON.stringify({elapsed:performance.now()-entryStart}));
   await observePaused();
 }));
