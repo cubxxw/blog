@@ -1,137 +1,36 @@
-name: Lighthouse CI
+# DIAGNOSTIC BRANCH ONLY. Never merge this workflow into main or PR491.
+name: Lighthouse Projects Linux diagnostic
 on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: 30 7 * * *
   workflow_dispatch:
-    inputs:
-      diagnostics:
-        description: Save additional traces for the two Chinese landing pages
-        type: boolean
-        required: false
-        default: false
-  workflow_call:
-    inputs:
-      release_context_artifact_id:
-        type: string
-        required: false
-        default: ""
-      dry_run:
-        type: boolean
-        required: false
-        default: false
-    secrets:
-      LHCI_GITHUB_APP_TOKEN:
-        required: false
 permissions:
   contents: read
 concurrency:
-  group: lighthouse
+  group: lighthouse-projects-diagnostic-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  lighthouse:
+  diagnostic:
+    if: github.repository == 'cubxxw/blog' && github.event_name == 'workflow_dispatch' && github.ref_name == 'codex/blog-lighthouse-diag-20261029'
     runs-on: ubuntu-latest
-    outputs:
-      report_date: ${{ steps.date.outputs.report_date }}
-      lighthouse_artifact_id: ${{ steps.upload.outputs.artifact-id }}
+    timeout-minutes: 20
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
-          fetch-depth: 0
-      - name: Freeze UTC report date
-        id: date
-        run: echo "report_date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "22"
-          cache: npm
-      - name: Install Node.js dependencies
-        run: npm ci
-      - name: Install @lhci/cli
-        run: npm install -g @lhci/cli@0.15.1
-      - name: Wait for Netlify to publish this commit
-        if: github.event_name == 'push' && inputs.release_context_artifact_id == ''
-        run: |
-          echo "Waiting 120s for Netlify to publish ${GITHUB_SHA}…"
-          sleep 120
-      - name: Download verified same-run release context
-        if: inputs.release_context_artifact_id != ''
-        uses: actions/download-artifact@v8
-        with:
-          artifact-ids: ${{ inputs.release_context_artifact_id }}
-          path: followups
-          merge-multiple: true
-      - name: Confirm the public release before side effects
-        id: release
-        if: inputs.release_context_artifact_id != ''
-        run: node scripts/release-followups.mjs assert-current --context followups/release-context.json --out .lighthouseci/release-check-before.json
-      - name: Run Lighthouse CI
-        id: measure
-        run: lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      - name: Capture opt-in first-paint diagnostic traces
-        if: github.event_name == 'workflow_dispatch' && inputs.diagnostics == true && steps.measure.outcome == 'success'
-        run: |
-          mkdir -p .lighthouseci/diagnostics
-          LH_DIAG_CLI="$(node -e 'const path=require("node:path"); console.log(path.join(require.resolve("lighthouse",{paths:[path.join(process.argv[1],"@lhci/cli")]}),"../../cli/index.js"))' "$(npm root -g)")"
-          node "$LH_DIAG_CLI" --help > .lighthouseci/diagnostics/help.txt
-          node -e 'if (!require("node:fs").readFileSync(".lighthouseci/diagnostics/help.txt","utf8").includes("--save-assets")) process.exit(1)'
-          for section in growth ai-agent; do
-            node "$LH_DIAG_CLI" "https://cubxxw.com/zh/$section/" \
-              --save-assets --output=json --output-path=".lighthouseci/diagnostics/zh-$section.json" \
-              --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
-              --no-enable-error-reporting
-          done
-          printf '%s\n' "$GITHUB_SHA" > .lighthouseci/diagnostics/source-sha.txt
-      - name: Check release consistency after measurement
-        if: always() && inputs.release_context_artifact_id != ''
-        run: |
-          if node scripts/release-followups.mjs assert-current --context followups/release-context.json --out .lighthouseci/release-check-after.json; then
-            exit 0
-          fi
-          if [ -f .lighthouseci/manifest.json ]; then mv .lighthouseci/manifest.json .lighthouseci/manifest.inconsistent.json; fi
-          exit 1
-      - name: Upload Lighthouse results
-        id: upload
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: lighthouse-results-${{ github.run_id }}-${{ github.run_attempt }}
-          path: .lighthouseci/
-          include-hidden-files: true
-          if-no-files-found: warn
-          retention-days: 30
-    if: github.repository == 'cubxxw/blog' && (((vars.BLOG_RELEASE_MODE == '' || vars.BLOG_RELEASE_MODE == 'shadow') && (inputs.release_context_artifact_id == '' || inputs.dry_run == true)) || (vars.BLOG_RELEASE_MODE == 'active' && vars.BLOG_FOLLOWUPS_ENABLED == 'true' && inputs.release_context_artifact_id != ''))
-  publish:
-    needs: lighthouse
-    if: always() && github.event_name != 'push' && needs.lighthouse.result != 'skipped' && inputs.dry_run != true && needs.lighthouse.outputs.lighthouse_artifact_id != ''
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
-    concurrency:
-      group: daily-report-publish
-      cancel-in-progress: false
-    steps:
-      - name: Checkout (fresh, no persisted credentials)
-        uses: actions/checkout@v7
-        with:
-          ref: ${{ github.sha }}
           persist-credentials: false
-      - name: Download Lighthouse results
-        uses: actions/download-artifact@v8
+      - uses: actions/setup-node@v7
         with:
-          artifact-ids: ${{ needs.lighthouse.outputs.lighthouse_artifact_id }}
-          path: .lighthouseci/
-      - name: Sync report to daily issue (frozen UTC date)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_RUN_ID: ${{ github.run_id }}
-          GITHUB_SHA: ${{ github.sha }}
-        run: node scripts/lighthouse-report-to-issue.mjs --date "${{ needs.lighthouse.outputs.report_date }}"
+          node-version: '22.23.1'
+          cache: npm
+      - name: Install locked browser and original collector
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx --no-install playwright install --with-deps chromium
+          npm install --prefix .lh-diagnostic-tools --ignore-scripts --no-audit --no-fund @lhci/cli@0.15.1
+      - name: Collect two source-bound diagnostic samples without publishing
+        run: node scripts/diagnostics/projects-linux.cjs
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: diagnostic-projects-linux-${{ github.run_id }}-${{ github.run_attempt }}
+          path: linux-projects-diagnostic/
+          if-no-files-found: error
+          retention-days: 14
