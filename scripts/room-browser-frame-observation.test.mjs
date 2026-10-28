@@ -23,6 +23,17 @@ function fixture(options={}){
   parentDocument.frames=[iframe];childDocument.notes=[note];childDocument.buttons=[button];
   const page=new EventEmitter(),main={isDetached:()=>false,childFrames:()=>page.children},child={isDetached:()=>child.detached,parentFrame:()=>main,detached:false};
   page.children=[child];page.mainFrame=()=>main;page.isClosed=()=>false;
+  const handle={frame:child,acquired:0,contentCalls:0,disposals:0,
+    contentFrame:async()=>{handle.contentCalls++;if(options.contentFrameDelay)await new Promise(resolve=>later(resolve,options.contentFrameDelay));return handle.frame;},
+    dispose:async()=>{handle.disposals++;if(options.disposeDelay)await new Promise(resolve=>later(resolve,options.disposeDelay));if(options.disposeError)throw Error('Controlled handle dispose failure');},
+  };
+  page.locator=selector=>{assert.equal(selector,'.space-browser__page');return {elementHandle:async({timeout})=>{
+    assert.equal(timeout,5000);handle.acquired++;
+    if(options.handleDelay)await new Promise(resolve=>later(resolve,options.handleDelay));
+    if(options.missingHandle)return null;
+    if(parentDocument.frames.length!==1)throw Error('Controlled strict target selection failed');
+    return handle;
+  }};};
   const delay={};
   function session(name,document){
     const objects=new Map(),context=vm.createContext({document,HTMLIFrameElement,HTMLTextAreaElement,HTMLButtonElement});
@@ -76,7 +87,7 @@ function fixture(options={}){
     }
     throw Error('Protocol fixture exceeded bounded steps');
   }
-  return {observer,page,main,child,iframe,note,button,parentDocument,childDocument,parentSession,childSession,commands,sessions,delay,settle,now:()=>now,
+  return {observer,page,main,child,handle,iframe,note,button,parentDocument,childDocument,parentSession,childSession,commands,sessions,delay,settle,schedule:later,now:()=>now,
     advance:async ms=>{const target=now+ms;for(;;){for(let i=0;i<80;i++)await Promise.resolve();const next=[...timers.entries()].filter(([,timer])=>timer.at<=target).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;timers.delete(next[0]);now=Math.max(now,next[1].at);next[1].fn();}now=Math.max(now,target);for(let i=0;i<80;i++)await Promise.resolve();}};
 }
 
@@ -88,9 +99,55 @@ test('binds the public Frame to the original iframe target and reads live fields
   // Reparenting preserves the same connected node; the helper must not pin its parent.
   f.iframe.parentElement={differentContainer:true};await f.settle(f.observer.observe());
   await f.settle(f.observer.close());await f.settle(f.observer.close());
+  assert.equal(f.handle.acquired,1);assert.equal(f.handle.contentCalls,1);assert.equal(f.handle.disposals,1);
   for(const session of f.sessions){assert.equal(session.releases,1);assert.equal(session.detaches,1);assert.equal(session.objects.size,0);}
   assert.equal(f.page.listenerCount('framenavigated'),0);assert.equal(f.page.listenerCount('framedetached'),0);assert.equal(f.page.listenerCount('close'),0);
   assert.ok(f.commands.filter(call=>call.method.startsWith('Runtime.')&&!call.method.includes('release')).every(call=>call.params.throwOnSideEffect===true&&call.params.userGesture!==true));
+});
+
+test('a non-matching about:blank sibling does not change unique target binding or get inspected',async()=>{
+  const f=fixture(),sibling={url:()=>{throw Error('Do not inspect the independent sibling');},isDetached:()=>{throw Error('Do not inspect the independent sibling');}};
+  f.page.children=[sibling,f.child];
+  await f.settle(f.observer.bind());f.page.emit('framenavigated',sibling);
+  assert.equal((await f.settle(f.observer.observe())).buttonText,'Kept open');
+  f.page.children=[f.child,sibling];await f.settle(f.observer.observe());await f.settle(f.observer.close());
+  assert.equal(f.handle.contentCalls,1);assert.equal(f.handle.disposals,1);
+});
+
+test('a missing handle or null/wrong contentFrame cannot fall back to the first or URL-matching Frame',async()=>{
+  const missing=fixture({missingHandle:true});await assert.rejects(missing.settle(missing.observer.bind()));await missing.settle(missing.observer.close());
+  for(const target of [null,{isDetached:()=>false,parentFrame:()=>null}]){
+    const f=fixture();f.handle.frame=target;await assert.rejects(f.settle(f.observer.bind()));await f.settle(f.observer.close());assert.equal(f.handle.disposals,1);
+  }
+});
+
+test('handle acquisition and contentFrame share the original total bind deadline',async()=>{
+  const f=fixture({handleDelay:3000,contentFrameDelay:3000});
+  await assert.rejects(f.settle(f.observer.bind()),/5000ms/);assert.equal(f.now(),5000);
+  await f.settle(f.observer.close());assert.equal(f.handle.disposals,1);
+});
+
+test('a late ElementHandle is disposed once after failed bind and close without being adopted',async()=>{
+  const f=fixture({handleDelay:15001});
+  await assert.rejects(f.settle(f.observer.bind()),/5000ms/);assert.equal(f.now(),5000);
+  await assert.rejects(f.settle(f.observer.close()),/5000ms/);assert.equal(f.now(),10000);
+  await f.advance(10000);assert.equal(f.handle.contentCalls,0);assert.equal(f.handle.disposals,1);
+  await assert.rejects(f.settle(f.observer.observe()));
+});
+
+test('handle disposal shares close deadline and cannot become a late successful cleanup',async()=>{
+  const f=fixture({disposeDelay:5001});await f.settle(f.observer.bind());
+  const start=f.now();await assert.rejects(f.settle(f.observer.close()),/5000ms/);assert.equal(f.now()-start,5000);
+  await f.advance(10);await assert.rejects(f.settle(f.observer.close()),/5000ms/);assert.equal(f.handle.disposals,1);
+});
+
+test('target navigation during contentFrame binding fails while independent sibling navigation stays legal',async()=>{
+  for(const targetChanged of [true,false]){
+    const f=fixture({contentFrameDelay:1000}),sibling={};f.page.children=[sibling,f.child];
+    f.schedule(()=>f.page.emit('framenavigated',targetChanged?f.child:sibling),100);
+    if(targetChanged)await assert.rejects(f.settle(f.observer.bind()));else {await f.settle(f.observer.bind());await f.settle(f.observer.observe());}
+    await f.settle(f.observer.close());assert.equal(f.handle.disposals,1);
+  }
 });
 
 for(const [name,breakIdentity] of [

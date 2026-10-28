@@ -1,9 +1,10 @@
-import type {Page,Frame,CDPSession} from '@playwright/test';
+import type {Page,Frame,CDPSession,ElementHandle} from '@playwright/test';
 
 export type RoomBrowserFrameSnapshot={textareaValue:string;buttonText:string};
 export type RoomBrowserFrameObservation={bind:()=>Promise<void>;observe:()=>Promise<RoomBrowserFrameSnapshot>;close:()=>Promise<void>};
 const owners=new WeakMap<Page,object>();
 const detachments=new WeakMap<CDPSession,Promise<void>>();
+const disposals=new WeakMap<ElementHandle,Promise<void>>();
 let sequence=0;
 const record=(value:unknown):value is Record<string,unknown>=>value!==null&&typeof value==='object';
 function remoteResult(reply:unknown){
@@ -60,6 +61,17 @@ function detachOnce(session:CDPSession){
   }
   return promise;
 }
+function disposeOnce(handle:ElementHandle){
+  let promise=disposals.get(handle);
+  if(!promise){
+    promise=(async()=>{
+      let timer:ReturnType<typeof setTimeout>|undefined;
+      try{await Promise.race([Promise.resolve().then(()=>handle.dispose()),new Promise<never>((_,reject)=>{timer=setTimeout(()=>reject(new Error('Frame observation handle disposal exceeded5000ms')),5000);})]);}
+      finally{if(timer)clearTimeout(timer);}
+    })();disposals.set(handle,promise);
+  }
+  return promise;
+}
 
 // Public APIs only: https://playwright.dev/docs/api/class-browsercontext#browser-context-new-cdp-session
 // DOM.describeNode.frameId binds the actual iframe owner to Page.getFrameTree
@@ -68,14 +80,15 @@ function detachOnce(session:CDPSession){
 // https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn
 export function createRoomBrowserFrameObservation(page:Page):RoomBrowserFrameObservation{
   const token={},group='room-browser-frame-'+(++sequence),sessions=new Set<CDPSession>(),held=new Set<CDPSession>(),ended=new Set<CDPSession>(),attaches=new Set<Promise<CDPSession>>(),listeners=new Map<CDPSession,()=>void>();
+  const handles=new Set<ElementHandle>(),handleRequests=new Set<Promise<ElementHandle|null>>(),changedFrames=new Set<Frame>();
   let main:Frame,frame:Frame,parent:CDPSession,child:CDPSession,iframeObject:string,fieldsObject:string,frameId:string;
   let bound=false,busy=false,closing=false,listening=false,failed=false,invalid:unknown,closePromise:Promise<void>|undefined;
   const fail=(cause:unknown)=>{if(!failed){failed=true;invalid=cause??new Error('Frame observation protocol rejected');}return invalid;};
-  const changed=(candidate:Frame)=>{if(candidate===main||candidate===frame)fail(new Error('Frame observation window navigated or Frame detached'));};
+  const changed=(candidate:Frame)=>{changedFrames.add(candidate);if(candidate===main||candidate===frame)fail(new Error('Frame observation window navigated or Frame detached'));};
   const pageClosed=()=>{fail(new Error('Frame observation parent closed'));};
   const sameFrame=()=>{
     const children=main.childFrames();
-    if(page.isClosed()||page.mainFrame()!==main||main.isDetached()||frame.isDetached()||children.length!==1||children[0]!==frame||frame.parentFrame()!==main)throw new Error('Frame observation Frame missing, replaced, detached or ambiguous');
+    if(page.isClosed()||page.mainFrame()!==main||main.isDetached()||frame.isDetached()||children.filter(candidate=>candidate===frame).length!==1||frame.parentFrame()!==main||changedFrames.has(frame))throw new Error('Frame observation Frame missing, replaced, detached or ambiguous');
   };
   type Step=<T>(work:()=>Promise<T>)=>Promise<T>;
   async function budget<T>(label:string,deadline:number,work:(step:Step)=>Promise<T>,cleanup=false):Promise<T>{
@@ -109,6 +122,14 @@ export function createRoomBrowserFrameObservation(page:Page):RoomBrowserFrameObs
       return session;
     });attaches.add(pending);return pending;
   }
+  function captureHandle(){
+    // One strict public handle lookup at bind time can carry a trace snapshot.
+    // Observations never repeat it or read content through a sibling Frame.
+    // https://playwright.dev/docs/api/class-elementhandle#element-handle-content-frame
+    const pending=Promise.resolve().then(()=>page.locator('.space-browser__page').elementHandle({timeout:5000})).then(handle=>{
+      if(handle){handles.add(handle);if(closing)void disposeOnce(handle).catch(()=>{});}return handle;
+    });handleRequests.add(pending);return pending;
+  }
   async function parentIdentity(step:Step){
     sameFrame();
     const result=remoteResult(await step(()=>parent.send('Runtime.callFunctionOn',{objectId:iframeObject,functionDeclaration:sameIframe.toString(),returnByValue:true,throwOnSideEffect:true})));
@@ -120,12 +141,14 @@ export function createRoomBrowserFrameObservation(page:Page):RoomBrowserFrameObs
       if(bound||owners.has(page))throw new Error('Frame observation already bound or owned');
       owners.set(page,token);
       if(page.context().browser()?.browserType().name()!=='chromium')throw new Error('Frame observation requires Chromium');
-      main=page.mainFrame();const children=main.childFrames();
-      if(children.length!==1)throw new Error('Frame observation Frame missing or ambiguous');frame=children[0];sameFrame();
+      main=page.mainFrame();
       page.on('framenavigated',changed);page.on('framedetached',changed);page.on('close',pageClosed);listening=true;
       parent=await step(()=>attach(page));held.add(parent);
       iframeObject=remoteObject(await step(()=>parent.send('Runtime.evaluate',{expression:'('+captureIframe.toString()+')()',objectGroup:group,throwOnSideEffect:true})),true);
       frameId=ownerFrameId(await step(()=>parent.send('DOM.describeNode',{objectId:iframeObject,depth:0})));
+      const handle=await step(captureHandle);if(!handle)throw new Error('Frame observation iframe handle missing');
+      const actualFrame=await step(()=>handle.contentFrame());if(!actualFrame)throw new Error('Frame observation iframe contentFrame missing');
+      frame=actualFrame;sameFrame();
       child=await step(()=>attach(frame));
       if(targetFrameId(await step(()=>child.send('Page.getFrameTree')))!==frameId)throw new Error('Frame observation owner and target disagree');
       held.add(child);
@@ -146,19 +169,19 @@ export function createRoomBrowserFrameObservation(page:Page):RoomBrowserFrameObs
       const deadline=performance.now()+5000;closing=true;
       closePromise=budget('close',deadline,async step=>{
         if(listening){page.off('framenavigated',changed);page.off('framedetached',changed);page.off('close',pageClosed);listening=false;}
-        await step(()=>Promise.allSettled([...attaches]));
-        const results=await step(()=>Promise.allSettled([...sessions].map(async session=>{
+        await step(()=>Promise.allSettled([...attaches,...handleRequests]));
+        const results=await step(()=>Promise.allSettled([...[...sessions].map(async session=>{
           if(ended.has(session))return;
           try{if(held.has(session))await session.send('Runtime.releaseObjectGroup',{objectGroup:group});}
           finally{await detachOnce(session);}
-        })));
+        }),...[...handles].map(disposeOnce)]));
         for(const [session,listener]of listeners)session.off('close',listener);listeners.clear();
         for(const result of results)if(result.status==='rejected')throw result.reason;
         if(owners.get(page)===token)owners.delete(page);
       },true);
       // A stuck release cannot prevent a detach attempt. Late callbacks retain
       // no path to publish values, rebind, or turn a failed close into success.
-      void closePromise.catch(()=>{for(const session of sessions)if(!ended.has(session))void detachOnce(session).catch(()=>{});});
+      void closePromise.catch(()=>{for(const session of sessions)if(!ended.has(session))void detachOnce(session).catch(()=>{});for(const handle of handles)void disposeOnce(handle).catch(()=>{});});
       return closePromise;
     },
   };
