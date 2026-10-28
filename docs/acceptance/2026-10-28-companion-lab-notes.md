@@ -31,4 +31,8 @@ The author requested a new remote branch. No PR, merge or production deployment 
 
 The current `lieflat-less-ai-tone` rules and project writing constraints were read. New interface/index copy and the edited documentation passages were reviewed sentence by sentence. The interface/index sample is below the detector's 500-Han-character minimum; the script reported that condition, so no statistical score is claimed. No whitelist rewrite was needed; a second manual review retained the same wording. Existing article bodies were outside the rewriting scope.
 
-`npm run flavor:check` is **not green**: it finds an existing E3 sentence in the MarkItDown blockquote (now line 46), plus a NotebookLM density warning. The identical E3 quote was reproduced from `HEAD` before this task at line 44. Only URL metadata changed in these articles; the author's published quote is preserved, and the detector is not weakened. This remains a content gate for any later release.
+`npm run flavor:check` is **not green**: it finds an existing E3 sentence in the MarkItDown blockquote (now line 46), plus a NotebookLM density warning. The identical E3 quote was reproduced from `HEAD` before this task at line 44. Only URL metadata changed in these articles; the author's published quote is preserved, and the detector is not weakened.
+
+## Author merge instruction
+
+After receiving the branch, verification summary and disclosure of the existing prose-check error, the author explicitly requested merging on 2026-10-28. The existing published quote remains unchanged under that instruction. Required engineering and release checks still apply. Merge and deployment verification are performed through the repository's existing main workflow; the preceding branch-delivery statements describe the initial handoff.
