@@ -21,8 +21,8 @@ function fixture(t) {
 }
 test('all browser projects are partitioned without dropping legacy or any engine',t=>{
   const {specs}=fixture(t);
-  assert.deepEqual(specs.map(s=>s.id),['quality','legacy-1','legacy-2','legacy-3','legacy-4','interactive-chromium','interactive-firefox','interactive-webkit']);
-  assert.deepEqual(specs.filter(s=>s.suite==='legacy').map(s=>s.shard),['1/4','2/4','3/4','4/4']);
+  assert.deepEqual(specs.map(s=>s.id),['quality','legacy-1','legacy-2','legacy-3','legacy-4','legacy-5','legacy-6','legacy-7','legacy-8','interactive-chromium','interactive-firefox','interactive-webkit']);
+  assert.deepEqual(specs.filter(s=>s.suite==='legacy').map(s=>s.shard),['1/8','2/8','3/8','4/8','5/8','6/8','7/8','8/8']);
   assert.ok(specs.every(s=>s.workers===1));
   assert.deepEqual(api.browserShardPlan({plan:{...plan,runSite:false},changeSet:changes}),[]);
   assert.deepEqual(api.browserShardPlan({plan:{...plan,requiredChecks:['output','browser']},changeSet:{...changes,fullScan:false,files:[{path:'content/zh/engineering/posts/a.md'}]}}).map(s=>s.id),['quality']);
@@ -30,7 +30,7 @@ test('all browser projects are partitioned without dropping legacy or any engine
 test('a complete set aggregates enforcing browser and three-engine reports',t=>{
   const {proof,reports}=fixture(t),result=api.aggregateShardReports({plan,changeSet:changes,proof,reports});
   assert.equal(result.browser.ok,true);assert.equal(result.interactive.ok,true);
-  assert.equal(result.browser.shards.length,5);assert.equal(result.interactive.shards.length,3);
+  assert.equal(result.browser.shards.length,9);assert.equal(result.interactive.shards.length,3);
 });
 test('boolean shard success without an enumerated test inventory cannot certify coverage',t=>{
   const {proof,reports}=fixture(t);

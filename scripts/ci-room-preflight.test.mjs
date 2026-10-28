@@ -14,6 +14,8 @@ const cases=[
   ['space-object-living.spec.ts','returning to the present can be interrupted by a new clock gesture'],
   ['space-object-living.spec.ts','changing motion preference during waking settles the old call and accepts a new one'],
   ['space-object-living.spec.ts','choosing real records keeps the outdoor source and drives the platter'],
+  ['space-living-motion.spec.ts','sleeping breath continues at the bookshelf and wheel restores its entry pose'],
+  ...['320×568','768×1024','1440×900'].map(size=>['space-reading-contracts.spec.ts',`reading focus is reversible, counts agree and the companion remains reachable at ${size}`]),
 ];
 function raw(){return {errors:[],suites:[{title:'',specs:cases.map(([file,title],index)=>({file,title,line:index+1,column:1,tests:['desktop','mobile'].map(projectName=>({projectName,status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}))}))}]};}
 function expected(){return enumerateTestIds(raw());}
@@ -43,7 +45,7 @@ test('focused room preflight requires every named path in both real projects',()
 });
 test('focused evidence is raw, exact, first-pass and never all-skip or partial',()=>{
   assert.equal(typeof api.verifyRoomRegressionResult,'function');
-  assert.equal(api.verifyRoomRegressionResult(raw(),expected()).counts.firstPass,18);
+  assert.equal(api.verifyRoomRegressionResult(raw(),expected()).counts.firstPass,26);
   const skipped=raw();Object.assign(skipped.suites[0].specs[0].tests[0],{status:'skipped',expectedStatus:'skipped',results:[{status:'skipped',retry:0}]});
   assert.throws(()=>api.verifyRoomRegressionResult(skipped,expected()));
   const retry=raw();Object.assign(retry.suites[0].specs[0].tests[0],{status:'flaky',results:[{status:'failed',retry:0},{status:'passed',retry:1}]});
@@ -66,7 +68,7 @@ test('focused invocation keeps real inputs, original gates and independent diagn
   }
   assert.equal(grep.test('unrelated room test'),false);
   assert.ok(!args.some(arg=>/timeout|pass-with-no-tests|shard=/.test(arg)));
-  assert.equal(args.filter(arg=>arg.endsWith('.spec.ts')).length,5);
+  assert.equal(args.filter(arg=>arg.endsWith('.spec.ts')).length,7);
 });
 test('optional dispatch preflight defaults off and cannot replace the full graph',()=>{
   const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));

@@ -271,13 +271,13 @@ test("backup uses its own capability coverage and explicitly omits production le
   assert.match(report.legacy.reason, /backup/i);
 });
 
-test('an isolated legacy shard keeps both projects and existing exclusions on the frozen site', async t=>{
+for(const shard of ['2/4','8/8'])test(`an isolated legacy shard ${shard} keeps both projects and existing exclusions on the frozen site`, async t=>{
   const options=verificationFixture(t,{fullScan:true,files:[],sourceFiles:[]});
   const calls=[];
-  const result=await verifySite({...options,suite:'legacy',shard:'2/4',exec:async call=>{calls.push(call);return {status:0};}});
+  const result=await verifySite({...options,suite:'legacy',shard,exec:async call=>{calls.push(call);return {status:0};}});
   assert.equal(calls.length,1);assert.equal(result.ok,true);
   assert.ok(calls[0].args.includes('--config=playwright.config.ts'));
-  assert.ok(calls[0].args.includes('--shard=2/4'));
+  assert.ok(calls[0].args.includes(`--shard=${shard}`));
   assert.ok(calls[0].args.includes('--workers=1'));
   assert.equal(calls[0].args[calls[0].args.indexOf('--grep-invert')+1],'Visual Regression');
   assert.deepEqual(JSON.parse(fs.readFileSync(result.reportPath)).suites[0].projects,['desktop','mobile']);
@@ -285,6 +285,6 @@ test('an isolated legacy shard keeps both projects and existing exclusions on th
 test('invalid selectors and shards fail before launching any browser', async t=>{
   const options=verificationFixture(t,{fullScan:true,files:[],sourceFiles:[]});
   let calls=0;
-  for(const selection of [{suite:'missing'},{suite:'quality',shard:'1/4'},{suite:'legacy',shard:'0/4'},{suite:'legacy',shard:'5/4'}])await assert.rejects(()=>verifySite({...options,...selection,exec:async()=>{calls++;return {status:0};}}),/selector/);
+  for(const selection of [{suite:'missing'},{suite:'quality',shard:'1/4'},{suite:'legacy',shard:'0/4'},{suite:'legacy',shard:'5/4'},{suite:'legacy',shard:'9/8'}])await assert.rejects(()=>verifySite({...options,...selection,exec:async()=>{calls++;return {status:0};}}),/selector/);
   assert.equal(calls,0);
 });

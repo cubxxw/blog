@@ -92,7 +92,10 @@ for(const size of [{width:320,height:568},{width:768,height:1024},{width:1440,he
       await expect(page.locator('[data-mac-menubar]')).toBeHidden();await expect(page.locator('[data-space-dock]')).toBeHidden();await expect(reader.locator('.space-window__bar')).toBeHidden();
       const visible=await article.locator('p').first().evaluate(el=>{const box=el.getBoundingClientRect(),style=getComputedStyle(el);return{top:box.top,lines:(innerHeight-box.top)/parseFloat(style.lineHeight)};});
       expect(visible.top).toBeGreaterThan(48);expect(visible.lines).toBeGreaterThanOrEqual(6);await expect(focus).toBeInViewport();
-      for(const control of await reader.locator('.space-reader-toolbar > button,.space-reader-toolbar__source > button,.space-reader-tools > summary').all()){const box=(await control.boundingBox())!;expect(box.width).toBeGreaterThanOrEqual(44);expect(box.height).toBeGreaterThanOrEqual(44);}
+      await expect(reader.locator('[data-reader-explain]')).toBeHidden();
+      const controls=reader.locator('.space-reader-toolbar > button,.space-reader-toolbar__source > button:not([data-reader-explain]),.space-reader-tools > summary');
+      await expect(controls).toHaveCount(4);
+      for(const control of await controls.all()){await expect(control).toBeVisible();const box=(await control.boundingBox())!;expect(box.width).toBeGreaterThanOrEqual(44);expect(box.height).toBeGreaterThanOrEqual(44);}
     }
     await captureReview(page,`reader-focus-${size.width}x${size.height}`);await page.keyboard.press('Escape');await expect(workspace).toHaveAttribute('data-reading-focus','false');await expect(workspace).toHaveAttribute('data-cafe-mode','desktop');await expect(focus).toBeFocused();
     if(size.width<=640){await expect(page.locator('[data-mac-menubar]')).toBeVisible();await expect(page.locator('[data-space-dock]')).toBeVisible();await expect(reader.locator('.space-window__bar')).toBeVisible();}

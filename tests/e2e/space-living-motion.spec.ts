@@ -85,9 +85,9 @@ test('approach can be grabbed mid-flight and Escape restores its entry pose',asy
 });
 
 test('sleeping breath continues at the bookshelf and wheel restores its entry pose',async({page},info)=>{
- test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
- await object(page,'books');await finishFlight(page);await page.clock.resume();
- // Sample the live resident on its resumed clock without a CDP/trace round
+ test.setTimeout(90000);await open(page);const entry=await pose(page);
+ await object(page,'books');await expect(root(page)).toHaveAttribute('data-world-travel','false');
+ // Sample the live resident on its native clock without a CDP/trace round
  // trip between each of the same twelve real 400ms observation intervals.
  const {before,samples,cat}=await page.evaluate(async()=>{
   const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!,before=JSON.parse(root.dataset.roomCat!),samples:number[]=[];

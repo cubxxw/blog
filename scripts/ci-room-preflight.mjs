@@ -16,6 +16,8 @@ const cases=[
   ['space-object-living.spec.ts','returning to the present can be interrupted by a new clock gesture'],
   ['space-object-living.spec.ts','changing motion preference during waking settles the old call and accepts a new one'],
   ['space-object-living.spec.ts','choosing real records keeps the outdoor source and drives the platter'],
+  ['space-living-motion.spec.ts','sleeping breath continues at the bookshelf and wheel restores its entry pose'],
+  ...['320×568','768×1024','1440×900'].map(size=>['space-reading-contracts.spec.ts',`reading focus is reversible, counts agree and the companion remains reachable at ${size}`]),
 ];
 export function selectRoomRegressions(inventory){
   const legacy=inventory?.suites?.legacy;assert.ok(Array.isArray(legacy),'Legacy inventory required for room preflight');

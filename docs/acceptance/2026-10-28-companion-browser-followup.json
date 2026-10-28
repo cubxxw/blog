@@ -1,0 +1,593 @@
+{
+  "scope": "Pre-merge browser and test-fixture evidence; diagnostic results do not certify the complete graph",
+  "clockComparison": {
+    "schema": "bookshelf-clock-review/1",
+    "diagnosticOnly": true,
+    "releaseEligible": false,
+    "diagnosticRun": "40676060248",
+    "frozenSource": "d0d9fd8c6cc321388f2dbaefab4b799b63b84734",
+    "frozenProducerRun": "40658658856",
+    "frozenArtifact": "12802358284",
+    "originalEvidenceArtifact": "12810707203",
+    "nativeEvidenceArtifact": "12809789822",
+    "toolchain": {
+      "node": "v22.23.1",
+      "playwright": "1.64.1"
+    },
+    "hashes": {
+      "originalSpecSha256": "ca4f41c50cb2165a230bc549e86bf488279f6a6813ac14a0cbe3395cee8a86cc",
+      "nativeDiagnosticSpecSha256": "78474c2827c123e8fb065565ba45e330cbc13769908aa3b9b75a62ebcc1db069",
+      "currentCandidateSpecSha256": "52c37f768c7a0888a4f22d3c981796bf25c73ef741afa7559866d82e972bad88",
+      "testTraceSha256": "0ca31e21672944d922b457dbb554214540955a884eb263f7e4c77748d93500ad",
+      "browserTraceSha256": "f7614b7acce5c4e926ed98a94d295eee1a785e658bab712c636c6cd9f96dc313"
+    },
+    "hashScope": "Original spec verified against git source and native identity originalHash; native diagnostic spec verified against actual-spec.ts and identity testHash. Current candidate additionally changes the explanatory comment to native clock. Trace entries were fully decompressed from a 524288-byte compressed prefix; remaining screenshots/video and complete outer ZIP were not downloaded or certified.",
+    "invariants": {
+      "caseTimeoutMs": 90000,
+      "sampleCount": 12,
+      "sampleIntervalMs": 400,
+      "unchanged": [
+        "keyboard bookshelf activation",
+        "completed travel condition",
+        "sleeping cat phase",
+        "unchanged cat x/z/elapsed",
+        "chest amplitude >0.025",
+        "explicit bookshelf screenshot",
+        "native mouse movement and wheel",
+        "final travel condition",
+        "exact entry pose equality"
+      ],
+      "otherMidflightTestsKeepClock": true
+    },
+    "original": {
+      "results": [
+        {
+          "status": "timedOut",
+          "durationMsIncludingHooks": 101630,
+          "retry": 0,
+          "startTime": "2026-10-28T10:57:55.212Z"
+        },
+        {
+          "status": "passed",
+          "durationMsIncludingHooks": 96518,
+          "retry": 0,
+          "startTime": "2026-10-28T10:59:38.495Z"
+        },
+        {
+          "status": "passed",
+          "durationMsIncludingHooks": 93226,
+          "retry": 0,
+          "startTime": "2026-10-28T11:01:15.742Z"
+        }
+      ],
+      "stats": {
+        "startTime": "2026-10-28T10:57:54.441Z",
+        "duration": 294874.397,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "native": {
+      "results": [
+        {
+          "status": "passed",
+          "durationMsIncludingHooks": 76549,
+          "retry": 0,
+          "startTime": "2026-10-28T10:57:46.724Z"
+        },
+        {
+          "status": "passed",
+          "durationMsIncludingHooks": 76227,
+          "retry": 0,
+          "startTime": "2026-10-28T10:59:03.941Z"
+        },
+        {
+          "status": "passed",
+          "durationMsIncludingHooks": 81217,
+          "retry": 0,
+          "startTime": "2026-10-28T11:00:20.652Z"
+        }
+      ],
+      "stats": {
+        "startTime": "2026-10-28T10:57:46.242Z",
+        "duration": 235864.36599999998,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "failedAttemptTimeline": {
+      "origin": "Before Hooks start in test.trace",
+      "events": [
+        {
+          "api": "Install clock \"{timeNumber|timeString}\"",
+          "startSeconds": 0.569,
+          "endSeconds": 0.605,
+          "durationSeconds": 0.036,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 15
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 88
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Navigate",
+          "startSeconds": 0.611,
+          "endSeconds": 3.999,
+          "durationSeconds": 3.388,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 9
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 15
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toHaveAttribute\"",
+          "startSeconds": 4.007,
+          "endSeconds": 21.399,
+          "durationSeconds": 17.392,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 9
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 15
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toHaveAttribute\"",
+          "startSeconds": 21.4,
+          "endSeconds": 24.645,
+          "durationSeconds": 3.246,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 9
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 15
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Set fixed time \"Wed Oct 28 2026 10:58:19 GMT+0000 (Coordinated Universal Time)\"",
+          "startSeconds": 24.646,
+          "endSeconds": 26.306,
+          "durationSeconds": 1.66,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 19
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 88
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Pause clock \"Wed Oct 28 2026 10:58:19 GMT+0000 (Coordinated Universal Time)\"",
+          "startSeconds": 26.307,
+          "endSeconds": 29.551,
+          "durationSeconds": 3.244,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 19
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 88
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Set system time \"Wed Oct 28 2026 10:58:19 GMT+0000 (Coordinated Universal Time)\"",
+          "startSeconds": 29.552,
+          "endSeconds": 29.556,
+          "durationSeconds": 0.004,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 19
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 88
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Get attribute \"data-world-pose\"",
+          "startSeconds": 29.557,
+          "endSeconds": 29.58,
+          "durationSeconds": 0.023,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 5
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 88
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Focus",
+          "startSeconds": 29.581,
+          "endSeconds": 29.606,
+          "durationSeconds": 0.024,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 6
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 89
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Press \"Enter\"",
+          "startSeconds": 29.607,
+          "endSeconds": 29.657,
+          "durationSeconds": 0.05,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 6
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 89
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Fast forward clock \"2000\"",
+          "startSeconds": 29.658,
+          "endSeconds": 31.082,
+          "durationSeconds": 1.424,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 25
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 89
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toHaveAttribute\"",
+          "startSeconds": 31.083,
+          "endSeconds": 31.103,
+          "durationSeconds": 0.02,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 25
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 89
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Resume clock",
+          "startSeconds": 31.104,
+          "endSeconds": 31.107,
+          "durationSeconds": 0.003,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 89
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Evaluate",
+          "startSeconds": 31.108,
+          "endSeconds": 59.952,
+          "durationSeconds": 28.844,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 92
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toHaveLength\"",
+          "startSeconds": 59.953,
+          "endSeconds": 59.953,
+          "durationSeconds": 0.0,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 97
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toBe\"",
+          "startSeconds": 59.953,
+          "endSeconds": 59.954,
+          "durationSeconds": 0.0,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 97
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toBe\"",
+          "startSeconds": 59.954,
+          "endSeconds": 59.954,
+          "durationSeconds": 0.0,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 97
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toBe\"",
+          "startSeconds": 59.955,
+          "endSeconds": 59.955,
+          "durationSeconds": 0.0,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 97
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toBe\"",
+          "startSeconds": 59.955,
+          "endSeconds": 59.955,
+          "durationSeconds": 0.0,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 97
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toBeGreaterThan\"",
+          "startSeconds": 59.956,
+          "endSeconds": 59.956,
+          "durationSeconds": 0.0,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 98
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Screenshot",
+          "startSeconds": 59.957,
+          "endSeconds": 73.705,
+          "durationSeconds": 13.748,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 99
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Mouse move",
+          "startSeconds": 73.706,
+          "endSeconds": 77.806,
+          "durationSeconds": 4.1,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 100
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Mouse wheel",
+          "startSeconds": 77.807,
+          "endSeconds": 84.935,
+          "durationSeconds": 7.128,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 100
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toHaveAttribute\"",
+          "startSeconds": 84.936,
+          "endSeconds": 91.144,
+          "durationSeconds": 6.209,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 100
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "After Hooks",
+          "startSeconds": 90.385,
+          "endSeconds": 102.029,
+          "durationSeconds": 11.643,
+          "source": [],
+          "apiError": null
+        },
+        {
+          "api": "Get attribute \"data-world-pose\"",
+          "startSeconds": 91.145,
+          "endSeconds": 94.557,
+          "durationSeconds": 3.411,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 5
+            },
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 100
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Expect \"toEqual\"",
+          "startSeconds": 94.557,
+          "endSeconds": 94.558,
+          "durationSeconds": 0.001,
+          "source": [
+            {
+              "file": "space-living-motion.spec.ts",
+              "line": 100
+            }
+          ],
+          "apiError": null
+        },
+        {
+          "api": "Unroute requests",
+          "startSeconds": 95.395,
+          "endSeconds": 97.91,
+          "durationSeconds": 2.515,
+          "source": [
+            {
+              "file": "frozen-site.ts",
+              "line": 47
+            },
+            {
+              "file": "frozen-site.ts",
+              "line": 144
+            }
+          ],
+          "apiError": null
+        }
+      ],
+      "timeoutObservedSeconds": 90.385
+    },
+    "assessment": {
+      "pendingAtOverallDeadline": "Final world-travel=false expectation after the native wheel; its client call spans 84.936–91.145 seconds.",
+      "completedBeforeDeadline": [
+        "bookshelf arrival",
+        "12 samples and all cat/amplitude assertions",
+        "explicit screenshot",
+        "native wheel dispatch"
+      ],
+      "lateContinuation": "Final travel expectation and exact pose equality complete after the overall deadline, so they do not make the attempt pass.",
+      "measuredCostsSeconds": {
+        "samplingEvaluate": 28.844,
+        "explicitScreenshot": 13.748,
+        "nativeMouseMove": 4.1,
+        "nativeWheel": 7.128,
+        "resumeClock": 0.003
+      },
+      "causalityLimit": "This does not prove clock.resume itself caused the timeout. Repeated native-clock runs support removing inherited clock control from this steady-state case; product correctness and final release still require fresh CI."
+    }
+  },
+  "sameWorktreePartitionEnumeration": {
+    "exactSuiteEquality": true,
+    "legacy": 1238,
+    "interactive": 573,
+    "qualityIsLocalDefaultOnly": true,
+    "before": {
+      "quality": 8,
+      "legacy-1": 310,
+      "legacy-2": 310,
+      "legacy-3": 309,
+      "legacy-4": 309,
+      "interactive-chromium": 191,
+      "interactive-firefox": 191,
+      "interactive-webkit": 191
+    },
+    "after": {
+      "quality": 8,
+      "legacy-1": 155,
+      "legacy-2": 155,
+      "legacy-3": 155,
+      "legacy-4": 155,
+      "legacy-5": 155,
+      "legacy-6": 155,
+      "legacy-7": 154,
+      "legacy-8": 154,
+      "interactive-chromium": 191,
+      "interactive-firefox": 191,
+      "interactive-webkit": 191
+    },
+    "focusedCases": 26
+  },
+  "localVerification": {
+    "hostTests": {
+      "passed": 52,
+      "failed": 0,
+      "skipped": 0
+    },
+    "readingFocus": {
+      "passed": 6,
+      "failed": 0,
+      "retries": 0
+    },
+    "nativeClockBookshelf": {
+      "passed": 2,
+      "failed": 0,
+      "retries": 0
+    },
+    "typecheck": "passed",
+    "playwright": "1.64.1",
+    "platform": "macOS; not Linux acceptance"
+  }
+}
