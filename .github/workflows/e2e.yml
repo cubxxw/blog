@@ -1,4 +1,4 @@
-name: Bookshelf clock comparison diagnostic only
+name: Browser trace cost comparison diagnostic only
 on:
   workflow_dispatch:
     inputs:
@@ -17,11 +17,7 @@ permissions:
 jobs:
   compare:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
-    strategy:
-      fail-fast: false
-      matrix:
-        variant: [original, native-clock]
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
         with:
@@ -36,11 +32,10 @@ jobs:
           artifact-ids: ${{ inputs.artifact_id }}
           run-id: ${{ inputs.run_id }}
           github-token: ${{ github.token }}
-          path: tests/.artifacts/clock-input
+          path: tests/.artifacts/trace-input
           merge-multiple: true
-      - name: Compare the same completed bookshelf journey with original assertions
+      - name: Alternate full and DOM trace on one runner with the same physical journey
         env:
-          CLOCK_VARIANT: ${{ matrix.variant }}
           DIAG_SOURCE: ${{ inputs.source_sha }}
           DIAG_RUN: ${{ inputs.run_id }}
           DIAG_ARTIFACT: ${{ inputs.artifact_id }}
@@ -52,34 +47,39 @@ jobs:
           import {createHash} from 'node:crypto';
           import {spawnSync,execFileSync} from 'node:child_process';
           import {verifyFrozenProof} from './scripts/ci-shards.mjs';
-          const dir=path.resolve('tests/.artifacts/clock-input'),bundleRoot=path.join(dir,'site');
+          const dir=path.resolve('tests/.artifacts/trace-input'),bundleRoot=path.join(dir,'site');
           const read=name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
           const plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
           const source=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
           assert.equal(source,process.env.DIAG_SOURCE);assert.equal(source,proof.sourceSha);assert.equal(proof.runId,process.env.DIAG_RUN);
           verifyFrozenProof({bundleRoot,plan,changeSet,proof});
-          const output=path.resolve('tests/.artifacts/clock-compare');fs.mkdirSync(output,{recursive:true});
-          const file='tests/e2e/space-living-motion.spec.ts',before=fs.readFileSync(file,'utf8');
-          const original="test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);\n await object(page,'books');await finishFlight(page);await page.clock.resume();";
+          const output=path.resolve('tests/.artifacts/trace-compare');fs.mkdirSync(output,{recursive:true});
+          const file='playwright.config.ts',before=fs.readFileSync(file,'utf8');
+          const original="trace: { mode: 'retain-on-failure', screenshots: true, snapshots: true, sources: true },";
           assert.equal(before.split(original).length,2);
-          const after=process.env.CLOCK_VARIANT==='native-clock'?before.replace(original,"test.setTimeout(90000);await open(page);const entry=await pose(page);\n await object(page,'books');await expect(root(page)).toHaveAttribute('data-world-travel','false');"):before;
-          fs.writeFileSync(file,after);fs.writeFileSync(path.join(output,'actual-spec.ts'),after);
-          const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl);
-          let result;
-          try{
-            result=spawnSync(process.execPath,['node_modules/@playwright/test/cli.js','test',file,'--project=desktop','--workers=1','--retries=0','--repeat-each=3','--grep=sleeping breath continues at the bookshelf','--reporter=list,json,html'],{stdio:'inherit',env:{...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,SITE_TEST_RESULTS:path.join(output,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(output,'html'),PLAYWRIGHT_HTML_OPEN:'never',PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(output,'playwright-results.json')}});
-          }finally{
-            verifyFrozenProof({bundleRoot,plan,changeSet,proof});
-            const hash=value=>createHash('sha256').update(value).digest('hex');
-            fs.writeFileSync(path.join(output,'identity.json'),JSON.stringify({diagnosticOnly:true,variant:process.env.CLOCK_VARIANT,source,run:process.env.DIAG_RUN,artifact:process.env.DIAG_ARTIFACT,originalHash:hash(before),testHash:hash(after),exitCode:result?.status??null,node:process.version,playwright:JSON.parse(fs.readFileSync('node_modules/@playwright/test/package.json','utf8')).version},null,2));
+          const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl),runs=[];
+          const variants=['full','dom','dom','full','full','dom'];
+          try {
+            for(const [index,variant]of variants.entries()){
+              const here=path.join(output,String(index+1)+'-'+variant);fs.mkdirSync(here,{recursive:true});
+              const config=before.replace(original,`trace: { mode: 'on', screenshots: ${variant==='full'}, snapshots: true, sources: true },`);
+              fs.writeFileSync(file,config);fs.writeFileSync(path.join(here,'actual-config.ts'),config);
+              const started=Date.now();console.log('TRACE_COMPARE_BEGIN',JSON.stringify({index:index+1,variant,source,at:new Date().toISOString()}));
+              const result=spawnSync(process.execPath,['node_modules/@playwright/test/cli.js','test','tests/e2e/space-browser.spec.ts','--project=desktop','--workers=1','--retries=0','--grep=continuous sound \\(native\\)$','--reporter=list,json,html'],{stdio:'inherit',env:{...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,SITE_TEST_RESULTS:path.join(here,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(here,'html'),PLAYWRIGHT_HTML_OPEN:'never',PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(here,'playwright-results.json')}});
+              const row={index:index+1,variant,exitCode:result.status,processDurationMs:Date.now()-started,configHash:createHash('sha256').update(config).digest('hex')};runs.push(row);console.log('TRACE_COMPARE_END',JSON.stringify(row));
+              if(result.error)throw result.error;
+            }
+          } finally {
+            fs.writeFileSync(file,before);verifyFrozenProof({bundleRoot,plan,changeSet,proof});
+            fs.writeFileSync(path.join(output,'identity.json'),JSON.stringify({diagnosticOnly:true,releaseEligible:false,source,run:process.env.DIAG_RUN,artifact:process.env.DIAG_ARTIFACT,order:variants,runs,node:process.version,playwright:JSON.parse(fs.readFileSync('node_modules/@playwright/test/package.json','utf8')).version},null,2));
           }
-          if(result.error)throw result.error;process.exitCode=result.status??1;
+          if(runs.some(row=>row.exitCode!==0))process.exitCode=1;
           NODE
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: bookshelf-clock-${{ github.run_id }}-${{ matrix.variant }}
-          path: tests/.artifacts/clock-compare/
+          name: trace-compare-${{ github.run_id }}
+          path: tests/.artifacts/trace-compare/
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
