@@ -116,12 +116,12 @@ Sorting by clicks revealed the technical core:
 
 | Current canonical page | Clicks | Impressions | CTR | What I would test |
 |---|---:|---:|---:|---|
-| [MarkItDown](/projects/markitdown/) | 96 | 72,268 | 0.13% | Segment its actual query families before changing title or content |
-| [TDD](/projects/tdd/) | 63 | 4,825 | 1.3% | Preserve the query-page match; expand only where evidence shows gaps |
-| [NotebookLM](/projects/notebooklm/) | 55 | 3,389 | 1.6% | Strengthen source-grounded use cases and internal links |
-| [LangGraph](/projects/langgraph/) | 50 | 4,304 | 1.2% | Separate architecture, persistence, and recovery intents |
+| [MarkItDown](/lab-notes/markitdown/) | 96 | 72,268 | 0.13% | Segment its actual query families before changing title or content |
+| [TDD](/lab-notes/tdd/) | 63 | 4,825 | 1.3% | Preserve the query-page match; expand only where evidence shows gaps |
+| [NotebookLM](/lab-notes/notebooklm/) | 55 | 3,389 | 1.6% | Strengthen source-grounded use cases and internal links |
+| [LangGraph](/lab-notes/langgraph/) | 50 | 4,304 | 1.2% | Separate architecture, persistence, and recovery intents |
 | [my-hugo](/engineering/posts/my-hugo/) | 35 | 337 | **10.4%** | Use as a hypothesis for clear intent match, not a universal CTR benchmark |
-| [Mem0](/projects/mem0/) | 31 | 4,534 | 0.7% | Compare title and passage coverage against high-impression queries |
+| [Mem0](/lab-notes/mem0/) | 31 | 4,534 | 0.7% | Compare title and passage coverage against high-impression queries |
 | long thought-notes page | 27 | 87,834 | **0.03%** | Identify the unrelated query families before deciding whether to edit |
 
 `my-hugo` had the highest CTR in this small table, but 337 impressions are not enough to declare its title a causal template for every page. `MarkItDown` had the largest upside-looking gap, but its 72K impressions might represent many intents and positions. The next step is query-page segmentation, not an automatic title rewrite.

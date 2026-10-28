@@ -102,13 +102,13 @@
   translation: "Send"
 
 - id: sidebar_ai_projects_title
-  translation: "🤖 AI Open Source Projects"
+  translation: "Lab notes"
 
 - id: sidebar_ai_projects_desc
   translation: "Deep dives into AI open source projects — learning notes and practical experience."
 
 - id: sidebar_ai_projects_explore
-  translation: "🚀 Explore AI Projects"
+  translation: "Read Lab notes"
 
 - id: sidebar_ai_tag_llm
   translation: "LLM Models"

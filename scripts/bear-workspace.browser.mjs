@@ -200,7 +200,7 @@ try {
   await check('an unavailable AI service reports failure while the workspace stays usable',async()=>{
     const matcher=`${base}/.netlify/functions/bear-agent`;
     await page.route(matcher,route=>route.fulfill({status:503,contentType:'application/json',body:'{"error":"acceptance fixture"}'}));
-    await page.locator('[data-space-dock] [data-open="agent"]').click();
+    await page.keyboard.press('Control+j');
     await page.locator('[data-space-window="agent"] textarea').fill('Tell me about your writing.');
     await page.locator('[data-agent-send]').click();
     await page.waitForFunction(()=>document.querySelector('[data-agent-status]')?.textContent==='DeepSeek could not answer. Please try again.');
@@ -318,7 +318,7 @@ try {
           {message:'',toolCalls:[{id:'sandbox_fixture',name:'sandbox_run',args:{command:'cat /workspace/browser-acceptance.txt'}}]}:
           {message:'Sandbox tool returned.',toolCalls:[]})});
       });
-      await page.locator('[data-space-dock] [data-open="agent"]').click();
+      await page.keyboard.press('Control+j');
       await page.locator('[data-space-window="agent"] textarea').fill('run cat /workspace/browser-acceptance.txt');
       await page.locator('[data-agent-send]').click();
       await page.locator('[data-agent-approve]').waitFor();

@@ -116,12 +116,12 @@ Lighthouse SEO 100 也不等于全站没有技术缺口。它不能单独验证�
 
 | 当前 canonical 页面 | 点击 | 曝光 | CTR | 下一步应验证什么 |
 |---|---:|---:|---:|---|
-| [MarkItDown](/zh/projects/markitdown/) | 96 | 72,268 | 0.13% | 先拆查询族，再决定是否改标题或正文 |
-| [TDD](/zh/projects/tdd/) | 63 | 4,825 | 1.3% | 保持现有意图匹配，只在证据显示缺口时扩写 |
-| [NotebookLM](/zh/projects/notebooklm/) | 55 | 3,389 | 1.6% | 加强基于来源的用例与内部链接 |
-| [LangGraph](/zh/projects/langgraph/) | 50 | 4,304 | 1.2% | 区分架构、持久化和恢复三个意图 |
+| [MarkItDown](/zh/lab-notes/markitdown/) | 96 | 72,268 | 0.13% | 先拆查询族，再决定是否改标题或正文 |
+| [TDD](/zh/lab-notes/tdd/) | 63 | 4,825 | 1.3% | 保持现有意图匹配，只在证据显示缺口时扩写 |
+| [NotebookLM](/zh/lab-notes/notebooklm/) | 55 | 3,389 | 1.6% | 加强基于来源的用例与内部链接 |
+| [LangGraph](/zh/lab-notes/langgraph/) | 50 | 4,304 | 1.2% | 区分架构、持久化和恢复三个意图 |
 | [my-hugo](/zh/engineering/posts/my-hugo/) | 35 | 337 | **10.4%** | 作为标题与意图匹配的假设，不当成通用 CTR 标杆 |
-| [Mem0](/zh/projects/mem0/) | 31 | 4,534 | 0.7% | 对照高曝光查询检查标题和段落覆盖 |
+| [Mem0](/zh/lab-notes/mem0/) | 31 | 4,534 | 0.7% | 对照高曝光查询检查标题和段落覆盖 |
 | 一篇长期思考笔记 | 27 | 87,834 | **0.03%** | 先找出无关查询族，再决定是否改文 |
 
 `my-hugo` 在这张小表里 CTR 最高，但 337 次曝光不足以证明它的标题可以复制到所有文章。MarkItDown 看起来增量很大，72K 曝光却可能由许多意图和位置组成。下一步都应该是分组，而不是自动重写标题。

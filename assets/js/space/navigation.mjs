@@ -1,5 +1,5 @@
 // Shell navigation is independent of durable window geometry and app rendering.
-export const MOBILE_APPS = Object.freeze(['welcome', 'reader', 'products', 'agent', 'settings']);
+export const MOBILE_APPS = Object.freeze(['welcome', 'reader', 'products', 'notes', 'settings']);
 
 // Historical About fragments remain useful after the two entrances merge.
 export function resolveSpaceRoute(hash, products = [], entry = '') {

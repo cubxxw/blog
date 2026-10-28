@@ -305,7 +305,7 @@ When reviewing an agent architecture, I now ask these questions in order:
 7. **Which claim is measured, and which is merely designed?**
 8. **Which framework API is current, and which is tolerated migration debt?**
 
-If you are building a similar system, [Trusting an Unattended AI Agent](/ai-agent/posts/trusting-unattended-ai-agent/) explores the operational trust boundary, while [LangGraph: Building Stateful Agent Workflows](/projects/langgraph/) covers the graph primitives beneath it.
+If you are building a similar system, [Trusting an Unattended AI Agent](/ai-agent/posts/trusting-unattended-ai-agent/) explores the operational trust boundary, while [LangGraph: Building Stateful Agent Workflows](/lab-notes/langgraph/) covers the graph primitives beneath it.
 
 ## Conclusion
 

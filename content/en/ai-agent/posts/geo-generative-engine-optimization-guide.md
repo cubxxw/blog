@@ -311,11 +311,11 @@ has repeatedly attracted relevant readers:
 
 - [the Hugo build](/engineering/posts/my-hugo/) and [advanced Hugo
   notes](/engineering/posts/hugo-advanced-tutorial/);
-- [MarkItDown](/projects/markitdown/), [mem0](/projects/mem0/),
-  [LangGraph](/projects/langgraph/), [GPT Researcher](/ai-agent/posts/gpt-researcher/),
-  and [NotebookLM](/projects/notebooklm/);
+- [MarkItDown](/lab-notes/markitdown/), [mem0](/lab-notes/mem0/),
+  [LangGraph](/lab-notes/langgraph/), [GPT Researcher](/ai-agent/posts/gpt-researcher/),
+  and [NotebookLM](/lab-notes/notebooklm/);
 - [automation directives](/engineering/posts/directives-and-the-use-of-automation-tools/)
-  and [TDD](/projects/tdd/).
+  and [TDD](/lab-notes/tdd/).
 
 My next step is not to manufacture dozens of query variants. It is to improve
 the few clusters where I have direct experience, correct stale claims, link the

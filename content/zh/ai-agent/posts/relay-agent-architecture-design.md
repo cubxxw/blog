@@ -299,7 +299,7 @@ Relay 也有 Redis 事件总线和用于跨 Agent 反应的消费者。
 7. **哪些结论已经测量，哪些仍只是设计？**
 8. **哪些框架 API 是当前推荐，哪些只是暂时容忍的迁移债？**
 
-如果你也在设计类似系统，站内的[《如何信任一个无人值守的 AI Agent》](/zh/ai-agent/posts/trusting-unattended-ai-agent/)讨论了运维信任边界；[《LangGraph 架构深度解析》](/zh/projects/langgraph/)则梳理了底层 graph 原语。
+如果你也在设计类似系统，站内的[《如何信任一个无人值守的 AI Agent》](/zh/ai-agent/posts/trusting-unattended-ai-agent/)讨论了运维信任边界；[《LangGraph 架构深度解析》](/zh/lab-notes/langgraph/)则梳理了底层 graph 原语。
 
 ## 结语
 

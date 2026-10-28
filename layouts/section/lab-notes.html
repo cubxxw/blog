@@ -1,0 +1,10 @@
+{{- define "main" -}}
+<section class="library-page library-page--lab-notes">
+  <header class="library-hero"><div class="library-hero__copy"><h1>{{ .Title }}</h1>{{ .Content }}</div></header>
+  <div class="library-lane__feed">
+    {{- range (where site.RegularPages "Params.labNotes" true).ByDate.Reverse -}}
+      {{- partial "articles/card.html" (dict "page" .) -}}
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

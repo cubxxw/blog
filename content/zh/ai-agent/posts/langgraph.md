@@ -1,5 +1,6 @@
 ---
-url: "/zh/projects/langgraph/"
+url: "/zh/lab-notes/langgraph/"
+labNotes: true
 title: "2026 LangGraph 架构指南：StateGraph、持久化与故障恢复"
 date: 2025-04-19T15:19:20+08:00
 lastmod: 2026-07-31T18:11:30+08:00
@@ -19,6 +20,7 @@ categories:
 description: >
   面向 2026 年生产实践的 LangGraph 架构指南：解释 StateGraph 的状态、节点与边，演示检查点、thread_id、interrupt 与 Command 恢复流程，并用退款审批故障路径说明幂等副作用、重试边界和持久化责任，帮助团队判断何时从 create_agent 下沉到 LangGraph。
 aliases:
+  - /zh/projects/langgraph/
   - /zh/posts/ai-projects/langgraph/
   - /zh/ai-agent/posts/langgraph/
 tldr:

@@ -1,3 +1,18 @@
+# Technical deep reads use Lab notes; Projects is the product entrance.
+/projects/langchain/   /lab-notes/langchain/   301!
+/projects/langgraph/   /lab-notes/langgraph/   301!
+/projects/markitdown/   /lab-notes/markitdown/   301!
+/projects/mem0/   /lab-notes/mem0/   301!
+/projects/notebooklm/   /lab-notes/notebooklm/   301!
+/projects/tdd/   /lab-notes/tdd/   301!
+/projects/ufo/   /lab-notes/ufo/   301!
+/zh/projects/langchain/   /zh/lab-notes/langchain/   301!
+/zh/projects/langgraph/   /zh/lab-notes/langgraph/   301!
+/zh/projects/markitdown/   /zh/lab-notes/markitdown/   301!
+/zh/projects/mem0/   /zh/lab-notes/mem0/   301!
+/zh/projects/notebooklm/   /zh/lab-notes/notebooklm/   301!
+/zh/projects/tdd/   /zh/lab-notes/tdd/   301!
+
 # Baidu site verification — bypass Netlify Pretty URLs (preserve exact case + .html)
 # Baidu 校验器不跟随 301，必须原路径直接 200
 /baidu_verify_codeva-c8P8VEh8BQ.html   /baidu_verify_codeva-c8P8VEh8BQ.html   200!
@@ -25,10 +40,10 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 # /posts/ai-projects/* → /projects/* (moved to dedicated section)
 # These old paths also exist as Hugo alias files; force HTTP redirects over
 # file shadowing so crawlers reach the canonical article without HTML refresh.
-/posts/ai-projects/langgraph   /projects/langgraph/   301!
-/posts/ai-projects/notebooklm   /projects/notebooklm/   301!
-/zh/posts/ai-projects/langgraph   /zh/projects/langgraph/   301!
-/zh/posts/ai-projects/notebooklm   /zh/projects/notebooklm/   301!
+/posts/ai-projects/langgraph   /lab-notes/langgraph/   301!
+/posts/ai-projects/notebooklm   /lab-notes/notebooklm/   301!
+/zh/posts/ai-projects/langgraph   /zh/lab-notes/langgraph/   301!
+/zh/posts/ai-projects/notebooklm   /zh/lab-notes/notebooklm/   301!
 
 # Paginated old list pages
 /posts/page/2   /articles/   301
@@ -88,7 +103,7 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /zh/posts/kubernetes-for-kustomize-learning/    /zh/engineering/posts/kubernetes-for-kustomize-learning/    301
 /zh/posts/kubernetes-learning/    /zh/engineering/posts/kubernetes-learning/    301
 /zh/posts/learn-about-automated-testing/    /zh/engineering/posts/learn-about-automated-testing/    301
-/zh/posts/mem0/    /zh/projects/mem0/    301
+/zh/posts/mem0/    /zh/lab-notes/mem0/    301
 /zh/posts/my-hugo/    /zh/engineering/posts/my-hugo/    301
 /zh/posts/navigating-the-open-source-landscape/    /zh/engineering/posts/navigating-the-open-source-landscape/    301
 /zh/posts/open-source-contribution-guidelines/    /zh/engineering/posts/open-source-contribution-guidelines/    301
@@ -159,7 +174,7 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /posts/kubernetes-an-article-to-get-started-quickly/    /engineering/posts/kubernetes-an-article-to-get-started-quickly/    301
 /posts/kubernetes-for-kustomize-learning/    /engineering/posts/kubernetes-for-kustomize-learning/    301
 /posts/learn-about-automated-testing/    /engineering/posts/learn-about-automated-testing/    301
-/posts/mem0/    /projects/mem0/    301
+/posts/mem0/    /lab-notes/mem0/    301
 /posts/my-hugo/    /engineering/posts/my-hugo/    301
 /posts/navigating-the-open-source-landscape/    /engineering/posts/navigating-the-open-source-landscape/    301
 /posts/open-source-contribution-guidelines/    /engineering/posts/open-source-contribution-guidelines/    301
@@ -183,8 +198,8 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /posts/troubleshooting-guide-for-openim/    /engineering/posts/troubleshooting-guide-for-openim/    301
 /posts/use-auto-gpt/    /ai-agent/posts/use-auto-gpt/    301
 /posts/vector-database-learning/    /ai-agent/posts/vector-database-learning/    301
-/posts/ufo/    /projects/ufo/    301
-/posts/UFO/    /projects/ufo/    301
+/posts/ufo/    /lab-notes/ufo/    301
+/posts/UFO/    /lab-notes/ufo/    301
 /posts/concurrent-type-checking-and-cross-platform-development-in-go/    /engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/    301
 /posts/concurrent-type-checking-and-cross-platform-development-in-go    /engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/    301
 /posts/use-go-tools-dlv/    /engineering/posts/use-go-tools-dlv/    301
@@ -261,7 +276,7 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /zh/ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   /zh/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   301
 /zh/ai-technology/posts/project-management-from-theory-to-practice/   /zh/growth/posts/project-management-from-theory-to-practice/   301
 /zh/ai-technology/posts/ufo/   /zh/ai-agent/posts/ufo/   301
-/zh/ai-technology/posts/mem0/   /zh/projects/mem0/   301
+/zh/ai-technology/posts/mem0/   /zh/lab-notes/mem0/   301
 /zh/ai-technology/*   /zh/ai-agent/   301
 /ai-technology/posts/agent-engineering-the-98-percent-harness/   /ai-agent/posts/agent-engineering-the-98-percent-harness/   301
 /ai-technology/posts/agent-identity-from-locke-to-openclaw/   /ai-agent/posts/agent-identity-from-locke-to-openclaw/   301
@@ -316,13 +331,13 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /ai-technology/posts/use-go-tools-dlv/   /engineering/posts/use-go-tools-dlv/   301
 /ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   /growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   301
 /ai-technology/posts/project-management-from-theory-to-practice/   /growth/posts/project-management-from-theory-to-practice/   301
-/ai-technology/posts/ufo/   /projects/ufo/   301
+/ai-technology/posts/ufo/   /lab-notes/ufo/   301
 
 # Match UFO canonical/hreflang/sitemap to the lowercase URLs served by Netlify.
 # Keep historical uppercase links as HTTP redirects, not same-directory aliases.
-/projects/UFO/                  /projects/ufo/                  301!
+/projects/UFO/                  /lab-notes/ufo/                  301!
 /zh/ai-agent/posts/UFO/          /zh/ai-agent/posts/ufo/          301!
-/ai-technology/posts/mem0/   /projects/mem0/   301
+/ai-technology/posts/mem0/   /lab-notes/mem0/   301
 /ai-technology/*   /ai-agent/   301
 
 # About and Products share Space. A fragment is inherited by the browser;
@@ -339,5 +354,5 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 # Canonical-case fix (2026-07): the ranking MarkItDown page moved from the
 # accidental camelCase URL to all-lowercase. 301 the old case so Google
 # consolidates on the lowercase canonical that internal links already use.
-/projects/markItdown/      /projects/markitdown/      301!
-/zh/projects/markItdown/   /zh/projects/markitdown/   301!
+/projects/markItdown/      /lab-notes/markitdown/      301!
+/zh/projects/markItdown/   /zh/lab-notes/markitdown/   301!

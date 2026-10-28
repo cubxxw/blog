@@ -16,9 +16,19 @@ export function publicFocus(state, catalog) {
   return item && reference ? {kind,title:String(item.title || item.name || '').slice(0,200),reference:String(reference).slice(0,600)} : null;
 }
 
+export function noteSelectionText(editor) {
+  if (!editor?.isConnected || !Number.isInteger(editor.selectionStart) || editor.selectionEnd <= editor.selectionStart) return '';
+  return editor.value.slice(editor.selectionStart,editor.selectionEnd).trim().slice(0,1200);
+}
+
 export function contextualQuestion(question, focus, selection = '') {
   const text = String(question || '').trim();
   if (!focus) return text.slice(0,4000);
+  if (focus.kind === 'note') {
+    if (!String(selection).trim()) return text.slice(0,4000);
+    const context = `\n\n[Selected private note: ${String(focus.title).slice(0,200)}\nSelected text: ${String(selection).slice(0,1200)}]`;
+    return text.slice(0,Math.max(0,4000-context.length)) + context;
+  }
   const context = `\n\n[Public ${focus.kind}: ${focus.title}\nReference: ${focus.reference}${selection ? `\nSelected text: ${String(selection).slice(0,1200)}` : ''}]`;
   return text.slice(0,Math.max(0,4000-context.length)) + context;
 }

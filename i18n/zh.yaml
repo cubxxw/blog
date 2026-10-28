@@ -102,13 +102,13 @@
   translation: "发送"
 
 - id: sidebar_ai_projects_title
-  translation: "🤖 AI 开源项目学习"
+  translation: "深读"
 
 - id: sidebar_ai_projects_desc
   translation: "深入解读 AI 开源项目，分享学习心得与实践经验。"
 
 - id: sidebar_ai_projects_explore
-  translation: "🚀 探索 AI 项目"
+  translation: "阅读深读笔记"
 
 - id: sidebar_ai_tag_llm
   translation: "LLM 模型"

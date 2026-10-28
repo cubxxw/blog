@@ -200,7 +200,7 @@ params:
   sidebar:
     widgets:
       - type: "custom"
-        title: "AI 项目导航"
+        title: "深读"
         template: "sidebar-ai-projects"
 
 markup:
@@ -383,7 +383,7 @@ languages:
             url: /engineering/
           - name: Growth & Life
             url: /growth/
-          - name: AI Projects
+          - name: Projects
             url: /projects/
           - name: Archives
             url: /archives/

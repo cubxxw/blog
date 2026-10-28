@@ -1,5 +1,6 @@
 ---
-url: "/projects/notebooklm/"
+url: "/lab-notes/notebooklm/"
+labNotes: true
 title: "Gemini Notebook (Formerly NotebookLM): A Source-Grounded Research Workflow"
 date: 2025-04-21T22:59:57+08:00
 lastmod: 2026-07-31T12:00:00+08:00
@@ -23,6 +24,7 @@ cover:
   image: "/images/covers/ai-agent/2025/notebooklm.png"
   alt: "A research notebook connecting source pages, citations, and synthesized outputs"
 aliases:
+  - /projects/notebooklm/
   - /posts/ai-projects/notebooklm/
 tldr:
   - "Gemini Notebook is most valuable when the question depends on a bounded source collection and every important claim must remain inspectable."

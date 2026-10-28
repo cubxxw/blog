@@ -184,7 +184,7 @@ My own image is simpler: **context engineering arranges what sits in this window
 
 In the open-source world, Mem0 (arXiv 2504.19413) is a concrete reference point: it is a memory-centric architecture that **dynamically extracts, consolidates, and retrieves** salient information from ongoing conversations, precisely to address the fundamental difficulty that "LLMs' fixed context windows cannot maintain consistency over prolonged multi-session dialogues."[^mem0] (I deliberately did not cite Mem0's self-reported benchmark numbers — same discipline: treat unverified numbers with care.)
 
-Last year I wrote a [technical analysis of Mem0](/projects/mem0/). Looking back, that piece asked how memory is stored; this one asks how memory and context meet inside an agent. My answer is still a metaphor, not a standard definition: **context engineering is the art of space; memory is the art of time.** A continuous agent needs both.
+Last year I wrote a [technical analysis of Mem0](/lab-notes/mem0/). Looking back, that piece asked how memory is stored; this one asks how memory and context meet inside an agent. My answer is still a metaphor, not a standard definition: **context engineering is the art of space; memory is the art of time.** A continuous agent needs both.
 
 ---
 

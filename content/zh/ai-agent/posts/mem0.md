@@ -1,5 +1,8 @@
 ---
-url: "/zh/projects/mem0/"
+url: "/zh/lab-notes/mem0/"
+labNotes: true
+aliases:
+  - /zh/projects/mem0/
 title: 'Mem0 OSS v3 实践：记忆架构、混合检索与生产取舍'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T21:33:46+08:00

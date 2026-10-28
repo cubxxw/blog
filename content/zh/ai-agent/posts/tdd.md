@@ -1,5 +1,6 @@
 ---
-url: "/zh/projects/tdd/"
+url: "/zh/lab-notes/tdd/"
+labNotes: true
 title: "AI 与大模型应用的测试驱动开发：从确定性测试到风险化评测"
 date: 2025-04-21T15:52:34+08:00
 lastmod: 2026-07-31T10:00:00+08:00
@@ -20,6 +21,7 @@ categories:
 description: >
   面向 AI 与大模型应用的测试驱动开发指南：解释红—绿—重构在概率系统中的适用边界，搭建单元测试、契约集成、离线评测与线上监控四层防线，并给出 Python、React、Go 示例，以及评测器校准、风险分级 CI 和 Cursor Agent 审批策略，帮助团队在不掩盖不确定性的前提下建立可验证、可回滚的契约。
 aliases:
+  - /zh/projects/tdd/
   - /zh/posts/ai-projects/tdd/
 tldr:
   - "红—绿—重构仍适合确定性代码；概率行为则需要固定数据集、明确容差、版本记录与分层评测。"

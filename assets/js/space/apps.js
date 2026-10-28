@@ -5,6 +5,7 @@ import { mountFinderHome } from './finder-home.js';
 import { mountBrowser } from './browser.js';
 import { projectHomeHTML } from './project-home.js';
 import { selectLibrary } from './reading-layout.mjs';
+import { noteSelectionText } from './companion.mjs';
 
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export function readerSelectionText(body, selected) {
@@ -21,7 +22,7 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
   let libraryView = { filter: 'all', query: '', scroll: 0 };
   try {
     const saved = JSON.parse(localStorage.getItem('bear-library:v1') || 'null');
-    if (saved && ['all','ai-agent','engineering','growth','favorites'].includes(saved.filter)) libraryView = { filter: saved.filter, query: typeof saved.query === 'string' ? saved.query.slice(0, 200) : '', scroll: Number.isFinite(saved.scroll) ? Math.max(0, Math.min(100000, saved.scroll)) : 0 };
+    if (saved && ['all','ai-agent','engineering','growth','lab-notes','favorites'].includes(saved.filter)) libraryView = { filter: saved.filter, query: typeof saved.query === 'string' ? saved.query.slice(0, 200) : '', scroll: Number.isFinite(saved.scroll) ? Math.max(0, Math.min(100000, saved.scroll)) : 0 };
   } catch { /* A reading preference never blocks public content. */ }
   const saveLibrary = () => { try { localStorage.setItem('bear-library:v1', JSON.stringify(libraryView)); } catch {} };
   async function runtimeAvailable(signal) {
@@ -78,12 +79,18 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
     host.querySelectorAll('[data-select-product]').forEach(b => b.addEventListener('click', () => choose(b,b.dataset.selectProduct), {signal:controller.signal}));
     const picker=host.querySelector('[data-product-select]');picker.addEventListener('change',()=>choose(picker,picker.value), {signal:controller.signal});
     const back=host.querySelector('[data-product-back]');back.addEventListener('click',()=>choose(back,'',selected.id), {signal:controller.signal});
-    const ask = document.createElement('button'); ask.type='button';ask.className='space-button space-button--secondary';ask.dataset.productAsk='';ask.textContent=t('✳ 聊聊这个产品','✳ Ask about this project');
+    const ask = document.createElement('button'); ask.type='button';ask.className='space-button space-button--secondary';ask.dataset.productAsk='';ask.textContent=t('聊聊这个产品','Ask about this project');
     ask.addEventListener('click',()=>execute('ask',{question:t('介绍这个产品，它解决什么问题？','What does this project do, and who is it for?')}), {signal:controller.signal});
     host.querySelector('.space-product__links').append(ask);
+    const explain=document.createElement('button');explain.type='button';explain.className='space-button space-button--secondary';explain.dataset.productExplain='';explain.hidden=true;explain.textContent=t('解释选段','Explain selection');
+    host.querySelector('.space-product__links').append(explain);
+    const capture=()=>{const selection=readerSelectionText(host.querySelector('.space-product'),window.getSelection());explain.hidden=!selection;return selection;};
+    document.addEventListener('selectionchange',capture,{signal:controller.signal});
+    explain.addEventListener('pointerdown',event=>{if(capture())event.preventDefault();},{signal:controller.signal});
+    explain.addEventListener('click',()=>{const selection=capture();if(selection)execute('ask',{question:t('解释下面选中的段落。','Explain this selected passage.'),selection});},{signal:controller.signal});
   }
   function showLibrary(host, filter = libraryView.filter) {
-    const filters = [['all',t('全部文章','All writing')],['ai-agent','AI Agent'],['engineering',t('工程实践','Engineering')],['growth',t('思考与笔记','Thoughts')],['favorites',t('你的收藏','Your bookmarks')]];
+    const filters = [['all',t('全部文章','All writing')],['ai-agent','AI Agent'],['engineering',t('工程实践','Engineering')],['growth',t('思考与笔记','Thoughts')],['lab-notes',t('深读','Lab notes')],['favorites',t('你的收藏','Your bookmarks')]];
     host.innerHTML = `<div class="space-library"><div class="space-toolbar"><span data-library-count role="status" aria-live="polite" aria-atomic="true"></span><input data-library-query type="search" placeholder="${t('找一篇文章…','Find writing…')}" aria-label="${t('筛选文章','Filter writing')}"></div><div class="space-finder space-library__finder"><aside class="space-sidebar"><div class="space-library-directory"><p>${t('阅读目录','Library')}</p>${filters.map(([id,label]) => `<button type="button" data-library-filter="${id}" aria-pressed="${filter === id}">${label}</button>`).join('')}</div><label class="space-library-picker"><span>${t('分类','Section')}</span><select data-library-select aria-label="${t('文章分类','Writing section')}">${filters.map(([id,label])=>`<option value="${id}"${filter === id ? ' selected' : ''}>${label}</option>`).join('')}</select></label><nav class="space-library-actions" aria-label="${t('你的空间','Your space')}"><button type="button" data-open="notes">${t('笔记','Notes')}</button><button type="button" data-open="books">${t('书架','Books')}</button></nav></aside><div class="space-list" data-library-list role="region" aria-label="${t('文章列表','Writing list')}" tabindex="0"></div></div></div>`;
     libraryView.filter = filter;
     const queryInput = host.querySelector('[data-library-query]');
@@ -177,9 +184,10 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
     syncFavorite(host, url);
     host.querySelector('[data-reader-favorite]').addEventListener('click', () => execute('favorite', { url }));
     const actions = host.querySelector('.space-reader__ai-actions');
-    const ask = document.createElement('button');ask.type='button';ask.dataset.readerAsk='';ask.textContent=t('✳ 总结这篇文章','✳ Summarize this article');
-    const explain = document.createElement('button');explain.type='button';explain.dataset.readerExplain='';explain.hidden=true;explain.textContent=t('解释选中文字','Explain selection');
-    actions.append(ask,explain);
+    const ask = document.createElement('button');ask.type='button';ask.dataset.readerAsk='';ask.textContent=t('聊聊这篇文章','Ask about this article');
+    const explain = document.createElement('button');explain.type='button';explain.dataset.readerExplain='';explain.hidden=true;explain.textContent=t('解释选段','Explain selection');
+    actions.append(ask);
+    host.querySelector('.space-reader-toolbar__source').prepend(explain);
     ask.addEventListener('click',()=>{host.querySelector('.space-reader-tools').open=false;execute('ask',{question:t('总结这篇文章，给出核心观点和阅读入口。','Summarize this article and link to it.')});});
     let selection = '';
     const capture = () => {
@@ -247,6 +255,18 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
     host.innerHTML = `<div class="space-notes"><div class="space-toolbar space-notes__toolbar"><span data-note-save role="status" aria-live="polite"></span><button type="button" data-note-export>${t('导出 .md','Export .md')} ↗</button></div><textarea class="space-note-editor" data-note-editor maxlength="40000" aria-label="${t('你的笔记','Your note')}" placeholder="${t('写下一点想法，下次继续。','Write a little thought. Pick it up next time.')}"></textarea><footer><span>${t('仅此浏览器 · 不会公开','This browser only · never published')}</span><span data-note-count></span></footer><details class="space-note-advanced"><summary>${t('本地开发选项','Local development options')}</summary><div><p data-note-runtime role="status" aria-live="polite">${t('展开后检查本地沙盒连接。','Open to check the local sandbox connection.')}</p><button type="button" data-note-sandbox disabled>${t('保存到沙盒','Save to sandbox')}</button></div></details></div>`;
     const editor = host.querySelector('[data-note-editor]'); editor.value = getState().note;
     const status=host.querySelector('[data-note-save]'),advanced=host.querySelector('.space-note-advanced'),runtimeLabel=host.querySelector('[data-note-runtime]'),sandbox=host.querySelector('[data-note-sandbox]'),controller=new AbortController();
+    const ask = document.createElement('button');ask.type='button';ask.dataset.noteAsk='';ask.disabled=true;
+    ask.textContent=t('聊聊选中片段','Ask about selection');
+    ask.title=t('选中一段笔记，再带着这段文字提问','Select a passage to bring it into a question');
+    host.querySelector('.space-notes__toolbar').insertBefore(ask,host.querySelector('[data-note-export]'));
+    const capture=()=>{ask.disabled=!noteSelectionText(editor);};
+    for(const type of ['select','input','keyup','pointerup'])editor.addEventListener(type,capture,{signal:controller.signal});
+    document.addEventListener('selectionchange',capture,{signal:controller.signal});
+    ask.addEventListener('pointerdown',event=>{capture();if(!ask.disabled)event.preventDefault();},{signal:controller.signal});
+    ask.addEventListener('click',()=>{
+      const selection=noteSelectionText(editor);if(!selection)return;
+      execute('ask',{question:t('解释下面选中的段落。','Explain this selected passage.'),source:'note',selection});
+    },{signal:controller.signal});
     let disposed=false,checking=false,connected=false,saving=false,sandboxCopy=false;
     const localStatus=saved=>{status.textContent=saved?t('已保存在此浏览器','Saved in this browser'):t('未能保存，请导出副本','Could not save. Export a copy.');status.dataset.saved=String(saved);};
     localStatus(getStorageStatus());

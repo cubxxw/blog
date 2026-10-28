@@ -1,5 +1,6 @@
 ---
-url: "/projects/langchain/"
+url: "/lab-notes/langchain/"
+labNotes: true
 title: "LangChain 1.x in Production: Choosing Models, Agents, and LangGraph"
 date: 2025-04-16T17:36:45+08:00
 lastmod: 2026-07-31T10:00:00+08:00
@@ -25,6 +26,7 @@ cover:
   alt: "A restrained editorial illustration of connected paths representing models, agents, and graph workflows"
   relative: false
 aliases:
+  - /projects/langchain/
   - /posts/ai-projects/langchain/
 tldr:
   - "Start with the smallest abstraction that makes failure easier to see: a direct model call for one inference, create_agent for a standard tool loop, and LangGraph only when control flow becomes part of the product."
@@ -509,5 +511,5 @@ An agent should not make a system mysterious. It should make a difficult decisio
 ## Related articles
 
 - [Harnessing Language Model Applications with LangChain: A Developer's Guide](/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [LangGraph: Building Stateful Agent Workflows](/projects/langgraph/)
+- [LangGraph: Building Stateful Agent Workflows](/lab-notes/langgraph/)
 - [Vector Database Learning Notes](/ai-agent/posts/vector-database-learning/)

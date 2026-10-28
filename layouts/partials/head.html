@@ -54,7 +54,7 @@
 
 {{- /* Styles */}}
 
-{{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
+{{- $isArticlesLibrary := and (eq .Kind "section") (in (slice "articles" "lab-notes") .Section) -}}
 {{- $isProjectsLanding := and (eq .Kind "section") (eq .Section "projects") -}}
 {{- if $isProjectsLanding }}
 {{- /* Opt in before the workspace stylesheet in the body arrives. The

@@ -2,7 +2,7 @@
 {{- $isFeatured := .isFeatured | default false -}}
 {{- $isZh := eq $page.Lang "zh" -}}
 {{- $section := $page.Section -}}
-{{- $sectionDisplay := cond $isZh "AI 项目" "AI Projects" -}}
+{{- $sectionDisplay := cond $isZh "构建笔记" "Build notes" -}}
 {{- if eq $section "ai-agent" -}}
   {{- $sectionDisplay = "AI Agent" -}}
 {{- else if eq $section "engineering" -}}
@@ -11,6 +11,7 @@
   {{- $sectionDisplay = cond $isZh "成长与生活" "Growth & Life" -}}
 {{- end -}}
 {{- $title := $page.Title | replaceRE "[—–]" "-" -}}
+{{- if $page.Params.labNotes }}{{ $sectionDisplay = cond $isZh "深读" "Lab notes" }}{{ end -}}
 {{- $summary := $page.Summary | plainify | htmlUnescape | replaceRE "[—–]" "-" | truncate 148 -}}
 {{- $hasCover := and $page.Params.cover $page.Params.cover.image -}}
 <article class="library-card{{ if $hasCover }} library-card--with-cover{{ end }}{{ if $isFeatured }} library-card--featured{{ end }}"

@@ -1,5 +1,6 @@
 ---
-url: "/projects/langgraph/"
+url: "/lab-notes/langgraph/"
+labNotes: true
 title: "LangGraph Architecture in 2026: StateGraph, Persistence, and Recovery"
 date: 2025-04-19T15:19:20+08:00
 showtoc: true
@@ -18,6 +19,7 @@ categories:
 description: >
   A practical 2026 guide to LangGraph architecture: choose the right agent layer, build checkpointed StateGraphs, and recover safely from production failure.
 aliases:
+  - /projects/langgraph/
   - /posts/ai-projects/langgraph/
 tldr:
   - "LangGraph is a low-level orchestration framework for long-running, stateful agents, where state, nodes, and edges form an explicit execution graph."

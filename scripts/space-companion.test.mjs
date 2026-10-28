@@ -1,8 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { publicFocus, contextualQuestion, serviceMessage, planInlineText } from '../assets/js/space/companion.mjs';
+import { publicFocus, contextualQuestion, serviceMessage, planInlineText, noteSelectionText } from '../assets/js/space/companion.mjs';
 
 const catalog = { articles:[{url:'/zh/ai-agent/posts/test/',title:'An article'}], products:[{id:'daypage',name:'DayPage',url:'https://daypage.example'}], readingDocuments:[], photos:[] };
+test('only a live explicit note selection can be quoted; a caret never exposes the note', () => {
+  const editor={isConnected:true,value:'PRIVATE_BEFORE quoted passage PRIVATE_AFTER',selectionStart:15,selectionEnd:29};
+  assert.equal(noteSelectionText(editor),'quoted passage');
+  assert.equal(noteSelectionText({...editor,selectionEnd:15}),'');
+  assert.equal(noteSelectionText({...editor,isConnected:false}),'');
+  assert.equal(noteSelectionText({...editor,value:'x'.repeat(5000),selectionStart:0,selectionEnd:5000}).length,1200);
+  assert.equal(noteSelectionText(null),'');
+  const focus={kind:'note',title:'Your notes',reference:''};
+  assert.equal(contextualQuestion('Explain',focus,''),'Explain');
+  const question=contextualQuestion('Explain',focus,noteSelectionText(editor));
+  assert.match(question,/Selected private note: Your notes/);
+  assert.match(question,/quoted passage/);
+  assert.doesNotMatch(question,/PRIVATE_|Public|Reference:/);
+});
 test('context resolves only public catalog objects and excludes private editors', () => {
   const snapshot = {active:'reader',windows:[{id:'reader',app:'reader',payload:'/zh/ai-agent/posts/test/'}],note:'PRIVATE_NOTE',draft:'PRIVATE_DRAFT'};
   assert.deepEqual(publicFocus(snapshot,catalog),{kind:'article',title:'An article',reference:'/zh/ai-agent/posts/test/'});

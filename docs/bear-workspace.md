@@ -22,7 +22,7 @@ CUBXXW OS 默认呈现作者的文章、产品和旅途，访客可以在当前�
 
 宽屏保留多窗口、拖动、缩放、边缘吸附、并排、最小化与恢复。欢迎入口重新打开欢迎窗口，保留其他应用与已有位置。咖啡馆中桌面暂时不可聚焦，打开电脑恢复原有窗口；普通根入口刷新后可再次打开工作区继续编辑。文章目录也记住筛选词与分类。
 
-手机固定显示空间、文章、产品、AI 向导、设置五个目的地，另有 OS 菜单；“所有应用”打开可搜索 Launchpad，完整展示 11 个应用：`welcome`、`products`、`reader`、`photos`、`map`、`books`、`notes`、`contact`、`terminal`、`agent`、`settings`。不需要横向滚动 Dock 才能发现笔记、书架、联系与设置。
+手机 Dock 显示空间、文章、作品、笔记和设置五个目的地，另有 OS 菜单；“所有应用”打开可搜索 Launchpad，完整展示 12 个应用：`welcome`、`browser`、`products`、`reader`、`photos`、`map`、`books`、`notes`、`contact`、`terminal`、`agent`、`settings`。空间助手从文章、笔记选段或产品详情唤起，也可以通过应用搜索或 ⌘ / Ctrl J 打开。专注阅读时隐藏 Dock，退出后恢复。
 
 搜索应用、产品和文章使用菜单内搜索或 `⌘/Ctrl+K`。OS 菜单也提供搜索与 Launchpad。搜索无结果时可清空关键词或浏览所有应用；方向键移动结果焦点，Enter 打开，Escape 先关闭弹窗或菜单并恢复触发按钮焦点。编辑 input、textarea 或 contenteditable 时，Escape 不会误最小化窗口。
 
@@ -59,9 +59,11 @@ CUBXXW OS 默认呈现作者的文章、产品和旅途，访客可以在当前�
 
 空间助手由客户端任务循环与服务端官方 DeepSeek Harness 模型适配器组成。每项任务最多 **6 轮模型请求、12 次工具调用、120 秒总预算**，调用方只能缩小上限。三个文本 AI 入口（空间、首页、文章）统一使用 `deepseek-flash`；服务端凭证为 `DEEPSEEK_API_KEY`，Messages 地址默认 `https://api.deepseek.com/anthropic`。请求不能选择 provider、model、URL 或工具集。
 
-Dock 或 `⌘ / Ctrl J` 唤起非模态输入卡；开始任务后展开右侧结果栏，手机上使用剩余屏幕。操作记录默认收起，需要追加笔记或执行命令时自动展开具体预览，等待用户确认。Dock 状态来自真实任务事件。
+从当前内容或 `⌘ / Ctrl J` 唤起非模态输入卡；开始任务后展开右侧结果栏，手机上使用剩余屏幕。操作记录默认收起，需要追加笔记或执行命令时自动展开具体预览，等待用户确认。
 
-文章和产品提供直接提问入口；文章选中文字后可解释该段。预填问题不自动发送，公开资料引用与选文在发送时组装，点掉上下文标签会同时移除引用和选文。笔记、联系草稿和终端内容不会被当作环境上下文读取。语音仅在用户点击后调用浏览器语音识别，先填入可编辑文字，再由用户发送；不支持语音的浏览器继续使用文本。
+文章和产品提供直接提问入口，也可以选中文字后解释该段。笔记只通过明确的选段操作带入文字，发送前显示片段与分享提示。预填问题不自动发送，点掉上下文标签会同时移除引用和选文。笔记全文、联系草稿和终端内容不会被当作环境上下文读取。语音仅在用户点击后调用浏览器语音识别，先填入可编辑文字，再由用户发送；不支持语音的浏览器继续使用文本。
+
+技术深读使用「深读 / Lab notes」及 `/lab-notes/`、`/zh/lab-notes/` 地址；产品目录使用「作品 / Projects」。原有 `/projects/<技术文章>/` 链接保持跳转，阅读窗口与收藏中的旧地址也会迁移。源 Markdown 仍留在原文章 section。
 
 `netlify/lib/deepseek.js` 使用官方 `@deepseek-ai/dsh-llm-deepseek@0.2.0-rc.2` 的 `DeepSeekAdapter`，将 Messages 的文字与工具事件转换为本站既有响应协议，过滤思考内容。公开网站只加载模型适配层；应用工具由本站注册和执行。Netlify 将原生 ESM 包作为 `external_node_modules` 保留，避免 `import.meta.url` 在 CommonJS 打包时失效。运行说明与官方接口见 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness/)。
 

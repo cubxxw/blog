@@ -1,5 +1,6 @@
 ---
-url: "/projects/markitdown/"
+url: "/lab-notes/markitdown/"
+labNotes: true
 title: "Microsoft MarkItDown 0.1.6: A Practical Document-to-Markdown Guide"
 date: 2025-04-21T15:41:21+08:00
 showtoc: true
@@ -19,6 +20,7 @@ categories:
 description: >
   Learn MarkItDown 0.1.6 for document-to-Markdown workflows, choose local, OCR, or Azure conversion, and test output quality before building a RAG pipeline.
 aliases:
+  - /projects/markitdown/
   - /posts/ai-projects/markitdown/
 tldr:
   - "MarkItDown is an ingestion tool for turning many document formats into compact Markdown; it is not a layout-preserving publishing converter."

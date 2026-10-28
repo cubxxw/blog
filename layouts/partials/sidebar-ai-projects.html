@@ -1,9 +1,9 @@
 <!-- AI 项目学习导航 -->
 <div class="widget-ai-projects">
-  <h3>{{ i18n "sidebar_ai_projects_title" | default "🤖 AI Open Source Projects" | safeHTML }}</h3>
+  <h3>{{ i18n "sidebar_ai_projects_title" | default "Lab notes" | safeHTML }}</h3>
   <p>{{ i18n "sidebar_ai_projects_desc" | default "Deep dives into AI open source projects — learning notes and practical experience." | safeHTML }}</p>
-  <a href="{{ "/projects/" | relLangURL }}" class="ai-project-button">
-    {{ i18n "sidebar_ai_projects_explore" | default "🚀 Explore AI Projects" | safeHTML }}
+  <a href="{{ "/lab-notes/" | relLangURL }}" class="ai-project-button">
+    {{ i18n "sidebar_ai_projects_explore" | default "Read Lab notes" | safeHTML }}
   </a>
   {{- $isZh := eq site.Language.Lang "zh" -}}
   <ul>

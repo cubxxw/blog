@@ -27,7 +27,8 @@
 .space [data-companion-mode="expanded"] .bear-agent__header h2,
 .space [data-companion-mode="expanded"] .bear-agent__header>p,
 .space [data-companion-mode="expanded"] .bear-agent__chips {display:none;}
-.space .bear-agent {font-size:14px;line-height:1.65;--ba-chrome:var(--sp-surface);}
+.space .bear-agent {width:100%;min-width:0;max-width:100%;font-size:14px;line-height:1.65;--ba-chrome:var(--sp-surface);}
+.space .bear-agent__body,.space .bear-agent__composer {min-width:0;max-width:100%;}
 .space .bear-agent button {min-height:36px;}
 .space .bear-agent__header {padding:8px 24px 20px;border-bottom:0;}
 .space .bear-agent__identity {display:flex;align-items:center;gap:12px;}
@@ -94,11 +95,6 @@
 .space .space-reader__ai-actions {display:flex;gap:12px;padding:10px 24px;border-bottom:1px solid var(--sp-line);background:var(--sp-soft);}
 .space .space-reader__ai-actions button {min-height:36px;color:var(--sp-accent);font-size:12px;}
 .space .space-reader__ai-actions [hidden] {display:none;}
-.space [data-space-dock] [data-agent-state="working"]::after,
-.space [data-space-dock] [data-agent-state="waiting"]::after {width:7px;height:7px;background:#10796f;box-shadow:0 0 0 4px #fff6;}
-.space [data-space-dock] [data-agent-state="working"]::after {animation:companion-pulse 1.4s ease-in-out infinite;}
-.space [data-space-dock] [data-agent-state="waiting"]::after {background:#c2832f;}
-@keyframes companion-pulse {50% {opacity:.45;}}
 @keyframes companion-arrive {from{opacity:0;}to{opacity:1;}}
 @media(max-width:640px) {
   .space .space-window[data-space-window="agent"] {right:8px!important;top:8px!important;width:calc(100% - 16px)!important;height:calc(100% - 104px)!important;}
@@ -115,5 +111,5 @@
   .space .space-window[data-space-window="agent"] .space-window-controls button {min-width:36px;min-height:26px;}
 }
 @media(prefers-reduced-motion:reduce) {
-  .space .space-window[data-space-window="agent"],.space [data-space-dock] [data-agent-state]::after {animation:none!important;}
+  .space .space-window[data-space-window="agent"] {animation:none!important;}
 }

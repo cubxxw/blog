@@ -2,16 +2,16 @@
 {{- $languageRoutes := dict .Lang .RelPermalink -}}
 {{- range .Translations }}{{ $languageRoutes = merge $languageRoutes (dict .Lang .RelPermalink) }}{{ end -}}
 {{- $labels := dict "welcome" "Finder" "browser" (cond $zh "浏览器" "Browser") "products" (cond $zh "作品" "Projects") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "空间助手" "Companion") "settings" (cond $zh "工作区设置" "Settings") -}}
-{{- $mobileLabels := dict "welcome" (cond $zh "空间" "Home") "reader" (cond $zh "文章" "Writing") "products" (cond $zh "作品" "Projects") "settings" (cond $zh "设置" "Settings") "agent" (cond $zh "助手" "AI") -}}
+{{- $mobileLabels := dict "welcome" (cond $zh "空间" "Home") "reader" (cond $zh "文章" "Writing") "products" (cond $zh "作品" "Projects") "settings" (cond $zh "设置" "Settings") "notes" (cond $zh "笔记" "Notes") -}}
 {{- $articles := slice -}}
 {{- range (where site.RegularPages "Type" "posts").ByDate.Reverse -}}
-  {{- $articles = $articles | append (dict "id" .RelPermalink "title" .Title "url" .RelPermalink "description" (.Description | default (.Summary | plainify | truncate 180)) "date" (.Date.Format "2006.01.02") "section" .Section "tags" .Params.tags) -}}
+  {{- $articles = $articles | append (dict "id" .RelPermalink "title" .Title "url" .RelPermalink "aliases" (.Aliases | default (slice)) "description" (.Description | default (.Summary | plainify | truncate 180)) "date" (.Date.Format "2006.01.02") "section" .Section "labNotes" (.Params.labNotes | default false) "tags" .Params.tags) -}}
 {{- end -}}
 {{- $readingDocuments := slice -}}
 {{- range site.Sites -}}
   {{- if ne .Language.Lang $.Lang -}}
     {{- range where .RegularPages "Type" "posts" -}}
-      {{- $readingDocuments = $readingDocuments | append (dict "title" .Title "url" .RelPermalink "date" (.Date.Format "2006.01.02") "section" .Section) -}}
+      {{- $readingDocuments = $readingDocuments | append (dict "title" .Title "url" .RelPermalink "aliases" (.Aliases | default (slice)) "date" (.Date.Format "2006.01.02") "section" .Section) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
@@ -79,7 +79,7 @@
   <div class="space-snap-preview" data-space-snap hidden aria-hidden="true"></div>
   <footer class="space-bottom">
     <nav class="space-dock" data-space-dock aria-label="{{ if $zh }}应用 Dock{{ else }}Application Dock{{ end }}">
-      {{ range slice "welcome" "reader" "browser" "products" "photos" "notes" "agent" "settings" }}
+      {{ range slice "welcome" "reader" "browser" "products" "photos" "notes" "settings" }}
       <button type="button" data-open="{{ . }}"{{ if index $mobileLabels . }} data-mobile-destination="{{ . }}"{{ end }} aria-label="{{ index $labels . }}" title="{{ index $labels . }}">{{ partial "space/icon.html" . }}<span class="space-dock__label">{{ index $labels . }}</span>{{ with index $mobileLabels . }}<span class="space-dock__mobile-label">{{ . }}</span>{{ end }}<i class="space-dock__dot" aria-hidden="true"></i></button>
       {{ end }}
     </nav>

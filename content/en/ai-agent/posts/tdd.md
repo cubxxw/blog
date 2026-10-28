@@ -1,5 +1,6 @@
 ---
-url: "/projects/tdd/"
+url: "/lab-notes/tdd/"
+labNotes: true
 title: "Test-Driven Development for AI and LLM Applications: A Practical 2026 Guide"
 date: 2025-04-21T15:52:34+08:00
 lastmod: 2026-07-31T10:00:00+08:00
@@ -20,6 +21,7 @@ categories:
 description: >
   A 2026 guide to test-driven development for AI and LLM systems, covering deterministic tests, evals, calibrated graders, CI risk gates, and monitoring.
 aliases:
+  - /projects/tdd/
   - /posts/ai-projects/tdd/
 tldr:
   - "Keep Red-Green-Refactor for deterministic code, but evaluate probabilistic behavior with fixed datasets and explicit tolerances."

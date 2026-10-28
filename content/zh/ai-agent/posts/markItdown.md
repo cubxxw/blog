@@ -1,5 +1,6 @@
 ---
-url: "/zh/projects/markitdown/"
+url: "/zh/lab-notes/markitdown/"
+labNotes: true
 title: "MarkItDown 文档转 Markdown 实战：0.1.6 机制基线与 0.1.7 状态"
 date: 2025-04-21T15:41:21+08:00
 lastmod: 2026-07-31T16:30:00+08:00
@@ -20,6 +21,7 @@ categories:
 description: >
   这是一份面向开发者的 MarkItDown 文档摄取实战指南，以可复核的 0.1.6 机制为基线并说明 0.1.7 发布状态，讲清内置转换、OCR 插件、视觉模型、Azure 文档智能与内容理解的边界，提供选型矩阵、质量门和可复现实验，帮助你在进入 RAG 索引前发现阅读顺序、表格、图片文字与成本风险。
 aliases:
+  - /zh/projects/markitdown/
   - /zh/posts/ai-projects/markitdown/
 tldr:
   - "MarkItDown 适合把多种文件摄取为紧凑、机器友好的 Markdown；它不是追求版式还原的出版转换器。"

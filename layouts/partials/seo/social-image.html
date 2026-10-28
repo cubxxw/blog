@@ -14,6 +14,7 @@
 {{- else -}}
   {{- $labels := dict "ai-agent" "AI AGENT" "engineering" "ENGINEERING" "growth" "LIFE & THOUGHT" "projects" "PROJECTS" "articles" "ARTICLES" -}}
   {{- with index $labels .Section -}}{{- $label = . -}}{{- end -}}
+  {{- if or .Params.labNotes (eq .Section "lab-notes") }}{{ $label = "LAB NOTES" }}{{ end -}}
   {{- if gt (strings.RuneCount $title) (cond $zh 48 85) -}}{{- $size = 56 -}}{{- end -}}
   {{- $lines = partial "seo/social-lines.html" (dict "text" $title "limit" (div 1040.0 $size)) -}}
   {{- /* A small size adjustment keeps a lone final character/word from

@@ -1,0 +1,28 @@
+{
+  "scope": "New Chinese interface and Lab notes index copy; edited workspace documentation reviewed separately against the same whitelist",
+  "rules": "lieflat-less-ai-tone v2, current installed rules read 2026-10-28",
+  "author_constraints": "CLAUDE.md writing constraints and the user's AGENTS.md; preserve unmatched wording and existing article prose",
+  "samples": [
+    "深读",
+    "关于开源工具与技术系统的学习笔记，记录架构、实践与使用边界。",
+    "这里收录我对开源工具与技术系统的研究和实践笔记。想看我正在构建的产品，可以去作品空间。",
+    "聊聊这个产品",
+    "聊聊这篇文章",
+    "解释选段",
+    "聊聊选中片段",
+    "选中一段笔记，再带着这段文字提问",
+    "发送时只分享这段选中文字。",
+    "发送时分享选中片段",
+    "阅读深读笔记",
+    "构建笔记",
+    "看作品"
+  ],
+  "before": {"script_status": "below_minimum", "stderr": "汉字过少（<500），检测无意义"},
+  "manual_review": {
+    "disposition": "Retain all sampled copy; no allowed rewrite was needed",
+    "semantic_review": "Labels describe separate destinations and actions; no redundant renaming, conclusion-prompt colon, cohesion chain, or repeated sentence template requires revision. Translation names identify the same destination intentionally.",
+    "boundaries": "Do not manufacture corpus metrics for this short sample; preserve published article bodies and the unchanged MarkItDown quote."
+  },
+  "changes": [],
+  "after": {"script_status": "below_minimum", "stderr": "汉字过少（<500），检测无意义", "manual_recheck": "Same copy retained after final implementation and documentation review"}
+}

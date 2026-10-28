@@ -424,6 +424,7 @@ body:has(.library-page) {
 .library-lane__feed {
   display: grid;
 }
+.library-page--lab-notes { max-width:900px; }
 
 .library-card {
   position: relative;

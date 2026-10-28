@@ -1,5 +1,8 @@
 ---
-url: "/projects/mem0/"
+url: "/lab-notes/mem0/"
+labNotes: true
+aliases:
+  - /projects/mem0/
 title: 'Mem0 OSS v3 in Practice: Memory Architecture, Retrieval, and Trade-offs'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T21:33:46+08:00

@@ -211,8 +211,8 @@ Google 当前最明确的建议，是创造 non-commodity、people-first 的内�
 更可靠的博客经验来自编辑选择：一小组技术页面持续吸引相关读者。
 
 - Hugo：[博客搭建记录](/zh/engineering/posts/my-hugo/)与[进阶 Hugo 笔记](/zh/engineering/posts/hugo-advanced-tutorial/)
-- AI 工具与工程：[MarkItDown](/zh/projects/markitdown/)、[mem0](/zh/projects/mem0/)、[LangGraph](/zh/projects/langgraph/)、[GPT Researcher](/zh/ai-agent/posts/gpt-researcher/)、[NotebookLM](/zh/projects/notebooklm/)
-- 工程实践：[自动化指令](/zh/engineering/posts/directives-and-the-use-of-automation-tools/)与[TDD](/zh/projects/tdd/)
+- AI 工具与工程：[MarkItDown](/zh/lab-notes/markitdown/)、[mem0](/zh/lab-notes/mem0/)、[LangGraph](/zh/lab-notes/langgraph/)、[GPT Researcher](/zh/ai-agent/posts/gpt-researcher/)、[NotebookLM](/zh/lab-notes/notebooklm/)
+- 工程实践：[自动化指令](/zh/engineering/posts/directives-and-the-use-of-automation-tools/)与[TDD](/zh/lab-notes/tdd/)
 
 下一步不是为每个关键词变体制造新页面，而是继续改进真正有直接经验的少数主题，修正过时结论，建立清晰内链，再观察读者与外部系统是否确实觉得它有用。
 

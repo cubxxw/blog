@@ -1,5 +1,6 @@
 ---
-url: "/zh/projects/langchain/"
+url: "/zh/lab-notes/langchain/"
+labNotes: true
 title: "LangChain 1.x 生产实践：模型、Agent 与 LangGraph 如何选"
 date: 2025-04-16T17:36:46+08:00
 lastmod: 2026-07-31T10:00:00+08:00
@@ -25,6 +26,7 @@ cover:
   alt: "模型、智能体与图工作流沿三条路径汇合的克制编辑插画"
   relative: false
 aliases:
+  - /zh/projects/langchain/
   - /zh/posts/ai-projects/langchain/
 tldr:
   - "从能暴露问题的最小抽象开始：一次推理直接调用模型，标准工具循环使用 create_agent，只有控制流本身成为产品需求时才引入 LangGraph。"
@@ -507,5 +509,5 @@ Agent 不该让系统更神秘。它应当让一个困难的决定成为可能�
 ## 延伸阅读
 
 - [LangChain 语言模型应用开发指南](/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [LangGraph：构建有状态 Agent 工作流](/zh/projects/langgraph/)
+- [LangGraph：构建有状态 Agent 工作流](/zh/lab-notes/langgraph/)
 - [向量数据库学习笔记](/zh/ai-agent/posts/vector-database-learning/)

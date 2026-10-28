@@ -4,6 +4,9 @@
     {{- $lang_url := strings.TrimPrefix (printf "%s/" .Lang) $url -}}
 
     <a href="{{ "" | absLangURL }}">{{ i18n "home" | default "Home" }}</a>
+    {{- if .Params.labNotes -}}
+    {{- print "&nbsp;»&nbsp;" | safeHTML -}}<a href="{{ "/lab-notes/" | relLangURL }}">{{ if eq .Lang "zh" }}深读{{ else }}Lab notes{{ end }}</a>
+    {{- else -}}
     {{- $scratch := newScratch }}
     {{- $foundAny := false }}
     {{- range $index, $element := split $lang_url "/" }}
@@ -21,5 +24,6 @@
     {{- if and (eq .Kind "page") (not $foundAny) -}}
     {{- print "&nbsp;»&nbsp;" | safeHTML -}}<span>{{ .Title }}</span>
     {{- end -}}
+{{- end -}}
 </div>
 {{- end -}}

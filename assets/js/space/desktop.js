@@ -7,7 +7,7 @@ import { publicFocus } from './companion.mjs';
 import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, planWindowArrangement } from './state.mjs';
 import { mountApps, escapeHTML } from './apps.js';
 import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
-import { usesSingleWindow } from './reading-layout.mjs';
+import { usesSingleWindow, readingURLMap, restoreReadingURLs } from './reading-layout.mjs';
 
 const root = document.querySelector('[data-bear-workspace]');
 // Space belongs to a full page. Its own browser may show the blog, whose links
@@ -17,6 +17,7 @@ function mountDesktop(root) {
   mountFullscreen(root);
   const catalog = JSON.parse(root.querySelector('[data-space-catalog]').textContent);
   const readingURLs = new Set([...catalog.articles,...(catalog.readingDocuments || [])].map(article=>article.url));
+  const readingAliases = readingURLMap([...catalog.articles,...(catalog.readingDocuments || [])]);
   const productRoot = root.closest('[data-product-space]');
   const labels = catalog.labels, zh = catalog.language === 'zh';
   const t = (cn,en) => zh ? cn : en;
@@ -32,10 +33,10 @@ function mountDesktop(root) {
   const storageKey = 'bear-space:v1';
   let saved, saveFailure = false;
   try { saved = localStorage.getItem(storageKey); } catch { saveFailure = true; }
-  let state = createWorkspace(saved,stateViewport());
+  let state = restoreReadingURLs(createWorkspace(saved,stateViewport()),readingAliases);
   const nodes = new Map();
   let onboarding = false, cafe, readingFocus = false, readingFocusReturn = null;
-  let companionFocus = null;
+  let companionFocus = null, companionReturn = null;
   const entryURL = new URL(location.href);
   let localeResume = entryURL.searchParams.get('space-resume') === catalog.language;
   try { localeResume = localeResume || sessionStorage.getItem('space:locale-resume') === catalog.language; sessionStorage.removeItem('space:locale-resume'); } catch {}
@@ -57,10 +58,6 @@ function mountDesktop(root) {
     clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; },4000);
   }
   const apps = mountApps({ root,catalog,execute,getState:()=>state,getContext:()=>companionFocus,getStorageStatus:()=>!saveFailure,updateNote:text=>update({type:'note',text},false),notify,icon });
-  root.addEventListener('bear:agent-status',event=>{
-    const button=root.querySelector('[data-space-dock] [data-open="agent"]');
-    if(button){button.dataset.agentState=event.detail.state;button.title=t('空间助手','Space companion')+' · '+({working:t('进行中','Working'),waiting:t('等待确认','Approval needed'),done:t('已完成','Done'),error:t('未完成','Failed'),stopped:t('已停止','Stopped'),idle:t('就绪','Ready')}[event.detail.state] || '');}
-  });
   function persist() {
     try { localStorage.setItem(storageKey,serializeWorkspace(state)); saveFailure=false; return true; }
     catch { if (!saveFailure) notify(t('浏览器未能保存。请导出一份笔记。','Browser storage failed. Please export your notes.')); saveFailure = true; return false; }
@@ -184,10 +181,11 @@ function mountDesktop(root) {
   }
   function open(app,payload) {
     if (!APPS.includes(app)) return t('没有这个应用。','Unknown application.');
+    if(app==='reader' && payload)payload=readingAliases.get(payload) || payload;
     const entering=cafe?.enterDesktop();
     if (app !== 'welcome') completeEntry();
     const previous = state.windows.find(w => w.app === app);
-    if(app==='agent' && state.active !== 'agent')companionFocus=publicFocus(state,catalog);
+    if(app==='agent' && state.active !== 'agent'){companionFocus=publicFocus(state,catalog);companionReturn=document.activeElement;}
     // Dock restores the existing document; an explicit payload navigates that app.
     update({ type:'open',app,payload:app==='agent' ? '' : payload === undefined ? previous?.payload || '' : payload,...(!previous&&['browser','products'].includes(app)?{rect:{x:70,y:36,width:860,height:590}}:{}) });
     if(app==='browser'&&payload!==undefined)apps.navigateBrowser(app,payload);
@@ -215,7 +213,13 @@ function mountDesktop(root) {
   }
   function execute(name,args = {}) {
     if (name === 'open') return open(args.app,args.payload);
-    if (name === 'ask') { open('agent');root.dispatchEvent(new CustomEvent('bear:agent-prefill',{detail:{focus:companionFocus,question:args.question || '',selection:args.selection || ''}}));return true; }
+    if (name === 'ask') {
+      // Public context comes from the active catalog object. Private Notes
+      // requires an explicit, bounded quote supplied by its selection action.
+      const focus = args.source === 'note' && args.selection ? {kind:'note',title:labels.notes,reference:''} : publicFocus(state,catalog);
+      open('agent');companionFocus=focus;
+      root.dispatchEvent(new CustomEvent('bear:agent-prefill',{detail:{focus,question:args.question || '',selection:String(args.selection || '').slice(0,1200)}}));return true;
+    }
     if (name === 'enter') { completeEntry(); render(); showLaunchpad(); return true; }
     if (name === 'language') {
       const target = languageDestination(args.value, catalog.languageRoutes, location.href);
@@ -267,6 +271,10 @@ function mountDesktop(root) {
   }
   function focusWindow(app) {const el=nodes.get(app)?.el,input=app==='agent'?el?.querySelector('[data-agent-input]'):null;(input&&!input.disabled?input:el)?.focus({preventScroll:true});}
   function focusAppControl(app) {
+    if(app==='agent'){
+      if(companionReturn?.isConnected&&!companionReturn.closest('[hidden],[inert]')&&companionReturn.getClientRects().length){companionReturn.focus({preventScroll:true});return;}
+      if(state.active){focusWindow(state.active);return;}
+    }
     const button = root.querySelector(`[data-space-dock] [data-open="${app}"]`);
     const fallback = menu;
     (button?.getClientRects().length ? button : fallback)?.focus({preventScroll:true});
@@ -497,7 +505,7 @@ function mountDesktop(root) {
   let resizeTimer;
   window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{finishDrag(true);update({type:'viewport'});},100);});
   root.addEventListener('space:surfacechange',()=>{finishDrag(true);update({type:'viewport'});});
-  window.addEventListener('storage',event=>{if(event.key===storageKey&&event.newValue){const localEditing=root.contains(document.activeElement)&&isEditableTarget(document.activeElement);if(localEditing){notify(t('另一个标签页更新了空间。刷新后可以载入。','Another tab updated this space. Reload to load it.'));return;}state=createWorkspace(event.newValue,stateViewport());const note=nodes.get('notes');if(note)note.rendered=false;const contact=nodes.get('contact');if(contact)contact.rendered=false;render();}});
+  window.addEventListener('storage',event=>{if(event.key===storageKey&&event.newValue){const localEditing=root.contains(document.activeElement)&&isEditableTarget(document.activeElement);if(localEditing){notify(t('另一个标签页更新了空间。刷新后可以载入。','Another tab updated this space. Reload to load it.'));return;}state=restoreReadingURLs(createWorkspace(event.newValue,stateViewport()),readingAliases);const note=nodes.get('notes');if(note)note.rendered=false;const contact=nodes.get('contact');if(contact)contact.rendered=false;render();}});
   function setView(view,writeHash=true){
     knowledgeGeneration++;knowledgePending=false;
     delete productRoot.dataset.knowledgeView;

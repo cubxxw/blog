@@ -2,7 +2,7 @@
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 {{- $isLeanAbout := or (eq .Layout "about") (eq .Layout "about-quest") -}}
-{{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
+{{- $isArticlesLibrary := and (eq .Kind "section") (in (slice "articles" "lab-notes") .Section) -}}
 {{- $isProjectsLanding := and (eq .Kind "section") (eq .Section "projects") -}}
 
 {{- /* Enable reveal-on-scroll states only when motion is allowed.

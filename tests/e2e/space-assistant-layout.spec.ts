@@ -12,7 +12,12 @@ const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const companion=(page:Page)=>page.locator('[data-space-window="agent"]');
 async function openCompanion(page:Page){
   await page.goto('/zh/projects/');await enterWorkspace(page);
-  await page.locator('[data-space-dock] [data-open="agent"]').click();
+  await expect(page.locator('[data-space-dock] [data-open="agent"]')).toHaveCount(0);
+  await page.locator('[data-space-dock] [data-open="reader"]').click();
+  await page.locator('[data-library-list] [data-open="reader"]').first().click();
+  await page.locator('[data-reader-body] .post-content').waitFor();
+  await page.locator('.space-reader-tools > summary').click();
+  await page.locator('[data-reader-ask]').click();
   await expect(companion(page)).toBeVisible();
 }
 async function hit(control:Locator){

@@ -81,7 +81,7 @@
  .space-dock { grid-template-columns:repeat(6,minmax(0,1fr)); gap:2px; padding:7px 4px 5px; }
  .space-dock button { min-width:0; min-height:64px; }
  .space .space-dock button.space-dock__menu { display:flex; order:0; }
- .space-dock [data-mobile-destination="agent"] { order:4; }
+ .space-dock [data-mobile-destination="notes"] { order:4; }
  .space-dock [data-mobile-destination="settings"] { order:5; }
  .space-dock button[data-open="agent"] { margin-left:0; }
  .space-dock button[data-open="agent"]::before { display:none; }

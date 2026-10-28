@@ -1,5 +1,6 @@
 ---
-url: "/zh/projects/notebooklm/"
+url: "/zh/lab-notes/notebooklm/"
+labNotes: true
 title: "Gemini Notebook（原 NotebookLM）：从来源到决策的研究工作流"
 date: 2025-04-21T22:59:57+08:00
 lastmod: 2026-07-31T12:00:00+08:00
@@ -23,6 +24,7 @@ cover:
   image: "/images/covers/ai-agent/2025/notebooklm.png"
   alt: "研究笔记中的来源页面、引用连线与决策卡片"
 aliases:
+  - /zh/projects/notebooklm/
   - /zh/posts/ai-projects/notebooklm/
 tldr:
   - "NotebookLM 已在 2026 年 7 月更名为 Gemini Notebook；它仍是独立的来源驱动研究工具，而不是一个无边界的第二大脑。"

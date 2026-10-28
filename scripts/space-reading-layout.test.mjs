@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { usesSingleWindow, selectLibrary } from '../assets/js/space/reading-layout.mjs';
+import fs from 'node:fs';
+import {createWorkspace} from '../assets/js/space/state.mjs';
+import { usesSingleWindow, selectLibrary, readingURLMap, restoreReadingURLs } from '../assets/js/space/reading-layout.mjs';
 import { readerSelectionText } from '../assets/js/space/apps.js';
 
 const articles = [
@@ -8,6 +10,35 @@ const articles = [
   {url:'/two/',title:'A quiet walk',description:'Travel notes',section:'growth',tags:['Nature']},
   {url:'/three/',title:'Agent reading',description:'Tools and memory',section:'ai-agent',tags:['AI']},
 ];
+test('an older open tab cannot undo canonical reader and bookmark migration through storage sync',()=>{
+  const source=fs.readFileSync(new URL('../assets/js/space/desktop.js',import.meta.url),'utf8').split('\n').find(line=>line.includes("window.addEventListener('storage'"));
+  let listener;
+  const urls=readingURLMap([{url:'/lab-notes/langgraph/',aliases:['/projects/langgraph/']}]);
+  const mount=new Function('window','createWorkspace','restoreReadingURLs','readingAliases',`
+    let state;const storageKey='bear-space:v1',root={contains:()=>false},document={activeElement:null},isEditableTarget=()=>false,stateViewport=()=>({width:1440,height:900}),nodes=new Map(),render=()=>{};
+    ${source}
+    return ()=>state;
+  `);
+  const snapshot=mount({addEventListener(_type,callback){listener=callback;}},createWorkspace,restoreReadingURLs,urls);
+  listener({key:'bear-space:v1',newValue:JSON.stringify({version:1,windows:[{app:'reader',id:'reader',payload:'/projects/langgraph/'}],active:'reader',favorites:['/projects/langgraph/']})});
+  assert.equal(snapshot().windows[0].payload,'/lab-notes/langgraph/');
+  assert.deepEqual(snapshot().favorites,['/lab-notes/langgraph/']);
+});
+test('saved reader windows and bookmarks follow known aliases while other private state stays intact',()=>{
+  const urls=readingURLMap([{url:'/lab-notes/langgraph/',aliases:['/projects/langgraph/']}]);
+  const state={note:'PRIVATE',draft:'PRIVATE DRAFT',windows:[{app:'reader',payload:'/projects/langgraph/'},{app:'browser',payload:'/projects/langgraph/'}],favorites:['/projects/langgraph/','/lab-notes/langgraph/','/unknown/']};
+  const next=restoreReadingURLs(state,urls);
+  assert.equal(next.windows[0].payload,'/lab-notes/langgraph/');
+  assert.equal(next.windows[1].payload,'/projects/langgraph/');
+  assert.deepEqual(next.favorites,['/lab-notes/langgraph/','/unknown/']);
+  assert.equal(next.note,state.note);assert.equal(next.draft,state.draft);
+  assert.equal(state.windows[0].payload,'/projects/langgraph/');
+});
+test('Lab notes is a writing filter independent of the product inventory and original source section',()=>{
+  const deep={url:'/zh/lab-notes/langgraph/',title:'LangGraph',section:'ai-agent',labNotes:true};
+  assert.deepEqual(selectLibrary({articles:[...articles,deep],filter:'lab-notes'}).matches,[deep]);
+  assert.ok(selectLibrary({articles:[...articles,deep],filter:'ai-agent'}).matches.includes(deep));
+});
 test('compact presentations include portrait tablets without changing wide desktop behavior',()=>{
   for (const width of [320,390,768,1000]) assert.equal(usesSingleWindow(width),true);
   for (const width of [1001,1280,1440,NaN]) assert.equal(usesSingleWindow(width),false);

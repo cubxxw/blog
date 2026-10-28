@@ -3,8 +3,8 @@
 // A calm, bilingual task UI for the bounded agent loop. It renders public
 // operational work (model requests, tool calls, approvals) as a real timeline —
 // never fake progress, receipts or model answers. Private note and draft text
-// stay out of the model context; the only exception is append_note after the
-// visitor explicitly approves that exact text.
+// stay out of ambient model context. Notes can quote a selected passage only
+// through its explicit action; the composer previews it before sending.
 //
 // mountAgent({host, catalog, execute, getState, notify}) -> disposer
 
@@ -220,7 +220,8 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     contextTitle.textContent = title;
     host.querySelector('[data-agent-context-label]').textContent = title;
     contextPreview.textContent = selectedText ? String(selectedText).replace(/\s+/g,' ').slice(0,88) : t('展开查看来源', 'Expand to view source');
-    contextReference.textContent = focus ? String(focus.reference || '').slice(0,600) : '';
+    if(focus?.kind === 'note')contextPreview.textContent=t('发送时分享选中片段 · ','Shares selection on send · ')+contextPreview.textContent;
+    contextReference.textContent = focus?.kind === 'note' ? t('发送时只分享这段选中文字。','Only this selected passage is shared when you send.') : focus ? String(focus.reference || '').slice(0,600) : '';
     contextQuote.textContent = focus ? String(selectedText || '').slice(0,1200) : '';
     contextQuote.hidden = !focus || !selectedText;
     if (!focus) contextDetails.open = false;
