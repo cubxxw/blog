@@ -40,3 +40,9 @@ Comparing actual runtime bytes found a build-fidelity defect: the isolated produ
 The builder now copies the exact compiler configuration and rejects uncommitted changes to it. The publication digest already covers this file and remains unchanged. Real staging and dirty-source regressions failed before the one-line input-list fix and passed afterward; a compiler-only commit also changes the source identity, input digest and full-verification classification. All 33 integrated build and change-scope tests passed.
 
 Earlier browser results from the configuration-incomplete staging directory remain diagnostic evidence. They do not establish acceptance of the strict production entry. The corrected current-source frozen build and complete browser graph must pass before this follow-up is merged. The independent two-target Linux Lighthouse diagnostic also failed before generating reports, so it does not establish measurement recovery.
+
+## Distribute the same legacy coverage across sixteen runners
+
+The earlier eight-runner graph included a 113-minute legacy job, close to its unchanged 120-minute ceiling. The next graph distributes the same legacy suite across sixteen independent single-worker runners. Actual Playwright inventories contain the same 1,240 unique IDs, with no omissions or overlap: eight groups of 78 and eight of 77. The quality group and three interactive engines remain, giving twenty browser groups in total. Per-case budgets, retries, filters, projects and the job timeout are unchanged; missing, failed, cancelled or incomplete groups still prevent certification.
+
+This adds eight setup and artifact-download jobs and can add queueing. It is an execution-capacity change, not a fix for a failed assertion or a promise that elapsed time will halve. The earlier main run's permanent compatible-draft failure and flaky sleeping case remain recorded; a complete current-source graph is still required.
