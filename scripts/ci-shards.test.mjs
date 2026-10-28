@@ -21,8 +21,8 @@ function fixture(t) {
 }
 test('all browser projects are partitioned without dropping legacy or any engine',t=>{
   const {specs}=fixture(t);
-  assert.deepEqual(specs.map(s=>s.id),['quality','legacy-1','legacy-2','legacy-3','legacy-4','interactive-chromium','interactive-firefox','interactive-webkit']);
-  assert.deepEqual(specs.filter(s=>s.suite==='legacy').map(s=>s.shard),['1/4','2/4','3/4','4/4']);
+  assert.deepEqual(specs.map(s=>s.id),['quality','legacy-1','legacy-2','legacy-3','legacy-4','legacy-5','legacy-6','legacy-7','legacy-8','interactive-chromium','interactive-firefox','interactive-webkit']);
+  assert.deepEqual(specs.filter(s=>s.suite==='legacy').map(s=>s.shard),['1/8','2/8','3/8','4/8','5/8','6/8','7/8','8/8']);
   assert.ok(specs.every(s=>s.workers===1));
   assert.deepEqual(api.browserShardPlan({plan:{...plan,runSite:false},changeSet:changes}),[]);
   assert.deepEqual(api.browserShardPlan({plan:{...plan,requiredChecks:['output','browser']},changeSet:{...changes,fullScan:false,files:[{path:'content/zh/engineering/posts/a.md'}]}}).map(s=>s.id),['quality']);
@@ -30,7 +30,19 @@ test('all browser projects are partitioned without dropping legacy or any engine
 test('a complete set aggregates enforcing browser and three-engine reports',t=>{
   const {proof,reports}=fixture(t),result=api.aggregateShardReports({plan,changeSet:changes,proof,reports});
   assert.equal(result.browser.ok,true);assert.equal(result.interactive.ok,true);
-  assert.equal(result.browser.shards.length,5);assert.equal(result.interactive.shards.length,3);
+  assert.equal(result.browser.shards.length,9);assert.equal(result.interactive.shards.length,3);
+});
+test('the eighth legacy runner cannot be missing, duplicated, unknown, failed, cancelled or from different frozen bytes',t=>{
+  const {proof,reports}=fixture(t),last=reports.find(report=>report.id==='legacy-8');
+  assert.ok(last,'the capacity split must schedule the eighth independent legacy runner');
+  const aggregate=rows=>api.aggregateShardReports({plan,changeSet:changes,proof,reports:rows});
+  const replace=report=>reports.map(original=>original.id==='legacy-8'?report:original);
+  assert.throws(()=>aggregate(reports.filter(report=>report.id!=='legacy-8')),/missing/i);
+  assert.throws(()=>aggregate([...reports,last]),/duplicate/i);
+  assert.throws(()=>aggregate(replace({...last,id:'legacy-9'})),/unknown/i);
+  for(const exitCode of [1,130])assert.throws(()=>aggregate(replace({...last,ok:false,exitCode})),/failed/i);
+  assert.throws(()=>aggregate(replace({...last,frozenDigest:'c'.repeat(64)})),/identity/i);
+  assert.throws(()=>aggregate([...reports,{...last,runAttempt:2,ok:false,exitCode:130}]),/failed/i);
 });
 test('boolean shard success without an enumerated test inventory cannot certify coverage',t=>{
   const {proof,reports}=fixture(t);

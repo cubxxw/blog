@@ -6,6 +6,7 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {createRequire} from 'node:module';
 import {enumerateTestIds,summarizePlaywright,assertTestInventory,collectTestInventory,assertShardEvidence} from './ci-test-inventory.mjs';
+import {browserShardPlan} from './ci-shards.mjs';
 const row=(id,status='expected',results=[{status:'passed',retry:0}])=>({id,file:'fixture.spec.ts',line:1,column:1,title:id,tests:[{projectName:'desktop',status,expectedStatus:status==='skipped'?'skipped':'passed',results}]});
 const raw=(...specs)=>({errors:[],suites:[{specs}]});
 const specs=[{id:'legacy-1',suite:'legacy',shard:'1/2'},{id:'legacy-2',suite:'legacy',shard:'2/2'}];
@@ -28,6 +29,21 @@ test('inventory collection uses the original filter before proving the partition
   const calls=[];
   const result=collectTestInventory({specs,env:{},listTests:args=>{calls.push(args);const shard=args.find(x=>x.startsWith('--shard='));return shard?inventory.shards[shard==='--shard=1/2'?'legacy-1':'legacy-2']:inventory.suites.legacy;}});
   assert.deepEqual(result,inventory);assert.equal(calls.length,3);assert.ok(calls.every(args=>args.includes('Visual Regression')&&args.includes('--list')&&args.includes('--reporter=json')));
+});
+
+test('the real legacy desktop and mobile inventory is covered exactly once by eight isolated runners',()=>{
+  const specs=browserShardPlan({plan:{runSite:true,requiredChecks:['browser']},changeSet:{fullScan:true,files:[],sourceFiles:[]}}).filter(spec=>spec.suite==='legacy');
+  assert.equal(specs.length,8,'legacy capacity must use eight independent runners');
+  assert.ok(specs.every(spec=>spec.workers===1));
+  const inventory=collectTestInventory({specs,env:{...process.env,CI:'true'}});
+  const whole=inventory.suites.legacy,partition=Object.values(inventory.shards).flat().sort();
+  assert.deepEqual([...new Set(whole.map(id=>JSON.parse(id).at(-2)))].sort(),['desktop','mobile']);
+  assert.ok(whole.every(id=>!id.includes('Visual Regression')),'preserve the original non-visual suite selection');
+  assert.deepEqual(partition,whole);
+  assert.equal(new Set(partition).size,whole.length);
+  const last=inventory.shards['legacy-8'];
+  for(const replacement of [last.slice(1),[...last,inventory.shards['legacy-1'][0]],[...last.slice(1),'unknown-test-id']])
+    assert.throws(()=>assertTestInventory({...inventory,shards:{...inventory.shards,'legacy-8':replacement}},specs));
 });
 
 test('real Playwright multi-project JSON lists retain exactly the same identities when partitioned',()=>{

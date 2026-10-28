@@ -1,6 +1,6 @@
 import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
 import {expectRoomAttributes,readRoomObservation,withRoomObservationSession} from '../helpers/room-observation';
-import {hitRoomObject} from '../helpers/room-interaction';
+import {hitRoomObject,projectRoomObject} from '../helpers/room-interaction';
 import {withRoomPointerBatch} from '../helpers/room-pointer';
 import {observeRoomAudio,rainSource,roomAudioSources,readRoomAudioSources} from '../helpers/room-audio';
 import fs from 'node:fs/promises';
@@ -13,7 +13,8 @@ async function app(page:Page,name:string){await page.locator('[data-mac-menu="fi
 async function desk(page:Page){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
  const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
- // The physical canvas hit owns focus; offscreen projection still focuses before turning.
+ // Dismiss the keyboard menu before returning to a physical room target.
+ await speaker.press('Escape');await expect(page.locator('.space-world__canvas')).toBeFocused();
  await hitRoomObject(page,'computer');await expectRoomAttributes(page,{'data-computer-view':'expanded'});
  if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expectRoomAttributes(page,{'data-computer-view':'framed'});}
 }
@@ -33,7 +34,9 @@ test.beforeEach(async({page})=>{
  const records:unknown[]=[];pointerEvidence.set(page,records);
  page.on('console',message=>{const text=message.text(),prefix='__room_native_pointer__';if(!text.startsWith(prefix)||records.length>=80)return;try{records.push(JSON.parse(text.slice(prefix.length)));}catch{records.push({diagnosticError:'invalid pointer observation'});}});
  await page.addInitScript(()=>{
-  localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');
+  // Start this browser continuity journey from a saved paused-music preference;
+  // the real speaker Enter below starts it, independently of autoplay policy.
+  localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:music-enabled:v1','no');
   for(const type of ['pointerdown','pointerup'])document.addEventListener(type,event=>{
    const pointer=event as PointerEvent,room=document.querySelector<HTMLElement>('[data-bear-workspace]');if(!pointer.isTrusted||!room)return;
    const target=pointer.target instanceof Element?pointer.target:null;
@@ -46,6 +49,21 @@ test.beforeEach(async({page})=>{
  });
 });
 test.afterEach(async({page},info)=>{await info.attach('native-room-pointer-evidence',{contentType:'application/json',body:JSON.stringify({events:pointerEvidence.get(page)??[],limits:'passive native dispatch observations, not a raycast or proof that a later pointer-up was not captured'})});pointerEvidence.delete(page);});
+
+test('keyboard object menu Escape restores the physical room target without moving it or stopping sound',async({page},info)=>{
+ await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
+ const speaker=page.locator('[data-room-object="speaker"]'),canvas=page.locator('.space-world__canvas');
+ await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+ const point=await projectRoomObject(page,'computer');
+ const observe=()=>page.evaluate(point=>{const root=document.querySelector<HTMLElement>('[data-bear-workspace]')!,menu=root.querySelector<HTMLElement>('.jiangnan-object-controls')!,canvas=root.querySelector('.space-world__canvas'),hit=document.elementFromPoint(point.x,point.y),active=document.activeElement;return {active:{tag:active?.tagName,class:active?.getAttribute('class'),roomObject:active?.getAttribute('data-room-object')},menuClip:getComputedStyle(menu).clipPath,mode:root.dataset.worldMode,pose:root.dataset.worldPose,sound:root.dataset.roomSound,menuFocused:menu.matches(':focus-within'),menuRect:menu.getBoundingClientRect().toJSON(),hitMenu:Boolean(hit?.closest('.jiangnan-object-controls')),hitObject:hit?.getAttribute('data-room-object'),hitCanvas:hit===canvas};},point);
+ const before=await observe();expect(before.menuFocused).toBe(true);
+ if(page.viewportSize()!.width<=640)expect(before.hitMenu).toBe(true);
+ await speaker.press('Escape');await expect(canvas).toBeFocused();
+ const after=await observe();expect(after.menuFocused).toBe(false);expect(after.mode).toBe(before.mode);expect(after.pose).toBe(before.pose);expect(after.sound).toBe('playing');
+ if(point.inFront&&point.x>8&&point.x<page.viewportSize()!.width-8&&point.y>8&&point.y<page.viewportSize()!.height-8)expect(after.hitCanvas).toBe(true);
+ await info.attach('keyboard-menu-physical-target',{contentType:'application/json',body:JSON.stringify({point,before,after})});
+ await hitRoomObject(page,'computer');await expectRoomAttributes(page,{'data-computer-view':'expanded'});
+});
 
 test('the Mac browser has real project bookmarks, address navigation and site history while sound continues',async({page})=>{
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
