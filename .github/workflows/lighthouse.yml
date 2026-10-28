@@ -47,12 +47,52 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "22"
+          node-version: "22.23.1"
           cache: npm
       - name: Install Node.js dependencies
         run: npm ci
-      - name: Install @lhci/cli
-        run: npm install -g @lhci/cli@0.15.1
+      - name: Install pinned Lighthouse runner
+        run: |
+          npx --no-install playwright install --with-deps --no-shell chromium
+          LHCI_RUNTIME_PREFIX="$RUNNER_TEMP/blog-lhci-0.15.1"
+          npm install --prefix "$LHCI_RUNTIME_PREFIX" --ignore-scripts --no-audit --no-fund @lhci/cli@0.15.1 lighthouse@12.6.1 chrome-launcher@1.2.2
+          export LHCI_RUNTIME_PREFIX
+          node <<'JS'
+          const fs = require('node:fs'), path = require('node:path');
+          const { createHash } = require('node:crypto');
+          const { createRequire } = require('node:module');
+          const { spawnSync } = require('node:child_process');
+          const tools = createRequire(path.join(process.env.LHCI_RUNTIME_PREFIX, 'package.json'));
+          const collectorRequire = createRequire(tools.resolve('@lhci/cli/src/collect/node-runner.js'));
+          const lighthouseEntry = collectorRequire.resolve('lighthouse');
+          const lighthouseRequire = createRequire(lighthouseEntry);
+          const launcher = JSON.parse(fs.readFileSync(path.join(path.dirname(lighthouseRequire.resolve('chrome-launcher')), '..', 'package.json')));
+          const chromePath = require('playwright').chromium.executablePath();
+          const browser = spawnSync(chromePath, ['--version'], { encoding: 'utf8' });
+          const versions = { node: process.versions.node, playwright: require('playwright/package.json').version,
+            cli: tools('@lhci/cli/package.json').version, lighthouse: collectorRequire('lighthouse/package.json').version,
+            chromeLauncher: launcher.version, chrome: (browser.stdout || '').trim() };
+          const expected = { node: '22.23.1', playwright: '1.64.1', cli: '0.15.1', lighthouse: '12.6.1',
+            chromeLauncher: '1.2.2', chrome: 'Google Chrome for Testing 156.0.8078.4' };
+          const bytes = fs.readFileSync('lighthouserc.json'), config = JSON.parse(bytes);
+          const flags = [config.ci.collect.settings.chromeFlags, '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'].join(' ');
+          const verified = browser.status === 0 && launcher.name === 'chrome-launcher' && Object.entries(expected).every(([key, value]) => versions[key] === value);
+          fs.mkdirSync('.lighthouseci', { recursive: true });
+          fs.writeFileSync('.lighthouseci/runner-receipt.json', JSON.stringify({ schema: 'lighthouse-runner/1', verified,
+            collectorSourceSha: process.env.GITHUB_SHA, runId: process.env.GITHUB_RUN_ID, runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            observedAt: new Date().toISOString(), versions, launcherResolvedFrom: 'LHCI NodeRunner -> lighthouse',
+            configSha256: createHash('sha256').update(bytes).digest('hex'),
+            assertionSha256: createHash('sha256').update(JSON.stringify(config.ci.assert)).digest('hex'),
+            urlCount: config.ci.collect.url.length, numberOfRuns: config.ci.collect.numberOfRuns,
+            effectiveChromeFlags: flags, sourceScope: 'Collector checkout; public release consistency is checked separately.' }, null, 2));
+          if (!verified) throw new Error('Lighthouse runner version mismatch; see runner-receipt.json');
+          const environment = { CHROME_PATH: chromePath, LHCI_RUNTIME_CLI: tools.resolve('@lhci/cli/src/cli.js'),
+            LH_DIAG_CLI: path.join(path.dirname(lighthouseEntry), '..', 'cli', 'index.js'), LH_CHROME_FLAGS: flags };
+          for (const [key, value] of Object.entries(environment)) {
+            if (/[\r\n]/.test(value)) throw new Error('Invalid runner environment value');
+            fs.appendFileSync(process.env.GITHUB_ENV, `${key}=${value}\n`);
+          }
+          JS
       - name: Wait for Netlify to publish this commit
         if: github.event_name == 'push' && inputs.release_context_artifact_id == ''
         run: |
@@ -71,20 +111,21 @@ jobs:
         run: node scripts/release-followups.mjs assert-current --context followups/release-context.json --out .lighthouseci/release-check-before.json
       - name: Run Lighthouse CI
         id: measure
-        run: lhci autorun
+        # https://github.com/GoogleChrome/lighthouse-ci/blob/v0.15.1/docs/configuration.md#autorun
+        run: node "$LHCI_RUNTIME_CLI" autorun --collect.chromePath="$CHROME_PATH" --collect.settings.chromeFlags="$LH_CHROME_FLAGS"
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       - name: Capture opt-in first-paint diagnostic traces
         if: github.event_name == 'workflow_dispatch' && inputs.diagnostics == true && steps.measure.outcome == 'success'
         run: |
           mkdir -p .lighthouseci/diagnostics
-          LH_DIAG_CLI="$(node -e 'const path=require("node:path"); console.log(path.join(require.resolve("lighthouse",{paths:[path.join(process.argv[1],"@lhci/cli")]}),"../../cli/index.js"))' "$(npm root -g)")"
+          test -f "$LH_DIAG_CLI"
           node "$LH_DIAG_CLI" --help > .lighthouseci/diagnostics/help.txt
           node -e 'if (!require("node:fs").readFileSync(".lighthouseci/diagnostics/help.txt","utf8").includes("--save-assets")) process.exit(1)'
           for section in growth ai-agent; do
             node "$LH_DIAG_CLI" "https://cubxxw.com/zh/$section/" \
               --save-assets --output=json --output-path=".lighthouseci/diagnostics/zh-$section.json" \
-              --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
+              --chrome-flags="--headless=new $LH_CHROME_FLAGS" \
               --no-enable-error-reporting
           done
           printf '%s\n' "$GITHUB_SHA" > .lighthouseci/diagnostics/source-sha.txt

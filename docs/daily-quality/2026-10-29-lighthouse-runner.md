@@ -1,0 +1,9 @@
+# Lighthouse runner recovery candidate
+
+The controlled Linux [launch-flags comparison](https://github.com/cubxxw/blog/actions/runs/40759976851) used the same immutable preview and full Chrome. Original flags returned no LHR after a page hang at `Runtime.evaluate`. Adding the three explicit SwiftShader flags returned one LHR with no runtime error or run warnings. Its unchanged SEO assertion still failed because the preview is deliberately `noindex`; that failure was retained. Performance 32 remained a warning.
+
+This candidate changes only the Lighthouse runner workflow and this record. Application source matches main `8ed0ef2113d4aaaf5bc34c26a8807f07e61b44bf`. The original 13 URLs, one configured run, every assertion, 45-second load limit, default 30-second protocol limit, product rendering budgets, release guards and daily publisher are unchanged. Runtime tools are pinned and an actual version/config/collector receipt is retained with the existing artifact.
+
+Local validation: 35 existing contract tests, actionlint 1.7.12, YAML and inline-JavaScript checks passed. The real change classifier still requires all seven suites and 20 browser groups; no fast path or gate was added. The current-head CI is required before merge.
+
+Follow-up acceptance requires complete production-site collection and the existing daily issue publication. A candidate-ref run measures the published site using candidate workflow code; its collector SHA is not a deployed application claim. Controller-side published deployment identities must be retained before and after. Main-branch recovery and PSI's 26-slot snapshot remain separate checks.
