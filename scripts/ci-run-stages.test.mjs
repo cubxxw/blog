@@ -68,7 +68,7 @@ for(const contentOnly of [false,true])test(`final aggregation packages ${content
   write('shard-downloads/quality/playwright-results.json',{errors:[],suites:[]});
   assert.notEqual(execute().status,0);assert.equal(fs.existsSync(path.join(bundle,'manifest.json')),false);
   write('shard-downloads/quality/playwright-results.json',raw.quality);
-  fs.unlinkSync(path.join(dir,`shard-downloads/${contentOnly?'quality':'legacy-8'}/shard-report.json`));
+  fs.unlinkSync(path.join(dir,`shard-downloads/${contentOnly?'quality':'legacy-16'}/shard-report.json`));
   assert.notEqual(execute().status,0);assert.equal(fs.existsSync(path.join(bundle,'manifest.json')),false);
   assert.equal(fs.existsSync(path.join(dir,'site.tar.gz')),false);
 });

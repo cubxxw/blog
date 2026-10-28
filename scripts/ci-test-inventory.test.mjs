@@ -31,9 +31,9 @@ test('inventory collection uses the original filter before proving the partition
   assert.deepEqual(result,inventory);assert.equal(calls.length,3);assert.ok(calls.every(args=>args.includes('Visual Regression')&&args.includes('--list')&&args.includes('--reporter=json')));
 });
 
-test('the real legacy desktop and mobile inventory is covered exactly once by eight isolated runners',()=>{
+test('the real legacy desktop and mobile inventory is covered exactly once by sixteen isolated runners',()=>{
   const specs=browserShardPlan({plan:{runSite:true,requiredChecks:['browser']},changeSet:{fullScan:true,files:[],sourceFiles:[]}}).filter(spec=>spec.suite==='legacy');
-  assert.equal(specs.length,8,'legacy capacity must use eight independent runners');
+  assert.equal(specs.length,16,'legacy capacity must use sixteen independent runners');
   assert.ok(specs.every(spec=>spec.workers===1));
   const inventory=collectTestInventory({specs,env:{...process.env,CI:'true'}});
   const whole=inventory.suites.legacy,partition=Object.values(inventory.shards).flat().sort();
@@ -41,9 +41,9 @@ test('the real legacy desktop and mobile inventory is covered exactly once by ei
   assert.ok(whole.every(id=>!id.includes('Visual Regression')),'preserve the original non-visual suite selection');
   assert.deepEqual(partition,whole);
   assert.equal(new Set(partition).size,whole.length);
-  const last=inventory.shards['legacy-8'];
+  const last=inventory.shards['legacy-16'];
   for(const replacement of [last.slice(1),[...last,inventory.shards['legacy-1'][0]],[...last.slice(1),'unknown-test-id']])
-    assert.throws(()=>assertTestInventory({...inventory,shards:{...inventory.shards,'legacy-8':replacement}},specs));
+    assert.throws(()=>assertTestInventory({...inventory,shards:{...inventory.shards,'legacy-16':replacement}},specs));
 });
 
 test('real Playwright multi-project JSON lists retain exactly the same identities when partitioned',()=>{
