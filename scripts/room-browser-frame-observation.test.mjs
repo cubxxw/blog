@@ -38,6 +38,7 @@ function fixture(options={}){
   function session(name,document){
     const objects=new Map(),context=vm.createContext({document,HTMLIFrameElement,HTMLTextAreaElement,HTMLButtonElement});
     const result=Object.assign(new EventEmitter(),{name,objects,releases:0,detaches:0,targetId:'child-id',delay,closed:false});sessions.push(result);
+    result.replaceDocument=value=>{context.document=value;};
     result.send=async(method,params={})=>{
       if(result.closed)throw Error('Controlled target closed');
       commands.push({name,method,params});
@@ -46,7 +47,7 @@ function fixture(options={}){
         try{
           let value;
           if(method==='Runtime.evaluate')value=vm.runInContext(params.expression,context);
-          else {context.receiver=objects.get(params.objectId);value=vm.runInContext('('+params.functionDeclaration+').call(receiver)',context);}
+          else {if(!objects.has(params.objectId))throw Error('Cannot find object in the replaced execution context');context.receiver=objects.get(params.objectId);value=vm.runInContext('('+params.functionDeclaration+').call(receiver)',context);}
           const type=typeof value;
           if(params.returnByValue)reply={result:{type,value}};
           else {const objectId=name+'-'+objects.size;objects.set(objectId,value);reply={result:{type,objectId,...(value instanceof Element?{subtype:'node'}:{})}};}
@@ -141,13 +142,32 @@ test('handle disposal shares close deadline and cannot become a late successful 
   await f.advance(10);await assert.rejects(f.settle(f.observer.close()),/5000ms/);assert.equal(f.handle.disposals,1);
 });
 
-test('target navigation during contentFrame binding fails while independent sibling navigation stays legal',async()=>{
+test('target detach during contentFrame binding fails while independent sibling navigation stays legal',async()=>{
   for(const targetChanged of [true,false]){
     const f=fixture({contentFrameDelay:1000}),sibling={};f.page.children=[sibling,f.child];
-    f.schedule(()=>f.page.emit('framenavigated',targetChanged?f.child:sibling),100);
+    f.schedule(()=>f.page.emit(targetChanged?'framedetached':'framenavigated',targetChanged?f.child:sibling),100);
     if(targetChanged)await assert.rejects(f.settle(f.observer.bind()));else {await f.settle(f.observer.bind());await f.settle(f.observer.observe());}
     await f.settle(f.observer.close());assert.equal(f.handle.disposals,1);
   }
+});
+
+for(const target of ['main','child'])test('same-document '+target+' history navigation keeps the bound live page readable',async()=>{
+  const f=fixture();await f.settle(f.observer.bind());f.page.emit('framenavigated',f[target]);
+  f.note.value='Still the original document';f.button.textContent='Current live button';
+  assert.deepEqual(JSON.parse(JSON.stringify(await f.settle(f.observer.observe()))),{textareaValue:'Still the original document',buttonText:'Current live button'});
+  await f.settle(f.observer.close());assert.equal(f.handle.contentCalls,1);assert.equal(f.handle.disposals,1);
+});
+
+for(const target of ['main','child'])test('same-document '+target+' history navigation during binding is not an extra failure condition',async()=>{
+  const f=fixture({contentFrameDelay:1000});f.schedule(()=>f.page.emit('framenavigated',f[target]),100);
+  await f.settle(f.observer.bind());assert.equal((await f.settle(f.observer.observe())).buttonText,'Kept open');await f.settle(f.observer.close());
+});
+
+for(const target of ['parent','child'])test('a new '+target+' Document fails even if old remote objects and exact field values remain',async()=>{
+  const f=fixture();await f.settle(f.observer.bind());
+  const oldDocument=target==='parent'?f.parentDocument:f.childDocument;
+  f[target+'Session'].replaceDocument({querySelectorAll:selector=>oldDocument.querySelectorAll(selector)});
+  await assert.rejects(f.settle(f.observer.observe()));await f.settle(f.observer.close());
 });
 
 for(const [name,breakIdentity] of [
@@ -164,9 +184,10 @@ for(const [name,breakIdentity] of [
   ['duplicate textarea',f=>{f.childDocument.notes=[f.note,f.note];}],
   ['missing button',f=>{f.childDocument.buttons=[];}],
   ['duplicate button',f=>{f.childDocument.buttons=[f.button,f.button];}],
-  ['parent navigation',f=>f.page.emit('framenavigated',f.main)],
-  ['child navigation',f=>f.page.emit('framenavigated',f.child)],
+  ['new parent document revokes its remote objects',f=>{f.parentSession.objects.clear();f.page.emit('framenavigated',f.main);}],
+  ['new child document revokes its remote objects',f=>{f.childSession.objects.clear();f.page.emit('framenavigated',f.child);}],
   ['Frame detach event',f=>f.page.emit('framedetached',f.child)],
+  ['main Frame detach event',f=>f.page.emit('framedetached',f.main)],
   ['parent close',f=>f.page.emit('close')],
 ])test(name+' permanently rejects a checkpoint instead of rebinding',async()=>{
   const f=fixture();await f.settle(f.observer.bind());breakIdentity(f);

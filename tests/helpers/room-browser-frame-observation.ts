@@ -84,7 +84,9 @@ export function createRoomBrowserFrameObservation(page:Page):RoomBrowserFrameObs
   let main:Frame,frame:Frame,parent:CDPSession,child:CDPSession,iframeObject:string,fieldsObject:string,frameId:string;
   let bound=false,busy=false,closing=false,listening=false,failed=false,invalid:unknown,closePromise:Promise<void>|undefined;
   const fail=(cause:unknown)=>{if(!failed){failed=true;invalid=cause??new Error('Frame observation protocol rejected');}return invalid;};
-  const changed=(candidate:Frame)=>{changedFrames.add(candidate);if(candidate===main||candidate===frame)fail(new Error('Frame observation window navigated or Frame detached'));};
+  // Public framenavigated includes same-document History API changes. New
+  // documents still fail the held DOM/remote-object checks; detach is final.
+  const changed=(candidate:Frame)=>{changedFrames.add(candidate);if(candidate===main||candidate===frame)fail(new Error('Frame observation Frame detached'));};
   const pageClosed=()=>{fail(new Error('Frame observation parent closed'));};
   const sameFrame=()=>{
     const children=main.childFrames();
@@ -142,7 +144,7 @@ export function createRoomBrowserFrameObservation(page:Page):RoomBrowserFrameObs
       owners.set(page,token);
       if(page.context().browser()?.browserType().name()!=='chromium')throw new Error('Frame observation requires Chromium');
       main=page.mainFrame();
-      page.on('framenavigated',changed);page.on('framedetached',changed);page.on('close',pageClosed);listening=true;
+      page.on('framedetached',changed);page.on('close',pageClosed);listening=true;
       parent=await step(()=>attach(page));held.add(parent);
       iframeObject=remoteObject(await step(()=>parent.send('Runtime.evaluate',{expression:'('+captureIframe.toString()+')()',objectGroup:group,throwOnSideEffect:true})),true);
       frameId=ownerFrameId(await step(()=>parent.send('DOM.describeNode',{objectId:iframeObject,depth:0})));
@@ -168,7 +170,7 @@ export function createRoomBrowserFrameObservation(page:Page):RoomBrowserFrameObs
       if(closePromise)return closePromise;
       const deadline=performance.now()+5000;closing=true;
       closePromise=budget('close',deadline,async step=>{
-        if(listening){page.off('framenavigated',changed);page.off('framedetached',changed);page.off('close',pageClosed);listening=false;}
+        if(listening){page.off('framedetached',changed);page.off('close',pageClosed);listening=false;}
         await step(()=>Promise.allSettled([...attaches,...handleRequests]));
         const results=await step(()=>Promise.allSettled([...[...sessions].map(async session=>{
           if(ended.has(session))return;
