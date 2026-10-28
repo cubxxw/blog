@@ -48,7 +48,7 @@ preflight绑定源码、run、producer artifact ID和frozen proof摘要，前后
 
 prepare 在同一冻结产物上按原配置、项目和过滤条件执行 Playwright `--list --reporter=json`，同时保存整套清单及各分片清单到 `frozen.json`。每套分片必须恰好覆盖整套清单一次，不能缺项、重复或额外混入测试。
 
-legacy 通过同一份 `browserShardPlan` 分成 8 个独立 runner，每片 1 个 worker。继续使用原 desktop/mobile 项目及 `--grep-invert "Visual Regression"`。prepare 清单、执行矩阵和最终聚合从该计划派生，仍须精确覆盖整套测试。每个 job 保持 120 分钟上限，执行矩阵保持 `fail-fast: false`。
+legacy 通过同一份 `browserShardPlan` 分成 16 个独立 runner，每片 1 个 worker。继续使用原 desktop/mobile 项目及 `--grep-invert "Visual Regression"`。prepare 清单、执行矩阵和最终聚合从该计划派生，仍须精确覆盖整套测试。每个 job 保持 120 分钟上限，执行矩阵保持 `fail-fast: false`。
 
 每个消费者保存 `playwright-results.json` 原始报告和从该报告生成的 evidence；最终聚合重新读取原始报告，与包装 evidence 和冻结清单核对。空结果、无实际执行的整片、缺测试、重复身份、全片跳过、报告级错误及未完成测试均阻止认证。首次通过、flaky、跳过、预期失败和实际重试次数分别统计；既有个别跳过仍单独记录，不计为通过，也不增加豁免。
 

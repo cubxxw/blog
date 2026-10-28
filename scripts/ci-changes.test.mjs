@@ -99,6 +99,17 @@ test('publication input digest is stable across bookkeeping but changes with art
   r.write('content/en/engineering/posts/a.md','b');const third=r.commit();
   assert.notEqual(publicationInputDigest({repoRoot:r.root,sha:first}),publicationInputDigest({repoRoot:r.root,sha:third}));
 });
+test('compiler configuration changes alter publication identity and require full verification', async t=>{
+  const r=repository(t);
+  r.write('tsconfig.json','{"compilerOptions":{"strict":true}}');const base=r.commit();
+  r.write('tsconfig.json','{"compilerOptions":{"strict":false}}');const head=r.commit();
+  assert.notEqual(head,base);
+  assert.notEqual(publicationInputDigest({repoRoot:r.root,sha:base}),publicationInputDigest({repoRoot:r.root,sha:head}));
+  const changes=await resolveChangeSet({repoRoot:r.root,eventPath:r.event({before:base}),headSha:head});
+  assert.equal(changes.sourceSha,head);
+  assert.equal(changes.publish,true);assert.equal(changes.fullScan,true);
+  assert.deepEqual(changes.suites,ALL_SUITES);
+});
 test('ambiguous references and malformed contracts are rejected',async t=>{
   const r=repository(t);r.write('README.md','a');r.commit();
   await assert.rejects(resolveChangeSet({repoRoot:r.root,eventPath:r.event({}),headSha:'--help'}),/SHA/);

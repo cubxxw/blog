@@ -606,6 +606,62 @@ test('PSI HTTP status is recorded as the API status and never as the origin stat
 
 const SYNTH_KEY = 'sk-synthetic-9f8e7d6c5b4a'; // arbitrary, noncredential
 
+test('HTTP failure preserves closed provider codes without its message or origin-status inference', async () => {
+  const entry = await measureOne({ url: 'https://cubxxw.com/projects/', strategy: 'mobile' }, {
+    apiKey: SYNTH_KEY,
+    fetchImpl: async () => errorResponse(400, JSON.stringify({ error: {
+      status: 'INVALID_ARGUMENT',
+      message: `Lighthouse returned error: PAGE_HUNG. ${SYNTH_KEY}`,
+      errors: [{ domain: 'lighthouse', reason: 'lighthouseError', message: SYNTH_KEY, location: SYNTH_KEY }],
+    } })),
+    sleep: async () => {},
+  });
+  const codes = { status: 'INVALID_ARGUMENT', reasons: ['lighthouseError'], runtimeErrorCode: 'PAGE_HUNG' };
+  assert.deepEqual(entry.errorMeta.providerError, codes);
+  assert.deepEqual(entry.attemptLog[0].providerError, codes);
+  assert.equal(entry.finalStatus, 'failed');
+  assert.equal(entry.attempts, 1); // a diagnostic never changes the HTTP retry policy
+  assert.equal(entry.psiHttpStatus, 400);
+  assert.equal(entry.originHttpStatus, null);
+  assert.equal(entry.lighthouseRuntimeError, null); // not a successful PSI Lighthouse-result payload
+  assert.doesNotMatch(JSON.stringify(entry), new RegExp(SYNTH_KEY));
+  assert.doesNotMatch(JSON.stringify(entry), /Lighthouse returned error|location|message/);
+});
+
+test('provider diagnostics preserve separate attempt codes while leaving retries bounded', async () => {
+  let calls = 0;
+  const sleeps = [];
+  const entry = await measureOne({ url: 'https://cubxxw.com/zh/about/', strategy: 'mobile' }, {
+    fetchImpl: async () => ++calls === 1
+      ? errorResponse(500, JSON.stringify({ error: { status: 'INTERNAL', errors: [{ reason: 'backendError' }] } }))
+      : errorResponse(400, JSON.stringify({ error: { status: 'INVALID_ARGUMENT', errors: [{ reason: 'invalidParameter' }] } })),
+    sleep: async (ms) => sleeps.push(ms),
+  });
+  assert.equal(calls, 2);
+  assert.deepEqual(sleeps, [1000]);
+  assert.deepEqual(entry.attemptLog.map((a) => a.providerError.status), ['INTERNAL', 'INVALID_ARGUMENT']);
+  assert.deepEqual(entry.errorMeta.providerError.reasons, ['invalidParameter']);
+  assert.equal(entry.finalStatus, 'failed');
+});
+
+test('unknown, malformed and oversized provider failure bodies fail closed before JSON parsing', async () => {
+  const unknown = { status: 'unknown', reasons: ['unknown'], runtimeErrorCode: 'unknown' };
+  for (const body of [
+    JSON.stringify({ error: { status: SYNTH_KEY, message: `Lighthouse returned error: PAGE_HUNG. ${SYNTH_KEY}`, errors: [{ domain: 'lighthouse', reason: SYNTH_KEY }] } }),
+    JSON.stringify({ error: { status: 'INVALID_ARGUMENT', errors: [{ reason: 'invalidParameter' }], padding: 'x'.repeat(16385) } }),
+    JSON.stringify({ error: { status: 'INVALID_ARGUMENT', errors: [{ reason: 'invalidParameter' }], padding: '中'.repeat(6000) } }),
+    '{', 'null', '[]', JSON.stringify({ error: SYNTH_KEY }),
+  ]) {
+    const entry = await measureOne({ url: 'u', strategy: 'mobile' }, {
+      fetchImpl: async () => errorResponse(400, body), sleep: async () => {},
+    });
+    assert.deepEqual(entry.errorMeta.providerError, unknown);
+    assert.equal(entry.attempts, 1);
+    assert.equal(entry.finalStatus, 'failed');
+    assert.doesNotMatch(JSON.stringify(entry), new RegExp(SYNTH_KEY));
+  }
+});
+
 const FAILURE_FETCHERS = {
   http: async () => errorResponse(403, JSON.stringify({ api_key: SYNTH_KEY, message: 'fixture failure body', refresh_token: SYNTH_KEY })),
   transport: async () => { throw new Error(`synthetic transport failure ${SYNTH_KEY}`); },
