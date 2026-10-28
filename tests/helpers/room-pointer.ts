@@ -1,4 +1,4 @@
-import type {Page,CDPSession} from '@playwright/test';
+import type {Page,CDPSession,TestInfo} from '@playwright/test';
 export type RoomPoint={x:number;y:number};
 export type RoomPointer={click(point:RoomPoint):Promise<void>;drag(from:RoomPoint,to:RoomPoint):Promise<void>;focusCanvas():Promise<void>};
 const owners=new WeakMap<Page,{fail:(error:unknown)=>void}>();
@@ -15,7 +15,7 @@ function point(value:RoomPoint):RoomPoint{
 // Only consecutive helper-owned, modifier-free mouse input belongs here. Keep
 // direct PW mouse/touch input outside. Native events remain real; only the
 // redundant per-object PW position sync is deferred to this owner's finally.
-export async function withRoomPointerBatch<T>(page:Page,journey:(pointer:RoomPointer)=>Promise<T>):Promise<T>{
+export async function withRoomPointerBatch<T>(page:Page,journey:(pointer:RoomPointer)=>Promise<T>,info?:Pick<TestInfo,'status'>):Promise<T>{
  const prior=owners.get(page);
  if(prior){const error=new Error('Room pointer batch already active');prior.fail(error);throw error;}
  if(page.isClosed()||page.context().browser()?.browserType().name()!=='chromium')throw new Error('Room pointer batch requires an open Chromium page');
@@ -24,8 +24,10 @@ export async function withRoomPointerBatch<T>(page:Page,journey:(pointer:RoomPoi
  owners.set(page,{fail});
  let closing=false,busy=false,pressed=false,uncertain=false,cleanupFailed=false,quarantining=false;
  let last:RoomPoint|undefined,session:CDPSession|undefined,attaching:Promise<CDPSession>|undefined,active:Promise<void>|undefined,detaching:Promise<void>|undefined;
+ const testEnded=()=>info?.status==='timedOut'||info?.status==='interrupted';
  const guard=()=>{
   if(errors.length)throw errors[0];
+  if(testEnded())throw new Error('Room pointer cannot start another gesture after '+info?.status);
   if(closing||page.isClosed())throw new Error('Room pointer batch is closed');
  };
  const detach=(target:CDPSession)=>{
@@ -81,7 +83,7 @@ export async function withRoomPointerBatch<T>(page:Page,journey:(pointer:RoomPoi
  page.on('close',onClose);
  let result!:T;
  try{
-  result=await journey(pointer);
+  guard();result=await journey(pointer);guard();
   if(busy)fail(new Error('Room pointer batch ended with pending input'));
  }catch(error){fail(error);}
  finally{
@@ -98,7 +100,7 @@ export async function withRoomPointerBatch<T>(page:Page,journey:(pointer:RoomPoi
    await bounded(session!.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:last!.x,y:last!.y,button:'left',buttons:0,modifiers:0,clickCount:1}),'release');pressed=false;
   });
   if(session)await cleanup(()=>detach(session!));
-  if(!uncertain&&!cleanupFailed&&!page.isClosed()&&last)await cleanup(()=>bounded(page.mouse.move(last!.x,last!.y),'position sync'));
+  if(!uncertain&&!cleanupFailed&&!page.isClosed()&&!testEnded()&&last)await cleanup(()=>bounded(page.mouse.move(last!.x,last!.y),'position sync'));
   // Unknown dispatch completion cannot be made safe by pretending it did not
   // occur. Stop this isolated test page; do not allow a later step to reuse it.
   if((uncertain||cleanupFailed)&&!page.isClosed()){
