@@ -1,4 +1,4 @@
-name: Browser trace cost comparison diagnostic only
+name: Browser DOM snapshot cost diagnostic only
 on:
   workflow_dispatch:
     inputs:
@@ -34,7 +34,7 @@ jobs:
           github-token: ${{ github.token }}
           path: tests/.artifacts/trace-input
           merge-multiple: true
-      - name: Alternate full and DOM trace on one runner with the same physical journey
+      - name: Alternate full and video-only trace on one runner with the same physical journey
         env:
           DIAG_SOURCE: ${{ inputs.source_sha }}
           DIAG_RUN: ${{ inputs.run_id }}
@@ -58,11 +58,11 @@ jobs:
           const original="trace: { mode: 'retain-on-failure', screenshots: true, snapshots: true, sources: true },";
           assert.equal(before.split(original).length,2);
           const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl),runs=[];
-          const variants=['full','dom','dom','full','full','dom'];
+          const variants=['full','no-dom','no-dom','full','full','no-dom'];
           try {
             for(const [index,variant]of variants.entries()){
               const here=path.join(output,String(index+1)+'-'+variant);fs.mkdirSync(here,{recursive:true});
-              const config=before.replace(original,`trace: { mode: 'on', screenshots: ${variant==='full'}, snapshots: true, sources: true },`);
+              const config=before.replace(original,`trace: { mode: 'on', screenshots: true, snapshots: ${variant==='full'}, sources: true },`);
               fs.writeFileSync(file,config);fs.writeFileSync(path.join(here,'actual-config.ts'),config);
               const started=Date.now();console.log('TRACE_COMPARE_BEGIN',JSON.stringify({index:index+1,variant,source,at:new Date().toISOString()}));
               const result=spawnSync(process.execPath,['node_modules/@playwright/test/cli.js','test','tests/e2e/space-browser.spec.ts','--project=desktop','--workers=1','--retries=0','--grep=continuous sound \\(native\\)$','--reporter=list,json,html'],{stdio:'inherit',env:{...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,SITE_TEST_RESULTS:path.join(here,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(here,'html'),PLAYWRIGHT_HTML_OPEN:'never',PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(here,'playwright-results.json')}});
