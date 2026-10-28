@@ -7,6 +7,14 @@ import YAML from 'yaml';
 import { compileExecutionPlan } from './ci-run.mjs';
 import { requiredJobsPassed } from './lib/ci-contracts.mjs';
 const changes={schema:'blog-change-set/1',sourceSha:'a'.repeat(40),baseSha:null,fullScan:false,files:[],sourceFiles:[],suites:['workflow'],publish:false,reason:'maintenance'};
+test('workflow host checks include retained browser frame protocol regressions',()=>{
+  const source=fs.readFileSync('scripts/ci-run.mjs','utf8');
+  const lists=source.match(/const tests=(\{[\s\S]*?\n\});/)?.[1];assert.ok(lists);
+  const {workflow}=runInNewContext('('+lists+')');
+  const regression='scripts/room-browser-frame-observation.test.mjs';
+  assert.equal(workflow.filter(file=>file===regression).length,1);
+  assert.ok(fs.existsSync(regression));
+});
 test('documentation does not build or publish while shadow cannot publish production',()=>{
   assert.deepEqual(compileExecutionPlan({changeSet:changes,mode:'shadow'}),{requiredChecks:['workflow'],runSite:false,production:false});
   const article={...changes,publish:true,suites:['source','output','browser']};
