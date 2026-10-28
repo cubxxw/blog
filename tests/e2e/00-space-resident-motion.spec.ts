@@ -12,7 +12,8 @@ const root='[data-bear-workspace]';
 // observations can return. Keep action/network/source traces and failure
 // screenshots while preserving every startup, motion and journey deadline.
 // Explicit A/B diagnostics retain the capture mode selected by their config.
-if(!process.env.ROOM_DIAG_VARIANT)test.use({trace:{mode:'retain-on-failure',snapshots:false,screenshots:false,sources:true},screenshot:'only-on-failure'});
+if(process.env.RESIDENT_TRACE_DIAGNOSTIC==='off')test.use({trace:'off',screenshot:'only-on-failure'});
+else if(!process.env.ROOM_DIAG_VARIANT)test.use({trace:{mode:'retain-on-failure',snapshots:false,screenshots:false,sources:true},screenshot:'only-on-failure'});
   test.afterEach(async({page},info)=>{
     if(info.status===info.expectedStatus)return;
     let timer:ReturnType<typeof setTimeout>|undefined;
@@ -30,10 +31,12 @@ if(!process.env.ROOM_DIAG_VARIANT)test.use({trace:{mode:'retain-on-failure',snap
   });
 
 test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and the workspace',async({page})=>withRoomObservationSession(page,async()=>{
+  const driverStart=performance.now();page.on('console',message=>{if(message.text().startsWith('[resident-phase]'))console.log('[resident-driver '+Math.round(performance.now()-driverStart)+'ms] '+message.text());});
   await reserveWorldJourney(page);
   await page.addInitScript(()=>{
     const observation={status:'startup',initialPose:null as string|null,initialTime:null as number|null,changedPose:null as string|null,changedTime:null as number|null,bootCompleteAt:null as number|null,renderedRoamAt:null as number|null,readinessError:null as string|null};
     (window as unknown as {__catMotionObservation:typeof observation}).__catMotionObservation=observation;
+    const emit=(phase:string)=>console.debug('[resident-phase] '+JSON.stringify({phase,at:performance.now(),...observation}));emit('init');
     // Passive timestamps retain the rendered-mode5s stage even when one
     // native startup observation replaces several expensive protocol reads.
     let readinessRoot:Element|null=null;
@@ -44,8 +47,8 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
       const el=roots[0];if(readinessRoot&&el!==readinessRoot){observation.readinessError='root replaced';stopReadiness();return;}
       readinessRoot=el;(window as unknown as {__catReadinessRoot:Element}).__catReadinessRoot=el;
       const now=performance.now();
-      if(el.getAttribute('data-boot-state')==='complete'&&observation.bootCompleteAt===null)observation.bootCompleteAt=now;
-      if(observation.bootCompleteAt!==null&&el.getAttribute('data-world-rendered-mode')==='roam'&&observation.renderedRoamAt===null)observation.renderedRoamAt=now;
+      if(el.getAttribute('data-boot-state')==='complete'&&observation.bootCompleteAt===null){observation.bootCompleteAt=now;emit('boot-complete');}
+      if(observation.bootCompleteAt!==null&&el.getAttribute('data-world-rendered-mode')==='roam'&&observation.renderedRoamAt===null){observation.renderedRoamAt=now;emit('rendered-roam');}
       if(observation.bootCompleteAt!==null&&observation.renderedRoamAt!==null)stopReadiness();
     };
     const readinessObserver=new MutationObserver(sampleReadiness);
@@ -54,7 +57,7 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
     const startupDeadline=performance.now()+60000;
     let target:Element|null=null,done=false,timer:ReturnType<typeof setTimeout>;
     const finish=(status:string)=>{
-      if(done)return;done=true;observation.status=status;
+      if(done)return;done=true;observation.status=status;emit('finish-'+status);
       observer.disconnect();clearTimeout(timer);removeEventListener('pagehide',onPageHide);
     };
     const onPageHide=()=>finish('pagehide');
@@ -69,7 +72,7 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
       const loaded=target.getAttribute('data-cat-loaded'),active=target.getAttribute('data-cat-active'),pose=target.getAttribute('data-cat-pose');
       if(observation.initialTime===null){
         if(loaded!=='true'||active!=='true'||!pose)return;
-        observation.initialPose=pose;observation.initialTime=now;observation.status='watching';
+        observation.initialPose=pose;observation.initialTime=now;observation.status='watching';emit('initial-pose');
         clearTimeout(timer);timer=setTimeout(()=>finish('motion-timeout'),12000);return;
       }
       if(now-observation.initialTime>12000){finish('motion-timeout');return;}
@@ -85,6 +88,7 @@ test('the resident wanders but pauses in quiet mode, dialogs, reduced motion and
   await page.goto('/zh/projects/');
   type MotionObservation={status:string;initialPose:string;initialTime:number;changedPose:string;changedTime:number;bootCompleteAt:number|null;renderedRoamAt:number|null;readinessError:string|null};
   const movement=await readRoomObservation(page,async()=>{
+    console.debug('[resident-phase] '+JSON.stringify({phase:'runtime-enter',at:performance.now()}));
     const deadline=performance.now()+30000;
     for(;;){
       if(performance.now()>deadline)throw new Error('Resident startup exceeded30000ms');

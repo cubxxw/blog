@@ -1,80 +1,27 @@
-name: Recheck an existing site artifact
-
+name: Resident observation diagnostic only
 on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: Original verified main workflow run ID
         required: true
         type: string
       artifact_id:
-        description: Immutable deployment artifact ID from that run
         required: true
         type: string
       source_sha:
-        description: Full source commit of that artifact
         required: true
         type: string
-      room_diagnostics:
-        description: Compare frozen room inputs and trace screencast cost; never certifies a release
-        type: boolean
-        default: false
-
 permissions:
   contents: read
   actions: read
-
 jobs:
-  recheck:
-    if: inputs.room_diagnostics != true
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          ref: ${{ inputs.source_sha }}
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: ./.github/actions/setup-blog
-      - uses: actions/download-artifact@v8
-        with:
-          artifact-ids: ${{ inputs.artifact_id }}
-          run-id: ${{ inputs.run_id }}
-          github-token: ${{ github.token }}
-          path: tests/.artifacts/recheck
-          merge-multiple: true
-      - name: Check frozen production pages only
-        env:
-          RECHECK_SHA: ${{ inputs.source_sha }}
-        run: |
-          node scripts/ci-changes.mjs --head "$RECHECK_SHA" --out tests/.artifacts/recheck-changes.json
-          node scripts/site-verify.mjs --public-dir tests/.artifacts/recheck/public --page-map tests/.artifacts/recheck/page-map.json --change-set tests/.artifacts/recheck-changes.json --report-dir tests/.artifacts/recheck-report
-      - uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: site-recheck-${{ github.run_id }}
-          path: tests/.artifacts/recheck-report/
-          retention-days: 30
-
-  room-diagnostics:
-    if: inputs.room_diagnostics == true
+  pair:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - variant: control-main-full
-            run: '40306707260'
-            artifact: '12642114130'
-            source: af6c4bb4c63f70d72d60c2031535d7022cb83541
-          - variant: candidate-full
-            run: ''
-            artifact: ''
-            source: ''
-          - variant: candidate-dom-trace
-            run: ''
-            artifact: ''
-            source: ''
+        variant: [current, 'off']
     steps:
       - uses: actions/checkout@v7
         with:
@@ -85,24 +32,24 @@ jobs:
           browsers: chromium
       - uses: actions/download-artifact@v8
         with:
-          artifact-ids: ${{ matrix.artifact || inputs.artifact_id }}
-          run-id: ${{ matrix.run || inputs.run_id }}
+          artifact-ids: ${{ inputs.artifact_id }}
+          run-id: ${{ inputs.run_id }}
           github-token: ${{ github.token }}
-          path: tests/.artifacts/room-diagnostic-input
+          path: tests/.artifacts/resident-input
           merge-multiple: true
-      - name: Compare original room paths on immutable inputs
+      - name: Two fresh-browser observations with original budgets
         env:
-          ROOM_DIAG_VARIANT: ${{ matrix.variant }}
-          ROOM_DIAG_RUN: ${{ matrix.run || inputs.run_id }}
-          ROOM_DIAG_ARTIFACT: ${{ matrix.artifact || inputs.artifact_id }}
-          ROOM_DIAG_SOURCE: ${{ matrix.source || inputs.source_sha }}
           GH_TOKEN: ${{ github.token }}
-        run: node scripts/ci-room-diagnostic.mjs
+          RESIDENT_TRACE_DIAGNOSTIC: ${{ matrix.variant }}
+          DIAG_SOURCE: ${{ inputs.source_sha }}
+          DIAG_RUN: ${{ inputs.run_id }}
+          DIAG_ARTIFACT: ${{ inputs.artifact_id }}
+        run: node scripts/diagnose-resident-pair.mjs
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: room-diagnostic-${{ github.run_id }}-${{ matrix.variant }}
-          path: tests/.artifacts/room-diagnostic/
+          name: resident-pair-${{ github.run_id }}-${{ matrix.variant }}
+          path: tests/.artifacts/resident-pair/
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
