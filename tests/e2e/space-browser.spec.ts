@@ -6,13 +6,18 @@ import {observeRoomAudio,rainSource,roomAudioSources,readRoomAudioSources} from 
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+test.use({channel:process.env.BEAR_BROWSER_CHANNEL||'chromium',reducedMotion:'reduce',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const pointerEvidence=new WeakMap<Page,unknown[]>();
 async function app(page:Page,name:string){await page.locator('[data-mac-menu="file"]').click();await page.locator(`[data-mac-panel="file"] [data-open="${name}"]`).click();}
 async function desk(page:Page){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
  const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+ // Complete the real keyboard interaction before aiming through the room.
+ // A focused object menu covers the monitor on mobile; never click through it.
+ const canvas=page.locator('.space-world__canvas'),poseBeforeHandoff=await root(page).getAttribute('data-world-pose');
+ for(let step=0;step<32&&!await canvas.evaluate(el=>document.activeElement===el);step++)await page.keyboard.press('Shift+Tab');
+ await expect(canvas).toBeFocused();expect(await root(page).getAttribute('data-world-pose')).toBe(poseBeforeHandoff);
  // The physical canvas hit owns focus; offscreen projection still focuses before turning.
  await hitRoomObject(page,'computer');await expectRoomAttributes(page,{'data-computer-view':'expanded'});
  if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expectRoomAttributes(page,{'data-computer-view':'framed'});}
