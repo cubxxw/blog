@@ -32,19 +32,19 @@ cover:
 
 ## 两款产品，把结构化的成本放在不同地方
 
-2026 年 3 月 31 日的拆分公告解释了这个转向。团队承认，原来的 Tana 功能强，却难学，也难让整个团队用起来；新产品为协作重新搭基础。这是厂商对自身取舍的解释，还不足以证明新版已经降低了用户的实际学习时间。[The next chapter for Tana](https://outliner.tana.inc/blog/the-next-chapter-for-tana)
+2026 年 3 月 31 日的拆分公告解释了这个转向。团队承认，原来的 Tana 功能强，却难学，也难让整个团队用起来。新产品为协作重新搭基础。这是厂商对自身取舍的解释，还不足以证明新版已经降低了用户的实际学习时间。[The next chapter for Tana](https://outliner.tana.inc/blog/the-next-chapter-for-tana)
 
 到本次核对时，新 Tana 已有下载和套餐页面，更新日志最新一条日期为 10 月 8 日；Outliner 的最新记录则是 10 月 12 日。旧产品仍在维护，不能把拆分理解为立即退役，也不能拿早期测试期的状态描述今天。[Tana 更新日志](https://tana.inc/changelog)、[Outliner 更新日志](https://outliner.tana.inc/changelog)、[Tana 定价](https://tana.inc/pricing)
 
-我的理解是，这次分工触及了一个很实际的问题：谁来把杂乱的信息整理成可以继续处理的对象？Outliner 让使用者直接掌握建模工具。新版尝试让 AI 分担一部分整理工作，人再面对提案和执行结果。开发者从中可以借鉴的，是这笔成本怎样分配；是否值得付出，还得回到具体任务。
+我的理解是，这次分工触及了一个很实际的问题：谁来把杂乱的信息整理成可以继续处理的对象？Outliner 让使用者直接掌握建模工具。新版尝试让 AI 分担一部分整理工作，人再面对提案和执行结果。开发者从中可以借鉴的，是这笔成本怎样分配。是否值得付出，还得回到具体任务。
 
 ![Tana Outliner 官网首屏：左侧介绍结构化笔记，右侧展示会议记录中的字段与后续任务](/images/product-docs/2026/tana-outliner.png)
 
-*Tana Outliner 官网公开演示，2026-10-23 获取。右侧把会议记录和后续任务放在同一个信息环境里，适合观察产品的组织思路；图中内容不是作者工作区，也不能证明本次完成过任务流转。来源：[Outliner 官网](https://outliner.tana.inc/)。*
+*Tana Outliner 官网公开演示，2026-10-23 获取。右侧把会议记录和后续任务放在同一个信息环境里，适合观察产品的组织思路。图中内容不是作者工作区，也不能证明本次完成过任务流转。来源：[Outliner 官网](https://outliner.tana.inc/)。*
 
 ## 先让任务拥有自己的身份
 
-Outliner 的基本单位是 node，也就是大纲中的一个节点。每个节点创建时就有唯一标识，同名内容可以是不同对象；reference 则让同一个节点出现在别处。编辑任何一处引用，会更新同一对象的其他呈现。[Nodes and references](https://outliner.tana.inc/learn/features/nodes-and-references)
+Outliner 的基本单位是 node，也就是大纲中的一个节点。每个节点创建时就有唯一标识，同名内容可以是不同对象。reference 则让同一个节点出现在别处。编辑任何一处引用，会更新同一对象的其他呈现。[Nodes and references](https://outliner.tana.inc/learn/features/nodes-and-references)
 
 于是，青苔项目里的“补上提交去重”可以留在会议原来的位置，同时供另一个界面使用。会议保存它的来由，任务界面提供处理入口。这个关系成立的前提，是两处指向同一个对象。
 
@@ -60,7 +60,7 @@ Supertag 让节点获得类型和模板。例如，给节点标上 Task，模板
 
 沿着青苔项目的例子，我会先设一个 Task 类型，只放项目、负责人和完成状态。项目信息用关联对象表达，负责人从成员里选，先不设计复杂优先级。这里的字段组合是示范方案，不是 Tana 自带的固定模板。
 
-字段的语义也要逐个弄清。Outliner 的 Options from supertag 能从特定类型的节点中提供选项；字段校验发现不合规数据会警告，但不阻止存入。自动初始化则只在相应模板字段初始化时填值，之后不会持续跟随来源变化。[Fields](https://outliner.tana.inc/learn/features/fields)
+字段的语义也要逐个弄清。Outliner 的 Options from supertag 能从特定类型的节点中提供选项。字段校验发现不合规数据会警告，但不阻止存入。自动初始化则只在相应模板字段初始化时填值，之后不会持续跟随来源变化。[Fields](https://outliner.tana.inc/learn/features/fields)
 
 这三个细节会直接改变产品行为。负责人如果只是自由文本，“成员甲”和他的另一个名字可能被当成两个值。项目从父节点初始化后，任务再移到别处，也不能假定项目字段自动改了。日期出现警告时，记录仍可能留在系统里，后面的自动处理就要决定如何对待它。
 
@@ -68,11 +68,11 @@ Supertag 让节点获得类型和模板。例如，给节点标上 Task，模板
 
 ## 查询把散落的任务聚到一起
 
-字段具备了，才轮到工作界面。Outliner 的 Search node 保存查询，结果是匹配节点的引用；编辑结果会修改原对象。查询只在搜索节点展开时运行，折叠时不在后台持续执行，结果上限为 2,500 个。[Search nodes](https://outliner.tana.inc/learn/features/search-nodes)
+字段具备了，才轮到工作界面。Outliner 的 Search node 保存查询，结果是匹配节点的引用。编辑结果会修改原对象。查询只在搜索节点展开时运行，折叠时不在后台持续执行，结果上限为 2,500 个。[Search nodes](https://outliner.tana.inc/learn/features/search-nodes)
 
-视图再决定怎样呈现这些对象。Outline、Table 和 Cards 等视图可以作用于节点的子内容，也能用在搜索结果上；换视图不改变底层数据。[Views](https://outliner.tana.inc/learn/features/views)
+视图再决定怎样呈现这些对象。Outline、Table 和 Cards 等视图可以作用于节点的子内容，也能用在搜索结果上。换视图不改变底层数据。[Views](https://outliner.tana.inc/learn/features/views)
 
-两者接起来，就能描述一个可自行复现的最小实验。下面依据文档安排操作，尚未亲测；操作名称与入口应以实际版本为准。
+两者接起来，就能描述一个可自行复现的最小实验。下面依据文档安排操作，尚未亲测。操作名称与入口应以实际版本为准。
 
 1. 在测试工作区创建 Task 类型，设置项目与负责人字段，并让任务节点带完成复选框。
 2. 建立“青苔项目评审”会议节点，在其下创建“补上提交去重”，加上 Task 类型，填写项目和负责人。
@@ -92,7 +92,7 @@ Supertag 让节点获得类型和模板。例如，给节点标上 Task，模板
 
 *新 Tana 官网公开演示，2026-10-23 获取。工作项上的 Sent 和邮件旁的 Send 分别表达结果与待执行动作，阅读时要分清这两种状态。这是厂商演示，不是本文的操作结果。来源：[Tana 官网](https://tana.inc/)。*
 
-新版仍然保留结构。Types 给文档共同字段，可以设置工作流，也能附上 AI instructions 和 skills；类型既能手动建，也可以用自然语言请求 AI 建立。它提供了另一种建模入口，不能据此认定 Types 和 Outliner Supertags 能直接互换。[Types](https://tana.inc/learn/features/types)
+新版仍然保留结构。Types 给文档共同字段，可以设置工作流，也能附上 AI instructions 和 skills。类型既能手动建，也可以用自然语言请求 AI 建立。它提供了另一种建模入口，不能据此认定 Types 和 Outliner Supertags 能直接互换。[Types](https://tana.inc/learn/features/types)
 
 青苔项目若沿着这个入口继续，我会先让系统提出一条“补上提交去重”的任务草稿，再检查它的类型与字段。把会议里的“需要有人看看”直接变成正式指派，会凭空增加承诺。即使负责人在谈话中出现，也应保留原句，供人检查那是在提议、讨论，还是已经接受了工作。
 
@@ -104,7 +104,7 @@ AI 降低输入结构的门槛之后，审阅界面需要承担更多解释工�
 
 这个边界值得读完整。把所有内容都叫“建议”，用户可能以为它尚未生效；把所有结果都叫“已处理”，又可能掩盖等待确认的部分。我会先在自己的产品里逐项写下哪些自动保存，哪些等待确认，再让文案对应真实状态。自动保存的会议摘要和正式修改任务负责人，可以采用不同规则。
 
-外部 action 获批准后，原卡片还会报告执行结果，包括部分完成、等待用户或失败；发送邮件也先走 action 批准。[Proposals and actions](https://tana.inc/learn/features/proposals)
+外部 action 获批准后，原卡片还会报告执行结果，包括部分完成、等待用户或失败。发送邮件也先走 action 批准。[Proposals and actions](https://tana.inc/learn/features/proposals)
 
 放回青苔项目，接受“创建外部工作项”的 action，只说明有人同意了这次操作。后续可能遇到目标项目不存在，或者外部服务暂时没有返回明确结果。产品必须让人继续找到这次动作，知道下一步该做什么。
 
@@ -114,7 +114,7 @@ AI 降低输入结构的门槛之后，审阅界面需要承担更多解释工�
 
 新 Tana 的 Spaces 同时组织内容与上下文。访问按 organization、space、document 继承，新建空间默认仅自己可见，文档还可进一步收紧访问。空间也能配置自己的类型和 AI instructions。[Spaces and sharing](https://tana.inc/learn/features/spaces)
 
-这让会议产出多了一层需要核对的去向。任务本身没错，放进错误空间仍可能让不该看到的人看到。我的审阅卡会把目标位置与读者范围放在任务内容旁；若这次操作改变了访问范围，单独显示变化。不能指望使用者在接受之后，才去导航栏里发现它属于哪里。
+这让会议产出多了一层需要核对的去向。任务本身没错，放进错误空间仍可能让不该看到的人看到。我的审阅卡会把目标位置与读者范围放在任务内容旁。若这次操作改变了访问范围，单独显示变化。不能指望使用者在接受之后，才去导航栏里发现它属于哪里。
 
 上下文也不能从旧产品的名词直接外推。Outliner 的 AI Chat 要通过引用等方式显式加入笔记，文档明确说明不能直接和整个 graph 对话。[AI Chat](https://outliner.tana.inc/learn/features/ai-chat)
 
@@ -122,7 +122,7 @@ AI 降低输入结构的门槛之后，审阅界面需要承担更多解释工�
 
 接口要继续分产品看。Outliner 的本地 MCP 免费，但需要桌面应用运行；托管 MCP 当前为付费 beta。官方还提供新版经 MCP 访问 Outliner 的路径，并建议传递原节点标识，便于精确读写。[API and MCP](https://outliner.tana.inc/learn/features/local-api-mcp)
 
-新版也有独立的 MCP 服务，写入默认生成待审核的 proposal；用户明确选择跳过审核时，支持该参数的工具可传入 `autoApprove: true`，同轮应用提案。普通修改请求不算跳过审核，部分工具也不支持此参数。这里要区分用户已授权的直接应用和每次打开界面复核。[MCP：How writes work](https://tana.inc/learn/features/mcp)
+新版也有独立的 MCP 服务，写入默认生成待审核的 proposal。用户明确选择跳过审核时，支持该参数的工具可传入 `autoApprove: true`，同轮应用提案。普通修改请求不算跳过审核，部分工具也不支持此参数。这里要区分用户已授权的直接应用和每次打开界面复核。[MCP：How writes work](https://tana.inc/learn/features/mcp)
 
 连接能让工具访问对象，却没有自动解决两边对象的对应关系。青苔项目的一条任务如果同时出现在两款产品中，我仍会保存来源节点与目标对象的标识，约定哪边拥有哪个字段。没有这份约定，标题变了以后就可能找不到原对象，或者重复创建同一项工作。公开文档证明了桥接路径，尚未证明两款产品共享数据库或具备无损自动同步。
 
@@ -139,7 +139,7 @@ AI 降低输入结构的门槛之后，审阅界面需要承担更多解释工�
 | 提案版本与批准记录 | 人确认过哪一版 | 预览后再改内容，旧批准不能覆盖新版本 |
 | 执行记录与外部标识 | 工作项是否创建成功 | 重试前能核对既有结果，避免重复创建 |
 
-数据库选型可以随后讨论。这些关系用常规存储也能先表达清楚；是否需要图数据库，要看真实查询与规模，而本次公开资料没有披露可据以照搬的服务端方案。
+数据库选型可以随后讨论。这些关系用常规存储也能先表达清楚。是否需要图数据库，要看真实查询与规模，而本次公开资料没有披露可据以照搬的服务端方案。
 
 顺序上，我会先证明身份与引用没有混淆，再加入结构化查询。AI 从文本提取候选任务后，先做可编辑预览，最后才开放一个外部写入目标。每增加一段，都保留上一步的人工入口。这样即使提取失败，人也能继续把任务补完，排查时还知道问题出在哪一段。
 
@@ -147,7 +147,7 @@ AI 降低输入结构的门槛之后，审阅界面需要承担更多解释工�
 
 ## 长期使用，还要能离线和离开
 
-对象越能互相引用，退出时越要核对带走了什么。Outliner 可以导出 Markdown 和 JSON；JSON 中的 Tana Intermediate Format 2.1 可以导入新工作区，完整 Tana JSON 则不能通过同一导入器回灌。[Copy-paste and export](https://outliner.tana.inc/learn/features/copy-paste-and-export)
+对象越能互相引用，退出时越要核对带走了什么。Outliner 可以导出 Markdown 和 JSON。JSON 中的 Tana Intermediate Format 2.1 可以导入新工作区，完整 Tana JSON 则不能通过同一导入器回灌。[Copy-paste and export](https://outliner.tana.inc/learn/features/copy-paste-and-export)
 
 工作区文档另说明，Markdown 导出保留媒体下载链接，不包含图像和视频文件本身。[Workspaces：Export workspace](https://outliner.tana.inc/learn/features/workspaces#export-workspace)
 
@@ -155,11 +155,11 @@ AI 降低输入结构的门槛之后，审阅界面需要承担更多解释工�
 
 如果青苔项目要迁移，我会把一个小样本先搬一遍，检查任务文本、字段和来源关系，再单独核对媒体。最后尝试在新环境继续处理这条任务。文件能打开，只完成了阅读层面的验收，原来的工作方式是否还能运行需要另外检查。新版 Tana 定价页虽承诺可以导出到其他系统，本次没有取得同等具体的组织级导出与恢复证据，不能套用 Outliner 的说明。[Tana 数据说明](https://tana.inc/pricing)
 
-离线也有范围。Outliner 完整离线模式可编辑个人工作区，共享工作区只读；AI 和第三方集成等功能需要联网。短暂断线时继续改共享内容，恢复同步还可能覆盖其他编辑。[Tana Outliner for desktop](https://outliner.tana.inc/learn/features/tana-for-desktop)
+离线也有范围。Outliner 完整离线模式可编辑个人工作区，共享工作区只读。AI 和第三方集成等功能需要联网。短暂断线时继续改共享内容，恢复同步还可能覆盖其他编辑。[Tana Outliner for desktop](https://outliner.tana.inc/learn/features/tana-for-desktop)
 
 这会影响团队的使用承诺。一个人在路上能改自己的记录，和整个团队断网后仍能安全协作，需要分别验证。我会让离线状态直接影响可用操作和提示，不等同步回来才解释冲突。
 
-试用成本同样要按产品计算。当前两边均有免费档；新版免费档列每月主持 5 场会议、50 次 AI queries，Outliner 免费档列 500 AI credits。额度单位不同，不能直接横比；正式选型前还应在实际结算周期下核对需要的接口与套餐。[Tana 定价](https://tana.inc/pricing)、[Outliner 定价](https://outliner.tana.inc/pricing)
+试用成本同样要按产品计算。当前两边均有免费档。新版免费档列每月主持 5 场会议、50 次 AI queries，Outliner 免费档列 500 AI credits。额度单位不同，不能直接横比。正式选型前还应在实际结算周期下核对需要的接口与套餐。[Tana 定价](https://tana.inc/pricing)、[Outliner 定价](https://outliner.tana.inc/pricing)
 
 ## 先让一个人把一件事处理完
 
@@ -169,7 +169,7 @@ AI 降低输入结构的门槛之后，审阅界面需要承担更多解释工�
 
 ## 参考资料
 
-以下均为官方公开资料，核对日期为 2026-10-23；功能记载与本文建议应分别阅读。
+以下均为官方公开资料，核对日期为 2026-10-23。功能记载与本文建议应分别阅读。
 
 - [Tana 首页](https://tana.inc/)
 - [Tana Outliner 首页](https://outliner.tana.inc/)

@@ -40,7 +40,7 @@ description: >
 
 账号 MCP 通过 OAuth 登录，与 Web 共用已保存的场景；自托管的实例 MCP 仍使用管理员令牌与独立场景库。两种接入方式的账号和存储边界不同。[MCP 接入](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md)
 
-当前版本采用非商业源码可用许可，仅限测试、学习与研究，不再沿用 MIT 作为新版本许可；历史 MIT 版本保留原条款。[许可说明](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md#license-and-commercial-use)
+当前版本采用非商业源码可用许可，仅限测试、学习与研究，不再沿用 MIT 作为新版本许可。历史 MIT 版本保留原条款。[许可说明](https://github.com/kubbot/imstage/blob/b34ac2ff236024c176980913a07834448ec9cca6/README.md#license-and-commercial-use)
 
 ## 参考资料
 

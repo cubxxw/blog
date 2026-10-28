@@ -48,7 +48,7 @@ cover:
 
 > **Agent 产品的形态不取决于自治等级，取决于控制权、状态、身份、副作用和完成权如何分配。**
 
-设计目标并非把更多决定交给模型。只把**无法预写**的决定交给模型；每次越过现实世界边界时，授权、证据与关闭责任都必须已经有主人。
+设计目标并非把更多决定交给模型。只把**无法预写**的决定交给模型。每次越过现实世界边界时，授权、证据与关闭责任都必须已经有主人。
 
 本文只聚合系列前十篇已经冻结的一手来源与研究回执，研究日为 2026-08-07。不从文章修辞制造新事实，也不把闭源 surface 反推成未公开 runtime。具体版本、commit 与证据缺口保留在各个案文末。
 
@@ -77,7 +77,7 @@ cover:
 
 ![Agent 系统设计控制权宪法之河](/images/agent-system-series/11-synthesis/agent-system-constitutional-route.svg)
 
-**阅读指南：** 顶部先问五个所有权问题。中间画的是动作从意图流向现实的责任链，拒绝成熟度阶梯：身份化意图 → 不确定性圈定 → effect proposal → policy/approval/idempotency → world mutation → artifact/evidence → memory/eval/stop。十个项目停靠在它们实际接管的河段。底部是六种最小成立形态；从左到右只是增加了新的必要条件，不代表更先进。
+**阅读指南：** 顶部先问五个所有权问题。中间画的是动作从意图流向现实的责任链，拒绝成熟度阶梯：身份化意图 → 不确定性圈定 → effect proposal → policy/approval/idempotency → world mutation → artifact/evidence → memory/eval/stop。十个项目停靠在它们实际接管的河段。底部是六种最小成立形态。从左到右只是增加了新的必要条件，不代表更先进。
 
 图中最重要的是 world mutation 前后的红色边界。
 
@@ -158,7 +158,7 @@ unknown_owner: human_reconciliation_queue
 - Manus 把身体扩张为 per-task computer、browser 与长期 Cloud Computer；
 - OpenClaw 再把手机、浏览器和 paired node 变成常驻 Gateway 的外设。
 
-[Manus：给 Agent 一台电脑](/zh/ai-agent/posts/agent-system-design-manus/)说明完整计算机为何能把回复变成工件；它同时也说明，VM recycle、tab close 和 session clear 不会撤销外部系统已经接受的变化。
+[Manus：给 Agent 一台电脑](/zh/ai-agent/posts/agent-system-design-manus/)说明完整计算机为何能把回复变成工件。它同时也说明，VM recycle、tab close 和 session clear 不会撤销外部系统已经接受的变化。
 
 身体越完整，错误成本越接近用户本人。
 
@@ -180,7 +180,7 @@ idempotency / target query / compensation
   → 决定失败后能否安全恢复
 ```
 
-[Claude Code](/zh/ai-agent/posts/agent-system-design-claude-code/)把 context、Hook、permission、sandbox、worktree、Git/CI 放在不同层；[Pi](/zh/ai-agent/posts/agent-system-design-pi/)则反向证明 Project Trust 只管启动资源加载，Bash 与 extension 仍继承宿主用户权限；[OpenClaw](/zh/ai-agent/posts/agent-system-design-openclaw/)又证明 session key 是 routing selector，不是 tenant authorization。
+[Claude Code](/zh/ai-agent/posts/agent-system-design-claude-code/)把 context、Hook、permission、sandbox、worktree、Git/CI 放在不同层。[Pi](/zh/ai-agent/posts/agent-system-design-pi/)则反向证明 Project Trust 只管启动资源加载，Bash 与 extension 仍继承宿主用户权限。[OpenClaw](/zh/ai-agent/posts/agent-system-design-openclaw/)又证明 session key 是 routing selector，不是 tenant authorization。
 
 permission、approval、sandbox、identity 与 idempotency 保护的对象不同。把它们统称“安全层”，会让最危险的空隙消失在名词里。
 
@@ -199,7 +199,7 @@ Surface 不是 Agent 的皮肤，它重排了谁可以提出、批准、观察�
 
 ## 五层行动权：从提议到业务关闭
 
-五个形态轴描述系统；一次具体动作还需要另一条关闭协议：
+五个形态轴描述系统。一次具体动作还需要另一条关闭协议：
 
 ```text
 proposal
@@ -232,13 +232,13 @@ ActionEvent 已追加
   → 重复副作用
 ```
 
-[n8n](/zh/ai-agent/posts/agent-system-design-n8n/)的 queue recovery 选择把失联 execution 标为 crashed，而不是假装能从 Redis/Postgres 判断第三方写入；[OpenMontage](/zh/ai-agent/posts/agent-system-design-openmontage/)的孤儿媒体文件也说明 checkpoint 不知道付费 provider job 是否已完成。
+[n8n](/zh/ai-agent/posts/agent-system-design-n8n/)的 queue recovery 选择把失联 execution 标为 crashed，而不是假装能从 Redis/Postgres 判断第三方写入。[OpenMontage](/zh/ai-agent/posts/agent-system-design-openmontage/)的孤儿媒体文件也说明 checkpoint 不知道付费 provider job 是否已完成。
 
 这三个形态完全不同，却碰到同一条分布式系统边界：
 
 > **event ID、queue job ID、checkpoint ID 和短期 dedupe 都不是业务幂等。**
 
-幂等必须由最靠近 mutation、且能查询真实目标状态的 adapter/provider 拥有。恢复时先对账，再决定补写 evidence、retry 或 compensation；不能让 Agent 根据 transcript 猜世界。
+幂等必须由最靠近 mutation、且能查询真实目标状态的 adapter/provider 拥有。恢复时先对账，再决定补写 evidence、retry 或 compensation。不能让 Agent 根据 transcript 猜世界。
 
 ## 六种最小成立形态
 
@@ -250,7 +250,7 @@ ActionEvent 已追加
 
 **正例：** TaxHacker 把 LLM 限制在 document extraction，用户显式 save 才生成内部 Transaction。
 
-**反例：** schema-valid 不等于 semantic-valid；缺 field provenance、算术和 source-span validator 时，数值错误仍可通过。
+**反例：** schema-valid 不等于 semantic-valid。缺 field provenance、算术和 source-span validator 时，数值错误仍可通过。
 
 **停止扩张：** 若一次转换已足够，不要为了“Agent 化”引入 planner、tool loop、memory 和多 Agent。
 
@@ -260,7 +260,7 @@ ActionEvent 已追加
 
 **正例：** n8n 的 Workflow graph 包住 Tools Agent island；OpenMontage 的 stage/manifest/checkpoint 是另一种 artifact workflow。
 
-**反例：** graph 确定不代表外部 node 确定；queue mode 与 checkpoint 都不能提供第三方 exactly-once。
+**反例：** graph 确定不代表外部 node 确定。queue mode 与 checkpoint 都不能提供第三方 exactly-once。
 
 **停止扩张：** 当下一步确实必须依据开放环境 observation 才能决定，继续枚举 graph 分支会比一个受控 loop 更脆。
 
@@ -270,7 +270,7 @@ ActionEvent 已追加
 
 **正例：** Pi 证明 provider stream、messages/tools、validation、feedback、events 与 abort 已构成最小 kernel；Claude Code 与 Codex 再加 permission、sandbox、protocol 和多 Surface 控制。
 
-**反例：** Pi 无内建 sandbox 与统一 evaluator，session tree 也不回滚 working tree；“最小成立”不是“生产完备”。
+**反例：** Pi 无内建 sandbox 与统一 evaluator，session tree 也不回滚 working tree。“最小成立”不是“生产完备”。
 
 **停止扩张：** host 已能承担工具、状态、隔离和验收时，不必先造远程 event platform。
 
@@ -280,7 +280,7 @@ ActionEvent 已追加
 
 **正例：** OpenHands 的 Conversation、event tree、base state 与 derived View。
 
-**反例：** Codex 的 EventMsg channel、OpenClaw 不 replay 的 WebSocket events、Pi 的 JSONL session 都有“事件”，却不能仅凭协议形态称 durable event platform；OpenHands 自身也不能事务性恢复 workspace/API。
+**反例：** Codex 的 EventMsg channel、OpenClaw 不 replay 的 WebSocket events、Pi 的 JSONL session 都有“事件”，却不能仅凭协议形态称 durable event platform。OpenHands 自身也不能事务性恢复 workspace/API。
 
 **停止扩张：** 任务不跨进程、不跨小时、不需要 resume/fork/multi-surface 时，普通 session persistence 可能已经足够。
 
@@ -298,11 +298,11 @@ ActionEvent 已追加
 
 ### 6. Vertical organization
 
-**成立条件：** 领域子问题拥有独立输入、独立写集、不同专业工具与明确 join；领域 artifact 和验收标准比通用回复更重要。
+**成立条件：** 领域子问题拥有独立输入、独立写集、不同专业工具与明确 join。领域 artifact 和验收标准比通用回复更重要。
 
-**正例：** OpenMontage 把创作分成 script、storyboard、assets、edit、compose 与 publish artifacts；TradingAgents 把分析、辩论、风险与 manager 决策写成领域 state graph。
+**正例：** OpenMontage 把创作分成 script、storyboard、assets、edit、compose 与 publish artifacts。TradingAgents 把分析、辩论、风险与 manager 决策写成领域 state graph。
 
-**反例：** TradingAgents 的多个角色共享模型、reports 与 prompt family；OpenMontage 的 same-agent reviewer 也不是独立 evaluator。角色数量不是证据样本量。
+**反例：** TradingAgents 的多个角色共享模型、reports 与 prompt family。OpenMontage 的 same-agent reviewer 也不是独立 evaluator。角色数量不是证据样本量。
 
 **停止扩张：** 子 Agent 不能获得独立信息或隔离执行面时，保留单 Agent + 好工具。
 
@@ -412,9 +412,9 @@ deterministic spine
 
 ## 结论：自由不是目标，责任闭合才是
 
-这十套系统没有共同证明 Agent 正在变得更自治；它们共同拆掉了“Agent 是一种产品”的幻觉。
+这十套系统没有共同证明 Agent 正在变得更自治。它们共同拆掉了“Agent 是一种产品”的幻觉。
 
-TaxHacker 把自由压到一个函数；n8n 把它包在 workflow 岛内；Pi 保留最小 loop；Claude Code 与 Codex 把仓库控制分给 harness 与 Surface；OpenHands 把 step 从长期状态里剥离；OpenClaw 先解决身份路由；Manus 提供完整执行身体；OpenMontage 用工件链组织创作；TradingAgents 用角色图暴露相关性风险。
+TaxHacker 把自由压到一个函数。n8n 把它包在 workflow 岛内。Pi 保留最小 loop。Claude Code 与 Codex 把仓库控制分给 harness 与 Surface。OpenHands 把 step 从长期状态里剥离。OpenClaw 先解决身份路由。Manus 提供完整执行身体。OpenMontage 用工件链组织创作。TradingAgents 用角色图暴露相关性风险。
 
 没有一个是终点。
 

@@ -100,7 +100,7 @@ pending action?
 - 协调 workspace、persistence、secrets、metrics、callbacks 与 visualizer；
 - 把 Agent 的一次 step 放进可暂停、可继续的生命周期。
 
-这个责任划分非常干净：Agent 回答“下一步提出什么”，Conversation 回答“这一步属于哪个任务、能否执行、怎样持久化、何时停止”。
+这个责任划分非常干净，Agent 回答“下一步提出什么”，Conversation 回答“这一步属于哪个任务、能否执行、怎样持久化、何时停止”。
 
 ### Delegation 仍是被 Conversation 包住的能力
 
@@ -116,9 +116,9 @@ OpenHands 的 event model 把三件经常混在一起的东西拆开：
 2. LLM `role`：投影给模型时是 system、user、assistant 还是 tool；
 3. `parent_id`：事件在 conversation tree 中的父节点。
 
-一个 observation 可以是 `source="environment"`，同时以 `role="tool"` 送给模型；框架合成的反馈也可能来自 environment，却以 user role 进入上下文。若用 LLM role 推断真实作者，审计会直接失真。[Events architecture](https://docs.openhands.dev/sdk/arch/events)
+一个 observation 可以是 `source="environment"`，同时以 `role="tool"` 送给模型。框架合成的反馈也可能来自 environment，却以 user role 进入上下文。若用 LLM role 推断真实作者，审计会直接失真。[Events architecture](https://docs.openhands.dev/sdk/arch/events)
 
-事件本身是 frozen Pydantic models，带 ID、timestamp、source 和 parent。`EventLog.append()` 在文件存储锁内检查重复 ID 和 parent，再把每个事件写成独立 JSON；active branch 则沿 `parent_id` 回溯。旧线性事件没有 parent 时，代码保留前一事件作为兼容父节点。[`event/base.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/event/base.py) · [`conversation/event_store.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/conversation/event_store.py)
+事件本身是 frozen Pydantic models，带 ID、timestamp、source 和 parent。`EventLog.append()` 在文件存储锁内检查重复 ID 和 parent，再把每个事件写成独立 JSON。active branch 则沿 `parent_id` 回溯。旧线性事件没有 parent 时，代码保留前一事件作为兼容父节点。[`event/base.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/event/base.py) · [`conversation/event_store.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/conversation/event_store.py)
 
 这比 mutable messages 数组多出四种能力：
 
@@ -129,7 +129,7 @@ OpenHands 的 event model 把三件经常混在一起的东西拆开：
 
 但它仍不是纯粹的“event log = 全部真相”。
 
-分支尤其容易制造错觉。`LocalConversation.fork()` 会复制事件和 agent state，却把同一个 workspace 传给新 Conversation；两个逻辑分支仍可能覆盖同一批文件。[`local_conversation.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/conversation/impl/local_conversation.py) event tree 的分叉不等于 filesystem snapshot，也不是安全隔离。
+分支尤其容易制造错觉。`LocalConversation.fork()` 会复制事件和 agent state，却把同一个 workspace 传给新 Conversation。两个逻辑分支仍可能覆盖同一批文件。[`local_conversation.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/conversation/impl/local_conversation.py) event tree 的分叉不等于 filesystem snapshot，也不是安全隔离。
 
 ## 四种状态，四个所有者
 
@@ -165,7 +165,7 @@ conversation = base_state snapshot + append-only events
 
 > Conversation 是 Agent 控制面的任务数据库，不是所有执行对象的全局数据库。
 
-还有一条不在上述四种核心恢复状态里的旁路：可选 Persistent Memory 使用分层 Markdown `MEMORY.md`，默认关闭，在新会话中重新读取并注入 prompt；它既不由 event log 投影，也不保存在 `base_state.json`。[Persistent Memory](https://docs.openhands.dev/sdk/guides/persistent-memory) 这再次说明“唯一事实源”必须限定在具体作用域。
+还有一条不在上述四种核心恢复状态里的旁路：可选 Persistent Memory 使用分层 Markdown `MEMORY.md`，默认关闭，在新会话中重新读取并注入 prompt。它既不由 event log 投影，也不保存在 `base_state.json`。[Persistent Memory](https://docs.openhands.dev/sdk/guides/persistent-memory) 这再次说明“唯一事实源”必须限定在具体作用域。
 
 ## Local 与 Remote 共享语义，不共享风险
 
@@ -176,7 +176,7 @@ conversation = base_state snapshot + append-only events
 
 [Conversation architecture](https://docs.openhands.dev/sdk/arch/conversation) · [Workspace architecture](https://docs.openhands.dev/sdk/arch/workspace)
 
-统一 API 的价值很实在：应用可以保留 MessageEvent → ActionEvent → ObservationEvent 语义，再替换执行身体。开发者不必为本地 CLI、远端 Agent Server 和容器部署各写一套 Agent loop。
+统一 API 的价值很实在，应用可以保留 MessageEvent → ActionEvent → ObservationEvent 语义，再替换执行身体。开发者不必为本地 CLI、远端 Agent Server 和容器部署各写一套 Agent loop。
 
 但“同一 API”不意味着“相同故障模型”：
 
@@ -215,7 +215,7 @@ SDK 不能从前两项推导第三项。
 
 当前源码对“orphan action”已有防御：pause/interrupt 后可为没有 observation 的 action 写入 synthetic `AgentErrorEvent`，避免 LLM provider 拒绝不完整 tool-call history。它解决的是**对话格式可继续**，不是证明副作用未发生。[`local_conversation.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/conversation/impl/local_conversation.py)
 
-更危险的是，正常恢复路径并不总会写 synthetic error。`ConversationState.get_unmatched_actions()` 会把没有匹配 Observation 的 Action 当作 pending；`Agent.step()` 在生成新动作之前优先执行 pending action。[`conversation/state.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/conversation/state.py) · [`agent/agent.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/agent/agent.py)
+更危险的是，正常恢复路径并不总会写 synthetic error。`ConversationState.get_unmatched_actions()` 会把没有匹配 Observation 的 Action 当作 pending。`Agent.step()` 在生成新动作之前优先执行 pending action。[`conversation/state.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/conversation/state.py) · [`agent/agent.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/agent/agent.py)
 
 因此下面这条路径在固定源码中真实可达：
 
@@ -254,17 +254,17 @@ reconcile_after: timestamp
 
 ### 并行 action 让问题更难
 
-v1.41.0 可以接受同一 LLM response 的多条 action；默认 `tool_concurrency_limit=1` 时仍顺序执行，显式提高后 `ParallelToolExecutor` 才并发运行。官方把该能力标为 experimental，并提醒共享文件和外部状态的竞态。[Parallel Tool Execution](https://docs.openhands.dev/sdk/guides/parallel-tool-execution)
+v1.41.0 可以接受同一 LLM response 的多条 action。默认 `tool_concurrency_limit=1` 时仍顺序执行，显式提高后 `ParallelToolExecutor` 才并发运行。官方把该能力标为 experimental，并提醒共享文件和外部状态的竞态。[Parallel Tool Execution](https://docs.openhands.dev/sdk/guides/parallel-tool-execution)
 
 事件层用相同 `llm_response_id` 把多个 ActionEvent 投影回一个含多个 tool calls 的 assistant message，但每个 action 的副作用成功与否仍是独立事件。[Parallel execution in `agent.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/agent/agent.py)
 
-因此批次级“全部成功”不是安全默认。恢复 ledger 应逐 action 记录结果，必要时声明依赖顺序；否则 A 成功、B 超时、C 被取消时，整批 replay 会重复 A。
+因此批次级“全部成功”不是安全默认。恢复 ledger 应逐 action 记录结果，必要时声明依赖顺序。否则 A 成功、B 超时、C 被取消时，整批 replay 会重复 A。
 
 ## 安全不应只在 prompt 里
 
 OpenHands V1 有 security analyzer、risk level 与 confirmation policy。高风险 action 可以让 Conversation 进入 `WAITING_FOR_CONFIRMATION`，用户拒绝则生成 `UserRejectObservation`。[Security architecture](https://docs.openhands.dev/sdk/arch/security) · [`security/confirmation_policy.py`](https://github.com/OpenHands/software-agent-sdk/blob/v1.41.0/openhands-sdk/openhands/sdk/security/confirmation_policy.py)
 
-但固定 SDK 的 `ConversationState` 字段默认是 `NeverConfirm()`，`security_analyzer=None`；具体产品 surface 可以覆写，不能把“支持确认”写成“所有调用默认确认”。此外，直接调用 `execute_tool()` 可以绕开 Conversation loop 的确认链。[Security guide](https://docs.openhands.dev/sdk/guides/security)
+但固定 SDK 的 `ConversationState` 字段默认是 `NeverConfirm()`，`security_analyzer=None`。具体产品 surface 可以覆写，不能把“支持确认”写成“所有调用默认确认”。此外，直接调用 `execute_tool()` 可以绕开 Conversation loop 的确认链。[Security guide](https://docs.openhands.dev/sdk/guides/security)
 
 这是一层有用的 effect proposal gate，但它与 runtime isolation 分属不同层：
 
@@ -356,7 +356,7 @@ OpenHands V1 做出的关键分配是：
 
 > **一次 action 已经离开 Conversation 边界，但它的 observation 还没有回来。**
 
-生产系统的成熟，不在于假装这个窗口不存在，而在于给它稳定 operation ID、可查询外部证据、明确 unknown 状态和一个愿意接手的责任人。
+生产系统要成熟，就不能假装这个窗口不存在，得给它稳定 operation ID 和可查询外部证据，也要有明确 unknown 状态和一个愿意接手的责任人。
 
 ## 参考资料
 
