@@ -1,0 +1,113 @@
+{
+  "schema": "blog-listening-lifecycle/1",
+  "preRepairSource": "a0fb4ff040155c510cf5fdc51706486fbcf2e0b8",
+  "preRepairProducer": {
+    "run": 40687849500,
+    "artifact": 12816540298
+  },
+  "releaseEligible": false,
+  "reason": "Diagnostic and local evidence; a fresh exact-head producer, preflight and full browser graph are still required.",
+  "selectedRepair": {
+    "firstAttach": "after accepted non-room public URL, before first parent history write",
+    "afterFirstUse": "same child stays connected through close and native Back/Forward",
+    "publicSectionAdded": "lab-notes",
+    "capturePolicyChanged": false,
+    "pixelPolicyChanged": false,
+    "originalJourneyAndOperationLimitsChanged": false
+  },
+  "controlledOptionDiagnostic": {
+    "run": 40693611524,
+    "order": [
+      "full",
+      "no-dom",
+      "no-dom",
+      "full",
+      "full",
+      "no-dom"
+    ],
+    "mode": "on for both variants; diagnostic only",
+    "originalFrozenUI": 12816540298,
+    "full": {
+      "passed": 0,
+      "timedOut": 3,
+      "durationsIncludingHooksMs": [
+        98114,
+        96507,
+        97265
+      ]
+    },
+    "snapshotsDisabled": {
+      "passed": 3,
+      "timedOut": 0,
+      "durationsIncludingHooksMs": [
+        85251,
+        83647,
+        88359
+      ]
+    },
+    "interpretation": "Combined snapshot-option cost: disabling snapshots also removes built-in HAR. Not proof of DOM traversal CPU as the sole cause. This capture change is not adopted."
+  },
+  "locatedWait": {
+    "sampleSource": "8ab9f1b8; listening source identical to a0fb4ff0",
+    "sampleRun": 40678983909,
+    "sampleArtifact": 12813342233,
+    "call": "nmva@346",
+    "owner": "BODY > SECTION.space-listening-page[hidden] > IFRAME",
+    "childURL": "about:blank",
+    "visibleLeafhourSnapshotAfterCallEndMs": 2.085,
+    "unusedChildSnapshotAfterCallEndMs": 1507.079,
+    "clientReturnAfterUnusedChildSnapshotMs": 0.582,
+    "scope": "One verified call; not a sole-cause claim for every earlier timeout."
+  },
+  "localChecks": {
+    "platform": "macOS; Playwright 1.64.1 Chromium with Metal; not Linux acceptance",
+    "listeningHost": {
+      "passed": 21,
+      "failed": 0
+    },
+    "combinedHost": {
+      "passed": 85,
+      "failed": 0,
+      "skipped": 0
+    },
+    "bearOsHost": {
+      "passed": 600,
+      "failed": 0,
+      "skipped": 0
+    },
+    "typecheck": "passed",
+    "hugo": {
+      "passed": true,
+      "englishPages": 352,
+      "chinesePages": 375,
+      "aliases": 63
+    },
+    "browserRedAgainstPreRepairBuild": {
+      "expectedConnectedIdleFrames": 0,
+      "observed": 1
+    },
+    "nativeAndCompatibleBrowserJourneys": {
+      "passed": 4,
+      "failed": 0,
+      "retries": 0
+    },
+    "publicPageSearchAndNativeHistory": {
+      "passed": 6,
+      "failed": 0,
+      "retries": 0
+    }
+  },
+  "enumeration": {
+    "allOriginalScenariosRetained": true,
+    "previousLegacy": 1238,
+    "legacy": 1240,
+    "added": [
+      "[\"space-object-living.spec.ts\",\"space-object-living.spec.ts\",\"Lab notes search retains the café and native forward history\",\"desktop\",0]",
+      "[\"space-object-living.spec.ts\",\"space-object-living.spec.ts\",\"Lab notes search retains the café and native forward history\",\"mobile\",0]"
+    ],
+    "interactive": 573,
+    "focused": 30,
+    "localQualityScopeOnly": true
+  },
+  "review": "Independent source and history-order review reported no actionable findings."
+}

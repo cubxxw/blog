@@ -8,7 +8,7 @@ const base='https://blog.test/zh/projects/';
 const primary={isTrusted:true,button:0,defaultPrevented:false,altKey:false,ctrlKey:false,metaKey:false,shiftKey:false};
 
 test('only actual same-origin public HTML routes can enter the listening session',()=>{
-  for(const path of ['/','/zh/','/zh/articles/','/en/engineering/posts/a/','/zh/tags/Go/','/growth/posts/cafe.html?from=space'])assert.ok(listeningPageURL(path,base),path);
+  for(const path of ['/','/zh/','/zh/articles/','/en/engineering/posts/a/','/zh/lab-notes/','/zh/lab-notes/langchain/','/lab-notes/langgraph/','/zh/tags/Go/','/growth/posts/cafe.html?from=space'])assert.ok(listeningPageURL(path,base),path);
   for(const path of ['https://elsewhere.test/zh/articles/','//elsewhere.test/','javascript:alert(1)','data:text/html,hello','/admin/','/wp-admin/','/api/post','/.git/config','/audio/space/music.mp3','/engineering/posts/guide.pdf','/zh/engineering/%2e%2e/.secret/','/growth/%2Fprivate/','/engineering/posts/guide%2Epdf'])assert.equal(listeningPageURL(path,base),null,path);
   assert.equal(isListeningRoomURL('/zh/projects/?room=cafe',base),true);assert.equal(isListeningRoomURL('/projects/example/',base),false);assert.equal(isListeningRoomURL('/zh/projects/index.html',base),true);
 });
@@ -43,6 +43,20 @@ function fixture(){
     async forward(){window.history.forward();await new Promise(resolve=>window.addEventListener('popstate',resolve,{once:true}));},
     restore(){controller.dispose();for(const child of children)child.window.close();dom.window.close();}};
 }
+
+test('an unused listening session has no connected child until its first valid public page',()=>{
+  const f=fixture();try{
+    const frame=f.frames[0].node,initialLength=f.window.history.length;
+    assert.equal(frame.isConnected,false);assert.equal(f.document.querySelector('.space-listening-page iframe'),null);
+    assert.equal(f.controller.open('/admin/'),false);assert.equal(f.controller.open('/zh/projects/'),true);assert.equal(frame.isConnected,false);
+    const replace=f.window.history.replaceState.bind(f.window.history);
+    f.window.history.replaceState=(...args)=>{assert.equal(frame.isConnected,true,'attach the child under the room entry before seeding history');return replace(...args);};
+    assert.equal(f.controller.open('/zh/lab-notes/langgraph/'),true);assert.equal(frame.isConnected,true);assert.equal(f.frames.length,1);
+    assert.equal(f.window.history.length,initialLength+1);f.load(0,'LangGraph');
+    f.controller.close();assert.equal(frame.isConnected,true,'a used child must retain its native history while the room is visible');
+    f.controller.open('/zh/articles/');assert.equal(f.frames[0].node,frame);assert.equal(f.frames.length,1);
+  }finally{f.restore();}
+});
 
 test('reading keeps the original café and audio DOM connected outside the active page layer',()=>{
   const f=fixture();try{

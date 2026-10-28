@@ -65,6 +65,8 @@ CUBXXW OS 默认呈现作者的文章、产品和旅途，访客可以在当前�
 
 技术深读使用「深读 / Lab notes」及 `/lab-notes/`、`/zh/lab-notes/` 地址；产品目录使用「作品 / Projects」。原有 `/projects/<技术文章>/` 链接保持跳转，阅读窗口与收藏中的旧地址也会迁移。源 Markdown 仍留在原文章 section。
 
+公共阅读上下文只在首次打开页面时创建，回到房间后保留同一上下文和原有历史。
+
 `netlify/lib/deepseek.js` 使用官方 `@deepseek-ai/dsh-llm-deepseek@0.2.0-rc.2` 的 `DeepSeekAdapter`，将 Messages 的文字与工具事件转换为本站既有响应协议，过滤思考内容。公开网站只加载模型适配层；应用工具由本站注册和执行。Netlify 将原生 ESM 包作为 `external_node_modules` 保留，避免 `import.meta.url` 在 CommonJS 打包时失效。运行说明与官方接口见 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness/)。
 
 本地 `.env` 与线上 Netlify Functions 环境变量都需要配置凭证；构建成功不代表线上密钥已配置。服务分别提示配置缺失、凭证失效、限流、额度不足、超时和连接失败。验收见 [2026-10-14 空间助手](acceptance/2026-10-14-space-companion.md)。

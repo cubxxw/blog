@@ -16,6 +16,8 @@ const cases=[
   ['space-object-living.spec.ts','choosing real records keeps the outdoor source and drives the platter'],
   ['space-living-motion.spec.ts','sleeping breath continues at the bookshelf and wheel restores its entry pose'],
   ...['320×568','768×1024','1440×900'].map(size=>['space-reading-contracts.spec.ts',`reading focus is reversible, counts agree and the companion remains reachable at ${size}`]),
+  ['space-object-living.spec.ts','actual public pages keep the same rain and music through history and Space return'],
+  ['space-object-living.spec.ts','Lab notes search retains the café and native forward history'],
 ];
 function raw(){return {errors:[],suites:[{title:'',specs:cases.map(([file,title],index)=>({file,title,line:index+1,column:1,tests:['desktop','mobile'].map(projectName=>({projectName,status:'expected',expectedStatus:'passed',results:[{status:'passed',retry:0}]}))}))}]};}
 function expected(){return enumerateTestIds(raw());}
@@ -45,7 +47,7 @@ test('focused room preflight requires every named path in both real projects',()
 });
 test('focused evidence is raw, exact, first-pass and never all-skip or partial',()=>{
   assert.equal(typeof api.verifyRoomRegressionResult,'function');
-  assert.equal(api.verifyRoomRegressionResult(raw(),expected()).counts.firstPass,26);
+  assert.equal(api.verifyRoomRegressionResult(raw(),expected()).counts.firstPass,30);
   const skipped=raw();Object.assign(skipped.suites[0].specs[0].tests[0],{status:'skipped',expectedStatus:'skipped',results:[{status:'skipped',retry:0}]});
   assert.throws(()=>api.verifyRoomRegressionResult(skipped,expected()));
   const retry=raw();Object.assign(retry.suites[0].specs[0].tests[0],{status:'flaky',results:[{status:'failed',retry:0},{status:'passed',retry:1}]});

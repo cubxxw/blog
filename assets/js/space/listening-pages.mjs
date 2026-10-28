@@ -1,6 +1,6 @@
 // Only public HTML sections belong in a café listening session. Asset, account,
 // API and arbitrary same-origin endpoints retain ordinary browser navigation.
-const sections=new Set(['articles','ai-agent','engineering','growth','projects','columns','tags','categories','archives','search','about','now','friends','travel']);
+const sections=new Set(['articles','ai-agent','engineering','growth','projects','lab-notes','columns','tags','categories','archives','search','about','now','friends','travel']);
 export function listeningPageURL(value,base){
   try{
     const url=new URL(value,base),origin=new URL(base).origin;

@@ -12,6 +12,7 @@ const pointerEvidence=new WeakMap<Page,unknown[]>();
 async function app(page:Page,name:string){await page.locator('[data-mac-menu="file"]').click();await page.locator(`[data-mac-panel="file"] [data-open="${name}"]`).click();}
 async function desk(page:Page){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
+ await expect(page.locator('.space-listening-page iframe')).toHaveCount(0);
  const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
  // Complete the real keyboard interaction before aiming through the room.
  // A focused object menu covers the monitor on mobile; never click through it.

@@ -15,9 +15,9 @@ export function mountListeningPages({root,zh=false,returnFocus,onStateChange,loa
   style.textContent='.space-listening-page{position:fixed;inset:0;z-index:2147483000;background:var(--theme,#faf8f3)}.space-listening-page[hidden]{display:none}.space-listening-page>iframe{display:block;border:0;width:100%;height:100%;background:var(--theme,#faf8f3)}.space-listening-page__status{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}';
   const frame=document.createElement('iframe');frame.title=zh?'博客阅读，按 Esc 回到咖啡馆':'Blog reading. Press Escape to return to the café';frame.referrerPolicy='same-origin';
   const status=document.createElement('p');status.className='space-listening-page__status';status.setAttribute('role','status');
-  // Retain this navigable even while the room is visible. Removing it deletes
-  // native child history, including programmatic search/form destinations.
-  layer.append(frame,status);document.body.append(style,layer);
+  // Leave the unused child disconnected. After its first public page, retain
+  // the navigable while the room is visible so native child history survives.
+  layer.append(status);document.body.append(style,layer);
   let active=false,loading=false,disposed=false,initialized=false,generation=0,timer,url=null,trigger,pending,boundDocument,documentAbort;
   const background=new Map(),scrolls=new Map(),childEntries=new Map();let entryCounter=0,displayedEntry=null;
   const owned=state=>state?.spaceListening?.session===session;
@@ -155,6 +155,7 @@ export function mountListeningPages({root,zh=false,returnFocus,onStateChange,loa
     if(disposed)return false;
     const next=listeningPageURL(value,homeURL);if(!next)return false;
     if(isListeningRoomURL(next.href,homeURL)){close({push});return true;}
+    if(!initialized)layer.prepend(frame);
     ensureHome();rememberScroll();if(!active)trigger=document.activeElement;
     if(push)history.pushState(mark('page',null,++entryCounter),'',next.href);
     if(document.fullscreenElement&&!document.fullscreenElement.contains(layer))Promise.resolve(document.exitFullscreen?.()).catch(()=>{});

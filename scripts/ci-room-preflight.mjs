@@ -18,6 +18,8 @@ const cases=[
   ['space-object-living.spec.ts','choosing real records keeps the outdoor source and drives the platter'],
   ['space-living-motion.spec.ts','sleeping breath continues at the bookshelf and wheel restores its entry pose'],
   ...['320×568','768×1024','1440×900'].map(size=>['space-reading-contracts.spec.ts',`reading focus is reversible, counts agree and the companion remains reachable at ${size}`]),
+  ['space-object-living.spec.ts','actual public pages keep the same rain and music through history and Space return'],
+  ['space-object-living.spec.ts','Lab notes search retains the café and native forward history'],
 ];
 export function selectRoomRegressions(inventory){
   const legacy=inventory?.suites?.legacy;assert.ok(Array.isArray(legacy),'Legacy inventory required for room preflight');
