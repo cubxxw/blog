@@ -36,3 +36,9 @@ The current `lieflat-less-ai-tone` rules and project writing constraints were re
 ## Author merge instruction
 
 After receiving the branch, verification summary and disclosure of the existing prose-check error, the author explicitly requested merging on 2026-10-28. The existing published quote remains unchanged under that instruction. Required engineering and release checks still apply. Merge and deployment verification are performed through the repository's existing main workflow; the preceding branch-delivery statements describe the initial handoff.
+
+### Pre-merge source-scope correction
+
+Full workflow run `40641623686` first failed on `legacy-flavor`: it treated the unchanged MarkItDown body as an authored-text edit because URL metadata had changed. The source gate now compares modified files with their proven base revision. Only identical bodies and identical non-routing YAML fields may omit prose detection; the routing field allowlist is `url`, `aliases`, and `labnotes`. New, renamed, copied, malformed, unreadable-base and text-edited files retain the original hard detector. Full prose audits still report the historical quote. Structural, metadata, tag, redirect and rendering gates are unchanged, and source reports retain `flavorScope` for audit.
+
+The integration test runs the real prose detector and proves that new title/description/body violations still fail. Missing historical content and A/R/C status also fail closed. All 31 content source/output/report tests pass. Replaying the failing CI change set now checks 410 source files with zero errors, 266 existing warnings, and no waived exceptions. This fixes the selection of authored prose; it does not suppress a detector finding or change the author's quote.

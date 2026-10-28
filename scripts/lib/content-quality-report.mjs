@@ -1,8 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { isDeepStrictEqual } from 'node:util';
+import { parseDocument } from 'yaml';
 import { checkSource } from './content-source.mjs';
-import { diagnostic } from './content-markdown.mjs';
+import { diagnostic, frontmatterRange } from './content-markdown.mjs';
 
 const WAIVABLE=new Set(['MD055','MD056','MD058','table-delimiter','fence-unclosed','frontmatter-required','frontmatter-type','frontmatter-timezone','frontmatter-description','frontmatter-parse','description-length','tag-count','rendered-table-missing','rendered-table-shape','local-link-missing','local-anchor-missing','local-asset-missing','shortcode-unexpanded']);
 const order=(a,b)=>a.file.localeCompare(b.file,'en') || a.line-b.line || a.ruleId.localeCompare(b.ruleId,'en') || a.fingerprint.localeCompare(b.fingerprint,'en');
@@ -56,6 +58,37 @@ function legacyGates({repoRoot,scope,flavorScope=scope}) {
   return results;
 }
 
+export function isRoutingMetadataOnlyChange(before,after) {
+  const split=text=>{
+    const normalized=text.replace(/\r\n?/g,'\n'),range=frontmatterRange(normalized);
+    if(!range?.closed||range.format!=='---')return null;
+    const doc=parseDocument(range.raw);if(doc.errors.length)return null;
+    const data=doc.toJS();if(!data||typeof data!=='object'||Array.isArray(data))return null;
+    const routing=new Set(['url','aliases','labnotes']);
+    return {body:normalized.split('\n').slice(range.end).join('\n'),fields:Object.fromEntries(Object.entries(data).filter(([key])=>!routing.has(key.toLowerCase())))};
+  };
+  try {
+    const old=split(before),current=split(after);
+    return Boolean(old&&current&&old.body===current.body&&isDeepStrictEqual(old.fields,current.fields));
+  } catch {return false;}
+}
+
+async function authoredFlavorScope({root,scope,changeSet}) {
+  if(!changeSet)return scope;
+  const selected=[];
+  for(const file of changeSet.files.filter(f=>['A','M','R','C'].includes(f.status)&&scope.includes(f.path))) {
+    // Only a proven existing file may retain its published prose during an
+    // address migration. New, renamed, unreadable and text-edited files keep
+    // the original hard gate; all structural and redirect checks still run.
+    if(file.status==='M'&&changeSet.baseSha) {
+      const old=spawnSync('git',['show',`${changeSet.baseSha}:${file.path}`],{cwd:root,encoding:'utf8',maxBuffer:32*1024*1024,timeout:10000});
+      if(old.status===0&&!old.error&&!old.signal&&isRoutingMetadataOnlyChange(old.stdout,await fs.readFile(path.join(root,file.path),'utf8')))continue;
+    }
+    selected.push(file.path);
+  }
+  return selected;
+}
+
 export async function runSourceQuality({repoRoot,changeSet,all=false,baseline=[],mode='enforce'}) {
   if(Boolean(all)===Boolean(changeSet)) throw new Error('Choose exactly one scope: all or changeSet');
   if(changeSet) {
@@ -73,8 +106,8 @@ export async function runSourceQuality({repoRoot,changeSet,all=false,baseline=[]
     for(const segment of file.split('/')) {current=path.join(current,segment);if((await fs.lstat(current)).isSymbolicLink()) throw new Error(`Source symlink rejected: ${file}`);}
     diagnostics.push(...await checkSource({file,text:await fs.readFile(full,'utf8'),tags}));
   }
-  const flavorScope=changeSet ? changeSet.files.filter(f=>['A','M','R','C'].includes(f.status) && scope.includes(f.path)).map(f=>f.path) : scope;
+  const flavorScope=await authoredFlavorScope({root,scope,changeSet});
   if(changeSet?.baseSha===null) diagnostics.push(diagnostic({ruleId:'flavor-scope-unknown',file:'scripts/ci-changes.mjs',line:1,severity:'warning',message:'Full structural inventory checked. No authored-text diff is available; historical prose analysis remains a separate full audit.',evidence:'Unknown comparison baseline',waivable:false}));
   diagnostics.push(...legacyGates({repoRoot:root,scope,flavorScope}));
-  return applyBaseline({scope,diagnostics,baseline,mode});
+  return {...applyBaseline({scope,diagnostics,baseline,mode}),flavorScope};
 }
