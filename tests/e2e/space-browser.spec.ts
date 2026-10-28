@@ -69,8 +69,20 @@ test('the Mac browser has real project bookmarks, address navigation and site hi
  expect((await rainSource(page))!.id).toBe(rain.id);expect((await roomAudioSources(page)).some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);
 });
 
+test('the room opens a named work in one action and Companion stays on demand',async({page})=>{
+ await page.goto('/zh/projects/');
+ await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true',{timeout:30_000});
+ const entry=page.locator('.space-work-entry');await expect(entry).toBeVisible();
+ await entry.locator('[data-payload="leafhour"]').click();
+ const work=page.locator('[data-space-window="products"]');await expect(work.locator('.space-product h2')).toHaveText('Leafhour');
+ await expect(work.locator('.space-product-directory')).toHaveCount(0);await expect(work.locator('[data-product-select]')).toHaveValue('leafhour');
+ await expect(page.locator('[data-space-dock] [data-open="agent"]')).toHaveCount(0);
+ await page.locator('[data-space-menu-trigger]').click();await page.locator('.space-menu [data-open="agent"]').click();
+ await expect(page.locator('[data-space-window="agent"] [data-agent-input]')).toBeVisible();
+});
+
 test('the project directory exposes previews and direct website actions before opening details',async({page})=>{
- await desk(page);await app(page,'products');const gallery=page.locator('[data-product-home]');await expect(gallery.locator('[data-project-card]')).toHaveCount(8);await expect(gallery.locator('img')).toHaveCount(7);await expect(gallery.locator('.space-project-card__picture>span')).toHaveCount(1);await capture(page,'project-gallery');
+ await desk(page);await app(page,'products');const gallery=page.locator('[data-product-home]');await expect(gallery.locator('[data-project-card]')).toHaveCount(8);await expect(gallery.locator('[data-project-featured="true"]')).toHaveCount(1);await expect(gallery.locator('[data-project-featured="true"] img')).toHaveCount(1);await expect(gallery.locator('[data-select-product]')).toHaveCount(8);await capture(page,'project-gallery');
  const card=gallery.locator('[data-project-card="leafhour"]');await card.locator('[data-select-product]').click();await expect(page.locator('.space-product h2')).toHaveText('Leafhour');await page.locator('[data-product-back]').click();await expect(card.locator('[data-select-product]')).toBeFocused();
  await card.locator('[data-open="browser"]').click();await expect(page.locator('[data-space-browser]')).toHaveAttribute('data-browser-view','page');await expect(page.locator('.space-browser__page')).toHaveAttribute('src','https://leafhour.com/');
  await page.locator('[data-browser-home]').click();await app(page,'products');await card.locator('[data-open="browser"]').click();await expect(page.locator('[data-space-browser]')).toHaveAttribute('data-browser-view','page');

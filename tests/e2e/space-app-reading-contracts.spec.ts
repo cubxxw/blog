@@ -79,26 +79,16 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
         if(anchor){event.preventDefault();(window as any).__spaceLinkClicks.push({href:anchor.href,target:anchor.target});}
       },true);
     });
-    const compact=view.width<=640||view.coarse&&view.height<=420,picker=products.locator('[data-product-select]');
-    const directory=products.locator('.space-product-directory');
-    if(compact) {
-      await expect(directory).toBeHidden();await expect(picker).toBeVisible();await expect(picker.locator('option')).toHaveCount(sourceProducts.length);
-      expect(await picker.locator('option').evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).toEqual(catalog.products.map(p=>p.id));
-    } else {await expect(directory).toBeVisible();await expect(picker).toBeHidden();await expect(directory.locator('button')).toHaveCount(sourceProducts.length);
-      expect(await directory.locator('[data-select-product]').evaluateAll(nodes=>nodes.map(node=>node.getAttribute('data-select-product')))).toEqual(sourceProducts.map(product=>product.id));}
+    const picker=products.locator('[data-product-select]');
+    await expect(products.locator('.space-product-directory')).toHaveCount(0);
+    await expect(picker).toBeVisible();await expect(picker.locator('option')).toHaveCount(sourceProducts.length);
+    expect(await picker.locator('option').evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).toEqual(catalog.products.map(p=>p.id));
     for(let i=0;i<catalog.products.length;i++) {
       const product=catalog.products[i];
-      if(compact) {
-        await hit(picker);await picker.focus();
-        // Home/End and ArrowDown are native select keyboard operations.
-        // They also exercise reconstruction while the choice owns focus.
-        if(i===0){await picker.press('End');await picker.press('Home');}else await picker.press('ArrowDown');
-        await expect(picker).toHaveValue(product.id);await nextFrame(page);await expect(picker).toBeFocused();
-      } else {
-        const choice=directory.locator(`[data-select-product="${product.id}"]`);await hit(choice);await choice.focus();await choice.press('Space');
-        await expect(choice).toHaveAttribute('aria-pressed','true');await nextFrame(page);await expect(choice).toBeFocused();
-        expect(await projectedFontCSS(choice)).toBeGreaterThanOrEqual(13);
-      }
+      await hit(picker);await picker.focus();
+      // One native picker owns product navigation at every window size.
+      if(i===0){await picker.press('End');await picker.press('Home');}else await picker.press('ArrowDown');
+      await expect(picker).toHaveValue(product.id);await nextFrame(page);await expect(picker).toBeFocused();
       await expect(products.locator('.space-product h2')).toHaveText(product.name);
       expect(await page.evaluate(()=>(window as any).BearSpace.snapshot().windows.find((w:any)=>w.app==='products').payload)).toBe(product.id);
       const paragraphs=products.locator('.space-product > p:not(.space-product__stage):not(.space-product__boundary)');

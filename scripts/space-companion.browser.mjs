@@ -59,7 +59,7 @@ try {
   await check('compact and expanded mobile layouts fit at 320 pixels with visible controls',async()=>{
     await page.setViewportSize({width:320,height:700});assert.ok((await page.locator('[data-agent-input]').boundingBox()).width>100);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
     await page.screenshot({path:`${directory}/mobile-sidecar.png`});
-    await page.locator('[data-space-window="agent"] [data-window-action="close"]').click();await page.locator('[data-space-dock] [data-open="agent"]').click();assert.equal(await page.locator('[data-agent-send]').isVisible(),true);
+    await page.locator('[data-space-window="agent"] [data-window-action="close"]').click();await page.keyboard.press('Control+j');assert.equal(await page.locator('[data-agent-send]').isVisible(),true);
     await page.waitForFunction(()=>getComputedStyle(document.querySelector('[data-space-window="agent"]')).opacity==='1');
     await page.screenshot({path:`${directory}/mobile-compact.png`});
   });

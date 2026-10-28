@@ -1,0 +1,15 @@
+{
+  "cliVersion": "4.8.0",
+  "engineVersion": "0.1.18",
+  "provider": "cursor",
+  "scope": "project",
+  "requestedCommand": "npx impeccable install --providers=cursor --scope=project",
+  "installerResult": "TLS peer closed connection before bundle completion; no files installed",
+  "completedVia": "Official documented manual-copy installation from verified release bundle; only .cursor/ extracted",
+  "source": "https://github.com/pbakaus/impeccable/releases/tag/skill-v4.8.0",
+  "bundle": "universal.zip",
+  "sha256": "82e6f6ff3a2b18f46f0f2fc388c1ab7abf3ccc52bbfc522456396d13011d6706",
+  "primaryFindings": 0,
+  "sourceScanLimitation": "Hugo dynamic stylesheet link cannot resolve in source templates; rendered QA complements the explicit CSS scan.",
+  "paidModelCalls": 0
+}
