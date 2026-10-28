@@ -67,6 +67,9 @@ jobs:
           const lighthouseEntry = collectorRequire.resolve('lighthouse');
           const lighthouseRequire = createRequire(lighthouseEntry);
           const launcher = JSON.parse(fs.readFileSync(path.join(path.dirname(lighthouseRequire.resolve('chrome-launcher')), '..', 'package.json')));
+          const cliEntry = tools.resolve('@lhci/cli/src/cli.js');
+          const runtimeBin = path.join(process.env.LHCI_RUNTIME_PREFIX, 'node_modules', '.bin');
+          const cliRealpath = fs.realpathSync(cliEntry), cliShimRealpath = fs.realpathSync(path.join(runtimeBin, 'lhci'));
           const chromePath = require('playwright').chromium.executablePath();
           const browser = spawnSync(chromePath, ['--version'], { encoding: 'utf8' });
           const versions = { node: process.versions.node, playwright: require('playwright/package.json').version,
@@ -76,22 +79,24 @@ jobs:
             chromeLauncher: '1.2.2', chrome: 'Google Chrome for Testing 156.0.8078.4' };
           const bytes = fs.readFileSync('lighthouserc.json'), config = JSON.parse(bytes);
           const flags = [config.ci.collect.settings.chromeFlags, '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'].join(' ');
-          const verified = browser.status === 0 && launcher.name === 'chrome-launcher' && Object.entries(expected).every(([key, value]) => versions[key] === value);
+          const verified = cliRealpath === cliShimRealpath && browser.status === 0 && launcher.name === 'chrome-launcher' && Object.entries(expected).every(([key, value]) => versions[key] === value);
           fs.mkdirSync('.lighthouseci', { recursive: true });
           fs.writeFileSync('.lighthouseci/runner-receipt.json', JSON.stringify({ schema: 'lighthouse-runner/1', verified,
             collectorSourceSha: process.env.GITHUB_SHA, runId: process.env.GITHUB_RUN_ID, runAttempt: process.env.GITHUB_RUN_ATTEMPT,
-            observedAt: new Date().toISOString(), versions, launcherResolvedFrom: 'LHCI NodeRunner -> lighthouse',
+            observedAt: new Date().toISOString(), versions, cliRealpath, cliShimRealpath, launcherResolvedFrom: 'LHCI NodeRunner -> lighthouse',
             configSha256: createHash('sha256').update(bytes).digest('hex'),
             assertionSha256: createHash('sha256').update(JSON.stringify(config.ci.assert)).digest('hex'),
             urlCount: config.ci.collect.url.length, numberOfRuns: config.ci.collect.numberOfRuns,
             effectiveChromeFlags: flags, sourceScope: 'Collector checkout; public release consistency is checked separately.' }, null, 2));
           if (!verified) throw new Error('Lighthouse runner version mismatch; see runner-receipt.json');
-          const environment = { CHROME_PATH: chromePath, LHCI_RUNTIME_CLI: tools.resolve('@lhci/cli/src/cli.js'),
+          const environment = { CHROME_PATH: chromePath, LHCI_COLLECT__CHROME_PATH: chromePath, LHCI_COLLECT__SETTINGS__CHROME_FLAGS: flags,
             LH_DIAG_CLI: path.join(path.dirname(lighthouseEntry), '..', 'cli', 'index.js'), LH_CHROME_FLAGS: flags };
           for (const [key, value] of Object.entries(environment)) {
             if (/[\r\n]/.test(value)) throw new Error('Invalid runner environment value');
             fs.appendFileSync(process.env.GITHUB_ENV, `${key}=${value}\n`);
           }
+          if (/[\r\n]/.test(runtimeBin)) throw new Error('Invalid runner binary path');
+          fs.appendFileSync(process.env.GITHUB_PATH, `${runtimeBin}\n`);
           JS
       - name: Wait for Netlify to publish this commit
         if: github.event_name == 'push' && inputs.release_context_artifact_id == ''
@@ -111,8 +116,8 @@ jobs:
         run: node scripts/release-followups.mjs assert-current --context followups/release-context.json --out .lighthouseci/release-check-before.json
       - name: Run Lighthouse CI
         id: measure
-        # https://github.com/GoogleChrome/lighthouse-ci/blob/v0.15.1/docs/configuration.md#autorun
-        run: node "$LHCI_RUNTIME_CLI" autorun --collect.chromePath="$CHROME_PATH" --collect.settings.chromeFlags="$LH_CHROME_FLAGS"
+        # https://github.com/GoogleChrome/lighthouse-ci/blob/v0.15.1/docs/configuration.md#environment-variables
+        run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       - name: Capture opt-in first-paint diagnostic traces
