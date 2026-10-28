@@ -2,8 +2,8 @@ import {test,expect,type Page,type Locator} from '../helpers/frozen-site';
 import {enterWorkspace,reserveWorldJourney} from '../helpers/space-entry';
 import {writeFile} from 'node:fs/promises';
 
-test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
-type Article={url:string,title:string,description:string,date:string,section:string,tags:string[]};
+test.use({reducedMotion:'reduce',channel:process.env.BEAR_BROWSER_CHANNEL||'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
+type Article={url:string,title:string,description:string,date:string,section:string,tags:string[],labNotes?:boolean};
 const frames=(page:Page)=>page.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));
 const projectedFontCSS=(node:Locator)=>node.evaluate((el:HTMLElement)=>parseFloat(getComputedStyle(el).fontSize)*el.getBoundingClientRect().width/el.offsetWidth);
 const noOverflow=(node:Locator)=>node.evaluate(el=>el.scrollWidth<=el.clientWidth+1);
@@ -23,7 +23,7 @@ async function hit(control:Locator){
   expect(await control.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);return box;
 }
 async function choose(page:Page,reader:Locator,value:string){
-  if((page.viewportSize()?.width||0)<=640){const picker=reader.locator('[data-library-select]');await hit(picker);await picker.focus();const values=['all','ai-agent','engineering','growth','favorites'];await picker.press('Home');for(let n=0;n<values.indexOf(value);n++)await picker.press('ArrowDown');await expect(picker).toHaveValue(value);await frames(page);await expect(picker).toBeFocused();}
+  if((page.viewportSize()?.width||0)<=640){const picker=reader.locator('[data-library-select]');await hit(picker);await picker.focus();const values=await picker.locator('option').evaluateAll(nodes=>nodes.map(node=>(node as HTMLOptionElement).value)),index=values.indexOf(value);expect(index).toBeGreaterThanOrEqual(0);await picker.press('Home');for(let n=0;n<index;n++)await picker.press('ArrowDown');await expect(picker).toHaveValue(value);await frames(page);await expect(picker).toBeFocused();}
   else {const control=reader.locator(`[data-library-filter="${value}"]`);await hit(control);await control.click();await frames(page);await expect(control).toBeFocused();}
   await expect(reader.locator(`[data-library-filter="${value}"]`)).toHaveAttribute('aria-pressed','true');
 }
@@ -84,11 +84,12 @@ for(const view of views)test.describe(`${view.width}×${view.height} ${view.loca
   test('real writing and profile remain readable with reachable choices and complete titles',async({page})=>{
     await setup(page,view.locale,view.theme);const catalog=await page.locator('[data-space-catalog]').evaluate(el=>JSON.parse(el.textContent||'{}')) as {articles:Article[]};const reader=await openApp(page,'reader'),query=reader.locator('[data-library-query]'),picker=reader.locator('[data-library-select]'),list=reader.locator('[data-library-list]');
     const originalQuery=await query.elementHandle(),originalPicker=await picker.elementHandle();await expect(list.locator('.space-list-item')).toHaveCount(catalog.articles.length);
-    expect(await picker.locator('option').evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).toEqual(['all','ai-agent','engineering','growth','favorites']);
+    expect(await picker.locator('option').evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).toEqual(['all','ai-agent','engineering','growth','lab-notes','favorites']);
     if(view.width<=640){await expect(picker).toBeVisible();await expect(reader.locator('.space-library-directory')).toBeHidden();await hit(picker);}else{await expect(picker).toBeHidden();for(const control of await reader.locator('[data-library-filter]').all()){await hit(control);expect(await projectedFontCSS(control)).toBeGreaterThanOrEqual(14);}}
     const longest=catalog.articles.reduce((best,item,i)=>item.title.length>catalog.articles[best].title.length?i:best,0),item=list.locator('.space-list-item').nth(longest);await item.scrollIntoViewIfNeeded();await expect(item.locator('strong')).toHaveText(catalog.articles[longest].title);await expect(item.locator('span')).toHaveText(catalog.articles[longest].description||'');
     expect(await projectedFontCSS(item.locator('strong'))).toBeGreaterThanOrEqual(15);expect(await projectedFontCSS(item.locator('span'))).toBeGreaterThanOrEqual(14);expect(await projectedFontCSS(item.locator('small'))).toBeGreaterThanOrEqual(12);expect(await item.locator('strong').evaluate(el=>getComputedStyle(el).whiteSpace==='normal'&&el.scrollHeight<=el.clientHeight+1)).toBe(true);
     const summary=await item.locator('span').evaluate((el:HTMLElement)=>({clamp:getComputedStyle(el).webkitLineClamp,height:el.offsetHeight,line:parseFloat(getComputedStyle(el).lineHeight)}));expect(summary.clamp).toBe('3');expect(summary.height).toBeLessThanOrEqual(summary.line*3+1);expect(await noOverflow(reader.locator('[data-window-body]'))).toBe(true);
+    await choose(page,reader,'lab-notes');await expect(list.locator('.space-list-item')).toHaveCount(catalog.articles.filter(article=>article.labNotes).length);expect(await query.evaluate((el,old)=>el===old,originalQuery)).toBe(true);expect(await picker.evaluate((el,old)=>el===old,originalPicker)).toBe(true);
     await choose(page,reader,'engineering');expect(await query.evaluate((el,old)=>el===old,originalQuery)).toBe(true);expect(await picker.evaluate((el,old)=>el===old,originalPicker)).toBe(true);await query.fill('dlv');await choose(page,reader,'all');await expect(query).toHaveValue('dlv');expect(await query.evaluate((el,old)=>el===old,originalQuery)).toBe(true);await expect(list.locator('.space-list-item')).not.toHaveCount(0);
     for(const app of ['notes','books'])await hit(reader.locator(`.space-library-actions [data-open="${app}"]`));
     const welcome=await openApp(page,'welcome'),profile=welcome.locator('[data-space-profile]');if(await profile.isVisible())await welcome.locator('[data-finder-return]').click();
