@@ -1,4 +1,4 @@
-name: Browser DOM snapshot cost diagnostic only
+name: Lazy public reading context diagnostic only
 on:
   workflow_dispatch:
     inputs:
@@ -29,12 +29,19 @@ jobs:
           browsers: chromium
       - uses: actions/download-artifact@v8
         with:
+          artifact-ids: '12816540298'
+          run-id: '40687849500'
+          github-token: ${{ github.token }}
+          path: tests/.artifacts/lazy-control-input
+          merge-multiple: true
+      - uses: actions/download-artifact@v8
+        with:
           artifact-ids: ${{ inputs.artifact_id }}
           run-id: ${{ inputs.run_id }}
           github-token: ${{ github.token }}
-          path: tests/.artifacts/trace-input
+          path: tests/.artifacts/lazy-candidate-input
           merge-multiple: true
-      - name: Alternate full and video-only trace on one runner with the same physical journey
+      - name: Alternate original and on-demand reading contexts with full capture
         env:
           DIAG_SOURCE: ${{ inputs.source_sha }}
           DIAG_RUN: ${{ inputs.run_id }}
@@ -43,43 +50,50 @@ jobs:
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           import path from 'node:path';
+          import os from 'node:os';
           import assert from 'node:assert/strict';
           import {createHash} from 'node:crypto';
           import {spawnSync,execFileSync} from 'node:child_process';
           import {verifyFrozenProof} from './scripts/ci-shards.mjs';
-          const dir=path.resolve('tests/.artifacts/trace-input'),bundleRoot=path.join(dir,'site');
-          const read=name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
-          const plan=read('plan.json'),changeSet=read('changes.json'),proof=read('frozen.json');
-          const source=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
-          assert.equal(source,process.env.DIAG_SOURCE);assert.equal(source,proof.sourceSha);assert.equal(proof.runId,process.env.DIAG_RUN);
-          verifyFrozenProof({bundleRoot,plan,changeSet,proof});
-          const output=path.resolve('tests/.artifacts/trace-compare');fs.mkdirSync(output,{recursive:true});
-          const file='playwright.config.ts',before=fs.readFileSync(file,'utf8');
-          const original="trace: { mode: 'retain-on-failure', screenshots: true, snapshots: true, sources: true },";
-          assert.equal(before.split(original).length,2);
-          const base=new URL(JSON.parse(fs.readFileSync(path.join(bundleRoot,'page-map.json'),'utf8')).baseUrl),runs=[];
-          const variants=['full','no-dom','no-dom','full','full','no-dom'];
-          try {
-            for(const [index,variant]of variants.entries()){
-              const here=path.join(output,String(index+1)+'-'+variant);fs.mkdirSync(here,{recursive:true});
-              const config=before.replace(original,`trace: { mode: 'on', screenshots: true, snapshots: ${variant==='full'}, sources: true },`);
-              fs.writeFileSync(file,config);fs.writeFileSync(path.join(here,'actual-config.ts'),config);
-              const started=Date.now();console.log('TRACE_COMPARE_BEGIN',JSON.stringify({index:index+1,variant,source,at:new Date().toISOString()}));
-              const result=spawnSync(process.execPath,['node_modules/@playwright/test/cli.js','test','tests/e2e/space-browser.spec.ts','--project=desktop','--workers=1','--retries=0','--grep=continuous sound \\(native\\)$','--reporter=list,json,html'],{stdio:'inherit',env:{...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(bundleRoot,'public'),SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,SITE_TEST_RESULTS:path.join(here,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(here,'html'),PLAYWRIGHT_HTML_OPEN:'never',PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(here,'playwright-results.json')}});
-              const row={index:index+1,variant,exitCode:result.status,processDurationMs:Date.now()-started,configHash:createHash('sha256').update(config).digest('hex')};runs.push(row);console.log('TRACE_COMPARE_END',JSON.stringify(row));
-              if(result.error)throw result.error;
-            }
-          } finally {
-            fs.writeFileSync(file,before);verifyFrozenProof({bundleRoot,plan,changeSet,proof});
-            fs.writeFileSync(path.join(output,'identity.json'),JSON.stringify({diagnosticOnly:true,releaseEligible:false,source,run:process.env.DIAG_RUN,artifact:process.env.DIAG_ARTIFACT,order:variants,runs,node:process.version,playwright:JSON.parse(fs.readFileSync('node_modules/@playwright/test/package.json','utf8')).version},null,2));
+          const controlSource='a0fb4ff040155c510cf5fdc51706486fbcf2e0b8';
+          const source=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();assert.equal(source,process.env.DIAG_SOURCE);
+          const inputs={control:{dir:'lazy-control-input',source:controlSource,run:'40687849500',artifact:'12816540298'},candidate:{dir:'lazy-candidate-input',source,run:process.env.DIAG_RUN,artifact:process.env.DIAG_ARTIFACT}};
+          for(const input of Object.values(inputs)){
+            input.dir=path.resolve('tests/.artifacts',input.dir);input.bundleRoot=path.join(input.dir,'site');
+            const read=name=>JSON.parse(fs.readFileSync(path.join(input.dir,name),'utf8'));
+            Object.assign(input,{plan:read('plan.json'),changeSet:read('changes.json'),proof:read('frozen.json')});
+            assert.equal(input.proof.sourceSha,input.source);assert.equal(input.proof.runId,input.run);verifyFrozenProof(input);
           }
-          if(runs.some(row=>row.exitCode!==0))process.exitCode=1;
+          assert.equal(execFileSync('git',['diff','--name-only',controlSource,source,'--','tests/helpers','playwright.config.ts','package.json','package-lock.json','assets/css','layouts','content','config.yml'],{encoding:'utf8'}).trim(),'','Rendering data and test framework must match');
+          const testFile='tests/e2e/space-browser.spec.ts',candidateTest=fs.readFileSync(testFile,'utf8');
+          const controlTest=execFileSync('git',['show',controlSource+':'+testFile],{encoding:'utf8'});
+          const configFile='playwright.config.ts',config=fs.readFileSync(configFile,'utf8');
+          const original="trace: { mode: 'retain-on-failure', screenshots: true, snapshots: true, sources: true },";assert.equal(config.split(original).length,2);
+          // Both variants execute the identical original journey. Candidate's
+          // extra idle-frame assertion is certified only by the real full CI.
+          fs.writeFileSync(testFile,controlTest);fs.writeFileSync(configFile,config.replace(original,"trace: { mode: 'on', screenshots: true, snapshots: true, sources: true },"));
+          const output=path.resolve('tests/.artifacts/lazy-reading-pair');fs.mkdirSync(output,{recursive:true});
+          const order=['control','candidate','candidate','control','control','candidate'],runs=[];
+          try{
+            for(const [index,variant]of order.entries()){
+              const input=inputs[variant],here=path.join(output,String(index+1)+'-'+variant);fs.mkdirSync(here,{recursive:true});
+              const base=new URL(JSON.parse(fs.readFileSync(path.join(input.bundleRoot,'page-map.json'),'utf8')).baseUrl);
+              const start=Date.now();console.log('LAZY_PAIR_BEGIN',JSON.stringify({index:index+1,variant,uiSource:input.source,at:new Date().toISOString()}));
+              const result=spawnSync(process.execPath,['node_modules/@playwright/test/cli.js','test',testFile,'--project=desktop','--workers=1','--retries=0','--grep=continuous sound \\(native\\)$','--reporter=list,json,html'],{stdio:'inherit',env:{...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),NO_PROXY:'localhost,127.0.0.1,::1',SITE_OUTPUT_DIR:path.join(input.bundleRoot,'public'),SITE_BASE_PATH:base.pathname,SITE_CANONICAL_ORIGIN:base.origin,SITE_TEST_RESULTS:path.join(here,'results'),PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(here,'html'),PLAYWRIGHT_HTML_OPEN:'never',PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(here,'playwright-results.json')}});
+              const row={index:index+1,variant,uiSource:input.source,exitCode:result.status,processDurationMs:Date.now()-start};runs.push(row);console.log('LAZY_PAIR_END',JSON.stringify(row));if(result.error)throw result.error;
+            }
+          }finally{
+            fs.writeFileSync(testFile,candidateTest);fs.writeFileSync(configFile,config);for(const input of Object.values(inputs))verifyFrozenProof(input);
+            const hash=s=>createHash('sha256').update(s).digest('hex');
+            fs.writeFileSync(path.join(output,'identity.json'),JSON.stringify({diagnosticOnly:true,releaseEligible:false,inputs:Object.fromEntries(Object.entries(inputs).map(([key,x])=>[key,{source:x.source,run:x.run,artifact:x.artifact}])),order,runs,testSource:controlSource,originalTestHash:hash(controlTest),candidateTestHash:hash(candidateTest),fullCapture:true,captureDifference:'on retains successful traces; DOM/HAR/video/sources enabled in both',budgetsChanged:false,pixelPolicyChanged:false,node:process.version,playwright:JSON.parse(fs.readFileSync('node_modules/@playwright/test/package.json','utf8')).version,cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length},null,2));
+          }
+          if(runs.some(x=>x.exitCode!==0))process.exitCode=1;
           NODE
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: trace-compare-${{ github.run_id }}
-          path: tests/.artifacts/trace-compare/
+          name: lazy-reading-pair-${{ github.run_id }}
+          path: tests/.artifacts/lazy-reading-pair/
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
