@@ -30,7 +30,7 @@ export async function withRoomObservationSession<T>(page:Page,journey:()=>Promis
 // validation and unscoped successful detach. Explicit journey scopes reuse the
 // owned connection and detach in their finally, inside the original case budget.
 // All input remains outside this helper and uses the original native actions.
-export async function readRoomObservation<T,A>(page:Page,observation:(arg:A)=>T|Promise<T>,arg:A,options:{timeout:5000|6000|30000;label:string;validate:(value:unknown)=>value is T}):Promise<T>{
+export async function readRoomObservation<T,A>(page:Page,observation:(arg:A)=>T|Promise<T>,arg:A,options:{timeout:5000|6000|12000|30000;label:string;validate:(value:unknown)=>value is T}):Promise<T>{
   if(page.context().browser()?.browserType().name()!=='chromium')throw new Error('Room protocol observation requires Chromium');
   const scope=scopes.get(page);
   const invalidate=(error:unknown)=>{if(scope&&!scope.invalid){scope.invalid=true;scope.error=error;}};
@@ -73,21 +73,49 @@ export async function readRoomObservation<T,A>(page:Page,observation:(arg:A)=>T|
 export async function expectRoomAttributes(page:Page,attributes:Record<string,string>,timeout:5000|30000=5000){
   await readRoomObservation(page,async({attributes,timeout})=>{
     const deadline=performance.now()+timeout;let root:Element|undefined;
-    for(;;){
-      const roots=document.querySelectorAll('[data-bear-workspace]');
-      if(roots.length>1)throw new Error('Room attribute root ambiguous');
-      if(root&&roots[0]!==root)throw new Error('Room attribute root replaced');
-      root??=roots[0];
-      if(root&&Object.entries(attributes).every(([name,value])=>root!.getAttribute(name)===value))return true;
-      const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Room attributes exceeded'+timeout+'ms');
-      await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
-    }
+    const diagnostic={timeOrigin:performance.timeOrigin,startedAt:performance.now(),deadline,
+      lastSampleAt:null as number|null,matchedAt:null as number|null,finishedAt:null as number|null,
+      initialMatch:null as boolean|null,samples:0,rootCount:0,status:'waiting'};
+    (window as unknown as {__roomAttributeObservation:typeof diagnostic}).__roomAttributeObservation=diagnostic;
+    return new Promise<boolean>((resolve,reject)=>{
+      let settled=false,timer:ReturnType<typeof setTimeout>|undefined;
+      const finish=(ok:boolean,cause?:unknown,status=ok?'matched':'error')=>{
+        if(settled)return;settled=true;diagnostic.status=status;diagnostic.finishedAt=performance.now();
+        observer.disconnect();if(timer)clearTimeout(timer);if(ok)resolve(true);else reject(cause);
+      };
+      const sample=()=>{
+        if(settled)return;
+        try{
+          const now=performance.now();diagnostic.lastSampleAt=now;diagnostic.samples=Math.min(1024,diagnostic.samples+1);
+          if(now>deadline){finish(false,new Error('Room attributes exceeded'+timeout+'ms'),'timeout');return;}
+          const roots=document.querySelectorAll('[data-bear-workspace]');diagnostic.rootCount=Math.min(2,roots.length);
+          if(roots.length>1)throw new Error('Room attribute root ambiguous');
+          if(root&&roots[0]!==root)throw new Error('Room attribute root replaced');
+          root??=roots[0];
+          const matches=Boolean(root&&Object.entries(attributes).every(([name,value])=>root!.getAttribute(name)===value));
+          const checkedAt=performance.now();diagnostic.lastSampleAt=checkedAt;
+          if(checkedAt>deadline){finish(false,new Error('Room attributes exceeded'+timeout+'ms'),'timeout');return;}
+          if(diagnostic.initialMatch===null)diagnostic.initialMatch=matches;
+          if(matches){diagnostic.matchedAt=checkedAt;finish(true);}
+        }catch(cause){finish(false,cause);}
+      };
+      const observer=new MutationObserver(sample);
+      try{
+        // Observe only real DOM changes. The original Node gate still includes
+        // setup, dispatch and reply; a timely mutation cannot excuse a late reply.
+        observer.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:Object.keys(attributes)});
+        timer=setTimeout(()=>finish(false,new Error('Room attributes exceeded'+timeout+'ms'),'timeout'),Math.max(0,deadline-performance.now()));
+        sample();
+      }catch(cause){finish(false,cause);}
+    });
   },{attributes,timeout},{timeout,label:'Room attributes',validate:(value):value is boolean=>value===true});
 }
 
 export async function observePausedResident(page:Page,checkFrames=false){
   await readRoomObservation(page,async(checkFrames)=>{
     const deadline=performance.now()+5000;
+    const diagnostic=(stage:string)=>{try{console.debug("ROOM_RESIDENT_PHASE",JSON.stringify({operation:"pause",stage,at:performance.now(),epoch:Date.now(),checkFrames}));}catch{}};
+    diagnostic("entered");
     const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');
     if(roots.length!==1)throw new Error('Resident pause root missing or ambiguous');
     const el=roots[0];
@@ -98,14 +126,19 @@ export async function observePausedResident(page:Page,checkFrames=false){
       if(remaining===0)throw new Error('Resident pause exceeded5000ms');
       await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
     }
-    sameRoot();const pose=el.dataset.catPose;if(!pose)throw new Error('Resident pause pose missing');
+    sameRoot();diagnostic("inactive");const pose=el.dataset.catPose;if(!pose)throw new Error('Resident pause pose missing');
+    diagnostic("pose-window-start");
     await new Promise(resolve=>setTimeout(resolve,400));sameRoot();
     if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose)throw new Error('Resident moved during400ms pause observation');
+    diagnostic("pose-stable");
     if(checkFrames){
       const frames=el.dataset.worldFrames;if(!frames)throw new Error('Resident pause frame counter missing');
+      diagnostic("frames-window-start");
       await new Promise(resolve=>setTimeout(resolve,200));sameRoot();
       if(el.dataset.catActive!=='false'||el.dataset.catPose!==pose||el.dataset.worldFrames!==frames)throw new Error('Quiet room rendered during200ms idle observation');
+      diagnostic("frames-stable");
     }
+    diagnostic("complete");
     return true;
   // The state has its own5s deadline. Keep the subsequent400ms pose and
   // optional200ms idle windows complete, with bounded transport/cleanup room.
@@ -152,4 +185,51 @@ export async function waitForRoomBoatMove(page:Page,before:string|null):Promise<
   if(typeof value!=='string'||value===before)return false;
   try{const pose:unknown=JSON.parse(value);return finitePose(pose)&&pose.some((n,i)=>n!==(coordinates as number[])[i]);}catch{return false;}
  }});
+}
+
+export type ResidentStartupObservation={status:string;initialPose:string;initialTime:number;changedPose:string;changedTime:number;bootCompleteAt:number|null;renderedRoamAt:number|null;readinessError:string|null};
+// Keep the original room boot, rendered-mode, asset and movement gates
+// independent. The enclosing Playwright case still owns the total90s budget.
+export async function observeResidentStartup(page:Page):Promise<ResidentStartupObservation>{
+  const stages=[['boot',30000],['roam',5000],['cat',30000],['motion',12000]] as const;
+  let movement:ResidentStartupObservation|undefined;
+  for(const [phase,timeout]of stages){
+    const value=await readRoomObservation(page,async({phase,timeout})=>{
+      const deadline=performance.now()+timeout;
+      const diagnostic=(stage:string)=>{try{console.debug("ROOM_RESIDENT_PHASE",JSON.stringify({operation:"startup",phase,stage,at:performance.now(),epoch:Date.now()}));}catch{}};
+      diagnostic("entered");
+      for(;;){
+        if(performance.now()>deadline)throw new Error('Resident '+phase+' exceeded'+timeout+'ms');
+        const state=window as unknown as {__catMotionObservation:ResidentStartupObservation;__catMotionRoot:Element;__catReadinessRoot:Element},data=state.__catMotionObservation;
+        if(!data)throw new Error('Resident startup observation missing');
+        if(data.readinessError||['motion-timeout','startup-timeout','pagehide'].includes(data.status))throw new Error('Resident startup observation: '+(data.readinessError||data.status));
+        const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]'),el=roots[0];
+        if(roots.length>1)throw new Error('Resident startup root ambiguous');
+        if((state.__catMotionRoot&&el!==state.__catMotionRoot)||(state.__catReadinessRoot&&el!==state.__catReadinessRoot))throw new Error('Resident startup root replaced');
+        if(data.bootCompleteAt!==null){
+          if(data.renderedRoamAt===null&&performance.now()-data.bootCompleteAt>5000)throw new Error('Rendered roam exceeded5s after observed boot completion');
+          if(data.renderedRoamAt!==null&&data.renderedRoamAt-data.bootCompleteAt>5000)throw new Error('Rendered roam arrived after5s');
+        }
+        const owned=roots.length===1&&el===state.__catMotionRoot&&el===state.__catReadinessRoot;
+        const boot=owned&&el.dataset.bootState==='complete'&&Number.isFinite(data.bootCompleteAt);
+        const roam=boot&&el.dataset.worldRenderedMode==='roam'&&Number.isFinite(data.renderedRoamAt);
+        if(phase==='boot'&&boot){diagnostic("observed");return true;}
+        if(phase==='roam'&&roam){diagnostic("observed");return true;}
+        if(phase==='cat'&&roam&&el.dataset.catLoaded==='true'){diagnostic("observed");return true;}
+        if(phase==='motion'&&roam&&el.dataset.catLoaded==='true'&&data.status==='changed'){diagnostic("observed");return data;}
+        const remaining=deadline-performance.now();if(remaining<=0)throw new Error('Resident '+phase+' exceeded'+timeout+'ms');
+        await new Promise(resolve=>setTimeout(resolve,Math.min(50,remaining)));
+      }
+    },{phase,timeout},{timeout,label:'Resident '+phase+' observation',validate:(value):value is true|ResidentStartupObservation=>{
+      if(phase!=='motion')return value===true;
+      if(!value||typeof value!=='object')return false;const data=value as Record<string,unknown>;
+      if(data.status!=='changed'||typeof data.initialPose!=='string'||typeof data.changedPose!=='string'||data.initialPose===data.changedPose||data.readinessError!==null)return false;
+      if(!['initialTime','changedTime','bootCompleteAt','renderedRoamAt'].every(key=>typeof data[key]==='number'&&Number.isFinite(data[key])))return false;
+      const duration=Number(data.changedTime)-Number(data.initialTime),renderDelay=Number(data.renderedRoamAt)-Number(data.bootCompleteAt);
+      return duration>0&&duration<=12000&&renderDelay>=0&&renderDelay<=5000;
+    }});
+    if(value!==true)movement=value;
+  }
+  if(!movement)throw new Error('Resident motion observation missing');
+  return movement;
 }

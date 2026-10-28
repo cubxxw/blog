@@ -121,6 +121,7 @@ test('a cancelled read transition cannot steal a replayed café visit',async({pa
     const snapshot=await page.evaluate(()=>(window as unknown as {BearSpace:{snapshot:()=>{active:string;windows:{id:string}[]}}}).BearSpace.snapshot());
     expect(snapshot.active).not.toBe('reader');
     await expect(page.locator('[data-space-window="reader"]')).toHaveCount(0);
+    await expect(page.locator(root)).toHaveAttribute('data-world-travel','false');
     await clickStaticRoomControl(page,'[data-cafe-enter]');await page.clock.fastForward(2000);await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   }finally{await page.clock.resume();}
 });

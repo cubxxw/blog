@@ -1,6 +1,43 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+import {runInNewContext} from 'node:vm';
 import {JIANGNAN_BOUNDS,JIANGNAN_COLLIDERS,jiangnanWalk,jiangnanLook,JIANGNAN_TARGETS,jiangnanBoat,canJiangnanNavigate,jiangnanDestination} from '../assets/js/space/jiangnan-state.mjs';
+
+// Run the real nav listener with the browser focus boundary controlled. The
+// browser regression separately checks :focus-within and physical hit testing.
+function objectMenuEscape(options={}){
+ const source=readFileSync(new URL('../assets/js/space/world-jiangnan.js',import.meta.url),'utf8');
+ const {parse}=createRequire(import.meta.url)('acorn');
+ let listener;
+ const visit=node=>{
+  if(!node||typeof node!=='object')return;
+  if(node.type==='CallExpression'&&node.callee.name==='listen'&&node.arguments[0]?.name==='objectControls'&&node.arguments[1]?.value==='keydown')listener=node.arguments[2];
+  for(const value of Object.values(node))if(Array.isArray(value))value.forEach(visit);else if(value&&typeof value==='object')visit(value);
+ };
+ visit(parse(source,{ecmaVersion:'latest',sourceType:'module'}));assert.ok(listener,'object menu owns an Escape listener');
+ const actions=[],state={mode:'roam',visible:true,blocked:false,phase:'indoor',...options};
+ const handler=runInNewContext('('+source.slice(listener.start,listener.end)+')',{
+  navigate:()=>canJiangnanNavigate(state),excursion:{phase:state.phase},
+  renderer:{domElement:{focus:options=>actions.push(['focus',options.preventScroll])}},
+ });
+ return {actions,press(overrides={}){handler({key:'Escape',defaultPrevented:false,isComposing:false,keyCode:27,preventDefault(){actions.push('prevent');},stopPropagation(){actions.push('stop');},...overrides});}};
+}
+
+test('object-menu Escape consumes the key and returns focus to the existing canvas',()=>{
+ const f=objectMenuEscape();f.press();assert.deepEqual(f.actions,['prevent','stop',['focus',true]]);
+});
+test('object-menu dismissal leaves composition and already-handled keys alone',()=>{
+ for(const event of [{isComposing:true},{keyCode:229},{defaultPrevented:true},{key:'Enter'}]){
+  const f=objectMenuEscape();f.press(event);assert.deepEqual(f.actions,[]);
+ }
+});
+test('object-menu dismissal respects the real world navigation and door guards',()=>{
+ for(const state of [{mode:'workspace'},{mode:'inspect'},{visible:false},{blocked:true},{phase:'threshold'},{phase:'opening'}]){
+  const f=objectMenuEscape(state);f.press();assert.deepEqual(f.actions,[]);
+ }
+});
 
 test('a touch floor destination follows the same bounded walk without crossing furniture',()=>{
  const p={x:0,y:1.43,z:1.5,yaw:.2,pitch:-.05,fov:57};
