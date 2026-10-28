@@ -1,15 +1,15 @@
 # DIAGNOSTIC BRANCH ONLY. Never merge this workflow into main or PR491.
-name: Lighthouse Projects Linux diagnostic
+name: Lighthouse fixed-preview launch flags diagnostic
 on:
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: lighthouse-projects-diagnostic-${{ github.ref }}
+  group: lighthouse-projects-flags-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   diagnostic:
-    if: github.repository == 'cubxxw/blog' && github.event_name == 'workflow_dispatch' && github.ref_name == 'codex/blog-lighthouse-diag-20261029'
+    if: github.repository == 'cubxxw/blog' && github.event_name == 'workflow_dispatch' && github.ref_name == 'codex/blog-lighthouse-flags-20261029'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -24,13 +24,13 @@ jobs:
         run: |
           npm ci --ignore-scripts --no-audit --no-fund
           npx --no-install playwright install --with-deps chromium
-          npm install --prefix .lh-diagnostic-tools --ignore-scripts --no-audit --no-fund @lhci/cli@0.15.1
-      - name: Collect two source-bound diagnostic samples without publishing
+          npm install --prefix .lh-diagnostic-tools --ignore-scripts --no-audit --no-fund @lhci/cli@0.15.1 lighthouse@12.6.1 chrome-launcher@1.2.2
+      - name: Collect two launch-flag variants on the same immutable preview
         run: node scripts/diagnostics/projects-linux.cjs
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: diagnostic-projects-linux-${{ github.run_id }}-${{ github.run_attempt }}
-          path: linux-projects-diagnostic/
+          name: diagnostic-projects-lhflags-${{ github.run_id }}-${{ github.run_attempt }}
+          path: linux-projects-lhflags/
           if-no-files-found: error
           retention-days: 14
