@@ -103,6 +103,8 @@ test('pinned Hugo accepts official commit suffixes but rejects wrong versions an
 
 test("isolated build completes plugin and function lifecycle before output checks", async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "blog-build-test-"));
+  const tsconfig = '{"compilerOptions":{"strict":true},"include":["tests/**/*.ts"]}\n';
+  fs.writeFileSync(path.join(root, "tsconfig.json"), tsconfig);
   fs.mkdirSync(path.join(root, "config"));
   fs.writeFileSync(
     path.join(root, "netlify.toml"),
@@ -123,6 +125,8 @@ test("isolated build completes plugin and function lifecycle before output check
       exec: async (call) => {
         calls.push(call);
         if (call.stage === "netlify-build") {
+          assert.equal(fs.readFileSync(path.join(call.cwd, "tsconfig.json"), "utf8"), tsconfig,
+            "isolated Hugo build must use the exact checked-in compiler configuration");
           assert.ok(call.args.includes("--offline"));
           assert.notEqual(call.cwd, root);
           fs.mkdirSync(path.join(call.cwd, "public"), { recursive: true });
@@ -256,6 +260,8 @@ test("production refuses source SHA and dirty build inputs that differ from the 
     git("config", "user.name", "Test");
     fs.mkdirSync(path.join(root, "content"));
     fs.writeFileSync(path.join(root, "content/a.md"), "original");
+    const tsconfig = '{"compilerOptions":{"strict":true}}\n';
+    fs.writeFileSync(path.join(root, "tsconfig.json"), tsconfig);
     git("add", ".");
     git("commit", "-qm", "test");
     const sha = git("rev-parse", "HEAD");
@@ -265,6 +271,13 @@ test("production refuses source SHA and dirty build inputs that differ from the 
         assertProductionSource({ repoRoot: root, sourceSha: "b".repeat(40) }),
       /HEAD|revision/,
     );
+    fs.writeFileSync(path.join(root, "tsconfig.json"), '{"compilerOptions":{"strict":false}}\n');
+    assert.throws(
+      () => assertProductionSource({ repoRoot: root, sourceSha: sha }),
+      /dirty|uncommitted/,
+      "uncommitted compiler configuration must not be claimed as the checked-in source",
+    );
+    fs.writeFileSync(path.join(root, "tsconfig.json"), tsconfig);
     fs.writeFileSync(path.join(root, "content/a.md"), "modified");
     assert.throws(
       () => assertProductionSource({ repoRoot: root, sourceSha: sha }),

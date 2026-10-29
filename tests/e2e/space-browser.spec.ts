@@ -3,6 +3,7 @@ import {expectRoomAttributes,readRoomObservation,withRoomObservationSession} fro
 import {hitRoomObject,projectRoomObject} from '../helpers/room-interaction';
 import {withRoomPointerBatch} from '../helpers/room-pointer';
 import {observeRoomAudio,rainSource,roomAudioSources,readRoomAudioSources} from '../helpers/room-audio';
+import {createRoomBrowserFrameObservation} from '../helpers/room-browser-frame-observation';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -114,6 +115,9 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await desk(page);await app(page,'browser');await page.locator('[data-browser-bookmark="leafhour"]').click();
  const frame=page.frameLocator('.space-browser__page'),note=frame.getByRole('textbox',{name:'A thought to return to'});
  await clickInWebPage(page,note);await page.keyboard.type('The same page, when I come back.');await clickInWebPage(page,frame.getByRole('button'));await expect(frame.getByRole('button')).toHaveText('Kept open');
+ const browserFrame=createRoomBrowserFrameObservation(page);
+ try{
+ await browserFrame.bind();
  const sourcesBefore=await readRoomAudioSources(page),rain=sourcesBefore.find(s=>!s.stopped&&Math.abs(s.duration-100)<.05)!,music=sourcesBefore.find(s=>!s.stopped&&Math.abs(s.duration-100)>.05)!,before=requests;
  await capture(page,'visitor-before-standing');
  if(page.viewportSize()!.width<=640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-mac-panel="view"] [data-computer-display="framed"]').click();}
@@ -142,13 +146,14 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  await hit('computer');await expectRoomAttributes(page,{'data-world-mode':'workspace'});
  });
  await capture(page,'visitor-returned-state');
- await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);
+ const returned=await browserFrame.observe();expect(returned.textareaValue).toBe('The same page, when I come back.');expect(returned.buttonText).toBe('Kept open');expect(requests).toBe(before);
  const sourcesAfter=await readRoomAudioSources(page);expect(sourcesAfter.find(s=>!s.stopped&&Math.abs(s.duration-100)<.05)!.id).toBe(rain.id);expect(sourcesAfter.some(s=>s.id===music.id&&!s.stopped)).toBe(true);expect(errors).toEqual([]);await capture(page,'visitor-after-returning');
  if(mover==='native'){
   // Fault injection exercises the same anchored-node restoration as a lost GPU.
   await page.locator('.space-world__canvas').evaluate(el=>el.dispatchEvent(new Event('webglcontextlost',{cancelable:true})));await expectRoomAttributes(page,{'data-world-failed':'true'});await expectRoomAttributes(page,{'data-cafe-mode':'desktop'});
-  await expect(note).toHaveValue('The same page, when I come back.');await expect(frame.getByRole('button')).toHaveText('Kept open');expect(requests).toBe(before);expect(errors).toEqual([]);await capture(page,'visitor-graphics-recovery');
+  const recovered=await browserFrame.observe();expect(recovered.textareaValue).toBe('The same page, when I come back.');expect(recovered.buttonText).toBe('Kept open');expect(requests).toBe(before);expect(errors).toEqual([]);await capture(page,'visitor-graphics-recovery');
  }
+ }finally{await browserFrame.close();}
 }));
 
 test('opening a website gives quiet feedback and retry really reloads the page without duplicate site history',async({page})=>{

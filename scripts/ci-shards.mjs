@@ -13,7 +13,7 @@ export function browserShardPlan({plan,changeSet}) {
   if(!plan.runSite)return [];
   const shards=[{id:'quality',suite:'quality',workers:1}];
   if(legacyBrowserScope(changeSet,'production').required)
-    for(let current=1;current<=8;current++)shards.push({id:`legacy-${current}`,suite:'legacy',shard:`${current}/8`,workers:1});
+    for(let current=1;current<=16;current++)shards.push({id:`legacy-${current}`,suite:'legacy',shard:`${current}/16`,workers:1});
   if(plan.requiredChecks.includes('interactive'))
     for(const project of ['chromium','firefox','webkit'])shards.push({id:`interactive-${project}`,suite:'interactive',project,workers:1});
   return shards;

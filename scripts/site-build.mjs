@@ -25,6 +25,8 @@ const INPUTS = [
   "go.sum",
   "package.json",
   "package-lock.json",
+  // Hugo's JavaScript compiler also applies this file's strict-mode setting.
+  "tsconfig.json",
 ];
 export function assertProductionSource({ repoRoot, sourceSha }) {
   const git = (args) =>

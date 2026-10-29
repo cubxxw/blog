@@ -135,10 +135,12 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     };
     // Color.getRGB is linear; the authored pigment values are stored in sRGB.
     const rgb = new THREE.Color(color).convertLinearToSRGB();
+    const roughnessValues = new Uint8Array(width * height);
     const map = canvasTexture(width, height, (c, w, h) => {
       const pixels = c.createImageData(w, h);
       for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-        const {tone} = sample(x, y), p = (y * w + x) * 4;
+        const {tone, oil} = sample(x, y), p = (y * w + x) * 4;
+        roughnessValues[y * w + x] = channel(oil * 255);
         pixels.data[p] = channel(rgb.r * 255 + tone); pixels.data[p + 1] = channel(rgb.g * 255 + tone * .83); pixels.data[p + 2] = channel(rgb.b * 255 + tone * .62); pixels.data[p + 3] = 255;
       }
       c.putImageData(pixels, 0, 0);
@@ -154,7 +156,7 @@ export function buildJiangnanRoom({ scene, pbr, resources, textures, wake, photo
     const roughnessMap = canvasTexture(width, height, (c, w, h) => {
       const pixels = c.createImageData(w, h);
       for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-        const value = channel(sample(x, y).oil * 255), p = (y * w + x) * 4;
+        const value = roughnessValues[y * w + x], p = (y * w + x) * 4;
         pixels.data[p] = pixels.data[p + 1] = pixels.data[p + 2] = value; pixels.data[p + 3] = 255;
       }
       c.putImageData(pixels, 0, 0);

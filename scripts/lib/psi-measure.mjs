@@ -144,6 +144,50 @@ const KNOWN_NETWORK_CODES = new Set([
   'UND_ERR_BODY_TIMEOUT',
   'UND_ERR_ABORTED',
 ]);
+// Closed vocabularies only; free provider text is never a diagnostic payload.
+// Global reasons: developers.google.com/search/apis/indexing-api/v3/core-errors
+// Canonical statuses: github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
+// PSI's lighthouseError envelope: github.com/GoogleChrome/lighthouse/issues/16853
+const KNOWN_API_STATUSES = new Set([
+  'CANCELLED', 'UNKNOWN', 'INVALID_ARGUMENT', 'DEADLINE_EXCEEDED', 'NOT_FOUND',
+  'ALREADY_EXISTS', 'PERMISSION_DENIED', 'RESOURCE_EXHAUSTED', 'FAILED_PRECONDITION',
+  'ABORTED', 'OUT_OF_RANGE', 'UNIMPLEMENTED', 'INTERNAL', 'UNAVAILABLE', 'DATA_LOSS', 'UNAUTHENTICATED',
+]);
+const KNOWN_API_REASONS = new Set([
+  'lighthouseError', 'invalid', 'invalidParameter', 'required', 'keyInvalid',
+  'accessNotConfigured', 'forbidden', 'authError', 'dailyLimitExceeded',
+  'userRateLimitExceeded', 'rateLimitExceeded', 'backendError', 'internalError',
+]);
+const MAX_API_ERROR_BYTES = 16384;
+
+function safeProviderError(value) {
+  const reasons = Array.isArray(value?.reasons)
+    ? [...new Set(value.reasons.slice(0, 16).map((reason) => boundedIdentifier(reason, KNOWN_API_REASONS)))]
+    : [];
+  return {
+    status: boundedIdentifier(value?.status, KNOWN_API_STATUSES),
+    reasons: reasons.length ? reasons : ['unknown'],
+    runtimeErrorCode: boundedIdentifier(value?.runtimeErrorCode, KNOWN_RUNTIME_ERROR_CODES),
+  };
+}
+
+function pickProviderError(text) {
+  const unknown = () => safeProviderError(null);
+  // Refuse oversized bodies before parsing; do not parse a truncated fragment.
+  if (typeof text !== 'string' || text.length > MAX_API_ERROR_BYTES || Buffer.byteLength(text, 'utf8') > MAX_API_ERROR_BYTES) return unknown();
+  let error;
+  try { error = JSON.parse(text)?.error; } catch { return unknown(); }
+  if (!error || typeof error !== 'object' || Array.isArray(error)) return unknown();
+  const errors = Array.isArray(error.errors) ? error.errors.slice(0, 16) : [];
+  // PSI sometimes wraps the Lighthouse code in this fixed prefix instead of
+  // returning a Lighthouse-result runtimeError. Retain only a known code,
+  // gated by its exact machine reason/domain, never any part of the message.
+  const lighthouse = errors.some((e) => e?.domain === 'lighthouse' && e?.reason === 'lighthouseError');
+  const match = lighthouse && typeof error.message === 'string'
+    ? /^Lighthouse returned error: ([A-Z_]+)(?:[.:\s]|$)/u.exec(error.message)
+    : null;
+  return safeProviderError({ status: error.status, reasons: errors.map((e) => e?.reason), runtimeErrorCode: match?.[1] });
+}
 const THROTTLING_KEYS = [
   'rttMs',
   'throughputKbps',
@@ -718,6 +762,7 @@ export function extractFailure({
     const fields = errorMeta.missingFields.filter((f) => KNOWN_REQUIRED_FIELDS.has(f));
     if (fields.length > 0) meta.payloadDetail = `incomplete measurement: missing ${fields.join(', ')}`;
   }
+  if (kind === 'http') meta.providerError = safeProviderError(errorMeta.providerError);
   return {
     url,
     strategy,
@@ -831,13 +876,14 @@ export async function measureOne({ url, strategy }, deps = {}) {
     const psiHttpStatus = response.status;
     if (!(response.status >= 200 && response.status < 300)) {
       const cls = classifyHttpStatus(psiHttpStatus);
-      // The response body is deliberately discarded: raw provider text is not
-      // a safe log or snapshot payload.
+      const providerError = pickProviderError(response.text);
+      // The response body is discarded after closed-enum classification.
       attemptLog.push({
         attempt,
         outcome: last || !cls.retryable ? 'final' : 'retryable',
         reasonCategory: cls.reasonCategory,
         psiHttpStatus,
+        providerError,
       });
       if (last || !cls.retryable) {
         return finish(extractFailure({
@@ -846,7 +892,7 @@ export async function measureOne({ url, strategy }, deps = {}) {
           reasonCategory: 'psi-api-failure',
           reasonBasis: `PSI API returned HTTP ${psiHttpStatus}; this is the PSI endpoint's status, never the origin's status`,
           errorKind: 'http',
-          errorMeta: { status: psiHttpStatus },
+          errorMeta: { status: psiHttpStatus, providerError },
           psiHttpStatus,
           attemptLog,
           attempts: attempt,
