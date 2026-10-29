@@ -36,6 +36,14 @@ The initial review found no shipped Hugo P0/P1 in the vendored guidance comments
 
 Follow-up independent review also found that related-writing text and secondary navigation lost their readable typography when the Finder container was removed. Their existing native and projected font sizes are restored on the new product sheet and toolbar. The reading-contract E2E now measures related titles at ≥16 projected CSS pixels, related summaries/dates at ≥13px, and back/explore navigation at ≥13px. Measurements share one DOM read per product. Current-head CI and rendered acceptance remain required; the earlier runs do not certify these patches.
 
+## Landscape and scene-handoff follow-up
+
+Run [40810579994](https://github.com/cubxxw/blog/actions/runs/40810579994) on `68736f0d` exposed a real 844×390 English landscape regression: the title bottom was 275.680px against a 267.980px body boundary in both legacy projects, on all three attempts. The previous compact toolbar/product/stage/headline rules were still scoped to the removed Finder structure. Their compact spacing now applies to the new toolbar and sheet only for coarse pointers, width ≥641px and height ≤420px. The original title and first-line containment assertions remain.
+
+The same run's newly added alternate-scene test waited only five seconds while a replacement renderer was still loading. It now waits for initial boot completion before opening the picker and uses the existing 30-second scene-first-frame handoff contract before checking `zen`; the total case budget and work-entry hit/overlap assertions remain. Browser quality's artifact upload timed out, and legacy-16 lost its runner after 47 passes; neither is recorded as successful verification.
+
+The local follow-up passed 13 focused host tests, the TypeScript project, a warm Hugo production build, and independent review. [Local before/after geometry](landscape-followup.json) reproduces clipping and its correction at 844×390 with a coarse pointer in system Chrome 156.0.8078.48 via Playwright CLI (core 1.64.0-alpha-1790635538000). Title bottom changes from 292.391px to 236.391px; first-line bottom from 340.391px to 276.391px against a 285px boundary. There is no horizontal overflow. This is separate from pinned Linux CI; the local static-server check does not cover related-writing data. PR #492's observation fixes are included as a dependency. Full current-head CI and production acceptance remain required.
+
 ## Release status
 
 PR, current-head CI, merge and deployment are tracked in the PR and Linear issue. Local evidence above does not claim those later states. Production acceptance must read back the deployed revision and key paths after merge.

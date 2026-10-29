@@ -104,9 +104,11 @@ test('the room opens a named work in one action and Companion stays on demand',a
 test('alternate-scene work actions stay clear of the footer and roaming controls',async({page})=>{
  await page.goto('/zh/projects/');
  await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true',{timeout:30_000});
+ await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
  await page.locator('.space-cafe__header [data-cafe-picker]').click();
  await page.locator('[data-cafe-theme="zen"]').click();
- await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-theme','zen');
+ // Match the existing scene-handoff contract: commit follows the new first frame.
+ await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-theme','zen',{timeout:30_000});
  await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
  const entry=page.locator('.space-work-entry');await expect(entry).toBeVisible();
  const coverage=await entry.evaluate(el=>{
