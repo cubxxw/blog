@@ -272,8 +272,17 @@ export async function createAuthorVoice({
   const privateDir = path.join(root, ".author-voice"),
     jobsDir = path.join(privateDir, "jobs"),
     cacheDir = path.join(privateDir, "cache");
-  let busy = false,
+  let operation = null,
     activeJob = null;
+  function claim(id) {
+    if (operation) throw fail("已有操作正在准备，请等它完成。");
+    const owner = { id };
+    operation = owner;
+    return owner;
+  }
+  function release(owner) {
+    if (operation === owner) operation = null;
+  }
   await mkdir(jobsDir, { recursive: true, mode: 0o700 });
   await mkdir(cacheDir, { recursive: true, mode: 0o700 });
   for (const file of await readdir(jobsDir)) {
@@ -295,7 +304,9 @@ export async function createAuthorVoice({
   };
   const publicJob = (j) => ({
     id: j.id,
-    status: j.status,
+    // The final atomic rename can be visible before its promise acknowledges
+    // completion. All public paths keep this job preparing until its owner exits.
+    status: operation?.id === j.id ? "preparing" : j.status,
     type: j.type,
     voiceType: j.voiceType,
     article: j.article,
@@ -378,7 +389,7 @@ export async function createAuthorVoice({
     return {
       configured: !!apiKey,
       voice: { ready: !!p?.id, name: p?.name || "未配置音色", type: p?.type },
-      busy,
+      busy: Boolean(operation),
       jobs: rows
         .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
         .slice(0, 20)
@@ -446,8 +457,7 @@ export async function createAuthorVoice({
       ),
       old = await existing(input, signature);
     if (old) return publicJob(old);
-    if (busy) throw fail("已有操作正在准备，请等它完成。");
-    busy = true;
+    const owner = claim(input.requestId);
     const j = {
       id: input.requestId,
       signature,
@@ -493,6 +503,7 @@ export async function createAuthorVoice({
       });
       j.status = "ready";
       await save(path.join(jobsDir, j.id + ".json"), j);
+      release(owner);
       return publicJob(j);
     } catch (error) {
       j.status = "failed";
@@ -500,7 +511,7 @@ export async function createAuthorVoice({
       await save(path.join(jobsDir, j.id + ".json"), j);
       throw fail(j.error);
     } finally {
-      busy = false;
+      release(owner);
     }
   }
   async function begin(input, origin) {
@@ -543,8 +554,7 @@ export async function createAuthorVoice({
       ),
       old = await existing(input, signature);
     if (old) return publicJob(old);
-    if (busy) throw fail("已有操作正在准备，请等它完成。");
-    busy = true;
+    const owner = claim(input.requestId);
     const pieces = recording ? [] : chunks(input.text),
       j = {
         id: input.requestId,
@@ -568,11 +578,12 @@ export async function createAuthorVoice({
     try {
       await save(path.join(jobsDir, j.id + ".json"), j);
     } catch (e) {
-      busy = false;
+      release(owner);
       throw e;
     }
     const controller = new AbortController();
-    activeJob = { id: j.id, controller };
+    const running = { id: j.id, controller };
+    activeJob = running;
     async function work() {
       try {
         const sounds = [];
@@ -654,15 +665,16 @@ export async function createAuthorVoice({
         try {
           await save(path.join(jobsDir, j.id + ".json"), j);
         } finally {
-          busy = false;
-          if (activeJob?.id === j.id) activeJob = null;
+          release(owner);
+          if (activeJob === running) activeJob = null;
         }
       }
     }
     const done = work().catch(() => {
-      busy = false;
+      release(owner);
+      if (activeJob === running) activeJob = null;
     });
-    activeJob.done = done;
+    running.done = done;
     return publicJob(j);
   }
   async function cancel(id) {
@@ -801,8 +813,7 @@ export async function createAuthorVoice({
     );
     const old = await existing(input, signature);
     if (old) return publicJob(old);
-    if (busy) throw fail("已有操作正在准备，请等它完成。");
-    busy = true;
+    const owner = claim(input.requestId);
     const j = {
       id: input.requestId,
       signature,
@@ -840,6 +851,7 @@ export async function createAuthorVoice({
       j.text = text;
       j.status = "ready";
       await save(path.join(jobsDir, j.id + ".json"), j);
+      release(owner);
       return publicJob(j);
     } catch (error) {
       j.status = "failed";
@@ -847,7 +859,7 @@ export async function createAuthorVoice({
       await save(path.join(jobsDir, j.id + ".json"), j);
       throw fail(j.error);
     } finally {
-      busy = false;
+      release(owner);
     }
   }
   return {
