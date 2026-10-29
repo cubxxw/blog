@@ -145,8 +145,7 @@
   <header class="builds-hero">
     <div class="builds-shell builds-hero__grid">
       <div class="builds-hero__copy">
-        <p class="builds-kicker">{{ if $isZh }}产品实验室{{ else }}Product lab{{ end }}</p>
-        <h2>{{ if $isZh }}产品，是判断接受现实检验的地方。{{ else }}Products are where ideas meet reality.{{ end }}</h2>
+        <h2>{{ if $isZh }}作品与构建记录{{ else }}Work & build notes.{{ end }}</h2>
         <p class="builds-hero__lead">
           {{ if $isZh }}
           这里记录我正在构建的工具、它们要验证的问题，以及证据仍然不足的地方。
@@ -191,30 +190,13 @@
     </div>
   </header>
 
-  <section class="bks-entry builds-shell" data-bks-entry aria-labelledby="bks-entry-title">
-    <div class="bks-entry__copy">
-      <h2 id="bks-entry-title">{{ if $isZh }}BEAR 知识空间{{ else }}BEAR knowledge space{{ end }}</h2>
-      <p>
-        {{ if $isZh }}
-        把产品与写作连成可探索的星图。点击节点看真实文章与项目，不打断阅读节奏。
-        {{ else }}
-        An explorable map of products and writing. Click a node to open real posts and projects without breaking reading flow.
-        {{ end }}
-      </p>
-    </div>
-    <div class="bks-entry__actions">
-      <button type="button" class="bks-entry__enter" data-bks-enter>
-        {{ if $isZh }}进入知识空间{{ else }}Enter the space{{ end }}
-      </button>
-    </div>
-  </section>
+
 
   <div class="bks" data-bks-host hidden></div>
 
   <div class="builds-main">
     <section class="builds-feature builds-shell" id="{{ $featured.id }}" data-space-product="{{ $featured.id }}" aria-labelledby="{{ $featured.id }}-title">
       <div class="builds-section-heading">
-        <p>{{ if $isZh }}当前测试{{ else }}Current test{{ end }}</p>
         <h2 id="{{ $featured.id }}-title">{{ $featured.name }}</h2>
       </div>
 
@@ -273,6 +255,24 @@
         </div>
       </div>
     </section>
+
+  <section class="bks-entry builds-shell" data-bks-entry aria-labelledby="bks-entry-title">
+    <div class="bks-entry__copy">
+      <h2 id="bks-entry-title">{{ if $isZh }}BEAR 知识空间{{ else }}BEAR knowledge space{{ end }}</h2>
+      <p>
+        {{ if $isZh }}
+        把产品与写作连成可探索的星图。点击节点看真实文章与项目，不打断阅读节奏。
+        {{ else }}
+        An explorable map of products and writing. Click a node to open real posts and projects without breaking reading flow.
+        {{ end }}
+      </p>
+    </div>
+    <div class="bks-entry__actions">
+      <button type="button" class="bks-entry__enter" data-bks-enter>
+        {{ if $isZh }}进入知识空间{{ else }}Enter the space{{ end }}
+      </button>
+    </div>
+  </section>
 
     <section class="builds-archive builds-shell" aria-labelledby="builds-archive-title">
       <div class="builds-archive__heading">

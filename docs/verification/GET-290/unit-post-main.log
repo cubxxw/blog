@@ -1,0 +1,280 @@
+TAP version 13
+# Subtest: the browser is a real registered application that restores one durable window
+ok 1 - the browser is a real registered application that restores one durable window
+  ---
+  duration_ms: 2.394292
+  type: 'test'
+  ...
+# Subtest: the start page uses valid product destinations and embeds only explicitly allowed project origins
+ok 2 - the start page uses valid product destinations and embeds only explicitly allowed project origins
+  ---
+  duration_ms: 1.122166
+  type: 'test'
+  ...
+# Subtest: browser addresses reject scripts, credentials, scheme-relative URLs and control characters
+ok 3 - browser addresses reject scripts, credentials, scheme-relative URLs and control characters
+  ---
+  duration_ms: 0.15675
+  type: 'test'
+  ...
+# Subtest: browser history supports home, back, forward, branching and duplicate navigation
+ok 4 - browser history supports home, back, forward, branching and duplicate navigation
+  ---
+  duration_ms: 0.424833
+  type: 'test'
+  ...
+# Subtest: the night room is the default and all six spatial cafés remain restorable
+ok 5 - the night room is the default and all six spatial cafés remain restorable
+  ---
+  duration_ms: 0.521583
+  type: 'test'
+  ...
+# Subtest: direct content routes take priority over a café visit
+ok 6 - direct content routes take priority over a café visit
+  ---
+  duration_ms: 0.172791
+  type: 'test'
+  ...
+# Subtest: root visits and reloads enter the café while language changes preserve the current place
+ok 7 - root visits and reloads enter the café while language changes preserve the current place
+  ---
+  duration_ms: 0.081833
+  type: 'test'
+  ...
+# Subtest: an explicit reader deep link beats stale café storage on reload
+ok 8 - an explicit reader deep link beats stale café storage on reload
+  ---
+  duration_ms: 0.046083
+  type: 'test'
+  ...
+# Subtest: returning to the café from an old About URL survives reload and language changes
+ok 9 - returning to the café from an old About URL survives reload and language changes
+  ---
+  duration_ms: 0.098583
+  type: 'test'
+  ...
+# Subtest: a slow previous scene cannot overwrite the latest selection
+ok 10 - a slow previous scene cannot overwrite the latest selection
+  ---
+  duration_ms: 1.086708
+  type: 'test'
+  ...
+# Subtest: a failed scene keeps the previous view; selecting the current scene cancels an older load
+ok 11 - a failed scene keeps the previous view; selecting the current scene cancels an older load
+  ---
+  duration_ms: 0.15375
+  type: 'test'
+  ...
+# Subtest: an in-flight desktop journey keeps the café cancel surface active until the camera settles
+ok 12 - an in-flight desktop journey keeps the café cancel surface active until the camera settles
+  ---
+  duration_ms: 4.268542
+  type: 'test'
+  ...
+# Subtest: replaying a café visit cancels the older read without an app open or late focus
+ok 13 - replaying a café visit cancels the older read without an app open or late focus
+  ---
+  duration_ms: 1.044625
+  type: 'test'
+  ...
+# Subtest: a rejected desktop camera journey preserves the café recovery surface and rejects entry
+ok 14 - a rejected desktop camera journey preserves the café recovery surface and rejects entry
+  ---
+  duration_ms: 2.042917
+  type: 'test'
+  ...
+# Subtest: disposal prevents a late desktop journey from opening or focusing the replaced view
+ok 15 - disposal prevents a late desktop journey from opening or focusing the replaced view
+  ---
+  duration_ms: 1.176334
+  type: 'test'
+  ...
+# Subtest: completed travel uses current resident eligibility in the same rendered frame
+ok 16 - completed travel uses current resident eligibility in the same rendered frame
+  ---
+  duration_ms: 5.321042
+  type: 'test'
+  ...
+# Subtest: context resolves only public catalog objects and excludes private editors
+ok 17 - context resolves only public catalog objects and excludes private editors
+  ---
+  duration_ms: 0.599334
+  type: 'test'
+  ...
+# Subtest: explicit public selection has a bounded pinned reference; ordinary typing preserves its question
+ok 18 - explicit public selection has a bounded pinned reference; ordinary typing preserves its question
+  ---
+  duration_ms: 0.104
+  type: 'test'
+  ...
+# Subtest: service failures explain real causes without echoing provider details
+ok 19 - service failures explain real causes without echoing provider details
+  ---
+  duration_ms: 0.108792
+  type: 'test'
+  ...
+# Subtest: inline emphasis removes paired markers while HTML and unmatched syntax stay literal
+ok 20 - inline emphasis removes paired markers while HTML and unmatched syntax stay literal
+  ---
+  duration_ms: 0.182917
+  type: 'test'
+  ...
+# (node:24622) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/assets/js/space/agent-panel.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: article actions accept exact catalog references and refuse external, unknown, credentialed and script targets
+ok 21 - article actions accept exact catalog references and refuse external, unknown, credentialed and script targets
+  ---
+  duration_ms: 1.832208
+  type: 'test'
+  ...
+# Subtest: restored article action uses the existing reader executor without model calls and retains conversation content
+ok 22 - restored article action uses the existing reader executor without model calls and retains conversation content
+  ---
+  duration_ms: 66.273917
+  type: 'test'
+  ...
+# Subtest: reader window capacity failure remains actionable and never claims that the article opened
+ok 23 - reader window capacity failure remains actionable and never claims that the article opened
+  ---
+  duration_ms: 16.707542
+  type: 'test'
+  ...
+# Subtest: touch Return creates no task; the explicitly labelled prompt starts exactly one task and blocks repeated taps
+ok 24 - touch Return creates no task; the explicitly labelled prompt starts exactly one task and blocks repeated taps
+  ---
+  duration_ms: 23.542875
+  type: 'test'
+  ...
+# Subtest: the source strip renders existing context as text, expands without requests and leaves the submitted payload unchanged
+ok 25 - the source strip renders existing context as text, expands without requests and leaves the submitted payload unchanged
+  ---
+  duration_ms: 17.506917
+  type: 'test'
+  ...
+# Subtest: an old selection draft never invents a source; empty-conversation actions open the real library and latest article without a provider
+ok 26 - an old selection draft never invents a source; empty-conversation actions open the real library and latest article without a provider
+  ---
+  duration_ms: 7.734542
+  type: 'test'
+  ...
+# Subtest: a restored passage draft cannot inherit current reader B; explicit selection A and ordinary drafts keep their own context semantics
+ok 27 - a restored passage draft cannot inherit current reader B; explicit selection A and ordinary drafts keep their own context semantics
+  ---
+  duration_ms: 38.75575
+  type: 'test'
+  ...
+# Subtest: photo detail keeps a 180px reading floor, fits larger windows and releases its old observer
+ok 28 - photo detail keeps a 180px reading floor, fits larger windows and releases its old observer
+  ---
+  duration_ms: 21.586917
+  type: 'test'
+  ...
+# Subtest: photo selection and stepping start at the top; Back restores each gallery region and its scroll position
+ok 29 - photo selection and stepping start at the top; Back restores each gallery region and its scroll position
+  ---
+  duration_ms: 17.829166
+  type: 'test'
+  ...
+# Subtest: map selection keeps its view, exposes the real story and photo route, and retains keyboard pin focus
+ok 30 - map selection keeps its view, exposes the real story and photo route, and retains keyboard pin focus
+  ---
+  duration_ms: 26.667833
+  type: 'test'
+  ...
+# (node:24627) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/assets/js/space/project-home.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the featured work leads without duplicating or losing other product destinations
+ok 31 - the featured work leads without duplicating or losing other product destinations
+  ---
+  duration_ms: 30.002833
+  type: 'test'
+  ...
+# Subtest: unflagged and empty catalogs stay honest in both languages
+ok 32 - unflagged and empty catalogs stay honest in both languages
+  ---
+  duration_ms: 7.193416
+  type: 'test'
+  ...
+# Subtest: untrusted names, stage text and destinations cannot create active content
+ok 33 - untrusted names, stage text and destinations cannot create active content
+  ---
+  duration_ms: 3.444417
+  type: 'test'
+  ...
+# Subtest: embedded visits retain a browser action while source-only work has one external source link
+ok 34 - embedded visits retain a browser action while source-only work has one external source link
+  ---
+  duration_ms: 6.535084
+  type: 'test'
+  ...
+# (node:24628) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/assets/js/space/apps.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Finder lists the actual three latest local articles and escapes their titles
+ok 35 - Finder lists the actual three latest local articles and escapes their titles
+  ---
+  duration_ms: 51.821625
+  type: 'test'
+  ...
+# Subtest: Notes keeps export and real browser save status primary while sandbox checks stay lazy
+ok 36 - Notes keeps export and real browser save status primary while sandbox checks stay lazy
+  ---
+  duration_ms: 49.549792
+  type: 'test'
+  ...
+# Subtest: English Notes and Finder expose the same concise prompt and accessible search action
+ok 37 - English Notes and Finder expose the same concise prompt and accessible search action
+  ---
+  duration_ms: 21.210833
+  type: 'test'
+  ...
+# Subtest: sandbox requires boolean true and rechecks availability before any command
+ok 38 - sandbox requires boolean true and rechecks availability before any command
+  ---
+  duration_ms: 44.514042
+  type: 'test'
+  ...
+# Subtest: closing Notes aborts its owned runtime check and ignores a late connection result
+ok 39 - closing Notes aborts its owned runtime check and ignores a late connection result
+  ---
+  duration_ms: 18.718833
+  type: 'test'
+  ...
+# Subtest: a confirmed sandbox copy remains distinct from a later browser edit
+ok 40 - a confirmed sandbox copy remains distinct from a later browser edit
+  ---
+  duration_ms: 29.623083
+  type: 'test'
+  ...
+# Subtest: Settings puts export and display before language and synchronizes existing nodes without claiming focus
+ok 41 - Settings puts export and display before language and synchronizes existing nodes without claiming focus
+  ---
+  duration_ms: 38.705792
+  type: 'test'
+  ...
+# Subtest: Contact presents real primary channels before social links and keeps draft destinations synchronized
+ok 42 - Contact presents real primary channels before social links and keeps draft destinations synchronized
+  ---
+  duration_ms: 7.290166
+  type: 'test'
+  ...
+# Subtest: reader heading anchors receive a real accessible section destination after sanitization
+ok 43 - reader heading anchors receive a real accessible section destination after sanitization
+  ---
+  duration_ms: 27.608125
+  type: 'test'
+  ...
+1..43
+# tests 43
+# suites 0
+# pass 43
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1563.210709

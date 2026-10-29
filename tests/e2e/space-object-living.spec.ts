@@ -1,6 +1,6 @@
 import {test,expect,type Page} from '../helpers/frozen-site';
-import {observeRoomAudio,rainSource,roomAudioSources} from '../helpers/room-audio';
-import {waitForRoomObjectAdvance} from '../helpers/room-observation';
+import {observeRoomAudio,rainSource,roomAudioSources,readRoomAudioSources} from '../helpers/room-audio';
+import {waitForRoomObjectAdvance,expectRoomAttributes,readRoomObservation,withRoomObservationSession} from '../helpers/room-observation';
 import {lookAtRoomObject,dragRoomTouch} from '../helpers/room-interaction';
 test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 const root=(p:Page)=>p.locator('[data-bear-workspace]');
@@ -190,13 +190,19 @@ test('book details and the computer retreat naturally without a room Back button
  await page.mouse.click(12,12);await expect(root(page)).toHaveAttribute('data-cafe-mode','cafe');await expect(root(page)).toHaveAttribute('data-world-mode','roam');
 });
 
-test('choosing real records keeps the outdoor source and drives the platter',async({page})=>{
- await ready(page);const recordsControl=page.locator('[data-room-object="records"]');await expect(recordsControl).toHaveCount(1);
+test('choosing real records keeps the outdoor source and drives the platter',async({page})=>withRoomObservationSession(page,async()=>{
+ const audio=()=>readRoomAudioSources(page),outdoor=async()=>(await audio()).find(source=>!source.stopped&&Math.abs(source.duration-100)<.05);
+ const actualObjects=()=>readRoomObservation(page,()=>{
+  const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1)throw new Error('Room records root missing or ambiguous');return JSON.parse(roots[0].dataset.roomObjects!);
+ },undefined,{timeout:5000,label:'Room records snapshot',validate:(value):value is {recordId:string;platterAngle:number}=>{
+  if(value===null||typeof value!=='object')return false;const objects=value as Record<string,unknown>;return typeof objects.recordId==='string'&&typeof objects.platterAngle==='number'&&Number.isFinite(objects.platterAngle);
+ }});
+ await page.goto('/zh/projects/?vista=image');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);const recordsControl=page.locator('[data-room-object="records"]');await expect(recordsControl).toHaveCount(1);
  // Locator.press focuses the same control before sending real Enter; do not focus it twice.
- await recordsControl.press('Enter');await expect(page.locator('[data-room-record]')).toHaveCount(3);await expect(root(page)).toHaveAttribute('data-room-ambient','playing',{timeout:30000});const first=(await rainSource(page))!;expect(first).toBeTruthy();
- for(const id of ['night-on-the-docks-sax','long-stroll','almost-new']){await page.locator(`[data-room-record="${id}"]`).click();await expect(root(page)).toHaveAttribute('data-room-track',id);await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});expect((await objects(page)).recordId).toBe(id);}expect((await rainSource(page))!.id).toBe(first.id);expect((await rainSource(page))!.time).toBeGreaterThan(first.time);expect((await roomAudioSources(page)).filter(s=>!s.stopped&&Math.abs(s.duration-100)<.05)).toHaveLength(1);
- await page.emulateMedia({reducedMotion:'no-preference'});const angle=(await objects(page)).platterAngle;await waitForRoomObjectAdvance(page,'platterAngle',angle);await page.locator('[data-room-playback]').click();await expect(root(page)).toHaveAttribute('data-room-sound','paused');const stopped=(await objects(page)).platterAngle;await page.waitForTimeout(180);expect((await objects(page)).platterAngle).toBe(stopped);expect((await rainSource(page))!.id).toBe(first.id);
-});
+ await recordsControl.press('Enter');await expect(page.locator('[data-room-record]')).toHaveCount(3);await expectRoomAttributes(page,{'data-room-ambient':'playing'},30000);const first=(await outdoor())!;expect(first).toBeTruthy();
+ for(const id of ['night-on-the-docks-sax','long-stroll','almost-new']){await page.locator(`[data-room-record="${id}"]`).click();await expectRoomAttributes(page,{'data-room-track':id});await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);expect((await actualObjects()).recordId).toBe(id);}expect((await outdoor())!.id).toBe(first.id);expect((await outdoor())!.time).toBeGreaterThan(first.time);expect((await audio()).filter(s=>!s.stopped&&Math.abs(s.duration-100)<.05)).toHaveLength(1);
+ await page.emulateMedia({reducedMotion:'no-preference'});const angle=(await actualObjects()).platterAngle;await waitForRoomObjectAdvance(page,'platterAngle',angle);await page.locator('[data-room-playback]').click();await expectRoomAttributes(page,{'data-room-sound':'paused'});const stopped=(await actualObjects()).platterAngle;await page.waitForTimeout(180);expect((await actualObjects()).platterAngle).toBe(stopped);expect((await outdoor())!.id).toBe(first.id);
+}));
 
 test('actual public pages keep the same rain and music through history and Space return',async({page})=>{
  await ready(page);await object(page,'speaker');await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});await expect(root(page)).toHaveAttribute('data-room-ambient','playing');const rain=(await rainSource(page))!,music=(await roomAudioSources(page)).find(s=>!s.stopped&&Math.abs(s.duration-100)>.05)!;

@@ -1,0 +1,3 @@
+npm notice run cubxxw-blog@1.0.0 npx
+npm notice run 'impeccable' detect --json assets/css/space-works.css assets/css/extended/products.css assets/js/space/project-home.js assets/js/space/apps.js layouts/partials/space/cafe.html layouts/partials/space/desktop.html layouts/section/projects.html
+impeccable detect: could not read linked stylesheet {{ $css.RelPermalink }} (resolved to /Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/layouts/partials/space/{{ $css.RelPermalink }}); color and custom-property rules will be incomplete

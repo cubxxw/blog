@@ -135,3 +135,18 @@ assets/jsconfig.json
 
 # Local author voice profiles, recordings, drafts and API receipts (never public)
 /.author-voice/
+
+# Impeccable runtime output; shared product and surface records stay tracked.
+**/.impeccable/config.local.json
+**/.impeccable/hook.cache.json
+**/.impeccable/hook.pending.json
+**/.impeccable/*.png
+**/.impeccable/review/
+**/.impeccable/questions/
+**/.impeccable/live/server.json
+**/.impeccable/live/sessions/
+**/.impeccable/live/previews/
+**/.impeccable/live/annotations/
+**/.impeccable/live/cache/
+**/.impeccable/live/inject-journal.json
+**/.impeccable/live/roots.json

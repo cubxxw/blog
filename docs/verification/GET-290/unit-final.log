@@ -1,0 +1,226 @@
+TAP version 13
+# Subtest: the night room is the default and all six spatial cafés remain restorable
+ok 1 - the night room is the default and all six spatial cafés remain restorable
+  ---
+  duration_ms: 1.065584
+  type: 'test'
+  ...
+# Subtest: direct content routes take priority over a café visit
+ok 2 - direct content routes take priority over a café visit
+  ---
+  duration_ms: 0.202792
+  type: 'test'
+  ...
+# Subtest: root visits and reloads enter the café while language changes preserve the current place
+ok 3 - root visits and reloads enter the café while language changes preserve the current place
+  ---
+  duration_ms: 0.123208
+  type: 'test'
+  ...
+# Subtest: an explicit reader deep link beats stale café storage on reload
+ok 4 - an explicit reader deep link beats stale café storage on reload
+  ---
+  duration_ms: 1.612583
+  type: 'test'
+  ...
+# Subtest: returning to the café from an old About URL survives reload and language changes
+ok 5 - returning to the café from an old About URL survives reload and language changes
+  ---
+  duration_ms: 0.211042
+  type: 'test'
+  ...
+# Subtest: a slow previous scene cannot overwrite the latest selection
+ok 6 - a slow previous scene cannot overwrite the latest selection
+  ---
+  duration_ms: 1.104333
+  type: 'test'
+  ...
+# Subtest: a failed scene keeps the previous view; selecting the current scene cancels an older load
+ok 7 - a failed scene keeps the previous view; selecting the current scene cancels an older load
+  ---
+  duration_ms: 1.301917
+  type: 'test'
+  ...
+# Subtest: context resolves only public catalog objects and excludes private editors
+ok 8 - context resolves only public catalog objects and excludes private editors
+  ---
+  duration_ms: 1.641708
+  type: 'test'
+  ...
+# Subtest: explicit public selection has a bounded pinned reference; ordinary typing preserves its question
+ok 9 - explicit public selection has a bounded pinned reference; ordinary typing preserves its question
+  ---
+  duration_ms: 0.337083
+  type: 'test'
+  ...
+# Subtest: service failures explain real causes without echoing provider details
+ok 10 - service failures explain real causes without echoing provider details
+  ---
+  duration_ms: 0.3665
+  type: 'test'
+  ...
+# Subtest: inline emphasis removes paired markers while HTML and unmatched syntax stay literal
+ok 11 - inline emphasis removes paired markers while HTML and unmatched syntax stay literal
+  ---
+  duration_ms: 1.117625
+  type: 'test'
+  ...
+# (node:32486) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/assets/js/space/agent-panel.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: article actions accept exact catalog references and refuse external, unknown, credentialed and script targets
+ok 12 - article actions accept exact catalog references and refuse external, unknown, credentialed and script targets
+  ---
+  duration_ms: 3.932083
+  type: 'test'
+  ...
+# Subtest: restored article action uses the existing reader executor without model calls and retains conversation content
+ok 13 - restored article action uses the existing reader executor without model calls and retains conversation content
+  ---
+  duration_ms: 80.154
+  type: 'test'
+  ...
+# Subtest: reader window capacity failure remains actionable and never claims that the article opened
+ok 14 - reader window capacity failure remains actionable and never claims that the article opened
+  ---
+  duration_ms: 11.934167
+  type: 'test'
+  ...
+# Subtest: touch Return creates no task; the explicitly labelled prompt starts exactly one task and blocks repeated taps
+ok 15 - touch Return creates no task; the explicitly labelled prompt starts exactly one task and blocks repeated taps
+  ---
+  duration_ms: 27.413792
+  type: 'test'
+  ...
+# Subtest: the source strip renders existing context as text, expands without requests and leaves the submitted payload unchanged
+ok 16 - the source strip renders existing context as text, expands without requests and leaves the submitted payload unchanged
+  ---
+  duration_ms: 26.95025
+  type: 'test'
+  ...
+# Subtest: an old selection draft never invents a source; empty-conversation actions open the real library and latest article without a provider
+ok 17 - an old selection draft never invents a source; empty-conversation actions open the real library and latest article without a provider
+  ---
+  duration_ms: 8.125541
+  type: 'test'
+  ...
+# Subtest: a restored passage draft cannot inherit current reader B; explicit selection A and ordinary drafts keep their own context semantics
+ok 18 - a restored passage draft cannot inherit current reader B; explicit selection A and ordinary drafts keep their own context semantics
+  ---
+  duration_ms: 45.483
+  type: 'test'
+  ...
+# Subtest: photo detail keeps a 180px reading floor, fits larger windows and releases its old observer
+ok 19 - photo detail keeps a 180px reading floor, fits larger windows and releases its old observer
+  ---
+  duration_ms: 34.535833
+  type: 'test'
+  ...
+# Subtest: photo selection and stepping start at the top; Back restores each gallery region and its scroll position
+ok 20 - photo selection and stepping start at the top; Back restores each gallery region and its scroll position
+  ---
+  duration_ms: 40.237167
+  type: 'test'
+  ...
+# Subtest: map selection keeps its view, exposes the real story and photo route, and retains keyboard pin focus
+ok 21 - map selection keeps its view, exposes the real story and photo route, and retains keyboard pin focus
+  ---
+  duration_ms: 37.735375
+  type: 'test'
+  ...
+# (node:32513) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/assets/js/space/project-home.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the featured work leads without duplicating or losing other product destinations
+ok 22 - the featured work leads without duplicating or losing other product destinations
+  ---
+  duration_ms: 60.32175
+  type: 'test'
+  ...
+# Subtest: unflagged and empty catalogs stay honest in both languages
+ok 23 - unflagged and empty catalogs stay honest in both languages
+  ---
+  duration_ms: 8.409833
+  type: 'test'
+  ...
+# Subtest: untrusted names, stage text and destinations cannot create active content
+ok 24 - untrusted names, stage text and destinations cannot create active content
+  ---
+  duration_ms: 4.129166
+  type: 'test'
+  ...
+# Subtest: embedded visits retain a browser action while source-only work has one external source link
+ok 25 - embedded visits retain a browser action while source-only work has one external source link
+  ---
+  duration_ms: 11.18175
+  type: 'test'
+  ...
+# (node:32528) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/assets/js/space/apps.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/cubxxw/ops/symphony/runtime/workspaces/GET-290/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Finder lists the actual three latest local articles and escapes their titles
+ok 26 - Finder lists the actual three latest local articles and escapes their titles
+  ---
+  duration_ms: 52.187584
+  type: 'test'
+  ...
+# Subtest: Notes keeps export and real browser save status primary while sandbox checks stay lazy
+ok 27 - Notes keeps export and real browser save status primary while sandbox checks stay lazy
+  ---
+  duration_ms: 29.11
+  type: 'test'
+  ...
+# Subtest: English Notes and Finder expose the same concise prompt and accessible search action
+ok 28 - English Notes and Finder expose the same concise prompt and accessible search action
+  ---
+  duration_ms: 9.666791
+  type: 'test'
+  ...
+# Subtest: sandbox requires boolean true and rechecks availability before any command
+ok 29 - sandbox requires boolean true and rechecks availability before any command
+  ---
+  duration_ms: 36.11325
+  type: 'test'
+  ...
+# Subtest: closing Notes aborts its owned runtime check and ignores a late connection result
+ok 30 - closing Notes aborts its owned runtime check and ignores a late connection result
+  ---
+  duration_ms: 15.773417
+  type: 'test'
+  ...
+# Subtest: a confirmed sandbox copy remains distinct from a later browser edit
+ok 31 - a confirmed sandbox copy remains distinct from a later browser edit
+  ---
+  duration_ms: 27.10075
+  type: 'test'
+  ...
+# Subtest: Settings puts export and display before language and synchronizes existing nodes without claiming focus
+ok 32 - Settings puts export and display before language and synchronizes existing nodes without claiming focus
+  ---
+  duration_ms: 22.57775
+  type: 'test'
+  ...
+# Subtest: Contact presents real primary channels before social links and keeps draft destinations synchronized
+ok 33 - Contact presents real primary channels before social links and keeps draft destinations synchronized
+  ---
+  duration_ms: 6.317
+  type: 'test'
+  ...
+# Subtest: reader heading anchors receive a real accessible section destination after sanitization
+ok 34 - reader heading anchors receive a real accessible section destination after sanitization
+  ---
+  duration_ms: 13.514375
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2142.429209

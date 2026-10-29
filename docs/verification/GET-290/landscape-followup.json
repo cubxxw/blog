@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-29",
+  "browser": "Google Chrome 156.0.8078.48",
+  "scope": "Local Hugo output, English Leafhour one-hop entry; 844x390 coarse pointer. Separate from Linux CI and production acceptance. Related writing is not covered by this local static-server observation.",
+  "before": {
+    "viewport": [
+      844,
+      390
+    ],
+    "coarse": true,
+    "bodyTop": 99,
+    "bodyBottom": 285,
+    "titleTop": 250.796875,
+    "titleBottom": 292.390625,
+    "firstLineBottom": 340.390625,
+    "navigation": [
+      18.039375,
+      18.069522471910112,
+      18
+    ],
+    "related": []
+  },
+  "after": {
+    "viewport": [
+      844,
+      390
+    ],
+    "coarse": true,
+    "bodyTop": 99,
+    "bodyBottom": 285,
+    "titleTop": 194.796875,
+    "titleBottom": 236.390625,
+    "firstLineBottom": 276.390625,
+    "navigation": [
+      18.039375,
+      18.069522471910112,
+      18
+    ],
+    "fit": true
+  }
+}

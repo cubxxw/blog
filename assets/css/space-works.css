@@ -1,0 +1,85 @@
+/* Work sits on one surface; the room and product evidence carry the identity. */
+.space-work-entry { position:absolute; z-index:8; pointer-events:auto; left:clamp(24px,4vw,64px); bottom:clamp(32px,7vh,76px); display:flex; flex-wrap:wrap; align-items:center; gap:8px 24px; max-width:calc(100% - 48px); padding:12px 20px; color:#f5ead5; background:#211b13ed; border-bottom:1px solid #c7ad7c; }
+.space-work-entry>span { font:12px/1.5 var(--font-mono,monospace); }
+.space .space-work-entry button { min-height:44px; padding:8px 0; color:inherit; background:none; border:0; border-radius:0; font:500 16px/1.5 Georgia,'Songti SC',serif; }
+.space-work-entry button:last-child { font-size:13px; }
+.space-work-entry :focus-visible { outline:2px solid #f5ead5; outline-offset:4px; }
+.space[data-boot-state="loading"] .space-work-entry { visibility:hidden; }
+.space[data-world-inspect] .space-work-entry,.space[data-world-travel="true"] .space-work-entry { visibility:hidden; }
+.space[data-environment-paused="true"] .space-cafe__footer { visibility:hidden; }
+.space[data-environment-paused="true"] .space-cafe__brand span { display:none; }
+.space[data-environment-paused="true"] .space-cafe__utilities { gap:8px; }
+.space[data-environment-paused="true"] .space-work-entry { background:#211b13; }
+.space .space-project-gallery { padding:clamp(18px,4vw,40px); }
+.space .space-project-gallery__head { padding:0 0 24px; align-items:flex-start; border-bottom:0; }
+.space .space-project-gallery__head button { min-height:44px; background:none; border:0; border-radius:0; }
+.space-project-index { display:flex; flex-direction:column; gap:0; }
+.space-project-index .space-project-card { padding:24px 0; border-top:1px solid var(--sp-line); }
+.space .space-project-index .space-project-card__main { display:flex; flex-direction:row; align-items:center; gap:28px; width:100%; min-height:44px; }
+.space-project-index .space-project-card__picture { flex:0 0 53%; border:0; border-radius:0; }
+.space-project-index .space-project-card__title { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin:0; max-width:40ch; }
+.space-project-index .space-project-card__title strong { font:500 clamp(25px,3vw,34px)/1.2 Georgia,'Songti SC',serif; }
+.space-project-index .space-project-card__title small { font-size:12px; }
+.space-project-index .space-project-card__title>span { font-size:14px; line-height:1.7; }
+.space-project-index .space-project-card__title .space-project-card__more { font-size:12px; color:var(--sp-accent); }
+.space-project-index .space-project-card__actions { margin-top:12px; }
+.space .space-project-index .space-project-card__actions :is(a,button) { min-height:44px; display:inline-flex; align-items:center; font-size:13px; }
+.space-project-card[data-project-featured="true"] .space-project-card__actions { margin-left:calc(53% + 28px); }
+.space .space-project-index .space-project-card__main:hover strong { text-decoration:underline; text-underline-offset:5px; }
+.space .space-product-sheet { display:flex; flex-direction:column; }
+.space .space-product-sheet .space-product { width:100%; max-width:840px; margin:0 auto; padding:28px clamp(20px,5vw,48px) 48px; }
+.space .space-product__shot { border-radius:0; }
+/* Preserve readable actions after removing the nested Finder container. */
+.space .space-product__links .space-button { font-size:14px!important; }
+.space .space-spatial-screen .space-product-sheet .space-button { font-size:17px!important; }
+.space .space-product-sheet .space-list-item strong { font-size:16px; line-height:1.5; }
+.space .space-product-sheet .space-list-item :is(span,small) { font-size:13px; }
+.space .space-spatial-screen .space-product-sheet .space-list-item strong { font-size:20px; }
+.space .space-spatial-screen .space-product-sheet .space-list-item :is(span,small) { font-size:16px; }
+.space .space-spatial-screen .space-product-sheet :is(button,select) { min-width:54px; min-height:54px; }
+.space [data-app="products"]>.space-window__bar { background:var(--sp-paper); box-shadow:none; }
+.space [data-app="products"]>.space-window__bar::before { display:none; }
+.space [data-app="products"] .space-window-controls button { min-width:36px; min-height:36px; }
+@media(max-width:640px) {
+ .space-work-entry { left:16px; right:16px; bottom:max(24px,env(safe-area-inset-bottom)); max-width:none; gap:4px 20px; padding:10px 16px; }
+ .space-work-entry>span { flex-basis:100%; }
+ .space .space-work-entry button { font-size:15px; }
+ .space .space-project-gallery__head { flex-direction:column; gap:8px; }
+ .space .space-project-index .space-project-card__main { flex-direction:column; align-items:stretch; gap:18px; }
+ .space-project-card[data-project-featured="true"] .space-project-card__actions { margin-left:0; }
+}
+
+.space[data-environment-paused="true"] .space-cafe__utilities [data-cafe-photo-light] { background:none; border-color:transparent; color:#fff3db; }
+.space[data-environment-paused="true"] .space-cafe__utilities [data-cafe-photo-light] .photo-light-label { display:none; }
+.space [data-app="products"] .space-project-index :focus-visible { outline:2px solid var(--sp-accent); outline-offset:4px; }
+
+/* The work surface responds to its resizable window, not just the viewport. */
+.space [data-app="products"] [data-window-body] { container-type:inline-size; }
+@container (max-width:600px) {
+ .space .space-project-index .space-project-card__main { flex-direction:column; align-items:stretch; gap:18px; }
+ .space-project-card[data-project-featured="true"] .space-project-card__actions { margin-left:0; }
+ .space .space-project-gallery__head { flex-direction:column; gap:8px; }
+}
+.space:not([data-world-renderer="jiangnan"]) .space-work-entry { bottom:160px; }
+@media(max-width:640px) { .space:not([data-world-renderer="jiangnan"]) .space-work-entry { bottom:264px; } }
+@media(max-height:500px) { .space:not([data-world-renderer="jiangnan"]) .space-work-entry { top:92px; bottom:auto; } }
+
+.space .space-work-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; padding:8px 24px; border-bottom:1px solid var(--sp-line); }
+.space .space-work-toolbar>button { min-height:44px; padding:8px 0; background:none; border:0; color:var(--sp-ink); font-size:14px; }
+.space .space-product-view .space-work-toolbar .space-product-picker { position:static; display:flex; align-items:center; gap:12px; width:auto; max-width:100%; height:auto; margin:0; }
+.space-work-toolbar .space-product-picker>span { white-space:nowrap; flex-shrink:0; }
+.space-work-toolbar .space-product-picker select { width:min(220px,100%); min-width:110px; min-height:44px; }
+.space .space-spatial-screen .space-work-toolbar :is(button,select) { min-height:54px; }
+.space-product-sheet .space-product-explore { display:flex; gap:24px; margin-top:32px; padding-top:16px; border-top:1px solid var(--sp-line); }
+.space-product-sheet .space-product-explore button { min-height:44px; }
+.space .space-spatial-screen .space-work-toolbar>button,.space .space-spatial-screen .space-product-explore button { font-size:18px; }
+@media(pointer:coarse) and (min-width:641px) and (max-height:420px) {
+ .space .space-work-toolbar { flex-wrap:nowrap; gap:10px; padding:0 10px; }
+ .space .space-work-toolbar>button { flex-shrink:0; white-space:nowrap; }
+ .space .space-work-toolbar .space-product-picker { flex:1; min-width:0; }
+ .space .space-work-toolbar .space-product-picker>span { display:none; }
+ .space .space-work-toolbar .space-product-picker select { min-width:0; width:100%; }
+ .space .space-product-sheet .space-product { padding:8px 22px 16px; }
+ .space .space-product-sheet .space-product__stage { margin:0 0 4px; }
+ .space .space-product-sheet .space-product h2 + p { margin-top:4px; }
+}

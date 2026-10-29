@@ -1,0 +1,500 @@
+[
+  {
+    "call": "almr@3484",
+    "method": "getAttribute",
+    "params": {
+      "selector": "[data-bear-workspace]",
+      "strict": true,
+      "name": "data-room-objects"
+    },
+    "start_s": 52.036,
+    "library_end_s": 54.442,
+    "caller_end_s": 55.65,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 53.238,
+        "collection_ms": 3.3999999999068677
+      },
+      {
+        "phase": "after",
+        "at_s": 55.65,
+        "collection_ms": 5.100000000093132
+      }
+    ],
+    "result": {
+      "value": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":0,\"platterAngle\":0,\"playing\":true,\"recordId\":\"almost-new\",\"brewProgress\":0,\"steamPhase\":0,\"pendulumAngle\":0,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":0,\"platterRotation\":0,\"pendulumRotation\":0,\"hourHand\":-11.070525997850131,\"minuteHand\":-132.84631197420157,\"clockEpoch\":1793233035901,\"labelId\":\"almost-new\",\"brewVisible\":false}"
+    },
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 7,
+        "column": 56,
+        "function": "objects"
+      },
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 198,
+        "column": 78
+      }
+    ]
+  },
+  {
+    "call": "almr@3492",
+    "method": "click",
+    "params": {
+      "selector": "[data-room-playback]",
+      "strict": true
+    },
+    "start_s": 58.066,
+    "library_end_s": 73.769,
+    "caller_end_s": 74.987,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 59.276,
+        "collection_ms": 4.599999999627471
+      },
+      {
+        "phase": "action",
+        "at_s": 68.93,
+        "collection_ms": 4.7999999998137355
+      },
+      {
+        "phase": "after",
+        "at_s": 74.987,
+        "collection_ms": 7.399999999906868
+      }
+    ],
+    "result": null,
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 198,
+        "column": 207
+      }
+    ]
+  },
+  {
+    "call": "almr@3494",
+    "method": "expect",
+    "params": {
+      "selector": "[data-bear-workspace]",
+      "expression": "to.have.attribute.value",
+      "expressionArg": "data-room-sound",
+      "expectedText": [
+        {
+          "string": "paused"
+        }
+      ],
+      "expectedValue": {
+        "value": {
+          "v": "undefined"
+        },
+        "handles": []
+      },
+      "isNot": false,
+      "timeout": 5000
+    },
+    "start_s": 74.991,
+    "library_end_s": 77.411,
+    "caller_end_s": 78.616,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 76.194,
+        "collection_ms": 4.5
+      },
+      {
+        "phase": "after",
+        "at_s": 78.615,
+        "collection_ms": 2.900000000372529
+      }
+    ],
+    "result": null,
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 198,
+        "column": 240
+      }
+    ]
+  },
+  {
+    "call": "almr@3496",
+    "method": "getAttribute",
+    "params": {
+      "selector": "[data-bear-workspace]",
+      "strict": true,
+      "name": "data-room-objects"
+    },
+    "start_s": 78.617,
+    "library_end_s": 81.046,
+    "caller_end_s": 82.257,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 79.834,
+        "collection_ms": 4.400000000372529
+      },
+      {
+        "phase": "after",
+        "at_s": 82.256,
+        "collection_ms": 3
+      }
+    ],
+    "result": {
+      "value": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":17.64,\"platterAngle\":5.235987755982987,\"playing\":false,\"recordId\":\"almost-new\",\"brewProgress\":0,\"steamPhase\":2.1000000000000005,\"pendulumAngle\":0.017916759858068208,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-17.64,\"platterRotation\":5.235987755982987,\"pendulumRotation\":0.017916759858068208,\"hourHand\":-11.10743534820668,\"minuteHand\":-133.28922417848017,\"clockEpoch\":1793233035901,\"labelId\":\"almost-new\",\"brewVisible\":false}"
+    },
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 7,
+        "column": 56,
+        "function": "objects"
+      },
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 198,
+        "column": 305
+      }
+    ]
+  },
+  {
+    "call": "almr@3498",
+    "method": "waitForTimeout",
+    "params": {
+      "waitTimeout": 180
+    },
+    "start_s": 82.258,
+    "library_end_s": 83.643,
+    "caller_end_s": 84.678,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 83.462,
+        "collection_ms": 3.1000000000931323
+      },
+      {
+        "phase": "after",
+        "at_s": 84.677,
+        "collection_ms": 2.900000000372529
+      }
+    ],
+    "result": null,
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 198,
+        "column": 344
+      }
+    ]
+  },
+  {
+    "call": "almr@3500",
+    "method": "getAttribute",
+    "params": {
+      "selector": "[data-bear-workspace]",
+      "strict": true,
+      "name": "data-room-objects"
+    },
+    "start_s": 84.68,
+    "library_end_s": 87.084,
+    "caller_end_s": 88.295,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 85.873,
+        "collection_ms": 4.399999999906868
+      },
+      {
+        "phase": "after",
+        "at_s": 88.294,
+        "collection_ms": 2.8999999999068677
+      }
+    ],
+    "result": {
+      "value": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":22.68,\"platterAngle\":5.235987755982987,\"playing\":false,\"recordId\":\"almost-new\",\"brewProgress\":0,\"steamPhase\":2.700000000000001,\"pendulumAngle\":0.043750689652111735,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-22.68,\"platterRotation\":5.235987755982987,\"pendulumRotation\":0.043750689652111735,\"hourHand\":-11.11800186238646,\"minuteHand\":-133.41602234863754,\"clockEpoch\":1793233035901,\"labelId\":\"almost-new\",\"brewVisible\":false}"
+    },
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 7,
+        "column": 56,
+        "function": "objects"
+      },
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 198,
+        "column": 378
+      }
+    ]
+  },
+  {
+    "call": "almr@3503",
+    "method": "evaluateExpression",
+    "params": {
+      "expression": "() => (window.__roomLoopSources || []).filter(r => r.startTime !== null).map(r => {\n  var _r$gainNode, _r$stopTime;\n  return {\n    id: r.id,\n    duration: r.duration,\n    loop: r.node.loop,\n    gain: ((_r$gainNode = r.gainNode) === null || _r$gainNode === void 0 ? void 0 : _r$gainNode.gain.value) || 0,\n    stopped: r.stopTime !== null,\n    offset: r.offset,\n    time: r.offset + Math.max(0, ((_r$stopTime = r.stopTime) !== null && _r$stopTime !== void 0 ? _r$stopTime : r.context.currentTime) - r.startTime),\n    context: r.context.state\n  };\n})",
+      "isFunction": true,
+      "arg": {
+        "value": {
+          "v": "undefined"
+        },
+        "handles": []
+      }
+    },
+    "start_s": 88.298,
+    "library_end_s": 90.7,
+    "caller_end_s": 91.906,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 89.495,
+        "collection_ms": 4.400000000372529
+      },
+      {
+        "phase": "after",
+        "at_s": 91.905,
+        "collection_ms": 3
+      }
+    ],
+    "result": {
+      "value": {
+        "a": [
+          {
+            "o": [
+              {
+                "k": "id",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "duration",
+                "v": {
+                  "n": 100
+                }
+              },
+              {
+                "k": "loop",
+                "v": {
+                  "b": true
+                }
+              },
+              {
+                "k": "gain",
+                "v": {
+                  "n": 1.5
+                }
+              },
+              {
+                "k": "stopped",
+                "v": {
+                  "b": false
+                }
+              },
+              {
+                "k": "offset",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "time",
+                "v": {
+                  "n": 68.4321088435374
+                }
+              },
+              {
+                "k": "context",
+                "v": {
+                  "s": "running"
+                }
+              }
+            ],
+            "id": 2
+          },
+          {
+            "o": [
+              {
+                "k": "id",
+                "v": {
+                  "n": 1
+                }
+              },
+              {
+                "k": "duration",
+                "v": {
+                  "n": 169.89684807256236
+                }
+              },
+              {
+                "k": "loop",
+                "v": {
+                  "b": true
+                }
+              },
+              {
+                "k": "gain",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "stopped",
+                "v": {
+                  "b": true
+                }
+              },
+              {
+                "k": "offset",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "time",
+                "v": {
+                  "n": 4.887800453514739
+                }
+              },
+              {
+                "k": "context",
+                "v": {
+                  "s": "running"
+                }
+              }
+            ],
+            "id": 3
+          },
+          {
+            "o": [
+              {
+                "k": "id",
+                "v": {
+                  "n": 2
+                }
+              },
+              {
+                "k": "duration",
+                "v": {
+                  "n": 249.85278911564626
+                }
+              },
+              {
+                "k": "loop",
+                "v": {
+                  "b": true
+                }
+              },
+              {
+                "k": "gain",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "stopped",
+                "v": {
+                  "b": true
+                }
+              },
+              {
+                "k": "offset",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "time",
+                "v": {
+                  "n": 4.919727891156459
+                }
+              },
+              {
+                "k": "context",
+                "v": {
+                  "s": "running"
+                }
+              }
+            ],
+            "id": 4
+          },
+          {
+            "o": [
+              {
+                "k": "id",
+                "v": {
+                  "n": 3
+                }
+              },
+              {
+                "k": "duration",
+                "v": {
+                  "n": 198.57367346938776
+                }
+              },
+              {
+                "k": "loop",
+                "v": {
+                  "b": true
+                }
+              },
+              {
+                "k": "gain",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "stopped",
+                "v": {
+                  "b": true
+                }
+              },
+              {
+                "k": "offset",
+                "v": {
+                  "n": 0
+                }
+              },
+              {
+                "k": "time",
+                "v": {
+                  "n": 23.01968253968254
+                }
+              },
+              {
+                "k": "context",
+                "v": {
+                  "s": "running"
+                }
+              }
+            ],
+            "id": 5
+          }
+        ],
+        "id": 1
+      }
+    },
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/helpers/room-audio.ts",
+        "line": 21,
+        "column": 85,
+        "function": "roomAudioSources"
+      },
+      {
+        "file": "/home/runner/work/blog/blog/tests/helpers/room-audio.ts",
+        "line": 27,
+        "column": 59,
+        "function": "rainSource"
+      },
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-object-living.spec.ts",
+        "line": 198,
+        "column": 445
+      }
+    ]
+  }
+]
