@@ -2,6 +2,8 @@
 
 ## 当前状态
 
+2026-10-29：作者要求深度精简 CI/CD。未完成的 Actions shadow 发布迁移已退出日常链路，生产继续使用 Netlify Git builds；原完整验证图移为手动诊断。以下均为历史迁移证据，当前运维以 [CI/CD 运维](cicd-operations.md) 为准。
+
 实现基线为 `69ce189`，整支独立审查覆盖至 `ae35b80`，随后执行一轮带回归测试的修复。生产切换尚未完成；不得将本文的本地证据解释为新发布链已上线。
 
 GitHub 已创建 `production` environment 并限制为 `main` 分支。Netlify Git builds 未修改，Actions 发布模式缺省仍是 shadow。正式演练和切换需要该 environment 的 `NETLIFY_AUTH_TOKEN` secret 与 `NETLIFY_SITE_ID` variable。

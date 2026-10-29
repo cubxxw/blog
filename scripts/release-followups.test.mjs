@@ -294,10 +294,10 @@ test('followup orchestrator keeps verification secrets isolated and first-migrat
   }
 });
 
-test('scheduled audit is read-only, reports external failures and never modifies quality policy', () => {
+test('manual audit is read-only, reports external failures and never modifies quality policy', () => {
   const wf = parseYaml(readFileSync(new URL('../.github/workflows/content-audit.yml', import.meta.url), 'utf8'));
   assert.deepEqual(wf.permissions, { contents: 'read' });
-  assert.equal(wf.on.schedule[0].cron, '0 1 * * 0');
+  assert.equal(wf.on.schedule, undefined);
   assert.ok(wf.on.workflow_dispatch);
   const steps = Object.values(wf.jobs).flatMap((job) => job.steps || []);
   const external = steps.find((step) => step.uses?.startsWith('lycheeverse/lychee-action'));

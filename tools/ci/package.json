@@ -1,0 +1,11 @@
+{
+  "name": "blog-source-checks",
+  "private": true,
+  "description": "Only the parsers used by the lightweight blog CI",
+  "dependencies": {
+    "markdown-it": "15.0.3",
+    "markdownlint": "0.42.0",
+    "smol-toml": "1.9.1",
+    "yaml": "2.9.1"
+  }
+}

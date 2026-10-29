@@ -52,8 +52,6 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
-      - name: Test newsletter integration
-        run: npm run newsletter:test
       - name: Wait for deploy to propagate (push runs only)
         if: github.event_name == 'push' && inputs.release_context_artifact_id == ''
         run: |
