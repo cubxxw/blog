@@ -26,7 +26,7 @@ test('a cancelled or skipped mandatory check is never a green gate',()=>{
   for(const state of ['cancelled','skipped','failure',undefined])assert.equal(requiredJobsPassed({source:state},['source']),false);
 });
 test('the actual door preflight requires three first attempts and propagates a failed browser exit',()=>{
-  const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/full-checks.yml','utf8'));
   const step=workflow.jobs.preflight?.steps.find(s=>s.name==='Diagnose the desktop rear-door journey before browser fan-out');
   assert.ok(step);assert.equal(step['continue-on-error'],undefined);
   const inline=step.run.match(/<<'NODE'\n([\s\S]+)\nNODE\s*$/)?.[1];
@@ -53,10 +53,11 @@ test('the actual door preflight requires three first attempts and propagates a f
     assert.equal(process.exitCode,status??1);
   }
 });
-test('production reusable workflow is isolated and gated behind verified main artifacts',()=>{
-  const main=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
+test('legacy production publisher stays isolated from the manual diagnostics',()=>{
+  const main=YAML.parse(fs.readFileSync('.github/workflows/full-checks.yml','utf8'));
   const release=YAML.parse(fs.readFileSync('.github/workflows/release-netlify.yml','utf8'));
-  assert.ok(main.jobs.release.needs.includes('verify'));
+  assert.equal(main.on.push,undefined);
+  assert.equal(main.jobs.release,undefined);
   assert.equal(release.jobs.release.environment,'production');
   assert.equal(release.jobs.release.concurrency['cancel-in-progress'],false);
   assert.ok(release.on.workflow_call);
@@ -102,7 +103,7 @@ test('Lighthouse publish reruns bind to the producer artifact and fail closed be
 
 
 test('failed interactive checks retain their HTML report and traces', () => {
-  const workflow = YAML.parse(fs.readFileSync('.github/workflows/main.yaml', 'utf8'));
+  const workflow = YAML.parse(fs.readFileSync('.github/workflows/full-checks.yml', 'utf8'));
   const evidence = workflow.jobs.browser.steps.find(step => step.name === 'Preserve verification evidence');
   assert.equal(evidence.if, 'always()', 'failure must still upload evidence');
   const paths = evidence.with.path.split('\n').map(value => value.trim()).filter(Boolean);
@@ -110,9 +111,9 @@ test('failed interactive checks retain their HTML report and traces', () => {
   assert.ok(paths.includes('test-results/'), 'failed interactive traces must survive the runner');
 });
 
-test('one frozen producer feeds isolated runners and only the final required gate can publish',()=>{
-  const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8')),jobs=workflow.jobs;
-  assert.equal(jobs.verify.name,'Required blog quality');
+test('one frozen producer feeds the complete manual diagnostic graph without publishing',()=>{
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/full-checks.yml','utf8')),jobs=workflow.jobs;
+  assert.equal(jobs.verify.name,'Full blog diagnostics');
   assert.deepEqual(jobs.verify.needs,['prepare','preflight','browser']);assert.match(jobs.verify.if,/always\(\)/);
   assert.equal(jobs.browser.strategy['fail-fast'],false);
   assert.equal(jobs.browser.strategy.matrix,'${{ fromJSON(needs.prepare.outputs.browser_matrix) }}');
@@ -125,12 +126,12 @@ test('one frozen producer feeds isolated runners and only the final required gat
   const finish=jobs.verify.steps.find(s=>s.run?.includes('ci-run.mjs finalize'));
   assert.ok(finish);assert.equal(finish['continue-on-error'],undefined);
   const upload=jobs.verify.steps.find(s=>s.id==='artifact');assert.ok(upload);
-  assert.equal(jobs.release.with.artifact_id,'${{ needs.verify.outputs.artifact_id }}');
+  assert.equal(jobs.release,undefined);
 });
 
 
 test('browser preflights use the frozen producer on a fresh runner before every consumer',()=>{
- const jobs=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8')).jobs;
+ const jobs=YAML.parse(fs.readFileSync('.github/workflows/full-checks.yml','utf8')).jobs;
  assert.deepEqual(jobs.preflight?.needs,['prepare']);
  assert.equal(jobs.preflight?.['runs-on'],'ubuntu-24.04');assert.equal(jobs.preflight?.['timeout-minutes'],120);
  assert.equal(jobs.preflight?.if,"needs.prepare.outputs.run_site == 'true'");

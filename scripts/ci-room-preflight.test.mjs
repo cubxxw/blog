@@ -69,7 +69,7 @@ test('focused invocation keeps real inputs, original gates and independent diagn
   assert.equal(args.filter(arg=>arg.endsWith('.spec.ts')).length,5);
 });
 test('optional dispatch preflight defaults off and cannot replace the full graph',()=>{
-  const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/full-checks.yml','utf8'));
   assert.equal(workflow.on.workflow_dispatch.inputs.room_regressions?.type,'boolean');
   assert.equal(workflow.on.workflow_dispatch.inputs.room_regressions?.default,false);
   const step=workflow.jobs.preflight?.steps.find(s=>s.name==='Diagnose known room regressions before browser fan-out');
@@ -77,7 +77,8 @@ test('optional dispatch preflight defaults off and cannot replace the full graph
   assert.equal(step.if,"inputs.room_regressions == true");
   assert.equal(step.run,'node scripts/ci-room-preflight.mjs');
   assert.ok(workflow.jobs.verify.needs.includes('browser'));
-  assert.ok(workflow.jobs.release.needs.includes('verify'));
+  assert.equal(workflow.on.push,undefined);
+  assert.equal(workflow.jobs.release,undefined);
 });
 
 test('the resident desktop gate preserves native input, exact state and the following full pause with one5s observer',()=>{

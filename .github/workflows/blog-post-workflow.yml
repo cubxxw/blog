@@ -3,9 +3,6 @@ on:
   schedule:
     - cron: 15 8 * * *
   workflow_dispatch: null
-  push:
-    branches:
-      - main
   workflow_call:
     inputs:
       release_context_artifact_id:

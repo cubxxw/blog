@@ -3,14 +3,6 @@ name: Search preview diagnostics
 # Fast Linux feedback for daily search branches. The full frozen-artifact gate
 # remains required; this read-only preview job never publishes or calls AI.
 on:
-  push:
-    branches: ['codex/blog-daily-*']
-    paths:
-      - 'assets/js/search-*.js'
-      - 'layouts/partials/extend_head.html'
-      - 'tests/e2e/search-bootstrap.spec.ts'
-      - 'playwright.search-preview.config.ts'
-      - '.github/workflows/search-preview.yml'
   workflow_dispatch:
 
 permissions:

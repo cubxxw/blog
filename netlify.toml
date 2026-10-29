@@ -1,8 +1,7 @@
 # netlify.toml
 [build]
-  # Native Git builds remain the publisher during shadow migration. The same
-  # Hugo phase is used by the isolated Actions Netlify lifecycle. Cloud builds
-  # are stopped only after draft qualification and an explicit cutover.
+  # Netlify is the production builder/publisher; Actions only check sources.
+  ignore = "node scripts/netlify-ignore.mjs"
   command = "npm ci --prefix netlify/functions && node scripts/site-build.mjs --hugo-phase && node scripts/check-content-rendering.mjs public && node scripts/check-generated-seo.mjs --public-dir public"
   publish = "public"
 
