@@ -195,7 +195,7 @@ Illustration or icon (not just text on blank page)
 
 ### Technical approaches:
 
-**Tooltip libraries**: Tippy.js, Popper.js
+**Tooltip libraries**: Tippy.js provides tooltip behavior and accessibility defaults; its Popper.js dependency is a positioning engine, not a complete tooltip implementation. Verify keyboard, focus, and touch behavior in the final integration.
 **Tour libraries**: Intro.js, Shepherd.js, React Joyride
 **Modal patterns**: Focus trap, backdrop, ESC to close
 **Progress tracking**: LocalStorage for "seen" states

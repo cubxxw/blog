@@ -77,6 +77,8 @@ impeccable %*
 exit /b %errorlevel%
 
 :download
+rem Post-write hooks use installed engines only; explicit commands bootstrap.
+if /I "%~1"=="hook" exit /b 0
 rem Last resort: fetch this version's binary from the release channel into
 rem the version-pinned user cache, verify it, then run it. Never inside
 rem another launcher's probe: fail fast and quiet instead.

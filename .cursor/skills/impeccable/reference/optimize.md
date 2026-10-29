@@ -50,8 +50,11 @@ Create systematic improvement plan:
 - Use dynamic imports for large components
 
 ```javascript
-// Lazy load heavy component
-const HeavyChart = lazy(() => import('./HeavyChart'));
+// Load the heavy module only when the chart is needed.
+async function showChart(container, data) {
+  const { renderChart } = await import('./heavy-chart.js');
+  renderChart(container, data);
+}
 ```
 
 **Optimize CSS**:
@@ -115,15 +118,15 @@ elements.forEach((el, i) => {
 
 ### Animation Performance
 
-**GPU Acceleration**:
+**Compositing heuristics**: `transform` and `opacity` are often cheaper to animate than layout properties, but layer promotion and GPU compositing depend on the browser, paint cost, and device limits. Measure actual frames and paint work on target devices.
 ```css
-/* ✅ GPU-accelerated (fast) */
+/* Often avoids layout work; measure compositing and paint cost. */
 .animated {
   transform: translateX(100px);
   opacity: 0.5;
 }
 
-/* ❌ CPU-bound (slow) */
+/* Can trigger layout and paint; measure before choosing this path. */
 .animated {
   left: 100px;
   width: 300px;

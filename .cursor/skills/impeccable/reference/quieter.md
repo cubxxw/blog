@@ -54,7 +54,7 @@ Systematically reduce intensity across these dimensions:
 - **Neutral dominance**: Let neutrals do more work, use color as accent (10% rule)
 - **Gentler contrasts**: High contrast only where it matters most
 - **Tinted grays**: Use warm or cool tinted grays instead of pure gray. Adds depth without loudness
-- **Never gray on color**: If you have gray text on a colored background, use a darker shade of that color or transparency instead
+- **Text on color**: Choose a text color that fits the palette and verify its computed contrast against the actual composited background in every relevant state and theme; transparency is not a substitute for a contrast check
 
 ### Visual Weight Reduction
 - **Typography**: Reduce font weights (900 → 600, 700 → 500), decrease sizes where appropriate
@@ -72,7 +72,7 @@ Systematically reduce intensity across these dimensions:
 - **Reduce animation intensity**: Shorter distances (10-20px instead of 40px), gentler easing
 - **Remove decorative animations**: Keep functional motion, remove flourishes
 - **Subtle micro-interactions**: Replace dramatic effects with gentle feedback
-- **Refined easing**: Use ease-out-quart for smooth, understated motion. Never bounce or elastic
+- **Refined easing**: Use `cubic-bezier(0.16, 1, 0.3, 1)` for smooth, understated motion. Never bounce or elastic
 - **Remove animations entirely** if they're not serving a clear purpose
 
 ### Composition Refinement

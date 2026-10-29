@@ -18,6 +18,8 @@ Supported harnesses: Claude Code (`.claude/settings.local.json` for a project-sc
 
 On **Cursor**, the hook runs on `postToolUse` for the `Write` tool (every agent file edit) and returns its reminder as `additional_context`, which Cursor adds after the tool result. Projects set up before this ran a `preToolUse` gate (`hook-before-edit`) that blocked bad writes before they landed; that gate still works until `hooks on`, `impeccable update`, or `impeccable doctor --fix` moves the entry to `postToolUse`.
 
+**Local launcher behavior:** the post-write `hook` command uses an installed engine only. If no configured, sibling, verified cache, home, or PATH engine is usable, it exits silently without downloading or creating a cache. This is a skipped scan, not a clean detector verdict. Run `.cursor/skills/impeccable/scripts/impeccable engine-probe` explicitly to bootstrap and verify the engine before relying on automatic findings; explicit commands retain the checksum-verified download path.
+
 Gemini installs session and completion hooks in `.gemini/settings.json`, merged into the settings already there (comments are tolerated; a commented file is backed up to `settings.json.bak` before the rewrite, and a file that is not valid JSON is left alone). It does not install a per-edit detector hook. The `BeforeTool` hook only rewrites shell commands that run `build-phase`, and only on macOS and Linux; on Windows (where Gemini runs hooks through PowerShell) no session id reaches the shell, so a comp build is not tied to the session and the completion reminder stays silent.
 
 ## Routing

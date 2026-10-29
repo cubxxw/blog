@@ -68,7 +68,7 @@ Omit irrelevant sections rather than filling them with invented rules. Put respo
 - An existing `DESIGN.md` is stale (the design has drifted).
 - Before a large redesign, to capture the current state as a reference.
 
-If a `DESIGN.md` already exists, **do not silently overwrite it**. Show the user the existing file first. Ask the user directly to clarify what you cannot infer. The choice is refresh, overwrite, or merge.
+If a `DESIGN.md` already exists, **honor the user's recorded refresh, overwrite, or merge choice**. Do not ask again when that choice is already clear. When a write is needed and no choice exists, show the existing file and ask for the choice; until then, return the pending choice without changing DESIGN.md or its sidecar. An existing path alone is not authorization.
 
 ## Two paths
 
@@ -408,7 +408,7 @@ Your own write is the freshest source; no reload needed.
 - Don't paste raw CSS class names. Translate to descriptive language.
 - Don't extract every token. Stop at what's actually reused; one-offs pollute the system.
 - Don't invent components that don't exist. If the project only has buttons and cards, only document those.
-- Don't overwrite an existing DESIGN.md without asking.
+- Don't change an existing DESIGN.md or its sidecar without the user's recorded refresh, overwrite, or merge choice; reuse a prior choice rather than asking again.
 - Don't duplicate content from PRODUCT.md. DESIGN.md is strictly visual.
 - Don't replace canonical sections with near-synonyms. Put layout and responsive behavior in `Layout`; put motion with the affected world or component.
 - Don't rename sections even slightly. "Colors" not "Color Palette & Roles". "Typography" not "Typography Rules". Tooling parsing depends on exact headers.

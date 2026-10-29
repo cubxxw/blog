@@ -25,8 +25,10 @@ When a sub-agent tool is available and permitted, run these independently; other
 2. **Mechanical scan:** run:
 
 ```bash
-.cursor/skills/impeccable/scripts/impeccable detect --json --scope layout [target files or dirs]
+.cursor/skills/impeccable/scripts/impeccable detect --json --scope layout "$target"
 ```
+
+Set `target` to one file or directory first; omit `"$target"` to scan the project. For multiple targets, pass each as a separately quoted argument.
 
 Also inspect arbitrary spacing, overflow, stacking, and container behavior the detector cannot resolve. Keep mechanical evidence out of the first assessment, then synthesize both passes before editing. A clean scan cannot prove hierarchy or rhythm.
 

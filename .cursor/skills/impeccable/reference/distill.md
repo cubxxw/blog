@@ -48,7 +48,7 @@ Systematically remove complexity across these dimensions:
 - **Remove redundancy**: If it's said elsewhere, don't repeat it here
 
 ### Visual Simplification
-- **Reduce color palette**: Use 1-2 colors plus neutrals, not 5-7 colors
+- **Reduce decorative colors**: Consolidate redundant accents while preserving semantic success, warning, error, focus, and data-category roles and their accessible distinctions; do not cap semantic tokens by palette size
 - **Limit typography**: One font family, 3-4 sizes maximum, 2-3 weights
 - **Remove decorations**: Eliminate borders, shadows, backgrounds that don't serve hierarchy or function
 - **Flatten structure**: Reduce nesting, remove unnecessary containers; never nest cards inside cards

@@ -17,7 +17,7 @@ If the request ends at mapping, stop with the map, inspection report and unresol
 
 ## What varies independently
 
-Split regions by what varies independently: content the site swaps (room photos, products, people), moving parts (anything a hover or the signature interaction moves), and structure (frames, surrounds, ornament). A window with open shutters onto a room is three kinds of region: the surround as a plate with a transparent opening, the room as an image region beneath it, and each shutter as its own plate. Overlapping regions are composited in the page. `comp-spec` flags a raster region whose note names a frame and the view it opens onto (`baked-composite`), and the plan and asset review shows it to the user first.
+Split regions by what varies independently: content the site swaps (room photos, products, people), moving parts (anything a hover or the signature interaction moves), and structure (frames, surrounds, ornament). A window with open shutters onto a room is three kinds of region: the surround as a plate with a transparent opening, the room as an image region beneath it, and each shutter as its own plate. Overlapping regions are composited in the page. Movement, resizing, or interaction does not change painted material into a semantic region; each independently moving painted layer keeps its own plate, image, or texture kind. `comp-spec` flags a raster region whose note names a frame and the view it opens onto (`baked-composite`), and the plan and asset review shows it to the user first.
 
 ## Painted material
 

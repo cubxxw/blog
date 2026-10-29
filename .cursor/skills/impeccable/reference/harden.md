@@ -165,11 +165,18 @@ t('items', { count }) // Handles complex plural rules
 - Handle timeout scenarios
 
 ```jsx
+// Map a known error code to an allowlisted localized key; unknown errors use
+// the generic fallback. Report the original error separately through the
+// project's approved logger with sensitive request data redacted.
+const errorKey = error?.code === 'TIMEOUT'
+  ? 'errors.loadTimeout'
+  : 'errors.loadFailed';
+
 // Error states with recovery
 {error && (
   <ErrorMessage>
-    <p>Failed to load data. {error.message}</p>
-    <button onClick={retry}>Try again</button>
+    <p>{t(errorKey)}</p>
+    <button onClick={retry}>{t('actions.tryAgain')}</button>
   </ErrorMessage>
 )}
 ```

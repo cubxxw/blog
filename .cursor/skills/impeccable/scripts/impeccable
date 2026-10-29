@@ -135,6 +135,12 @@ if [ -z "$probing" ] && command -v impeccable >/dev/null 2>&1 && probe_ok impecc
   exec impeccable "$@"
 fi
 
+# A post-write hook must never bootstrap over the network. An explicit
+# context/engine-probe command can install the engine before a later edit.
+if [ "${1:-}" = hook ]; then
+  exit 0
+fi
+
 # Last resort: fetch this version's binary for the current platform from the
 # public release channel into the user cache. Needs network; sandboxes without
 # egress preinstall the binary on PATH instead.

@@ -20,7 +20,7 @@ Adapt an existing **native** design (`ios` / `android` / `adaptive`) to a differ
 ### Orientation & foldables
 
 - Landscape restructures (side-by-side panes, repositioned controls); never clip or letterbox. Lock orientation only when the task truly demands it.
-- Foldables (Android): react to posture and hinge via window size classes; test folded, unfolded, and tabletop.
+- Foldables (Android): use window size classes for available layout space, and `WindowInfoTracker` / `FoldingFeature` for posture and hinge-aware behavior; test folded, unfolded, and tabletop.
 
 ### Platform → platform (iOS ↔ Android)
 

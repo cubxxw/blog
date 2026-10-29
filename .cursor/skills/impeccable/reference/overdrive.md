@@ -47,17 +47,19 @@ Charts and dashboards: the "wow" is in fluidity: GPU-accelerated rendering via C
 
 Organized by what you're trying to achieve, not by technology name.
 
+Record the project's browser and device support floor before choosing an enhancement. Support varies by version, device, and policy: use `@supports` for CSS declarations and runtime capability checks for APIs, verify behavior on the supported targets, and keep a functional baseline when a feature is absent or initialization fails.
+
 ### Make transitions feel cinematic
-- **View Transitions API** (same-document: all browsers; cross-document: no Firefox): shared element morphing between states. A list item expanding into a detail page. A button morphing into a dialog. This is the closest thing to native FLIP animations.
-- **`@starting-style`** (all browsers): animate elements from `display: none` to visible with CSS only, including entry keyframes
+- **View Transitions API**: shared element morphing between states. Check `document.startViewTransition` for same-document transitions and verify cross-document support separately against the project's support floor; retain normal navigation and state updates when unavailable.
+- **`@starting-style`**: CSS entry transitions, including elements becoming visible from `display: none`. Verify support on the project's targets and keep the base visible state usable without the entry effect.
 - **Spring physics**: natural motion with mass, tension, and damping instead of cubic-bezier. Libraries: motion (formerly Framer Motion), GSAP, or roll your own spring solver.
 
 ### Tie animation to scroll position
-- **Scroll-driven animations** (`animation-timeline: scroll()`): CSS-only, no JS. Parallax, progress bars, reveal sequences all driven by scroll position. (Chrome/Edge/Safari; Firefox: flag only; always provide a static fallback)
+- **Scroll-driven animations** (`animation-timeline: scroll()`): CSS-only parallax, progress bars, and reveal sequences. Gate with `@supports (animation-timeline: scroll())` and preserve static content and progress information in the baseline.
 
 ### Render beyond CSS
-- **WebGL** (all browsers): shader effects, post-processing, particle systems. Libraries: Three.js, OGL (lightweight), regl. Use for effects CSS can't express.
-- **WebGPU** (Chrome/Edge; Safari 26+; Firefox on Windows/macOS; flag only on Firefox Linux/Android): next-gen GPU compute, more powerful than WebGL. Always fall back to WebGL2.
+- **WebGL**: shader effects, post-processing, particle systems. Libraries: Three.js, OGL (lightweight), regl. Check context creation and keep a CSS baseline when unavailable.
+- **WebGPU**: GPU rendering and compute where the project's targets support it. API presence is only the first check: adapter and device creation must succeed; otherwise try WebGL2, then the CSS baseline.
 - **Canvas 2D / OffscreenCanvas**: custom rendering, pixel manipulation, or moving heavy rendering off the main thread entirely via Web Workers + OffscreenCanvas.
 - **SVG filter chains**: displacement maps, turbulence, morphology for organic distortion effects. CSS-animatable.
 
@@ -67,8 +69,8 @@ Organized by what you're trying to achieve, not by technology name.
 - **Animated data transitions**: morph between chart states rather than replacing. D3's `transition()` or View Transitions for DOM-based charts.
 
 ### Animate complex properties
-- **`@property`** (all browsers): register custom CSS properties with types, enabling animation of gradients, colors, and complex values that CSS can't normally interpolate.
-- **Web Animations API** (all browsers): JavaScript-driven animations with the performance of CSS. Composable, cancellable, reversible. The foundation for complex choreography.
+- **`@property`**: register typed custom CSS properties for interpolation. Verify support on target browsers (or check `CSS.registerProperty` when registering from JS) and provide valid static custom-property defaults.
+- **Web Animations API**: composable, cancellable, reversible JavaScript-driven animations. Check `element.animate` and keep state changes and useful feedback working without it; measure performance on target devices.
 
 ### Push performance boundaries
 - **Web Workers**: move computation off the main thread. Heavy data processing, image manipulation, search indexing: anything that would cause jank.
@@ -94,10 +96,29 @@ Every technique must degrade gracefully. The experience without the enhancement 
 ```
 
 ```javascript
-if ('gpu' in navigator) { /* WebGPU */ }
-else if (canvas.getContext('webgl2')) { /* WebGL2 fallback */ }
-/* CSS-only fallback must still look good */
+async function selectRenderingBackend(canvas) {
+  if (navigator.gpu) {
+    try {
+      const adapter = await navigator.gpu.requestAdapter();
+      if (adapter) {
+        const device = await adapter.requestDevice();
+        return { kind: 'webgpu', adapter, device };
+      }
+    } catch {
+      // A denied or failed device request continues to the fallback.
+    }
+  }
+  try {
+    const gl = canvas.getContext('webgl2');
+    if (gl) return { kind: 'webgl2', gl };
+  } catch {
+    // Context creation can also fail despite API presence.
+  }
+  return { kind: 'css' }; // Keep the baseline visible and usable.
+}
 ```
+
+Initialize only the selected backend. If rendering setup or a later WebGPU `device.lost` / WebGL context loss fails, release its resources and restore the fallback, replacing the canvas when switching context types requires it.
 
 ### Performance rules
 

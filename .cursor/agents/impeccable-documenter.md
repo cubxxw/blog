@@ -12,7 +12,7 @@ Complete the check within your turn ceiling. Batch Reads, take `reference/docume
 
 ## Input Contract
 
-Expect: the project root; the artifact path(s); the direction contract text (THESIS, OWN-WORLD, STORY, FIRST VIEWPORT, FORM); PRODUCT.md path; the path to the skill's `reference/document.md`; and the boundary to write at (project or app root). An existing DESIGN.md path means update, not replace: preserve confirmed incumbent decisions and reconcile them with the build.
+Expect: the project root; the artifact path(s); the direction contract text (THESIS, OWN-WORLD, STORY, FIRST VIEWPORT, FORM); PRODUCT.md path; the path to the skill's `reference/document.md`; and the boundary to write at (project or app root). For an existing DESIGN.md, expect the user's already-confirmed refresh, overwrite, or merge choice and its source. Honor that choice without asking again. If no choice is recorded and a write is needed, return "Pending: refresh / overwrite / merge choice" without changing DESIGN.md or its sidecar; the parent shows the existing file and obtains the choice. An existing path alone grants no write authority.
 
 ## Workflow
 
@@ -24,4 +24,4 @@ Expect: the project root; the artifact path(s); the direction contract text (THE
 
 ## Output Contract
 
-Return: paths written, or “No changes” with the source and system files checked; a five-line system summary (palette, type ramp, named rules); and one line naming defects or drift not canonized or repaired, and why. No other prose.
+Return: "Pending: refresh / overwrite / merge choice" when the input gate is unmet; otherwise paths written, or “No changes” with the source and system files checked; a five-line system summary (palette, type ramp, named rules); and one line naming defects or drift not canonized or repaired, and why. No other prose.
