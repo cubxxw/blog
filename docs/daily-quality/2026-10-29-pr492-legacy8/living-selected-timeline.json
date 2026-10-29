@@ -1,0 +1,424 @@
+[
+  {
+    "call": "crmc@903",
+    "method": "evaluateExpression",
+    "params": {
+      "expression": "async () => {\n    const root = document.querySelector('[data-bear-workspace]'),\n      before = JSON.parse(root.dataset.roomCat),\n      samples = [];\n    for (let i = 0; i < 12; i++) {\n      await new Promise(resolve => setTimeout(resolve, 400));\n      samples.push(JSON.parse(root.dataset.roomCatBreath).chest);\n    }\n    return {\n      before,\n      samples,\n      cat: JSON.parse(root.dataset.roomCat)\n    };\n  }",
+      "isFunction": true,
+      "arg": {
+        "value": {
+          "v": "undefined"
+        },
+        "handles": []
+      }
+    },
+    "start_s": 26.264,
+    "library_end_s": 57.348,
+    "caller_end_s": 57.354,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 26.268,
+        "collection_ms": 3
+      },
+      {
+        "phase": "after",
+        "at_s": 57.353,
+        "collection_ms": 4
+      }
+    ],
+    "result": {
+      "value": {
+        "o": [
+          {
+            "k": "before",
+            "v": {
+              "o": [
+                {
+                  "k": "x",
+                  "v": {
+                    "n": -1.45
+                  }
+                },
+                {
+                  "k": "z",
+                  "v": {
+                    "n": -1.93
+                  }
+                },
+                {
+                  "k": "yaw",
+                  "v": {
+                    "n": 1.65
+                  }
+                },
+                {
+                  "k": "place",
+                  "v": {
+                    "n": 6
+                  }
+                },
+                {
+                  "k": "previous",
+                  "v": {
+                    "n": -1
+                  }
+                },
+                {
+                  "k": "goal",
+                  "v": {
+                    "n": 6
+                  }
+                },
+                {
+                  "k": "phase",
+                  "v": {
+                    "s": "sleep"
+                  }
+                },
+                {
+                  "k": "remaining",
+                  "v": {
+                    "n": 359.6399999999998
+                  }
+                },
+                {
+                  "k": "seed",
+                  "v": {
+                    "n": 79
+                  }
+                },
+                {
+                  "k": "gait",
+                  "v": {
+                    "n": 0
+                  }
+                },
+                {
+                  "k": "speed",
+                  "v": {
+                    "n": 0
+                  }
+                },
+                {
+                  "k": "elapsed",
+                  "v": {
+                    "n": 0.35999999999999993
+                  }
+                },
+                {
+                  "k": "routine",
+                  "v": {
+                    "s": "nap"
+                  }
+                },
+                {
+                  "k": "loaded",
+                  "v": {
+                    "b": true
+                  }
+                },
+                {
+                  "k": "target",
+                  "v": {
+                    "a": [
+                      {
+                        "n": -1.45
+                      },
+                      {
+                        "n": 0.23
+                      },
+                      {
+                        "n": -1.93
+                      }
+                    ],
+                    "id": 3
+                  }
+                }
+              ],
+              "id": 2
+            }
+          },
+          {
+            "k": "samples",
+            "v": {
+              "a": [
+                {
+                  "n": 1.034924814434544
+                },
+                {
+                  "n": 1.0004411119182777
+                },
+                {
+                  "n": 1.0316405665078308
+                },
+                {
+                  "n": 1.0016831654942775
+                },
+                {
+                  "n": 1.03077839289338
+                },
+                {
+                  "n": 1.0035625191074278
+                },
+                {
+                  "n": 1.0335921458684842
+                },
+                {
+                  "n": 1.0135786117392669
+                },
+                {
+                  "n": 1.035612585706747
+                },
+                {
+                  "n": 1.00948029161335
+                },
+                {
+                  "n": 1.0118742821566544
+                },
+                {
+                  "n": 1.0049061734644438
+                }
+              ],
+              "id": 4
+            }
+          },
+          {
+            "k": "cat",
+            "v": {
+              "o": [
+                {
+                  "k": "x",
+                  "v": {
+                    "n": -1.45
+                  }
+                },
+                {
+                  "k": "z",
+                  "v": {
+                    "n": -1.93
+                  }
+                },
+                {
+                  "k": "yaw",
+                  "v": {
+                    "n": 1.65
+                  }
+                },
+                {
+                  "k": "place",
+                  "v": {
+                    "n": 6
+                  }
+                },
+                {
+                  "k": "previous",
+                  "v": {
+                    "n": -1
+                  }
+                },
+                {
+                  "k": "goal",
+                  "v": {
+                    "n": 6
+                  }
+                },
+                {
+                  "k": "phase",
+                  "v": {
+                    "s": "sleep"
+                  }
+                },
+                {
+                  "k": "remaining",
+                  "v": {
+                    "n": 359.6399999999998
+                  }
+                },
+                {
+                  "k": "seed",
+                  "v": {
+                    "n": 79
+                  }
+                },
+                {
+                  "k": "gait",
+                  "v": {
+                    "n": 0
+                  }
+                },
+                {
+                  "k": "speed",
+                  "v": {
+                    "n": 0
+                  }
+                },
+                {
+                  "k": "elapsed",
+                  "v": {
+                    "n": 0.35999999999999993
+                  }
+                },
+                {
+                  "k": "routine",
+                  "v": {
+                    "s": "nap"
+                  }
+                },
+                {
+                  "k": "loaded",
+                  "v": {
+                    "b": true
+                  }
+                },
+                {
+                  "k": "target",
+                  "v": {
+                    "a": [
+                      {
+                        "n": -1.45
+                      },
+                      {
+                        "n": 0.23
+                      },
+                      {
+                        "n": -1.93
+                      }
+                    ],
+                    "id": 6
+                  }
+                }
+              ],
+              "id": 5
+            }
+          }
+        ],
+        "id": 1
+      }
+    },
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-living-motion.spec.ts",
+        "line": 92,
+        "column": 40
+      }
+    ]
+  },
+  {
+    "call": "crmc@911",
+    "method": "screenshot",
+    "params": {
+      "type": "png"
+    },
+    "start_s": 57.361,
+    "library_end_s": 69.246,
+    "caller_end_s": 70.742,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 58.827,
+        "collection_ms": 7
+      },
+      {
+        "phase": "after",
+        "at_s": 70.741,
+        "collection_ms": 6
+      }
+    ],
+    "result": {
+      "binary": "<Buffer>"
+    },
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-living-motion.spec.ts",
+        "line": 99,
+        "column": 13
+      }
+    ]
+  },
+  {
+    "call": "crmc@917",
+    "method": "expect",
+    "params": {
+      "selector": "[data-bear-workspace]",
+      "expression": "to.have.attribute.value",
+      "expressionArg": "data-world-travel",
+      "expectedText": [
+        {
+          "string": "false"
+        }
+      ],
+      "expectedValue": {
+        "value": {
+          "v": "undefined"
+        },
+        "handles": []
+      },
+      "isNot": false,
+      "timeout": 5000
+    },
+    "start_s": 82.553,
+    "library_end_s": 87.692,
+    "caller_end_s": 89.397,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 84.268,
+        "collection_ms": 3
+      },
+      {
+        "phase": "after",
+        "at_s": 89.396,
+        "collection_ms": 5
+      }
+    ],
+    "result": null,
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-living-motion.spec.ts",
+        "line": 100,
+        "column": 84
+      }
+    ]
+  },
+  {
+    "call": "crmc@919",
+    "method": "getAttribute",
+    "params": {
+      "selector": "[data-bear-workspace]",
+      "strict": true,
+      "name": "data-world-pose"
+    },
+    "start_s": 89.398,
+    "library_end_s": 92.789,
+    "caller_end_s": 94.503,
+    "snapshots": [
+      {
+        "phase": "before",
+        "at_s": 91.089,
+        "collection_ms": 5
+      },
+      {
+        "phase": "after",
+        "at_s": 94.502,
+        "collection_ms": 4
+      }
+    ],
+    "result": {
+      "value": "{\"x\":2.25,\"y\":1.14,\"z\":1.25,\"yaw\":0.61534,\"pitch\":0.00282,\"fov\":45.71745}"
+    },
+    "source": [
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-living-motion.spec.ts",
+        "line": 5,
+        "column": 59,
+        "function": "pose"
+      },
+      {
+        "file": "/home/runner/work/blog/blog/tests/e2e/space-living-motion.spec.ts",
+        "line": 100,
+        "column": 142
+      }
+    ]
+  }
+]

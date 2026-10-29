@@ -1,5 +1,6 @@
 import {test,expect,type Page} from '../helpers/frozen-site';
-import {observeRoomAudio,rainSource,roomAudioSources} from '../helpers/room-audio';
+import {observeRoomAudio,rainSource,roomAudioSources,readRoomAudioSources} from '../helpers/room-audio';
+import {expectRoomAttributes,withRoomObservationSession} from '../helpers/room-observation';
 import {hitRoomObject} from '../helpers/room-interaction';
 
 test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
@@ -32,10 +33,11 @@ test('speaker volume can grow to full gain during playback without replacing mus
  expect((await musicSource(page))!.id).toBe(music.id);expect((await rainSource(page))!.id).toBe(rain.id);
 });
 
-test('zero volume survives record changes and reload while the speaker remains playable',async({page})=>{
- await ready(page);await object(page,'records');const slider=page.getByRole('slider',{name:'音箱音量',exact:true});await slider.focus();await slider.press('Home');await expect(slider).toHaveValue('0');await expect(page.locator('[data-room-volume-value]')).toHaveText('0%');
- await expect(root(page)).toHaveAttribute('data-room-ambient','playing',{timeout:30000});const rain=(await rainSource(page))!;
- for(const id of ['long-stroll','almost-new']){await page.locator(`[data-room-record="${id}"]`).click();await expect(root(page)).toHaveAttribute('data-room-track',id);await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});await expect(slider).toHaveValue('0');await expect.poll(async()=>(await musicSource(page))?.gain).toBeCloseTo(0,3);expect((await rainSource(page))!.id).toBe(rain.id);}
- await page.reload();await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});await object(page,'records');await expect(slider).toHaveValue('0');await expect(page.locator('[data-room-volume-value]')).toHaveText('0%');
- await page.locator('[data-room-playback]').click();await expect(root(page)).toHaveAttribute('data-room-sound','playing',{timeout:30000});await slider.focus();await slider.press('End');await expect.poll(async()=>(await musicSource(page))?.gain).toBeCloseTo(1,2);
-});
+test('zero volume survives record changes and reload while the speaker remains playable',async({page})=>withRoomObservationSession(page,async()=>{
+ const audio=()=>readRoomAudioSources(page),music=async()=>(await audio()).find(source=>!source.stopped&&Math.abs(source.duration-100)>.05),rainSource=async()=>(await audio()).find(source=>!source.stopped&&Math.abs(source.duration-100)<.05);
+ await page.goto('/zh/projects/?vista=image&room-hour=23');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);await object(page,'records');const slider=page.getByRole('slider',{name:'音箱音量',exact:true});await slider.focus();await slider.press('Home');await expect(slider).toHaveValue('0');await expect(page.locator('[data-room-volume-value]')).toHaveText('0%');
+ await expectRoomAttributes(page,{'data-room-ambient':'playing'},30000);const rain=(await rainSource())!;
+ for(const id of ['long-stroll','almost-new']){await page.locator(`[data-room-record="${id}"]`).click();await expectRoomAttributes(page,{'data-room-track':id});await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);await expect(slider).toHaveValue('0');await expect.poll(async()=>(await music())?.gain).toBeCloseTo(0,3);expect((await rainSource())!.id).toBe(rain.id);}
+ await page.reload();await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);await object(page,'records');await expect(slider).toHaveValue('0');await expect(page.locator('[data-room-volume-value]')).toHaveText('0%');
+ await page.locator('[data-room-playback]').click();await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);await slider.focus();await slider.press('End');await expect.poll(async()=>(await music())?.gain).toBeCloseTo(1,2);
+}));
