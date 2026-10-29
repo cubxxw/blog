@@ -22,6 +22,12 @@ Validation:
 
 Reference checks used [Tippy's positioning comparison](https://atomiks.github.io/tippyjs/v6/motivation/), [MDN requestAdapter](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter), and [MDN will-change](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/will-change). Android guidance was checked against the existing platform terminology; the official Android pages timed out during this run.
 
+Follow-up on 2026-10-29 (starting from `bbf96cc7`): the first pinned-direction patch incorrectly waited for an approved comp before `build-phase start`, while `visualize.md` required an open comps phase before generating it. That created a circular dependency. Both references now use the existing `build-phase start --direction none --artifact <entry file>` path before generating the three comps; `--comp` remains for an already-approved comp.
+
+The installed binary reports `impeccable-engine 0.1.18`. Its missing-argument diagnostic explicitly accepts `--direction <seed reference, or none>`, and the [tagged engine source](https://github.com/pbakaus/impeccable/blob/engine-v0.1.18/crates/comp-verbs/src/build_phase.rs#L124) records literal `none` unchanged. This is a **build-phase no-seed sentinel**, not `seed: none (unavailable)` and not evidence that a concept roll ran. The source-backed pinned marker in FORM remains the review authority; no seed key or unsupported CLI flag is invented.
+
+The real installed engine passed **5 isolated phase-state scenarios**: the old missing-comp start failed without creating state; `--direction none` opened comps and retained `direction: "none"`; an empty round stayed gated; three unapproved PNG fixtures stayed gated; and one synthetic test-only approval among the three closed comps and opened spec. Fixtures were created only in a temporary project with an isolated HOME, then removed. This validates phase transitions, not real image generation, design quality, or user acceptance. No browser, site build, dependency install, concept roll, or paid API ran. `git diff --check` passed for the three changed documentation files.
+
 Exact patched paths (relative to repository root):
 
 - `.cursor/agents/impeccable-documenter.md`
