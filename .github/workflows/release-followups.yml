@@ -45,12 +45,6 @@ on:
         description: Verify and preview without sending email, changing README or publishing an issue
         type: boolean
         default: true
-  schedule:
-    - cron: '30 7 * * *'
-    - cron: '15 8 * * *'
-    - cron: '0 13 * * *'
-    - cron: '10 13 * * *'
-
 permissions:
   contents: read
   actions: read
@@ -76,19 +70,12 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
-      - name: Select requested compensation task
+      - name: Select requested task
         id: select
         env:
           REQUESTED_TASK: ${{ inputs.task }}
-          SCHEDULE: ${{ github.event.schedule }}
         run: |
           task="${REQUESTED_TASK:-all}"
-          case "$SCHEDULE" in
-            '30 7 * * *') task=lighthouse ;;
-            '15 8 * * *') task=readme ;;
-            '0 13 * * *') task=newsletter ;;
-            '10 13 * * *') task=search ;;
-          esac
           case "$task" in all|newsletter|search|readme|lighthouse) ;; *) exit 2 ;; esac
           echo "task=$task" >> "$GITHUB_OUTPUT"
       - name: Authenticate release and publication history
@@ -158,7 +145,7 @@ jobs:
 
   lighthouse:
     needs: prepare
-    if: needs.prepare.outputs.status == 'ready' && (needs.prepare.outputs.task == 'all' || needs.prepare.outputs.task == 'lighthouse')
+    if: needs.prepare.outputs.status == 'ready' && needs.prepare.outputs.task == 'lighthouse'
     permissions:
       contents: read
       actions: read

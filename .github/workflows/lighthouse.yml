@@ -1,10 +1,5 @@
 name: Lighthouse CI
 on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: 30 7 * * *
   workflow_dispatch:
     inputs:
       diagnostics:
@@ -98,11 +93,6 @@ jobs:
           if (/[\r\n]/.test(runtimeBin)) throw new Error('Invalid runner binary path');
           fs.appendFileSync(process.env.GITHUB_PATH, `${runtimeBin}\n`);
           JS
-      - name: Wait for Netlify to publish this commit
-        if: github.event_name == 'push' && inputs.release_context_artifact_id == ''
-        run: |
-          echo "Waiting 120s for Netlify to publish ${GITHUB_SHA}…"
-          sleep 120
       - name: Download verified same-run release context
         if: inputs.release_context_artifact_id != ''
         uses: actions/download-artifact@v8

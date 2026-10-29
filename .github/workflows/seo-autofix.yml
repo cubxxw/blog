@@ -13,10 +13,6 @@ name: SEO Autofix (proposal-only)
 # the Snapshot stage) and freshness is re-evaluated at the decision time.
 
 on:
-  schedule:
-    # Daily at 08:30 UTC (16:30 Beijing) — after seo-analyze (07:00) has
-    # written the SEO section and lighthouse (07:30) has written its numbers.
-    - cron: "30 8 * * *"
   workflow_dispatch:
 
 permissions:
