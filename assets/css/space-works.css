@@ -29,6 +29,10 @@
 .space .space-product-sheet { display:flex; flex-direction:column; }
 .space .space-product-sheet .space-product { width:100%; max-width:840px; margin:0 auto; padding:28px clamp(20px,5vw,48px) 48px; }
 .space .space-product__shot { border-radius:0; }
+/* Preserve readable actions after removing the nested Finder container. */
+.space .space-product__links .space-button { font-size:14px!important; }
+.space .space-spatial-screen .space-product-sheet .space-button { font-size:17px!important; }
+.space .space-spatial-screen .space-product-sheet :is(button,select) { min-width:54px; min-height:54px; }
 .space [data-app="products"]>.space-window__bar { background:var(--sp-paper); box-shadow:none; }
 .space [data-app="products"]>.space-window__bar::before { display:none; }
 .space [data-app="products"] .space-window-controls button { min-width:36px; min-height:36px; }

@@ -148,3 +148,5 @@ assets/jsconfig.json
 **/.impeccable/live/previews/
 **/.impeccable/live/annotations/
 **/.impeccable/live/cache/
+**/.impeccable/live/inject-journal.json
+**/.impeccable/live/roots.json

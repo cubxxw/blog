@@ -26,6 +26,14 @@ Chinese project and Lab views passed desktop and 390px checks. English dark Lab 
 
 The existing room's rain, materials and world geometry are preserved; this task adds navigation rather than replacing the scene. Ambi is a clarity reference named by the brief. There is no measured claim that the result outperforms Ambi.
 
+## CI-derived corrections
+
+Run [40800619371](https://github.com/cubxxw/blog/actions/runs/40800619371) caught a genuine reading regression: replacing the Finder container also removed its primary-action font and touch-target compensation in the projected desktop. The button rendered at about 9.87px instead of the existing minimum 13px. The new product sheet now retains 14px native / 17px projected primary-action type and 54px projected button targets. The original projected-font and hit-target assertions are retained unchanged.
+
+Two older P1/P2 UI assertions still referenced the removed permanent Companion Dock destination and Finder sidebar. They now assert the four named mobile destinations, Companion menu availability, and the native project picker's selected value, including after minimize/reopen. Product title and persisted payload checks are retained.
+
+Independent review found no P0/P1 in the official vendored guidance comments. The installed 0.1.18 engine cache matches the manifest SHA-256 and the repository launcher returns its engine handshake. Optional live-session journal/root files are now ignored; shared config stays tracked. Latest-head CI is still required after these corrections.
+
 ## Release status
 
 PR, current-head CI, merge and deployment are tracked in the PR and Linear issue. Local evidence above does not claim those later states. Production acceptance must read back the deployed revision and key paths after merge.

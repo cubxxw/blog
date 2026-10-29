@@ -80,7 +80,10 @@ test.describe('P1-P2 UX regression', () => {
     await expect(workspace).toHaveAttribute('data-ready', 'true');
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
-    await expect(workspace.locator('[data-space-dock] [data-mobile-destination]:visible')).toHaveCount(5);
+    const destinations = workspace.locator('[data-space-dock] [data-mobile-destination]:visible');
+    expect(await destinations.evaluateAll(buttons => buttons.map(button => button.getAttribute('data-mobile-destination')).sort())).toEqual(['products', 'reader', 'settings', 'welcome']);
+    await expect(workspace.locator('[data-space-dock] [data-open="agent"]')).toHaveCount(0);
+    await expect(workspace.locator('.space-menu [data-open="agent"]')).toHaveCount(1);
 
     const allApps = workspace.locator('.space-menu [data-space-launchpad-trigger]');
     const launchpad = workspace.locator('[data-space-launchpad]');
@@ -195,7 +198,7 @@ test.describe('P1-P2 UX regression', () => {
     const product = workspace.locator('[data-space-window="products"]');
     await expect(product).toBeVisible();
     await expect(product.locator('.space-product h2')).toHaveText('Roamorrow');
-    await expect(product.locator('[data-select-product="solo-compass"]')).toHaveAttribute('aria-pressed', 'true');
+    await expect(product.locator('[data-product-select]')).toHaveValue('solo-compass');
     const productState = () => page.evaluate(() => {
       const state = (window as unknown as {
         BearSpace: { snapshot: () => { windows: Array<{ app: string; payload: string; minimized: boolean }> } };
@@ -209,6 +212,7 @@ test.describe('P1-P2 UX regression', () => {
     await workspace.locator('[data-space-dock] [data-open="products"]').click();
     await expect(product).toBeVisible();
     await expect(product.locator('.space-product h2')).toHaveText('Roamorrow');
+    await expect(product.locator('[data-product-select]')).toHaveValue('solo-compass');
     await expect.poll(productState).toEqual({ payload: 'solo-compass', minimized: false });
   });
 
