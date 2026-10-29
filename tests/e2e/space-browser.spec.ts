@@ -100,6 +100,26 @@ test('the room opens a named work in one action and Companion stays on demand',a
  await expect(page.locator('[data-space-window="agent"] [data-agent-input]')).toBeVisible();
 });
 
+test('alternate-scene work actions stay clear of the footer and roaming controls',async({page})=>{
+ await page.goto('/zh/projects/');
+ await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-ready','true',{timeout:30_000});
+ await page.locator('.space-cafe__header [data-cafe-picker]').click();
+ await page.locator('[data-cafe-theme="zen"]').click();
+ await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-cafe-theme','zen');
+ await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
+ const entry=page.locator('.space-work-entry');await expect(entry).toBeVisible();
+ const coverage=await entry.evaluate(el=>{
+  const visible=(node:Element)=>{const s=getComputedStyle(node),b=node.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&b.width>0&&b.height>0;};
+  const peers=[...document.querySelectorAll('.space-cafe__footer,.space-world-hud__roam button')].filter(visible);
+  return [...el.querySelectorAll('button')].map(button=>{
+   const a=button.getBoundingClientRect(),center=document.elementFromPoint(a.x+a.width/2,a.y+a.height/2);
+   return {name:button.textContent,hit:!!center&&button.contains(center),inside:a.left>=0&&a.right<=innerWidth&&a.top>=0&&a.bottom<=innerHeight,overlaps:peers.filter(node=>{const b=node.getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;}).length};
+  });
+ });
+ for(const action of coverage){expect(action.inside,action.name||'work action').toBe(true);expect(action.hit,action.name||'work action').toBe(true);expect(action.overlaps,action.name||'work action').toBe(0);}
+ await entry.locator('[data-payload=""]').click();await expect(page.locator('[data-product-home]')).toBeVisible();
+});
+
 test('the project directory exposes previews and direct website actions before opening details',async({page})=>{
  await desk(page);await app(page,'products');const gallery=page.locator('[data-product-home]');await expect(gallery.locator('[data-project-card]')).toHaveCount(8);await expect(gallery.locator('[data-project-featured="true"]')).toHaveCount(1);await expect(gallery.locator('[data-project-featured="true"] img')).toHaveCount(1);await expect(gallery.locator('[data-select-product]')).toHaveCount(8);await capture(page,'project-gallery');
  const card=gallery.locator('[data-project-card="leafhour"]');await card.locator('[data-select-product]').click();await expect(page.locator('.space-product h2')).toHaveText('Leafhour');await page.locator('[data-product-back]').click();await expect(card.locator('[data-select-product]')).toBeFocused();

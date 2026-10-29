@@ -53,6 +53,7 @@
  .space .space-project-gallery__head { flex-direction:column; gap:8px; }
 }
 .space:not([data-world-renderer="jiangnan"]) .space-work-entry { bottom:160px; }
+@media(max-width:640px) { .space:not([data-world-renderer="jiangnan"]) .space-work-entry { bottom:264px; } }
 @media(max-height:500px) { .space:not([data-world-renderer="jiangnan"]) .space-work-entry { top:92px; bottom:auto; } }
 
 .space .space-work-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; padding:8px 24px; border-bottom:1px solid var(--sp-line); }

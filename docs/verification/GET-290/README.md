@@ -6,7 +6,7 @@ The homepage, product data, account boundaries, notes and error recovery are pre
 
 ## Tool installation
 
-The requested `npx impeccable install --providers=cursor --scope=project` failed when the remote TLS connection ended. The official `skill-v4.8.0/universal.zip` bundle was then obtained through the GitHub Release Asset API and verified against its published SHA-256. Only its Cursor payload was installed. See `impeccable-install.json` for the digest and local whitespace normalization. No paid model or API key was used. `PRODUCT.md` records the confirmed issue and repository context; `.impeccable/surfaces/projects.md` records this surface's constraints.
+The requested `npx impeccable install --providers=cursor --scope=project` failed when the remote TLS connection ended. The official `skill-v4.8.0/universal.zip` bundle was then obtained through the GitHub Release Asset API and verified against its published SHA-256. Only its Cursor payload was installed. See `impeccable-install.json` for the digest and local whitespace normalization. The installed tool made no external model API or Token Plan calls. `PRODUCT.md` records the confirmed issue and repository context; `.impeccable/surfaces/projects.md` records this surface's constraints.
 
 The distill pass removes Finder nesting and repeated navigation. The quieter pass removes the permanent Companion Dock item and reduces Quiet-mode chrome. The layout pass establishes a featured work, vertical index and window-container reflow. The polish pass covers focus restoration, native product selection, responsive layout and scene/footer separation.
 
@@ -16,7 +16,7 @@ The distill pass removes Finder nesting and repeated navigation. The quieter pas
 - Post-main-sync targeted Node tests: **43 passed, 0 failed**, in `unit-post-main.log`.
 - TypeScript check passed. The local donor dependency tree has the same lockfile; no dependency changes were made.
 - Final explicit-key-surface `npx impeccable detect --json` returned `[]`, with no ignores added. The scanner cannot resolve Hugo's dynamic stylesheet link in source templates; that limitation is retained in stderr. This is a source scan, not a complete rendered-page audit.
-- Independent review at `3591f12d9f0ab00aad1b0be835afdfc1e212de6e`: no P0/P1 and no open P2. The original E2E structure mismatch and alternate-scene overlap were fixed and reviewed.
+- Independent review at `3591f12d9f0ab00aad1b0be835afdfc1e212de6e`: no P0/P1. The original E2E structure mismatch and footer overlap were fixed. A later review of the zen screenshot found that a roaming control also overlapped the work strip; the strip was moved above both regions and an actual hit-target E2E regression was added. Latest-head CI must verify that regression.
 
 ## Browser evidence
 

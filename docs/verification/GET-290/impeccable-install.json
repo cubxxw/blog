@@ -11,6 +11,6 @@
   "sha256": "82e6f6ff3a2b18f46f0f2fc388c1ab7abf3ccc52bbfc522456396d13011d6706",
   "primaryFindings": 0,
   "sourceScanLimitation": "Hugo dynamic stylesheet link cannot resolve in source templates; rendered QA complements the explicit CSS scan.",
-  "paidModelCalls": 0,
+  "externalPaidApiCalls": 0,
   "localModifications": "Whitespace-only normalization in three upstream Markdown example files for git diff --check; behavior and instructions unchanged."
 }
