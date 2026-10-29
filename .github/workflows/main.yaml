@@ -34,3 +34,5 @@ jobs:
           ln -s tools/ci/node_modules node_modules
       - name: Check changed sources without building the site or starting browsers
         run: node scripts/ci-light.mjs
+      - name: Verify the pinned model boundary
+        run: node --test --test-name-pattern='analyze workflow binds the verified action pin' scripts/seo-pipeline.test.mjs
