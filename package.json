@@ -72,15 +72,15 @@
     }
   },
   "devDependencies": {
-    "@netlify/functions": "^6.0.2",
+    "@netlify/functions": "^6.0.3",
     "@playwright/test": "1.64.1",
     "@types/node": "^26.6.5",
     "acorn": "8.19.0",
-    "jsdom": "22.1.0",
+    "jsdom": "30.1.3",
     "markdown-it": "15.0.3",
     "markdownlint": "0.42.0",
     "mermaid": "^12.2.0",
-    "netlify-cli": "27.13.0",
+    "netlify-cli": "27.14.2",
     "netlify-plugin-critical-css": "1.0.4",
     "parse5": "8.0.1",
     "smol-toml": "1.9.1",
