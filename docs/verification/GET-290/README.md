@@ -6,7 +6,7 @@ The homepage, product data, account boundaries, notes and error recovery are pre
 
 ## Tool installation
 
-The requested `npx impeccable install --providers=cursor --scope=project` failed when the remote TLS connection ended. The official `skill-v4.8.0/universal.zip` bundle was then obtained through the GitHub Release Asset API and verified against its published SHA-256. Only its Cursor payload was installed. See `impeccable-install.json` for the digest and local whitespace normalization. The installed tool made no external model API or Token Plan calls. `PRODUCT.md` records the confirmed issue and repository context; `.impeccable/surfaces/projects.md` records this surface's constraints.
+The requested `npx impeccable install --providers=cursor --scope=project` failed when the remote TLS connection ended. The official `skill-v4.8.0/universal.zip` bundle was then obtained through the GitHub Release Asset API and verified against its published SHA-256. Only its Cursor payload was installed. See `impeccable-install.json` for the original bundle digest and `impeccable-local-patches.md` for subsequent local corrections. The digest proves the download's provenance; the patched files differ from that bundle. The installed tool made no external model API or Token Plan calls. `PRODUCT.md` records the confirmed issue and repository context; `.impeccable/surfaces/projects.md` records this surface's constraints.
 
 The distill pass removes Finder nesting and repeated navigation. The quieter pass removes the permanent Companion Dock item and reduces Quiet-mode chrome. The layout pass establishes a featured work, vertical index and window-container reflow. The polish pass covers focus restoration, native product selection, responsive layout and scene/footer separation.
 
@@ -32,7 +32,9 @@ Run [40800619371](https://github.com/cubxxw/blog/actions/runs/40800619371) caugh
 
 Two older P1/P2 UI assertions still referenced the removed permanent Companion Dock destination and Finder sidebar. They now assert the four named mobile destinations, Companion menu availability, and the native project picker's selected value, including after minimize/reopen. Product title and persisted payload checks are retained.
 
-Independent review found no P0/P1 in the official vendored guidance comments. The installed 0.1.18 engine cache matches the manifest SHA-256 and the repository launcher returns its engine handshake. Optional live-session journal/root files are now ignored; shared config stays tracked. Latest-head CI is still required after these corrections.
+The initial review found no shipped Hugo P0/P1 in the vendored guidance comments. The follow-up now corrects the valid guidance issues and makes write hooks skip bootstrap when an engine is unavailable; explicit launcher commands retain installation behavior. See `impeccable-local-patches.md` for scope and checks. Optional live-session journal/root files are ignored; shared config stays tracked.
+
+Follow-up independent review also found that related-writing text and secondary navigation lost their readable typography when the Finder container was removed. Their existing native and projected font sizes are restored on the new product sheet and toolbar. The reading-contract E2E now measures related titles at ≥16 projected CSS pixels, related summaries/dates at ≥13px, and back/explore navigation at ≥13px. Measurements share one DOM read per product. Current-head CI and rendered acceptance remain required; the earlier runs do not certify these patches.
 
 ## Release status
 

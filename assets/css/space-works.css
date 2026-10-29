@@ -32,6 +32,10 @@
 /* Preserve readable actions after removing the nested Finder container. */
 .space .space-product__links .space-button { font-size:14px!important; }
 .space .space-spatial-screen .space-product-sheet .space-button { font-size:17px!important; }
+.space .space-product-sheet .space-list-item strong { font-size:16px; line-height:1.5; }
+.space .space-product-sheet .space-list-item :is(span,small) { font-size:13px; }
+.space .space-spatial-screen .space-product-sheet .space-list-item strong { font-size:20px; }
+.space .space-spatial-screen .space-product-sheet .space-list-item :is(span,small) { font-size:16px; }
 .space .space-spatial-screen .space-product-sheet :is(button,select) { min-width:54px; min-height:54px; }
 .space [data-app="products"]>.space-window__bar { background:var(--sp-paper); box-shadow:none; }
 .space [data-app="products"]>.space-window__bar::before { display:none; }
@@ -68,3 +72,4 @@
 .space .space-spatial-screen .space-work-toolbar :is(button,select) { min-height:54px; }
 .space-product-sheet .space-product-explore { display:flex; gap:24px; margin-top:32px; padding-top:16px; border-top:1px solid var(--sp-line); }
 .space-product-sheet .space-product-explore button { min-height:44px; }
+.space .space-spatial-screen .space-work-toolbar>button,.space .space-spatial-screen .space-product-explore button { font-size:18px; }

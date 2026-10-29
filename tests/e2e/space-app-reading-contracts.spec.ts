@@ -94,6 +94,13 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
       const paragraphs=products.locator('.space-product > p:not(.space-product__stage):not(.space-product__boundary)');
       await expect(paragraphs.first()).toHaveText(product.headline);await expect(paragraphs.last()).toHaveText(product.description);
       expect(await projectedFontCSS(paragraphs.first())).toBeGreaterThanOrEqual(16);
+      const typography=await products.evaluate(el=>{
+        const font=(node:HTMLElement)=>parseFloat(getComputedStyle(node).fontSize)*node.getBoundingClientRect().width/node.offsetWidth;
+        return {navigation:[...el.querySelectorAll<HTMLElement>('[data-product-back],.space-product-explore button')].map(font),
+          related:[...el.querySelectorAll('.space-product .space-list-item')].map(row=>['strong','span','small'].map(selector=>font(row.querySelector<HTMLElement>(selector)!)))};
+      });
+      expect(typography.navigation).toHaveLength(3);for(const font of typography.navigation)expect(font).toBeGreaterThanOrEqual(13);
+      for(const [title,summary,date] of typography.related){expect(title).toBeGreaterThanOrEqual(16);expect(summary).toBeGreaterThanOrEqual(13);expect(date).toBeGreaterThanOrEqual(13);}
       expect(await fitsHorizontally(products.locator('[data-window-body]'))).toBe(true);
       if(view.width===844&&view.height===390) {
         const body=products.locator('[data-window-body]');await body.evaluate(el=>{el.scrollTop=0;});await nextFrame(page);

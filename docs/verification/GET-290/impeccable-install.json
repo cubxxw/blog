@@ -12,5 +12,5 @@
   "primaryFindings": 0,
   "sourceScanLimitation": "Hugo dynamic stylesheet link cannot resolve in source templates; rendered QA complements the explicit CSS scan.",
   "externalPaidApiCalls": 0,
-  "localModifications": "Whitespace-only normalization in three upstream Markdown example files for git diff --check; behavior and instructions unchanged."
+  "localModifications": "Initial whitespace normalization followed by documented local correctness and offline-hook patches; see impeccable-local-patches.md. The SHA-256 above identifies the original release bundle, not the patched working tree."
 }
