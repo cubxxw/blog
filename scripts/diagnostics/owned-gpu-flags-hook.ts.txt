@@ -1,0 +1,43 @@
+
+// BEGIN identical owned-browser GPU argument diagnostic; never merge this hook.
+test.beforeEach(async ({browser}, info) => {
+ const started=performance.now(),deadline=started+5000;
+ const allowed=['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'];
+ const arm=process.env.ROOM_DIAGNOSTIC_GPU_ARM;
+ const codes=['GPU_AUDIT_ARM','GPU_AUDIT_TIMEOUT','GPU_AUDIT_SCHEMA','GPU_AUDIT_FLAGS','GPU_AUDIT_CALL'];
+ const within=async<T>(operation:()=>Promise<T>):Promise<T>=>{
+  const remaining=deadline-performance.now();if(remaining<=0)throw new Error('GPU_AUDIT_TIMEOUT');
+  let timer:ReturnType<typeof setTimeout>|undefined;
+  try{return await Promise.race([operation(),new Promise<never>((_,reject)=>{timer=setTimeout(()=>reject(new Error('GPU_AUDIT_TIMEOUT')),remaining);})]);}
+  finally{if(timer)clearTimeout(timer);}
+ };
+ let attaching:ReturnType<typeof browser.newBrowserCDPSession>|undefined,owned:Awaited<ReturnType<typeof browser.newBrowserCDPSession>>|undefined,cleanup:Promise<void>|undefined,detached=false;
+ const detach=(session:Awaited<ReturnType<typeof browser.newBrowserCDPSession>>)=>cleanup??=session.detach();
+ try{
+  if(arm!=='explicit-three'&&arm!=='original-one')throw new Error('GPU_AUDIT_ARM');
+  if(browser.browserType().name()!=='chromium')throw new Error('GPU_AUDIT_SCHEMA');
+  attaching=browser.newBrowserCDPSession();owned=await within(()=>attaching!);
+  const response=await within(()=>owned!.send('Browser.getBrowserCommandLine'));
+  if(!Array.isArray(response.arguments)||response.arguments.some(value=>typeof value!=='string'))throw new Error('GPU_AUDIT_SCHEMA');
+  // Only this closed projection can enter annotations. No raw response, full
+  // command line, profile path, environment or other process is saved/returned.
+  const flags=response.arguments.filter(value=>allowed.includes(value));
+  const unexpected=response.arguments.some(value=>(value.startsWith('--use-gl=')||value.startsWith('--use-angle=')||value==='--disable-gpu'||value==='--enable-gpu')&&!allowed.includes(value));
+  response.arguments.length=0;
+  // Pinned PW1.64.1 Chromium adds unsafe-swiftshader once before spec args.
+  // Retain that known default duplicate; never remove or silently dedupe it.
+  const expected=arm==='explicit-three'?[allowed[2],...allowed]:[allowed[2],allowed[2]];
+  if(unexpected||JSON.stringify([...flags].sort())!==JSON.stringify([...expected].sort()))throw new Error('GPU_AUDIT_FLAGS');
+  await within(()=>detach(owned!));detached=true;
+  const elapsedMs=performance.now()-started;if(elapsedMs>=5000)throw new Error('GPU_AUDIT_TIMEOUT');
+  info.annotations.push({type:'owned-gpu-flags',description:JSON.stringify({arm,flags,elapsedMs,source:'owned Browser.getBrowserCommandLine',gpuRendererObserved:false})});
+ }catch(error){
+  const code=error instanceof Error&&codes.includes(error.message)?error.message:'GPU_AUDIT_CALL';
+  info.annotations.push({type:'owned-gpu-flags-blocked',description:JSON.stringify({code,elapsedMs:performance.now()-started})});
+  throw new Error(code);
+ }finally{
+  // After a failed gate, late cleanup cannot publish a success or change flags.
+  if(!detached){if(owned)void detach(owned).catch(()=>{});else if(attaching)void attaching.then(detach).catch(()=>{});}
+ }
+});
+// END identical owned-browser GPU argument diagnostic.

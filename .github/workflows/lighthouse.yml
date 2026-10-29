@@ -1,5 +1,5 @@
 # Disposable diagnostic branch only; never merge into main or PR492.
-name: Frozen browser trace screenshot A/B diagnostic
+name: Frozen browser GPU flags A/B diagnostic
 on:
   workflow_dispatch:
     inputs:
@@ -15,11 +15,11 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  group: frozen-browser-trace-ab-${{ github.ref }}
+  group: frozen-browser-gpu-flags-ab-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   diagnostic:
-    if: github.repository == 'cubxxw/blog' && github.ref_name == 'codex/blog-room-trace-ab-20261029' && github.event_name == 'workflow_dispatch'
+    if: github.repository == 'cubxxw/blog' && github.ref_name == 'codex/blog-room-gpu-flags-ab-20261029' && github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
@@ -44,7 +44,7 @@ jobs:
           run-id: '40770044977'
           path: tests/.artifacts/frozen-ab-input
           merge-multiple: true
-      - name: Compare trace screenshot off then on with the same candidate cases
+      - name: Compare explicit software GPU flags then original flags in six desktop cases
         env:
           CANDIDATE_TEST_REF: ${{ inputs.candidate_test_ref }}
           APPROVED_TEST_PATHS: ${{ inputs.approved_test_paths }}
@@ -52,8 +52,8 @@ jobs:
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: diagnostic-frozen-trace-ab-${{ github.run_id }}-${{ github.run_attempt }}
-          path: tests/.artifacts/frozen-trace-ab-diagnostic/
+          name: diagnostic-frozen-gpu-flags-ab-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tests/.artifacts/frozen-gpu-flags-ab-diagnostic/
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
