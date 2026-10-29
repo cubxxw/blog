@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import { mkdtemp, mkdir, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import fsPromises from "node:fs/promises";
+import { syncBuiltinESMExports } from "node:module";
 import {
   createAuthorVoice,
   loadGeminiKey,
@@ -720,4 +722,60 @@ test("two simultaneous audio publications retain both article tracks", async (t)
     new Set(meta.authorAudioTracks),
     new Set(jobs.map((j) => j.assetId)),
   );
+});
+
+test("terminal audio readiness is not exposed before its operation owner releases", { timeout: 10000 }, async (t) => {
+  let calls = 0, release, persisted;
+  const resume = new Promise((resolve) => (release = resolve));
+  const visible = new Promise((resolve) => (persisted = resolve));
+  const f = await fixture(t, async () => { calls++; return speech(); });
+  await addVoice(f);
+  const request = { requestId: "ready-owner", article: f.article, kind: "summary", text: "确认过的说明。" };
+  const file = path.join(f.root, ".author-voice/jobs/ready-owner.json");
+  const nativeRename = fsPromises.rename;
+  let held = false;
+  const rename = t.mock.method(fsPromises, "rename", async (from, to) => {
+    const result = await nativeRename(from, to);
+    if (String(to) === file && !held && JSON.parse(await readFile(file, "utf8")).status === "ready") {
+      held = true;
+      persisted();
+      // The real final manifest is already visible, but its fs acknowledgement
+      // has not returned to work()'s finally. This gate changes no file bytes.
+      await resume;
+    }
+    return result;
+  });
+  syncBuiltinESMExports();
+  try {
+    await f.service.generate(request);
+    await visible;
+    assert.equal(JSON.parse(await readFile(file, "utf8")).status, "ready");
+    assert.equal((await f.service.job(request.requestId)).status, "preparing");
+    const state = await f.service.state();
+    assert.equal(state.busy, true);
+    assert.equal(state.jobs.find((job) => job.id === request.requestId).status, "preparing");
+    assert.equal((await f.service.generate(request)).status, "preparing");
+    assert.equal(calls, 1, "idempotent reuse must not resubmit audio");
+    await assert.rejects(f.service.generate({ ...request, requestId: "still-busy", kind: "dialogue" }), /已有操作/);
+    release();
+    const first = await settle(f.service, request.requestId);
+    assert.equal(first.status, "ready");
+    assert.equal((await f.service.state()).busy, false);
+    await f.service.generate({ ...request, requestId: "after-ready", kind: "dialogue" });
+    const second = await settle(f.service, "after-ready");
+    assert.equal(second.status, "ready");
+    await Promise.all([first, second].map((job) => f.service.publish({ id: job.id, reviewed: true })));
+    const { parse } = await import("yaml");
+    const article = await readFile(path.join(f.root, f.article), "utf8");
+    const meta = parse(article.split("---")[1]);
+    assert.deepEqual(new Set(meta.authorAudioTracks), new Set([first.assetId, second.assetId]));
+    assert.equal(meta.custom, "preserve");
+    assert.ok(article.includes("原来的正文。"));
+    assert.equal(calls, 1, "the same confirmed text reuses its cached audio");
+  } finally {
+    release();
+    if (held) await settle(f.service, request.requestId);
+    rename.mock.restore();
+    syncBuiltinESMExports();
+  }
 });
