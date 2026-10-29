@@ -1,18 +1,25 @@
 import {test,expect,type Page} from '../helpers/frozen-site';
 import {writeFile} from 'node:fs/promises';
+import {expectRoomAttributes,readRoomObservation,withRoomObservationSession} from '../helpers/room-observation';
 test.use({channel:'chromium',reducedMotion:'no-preference',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
-const pose=async(page:Page)=>JSON.parse((await root(page).getAttribute('data-world-pose'))!);
+const pose=async(page:Page,observed=false)=>observed?readRoomObservation(page,()=>{
+ const roots=document.querySelectorAll<HTMLElement>('[data-bear-workspace]');if(roots.length!==1)throw new Error('Room pose root missing or ambiguous');return JSON.parse(roots[0].dataset.worldPose!);
+},undefined,{timeout:5000,label:'Room camera pose',validate:(value):value is Record<string,number>=>{
+ if(value===null||typeof value!=='object')return false;const pose=value as Record<string,unknown>;return ['x','y','z','yaw','pitch','fov'].every(key=>typeof pose[key]==='number'&&Number.isFinite(pose[key]));
+}}):JSON.parse((await root(page).getAttribute('data-world-pose'))!);
 async function object(page:Page,kind:string){const button=page.locator(`[data-room-object="${kind}"]`);await button.focus();await button.press('Enter');}
-async function open(page:Page){
+async function open(page:Page,observed=false){
  await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','jiangnan');localStorage.setItem('space:cafe:onboarding:v1','seen');localStorage.setItem('space:cafe:quiet:v1','no');});
- await page.goto('/zh/projects/?vista=image&room-hour=14');await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});
+ await page.goto('/zh/projects/?vista=image&room-hour=14');
+ if(observed){await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);await expectRoomAttributes(page,{'data-cat-loaded':'true'},30000);}
+ else{await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30000});await expect(root(page)).toHaveAttribute('data-cat-loaded','true',{timeout:30000});}
 }
 // Keep short camera states observable even when a software renderer takes longer
 // than the flight to acknowledge a native input or viewport command. The real
 // timers/render loop load normally, then only the test controls their timeline.
-async function openWithPausedClock(page:Page){
- await page.clock.install();await open(page);
+async function openWithPausedClock(page:Page,observed=false){
+ await page.clock.install();await open(page,observed);
  // A Date.now()+lead target can expire during slow renderer/CDP replies.
  // Bridge with a fixed wall time so pauseAt has no deadline, then restore
  // Date progression while animation time remains paused.
@@ -22,7 +29,7 @@ async function advanceFrames(page:Page,milliseconds:number){
  // Preserve real intermediate paints at 10Hz on the controlled timeline.
  for(let left=milliseconds;left>0;left-=100)await page.clock.fastForward(Math.min(100,left));
 }
-async function finishFlight(page:Page){await page.clock.fastForward(2000);await expect(root(page)).toHaveAttribute('data-world-travel','false');}
+async function finishFlight(page:Page,observed=false){await page.clock.fastForward(2000);if(observed)await expectRoomAttributes(page,{'data-world-travel':'false'});else await expect(root(page)).toHaveAttribute('data-world-travel','false');}
 type FlightFrame={fov:number;at:number;frame:string|undefined;travel:string|undefined};
 type FlightSamples={samples:FlightFrame[];done:boolean};
 async function armFlightSamples(page:Page){
@@ -84,9 +91,9 @@ test('approach can be grabbed mid-flight and Escape restores its entry pose',asy
  await page.keyboard.press('Escape');await finishFlight(page);expect(await pose(page)).toEqual(entry);
 });
 
-test('sleeping breath continues at the bookshelf and wheel restores its entry pose',async({page},info)=>{
- test.setTimeout(90000);await openWithPausedClock(page);const entry=await pose(page);
- await object(page,'books');await finishFlight(page);await page.clock.resume();
+test('sleeping breath continues at the bookshelf and wheel restores its entry pose',async({page},info)=>withRoomObservationSession(page,async()=>{
+ test.setTimeout(90000);await openWithPausedClock(page,true);const entry=await pose(page,true);
+ await object(page,'books');await finishFlight(page,true);await page.clock.resume();
  // Sample the live resident on its resumed clock without a CDP/trace round
  // trip between each of the same twelve real 400ms observation intervals.
  const {before,samples,cat}=await page.evaluate(async()=>{
@@ -97,8 +104,8 @@ test('sleeping breath continues at the bookshelf and wheel restores its entry po
  expect(samples).toHaveLength(12);expect(cat.phase).toBe('sleep');expect(cat.x).toBe(before.x);expect(cat.z).toBe(before.z);expect(cat.elapsed).toBe(before.elapsed);
  expect(Math.max(...samples)-Math.min(...samples)).toBeGreaterThan(.025);
  await page.screenshot({path:info.outputPath('sleeping-at-bookshelf.png')});
- await page.mouse.move(8,8);await page.mouse.wheel(0,150);await expect(root(page)).toHaveAttribute('data-world-travel','false');expect(await pose(page)).toEqual(entry);
-});
+ await page.mouse.move(8,8);await page.mouse.wheel(0,150);await expectRoomAttributes(page,{'data-world-travel':'false'});expect(await pose(page,true)).toEqual(entry);
+}));
 
 test('reduced motion freezes environmental movement and retains immediate object navigation',async({page})=>{
  test.setTimeout(60000);await open(page);await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(150);
