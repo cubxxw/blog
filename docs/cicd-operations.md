@@ -11,7 +11,7 @@
 - 修改的 JavaScript：检查语法；所有 workflow：解析 YAML；检查本次 diff 的空白错误。
 - 只安装 `tools/ci` 的四个解析依赖，不安装 Hugo、Netlify CLI、Playwright 或浏览器；不运行全量单元测试、截图、性能或跨浏览器矩阵。
 
-Netlify 负责一次真实站点构建、Critical CSS、函数打包、渲染与生成 SEO 检查。`netlify.toml` 的 ignore 命令只跳过已知文档、测试、workflow、brief 和投递账本/SEO 观测数据变更。站点输入变化、混合改动、重命名的原路径、缺失历史和未知路径仍构建；`0` 表示跳过，`1` 表示继续构建。[Netlify ignore 语义](https://docs.netlify.com/build/configure-builds/ignore-builds/)
+Netlify 负责一次真实站点构建、Critical CSS、函数打包、渲染与生成 SEO 检查。PR 只生成 Deploy Preview，自动 branch-deploy 用 `ignore = "exit 0"` 跳过，避免同提交构建两份预览；需要单独分支部署时可显式使用 Netlify build hook。production/PR 的 ignore 命令只跳过已知文档、测试、workflow、brief 和投递账本/SEO 观测数据变更。站点输入变化、混合改动、重命名的原路径、缺失历史和未知路径仍构建；`0` 表示跳过，`1` 表示继续构建。[Netlify ignore 语义及 build hook 例外](https://docs.netlify.com/build/configure-builds/ignore-builds/)
 
 保持检查名不变，不在整个 PR workflow 上使用路径过滤，避免必需状态一直 pending。[GitHub 必需检查说明](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/troubleshooting-required-status-checks)
 
@@ -31,7 +31,7 @@ gh workflow run seo-analyze.yml
 gh workflow run seo-autofix.yml
 ```
 
-全量诊断仍然验证冻结产物、测试清单与各分区回执，保留原断言；没有 release 或 followups job，产物保留 7 天。已有本地 `npm run quality:test`、`bear:test`、`ux:test`、`voice:test` 和各 Playwright 命令仍可按改动范围选择。`search-preview.yml`、`seo-contracts.yml`、`e2e.yml`、静态 Pages 备站仍为手动工具。
+全量诊断仍然验证冻结产物、测试清单与各分区回执，保留原断言；没有 release 或 followups job，产物保留 7 天。已有本地 `npm run quality:test`、`bear:test`、`ux:test`、`voice:test` 和各 Playwright 命令仍可按改动范围选择。`search-preview.yml`、`seo-contracts.yml`、`e2e.yml`、静态 Pages 备站仍为手动工具；搜索预览诊断须先有对应提交的 PR Deploy Preview（或显式构建的分支预览）。
 
 Lighthouse 不再随 push、每日 cron 或 release followups 的 `all` 自动执行。内容审计、SEO 分析/建议和旧迁移 followups 的定时入口也已移除。Newsletter/搜索投递及 SEO 原始数据采集继续原业务入口；邮件任务不再每次发送前运行整套单元测试。README 只保留每天一次更新和手动入口。
 

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import YAML from 'yaml';
+import { parse as parseToml } from 'smol-toml';
 import { selectContentScope, checkSources } from './ci-light.mjs';
 
 const zh = 'content/zh/engineering/posts/example.md';
@@ -60,4 +61,13 @@ test('the small CI dependency versions match the main tools and exclude browser/
   const light = JSON.parse(fs.readFileSync('tools/ci/package.json'));
   assert.equal(Object.keys(light.dependencies).length, 4);
   for (const [name, version] of Object.entries(light.dependencies)) assert.equal(version, root.devDependencies[name]);
+});
+test('Netlify keeps production and PR previews but skips redundant automatic branch builds', () => {
+  const config = parseToml(fs.readFileSync('netlify.toml', 'utf8'));
+  assert.equal(config.build.ignore, 'node ./scripts/netlify-ignore.mjs');
+  assert.equal(config.context['branch-deploy'].ignore, 'exit 0');
+  assert.equal(config.context['deploy-preview'].ignore, undefined);
+  assert.equal(config.context.production.ignore, undefined);
+  assert.match(config.build.command, /site-build\.mjs --hugo-phase/);
+  assert.match(config.context['deploy-preview'].command, /hugo/);
 });
