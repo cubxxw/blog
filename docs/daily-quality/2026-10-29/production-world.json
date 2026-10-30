@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-28T20:28:29.075433+00:00",
+  "verified": true,
+  "PR": 491,
+  "run": 40750042607,
+  "producerArtifactId": 12843349403,
+  "reviewedPRHead": "e4f9068c7e0899d5605bade56a19022bc3a62f43",
+  "testedSyntheticSource": "20211f07487050773b7edb79d68f71959c695ff1",
+  "realMainMerge": "8ed0ef2113d4aaaf5bc34c26a8807f07e61b44bf",
+  "sourceTree": "8866ade4b0dfd335e79ac1786e514990fa496d34",
+  "publicationInputDigest": "ac3455e72b8fd61c9e1df6475d6a107159585b6d7275e65841d4e6e3cb6638e6",
+  "requiredJobCount": 23,
+  "before": {
+    "id": "6ae258fda15a0e50ff930b1c",
+    "state": "ready",
+    "commit_ref": "8ed0ef2113d4aaaf5bc34c26a8807f07e61b44bf",
+    "published_at": "2026-10-28T20:23:27.409Z"
+  },
+  "after": {
+    "id": "6ae258fda15a0e50ff930b1c",
+    "state": "ready",
+    "commit_ref": "8ed0ef2113d4aaaf5bc34c26a8807f07e61b44bf",
+    "published_at": "2026-10-28T20:23:27.409Z"
+  },
+  "pages": [
+    {
+      "route": "/projects/",
+      "htmlSha256": "44877ebab6e8ff0cc4ebedaba31b50aadd7a22e2a8bdc3ef752d3b8cfe78005c",
+      "world": "/js/space/world-jiangnan.48305a6f94d871a198ac99b84a993b7ebb07b885b4c1cf0eca76f90be813bcb3.js",
+      "sha256": "48305a6f94d871a198ac99b84a993b7ebb07b885b4c1cf0eca76f90be813bcb3",
+      "rawBytes": 278756,
+      "equality": "exact"
+    },
+    {
+      "route": "/zh/projects/",
+      "htmlSha256": "0a8f7fc50c2aa5c44616f4387b1b5e04f5e1dfccac764a1584ab1139fd61d7b5",
+      "world": "/js/space/world-jiangnan.48305a6f94d871a198ac99b84a993b7ebb07b885b4c1cf0eca76f90be813bcb3.js",
+      "sha256": "48305a6f94d871a198ac99b84a993b7ebb07b885b4c1cf0eca76f90be813bcb3",
+      "rawBytes": 278756,
+      "equality": "exact"
+    }
+  ],
+  "limits": "Successful exact PR source graph plus same-parent/same-tree real merge, main ancestry, equal publication inputs and exact world bytes. Main automatic CI and actual browser acceptance remain separate."
+}

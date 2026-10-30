@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-28T20:46:09.341614+00:00",
+  "files": [
+    {
+      "file": "browser-counts.json",
+      "source": "resume29-e4-actual-browser-counts.json",
+      "bytes": 559,
+      "sha256": "d637a2ea93b397fe25a3ae30c4657e4c7b7a07765b20376c4aeecc4a5efd1b44"
+    },
+    {
+      "file": "production-world.json",
+      "source": "resume29-pr491-production-world-before-acceptance.json",
+      "bytes": 1883,
+      "sha256": "26dc5b2700d9bc380c64835a7c5f9106744dc7937359f6ad2d78e65c7300cb61"
+    },
+    {
+      "file": "daily-34a-summary.json",
+      "source": "resume28-daily-summary.json",
+      "bytes": 42292,
+      "sha256": "87bf8f092c3f2b74b1067a85a5d9323c68fb3eb8c7ac938684791ae0de6b91ff"
+    },
+    {
+      "file": "seo-c85.json",
+      "source": "resume29-seo-live.json",
+      "bytes": 11702,
+      "sha256": "93f74be32af1872c4634e27f4c060cb75126cd0f8396ff5b34f03ad13e55527d"
+    },
+    {
+      "file": "seo-window.md",
+      "source": "resume29-seo-by-page.md",
+      "bytes": 2523,
+      "sha256": "2b8945a8a794b1de2a20a36fe63cc4b1fa8aa49e544de85d61e10e08c6391ac1",
+      "originalSHA256": "15dde30afc46f4bc8c5cd34e38c6a001c4e1562db3e06ffa37aeed4ebca50d76",
+      "normalization": "Only embedded NUL separators escaped as literal \\u0000 for Markdown text display; original retained in formalRoot"
+    },
+    {
+      "file": "pause.json",
+      "source": "resume29-new-pause-block.json",
+      "bytes": 956,
+      "sha256": "699d9dd3b45d37e6c8d5179ab6ee66be62cdf5ce7c032d2a815e248b533a3770"
+    },
+    {
+      "file": "first-failure-integrity.json",
+      "source": "resume29-e4-first-failure-integrity.json",
+      "bytes": 1231,
+      "sha256": "fc29bbecc5d5fce42ae7a5a7c22e02d9b60c46431e120b86e15659ecd09220bb"
+    },
+    {
+      "file": "source-review.json",
+      "source": "resume29-pr491-independent-source-review.json",
+      "bytes": 912,
+      "sha256": "c24c7a556ff6e15e74c33cfc1e96b4594afd1d4c3458fb02b02fe77a60f65dfb"
+    },
+    {
+      "file": "source-chain-review.json",
+      "source": "resume29-pr-source-verifier-independent-review.json",
+      "bytes": 871,
+      "sha256": "652243b1bd13e5e0153f292adcee883d6551a2c1c8667af4c92d9843be550864"
+    },
+    {
+      "file": "host-counts.json",
+      "source": "resume29-e4-prepare-host-counts.json",
+      "bytes": 1757,
+      "sha256": "60bef089e247c895344346cc13a079fbb053ea3726bc3da3fd6a26b461a06b94"
+    },
+    {
+      "file": "bootstrap-fidelity.json",
+      "source": "resume29-production-bootstrap-fidelity.json",
+      "bytes": 2634,
+      "sha256": "022ab24b8ac0b2ce990e210c0d7fe6b667082e5c1e1ca2e27836918b0ec6dd62"
+    },
+    {
+      "file": "inventory-review.json",
+      "source": "resume29-pr491-inventory-independent-review.json",
+      "bytes": 887,
+      "sha256": "95991c574c559d0f2901ad0a9be6a5211e4b046d55839eb09577a06db445526a"
+    }
+  ],
+  "formalRoot": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26",
+  "formalRawAndTraceRetained": true
+}

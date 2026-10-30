@@ -1,0 +1,4237 @@
+{
+  "world-first": {
+    "stats": {
+      "startTime": "2026-10-30T20:08:15.898Z",
+      "duration": 81020.121,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "globalErrors": [],
+    "cases": [
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "project": "desktop",
+        "status": "unexpected",
+        "actual": [
+          "failed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "project": "mobile",
+        "status": "unexpected",
+        "actual": [
+          "failed"
+        ],
+        "retries": 0
+      }
+    ],
+    "samples": [
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "desktop",
+        "name": "world-live-lab",
+        "data": {
+          "url": "https://cubxxw.com/projects/",
+          "browserVersion": "156.0.8078.76",
+          "forcedSoftwareFlags": true,
+          "readyAtMs": 20936.40000000596,
+          "screenshotElapsedMs": 2933,
+          "sample": {
+            "lcpMs": 16024,
+            "longTasks": [
+              {
+                "startMs": 2509.300000011921,
+                "durationMs": 54
+              },
+              {
+                "startMs": 2588,
+                "durationMs": 1301
+              },
+              {
+                "startMs": 3894.699999988079,
+                "durationMs": 9292
+              },
+              {
+                "startMs": 13221.5,
+                "durationMs": 4107
+              },
+              {
+                "startMs": 17328.69999998808,
+                "durationMs": 80
+              },
+              {
+                "startMs": 17444.69999998808,
+                "durationMs": 3207
+              },
+              {
+                "startMs": 20683.69999998808,
+                "durationMs": 215
+              },
+              {
+                "startMs": 21469.69999998808,
+                "durationMs": 628
+              },
+              {
+                "startMs": 22104.19999998808,
+                "durationMs": 67
+              },
+              {
+                "startMs": 22181.40000000596,
+                "durationMs": 59
+              },
+              {
+                "startMs": 23620.69999998808,
+                "durationMs": 93
+              },
+              {
+                "startMs": 24652.19999998808,
+                "durationMs": 80
+              },
+              {
+                "startMs": 24920.59999999404,
+                "durationMs": 60
+              },
+              {
+                "startMs": 25170.80000001192,
+                "durationMs": 90
+              },
+              {
+                "startMs": 25765.09999999404,
+                "durationMs": 101
+              },
+              {
+                "startMs": 26079.80000001192,
+                "durationMs": 72
+              },
+              {
+                "startMs": 26501.69999998808,
+                "durationMs": 59
+              }
+            ],
+            "events": [
+              {
+                "name": "keydown",
+                "durationMs": 1888
+              },
+              {
+                "name": "keydown",
+                "durationMs": 1880
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1840
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1840
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1512
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 1512
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 1512
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 1512
+              },
+              {
+                "name": "click",
+                "durationMs": 1512
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 1304
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 1304
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 1304
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 1304
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 1304
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 1304
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 1304
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 944
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 944
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 944
+              }
+            ],
+            "resourceCount": 58,
+            "knownTransferBytes": 12264449,
+            "encodedBodyBytes": 12248549,
+            "zeroTransferEntries": 5,
+            "world": {
+              "productPanel": "bear",
+              "bearWorkspace": "",
+              "bootState": "complete",
+              "theme": "light",
+              "wallpaper": "dawn",
+              "cafeMode": "desktop",
+              "computerDefault": "expanded",
+              "fullscreen": "false",
+              "fullscreenSupported": "true",
+              "workspaceLayout": "single",
+              "readingFocus": "false",
+              "cafeTheme": "jiangnan",
+              "environmentPaused": "false",
+              "bootStage": "3",
+              "ready": "true",
+              "roomDoorState": "indoor",
+              "roomDoorStill": "false",
+              "worldRenderer": "jiangnan",
+              "worldTheme": "jiangnan",
+              "worldTargets": "{\"computer\":[0.8,1.16,-2.05],\"photo\":[-1.588,2.143,-2.548],\"coffee\":[-0.02,0.844,-1.64],\"books\":[-2.48,0.59,-0.8],\"bridge\":[-3.2,1.2,-17.8],\"door\":[1.8,1.045,2.02],\"window\":[0.8,2,-2.606],\"seat\":[0.8,0.459,-0.95],\"cat-bed\":[-1.45,0.16,-1.93],\"lamp\":[-0.11,1.093,-2.12],\"photo-light\":[-1.87,2.69,-2.31],\"photo:kumano\":[-1.588,2.143,-2.548],\"photo:vangvieng\":[-1.836,1.961,-2.548],\"photo:taprohm\":[-1.963,2.495,-2.548],\"photo:g318\":[-1.637,1.6320000000000001,-2.548],\"photo:flags\":[-1.57,1.0859999999999999,-2.548],\"photo:vientiane\":[-1.812,2.207,-2.548],\"photo:danang\":[-1.872,1.736,-2.548],\"photo:nantaihang\":[-2.1420000000000003,1.0110000000000001,-2.548],\"photo:thorong-la\":[-1.671,1.357,-2.548],\"photo:sakura-bar\":[-1.6070000000000002,1.858,-2.548],\"photo:fuji\":[-2.17,2.403,-2.548],\"photo:tsukubai\":[-2.161,1.803,-2.548],\"photo:nam-xay\":[-1.7950000000000002,0.976,-2.548],\"photo:cave-mouth\":[-1.8920000000000001,1.236,-2.548],\"photo:cliff-edge\":[-2.1100000000000003,1.3479999999999999,-2.548],\"photo:cave-interior\":[-1.6260000000000001,2.5140000000000002,-2.548],\"photo:local-man\":[-1.992,1.539,-2.548],\"photo:balloon-dusk\":[-2.055,2.099,-2.548],\"painting\":[3.15,1.62,0.55],\"shelf-light\":[-2.66,1.85,-1.3],\"book:book-0\":[-2.568,0.651,-1.16],\"book:book-1\":[-2.568,0.669,-1.055],\"book:book-2\":[-2.568,0.687,-0.95],\"book:book-3\":[-2.568,0.66,-0.845],\"book:book-4\":[-2.568,0.6779999999999999,-0.74],\"book:book-5\":[-2.568,0.651,-0.6349999999999999],\"book:book-6\":[-2.568,0.669,-0.5299999999999999],\"book:book-7\":[-2.568,0.687,-0.42499999999999993],\"book:book-8\":[-2.568,0.66,-0.31999999999999995],\"book:book-9\":[-2.568,0.6779999999999999,-0.21499999999999997],\"vinyl\":[-2.82,1.086,-0.45],\"speaker\":[-2.542,1.31,0.31],\"espresso\":[-2.48,1.19,-2.095],\"records\":[-2.99,1.16,-1.12],\"record:night-on-the-docks-sax\":[-3.055,1.152,-1.4700000000000002],\"record:long-stroll\":[-3.047,1.152,-1.12],\"record:almost-new\":[-3.039,1.152,-0.7700000000000001],\"clock\":[-2.78,2,-2.39],\"fan\":[2.8,1.2,-0.55],\"notebook\":[0.27,0.772,-1.57],\"vase\":[0.2,1.033,-2.16],\"cat\":[-1.45,0.23,-1.93]}",
+              "worldPbrMaps": "12",
+              "worldTravel": "false",
+              "roomObjects": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":2.2394400000000187,\"platterAngle\":0.3490658503988659,\"playing\":true,\"recordId\":\"night-on-the-docks-sax\",\"brewProgress\":0,\"steamPhase\":0.2666000000000022,\"pendulumAngle\":0.04094766149974977,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-2.2394400000000187,\"platterRotation\":0.3490658503988659,\"pendulumRotation\":0.04094766149974977,\"hourHand\":-11.030351427351304,\"minuteHand\":-132.36421712821567,\"clockEpoch\":1793390902810,\"labelId\":\"night-on-the-docks-sax\",\"brewVisible\":false}",
+              "worldVista": "image",
+              "worldScreenPreview": "live",
+              "worldPose": "{\"x\":0.8,\"y\":1.37,\"z\":-0.885,\"yaw\":0,\"pitch\":-0.17834,\"fov\":42}",
+              "worldMode": "workspace",
+              "catLoaded": "true",
+              "roomCat": "{\"x\":-1.45,\"z\":-1.93,\"yaw\":1.65,\"place\":6,\"previous\":-1,\"goal\":6,\"phase\":\"sleep\",\"remaining\":359.6933999999998,\"seed\":79,\"gait\":0,\"speed\":0,\"elapsed\":0.30660000000000215,\"routine\":\"nap\",\"loaded\":true,\"target\":[-1.45,0.23,-1.93]}",
+              "roomCatBreath": "{\"time\":2.149799999999999,\"chest\":1.0361691914474647,\"belly\":1.0275842230707655}",
+              "roomTime": "{\"seconds\":75839.10999999999,\"hour\":21.066419444444442,\"sunDirection\":[0.41802599203534696,0.2763556485641138,-0.8653795846272154],\"sunStrength\":0,\"sunRadius\":0.012000001354409933,\"golden\":2.257349889998977e-7,\"sunset\":0.0002605105078408986,\"dawn\":2.459775239285435e-91,\"reflectionStrength\":0,\"daylight\":0,\"phase\":\"night\",\"rain\":1,\"catRoutine\":\"nap\",\"label\":\"21:03\",\"unwrapped\":75839.11,\"borrowed\":false,\"sampledAt\":1793390925487,\"rate\":10}",
+              "worldScreenVisible": "true",
+              "computerDepthBlur": "false",
+              "worldFrames": "15",
+              "worldTriangles": "87040",
+              "worldDraws": "105",
+              "worldRenderedMode": "workspace",
+              "roomBoatPose": "[-2.251,-0.446,-19.972]",
+              "roomBoat": "ready",
+              "worldEnvironmentTime": "2.150",
+              "roomBoatHeading": "-1.9698",
+              "worldReady": "true",
+              "roomSound": "playing",
+              "roomSoundWanted": "true",
+              "roomTrack": "night-on-the-docks-sax",
+              "roomVolume": "0.6",
+              "roomAmbient": "playing",
+              "roomAmbientWanted": "true",
+              "computerView": "expanded"
+            },
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 17428.40000000596,
+                "navigationId": 8078,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.4000000059604645,
+                "domainLookupStart": 0.4000000059604645,
+                "domainLookupEnd": 0.4000000059604645,
+                "connectStart": 9.400000005960464,
+                "secureConnectionStart": 9.400000005960464,
+                "connectEnd": 290.19999998807907,
+                "requestStart": 290.30000001192093,
+                "responseStart": 873.9000000059605,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 873.9000000059605,
+                "responseEnd": 1738.9000000059605,
+                "transferSize": 64639,
+                "encodedBodySize": 64339,
+                "decodedBodySize": 279516,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 2434.300000011921,
+                "domContentLoadedEventStart": 2560.5999999940395,
+                "domContentLoadedEventEnd": 2561.4000000059605,
+                "domComplete": 17428.40000000596,
+                "loadEventStart": 17428.40000000596,
+                "loadEventEnd": 17428.40000000596,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "low"
+                }
+              }
+            ]
+          },
+          "limits": "fresh unthrottled client lab; ready is not first presented frame; EventTiming sample is not field INP; zero transfer entries may be cached or lack timing access; no causal before/after performance claim"
+        }
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "mobile",
+        "name": "world-live-lab",
+        "data": {
+          "url": "https://cubxxw.com/projects/",
+          "browserVersion": "156.0.8078.76",
+          "forcedSoftwareFlags": true,
+          "readyAtMs": 16570.90000000596,
+          "screenshotElapsedMs": 2829,
+          "sample": {
+            "lcpMs": 14644,
+            "longTasks": [
+              {
+                "startMs": 2238.7999999821186,
+                "durationMs": 1262
+              },
+              {
+                "startMs": 3504.5999999940395,
+                "durationMs": 7292
+              },
+              {
+                "startMs": 10822,
+                "durationMs": 3951
+              },
+              {
+                "startMs": 14773.799999982119,
+                "durationMs": 558
+              },
+              {
+                "startMs": 15371.40000000596,
+                "durationMs": 915
+              },
+              {
+                "startMs": 16307.59999999404,
+                "durationMs": 183
+              },
+              {
+                "startMs": 16491.19999998808,
+                "durationMs": 58
+              },
+              {
+                "startMs": 17428.09999999404,
+                "durationMs": 64
+              },
+              {
+                "startMs": 17627.40000000596,
+                "durationMs": 60
+              },
+              {
+                "startMs": 17687.59999999404,
+                "durationMs": 57
+              },
+              {
+                "startMs": 18556.19999998808,
+                "durationMs": 59
+              },
+              {
+                "startMs": 18746.19999998808,
+                "durationMs": 56
+              },
+              {
+                "startMs": 18941,
+                "durationMs": 56
+              },
+              {
+                "startMs": 19220.69999998808,
+                "durationMs": 58
+              },
+              {
+                "startMs": 19279.09999999404,
+                "durationMs": 57
+              },
+              {
+                "startMs": 19337.09999999404,
+                "durationMs": 57
+              },
+              {
+                "startMs": 19521.29999998212,
+                "durationMs": 61
+              },
+              {
+                "startMs": 20063.90000000596,
+                "durationMs": 750
+              },
+              {
+                "startMs": 20814.40000000596,
+                "durationMs": 886
+              },
+              {
+                "startMs": 21702,
+                "durationMs": 79
+              },
+              {
+                "startMs": 21806.29999998212,
+                "durationMs": 76
+              },
+              {
+                "startMs": 22338.09999999404,
+                "durationMs": 59
+              },
+              {
+                "startMs": 22624.29999998212,
+                "durationMs": 57
+              },
+              {
+                "startMs": 22686.5,
+                "durationMs": 55
+              },
+              {
+                "startMs": 22756.5,
+                "durationMs": 56
+              }
+            ],
+            "events": [
+              {
+                "name": "keydown",
+                "durationMs": 1408
+              },
+              {
+                "name": "keydown",
+                "durationMs": 1400
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1392
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1392
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 656
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 656
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 656
+              },
+              {
+                "name": "click",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 632
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 632
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 632
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 632
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 632
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 632
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 632
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 632
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 632
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 456
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 456
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 456
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 456
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 456
+              },
+              {
+                "name": "click",
+                "durationMs": 456
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 216
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 216
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 216
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 216
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 216
+              },
+              {
+                "name": "click",
+                "durationMs": 216
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 200
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 200
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 200
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 200
+              }
+            ],
+            "resourceCount": 58,
+            "knownTransferBytes": 12151069,
+            "encodedBodyBytes": 12135469,
+            "zeroTransferEntries": 6,
+            "world": {
+              "productPanel": "bear",
+              "bearWorkspace": "",
+              "bootState": "complete",
+              "theme": "light",
+              "wallpaper": "dawn",
+              "cafeMode": "desktop",
+              "computerDefault": "expanded",
+              "fullscreen": "false",
+              "fullscreenSupported": "true",
+              "workspaceLayout": "single",
+              "readingFocus": "false",
+              "cafeTheme": "jiangnan",
+              "environmentPaused": "false",
+              "bootStage": "3",
+              "ready": "true",
+              "roomDoorState": "indoor",
+              "roomDoorStill": "false",
+              "worldRenderer": "jiangnan",
+              "worldTheme": "jiangnan",
+              "worldTargets": "{\"computer\":[0.8,1.16,-2.05],\"photo\":[-1.588,2.143,-2.548],\"coffee\":[-0.02,0.844,-1.64],\"books\":[-2.48,0.59,-0.8],\"bridge\":[-3.2,1.2,-17.8],\"door\":[1.8,1.045,2.02],\"window\":[0.8,2,-2.606],\"seat\":[0.8,0.459,-0.95],\"cat-bed\":[-1.45,0.16,-1.93],\"lamp\":[-0.11,1.093,-2.12],\"photo-light\":[-1.87,2.69,-2.31],\"photo:kumano\":[-1.588,2.143,-2.548],\"photo:vangvieng\":[-1.836,1.961,-2.548],\"photo:taprohm\":[-1.963,2.495,-2.548],\"photo:g318\":[-1.637,1.6320000000000001,-2.548],\"photo:flags\":[-1.57,1.0859999999999999,-2.548],\"photo:vientiane\":[-1.812,2.207,-2.548],\"photo:danang\":[-1.872,1.736,-2.548],\"photo:nantaihang\":[-2.1420000000000003,1.0110000000000001,-2.548],\"photo:thorong-la\":[-1.671,1.357,-2.548],\"photo:sakura-bar\":[-1.6070000000000002,1.858,-2.548],\"photo:fuji\":[-2.17,2.403,-2.548],\"photo:tsukubai\":[-2.161,1.803,-2.548],\"photo:nam-xay\":[-1.7950000000000002,0.976,-2.548],\"photo:cave-mouth\":[-1.8920000000000001,1.236,-2.548],\"photo:cliff-edge\":[-2.1100000000000003,1.3479999999999999,-2.548],\"photo:cave-interior\":[-1.6260000000000001,2.5140000000000002,-2.548],\"photo:local-man\":[-1.992,1.539,-2.548],\"photo:balloon-dusk\":[-2.055,2.099,-2.548],\"painting\":[3.15,1.62,0.55],\"shelf-light\":[-2.66,1.85,-1.3],\"book:book-0\":[-2.568,0.651,-1.16],\"book:book-1\":[-2.568,0.669,-1.055],\"book:book-2\":[-2.568,0.687,-0.95],\"book:book-3\":[-2.568,0.66,-0.845],\"book:book-4\":[-2.568,0.6779999999999999,-0.74],\"book:book-5\":[-2.568,0.651,-0.6349999999999999],\"book:book-6\":[-2.568,0.669,-0.5299999999999999],\"book:book-7\":[-2.568,0.687,-0.42499999999999993],\"book:book-8\":[-2.568,0.66,-0.31999999999999995],\"book:book-9\":[-2.568,0.6779999999999999,-0.21499999999999997],\"vinyl\":[-2.82,1.086,-0.45],\"speaker\":[-2.542,1.31,0.31],\"espresso\":[-2.48,1.19,-2.095],\"records\":[-2.99,1.16,-1.12],\"record:night-on-the-docks-sax\":[-3.055,1.152,-1.4700000000000002],\"record:long-stroll\":[-3.047,1.152,-1.12],\"record:almost-new\":[-3.039,1.152,-0.7700000000000001],\"clock\":[-2.78,2,-2.39],\"fan\":[2.8,1.2,-0.55],\"notebook\":[0.27,0.772,-1.57],\"vase\":[0.2,1.033,-2.16],\"cat\":[-1.45,0.23,-1.93]}",
+              "worldPbrMaps": "12",
+              "worldTravel": "false",
+              "roomObjects": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":5.599440000000017,\"platterAngle\":1.8036232490109425,\"playing\":true,\"recordId\":\"night-on-the-docks-sax\",\"brewProgress\":0,\"steamPhase\":0.6666000000000021,\"pendulumAngle\":0.04748234509129599,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-5.599440000000017,\"platterRotation\":1.8036232490109425,\"pendulumRotation\":0.04748234509129599,\"hourHand\":-11.025220159350445,\"minuteHand\":-132.30264191220536,\"clockEpoch\":1793390945864,\"labelId\":\"night-on-the-docks-sax\",\"brewVisible\":false}",
+              "worldVista": "image",
+              "worldScreenPreview": "live",
+              "worldPose": "{\"x\":0.8,\"y\":1.37,\"z\":-0.885,\"yaw\":0,\"pitch\":-0.17834,\"fov\":42}",
+              "worldMode": "workspace",
+              "catLoaded": "true",
+              "roomCat": "{\"x\":-1.45,\"z\":-1.93,\"yaw\":1.65,\"place\":6,\"previous\":-1,\"goal\":6,\"phase\":\"sleep\",\"remaining\":359.2333999999996,\"seed\":79,\"gait\":0,\"speed\":0,\"elapsed\":0.7666000000000023,\"routine\":\"nap\",\"loaded\":true,\"target\":[-1.45,0.23,-1.93]}",
+              "roomCatBreath": "{\"time\":1.8999000000000015,\"chest\":1.037734645557288,\"belly\":1.0279821501216737}",
+              "roomTime": "{\"seconds\":75805.15,\"hour\":21.056986111111108,\"sunDirection\":[0.41802599203534696,0.2763556485641138,-0.8653795846272154],\"sunStrength\":0,\"sunRadius\":0.012000001463687064,\"golden\":2.4394784406516015e-7,\"sunset\":0.0002742887356465553,\"dawn\":3.188423138635016e-91,\"reflectionStrength\":0,\"daylight\":0,\"phase\":\"night\",\"rain\":1,\"catRoutine\":\"nap\",\"label\":\"21:03\",\"unwrapped\":75805.15,\"borrowed\":false,\"sampledAt\":1793390965176,\"rate\":10}",
+              "worldScreenVisible": "true",
+              "computerDepthBlur": "false",
+              "worldFrames": "24",
+              "worldTriangles": "75528",
+              "worldDraws": "79",
+              "worldRenderedMode": "workspace",
+              "roomBoatPose": "[-0.717,-0.446,-19.153]",
+              "roomBoat": "ready",
+              "worldEnvironmentTime": "1.900",
+              "roomBoatHeading": "0.1735",
+              "worldReady": "true",
+              "roomSound": "playing",
+              "roomSoundWanted": "true",
+              "roomTrack": "night-on-the-docks-sax",
+              "roomVolume": "0.6",
+              "roomAmbient": "playing",
+              "roomAmbientWanted": "true",
+              "computerView": "expanded"
+            },
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 15349.799999982119,
+                "navigationId": 3328,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.29999998211860657,
+                "domainLookupStart": 0.29999998211860657,
+                "domainLookupEnd": 0.29999998211860657,
+                "connectStart": 5.199999988079071,
+                "secureConnectionStart": 5.199999988079071,
+                "connectEnd": 358.5,
+                "requestStart": 358.59999999403954,
+                "responseStart": 654.7999999821186,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 654.7999999821186,
+                "responseEnd": 724.1999999880791,
+                "transferSize": 64356,
+                "encodedBodySize": 64056,
+                "decodedBodySize": 279516,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 2206,
+                "domContentLoadedEventStart": 2228.5999999940395,
+                "domContentLoadedEventEnd": 2228.5999999940395,
+                "domComplete": 15349.799999982119,
+                "loadEventStart": 15349.799999982119,
+                "loadEventEnd": 15349.799999982119,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          },
+          "limits": "fresh unthrottled client lab; ready is not first presented frame; EventTiming sample is not field INP; zero transfer entries may be cached or lack timing access; no causal before/after performance claim"
+        }
+      }
+    ]
+  },
+  "world-fixed": {
+    "stats": {
+      "startTime": "2026-10-30T20:12:38.496Z",
+      "duration": 88938.774,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "globalErrors": [],
+    "cases": [
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      }
+    ],
+    "samples": [
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "desktop",
+        "name": "world-live-lab",
+        "data": {
+          "url": "https://cubxxw.com/projects/",
+          "browserVersion": "156.0.8078.76",
+          "forcedSoftwareFlags": true,
+          "readyAtMs": 19329.100000023842,
+          "screenshotElapsedMs": 3163,
+          "sample": {
+            "lcpMs": 16020,
+            "longTasks": [
+              {
+                "startMs": 1311.1000000238419,
+                "durationMs": 1584
+              },
+              {
+                "startMs": 2895.300000011921,
+                "durationMs": 9654
+              },
+              {
+                "startMs": 16031.300000011921,
+                "durationMs": 1065
+              },
+              {
+                "startMs": 17097.100000023842,
+                "durationMs": 102
+              },
+              {
+                "startMs": 17234.100000023842,
+                "durationMs": 1813
+              },
+              {
+                "startMs": 19068.100000023842,
+                "durationMs": 226
+              },
+              {
+                "startMs": 20268.20000001788,
+                "durationMs": 744
+              },
+              {
+                "startMs": 21013.100000023842,
+                "durationMs": 74
+              },
+              {
+                "startMs": 21087.600000023842,
+                "durationMs": 88
+              },
+              {
+                "startMs": 22307.30000001192,
+                "durationMs": 70
+              },
+              {
+                "startMs": 23154.600000023842,
+                "durationMs": 69
+              },
+              {
+                "startMs": 23396.90000000596,
+                "durationMs": 59
+              },
+              {
+                "startMs": 23655.100000023842,
+                "durationMs": 75
+              },
+              {
+                "startMs": 23985.30000001192,
+                "durationMs": 64
+              },
+              {
+                "startMs": 24251.70000001788,
+                "durationMs": 56
+              },
+              {
+                "startMs": 24412.600000023842,
+                "durationMs": 57
+              },
+              {
+                "startMs": 25400.100000023842,
+                "durationMs": 72
+              },
+              {
+                "startMs": 25472.70000001788,
+                "durationMs": 58
+              }
+            ],
+            "events": [
+              {
+                "name": "keydown",
+                "durationMs": 1488
+              },
+              {
+                "name": "keydown",
+                "durationMs": 1472
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1448
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1448
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 936
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 936
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 936
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 936
+              },
+              {
+                "name": "click",
+                "durationMs": 936
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 728
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 728
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 768
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 768
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 768
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 840
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 840
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 840
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 840
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 840
+              },
+              {
+                "name": "click",
+                "durationMs": 840
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 544
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 544
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 544
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 544
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 544
+              },
+              {
+                "name": "click",
+                "durationMs": 544
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 360
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 360
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 360
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 360
+              }
+            ],
+            "resourceCount": 58,
+            "knownTransferBytes": 12184456,
+            "encodedBodyBytes": 12168856,
+            "zeroTransferEntries": 6,
+            "world": {
+              "productPanel": "bear",
+              "bearWorkspace": "",
+              "bootState": "complete",
+              "theme": "light",
+              "wallpaper": "dawn",
+              "cafeMode": "desktop",
+              "computerDefault": "expanded",
+              "fullscreen": "false",
+              "fullscreenSupported": "true",
+              "workspaceLayout": "windows",
+              "readingFocus": "false",
+              "cafeTheme": "jiangnan",
+              "environmentPaused": "false",
+              "bootStage": "3",
+              "ready": "true",
+              "roomDoorState": "indoor",
+              "roomDoorStill": "false",
+              "worldRenderer": "jiangnan",
+              "worldTheme": "jiangnan",
+              "worldTargets": "{\"computer\":[0.8,1.16,-2.05],\"photo\":[-1.588,2.143,-2.548],\"coffee\":[-0.02,0.844,-1.64],\"books\":[-2.48,0.59,-0.8],\"bridge\":[-3.2,1.2,-17.8],\"door\":[1.8,1.045,2.02],\"window\":[0.8,2,-2.606],\"seat\":[0.8,0.459,-0.95],\"cat-bed\":[-1.45,0.16,-1.93],\"lamp\":[-0.11,1.093,-2.12],\"photo-light\":[-1.87,2.69,-2.31],\"photo:kumano\":[-1.588,2.143,-2.548],\"photo:vangvieng\":[-1.836,1.961,-2.548],\"photo:taprohm\":[-1.963,2.495,-2.548],\"photo:g318\":[-1.637,1.6320000000000001,-2.548],\"photo:flags\":[-1.57,1.0859999999999999,-2.548],\"photo:vientiane\":[-1.812,2.207,-2.548],\"photo:danang\":[-1.872,1.736,-2.548],\"photo:nantaihang\":[-2.1420000000000003,1.0110000000000001,-2.548],\"photo:thorong-la\":[-1.671,1.357,-2.548],\"photo:sakura-bar\":[-1.6070000000000002,1.858,-2.548],\"photo:fuji\":[-2.17,2.403,-2.548],\"photo:tsukubai\":[-2.161,1.803,-2.548],\"photo:nam-xay\":[-1.7950000000000002,0.976,-2.548],\"photo:cave-mouth\":[-1.8920000000000001,1.236,-2.548],\"photo:cliff-edge\":[-2.1100000000000003,1.3479999999999999,-2.548],\"photo:cave-interior\":[-1.6260000000000001,2.5140000000000002,-2.548],\"photo:local-man\":[-1.992,1.539,-2.548],\"photo:balloon-dusk\":[-2.055,2.099,-2.548],\"painting\":[3.15,1.62,0.55],\"shelf-light\":[-2.66,1.85,-1.3],\"book:book-0\":[-2.568,0.651,-1.16],\"book:book-1\":[-2.568,0.669,-1.055],\"book:book-2\":[-2.568,0.687,-0.95],\"book:book-3\":[-2.568,0.66,-0.845],\"book:book-4\":[-2.568,0.6779999999999999,-0.74],\"book:book-5\":[-2.568,0.651,-0.6349999999999999],\"book:book-6\":[-2.568,0.669,-0.5299999999999999],\"book:book-7\":[-2.568,0.687,-0.42499999999999993],\"book:book-8\":[-2.568,0.66,-0.31999999999999995],\"book:book-9\":[-2.568,0.6779999999999999,-0.21499999999999997],\"vinyl\":[-2.82,1.086,-0.45],\"speaker\":[-2.542,1.31,0.31],\"espresso\":[-2.48,1.19,-2.095],\"records\":[-2.99,1.16,-1.12],\"record:night-on-the-docks-sax\":[-3.055,1.152,-1.4700000000000002],\"record:long-stroll\":[-3.047,1.152,-1.12],\"record:almost-new\":[-3.039,1.152,-0.7700000000000001],\"clock\":[-2.78,2,-2.39],\"fan\":[2.8,1.2,-0.55],\"notebook\":[0.27,0.772,-1.57],\"vase\":[0.2,1.033,-2.16],\"cat\":[-1.45,0.23,-1.93]}",
+              "worldPbrMaps": "12",
+              "worldTravel": "false",
+              "roomObjects": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":2.3805600000000124,\"platterAngle\":0.989252620030391,\"playing\":true,\"recordId\":\"night-on-the-docks-sax\",\"brewProgress\":0,\"steamPhase\":0.2834000000000015,\"pendulumAngle\":0.04283260292225557,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-2.3805600000000124,\"platterRotation\":0.989252620030391,\"pendulumRotation\":0.04283260292225557,\"hourHand\":-11.030604500092846,\"minuteHand\":-132.36725400111416,\"clockEpoch\":1793391163652,\"labelId\":\"night-on-the-docks-sax\",\"brewVisible\":false}",
+              "worldVista": "image",
+              "worldScreenPreview": "live",
+              "worldPose": "{\"x\":0.8,\"y\":1.37,\"z\":-0.885,\"yaw\":0,\"pitch\":-0.17834,\"fov\":42}",
+              "worldMode": "workspace",
+              "catLoaded": "true",
+              "roomCat": "{\"x\":-1.45,\"z\":-1.93,\"yaw\":1.65,\"place\":6,\"previous\":-1,\"goal\":6,\"phase\":\"sleep\",\"remaining\":359.67659999999984,\"seed\":79,\"gait\":0,\"speed\":0,\"elapsed\":0.32340000000000146,\"routine\":\"nap\",\"loaded\":true,\"target\":[-1.45,0.23,-1.93]}",
+              "roomCatBreath": "{\"time\":2.033200000000001,\"chest\":1.037070073809608,\"belly\":1.0279061046317772}",
+              "roomTime": "{\"seconds\":75841.58000000002,\"hour\":21.06710555555556,\"sunDirection\":[0.41802599203534696,0.2763556485641138,-0.8653795846272154],\"sunStrength\":0,\"sunRadius\":0.012000001346777455,\"golden\":2.244629091892995e-7,\"sunset\":0.00025953417673354367,\"dawn\":2.4137769725696646e-91,\"reflectionStrength\":0,\"daylight\":0,\"phase\":\"night\",\"rain\":1,\"catRoutine\":\"nap\",\"label\":\"21:04\",\"unwrapped\":75841.58,\"borrowed\":false,\"sampledAt\":1793391186378,\"rate\":10}",
+              "worldScreenVisible": "true",
+              "computerDepthBlur": "false",
+              "worldFrames": "17",
+              "worldTriangles": "87040",
+              "worldDraws": "105",
+              "worldRenderedMode": "workspace",
+              "roomBoatPose": "[-1.549,-0.446,-20.896]",
+              "roomBoat": "ready",
+              "worldEnvironmentTime": "2.033",
+              "roomBoatHeading": "-2.2663",
+              "worldReady": "true",
+              "roomSound": "playing",
+              "roomSoundWanted": "true",
+              "roomTrack": "night-on-the-docks-sax",
+              "roomVolume": "0.6",
+              "roomAmbient": "playing",
+              "roomAmbientWanted": "true",
+              "computerView": "expanded"
+            },
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 1301,
+                "navigationId": 1389,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 1.600000023841858,
+                "domainLookupStart": 1.600000023841858,
+                "domainLookupEnd": 1.600000023841858,
+                "connectStart": 16,
+                "secureConnectionStart": 16,
+                "connectEnd": 126.30000001192093,
+                "requestStart": 126.40000000596046,
+                "responseStart": 417.90000000596046,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 417.90000000596046,
+                "responseEnd": 1244.6000000238419,
+                "transferSize": 64661,
+                "encodedBodySize": 64361,
+                "decodedBodySize": 279516,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 1247.4000000059605,
+                "domContentLoadedEventStart": 1290,
+                "domContentLoadedEventEnd": 1291.1000000238419,
+                "domComplete": 1300.9000000059605,
+                "loadEventStart": 1301,
+                "loadEventEnd": 1301,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "low"
+                }
+              }
+            ]
+          },
+          "limits": "fresh unthrottled client lab; ready is not first presented frame; EventTiming sample is not field INP; zero transfer entries may be cached or lack timing access; no causal before/after performance claim"
+        }
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "project": "desktop",
+        "name": "world-live-lab",
+        "data": {
+          "url": "https://cubxxw.com/zh/projects/",
+          "browserVersion": "156.0.8078.76",
+          "forcedSoftwareFlags": true,
+          "readyAtMs": 15248,
+          "screenshotElapsedMs": 2496,
+          "sample": {
+            "lcpMs": 10860,
+            "longTasks": [
+              {
+                "startMs": 579.5999999940395,
+                "durationMs": 695
+              },
+              {
+                "startMs": 1274.5999999940395,
+                "durationMs": 9269
+              },
+              {
+                "startMs": 10870.199999988079,
+                "durationMs": 1043
+              },
+              {
+                "startMs": 11913.300000011921,
+                "durationMs": 69
+              },
+              {
+                "startMs": 12015.699999988079,
+                "durationMs": 2946
+              },
+              {
+                "startMs": 15013.40000000596,
+                "durationMs": 204
+              },
+              {
+                "startMs": 16040.90000000596,
+                "durationMs": 160
+              },
+              {
+                "startMs": 16201,
+                "durationMs": 59
+              },
+              {
+                "startMs": 16260.800000011921,
+                "durationMs": 86
+              },
+              {
+                "startMs": 17563,
+                "durationMs": 60
+              },
+              {
+                "startMs": 18392.80000001192,
+                "durationMs": 68
+              },
+              {
+                "startMs": 18638.5,
+                "durationMs": 57
+              },
+              {
+                "startMs": 18884.40000000596,
+                "durationMs": 91
+              },
+              {
+                "startMs": 19306.69999998808,
+                "durationMs": 64
+              },
+              {
+                "startMs": 19548.19999998808,
+                "durationMs": 56
+              },
+              {
+                "startMs": 19760,
+                "durationMs": 61
+              },
+              {
+                "startMs": 20075.59999999404,
+                "durationMs": 62
+              },
+              {
+                "startMs": 20689.69999998808,
+                "durationMs": 72
+              },
+              {
+                "startMs": 20762.40000000596,
+                "durationMs": 55
+              }
+            ],
+            "events": [
+              {
+                "name": "keydown",
+                "durationMs": 1560
+              },
+              {
+                "name": "keydown",
+                "durationMs": 1560
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1552
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1544
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 1048
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 1048
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 1048
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 1048
+              },
+              {
+                "name": "click",
+                "durationMs": 1048
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 824
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 824
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 824
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 824
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 824
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 824
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 824
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 728
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 728
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 728
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 680
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 680
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 680
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 680
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 872
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 872
+              },
+              {
+                "name": "click",
+                "durationMs": 872
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 424
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 424
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 424
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 424
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 424
+              },
+              {
+                "name": "click",
+                "durationMs": 424
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 264
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 264
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 264
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 264
+              }
+            ],
+            "resourceCount": 58,
+            "knownTransferBytes": 12183949,
+            "encodedBodyBytes": 12168349,
+            "zeroTransferEntries": 6,
+            "world": {
+              "productPanel": "bear",
+              "bearWorkspace": "",
+              "bootState": "complete",
+              "theme": "light",
+              "wallpaper": "dawn",
+              "cafeMode": "desktop",
+              "computerDefault": "expanded",
+              "fullscreen": "false",
+              "fullscreenSupported": "true",
+              "workspaceLayout": "windows",
+              "readingFocus": "false",
+              "cafeTheme": "jiangnan",
+              "environmentPaused": "false",
+              "bootStage": "3",
+              "ready": "true",
+              "roomDoorState": "indoor",
+              "roomDoorStill": "false",
+              "worldRenderer": "jiangnan",
+              "worldTheme": "jiangnan",
+              "worldTargets": "{\"computer\":[0.8,1.16,-2.05],\"photo\":[-1.588,2.143,-2.548],\"coffee\":[-0.02,0.844,-1.64],\"books\":[-2.48,0.59,-0.8],\"bridge\":[-3.2,1.2,-17.8],\"door\":[1.8,1.045,2.02],\"window\":[0.8,2,-2.606],\"seat\":[0.8,0.459,-0.95],\"cat-bed\":[-1.45,0.16,-1.93],\"lamp\":[-0.11,1.093,-2.12],\"photo-light\":[-1.87,2.69,-2.31],\"photo:kumano\":[-1.588,2.143,-2.548],\"photo:vangvieng\":[-1.836,1.961,-2.548],\"photo:taprohm\":[-1.963,2.495,-2.548],\"photo:g318\":[-1.637,1.6320000000000001,-2.548],\"photo:flags\":[-1.57,1.0859999999999999,-2.548],\"photo:vientiane\":[-1.812,2.207,-2.548],\"photo:danang\":[-1.872,1.736,-2.548],\"photo:nantaihang\":[-2.1420000000000003,1.0110000000000001,-2.548],\"photo:thorong-la\":[-1.671,1.357,-2.548],\"photo:sakura-bar\":[-1.6070000000000002,1.858,-2.548],\"photo:fuji\":[-2.17,2.403,-2.548],\"photo:tsukubai\":[-2.161,1.803,-2.548],\"photo:nam-xay\":[-1.7950000000000002,0.976,-2.548],\"photo:cave-mouth\":[-1.8920000000000001,1.236,-2.548],\"photo:cliff-edge\":[-2.1100000000000003,1.3479999999999999,-2.548],\"photo:cave-interior\":[-1.6260000000000001,2.5140000000000002,-2.548],\"photo:local-man\":[-1.992,1.539,-2.548],\"photo:balloon-dusk\":[-2.055,2.099,-2.548],\"painting\":[3.15,1.62,0.55],\"shelf-light\":[-2.66,1.85,-1.3],\"book:book-0\":[-2.568,0.651,-1.16],\"book:book-1\":[-2.568,0.669,-1.055],\"book:book-2\":[-2.568,0.687,-0.95],\"book:book-3\":[-2.568,0.66,-0.845],\"book:book-4\":[-2.568,0.6779999999999999,-0.74],\"book:book-5\":[-2.568,0.651,-0.6349999999999999],\"book:book-6\":[-2.568,0.669,-0.5299999999999999],\"book:book-7\":[-2.568,0.687,-0.42499999999999993],\"book:book-8\":[-2.568,0.66,-0.31999999999999995],\"book:book-9\":[-2.568,0.6779999999999999,-0.21499999999999997],\"vinyl\":[-2.82,1.086,-0.45],\"speaker\":[-2.542,1.31,0.31],\"espresso\":[-2.48,1.19,-2.095],\"records\":[-2.99,1.16,-1.12],\"record:night-on-the-docks-sax\":[-3.055,1.152,-1.4700000000000002],\"record:long-stroll\":[-3.047,1.152,-1.12],\"record:almost-new\":[-3.039,1.152,-0.7700000000000001],\"clock\":[-2.78,2,-2.39],\"fan\":[2.8,1.2,-0.55],\"notebook\":[0.27,0.772,-1.57],\"vase\":[0.2,1.033,-2.16],\"cat\":[-1.45,0.23,-1.93]}",
+              "worldPbrMaps": "12",
+              "worldTravel": "false",
+              "roomObjects": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":2.2402800000000065,\"platterAngle\":0.3490658503988659,\"playing\":true,\"recordId\":\"night-on-the-docks-sax\",\"brewProgress\":0,\"steamPhase\":0.2667000000000007,\"pendulumAngle\":0.04095922597044301,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-2.2402800000000065,\"platterRotation\":0.3490658503988659,\"pendulumRotation\":0.04095922597044301,\"hourHand\":-11.02392570682188,\"minuteHand\":-132.28710848186256,\"clockEpoch\":1793391188050,\"labelId\":\"night-on-the-docks-sax\",\"brewVisible\":false}",
+              "worldVista": "image",
+              "worldScreenPreview": "live",
+              "worldPose": "{\"x\":0.8,\"y\":1.37,\"z\":-0.885,\"yaw\":0,\"pitch\":-0.17834,\"fov\":42}",
+              "worldMode": "workspace",
+              "catLoaded": "true",
+              "roomCat": "{\"x\":-1.45,\"z\":-1.93,\"yaw\":1.65,\"place\":6,\"previous\":-1,\"goal\":6,\"phase\":\"sleep\",\"remaining\":359.69329999999985,\"seed\":79,\"gait\":0,\"speed\":0,\"elapsed\":0.3067000000000007,\"routine\":\"nap\",\"loaded\":true,\"target\":[-1.45,0.23,-1.93]}",
+              "roomCatBreath": "{\"time\":1.5166000000000004,\"chest\":1.036380434357133,\"belly\":1.0243443298217727}",
+              "roomTime": "{\"seconds\":75801.78999999998,\"hour\":21.056052777777772,\"sunDirection\":[0.41802599203534696,0.2763556485641138,-0.8653795846272154],\"sunStrength\":0,\"sunRadius\":0.012000001474951252,\"golden\":2.458252085954821e-7,\"sunset\":0.0002756885356801944,\"dawn\":3.2713027908027574e-91,\"reflectionStrength\":0,\"daylight\":0,\"phase\":\"night\",\"rain\":1,\"catRoutine\":\"nap\",\"label\":\"21:03\",\"unwrapped\":75801.79,\"borrowed\":false,\"sampledAt\":1793391207693,\"rate\":10}",
+              "worldScreenVisible": "true",
+              "computerDepthBlur": "false",
+              "worldFrames": "18",
+              "worldTriangles": "87040",
+              "worldDraws": "105",
+              "worldRenderedMode": "workspace",
+              "roomBoatPose": "[2.048,-0.448,-24.747]",
+              "roomBoat": "ready",
+              "worldEnvironmentTime": "1.517",
+              "roomBoatHeading": "-1.8774",
+              "worldReady": "true",
+              "roomSound": "playing",
+              "roomSoundWanted": "true",
+              "roomTrack": "night-on-the-docks-sax",
+              "roomVolume": "0.6",
+              "roomAmbient": "playing",
+              "roomAmbientWanted": "true",
+              "computerView": "expanded"
+            },
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 517.0999999940395,
+                "navigationId": 5688,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.19999998807907104,
+                "domainLookupStart": 0.19999998807907104,
+                "domainLookupEnd": 0.19999998807907104,
+                "connectStart": 3.5,
+                "secureConnectionStart": 3.5,
+                "connectEnd": 153.69999998807907,
+                "requestStart": 153.69999998807907,
+                "responseStart": 235.5,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 235.5,
+                "responseEnd": 310.80000001192093,
+                "transferSize": 80502,
+                "encodedBodySize": 80202,
+                "decodedBodySize": 314753,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 423.90000000596046,
+                "domContentLoadedEventStart": 496.19999998807907,
+                "domContentLoadedEventEnd": 496.30000001192093,
+                "domComplete": 517,
+                "loadEventStart": 517.0999999940395,
+                "loadEventEnd": 517.0999999940395,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          },
+          "limits": "fresh unthrottled client lab; ready is not first presented frame; EventTiming sample is not field INP; zero transfer entries may be cached or lack timing access; no causal before/after performance claim"
+        }
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "project": "mobile",
+        "name": "world-live-lab",
+        "data": {
+          "url": "https://cubxxw.com/projects/",
+          "browserVersion": "156.0.8078.76",
+          "forcedSoftwareFlags": true,
+          "readyAtMs": 15652.5,
+          "screenshotElapsedMs": 3060,
+          "sample": {
+            "lcpMs": 14344,
+            "longTasks": [
+              {
+                "startMs": 518.9000000059605,
+                "durationMs": 2620
+              },
+              {
+                "startMs": 3142.600000023842,
+                "durationMs": 7153
+              },
+              {
+                "startMs": 10471.5,
+                "durationMs": 3993
+              },
+              {
+                "startMs": 14465,
+                "durationMs": 102
+              },
+              {
+                "startMs": 14598.800000011921,
+                "durationMs": 828
+              },
+              {
+                "startMs": 15447.800000011921,
+                "durationMs": 182
+              },
+              {
+                "startMs": 16906.20000001788,
+                "durationMs": 59
+              },
+              {
+                "startMs": 17156.80000001192,
+                "durationMs": 57
+              },
+              {
+                "startMs": 17214.100000023842,
+                "durationMs": 57
+              },
+              {
+                "startMs": 17271.100000023842,
+                "durationMs": 56
+              },
+              {
+                "startMs": 17888,
+                "durationMs": 64
+              },
+              {
+                "startMs": 18113.30000001192,
+                "durationMs": 56
+              },
+              {
+                "startMs": 18324.80000001192,
+                "durationMs": 56
+              },
+              {
+                "startMs": 18590.20000001788,
+                "durationMs": 57
+              },
+              {
+                "startMs": 18846.30000001192,
+                "durationMs": 59
+              },
+              {
+                "startMs": 19248.20000001788,
+                "durationMs": 1380
+              },
+              {
+                "startMs": 20628.90000000596,
+                "durationMs": 61
+              },
+              {
+                "startMs": 20691,
+                "durationMs": 55
+              },
+              {
+                "startMs": 20923.600000023842,
+                "durationMs": 78
+              },
+              {
+                "startMs": 21160.600000023842,
+                "durationMs": 58
+              }
+            ],
+            "events": [
+              {
+                "name": "keydown",
+                "durationMs": 1312
+              },
+              {
+                "name": "keydown",
+                "durationMs": 1304
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1296
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1296
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 656
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerdown",
+                "durationMs": 656
+              },
+              {
+                "name": "mousedown",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerup",
+                "durationMs": 656
+              },
+              {
+                "name": "mouseup",
+                "durationMs": 656
+              },
+              {
+                "name": "click",
+                "durationMs": 656
+              },
+              {
+                "name": "pointerout",
+                "durationMs": 464
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 464
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 464
+              },
+              {
+                "name": "pointerleave",
+                "durationMs": 464
+              },
+              {
+                "name": "pointerover",
+                "durationMs": 464
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 464
+              },
+              {
+                "name": "pointerenter",
+                "durationMs": 464
+              },
+              {
+                "name": "mouseout",
+                "durationMs": 464
+              },
+              {
+                "name": "mouseover",
+                "durationMs": 464
+              }
+            ],
+            "resourceCount": 56,
+            "knownTransferBytes": 12181668,
+            "encodedBodyBytes": 12166368,
+            "zeroTransferEntries": 5,
+            "world": {
+              "productPanel": "bear",
+              "bearWorkspace": "",
+              "bootState": "complete",
+              "theme": "light",
+              "wallpaper": "dawn",
+              "cafeMode": "desktop",
+              "computerDefault": "expanded",
+              "fullscreen": "false",
+              "fullscreenSupported": "true",
+              "workspaceLayout": "single",
+              "readingFocus": "false",
+              "cafeTheme": "jiangnan",
+              "environmentPaused": "false",
+              "bootStage": "3",
+              "ready": "true",
+              "roomDoorState": "indoor",
+              "roomDoorStill": "false",
+              "worldRenderer": "jiangnan",
+              "worldTheme": "jiangnan",
+              "worldTargets": "{\"computer\":[0.8,1.16,-2.05],\"photo\":[-1.588,2.143,-2.548],\"coffee\":[-0.02,0.844,-1.64],\"books\":[-2.48,0.59,-0.8],\"bridge\":[-3.2,1.2,-17.8],\"door\":[1.8,1.045,2.02],\"window\":[0.8,2,-2.606],\"seat\":[0.8,0.459,-0.95],\"cat-bed\":[-1.45,0.16,-1.93],\"lamp\":[-0.11,1.093,-2.12],\"photo-light\":[-1.87,2.69,-2.31],\"photo:kumano\":[-1.588,2.143,-2.548],\"photo:vangvieng\":[-1.836,1.961,-2.548],\"photo:taprohm\":[-1.963,2.495,-2.548],\"photo:g318\":[-1.637,1.6320000000000001,-2.548],\"photo:flags\":[-1.57,1.0859999999999999,-2.548],\"photo:vientiane\":[-1.812,2.207,-2.548],\"photo:danang\":[-1.872,1.736,-2.548],\"photo:nantaihang\":[-2.1420000000000003,1.0110000000000001,-2.548],\"photo:thorong-la\":[-1.671,1.357,-2.548],\"photo:sakura-bar\":[-1.6070000000000002,1.858,-2.548],\"photo:fuji\":[-2.17,2.403,-2.548],\"photo:tsukubai\":[-2.161,1.803,-2.548],\"photo:nam-xay\":[-1.7950000000000002,0.976,-2.548],\"photo:cave-mouth\":[-1.8920000000000001,1.236,-2.548],\"photo:cliff-edge\":[-2.1100000000000003,1.3479999999999999,-2.548],\"photo:cave-interior\":[-1.6260000000000001,2.5140000000000002,-2.548],\"photo:local-man\":[-1.992,1.539,-2.548],\"photo:balloon-dusk\":[-2.055,2.099,-2.548],\"painting\":[3.15,1.62,0.55],\"shelf-light\":[-2.66,1.85,-1.3],\"book:book-0\":[-2.568,0.651,-1.16],\"book:book-1\":[-2.568,0.669,-1.055],\"book:book-2\":[-2.568,0.687,-0.95],\"book:book-3\":[-2.568,0.66,-0.845],\"book:book-4\":[-2.568,0.6779999999999999,-0.74],\"book:book-5\":[-2.568,0.651,-0.6349999999999999],\"book:book-6\":[-2.568,0.669,-0.5299999999999999],\"book:book-7\":[-2.568,0.687,-0.42499999999999993],\"book:book-8\":[-2.568,0.66,-0.31999999999999995],\"book:book-9\":[-2.568,0.6779999999999999,-0.21499999999999997],\"vinyl\":[-2.82,1.086,-0.45],\"speaker\":[-2.542,1.31,0.31],\"espresso\":[-2.48,1.19,-2.095],\"records\":[-2.99,1.16,-1.12],\"record:night-on-the-docks-sax\":[-3.055,1.152,-1.4700000000000002],\"record:long-stroll\":[-3.047,1.152,-1.12],\"record:almost-new\":[-3.039,1.152,-0.7700000000000001],\"clock\":[-2.78,2,-2.39],\"fan\":[2.8,1.2,-0.55],\"notebook\":[0.27,0.772,-1.57],\"vase\":[0.2,1.033,-2.16],\"cat\":[-1.45,0.23,-1.93]}",
+              "worldPbrMaps": "12",
+              "worldTravel": "false",
+              "roomObjects": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":5.180279999999975,\"platterAngle\":2.152689099409796,\"playing\":true,\"recordId\":\"night-on-the-docks-sax\",\"brewProgress\":0,\"steamPhase\":0.616699999999997,\"pendulumAngle\":0.05124194772730308,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-5.180279999999975,\"platterRotation\":2.152689099409796,\"pendulumRotation\":0.05124194772730308,\"hourHand\":-11.025592496257538,\"minuteHand\":-132.30710995509045,\"clockEpoch\":1793391212429,\"labelId\":\"night-on-the-docks-sax\",\"brewVisible\":false}",
+              "worldVista": "image",
+              "worldScreenPreview": "live",
+              "worldPose": "{\"x\":0.8,\"y\":1.37,\"z\":-0.885,\"yaw\":0,\"pitch\":-0.17834,\"fov\":42}",
+              "worldMode": "workspace",
+              "catLoaded": "true",
+              "roomCat": "{\"x\":-1.45,\"z\":-1.93,\"yaw\":1.65,\"place\":6,\"previous\":-1,\"goal\":6,\"phase\":\"sleep\",\"remaining\":359.28329999999966,\"seed\":79,\"gait\":0,\"speed\":0,\"elapsed\":0.7166999999999972,\"routine\":\"nap\",\"loaded\":true,\"target\":[-1.45,0.23,-1.93]}",
+              "roomCatBreath": "{\"time\":1.6832000000000007,\"chest\":1.0378712937679118,\"belly\":1.0266667215440337}",
+              "roomTime": "{\"seconds\":75806.39000000001,\"hour\":21.05733055555556,\"sunDirection\":[0.41802599203534696,0.2763556485641138,-0.8653795846272154],\"sunStrength\":0,\"sunRadius\":0.012000001459551098,\"golden\":2.432585163049165e-7,\"sunset\":0.00027377383090169694,\"dawn\":3.158368647552694e-91,\"reflectionStrength\":0,\"daylight\":0,\"phase\":\"night\",\"rain\":1,\"catRoutine\":\"nap\",\"label\":\"21:03\",\"unwrapped\":75806.39,\"borrowed\":false,\"sampledAt\":1793391230513,\"rate\":10}",
+              "worldScreenVisible": "true",
+              "computerDepthBlur": "false",
+              "worldFrames": "19",
+              "worldTriangles": "75528",
+              "worldDraws": "79",
+              "worldRenderedMode": "workspace",
+              "roomBoatPose": "[2.136,-0.447,-25.266]",
+              "roomBoat": "ready",
+              "worldEnvironmentTime": "1.683",
+              "roomBoatHeading": "-1.5083",
+              "worldReady": "true",
+              "roomSound": "playing",
+              "roomSoundWanted": "true",
+              "roomTrack": "night-on-the-docks-sax",
+              "roomVolume": "0.6",
+              "roomAmbient": "playing",
+              "roomAmbientWanted": "true",
+              "computerView": "expanded"
+            },
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 14583.90000000596,
+                "navigationId": 2097,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.5,
+                "domainLookupStart": 0.5,
+                "domainLookupEnd": 0.5,
+                "connectStart": 14.200000017881393,
+                "secureConnectionStart": 14.200000017881393,
+                "connectEnd": 143.10000002384186,
+                "requestStart": 143.2000000178814,
+                "responseStart": 215.10000002384186,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 215.10000002384186,
+                "responseEnd": 283.80000001192093,
+                "transferSize": 64356,
+                "encodedBodySize": 64056,
+                "decodedBodySize": 279516,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 380.30000001192093,
+                "domContentLoadedEventStart": 470.40000000596046,
+                "domContentLoadedEventEnd": 470.5,
+                "domComplete": 14583.90000000596,
+                "loadEventStart": 14583.90000000596,
+                "loadEventEnd": 14583.90000000596,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "low"
+                }
+              }
+            ]
+          },
+          "limits": "fresh unthrottled client lab; ready is not first presented frame; EventTiming sample is not field INP; zero transfer entries may be cached or lack timing access; no causal before/after performance claim"
+        }
+      },
+      {
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "project": "mobile",
+        "name": "world-live-lab",
+        "data": {
+          "url": "https://cubxxw.com/zh/projects/",
+          "browserVersion": "156.0.8078.76",
+          "forcedSoftwareFlags": true,
+          "readyAtMs": 10799.800000011921,
+          "screenshotElapsedMs": 1926,
+          "sample": {
+            "lcpMs": 8064,
+            "longTasks": [
+              {
+                "startMs": 453.59999999403954,
+                "durationMs": 607
+              },
+              {
+                "startMs": 1062.9000000059605,
+                "durationMs": 6689
+              },
+              {
+                "startMs": 7769.9000000059605,
+                "durationMs": 1077
+              },
+              {
+                "startMs": 9487.300000011921,
+                "durationMs": 92
+              },
+              {
+                "startMs": 9599.90000000596,
+                "durationMs": 969
+              },
+              {
+                "startMs": 10593.5,
+                "durationMs": 188
+              },
+              {
+                "startMs": 11234.59999999404,
+                "durationMs": 57
+              },
+              {
+                "startMs": 11291.90000000596,
+                "durationMs": 63
+              },
+              {
+                "startMs": 11355.300000011921,
+                "durationMs": 57
+              },
+              {
+                "startMs": 11714.699999988079,
+                "durationMs": 57
+              },
+              {
+                "startMs": 11924,
+                "durationMs": 56
+              },
+              {
+                "startMs": 12139.699999988079,
+                "durationMs": 56
+              },
+              {
+                "startMs": 12390.90000000596,
+                "durationMs": 57
+              },
+              {
+                "startMs": 12448.800000011921,
+                "durationMs": 63
+              },
+              {
+                "startMs": 12512.699999988079,
+                "durationMs": 62
+              },
+              {
+                "startMs": 12575.59999999404,
+                "durationMs": 55
+              },
+              {
+                "startMs": 12631,
+                "durationMs": 56
+              },
+              {
+                "startMs": 12793.90000000596,
+                "durationMs": 59
+              },
+              {
+                "startMs": 13740.09999999404,
+                "durationMs": 753
+              },
+              {
+                "startMs": 14493.90000000596,
+                "durationMs": 64
+              },
+              {
+                "startMs": 14559,
+                "durationMs": 56
+              },
+              {
+                "startMs": 15242,
+                "durationMs": 83
+              },
+              {
+                "startMs": 15525.5,
+                "durationMs": 58
+              }
+            ],
+            "events": [
+              {
+                "name": "keydown",
+                "durationMs": 1720
+              },
+              {
+                "name": "keydown",
+                "durationMs": 1712
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1704
+              },
+              {
+                "name": "keyup",
+                "durationMs": 1704
+              }
+            ],
+            "resourceCount": 58,
+            "knownTransferBytes": 12183784,
+            "encodedBodyBytes": 12168184,
+            "zeroTransferEntries": 6,
+            "world": {
+              "productPanel": "bear",
+              "bearWorkspace": "",
+              "bootState": "complete",
+              "theme": "light",
+              "wallpaper": "dawn",
+              "cafeMode": "desktop",
+              "computerDefault": "expanded",
+              "fullscreen": "false",
+              "fullscreenSupported": "true",
+              "workspaceLayout": "single",
+              "readingFocus": "false",
+              "cafeTheme": "jiangnan",
+              "environmentPaused": "false",
+              "bootStage": "3",
+              "ready": "true",
+              "roomDoorState": "indoor",
+              "roomDoorStill": "false",
+              "worldRenderer": "jiangnan",
+              "worldTheme": "jiangnan",
+              "worldTargets": "{\"computer\":[0.8,1.16,-2.05],\"photo\":[-1.588,2.143,-2.548],\"coffee\":[-0.02,0.844,-1.64],\"books\":[-2.48,0.59,-0.8],\"bridge\":[-3.2,1.2,-17.8],\"door\":[1.8,1.045,2.02],\"window\":[0.8,2,-2.606],\"seat\":[0.8,0.459,-0.95],\"cat-bed\":[-1.45,0.16,-1.93],\"lamp\":[-0.11,1.093,-2.12],\"photo-light\":[-1.87,2.69,-2.31],\"photo:kumano\":[-1.588,2.143,-2.548],\"photo:vangvieng\":[-1.836,1.961,-2.548],\"photo:taprohm\":[-1.963,2.495,-2.548],\"photo:g318\":[-1.637,1.6320000000000001,-2.548],\"photo:flags\":[-1.57,1.0859999999999999,-2.548],\"photo:vientiane\":[-1.812,2.207,-2.548],\"photo:danang\":[-1.872,1.736,-2.548],\"photo:nantaihang\":[-2.1420000000000003,1.0110000000000001,-2.548],\"photo:thorong-la\":[-1.671,1.357,-2.548],\"photo:sakura-bar\":[-1.6070000000000002,1.858,-2.548],\"photo:fuji\":[-2.17,2.403,-2.548],\"photo:tsukubai\":[-2.161,1.803,-2.548],\"photo:nam-xay\":[-1.7950000000000002,0.976,-2.548],\"photo:cave-mouth\":[-1.8920000000000001,1.236,-2.548],\"photo:cliff-edge\":[-2.1100000000000003,1.3479999999999999,-2.548],\"photo:cave-interior\":[-1.6260000000000001,2.5140000000000002,-2.548],\"photo:local-man\":[-1.992,1.539,-2.548],\"photo:balloon-dusk\":[-2.055,2.099,-2.548],\"painting\":[3.15,1.62,0.55],\"shelf-light\":[-2.66,1.85,-1.3],\"book:book-0\":[-2.568,0.651,-1.16],\"book:book-1\":[-2.568,0.669,-1.055],\"book:book-2\":[-2.568,0.687,-0.95],\"book:book-3\":[-2.568,0.66,-0.845],\"book:book-4\":[-2.568,0.6779999999999999,-0.74],\"book:book-5\":[-2.568,0.651,-0.6349999999999999],\"book:book-6\":[-2.568,0.669,-0.5299999999999999],\"book:book-7\":[-2.568,0.687,-0.42499999999999993],\"book:book-8\":[-2.568,0.66,-0.31999999999999995],\"book:book-9\":[-2.568,0.6779999999999999,-0.21499999999999997],\"vinyl\":[-2.82,1.086,-0.45],\"speaker\":[-2.542,1.31,0.31],\"espresso\":[-2.48,1.19,-2.095],\"records\":[-2.99,1.16,-1.12],\"record:night-on-the-docks-sax\":[-3.055,1.152,-1.4700000000000002],\"record:long-stroll\":[-3.047,1.152,-1.12],\"record:almost-new\":[-3.039,1.152,-0.7700000000000001],\"clock\":[-2.78,2,-2.39],\"fan\":[2.8,1.2,-0.55],\"notebook\":[0.27,0.772,-1.57],\"vase\":[0.2,1.033,-2.16],\"cat\":[-1.45,0.23,-1.93]}",
+              "worldPbrMaps": "12",
+              "worldTravel": "false",
+              "roomObjects": "{\"lamp\":true,\"fan\":true,\"shelf-light\":true,\"photo-light\":true,\"espresso\":false,\"fanSpeed\":8.4,\"fanPhase\":6.440280000000007,\"platterAngle\":0,\"playing\":true,\"recordId\":\"night-on-the-docks-sax\",\"brewProgress\":0,\"steamPhase\":0.7667000000000008,\"pendulumAngle\":0.03653365189693491,\"tableLight\":1.45,\"tablePool\":2.7,\"tablePoolVisible\":true,\"shadeEmissive\":0.47,\"photoLight\":1.35,\"photoEmitter\":0.62,\"shelfLight\":8.63,\"shelfEmitters\":[0.85,0.85,0.85,0.65,0.65,0.75],\"rotorAngle\":-6.440280000000007,\"platterRotation\":0,\"pendulumRotation\":0.03653365189693491,\"hourHand\":-11.017491259646196,\"minuteHand\":-132.20989511575434,\"clockEpoch\":1793391232145,\"labelId\":\"night-on-the-docks-sax\",\"brewVisible\":false}",
+              "worldVista": "image",
+              "worldScreenPreview": "live",
+              "worldPose": "{\"x\":0.8,\"y\":1.37,\"z\":-0.885,\"yaw\":0,\"pitch\":-0.17834,\"fov\":42}",
+              "worldMode": "workspace",
+              "catLoaded": "true",
+              "roomCat": "{\"x\":-1.45,\"z\":-1.93,\"yaw\":1.65,\"place\":6,\"previous\":-1,\"goal\":6,\"phase\":\"sleep\",\"remaining\":359.1532999999997,\"seed\":79,\"gait\":0,\"speed\":0,\"elapsed\":0.8467000000000009,\"routine\":\"nap\",\"loaded\":true,\"target\":[-1.45,0.23,-1.93]}",
+              "roomCatBreath": "{\"time\":1.3998999999999997,\"chest\":1.0344013743117504,\"belly\":1.0221534946523594}",
+              "roomTime": "{\"seconds\":75752.60999999999,\"hour\":21.042391666666663,\"sunDirection\":[0.41802599203534696,0.2763556485641138,-0.8653795846272154],\"sunStrength\":0,\"sunRadius\":0.01200000164973544,\"golden\":2.74955906677635e-7,\"sunset\":0.00029696035426148704,\"dawn\":4.7617595882724416e-91,\"reflectionStrength\":0,\"daylight\":0,\"phase\":\"night\",\"rain\":1,\"catRoutine\":\"nap\",\"label\":\"21:02\",\"unwrapped\":75752.61,\"borrowed\":false,\"sampledAt\":1793391246857,\"rate\":10}",
+              "worldScreenVisible": "true",
+              "computerDepthBlur": "false",
+              "worldFrames": "23",
+              "worldTriangles": "75528",
+              "worldDraws": "79",
+              "worldRenderedMode": "workspace",
+              "roomBoatPose": "[1.295,-0.448,-19.796]",
+              "roomBoat": "ready",
+              "worldEnvironmentTime": "1.400",
+              "roomBoatHeading": "0.5777",
+              "worldReady": "true",
+              "roomSound": "playing",
+              "roomSoundWanted": "true",
+              "roomTrack": "night-on-the-docks-sax",
+              "roomVolume": "0.6",
+              "roomAmbient": "playing",
+              "roomAmbientWanted": "true",
+              "computerView": "expanded"
+            },
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 452.40000000596046,
+                "navigationId": 3135,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.5,
+                "domainLookupStart": 0.5,
+                "domainLookupEnd": 0.5,
+                "connectStart": 2.9000000059604645,
+                "secureConnectionStart": 2.9000000059604645,
+                "connectEnd": 130,
+                "requestStart": 130,
+                "responseStart": 198.69999998807907,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 198.69999998807907,
+                "responseEnd": 262.90000000596046,
+                "transferSize": 80502,
+                "encodedBodySize": 80202,
+                "decodedBodySize": 314753,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 368.69999998807907,
+                "domContentLoadedEventStart": 414.80000001192093,
+                "domContentLoadedEventEnd": 414.80000001192093,
+                "domComplete": 452.40000000596046,
+                "loadEventStart": 452.40000000596046,
+                "loadEventEnd": 452.40000000596046,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          },
+          "limits": "fresh unthrottled client lab; ready is not first presented frame; EventTiming sample is not field INP; zero transfer entries may be cached or lack timing access; no causal before/after performance claim"
+        }
+      }
+    ]
+  },
+  "native": {
+    "stats": {
+      "startTime": "2026-10-30T20:10:02.305Z",
+      "duration": 134222.76799999998,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "globalErrors": [],
+    "cases": [
+      {
+        "title": "the magic clock owns its gestures, persists borrowed dawn and returns to the live present",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "returning to the present can be interrupted by a new clock gesture",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "the cat sleeps by default and a real nest click wakes it before it comes over",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "changing motion preference during waking settles the old call and accepts a new one",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "choosing real records keeps the outdoor source and drives the platter",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "the magic clock owns its gestures, persists borrowed dawn and returns to the live present",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "returning to the present can be interrupted by a new clock gesture",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "the cat sleeps by default and a real nest click wakes it before it comes over",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "changing motion preference during waking settles the old call and accepts a new one",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "choosing real records keeps the outdoor source and drives the platter",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      }
+    ],
+    "samples": []
+  },
+  "daily": {
+    "stats": {
+      "startTime": "2026-10-30T20:14:26.405Z",
+      "duration": 151096.07799999998,
+      "expected": 36,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "globalErrors": [],
+    "cases": [
+      {
+        "title": "live SEO /",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /engineering/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/engineering/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /projects/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/projects/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live reader can switch theme and home language",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /engineering/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/engineering/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /projects/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/projects/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live reader can switch theme and home language",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      }
+    ],
+    "samples": [
+      {
+        "title": "live lab performance sample /",
+        "project": "desktop",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 1340,
+            "cls": 0.0030508041381835938,
+            "longTaskMs": 85,
+            "windowStart": 1665.5999999940395,
+            "lastShift": 1665.5999999940395,
+            "windowScore": 0.0030508041381835938,
+            "observationMs": 5070.4000000059605,
+            "loadCompleted": true,
+            "domElements": 1494,
+            "resources": 22,
+            "slowResources": [],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 2032.4000000059605,
+                "navigationId": 2517,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.20000001788139343,
+                "domainLookupStart": 0.20000001788139343,
+                "domainLookupEnd": 0.20000001788139343,
+                "connectStart": 1.7000000178813934,
+                "secureConnectionStart": 1.7000000178813934,
+                "connectEnd": 144.59999999403954,
+                "requestStart": 144.59999999403954,
+                "responseStart": 448.7000000178814,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 448.7000000178814,
+                "responseEnd": 869.7000000178814,
+                "transferSize": 51990,
+                "encodedBodySize": 51690,
+                "decodedBodySize": 180500,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 1346.300000011921,
+                "domContentLoadedEventStart": 1662.0999999940395,
+                "domContentLoadedEventEnd": 1662.2000000178814,
+                "domComplete": 2032.300000011921,
+                "loadEventStart": 2032.300000011921,
+                "loadEventEnd": 2032.4000000059605,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "low"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "desktop",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/zh/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 636,
+            "cls": 0.03356736501057943,
+            "longTaskMs": 0,
+            "windowStart": 690.3000000119209,
+            "lastShift": 798.5,
+            "windowScore": 0.03356736501057943,
+            "observationMs": 3894.5,
+            "loadCompleted": true,
+            "domElements": 1496,
+            "resources": 18,
+            "slowResources": [],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 871,
+                "navigationId": 8747,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.30000001192092896,
+                "domainLookupStart": 0.30000001192092896,
+                "domainLookupEnd": 0.30000001192092896,
+                "connectStart": 3.4000000059604645,
+                "secureConnectionStart": 3.4000000059604645,
+                "connectEnd": 155.2000000178814,
+                "requestStart": 155.40000000596046,
+                "responseStart": 463.60000002384186,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 463.60000002384186,
+                "responseEnd": 675.7000000178814,
+                "transferSize": 54877,
+                "encodedBodySize": 54577,
+                "decodedBodySize": 186435,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 691.4000000059605,
+                "domContentLoadedEventStart": 802.5,
+                "domContentLoadedEventEnd": 802.7000000178814,
+                "domComplete": 870.9000000059605,
+                "loadEventStart": 870.9000000059605,
+                "loadEventEnd": 871,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "desktop",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/projects/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 1612,
+            "cls": 0.0010431043836805556,
+            "longTaskMs": 3723,
+            "windowStart": 1583.7999999821186,
+            "lastShift": 2057.0999999940395,
+            "windowScore": 0.0010431043836805556,
+            "observationMs": 4734,
+            "loadCompleted": true,
+            "domElements": 1212,
+            "resources": 53,
+            "slowResources": [
+              {
+                "resource": "https://cubxxw.com/audio/space/night-on-the-docks-sax.mp3",
+                "durationMs": 1893.7999999821186
+              }
+            ],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 751.6999999880791,
+                "navigationId": 8704,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.09999999403953552,
+                "domainLookupStart": 0.09999999403953552,
+                "domainLookupEnd": 0.09999999403953552,
+                "connectStart": 5.5999999940395355,
+                "secureConnectionStart": 5.5999999940395355,
+                "connectEnd": 147.19999998807907,
+                "requestStart": 147.19999998807907,
+                "responseStart": 445.7999999821186,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 445.7999999821186,
+                "responseEnd": 658.4000000059605,
+                "transferSize": 64403,
+                "encodedBodySize": 64103,
+                "decodedBodySize": 279516,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 660.4000000059605,
+                "domContentLoadedEventStart": 709.1999999880791,
+                "domContentLoadedEventEnd": 709.1999999880791,
+                "domComplete": 751.6999999880791,
+                "loadEventStart": 751.6999999880791,
+                "loadEventEnd": 751.6999999880791,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "low"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "desktop",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/zh/projects/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 2000,
+            "cls": 0.03515625,
+            "longTaskMs": 4136,
+            "windowStart": 1981.9000000059605,
+            "lastShift": 1981.9000000059605,
+            "windowScore": 0.0005656882921854656,
+            "observationMs": 5439.0999999940395,
+            "loadCompleted": true,
+            "domElements": 1212,
+            "resources": 53,
+            "slowResources": [
+              {
+                "resource": "https://cubxxw.com/images/space-cafe/jiangnan-vista-continuation-v1_hu_8828a3cf402f97e5.webp",
+                "durationMs": 1788.699999988079
+              }
+            ],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 1098.2999999821186,
+                "navigationId": 2286,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.29999998211860657,
+                "domainLookupStart": 0.29999998211860657,
+                "domainLookupEnd": 0.29999998211860657,
+                "connectStart": 3.5999999940395355,
+                "secureConnectionStart": 3.5999999940395355,
+                "connectEnd": 146.40000000596046,
+                "requestStart": 146.5,
+                "responseStart": 438.59999999403954,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 438.59999999403954,
+                "responseEnd": 1049,
+                "transferSize": 81492,
+                "encodedBodySize": 81192,
+                "decodedBodySize": 314753,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 1053.7999999821186,
+                "domContentLoadedEventStart": 1089.699999988079,
+                "domContentLoadedEventEnd": 1089.7999999821186,
+                "domComplete": 1098.199999988079,
+                "loadEventStart": 1098.2999999821186,
+                "loadEventEnd": 1098.2999999821186,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "desktop",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 748,
+            "cls": 0.00615780978732639,
+            "longTaskMs": 0,
+            "windowStart": 1549.0999999940395,
+            "lastShift": 1549.0999999940395,
+            "windowScore": 0.00615780978732639,
+            "observationMs": 4571.300000011921,
+            "loadCompleted": true,
+            "domElements": 1077,
+            "resources": 27,
+            "slowResources": [],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 1547.2000000178814,
+                "navigationId": 8216,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.20000001788139343,
+                "domainLookupStart": 0.20000001788139343,
+                "domainLookupEnd": 0.20000001788139343,
+                "connectStart": 4.200000017881393,
+                "secureConnectionStart": 4.200000017881393,
+                "connectEnd": 141.7000000178814,
+                "requestStart": 141.80000001192093,
+                "responseStart": 426.5,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 426.5,
+                "responseEnd": 822.5999999940395,
+                "transferSize": 43401,
+                "encodedBodySize": 43101,
+                "decodedBodySize": 143326,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 828.7000000178814,
+                "domContentLoadedEventStart": 1546.0999999940395,
+                "domContentLoadedEventEnd": 1546.2000000178814,
+                "domComplete": 1547.0999999940395,
+                "loadEventStart": 1547.0999999940395,
+                "loadEventEnd": 1547.2000000178814,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /",
+        "project": "mobile",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 1480,
+            "cls": 0,
+            "longTaskMs": 94,
+            "windowStart": 0,
+            "lastShift": 0,
+            "windowScore": 0,
+            "observationMs": 5198.9000000059605,
+            "loadCompleted": true,
+            "domElements": 1494,
+            "resources": 17,
+            "slowResources": [],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 2160.9000000059605,
+                "navigationId": 9926,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.5,
+                "domainLookupStart": 0.5,
+                "domainLookupEnd": 0.5,
+                "connectStart": 3.699999988079071,
+                "secureConnectionStart": 3.699999988079071,
+                "connectEnd": 133.5,
+                "requestStart": 133.5,
+                "responseStart": 417.80000001192093,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 417.80000001192093,
+                "responseEnd": 1240.9000000059605,
+                "transferSize": 51857,
+                "encodedBodySize": 51557,
+                "decodedBodySize": 180500,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 1489.4000000059605,
+                "domContentLoadedEventStart": 1836.4000000059605,
+                "domContentLoadedEventEnd": 1836.4000000059605,
+                "domComplete": 2160.5999999940395,
+                "loadEventStart": 2160.5999999940395,
+                "loadEventEnd": 2160.9000000059605,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "low"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "mobile",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/zh/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 1052,
+            "cls": 0,
+            "longTaskMs": 0,
+            "windowStart": 0,
+            "lastShift": 0,
+            "windowScore": 0,
+            "observationMs": 4758.800000011921,
+            "loadCompleted": true,
+            "domElements": 1496,
+            "resources": 19,
+            "slowResources": [],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 1724.800000011921,
+                "navigationId": 7630,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.30000001192092896,
+                "domainLookupStart": 0.30000001192092896,
+                "domainLookupEnd": 0.30000001192092896,
+                "connectStart": 3.5999999940395355,
+                "secureConnectionStart": 3.5999999940395355,
+                "connectEnd": 142.80000001192093,
+                "requestStart": 142.80000001192093,
+                "responseStart": 444.80000001192093,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 444.80000001192093,
+                "responseEnd": 515,
+                "transferSize": 54848,
+                "encodedBodySize": 54548,
+                "decodedBodySize": 186435,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 1055.0999999940395,
+                "domContentLoadedEventStart": 1375.9000000059605,
+                "domContentLoadedEventEnd": 1375.9000000059605,
+                "domComplete": 1724.5999999940395,
+                "loadEventStart": 1724.5999999940395,
+                "loadEventEnd": 1724.800000011921,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "mobile",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/projects/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 2448,
+            "cls": 0.005613250934779148,
+            "longTaskMs": 4321,
+            "windowStart": 2400.199999988079,
+            "lastShift": 2400.199999988079,
+            "windowScore": 0.005613250934779148,
+            "observationMs": 7144.5999999940395,
+            "loadCompleted": true,
+            "domElements": 1212,
+            "resources": 52,
+            "slowResources": [
+              {
+                "resource": "https://cubxxw.com/css/bear-os.min.99d649000fa8bb0853a264ebe1e50e54202fd80b3eaee3c389d1e2cd2b923ee6.css",
+                "durationMs": 1175
+              },
+              {
+                "resource": "https://cubxxw.com/js/bear-workspace.69e9c9a2291f7e135e8ef1002b5f8750094ac1670bf7a52783277345b3a0707b.js",
+                "durationMs": 1137.7000000178814
+              },
+              {
+                "resource": "https://cubxxw.com/models/space/cat.glb",
+                "durationMs": 1106.3999999761581
+              },
+              {
+                "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+                "durationMs": 1348.5999999940395
+              },
+              {
+                "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-color.jpg",
+                "durationMs": 1530.699999988079
+              },
+              {
+                "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor_grain-color.jpg",
+                "durationMs": 1284.699999988079
+              },
+              {
+                "resource": "https://cubxxw.com/images/posts/2025/japan-travel/tsukubai.jpg",
+                "durationMs": 1306.2000000178814
+              },
+              {
+                "resource": "https://cubxxw.com/images/posts/2026/laos/local-man-cave.jpg",
+                "durationMs": 1007.5
+              },
+              {
+                "resource": "https://cubxxw.com/images/posts/2026/laos/vang-vieng-balloon-dusk.jpg",
+                "durationMs": 1138.199999988079
+              },
+              {
+                "resource": "https://cubxxw.com/images/space/art/paul-klee-main-path-and-byways-1929.jpg",
+                "durationMs": 1343
+              },
+              {
+                "resource": "https://cubxxw.com/images/space-cafe/jiangnan-vista-study-v2_hu_c4a7a0328eb5671c.webp",
+                "durationMs": 1401
+              },
+              {
+                "resource": "https://cubxxw.com/images/space-cafe/jiangnan-vista-neutral-v1_hu_b93923c4b6d75564.webp",
+                "durationMs": 1407.4000000059605
+              },
+              {
+                "resource": "https://cubxxw.com/images/space-cafe/jiangnan-vista-continuation-v1_hu_8828a3cf402f97e5.webp",
+                "durationMs": 1348.5999999940395
+              },
+              {
+                "resource": "https://cubxxw.com/audio/space/night-on-the-docks-sax.mp3",
+                "durationMs": 1981.5
+              },
+              {
+                "resource": "https://cubxxw.com/audio/space/rain-distant-storm-loop.mp3",
+                "durationMs": 1235.5999999940395
+              }
+            ],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 3918.699999988079,
+                "navigationId": 8937,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.30000001192092896,
+                "domainLookupStart": 0.30000001192092896,
+                "domainLookupEnd": 0.30000001192092896,
+                "connectStart": 2.5999999940395355,
+                "secureConnectionStart": 2.5999999940395355,
+                "connectEnd": 140.80000001192093,
+                "requestStart": 140.80000001192093,
+                "responseStart": 447.59999999403954,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 447.59999999403954,
+                "responseEnd": 520.5,
+                "transferSize": 64360,
+                "encodedBodySize": 64060,
+                "decodedBodySize": 279516,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 1660.5,
+                "domContentLoadedEventStart": 1685.800000011921,
+                "domContentLoadedEventEnd": 1685.9000000059605,
+                "domComplete": 3918.699999988079,
+                "loadEventStart": 3918.699999988079,
+                "loadEventEnd": 3918.699999988079,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "mobile",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/zh/projects/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 1316,
+            "cls": 1.1785555066207883e-05,
+            "longTaskMs": 3632,
+            "windowStart": 1927.7999999821186,
+            "lastShift": 1927.7999999821186,
+            "windowScore": 1.1785555066207883e-05,
+            "observationMs": 4518.5999999940395,
+            "loadCompleted": true,
+            "domElements": 1212,
+            "resources": 53,
+            "slowResources": [
+              {
+                "resource": "https://cubxxw.com/audio/space/night-on-the-docks-sax.mp3",
+                "durationMs": 1977.300000011921
+              }
+            ],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/projects/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 490.40000000596046,
+                "navigationId": 9602,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.9000000059604645,
+                "domainLookupStart": 0.9000000059604645,
+                "domainLookupEnd": 0.9000000059604645,
+                "connectStart": 62.400000005960464,
+                "secureConnectionStart": 62.400000005960464,
+                "connectEnd": 143.69999998807907,
+                "requestStart": 143.7999999821186,
+                "responseStart": 215.09999999403954,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 215.09999999403954,
+                "responseEnd": 287.2999999821186,
+                "transferSize": 81443,
+                "encodedBodySize": 81143,
+                "decodedBodySize": 314753,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 392.2999999821186,
+                "domContentLoadedEventStart": 448.09999999403954,
+                "domContentLoadedEventEnd": 448.09999999403954,
+                "domComplete": 490.40000000596046,
+                "loadEventStart": 490.40000000596046,
+                "loadEventEnd": 490.40000000596046,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "high"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "mobile",
+        "name": "live-lab-performance",
+        "data": {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "navigationError": "",
+          "responseStatus": 200,
+          "environment": "live Chromium; unthrottled; fresh context; routed read-only; three seconds after load or 45s navigation timeout; source SHA unverified",
+          "sample": {
+            "lcpMs": 1528,
+            "cls": 0,
+            "longTaskMs": 69,
+            "windowStart": 0,
+            "lastShift": 0,
+            "windowScore": 0,
+            "observationMs": 5660.800000011921,
+            "loadCompleted": true,
+            "domElements": 1078,
+            "resources": 93,
+            "slowResources": [
+              {
+                "resource": "https://cubxxw.com/js/article-share-link.js",
+                "durationMs": 1214.800000011921
+              },
+              {
+                "resource": "https://cubxxw.com/js/article-sidebars.js",
+                "durationMs": 1192.7999999821186
+              },
+              {
+                "resource": "https://cubxxw.com/js/article-tabs.js",
+                "durationMs": 1189.699999988079
+              },
+              {
+                "resource": "https://cubxxw.com/js/article-bottom-sheet.js",
+                "durationMs": 1195.5
+              },
+              {
+                "resource": "https://cubxxw.com/js/cover-parallax.d6ac8293a7cd4cacd06a6fc6f40520363997697d6bfd64e248cb9efd3f7dcefe.js",
+                "durationMs": 1196.7000000178814
+              },
+              {
+                "resource": "https://cubxxw.com/js/article-ai-client.js",
+                "durationMs": 1198.199999988079
+              },
+              {
+                "resource": "https://cubxxw.com/js/article-chat.js",
+                "durationMs": 2020.199999988079
+              },
+              {
+                "resource": "https://cubxxw.com/js/reading-companion.js",
+                "durationMs": 2013.7999999821186
+              },
+              {
+                "resource": "https://cubxxw.com/js/image-lightbox.js",
+                "durationMs": 2000.4000000059605
+              },
+              {
+                "resource": "https://cubxxw.com/js/toc-highlight.js",
+                "durationMs": 2011.699999988079
+              },
+              {
+                "resource": "https://cubxxw.com/js/wide-content-scroll.js",
+                "durationMs": 2012.300000011921
+              },
+              {
+                "resource": "https://cubxxw.com/js/code-mobile.js",
+                "durationMs": 2013.300000011921
+              },
+              {
+                "resource": "https://cubxxw.com/js/link-preview.js",
+                "durationMs": 2008.6000000238419
+              },
+              {
+                "resource": "https://cubxxw.com/js/footnote-preview.js",
+                "durationMs": 2013.1000000238419
+              },
+              {
+                "resource": "https://cubxxw.com/js/code-copy.js",
+                "durationMs": 2073.5
+              },
+              {
+                "resource": "https://cubxxw.com/social/paper_hu_9df27d3979c1bb9e.png",
+                "durationMs": 1303.7999999821186
+              }
+            ],
+            "navigation": [
+              {
+                "name": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+                "entryType": "navigation",
+                "startTime": 0,
+                "duration": 2591.5999999940395,
+                "navigationId": 2488,
+                "initiatorType": "navigation",
+                "deliveryType": "",
+                "nextHopProtocol": "h2",
+                "renderBlockingStatus": "non-blocking",
+                "contentType": "text/html",
+                "contentEncoding": "br",
+                "workerStart": 0,
+                "workerRouterEvaluationStart": 0,
+                "workerCacheLookupStart": 0,
+                "workerMatchedSourceType": "",
+                "workerFinalSourceType": "",
+                "redirectStart": 0,
+                "redirectEnd": 0,
+                "fetchStart": 0.30000001192092896,
+                "domainLookupStart": 0.30000001192092896,
+                "domainLookupEnd": 0.30000001192092896,
+                "connectStart": 3.4000000059604645,
+                "secureConnectionStart": 3.4000000059604645,
+                "connectEnd": 141.69999998807907,
+                "requestStart": 141.80000001192093,
+                "responseStart": 446.40000000596046,
+                "firstInterimResponseStart": 0,
+                "finalResponseHeadersStart": 446.40000000596046,
+                "responseEnd": 515.3000000119209,
+                "transferSize": 42842,
+                "encodedBodySize": 42542,
+                "decodedBodySize": 143326,
+                "responseStatus": 200,
+                "serverTiming": [],
+                "unloadEventStart": 0,
+                "unloadEventEnd": 0,
+                "domInteractive": 1523.0999999940395,
+                "domContentLoadedEventStart": 2590.800000011921,
+                "domContentLoadedEventEnd": 2590.9000000059605,
+                "domComplete": 2591.5,
+                "loadEventStart": 2591.5,
+                "loadEventEnd": 2591.5999999940395,
+                "type": "navigate",
+                "redirectCount": 0,
+                "activationStart": 0,
+                "criticalCHRestart": 0,
+                "notRestoredReasons": null,
+                "confidence": {
+                  "randomizedTriggerRate": 0.4994798,
+                  "value": "low"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "toolbar": {
+    "stats": {
+      "startTime": "2026-10-30T20:17:31.806Z",
+      "duration": 36084.864,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "globalErrors": [],
+    "cases": [
+      {
+        "title": "scene toolbar stays inside the mobile viewport /en",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      },
+      {
+        "title": "scene toolbar stays inside the mobile viewport /zh",
+        "project": "mobile",
+        "status": "expected",
+        "actual": [
+          "passed"
+        ],
+        "retries": 0
+      }
+    ],
+    "samples": [
+      {
+        "title": "scene toolbar stays inside the mobile viewport /en",
+        "project": "mobile",
+        "name": "actual-toolbar-geometry",
+        "data": [
+          {
+            "label": "中",
+            "x": 135.421875,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "right": 179.421875,
+            "viewport": 393,
+            "hit": true
+          },
+          {
+            "label": "Warm light",
+            "x": 185.421875,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "right": 229.421875,
+            "viewport": 393,
+            "hit": true
+          },
+          {
+            "label": "Quiet mode",
+            "x": 235.421875,
+            "y": 12,
+            "width": 91.578125,
+            "height": 44,
+            "right": 327,
+            "viewport": 393,
+            "hit": true
+          },
+          {
+            "label": "Change the scene",
+            "x": 333,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "right": 377,
+            "viewport": 393,
+            "hit": true
+          }
+        ]
+      },
+      {
+        "title": "scene toolbar stays inside the mobile viewport /zh",
+        "project": "mobile",
+        "name": "actual-toolbar-geometry",
+        "data": [
+          {
+            "label": "EN",
+            "x": 153,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "right": 197,
+            "viewport": 393,
+            "hit": true
+          },
+          {
+            "label": "暖光",
+            "x": 203,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "right": 247,
+            "viewport": 393,
+            "hit": true
+          },
+          {
+            "label": "安静模式",
+            "x": 253,
+            "y": 12,
+            "width": 74,
+            "height": 44,
+            "right": 327,
+            "viewport": 393,
+            "hit": true
+          },
+          {
+            "label": "换个地方",
+            "x": 333,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "right": 377,
+            "viewport": 393,
+            "hit": true
+          }
+        ]
+      }
+    ]
+  }
+}

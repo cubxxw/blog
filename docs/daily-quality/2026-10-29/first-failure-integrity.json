@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-28T20:32:06.407545+00:00",
+  "traces": [
+    {
+      "shard": "legacy-8",
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume29-e4-legacy-8-first-failure/tests/.artifacts/ci/shard/legacy-8/legacy/results/space-object-living-the-ph-977e5--actual-light-and-mechanism-desktop/trace.zip",
+      "bytes": 10644526,
+      "sha256": "160e23a94113400f45321aaf3fe948f055c605f955dc35635599a9ea4755a7b2",
+      "selectedOuterCRCVerifiedByReader": true,
+      "allInnerCRCValid": true,
+      "meaning": "First failed attempt kept despite later retry passing."
+    },
+    {
+      "shard": "legacy-13",
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume29-e4-legacy-13-first-failure/tests/.artifacts/ci/shard/legacy-13/legacy/results/footnote-preview-contracts-e0941-ain-native-history-and-Back-mobile/trace.zip",
+      "bytes": 14358492,
+      "sha256": "204621b737a4a65ce1c3d935e489dd934db9e2e4cc4a33d0432a8e7068a6e1de",
+      "selectedOuterCRCVerifiedByReader": true,
+      "allInnerCRCValid": true,
+      "meaning": "First failed attempt kept despite later retry passing."
+    }
+  ],
+  "totalStoredBytes": 25003018,
+  "wholeRemoteArtifactDownloaded": false
+}

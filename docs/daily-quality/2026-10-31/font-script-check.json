@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-30T20:19:15.363264+00:00",
+  "argv": [
+    "node",
+    "--test",
+    "scripts/reading-fonts.test.mjs"
+  ],
+  "SITE_OUTPUT_DIR": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-live-output",
+  "exit": 0,
+  "seconds": 0.12579854199429974,
+  "htmlSHA256": "1fd1ea58a1c709e1a83ea1bdec7641548119e8591ef1ea4368a3a65dbd470c0b",
+  "fontCSS": {
+    "url": "https://cubxxw.com/assets/fonts/noto-serif-sc-reading.min.c421d809486bad7eb8d8ecc052c1cfa7fefe8b5fde5ad0a6ffa65890a6bf2250.css",
+    "rawBytes": 190896,
+    "sha256": "c421d809486bad7eb8d8ecc052c1cfa7fefe8b5fde5ad0a6ffa65890a6bf2250"
+  },
+  "limits": "8 real annual-page font-script contracts on exact downloaded production HTML+CSS, not whole performance:check or field latency; earlier missing-public import failure remains preserved"
+}

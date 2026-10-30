@@ -1,0 +1,237 @@
+{
+  "at": "2026-10-28T20:07:30.476580+00:00",
+  "before": {
+    "id": "6ae21fa287323e6ec225061c",
+    "commit_ref": "c85ed6df613e9198c4b82bea7ae3559f06ae72ef",
+    "state": "ready",
+    "published_at": "2026-10-28T16:18:29.708Z"
+  },
+  "after": {
+    "id": "6ae21fa287323e6ec225061c",
+    "commit_ref": "c85ed6df613e9198c4b82bea7ae3559f06ae72ef",
+    "state": "ready",
+    "published_at": "2026-10-28T16:18:29.708Z"
+  },
+  "versionUnchanged": true,
+  "pages": [
+    {
+      "url": "https://cubxxw.com/",
+      "status": 200,
+      "title": "Xinwei Xiong (cubxxw) · An Open Archive of Practice and Thought",
+      "description": "Xinwei Xiong's open archive of AI workflows, real projects, engineering methods, systems thinking, personal growth, philosophy, and life.",
+      "descriptionChars": 137,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/",
+        "zh": "https://cubxxw.com/zh/",
+        "x-default": "https://cubxxw.com/"
+      },
+      "jsonldCount": 2,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "status": 200,
+      "title": "熊鑫伟（cubxxw）· 公开的实践与思想档案",
+      "description": "熊鑫伟的公开实践与思想档案，记录 AI 工作流、真实项目、工程方法、系统思维，以及关于个人成长、哲学与人生的长期思考。",
+      "descriptionChars": 59,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/zh/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/",
+        "zh": "https://cubxxw.com/zh/",
+        "x-default": "https://cubxxw.com/"
+      },
+      "jsonldCount": 2,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "status": 200,
+      "title": "Engineering | cubxxw",
+      "description": "Kubernetes and cloud native, Go engineering, DevOps, and open-source practice — 38+ infrastructure field notes, the engineering foundation behind AI products.",
+      "descriptionChars": 158,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/engineering/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/",
+        "zh": "https://cubxxw.com/zh/engineering/",
+        "x-default": "https://cubxxw.com/engineering/"
+      },
+      "jsonldCount": 5,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/",
+      "status": 200,
+      "title": "Engineering | cubxxw",
+      "description": "Kubernetes 云原生、Go 工程化、DevOps 与开源工程——38+ 篇基础设施实践笔记，支撑 AI 产品的工程根基。",
+      "descriptionChars": 64,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/zh/engineering/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/",
+        "zh": "https://cubxxw.com/zh/engineering/",
+        "x-default": "https://cubxxw.com/engineering/"
+      },
+      "jsonldCount": 5,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "status": 200,
+      "title": "Space · CUBXXW OS | cubxxw",
+      "description": "Enter Xinwei Xiong's CUBXXW OS space: meet the person, explore real products and public writing, browse travel photographs, and keep a note of your own.",
+      "descriptionChars": 152,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/projects/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/projects/",
+        "zh": "https://cubxxw.com/zh/projects/",
+        "x-default": "https://cubxxw.com/projects/"
+      },
+      "jsonldCount": 5,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/projects/",
+      "status": 200,
+      "title": "空间 · CUBXXW OS | cubxxw",
+      "description": "进入熊鑫伟的 CUBXXW OS 空间，了解个人经历，浏览正在构建的产品与公开文章，也可以看看旅途照片，写下一点自己的想法。",
+      "descriptionChars": 62,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/zh/projects/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/projects/",
+        "zh": "https://cubxxw.com/zh/projects/",
+        "x-default": "https://cubxxw.com/projects/"
+      },
+      "jsonldCount": 5,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": 200,
+      "title": "Agent Identity: From Locke to OpenClaw | cubxxw",
+      "description": "A practical framework for continuous AI agent identity, covering memory, permissions, provenance, multi-agent handoffs, and cross-session evaluation design.\n",
+      "descriptionChars": 157,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "zh": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "x-default": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      },
+      "jsonldCount": 4,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "status": 200,
+      "title": "我在游荡，但我没有迷路 — 2025-2026 年度总结 | cubxxw",
+      "description": "这是 3614 条笔记，十四个月，一个试图把自己活明白的人的记录。从\"澎湃\"到\"剥落\"，不是变老，是变真实。\n",
+      "descriptionChars": 55,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/zh/growth/posts/2025-annual-review/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/growth/posts/2025-annual-review/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "x-default": "https://cubxxw.com/growth/posts/2025-annual-review/"
+      },
+      "jsonldCount": 4,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": 200,
+      "title": "Agent 的自我：从洛克到 OpenClaw | cubxxw",
+      "description": "本文从洛克《人类理解论》第二卷第二十七章出发，讨论 AI Agent 如何跨会话保持行为连续性。核验 OpenClaw、Mem0、Karpathy LLM Wiki、SoulSpec 与 EvoMap 一手资料，给出身份文件、运行记忆、权限边界、经验谱系和评测设计清单，面向构建长期智能体、关注审计与信任边界的工程师。\n",
+      "descriptionChars": 160,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "zh": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "x-default": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      },
+      "jsonldCount": 4,
+      "issues": []
+    },
+    {
+      "url": "https://cubxxw.com/growth/posts/2025-annual-review/",
+      "status": 200,
+      "title": "Wandering & Growing: 2025-2026 Annual Review | cubxxw",
+      "description": "3,614 notes, fourteen months, one person's attempt to live authentically. From \"surge\" to \"shedding\" — not getting older, but becoming real.\n",
+      "descriptionChars": 141,
+      "xRobotsTag": null,
+      "xRobotsTagValues": [],
+      "canonical": [
+        "https://cubxxw.com/growth/posts/2025-annual-review/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/growth/posts/2025-annual-review/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "x-default": "https://cubxxw.com/growth/posts/2025-annual-review/"
+      },
+      "jsonldCount": 4,
+      "issues": []
+    }
+  ],
+  "bootstrap": [
+    {
+      "url": "https://cubxxw.com/js/search-bootstrap.581ebcaa42841c73b7528450bc2ced846687c25a729849592b439f1d9351cf4f.js",
+      "status": 200,
+      "bodyBytes": 4299,
+      "sha256": "581ebcaa42841c73b7528450bc2ced846687c25a729849592b439f1d9351cf4f",
+      "integrity": "sha256-WB68qkKEHHO3UoRQvCzthGaHwlpymElZK0OfHZNRz08=",
+      "contentEncoding": "identity"
+    }
+  ],
+  "sitemap": {
+    "status": 200,
+    "pageLocs": 440,
+    "uniquePages": 440,
+    "imageLocs": 249,
+    "uniqueImages": 143,
+    "allEntries": 689
+  },
+  "robots": {
+    "status": 200,
+    "body": "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: AdsBot-Google\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Twitterbot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: facebookexternalhit\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: LinkedInBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: GPTBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: ChatGPT-User\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: ClaudeBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Claude-Web\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: anthropic-ai\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: PerplexityBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Perplexity-User\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Google-Extended\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Applebot-Extended\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: cohere-ai\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: DuckAssistBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: MistralAI-User\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: YouBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Amazonbot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Meta-ExternalAgent\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Meta-ExternalFetcher\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: DataForSeoBot\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Baiduspider\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Baiduspider-render\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Sogou web spider\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: YisouSpider\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: Bytespider\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\nUser-agent: DoubaoSpider\nAllow: /\nDisallow: /admin/\nDisallow: /private/\n\n\n# Pagination stays crawlable so bots can read self-canonical and noindex.\n# The combined root sitemap covers both languages; /en/ is not advertised.\nSitemap: https://cubxxw.com/sitemap.xml\nSitemap: https://cubxxw.com/news-sitemap.xml\n",
+    "sha256": "bbb75dbc2723488c1883139851fe93a09430bbc5ab614aebef2d60a36689d637",
+    "userAgentGroups": 29,
+    "sitemapLines": [
+      "Sitemap: https://cubxxw.com/sitemap.xml",
+      "Sitemap: https://cubxxw.com/news-sitemap.xml"
+    ]
+  },
+  "limits": "HTTP/html sample and JSON parse only; no Google indexing or all-site link-health claim"
+}

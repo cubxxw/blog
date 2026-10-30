@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-28T20:28:54.502987+00:00",
+  "reviewer": "/root/review_daily_quality",
+  "confirmedP0P1P2": [],
+  "scope": "Separate explicit successful PR synthetic-to-real-main identity route, exact bytes only, old direct verifier unchanged; mainCI/browser results separate",
+  "files": {
+    "pr_source_chain.py": "1f1ce10695c5fdc4c5e1cf9db133fb3459e0d2c62c7436f9cecb7bd08e878a28",
+    "test_pr_source_chain.py": "6c849b898deeac3f23a9cb4af1fe0d5e40fa573588af25c6dedd51cc13425c99",
+    "verify_pr_production_world.py": "34c7bf131274d836bfa3783e2531427e1a513076f3ee662ed8c08dc64901fa37",
+    "verify-production-world.py": "ce37e2e2ba40a462507229462496e07b0b7e8fb8d8af18f30eacc9e513d32cc8"
+  },
+  "hostValidation": "pr-source-chain-red-command.json exit1 then green-command.json exit0;2 unittest methods,1positive22negative subtests; reviewer did not execute tests"
+}

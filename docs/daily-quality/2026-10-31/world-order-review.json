@@ -1,0 +1,26 @@
+{
+  "reviewer": "/root/review_daily_quality",
+  "confirmedP2": "Renderer identity checked before asynchronous world initialization with default5s; existing30s ready assertion was never reached",
+  "sourceEvidence": [
+    "assets/js/space/cafe.js:120 asyncimport15s",
+    "assets/js/space/cafe-scene.js:8 imports",
+    "assets/js/space/world-jiangnan.js:512 setsrenderer before scene build"
+  ],
+  "fix": "Move same renderer assertion after original30s world-ready, no threshold increase or assertion deletion",
+  "firstAttempt": "2firstpass/2fail/0retry/skip; immutable first evidence retained",
+  "fixedSpecSHA256": "8e694608a9f2d14dbd5ca9437736712a7ba32103014433d0311953c10ca777d2",
+  "verification": {
+    "stats": {
+      "startTime": "2026-10-30T20:12:38.496Z",
+      "duration": 88938.774,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "commandExit": 0,
+    "platformBeforeAfterStable": true,
+    "fourPNGViewed": true,
+    "independentFinalHashVerified": true
+  }
+}

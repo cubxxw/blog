@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-28T20:30:32.595464+00:00",
+  "pause": {
+    "at": "2026-10-29T04:29:21.135746+08:00",
+    "owner": "mac-mini-ops-daily",
+    "reason": "disk_free_below_40GiB",
+    "run": "/Users/cubxxw/ops/runs/2026-10-29T042742-daily"
+  },
+  "attemptedWorldRun": "guard exited1 before audit/resources/browser Popen; browserExecuted0",
+  "source": "8ed0ef2113d4aaaf5bc34c26a8807f07e61b44bf",
+  "PR491Merged": true,
+  "actualDeployed": "6ae258fda15a0e50ff930b1c",
+  "PRSourceCI": "40750042607 success; 1835first/2flaky/24skip,20rawpartitions validated; no failed/unfinished/globalerrors",
+  "fullAcceptanceStillMissing": [
+    "world4/softwareGL+4PNG inspection",
+    "nativeClockCat10",
+    "daily36 on8ed",
+    "postacceptance source/platform readback",
+    "main automatic CI final result"
+  ],
+  "currentOwnedServices": [],
+  "currentOwnedBrowsers": [],
+  "currentOwnedTestProcesses": [],
+  "actualCleanupBytes": 0,
+  "newManualTerminatedPIDs": []
+}

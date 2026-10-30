@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-28T20:44:11.628703+00:00",
+  "before": {
+    "id": "6ae258fda15a0e50ff930b1c",
+    "state": "ready",
+    "commit_ref": "8ed0ef2113d4aaaf5bc34c26a8807f07e61b44bf",
+    "published_at": "2026-10-28T20:23:27.409Z"
+  },
+  "after": {
+    "id": "6ae258fda15a0e50ff930b1c",
+    "state": "ready",
+    "commit_ref": "8ed0ef2113d4aaaf5bc34c26a8807f07e61b44bf",
+    "published_at": "2026-10-28T20:23:27.409Z"
+  },
+  "producerArtifactId": 12843349403,
+  "sourceGraph": "resume29-pr491-production-world.json",
+  "rows": [
+    {
+      "route": "/projects/",
+      "path": "/js/lang-redirect.js",
+      "bytes": 5536,
+      "sha256": "4b6233b90f20dec8070182e75c796960d8ac823d7721a2aea4476c3ff950ec4c",
+      "frozenExact": true,
+      "SRIValidated": null,
+      "strictPrefixObserved": false
+    },
+    {
+      "route": "/projects/",
+      "path": "/js/search-bootstrap.581ebcaa42841c73b7528450bc2ced846687c25a729849592b439f1d9351cf4f.js",
+      "bytes": 4299,
+      "sha256": "581ebcaa42841c73b7528450bc2ced846687c25a729849592b439f1d9351cf4f",
+      "frozenExact": true,
+      "SRIValidated": true,
+      "strictPrefixObserved": true
+    },
+    {
+      "route": "/projects/",
+      "path": "/js/bear-workspace.efbefe49f7bd380f4955acd760c4fb6aec55d1156782debca20904d6903befec.js",
+      "bytes": 249897,
+      "sha256": "efbefe49f7bd380f4955acd760c4fb6aec55d1156782debca20904d6903befec",
+      "frozenExact": true,
+      "SRIValidated": true,
+      "strictPrefixObserved": true
+    },
+    {
+      "route": "/zh/projects/",
+      "path": "/js/lang-redirect.js",
+      "bytes": 5536,
+      "sha256": "4b6233b90f20dec8070182e75c796960d8ac823d7721a2aea4476c3ff950ec4c",
+      "frozenExact": true,
+      "SRIValidated": null,
+      "strictPrefixObserved": false
+    },
+    {
+      "route": "/zh/projects/",
+      "path": "/js/search-bootstrap.581ebcaa42841c73b7528450bc2ced846687c25a729849592b439f1d9351cf4f.js",
+      "bytes": 4299,
+      "sha256": "581ebcaa42841c73b7528450bc2ced846687c25a729849592b439f1d9351cf4f",
+      "frozenExact": true,
+      "SRIValidated": true,
+      "strictPrefixObserved": true
+    },
+    {
+      "route": "/zh/projects/",
+      "path": "/js/bear-workspace.efbefe49f7bd380f4955acd760c4fb6aec55d1156782debca20904d6903befec.js",
+      "bytes": 249897,
+      "sha256": "efbefe49f7bd380f4955acd760c4fb6aec55d1156782debca20904d6903befec",
+      "frozenExact": true,
+      "SRIValidated": true,
+      "strictPrefixObserved": true
+    }
+  ],
+  "allExact": true,
+  "limits": "Actual identity response bytes and advertised SRI, no directive normalization. No browser/interaction/performance acceptance implied."
+}

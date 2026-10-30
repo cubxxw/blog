@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-30T20:12:07.458157+00:00",
+  "viewed": [
+    "resume31-world-first-evidence/resume31-postdeploy-world--abf1e-m-and-switches-both-ways-en-desktop/actual-presented-room.png",
+    "resume31-world-first-evidence/resume31-postdeploy-world--abf1e-m-and-switches-both-ways-en-mobile/actual-presented-room.png"
+  ],
+  "observations": "Actual Jiangnan room/desktop physical screen and mobile scene visible; not fallback. ZHfirst cases failed before screenshot, so only2viewed. No redesign requested.",
+  "limits": "Static frame review does not verify all native interactions or prove frame performance.",
+  "fixedFourViewed": [
+    {
+      "path": "resume31-world-fixed-evidence/resume31-postdeploy-world--abf1e-m-and-switches-both-ways-en-desktop/actual-presented-room.png",
+      "sha256": "20bdf62fcdf5395aed5fd461f372e124dfd49669c95c35e53a1ac7753a4079bc"
+    },
+    {
+      "path": "resume31-world-fixed-evidence/resume31-postdeploy-world--abf1e-m-and-switches-both-ways-en-mobile/actual-presented-room.png",
+      "sha256": "3924bb7a593f0eedbaa2777be7462550d4df1ea26a64a28be297a45e14deae0f"
+    },
+    {
+      "path": "resume31-world-fixed-evidence/resume31-postdeploy-world--c24fe-m-and-switches-both-ways-zh-desktop/actual-presented-room.png",
+      "sha256": "205b450658c44a23026fff78815e3e6868575d28c272eb4f79dda439b2a01d01"
+    },
+    {
+      "path": "resume31-world-fixed-evidence/resume31-postdeploy-world--c24fe-m-and-switches-both-ways-zh-mobile/actual-presented-room.png",
+      "sha256": "6ac74933669f726e32b952270b1ddfc29f88dc39b2a793a80fe41e4269e5b50d"
+    }
+  ],
+  "followupGeometry": "2/2 ENZH mobile; four44px+/in393viewport/centerhit; screenshot suspicion not reproduced; noCSSchange"
+}

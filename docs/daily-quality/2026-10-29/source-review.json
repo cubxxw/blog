@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-28T20:12:14.923043+00:00",
+  "reviewer": "/root/review_daily_quality",
+  "base": "c85ed6df613e9198c4b82bea7ae3559f06ae72ef",
+  "head": "e4f9068c7e0899d5605bade56a19022bc3a62f43",
+  "confirmedP0P1P2": [],
+  "blobs": {
+    "assets/js/space/jiangnan-room.js": "08afb6e8385a9bddbb48ce17f37278d6df194b06",
+    "scripts/site-build.mjs": "bf7abc9a202890477e336315d202103205f342a6",
+    "tests/helpers/room-browser-frame-observation.ts": "b44786c7ed67a2659700e285dc06416c410eb2e4",
+    "tests/e2e/space-browser.spec.ts": "b70ea5161142a616ceb58e27d2415c3e8fc3f623",
+    "scripts/ci-shards.mjs": "84f585b06052ac4cc2c93e1d1b56d687e7f0f3ee",
+    "scripts/lib/psi-measure.mjs": "7a254edd70069cf5cf5b1516c2d4590242665a71"
+  },
+  "limits": "Source review only. Native RGBA and1240 actual inventory not independently rederived yet; current CI unfinished. No tests/build/browser/network writes by reviewer."
+}

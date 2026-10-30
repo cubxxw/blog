@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-30T20:18:12.805776+00:00",
+  "reviewer": "/root/review_daily_quality",
+  "source": "3d6c9fe2068a9b7ced311c0ae09c43cda3e83ca5",
+  "successorHead": "ea54f82171f5217fdd76e9fd408ec17cf587e446",
+  "findings": [],
+  "rootInstallAndNpmLs": "both observed exit0; actual JSON no problems/error",
+  "physicalPeerGraph": {
+    "consumers": 1432,
+    "presentPeers": 90,
+    "presentOptionalPeers": 19,
+    "absentOptionalPeers": 20,
+    "violations": 0
+  },
+  "packageProbes": {
+    "passed": 9,
+    "skipped": 0
+  },
+  "hostRegression": {
+    "passed": 115,
+    "skipped": 0
+  },
+  "lockSHA256": "e8a2f1657a827752049e30175a7020df6c8b9908950f4f4721f350a695b05ad5",
+  "sourceByteComparison": "final package.json/lock/toolchain equal current3d",
+  "intermediateFailure": "ecd368 installed but npm ls1 and incompatible picomatch2 remains retained in upstream originals, not mixed into final success",
+  "modelBoundary": "#498/#501 keep Analyze v240/proof unchanged; manual Fix v264; #499 hosted semantic contract1/1",
+  "limits": [
+    "original install receipts did not preserve full argv, so all offline/engine-strict/strict-peer-deps/ignore-scripts flags not independently attested",
+    "macOS environment only, not all platforms/provider/AWS acceptance",
+    "does not on its own close all GET267 production acceptance"
+  ],
+  "sourceFiles": [
+    {
+      "original": "/Users/cubxxw/.codex/visualizations/2026/10/29/01a18826-9ec2-7ef2-a15e-e19f38ded5e8/worktree-pr-audit/blog499-validation-evidence/actual-probes-approved-layout-receipt.json",
+      "copy": "resume31-dependency-evidence/actual-probes-approved-layout-receipt.json",
+      "sha256": "8acef795af843847446bd2aee404d6eec238dd199d252ce1bc0d816ad287ffbf",
+      "bytes": 1033
+    },
+    {
+      "original": "/Users/cubxxw/.codex/visualizations/2026/10/29/01a18826-9ec2-7ef2-a15e-e19f38ded5e8/worktree-pr-audit/blog499-validation-evidence/dom-consumers-approved-layout-receipt.json",
+      "copy": "resume31-dependency-evidence/dom-consumers-approved-layout-receipt.json",
+      "sha256": "2ceaa2a22c03ff9e16452582e3062a895d6ff02105ab4c361fcf62fdaf49ce3f",
+      "bytes": 1034
+    },
+    {
+      "original": "/Users/cubxxw/.codex/visualizations/2026/10/29/01a18826-9ec2-7ef2-a15e-e19f38ded5e8/worktree-pr-audit/blog499-validation-evidence/all-installed-peers-layout.json",
+      "copy": "resume31-dependency-evidence/all-installed-peers-layout.json",
+      "sha256": "75d1bdbf522c6a44c2688d9db0ea430c99962540672ca7a09ec5c98f5bb572d9",
+      "bytes": 2581
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "stage": "world",
+  "startedAt": "2026-10-30T20:08:13.631980+00:00",
+  "worktree": "/Users/cubxxw/.codex/worktrees/blog-quality-resume-20261031/blog",
+  "scope": "system Chrome/PW1.63 live diagnostic, not locked Linux acceptance",
+  "before": {
+    "id": "6ae41f3aa6dcc4d19084ec52",
+    "state": "ready",
+    "commit_ref": "3afc57a342e005baaf420e31a09d6acaa4b22e90",
+    "published_at": "2026-10-30T04:41:24.444Z"
+  },
+  "argv": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-postdeploy-world.config.ts"
+  ],
+  "executed": true,
+  "pid": 90644,
+  "exitCode": 1,
+  "durationSeconds": 81.31,
+  "finishedAt": "2026-10-30T20:09:36.927756+00:00",
+  "pauseAtFinish": null,
+  "after": {
+    "id": "6ae41f3aa6dcc4d19084ec52",
+    "state": "ready",
+    "commit_ref": "3afc57a342e005baaf420e31a09d6acaa4b22e90",
+    "published_at": "2026-10-30T04:41:24.444Z"
+  },
+  "platformStable": true
+}

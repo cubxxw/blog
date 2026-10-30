@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "node",
+    "--test",
+    "scripts/reading-fonts.test.mjs"
+  ],
+  "exit": 1,
+  "seconds": 0.08786875000805594,
+  "source": "3d6c9fe2068a9b7ced311c0ae09c43cda3e83ca5",
+  "limits": "source font regression only; not generated production performance:check or field speed"
+}

@@ -1,0 +1,20 @@
+{
+  "run": 40750042607,
+  "proofSource": "20211f07487050773b7edb79d68f71959c695ff1",
+  "PRHead": "e4f9068c7e0899d5605bade56a19022bc3a62f43",
+  "groups": 20,
+  "counts": {
+    "total": 1861,
+    "firstPass": 1835,
+    "flaky": 2,
+    "skipped": 24,
+    "expectedFailures": 0,
+    "failed": 0,
+    "unfinished": 0,
+    "attempts": 1863,
+    "retries": 2,
+    "globalErrors": 0
+  },
+  "allRawMatchesProofAndWrappers": true,
+  "limits": "Actual same-producer JSON counts. Raw first failures/retries remain separate. Source syntheticmerge differs from PR head."
+}

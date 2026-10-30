@@ -1,0 +1,57 @@
+[
+  {
+    "path": "resume31-world-first-evidence/.last-run.json",
+    "bytes": 145,
+    "sha256": "47ba17ea188b392e7a22ff3674f3eb295da9a4d8cf2d6fc456dd6a44edfd1ba7"
+  },
+  {
+    "path": "resume31-world-first-evidence/resume31-postdeploy-world--c24fe-m-and-switches-both-ways-zh-desktop/trace.zip",
+    "bytes": 278525,
+    "sha256": "79f8d432e9b03523581514b78806b26a4032848ec896660d70f03b4d6cb47054",
+    "allCRCValid": true,
+    "entries": [
+      "test.trace",
+      "1-trace.trace",
+      "1-trace.network",
+      "1-trace.stacks",
+      "0-trace.trace",
+      "0-trace.network",
+      "0-trace.stacks"
+    ]
+  },
+  {
+    "path": "resume31-world-first-evidence/resume31-postdeploy-world--c24fe-m-and-switches-both-ways-zh-desktop/error-context.md",
+    "bytes": 6233,
+    "sha256": "a5d7b1231c3ee34484ce247269cdb9abe80169ae2e85a3c06509ce0a4b5da5a3"
+  },
+  {
+    "path": "resume31-world-first-evidence/resume31-postdeploy-world--abf1e-m-and-switches-both-ways-en-desktop/actual-presented-room.png",
+    "bytes": 959407,
+    "sha256": "adb72ffd42dc1f174b61304cae26565fb5149a138602fa15bf9bd067fbaa7ee3"
+  },
+  {
+    "path": "resume31-world-first-evidence/resume31-postdeploy-world--c24fe-m-and-switches-both-ways-zh-mobile/trace.zip",
+    "bytes": 283038,
+    "sha256": "95b4e629c0cc867efa0e88787c699069507c204a33817f0731a5caf920aae29c",
+    "allCRCValid": true,
+    "entries": [
+      "test.trace",
+      "1-trace.trace",
+      "1-trace.network",
+      "1-trace.stacks",
+      "0-trace.trace",
+      "0-trace.network",
+      "0-trace.stacks"
+    ]
+  },
+  {
+    "path": "resume31-world-first-evidence/resume31-postdeploy-world--c24fe-m-and-switches-both-ways-zh-mobile/error-context.md",
+    "bytes": 6232,
+    "sha256": "d4c6285dd9424058c893f1d510824787f0f54dd1d032442ab95835a9506571b2"
+  },
+  {
+    "path": "resume31-world-first-evidence/resume31-postdeploy-world--abf1e-m-and-switches-both-ways-en-mobile/actual-presented-room.png",
+    "bytes": 1968332,
+    "sha256": "732a8a153e1aeffd81f857db4da92f82adf8d3c2acbc15b15a55aedce04e87b4"
+  }
+]
