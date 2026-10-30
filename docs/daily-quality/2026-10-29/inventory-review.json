@@ -1,0 +1,21 @@
+{
+  "savedAt": "2026-10-28T20:43:32.815219+00:00",
+  "reviewer": "/root/review_daily_quality",
+  "sourceReviewSupplement": true,
+  "proofSource": "20211f07487050773b7edb79d68f71959c695ff1",
+  "reviewedPRHead": "e4f9068c7e0899d5605bade56a19022bc3a62f43",
+  "base": "c85ed6df613e9198c4b82bea7ae3559f06ae72ef",
+  "sharedGitTree": "8866ade4b0dfd335e79ac1786e514990fa496d34",
+  "frozenProofSHA256": "f1d54ba82bdb719dd152cb2153342688f5754d39228c9d3b609d5f7bafd8c0de",
+  "independentlyRecounted": {
+    "legacyUnique": 1240,
+    "legacyShards": 16,
+    "sizes": "8x78+8x77",
+    "exactlyOnce": true,
+    "quality": 48,
+    "interactive": 573
+  },
+  "initialSelectedFilesLengthAndSHA256Matched": 9,
+  "confirmedP0P1P2": [],
+  "limits": "Frozen inventory, not execution. Source and run head are distinct identities. Original RGBA comparison not independently rederived; reviewer ran no tests."
+}

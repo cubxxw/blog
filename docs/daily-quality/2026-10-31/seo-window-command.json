@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "node",
+    "scripts/seo-report.mjs",
+    "--dir",
+    "data/seo",
+    "--start",
+    "2026-09-02",
+    "--end",
+    "2026-10-27",
+    "--as-of",
+    "2026-10-30T20:05:00Z",
+    "--gsc-response-aggregation",
+    "byPage",
+    "--run-date",
+    "2026-10-31",
+    "--include-query-rows",
+    "--out",
+    "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-seo-by-page.json",
+    "--markdown-out",
+    "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-seo-by-page.md"
+  ],
+  "exit": 2,
+  "seconds": 0.6869628749846015,
+  "at": "2026-10-30T20:11:21.398457+00:00"
+}

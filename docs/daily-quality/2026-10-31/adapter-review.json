@@ -1,0 +1,55 @@
+{
+  "source": "3d6c9fe2068a9b7ced311c0ae09c43cda3e83ca5",
+  "sourceCaseBlob": "7751c95bdec63a81104c33eeac5503fd7d916d98",
+  "files": [
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-postdeploy-world.spec.ts",
+      "sha256": "7a93c6eef2c58a17fc36d8cc65c207ed29e19e4710335b908b205834ef26f535"
+    },
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-postdeploy-world.config.ts",
+      "sha256": "97da6d14a04bce6dd08e37e8ba48f07bd5d6e0735f9c9dcec7f91d9194b08e35"
+    },
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-live-clock-cat/space-object-living.spec.ts",
+      "sha256": "f9f5ba124641c96305bea486ad86197cf14d4cb134ff1d831e324b6dd28158a9"
+    },
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-live-clock-cat/playwright.config.ts",
+      "sha256": "fc517f7279a57e0b6708732888a6ee9f3795bacdbce1b2cecb8043e6385b1862"
+    },
+    {
+      "path": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26/resume31-daily.config.ts",
+      "sha256": "169f3f883d452d9d35e242de6a487452ecc83283bf1eb6f3d20cd62c917c3123"
+    }
+  ],
+  "ownedSymlink": "/Users/cubxxw/.codex/worktrees/blog-quality-resume-20261031/blog/node_modules",
+  "runtimePW": "1.63.0",
+  "declaredPW": "1.64.1",
+  "ownedTemp": "/private/tmp/ai-test-blog-daily-quality-20261031.ugfISl",
+  "suite": "diagnostic production paths with system Chrome; not locked Linux exact-dependency run",
+  "bodyReplacedFromLatestActualSource": true,
+  "historicalRecordsAdapterRejected": true,
+  "ownership": {
+    "worktree": "/Users/cubxxw/.codex/worktrees/blog-quality-resume-20261031/blog",
+    "branch": "codex/get-267-quality-acceptance-20261031",
+    "sourceBaseline": "3d6c9fe2068a9b7ced311c0ae09c43cda3e83ca5",
+    "temp": "/private/tmp/ai-test-blog-daily-quality-20261031.ugfISl",
+    "formalRoot": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26",
+    "ownedProcesses": [],
+    "cleanupBytes": 0,
+    "sharedDeps": "symlink only, no installation/mutation",
+    "oldWorktreeMissing": true
+  },
+  "reviewAt": "2026-10-30T20:08:23.707520+00:00",
+  "reviewer": "/root/review_daily_quality",
+  "findings": [],
+  "conclusion": "no confirmed P0/P1/P2",
+  "notes": [
+    "native body exact current source; 5 unique titles x2 devices10",
+    "world4 only import path changed",
+    "daily36 inherits selection, all1worker0retry and original deadlines",
+    "PW1.63 actual vs1.64.1 declared; live diagnostic only",
+    "current source and production input digest differ; old491 certificate cannot certify current whole deployment"
+  ]
+}

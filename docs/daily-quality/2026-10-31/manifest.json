@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-30T20:22:23.531680+00:00",
+  "files": [
+    {
+      "name": "adapter-review.json",
+      "bytes": 2672,
+      "sha256": "0a2cfcda9a9360d0538d1b6a8c89a92afdc70baad3b5723796c0a8d83d437187"
+    },
+    {
+      "name": "browser-summary.json",
+      "bytes": 158316,
+      "sha256": "60a80fd60e9836382bacdaa1fae189b325889b3637d5bfb3fcc60a7cef07278b"
+    },
+    {
+      "name": "daily-command.json",
+      "bytes": 983,
+      "sha256": "a4e96e6321294a4eef3239efd3a6553d874bbac5a971994e3f7209be37916db6"
+    },
+    {
+      "name": "dependency-review.json",
+      "bytes": 2537,
+      "sha256": "f08326d7cb4fbee1f42d6e376ddeacd720177c7bff35620d93e997bde265a4ea"
+    },
+    {
+      "name": "font-missing-output-command.json",
+      "bytes": 288,
+      "sha256": "c3b821505dc2491664f9fc13e21dd081b5c112d6b4ce2cabc3436ad4fe808816"
+    },
+    {
+      "name": "font-script-check.json",
+      "bytes": 829,
+      "sha256": "8560be58787e1684d4c106f1e0672e2d903533b43c89a4ee9fa101e219ab20fd"
+    },
+    {
+      "name": "native-command.json",
+      "bytes": 1004,
+      "sha256": "ce22480784b392988ec1caa26591266ed7f8d79b6834e74cb534a5b2c764d714"
+    },
+    {
+      "name": "production-before.json",
+      "bytes": 213,
+      "sha256": "56de03b750fffaf9bda6ecc5a2df6529105e8624af2e68423b7af6f006ac79b7"
+    },
+    {
+      "name": "production-source-checks.json",
+      "bytes": 440,
+      "sha256": "877ca1fb22fab74d1e796a65dd700df27fe1bf232f29b83ec4e0ba97410fd25e"
+    },
+    {
+      "name": "seo-live.json",
+      "bytes": 11702,
+      "sha256": "1bce0b173752106b490ba8d45ce8e2d6c85e33f8174afa8a66f4fdf3688f541e"
+    },
+    {
+      "name": "seo-window-command.json",
+      "bytes": 620,
+      "sha256": "f048b4dbb0579bb08d297c09e0b70eb6245cc28fa54cdd09772fea6f984cfcb3"
+    },
+    {
+      "name": "seo-window.md",
+      "bytes": 2762,
+      "sha256": "fc743ef9ed5ee7b366c6139cbb9926deba82e16488d2806871b0a205f065faf5"
+    },
+    {
+      "name": "toolbar-command.json",
+      "bytes": 986,
+      "sha256": "f38ce2e0971fc855c48a83c85a1ae4406a35e69179f5f42109884c51a7327dfb"
+    },
+    {
+      "name": "visual-inspection.json",
+      "bytes": 1719,
+      "sha256": "07182abd2c5b60880710c63a5d62b6fec7e392717af1b510c1eabd10d06ed6ec"
+    },
+    {
+      "name": "world-check-order.diff",
+      "bytes": 1665,
+      "sha256": "44ff7b4fdc40a7905041981bda33161dcd5f9f4b6a09389ebbc1e2e1502a19ba"
+    },
+    {
+      "name": "world-first-command.json",
+      "bytes": 992,
+      "sha256": "12c83ff45951f29435b8114bbcc674ec83dd9e8ff84ff9075a4ccf2180db6a74"
+    },
+    {
+      "name": "world-first-evidence.json",
+      "bytes": 2045,
+      "sha256": "7ffae8ca387d2bccd4315bc8c5bb2a6d3dba7d90a9e846b9118200bdc97e04d1"
+    },
+    {
+      "name": "world-fixed-command.json",
+      "bytes": 994,
+      "sha256": "9eb3ce5575a5313dd3f90cbe2e00c6c1002cc6f4a10253a6a77cb78a3a74ce9c"
+    },
+    {
+      "name": "world-order-review.json",
+      "bytes": 1019,
+      "sha256": "77236e9ab677bec7dce9d50a496e6da387c027605a8a67063b77218788098a3a"
+    }
+  ],
+  "originals": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-10-26",
+  "fourFixedPNGViewed": true
+}

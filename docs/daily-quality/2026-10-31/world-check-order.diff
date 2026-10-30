@@ -1,0 +1,18 @@
+--- live-world-before
+
++++ live-world-after
+
+@@ -11,8 +11,10 @@
+
+  });
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  const response=await page.goto(`${prefix}/projects/`,{waitUntil:'domcontentloaded'});expect(response?.status()).toBe(200);
+- const workspace=page.locator('[data-bear-workspace]');await expect(workspace).toHaveAttribute('data-world-renderer','jiangnan');
+- await expect(workspace).toHaveAttribute('data-world-ready','true',{timeout:30_000});await expect(workspace).toHaveAttribute('data-boot-state','complete',{timeout:30_000});await expect(workspace).not.toHaveAttribute('data-world-failed','true');
++ const workspace=page.locator('[data-bear-workspace]');
++ // Renderer identity is populated by the asynchronous world module, not initial HTML.
++ // Wait at the existing initialization boundary before checking its identity.
++ await expect(workspace).toHaveAttribute('data-world-ready','true',{timeout:30_000});await expect(workspace).toHaveAttribute('data-world-renderer','jiangnan');await expect(workspace).toHaveAttribute('data-boot-state','complete',{timeout:30_000});await expect(workspace).not.toHaveAttribute('data-world-failed','true');
+  expect(Number(await workspace.getAttribute('data-world-triangles'))).toBeGreaterThan(20_000);
+  const readyAt=await page.evaluate(()=>performance.now()),began=Date.now();await page.screenshot({path:info.outputPath('actual-presented-room.png'),animations:'allow'});const screenshotElapsedMs=Date.now()-began;
+  await page.keyboard.press('Control+k');await expect(page.locator('[data-space-search]')).toBeVisible();await page.locator('[data-space-search-close]').click();

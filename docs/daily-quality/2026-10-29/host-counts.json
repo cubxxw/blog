@@ -1,0 +1,90 @@
+{
+  "run": 40750042607,
+  "proofSource": "20211f07487050773b7edb79d68f71959c695ff1",
+  "prepareJob": 123035406206,
+  "prepareJobConclusion": "success",
+  "logSHA256": "8cbbddf477bc711a34536fd644372fba61e52047a01c3dd58a251b83ac787f98",
+  "groups": [
+    {
+      "name": "source",
+      "total": 29,
+      "passed": 29,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "name": "workflow",
+      "total": 214,
+      "passed": 213,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 1
+    },
+    {
+      "name": "functions",
+      "total": 101,
+      "passed": 101,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "name": "seo",
+      "total": 328,
+      "passed": 328,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "name": "performance",
+      "total": 18,
+      "passed": 17,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 1
+    },
+    {
+      "name": "interactive-host",
+      "total": 178,
+      "passed": 178,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "name": "voice",
+      "total": 28,
+      "passed": 28,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "name": "bear",
+      "total": 596,
+      "passed": 596,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "name": "preload",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "name": "ux",
+      "total": 58,
+      "passed": 58,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  ],
+  "limits": "Actual host TAP counts, separate from Playwright browser identities; performance preview-only skip retained."
+}
