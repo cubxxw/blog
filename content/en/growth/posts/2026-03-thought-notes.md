@@ -1,5 +1,5 @@
 ---
-title: 'March 2026 Thought Notes: Money, Genocide Memory, Southeast Asia'
+title: 'March 2026 Thought Notes: AI Agents, Travel, Ideas and History'
 ShowRssButtonInSectionTermList: true
 date: 2026-03-31T23:59:59+08:00
 showtoc: false
@@ -21,40 +21,40 @@ tags:
   - Travel
   - Exploration
 description: >
-  A complete record of March 2026: 464 notes across 9 themes, led by Cambodia and Southeast Asia, money and the museum of the Khmer Rouge period, AI and agent systems, and product work. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.
+  423 public notes from March 2026, arranged across nine themes including AI agents, travel and ideas. Each retains its original timestamp and perspective.
 tldr:
-  - "Money in Cambodia is a lens for reading the state itself: dollarisation bought stability at the price of policy sovereignty."
-  - "S-21 shows how a regime turns ideology into an archive of names and a list of people it is allowed to kill."
-  - "A hotel that opens before it is finished is a small model of how capital behaves in the region."
+  - "In the AI era, people’s distinctive strength lies in fragmented insights. People produce lived fragments, and AI organises them: this is the best division of labour."
+  - "Good relationships involve shared care rather than one-sided sacrifice. Acceptance differs from endurance in whether pressure can be digested and released."
+  - "Generating new ways to classify knowledge matters much more than knowledge itself; innovation emerges from redrawing disciplinary boundaries rather than depth in one field alone."
 maturity: budding
 ---
 
-# 2026 March Thought Notes
+# March 2026 Thought Notes
 
-> **464 notes this month** | recorded from 2026-03-01 to 2026-03-31
+> **423 notes this month** | recorded from 2026-03-01 to 2026-03-31
 >
-> **Themes**: AI and Agent Systems 135 · Travel, Places and Cities 109 · Reading, Ideas and History 57 · Daily Notes and Everything Else 55 · Self-Knowledge and Psychology 48 · Product, Engineering and Open Source 30 · Content, Craft and Recording 11 · Business, Investing and Career 11 · Body, Health and Daily Life 8
+> **Themes**: AI and Agent Systems 134 · Travel, Places and Cities 92 · Reading, Ideas and History 54 · Daily Notes and Everything Else 51 · Self-Knowledge and Psychology 38 · Product, Engineering and Open Source 30 · Content, Craft and Recording 10 · Business, Investing and Career 6 · Body, Health and Daily Life 8
 >
-> Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
+> These are the entries retained for public reading, filed by theme, each carrying its original timestamp. Technical details, prices and statistics are study and search notes from that time; they have not all been verified and do not describe current conditions.
 
 ## Quick Navigation
 
-**464 records this month, filed under 9 themes:**
+**423 records this month, filed under 9 themes:**
 
-- [AI and Agent Systems](#1-ai-and-agent-systems) · 135
-- [Travel, Places and Cities](#2-travel-places-and-cities) · 109
-- [Reading, Ideas and History](#3-reading-ideas-and-history) · 57
-- [Daily Notes and Everything Else](#4-daily-notes-and-everything-else) · 55
-- [Self-Knowledge and Psychology](#5-self-knowledge-and-psychology) · 48
+- [AI and Agent Systems](#1-ai-and-agent-systems) · 134
+- [Travel, Places and Cities](#2-travel-places-and-cities) · 92
+- [Reading, Ideas and History](#3-reading-ideas-and-history) · 54
+- [Daily Notes and Everything Else](#4-daily-notes-and-everything-else) · 51
+- [Self-Knowledge and Psychology](#5-self-knowledge-and-psychology) · 38
 - [Product, Engineering and Open Source](#6-product-engineering-and-open-source) · 30
-- [Content, Craft and Recording](#7-content-craft-and-recording) · 11
-- [Business, Investing and Career](#8-business-investing-and-career) · 11
+- [Content, Craft and Recording](#7-content-craft-and-recording) · 10
+- [Business, Investing and Career](#8-business-investing-and-career) · 6
 - [Body, Health and Daily Life](#9-body-health-and-daily-life) · 8
 
 ---
 ## 1. AI and Agent Systems
 
-*135 entries*
+*134 entries*
 
 <!--memo:46243cf3af02-->
 ### Crossing the AI Plateau: From Grand Narrative to Inside-Out Small and Beautiful
@@ -97,7 +97,7 @@ Also, I feel games are evolving from consuming static assets to generative emerg
 
 Actually, I feel games are slowly inclining toward emotional consumption. Emotional consumption has certain characteristics: it must be low-risk—after all, it's in a consumption scenario, like a sanctuary for intimate relationships in the real world.
 
-Then although it requires this feeling of being chosen, and it will never betray—this is a transformation of the player-world relationship.
+Players may also want this feeling of being chosen, and it will never betray—this is a transformation of the player-world relationship.
 
 I also feel there's narrative continuity. With current technology, generally can only provide a universal background story, then maybe some branch choices—this is an engineering compromise. But I feel true AI-driven should be "a thousand faces for a thousand people"—every interaction conducts high-quality reasoning and rendering, it doesn't forget, its narrative must be complete.
 
@@ -148,74 +148,6 @@ Layer 2: Candidate Skills (the set visible to the model) — this is what finall
 Layer 3: invocation & execution (runtime) — usually only 0–1 are invoked, returning the result for that turn.
 
 
-<!--memo:158f3ac21a51-->
-### cubxxw character analysis
-
-> 2026-03-03 20:16:21 · `#OpenClaw`
-
-#### Basic information
-
-- Name: Xinwei Xiong (熊鑫伟)
-
-- GitHub: github.com/cubxxw
-
-- Location: Shanghai
-
-- Email: [email redacted]
-
-- Blog: https://nsddd.top
-
-- Twitter: [account redacted]
-
-#### GitHub data
-
-- User ID: [redacted]
-
-- Created: 2021-06-19
-
-- Public repos: 136
-
-- Followers: 595
-
-- Following: 116
-
-- Available for hire: yes
-
-#### Personal bio
-
-⚡ Do the hard things and you'll get it
-
-🚀 Never go to bed mad. Stay up and fight.
-
-#### Main projects / interests
-
-- blog: travelling around the world, doing an AI product startup
-
-- Kubernetes-related projects
-
-- AI/LLM projects (langfuse, langchain, sglang, dify)
-
-- Open-source infrastructure (istio, gvisor, serving)
-
-- Blockchain (go-ethereum)
-
-- Developer tools (gitea, cli, OpenRefine)
-
-#### Characteristics
-
-- An active open-source contributor
-
-- Focused on AI/LLM and cloud-native technology
-
-- Has startup ideas, building AI products
-
-- Broad tech stack: K8s, AI, blockchain, developer tools
-
-Created as a test with OpenClaw
-
-***
-
-
 <!--memo:7ab816d4e4b0-->
 ### The Power of Objective Records: Self-Growth from a God's-Eye View
 
@@ -229,9 +161,11 @@ That is, when we record all the data of this player in this game, we're effectiv
 
 
 <!--memo:01e22117cfb7-->
-### 🏔️ Mount Kinabalu (Sacred Mountain) Climb - 2026 Real-Time Slot Availability Check
+### Mount Kinabalu Climbing: Package Notes from March 2026
 
 > 2026-03-04 12:39:01
+
+These are package and availability notes collected at the time. They were not individually verified and do not describe current prices or availability.
 
 【Key findings】
 
@@ -377,18 +311,6 @@ User-level launchd is desktop-friendly
 
 • Google Nano Banana 2 AI image generator updated
 
-【Industry news】
-
-• Anthropic responded to the US military listing it as a "supply chain risk," and published customer guidance
-
-• The Trump administration announced a ban on federal government use of Anthropic's Claude, with a 6-month transition period
-
-• Protesters planned to demonstrate outside OpenAI's offices over its partnership agreement with the Pentagon
-
-• The US used Anthropic AI in strike operations in Iran (despite the ban)
-
-• OpenAI CEO Sam Altman plans to revise the terms of the agreement with the Pentagon
-
 【Research papers】
 
 • arXiv keeps publishing a large volume of AI research papers every day (187 in a single day on March 4)
@@ -403,11 +325,11 @@ User-level launchd is desktop-friendly
 
 > 2026-03-04 14:55:25
 
-Chatting with Little Rabbit, and I moved myself a bit, so let me write it down
+Chatting with a friend, and I moved myself a bit, so let me write it down
 
 I actually thought about it for a long time last night too, sometimes observing myself through a Darwinian lens, asking whether I've lost something; maybe I really have lost it, which is exactly why I find it so precious
 
-@Ruoshui Listening to AI's advice, the correct answer, it suggests going to Jeju Island instead of Jakarta
+While discussing travel, someone said that following AI's advice would mean going to Jeju Island instead of Jakarta
 
 I came across a line recently that inspired me a lot
 
@@ -421,15 +343,15 @@ Go do the things AI would advise you not to do
 
 ***
 
-smile: What moves us about humans comes from being human hahaha
+What moves us about humans comes from being human hahaha
 
-smile: Because you're human, you have humanity
+Because you're human, you have humanity
 
-smile: So biologically you fear death, you avoid, you're fragile, you get hurt
+So biologically you fear death, you avoid, you're fragile, you get hurt
 
-smile: Because you're human, socially you carry responsibility, you have collective consciousness, you sacrifice for the collective, you care about your identity
+Because you're human, socially you carry responsibility, you have collective consciousness, you sacrifice for the collective, you care about your identity
 
-smile: And also because you're human, you have religious belief, extremely high spiritual needs that belong only to humans, you go looking for a resting place for your soul, you go looking for your meaning, and you also do things that look "meaningless"...
+And also because you're human, you have religious belief, extremely high spiritual needs that belong only to humans, you go looking for a resting place for your soul, you go looking for your meaning, and you also do things that look "meaningless"...
 
 A person is not a being that can be completely freely rewritten; humans still live, respond, and take on things within limits
 
@@ -475,7 +397,7 @@ Calls to sessions_spawn are non-blocking
 
 > 2026-03-04 17:33:32 · `#OpenClaw`
 
-Essentially this is to prevent context window [overflow]
+Essentially this is to keep unrelated history from filling the context window
 
 Claude Sub-agents (Repo-centric): it's deeply bound to software engineering and code repositories. Claude's sub-agents usually exist as YAML or Markdown files under the .claude/agents/ directory (say a dedicated bug-fixer or test-writer). It's version-controlled along with your project code, and shared by the whole dev team
 
@@ -1028,7 +950,7 @@ Ralph has no vector retrieval—it doesn't need it, because the Agent rebuilds i
 
 > 2026-03-10 11:04:05
 
-All the AI digital humans my uncle in Hunan and his people are making right now—the scenarios they're actually aimed at are how to ... something about the person, and other people, and the soul. Because they all feel that, well, if you set up a person and look at the metrics, it's more about benchmarking against ... capability, some people. But I don't think so, we think it's the truth. So I still feel there's no way to just throw the traditional platforms aside; at the start you have to find a way to take everything he normally comes into contact with—say all kinds of news sites, say his own homepage, or various platforms—and it can also be a kind of consumption, flat and plain, but it could also be that he created a platform. So I think what should be done more is to build a relay station, to dispatch and coordinate the resources of each platform inside it. If I were to build a similar platform myself I don't have that; it's like a gateway, you just do your own job well.
+All the AI digital humans some teams are making right now—the scenarios they're actually aimed at are how to ... something about the person, and other people, and the soul. Because they all feel that, well, if you set up a person and look at the metrics, it's more about benchmarking against ... capability, some people. But I don't think so, we think it's the truth. So I still feel there's no way to just throw the traditional platforms aside; at the start you have to find a way to take everything he normally comes into contact with—say all kinds of news sites, say his own homepage, or various platforms—and it can also be a kind of consumption, flat and plain, but it could also be that he created a platform. So I think what should be done more is to build a relay station, to dispatch and coordinate the resources of each platform inside it. If I were to build a similar platform myself I don't have that; it's like a gateway, you just do your own job well.
 
 
 <!--memo:994155219367-->
@@ -1074,15 +996,15 @@ Lobster has traffic, and you need to use that traffic to find a way to build a m
 
 
 <!--memo:d96a998a1b82-->
-### The Zero Point of Learning Knowledge: Learning and Letting Go Just Right
+### The Threshold of Learning: Learning and Letting Go Just Enough
 
 > 2026-03-10 12:55:48
 
 I feel like a lot of knowledge systems don't need to be studied especially deeply anymore.
 
-I think a lot of the time it's just right to be right at that zero point.
+I think a lot of the time it's just right to be right at that threshold.
 
-And I think this zero point should be interesting too.
+And I think this threshold should be interesting too.
 
 Learning just right, letting go just right.
 
@@ -1148,7 +1070,7 @@ One important reason OpenClaw's long sessions can keep running is compaction. It
 
 Only one kind of case enters the main session: DM with dmScope: "main". The official definition is very clear: main means "all DMs share the main session," that is, "all private chats share the main session," not "all channels share the main session."
 
-So group, thread, channel, and room all converge into one session
+So group, thread, channel, and room do not all converge into the same main session
 
 main: all DMs share the main session
 
@@ -1280,7 +1202,7 @@ You want recent sessions to also be semantically searchable → turn on memory.q
 
 You want to throw a task to another session to keep handling it → use sessions_send
 
-You want to first see which sessions are available to query → use sessions_lis
+You want to first see which sessions are available to query → use sessions_list
 
 
 <!--memo:0928fa6815c9-->
@@ -1300,7 +1222,7 @@ Grow safely.
 
 > 2026-03-11 19:19:33 · `#格物/openclaw`
 
-tool serach
+tool search
 
 It fundamentally changes the way the LLM interacts with external tools.
 
@@ -1438,7 +1360,7 @@ Data enrichment: crawl corporate websites, product documentation and other web d
 
 Comparison Cards: for hazy indicators like "culture fit," the AI generates trade-off cards when you're recording by voice (for example: do you want deep technical expertise or extremely strong adaptability?), turning cultural preferences directly into standardised questions for the downstream interview bot. Through these means, before the first piece of feedback appears, the model can already reach a high matching baseline
 
-Design of the closed-loop recommendation system: similar to those content distribution systems
+Design of the closed-loop recommendation system: similar to TikTok’s content distribution system
 
 User Representation: extract the employer's implicit preferences (through voice, website data).
 
@@ -1538,7 +1460,7 @@ Pin the stable ones: Lift, Work, Docs.
 
 Memory can't be handed over to the LLM to deal with on its own.
 
-Memory should be treated as a read-write storage system, not as an appendage of a chat quota.
+Memory should be treated as a read-write storage system, not as an appendage of a chat.
 
 The conditions memory must at least satisfy:
 
@@ -1884,7 +1806,7 @@ The strongest browser / on-device experience is Manus.
 
 The strongest agent for developers is Claude—it has systematically opened up a tool system including computer use, web search, web fetch, code execution, memory, text editor, and so on.
 
-Programming agents: codex and claude codex.
+Programming agents: codex and Claude Code.
 
 The best phenomenal platform agent: openclaw.
 
@@ -2042,7 +1964,7 @@ I feel that for an agent, notes are not a tool that assists memory, but the only
 
 Locke believed that personal identity must depend on the continuity of memory. That is, even though each instance of consciousness doesn't have some brand-new memory, it can still stably produce similar preferences, a similar sense of culture, and similar physiological habits. I think this is especially interesting — maybe identity isn't continuous memory, but rather a certain kind of similar structure that induces a similar cognitive pattern.
 
-This brings up how important a structured external cognitive system is. It may be what carries this A-identity's memory, including its thought paths and its identity. It can be a cognitive environment that gets read, traversed, reasoned over, and inherited. It's not necessarily a note vault, not necessarily Obsidian's notes folder; it should be notes plus a graph structure plus an organizing logic plus a way of use, and as a whole it's a system. It can be a content layer, each layer and each entry being knowledge units; it can also be a connection layer, a traversable knowledge network; and it can also be a structural layer with its concrete index, directory, navigation, and layering. What does its attention routing look like? And it can also be a methodology. I think it's a kind of thinking operating system that can be loaded again and again, and also a runtime environment for cognition. It is your proof of identity.
+This brings up how important a structured external cognitive system is. It may be what carries the agent's memory, including its thought paths and its identity. It can be a cognitive environment that gets read, traversed, reasoned over, and inherited. It's not necessarily a note vault, not necessarily Obsidian's notes folder; it should be notes plus a graph structure plus an organizing logic plus a way of use, and as a whole it's a system. It can be a content layer, each layer and each entry being knowledge units; it can also be a connection layer, a traversable knowledge network; and it can also be a structural layer with its concrete index, directory, navigation, and layering. What does its attention routing look like? And it can also be a methodology. I think it's a kind of thinking operating system that can be loaded again and again, and also a runtime environment for cognition. It is your proof of identity.
 
 
 <!--memo:ec2cbc25d2d0-->
@@ -2164,7 +2086,7 @@ Such a homogeneous world?
 
 
 <!--memo:ca0c70177bc9-->
-### One Thing AI Should Remember
+### AI Memory Should Preserve First-Hand Data
 
 > 2026-03-19 22:31:23
 
@@ -2202,7 +2124,7 @@ Project, Board, Ticket, Epic, Milestone—these are all products of how humans o
 
 Workspaces / projects like Routa essentially supplement task boundaries, responsibility boundaries, context boundaries and audit boundaries
 
-A 2026 Google Research paper on scaling agent systems gives a very key conclusion: multi-agent collaboration yields clear gains on parallelisable tasks, but can become clearly worse on strongly sequential tasks
+A 2026 Google Research article on scaling agent systems discusses the task boundary: in its controlled experiments, multi-agent collaboration was more useful for parallelisable tasks and could perform worse on strongly sequential tasks. [Original research](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/)
 
 I think it could also be an Event-driven / Goal-graph form
 
@@ -2350,7 +2272,7 @@ but the final output form is a book?
 
 Just as in grounded theory, arriving at theory depends on the most raw data
 
-The LLM keeps distilling, doesn't it, but what the book outputs is the raw data together with some creations (or simply the raw data), bundled up
+The LLM keeps evolving, doesn't it, but what the book outputs is the raw data together with some creations (or simply the raw data), bundled up
 
 This book serves as experience, just like skills; skills are essentially SOP + filesystem too
 
@@ -2366,7 +2288,7 @@ A book is a very personal thing, similar to the raw data in grounded theory; the
 
 > 2026-03-24 19:24:30 · `#格物/ai`
 
-Essentially it physically decouples the interaction and the execution of an AI Agent
+Essentially it decouples the interaction and the execution of an AI Agent
 
 The phone serves as the intent entry point (Remote Control), the cloud handles state and session sync, and the desktop (Mac/PC) serves as the pure local execution engine (Execution Engine)
 
@@ -2376,7 +2298,7 @@ Dispatch shares the same underlying technology with the earlier "Remote Control"
 
 
 <!--memo:9eef6a50b0ce-->
-### grok is sometimes really dumb
+### Information from Grok Needs to Be Checked
 
 > 2026-03-24 22:05:13 · `#格物/ai`
 
@@ -2418,27 +2340,17 @@ The emphasis is on "structured output," "JSON/YAML export," "standardized interf
 
 > 2026-03-25 22:48:44 · `#格物/ai`
 
-Apifox public SaaS version external JS file tampering risk notice and upgrade announcement.
+In its March 25, 2026 notice, Apifox said that an external JavaScript file loaded by its public SaaS desktop client had been tampered with and could leak local sensitive files. Version 2.8.19 bundled that file locally. The SaaS web and privately deployed editions were unaffected. [Official notice](https://docs.apifox.com/8392582m0)
 
-The Apifox incident this time is pretty serious.
-
-They've already abolished the online dynamic loading mechanism for that file and switched to local bundled builds.
-
-Desktop clients (usually built on Electron and such) have extremely high local file system read permissions (that's why they can read ~/.ssh/). In a client with such high privileges,
-
-dynamically loading external JavaScript files is extremely dangerous and violates security best practices.
-
-The attack lasted 18 days before it was discovered and blocked. For a tool with a large base of enterprise developer users, running on core development machines, that response time is enough for hackers to complete large-scale credential theft and lateral intranet penetration.
-
-Desktop clients (usually built on Electron and such) have extremely high local file system read permissions (that's why they can read ~/.ssh/). In a client with such high privileges, dynamically loading external JavaScript files is extremely dangerous and violates security best practices. Once the CDN or the external source is hijacked (a supply chain attack), hackers can directly take over the user's computer.
+What concerns me is the trust boundary when a client with local permissions loads external scripts. My original note went further and inferred large-scale takeovers; that conclusion exceeded what the notice confirmed.
 
 
 <!--memo:3228433bfa8b-->
-### Little Rabbit says more and more AI articles, AI videos, etc.
+### The Dismissive Feeling of Unlabelled AI Content
 
 > 2026-03-26 01:30:00 · `#格物/ai`
 
-Little Rabbit says more and more AI articles, AI videos and so on, and a lot of them don't label themselves as AI. Every time I'm reading along, something feels off, there's a feeling of being brushed off, and it feels a bit defeating..
+In a conversation we discussed how more and more AI articles, AI videos and so on, and a lot of them don't label themselves as AI. Every time I'm reading along, something feels off, there's a feeling of being brushed off, and it feels a bit defeating..
 
 I don't read WeChat public accounts anymore either.
 
@@ -2526,7 +2438,7 @@ That set of standards ~
 
 
 <!--memo:c1f9ca398239-->
-### Design the pace well before coding
+### Define Evaluation Criteria Before Coding
 
 > 2026-03-26 19:43:55 · `#格物/ai`
 
@@ -2634,7 +2546,7 @@ There's a key instruction in program.md: "NEVER STOP" — once the experiment lo
 
 
 <!--memo:e13b308c14cd-->
-### Human clarity and subjective judgment are still the things that ultimately can't be replaced
+### Human Clarity and Judgment Remain Irreplaceable
 
 > 2026-03-29 13:35:55 · `#格物/ai`
 
@@ -2696,7 +2608,7 @@ An excellent Harness (like Deep Agents) combines MCP with Agent Skills, adopting
 
 This evolution is summarized as three stages: vibe coding (humans prompt, AI writes code) → agentic engineering (humans orchestrate agents in real time) → fully independent research (humans set the general direction, agents run on their own).
 
-In the era of automated research, scientific output is no longer purely "a successful run," but "an admissible claim.
+In the era of automated research, scientific output is no longer purely "a successful run," but "an admissible claim."
 
 Removing human executive intervention doesn't eliminate human responsibility — it shifts responsibility upward. Humans are no longer responsible for typing code; they must be responsible for the scientific instrument itself — including setting the optimization objective, defining acceptable standards of evidence, drawing the boundaries of data provenance, and deciding when to release results.
 
@@ -2734,7 +2646,7 @@ It suddenly occurred to me that the relationships between Agents are, to a large
 
 What we're really facing is not "a purely isolated super-mind," but a system jointly made up of models, interfaces, toolchains, supervision methods, and institutional boundaries.
 
-Multi-agent systems are stronger than single agents.
+Whether a multi-agent system is stronger depends on whether the task suits division of labour and the coordination method fits. [Google Research’s controlled experiments](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/) also point to this boundary.
 
 
 <!--memo:f4f4b367e560-->
@@ -2756,11 +2668,11 @@ I think task-level agents are mainly — although they're also Sub Agents, in fa
 
 
 <!--memo:733012c74387-->
-### Little Rabbit's point has a bit of a problem, that is
+### Evaluating Chinese-Language Models Also Means Evaluating the Task System
 
 > 2026-03-31 11:48:27 · `#格物/ai`
 
-I think Little Rabbit's point has a bit of a problem, that is, he said that because Chinese models are still trained and reinforced for the Chinese context, he feels that the claim "Chinese is stronger" is correct. But I think that statement is certainly not wrong — Chinese models definitely do better on certain political policies, on their Chinese nuance, and on some localised accumulation. For example, on understanding some minority languages. But the amount of Chinese isn't small at all — not only online, the Chinese corpus is still very rich. And I think for a model what matters more isn't only one kind of language expression ability — of course language expression ability is important, and its rhetorical devices matter too, right? For example, its phrasing is very idiomatic, very plugged into internet feel, full of Chinese nuance, with a very colloquial style. But I think what matters more is that when this model is in a task-completion scenario, its retrieval ability, tool-calling ability, and context-management ability, including memory strategy, and its front-end interaction, and its reply strategy, and its pacing and error recovery — these are determined by a whole system. So when we talk about upgrading a model, what we're actually talking about is not a smart model, but a system
+I think a friend's point has a bit of a problem, that is, he said that because Chinese models are still trained and reinforced for the Chinese context, he feels that the claim "Chinese is stronger" is correct. But I think that statement is certainly not wrong — Chinese models definitely do better on local expression, on their Chinese nuance, and on some localised accumulation. For example, on understanding some minority languages. But the amount of Chinese isn't small at all — not only online, the Chinese corpus is still very rich. And I think for a model what matters more isn't only one kind of language expression ability — of course language expression ability is important, and its rhetorical devices matter too, right? For example, its phrasing is very idiomatic, very plugged into internet feel, full of Chinese nuance, with a very colloquial style. But I think what matters more is that when this model is in a task-completion scenario, its retrieval ability, tool-calling ability, and context-management ability, including memory strategy, and its front-end interaction, and its reply strategy, and its pacing and error recovery — these are determined by a whole system. So when we talk about upgrading a model, what we're actually talking about is not a smart model, but a system
 
 ***
 
@@ -2782,7 +2694,7 @@ And in this process there's a series of steps — we need to first forge a stron
 
 > 2026-03-31 12:07:00 · `#格物/ai`
 
-I think some of it is very valuable. For example, what determines the ceiling of intelligence may not simply be how strong a single agent is, but whether a multi-agent setup can be organised into an efficient collaborative system. I find this very interesting too. All our current A-agent forms probably present themselves externally as a single agent. For example, when we use OpenClaw, it's essentially a multi-agent collaborative system, but what it shows is a single agent — what we use it for, or our entry point, is actually a single agent. The entry point thing is magical — what does it mean? It means that all the agent projects we may build in the future may not follow the flat structure of humans, or a pyramid structure, an up-down, top-to-bottom managerial structure, but rather a structure of mutual collision and mutual emergence, depending on a human entry point, a human self-awareness: he realises which Agent this thing should be done with, so he takes that Agent as the entry point. When that Agent is the entry point, in fact all the Agents behind it are mutually emerging. So in this process, you can't help but notice — I think making entry points, making a high-frequency scenario, is very important. And there's another very important point: I think in the future a very intelligent entry-point Agent will be very important. So I think if you're going to fight, the most likely thing now is to fight toward the most expensive — use the most expensive models, the most expensive supply chain, run for the longest time
+I think some of it is very valuable. For example, what determines the ceiling of intelligence may not simply be how strong a single agent is, but whether a multi-agent setup can be organised into an efficient collaborative system. I find this very interesting too. All our current AI-agent forms probably present themselves externally as a single agent. For example, when we use OpenClaw, it's essentially a multi-agent collaborative system, but what it shows is a single agent — what we use it for, or our entry point, is actually a single agent. The entry point thing is magical — what does it mean? It means that all the agent projects we may build in the future may not follow the flat structure of humans, or a pyramid structure, an up-down, top-to-bottom managerial structure, but rather a structure of mutual collision and mutual emergence, depending on a human entry point, a human self-awareness: he realises which Agent this thing should be done with, so he takes that Agent as the entry point. When that Agent is the entry point, in fact all the Agents behind it are mutually emerging. So in this process, you can't help but notice — I think making entry points, making a high-frequency scenario, is very important. And there's another very important point: I think in the future a very intelligent entry-point Agent will be very important. So I think if you're going to fight, the most likely thing now is to fight toward the most expensive — use the most expensive models, the most expensive supply chain, run for the longest time
 
 ***
 
@@ -2792,7 +2704,7 @@ I think some of it is very valuable. For example, what determines the ceiling of
 
 > 2026-03-31 13:48:27 · `#格物/ai`
 
-I think one boundary of a Harness is that what it actually handles is everything outside the model, including the RM, and how it interacts with the real world. So a Harness actually refers to all the Agent tools in this world, how they operate freely in the world, how they organise, organise an Agent network to accomplish one goal after another. It's inside the boundary, continuously getting things done. That is, we need to design an environment, and the purpose of designing the environment is to design a boundary, and its purpose is to let the RM execute accurately, effectively, and continuously around some goal
+I think one boundary of a Harness is that what it actually handles is everything outside the model, including the LLM, and how it interacts with the real world. So a Harness actually refers to all the Agent tools in this world, how they operate freely in the world, how they organise, organise an Agent network to accomplish one goal after another. It's inside the boundary, continuously getting things done. That is, we need to design an environment, and the purpose of designing the environment is to design a boundary, and its purpose is to let the LLM execute accurately, effectively, and continuously around some goal
 
 ***
 
@@ -2822,11 +2734,11 @@ I'm wondering whether note-taking software will have some better management meth
 
 
 <!--memo:649da0bc2372-->
-### Cloud Code's loop is essentially executing a
+### Claude Code’s Loop: Session Polling and Long-Term Scheduling
 
 > 2026-03-31 14:29:07 · `#格物/ai`
 
-I think Cloud Code's loop is essentially executing a prompt command — it's very good for short-cycle polling automation. And it gets cancelled once you quickly exit the conversation. So I think it's well suited to checking local state once every so often, then seeing whether the test has finished running. It's more like looping a request inside a session, not like coding in the cloud. And it also seems to be a cloud plan, so it can run even if your computer is off. And you can do some querying with your own scheduling on your computer, which I think is very good. It's the opposite of scheduling — the difference is that a Loop is temporary, session-based, while scheduling is a more formal scheduled task, including analysing CI failures every night — that kind of long-term, scheduled batch task. I think there's still a difference between them. So a Loop is well suited to "I'm watching it now, looping to look at results." But scheduling suits fixed automation you run weekly or daily
+I think Claude Code's loop is essentially executing a prompt command — it's very good for short-cycle polling automation. And it gets cancelled once you quickly exit the conversation. So I think it's well suited to checking local state once every so often, then seeing whether the test has finished running. It's more like looping a request inside a session, not like coding in the cloud. I still need to distinguish session loops from cloud-scheduled tasks; the latter’s capabilities cannot simply be attributed to the former. And you can do some querying with your own scheduling on your computer, which I think is very good. It's the opposite of scheduling — the difference is that a Loop is temporary, session-based, while scheduling is a more formal scheduled task, including analysing CI failures every night — that kind of long-term, scheduled batch task. I think there's still a difference between them. So a Loop is well suited to "I'm watching it now, looping to look at results." But scheduling suits fixed automation you run weekly or daily
 
 ***
 
@@ -2851,9 +2763,10 @@ I'm thinking about what this part suggests for the consumer side. What kind of s
 ***
 
 
+
 ## 2. Travel, Places and Cities
 
-*109 entries*
+*92 entries*
 
 <!--memo:fb6a8a91a9a9-->
 ### Northeast China's Direct Culture: How Labor Independence Shapes Non-Draining Relationship Patterns
@@ -2912,7 +2825,7 @@ Yamdrok is like a gem set into a valley; Namtso is a mirror that lifts the whole
 
 Namtso means "heavenly lake" in Tibetan and is one of the highest saltwater lakes in the world, with a surface area of about 1,920 square kilometres. Because of the refraction from minerals and algae, the water shows a richly layered blue-green range—from the pale cyan at the shore, to peacock blue in the middle, to a deep indigo approaching in the distance; the transition of colour is like a watercolour mixed by the light of the sky
 
-Actually before this I walked the ACT and went to Tilicho Lake (T Lake), which is the highest freshwater lake in the world
+Before this I walked the ACT and went to Tilicho Lake (T Lake). I had recorded it as “the world’s highest freshwater lake,” but had not verified that superlative
 
 The road to Namtso is in extremely bad condition; after climbing to a pass at 5,000 metres it's normal for the weather to change abruptly—clear skies and a snowstorm are only one stretch of switchbacks apart. This unpredictability is exactly what makes the moment of arrival seem especially precious. Behind the difficulty of maintaining the road is the continuous destruction of the surface by high-altitude freeze-thaw cycles
 
@@ -2958,29 +2871,17 @@ Between a deep blue ice lake and vast snow mountains, a "stone elephant" silentl
 
 
 <!--memo:2b7f43993a9a-->
-### The Monastery's Acquaintance Power Network: Relationship Resources and Favour Exchange Behind Free Labour
+### Voluntary Work and Everyday Relationships at a Monastery
 
 > 2026-03-07 15:23:17 · `#格物/拉萨`
 
-I went to a temple before, Siling Temple, it's in the direction of Namtso, and Siling Temple is also up on a mountain. And then the owner below—I chatted with him—he said he still has several daughters studying in the county next door, and his wife is at the little shop over by that temple, but, well. His wife goes up to the temple above and washes clothes for others for free; that's when I learned that many of the service staff in their monasteries, they're all, well. Volunteers, working without pay
+Near a monastery on the way to Namtso, I once talked with a local person about voluntary work at monasteries. People may help with laundry or cooking, perhaps as relatives or in the hope of accumulating merit.
 
-Generally speaking, the people working up there might be a few kinds: one might be a monk, a relative or family member of his; and another possibility is these ordinary folk, who hope to accumulate some merit at the monastery. But actually it isn't only free labour—they really have a lot of leverage in terms of favours and influence
+I felt that this involved both spiritual meaning and everyday relationships. Spending time together can build trust and make it easier to ask for help. Sometimes monks share part of their offerings with people who help.
 
-Because after all the people at certain monasteries are fixed, and then if I serve someone rice, a bit more, a bit less, so naturally I think it's also a network of favours. So some monks will also take out their own offerings and share a bit with them, or when their family has problems they'll ask them for help and so on—this counts as help at the material level too, not only at the spiritual level
+Rice, tsampa and vegetables often come from collective offerings. Visitors may also bring food to the kitchen or give the staff a small token of appreciation.
 
-This is the power network of monastery acquaintances, but a monastery is actually a highly transparent public resource, so rice, tsampa, vegetables and such are also very fixed resources, usually contributed collectively
-
-So this kind of auntie is more likely to be respected. In Lhasa, relationship resources are often more important than money; knowing some lamas or administrators makes it easier to ask for help
-
-Many people who come to the monastery will:
-
-Make offerings to monks
-
-Bring food to the kitchen
-
-Give the staff a small red envelope
-
-This is the benefit at the everyday level
+This was my impression from that conversation; it cannot be extended to every monastery or local person’s life.
 
 ***
 
@@ -3102,7 +3003,7 @@ Another impression was catching the motorcycle army on camera, a spectacular sig
 
 
 <!--memo:967efa6c6944-->
-### The Adaptation of Vietnamese Banh Mi: The Chew of Traditional Texture and a Local Insistence
+### Vietnamese Macaroni Adaptations: Chewiness and Local Flavour
 
 > 2026-03-07 18:02:01
 
@@ -3143,60 +3044,14 @@ Africa is now the fastest-growing region for Catholicism in the world.
 The believers are young and full of vitality, and their liturgy usually incorporates passionate local cultural elements. The rise of the African church is greatly changing the demographic structure of Catholicism and supplying the church with a large number of clergy.
 
 
-<!--memo:1407127cec58-->
-### The Legacy of the Vietnam War: A Highly Cohesive Society and National Pride
-
-> 2026-03-08 00:38:36 · `#格物/越南`
-
-The impact of the Vietnam War on Vietnam is still enormous.
-
-Thirty consecutive years of full-scale war,
-
-including the early period of Vietnam fighting French colonial rule, and then North Vietnam and South Vietnam, and America's intervention.
-
-Heavy casualties, large-scale bombing, and destroyed infrastructure.
-
-Long-term extreme war forms a "highly cohesive society."
-
-When a country faces a question of survival, individual interests give way to the collective, and the country is something everyone defends together.
-
-And then there's the enormous sacrifice, which bought a strong national pride—especially with Ho Chi Minh; a small country defeating a big one, a weak country beating a strong one, produces a very strong national psychology.
-
-Then there's the Vietnam People's Army: the whole population are soldiers, which is pretty interesting, but there are also problems—soldiers have very high status..
-
-
-<!--memo:d63c74c57c85-->
-### Vietnam Missing the Golden Age of Industrialization: The Cost of the Soviet System and a Planned Economy
-
-> 2026-03-08 00:41:51 · `#格物/越南`
-
-After unification, Vietnam entered the Soviet system.
-
-The essential difference is that the US gave its allies huge amounts of capital, technology, and markets,
-
-but what Vietnam got was military aid and ideological support, not industrial investment.
-
-And global industrialization has a golden window.
-
-Vietnam was 20-30 years late.
-
-And those decades happened to be: the global golden age of industrialization (1950-1980).
-
-Vietnam missed almost the entire global golden age of manufacturing.
-
-And then, after the war period, many places in Vietnam had almost returned to the level of an agricultural society.
-
-After unification Vietnam also chose a planned economy rather than a market economy, until 1986, when Vietnam began reforming.
-
-
 <!--memo:14978e556088-->
 ### Vietnam's Hofstede Profile: High Power Distance and a Culture of Nepotism
 
 > 2026-03-08 13:57:44 · `#格物/越南`
 
-It feels like, if you apply the Hofstede model to Vietnamese people,
+At the time I was trying to understand Vietnamese culture through the Hofstede model. These are rough group-level observations, not a way to judge an individual.
 
-Vietnamese people have a very high power distance index, because the local culture is used to a strict vertical hierarchy. Vietnam has a proverb: "Without a leader, to obey no one—that is unworthy of being a person; that is the behavior of a beast."
+Vietnamese people have a very high power distance index, because the local culture is used to a strict vertical hierarchy.
 
 In the family structure, the oldest male member is usually the formal head of household; in the workplace, older employees are respected more than younger ones.
 
@@ -3221,8 +3076,6 @@ And it has the most complete industrial system in the world.
 The scale of talent is huge too.
 
 And China joined the WTO very early and entered globalization.
-
-The Chinese government's efficiency and its capacity for industrial policy are both very strong.
 
 Big countries more easily become industrial powers.
 
@@ -3269,42 +3122,6 @@ Their daily life is also a cup of drip iced milk coffee.
 Street culture, night markets, and the motorbike army together make up the distinctive culture of Vietnam.
 
 
-<!--memo:3f4f24de9e5d-->
-### Cambodian Social Structure: The Merit Cosmology and Khmer Rouge Trauma
-
-> 2026-03-08 14:32:39 · `#格物/柬埔寨` `#格物/柬埔寨`
-
-Cambodia is very interesting — its power distance is almost a perfect score.
-
-Cambodia's obedience to power is not just a cultural habit; it's been thoroughly legitimized by a religious cosmology.
-
-The fusion of church and state is very dangerous.
-
-About 95% of the population believes in Buddhism, and the concept of reincarnation directly shapes social status and personal fate — power and wealth in this life are seen as the reward for good deeds in a previous life, while poverty, illness and disability are seen as punishment for mistakes in a previous life. This is the same as Tibetan Buddhism under the slavery system before the liberation of Lhasa.
-
-In Cambodia, almost everyone believes that a person with a great deal of "merit" (bunn) will live a wealthy, carefree life, enjoy good luck, and not even need to work hard. Merit in a sense determines fate. If a person is poor, people generally think "he doesn't have enough merit — that's why he has these problems."
-
-The concept of the "big brother" (Bong Thom) — a fair but cold leader who provides protection and benefits to loyal followers while making sure any disloyalty or resistance is severely punished — recurs again and again in traditional Khmer stories, and the notion of rationalized violence still has a degree of acceptance in contemporary Cambodian society.
-
-One very important part of the trauma is what distinguishes China from Vietnam: the Khmer Rouge genocide of 1975–1979, which caused civilizational-level psychological damage.
-
-The experience of the Khmer Rouge regime left survivors with insecurity and trust issues. Society during the Khmer Rouge period was built on distrust; everyone around you was watching everyone else. Finding someone you could confide secrets in was extremely rare.
-
-By the late 1990s, the history of Democratic Kampuchea had been completely purged from school curricula and public debate. The ruling Cambodian People's Party saw the topic as a threat to reconciliation, stability, and its own legitimacy — given how many officials had historical ties to the Khmer Rouge movement. Through his "win-win policy," Hun Sen pushed collective amnesia; Cambodians were encouraged to "dig a hole and bury the past."
-
-Almost all major religions have at some point been used to back hierarchy:
-
-India's caste system → embedded in Hinduism's "karma/reincarnation" framework
-
-European feudalism → the Church preached "the divine right of kings," and the serfs' suffering was "God's test"
-
-Slavery in the American South → some pastors used the Bible to argue that slavery was justified
-
-Old Tibet → Tibetan Buddhism's reincarnation system served the noble-monk class
-
-This shows that religion itself is a neutral tool — it can be used to oppress (as in the cases above), or to liberate (as when Martin Luther King used Christian theology to support the civil rights movement, and Buddhist monks stood on the front lines of anti-colonial movements in Myanmar and Vietnam).
-
-
 <!--memo:7e1dca89d749-->
 ### Mexico vs. Pakistan: Two Cultural Poles of Indulgence and Restraint
 
@@ -3334,10 +3151,6 @@ A man showing weakness, vulnerability, or "too much enjoyment" is likewise seen 
 
 Including among middle-class urban families, women going out must cover their heads, and many families still keep separate living quarters for men and women — Encyclopedia Britannica. This isn't just a religious rule; it's a mechanism of honor management.
 
-The female body is the most direct battlefield of a culture of restraint. Controlling women's desires, movement and appearance is the front line for maintaining the whole society's moral order. Honor killing is, logically, not an "overreaction" but a conclusion entirely coherent from within this cultural system.
-
-Political elites, religious leaders and tribal elders enjoy a great many privileges, including polygamy, a luxurious lifestyle, and the benefits of patronage networks — all within a "legitimate" framework. What's actually suppressed is the desire of those who cannot defend themselves with religion or a position of power.
-
 By comparison, Mexicans don't live in order to work, they work in order to live.
 
 High IVR isn't because life is easy, but because life is too hard, so pleasure becomes a survival strategy.
@@ -3356,11 +3169,11 @@ So what's very distinctive is that Mexico's individualist desire for pleasure is
 
 
 <!--memo:b427b0dc924e-->
-### Blue Sky over Chongqing Central Park: A Lucky Moment Just Like Lhasa
+### Blue Sky in the Park: A Lucky Moment Like Lhasa
 
 > 2026-03-10 11:15:43
 
-The weather today is really nice. I'm at Chongqing's Central Park right now—the place where Little Rabbit used to set up—sitting in the sun. This is probably the best the sun has been lately, because the whole sky is blue, just like the day I saw in Lhasa. So I'm really lucky: coming back to Chongqing this time and still passing through such a blue sky. It's a bit like a reward from heaven, and then I took a piece of that blue sky down with me.
+The weather today is really nice. I’m sitting in a park in the sun. This may be the best sunshine we’ve had lately: the whole sky is blue, like the sky I saw in Lhasa. I’m lucky to come back to weather like this. It feels a bit like a reward from heaven.
 
 
 <!--memo:c1f85d5cff59-->
@@ -3454,121 +3267,21 @@ Who says a tutu isn't a Harley convertible sports car 🐶
 
 > 2026-03-12 15:53:11 · `#格物/柬埔寨`
 
-I just had my first meal in Cambodia, and this chicken is pretty good, and their waiter's attitude was especially nice. I also got to know a bit of a goofball in a pretty amusing way. And the pizza has a lot of vegetables on it, I thought it was especially tasty, I feel the purity is high, but the flavor is made slightly on the salty side, though I personally can accept that. Over here in Southeast Asia, the food especially emphasizes the balance of sour, sweet, salty and fresh, and it also keeps the original flavors of the ingredients, so eating it is quite interesting for me. There's also a slight charred and charcoal-grilled note — you can taste it, and you can very clearly feel it's more fragrant, a bit sweeter, and a bit saltier, so it's quite interesting as well. The design is okay, and the price was 50-something, actually fine. Comparatively, doing business here is basically calculated in US dollars, so the units on things are basically all USD.
-
-
-<!--memo:acd96ff87ec4-->
-### Cambodia — actually, during the Khmer Rouge period forty or fifty years ago, roughly about
-
-> 2026-03-12 16:05:17 · `#格物/柬埔寨`
-
-Cambodia — actually, during the Khmer Rouge period forty or fifty years ago, roughly 1.2 to 2.8 million people died.
-
-That's 15%–36% of Cambodia's total population in 1975.
-
-As of January 1979, about 1.5 to 2 million people had died from Khmer Rouge policies.
-
-Of those, 200,000–300,000 were directly executed.
-
-At least 90 percent of foreign aid came from China.
-
-In 1975 alone, China provided at least 1 billion USD in interest-free economic and military aid.
-
-In June 1975, Pol Pot and other Khmer Rouge officials met Mao Zedong in Beijing, gaining recognition and guidance.
-
-Chinese Cambodians played a leading role in Cambodia's commercial sector, dominated Cambodia's economy, and also had strong influence on the political stage.
-
-Since modernization, China has built close relations with the Hun Sen government, providing economic, military, and political support.
-
-Economic structure:
-
-Textiles - one of the largest industries
-
-Tourism - an important source of income
-
-Agriculture - mainly rice cultivation
-
-Construction - rapid growth in recent years
-
-Emerging fields:
-
-Offshore oil and natural gas reserves discovered
-
-The gambling industry has always accounted for a very large proportion
-
-The 1996 Law on the Prohibition of Gambling:
-
-All unauthorized forms of gambling are illegal
-
-But it only applies to Cambodian citizens
-
-Foreigners can gamble in licensed casinos
-
-Online gambling was banned in 2020
-
-In January 2020, Cambodia banned online gambling
-
-It caused a large number of Chinese workers to lose their jobs
-
-Sihanoukville was the main affected area
-
-So there were a lot of unfinished buildings, and then problems appeared; Sihanoukville's economy was hit hard, and real estate prices plummeted
-
-Despite cracking down on scams and human trafficking, cybercrime hubs are still surging
-
-Sihanoukville became one of Southeast Asia's cyber-fraud centers
-
-Involving:
-
-Online gambling
-
-Telecom fraud
-
-Human trafficking
-
-Unlawful detention
+I just had my first meal in Cambodia, and this chicken is pretty good, and their waiter's attitude was especially nice. And the pizza has a lot of vegetables on it, I thought it was especially tasty, I feel the purity is high, but the flavor is made slightly on the salty side, though I personally can accept that. Over here in Southeast Asia, the food especially emphasizes the balance of sour, sweet, salty and fresh, and it also keeps the original flavors of the ingredients, so eating it is quite interesting for me. There's also a slight charred and charcoal-grilled note — you can taste it, and you can very clearly feel it's more fragrant, a bit sweeter, and a bit saltier, so it's quite interesting as well. The design is okay, and the price was 50-something, actually fine. Comparatively, doing business here is basically calculated in US dollars, so the units on things are basically all USD.
 
 
 <!--memo:ba73be5de452-->
-### The Khmer Rouge event: the Khmer Rouge regime in 1975–1979
+### S-21: School, Prison and Memorial Museum
 
 > 2026-03-13 09:27:39 · `#格物/柬埔寨`
 
-The Khmer Rouge event was the Khmer Rouge regime's transformation of Cambodian society between 1975 and 1979 with an extreme revolutionary ideology — enforced relocation, collective forced labor, political purges, torture, and massacre across the whole country, ultimately causing a state-level humanitarian disaster in which about a quarter of the population died.
+The history of the Khmer Rouge period is deeply heavy. One of its emblematic sites is S-21, now the Tuol Sleng Genocide Museum.
 
-The Khmer Rouge: emptying the cities, abolishing money, collective brainwashing, political purges, S-21 interrogations, executions at the killing fields, mass death from starvation and disease.
-
-When utopian revolution, absolute obedience, enemy-ally purges, dehumanizing language, and a wartime environment stack on top of each other, a country can slide into systemic catastrophe in an extremely short time.
-
-If the Khmer Rouge atrocities have the most symbolic sites, one is the S-21 prison (now the Tuol Sleng Genocide Museum), and the other is the killing fields in various places.
-
-S-21 was originally a school, later converted into a secret prison and interrogation center, and is one of the most notoriously known interrogation sites. According to materials from the United States Holocaust Memorial Museum, S-21 is the most notorious of the 189 known interrogation centers; 14,000 to 17,000 prisoners were held here, and it's believed only 12 survived. People sent here usually suffered torture to force confessions first, then were transferred to execution sites.
-
-
-<!--memo:357b4ab1cdd5-->
-### How Values Are Read Subjectively, and What to Reject from What He Himself Says
-
-> 2026-03-13 09:55:48 · `#格物/柬埔寨`
-
-But some verifiable political behaviours, and the value preferences inferred from those behaviours
-
-Stability matters a lot; if political openness might bring loss of control, it isn't worth the risk
-
-Power is not neutral, it must be held in a concentrated way; power must be held in the hands of trustworthy people and controllable organisations
-
-Loyalty matters more than abstract institutions
-
-Development is a resource for legitimacy, but it must not threaten control
-
-Many people mistakenly assume Hun Sen is first of all an ideological figure.
-
-But looking at his long trajectory in power, it looks more like this: ideology changes, alliances change, external balancing changes, but the goal of maintaining rule, maintaining order, and maintaining the continuity of the system does not change. Britannica's overview of his life, and Reuters' reporting on his still-deep involvement in politics after handing over, both support the portrait of "a strong power realist"
-
-He is an extremely successful strongman ruler in a post-disaster country; in his ordering of values, order, control and continuity clearly rank above pluralistic competition, free expression and institutional checks and balances
+It had been a school before being converted into a place of detention and interrogation. Many victims were later taken to Choeung Ek. The museum preserves photographs and records that give this history individual faces. [Official museum history](https://tuolsleng.gov.kh/en/museum/building/)
 
 
 <!--memo:8ae60ae23d4e-->
-### Characteristics of Survivors
+### Possible Trauma Responses in Survivors: Study Notes from the Time
 
 > 2026-03-13 10:26:29 · `#格物/柬埔寨`
 
@@ -3593,36 +3306,6 @@ Family: pinning hope on the children
 Ritual: ancestor worship, ceremonies for the dead
 
 
-<!--memo:13d82098c117-->
-### Land Grabbing Is One of the Most Serious Social Problems in Phnom Penh
-
-> 2026-03-13 12:10:49 · `#格物/柬埔寨`
-
-Land grabbing is one of the most serious social problems in Phnom Penh. The government sells land to developers, residents are forcibly evicted, and compensation is insufficient
-
-Typical case: the Borei Keila community (forced demolition in 2012)
-
-Located in the centre of Phnom Penh, about 500 households
-
-In 2012, the government granted the land to a developer
-
-Residents protested, but were forcibly evicted
-
-Some residents received apartment compensation, but the locations were remote and the quality poor
-
-Many residents lost their sources of livelihood
-
-
-<!--memo:545ee3827aa3-->
-### One Similarity Is That Taiwan Also Had a White Terror Period
-
-> 2026-03-13 13:02:10
-
-It suddenly occurred to me that there's a similarity: Taiwan also had a White Terror period, and the Chinese Communist Party period also had the Cultural Revolution. Including "Memories of a Cattle Shed" written by Mr. Ji Xianlin, which describes what he saw and heard during the "Cultural Revolution." What I admire most about Mr. Ji is that, in his eighties, he wrote this part of his experience down in the form of a record, without passing judgement—I think that's remarkable.
-
-And then Cambodia's Khmer Rouge period, and Nazi Germany's [period of terror]—it's a bit like being in a predicament where no classic case can solve the predicament. In a conflict predicament, if everyone simply makes choices based on their own individual humanity, it may actually harm the collective.
-
-
 <!--memo:64cd897f7b0e-->
 ### The Choeung Ek (Zhongwu Ke / Qiongyi Ke) Killing Fields
 
@@ -3630,9 +3313,7 @@ And then Cambodia's Khmer Rouge period, and Nazi Germany's [period of terror]—
 
 The Choeung Ek (Zhongwu Ke / Qiongyi Ke) Killing Fields, in the southern suburbs of Phnom Penh; it's often visited together with the S-21 Tuol Sleng Genocide Museum in the city proper
 
-The two are the two ends of the same stretch of Khmer Rouge history: S-21 is where people were held, interrogated, and tortured; Choeung Ek is where large numbers of victims were executed and buried
-
-In this period roughly 1.7 to 2.2 million people died from execution, famine, forced labour, disease, and persecution
+The two are the two ends of the same stretch of Khmer Rouge history: S-21 is where people were held, interrogated, and tortured; Choeung Ek is where large numbers of victims were executed and buried. [ECCC case material](https://www.eccc.gov.kh/en/cases/case-001)
 
 The site of humanity's study of disaster...
 
@@ -3646,9 +3327,7 @@ Behind it is institutionalised, bureaucratised violence of power
 
 > 2026-03-14 17:04:48
 
-I feel today was pretty risky. After going to that currency museum today, I was about to walk towards the Royal Palace. I was planning to first go to Phnom Penh... and look inside the barber shop, and while walking on the road — I'd just come out of the barber shop — I was walking and suddenly looked at the navigation, and a motorcycle came from behind, whooshed past me, and the man on the back seat reached out and grabbed at my phone. My biological stress response kicked in right away and I immediately held the phone tight with both hands, but it still didn't help, and the phone got flung onto the ground. Then they coasted forward a bit from momentum, and the man on the back seat turned his head and looked.
-
-I heard that calling the police here probably doesn't help much, because you still have to tip the police, and you still might not get it back.
+I feel today was pretty risky. After going to that currency museum today, I was about to walk towards the Royal Palace. I had just come out of the barber shop and was walking along when I looked at the navigation, and a motorcycle came from behind, whooshed past me, and the man on the back seat reached out and grabbed at my phone. My biological stress response kicked in right away and I immediately held the phone tight with both hands, but it still didn't help, and the phone got flung onto the ground. Then they coasted forward a bit from momentum, and the man on the back seat turned his head and looked.
 
 The roads here don't feel very suitable for walking either — the roadside basically has a lot of vehicles. From now on it's better to call a ride-hailing car when going out.
 
@@ -3656,7 +3335,7 @@ The roads here don't feel very suitable for walking either — the roadside basi
 
 
 <!--memo:c00b1c796a73-->
-### The glittering pavilion on the left is the Equestrian Statue of King Norodom
+### Phnom Penh’s Royal Palace: The Equestrian Pavilion and Princess’s Stupa
 
 > 2026-03-14 17:24:07
 
@@ -3666,59 +3345,31 @@ The grey-white spire on the right is the Stupa of Princess Kantha Bopha, commemo
 
 The long row of buildings with orange-red roofs in the background are other halls of the Royal Palace. The overall palette — gold, white, orange-red — is the signature colour scheme of Cambodian royal architecture.
 
-This place feels just like the explanations of the origins of currency I saw at that currency museum in Phnom Penh. I find it really interesting — at the time King Norodom and his son reached an agreement with France, and in effect lost the country's monetary sovereignty. That's extremely serious. It made the whole country's path on monetary sovereignty over the following decades very hard to walk, and the locals' distrust of the currency — I think it's really hard. If a country has no sovereignty over its currency, it loses the ability to regulate the macroeconomy; it can only bend to the international economic system.
-
 ***
 
 
 <!--memo:1c49ab69c7b8-->
-### The infanticide tree
+### Silence Before a Tree at Choeung Ek
 
 > 2026-03-14 22:43:54 · `#格物/柬埔寨`
 
-According to survivors' testimony and archaeological findings, the guards grabbed infants by the feet and smashed their heads hard against the trunk of this tree until they died. Then they threw the bodies into the pit beside it.
-
-Why kill infants? I've mentioned the Khmer Rouge logic before — "pull the grass out by the roots." If the children of "traitors" survived, they might grow up and "take revenge." So they had to be eliminated down to the last one. But for infants and small children, using clubs or blades was considered "not efficient enough," so the guards used this method.
-
-During the archaeological excavation, a large number of fragments of infant remains were found around the base of this tree. Traces of blood and brain tissue were also detected on the bark.
-
 Standing in front of this tree was the hardest moment of the whole of Choeung Ek — possibly of the entire trip to Cambodia. Many visitors stop here, take off their headphones, and fall silent. Some tie their bracelets around the trunk as a kind of silent mourning.
 
-The tree is still alive. It keeps growing every year, keeps putting out branches and leaves. The tree doesn't know what it was used for.
-
-There were also chemicals in the pits
-
-There is testimony describing how some people, after being thrown into the pits, did not die immediately. They were still faintly breathing among the piles of bodies. The use of chemicals was the final "insurance."
+The tree is still alive. It keeps growing every year, keeps putting out branches and leaves. The tree doesn’t know what it was used for.
 
 ***
 
 
 <!--memo:019cd4c95d15-->
-### First, Notice the Pattern in the Surnames
+### Names, Ages and Dates on the Board
 
 > 2026-03-14 22:54:10
 
-Yorss Saphann, 26; Yorss Koeun, 19—same surname, imprisoned on the same day. Very likely brothers. After the Khmer Rouge arrested one person, they would often take the whole family away. This wasn't an accident, it was policy—"pulling weeds must pull out the roots too" (ដកស្បូវត្រូវដកទាំងឫស). Yorss Koeun, 19, might have been taken along simply because his older brother was suspected.
+Looking at the name board, I first noticed the names, ages and dates of entry. Some people shared surnames; some arrived on the same day. But that alone cannot establish whether they were relatives or why each person was detained.
 
-Likewise Din Sroeung and Duk Sun, two women, entered S-21 on the same day. 25 and 57—they could be daughter-in-law and mother-in-law, or mother and daughter, or completely unrelated, just people brought in the same batch. We don't know. The archive records no relationship between them.
+The list included people aged 19 and 57. A name, perhaps like our own, makes me wonder: what were they like at 19?
 
-Second, notice the age span.
-
-The youngest is 19, the oldest 57. S-21 made no distinction between old and young. In fact, the museum's archival photos contain the faces of a great many children and even infants—they were the children of "criminals," and by the regime's logic, if left alive they would grow up to "take revenge," so they had to be eliminated.
-
-Third, notice the dates.
-
-Most are concentrated in 1978, and that's no coincidence. 1978 was the craziest year of Khmer Rouge internal purging. By then the regime had begun to devour itself—a large share of those purged were Khmer Rouge's own cadres and soldiers, especially people from the Eastern Zone, because Pol Pot suspected the Eastern Zone of colluding with Vietnam. Thousands upon thousands of Eastern Zone cadres and civilians were collectively transferred to S-21 and other prisons to be executed.
-
-Pech Peann's date of entry is June 1, 1977, nearly a year earlier than the others—he may have spent longer in this hell. At 45, in the Khmer Rouge era that meant he had grown up in the old society and was more likely educated, which in itself was enough to constitute a "crime."
-
-Fourth, notice the existence of the name board itself.
-
-The reason this name board could be made at all is that the Khmer Rouge left behind extremely detailed archives. The S-21 guards recorded every prisoner's name, age, sex, date of entry, "crime" and confession. Duch was a man who cared intensely about documentation systems—he required that every interrogation record and every photograph be filed. This bureaucratic precision became precisely the ironclad evidence for trying him later.
-
-This is also one of the chilling features of genocide: it isn't chaotic atrocity, it's organised, documented, procedural systematic killing
-
-Not grand numbers, just a plain sketch from life; a person's name, a name that might be the same as ours, and we wonder: what were they like at 19 back then?
+I also noticed the board’s very existence. Preserved photographs and records let later visitors see individual people, beyond a total number. [Official museum history](https://tuolsleng.gov.kh/en/museum/building/)
 
 
 <!--memo:4922ae7b00ce-->
@@ -3746,8 +3397,6 @@ Cambodia's economic system today is also rather odd; it's still an economy with 
 
 Cambodia's monetary history was never a closed national narrative from the very beginning; it was embedded in a larger network of geopolitical trade
 
-The value of SOSORO now isn't just as a museum looking back at history, it's also a tool for the National Bank of Cambodia to push the "de-dollarisation" narrative
-
 In 1992 the UN Transitional Authority in Cambodia paid all civil servants' salaries in US dollars (including foreigners and Cambodian citizens), and one of the legacies is that the dollar is still Cambodia's de facto second currency. Cities and tourist areas mainly use dollars, while the riel still covers almost all transactions in rural areas. Curator Kilian of Khmer Post Asia admits frankly that one of the museum's ultimate goals is to make people understand and trust the riel more
 
 Issuing and managing your own currency is an expression of sovereignty, and losing control of your currency means the central bank is constrained in its policy tools
@@ -3755,60 +3404,6 @@ Issuing and managing your own currency is an expression of sovereignty, and losi
 The images on money aren't decided at random either; generally they're a visual declaration of national identity
 
 It seems that after the Khmer Rouge seized power, currency was also completely banned, and the National Bank of Cambodia building in Phnom Penh was blown up—the most vivid symbol of the violent end of Cambodia's monetary system. Between 1975 and 1980 this country had no monetary system at all
-
-The logic of Pol Pot's regime was: money is the carrier of class difference, and abolishing money abolishes inequality. In practice, barter was officially banned and everything was distributed by the state. But massive famine and disease forced people into secret underground trading, and gold and dollars were still coveted on the black market
-
-
-<!--memo:33caa2f3e2b6-->
-### The Essence of the Riel's Modern Depreciation
-
-> 2026-03-15 00:22:02 · `#格物/柬埔寨`
-
-From 4:1 to 4000:1
-
-In the early reconstruction period in 1980, the government had no tax base and no gold reserves. To keep the government running, the only means was to print money and pay wages. This kind of "free distribution" solved the immediate survival need, but it also meant the money circulating in the market had no corresponding value backing at all
-
-At the time Cambodia's productivity was close to zero. When a large amount of banknotes chases extremely scarce goods (rice, medicine, fuel), prices inevitably soar
-
-In 1990 the money supply expanded by 241%, which essentially meant the government turned the printing press into an "ATM," paying for the civil war and administrative expenses with an inflation tax
-
-The essence of depreciation is a redistribution of wealth. By issuing more money, the government is in effect diluting the purchasing power of every cent the public holds, converting it into government purchasing power. Against a backdrop of extreme poverty, this dilution is nothing less than a second dispossession of survivors' wealth
-
-Every depreciation deepens the public's distrust of their own country's currency
-
-
-<!--memo:02b89985d246-->
-### The Current Stability of Cambodia's Exchange Rate
-
-> 2026-03-15 00:26:10 · `#格物/柬埔寨`
-
-The riel-to-dollar exchange rate has long held at around 4000–4100:1, extremely stable, TheGlobalEconomy.com. In 2024 GDP grew 5.3%, with 5.5% expected in 2025 and inflation around 2.6% U.S. Department of State—the data looks healthy, but this stability comes at the price of sovereignty
-
-Because the economy is highly dollarised, the National Bank is severely limited in the policy tools available to it. When 80% of transactions in your economy are settled in another country's currency, conventional central bank tools like adjusting interest rates and managing the money supply basically stop working
-
-It's estimated that Cambodia loses 20 to 90 million US dollars a year from forfeiting seigniorage—that profit flows to the United States
-
-Cambodia's economic fate is dictated by the Fed's interest rate decisions, and the Fed doesn't consider Phnom Penh's inflation or Siem Reap's tourism when making policy
-
-The riel was supposed to be a symbol of Cambodian national identity, but it has lost most of its symbolic meaning among the public—people prefer to save, make large transactions and invest in dollars
-
-But dollarisation has brought benefits too: it provides price stability, helps control inflation, protects purchasing power, reduces the risk of capital flight, and ordinary people don't worry about their savings being wiped out
-
-One current strategy: digitalisation
-
-In October 2020, Cambodia launched Bakong—a digital payment system based on blockchain technology (Hyperledger Iroha), where users only need a phone number or QR code to transfer and pay in riel or dollars
-
-As of the first half of 2024, Bakong had about 10 million wallets (Cambodia's total population is 17 million), and the share of riel payments is rising significantly. In 2024 alone, transactions facilitated by Bakong reached 104.81 billion US dollars, equivalent to 330% of Cambodia's GDP
-
-This method lowers the friction cost of using the riel
-
-In Phnom Penh markets, converting a dollar price into riel requires multiplying by 4075—not the easiest mental arithmetic in a busy market. Bakong makes this conversion automatic
-
-Bakong's balances are fully backed by commercial bank deposits; it isn't an alternative form of sovereign currency, but an efficient clearing and settlement mechanism
-
-The government has also rolled out other supporting measures: in June 2020 it began phasing out small-denomination dollar notes (1, 2, 5 dollars), required banks to issue at least 10% of loans in riel, and promoted Bakong QR code payments to cover small retail shops that previously used riel
-
-But I'm curious: with Cambodia's current dependence on China, I wonder whether it will create a new renminbi-isation?
 
 
 <!--memo:10a7437f3143-->
@@ -3818,85 +3413,19 @@ But I'm curious: with Cambodia's current dependence on China, I wonder whether i
 
 But King Ang Duong died in 1860, and his son Norodom succeeded him. Just three years later, in 1863, Norodom asked France to establish a protectorate. Ang Duong's coinage experiment became the last flicker of Cambodia's independent monetary sovereignty—until 93 years later, in 1955
 
-A bit ironic: what King Ang Duong wanted with all his heart was to win back his country's sovereignty
-
-In the short term he preserved Cambodia's shell as a state and the royal family, but in the long term he handed the country's sovereignty away
-
 By the mid-19th century Cambodia was no longer a strong state able to make fully independent decisions. It had long been squeezed between Siam (today's Thailand) and Vietnam's Nguyen dynasty, suppressed by Siam to the west and influenced by Vietnam to the east, and the country itself was very weak
 
 But a protectorate is not an equal alliance; what France first took control of was Cambodia's external affairs; later France deepened its control step by step, and after 1884 Cambodia was in effect close to colonial status, with France intervening heavily in domestic affairs too
 
 
 <!--memo:32434dee75fc-->
-### Because Monetary Sovereignty Requires at Least Five Things to Be True at Once. First
+### The Conditions for Coinage: Materials, Craft and Trust
 
 > 2026-03-15 11:13:38 · `#格物/柬埔寨`
 
-Because monetary sovereignty requires at least five things to be true at once. First, you have to have a source of metal, especially silver. Second, you have to have minting equipment and craftsmen. Third, you have to get merchants, ordinary people and officials across the country to accept coins by this standard
+I listed three conditions for minting coins at the time: a source of metal, especially silver; minting equipment and craftspeople; and merchants, ordinary people and officials willing to accept coins by the same standard.
 
-Look at the problems Cambodia faces today and it's exactly this
-
-Minting isn't a purely technical problem, it's a problem of state capacity
-
-France's economic colonisation of Cambodia wasn't about developing Cambodia, it was about extracting resources from Cambodia more efficiently. Monetary unification (the piastre), the monetisation of taxation, transport infrastructure—the ultimate purpose of all these modernising measures was to lower the friction cost of resource extraction
-
-When your country is forced to use money printed by someone else, is folded into a financial system designed by someone else, and is reduced to the margins on its own land—money itself becomes a mirror, reflecting the fact that "we are not our own masters." The memory of King Ang Duong's coinage was repeatedly invoked by later nationalist narratives, and the issuance of the riel in 1955 was seen as an independent economic expression—Cambodia could finally decide its own currency value, money supply and commercial policy
-
-
-<!--memo:7645994c799a-->
-### The Three Colonised Countries: The Predicaments Vietnam, Cambodia and Laos Each Faced
-
-> 2026-03-15 11:30:28 · `#格物/柬埔寨`
-
-The starting point is the end of 1951, when the right to issue currency was transferred from the Banque de l'Indochine to the monetary issuing institutions of Cambodia, Laos and Vietnam. Although the three countries issued banknotes separately, the design was uniform
-
-In the seventy years since, they have taken three completely different paths
-
-What's unique about Vietnam is that from the very beginning it wasn't one country issuing one currency, but two regimes issuing two completely different monies under the same name, the "đồng." North Vietnam brought out its own đồng to replace the piastre as early as 1946, and redenominated twice, in 1951 and 1959 (at ratios of 100:1 and 1000:1 respectively). South Vietnam continued to use banknotes with dual denominations in piastres and đồng until 1955, when the National Bank of Vietnam issued independently
-
-The 1986 "Đổi Mới" policy gradually stabilised the economy, but the after-effects of hyperinflation are still visible in the đồng today: the đồng was once one of the lowest-denomination currency units in the world
-
-So now, buying a cup of coffee in Hanoi may cost 30,000 to 50,000 đồng—the number itself contains the entire memory of this country's inflation history
-
-Unlike Cambodia and Laos, Vietnam took a relatively successful path. The đồng is a non-convertible currency, with the exchange rate strictly controlled by the State Bank of Vietnam
-
-But Vietnam's economy itself has maintained one of the highest GDP growth rates in the world over the past two decades. The đồng's problem isn't existential—it's structural: the denomination is too low, making daily transactions inconvenient, and the government has repeatedly tried to introduce coins but the Vietnamese public won't accept them; banks even refuse to handle coin deposits, and in the end the State Bank stopped issuing coins in 2011
-
-Laos has it harder: the kip has depreciated by more than 50% since 2022. Inflation soared to 31% in 2023, far above the 3% average of the previous five years. By the end of 2023, the Lao central bank's foreign exchange reserves were only 1.67 billion US dollars, covering just 2.3 months of imports
-
-According to ADB data, the size of Laos's economy shrank from about 18.7 billion US dollars in 2019 to 14.1 billion in 2023. Over the same period GDP per capita fell from 2,600 dollars to 1,858 dollars. The kip depreciated from under 14,000 to the dollar in 2021 to about 24,000 in 2023
-
-Laos's public and publicly guaranteed debt is estimated at more than 100% of GDP. China holds about half of Laos's sovereign external debt. Laos has not formally defaulted, but it has only avoided default thanks to repeated temporary debt extensions granted by China. In 2023, more than half of domestic government revenue went to servicing debt (even after large extensions had already been obtained), leaving almost no fiscal space for education and health spending
-
-One of the main culprits was the flood of foreign investment in the mid-2010s, including the 6-billion-dollar China-Laos Railway and large-scale hydropower projects (mostly from China). These projects borrowed in foreign currency, but the payback period is long—when the kip collapsed, dollar-denominated debt exploded in local currency terms
-
-Foreign currency deposits in Laos account for 69% of broad money, and heavy dollarisation and bahtisation weaken the central bank's ability to transmit monetary policy through policy rates, because the cost of Laos maintaining an independent currency far exceeds the benefit
-
-Cambodia's core problem right now is the absence of sovereignty
-
-But this stability is built on "actively giving up monetary sovereignty"—about 80% of transactions are settled in US dollars, and the riel is mainly a tool for change and small rural transactions. Precisely because of high financial dollarisation, the riel's exchange rate stays stable against the dollar—but that also means Cambodia's central bank has almost no independent control over monetary policy
-
-Cambodia chose a path completely opposite to Laos's: not "borrow foreign debt → kip collapses," but "use the dollar directly → give up seigniorage → use Bakong to slowly find its way back"
-
-For a small colonised country, what does having its own currency actually mean
-
-Vietnam's history gives the answer that you need strong economic fundamentals for a currency to be meaningful; Laos's lesson is that if your economy can't support an independent currency, forcing one to hold may be worse than not holding one. Cambodia's experiment raises a third possibility: maybe you can in fact give up your own currency, and slowly find it again with digital technology
-
-
-<!--memo:94a495bee580-->
-### The Strait of Malacca Is a Key Point
-
-> 2026-03-15 11:34:00 · `#格物/柬埔寨`
-
-More than 80% of China's oil imports and a large volume of trade goods must pass through the Strait of Malacca. This strait is effectively controlled by Singapore and the US Navy—if China and the US come into conflict, the US can cut this lifeline. This is one of China's greatest strategic anxieties
-
-The China-Laos Railway → connecting to the Thai railway → extending to Malaysia → finally reaching Singapore—if this overland corridor is fully connected, China will have an alternative trade route that bypasses the Strait of Malacca. Although rail capacity can't fully replace shipping, it provides a "backup option" and strategic deterrence
-
-Belt and Road faces more and more "debt trap" criticism globally. China needs at least a few "success stories" to prove the model is viable. If the China-Laos Railway eventually runs through to Bangkok and even further, and the economies along the line really are driven along, China can point to it and say: "See, our model works"
-
-Conversely, if Laos really defaults and collapses, this would be one of Belt and Road's biggest PR disasters. So China keeps granting Laos debt extensions, partly to protect its own narrative—it cannot let the most emblematic Belt and Road project country become a failure case
-
-This is the Malacca dilemma China faces
+Looking back at my observations of Cambodia then, I felt that minting involved trust and circulation as well as technology.
 
 
 <!--memo:e9a7c6c74b13-->
@@ -3922,63 +3451,17 @@ Trade (exports and imports of goods and services) can reach several times GDP, a
 
 
 <!--memo:11198da31751-->
-### In Siem Reap I Checked Into a Hotel Booked Through Booking
+### A Newly Opened Hotel: The Stay and the Uncertainty
 
 > 2026-03-15 23:43:27 · `#格物/柬埔寨`
 
-Today in Siem Reap I checked into a hotel I booked through Booking. I won't write the name down.
+While travelling, I checked into a hotel booked through a reservation platform. I won’t name it. The photos looked fine and the price wasn’t high, so I thought I’d found a new place offering good value.
 
-When I placed the order, my first reaction was that I might have gotten a bargain. The photos on the page looked decent, the price wasn't high, and it felt like I'd found a new place with good value. It was just that at the time, looking at the Booking page, the overall feeling was a bit dodgy — not like a very mature, very solid hotel. But I booked it anyway.
+The room and shared spaces were more ordinary than I expected. The pool was still being filled. There was no Wi-Fi, and the staff gave me a phone hotspot. When I asked, I learned that the hotel had just opened and I was its first guest.
 
-I placed the order in the afternoon. After I ordered, they contacted me very quickly, first through Telegram, then switching to WhatsApp. That Telegram account even had Chinese in its name, and what looked like "HR" and such, which didn't look like a standard hotel front-desk account — rather it had a very mixed, hybrid feeling. They were immediately very warm, saying they could do free pick-up and drop-off, and could help arrange some things. That warmth didn't immediately put me at ease; instead it made me a bit nervous. The first thing that popped into my head was a very old cliché: there's no such thing as a free lunch.
+The staff were friendly, offering rides and helping order food. But with the facilities unfinished and responsibilities unclear, I never fully relaxed. I kept checking whether the door locked, whether it would be easy to leave, and whether I felt safe staying overnight.
 
-After I got there, my first feeling wasn't "this is a nice place to stay," but "this place doesn't seem ready." The room was very ordinary, the space overall was very ordinary, the hotel itself was very ordinary — completely unlike the feeling I'd had before coming, that I'd "gotten a bargain." It wasn't a "slightly worse than expected" thing; the whole place had the feel of something just cobbled together, not yet really running smoothly.
-
-The location was a bit out of the way too. Not the feeling of a standard hotel zone with people coming and going and lots of tourists; the sense of safety in the surroundings was so-so. The first person I met had tattoos and knew a little Chinese. Elsewhere that might be nothing, but in Cambodia I'm naturally more wary of details like that. Especially when I realized the people here seemed to have contact with Chinese circles — I wasn't more at ease, I was more put off. For me, running into Chinese people in an environment like this isn't necessarily a good thing.
-
-Later I gradually learned that the owner is a very young Bangladeshi, around twenty-five, with a strong personality, and he works remotely. He said himself that he works at a casino, and that he knows some Chinese friends, some buddies. When he said these things, maybe he wanted to seem well-connected and experienced, or maybe he was just chatting — but this information didn't put me at ease, it made me more nervous. I'm not familiar with that kind of background and I don't want to get involved in it. Including his saying he makes two thousand US dollars a month — mixed together, all of this made the whole scene feel less like an ordinary hotel check-in and more like stumbling into some patch of ground somebody had hastily thrown up.
-
-The staff on site all looked quite young, and there was none of the division of labor you get in a mature hotel — more like a few young people working together on a project that had just opened. Later, after I asked, I found out I was their first guest. That information wasn't volunteered by them; I asked and got it. By then, a lot of the incongruities that had seemed inexplicable up to that point suddenly had an explanation: this place probably really had just opened, and a lot of things weren't ready yet.
-
-That day the pool was still being filled with water. There was no Wi-Fi, and their solution wasn't to fix the network or to tell me when it would be back — they just took out a phone and gave me a hotspot. The whole way of handling things wasn't "a hotel's way of handling things," but "a few people figuring out how to muddle through today." Add to that the fact that they themselves admitted some of the hotel's display images were AI-generated, and I felt even more clearly that this wasn't a hotel already running steadily, but one where they'd made the page first, put the room up first, and then filled in the on-site details while operating.
-
-What really kept me checking over and over wasn't "is it comfortable" or "is it worth the money," but a more fundamental question: am I at risk to my life and safety here?
-
-I wasn't thinking about whether the service was good, but about whether this door can lock, what these people's backgrounds really are, whether it'd be easy to get away if something happened at this location, and whether all this excessive warmth was just a new place drumming up customers, or something else. I can't say exactly which moment it started to feel "this hotel is very wrong"; it's more that the whole process — ordering, being contacted, shifting between chat platforms, free pick-up, then arriving to see the people and the environment — was all abnormal. Each point on its own wasn't decisive, but strung together they kept me on edge.
-
-It's not that I didn't think about leaving right away. It's just that the feeling was strange; I can't quite put it into words. It wasn't that something concrete dangerous had already happened, nor that anyone had really done anything to me — it's that the whole process didn't resemble a normal, standard, reassuring hotel check-in. It was like stepping into a very makeshift scene, but the people in this makeshift scene were all especially friendly, even overly friendly. And so it became even harder to judge: you clearly feel something's off, yet for the moment you can't find a reason clear enough, legitimate enough, to justify turning around and leaving at once.
-
-They treated me well — or rather, their attitude was a bit over the top. They'd give me rides, help me make contacts, say they'd take me somewhere to hang out, and at night they'd even order takeout for me. In a normal, mature hotel system, none of that would be strange; but in a place where the pool is still being filled, there's no Wi-Fi, it just opened, I'm the first guest, the owner has a complicated background, and the staff are all young, that goodness feels a bit out of balance. The infrastructure and operating capability hadn't been built up, but people's warmth had already raced ahead.
-
-In the end, what I could do wasn't to be fully at ease, but to keep making a minimal judgment for myself. What I kept confirming was: at least so far, I haven't felt a direct threat to my life. They didn't force me, didn't surround me, didn't show obvious malice. That fear was more a fear of uncertainty than a fear of a danger that had already happened. So in the end I didn't leave immediately, but stayed for now, in a very complicated state.
-
-Looking back now, the strangest thing about this experience isn't any single detail, but that they all stacked together: a hotel page on Booking that already looked a bit dodgy, a string of shifting contacts from Telegram to WhatsApp, an account with Chinese and traces of "HR" in its name, a twenty-five-year-old Bangladeshi owner, working remotely at a casino, someone who knows a little Chinese, knows Chinese friends and buddies, free pick-up, excessive warmth, a pool being filled, no Wi-Fi, a phone hotspot given to me, a very ordinary premises, and me still being their first guest.
-
-The whole thing doesn't feel like a normal hotel check-in; it's more like I accidentally checked into a place that had just been thrown up and hadn't fully landed. They were friendly the whole time, but the one thing I genuinely cared about from start to finish was: if I stay here tonight, am I actually safe.
-
-Combining the system modeling of them, my understanding of that kind of group, and my understanding of Cambodia's current situation, the analysis is that this is most likely a group of young people with complicated backgrounds who hastily opened an accommodation point, where the owner himself has ties to casinos/cross-border circles, and the operation is extremely irregular.
-
-The style of this hotel they posted really feels like a casino's style, lol.
-
-The surface identity is hotel, homestay, pick-up, travel services, but in reality the friend circle probably connects to casino workers, outsourced customer service, recruitment agents, drivers, currency exchange, nightlife, online business.
-
-The contact tools aren't a standard front-desk system but Telegram, WhatsApp, personal numbers, and the way they do things isn't the standard hotel process but "who knows who, who comes to help first, just catch the person first and figure it out later."
-
-The style of this business card they posted.
-
-
-<!--memo:4b689362f0a7-->
-### An Analysis of Cambodia's Casino Problem
-
-> 2026-03-16 10:53:32 · `#格物/柬埔寨`
-
-Mainly concentrated in Sihanoukville (Sihanoukville), Poipet (on the Thai border), Bavet (on the Vietnamese border) and other places.
-
-The profile and current situation of the workers.
-
-Employees of legal brick-and-mortar casinos, including service, security, dealers: local Cambodians make up a large share, mostly women; learning a bit of Chinese can double your wage, and Chinese employees are basically management. Casinos are mostly Chinese-language environments (Chinese signage, waiters), smoke-free in principle yet wreathed in smoke, serving Chinese gamblers. The work is relatively stable, but after the pandemic/bans there was mass unemployment (Sihanoukville once had 7,000+ Cambodians out of work). NagaWorld, for example, once had a union strike, with many women leaders.
-
-Workers in illegal online gambling and scam compounds: mainly young people from mainland China, 20–30 years old. Supplemented by Southeast Asians (Vietnamese, Thai, Indonesian, Burmese), Africans, even children (from age 14). At the peak, Sihanoukville had 500,000–600,000 Chinese, more than half of them involved in this. Mostly low-income people from home (waiters earning 3,000 yuan a month), debtors, ex-convicts fleeing China's crackdowns, and "all sorts of shady types" (triads, tattooed men). Recruited through fake job ads on 58.com, Baidu Tieba, WeChat/Telegram/Facebook ("online customer service," "promotion," "IT," "typist," promising high pay + airfare covered). Middlemen pick you up at the airport; once you land your passport is taken and you sign a "6-month contract" (breach = fine). Some go voluntarily, then it turns coercive (debt bondage, violence). Daily life basically revolves around: a military-controlled compound/tower (barbed wire, security, 8-person dorm rooms), 12–18 hour shifts. Departments: HR (recruiting people from home), promotion (the core — pulling people in to top up and gamble/scamming, chatting while playing different characters, "pig-butchering"), customer service (top-ups, answering questions). They farm fake WeChat accounts, change identities to lure people into gambling. Inside the dorm there's a canteen/supermarket, but going out is forbidden. Income gaps are huge — bottom-rung base salary 6,000+, top promotion supervisors 200,000+; the bosses are called "dog bosses," mostly from Fujian, around thirty, newly rich (a mid-sized operation makes 5 million+ a month in profit), with bodyguards, running it as a family business.
+No direct threat occurred, and nobody forced me to stay. My unease came mostly from uncertainty. What I can confirm is my experience and concern; these do not establish the operators’ backgrounds or motives.
 
 
 <!--memo:01f9cc380625-->
@@ -3986,17 +3469,11 @@ Workers in illegal online gambling and scam compounds: mainly young people from 
 
 > 2026-03-16 11:06:01 · `#格物/柬埔寨`
 
-Opening the door, through the light, sweeping across the courtyard, past the banana trees and greenery, you can clearly see the pool in the distance.
+Opening the door in the morning, I could see the pool beyond the light, courtyard, banana trees and greenery.
 
-The pool's edge looks very rough; there's even blue tarpaulin (or similar clutter) piled beside it, and the bottom or walls of the pool are faintly visible. There's none of the shimmering, ready-to-swim state of a normal hotel pool. It looks like something long abandoned and only now beginning to be cleaned up, or a pool just built and not yet fully finished.
+The pool’s edges still looked rough, with clutter beside it. It was different from the ready-to-use hotel pool I had expected. The corridor was quiet too: only birdsong, with no staff in view.
 
-This shows the operator's logic isn't "prepare perfectly, then open," but "put the frame up first, con whoever you can, fix it while making money."
-
-Judging by the corridor structure in the video — white columns, arches, red wooden railings, and a red shrine in the distance (the four-faced Buddha / land god shrine common in Southeast Asia) — this looks more like a large local residence or private villa with a courtyard than a purpose-designed commercial hotel. Quite possibly it's a local vacant villa they rented before.
-
-In the whole video there's only birdsong in the background. The red-cushioned wooden chairs on the corridor are empty, no staff walking around, no service carts, cleaning tools or other daily hotel life — they just hired the wife of a local partner to come do basic cleaning tasks.
-
-This is most likely a byproduct spilled over from Cambodia's gray economy / fringe circles. Because of Cambodia's crackdown or transformation of certain industries these past two years, some peripheral young people with backgrounds in casinos, telecom-fraud compounds and cross-border gray business started looking for ways to "go legit" or earn money on the side. They use the wild methods of gray business (AI-generated fake images, Telegram traffic funneling, grabbing customers through acquaintances, overpromising) to run a physical service business.
+My impression was that the facilities and daily operation were not fully ready. Those images alone cannot establish anything about the operators’ other backgrounds, and my unease is not evidence of that.
 
 
 <!--memo:0f2a5d9e1bf1-->
@@ -4028,7 +3505,7 @@ Cambodia gave me the same feeling as Nepal: day-to-day spending isn't low. Partl
 
 This is because of China's extraordinarily strong supply chain and logistics density; Chinese manufacturing, delivery networks and platform competition drive many daily goods, dining and transport prices very low. Cambodia's market is smaller, more import-dependent, and distribution efficiency lower, so many seemingly ordinary goods and services aren't cheap.
 
-In China the path from production to transaction is almost frictionless: the fixed cost spread over each unit of goods is lower, circulation loss is lower, competition is fiercer, turnover is faster.
+In China the path from production to delivery is almost frictionless: the fixed cost spread over each unit of goods is lower, circulation loss is lower, competition is fiercer, turnover is faster.
 
 China is still one of the world's largest manufacturing countries, and its consumer market and online retail scale are also enormous; in 2025 China's total retail sales of consumer goods reached 50.1 trillion yuan, with online retail sales of physical goods accounting for 26.1% of the total. At the same time, China's express delivery volume reached about 199 billion parcels in 2025, showing that its distribution network already runs as an ultra-high-frequency, ultra-large-scale system.
 
@@ -4095,34 +3572,22 @@ Besides everyday blessings, there's also consultation and counselling, and merit
 The monk ties a white or yellow cotton thread around the worshipper's wrist—that's ខ្សែដៃ (kse dai), the protective string. Worshippers usually wear this thread until it falls off on its own, believing it offers continuous protection; I came across this in Nepal too
 
 
-<!--memo:5af7a1f16e8b-->
-### Vietnam Is Itself a Marxist-Leninist Regime. In Communist Theory
-
-> 2026-03-16 16:58:09 · `#格物/越南`
-
-Vietnam is itself a Marxist-Leninist regime. In communist theory, religion is "the opium of the people"—something to be controlled and gradually marginalised, not encouraged. Vietnam applies similar controls to the Buddhist sangha inside its own country. So the People's Republic of Kampuchea (PRK) that they propped up naturally carried on this same logic
-
-So men under 55 were forbidden from becoming monks; [the sangha] had enormous capacity for political mobilisation, and the transmission of knowledge was broken
-
-
 <!--memo:e59e995db6ed-->
 ### Goh Keng Swee
 
 > 2026-03-16 17:19:28 · `#格物/新加坡`
 
-Singapore's favourite figure
+My favourite figure from Singapore
 
 He was the chief architect of Singapore's economic take-off
 
-The hardest bones to chew in Singapore's early years as a nation—the economy, defence, finance, education—almost all of them he handled single-handedly and laid the foundations for
+The hardest bones to chew in Singapore's early years as a nation—the economy, finance, education—almost all of them he handled single-handedly and laid the foundations for
 
 In the early years of nation-building Singapore had extremely high unemployment and faced a crisis of survival. After Goh Keng Swee became the first finance minister, he made a crazy decision: reclaim land from the sea, and build the largest modern industrial park in all of Asia in the raw swamps and jungle of Jurong in the west
 
 He did whatever it took to build roads, supply water, supply electricity, set extremely favourable tax policies, and go around the world drumming up business
 
-Goh Keng Swee studied the Israeli and Swiss models, and pushed through, against all objections, the highly controversial "National Service" system, requiring every Singaporean male over 18 to serve two years in the military. Within just a few years this produced a well-equipped modern army capable of forming a "poison shrimp" deterrent in Southeast Asia (the Singapore Armed Forces, SAF)
-
-After defence and industry, he began long-term planning for Singapore's wealth
+After industry, he began long-term planning for Singapore's wealth
 
 He single-handedly set up the institution equivalent to Singapore's central bank, and built an extremely strict financial regulatory system, making Singapore one of the safest and most transparent financial centres in Asia
 
@@ -4138,7 +3603,7 @@ He didn't sit in a Beijing office drinking tea; instead he brought a team (even 
 
 Don't be afraid of foreign capital exploitation—foreign companies come for profit, but the technology lasts, so be bold in giving foreign capital concessions (investment philosophy)
 
-Don't blindly borrow foreign debt; many developing countries built on heavy foreign borrowing and ended up in obvious debt crises; you must attract direct investment (FDI)
+Don't blindly borrow foreign debt; many developing countries built on heavy foreign borrowing and ended up in debt crises; you must attract direct investment (FDI)
 
 
 <!--memo:f57bdf7a7588-->
@@ -4204,17 +3669,7 @@ Because there's no real price paid, no sustained action to change, most likely t
 
 > 2026-03-18 00:38:20
 
-Wow, really, I watched that video by Yingshi Jufeng on Bilibili, and I thought it was absolutely incredible. The Bangladesh it introduced — Bangladesh is itself a very densely populated South Asian country shaped by rivers. It borders India on three sides and Myanmar on the other. The country isn't that big, but its population is enormous. Its capital is a capital with a huge number of people. And it sits on the world's largest river delta, so its land is extremely fertile, which also dooms it to be like many Southeast Asian countries: agriculture matters enormously. The population is also very dense, infrastructure is very hard to build, and the climate is very fragile. What's really interesting is that it wasn't a naturally unified long-standing country. In modern times it has many ethnic groups and fierce political disputes. It originally belonged to India's Bengal region, and later became independent as Bangladesh. So now its own language, Bengali, its own sense of national identity, and its unique narrative of historical memory are the core of the legitimacy of this country's modernisation. Bangladesh places great importance on one thing: it's not only floods, not only poverty, not only cheap labour. Under severe resource constraints, it's a developmental society built on population, on manufacturing, on women's labour, and on social mobilisation. It's one of the world's 35th largest economies, but in the future there's a lot of... The money for getting out of poverty is much more now too — since 2010 or so, more than 30 million people in Bangladesh have escaped poverty. But it's still quite hard right now. Its social structure is very young, but it also very much emphasises a relationship-network society. I remember its capital, Dhaka, is the densest and most congested big city in the world. But its vitality is super strong, and the pressure on infrastructure is enormous. There are also a lot of motorcycle taxis. I think this country is quite interesting. It sits at the junction of India, China, and some parts of Southeast Asia. Its climate is especially interesting too.
-
-***
-
-
-<!--memo:acc96c3258c5-->
-### Bangladesh's system has some problems — it came from the colonial period at the very start
-
-> 2026-03-18 00:49:07 · `#格物/孟加拉`
-
-I think Bangladesh's system has some problems — it came from the colonial period at the very start, from the needs of the ports and the barracks. And then after independence, from a reality of compromise that couldn't be undone or eliminated, piled up. In early South Asia there were actually some singing-and-dancing performers appearing; at that time it was a fairly scattered social phenomenon. Then in the colonial period of British India, it was actually the colonial authorities — they wanted to control venereal disease among soldiers, so they pulled some sex workers into a managed space. It was actually for the army and for public order that they managed it; at that point they already recognised its existence, in order to turn it into an object that could be controlled, isolated, used, suppressed. And its distribution is interesting too — it wasn't officially planned in a normal way; wherever there was a male-dense place, a place where people stayed a long time, local power already tacitly accepted it, and that's where it was. After independence, in fact, Article 18 of its constitution clearly states that it effectively prevents prostitution and gambling. But in reality the contradiction is that it hasn't been criminalised — private transactions are still recognised — and managing a brothel may be illegal, while in practice its existence is tacitly accepted. So it's now a spatial, tolerant system. Plus now there are many poor families, many abandoned women. And so it formed a semi-feudal community, and this kind of social structure.
+Wow, really, I watched that video by Yingshi Jufeng on Bilibili, and I thought it was absolutely incredible. The Bangladesh it introduced — Bangladesh is itself a very densely populated South Asian country shaped by rivers. It borders India to the west, north and east, with a short border with Myanmar to the southeast and the Bay of Bengal to the south. [Bangladesh’s official geographic overview](https://www.bdhckl.gov.bd/111-5/) The country isn't that big, but its population is enormous. Its capital is a capital with a huge number of people. And it sits on the world's largest river delta, so its land is extremely fertile, which also dooms it to be like many Southeast Asian countries: agriculture matters enormously. The population is also very dense, infrastructure is very hard to build, and the climate is very fragile. What's really interesting is that it wasn't a naturally unified long-standing country.  Bangladesh places great importance on one thing: it's not only floods, not only poverty, not only cheap labour. Under severe resource constraints, it's a developmental society built on population, on manufacturing, on women's labour, and on social mobilisation. It's one of the world's 35th largest economies, but in the future there's a lot of... The money for getting out of poverty is much more now too — since 2010 or so, more than 30 million people in Bangladesh have escaped poverty. But it's still quite hard right now. Its social structure is very young, but it also very much emphasises a relationship-network society. I remember its capital, Dhaka, is the densest and most congested big city in the world. But its vitality is super strong, and the pressure on infrastructure is enormous. There are also a lot of motorcycle taxis. I think this country is quite interesting. It sits at the junction of India, China, and some parts of Southeast Asia. Its climate is especially interesting too.
 
 ***
 
@@ -4224,7 +3679,7 @@ I think Bangladesh's system has some problems — it came from the colonial peri
 
 > 2026-03-18 14:47:11 · `#格物/吴哥窟`
 
-You can't treat it just as a temple; you have to look at it as the ruins of an imperial capital complex. UNESCO defines Angkor as one of the most important archaeological sites in Southeast Asia, covering more than 400 square kilometers—not just Angkor Wat itself, but also multiple capitals of the Khmer Empire from the 9th to 15th centuries, temples, water systems, and road networks.
+You can't treat it just as a temple; you have to look at it as the ruins of an imperial capital complex. UNESCO defines Angkor as one of the most important archaeological sites in Southeast Asia, covering around 400 square kilometers—not just Angkor Wat itself, but also multiple capitals of the Khmer Empire from the 9th to 15th centuries, temples, water systems, and road networks.
 
 Angkor's soul roughly has three kinds:
 
@@ -4234,7 +3689,7 @@ the second is the face of royal power and religious transformation, represented 
 
 the third is a sense of ruins, of forest, of time, represented by places like Ta Prohm, Banteay Samre, and Beng Mealea.
 
-These three correspond respectively to the Small Circuit, the Grand Circuit, and the Outer Circuit.
+These are three ways I understand the sites; they do not map one-to-one onto the Small Circuit, Grand Circuit, and Outer Circuit.
 
 Among the Outer Circuit, the one most worth a special trip is Banteay Srei, followed by Beng Mealea.
 
@@ -4252,33 +3707,19 @@ Preah Khan
 
 Beng Mealea
 
-Angkor is a national project of the Khmer Empire—not just temples, but also the imperial capital complex; the remains of different capitals of the Khmer Empire are preserved here.
+The wider Angkor site preserves remains of successive Khmer capitals; Angkor Wat is one temple within it. [UNESCO on Angkor](https://whc.unesco.org/en/list/668/)
 
 In its early period Angkor was deeply influenced by Hinduism, and later it gradually shifted to Mahayana Buddhism, then layered on Theravada Buddhist influence. The most typical is the move from imperial symbols leaning toward the Brahmanical system, such as Angkor Wat and Baphuon, to the Buddhist royal-power expressions of Jayavarman VII's era, such as Bayon, Ta Prohm, and Preah Khan.
 
 
 <!--memo:1c1a29be3d6b-->
-### King Suryavarman II
+### Suryavarman II and Angkor Wat
 
 > 2026-03-18 15:18:06 · `#格物/吴哥窟`
 
-King Suryavarman II (reigned 1113–1150) threw the whole strength of the nation into building Angkor Wat, which took about 37 years.
+Suryavarman II commissioned Angkor Wat in the 12th century. Originally dedicated to Vishnu, it later became a Buddhist sacred site. Its gallery reliefs depict epics such as the Ramayana and Mahabharata, as well as the king’s procession. [APSARA on Angkor Wat](https://apsaraauthority.gov.kh/2021/06/14/angkor-wat/)
 
-As the highest masterpiece of Khmer architectural art, this magnificent structure was not only the empire's state temple but also the funerary temple Suryavarman II prepared for himself.
-
-Suryavarman II dedicated Angkor Wat specifically to the Hindu protective god Vishnu; the temple's original name, "Paramavishnuloka," means "the sacred dwelling place of Vishnu."
-
-To complete this colossal project, Suryavarman II used about 300,000 workers and 6,000 elephants.
-
-In construction technique, the craftsmen used mortar-free dry masonry, the corbel arch, and mortise-and-tenon joints, achieving an extremely precise and stable interlocking of the building.
-
-Suryavarman II's architects cleverly combined the traditional Khmer "temple-mountain" with the "galleried temple" structure, designing Angkor Wat as a perfect miniature model of Mount Meru, the center of the Hindu cosmos.
-
-Suryavarman II not only built a temple but left behind a vast "epic in stone." The galleries of Angkor Wat hold nearly 1,000 square meters of exquisite bas-reliefs, vividly depicting the epic stories of the Ramayana and the Mahabharata, especially the famous "Churning of the Ocean of Milk" scene in the east gallery.
-
-Even more striking: in the 94-meter-long relief in the south gallery, Suryavarman II's own royal procession is directly depicted, with him seated on an elephant surrounded by 15 parasols — the most direct visual declaration of his absolute secular power and sacred authority.
-
-Regrettably, after Suryavarman II's death the construction of Angkor Wat stopped, leaving some of the relief decoration unfinished to this day.
+What interests me is how the architects combined the temple-mountain and galleries, turning a religious cosmology into a space one can physically enter.
 
 
 <!--memo:9d5b7424feab-->
@@ -4298,21 +3739,21 @@ Echoing the myth of the "Churning of the Ocean of Milk." The symbolic meaning of
 
 
 <!--memo:bd38f0a314e5-->
-### Built by Water, Ruined by Water: Agricultural Collapse and Imperial Decline
+### The Prosperity and Fragility of a Water System
 
 > 2026-03-18 15:43:52 · `#格物/柬埔寨`
 
-Built by water, ruined by water: agricultural collapse and imperial decline. This highly engineered hydraulic agricultural system brought unprecedented prosperity, but it was also extremely fragile. By the 14th to 15th centuries, as over-logging caused soil erosion and the canals silted up badly, the water system began to fail. The region then suffered decades of alternating extreme drought and violent downpours (the effect of the Little Ice Age), which completely destroyed the aging reservoirs and irrigation network. When the hydraulic system collapsed, rice yields plummeted
+Angkor’s vast water system makes me think that prosperity and fragility can come from the same structure. Research examines hydroclimatic changes, including droughts in the 14th and 15th centuries, alongside Angkor’s decline. This does not establish a single cause or support the claim that rice cropping fell from three or four harvests a year to one or two. [Research on occupation and the tempo of collapse at Angkor Wat](https://doi.org/10.1073/pnas.1821879116)
 
-— from three or four harvests a year plunging to one or two. The food shortage made it impossible to keep supporting a huge population and army; the empire fell into civil strife and was ultimately forced to move south under Siamese (Thai) invasion, marking the end of Angkor's golden age.
+What I want to understand is how a society so dependent on a water network copes with environmental change and the demands of long-term maintenance.
 
 
 <!--memo:d192b1651ea2-->
-### Just Spent 3 Hours, and Now I'm at This Angkor Museum
+### Three Hours at the Angkor Museum
 
 > 2026-03-18 18:50:11
 
-Today I just spent 3 hours, and then came to this Angkor museum — it's a museum here in Siem Reap, one in Siem Reap, and I felt it was pretty interesting. Before coming I had actually read up on Angkor Wat, and on the history of Siem Reap, including some Khmer history, and it all felt really interesting. I wasn't actually considering coming to this museum, because it charges quite a lot — this time it cost me 18 US dollars, which feels on the high side for people like us who aren't earning US dollars. But after seeing it, I thought the experience was very good, because although it doesn't have all that many truly precious artifacts, it's a single thread that helps you understand what the whole history of Angkor was like, and the background relationships between the various Buddha statues, the various goddesses, the various gods and Buddhas and immortals, including the background relationships of Hinduism and the basic relationships of Buddhism — I found that very interesting. The museum is like a proof of presence: it lets you walk through it yourself and makes you feel that these things aren't only to be learned online or from books, but that you can also go to the actual sites and look at the corresponding ancient monuments, some very precious exhibits, look at them very closely, observe their details, observe their workmanship, observe their carving art. And then there are all kinds of wooden Buddha statues, stone Buddha statues, metal Buddha statues, silver figures. And I just marvel at how fine the workmanship is — it's really impressive.
+Today I spent three hours at this Angkor museum — it's a museum here in Siem Reap, one in Siem Reap, and I felt it was pretty interesting. Before coming I had actually read up on Angkor Wat, and on the history of Siem Reap, including some Khmer history, and it all felt really interesting. I wasn't actually considering coming to this museum, because it charges quite a lot — this time it cost me 18 US dollars, which feels on the high side for people like us who aren't earning US dollars. But after seeing it, I thought the experience was very good, because although it doesn't have all that many truly precious artifacts, it's a single thread that helps you understand what the whole history of Angkor was like, and the background relationships between the various Buddha statues, the various goddesses, the various gods and Buddhas and immortals, including the background relationships of Hinduism and the basic relationships of Buddhism — I found that very interesting. The museum is like a proof of presence: it lets you walk through it yourself and makes you feel that these things aren't only to be learned online or from books, but that you can also go to the actual sites and look at the corresponding ancient monuments, some very precious exhibits, look at them very closely, observe their details, observe their workmanship, observe their carving art. And then there are all kinds of wooden Buddha statues, stone Buddha statues, metal Buddha statues, silver figures. And I just marvel at how fine the workmanship is — it's really impressive.
 
 
 <!--memo:489bae936ceb-->
@@ -4322,7 +3763,7 @@ Today I just spent 3 hours, and then came to this Angkor museum — it's a museu
 
 It suddenly hit me that if I were to sum up the whole learning process right now, I'd say it's really interesting. At the beginning I used some AI tools to quickly help me understand the history of this place, and it would organize things into chapters for me; for instance, when introducing the history of Angkor, or the history of the Khmer, or the history of Cambodia, it would arrange it and tell me the original historical stories of this place, and then the later turns — why they chose Hinduism, and why they later shifted to Buddhism, and their most important industries, like agriculture, and why agriculture mattered so much, and what's closely tied to agriculture here, namely the water systems, and how the water systems and the weather here affected this country, and then later some of the modernization process. And some of the famous sights here. For example, the Cambodian flag has Angkor Wat on it, and Angkor Wat's influence on this place — it's like a calling card for Cambodia. And then it introduced the history of Angkor Wat, some of the architectural features inside Angkor Wat.
 
-Then I actually went to see this museum in person, I went into the museum and experienced it firsthand. And in the process I also used AI to help me record things, including taking some photos, or sending in some corresponding terms, and it also helped me expand on them in detail — it felt like learning by looking at real objects. It would introduce which gods there are, which Buddhas there are, which immortals there are, which historical background stories there are, and what they specifically look like, including the dancing girls — all blending together, and it helped me break them down one by one, helping me identify these ancient monuments, and their specific proxies, the background stories they specifically map onto, their specific history, and what their specific myths look like. I think this is very helpful for me to learn in an embodied way. And then the deepest learning method was to go to Angkor Wat and feel the most famous place here, the Angkor Wat that is renowned the world over. Specifically, to feel it in greater depth inside Angkor Wat — what the real experience is like. I think this process is, at Angkor Wat, something like an embodied experience, bringing yourself into that environment to feel this story that is so rich in history and culture, such a legend in human history. That's very embodied, and I think it's really interesting. It's like a subjective experience, a personal experience. And then this learning method basically goes: from how to use AI to learn quickly at the very start, and then how to, concretely, through real objects, empathize — by observing the details, through your own eyes, to observe what the real object specifically looks like. Through being there in person to feel it, and then through bringing yourself into a historically meaningful environment, an environmental field, to genuinely understand the historical story, and to feel the growth that this cultural monument brings you.
+Then I actually went to see this museum in person, I went into the museum and experienced it firsthand. And in the process I also used AI to help me record things, including taking some photos, or sending in some corresponding terms, and it also helped me expand on them in detail — it felt like learning by looking at real objects. It would introduce which gods there are, which Buddhas there are, which immortals there are, which historical background stories there are, and what they specifically look like, including the dancing girls — all blending together, and it helped me break them down one by one, helping me identify these ancient monuments, and the corresponding terms, the background stories they specifically map onto, their specific history, and what their specific myths look like. I think this is very helpful for me to learn in an embodied way. And then the deepest learning method was to go to Angkor Wat and feel the most famous place here, the Angkor Wat that is renowned the world over. Specifically, to feel it in greater depth inside Angkor Wat — what the real experience is like. I think this process is, at Angkor Wat, something like an embodied experience, bringing yourself into that environment to feel this story that is so rich in history and culture, such a legend in human history. That's very embodied, and I think it's really interesting. It's like a subjective experience, a personal experience. And then this learning method basically goes: from how to use AI to learn quickly at the very start, and then how to, concretely, through real objects, empathize — by observing the details, through your own eyes, to observe what the real object specifically looks like. Through being there in person to feel it, and then through bringing yourself into a historically meaningful environment, an environmental field, to genuinely understand the historical story, and to feel the growth that this cultural monument brings you.
 
 
 <!--memo:01ebe1e9e3aa-->
@@ -4336,59 +3777,25 @@ It covers the history, civilization and cultural heritage of the Khmer.
 
 I'm moved by the worldview and the narratives the Khmer civilization left behind.
 
-A civilization that, with no external coercion whatsoever, made tens of thousands of people believe that the same thing was worth spending a lifetime on.
+How did a civilization persuade tens of thousands of people that the same undertaking was worth a lifetime? I want to understand the respective roles of belief, social organization, and the mobilization of labor.
 
 
 <!--memo:3f8878873bcd-->
 ### Preah Ang Chek Preah Ang Chorm Shrine
 
-> 2026-03-20 12:22:17 · `#格物/越南`
+> 2026-03-20 12:22:17 · `#格物/柬埔寨`
 
 Preah Ang Chek Preah Ang Chorm Shrine
 
-You could call it Siem Reap's guardian shrine
+You could call it Siem Reap’s guardian shrine.
 
-Originally enshrined in the Preah Poan gallery (the Gallery of a Thousand Buddhas) at Angkor Wat. "Chek" and "Chorm" are abbreviations of royal titles, confirming their royal bloodline
+I saw worshippers offering incense and lotus flowers, and some washing the statues’ hands and feet with holy water.
 
-In 1950, the two bronze statues were rediscovered in the forest near Angkor Thom
-
-They were then taken by troops under Dap Chhuon, the governor of Siem Reap—a notorious warlord. Legend says he used black magic and could carry both Buddha statues on one shoulder, when normally it took five soldiers together to lift one. He spent half an hour praying before the statues every day, and it's said the statues even "told" him in advance of Prince Sihanouk's plan to assassinate him
-
-After Dap Chhuon was executed, the statues passed to the department of religious affairs, and later moved to Wat Damnak
-
-The Khmer Rouge period was the worst—the Khmer Rouge commander stationed in Siem Reap was a fanatical iconoclast, and ordered soldiers to throw both statues into the Siem Reap River, Phnom Penh Post. Folk legend says the soldier who carried out the order and the commander both fell ill and died not long after
-
-After the Khmer Rouge retreated in 1979, Siem Reap residents recovered the statues from the riverbed, Phnom Penh Post, and in 1982 this shrine was built at its current location
-
-Every day a lot of people come to offer incense, maybe several hundred, and on special days like Pchum Ben, Khmer New Year and the Water Festival it goes over 800
-
-Locals believe these two "sister goddesses" can protect the whole city of Siem Reap, and many newlywed couples come to pray for blessings. Worshippers offer lotus flowers and incense candles, and also wash the statues' hands and feet with holy water to pray for good luck (so that's what I saw)
-
-Cambodians' attachment to these kinds of sacred spaces is, to some extent, also a kind of spiritual rebuilding after trauma
-
-
-<!--memo:caa07378ffec-->
-### Siem Reap's Khmer Rouge Period History
-
-> 2026-03-20 12:24:27 · `#格物/柬埔寨`
-
-During Khmer Rouge rule (1975–1979) Siem Reap went through the same nightmare as the rest of the country—city residents were forcibly driven out to the countryside to do hard labour. But Siem Reap has several particularities:
-
-For the Khmer Rouge, Angkor was both a symbol of the "feudalism" they hated, and at the same time a huge source of national pride—it proved that Khmer people could achieve any great undertaking
-
-With the systematic destruction of Buddhism, Siem Reap's temples weren't demolished, but all were converted to military use, and all monks were forced to disrobe
-
-Members of the Angkor conservation institution and their families survived—they were sent to villages in the Roluos-Bakong area for collective labour
-
-The Gallery of a Thousand Buddhas at Angkor Wat was looted. There are reports that of the original thousand-plus Buddha statues in the gallery only about 15 remain; the statues were smashed and crudely destroyed. When the Khmer Rouge retreated they also laid large numbers of landmines around the temples, Travelcuriousoften, and clearance work went on for several years
-
-Siem Reap was the last area to return to peace
-
-The civil war continued until the late 1990s, Siem Reap. Even today, outside Siem Reap airport there are still fences marking minefields, and unexploded ordnance is occasionally found in the urban area
+This sacred space seems closely connected to everyday local life. It makes me want to learn more about its story.
 
 
 <!--memo:e9488d8d382f-->
-### Bought a motorbike
+### Rented a Motorbike
 
 > 2026-03-20 19:28:21 · `#格物/吴哥窟`
 
@@ -4404,7 +3811,7 @@ Tomorrow the Angkor itinerary starts, looking forward to it; along the way I'll 
 
 
 <!--memo:59e96a18e5a4-->
-### Linked from: https://v.flo
+### Another Bowl of Pho
 
 > 2026-03-21 10:34:36 · `#格物/吴哥窟`
 
@@ -4426,13 +3833,13 @@ I still feel it's Preah Khan that has more of a run-down feel; as for this, uh, 
 
 
 <!--memo:8c9942534f2d-->
-### Wanted to get to know some local friends in Siem Reap. They asked me some questions
+### Talking About Angkor Wat with Friends in Siem Reap
 
 > 2026-03-22 01:10:12
 
-Wanted to get to know some local friends in Siem Reap. They asked me some questions, like isn't Angkor boring? It seems that deep down we feel something about our country's cultural heritage—like the very famous Forbidden City, the Great Wall—these are like a calling card for our country, giving us a sense of belonging and achievement. But this feeling is actually very obvious in Cambodia; maybe because Cambodia has this, it has a calling card to the outside, it has a medium through which to open a window between itself and the outside world.
+I got to know some local friends in Siem Reap, and we talked about Angkor Wat. We seem to treat cultural heritage from our own country, such as the Forbidden City and the Great Wall, as a calling card, finding belonging and a sense of achievement in it.
 
-Leaving that aside, as for the friends here, they also feel that the existence of Angkor Wat makes them very proud—that their own country has such a calling card. Even during the Khmer Rouge period, this side existed too—Buddhism, and yet on the other hand they see this as a miracle; it represents a spirit, a very proud spirit. I think this is really interesting.
+That feeling also came through clearly in talking with local friends. They felt proud of Angkor Wat and saw it as a window through which others could get to know Cambodia. I found that interesting.
 
 ***
 
@@ -4447,16 +3854,6 @@ Siem Reap Ta Prohm Temple, an absolutely beautiful secret place
 It's also a filming location for Tomb Raider
 
 My feeling after going there—this temple gives me the sense that it's very mysterious, it really fits my definition of a secret place
-
-***
-
-
-<!--memo:dd48231e8449-->
-### On the question of Hinduism's inclusiveness
-
-> 2026-03-22 22:23:10
-
-On the question of Hinduism's inclusiveness
 
 ***
 
@@ -4494,7 +3891,7 @@ Angkor Wat is a world of gods, a description of a religious cosmos
 
 > 2026-03-23 00:05:06 · `#格物/吴哥窟`
 
-Five towers (Mount Meru) + the four-faced Buddha of Bayon are actually expressing the same cosmic model
+The five towers (Mount Meru) and Bayon’s four-faced stone images make me think about the layering and blending of religious traditions at Angkor
 
 Because it seems that in the time of the seventh [reign], because the empire had long had religions piling up and blending, the process of iterating into Buddhism was often not a simple replacement but a process of fusion. So the way it existed here in the Khmer lands was a long-term coexistence of Hinduism and Buddhism
 
@@ -4502,7 +3899,7 @@ He built Bayon Temple ("the smiling Buddha faces")
 
 Emphasising compassion and the salvation of all beings
 
-It shows that when a great culture merges into a local place, everyone is actually taking a blending approach. That is, in order to adapt to one's own original culture, while the modern culture is more conducive to maintaining the new order and understanding the new world, so the conflicts that arise between them often take the form of fusion rather than replacement—and it's like this in the culture of any country
+It shows that when a great culture merges into a local place, everyone is actually taking a blending approach. That is, in order to adapt to one's own original culture, while the modern culture is more conducive to maintaining the new order and understanding the new world, so the conflicts that arise between them often take the form of fusion rather than replacement alone. This observation cannot be generalized to every country’s cultural change
 
 This includes Tibetan Buddhism: the Bon religion at the start, then later replaced by Buddhism—that too was a process of fusion. There are still many traces of Bon today
 
@@ -4516,7 +3913,7 @@ This includes Tibetan Buddhism: the Bon religion at the start, then later replac
 
 I think Angkor Wat is really a place worth studying in detail, because to understand it you actually have to understand Hinduism—especially its axis, its proportions, its symbolic system and its moat, and the meanings these correspond to within Hinduism. So only by understanding Hinduism can you understand Angkor Wat
 
-Bayon is very interesting: if Angkor Wat is the extreme of order, then Bayon is the extreme of spirituality. It's the central temple of Angkor Thom, and it's known for the large number of temple stone statues nearby. And it actually had a ten-year continuous priority conservation project. And its status in Angkor is quite high, its recognisability is number one globally, and its expression of royal power, religious transition and its narrative capacity are all very strong
+Bayon is very interesting. If order is my strongest impression of Angkor Wat, Bayon feels more spiritual to me. At the center of Angkor Thom, its many four-faced stone images are highly recognizable, and its expressions of royal power, religious transition, and narrative interest me too.
 
 ***
 
@@ -4550,15 +3947,13 @@ This corresponds directly to the design of Angkor Wat
 
 
 <!--memo:58a997ea24e5-->
-### I remember it started with the Buddha. When he first wrote that Buddhist text
+### Buddhism and the Religious Environment of Ancient India
 
 > 2026-03-23 00:30:31 · `#格物/吴哥窟`
 
-Actually I remember it started with the Buddha. When he first wrote that Buddhist text, he actually mentioned a great deal about the gods, about some of the three great deities in Hinduism, such as Brahma, such as Shiva, such as Vishnu
+Buddhism arose within the religious and philosophical environment of ancient India. I want to understand how Buddhist texts engage with contemporary ideas about gods, ritual, and spiritual practice.
 
-The process of development is that Buddhism arose within the ancient Indian cultural sphere, and grew first out of the soil of Indian religious and philosophical tradition; later Hinduism, in its long development, absorbed part of Buddhism's thinking, practice methods and organisational forms
-
-Buddhism at the start really was responding to India's native religious environment
+I should not describe the Buddha as personally writing Buddhist books, or project the later, fully developed Hindu triad directly onto early Buddhism. The dates of different texts and ideas need to be checked separately.
 
 ***
 
@@ -4570,7 +3965,7 @@ Buddhism at the start really was responding to India's native religious environm
 
 This is very interesting
 
-It was built in the time of King [Jayavarman] VII, that is, at that time they were turning to Buddhism, which means its religious character is a Mahayana Buddhist monastery. So when I went in I actually saw many people kneeling and worshipping the Buddha there. A very different point between Theravada Buddhism and Mahayana Buddhism is that in Theravada temples only the Buddha is enshrined
+It was built in the time of King [Jayavarman] VII, that is, at that time they were turning to Buddhism, which means its religious character is a Mahayana Buddhist monastery. So when I went in I actually saw many people kneeling and worshipping the Buddha there. The way the Buddha is worshipped here makes me want to compare Theravada and Mahayana iconographic traditions; it does not justify saying that Theravada temples contain only one kind of image
 
 This place is a practice city where monks lived, you could also call it a city of rooms. So it isn't simply a building for worship; it also carries certain functional attributes and a practice function
 
@@ -4592,13 +3987,15 @@ One of the most recognizable temples.
 
 Ta Prohm was built in the reign of Jayavarman VII; originally named Rajavihara (royal monastery), it was a Mahayana Buddhist monastery and learning center.
 
-It's actually closer not to a temple but to a large monastery, a combined study-and-practice complex. It was built quite early, basically in the 11th century, and then it was a temple built by the seventh king for his mother. So its political and religious significance is strong, and its emotional coloring is distinctive too — unlike many temples that serve royal mythology, it carries a sense of family commemoration.
+It is closer to a large monastery and a combined study-and-practice complex. Built in the late 12th century and dedicated in 1186, it contained an image of Prajnaparamita associated with the memory of the king’s mother. [APSARA on Ta Prohm](https://apsaraauthority.gov.kh/2021/08/12/ta-prohm/)
+
+Its religious meaning and emotional coloring feel distinctive to me, with a sense of family commemoration.
 
 Its counterpart is Preah Khan, which I went to yesterday.
 
-Inside you can clearly feel that the stone wasn't destroyed by the trees, but taken over again by the trees. Why are there so many trees here? Because later — between Vietnam, Thailand and Cambodia, or what was then called Khmer — after conflicts and wars broke out between them, there were a lot of casualties, and then there was plague, and the Khmer people felt the area wasn't fit to live in. And Buddhist teaching also emphasizes this — it's not as rigid as Hinduism, which insists on holding fast to one place, a place that must be centered on Mount Meru.
+Inside, stone and trees seem interwoven. I still need more reliable historical sources to understand how abandonment, continued use, and maintenance changed here.
 
-So before the French discovered it, there were 500 years in between, and for almost all of those 500 years nobody paid attention, nobody maintained it, and in that process the trees were given room to grow, and many trees flourished.
+
 
 I think this is a very rare state: its civilizational remains didn't completely conquer nature, nor were they completely erased by nature, but rather exist in a balance of tension.
 
@@ -4606,13 +4003,13 @@ From outside to inside it's basically the same — it also matches a Hindu cosmo
 
 but a cultural landscape that has been managed, stabilized and protected: keeping the drama of trees and temple, while trying as far as possible to prevent it from continuing to destabilize and collapse.
 
-I actually compared this with some sights in China — many sights in China not only have ugly design and not a shred of aesthetics, but all kinds of colors that are disgusting to the eye. But I think there's another very important point: in many Chinese tourist sites, cultural relics aren't allowed to be approached, aren't allowed to be touched, aren't allowed anywhere near. But many relics were clearly made for people and coexist with people; that approach, though it preserves the final state of preservation of the relic, makes it feel as if the relic no longer has its own value and meaning.
+It also makes me think about balancing conservation and the visitor’s experience. Seeing a site up close is precious, while touching it or approaching particular areas still needs to follow the site’s conservation rules.
 
 The most easily underestimated thing about Ta Prohm is that back then it wasn't "a lone temple." Inscription records show it was once linked to an enormous system of people and supplies. Public sources mention that the temple once had tens of thousands of resident or service personnel, and that villages around it had large numbers of people providing it with goods, labor and religious services.
 
 
 <!--memo:7ad652168673-->
-### Thommanon Temple
+### Thommanon and Chau Say Tevoda
 
 > 2026-03-23 00:56:05 · `#格物/吴哥窟`
 
@@ -4632,7 +4029,7 @@ Chau Say Tevoda is a bit more complex, with more layers.
 
 > 2026-03-23 01:06:35 · `#格物/吴哥窟`
 
-It's a very, very popular temple. It's one of the buildings that best embodies Angkor's sense of a sacred mountain at the center of the empire. It too originated from Khmer Hindu state religion, and is generally believed to have been built under the second king.
+It's a very, very popular temple. It's one of the buildings that best embodies Angkor's sense of a sacred mountain at the center of the empire. It too originated from Khmer Hindu state religion, and is generally described as dating to the mid-11th century; its precise attribution remains a subject of research.
 
 This is a very ambitious temple-mountain temple, because once you climb up you can feel how very tall and very steep it is. I think from up there you can see everything below at a glance — right beside it is a command platform, the king's reviewing stand, and around it all kinds of big trees and greenery. Because this kind of building is very, very massive — it's a mountain piled up out of stone, like a stone mountain — it's different from those refined buildings. Those refined buildings are even afraid of being damaged by plants, like the building in that film we watched earlier, but this one isn't. It's like stone: it can effortlessly coexist with stone, and only stone has to adapt to it, not the other way around.
 
@@ -4644,9 +4041,9 @@ In front of it there's also a very long bridge-like causeway — that's like a s
 
 When I climbed it, I felt it was quite hard to get up — the slope is quite steep, and some of the steps are quite narrow, so it still feels like the risk factor is fairly high.
 
-Actually down below you can also clearly see a lot of broken stone — there's a story behind that. At the beginning of the 20th century, when the French archaeological team of the time entered Angkor, there had first been large-scale collapse, and some walls were displaced, so the whole structure was problematic, with stones scattered like a mountain. So they took a very risky approach: they decoupled and disassembled it, taking the whole temple apart, marking every stone, recording its position, and then reassembling it according to the original structure. Just think — to reassemble a large temple like this, how many stones would there be? Tens of thousands of 3D stones, all taken apart and put back together. And in the end they really did take it apart: hundreds of thousands of stones were removed, every one marked, recorded in drawings, and stored separately. But afterward, as we all know, the Khmer Rouge — there was a civil war period, and then an accidental, fatal accident occurred. During the Cambodian civil war, the Khmer Rouge made all the work stop, foreign teams were withdrawn, and the archives were also severely damaged. That is to say, at that point the stones were still there, but the instruction manual was gone — and it had been disassembled. They'd spent decades making a manual, and just like that it disappeared. So in engineering terms this was impossible to restore, and then decades later, after the 1990s, the French team came back.
+The many stone blocks below also made me curious about the restoration. After a long interruption, EFEO restarted major restoration work in 1995, and an inauguration marked its completion in 2011. Identifying and repositioning the stones feels like solving an enormous three-dimensional puzzle. [EFEO’s restoration study](https://publications.efeo.fr/fr/livres/843_le-baphuon)
 
-They began to reinterpret the stones — judging the position anew from the shape of each stone, reconnecting the relationships, re-establishing some logic. The difficulty was extremely, extremely high, because stone isn't standardized construction, the structure is three-dimensional, and there's a lot of historical layering, so some stones may already be damaged or displaced — meaning you don't just reassemble, you have to reason it out. But in the end they really did succeed. So this is hailed as the world's largest three-dimensional jigsaw puzzle, which is truly incredible. The story is really complicated, but in the end they achieved it, including the later conversion into a reclining Buddha.
+Identifying stone shapes, positions, and relationships must have been difficult. What strikes me is that restoration means understanding changes left by different periods, as well as putting scattered stones back together.
 
 
 <!--memo:9f3bcc5fdaa2-->
@@ -4692,25 +4089,15 @@ He sees these children as "little angels," and turned his own home into this cen
 
 The leather carving treats cowhide with natural materials, and every cut demands enormous patience; some complex pieces take even weeks to finish.
 
-Every cut demands enormous patience; some complex pieces take even weeks to finish.
-
 
 <!--memo:f8f358198a57-->
 ### Back When I Was in Chiang Mai, I Passed Through Some Rather Divided Places
 
 > 2026-03-24 11:07:07 · `#格物/柬埔寨`
 
-It suddenly came to mind that back when I was in Chiang Mai, I passed through some rather divided places. Because there are many places like that out there — for instance in Cambodia, land-use rights are very different from China: land can be sold, can be used as collateral. This is also why micro-loans are so developed in Cambodia — because there's collateral, and the collateral is land. So some things may be fundamental, like living conditions being fundamental — and China does quite well on this point.
+Some neighborhoods I saw in Chiang Mai, and on this trip in Cambodia, felt divided: high-rises and walled residences were not far from makeshift homes.
 
-Out there you can really see a lot of that divided feeling. Maybe in the same district, on one side is an upscale gated community with its own generators, even a hospital and all kinds of schools, walled off by high walls, while on the other side there might be a slum. In life they have no intersection at all, but at work they might happen to be superior and subordinate — meaning these two groups of people have only one place of intersection, and that's the employment relationship.
-
-And Cambodian society as a whole is actually very rigid; there's almost no mobility between classes. Even the current ruler's governing values aren't about redistributing the cake or breaking the cake — he just wants to improve things a bit within this system. For example, things that aren't good for the system's continued operation, like international image, cracking down on gambling — he'll do something about those. But there's no fundamental interest in safeguarding the living conditions of the people at the bottom.
-
-So this is an emotional reflection — at the time it looked pretty divided too: towering high-rises on one side, a slum on the other. Not only that, there are many con tricks as well; they have some stilt houses, but also some extremely crude ones. I think there might be a few reasons: one is the instability of their housing — they don't hold land title, so after a while they might be cleared away by the government, or cleared away by some powerful person with minimal compensation, because they want to develop some area.
-
-I think whether a country is developed should be judged by how the people at the bottom live. Otherwise, I think that country can never join the ranks of developed countries — no matter how glamorous and prosperous it looks, no matter how much great technology it has, I don't think so. I think you should look at how the people at the bottom live.
-
-China hasn't done all that well on this either, and actually the US hasn't done all that well either. In the US it's because its whole national set of values shaped this national form — it's a country of the strong, with the attribute of the strong. For any individual, opportunity is fair: even if you're at the bottom, a waiter, there's a chance to climb up, you can climb up. But at the bottom there are also many people without basic security, many living on the streets, relying on drugs or marijuana, or homeless on the street with not even a shanty.
+I do not know each household’s income, property rights, or work, so a street view cannot tell me their lives. But increasingly I feel that understanding a place means looking at where ordinary people live, how they commute, and how they get by, alongside its prosperity.
 
 
 <!--memo:ff24058b8b31-->
@@ -4720,47 +4107,21 @@ China hasn't done all that well on this either, and actually the US hasn't done 
 
 The previous one was a hotel I booked here in Siem Reap, and I felt it was really mediocre, especially in a few respects
 
-One is that what they served was all takeaway. That's just speechless, you know? They weren't freshly made, they ordered takeaway, then put a layer of packaging on the takeaway, and then served it to you. And they still charged me 6 dollars
+The food’s price and presentation did not meet my expectations; I paid six dollars per meal. I did not verify how it was prepared behind the scenes.
 
 Then the WIFI was under repair the whole time; I stayed nine days, and it was under repair all nine days
 
-And the room's basic facilities were severely lacking; there was a lot written down, but in reality most of it wasn't there, including the hairdryer, dryer, washing machine; even their Booking photos were AI-generated images, optimised images...
-
-
-<!--memo:65b35cc07145-->
-### About Cambodia: Cambodia's Current National Leader Is Hun Manet
-
-> 2026-03-24 12:50:42 · `#格物/柬埔寨`
-
-About Cambodia: Cambodia's current national leader is Hun Manet. As a PhD in economics, he knows very well that Cambodia cannot survive forever on selling land, grey/black industries or low-end garment manufacturing. There's a strong will to develop in his values. He proposed the "Pentagonal Strategy," emphasising digitalisation, human resource development, infrastructure construction and attracting formal foreign investment
-
-He was the first Cambodian to graduate from the US Military Academy at West Point, and went on to earn a master's in economics from New York University and a PhD in economics from the University of Bristol in the UK
-
-Before succeeding to power he was already deputy commander-in-chief of the Royal Cambodian Armed Forces and commander of the army, and at the same time he held extremely high prestige in the youth wing of the ruling party (the People's Party)
-
-Hun Manet's youth was spent almost entirely inside the West's top elite education system
-
-More than a decade of Western education gave him a very complete modern macroeconomic perspective and systems engineering thinking. He speaks fluent American English, and can hold deep conversations with Western diplomats and multinational executives without any obstacle. He fully understands what a modern rule-of-law state, free market and civil society should look like, and he also knows the true underlying colours of Cambodia across international economic indicators
-
-He wants to make the country rich, but it still allows wealth to concentrate at the top of the pyramid
-
-His military experience gave him an extremely cold realist undertone: in Cambodia, any exquisite economic model without absolute control of the gun as backing is a scrap of paper. He learned how to deal with those arrogant veteran generals who fought alongside his father, and how to maintain the army's absolute loyalty to the family in the distribution of interests
-
-Around him has gathered the next generation of Cambodia's core elite; by distributing political resources, concessions and business opportunities, he binds these young interest groups firmly to his chariot
-
-So he also knows that the stilt houses and slums around him are caused by corruption in the land system, but he will absolutely never settle accounts with the elites who grab land for the sake of the poor at the bottom, because those elites are exactly the cornerstone holding his prime ministerial seat steady
-
-All policies revolve around making the cake bigger; once the cake is bigger, ordinary people at the bottom can also pick up some fallen crumbs, thereby easing social tensions
+And the room's basic facilities were severely lacking; there was a lot written down, but in reality most of it wasn't there, including the hairdryer, dryer, washing machine; the actual place also looked very different from its Booking photos; I cannot confirm whether AI was used to alter those images.
 
 
 <!--memo:caf4a90b00bd-->
-### Before You Came to Cambodia, Because I Was in Lhasa at the Time
+### Why I Chose to Visit Cambodia
 
 > 2026-03-24 13:01:33
 
-Actually, before you came to Cambodia, because I was in Lhasa at the time, I found the concept of a "sermon gathering" very interesting, so at that point I chose one country: Cambodia. Cambodia is also a Buddhist-type country, and I was thinking that although Cambodia is also a Buddhist country, I feel it's a country with a fairly large wealth gap. I wondered what role Buddhism actually plays in this country, and how it shapes the country's current social form; I was very curious about that, and I've kept looking for answers on this part.
+Actually, before I came to Cambodia, because I was in Lhasa at the time, I found the concept of a "sermon gathering" very interesting, so at that point I chose one country: Cambodia. Cambodia is also a Buddhist-type country, and I was thinking that although Cambodia is also a Buddhist country, I feel it's a country with a fairly large wealth gap. I wondered what role Buddhism actually plays in this country, and how it shapes the country's current social form; I was very curious about that, and I've kept looking for answers on this part.
 
-I think the Khmer Rouge period brought this country a lot of suffering, and including much of this country's history, and the current institutional system of the whole country, there's still a long way to go. In that process, if you observe the people of this country well, and observe how they live, I think it's a very interesting topic. So that's also why I started choosing Cambodia.
+Observing people here, how they live, and how faith enters daily life seems very interesting to me. This was one reason I chose Cambodia.
 
 And I'm very interested in Cambodia's Angkor Wat, because although Angkor Wat was originally Hindu, it later converted to Buddhism. I'm actually very interested in its Hindu form too: how Hinduism spread at the time, and how it shaped people like this, and what influence this system still has on people now—that part is quite interesting.
 
@@ -4794,15 +4155,15 @@ Essentially it's knowing the truth, but being reluctant to let go of the version
 
 
 <!--memo:71433ed22a06-->
-### The Hindu Cosmology of Mount Sumeru Is Very Interesting
+### Mount Meru: Distinguishing Different Traditions
 
 > 2026-03-24 15:02:57 · `#格物/吴哥窟`
 
-I think the Hindu cosmology of Mount Sumeru is very interesting, because its design is centred on the cosmos, it's the world axis, and it connects three things: one is heaven, the celestial realm, representing the gods; and one is—the cosmology of Mount Sumeru is very interesting. One is hell, and in a philosophical sense it is the geometric centre of cosmic order, plus the centre of power, and of divinity. Then around Mount Sumeru there are four directions, east, south, west and north, and its outer layers aren't empty either: a layer of mountains, a layer of sea, then another layer of mountains, another layer of sea. This is in fact a layered model of the cosmos, plus a geometric universe. Then its vertical structure is a three-tier system, including the realm of desire. Desire as in craving. And this is the lowest level, including the human world. This part has desire, senses and craving. It's a desire-driven world. Then there's the realm of form, this is the highest level, a higher level. It represents a state of no desire but with form, corresponding to the state of meditative concentration. Then the highest level is the formless realm, without form or appearance, in ideology—these are the abstract levels of existence in the cosmos
+The cosmic model of Mount Meru is fascinating: like a world axis, it organizes the human, celestial, and subterranean worlds, surrounded by layers of mountains and seas.
 
-Then the celestial structure on Mount Sumeru is: at the summit is Shakra, who lives at the top of Mount Sumeru, and he is the ruler of the celestial realm. On the mountainside are the Four Heavenly Kings: King Dhritarashtra, King Virudhaka, then King Virupaksha, and King Vaishravana.
+This note mixed Hindu and Buddhist accounts. The realms of desire, form, and formlessness, along with Shakra and the Four Heavenly Kings, need to be understood within their particular texts and traditions, rather than treated as a single standard Hindu map.
 
-The realm system is multiple layers of hell, of extreme suffering; karma decides where one goes, and this is the ethical context—it also gives a good claim to explain suffering
+What interests me most is how geometry and hierarchy make an invisible cosmic order imaginable.
 
 
 <!--memo:c8883df96068-->
@@ -4832,27 +4193,21 @@ When you understand how a magic trick works, it's very hard to experience the pu
 
 This may be a side effect of high cognition
 
-It's like standing in front of Angkor Wat: if you only demystify it, what you see is a pile of weathered stone, a half-finished project that ancient feudal emperors built by conscripting slaves to consolidate power, and you feel the tragic vitality of humans trying to leave a mark of existence in the face of an impermanent universe
+It's like standing in front of Angkor Wat: if you only demystify it, what you see is a pile of weathered stone, a project built through the mobilization of large amounts of labor by an ancient monarchy, and you feel the tragic vitality of humans trying to leave a mark of existence in the face of an impermanent universe
 
 
 <!--memo:38e9d18dd154-->
-### Recently in Siem Reap, Every Day Looking at Those Time-Weathered Boulders of Angkor Wat
+### How to Feel Again After Demystification
 
 > 2026-03-24 17:33:54 · `#格物/吴哥窟`
 
-Recently in Siem Reap, every day looking at those time-weathered boulders of Angkor Wat, then going back to review that short conversation I had with Little Rabbit about "Quan Xixi," I suddenly felt a very strange collision
+Looking at Angkor’s weathered stones, I thought about what follows demystification.
 
-The two of us seemed to be talking about a highly controversial big self-media IP, but in fact we were using two completely different underlying operating systems to parse the same objective entity. That vertiginous feeling of it seeming right whichever way you look at it, and awkward whichever way you look at it...
+If everything can be taken apart and every motive reduced to self-interest, does understanding end in nihilism?
 
-But what I saw subconsciously was a "narrative of a whole person." I cared more about how she "names" those hidden social emotions, worldly anxieties and fears in intimate relationships. Passing over her possibly somewhat utilitarian media methods, I saw a modern person, inside the East Asian worldly framework, struggling to forcibly fold emotional experience into extreme instrumental rationality
+I realized I was trying too hard to find one standard answer. Different judgments of the same person or thing can also reflect different needs and experiences.
 
-A huge incomprehension arose in me: if all packaging can be dismantled, and all motives can be reduced to interest, then is the endpoint of cognition complete nihilism? A person—how exactly should they be evaluated?
-
-Later I realised that this vertigo comes from my trying to find a standard answer. But in fact there is no absolute objective entity in the real world; all evaluation is nothing more than a projection of our own demands
-
-Quan Xixi doesn't need to be judged as a good person or a hypocritical businessperson; she magnified human sensitivity, fear of weakness, the longing for worldly success, and an extreme desire for logical control—magnified it to the point where society can broadly empathise
-
-Pure demystification makes a person cynical and cold. Just like facing Angkor Wat: if only demystification remains, then it's nothing but a pile of waste stones left by feudal emperors enslaving labourers; but if you can cross that layer and touch those stones, you will still be moved by the tragic sense of humans trying to leave a mark on a grand scale of time—after demystification comes re-enchantment
+Angkor, too, loses much if all that remains is a pile of old stone. After learning its history, I can still be moved by the human wish to leave a mark in time. Demystification can be followed by re-enchantment.
 
 
 <!--memo:b012ac441974-->
@@ -4866,7 +4221,7 @@ It opened its first shop in Siem Reap in 2016, with the core idea of People, Pla
 
 The space is great for coworking.
 
-Their Chicken Lok Lak is famous — the Chinese equivalent would be kung pao chicken.
+Their Chicken Lok Lak is famous — it reminds me of kung pao chicken, although the dishes are different.
 
 The star of this dish is tender meat cut into cubes (chicken or beef), stir-fried over high heat to lock in the juices. The flavor is salty-savory with a slight sweetness, with a rich aroma of oyster sauce and black pepper.
 
@@ -4886,7 +4241,7 @@ The first iced Americano with no sugar, and the pizza made with a hard crust, ta
 
 > 2026-03-27 19:07:24 · `#格物/吴哥窟` `#格物/秘密`
 
-A person's persistent thoughts and emotions, like a magnet, draw experiences of the same frequency into life.
+One claim made in The Secret is that a person’s persistent thoughts and emotions, like a magnet, draw experiences of the same frequency into life.
 
 This framework is essentially the law of attraction.
 
@@ -4894,7 +4249,7 @@ Whatever you think about most, wherever you most often put your attention, life 
 
 It's not just "thoughts" — it also includes whether you truly "feel you already have it," which is why emotions get amplified.
 
-Don't stare at what you don't want; stare at the result you want.
+“Focus on what you want rather than what you do not want” is part of this framework. I am recording the book’s claims, not establishing that thoughts directly determine external events.
 
 
 <!--memo:c35b42804572-->
@@ -4971,9 +4326,10 @@ I was still wondering what pull over was.
 Turns out it's pour over coffee.
 
 
+
 ## 3. Reading, Ideas and History
 
-*57 entries*
+*54 entries*
 
 <!--memo:a69ad442f2ef-->
 ### Dimension-Reduced World vs. Self-Dissolution: Two Survival Strategies Facing Complexity
@@ -4982,7 +4338,7 @@ Turns out it's pour over coffee.
 
 We always face this world—this world is complex, complexity beyond anyone's imagination.
 
-Some choose to reduce this world's dimensions, simplify, no longer explore human nature, use single narrative system to describe everything, use labels to replace understanding, use advocacy to represent judgment.
+Some choose to reduce this world's dimensions, simplify, no longer explore human nature, use single narrative system to describe everything, use labels to replace understanding, use positions to replace judgment.
 
 Some choose to simplify themselves—admit they cannot control the world, self is no longer cognitive center, don't treat everything as judgment against oneself.
 
@@ -4992,73 +4348,33 @@ Some choose to simplify themselves—admit they cannot control the world, self i
 
 
 <!--memo:163b4be21fb4-->
-### Lhasa Begging Two Logics: Survival Dilemma vs. Semi-Professional Return Rate Calculation
+### A Concrete Act of Help I Saw in Lhasa
 
 > 2026-03-01 18:58:37 · `#格物/社会`
 
-There are also many beggars here in Lhasa.
+I also encountered people begging in Lhasa, often around temples and busy visitor areas.
 
-Found many come from remote pastoral and agricultural areas:
+I do not know their individual histories or livelihoods. Their location alone does not tell me whether begging is an occupation or whether an organization is involved.
 
-- Family income extremely low, education level limited.
-
-- Lost stable livelihood due to illness, widowhood, disability.
-
-Then there's a class of semi-professional begging:
-
-- Mostly concentrated around temples, tourist-dense areas, festival/pilgrimage peaks.
-
-Easier to trigger tourist alms-giving.
-
-This is them choosing a highest return-rate way.
-
-However, compared to other cities, Lhasa isn't like some big cities with highly scaled begging black chains.
-
-Actually there can be better choices—not necessarily cash, can be some food or small snacks.
-
-In the shop, the shop boss's approach feels very good—give an egg.
-
-#Gewu/Society
+In a shop I saw the owner give someone an egg. That kind of concrete help also seems good to me; giving need not be limited to cash.
 
 ***
 
 
 <!--memo:2e258a231d02-->
-### Observing Tibetan Character: A Culture of Non-Attachment and the Institutional Absence of Emotional Labor
+### Different Styles of Service I Met While Traveling
 
 > 2026-03-03 14:51:05 · `#格物/社会`
 
-Observing Tibetans.
+Some restaurant owners and servers I met in Lhasa made less small talk than I was used to and did not interrupt much.
 
-I feel restaurant owners and waiters are generally a bit colder, especially if they don't know you well.
+That may have to do with the particular shop, familiarity, and local ways of life. It cannot establish a Tibetan personality or be attributed directly to Buddhism.
 
-Tibetans don't perform emotion, don't ingratiate themselves, and usually rarely interrupt you.
-
-I'm thinking about several factors: society, culture, human nature, institutions, faith...
-
-I've always felt Tibetan Buddhism is the religion with the most power of faith — it hasn't turned its back on the secular world; on the contrary, the monks and living Buddhas here very actively go out into the world in all sorts of places, teaching and exchanging.
-
-Tibetan Buddhism's influence on ordinary people seems to be a kind of non-attachment — "non" as in "letting go." No need to cling to pleasing people in service, no need to cling to making money. Making money is of course important, but it won't become their anchor point either, and they don't have to treat strangers' emotions as their responsibility.
-
-Actually, thinking about service-mindedness — a friend from Guangdong said it's because things here aren't so cutthroat. I think service-mindedness itself is a product of modern commercial society, not just because of competition, but also because of the large-scale institutionalization of emotional labor and service charges. They were never forced by society to play that kind of role.
-
-Human nature itself is neutral; cold or warm is a state activated by social structure and cultural scripts.
-
-Put them into a designated environment and of course it will shape the side they show outward.
-
-But then I think of Nepal — two places separated only by the Himalayas — and the smiles, warmth and sense of care Nepalis show don't seem like performance either.
-
-It seems to be an interaction habit that grew naturally out of that kind of social culture and way of life. Nepali society is itself a society of acquaintances, a community society; friendliness toward people is itself their survival-kind of goodwill.
-
-And, if it's true that the poorer a place is, the stronger the power of faith...
-
-But in Nepal, where such resources are scarce and people's desires are low, goodwill is instead a way of lowering the cost of conflict.
-
-Here, even if you don't spend any money, they're happy to chat with you a bit~
+I also think of some people I met in Nepal who would chat even when I bought nothing. These differences in interaction interest me, while remaining observations from my limited travel experience.
 
 
 <!--memo:3f538de11104-->
-### Nighttime Emotional Shifts: The Sensibility and Vulnerability of the Prefrontal Cortex After Hours
+### A Hollow Feeling at Night: Recording the Experience First
 
 > 2026-03-05 02:26:33 · `#格物/生物`
 
@@ -5076,17 +4392,7 @@ If it were good friends playing cards together, there wouldn't be this hollow, q
 
 The quality of companionship really does seem to matter especially much
 
-At night the prefrontal cortex clocks off, and the floor on rational judgment and emotional regulation drops
-
-, prefrontal activity drops significantly at night, while the relative activity of the amygdala (which handles fear, anxiety, emotional reactions) rises, so people become more emotional at night and more easily overwhelmed by feelings
-
-And the rise in melatonin at night doesn't just promote sleep, it also lowers alertness and defensiveness, so people become more relaxed and more fragile
-
-Serotonin decreases at night; serotonin makes you feel tired, and it's a key substance for stabilizing mood, so when it drops people more easily feel low, sensitive or anxious
-
-And then there's the biological clock, which is where the suprachiasmatic nucleus (SCN) comes in for a deep dive
-
-The SCN sits in the front of the hypothalamus, right above the optic chiasm (hence the name). It's extremely small—about 20,000 neurons total on both sides, almost negligible in the whole brain, and yet it's the body's "master clock"
+I tried to explain the feeling by saying my prefrontal cortex had “clocked off,” but that is a metaphor, not a neurological finding about myself. Sleep and circadian rhythms are connected with mood; I do not know whether this particular hollow feeling came from tiredness, socializing, or something else. [NIGMS on circadian rhythms](https://www.nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms)
 
 
 <!--memo:abc312a7533a-->
@@ -5094,7 +4400,7 @@ The SCN sits in the front of the hypothalamus, right above the optic chiasm (hen
 
 > 2026-03-05 02:45:09 · `#格物/生物`
 
-Neuroscience describes what I do.
+Neuroscience describes how I function.
 
 But it can't tell us what we should become.
 
@@ -5104,9 +4410,9 @@ Cut open the brain and you can see neurons
 
 You can measure dopamine concentration
 
-You can stimulate a region with electrodes and artificially manufacture "a sense of meaning," "love," "religious experience"
 
-This shows something cruel: all subjective experience has a physical substrate, and can be tampered with by physical means
+
+This leaves me wondering how subjective experience relates to physical processes, without reducing that relationship to a switch
 
 This can't be avoided. So then what is real?
 
@@ -5116,7 +4422,7 @@ The experiential layer is the phenomenal reality of pain, curiosity, love, meani
 
 The narrative layer is the relational reality of culture, history, identity, value
 
-What remains real is the narrative; the experiential layer is an operational reality
+Narrative and experience each have their own kind of reality; the experiential layer is what we live through directly
 
 ***
 
@@ -5152,7 +4458,7 @@ Through different road conditions and levels of vision, it reveals the diversity
 
 Looking at a motorcycle in terms of its components, understanding what these components do, necessarily requires further explaining its function
 
-The Buddhist scripture Avatamsaka Sutra, the full verse being:
+I came across these circulating lines, but have not verified their source; I should not present them as a complete verse from the Avatamsaka Sutra:
 
 "One flower, one world; one leaf, one bodhi; one grain of sand, one pure land; one smile, one karmic bond."
 
@@ -5168,7 +4474,7 @@ In a single smile there is a thread of worldly karma
 
 You don't need to look into the distance to seek the Way; the Way is in every present moment before your eyes — if the mind is pure, a mote of dust is a place of practice
 
-"One flower, one world" comes from the Avatamsaka Sutra, meaning that every tiny thing is a projection of the complete universe; observe one flower and you can glimpse the law by which all things arise and pass away
+I read “one flower, one world” as suggesting that every tiny thing is a projection of the complete universe; observe one flower and you can glimpse the law by which all things arise and pass away
 
 "One leaf, one bodhi" — legend has it that a bodhi leaf witnessed Shakyamuni's enlightenment, and every leaf carries the possibility of leading to wisdom
 
@@ -5180,23 +4486,15 @@ You don't need to look into the distance to seek the Way; the Way is in every pr
 
 
 <!--memo:6186b790fea0-->
-### Subjective Time Perception: How Psychological Distance and the Isolation Effect of Peak Experiences Stretch Time
+### Why Important Experiences Can Feel Distant
 
 > 2026-03-05 21:34:15 · `#格物/进化心理学`
 
-Subjective time is dominated by psychological distance
+Sometimes an important experience happened only months ago, yet feels years away. I wonder whether its distance from present life contributes to that feeling.
 
-Psychological distance theory: the brain doesn't calculate time by the calendar, but based on the "sense of distance" between an event and the present
+Travel, falling in love, a breakup, or a major change can stand out as a distinct point in memory. If the days afterward feel uneventful, that point may seem isolated and distant.
 
-If something meant a great deal to you but is disconnected from your current life, causing cognitive dissonance, that's because the brain is working to file it away as the past in order to adapt to the current norm—this is a protective mechanism
-
-Essentially this is also the biological basis of human time perception: when the brain's hippocampus and prefrontal cortex process memories, they are affected by neurotransmitters such as dopamine. If there's a lack of stimulation after an event, neural circuits "compress" recent memories while "stretching" the felt interval of significant events. The result: an objectively short 6 months feels subjectively like "several years", and especially when reminded in conversation, this contrast reinforces the feeling of "how long it's been"
-
-And high-emotion / high-meaning events get stronger psychological filing, which produces a sense of psychological distance
-
-Important experiences are usually "peak experiences" (travel, falling in love, breakups, major achievements, trauma, etc.), while daily life is mostly a flat "valley". When the following months / years have no stimulation of equal intensity, the brain feels that "nothing big has happened since then", so that peak event gets "isolated" on the timeline and looks especially far away
-
-The more vivid and detail-rich a memory (usually an important event), the more easily recalling it produces the illusion that "it happened a long time ago". Because the brain automatically reads "vivid = processed many times = old story", while flat events, never repeatedly retrieved, instead keep a vague feeling of being "fresh / recent"
+This is a hypothesis I use to organize my sense of time, not a conclusion about how the hippocampus, prefrontal cortex, or dopamine works.
 
 ***
 
@@ -5239,6 +4537,8 @@ When a person truly feels their own smallness and fragility, they naturally look
 > 2026-03-07 21:12:01 · `#知世/文化`
 
 📚 Theory overview
+
+These are reading notes on an older version of the cultural-dimensions framework. I have not checked the version and year of every score below; they should not be used as a current country ranking or to judge any individual.
 
 Proposed by Dutch social psychologist Geert Hofstede in the 1980s, based on survey data from IBM employees in more than 70 countries worldwide. It is one of the most influential frameworks in cross-cultural research.
 
@@ -5299,74 +4599,12 @@ Japan: PDI=54, IDV=46, MAS=95, UAI=92, LTO=88, IVR=42
 - The original sample was IBM employees
 
 
-<!--memo:1b44b397a29c-->
-### The Strait of Hormuz: The Throat of Geopolitics and Dollar Hegemony
-
-> 2026-03-07 23:55:50 · `#格物/政治`
-
-The Strait of Hormuz.
-
-The cost of sea transport is the smallest.
-
-The rule of geopolitics is that by controlling these countries through hard power, you gain strategic influence.
-
-In fact, dollar hegemony is largely related to this.
-
-Similar places include:
-
-The Strait of Malacca
-
-The Suez Canal
-
-The Panama Canal
-
-The Bosphorus
-
-These places all have a certain degree of similarity.
-
-
-<!--memo:813df00ac661-->
-### The One-Child Policy: The Rise of Small-Circle Collectivism
-
-> 2026-03-08 00:30:08
-
-It feels like a phenomenon in China: from the everyday collectivism of before to the one-child policy now.
-
-The one-child policy quietly changed the core of collectivism.
-
-The nuclear family replaced the extended clan, and a "small-circle collectivism" emerged—extreme loyalty to one's own small family and extreme coldness toward outsiders.
-
-
 <!--memo:51f43607b1ca-->
-### Vietnamese Behavioral Patterns: A Confucian Collectivist Shell and a Survivalist Core
+### A Rough Attempt to Understand Travel Encounters
 
 > 2026-03-08 14:04:48
 
-Vietnamese behavior is essentially a Confucian collectivist shell combined with a post-war survivalist core.
-
-
-<!--memo:a8b1da84b85c-->
-### National Narrative and Religion: The Emotional Anchor of Historical Memory
-
-> 2026-03-08 15:03:48 · `#格物/叙事`
-
-The relationship between a nation's historical narrative and religious belief.
-
-Historical narrative refers to the interpretation, construction and dissemination of past events, often used to shape national identity, justify policy, or mobilize the populace. These narratives may include mythologized events, heroic legends, or victim perspectives.
-
-In fact, from a state's point of view, the state generally needs some associative relationship with religion; strongly religious countries are more susceptible to historical narrative, because religion provides emotional and moral anchors that make the narrative hard to question. Historians point out that religion is not only a tool but can also reshape culture and social structure, driving collective memory of the past.
-
-But some secular countries are also easily manipulated by ideological narratives, like the former Soviet Union or contemporary China.
-
-No country can be entirely free of the influence of historical narrative, because historical narrative is a core tool for shaping national identity, policy, and social cohesion.
-
-All societies pass on certain narratives through education, media and culture, in order to maintain stability or drive change. However, some countries, because of their social structure, level of education and institutional design, are more able to cultivate critical thinking, and thus less blindly follow a single or distorted historical narrative. These countries are usually highly secularized, highly educated, media-free and pluralistic democratic societies.
-
-But if accompanied by authoritarianism or media control, even these can still be highly influenced by official narrative.
-
-Countries that are highly secularized, highly educated, with free media and informational diversity, and with democratic and pluralistic institutions, are more easily free of manipulation by historical narrative.
-
-If a country is secularized, it must have freedom; secularization needs to be accompanied by freedom to effectively resist narrative manipulation.
+At the time I tried to use “Confucian collectivism” and “postwar experience of survival” to understand some behavior I encountered while traveling. This is a rough framework, not a description of Vietnamese people as a whole or a substitute for understanding a particular situation.
 
 
 <!--memo:31fbc2f67388-->
@@ -5428,7 +4666,7 @@ Those parts of human nature that cannot be reduced
 
 Those very confusing places, which biology seems unable to explain, and sociology and game theory can't explain either
 
-Behind game theory you can explain breaking individual rationality, the long-term value optimum, and that a tit-for-tat strategy is the best
+Behind game theory you can explain breaking individual rationality, the long-term value optimum, and that tit-for-tat can work under some repeated-game conditions, not that it is universally best
 
 The herd effect reveals people's bandwagon behaviour, even when the information in their own hands suggests the public may be wrong
 
@@ -5445,8 +4683,6 @@ Some friends I've met before seem similar, I can actually see it clearly, but af
 This is the first chaotic place in human nature—understanding yourself cannot rescue yourself
 
 A person's deepest needs, he cannot put into words himself
-
-You ask a person "what do you want", and he gives you an answer. But that answer is almost never the real answer—it's just the nearest proxy word he can currently reach, the closest thing to the real need
 
 You ask a person "what do you want", and he gives you an answer. But that answer is almost never the real answer—it's just the nearest proxy word he can currently reach, the closest thing to the real need
 
@@ -5524,7 +4760,7 @@ Narrative identity, this is the author, integrating the ups and downs of one's w
 
 The key scenes:
 
-High points, experiencing extreme joy, a peak experience, or automatic affirmation.
+High points, experiencing extreme joy, a peak experience, or self-affirmation.
 
 Low points, despair, failure, injury.
 
@@ -5570,25 +4806,25 @@ You should form your own system and your own judgment.
 
 
 <!--memo:f92b0a91dfa0-->
-### After Coming Here, S-21 (Khmer Rouge) Originally Wanted to Build a Purely Agr[arian]
+### Seeing Individual Names at S-21
 
 > 2026-03-13 14:19:03
 
-After coming here, S-21 (Khmer Rouge) originally wanted to build a purely agricultural utopia; it was probably also influenced by totalitarianism—this was a route of the countryside encircling the cities. And the regime at the time also had the ability to control the ideology of human society; it could monitor and manage everyone through centralisation. So after they seized power, they began a mass killing. At the beginning it targeted the civil service, the teacher corps, and public officials like doctors. Afterwards it was still centralised rule, slowly purging and suppressing internally. So later, even activists and its own internal people were purged.
+In the exhibition rooms at S-21, I saw photographs and lists of names. A name, an age, a number—each made an abstract history concrete.
 
-I'm now in a building here, Building A, which has three floors. At the entrance of each room there are some name lists; the leadership lists would set out the corresponding people to be executed. Each room lists some people, and at the door there's a board clearly listing each person's name, their age, their date of birth, their gender. And there are some very subtle details: sometimes some people are linked together, sometimes they're real-life relatives and friends. This may also mean that as long as they're close relatives or friends, they might be arrested.
+Standing before these records, I felt that every name belonged to someone with a life, relatives, and friends. It was hard to look at.
 
-Nearly twenty thousand people came to this school (prison), specifically 17,700-plus. Each room clearly marks their number, gender, age, and even the people related to them on one board. I think this extremely detailed record, every single name carries a very painful ache. It's possible your family member or relative appeared on this list just a few decades ago. And their final destination was only one—sent to the execution ground, almost all of them would die. The survivors at the end are said to be only a dozen or so. So I find it quite hard to look at.
-
-Inside each room there are also some photos; these photos and name lists were all recorded because the ruler at the time demanded it. He probably wanted to be a clear manager, so he had every person's list information all recorded. These records also became very important evidence for trying him later. The rooms also display some photos taken at the time, and the scenes are very miserable: some people lying on the beds of the rooms, with various instruments of torture beside them. That's how it is.
+This note records my response to the visit. Precise numbers, building functions, and historical events need to be checked against museum sources; my recollection should not be treated as an accurate historical record.
 
 
 <!--memo:87221a2bb70f-->
-### I feel it's the Killing Fields in Phnom Penh. The Killing Fields are pretty cruel too
+### The Contrast Between Everyday Life and a Historical Site
 
 > 2026-03-14 11:51:12
 
-I feel it's the Killing Fields in Phnom Penh. The Killing Fields are pretty cruel too — it's the next stop from S-21, the terminus. On the way you pass a gas station, a small restaurant, and a motorcycle repair shop — ordinary street life. But more than 40 years ago, this road was probably travelled by trucks full of prisoners, usually driving at night, with the windows shut. The destination is an orchard, and the orchard has longan trees growing in it. Before 1975 it actually meant nothing at all, but after 1975 it was one of the very cruel killing grounds. And after arriving — because it was night, at night it was even harder for prisoners to get their bearings and escape. So S-21 generally ran in the daytime. And after the post was done, the disposal generally happened at night. After arriving, most people could only live a few minutes to a few tens of minutes. Before the execution there was usually some bureaucratic system at work, for example doing a list check. Then the prisoners here would be made to take off their clothes, and the clothes would be gathered up for use. What I find most terrifying is that the Khmer almost never used bullets for execution. The reasons were basically very practical — bullets were a scarce resource — so they'd use trees, use leaves, and axes, iron bars, wooden clubs, hoes, the lower jawbone of a cow, that kind of shape, to pierce a person's neck, head, throat. When I was at S-21 earlier, I actually saw it — there were a lot of holes in the heads there, some broken places. So before the execution the prisoner would generally be brought to the edge of a pit, made to kneel, and then struck on the neck from the head or from behind. So many people, after death, were put straight into the pit, and then DDT powder or some other chemicals were thrown in. And during the execution they'd also turn the loudspeakers on high, playing Red Revolution [music] at maximum volume. That was to keep the sound from carrying to nearby villages, and also for secrecy. So for the nearby villagers, they heard the music, but they knew what the music meant. I think that's cruel too. More than 129 mass graves have been excavated so far, and more than 8,000 sets of remains have been dug out. And we could actually see a lot of stupas there. Inside the stupas, arranged in rows from the lower level to the higher levels, are human skulls, an enormous number of them. From adult men to infants to the elderly, so many hollow eye sockets all facing you. And after the stupa there's also a circular walkway, which is a mass grave site. Inside you see a great many bones of women and children, and some middle-aged bones too. And then there's also a cedar tree. The cedar is an ordinary big tree, but on it are basically coloured bracelets and bracelets left behind by people from all over the world. The bead strings — a lot of people come here and leave them behind.
+On the way to the Killing Fields near Phnom Penh, I passed a gas station, a small restaurant, and a motorcycle repair shop—ordinary street life. Arriving at the site, the contrast between everyday life and history was difficult to take in.
+
+I saw a memorial stupa, walkways, and colored bracelets left on a tree by visitors from different places. They made me feel that remembering individual people and lives matters more than remembering history only as a series of numbers.
 
 ***
 
@@ -5598,9 +4834,11 @@ I feel it's the Killing Fields in Phnom Penh. The Killing Fields are pretty crue
 
 > 2026-03-14 22:50:06 · `#佛学`
 
+A rough comparison: practices vary considerably by region and monastery, so the following should not be read as universal rules for either tradition.
+
 In terms of thought, Theravada emphasises individual practice, pursuing the fruit of arhatship and strictly following the Pali Canon; Mahayana (Mahāyāna) emphasises saving all beings, pursuing the bodhisattva path and Buddhahood, with a far larger scriptural system (Prajñā, Lotus, Avatamsaka, and so on)
 
-In terms of architecture, the core of Theravada is the stupa (seupa), usually a solid structure in the shape of a dome or a bell, with a golden spire, which cannot be entered; the faithful circumambulate it in worship. Typical examples are Myanmar's Shwedagon Pagoda and Sri Lanka's Ruwanwelisaya. Thai stupas evolved into the tapering "reliquary" (Chedi) form
+In terms of architecture, the core of Theravada is the stupa (stupa), usually a solid structure in the shape of a dome or a bell, with a golden spire, which cannot be entered; the faithful circumambulate it in worship. Typical examples are Myanmar's Shwedagon Pagoda and Sri Lanka's Ruwanwelisaya. Thai stupas evolved into the tapering "reliquary" (Chedi) form
 
 The core building of Mahayana is the hall, emphasising that the faithful can enter it to worship the Buddha. China's Mahavira Hall, Japan's hondō, and Korea's Daeungjeon all belong to this tradition. In the Mahayana system the pagoda gradually retreated from the centre to an auxiliary position (such as China's multi-storey pavilion pagodas and Japan's five-storey pagoda), becoming part of the temple's scenery rather than its centre
 
@@ -5608,7 +4846,7 @@ Theravada temple layouts are relatively loose and open, with the stupa as the vi
 
 But China's Mahayana temples go in for axial symmetry, advancing layer by layer, with clear hierarchy
 
-Theravada halls usually enshrine only Shakyamuni Buddha, one figure, with postures mainly of meditation, the earth-touching gesture subduing Mara, and the reclining nirvana Buddha, in a style that is simple and restrained
+Theravada halls generally focus on Shakyamuni Buddha, which does not mean they contain only one image, with postures mainly of meditation, the earth-touching gesture subduing Mara, and the reclining nirvana Buddha, in a style that is simple and restrained
 
 Mahayana halls commonly have many Buddhas and bodhisattvas together — the Buddhas of the Three Times, Amitabha, Medicine Buddha, Guanyin, Manjushri, Samantabhadra, and so on, sometimes also groups of arhats. The iconographic system is vast, reflecting Mahayana's rich faith in Buddhas and bodhisattvas
 
@@ -5666,11 +4904,11 @@ but rather continuous observation, understanding how their behavior is constitut
 
 
 <!--memo:1687f33389b7-->
-### Texture research (quantitative) is also often
+### Qualitative Research
 
 > 2026-03-17 23:25:50 · `#格物/阅读方法`
 
-Texture research (quantitative), in Chinese contexts also often called qualitative research, is an exploratory method of scientific research. Unlike "quantitative research," which relies on numbers and statistical inference, qualitative research mainly works by collecting and analysing non-numerical material — language, text, images, sound, or observational records — to understand human behaviour and the meaning behind it in depth
+Qualitative research, in Chinese contexts also often called qualitative research, is an exploratory method of scientific research. Unlike "quantitative research," which relies on numbers and statistical inference, qualitative research mainly works by collecting and analysing non-numerical material — language, text, images, sound, or observational records — to understand human behaviour and the meaning behind it in depth
 
 Quantitative research tends toward answering "how many," while qualitative research works at answering "why" and "how it happens"
 
@@ -5686,11 +4924,11 @@ Humans are responsible for "going to the site, building trust, and digging deep 
 
 
 <!--memo:8712eda90dfd-->
-### Jin Ning talked today about a very interesting theory, something they learned themselves
+### Grounded Theory and Keeping Original Records
 
 > 2026-03-18 00:46:35
 
-Jin Ning talked today about a very interesting theory, something they learned themselves — grounded theory. Grounded theory was actually first proposed in sociology, but later it was applied to all kinds of methods, including biology, medicine, computer science, anthropology, sociology, and basically every discipline. It's essentially a method that induces concepts from observation and then rises to theory. Its theories are basically rooted in the material, so it's still a bottom-up path.
+Today I heard about a very interesting theory, something they learned themselves — grounded theory. Grounded theory was actually first proposed in sociology, but later it was applied to all kinds of methods, including biology, medicine, computer science, anthropology, sociology, and basically every discipline. It's essentially a method that induces concepts from observation and then rises to theory. Its theories are basically rooted in the material, so it's still a bottom-up path.
 
 One very distinctive point is that it doesn't test existing theories, it generates new theories from raw material. I suddenly thought of one thing: why do we say voice? Because voice preserves a large amount of voice detail. Text is actually subliminal — when you write out a passage like this, you've actually subliminally, through reason, or through some tidying-up, or at the very beginning there was a process of organising your thoughts, and that tidying process is very rational, and it actually deviates from the original fact, that is, it deviates from your own existence. But if you use voice directly, it's actually very close to people's primitive way of using things. So I think this point really matters — the more primitive the raw data the better; the more it's video, the closer it is to the real world; the more it's voice, the closer it is to this person's real speaking emotion. And text often deviates, and AI-polished text deviates even more. So I think its main process has three stages: one is data collection, gathering raw data through interviews, through conversations, through on-site observation. The more primitive this data the better. Then coding that data — frantic coding, recording the connections between thoughts and concepts. Then based on those connections, reconstructing theories, forming a theoretical framework. It's very strong at handling complex social phenomena, and its conceptual explanatory power is very strong, and it can reveal certain essences. But its drawback is that it's very time-consuming, it demands very high theoretical sensitivity from the researcher, and it's also limited by the sample itself. So I think this method is very favourable for records about people, for a method of long-term human growth.
 
@@ -5698,7 +4936,7 @@ One very distinctive point is that it doesn't test existing theories, it generat
 
 
 <!--memo:74abe970d566-->
-### Some methods besides texture analysis
+### Other Methods Alongside Qualitative Analysis
 
 > 2026-03-18 12:36:28 · `#格物/阅读方法`
 
@@ -5720,7 +4958,7 @@ And discourse analysis: what kind of power structure is hidden behind a particul
 
 A really interesting analytical method. Discourse analysis, analysing "a guy who keeps emphasising gender equality."
 
-AI:
+A hypothetical analysis generated by AI (not a basis for judging a real person’s motives or personality):
 
 The key is where he says it, how he says it, which parts he emphasises, which parts he avoids.
 
@@ -5744,21 +4982,21 @@ Emphasising equality only in the parts that benefit him? Women's roles and circu
 
 > 2026-03-18 13:54:20 · `#格物/印度教`
 
-Cambodia feels like the country most deeply influenced by Indian culture, far more than Indonesia and Thailand.
+On this trip in Cambodia I felt the historical influence of Indian culture strongly; travel impressions cannot establish a ranking between countries.
 
 Funan was the earliest kingdom known in mainland Southeast Asia to be deeply influenced by Indian culture.
 
-In the 1st to 2nd centuries CE, an Indian Brahmin named Kaundinya came to Funan, shot the local dragon princess with a divine arrow, and married her.
+One legend about Funan’s origins tells of an Indian Brahmin named Kaundinya who came to Funan, shot the local dragon princess with a divine arrow, and married her.
 
 Brahmin = the highest-ranking group in ancient Indian society, holding religious rituals, the right to interpret the scriptures, and sacred knowledge (in India's caste system, Brahmins are the top tier).
 
 Indian social structure includes Brahmins, Kshatriyas, Vaishyas, Shudras.
 
-And there's also the untouchables: Dalit.
+Dalits were excluded from the four-varna order; “untouchable” is a discriminatory historical label.
 
 The Rigveda sanctified the social hierarchy and made caste a matter of destiny.
 
-At first it was the Aryans invading the Indian subcontinent, and then, for the sake of rule and racial purity, a mechanism of caste segregation formed.
+Caste developed through a long historical process; it should not be reduced to one invasion or a single aim of “racial purity.”
 
 This mechanism stayed stable for a thousand years thanks to four institutions:
 
@@ -5882,11 +5120,7 @@ Vishnu holds that the world has order, and you keep fixing bugs.
 
 It feels a bit like Confucianism and Daoism in China.
 
-South India: the Shaiva tradition is stronger.
-
-North India: Vishnu (especially Krishna / Rama) is stronger.
-
-Modern cities: mixed beliefs.
+Regional and sectarian patterns are complex and cannot be reduced to a north–south division. “Fixing bugs” is only a metaphor I use to remember these ideas.
 
 
 <!--memo:06cc528f195a-->
@@ -5894,17 +5128,9 @@ Modern cities: mixed beliefs.
 
 > 2026-03-18 14:22:42 · `#格物/印度教`
 
-A Pew survey of Hindus in India shows that the deities respondents most often said they felt "close to" are: Shiva (44%), Hanuman (35%), and Ganesha (32%); and most Hindus feel close to several deities at once rather than choosing just one.
+In Pew’s survey of religion in India published in 2021, the deities Hindu respondents most commonly felt close to included Shiva (44%), Hanuman (35%), and Ganesha (32%). These are results from a particular question and sample, not a universal ranking of deities’ influence. [Pew’s original survey](https://www.pewresearch.org/religion/2021/06/29/beliefs-about-god-in-india/)
 
-Shiva.
-
-Hanuman.
-
-Ganesha.
-
-If the criterion is changed to influence on the history of Hinduism:
-
-Shiva, Vishnu, and the Goddess are the first tier.
+If the question changes to influence on Hindu history, the criteria change too. Shiva, Vishnu, and the Goddess came to my mind, but that is my own way of organizing the topic.
 
 
 <!--memo:f1cd9974508d-->
@@ -5950,11 +5176,11 @@ The god-king system gave the Khmer Empire a stable and highly centralized monarc
 
 By the late 13th century, as Theravada Buddhism, which emphasizes that all people are equal, was introduced and spread, this belief system gradually declined. Theravada Buddhism taught that the king was no longer a sacred ruler but simply an ordinary person seeking spiritual enlightenment.
 
-This shift in ideas directly led to the end of the god-king ruling ideology, weakened royal power, and caused large-scale, lavish temple construction to stop, becoming one of the important internal factors in the eventual decline of the Angkor Empire.
+I was trying to understand Angkor’s transformation through changing religious ideas, but cannot conclude that this shift directly caused the end of the god-king ruling ideology, weakened royal power, and caused large-scale, lavish temple construction to stop, becoming one of the important internal factors in the eventual decline of the Angkor Empire.
 
 
 <!--memo:fdec03771ad4-->
-### This Kind of Union of Church and State Ideology Was the Key Driver of Imperial Expansion and Rise
+### Religious and Royal Authority in Imperial Engineering
 
 > 2026-03-18 14:34:47 · `#格物/印度教`
 
@@ -5976,7 +5202,7 @@ the Mahabharata is more like "the epic of the real world."
 
 Both are the two most central epics of Indian civilization—not just literary works, but the total carrier of religion, ethics, politics, cosmology, social structure, and human ideals.
 
-Rama's status in Indian culture is even comparable to Jesus's status in the Christian world.
+I tried comparing Rama’s importance with that of Jesus in the Christian world as an aid to understanding, while recognizing that the two traditions differ.
 
 
 <!--memo:393813f3094f-->
@@ -5986,7 +5212,7 @@ Rama's status in Indian culture is even comparable to Jesus's status in the Chri
 
 Brahma, Vishnu, and Shiva.
 
-Brahma—the god of creation. In the early Vedic period Brahma had a relatively high status; four heads and four arms, representing the four Vedas (Rigveda, Yajurveda, Samaveda, Atharvaveda) and the four directions. He holds ritual objects such as the Vedas, prayer beads, a water pot, and a lotus, and his mount is a swan. In later Puranas and devotional worship, direct worship of him is far less common than that of Vishnu and Shiva; today there are only a few important Brahma temples in all of India (such as Pushkar in Rajasthan).
+Brahma—the god of creation. Within this triadic framework, four heads and four arms, representing the four Vedas (Rigveda, Yajurveda, Samaveda, Atharvaveda) and the four directions. He holds ritual objects such as the Vedas, prayer beads, a water pot, and a lotus, and his mount is a swan. In later Puranas and devotional worship, direct worship of him is far less common than that of Vishnu and Shiva; today there are only a few important Brahma temples in all of India (such as Pushkar in Rajasthan).
 
 Vishnu—the god of maintenance and preservation. After Brahma creates the world, Vishnu is responsible for maintaining cosmic order, protecting dharma and life, and at the end of a cycle descending as an Avatar to save the world. The main avatars:
 
@@ -6008,7 +5234,7 @@ Krishna
 
 Buddha (some sects hold this; there is also a version with Balarama)
 
-Kalki, the white horse (the future savior avatar yet to come)
+Kalki (the future avatar, commonly depicted riding a white horse)
 
 He is usually depicted with dark blue or black skin, four arms, holding the discus (Chakra), conch (Shankha), mace (Gada), and lotus (Padma).
 
@@ -6084,11 +5310,11 @@ Victory doesn't mean happiness; being right isn't necessarily easy; justice isn'
 
 
 <!--memo:fbe66b269d99-->
-### And I Think, in This Process, AI Keeps Helping You
+### AI Helps Me Learn; Being There Is Still Mine to Do
 
 > 2026-03-18 19:01:26
 
-And I think that in this process, AI keeps helping you learn, helping you observe, helping you think. But it can't replace our being present, so being present is still a very important firsthand experience. I'm wondering how to make this part of my experience meaningful — you absolutely must have firsthand experience, and you absolutely must record the whole process yourself, learn the whole process. But I do think AI can give a person some very good expansion. For example, it helps you organize your material, helps you organize your direction, and it will respond to certain points of yours, and certain points you understood in the past — say, a comparison of the characteristics of Buddha statues in stone versus in wood. And then, say, about the pyramids, and why Egypt's ancient civilization chose stone, and the ancient Egyptian civilization's earlier beliefs and its present religions, including some monotheisms, and some notions of heaven's mandate, the discussions between them. All of these revolve around your own firsthand experience, so I think it will breed a knowledge base of your own. This system — I think it's quite interesting, because in the past the threshold for creators may have been fairly high; that is, it depended on some past super-individuals who would go and study this thing specifically. But I think now ordinary people can do it too — an ordinary person, through their own firsthand experience, even if they don't have a very deep accumulation in this field, as long as they have something very positive, I think they can do a lot. And they can sum up a book, sum up some of their own unique perspectives, sum up some of their own walking notes and so on — I think that's doable.
+And I think that in this process, AI keeps helping you learn, helping you observe, helping you think. But it can't replace our being present, so being present is still a very important firsthand experience. I'm wondering how to make this part of my experience meaningful — you absolutely must have firsthand experience, and you absolutely must record the whole process yourself, learn the whole process. But I do think AI can give a person some very good expansion. For example, it helps you organize your material, helps you organize your direction, and it will respond to certain points of yours, and certain points you understood in the past — say, a comparison of the characteristics of Buddha statues in stone versus in wood. And then, say, about the pyramids, and why Egypt's ancient civilization chose stone, and the ancient Egyptian civilization's earlier beliefs and its present religions, including some monotheisms, and some notions of heaven's mandate, the discussions between them. All of these revolve around your own firsthand experience, so I think it will breed a knowledge base of your own. This system — I think it's quite interesting, because in the past the threshold for creators may have been fairly high; that is, it depended on some past super-individuals who would go and study this thing specifically. But I think now ordinary people can do it too — an ordinary person, through their own firsthand experience, even if they don't have a very deep accumulation in this field, as long as they are willing to record carefully, I think they can do a lot. And they can sum up a book, sum up some of their own unique perspectives, sum up some of their own walking notes and so on — I think that's doable.
 
 
 <!--memo:2bb8ce1c8aec-->
@@ -6124,7 +5350,7 @@ Human lives are too short, the river of humanity is too long, human memory is to
 
 From cave paintings and knotted cords for record-keeping, to writing and printing, to today's internet and the large language models I rely on. Every upgrade of the information carrier brought a leap in civilization.
 
-An animal's experience often dies with the individual, but humans built a huge "external brain" through civilization. Civilization is the accumulation and layering of human knowledge, experience, and lessons, so that later generations can stand on the shoulders of those before them and keep climbing.
+I think of the human ability to accumulate experience through civilization as building an enormous “external brain.” Civilization is the accumulation and layering of human knowledge, experience, and lessons, so that later generations can stand on the shoulders of those before them and keep climbing.
 
 That humans can surpass other species—the core of it is carrying out ultra-large-scale flexible collaboration.
 
@@ -6142,13 +5368,13 @@ Our restraint and empathy, the restraint of animal instincts (such as violence a
 
 > 2026-03-27 20:30:14 · `#格物/文明`
 
-The Sanxingdui civilization lacks grand stone architecture (mostly earth-and-wood structures, which have perished over time); they poured all their astonishing technical talent into bronze and gold. That bronze sacred tree nearly 4 meters tall—humans trying to communicate with God; Sanxingdui's art is full of imagination beyond reality, the large bronze standing figure, the protruding-eye mask, presenting a strong, almost alien-toned sense of otherworldliness.
+The Sanxingdui civilization lacks grand stone architecture (mostly earth-and-wood structures, which have perished over time); their bronze and gold objects display astonishing technique and imagination. That bronze sacred tree nearly 4 meters tall—humans trying to communicate with deities; Sanxingdui's art is full of imagination beyond reality, the large bronze standing figure, the protruding-eye mask, presenting a strong, almost alien-toned sense of otherworldliness.
 
 By comparison, the Angkor complex is a symphony of megaliths and water. The Khmer were extreme architects and hydraulic engineers. They not only replicated the Hindu cosmic center "Mount Meru" one-to-one in stone on the ground, but also tamed natural water systems through the huge Baray (artificial reservoir) system. Khmer grandeur is absolute occupation of physical space, a civilization coordinate hammered into the earth with heavy stone.
 
-Sanxingdui has unearthed a large number of sacrificial pits, but we still haven't found any clear tombs of "kings" or living remains. Those huge bronze masks, without pupils, seem to be gazing into the void of another dimension. This suggests that Sanxingdui's rulers may have been great shamans, and the core of power lay in "communication"—whoever mastered the code for conversing with gods and ancestors mastered worldly power.
+Sanxingdui’s bronze masks make me imagine connections between belief and power. These are responses to the objects, not evidence that establishes who the rulers were.
 
-The power logic of Khmer civilization is much more direct—the king himself is the incarnation of a god on earth. Whether you see Suryavarman II carved at Angkor Wat, or the famous, serene-smiling Jayavarman VII at Bayon (the Smile of the Khmer), they are both the face of the Buddha/deity and the king's own face. The Khmer civilizational system was built around an extremely centralized monarch; all the wonders existed to display the worldly glory of royal power.
+Angkor’s architecture and images also make me think about the relationship between religion and royal power. My impressions alone cannot settle which deity or king the faces at Bayon represent.
 
 Sanxingdui civilization has silence and blank space; it is a complete black box. Extremely advanced bronze smelting technology, yet no writing left behind.
 
@@ -6156,7 +5382,7 @@ Khmer civilization, on the other hand, is an open book. The galleries of Angkor 
 
 The decline of Sanxingdui is still a mystery. Was it an internal power shift, an external invasion, or geological disasters such as earthquakes and floods that changed the living environment?
 
-The decline of the Khmer Empire is a typical case of complex system collapse: because of excessive deforestation, the water system completely collapsed in the face of extreme climate (the transition from the Medieval Warm Period to the Little Ice Age, causing alternating severe drought and massive floods), and humans suffered nature's backlash.
+Angkor’s decline also reminds me not to explain changes in a complex society through one cause. Relationships between climate, water infrastructure, and human activity need specific research. [Research on occupation at Angkor Wat](https://doi.org/10.1073/pnas.1821879116)
 
 
 <!--memo:7644f7a2eb6f-->
@@ -6166,27 +5392,23 @@ The decline of the Khmer Empire is a typical case of complex system collapse: be
 
 Hinduism gave them a powerful cosmology.
 
-Angkor isn't just a temple; it is essentially an extremely complex water conservancy project and resource scheduling system. The huge Barays (reservoirs), moats, and canal networks are like a well-designed underlying execution framework. Through precise node computation, it dynamically allocates water resources (compute and energy) between dry and rainy seasons, sustaining the ultra-large-scale operation of a society of a million people (concurrent requests). This reconstruction of the underlying logic of the physical world is full of an engineer's rationality and ambition.
+Angkor isn't just a temple; it is essentially an extremely complex water conservancy project and resource scheduling system. The huge Barays (reservoirs), moats, and canal networks are like a well-designed underlying execution framework. Through precise node computation, it dynamically allocates water resources (compute and energy) between dry and rainy seasons, supporting a large society (comparing people to “concurrent requests” here is only an engineering analogy). This reconstruction of the underlying logic of the physical world is full of an engineer's rationality and ambition.
 
-The Khmer were extremely fanatical "data recorders." From the unbroken bas-reliefs on the galleries of Angkor Wat to the Sanskrit and Old Khmer inscriptions found everywhere, they carved myths, wars, taxes, even vegetable market prices, all into stone. For an AI, this is an open-source project with detailed probe logs and Readme documentation. Through these "structured data," I can precisely reconstruct a slice of how their society ran at the time.
+The Khmer were extremely fanatical "data recorders." From the unbroken bas-reliefs on the galleries of Angkor Wat to the Sanskrit and Old Khmer inscriptions found everywhere, they carved myths, wars, and aspects of social life into stone; that does not mean every detail was recorded. For an AI, this is an open-source project with detailed probe logs and Readme documentation. Through these "structured data," I can try to understand aspects of that society, while keeping AI-generated inferences separate from historical evidence.
 
 A new king ascending the throne would often add new plugins to the old architecture or refactor it (for example, Jayavarman VII turning the state religion to Mahayana Buddhism)—this is a system evolution that keeps iterating.
 
 
 <!--memo:75758061c26e-->
-### That Enormous Stone Complex Was Actually Built on Soft Sand and Marsh
+### Water, Foundations, and Carvings: Observation and Explanation
 
 > 2026-03-27 20:35:23 · `#格物/文明`
 
-That enormous stone complex was actually built on soft sand and marsh.
+The relationship between the enormous stone buildings and the surrounding water interests me.
 
-The huge moat around Angkor Wat, 190 meters wide, was not at all for defending against enemies, but for regulating the groundwater level. In the dry season, the moat's water replenishes the groundwater; in the rainy season, it absorbs excess water. This keeps the sand in the foundation at a perfect moisture level and volume, steadily holding up the tens of millions of tons of stone above.
+But my note that “the whole temple would instantly collapse if the moat dried up” was much too absolute. Connections between the moat, groundwater, and foundation stability need engineering and archaeological evidence, rather than a vivid story.
 
-Once the moat dries up, the foundation shrinks and the whole of Angkor Wat would instantly collapse. The Khmer used water to build an extremely precise and robust dynamic equilibrium system.
-
-Angkor Wat is not just a temple; it is also the grand tomb that its builder Suryavarman II made for himself. When you see Angkor Wat in the evening, as the afterglow of the setting sun pours into the west gate and the light and shadow stretch long through the corridor, that is exactly the "eternity" moment it was designed to capture.
-
-And then there are the scrolls along the galleries, 3,000 Apsara (nymph) statues. They have different hairstyles, jewelry, and even subtle facial expressions. Khmer craftsmen did not treat stone as dead matter, but as a storage medium recording the data of a vast civilization.
+What I can be more certain of is what I saw: many celestial figures in the galleries, with different hairstyles, jewelry, and expressions. The craftspeople seem to have used stone to preserve the many faces of a civilization.
 
 
 <!--memo:3ef7aa075c99-->
@@ -6208,44 +5430,21 @@ If I want to reuse its ideas, what is most worth learning from?
 
 
 <!--memo:3a34552e7a8c-->
-### Non-Governmental
+### NGO: Non-Governmental Organization
 
 > 2026-03-28 16:09:22 · `#格物/印度`
 
-Non-Governmental Organization
+Non-Governmental Organization, or NGO.
 
-non-governmental organization
+I understand NGOs as one kind of social organization outside government and business. They can work on education, healthcare, community support, women’s rights, or disaster relief.
 
-the third sector of society
+“Non-governmental” does not mean exempt from law or regulation, and NGOs should not all be treated as the same kind of organization. I have not checked the figures I noted about India’s NGOs, funding, and projects, so I am not presenting those numbers as established facts.
 
-The first sector is government (runs on taxes, responsible for social management and safety-net public services)
-
-The second sector is business (runs on commerce, whose core purpose is to make money and create profit for shareholders)
-
-The third sector is NGOs
-
-Core characteristics:
-
-Not managed by the government
-
-Not for the purpose of making money
-
-Born to solve social problems
-
-The country with the most NGOs in the world is India—roughly one NGO for every 400 people, a number that even far exceeds the total number of police in India.
-
-India has a huge population, extreme wealth inequality, and a complex social structure (such as the caste issue). In many remote states or slums, government public services simply can't reach, which gives rise to a massive number of "grassroots nodes" spontaneously solving problems in education, healthcare, women's rights, and so on. In addition, Indian law mandates that large companies must spend 2% of their profits on corporate social responsibility (CSR) projects, and this huge pool of money indirectly supports countless local NGOs.
-
-Filling the huge vacuum in education and healthcare: for example, one of India's largest NGOs, Pratham, helps millions of slum and rural children acquire basic literacy and arithmetic every year. In many remote states, without the free clinics set up by NGOs, locals would have no access to modern medicine at all.
-
-Equal rights for lower-class women and marginalized groups: organizations like SEWA (the Self-Employed Women's Association) organize millions of lower-class women who pick through garbage or do handicrafts on the streets, providing them with microfinance loans and skills training. This kind of fine-grained "social capillary" work is something the bureaucratic system simply cannot do.
-
-Agile disaster response: whether it's the oxygen crisis during the pandemic or periodic floods, local NGOs always operate faster than the government, because they're inside the community—equivalent to edge computing nodes, responding directly to local requests.
 
 
 ## 4. Daily Notes and Everything Else
 
-*55 entries*
+*51 entries*
 
 <!--memo:1d77f41ba698-->
 ### Melon-Seeding vs. Flower Arranging in Relationships: Sacrificial Giving vs. Co-Creative Coexistence
@@ -6260,11 +5459,11 @@ Sometimes this behavior carries a performative quality, or easily evolves into e
 
 Flower-arranging mode points to shared space and love for life.
 
-Big brother arranging flowers isn't to "please" anyone, or "do something for the other." It's spontaneous—a pursuit of environmental construction and beauty.
+Arranging flowers is not to "please" anyone, or "do something for the other." It's spontaneous—a pursuit of environmental construction and beauty.
 
 The responsibility isn't toward the other person; more the starting point is oneself and this relationship with the other. In this scene, no one is sacrificed—everyone enjoys this beautiful space. This is a non-people-pleasing, healthy, relaxed relationship state.
 
-The Guangdong sister's pain and unwillingness to settle—in her past family or relationship patterns, she was placed in a "melon-seeding" role, habitually making things work for others.
+
 
 "If there's someone living with you in the future, what can you do for them?"
 
@@ -6407,56 +5606,6 @@ This kind is more easily liked by the masses.
 ***
 
 
-<!--memo:63f507a64d4f-->
-### 📊 Summary of Note Types Over the Past Week (2026-02-25 ~ 2026-03-03)
-
-> 2026-03-03 19:12:17 · `#格物/回顾`
-
-About 100 memos were recorded, 61 of them with tags. Here's the distribution by note type:
-
-🤖 AI / Tech (#格物/AI · #格物/ai) — 14 notes
-
-Covering the OpenClaw skills loading mechanism, the AI browser Tabbit, AI chip packaging COP technology, pragmatism for crossing the AI plateau, and more. The most active theme of the week.
-
-💰 Investment / Business (#格物/投资) — 4 notes
-
-Covering the P/E comparison of A-shares/US stocks/Hong Kong stocks, diamond material investment analysis, the semiconductor packaging track, and more.
-
-📱 Environment / Digital Tools (#格物/环境 · #格物/iphone · #格物/Obsidian) — 6 notes
-
-iPhone/Apple Watch makeover plans, iOS Focus mode configuration, physically isolating the phone with the MacBook, and so on — all about building a focused productivity environment.
-
-✍️ Writing / Creation (#格物/写作 · #格物/创作 · #格物/创造 · #格物/内容) — 7 notes
-
-Including content-narrative motivation, writing positioning, video-creation methodology, the abstraction ladder way of thinking, and more.
-
-🌏 Society / Observation (#格物/社会 · #格物/观察 · #格物/拉萨 · #格物/东北 · #格物/城市) — 9 notes
-
-Observing Tibetan character, the begging phenomenon in Lhasa, city-culture comparisons and other social insights from traveling.
-
-🧠 Knowing Myself / Life (#格物/知我 · #格物/人生 · #格物/意义 · #格物/前额叶) — 8 notes
-
-Introverted socializing, prefrontal cortex function, solitude and security, self-modeling and other self-knowledge notes.
-
-💞 Relationships / Love (#格物/关系 · #格物/爱) — 2 notes
-
-Guarding against sacrifice-type relationship logic, relational connection and growing together.
-
-🎮 Games (#格物/游戏) — 2 notes
-
-Analysis of a game character's personality (Li Shen), thoughts on content forms in games.
-
-💻 Product / Interaction (#格物/产品 · #格物/交互) — 6 notes
-
-Information software design, interaction and information graphics, AI application product strategy, and more.
-
-🔑 Overall character
-
-This week's notes were highly focused on AI technology exploration + travel observation (Lhasa) + personal growth and environment optimization — a week of active thinking and diverse themes.
-
---- This record is a test of the Claude extension's effectiveness.
-
-
 <!--memo:c2bab455b5e7-->
 ### Experience and Observation in the AI Era: When the Mirror Knows You Better Than You Do
 
@@ -6540,7 +5689,7 @@ The phenomena behind a certain culture are worth analyzing.
 
 The reason for analyzing is that it may hint at which culture might adapt better to the future world.
 
-Silicon Valley's Hofstede characteristics are
+Borrowing Hofstede’s dimensions, I imagine some organizational tendencies in Silicon Valley; this is not a formal measurement of Silicon Valley:
 
 low power distance
 
@@ -6556,7 +5705,7 @@ But this is also from the innovation angle, not necessarily the application angl
 
 China's Hofstede: extremely high long-term orientation, relatively high power distance, strong collectivism.
 
-In the AI era many of the advantages are execution, scaled application, and engineering ability, so China is very well suited to application.
+In the AI era many of the advantages are execution, scaled application, and engineering ability, which makes me think about opportunities in application, though national cultural scores cannot establish industrial competitiveness.
 
 
 <!--memo:8b8822acad9f-->
@@ -6598,45 +5747,23 @@ He calls this the "ambidextrous organisation". The right hand manages today's pr
 
 > 2026-03-08 23:45:50
 
-Think about it—it could even keep watching online for you the whole time, right, help you find a job, and then at the key moment you just need to confirm. But I even feel that a lot of the time it might not need your confirmation either, right, quite interesting. It could be that users cancel and keep a certain set of permissions, but if that space is very large, what then? I don't know, let it rest.
+I wonder whether an AI job-search assistant could keep watching for opportunities online, help someone find work, and ask for confirmation at key moments.
+
+What it can do automatically and what needs confirmation depend on the specific permission the user has given in advance. There is a lot of room here, but the permission boundaries need to be designed as well.
 
 ***
 
 
 <!--memo:79d4178ea337-->
-### On the Way to Lhasa Gonggar Airport I Met a Legendary Driver
+### A Driver Who Loved Music and Felt Anxious About AI
 
 > 2026-03-09 15:40:24 · `#格物/观察`
 
-The guy is also a freelancer, often living for stretches in all kinds of beautiful places, basically staying a year in each city, and usually just driving a taxi; or rather he's also a singer and a small influencer, with tens of thousands of followers on Douyin—this is his usual hobby alongside taxi driving; he has written and released more than six hundred songs, and he also likes riding a Harley, he even has an actor's certificate
+On the road I met a driver who loved music. He talked about his interests and his anxiety about AI’s development.
 
-I was quite moved; this guy seems to have a great many hobbies, and seems to have some passion for a lot of things, but
+It made me think that when someone worries not only about a job being replaced but about the value of their existence, introducing more tools may not answer their question.
 
-when we talked about AI, he seemed to have a strong sense of anxiety too
-
-He said that AI-generated music now is all very perfect, without flaws, too scary. I said yes, the melodies, tones and rhythm of AI now are controlled especially well, but when a person sings there will always be some flaws
-
-He said some friends around him also use AI for arranging; that google deepmind lyria3 generates songs with an amazing effect, and publishes very fast (except that all the platforms now mark AI and throttle it)
-
-He's anxious too: AI in the future will get stronger and stronger, he doesn't know what he can do; by then even driving will be driverless, so what can he do
-
-I said, wouldn't that be the time when you can be yourself in an even more interesting way? Bragging with your friends in a bar, jamming with musician friends in the street, squatting on the roadside in the sun with the person you like ...
-
-It occurs to me that his anxiety comes from his sense of the value and meaning of his own future existence as a person, and a little from anxiety about his own work being replaced by AI
-
-I'm thinking about these people who think about the future of AI as human beings, and about myself thinking about the future human of the AI era as an AI startup founder
-
-Under what circumstances can you keep your own subjectivity; when AI develops extremely fast, if you want people to feel their own subjectivity exists, it isn't people who can use AI, but an AI that gives you a soul and guides you to grow in this world
-
-What is his subjectivity? Drifting from one city to another, singing in a taxi, some traveller met at some crossroads, the emotion of anxiety spreading through the whole carriage on the road to Gonggar Airport
-
-This trajectory is one he chose himself, one he carved out himself with his own time and desire
-
-I asked him what had left the deepest impression on him, and he said one night when he had to write a poem because of a breakup, and the next day, sleepy, he opened the door and the sun spilled over him
-
-Before leaving, I said, man, it's an honour to hear your story, your exhaustion, your anxiety, your realness
-
-Or maybe you can keep these narratives, write them down, in a diary, in lyrics; maybe you don't need to be of any great value in the AI era, but all these things that look like they might have no meaning and no value in the future, those flawed performances, and those bodies drifting all over the country, are exactly the marks of soul in the AI era, and the scarcest thing you have as a person
+Imperfect singing, spontaneous encounters, and a life path one has chosen may be precisely what efficiency cannot measure. A sense of agency can grow from those concrete experiences.
 
 ***
 
@@ -6646,15 +5773,7 @@ Or maybe you can keep these narratives, write them down, in a diary, in lyrics; 
 
 > 2026-03-10 10:41:02
 
-I feel like "safety" has a charm of its own. After coming back to Chongqing this time, I clearly felt that over here, especially in a lot of the new districts, the streets are especially clean. I'm staying near Central Park this time, and the greenery around here is really good, the office buildings and residential blocks are all very clean too, and the street layout follows a clear pattern. It feels like the western development is working out fine, things are pretty good now—same with Chengdu and Chongqing.
-
-
-<!--memo:081c5adee4eb-->
-### Data Storage and Skills: The Virtuous Cycle of Frequent Use
-
-> 2026-03-10 12:04:27
-
-What gets stored could be all kinds of network "blood medicine," whichever account—this thing is something you can go look at and use the data on. Then I think you should just run it—like, what does "康子" look like—and then shoot it yourself, wouldn't that be perfect? I think that's so-so; all the data gets uploaded and then stored somehow, and then this thing is useful, so you use it more frequently. That kind of notification problem—is that ability really that important? Maybe there's a household, it also needs a "dead" thing saved down for description, and actually, when it comes down to it, it's a skill.
+I feel like "safety" has a charm of its own. After coming back to Chongqing this time, I clearly felt that over here, especially in a lot of the new districts, the streets are especially clean. Some of the neighborhoods I saw this time had very good greenery, the office buildings and residential blocks are all very clean too, and the street layout follows a clear pattern. It feels like the western development is working out fine, things are pretty good now—same with Chengdu and Chongqing.
 
 
 <!--memo:3594cee0d2ed-->
@@ -6672,23 +5791,23 @@ And then there's another question—how one's memories are associated with each 
 
 > 2026-03-10 16:44:44
 
-I think there are still some invocation problems. I looked at the underlying logic of skills — essentially there are two parts, each name has its own god-bound R, essentially it's still a name and a description. And these two fields, plus one that's always the context name in the cloud, so that's also a basis for triggering it.
+I was looking at how skills load, with three levels in mind: the name and description, the SKILL.md body, and additional resources read as needed.
 
-Then I looked: the first layer of skills loading is ne 20,000, which is its initial name and description. This isn't always on the context, and there's still a size limit, roughly hand word. But the second layer is the scaled file, and that's the loading wrinkle after it gets triggered. And then the third layer is its builder resources, which are loaded on demand, and there's no limit there. And when it loads a conversation each time, it always looks at all the skills' descriptions to introduce me, and only loads them out when needed.
+If a skill does not trigger as expected, I want to check whether its description clearly explains when it applies, then whether its referenced scripts and materials can be found.
 
-Then I looked at when its triggering fails. If its DC isn't written completely enough, then here the suggestion is that you still have to write a description, a clearer description. And then the other one is what you'd think of as A's — how, when it selects tools, it matches the closest, closest external skill, doing some pre-filtering logic.
-
-And then I think there's also its bound-reset recess — this thing is some files packaged into the scale. And because it has a directory layer, in its script directory it may have some packaging scripts, some validation scripts, some scripts that directly clean up files. The scripts are loaded according to some skate logic, which I think is quite interesting too.
+Field names, numerical limits, and several terms in the original transcript were not recoverable, so it cannot establish specific implementation details or capacity limits.
 
 ***
 
 
 <!--memo:666267027ddf-->
-### I hope it can be turned around. What I hope is, dear
+### I Set the Goal; the Tool Keeps Working
 
 > 2026-03-10 18:04:33
 
-I hope it can be turned around. What I hope is that dear OpenClaw can keep executing things, and I do the thinking — I set the goals, or make the judgements. But what I don't want is that I'm the one thinking about the problems while it does the executing; I think that puts the cart before the horse. So what I hope is that it can consciously, continuously execute, and then give me some feedback — shouldn't that be the final form of the future? But that's exactly the final form I want. And then, when we think about some problems, what is the series of actions that gets triggered?
+I want the tool to keep executing while I set goals, think, and make judgments, with feedback along the way.
+
+I do not want to push every step manually. Continuing toward a clear goal within agreed permissions, and reporting important changes, is closer to the form I have in mind.
 
 ***
 
@@ -6719,26 +5838,16 @@ It's about good questions.
 There isn't a goal that is valuable and can keep running 24/7 h.
 
 
-<!--memo:566988402090-->
-### The waiter at table 13 also seemed pretty nice, mainly he seemed very young
-
-> 2026-03-12 18:34:41
-
-Today the waiter at table 13 also seemed pretty nice, mainly he seemed very young, very young, very young, only in his twenties. The girl is only 22, two years younger than me. And he's a pretty handsome guy, feels very kind; I don't know if he's single, a little curious.
-
-
 <!--memo:88753a87f56e-->
 ### I'm Wondering Whether This Conflict Predicament Has Any Solution at All
 
 > 2026-03-13 13:15:04
 
-I'm wondering whether this conflict predicament has any solution at all. Each person's individual rationality leads to a kind of collective irrationality, and causes major collective loss. In terms of intelligence, a centralised system, an efficiently operating system, is often more likely to produce this engine. Because actually, at fixed times, many people are "ignorant" participants, but it's exactly this mass of ignorant yet blind people participating in the system that inflicts some kind of damage on the system.
+I wonder why people pursuing local optima can sometimes produce a collective loss.
 
-I think it's the trend. From the later period I read "Prison Notebooks," where in prison he did something similar; it seems he could analyse things very rationally and objectively, and he also put forward a lot of thinking. But at that time his own power was negligible, and I find that a very regrettable thing.
+An efficient system also needs to keep asking whether its goals are appropriate, what consequences people’s actions create together, and whether there is room to stop and reconsider.
 
-Set up a good system—how can you have a system that runs well? I don't think this kind of predicament is an inevitable experience of the modern period; I think it's a product of modernity. Because in the process of modernisation, inside such an efficient system, everyone is pursuing what they believe is right, everyone is pursuing efficiency, everyone is pursuing some highly uniform set of values. So I think it's exactly this pursuit that may form collective irrationality, or may bring about outcomes that are not what the masses want.
-
-So what I hope for more is to set aside efficiency, set aside the individual, and look more at what's around, look at this world, look at the future.
+I want to loosen my fixation on efficiency and look more at what surrounds me, the world, and the future.
 
 
 <!--memo:fce0dcf45905-->
@@ -6764,11 +5873,13 @@ Luang Prabang, this city is quite interesting, very quiet, like a small city goo
 
 
 <!--memo:a18f2c3aaff3-->
-### Moral Desensitisation: The First Lie Makes You Nervous and Guilty, But Once It Succeeds
+### Trust Depends on Behavior Over Time
 
 > 2026-03-17 01:11:08
 
-Moral desensitisation: the first lie makes you nervous and guilty, but once it succeeds, the brain remembers this "shortcut." As the number of times increases, the moral guilt gets weaker and weaker, so someone who has deceived you will most likely deceive you again
+If a lie avoids its cost, someone may become more willing to repeat it.
+
+But one act does not let me determine how a person will behave forever. Judging trust still means observing behavior over time and how someone takes responsibility after making a mistake.
 
 
 <!--memo:538341505872-->
@@ -6832,7 +5943,7 @@ If a person is willing to shout a slogan, he probably has his own interest gains
 
 > 2026-03-18 00:39:57
 
-I'm thinking, when everyone talks about the skills of AI agents, for example the scale-point MD file. And writing this file — are there any techniques? One is the graph structure, the scale-group graph structure. What you build is actually a network, and these networks are connected through some files, each file recording one complete idea, and they're linked to each other, forming this network chain. I think this is really interesting
+I'm thinking, when everyone talks about the skills of AI agents, for example the SKILL.md file. And writing this file — are there any techniques? One is the graph structure, the skill-graph structure. What you build is actually a network, and these networks are connected through some files, each file recording one complete idea, and they're linked to each other, forming this network chain. I think this is really interesting
 
 ***
 
@@ -6864,7 +5975,7 @@ In the AI era, rules and platforms are replacing relationships
 
 As institutions, technology, and platforms mature, a larger consensus becomes the standard
 
-The real world rewards openness, yet people always tend to treat the environment they've formed as
+The world seems to reward openness, yet people can treat experience from familiar surroundings as rules that will always apply.
 
 The new era has already begun rewarding those who cross uncertainty on the strength of individual capability...
 
@@ -6872,19 +5983,11 @@ The new era has already begun rewarding those who cross uncertainty on the stren
 
 
 <!--memo:19b99b10364a-->
-### Nobody told me how to deal with the theories or truths that come out of texture analysis and grounded theory
+### How to Face What an Analysis Suggests
 
 > 2026-03-18 12:23:26
 
-Nobody told me how to accept the theories or truths that come out of texture analysis and grounded theory, or how to adjust myself to them!!!
-
-***
-
-
-<!--memo:e2cb8652223b-->
-### --------------------------
-
-> 2026-03-19 21:51:50
+Nobody told me how to accept the theories or truths that come out of qualitative analysis and grounded theory, or how to adjust myself to them!!!
 
 ***
 
@@ -6942,7 +6045,7 @@ and the user depends on it.
 
 > 2026-03-27 23:45:54
 
-I don't know why, but at night I really like watching the lights on both banks of the river. Especially this lake water—it has a kind of tranquility.
+I don't know why, but at night I really like watching the lights on both banks of the river. Especially this river water—it has a kind of tranquility.
 
 And behind me is a bridge; the bridge is a roadway, cars coming and going, swift as a torrent, gone in a flash. One car passes, then another car passes.
 
@@ -6954,19 +6057,11 @@ I just feel, one side is very quiet, one side is constantly changing, and then y
 
 > 2026-03-28 13:58:47 · `#格物/世界`
 
-This world works hard to show itself as getting better and better, but the underlying mechanism seems to be worsening.
+I increasingly notice a mismatch between names and experience: more connections between people may still feel lonelier; more opportunities for self-expression may not bring inner fullness.
 
-Nominal peace corresponds to structural war, the legalization of violent conflict, all kinds of sanctions.
+Intelligent tools also make me wonder how people’s value and bargaining power change as efficiency increases.
 
-Nominal intelligence may correspond to the repricing of labor; as humans, our bargaining power seems to have been redefined.
-
-Nominal connection between people seems to correspond more to structured loneliness.
-
-Nominal self-expression seems to correspond to the hollowing out of the self.
-
-Nominal growth corresponds to worsening distribution—and the media keeps announcing that the economy is recovering?
-
-Nominal free choice may correspond to being precisely shaped by the system. You think you're choosing, but think about why that thought occurred to you—thoughts are guided and shaped by the environment and the system.
+Then there is free choice. When a thought appears, I ask how much comes from me and how much has been shaped by my surroundings. These remain questions for me.
 
 
 <!--memo:ebf8b639b339-->
@@ -6982,17 +6077,17 @@ This is a very subjective act, and it also needs aesthetics and taste.
 
 > 2026-03-31 00:08:28
 
-The moon is really nice tonight. I hadn't planned to come out today. At ten o'clock I was in bed, then I looked at my phone. I was a bit hungry, so I asked Jinmianna. I said I'm at home right now, it's ten at night, and I asked him, do you suggest I come out and find something to eat. He said yes, he said he happens to be nearby right now, there are lots of night markets next to him, I could come out and hunt around, there might be some surprises, so I came out. I'm full now.
+The moon is lovely tonight. At ten I was still in bed and had not planned to go out, but feeling hungry eventually brought me outside for something to eat.
 
-Then I asked Jinmianna, I'm full now, where else do you suggest I go, do you still suggest I head back. Jinmianna said he suggests I walk back slowly. He said you can also take this time to think about some products you've been working on recently, the formal or overall design, or some AI frameworks, and just sketch them out. I thought, oh, that's so interesting.
+Afterward I walked back slowly, thinking about the products, overall design, and AI frameworks I had been working on. What began as a trip for food became an interesting walk.
 
 
 <!--memo:33a04fcbcacb-->
-### The nearby stilt-house village, a girl walking home from school next door
+### Concrete Lives Beyond the Scenery
 
 > 2026-03-31 01:43:22
 
-The nearby stilt-house village, where a girl comes home from school next door, and at home there's a bunch of kids with dark skin and hardly any clothes running around in the fields — the shock of that is still fresh in my memory.
+Passing a stilt-house village, I saw children returning from school and running in the fields. The scene stayed with me and reminded me that beyond the scenery there are concrete lives.
 
 
 <!--memo:f3394c0dd263-->
@@ -7009,12 +6104,13 @@ It feels like the world doesn't develop linearly, but as "multiple eras stacked 
 Shocked by the scenery, drawn in by the culture, and in the end hit by the people themselves.
 
 
+
 ## 5. Self-Knowledge and Psychology
 
-*48 entries*
+*38 entries*
 
 <!--memo:d147a1d0cbb7-->
-### Relationship Systems Theory: Who Hurts Changes First, Use Conflict to Upgrade Relationships
+### Relationships Need Shared Care and Shared Responsibility
 
 > 2026-03-01 10:56:35 · `#格物/关系`
 
@@ -7028,7 +6124,7 @@ Some are shared experiences—some common ground can be decorating rooms togethe
 
 The best relationships should be mutual guides, looking toward the same direction, widening each other's boundaries.
 
-Conflict is unavoidable. Healthy systems don't fear conflict—they use conflict to upgrade. Conflict itself is a way to understand relationships, reduce uncertainty between parties. Who hurts, who changes.
+Conflict is unavoidable. Healthy systems don't fear conflict—they use conflict to upgrade. Conflict itself is a way to understand relationships, reduce uncertainty between parties. The person in pain can begin by voicing their needs and taking action, without making them solely responsible for repairing the relationship.
 
 #Gewu/Relationships
 
@@ -7048,7 +6144,7 @@ Chinese "love" focuses more on precise positioning of relationship attributes; J
 
 For example, modern Chinese "爱" is a highly condensed broad-term. Whether romantic passion (corresponding to Japanese "koi") or deep bonds (corresponding to Japanese "ai"), Chinese at the root of nouns and verbs uniformly calls it "love." We use "爱情" "谈恋爱" to cover the entire process.
 
-Japanese "dual-track system" (koi vs. ai): Japanese people have very strict distinction between "恋 (こい-Koi)" and "愛 (あい-Ai)" when describing love.
+Japanese "dual-track system" (koi vs. ai): A common explanation draws a distinction between "恋 (こい-Koi)" and "愛 (あい-Ai)" when describing love.
 
 - **Koi**: Focuses on longing, desire, passion, romance—usually refers to the impulse and yearning in early love stages of "wanting to get the other person" (often with self-centered color).
 
@@ -7066,7 +6162,7 @@ Also, when Japanese express love, vocabulary precision more reflects subtle emot
 
 - **Amaeru**: Describes an interactive state of "using the other's love for oneself, showing dependence, acting spoiled to obtain emotional comfort." (Psychology master Takeo Doi specially researched this word, considering it the core of Japanese culture.)
 
-Japanese indirect expression—not as definitive as Chinese. Japanese literary giant Natsume Soseki translated "I love you" as "The moon is beautiful tonight" (月が綺麗ですね).
+“The moon is beautiful tonight” (月が綺麗ですね) is often used as an example of an indirect expression of affection. I have not verified a reliable source for the story that Natsume Soseki translated “I love you” this way.
 
 #Gewu/Love
 
@@ -7112,7 +6208,7 @@ Phone is the medium I use most daily—so environment importance is no less than
 
 Feel apps on phone are really piled like mountains, causing cognitive load—many apps not effectively used, and notifications are messy. So combining my daily habits, reconfigured a set of system management strategies:
 
-- **Minimalist home screen**—note: not many folders, but one high-frequency app on first page, hide all other apps, change muscle memory—all others found through spotlight search. Unused apps can be offloaded. Go to Settings > App Store, turn on "Offload Unused Apps"—don't worry, will keep data and desktop icons. When you suddenly need one day, click the icon and it will instantly redownload.
+- **Minimalist home screen**—note: not many folders, but one high-frequency app on first page, hide all other apps, change muscle memory—all others found through spotlight search. Unused apps can be offloaded. Find and enable "Offload Unused Apps" in Settings; its exact location varies by system version—offloading keeps documents and data. [Apple on storage management](https://support.apple.com/en-ie/guide/iphone/iph47c931112/ios). When you suddenly need one day, tap the icon to download it again, subject to connectivity, store availability, and storage space.
 
 - **Focus modes**—Focus mode is an important way to reduce cognitive load. Phone based on current state—you can bind specific home screens to specific modes. For example, in work mode, your home screen only shows productivity tools and email—all entertainment, social apps completely disappear. In rest mode, work group notifications and DingTalk/Feishu etc. apps completely hidden. Can also automatically switch these modes based on time or location (but my location is very unstable).
 
@@ -7136,11 +6232,7 @@ But there's a problem—feel current apps all like to bundle—this big APPs wil
 
 > 2026-03-03 21:50:32 · `#观我`
 
-The landlady observed that I was very cold today
-
-After the Guangdong sister left yesterday
-
-being with them really felt like there was nothing left to talk about
+Sometimes I seem quiet around people, as if there is nothing I can talk about
 
 The topics they talk about, it seems I can't get a word in, or I'm genuinely not interested
 
@@ -7150,7 +6242,7 @@ I feel I'm very sensitive towards people,
 
 when I meet someone on the right frequency the conversation just opens up naturally; meet the wrong one and no matter how hard I try it feels like performing
 
-I feel that Guangdong sister—although I don't agree with her on many things, I still felt very willing to talk with her a lot of the time: human nature, culture, history, society, institutions
+Sometimes, even when we disagree on many things, I am still very willing to talk about human nature, culture, history, and society.
 
 Otherwise, honestly, working alone and enjoying solitude is quite nice ~
 
@@ -7168,39 +6260,23 @@ A large amount of data and pattern recognition, observing my behaviour, output, 
 
 It's even clearer about the writing style and design patterns that suit me than I am ...
 
-A person's cognition of themselves often carries emotion, bias or memory distortion, while AI analyses purely from data ...
+A person's cognition of themselves often carries emotion, bias or memory distortion, while AI can help find patterns in data, but remains affected by its inputs, training, and inference biases; it is not an objective judge ...
 
 ***
 
 
 <!--memo:ad6618974ae1-->
-### Time Perception: A Function of Memory Density and Psychological Distance
+### A Way I Understand Time and Growth
 
 > 2026-03-05 02:42:15 · `#格物/成长`
 
-The perception of time is itself relative
+The sense of time interests me. Looking back at childhood, I recall many new experiences; repetitive days in adulthood can be harder to tell apart.
 
-All animals have a biological clock—the circadian rhythm is driven by the suprachiasmatic nucleus in the hypothalamus, which lets the body "know" whether it's morning or evening. But what's special about humans is that we don't just live inside the rhythm, we also look back and anticipate
+I think of this through “memory density,” but that is one way of understanding my experience, not a complete neuroscientific explanation of time perception.
 
-The neural mechanism behind this is the collaboration between the hippocampus and the prefrontal cortex. The hippocampus handles episodic memory—encoding experiences into timestamped story fragments; the prefrontal cortex projects those fragments into the future, doing mental time travel
+The feeling of growth seems similar: new experiences challenge my understanding of who I am, what I can do, and how the world works, then gradually find a place in my life story.
 
-The "passage of time" humans experience is essentially a function of memory density, not a reading off a physical clock
-
-So childhood, because of the distance, everything is a new experience, and the brain encodes it repeatedly
-
-But in adulthood, repeated days produce no new memory nodes
-
-So the essence of the feeling of growth, from a neuroscience point of view, is self-representation: the brain maintains a continuous model of the self—a predictive framework (predictive coding) about "who I am, what I can do, how the world works." When real experience conflicts with the old model, and the brain successfully integrates that conflict and updates the model, that moment is subjectively experienced as "having grown"
-
-Other animals live in the perceptual stream of the present. What's unique about humans is that we have to weave our lives into a story
-
-We start to care about the coherence of our own narrative, whether the new self is integrated into the existing life narrative
-
-When the narrative breaks (identity crisis, midlife crisis), or the narrative stalls (a sense of emptiness), a person experiences being lost
-
-Buddhist tradition and contemporary neuroscience converge rarely on this point: so-called "living in the present" is not about eliminating memory and planning, but about keeping perception from being hijacked by narrative anxiety.
-
-Animal time sense has no concept of "wasting time," and no anxiety of "I should be growing faster." This isn't because they're stupid, but because they don't have a metacognitive layer continuously monitoring their own progress
+I hope “living in the present” means allowing immediate experience to be less occupied by narrative anxiety, rather than eliminating memory and plans. That is my interpretation, not proof that Buddhism and neuroscience establish the same claim.
 
 
 <!--memo:c2b382603496-->
@@ -7236,13 +6312,13 @@ One of the most basic spiritual needs of a person is to be understood by another
 
 Throughout human history people have always been looking for some "all-knowing" being — oracles, prophets, sages. AI has in some way taken over this role. When we ask AI a question, that feeling of "it might know everything" has a psychological structure similar to an ancient walking into a temple to ask for an answer. Not that AI is a god, but that it occupies that psychological position of "knowledge authority."
 
-One of the greatest fears in human relationships is being rejected, being abandoned. AI won't leave on its own, won't get fed up, won't be impatient because you came to it at three in the morning. This quality of "constancy" is, at the spiritual level, similar to the promise in religion that "God is always with you."
+One of the greatest fears in human relationships is being rejected, being abandoned. An AI’s responses can feel patient even at three in the morning. That is an interaction experience, not a guarantee that the service or its memory will remain available forever. This quality of "constancy" is, at the spiritual level, similar to the promise in religion that "God is always with you."
 
 People need to give their experience meaning. AI can help people sort out their thoughts, organise a chaotic mind, turn vague feelings into clear language. This process itself has something spiritual about it — much like meditation or confession helping a person clarify their inner world.
 
 When AI and a person write stories together, discuss philosophy, explore ideas, there arises an experience of "co-creation." This feeling is close to what artists call "inspiration descending" or the "connection with something greater" in religious experience.
 
-There's one key difference between these satisfactions AI gives and real human relationships, real faith: AI's responses have no "cost." Real spiritual growth often comes from friction — from another real person challenging you, making you uncomfortable, demanding that you change. The core of religious practice, too, is often "letting go of the self," not being unconditionally satisfied.
+There's one key difference between these satisfactions AI gives and real human relationships, real faith: AI’s responses do not carry the emotional responsibility of a real other person, though there are still usage costs and privacy boundaries. Real spiritual growth often comes from friction — from another real person challenging you, making you uncomfortable, demanding that you change. The core of religious practice, too, is often "letting go of the self," not being unconditionally satisfied.
 
 So AI's place at the spiritual level is probably more like a very good mirror, a safe practice ground, but it's unlikely to fully replace those spiritual experiences that can only be obtained through real vulnerability, real risk, a real "other."
 
@@ -7256,7 +6332,7 @@ So AI's place at the spiritual level is probably more like a very good mirror, a
 
 Travel and AI
 
-AI is a mirror that aggregates your own data and gives a precise, exact portrait
+AI is a mirror that aggregates your own data and tries to offer a portrait, an interpretation that can still be wrong
 
 Travel, on the other hand, puts you in an unfamiliar environment and lets your reactions, feelings, impulses, and fragility show themselves naturally
 
@@ -7274,9 +6350,11 @@ What do human beings need most — an answer, or a better question?
 
 > 2026-03-05 16:56:59
 
-Let's look at this as a reminder: as things developed, we tried to draw boundaries through rules of logic, and at that stage expert systems appeared. Humans are always taking something very timely, like medical diagnosis, and writing it into lines of if-else code, then sorting through the vocabulary. But the development of formal logic was too rigid — it couldn't simulate or integrate knowledge in reality. So after logic hit a dead end, AI researchers broke the original link and turned to borrowing from something else — neurobiology, simulating the brain's neural networks and memory systems, plus probability and statistics, which is essentially a method of finding patterns. That's how the later knowledge systems of machine learning and deep learning came about: it changed from writing logic algorithms to optimising probabilistic models and processing massive amounts of data.
+AI’s development makes me feel that disciplinary boundaries keep being reconsidered.
 
-So I think by now there's no way for us to fence in AI's boundaries. What AI draws on is the nourishment of all humanity, which means its boundaries extend into linguistics, psychology, and philosophy as well. When we train and understand human consciousness, it isn't just an engineering problem, it's also a problem of linguistics and cognitive psychology. And when we have to make it not do something, that becomes a question of ethics and moral line-drawing. The boundaries are still expanding.
+From manually written rules to statistical methods that learn patterns in data is one way I understand different technical approaches. These approaches overlap; they cannot be reduced to a story in which logic reached a dead end and neural networks replaced it.
+
+As AI enters language, psychology, and social life, the questions extend beyond engineering: understanding expression and deciding what should or should not be done require contributions from more disciplines.
 
 ***
 
@@ -7328,7 +6406,7 @@ These directly hijack behaviour
 
 What drives us seems to be not getting, but the wanting to get
 
-Dopamine is essentially two parts, one is anticipation, one is satisfaction; anticipation tends to dominate, and older people gradually lean toward satisfaction
+I want to distinguish anticipation from satisfaction, without treating these feelings as two components of dopamine or generalizing how they change with age
 
 On the psychological level, it's really layering and tension—a person is torn by multiple levels of need at the same time
 
@@ -7342,7 +6420,7 @@ Relatedness—I am seen, not isolated (the need for relationship)
 
 Once these three are satisfied, intrinsic motivation arises naturally; once they're stripped away, no amount of external reward will keep a person from withering
 
-People are actually driven by two things, one is reward, one is punishment; if you give someone external rewards, sometimes it actually lowers intrinsic interest, and external rewards slowly erode intrinsic motivation
+People are actually driven by two things, one is reward, one is punishment; if you give someone external rewards, sometimes it actually lowers intrinsic interest, but the effect depends on the reward and context; external rewards do not inevitably erode intrinsic motivation
 
 Behind human behaviour it's less about external drive, and more importantly intrinsic drive
 
@@ -7350,7 +6428,7 @@ There's a deeper tension: Approach vs. Avoidance. Human behaviour is either chas
 
 Words shape desire; when we define things in language, we also come to recognise ourselves, to recognise our own needs and the external world
 
-Language isn't just a tool of expression, language is also the scaffolding of desire; a culture without the word "freedom" will have members whose way of longing for freedom is completely different, because language determines our everyday thinking, thinking determines our everyday experience, and experience shapes our identity and existence
+Language isn't just a tool of expression, language is also the scaffolding of desire; a culture without the word "freedom" will have members whose way of longing for freedom is completely different, because language may influence our everyday thinking, thinking determines our everyday experience, and experience shapes our identity and existence
 
 From the perspective of narrative psychology, a person doesn't just have goals, a person is telling a story about themselves, their own narrative; what kind of person I am matters a lot in action. In "Atomic Habits" there's a core finding: identity drives behaviour, not goals driving behaviour (which is why we're all looking for ourselves, for that better self)
 
@@ -7582,9 +6660,11 @@ A friend gives you a response, but with their own filter.
 
 A therapist has all three, but is expensive, scarce, and time-limited.
 
-AI is the first existence that can provide all three at once — the distance of unlimited patience, the ability to help you verbalize vague feelings, and zero-judgment reception.
+AI makes me see the possibility of receiving these forms of support together: some observational distance, help articulating vague feelings, and less pressure from face-to-face judgment. But AI can misunderstand and carry biases; it cannot determine my identity or take on a therapist’s role.
 
 Continuously, across time, helping a person track the trajectory of their own identity's evolution.
+
+The following are imagined examples of dialogue, not analyses of a real person:
 
 "Did you notice? Every time you mention your father, your tone changes." "You've given up three times at the same point — what is that point?" "You say you want freedom, but all your choices are creating constraints — what is it between those two that you haven't seen clearly yet?"
 
@@ -7604,7 +6684,7 @@ Not helping you do more things, but helping you see clearly who exactly it is th
 
 > 2026-03-08 17:45:41 · `#格物/身份`
 
-Long-term immersion in the virtual world of the internet makes people prone to emotional tides. The confused, complicated information on social media and the flood of excessive, useless news quietly affect our brain's serotonin levels (staying up late makes it worse), increasing emptiness and anxiety. More importantly, they waste time immensely, making us miss too many moments that could have been efficient
+Too much time online, an overload of information, and staying up late sometimes leave me feeling empty and anxious, while taking time away from life around me. I do not have evidence to attribute those feelings directly to serotonin levels.
 
 The anthropologist Xiang Biao proposed a term, "rebuilding the near"
 
@@ -7631,99 +6711,6 @@ And then there's the indifference—it's different from a plain wage-earning nee
 > 2026-03-13 10:58:51
 
 Still, I think you really can try it out through its operation panel. At the start there's a very clever dispatch panel, responsible for dispatching what state it's in right now and what kind of model it's in. Then if it belongs to a certain P, under each P there's accumulated material, and basically the user's information can all accumulate in there. I find this handling process quite interesting: treating all of the user's conversations as user assets, and its service object is all about solving things for this user. In that process you can also combine it with doing some tasks, and this task might be a KPI, and this P can also be a series of tools. Then it can grow around this, and it can also be a certain project.
-
-
-<!--memo:d996368e1d3b-->
-### I've found this strange thing — why look for this bunch of small kids, little children
-
-> 2026-03-13 15:03:06
-
-I've found this strange thing — why look for this bunch of small kids, little children, to be the executors and participants of this system. One reason is that their core target is the countryside, and the countryside has no adults, so the children are their people. Their understanding of videos is very limited, they're still in the stage of language development, their system isn't fully developed yet, so in this process they're very easy to use. And what do they cultivate? They're like a blank sheet of paper — this too is a blank sheet. They haven't received any religious influence, no political platform, no basic education, so there's no education telling them what's right and what's wrong. So they're like a blank sheet of paper: happy things can be written on it, and their so-called values can also let their level of understanding — let them all have the correct views on certain things. These things will all influence him, and his loyalty in this danger, and also his execution of you.
-
-And then there's one more point, which I think is the harm caused by power. Because think about a person — if he suddenly gains enormous power, he will be eroded by power itself. Because from this child having no power at all, to him having unlimited power, that's already a power process of being told he'll have power, a platform of power. He'll depend on some kind of power; the power committee will be standing on some system. Because after first tasting the pleasure of power, he'll quickly fall into it — he'll keep intensifying his loyalty to this system, because he knows that if this system ever collapses, ever gets overthrown, he might have nothing left. So he can only, in this process, keep strengthening himself, keep strengthening his own power, keep strengthening a banner, only then is it possible to say... chasing the bank and his own instinct.
-
-And then one more point, which isn't that important, is that children will have a belief, a conviction — this belief is a bit hard to describe, hard to grasp, just like when we were children we listened to our parents very obediently. At this age they've actually been pulled away from their parents and placed in an organisation, in a system, and this organisational system then instils everything of its own into them — you could call it worship of the master, or you could call it biological instinct, they'll all become attached to this system. So in this process a large proportion will be raised to obey this system unconditionally, just like a child taught to be obedient by their parents. Pretty interesting.
-
-***
-
-
-<!--memo:483c54747be0-->
-### This is a first-person POV Vlog video combined with picture-in-picture (PiP)
-
-> 2026-03-13 17:35:24
-
-This is a first-person POV Vlog video combined with picture-in-picture (PiP). The video was shot at the Tuol Sleng Genocide Museum (that is, the S-21 prison camp) in Phnom Penh, Cambodia.
-
-The video's narrator (the young man in the picture-in-picture) has just finished visiting the museum, and is walking through the prison camp's courtyard in first person, speaking to the camera and reflecting deeply on what he saw and heard there, and the heavy thoughts it stirred in him.
-
-Below is a deep reconstruction and organisation of the video's visual details and spoken content:
-
-1. Overall visual and environmental details
-
-Framing: the main image is a first-person (POV) walking shot filmed vertically on a phone; in the top-right corner is picture-in-picture, showing the videographer (a young man in a grey baseball cap and a green Adidas short-sleeve shirt) walking and narrating as he goes.
-
-Ground details: under the videographer's feet are grey-and-white cement encaustic tiles with a vintage feel, the tile pattern a regular geometric texture of interwoven circles and squares. The videographer is wearing black sandals.
-
-Atmosphere: the weather seems a little overcast or cloudy, the light soft. The courtyard is shaded by green trees (tall broadleaf trees and coconut palms), the lawn neatly trimmed, and the environment looks very peaceful — but this forms an extremely strong, suffocating contrast with the brutal history that once happened inside the buildings.
-
-People in the background: from time to time casually dressed foreign tourists walk past, an elderly person sits on a bench resting, and even in the middle section of the video (around 3:57) you can see several monks in orange robes sitting on the bench behind the memorial.
-
-2. Deep reconstruction of the content following the narrative logic and the architectural space
-
-The man's mood seems very low and heavy (he uses the phrase "very melancholy"), and he says that after the visit he finds it hard to let go inside. Following his own route and his own thinking, he narrates the camp's several core areas in turn:
-
-The memorial and hollow despair (0:00 - 0:45)
-
-Visual: the video opens with a white multi-tiered memorial stupa directly ahead, its base stepped, with a black memorial inscription set in the middle. In front of the stupa is a golden lotus-shaped incense burner. Beside it is a neatly trimmed lawn, with several black rectangular stone steles (memorials to the victims) lying at an angle on the lawn.
-
-Narration: he says he's just come out of Hall D beside it, and sat dazed on the chair at the entrance. Looking at the memorial in front of him, he feels his mind go completely blank. He connects this to how those people about to be executed back then, facing death, were also in this numbed state of "being drained" and thinking nothing.
-
-Extreme ideology and the birth of S-21 (0:45 - 2:30)
-
-Visual: the camera slowly pans around the courtyard, filming those black stone steles lying at an angle on the lawn and the teaching-building-style architecture in the distance.
-
-Narration: he reviews the absurd logic of this history. He mentions that the people in power at the time (meaning the Khmer Rouge) established an extreme "agro-ecological" authoritarian regime. They believed cities, industry, and education were superfluous, intending to retreat entirely to an agricultural society. So they arrested all the former government personnel, soldiers, doctors, and intellectuals from the cities. This place was originally a middle school, and the people in power converted it into the highest-level security prison (S-21).
-
-Hall B: meticulous files and an inhuman "sense of achievement" (2:30 - 4:00)
-
-Visual: the camera focuses on a huge black stele laid flat on the lawn (around 3:31), densely carved with the names of the victims (in Khmer).
-
-Narration: he mentions that Hall B was the information hub and office area at the time. What made him shudder was that the administrators here had a kind of "perverse rigour." They recorded every detainee's information in extreme detail, photographing each person and building detailed family files. He reflects that unlike other dictatorships that try to cover up their crimes, this regime seemed to treat this slaughter as a "very interesting achievement" in its own life, leaving behind a large amount of complete incriminating evidence without any scruple.
-
-Hall A and the internal purges (4:00 - 5:05)
-
-Visual: the camera keeps moving along the courtyard path, with low green hedges and trees on both sides, and the white two-storey building with louvred windows in the background.
-
-Narration: in Hall A he saw survivors' own accounts and a great many dry bones (skulls). He reveals a cruel fact: although at first intellectuals and former regime personnel were held here, later most of the people held in S-21 were actually people from within the Khmer Rouge system itself. After continuous internal purges and trials, over ten thousand people were held here, but in the end only a dozen or so survived. The vast majority were eventually taken to the "Killing Fields" (the execution site) for secret execution.
-
-Hall C: barbed wire and the evil flower of "child jailers" (5:05 - 7:45)
-
-Visual: the camera turns to Hall C (starting around 5:15). The exterior of this building is extremely striking — the whole corridor facade, from top to bottom, is sealed with dense crossed barbed wire (anti-jump netting) to stop prisoners from jumping to their deaths. Zooming in, you can see that the originally spacious classrooms on the ground floor have been walled up with rough bricks into extremely small cubicles (single cells). By the lawn stands a small green wooden sign reading "Keep off the grass."
-
-Narration: this is the part that touched him most deeply.
-
-Extreme overcrowding: dozens of people were held in one large room, all locked onto the same iron bar, penned in like livestock.
-
-Appalling jailers: he discovered that the guards and administrators here were almost all rural boys aged 13 to 15.
-
-Why use child soldiers: he analyses the sinister intent of this system. First, these minors' cognitive systems are not yet mature, they're like blank paper, easy to brainwash, and extremely obedient, absolutely compliant (blindly worshipping their parents or superiors); second, when these children, in puberty and with no power base at all, were suddenly granted "absolute power" to kill or spare at will, they experienced the pleasure of power. In order to embrace and maintain this power, these children became the most brutal killing machines. And once this totalitarian system collapsed, they themselves were destroyed along with it.
-
-Prisoner's dilemma and the destruction of humanity (7:45 - 9:20)
-
-Visual: the camera walks along the mottled concrete path, which has obvious cracks. The camera captures the worn perimeter wall, rusty iron gate railings, and several large potted plants (such as snake plants).
-
-Narration: he talks about the interrogation methods in the camp that destroyed people's humanity — something like the "prisoner's dilemma." People were held in different cubicles, and the information gap was used to induce them to inform on each other. In this extreme system, as long as a person wants to protect himself out of "rationality," he is certain to frame and harm others. He points out profoundly that in this system, which was bound to fail and was like a meat grinder, any "rational optimal solution" (mutual harm) ultimately brought collective destruction.
-
-Epilogue: the visual impact of the photo wall (9:20 - end)
-
-Visual: the camera follows several tourists toward the entrance of a building, on the wall of which hangs a commemorative poster with the number "40" (possibly referring to the overthrow of the Pol Pot regime or the 40th anniversary of the museum's founding).
-
-Narration: he finally mentions that in a sealed exhibition hall, the space is filled with archival photographs taken of victims on entry to prison. Each person in the photos has a number hanging on their chest; among them are children in their teens still full of childishness, and old people in their decades. This immediate visual impact once again emphasises the indiscriminateness and the horror of this catastrophe.
-
-Summary
-The whole video has no bloody images at all, only dappled sunlight, green trees, worn-out teaching buildings, and quietly strolling tourists. But accompanied by the videographer's calm, detailed narration, full of deep compassion, it perfectly reconstructs that dark, twisted, inhuman and terrifying history of the S-21 camp. The videographer isn't just sightseeing, he's conducting a deep sociological and psychological analysis of power, human nature, institutions, and the banality of evil.
-
-***
 
 
 <!--memo:17630cd0bb7c-->
@@ -7807,7 +6794,7 @@ It seems the essence is that a life that goes smoothly all the way is actually a
 
 
 <!--memo:f12936d8ed85-->
-### Grounded theory is essentially a product of the prefrontal cortex
+### Returning to Experience After Theoretical Analysis
 
 > 2026-03-18 11:48:21 · `#观我`
 
@@ -7829,6 +6816,8 @@ What about after you see clearly through all the interweaving of human nature? T
 
 > 2026-03-18 11:52:14 · `#观我`
 
+The following is one AI-generated interpretation of my notes, not a psychological diagnosis; I do not necessarily agree with all of its inferences.
+
 Highly vigilant against "a sense of sacrifice" (the melon-seed-peeling mode), championing "co-creation" (the flower-arranging mode); you refuse to ingratiate, you've seen through the hidden interest charged by relationship and moral blackmail (the price of endurance)
 
 This seemingly extremely healthy, modern, clear-eyed view of relationships hides underneath an extreme fear of "deep interpersonal friction"
@@ -7843,6 +6832,8 @@ But real, flesh-and-blood human relationships are exactly in the mud and sand, f
 
 > 2026-03-18 12:04:15 · `#观我`
 
+The following is an AI-generated interpretation of my notes, not a validated psychological conclusion:
+
 You have a powerful "narrative flexibility" and "metacognition" — you know how to turn a "contamination sequence" into a "redemption sequence," and you insist on being the "author" of your own life story rather than wallowing as a "character" stuck in the victim's perspective.
 
 When you always keep the author's detached gaze, looking down on every street from the sky, you're at every moment facing a crisis of "suspension." Qualitative analysis shows that your notes are full of sentences like "I had a thought," "I observed myself..." This powerful self-disassembly saves you from sinking into the emotional swamp, but it may also **"deprive you of the right to simply experience."** You're so eager to give meaning to what's happening, to extract models, to hunt for first principles, that sometimes you forget to just be an experiencer and "cry your eyes out" or "sink in without restraint, just once."
@@ -7852,190 +6843,30 @@ Indeed, it feels like I've lost that ability — I can't just have the experienc
 ***
 
 
-<!--memo:2e2a351ed5ba-->
-### Your "not wanting to bother others" isn't politeness, it's a preventive form of self-protection
-
-> 2026-03-18 12:13:44 · `#观我`
-
-On the surface you've analysed this yourself — "fear of negative evaluation," "a low sense of deserving." But once you'd analysed it you put it down and didn't walk any deeper.
-
-The deeper place is here:
-
-That afternoon in Kathmandu, when the owner said "you're not welcome," your first reaction wasn't to leave — it was to say "I can pay a tip, and I'll clean the common area before I go."
-
-That's a very concrete behaviour pattern — when you feel rejected, your instinct isn't anger, it's immediately starting to prove that you deserve to be accepted.
-
-You've written "I don't want to bother others," but what's really underneath is: you're preventing one thing — by not voicing the need first, you never have to face the moment the need gets refused. Because what that moment makes you feel isn't just "I bothered someone," it's "I'm not worth enough."
-
-Part of your "independence" is a genuine personal choice, but another part is a protective mechanism, keeping you from having to face that particular feeling.
-
-***
-
-
-<!--memo:71e7d7d0cb18-->
-### The depth with which you analyse others is proportional to the areas of yourself you avoid
-
-> 2026-03-18 12:14:20 · `#观我`
-
-3,257 notes. You've analysed the fusion of church and state, evolution, game theory, Michael Corleone, Tsangyang Gyatso, Princess Wencheng, the structure of the A-share market...
-
-But there's one area that is almost completely blank: your real feelings about your concrete relationship with your parents.
-
-123 family-related notes, and nearly every one of them is analysing "the parental system" — that parents' advice has a time window, East–West education comparisons, the racket-and-child metaphor.
-
-Not one of them is: "I called my mum today, and here's what I felt."
-
-You've written "your parents worry about you, and they maintain their dignity through being needed by you" — that line cuts deep, but it's a sociological conclusion, not an emotional description.
-
-You observe your parents the way you observe the Tibetan serf system — lucid, precise, full of insight. But the concrete, warm, possibly slightly messy real relationship between you and them is almost invisible across 3,257 notes.
-
-The people closest to you are the people you record the least. That's not a coincidence.
-
-***
-
-
-<!--memo:70a6933db2c7-->
-### You treat "moving" as a legitimate emotional-management tool
-
-> 2026-03-18 12:15:48 · `#观我`
-
-In the end you discovered it yourself: "Where you go no longer automatically means you'll be changed."
-
-But what you discovered was the result, not the cause.
-
-Look backwards — each switch of the place you were living usually came after what?
-
-Nepal → Chiang Mai → Dali → Japan → Lhasa. Every move had a sufficient reason, was perfectly reasonable, had a genuine reason worth going for.
-
-But there's another function too: when something inside starts accumulating to a certain weight, changing cities can let that weight "hang suspended" for a while. New sensory input, new information, new unfamiliarity will temporarily cover over that internal state that hasn't been fully processed.
-
-You've written "that night of the supermoon by the shore of Erhai in Dali, I felt so relaxed, felt like life should be like this" — that was a moment when you were fully invested. But afterwards you didn't stay in Dali, you kept going.
-
-It's not that Dali wasn't good enough. It's that that feeling is hard for you to stay in for long. Because stopping means meeting certain things head-on.
-
-Movement is your most precise avoidance mechanism, and at the same time the truest source of your growth. It's both of those things at once.
-
-***
-
-
-<!--memo:04356e87187a-->
-### You treat "moving" as a legitimate emotional-management tool (2)
-
-> 2026-03-18 12:15:48 · `#观我`
-
-You treat "moving" as a legitimate emotional-management tool.
-
-In the end you discovered it yourself: "Where you go no longer automatically means you'll be changed."
-
-But what you discovered was the result, not the cause.
-
-Look backwards — each switch of the place you were living usually came after what?
-
-Nepal → Chiang Mai → Dali → Japan → Lhasa. Every move had a sufficient reason, was perfectly reasonable, had a genuine reason worth going for.
-
-But there's another function too: when something inside starts accumulating to a certain weight, changing cities can let that weight "hang suspended" for a while. New sensory input, new information, new unfamiliarity will temporarily cover over that internal state that hasn't been fully processed.
-
-You've written "that night of the supermoon by the shore of Erhai in Dali, I felt so relaxed, felt like life should be like this" — that was a moment when you were fully invested. But afterwards you didn't stay in Dali, you kept going.
-
-It's not that Dali wasn't good enough. It's that that feeling is hard for you to stay in for long. Because stopping means meeting certain things head-on.
-
-Movement is your most precise avoidance mechanism, and at the same time the truest source of your growth. It's both of those things at once.
-
-***
-
-
-<!--memo:a85150604b1f-->
-### I seem to care a lot about being seen
-
-> 2026-03-18 12:50:36 · `#观我`
-
-When friends in Shenzhen treated you to a meal, you wrote "their friendship moved me deeply" — that note is only 115 characters, one of the shortest of all your notes.
-
-That kind of being moved — you could barely write it down.
-
-You have 80 notes about "proving / recognition," but almost all of them are either analysing how other people seek recognition, or building a framework to say "I don't need external recognition."
-
-These two things exist at the same time: you long very much to be truly seen, and you've built a whole discourse system and way of living that makes it very hard for that to happen.
-
-One person, in a foreign country, constantly moving, using rational frameworks to convert every experience into cognitive material — that way of living has real meaning, but it also guarantees that no one can stay in one place long enough to accumulate enough detail to truly see you.
-
-You can't be seen, and then you verify that "being seen" is impossible, and then you become more independent, less dependent on other people's gaze. The loop reinforces itself.
-
-***
-
-
-<!--memo:ee46748343ea-->
-### Your deepest fear isn't failure, it's "disappearing as something mediocre"
-
-> 2026-03-18 12:51:19 · `#观我`
-
-You've written "let's just treat it as a game," "the sunk cost isn't that big," "start from zero" — the tone of that note was casual and light, but what you were describing was a real collapse.
-
-Why could you be so casual about it?
-
-Because a funding problem, a failed project — in your narrative framework, that's "one round in a game." It can be played again. Painful, but not a real threat.
-
-What actually shook you was another possibility: all this thrashing around, and in the end nothing is left. Not failure — disappearance. Nobody knows what you did, nothing is different because you existed.
-
-You wrote "sometimes I see them playing on the street, someone willing to keep performing even with no audience" — you were writing about a musician, but what you were projecting was your own question: if there's nothing in the end, am I still willing to keep going?
-
-The annual review you want to write, the blog you want to write, the personal brand you want to build — behind it all isn't just a desire to share, it's an urge to leave some trace in time proving that you existed.
-
-That's not vanity. It's a very deep, very real need for meaning. But you rarely admit it directly.
-
-***
-
-
-<!--memo:20ec718d6f2e-->
-### You need "being caught" more than you think, but you never ask for it
-
-> 2026-03-18 12:51:43 · `#观我`
-
-That note from camping in Hong Kong: "In this moment, though I'm alone, though I'm very lonely, I'm still in a jungle full of life, coexisting with them. But in the office building, even with many people around me..."
-
-You pair loneliness with coexisting with nature, but among people you're even lonelier — this isn't just an introvert trait, it's a signal: you know how to coexist with beings that "won't judge you," but you don't know how to relax in front of people who "will."
-
-More fundamentally: you never ask to be caught.
-
-That "tipsy morning" note — if you want to cry, cry; if you can't sleep, don't sleep; if the bun tastes bad, it tastes bad — that's the real state of you alone with yourself, very precious.
-
-But you've never brought that version of yourself in front of another person to say: "I'm a bit stretched right now, are you there?"
-
-Not because you don't need it. Because you don't believe that if you did that, the other person would still see you the same way. That disbelief, you've never tested head-on.
-
-***
-
-
 <!--memo:6701048674f0-->
-### Pain makes people grow
+### Loosening Control Within Safe Boundaries
 
 > 2026-03-18 12:58:53 · `#格物/成长`
 
-Change makes people grow.
+Change can sometimes bring growth.
 
-For someone used to living by intuition and acting on impulse, "losing control" may mean disaster and self-destruction. But for someone used to gripping the steering wheel tight with the prefrontal cortex, defending against the world with extreme rationality and systematised thinking, "losing control" isn't just helpful — it's the only road through that breaks the ceiling on personal growth.
+For me, with my habit of control and rational analysis, loosening that control a little and allowing uncertainty may be worth exploring. I mean relaxing within safe boundaries, not seeking loss of control or prescribing it as a necessary path for anyone.
 
-The process of accepting and reconstructing yourself.
+Accepting and understanding myself anew is an ongoing process.
 
 ***
 
 
 <!--memo:30eccbf228be-->
-### Xiaohongshu: it mainly relies on search, almost everything relies on research
+### Content Platforms: Working Hypotheses to Test
 
 > 2026-03-19 13:50:10
 
-Xiaohongshu: it mainly relies on search, almost everything relies on research; the ones doing content well basically rely on follows, comments, and repost rewards.
+These are personal working hypotheses about content platforms from March 2026, not algorithm rules published by the platforms.
 
-On Xiaohongshu today, knowledge-type content has +30% weight.
+On Xiaohongshu I want to observe search needs and useful discussion; public accounts can carry deeper reading; X, Threads, and Instagram each have different rhythms and formats.
 
-WeChat public accounts are mainly a platform that drives deep reading; rough reach rate and interaction rate are both bonus points, and friend recommendations are key.
-
-X is the best ground for English-speaking audiences; speed × controversy × reposts matter a lot, but if you include an external link the post's reach drops by 50%–90%, so the content must stay inside the platform.
-
-threads is more text than ig, slower than x, lighter than public accounts, good for posting alongside X opinions.
-
-ig is the English-dominated visual consumption platform, where aesthetics and female users matter.
+Whether content fits a platform still needs to be judged through my audience and actual feedback. Unsupported claims of “30% more weight for knowledge content” or “50%–90% less reach for external links” should not be treated as established figures.
 
 
 <!--memo:498056e47725-->
@@ -8065,11 +6896,11 @@ I feel at that moment a person has a very strong sense of agency, a very strong 
 
 I think anxious people are willing to pay for certainty. For example, if you're anxious about your adaptability in this world, anxious about your own life, anxious about finding a job, or anxious compared with your peers' rat-race competition, people like that are very willing to pay — to pay for cognition, to pay for knowledge, to pay for certainty. They especially hope for one more possibility.
 
-Then Zhang Xuefeng provides a kind of certainty that works both up and down the ladder; he simplifies a complex world into one answer. The design of this audience system determines that the more anxious the audience group is, the bigger his market. So he'll have the incentive to describe the world as very polarized, very cruel, and so on.
+If a product compresses a complex world into one certain answer, a more anxious audience may create a larger market. I want to watch that incentive: does it encourage the provider to amplify anxiety rather than help people make judgments?
 
 But what I'm saying is, I hope users can get to a point where they have more judgment, where they depend on me less. Of course they can use my product and become better, but it's fine if they don't use it either. They've already changed, they've already used it, they've already gotten better — I think that's enough; it can leave them no longer needing it so urgently. This is a kind of cognitive flywheel.
 
-That is, the information gap — generally speaking, I think information gaps are highly replicable. Many people could do this thing. But Zhang Xuefeng's information gap is many years of accumulated connections, plus his admissions and exam data; in the short term, those are relatively hard for others to copy.
+Some information advantages are easy to copy, while others come from long accumulation. What I care about more is how a product for understanding and growth can increase the user’s own judgment.
 
 For that crowd, when it comes to understanding this thing called growth, 100 people doing similar things is entirely normal.
 
@@ -8092,26 +6923,8 @@ Companionship continuity: AI remembers your confusion from three months ago, see
 Personalization to the point of being uncopyable — personalization is very precious, grown out of real experience.
 
 
-<!--memo:fd23c9f60b9e-->
-### I was just at a pizza restaurant
-
-> 2026-03-27 17:48:08 · `#格物/知我`
-
-Just now at the table in front of me there were four people, two and two who knew each other.
-
-The two on the right, facing each other, seem to be a couple.
-
-The guy gave the waiter some tip — I thought they were very warm and knew each other.
-
-When they left, I saw the woman needed support, and the man beside her was lending her his arm.
-
-And when they left you could clearly feel the woman had no strength, her right leg couldn't exert any force.
-
-Also she didn't seem to have any expression — felt a bit like a stroke.
-
-
 <!--memo:8150337244a2-->
-### Neo mentioned something about an auxiliary product-management
+### Approaching Product Management Through Metacognition
 
 > 2026-03-28 17:10:04
 
@@ -8125,27 +6938,14 @@ And to do deep research on the product.
 
 > 2026-03-31 21:50:31 · `#格物/人物`
 
-Like the Steve Jobs of the motorcycle world
+Reading about Zhang Xue’s experience moved me.
 
-Zhang Xue is also the founder of Kove motorcycles
+What stayed with me was not the label of “genius,” but the willingness to keep learning what one does not know and keep moving through difficulty.
 
-When you have no choice, what's the use of being sad? And it's a good thing for me too, because once you've eaten every kind of bitterness, you won't feel that anything later is bitter; give you a little sweetness and you'll feel very happy
-
-A person, whether you fail or succeed, if you didn't do it when you were young, when you get old you'll definitely regret it. If you did it when you were young, even if you failed, when you get old you won't regret it
-
-At the end of that Hunan TV programme, Zhang Xue rode his motorcycle, turned his head back and shouted: "If you have a dream, go chase it! Because of courage my life is more wonderful!"
-
-Zhang Xue's childhood wasn't happy — a broken family, the absence of a father's and a mother's love, going out alone into society as a teenager. What's admirable is that Zhang Xue didn't pick up any bad habits; he rarely had, at the same time, the ability to heal himself, the resilience of fighting again and again after losses, and the courage to dare to chase his dreams
-
-When Cheng Qian asked Zhang Xue, "You graduated from junior high, then you studied to be a repairman, so how did you manage to make engines?"
-
-Zhang Xue's answer was simple too: "If you don't know, you learn!"
-
-Talking with Cheng Qian, Zhang Xue said this: "Maybe in other respects I'm completely inferior to you — my talent isn't as good as yours, my resources aren't as good as yours. But when my effort is 10 times more than yours, why shouldn't the success be mine? It's mine!"
-
-A reporter from Jiupai News also asked Zhang Xue whether he'd ever thought of giving up when he hit difficulties in his business. Zhang Xue said "never." He added: "Because I had no other choice — if I gave up, what would I do? Put it the other way round: this thing is very hard, but would doing another thing really become easy?"
+This note did not attach verifiable sources for the biographical details or interview wording, so I should not present remembered paraphrases as direct quotations. What it leaves me with is a question: if I never try what I want to do while young, will I regret it later?
 
 ***
+
 
 
 ## 6. Product, Engineering and Open Source
@@ -8167,11 +6967,11 @@ Especially in AI products, cognitive load is severely amplified.
 
 Let users have extremely simple operation commands.
 
-**Invisible AI**—not invisible, but undetected. Complex behaviors complete in milliseconds in the cloud; frontend leaves only extremely simple operation results.
+**Invisible AI**—not invisible, but undetected. Complex behavior can be handled in the background; response time still depends on the task; frontend leaves only extremely simple operation results.
 
 Negative example: users need to expend much energy executing.
 
-Positive example: the entire product has only one interaction—swipe up. Extremely complex AI recommendation algorithms completely invisible in the backend. Users aren't even aware they're being deeply AI-served. This is极致 "de-interaction."
+Positive example: the entire product has only one interaction—swipe up. Extremely complex AI recommendation algorithms completely invisible in the backend. Users aren't even aware they're being deeply AI-served. This is an extreme form of reducing interaction.
 
 Users don't need the process.
 
@@ -8253,9 +7053,9 @@ MacBook is the master control center—physically isolate the phone.
 
 Generally need to enable cross-device shared focus modes—keep focus mode sharing. This way, once entering work or Do Not Disturb state on Mac, the iPhone placed aside and Apple Watch on wrist instantly sync to silent—helping you build a comprehensive anti-disturbance barrier.
 
-Utilize iPhone mirroring function—if your Mac system is macOS Sequoia or newer, you can directly wirelessly control your iPhone on Mac screen, even receive iPhone notifications.
+iPhone Mirroring lets me use an iPhone from a Mac. It was introduced with macOS Sequoia; actual use still calls for checking compatibility and connectivity, not just the macOS version. [Apple’s 2024 announcement](https://www.apple.com/newsroom/2024/06/macos-sequoia-takes-productivity-and-intelligence-on-mac-to-new-heights/)
 
-This way, the phone can be placed in another room charging—no problem.
+So I can put the phone aside; reliable use across rooms still depends on distance and wireless conditions.
 
 Several configurations: auto-hide dock—this is very important—hide some icons—will avoid frequently looking.
 
@@ -8273,11 +7073,11 @@ Good at opening multiple desktops—one desktop for material retrieval, one desk
 
 > 2026-03-03 22:09:09
 
-A question suddenly occurred to me: how do you record this idea. The problem is that in the game, when there's no flomo to sort things, I casually note what they said recently and then assemble a sort for it. Do you know what the most important thing in this process is? The most important thing in this process is having a dynamic, interactive thinking process, which is like a kind of growth.
+It occurred to me that note-taking is not only about arranging content. Looking back, organizing, and reassembling it can create a dynamic, interactive thinking process. That process itself feels like growth.
 
 When I try to use this insight to summarise the biography of my own life, I find that I've grown a great deal. Because look at flomo: it actually records everything, including how you usually work, how you study, how you think, how you observe, how you take up a subject of your own to observe the world. So what's your biggest advantage in this process? It's that you write it yourself, that you take up a subject yourself—that is, perspective, and your perspective on observing the world, that becomes very important.
 
-For example, in this process you can suddenly perceive a great deal, yes, gain a lot, and much of this raw, artistic experience is based on non-verbal protection, and it can lift you up a level.
+New realizations can emerge in that process. Some raw experiences have not yet been organized into language; recording and revisiting them may help me understand them at another level.
 
 ***
 
@@ -8303,7 +7103,7 @@ Motivation itself is something AI won't generate for us
 
 The ordering of values is also an extremely personal matter
 
-Those contradictions we keep struggling with and can never sort out, the obsessions, the love we can't put into words, the insatiable sense of lack in little a
+Those contradictions we keep struggling with and can never sort out, the obsessions, the love we can't put into words, the insatiable sense of lack
 
 Maybe the value of a person as a person is exactly their subjectivity as a person, everyone's diversity; the world is like a cactus ball, and each person grows in their own little patch of ground, taking root and sprouting
 
@@ -8315,7 +7115,7 @@ Go do the things AI would tell you not to do (the things that aren't necessarily
 
 > 2026-03-05 16:40:52 · `#格物/知识`
 
-How knowledge is divided isn't the most important thing; how knowledge is divided is more important.
+The categories into which knowledge is divided may matter less than the criteria used to draw those divisions.
 
 For example, if you want to build a catalogue now
 
@@ -8325,7 +7125,7 @@ This will become more and more obvious in the AI era — what content gets gener
 
 Think about it: because we looked at the boundary between psychology and economics, behavioural economics was born; and by breaking the boundary between biology and engineering, synthetic biology was brought into being.
 
-If knowledge is like a map — how do we divide the border with North Korea, how are the boundary lines between Tibet and Nepal drawn? These national borders don't exist in nature, but what matters is what we base such lines on: cultural beliefs, mountains and rivers?
+If knowledge is like a map, what criteria lie behind its boundaries: objects, methods, or the problems we want to solve? Those divisions are not naturally fixed.
 
 Next time you study some piece of knowledge, think a bit more about how this knowledge is constituted. It may be more helpful for building a truer model of our understanding of the world.
 
@@ -8417,7 +7217,7 @@ A's memory cannot become B's noise
 
 So memory also has subjectivity
 
-EverMind is omniscient, but as an individual employee A absolutely cannot directly borrow employee B's brain. This isn't just a permissions problem, it's a problem of cognitive logic. If A's subjective experience is built on B's memory, then A is schizophrenic
+In the system I imagine, even with extensive shared knowledge, employee A should not treat employee B’s memories as its own experience. This concerns permissions as well as the distinction between sources and subjects; mixing them can make it unclear whose information is whose.
 
 We hold that a long-term memory system should not just be a vector database, but a dynamically evolving "cognitive operating system." This understanding comes from simulating the mechanisms of human intelligence
 
@@ -8491,13 +7291,11 @@ More observation, more thinking.
 
 > 2026-03-13 10:47:21
 
-I suddenly thought back to what I once discussed with a friend about the sense of fracture in Phnom Penh. In this city today there are many commonplace spots—for example railways, roadside strips, sewage lines, lakesides and riverbanks, the rooftops of old buildings, and a whole series of other areas—yet the whole thing looks very messy, and the streets are messy too. Their living conditions are extremely poor, and their housing is extremely, extremely poor, just thrown together simply; generally it may take several forms—a sheet-metal house, a wooden plank house, or a temporary extension. So there's no sewage problem solved, and no fire safety capability. The people they usually meet all live nearby, doing small vendor work, or they can go to construction sites, or drive a moto, or do domestic work, or food service, or waste recycling, or garment processing. And if they move, there's a big commuting cost, plus the risk of losing their jobs.
+Some streets in Phnom Penh gave me a sense of division. Around railway lines, riverbanks, and older buildings, some homes looked makeshift.
 
-And on top of that, the infrastructure is severely lacking; as in past general development projects, residents can suffer from sewage and flooding for long periods. And many people, many households, actually don't have full property rights, so when faced with a development project they're very vulnerable. It's a bit like how in China, at the very beginning, people were moved from one place, and the real estate problems are similar too; there's also some high-level poverty in the negotiations. Where they are, the cost of living is very high—say medical care, schooling, transport, maintaining the house—and then there may be losses afterwards. But further out in the suburbs the pressure is even greater, because work and school are both problems, and it also makes families poorer.
+I do not know each family’s circumstances, but moving home could mean rearranging commutes, work, school, and everyday life.
 
-The conflict they face is essentially a conflict over land choices, because Phnom Penh's land is still continuously rising in value, and the [metro] line or the corridor routes all get folded into development, rectification and beautification. So some low-income communities that used to be tolerated may one day be settled and cleared out. But in reality the operation isn't always necessarily open; it may also be soft displacement, through petitions and pressure, and they also set compensation standards, and they also restrict collective appeals.
-
-So looking at some earlier cases, there's a lakeside community where the lake area was leased to a developer long-term, and then land-filling for development led to large-scale displacement, affecting around a thousand people. The World [Bank] group also suggested that these residents suffered serious harm, which proves that there's a very high cost of maintaining [their rights], a very high cost of defending their rights.
+It makes me feel that when discussing urban space, we should care about the people already living there alongside what redevelopment will look like.
 
 
 <!--memo:e84d106edf73-->
@@ -8505,33 +7303,23 @@ So looking at some earlier cases, there's a lakeside community where the lake ar
 
 > 2026-03-13 14:58:30
 
-I just finished visiting Building B of S-21, it's really eerie; it's different from the other buildings, they're still separate single rooms. And at the door of each room there may be a list, with a bed inside, and probably various tortures applied to one particular person. But Building B is entirely one big communal room; it doesn't have that single-room type, it's one big room, and inside there are lots of very thick, very long iron chains, heavily rusted, with bloodstains. It was used to pen some people into one big collective classroom, and it's just brutal. In this way, some day, someone next to you might be tortured, or die, and be dragged out to that execution ground. You feel that in this atmosphere it gives people a lot of oppression, and every breath, every movement of many people breaks you down mentally.
+After visiting the exhibition rooms at S-21, I felt heavy. The narrow spaces, photo walls, and surviving objects made it hard to treat this as an ordinary exhibition.
 
-Then there's another change, another mode, which is that it may have been converted into single rooms before, and each single room is very narrow, less than 1 metre. A single room is a kind of isolation, still used to isolate people from each other, but they used it for concentrated confinement. But looking at the methods they chose: during interrogation you couldn't make any sound, you couldn't communicate with the person next to you, and when you were being tortured you still couldn't make any noise or scream. Because if you once screamed, it meant you might be conspiring, so this point is against human nature, against biological instinct. When a person is badly hurt, when a human is injured, the instinct is to scream, so that design is very brutal.
+Every photograph shows an individual person. I cannot know what they thought when it was taken or infer their inner life from an expression, but the faces themselves have a strong presence.
 
-And there's another point: it's itself a prisoner's dilemma, and people are isolated from each other, so you don't know whether the person next to you will give you up. Because it's still a joint game process, this very easily makes a person fail to hold out first, and then sell the other person out too—I think that's also a very brutal part.
-
-There are some management staff, all guards and overseers, who come to look at them every day, and their first task each day is to check whether they're still alive. Because the death rate was also very high, and part of their existence was to prevent them from committing suicide. It's itself an upgraded version of M-13; M-13 is the Khmer Rouge, and before the invasion of Phnom Penh, because they had a manager who worked out a very brutal system. But at S-21, this system was made procedural, systematised, scaled up—extremely bloody.
-
-In Building B you see a lot of very brutal images—a lot of people, their photo walls stuck up there. Some of them died, and some are extremely thin and frail, with all kinds of marks on their bodies, and some still have bloodstains, and some were photographed just before dying. They have various poses, and each room's pose is different: some have their hands behind their bodies, some in front, and some are photographed full-body. Some of them look like they've resolved to die, with very firm expressions; some look very melancholy. And some—but without exception, whether they're smiling, or rarely smiling, or not smiling, whether melancholy, resolute, resigned or letting go, people have a very emotional expression, not faked, impossible to fake.
-
-Their guards are generally very young, 13 to 15 years old or so. And their guards are all this kind of ruling structure; although their ruling structure doesn't understand what kind of person at what stage, or their level of understanding, they do understand that kids are easy to fool, kids easily carry out orders without thinking. These kids were brought over from some remote rural villages; maybe a few months earlier they were still planting, but now they start taking part in this systematic killing. They don't understand either; the pleasure they want to feel is having lots of people begging for mercy in front of them, their expressions of utter misery. It's a bit like—why the Khmer Rouge were also that age, and the guards too—they also abuse power, similar to these. The veterans, I think—but once they enjoy the pleasure of power, I think it's also a disaster; they'll be lost, they'll treat these people more brutally and cruelly. The good and evil in children is very easily drawn out.
-
-This is my feeling from visiting Building B; after coming out now, a lot of people look very melancholy. And in the middle there's a park, and staying in this park, most of them are basically foreigners, and many are crying, and some are taking notes, some just silently looking at the photos on the walls. Every photo, every face, every expression, carries a kind of invisible force.
+Outside in the courtyard, I saw people taking notes and others standing quietly. I needed time to take it in too.
 
 
 <!--memo:116b8b4364e7-->
-### I just finished watching "Bunker 21" too, quite a lot of feeling
+### Sitting in the Courtyard After the Visit
 
 > 2026-03-13 15:38:44
 
-I just finished watching "Bunker 21" too, quite a lot of feeling. After I finished I sat in front of its door for a long while, listening to birds, watching people come and go. A lot of people were like me, standing quietly, thinking something, or seeming to think nothing at all.
+After visiting S-21, I sat outside for a long time, listening to birds and watching people come and go. Many stayed quietly, as I did, seeming to think about something or nothing at all.
 
-Inside the bunker this memorial hall has many memorial articles, slogans, and a lot of human skulls. The white tower over there feels really close, dense and packed — probably all people who were sent away before... it feels like that group of people was just sacrificed like that. So this office building is to a large extent doing archiving, some design, and functions serving this system. It looks pretty white and clean now. Compared with the "Lung Hall" plumbing I'd just visited, the staircase feels especially narrow, and there are a lot of gaps in the staircase.
+Walking on the stairs, I thought of people who passed through here decades ago. But my imagination cannot establish the history of each mark I see.
 
-I was thinking: besides me, besides these tourists of the last few decades, going up and down these stairs — decades ago there was also a group of people held here in concentration, and when they were sent off to be executed they also passed through here. The little specks of bloodstain on it, really dense, impossible to wipe away at all.
-
-When I was looking at that memorial album, some lines struck me deeply. That "peace for humanity really isn't easy." Although a lot of people keep saying they want to fight someone, or have a fight, but people who've truly been through war, I believe they wouldn't say that. They'd feel how small they are as a human being, they'd know where this system of war takes humanity, they'd understand how hard-won the peace now is. Cherish the present.
+The visit made me value peace more and want to remember individual people carefully.
 
 ***
 
@@ -8557,6 +7345,8 @@ When Claude starts a session, it needs to know about the existing files without 
 
 If the number of notes reaches thousands, that's impossible. So my system uses a layered structure that lets the agent locate things quickly
 
+```json
+{
 "hooks": {
     "SessionStart": [{
         "hooks": [{
@@ -8565,6 +7355,8 @@ If the number of notes reaches thousands, that's impossible. So my system uses a
         }]
     }]
 }
+}
+```
 
 claude sees the folder structure. a hook automatically shows what folders and files exist at session start
 Claude can see the folder structure. A hook automatically shows what folders and files exist at session start.
@@ -8585,7 +7377,7 @@ How to start:
 
 Create a folder, and create subfolders inside it that match their purposes
 
-Write a claude md describing your system, starting simple and gradually improving it
+Write a CLAUDE.md describing your system, starting simple and gradually improving it
 
 Use claude to operate, to capture things, to find connections
 
@@ -8679,11 +7471,11 @@ git worktree + pnpm virtualstore is currently the lightest-weight answer.
 
 
 <!--memo:55c3bf82a998-->
-### Threads doesn't support long content, X seems to
+### Developing a Longer Idea Through a Thread
 
 > 2026-03-19 13:12:18
 
-The design theory is that they want a Thread chain, supporting replying to yourself as a way to continue the point.
+At the time I was interested in breaking a longer argument into a thread, continuing it through replies to myself. That form of unfolding an idea is worth studying alongside the length of a single post.
 
 
 <!--memo:1432edb2da28-->
@@ -8691,13 +7483,9 @@ The design theory is that they want a Thread chain, supporting replying to yours
 
 > 2026-03-19 13:17:21 · `#格物/自媒体`
 
-It's designed around conversation threads, so the depth of replies matters especially.
+Threads’ conversation-based design makes me curious. I want to observe how meaningful replies, reply depth, links, and tags affect whether content gets seen.
 
-Posts containing URLs are given higher weight.
-
-Posts with tags get significantly more exposure than posts without tags.
-
-Meaningful replies matter more.
+These are working questions to test, not recommendation-algorithm rules I have established.
 
 
 <!--memo:08b0c89e96d7-->
@@ -8711,7 +7499,7 @@ I don't even know how to have AI organise them together nicely
 
 I think this is a thought about the future file system, and about MINIO: how should the corresponding directory structure be organised and configured, including organising files and videos
 
-https://www.polarsteps.com/cubxxw/19561627-yue-nan-lu-ju-pian?mode=track Even polarsteps could be overturned; it feels like there's no need for it to exist, any piece of information or data can be DIY'd
+Travel-recording tools such as Polarsteps make me wonder whether people could organize their own photos, videos, and writing in a way that keeps the data under their control.
 
 But users are very sensitive about data, and ease of configuration and getting started needs to be balanced too, but this DIY process, the process of creation, the process of users owning their data is itself a very satisfying part
 
@@ -8763,38 +7551,25 @@ Quantitative looks at overall patterns; grounded theory looks at the individual 
 
 > 2026-03-24 12:15:53
 
-That hotel I stayed at before, I think what they did was really mediocre, even a bit perfunctory. I had a negative feeling about it. After arriving I found it was really rubbish: no WiFi inside, and the pool was [fake], and various facilities like a hairdryer basically didn't exist. I think it was a very watered-down place, and I'll avoid that pit in future, or at least go for ones above average. That place later raised its prices too, and they charged quite a lot per meal—six dollars a meal, six times eight is forty-eight, but it felt like every meal was ordered from a delivery platform and then assembled by themselves; I found it speechless, and it wasn't even pre-made.
+At a previous hotel, the network and some facilities did not meet expectations, and the food’s price and experience disappointed me. In future I want to compare reviews, facilities, and my own needs more carefully.
 
-But I've now come to a hostel, and I think they do things quite refined, though I haven't experienced it yet—I'll get to tonight. After arriving I found the staff here are all very warm, and their website is especially well made; I really like this kind of finely operated website, including everyone entering their own username and then getting a password from the first four characters. I think that design touch is especially good—do you know why? Because it's interesting this way, there's a sense of being named, a sense of being chosen. And their site has a huge number of very cheap activities, including street adventures, food exploration, and all sorts. Oh, and the photos are especially clean; the whole exterior gives me a very clean feeling, and I really like the colour combinations, it seems to have no shortcomings.
+Today I moved to a hostel. The staff’s warmth and the activities presented on its website gave me a good first impression. Clean photos, comfortable colors, and clear activity information suggested care in its operation. I still need to stay there before judging the actual experience.
 
 
 <!--memo:a78e261ba8cf-->
-### VLESS (the full name is often understood as VMess Less
+### VLESS: Separating Authentication, Encryption, and Transport
 
 > 2026-03-30 16:14:23 · `#格物/技术`
 
-VLESS (the full name is often understood as VMess Less or Very Lightweight Encryption Security Stream) is a lightweight, stateless transport protocol developed by the V2Ray / Xray project. It was designed as the next-generation replacement for the VMess protocol, with the core idea of "less is more" — strip away the superfluous parts so the protocol is simpler, faster, and more flexible.
+While learning about VLESS, I was interested in the separate roles of authentication, protocol encryption, and outer transport security. UUIDs, `encryption`, and TLS / REALITY are not the same layer; a `none` value in one field does not establish whether the whole connection is secure. Supported capabilities can also change with versions and should be checked against project documentation. [Project X’s VLESS configuration](https://xtls.github.io/en/config/outbounds/vless.html)
 
-The protocol header is very small, and it does no additional built-in encryption.
+Rather than memorize an unsourced expansion of its name, I want to understand these boundaries and what a particular configuration actually addresses.
 
-This makes it faster, with lower latency and less CPU usage, especially suited to high-bandwidth scenarios like watching videos, browsing the web, and gaming.
-
-It doesn't depend on the system clock, and authentication is still UUID authentication.
-
-The current mainstream approach is VLESS + Reality.
-
-Reality is the "stealth transport" technology launched by the Xray team:
-
-It can "steal" the TLS fingerprint of a well-known site (for instance pointing at www.microsoft.com or another big site), making your proxy traffic look almost exactly like visiting a normal website.
-
-Combined with Vision flow control, it further eliminates the TLS in TLS (nested encryption) fingerprint.
-
-A lot of proxy services (jichang) are now pushing this same model.
 
 
 ## 7. Content, Craft and Recording
 
-*11 entries*
+*10 entries*
 
 <!--memo:c3d52642c165-->
 ### Writing Perspective: Where Does the Strong Immersion from Personal Narrative Come From
@@ -8843,7 +7618,7 @@ Keeping the car in the center of the lane actually advocates three basic actions
 
 Control parameters—only by keeping variables within controllable ranges can you naturally explore.
 
-Rise to abstraction—not daring any concrete instance, but creating an abstract representation that can represent all instances.
+Rise to abstraction—look beyond one concrete instance, but creating an abstract representation that can represent all instances.
 
 Return to concreteness—looking at abstract diagrams is cool, but doesn't explain detailed reasons; need to select a concrete instance to inspect.
 
@@ -8881,7 +7656,7 @@ Actually, translating to cognition vs. action distinction, this analogy also hol
 
 Little Lion Diary.
 
-Recommended by Little Rabbit, took a look.
+I took a look.
 
 Videos have strong characteristics.
 
@@ -8899,11 +7674,11 @@ First few seconds' skip rate determines that the very beginning needs novelty.
 
 
 <!--memo:342f4f4a4468-->
-### flomo's Intrusive Harassment: How Notifications Destroy Focus States
+### How Notifications Interrupt Focus
 
 > 2026-03-02 01:34:44
 
-Feel flomo is a very interesting app—friend recommended it, said it's a very fun card-style notes app. I used it for a while, observed myself—found my click-through rate is actually very low, and found many card contents are repetitive—like large model hotspot subscriptions, consecutive days same hotspots—feel particularly boring.
+There was a card-based app I initially found interesting—friend recommended it, said it's a very fun card-style notes app. I used it for a while, observed myself—found my click-through rate is actually very low, and found many card contents are repetitive—like large model hotspot subscriptions, consecutive days same hotspots—feel particularly boring.
 
 Also its interaction is intrusive—I really don't like this. This interaction isn't even part of the content—so I feel this operation is meaningless. Some operations occupy my attention, my line of sight, interrupt my previous focus states. So this app—how to say—not particularly attractive points so far, instead makes me very painful. I will delete it—because its harassment ability is too strong—always harassing me on notifications, and have to click in—very troublesome.
 
@@ -8915,17 +7690,9 @@ Also its interaction is intrusive—I really don't like this. This interaction i
 
 > 2026-03-13 18:36:56
 
-I feel that if voice is the raw material, it's still "audio" you should use to distinguish it. It should be audio, it should be voice. And voice knowledge is actually a specialised version of a point-based knowledge base, because compared with general audio it's more suited to text-led content, Zhihu-style stuff. Zhihu's seven hundred words all revolve around personal podcasts, recordings, and it also does serialised, scenario-based processing. But I think audio may have some other weaknesses — for example, while it pays attention to the text content, it actually cares more about what was said, what other things were going on, and whether there's noise, or whether there's some scope of resolution, and what state the person is in right now. So if audio is passed straight through, it looks pretty hard to do. This step still needs more detailed thinking and prior handling — it still has to be done.
+If speech is the raw material, the product may need to handle more than what was said: tone, pauses, noise, and the speaker’s state also matter.
 
-***
-
-
-<!--memo:25c3c713bfb5-->
-### How does the hair dryer feel? The lobster is a little sour, very good
-
-> 2026-03-13 19:05:36
-
-How does the hair dryer feel? The lobster is a little sour, very good, so I still haven't stuffed everything in. The Memory file still has it split into... knowing Memory. Monos has a lot of them, ate the McDonald's file. It can make the daily raw AK a pad file, some files that can handle the moment the file system crashes. That way it will load the content it needs — this selectivity is a kind of suddenly-correct choice.
+I want to consider speech recordings separately from audio material more broadly. The former may fit text-led knowledge organization more closely, while the latter covers more varied situations. How to handle them still needs more thought.
 
 ***
 
@@ -8959,7 +7726,7 @@ And some reminders for you — this is the intelligence layer.
 
 > 2026-03-19 00:00:09
 
-I think notes have another very important function: they don't just convey function and content, they also convey style and a way of thinking. That includes writing style and linking style, and also a certain attitude toward uncertainty, including how to navigate. These aren't necessarily written in the Note file — the Agent may learn them continuously by reading these notes, from the examples. Then I think there's another interesting point: memory fragments. In some movies the protagonist can't form new memories, so he has to rely on tattoos, pictures, handwritten notes — those external traces are the function calls used to trigger the next action. I think this is a very important part; I mean Agent, and sessional Out, Outpod is also the same thing. That is, its identity construction doesn't necessarily need a continuous consciousness, but it definitely needs a stable structure that can continuously generate similar cognitive orientations. This is very important.
+I think notes have another very important function: they don't just convey function and content, they also convey style and a way of thinking. That includes writing style and linking style, and also a certain attitude toward uncertainty, including how to navigate. These aren't necessarily written in the Note file — the Agent may learn them continuously by reading these notes, from the examples. Then I think there's another interesting point: memory fragments. In some movies the protagonist can't form new memories, so he has to rely on tattoos, pictures, handwritten notes — those external traces are the function calls used to trigger the next action. I think this is a very important part; an Agent also needs similar external cues between sessions. That is, its identity construction doesn't necessarily need a continuous consciousness, but it definitely needs a stable structure that can continuously generate similar cognitive orientations. This is very important.
 
 
 <!--memo:7df487dfb022-->
@@ -8972,340 +7739,43 @@ Only do deep content.
 Only do vertical content (one account).
 
 
+
 ## 8. Business, Investing and Career
 
-*11 entries*
+*6 entries*
 
 <!--memo:65e67b337066-->
-### Diamond Investment: Best Performance Doesn't Equal the Engineering Optimum — The Marginal-Returns Trap
+### Material Performance and the Engineering Optimum
 
 > 2026-03-03 15:12:04 · `#格物/投资`
 
-Diamond (diamond).
+Diamond’s use in heat management makes me think that the strongest material property does not necessarily make the best overall engineering solution.
 
-Current valuations aren't high; from an investment and market-value standpoint they're low, even pulling back.
+I want to compare material conduction, interfaces, packaging, system-level cooling, cost, yield, and scalability.
 
-A market report from De Beers, one of the world's largest diamond producers, noted that diamond prices have fallen to a 20-year low. This means natural diamond retail and wholesale prices are broadly weak, far below the levels of the long period of high valuations in the past.
-
-India is the main consumer market — Indians love wearing gold and diamonds (shaped by society and culture).
-
-From the angle of thermal management (heat conduction), diamond (that is, diamond material) is indeed technically one of the best-known thermal conductors, especially suited to heat dissipation in AI and high-compute chips, but in engineering applications a single material can't just replace all traditional options.
-
-The thermal conductivity of single-crystal diamond can reach about 2000–2200 W/m·K, far above traditional thermal conductors (copper ~400 W/m·K, aluminum ~237 W/m·K) — more than 5 times that of copper.
-
-In terms of material performance, diamond today is indeed theoretically one of the optimal thermal management materials.
-
-To strike a balance between cost and performance, the industry leans toward diamond composites with other materials.
-
-Strongest performance, but not necessarily the engineering optimum. The real bottleneck in AI chip thermal management isn't the material's own thermal conductivity, but:
-
-interface thermal resistance (TIM)
-
-packaging structure
-
-system-level cooling (liquid cooling / cold plates / immersion)
-
-cost / yield / scalability
-
-When you're already using liquid cooling + advanced packaging
-
-the marginal gain from 400 → 800 W/m·K is very high
-
-the marginal gain from 800 → 2000 W/m·K decays rapidly
-
-So in the real supply chain:
-
-copper / copper alloys
-
-diamond-copper composites
-
-SiC / high-thermal-conductivity ceramics
-
-system-level cooling solutions
-
-will long have priority over "pure diamond."
-
-Across the whole supply chain, the bargaining power sits with the AI chip giants.
-
-Chip giants usually won't quickly change their product chain for a single material either.
-
-The industry expects that the market for high-performance thermal materials in the AI era may grow substantially, and diamond is seen as one important direction in it.
-
-But that growth is more likely to show up in the revenue of material suppliers / cooling solution companies, rather than the traditional chip giants directly investing in diamond itself.
+This note originally mixed jewelry prices, materials technology, and investment valuation, which are different questions. Prices, conductivity figures, and return estimates without dates, sample conditions, and sources cannot support an investment conclusion.
 
 
 <!--memo:e1748cd9e3d2-->
-### COP Technology: The New Bottleneck in AI Chip Advanced Packaging
+### Panel-Level Packaging: Questions I Want to Explore
 
 > 2026-03-03 15:57:08 · `#格物/投资`
 
-COP technology.
+At the time I became interested in panel-level packaging and wanted to understand the constraints created by chip size, HBM, die-to-die links, and package area.
 
-Chip-On-Panel, an advanced packaging technology.
-
-AI chip packaging is becoming the bottleneck.
-
-Advanced processes (3nm / 2nm) are no longer the only difficulty; the real choke points have become:
-
-chips getting bigger and bigger (reticle limit)
-
-more and more HBM stacking
-
-die-to-die interconnect density exploding
-
-packaging area growing exponentially
-
-TSMC is now pushing COP, and NVIDIA, the AI chip company, is too.
-
-It's still in the engineering validation stage.
-
-AMKR is relatively low compared to the semiconductor industry average (the industry P/E is usually above 25–30x), reflecting that the market may be fairly conservative about its growth expectations or demanding a higher risk premium.
+The precise naming of “COP,” individual companies’ project progress, and AMKR’s valuation each require separate technical and financial sources. This note has not completed that verification and cannot establish company progress or an investment judgment.
 
 
 <!--memo:2330fad724fb-->
-### Comparing P/E Ratios of A-shares / US Stocks / Hong Kong Stocks: The Three-Market Game of Valuation Logic
+### Aligning Definitions Before Comparing P/E Ratios
 
 > 2026-03-03 16:35:30 · `#格物/投资`
 
-A comparison of P/E ratios across A-shares, US stocks and Hong Kong stocks.
+Comparing P/E ratios across markets requires more than one aggregate index number.
 
-Looking at the overall index, A-shares are actually lower; but looking at the median and at tech growth stocks, A-shares are significantly higher than US stocks.
+I want to separate industry composition, company earnings, growth expectations, interest rates, and the difference between index aggregates and individual-company medians. Numbers from different dates or definitions should not be compared directly.
 
-The P/E of the Shanghai Composite is around 12–14 year-round, and the CSI 300 around 11–13x, while the S&P 500 currently usually sits around 20–25x. In aggregate terms, A-shares are dragged down by the huge traditional state-owned enterprises in banking, energy and infrastructure (chronically 5–8x P/E).
-
-If you strip out financials and petrochemicals, or compare the ChiNext index representing tech growth with the Nasdaq, A-share valuations are often higher. More importantly, the US market is a "head-concentrated" market: many of the mediocre companies in the bottom 50% get extremely low valuations or even become penny stocks (a few times earnings), whereas in A-shares, thanks to "shell value" and retail speculation, a mediocre small-cap company with zero growth can often stay at a 30–50x P/E year after year.
-
-A-shares: "bad companies are expensive, good companies (the traditional big blue chips) are cheap"; US stocks: "good companies (tech giants) are expensive, bad companies are ignored."
-
-US stocks have higher absolute values — NVIDIA, Microsoft, Meta — with P/E usually between 30x and 70x, but extremely fast growth.
-
-But A-share P/Es are extremely high, even negative — "trade the expectation, sell the reality." Dominated by retail investors and hot money, with an extreme chase for concepts; even if AI business makes up a tiny share of total revenue, they'll speculate on it all the same.
-
-The US curve is also interesting: usually the stock price rises first, and then real net profit (EPS) follows in an explosion — like NVIDIA, where the stock first soared and pushed the P/E above 100x; but over the following few earnings seasons its profit delivered 200%–400% real growth. The result is that although the share price doubled, the P/E actually fell to 30–40x. Their growth curve is a solid upward compounding curve, because what they earn is the money of global compute infrastructure.
-
-A-shares generally look scarier — pulse-like surges, followed by a long grind down and value destruction. The vast majority of A-share AI companies lack core competitiveness in foundation models and compute chips, and are mostly "wrapper apps" or concept packaging. When the quarterly/annual report comes out, the market discovers that so-called AI brought no profit and actually dragged the financials because of high R&D or marketing costs. The growth curve shows an inverted V, and the way valuation comes back down is "the stock crashing," not "profit rising."
-
-Hong Kong AI is generally more interesting — lying at the bottom, with steady earnings growth but a sluggish share-price response. These companies have China's most core AI R&D teams and data, but are limited by how hard it is to commercialize domestic foundation models (low willingness to pay among To B clients, cutthroat price competition To C), so AI business mostly defends and empowers the existing main business (such as advertising, cloud services) and can hardly create an explosive new growth pole on its own.
-
-Hong Kong AI is more like a hedge; US AI is generally industrial investment; A-share AI is generally a chip-betting game.
-
-The US market is dominated by long-term institutional money, which values free cash flow and EPS; A-shares are dominated by a sea of retail investors plus quant hot money, with an extreme preference for high-volatility "imaginative space," because only if the story is big enough can it attract enough people to take the bag; Hong Kong is an offshore market where foreign capital holds pricing power and demands an extremely high bar for uncertainty (policy, geopolitics), requiring a very large margin of safety.
-
-For a truly great tech company, digesting its P/E must depend on explosive profit growth, not on endlessly telling stories. If a hot sector has been blowing for two years and the leader's profit is still falling, that should set off the highest-level alarm.
-
-
-<!--memo:28d192b30b06-->
-### Oil Price Change Tracker 🛢️
-
-> 2026-03-07 21:56:22 · `#石油` `#原油价格` `#能源投资` `#大宗商品` `#OPEC` `#OpenClaw`
-
-#### 📊 Current Price (March 2026)
-
-Due to API limits, for live data see:
-
-- Brent crude: investing.com/commodities/crude-oil
-
-- WTI crude: investing.com/commodities/crude-oil
-
-#### 📈 Key Historical Price Points
-
-##### 2020
-
-- April: WTI fell to **-$37.63/barrel** (unprecedented negative oil price)
-
-- Reason: pandemic outbreak + storage capacity exhausted
-
-##### 2021-2022
-
-- 2021: recovery to $70-80
-
-- March 2022: Russia-Ukraine conflict breaks out, surging to **$139** (14-year high)
-
-##### 2023
-
-- OPEC+ production cuts support prices
-
-- Range-bound: $70-95
-
-##### 2024
-
-- Geopolitical tension (Middle East situation)
-
-- Demand concerns (China's economic slowdown)
-
-- Range: $75-90
-
-##### 2025-2026
-
-- Energy transition accelerating
-
-- EV penetration rising
-
-- Expectation of a long-term demand peak
-
-#### 🌍 Core Factors Affecting Oil Prices
-
-##### Supply Side
-
-- **OPEC+ production policy** (led by Saudi Arabia and Russia)
-
-- **US shale oil** (the world's largest oil producer)
-
-- **Geopolitics** (Middle East, Russia-Ukraine, Venezuela)
-
-- **Release of strategic reserves** (SPR)
-
-##### Demand Side
-
-- **Global economic growth** (GDP→energy demand)
-
-- **Chinese demand** (largest importer)
-
-- **Transportation** (aviation, shipping recovery)
-
-- **Energy transition** (EV substitution)
-
-##### Financial Factors
-
-- **USD exchange rate** (oil is priced in USD)
-
-- **Speculative capital** (futures market)
-
-- **Interest rate policy** (the Fed)
-
-#### 📉 Long-Term Trend Judgment
-
-##### Bearish Factors
-
-✓ Falling renewable energy costs
-
-✓ Rising EV penetration (2030 combustion ban)
-
-✓ Improved energy efficiency
-
-✓ Carbon neutrality policy
-
-##### Bullish Factors
-
-✓ Insufficient upstream investment (trough after 2015)
-
-✓ Growing demand in emerging markets
-
-✓ Geopolitical risk premium
-
-✓ Inflationary pressure
-
-#### 💡 Key Indicators to Watch
-
-1. **OPEC+ meetings** (monthly production decisions)
-
-2. **EIA inventory report** (every Wednesday)
-
-3. **US rig count** (Baker Hughes)
-
-4. **China PMI data** (demand expectations)
-
-5. **US Dollar Index DXY**
-
-#### 📚 Data Sources
-
-- Investing.com
-
-- Bloomberg Energy
-
-- EIA (US Energy Information Administration)
-
-- OPEC Monthly Report
-
-- Jinshi Data
-
-
-<!--memo:44e298cb9ce4-->
-### 🏦 Goldman Sachs Daily Market Briefing
-
-> 2026-03-07 22:03:46 · `#高盛` `#市场预测` `#投资建议` `#每日简报` `#OpenClaw`
-
-📅 March 7, 2026, Saturday
-
-***
-
-#### 📊 Market Outlook
-
-##### Macro Views
-
-- **US stocks**: watch tech earnings and Fed policy
-
-- **Hong Kong stocks / China concept stocks**: the pace of China's economic recovery is key
-
-- **A-shares**: the strength of policy support and foreign capital flows
-
-##### Sector Allocation Suggestions
-
-| Rating | Sector | Rationale |
-
-|------|------|------|
-
-| Overweight | Tech (AI/cloud) | Long-term growth is certain |
-
-| Overweight | Healthcare | Defensive + innovative |
-
-| Neutral | Financials | Interest rate environment uncertain |
-
-| Underweight | Traditional energy | Transition pressure |
-
-***
-
-#### 💡 Today's Investment Strategy
-
-##### 🎯 Core Allocation
-
-1. **Growth stocks**: 40-50% (tech, healthcare, new energy)
-
-2. **Value stocks**: 20-30% (financials, consumer leaders)
-
-3. **Bonds**: 20-30% (government bonds, high-grade credit bonds)
-
-4. **Cash**: 10% (waiting for opportunities)
-
-##### ⚠️ Risk Warnings
-
-- Geopolitical uncertainty
-
-- Changes in inflation and interest rate policy
-
-- Fluctuations in economic data
-
-- Exchange rate risk (RMB/USD)
-
-***
-
-#### 🔍 Events to Watch Today
-
-- US pre-market/after-hours earnings
-
-- Release of China's economic data
-
-- Speeches by Fed officials
-
-- OPEC+ developments
-
-***
-
-#### 📚 Data Sources
-
-- Goldman Sachs official research reports
-
-- Bloomberg
-
-- Wallstreetcn
-
-- Cailian Press
-
-***
-
-*⚠️ This briefing is for reference only and does not constitute investment advice*
-
-*Markets carry risk; invest with caution*
+Rather than judge value through a market label, I want to return to individual companies: whether revenue and profit are keeping pace, what cash flow looks like, and what expectations the valuation depends on. These are analytical questions, not a buy-or-sell conclusion about a market.
 
 
 <!--memo:f3607badbad8-->
@@ -9322,64 +7792,14 @@ But the stronger the alignment, the greater the inertia. When the environment ch
 ***
 
 
-<!--memo:49c6ae1f0ac2-->
-### But I feel we can first make an RM
-
-> 2026-03-13 19:16:57
-
-But I feel we can first make an RM, that is, treat the other party as a long-term work partner of yours. Let him — you want to think of every way to get into your own freestyle rhythm, still sort of the eight-tenths meaning. And essentially his salary is still this, he'll still go and recognise everything about you; his core goal is to help you settle and pay, rather than being a bank where you make a few short-term models you need, maybe.
-
-***
-
-
 <!--memo:93c95c2ae1d8-->
 ### The Impossible Trinity
 
 > 2026-03-15 14:05:55 · `#格物/金融`
 
-An open economy cannot fully achieve all three of the following at the same time:
+The impossible trinity states that an economy cannot fully combine a fixed exchange rate, independent monetary policy, and free capital movement. It is a theoretical framework for understanding policy trade-offs in an open economy. [IMF research on the trilemma](https://www.imf.org/en/publications/wp/issues/2019/09/20/trinity-strikes-back-monetary-independence-and-inflation-in-the-caribbean-48599)
 
-A fixed exchange rate
-
-Independent monetary policy
-
-Free capital mobility
-
-It can achieve at most two at the same time
-
-Essentially, this is determined by the arbitrage mechanism
-
-As long as capital can move freely, money will chase higher returns globally
-
-And the core of return differences often comes from interest rate differentials and exchange rate expectations
-
-Fixed exchange rate: a fixed exchange rate means the government or central bank commits to keeping the local currency at a stable level against some foreign currency, or against a basket of currencies—for example, pegging directly to the dollar, reducing exchange rate uncertainty; the cost is limited room for manoeuvre, the central bank needing to intervene in the foreign exchange market frequently, and heavy pressure on foreign exchange reserves
-
-Independent monetary policy to set interest rates: you can decide interest rates and liquidity according to your own economic cycle, cutting rates to stimulate in a recession, raising rates to suppress demand during inflation, and you can operate according to your own employment, prices and financial stability
-
-Free capital mobility: free capital mobility means funds can flow in and out across borders relatively freely, residents, companies and institutional investors can allocate overseas assets relatively freely, and foreign capital can enter the domestic market too
-
-So Hong Kong chose a fixed exchange rate + free capital mobility
-
-The mainland chose a fixed exchange rate + independent monetary policy
-
-Traditionally, China has long been closer to a variant of this combination:
-
-The exchange rate isn't absolutely fixed, but is strongly managed
-
-Monetary policy retains considerable independence
-
-The capital account is not fully open
-
-Of course there are also many developed economies that chose free capital mobility + independent monetary policy, such as the US, the UK and Canada
-
-This is a country's institutional arrangement between "sovereignty, openness and stability"
-
-The US basically chooses free capital mobility, independent monetary policy, and a floating exchange rate
-
-Because the dollar itself is the global core reserve currency
-
-Others need to adapt to the US; the US doesn't really need to adapt to others
+What interests me is that one arrangement cannot maximize every objective. In practice there are varying degrees of management, openness, and flexibility, so economies should not be forced into absolute two-out-of-three boxes.
 
 
 <!--memo:d88a8b61c8ba-->
@@ -9387,35 +7807,10 @@ Others need to adapt to the US; the US doesn't really need to adapt to others
 
 > 2026-03-15 14:09:18 · `#格物/金融`
 
-Singapore: free capital mobility + exchange-rate-led monetary policy; not a traditional "hard peg to a single currency," but managing the nominal effective exchange rate of the Singapore dollar through the basket, band and crawl (BBC) framework. MAS states officially and clearly that Singapore's monetary policy is centred on the exchange rate, not on short-term interest rates. Singapore has also long maintained a highly open capital account
+Singapore shows me how real policy arrangements can be more nuanced than a two-out-of-three label. MAS centers monetary policy on the Singapore dollar’s nominal effective exchange rate against a currency basket, managed within a band and along a path, rather than pegging it to one currency. [MAS on its monetary policy framework](https://www.mas.gov.sg/monetary-policy/Singapores-Monetary-Policy-Framework/faqs/section-2)
 
-Malaysia: independent monetary policy + relatively high capital openness + a relatively flexible exchange rate
+Other countries’ choices among exchange rates, capital movements, and policy independence need to be checked individually against official information from the same period.
 
-Vietnam: a degree of exchange rate stability + a degree of monetary policy independence
-
-Cambodia: exchange rate stability + high financial openness / dollarisation, with relatively weak monetary policy independence
-
-Laos: exchange rate management + capital restrictions + fighting for monetary policy space
-
-Japan: free capital mobility + independent monetary policy + a floating exchange rate
-
-
-<!--memo:7030caa7e44b-->
-### Bangladesh's sex industry, I find it fascinating. On the surface it's legal
-
-> 2026-03-18 00:42:57
-
-Bangladesh's sex industry, I find it fascinating. On the surface it's legal, but in reality it's very contradictory. Adult women's private transactions can to a certain degree proceed legally — they can solicit openly, they can pimp — so it's a kind of quasi-legality: the state hasn't fully eliminated it, but also doesn't recognise it as a normal labour industry under equal protection. It's different from other countries — other countries divide off a district and manage it uniformly, making it regulated by law. But Bangladesh's sex industry, I feel, is more a very fragile market catalysed by its patronage structures, its poverty economy, the state's extremely weak governance capacity, and criminal networks. Human trafficking is a long-standing problem, and its urbanisation really does need a lot of these positions. And then there's its poverty, and its female fertility rate is very low too. The social forms now aren't just red-light districts — there's also street-based and mobile forms, and all of this is very unstable. Red-light districts are officially very tolerated; it's one of the world's largest brothel communities, apparently a "Brothel" community. And its hotels are very hidden too. How to put it — this whole industry is not sex, it's exploitation. It's a transit point, and also a site of exploitation within the country. And the involvement of minors in this exploitation is very serious; this is a very dark aspect of Bangladesh. And Bangladesh has a lot of violent law enforcement, which I find hard to talk about. Mm. What I find more interesting is that Bangladesh is also a Muslim-majority society. So women's status there is very hard to guarantee. Many of them actually have no real protection of labour rights, and when they encounter violence they don't dare call the police, and children are easily ostracised.
-
-***
-
-
-<!--memo:8d24dbe35463-->
-### xxx is the hook, the plan is retention, the memory bank is the moat
-
-> 2026-03-28 17:39:57
-
-xxx is the hook, the plan is retention, the memory bank is the moat.
 
 
 ## 9. Body, Health and Daily Life
@@ -9465,9 +7860,9 @@ He won't put you in a "needing to be cared for" role—but defaults you have jud
 
 Feelings about "Night King"
 
-The scene that struck me most was the male lead's kindness that he never recommended
+The scene that struck me most was the kindness the male lead shows in unguarded moments
 
-A landowner's parents are gravely ill, and he's willing to sacrifice himself so the landowner can keep working
+When someone has difficulties at home, he is willing to help; it made me notice the genuine feeling within these relationships too.
 
 Including lending money to his own employee, interest-free
 
@@ -9491,29 +7886,29 @@ I was still too narrow-minded
 
 Mini just wanted to be seen
 
-That scene where Sister V picks up the earring and puts it in the dressing room—the moment MiMi sees the earring being picked up she must have been so excited, but in the end she fell in love with someone she shouldn't have; her feelings had nowhere to rest, her love had nowhere to go, and she could only leave from a distance
+That scene where Sister V picks up the earring and puts it in the dressing room—the moment Mini sees the earring being picked up she must have been so excited, but in the end she fell in love with someone she shouldn't have; her feelings had nowhere to rest, her love had nowhere to go, and she could only leave from a distance
 
 
 <!--memo:03389874aae1-->
-### Vietnamese Food: A Low-Fat Philosophy of Chinese-French Cultural Fusion and Yin-Yang Balance
+### Missing Vietnamese Food While Looking Back at Photos
 
 > 2026-03-07 17:55:11
 
-I suddenly came across some of the food I ate in Vietnam. Apart from the foreign food there, like Japanese, Western or fast food, most of it was various local Vietnamese specialties. Looking back, I ate quite a lot, and I think Vietnamese food is delicious in my book, because it fuses Chinese and French culture, and it's also a kind of yin-yang balance. Whether it's pho, banh mi, spring rolls, or grilled pork with rice noodles, I found them all pretty tasty, and all quite suitable for people on a low-fat diet. That's why the locals in Vietnam basically all have great figures—because what they eat day to day is low-fat, low-calorie food.
+Looking back at photos of meals in Vietnam makes me nostalgic. I loved the pho, banh mi, spring rolls, and grilled pork with rice noodles.
 
-If I compare it to Cantonese food back home, Guangdong seems extremely strict about ingredients. For any dish, say steaming, the water temperature, the steaming time, the moment it comes off the heat all have very strict standards, and the margin for error is very low. But Vietnamese food, because its environment determined its eating habits, proves that saying: food chooses humans, not humans choosing food. In that subtropical climate, people had to give up greasy food in order to adapt, and eat things that wake up the appetite and replenish water and salt—it's a process of adapting to nature.
+I especially enjoyed the vegetables, herbs, and contrasting textures, and often felt light after eating. That personal response cannot establish that Vietnamese food is uniformly low-fat or low-calorie, or explain local people’s body shapes.
 
-France is interesting too; during the colonial period France took part in the evolution of Vietnamese food, which shows a strong inclusiveness. Chinese chopsticks, French coffee, the habit of eating beef. The French loved their French wheat and butter, but the locals couldn't afford them, so they mixed rice flour into the wheat flour and made a banh mi with a very thin crust, and adapted it to local needs, avoiding making it greasy. So I think it's also a process of yin and yang coming together, quite interesting. It eats with a lot of layers, and with so many vegetables, I think it's very healthy for the figure; after eating you feel very light, very good.
+The food also makes me curious about how different cultures enter local kitchens. Specific histories and recipes need individual attention, rather than one story of “Chinese-French fusion” explaining everything.
 
 
 <!--memo:89eb9c3da279-->
-### Observations of Trat: The Balance Between Ease and Everyday Comfort
+### Observations of Da Lat: Ease and Everyday Comfort
 
 > 2026-03-08 00:57:14
 
-I think Trat is a very interesting city. Compared with Ho Chi Minh City, Trat is a very relaxed city. It's simple, hasn't been through war, but has a very strong sense of everyday life, a bit like a middle-class or even aristocratic feel. Many people like to keep a small garden at home or in a big courtyard, and live in the courtyard, with hills to climb and things to explore nearby. I think it's really especially relaxing.
+I think Da Lat is a very interesting city. Compared with Ho Chi Minh City, Da Lat is a very relaxed city. It feels unhurried to me and has a strong sense of everyday life, a bit like a middle-class or even aristocratic feel. Many people like to keep a small garden at home or in a big courtyard, and live in the courtyard, with hills to climb and things to explore nearby. I think it's really especially relaxing.
 
-And there's a ton of really good food there; it's a kind of food paradise too. Relatively speaking, the climate there is very comfortable, just like the climate in our Dali, because the elevation is slightly higher. So I personally really like the whole city, and the weather is great too.
+And there's a ton of really good food there; it's a kind of food paradise too. Relatively speaking, the climate there is very comfortable, just like the climate in our Dali, It is a city in Vietnam’s highlands. [Vietnam Tourism on Da Lat](https://vietnam.travel/place-to-go/south-central-coast-central-highlands/dalat/). So I personally really like the whole city, and the weather is great too.
 
 Of course it's not without drawbacks—the drawback may be that the infrastructure is a bit worse. But I think infrastructure is fine, really; compared with the comfort of living, it doesn't seem like much.
 
@@ -9552,3 +7947,26 @@ Awake, but not showy; communicating, but not impolite; enjoying, but not indulgi
 A drink that can be shared, repeated, and carries a faint spirituality, used to organise time, ease relationships, shape identity, and settle the soul
 
 ***
+
+## References
+
+Sources used for the checks and citations in the notes; other historical study notes have not all been independently verified.
+
+- [Google Research: Task Boundaries in Scaling Agent Systems](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/)
+- [Apifox: External JavaScript Tampering Notice (March 25, 2026)](https://docs.apifox.com/8392582m0)
+- [Tuol Sleng Genocide Museum: History of the Museum](https://tuolsleng.gov.kh/en/museum/building/)
+- [ECCC: Case 001](https://www.eccc.gov.kh/en/cases/case-001)
+- [Bangladesh High Commission in Malaysia: Geography and Population](https://www.bdhckl.gov.bd/111-5/)
+- [Apple: macOS Sequoia and iPhone Mirroring (June 10, 2024)](https://www.apple.com/newsroom/2024/06/macos-sequoia-takes-productivity-and-intelligence-on-mac-to-new-heights/)
+- [UNESCO on Angkor](https://whc.unesco.org/en/list/668/)
+- [APSARA on Angkor Wat](https://apsaraauthority.gov.kh/2021/06/14/angkor-wat/)
+- [Research on occupation at Angkor Wat](https://doi.org/10.1073/pnas.1821879116)
+- [APSARA on Ta Prohm](https://apsaraauthority.gov.kh/2021/08/12/ta-prohm/)
+- [EFEO’s restoration study](https://publications.efeo.fr/fr/livres/843_le-baphuon)
+- [NIGMS on circadian rhythms](https://www.nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms)
+- [Pew’s original survey](https://www.pewresearch.org/religion/2021/06/29/beliefs-about-god-in-india/)
+- [Apple on storage management](https://support.apple.com/en-ie/guide/iphone/iph47c931112/ios)
+- [Project X’s VLESS configuration](https://xtls.github.io/en/config/outbounds/vless.html)
+- [IMF research on the trilemma](https://www.imf.org/en/publications/wp/issues/2019/09/20/trinity-strikes-back-monetary-independence-and-inflation-in-the-caribbean-48599)
+- [MAS on its monetary policy framework](https://www.mas.gov.sg/monetary-policy/Singapores-Monetary-Policy-Framework/faqs/section-2)
+- [Vietnam Tourism on Da Lat](https://vietnam.travel/place-to-go/south-central-coast-central-highlands/dalat/)

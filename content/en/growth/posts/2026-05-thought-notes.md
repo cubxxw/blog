@@ -17,7 +17,7 @@ tags:
   - Self-Discovery
   - AI
 description: >
-  In May I did not write a single flomo note. I barely posted on social. It was a month of intentional disconnection — disconnecting from the tools other people designed to record me, disconnecting from the Shenzhen default script for how a life should be lived, and throwing myself into the cafés, caves, bars and riverbanks of Laos to see, in the absence of any external frame, what I am actually pulled toward, when I light up and when I go hollow. This is a deep recap of that one month: from the alms-giving in Luang Prabang to the wild adventure of Vang Vieng, from the post-water-festival emptiness in Vientiane to a month-plus of slow life there; from reading myself as a risk-seeker, to the realization that the unity of knowing and doing is the answer, to the engineering thought of compiling a person into a self-model, and finally to the disorientation after returning home and a life roadmap I now have to design myself.
+  May 2026 in Laos: stepping away from flomo, exploring caves and slow days, then reflecting on choice, action and identity, with one dated note preserved.
 tldr:
   - May was an experiment in intentional disconnection — quitting flomo, leaving the Shenzhen script, using action rather than meditation to know myself.
   - I live by active bets, not by a calendar. Vang Vieng lit me up. Late Vientiane went hollow. Same recipe, opposite essence. What I really fear is not repetition but inertia.
@@ -29,23 +29,23 @@ maturity: budding
 
 ## Quick Navigation
 
-**Start with the long read**: 9 sections in the body above.
+**Start with the long read**: 8 sections in the body below.
 
-**1 archived notes this month, filed under 1 themes:**
+**1 archived note this month, filed under 1 theme:**
 
 - [Daily Notes and Everything Else](#daily-notes-and-everything-else) · 1
 
 ---
 
-## Prologue: A May Without flomo
+## Prologue: A May Almost Without flomo
 
-For the entire month of May, I did not write a single flomo note. I barely posted to my feed either.
+For the entire month of May, I left only one short note in flomo. I barely posted to my feed either.
 
 This was not laziness. It was a conscious decision. I had already decided on April 30 that I would stop. The reason is simple: I no longer felt I needed it. Or more accurately — could it have a better form? I want to use my own product. It is not perfect yet, but I want to fully think through and ship the thing I have in my head. The remaining steps are few. It is close.
 
 But once flomo was off, May turned into a strange month: without the daily nudge to "write one down," I handed myself entirely over to the experience itself. So this piece does not grow from fragmented notes. It is scooped out of the whole month's flow. Looking back, the month was much heavier than I thought — on the surface it was relaxed, detoxing, full of play; underneath, it was a complete experiment about who I actually am.
 
-If I had to put May in one line: **it was an experiment in intentional disconnection.** Disconnecting from the recording tool someone else designed for me (flomo), disconnecting from Shenzhen and that default script of "how a life should be lived," and placing myself in a high-uncertainty environment where my body was always present and I could meet strangers at any moment — to see, when the external frame is removed, what I am drawn to, when I light up, and when I go hollow.
+**May was an experiment in intentional disconnection.** Disconnecting from the recording tool someone else designed for me (flomo), disconnecting from Shenzhen and that default script of "how a life should be lived," and placing myself in a high-uncertainty environment where my body was always present and I could meet strangers at any moment — to see, when the external frame is removed, what I am drawn to, when I light up, and when I go hollow.
 
 The rest of this piece pulls apart the experiment, layer by layer.
 
@@ -73,11 +73,11 @@ Vang Vieng is a place where you can go wild. You can cliff jump, crawl into cave
 
 ![Looking up at the mouth of a cave: the silhouette of a hiker against the bright sky — the light is outside, the darkness is at your feet, and the body is just about to walk in](/images/posts/2026/laos/cave-mouth-silhouette.jpg)
 
-The cave later became a key for understanding myself. The first time I went with Sasha. She got partway in and would not go further, kept saying "let's not go deeper" — she was a bit out of it that day, her rational analysis was off, so she turned back. The second time I went with a hilarious Black American guy. I had crashed my motorbike and hurt my leg, so to avoid infecting the wound I did not go into the water, but I could still walk, so I went deeper with him.
+The cave later became a key for understanding myself. The first time I went with my companion. She got partway in and would not go further, kept saying "let's not go deeper" — she did not want to go deeper that day, so we turned back. The second time I went with another hilarious friend. I had crashed my motorbike and hurt my leg, so to avoid infecting the wound I did not go into the water, but I could still walk, so I went deeper with him.
 
 ![Inside a stalactite cave — warm orange walls and a narrow path. To go deeper is to enter exactly this kind of world: only barely lit, silent rock on every side](/images/posts/2026/laos/cave-interior.jpg)
 
-The group I met in Vang Vieng is the other half of why those days glowed. Sasha, some old friends, a friend from Shanghai, and that Black American guy — emotionally extremely steady, very inward, more reflective than reactive, almost never visibly emotional. His girlfriend was the opposite — outgoing, from Tianjin. He always wanted to come along, we all loved adventure. I later thought, a love of adventure seems like a trait many Americans have. But relatively speaking, I am the one truly addicted to adventure — all of us outdoors together, feeling the pull of risk.
+The group I met in Vang Vieng is the other half of why those days glowed. My companion, some old friends, a friend from Shanghai, and that friend — emotionally extremely steady, very inward, more reflective than reactive, almost never visibly emotional. Another person with us was the opposite — outgoing. He always wanted to come along, we all loved adventure. I later thought, a love of adventure seems like a trait many Americans have. But relatively speaking, I am the one truly addicted to adventure — all of us outdoors together, feeling the pull of risk.
 
 ![Selfie at a cliff edge on a Vang Vieng summit: the switchback road below, the karst range stretching out in the distance. In that moment you can clearly feel the body's settled certainty on the edge](/images/posts/2026/laos/cliff-edge-selfie.jpg)
 
@@ -97,7 +97,7 @@ I kept turning this over later. I am an "I" on the Myers-Briggs scale, but my en
 
 I ended up staying in Vientiane for over a month. I think I went to most of the places worth going — every corner, every spot, every story. I went to a bar two or three times a week, danced, often danced until dawn. I love that feeling, I cannot quite say why, but it is a very real other side of me. And yet I cannot tell — between the me dancing in a club and the me reading quietly in a café, which one is the "real" me. Or maybe none of them is unreal; they are just outputs of different environments. As Buddhism says, no need to cling too tightly to the "I" of any single moment. Each moment's I is a temporary gathering of many causes and conditions that will scatter again. **You cannot step into the same river twice.** I will probably never get back to the Vang Vieng version of me either.
 
-Vientiane also taught me a few things about emotion. I met some very kind older sisters at bars — you could feel it was a meeting of inner worlds. She could read your story from your eyes, talk you through things, tell you many stories from the world, introduce you to her friends, their stories, her own story. One of them used to be an actress, I think also a singer, mildly known on YouTube about ten years ago. She stopped doing self-media after opening a shop, possibly also after getting married. Otherwise I think she would be famous now. The bars by the Mekong, the breeze blowing absurdly gently, and she was gentle too. In that stretch I wanted to go drink and talk almost every day.
+Vientiane also taught me a few things about emotion. I met some very kind older sisters at bars — you could feel it was a meeting of inner worlds. She could read your story from your eyes, talk you through things, tell you many stories from the world, introduce you to her friends, their stories, her own story. The bars by the Mekong, the breeze blowing absurdly gently, and she was gentle too. In that stretch I wanted to go drink and talk almost every day.
 
 The entire May was basically lived out across Vientiane's cafés, bars, roadsides and riverbanks. Amusement parks, bumper cars, arts centers, art museums, museums, all kinds of performances, all kinds of restaurant-bars, plus the stories of a fun group of Chinese friends. I also kept thinking back to the wonderful people I met in Guangzhou — they write on serious topics, do nonprofit work, they are a group I treasure.
 
@@ -115,7 +115,7 @@ On the surface the two recipes look almost identical: play every day, drink, mee
 
 Vang Vieng had adventure, the unknown, mountains and nature, and that "I'll go into the cave with a busted leg anyway" kind of uncertainty and stake. Late Vientiane was certain, predictable, gentle but repeating. So the question I asked myself — "Am I only really alive when I'm in uncertainty, on an edge, in the middle of an adventure?" — the answer is, with high probability: **yes.**
 
-But there is a critical misreading to avoid: what I need is not "danger." It is "a real stake + body in the room + sharing it with people." Those three things. Vang Vieng hit all three, so those days glowed and leaving was reluctant. Late Vientiane hit none — no stake (everything predictable), body not in the room (sitting in a café), socializing without shared stake (everyone playing their own version of fun). The recipe looks the same; the essence is empty.
+But there is a critical misreading to avoid: what I need is not "danger." It is "a real stake + body in the room + sharing it with people." Those three things. Vang Vieng hit all three, so those days glowed and leaving was reluctant. Late Vientiane hit none — no stake (everything predictable), less bodily involvement (sitting in cafés), socializing without shared stake (everyone playing their own version of fun). The recipe looks the same; the essence is empty.
 
 I said "even climbing the same mountain twice feels meaningless" — yes, because the second time the mountain has no unknown left in it, the stake is gone, and only the motion remains.
 
@@ -123,7 +123,7 @@ I said "even climbing the same mountain twice feels meaningless" — yes, becaus
 
 Watching myself, I can see I am clearly a risk-seeker. A lot of friends around me, especially those in investing, are clearly risk-averse. I have a strong capacity for bearing risk.
 
-But this "not afraid" is not recklessness. It comes from a few things: my understanding of the floor, my deep understanding of the part that is controllable, a prefrontal cortex that does not over-amplify danger, and a body that adapts well to that feeling — body and prefrontal cortex coordinate quickly. In other words, **I am not gambling. I have already digested the floor and the controllable part, which is exactly why I can go all-in on what remains uncertain.** That is a "I've done the math, therefore I can place the bet" kind of certainty.
+But this "not afraid" is not recklessness. It comes from a few things: my understanding of the floor, my deep understanding of the part that is controllable, my sense at the time that I was not over-amplifying danger, and a body that adapts well to that feeling — body and judgment coordinate quickly. In other words, **I am not gambling. I have already digested the floor and the controllable part, which is exactly why I can go all-in on what remains uncertain.** That is a "I've done the math, therefore I can place the bet" kind of certainty.
 
 This one matters because it explains how I have survived two years outside the conventional system — that engine is what keeps me going.
 
@@ -131,7 +131,7 @@ This one matters because it explains how I have survived two years outside the c
 
 I once thought I only had the "burning on the edge" mode. So the moment quiet showed up I labeled it boring. That was wrong.
 
-I can sit in quiet too — provided it is the kind of quiet **I have made room for and chosen.** Sasha and I in a café, sunbathing, each doing our own thing, reading, feeling the breeze, thinking, observing the world, no clock anxiety — that is a high-happiness thing. Beyond Sasha, with several friends I can go deep with, I am the same — an afternoon doing nothing, or each on our own work, I can sit through it, and I am happy.
+I can sit in quiet too — provided it is the kind of quiet **I have made room for and chosen.** My companion and I in a café, sunbathing, each doing our own thing, reading, feeling the breeze, thinking, observing the world, no clock anxiety — that is a high-happiness thing. Beyond my companion, with several friends I can go deep with, I am the same — an afternoon doing nothing, or each on our own work, I can sit through it, and I am happy.
 
 So I have two faces of "alive": one is on the edge, burning; the other is settled, with the right person, free of being chased by time. Both make me happy, but they share one precondition — **I have to have actively chosen to step into them.**
 
@@ -143,7 +143,7 @@ So I get to a conclusion that matters: **what I am really afraid of is never rep
 
 This is another ability the experiment exposed that I had not taken seriously.
 
-The older sister by the Mekong could read my story from my eyes. The emotionally rock-steady Black American guy wanted to come along again and again. Sasha became my best companion. The group in Guangzhou doing nonprofit and serious writing are a group I treasure. I can connect with people across language, age and culture. I used to take this for granted. It is actually rare — many very "capable" people go an entire life without it.
+The older sister by the Mekong could read my story from my eyes. The emotionally rock-steady friend wanted to come along again and again. We became close companions. The group in Guangzhou doing nonprofit and serious writing are a group I treasure. I can connect with people across language, age and culture. I used to take this for granted. It is actually rare — many very "capable" people go an entire life without it.
 
 ### Reading Five: I am strongly moved by the real, the raw, the slow
 
@@ -159,13 +159,13 @@ May had a chapter that forced me to rewrite my ruler for "good vs. bad."
 
 I went to the national university for a few days. That campus was so out of the way it felt genuinely wild — the university itself is in a very remote spot, and where we stayed was another four or five kilometers north of the university. The road was awful, full of potholes, you had to weave around them. The dust was absurd, yellow sand in the air. Every time I came back and gave my jacket a rub, the wash water came off visibly yellow.
 
-The contrast was overwhelming: between this place and Nanshan in Shenzhen, between this and Japan, between this and Hong Kong. A very dirty, chaotic country versus a very polished, orderly country.
+The contrast was overwhelming: between this place and Nanshan in Shenzhen, between this and Japan, between this and Hong Kong. A very dusty stretch of road beside the orderly streets I was used to.
 
 But I tried another angle: this is nothing more than what the world looks like at different stages, in different cultures, with different economies, different politics, and different levels of technology. And then I realized the question to ask is not "which one is cleaner, which one is more advanced." The question is — **are the people here happy?**
 
-Of course the Laotians are happy. Compared with how I feel in Shenzhen, I might in fact be happier in Laos. Sure, I am only a passerby, but from what I observed, they are happy. So is that happiness good or bad? There seems to be no standard. If you let everyone pick, they will pick Shenzhen, will pick Japan. But if "good vs. bad" is to be quantified by happiness, then they are not behind. So how should "good vs. bad" be defined? Or do we even need to define it?
+Some of the Lao people I met seemed to enjoy their lives. Compared with how I feel in Shenzhen, I might in fact be happier in Laos. I am only a passerby and cannot judge happiness for everyone who lives there. So is that happiness good or bad? There seems to be no standard. If I were choosing, I would also care about the conveniences of Shenzhen and Japan. But if "good vs. bad" is to be quantified by happiness, then they are not behind. So how should "good vs. bad" be defined? Or do we even need to define it?
 
-We each seem to live in our own world, our own value frame. I really enjoy a rhythm there: a massage, lying flat in a café, occasional sunbathing, wandering temples, making a small wish, lighting a stick of incense, a little drink at a bar at night and some reading. Sasha is a great companion — every time we sit down in a café, we can really sit. Sunbathe, read, no clock anxiety.
+We each seem to live in our own world, our own value frame. I really enjoy a rhythm there: a massage, lying flat in a café, occasional sunbathing, wandering temples, making a small wish, lighting a stick of incense, a little drink at a bar at night and some reading. She is a great companion — every time we sit down in a café, we can really sit. Sunbathe, read, no clock anxiety.
 
 **There is no single standard for happiness.** This line looks mild, but it is sharp — it later directly loosened my obsession with "wanting to prove I am very capable." If "a good life" has no single answer, then "very capable" is being measured by whose ruler?
 
@@ -177,7 +177,7 @@ The deepest slab of May is a paradox I caught myself smiling at.
 
 My logic at the time was this: why have I not done many things I clearly know would benefit me? Because I have not found myself. Why have I not found myself? Because my self-knowledge isn't deep enough. But Wang Yangming talks about the unity of knowing and doing — without action, that knowing doesn't even fully exist, ha.
 
-I laughed because I caught my own loop red-handed. After the laugh, I realized this was actually good news. Wang Yangming's line **flips** my causality: it is not "first know the self, then act," but **action itself is the way to know the self.** "Knowing is the start of doing, doing is the completion of knowing" — knowing without doing isn't really knowing.
+I laughed because I caught my own loop red-handed. After the laugh, I realized this was actually good news. Wang Yangming's line **flips** my causality: it is not "first know the self, then act," but **action itself is the way to know the self.** [“Knowing is the beginning of doing; doing is the completion of knowing”](https://acc.gzu.edu.cn/2022/1206/c5685a181656/page.htm) — knowing without doing isn't really knowing.
 
 So **the self is not a noun hidden somewhere waiting to be discovered. It is a verb you do and accumulate.** I do not have to first figure out who I am to move; I have to move, and then I will see who I am.
 
@@ -213,7 +213,7 @@ This also explains why I would rather kill flomo and ship my own product: **quit
 
 ---
 
-## VI. End of the Month: Back in China, Disoriented, With a Roadmap I Now Have to Design Myself
+## VI. Epilogue: Back in China in June, Disoriented, With a Roadmap I Now Have to Design Myself
 
 I have to write down the tail of May honestly, even though it spills into June — because without it, May is not complete.
 
@@ -247,11 +247,11 @@ To collect the whole month in one line —
 
 **May was someone used to placing active bets actively throwing himself onto an edge, not for fun, but to see clearly, in a place without a script, who he really is.**
 
-Luang Prabang, Vang Vieng, Vientiane were just three vertebrae on that spine. I did not write a single flomo note this month, yet I came away with several cleaner readings about myself than any month before: I live by active bets; my "not afraid" is a calculated certainty; I have two "alive" modes, both requiring active choice; I can connect with people at depth; I am moved by real and slow lives; happiness has no single standard; and the self I am looking for has always walked behind action.
+Luang Prabang, Vang Vieng, Vientiane were just three vertebrae on that spine. I barely wrote in flomo this month, yet I came away with several cleaner readings about myself than any month before: I live by active bets; my "not afraid" is a calculated certainty; I have two "alive" modes, both requiring active choice; I can connect with people at depth; I am moved by real and slow lives; happiness has no single standard; and the self I am looking for has always walked behind action.
 
 In June I am still disoriented, still slack, still worrying about money, still rebuilding the broken feedback system. But May has already handed me the shape of the answer: **stop waiting for the turning point. Go do the scary, the near, the actively chosen act — the self will walk out from behind it.**
 
-> Written at the end of May 2026, Laos. Day 31 of life without flomo.
+> Notes on May 2026 in Laos, with additions after returning to China in June.
 
 ---
 
@@ -271,3 +271,7 @@ In June I am still disoriented, still slack, still worrying about money, still r
 Sis said she only fell in love with our group of friends today hahaha, but we're about to part ways; what a pity. I said this is fate being just right …
 
 It reminded me — the most important thing about parting is the goodbye
+
+## References
+
+- [A reading of Wang Yangming on knowing and doing · Guizhou University](https://acc.gzu.edu.cn/2022/1206/c5685a181656/page.htm)

@@ -19,9 +19,9 @@ tags:
   - Self-Discovery
   - AI
 description: >
-  In June I came back from Laos to Shenzhen. The dense, active records of the entire month were squeezed into the last ten days (June 21 to 30) — about thirty-nine conversations, almost all in Chinese. On the surface I was slack. Underneath I was thinking through hard things at high density. This piece breaks June into seven layers: the deepest psychological line — "I finally saw the mechanism of how I push people away" — and how the same move lives inside my career; Agent architecture and technical engineering; what to do and not do in product direction; the founder studies and the lesson that "incentive structure colonizes personality"; a handful of epistemological knives; and finally back to my own situation today — that the essence of disorientation is not insufficient effort, it is not yet recognizing what problem I have to solve.
+  June 2026: returning to Shenzhen, reflecting on relationships, hesitation, agent systems and product validation, with 34 notes and clearer psychological limits.
 tldr:
-  - I finally saw the mechanism of how I push people away — the pushing-away comes first, the reason comes after. The amygdala is fighting a war that ended when I was three.
+  - I finally saw the mechanism of how I push people away — the pushing-away comes first, the reason comes after. I used the image of an old alarm still sounding to understand the feeling.
   - The same avoidant move does not only live in relationships, it also lives in my career. I do not dare distribute, so I first invent a respectable reason — "let me learn marketing first."
   - My bottleneck has never been technical execution. It is distribution and commercial validation. Technical ability is already in surplus. What is scarce is turning it into something people need, see, and pay for.
   - The most important thing in a long-term relationship is not love, it is relational mechanics. The "soul mate" is mostly made, only secondarily found.
@@ -31,7 +31,7 @@ maturity: budding
 
 ## Quick Navigation
 
-**Start with the long read**: 12 sections in the body above.
+**Start with the long read**: 11 sections in the body below.
 
 **34 archived notes this month, filed under 7 themes:**
 
@@ -53,9 +53,9 @@ If you only look at the state, this was a slack month. What it looked like in pr
 
 It was not anxiety — anxiety is taut. What I had was slack, sinking, closer to a hard-to-name pain: every day I opened the phone, watched the bank-balance number slide down, watched the AI API bill climb up, and in the moment those two lines crossed in front of me my chest would clench, and then I would numbly swipe it away. From the me by the Mekong, that breeze-softened version, to this me in a Shenzhen rental with day and night flipped, locked inside — the gap was so wide that I sometimes wondered whether those two were the same person. This vulnerability to environment was something I had already tasted in May after the Vientiane water festival; only this time it lasted longer and weighed more.
 
-But if you flip through what I actually thought through this month, the picture is completely different. The dense, active records all cluster between June 21 and 30 — the first twenty days are almost empty, and these ten days hold about thirty-nine high-density conversations, almost all in Chinese, sweeping across psychology, agent architecture, product direction, founder studies, and commercial epistemology. **A person who barely left the apartment, with a brain running in something close to binge mode.**
+But if you flip through what I actually thought through this month, the picture is completely different. The dense, active records cluster in late June — earlier records are sparse, and this stretch holds about thirty-nine high-density conversations, almost all in Chinese, sweeping across psychology, agent architecture, product direction, founder studies, and commercial epistemology. **A person who barely left the apartment, with a brain running in something close to binge mode.**
 
-The grain of these ten days was actually mixed, mixed to the point of being a little funny. On one side, heavy things like agent architecture and founder breakdowns. On the other, a stream of small and ordinary things: chatting about Shenzhen's Longhua urban-village long-term rentals, analyzing why audit recruiting suddenly went hot (essentially a counter-cyclical defensive choice), debating whether a kid from Hubei who scored 647 in physics should go into cybersecurity or into West China School of Stomatology at Sichuan University — really two life paths — and even seriously predicting World Cup scores (I had England 2:0 right). None of these small things matter on their own, but assembled together they look like the real shape of a person in a trough still being dragged forward by life — the big questions hanging unresolved, the small days happening anyway.
+The grain of this stretch was actually mixed, mixed to the point of being a little funny. On one side, heavy things like agent architecture and founder breakdowns. On the other, a stream of small and ordinary things: chatting about long-term rentals, analyzing why audit recruiting suddenly went hot (essentially a counter-cyclical defensive choice), discussing a student’s choice between different fields of study — really two life paths — and even seriously predicting World Cup scores (I had England 2:0 right). None of these small things matter on their own, but assembled together they look like the real shape of a person in a trough still being dragged forward by life — the big questions hanging unresolved, the small days happening anyway.
 
 The contrast itself is the first clue of June: I was not acting, but I was thinking like crazy. And the most important insight of the month is precisely about that river between "thinking" and "doing" that I have never been able to cross — and the mechanism keeping me on the wrong side of that river is the same in my love life and in my career.
 
@@ -65,9 +65,9 @@ So this piece starts from the deepest psychological line.
 
 ## I. I Finally Saw the Mechanism of How I Push People Away
 
-In June I spent a lot of energy fully unpacking the "avoidant" thing. It is actually two distinct things: one is **avoidant attachment** (an attachment-style level construct), the other is **Avoidant Personality Disorder (AvPD)** — a clinical diagnosis whose core is shame and an extreme fear of being rejected, closer to severe social anxiety, genuinely disabling at the social-functioning level, requiring a psychiatrist. What I am talking about here is the first one.
+In June I spent a lot of energy trying to unpack “avoidance.” First I need to distinguish **avoidant attachment** from **Avoidant Personality Disorder (AvPD)**. I am using attachment style to try to understand myself; AvPD is a clinical diagnosis requiring professional psychological evaluation, not something established by a few relationship patterns. [MedlinePlus](https://medlineplus.gov/ency/article/000940.htm) notes that assessment considers how long symptoms have lasted and how severe they are.
 
-At the attachment-style level, the mechanism really has only one main line: **let the amygdala relearn.** To relearn, you first have to see what it is currently doing.
+At the time I borrowed a simplified explanation: **let an old alarm relearn.** The amygdala, alarm, and program below are metaphors for making sense of my experience, not established facts about my own neural mechanisms. They also cannot establish a particular childhood event. To relearn, you first have to see what it is currently doing.
 
 The classic avoidant move looks like this: as soon as a relationship gets deeper, as soon as the other person actually comes close, I suddenly start finding fault with them (devaluation), things I would not have minded before become intolerable; I suddenly need space — strongly, and suspiciously timed right after intimacy deepens; I miss the one who is not present and devalue the one who is — the absent and the ended get heavy filters, while the person I can reach out and touch right now annoys me; finally I find a "rational" reason to retreat (move out, change cities, "we are not right for each other"), and that reason arrives suspiciously on time.
 
@@ -75,11 +75,11 @@ The single most important line I caught this month is this: **the substantive di
 
 Then why does intimacy trigger the alarm, why does it set this move in motion?
 
-Because the amygdala learned a prediction very early — usually before I had language, before I could remember any storyline. The prediction was, roughly: **"when I hand over the part of me that needs most, that is most vulnerable, and count on another person to catch it, the result is not being caught, being overwhelmed, being swallowed, ultimately falling through."** And so it locked in an iron rule: getting close to someone to the point of needing them is unsafe.
+I used the idea of a prediction learned early to understand this alarm; that does not mean I can confirm when it formed. The prediction was, roughly: **"when I hand over the part of me that needs most, that is most vulnerable, and count on another person to catch it, the result is not being caught, being overwhelmed, being swallowed, ultimately falling through."** And so it locked in an iron rule: getting close to someone to the point of needing them is unsafe.
 
 One more layer of essence — why does the nervous system rather push away one good person after another than take the risk? Because to the amygdala, **a relationship that never begins has a loss that is limited, controllable, predictable; whereas a relationship into which you have actually handed your vulnerability, only to have it fall through, registers in its old archive as catastrophe.** It is doing an extremely risk-averse calculation: rather than take another bet on "I reach out and they are not there" with its catastrophic ending, retreat one step in advance — using one certain small regret (yet another relationship that did not work out) to dodge one possible large disaster (being swallowed again, being failed again).
 
-The tragedy of this strategy is that at age three it was correct, it saved me. For a small child who could not yet protect themselves and could in fact be overwhelmed, learning "don't count too much, retreat to safety" is a real survival wisdom. The problem is this program did not update as I grew up — **it is still using a three-year-old's threat assessment to protect an adult who has long since had the capacity to bear, to leave, and to care for himself.** The people I push away now, the amygdala thinks it is pushing away the thing that once would have swallowed me. It is fighting a war that ended long ago.
+One possibility I considered was that this strategy might once have served a protective role in some earlier circumstances. For a small child who could not yet protect themselves and might be overwhelmed, learning "don't count too much, retreat to safety" is a real survival wisdom. The problem is this program did not update as I grew up — **it is still using an early threat assessment to protect an adult who has long since had the capacity to bear, to leave, and to care for himself.** The people I push away now, the amygdala thinks it is pushing away the thing that once would have swallowed me. It is fighting a war that ended long ago.
 
 I also noticed a wider context: in China, many avoidant patterns are essentially shaped by the upbringing — you slowly learn from a young age that "expressing need is useless, getting close to people is unsafe, carrying it yourself is steadiest." The kid is forced to be sensible, the parents themselves cannot express love, the family atmosphere is cold, tense, with few hugs and little talk. You are raised in material terms, asked to function, but emotionally no one catches you. The real self is rarely seen.
 
@@ -135,7 +135,7 @@ I clearly know promotion would help, yet I keep not promoting. Then I give mysel
 
 Why does distribution, promotion, getting the product into the market trigger the alarm? Because it is isomorphic to "handing over the most vulnerable part and counting on it being caught." Pushing it out, getting ignored, getting rejected — to the amygdala this belongs to the same class of catastrophe as "I reached out and they were not there." So it runs that extremely risk-averse calculation again: rather than risk pushing the work out and watching it fall through, retreat one step, and use one certain small regret (no one knows about the product) to dodge a possible large disaster (the market rejects me).
 
-**So pushing away the person coming close in my relationships, and pushing away "delivering the work to the market" in my career, are the same three-year-old amygdala fighting the same long-finished war.** This is the biggest piece June handed me: I thought I had two problems (not daring to love deeply, not daring to distribute). It is actually one.
+**So pushing away the person coming close in my relationships, and pushing away "delivering the work to the market" in my career, are the same old alarm fighting the same long-finished war.** This is the biggest piece June handed me: I thought I had two problems (not daring to love deeply, not daring to distribute). It is actually one.
 
 And so the remedy is also the same — **not more preparation. It is doing that delivery move with the alarm still going off, and letting the amygdala relearn through "I did it, and nothing terrible happened."** Distribution itself is the fastest marketing class, in the same way that handing over vulnerability is the only entry to intimacy. Confidence and safety are not entry tickets, they are the residue left after I bit the bullet and shipped.
 
@@ -167,7 +167,7 @@ A few of my own products are still searching for their position. **DayPage** nee
 
 I also did a sweep of external opportunities. **Monetizing MCP** is a real business model, but the profits concentrate around vertically-differentiated data sources — my own validated content from the travel domain happens to qualify as a proprietary data asset. **Agent email** infrastructure has already been validated. The open opportunity is at the vertical application layer; the real moat is encoded domain know-how, not rented email infrastructure or LLMs. I sketched one concrete scenario for it — an export agent for a Shenzhen battery-storage factory, going from a cold email all the way to a closed deal. The longer I worked on it, the more I felt the truly valuable thing is that tacit knowledge of "how to actually get a deal done in this domain." **Western professional services AI SaaS** I went deep on — avoid the red ocean of general contract review and bookkeeping automation, hit the verticals like CPA tax document extraction and estate planning document assembly, benchmark against Harvey / EvenUp, target 5K–20K MRR in 12 to 18 months and then exit through Acquire.com. **Cross-border e-commerce** I also looked at — I pushed back on the claim that "drop-and-flood sellers have higher data density and therefore fit AI better," distinguishing data density from data leverage. Compliance automation for Amazon buyer-seller communications (Chinese interface + compliant English replies + account-health alerts) is a real differentiation point.
 
-There were also a few I explicitly put in the "do not do" pile. **PollyReach.ai**, an agent-native voice product — I pulled it apart and found that the founder publicly claims "AI never falsely reports success," yet the SKILL.md contains a "demo mode simulates successful payment" instruction. The contradiction collapses my trust in the whole project. **An offline social/dating app** — I talked myself out of building a full multi-person version, the more valuable move is to compress it into a single-player "relationship memory layer" inside DayPage. **A Buddhist AI agent** — a direction I personally love, but it should "monetize like a monastery, not like SaaS" — running on a dāna (donation) logic, not a paywall. **AI-fication of local businesses** has a sales-consultative go-to-market that directly conflicts with the low-touch product route I want, so I dropped it. And for **legal gray-zone** businesses that run on regulatory arbitrage — I asked myself a sharper question: outsourcing ethics to "as long as it is legal," for someone whose core belief is "build internal standards when external standards collapse," is itself a contradiction. The real test is "with full disclosure, can this transaction still stand?"
+There were also a few I explicitly put in the "do not do" pile. Some agent-native product demos also made one boundary matter more to me: simulated results must be kept distinct from successful real execution. **An offline social/dating app** — I talked myself out of building a full multi-person version, the more valuable move is to compress it into a single-player "relationship memory layer" inside DayPage. **A Buddhist AI agent** — a direction I personally love, but it should "monetize like a monastery, not like SaaS" — running on a dāna (donation) logic, not a paywall. **AI-fication of local businesses** has a sales-consultative go-to-market that directly conflicts with the low-touch product route I want, so I dropped it. And for **legal gray-zone** businesses that run on regulatory arbitrage — I asked myself a sharper question: outsourcing ethics to "as long as it is legal," for someone whose core belief is "build internal standards when external standards collapse," is itself a contradiction. The real test is "with full disclosure, can this transaction still stand?"
 
 Sweeping through this whole circle, the thing most worth writing down is not any single opportunity, but the same bottleneck that kept being named — see the next section about my own situation. One methodological self-correction to record here: I have a circular ability of "game-ifying a deep dive into an industry, finding its rules and cash flows." It is elegant, and it has three real risks — underweighting distribution, the depth tendency making me only analyze and never ship, and selling methodology in the abstract before I have an actual validated result. All three point in the same direction.
 
@@ -177,9 +177,9 @@ Sweeping through this whole circle, the thing most worth writing down is not any
 
 A serious amount of June went into person and company breakdowns, and what I want is never a summary of facts but an integrated judgment at the structural, incentive, and personality level.
 
-**Wang Tao / DJI**: I argued that DJI did not "create" demand, it "released" latent aerial-photography demand, and is essentially an imaging platform company. More interesting was him breaking ten years of silence — "the world is unbelievably stupid, and so am I," and giving himself 1 out of 10 on product work and 10 out of 10 on organizational work (handling a 45-person corruption case, dismantling internal fiefdoms). But I also remind myself: **Wang Tao is a "dangerous idol." His ability to keep an extremely complex system converging is fascinating, but it can let me rationalize avoiding necessary risk** — using "I am polishing the system" as an excuse for not getting the thing out.
+**Wang Tao / DJI**: I argued that DJI did not "create" demand, it "released" latent aerial-photography demand, and is essentially an imaging platform company. More interesting was him breaking ten years of silence — "the world is unbelievably stupid, and so am I," and giving himself 1 out of 10 on product work and 10 out of 10 on organizational work. But I also remind myself: **Turning that ability into an idol could be risky for me. His ability to keep an extremely complex system converging is fascinating, but it can let me rationalize avoiding necessary risk** — using "I am polishing the system" as an excuse for not getting the thing out.
 
-**Yu Hao / Dreame**: I reframed Dreame as a "capitalized industrial platform" (motor moat, 200+ business units, a chain-leader + industrial-fund-driven recruitment model). My judgment on Yu Hao — **"a cautious person being slowly colonized by the radical persona he himself invented."** When a company's growth engine is "narrative-driven financing" rather than "product-driven cash flow," radical stops being a style choice and becomes a structural fate: you have to keep running faster, because the moment you slow down, the gravity of the story drags you under.
+**Yu Hao / Dreame**: I reframed Dreame as a "capitalized industrial platform" (motor moat, 200+ business units, a chain-leader + industrial-fund-driven recruitment model). This raised a possibility to watch for: **a person can gradually be influenced by the persona they maintain.** That is my structural hypothesis, not a conclusion about his personality. When a company's growth engine is "narrative-driven financing" rather than "product-driven cash flow," radical stops being a style choice and becomes a structural fate: you have to keep running faster, because the moment you slow down, the gravity of the story drags you under.
 
 **Chen Mian / Liblib · Lovart**: One of the youngest executives at ByteDance, who later pivoted to AI. I pulled out a few of his rules — extreme vertical focus to avoid big-tech home turf, competitive advantage outside the model layer, "describe the future first" (build products for the model capabilities 6 to 12 months out), the 3-to-6-month competitive window doctrine, native global from day one.
 
@@ -189,7 +189,7 @@ A serious amount of June went into person and company breakdowns, and what I wan
 
 I also looked at two industry benchmarks. **The growth curve of biopharma** I broke into three independent curves: end-market drug sales steady state (~8% CAGR), the biotech capital cycle, and the Chinese innovative-drug license-out arbitrage window. And **LifeSciBench** (a life-sciences benchmark) — I used it to analyze the three constraints on willingness to pay for "judgment-augmenting" AI. These are not domains I am about to jump into, but they are training the same thing: **quickly enter an unfamiliar industry, dig up its rules and cash flows, judge whether the model on the surface is real.**
 
-Put these people side by side and a through-line floats up: **incentive structure colonizes personality.** Yu Hao, Wang Tao, Chen Mian, including me, are all being slowly assimilated by the narrative we chose for ourselves. And that ties back to my core question — in an environment where external standards have collapsed (ritual collapsed, music broken), how do I avoid being alienated by incentive structure, and how do I build my own internal standards.
+Put these people side by side and a through-line floats up: **incentive structure colonizes personality.** I too may be shaped by the narrative I choose; these founder studies are first a reminder to watch that risk. And that ties back to my core question — in an environment where external standards have collapsed (ritual collapsed, music broken), how do I avoid being alienated by incentive structure, and how do I build my own internal standards.
 
 On commercial epistemology, a few lines I want to keep: **data is being repriced** — the platform era rewarded "soft assets" like brand, content, mindshare; the AI era rewards what can be structured, repeatedly run, and pattern-extracted. AI's comparative advantage is not inspiration, it is clustering and iterating over massive feedback. **Supply creates its own demand** — when something good enough, cheap enough, and easy enough suddenly appears, people "discover" they have always wanted it. And one I keep telling myself: **the closer you are to the actual business, the more you know it is complicated. Only the people further from the industry like to mythologize, demonize, absolutize, dramatize.**
 
@@ -239,7 +239,7 @@ And once you stitch the thirty-nine conversations together, the shape of that pr
 
 Now look — every line of this piece closes here:
 
-My "strong output, weak capture" in business is not a capability problem. It is the **avoidant move** from Section III — capture = handing the work to the market = handing vulnerability over and counting on it being caught, and my amygdala predicts "miss, catastrophe" on that act, so it keeps me forever on the safe side of "polish a bit more, learn a bit more marketing." My commercial bottleneck and my intimacy bottleneck are the same three-year-old program running in two different arenas.
+My "strong output, weak capture" in business is not a capability problem. It is the **avoidant move** from Section III — capture = handing the work to the market = handing vulnerability over and counting on it being caught, and my amygdala predicts "miss, catastrophe" on that act, so it keeps me forever on the safe side of "polish a bit more, learn a bit more marketing." My commercial bottleneck and my intimacy bottleneck are the same old program running in two different arenas.
 
 So what June leaves to July is not a piece of motivational soup. It is a concrete, cross-domain solution:
 
@@ -257,7 +257,7 @@ So what June leaves to July is not a piece of motivational soup. It is a concret
 
 If May was "someone used to placing active bets actively throwing himself onto the edge, to see clearly who he really is," then June is — **I finally saw that what has been blocking me, in my love and in my career, is the same thing.**
 
-The pushing-away comes first. The reason comes after. Whether what is being pushed is a person coming close, or a work that should be delivered to the market, both are the same three-year-old amygdala fighting a long-finished war on behalf of an adult who has long since been able to care for himself.
+The pushing-away comes first. The reason comes after. Whether what is being pushed is a person coming close, or a work that should be delivered to the market, both are the same old alarm fighting a long-finished war on behalf of an adult who has long since been able to care for himself.
 
 Seeing this does not stop the war. But it lets me know, for the first time: I do not have two problems, I have one. And this one is not solved by thinking it through. It is solved by doing the scary, near, actively chosen delivery move — once, then again, until the nervous system finally agrees to write "actually handing it over is fine" back into the archive.
 
@@ -280,13 +280,13 @@ July will begin with the "publish" button I have not dared to press.
 
 > 2026-06-20 20:25:12 · `#格物/思考`
 
-A person's traits at work extend into other areas, so an extremely rational person can't muddle their way out of a relationship — there must be a deeper reason behind it
+A person's traits at work extend into other areas, so a person who is rational at work may have reasons I cannot see for ending a relationship; work performance alone is not enough to infer them
 
 There is indeed a certain cross-situational personality stability (the Big Five has predictive power for behavior), and "intuition first, verification after" is also a quick judgment that experts commonly use
 
 The halo effect — strong in one domain → by default also reliable in other domains
 
-Behavior is influenced by situation far more than we think; being extremely rational at work and a total mess in love can coexist, and ability doesn't transfer across domains
+Behavior is influenced by situation far more than we think; being extremely rational at work and a total mess in love can coexist, and ability does not necessarily transfer across domains
 
 Silence: the weak person's silence is compromise, self-protection; the strong person's silence is not needing to explain
 
@@ -326,7 +326,7 @@ People who hold a "destiny belief" (there's that one right person / soulmate in 
 
 This "sense of fit" in soulmates is mostly constructed after the fact; a small part is genuinely innate low friction
 
-It's not that you found the person who already matched you; rather, long-term intimacy, a shared narrative, and mutual investment slowly "manufacture" a person who matches you — and then your brain backfills that result into the past, recording it as "we were destined from the start." The feeling is real; the metaphysics of "destined" is made up. So speaker 1's "tree" metaphor is closer to the truth than speaker 2's "soulmate" model
+I prefer to understand it this way: a lasting relationship involves both finding compatibility and slowly building a sense of fit through long-term intimacy, a shared narrative, and mutual investment — and then your brain backfills that result into the past, recording it as "we were destined from the start." The feeling is real; the metaphysics of "destined" is made up. So speaker 1's "tree" metaphor is closer to the truth than speaker 2's "soulmate" model
 
 A very weak prior of compatibility + a much stronger construction process. A soulmate is mainly made, secondarily met
 
@@ -400,6 +400,8 @@ That kind of low-intensity companionship between an old married couple — the b
 
 > 2026-06-28 17:11:40 · `#格物/心理驱动`
 
+*This entry preserves an explanatory model developed in conversation at the time. Descriptions of brain regions, programs, and early experiences do not establish my personal mechanisms or a clinical diagnosis.*
+
 Secure ≈ the response system is reliably satisfied + the familiarization system steadily accumulates. You can light up, and you can sink down.
 
 Anxious ≈ the coupling of the response system is unstable (the signal is sometimes caught, sometimes dropped) → the system stays highly activated, unable to settle to the bottom.
@@ -408,9 +410,11 @@ Avoidant ≈ after early responses repeatedly fell through, actively downregulat
 
 
 <!--memo:067576ee16c0-->
-### The amygdala = the fear center
+### Is the amygdala simply the fear center?
 
 > 2026-06-28 17:40:41 · `#格物/心理驱动`
+
+*This entry preserves an explanatory model developed in conversation at the time. Descriptions of brain regions, programs, and early experiences do not establish my personal mechanisms or a clinical diagnosis.*
 
 Modern neuroscience research shows its more accurate role is a threat-detection and bodily-response initiation system. It's responsible for putting the body into "fight or flight" the instant danger occurs, while the actual "feeling of fear" is produced jointly by a more complex brain network.
 
@@ -442,6 +446,8 @@ This is a matching of views on love.
 
 > 2026-06-28 19:42:59 · `#格物/心理驱动`
 
+*This entry preserves an explanatory model developed in conversation at the time. Descriptions of brain regions, programs, and early experiences do not establish my personal mechanisms or a clinical diagnosis.*
+
 I feel that in the Chinese context, many avoidant personalities are essentially a problem of the environment they grew up in.
 
 From a young age they slowly learned: expressing needs doesn't work, getting close to others isn't safe, carrying it yourself is the most stable.
@@ -460,7 +466,9 @@ Raised materially, demanded of functionally, with no one catching them emotional
 
 > 2026-06-28 19:48:04 · `#格物/心理驱动`
 
-Avoidant personality, two parts: one is avoidant attachment, the other is avoidant personality disorder. AvPD is a clinical diagnosis; its core is shame and extreme fear of being rejected — closer to severe social anxiety. It can genuinely disable social functioning, and needs a psychologist.
+*This entry preserves an explanatory model developed in conversation at the time. Descriptions of brain regions, programs, and early experiences do not establish my personal mechanisms or a clinical diagnosis.*
+
+Avoidant attachment and Avoidant Personality Disorder should be distinguished. AvPD is a clinical diagnosis requiring professional psychological evaluation and should not simply be equated with social anxiety. [MedlinePlus](https://medlineplus.gov/ency/article/000940.htm)
 
 Assuming we're at the level of attachment style, mechanically there's only one main line: make the amygdala learn it all over again.
 
@@ -488,7 +496,7 @@ Now, the essence of the essence — why would the nervous system rather push awa
 
 Because to the amygdala, a relationship that never starts has a loss that is limited, controllable, predictable; while a relationship that truly handed over vulnerability and then fell through, in its old files, = catastrophe. What it's doing is an extremely risk-averse calculation: rather than gamble once more on that devastating outcome of "reaching out and coming up empty", it would always take a step back first — trading a certain small regret (another relationship that didn't work out) to avoid a possible catastrophe (being swallowed / betrayed again).
 
-And its tragedy is this: this strategy was correct when you were three, and it saved you. A child who can't yet protect itself, who really can be overwhelmed or betrayed, learning "don't expect too much, retreat to be safe" is a real survival wisdom. The problem is this program never updated as you grew up — it's still using a three-year-old's threat assessment to protect an adult who has long had the ability to endure, to leave, to take care of themselves. The people you push away now — the amygdala thinks it's pushing away the thing that would swallow you back then. It's fighting a war that ended long ago.
+And its tragedy is this: this strategy might once have been protective in some earlier circumstances. A child who can't yet protect itself, who really can be overwhelmed or betrayed, learning "don't expect too much, retreat to be safe" is a real survival wisdom. The problem is this program never updated as you grew up — it's still using an early threat assessment to protect an adult who has long had the ability to endure, to leave, to take care of themselves. The people you push away now — the amygdala thinks it's pushing away the thing that would swallow you back then. It's fighting a war that ended long ago.
 
 
 ## Daily Notes and Everything Else
@@ -618,7 +626,7 @@ Old desires, new technology, a low barrier to entry, high-frequency scenarios, a
 *4 entries*
 
 <!--memo:df0cfa773235-->
-### Heihei's method: digging to the bottom with first-principles, interest-driven research
+### A friend’s method: digging to the bottom with first-principles, interest-driven research
 
 > 2026-06-20 21:14:12 · `#格物/思考`
 
@@ -666,7 +674,7 @@ Then the logic of agent auto-payment: when credit runs out, it guides the agent 
 *3 entries*
 
 <!--memo:3677638e4f61-->
-### In the framework of Dreame's founder
+### In a founder’s decision framework
 
 > 2026-06-21 15:06:40
 
@@ -773,3 +781,7 @@ The third is updating itself. You already have evidence that should move you, bu
 > 2026-06-21 17:36:58
 
 People can't get too puffed up. Many "great"-looking innovations are essentially a kind of appropriation
+
+## References
+
+- [Avoidant personality disorder · MedlinePlus](https://medlineplus.gov/ency/article/000940.htm)

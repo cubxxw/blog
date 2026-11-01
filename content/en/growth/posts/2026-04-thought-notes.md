@@ -21,7 +21,7 @@ tags:
   - Travel
   - Exploration
 description: >
-  A complete record of April 2026: 224 notes across 9 themes, led by travel through Laos and Cambodia, border and customs experience, AI and agent systems, and product and knowledge-tooling notes. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.
+  April 2026: 204 edited notes on AI engineering and life in Laos, from festival excitement to quieter days, with original dates and sensitive details removed.
 tldr:
   - "The order of first contact shapes the impression of a country, and customs is usually the first contact."
   - "Beauty that could be neither planned nor bought was the best part of the trip, and it arrived because a crossing was delayed."
@@ -31,19 +31,19 @@ maturity: budding
 
 # 2026 April Thought Notes
 
-> **222 notes this month** | recorded from 2026-04-02 to 2026-04-30
+> **204 notes this month** | recorded from 2026-04-01 to 2026-04-30
 >
-> **Themes**: AI and Agent Systems 87 · Travel, Places and Cities 56 · Daily Notes and Everything Else 34 · Self-Knowledge and Psychology 29 · Reading, Ideas and History 5 · Product, Engineering and Open Source 4 · Body, Health and Daily Life 3 · Business, Investing and Career 2 · Content, Craft and Recording 2
+> **Themes**: AI and Agent Systems 84 · Travel, Places and Cities 43 · Daily Notes and Everything Else 32 · Self-Knowledge and Psychology 29 · Reading, Ideas and History 5 · Product, Engineering and Open Source 4 · Body, Health and Daily Life 3 · Business, Investing and Career 2 · Content, Craft and Recording 2
 >
-> Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
+> The edited public notes from the month are kept here, filed by theme, each entry carrying its original timestamp.
 
 ## Quick Navigation
 
-**222 records this month, filed under 9 themes:**
+**204 records this month, filed under 9 themes:**
 
-- [AI and Agent Systems](#1-ai-and-agent-systems) · 87
-- [Travel, Places and Cities](#2-travel-places-and-cities) · 56
-- [Daily Notes and Everything Else](#3-daily-notes-and-everything-else) · 34
+- [AI and Agent Systems](#1-ai-and-agent-systems) · 84
+- [Travel, Places and Cities](#2-travel-places-and-cities) · 43
+- [Daily Notes and Everything Else](#3-daily-notes-and-everything-else) · 32
 - [Self-Knowledge and Psychology](#4-self-knowledge-and-psychology) · 29
 - [Reading, Ideas and History](#5-reading-ideas-and-history) · 5
 - [Product, Engineering and Open Source](#6-product-engineering-and-open-source) · 4
@@ -54,7 +54,7 @@ maturity: budding
 ---
 ## 1. AI and Agent Systems
 
-*87 entries*
+*84 entries*
 
 <!--memo:9bb37b915484-->
 ### Puzzled: Why Did This Claude Code Wave Hit So Hard?
@@ -67,11 +67,11 @@ Technological maturity × market anxiety × replicability × open-source diffusi
 
 
 <!--memo:c874a484fa41-->
-### The Tipping Point from Agents to Production-Ready Demos
+### The Tipping Point from Agent Demos to Production
 
 > 2026-04-02 12:18:39 · `#格物/ai` `#格物/ai`
 
-I feel that right now a kind of tipping point from agents to production-ready demos has already arrived. Things like the prompt engines of the past, or RAG, or multi-agent — right now it feels like the whole LM or AI ecosystem has reached a turning point. The turning point is going from only building some engineering, only building some methods, to now genuinely being able to do a lot of things, even build a very sound system. I think this is an enormous shift, and it's very interesting
+I feel that right now a kind of tipping point from agent demos to production has already arrived. Things like the prompt engines of the past, or RAG, or multi-agent — right now it feels like the whole LLM or AI ecosystem has reached a turning point. The turning point is going from only building some engineering, only building some methods, to now genuinely being able to do a lot of things, even build a very sound system. I think this is an enormous shift, and it's very interesting
 
 
 <!--memo:efc69bc7197b-->
@@ -87,21 +87,10 @@ So long term, I feel Claude Code's moat is still there. Right now it's just that
 
 > 2026-04-02 22:03:49 · `#格物/ai`
 
-I feel that even the earlier project, the AutoDeepResearch one — it would actually try to make your goal as clear and credible as possible. So at that point it has a series of features designed around that goal. For example, defining metrics: metrics are very important, they decide the purpose of your goal and how it's evaluated. Only with evaluation, with quantified metrics, is there feedback, and the feedback comes back to you, and you keep at it. So I think measurability and deformability are a very important part. That includes scoring scripts and templates; they're all part of the work. And then there's convergence — when it should stop once the state is stable. That's convergence. And then stop conditions: once a certain situation appears, for example a score reaches 80% or above, it can stop. Or it has iterated more than 10 times in a row, or it has already completed 20 iterations. Right? That way it can stop too. This is a quantified behaviour for a certain domain. But concretely, we still harness around a goal. Actually it's about giving it an environment. Prompts are one aspect too. I think there are some other important points in doing harness work, for example designing a system that can run itself. In this process the environment matters a lot too — what kind of safe environment it executes in, and what it's allowed to use. Then there's an improvement strategy: how it tracks its own behaviour in this loop, and how it improves itself
+I feel that even the earlier project, the AutoDeepResearch one — it would actually try to make your goal as clear and credible as possible. So at that point it has a series of features designed around that goal. For example, defining metrics: metrics are very important, they decide the purpose of your goal and how it's evaluated. Only with evaluation, with quantified metrics, is there feedback, and the feedback comes back to you, and you keep at it. So I think measurement and verification are a very important part. That includes scoring scripts and templates; they're all part of the work. And then there's convergence — when it should stop once the state is stable. That's convergence. And then stop conditions: once a certain situation appears, for example a score reaches 80% or above, it can stop. Or it has iterated more than 10 times in a row, or it has already completed 20 iterations. Right? That way it can stop too. This is a quantified behaviour for a certain domain. But concretely, we still harness around a goal. Actually it's about giving it an environment. Prompts are one aspect too. I think there are some other important points in doing harness work, for example designing a system that can run itself. In this process the environment matters a lot too — what kind of safe environment it executes in, and what it's allowed to use. Then there's an improvement strategy: how it tracks its own behaviour in this loop, and how it improves itself
 
 And I saw a fairly interesting point: its AI review has some metrics, one of which is resonance. Resonance means which things — whether to add images, or strengthen the core story, or add more voices. It has some examples, and these examples may not match your project, but they give you a way of thinking. And then there's clarity, or credibility. But from my own testing, I feel it highlights certain directions I don't think much of myself. For example, if I'm writing old project code and the old project code has some problems, I still won't change them. I think old project code generally needs to be stable, rather than being optimised
 
-
-<!--memo:edca9d73e846-->
-### Japan Stays Calm About OpenClaw
-
-> 2026-04-03 14:39:52 · `#格物/ai`
-
-Japan stays very calm about OpenClaw — they seem to keep a certain distance, with a very cautious attitude, towards anything that changes especially fast, or that is unstable or unsafe. This may have to do with their cultural history, and with their system. They are a country that does things very much by the rules
-
-Some people might feel they're behind us. But actually there's no such thing as behind or ahead. “Behind” means everyone completing the same goal from the same starting line, and if in that process one side gets eliminated, if it's an elimination race, then there's such a thing as behind and ahead. But obviously the large-model field isn't like that. First, governments everywhere aren't on the same starting line, and their goals aren't very similar either. Even between China and the US there will be certain differences. China may care more about applications, including profit models. So, how should I put it, there's no ahead and behind either — there's only what is good, what adapts to the future environment, and what can't adapt to the future environment. Of course that's also our subjective view, and it could be wrong too. Right now we all feel that people who do things by the rules, or systems like that, may face the risk of being optimised away by AI. That's an inevitable trend.
-
-And I think there's another point: two types of ability are actually quite interesting. One is occupational skills — the kind of work that requires a person to be genuinely present as proof, or to genuinely handle complex and difficult environments; that kind of work may depend heavily on human ability. And the second, I think, is neurodiverse people. For example, some people with dyslexia, people with autism — they don't follow the standard process, and they often have their own distinctive strengths. Like God taking away a pair of eyes but perhaps giving you more sensitivity, more inspiration, more perceptiveness, to let you feel this world — feel the wind on your body, feel the sun shining on you, feel the music your own ears hear, feel the world your own hands touch. So, because what's easily disrupted is an industry that follows a standardised process, but what's often hardest to replace is the person who jumps out of that framework and thinks about problems in a very non-classical way. That kind of person I find quite interesting, quite fascinating. In the AI era, they may have their own distinctive place, their own distinctive perspective
 
 
 <!--memo:706199c69b8f-->
@@ -135,7 +124,7 @@ I think there's a method, which is that when you're using Cici to write code, yo
 
 > 2026-04-04 12:52:21
 
-I think that even when talking with AI, what we should be learning more is not how many prompt tricks there are, or how many cool operational skills we've mastered.
+I think that even when talking with AI, what we should be learning is more than prompt tricks or cool operational skills.
 
 
 <!--memo:69cc18179555-->
@@ -157,7 +146,7 @@ Knowledge must be versioned and discoverable, and then live in the repo
 
 Constraints are far more effective than instructions — limiting specifically what it does, deterministic
 
-Perfectionism is the enemy of throughput — don't chase every output being perfectly correct, otherwise the system will lock up and efficiency will be even lower. Accept imperfection, prioritize getting things flowing. Rather than letting an agent polish a PR to perfection over and over, better to merge it first and open a round of cleanup later (in the agent era, correcting errors is actually easy — no need to worry that everything must be completely fine before merging; rather than letting an agent polish a PR to perfection over and over, better to merge it first and open a round of cleanup later
+Perfectionism is the enemy of throughput — don't chase every output being perfectly correct, otherwise the system will lock up and efficiency will be even lower. Accept imperfection, prioritize getting things flowing. Rather than letting an agent polish a PR to perfection over and over, better to merge it first and open a round of cleanup later . This applies to reversible changes with manageable risk; verification still matters.
 
 
 <!--memo:269929a24813-->
@@ -295,23 +284,11 @@ The ceiling on prompts is far too limited, and it's very constrained by the mode
 
 > 2026-04-05 21:53:49 · `#格物/ai`
 
-The difference in execution strategy between Codex and Claude Code
+The difference in execution strategy between Codex and Claude Code was something I wanted to understand at the time.
 
-Codex does agent planning and executes it in a sandbox (temporary FS + environment)
+I pictured one approach as “execute in an isolated environment, then deliver diffs / artifacts,” and the other as “read, write, execute, and connect directly in the current environment.” This was a simplified model for comparing execution layers. It does not establish that a product never uses isolation, or that delivering only a diff eliminates side effects. The actual behavior depends on the execution mode and permission settings.
 
-produces a diff / artifacts
-
-then applies them to the real repo
-
-so command execution is copy-on-write and can be run safely
-
-Codex doesn't care about side effects of the process, only about the diff and the result
-
-Claude Code directly uses four ways (read, write, execute, connect)
-
-with no isolation; the steps really happen, there's no replay phase
-
-The harness is the same — both have tools
+Both need tools and an execution layer.
 
 Agent Harness = LLM + Tools + Execution Layer
 
@@ -321,9 +298,11 @@ Agent Harness = LLM + Tools + Execution Layer
 
 > 2026-04-05 22:18:14 · `#格物/ios`
 
-But it seems it has no way to wake up an iOS that has already gone to sleep
+*This was my understanding at the time; whether a missed task runs after sleep needs to be checked against its trigger and configuration.*
 
-But it has a very clever mechanism: if the screen is merely off — that is, say, you've plugged in power or something is downloading in the background — then the Mac's disk or CPU is still running normally. At that point it can trigger on time regardless of whether the screen is off. But if you really close its lid, or you click sleep, then it enters a very low-power state, and the CPU temporarily goes into a non-essential process. At that point its tasks get suspended and can't be executed. But launchd has a very smart trick: if a task is set to run at 3 a.m. but the Mac is asleep, then when you open the lid the next morning at 8, or at the moment the Mac half-wakes, launchd will immediately read that missed task
+But it seems it has no way to wake up a Mac that has already gone to sleep
+
+But it has a very clever mechanism: if the screen is merely off — that is, say, you've plugged in power or something is downloading in the background — then the Mac's disk or CPU is still running normally. At that point it can trigger on time regardless of whether the screen is off. But if you really close its lid, or you click sleep, then it enters a very low-power state, and the CPU temporarily goes into a non-essential process. At that point its tasks get suspended and can't be executed. But launchd has a very smart trick: if a task is set to run at 3 a.m. but the Mac is asleep, then when you open the lid the next morning at 8, or at the moment the Mac wakes, launchd will immediately read that missed task
 
 
 <!--memo:77e0ac52f31a-->
@@ -506,9 +485,13 @@ I now even think that this repo, for AI, should be something it can perceive —
 
 > 2026-04-12 16:58:01
 
-For people it's about going safe
+Products for people and products for agents may emphasize different things at the entry point.
 
-For agents it's about efficiency
+For people, a sense of safety and ease of understanding.
+
+For agents, efficiency and clear interfaces.
+
+That does not make safety optional for agents.
 
 
 <!--memo:7ab4681a1606-->
@@ -562,9 +545,9 @@ What it's not so suited to is work that requires judgment and design decisions; 
 
 > 2026-04-13 11:26:16 · `#格物/ai`
 
-To get the best out of Claude Code, the most important thing may be — giving Claude a way to verify the results of its work. If Claude has this kind of feedback mechanism, the quality of the final result will improve 2–3 times
+To get the best out of Claude Code, the most important thing may be — giving Claude a way to verify the results of its work. If Claude has this kind of feedback mechanism, the quality of the final result may improve substantially; the size of that improvement still needs to be measured
 
-Claude uses the Claude Chrome extension to test every change I make to http://claude.ai/code. It opens the browser, tests the user interface, and keeps iterating until the code runs correctly and the user experience is good
+The example I saw at the time used Claude with a Chrome extension to test changes to a web page. It opens the browser, tests the user interface, and keeps iterating until the code runs correctly and the user experience is good
 
 
 <!--memo:00f209f46de4-->
@@ -614,7 +597,7 @@ Harness logic: I define the execution structure of task A — input spec, tool-c
 
 Harness lets task A be driven by any sufficiently strong model, rather than being bound to one specific implementation
 
-OpenClaw's three-layer skill disclosure system, pluggable backend, provider-agnostic routing — it doesn't block any particular model from winning, but bets on the value of the execution structure itself. That's protocol thinking wrapped inside a product shell
+OpenClaw's three-layer skill disclosure system, pluggable backend, provider-agnostic routing — it doesn't bet on a particular model winning, but bets on the value of the execution structure itself. That's protocol thinking wrapped inside a product shell
 
 For tools designed for humans, the boundary is a question of cognitive load. You don't want users to think too much, so you hide complexity and give them a simple entry point. The clearer the boundary, the less effort for the user
 
@@ -776,7 +759,7 @@ And such a contrast with their culture — they're normally a very reserved bunc
 
 Raw and Wiki give different answers under different scenario questions
 
-For example, if you look at a travel guide, Raw might be a 3000-word travelogue, while the Wiki page might only need a few elements, like the name of the attraction, a rating, the reason it's recommended, and the source. You can make its Wiki highly compressed and zero, because you don't need that content when you're looking it up. But I think, for legal and medical documents, Raw is the original contract text, and Wiki needs a summary, plus the original text of the key clauses. So the precise wording of the original is itself information, and it can't be replaced by a summary
+For example, if you look at a travel guide, Raw might be a 3000-word travelogue, while the Wiki page might only need a few elements, like the name of the attraction, a rating, the reason it's recommended, and the source. You can make its Wiki highly compressed, because you don't need the full travelogue when looking it up. But I think, for legal and medical documents, Raw is the original contract text, and Wiki needs a summary, plus the original text of the key clauses. So the precise wording of the original is itself information, and it can't be replaced by a summary
 
 Core summary
 
@@ -896,11 +879,11 @@ At the system level, Ambient Agent System is an environment-type intelligence sy
 
 While you're still judging, you should still sink the core down to the protocol layer or the engine layer
 
-Because I feel like it's harder to extract a core layer than to build a core layer from scratch, especially for a document machine's data model — once it's wrong, the cost of switching is very high. But I feel, in terms of user perception, it's best to be a very lightweight tool for users, and then when actually using it, the experience will be good, it shouldn't be too heavy, because if it's too heavy it becomes very complicated
+Because I feel like it's harder to extract a core layer than to build a core layer from scratch, especially for a file-based data model — once it's wrong, the cost of switching is very high. But I feel, in terms of user perception, it's best to be a very lightweight tool for users, and then when actually using it, the experience will be good, it shouldn't be too heavy, because if it's too heavy it becomes very complicated
 
 
 <!--memo:bb2316af2db3-->
-### chatcup generates frame-by-frame descriptions and commentary
+### ChatCut generates frame-by-frame descriptions and commentary
 
 > 2026-04-17 15:32:08 · `#格物/ai`
 
@@ -940,7 +923,7 @@ And I think now AI actually, I think a reasonable usage experience shouldn't be 
 
 > 2026-04-18 12:01:24 · `#格物/ai`
 
-I think the Claude team gave me some inspiration: they push iteration, they push the update speed to the extreme — it's like they've captured the focus of the whole of society. And I think they haven't gone through some version design protocol; they should be driven by faction versions, i.e. CI — every time they merge into the main branch, they cut a release, bringing the psychological cost of cutting a release almost down to zero
+I think the Claude team gave me some inspiration: they push iteration, they push the update speed to the extreme — it's like they've captured the focus of the whole of society. And I think they haven't gone through some version design protocol; they should be driven by continuous releases, i.e. CI — every time they merge into the main branch, they cut a release, bringing the psychological cost of cutting a release almost down to zero
 
 So I think this kind of workflow seems very suitable for some small teams or startup teams in the AI era. And then they also use large amounts of GitHub Actions for CI automation, and they also use Claude Code Action to handle the corresponding issues and review PRs
 
@@ -970,7 +953,7 @@ Recommendation can be used for some more general scenarios, ones that aren't so 
 
 "What need does a person have right now" really is a high-entropy variable — determined jointly by mood, scenario, history, and the current focus of attention, and almost impossible for the outside to predict reliably. What AI does relying on context and "intelligence" is essentially using a noisy prior to compress a high-dimensional distribution; it can reduce entropy, but the ceiling is low
 
-Whereas when you type out a question directly, you turn the sender (yourself) directly into the information source, the channel is lossless, and what the receiver (me) gets is the explicit intent you encoded. In this process the entropy loss isn't achieved by inference, but by yourself completing the encoding from need to expression
+Whereas when you type out a question directly, you turn the sender (yourself) directly into the information source, the expression is more direct, and the receiver gets the intent you encoded; expression and interpretation can still lose information. In this process the entropy loss isn't achieved by inference, but by yourself completing the encoding from need to expression
 
 
 <!--memo:fb2c0f66f8fb-->
@@ -1024,13 +1007,6 @@ Junior: fewer habits, the sense of self is amplified
 Senior: two months of work done in one hour, hard to accept
 
 
-<!--memo:afc2cca46586-->
-### Professional salespeople (so-called "lecturers") use cultural information
-
-> 2026-04-22 15:43:36 · `#格物/ai`
-
-Professional salespeople (so-called "lecturers") use a pitch combining cultural information, ecological misinformation and medical advice to package expensive illegal wildlife products (such as "Angong Niuhuang Wan" advertised as containing rhino horn, and bear oil) as miracle drugs that can cure and save lives, thereby inducing foreign tourists to buy at high prices
-
 
 <!--memo:4b9cef38fc3d-->
 ### Vientiane, Laos
@@ -1049,11 +1025,11 @@ Out in the world, it seems that toward Chinese people, my own willingness to eng
 
 But in Vientiane, by chance I got to know a group of artists, this time the topic is wildlife protection
 
-Wildlife protection artists — artists who sacrificed their own art to protect globally endangered wildlife; their attention is on relatively big social meaning and issues, and on creating better works
+Wildlife protection artists — artists who put their creative work into protecting endangered wildlife; their attention is on relatively big social meaning and issues, and on creating better works
 
 A boss who has given local poor kids a free plate of egg fried rice for two months straight — ps, even though the boss and I clash a lot hahahaha, the boss is an extremely strong empiricist, I'm a theoretician, a clash between the two, but on this matter it especially drew me in, he's a very interesting person
 
-And I met a local resident engineer, but he has also, for 8 years straight, given 600 yuan in tuition every month to a pair of poor twins at the place where he previously worked
+And I met a friend who has helped children in difficult circumstances for a long time
 
 
 <!--memo:e658f82f1a47-->
@@ -1083,25 +1059,15 @@ Replace the "sense of results" with a "sense of progress", return to the process
 
 > 2026-04-23 18:41:19 · `#格物/ai`
 
-It feels like that's just the vehicle? Are there some more primitive things?
+It feels like that is just the vehicle? Is there something more basic underneath?
 
-Humans are the only animals that give their experiences a narrative
+Expression is a basic human need.
 
-Something happens, and if you don't say it out, it's unfinished in your perception. There's a concept in psychology called the Zeigarnik Effect — unfinished things keep occupying cognitive resources. The essence of posting to Moments is closing off an "unfinished experience".
+Sometimes something happens, and until I say it out loud, it feels unfinished to me. Posting to Moments may be a way to bring that experience to a close. This is one interpretation of my own feelings, not a psychological law.
 
-Eat a good meal and don't post it, and in a sense that meal "isn't over yet". Once you post it, it's complete, and you can let go
+The audience of Moments is other people, so part of its positive feedback comes from external approval. That approval is unstable — anxious when nobody likes it, hurt when comments are bad.
 
-Expression is a basic human need
-
-Humans are the only animals that give their experiences a narrative
-
-Something happens, and if you don't say it out, it's unfinished in your perception. There's a concept in psychology called the Zeigarnik Effect — unfinished things keep occupying cognitive resources. The essence of posting to Moments is closing off an "unfinished experience"
-
-Eat a good meal and don't post it, and in a sense that meal "isn't over yet". Once you post it, it's complete, and you can let go
-
-The audience of Moments is other people, so its positive feedback comes from external approval. But this approval is unstable — anxious if no one likes it, hurt if comments are bad
-
-Being understood by your future self is actually more stable than being approved by others, because this witness doesn't disappear, won't judge, and will only understand you more and more
+Being understood by my future self may be more stable for me, because that witness stays and can gradually understand me a little better.
 
 
 <!--memo:a29fe4b7ac02-->
@@ -1145,7 +1111,7 @@ The core is Hybrid Attention Architecture, combining CSA (compressed sparse atte
 
 So one of the core drivers of RAW→wiki was "it won't fit" — a 128K window simply isn't enough for thousands of notes, so you have to compress, distill, and structure first before the model can see your knowledge base. Now with 1M tokens plus V4's KV cache at only 10% of V3.2's, this "survival compression" need has indeed dropped a lot
 
-But there's a problem. The first problem is that a large context ≠ linearly improved effective processing capability. 1M tokens is the nominal window, but attention's recall in the middle of long sequences still decays — the "lost in the middle" problem hasn't been thoroughly solved, it's just been pushed back. 3000 memos is roughly 1 to 1.5 million words, already close to or exceeding 1M tokens, and it's all unstructured raw stream — the model "seeing" and "effectively reasoning" are two different things
+But there's a problem. The first problem is that a large context ≠ linearly improved effective processing capability. 1M tokens is the nominal window, but attention's recall in the middle of long sequences still decays — the "lost in the middle" problem hasn't been thoroughly solved, it's just been pushed back. Whether 3000 memos approach or exceed 1M tokens depends on their length and tokenization; entry count alone is not enough, and it's all unstructured raw stream — the model "seeing" and "effectively reasoning" are two different things
 
 The second problem is what exactly wiki compilation is solving. If it's only solving the problem of context not fitting, then it really is less important. But it's also solving another thing: signal density. Among 3000 raw memos there's a lot of repetition, emotional fluctuation, and context-dependent content, and stuffing it in directly gives extremely high noise. Structuring isn't just compression, it's doing curation — making scattered patterns explicit
 
@@ -1172,9 +1138,9 @@ What worktree serves should be certain tasks that are committed separately, whos
 
 But I feel, I feel its compilation still brings some new thinking, or new habits. For example, it used to be a way of compiling metadata files, and the original drive might have been a kind of spatial anxiety, like it can't fit, so compress it, and then compile it once through files, and link it once, and then it has backlinks. Then articles connect easily to each other in a chain. And in the process the LLM does, it can also handle it through some agent capabilities.
 
-And then another thing I feel, it still — it has solved three problems, it really solved three problems — one is the density problem, that the signal-to-noise ratio of the RAW stream is very low; among 3000-plus memories, the content that really constitutes very effective content might be 20%, and the rest may be repeated emotional streams or fragments or some context-dependent content. But you're thinking what LM itself sees isn't equal to being able to extract some very valuable structure from this noise. But that's obviously — some do compilation, and they can do this kind of processing
+And then another thing I feel, it still — it has solved three problems, it really solved three problems — one is the density problem, that the signal-to-noise ratio of the RAW stream is very low; among 3000-plus memories, the content that really constitutes very effective content might be 20%, and the rest may be repeated emotional streams or fragments or some context-dependent content. But you're thinking what the LLM itself sees isn't equal to being able to extract some very valuable structure from this noise. But that's obviously — some do compilation, and they can do this kind of processing
 
-The second problem is that RAM's shape is a time series, it's linear, and it decays. When we usually understand a person, the shape we need is a relationship graph — for example, the tension between beliefs, the repetition and imitation between behavior patterns, the core contradictions, how they evolve, how they connect. And these two shapes seem naturally mismatched. So many — no matter how much context, it's hard to solve the shape problem. But RAM's shape is very meaningful, it's linear, it decays, because a person's attention is linear, a person's energy is linear, a person's narrative is also linear, which determines that a person in this current world, their time must be a linear sequence, but a person can understand it very simply
+The second problem is that RAW's shape is a time series, it's linear, and it decays. When we usually understand a person, the shape we need is a relationship graph — for example, the tension between beliefs, the repetition and imitation between behavior patterns, the core contradictions, how they evolve, how they connect. And these two shapes seem naturally mismatched. So many — no matter how much context, it's hard to solve the shape problem. But RAW's shape is very meaningful, it's linear, it decays, because a person's attention is linear, a person's energy is linear, a person's narrative is also linear, which determines that a person in this current world, their time must be a linear sequence, but a person can understand it very simply
 
 And then I think there's another point, maybe a navigation problem. For example, when we stuff tokens in, where should the model be looking? If there's no navigation structure, its attention in the middle position decays. The lost-in-the-middle problem won't disappear, it will only be pushed back
 
@@ -1270,7 +1236,7 @@ What we're designing is really just a few boundaries. One is what the model can 
 
 > 2026-04-25 22:56:35
 
-#AI actually I think in this process, what I'll think about is, I think people may be very important in the future, in the AI era, because you know? Even if you're one person, you can — I don't know how many agents you can manage, I don't know how many contexts you can manage, how much very erudite knowledge you can have, how many AIs you can have, how many employees you can have, I don't care, what do I care about? I care about whether this person has a way to manage such a person, to let himself naturally undergo some transformation. I'm thinking, in the AI era, what is its person like. I'm a bit at a loss right now, I think the person, he should first of all be a person, and then what can AI do? AI still serves him; as a person, his basics, he'll output some context, he'll have some thoughts, he'll learn some knowledge. But a very key point is, what the model should manage isn't how much knowledge you've learned or how many notes you've taken. I think what it should more necessarily manage is when, and why, you learn that knowledge. It may be a person's intent, because I think there are some things about a person that are limited by the world he's in. Even if AI is very awesome and developed now, and will get more and more awesome and developed in the future. But I think a person's timeline doesn't change, and a person's perception of time won't change either. Because a person only has 24 hours a day, sleeps, eats for 7-8 hours, right? Eating time can't be compressed either, right? A person's time is very continuous, very fragmented; the fragmentation may depend on what else this person is doing at the same time or at different times. When he does things or thinks about things he has an intent, and can also have no intent; I think it's all fine, even without intent he might also — the person at the very start just wanted to space out or something; the intent is there anyway; it's just a descriptive tool, it's just, it isn't an entity, it's a fiction used to describe a certain state; intent, it's just. You yourself are drunk, you want to — why do you want to drink? You drink — you want to — what do you say after you're drunk? Or after you're drunk you involuntarily said something?
+#AI actually I think in this process, what I'll think about is, I think people may be very important in the future, in the AI era, because you know? Even if you're one person, you can — I don't know how many agents you can manage, I don't know how many contexts you can manage, how much very erudite knowledge you can have, how many AIs you can have, how many employees you can have, I don't care, what do I care about? I care about whether this person has a way to manage such a person, to let himself naturally undergo some transformation. I'm thinking, in the AI era, what is its person like. I'm a bit at a loss right now, I think the person, he should first of all be a person, and then what can AI do? AI still serves him; as a person, his basics, he'll output some context, he'll have some thoughts, he'll learn some knowledge. But a very key point is, what the model should manage isn't how much knowledge you've learned or how many notes you've taken. I think what it should more necessarily manage is when, and why, you learn that knowledge. It may be a person's intent, because I think there are some things about a person that are limited by the world he's in. Even if AI is very awesome and developed now, and will get more and more awesome and developed in the future. But I think a person's timeline doesn't change, and a person's perception of time won't change either. Because a person only has 24 hours a day, sleeps for 7-8 hours, and needs time to eat, right? Eating time can't be compressed either, right? A person's time is very continuous, very fragmented; the fragmentation may depend on what else this person is doing at the same time or at different times. When he does things or thinks about things he has an intent, and can also have no intent; I think it's all fine, even without intent he might also — the person at the very start just wanted to space out or something; the intent is there anyway; it's just a descriptive tool, it's just, it isn't an entity, it's a fiction used to describe a certain state; intent, it's just. You yourself are drunk, you want to — why do you want to drink? You drink — you want to — what do you say after you're drunk? Or after you're drunk you involuntarily said something?
 
 
 <!--memo:22eaaf7241ce-->
@@ -1305,31 +1271,6 @@ In the AI era, the relationship between agent and human should be
 Complex things the AI simplifies for the human; simple things for the human the AI executes in a complicated way
 
 
-<!--memo:4db1a7700fb3-->
-### Institutions change the rules, but a person's fate is more the result of the system
-
-> 2026-04-27 13:07:46 · `#格物/ai`
-
-Institutions only change the constraints, not the initial conditions
-
-The sex industry is legal (institutional change)
-
-But women still enter this industry
-
-Their alternative options are still no income, extreme poverty; they're choosing survival
-
-Once you enter this industry, it's very hard to get out — this is path dependence
-
-No education → can't find other work
-
-Has an industry label → rejected by society
-
-Income structure fixed → can't transform
-
-Many people don't know their rights, have no ability to defend them, are controlled by middlemen and organizations
-
-Institutions are only a necessary condition, not a sufficient condition
-
 
 <!--memo:95e99f3fd943-->
 ### Some tools now use methods for time-sensitivity
@@ -1359,7 +1300,7 @@ One model generates the answer, another specifically challenges its time-sensiti
 
 ## 2. Travel, Places and Cities
 
-*56 entries*
+*43 entries*
 
 <!--memo:d49c61bb77fc-->
 ### Leaving Siem Reap Tomorrow
@@ -1379,20 +1320,17 @@ really will always exist in my heart
 Goodbye Angkor Wat! Goodbye Siem Reap
 
 
-<!--memo:2671d42fec76-->
-### Still Got Held Up at Customs, Heading North Today
-
-> 2026-04-01 20:36:47 · `#格物/老挝`
-
-It still felt like I got held up at customs, and overall today coming up to the North side — because I came over from Cambodia, you know — some of the border crossings on this side are close to Cambodia, and they target Chinese people, they just keep dragging things out for you. Because we happened to run into a lot of Chinese people at the time, they figured all Chinese people have a strong collective mindset, so they just keep stringing you along and they can skim more money. In the end they kept us hanging for over two hours at the start. At first it was 50 dollars and we thought that was too much, 50 dollars was way too much. Then they kept adjusting it, all the way down — down to 20 dollars, then down to 10, and finally down to 5. I thought it was pretty funny. In the end we just kept holding out, and I left when it hit 5 dollars. Actually I think I could have held out longer, but a lot of their family was waiting for me, so I didn't keep going. There was another Chinese guy behind me who held out a bit longer and got it down to 2 dollars. God, I really think they go too far
-
 
 <!--memo:6fd2ab1dbedd-->
 ### How a Country Leaves Its Impression on You
 
 > 2026-04-01 20:38:43
 
-How should I put it — overall, it's the impression a country leaves on you. Actually I think the main thing is the impression its customs leaves on you. I felt this before in Vietnam too, in Ho Chi Minh City: because we landed very early, they just kept holding you there, not letting you in, dragging out the time — they wanted a tip. I think that's just too much, right? So at the time I formed a really bad impression of Vietnam. I felt they just kept stalling me, and it was so worthless — wasting everyone's time for a little bit of money, with no good rules, no good system, no better system designed to make circulation more efficient and make relations between people much more collaborative, which would also raise your goodwill towards the country. I remember in Singapore you could feel their customs was very efficient, very streamlined. They wouldn't hold you up because of who you are; they treat things very fairly. They wouldn't think you're easy to fleece or anything like that, and they don't care about that little bit of money, because they think building a good system so money flows naturally is what matters. Rather than damaging the image of your own customs, and the image of your own country, for a small profit. That kind of thing does enormous long-term damage. That's how I see it
+I think my first impression of a place is often affected by the experience of entering it. I have had long waits and difficult communication, and I have had very efficient experiences too.
+
+What mattered to me then was how my time was treated. Clear procedures and transparent rules can make someone who has just arrived feel much more at ease.
+
+But one border-crossing experience is only a small part of the picture. It cannot stand for a country, and waiting time alone does not establish a staff member’s motives.
 
 
 <!--memo:1978f1658718-->
@@ -1400,9 +1338,9 @@ How should I put it — overall, it's the impression a country leaves on you. Ac
 
 > 2026-04-01 20:44:10 · `#格物/老挝`
 
-Sometimes it feels like an expedition. Tonight, for instance — after you get out of customs, it really feels hard to get out of customs. From Siem Reap, from Cambodia's Siem Reap, to the Laos side, there's this place called — what's it called? Si Phan Don, this one is probably called Don Khong. Coming over, you find you have to change several times. At the very start you have to book a big bus, over in Siem Reap. It goes over very early in the morning; first you have to confirm its location, or it picks you up at the hotel. Halfway you change buses once; when you get to customs, he transfers onto the bus, and the bus takes everyone over together to customs. So that's one transfer on the bus. At that point I nearly got on the wrong one — I nearly sat down on the return bus. He asked me, where did you come from? I said from Cambodia — pff, I said I came from the Siem Reap side
+Sometimes it feels like an expedition. Tonight, for instance — after you get out of customs, it really feels hard to get out of customs. From Siem Reap, from Cambodia's Siem Reap, to the Laos side, there's this place called — what's it called? Si Phan Don, this one is probably called Don Det. Coming over, you find you have to change several times. At the very start you have to book a big bus, over in Siem Reap. It goes over very early in the morning; first you have to confirm its location, or it picks you up at the hotel. Halfway you change buses once; when you get to customs, he transfers onto the bus, and the bus takes everyone over together to customs. So that's one transfer on the bus. At that point I nearly got on the wrong one — I nearly sat down on the return bus. He asked me, where did you come from? I said from Cambodia — pff, I said I came from the Siem Reap side
 
-I think at customs they hold you for a long time, really long, just to get a tip. Once they're done holding you, you still have to take another bus. Unexpectedly, that bus waits for you the whole time. I thought it wouldn't wait for people, and by evening you might have no bus at all to get back. But it's not like that. I think they did that really well — you don't need to worry about how late it is, even if you tough it out it's fine, tough it out to the end, right? It's just everyone waiting on the bus, and it doesn't seem to make much difference. Even if you found out, it seems you wouldn't find out much. I think that's very harmonious. After one bus you still have to cross a bridge, you go to their border point — there's a pier there, and from the pier you take a boat to Don Khong. I find that pier incredible; the moon was especially big today. I'm still walking on the road right now — I've just come off the pier and I'm heading back that way. All along the little path I can hear lots of birds calling. It's very hot and humid here too. Because I stayed in Guangdong for a long time, this hot and humid weather is OK for me, acceptable. It's just extremely, extremely humid and extremely, extremely hot — not unbearable. The moon is especially bright today too, which really fits the image of Southeast Asia: the sunset is huge, the moon is huge. You can crouch here waiting for the sunset, which is great. We had to cross a bridge and take a boat once; their boat was very local, a long boat, carrying a lot of us. It was pitch black at the time, and we saw on the surface of the lake just one patch of moonlight. Shining down, shining on the lake surface — I thought it was especially beautiful. There was a Chinese person next to me who said, this is an expedition, we've come here as refugees. I thought that was hilarious. But in fact the moonlight — it shone on the lake, and the lake surface was half white, and I thought it was really beautiful. I quite liked it
+I think at customs they hold you for a long time, really long, and at the time I did not understand the reason. Once they're done holding you, you still have to take another bus. Unexpectedly, that bus waits for you the whole time. I thought it wouldn't wait for people, and by evening you might have no bus at all to get back. But it's not like that. I think they did that really well — you don't need to worry about how late it is, even if you tough it out it's fine, tough it out to the end, right? It's just everyone waiting on the bus, and it doesn't seem to make much difference. Even if you found out, it seems you wouldn't find out much. I think that's very harmonious. After one bus you still have to cross a bridge, you go to their border point — there's a pier there, and from the pier you take a boat to Don Det. I find that pier incredible; the moon was especially big today. I'm still walking on the road right now — I've just come off the pier and I'm heading back that way. All along the little path I can hear lots of birds calling. It's very hot and humid here too. Because I stayed in Guangdong for a long time, this hot and humid weather is OK for me, acceptable. It's just extremely, extremely humid and extremely, extremely hot — not unbearable. The moon is especially bright today too, which really fits the image of Southeast Asia: the sunset is huge, the moon is huge. You can crouch here waiting for the sunset, which is great. We had to cross a bridge and take a boat once; their boat was very local, a long boat, carrying a lot of us. It was pitch black at the time, and we saw on the surface of the lake just one patch of moonlight. Shining down, shining on the lake surface — I thought it was especially beautiful. There was a Chinese person next to me who said, this is an expedition, we've come here as refugees. I thought that was hilarious. But in fact the moonlight — it shone on the lake, and the lake surface was half white, and I thought it was really beautiful. I quite liked it
 
 Actually there are lights along the roadside here, so it's not like some sections are pitch black with no lights. Relatively speaking, I feel it's fine here — it's just walking on a small path, and the way back is about a 20-minute walk. I didn't take a taxi either, I just walked back. The lights along the side were there the whole way, so it was very convenient
 
@@ -1414,7 +1352,7 @@ The neighbourhood feels like a bunch of very interesting, very local cafés. Not
 
 > 2026-04-01 20:45:50
 
-Actually I don't know why I came either. I just felt the world hadn't reached the sea yet... no, it wasn't in the plan, I didn't come for it specifically. It's just that near Siem Reap there's a fairly fun place, and it happened to be on my route back, so I thought, rather than just heading back, I might as well come here too. And having come, I feel tonight's experience was fine — apart from the customs bit. But at night it really had a feeling to it, especially the moment on the boat: I felt like a group of people fleeing, pitch dark, with only moonlight visible beside us, and the greenery beside us, and us rocking on the boat, a vast white blur. I think that kind of experience can't be planned, and can't be bought. It's something you can't count on — and it counts as a bit of surprise that customs, by holding us up that long, left behind for us. I find it quite interesting
+Actually I don't know why I came either. Si Phan Don wasn't in the plan, I didn't come for it specifically. It's just that near Siem Reap there's a fairly fun place, and it happened to be on my route back, so I thought, rather than just heading back, I might as well come here too. And having come, I feel tonight's experience was fine — apart from the customs bit. But at night it really had a feeling to it, especially the moment on the boat: I felt like a group of people fleeing, pitch dark, with only moonlight visible beside us, and the greenery beside us, and us rocking on the boat, a vast white blur. I think that kind of experience can't be planned, and can't be bought. It's something you can't count on — and it counts as a bit of surprise that customs, by holding us up that long, left behind for us. I find it quite interesting
 
 
 <!--memo:029e66685183-->
@@ -1426,7 +1364,7 @@ I think maybe every country has some very annoying things. For example, in Cambo
 
 So you'd think, ah, this country has some exceptional cases, aimed at this kind of person, and you'd think whatever about them. But actually, once you've experienced it, that's very one-sided
 
-Everyone is just living. Nobody discriminates against you that much. It's just that certain special positions get constantly reinforced by the environment, and they do some biased things to get their own benefits. For most of the people living here, they don't have that kind of bigoted environment. Their lives are plain and ordinary, they keep their own lives going, occasionally do a bit of small business. If they do get some reward for certain behaviour, that reward may get reinforced, and the reinforcement produces a targeted phenomenon. But I think — I don't know if it counts as discrimination either. I think it's just human, part of human nature. People are just like that, I think it's just how it is; people are still products of their environment, and if the environment is like that, then it seems entirely reasonable
+Everyone is just living their life. At least many of the people I met were quietly getting by, sometimes running a small business. A few difficult encounters are not enough for me to decide whether someone is discriminating against me, let alone explain their motives.
 
 
 <!--memo:8dfe8cd9e2ef-->
@@ -1450,7 +1388,11 @@ What really surprised me is that I walked around the island today and it felt li
 
 > 2026-04-03 10:38:11
 
-From what I've felt, Laotians don't do the rat race, not that much of one anyway. In terms of wealth distribution, I feel the gap between rich and poor isn't as big as in Cambodia. You can see it from the stilt houses here: even in fairly remote villages in Laos, the quality of the stilt houses they use — the timber, and timber is actually quite expensive — is pretty good. Inside they're moisture-proof, because the humidity and heat here are strong, so some of the timber insulates better and easily keeps damp out. So from this you can see: Cambodia's whole social system still allows wealth to be distributed like a pyramid, and it also has its own fairly good industrial structure. Comparatively, Cambodia is more dynamic, it's developing. Which also means the polarisation is fairly serious. I don't know if that's a good thing or a bad thing, for society as a whole. In Laos comparatively, even in the countryside, you can see they live relatively well, not that badly. Nobody's doing the rat race either. Some hostels or some hosts limit the latest check-in time; even in Japan, some allow you to check in after the latest check-in time if you pay extra. But in Laos they don't allow it. It's: I rest when I rest — no extra workload for me, thank you
+The people I met in these few places in Laos seemed less caught up in competition. But that is a travel impression; houses and street scenes are not enough to judge a whole country’s wealth distribution.
+
+Some hostels or hosts set a latest check-in time. Elsewhere I have sometimes been able to pay extra to arrive late. Here, the response I encountered was: time off is time off, and extra work is not accepted.
+
+I found that interesting.
 
 
 <!--memo:eff5cba7fac6-->
@@ -1466,15 +1408,7 @@ Of course, it's possible I simply haven't been to that much of rural Laos. I jus
 
 > 2026-04-03 10:40:15
 
-Actually most people choose to cycle, but I hardly cycled at all. Even going to the island next door I walked over — I think walking is quite convenient too. Because I have enough time. And for me, it also means I can rest in a café I like
-
-
-<!--memo:8de15cff5e46-->
-### Some Laotian Customs Points Are Pretty Grey
-
-> 2026-04-03 12:56:16
-
-I feel some Laotian customs points are pretty grey too: the more remote ones, the ones outside the reach of the country's political centre, probably have more backroom dealings. Especially the Laotian customs along the Cambodian border — some of those positions may have been bought with money or obtained through connections, and the salary for the post is very low, so their aim is to skim off enormous profits in the form of tips. That's one of their channels.
+Most people choose to cycle, but I hardly did. I even walked to the island next door, and found walking convenient enough. I had plenty of time and could stop at a café when I got tired.
 
 
 <!--memo:9613c5137ea6-->
@@ -1504,7 +1438,7 @@ The center is where the capital sits — Vientiane is one of the quietest capita
 
 The south is the part of Laos with the most wild charm and the most relaxed feel
 
-During the Vietnam War, even though Laos was a neutral country, it suffered the most intense bombing in history, and to this day a large amount of unexploded ordnance (UXO) remains in the land. This is a forbearing country that has stayed optimistic even through trauma
+I also want to understand the history behind these quiet everyday scenes.
 
 
 <!--memo:6995ce851c94-->
@@ -1512,19 +1446,11 @@ During the Vietnam War, even though Laos was a neutral country, it suffered the 
 
 > 2026-04-04 17:15:30 · `#格物/老挝`
 
-A bit like Thailand, they also have a local catchphrase: "Baw Pen Nyang" (it's fine / never mind)
+A little like Thailand, I hear a local phrase here too: “Baw Pen Nyang” — never mind, it is all right.
 
-Theravada Buddhism is the basis of how they understand the world
+What I feel along the way is a pace of being content and living in the present. Temples, families, and villages seem closely tied to everyday life.
 
-Live in the present, plus karmic retribution and personal practice
-
-Contentment brings happiness — this belief creates a kind of philosophically "Stoic" acceptance: not craving too much the things you can't control. As long as there's food to eat, a house to live in, a temple to give alms at, the heart is already rich
-
-During the Vietnam War, Laos, as a place the "Ho Chi Minh Trail" passed through, suffered the most intense bombing in human history. Even today, tens of millions of pieces of unexploded ordnance (UXO) remain in Laos's land. Having lived through that kind of impermanence of life and death, Lao people understand the fragility of life even better. When you don't know which comes first, tomorrow or an accident, "live for the moment, live in the present" becomes the most rational survival strategy
-
-Unlike the highly homogeneous standards of success in East Asian societies, Lao society has not yet fully entered a stage of high industrialization and commercialization. Although the wealth gap between people exists, it has not formed a strong sense of class oppression and comparison anxiety
-
-Lao people's lives revolve heavily around family, village and temple. Whether in the ancient cities of the north or on the streets of Pakse in the south, neighbors know each other inside out, and mutual help outweighs competition. This warm acquaintance society also makes people gentler and friendlier, and extreme conflict very rare
+But these are only fragments I encountered. They do not let me sum up every Lao person’s character, or explain their lives simply as the result of a particular history or faith.
 
 
 <!--memo:48f2afd30afc-->
@@ -1542,7 +1468,9 @@ The whole temple has some chickens, and I feel like these chickens are all like 
 
 > 2026-04-04 19:17:33
 
-I feel the exercise culture here is quite strong too — in the evening you can feel that locals, young people, or some middle-aged and older people, basically all come out to run, putting on their running shoes and running along both banks of the Mekong, along the river. I think their country itself is a country with very low material desire; they don't think about migrating to a big city, and there are no big cities here anyway. It's not like Cambodia — Cambodia still has a system, and Cambodia's housing system is different, its wage system is different, its property rights system is different, and that determines that young people in Cambodia today have been brainwashed by material desire, by consumerism — there's still some consumerism there. But on the Cambodia–Laos side it feels different, it feels like each person just needs to live their own household well. So you can see they're quite relaxed — running every day, going to work, eating some grilled skewers in the evening. I think, Maybe this is good life
+The exercise atmosphere here feels strong too. In the evenings I see local people, young and older, putting on running shoes and running along the Mekong.
+
+At least in this little scene I am seeing, life looks relaxed. A run, work, something grilled in the evening. Maybe this is a good life.
 
 
 <!--memo:d9ddc78a33fa-->
@@ -1552,77 +1480,18 @@ I feel the exercise culture here is quite strong too — in the evening you can 
 
 I feel like many cafés in Siem Reap basically close quite early, because the half-life of caffeine in the human body is 5–6 hours. And most people's coffee needs are in the morning, to switch the brain on. Then in the afternoon, past three or four, they basically stop taking in caffeine. So for shops that focus on specialty coffee, foot traffic is very small in the evening, so they just close. And many cafés that make bread basically start working in the early hours, so that a lot of people can eat a warm bite of bread in the morning. Because for many handmade bakery shops, the best window is the first 6 hours after it comes out of the oven. So I feel the people here are quite interesting too, because a lot of them love getting things done early
 
-Since 80% of revenue comes from morning coffee and breakfast, closing the inefficient afternoon hours and spending the energy on selecting beans, maintaining equipment or developing new products actually helps maintain that high 4.9 rating even better
+If most revenue comes from morning coffee and breakfast, closing the inefficient afternoon hours and spending the energy on selecting beans, maintaining equipment or developing new products actually helps maintain a good reputation even better
 
-
-<!--memo:7b03fd6980e6-->
-### In Cambodia, a lot of the poorest people are true "proletarians"
-
-> 2026-04-05 14:38:29 · `#格物/老挝`
-
-In Cambodia, a lot of the people at the bottom are true "proletarians"; they flood into Phnom Penh or Siem Reap, and once they lose their job they've completely lost their livelihood
-
-But in Laos (especially in rural areas like around Pakse, or Don Det island), land distribution is relatively even. Even if a Lao person doesn't have a single kip in their pocket, they most likely still have a stilt house in the countryside, a few mango trees, and a small field where they can grow sticky rice. This self-sufficient agricultural foundation greatly dissolves the sense of desolation in modern society of "having nowhere to turn"
-
-So they won't be at a total dead end
-
-Cambodia's wealth gap is enormous — the poorest people watch luxury cars (Cambodia's density of Rolls-Royces is astonishing) race past them every day
-
-But Lao society here is more like a smooth hollow. Everyone is generally not wealthy, and material desire is relatively low. When everyone is riding old motorbikes and eating the same papaya salad at roadside stalls, people at the bottom don't feel abandoned by society
-
-Lao people's mindset is very calm — nothing like in Cambodia, where kids cling to you and pull at you and insist you buy things; theirs is more an ease with life, an invisible kind — once illness or an accident in life comes, helpless ...
 
 
 <!--memo:876c3d9d0528-->
-### Laos is one of the youngest countries in Southeast Asia
+### Young people on the streets of Pakse
 
 > 2026-04-05 14:52:27 · `#格物/老挝`
 
-The proportion of teenagers is very high
+I see a lot of young people on the streets of Pakse.
 
-Pakse, as Laos's second-largest city and the commercial center of the south, attracts a large number of young people from surrounding rural areas to come here to work, study, or do border trade
-
-The median age of Laos's whole population is only about 25.3 — that's absurd; on the street it feels like half the people are under 25
-
-Laos went through a long period of war in the second half of the 20th century — the secret war
-
-And now there's the penetration of Confucian culture in Laos
-
-Laos's birth rate is also among the highest in Southeast Asia
-
-Laos is still currently a country based mainly on agriculture, and children are seen as the most important family labor force
-
-I felt this in Pakse too
-
-Over the past 20 years Laos's fertility level has come up
-
-
-<!--memo:03ffb6766e73-->
-### The Secret War
-
-> 2026-04-05 14:56:14 · `#格物/老挝`
-
-The 1962 Geneva Accords stipulated that Laos was a neutral country, and foreign troops were not allowed to enter
-
-In order to cut off the **"Ho Chi Minh Trail"** through which North Vietnam extended across Lao territory to ship supplies to South Vietnam, the US Central Intelligence Agency (CIA) led a "proxy war" that was never formally declared by the US Congress and used no regular troops, instead hiring local Lao royal troops and Hmong forces
-
-At the time, the US government concealed the bombing operations in Laos from the public and Congress
-
-To destroy the Ho Chi Minh Trail, the US military carried out saturation bombing of Laos beyond anything imaginable
-
-On average a bombing run every eight minutes, 24 hours a day without stopping
-
-More than 2 million tons of explosives were dropped on Laos. That's more than the total explosives the US dropped on Germany and Japan during World War II
-
-Calculated against the population at the time, Laos absorbed nearly a ton of explosives per person, and it is still the most heavily bombed country per capita in the world
-
-Of the large number of cluster bombs dropped at the time, about 30% (roughly 80 million) did not explode
-
-These small bombs, called "Bombies," are scattered across farmland, forests and villages. Over half a century, more than 50,000 Lao civilians have been killed or injured by touching this unexploded ordnance
-
-So it's also the case that now Laos has a lot of fertile land, but because clearing UXO is extremely costly and slow, a large amount of land cannot be safely cultivated — and this is the core reason Laos is still one of the poorest countries in Southeast Asia
-
-So in Laos you can also see that some restaurants use artillery shells as flower pots, or even use huge bomb casings to prop up stilt houses ...
+That makes me curious about Laos’s age structure and fertility rate. But the people I see on the street are not enough to establish a national median age or a twenty-year fertility trend. I will leave that as a question for now.
 
 
 <!--memo:3e6687490da8-->
@@ -1634,7 +1503,7 @@ I'm in Pakse, and this is my first time running along both banks of the Mekong. 
 
 And I think there's another thing: because I started running a bit past 4, and at a bit past 4 the sky still had a really big sun out, and it wasn't so dark yet. Right then it was running into the sun, and I think that felt very comfortable, very stress-relieving — I felt like I was very, very open. Like what I saw before in Singapore: it was hot there, and at the time I felt that in the heat I couldn't even walk outside, and I watched them running so well, and I thought they were amazing. And then I felt that that state is really good — a person's survival ability, being able to survive in extreme cold, and to survive well in fairly scorching heat. I think this kind of survival ability matters quite a lot, and is quite great. It determines your degree of freedom in this world: when it's cold, you can still go out and play; when it's hot, you can still go out and play. And the whole world just chills
 
-Ah, I think there are actually quite a lot of runners here, but they usually don't run very long; relatively speaking it's probably just a casual daily run, asking a friend, asking a companion to run together. There are a lot of people playing in the water below, which I find really interesting. There's a river channel down there, and that channel also has a view of the sunset. At sunset everyone is quite quiet, just watching a sunset there every day. I think that way you wouldn't get depressed — who could possibly get depressed living every day in that state, running every day, watching the sunset every day? I can't imagine it. I think it's just very much enjoying life
+Ah, I think there are actually quite a lot of runners here, but they usually don't run very long; relatively speaking it's probably just a casual daily run, asking a friend, asking a companion to run together. There are a lot of people playing in the water below, which I find really interesting. There's a river channel down there, and that channel also has a view of the sunset. At sunset everyone is quite quiet, just watching a sunset there every day. In that moment I felt at ease. That is only my own experience, though; it does not tell me whether someone else could have depression. I think it's just very much enjoying life
 
 
 <!--memo:3ab5f88154eb-->
@@ -1664,7 +1533,7 @@ I think this river is very suited to shooting sunsets wide, because of its dista
 
 > 2026-04-09 15:08:53
 
-I got to experience a hospital here in Laos too. And I feel the costs here are really low — I paid for my own treatment and it came to just over 80 yuan. And they gave me quite a lot: they gave me some medications, some amoxicillin, and a tetanus shot too. Plus a whole series of consumables
+I got to experience a hospital here in Laos too. And I feel the costs here are really low — I paid for my own treatment and it came to just over 80 yuan. And they gave me quite a lot: they gave me some medications for treating the wounds. Plus a whole series of consumables. This was the cost of that particular visit
 
 
 <!--memo:c1c9bfc9fc35-->
@@ -1672,11 +1541,9 @@ I got to experience a hospital here in Laos too. And I feel the costs here are r
 
 > 2026-04-09 15:15:52 · `#格物/老挝`
 
-Traveling in Southeast Asia, having a reliable local to lead the way is absolutely the most effective shield against the "tourist tax." He really didn't rip me off; with a local accompanying me, what I enjoyed was 100% authentic citizen treatment
+A local person accompanied me to have my wounds treated this time, which made communication much easier. The bill listed items such as medical gloves and gauze separately, and it was easier to ask what each charge was for.
 
-Basic medical supplies like amoxicillin, iodophor, even tetanus vaccine — locals come across these in daily life too, so they roughly know what the floor price is. With a local standing right there, the clinic absolutely cannot give an outrageous quote, because it would be seen through at a glance
-
-On the bill, even ultra-cheap consumables like medical gloves (Glove, 4,000 kip, about 1.2 yuan) and gauze (2,000 kip, about 0.6 yuan) were itemized clearly, line by line. If it were a "tourist price" or a fleecing price aimed at foreigners, they'd usually just bundle it into a round number of several hundred thousand or even a million kip, and absolutely wouldn't itemize with you down to a few cents of gauze
+That reassured me. But one bill does not establish what everyone is charged, and having someone accompany me is no guarantee against problems.
 
 
 <!--memo:9d163cae773a-->
@@ -1695,6 +1562,8 @@ Every time one of their big trucks passes you, you feel — your whole body gets
 ### I feel that Laos's whole healthcare system is quite interesting too
 
 > 2026-04-09 15:28:19 · `#格物/老挝`
+
+*This was an overview from my reading at the time. Coverage figures, fees, and policy scope have not been individually rechecked in this review and should not be used for care or insurance decisions.*
 
 I feel that in Laos, the whole healthcare system is quite interesting too. It implements national health insurance. This thing is aimed at Lao citizens, and its coverage has already reached over 94.5%. It's divided into two categories: one is the formal sector, including civil servants and enterprise employees, and they all contribute through payroll deduction into this social security fund. And the other is the non-formal sector, including farmers and casual workers, who are mainly subsidized by the government through taxes. This is a republican system — a co-payment system, I guess. For ordinary Lao people seeing a doctor at a public hospital, they only need to spend a very, very small fee, basically a few thousand to 20,000 kip, and most of the rest is borne by insurance. Some children or poor households even get free medical care.
 
@@ -1804,13 +1673,13 @@ It suddenly reminded me of Tokyo — there was a museum with a layer of glass on
 
 A begging kid just came by to beg, and I thought today is their lunar new year's first day, so I gave ....
 
-If the kid goes into the shop and begs table by table → it's mostly not spontaneous behavior
+I do not know why the child came, and going from table to table is not enough to conclude that an organization is involved.
 
-In many Southeast Asian cities (including Vientiane), this situation is often organized
 
-I feel quite guilty — in the short term it feels like I helped them, but in the long term it's definitely fatal for them
 
-Maybe it reinforces the adults / organization behind them to keep them begging
+I feel guilty. It felt helpful in the short term, but I do not know whether it helped over the longer term.
+
+I worry whether cash might keep them in that situation.
 
 Symbolically giving food or drink is somewhat more controllable than cash, and avoids attracting more people
 
@@ -1820,25 +1689,8 @@ Symbolically giving food or drink is somewhat more controllable than cash, and a
 
 > 2026-04-14 13:41:33 · `#格物/老挝`
 
-I feel I still misjudged it — I never expected that, whereas normally I find it hard to see begging in Laos, even though their GDP per capita is low, even though their salaries are low, even though their lives are hard, I feel they're still very Buddhist about it — this time I didn't expect to run into it anyway. It's possible this group of people is organized behind the scenes, or premeditated. But I still think it's best not to give them money; I think you can give them some food
+I feel I still misjudged it — I never expected that, whereas normally I find it hard to see begging in Laos, even though their GDP per capita is low, even though their salaries are low, even though their lives are hard, I feel they're still very Buddhist about it — this time I didn't expect to run into it anyway. I do not know their circumstances and cannot judge from this one encounter. But But I still think it's best not to give them money; I think you can give them some food
 
-
-<!--memo:e57a7fac5bfa-->
-### Yesterday on the way home from the Laos water festival I met a Ladyboy
-
-> 2026-04-15 11:04:47 · `#格物/老挝`
-
-Yesterday on the way home from the Laos water festival I met a Ladyboy dancing passionately in front of the convoy ....
-
-A Ladyboy really is a combination of masculine wild beauty and feminine sexiness
-
-Compared to cisgender women, trans women often have broader shoulders, sharper jawlines, or higher brow ridges. Visually these features convey a kind of "gallant spirit" or "aggressiveness"
-
-Even after hormone replacement therapy (HRT), some people still retain denser, more compact muscle mass — a very taut kind of beauty
-
-When this delicate makeup and soft, feminine clothing collide with the "gallant skeleton" described above, characterize, it produces a strong visual contrast
-
-This contrast actually has a very strong appeal in psychology too — this is a kind of androgynous beauty
 
 
 <!--memo:f45bfd9fc092-->
@@ -1881,64 +1733,6 @@ I was thinking about something — today, well, we signed the contract, and they
 It's not a matter of the amount either. I think it's quite interesting — if this is clearly money that should be refunded to me, then it might be the other party's responsibility. But if I voluntarily give it up, then it's my own choice, and it's not that the other party took advantage. So, but what I worry about is, if the other party thinks I don't care, then next time the situation might be more likely to happen again
 
 
-<!--memo:63f929ecb1e8-->
-### Ah, I remember the first time, with a friend of mine
-
-> 2026-04-17 13:15:55 · `#格物/老挝`
-
-Ah, I remember the first time, with a friend of mine — he lives over by Sanjiang Market. Sanjiang Market is essentially the biggest Chinese area in Vientiane. And there might be a lot of Chinese or ethnic Chinese living in it. It's very close to the airport, and inside basically the streets are all in Chinese characters, and all kinds of Sichuan cuisine, Hunan cuisine, hot pot, and the snacks and drinks in the supermarkets are exactly the same as back home
-
-I was puzzled at the time, I didn't even know how it formed. Because I feel like it's essentially still a giant trading city, and its hotels or supermarkets or logistics are basically all complete, the whole street is full of Chinese signboards and merchants with accents from every province. I think it's still a phenomenon of Chinese capital expanding in the Southeast Asian market. And you know what's the most interesting thing?
-
-Back then my friend said that a few days earlier, in that hotel, he said the person next to him got stabbed by someone. And then I said, well, I know this place, Sanjiang Market — it's pretty dangerous, there are often robberies, or assaults and murders. I think it's very dangerous, and I think I'd avoid places like the Chinatown area, especially in these Southeast Asian countries. In Malaysia it's fine, Singapore is fine, but in other countries, I feel there's a problem
-
-And then he said it was fine, that place is still very safe. I said, huh? That's very safe? A murder just happened right next to you and you'd think it's safe? Ah, I think that's absurd. And today my friend — when that couple checked out of their room, they found another Chinese guy, and he's also a guy in his thirties. I found that a lot of people who come here, basically they're all guys who come here to have fun, basically around 30 years old. The ones I've met recently are basically all in this age range, I think it's especially interesting. Including some from Beijing, some from Shanghai, some from Zhejiang, some from Hangzhou. I was like, oh — he and his friend, he was going to fly back home today, and his friend over there had his laptop stolen and his wallet stolen too. Wow, I feel pretty baffled, what's going on? How did they all get lost? I don't know if they called the police
-
-
-<!--memo:27ba44a61546-->
-### Laos special zones
-
-> 2026-04-19 02:17:56 · `#格物/老挝`
-
-Laos has many special zones
-
-Golden Triangle SEZ: located in Bokeo Province, across the river from Thailand and Myanmar. This one is the most famous, dominated by Chinese capital (Kings Romans Group), with extremely high autonomy
-
-Boten SEZ: located on the China-Laos border. With the opening of the China-Laos Railway, it has become the core of logistics and border trade
-
-Special zones are the product of extreme pragmatism
-
-Laos lacks the funds to build infrastructure, so by transferring long-term land use rights (usually 50 to 99 years) it attracts foreign capital to build roads, buildings, and power
-
-Inside the special zones, taxation and administrative access differ from the rest of the country, trying to replicate the successful model of China's early Shenzhen or other countries' special zones
-
-For example, the Golden Triangle SEZ, using its unique "no man's land" geographic position, develops tourism, gambling and border trade, attracting consumers from neighboring countries
-
-The Golden Triangle Bokeo International Airport officially opened and launched international routes (such as direct flights to Chiang Mai). This marks that the special zone already has independent "space teleportation" capability, no longer fully dependent on Laos's dilapidated road network
-
-As the China-Laos Railway's capacity is fully released, Boten has transformed from the "casino ruins" of a few years ago into a massive logistics hub and duty-free commercial center, with tower cranes and bonded warehouses everywhere
-
-Although the Lao currency (kip) has depreciated sharply in recent years, inside the special zones, RMB and Thai baht are the hard currency. There's an independent financial micro-circulation system here
-
-The special zones contribute a large amount of land transfer fees and taxes to Laos, and they really lifted places like Bokeo Province out of absolute poverty, but the bulk of the wealth flows to foreign developers and a specific management class
-
-
-<!--memo:85e32645e04b-->
-### The opening of the China-Laos Railway gives Chinese tourists great convenience
-
-> 2026-04-22 14:57:04 · `#格物/老挝`
-
-The opening of the China-Laos Railway has provided great convenience for Chinese tourists and spawned a large-scale "wildlife tourism" industry. Tour operators cater to the consumption demands of Chinese tourists, guiding them to large illegal wildlife supermarkets in Laos disguised as cultural centers or cafes, selling them contraband such as ivory, rhino horn and tiger bone
-
-
-<!--memo:d202a3e72c0e-->
-### Huge profits not only incentivize poaching, but also fund bribery
-
-> 2026-04-22 14:58:31 · `#格物/老挝`
-
-Huge profits not only incentivize poaching, but also provide ample funds for bribery, inducing customs officers, border police and even senior officials to act as protectors, facilitating the transit and sale of illegal wildlife
-
-
 <!--memo:eebac68dc466-->
 ### China's food safety problem
 
@@ -1977,42 +1771,15 @@ Yet in some one dimension, they have an extremely pure "anchor" — something no
 Perfect people are rare; everyone is packaging themselves, everyone wears a mask, but these very complex people, in some small things, can keep persisting — that seems hard to doubt
 
 
-<!--memo:b5d4519a0c21-->
-### The state of pangolins
-
-> 2026-04-23 14:06:14 · `#格物/思考`
-
-Including the Malayan pangolin or the Chinese pangolin, in Laos and surrounding areas they are critically endangered (CR), "the core target of illegal trade"
-
-Population collapse and critically endangered status: in Laos's wild habitats, pangolin population density has dropped to an extremely low point
-
-In some areas the population is even only 1% of what it was 30 years ago
-
-Reduced to the "most traded" wildlife
-
-Besides the native Chinese pangolin and Malayan pangolin, Laos also, as part of intercontinental smuggling routes, receives large quantities of pangolin scales from Africa (such as Nigeria, the Democratic Republic of the Congo and Uganda)
-
-With the opening of the China-Laos Railway, smugglers use the efficient railway logistics network to transport high-value contraband such as pangolin scales across borders disguised among legal bulk commodities, thereby evading customs inspection pressure
-
-In shops or restaurants in the Golden Triangle SEZ (GTSEZ) and Boten SEZ, you can often find openly or semi-openly sold pangolin scales, pangolin meat, and even live pangolins
-
-In the illegal wildlife supermarkets in Vientiane and Luang Prabang disguised as "cultural centers", pangolin scales and live animals are likewise core merchandise
-
-Now there are even hunting and trading chains specifically targeting the release of animals into the wild. In Buddhist temples, believers have the traditional custom of releasing small birds to accumulate merit. To satisfy this particular religious and market demand, large numbers of small passerine birds (most commonly munias and swallows, even including the pin-tailed parrotfinch) are captured specifically and put into market trade
-
-Some of it is also a commercial impression tactic — merchants use social media (like Douyin) to encourage tourists to buy critically endangered native species (such as the Malayan pangolin and Chinese pangolin) for "release" back into the wild. This kind of purchase not only fails to protect animals, but instead puts tourists' money directly into the pockets of illegal hunters and traders, giving them a strong economic incentive to keep capturing wildlife
-
-The release trade causes serious harm to individual animals. Birds captured for release are kept in cages for long periods and usually become very weak, so many birds die shortly after being "released". This meaningless cycle of constant capture and constant death directly causes the decline of wild populations. For example, in Laos, munias have already become unusually scarce because of this
-
 
 <!--memo:943ba96dce8e-->
 ### They came here paying out of their own pockets to hold this wildlife protection
 
 > 2026-04-24 10:20:35 · `#格物/老挝`
 
-They came here paying out of their own pockets, and held this wildlife protection event, including donating blood themselves, and standing in for — don't they have locally a wildlife protection thing? It's called pangolin. And a lot of Chinese people use pangolin, or Vietnamese use pangolin, in fried rice. They claim this is healthy, and gives long life and so on — nourishes blood or supplements something or other.
+They came here paying out of their own pockets, and held this wildlife protection event, including donating blood themselves, and standing in for — don't they have locally a wildlife protection thing? It's called pangolin. The event also discussed consumption myths around pangolins. I want to understand how to actually protect them.
 
-I took part in their event, and I think their event was really super well done, and, oh, I also randomly met a lot of super interesting people. Some of them, though they're long-term residents here, happen to be very, very interesting people. One had for many years before, up to 10 years, spent 600 yuan every month to sponsor some orphaned twins — I think that's pretty remarkable.
+I took part in their event, and I think their event was really super well done, and, oh, I also randomly met a lot of super interesting people. Some of them, though they're long-term residents here, happen to be very, very interesting people. One had supported children in difficult circumstances for a long time — I think that's pretty remarkable.
 
 And this time the boss also has quite a story. I think his experience is quite legendary — even though it's very hard to get along with him, because he's a very empirical person, and I'm more of a theoretician. So a lot of his experience sounds misaligned to me. But I think he's a very good person — he has also, for two months straight, given local homeless kids free... a free plate of fried rice. I think being able to keep it up for two months straight, he, his underlying character is also very kind, it makes me, I just feel a lot of emotion — even such a person, who at a glance and on impulse seems to... whose communication is especially unsmooth, who clashes with me so much, I still really admire him
 
@@ -2022,71 +1789,9 @@ And this time the boss also has quite a story. I think his experience is quite l
 
 > 2026-04-24 10:20:38 · `#格物/老挝`
 
-I think that Peruvian is really super interesting — this time he especially likes recording, because, he said, his father passed away a year ago, and then there wasn't... he really regrets that when he was with him there weren't many photos, not many shared memories, not much time together. So after coming out this time, he decided to record himself more. I think, hmm, it struck me deeply
+A friend I met on this trip really likes documenting things. He said he had regretted not keeping enough photos and shared memories, so this time he decided to record more.
 
-
-<!--memo:ccd45dc4e22c-->
-### An objective record of tonight's bar tour. Meeting the same Japanese guy three times
-
-> 2026-04-25 03:52:34
-
-An objective record of tonight's bar tour. I didn't expect to run into a Japanese guy three times in a row. He's also from a city next to Wakayama — I think it's called Himeji
-
-You know what? It's especially interesting. I thought he was Korean, because for three days straight he was very silent, moving around alone. Since my first day was also my first time going out alone, I could feel that very down-and-out feeling. I don't know why he came; in such a lively bar, alone in a corner. You know, when you're alone in a corner with your feet up, actually nobody will pay attention to you. This time something especially outrageous happened to me, because I came with friends. I wasn't interested in those sex transactions, so I was just there, and I felt a lot of people were hinting at sex transactions to me, but I wasn't interested, I politely declined. One time I was drunk, so I cracked a joke, I said, are you a person... Ladyboy, i.e. a kathoey. I think I, I was drunk, I quite regret saying that, I didn't mean to, I, because she wasn't a kathoey, so I feel I hurt her a bit
-
-I feel, at the bar, because we went to two venues, I felt I drank a bit much. That bro took me along, I feel he got a bit drunk at the second venue. Actually the first venue was fine, at the first place everyone just drank a little simply, danced a little, and in the end it was very happy. But the second venue was completely dancing while drunk. I felt so happy, wow
-
-That Yale bro also knows a lot of foreigners, and had them introduce a local bear. That local bear, actually there were a lot of locals. The four of us Chinese guys were dancing there, plus two more. I think one guy was especially funny, wow, he, I feel he's probably in his 30s, he's probably the kind of person who's usually half able to let loose and half not. I think playing with him was a lot of fun, I guided them and we danced together. The whole process was the four of us, that very interesting guy — the other guy, I felt he was quite boring, he always wanted to scout out other girls while dancing, but I felt, I felt it was especially boring, I mean I felt dancing with that girl, that guy, was especially happy, being able to move together with him, and pose together with him, and take over the whole stage together, I think that's a very exciting thing
-
-You know what? I think I didn't expect that in their venue, a lot of locals at the local venue go to sniff K powder, i.e. drugs. Sniffing it. The smell is very strange, because I feel a lot of them were sniffing, snorting it with their noses and so on, I think it's. Pretty weird, I'm relatively not adapted to that kind of environment, but I can still party with them, but I feel that because drugs are narcotic... narcotic-type, they make a person's spirit go into a confused state; even though I was drunk at the time, if I felt that this thing would affect my life safety, I would absolutely refuse and reject it
-
-Then in the whole process I felt it was very strange, I completely got into it, becoming the whole floor. Wow, I think maybe because I was drunk, I completely could — even though reason can control it, my reason chose to let it go completely, like a kind of rationality that opened the door to my emotional side. Maybe because my prefrontal cortex at that instant wasn't fully restrained and was released a bit. I think that instant was very interesting, especially interesting
-
-We got back around 2-something, past 2 in the morning. I feel this venue was more enjoyable than the local venue, because there were more locals, and everyone was happier, relatively speaking everyone had some Western friends. He was originally with us at that earlier venue, but then came to this venue with us. We also posed together, I felt so happy, wow, pretty cool. That venue was relatively more closed off in terms of tables, so you might — it might be harder to build connections with others, because everyone else came in groups of people they knew
-
-This time I made quite a lot of Korean friends, I think it's especially interesting. You know what? Korean friends, what they think about is how to construct the form of their own life
-
-I feel like I ran into a group of people sniffing K powder, snorting K powder with their noses
-
-The first floor is a restaurant, at night they open the second floor, because Laos has regulations here
-
-A massive cleanup, but the foundation hasn't been eradicated.
-
-Economic chain and proximity: many local young people who work in bars, in long-term contact with this hugely profitable black industry, very easily go from "distributor" to "consumer"
-
-The guy next to me dared to openly pull open a girl's clothes...
-
-
-<!--memo:91b603c5b020-->
-### Laos has long served as a transit station for drugs sold to neighboring countries
-
-> 2026-04-25 10:56:51 · `#格物/老挝`
-
-Laos has long served as a transit station for drugs sold to neighboring countries, and this "spillover effect" makes local young people the first victims
-
-Many girls flock from the countryside into cities or special zones looking for work. Lacking education and skills, they very easily end up working in entertainment venues, bars or the gambling industry
-
-Many women first use meth because they were told it can "help you lose weight", "make you pretty", or "keep you going without getting tired when working late". Working in these high-intensity, high-pressure gray zones, meth becomes their "cheap fuel" for keeping up energy
-
-Besides addiction, shared needles or unprotected sex caused by drugs make infectious diseases such as HIV highly prevalent in this group
-
-They are victims squeezed together by a backward socioeconomic situation, rampant cross-border crime, and lack of education
-
-
-<!--memo:9d25437c014d-->
-### Physical reactions
-
-> 2026-04-25 11:44:19 · `#格物/老挝`
-
-This is the most common cause of vomiting. Meth masks the drunkenness of alcohol, making people drink far more than their body can handle, leading to severe stomach cramps and projectile vomiting
-
-Moreover, for women trying meth for the first time, or people with relatively poor physical condition, the central nervous system, when violently stimulated by meth (methamphetamine), produces a strong acute poisoning reaction
-
-When the drug's effect peaks or starts to fade (commonly called "coming down"), the body shows a series of discomforts
-
-Meth strongly constricts blood vessels, causing ischemia of the gastrointestinal tract, which in turn triggers nausea and violent vomiting
-
-Users often go a long time without drinking water or eating, and electrolyte imbalance can also cause vomiting
+That stayed with me.
 
 
 <!--memo:2601a76c8e5c-->
@@ -2143,7 +1848,7 @@ The culture over in Japan is more about following the rules ...
 
 ## 3. Daily Notes and Everything Else
 
-*34 entries*
+*32 entries*
 
 <!--memo:9606e9deb216-->
 ### I Am an Observer
@@ -2166,7 +1871,7 @@ I don't know whether he's been to this island. I think this island feels a lot l
 
 > 2026-04-01 23:29:51
 
-You know what? Right now I'm really looking forward to my experience of living on this little island. Because I think it's a very local way of doing things — it's all wooden huts here, and the one I'm staying in is, hmm, a stilt house, the posts are underneath. The floor is wooden and the walls are wooden, but you can tell the timber quality is very good. Inside it's all very logo-like... anyway, there's no writing, and actually there's a mosquito net up there, and today hardly any mosquitoes got in. They're still very conscientious about maintenance: the room isn't that refined, but it's all clean, and although it's wooden boards there's basically no dust. I think they do that quite well. What's really inconvenient is the infrastructure here — things like body wash, shampoo, and the infrastructure of the wash area here; it's probably not that refined
+You know what? Right now I'm really looking forward to my experience of living on this little island. Because I think it's a very local way of doing things — it's all wooden huts here, and the one I'm staying in is, hmm, a stilt house, the posts are underneath. The floor is wooden and the walls are wooden, but you can tell the timber quality is very good. Inside it's all very local, and there are hardly any mosquitoes, and actually there's a mosquito net up there, and today hardly any mosquitoes got in. They're still very conscientious about maintenance: the room isn't that refined, but it's all clean, and although it's wooden boards there's basically no dust. I think they do that quite well. What's really inconvenient is the infrastructure here — things like body wash, shampoo, and the infrastructure of the wash area here; it's probably not that refined
 
 
 <!--memo:aa8098230a11-->
@@ -2182,7 +1887,7 @@ Understanding lets a relationship see clearly, trust lets a relationship continu
 
 > 2026-04-02 13:03:37 · `#格物/人性`
 
-I think there's still a very fundamental point about understanding and approval, and first, how do you distinguish the two? I think sometimes a person longs to be understood because they want to be seen. Understanding is related to seeing, whereas approval is a matter of identity — it's something you really need in certain situations. For example, sometimes being understood but not approved of is strange too: the other person may support you, but may not see your complex situation. That's related to status, I feel
+I think there's still a very fundamental point about understanding and approval, and first, how do you distinguish the two? I think sometimes a person longs to be understood because they want to be seen. Understanding is related to seeing, whereas approval is a matter of identity — it's something you really need in certain situations. For example, sometimes being approved of but not understood is strange too: the other person may support you, but may not see your complex situation. That's related to status, I feel
 
 Because approval without understanding seems very strange. It's either a product of power, or a product of collision between relationships
 
@@ -2278,17 +1983,6 @@ These people can't touch my spiritual core
 
 We inevitably remain strangers to ourselves, we don't understand ourselves, we can't figure ourselves out. Our eternal verdict is: "The farthest thing from each person is himself." — For ourselves, we are not "the knowers"...
 
-
-<!--memo:683d24f8e0ba-->
-### Low-cost experience of power
-
-> 2026-04-16 12:33:02 · `#格物/观察`
-
-In China, acquiring high-tier social status or access to the opposite sex is extremely costly, and the rules are more complicated. But in Laos or Vietnam, the huge economic gap makes "sex" an extremely cheap, readily available commodity
-
-It also pushes some people to seek confirmation of power and psychological compensation through crude, simple means
-
-Under the new order, the original social oversight system instantly fails. For people who lack a strong internal order and haven't built their own philosophical system, once the external physical constraints are removed, their behavioral algorithm quickly degrades, regressing to the most primitive layer of physiological drives
 
 
 <!--memo:0037ffd36be0-->
@@ -2386,15 +2080,6 @@ What you write down only shows its value in the future. But the human brain is a
 
 Diary tools, GTD tools, knowledge management tools — they all die here. It's not that users lack self-discipline, it's that the mechanism doesn't provide an immediate loop
 
-
-<!--memo:3234e9ad18c3-->
-### In the trans community, there's a concept called "Passing"
-
-> 2026-04-25 10:10:43
-
-In the trans community, there's a concept called "Passing". If a person can be fully recognized in social life as the gender she wants, that's a kind of success for her. When you publicly question whether she's a "ladyboy", you're not just doubting her looks, you're negating an identity she spent huge amounts of money, pain and emotion to obtain
-
-So she'd prove herself, make you shut up
 
 
 <!--memo:3f0e0ba93ca6-->
@@ -2584,11 +2269,11 @@ I usually can't even be bothered to reply to people like that, so ...
 
 "Guo Yuanchao"
 
-A song this evening's breeze shared, and I liked it quite a lot when I heard it, especially this one lyric. I think our generation is also at a very awkward age: on one hand we're full of wonderful fantasies about the future, thinking the future is still long, but when we turn around we find we're already the age we once dreamed of being as kids. Reading it, I felt a lot. If you chase fame and fortune in the worldly sense, it's as if you've misled your young heart. But if when you're young you pursue freedom too much, it seems you've also ruined your whole life. Is the freedom we're ultimately pursuing still freedom? Whether it's the process of pursuing it, or the ending we want
+A song a friend shared, and I liked it quite a lot when I heard it, especially this one lyric. I think our generation is also at a very awkward age: on one hand we're full of wonderful fantasies about the future, thinking the future is still long, but when we turn around we find we're already the age we once dreamed of being as kids. Reading it, I felt a lot. If you chase fame and fortune in the worldly sense, it's as if you've misled your young heart. But if when you're young you pursue freedom too much, it seems you've also ruined your whole life. Is the freedom we're ultimately pursuing still freedom? Whether it's the process of pursuing it, or the ending we want
 
 We may be caged birds imprisoned by the system and tradition, imitating one successful person's way of being raised after another, yet unable to replicate their success. They are free, because they're walking their own path; they're happy, because they've picked up the treasures along the way. But we are sad: though we've reduced the risk of opening a path ourselves, we've also lost the joy of living
 
-We are lonely too — but we are lonely too. Even though there are millions of people accompanying us along the way, we also live one day 364 times over, and then have it copied by tens of thousands of people
+We are lonely too. Even though there are millions of people accompanying us along the way, we also live one day 364 times over, and then have it copied by tens of thousands of people
 
 
 <!--memo:26f105f44be1-->
@@ -2700,7 +2385,7 @@ Toward "high-density spiritual connection", toward "individual independence and 
 
 > 2026-04-16 01:06:36 · `#格物/知我`
 
-But if we break it down at the level of underlying logic and system operation, you'll find it's not a mental illness at all, but an extremely precise "cognitive firewall" with a very high defensive threshold
+At the time I preferred to describe this feeling as a “cognitive firewall.” This is a way of describing myself, not a psychological diagnosis.
 
 The high resolution means I can't deceive myself, can't go along with it
 
@@ -2758,7 +2443,7 @@ A person must always be treated as an end, not "merely as a means"
 
 I feel still so melancholy. Suddenly from an I person, I came to Vientiane for this water festival and became an E person. Now I've been forced by this water festival to be thrown back, thrown back into being an I person. And it wants me to re-adapt to Vientiane, a very quiet, very, very boring city. If there were no water festival, I think I would very much enjoy this city. I mean, I would really enjoy this tranquility, enjoy this quietness, enjoy this loneliness. But it's because of the water festival that it hung me up there, using my E-person attribute. You know? Going from I person to E person is just a matter of adaptation. But going from E person to I person is extremely painful — it requires you to rebuild your inner order
 
-It feels like I got ripped off by their boss tonight. A dinner cost me 30 yuan, which is very unreasonable. This 30 yuan I think is a lot, very very much, locally, especially for a little stall like this, and they actually charged me that much. But I didn't want to argue either, because I think maybe for them, this is the best chance to earn some ill-gotten money. But for me, this 30 yuan isn't as important as it is in their eyes, so I just gave it
+Dinner cost 30 yuan tonight, more than I expected. I was already feeling low and did not want to argue, so I paid. I had not checked the pricing clearly enough to know whether I had been overcharged.
 
 Right now I'm just spacing out in their shop, watching the cars go by, the people go by. I feel like this city has returned to its original appearance. A Vientiane I've never seen before, a Vientiane I truly met for the first time. So this is what it was like — this quiet, this lonely, this tranquil. Now the whole night I can only hear some cicadas, and animals and birds calling, and the sparse sound of vehicles. And then just my own footsteps
 
@@ -2766,11 +2451,11 @@ But it's also an honor — actually from this observation, I can also observe ho
 
 
 <!--memo:6c96d349f7a7-->
-### The outside world — I'm basically someone driven by internal resources, like solitude
+### I'm basically someone driven by internal resources, like solitude
 
 > 2026-04-17 23:54:40 · `#观我`
 
-The outside world — I'm basically someone driven by internal resources, like solitude, observation, thinking; these are my default energy sources
+I'm basically someone driven by internal resources, like solitude, observation, thinking; these are my default energy sources
 
 The water festival gave you a completely different fuel: external heat, the flow of crowds, instant connection. My system accepted this fuel, and burned it well
 
@@ -2780,7 +2465,7 @@ Because the body and nervous system have already been calibrated to that frequen
 
 This is probably an overdraft on the part I don't usually use — it's the bill
 
-The premise for an I person to enjoy solitude is never having left solitude. Once you leave for a long time, coming back isn't rest, it's withdrawal
+For me then, returning to solitude took adjustment. After a long time away, coming back sometimes felt less like rest and more like withdrawal
 
 
 <!--memo:c5ca69cdf65a-->
@@ -2940,11 +2625,11 @@ The guide talks about the cultural meaning of historical artifacts, but what eff
 
 He's serving several goals at once —
 
-First, the transmitter of a cultural narrative. This logic of ivory being clean and dharma-protecting is a real meaning system in their cultural context, not something he made up. He genuinely believes it, or at least tells it within a framework he takes for granted
+First, the transmitter of a cultural narrative. This logic of ivory being clean and dharma-protecting is a real meaning system in their cultural context, not something he made up. He may genuinely believe it, or at least tells it within a framework he takes for granted
 
 Second, the servant of the tourism economy. Making artifacts "have stories" is what makes tourists feel it's worth it, worth paying, worth tipping. Sacred narrative is the best premium tool
 
-Third, a transmission node of national soft power. The impression the Lao culture and tourism department wants tourists to take away — a mysterious, ancient civilization with depth
+These are only my guesses from the encounter, not evidence of the guide’s actual motives.
 
 
 <!--memo:3feb3f6b8400-->
@@ -3068,7 +2753,7 @@ I think there's another interesting point: this time I originally chose two aspe
 
 What I like most are the kids on the road — the children playing by the roadside, loudly greeting every cyclist who passes. They live completely in the here and now; that's an unreserved vitality... Maybe only when you're on the spot can you feel that kind of stirring, it keeps interrogating you: the titles you're proud of, the skyscrapers you're in, the wealth you have... But have you, in this world, in this life, with this one chance, really become the person you want to be? It seems we've lost some of the most precious qualities of being human in the AI era. Maybe time will teach us, and maybe only at the end of life will we sigh and cry...
 
-As a country that's young, a country that has been through hardship... average age even in the post-2000s... the face of the younger generation, those blank sheets that haven't been defined — when the wave of modernization finally covers these villages completely, where will they be taken?
+As a country that's young, a country that has been through hardship... so many young faces on the street... the face of the younger generation, those blank sheets that haven't been defined — when the wave of modernization finally covers these villages completely, where will they be taken?
 
 This world is a cactus...
 

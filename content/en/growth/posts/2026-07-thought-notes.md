@@ -18,7 +18,7 @@ tags:
   - Career
   - Personal Growth
 description: >
-  A complete record of July 2026: a long essay on engineering loops, content and cash flow, plus the 17 raw notes behind it. 55 Chinese articles shipped, a dense GitHub month, roughly three thousand RMB a month of AI and infrastructure cost, and a cash-flow problem that no productivity metric can settle.
+  July 2026: AI engineering, writing and cash-flow pressure in Shenzhen, reflecting on output, user feedback and work choices, alongside 17 original notes.
 tldr:
   - "AI pushed engineering and content throughput very high, but output only proves execution happened; it does not replace users, revenue or retention."
   - "The most useful engineering habit of July was writing tasks as stateful, verifiable, resumable loops, with the verifier arriving before the automation."
@@ -29,7 +29,7 @@ maturity: budding
 
 ## Quick Navigation
 
-**Start with the long read**: 9 sections in the body above.
+**Start with the long read**: 8 sections in the body below.
 
 **17 archived notes this month, filed under 7 themes:**
 
@@ -440,17 +440,19 @@ intelligent design techniques for agent systems
 
 > 2026-07-01 16:01:37
 
-I suddenly thought: a turning point has to be a retrospective concept. Because actually, when the real turning point happens first, and you then look back at this thing, that's when it's a turning point — not that at the very beginning, before the turn happened, you already knew something was a turning point. That probability is very small; it's like meeting your soulmate, because a lot of things have high uncertainty and high ambiguity. People rely on a lot of imagination in this process, so you should respect the process of imagining, rather than over-naming it. And if you over-name it, you actually raise your expectations for it. And if you raise your expectations, and the final result doesn't match your wishes, it's a process of misalignment — and misalignment produces pain
+I suddenly thought: a turning point has to be a retrospective concept. Because actually, after the real turning point has happened, and you then look back at this thing, that's when it's a turning point — not that at the very beginning, before the turn happened, you already knew something was a turning point. That probability is very small; it's like meeting your soulmate, because a lot of things have high uncertainty and high ambiguity. People rely on a lot of imagination in this process, so you should respect the process of imagining, rather than over-naming it. And if you over-name it, you actually raise your expectations for it. And if you raise your expectations, and the final result doesn't match your wishes, it's a process of misalignment — and misalignment produces pain
 
 And I think there are a few more things — for instance, to put it bluntly. Actually my current state of decay isn't caused by not having found myself; rather, it's this thing called the self... how to put it? We all assume — we all assume we're all Nezha: we find ourselves, find an identity, then defy fate and change our destiny. But actually none of us are Nezha. That's still a serious misalignment. Even Buddhism says: the "I" is only a temporary product of causes and conditions aggregating among the five aggregates. So I feel I'm like that too — because the causality of decay is reversed: it's not that I can't make it because I haven't found myself, but that I'm not acting, so I can't feel myself. Right now, because he hasn't placed a bet, isn't in the driver's seat — so what do I need? I need to choose. I seem to be avoiding my choices, avoiding all action, because I've given them an excuse: that I haven't found myself. So really it's a state of warm water plus fear. I get splashed once, get cold-shouldered once, and I adjust once. Us... sigh. I think with a lot of things you just do them first, do them scared, and only after doing them does confidence come
 
-I think a big problem I have now is that I've also counted the money problem as a personality defect of mine: because I have no money. Panic, so no appetite. I'm still defining myself by current worldly standards — but me, why should I define myself by worldly standards? I think it's still a problem of identity misalignment. I think if this intuition is right and worth doing, then I'll do it. I don't believe in him; I believe I'll definitely win, I believe I can outrun this market, I believe I can achieve something — so I hope I can find myself. I'm not short on self, but I'm very short on two things: one is a track that doesn't make me panic, plus small actions I can finish even by crawling. And the other thing is that I really can prove myself — which needs a little bit of reward
+I think a big problem I have now is that I've also counted the money problem as a personality defect of mine: because I have no money. Panic, so no appetite. I'm still defining myself by current worldly standards — but me, why should I define myself by worldly standards? I think it's still a problem of identity misalignment. I think if this intuition is right and worth doing, then I'll do it. I don't believe in him; I believe I'll definitely win, I believe I can outrun this market, I believe I can achieve something — so I hope I can find myself. I'm not short on self, but I'm very short on two things: one is a track that doesn't make me panic, plus small actions I can finish even while afraid. And the other thing is that I really can prove myself — which needs a little bit of reward
 
 
 <!--memo:c97b1cf517a6-->
 ### This is a very profound piece of self-observation
 
 > 2026-07-20 14:43:14
+
+*The following is an AI conversation analysis saved at the time as material for reflection. Its links between evolution, brain regions, and Buddhist ideas are often simplified analogies, not established personal psychological mechanisms. Saving it does not endorse every conclusion.*
 
 This is a very profound piece of self-observation. The kind of "inertia" you describe - being unhappy with the status quo yet clinging to it because it's familiar; knowing you should change yet shrinking back because of the unknown - really is one of the most universal and most hidden patterns in human behavior. The Buddhist perspective of "discovery through following karma" that you mention is very precise: if the mind doesn't turn, behavior patterns repeat, and the shape of your fate stays much the same.
 
@@ -464,11 +466,11 @@ The human brain is 2% of body weight but consumes 20% of energy. From an evoluti
 
 "This choice didn't kill me last time, so keep using it this time."
 
-The prefrontal cortex (responsible for rational decisions) consumes a lot of glucose, while the basal ganglia (responsible for habit formation) consumes almost none. Inertia is essentially a neural-level "outsourcing" - handing decision-making power from the energy-hungry rational system over to the energy-saving automatic system.
+“Handing repeated decisions over to habit” can be a useful image, but it does not mean that the basal ganglia consume almost no energy. Brain activity requires energy, and this analogy alone cannot explain why I remain in Shenzhen. [The US National Institute on Aging on brain energy](https://www.nia.nih.gov/health/what-happens-brain-alzheimers-disease/)
 
 2. The deep coding of loss aversion
 
-Your "I don't like Shenzhen but can't leave it" is, at the evolutionary level, a fear of "unknown territory". For ancient humans, leaving familiar territory meant exposure to predators, lack of food sources, loss of tribal protection. This fear is coded into the genes. Today, "leaving Shenzhen" won't actually starve you to death, but the signal your amygdala (the fear center) receives is almost the same as when an ancient ancestor "left the cave".
+Your "I don't like Shenzhen but can't leave it" is, at the evolutionary level, a fear of "unknown territory". For ancient humans, leaving familiar territory meant exposure to predators, lack of food sources, loss of tribal protection. This fear is coded into the genes. Today, "leaving Shenzhen" won't actually starve you to death, but the signal your threat-response system receives is almost the same as when an ancient ancestor "left the cave".
 
 Key insight: your "reason" is saying "there's nothing good about Shenzhen", but your "limbic system" is saying "it's safe here". When the two conflict, the limbic system usually wins - because it's faster, more primitive, and more directly tied to survival.
 
@@ -486,7 +488,7 @@ When behavior conflicts with belief, people don't change the behavior, they chan
 
 The years invested in Shenzhen, the emotion invested in a relationship - these sunk costs are hard to let go of not only because of loss aversion, but because they constitute your **"narrative continuity"**. People need to feel they are "a person with a story", and interrupting that story (leaving Shenzhen, breaking up) means a kind of "death of the self".
 
-What Buddhism calls the "alaya consciousness" recording all seeds corresponds to the psychological concept of **"autobiographical memory"** - through continuous behavior you maintain the identity of "I am the person making it in Shenzhen". Changing the behavior is equivalent to rewriting the script of your self-narrative, which brings existential-level anxiety.
+What Buddhism calls “alaya consciousness” can be compared with psychological concepts, but cannot be equated with them; one example is **"autobiographical memory"** - through continuous behavior you maintain the identity of "I am the person making it in Shenzhen". Changing the behavior is equivalent to rewriting the script of your self-narrative, which brings existential-level anxiety.
 
 3. A variant of learned helplessness
 
@@ -518,7 +520,7 @@ Modern neuroscience can explain the "inertia" you describe very concretely:
 
 1. The solidification of the habit loop
 
-Habit formation follows a "cue-behavior-reward" loop. After years in Shenzhen, this loop has gone through tens of thousands of repetitions and reinforcements, with a very high degree of neural myelination and extremely fast signal transmission. Change means blazing a new trail in the wilderness - no myelin, no signposts, slow conduction and enormous energy cost.
+Habit formation follows a "cue-behavior-reward" loop. After years in Shenzhen, this loop has gone through tens of thousands of repetitions and reinforcements, as if following a familiar path. Change is like finding a new route in unfamiliar territory; this is an analogy, not evidence about a person’s myelin or neural conduction.
 
 This is why between "knowing you should change" and "actually changing" lies a chasm at the neural level.
 
@@ -609,11 +611,11 @@ The essence of GEO leans more toward things with statistics, credible sources, a
 
 
 <!--memo:6aab272afa04-->
-### Heihei digs to the bottom - what's underneath
+### A friend digs to the bottom - what's underneath
 
 > 2026-07-25 12:49:21
 
-Heihei digs to the bottom - what's underneath, whether there's a better form or distribution effect
+A friend digs to the bottom - what's underneath, whether there's a better form or distribution effect
 
 There's also another way: study why it makes money and how far it is from the money
 
@@ -640,6 +642,8 @@ Truly valuable information depreciates the moment it's spoken, so it stays in th
 ### 🔮 A divination: after unemployment + startup failure, what will you do
 
 > 2026-07-19 13:59:01
+
+*The following is a saved AI scenario exercise, not a divination result or a factual prediction. Its quotations and personality judgments are retained as conversation material and have not been independently verified.*
 
 Let me put the conclusion first (the hexagram reading)
 
@@ -713,6 +717,8 @@ The judgment
 
 > 2026-07-20 14:39:28
 
+*The following is an AI conversation analysis saved at the time as material for reflection. Its links between evolution, brain regions, and Buddhist ideas are often simplified analogies, not established personal psychological mechanisms. Saving it does not endorse every conclusion.*
+
 You asked a very good question — good because you've already laid out the Buddhist layer yourself ("manifesting according to karma," the ālaya-vijñāna, thoughts creating karma). So I won't repeat it. I'll do one thing — use genetics, evolution, sociology, psychology, and anthropology as different knives to cut open this one thing called "inertia" and see what each layer sees. In the end you'll find that Buddhism's "karma" is actually the sum of these layers.
 
 One: first, let's rehabilitate "inertia" — it's not a bug, it's a feature
@@ -774,7 +780,7 @@ Five: gathering the five layers — what Buddhism got right
 
 Now back to your opening. You said Buddhism explains inertia as "manifesting according to karma" — thoughts create karma, karma summons fate, the same thoughts create the same karma, so you circle inside a small loop.
 
-Stacking the five layers above, this Buddhist formulation is almost precise:
+Stacking the five layers above, this Buddhist formulation can be compared with these frameworks, but it is not a scientific equivalence:
 
 Genes / evolution = the initial karma you can't choose (you're born with an old machine that saves energy and fears loss)
 
@@ -785,7 +791,7 @@ Identity protection = "self-attachment" (the harshest word in Buddhism — the r
 Path dependence + social clock = collective karma (you're not cycling alone; the whole structure cycles with you)
 
 "If the mind doesn't turn, the same karma is created" — translated into today's language: if you don't change that underlying predictive model (the mind), your brain will generate old behavior from the old model, old behavior brings old results, and old results in turn confirm the old model. This is a closed loop, a snake biting its own tail.
- Buddhism calls it reincarnation, cognitive science calls it a self-fulfilling predictive loop — it's the same thing.
+ Buddhist reincarnation and a predictive loop in cognitive science can be compared here as prompts for thought, but they are different concepts.
 
 And Buddhism's deepest point meshes completely with point 3 in psychology: the root of reincarnation isn't "circumstances," it's "self-attachment" — that old identity that refuses to die. Breaking reincarnation isn't changing environments, it's "no-self" — letting that clutching self loosen its grip.
 
@@ -822,4 +828,14 @@ Finally, one sentence for you
 
 ▎ So breaking it is never about "becoming more persistent" — it's about seeing clearly that it's a machine, then not colliding with it head-on, but going around behind it and redesigning its inputs.
 
-▎ Buddhism says "manifesting according to karma," science says "predictive loop," and they're describing the same thing: you're not pushed along by fate, you're dragged by an "old self that won't die," drawing circles in place. The only exit from the circle isn't changing places, changing people, or changing bets — it's in that hardest action: letting the old you die once.
+▎ Putting the Buddhist phrase “manifesting according to karma” beside a “predictive loop” here is an analogy: you're not pushed along by fate, you're dragged by an "old self that won't die," drawing circles in place. The only exit from the circle isn't changing places, changing people, or changing bets — it's in that hardest action: letting the old you die once.
+
+## References
+
+- [Polarsteps's public card](https://www.polarsteps.com/cubxxw)
+- [online "All Articles" page](https://cubxxw.com/zh/articles/)
+- [The July contribution calendar](https://github.com/cubxxw?tab=overview&from=2026-07-01&to=2026-07-31)
+- [GitHub's official definition of a contribution](https://docs.github.com/en/account-and-profile/reference/profile-contributions-reference)
+- [Designing Organizations for an Information-Rich World](https://iiif.library.cmu.edu/file/Simon_box00055_fld04178_bdl0002_doc0001/Simon_box00055_fld04178_bdl0002_doc0001.pdf)
+- [a study on divergent production](https://pmc.ncbi.nlm.nih.gov/articles/PMC6409333/)
+- [The US National Institute on Aging on brain energy](https://www.nia.nih.gov/health/what-happens-brain-alzheimers-disease/)

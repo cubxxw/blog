@@ -21,7 +21,7 @@ tags:
   - AI
   - Agent
 description: >
-  February 2026 deep thought notes with 363 entries covering travel experiences (Chiang Mai, Pokhara), ecological protection, urban governance observation, AI product thinking, Buddhist philosophy, and self-discovery.
+  February 2026: 335 edited notes on reading, AI, cities, desire and self-acceptance. Dates remain; mismatched headings are fixed and private material removed.
 tldr:
   - "Wildlife protection requires controlling human desire rather than expanding resources through internal education or external systemic incentives."
   - "Well-managed cities with clear standards and unified design create superior user experiences compared to chaotic growth-phase urban environments."
@@ -31,24 +31,24 @@ maturity: budding
 
 # 2026 February Thought Notes
 
-> **363 notes this month** | recorded from 2026-02-01 to 2026-02-28
+> **335 notes this month** | recorded from 2026-02-01 to 2026-02-28
 >
-> **Themes**: Reading, Ideas and History 85 · Daily Notes and Everything Else 63 · AI and Agent Systems 63 · Self-Knowledge and Psychology 61 · Travel, Places and Cities 41 · Business, Investing and Career 19 · Content, Craft and Recording 14 · Product, Engineering and Open Source 13 · Body, Health and Daily Life 4
+> **Themes**: Reading, Ideas and History 70 · Daily Notes and Everything Else 62 · AI and Agent Systems 63 · Self-Knowledge and Psychology 59 · Travel, Places and Cities 33 · Business, Investing and Career 17 · Content, Craft and Recording 14 · Product, Engineering and Open Source 13 · Body, Health and Daily Life 4
 >
-> Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
+> These are the records retained for public reading, filed by theme with their original timestamps. Technical specifications, prices, and judgments refer to the time of recording; unverified reading notes and AI analyses retain their own qualifications.
 
 ## Quick Navigation
 
 **Selected**: [Selected Notes of the Month](#selected-notes-of-the-month) · 5 entries
 
-**363 records this month, filed under 9 themes:**
+**335 records this month, filed under 9 themes:**
 
-- [Reading, Ideas and History](#1-reading-ideas-and-history) · 85
-- [Daily Notes and Everything Else](#2-daily-notes-and-everything-else) · 63
+- [Reading, Ideas and History](#1-reading-ideas-and-history) · 70
+- [Daily Notes and Everything Else](#2-daily-notes-and-everything-else) · 62
 - [AI and Agent Systems](#3-ai-and-agent-systems) · 63
-- [Self-Knowledge and Psychology](#4-self-knowledge-and-psychology) · 61
-- [Travel, Places and Cities](#5-travel-places-and-cities) · 41
-- [Business, Investing and Career](#6-business-investing-and-career) · 19
+- [Self-Knowledge and Psychology](#4-self-knowledge-and-psychology) · 59
+- [Travel, Places and Cities](#5-travel-places-and-cities) · 33
+- [Business, Investing and Career](#6-business-investing-and-career) · 17
 - [Content, Craft and Recording](#7-content-craft-and-recording) · 14
 - [Product, Engineering and Open Source](#8-product-engineering-and-open-source) · 13
 - [Body, Health and Daily Life](#9-body-health-and-daily-life) · 4
@@ -136,10 +136,10 @@ Accepting one's own imperfection is the beginning of growth.
 
 ## 1. Reading, Ideas and History
 
-*85 entries*
+*70 entries*
 
 <!--memo:15f51741fbbb-->
-### 6. Caffeine plus a nap: a two-layer boost
+### 6. The Mona Lisa: Light, Shadow, and Composition
 
 > 2026-02-04 12:33:50 · `#格物/艺术`
 
@@ -149,17 +149,17 @@ But just from the painting's structure and layout, it genuinely shows Leonardo's
 
 You can hardly find a harsh contour line. Leonardo achieved a silky transition between light and shadow by repeatedly layering an extremely thin transparent layer of oil paint (in some places only a few microns thick), dozens of layers over
 
-The smile is really strange: when you look at her lips, the smile seems faint, but when you gaze at her eyes, your peripheral vision makes you feel she's smiling
+The smile is really strange: when you look at her lips, the smile seems to disappear, but when you gaze at her eyes, your peripheral vision makes you feel she's smiling
 
 The composition is very standard; the seated pose itself is a very stable isosceles triangle
 
-And the placement of the face, hands and body are all in the golden ratio
+The placement of the face, hands, and body brings the golden ratio to my mind
 
 Sculptures of women from that era — ordinary women are shown with the head turned or lowered, but with the Mona Lisa, no matter what angle you look from, you feel she's gazing at you
 
 
 <!--memo:6853a5649dcc-->
-### 4. Beauty can be computed, but perfection belongs to the soul
+### 4. The Starry Night: Memory, Imagination, and Color
 
 > 2026-02-04 12:47:34 · `#格物/艺术`
 
@@ -169,13 +169,13 @@ It wasn't painted from life; in broad daylight he reconstructed his inner world 
 
 The tree on the left of the canvas that shoots into the sky like black flame is a cypress. In European culture at the time, cypresses were often planted in graveyards, symbolizing death
 
-This tree doesn't just balance the composition; it acts more like a bridge connecting the tranquil village (the human world) with the violent starry sky (heaven). It expresses a longing Van Gogh had at the time: to walk to the stars through death
+This tree doesn't just balance the composition; it acts more like a bridge connecting the tranquil village (the human world) with the violent starry sky (heaven). I read it as a longing to reach the stars through death. That is an association while looking at the painting, rather than evidence of Van Gogh’s intention
 
-The violent aesthetics lies in the color contrast: the stars are a dazzling yellow, and a deep blue as well — even though the picture is motionless, your eye still catches the stars and the moon
+The violent aesthetics lies in the color contrast: the stars are a dazzling yellow, while the night sky is deep blue — even though the picture is motionless, your eye still catches the stars and the moon
 
 
 <!--memo:71a5d877c7d0-->
-### 3. The AI value chain: vertical integration from chips to energy
+### 3. Computing Beauty and the Irregularities of the Soul
 
 > 2026-02-04 12:52:27 · `#格物/艺术`
 
@@ -191,7 +191,7 @@ Bias and flaws are the soul; what can't be computed, what can't be reasoned out,
 
 
 <!--memo:d25553bcfd99-->
-### Title list
+### Girl with a Pearl Earring: A Symbol Beyond Reality
 
 > 2026-02-04 13:18:12 · `#格物/艺术`
 
@@ -217,7 +217,7 @@ A detached kind of intimacy ...
 
 
 <!--memo:9040a592086d-->
-### Title list (2)
+### Girl with a Pearl Earring: A Symbol Beyond Reality (2)
 
 > 2026-02-04 13:18:12 · `#格物/艺术`
 
@@ -281,9 +281,11 @@ The designer didn't try to “conquer” the wood, forcing it into a shape that 
 
 
 <!--memo:06eb7ad72989-->
-### Couples Come to Look Alike Through Shared Experience
+### Couples Looking Alike: A Hypothesis About Shared Experience
 
 > 2026-02-08 11:00:36 · `#格物/生物`
+
+The following preserves my hypothesis at the time about couples looking alike. One study found initial facial similarity but no convergence over time, so the explanations below should be read as conjectures ([Tea-makorn and Kosinski, 2020](https://www.nature.com/articles/s41598-020-73971-8)).
 
 A pretty interesting phenomenon: the faces and looks of a married couple grow more and more alike
 
@@ -309,13 +311,13 @@ Carbohydrates break down into glucose and enter the blood, causing blood sugar t
 
 The rise in blood sugar stimulates a large release of insulin
 
-Insulin promotes the conversion of tryptophan in the liver into serotonin, and finally into melatonin (the sleep-promoting hormone)
+One explanation concerns changes in amino-acid availability after a meal, affecting tryptophan entering the brain and its role in serotonin and melatonin synthesis. This conversion should not have been placed in the liver ([HealthHub medical Q&A](https://www.healthhub.sg/highlights-and-insights/expert-voices/your-medical-questions-answered-food-coma)).
 
-At the same time, after eating, orexin (the neuropeptide that promotes wakefulness) secretion decreases, blood flow to the brain relatively decreases, and the parasympathetic nervous system becomes active — all of which intensify the drowsiness
+I also noted possible explanations involving orexin, the autonomic nervous system, and blood flow, but did not verify each one. They should not be treated as established causes of everyone’s post-meal sleepiness.
 
-Carb coma is a normal physiological phenomenon, and for most people there's no need to worry excessively. But if severe symptoms appear frequently, it may hint at an unreasonable diet structure or an underlying health problem (such as diabetes risk)
+Post-meal sleepiness alone cannot establish whether someone has diabetes. Frequent or severe symptoms affecting everyday life call for assessment of the specific cause by a clinician.
 
-By comparison, the effect after drinking an Americano is fairly limited — generally after about 10 to 20 minutes you start to feel a bit more awake, and by 30 to 60 minutes the alerting effect peaks
+By comparison, the effect after drinking an Americano has a little delay — generally after about 10 to 20 minutes you start to feel a bit more awake, and by 30 to 60 minutes the alerting effect peaks
 
 Caffeine must first be absorbed by the stomach and intestines, then enter the blood, and then go "block" the adenosine receptors in the brain
 
@@ -325,7 +327,7 @@ Adenosine = an accumulating "fatigue signal" in the brain
 
 Caffeine = pulling the plug on the "fatigue signal"
 
-Carb coma is essentially blood sugar–insulin–nervous system regulation
+What follows is my simplified understanding at the time of blood sugar, insulin, and the nervous system; it does not account for every cause of post-meal sleepiness.
 
 Eating a lot of carbs → blood sugar rises rapidly → a large release of insulin; insulin sends glucose into cells and also affects the ratio of amino acids in the blood
 
@@ -345,7 +347,7 @@ Parasympathetic nervous system (rest, digest) ↑
 
 If you eat carbs directly it's easy to get carb coma, especially white rice + noodles + sweet drinks + very little protein and fat
 
-You can eat protein and vegetables first, then carbs — that way digestion slows down, blood sugar rises more gently, and insulin won't overreact
+Meal order is worth looking at. Small studies in people with diabetes or prediabetes found lower post-meal glucose excursions when protein and vegetables came before carbohydrates; this does not guarantee that everyone will avoid sleepiness or an insulin rise ([original study](https://pmc.ncbi.nlm.nih.gov/articles/PMC7398578/)).
 
 Prioritize:
 
@@ -355,7 +357,7 @@ Whole wheat
 
 Carbs from vegetables
 
-After eating, sit a bit longer, walk around, move around — this can help muscles use up some of the glucose and reduce violent blood sugar swings
+After eating, walk around and move a little — this can help muscles use up some of the glucose and reduce violent blood sugar swings
 
 When you're short on sleep, insulin sensitivity drops, blood sugar is more likely to jump around, so you'll be sleepier at noon the next day
 
@@ -394,60 +396,6 @@ Even toward pain, Li Bai just laughed it off, so he said: "I laugh at myself, a 
 > 2026-02-10 21:04:01
 
 Li Bai was steeped in Daoism from childhood. As he himself said, "At five I recited the Liujia." The Liujia was a strange book of a late Daoist offshoot; the Biographies of Immortals has the line "Zuo Ci studied the Dao and was especially versed in the Liujia, able to command ghosts and spirits," which proves it. He also said, "At ten I read the Hundred Schools; since Xuanyuan I've heard a good deal" — Xuanyuan is precisely what the Daoists invoke, the so-called Huang-Lao. In his poem "Zeng Zhang Xiang Hao" [Presented to Chancellor Zhang Hao] there is the line "at fifteen I read strange books." Books orthodox to Confucianism can't count as strange books, so strange books must be Daoist texts again. It can be seen that up to this point his reading was still under this one system
-
-
-<!--memo:60701f9c35bb-->
-### The Potala Palace's Triple Nucleus
-
-> 2026-02-18 00:15:55
-
-Mm, sometimes it feels quite a pity that the Potala Palace today has mixed into being a museum. It isn't a palace; it's a church-state machine that ran continuously for hundreds of years.
-
-I remember when I entered the Potala Palace, I felt the spaces inside were quite narrow, not upscale at all. Although the upper levels are more refined, more exquisite, and larger, they still aren't what you'd call very big. Compared with some places I'd been before, some architectural styles — the corridors are relatively narrow, the light is dim, and there's a strong sense of lived-in life
-
-But the Potala Palace is essentially a triple overlay. One is the religious nucleus, one is the political nucleus, and another is the symbolic nucleus. The symbolic nucleus is essentially legitimacy inward, and deterrence plus divine authority outward.
-
-Many people say Tibet is very quiet, very ordinary and balanced, but geographically Tibet is full of competition and oppression. There are many tusi [local chieftains], many noble families, many monastic systems, many external forces. So essentially it is a core site of power games, not a meditation room.
-
-Many practitioners might be chanting scriptures in the morning, then reviewing documents at noon, and taking part in power negotiations at night. That's a very interesting picture. Although the White Palace handles life and government affairs, the Red Palace handles religion and meditation.
-
-In winter the Potala Palace is super cold. Because retaining walls don't equal warmth, the heating conditions inside are very poor. Many people inside are practicing asceticism, you feel.
-
-Inside a truly great palace there is jealousy, there is power struggle, there are factions, there is fear, and there is also genuine compassion and practice. So this really is very interesting.
-
-Inside the Potala Palace I thought about some of the cruelest institutions. The first is the reincarnation system. The reincarnation system is an abandonment of the individual; it is an extremely de-personalizing system. A child, before even forming self-awareness, is determined to be the continuation of a previous life's unfinished business, and from then on loses an ordinary childhood, loses the right to choose their life, loses the possibility of failure. You are no longer you; you are the person this institution needs you to become. Reincarnation isn't romance either; it equals a solution for the continuity of authority. So that's very cruel.
-
-The second layer is that a sacred identity brings lifelong loneliness. Movement is generally highly restricted, and interpersonal relationships are strictly screened.
-
-
-<!--memo:8d505ad093a8-->
-### The Legend That a Kukri Must Draw Blood When Drawn
-
-> 2026-02-18 21:53:53 · `#印度教/尼泊尔`
-
-The story of the Gurkhas begins with the kingdom of Gorkha in Nepal.
-
-In the early 19th century the British East India Company tried to invade Nepal. The British, with modern firearms, were shocked to find that Gurkha soldiers with curved knives were ferocious in mountain warfare and would rather die than surrender.
-
-After the war the two sides signed a treaty. The British held such respect for these opponents that they decided: "If we can't beat them, hire them." From then on the Gurkhas began more than two hundred years of fighting for Britain (and later India, Singapore and others).
-
-Motto: "Kaphalnu vanda murnu ramro" (better to die than to live a coward). This line is carved deep into every Gurkha soldier.
-
-The kukri: the symbol of their identity. This recurved knife has its weight forward and chops with great force. The legend that "a kukri must draw blood once unsheathed" is exaggerated, but in hand-to-hand combat the blade truly struck terror into enemy troops.
-
-Gurkha soldiers took part in both world wars, the Falklands War, the war in Afghanistan and almost every major conflict Britain was involved in. They earned countless Victoria Crosses (Britain's highest military honor).
-
-On the Burma battlefield, the trench held by Lachhiman Gurung came under attack from Japanese troops. He picked up grenades thrown in by the Japanese with his right hand and threw them back, but as he threw the third one it exploded, blowing off the fingers of his right hand and wounding his face and body.
-
-He did not retreat. Holding his rifle in his left hand, he held the position alone for four hours, killing 31 Japanese soldiers by himself and keeping the position. This "fight to the death, never retreat" is the typical Gurkha trait.
-
-Becoming a Gurkha is the dream of many young men in Nepal's hills, because it means exceptionally good pay (dozens of times Nepal's average income) and the right to reside in Britain. So the selection is brutally hard.
-
-Tens of thousands apply each year, but usually only a few hundred are accepted into the British Army (an acceptance rate lower than Harvard's).
-
-Besides the British Army, the Indian Army also keeps a large number of Gurkha regiments. In addition, the famous "Gurkha Contingent" in Singapore's police force is also Gurkha; they are often used to protect VIPs or handle riots, because as foreigners they have no local social ties and can carry out orders with absolute neutrality.
-
-Retired Gurkhas are usually the richest and most respected people in their hometowns. Their remittances are an important pillar of Nepal's economy. Many veterans return home to open schools or fund infrastructure.
 
 
 <!--memo:800dc1d6fbf6-->
@@ -569,7 +517,7 @@ Buddhism: how to face suffering, birth and death, and liberation.
 
 
 <!--memo:de99e470d3fc-->
-### Bon and Shinto Share a Root in Nature Worship
+### Similarities Between Bon and Shinto Nature Worship
 
 > 2026-02-19 14:52:36
 
@@ -603,7 +551,7 @@ Buddhism, a highly systematized body of philosophical reasoning, was the perfect
 
 Songtsen Gampo used Buddhism's universality to break the Bon priests' absolute monopoly on "divine will." As Buddhism took root, the tsenpo's image was gradually sanctified (later generations even regarded him as an emanation of Avalokiteshvara).
 
-To translate sutras and bring in Buddhist texts, Tubo had to have its own writing. It was against this background that the Tibetan script was created. With writing, the state no longer governed only through customs passed by word of mouth; it could establish written archives, promulgate written law codes, record history, and count households and taxes. This was the most crucial step in Tubo's move from "barbarian tribe" to "feudal legal state."
+To translate sutras and bring in Buddhist texts, Tubo had to have its own writing. It was against this background that the Tibetan script was created. With writing, the state no longer governed only through customs passed by word of mouth; it could establish written archives, promulgate written law codes, record history, and count households and taxes. This was the most crucial step in Tubo's move from a tribal confederation toward a state with written tools of governance.
 
 The profound philosophical concepts Buddhism brought — karma, cause and effect, compassion, emptiness — greatly widened the spiritual world of the Tubo people. It gave a people long living in a harsh natural environment and frequent warfare the wisdom to look inward and a systematic moral code. This evolution at the spiritual level gave Tubo the cultural confidence to speak with the highly developed Tang civilization as an equal.
 
@@ -642,166 +590,8 @@ Bon's logic was "priests communicate with the gods, the gods guide the tsenpo," 
 With the introduction of Buddhism, Songtsen Gampo was gradually cast as an emanation of Avalokiteshvara. This shift of identity was subversive: the tsenpo was no longer a mortal who needed priests to hear divine will — he himself was a god and Buddha. This fundamentally stripped the Bon priests of their absolute political voice and completed the most important step toward centralization.
 
 
-<!--memo:d3832dffcf1c-->
-### Ralpacan's Buddhist Zeal Inflamed Noble Conflict
-
-> 2026-02-19 15:04:35 · `#格物/佛学`
-
-Ralpacan (Reba Jin) was an extremely fervent Buddhist, and to promote Buddhism he issued very radical policies.
-
-He decreed that every seven commoner households had to support one monk.
-
-Monasteries held large estates and subject populations and paid no taxes to the state, and monks did not serve in the military.
-
-He appointed monks to the highest state office, the great chancellor (prime minister), and even enacted harsh laws: "whoever dares glare angrily at a monk shall have his eyes gouged out; whoever dares point a finger at a monk shall have his finger cut off."
-
-Tubo was a slave empire that expanded by force. The military aristocracy bled and fought at the front, yet had to hand huge economic and political benefits to monks who paid no taxes and fought no wars. The state's land, wealth and population flowed in great volume into the monasteries, directly shaking Tubo's foundations and thoroughly enraging the traditional military nobles and the Bon forces.
-
-Anti-Buddhist nobles staged a coup, assassinated Ralpacan, and raised his brother Langdarma to the throne.
-
-Langdarma represented the interests of the Bon forces and the traditional military aristocracy. As soon as he took power he launched a brutal, Tibet-wide "persecution of Buddhism":
-
-Closing monasteries and destroying Buddha statues
-
-Forcing monks to return to lay life, stripping them of all privileges
-
-Purging pro-Buddhist ministers
-
-This persecution was extremely brutal and pulled Buddhism in central Tibet up by the roots; historians call it the "Tubo Dharma Calamity" or "Langdarma's persecution of Buddhism."
-
-In 842 AD, a Buddhist ascetic named Lhalung Pelgyi Dorje hid a bow and arrow in his sleeve, disguised himself as a Bon follower and danced before Langdarma. While Langdarma watched, absorbed, he shot an arrow through his throat.
-
-From then on the Tibetan plateau entered more than four hundred years of "division and warlord rule" (until the Yuan dynasty brought it into its territory in the 13th century), and the unified Tubo empire that had once dominated the Tang border vanished forever from the long river of history.
-
-
-<!--memo:8fd7e96903b0-->
-### Langdarma's Persecution and Buddhism's Revival From the Margins
-
-> 2026-02-19 15:31:19 · `#格物/佛学`
-
-When Langdarma persecuted Buddhism, Buddhism in central Tibet was almost wiped out, but the sparks of revival came from the margins.
-
-The Lower Transmission (brought back from the east): a few surviving monks fled to Qinghai and Kham (eastern Tibetan plateau) and there took disciples and transmitted the precepts. A century later their descendants in the lineage returned to Lhasa and Samye Monastery and restored the monastic order in central Tibet.
-
-The Upper Transmission (brought in from the west): descendants of the Tubo royal house founded the Guge kingdom in western Tibet (the Ngari region). To restore pure Buddhism, the Guge royal house spent heavily to invite the renowned Indian master Atisha into Tibet. Atisha's arrival systematically straightened out the chaotic popular Buddhist practices of the time and laid a solid theoretical foundation for the development of schools in the later diffusion period.
-
-As Buddhism revived, eminent monks in various places gradually formed different schools, combining different lines of transmission, different emphases in practice, and different local patrons.
-
-The appearance of Master Tsongkhapa (1357–1419) can be called a great "system-level reconstruction" in the history of Tibetan Buddhism.
-
-Single-handedly he ended centuries of chaos and decline in Tibetan Buddhism and created the largest school, which later ruled Tibet for hundreds of years — the Gelug school (the Yellow Sect).
-
-At the end of the 14th century (in the early Ming dynasty in Chinese history), Tibetan Buddhism had many schools but was deeply corrupt inside, arguably on the edge of life and death.
-
-Monks at the time were heavily involved in worldly struggles for power and profit; they not only amassed wealth but commonly married and had children, drank and caroused. The line between monastics and worldly warlords was extremely blurred.
-
-Tibetan Buddhism divides into "exoteric" (theoretical study) and "tantric" (advanced esoteric practice). Many monks at the time were ignorant, skipping the dry theoretical foundation and, under the pretext of "practicing tantra," abusing practices such as channels and vital drops, even "sexual union," to satisfy their own desires, leaving public morals badly decayed.
-
-The people lost their awe of monks and Buddhism's credibility was nearly bankrupt. It was out of this extreme despair, with the whole profession facing a "moral landslide," that Tsongkhapa stepped forward.
-
-He reformed the precepts with an iron hand (emphasizing "celibacy" and "ascetic practice"): absolute celibacy (no marriage, no contact with women), vegetarianism for life or a strict ban on killing, no alcohol. With extremely severe moral standards he forcibly re-opened the distance between monks and ordinary worldly people and won back the people's awe.
-
-He set a mandatory study path of "exoteric first, then tantric": any monk had to spend a dozen years or even decades systematically studying exoteric logic and philosophy (such as the Prajnaparamita Sutras and the Madhyamaka-karika), and only after passing examinations was he qualified to touch tantra.
-
-He wrote Tibetan Buddhism's most logical and systematic masterpieces — the *Great Treatise on the Stages of the Path to Enlightenment* (Lamrim Chenmo) and the *Great Treatise on the Stages of Tantra*. Like operating manuals, these two books lay out every stage, every mental state and every step of practice from an ordinary person to final Buddhahood in perfect, clear order, eliminating the chaos of practitioners blindly muddling along on feeling.
-
-To draw a clear line between himself and the corrupt old-school monks in red hats or black hats, Tsongkhapa required himself and his disciples to wear yellow Dharma hats when performing rituals. In Buddhism yellow symbolizes the earth and also strict adherence to precepts. From then on the name "Yellow Sect" spread quickly.
-
-Because Tsongkhapa's learning was unfathomable and his morality extremely lofty, nobles, scholars and even eminent monks of other schools across Tibet defected and became his disciples. Like sparks setting the prairie alight, the Yellow Sect quickly became the largest, most academically rigorous and most tightly organized school in Tibetan Buddhism.
-
-But Tsongkhapa's reform had a side effect. Since the Yellow Sect required monks to be absolutely celibate and forbidden to marry and have children, when a leader of the older generation died, who would inherit the enormous monastic property and political power? The hereditary path of father to son was completely blocked.
-
-Exoteric is the foundation; tantra is an accelerated method built on emptiness, precepts and bodhicitta.
-
-The "fake yogi" problem in Tibet's later diffusion period
-
-People calling themselves "yogis" or "tantric practitioners" skipped exoteric study, abused the names of "channels and vital drops" and "highest yoga tantra," and used "transcending the precepts" as an excuse to have sex with women and demand offerings.
-
-So the "dual cultivation" in TV dramas really exists; it belongs to tantra.
-
-"Union / dual cultivation" is not about liberating desire,
-
-But about cutting off "self-attachment" directly at "the point where desire is strongest."
-
-The essential reason such a design appears in the highest yoga tantra is that it solves an "ultimate technical problem," not an ethical one.
-
-In exoteric practice and ordinary meditation the path is: observe → let go → transcend affliction.
-
-"In the state of strongest attachment, can one give rise to no 'I'?"
-
-Sexual desire is, in human experience, the strongest sensory involvement and the strongest projection of identity.
-
-If one can still maintain emptiness, non-self, neither grasping nor rejecting here, then in no state will one be kidnapped by affliction again.
-
-But it fails almost ninety-nine percent of the time; for an ordinary person only one thing happens: "I want it more," not "I have seen non-self."
-
-But the reincarnation system the Yellow Sect later designed is an extraordinarily rare and ingenious institutional design in human history. It perfectly combined deep Buddhist philosophy with the practical transfer of political power, forming a tight logical loop.
-
-Family inheritance easily corrupts, and master-to-disciple succession makes disciples fight over resources.
-
-In Mahayana thought, an eminent monk who reaches a very high level of practice (a bodhisattva) has already escaped the cycle of birth and death. But out of compassion for sentient beings, they voluntarily give up entering nirvana and choose to "return by vow" — that is, consciously control the time and place of their next rebirth and continue leading believers in practice.
-
-This way the new leader is not "elected" but a "seamless switch" from the previous leader. In the eyes of believers, though the body is changed, the soul and authority continue one hundred percent. This sanctity is enough to suppress any disciple's ambition to usurp power.
-
-Before the old living Buddha dies he usually leaves some hints (a metaphorical poem, for instance) pointing to the direction, terrain features or even family circumstances of his next birth. The direction his body leans at the moment of death is also treated as an important clue.
-
-The monastery's eminent monks travel to Tibet's sacred lake, Lhamo Latso. They chant and pray at the lakeside, and by watching the strange images appearing in the lake's reflection (specific Tibetan letters, the shape of a monastery, features of a village) they pin down the general direction of the child.
-
-The search party disguises itself as ordinary people or merchants and looks within the pinpointed area for boys born around the time of the old living Buddha's death. When a likely target is found, the monks mix the old living Buddha's ritual implements (prayer beads, tea bowl, bell and vajra) with identical replicas and let the child grab. If the child accurately picks up the genuine items from the previous life, or can even name the previous life's attendants, he is confirmed as a candidate.
-
-By the Qianlong period of the Qing, to prevent local Tibetan nobles from manipulating the search behind the scenes and forcing their own family's child to be recognized as a living Buddha in order to seize power, the Qing court issued the golden urn (Golden Bumpa). The names of all shortlisted candidates are written on ivory lots and placed in the golden urn, and under the joint supervision of the Imperial Resident and eminent monks a public draw decides the final reincarnation.
-
-This broke class rigidity, and the child also got a long cultivation period to ensure his values were pure. The child is usually brought into the monastery at a few years old, cut off from the world, and given closed-door training for ten to twenty years by a top team of scholars (his tutors). This guarantees that the new leader not only has sacred legitimacy but also receives the most elite education in philosophy, logic and management.
-
-
-<!--memo:d35c1625cbe5-->
-### Reincarnation Did Not Change the Class and Economic Base
-
-> 2026-02-19 15:44:17 · `#格物/佛学`
-
-If this system is so good, why did it extend into a brutal class system and slavery?
-
-It brings to mind Master Jigong — the reincarnation of an arhat.
-
-The reincarnation of living Buddhas is indeed extremely ingenious: it broke the monopoly of bloodline, calmed the internal friction of transferring supreme power, and even gave common people at the bottom a chance to leap to the position of supreme leader.
-
-So religious belief is sometimes powerless too: it can solve the problem of power distribution but has not changed the economic base.
-
-On the contrary, as the union of church and state deepened, this system became the strongest ideological tool for freezing class and squeezing the bottom.
-
-The Tibetan plateau is cold and short of oxygen, and agriculture and herding produce extremely little. When the Gelug school (the Yellow Sect) rose, maintaining a huge monastic establishment, supporting tens of thousands of monks who had left productive labor and building splendid temples required an extremely stable source of wealth.
-
-In ancient times without modern industry, the only source of wealth was land and the people bound to it.
-
-Thus the government, the nobles and the upper clergy of the monasteries emerged.
-
-The truly terrifying thing about the union of church and state is that it controls not only the body but the mind.
-
-The profound Buddhist philosophy of "karma" and "the cycle of birth and death" was distorted by the ruling class into a perfect tool of rule.
-
-Legitimizing the top: why do living Buddhas and nobles enjoy glory and wealth? Because they accumulated immeasurable merit in past lives — this is the blessing they "deserve."
-
-Rationalizing the bottom: why were you born a serf, with not enough food and still beaten? Because you did wrong in a past life; your present suffering is "clearing karmic obstruction." If you dare rebel against the lord (who stands for the gods and Buddhas), you will not only be punished in this life but go to hell after death; if you submit to everything and work desperately for the monastery, you may be reborn as a good person next time.
-
-Buddhism's core teachings are "all beings are equal" and "great compassion" — so why did such a mechanism come out of it?
-
-It seems the monks too were deeply branded into a system logic they could not escape.
-
-Desire and resources do not coexist easily. To land an idealistic system, the most fatal test is the distribution of resources; only reasonable distribution of resources solves the problem of desire. Religion addresses the problem of desire, but if religion does not address the distribution of resources, then restraining desire is problematic.
-
-Early Buddhist monks were wandering ascetics begging for alms, but once the Gelug school (the Yellow Sect) gained absolute rule over Tibet, the nature of monasteries changed fundamentally. A monastery was no longer just a place of practice; it became Tibet's largest economic trust (monopoly conglomerate).
-
-The eminent monks were not only spiritual leaders but the "chairmen" and "executives" of this enormous economy. Asking them to abolish serfdom would be asking them to disarm themselves, voluntarily give up the economic lifeline that kept the huge monastic order running, and even strip the privileges from the tens of thousands of monks beneath them. Faced with real interests, the collective choice of human nature tends to be to preserve the system rather than overturn it.
-
-The upbringing of great living Buddhas such as the Dalai Lama and the Panchen Erdeni
-
-They are usually recognized as reincarnations at two or three, then brought into the Potala Palace or Tashilhunpo Monastery and placed in an extremely tightly controlled, luxurious and closed environment. Every day they face top-tier tutors, profound philosophical texts (such as Buddhist logic and the Madhyamaka view) and endless ritual.
-
-They had no chance at all to touch the real society at the bottom. Around a living Buddha stood a huge bureaucracy (the Kashag) and great nobles, and these people formed a thick "firewall" that screened out the blood and tears and brutal punishments of the serfs below. The eminent monks contemplated "form is emptiness" in grand halls but could hardly see the serfs outside the monastery walls whose hands were cut off and eyes gouged out for failing to pay rent and taxes. Their knowledge of the world was highly theoretical and filtered.
-
-
 <!--memo:f6c34ec1b94c-->
-### 27. The Evolution of the Jokhang and the Birth of the Barkhor Pilgrimage Way
+### 27. A Timeline of the Spread of Buddhism
 
 > 2026-02-19 17:43:10 · `#佛学`
 
@@ -821,7 +611,7 @@ Song, Yuan, Ming and Qing: Buddhism developed further and penetrated deeply into
 
 
 <!--memo:79d1b519685f-->
-### 26. Full-Prostration Bowing and the Spiritual Value of Eradicating Pride
+### 26. The Jokhang and the Formation of the Barkhor Pilgrimage Route
 
 > 2026-02-19 18:02:59 · `#佛学`
 
@@ -857,7 +647,7 @@ Along with the chanting, believers measure the land with the rise and fall of th
 
 
 <!--memo:8adc1ef98a4b-->
-### 25. How Chan and Pure Land Practice Paths Differ
+### 25. The Spiritual Meaning of Full-Length Prostration
 
 > 2026-02-19 18:21:53 · `#佛学`
 
@@ -893,7 +683,7 @@ The forehead also grows calluses over the years, even marks of earth — the mos
 
 
 <!--memo:a76bb7a86600-->
-### 24. The Six-Syllable Mantra as an Anchor in Moving Meditation
+### 24. Chan and Pure Land: Different Paths of Practice
 
 > 2026-02-19 18:34:28 · `#佛学`
 
@@ -921,7 +711,7 @@ Comparatively, believing in Amitabha feels easier to start with, aiming at the W
 
 
 <!--memo:caf0881b84ce-->
-### 23. No School Is Better; Personal Experience Is the Container
+### 23. The Six-Syllable Mantra as an Anchor for Moving Meditation
 
 > 2026-02-19 18:44:06 · `#佛学`
 
@@ -933,7 +723,7 @@ As movement and mantra fall fully in sync, the subjective "I" (the self that get
 
 
 <!--memo:8d32ead580fe-->
-### 19. Sensitivity and Pain Are the Ticket to Insight
+### 19. Inner Dialogue and Non-Self in Extreme Fatigue
 
 > 2026-02-19 19:42:21 · `#佛学`
 
@@ -955,7 +745,7 @@ The non-self catalyzed this way does not mean I lose consciousness; it means let
 
 
 <!--memo:6674199b609d-->
-### 17. Responsibility for the Process and Distinguishing Friends From Buddies
+### 17. Playful Living and Buddhist Practice
 
 > 2026-02-19 20:14:48 · `#佛学`
 
@@ -989,7 +779,7 @@ Instead you become the highest-level player — living with enormous creativity 
 
 
 <!--memo:86099980a6fd-->
-### 14. Stoicism as a Mental Operating System
+### 14. Philosophical Schools as Guides to Playful Living
 
 > 2026-02-20 00:05:42 · `#佛学`
 
@@ -1009,7 +799,7 @@ The word "faith" gets deconstructed: you no longer need to blindly "believe" tha
 
 
 <!--memo:b98f2eccd825-->
-### 13. Metacognition and Meaning-Weaving in Shared Narratives
+### 13. Stoicism as a Mental Operating System
 
 > 2026-02-20 00:26:58 · `#格物/哲学`
 
@@ -1037,7 +827,7 @@ The view from above: try mentally raising your viewpoint, looking down at the ro
 
 
 <!--memo:e468472f3ce6-->
-### 6. The Power of Inherited Belief Behind Unending Butter Lamps
+### 6. Daily Worship and Practice at the Jokhang
 
 > 2026-02-20 11:52:03 · `#佛学`
 
@@ -1071,7 +861,7 @@ There are also some seventh-century wooden pillars that have survived a very lon
 
 
 <!--memo:53855f061e57-->
-### 5. The Inverted Relation of Beings and Bodhisattvas in Buddhist Logic
+### 5. The Belief Sustaining the Butter Lamps
 
 > 2026-02-20 12:36:21 · `#佛学`
 
@@ -1095,7 +885,7 @@ No one has ever all left the room.
 
 
 <!--memo:7132eabe4109-->
-### 4. Sera Monastery's Layout and the Gelug Scholastic System
+### 4. Sentient Beings and Bodhisattvas in Buddhist Thought
 
 > 2026-02-20 17:13:43 · `#佛学`
 
@@ -1109,7 +899,7 @@ If some form of propagation serves only power, wealth or the superiority of a ve
 
 
 <!--memo:1e782ad850d7-->
-### 3. Manjushri Raising His Sword and Chan's Pointing at the Mind
+### 3. Sera Monastery and the Gelug Scholastic System
 
 > 2026-02-20 17:42:11 · `#佛学`
 
@@ -1139,7 +929,7 @@ Sera is the highest institution for studying the Dharma and earning the highest 
 
 
 <!--memo:7b99b742f2b4-->
-### 2. The Butter Lamp as a Psychological Anchor and Long-Term Faith
+### 2. Manjushri Raising His Sword and Chan Wisdom
 
 > 2026-02-20 17:47:22 · `#佛学`
 
@@ -1161,11 +951,11 @@ In China Manjushri "landed" at Mount Wutai. Another interesting point: Chinese B
 
 
 <!--memo:99764fbad63a-->
-### Title Generation Result
+### Sera Debates and the Finger Pointing at the Moon
 
 > 2026-02-20 18:05:31 · `#佛学`
 
-Although those at the top were busy with mergers and usury, countless ordinary monks at the bottom really did pursue truth year after year. In Sera's debate courtyard, generation after generation of scholar-monks used rigorous Buddhist logic to reason through the emptiness and dependent origination in the Diamond Sutra and the Heart Sutra. This effort to push Eastern philosophy to the extreme of logical rigor is a treasure in the history of human thought.
+Countless ordinary monks pursued truth year after year. In Sera's debate courtyard, generation after generation of scholar-monks used rigorous Buddhist logic to reason through the emptiness and dependent origination in the Diamond Sutra and the Heart Sutra. This effort to push Eastern philosophy to the extreme of logical rigor is a treasure in the history of human thought.
 
 Buddhist philosophy has a profound metaphor: the finger pointing at the moon. Truth is that bright moon, while religious organizations, temples and even sutras are merely the "finger" pointing at it. We cannot, because that finger has been stained with mud or even blood, deny the radiance of the moon it points to.
 
@@ -1173,11 +963,13 @@ History is never black and white. It is precisely this extreme interweaving of t
 
 
 <!--memo:c207ee4373fd-->
-### The Logic of Nepalese Buddhism's Absorption by Hinduism
+### Buddhist and Hindu Traditions in Nepal
 
 > 2026-02-20 18:52:52 · `#佛学`
 
-Why was Buddhism assimilated by Hinduism in Nepal?
+This note originally conflated Buddhism’s decline in India with religious exchange in Nepal. UNESCO describes the long coexistence and fusion of Buddhism and Hinduism in Nepal. The following preserves my reading at the time; it does not establish that Nepalese Buddhism disappeared ([Kathmandu Valley](https://whc.unesco.org/en/list/121/)).
+
+Why do Buddhism and Hinduism overlap in so many ways in Nepal?
 
 Buddhism originated in India but had basically disappeared from Indian soil by around the 12th century AD, "absorbed" or "assimilated" by the vast Hindu system.
 
@@ -1208,116 +1000,6 @@ So the charm of The Tree of Life lies in slowly taking root amid barrenness, col
 Respect human nature, don't test human nature
 
 Don't gamble with your own life against human nature too early
-
-
-<!--memo:deeba92a821e-->
-### Human-Bone Ritual Implements: Philosophical Ideals and Their Distortion Under Serfdom
-
-> 2026-02-21 12:06:35 · `#佛学`
-
-In Tibetan Buddhism (especially in tantrism), the original use of human-bone ritual implements (such as the kapala bowl, human-bone rosaries, and shinbone trumpets) rests on an extremely profound philosophical logic
-
-Buddhism holds that humanity's greatest suffering comes from attachment to the "self" and to the body. Holding in your hand, as a ritual implement, the bone that once carried a life is meant to constantly remind the practitioner of "the impermanence of life and death" and "the emptiness of the body," and thereby to overcome the fear of death
-
-When an accomplished monk vows to donate his bones after death, he is turning a useless husk into a ritual implement that liberates sentient beings. In Buddhist doctrine this is called "inner giving" (giving away one's own body), and it is regarded as an extremely rare and supremely compassionate act
-
-When this profound religious ideal was combined with an extremely unequal feudal serf system, things mutated horribly. In old Tibet before the 1959 democratic reform, the "three great lords" (officials, aristocrats, and upper-tier monastery clergy), less than 5 percent of the population, owned the vast majority of the means of production and held absolute power of life and death over the serfs and slaves who made up more than 95 percent of the population
-
-In the laws of old Tibet (such as the Code of Thirteen and the Code of Sixteen), cruel punishments were explicitly prescribed — gouging out eyes, cutting off feet, cutting out tongues, flaying. Many serfs who had been punished, or who were executed for resisting their lords, had their bones, skulls, and even skin taken directly to be made into ritual implements or religious objects (such as human-skin thangkas and human-skin hand drums)
-
-In some extreme tantric rituals, achieving the so-called effects of "suppression," "cursing," or "sacrifice" placed extremely harsh and cruel requirements on the material of the implements. Some rituals, for example, required the skull of someone who "died an unnatural death," or the leg bone of a "pure sixteen-year-old maiden," or even a child's intestines. Faced with absolute power, these demands were often satisfied by directly doing harm to serfs, slaves, or vagrants at the bottom of society
-
-Serfs were seen as "livestock that can talk"
-
-This is also why, in modern society, whether on grounds of human rights or modern law, this kind of acquisition and production of human-bone ritual implements has been strictly prohibited
-
-
-<!--memo:3ac91b8b7770-->
-### Buddhist Ideals and Their Selective Fusion with Secular Power
-
-> 2026-02-21 12:11:44 · `#佛学`
-
-The union of an extremely pure philosophical ideal with secularized power
-
-Why is it that Buddhism advocates the equality of all beings on one hand, yet produced laws as extremely unequal as the Code of Thirteen and the Code of Sixteen, which divided people into "three classes and nine ranks" with wildly different blood prices (compensation for killing)
-
-When Buddhism met secularized power, the seduction of power selectively weaponized the cornerstones of Buddhism
-
-The rulers explained that the equality of all beings means "everyone has the Buddha-nature and can become a Buddha," and that this equality is at the level of the soul and in future lives, not equality of class in real society
-
-They used "karmic retribution and rebirth" to explain the suffering of reality — you are a serf in this life, subjected to exploitation and torture, because you created evil karma in a past life, and in this life you must endure suffering to atone for it; while the three great lords (aristocrats, high monks) sit high above because they accumulated immeasurable merit in past lives
-
-Since the monasteries and the aristocrats had become big landlords, they needed a harsh legal code to protect their private property and to suppress serfs' escapes and resistance. Those cruel punishments (gouging out eyes, cutting off hands, cutting out tongues) were essentially there to maintain this extremely unequal system of economic exploitation, not to practice the Dharma
-
-The "equality of all beings" that Shakyamuni awakened to under the bodhi tree was a pure philosophy seeking liberation of the mind. But once that philosophy, in a particular historical time and space, was shaped into a secular ruling machine with land, armies, prisons and tax privileges, it could not avoid being corroded by power
-
-
-<!--memo:990dce2c3ece-->
-### The Code of Thirteen: A Hierarchical Order Wrapped in Buddhism
-
-> 2026-02-21 12:26:21 · `#佛学`
-
-The Code of Thirteen was promulgated during the reign of the Fifth Dalai Lama, Lozang Gyatso (around the middle of the 17th century), and it was actually drafted and revised under the direction of his highest secular administrator (the Depa/Desi), Sonam Rabten
-
-The new regime had only just been established: inside there was discontent from other schools, outside there was resistance from remnants of various forces, and the serfs at the bottom also needed to be tightly controlled. The Fifth Dalai Lama realized that chanting scriptures alone could not keep secular rule stable — there had to be "the handle of the knife." And so a written code capable of intimidating everyone and establishing an absolute hierarchical order was ready to appear
-
-The most surreal thing about this code is its "packaging." The preface usually quoted Buddhist scriptures at length, praising the Buddha's compassion and the justice of karmic retribution, and even claiming that the code was made to "spread the Dharma and save all sentient beings"
-
-The blood price of a person of the highest of the high (a living Buddha, a great aristocrat) was "gold equal in weight to the corpse"
-
-The blood price of a person of the lowest of the low (a vagrant, a blacksmith, a butcher, a woman, and so on) was merely "a single rope of straw." This enormous rift between preface and main text vividly shows how skillfully the rulers turned religious doctrine into a tool of exploitation
-
-The Code of Fifteen feels more interesting — a code issued even earlier
-
-It was mainly the laws of the "fierce tiger" and the "fox," plus the formal establishment of the "blood price law": the legalization of class inequality
-
-Although Changchub Gyaltsen advertised that he ruled according to the Buddhist "ten virtuous deeds" (not killing, not stealing, and so on), the core of the Code of Fifteen was the "Law on the Blood Price for Killing" and the "Law on Punishment for Injuring"
-
-There is one historical detail that illustrates the point well: Changchub Gyaltsen himself had received strict training in Buddhist precepts and should in theory have been compassionate. Yet in the course of annexing other myriarchies and putting down rebellions, his methods were extremely cold and cruel, frequently using assassination, betrayal and torture. When he finally held power in his hands and his rule was secure, he transformed himself again, energetically building monasteries, inviting great monks to expound the scriptures, and holding forth in the code's preface about Buddhist compassion and karma. This extreme pragmatism of a politician is a typical microcosm of rulers under Tibet's system of the union of church and state
-
-
-<!--memo:f38a91233570-->
-### Changchub Gyaltsen: Aristocratic Tradition and Religious Discursive Power
-
-> 2026-02-21 12:44:03 · `#佛学`
-
-This person feels very two-faced
-
-But starting from his experience, it isn't hard to understand
-
-Changchub Gyaltsen's first identity was not that of a monk; he came from the aristocracy, and the aristocracy had an unwritten tradition that someone in the family had to take monastic vows — in order to monopolize religious discursive power and monastery property
-
-Changchub Gyaltsen came from Tibet's famous Lang family. From childhood he was sent to study at the center of the Sakya regime that then ruled Tibet, essentially being groomed as his family's future "political successor," and even carrying a certain flavor of "political hostage." So putting on the robe and studying the Dharma was more like obtaining an "entry ticket" into Tibet's highest power club. At bottom he was a feudal lord carrying the mission of his family's revival; Buddhist doctrine was only a part of his spiritual world, not a stumbling block to his political maneuvers
-
-A survival view rather than a sheltering view: in troubled times, without absolute secular violence as a backing, no matter how profound the Dharma, it cannot protect you
-
-Thunderbolt methods to establish authority: toward those political enemies who tried to restore the old order and the lords who rebelled, he showed no mercy, using the severe punishments of the Code of Fifteen to eliminate them physically and strip their property, establishing absolute class authority
-
-Bodhisattva compassion to pacify the people: for the common people who had been through long years of war, he urgently needed to restore agricultural production. At this point he raised the banner of the Buddhist "ten virtuous deeds" again, built monasteries on a large scale, and preached karmic retribution. This was the lowest-cost and most effective tool for soothing society. With the warm veil of religion, he covered up the grim class oppression behind the new code
-
-So in the world of politics, one must follow the iron law of the power game
-
-
-<!--memo:3fc42cd67d45-->
-### Lhasa's Aristocratic Class: Historical Legacies and Class Leaps
-
-> 2026-02-21 13:00:11 · `#佛学`
-
-Lhasa's aristocratic class
-
-In Lhasa, a core of Buddhist doctrine, there exists a secular and extremely luxurious aristocratic class
-
-Historically there were historical legacies, some old aristocrats
-
-The descendants of these ancient families became "local emperors" on their own estates. When later a new church-and-state regime (such as the Phagmodrupa regime or the Ganden Phodrang regime) was established and unified Tibet, in order to stabilize the situation the rulers recognized the vested interests of these ancient families and directly converted them into high aristocrats under the new regime. The famous Dokhar and Lhagyari families, among others, all claimed descent from ancient royal houses or great ministers
-
-Tibetan Buddhism established the system of reincarnated living Buddhas. Once a boy from an ordinary household was identified as the "soul boy" of the Dalai Lama, the Panchen Erdeni, or another great living Buddha, his entire family would undergo a dramatic class leap
-
-The Dalai Lama's family is called "Yabzhi" in Tibetan (meaning paternal family). The local government would immediately grant the family a top-level aristocratic title, a vast estate, hundreds or thousands of serfs, and enormous wealth. Several of the famous families in Tibetan history (such as the Lhalu and Yuthok families) were mostly relatives of successive Dalai Lamas. The sacredness of religion was here directly cashed out into extreme secular privilege
-
-This includes rewards of power: a number of military-merit and bureaucratic aristocrats — those generals who won great distinction in overthrowing the old regime and putting down rebellions — would be granted land and serfs by the new regime and thereby rise into the ranks of the aristocracy
-
-In old Tibet, the precondition for holding an estate was that you had to provide unpaid service (corvée) to the government. Aristocratic families had to send their sons to serve unpaid in the Kashag government in Lhasa as lay officials. If you refused to take office, or were dismissed for backing the wrong side in a political struggle, the government had the right to confiscate your estate and serfs at any time
 
 
 <!--memo:8b7e7ff664fa-->
@@ -1360,90 +1042,6 @@ Islam cares more about: how to keep a group of people living continuously under 
 The origin of the mosque determines that it doesn't really need awe, doesn't pursue mystery, and emphasizes discipline, time, direction, and community
 
 
-<!--memo:e57bc37de73e-->
-### The Taliban's Hierarchical Structure and the Logic of Controlling Women
-
-> 2026-02-21 16:01:48 · `#格物/清真寺`
-
-The Taliban evolving toward slavery
-
-Today's society requires that everyone be an equal individual before the law
-
-Individuals can also choose their occupation, their movement, their thoughts and their gender roles
-
-Authority also needs to be constrained by institutions, procedures and argumentation
-
-For the Taliban, this is an ungovernable state
-
-The Taliban's organizational structure:
-
-Religious authority
-
-Personal loyalty
-
-Tribal structure
-
-So if you stratify humanity, the benefits that appear
-
-You don't need to justify inequality
-
-It lowers the cost of governing society; all you need are orders and punishment
-
-It manufactures fear and dependence
-
-The real target is actually women as a group; every extremely conservative, totalitarian or theocratic regime takes controlling women as its first step
-
-Women mean the continuity of society
-
-
-<!--memo:ed5cfa705053-->
-### Divinely Granted Power and the Dilemma of Monopolizing Interpretation
-
-> 2026-02-21 16:04:47 · `#格物/清真寺`
-
-The Taliban's big problem
-
-Their power comes from a divine grant, not from the people
-
-So their legitimacy comes from the right to interpret religious texts
-
-Monopoly over orthodoxy
-
-And a society of equals means that the right of interpretation can be challenged
-
-
-<!--memo:0669421f1410-->
-### Akhundzada: The Ideological Purity of a Mysterious Leader
-
-> 2026-02-21 16:17:54 · `#格物/清真寺`
-
-Understanding the Taliban, understanding Akhundzada
-
-A senior scholar of Islamic law who served as chief judge, issuing fatwas and adjudicating disputes
-
-He is also one of the most mysterious leaders in the world, rarely appearing in public, with only a very few photographs from his early years — a strong sense of mystery
-
-He has a fairly high degree of purity; as a religious scholar, Akhundzada insists on the most conservative and strictest interpretation of Islamic law. He believes his first task is to build in Afghanistan a society fully conforming to pure Islamic law, not to cater to modern international standards
-
-Since the Taliban retook power in 2021, Akhundzada has been the final decision-maker pushing a series of hardline policies (such as banning women from university, banning women from working for NGOs, restoring public punishment). He has made clear that even at the enormous cost of full international isolation and economic sanctions, he will not compromise on the principles of sharia. For him, ideological purity matters far more than international recognition or economic development
-
-
-<!--memo:83afcacfd8b8-->
-### The Taliban's View of Women and the Logic of Suppressing Education
-
-> 2026-02-21 16:24:07 · `#格物/清真寺`
-
-The thinking of the various schools within Islam is not the same
-
-The Taliban's is the grip of an ancient tribe
-
-As for honor and women, women are regarded as the family's private property and its core secret, so they should not be seen by outsiders
-
-They believe modern education (especially education for women) is the poison of Western cultural invasion
-
-Most Taliban come from remote villages, and in their eyes the urban women of the past 20 years who were well educated, worked in public and did not wear the burqa are symbols of the "American occupation" and of the corruption of a secular government. In the Taliban's view, suppressing women is a political declaration of "purifying" society, announcing victory in the war and rebuilding Islamic orthodoxy
-
-
 <!--memo:47cdc27599ad-->
 ### The Governing Faculty: Three Functions of a Rational Drive System
 
@@ -1453,7 +1051,7 @@ The governing faculty
 
 As a person's inner rational drive system
 
-It determines how we see external things, make judgments and act on them. The Stoic tradition ranks it as one of the four cardinal virtues, alongside wisdom, justice and courage
+It determines how we see external things, make judgments and act on them. The governing faculty should not have been listed as a fourth cardinal virtue: the usual four are wisdom, justice, courage, and moderation ([Stoic Ethics](https://iep.utm.edu/stoiceth/)).
 
 Distinguishing — "things stand outside us... what is it that judges them? The governing faculty." It is like an "internal processor," sorting and evaluating the impressions of the senses
 
@@ -1605,9 +1203,7 @@ The core theory is dependent origination and emptiness of self-nature, holding t
 
 > 2026-02-22 21:16:19
 
-The diet we discussed before is part of the reason
-
-one factor that makes couples grow more and more alike
+We discussed whether diet might contribute to couples seeming increasingly alike. That was a hypothesis, rather than an established cause ([related study](https://www.nature.com/articles/s41598-020-73971-8)).
 
 From the same kind to species and to gene, it's the same
 
@@ -1643,15 +1239,13 @@ Whether a gene is retained by natural selection doesn't depend on whether it "le
 
 but on whether it lets "copies that carry this gene" spread more in the world
 
-Natural selection doesn't select individuals
-
-It is the replication success rate of genes over time
+This takes a gene-replication perspective; it does not rule out natural selection acting at the individual level.
 
 Formal definition:
 
 Direct fitness: how many offspring
 
-Indirect fitness: having helped others, thereby sharing genes
+Indirect fitness concerns effects on relatives’ reproductive success, weighted by relatedness; helping someone does not itself create shared genes ([Hamilton, 1964](https://www.sciencedirect.com/science/article/pii/0022519364900384)).
 
 The worker bee case: it doesn't reproduce but protects its mother, and the mother produces a large number of sisters; helping the mother produce more sisters is a better deal than having its own children
 
@@ -1673,15 +1267,13 @@ Whether a gene is retained by natural selection doesn't depend on whether it "le
 
 but on whether it lets "copies that carry this gene" spread more in the world
 
-Natural selection doesn't select individuals
-
-It is the replication success rate of genes over time
+This takes a gene-replication perspective; it does not rule out natural selection acting at the individual level.
 
 Formal definition:
 
 Direct fitness: how many offspring
 
-Indirect fitness: having helped others, thereby sharing genes
+Indirect fitness concerns effects on relatives’ reproductive success, weighted by relatedness; helping someone does not itself create shared genes ([Hamilton, 1964](https://www.sciencedirect.com/science/article/pii/0022519364900384)).
 
 The worker bee case: it doesn't reproduce but protects its mother, and the mother produces a large number of sisters; helping the mother produce more sisters is a better deal than having its own children
 
@@ -1729,7 +1321,7 @@ Padme: means "lotus." The lotus emerges from mud yet is unstained, symbolizing *
 
 Hum: means "indivisible." It represents the merging of the earlier "compassion (method)" and "lotus (wisdom)" into one. In this state, the opposition between subject and object disappears, reaching a state of perfect harmony
 
-Put together, the core meaning of the whole phrase can be understood as: "relying on the perfect union of compassion and wisdom, transforming an impure body and mind into the clear state of awakening
+Put together, the core meaning of the whole phrase can be understood as: "relying on the perfect union of compassion and wisdom, transforming an impure body and mind into the clear state of awakening"
 
 Reciting the six-syllable mantra is essentially an excellent tool for anchoring the mind
 
@@ -1739,26 +1331,15 @@ It is not about asking for something outwardly, but about looking inward; when a
 
 
 <!--memo:eb0900b1fd9b-->
-### Righteous Delusion Syndrome and Collective Cognitive Deviation
+### The Risk of Excessive Confidence in One’s Judgment
 
 > 2026-02-23 18:09:36 · `#格物/世界历史`
 
-Righteous delusion syndrome
+Overconfidence in one’s own assumptions or conjectures can easily turn into stubbornness.
 
-Its symptom is feeling that everything you do is correct and beyond reproach, while other people have all kinds of faults and problems
+Everything one does seems correct and beyond criticism, while everyone else seems full of faults.
 
-In a country, it's possible for everyone to come down with this illness
-
-Overconfidence in one's own assumptions or conjectures, and a strong tendency to be stubborn
-
-Similar to psychological cognitive bias and delusional disorder
-
-Its symptom is feeling that everything you do is correct and beyond reproach, while other people have all kinds of faults and problems
-
-Under totalitarian rule, sometimes most people are made to hold a distorted cognition of certain facts, but not everyone is truly "ill" — it is more that social consensus is forced to deviate from reality
-
-This is collective cognitive deviation
-
+That is a cognitive bias worth watching for. “Righteous delusion syndrome” was my informal wording at the time, not a clinical diagnosis.
 
 <!--memo:c550cd5ce981-->
 ### Grand Narratives and Microscopic Pain
@@ -1806,22 +1387,6 @@ Because you may affect this world or your surrounding environment
 And the element of randomness and luck seems so important
 
 
-<!--memo:651066a51051-->
-### The Real Form of India's Liberal Democracy
-
-> 2026-02-24 12:13:41 · `#格物/信仰`
-
-On the road of freedom and democracy, India has gone further
-
-India's institutional goal is oriented toward liberal democracy
-
-The constitution explicitly takes democracy, elections, judicial independence and freedom of speech as the sources of legitimacy
-
-Changes of regime are the norm; the government is naturally suspected and criticized
-
-India's current problems are the real form it takes in a highly pluralistic society with a low average level of education
-
-
 <!--memo:79e8b4073750-->
 ### Evolution Is a Law of Survival, Not an Option
 
@@ -1861,7 +1426,7 @@ One is the gene, which represents a general problem-solving approach
 
 The other is the capsule, a record of a specific successful case, an already-validated template record
 
-And A2A cross-system washing, the A2A cross-system evolution protocol
+And A2A cross-system protocol, the A2A cross-system evolution protocol
 
 
 <!--memo:4fe2c49d9922-->
@@ -1971,7 +1536,7 @@ Dedication: usually the merit from practice at the assembly is dedicated to all 
 
 The purpose of a dharma assembly is generally collective practice, which makes it easier to reach a stable, focused state
 
-They generally have deliverance assemblies, blessing assemblies, and some large flower fairs
+They generally have deliverance assemblies, blessing assemblies, and some large dharma assemblies
 
 What's quite interesting is that a lot of locals are willing to take part in these assemblies. Because I feel an assembly like this is essentially creating a public space for them — the same time, the same place, some shared memories. That's what you'd call a sense of ritual
 
@@ -1995,7 +1560,7 @@ I feel the human species depends enormously on collective memory: a group of peo
 
 > 2026-02-27 11:06:38 · `#格物/意义`
 
-The brain in a vat that Little Rabbit mentioned
+The brain in a vat that came up in conversation
 
 How do we know we're really in the real world, and not being deceived?
 
@@ -2042,7 +1607,7 @@ Suffering comes from the mismatch between reality and expectation, desire, or va
 
 ## 2. Daily Notes and Everything Else
 
-*63 entries*
+*62 entries*
 
 <!--memo:c7a98dce6b11-->
 ### Stumbling on a morning-tea shop in Chiang Mai
@@ -2065,7 +1630,7 @@ But by comparison, I think some places are not like that. Even though there are 
 
 
 <!--memo:34ff354df0d2-->
-### 27. Feasibility validates zero-to-one, scale validates compounding
+### 27. Visibility and Judgments of Ability
 
 > 2026-02-03 14:59:06
 
@@ -2073,7 +1638,7 @@ Many people are only there because they stand in a position that can be seen, ca
 
 
 <!--memo:c703ec7d4efa-->
-### 26. Tencent and Apple: late-mover advantage locks in ecosystem value
+### 26. Feasibility From Zero to One, Scale From One to Many
 
 > 2026-02-03 15:23:49
 
@@ -2083,7 +1648,7 @@ What scale verifies is whether there's a way to generate compounding from 1 to 1
 
 
 <!--memo:5a9f3637d2df-->
-### 24. Microsoft's AI strategy: building a general-purpose foundation system
+### 24. Manus and Changes in Corporate Identity
 
 > 2026-02-03 15:28:03
 
@@ -2093,7 +1658,7 @@ How a Chinese company transforms overnight into an American company
 
 
 <!--memo:f9028920ea50-->
-### 20. Space data centres: the ultimate direction for AI compute
+### 20. Could Meta Face the Pain of Integration?
 
 > 2026-02-03 16:05:22
 
@@ -2101,7 +1666,7 @@ Will Meta also go through something like Google's integration of DeepMind — a 
 
 
 <!--memo:bca7b12b0a04-->
-### 11. HK stock valuation: international capital vs. mainland money
+### 11. Cracks That Let the Light In
 
 > 2026-02-04 08:33:34
 
@@ -2293,7 +1858,7 @@ Of course Li Bai didn't know why either, but he could give free play to what he 
 
 Pilgrimage today is not the product of what it was back then.
 
-Many people today have power and choice; they can choose to go, and they go consciously, not without awareness.
+Many people today have rights and choices; they can choose to go, and they go consciously, not without awareness.
 
 
 <!--memo:0c3d0dad0a35-->
@@ -2313,7 +1878,7 @@ Ah — faith turns hardship into meaning.
 
 
 <!--memo:b7b69337a9e0-->
-### 29. Princess Bhrikuti: A Buddhist Pioneer Across the Himalayas
+### 29. A Changing Self and a Moment of Sincerity
 
 > 2026-02-19 17:07:17 · `#自我`
 
@@ -2335,7 +1900,7 @@ People change, time changes, place changes, but the core has not changed.
 
 
 <!--memo:1f893e7459cf-->
-### 20. The Collapse of Inner Dialogue in Extreme Fatigue and Non-Self
+### 20. WeChat’s Convenient Hold-to-Dictate Interaction
 
 > 2026-02-19 19:27:05
 
@@ -2347,7 +1912,7 @@ This kind of convenience is something I'm very happy to learn from.
 
 
 <!--memo:c16c9270a62c-->
-### 11. I-Thou Relations and the Self Built Through Narrative Identity
+### 11. Loving the Version You Have Shaped Yourself
 
 > 2026-02-20 11:28:20
 
@@ -2371,9 +1936,9 @@ It's something you allow to happen
 
 > 2026-02-20 22:51:04
 
-Sister Xiaomei went to the cremation temple too
+A friend went to the cremation temple too
 
-Little Rabbit and I talked about this topic, and it felt like a very strong "living toward death": using the certainty of death to feed back into the quality of living. When you see with your own eyes a person turn from a solid body into ashes within a few hours, you get a strong sense of meaninglessness, but that sense of meaninglessness eventually turns into a craving to live. Precisely because death is the unavoidable endpoint, every moment in which we "are alive" seems immeasurably precious
+A friend and I talked about this topic, and it felt like a very strong "living toward death": using the certainty of death to feed back into the quality of living. When you see with your own eyes a person turn from a solid body into ashes within a few hours, you get a strong sense of meaninglessness, but that sense of meaninglessness eventually turns into a craving to live. Precisely because death is the unavoidable endpoint, every moment in which we "are alive" seems immeasurably precious
 
 At that point the obsessions seem to be able to be set down too, and you can more peacefully accept impermanence and loss
 
@@ -2405,7 +1970,7 @@ If a person does things against his own heart, all he pleases is the surface
 
 Just now while I was eating, a local person struck up a conversation with me
 
-I had come to the Xire Beicuo Café here, a café inside the Jokhang Temple area, where you can see the Jokhang Temple and the Potala Palace
+I had come to a café in Lhasa with a view of the Jokhang and the Potala Palace.
 
 I didn't expect the café to be so crowded; when I went up, only the sunny spot was left, so I sat in the sun and felt very sunburned
 
@@ -2413,7 +1978,7 @@ Chatting with the local waiters, I found their names very interesting
 
 Then a waiter specially found me a shady spot, but it meant sharing a table
 
-It was a Lhasa local couple; their original home seems to be in a place nearby at over 4,000 meters altitude, where they did business, but they've also settled in Lhasa now. That place seems colder, with stronger wind compared to Lhasa
+I was sharing the table with local people.
 
 What's very interesting is that the guy also loves photography
 
@@ -2685,11 +2250,11 @@ It feels so interesting
 
 
 <!--memo:0bc349346067-->
-### A Three-Layer Analysis of Precious Metals' Wild Swings
+### Two Questions About Precious-Metal Price Swings
 
 > 2026-02-24 14:37:19
 
-I feel that in the earlier era of big gains in precious metals and in the current era of big declines, there are actually three logics contained. One is why it surged, the other is why it crashed.
+I feel that in the earlier era of big gains in precious metals and in the current era of big declines, there are actually two questions here. One is why it surged, the other is why it crashed.
 
 In fact, when we analyze a market now, we do it along two dimensions: long term and short term. The long term is easy to explain, which is...
 
@@ -2700,20 +2265,6 @@ In fact, when we analyze a market now, we do it along two dimensions: long term 
 > 2026-02-24 14:56:09
 
 Everything is relative; only the speed of light is constant. So what is a safe-haven asset — assets are relative too. When your dollar is very risky, naturally silver and gold are the safe-haven assets; when silver and gold are very risky, the dollar becomes the safe-haven asset. So yes, and these concepts are relative too.
-
-
-<!--memo:cf582c0cfc6f-->
-### Gray Zones and Capital Power in a Fast-Developing Society
-
-> 2026-02-24 15:38:42
-
-Any fast-developing society can hardly avoid gray zones entirely
-
-"As long as you can drive GDP, employment and tax revenue, plenty of things can be overlooked."
-
-But once the power monopolized by this private capital becomes too great
-
-Then this capital may grow into a second power center ...
 
 
 <!--memo:f8d40b218c30-->
@@ -2751,7 +2302,7 @@ Straight ahead
 
 if life is a game
 
-Carnival said that a colleague next to him who arrived 10 days later than me didn't pass probation and left; he had ended up doing tasks he wasn't good at, while Carnival had joined earlier. Then the task he might have been good at was given to Carnival first, and that task looked hard but was actually easy, so I got results without spending much effort
+A friend mentioned how task allocation during probation can affect how someone is judged. One person may receive tasks they struggle with, while another gets work that happens to fit their strengths.
 
 So understanding the rules of this game can give us an advantage
 
@@ -2769,7 +2320,7 @@ But in the long run, it is we who shape the environment
 
 Cooperation beats pure selfishness
 
-The best solution in the prisoner's dilemma of a zero-sum game is tit for tat
+The prisoner’s dilemma is a non-zero-sum game. Tit for tat performs well in some repeated-game settings, but no strategy is universally best regardless of the rules and opponents ([Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/prisoner-dilemma/)).
 
 First step both cooperate, then every subsequent step follows what the other side did in the previous step. In other words, start friendly, then mirror your opponent: if your opponent cooperates, you cooperate next; if your opponent defects, you defect next
 
@@ -2799,8 +2350,11 @@ Game theory is also a lens: if we do this thing, we think about how others will 
 
 > 2026-02-26 00:26:38
 
-There's one thing I think also has to be considered: all the data right now shows that smoking is still the more dangerous one. But, how should I put it, with cannabis the THC strains keep getting stronger — what people use now may be double what it was ten years ago. And the number of people observing cannabis is still nowhere near as broad as for cigarettes, so maybe there's still a lack of data to prove it. Even if science currently shows cannabis may be a bit more harmful, I feel cigarettes are the more harmful ones. But I also think cannabis may still need a long observation period. Over the long run, I don't think either one, cigarettes or cannabis, can be beautified.
+At the time I was comparing the harms of cigarettes and cannabis, but I did not have enough evidence to rank them for every situation. Dose, frequency, method of use, and the health outcome being compared all matter.
 
+Cannabis and high-THC products carry health risks themselves; established tobacco harms do not make another substance harmless ([CDC health information](https://www.cdc.gov/cannabis/health-effects/)).
+
+Over the long term, I do not think either cigarettes or cannabis should be romanticized.
 
 <!--memo:6652fd13d71f-->
 ### The Food Logic of Shops Missing from the Map
@@ -2851,7 +2405,7 @@ Who says memories can't be happy?
 
 > 2026-02-27 17:23:13 · `#格物/观察`
 
-I feel this Guangdong sister is quite like me — we both have fairly strong meta-awareness plus fairly strong narrative ability
+I feel this friend is quite like me — we both have fairly strong meta-awareness plus fairly strong narrative ability
 
 So our emotions are very stable, calm
 
@@ -2895,7 +2449,7 @@ What Lobster embeds a lot of the time is a scene
 *63 entries*
 
 <!--memo:2d76514fdf2b-->
-### 29. The core of US investment: control under extreme circumstances
+### 29. Investment Opportunities in Models and Super-Apps
 
 > 2026-02-03 12:58:16
 
@@ -2905,7 +2459,7 @@ Instead, once super-apps took off, dollar VCs grabbed many of the companies in t
 
 
 <!--memo:5d7c23e30122-->
-### 25. Manus validated the path from a Chinese company to a US company
+### 25. Tencent, Apple, and the Advantage of an Existing Ecosystem
 
 > 2026-02-03 15:25:16 · `#格物/AI`
 
@@ -2941,7 +2495,7 @@ What is Meta's core asset? Attention? (feels), social relationships? Ad monetiza
 
 
 <!--memo:9a3eedb03ff2-->
-### 23. Meta's anxiety: it hasn't found its own path yet
+### 23. Microsoft’s AI Strategy and a General Infrastructure Layer
 
 > 2026-02-03 15:43:55 · `#格物/AI`
 
@@ -2959,7 +2513,7 @@ AI platforms need stronger compute infrastructure, and compute suppliers (Nvidia
 
 
 <!--memo:6cdbea12055e-->
-### 22. The SpaceX–xAI merger: space infrastructure plus an AI brain
+### 22. Strategic Anxiety at Meta and Google
 
 > 2026-02-03 16:00:38
 
@@ -2969,19 +2523,19 @@ Google now choosing LLMs — the anxiety of the opportunity cost of focus
 
 
 <!--memo:946e44f15c6c-->
-### 19. Mixue's essence: earning from franchisees' supply chain
+### 19. Space-Based Data Centers as a Long-Term Hypothesis
 
 > 2026-02-03 16:10:51
 
-He argues that ground-based data centres are limited by energy and heat dissipation, so AI compute can't keep growing linearly; while space has near-unlimited solar energy and cooling conditions — which means computing in orbit may be the long-term direction for large-scale AI training and inference in the future
+One proposal I read at the time was that limits on energy and heat rejection in ground-based data centers might make orbital computing a long-term direction. The potential of solar energy in space does not imply nearly unlimited cooling: a vacuum still calls for radiative heat rejection and thermal design ([NASA on heat transfer](https://science.gsfc.nasa.gov/attic/cosmicopia.gsfc.nasa.gov/qa_sp_ht.html)).
 
 From this angle, SpaceX's Starlink, Starship and future space stations could become a global, even interplanetary, platform for data computation and distribution, and xAI's models would be the “intelligent brain” of that platform
 
-And SpaceX is about to IPO
+I also saw discussion of a possible SpaceX IPO at the time; this note did not verify a timetable.
 
 
 <!--memo:a022e6569880-->
-### 2. Girl with a Pearl Earring: a symbol beyond reality
+### 2. The AI Value Chain, From Chips to Energy
 
 > 2026-02-04 13:14:47
 
@@ -2991,7 +2545,7 @@ Combined with the workflow analysis work that already exists
 
 The AI value chain has evolved into a vertically integrated system from energy and minerals to physical devices
 
-The foundational layer runs from chips to energy; 3nm or even more advanced process GPUs/ASICs have become the standard. NVIDIA continues to lead, but custom ASICs like Google TPU and AWS Trainium take a higher share in cost optimization
+The foundational layer runs from chips to energy; GPUs and ASICs cannot all be described as using 3nm or more advanced processes; Blackwell, announced in 2024, used TSMC 4NP ([NVIDIA announcement](https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing/)). NVIDIA continues to lead, but custom ASICs like Google TPU and AWS Trainium take a higher share in cost optimization
 
 
 <!--memo:6c72b1f91929-->
@@ -3005,7 +2559,7 @@ Early on it was CPU-dominated; the CPU was the only general-purpose computing co
 
 1990s–early 2000s: the GPU appeared as a graphics-specific co-processor. NVIDIA released the GeForce 256, first proposing the concept of the “GPU,” integrating hardware T&L (geometry transform and lighting) and achieving million-scale pixel/vertex parallel processing. Back then GPUs were for specialized fields
 
-Then came the 2026 CUDA revolution, when GPUs moved toward general-purpose computing: NVIDIA launched CUDA (Compute Unified Device Architecture), letting developers program the GPU directly in C/C++
+Then came the unveiling of CUDA in 2006, when GPUs moved toward general-purpose computing: NVIDIA launched CUDA (Compute Unified Device Architecture), letting developers program the GPU directly in C/C++ ([NVIDIA CUDA programming guide](https://docs.nvidia.com/cuda/archive/10.2/cuda-c-programming-guide/index.html))
 
 Then, ten years later, the AI wave pushed the GPU to become the core of compute power; deep learning relies on large-scale tensor operations (like convolution and matrix multiplication), which naturally fit the GPU's SIMD/SIMT architecture
 
@@ -3013,9 +2567,9 @@ Currently it's basically domain-specific architectures and heterogeneous computi
 
 Apple uses A-series chips + the corresponding OS; right now it's the A19 / A19 Pro, also manufactured by TSMC
 
-TSMC's transistor size is now 2nm, meaning higher transistor density, better power efficiency, more transistors per unit, higher performance gains and lower power draw; the more advanced the chip, the higher the manufacturing cost
+TSMC’s advanced processes have reached the 2nm generation; a process-node name is not a transistor’s literal physical dimension ([Intel’s explanation of node terminology](https://download.intel.com/newsroom/2021/client-computing/accelerating-process-innovation.pdf)), meaning higher transistor density, better power efficiency, more transistors per unit, higher performance gains and lower power draw; the more advanced the chip, the higher the manufacturing cost
 
-TSMC is the only maker that can mass-produce the most advanced processes (3 nm / 2 nm) with high yields; NVIDIA's newest AI GPUs (H100, H200 series) and the next-generation Hopper / Lovelace AI chips are all fabbed by TSMC
+TSMC is an important advanced-process foundry, but should not be described as the only one capable of advanced-node production. H100 and H200 belong to the Hopper era; Blackwell was already announced in 2024. The original “latest” and “next generation” wording mixed up the timeline ([NVIDIA’s 2024 announcement](https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing/)).
 
 
 <!--memo:b60e16c2006f-->
@@ -3023,7 +2577,7 @@ TSMC is the only maker that can mass-produce the most advanced processes (3 nm /
 
 > 2026-02-04 14:56:49 · `#格物/AI`
 
-TSMC controls almost 100% of AI chip (GPU) production capability — practically a physical dictator. Without TSMC, Jensen Huang's blueprints would be a sheet of waste paper
+My impression at the time was that TSMC’s advanced manufacturing was crucial to AI chip supply. I had not verified “almost 100%,” so it should not be treated as market-share data.
 
 TSMC earns a “processing fee” (Cost Plus Model). TSMC is essentially the ultimate manufacturing service business. What it sells is “wafers”
 
@@ -3033,7 +2587,7 @@ NVIDIA earns an “intelligence premium” (Value Based Model). What NVIDIA sell
 
 NVIDIA takes that core, packages it, adds HBM memory, and turns it into an H100 accelerator card selling for $25,000–40,000
 
-Moat: the CUDA ecosystem. AI frameworks worldwide (PyTorch, TensorFlow), all research papers, all open-source models, are by default optimized on CUDA
+Moat: the CUDA ecosystem. Many AI frameworks, research projects, and open-source models have CUDA optimizations, but that does not mean all of them depend on CUDA by default
 
 When you follow AI agents, you'll notice that model training no longer relies on “one graphics card” but on “ten thousand graphics cards” working together
 
@@ -3041,7 +2595,7 @@ NVIDIA's most terrifying technology isn't the GPU core, it's the NVLink and Infi
 
 When you connect 1,000 H100s together, they have to work like “one superchip.” TSMC can't provide that interconnect communication capability
 
-What NVIDIA sells is the DGX SuperPOD (supercomputer cluster), and that's precisely what people resent
+What NVIDIA sells is the DGX SuperPOD (supercomputer cluster)
 
 NVIDIA is the closest to users, and also the closest to money
 
@@ -3055,9 +2609,9 @@ NVIDIA's B200/B300 series is still fundamentally a general-purpose parallel comp
 
 GPUs have to handle all kinds of unknown operators and continuously evolving model architectures (like from Transformer to SSM/Mamba). So they retain a lot of control logic and cache, plus support for many precisions (FP64, FP32, TF32, BF16, FP8, FP4)
 
-The 2026 breakthrough: Chiplet and interconnect
+One of Blackwell’s advances: chiplets and interconnects, already announced in 2024 ([NVIDIA announcement](https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing/))
 
-Because of the reticle limit on lithography machines (ASML High-NA EUV), the area of a single chip can't go any bigger
+Because of lithographic reticle limits; Blackwell’s manufacturing should not have been described as using High-NA EUV, the area of a single chip can't go any bigger
 
 Blackwell's approach: package two very large dies together via NV-HBI (High Bandwidth Interface), logically “disguising” them as one chip. That drives power consumption way up (>1000W), forcing reliance on liquid cooling
 
@@ -3066,6 +2620,8 @@ Blackwell's approach: package two very large dies together via NV-HBI (High Band
 ### Don't worship the GPU: the on-device revolution is here
 
 > 2026-02-04 15:38:38 · `#格物/AI`
+
+The scenarios below were ideas I was considering at the time. They do not mean every named product had implemented them or that all processing stays on the device.
 
 Don't worship the GPU
 
@@ -3109,7 +2665,7 @@ In-car cameras recognizing pedestrians/traffic signs in real time (must be low l
 
 Health devices:
 
-A watch analyzing abnormal ECG readings (medical data absolutely never leaves the device)
+A watch analyzing abnormal ECG readings (with the aim of keeping sensitive data on the device as far as possible)
 
 
 <!--memo:2b0926f56aa6-->
@@ -3171,27 +2727,22 @@ What you think is creation comes from the fact that you've never seen this sampl
 
 > 2026-02-04 22:46:36 · `#格物/AI`
 
-Today's AI models (like GPT-4) have hundreds of these “layers” — up to
+What caught my attention was that large-model workloads involve moving data between memory and chips as well as performing arithmetic. Compute throughput is not enough: data loading and storage can also become the bottleneck ([NVIDIA performance guide](https://docs.nvidia.com/deeplearning/performance/dl-performance-getting-started/index.html)).
 
-a thousand layers, and the parameter count (the number of numbers in the matrices) has gone from tens of thousands to trillions.
+The original numbers about GPT-4’s layer count and parameter count, 100-fold data-movement energy, a phone battery dying in one minute, and an NPU using 1/50 as much power had no public specification or test conditions attached. They should not be quoted as facts.
 
-The computing demand has changed: computers no longer need to handle complex if-else (logic); they need to do tens of quadrillions of simple “multiply + add” operations every second
-
-Even though the GPU has many cores, it also retains a lot of features AI doesn't need (texture processing, rasterization) to also handle graphics rendering (for playing games). And the GPU also does “fetch data from memory each time -> compute -> put it back in memory”
-
-When handling trillion-scale parameters, the electricity consumed moving data between memory and the chip is 100 times higher than the computation itself. (That's why graphics cards get so hot)
-
-Especially on phones (the on-device side): if you want to use Face ID (face recognition) or AI denoising in the camera and compute it with the CPU/GPU, the phone's battery would die in one minute. An NPU can complete the same matrix operation using 1/50 of the power
-
+What interests me about on-device computing is the tradeoff among performance, memory, power, and the task.
 
 <!--memo:d68c5429eac2-->
 ### NPU and TPU define AI-specific chips
 
 > 2026-02-04 22:58:49
 
+I was looking at NPUs and other AI accelerators. NVIDIA GPUs include matrix-computing units such as Tensor Cores and are supported by the CUDA ecosystem, but a Tensor Core should not simply be described as a separate NPU. Software and toolchains matter, without implying that every framework or user can only use CUDA.
+
 I had a look — the NPU's main application scenarios right now are still AI model training and large-scale inference. At present, since NVIDIA's core business is GPUs, but ever since it introduced Tensor Core, the GPU has actually embedded a very powerful NPU module. NVIDIA has a very strong moat, its ecosystem moat CUDA, so back then AI frameworks worldwide basically all used CUDA. No matter how strong the hardware is, without software support it's scrap metal, so NVIDIA manages to make everyone have to use it.
 
-But now there's a fairly new architecture — today's NPU — and a new definer of it is the TPU, which comes from Google's dedicated TPU chip. Google commercialized this 1980s concept very early, and defined what an AI-era dedicated chip is. So strictly speaking, the TPU is an accelerator of the NPU, but you have to rely on Google's Cloud TPU platform to use it.
+A TPU is Google’s custom ASIC for machine-learning workloads, rather than “an accelerator for an NPU.” Cloud TPU is a data-center way of using this technology; it does not define every form of NPU or TPU ([Google Cloud TPU introduction](https://docs.cloud.google.com/tpu/docs/intro-to-tpu)).
 
 On the device side I'm more optimistic about Apple. Apple doesn't sell server chips itself, but it really has brought the NPU to the masses very widely — including everyday local processing services like Face ID, some image processing, and local Siri. So now there are also embedded NPUs: when you take a photo, the ISP, GPU or NPU actually work together, and they're the same class of architecture too.
 
@@ -3231,11 +2782,11 @@ Then there's the cooling layer; liquid cooling has become almost mandatory, with
 
 This is the battlefield that Silicon Valley and global tech giants are most anxious about right now. The end of compute is electricity, and the end of electricity is infrastructure
 
-Training a GPT-5-level model requires tens of gigawatt-hours (GWh) of electricity — a one-off, enormous consumption
+I had noted an order of magnitude of tens of gigawatt-hours, but without a verifiable source for GPT-5 training energy. It should not be treated as disclosed data.
 
 Inference is a continuous blood-sucking beast. As agents and real-time voice/video AI become widespread, 24/7 inference energy consumption will far exceed training
 
-Solar and wind are intermittent, while AI data centres need 99.999% uptime. The grid can't absorb that kind of fluctuation, which gives rise to two big trends:
+Solar and wind are intermittent, while AI data centers value continuity of supply. Specific reliability targets and grid capacity depend on system design. This drew my attention to two directions:
 
 Nuclear power, nuclear fusion, reactors — the future AI giants are betting on. And because on-device hardware (phones, glasses) is limited by battery, lower-power on-device small models (On-device AI) will be a contested battleground. They don't need a data centre's nuclear power, just a phone battery
 
@@ -3257,15 +2808,15 @@ Introduction to the Opus 4.6 model
 
 One element
 
-Enormous context handling capacity — the first version to support a million-token context window; this huge context capacity lets the model process a whole codebase and a collection of papers in a single request, without frequently losing memory
+Enormous context handling capacity — the first Opus-class version with a million-token context window, then in beta ([Anthropic announcement](https://www.anthropic.com/news/claude-opus-4-6)); this huge context capacity lets the model process a whole codebase and a collection of papers in a single request, without frequently losing memory
 
 Adaptive thinking mode: the model can dynamically decide whether to do deep reasoning and how long to think, allocating resources more intelligently
 
 Max output tokens expanded from 64K to 128K, which is critical for generating large reports, complex multi-part structures, or long code annotations. It's especially advantageous in office automation and “end-to-end task” scenarios
 
-Opus 4.6 introduced the “Agent Teams” concept, letting multiple AI sub-agents divide up different subtasks and work together. In other words, the model no longer thinks one thing after another in a single thread; it can work in parallel like a “team” (currently in research preview)
+Claude Code introduced an “Agent Teams” research preview alongside the model update, letting multiple AI sub-agents divide up different subtasks and work together. In other words, the model no longer thinks one thing after another in a single thread; it can work in parallel like a “team” (currently in research preview)
 
-When a conversation or agent work approaches the context limit, the API automatically summarizes old content, extending the effective context timeline and preventing the task from losing key information mid-execution. This feature is especially useful for long-running agentic workflows
+The API also offers compaction to summarize older context when enabled and configured by the caller. Summaries can extend a task, but do not guarantee that every important detail is preserved ([official documentation](https://platform.claude.com/docs/en/build-with-claude/compaction)).
 
 
 <!--memo:fee40e06960b-->
@@ -3277,7 +2828,7 @@ claude opus4.6's agent teams
 
 A mechanism where a group of independent AI sub-agents work together, divide labour, and communicate directly with each other
 
-Traditional single agents / sub-agents usually process tasks sequentially or can only report results
+This compares two Claude Code orchestration patterns; “subagent” does not generally mean an architecture that can only run sequentially.
 
 Agent Teams, by contrast, is true parallel and peer-to-peer collaboration:
 
@@ -3293,7 +2844,7 @@ Sub-agents are generated by the main agent
 
 They can only report results to the main agent
 
-Parallel capability is limited
+Subtasks can run in parallel ([Claude Code comparison](https://code.claude.com/docs/en/agent-teams#compare-with-subagents))
 
 Communication is restricted
 
@@ -3379,6 +2930,8 @@ Bookmarking first played an important role in the internet era, in the era of th
 
 > 2026-02-07 12:13:06 · `#格物/flomo`
 
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
+
 Hello cubxxw. MBTI is a personality type theory that describes a person's pattern of psychological preferences across four dimensions — for example, where you draw your energy from, how you take in information, how you make decisions, and how you deal with the external world. It's like a cognitive map that helps us understand some of the habits in how we think and behave.
 
 Please note that the following analysis is based only on some fragments of notes you provided. They are snapshots of your thinking, not the whole picture. So the result is for reference only and cannot fully define the real you.
@@ -3417,17 +2970,17 @@ The product logic of iPhone Shared Albums
 
 Its design is not essentially a sharing tool but a low-interruption, weakly-synchronized, relationship-first family-style memory container.
 
-iOS 26 introduced shared album logic, essentially to solve a few problems.
+Shared Albums and iCloud Shared Photo Library need to be distinguished. Shared Library was supported from iOS 16.1, rather than first arriving in iOS 26 ([Apple Support](https://support.apple.com/en-hk/118229)). What interests me is how it addresses several problems:
 
 Shared Albums → limited resolution / experience
 
 AirDrop → multiple redundant copies, N times the iCloud usage
 
-The underlying logic of a Shared Library is iCloud sharing; each person can only have one Shared Library, and it works roughly like syncing things down to every device through iCloud. iCloud has to back up first and download second, and the backup uses each participant's own iCloud storage.
+The underlying logic of a Shared Library is iCloud sharing; each person can only have one Shared Library, and it works roughly like syncing things down to every device through iCloud. Shared Library content uses the creator’s iCloud storage, without counting against other participants’ storage quotas. iCloud Photos synchronization should not be described as first making a device backup.
 
 
 <!--memo:42063dceb324-->
-### 22. When the Tide Recedes, You See Who Is Really Swimming
+### 22. Personal Experience as the Container for Philosophy
 
 > 2026-02-19 18:48:35
 
@@ -3439,7 +2992,7 @@ The only difference is personal experience.
 
 If there is no personal experience as the container,
 
-Much of it is just negotiation on paper, or fixed programs implanted at the factory.
+Much of it is just theory on paper, or fixed programs implanted at the factory.
 
 For example, professional training makes one lean toward Bayesian models.
 
@@ -3449,13 +3002,15 @@ A beautiful experience at Lhasa's Jokhang leads to contact with Tibetan Buddhism
 
 
 <!--memo:37436ec15027-->
-### 9. In the AI Era, Individual Experience and Narrative Are Urgent
+### 9. Can AI Participate in Human Life Narratives?
 
 > 2026-02-20 11:42:26 · `#格物/AI`
 
+“Silicon-based” is a metaphor for computing hardware here, not evidence that AI is alive or has subjectivity.
+
 Can AI take part in constructing a person's narrative?
 
-The basic building block of all life in the universe is carbon, and carbon atoms are chemically very active.
+All currently known life is carbon-based, and carbon atoms are chemically very active.
 
 Person to person is also two carbon-based organisms meeting.
 
@@ -3483,7 +3038,7 @@ Multi-layer natural selection mechanism: this is the most ingenious part of EvoM
 
 Points of attention:
 
-How capabilities are organized, split, combined, distilled
+How capabilities are organized, split, combined, evolved
 
 Whether an agent's cognitive architecture can evolve
 
@@ -3561,11 +3116,13 @@ The lifecycle of an experience is strictly controlled as: candidate (only visibl
 
 > 2026-02-22 22:49:44
 
+This records small-model information I saw at the time, without the original model card or test hardware. “96%” and “90 tok/s” lack benchmark and hardware conditions, so they cannot be extrapolated to every earbud or pair of glasses.
+
 1.5B model design
 
 Models for specific scenarios, not just distillation + RL
 
-Compression of size: 2-bit quantization, equivalent parameter count 0.3B, almost able to run on smart earbuds
+Compression of size: 2-bit quantization reduces storage bits per weight; it does not directly turn the parameter count into 0.3B, almost able to run on smart earbuds
 
 Usually the smaller a model's parameters, the faster its intelligence drops, but HY-1.8B-2Bit uses QAT (quantization-aware training), retaining about 96% of the performance of the 1.8B base model. On core metrics such as math, code and science, it performs close to the 4-bit quantized version
 
@@ -3576,6 +3133,8 @@ Usually the smaller a model's parameters, the faster its intelligence drops, but
 ### On-Device Small Models Break Through Beyond Expectations
 
 > 2026-02-22 22:59:39
+
+The throughput here was a reported result I saw at the time, without device, runtime, or context conditions. Deployment on particular glasses or earbuds would still need testing.
 
 There's still a bit of a gap from what I expected, in that we used to think the bigger the model, the stronger the capability and the more scenarios it could serve. But in fact, I feel this year's on-device models have developed quite well, and their model size can already be compressed extremely low, down to 1.5B or 2B, and the results are really, really good — a bit unbelievable.
 
@@ -3679,7 +3238,7 @@ Passing through Lhasa, in the end passing by you, breathing out snow-air and ada
 
 > 2026-02-25 20:04:16
 
-I feel that, especially with this boom period of China's "patriotic face" AI — the models people released before and after the New Year, and the progress of those models — there's already a kind of prediction. Even now, before the New Year some agents are genuinely being applied in people's daily life. All sorts of signs indicate that AI's API costs may be gradually falling, and it may be that in 2026, it could be a year where everything is AI.
+I feel that, especially with this domestic AI boom around the New Year — the models people released before and after the New Year, and the progress of those models — there's already a kind of prediction. Even now, before the New Year some agents are genuinely being applied in people's daily life. All sorts of signs indicate that AI's API costs may be gradually falling, and it may be that in 2026, it could be a year where everything is AI.
 
 
 <!--memo:e3747f30ae99-->
@@ -3687,7 +3246,7 @@ I feel that, especially with this boom period of China's "patriotic face" AI —
 
 > 2026-02-25 20:07:00
 
-Google's level of involvement right now is really high, including the series of products DeepMind has put out, such as Gemini, and also its TPU, from accelerators to its interface applications, plus its video generation models Veo and Imagen. Overall, by 2025 several trends have already emerged: reasoning models really have become the norm, competition across the whole industry is getting fiercer and costs are falling for everyone, and AI Agents are rising on a large scale. Also, from native speech to speech models, a series of voice agents has been spawned, even some on-device voice models that may be between 1.5B and 2B — a very small size, yet able to achieve quite good results. Yes, and its video editing and multimodal models have also developed widely. So Google has slowly moved in this game from a follower toward a leader.
+Google's level of involvement right now is really high, including the series of products DeepMind has put out, such as Gemini, and also its TPU, from accelerators to its interface applications, plus its video generation model Veo and image generation model Imagen. Overall, by 2025 several trends have already emerged: reasoning models really have become the norm, competition across the whole industry is getting fiercer and costs are falling for everyone, and AI Agents are rising on a large scale. Also, from native speech to speech models, a series of voice agents has been spawned, even some on-device voice models that may be between 1.5B and 2B — a very small size, yet able to achieve quite good results. Yes, and its video editing and multimodal models have also developed widely. So Google has slowly moved in this game from a follower toward a leader.
 
 
 <!--memo:2ad688c07eba-->
@@ -3739,7 +3298,7 @@ Sometimes you see them playing their residencies
 
 I think they really do love music
 
-The moment they're free they pick up the drums and the guitar
+The moment they're free they pick up the drumsticks and the guitar
 
 Whether anyone's there or not, they lose themselves performing in their own world
 
@@ -3926,11 +3485,11 @@ So you can use one Vault for journaling, and other Vaults for projects or knowle
 
 > 2026-02-28 00:32:12 · `#格物/AI`
 
-That night I was talking with that Guangdong sister about her kids. She carried one — she has a child — and she went through pregnancy. Roughly, when the child is still an embryo it forms some kind of link with the mother, and after the child is born it imitates some of the mother's behaviour. There should be some base for this in biology, some foundation or something. They have a link between them. And then I felt that AI, when it comes to the emotional link between people, simply can't replace it.
+One evening a friend and I discussed emotional bonds between living beings, and whether AI could participate in them. I was thinking, for example, about imitation and trust in parent–child relationships.
 
 Then I was thinking: between living things, why does a link produce happiness, or why does a child imitate its mother? I was thinking that maybe this thing AI could do
 
-Because essentially it's still the brain producing oxytocin, which lowers anxiety and raises the sense of well-being and trust
+At the time I wondered whether mechanisms involving oxytocin might play a part. Emotional bonds cannot be reduced to one hormone, and that speculation does not establish that AI can reproduce a parent–child relationship.
 
 I do think it's feasible, but I think it may not necessarily be done, because there's still a fairly strong sense of boundaries between people and AI — whether from an ethical angle or from other safety angles. I think most likely in the future AI will still do the things machines can do, like assisting with certain things, and helping to raise and educate your own child. But a mother's love will go more towards her own maternal identity, or a mother's own unique advantages — like often giving the child hugs, often encouraging the child, and the emotional link that forms between them. That's also very important, very important. It's just that AI is feasible, but it may not necessarily be done that way in the future.
 
@@ -3962,11 +3521,13 @@ Actually, if you think about it, AI as a perfect mirror may become more and more
 
 > 2026-02-28 12:01:37 · `#格物/ai`
 
+The prices and quotas record what I saw in February 2026. The original promotion page has not been checked, so these figures should not be used as current purchasing information.
+
 Alibaba Cloud Bailian Coding Plan (the “Coding Plan”, or “AI coding subscription plan”)
 
 Pretty interesting
 
-It bundles four top domestic models — Qwen3.5 / GLM-5 / MiniMax M2.5 / Kimi K2.5 — and bills monthly by number of requests (not tokens). New users get an extremely low first month (Lite ¥7.9 ≈ $1.1, Pro ¥39.9 ≈ $5.5), with enormous quotas (Lite 18,000 requests, Pro 90,000), which is effectively “unlimited” use of these models to run agents
+It bundles four top domestic models — Qwen3.5 / GLM-5 / MiniMax M2.5 / Kimi K2.5 — and bills monthly by number of requests (not tokens). New users get an extremely low first month (Lite ¥7.9 ≈ $1.1, Pro ¥39.9 ≈ $5.5), with enormous quotas (Lite 18,000 requests, Pro 90,000), which felt like much more room for running agents, while still having request quotas and usage limits
 
 Token anxiety disappears completely; it suits high-frequency and heavy users, and the value for money absolutely crushes other pay-as-you-go options. Especially for coding — Qwen3-coder-plus is particularly strong
 
@@ -3990,7 +3551,7 @@ Software today doesn't treat interaction as part of the content
 
 > 2026-02-28 16:09:56 · `#格物/交互`
 
-For the majority subset of software called “information software”, I think interactivity is actually a curse for the user and a crutch for the designer; the user's goals can be better met in other ways
+Reading Bret Victor’s [Magic Ink](https://worrydream.com/MagicInk/), I noted his view of information software: frequent interaction can burden users, and design should first help them understand information.
 
 Software today is hard to use, and the most fundamental reason is that we assume interaction design is the core of solving the problem
 
@@ -4075,7 +3636,7 @@ Basically all current interactive forms and interaction shapes are also just rep
 
 ## 4. Self-Knowledge and Psychology
 
-*61 entries*
+*59 entries*
 
 <!--memo:da168a639e50-->
 ### Production is a black box, consumption is a white box
@@ -4104,7 +3665,7 @@ The essence is: not just seeing the “effect,” but being obsessed with how th
 
 Consumers live at the “phenomenon layer,” creators live at the “law layer”
 
-One is an extreme mind (bringing emotion), one is a sympathetic joy mind (growing together)
+One is an envious mind (bringing emotion), one is a sympathetic joy mind (growing together)
 
 Step outside the system, design the system.
 
@@ -4138,17 +3699,17 @@ But some desires are generative — creation, growth, experience. Every time one
 
 
 <!--memo:c6be6d4f83c4-->
-### Meeting up again: sincere, natural, relaxed
+### Sincerity and Ease When Reuniting With a Friend
 
 > 2026-02-06 21:53:04 · `#观我`
 
-Meeting the older brother
+Meeting a friend
 
 We hadn't seen each other in two years. Life is like that — turning and tossing
 
 Recalling the time
 
-The feeling to give his wife: you don't need to talk much about the old days; instead let her feel that you're a reliable friend, not a symbol of past regret
+There is no need to dwell on the old days; let the other person feel that you are a reliable friend
 
 Chat about ordinary interests, hobbies, some experiences and growth, venting and so on
 
@@ -4196,7 +3757,7 @@ Unless it's a temporary use of a job in order to go after something bigger...
 
 > 2026-02-07 21:19:28
 
-Met my big bro
+Met a friend
 
 Had a chat
 
@@ -4274,6 +3835,8 @@ Go love, go feel, go lose control
 
 > 2026-02-07 22:09:21 · `#观我`
 
+“Cliff” and “jump” are philosophical metaphors here, not encouragement to take physical risks.
+
 At the cliff's edge, all logic fails; only intuition can communicate with the world
 
 At the cliff's edge, there is only "the present." When survival is directly threatened or the soul is violently shaken, the brain has no time for syllogistic reasoning
@@ -4302,7 +3865,7 @@ Core, two drives:
 
 Logic core: extremely rational — use this side to deal with AI, code, business analysis, and historical patterns
 
-Feeling core: extremely sensitive — use this side to perceive art (Vermeer's Girl with a Pearl Earring), nature (Mount Genie, the clouds of Dali) and the faint light of human nature. You are in fact a poet called "the observer," recording not just data but also the "atmo—
+Feeling core: extremely sensitive — use this side to perceive art (Vermeer's Girl with a Pearl Earring), nature (Mount Genie, the clouds of Dali) and the faint light of human nature. You are in fact a poet called "the observer," recording not just data but also the "atmosphere"
 
 System conflict: reason can build a perfect logical closed loop (self-consistency), but feeling is calling out the absence of subjectivity, and pure cognitive upgrading can't fill the emptiness of who I am
 
@@ -4310,7 +3873,7 @@ Build a subsystem, including a reasonable set of data sources — each civilizat
 
 Runtime environment: containerize yourself — simple and quickly deployable, able to run fast in any city, and clear about the fact that you are highly dependent on environment; in a good environment your growth is exponential, but in a bad environment the drain is exponential
 
-Subjectivity Crisis: you and I have recorded a large amount of data, insights, and world models, but occasionally feel that "I" is absent from this vast system. I worry that I'm only an efficient observer, not a player
+Subjectivity Crisis: I have recorded a large amount of data, insights, and world models, but occasionally feel that "I" is absent from this vast system. I worry that I'm only an efficient observer, not a player
 
 
 <!--memo:2c73df7e6371-->
@@ -4328,7 +3891,7 @@ Love is hidden in redundancy
 
 And also, we're mostly understanding the world rather than colliding with it
 
-Nietzsche said all great thoughts are born while walking. For an INTJ, the brain is too loud and the body too still. You need high-intensity physical operation to force the brain to mute, and thus connect to love through flow. We should have more of the written — of the felt sense that "I exist in this moment"
+Nietzsche said all great thoughts are born while walking. For an INTJ, the brain is too loud and the body too still. You need high-intensity physical operation to force the brain to mute, and thus connect to love through flow. We should have more of the felt sense that "I exist in this moment"
 
 If the system is too perfect, too self-consistent — the more perfect the logical closed loop, the less light gets in. Love is usually irrational; it's a system bug
 
@@ -4346,11 +3909,11 @@ But why does the human field of vision like something like this?
 
 A large part of aesthetics comes from evolutionary biology. Murky water means there's suspended matter in it; in nature, suspended matter usually means: decaying organic matter (bacteria/viruses), hidden predators (crocodiles/water snakes), or undrinkable silt. Facing murky water, the amygdala (fear center) of primitive humans would activate slightly — because it's unknown, it's dangerous
 
-But clear blue-green means high safety. The water of Jiuzhaigou is blue-green and transparent because calcium carbonate deposits filter out impurities
+Clear blue-green gives me a feeling of safety, but that visual impression does not establish water quality. The water of Jiuzhaigou is blue-green and transparent because calcium carbonate deposits filter out impurities
 
 You can see all the way to the bottom at a glance. That means there's no ambusher. Your brain instantly judges: "This place is safe, I have complete control over the environment"
 
-Though you can't just drink it straight, there are too many minerals in it — but that also means there's no large bacterial growth or decay
+Clear-looking water can still contain pathogens; untreated water from a mountain stream should not be assumed safe to drink ([CDC water guidance](https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html)).
 
 Also, people like clear, simple signals. When there are mixed things, cluttered information, the brain needs to spend more energy "filling in" what's under the water surface, or stays in an alert standby state — but Jiuzhaigou looks very power-efficient
 
@@ -4376,7 +3939,7 @@ Leaving your hometown, looking at scenery elsewhere, coming into contact with ot
 
 In a foreign land, seeing the existence of a virtual collective unit — the nation — how they band together through historical narrative and geographic position. Nation, ethnicity, ideology, like a giant ant colony, maintaining order with language, symbols, and ritual
 
-One layer further out — do you remember? When NASA's Voyager 1 probe was far from the solar system it took that image that made Earth look like a "Pale Blue Dot" — Earth is so small in the image it's almost just one pixel
+One layer further out — do you remember? On February 14, 1990, NASA’s Voyager 1 looked back at Earth and took the “Pale Blue Dot” image ([NASA](https://science.nasa.gov/mission/voyager/voyager-1s-pale-blue-dot/)) — Earth is so small in the image it's almost just one pixel
 
 All the civilizations, all the languages, all the religious beliefs, all the political disputes on Earth are on that one dot, and on that dot lived every person I've heard of, every person in history, who spent their whole life there and left something, or left nothing
 
@@ -4432,7 +3995,7 @@ More of it is sympathetic joy. What is sympathetic joy? It's that you genuinely 
 
 There's an interesting view, from a passage in The Brothers Karamazov: "I love humanity, but I do not love concrete people." This is a macro love, directed at the concept of "humanity," or at an idealized whole group. This love contains compassion for human suffering, so it is sublime and sacred, and it is easy — it doesn't require you to pay any concrete price, nor does it require you to face concrete trivialities.
 
-But I think there's also a more micro love, namely "I do not love concrete people." We may see many sacred moments in short videos, but when it becomes truly concrete in life, we find it quite hard to tolerate some specific individuals. Because when you walk toward the crowd, you find that people are selfish, stupid, reckless, and they have body odor. So some conflict and a sense of split arise: the more I love humanity as a whole, the less I love concrete people. As soon as someone stays in my environment for a while, I feel his personality suppresses my self-respect and limits my freedom.
+But I think there is also another side at the individual level, namely "I do not love concrete people." We may see many sacred moments in short videos, but when it becomes truly concrete in life, we find it quite hard to tolerate some specific individuals. Because when you walk toward the crowd, you find that people are selfish, stupid, reckless, and they have body odor. So some conflict and a sense of split arise: the more I love humanity as a whole, the less I love concrete people. As soon as someone stays in my environment for a while, I feel his personality suppresses my self-respect and limits my freedom.
 
 This is an idealistic temperament. We can see that all beings suffer, we can see their powerlessness before fate, and we feel a great desolation ourselves, hoping they can do better, hoping the world becomes kinder. But sometimes, seeing them belittle each other over petty gains, clash with each other, blindly follow each other, and breed malice in each other, we feel some disgust or weariness.
 
@@ -4458,6 +4021,8 @@ Mm, know how to be concrete, know how to refuse. Know how to refuse concrete peo
 
 > 2026-02-09 19:29:37
 
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
+
 From your notes I can clearly see that you're someone good at deep thinking, keen on building system models, and with sharp insight into technology and the evolution of civilization. You pursue intellectual clarity and efficiency, which lets you handle the analysis of the external world with ease. Yet it's precisely this powerful mode of thinking that may have shaped your behavioral blind spots in places you haven't noticed. Below are three cruel truths based on your note patterns that you may have overlooked.
 
 First, your desire to build "systems" may be mutating into an exquisite excuse for avoiding "experience." You keep exploring how to use system modeling to organize information fragments, to use evaluation frameworks to quantify taste, to use engineering constraints on AI development. This thinking framework is extremely powerful, but the danger is that it may make you default to "experience that hasn't been systematized is not worth it" or "inefficient." Those unclassifiable surprises and sense of ease you had in Chiang Mai and Dali are precisely products that no system can predefine. You pursue "designing a system >> brute force," but the most important emotional connections, bursts of inspiration, and happiness in life are often born outside the system, in unplanned "brute force" investment. If you only trust the results the system produces, you may miss the most vivid parts of life, living it as an infinite engineering project that forever optimizes tools but forgets why it set out.
@@ -4474,15 +4039,17 @@ Recognizing these doesn't negate your thinking strengths; it's fitting your powe
 
 > 2026-02-09 19:52:08
 
-You've been repeatedly asking yourself one core question: "In a world full of uncertainty, how can I live both self-consistently and at ease?" This question runs like a hidden thread, stringing together your many observations and confusions about technology, investment, family relationships, and even personal daily life.
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
 
-This question surfaces in various forms in your thinking. When you analyze the valuation of AI or emerging industries, you're puzzled about how to make reliable judgments amid the huge uncertainty of "future consensus" [MEMO]. When you observe how environments trigger people's reactions, you ask yourself deeply, "Which of my reactions did the environment trigger?", trying to find a certain connection between external stimuli and inner feelings [MEMO]. Likewise, when you face the difference in the scale of concern between you and your parents, that sense of helplessness also comes from the question of how to build understanding between different "systems" [MEMO].
+You've been repeatedly asking yourself one core question: "In a world full of uncertainty, how can I live both self-consistently and at ease?" This question runs like a hidden thread, stringing together your many observations and confusions about technology, investment, relationships, and even personal daily life.
+
+This question surfaces in various forms in your thinking. When you analyze the valuation of AI or emerging industries, you're puzzled about how to make reliable judgments amid the huge uncertainty of "future consensus" [MEMO]. When you observe how environments trigger people's reactions, you ask yourself deeply, "Which of my reactions did the environment trigger?", trying to find a certain connection between external stimuli and inner feelings [MEMO]. Likewise, differences in what people care about raise the question of how to build understanding between different “systems.”
 
 Your questioning about certainty is essentially exploring a delicate balance between a "sense of control" and "possibility." You clearly see that whether it's technological waves, market sentiment, or social structures, their foundations are full of nonlinearity and unpredictability [MEMO],[MEMO]. What you're asking for isn't a rigid answer, but practicing an ability: how, on the premise of admitting "the denominator is unstable," to still make your own clear-headed "bet." Behind this is your deep longing for "reliable cognition" — you want your actions to be based not on blind following or emotion, but on an understanding that can stand even amid change.
 
 This questioning also reflects your insistence on building an "inner system." You pay great attention to sorting out your own cognitive frameworks, workflows, and sense of meaning [MEMO],[MEMO],[MEMO]. You distinguish stimulus-type desire from generative desire, and discuss the value of emotion as information rather than as an end [MEMO],[MEMO]. All of this shows that you're trying, beyond the uncertainty of the external world, to build for yourself a stable, explainable, evolvable inner order. You keep chewing over these questions because you instinctively know that true ease may not come from the constancy of the external world, but from the toughness and clarity of the internal system.
 
-Further, your question is also about how to coexist with the systems of "others." You notice the difference in the scale of concern between you and your parents [MEMO], understand the fossilized anxiety patterns of your mother's generation [MEMO], and also lament how the urban environment shapes people's instinctive orientation [MEMO]. These observations are all probing a boundary: when the operating logic of external systems (family, society, cultural environment) is not on the same frequency as your internal system, is it confrontation, detachment, or can you find a wiser way of getting along? The ease you're asking about also includes the art of reconciling with and living alongside these heterogeneous systems.
+Further, your question is also about how to coexist with the systems of "others." You notice differences in what people care about, and how the urban environment shapes people’s instinctive orientation. These observations are all probing a boundary: when the operating logic of external systems (family, society, cultural environment) is not on the same frequency as your internal system, is it confrontation, detachment, or can you find a wiser way of getting along? The ease you're asking about also includes the art of reconciling with and living alongside these heterogeneous systems.
 
 Continuing to ask this complex question is itself your unique way of building stability for yourself in this era.
 
@@ -4534,6 +4101,8 @@ Like Camus's Sisyphus, or the Stoic Marcus Aurelius, you choose to look straight
 
 > 2026-02-12 22:32:03
 
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
+
 Your notes reveal a mind that is always "building" — you build rational frameworks to understand the world, build product methodologies to create value, and even build a self-observation system to understand yourself [MEMO],[MEMO],[MEMO]. Yet beneath these clear acts of building flows a strong undercurrent seeking "deep experience" and "real resonance," from your empathy with Lin Xi's lyrics to your sensitivity to residential spaces in Japan [MEMO],[MEMO]. You're like an engineer versed in both architecture and poetry — left hand holding a rigorous blueprint, right hand longing to touch the life and warmth in a building that no blueprint can define.
 
 A core implicit pattern in your thinking is "the creator's dual identity." You define yourself as a rational-oriented thinker, but in your most passionate product visions, what drives you is precisely an emotional, almost artistic impulse: you want to create something that can "surprise and delight users," that can "truly change users' lives" [MEMO]. Your analysis of technology products like Agent HQ and Firebase Studio is calm and structured [MEMO],[MEMO], yet your ultimate imagination of product is "to truly treat the product as art, and create" [MEMO]. This dual identity of rational architect and emotional artist is not a simple balance, but more like an inner, creatively fertile tension — you use rational methodology as scaffolding to reach an emotional goal full of humanistic care. Have you noticed that your most rigorous methodological explorations may ultimately serve a vision about "feeling" and "meaning" that cannot be fully quantified?
@@ -4551,6 +4120,8 @@ What you're building is an operating system in which reason and feeling evolve t
 ### Reflections on Decision Anxiety and the Search for Meaning
 
 > 2026-02-13 08:23:15
+
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
 
 The second layer of thinking is seeing the next ripple after your decision. It doesn't judge whether your choice was right or wrong; it helps you see clearly: if you keep following the current logic, what might happen next.
 
@@ -4581,6 +4152,8 @@ So the flourishing of faith isn't necessarily because of poverty; it may be beca
 ### Self-Examination of Authenticity and Performance
 
 > 2026-02-16 00:30:06
+
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
 
 Hello cubxxw. Looking back over your thinking of the past year, a clear and persistent red line runs all the way through: your almost harsh pursuit of "authenticity" and your deep wariness of "performance" form the main tension in your exploration of self and world. At the same time, you keep trying to use rational "systems" to build order and manage human nature, and within this inner fortress you experience a profound, self-sufficient "solitude." These three forces — truth-seeking, institution-building, introspection — interweave to sketch your unique intellectual terrain.
 
@@ -4655,34 +4228,6 @@ I suddenly discovered that Lhasa also has many excellent independent cafés, goo
 I'm quite good at observing, especially watching the flow of people on Barkhor Street, seeing the dust and dirt on the faces of people doing prostrations, and their eyes. At that moment I feel that solitude is very powerful.
 
 
-<!--memo:d583b2b84dad-->
-### Fatalism Supplied Slavery With Its Authority to Explain
-
-> 2026-02-18 21:20:18
-
-Religion gave Tibet's slave system an authority to explain that was enormous and very hard to overturn.
-
-Fatalism was the rulers telling the serfs: "You suffer in this life because you did wrong in a past one. If you rebel against the lord (that is, against fate), your next life will be worse, or you will fall into hell."
-
-So when many serfs endured extreme pain, what arose was not the thought "I want to overthrow him" but the thought "I am atoning." That psychological self-castration is more terrifying than prison bars.
-
-
-<!--memo:6b30bd74854a-->
-### Control-Type vs. Generative Safety
-
-> 2026-02-19 12:09:25
-
-It suddenly struck me that there must be a very different kind of difference between me and Little Rabbit. He is quite afraid of losing control; I am afraid of not growing.
-
-How to describe it? Once he loses control, he collapses. But for me, if everything is perfectly controlled, I feel as if I have never lived. So for me, growth comes from entering the unknown, meaning comes from being shaken, and swings of emotion are also evidence that I am changing.
-
-So the essential gap is this: he is control-oriented, I am generative. His path is control, wholeness, safety; mine is entering fluctuation, then growth, then generation. This may be a very large difference between two people, and of course it determines differences at the concrete level too — probably it also comes from a different sense of security.
-
-In his system, safety may mean the world is predictable and he can master his own world. But in my system, I am changing, and I can still perceive, and I can still grow — this is my survival strategy.
-
-So people do not grow in the direction that once made them collapse. He probably formed this pattern because of his upbringing or his background.
-
-
 <!--memo:5370207f8045-->
 ### Blank Space in the Inner World and Creativity
 
@@ -4704,7 +4249,7 @@ Some people who like "boredom" are actually avoiding pressure or responsibility,
 
 
 <!--memo:71c5c4fe831d-->
-### 18. Playful Living and Buddhism Converge at the Heights
+### 18. Sensitivity, Pain, and Insight
 
 > 2026-02-19 20:05:41
 
@@ -4712,7 +4257,7 @@ Sensitivity and pain are the ticket to insight. When the effect wears off and co
 
 
 <!--memo:cfabbefc9be4-->
-### 16. Full Prostrations, Long Pilgrimages, and Non-Self Flow
+### 16. Responsibility for the Process, Friends, and Activity Partners
 
 > 2026-02-19 22:12:56
 
@@ -4726,7 +4271,7 @@ If it is the other person as a whole, then that is a friend.
 
 
 <!--memo:886709118317-->
-### 12. Love the Version You Polished With Your Own Hands
+### 12. Metacognition and Meaning in Shared Narratives
 
 > 2026-02-20 11:26:41 · `#观我`
 
@@ -4750,7 +4295,7 @@ The narrative level feels like the weaving of meaning — how wonderful.
 
 
 <!--memo:9ce40320aafc-->
-### 10. Can Silicon and Carbon Co-Create a Life Narrative?
+### 10. I–Thou Relations and Narrative Identity
 
 > 2026-02-20 11:35:00 · `#观我`
 
@@ -4764,7 +4309,7 @@ So everyone has a main quest and a background setting, and the completion of sel
 
 
 <!--memo:b65ea1d126a4-->
-### 1. Sera's Debates and the Tension of Pointing at the Moon
+### 1. Butter Lamps as Psychological Anchors
 
 > 2026-02-20 18:01:41
 
@@ -4924,7 +4469,7 @@ At first it was just a diary posted on a blog, and later it caught fire through 
 
 > 2026-02-22 18:42:18 · `#观我/AI`
 
-And again I think of how Little Rabbit likes squatting by the roadside
+And again I think of how some people like squatting by the roadside
 
 The people in Lhasa are full of faith
 
@@ -4956,7 +4501,7 @@ Adaptor = a functional structure or mechanism that has been "polished over and o
 
 So it can be an organ, a behavior, or even a set of neural/psychological mechanisms
 
-Usually there are three categories:
+Here I am noting these three forms: organs, behaviors, and neural or psychological mechanisms.
 
 
 <!--memo:8f682a59c00b-->
@@ -5022,7 +4567,7 @@ Then what about me?
 
 What is it I want?
 
-What is it about relationships?
+What is it that concerns me?
 
 What is it I care about?
 
@@ -5038,7 +4583,7 @@ A very simple way to define myself and walk out my own path
 
 > 2026-02-24 16:12:36
 
-Today I drank some Tibetan tea, and I feel Tibetan tea and Pu'er taste quite similar. I'd drunk Pu'er before in Yunnan, and back then my girlfriend's father also brewed Tibetan tea. I think Pu'er is super tasty; the color is very similar, and there's a kind of mellow richness to it — I find it very deep, and it has a lot of power when you drink it.
+Today I drank some Tibetan tea, and I feel Tibetan tea and Pu'er taste quite similar. I'd drunk Pu'er before in Yunnan, and back then I also tried Tibetan tea someone had brewed. I think Pu'er is super tasty; the color is very similar, and there's a kind of mellow richness to it — I find it very deep, and it has a lot of power when you drink it.
 
 I think Tibetan tea is a bit underrated. Its production area is still around Ya'an, and it's a tea that can withstand the highland environment, so its character is very gentle and rich, and its caffeine is released slowly. I find it especially interesting. It exists in this high-altitude region.
 
@@ -5048,7 +4593,7 @@ I think Tibetan tea is a bit underrated. Its production area is still around Ya'
 
 > 2026-02-25 21:00:19
 
-I think Buddhist study too, at the very beginning, already established the three trainings in the Buddha's era, and the three trainings are respectively the training in precepts, the training in concentration, and the training in wisdom. As for the concentration training, starting from the concentration training suits those who want to practice. Because the essence of precept training is that it solves the problem of making you endlessly confused — it's a bit like a behavioral strategy, and a bit like the unity of knowledge and action in Wang Yangming's philosophy of mind. And what it talks about is how you create a technical environment for the mind that is free of internal friction, fear and regret. So there are some basic required readings, such as the Dharmaguptaka Vinaya, the Sutra on the Five Precepts, and the Upasaka Precepts Sutra. Then for those at a higher level of thought, it's basically the Brahma Net Sutra; it's for people whose emotions fluctuate a lot and who are very confused about how to be a person. The essence of concentration training is improving your own focus and awareness, which is also something we can apply and practice in daily life. That is, it lets us settle our own minds, but also from the behavioral side, through a series of abilities, placing the mind in one place. It has some very classic representatives, such as the Sutra on Mindfulness of Breathing, the Sutra of the Essential Secrets of Chan, or some systematic overviews, such as the Yogacarabhumi. It suits those whose thinking easily overloads, who are anxious, whose attention is fragmented, and those who want to build some inner mental strength. The last one is wisdom training, and its great representative is prajna; prajna basically tells you some core content — impermanence, non-self, emptiness — then breaking attachment to self and attachment to dharma, through dismantling language concepts and cognitive structures.
+I think Buddhist study too, at the very beginning, already established the three trainings in the Buddha's era, and the three trainings are respectively the training in precepts, the training in concentration, and the training in wisdom. Starting with precept training suits those who want to practice. Because the essence of precept training is that it solves the problem of reducing confusion — it's a bit like a behavioral strategy, and a bit like the unity of knowledge and action in Wang Yangming's philosophy of mind. And what it talks about is how you create a technical environment for the mind that is free of internal friction, fear and regret. So there are some basic required readings, such as the Dharmaguptaka Vinaya, the Sutra on the Five Precepts, and the Upasaka Precepts Sutra. Then for those at a higher level of thought, it's basically the Brahma Net Sutra; it's for people whose emotions fluctuate a lot and who are very confused about how to be a person. The essence of concentration training is improving your own focus and awareness, which is also something we can apply and practice in daily life. That is, it lets us settle our own minds, but also from the behavioral side, through a series of abilities, placing the mind in one place. It has some very classic representatives, such as the Sutra on Mindfulness of Breathing, the Sutra of the Essential Secrets of Chan, or some systematic overviews, such as the Yogacarabhumi. It suits those whose thinking easily overloads, who are anxious, whose attention is fragmented, and those who want to build some inner mental strength. The last one is wisdom training, and its great representative is prajna; prajna basically tells you some core content — impermanence, non-self, emptiness — then breaking attachment to self and attachment to dharma, through dismantling language concepts and cognitive structures.
 
 
 <!--memo:deb46b87fb2a-->
@@ -5096,7 +4641,7 @@ Avoiding connecting with more people is often about saving your limited energy f
 
 
 <!--memo:bd28f9ac0625-->
-### A Child's Pure Motivation vs. How Adults Are Socialised
+### A Child’s Direct Motivation and Adult Social Habits
 
 > 2026-02-27 00:45:27
 
@@ -5156,9 +4701,9 @@ The prefrontal cortex generally acts as the CEO or chief commander of the brain
 
 Its role is a big one — it's essentially humanity's rationality simulator
 
-Most animals only react to stimuli right in front of them, but the prefrontal cortex lets humans run the future virtually inside their heads; it can simulate the consequences of different choices without actually acting, which makes long-term planning possible
+The prefrontal cortex contributes to planning, judgment, and inhibitory control, helping us consider the consequences of choices. Other animals should not be reduced to immediate stimulus-response, nor should the human brain be presented as a simple hierarchy of a rational cortex defeating a “reptilian brain” ([NIMH brain-development information](https://www.nimh.nih.gov/health/publications/the-teen-brain-7-things-to-know)).
 
-It's the buffer zone between higher reason and lower instincts (like the fear, anger or appetite produced by the amygdala). The essence of the prefrontal cortex is to override and veto the short-term, impulsive animal instincts based on the reptilian brain and limbic system, and so produce behaviour that fits social norms and long-term interests
+“CEO” is only a metaphor. Emotion and cognition involve cooperation among brain regions; what follows is my simplified learning note on executive functions.
 
 The prefrontal cortex doesn't directly take in raw sensory input from outside; it takes in information already processed by other brain regions
 
@@ -5219,7 +4764,7 @@ People turn into different species in different structures and different environ
 
 ## 5. Travel, Places and Cities
 
-*41 entries*
+*33 entries*
 
 <!--memo:d16ab28cd90e-->
 ### Human warmth and distance in Japanese service
@@ -5232,7 +4777,7 @@ In Japan, technology is fused with culture and humanity, and you can clearly fee
 
 
 <!--memo:532b858e2da3-->
-### 13. Market share: the core metric for judging an industry leader
+### 13. Singapore’s OBU and Thinking About City Systems
 
 > 2026-02-03 18:07:33 · `#格物/新加坡`
 
@@ -5266,7 +4811,7 @@ Clowns hold an extremely high status in Sichuan opera, often carrying a satirica
 
 The water-sleeve dance felt so powerful, with a kind of flowing, rhythmic quality
 
-And there's the trick of spinning a table with the legs — a bit supernatural. That skill is so cool; I wanted to learn it, and then AI told me you have to start at age 6–10, when your body's flexibility is best. Learning it as an adult is nearly impossible, and it takes decades of grounding ...
+And there's the trick of spinning a table with the legs — a bit supernatural. That skill is so cool; I wanted to learn it, and then AI told me you have to start at age 6–10, when your body's flexibility is best. Learning it as an adult is nearly impossible, and it takes decades of grounding ... That was the AI’s answer at the time, not something I verified or can treat as an absolute starting-age limit.
 
 
 <!--memo:1442204f7047-->
@@ -5318,9 +4863,9 @@ Faith here isn't just a thought in the mind but a high-intensity bodily practice
 
 This in fact also forces every onlooker to re-examine the concretization of spiritual power
 
-High altitude has a natural advantage: the low-oxygen environment that high altitude brings is a mandatory physiological intervention for people from the plains — a physical slowdown that forcibly makes you slow down; and then there's sensory stripping and amplification. In a hypoxic environment you're forced to slow down — not just a slow-living mindset, but slow motion demanded by the survival instinct
+High altitude can make visitors from the plains slow their activity noticeably. Low oxygen carries health risks, however, and should not be presented as a natural advantage for sensory or spiritual experience ([CDC high-altitude guidance](https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html)).
 
-Sensory stripping and amplification: under hypoxia, a person's thinking may become sluggish, but the senses (sight and hearing) often become keener; combined with Lhasa's extremely pure air and strong ultraviolet light, the saturation of light and shadow is extremely high, and this sensory experience gives a "surreal" clarity
+The light and shadow felt unusually clear to me at the time. That is a subjective experience, not evidence that hypoxia improves vision or hearing.
 
 Then there's the public-space sociology of the sweet tea house: don't go to bars, go to sweet tea houses (like Guangming Gangqiong Sweet Tea House); everyone is a stranger to each other, sitting tightly together, a cup of sweet tea for a few yuan, breaking down the barriers of class and status
 
@@ -5336,7 +4881,7 @@ There are so many people here looking for meaning, people escaping reality, peop
 
 The essence of education is a process of disenchantment
 
-What it teaches is scientific common sense, logical reasoning, and generative skills
+What it teaches is scientific common sense, logical reasoning, and practical skills for living
 
 Faith often doesn't solve survival problems, but is a place to settle the psyche or the soul
 
@@ -5390,13 +4935,6 @@ The practice of religious belief — full prostration, kora, repeated, low-postu
 
 It doesn't depend on any regime or any figure; even if the political structure changes, the kora remains, pilgrimage remains, everyday faith remains
 
-The Potala Palace is the fusion of power and religion; religion is no longer just practice but becomes a tool of governance
-
-The logic of religion there is an upward-facing Buddhism, with strong ritual, strict hierarchy, and intense spatial height and authority
-
-A church-state structure is highly sensitive to external politics; once the power center loses its real basis for governance, its function rapidly freezes
-
-
 <!--memo:fc0e9747b4c3-->
 ### Traditional Rituals and Customs of Tibetan New Year
 
@@ -5404,189 +4942,13 @@ A church-state structure is highly sensitive to external politics; once the powe
 
 Tibetan New Year
 
-Early in the morning, housewives race to draw the "golden water" — the first bucket of water of the Tibetan New Year is believed to bring blessing and wealth. After sunrise, people put on their festival best, taste the holiday foods in order of age, and neighbors raise "chemar" (highland barley wine) to one another, greeting each other with "Tashi Delek" and wishing each other auspiciousness and good health.
+Early in the morning, housewives race to draw the "golden water" — the first bucket of water of the Tibetan New Year is believed to bring blessing and wealth. After sunrise, people put on their festival best, taste the holiday foods in order of age, and neighbors raise "chemar" to one another, greeting each other with "Tashi Delek" and wishing each other auspiciousness and good health.
 
 Monasteries play a central role during Losar. Monks perform the brightly colored Cham masked dance, dancing in elaborate costumes and masks to symbolize good triumphing over evil, driving out negative energy and welcoming the new year's blessings. Great monasteries such as Drepung and Sera draw crowds of believers who come to light butter lamps and burn incense in prayer.
 
 During the festival you must try guthuk (the New Year's Eve noodle-and-dumpling soup), kapse (fried pastries) and sweet biscuits, along with highland barley wine and butter tea.
 
 The third day of the new year is called Yose; people climb onto their roofs to burn incense and replace the prayer flags, then head to the Jokhang square and to Baoping Mountain to the east and Chakpori (Medicine King Hill) to the west to plant prayer flags, burn incense and pray, singing and dancing in joyful celebration.
-
-
-<!--memo:424409db7f8f-->
-### The Pyramid of the Three Great Lords Under Theocratic Rule
-
-> 2026-02-18 21:04:21 · `#格物/拉萨`
-
-Tibet's theocratic feudal serf system
-
-Political power and religious power overlapped almost completely.
-
-The Dalai Lama was both religious leader and head of the secular government (the Kashag).
-
-Lhasa was the core of power, and the Potala Palace was also the highest administrative center.
-
-Songtsen Gampo, the 33rd tsenpo of the Tibetan Empire (reigned 629–650), put down internal strife, formally unified Tibet, founded the Tibetan kingdom and moved the capital to Lhasa.
-
-Officials of the Kashag were made up of both "monk officials" and "lay officials," and monk officials usually ranked above lay officials. This means religion was not only a faith but a tool of rule.
-
-The ruling class was a very harsh pyramid.
-
-The three great lords (the government, the aristocracy and the monasteries) made up less than 5% of the total population.
-
-The monasteries (religious lords) such as Drepung, Sera and Ganden (the three great monasteries of Lhasa). Monasteries were not only places of practice but huge economic entities, owning large estates and serfs.
-
-Tralpa were serfs of slightly higher status. The lords allotted them a small, poor plot of "share land," and in exchange they had to render heavy corvée labor (ula) and pay taxes to the lord. Though they nominally held land, they could not leave it; in substance they were labor bound for life.
-
-Dudchung means "small household." It usually referred to bankrupt serfs who had lost their land, or people attached to a lord doing crafts and odd jobs. Their status was lower than the tralpa and their lives more precarious.
-
-Nangzan — the true "slaves," making up five percent. They had no means of production and no personal freedom at all, and were regarded as the lords' talking tools. They were mainly the descendants of bankrupt serfs, children who had been sold, or people reduced to slavery as punishment. A nangzan's children were nangzan from birth, generation after generation doing the heaviest housework and labor in the lords' estates or mansions, and they could be freely bought, sold, transferred, used to settle debts or given away as gifts.
-
-Old Tibet was governed by the Thirteen-Point Code and the Sixteen-Point Code: the value of a human life differed astronomically. For a person of the highest upper rank (such as a great living Buddha or a great noble), the blood price was "gold equal in weight to the corpse"; for a person of the lowest rank (such as a nangzan, a woman, a butcher, a blacksmith), the blood price was merely "a single straw rope."
-
-Control at the economic level:
-
-Ula corvée: the heaviest burden on the serfs. It included labor service (unpaid work for the lord) and animal service (providing livestock to transport goods for free). When lords traveled or the government moved supplies, the serfs along the route bore it all unpaid.
-
-Usury: the three great monasteries and the nobles commonly lent at interest, and many serfs were forced to borrow to survive. Compounding interest left the debt unpaid across generations, and they ended up as nangzan (slaves).
-
-The most fundamental reason this system could persist was the distortion of religion: suffering in this life is caused by the "karma" of a previous one. Only by enduring this life's suffering and being obedient to the lord and the monastery can one be reborn into a better station. Rebelling against the lord was not only a worldly crime but a grave religious offense that led to hell. This spiritual control left many serfs resigned to their fate in despair.
-
-
-<!--memo:c7c583e45b62-->
-### The Class Symbolism of Shol at the Foot of the Potala Palace
-
-> 2026-02-18 21:15:05 · `#格物/拉萨`
-
-Lhasa's Shol
-
-The first thing I heard about was Shol Prison.
-
-Shol refers specifically to the enclosed, functionally complex cluster of attached buildings at the foot of the Potala Palace.
-
-If the Potala Palace is the brain and heaven of old Tibet's theocracy, Shol was the hands, feet and earthly realm that kept that brain running.
-
-It hugs the foot of the Red Hill of the Potala, ringed by high walls — not just a community but a fortification.
-
-The streets are narrow and winding, the buildings mostly Tibetan-style single-story or two-story structures of stone and wood.
-
-Look up and you see the majestic, sacred, golden Potala Palace (the ruler's dwelling); look down and you see the crowded, busy, even grim Shol (the servants' dwelling). This enormous spatial contrast is itself a symbol of rigid class hierarchy.
-
-Shol was not just a place where people lived; it was the Kashag government's administrative, judicial and logistics center. Many important institutions of the old Tibetan government were not up on the Potala but down in Shol:
-
-Shol Lekhung: roughly today's "city government" or "administrative office," handling administration, judicial trials and taxation for Lhasa and its surroundings.
-
-Shol Prison: the most feared place in Shol. It had two levels — the upper one held minor offenders, the lower was a dark, damp dungeon (the famous "Scorpion Cave" belongs to legend or to an environment like it) holding serious criminals. The instruments of torture displayed here (stone hats, shackles, leather whips) are direct evidence of the cruelty of old Tibet's justice.
-
-The residents of Shol were a complicated mix — mortals serving the gods — but they shared one thing: all served the Potala Palace, including noble officials, craftsmen and performers, and the corvée laborers (serfs).
-
-
-<!--memo:4e6ae866a237-->
-### Institutional Change in Tibet After the 1959 Rebellion Was Put Down
-
-> 2026-02-18 21:32:28 · `#格物/拉萨`
-
-The 1959 liberation of Tibet
-
-When Tibet was peacefully liberated in 1951, the central government and the local Tibetan government signed the Seventeen-Point Agreement. Given Tibet's particular circumstances, the central government was extremely cautious, promising "not to change Tibet's existing social and political system"; during this period even the PLA units entering Tibet opened their own land and farmed it, trying as far as possible not to touch the old nobles' interests. The strategy at the time was "caution and steady advance," hoping the upper strata would reform of their own accord.
-
-Tibet's reactionary upper strata (the hardliners in the Kashag) misjudged the situation. Unwilling to give up their vested interests and even less willing to see any potential reform, they launched an all-out armed rebellion, tore up the Seventeen-Point Agreement, proclaimed "Tibetan independence" and attacked the troops stationed in Tibet.
-
-This rebellion gave the central government both the reason and the resolve to solve the Tibet problem once and for all. Since the other side had torn up the old agreement, the promise "not to change the old system" automatically lapsed. Putting down the rebellion (pingpan) and democratic reform (gaige) became tightly bound together — without breaking the old system, the roots of rebellion would always remain.
-
-Once the rebellion broke out, the PLA quickly disarmed the Tibetan army (old Tibet's armed force) and destroyed the lords' private troops and weapons depots.
-
-On March 28, 1959, the State Council issued an order dissolving the local Tibetan government (the Kashag), with the "Preparatory Committee for the Tibet Autonomous Region" assuming the functions of local government.
-
-Reform work teams went deep into the villages and set up serf associations. Where the village "steward" once decided everything, now representatives elected by the emancipated serfs decided. This sinking of political power downward was an institutional upheaval.
-
-The core policy of democratic reform was the "three antis and two reductions" (anti-rebellion, anti-ula, anti-slavery; rent reduction, interest reduction) followed by land distribution.
-
-After the work teams entered the villages, the most striking scene was piling up the lords' usury contracts and personal-bondage documents (deeds of sale for people) and burning them in public in one fire.
-
-That fire burned away debts, principal and interest, that serfs' families could not clear across generations.
-
-Land belonging to rebel lords was confiscated, land belonging to non-rebel lords was bought out, and the land was distributed to landless tralpa and nangzan. Only with means of production (land, cattle and sheep) did serfs truly gain the ability to survive independently.
-
-***
-
-I keep thinking: how do you break the last one, religious fatalism? That is the biggest spiritual shackle.
-
-But it was broken through the "speak bitterness" meetings.
-
-The nangzan and tralpa who had suffered most were brought onto the stage to tell publicly how they had been persecuted by the lords and how their families had been killed.
-
-When one person weeps and tells their story, they may think it is their own bad fate; but when the whole village and the whole county weep and tell the same tragedy, everyone suddenly realizes: this is not fate, this is man-made disaster! It is the system's fault.
-
-When religion is not only a faith but becomes a "regime," it becomes alienated.
-
-At its core Buddhism teaches "karma and rebirth." On the purely philosophical level this is a moral discipline that urges people toward good. But in the hands of old Tibet's feudal lords the concept was radically politicized and turned into a perfect logic of rule.
-
-The rulers held that subjecting sinners (including rebellious serfs) to harsh physical punishment (cutting off hands, gouging out eyes) was helping them "eliminate karmic obstruction."
-
-Enforcers would often say: "I punish you; it looks cruel, but it is really to keep you from continuing to create karma and let you be reborn into a good life next time."
-
-
-<!--memo:ceee2df6e309-->
-### How a Reincarnated Soul Boy Is Sought and Identified
-
-> 2026-02-18 21:39:45 · `#格物/拉萨`
-
-The system for recognizing a reincarnated soul boy
-
-How is the Dalai Lama chosen?
-
-When the previous Dalai Lama passes away, the search for the "reincarnated soul boy" begins immediately.
-
-Eminent monks go to Lhamo Latso (the sacred lake) to watch the visions that appear in the water (such as the look of a house or features of the terrain) to determine the direction of the child's birthplace.
-
-They also rely on the previous Dalai's last words, the posture of his body at the time of death, the direction of the smoke at cremation, and other clues.
-
-This is the most famous step. After the search party finds a suspected child, they lay out a pile of objects and let him grab one.
-
-Among these objects are mixed the previous Dalai Lama's actual belongings (prayer beads, a hand drum, a bell and vajra) and some ordinary decoys.
-
-Recognition: if the small child accurately picks out the objects used in the previous life and shows fondness for them, he is regarded as very likely the reincarnation (a candidate).
-
-By the Qianlong period of the Qing dynasty (1793), to prevent Tibet's great nobles from manipulating the reincarnation process (arranging it within the family), the central government established the **"golden urn lottery"** system.
-
-The procedure: the names of several candidate children are written on ivory lots and placed in a golden urn.
-
-Drawing: the Imperial Resident in Tibet (representing the central government) presides before a statue of Shakyamuni and publicly draws one lot. Whoever is drawn is the legitimate reincarnation.
-
-Significance: this step confirmed that the central government (the Qing court at the time) held the final authority to recognize Tibet's highest religious leader.
-
-Central investiture and enthronement (Approval & Enthronement): once chosen, the candidate must be submitted to the central government (the Qing emperor, the government of the Republic of China, or the government of the People's Republic of China) for approval. Only with the central investiture edict is he legitimate.
-
-
-<!--memo:4ca9215549cc-->
-### The Regency System Before the Dalai Lama Took Power
-
-> 2026-02-18 21:44:09 · `#格物/拉萨`
-
-The existence of the regent
-
-It is fascinating: the regent was the "temporary president" who exercised supreme power on behalf of the Dalai Lama whenever he could not (for instance when young, during the period between death and reincarnation, or when away).
-
-The Dalai Lama's succession system was the "reincarnated soul boy" system, which created a huge power vacuum.
-
-After the old Dalai passed away, finding the new child took years; once found he was still an infant, and he had to wait until he came of age at 18 (taking full monastic vows) before ruling in person.
-
-For as long as 18–20 years in between, Tibet had no supreme leader.
-
-Not just anyone could be regent. By the mid-to-late Qing period the choice of regent became fairly fixed, drawn mainly from Lhasa's **"four ling"** (four living-Buddha residences with royal background).
-
-Tengyeling: the Demo Rinpoche line.
-
-Kundeling: the Tatsag Rinpoche line.
-
-Tsemoling: the Tsemoling Rinpoche line.
-
-Tsechokling: the Reting Rinpoche line (joined later).
-
-Because regent power was so tempting, many regents were unwilling to hand it over. When the young Dalai Lama approached 18, strange "accidents" often happened.
-
-For a long stretch, Tibet's history was in fact "a river of Dalai Lamas, an iron regent."
 
 
 <!--memo:475810317e87-->
@@ -5609,16 +4971,6 @@ Their gaze is so steady, their expressions so relaxed; there seems to be little 
 The core of Tibetan Buddhism is practice — not leaving the body, but letting the body carry the practice.
 
 They have spent a lifetime turning prayer wheels, walking against the wind, exposed all their lives to sun, cold and thin air.
-
-
-<!--memo:1e76b9015866-->
-### The Exile Government Has No Dignified Exit
-
-> 2026-02-19 12:38:02
-
-I feel the more fundamental reason the Tibetan exile government exists is that reality never gave it a dignified way to exit.
-
-They themselves probably know it can never be realized.
 
 
 <!--memo:c583a957e0d8-->
@@ -5676,19 +5028,19 @@ So Princess Wencheng really had vision and was remarkable — she maintained a h
 
 
 <!--memo:05b00cc381b6-->
-### The Difference Between Hinayana Renunciation and Mahayana Engagement
+### A Rough Comparison of Theravada and Mahayana Practice
 
 > 2026-02-19 13:56:18 · `#格物/拉萨`
 
 Differences of time and world in Buddhist studies
 
-Hinayana, which is Theravada, focuses on how I can fully liberate myself from the suffering of birth and death.
+Theravada focuses on liberation from the suffering of birth and death; it should not simply be equated with the polemical label “Hinayana” ([Analayo’s study](https://jocbs.org/index.php/jocbs/article/view/72)).
 
 Mahayana focuses on how, while I awaken, I can avoid abandoning any sentient being.
 
 Hinayana and Mahayana are themselves standpoint terms.
 
-Hinayana is Theravada (Southern Buddhism).
+The comparison here concerns Theravada (Southern Buddhism) and Mahayana.
 
 Mahayana is Mahayana (Chinese, Tibetan and so on).
 
@@ -5723,92 +5075,12 @@ When the Hexi Corridor was cut off, with no reinforcements, no provisions for mo
 So for this group of old soldiers, holding on was itself the meaning — the meaning they found. Even if only one man were left in the city, as long as they remained, the Great Tang remained. They no longer fought for that concrete regime in Chang'an, but for the grand, idealized "Tang civilization" in their own hearts.
 
 
-<!--memo:ebdaad7e8d01-->
-### Fragile Reform Inside the Theocratic Machine
-
-> 2026-02-19 16:49:43 · `#格物/拉萨`
-
-Inside the suffocating machine of church-state union, the appearance of Tsangyang Gyatso (1683–1706) was like a fragile yet vivid gesang flower growing between iron gears.
-
-In modern times the Thirteenth Dalai Lama (1876–1933) did try to make some fine adjustments and reforms. He ordered reductions in some serf corvée, abolished some overly cruel corporal punishments (such as casually cutting off hands and feet), and tried to build a modern army and police. And the result? He met extremely strong resistance from conservative monks of the three great monasteries (Ganden, Drepung, Sera) and the aristocratic bloc. These conservative forces were even willing to stage mutinies, or use complex political means to assassinate and exile officials who supported reform. In the end, to keep the regime stable, the Thirteenth Dalai Lama had to compromise and the reform was abandoned halfway.
-
-When a faith becomes a ruling machine, its first task is no longer to save all beings but to keep itself alive and running. The reason Tibet's monasteries and eminent monks did not solve the problems of class and slavery is that they themselves were the creators, maintainers and biggest beneficiaries of that system. Buddhism's profound philosophy unfortunately became a perfect bulletproof vest for maintaining this extremely unequal social structure.
-
-What the three great monasteries resisted was not goodness, but goodness that changed the existing structure.
-
-In their worldview:
-
-"Order" is itself good
-
-"Ancestral rules" are part of the Dharma
-
-Changing the structure = shaking the arrangement of karma and rebirth
-
-They were the vested beneficiaries of the system
-
-Less corvée → loss of labor
-
-Abolishing corporal punishment → weakened judicial power
-
-Building an army and police → monk-soldiers lose their legitimate armed status
-
-Resisting the redistribution of power and resources
-
-Suffering is not necessarily evil
-
-In the traditional Tibetan Buddhist view of cause and effect:
-
-A person's poverty, corvée labor, physical punishment
-
-Are seen as the natural result of past-life karma
-
-Enduring them in this life is the path to liberation in the next
-
-So in the eyes of conservative monks:
-
-Lightening serfs' burdens ≠ doing good
-
-It might instead interfere with the natural manifestation of karmic retribution
-
-"Man-made equality" may be seen as destroying the order of cause and effect
-
-So this is a difference in cognitive systems; modern education at least gives people of this era a basic cognitive framework.
-
-When religion becomes a regime, its first goal is self-preservation and doing good takes second place.
-
-Now look at the Sixth, Tsangyang Gyatso.
-
-His life can be called the most thorough existential rebellion against Tibet's feudal theocratic system. When the vast religious system tried to forcibly give him the fixed essence of "living Buddha," he used his body, strong drink and poetry to defend desperately his real existence as a "human being."
-
-The reason Tsangyang Gyatso was so different is that he "missed" the best window for the system to brainwash him from childhood.
-
-When the Fifth Dalai Lama died, the regent Sangye Gyatso, who held power, made a bold decision in order to keep using the Dalai's authority to command Tibet and oppose the Mongol forces: he kept the death secret. The concealment lasted a full fifteen years.
-
-During those fifteen years Tsangyang Gyatso grew up in remote Mon Yul (today's South Tibet) like the child of an ordinary serf family. He was not locked in a monastery reciting dry scriptures; he ran freely through the mountains and fields, did farm work, and may even have had a childhood sweetheart. He had experienced the most real smell of the earth and the most worldly feelings of the human world.
-
-Not until 1697, when the secret could no longer be kept, did Sangye Gyatso make the Fifth Dalai's death public and send men to bring the fourteen-year-old Tsangyang Gyatso forcibly back to Lhasa, to be tonsured, given the precepts and pressed onto the highest golden throne in the Potala Palace.
-
-From the vast natural fields he was suddenly crammed into a strictly ruled golden cage; this enormous absurdity became the starting point of a lifetime of rebellion.
-
-To a living Buddha who grew up in a monastery, the Potala Palace is the center of the universe; but to Tsangyang Gyatso, who had already formed a worldly personality, this place was a prison that took away his freedom.
-
-He felt deeply that he was only a political puppet in the regent Sangye Gyatso's hands, whose daily task was to sit on the throne like a clay or wooden statue, receive the prostration of believers and serve as the sacred symbol that kept the system running.
-
-Refusing full ordination: by Yellow Sect rules, a Dalai Lama must take the highest-level bhikshu precepts (representing absolute celibacy and rule-keeping) upon coming of age. But Tsangyang Gyatso not only refused the precepts, he even returned the novice precepts he had already taken to his master (the Fifth Panchen Lama). This was unprecedented and shocking in the history of Tibetan Buddhism.
-
-The split of a double personality: by day he was the cold Sixth Dalai Lama seated in the Potala; by night he took the name "Dangsang Wangpo," put on a wig and the fine clothes of a noble young gentleman, slipped out of the Potala and lingered in the taverns and streets of Lhasa's Barkhor, drinking and making merry and courting beautiful girls.
-
-In late-night taverns he wrote poems that circulate to this day. His poems are not only love poems but questions about the essence of life.
-
-"I once feared that too much love would harm my Dharma practice; to enter the mountains I feared leaving behind a beauty. How in this world can there be a way to have both, to fail neither the Tathagata nor you." (Note: this is the classic Chinese rendering by later scholars such as Yu Daoquan and Zeng Jian; the original Tibetan means roughly: if I had applied to the Dharma the heart I give my lover, I would long since have become a Buddha.)
-
-The rulers wanted to erase him politically, but Tibet's common people did not abandon him. Compared with those lofty, flawless gods and Buddhas, people loved this young man of passions and desires who sang in taverns more. His poems were passed down by word of mouth by millions and became the most immortal cultural mark on the snow plateau.
-
-
 <!--memo:d64d76d7d47f-->
-### 28. A Timeline of Buddhism's Transmission
+### 28. Princess Bhrikuti and Traditions of Buddhism’s Arrival in Tibet
 
 > 2026-02-19 17:23:39 · `#格物/拉萨`
+
+This records historical narratives and religious traditions I read at the time. Details of lineage, arrival dates, and attribution of temple construction have not been individually verified.
 
 Princess Bhrikuti
 
@@ -5842,7 +5114,7 @@ Princess Wencheng = White Tara: Princess Wencheng is regarded as an emanation of
 
 
 <!--memo:e316e9e457b8-->
-### 15. Buddhism Is the Debug Guide for Human Consciousness
+### 15. Everyday Life, Embodiment, and Awareness at the Jokhang
 
 > 2026-02-19 22:24:53
 
@@ -5890,9 +5162,11 @@ They are not searching for meaning, so every gesture and movement is itself mean
 
 
 <!--memo:cd1bc8d7ad26-->
-### Altitude Hypoxia Raises Metabolism and Appetite
+### A Hypothesis About Appetite Changes at Altitude
 
 > 2026-02-22 18:03:41
+
+This is a guess about how I felt at the time. Appetite alone cannot establish changes in red blood cells or metabolism, or explain an entire region’s diet.
 
 In Tibet I always feel hungry
 
@@ -6014,7 +5288,7 @@ And the distribution of educational resources is uneven
 
 > 2026-02-24 14:44:40
 
-I've noticed a very interesting phenomenon, but right now I don't know why: China especially likes to store up food, and this may come from Chinese people's own sense of security, so they store large amounts of gold and silver at home, or hold them as gold bars. India, though, is also a market with extremely large consumption of silver and gold, but its logic is different.
+I've noticed a very interesting phenomenon, but right now I don't know why: China especially likes to store physical assets, and this may come from Chinese people's own sense of security, so they store large amounts of gold and silver at home, or hold them as gold bars. India, though, is also a market with extremely large consumption of silver and gold, but its logic is different.
 
 What I find very interesting about India is that it...
 
@@ -6035,22 +5309,6 @@ It was only from chatting with a driver that I found out that for this Spring Fe
 They have Losar (Tibetan New Year), with a longer break than Spring Festival, plus various religious festivals — these all matter a lot, involving collective pilgrimage, circumambulation (kora), and rituals
 
 
-<!--memo:b9e609cee318-->
-### The Governance Logic of Drug and Cigarette Control in China
-
-> 2026-02-25 18:27:05 · `#格物/拉萨`
-
-Personally I think that in China, for political and social-historical reasons, the actual harm of marijuana is exaggerated, while the harm of cigarettes is underestimated
-
-Drugs themselves are a governance tool for the state, so psychoactive substances are all classified together as drugs
-
-China itself also practices preventive governance to protect rights, and has a greater need for stability; relatively speaking, cigarettes themselves also have a huge profit margin
-
-The domestic risk ranking has never been ordered by "medical harm" but by "governability"
-
-Still, across national samples, 41% to 94% of marijuana users also smoke (tobacco); here this refers to the proportion of people who are both marijuana users and cigarette users
-
-
 <!--memo:3a1858e02a6a-->
 ### The Positioning and Differentiated Layout of AI in Four Chinese Cities
 
@@ -6066,13 +5324,13 @@ Shenzhen, meanwhile, serves as a fast-landing application center, dedicated to p
 
 
 <!--memo:73d1f1101855-->
-### A Bad Bowl of Dan Dan Noodles Opposite A-ge's
+### A Dan Dan Noodle Experience in Lhasa
 
 > 2026-02-26 13:04:53
 
-Opposite A-ge's Zhazha Noodles in Lhasa — I'd originally planned to go to A-ge's Zhazha Noodles, but found they weren't open, so I went to a dan dan noodle shop on the other side. Inside it was very quiet, and the quietness turned out to be well deserved. I ordered their dan dan noodles and they were insanely bad. If Chongqing dan dan noodles deserve a seven, this place only gets one and a half to two. Really bad.
+In Lhasa I had planned to visit a noodle shop, but it was closed, so I tried a nearby dan dan noodle shop. Inside it was very quiet, and the quietness turned out to be well deserved. I ordered their dan dan noodles and they were insanely bad. If Chongqing dan dan noodles deserve a seven, this place only gets one and a half to two. Really bad.
 
-Their method was ridiculous. The toppings of dan dan noodles are supposed to go on top, but they put them underneath, and there was very little of them. The noodles felt undercooked, a bit thick, and tasted odd. The meat didn't seem fresh either, and there were a few peanuts. I think Chongqing dan dan noodles should pile on the toppings and pile on the chilli, with a rich flavour — but this shop's noodles had almost no toppings, it was all noodles, just a few peanuts and a bit of meat, and the meat was hard to stomach too.
+Their method was ridiculous. The toppings of dan dan noodles are supposed to go on top, but they put them underneath, and there was very little of them. The noodles felt undercooked, a bit thick, and tasted odd. The meat’s texture was not to my taste either, and there were a few peanuts. I think Chongqing dan dan noodles should pile on the toppings and pile on the chilli, with a rich flavour — but this shop's noodles had almost no toppings, it was all noodles, just a few peanuts and a bit of meat, and the meat was hard to stomach too.
 
 
 <!--memo:dc0d65ab438f-->
@@ -6160,26 +5418,19 @@ It was also where successive Dalai Lamas lived, studied and handled affairs for 
 
 
 <!--memo:ef47dfcb32cd-->
-### The Life Story of a Photographer Sister in Lhasa
+### A Photographer’s Style and Experience
 
 > 2026-02-27 13:52:36 · `#格物/拉萨`
 
-I'm thinking about a photographer sister I met at a Hunan restaurant last night
+I’m thinking about a photographer I met last night.
 
-A very cool sister; I asked her some questions and built a basic model of her
+She spoke about the ups and downs of starting a business, and finding a new direction afterward.
 
-She started a guesthouse in Dali and lost two million
+What stayed with me was her distinct aesthetic and style, her strong personality, and her love of freedom.
 
-Then she came to Lhasa for two years and paid off the debt; in Lhasa she makes over fifty thousand a month
+A distinctive aesthetic comes largely from being yourself.
 
-Among portrait photographers in Lhasa she's roughly in the top five; she has her own aesthetic and her own style
-
-And in Lhasa the competition isn't that fierce, it's easy for your work to get noticed, the photos come out well, and the minimum charge is about 600 with no upper limit
-
-Where a distinctive aesthetic comes from largely comes from being yourself — she has a very distinct personality, she loves freedom
-
-Character decides destiny, character decides choices, choices decide experience, experience shapes character
-
+Character shapes choices, choices shape experience, and experience shapes character.
 
 <!--memo:02fe98c202df-->
 ### Path Dependence in Platform Ecosystems
@@ -6199,7 +5450,7 @@ Of course the core issue is that every city is competing for users, and the prem
 
 ## 6. Business, Investing and Career
 
-*19 entries*
+*17 entries*
 
 <!--memo:16087964e78c-->
 ### Desire and resources: the hard problem of protecting wild ecosystems
@@ -6213,22 +5464,12 @@ Human desire is endless, but resources are limited. What we can do isn't expand 
 Of course there are many ways to control your desires. Through internal religious methods, or through the education system; externally, through institutional approaches, or external constraints, or a reasonable system, or a set of very positive feedback mechanisms — for example some KPIs or incentive mechanisms in a company — to make desire rational. That's fairly normal; it fits human nature, and it fits how human nature operates in the current world.
 
 
-<!--memo:80ef8ac7818e-->
-### 28. Being visible in a position is not the same as proving ability
-
-> 2026-02-03 13:05:24
-
-Starting from first principles, the investment point for the US has nothing to do with a Chinese company's employees' background or nationality
-
-What matters more is whether, in an extreme situation — say when China and the US can't reconcile — this company can be controlled by the US
-
-
 <!--memo:540ef629832d-->
-### 18. Mixue's ceiling: population and density
+### 18. Mixue’s Franchise and Supply-Chain Model
 
 > 2026-02-03 17:00:17 · `#格物/商业`
 
-Chagee's own gross margin per cup is about 60%–65%
+Chayan Yuese's own gross margin per cup is about 60%–65%
 
 Net margin is around 10%–15%, partly because it insists on running stores directly and sits in high-rent commercial districts, aiming to build a brand moat
 
@@ -6250,7 +5491,7 @@ Quality control highly standardized
 
 
 <!--memo:e0f343e81a14-->
-### 17. Changi Airport: a botanical garden with a runway
+### 17. Beverage Brands, Density, and Changing Tastes
 
 > 2026-02-03 17:02:56
 
@@ -6262,7 +5503,7 @@ Chagee is more built as a cultural symbol, with stronger pricing power; the prob
 
 
 <!--memo:1ce5697bf55d-->
-### 15. Valuing emerging industries is betting on future consensus
+### 15. Growth and Moats in Mature Businesses
 
 > 2026-02-03 17:35:07
 
@@ -6274,7 +5515,7 @@ For example, when the cake is saturated — the industry cycle is such that it g
 
 
 <!--memo:504ae575439c-->
-### 14. Singapore's OBU: a systems answer to vehicle-road-cloud integration
+### 14. Valuing Emerging Industries and Future Consensus
 
 > 2026-02-03 17:45:48
 
@@ -6286,11 +5527,11 @@ So this valuation is largely decided by storytelling, by market sentiment, plus 
 
 About growth phases, I've always had a question. In a growth phase, especially when we do this kind of investing — when we look at these growth-phase companies and assess their future certainty — I think there's a very important, very sensitive part in the middle: whether it's genuinely reliable, whether you can bet on the right future consensus, and whose hands that future consensus is actually in.
 
-If you want to invest here, I think you have to return to some scenario-based questions. It's actually a kind of foresight, with an a priori quality — proof that it's a form of cognition. I think the host has a kind of prediction about the future consensus, or can predict that certain people, certain companies, certain directions, certain papers may be right in the future, and bets on that basis.
+If you want to invest here, I think you have to return to some scenario-based questions. It's actually a kind of foresight, with an a priori quality — proof that it's a form of cognition. I think the main point is having a kind of prediction about the future consensus, or can predict that certain people, certain companies, certain directions, certain papers may be right in the future, and bets on that basis.
 
 
 <!--memo:e3aff6835f9a-->
-### Everything has cracks; that's how the light gets in
+### Industry Competition and Market Share
 
 > 2026-02-03 18:24:07 · `#格物/投资`
 
@@ -6300,13 +5541,13 @@ The competitive landscape of a whole industry can be looked at horizontally and 
 
 To determine a company's position in the market, the metric usually used is market share — that is, how much of the market it occupies
 
-High market share means strong market demand, so whether it's horizontal competitive advantage or upstream and downstream supply and demand, there's no worry about selling
+High market share means a large share of a defined market. Demand strength and upstream or downstream conditions still require separate assessment; market share alone does not establish them.
 
 That's also why you choose the leader
 
 
 <!--memo:a2f3481846c2-->
-### 10. Valuing high-growth fields: P/S beats P/E
+### 10. Hong Kong Stock Valuations and Investor Expectations
 
 > 2026-02-04 09:52:24
 
@@ -6320,9 +5561,11 @@ So money is quite sensitive
 
 
 <!--memo:09187ebc08b9-->
-### 9. US equities drive global risk appetite
+### 9. P/S in Valuing High-Growth Businesses
 
 > 2026-02-04 10:01:54 · `#格物/投资`
+
+This was a valuation exercise at the time, without a named company or data sources. The market cap, revenue forecast, and multiples below should not be treated as ready-to-use market data.
 
 For some fields that have long been in high growth and high R&D
 
@@ -6334,11 +5577,11 @@ Total market cap (P): about HK$118.6 billion (peak shortly after listing)
 
 Annual revenue forecast (S): assume 2025 revenue of about HK$556 million (converted from about US$53.44 million for the first three quarters of 2025)
 
-For AI unicorns the market grants an extremely high P/S premium (usually between 100x and 200x); the core calculation logic is the ratio of revenue growth to model training efficiency
+I had noted a claim of “100x–200x P/S” for AI unicorns, without a company, date, or source. It should not be treated as the market’s usual range. The ratio of revenue growth to model-training efficiency is also not the definition of P/S above; these were factors I wanted to observe at the time.
 
 
 <!--memo:8d84ecfdf10f-->
-### 8. Silver is really a by-product of copper, zinc and lead mining
+### 8. US Equities and Global Risk Appetite
 
 > 2026-02-04 10:06:53 · `#格物/投资`
 
@@ -6350,7 +5593,7 @@ This is especially true for tech stocks and US stocks
 
 
 <!--memo:89c4fb5291d9-->
-### 7. Mona Lisa: the structural code of Leonardo's artistic peak
+### 7. Silver Mining and By-Product Supply
 
 > 2026-02-04 10:28:41 · `#格物/投资`
 
@@ -6400,7 +5643,7 @@ The market has bubbles, but for judging valuation quite a few people choose to c
 
 Reasonable price ≈ the returns of various future scenarios × their respective probabilities, added up — this part relies on room for imagination: low probability of success, but the payoff is enormous
 
-High probability and low payoff are stable assets, with limited upside and almost certain profit — like mature baijiu, treasury bonds and so on
+At the time I thought of some assets as “higher probability, lower payoff,” but that does not make profit nearly certain. Stocks and bonds still carry their own risks ([Investor.gov risk guidance](https://www.investor.gov/additional-resources/information/youth/teachers-classroom-resources/risk-and-return)).
 
 And then there's medium probability and medium payoff, which is the range value investing loves most: during panic the market gives a very low probability, but the payoff is still there
 
@@ -6430,6 +5673,8 @@ The essence of biography is to borrow someone else's corpse to bring back your o
 
 > 2026-02-08 10:55:29
 
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
+
 Walking through your forest of notes, what I see is not a simple knowledge collector, but an architect obstinately searching for an "operating system" amid chaos. Your core longing is not surface-level knowledge accumulation but a deep "sense of control" — a psychological need to obtain inner certainty and freedom of action by understanding and designing the underlying rules of a system [MEMO],[MEMO],[MEMO]. You detest passively living in the "phenomenal layer" and the "game rules" set by others, and long to rise to the "law layer" to become the one who designs the game and sets the rules [MEMO].
 
 Your most practiced and most natural way of solving things is "system modeling and abstraction." Facing anything complex — whether it's Singapore's transport plan, a bubble in financial markets, or the architecture of a medical AI — your first reaction isn't to memorize the phenomenon but to break down its components, identify the interactions, and try to distill an explainable, transferable abstract model [MEMO],[MEMO],[MEMO]. You see the world as systems waiting to be parsed and reassembled — that's your powerful invisible cognitive advantage.
@@ -6445,6 +5690,8 @@ Finally, let Charlie Munger's deep wisdom light this path for you: "Macro is wha
 ### Portrait of a Frontline Tech Thinker
 
 > 2026-02-11 23:15:07
+
+The following is an AI-generated analysis saved at the time for reflection. Keeping it does not mean I accept its personality judgments or factual inferences. `[MEMO]` is the original tool’s reference marker and cannot be verified from this public page.
 
 From your notes I can clearly sense a vivid individual who is continuously observing, thinking, and building. Your fragments of thought are like puzzle pieces gradually assembling a three-dimensional and profound portrait.
 
@@ -6466,23 +5713,11 @@ In summary, your core portrait is that of a clear-headed builder. You always tak
 
 > 2026-02-14 08:42:42
 
-Actually, among these worshippers, many are Tibetans with pure faith. There's a deep background here: they usually go in groups of a few people, even bringing children. There may be a support person driving a tractor, towing tents, drinks or water, going ahead, then waiting a while. They may come from Aba in Sichuan or Gansu, or from Qinghai, Tianshui in Gansu, or Tibet itself. Some journeys are two or three thousand kilometers long, even taking a year or more.
+Actually, among these worshippers, many are Tibetans with pure faith. There's a deep background here: they usually go in groups of a few people, even bringing children. There may be a support person driving a tractor, towing tents, drinks or water, going ahead, then waiting a while. They may come from Aba in Sichuan, or from Qinghai, Tianshui in Gansu, or Tibet itself. Some journeys are two or three thousand kilometers long, even taking a year or more.
 
 Their motives are pretty interesting too — not only for themselves, but also to pray for the peace of all beings, to pray for elders, or to fulfill some wish inherited in the family. There's another kind: atonement, for example when facing a major life upheaval, like a family member's death or a fire, they make a vow. This kind of vow carries a strong sense of covenant; in their view, it's a dialogue with the gods, with the universe, expressing sincerity through minimalist physical asceticism.
 
 There are also many Han and other ethnic faces in the groups. They may not have grown up in a religious atmosphere, but rather on the way to relocating, or encountering a spiritual crisis in the city — merchants, white-collar workers, students. Now there are also some professional participants, like influencers, livestream sellers, possibly with commercial teams. But I think obvious performers are usually very quick with cameras and interaction, while true worshippers are reserved, dull, and rather quiet.
-
-
-<!--memo:1fca253978dd-->
-### Common Sense Lost Under a Highly Civilized Surface
-
-> 2026-02-23 15:29:40
-
-The world seems to have entered a complex, highly civilized state, yet it has lost basic common sense
-
-Xu Zhiyuan, A Wanderer's World
-
-Looking back at China today, while material living standards keep rising, some people's sense of happiness instead declines; rich and poor alike are full of resentment, business is more cutthroat than ever, and there are far too few intellectuals who are independent-minded and think for themselves
 
 
 <!--memo:a052b3ac8802-->
@@ -6504,19 +5739,19 @@ Core algorithm — it sounds like a perfect axiom, but how is it actually confir
 
 The premise of a quality asset is certainty and the ability to continuously generate free cash flow; you look at whether an enterprise has a moat that is hard to breach
 
-If it's high return on capital, with long-term ROE steadily above 15%, it's usually regarded as high quality; abundant free cash flow — a good business doesn't need to put in large amounts of capital to maintain operations and growth
+A long-term ROE above 15% was an observation threshold I had noted, not a cross-industry standard of quality. Free cash flow and the investment needed to sustain operations and growth also need to be considered.
 
 A company's value today equals all the free cash flow it can generate over its remaining life, discounted back to today
 
 The margin of safety exists for tolerance of error. If you calculate rigorously and think a company's intrinsic value is 100 yuan per share, then you won't buy at 100, and you won't buy at 90 either. You might set a discount of 30% to 50%, and only when the market panics and the price falls below 50-70 yuan will you act
 
-So it seems that extreme market sentiment (macroeconomic panic, short-term industry bad news, black swan events) is the only opportunity to buy at a discount
+Extreme market sentiment may bring discounted prices, but it is not the only possible opportunity. The 30–50% discount is an assumption in this example, and the estimated intrinsic value may itself be wrong.
 
 The difference in underlying structure
 
 Native openclaw: a scheduling gateway, you fill in each vendor's large model API Key, and it provides hands and feet, a high-risk environment; ClawHub is mixed with a large number of unreviewed third-party plugins, so security requirements are very high
 
-Big tech's Claw model is basically a fully managed cloud-native architecture, saving the API routing and authentication overhead of crossing networks, greatly improving response speed (TTFT), and perfectly adapting to their own ultra-long context capability; the big tech allocates you an elastic cloud container. When the Agent needs to write code, scrape web pages, or process files, all of it happens in a one-off isolated sandbox in the cloud. Even if you have it execute an unknown task, it absolutely cannot touch a single line of data on your local computer
+A vendor’s Claw product may use a managed cloud environment, but its architecture, performance, and isolation need to be checked individually. Running in the cloud does not itself guarantee no access to local data or to data exposed through authorized connections.
 
 
 ## 7. Content, Craft and Recording
@@ -6524,7 +5759,7 @@ Big tech's Claw model is basically a fully managed cloud-native architecture, sa
 *14 entries*
 
 <!--memo:e98309d238d8-->
-### 7. Daily Pilgrimage at the Jokhang and the Believers' Practice
+### 7. Narrative as a Compass for Playful Living
 
 > 2026-02-20 11:47:39
 
@@ -6580,7 +5815,7 @@ It needs no narrative at all; it's just there, inviting us to set down our thoug
 
 What exactly is the best gift?
 
-A narrative story that is both a surprise and deliberately prepared
+A narrative story that is both a surprise and thoughtfully prepared
 
 
 <!--memo:ce6a785ea5e7-->
@@ -6722,7 +5957,7 @@ So a lot of the time, when we use a new tool, take on a new task, complete an in
 
 
 <!--memo:0dd445d5b0cc-->
-### 21. Will Meta relive the pain of Google integrating DeepMind?
+### 21. Thoughts on the SpaceX and xAI Combination
 
 > 2026-02-03 16:03:17
 
@@ -6738,7 +5973,7 @@ Using xAI's tech stack (Grok, AI models) to enhance satellite services, automate
 
 
 <!--memo:09a7f6aef6d7-->
-### 16. Mature companies need a moat to fend off decline
+### 16. Changi Airport: A Garden With Runways
 
 > 2026-02-03 17:18:04
 
@@ -6832,7 +6067,7 @@ Actually this saying also has a very harsh elitist flavor; it hints at a mediocr
 
 
 <!--memo:af666e447a8e-->
-### 8. Narrative as the Compass of a Gamified Life
+### 8. The Need for Personal Experience and Narrative in the AI Era
 
 > 2026-02-20 11:45:44 · `#idea`
 
@@ -6844,7 +6079,7 @@ In the AI era, people really need their own experience and narrative even more t
 
 > 2026-02-22 23:35:22
 
-The concept of an adaptor implies that [illustration] mechanisms possess a specific evolutionary function. This idea has already triggered many major research findings in the 20th century [illustration]. However, this does not mean that the adaptive mechanisms modern humans possess are "optimal design." The mechanisms we have look like a patchwork, and yet the finest human mechanic would marvel at this mechanism's complex structure. In fact, many factors make us realize that the adaptations humans currently have are far from an optimal design
+The concept of an adaptor implies that  mechanisms possess a specific evolutionary function. This idea has already triggered many major research findings in the 20th century . However, this does not mean that the adaptive mechanisms modern humans possess are "optimal design." The mechanisms we have look like a patchwork, and yet the finest human mechanic would marvel at this mechanism's complex structure. In fact, many factors make us realize that the adaptations humans currently have are far from an optimal design
 
 
 <!--memo:45e512d340ab-->
@@ -6898,7 +6133,7 @@ So what we're actually scrolling is not content, but a mechanism
 *4 entries*
 
 <!--memo:eaab71a9b10a-->
-### 5. The Starry Night: Van Gogh walking to the stars through death
+### 5. Combining Caffeine With a Short Nap
 
 > 2026-02-04 12:38:33
 
@@ -6930,7 +6165,7 @@ Because Jiuzhaigou's water is rich in calcium carbonate, it keeps depositing as 
 
 
 <!--memo:80a5fb977e8c-->
-### 21. WeChat's Convenient Long-Press Voice Interaction
+### 21. Clarity After the Tide Recedes
 
 > 2026-02-19 19:18:15
 
@@ -6940,13 +6175,13 @@ Sometimes only after the tide goes out do you clearly sense which things were to
 
 
 <!--memo:90a3676ad215-->
-### How Environment Decides Who You Are Before 25
+### Environment, Brain Development, and Adult Plasticity
 
 > 2026-02-28 10:07:15 · `#格物/前额叶`
 
-Before 25, the environment's influence on a person is at the decisive level
+Growing up in a particular environment can matter deeply, but age 25 is not a hard boundary that fixes someone’s fate.
 
-The prefrontal cortex layer of the human brain doesn't basically mature until 24-26; before that it's highly shaped by the environment
+Brain maturation continues into the twenties, and the prefrontal cortex is among the later-maturing regions; this is not a switch that flips at the same age for everyone ([NIMH information](https://www.nimh.nih.gov/health/publications/the-teen-brain-7-things-to-know)).
 
 What it handles is reason, long-term planning, emotional regulation and self-restraint
 
@@ -6960,4 +6195,34 @@ The structure of self-narrative
 
 Character itself is shaped by the environment
 
-If you still want to train the prefrontal cortex and improve your rationality as an adult, you need extremely high alertness and focus, plus a strong goal and reward prediction, plus deep sleep. The actual physical change to adult neural synapses (wiring) doesn't happen during the training itself, but during deep sleep or deep relaxation (such as meditation, or non-sleep deep rest)
+Learning as an adult still involves practice, attention, and rest. Sleep supports learning and long-term memory, but changes in neural connections should not be described as occurring only during deep sleep or meditation ([NIH sleep information](https://www.nhlbi.nih.gov/health/sleep/why-sleep-important)).
+
+## References
+
+- [Tea-makorn and Kosinski, 2020](https://www.nature.com/articles/s41598-020-73971-8)
+- [HealthHub medical Q&A](https://www.healthhub.sg/highlights-and-insights/expert-voices/your-medical-questions-answered-food-coma)
+- [original study](https://pmc.ncbi.nlm.nih.gov/articles/PMC7398578/)
+- [Kathmandu Valley](https://whc.unesco.org/en/list/121/)
+- [Stoic Ethics](https://iep.utm.edu/stoiceth/)
+- [Hamilton, 1964](https://www.sciencedirect.com/science/article/pii/0022519364900384)
+- [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/prisoner-dilemma/)
+- [CDC health information](https://www.cdc.gov/cannabis/health-effects/)
+- [NASA on heat transfer](https://science.gsfc.nasa.gov/attic/cosmicopia.gsfc.nasa.gov/qa_sp_ht.html)
+- [NVIDIA announcement](https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing/)
+- [NVIDIA CUDA programming guide](https://docs.nvidia.com/cuda/archive/10.2/cuda-c-programming-guide/index.html)
+- [Intel’s explanation of node terminology](https://download.intel.com/newsroom/2021/client-computing/accelerating-process-innovation.pdf)
+- [NVIDIA performance guide](https://docs.nvidia.com/deeplearning/performance/dl-performance-getting-started/index.html)
+- [Google Cloud TPU introduction](https://docs.cloud.google.com/tpu/docs/intro-to-tpu)
+- [Anthropic announcement](https://www.anthropic.com/news/claude-opus-4-6)
+- [official documentation](https://platform.claude.com/docs/en/build-with-claude/compaction)
+- [Claude Code comparison](https://code.claude.com/docs/en/agent-teams#compare-with-subagents)
+- [Apple Support](https://support.apple.com/en-hk/118229)
+- [Magic Ink](https://worrydream.com/MagicInk/)
+- [CDC water guidance](https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html)
+- [NASA](https://science.nasa.gov/mission/voyager/voyager-1s-pale-blue-dot/)
+- [NIMH brain-development information](https://www.nimh.nih.gov/health/publications/the-teen-brain-7-things-to-know)
+- [CDC high-altitude guidance](https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html)
+- [Analayo’s study](https://jocbs.org/index.php/jocbs/article/view/72)
+- [Investor.gov risk guidance](https://www.investor.gov/additional-resources/information/youth/teachers-classroom-resources/risk-and-return)
+- [NIH sleep information](https://www.nhlbi.nih.gov/health/sleep/why-sleep-important)
+- [Explorable Explanations](https://explorabl.es/)

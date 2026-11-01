@@ -18,7 +18,7 @@ tags:
   - Philosophy
   - Buddhism
 description: >
-  January 2026 deep thought notes with 386 entries covering AI product design, finance, biology, Buddhism, social observation, and self-discovery.
+  January 2026: 380 edited notes on AI agents, reading, history, business and everyday life, grouped by theme with original dates and private details removed.
 tldr:
   - "AI's true profitability comes from deterministic, ROI-measurable work delivered to businesses, not flashier consumer content generation."
   - "Autonomy's measure is accountability for consequences and controlled uncertainty reduction, not capability—systems must reduce action intensity when uncertain."
@@ -28,23 +28,23 @@ maturity: budding
 
 # 2026 January Thought Notes
 
-> **386 notes this month** | recorded from 2026-01-01 to 2026-01-31
+> **380 notes this month** | recorded from 2026-01-01 to 2026-01-31
 >
-> **Themes**: AI and Agent Systems 89 · Reading, Ideas and History 79 · Daily Notes and Everything Else 70 · Business, Investing and Career 46 · Self-Knowledge and Psychology 44 · Product, Engineering and Open Source 23 · Travel, Places and Cities 14 · Body, Health and Daily Life 12 · Content, Craft and Recording 9
+> **Themes**: AI and Agent Systems 89 · Reading, Ideas and History 77 · Daily Notes and Everything Else 68 · Business, Investing and Career 46 · Self-Knowledge and Psychology 42 · Product, Engineering and Open Source 23 · Travel, Places and Cities 14 · Body, Health and Daily Life 12 · Content, Craft and Recording 9
 >
-> Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
+> The retained records from the month are kept here, filed by theme, each entry carrying its original timestamp.
 
 ## Quick Navigation
 
 **Selected**: [Selected Notes of the Month](#selected-notes-of-the-month) · 4 entries
 
-**386 records this month, filed under 9 themes:**
+**380 records this month, filed under 9 themes:**
 
 - [AI and Agent Systems](#1-ai-and-agent-systems) · 89
-- [Reading, Ideas and History](#2-reading-ideas-and-history) · 79
-- [Daily Notes and Everything Else](#3-daily-notes-and-everything-else) · 70
+- [Reading, Ideas and History](#2-reading-ideas-and-history) · 77
+- [Daily Notes and Everything Else](#3-daily-notes-and-everything-else) · 68
 - [Business, Investing and Career](#4-business-investing-and-career) · 46
-- [Self-Knowledge and Psychology](#5-self-knowledge-and-psychology) · 44
+- [Self-Knowledge and Psychology](#5-self-knowledge-and-psychology) · 42
 - [Product, Engineering and Open Source](#6-product-engineering-and-open-source) · 23
 - [Travel, Places and Cities](#7-travel-places-and-cities) · 14
 - [Body, Health and Daily Life](#8-body-health-and-daily-life) · 12
@@ -202,7 +202,7 @@ Deep applications: embedding the Agent into core processes, replacing/assisting 
 
 First use the shallow layer to build trust and data pipelines → then cut into the deep layer to get the real profit
 
-Charging money is a very natural thing, and there's a very essential precondition: the product really does solve some need that is genuinely hard for the user, and the user can clearly quantify that it makes them money or saves them a lot of time. Charging isn't greed; charging is a validation process, one validation at a time, verifying whether you're really solving a pain
+Charging money is a very natural thing, and there's a very essential precondition: the product really does solve some need that is genuinely hard for the user, and the user can clearly quantify that it makes them money or saves them a lot of time. Charging isn't greed; charging is a validation process, one validation at a time, verifying whether you're really solving a pain point
 
 Running an Agent business, I'd use these 4 questions as a "filter":
 
@@ -428,7 +428,7 @@ Personifying an agent is a form of human narcissism
 
 > 2026-01-04 21:24:20 · `#格物/AI`
 
-There are two heavy variables in the whole agent that affect quality
+There are two important variables in the whole agent that affect quality
 
 one is the model, one is the agent framework
 
@@ -558,7 +558,7 @@ Our understanding in the AI field is far from enough
 
 An article by Yao Shunyu from over half a year ago; it took us more than half a year to catch on, even though I read it when it first came out
 
-https://ysymyth.github.io/The-Second-Half/
+[Shunyu Yao: The Second Half](https://ysymyth.github.io/The-Second-Half/)
 
 I didn't really think hard about many of the things and views in it; I just assumed agents were starting to explode, models had hit a bottleneck, a temporary truce
 
@@ -742,7 +742,7 @@ I feel like Yuanbao has a lot of potential
 
 I have to say ByteDance won the first half
 
-By throwing its strongest capability at it and forcing a miracle, it produced Yuanbao
+Tencent threw its strongest capability at it and produced Yuanbao ([Tencent product overview](https://static.www.tencent.com/uploads/2025/05/21/fdfcf682b7e7d91908f0f1008a4c7721.pdf))
 
 But my own usage habits corrected quickly, and I soon converted over to WeChat
 
@@ -884,7 +884,7 @@ But then again, as the saying goes, this is a highly monopolistic scenario
 
 An app is something you must consider for a high-frequency scenario
 
-But actually for most scenarios, if they're very low-frequency, people prefer to go with an app
+But actually for most scenarios, if they're very low-frequency, people prefer to use a mini-program
 
 
 <!--memo:dc81630b3338-->
@@ -968,7 +968,7 @@ A very important point for a medical agent is that it can't diagnose/can't overs
 
 How does Google achieve long-term stability while repeatedly showing structural pathologies?
 
-Google is a very strong company: it invented containers, set standards, open-sourced infrastructure, built tools the whole world can use, yet in commercialization it has been a pioneer again and again without successfully predicting the best applications that came after
+Google is a very strong company: it advanced container orchestration, set standards, open-sourced infrastructure, built tools the whole world can use, yet in commercialization it has been a pioneer again and again without successfully predicting the best applications that came after ([Kubernetes overview](https://kubernetes.io/docs/concepts/overview/))
 
 As a global technology leader, Google's technical judgment has always been top-tier, but as an entry-point monopoly company, when facing innovations that would change the form of the entry point, it systematically chose defense rather than offense
 
@@ -1050,7 +1050,7 @@ Language doesn't demand hundreds of layers, but gradients, training and stabilit
 
 In a deep hierarchical structure, which information should be kept and which should be thrown away
 
-In the hierarchical structure, which information should be kept and which should be removed
+In the deep hierarchical structure, which information should be kept and which should be removed
 
 What problem is the gradient problem, exactly
 
@@ -1142,7 +1142,7 @@ The AI analyzes my skin tone and the styles I already have
 
 My skin tone sits in the premium range: warm-leaning, medium brightness
 
-If you pick Milan, the brightness is too high, the facial contrast gets swallowed, and the person fades into the background
+If you pick off-white, the brightness is too high, the facial contrast gets swallowed, and the person fades into the background
 
 If it's black or dark blue, the contrast is too strong, and attention gets pressed onto the clothes
 
@@ -1620,7 +1620,7 @@ Fei-Fei Li's report says robots may need another twenty years or more before ent
 
 The first stage is already happening, applications in controlled scenarios, including cleaning, delivery, and companionship in fixed spaces, and nursing homes; this space is engineered, humans are disciplined, and the robot is very smart
 
-The second stage is marginal penetration into the home, estimated to still need five to eight years; you won't buy a "general-purpose robot," you'll buy a mobile cleaning device, a kitchen assistant; these are relatively stable
+The second stage is marginal penetration into the home, estimated to still need five to eight years; you won't buy a "general-purpose robot," you'll buy a mobile cleaning assistant, a kitchen assistant; these are relatively stable
 
 The third stage is truly everyday robots. If the world doesn't undergo a major rupture, 8–12 years is a more reasonable window: home space is re-standardized (like USB), humans are willing to change habits for "predictable robot behavior," and regulations, insurance, and liability systems mature
 
@@ -1688,7 +1688,7 @@ You can remote-control your own computer or server, check the server load, resta
 
 You can integrate your own methods and workflows, and record some of your preferences into Memory
 
-Molt is a local, limited AI infrastructure, so there is a gateway acting as inspector, and also as a local scaffold
+Molt is a local-first AI infrastructure, so there is a gateway acting as inspector, and also as a local scaffold
 
 The macOS Companion App is very interesting
 
@@ -1756,7 +1756,7 @@ Moltbot has a very creative but very simple method: you can correct preferences 
 
 Personalized configuration: SOUL.md defines the agent's Baseline Persona. It's not just a System Prompt; it contains a complete set of behavioral philosophy
 
-Humor and self-deprecation, giving it the identity of a space lobster, so it may gripe about itself for having no substance
+Humor and self-deprecation, giving it the identity of a space lobster, so it may gripe about itself for having no physical body
 
 Non-passivity: not equivalent to only answering, being good, being obedient; it is allowed to have emotional tendencies, fitting a person's identity definition
 
@@ -1846,7 +1846,7 @@ Apps: macOS menu bar, iOS / Android node apps, giving the Gateway local capabili
 
 It can be understood as: channels are only responsible for receiving external messages or sending replies
 
-The Gateway only decides which agent handles this message, and with which tools
+The Gateway decides which agent handles this message, and with which tools
 
 The Agent only works at the abstraction layer of "conversation + calling tools," and doesn't care whether it's WhatsApp or Discord
 
@@ -1872,7 +1872,7 @@ The toolkit itself may turn out to be the moat
 
 This project gave me a lot to think about regarding toolchains in vertical domains
 
-And it lets you perceive as little as possible
+And it keeps users' awareness of this complexity to a minimum
 
 One of the great things about building at the infrastructure layer is the generality — it lets everyone else share and use it, with an open protocol
 
@@ -1942,11 +1942,11 @@ As a living creature, by instinct it's impossible to treat this kind of pollutio
 
 > 2026-01-30 22:59:15
 
-I think it's kind of interesting sometimes — even now, with what Cloud calls ChatGPT. After it appeared, some multimodal, multi-architecture AI patterns spun out downstream, but I don't think that is necessarily AI's most important form.
+I think it's kind of interesting sometimes — even now, with Claude and ChatGPT. After it appeared, some multimodal, multi-architecture AI patterns spun out downstream, but I don't think that is necessarily AI's most important form.
 
 I keep wondering what the final form looks like. My guess is it may also depend on how people get used to using it in the future. What way will people actually want to interact in? I don't think we can figure this form out just by thinking about it ourselves — we have to observe how people use it along the way.
 
-I think there will definitely be people who, like in brain movies, sit in front of a wall of screens and switch operations frantically; and there will also be people who just stay in voice mode and quietly talk to the computer. They want their attention to be preserved as much as possible — saying just one or two sentences an hour, letting the system handle everything else. They don't particularly want to study a pile of AI tutorials, and they don't want to be disturbed by a complex system. But they will still think carefully about every sentence they say.
+I think there will definitely be people who, like in science-fiction movies, sit in front of a wall of screens and switch operations frantically; and there will also be people who just stay in voice mode and quietly talk to the computer. They want their attention to be preserved as much as possible — saying just one or two sentences an hour, letting the system handle everything else. They don't particularly want to study a pile of AI tutorials, and they don't want to be disturbed by a complex system. But they will still think carefully about every sentence they say.
 
 So I think this era is about constantly trying new paths; the world will eventually settle on a few mainstream forms, but I don't think we can know the answer from the start.
 
@@ -2016,18 +2016,14 @@ What's different about Google's? Actually the core of Google's Genie 3 is genera
 
 I've been thinking about China's wealth system, especially the change from the traditional system to the current one. I've actually talked about this before: in China's system, you need to understand three elements — technology, institutions, and culture. None of the three can be missing. You can understand it as institutions partly being born from this culture, though a large part comes from their own exercise of power — it's just that the mechanism of operation still has to cater to this cultural system.
 
-So over the last 40 years, technology has been a huge variable, and it really opened up a lot of very different eras. For example, in the past ten to twenty years, the way wealth changed in China was this: some places had nightclubs and similar relationship-oriented venues, plus things tied to organized crime, as well as real estate and construction — industries leaning toward low-cost, low-end, labor-intensive work. Anyone could do these industries, and in some places they could even be monopolized — like a rich second generation's father monopolizing the industry and then the rich second generation inheriting it. That's the kind of system it was.
-
-There's also another part: within the whole system, the state wants a cut, so there are a lot of state units, state-run units, state-owned enterprises and so on, and they monopolize certain areas. These things lead to a problem — class consolidation becomes very severe, and it depends heavily on power.
-
 But is there some kind of change now? I think it's a change in who holds the voice — the voice is slowly shifting to today's mainstream of industry. What is the industrial mainstream? Technology. Technology is now a very large variable. We can use the previous 4,000 years of history to reason out the situation of any traditional industry. Any industry at all can be reasoned out. But there's one thing that can't be reasoned out at all: technology. Because technology doesn't follow logical deduction — it's usually each person, as a very uncontrollable variable, colliding with each other, like countless magnets colliding, until a kind of coordination emerges. Right now we're still in a collision period; the future is very unclear, nobody can see it clearly, and nobody can deduce what direction AI will go. Everyone can only feel their way forward. Whether it's world models or today's general-purpose large language models, everyone should act as an agent — or every pioneer should act as an agent — creating and opening things up in the market, continuously attracting and colliding, and eventually reaching a consensus. That's the insight technology brings.
 
-So technology's influence on this system is now very large — before it might have been 20%, but now it has slowly risen to 30%, 40%, and in the future its share will only grow. This is a question of who holds the voice. Before, the holders of the voice might have been people in traditional industries — people with some connections, some networks, beneficiaries of reform and opening up, the first to get rich, because of the tilt of political resources. But now, the holders of the voice are definitely people who command technology, people who command AI, people who command the future. Because you can command technology, command chips, command the future, so you are the world's biggest variable, the point of greatest attention in the world. Hence an attention economy spins out of it: they receive the age's attention, hold a huge amount of traffic, hold a large part of technology's voice, and can sway how things change. I think this is also a slight difference between the traditional social structure and today's social structure, and going forward this technology variable will keep having an impact.
+So technology's influence on this system is now very large — before it might have been 20%, but now it has slowly risen to 30%, 40%, and in the future its share will only grow. This is a question of who holds the voice. Before, the holders of the voice might have been people in traditional industries — people with some connections, some networks. But now, the holders of the voice are definitely people who command technology, people who command AI, people who command the future. Because you can command technology, command chips, command the future, so you are the world's biggest variable, the point of greatest attention in the world. Hence an attention economy spins out of it: they receive the age's attention, hold a huge amount of traffic, hold a large part of technology's voice, and can sway how things change. I think this is also a slight difference between the traditional social structure and today's social structure, and going forward this technology variable will keep having an impact.
 
 
 ## 2. Reading, Ideas and History
 
-*79 entries*
+*77 entries*
 
 <!--memo:4906d37573d5-->
 ### China's cultural heritage and its representative cities
@@ -2121,18 +2117,6 @@ It broke almost everything modernization needs into modules, except industrializ
 The Song deeply respected "complexity"; it didn't believe military force was omnipotent, didn't chase a crude expansion narrative, but kept doing fine-grained balancing between finance, governance, culture and technology over the long term
 
 Of course this also brought fragility; the Song really was bad at war, but it was willing to use institutions, technology and culture to fight uncertainty
-
-
-<!--memo:9f4f51b6040c-->
-### The missing rural pension system
-
-> 2026-01-04 15:11:58 · `#格物/中国历史`
-
-Over the past few decades, for the sake of rapid industrialization and urbanization, the state directed a huge share of resources, protections and institutional dividends toward the urban and industrial system first; the countryside bore the cost, but did not accumulate, in step, the institutional assets needed to support old age
-
-So this generation of elderly people in rural China has no accumulating institutional container
-
-These are all debts, very hard problems to solve
 
 
 <!--memo:df0fee1a3ca3-->
@@ -2576,11 +2560,11 @@ But it can't settle an individual's inner life. Extremely limited
 
 > 2026-01-13 23:50:45
 
-Anything that has objective reality, that won't change because of human will, is called materialism.
+A basic materialist position is that matter has objective reality and does not depend on human will.
 
-World philosophy splits into two camps: materialism and idealism. In practice, idealism revolves around a series of "mind studies," or "studies of mind."
+Materialism and idealism offer two basic philosophical positions for understanding the world. Idealism emphasizes the foundational role of mind or spirit; it should not simply be equated with the Chinese school of xinxue.
 
-But materialism is based on Marxism — after Marxist philosophy was put forward, it's the basic compositional form of the world.
+Materialism predates Marxism; its origins should not be equated with the emergence of Marxism ([Stanford Encyclopedia of Philosophy: Physicalism](https://plato.stanford.edu/entries/physicalism/)).
 
 
 <!--memo:30a6ee258aad-->
@@ -2781,36 +2765,6 @@ It reduces institutional problems to "the people are no good"
 It lets environments that should be repaired keep rotting
 
 
-<!--memo:4307ce39f1c8-->
-### Historical inertia runs as a structural cycle plus a technology amplifier
-
-> 2026-01-15 10:46:47 · `#格物/社会`
-
-Let's talk about historical inertia
-
-Historical inertia still holds in China, but it no longer appears as dynastic change; it runs in the form of a structural cycle + technology amplifier
-
-Historical inertia:
-
-Power tends toward concentration, organizations tend toward self-protection
-
-Once upward channels narrow, social tension accumulates
-
-Order depends on consensus; once consensus breaks, maintaining it costs more
-
-Technology compressed the time scale,
-
-education raised cognition, but people no longer have the ability to change structure — producing a high-cognition, low-delivery population
-
-The tools of state governance have completely changed: today information is highly visible, fiscal capacity is coarse, and the management radius is small
-
-Do upward channels still get reopened again and again?
-
-Is the narrative still self-consistent
-
-Is technology a repair mechanism, or an amplifier
-
-
 <!--memo:f1270b6684b5-->
 ### Big dogs trigger an illusion of safety
 
@@ -2890,9 +2844,7 @@ sometimes also the administration route and dosage form
 
 Gene editing changes the DNA sequence inside an organism and changes protein expression
 
-Counterfeit drugs in reality are all chemical copies
-
-After a patent expires, legally copying the same active ingredient (this is called a generic drug), or directly cutting corners, adulterating, and mislabeling doses
+Generic drugs and counterfeit drugs need to be distinguished: lawful generics must meet approval and quality requirements; counterfeit drugs may contain adulterants, incorrect ingredients or mislabeled doses. They should not be conflated ([FDA: Generic Drugs Q&A](https://www.fda.gov/drugs/frequently-asked-questions-popular-topics/generic-drugs-questions-answers), [Counterfeit Medicine](https://www.fda.gov/drugs/buying-using-medicine-safely/counterfeit-medicine)).
 
 
 <!--memo:0b4e5412ef1f-->
@@ -3064,7 +3016,7 @@ GLP-1, mainly peptides, but with the half-life extended through biotech means
 
 > 2026-01-19 10:04:08
 
-Camus argues for [facing] nihilism, maintaining dignity and meaning through revolt and action in an absurd world
+Camus confronts the problem of nihilism and argues for maintaining dignity and meaning through revolt and action in an absurd world ([Stanford Encyclopedia of Philosophy: Camus](https://plato.stanford.edu/entries/camus/))
 
 In the early 1940s he published The Stranger and The Myth of Sisyphus, establishing the theme of the "absurd": in a meaningless world, people must respond with lucidity and revolt, not escape or suicide
 
@@ -3358,7 +3310,7 @@ Of course now there is technology as a big variable; evolutionary psychology may
 
 Textbooks always say the environment selects organisms
 
-Because it fits the pyramid theory of natural selection
+This is a simplified picture of natural selection
 
 Mutation is random
 
@@ -3394,9 +3346,7 @@ The civilization they left behind, the smog they left behind ...
 
 I binged all five films in one go
 
-I felt the power and cold-bloodedness of the state machine — it's like this in any country
-
-What's different is how people under different cultural systems react to such a system
+I felt the conflict between the system and the individual in the films
 
 In traditional spy stories, the protagonist is often "righteous violence authorized by the state"
 
@@ -3408,7 +3358,7 @@ he had already been made into a weapon, and then abandoned
 
 The system has self-correction, self-protection, and self-cleansing mechanisms, and at that point the conflict of interest between the collective and the individual becomes visible
 
-When the state, the organization, the system start deciding "what is correct" for you
+When the organization and the system start deciding "what is correct" for you
 
 what's often left of a person's dignity is one choice: run
 
@@ -3436,9 +3386,9 @@ So sometimes when I switch to thinking about certain questions, for example thin
 
 This is also why childhood summers were so long, but now time feels so fast, year after year hurries by
 
-And so it's also why we can feel that when we are 10, one year is a tenth of our life, but when we are 50, our one-fiftieth, our life suddenly drains very slowly
+And so it's also why we can feel that when we are 10, one year is a tenth of our life, but when we are 50, one year is only a fiftieth of our life, yet subjectively time seems to pass faster
 
-Well, that also explains why, after being alone outdoors for a long time, I don't much like being around a crowd of people in a shopping mall. It's because our biological evolution itself is not linear, so much so that I can adjust my own perceptual ability: in quieter environments I raise my sensitivity, but this ability becomes a burden in a mall with huge crowds
+Separately, I also thought about why, after being alone outdoors for a long time, I don't much like being around a crowd of people in a shopping mall. I notice that my perception changes with the environment: in quieter environments I raise my sensitivity, but this ability becomes a burden in a mall with huge crowds
 
 In this era, people's focus has been monopolized by the head players
 
@@ -3452,25 +3402,25 @@ Rather than scoring 60 in 10 fields, it's better to score 90 in one field
 
 > 2026-01-28 19:31:36 · `#格物/回忆录`
 
-In 2023, I met archer for the first time, in Heyuan City
+In 2023, I met a friend for the first time, in Heyuan City
 
 That day I tried night hiking for the first time, with no experience, a total newbie; I hurriedly signed up for a small group ahead of time
 
-I had just started my senior year that year, and archer was still working hard; we got to know each other
+I had just started my senior year that year, and my friend was still working hard; we got to know each other
 
-Because that night I hadn't brought a headlamp, but archer was very thoughtful — he had a lamp and lit my way the whole time
+Because that night I hadn't brought a headlamp, but my friend was very thoughtful — he had a headlamp and lit my way the whole time
 
 And our friendship just kept going
 
-archer's family keeps two little dogs, really fun; I absolutely love playing with their dogs
+My friend's family keeps two little dogs, really fun; I absolutely love playing with their dogs
 
-archer is a really great person, a cross-disciplinary professional I admire very much, good at thinking and reflecting, sincere and attentive with people
+My friend is a really great person, a cross-disciplinary professional I admire very much, good at thinking and reflecting, sincere and attentive with people
 
 Because of an experience like this, friendship is sustained not by frequency, but by the two points on this line of friendship, and their starting point ... that 1
 
 
 <!--memo:8200df8a2129-->
-### Meeting archer on a Night Hike: a Desk Lamp Lit the Start of a Friendship
+### Meeting a Friend on a Night Hike: a Headlamp Lit the Start of a Friendship
 
 > 2026-01-28 19:46:21 · `#格物/回忆录（整理相册中）`
 
@@ -3478,19 +3428,19 @@ Because of an experience like this, friendship is sustained not by frequency, bu
 
 ————
 
-In 2023, I met archer for the first time, in Heyuan City
+In 2023, I met a friend for the first time, in Heyuan City
 
 That day I tried night hiking for the first time, with no experience, a total newbie; I hurriedly signed up for a small group ahead of time
 
-I had just started my senior year that year, and archer was still working hard; we got to know each other
+I had just started my senior year that year, and my friend was still working hard; we got to know each other
 
-Because that night I hadn't brought a headlamp, but archer was very thoughtful — he had a lamp and lit my way the whole time
+Because that night I hadn't brought a headlamp, but my friend was very thoughtful — he had a headlamp and lit my way the whole time
 
 And our friendship just kept going
 
-archer's family keeps two little dogs, really fun; I absolutely love playing with their dogs
+My friend's family keeps two little dogs, really fun; I absolutely love playing with their dogs
 
-archer is a really great person, a cross-disciplinary professional I admire very much, good at thinking and reflecting, sincere and attentive with people
+My friend is a really great person, a cross-disciplinary professional I admire very much, good at thinking and reflecting, sincere and attentive with people
 
 Because of an experience like this, friendship is sustained not by frequency, but by the two points on this line of friendship, and their starting point ... that 1
 
@@ -3759,7 +3709,7 @@ From "a specialist with a lopsided profile" to "an all-rounder": gene expression
 
 ## 3. Daily Notes and Everything Else
 
-*70 entries*
+*68 entries*
 
 <!--memo:bcb08cd0a9a6-->
 ### The essence of learning is changing yourself
@@ -4296,23 +4246,13 @@ Inner consistency: their "self-concept" is consistent with their "actual experie
 
 Outer consistency: their "inner feelings" are consistent with their "outward expression." Whatever they think, they say (built, of course, on respect and responsibility, not on blurting out whatever comes)
 
-Thinking of Sister Yanyan's sincerity & transparency
+Thinking of a friend's sincerity & transparency
 
 Getting in touch with her, she feels like someone who's honest with herself and honest with others
 
 She rejects fake pleasantries, does what she says, dares to expose her soft spots, and has very high emotional transparency, so her energy feels great and many people want to be around her
 
 To some extent she's subtly influenced me ...
-
-
-<!--memo:0289be0d5d81-->
-### A society devoted to one cause demands individual sacrifice, producing lots of unfairness
-
-> 2026-01-19 23:10:15
-
-Sometimes I feel a lot about this. I'm thinking about one question: this world's sacrifice of ordinary people, especially in a society devoted to a single cause — it especially emphasizes sacrificing the individual rather than fulfilling the individual. In such a society, I think there will be a lot of unfairness happening to some particular individuals. But this sacrificed individual, while fulfilling the masses, feels like a great pity to me.
-
-If the masses were all ordinary people it'd be fine, but what if it involves someone very important, or someone with a lot of background? Then it brings some struggle, which I find quite frightening.
 
 
 <!--memo:9c36233c3f60-->
@@ -4544,7 +4484,7 @@ There is a large amount of time in life that is not used for making decisions, b
 
 > 2026-01-26 12:32:05
 
-Suddenly a very interesting question came to mind: my dad always hopes I can fit into all kinds of circles — the ones he comes into contact with, the people he admires who move smoothly and easily in all kinds of circles.
+Suddenly a very interesting question came to mind: someone hopes I can fit into all kinds of circles, like those who move smoothly and easily among them.
 
 But I think this is interesting too: this kind of socializing actually has a bubble to it. For me, I'm not very keen on mixing in all kinds of circles, because I'm very clear about these positions; there are many things I can't reach, and I can only pick some things I'm interested in, and then dig deep into them.
 
@@ -4552,7 +4492,7 @@ Also, mixing in circles really goes against my own values. I'm someone very much
 
 So what I'm more keen on is finding suitable circles and suitable environments to settle myself in, rather than being trapped in any circle — I think that would be meaningless.
 
-So I don't know what my dad's most essential idea is; maybe it's for face, maybe for image, maybe for some calculating need of his own, but as far as I'm concerned, I really have no interest.
+As far as I'm concerned, I really have no interest.
 
 
 <!--memo:8e8cbac55ac1-->
@@ -4589,26 +4529,6 @@ Suddenly I think of the older generation, who don't like technology and instead 
 If a winter goes by without ever spacing out around a fire, then that winter is a bit wasted
 
 
-<!--memo:27bd4828cb0f-->
-### Higher Emotional Frequency at Home: Reflecting on Generational Anxiety
-
-> 2026-01-28 11:20:55 · `#格物/观察`
-
-Daily emotions are few, but at home the frequency of emotion increases; I feel there's a problem with this
-
-Speaking of Mom, people of their generation believe the world is unstable, uncontrollable, and resources can be cut off at any time
-
-Worrying seems to be a kind of survival strategy
-
-So there are some things that look very helpless to me
-
-In my eyes they are extremely low-probability, extremely high-cost anxieties, yet they appear in Mom's heart
-
-They seem more afraid of losing?
-
-Their nervous systems, strengthened by a lifetime of training, may have become fixed this way
-
-
 <!--memo:5af6a3608723-->
 ### If I Believe I Can, Then I Definitely Can, Beyond Environmental Limits
 
@@ -4624,7 +4544,7 @@ This kind of can can go beyond the environment
 
 > 2026-01-28 15:15:29
 
-Body temperature is a kind of thinking, but very few people really do this
+Asking questions is a kind of thinking, but very few people really do this
 
 Observing the characteristics of the group of people around me
 
@@ -4647,11 +4567,11 @@ The only reason you are where you are is that deep down inside you feel being he
 
 
 <!--memo:31f29e5e7598-->
-### My Parents Are Addicted to the ByteDance Trio; the Wheel Turns Around
+### Older People Are Addicted to the ByteDance Trio; the Wheel Turns Around
 
 > 2026-01-28 19:05:28
 
-Seeing my parents now addicted to the ByteDance trio
+Seeing some older people now addicted to the ByteDance trio
 
 I remember being addicted to my phone when I was a kid
 
@@ -4889,11 +4809,11 @@ What's happening in traditional industries isn't stability, it's a chronic squee
 
 > 2026-01-14 12:39:35 · `#格物/孙宇晨`
 
-His Mars narrative feels very interesting to me
+His spaceflight narrative feels very interesting to me
 
 He's very good at grabbing global attention
 
-Mars is a natural medium, letting him get global media exposure and attention in both crypto and tech circles
+Space is a natural medium, letting him get global media exposure and attention in both crypto and tech circles
 
 The early Justin Sun was a controversial figure in crypto / a traffic-driven entrepreneur
 
@@ -5031,7 +4951,7 @@ A kind of industry-consensus technical standard
 
 Visa is a private global clearing network
 
-Visa and Mastercard are a card-network duopoly that competes on the surface, colludes underneath, and keeps its rules aligned
+Visa and Mastercard are a card-network duopoly that competes on the surface and has similar underlying rules
 
 What they really do is three things:
 
@@ -5063,7 +4983,7 @@ Effective output = nominal output × trust coefficient
 
 Track record — what you've done matters a hundred times more than what you say
 
-Verifiability — third parties, systems and algorithms can verify that you didn't lie
+Verifiability — can third parties, systems and algorithms verify that you didn't lie?
 
 The cost of breaking trust
 
@@ -5297,7 +5217,7 @@ Then there's the Shiller PE / CAPE — the inflation-adjusted average PE of the 
 
 The price-to-rent ratio too: if it takes 50-60 years of rent to break even, it means the price is supported mainly by "appreciation expectations" rather than use value
 
-Hot,, people who normally don't care about finance start discussing what stocks or funds to buy, and recommending tickers to you — that's a clear signal .... Then there's "this time is different," the five most expensive words in financial history, the flomo mindset
+Hot, people who normally don't care about finance start discussing what stocks or funds to buy, and recommending tickers to you — that's a clear signal .... Then there's "this time is different," the five most expensive words in financial history, the FOMO mindset
 
 Displacement: a new technology or new narrative is born (like AI, the internet, blockchain), attracting early investors.
 
@@ -5443,7 +5363,7 @@ So this is the essence of the paradox: from the supply side technology is "infin
 
 In an industry that sells time and sells labor, the arrival of AI is like a lot of free labor showing up. The result isn't that everyone makes money — it's that the part of the market that used to earn because "time was scarce" gets flattened directly by price deflation
 
-Instead, inflation happened
+What happens here is price deflation
 
 The TAM gets eaten up by deflation — TAM here can be understood as how much money this industry could theoretically make
 
@@ -5469,7 +5389,7 @@ Forward PE (forward price-to-earnings) calculation
 
 Fair stock price ≈ fair PE (price-to-earnings multiple) × fair EPS (earnings per share)
 
-It's usually 16-27x, meaning the current stock price is 16-17 times the next twelve months' earnings per share
+Here, assume a multiple of 16-17x, meaning the current stock price is 16-17 times the next twelve months' earnings per share
 
 Suppose a company is expected to have earnings per share (Forward EPS) of 5 yuan over the next year, and its Forward PE is 16.5x, then: the fair stock price is 5 × 16.5 = 82.5 yuan
 
@@ -5495,9 +5415,9 @@ It refers to earnings per share over the next twelve months
 
 How to calculate it: say it's January 2026 now — how much is it expected to earn over the next twelve months
 
-Next-12M might be: part of 2025Q1 + Q2 + Q3 + Q4
+Next-12M might be: part of 2026Q1 + Q2 + Q3 + Q4
 
-Three months later it becomes: 2025Q2 + Q3 + Q4 + 2026Q1
+Three months later it becomes: 2026Q2 + Q3 + Q4 + 2027Q1
 
 How is it calculated?
 
@@ -5661,7 +5581,7 @@ minimax starts at 20 shares, which is like changing the "entry ticket" from busi
 
 The reference value of the Hang Seng Index
 
-The Hang Seng Index generally selects the 50 largest and most liquid stocks in the Hong Kong stock market as a weighted index, reflecting the overall trend of the market
+The Hang Seng Index selects representative Hong Kong-listed companies and uses freefloat-adjusted market-capitalization weighting to reflect the market's overall trend. Its constituent count changes and should not be understood as fixed at 50 ([Hang Seng Indexes](https://www.hsi.com.hk/static/uploads/contents/en/dl_centre/methodologies/IM_hsie.pdf)).
 
 It also partly represents market sentiment: when the index rises, market sentiment leans optimistic; when the index falls, risk may be relatively high
 
@@ -5681,12 +5601,12 @@ It tracks the Hang Seng Index; buying it is equivalent to buying all the blue-ch
 
 The risk is relatively spread out; it suits people who want to follow the market's rise and fall, don't want to research individual stocks, invest long-term, and pursue the market's average return
 
-The Hang Seng China Enterprises Index Fund tracks the Hang Seng China Enterprises Index, also called the "H-shares index," which includes Chinese state-owned enterprises listed in Hong Kong; its risk and volatility are usually greater than the Hang Seng Index, and returns may be higher but short-term fluctuations are also larger
+The Hang Seng China Enterprises Index Fund tracks the Hang Seng China Enterprises Index, also called the "H-shares index." It includes mainland Chinese enterprises listed in Hong Kong and is not limited to state-owned enterprises ([HSCEI methodology](https://www.hsi.com.hk/static/uploads/contents/en/dl_centre/methodologies/IM_hsceie.pdf)). Its risk and volatility are usually greater than the Hang Seng Index, and returns may be higher but short-term fluctuations are also larger
 
 
 ## 5. Self-Knowledge and Psychology
 
-*44 entries*
+*42 entries*
 
 <!--memo:e491994fadbd-->
 ### Traveling the world is losing its appeal, and a growth reflection
@@ -5867,7 +5787,7 @@ art, creation, technology ...
 
 > 2026-01-12 08:59:05 · `#格物/人生`
 
-My dad always wants to instill in me that comparing downward brings peace of mind, eases the pain
+Someone tells me that comparing downward brings peace of mind, eases the pain
 
 But from my own experience, what I feel more is sympathy and a sense of responsibility — can I do something, is there some sense of mission
 
@@ -6027,9 +5947,7 @@ It's often a beginner who better knows how to use the world's resources
 
 In today's information-explosion era, users' eyeballs, media slots, investors' time, talent's resume submissions — all are the core currency of the "attention economy"
 
-You don't need to burn huge ad budgets; one Moments post + riding a trending topic can get tens of millions of impressions
-
-You don't need to burn huge ad budgets; one Moments post + riding a trending topic can get tens of millions of impressions. Musk using tweets to move stock prices, Yu Chengdong using "far ahead" to farm presence — it's the same playbook
+You don't need to burn huge ad budgets; one Moments post + riding a trending topic can get tens of millions of impressions. Musk using tweets to attract market attention, Yu Chengdong using "far ahead" to farm presence — it's the same playbook
 
 In the 2026 Chinese tech context, capturing attention is itself important, even mandatory
 
@@ -6047,7 +5965,7 @@ The concept of the attention economy was proposed by economists back in the 1990
 
 Attention is traffic, traffic is money
 
-Platforms like TikTok, Instagram, X (formerly Twitter) fight every day over trillions of seconds of users' attention, converting it into ad revenue, e-commerce conversion, or monetized influence. In 2025 the global digital ad market already exceeded $600 billion, and is expected to break $700 billion in 2026, driven mostly by the "eyeball economy." If you can efficiently capture attention, you can go from ordinary person to billionaire (like Kylie Jenner building a cosmetics empire through Instagram influence), or double a company's valuation (like Musk using tweets to move Tesla's stock price)
+Platforms like TikTok, Instagram, X (formerly Twitter) fight every day over trillions of seconds of users' attention, converting it into ad revenue, e-commerce conversion, or monetized influence. In 2025 the global digital ad market already exceeded $600 billion, and is expected to break $700 billion in 2026, driven mostly by the "eyeball economy." If you can efficiently capture attention, you can go from ordinary person to billionaire (like Kylie Jenner building a cosmetics empire through Instagram influence), or double a company's valuation (like Musk using tweets to attract market attention to Tesla)
 
 Capturing attention now isn't loud shouting anymore; it's cleverly designing a system
 
@@ -6219,7 +6137,7 @@ What it brings is emotional stability, not an increase in ability
 
 
 <!--memo:e941c659e9ec-->
-### Sanctifying the Road Not Taken Behind a Parent's Filter
+### Sanctifying the Road Not Taken Through a Filter
 
 > 2026-01-22 20:35:19 · `#格物/知我`
 
@@ -6227,11 +6145,11 @@ What you like most about him isn't what he really looks like; when you see what 
 
 I think of the disenchantment my friend talked about
 
-Isn't it the same with my parents — in their eyes there is always a longing for the things they sought but could not get
+Some people always long for the things they sought but could not get
 
 Sometimes I think this is also why it's hard to communicate with them: they think they're right, think what you're doing is nothing much, and even think that the road you didn't choose is sacred; universities I never attended they also consider incomparably impressive
 
-But to me it seems this world doesn't have so many filters. I think the real world is just like that, but my parents seem to live in a world that can only hold up by relying on filters
+But to me it seems this world doesn't have so many filters. I think the real world is just like that, but some people seem to live in a world that can only hold up by relying on filters
 
 A good university, a good work unit, an urban hukou, a respectable identity, a stable path
 
@@ -6262,62 +6180,6 @@ Whether the action was self-approved
 Whether this experience was ever told
 
 Failure leaves emotional residue, while success may instead leave nothing at all
-
-
-<!--memo:bdd14ea4b421-->
-### A Doting Mother Ruins the Child: Sacrificial Parenting and the Conflict of Responsibility Boundaries
-
-> 2026-01-25 20:19:01 · `#格物/知我`
-
-A doting mother ruins many a child
-
-I feel like a ruined child myself
-
-My mother has a people-pleasing personality
-
-My mother covers for mistakes ...
-
-and adjusts all her behavior around the child's feelings, for the child
-
-and also uses her own sacrifice to buy obedience
-
-This kind of relationship feels very uncomfortable; being around it clashes strongly with my own values
-
-A person being responsible is itself: making a mistake -> bearing the consequences -> correcting the behavior
-
-What I agree with is boundaries, responsibility, reciprocity, personal will
-
-But she still lives in:
-
-sacrifice = love, endurance = kindness, obedience = intimacy
-
-
-<!--memo:39f9d3a439b8-->
-### How to Get Along with My Mother by Establishing a Sense of Boundaries
-
-> 2026-01-25 20:24:25 · `#格物/知我`
-
-A very classic line about getting along with my mother
-
-They are used to being controlled, used to accommodating
-
-I need to take back my own right to act, and make sure my own things are handled by me
-
-Enforce my own sense of boundaries: these things I'll do myself, I must do them myself, without explaining reasons, and declare my sense of boundaries
-
-No longer cooperating with her sacrifice script
-
-Likewise, through reinforcement learning itself — how to build a healthy system
-
-Reward correct behavior, punish incorrect behavior; it's hard for parents and children to communicate rationally, and feigning emotion is a very good way
-
-Accept the behavior, but add no emotional reward
-
-She did a lot; you don't need to thank her excessively, explain excessively, or compensate excessively
-
-Closeness is not the same as clinging
-
-Love is not the same as round-the-clock care
 
 
 <!--memo:d882b9c975fa-->
@@ -7071,7 +6933,7 @@ The red wine natural process
 
 This bean is a Catimor varietal
 
-A surprise process, precise roasting; it performs better under natural processing
+A careful process, precise roasting; it performs better under natural processing
 
 After peeling the coffee cherry, it's soaked in a fermentation liquid (usually red wine or a similar fermentation liquid), then sun-dried
 
@@ -7203,9 +7065,9 @@ By the time it really begins, only execution remains
 
 Shanghai is a very interesting city. How should I put it — if I had to pick a city in China I love most for strolling around, it would definitely be Shanghai. But if it's the city I like most for living, that might be Hangzhou; the city most suitable for working might be Shenzhen's Nanshan.
 
-I went to Shanghai in April 2024; that was also the first time I met Dazi, who invited me to Shanghai. Shanghai gave me a feeling of being very petty-bourgeois, very chic; every person on the street made me feel interesting. The height of the streets is just right, and the environment gives a very different feeling. The small residents of Shanghai gave me a sense of everyday life; I found it very cozy. In Shenzhen, the tall buildings give me a sense of being small; these two feelings are very different. Think about it carefully — different cities bring me completely different experiences.
+I went to Shanghai in April 2024; that was also the first time I met a friend, who invited me to Shanghai. Shanghai gave me a feeling of being very petty-bourgeois, very chic; every person on the street made me feel interesting. The height of the streets is just right, and the environment gives a very different feeling. The small residents of Shanghai gave me a sense of everyday life; I found it very cozy. In Shenzhen, the tall buildings give me a sense of being small; these two feelings are very different. Think about it carefully — different cities bring me completely different experiences.
 
-As for Guangzhou, I think it's just a city suitable for living. Beijing feels too big, it's the political center, too official, everything is still mainly about image. Ah, I think this petty-bourgeois atmosphere of Shanghai is really interesting.
+As for Guangzhou, I think it's just a city suitable for living. Beijing feels too big. Ah, I think this petty-bourgeois atmosphere of Shanghai is really interesting.
 
 
 <!--memo:5cb1d2a56ed3-->
@@ -7263,7 +7125,7 @@ Bangkok is a city with a rich nightlife. Although I didn't really get to explore
 
 I was in Chiang Mai for the lantern festival. Chiang Mai is a really fun city. On the day of the lantern festival, everyone makes a wish.
 
-At the time I was with two friends — one older brother, one Sister Hu. We set out from Tha Phae Gate in Chiang Mai and went all the way out to the suburbs to see the lanterns.
+At the time I was with two friends — an older male friend and an older female friend. We set out from Tha Phae Gate in Chiang Mai and went all the way out to the suburbs to see the lanterns.
 
 A few days earlier we had also gone to watch a Thai boxing match — my first time seriously watching boxing. A Chinese international student had sent out invitations inviting us in, and we also bought tickets. There was a Chinese women's team on the card; they competed against some foreign teams, including teams from European countries and local school teams. On top of that there were boxing matches between European men — men's and women's fights. The whole arena was full of energy, all the fighters power types, you could feel the force of the punches landing on bodies. Very entertaining.
 
@@ -7357,11 +7219,11 @@ Rather than forcing yourself to change, first change the environment so it's "ea
 
 
 <!--memo:f9e9330cfcd5-->
-### Serotonin sets your emotional baseline
+### Serotonin and emotional states
 
 > 2026-01-15 14:14:55 · `#格物/血清素`
 
-People with high serotonin commonly show these traits:
+One set of emotional states I care about:
 
 Emotionally stable
 
@@ -7371,7 +7233,7 @@ Not in a hurry to prove themselves
 
 Less sensitive to comparison
 
-When serotonin is low, the world turns into:
+Another set of states I want to understand:
 
 Easily anxious, depressed
 
@@ -7381,11 +7243,11 @@ Extremely sensitive to others' evaluations
 
 Repeatedly thinking "am I not good enough"
 
-Serotonin determines whether you want to self-destruct
+These signs alone cannot establish serotonin levels, and depression or self-harm risk should not be attributed to a single substance ([NIMH: Depression](https://www.nimh.nih.gov/health/publications/depression), [NIH: Suicide Risk Factors](https://health.nih.gov/health-topics-a-z/suicide)).
 
-Most serotonin exists in the gut, a small amount in the blood, and the part that truly determines mood is in the brain
+Most serotonin exists in the gut, a small amount in the blood, and the part involved in regulating mood is in the brain
 
-Serotonin doesn't guarantee happiness; compared with dopamine, it's responsible for the emotional baseline, inner security, and the ability to withstand setbacks. To keep serotonin up, what needs to be fixed is: a consistent early-to-bed, early-to-rise schedule (waking time is super important), seeing natural light in the morning, reducing strong light at night
+Serotonin doesn't guarantee happiness. It participates in mood regulation and cannot be mapped one-to-one onto inner security or the ability to withstand setbacks. In terms of everyday habits, I pay attention to: a consistent early-to-bed, early-to-rise schedule (waking time is super important), seeing natural light in the morning, reducing strong light at night
 
 Then aerobic exercise, and some healthy eating
 
@@ -7455,7 +7317,7 @@ This is an astonishingly concrete advance! Because in the era without AI, it too
 
 Predicting the complex structures of proteins has always been a hard problem for humanity
 
-CXO is the pharmaceutical contract outsourcing service structure; CXO is a business logic of risk transfer and efficiency maximization
+CXO refers to pharmaceutical contract outsourcing service providers; CXO is a business logic of risk transfer and efficiency maximization
 
 Previously, developing a new drug took 10 years and $1-2 billion, with a very low success rate (<10%)
 
@@ -7688,3 +7550,20 @@ And I think in the AI era, especially the AI era to come, what people care about
 Expressing life artistically is creation
 
 Otherwise you're just recording
+
+
+## References
+
+The concepts corrected during this editorial pass were checked against the following sources on 2026-11-01.
+
+- [Tencent product overview (2025-05-21)](https://static.www.tencent.com/uploads/2025/05/21/fdfcf682b7e7d91908f0f1008a4c7721.pdf)
+- [FDA: Generic Drugs Q&A](https://www.fda.gov/drugs/frequently-asked-questions-popular-topics/generic-drugs-questions-answers)
+- [FDA: Counterfeit Medicine](https://www.fda.gov/drugs/buying-using-medicine-safely/counterfeit-medicine)
+- [Stanford Encyclopedia of Philosophy: Camus](https://plato.stanford.edu/entries/camus/)
+- [Stanford Encyclopedia of Philosophy: Physicalism](https://plato.stanford.edu/entries/physicalism/)
+- [Hang Seng Index methodology](https://www.hsi.com.hk/static/uploads/contents/en/dl_centre/methodologies/IM_hsie.pdf)
+- [NIMH: Depression](https://www.nimh.nih.gov/health/publications/depression)
+- [NIH: Suicide](https://health.nih.gov/health-topics-a-z/suicide)
+- [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/)
+- [Hang Seng China Enterprises Index methodology](https://www.hsi.com.hk/static/uploads/contents/en/dl_centre/methodologies/IM_hsceie.pdf)
+- [Shunyu Yao: The Second Half (written 2025-04-10)](https://ysymyth.github.io/The-Second-Half/)
