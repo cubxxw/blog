@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-01T05:32:44.278274+00:00",
+  "argv": [
+    "git",
+    "-c",
+    "credential.helper=",
+    "-c",
+    "http.version=HTTP/1.1",
+    "fetch",
+    "--no-tags",
+    "--no-auto-maintenance",
+    "--no-recurse-submodules",
+    "--negotiation-tip=6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+    "origin",
+    "main"
+  ],
+  "exit": 0,
+  "elapsed": 2.118072082987055,
+  "log": "From https://github.com/cubxxw/blog\n * branch              main       -> FETCH_HEAD\n",
+  "originMain": "6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+  "remainingHistoryObjects": [],
+  "recoveryAttribution": "Earlier task-owned recovery of eight immutable objects is recorded; later complete common history/ref restoration is not attributed to this task."
+}

@@ -40,6 +40,10 @@
     "search-browser-corpus-receipt.json": {
       "sha256": "2566e558b5240da25f76dc9d1e28de1799c55124aa7e02a8d1be9928316c815c",
       "bytes": 567
+    },
+    "git-sync-restored.json": {
+      "sha256": "ff364303441f780d43a1c178cf5f5d0c7596675a7ed34b2da6693dc2b1ec676e",
+      "bytes": 741
     }
   }
 }
