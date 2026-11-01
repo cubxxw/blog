@@ -22,8 +22,10 @@ for(const lang of ['zh','en'])test(`a hanging primary still paints the current p
     await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:10000});
     await expect(root(page)).toHaveAttribute('data-world-vista','image-preview');
     await expect(root(page)).not.toHaveAttribute('data-world-failed');
+    await test.info().attach('local-entry-observation',{contentType:'application/json',body:JSON.stringify(await page.evaluate(()=>({observedReadyMs:Math.round(performance.now()),stageTimes:[...document.querySelectorAll('[data-boot-time]')].map(node=>node.textContent),note:'Local Chromium observation, not a field percentile.'})))});
     const pose=await root(page).getAttribute('data-world-pose');
     await page.screenshot({path:test.info().outputPath('preview-room.png')});
+    if(lang==='zh')await expect(root(page)).toHaveAttribute('data-room-diagnostics',/vista-timeout/,{timeout:9000});
     await release();await expect(root(page)).toHaveAttribute('data-world-vista','image',{timeout:10000});
     expect(await root(page).getAttribute('data-world-pose')).toBe(pose);
     await page.screenshot({path:test.info().outputPath('full-room.png')});
@@ -78,6 +80,23 @@ test('module failure automatically opens the workspace with a classified local d
   await expect(page.locator('[data-space-boot]')).toBeHidden();
   await expect(root(page)).toHaveAttribute('data-room-diagnostics',/module-load/);
   await openNotes(page);await page.locator('[data-note-editor]').fill('Still usable.');
+});
+
+test('a held replacement renderer can also be cancelled immediately without stealing the workspace',async({page})=>{
+  await page.goto('/zh/projects/',{waitUntil:'domcontentloaded'});
+  await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:10000});
+  const release=await hold(page,/\/world-cafe\.[a-f0-9]+\.js/);
+  try{
+    await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
+    await page.locator('[data-cafe-theme="zen"]').click();
+    await expect(page.locator('[data-space-boot]')).toBeVisible();
+    await page.locator('[data-boot-skip]').click();
+    await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop',{timeout:1500});
+    await openNotes(page);await page.locator('[data-note-editor]').fill('A cancelled scene switch keeps my work.');
+    await release();await expect(page.locator('.space-world__canvas')).toHaveCount(0);
+    await expect(page.locator('[data-note-editor]')).toHaveValue('A cancelled scene switch keeps my work.');
+    await expect(root(page)).not.toHaveAttribute('data-world-failed');
+  }finally{await release();}
 });
 
 test('graphics context loss restores the same editable note without another error-screen click',async({page})=>{

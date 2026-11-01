@@ -43,6 +43,12 @@ test('the full-viewport explorable room renders its distant environment inside t
 });
 
 test('a failed distant environment falls back to geometry and remains explorable',async({page})=>{
+  // Geometry remains the last resort if both the inline preview and primary
+  // photograph are unavailable; a primary 404 alone now retains the preview.
+  await page.route('**/zh/projects/',async route=>{
+    const response=await route.fetch(),body=(await response.text()).replace(/"vistaPreview":"data:image\/webp;base64,[^"]*"/,'"vistaPreview":""');
+    await route.fulfill({response,body});
+  });
   await page.route(/jiangnan-vista-study-v\d+.*\.webp/,route=>route.fulfill({status:404,body:''}));await ready(page);
   await expect(root(page)).toHaveAttribute('data-world-vista','geometry-fallback');const before=await pose(page);await page.keyboard.down('KeyW');try{await expect.poll(async()=>{const p=await pose(page);return Math.hypot(p.x-before.x,p.z-before.z);}).toBeGreaterThan(.15);}finally{await page.keyboard.up('KeyW');}
   await hit(page,'computer');await expect(root(page)).toHaveAttribute('data-cafe-mode','desktop');
@@ -57,9 +63,9 @@ test('cold entry keeps the room covered until its current photographic window is
     await page.goto('/projects/',{waitUntil:'domcontentloaded'});await requested;
     await expect(root(page)).toHaveAttribute('data-world-frames',/^[1-9]\d*$/,{timeout:30_000});
     await expect.poll(async()=>Number(await root(page).getAttribute('data-world-pbr-maps'))).toBeGreaterThanOrEqual(5);
-    await expect(root(page)).toHaveAttribute('data-boot-state','loading');
-    await expect(root(page)).toHaveAttribute('data-world-vista','loading');
-    await expect(page.locator('[data-space-boot]')).toBeVisible();
+    await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:10000});
+    await expect(root(page)).toHaveAttribute('data-world-vista','image-preview');
+    await expect(page.locator('[data-space-boot]')).toBeHidden();
     release();
     await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:30_000});
     await expect(root(page)).toHaveAttribute('data-world-vista','image');

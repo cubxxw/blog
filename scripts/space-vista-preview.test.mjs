@@ -7,14 +7,15 @@ const file=new URL('../assets/js/space/jiangnan-exterior.js',import.meta.url);
 const source=readFileSync(file,'utf8').replace("from 'three'",`from '${new URL('../assets/js/vendor/three.module.min.js',import.meta.url)}'`).replace("from './jiangnan-state.mjs'",`from '${new URL('../assets/js/space/jiangnan-state.mjs',import.meta.url)}'`).replace("from './jiangnan-vista-coverage.mjs'",`from '${new URL('../assets/js/space/jiangnan-vista-coverage.mjs',import.meta.url)}'`);
 const {buildJiangnanExterior}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 
-function fixture(){
+function fixture({optional=false}={}){
   const requests=[],resources=new Set(),textures=new Set(),events=[];let dead=false,wakes=0;
   const original=THREE.TextureLoader.prototype.load;
-  THREE.TextureLoader.prototype.load=function(url,load,progress,error){const texture=new THREE.Texture(),request={url,texture,load,error,releases:0};texture.addEventListener('dispose',()=>request.releases++);requests.push(request);return texture;};
+  const load=function(url,load,progress,error){const texture=new THREE.Texture(),request={url,texture,load,error,releases:0};texture.addEventListener('dispose',()=>request.releases++);requests.push(request);return texture;};
+  THREE.TextureLoader.prototype.load=load;
   let result;
-  try{result=buildJiangnanExterior({scene:new THREE.Scene(),pbr:{bind(){}},resources,textures,vistaMode:'image',vistaAsset:'/full.webp',vistaPreview:'data:image/webp;base64,inline',wake(){wakes++;},isDisposed:()=>dead,onDiagnostic:code=>events.push(code)});}finally{THREE.TextureLoader.prototype.load=original;}
+  try{result=buildJiangnanExterior({scene:new THREE.Scene(),pbr:{bind(){}},resources,textures,vistaMode:'image',vistaAsset:'/full.webp',vistaPreview:'data:image/webp;base64,inline',dayVistaAsset:optional?'/day.webp':null,continuationAsset:optional?'/water.webp':null,wake(){wakes++;},isDisposed:()=>dead,onDiagnostic:code=>events.push(code)});}finally{THREE.TextureLoader.prototype.load=original;}
   const primary=requests.find(r=>r.url==='/full.webp'),preview=requests.find(r=>r.url.startsWith('data:'));
-  return {result,requests,resources,textures,events,primary,preview,get wakes(){return wakes;},get material(){return result.group.getObjectByName('photographic environment study').material;},dispose(){dead=true;for(const r of resources)r.dispose?.();for(const t of textures)t.dispose();}};
+  return {result,requests,resources,textures,events,primary,preview,activate(){THREE.TextureLoader.prototype.load=load;try{result.loadOptional();}finally{THREE.TextureLoader.prototype.load=original;}},get wakes(){return wakes;},get material(){return result.group.getObjectByName('photographic environment study').material;},dispose(){dead=true;for(const r of resources)r.dispose?.();for(const t of textures)t.dispose();}};
 }
 
 test('a held full vista can enter using the same inline photograph, then upgrade without another town',()=>{
@@ -45,4 +46,14 @@ test('disposed pending preview and primary release once without waking or changi
 
 test('a late preview cannot replace an already complete full-quality image',()=>{
   const f=fixture();try{assert.ok(f.preview);f.primary.load(f.primary.texture);f.preview.load(f.preview.texture);assert.equal(f.result.vistaMode,'image');assert.equal(f.material.uniforms.vista.value,f.primary.texture);assert.equal(f.preview.releases,1);}finally{f.dispose();}
+});
+test('daylight and water images start only after explicit first-frame activation and only once',()=>{
+  const f=fixture({optional:true});try{
+    assert.equal(f.requests.length,2,'only primary and inline preview belong to entry');
+    f.preview.load(f.preview.texture);f.activate();f.activate();
+    assert.deepEqual(f.requests.map(r=>r.url),['/full.webp','data:image/webp;base64,inline','/day.webp','/water.webp']);
+  }finally{f.dispose();}
+});
+test('a disposed room cannot start optional network work',()=>{
+  const f=fixture({optional:true});f.dispose();f.activate();assert.equal(f.requests.length,2);
 });

@@ -50,6 +50,7 @@ export function buildJiangnanExterior({scene,pbr,resources,textures,software=fal
   const group=new THREE.Group();group.name='Jiangnan river and far bank';scene.add(group);
   const photographic=Boolean(vistaAsset&&vistaMode==='image');
   let actualVista=photographic?'loading':'geometry',photographicMaterial=null;
+  let optionalStarted=false,loadOptional=()=>{};
   const own=value=>{resources.add(value);return value;};
   const geometry=value=>own(value),material=value=>own(value);
   const v3=(x=0,y=0,z=0)=>new THREE.Vector3(x,y,z);
@@ -363,6 +364,8 @@ gl_FragColor.rgb=mix(gl_FragColor.rgb,mix(vec3(.035,.055,.07),vec3(.55,.65,.67),
       if(complete){releaseTexture(texture);return;}
       previewTexture=texture;showPhotograph(texture,'image-preview');
     },()=>{previewFailed=true;onDiagnostic('preview-load');fallback();});
+    loadOptional=()=>{
+    if(optionalStarted||isDisposed())return;optionalStarted=true;
     if(dayVistaAsset){
       const owner={texture:null,transferred:false,released:false,disposed:false};
       const release=()=>{if(owner.texture&&!owner.released){owner.texture.dispose();owner.released=true;}};
@@ -386,6 +389,7 @@ gl_FragColor.rgb=mix(gl_FragColor.rgb,mix(vec3(.035,.055,.07),vec3(.55,.65,.67),
       },undefined,()=>{owner.disposed=true;release();if(!isDisposed()){resources.delete(lease);vistaMaterial.uniforms.continuationReady.value=0;wake();}});
       owner.texture ||= pending;if(owner.disposed&&!owner.transferred)release();
     }
+    };
   }
 
   const mistMaterial=material(new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,uniforms:{time:{value:0}},
@@ -514,5 +518,5 @@ void main(){
     rainGeometry.attributes.position.needsUpdate=true;
   }
   update(0);
-  return {group,boat,update,get vistaMode(){return actualVista;}};
+  return {group,boat,update,loadOptional,get vistaMode(){return actualVista;}};
 }

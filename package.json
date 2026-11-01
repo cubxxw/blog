@@ -24,7 +24,7 @@
     "redirects:fix": "node scripts/check-redirects.mjs --write",
     "seo:output:check": "node scripts/check-generated-seo.mjs",
     "performance:check": "node --test scripts/performance-seo.test.mjs",
-    "space:boot:test": "node --test --test-concurrency=1 scripts/space-onboarding.test.mjs scripts/space-onboarding-dom.test.mjs scripts/space-preload.test.mjs scripts/space-boot-stages.test.mjs",
+    "space:boot:test": "node --test --test-concurrency=1 scripts/space-onboarding.test.mjs scripts/space-onboarding-dom.test.mjs scripts/space-preload.test.mjs scripts/space-boot-stages.test.mjs scripts/space-startup-resilience.test.mjs scripts/space-vista-preview.test.mjs",
     "space:artwork:test": "node --test --test-concurrency=1 scripts/space-artwork.test.mjs scripts/space-jiangnan-room-geometry.test.mjs",
     "products:check": "node scripts/check-product-integration.mjs",
     "space:layout:test": "node --test scripts/space-jiangnan-alignment.test.mjs scripts/space-jiangnan-room-geometry.test.mjs scripts/space-jiangnan-floor.test.mjs scripts/space-jiangnan-timber.test.mjs scripts/space-jiangnan-cat.test.mjs scripts/space-jiangnan-cat-grounding.test.mjs scripts/space-jiangnan-vista-coverage.test.mjs scripts/space-jiangnan-vista-lifecycle.test.mjs scripts/space-jiangnan-reflection.test.mjs scripts/space-cat-nap.test.mjs scripts/space-room-time.test.mjs scripts/space-magic-clock.test.mjs scripts/space-window-view.test.mjs scripts/space-jiangnan-door-state.test.mjs scripts/space-jiangnan-door-world.test.mjs scripts/space-jiangnan-door-geometry.test.mjs scripts/space-practical-light.test.mjs scripts/space-reading-focus.test.mjs",

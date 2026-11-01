@@ -107,8 +107,8 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       if(selection&&target===focused)focused.setSelectionRange(...selection);
     }
   }
-  function firstVisibleFrame(promise) {
-    return waitForRoomWork(promise,{root});
+  function firstVisibleFrame(promise,signal) {
+    return waitForRoomWork(promise,{root,signal});
   }
   function initialize(){
     const control=new AbortController(),generation=++attempt;startupController=control;initializing=true;
@@ -221,14 +221,16 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       // A change of renderer replaces the old canvas. Keep the terminal visible
       // throughout the real download/build/first-frame handoff.
       const replacing=world&&(id==='jiangnan')!==(theme==='jiangnan');
-      if(replacing){closePicker();boot.begin();}
+      const switching=replacing?new AbortController():null;
+      if(replacing){startupController=switching;root.dataset.worldLoading='true';closePicker();boot.begin();}
       try{
-        if(world&&await firstVisibleFrame(world.setTheme(id))===false)return;
+        if(world&&await firstVisibleFrame(world.setTheme(id),switching?.signal)===false)return;
       }catch(error){
         if(!disposed&&current===revision){diagnostics.record(error);failWorld(t('场景切换未能完成，仍可阅读或打开工作区。','The scene could not finish loading. You can still read or open the workspace.'));}
         return;
-      }
+      }finally{if(startupController===switching)startupController=null;}
       if(disposed||current!==revision)return;
+      delete root.dataset.worldLoading;
       commit(id);if(replacing)boot.event('frame');
       pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);
       if(dialog.open)closePicker();
