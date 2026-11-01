@@ -9,7 +9,6 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["avoidant attachment", "amygdala", "love", "attachment", "Agent", "Manus", "distribution", "commercial validation", "incentive structure", "unity of knowing and doing", "self-knowledge"]
 tags:
-  - Blog
   - Monthly Notes
   - Personal Reflection
   - Attachment

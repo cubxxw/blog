@@ -9,7 +9,6 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["回避型依恋", "杏仁核", "爱情", "依恋", "Agent", "Manus", "分发", "商业验证", "激励结构", "知行合一", "自我认知"]
 tags:
-  - Blog
   - Monthly Notes
   - Personal Reflection
   - Attachment
