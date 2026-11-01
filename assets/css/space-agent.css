@@ -168,11 +168,11 @@
   background: var(--ba-muted);
   border: 1px solid var(--ba-chrome);
 }
-.bear-agent .bear-agent__step[data-status="running"] .bear-agent .bear-agent__dot { background: var(--ba-accent); }
-.bear-agent .bear-agent__step[data-status="ok"] .bear-agent .bear-agent__dot { background: var(--ba-accent); }
-.bear-agent .bear-agent__step[data-status="error"] .bear-agent .bear-agent__dot,
-.bear-agent .bear-agent__step[data-status="interrupted"] .bear-agent .bear-agent__dot { background: #b2673a; }
-.bear-agent .bear-agent__step[data-status="declined"] .bear-agent .bear-agent__dot { background: transparent; border: 1.5px solid var(--ba-muted); }
+.bear-agent .bear-agent__step[data-status="running"] .bear-agent__dot { background: var(--ba-accent); }
+.bear-agent .bear-agent__step[data-status="ok"] .bear-agent__dot { background: var(--ba-accent); }
+.bear-agent .bear-agent__step[data-status="error"] .bear-agent__dot,
+.bear-agent .bear-agent__step[data-status="interrupted"] .bear-agent__dot { background: #b2673a; }
+.bear-agent .bear-agent__step[data-status="declined"] .bear-agent__dot { background: transparent; border: 1.5px solid var(--ba-muted); }
 .bear-agent .bear-agent__step-body {
   display: flex;
   flex-direction: column;
