@@ -1,0 +1,1267 @@
+{
+  "sourceBase": "6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+  "candidateCommit": "0ca7d110f4f5160f9039a9a262b9a637be2299bc",
+  "production": {
+    "id": "6ae6ad1d4a5171729b4706fc",
+    "commit_ref": "e13836e60ed2a20ff0743355d389b676a0924fcc",
+    "state": "ready",
+    "published_at": "2026-11-01T03:11:17.291Z",
+    "deploy_ssl_url": "https://main--cubxxw.netlify.app",
+    "context": "production"
+  },
+  "baselineDaily": {
+    "stats": {
+      "startTime": "2026-11-01T05:06:18.755Z",
+      "duration": 157715.637,
+      "expected": 36,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "items": [
+      {
+        "title": "live SEO /",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /engineering/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/engineering/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /projects/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/projects/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live reader can switch theme and home language",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /engineering/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/engineering/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /projects/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/projects/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live reader can switch theme and home language",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /projects/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/projects/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "desktop",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /en",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live search opens a real article readable in both themes: /zh",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "project": "mobile",
+        "status": "expected",
+        "attempts": [
+          "passed"
+        ]
+      }
+    ],
+    "globalErrors": [],
+    "samples": [
+      {
+        "project": "desktop",
+        "url": "https://cubxxw.com/",
+        "sample": {
+          "lcpMs": 1304,
+          "cls": 0.0030508041381835938,
+          "longTaskMs": 77,
+          "windowStart": 1613.6000000238419,
+          "lastShift": 1613.6000000238419,
+          "windowScore": 0.0030508041381835938,
+          "observationMs": 5021.900000035763,
+          "loadCompleted": true,
+          "domElements": 1494,
+          "resources": 18,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/lang-redirect.js",
+              "durationMs": 1006.0999999642372
+            },
+            {
+              "resource": "https://cubxxw.com/js/search-bootstrap.581ebcaa42841c73b7528450bc2ced846687c25a729849592b439f1d9351cf4f.js",
+              "durationMs": 1276.7999999523163
+            },
+            {
+              "resource": "https://cubxxw.com/js/page-wayfinder.64e39ff032fa270781f62189c87efa2608c9788c7f39290e6795b84c3fb081c8.js",
+              "durationMs": 1280.800000011921
+            },
+            {
+              "resource": "https://cubxxw.com/js/micro-interactions.js",
+              "durationMs": 1209.800000011921
+            },
+            {
+              "resource": "https://cubxxw.com/js/blog-ai-inline.js",
+              "durationMs": 1206.1000000238419
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 1979.1000000238419,
+              "navigationId": 7096,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.30000001192092896,
+              "domainLookupStart": 0.30000001192092896,
+              "domainLookupEnd": 0.30000001192092896,
+              "connectStart": 3.300000011920929,
+              "secureConnectionStart": 3.300000011920929,
+              "connectEnd": 140.60000002384186,
+              "requestStart": 140.69999998807907,
+              "responseStart": 212.5,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 212.5,
+              "responseEnd": 283.19999998807907,
+              "transferSize": 51756,
+              "encodedBodySize": 51456,
+              "decodedBodySize": 180385,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 1311.9000000357628,
+              "domContentLoadedEventStart": 1610.800000011921,
+              "domContentLoadedEventEnd": 1610.9000000357628,
+              "domComplete": 1978.9000000357628,
+              "loadEventStart": 1978.9000000357628,
+              "loadEventEnd": 1979.1000000238419,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "desktop",
+        "url": "https://cubxxw.com/zh/",
+        "sample": {
+          "lcpMs": 376,
+          "cls": 0.015989240010579428,
+          "longTaskMs": 0,
+          "windowStart": 469.5,
+          "lastShift": 469.5,
+          "windowScore": 0.015989240010579428,
+          "observationMs": 4181.600000023842,
+          "loadCompleted": true,
+          "domElements": 1496,
+          "resources": 24,
+          "slowResources": [],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 1144.300000011921,
+              "navigationId": 8745,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.40000003576278687,
+              "domainLookupStart": 0.40000003576278687,
+              "domainLookupEnd": 0.40000003576278687,
+              "connectStart": 4.900000035762787,
+              "secureConnectionStart": 4.900000035762787,
+              "connectEnd": 146.9000000357628,
+              "requestStart": 146.9000000357628,
+              "responseStart": 222.5,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 222.5,
+              "responseEnd": 292.4000000357628,
+              "transferSize": 54816,
+              "encodedBodySize": 54516,
+              "decodedBodySize": 186574,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 381.19999998807907,
+              "domContentLoadedEventStart": 467.5,
+              "domContentLoadedEventEnd": 467.5,
+              "domComplete": 1144.1000000238419,
+              "loadEventStart": 1144.1000000238419,
+              "loadEventEnd": 1144.300000011921,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "low"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "desktop",
+        "url": "https://cubxxw.com/projects/",
+        "sample": {
+          "lcpMs": 2680,
+          "cls": 0.03515625,
+          "longTaskMs": 1451,
+          "windowStart": 2631.399999976158,
+          "lastShift": 2631.399999976158,
+          "windowScore": 0.0007578088442484538,
+          "observationMs": 4334.800000011921,
+          "loadCompleted": true,
+          "domElements": 1194,
+          "resources": 48,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/images/about/journey/06-kumano-480.webp",
+              "durationMs": 1131.699999988079
+            },
+            {
+              "resource": "https://cubxxw.com/images/posts/2025/japan-travel/tsukubai.jpg",
+              "durationMs": 1359.6000000238419
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/art/paul-klee-main-path-and-byways-1929.jpg",
+              "durationMs": 1159.3999999761581
+            },
+            {
+              "resource": "https://cubxxw.com/images/posts/2026/laos/local-man-cave.jpg",
+              "durationMs": 1365.699999988079
+            },
+            {
+              "resource": "https://cubxxw.com/images/space-cafe/jiangnan-vista-continuation-v1_hu_8828a3cf402f97e5.webp",
+              "durationMs": 1559.8999999761581
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 1296.8999999761581,
+              "navigationId": 2558,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.5,
+              "domainLookupStart": 0.5,
+              "domainLookupEnd": 0.5,
+              "connectStart": 3.199999988079071,
+              "secureConnectionStart": 3.199999988079071,
+              "connectEnd": 154.89999997615814,
+              "requestStart": 155,
+              "responseStart": 457.5,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 457.5,
+              "responseEnd": 1068.300000011921,
+              "transferSize": 63854,
+              "encodedBodySize": 63554,
+              "decodedBodySize": 277336,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 1070.8999999761581,
+              "domContentLoadedEventStart": 1288.5999999642372,
+              "domContentLoadedEventEnd": 1288.5999999642372,
+              "domComplete": 1296.8999999761581,
+              "loadEventStart": 1296.8999999761581,
+              "loadEventEnd": 1296.8999999761581,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "desktop",
+        "url": "https://cubxxw.com/zh/projects/",
+        "sample": {
+          "lcpMs": 3816,
+          "cls": 0.03515625,
+          "longTaskMs": 1209,
+          "windowStart": 3799.600000023842,
+          "lastShift": 3799.600000023842,
+          "windowScore": 0.0005656882921854656,
+          "observationMs": 5225.5,
+          "loadCompleted": true,
+          "domElements": 1194,
+          "resources": 29,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/css/bear-os.min.99d649000fa8bb0853a264ebe1e50e54202fd80b3eaee3c389d1e2cd2b923ee6.css",
+              "durationMs": 1121.8999999761581
+            },
+            {
+              "resource": "https://cubxxw.com/js/bear-workspace.69e9c9a2291f7e135e8ef1002b5f8750094ac1670bf7a52783277345b3a0707b.js",
+              "durationMs": 1160.4000000357628
+            },
+            {
+              "resource": "https://cubxxw.com/js/space/world-jiangnan.48305a6f94d871a198ac99b84a993b7ebb07b885b4c1cf0eca76f90be813bcb3.js",
+              "durationMs": 1279.199999988079
+            },
+            {
+              "resource": "https://cubxxw.com/js/vendor/three.module.min.3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6.js",
+              "durationMs": 1812.199999988079
+            },
+            {
+              "resource": "https://cubxxw.com/models/space/cat.glb",
+              "durationMs": 1343.800000011921
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+              "durationMs": 1406.699999988079
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor_grain-color.jpg",
+              "durationMs": 1108.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor_grain-normal.jpg",
+              "durationMs": 1311.1000000238419
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor_grain-roughness.jpg",
+              "durationMs": 1326.3999999761581
+            },
+            {
+              "resource": "https://cubxxw.com/images/about/journey/06-kumano-480.webp",
+              "durationMs": 1427.5
+            },
+            {
+              "resource": "https://cubxxw.com/images/about/journey/09-vangvieng-480.webp",
+              "durationMs": 1597.800000011921
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 1872.8999999761581,
+              "navigationId": 8857,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.5,
+              "domainLookupStart": 0.5,
+              "domainLookupEnd": 0.5,
+              "connectStart": 5.800000011920929,
+              "secureConnectionStart": 5.800000011920929,
+              "connectEnd": 131.5,
+              "requestStart": 131.60000002384186,
+              "responseStart": 425.60000002384186,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 425.60000002384186,
+              "responseEnd": 638.8000000119209,
+              "transferSize": 81549,
+              "encodedBodySize": 81249,
+              "decodedBodySize": 314378,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 1576.8999999761581,
+              "domContentLoadedEventStart": 1827.300000011921,
+              "domContentLoadedEventEnd": 1827.3999999761581,
+              "domComplete": 1872.8999999761581,
+              "loadEventStart": 1872.8999999761581,
+              "loadEventEnd": 1872.8999999761581,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "desktop",
+        "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "sample": {
+          "lcpMs": 1012,
+          "cls": 0.00615780978732639,
+          "longTaskMs": 63,
+          "windowStart": 1208.7999999523163,
+          "lastShift": 1208.7999999523163,
+          "windowScore": 0.00615780978732639,
+          "observationMs": 5413.699999988079,
+          "loadCompleted": true,
+          "domElements": 1078,
+          "resources": 94,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/cover-parallax.d6ac8293a7cd4cacd06a6fc6f40520363997697d6bfd64e248cb9efd3f7dcefe.js",
+              "durationMs": 1486.1000000238419
+            },
+            {
+              "resource": "https://cubxxw.com/js/micro-interactions.js",
+              "durationMs": 1340.699999988079
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-ai-client.js",
+              "durationMs": 1318.5
+            },
+            {
+              "resource": "https://cubxxw.com/js/toc-highlight.js",
+              "durationMs": 1335.4000000357628
+            },
+            {
+              "resource": "https://cubxxw.com/js/blog-ai-inline.js",
+              "durationMs": 1340
+            },
+            {
+              "resource": "https://cubxxw.com/js/reading-companion.js",
+              "durationMs": 1340.199999988079
+            },
+            {
+              "resource": "https://cubxxw.com/js/article-chat.js",
+              "durationMs": 1558.1000000238419
+            },
+            {
+              "resource": "https://cubxxw.com/js/image-lightbox.js",
+              "durationMs": 1346.199999988079
+            },
+            {
+              "resource": "https://cubxxw.com/js/wide-content-scroll.js",
+              "durationMs": 1612.300000011921
+            },
+            {
+              "resource": "https://cubxxw.com/js/footnote-preview.js",
+              "durationMs": 1623.5
+            },
+            {
+              "resource": "https://cubxxw.com/js/link-preview.js",
+              "durationMs": 1630.5999999642372
+            },
+            {
+              "resource": "https://cubxxw.com/js/code-copy.js",
+              "durationMs": 1631.8999999761581
+            },
+            {
+              "resource": "https://cubxxw.com/js/code-mobile.js",
+              "durationMs": 1718.699999988079
+            },
+            {
+              "resource": "https://cubxxw.com/social/paper_hu_9df27d3979c1bb9e.png",
+              "durationMs": 1291.300000011921
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 2390.5,
+              "navigationId": 6460,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.2999999523162842,
+              "domainLookupStart": 0.2999999523162842,
+              "domainLookupEnd": 0.2999999523162842,
+              "connectStart": 2.899999976158142,
+              "secureConnectionStart": 2.899999976158142,
+              "connectEnd": 144.0999999642372,
+              "requestStart": 144.19999998807907,
+              "responseStart": 453.0999999642372,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 453.0999999642372,
+              "responseEnd": 669.7999999523163,
+              "transferSize": 42668,
+              "encodedBodySize": 42368,
+              "decodedBodySize": 143326,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 1001.3999999761581,
+              "domContentLoadedEventStart": 2389.599999964237,
+              "domContentLoadedEventEnd": 2389.599999964237,
+              "domComplete": 2390.2999999523163,
+              "loadEventStart": 2390.2999999523163,
+              "loadEventEnd": 2390.5,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "low"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "mobile",
+        "url": "https://cubxxw.com/",
+        "sample": {
+          "lcpMs": 676,
+          "cls": 0,
+          "longTaskMs": 0,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 3895.400000035763,
+          "loadCompleted": true,
+          "domElements": 1494,
+          "resources": 17,
+          "slowResources": [],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 868.4000000357628,
+              "navigationId": 5451,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.20000004768371582,
+              "domainLookupStart": 0.20000004768371582,
+              "domainLookupEnd": 0.20000004768371582,
+              "connectStart": 3.300000011920929,
+              "secureConnectionStart": 3.300000011920929,
+              "connectEnd": 156.70000004768372,
+              "requestStart": 156.70000004768372,
+              "responseStart": 463.4000000357628,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 463.4000000357628,
+              "responseEnd": 675.2000000476837,
+              "transferSize": 51838,
+              "encodedBodySize": 51538,
+              "decodedBodySize": 180385,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 696.9000000357628,
+              "domContentLoadedEventStart": 791.4000000357628,
+              "domContentLoadedEventEnd": 791.5,
+              "domComplete": 868.2000000476837,
+              "loadEventStart": 868.3000000119209,
+              "loadEventEnd": 868.4000000357628,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "mobile",
+        "url": "https://cubxxw.com/zh/",
+        "sample": {
+          "lcpMs": 1232,
+          "cls": 0,
+          "longTaskMs": 0,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 5052,
+          "loadCompleted": true,
+          "domElements": 1496,
+          "resources": 17,
+          "slowResources": [],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 2001.5999999642372,
+              "navigationId": 3088,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.19999998807907104,
+              "domainLookupStart": 0.19999998807907104,
+              "domainLookupEnd": 0.19999998807907104,
+              "connectStart": 3.199999988079071,
+              "secureConnectionStart": 3.199999988079071,
+              "connectEnd": 130.5999999642372,
+              "requestStart": 130.5999999642372,
+              "responseStart": 835.0999999642372,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 835.0999999642372,
+              "responseEnd": 1042.300000011921,
+              "transferSize": 54899,
+              "encodedBodySize": 54599,
+              "decodedBodySize": 186574,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 1236.699999988079,
+              "domContentLoadedEventStart": 1526.5,
+              "domContentLoadedEventEnd": 1526.5999999642372,
+              "domComplete": 2001.300000011921,
+              "loadEventStart": 2001.300000011921,
+              "loadEventEnd": 2001.5999999642372,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "mobile",
+        "url": "https://cubxxw.com/projects/",
+        "sample": {
+          "lcpMs": 3204,
+          "cls": 0.004831514221715475,
+          "longTaskMs": 1710,
+          "windowStart": 3155.800000011921,
+          "lastShift": 3155.800000011921,
+          "windowScore": 0.004831514221715475,
+          "observationMs": 4557.800000011921,
+          "loadCompleted": true,
+          "domElements": 1194,
+          "resources": 42,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/space/world-jiangnan.48305a6f94d871a198ac99b84a993b7ebb07b885b4c1cf0eca76f90be813bcb3.js",
+              "durationMs": 1388.800000011921
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_table_001-color.jpg",
+              "durationMs": 1146.1000000238419
+            },
+            {
+              "resource": "https://cubxxw.com/images/posts/2026/laos/local-man-cave.jpg",
+              "durationMs": 1162.1000000238419
+            },
+            {
+              "resource": "https://cubxxw.com/images/posts/2026/laos/cave-interior.jpg",
+              "durationMs": 1420
+            },
+            {
+              "resource": "https://cubxxw.com/images/posts/2026/laos/cliff-edge-selfie.jpg",
+              "durationMs": 1567.300000011921
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 1536.6000000238419,
+              "navigationId": 2445,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.19999998807907104,
+              "domainLookupStart": 0.19999998807907104,
+              "domainLookupEnd": 0.19999998807907104,
+              "connectStart": 2.199999988079071,
+              "secureConnectionStart": 2.199999988079071,
+              "connectEnd": 153.89999997615814,
+              "requestStart": 154,
+              "responseStart": 453.39999997615814,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 453.39999997615814,
+              "responseEnd": 529.6999999880791,
+              "transferSize": 63651,
+              "encodedBodySize": 63351,
+              "decodedBodySize": 277336,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 1241.6000000238419,
+              "domContentLoadedEventStart": 1281.300000011921,
+              "domContentLoadedEventEnd": 1281.300000011921,
+              "domComplete": 1536.5,
+              "loadEventStart": 1536.6000000238419,
+              "loadEventEnd": 1536.6000000238419,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "mobile",
+        "url": "https://cubxxw.com/zh/projects/",
+        "sample": {
+          "lcpMs": 2488,
+          "cls": 0.0032779726713246474,
+          "longTaskMs": 5404,
+          "windowStart": 2461.699999988079,
+          "lastShift": 2461.699999988079,
+          "windowScore": 0.0032779726713246474,
+          "observationMs": 7720.199999988079,
+          "loadCompleted": true,
+          "domElements": 1212,
+          "resources": 52,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/painted_plaster_wall-color.jpg",
+              "durationMs": 1770.199999988079
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/wood_floor_grain-color.jpg",
+              "durationMs": 1567.8999999761581
+            },
+            {
+              "resource": "https://cubxxw.com/images/space/cafe/materials-v1/rock_boulder_dry-color.jpg",
+              "durationMs": 1901.0999999642372
+            },
+            {
+              "resource": "https://cubxxw.com/images/posts/2026/laos/cliff-edge-selfie.jpg",
+              "durationMs": 1196
+            },
+            {
+              "resource": "https://cubxxw.com/images/posts/2025/japan-travel/tsukubai.jpg",
+              "durationMs": 1369
+            },
+            {
+              "resource": "https://cubxxw.com/audio/space/night-on-the-docks-sax.mp3",
+              "durationMs": 2926.900000035763
+            },
+            {
+              "resource": "https://cubxxw.com/audio/space/rain-distant-storm-loop.mp3",
+              "durationMs": 2169.699999988079
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/projects/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 4424.100000023842,
+              "navigationId": 1294,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.40000003576278687,
+              "domainLookupStart": 0.40000003576278687,
+              "domainLookupEnd": 0.40000003576278687,
+              "connectStart": 3,
+              "secureConnectionStart": 3,
+              "connectEnd": 133.80000001192093,
+              "requestStart": 133.9000000357628,
+              "responseStart": 436.30000001192093,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 436.30000001192093,
+              "responseEnd": 1513.800000011921,
+              "transferSize": 81755,
+              "encodedBodySize": 81455,
+              "decodedBodySize": 314378,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 1515.9000000357628,
+              "domContentLoadedEventStart": 1545.699999988079,
+              "domContentLoadedEventEnd": 1545.800000011921,
+              "domComplete": 4424,
+              "loadEventStart": 4424.100000023842,
+              "loadEventEnd": 4424.100000023842,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "project": "mobile",
+        "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "sample": {
+          "lcpMs": 444,
+          "cls": 0,
+          "longTaskMs": 0,
+          "windowStart": 0,
+          "lastShift": 0,
+          "windowScore": 0,
+          "observationMs": 4421.100000023842,
+          "loadCompleted": true,
+          "domElements": 1078,
+          "resources": 27,
+          "slowResources": [
+            {
+              "resource": "https://cubxxw.com/js/code-mobile.js",
+              "durationMs": 1118.199999988079
+            }
+          ],
+          "navigation": [
+            {
+              "name": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 1380,
+              "navigationId": 9268,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "h2",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "br",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 0.20000004768371582,
+              "domainLookupStart": 0.20000004768371582,
+              "domainLookupEnd": 0.20000004768371582,
+              "connectStart": 2.900000035762787,
+              "secureConnectionStart": 2.900000035762787,
+              "connectEnd": 129.4000000357628,
+              "requestStart": 129.5,
+              "responseStart": 195.9000000357628,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 195.9000000357628,
+              "responseEnd": 258.10000002384186,
+              "transferSize": 42837,
+              "encodedBodySize": 42537,
+              "decodedBodySize": 143326,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 436.30000001192093,
+              "domContentLoadedEventStart": 1378.1000000238419,
+              "domContentLoadedEventEnd": 1378.300000011921,
+              "domComplete": 1379.7000000476837,
+              "loadEventStart": 1379.7000000476837,
+              "loadEventEnd": 1380,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "candidateInjected": {
+    "stats": {
+      "startTime": "2026-11-01T05:21:39.770Z",
+      "duration": 14317.553,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "globalErrors": [],
+    "limits": "not deployed; local source and frozen full corpus in production DOM"
+  },
+  "host": {
+    "newRecall": 2,
+    "existingURL": 4,
+    "firstRed": {
+      "pass": 0,
+      "fail": 2,
+      "reason": "intended includeMatches assertion"
+    },
+    "green": {
+      "pass": 6,
+      "fail": 0,
+      "skip": 0
+    }
+  },
+  "candidateFirstImport": {
+    "exit": 1,
+    "actualTests": 0,
+    "evidence": "candidate-import-failure.log/json in formal root"
+  },
+  "browserVersion": "Chrome156.0.8078.76; actual PW1.63.0; declared1.64.1; live diagnosis not Linux CI",
+  "newProductionDeploy": false
+}

@@ -1,0 +1,3663 @@
+{
+  "schema": "seo-report/1",
+  "params": {
+    "dir": "data/seo",
+    "start": "2026-09-03",
+    "end": "2026-10-28",
+    "host": "cubxxw.com",
+    "asOf": "2026-11-01T05:25:00Z",
+    "asOfBasis": "explicit",
+    "runDate": "2026-11-01",
+    "runDateBasis": "explicit",
+    "includeQueryRows": false,
+    "gscResponseAggregation": "byPage"
+  },
+  "sources": {
+    "gsc": {
+      "scope": {
+        "property": "sc-domain:cubxxw.com",
+        "searchType": "web",
+        "dataState": "final",
+        "host": "cubxxw.com",
+        "basis": "returned page-dimension rows for the strict main host; query rows are host-filtered and incomplete"
+      },
+      "dataDates": {
+        "start": "2026-09-03",
+        "end": "2026-10-28",
+        "windows": {
+          "previous": {
+            "start": "2026-09-03",
+            "end": "2026-09-30",
+            "days": 28
+          },
+          "current": {
+            "start": "2026-10-01",
+            "end": "2026-10-28",
+            "days": 28
+          }
+        },
+        "latestDataDate": "2026-10-28",
+        "dataTimezone": "America/Los_Angeles"
+      },
+      "freshness": {
+        "status": "fresh",
+        "fresh": true,
+        "reasons": [],
+        "thresholds": {
+          "maxFetchAgeHours": 72,
+          "maxDataLagDays": 6
+        },
+        "selection": {
+          "status": "selected",
+          "requestedResponseAggregation": "byPage",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "date_page"
+          },
+          "responseAggregationType": "byPage",
+          "candidateContexts": [
+            {
+              "property": "sc-domain:cubxxw.com",
+              "searchType": "web",
+              "dataState": "final",
+              "dimensions": [
+                "date",
+                "page"
+              ],
+              "filters": [],
+              "requestAggregationType": "auto",
+              "slice": "date_page"
+            }
+          ],
+          "availableResponseAggregations": [
+            "byPage",
+            "unrecorded-legacy"
+          ],
+          "basis": "explicit exact response aggregation in the unique domain-wide date_page request context; gsc-snapshot/2 provenance required; other groups retained separately, never merged"
+        },
+        "latestFetchedAt": "2026-10-31T11:27:50.856Z",
+        "latestDataDate": "2026-10-28"
+      },
+      "completeness": {
+        "current": {
+          "daysCounted": 28,
+          "countedDates": [
+            "2026-10-01",
+            "2026-10-02",
+            "2026-10-03",
+            "2026-10-04",
+            "2026-10-05",
+            "2026-10-06",
+            "2026-10-07",
+            "2026-10-08",
+            "2026-10-09",
+            "2026-10-10",
+            "2026-10-11",
+            "2026-10-12",
+            "2026-10-13",
+            "2026-10-14",
+            "2026-10-15",
+            "2026-10-16",
+            "2026-10-17",
+            "2026-10-18",
+            "2026-10-19",
+            "2026-10-20",
+            "2026-10-21",
+            "2026-10-22",
+            "2026-10-23",
+            "2026-10-24",
+            "2026-10-25",
+            "2026-10-26",
+            "2026-10-27",
+            "2026-10-28"
+          ],
+          "provenCompleteDays": 28,
+          "expectedDays": 28,
+          "metricsComplete": true,
+          "partial": false
+        },
+        "previous": {
+          "daysCounted": 28,
+          "countedDates": [
+            "2026-09-03",
+            "2026-09-04",
+            "2026-09-05",
+            "2026-09-06",
+            "2026-09-07",
+            "2026-09-08",
+            "2026-09-09",
+            "2026-09-10",
+            "2026-09-11",
+            "2026-09-12",
+            "2026-09-13",
+            "2026-09-14",
+            "2026-09-15",
+            "2026-09-16",
+            "2026-09-17",
+            "2026-09-18",
+            "2026-09-19",
+            "2026-09-20",
+            "2026-09-21",
+            "2026-09-22",
+            "2026-09-23",
+            "2026-09-24",
+            "2026-09-25",
+            "2026-09-26",
+            "2026-09-27",
+            "2026-09-28",
+            "2026-09-29",
+            "2026-09-30"
+          ],
+          "provenCompleteDays": 28,
+          "expectedDays": 28,
+          "metricsComplete": true,
+          "partial": false
+        }
+      },
+      "summary": {
+        "windows": {
+          "previous": {
+            "start": "2026-09-03",
+            "end": "2026-09-30",
+            "days": 28
+          },
+          "current": {
+            "start": "2026-10-01",
+            "end": "2026-10-28",
+            "days": 28
+          }
+        },
+        "identity": {
+          "property": "sc-domain:cubxxw.com",
+          "searchType": "web",
+          "dataState": "final",
+          "host": "cubxxw.com"
+        },
+        "domainPageSelection": {
+          "status": "selected",
+          "requestedResponseAggregation": "byPage",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "date_page"
+          },
+          "responseAggregationType": "byPage",
+          "candidateContexts": [
+            {
+              "property": "sc-domain:cubxxw.com",
+              "searchType": "web",
+              "dataState": "final",
+              "dimensions": [
+                "date",
+                "page"
+              ],
+              "filters": [],
+              "requestAggregationType": "auto",
+              "slice": "date_page"
+            }
+          ],
+          "availableResponseAggregations": [
+            "byPage",
+            "unrecorded-legacy"
+          ],
+          "basis": "explicit exact response aggregation in the unique domain-wide date_page request context; gsc-snapshot/2 provenance required; other groups retained separately, never merged"
+        },
+        "mainHostPages": {
+          "previous": {
+            "metrics": {
+              "clicks": 138,
+              "impressions": 67578,
+              "ctr": 0.0020420847021219925,
+              "position": 9.732990026339934
+            },
+            "pageCount": 505,
+            "coverage": {
+              "daysCounted": 28,
+              "countedDates": [
+                "2026-09-03",
+                "2026-09-04",
+                "2026-09-05",
+                "2026-09-06",
+                "2026-09-07",
+                "2026-09-08",
+                "2026-09-09",
+                "2026-09-10",
+                "2026-09-11",
+                "2026-09-12",
+                "2026-09-13",
+                "2026-09-14",
+                "2026-09-15",
+                "2026-09-16",
+                "2026-09-17",
+                "2026-09-18",
+                "2026-09-19",
+                "2026-09-20",
+                "2026-09-21",
+                "2026-09-22",
+                "2026-09-23",
+                "2026-09-24",
+                "2026-09-25",
+                "2026-09-26",
+                "2026-09-27",
+                "2026-09-28",
+                "2026-09-29",
+                "2026-09-30"
+              ],
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            },
+            "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+          },
+          "current": {
+            "metrics": {
+              "clicks": 136,
+              "impressions": 37587,
+              "ctr": 0.003618272274988693,
+              "position": 8.88770053475936
+            },
+            "pageCount": 461,
+            "coverage": {
+              "daysCounted": 28,
+              "countedDates": [
+                "2026-10-01",
+                "2026-10-02",
+                "2026-10-03",
+                "2026-10-04",
+                "2026-10-05",
+                "2026-10-06",
+                "2026-10-07",
+                "2026-10-08",
+                "2026-10-09",
+                "2026-10-10",
+                "2026-10-11",
+                "2026-10-12",
+                "2026-10-13",
+                "2026-10-14",
+                "2026-10-15",
+                "2026-10-16",
+                "2026-10-17",
+                "2026-10-18",
+                "2026-10-19",
+                "2026-10-20",
+                "2026-10-21",
+                "2026-10-22",
+                "2026-10-23",
+                "2026-10-24",
+                "2026-10-25",
+                "2026-10-26",
+                "2026-10-27",
+                "2026-10-28"
+              ],
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            },
+            "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+          },
+          "host": "cubxxw.com"
+        },
+        "otherHosts": {
+          "previous": {
+            "metrics": {
+              "clicks": 1,
+              "impressions": 601,
+              "ctr": 0.0016638935108153079,
+              "position": 16.64559068219634
+            },
+            "hostCount": 8,
+            "coverage": {
+              "daysCounted": 28,
+              "countedDates": [
+                "2026-09-03",
+                "2026-09-04",
+                "2026-09-05",
+                "2026-09-06",
+                "2026-09-07",
+                "2026-09-08",
+                "2026-09-09",
+                "2026-09-10",
+                "2026-09-11",
+                "2026-09-12",
+                "2026-09-13",
+                "2026-09-14",
+                "2026-09-15",
+                "2026-09-16",
+                "2026-09-17",
+                "2026-09-18",
+                "2026-09-19",
+                "2026-09-20",
+                "2026-09-21",
+                "2026-09-22",
+                "2026-09-23",
+                "2026-09-24",
+                "2026-09-25",
+                "2026-09-26",
+                "2026-09-27",
+                "2026-09-28",
+                "2026-09-29",
+                "2026-09-30"
+              ],
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            }
+          },
+          "current": {
+            "metrics": {
+              "clicks": 0,
+              "impressions": 107,
+              "ctr": 0,
+              "position": 7.5046728971962615
+            },
+            "hostCount": 8,
+            "coverage": {
+              "daysCounted": 28,
+              "countedDates": [
+                "2026-10-01",
+                "2026-10-02",
+                "2026-10-03",
+                "2026-10-04",
+                "2026-10-05",
+                "2026-10-06",
+                "2026-10-07",
+                "2026-10-08",
+                "2026-10-09",
+                "2026-10-10",
+                "2026-10-11",
+                "2026-10-12",
+                "2026-10-13",
+                "2026-10-14",
+                "2026-10-15",
+                "2026-10-16",
+                "2026-10-17",
+                "2026-10-18",
+                "2026-10-19",
+                "2026-10-20",
+                "2026-10-21",
+                "2026-10-22",
+                "2026-10-23",
+                "2026-10-24",
+                "2026-10-25",
+                "2026-10-26",
+                "2026-10-27",
+                "2026-10-28"
+              ],
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            }
+          }
+        },
+        "propertyTotals": {
+          "identity": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final"
+          },
+          "basis": "slice date_totals — independent property/date totals (unfiltered, byProperty semantics)",
+          "previous": {
+            "metrics": {
+              "clicks": 138,
+              "impressions": 63906,
+              "ctr": 0.002159421650549244,
+              "position": 9.34150158044628
+            },
+            "coverage": {
+              "daysCounted": 28,
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            }
+          },
+          "current": {
+            "metrics": {
+              "clicks": 135,
+              "impressions": 36440,
+              "ctr": 0.003704720087815587,
+              "position": 8.955982436882547
+            },
+            "coverage": {
+              "daysCounted": 28,
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            }
+          }
+        },
+        "blogDateTotalsByPage": {
+          "identity": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final"
+          },
+          "basis": "slice blog_date_totals — hostname-filtered blog date totals; the page filter forces byPage semantics — NOT property totals",
+          "previous": {
+            "metrics": {
+              "clicks": 138,
+              "impressions": 67578,
+              "ctr": 0.0020420847021219925,
+              "position": 9.732990026339934
+            },
+            "coverage": {
+              "daysCounted": 28,
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            }
+          },
+          "current": {
+            "metrics": {
+              "clicks": 136,
+              "impressions": 37587,
+              "ctr": 0.003618272274988693,
+              "position": 8.88770053475936
+            },
+            "coverage": {
+              "daysCounted": 28,
+              "provenCompleteDays": 28,
+              "expectedDays": 28,
+              "metricsComplete": true,
+              "partial": false
+            }
+          }
+        },
+        "queryCoverage": {
+          "previous": {
+            "comparable": true,
+            "reason": null,
+            "host": "cubxxw.com",
+            "querySource": {
+              "identity": {
+                "property": "sc-domain:cubxxw.com",
+                "searchType": "web",
+                "dataState": "final"
+              },
+              "scope": {
+                "kind": "host",
+                "host": "cubxxw.com"
+              },
+              "metrics": {
+                "clicks": 30,
+                "impressions": 6683,
+                "ctr": 0.004489001945234176,
+                "position": 18.46206793356277
+              },
+              "coverage": {
+                "daysCounted": 28,
+                "countedDates": [
+                  "2026-09-03",
+                  "2026-09-04",
+                  "2026-09-05",
+                  "2026-09-06",
+                  "2026-09-07",
+                  "2026-09-08",
+                  "2026-09-09",
+                  "2026-09-10",
+                  "2026-09-11",
+                  "2026-09-12",
+                  "2026-09-13",
+                  "2026-09-14",
+                  "2026-09-15",
+                  "2026-09-16",
+                  "2026-09-17",
+                  "2026-09-18",
+                  "2026-09-19",
+                  "2026-09-20",
+                  "2026-09-21",
+                  "2026-09-22",
+                  "2026-09-23",
+                  "2026-09-24",
+                  "2026-09-25",
+                  "2026-09-26",
+                  "2026-09-27",
+                  "2026-09-28",
+                  "2026-09-29",
+                  "2026-09-30"
+                ],
+                "provenCompleteDays": 28,
+                "expectedDays": 28,
+                "metricsComplete": true,
+                "partial": false
+              },
+              "basis": "hostname-filtered query×page rows (page-filtered byPage semantics); returned query rows are incomplete (anonymous queries, internal row limits)"
+            },
+            "pageSource": {
+              "identity": {
+                "property": "sc-domain:cubxxw.com",
+                "searchType": "web",
+                "dataState": "final"
+              },
+              "scope": {
+                "kind": "host",
+                "host": "cubxxw.com"
+              },
+              "metrics": {
+                "clicks": 138,
+                "impressions": 67578,
+                "ctr": 0.0020420847021219925,
+                "position": 9.732990026339934
+              },
+              "coverage": {
+                "daysCounted": 28,
+                "countedDates": [
+                  "2026-09-03",
+                  "2026-09-04",
+                  "2026-09-05",
+                  "2026-09-06",
+                  "2026-09-07",
+                  "2026-09-08",
+                  "2026-09-09",
+                  "2026-09-10",
+                  "2026-09-11",
+                  "2026-09-12",
+                  "2026-09-13",
+                  "2026-09-14",
+                  "2026-09-15",
+                  "2026-09-16",
+                  "2026-09-17",
+                  "2026-09-18",
+                  "2026-09-19",
+                  "2026-09-20",
+                  "2026-09-21",
+                  "2026-09-22",
+                  "2026-09-23",
+                  "2026-09-24",
+                  "2026-09-25",
+                  "2026-09-26",
+                  "2026-09-27",
+                  "2026-09-28",
+                  "2026-09-29",
+                  "2026-09-30"
+                ],
+                "provenCompleteDays": 28,
+                "expectedDays": 28,
+                "metricsComplete": true,
+                "partial": false
+              },
+              "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+            },
+            "note": "the gap between query rows and page rows is NOT a measured coverage loss: returned query rows are incomplete (anonymous queries and internal row limits) and must not be treated as zero traffic or substituted for page totals"
+          },
+          "current": {
+            "comparable": true,
+            "reason": null,
+            "host": "cubxxw.com",
+            "querySource": {
+              "identity": {
+                "property": "sc-domain:cubxxw.com",
+                "searchType": "web",
+                "dataState": "final"
+              },
+              "scope": {
+                "kind": "host",
+                "host": "cubxxw.com"
+              },
+              "metrics": {
+                "clicks": 32,
+                "impressions": 3000,
+                "ctr": 0.010666666666666666,
+                "position": 18.731
+              },
+              "coverage": {
+                "daysCounted": 28,
+                "countedDates": [
+                  "2026-10-01",
+                  "2026-10-02",
+                  "2026-10-03",
+                  "2026-10-04",
+                  "2026-10-05",
+                  "2026-10-06",
+                  "2026-10-07",
+                  "2026-10-08",
+                  "2026-10-09",
+                  "2026-10-10",
+                  "2026-10-11",
+                  "2026-10-12",
+                  "2026-10-13",
+                  "2026-10-14",
+                  "2026-10-15",
+                  "2026-10-16",
+                  "2026-10-17",
+                  "2026-10-18",
+                  "2026-10-19",
+                  "2026-10-20",
+                  "2026-10-21",
+                  "2026-10-22",
+                  "2026-10-23",
+                  "2026-10-24",
+                  "2026-10-25",
+                  "2026-10-26",
+                  "2026-10-27",
+                  "2026-10-28"
+                ],
+                "provenCompleteDays": 28,
+                "expectedDays": 28,
+                "metricsComplete": true,
+                "partial": false
+              },
+              "basis": "hostname-filtered query×page rows (page-filtered byPage semantics); returned query rows are incomplete (anonymous queries, internal row limits)"
+            },
+            "pageSource": {
+              "identity": {
+                "property": "sc-domain:cubxxw.com",
+                "searchType": "web",
+                "dataState": "final"
+              },
+              "scope": {
+                "kind": "host",
+                "host": "cubxxw.com"
+              },
+              "metrics": {
+                "clicks": 136,
+                "impressions": 37587,
+                "ctr": 0.003618272274988693,
+                "position": 8.88770053475936
+              },
+              "coverage": {
+                "daysCounted": 28,
+                "countedDates": [
+                  "2026-10-01",
+                  "2026-10-02",
+                  "2026-10-03",
+                  "2026-10-04",
+                  "2026-10-05",
+                  "2026-10-06",
+                  "2026-10-07",
+                  "2026-10-08",
+                  "2026-10-09",
+                  "2026-10-10",
+                  "2026-10-11",
+                  "2026-10-12",
+                  "2026-10-13",
+                  "2026-10-14",
+                  "2026-10-15",
+                  "2026-10-16",
+                  "2026-10-17",
+                  "2026-10-18",
+                  "2026-10-19",
+                  "2026-10-20",
+                  "2026-10-21",
+                  "2026-10-22",
+                  "2026-10-23",
+                  "2026-10-24",
+                  "2026-10-25",
+                  "2026-10-26",
+                  "2026-10-27",
+                  "2026-10-28"
+                ],
+                "provenCompleteDays": 28,
+                "expectedDays": 28,
+                "metricsComplete": true,
+                "partial": false
+              },
+              "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+            },
+            "note": "the gap between query rows and page rows is NOT a measured coverage loss: returned query rows are incomplete (anonymous queries and internal row limits) and must not be treated as zero traffic or substituted for page totals"
+          }
+        }
+      }
+    },
+    "psi": {
+      "freshness": {
+        "status": "partial",
+        "fresh": false,
+        "reasons": [
+          "psi-current-plan-unproven: latest PSI plan has missing, failed, duplicate, unplanned or invalid collection slots",
+          "psi-target-no-usable-current: https://cubxxw.com/about/ [mobile] current outcome is failed (older samples never substitute)",
+          "psi-target-no-usable-current: https://cubxxw.com/projects/ [mobile] current outcome is failed (older samples never substitute)"
+        ],
+        "thresholds": {
+          "maxMeasurementAgeDays": 3
+        },
+        "latestMeasurementAt": "2026-10-31T11:44:06.249Z",
+        "byTarget": {
+          "https://cubxxw.com/\u0000desktop": {
+            "url": "https://cubxxw.com/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:28:11.117Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/\u0000mobile": {
+            "url": "https://cubxxw.com/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:27:56.200Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/about/\u0000desktop": {
+            "url": "https://cubxxw.com/about/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:33:30.443Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/about/\u0000mobile": {
+            "url": "https://cubxxw.com/about/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "no-usable-current",
+            "measuredAt": null,
+            "reasons": [
+              "psi-target-no-usable-current: https://cubxxw.com/about/ [mobile] current outcome is failed (older samples never substitute)"
+            ]
+          },
+          "https://cubxxw.com/ai-agent/\u0000desktop": {
+            "url": "https://cubxxw.com/ai-agent/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:37:09.974Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/ai-agent/\u0000mobile": {
+            "url": "https://cubxxw.com/ai-agent/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:36:53.783Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/\u0000desktop": {
+            "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:43:17.212Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/\u0000mobile": {
+            "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:42:59.479Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/ai-technology/\u0000desktop": {
+            "url": "https://cubxxw.com/ai-technology/",
+            "strategy": "desktop",
+            "active": false,
+            "status": "retired",
+            "measuredAt": "2026-07-10T09:23:17.754Z",
+            "reasons": [
+              "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)"
+            ]
+          },
+          "https://cubxxw.com/ai-technology/\u0000mobile": {
+            "url": "https://cubxxw.com/ai-technology/",
+            "strategy": "mobile",
+            "active": false,
+            "status": "retired",
+            "measuredAt": "2026-07-10T09:23:05.336Z",
+            "reasons": [
+              "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)"
+            ]
+          },
+          "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/\u0000desktop": {
+            "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+            "strategy": "desktop",
+            "active": false,
+            "status": "retired",
+            "measuredAt": "2026-07-10T09:27:32.319Z",
+            "reasons": [
+              "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)"
+            ]
+          },
+          "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/\u0000mobile": {
+            "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+            "strategy": "mobile",
+            "active": false,
+            "status": "retired",
+            "measuredAt": "2026-07-10T09:27:15.787Z",
+            "reasons": [
+              "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)"
+            ]
+          },
+          "https://cubxxw.com/archives/\u0000desktop": {
+            "url": "https://cubxxw.com/archives/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:42:44.338Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/archives/\u0000mobile": {
+            "url": "https://cubxxw.com/archives/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:42:27.198Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/engineering/\u0000desktop": {
+            "url": "https://cubxxw.com/engineering/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:37:42.438Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/engineering/\u0000mobile": {
+            "url": "https://cubxxw.com/engineering/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:37:27.102Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/growth/\u0000desktop": {
+            "url": "https://cubxxw.com/growth/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:38:32.230Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/growth/\u0000mobile": {
+            "url": "https://cubxxw.com/growth/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:38:20.477Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/projects/\u0000desktop": {
+            "url": "https://cubxxw.com/projects/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:41:41.529Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/projects/\u0000mobile": {
+            "url": "https://cubxxw.com/projects/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "no-usable-current",
+            "measuredAt": null,
+            "reasons": [
+              "psi-target-no-usable-current: https://cubxxw.com/projects/ [mobile] current outcome is failed (older samples never substitute)"
+            ]
+          },
+          "https://cubxxw.com/zh/\u0000desktop": {
+            "url": "https://cubxxw.com/zh/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:28:38.136Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/\u0000mobile": {
+            "url": "https://cubxxw.com/zh/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:28:23.591Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/about/\u0000desktop": {
+            "url": "https://cubxxw.com/zh/about/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:36:13.903Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/about/\u0000mobile": {
+            "url": "https://cubxxw.com/zh/about/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:35:23.454Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/ai-agent/\u0000desktop": {
+            "url": "https://cubxxw.com/zh/ai-agent/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:38:07.980Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/ai-agent/\u0000mobile": {
+            "url": "https://cubxxw.com/zh/ai-agent/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:37:53.736Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/ai-technology/\u0000desktop": {
+            "url": "https://cubxxw.com/zh/ai-technology/",
+            "strategy": "desktop",
+            "active": false,
+            "status": "retired",
+            "measuredAt": "2026-07-10T09:24:10.341Z",
+            "reasons": [
+              "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)"
+            ]
+          },
+          "https://cubxxw.com/zh/ai-technology/\u0000mobile": {
+            "url": "https://cubxxw.com/zh/ai-technology/",
+            "strategy": "mobile",
+            "active": false,
+            "status": "retired",
+            "measuredAt": "2026-07-10T09:23:31.553Z",
+            "reasons": [
+              "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)"
+            ]
+          },
+          "https://cubxxw.com/zh/growth/\u0000desktop": {
+            "url": "https://cubxxw.com/zh/growth/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:38:59.903Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/growth/\u0000mobile": {
+            "url": "https://cubxxw.com/zh/growth/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:38:45.826Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/growth/posts/2025-annual-review/\u0000desktop": {
+            "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+            "strategy": "desktop",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:44:06.249Z",
+            "reasons": []
+          },
+          "https://cubxxw.com/zh/growth/posts/2025-annual-review/\u0000mobile": {
+            "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+            "strategy": "mobile",
+            "active": true,
+            "status": "fresh",
+            "measuredAt": "2026-10-31T11:43:37.830Z",
+            "reasons": []
+          }
+        },
+        "activePlan": {
+          "file": "psi-2026-10-31.json",
+          "observedAt": "2026-10-31T11:44:17.733Z",
+          "certified": true,
+          "collectionComplete": false,
+          "targets": [
+            {
+              "url": "https://cubxxw.com/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/zh/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/zh/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/about/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/about/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/zh/about/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/zh/about/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/ai-agent/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/ai-agent/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/engineering/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/engineering/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/zh/ai-agent/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/zh/ai-agent/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/growth/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/growth/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/zh/growth/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/zh/growth/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/projects/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/projects/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/archives/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/archives/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+              "strategy": "desktop"
+            },
+            {
+              "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+              "strategy": "mobile"
+            },
+            {
+              "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+              "strategy": "desktop"
+            }
+          ],
+          "unresolvedFiles": [],
+          "reason": "latest PSI plan has missing, failed, duplicate, unplanned or invalid collection slots"
+        }
+      },
+      "scope": {
+        "basis": "PSI v5 laboratory measurements (Lighthouse) per URL×strategy; field data (CrUX) is reported separately",
+        "strategies": [
+          "mobile",
+          "desktop"
+        ]
+      },
+      "latestObservation": {
+        "file": "psi-2026-10-31.json",
+        "observedAt": "2026-10-31T11:44:17.733Z",
+        "runStatus": "partial",
+        "planCertified": true,
+        "counts": {
+          "planned": 26,
+          "succeeded": 24,
+          "partial": 0,
+          "failed": 2,
+          "missing": 0,
+          "usable": 24,
+          "duplicate": 0,
+          "unplanned": 0,
+          "byStrategy": {
+            "mobile": {
+              "planned": 13,
+              "succeeded": 11,
+              "partial": 0,
+              "failed": 2,
+              "missing": 0,
+              "usable": 11
+            },
+            "desktop": {
+              "planned": 13,
+              "succeeded": 13,
+              "partial": 0,
+              "failed": 0,
+              "missing": 0,
+              "usable": 13
+            }
+          }
+        }
+      },
+      "denominators": {
+        "mobile": {
+          "planned": 13,
+          "succeeded": 11,
+          "partial": 0,
+          "failed": 2,
+          "missing": 0,
+          "usable": 11
+        },
+        "desktop": {
+          "planned": 13,
+          "succeeded": 13,
+          "partial": 0,
+          "failed": 0,
+          "missing": 0,
+          "usable": 13
+        }
+      },
+      "activePlan": {
+        "file": "psi-2026-10-31.json",
+        "observedAt": "2026-10-31T11:44:17.733Z",
+        "certified": true,
+        "collectionComplete": false,
+        "targets": [
+          {
+            "url": "https://cubxxw.com/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/zh/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/zh/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/about/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/about/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/zh/about/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/zh/about/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/ai-agent/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/ai-agent/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/engineering/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/engineering/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/zh/ai-agent/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/zh/ai-agent/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/growth/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/growth/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/zh/growth/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/zh/growth/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/projects/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/projects/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/archives/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/archives/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+            "strategy": "desktop"
+          },
+          {
+            "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+            "strategy": "mobile"
+          },
+          {
+            "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+            "strategy": "desktop"
+          }
+        ],
+        "unresolvedFiles": [],
+        "reason": "latest PSI plan has missing, failed, duplicate, unplanned or invalid collection slots"
+      },
+      "targets": [
+        {
+          "url": "https://cubxxw.com/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:28:11.117Z",
+            "lcpMs": 805.7013257936503,
+            "cls": 0.002442557168409303,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:28:11.117Z",
+            "lcpMs": 805.7013257936503,
+            "cls": 0.002442557168409303,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:27:56.200Z",
+            "lcpMs": 1100.0022493153535,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:27:56.200Z",
+            "lcpMs": 1100.0022493153535,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/about/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:33:30.443Z",
+            "lcpMs": 6806,
+            "cls": 0.03333333333333333,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:33:30.443Z",
+            "lcpMs": 6806,
+            "cls": 0.03333333333333333,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/about/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "failed",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "failed",
+            "label": null,
+            "fetchTime": null,
+            "lcpMs": null,
+            "cls": null,
+            "clsPrecision": null,
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "labelled-last-good (older than current; never substitutes for the current outcome)",
+            "fetchTime": "2026-10-30T11:55:46.251Z",
+            "lcpMs": 10606,
+            "cls": 0.06349044899907885,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "labelled-last-good (older than current; never substitutes for the current outcome)",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:37:09.974Z",
+            "lcpMs": 834.7526238875431,
+            "cls": 0.10515826371378267,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:37:09.974Z",
+            "lcpMs": 834.7526238875431,
+            "cls": 0.10515826371378267,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:36:53.783Z",
+            "lcpMs": 947.5086189636579,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:36:53.783Z",
+            "lcpMs": 947.5086189636579,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:43:17.212Z",
+            "lcpMs": 885.5514097077805,
+            "cls": 0.041814734629093346,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:43:17.212Z",
+            "lcpMs": 885.5514097077805,
+            "cls": 0.041814734629093346,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:42:59.479Z",
+            "lcpMs": 1091,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:42:59.479Z",
+            "lcpMs": 1091,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/",
+          "strategy": "desktop",
+          "active": false,
+          "currentOutcome": "retired",
+          "currentCertified": false,
+          "currentLabel": "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)",
+          "current": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": null,
+            "fetchTime": "2026-07-10T09:23:17.754Z",
+            "lcpMs": 759,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": "historical-retired (latest known usable sample outside the active plan)",
+            "fetchTime": "2026-07-10T09:23:17.754Z",
+            "lcpMs": 759,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGoodLabel": "historical-retired (latest known usable sample outside the active plan)",
+          "sampleCount": 3
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/",
+          "strategy": "mobile",
+          "active": false,
+          "currentOutcome": "retired",
+          "currentCertified": false,
+          "currentLabel": "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)",
+          "current": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": null,
+            "fetchTime": "2026-07-10T09:23:05.336Z",
+            "lcpMs": 2862,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": "historical-retired (latest known usable sample outside the active plan)",
+            "fetchTime": "2026-07-10T09:23:05.336Z",
+            "lcpMs": 2862,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGoodLabel": "historical-retired (latest known usable sample outside the active plan)",
+          "sampleCount": 3
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "desktop",
+          "active": false,
+          "currentOutcome": "retired",
+          "currentCertified": false,
+          "currentLabel": "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)",
+          "current": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": null,
+            "fetchTime": "2026-07-10T09:27:32.319Z",
+            "lcpMs": 1006,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": "historical-retired (latest known usable sample outside the active plan)",
+            "fetchTime": "2026-07-10T09:27:32.319Z",
+            "lcpMs": 1006,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGoodLabel": "historical-retired (latest known usable sample outside the active plan)",
+          "sampleCount": 3
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "mobile",
+          "active": false,
+          "currentOutcome": "retired",
+          "currentCertified": false,
+          "currentLabel": "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)",
+          "current": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": null,
+            "fetchTime": "2026-07-10T09:27:15.787Z",
+            "lcpMs": 1951,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": "historical-retired (latest known usable sample outside the active plan)",
+            "fetchTime": "2026-07-10T09:27:15.787Z",
+            "lcpMs": 1951,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGoodLabel": "historical-retired (latest known usable sample outside the active plan)",
+          "sampleCount": 3
+        },
+        {
+          "url": "https://cubxxw.com/archives/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:42:44.338Z",
+            "lcpMs": 885.8819159601063,
+            "cls": 0.003971203100486769,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:42:44.338Z",
+            "lcpMs": 885.8819159601063,
+            "cls": 0.003971203100486769,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/archives/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:42:27.198Z",
+            "lcpMs": 983.0091182262798,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:42:27.198Z",
+            "lcpMs": 983.0091182262798,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/engineering/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:37:42.438Z",
+            "lcpMs": 805.9399846934846,
+            "cls": 0.0003126060882274875,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:37:42.438Z",
+            "lcpMs": 805.9399846934846,
+            "cls": 0.0003126060882274875,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/engineering/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:37:27.102Z",
+            "lcpMs": 929.5239185330674,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:37:27.102Z",
+            "lcpMs": 929.5239185330674,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/growth/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:38:32.230Z",
+            "lcpMs": 845.2303527314268,
+            "cls": 0.0003126060882274875,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:38:32.230Z",
+            "lcpMs": 845.2303527314268,
+            "cls": 0.0003126060882274875,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/growth/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:38:20.477Z",
+            "lcpMs": 919.0085958570895,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:38:20.477Z",
+            "lcpMs": 919.0085958570895,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/projects/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:41:41.529Z",
+            "lcpMs": 8077,
+            "cls": 0.006847631555905787,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:41:41.529Z",
+            "lcpMs": 8077,
+            "cls": 0.006847631555905787,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/projects/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "failed",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "failed",
+            "label": null,
+            "fetchTime": null,
+            "lcpMs": null,
+            "cls": null,
+            "clsPrecision": null,
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-10-26.json",
+            "observedAt": "2026-10-26T12:08:15.947Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "labelled-last-good (older than current; never substitutes for the current outcome)",
+            "fetchTime": "2026-10-26T12:05:11.938Z",
+            "lcpMs": 10868,
+            "cls": 0.06349044899907885,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "labelled-last-good (older than current; never substitutes for the current outcome)",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:28:38.136Z",
+            "lcpMs": 806.1992246735565,
+            "cls": 0.01701977914097344,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:28:38.136Z",
+            "lcpMs": 806.1992246735565,
+            "cls": 0.01701977914097344,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:28:23.591Z",
+            "lcpMs": 3034.6988884780626,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:28:23.591Z",
+            "lcpMs": 3034.6988884780626,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/about/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:36:13.903Z",
+            "lcpMs": 6737,
+            "cls": 0.003849820506085281,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:36:13.903Z",
+            "lcpMs": 6737,
+            "cls": 0.003849820506085281,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/about/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:35:23.454Z",
+            "lcpMs": 44687.5,
+            "cls": 0.1497245455296158,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:35:23.454Z",
+            "lcpMs": 44687.5,
+            "cls": 0.1497245455296158,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-agent/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:38:07.980Z",
+            "lcpMs": 809.031781989215,
+            "cls": 0.0002099022233130158,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:38:07.980Z",
+            "lcpMs": 809.031781989215,
+            "cls": 0.0002099022233130158,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-agent/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:37:53.736Z",
+            "lcpMs": 4214.584937085871,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:37:53.736Z",
+            "lcpMs": 4214.584937085871,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 116
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-technology/",
+          "strategy": "desktop",
+          "active": false,
+          "currentOutcome": "retired",
+          "currentCertified": false,
+          "currentLabel": "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)",
+          "current": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": null,
+            "fetchTime": "2026-07-10T09:24:10.341Z",
+            "lcpMs": 786,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": "historical-retired (latest known usable sample outside the active plan)",
+            "fetchTime": "2026-07-10T09:24:10.341Z",
+            "lcpMs": 786,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGoodLabel": "historical-retired (latest known usable sample outside the active plan)",
+          "sampleCount": 3
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-technology/",
+          "strategy": "mobile",
+          "active": false,
+          "currentOutcome": "retired",
+          "currentCertified": false,
+          "currentLabel": "historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)",
+          "current": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": null,
+            "fetchTime": "2026-07-10T09:23:31.553Z",
+            "lcpMs": 3357,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGood": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "slotStatus": "measured",
+            "finalStatus": "partial",
+            "label": "historical-retired (latest known usable sample outside the active plan)",
+            "fetchTime": "2026-07-10T09:23:31.553Z",
+            "lcpMs": 3357,
+            "cls": 0,
+            "clsPrecision": "unknown-rounded",
+            "metaDescriptionScore": null
+          },
+          "lastGoodLabel": "historical-retired (latest known usable sample outside the active plan)",
+          "sampleCount": 3
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:38:59.903Z",
+            "lcpMs": 1087.043572697265,
+            "cls": 0.0002099022233130158,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:38:59.903Z",
+            "lcpMs": 1087.043572697265,
+            "cls": 0.0002099022233130158,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:38:45.826Z",
+            "lcpMs": 927.0084326830738,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:38:45.826Z",
+            "lcpMs": 927.0084326830738,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "strategy": "desktop",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:44:06.249Z",
+            "lcpMs": 2361,
+            "cls": 0.004652292483280643,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:44:06.249Z",
+            "lcpMs": 2361,
+            "cls": 0.004652292483280643,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "strategy": "mobile",
+          "active": true,
+          "currentOutcome": "success",
+          "currentCertified": true,
+          "currentLabel": null,
+          "current": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": null,
+            "fetchTime": "2026-10-31T11:43:37.830Z",
+            "lcpMs": 13801.066914013225,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGood": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "slotStatus": "measured",
+            "finalStatus": "success",
+            "label": "current",
+            "fetchTime": "2026-10-31T11:43:37.830Z",
+            "lcpMs": 13801.066914013225,
+            "cls": 0,
+            "clsPrecision": "raw",
+            "metaDescriptionScore": 1
+          },
+          "lastGoodLabel": "current",
+          "sampleCount": 119
+        }
+      ],
+      "comparisons": [
+        {
+          "url": "https://cubxxw.com/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/about/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-29.json",
+            "observedAt": "2026-10-29T08:50:32.158Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/about/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-10-29.json",
+            "observedAt": "2026-10-29T08:50:32.158Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-07-08.json",
+            "observedAt": "2026-07-08T08:25:33.161Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "label": null
+          },
+          "fromStatus": "partial",
+          "toStatus": "partial"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-07-09.json",
+            "observedAt": "2026-07-09T09:32:12.450Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "label": null
+          },
+          "fromStatus": "partial",
+          "toStatus": "partial"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-07-09.json",
+            "observedAt": "2026-07-09T09:32:12.450Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "label": null
+          },
+          "fromStatus": "partial",
+          "toStatus": "partial"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-07-09.json",
+            "observedAt": "2026-07-09T09:32:12.450Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "label": null
+          },
+          "fromStatus": "partial",
+          "toStatus": "partial"
+        },
+        {
+          "url": "https://cubxxw.com/archives/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/archives/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/engineering/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/engineering/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/growth/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/growth/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/projects/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-29.json",
+            "observedAt": "2026-10-29T08:50:32.158Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/projects/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-10-14.json",
+            "observedAt": "2026-10-14T11:01:41.465Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-26.json",
+            "observedAt": "2026-10-26T12:08:15.947Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/about/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-29.json",
+            "observedAt": "2026-10-29T08:50:32.158Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/about/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-28.json",
+            "observedAt": "2026-10-28T12:10:04.837Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-agent/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-agent/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-technology/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-07-09.json",
+            "observedAt": "2026-07-09T09:32:12.450Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "label": null
+          },
+          "fromStatus": "partial",
+          "toStatus": "partial"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-technology/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": false,
+          "historical": true,
+          "from": {
+            "file": "psi-2026-07-09.json",
+            "observedAt": "2026-07-09T09:32:12.450Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-07-10.json",
+            "observedAt": "2026-07-10T09:28:27.610Z",
+            "label": null
+          },
+          "fromStatus": "partial",
+          "toStatus": "partial"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "strategy": "desktop",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "strategy": "mobile",
+          "compared": false,
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld",
+          "precisionLimited": false,
+          "deltas": null,
+          "missingMetrics": [],
+          "current": true,
+          "historical": false,
+          "from": {
+            "file": "psi-2026-10-30.json",
+            "observedAt": "2026-10-30T12:11:55.636Z",
+            "label": null
+          },
+          "to": {
+            "file": "psi-2026-10-31.json",
+            "observedAt": "2026-10-31T11:44:17.733Z",
+            "label": null
+          },
+          "fromStatus": "success",
+          "toStatus": "success"
+        }
+      ],
+      "missingSet": [
+        {
+          "url": "https://cubxxw.com/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/about/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/about/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/archives/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/archives/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/engineering/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/engineering/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/growth/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/growth/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/projects/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/projects/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/about/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/about/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-agent/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-agent/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-technology/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/ai-technology/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "strategy": "desktop",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        },
+        {
+          "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+          "strategy": "mobile",
+          "reason": "incomplete measurement provenance (version/settings/timestamp unknown); compatibility unprovable, comparison withheld"
+        }
+      ],
+      "note": "no sample-mix means: comparisons are pairwise per URL×strategy with compatible tool version and emulation/throttling settings; a labelled last-good sample never substitutes for the current outcome; historical-only comparisons are labelled non-actionable"
+    },
+    "crux": {
+      "freshness": {
+        "status": "unknown",
+        "fresh": false,
+        "reasons": [
+          "crux-no-sample: https://cubxxw.com\u0000DESKTOP is a successful query with no field sample (unknown field data, never zero and never fresh field metrics)",
+          "crux-no-sample: https://cubxxw.com\u0000PHONE is a successful query with no field sample (unknown field data, never zero and never fresh field metrics)"
+        ],
+        "thresholds": {
+          "maxCollectionEndLagDays": 14
+        },
+        "latestCollectionDate": null,
+        "byGroup": {
+          "https://cubxxw.com\u0000DESKTOP": {
+            "origin": "https://cubxxw.com",
+            "formFactor": "DESKTOP",
+            "status": "no-sample",
+            "certified": true,
+            "latestPeriodEnd": null,
+            "reasons": [
+              "crux-no-sample: https://cubxxw.com\u0000DESKTOP is a successful query with no field sample (unknown field data, never zero and never fresh field metrics)"
+            ]
+          },
+          "https://cubxxw.com\u0000PHONE": {
+            "origin": "https://cubxxw.com",
+            "formFactor": "PHONE",
+            "status": "no-sample",
+            "certified": true,
+            "latestPeriodEnd": null,
+            "reasons": [
+              "crux-no-sample: https://cubxxw.com\u0000PHONE is a successful query with no field sample (unknown field data, never zero and never fresh field metrics)"
+            ]
+          }
+        }
+      },
+      "scope": {
+        "basis": "CrUX History real-user field data per origin×form factor",
+        "origins": [
+          "https://cubxxw.com"
+        ]
+      },
+      "groups": [
+        {
+          "origin": "https://cubxxw.com",
+          "originProven": true,
+          "formFactor": "DESKTOP",
+          "currentOutcome": "no-sample",
+          "status": "no-sample",
+          "key": null,
+          "latestPeriod": null,
+          "overlappingWindows": null,
+          "latestPeriodStatus": null,
+          "sampledPeriods": null,
+          "lastGood": {
+            "observedAt": "2026-10-31T11:44:18.403Z",
+            "label": "current",
+            "status": "no-sample",
+            "latestPeriod": null
+          },
+          "sampleCount": 118
+        },
+        {
+          "origin": "https://cubxxw.com",
+          "originProven": true,
+          "formFactor": "PHONE",
+          "currentOutcome": "no-sample",
+          "status": "no-sample",
+          "key": null,
+          "latestPeriod": null,
+          "overlappingWindows": null,
+          "latestPeriodStatus": null,
+          "sampledPeriods": null,
+          "lastGood": {
+            "observedAt": "2026-10-31T11:44:18.403Z",
+            "label": "current",
+            "status": "no-sample",
+            "latestPeriod": null
+          },
+          "sampleCount": 118
+        }
+      ],
+      "originsCompatible": true,
+      "originConflict": null,
+      "cadenceNote": "CrUX History releases rolling 28-day windows weekly; the newest window end may trail the as-of date by at most 14 days (two release intervals). The 28-day window length is never a freshness allowance and rolling windows are never summed into disjoint traffic totals.",
+      "note": "notEligible is a successful query with no field sample (unknown, never zero); no-sample is a distinct collection status, not failure and not fresh field metrics"
+    }
+  },
+  "gscWindows": {
+    "current": {
+      "start": "2026-10-01",
+      "end": "2026-10-28",
+      "metrics": {
+        "clicks": 136,
+        "impressions": 37587,
+        "ctr": 0.003618272274988693,
+        "position": 8.88770053475936
+      },
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-10-01",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04",
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08",
+          "2026-10-09",
+          "2026-10-10",
+          "2026-10-11",
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21",
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-24",
+          "2026-10-25",
+          "2026-10-26",
+          "2026-10-27",
+          "2026-10-28"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "coverageText": "28/28 天计入（完整）"
+    },
+    "previous": {
+      "start": "2026-09-03",
+      "end": "2026-09-30",
+      "metrics": {
+        "clicks": 138,
+        "impressions": 67578,
+        "ctr": 0.0020420847021219925,
+        "position": 9.732990026339934
+      },
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-09-03",
+          "2026-09-04",
+          "2026-09-05",
+          "2026-09-06",
+          "2026-09-07",
+          "2026-09-08",
+          "2026-09-09",
+          "2026-09-10",
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-13",
+          "2026-09-14",
+          "2026-09-15",
+          "2026-09-16",
+          "2026-09-17",
+          "2026-09-18",
+          "2026-09-19",
+          "2026-09-20",
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24",
+          "2026-09-25",
+          "2026-09-26",
+          "2026-09-27",
+          "2026-09-28",
+          "2026-09-29",
+          "2026-09-30"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "coverageText": "28/28 天计入（完整）"
+    }
+  },
+  "trend": {
+    "status": "comparable",
+    "reason": null,
+    "basis": "A's gsc-report/1 non-overlapping current/prior windows over returned page-dimension rows (not property chart totals)",
+    "windows": {
+      "previous": {
+        "start": "2026-09-03",
+        "end": "2026-09-30",
+        "days": 28
+      },
+      "current": {
+        "start": "2026-10-01",
+        "end": "2026-10-28",
+        "days": 28
+      }
+    },
+    "note": "windows are non-overlapping; overlapping snapshots are never called a trend"
+  },
+  "queryEvidence": {
+    "status": "not-requested",
+    "groups": null,
+    "basis": "query rows are opt-in (--include-query-rows); the default report contains no raw query strings"
+  },
+  "observations": [
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/about/",
+      "strategy": "desktop",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 6806,
+        "cls": 0.03333333333333333,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:33:30.443Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/ai-agent/",
+      "strategy": "desktop",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 834.7526238875431,
+        "cls": 0.10515826371378267,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:37:09.974Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 8077,
+        "cls": 0.006847631555905787,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:41:41.529Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/zh/",
+      "strategy": "mobile",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 3034.6988884780626,
+        "cls": 0,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:28:23.591Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/zh/about/",
+      "strategy": "desktop",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 6737,
+        "cls": 0.003849820506085281,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:36:13.903Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 44687.5,
+        "cls": 0.1497245455296158,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:35:23.454Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/zh/ai-agent/",
+      "strategy": "mobile",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 4214.584937085871,
+        "cls": 0,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:37:53.736Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "metric-over-target",
+      "actionable": false,
+      "targetUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "strategy": "mobile",
+      "evidence": {
+        "source": "psi-lab",
+        "lcpMs": 13801.066914013225,
+        "cls": 0,
+        "labTargets": {
+          "lcpMs": 2500,
+          "cls": 0.1
+        },
+        "measurementDate": "2026-10-31T11:43:37.830Z"
+      },
+      "note": "laboratory metric over the agreed lab target (LCP ≤ 2.5s, CLS ≤ 0.1); residual bottleneck is reported, single samples are never conclusions"
+    },
+    {
+      "kind": "low-ctr-signal",
+      "actionable": false,
+      "targetUrl": null,
+      "evidence": {
+        "source": "gsc-page-rows",
+        "ctr": 0.003618272274988693,
+        "clicks": 136,
+        "impressions": 37587,
+        "window": {
+          "start": "2026-10-01",
+          "end": "2026-10-28",
+          "days": 28
+        }
+      },
+      "note": "low CTR alone NEVER authorizes a copy change; it is an investigation signal requiring real query×page evidence per page"
+    }
+  ],
+  "notes": [
+    "data dates (GSC calendar / PSI measurement dates / CrUX collection periods) are separate from the UTC run date",
+    "low CTR alone never authorizes a copy change",
+    "CrUX History releases rolling 28-day windows weekly; the newest window end may trail the as-of date by at most 14 days (two release intervals). The 28-day window length is never a freshness allowance and rolling windows are never summed into disjoint traffic totals.",
+    "optional model interpretation is a separate untrusted input, never a source of numeric truth"
+  ],
+  "pending": [
+    "GSC UI verification on the same filter/date basis is pending (parent-owned live gate)",
+    "live Analyze read-back and three scheduled runs are parent-owned live gates (not claimed here)"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T05:26:05.250076+00:00",
+  "nativeAttempts": [
+    {
+      "operation": "list_issues",
+      "isError": true,
+      "message": "MCP tool `codex_apps/linear.list_issues` is not available to the model"
+    },
+    {
+      "operation": "search",
+      "isError": true,
+      "message": "MCP tool `codex_apps/linear.search` is not available to the model"
+    },
+    {
+      "operation": "get_workspace",
+      "isError": true,
+      "message": "MCP tool `codex_apps/linear.get_workspace` is not available to the model"
+    }
+  ],
+  "issueCreated": false,
+  "existingIssueChanged": false,
+  "labelsWritten": false,
+  "credentialAccessed": false,
+  "fallbackProviderUsed": false,
+  "actionRequired": "Restore the existing Linear connector; then deduplicate/create issue and link the PR before delivery."
+}

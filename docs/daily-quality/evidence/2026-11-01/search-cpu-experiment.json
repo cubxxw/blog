@@ -1,0 +1,390 @@
+{
+  "vendor": "7.0.0",
+  "node": "v22.23.2",
+  "options": {
+    "keys": [
+      {
+        "name": "title",
+        "weight": 0.5
+      },
+      {
+        "name": "content",
+        "weight": 0.3
+      },
+      {
+        "name": "summary",
+        "weight": 0.15
+      },
+      {
+        "name": "tags",
+        "weight": 0.03
+      },
+      {
+        "name": "section",
+        "weight": 0.02
+      }
+    ],
+    "threshold": 0.3,
+    "includeMatches": true,
+    "minMatchCharLength": 1,
+    "ignoreLocation": true,
+    "findAllMatches": true,
+    "tokenize": true,
+    "matchAllTokens": false
+  },
+  "rows": [
+    {
+      "lang": "en",
+      "query": "AI",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        155.09837499999998,
+        165.207042,
+        163.27687500000013,
+        154.02029199999993,
+        144.07895800000006
+      ],
+      "leanMs": [
+        109.05795799999999,
+        108.29008399999998,
+        107.17608399999995,
+        109.23266600000011,
+        104.05391699999996
+      ],
+      "legacyMatchRanges": 23030,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "en",
+      "query": "Kubernetes",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        453.13362499999994,
+        466.38512500000024,
+        453.40650000000005,
+        441.96829100000014,
+        448.9141669999999
+      ],
+      "leanMs": [
+        356.633875,
+        362.1348750000002,
+        357.65370900000016,
+        375.79775000000063,
+        359.06333300000006
+      ],
+      "legacyMatchRanges": 76127,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "en",
+      "query": "OpenClaw",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        368.4559590000008,
+        357.5836249999993,
+        358.5373749999999,
+        363.2953749999997,
+        366.87425000000076
+      ],
+      "leanMs": [
+        274.42804199999955,
+        283.080833,
+        281.214750000001,
+        279.51358400000026,
+        278.8473329999997
+      ],
+      "legacyMatchRanges": 264647,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "en",
+      "query": "identity",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        248.2646249999998,
+        232.09083400000054,
+        241.37104200000067,
+        276.37104200000067,
+        301.98883300000125
+      ],
+      "leanMs": [
+        171.30416700000023,
+        167.25445899999977,
+        158.9731670000001,
+        165.48325000000114,
+        170.2504170000011
+      ],
+      "legacyMatchRanges": 36576,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "en",
+      "query": "memory",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        197.06545799999913,
+        205.4652500000011,
+        197.4650840000013,
+        184.83004099999926,
+        209.1578750000008
+      ],
+      "leanMs": [
+        131.19054099999994,
+        138.3607919999995,
+        133.65649999999914,
+        128.4496249999993,
+        129.45787500000006
+      ],
+      "legacyMatchRanges": 30816,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "en",
+      "query": "deployment",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        333.9050420000003,
+        350.6994169999998,
+        346.9178329999995,
+        399.0285409999997,
+        428.3109999999979
+      ],
+      "leanMs": [
+        248.46829199999956,
+        263.0985830000009,
+        251.98345900000277,
+        265.2477910000016,
+        254.29562500000247
+      ],
+      "legacyMatchRanges": 69713,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "en",
+      "query": "reading",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        270.95445800000016,
+        214.19662499999686,
+        266.560042000001,
+        209.93195800000103,
+        218.22058299999844
+      ],
+      "leanMs": [
+        147.23633300000074,
+        143.39950000000317,
+        140.3015000000014,
+        146.30912499999977,
+        144.22470800000156
+      ],
+      "legacyMatchRanges": 56338,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "en",
+      "query": "notfoundzqxv",
+      "rankedResultsUnchanged": true,
+      "count": 0,
+      "legacyMs": [
+        516.338917000001,
+        539.9161249999997,
+        518.4214170000014,
+        523.3061660000021,
+        514.669208000003
+      ],
+      "leanMs": [
+        429.895958000001,
+        456.7237920000007,
+        429.72370800000135,
+        429.8715420000008,
+        442.64470900000015
+      ],
+      "legacyMatchRanges": 0,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "AI",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        102.09324999999808,
+        106.88120900000285,
+        113.61541699999725,
+        101.82562500000131,
+        107.63016599999901
+      ],
+      "leanMs": [
+        88.80425000000105,
+        87.12762500000099,
+        93.60904200000004,
+        88.9911659999998,
+        88.7722909999975
+      ],
+      "legacyMatchRanges": 880,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "Kubernetes",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        360.0719169999975,
+        380.22691699999996,
+        388.84258299999783,
+        347.4701660000028,
+        463.08950000000186
+      ],
+      "leanMs": [
+        413.77691699999923,
+        344.71383400000195,
+        320.56704199999876,
+        336.91729199999827,
+        315.8891250000015
+      ],
+      "legacyMatchRanges": 16425,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "OpenClaw",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        265.3330419999984,
+        260.5935830000017,
+        279.24158299999544,
+        254.74824999999691,
+        253.890790999998
+      ],
+      "leanMs": [
+        236.9835000000021,
+        241.27279199999612,
+        248.81779200000165,
+        230.6218749999971,
+        233.0329999999958
+      ],
+      "legacyMatchRanges": 11133,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "身份",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        100.90374999999767,
+        100.89045800000167,
+        98.359292000001,
+        213.37712499999907,
+        218.75300000000425
+      ],
+      "leanMs": [
+        92.72600000000239,
+        87.56945799999812,
+        92.62183299999742,
+        176.14841600000364,
+        93.66791699999885
+      ],
+      "legacyMatchRanges": 120,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "记忆",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        108.1137910000034,
+        107.34445799999958,
+        129.38520900000003,
+        222.3597910000026,
+        108.63029199999437
+      ],
+      "leanMs": [
+        94.65358299999934,
+        91.72200000000157,
+        99.42754199999763,
+        94.16258299999754,
+        90.57279199999903
+      ],
+      "legacyMatchRanges": 265,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "部署",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        102.28620899999805,
+        103.87350000000151,
+        100.9785419999971,
+        101.49137499999779,
+        99.08741700000246
+      ],
+      "leanMs": [
+        93.92674999999872,
+        90.67466699999932,
+        89.95887499999662,
+        89.86325000000215,
+        90.08541700000205
+      ],
+      "legacyMatchRanges": 339,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "阅读",
+      "rankedResultsUnchanged": true,
+      "count": 10,
+      "legacyMs": [
+        102.10741699999926,
+        102.27304100000038,
+        101.92012500000419,
+        98.42758300000423,
+        99.53024999999616
+      ],
+      "leanMs": [
+        88.66891600000235,
+        90.47604199999478,
+        88.5,
+        89.92445800000132,
+        111.00704199999745
+      ],
+      "legacyMatchRanges": 121,
+      "leanMatchesPresent": false
+    },
+    {
+      "lang": "zh",
+      "query": "不存在zqxv",
+      "rankedResultsUnchanged": true,
+      "count": 0,
+      "legacyMs": [
+        303.11158299999806,
+        454.49366700000246,
+        449.90174999999726,
+        379.700582999998,
+        392.23712499999965
+      ],
+      "leanMs": [
+        269.6885409999959,
+        266.869958999996,
+        275.08908299999894,
+        306.9912500000064,
+        299.03091599999607
+      ],
+      "legacyMatchRanges": 0,
+      "leanMatchesPresent": false
+    }
+  ],
+  "limits": "same decoded full corpus, Node host CPU only; interleaved; excludes network/JSON/index build/DOM and field INP"
+}

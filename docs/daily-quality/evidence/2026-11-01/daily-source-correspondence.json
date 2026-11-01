@@ -1,0 +1,23 @@
+[
+  {
+    "path": "playwright.daily.config.ts",
+    "sourceSHA": "6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+    "remoteHash": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+    "localHash": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+    "equal": true
+  },
+  {
+    "path": "tests/daily/live-quality.spec.ts",
+    "sourceSHA": "6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+    "remoteHash": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+    "localHash": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+    "equal": true
+  },
+  {
+    "path": "tests/daily/reader-navigation.spec.ts",
+    "sourceSHA": "6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+    "remoteHash": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358",
+    "localHash": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358",
+    "equal": true
+  }
+]

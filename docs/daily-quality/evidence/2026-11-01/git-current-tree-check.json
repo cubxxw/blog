@@ -1,0 +1,13 @@
+{
+  "head": "6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+  "lsTreeExit": 0,
+  "objectCount": 5068,
+  "batchExit": 0,
+  "missing": [],
+  "stderr": "",
+  "previousPerObjectProbe": {
+    "pid": 45005,
+    "completedBeforeTerminationAttempt": true,
+    "terminated": false
+  }
+}

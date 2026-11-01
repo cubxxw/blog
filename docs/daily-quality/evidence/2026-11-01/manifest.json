@@ -1,0 +1,45 @@
+{
+  "formalRoot": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-11-01",
+  "files": {
+    "git-history-final-check.json": {
+      "sha256": "b13114c5354bd246489814923f1302da37f225079bc1708a07174ef2b5496c86",
+      "bytes": 304
+    },
+    "linear-unavailable.json": {
+      "sha256": "7a736e7df63734bdfebae7d1723052708610e27f3587f31ce21842b044131775",
+      "bytes": 819
+    },
+    "search-cpu-experiment.json": {
+      "sha256": "520e2b870760817d43fedddd262bc0be2e31b6df8f3014549aa3556ccba7af0d",
+      "bytes": 8892
+    },
+    "independent-review.json": {
+      "sha256": "cab9f0b863868646628ab8cba08d359275869a0226618f55c168dc752a87c665",
+      "bytes": 1314
+    },
+    "seo-window-summary.json": {
+      "sha256": "40d4d5c99857579c5f445f95355466d2b6542424bb6f98cf92eea193f9fce85c",
+      "bytes": 128875
+    },
+    "quality-summary.json": {
+      "sha256": "b3886d8e8c06b8ccf8138e481e5e0c1e4cb708678e533c6de4bc86e8e52df65f",
+      "bytes": 43711
+    },
+    "seo-live.json": {
+      "sha256": "ac2367470171f320f412bf8a68884ead5848ee2bd12cef917240bef0ff1fc00c",
+      "bytes": 11702
+    },
+    "git-current-tree-check.json": {
+      "sha256": "d09dda953ec9d578caf247a4d77a216c025591cd02908097bcfb2418b7cacac2",
+      "bytes": 273
+    },
+    "daily-source-correspondence.json": {
+      "sha256": "dcad5b7e693598b2be41cdde093cf4bac7635b1921fe8cbd48af218f76624694",
+      "bytes": 922
+    },
+    "search-browser-corpus-receipt.json": {
+      "sha256": "2566e558b5240da25f76dc9d1e28de1799c55124aa7e02a8d1be9928316c815c",
+      "bytes": 567
+    }
+  }
+}
