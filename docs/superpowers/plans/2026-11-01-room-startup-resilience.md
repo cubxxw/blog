@@ -1,6 +1,6 @@
 # Room startup resilience Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Remove network-image startup traps, offer immediate workspace recovery, preserve the current room and publish the verified repair.
 
@@ -31,9 +31,9 @@
 
 **Interfaces:** Catalog `night.vistaPreview` is a data image derived from the unchanged original. Exterior reports `image-preview` until full texture succeeds. World errors carry a closed `code`; cancellation is separate from failure. Pending renderer imports must observe disposal before constructing a world.
 
-- [ ] Write and run failing tests: held primary retains photographic preview, eventual upgrade, failed image, exact disposal; visible enabled workspace action during loading; cancellation of a held import; classified diagnostics and privacy limits.
-- [ ] Implement preview ownership with an 8-second primary-image diagnostic deadline, immediate usable workspace handoff, guarded restart and automatic fatal fallback.
-- [ ] Run targeted Node tests and browser fault injection, including held primary/materials/module and late completion. Preserve content node identity and focus. Commit the verified functional repair.
+- [x] Write and run failing tests: held primary retains photographic preview, eventual upgrade, failed image, exact disposal; visible enabled workspace action during loading; cancellation of a held import; classified diagnostics and privacy limits.
+- [x] Implement preview ownership with an 8-second primary-image diagnostic deadline, immediate usable workspace handoff, guarded restart and automatic fatal fallback.
+- [x] Run targeted Node tests and browser fault injection, including held primary/materials/module and late completion. Preserve content node identity and focus. Commit the verified functional repair.
 
 ### Task 2: Prioritize images and validate release
 
@@ -41,7 +41,7 @@
 
 **Interfaces:** First real frame activates optional image requests once. The parser-time preload selects only the active renderer's primary vista; embedded pages create no extra GPU/image workload.
 
-- [ ] Write and run failing tests proving optional images are not requested before a real first frame and selected-vista preload behavior.
-- [ ] Prioritize the unchanged primary vista; defer optional images without changing final shaders/assets. Re-run affected lifecycle/room tests, typecheck, production build and desktop/mobile fault and visual checks.
-- [ ] Obtain independent review, address material findings with regression tests, commit and pass current required source checks.
-- [ ] Publish through existing Netlify Git builds; verify exact production commit/state and read back bilingual room/workspace paths. Record actual results and limitations without promising zero errors across untested devices.
+- [x] Write and run failing tests proving optional images are not requested before a real first frame and selected-vista preload behavior.
+- [x] Prioritize the unchanged primary vista; defer optional images without changing final shaders/assets. Re-run affected lifecycle/room tests, typecheck, production build and desktop/mobile fault and visual checks.
+- [x] Obtain independent review, address material findings with regression tests, commit and pass current required source checks.
+- [x] Publish through existing Netlify Git builds; verify exact production commit/state and read back bilingual room/workspace paths. Record actual results and limitations without promising zero errors across untested devices.
