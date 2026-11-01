@@ -1,137 +1,188 @@
 #!/usr/bin/env node
 /**
  * 把脱敏清单应用到「已经发布的」月度笔记上。
+ * 优先用 memo key 定位；旧稿无来源标记时才用时间戳或正文指纹。
+ * languages 省略时兼容原有双语规则；显式语言范围只应用于对应文章。
  *
- * 为什么需要它：`build-notes.mjs` 只管新生成的正文。上一批手工整理进
- * content/ 的文章不在它的管辖范围里，但那些文章同样可能带着
- * 不该公开的内容（例如按 memo key 判定的 drop 条目、第三方手机号）。
- * 这里按「时间戳」定位条目，所以中英文都能命中同一处。
- *
- * 用法：
  *   node scripts/flomo/scrub.mjs           # 只报告
- *   node scripts/flomo/scrub.mjs --write   # 落盘
+ *   node scripts/flomo/scrub.mjs --write   # 落盘（不修改私有导出）
  */
-import { readFileSync, writeFileSync, globSync } from 'node:fs';
+import { readFileSync, writeFileSync, globSync, realpathSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '../..');
-const WRITE = process.argv.includes('--write');
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
+const MARKER = /^\s*<!--\s*memo:([\w-]+)\s*-->\s*$/;
+const TOPICS = new Set([
+  'AI 与 Agent 系统', 'AI and Agent Systems',
+  '产品、工程与开源', 'Product, Engineering and Open Source',
+  '商业、投资与职业', 'Business, Investing and Career',
+  '自我认知与心理', 'Self-Knowledge and Psychology',
+  '阅读、思想与历史', 'Reading, Ideas and History',
+  '旅行、地理与城市', 'Travel, Places and Cities',
+  '身体、健康与日常', 'Body, Health and Daily Life',
+  '内容、创作与记录', 'Content, Craft and Recording',
+  '日常与其他', 'Daily Notes and Everything Else',
+]);
 
-const { memos } = JSON.parse(readFileSync(join(ROOT, '.flomo/memos.json'), 'utf8'));
-const redactions = JSON.parse(readFileSync(join(ROOT, 'scripts/flomo/redactions.json'), 'utf8'));
-const byKey = new Map(memos.map((m) => [m.key, m]));
-
-// flomo 站内私有链接对外没有意义，顺手一起清掉
-const LINK_RULES = [[/https?:\/\/v\.flomoapp\.com\/\S+/g, '']];
-
-/**
- * 找到某条 memo 在文章里的行区间 [start, end)。
- * 起点是它自己的 `### 标题`，终点是下一个条目或下一个「真正的章节标题」——
- * memo 正文里可能自带 `## 小节`（比如个人档案、报告），不能把它当边界。
- */
-const SECTION_HEADING = (lines, i) => {
+// H2 也可能是 memo 内部小节。只把明确的文章章节当边界。
+function sectionHeading(lines, i) {
   if (!/^##\s/.test(lines[i])) return false;
+  const title = lines[i].replace(/^##\s+/, '').replace(/\s+#+\s*$/, '').trim()
+    .replace(/^(?:[一二三四五六七八九十]+[、.]|\d+[.)])\s*/, '');
+  if (/^(?:References|参考资料)$/i.test(title) || TOPICS.has(title)) return true;
   for (let j = i + 1; j < Math.min(i + 4, lines.length); j += 1) {
-    const l = lines[j].trim();
-    if (!l) continue;
-    return /^(\*\d+ (entries|条记录)\*|\d{4}-\d{2}-\d{2}|[一二三四五六七八九十]+、|\d+\.\s)/.test(l);
+    const line = lines[j].trim();
+    if (!line) continue;
+    return /^\*\d+ (?:entries|条记录)\*$/.test(line);
   }
   return false;
-};
-
-const fingerprintOf = (memo) =>
-  (memo.text.split('\n').map((l) => l.trim()).find((l) => l.length >= 12) ?? '')
-    .replace(/[`*>#\s]+/g, ' ')
-    .trim()
-    .slice(0, 24);
-
-function findBlock(lines, stamp, fingerprint) {
-  let at = lines.findIndex((l) => l.includes(stamp));
-  // 时间戳对不上（旧导出里同一条 memo 的时间被改过）时，用正文首句兜底定位
-  if (at < 0 && fingerprint) at = lines.findIndex((l) => l.includes(fingerprint));
-  if (at < 0) return null;
-  let start = at;
-  while (start > 0 && !/^###\s/.test(lines[start])) start -= 1;
-  if (!/^###\s/.test(lines[start])) return null;
-  let end = at + 1;
-  while (end < lines.length && !/^###\s/.test(lines[end]) && !SECTION_HEADING(lines, end)) end += 1;
-  return { start, end };
 }
 
+const fingerprintOf = (memo) =>
+  ((memo.text ?? '').split('\n').map((line) => line.trim()).find((line) => line.length >= 12) ?? '')
+    .replace(/[`*>#\s]+/g, ' ').trim().slice(0, 24);
 const stampOf = (memo) => `> ${memo.date} ${memo.time}`;
+const appliesTo = (entry, language) => entry.languages === undefined || entry.languages.includes(language);
 
-const report = { dropped: 0, redacted: 0, links: 0, files: new Set() };
+function legacyEntryHeading(lines, i) {
+  if (!/^###\s/.test(lines[i])) return false;
+  let next = i + 1;
+  while (next < lines.length && !lines[next].trim()) next += 1;
+  return /^>\s*\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}/.test(lines[next] ?? '');
+}
 
-for (const file of globSync('content/{zh,en}/growth/posts/*-thought-notes.md', { cwd: ROOT }).sort()) {
-  const path = join(ROOT, file);
-  const original = readFileSync(path, 'utf8');
-  let work = original;
+function blockFromHeading(lines, heading, marker = -1) {
+  let end = heading + 1;
+  let ambiguous = false;
+  while (end < lines.length) {
+    if (MARKER.test(lines[end]) || sectionHeading(lines, end) || /^#\s/.test(lines[end])) break;
+    if (legacyEntryHeading(lines, end)) break;
+    if (marker < 0 && /^#{2,3}\s/.test(lines[end])) ambiguous = true;
+    end += 1;
+  }
+  if (ambiguous) return { uncertain: 'legacy heading cannot be distinguished from an article section or entry' };
+  return { start: marker >= 0 ? marker : heading, heading, end };
+}
 
-  // 1) 整条删除（按时间戳定位，中英文章共用同一入口）
-  for (const drop of redactions.drops) {
-    const memo = byKey.get(drop.key);
-    if (!memo) continue;
-    const lines = work.split('\n');
-    const block = findBlock(lines, stampOf(memo), fingerprintOf(memo));
-    if (!block) continue;
-    const removed = lines.slice(block.start, block.end).join('\n');
-    if (!removed.includes('memo:') && removed.length < 40) continue;
-    work = [...lines.slice(0, block.start), ...lines.slice(block.end)].join('\n');
-    report.dropped += 1;
-    report.files.add(file);
-    console.log(`drop   ${file}: ${memo.date} ${memo.time} (${drop.reason.slice(0, 40)}…)`);
+function findBlock(lines, memo) {
+  const markers = lines.flatMap((line, index) => MARKER.exec(line)?.[1] === memo.key ? [index] : []);
+  if (markers.length > 1) return { uncertain: 'duplicate memo key markers' };
+  if (markers.length === 1) {
+    const marker = markers[0];
+    let heading = marker + 1;
+    while (heading < lines.length && !lines[heading].trim()) heading += 1;
+    if (!/^###\s/.test(lines[heading] ?? '')) return { uncertain: 'memo marker has no adjacent entry heading' };
+    return blockFromHeading(lines, heading, marker);
   }
 
-  // 2) 局部替换（只在该条 memo 自己的段落里动手，避免误伤别的数字）
-  for (const red of redactions.redactions) {
-    const memo = byKey.get(red.key);
-    if (!memo) continue;
-    const lines = work.split('\n');
-    const block = findBlock(lines, stampOf(memo), fingerprintOf(memo));
-    // 只在「能定位到那一条」时动手。定位不到就不改：对整篇套用手机号之类的
-    // 宽松正则，会把不相干的年份、数量也一起吃掉。
-    if (!block) continue;
-    let changed = false;
-    // 跳过 `> 时间戳` 那一行：宽正则不该有机会改到它
-    const stampLine = lines.findIndex((l, i) => i >= block.start && i < block.end && /^>\s*\d{4}-/.test(l));
-    const bodyStart = stampLine >= 0 ? stampLine + 1 : block.start;
-    for (const [start, end] of [[bodyStart, block.end]]) {
+  // 旧无标记稿才允许回退，绝不借相同时间戳删掉另一个 key。
+  function legacyCandidates(matches) {
+    const candidates = new Map();
+    for (let at = 0; at < lines.length; at += 1) {
+      if (!matches(lines[at])) continue;
+      let heading = at;
+      while (heading >= 0 && !/^###\s/.test(lines[heading])) {
+        if (MARKER.test(lines[heading]) || sectionHeading(lines, heading) || /^#\s/.test(lines[heading])) break;
+        heading -= 1;
+      }
+      if (heading < 0 || !/^###\s/.test(lines[heading])) continue;
+      if (!legacyEntryHeading(lines, heading)) continue;
+      let previous = heading - 1;
+      while (previous >= 0 && !lines[previous].trim()) previous -= 1;
+      if (MARKER.test(lines[previous] ?? '')) continue;
+      candidates.set(heading, blockFromHeading(lines, heading));
+    }
+    return [...candidates.values()];
+  }
+  let candidates = legacyCandidates((line) => line.startsWith(stampOf(memo)));
+  if (!candidates.length) {
+    const fingerprint = fingerprintOf(memo);
+    if (fingerprint) candidates = legacyCandidates((line) => line.includes(fingerprint));
+  }
+  if (candidates.length > 1) return { uncertain: 'multiple legacy entries match the same timestamp or fingerprint' };
+  return candidates[0] ?? null;
+}
+
+/** Pure article transformation; importing this module never reads the private export. */
+export function scrubArticle(original, { language, memos, policy }) {
+  const byKey = new Map(memos.map((memo) => [memo.key, memo]));
+  const report = { dropped: 0, redacted: 0, links: 0, uncertain: 0 };
+  const events = [];
+  let work = original;
+
+  for (const [kind, entries] of [['drop', policy.drops ?? []], ['redact', policy.redactions ?? []]]) {
+    for (const entry of entries) {
+      if (!appliesTo(entry, language)) continue;
+      const memo = byKey.get(entry.key);
+      if (!memo) continue;
+      const lines = work.split('\n');
+      const block = findBlock(lines, memo);
+      if (!block) continue;
+      if (block.uncertain) {
+        report.uncertain += 1;
+        events.push({ kind: 'uncertain', key: entry.key, detail: block.uncertain });
+        continue;
+      }
+      if (kind === 'drop') {
+        const removed = lines.slice(block.start, block.end).join('\n');
+        if (!removed.includes('memo:') && removed.length < 40) continue;
+        work = [...lines.slice(0, block.start), ...lines.slice(block.end)].join('\n');
+        if (block.start > 0 && block.end === lines.length) work += '\n';
+        report.dropped += 1;
+        events.push({ kind, key: entry.key, stamp: `${memo.date} ${memo.time}` });
+        continue;
+      }
+
+      // 来源标记、标题、时间戳与标签都是元数据，不参与正文正则。
+      const stampLine = lines.findIndex((line, i) => i > block.heading && i < block.end && /^>\s*\d{4}-/.test(line));
+      let start = stampLine >= 0 ? stampLine + 1 : block.heading + 1;
+      let end = block.end;
+      while (start < end && !lines[start].trim()) start += 1;
+      while (end > start && !lines[end - 1].trim()) end -= 1;
       if (start >= end) continue;
       const body = lines.slice(start, end).join('\n');
       let next = body;
-      for (const p of red.patterns) next = next.replace(new RegExp(p.find, 'gm'), p.replace);
+      for (const pattern of entry.patterns) next = next.replace(new RegExp(pattern.find, 'gm'), pattern.replace);
       if (next !== body) {
         lines.splice(start, end - start, ...next.split('\n'));
-        changed = true;
+        work = lines.join('\n');
+        report.redacted += 1;
+        events.push({ kind, key: entry.key, stamp: `${memo.date} ${memo.time}` });
       }
     }
-    if (changed) {
-      work = lines.join('\n');
-      report.redacted += 1;
-      report.files.add(file);
-      console.log(`redact ${file}: ${memo.date} ${memo.time}`);
-    }
   }
 
-  // 3) flomo 私有链接
-  const before = work;
-  for (const [re, to] of LINK_RULES) work = work.replace(re, to);
-  if (work !== before) {
+  const beforeLinks = work;
+  work = work.replace(/https?:\/\/v\.flomoapp\.com\/\S+/g, '');
+  if (work !== beforeLinks) {
     report.links += 1;
-    report.files.add(file);
-    console.log(`links  ${file}`);
+    events.push({ kind: 'links' });
   }
-  // 链接被拿掉后只剩「Linked from:」这种空壳标题，收一下
   work = work.replace(/^### Linked from:\s*$/gm, '### 一条 flomo 记录');
   work = work.replace(/^Linked from:\s*$/gm, '');
-
-  if (work !== original) {
-    work = work.replace(/\n{4,}/g, '\n\n\n');
-    if (WRITE) writeFileSync(path, work);
-  }
+  return { content: work, report, events };
 }
 
-console.log(
-  `\n${WRITE ? 'applied' : 'dry-run'}: ${report.dropped} entries dropped, ${report.redacted} entries redacted, ` +
-    `${report.links} files had private links; ${report.files.size} file(s) touched`,
-);
+export function main({ root = ROOT, write = process.argv.includes('--write'), log = console.log } = {}) {
+  const { memos } = JSON.parse(readFileSync(join(root, '.flomo/memos.json'), 'utf8'));
+  const policy = JSON.parse(readFileSync(join(root, 'scripts/flomo/redactions.json'), 'utf8'));
+  const report = { dropped: 0, redacted: 0, links: 0, uncertain: 0, files: new Set() };
+  for (const file of globSync('content/{zh,en}/growth/posts/*-thought-notes.md', { cwd: root }).sort()) {
+    const path = join(root, file);
+    const original = readFileSync(path, 'utf8');
+    const language = file.split('/')[1];
+    const result = scrubArticle(original, { language, memos, policy });
+    for (const key of ['dropped', 'redacted', 'links', 'uncertain']) report[key] += result.report[key];
+    for (const event of result.events) log(`${event.kind.padEnd(7)} ${file}${event.key ? `: ${event.key}` : ''}${event.detail ? ` (${event.detail})` : ''}`);
+    if (result.content !== original) {
+      report.files.add(file);
+      if (write) writeFileSync(path, result.content);
+    }
+  }
+  log(`\n${write ? 'applied' : 'dry-run'}: ${report.dropped} entries dropped, ${report.redacted} entries redacted, ` +
+    `${report.links} files had private links; ${report.files.size} file(s) touched; ${report.uncertain} uncertain entries skipped`);
+  return report;
+}
+
+if (process.argv[1] && fileURLToPath(import.meta.url) === realpathSync(process.argv[1])) main();
