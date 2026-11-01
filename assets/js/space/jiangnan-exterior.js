@@ -46,7 +46,7 @@ float mcLakeGlint(vec2 uv){float crest=sin(uv.y*310.-effectTime*1.12+sin(uv.x*61
 
 // The river, architecture, weather and boat all share the caller's environment
 // clock. There is no independent animation or event lifetime outside the room.
-export function buildJiangnanExterior({scene,pbr,resources,textures,software=false,vistaAsset,dayVistaAsset=null,continuationAsset=null,vistaMode='geometry',boatSeed=(Math.random()*4294967296)>>>0,wake=()=>{},isDisposed=()=>false}) {
+export function buildJiangnanExterior({scene,pbr,resources,textures,software=false,vistaAsset,vistaPreview=null,dayVistaAsset=null,continuationAsset=null,vistaMode='geometry',boatSeed=(Math.random()*4294967296)>>>0,wake=()=>{},isDisposed=()=>false,onDiagnostic=()=>{}}) {
   const group=new THREE.Group();group.name='Jiangnan river and far bank';scene.add(group);
   const photographic=Boolean(vistaAsset&&vistaMode==='image');
   let actualVista=photographic?'loading':'geometry',photographicMaterial=null;
@@ -328,10 +328,41 @@ gl_FragColor.rgb=mix(gl_FragColor.rgb,mix(vec3(.035,.055,.07),vec3(.55,.65,.67),
 }` }));
     const vista=mesh(geometry(new THREE.SphereGeometry(120,80,40)),vistaMaterial,0,1.3,0);vista.visible=false;vista.castShadow=vista.receiveShadow=false;vista.renderOrder=-10;vista.name='photographic environment study';
     photographicMaterial=vistaMaterial;
-    new THREE.TextureLoader().load(vistaAsset,texture=>{
-      if(isDisposed()){texture.dispose();return;}texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;textures.add(texture);vistaMaterial.uniforms.vista.value=texture;
-      architecture.visible=false;vista.visible=true;waterUniforms.imageBlend.value=1;actualVista='image';wake();
-    },undefined,()=>{if(!isDisposed()){buildArchitecture();actualVista='geometry-fallback';wake();}});
+    let complete=false,previewTexture=null,previewFailed=!vistaPreview;
+    const deadline=setTimeout(()=>{if(!isDisposed()&&!complete){onDiagnostic('vista-timeout');fallback();}},8000);
+    const deadlineLease={dispose(){clearTimeout(deadline);}};resources.add(deadlineLease);
+    function clearDeadline(){clearTimeout(deadline);resources.delete(deadlineLease);}
+    function showPhotograph(texture,mode){
+      texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;vistaMaterial.uniforms.vista.value=texture;
+      architecture.visible=false;vista.visible=true;waterUniforms.imageBlend.value=1;actualVista=mode;wake();
+    }
+    function fallback(){
+      if(complete||previewTexture||!previewFailed)return;
+      buildArchitecture();actualVista='geometry-fallback';wake();
+    }
+    function releaseTexture(texture){textures.delete(texture);texture.dispose();}
+    // Own pending textures as well as completed ones. Late decoder callbacks
+    // cannot add released textures back to a disposed renderer.
+    function requestPhotograph(url,loaded,failed){
+      const owner={texture:null,released:false,disposed:false};
+      const release=()=>{if(owner.texture&&!owner.released){owner.released=true;owner.texture.dispose();}};
+      const lease={dispose(){owner.disposed=true;release();}};resources.add(lease);
+      const pending=new THREE.TextureLoader().load(url,texture=>{
+        owner.texture=texture;if(isDisposed()||owner.disposed){release();return;}
+        resources.delete(lease);textures.add(texture);loaded(texture);
+      },undefined,()=>{
+        owner.disposed=true;release();resources.delete(lease);if(!isDisposed())failed();
+      });
+      owner.texture ||= pending;if(owner.disposed)release();
+    }
+    requestPhotograph(vistaAsset,texture=>{
+      complete=true;clearDeadline();showPhotograph(texture,'image');
+      if(previewTexture){releaseTexture(previewTexture);previewTexture=null;}
+    },()=>{clearDeadline();onDiagnostic('vista-load');fallback();});
+    if(vistaPreview)requestPhotograph(vistaPreview,texture=>{
+      if(complete){releaseTexture(texture);return;}
+      previewTexture=texture;showPhotograph(texture,'image-preview');
+    },()=>{previewFailed=true;onDiagnostic('preview-load');fallback();});
     if(dayVistaAsset){
       const owner={texture:null,transferred:false,released:false,disposed:false};
       const release=()=>{if(owner.texture&&!owner.released){owner.texture.dispose();owner.released=true;}};

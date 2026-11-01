@@ -26,8 +26,8 @@ export function mountOnboarding({root,enabled,onReveal}) {
       const time=line.querySelector('[data-boot-time]');
       if(time&&value==='done'&&!time.textContent)time.textContent=((performance.now()-state.startedAt)/1000).toFixed(3)+'s';
     });
-    skip.hidden=!state.failed;
-    skip.disabled=!state.failed;
+    skip.hidden=state.finished;
+    skip.disabled=state.finished;
     skip.textContent=t('打开工作区','Open workspace');
     const messages=[t('正在载入场景引擎…','Loading the scene engine…'),t('正在初始化房间与个人工作区…','Initializing the room and personal workspace…'),t('正在提交第一帧画面…','Painting the first scene frame…'),t('画面已就绪，正在进入。','First frame ready. Entering your space.')];
     const message=state.failed?t('场景暂时无法启动，可以直接打开工作区。','The room is unavailable. You can open the workspace.'):messages[state.stage];
@@ -46,8 +46,8 @@ export function mountOnboarding({root,enabled,onReveal}) {
     if(!panel.hidden)paint();
   }
   skip.addEventListener('click',()=>{
-    if(state.failed){dismiss();onReveal?.({failed:true});}
-    else event('skip');
+    if(state.finished)return;
+    dismiss();onReveal?.({workspace:true,failed:state.failed});
   },{signal:controller.signal});
   reduced.addEventListener('change',()=>{
     if(reduced.matches&&!panel.hidden){state={...state,quick:true};event('tick');}

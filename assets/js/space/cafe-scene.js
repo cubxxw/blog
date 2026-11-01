@@ -1,15 +1,17 @@
 import {createRendererController} from './rain-room-state.mjs';
+import {roomStartupError} from './room-startup.mjs';
 
 // The private night room and the six outdoor variants share one live workspace.
 export function createCafeWorld(options) {
   const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);
   const controller=createRendererController({
     load:async id=>{
-      const module=await import(id==='jiangnan'?config.jiangnan:config.spatial);
+      let module;try{module=await import(id==='jiangnan'?config.jiangnan:config.spatial);}catch(error){throw roomStartupError('module-load',error);}
       options.onBootStage?.('module');return module.createCafeWorld;
     },
     create:(factory,theme)=>{
-      const world=factory({...options,theme});options.onBootStage?.('room');return world;
+      let world;try{world=factory({...options,theme});}catch(error){throw roomStartupError('scene-build',error);}
+      options.onBootStage?.('room');return world;
     },onBusy:value=>options.onTravel?.(value)
   });
   const initial=controller.select(options.theme);
@@ -21,7 +23,7 @@ export function createCafeWorld(options) {
     inspect:call('inspect'),restoreInspection:call('restoreInspection'),interactCat:call('interactCat'),
     toggleObject:call('toggleObject'),selectRecord:call('selectRecord'),toggleMusic:call('toggleMusic'),
     wake(){controller.current?.wake();},setQuiet(value){controller.setQuiet(value);},
-    async setTheme(id){const result=await controller.select(id);if(result.status==='failed')options.onFailure?.();return result.status==='ready';},
+    async setTheme(id){const result=await controller.select(id);if(result.status==='failed')options.onFailure?.(result.error);return result.status==='ready';},
     get mode(){return controller.current?.mode||'intro';},dispose(){controller.dispose();}
   };
 }

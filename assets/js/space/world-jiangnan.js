@@ -22,7 +22,7 @@ import {createJiangnanDoorExcursion,jiangnanDoorPoses} from './jiangnan-door-sta
 import {createJiangnanDoorFade} from './jiangnan-door-fade.mjs';
 import {createPracticalLightRamp} from './jiangnan-practical-light.mjs';
 
-export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,onReturn,onNotebook,isBlocked=()=>false,materialBase,books=[]}) {
+export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCat,onFailure,onTravel,onReturn,onNotebook,onDiagnostic,isBlocked=()=>false,materialBase,books=[]}) {
   const abort=new AbortController(),resources=new Set(),textures=new Set(),anchors=[];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)'),zh=document.documentElement.lang.startsWith('zh'),t=(cn,en)=>zh?cn:en;
   let renderer,css,scene,camera,host,workspace,cssObject,pbr,room,exterior,audio,resident,objectControls,computerExpand,observer,blockedObserver,hiddenObserver,depthBlur,roomLights,stopWeather,magicClock;
@@ -473,7 +473,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     // A cubemap renders the room six more times. Never charge that work to the
     // first ready frame or terminal fade, even when textures arrive together.
     if(!reflectionDone&&reflectionReady&&!firstPending&&root.dataset.bootState==='complete')reflectRoom();
-    let info;try{screenVisibility();info=renderRoom();css.render(scene,camera);}catch(error){renderer.setRenderTarget(null);settleFirst(false);onFailure?.();return;}
+    let info;try{screenVisibility();info=renderRoom();css.render(scene,camera);}catch(error){renderer.setRenderTarget(null);onFailure?.({code:'render'});settleFirst(false);return;}
     root.dataset.worldFrames=String(++frames);root.dataset.worldTriangles=String(info.triangles);root.dataset.worldDraws=String(info.calls);root.dataset.worldRenderedMode=mode;root.dataset.worldVista=exterior.vistaMode||'geometry';
     root.dataset.roomBoatPose=JSON.stringify([+exterior.boat.position.x.toFixed(3),+exterior.boat.position.y.toFixed(3),+exterior.boat.position.z.toFixed(3)]);root.dataset.roomBoat='ready';root.dataset.worldEnvironmentTime=environmentTime.toFixed(3);
     root.dataset.roomBoatHeading=exterior.boat.rotation.y.toFixed(4);
@@ -517,7 +517,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     magicClock=mountMagicClock({root,zh,getTime:()=>roomTime.at(),onGrab:()=>{clockReturn=null;roomTime.hold();syncRoomTime();},onTravel:travelRoomTime,onCommit:()=>{roomTime.commit();syncRoomTime();},onPresent:returnPresent,onClose:restoreInspection});
     resident=createJiangnanResident({scene,wake,grounding:room.catSupport,onChange:code=>{root.dataset.catState=code;onCat?.(code);wake();}});resident.ready.then(loaded=>{if(disposed)return;publishResident();onCat?.(loaded?'ready':'unavailable');wake();});
     const nightAssets=JSON.parse(root.querySelector('[data-cafe-catalog]').textContent).night,vistaMode=new URLSearchParams(location.search).get('vista')==='geometry'?'geometry':'image';
-    exterior=buildJiangnanExterior({scene,pbr,resources,textures,software,vistaAsset:nightAssets.vista,dayVistaAsset:nightAssets.dayVista,continuationAsset:nightAssets.continuation,vistaMode,wake,isDisposed:()=>disposed});root.dataset.worldVista=exterior.vistaMode;
+    exterior=buildJiangnanExterior({scene,pbr,resources,textures,software,vistaAsset:nightAssets.vista,vistaPreview:nightAssets.vistaPreview,dayVistaAsset:nightAssets.dayVista,continuationAsset:nightAssets.continuation,vistaMode,wake,isDisposed:()=>disposed,onDiagnostic});root.dataset.worldVista=exterior.vistaMode;
     if(room.soundTarget){targets.speaker=[...room.soundTarget];root.dataset.worldTargets=JSON.stringify(targets);}
     if(software)room.group.traverse(o=>{if(o.isPointLight)o.castShadow=false;});
     workspace=document.createElement('div');workspace.className='space-spatial-screen jiangnan-workspace';workspace.setAttribute('aria-label','CUBXXW OS');
@@ -555,7 +555,7 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     listen(document,'keydown',event=>{if(!navigate()||event.metaKey||event.ctrlKey||event.altKey||event.target.closest('input,textarea,[contenteditable="true"]'))return;if(event.code==='KeyF'){event.preventDefault();root.querySelector('[data-space-fullscreen]')?.click();}if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();cancelTravel();keys.add(event.code);wake();}});
     listen(document,'keyup',event=>keys.delete(event.code));listen(window,'blur',()=>{keys.clear();touchKeys.clear();drag=null;clearGestureState();});
     for(const button of root.querySelectorAll('[data-world-walk]')){listen(button,'pointerdown',event=>{if(!navigate())return;event.preventDefault();cancelTravel();touchKeys.add(button.dataset.worldWalk);button.setPointerCapture(event.pointerId);wake();});for(const name of ['pointerup','pointercancel','lostpointercapture'])listen(button,name,()=>touchKeys.delete(button.dataset.worldWalk));}
-    listen(document,'visibilitychange',onVisibilityChange);listen(reduced,'change',()=>{syncDoorStill();if(reduced.matches){finishTravel();resident?.settle();}resident?.resetClock();publishResident();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();settleFirst(false);onFailure?.();});
+    listen(document,'visibilitychange',onVisibilityChange);listen(reduced,'change',()=>{syncDoorStill();if(reduced.matches){finishTravel();resident?.settle();}resident?.resetClock();publishResident();last=0;wake();});listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();stop();onFailure?.({code:'context-lost'});settleFirst(false);});
     hiddenObserver=new MutationObserver(onVisibilityChange);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
     blockedObserver=new MutationObserver(()=>{doorFade.setActive(visible()&&!isBlocked(),{at:performance.now()/1000});if(isBlocked()){keys.clear();touchKeys.clear();drag=null;clearGestureState();escapeDoorExcursion();}wake();});blockedObserver.observe(root,{attributes:true,subtree:true,attributeFilter:['open','hidden']});
     observer=new ResizeObserver(resize);observer.observe(root);pose=entry();returnPose={...pose};applyPose(pose);syncMode('roam');resize();renderer.shadowMap.needsUpdate=true;

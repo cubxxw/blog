@@ -26,6 +26,6 @@ test('a renderer import failure never reports a built room or ready frame',async
   let world;
   try{
     world=createCafeWorld({theme:'jiangnan',onBootStage:stage=>stages.push(stage)});
-    await assert.rejects(world.firstFrame,/offline/);assert.deepEqual(stages,[]);
+    await assert.rejects(world.firstFrame,error=>error.code==='module-load'&&error.cause?.message==='offline');assert.deepEqual(stages,[]);
   }finally{world?.dispose();globalThis.document=original;}
 });
