@@ -19,6 +19,6 @@
   }
   if(theme==='jiangnan'&&config.vista){
     const link=document.createElement('link');link.rel='preload';link.as='image';
-    link.href=config.vista;link.fetchPriority='high';document.head.append(link);
+    link.href=config.vista;link.crossOrigin='anonymous';link.fetchPriority='high';document.head.append(link);
   }
 })();

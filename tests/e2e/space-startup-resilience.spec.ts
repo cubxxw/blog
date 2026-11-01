@@ -1,4 +1,5 @@
 import {test,expect,type Page} from '../helpers/frozen-site';
+import fs from 'node:fs/promises';
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'&&process.env.SPACE_SOFTWARE_QA!=='1'?['--enable-gpu','--use-angle=metal']:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']}});
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
 async function openNotes(page:Page){
@@ -22,7 +23,9 @@ for(const lang of ['zh','en'])test(`a hanging primary still paints the current p
     await expect(root(page)).toHaveAttribute('data-boot-state','complete',{timeout:10000});
     await expect(root(page)).toHaveAttribute('data-world-vista','image-preview');
     await expect(root(page)).not.toHaveAttribute('data-world-failed');
-    await test.info().attach('local-entry-observation',{contentType:'application/json',body:JSON.stringify(await page.evaluate(()=>({observedReadyMs:Math.round(performance.now()),stageTimes:[...document.querySelectorAll('[data-boot-time]')].map(node=>node.textContent),note:'Local Chromium observation, not a field percentile.'})))});
+    const observation=await page.evaluate(()=>({observedReadyMs:Math.round(performance.now()),stageTimes:[...document.querySelectorAll('[data-boot-time]')].map(node=>node.textContent),note:'Local Chromium observation, not a field percentile.'}));
+    await fs.mkdir(test.info().outputDir,{recursive:true});
+    await fs.writeFile(test.info().outputPath('entry-observation.json'),JSON.stringify(observation,null,2));
     const pose=await root(page).getAttribute('data-world-pose');
     await page.screenshot({path:test.info().outputPath('preview-room.png')});
     if(lang==='zh')await expect(root(page)).toHaveAttribute('data-room-diagnostics',/vista-timeout/,{timeout:9000});
@@ -39,6 +42,19 @@ test('a failed primary retains the photographic room instead of failing entry',a
   await expect(root(page)).toHaveAttribute('data-world-vista','image-preview');
   await expect(root(page)).toHaveAttribute('data-room-diagnostics',/vista-load/);
   await expect(root(page)).not.toHaveAttribute('data-world-failed');
+});
+
+test('the high-priority primary preload is reused by the texture loader without a duplicate request',async({page})=>{
+  let requests=0;const warnings:string[]=[];
+  page.on('request',request=>{if(/jiangnan-vista-study-v\d+.*\.webp/.test(request.url()))requests++;});
+  page.on('console',message=>{if(/preload.*credentials|credentials.*match/i.test(message.text()))warnings.push(message.text());});
+  const release=await hold(page,/jiangnan-vista-study-v\d+.*\.webp/);
+  try{
+    await page.goto('/zh/projects/',{waitUntil:'domcontentloaded'});
+    await expect(root(page)).toHaveAttribute('data-world-vista','image-preview',{timeout:10000});
+    await release();await expect(root(page)).toHaveAttribute('data-world-vista','image');
+    expect(requests).toBe(1);expect(warnings).toEqual([]);
+  }finally{await release();}
 });
 
 test('held material maps do not prevent a real room from becoming usable',async({page})=>{
