@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-01T05:24:46.387652+00:00",
+  "reviewer": "/root/review_daily_quality",
+  "baseSHA": "6633f53ee7d42a18b42721af9b2ccf674a06bd33",
+  "confirmedFindings": [],
+  "closed": [
+    {
+      "priority": "P2",
+      "finding": "recall regression not connected to test entry",
+      "resolution": "added beside existing URL regression in bear:test; no CI/lock changes"
+    }
+  ],
+  "blobs": {
+    "assets/js/search-palette.js": "00645879edc8f9b69333a51a090924a25d5292f1",
+    "scripts/search-palette-recall.test.mjs": "369970492fab1977c8d4adb8347588af193b1807",
+    "package.json": "d799b88320132f6a5a5e893ddd50a2cf19651b1a"
+  },
+  "candidateAdapter": {
+    "candidate-search.spec.ts": "a35236c2db49836a3085219c704acca0ab44bd7dc47985b0b33670f6dbe3526a",
+    "candidate-search.config.ts": "e4fba55e5a2d957e66150c444ed4f722f0a521e06651cd95257ebfc81cd31bbb"
+  },
+  "limits": [
+    "No confirmed P0/P1/P2 after incremental review",
+    "Candidate 4 first pass/0retry/skip/errors is injected unminified source with frozen full corpus, not deployed/minified/SRI/network/INP certification",
+    "Direct recall fixture does not separately exercise natural-language fallback; runtime review confirms matches unused there",
+    "Node experiment reports synchronous elapsed search time, not OS process CPU usage"
+  ]
+}

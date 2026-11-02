@@ -323,7 +323,9 @@
             { name: 'section', weight: 0.02 }
           ],
           threshold: 0.3,
-          includeMatches: true,
+          // Results render plain titles/previews; unused character ranges
+          // otherwise add work across every full-text field on each query.
+          includeMatches: false,
           minMatchCharLength: 1,
           ignoreLocation: true,
           findAllMatches: true,
