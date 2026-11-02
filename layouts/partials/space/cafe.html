@@ -8,7 +8,11 @@
 {{- $nightSmall := $nightImage.Resize "960x webp q85" -}}
 {{- $boat := (resources.Get "images/space-cafe/jiangnan-boat-v2.png").Resize "900x webp q90" -}}
 {{- $night := dict "image" $nightLarge.RelPermalink "srcset" (printf "%s 960w, %s 1933w" $nightSmall.RelPermalink $nightLarge.RelPermalink) "boat" $boat.RelPermalink "music" ("/audio/space/night-on-the-docks-sax.mp3" | relURL) "ambience" ("/audio/space/night-rain-and-fan.mp3" | relURL) "rain" ("/audio/space/rain-distant-storm-loop.mp3" | relURL) -}}
-{{- with resources.Get "images/space-cafe/jiangnan-vista-study-v2.png" -}}{{- $vista := .Process "webp q92" -}}{{- $night = merge $night (dict "vista" $vista.RelPermalink) -}}{{- end -}}
+{{- with resources.Get "images/space-cafe/jiangnan-vista-study-v2.png" -}}
+  {{- $vista := .Process "webp q92" -}}
+  {{- $preview := .Resize "256x webp q45" -}}
+  {{- $night = merge $night (dict "vista" $vista.RelPermalink "vistaPreview" (printf "data:image/webp;base64,%s" ($preview.Content | base64Encode))) -}}
+{{- end -}}
 {{- with resources.Get "images/space-cafe/jiangnan-vista-neutral-v1.png" -}}{{- $day := .Process "webp q90" -}}{{- $night = merge $night (dict "dayVista" $day.RelPermalink) -}}{{- end -}}
 {{- with resources.Get "images/space-cafe/jiangnan-vista-continuation-v1.png" -}}{{- $continuation := .Process "webp q92" -}}{{- $night = merge $night (dict "continuation" $continuation.RelPermalink) -}}{{- end -}}
 {{- $books := slice -}}

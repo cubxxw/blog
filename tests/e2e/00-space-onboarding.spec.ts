@@ -5,7 +5,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 test.use({channel:'chromium',launchOptions:{args:process.env.SPACE_SOFTWARE_QA==='1'?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
-test.beforeEach(({page})=>reserveWorldJourney(page));
+test.beforeEach(async({page},info)=>{
+  reserveWorldJourney(page);
+  // These journeys exercise the six-scene outdoor controller. Default-room
+  // cases explicitly select Jiangnan and cover its own photographic renderer.
+  if(!info.title.startsWith('the default personal room'))await page.addInitScript(()=>localStorage.setItem('space:cafe:theme:v2','zen'));
+});
 const root='[data-bear-workspace]';
 const room=async(page:import('@playwright/test').Page)=>{
   await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
@@ -24,7 +29,8 @@ for(const language of ['zh','en'])test(`the default personal room boots visibly 
     const panel=(await page.locator('[data-space-boot]').boundingBox())!,body=(await page.locator('.space-boot__body').boundingBox())!;
     expect(Math.abs(body.x+body.width/2-panel.x-panel.width/2)).toBeLessThan(1);
     expect(Math.abs(body.y+body.height/2-panel.y-panel.height/2)).toBeLessThan(1);
-    await expect(page.locator('[data-boot-skip]')).toBeHidden();
+    await expect(page.locator('[data-boot-skip]')).toBeVisible();
+    await expect(page.locator('[data-boot-skip]')).toBeEnabled();
     expect(await page.locator('[data-space-boot]').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
     if(evidence){await fs.mkdir(evidence,{recursive:true});await page.screenshot({path:path.join(evidence,`${test.info().project.name}-${language}-terminal.png`)});}
   }finally{release();}
@@ -41,7 +47,7 @@ test('the centered loader stays visible until a real scene frame',async({page})=
   await page.goto('/zh/projects/');
   try {
     await expect(page.locator('[data-space-boot]')).toBeVisible();
-    await expect(page.locator('[data-boot-skip]')).toBeHidden();
+    await expect(page.locator('[data-boot-skip]')).toBeVisible();
     await expect(page.locator('[data-boot-step]').first()).toHaveAttribute('data-state','current');
     await expect(page.locator(root)).not.toHaveAttribute('data-world-ready','true');
     expect(await page.locator('[data-space-boot]').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
@@ -59,7 +65,7 @@ test('changing renderer keeps the terminal visible until the replacement room pa
   await page.locator('button[data-cafe-theme="jiangnan"]').click();
   try{
     await expect(page.locator('[data-space-boot]')).toBeVisible();
-    await expect(page.locator('[data-boot-skip]')).toBeHidden();
+    await expect(page.locator('[data-boot-skip]')).toBeVisible();
     await expect(page.locator('[data-boot-step]').first()).toHaveAttribute('data-state','current');
   }finally{release();}
   await expect(page.locator(root)).toHaveAttribute('data-boot-state','complete',{timeout:30000});
@@ -77,10 +83,8 @@ test('a stalled replacement renderer times out to a usable workspace',async({pag
     await page.locator('.space-cafe__utilities [data-cafe-picker]').click();
     await page.locator('button[data-cafe-theme="jiangnan"]').click();
     await expect(page.locator('[data-space-boot]')).toBeVisible();
-    await page.clock.fastForward(30005);
+    await page.clock.fastForward(10005);
     await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
-    await expect(page.locator('[data-boot-skip]')).toBeVisible();
-    await page.locator('[data-boot-skip]').click();
     await expect(page.locator('[data-space-boot]')).toBeHidden();
     await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
     await expect(page.locator('.space-world__canvas')).toHaveCount(0);
@@ -137,20 +141,20 @@ test('a completed onboarding recovers immediately after graphics context loss',a
   await page.locator('[data-note-editor]').fill('Still usable after losing the GPU.');
 });
 
-test('module failure offers an ordinary workspace from the centered loader',async({page})=>{
+test('module failure automatically reveals the ordinary workspace',async({page})=>{
   await page.route('**/world-cafe.*.js',route=>route.abort());
   await page.goto('/zh/projects/');await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
-  await expect(page.locator('[data-boot-status]')).toContainText('打开工作区');
-  await page.locator('[data-boot-skip]').click();await expect(page.locator('[data-space-boot]')).toBeHidden();
+  await expect(page.locator('[data-space-boot]')).toBeHidden();
+  await expect(page.locator(root)).toHaveAttribute('data-room-diagnostics',/module-load/);
   await expect(page.locator(root)).toHaveAttribute('data-cafe-mode','desktop');
   await expect(page.locator('[data-space-menu-trigger]')).toBeVisible();
 });
 
-test('a failed deep link restores focus to its document after explicit recovery',async({page})=>{
+test('a failed deep link automatically restores focus to its document',async({page})=>{
   await page.route('**/world-cafe.*.js',route=>route.abort());
   await page.goto('/zh/projects/#identity');
   await expect(page.locator(root)).toHaveAttribute('data-world-failed','true');
-  await page.locator('[data-boot-skip]').click();
+  await expect(page.locator('[data-space-boot]')).toBeHidden();
   await expect(page.locator('[data-space-window="welcome"]')).toBeVisible();
   await expect(page.locator('[data-space-window="welcome"]')).toBeFocused();
 });

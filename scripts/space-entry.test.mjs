@@ -55,17 +55,17 @@ test('a disconnected or still-hidden entry cannot acquire focus after ready',asy
   const {handoffEntryFocus}=await import('../assets/js/space/entry.mjs');for(const state of ['removed','inert','no-rect']){const f=focusFixture(),pending=handoffEntryFocus(f.args);if(state==='removed')f.target.isConnected=false;if(state==='inert')f.target.closest=()=>({});if(state==='no-rect')f.target.getClientRects=()=>[];f.resolve({});assert.equal(await pending,false);assert.deepEqual(f.focusCalls,[]);assert.equal(f.cleaned(),true);}
 });
 
-test('failure preserves an existing ready handoff only when no terminal needs explicit recovery',async()=>{
+test('automatic failure recovery preserves existing focus ownership and releases the terminal',async()=>{
   const {readFile}=await import('node:fs/promises'),vm=await import('node:vm'),source=await readFile(new URL('../assets/js/space/cafe.js',import.meta.url),'utf8');
-  const failure=source.slice(source.indexOf('  function failWorld('),source.indexOf('  // Background tabs'));
+  const failure=source.slice(source.indexOf('  function failWorld('),source.indexOf('  function firstVisibleFrame('));
   const photoSync=source.slice(source.indexOf('  function syncPhotoLight('),source.indexOf("  root.addEventListener('space:roomobjects'"));
-  const reveal=source.match(/onReveal:result=>\{([\s\S]*?)\n  \}\}\);/)[1];
   for(const active of [false,true]){
     const other={},button={disabled:true},light={hidden:false,setAttribute(){}},toast={},focusCalls=[],document={activeElement:other},root={dataset:{worldLoading:'true'},contains:()=>false,querySelectorAll:selector=>selector==='[data-cafe-photo-light]'?[light]:[button],querySelector:()=>toast};
-    const context={disposed:false,failed:false,initializing:true,entryFocusManaged:true,failureFocusManaged:false,revision:0,theme:'jiangnan',t:cn=>cn,world:{dispose(){}},root,document,boot:{active,event(){}},pickerStatus:{},syncCat(){},setMode(){},onEnter(){},focusDesktop:()=>({focus(){focusCalls.push('fallback');}}),getComputedStyle:()=>({visibility:'visible'})};
-    vm.runInNewContext(photoSync+failure+`\nfailWorld('offline'); initializing=false; (result=>{${reveal}})({failed:true});`,context);
+    const context={disposed:false,failed:false,initializing:true,entryFocusManaged:true,failureFocusManaged:false,revision:0,theme:'jiangnan',t:cn=>cn,world:{dispose(){}},cancelRoom(){button.disabled=false;},root,document,boot:{active,dismiss(){this.active=false;}},pickerStatus:{},syncCat(){},setMode(){},onEnter(){},focusDesktop:()=>({focus(){focusCalls.push('fallback');}}),getComputedStyle:()=>({visibility:'visible'})};
+    vm.runInNewContext(photoSync+failure+`\nfailWorld('offline');`,context);
     assert.equal(context.failureFocusManaged,!active);assert.equal(root.dataset.worldFailed,'true');assert.equal(button.disabled,false);assert.equal(document.activeElement,other);assert.deepEqual(focusCalls,active?['fallback']:[]);
     assert.equal(light.hidden,true,'an unavailable scene must not offer a lighting switch');
+    assert.equal(context.boot.active,false,'failure must leave a usable workspace without an extra recovery click');
   }
 });
 

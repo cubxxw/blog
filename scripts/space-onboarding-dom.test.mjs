@@ -39,16 +39,18 @@ test('failure before the first frame reveals a usable recovery action',()=>{
   }finally{f.restore();}
 });
 
-test('a slow connection keeps honest stages and hides the loading button',()=>{
+test('a slow connection keeps honest stages and offers immediate workspace entry',()=>{
   const f=fixture();try{
     f.advance(10000);
     assert.equal(f.root.dataset.bootState,'loading');assert.equal(f.pending,0);
-    assert.equal(f.skip.hidden,true);assert.equal(f.skip.disabled,true);
+    assert.equal(f.skip.hidden,false);assert.equal(f.skip.disabled,false);
     assert.deepEqual(f.steps.map(step=>step.dataset.state),['current','waiting','waiting']);
     f.boot.event('module');assert.equal(f.steps[0].time.textContent,'10.000s');
     f.at(12000);f.boot.event('room');
     assert.equal(f.steps[0].time.textContent,'10.000s');assert.equal(f.steps[1].time.textContent,'12.000s');
     assert.equal(f.steps[2].dataset.state,'current');assert.equal(f.boot.active,true);
+    f.skip.dispatchEvent(new Event('click'));assert.equal(f.boot.active,false);
+    assert.equal(f.reveals.at(-1).workspace,true);
   }finally{f.restore();}
 });
 
@@ -72,7 +74,7 @@ test('reduced motion releases the first frame without even a fade timer',()=>{
 test('switching renderers reopens real preparation and waits for a new frame',()=>{
   const f=fixture();try{
     f.boot.event('frame');f.advance(500);assert.equal(f.boot.active,false);
-    f.boot.begin();assert.equal(f.boot.active,true);assert.equal(f.skip.hidden,true);
+    f.boot.begin();assert.equal(f.boot.active,true);assert.equal(f.skip.hidden,false);
     assert.deepEqual(f.steps.map(step=>step.dataset.state),['current','waiting','waiting']);
     assert.ok(f.steps.every(step=>step.time.textContent===''));
     f.advance(5000);assert.equal(f.boot.active,true);

@@ -54,9 +54,10 @@ function controllerDeclaration(start, end) {
   assert.ok(from >= 0 && to > from, `Missing controller boundary: ${start}`);
   return cafeControllerSource.slice(from, to);
 }
-function pendingCameraController() {
+function pendingCameraController({loading=false}={}) {
   const surface = { inert: false }, desktop = [{ inert: true }, { inert: true }];
   const root = { dataset: { cafeMode: 'cafe' } }, calls = [], storage = new Map();
+  if(loading)root.dataset.worldLoading='true';
   let movement;
   function move(mode) {
     movement?.resolve(false);
@@ -65,7 +66,8 @@ function pendingCameraController() {
   }
   const world = { mode: 'roam', focus: () => move('roam'), start: () => move('roam'), leave: () => move('roam'), outside: () => move('roam') };
   const context = vm.createContext({
-    surface, desktop, root, world, ready: Promise.resolve(), boot: { dismiss() {} }, dialog: { open: false }, closePicker() {},
+    surface, desktop, root, world, ready: loading?new Promise(()=>{}):Promise.resolve(), boot: { dismiss() {} }, dialog: { open: false }, closePicker() {},
+    diagnostics:{record(){}},cancelRoom(){calls.push('cancel');delete root.dataset.worldLoading;},
     sessionStorage: { setItem: (key, value) => storage.set(key, value) }, onEnter() {}, beforeVisit() {},
     focusDesktop: () => ({ focus: () => calls.push('focus') }),
     location: { href: 'https://blog.invalid/projects/' }, history: { replaceState() {} }, URL,
@@ -83,6 +85,12 @@ function pendingCameraController() {
   };
 }
 const settleController = () => new Promise(setImmediate);
+
+test('workspace entry cancels held startup and becomes usable before any renderer promise settles',async()=>{
+  const f=pendingCameraController({loading:true});let result;
+  f.enterDesktop(true).then(value=>{result=value;});await settleController();
+  assert.equal(result,true);assert.equal(f.root.dataset.cafeMode,'desktop');assert.ok(f.desktop.every(node=>!node.inert));assert.deepEqual(f.calls,['cancel','focus']);
+});
 
 test('an in-flight desktop journey keeps the café cancel surface active until the camera settles', async () => {
   const f = pendingCameraController();

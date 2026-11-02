@@ -463,7 +463,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
     if(rain&&lifeActive){const p=rain.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setY(i,((rainBase[i*3+1]-elapsed*4)%12+12)%12);p.needsUpdate=true;}
     resident.update(catSeconds,{active:lifeActive,interactive:catInteractive});
     if(inspection?.kind==='cat'&&!moving)applyPose(detailPose('cat'));
-    try{renderer.render(scene,camera);css.render(scene,camera);}catch{drawing=false;settleFirst(false);onFailure?.();return;}
+    try{renderer.render(scene,camera);css.render(scene,camera);}catch{drawing=false;onFailure?.({code:'render'});settleFirst(false);return;}
     root.dataset.worldRenderedMode=mode;
     if(firstPending){root.dataset.worldReady='true';settleFirst(true);}
     if(time-catStamp>250||root.dataset.catActive!==String((lifeActive||catInteractive)&&resident.loaded)){
@@ -480,7 +480,7 @@ export function createCafeWorld({ root, theme, onComputer, onTravel, onFailure, 
   function visibility() {resident.resetClock();active=!document.hidden&&!root.hidden;keys.clear();touchKeys.clear();last=0;if(active&&!frame){resize();wake();}else if(!active&&frame){cancelAnimationFrame(frame);frame=0;}}
   listen(document,'visibilitychange',visibility);const hiddenObserver=new MutationObserver(visibility);hiddenObserver.observe(root,{attributes:true,attributeFilter:['hidden']});
   listen(reduced,'change',()=>{resident.resetClock();if(reduced.matches){finishMoving();resident?.settle();}wake();});
-  listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;moving?.resolve();moving=null;onTravel?.(false);onFailure?.();});
+  listen(renderer.domElement,'webglcontextlost',event=>{event.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;moving?.resolve();moving=null;onTravel?.(false);onFailure?.({code:'context-lost'});});
   listen(window,'pagehide',event=>{if(event.persisted){active=false;cancelAnimationFrame(frame);frame=0;}else dispose();});listen(window,'pageshow',visibility);
   function dispose() {
     if(disposed)return;disposed=true;clearInspection();cancelAnimationFrame(frame);moving?.resolve();moving=null;abort.abort();observer.disconnect();hiddenObserver.disconnect();blockedObserver.disconnect();

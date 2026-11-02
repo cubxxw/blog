@@ -3,6 +3,7 @@ import { mountOnboarding } from './onboarding.js';
 import {mountRoomInspection} from './room-inspection.js';
 import {createRecordCatalog} from './record-catalog.js';
 import {mountListeningPages} from './listening-pages.js';
+import {createRoomDiagnostics,roomStartupError,waitForRoomWork} from './room-startup.mjs';
 
 export function mountCafe({root,route,navigation,localeResume,execute,onEnter,beforeVisit,focusDesktop,entryFocusManaged=false}) {
   const surface=root.querySelector('[data-space-cafe]'),dialog=root.querySelector('[data-cafe-dialog]');
@@ -12,6 +13,7 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   const pickerStatus=root.querySelector('[data-cafe-picker-status]');
   const desktop=[root.querySelector('[data-space-windows]'),root.querySelector('.space-bottom'),root.querySelector('.space-menu')];
   const abort=new AbortController();let disposed=false,initializing=true,failureFocusManaged=false;
+  const diagnostics=createRoomDiagnostics(root);let startupController,attempt=0;
   let theme='jiangnan',savedMode,mode,desiredMode,world,failed=false,trigger,revision=0,quiet=false,inspectTrigger,catCode='loading',catTravel=false;
   const inspectPanel=root.querySelector('[data-cafe-inspect-panel]');
   const roomInspection=mountRoomInspection({root,books:catalog.books,records:createRecordCatalog(),zh,
@@ -75,21 +77,27 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   }
   commit(theme);setQuiet(quiet);desiredMode=cafeEntryMode({route,navigation,saved:savedMode,localeResume});setMode(desiredMode);
   const boot=mountOnboarding({root,enabled:true,onReveal:result=>{
-    if(result?.failed){desiredMode='desktop';setMode('desktop');onEnter();if(!failureFocusManaged)focusDesktop()?.focus({preventScroll:true});}
+    if(result?.workspace){enterDesktop(true);return;}
     world?.wake();
   }});
   root.dataset.worldLoading='true';desktop.forEach(el=>{el.inert=true;});
+  function cancelRoom(){
+    ++attempt;startupController?.abort();startupController=null;initializing=false;
+    world?.dispose();world=null;catTravel=false;root.dataset.computerView='expanded';
+    for(const key of ['worldReady','worldMode','worldTravel','worldLoading'])delete root.dataset[key];
+    root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=false;});
+  }
   function failWorld(message) {
     if(disposed||failed)return;
     const focused=document.activeElement;
     const selection=typeof focused?.selectionStart==='number'?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
     failureFocusManaged=initializing&&entryFocusManaged&&!boot.active;
-    failed=true;++revision;world?.dispose();world=null;root.dataset.worldFailed='true';root.dataset.computerView='expanded';syncCat('unavailable');syncPhotoLight();
+    failed=true;++revision;cancelRoom();root.dataset.worldFailed='true';root.dataset.computerView='expanded';syncCat('unavailable');syncPhotoLight();
     for(const key of ['worldReady','worldMode','worldTravel','worldLoading'])delete root.dataset[key];
     // A completed onboarding cannot display a second failure state. Restore the
     // ordinary DOM workspace immediately, including after context loss.
     desiredMode='desktop';setMode('desktop');onEnter();
-    if(boot.active)boot.event('failure');
+    boot.dismiss();
     pickerStatus.textContent=message;
     root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=false;});
     const toast=root.querySelector('[data-space-toast]');toast.textContent=message;toast.hidden=false;
@@ -99,41 +107,38 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       if(selection&&target===focused)focused.setSelectionRange(...selection);
     }
   }
-  // Background tabs do not spend the first-frame deadline while rendering is
-  // intentionally suspended. All listeners/timers settle with the frame.
-  function firstVisibleFrame(promise) {
-    return new Promise((resolve,reject)=>{
-      let remaining=30000,last=0,timer;
-      const cleanup=()=>{clearTimeout(timer);document.removeEventListener('visibilitychange',visibility);observer.disconnect();};
-      function visibility(){
-        clearTimeout(timer);if(last)remaining-=performance.now()-last;last=0;
-        if(!document.hidden&&!root.hidden){last=performance.now();timer=setTimeout(()=>{cleanup();reject(new Error('First frame timed out'));},Math.max(0,remaining));}
-      }
-      const observer=new MutationObserver(visibility);observer.observe(root,{attributes:true,attributeFilter:['hidden']});
-      document.addEventListener('visibilitychange',visibility);visibility();
-      promise.then(value=>{cleanup();resolve(value);},error=>{cleanup();reject(error);});
-    });
+  function firstVisibleFrame(promise,signal) {
+    return waitForRoomWork(promise,{root,signal});
   }
-  const ready=(async()=>{
-    try {
-      const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);let timer;
-      const module=await Promise.race([import(config.module),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('3D module timed out')),15000);})]).finally(()=>clearTimeout(timer));
-      if(disposed)return null;
-      world=module.createCafeWorld({root,theme,catAsset:catalog.catAsset,photoAsset:catalog.photoAsset,latteAsset:catalog.latteAsset,mapleAsset:catalog.mapleAsset,materialBase:catalog.materialBase,books:catalog.books,onDetail:(kind,source)=>inspect(kind,source),onInspect:syncInspect,onCat:syncCat,onComputer:()=>enterDesktop(true),onReturn:()=>visit(),onNotebook:async()=>{if(await enterDesktop())execute('open',{app:'notes'});},onPhoto:async id=>{if(await enterDesktop())execute('open',{app:'photos',payload:id});},onFailure:()=>failWorld(t('场景已暂停，工作区仍可使用。','The room has paused. Your workspace is available.')),
-        onBootStage:stage=>{if(!disposed&&!failed)boot.event(stage);},
+  function initialize(){
+    const control=new AbortController(),generation=++attempt;startupController=control;initializing=true;
+    failed=false;delete root.dataset.worldFailed;root.dataset.worldLoading='true';
+    const current=()=>!disposed&&!control.signal.aborted&&generation===attempt;
+    const task=(async()=>{
+      const config=JSON.parse(document.querySelector('[data-space-world-module]').textContent);
+      let module;try{module=await import(config.module);}catch(error){throw roomStartupError('module-load',error);}
+      if(!current())return null;
+      world=module.createCafeWorld({root,theme,catAsset:catalog.catAsset,photoAsset:catalog.photoAsset,latteAsset:catalog.latteAsset,mapleAsset:catalog.mapleAsset,materialBase:catalog.materialBase,books:catalog.books,onDetail:(kind,source)=>inspect(kind,source),onInspect:syncInspect,onCat:syncCat,onComputer:()=>enterDesktop(true),onReturn:()=>visit(),onNotebook:async()=>{if(await enterDesktop())execute('open',{app:'notes'});},onPhoto:async id=>{if(await enterDesktop())execute('open',{app:'photos',payload:id});},
+        onFailure:error=>{if(current()){diagnostics.record(error);failWorld(t('场景已暂停，工作区仍可使用。','The room has paused. Your workspace is available.'));}},
+        onDiagnostic:code=>{if(current())diagnostics.record(code);},
+        onBootStage:stage=>{if(current())boot.event(stage);},
         isBlocked:()=>boot.active||dialog.open||Boolean(root.querySelector('dialog[open]'))||root.hidden||root.dataset.roomPageOpen==='true',
-        onTravel:busy=>{catTravel=busy;syncCat();root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=busy;});}
+        onTravel:busy=>{if(!current())return;catTravel=busy;syncCat();root.querySelectorAll('[data-cafe-enter],[data-cafe-start],[data-cafe-outside],[data-cafe-visit]').forEach(button=>{button.disabled=busy;});}
       });
       world.setQuiet(quiet);
       const startup=desiredMode==='desktop'?world.focus(false):world.start({animate:false,focus:false});
-      if(!await firstVisibleFrame(Promise.all([Promise.resolve(startup),world.firstFrame]).then(([,painted])=>painted)))throw new Error('Rendering stopped');
-      if(disposed||failed)return null;
+      if(!await Promise.all([Promise.resolve(startup),world.firstFrame]).then(([,painted])=>painted))throw roomStartupError('render');
+      if(!current())return null;
       delete root.dataset.worldLoading;setMode(desiredMode);boot.event('frame');return world;
-    } catch(error) {
-      failWorld(t('场景暂时无法启动，可以直接阅读或打开工作区。','The room could not start. You can read or open the workspace.'));
+    })();
+    return waitForRoomWork(task,{root,signal:control.signal}).catch(error=>{
+      if(current()&&error.name!=='AbortError'){
+        diagnostics.record(error);failWorld(t('已打开工作区。可以稍后再进入房间。','Your workspace is open. You can try the room again later.'));
+      }
       return null;
-    } finally {initializing=false;}
-  })();
+    }).finally(()=>{if(startupController===control){initializing=false;startupController=null;}});
+  }
+  let ready=initialize();
   function closePicker(){dialog.close();}
   dialog.addEventListener('close',()=>{
     const target=trigger?.isConnected&&!trigger.closest('[inert]')?trigger:mode==='cafe'?root.querySelector('[data-cafe-read]'):root.querySelector('.space-world-hud [data-cafe-visit]');
@@ -165,6 +170,10 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   async function enterDesktop(focus=false){
     const current=++revision;desiredMode='desktop';boot.dismiss();
     if(dialog.open)closePicker();
+    if(root.dataset.worldLoading){
+      diagnostics.record('workspace-selected');cancelRoom();setMode('desktop');onEnter();
+      if(focus)focusDesktop()?.focus({preventScroll:true});return true;
+    }
     if(mode==='desktop'&&!root.dataset.worldLoading&&(!world||world.mode==='workspace')){
       if(focus)focusDesktop()?.focus({preventScroll:true});return true;
     }
@@ -175,7 +184,9 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
   async function visit(place='return'){
     desiredMode='cafe';boot.dismiss();const current=++revision;beforeVisit();if(dialog.open)closePicker();
     const address=new URL(location.href);address.hash='';address.searchParams.delete('profile');history.replaceState(null,'',address.pathname+address.search);
-    setMode('cafe');await ready;if(current!==revision||disposed)return false;
+    setMode('cafe');
+    if(!world&&!root.dataset.worldLoading){boot.begin();ready=initialize();}
+    await ready;if(current!==revision||disposed)return false;
     if(world){
       if(place==='seat')await world.start();
       else if(place==='outside')await world.outside();
@@ -210,19 +221,21 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
       // A change of renderer replaces the old canvas. Keep the terminal visible
       // throughout the real download/build/first-frame handoff.
       const replacing=world&&(id==='jiangnan')!==(theme==='jiangnan');
-      if(replacing){closePicker();boot.begin();}
+      const switching=replacing?new AbortController():null;
+      if(replacing){startupController=switching;root.dataset.worldLoading='true';closePicker();boot.begin();}
       try{
-        if(world&&await firstVisibleFrame(world.setTheme(id))===false)return;
-      }catch{
-        if(!disposed&&current===revision)failWorld(t('场景切换未能完成，仍可阅读或打开工作区。','The scene could not finish loading. You can still read or open the workspace.'));
+        if(world&&await firstVisibleFrame(world.setTheme(id),switching?.signal)===false)return;
+      }catch(error){
+        if(!disposed&&current===revision){diagnostics.record(error);failWorld(t('场景切换未能完成，仍可阅读或打开工作区。','The scene could not finish loading. You can still read or open the workspace.'));}
         return;
-      }
+      }finally{if(startupController===switching)startupController=null;}
       if(disposed||current!==revision)return;
+      delete root.dataset.worldLoading;
       commit(id);if(replacing)boot.event('frame');
       pickerStatus.textContent=t(`已来到${themes.find(scene=>scene.id===id).name}。`,`Now in ${themes.find(scene=>scene.id===id).name}.`);
       if(dialog.open)closePicker();
     }
   },{signal:abort.signal});
-  window.addEventListener('pagehide',event=>{if(!event.persisted){disposed=true;abort.abort();boot.dispose();roomInspection.dispose();listeningPages.dispose();world?.dispose();}},{signal:abort.signal});
-  return {ready,get active(){return mode==='cafe';},get modalOpen(){return dialog.open||boot.active;},get mode(){return mode;},get spatial(){return Boolean(world);},enterDesktop,visit,openPicker,escape(){if(world?.mode==='inspect')restoreInspect();else if(world?.mode==='roam')world.start();}};
+  window.addEventListener('pagehide',event=>{if(!event.persisted){disposed=true;abort.abort();boot.dispose();roomInspection.dispose();listeningPages.dispose();cancelRoom();}},{signal:abort.signal});
+  return {get ready(){return ready;},get active(){return mode==='cafe';},get modalOpen(){return dialog.open||boot.active;},get mode(){return mode;},get spatial(){return Boolean(world);},enterDesktop,visit,openPicker,escape(){if(world?.mode==='inspect')restoreInspect();else if(world?.mode==='roam')world.start();}};
 }

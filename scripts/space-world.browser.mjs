@@ -99,7 +99,7 @@ try {
     const fallback=await spatialContext({viewport:{width:1280,height:800}}),p=await fallback.newPage();
     await p.route('**/world-cafe.*.js',route=>route.abort());
     await p.goto(base+'/zh/projects/');await p.waitForFunction(()=>document.querySelector('[data-bear-workspace]')?.dataset.worldFailed==='true');
-    await p.locator('[data-boot-skip]').click();await p.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
+    await p.locator('[data-space-boot]').waitFor({state:'hidden'});await p.waitForFunction(()=>document.querySelector('[data-bear-workspace]').dataset.cafeMode==='desktop');
     await p.locator('[data-space-dock] [data-open="notes"]').click();await p.locator('[data-note-editor]').fill('Fallback still works.');await fallback.close();
   });
   await check('camera travel is continuous and settles at the desk',async()=>{
