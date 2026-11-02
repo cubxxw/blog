@@ -1,0 +1,75 @@
+{
+  "stats": {
+    "startTime": "2026-11-02T20:12:44.132Z",
+    "duration": 36538.86,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "testIdentities": [
+    {
+      "id": "ba0b9ab1d8f722fefb17-daa5e79fb9faff3f10b4",
+      "title": "live search opens a real article readable in both themes: /en",
+      "project": "desktop",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 7999
+        }
+      ]
+    },
+    {
+      "id": "ba0b9ab1d8f722fefb17-325feacdde958ce6db5c",
+      "title": "live search opens a real article readable in both themes: /zh",
+      "project": "desktop",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 8717
+        }
+      ]
+    },
+    {
+      "id": "ba0b9ab1d8f722fefb17-7f826b832ed0e26c9034",
+      "title": "live search opens a real article readable in both themes: /en",
+      "project": "mobile",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 8229
+        }
+      ]
+    },
+    {
+      "id": "ba0b9ab1d8f722fefb17-1e6463cbd47b4d203e89",
+      "title": "live search opens a real article readable in both themes: /zh",
+      "project": "mobile",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 6642
+        }
+      ]
+    }
+  ],
+  "denominator": 4,
+  "firstPass": 4,
+  "retry": 0,
+  "skipped": 0,
+  "failed": 0,
+  "unfinished": 0
+}

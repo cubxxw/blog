@@ -1,0 +1,57 @@
+{
+  "at": "2026-11-02T20:29:12.281788+00:00",
+  "before": {
+    "id": "6ae8f0383bfdadcc8bad1bd8",
+    "commit_ref": "304e6cab0decce1cfa751a7f2928b896fefedb5e",
+    "context": "production",
+    "state": "ready",
+    "published_at": "2026-11-02T20:22:15.070Z",
+    "currentPublished": {
+      "id": "6ae8f0383bfdadcc8bad1bd8",
+      "commit_ref": "304e6cab0decce1cfa751a7f2928b896fefedb5e",
+      "state": "ready"
+    }
+  },
+  "after": {
+    "id": "6ae8f0383bfdadcc8bad1bd8",
+    "commit_ref": "304e6cab0decce1cfa751a7f2928b896fefedb5e",
+    "context": "production",
+    "state": "ready",
+    "published_at": "2026-11-02T20:22:15.070Z",
+    "currentPublished": {
+      "id": "6ae8f0383bfdadcc8bad1bd8",
+      "commit_ref": "304e6cab0decce1cfa751a7f2928b896fefedb5e",
+      "state": "ready"
+    }
+  },
+  "rows": [
+    {
+      "language": "en",
+      "page": "https://cubxxw.com/",
+      "htmlSHA256": "ce33beed252be186ccb4efd10e344b31b9cd63fb8b91d5075e20217fef961287",
+      "bootstrapURL": "https://cubxxw.com/js/search-bootstrap.96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3.js",
+      "bootstrapSHA256": "96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3",
+      "bootstrapSRI": "sha256-luoQUfrwG7fLojkU5KzAlJXASByAwEifTTzC8DNCMbM=",
+      "controllerURL": "https://cubxxw.com/js/search-controller.28211c45b7290e78d90ce3f3fcd053c8f96e668f89cd2c8b7c3d3f2e21a5e066.js",
+      "controllerSHA256": "28211c45b7290e78d90ce3f3fcd053c8f96e668f89cd2c8b7c3d3f2e21a5e066",
+      "controllerBytes": 44933,
+      "controllerSRI": "sha256-KCEcRbcpDnjZDOPz/NBTyPluZo+JzSyLfD0/LiGl4GY=",
+      "searchOptions": "threshold:.3,includeMatches:!1,minMatchCharLength:1,ignoreLocation:!0,findAllMatches:!0"
+    },
+    {
+      "language": "zh",
+      "page": "https://cubxxw.com/zh/",
+      "htmlSHA256": "ef34c01fceeba026a223109697f4d0598587175b2ed280dc4df7b0108d1c8544",
+      "bootstrapURL": "https://cubxxw.com/js/search-bootstrap.96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3.js",
+      "bootstrapSHA256": "96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3",
+      "bootstrapSRI": "sha256-luoQUfrwG7fLojkU5KzAlJXASByAwEifTTzC8DNCMbM=",
+      "controllerURL": "https://cubxxw.com/js/search-controller.28211c45b7290e78d90ce3f3fcd053c8f96e668f89cd2c8b7c3d3f2e21a5e066.js",
+      "controllerSHA256": "28211c45b7290e78d90ce3f3fcd053c8f96e668f89cd2c8b7c3d3f2e21a5e066",
+      "controllerBytes": 44933,
+      "controllerSRI": "sha256-KCEcRbcpDnjZDOPz/NBTyPluZo+JzSyLfD0/LiGl4GY=",
+      "searchOptions": "threshold:.3,includeMatches:!1,minMatchCharLength:1,ignoreLocation:!0,findAllMatches:!0"
+    }
+  ],
+  "SRIValid": true,
+  "limits": "Actual HTTP decoded identity bodies and SRI/source readback; not compression, speed, INP, full-site equivalence, or browser acceptance."
+}

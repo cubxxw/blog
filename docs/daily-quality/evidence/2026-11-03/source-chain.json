@@ -1,0 +1,14 @@
+{
+  "reviewedHead": "d03d06f2bba5fab92ae78ec91551dbe9b3e1e36e",
+  "merge": "304e6cab0decce1cfa751a7f2928b896fefedb5e",
+  "headTree": "c76d98a6952293482240ab4eb19816a6c1175f53",
+  "mergeTree": "c76d98a6952293482240ab4eb19816a6c1175f53",
+  "sameTree": true,
+  "headAncestorOfMerge": true,
+  "currentOriginMain": "304e6cab0decce1cfa751a7f2928b896fefedb5e",
+  "mergeParents": [
+    "106b4c60ba077bf2ba232de76035bdb504ae0fc5",
+    "d03d06f2bba5fab92ae78ec91551dbe9b3e1e36e"
+  ],
+  "limits": "Source tree identity and ancestry; live resources separately verified; no old frozen-artifact certificate borrowed"
+}
