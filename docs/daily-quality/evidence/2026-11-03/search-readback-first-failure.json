@@ -1,0 +1,8 @@
+{
+  "exit": 1,
+  "stage": "bootstrap parameter parsing",
+  "error": "AttributeError: controllerSrc property regex returned None",
+  "browserExecution": false,
+  "candidateProductFailure": false,
+  "note": "first parser assumed an object property; inspect actual compiled parameter exports before correcting"
+}

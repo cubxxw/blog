@@ -1,0 +1,18 @@
+{
+  "args": [
+    "python3",
+    "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-11-03/read-search-release.py",
+    "--base",
+    "https://deploy-preview-507--cubxxw.netlify.app",
+    "--name",
+    "binding-negative",
+    "--deploy",
+    "6ae8eda94a8d8cd6aecd084a",
+    "--source",
+    "d03d06f2bba5fab92ae78ec91551dbe9b3e1e36e"
+  ],
+  "exit": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-11-03/read-search-release.py\", line 49, in <module>\n    before = platform()\n             ^^^^^^^^^^\n  File \"/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-11-03/read-search-release.py\", line 32, in platform\n    assert base.netloc == a.deploy + '--cubxxw.netlify.app', 'use the immutable deploy permalink'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: use the immutable deploy permalink\n",
+  "expectedRejection": true,
+  "browserTests": 0
+}

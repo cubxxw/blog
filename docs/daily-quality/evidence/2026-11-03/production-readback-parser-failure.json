@@ -1,0 +1,7 @@
+{
+  "exit": 1,
+  "stage": "production bootstrap parameter names minified",
+  "error": "controllerSrc regex returned None",
+  "browserExecutions": 0,
+  "followupBrowserGuard": "missing receipt rejected before Popen; no browser executed"
+}

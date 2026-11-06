@@ -1,0 +1,28 @@
+{
+  "sourceHead": "d03d06f2bba5fab92ae78ec91551dbe9b3e1e36e",
+  "actualPlaywright": "1.63.0",
+  "declaredPlaywright": "1.64.1",
+  "adaptation": "only Chrome channel/baseURL/output/report paths; original case bodies and all deadlines; 1 worker/0 retry",
+  "files": {
+    "/Users/cubxxw/.codex/worktrees/blog-quality-resume-20261031/blog/playwright.daily.config.ts": {
+      "sha256": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+      "bytes": 750
+    },
+    "/Users/cubxxw/.codex/worktrees/blog-quality-resume-20261031/blog/tests/daily/live-quality.spec.ts": {
+      "sha256": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+      "bytes": 6028
+    },
+    "/Users/cubxxw/.codex/worktrees/blog-quality-resume-20261031/blog/tests/daily/reader-navigation.spec.ts": {
+      "sha256": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358",
+      "bytes": 5193
+    },
+    "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-11-03/preview-daily.config.ts": {
+      "sha256": "4698f038a6a06981134bca8e2708b8393a2e7e3bb166acb83783cd174d3ba0d3",
+      "bytes": 553
+    },
+    "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-11-03/production-daily.config.ts": {
+      "sha256": "5214005aed0e3d60e9d6108d45e6b4ca532cd76cea615b414e2f8a2bc63d67cb",
+      "bytes": 531
+    }
+  }
+}
