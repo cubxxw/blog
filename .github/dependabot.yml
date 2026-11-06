@@ -43,6 +43,10 @@ updates:
           - "*"
   - package-ecosystem: "github-actions"
     directory: "/"
+    # Analyze binds Action/SDK/CLI versions to a reviewed model-boundary proof.
+    # Upgrade this workflow's actions manually alongside that proof.
+    exclude-paths:
+      - ".github/workflows/seo-analyze.yml"
     schedule:
       interval: "daily"
       time: "08:00"
