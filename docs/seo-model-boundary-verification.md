@@ -10,6 +10,12 @@ semantic workflow test binds the Action version and exact argument string,
 including schema and turn limit, to this proof. Appended or duplicate flags
 are rejected. Do not relax that test to make dependency upgrades pass.
 
+Dependabot excludes `.github/workflows/seo-analyze.yml` from its GitHub Actions
+update scan. This prevents grouping its proof-bound Action upgrade with unrelated
+updates. All actions in that workflow now require a manual update and review;
+other workflows remain in the normal update scan. Renew the proof before changing
+the Analyze version. See [GitHub's `exclude-paths` reference](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#exclude-paths).
+
 ## What was verified
 
 On 2026-10-06, the replay ran the official Action's hash-checked TypeScript
