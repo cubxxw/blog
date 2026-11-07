@@ -77,6 +77,7 @@ products:
     stack: SwiftUI · Node.js · SQLite · MCP
     color: sage
     mark: TO
+    image_position: center
     url: https://tormie.com
     demo: https://tormie.com/#demo
     image_alt_zh: Tormie 真实官网首屏，折纸伙伴与 Your life, in good company. 标题并置

@@ -25,4 +25,5 @@
   "path" $path
   "exists" (fileExists (printf "static%s" $path))
   "alt" ($localizedAlt | default (printf "%s at %s" $product.name $domain))
-  "domain" $domain) -}}
+  "domain" $domain
+  "position" ($product.image_position | default "")) -}}

@@ -22,8 +22,8 @@
   {{- $webpSet = $webpSet | append (printf "%s %dw" $largest.RelPermalink $largestWidth) -}}
   <picture>
     <source type="image/webp" srcset="{{ delimit $webpSet ", " }}" sizes="{{ $sizes }}">
-    <img src="{{ $fallback.RelPermalink }}" alt="{{ $shot.alt }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy" decoding="async">
+    <img src="{{ $fallback.RelPermalink }}" alt="{{ $shot.alt }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy" decoding="async"{{ if eq $shot.position "center" }} style="object-position:center"{{ end }}>
   </picture>
 {{- else -}}
-  <img src="{{ $shot.path }}" alt="{{ $shot.alt }}" loading="lazy" decoding="async">
+  <img src="{{ $shot.path }}" alt="{{ $shot.alt }}" loading="lazy" decoding="async"{{ if eq $shot.position "center" }} style="object-position:center"{{ end }}>
 {{- end -}}
