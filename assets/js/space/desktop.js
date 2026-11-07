@@ -65,7 +65,7 @@ function mountDesktop(root) {
     clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; },4000);
   }
   const storageNotice = document.createElement('button');
-  storageNotice.type='button';storageNotice.className='space-storage-notice';storageNotice.dataset.storageNotice='';storageNotice.hidden=true;root.append(storageNotice);
+  storageNotice.type='button';storageNotice.className='space-storage-notice';storageNotice.dataset.storageNotice='';storageNotice.hidden=true;(root.querySelector('.space-bottom')||root).append(storageNotice);
   storageNotice.addEventListener('click',()=>open('settings'));
   const apps = mountApps({ root,catalog,execute,getState:()=>state,getContext:()=>companionFocus,getStorageStatus:()=>!saveFailure,getWorkspaceStatus:()=>store.getStatus(),restoreState,updateNote:text=>update({type:'note',text},false),notify,icon });
   root.addEventListener('bear:agent-status',event=>{
@@ -586,7 +586,7 @@ function mountDesktop(root) {
     if(b.dataset.productViewButton==='bear'){
       // The hidden Lab may have deferred the first real frame. Its controls
       // become focusable only after the spatial workspace is ready.
-      const entered=await cafe?.enterDesktop();
+      const entered=await cafe?.enterDesktop(false,{waitForFrame:true});
       if(entered!==false&&!root.hidden&&(document.activeElement===b||document.activeElement===document.body))menu.focus({preventScroll:true});
     }else productRoot.querySelector('.product-view-switch [data-product-view-button="lab"]')?.focus({preventScroll:true});
   });
