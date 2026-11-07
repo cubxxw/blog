@@ -22,6 +22,10 @@
 }
 
 .bear-agent button { min-height: 34px; }
+.bear-agent .bear-agent__mode { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 8px; color:var(--ba-muted); font-size:11px; }
+.bear-agent .bear-agent__mode select { max-width:100%; min-height:34px; padding:5px 8px; border:1px solid var(--ba-line); border-radius:7px; background:var(--ba-surface); color:var(--ba-ink); font:inherit; }
+.bear-agent .bear-agent__mode-hint { margin:0 0 8px; color:var(--ba-muted); font-size:11px; }
+.bear-agent .bear-agent__chips[hidden] { display:none; }
 
 /* ── Header: quiet identity, one line of grounding ─────────────────────────── */
 
