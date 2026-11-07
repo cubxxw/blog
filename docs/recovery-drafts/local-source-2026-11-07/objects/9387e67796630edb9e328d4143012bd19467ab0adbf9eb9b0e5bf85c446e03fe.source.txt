@@ -1,0 +1,21 @@
+# Public references already cited in the blog. Posters are local article assets.
+videos:
+  - id: BsWxPI9UM4c
+    url: https://www.youtube.com/watch?v=BsWxPI9UM4c
+    title: "Why AI evals are the hottest new skill for product builders"
+    creator: "Lenny’s Podcast · Hamel Husain & Shreya Shankar"
+    poster: /images/posts/ai-english-learning/youtube-evals-english-transcript.png
+    articleURL: /zh/growth/posts/ai-english-learning/
+    articleTitle: AI 从业者是如何利用 AI 学习英语的
+    # Verified against the episode's public chapter list, 2026-10-14:
+    # https://www.lennysnewsletter.com/p/why-ai-evals-are-the-hottest-new-skill
+    chapters:
+      - start: 1011
+        title_zh: 记录真实错误
+        title_en: Write notes on errors
+      - start: 1434
+        title_zh: 初始分析中的人工判断
+        title_en: Human-led initial analysis
+      - start: 1899
+        title_zh: 归类并整理错误
+        title_en: Categorize error notes

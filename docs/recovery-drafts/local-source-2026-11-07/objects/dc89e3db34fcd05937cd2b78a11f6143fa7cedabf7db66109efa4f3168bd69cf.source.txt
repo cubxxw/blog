@@ -1,0 +1,385 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { chromium } from 'playwright';
+import { createOutputServer } from './serve-site-output.mjs';
+
+// Run against a freshly built, real Hugo site. No article, product or AI fixture.
+const publicDir = path.resolve(process.env.SITE_PUBLIC_DIR || 'public');
+const outputDir = path.resolve(process.env.BEAR_OUTPUT_DIR || 'output/playwright/bear-continuity');
+const storageKey = 'bear-space:v1';
+const startedAt = new Date().toISOString();
+const names = [
+  'Chinese article selection saves real text and its catalog source',
+  'Selection snapshots expire after another window or article body takes over',
+  'Excerpt shelf returns to its source and preserves private text after a source disappears',
+  'Blocked clipboard offers selected Markdown with the real backlink',
+  'An explicit remove action persists without changing the original note',
+  'English desktop supports keyboard saving of a real article excerpt',
+  'Chinese 390px dark reduced-motion reading tools remain usable',
+  'English 390px dark reduced-motion reading tools remain usable',
+  'A stale tab favorite and window movement preserve another tab new note',
+  'Concurrent private edits preserve both texts as recoveries',
+  'A backup preview cannot overwrite a workspace edited after preview',
+  'Explicit restore downloads the previous note before restoring the backup',
+  'Quota failure reports unsaved text and exports the current in-memory note',
+  'Malformed and future storage remain untouched while local text is exportable',
+  'All visited flows are free of browser JavaScript and module syntax errors',
+];
+const checks = names.map((name, index) => ({ number: index + 1, name, status: 'not-run' }));
+const runtimeErrors = [];
+let server, browser, base, currentPage, fatal;
+await fs.mkdir(outputDir, { recursive: true });
+await fs.rm(path.join(outputDir,'failure.png'),{force:true});
+
+async function check(number, fn) {
+  const item = checks[number - 1], start = Date.now();
+  try {
+    const detail = await fn();
+    Object.assign(item, { status: 'passed', durationMs: Date.now() - start, ...(detail ? { detail } : {}) });
+    console.log(`PASS ${number}: ${item.name}`);
+  } catch (error) {
+    Object.assign(item, { status: 'failed', durationMs: Date.now() - start, error: error.message });
+    throw error;
+  }
+}
+
+async function context(options = {}) {
+  const result = await browser.newContext({ viewport: { width: 1440, height: 900 }, acceptDownloads: true, ...options });
+  await result.route('**/*', route => route.request().url().startsWith(base + '/') ? route.continue() : route.abort());
+  return result;
+}
+async function ready(page) {
+  currentPage = page;
+  await page.waitForFunction(() => document.querySelector('[data-bear-workspace]')?.dataset.ready === 'true');
+  await flush(page);
+}
+async function visit(ctx, route = '/zh/projects/') {
+  const page = await ctx.newPage();
+  page.setDefaultTimeout(15000);
+  page.on('pageerror', error => runtimeErrors.push({ page: page.url(), message: error.message, stack: error.stack }));
+  page.on('console', message => {
+    if (message.type() === 'error' && /SyntaxError|Unexpected token|Failed to resolve module|does not provide an export|Cannot use import statement/.test(message.text())) runtimeErrors.push({ page: page.url(), message: message.text() });
+  });
+  await page.goto(base + route, { waitUntil: 'domcontentloaded' });
+  await ready(page);
+  return page;
+}
+async function flush(page) {
+  // The optional public hook flushes the actual application queue. Each durable
+  // assertion below additionally polls localStorage rather than sleeping.
+  await page.evaluate(async () => { if (typeof window.BearSpace?.whenSaved === 'function') await window.BearSpace.whenSaved(); });
+}
+async function disk(page) {
+  await flush(page);
+  return page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey);
+}
+async function waitNote(page, note) {
+  await flush(page);
+  await page.waitForFunction(({ key, note }) => {
+    try { return JSON.parse(localStorage.getItem(key))?.note === note; } catch { return false; }
+  }, { key: storageKey, note });
+}
+function quotedText(markdown) {
+  return markdown.split('\n').filter(line => line.startsWith('> ')).map(line => line.slice(2).replace(/\\([\\`*_[\]{}()!~|])/g,'$1').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&')).join('\n');
+}
+async function snapshot(page) { return page.evaluate(() => window.BearSpace.snapshot()); }
+async function open(page, app, payload) {
+  currentPage = page;
+  await page.evaluate(({ app, payload }) => window.BearSpace.execute('open', { app, ...(payload === undefined ? {} : { payload }) }), { app, payload });
+  await page.locator(`[data-space-window="${app}"]`).waitFor({ state: 'visible' });
+  await flush(page);
+}
+async function maximize(page, app) {
+  if (await page.evaluate(app => !window.BearSpace.snapshot().windows.find(window => window.app === app)?.maximized, app)) await page.locator(`[data-space-window="${app}"] [data-window-action="maximize"]`).click();
+  await flush(page);
+}
+async function catalog(page) { return page.locator('[data-space-catalog]').evaluate(el => JSON.parse(el.textContent)); }
+async function realArticle(page) {
+  const data = await catalog(page);
+  const preferred = data.articles.find(article => article.url.includes('japan-travel-2025'));
+  const candidates = [...(preferred ? [preferred] : []), ...data.articles.slice(0, 8).filter(article => article !== preferred)];
+  for (const article of candidates) {
+    await open(page, 'reader', article.url);
+    await maximize(page, 'reader');
+    try {
+      await page.locator('[data-reader-body] .post-content').waitFor();
+      const usable = await page.locator('[data-reader-body] .post-content').evaluate(el => [...el.querySelectorAll('p')].some(p => p.textContent.trim().length >= 40));
+      if (usable) return article;
+    } catch { /* Try another real published article; never replace its response. */ }
+  }
+  throw new Error(`No readable published article found in ${data.language} catalog`);
+}
+async function selectActualText(page) {
+  const text = await page.locator('[data-reader-body] .post-content').evaluate(body => {
+    const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT);
+    let textNode;
+    while ((textNode = walker.nextNode())) {
+      if (textNode.parentElement?.closest('p') && !textNode.parentElement.closest('pre,code,a') && textNode.textContent.trim().length >= 40) break;
+    }
+    if (!textNode) throw new Error('No actual article paragraph available for selection');
+    const start = textNode.textContent.search(/\S/), range = document.createRange();
+    range.setStart(textNode, start); range.setEnd(textNode, Math.min(textNode.textContent.length, start + 96));
+    const selection = document.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+    return range.toString().replace(/\r\n?/g, '\n').trim();
+  });
+  await page.waitForFunction(() => document.querySelector('[data-excerpt-save]')?.disabled === false);
+  return text;
+}
+async function saveSelected(page, article, keyboard = false) {
+  const text = await selectActualText(page), button = page.locator('[data-excerpt-save]');
+  if (keyboard) { await button.focus(); await button.press('Enter'); } else await button.click();
+  await flush(page);
+  await page.waitForFunction(({ key, text, url }) => {
+    try { return JSON.parse(localStorage.getItem(key))?.excerpts?.some(item => item.text === text && item.url === url); } catch { return false; }
+  }, { key: storageKey, text, url: article.url });
+  const item = (await disk(page)).excerpts.find(item => item.text === text && item.url === article.url);
+  assert.equal(item.title, article.title, 'the source title must come from the actual catalog');
+  return item;
+}
+async function capture(page, filename) { await page.screenshot({ path: path.join(outputDir, filename), fullPage: false }); }
+async function downloadJSON(page, action, filename) {
+  const pending = page.waitForEvent('download'); await action();
+  const download = await pending, destination = path.join(outputDir, filename);
+  await download.saveAs(destination);
+  return JSON.parse(await fs.readFile(destination, 'utf8'));
+}
+async function chooseBackup(page, backup) {
+  await page.locator('[data-transfer-file]').setInputFiles({ name: 'bear-workspace.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(backup)) });
+  await page.locator('[data-transfer-preview]').waitFor({ state: 'visible' });
+  assert.equal(await page.locator('[data-transfer-confirm]').isEnabled(), true);
+}
+
+try {
+  server = createOutputServer({ publicDir });
+  await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
+  base = `http://127.0.0.1:${server.address().port}`;
+  browser = await chromium.launch({ headless: true });
+  const zhContext = await context(), zh = await visit(zhContext);
+  let zhArticle, excerpt, unavailableExcerpt;
+  await check(1, async () => {
+    zhArticle = await realArticle(zh); excerpt = await saveSelected(zh, zhArticle);
+    assert.match(await zh.locator('.space-reading-tools__feedback').innerText(), /已保存到浏览器/);
+    await capture(zh, '01-zh-desktop-excerpt.png');
+    return { url: zhArticle.url, title: zhArticle.title, selectedCharacters: excerpt.text.length };
+  });
+  await check(2, async () => {
+    await selectActualText(zh); await open(zh, 'notes');
+    assert.equal(await zh.locator('[data-excerpt-save]').isDisabled(), true, 'a different window must invalidate the selection');
+    await open(zh, 'reader'); await selectActualText(zh);
+    await open(zh, 'reader', ''); await open(zh, 'reader', zhArticle.url);
+    await zh.locator('[data-reader-body] .post-content').waitFor();
+    assert.equal(await zh.locator('[data-excerpt-save]').isDisabled(), true, 'a replaced article body must not reuse the old selection');
+    assert.equal((await disk(zh)).excerpts.length, 1);
+  });
+  await check(3, async () => {
+    await open(zh, 'notes'); await maximize(zh, 'notes');
+    const source = zh.locator('[data-excerpt-action="source"]').first();
+    assert.equal(await source.innerText(), zhArticle.title); await source.click();
+    await zh.locator('[data-reader-body] .post-content').waitFor();
+    assert.equal((await snapshot(zh)).windows.find(window => window.app === 'reader').payload, zhArticle.url);
+    await flush(zh); await zh.reload(); await ready(zh); await open(zh, 'notes');
+    assert.equal(await zh.locator('.space-excerpt-shelf__quote').first().innerText(), excerpt.text);
+    // Simulate a safely stored private excerpt whose historical article has
+    // since disappeared. This is a storage failure scenario, not public content.
+    unavailableExcerpt = { id: 'qa-unavailable-source', text: 'PRIVATE_SAVED_EXCERPT_WITH_REMOVED_SOURCE\n完整私人文字仍然保留。', url: '/zh/growth/posts/removed-private-source/', title: '保存时的文章标题', anchor: '', createdAt: '2026-10-13T06:00:00.000Z' };
+    assert.equal((await catalog(zh)).articles.some(article => article.url === unavailableExcerpt.url), false);
+    await flush(zh);
+    await zh.evaluate(({ key, item }) => { const saved = JSON.parse(localStorage.getItem(key)); saved.excerpts.push(item); localStorage.setItem(key, JSON.stringify(saved)); }, { key: storageKey, item: unavailableExcerpt });
+    await zh.reload(); await ready(zh); await open(zh, 'notes');
+    const unavailable = zh.locator('.space-excerpt-shelf__entry').filter({ has: zh.locator('[data-excerpt-unavailable]') });
+    assert.equal(await unavailable.count(), 1);
+    assert.equal(await unavailable.locator('blockquote').innerText(), unavailableExcerpt.text);
+    assert.equal(await unavailable.locator('[data-excerpt-action="source"]').count(), 0);
+    assert.ok((await disk(zh)).excerpts.some(item => item.text === unavailableExcerpt.text));
+    await zh.locator('[data-excerpt-shelf]').scrollIntoViewIfNeeded(); await capture(zh, '03-zh-shelf-persisted.png');
+  });
+  await check(4, async () => {
+    await zh.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async () => { throw new Error('QA clipboard denied'); } } }));
+    await zh.locator('.space-excerpt-shelf__entry [data-excerpt-action="copy"]').first().click();
+    const fallback = zh.locator('[data-excerpt-copy-fallback]'); await fallback.waitFor();
+    const markdown = await fallback.inputValue();
+    const quoted = markdown.split('\n\n— ')[0].split('\n').map(line => line.replace(/^> /, '')).join('\n').replace(/\\([\\`*_[\]{}()!~|])/g, '$1').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    assert.equal(quoted, excerpt.text, 'manual copy must contain the complete selected text');
+    const sourcePath = new URL(zhArticle.url, base).pathname.replace(/\(/g, '%28').replace(/\)/g, '%29');
+    assert.ok(markdown.includes(sourcePath)); assert.ok(markdown.includes(zhArticle.title));
+    await fs.writeFile(path.join(outputDir, '04-manual-copy-citation.md'), markdown + '\n');
+    assert.equal(await fallback.evaluate(el => el.selectionStart === 0 && el.selectionEnd === el.value.length), true);
+    assert.equal(await zh.locator('[data-excerpt-status]').getAttribute('data-error'), 'true');
+    await zh.locator('.space-excerpt-shelf__entry').filter({ has: zh.locator('[data-excerpt-unavailable]') }).locator('[data-excerpt-action="copy"]').click();
+    await zh.waitForFunction(() => document.querySelector('[data-excerpt-copy-fallback]')?.value.includes('原文暂不可用'));
+    const oldCitation = await fallback.inputValue();
+    assert.equal(quotedText(oldCitation),unavailableExcerpt.text);
+    assert.ok(oldCitation.includes('原文暂不可用'));
+    assert.ok(!oldCitation.includes(`](${unavailableExcerpt.url}`));
+    const pending = zh.waitForEvent('download'); await zh.locator('.space-excerpt-shelf__header [data-excerpt-action="export"]').click();
+    const download = await pending, exportedPath = path.join(outputDir, '04-all-citations.md'); await download.saveAs(exportedPath);
+    const exported = await fs.readFile(exportedPath, 'utf8');
+    assert.ok(quotedText(exported).includes(unavailableExcerpt.text)); assert.ok(exported.includes('原文暂不可用'));
+  });
+  await check(5, async () => {
+    const originalNote = (await snapshot(zh)).note;
+    await zh.locator('.space-excerpt-shelf__entry [data-excerpt-action="remove"]').first().click();
+    await flush(zh);
+    await zh.waitForFunction(({ key, id }) => !JSON.parse(localStorage.getItem(key)).excerpts.some(item => item.id === id), { key: storageKey, id: excerpt.id });
+    assert.equal(await zh.locator('.space-excerpt-shelf__entry').count(), 1);
+    assert.equal(await zh.locator('.space-excerpt-shelf__quote').innerText(), unavailableExcerpt.text);
+    assert.equal((await disk(zh)).note, originalNote);
+  });
+  await zhContext.close();
+
+  const enContext = await context(), en = await visit(enContext, '/projects/');
+  await check(6, async () => {
+    const article = await realArticle(en), item = await saveSelected(en, article, true);
+    assert.equal(await en.locator('[data-excerpt-save]').innerText(), 'Save excerpt');
+    assert.match(await en.locator('.space-reading-tools__feedback').innerText(), /Saved in this browser/);
+    await capture(en, '06-en-desktop-keyboard.png');
+    return { url: article.url, title: article.title, selectedCharacters: item.text.length };
+  });
+  await enContext.close();
+  for (const [number, language, route] of [[7, 'zh', '/zh/projects/'], [8, 'en', '/projects/']]) {
+    await check(number, async () => {
+      const ctx = await context({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, reducedMotion: 'reduce' });
+      try {
+        const page = await visit(ctx, route), article = await realArticle(page);
+        await page.evaluate(() => window.BearSpace.execute('theme', { value: 'dark' })); await flush(page);
+        await saveSelected(page, article); await open(page, 'notes');
+        await page.locator('[data-excerpt-shelf]').scrollIntoViewIfNeeded();
+        assert.equal(await page.locator('[data-bear-workspace]').getAttribute('data-theme'), 'dark');
+        assert.equal(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches), true);
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+        const button = page.locator('.space-excerpt-shelf__entry [data-excerpt-action="copy"]').first(), bounds = await button.boundingBox();
+        assert.ok(bounds.width >= 44 && bounds.height >= 44, 'excerpt actions must provide 44px touch targets');
+        assert.ok(await page.locator('.space-excerpt-shelf__quote').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize) >= 14));
+        assert.ok(await page.locator('[data-space-window="notes"] [data-window-body]').evaluate(el => el.scrollWidth <= el.clientWidth + 1));
+        await capture(page, `${number}-${language}-mobile-dark-reduced.png`);
+      } finally { await ctx.close(); }
+    });
+  }
+
+  const multiContext = await context();
+  // Keep B genuinely stale without replacing the production store: model a lost
+  // browser notification, while all writes still use real localStorage and locks.
+  await multiContext.addInitScript(() => window.addEventListener('storage', event => { if (window.__holdBearStorage) event.stopImmediatePropagation(); }, true));
+  const a = await visit(multiContext), b = await visit(multiContext);
+  await open(a, 'notes'); await open(b, 'notes');
+  const actualSource = (await catalog(b)).articles[0];
+  await check(9, async () => {
+    await b.evaluate(() => { window.__holdBearStorage = true; window.BearSpace.execute('search', { query: 'notes' }); });
+    await b.locator('[data-space-search-input]').focus();
+    const before = (await snapshot(b)).note, note = 'CONTINUITY_A_NEW_NOTE_20261013';
+    await a.locator('[data-note-editor]').fill(note); await waitNote(a, note);
+    assert.equal((await snapshot(b)).note, before, 'B must actually remain stale during this check');
+    await b.evaluate(url => window.BearSpace.execute('favorite', { url }), actualSource.url); await flush(b); await waitNote(b, note);
+    assert.ok((await disk(b)).favorites.includes(actualSource.url));
+    await b.locator('[data-space-search-close]').click(); await open(b, 'notes');
+    const bar = await b.locator('[data-space-window="notes"] [data-window-drag]').boundingBox();
+    const previous = (await snapshot(b)).windows.find(window => window.app === 'notes').rect;
+    await b.mouse.move(bar.x + bar.width / 2, bar.y + 18); await b.mouse.down();
+    await b.mouse.move(bar.x + bar.width / 2 - 75, bar.y + 38, { steps: 6 }); await b.mouse.up(); await flush(b);
+    assert.notDeepEqual((await snapshot(b)).windows.find(window => window.app === 'notes').rect, previous);
+    await waitNote(b, note); assert.equal((await disk(b)).note, note);
+  });
+  await check(10, async () => {
+    const noteA = 'CONTINUITY_CONCURRENT_A', noteB = 'CONTINUITY_CONCURRENT_B';
+    await a.locator('[data-note-editor]').fill(noteA); await waitNote(a, noteA);
+    await b.locator('[data-note-editor]').fill(noteB); await waitNote(b, noteB);
+    const saved = await disk(b), texts = new Set(saved.recoveries.map(copy => copy.note));
+    assert.ok(texts.has(noteA) && texts.has(noteB), 'both competing notes must be recoverable');
+    await b.evaluate(() => { window.__holdBearStorage = false; });
+    await open(b, 'settings');
+    await b.locator('[data-transfer-recoveries]').scrollIntoViewIfNeeded(); await capture(b, '10-concurrent-recoveries.png');
+    await b.reload(); await ready(b);
+    const restored = (await snapshot(b)).recoveries.map(copy => copy.note);
+    assert.ok(restored.includes(noteA) && restored.includes(noteB));
+  });
+  await multiContext.close();
+
+  const transferContext = await context(), transfer = await visit(transferContext);
+  await open(transfer, 'notes'); await transfer.locator('[data-note-editor]').fill('BACKUP_ORIGINAL_NOTE'); await waitNote(transfer, 'BACKUP_ORIGINAL_NOTE');
+  await open(transfer, 'settings'); await maximize(transfer, 'settings');
+  const backup = await downloadJSON(transfer, () => transfer.locator('[data-transfer-export]').click(), 'transfer-input-backup.json');
+  await check(11, async () => {
+    await chooseBackup(transfer, backup);
+    assert.ok((await transfer.locator('[data-transfer-snippet]').innerText()).includes('BACKUP_ORIGINAL_NOTE'));
+    await transfer.evaluate(() => window.BearSpace.execute('note', { text: 'EDIT_AFTER_PREVIEW' })); await waitNote(transfer, 'EDIT_AFTER_PREVIEW');
+    await transfer.locator('[data-transfer-confirm]').click();
+    await transfer.locator('[data-transfer-preview]').waitFor({ state: 'hidden' });
+    assert.equal(await transfer.locator('[data-transfer-status]').getAttribute('data-error'), 'true');
+    assert.equal((await disk(transfer)).note, 'EDIT_AFTER_PREVIEW');
+    await capture(transfer, '11-import-preview-invalidated.png');
+  });
+  await check(12, async () => {
+    await chooseBackup(transfer, backup);
+    const previous = await downloadJSON(transfer, () => transfer.locator('[data-transfer-confirm]').click(), 'before-explicit-restore.json');
+    assert.equal(previous.workspace.note, 'EDIT_AFTER_PREVIEW');
+    await waitNote(transfer, 'BACKUP_ORIGINAL_NOTE');
+    const restored = await disk(transfer);
+    assert.ok(restored.recoveries.some(copy => copy.note === 'EDIT_AFTER_PREVIEW'));
+    await open(transfer, 'notes'); await transfer.locator('[data-note-editor]').fill('NOTE_AFTER_RESTORE'); await waitNote(transfer, 'NOTE_AFTER_RESTORE');
+    await transfer.reload(); await ready(transfer);
+    assert.equal((await snapshot(transfer)).note, 'NOTE_AFTER_RESTORE');
+    await open(transfer, 'settings');
+    const finalBackup = await downloadJSON(transfer, () => transfer.locator('[data-transfer-export]').click(), 'after-restore-backup.json');
+    assert.equal(finalBackup.workspace.note, 'NOTE_AFTER_RESTORE');
+  });
+  await transferContext.close();
+
+  await check(13, async () => {
+    const ctx = await context(), page = await visit(ctx);
+    try {
+      await open(page, 'notes'); await page.locator('[data-note-editor]').fill('QUOTA_PREVIOUS_NOTE'); await waitNote(page, 'QUOTA_PREVIOUS_NOTE');
+      await page.evaluate(key => {
+        const original = Storage.prototype.setItem;
+        Storage.prototype.setItem = function (name, value) { if (name === key) throw new DOMException('QA quota exceeded', 'QuotaExceededError'); return original.call(this, name, value); };
+      }, storageKey);
+      await page.locator('[data-note-editor]').fill('QUOTA_IN_MEMORY_NOTE'); await flush(page);
+      await page.waitForFunction(() => document.querySelector('[data-note-save]')?.textContent.includes('未能保存'));
+      assert.equal((await snapshot(page)).note, 'QUOTA_IN_MEMORY_NOTE');
+      assert.equal((await disk(page)).note, 'QUOTA_PREVIOUS_NOTE');
+      assert.equal(await page.locator('[data-storage-notice]').isVisible(), true);
+      await capture(page, '13-quota-unsaved-note.png');
+      await open(page, 'settings');
+      const exported = await downloadJSON(page, () => page.locator('[data-transfer-export]').click(), 'quota-memory-backup.json');
+      assert.equal(exported.workspace.note, 'QUOTA_IN_MEMORY_NOTE');
+    } finally { await ctx.close(); }
+  });
+  await check(14, async () => {
+    for (const [kind, raw] of [['malformed', '{broken'], ['future', '{"version":99,"note":"FUTURE_ORIGINAL"}']]) {
+      const ctx = await context();
+      await ctx.addInitScript(({ key, raw }) => { if (location.origin !== 'null' && !localStorage.getItem('__continuity_seeded')) { localStorage.setItem(key, raw); localStorage.setItem('__continuity_seeded', '1'); } }, { key: storageKey, raw });
+      try {
+        const page = await visit(ctx); await open(page, 'notes');
+        const note = `RECOVERABLE_${kind.toUpperCase()}_LOCAL_NOTE`;
+        await page.locator('[data-note-editor]').fill(note); await flush(page);
+        await page.waitForFunction(() => document.querySelector('[data-note-save]')?.textContent.includes('未能保存'));
+        assert.equal(await page.evaluate(key => localStorage.getItem(key), storageKey), raw);
+        assert.equal((await snapshot(page)).note, note);
+        await open(page, 'settings');
+        assert.equal(await page.locator('[data-transfer-storage-status]').getAttribute('data-error'), 'true');
+        assert.ok((await page.locator('[data-transfer-storage-status]').innerText()).includes('自动保存已暂停'));
+        const exported = await downloadJSON(page, () => page.locator('[data-transfer-export]').click(), `${kind}-memory-backup.json`);
+        assert.equal(exported.workspace.note, note);
+        const pending = page.waitForEvent('download'); await page.locator('[data-transfer-raw]').click();
+        const original = await pending, destination = path.join(outputDir, `${kind}-original-data.json`); await original.saveAs(destination);
+        assert.equal(await fs.readFile(destination, 'utf8'), raw);
+        assert.equal(await page.evaluate(key => localStorage.getItem(key), storageKey), raw);
+        await capture(page, `14-${kind}-protected-storage.png`);
+      } finally { await ctx.close(); }
+    }
+  });
+  await check(15, async () => assert.deepEqual(runtimeErrors, [], 'browser JavaScript errors must not be hidden by functional checks'));
+} catch (error) {
+  fatal = { message: error.message, stack: error.stack };
+  process.exitCode = 1;
+  console.error(error.stack || error.message);
+  if (currentPage && !currentPage.isClosed()) await capture(currentPage, 'failure.png').catch(() => {});
+} finally {
+  const report = { startedAt, completedAt: new Date().toISOString(), base, publicDir, outputDir, checks, runtimeErrors, fatal, passed: checks.filter(item => item.status === 'passed').length, total: checks.length };
+  try { await fs.writeFile(path.join(outputDir, 'checks.json'), JSON.stringify(report, null, 2)); }
+  finally {
+    // Only the browser and frozen-output server created by this script are closed.
+    try { if (browser) await browser.close(); }
+    finally { if (server?.listening) await new Promise(resolve => server.close(resolve)); }
+  }
+}

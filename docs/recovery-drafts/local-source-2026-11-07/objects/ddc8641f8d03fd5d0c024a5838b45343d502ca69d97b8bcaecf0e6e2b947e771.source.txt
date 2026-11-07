@@ -1,0 +1,26 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createWorkspace, reduceWorkspace, serializeWorkspace, APPS} from '../assets/js/space/state.mjs';
+const viewport={width:1280,height:800};
+test('a legal dense legacy snapshot survives serialization and restoration',()=>{
+ const source=createWorkspace({version:1,note:'"'.repeat(40000),draft:'"'.repeat(6000),favorites:Array.from({length:200},(_,i)=>'/'+i+'a'.repeat(490)),windows:APPS.map(app=>({id:app,app,payload:'"'.repeat(1000)}))},viewport);
+ const restored=createWorkspace(serializeWorkspace(source),viewport);
+ assert.equal(restored.note.length,source.note.length);
+ assert.ok(restored.note===source.note);
+ assert.equal(restored.favorites.length,200);
+});
+test('durable excerpts and conflict copies are preserved within their budgets',()=>{
+ const source=createWorkspace({version:1,excerpts:[{id:'e1',text:'真实文章选区',url:'/zh/ai-agent/posts/agent/',title:'Agent',anchor:'intro',createdAt:'2026-10-13T05:00:00.000Z'}],recoveries:[{id:'r1',note:'另一标签的版本',draft:'草稿',at:'2026-10-13T05:00:00.000Z',reason:'conflict'}]},viewport);
+ const restored=createWorkspace(serializeWorkspace(source),viewport);
+ assert.equal(restored.excerpts?.[0]?.text,'真实文章选区');
+ assert.equal(restored.recoveries?.[0]?.note,'另一标签的版本');
+});
+test('workspace window IDs remain consistent with one instance per registered app',()=>{
+ const s=createWorkspace({version:1,windows:[{id:'odd',app:'reader'},{id:'reader',app:'reader'},{id:'evil',app:'unknown'}],active:'odd'},viewport);
+ assert.deepEqual(s.windows.map(w=>w.id),['reader']);
+ assert.equal(s.active,'reader');
+});
+test('unsafe favorites never become durable navigation targets',()=>{
+ const s=createWorkspace({version:1,favorites:['/zh/articles/','//evil.test','/\\evil.test','/foo\nbar']},viewport);
+ assert.deepEqual(s.favorites,['/zh/articles/']);
+});

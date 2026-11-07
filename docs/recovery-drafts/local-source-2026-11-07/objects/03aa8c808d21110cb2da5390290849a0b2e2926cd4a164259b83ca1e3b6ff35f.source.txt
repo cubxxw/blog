@@ -1,0 +1,1622 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+
+// The real modules are exercised here: video.mjs directly, and video-player.js
+// through its actual loader/DOM path against a minimal injected fake DOM and a
+// fake adapter for the official YouTube iframe API. No copies of the
+// implementation are tested.
+const videoModule = await import(new URL('../assets/js/space/video.mjs', import.meta.url));
+const playerURL = new URL('../assets/js/space/video-player.js', import.meta.url);
+const playerSource = (await readFile(playerURL, 'utf8')).replace(/from '\.\/video\.mjs'/g, `from '${new URL('./video.mjs', playerURL).href}'`);
+const playerModule = await import(`data:text/javascript;base64,${Buffer.from(playerSource).toString('base64')}`);
+const { parseYouTubeURL, buildYouTubeEmbedURL, canonicalWatchURL, inertTitle, clampVideoSize, normalizeVideoReference, KNOWN_VIDEO_REFERENCES, MAX_VIDEO_START_SECONDS } = videoModule;
+const { mountVideoPlayer, mountReaderVideos, loadYouTubeIframeAPI } = playerModule;
+
+const ID = 'BsWxPI9UM4c';
+const WATCH = `https://www.youtube.com/watch?v=${ID}`;
+
+test('native resume can take the stream after its coordinator pause was confirmed', async () => {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div', environment.doc), hostB = new FakeElement('div', environment.doc);
+  const statuses = [];
+  let a, b;
+  try {
+    environment.win.YT = { Player: FakePlayer };
+    a = mountVideoPlayer({host:hostA,reference:WATCH,language:'en',onStatus:s=>statuses.push(s)});
+    b = mountVideoPlayer({host:hostB,reference:WATCH,language:'en'});
+    hostA.querySelector('[data-video-play]').click(); await tick(); await tick();
+    const playerA = FakePlayer.instances.at(-1); playerA.emit('onReady'); playerA.emit('onStateChange',{data:1});
+    hostB.querySelector('[data-video-play]').click(); await tick(); await tick();
+    const playerB = FakePlayer.instances.at(-1); playerB.emit('onReady'); playerB.emit('onStateChange',{data:1});
+    playerA.emit('onStateChange',{data:2}); // pause acknowledged before a new native gesture
+    const pauses = playerB.calls.filter(call=>call==='pause').length;
+    playerA.emit('onStateChange',{data:1});
+    assert.equal(statuses.at(-1).status,'playing');
+    assert.equal(playerB.calls.filter(call=>call==='pause').length,pauses+1);
+  } finally { a?.dispose(); b?.dispose(); environment.restore(); }
+});
+
+test('late PLAYING cannot reclaim after a newer player has already started', async () => {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div', environment.doc), hostB = new FakeElement('div', environment.doc);
+  const statuses = [];
+  let a, b;
+  try {
+    environment.win.YT = { Player: FakePlayer };
+    a = mountVideoPlayer({host:hostA,reference:WATCH,language:'en',onStatus:s=>statuses.push(s)});
+    b = mountVideoPlayer({host:hostB,reference:WATCH,language:'en'});
+    hostA.querySelector('[data-video-play]').click(); await tick(); await tick();
+    const playerA = FakePlayer.instances.at(-1); playerA.emit('onReady'); playerA.emit('onStateChange',{data:1});
+    hostB.querySelector('[data-video-play]').click(); await tick(); await tick();
+    const playerB = FakePlayer.instances.at(-1); playerB.emit('onReady'); playerB.emit('onStateChange',{data:1});
+    const playingCount = statuses.filter(s=>s.status==='playing').length, calls = playerB.calls.slice();
+    playerA.emit('onStateChange',{data:1}); // old event before pause acknowledgement
+    assert.equal(statuses.filter(s=>s.status==='playing').length,playingCount);
+    assert.deepEqual(playerB.calls,calls);
+  } finally { a?.dispose(); b?.dispose(); environment.restore(); }
+});
+
+// ---------------------------------------------------------------- fake DOM ---
+class FakeText {
+  constructor(value) { this.nodeType = 3; this.textContent = String(value); this.parentNode = null; }
+}
+function matchesSimple(node, part) {
+  const parsed = /^([A-Za-z0-9-]*)((?:\[[^\]]+\])*)$/.exec(part);
+  if (!parsed) return false;
+  const tag = parsed[1].toLowerCase();
+  if (tag && node.tagName !== tag.toUpperCase()) return false;
+  for (const attribute of parsed[2].matchAll(/\[([A-Za-z0-9_-]+)(?:=("?)([^\]"]*)\2)?\]/g)) {
+    const name = attribute[1].toLowerCase();
+    if (!node.hasAttribute(name)) return false;
+    if (attribute[3] !== undefined && node.getAttribute(name) !== attribute[3]) return false;
+  }
+  return true;
+}
+class FakeElement extends EventTarget {
+  constructor(tagName, ownerDocument) {
+    super();
+    this.nodeType = 1;
+    this.tagName = String(tagName).toUpperCase();
+    this.ownerDocument = ownerDocument;
+    this.parentNode = null;
+    this.childNodes = [];
+    this.attributes = new Map();
+    this.hidden = false;
+    this.className = '';
+    this.scrollRequests = [];
+  }
+  set textContent(value) { this.childNodes = []; if (value !== '') this.appendChild(new FakeText(value)); }
+  get textContent() { return this.childNodes.map(node => node.textContent).join(''); }
+  get children() { return this.childNodes.filter(node => node.nodeType === 1); }
+  appendChild(node) {
+    if (node.parentNode) node.parentNode.removeChild(node);
+    node.parentNode = this; this.childNodes.push(node); return node;
+  }
+  insertBefore(node, reference) {
+    if (node.parentNode) node.parentNode.removeChild(node);
+    const index = this.childNodes.indexOf(reference);
+    node.parentNode = this;
+    if (index === -1) this.childNodes.push(node); else this.childNodes.splice(index, 0, node);
+    return node;
+  }
+  replaceChildren(...nodes) { this.childNodes = []; for (const node of nodes) this.appendChild(node); }
+  removeChild(node) { const index = this.childNodes.indexOf(node); if (index >= 0) this.childNodes.splice(index, 1); node.parentNode = null; return node; }
+  remove() { if (this.parentNode) this.parentNode.removeChild(this); }
+  setAttribute(name, value) { this.attributes.set(String(name).toLowerCase(), String(value)); }
+  getAttribute(name) { const value = this.attributes.get(String(name).toLowerCase()); return value === undefined ? null : value; }
+  hasAttribute(name) { return this.attributes.has(String(name).toLowerCase()); }
+  removeAttribute(name) { this.attributes.delete(String(name).toLowerCase()); }
+  matches(selector) { return String(selector).split(',').some(part => matchesSimple(this, part.trim())); }
+  closest(selector) { let node = this; while (node && node.nodeType === 1) { if (node.matches(selector)) return node; node = node.parentNode; } return null; }
+  querySelectorAll(selector) {
+    const found = [];
+    const walk = node => { for (const child of node.childNodes) { if (child.nodeType === 1) { if (child.matches(selector)) found.push(child); walk(child); } } };
+    walk(this);
+    return found;
+  }
+  querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
+  click() { this.dispatchEvent(new Event('click')); }
+  scrollIntoView(options) { this.scrollRequests.push(options); }
+}
+class FakeDocument extends EventTarget {
+  constructor() {
+    super();
+    this.hidden = false;
+    this.documentElement = new FakeElement('html', this);
+    this.head = new FakeElement('head', this);
+    this.body = new FakeElement('body', this);
+    this.documentElement.appendChild(this.head);
+    this.documentElement.appendChild(this.body);
+  }
+  createElement(tagName) { return new FakeElement(tagName, this); }
+}
+
+// -------------------------------------------- fake official iframe API ---
+class FakePlayer {
+  static instances = [];
+  constructor(element, config) {
+    this.element = element;
+    this.config = config || {};
+    this.calls = [];
+    this.seeks = [];
+    FakePlayer.instances.push(this);
+  }
+  playVideo() { this.calls.push('play'); }
+  seekTo(seconds, allowSeekAhead) { this.seeks.push({ seconds, allowSeekAhead }); }
+  pauseVideo() { this.calls.push('pause'); }
+  destroy() { this.calls.push('destroy'); }
+  emit(name, event) { const handler = this.config.events && this.config.events[name]; if (handler) handler(event || {}); }
+}
+
+// ------------------------------------------------------------- fixtures ---
+const tick = () => new Promise(resolve => setImmediate(resolve));
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+const CHAPTERS = [
+  { start: 1011, title: '定义评估任务' },
+  { start: 1434, title: '从错误里发现问题' },
+  { start: 1899, title: '让评估进入产品流程' }
+];
+const chapterReference = (start = 0) => ({ id: ID, start, chapters: CHAPTERS });
+const chapterButton = (host, start) => host.querySelector(`[data-video-chapter="${start}"]`);
+function setupEnvironment() {
+  const saved = { window: globalThis.window, document: globalThis.document, location: globalThis.location };
+  const doc = new FakeDocument();
+  const win = {};
+  globalThis.document = doc;
+  globalThis.window = win;
+  globalThis.location = { origin: 'https://blog.test' };
+  FakePlayer.instances = [];
+  return {
+    doc,
+    win,
+    restore() {
+      globalThis.window = saved.window;
+      globalThis.document = saved.document;
+      globalThis.location = saved.location;
+    }
+  };
+}
+function mountWindowPlayer(options = {}) {
+  const environment = setupEnvironment();
+  const host = new FakeElement('div', environment.doc);
+  const statuses = [];
+  const widget = mountVideoPlayer({
+    host,
+    reference: options.reference || `${WATCH}&t=90s`,
+    language: options.language || 'zh',
+    onStatus: status => statuses.push(status),
+    apiTimeoutMs: options.apiTimeoutMs || 5000
+  });
+  return {
+    ...environment,
+    host,
+    statuses,
+    widget,
+    play: () => host.querySelector('[data-video-play]').click(),
+    player: () => FakePlayer.instances.at(-1),
+    players: () => FakePlayer.instances,
+    async ready() {
+      await tick();
+      await tick();
+      return FakePlayer.instances.at(-1);
+    },
+    cleanup() {
+      widget.dispose();
+      environment.restore();
+    }
+  };
+}
+
+// ============================================================ video.mjs ===
+test('parseYouTubeURL accepts the exact HTTPS YouTube forms and canonicalises them', () => {
+  for (const value of [
+    `https://www.youtube.com/watch?v=${ID}`,
+    `https://youtube.com/watch?v=${ID}`,
+    `https://m.youtube.com/watch?v=${ID}`,
+    `https://www.youtube.com/watch/?v=${ID}`,
+    `https://www.youtube.com/embed/${ID}`,
+    `https://www.youtube.com/shorts/${ID}`,
+    `https://youtu.be/${ID}`,
+    `https://youtu.be/${ID}/`,
+    `HTTPS://WWW.YOUTUBE.COM/watch?v=${ID}`
+  ]) {
+    const parsed = parseYouTubeURL(value);
+    assert.ok(parsed, value);
+    assert.equal(parsed.id, ID, value);
+    assert.equal(parsed.start, 0, value);
+    assert.equal(parsed.watchURL, WATCH, value);
+    assert.deepEqual(Object.keys(parsed).sort(), ['id', 'start', 'watchURL'], value);
+  }
+});
+
+test('start times parse from t/start in seconds or hms within 0..21600', () => {
+  for (const [raw, expected] of [['0', 0], ['90', 90], ['90s', 90], ['1m30s', 90], ['1h2m3s', 3723], ['1h', 3600], ['21600', 21600], ['6h', 21600], ['1:30', 90], ['1:02:03', 3723]]) {
+    for (const template of [`https://www.youtube.com/watch?v=${ID}&t=${raw}`, `https://www.youtube.com/watch?v=${ID}&start=${raw}`, `https://www.youtube.com/embed/${ID}?start=${raw}`, `https://youtu.be/${ID}?t=${raw}`]) {
+      const parsed = parseYouTubeURL(template);
+      assert.ok(parsed, template);
+      assert.equal(parsed.start, expected, template);
+      assert.equal(parsed.watchURL, expected > 0 ? `${WATCH}&t=${expected}s` : WATCH, template);
+    }
+  }
+  for (const raw of ['21601', '6h1s', '-5', '1.5', '90x', 'abc', '', '1m30', '1:2:3:4', '1000000', '99:99']) {
+    assert.equal(parseYouTubeURL(`https://www.youtube.com/watch?v=${ID}&t=${encodeURIComponent(raw)}`), null, `t=${raw}`);
+    assert.equal(parseYouTubeURL(`https://www.youtube.com/watch?v=${ID}&start=${encodeURIComponent(raw)}`), null, `start=${raw}`);
+  }
+  assert.equal(MAX_VIDEO_START_SECONDS, 21600);
+});
+
+test('ambiguous duplicate v and time parameters are rejected', () => {
+  for (const value of [
+    `https://www.youtube.com/watch?v=${ID}&v=${ID}`,
+    `https://www.youtube.com/watch?v=${ID}&v=AAAAAAAAAAA`,
+    `https://www.youtube.com/watch?v=${ID}&t=10&t=20`,
+    `https://www.youtube.com/watch?v=${ID}&t=10&start=20`,
+    `https://www.youtube.com/watch?v=${ID}&start=10&start=20`,
+    `https://www.youtube.com/embed/${ID}?v=${ID}`,
+    `https://www.youtube.com/shorts/${ID}?v=${ID}`,
+    `https://youtu.be/${ID}?v=AAAAAAAAAAA`,
+    `https://www.youtube.com/watch?t=10`,
+    `https://www.youtube.com/watch`
+  ]) assert.equal(parseYouTubeURL(value), null, value);
+});
+
+test('credentials, ports, protocol-relative and non-HTTPS forms are rejected', () => {
+  for (const value of [
+    `http://www.youtube.com/watch?v=${ID}`,
+    `//www.youtube.com/watch?v=${ID}`,
+    `/watch?v=${ID}`,
+    `www.youtube.com/watch?v=${ID}`,
+    `javascript:alert(1)`,
+    `https://user@www.youtube.com/watch?v=${ID}`,
+    `https://user:pass@www.youtube.com/watch?v=${ID}`,
+    `https://www.youtube.com@evil.test/watch?v=${ID}`,
+    `https://www.youtube.com:443/watch?v=${ID}`,
+    `https://www.youtube.com:8443/watch?v=${ID}`,
+    `https://youtu.be:443/${ID}`,
+    ` https://www.youtube.com/watch?v=${ID}`,
+    `https://www.youtube.com/watch?v=${ID} `,
+    `https://www.youtube.com/watch?v=${ID}\n`
+  ]) assert.equal(parseYouTubeURL(value), null, JSON.stringify(value));
+});
+
+test('look-alike hosts, backslashes, controls and malformed IDs are rejected', () => {
+  for (const value of [
+    `https://www.youtube.com.evil.test/watch?v=${ID}`,
+    `https://evil.test/watch?v=${ID}`,
+    `https://evil.test/https://www.youtube.com/watch?v=${ID}`,
+    `https://music.youtube.com/watch?v=${ID}`,
+    `https://www.youtube.com./watch?v=${ID}`,
+    `https://www.youtubexcom/watch?v=${ID}`,
+    `https://www.youtube.com\\@evil.test/watch?v=${ID}`,
+    `https://www.youtube.com/watch?v=${ID}\\x`,
+    `https://www.youtube.com/watch?v=${ID}\u0000`,
+    `https://www.youtube.com/watch?v=short`,
+    `https://www.youtube.com/watch?v=AAAAAAAAAAAA`,
+    `https://www.youtube.com/watch?v=AAAA AAAA AA`,
+    `https://www.youtube.com/watch?v=AAAAAAAAAA%2F`,
+    `https://www.youtube.com/embed/short`,
+    `https://www.youtube.com/embed/${ID}/extra`,
+    `https://www.youtube.com/embed//${ID}`,
+    `https://www.youtube.com/shorts/${ID}/extra`,
+    `https://www.youtube.com/watch/extra?v=${ID}`,
+    `https://www.youtube.com/@handle`,
+    `https://www.youtube.com/playlist?list=PL1`,
+    `https://www.youtube.com/e/${ID}`,
+    `https://www.youtube.com/v/${ID}`,
+    `https://www.youtube.com/live/${ID}`,
+    `https://youtu.be/tooshort`,
+    `https://youtu.be/${ID}//evil`
+  ]) assert.equal(parseYouTubeURL(value), null, value);
+});
+
+test('caller parameters are never carried into canonical outputs', () => {
+  const parsed = parseYouTubeURL(`https://www.youtube.com/watch?v=${ID}&autoplay=1&list=PL1&origin=https%3A%2F%2Fevil.test&referrer=evil&hl=xx#frag`);
+  assert.equal(parsed.watchURL, WATCH);
+  const embed = buildYouTubeEmbedURL(parsed, 'https://blog.test');
+  assert.equal(embed.includes('autoplay=1'), false);
+  assert.equal(embed.includes('list='), false);
+  assert.equal(embed.includes('referrer'), false);
+  assert.ok(embed.includes('origin=https%3A%2F%2Fblog.test'));
+});
+
+test('buildYouTubeEmbedURL is fixed to the nocookie host with fixed flags and only a parsed start', () => {
+  assert.equal(
+    buildYouTubeEmbedURL({ id: ID, start: 90 }, 'https://blog.test'),
+    `https://www.youtube-nocookie.com/embed/${ID}?controls=1&autoplay=0&playsinline=1&enablejsapi=1&rel=0&start=90&origin=https%3A%2F%2Fblog.test`
+  );
+  assert.equal(
+    buildYouTubeEmbedURL(WATCH, 'https://blog.test'),
+    `https://www.youtube-nocookie.com/embed/${ID}?controls=1&autoplay=0&playsinline=1&enablejsapi=1&rel=0&origin=https%3A%2F%2Fblog.test`
+  );
+  assert.equal(
+    buildYouTubeEmbedURL({ id: ID, start: 21600 }, ''),
+    `https://www.youtube-nocookie.com/embed/${ID}?controls=1&autoplay=0&playsinline=1&enablejsapi=1&rel=0&start=21600`
+  );
+  for (const origin of ['javascript:alert(1)', 'data:text/html,x', '//evil.test', 'null', 'https://user:pass@blog.test', 'not a url', '']) {
+    const embed = buildYouTubeEmbedURL({ id: ID }, origin);
+    assert.ok(embed, origin);
+    assert.equal(embed.includes('origin='), false, origin);
+  }
+  assert.ok(buildYouTubeEmbedURL({ id: ID }, 'http://localhost:1313').includes('origin=http%3A%2F%2Flocalhost%3A1313'));
+  for (const reference of [null, '', 'https://evil.test/watch?v=ID', { id: 'short' }, { id: ID, start: 21601 }, { id: ID, start: 'abc' }]) {
+    assert.equal(buildYouTubeEmbedURL(reference, 'https://blog.test'), null, JSON.stringify(reference));
+    assert.equal(canonicalWatchURL(reference), null, JSON.stringify(reference));
+  }
+  assert.equal(canonicalWatchURL({ id: ID, start: 12 }), `${WATCH}&t=12s`);
+});
+
+test('canonical watch URLs round-trip and reference helpers stay inert', () => {
+  const parsed = parseYouTubeURL(`https://www.youtube.com/embed/${ID}?start=3723`);
+  assert.equal(parsed.watchURL, `${WATCH}&t=3723s`);
+  const roundTrip = parseYouTubeURL(parsed.watchURL);
+  assert.deepEqual({ id: roundTrip.id, start: roundTrip.start }, { id: parsed.id, start: parsed.start });
+  assert.equal(inertTitle('  有\u0000控制\n字符  ', 'fallback'), '有 控制 字符');
+  assert.equal(inertTitle('', 'fallback'), 'fallback');
+  assert.equal(inertTitle('x'.repeat(300)).length, 120);
+  assert.deepEqual(clampVideoSize(10, 999999), { width: 200, height: 2160 });
+  assert.deepEqual(clampVideoSize(640, 360), { width: 640, height: 360 });
+  assert.deepEqual(clampVideoSize('nope', NaN), { width: 640, height: 360 });
+  const local = '/images/posts/ai-english-learning/youtube-evals-english-transcript.png';
+  const normalized = normalizeVideoReference({ id: ID, title: ' 标题 ', poster: local }, [{ id: ID, title: 'References title' }]);
+  assert.deepEqual({ id: normalized.id, start: normalized.start, watchURL: normalized.watchURL, title: normalized.title, poster: normalized.poster },
+    { id: ID, start: 0, watchURL: WATCH, title: '标题', poster: local });
+  const fromReferences = normalizeVideoReference(WATCH, [{ id: ID, title: 'Authoritative title', poster: local }]);
+  assert.equal(fromReferences.title, 'Authoritative title');
+  assert.equal(normalizeVideoReference(WATCH, [], 'anchor label').title, 'anchor label');
+  for (const poster of ['https://i.ytimg.com/vi/x/hq.jpg', '//cdn.test/x.jpg', '/img\\x.jpg', 'relative.jpg']) {
+    assert.equal(normalizeVideoReference({ id: ID, poster }, []).poster, '', poster);
+  }
+  const known = KNOWN_VIDEO_REFERENCES.find(item => item.id === ID);
+  assert.ok(known, 'the real known video is registered');
+  assert.equal(known.article, '/zh/growth/posts/ai-english-learning/');
+  assert.equal(normalizeVideoReference(WATCH, []).poster, known.poster);
+});
+
+// ====================================================== video-player.js ===
+test('nothing remote loads before the user explicitly activates playback', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    await tick();
+    assert.equal(fixture.doc.head.querySelectorAll('script').length, 0);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+    assert.equal(fixture.host.querySelectorAll('video').length, 0);
+    const poster = fixture.host.querySelector('[data-video-poster]');
+    assert.ok(poster);
+    assert.equal(poster.getAttribute('src'), '/images/posts/ai-english-learning/youtube-evals-english-transcript.png');
+    assert.equal(fixture.host.querySelectorAll('[data-video-play]').length, 1);
+    assert.equal(fixture.statuses.length, 0);
+  } finally { fixture.cleanup(); }
+});
+
+test('remote poster candidates and unrecognised references never render media', async () => {
+  const fixture = mountWindowPlayer({ reference: { id: ID, poster: 'https://i.ytimg.com/vi/x/hq.jpg' } });
+  try {
+    assert.equal(fixture.host.querySelectorAll('[data-video-poster]').length, 0);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+  } finally { fixture.cleanup(); }
+  const environment = setupEnvironment();
+  try {
+    const host = new FakeElement('div', environment.doc);
+    const statuses = [];
+    const widget = mountVideoPlayer({ host, reference: 'https://evil.test/watch?v=x', language: 'zh', onStatus: status => statuses.push(status) });
+    assert.equal(statuses[0].status, 'error');
+    assert.equal(host.querySelectorAll('iframe').length, 0);
+    assert.ok(host.querySelector('[data-video-notice]'));
+    widget.dispose();
+  } finally { environment.restore(); }
+});
+
+test('fast repeated activations create exactly one script, frame and player', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    fixture.play();
+    fixture.play();
+    await tick();
+    await tick();
+    assert.equal(fixture.players().length, 1);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 1);
+    const player = fixture.player();
+    assert.equal(player.element.getAttribute('src'), `https://www.youtube-nocookie.com/embed/${ID}?controls=1&autoplay=0&playsinline=1&enablejsapi=1&rel=0&start=90&origin=https%3A%2F%2Fblog.test`);
+    assert.equal(player.element.tabIndex, 0);
+    assert.ok(player.element.getAttribute('title').includes('YouTube'));
+    assert.equal(player.element.getAttribute('referrerpolicy'), 'strict-origin-when-cross-origin');
+    assert.equal(player.element.getAttribute('allow'), 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+    assert.equal(player.calls.includes('play'), false);
+    assert.equal(fixture.statuses.every(status => status.status !== 'playing'), true);
+  } finally { fixture.cleanup(); }
+});
+
+test('the iframe load alone is never ready or playing; ready comes from the API event', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    assert.ok(player);
+    assert.equal(fixture.statuses.some(status => status.status === 'ready' || status.status === 'playing'), false);
+    assert.equal(player.calls.includes('play'), false);
+    player.emit('onReady');
+    assert.equal(fixture.statuses.at(-1).status, 'ready');
+    assert.equal(player.calls.filter(call => call === 'play').length, 1);
+    player.emit('onStateChange', { data: 3 });
+    assert.equal(fixture.statuses.at(-1).status, 'buffering');
+    player.emit('onStateChange', { data: 1 });
+    assert.equal(fixture.statuses.at(-1).status, 'playing');
+    player.emit('onStateChange', { data: 2 });
+    assert.equal(fixture.statuses.at(-1).status, 'paused');
+    player.emit('onStateChange', { data: 0 });
+    assert.equal(fixture.statuses.at(-1).status, 'ended');
+  } finally { fixture.cleanup(); }
+});
+
+test('blocked autoplay tells the user to click native play and never claims playing', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onAutoplayBlocked');
+    const last = fixture.statuses.at(-1);
+    assert.notEqual(last.status, 'playing');
+    assert.match(last.message, /播放按钮/);
+    assert.equal(fixture.statuses.every(status => status.status !== 'playing'), true);
+  } finally { fixture.cleanup(); }
+});
+
+test('dispose before the API arrives never creates a player or frame', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.play();
+    await tick();
+    assert.equal(fixture.doc.head.querySelectorAll('script').length, 1);
+    fixture.widget.dispose();
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.win.onYouTubeIframeAPIReady();
+    await tick();
+    await tick();
+    assert.equal(fixture.players().length, 0);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+  } finally { fixture.cleanup(); }
+});
+
+test('late player events after dispose do not recreate frames or call play', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    fixture.widget.dispose();
+    assert.deepEqual(player.calls, ['play', 'destroy']);
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    player.emit('onError', { data: 100 });
+    player.emit('onAutoplayBlocked');
+    assert.deepEqual(player.calls, ['play', 'destroy']);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+    assert.equal(fixture.statuses.filter(status => status.status === 'playing').length, 1);
+    assert.equal(fixture.statuses.filter(status => status.status === 'error').length, 0);
+  } finally { fixture.cleanup(); }
+});
+
+test('hidden widgets cancel queued playback and never auto resume', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    fixture.widget.setVisible(false);
+    player.emit('onReady');
+    assert.equal(player.calls.includes('play'), false);
+    fixture.widget.setVisible(true);
+    await tick();
+    assert.equal(player.calls.includes('play'), false);
+    player.emit('onReady');
+    assert.equal(player.calls.includes('play'), false);
+    assert.equal(fixture.statuses.every(status => status.status !== 'playing'), true);
+  } finally { fixture.cleanup(); }
+});
+
+test('setVisible(false) pauses live playback and cancels the queued intent', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    assert.equal(player.calls.filter(call => call === 'play').length, 1);
+    fixture.widget.setVisible(false);
+    assert.equal(player.calls.filter(call => call === 'pause').length, 1);
+    player.emit('onReady');
+    assert.equal(player.calls.filter(call => call === 'play').length, 1);
+  } finally { fixture.cleanup(); }
+});
+
+test('the document visibilitychange handler pauses playback', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    fixture.doc.hidden = true;
+    fixture.doc.dispatchEvent(new Event('visibilitychange'));
+    assert.equal(player.calls.filter(call => call === 'pause').length, 1);
+    player.emit('onReady');
+    assert.equal(player.calls.filter(call => call === 'play').length, 1);
+  } finally { fixture.cleanup(); }
+});
+
+test('only one module media stream is active at a time', async () => {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div', environment.doc);
+  const hostB = new FakeElement('div', environment.doc);
+  let widgetA, widgetB;
+  try {
+    widgetA = mountVideoPlayer({ host: hostA, reference: `${WATCH}&t=30s`, language: 'zh', onStatus() {} });
+    widgetB = mountVideoPlayer({ host: hostB, reference: WATCH, language: 'zh', onStatus() {} });
+    environment.win.YT = { Player: FakePlayer };
+    hostA.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const playerA = FakePlayer.instances.at(-1);
+    playerA.emit('onReady');
+    assert.deepEqual(playerA.calls, ['play']);
+    hostB.querySelector('[data-video-play]').click();
+    assert.deepEqual(playerA.calls, ['play', 'pause']);
+    await tick();
+    await tick();
+    const playerB = FakePlayer.instances.at(-1);
+    assert.notEqual(playerB, playerA);
+    playerB.emit('onReady');
+    assert.deepEqual(playerB.calls, ['play']);
+    playerA.emit('onReady');
+    assert.deepEqual(playerA.calls, ['play', 'pause']);
+  } finally {
+    widgetA.dispose();
+    widgetB.dispose();
+    environment.restore();
+  }
+});
+
+test('YouTube error codes produce localized actionable errors with the original link', async () => {
+  for (const [language, code, expected, forbidden] of [
+    ['zh', 100, /移除|私密/, /Referer/],
+    ['en', 100, /removed|private/, /Referer/],
+    ['zh', 101, /作者/, null],
+    ['en', 101, /owner/, null],
+    ['zh', 150, /作者/, null],
+    ['en', 150, /owner/, null],
+    ['zh', 153, /Referer/, /移除/],
+    ['en', 153, /Referer/, /removed/]
+  ]) {
+    const fixture = mountWindowPlayer({ language });
+    try {
+      fixture.win.YT = { Player: FakePlayer };
+      fixture.play();
+      const player = await fixture.ready();
+      player.emit('onReady');
+      player.emit('onError', { data: code });
+      const last = fixture.statuses.at(-1);
+      assert.equal(last.status, 'error');
+      assert.equal(last.code, code);
+      const notice = fixture.host.querySelector('[data-video-notice]');
+      assert.equal(notice.hidden, false);
+      const text = notice.querySelector('[data-video-notice-text]').textContent;
+      assert.match(text, expected, `${language}/${code}`);
+      if (forbidden) assert.doesNotMatch(text, forbidden, `${language}/${code}`);
+      assert.equal(notice.querySelector('[data-video-notice-source]').getAttribute('href'), `${WATCH}&t=90s`);
+      assert.ok(notice.querySelector('[data-video-retry]'));
+      assert.ok(fixture.host.querySelector('[data-video-source]').getAttribute('href').startsWith(WATCH));
+    } finally { fixture.cleanup(); }
+  }
+});
+
+test('errors keep the original source usable and retry returns to the same reference', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onError', { data: 101 });
+    assert.equal(fixture.host.querySelector('[data-video-notice]').hidden, false);
+    fixture.host.querySelector('[data-video-retry]').click();
+    await tick();
+    await tick();
+    assert.deepEqual(player.calls, ['play', 'destroy']);
+    const replacement = fixture.player();
+    assert.notEqual(replacement, player);
+    assert.equal(replacement.element.getAttribute('src'), player.element.getAttribute('src'));
+    assert.ok(replacement.element.getAttribute('src').includes(`/embed/${ID}`));
+    replacement.emit('onReady');
+    assert.equal(replacement.calls.filter(call => call === 'play').length, 1);
+    assert.equal(fixture.statuses.at(-1).status, 'ready');
+    replacement.emit('onStateChange', { data: 1 });
+    assert.equal(fixture.statuses.at(-1).status, 'playing');
+  } finally { fixture.cleanup(); }
+});
+
+test('an API load failure keeps the original source usable and retry can recover', async () => {
+  const fixture = mountWindowPlayer({ apiTimeoutMs: 20 });
+  try {
+    fixture.play();
+    await wait(80);
+    await tick();
+    const notice = fixture.host.querySelector('[data-video-notice]');
+    assert.equal(notice.hidden, false);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+    assert.match(notice.querySelector('[data-video-notice-text]').textContent, /原链接/);
+    assert.equal(notice.querySelector('[data-video-notice-source]').getAttribute('href'), `${WATCH}&t=90s`);
+    assert.equal(fixture.statuses.at(-1).status, 'error');
+    assert.equal(fixture.doc.head.querySelectorAll('script').length, 0);
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.host.querySelector('[data-video-retry]').click();
+    await tick();
+    await tick();
+    const player = fixture.player();
+    assert.ok(player);
+    player.emit('onReady');
+    assert.equal(player.calls.filter(call => call === 'play').length, 1);
+    assert.equal(fixture.statuses.at(-1).status, 'ready');
+  } finally { fixture.cleanup(); }
+});
+
+test('the shared official iframe API loader is fixed, bounded and preserves prior callbacks', async () => {
+  const doc = new FakeDocument();
+  const priorCalls = [];
+  const prior = function prior() { priorCalls.push('prior'); };
+  const win = { onYouTubeIframeAPIReady: prior };
+  const first = loadYouTubeIframeAPI({ timeoutMs: 500, doc, win });
+  const second = loadYouTubeIframeAPI({ timeoutMs: 500, doc, win });
+  assert.equal(first, second);
+  const scripts = doc.head.querySelectorAll('script');
+  assert.equal(scripts.length, 1);
+  assert.equal(scripts[0].src, 'https://www.youtube.com/iframe_api');
+  win.YT = { Player: FakePlayer };
+  win.onYouTubeIframeAPIReady();
+  assert.equal((await first).Player, FakePlayer);
+  assert.deepEqual(priorCalls, ['prior']);
+  assert.equal(win.onYouTubeIframeAPIReady, prior);
+});
+
+test('a failed loader is bounded, cleans its stale handle and retry starts clean', async () => {
+  const doc = new FakeDocument();
+  const win = {};
+  await assert.rejects(() => loadYouTubeIframeAPI({ timeoutMs: 15, doc, win }), /timeout/);
+  assert.equal(doc.head.querySelectorAll('script').length, 0);
+  const retry = loadYouTubeIframeAPI({ timeoutMs: 15, doc, win });
+  assert.equal(doc.head.querySelectorAll('script').length, 1);
+  await assert.rejects(() => retry, /timeout/);
+  assert.equal(doc.head.querySelectorAll('script').length, 0);
+  const blocked = loadYouTubeIframeAPI({ timeoutMs: 2000, doc, win });
+  const [script] = doc.head.querySelectorAll('script');
+  script.dispatchEvent(new Event('error'));
+  await assert.rejects(() => blocked, /blocked/);
+  assert.equal(doc.head.querySelectorAll('script').length, 0);
+});
+
+// -------------------------------------------------------------- reader ---
+function readerFixture() {
+  const environment = setupEnvironment();
+  const doc = environment.doc;
+  const text = value => new FakeText(value);
+  const makeLink = (href, label) => { const anchor = doc.createElement('a'); anchor.textContent = label; anchor.setAttribute('href', href); return anchor; };
+  const content = new FakeElement('div', doc);
+  // Mirrors the real AI English learning article: inline mention first, the
+  // citation list last.
+  const caption = doc.createElement('p');
+  caption.appendChild(text('我的实际观看界面。'));
+  caption.appendChild(makeLink(WATCH, 'Lenny’s Podcast 这期访谈'));
+  caption.appendChild(text('。'));
+  const para = doc.createElement('p');
+  para.appendChild(makeLink('https://www.lennysnewsletter.com/p/why-ai-evals-are-the-hottest-new-skill', '节目页'));
+  const heading = doc.createElement('h2');
+  heading.textContent = '参考资料';
+  const list = doc.createElement('ul');
+  const item1 = doc.createElement('li');
+  const citation = makeLink(WATCH, 'Lenny’s Podcast：Hamel Husain 与 Shreya Shankar 的 Evaluation 访谈（视频）');
+  item1.appendChild(citation);
+  const item2 = doc.createElement('li');
+  item2.appendChild(makeLink('https://example.test/other', '别的资料'));
+  list.appendChild(item1);
+  list.appendChild(item2);
+  content.appendChild(caption);
+  content.appendChild(para);
+  content.appendChild(heading);
+  content.appendChild(list);
+  return { ...environment, content, caption, citation, calls: [] };
+}
+
+test('the reader inserts one small facade at the first relevant link and never rewrites citation links', () => {
+  const fixture = readerFixture();
+  try {
+    const handle = mountReaderVideos({
+      content: fixture.content,
+      article: { title: 'AI 英语学习' },
+      execute: () => {},
+      language: 'zh',
+      references: [{ id: ID, title: 'Lenny’s Podcast · AI evals interview', poster: '/images/posts/ai-english-learning/youtube-evals-english-transcript.png' }]
+    });
+    const facades = fixture.content.querySelectorAll('[data-video-widget]');
+    assert.equal(facades.length, 1);
+    assert.equal(fixture.content.children[0], facades[0]);
+    assert.equal(fixture.content.children[1], fixture.caption);
+    assert.equal(facades[0].querySelector('[data-video-title]').textContent, 'Lenny’s Podcast · AI evals interview');
+    assert.equal(facades[0].querySelector('[data-video-poster]').getAttribute('src'), '/images/posts/ai-english-learning/youtube-evals-english-transcript.png');
+    assert.ok(facades[0].querySelector('[data-video-window]'));
+    assert.ok(facades[0].querySelector('[data-video-source]').getAttribute('href').startsWith(WATCH));
+    // The original anchors, including the citation entry, keep their external
+    // safe source hrefs and are never duplicated.
+    assert.equal(fixture.citation.getAttribute('href'), WATCH);
+    assert.equal(fixture.citation.parentNode.children.length, 1);
+    assert.equal(fixture.content.querySelectorAll('a[href]').filter(anchor => anchor.getAttribute('href') === WATCH).length, 4);
+    for (const anchor of fixture.content.querySelectorAll('a[href]')) assert.ok(/^https:/.test(anchor.getAttribute('href')));
+    handle.dispose();
+    assert.equal(fixture.content.querySelectorAll('[data-video-widget]').length, 0);
+  } finally { fixture.restore(); }
+});
+
+test('reader titles fall back to the anchor label and stay inert text', () => {
+  const fixture = readerFixture();
+  try {
+    const handle = mountReaderVideos({ content: fixture.content, article: null, execute: () => {}, language: 'zh', references: [] });
+    const title = fixture.content.querySelector('[data-video-title]');
+    assert.equal(title.textContent, 'Lenny’s Podcast 这期访谈');
+    assert.equal(title.children.length, 0);
+    handle.dispose();
+    const raw = '<img src=x onerror=alert(1)> 评测访谈';
+    const handle2 = mountReaderVideos({ content: fixture.content, article: null, execute: () => {}, language: 'zh', references: [{ id: ID, title: raw }] });
+    const injected = fixture.content.querySelector('[data-video-title]');
+    assert.equal(injected.textContent, raw);
+    assert.equal(injected.children.length, 0);
+    assert.equal(fixture.content.querySelectorAll('img').length, 1);
+    assert.equal(fixture.content.querySelector('img').getAttribute('src'), '/images/posts/ai-english-learning/youtube-evals-english-transcript.png');
+    handle2.dispose();
+  } finally { fixture.restore(); }
+});
+
+test('the reader keeps unique IDs only, caps at eight and skips citation-only videos', () => {
+  const environment = setupEnvironment();
+  try {
+    const doc = environment.doc;
+    const text = value => new FakeText(value);
+    const makeLink = (href, label) => { const anchor = doc.createElement('a'); anchor.textContent = label; anchor.setAttribute('href', href); return anchor; };
+    const content = new FakeElement('div', doc);
+    const citationOnlyID = 'ZZZZZZZZZZZ';
+    for (let i = 0; i < 10; i++) {
+      const id = `AAAAAAAAAA${String.fromCharCode(65 + i)}`;
+      const para = doc.createElement('p');
+      para.appendChild(text('段落 '));
+      para.appendChild(makeLink(`https://www.youtube.com/watch?v=${id}`, `视频 ${i}`));
+      para.appendChild(text(' 还有 '));
+      para.appendChild(makeLink(`https://youtu.be/${id}?t=5s`, `同一视频 ${i}`));
+      content.appendChild(para);
+    }
+    const heading = doc.createElement('h2');
+    heading.textContent = '参考资料';
+    const list = doc.createElement('ul');
+    const item = doc.createElement('li');
+    item.appendChild(makeLink(`https://www.youtube.com/watch?v=${citationOnlyID}`, '仅出现在引用里的视频'));
+    list.appendChild(item);
+    content.appendChild(heading);
+    content.appendChild(list);
+    const handle = mountReaderVideos({ content, article: null, execute: () => {}, language: 'zh', references: [] });
+    const sources = content.querySelectorAll('[data-video-source]').map(anchor => anchor.getAttribute('href'));
+    assert.equal(sources.length, 8);
+    assert.equal(new Set(sources).size, 8);
+    assert.equal(sources.some(href => href.includes(citationOnlyID)), false);
+    assert.equal(item.children.length, 1);
+    handle.dispose();
+    assert.equal(content.querySelectorAll('[data-video-widget]').length, 0);
+  } finally { environment.restore(); }
+});
+
+test('Open in video window hands the canonical URL to execute and pauses the inline player', async () => {
+  const fixture = readerFixture();
+  try {
+    const trace = [];
+    const handle = mountReaderVideos({
+      content: fixture.content,
+      article: { title: 'AI 英语学习' },
+      execute: (name, payload) => trace.push(['execute', name, payload]),
+      language: 'zh',
+      references: []
+    });
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.content.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const player = FakePlayer.instances.at(-1);
+    player.emit('onReady');
+    assert.deepEqual(player.calls, ['play']);
+    const pauseVideo = player.pauseVideo.bind(player);
+    player.pauseVideo = () => { trace.push(['pause']); pauseVideo(); };
+    fixture.content.querySelector('[data-video-window]').click();
+    assert.deepEqual(trace, [['execute', 'open', { app: 'video', payload: WATCH }], ['pause']]);
+    handle.dispose();
+  } finally { fixture.restore(); }
+});
+
+test('reader dispose removes every facade and late events stop', async () => {
+  const fixture = readerFixture();
+  try {
+    const handle = mountReaderVideos({ content: fixture.content, article: null, execute: () => {}, language: 'zh', references: [] });
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.content.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const player = FakePlayer.instances.at(-1);
+    player.emit('onReady');
+    assert.deepEqual(player.calls, ['play']);
+    handle.dispose();
+    assert.equal(fixture.content.querySelectorAll('[data-video-widget]').length, 0);
+    assert.deepEqual(player.calls, ['play', 'destroy']);
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    assert.deepEqual(player.calls, ['play', 'destroy']);
+  } finally { fixture.restore(); }
+});
+
+test('reader setVisible(false) cancels queued inline playback before ready', async () => {
+  const fixture = readerFixture();
+  try {
+    const handle = mountReaderVideos({ content: fixture.content, article: null, execute: () => {}, language: 'zh', references: [] });
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.content.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const player = FakePlayer.instances.at(-1);
+    handle.setVisible(false);
+    player.emit('onReady');
+    assert.equal(player.calls.includes('play'), false);
+    handle.setVisible(true);
+    player.emit('onReady');
+    assert.equal(player.calls.includes('play'), false);
+    // Once the real player exists, playback is resumed with the native
+    // controls only; the facade never returns or fakes a second frame.
+    assert.equal(fixture.content.querySelectorAll('[data-video-play]').length, 0);
+    assert.equal(fixture.content.querySelectorAll('iframe').length, 1);
+    handle.dispose();
+  } finally { fixture.restore(); }
+});
+
+// ------------------------------------------- review repairs (1-7) ---
+test('a native PLAYING resume claims the module stream and pauses the other widget', async () => {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div', environment.doc);
+  const hostB = new FakeElement('div', environment.doc);
+  const statusesA = [];
+  let widgetA, widgetB;
+  try {
+    widgetA = mountVideoPlayer({ host: hostA, reference: WATCH, language: 'zh', onStatus: status => statusesA.push(status) });
+    widgetB = mountVideoPlayer({ host: hostB, reference: WATCH, language: 'zh', onStatus() {} });
+    environment.win.YT = { Player: FakePlayer };
+    hostA.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const playerA = FakePlayer.instances.at(-1);
+    playerA.emit('onReady');
+    playerA.emit('onStateChange', { data: 1 });
+    assert.deepEqual(playerA.calls, ['play']);
+    // B claims the stream with an explicit play; A is paused.
+    hostB.querySelector('[data-video-play]').click();
+    assert.deepEqual(playerA.calls, ['play', 'pause']);
+    await tick();
+    await tick();
+    const playerB = FakePlayer.instances.at(-1);
+    assert.notEqual(playerB, playerA);
+    playerB.emit('onReady');
+    playerB.emit('onStateChange', { data: 1 });
+    // B's widget leaves the stream and its intent is cancelled.
+    widgetB.setVisible(false);
+    assert.equal(playerB.calls.filter(call => call === 'pause').length, 1);
+    // A resumes through its native controls only: the PLAYING event claims the
+    // module stream and pauses B again so the streams cannot overlap.
+    playerA.emit('onStateChange', { data: 2 }); // coordinator pause acknowledged
+    const pausesBefore = playerA.calls.filter(call => call === 'pause').length;
+    playerA.emit('onStateChange', { data: 1 });
+    assert.equal(playerA.calls.filter(call => call === 'pause').length, pausesBefore); // a claim never pauses itself
+    assert.equal(playerB.calls.filter(call => call === 'pause').length, 2);
+    assert.equal(statusesA.at(-1).status, 'playing');
+  } finally {
+    widgetA.dispose();
+    widgetB.dispose();
+    environment.restore();
+  }
+});
+
+test('a late PLAYING after cancellation pauses again instead of reclaiming', async () => {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div', environment.doc);
+  const hostB = new FakeElement('div', environment.doc);
+  const statusesA = [];
+  let widgetA, widgetB;
+  try {
+    widgetA = mountVideoPlayer({ host: hostA, reference: WATCH, language: 'zh', onStatus: status => statusesA.push(status) });
+    widgetB = mountVideoPlayer({ host: hostB, reference: WATCH, language: 'zh', onStatus() {} });
+    environment.win.YT = { Player: FakePlayer };
+    hostA.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const playerA = FakePlayer.instances.at(-1);
+    playerA.emit('onReady');
+    playerA.emit('onStateChange', { data: 1 });
+    assert.equal(statusesA.filter(status => status.status === 'playing').length, 1);
+    // B's explicit play claims the stream and cancels A's intent.
+    hostB.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const playerB = FakePlayer.instances.at(-1);
+    const before = playerB.calls.slice();
+    // A late PLAYING arrives after the cancellation: pause again, do not
+    // reclaim against B's newer explicit intent.
+    playerA.emit('onStateChange', { data: 1 });
+    assert.equal(playerA.calls.filter(call => call === 'pause').length, 2);
+    assert.deepEqual(playerB.calls, before);
+    assert.equal(statusesA.filter(status => status.status === 'playing').length, 1);
+    // A's cancelled intent never revives playback.
+    playerA.emit('onReady');
+    assert.equal(playerA.calls.filter(call => call === 'play').length, 1);
+    // B's newer explicit intent still plays when ready.
+    playerB.emit('onReady');
+    assert.deepEqual(playerB.calls, ['play']);
+  } finally {
+    widgetA.dispose();
+    widgetB.dispose();
+    environment.restore();
+  }
+});
+
+test('late PLAYING while invisible is paused, cancels intent and never reports playing', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    fixture.widget.setVisible(false);
+    player.emit('onStateChange', { data: 1 });
+    // one pause from setVisible(false), one from the rejected PLAYING
+    assert.equal(player.calls.filter(call => call === 'pause').length, 2);
+    assert.equal(fixture.statuses.some(status => status.status === 'playing'), false);
+    player.emit('onReady');
+    assert.equal(player.calls.includes('play'), false);
+  } finally { fixture.cleanup(); }
+});
+
+test('ready and PLAYING on a hidden document are rejected without a visibilitychange event', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    fixture.doc.hidden = true; // hidden before the event fires
+    player.emit('onReady');
+    assert.equal(player.calls.includes('play'), false);
+    assert.equal(player.calls.filter(call => call === 'pause').length, 1);
+    player.emit('onStateChange', { data: 1 });
+    assert.equal(player.calls.filter(call => call === 'pause').length, 2);
+    assert.equal(fixture.statuses.some(status => status.status === 'playing'), false);
+    assert.equal(player.calls.includes('play'), false);
+    fixture.doc.hidden = false;
+    player.emit('onStateChange',{data:1}); // still awaiting confirmation of the hidden pause
+    assert.equal(fixture.statuses.some(status => status.status === 'playing'), false);
+    player.emit('onStateChange',{data:2});
+    const pauses = player.calls.filter(call => call === 'pause').length;
+    player.emit('onStateChange',{data:1});
+    assert.equal(fixture.statuses.at(-1).status,'playing','native play after the pause acknowledgement must be allowed');
+    assert.equal(player.calls.filter(call => call === 'pause').length,pauses);
+  } finally { fixture.cleanup(); }
+});
+
+test('a player that never becomes ready falls back honestly and retry recovers', async () => {
+  const fixture = mountWindowPlayer({ apiTimeoutMs: 20 });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    assert.ok(player);
+    assert.equal(fixture.statuses.at(-1).status, 'loading');
+    await wait(80);
+    assert.equal(fixture.statuses.at(-1).status, 'error');
+    assert.match(fixture.statuses.at(-1).message, /未就绪/);
+    assert.deepEqual(player.calls, ['destroy']);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+    assert.equal(fixture.host.querySelector('[data-video-notice]').hidden, false);
+    // callbacks arriving after the watchdog fired are inert
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    assert.deepEqual(player.calls, ['destroy']);
+    assert.equal(fixture.statuses.some(status => status.status === 'playing'), false);
+    // retry returns to the same reference and can reach ready
+    fixture.host.querySelector('[data-video-retry]').click();
+    await tick();
+    await tick();
+    const replacement = fixture.player();
+    assert.notEqual(replacement, player);
+    assert.ok(replacement.element.getAttribute('src').includes(`/embed/${ID}`));
+    replacement.emit('onReady');
+    assert.equal(fixture.statuses.at(-1).status, 'ready');
+  } finally { fixture.cleanup(); }
+});
+
+test('the readiness watchdog is cleared on ready and on dispose', async () => {
+  const fixture = mountWindowPlayer({ apiTimeoutMs: 30 });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    await wait(90);
+    assert.equal(fixture.statuses.at(-1).status, 'playing');
+    assert.deepEqual(player.calls, ['play']);
+  } finally { fixture.cleanup(); }
+  const late = mountWindowPlayer({ apiTimeoutMs: 30 });
+  try {
+    late.win.YT = { Player: FakePlayer };
+    late.play();
+    const player = await late.ready();
+    late.widget.dispose();
+    await wait(90);
+    assert.deepEqual(player.calls, ['destroy']);
+    assert.equal(late.statuses.every(status => status.status !== 'error'), true);
+  } finally { late.cleanup(); }
+});
+
+test('fast double retry still reaches ready with exactly one replacement player', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onError', { data: 101 });
+    fixture.host.querySelector('[data-video-retry]').click();
+    fixture.host.querySelector('[data-video-retry]').click(); // fast second retry
+    await tick();
+    await tick();
+    const created = fixture.players().filter(candidate => candidate !== player);
+    assert.equal(created.length, 1);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 1);
+    const replacement = created[0];
+    replacement.emit('onReady');
+    assert.equal(fixture.statuses.at(-1).status, 'ready');
+    replacement.emit('onStateChange', { data: 1 });
+    assert.equal(fixture.statuses.at(-1).status, 'playing');
+  } finally { fixture.cleanup(); }
+});
+
+test('the iframe delegates media features while the embed keeps autoplay=0', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    const allow = player.element.getAttribute('allow');
+    for (const feature of ['autoplay', 'encrypted-media', 'picture-in-picture', 'fullscreen']) assert.ok(allow.includes(feature), feature);
+    assert.match(player.element.getAttribute('src'), /[?&]autoplay=0(&|$)/);
+    assert.equal(player.calls.includes('play'), false);
+  } finally { fixture.cleanup(); }
+});
+
+test('citation detection is positional: body list links get facades, references entries do not', () => {
+  const environment = setupEnvironment();
+  try {
+    const doc = environment.doc;
+    const text = value => new FakeText(value);
+    const makeLink = (href, label) => { const anchor = doc.createElement('a'); anchor.textContent = label; anchor.setAttribute('href', href); return anchor; };
+    const content = new FakeElement('div', doc);
+    const bodyID = 'BBBBBBBBBBB';
+    const sharedID = 'CCCCCCCCCCC';
+    const bodyList = doc.createElement('ul');
+    const bodyItem = doc.createElement('li');
+    bodyItem.appendChild(makeLink(`https://www.youtube.com/watch?v=${bodyID}`, '正文列表里的视频'));
+    bodyItem.appendChild(text(' 与 '));
+    bodyItem.appendChild(makeLink(`https://www.youtube.com/watch?v=${sharedID}`, '正文与引用都有的视频'));
+    bodyList.appendChild(bodyItem);
+    const heading = doc.createElement('h2');
+    heading.textContent = '参考资料';
+    const citeList = doc.createElement('ul');
+    const citeItem = doc.createElement('li');
+    citeItem.appendChild(makeLink(`https://www.youtube.com/watch?v=${sharedID}`, '引用条目'));
+    const citeOnlyItem = doc.createElement('li');
+    citeOnlyItem.appendChild(makeLink('https://youtu.be/ZZZZZZZZZZZ', '仅引用'));
+    citeList.appendChild(citeItem);
+    citeList.appendChild(citeOnlyItem);
+    content.appendChild(bodyList);
+    content.appendChild(heading);
+    content.appendChild(citeList);
+    const handle = mountReaderVideos({ content, article: null, execute: () => {}, language: 'zh', references: [] });
+    const sources = content.querySelectorAll('[data-video-source]').map(anchor => anchor.getAttribute('href'));
+    assert.equal(sources.length, 2);
+    assert.ok(sources.some(href => href.includes(bodyID)));
+    assert.ok(sources.some(href => href.includes(sharedID)));
+    assert.equal(sources.some(href => href.includes('ZZZZZZZZZZZ')), false);
+    // facades sit before the body list, never inside it
+    assert.equal(content.children[0].tagName, 'SECTION');
+    assert.equal(content.children[1].tagName, 'SECTION');
+    assert.equal(content.children[2], bodyList);
+    assert.equal(bodyList.querySelectorAll('[data-video-widget]').length, 0);
+    // citation entries stay untouched
+    assert.equal(citeItem.children.length, 1);
+    assert.equal(citeOnlyItem.children.length, 1);
+    handle.dispose();
+    assert.equal(content.querySelectorAll('[data-video-widget]').length, 0);
+  } finally { environment.restore(); }
+});
+
+test('the video stage keeps YouTube minimum 200x200 with a black letterbox', async () => {
+  const css = await readFile(new URL('../assets/css/space-video.css', import.meta.url), 'utf8');
+  const stage = /\.sp-video__stage\s*\{([^}]*)\}/.exec(css);
+  assert.ok(stage, 'stage rule exists');
+  assert.ok(Number(/min-height:\s*(\d+)px/.exec(stage[1])?.[1]) >= 202, 'stage border must leave 200px for the actual iframe');
+  assert.match(stage[1], /background:\s*#000/);
+  assert.match(stage[1], /aspect-ratio:\s*16\s*\/\s*9/);
+  const widget = /\.space \.sp-video\s*\{([^}]*)\}/.exec(css);
+  assert.ok(widget, 'widget rule exists');
+  assert.match(widget[1], /min-width:\s*200px/);
+  assert.match(widget[1], /min-height:\s*200px/);
+});
+
+
+test('hiding before ready cancels intent without blocking the first native play after return', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = {Player:FakePlayer}; fixture.play();
+    const player = await fixture.ready();
+    fixture.widget.setVisible(false); player.emit('onReady'); fixture.widget.setVisible(true);
+    const calls = player.calls.slice(); player.emit('onStateChange',{data:1});
+    assert.equal(fixture.statuses.at(-1).status,'playing');
+    assert.deepEqual(player.calls,calls,'native play must not be rejected when it never played before hiding');
+  } finally { fixture.cleanup(); }
+});
+
+test('hidden onReady without PLAYING allows the first native play after returning', async () => {
+  const fixture = mountWindowPlayer();
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    fixture.doc.hidden = true; // no visibilitychange event before ready
+    player.emit('onReady');
+    assert.equal(player.calls.includes('play'), false);
+    fixture.doc.hidden = false;
+    const pauses = player.calls.filter(call => call === 'pause').length;
+    player.emit('onStateChange', { data: 1 });
+    assert.equal(fixture.statuses.at(-1).status, 'playing');
+    assert.equal(player.calls.filter(call => call === 'pause').length, pauses);
+  } finally { fixture.cleanup(); }
+});
+
+test('hidden PLAYING cannot reclaim another stream before its pause is acknowledged', async () => {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div', environment.doc);
+  const hostB = new FakeElement('div', environment.doc);
+  const statusesA = [];
+  let widgetA, widgetB;
+  try {
+    environment.win.YT = { Player: FakePlayer };
+    widgetA = mountVideoPlayer({ host: hostA, reference: WATCH, onStatus: status => statusesA.push(status) });
+    widgetB = mountVideoPlayer({ host: hostB, reference: WATCH });
+    hostA.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const playerA = FakePlayer.instances.at(-1);
+    widgetA.setVisible(false);
+    playerA.emit('onReady');
+    playerA.emit('onStateChange', { data: 1 }); // delayed playback is paused while hidden
+
+    hostB.querySelector('[data-video-play]').click();
+    await tick();
+    await tick();
+    const playerB = FakePlayer.instances.at(-1);
+    playerB.emit('onReady');
+    playerB.emit('onStateChange', { data: 1 });
+    const callsB = playerB.calls.slice();
+    const pausesA = playerA.calls.filter(call => call === 'pause').length;
+    widgetA.setVisible(true);
+    playerA.emit('onStateChange', { data: 1 }); // stale event before PAUSED, no new native gesture
+    assert.equal(statusesA.some(status => status.status === 'playing'), false);
+    assert.deepEqual(playerB.calls, callsB);
+    assert.equal(playerA.calls.filter(call => call === 'pause').length, pausesA + 1);
+
+    playerA.emit('onStateChange', { data: 2 });
+    playerA.emit('onStateChange', { data: 1 }); // native resume after the pause acknowledgement
+    assert.equal(statusesA.at(-1).status, 'playing');
+    assert.equal(playerB.calls.filter(call => call === 'pause').length, 1);
+  } finally {
+    widgetA?.dispose();
+    widgetB?.dispose();
+    environment.restore();
+  }
+});
+
+async function withTwoVideos(check) {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div',environment.doc), hostB = new FakeElement('div',environment.doc), statuses=[];
+  let a,b;
+  try {
+    environment.win.YT={Player:FakePlayer};
+    a=mountVideoPlayer({host:hostA,reference:WATCH,language:'en',onStatus:s=>statuses.push(s)});
+    b=mountVideoPlayer({host:hostB,reference:WATCH,language:'en'});
+    hostA.querySelector('[data-video-play]').click(); await tick(); await tick();
+    const playerA=FakePlayer.instances.at(-1);
+    await check({hostB,playerA,statuses});
+  } finally { a?.dispose(); b?.dispose(); environment.restore(); }
+}
+
+test('a coordinator claim before ready does not block a later first native play', async () => {
+  await withTwoVideos(async ({hostB,playerA,statuses}) => {
+    hostB.querySelector('[data-video-play]').click(); await tick(); await tick();
+    const playerB=FakePlayer.instances.at(-1); playerB.emit('onReady'); playerB.emit('onStateChange',{data:1});
+    playerA.emit('onReady'); playerA.emit('onStateChange',{data:1});
+    assert.equal(statuses.at(-1).status,'playing');
+    assert.equal(playerB.calls.filter(c=>c==='pause').length,1);
+  });
+});
+
+test('autoplay rejection releases intent so another confirmed-paused player can resume', async () => {
+  await withTwoVideos(async ({hostB,playerA,statuses}) => {
+    playerA.emit('onReady'); playerA.emit('onStateChange',{data:1});
+    hostB.querySelector('[data-video-play]').click(); await tick(); await tick();
+    const playerB=FakePlayer.instances.at(-1); playerB.emit('onReady'); playerB.emit('onAutoplayBlocked');
+    playerA.emit('onStateChange',{data:2}); playerA.emit('onStateChange',{data:1});
+    assert.equal(statuses.at(-1).status,'playing');
+    assert.equal(playerB.calls.filter(c=>c==='pause').length,1);
+  });
+});
+
+// ------------------------------------------------------- chapter playback ---
+test('chapter controls stay local and mark only an exact initial selection', () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference(1434), language: 'en' });
+  try {
+    const chapters = fixture.host.querySelector('[data-video-chapters]');
+    assert.ok(chapters);
+    assert.match(chapters.textContent, /Referenced moments/);
+    assert.match(chapterButton(fixture.host, 1011).textContent, /16:51.*定义评估任务/);
+    assert.equal(chapterButton(fixture.host, 1434).getAttribute('aria-pressed'), 'true');
+    assert.equal(chapterButton(fixture.host, 1011).getAttribute('aria-pressed'), 'false');
+    const children = fixture.host.querySelector('[data-video-widget]').children;
+    assert.equal(children.indexOf(chapters), children.indexOf(fixture.host.querySelector('[data-video-stage]')) + 1);
+    assert.equal(fixture.doc.head.querySelectorAll('script').length, 0);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+    assert.equal(fixture.statuses.some(status => status.status === 'playing'), false);
+  } finally { fixture.cleanup(); }
+  const unmatched = mountWindowPlayer({ reference: chapterReference(90) });
+  try {
+    assert.equal(unmatched.host.querySelectorAll('[data-video-chapter]').some(button => button.getAttribute('aria-pressed') === 'true'), false);
+  } finally { unmatched.cleanup(); }
+});
+
+test('a cold chapter gesture loads one iframe at its selected time and updates both source links', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    chapterButton(fixture.host, 1434).click();
+    const player = await fixture.ready();
+    assert.equal(fixture.players().length, 1);
+    assert.equal(new URL(player.element.getAttribute('src')).searchParams.get('start'), '1434');
+    for (const selector of ['[data-video-source]', '[data-video-notice-source]']) {
+      assert.equal(fixture.host.querySelector(selector).getAttribute('href'), `${WATCH}&t=1434s`);
+    }
+    assert.equal(chapterButton(fixture.host, 1434).getAttribute('aria-pressed'), 'true');
+    assert.equal(fixture.statuses.at(-1).status, 'loading');
+    player.emit('onReady');
+    assert.deepEqual(player.seeks, [], 'the cold iframe start already carries the selected time');
+    assert.deepEqual(player.calls, ['play']);
+    assert.equal(fixture.statuses.at(-1).status, 'ready');
+    player.emit('onStateChange', { data: 1 });
+    assert.equal(fixture.statuses.at(-1).status, 'playing');
+  } finally { fixture.cleanup(); }
+});
+
+test('a chapter gesture brings its existing stage into view', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    const stage = fixture.host.querySelector('[data-video-stage]');
+    const button = chapterButton(fixture.host, 1434);
+    button.click();
+    await fixture.ready();
+    assert.deepEqual(stage.scrollRequests, [{ block: 'start', behavior: 'instant' }]);
+    assert.equal(fixture.host.querySelector('[data-video-stage]'), stage);
+    assert.equal(chapterButton(fixture.host, 1434), button);
+    assert.deepEqual(button.scrollRequests, []);
+  } finally { fixture.cleanup(); }
+});
+
+test('a chapter gesture measures its toolbar once without adding nested reading tools twice', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    const stage = fixture.host.querySelector('[data-video-stage]');
+    const toolbar = new FakeElement('div', fixture.doc);
+    const body = new FakeElement('div', fixture.doc);
+    const nestedTools = new FakeElement('div', fixture.doc);
+    toolbar.getBoundingClientRect = () => ({ height: 158.39 });
+    nestedTools.getBoundingClientRect = () => ({ height: 85.39 });
+    body.querySelector = selector => selector === '.space-toolbar' ? toolbar : nestedTools;
+    stage.closest = selector => selector === '.space-window__body' ? body : null;
+    stage.style = {};
+    chapterButton(fixture.host, 1434).click();
+    await fixture.ready();
+    assert.equal(stage.style.scrollMarginTop, '166.39px');
+    assert.deepEqual(stage.scrollRequests, [{ block: 'start', behavior: 'instant' }]);
+    toolbar.getBoundingClientRect = () => ({ height: NaN });
+    chapterButton(fixture.host, 1899).click();
+    assert.equal(stage.style.scrollMarginTop, '166.39px', 'an invalid measurement preserves the current fallback');
+  } finally { fixture.cleanup(); }
+});
+
+test('default play and a retry each reveal the same stage exactly once', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference(1899), apiTimeoutMs: 20 });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    const stage = fixture.host.querySelector('[data-video-stage]');
+    fixture.play();
+    const player = await fixture.ready();
+    assert.deepEqual(stage.scrollRequests, [{ block: 'start', behavior: 'instant' }]);
+    await wait(80); // reproduce the mobile readiness timeout, then use its actual retry button
+    assert.equal(fixture.statuses.at(-1).status, 'error');
+    assert.deepEqual(player.calls, ['destroy']);
+    const retry = fixture.host.querySelector('[data-video-retry]');
+    retry.click();
+    const replacement = await fixture.ready();
+    replacement.emit('onReady');
+    assert.equal(stage.scrollRequests.length, 2, 'retry reveals once without a second chapter reveal');
+    assert.deepEqual(stage.scrollRequests[1], { block: 'start', behavior: 'instant' });
+    assert.equal(fixture.host.querySelector('[data-video-stage]'), stage);
+    assert.equal(fixture.host.querySelector('[data-video-retry]'), retry);
+    assert.equal(new URL(replacement.element.getAttribute('src')).searchParams.get('start'), '1899');
+    assert.equal(fixture.host.querySelector('[data-video-source]').getAttribute('href'), `${WATCH}&t=1899s`);
+  } finally { fixture.cleanup(); }
+});
+
+test('hidden and disposed play, chapter and retry controls never reveal the stage', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    const stage = fixture.host.querySelector('[data-video-stage]');
+    const play = fixture.host.querySelector('[data-video-play]');
+    const chapter = chapterButton(fixture.host, 1434);
+    const retry = fixture.host.querySelector('[data-video-retry]');
+    fixture.widget.setVisible(false);
+    for (const control of [play, chapter, retry]) control.click();
+    await tick();
+    assert.deepEqual(stage.scrollRequests, []);
+    assert.equal(fixture.players().length, 0);
+    fixture.widget.setVisible(true);
+    fixture.widget.dispose();
+    for (const control of [play, chapter, retry]) control.click();
+    assert.deepEqual(stage.scrollRequests, []);
+  } finally { fixture.cleanup(); }
+});
+
+test('a ready chapter gesture seeks and explicitly plays without replacing the native player', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 2 });
+    chapterButton(fixture.host, 1899).click();
+    assert.deepEqual(player.seeks, [{ seconds: 1899, allowSeekAhead: true }]);
+    assert.deepEqual(player.calls, ['play', 'play']);
+    assert.equal(fixture.players().length, 1);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 1);
+    assert.equal(fixture.statuses.at(-1).status, 'paused', 'selection never claims actual playback');
+    assert.equal(chapterButton(fixture.host, 1899).getAttribute('aria-pressed'), 'true');
+    player.emit('onStateChange', { data: 1 });
+    assert.equal(fixture.statuses.at(-1).status, 'playing');
+  } finally { fixture.cleanup(); }
+});
+
+test('chapter changes while loading consume only the latest request at ready', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    chapterButton(fixture.host, 1011).click();
+    const player = await fixture.ready();
+    chapterButton(fixture.host, 1434).click();
+    chapterButton(fixture.host, 1899).click();
+    assert.deepEqual(player.seeks, []);
+    assert.deepEqual(player.calls, []);
+    assert.equal(fixture.players().length, 1);
+    player.emit('onReady');
+    assert.deepEqual(player.seeks, [{ seconds: 1899, allowSeekAhead: true }]);
+    assert.deepEqual(player.calls, ['play']);
+    assert.equal(fixture.host.querySelector('[data-video-source]').getAttribute('href'), `${WATCH}&t=1899s`);
+    assert.equal(fixture.host.querySelectorAll('[data-video-chapter]').filter(button => button.getAttribute('aria-pressed') === 'true').length, 1);
+  } finally { fixture.cleanup(); }
+});
+
+test('rapid chapters before the API arrives create one frame using the latest selected time', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    chapterButton(fixture.host, 1011).click();
+    chapterButton(fixture.host, 1434).click();
+    chapterButton(fixture.host, 1899).click();
+    await tick();
+    assert.equal(fixture.doc.head.querySelectorAll('script').length, 1);
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.win.onYouTubeIframeAPIReady();
+    const player = await fixture.ready();
+    assert.equal(fixture.players().length, 1);
+    assert.equal(new URL(player.element.getAttribute('src')).searchParams.get('start'), '1899');
+    player.emit('onReady');
+    assert.deepEqual(player.seeks, []);
+    assert.deepEqual(player.calls, ['play']);
+  } finally { fixture.cleanup(); }
+});
+
+test('hidden chapter requests are cancelled before ready and never seek or resume on return', async () => {
+  for (const hide of [fixture => fixture.widget.setVisible(false), fixture => { fixture.doc.hidden = true; }]) {
+    const fixture = mountWindowPlayer({ reference: chapterReference() });
+    try {
+      fixture.win.YT = { Player: FakePlayer };
+      chapterButton(fixture.host, 1011).click();
+      const player = await fixture.ready();
+      chapterButton(fixture.host, 1899).click();
+      hide(fixture);
+      player.emit('onReady');
+      assert.deepEqual(player.seeks, []);
+      assert.equal(player.calls.includes('play'), false);
+      fixture.doc.hidden = false;
+      fixture.widget.setVisible(true);
+      player.emit('onReady');
+      assert.deepEqual(player.seeks, []);
+      assert.equal(player.calls.includes('play'), false);
+      assert.equal(chapterButton(fixture.host, 1899).getAttribute('aria-pressed'), 'true', 'last choice survives cancellation');
+      chapterButton(fixture.host, 1434).click();
+      assert.deepEqual(player.seeks, [{ seconds: 1434, allowSeekAhead: true }]);
+      assert.equal(player.calls.filter(call => call === 'play').length, 1);
+    } finally { fixture.cleanup(); }
+  }
+});
+
+test('disposing a queued chapter request makes late player callbacks and old controls inert', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    chapterButton(fixture.host, 1011).click();
+    const player = await fixture.ready();
+    const chapter = chapterButton(fixture.host, 1899);
+    chapter.click();
+    fixture.widget.dispose();
+    chapter.click();
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 1 });
+    assert.deepEqual(player.seeks, []);
+    assert.deepEqual(player.calls, ['destroy']);
+    assert.equal(fixture.statuses.some(status => status.status === 'playing'), false);
+    assert.equal(fixture.host.querySelectorAll('iframe').length, 0);
+  } finally { fixture.cleanup(); }
+});
+
+test('chapter selection survives a failure and retry embeds the chosen time', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    chapterButton(fixture.host, 1011).click();
+    const player = await fixture.ready();
+    chapterButton(fixture.host, 1899).click();
+    player.emit('onError', { data: 153 });
+    assert.equal(fixture.host.querySelector('[data-video-notice-source]').getAttribute('href'), `${WATCH}&t=1899s`);
+    fixture.host.querySelector('[data-video-retry]').click();
+    const replacement = await fixture.ready();
+    assert.notEqual(replacement, player);
+    assert.equal(new URL(replacement.element.getAttribute('src')).searchParams.get('start'), '1899');
+    player.emit('onReady');
+    assert.deepEqual(player.seeks, []);
+    replacement.emit('onReady');
+    assert.deepEqual(replacement.seeks, []);
+    assert.deepEqual(replacement.calls, ['play']);
+    assert.equal(chapterButton(fixture.host, 1899).getAttribute('aria-pressed'), 'true');
+  } finally { fixture.cleanup(); }
+});
+
+test('reader chapter selection carries the same time into source fallback and window handoff', async () => {
+  const fixture = readerFixture();
+  let handle;
+  try {
+    const calls = [];
+    handle = mountReaderVideos({ content: fixture.content, language: 'en', references: [chapterReference()], execute: (...args) => calls.push(args) });
+    fixture.win.YT = { Player: FakePlayer };
+    chapterButton(fixture.content, 1434).click();
+    await tick();
+    await tick();
+    const player = FakePlayer.instances.at(-1);
+    assert.match(fixture.content.querySelector('[data-video-chapters]').textContent, /Referenced moments/);
+    assert.equal(fixture.content.querySelector('[data-video-source]').getAttribute('href'), `${WATCH}&t=1434s`);
+    assert.equal(fixture.citation.getAttribute('href'), WATCH);
+    fixture.content.querySelector('[data-video-window]').click();
+    assert.deepEqual(calls, [['open', { app: 'video', payload: `${WATCH}&t=1434s` }]]);
+    player.emit('onReady');
+    assert.deepEqual(player.seeks, []);
+    assert.equal(player.calls.includes('play'), false);
+  } finally { handle?.dispose(); fixture.restore(); }
+});
+
+test('another chapter gesture cancels the older widget pending seek and claims its stream', async () => {
+  const environment = setupEnvironment();
+  const hostA = new FakeElement('div', environment.doc), hostB = new FakeElement('div', environment.doc);
+  let a, b;
+  try {
+    environment.win.YT = { Player: FakePlayer };
+    a = mountVideoPlayer({ host: hostA, reference: chapterReference() });
+    b = mountVideoPlayer({ host: hostB, reference: chapterReference() });
+    chapterButton(hostA, 1011).click();
+    await tick(); await tick();
+    const playerA = FakePlayer.instances.at(-1);
+    chapterButton(hostA, 1899).click();
+    chapterButton(hostB, 1434).click();
+    await tick(); await tick();
+    const playerB = FakePlayer.instances.at(-1);
+    playerA.emit('onReady');
+    assert.deepEqual(playerA.seeks, []);
+    assert.equal(playerA.calls.includes('play'), false);
+    playerB.emit('onReady');
+    playerB.emit('onStateChange', { data: 1 });
+    chapterButton(hostA, 1434).click();
+    assert.deepEqual(playerA.seeks, [{ seconds: 1434, allowSeekAhead: true }]);
+    assert.equal(playerA.calls.filter(call => call === 'play').length, 1);
+    assert.equal(playerB.calls.filter(call => call === 'pause').length, 1);
+  } finally { a?.dispose(); b?.dispose(); environment.restore(); }
+});
+
+test('window and reader preserve localized chapter titles as inert text', () => {
+  const reference = { id: ID, chapters: [{ start: 1011, title_zh: '中文片段', title_en: 'English <em>moment</em>' }] };
+  const fixture = mountWindowPlayer({ reference, language: 'en' });
+  try {
+    const button = chapterButton(fixture.host, 1011);
+    assert.match(button.textContent, /English <em>moment<\/em>/);
+    assert.equal(button.querySelectorAll('em').length, 0);
+  } finally { fixture.cleanup(); }
+  const reader = readerFixture();
+  let handle;
+  try {
+    handle = mountReaderVideos({ content: reader.content, references: [reference], language: 'en' });
+    assert.match(chapterButton(reader.content, 1011).textContent, /English <em>moment<\/em>/);
+    assert.equal(reader.content.querySelectorAll('em').length, 0);
+  } finally { handle?.dispose(); reader.restore(); }
+});
+
+test('a failed chapter seek does not play the wrong moment and offers a retry at the selected time', async () => {
+  const fixture = mountWindowPlayer({ reference: chapterReference() });
+  try {
+    fixture.win.YT = { Player: FakePlayer };
+    fixture.play();
+    const player = await fixture.ready();
+    player.emit('onReady');
+    player.emit('onStateChange', { data: 2 });
+    player.seekTo = () => { throw new Error('seek rejected'); };
+    chapterButton(fixture.host, 1434).click();
+    assert.equal(player.calls.filter(call => call === 'play').length, 1);
+    assert.equal(fixture.statuses.at(-1).status, 'error');
+    assert.match(fixture.statuses.at(-1).message, /无法跳转到所选片段/);
+    assert.equal(fixture.host.querySelector('[data-video-notice-source]').getAttribute('href'), `${WATCH}&t=1434s`);
+    fixture.host.querySelector('[data-video-retry]').click();
+    const replacement = await fixture.ready();
+    assert.equal(new URL(replacement.element.getAttribute('src')).searchParams.get('start'), '1434');
+    replacement.emit('onReady');
+    assert.deepEqual(replacement.calls, ['play']);
+  } finally { fixture.cleanup(); }
+});
+
+test('a video with no chapter metadata keeps its native facade and no chapter controls', () => {
+  const fixture = mountWindowPlayer({ reference: { id: 'AAAAAAAAAAA', start: 90 } });
+  try {
+    assert.equal(fixture.host.querySelector('[data-video-chapters]'), null);
+    assert.ok(fixture.host.querySelector('[data-video-play]'));
+    assert.equal(fixture.doc.head.querySelectorAll('script').length, 0);
+  } finally { fixture.cleanup(); }
+});

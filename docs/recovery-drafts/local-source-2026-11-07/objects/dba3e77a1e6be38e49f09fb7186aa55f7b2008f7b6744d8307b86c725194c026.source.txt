@@ -1,0 +1,210 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+
+const helpers = await import('../assets/js/space/excerpts.mjs').catch(() => ({}));
+const catalog = { articles: [
+  { url: '/zh/growth/posts/japan-travel-2025/', title: '日本旅居笔记', anchors: ['熊野古道', 'reading-1'] },
+  { url: '/zh/ai-agent/posts/codex/', title: 'Codex 的协议化内核' },
+] };
+const source = catalog.articles[0];
+const input = (extra = {}) => ({ text: '用木头、火与缺口和时间共处。', url: source.url, title: '不可相信的输入标题', ...extra });
+const normalize = (value, currentCatalog = catalog, options) => {
+  assert.equal(typeof helpers.normalizeExcerpt, 'function', 'excerpt normalization must exist');
+  return helpers.normalizeExcerpt(value, currentCatalog, options);
+};
+const create = (value, existing = [], options = {}) => {
+  assert.equal(typeof helpers.createExcerpt, 'function', 'excerpt creation must exist');
+  return helpers.createExcerpt(value, existing, catalog, { now: '2026-10-13T06:00:00.000Z', ...options });
+};
+
+test('uses the catalog title and canonical site source instead of caller metadata', () => {
+  const item = normalize(input({ text: '  一段原文\r\n第二行  ' }));
+  assert.equal(item.title, source.title);
+  assert.equal(item.url, source.url);
+  assert.equal(item.text, '一段原文\n第二行');
+});
+
+test('rejects unknown, executable, external, protocol-relative and ambiguous sources', () => {
+  for (const url of ['javascript:alert(1)', 'https://example.test/zh/growth/posts/japan-travel-2025/', '//example.test/a', '/unknown/', '/zh\\growth/posts/japan-travel-2025/', `${source.url}?next=evil`, `/zh/%5cgrowth/`, `/zh/../growth/`, `/zh/\u0000growth/`]) {
+    assert.equal(normalize(input({ url })), null, url);
+  }
+});
+
+test('supports a safe fragment while rejecting control and URL injection in anchors', () => {
+  const item = normalize(input({ url: `${source.url}#${encodeURIComponent('熊野古道')}` }));
+  assert.equal(item.url, source.url);
+  assert.equal(item.anchor, '熊野古道');
+  for (const anchor of ['x\ny', 'x\\y', '#a#b', '" onclick="alert(1)', 'x?query=y', '%0aevil']) {
+    assert.equal(normalize(input({ anchor })), null, anchor);
+  }
+  assert.equal(normalize(input({ anchor: 'not-in-body' }), catalog, { anchors: ['reading-1'] }), null);
+});
+
+test('keeps complete selected text and rejects empty or over-limit selections', () => {
+  assert.equal(normalize(input({ text: 'x'.repeat(1200) })).text.length, 1200);
+  assert.equal(normalize(input({ text: 'x'.repeat(1201) })), null);
+  assert.equal(normalize(input({ text: ' \n\t ' })), null);
+  assert.equal(normalize(input({ text: 'a\u0000b' })), null);
+});
+
+test('deduplicates complete text with canonical article URL, independent of anchor', () => {
+  const first = create(input({ anchor: 'reading-1' }));
+  assert.equal(first.ok, true);
+  assert.equal(first.status, 'saved');
+  assert.ok(first.excerpt.id);
+  const duplicate = create(input({ anchor: '熊野古道' }), first.excerpts);
+  assert.equal(duplicate.status, 'duplicate');
+  assert.equal(duplicate.excerpts.length, 1);
+  const differentTail = create(input({ text: first.excerpt.text + '还有下一句。' }), first.excerpts);
+  assert.equal(differentTail.excerpts.length, 2);
+  const differentSource = create(input({ url: catalog.articles[1].url }), first.excerpts);
+  assert.equal(differentSource.excerpts.length, 2);
+});
+
+test('at eighty excerpts refuses a new selection without silently dropping older work', () => {
+  let items = [];
+  for (let i = 0; i < 80; i += 1) items = create(input({ text: `原文第 ${i} 段` }), items).excerpts;
+  const result = create(input({ text: '第八十一段' }), items);
+  assert.equal(result.ok, false);
+  assert.equal(result.status, 'full');
+  assert.deepEqual(result.excerpts, items);
+  assert.equal(create(input({ text: items[0].text }), items).status, 'duplicate');
+});
+
+test('restoration bounds and deduplicates untrusted data with optional catalog validation', () => {
+  assert.equal(typeof helpers.normalizeExcerpts, 'function');
+  const items = Array.from({ length: 90 }, (_, i) => input({ text: `段落 ${i}`, id: 'same-id' }));
+  items.unshift(null, input({ url: '/unknown/' }), input({ text: 'x'.repeat(1201) }));
+  const restored = helpers.normalizeExcerpts(items, catalog);
+  assert.equal(restored.length, 80);
+  assert.equal(new Set(restored.map(item => item.id)).size, 80);
+  assert.ok(restored.every(item => item.title === source.title));
+  const safeShape = helpers.normalizeExcerpts([input({ url: '/unknown/' }), input({ url: '//evil.test/a' })]);
+  assert.equal(safeShape.length, 1);
+  assert.equal(helpers.normalizeExcerpts(safeShape, catalog).length, 0);
+});
+
+test('Markdown export includes quoted text and canonical backlinks without executing markup', () => {
+  assert.equal(typeof helpers.serializeExcerptMarkdown, 'function');
+  const item = normalize(input({ text: '<script>alert(1)</script>\n[伪造链接](javascript:alert(1)) & 原文', anchor: '熊野古道' }));
+  const markdown = helpers.serializeExcerptMarkdown([item], catalog);
+  assert.match(markdown, /^> &lt;script&gt;alert/);
+  assert.match(markdown, /\n> \\\[伪造链接\\\]/);
+  assert.ok(markdown.includes(`[${source.title}](${source.url}#${encodeURIComponent('熊野古道')})`));
+  assert.ok(!markdown.includes('<script>'));
+  assert.ok(!markdown.includes('[伪造链接](javascript:'));
+  const unavailable = helpers.serializeExcerptMarkdown([input({ url: '/unknown/' })], { ...catalog, language: 'zh' });
+  assert.ok(unavailable.includes('原文暂不可用'));
+  assert.ok(unavailable.includes(input().text));
+  assert.ok(!unavailable.includes('](/unknown/)'));
+});
+
+test('Markdown backlinks preserve encoded article paths and safely encode parentheses', () => {
+  const encoded = '/zh/growth/posts/%E6%97%A5%E6%9C%AC(2025)/';
+  const specialCatalog = { articles: [{ url: encoded, title: '日本 [旅居] 笔记' }] };
+  const markdown = helpers.serializeExcerptMarkdown([input({ url: encoded })], specialCatalog);
+  assert.ok(markdown.includes('/zh/growth/posts/%E6%97%A5%E6%9C%AC%282025%29/'));
+  assert.ok(!markdown.includes('%25E6'));
+  assert.ok(markdown.includes('[日本 \\[旅居\\] 笔记]'));
+});
+
+test('creating an excerpt leaves original arrays and records unchanged', () => {
+  const first = create(input());
+  Object.freeze(first.excerpt);
+  Object.freeze(first.excerpts);
+  const next = create(input({ text: '另一段完整原文。' }), first.excerpts);
+  assert.equal(next.status, 'saved');
+  assert.equal(first.excerpts.length, 1);
+  assert.equal(next.excerpts.length, 2);
+  assert.equal(first.excerpt.title, source.title);
+});
+
+test('adding a current excerpt preserves the complete private text of a removed source', () => {
+  const previous = create(input({ text: '原文已经下线，但这是读者完整保存的私人文字。\n包括第二段。' }));
+  const currentCatalog = { articles: [catalog.articles[1]] };
+  const next = helpers.createExcerpt(input({ url: catalog.articles[1].url, text: '来自仍公开文章的新摘录。' }), previous.excerpts, currentCatalog);
+  assert.equal(next.status, 'saved');
+  assert.equal(next.excerpts.length, 2);
+  assert.deepEqual(next.excerpts[0], previous.excerpt);
+  assert.equal(next.excerpts[1].title, catalog.articles[1].title);
+  assert.equal(helpers.createExcerpt(input(), previous.excerpts, currentCatalog).status, 'invalid', 'new selections still require a currently known source');
+});
+
+test('eighty old private excerpts retain capacity even after their sources disappear', () => {
+  const existing = Array.from({ length: 80 }, (_, index) => normalize(input({ text: `完整旧摘录 ${index}` })));
+  const result = helpers.createExcerpt(input({ url: catalog.articles[1].url }), existing, { articles: [catalog.articles[1]] });
+  assert.equal(result.status, 'full');
+  assert.deepEqual(result.excerpts, existing);
+});
+
+// A minimal DOM adapter exercises the real shelf presenter and subscription
+// lifecycle. It deliberately does not claim browser layout or selection coverage.
+function shelfDOM() {
+  const doc = { createdTags: [], copied: '', createElement: tag => new Element(tag, doc) };
+  class Element {
+    constructor(tag, document) {
+      this.tagName = tag.toUpperCase(); this.ownerDocument = document; this.dataset = {}; this.children = []; this.parentElement = null; this.attributes = {}; this.listeners = new Map(); this._text = ''; this._classes = new Set();
+      this.classList = { add: (...names) => names.forEach(name => this._classes.add(name)), remove: (...names) => names.forEach(name => this._classes.delete(name)) };
+      document.createdTags.push(tag);
+    }
+    set className(value) { this._classes = new Set(value.split(/\s+/).filter(Boolean)); }
+    get className() { return [...this._classes].join(' '); }
+    set textContent(value) { this._text = String(value); this.children = []; }
+    get textContent() { return this._text + this.children.map(child => child.textContent).join(''); }
+    append(...children) { for (const child of children) { child.parentElement = this; this.children.push(child); } }
+    replaceChildren(...children) { this.children.forEach(child => { child.parentElement = null; }); this.children = []; this._text = ''; this.append(...children); }
+    setAttribute(name, value) { this.attributes[name] = String(value); }
+    all() { return this.children.flatMap(child => [child, ...child.all()]); }
+    matches(selector) {
+      const match = selector.match(/^\[data-([\w-]+)\]$/);
+      return !!match && Object.hasOwn(this.dataset, match[1].replace(/-([a-z])/g, (_match, letter) => letter.toUpperCase()));
+    }
+    querySelector(selector) { return this.all().find(child => child.matches(selector)) || null; }
+    closest(selector) { return this.matches(selector) ? this : this.parentElement?.closest(selector) || null; }
+    contains(other) { return other === this || this.all().includes(other); }
+    addEventListener(name, listener) { const listeners = this.listeners.get(name) || []; listeners.push(listener); this.listeners.set(name, listeners); }
+    removeEventListener(name, listener) { this.listeners.set(name, (this.listeners.get(name) || []).filter(item => item !== listener)); }
+    async emit(name, event) { await Promise.all((this.listeners.get(name) || []).map(listener => listener(event))); }
+  }
+  const root = new Element('section', doc), host = new Element('div', doc); root.dataset.bearWorkspace = ''; root.append(host);
+  doc.defaultView = new Element('window', doc);
+  doc.defaultView.navigator = { clipboard: { writeText: async value => { doc.copied = value; } } };
+  return { doc, root, host };
+}
+
+test('shelf keeps unavailable source text, has no backlink, and refreshes after asynchronous storage merge', async () => {
+  // Resolve the real browser module's one relative import without changing the
+  // repository's mixed CommonJS/ESM package configuration or suppressing warnings.
+  const moduleURL = new URL('../assets/js/space/reading-tools.js', import.meta.url);
+  const dependencyURL = new URL('../assets/js/space/excerpts.mjs', import.meta.url);
+  const moduleText = (await readFile(moduleURL, 'utf8')).replace("'./excerpts.mjs'", JSON.stringify(dependencyURL.href));
+  const { mountExcerptShelf } = await import(`data:text/javascript;base64,${Buffer.from(moduleText).toString('base64')}`);
+  const original = create(input({ text: '下线文章的完整私人摘录。<script>不会执行</script>' })).excerpt;
+  const currentCatalog = { language: 'zh', articles: [catalog.articles[1]] };
+  const { doc, root, host } = shelfDOM();
+  let state = { excerpts: [original] };
+  const operations = [];
+  const dispose = mountExcerptShelf({ host, catalog: currentCatalog, getState: () => state, execute: (...args) => { operations.push(args); } });
+  const quotes = () => host.all().filter(element => element.tagName === 'BLOCKQUOTE');
+  assert.equal(quotes().length, 1);
+  assert.equal(quotes()[0].textContent, original.text);
+  assert.ok(host.textContent.includes('原文暂不可用'));
+  assert.equal(host.all().filter(element => element.dataset.excerptAction === 'source').length, 0);
+  assert.ok(!doc.createdTags.includes('script'));
+  const copy = host.all().find(element => element.dataset.excerptAction === 'copy');
+  await host.emit('click', { target: copy });
+  assert.ok(doc.copied.includes('原文暂不可用'));
+  assert.ok(doc.copied.includes('下线文章的完整私人摘录'));
+  assert.deepEqual(operations, [], 'reading or copying a shelf must not operate the Agent or mutate notes');
+  const current = helpers.createExcerpt(input({ url: catalog.articles[1].url, text: '异步合并得到的新摘录。' }), [], currentCatalog).excerpt;
+  state = { excerpts: [original, current] };
+  await root.emit('bear:workspace-change', { detail: { type: 'storage' } });
+  assert.equal(quotes().length, 2);
+  assert.equal(quotes()[0].textContent, original.text);
+  assert.equal(host.all().filter(element => element.dataset.excerptAction === 'source').length, 1);
+  assert.deepEqual(state.excerpts[0], original);
+  dispose();
+  await root.emit('bear:workspace-change', { detail: { type: 'storage' } });
+  assert.equal(host.children.length, 0, 'disposed presenters must not resurrect their DOM');
+});

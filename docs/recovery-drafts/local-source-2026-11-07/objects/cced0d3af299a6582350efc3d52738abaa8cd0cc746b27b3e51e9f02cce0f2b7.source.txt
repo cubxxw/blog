@@ -1,0 +1,151 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { parseFragment } from 'parse5';
+
+// Parse the shipped markup, then exercise its actual handlers and core runner.
+// This DOM boundary loads no browser, server, provider or external resources.
+const panelURL = new URL('../assets/js/space/agent-panel.js', import.meta.url);
+const panelSource = (await readFile(panelURL, 'utf8')).replace(/from '\.\/(state\.mjs|agent-loop\.mjs)'/g, (_match, file) => `from '${new URL(file, panelURL).href}'`);
+const { mountAgent } = await import(`data:text/javascript;base64,${Buffer.from(panelSource).toString('base64')}`);
+class TextNode {
+  constructor(text) { this.nodeType = 3; this.textContent = String(text); this.parentNode = null; }
+}
+const dataName = name => `data-${String(name).replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)}`;
+function matches(node, selector) {
+  return selector.split(',').some(value => {
+    const part = value.trim(), tag = /^[a-z][\w-]*/i.exec(part)?.[0];
+    if (tag && node.tagName !== tag.toUpperCase()) return false;
+    for (const match of part.matchAll(/\.([\w-]+)/g)) if (!node.className.split(/\s+/).includes(match[1])) return false;
+    for (const match of part.matchAll(/\[([\w-]+)(?:="([^"]*)")?\]/g)) {
+      if (!node.hasAttribute(match[1]) || (match[2] !== undefined && node.getAttribute(match[1]) !== match[2])) return false;
+    }
+    return !part.replace(/^[a-z][\w-]*/i, '').replace(/\.[\w-]+|\[[^\]]+\]/g, '');
+  });
+}
+class Element extends EventTarget {
+  constructor(tag, document) {
+    super(); this.tagName = tag.toUpperCase(); this.nodeType = 1; this.ownerDocument = document;
+    this.attributes = new Map(); this.childNodes = []; this.parentNode = null; this.value = '';
+    this.dataset = new Proxy({}, { get: (_target, name) => this.getAttribute(dataName(name)) ?? undefined, set: (_target, name, value) => { this.setAttribute(dataName(name), value); return true; } });
+  }
+  get className() { return this.getAttribute('class') || ''; }
+  set className(value) { this.setAttribute('class', value); }
+  get hidden() { return this.hasAttribute('hidden'); }
+  set hidden(value) { value ? this.setAttribute('hidden', '') : this.attributes.delete('hidden'); }
+  get disabled() { return this.hasAttribute('disabled'); }
+  set disabled(value) { value ? this.setAttribute('disabled', '') : this.attributes.delete('disabled'); }
+  get textContent() { return this.childNodes.map(node => node.textContent).join(''); }
+  set textContent(value) { this.replaceChildren(new TextNode(value)); }
+  get innerHTML() { return ''; }
+  set innerHTML(value) {
+    const convert = node => {
+      if (node.nodeName === '#text') return new TextNode(node.value);
+      const element = new Element(node.tagName, this.ownerDocument);
+      for (const attr of node.attrs || []) element.setAttribute(attr.name, attr.value);
+      element.append(...(node.childNodes || []).map(convert)); return element;
+    };
+    this.replaceChildren(...parseFragment(value).childNodes.map(convert));
+  }
+  setAttribute(name, value) { this.attributes.set(name, String(value)); }
+  getAttribute(name) { return this.attributes.get(name) ?? null; }
+  hasAttribute(name) { return this.attributes.has(name); }
+  append(...nodes) { for (let node of nodes) { if (typeof node === 'string') node = new TextNode(node); node.parentNode?.removeChild(node); node.parentNode = this; this.childNodes.push(node); } }
+  prepend(...nodes) { const previous = [...this.childNodes]; this.replaceChildren(...nodes, ...previous); }
+  removeChild(node) { this.childNodes.splice(this.childNodes.indexOf(node), 1); node.parentNode = null; }
+  replaceChildren(...nodes) { for (const old of this.childNodes) old.parentNode = null; this.childNodes = []; this.append(...nodes); }
+  remove() { this.parentNode?.removeChild(this); }
+  querySelectorAll(selector) { const result = []; const visit = node => { for (const child of node.childNodes) if (child.nodeType === 1) { if (matches(child, selector)) result.push(child); visit(child); } }; visit(this); return result; }
+  querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
+  click() { if (!this.disabled) this.dispatchEvent(new Event('click')); }
+  focus() { this.ownerDocument.activeElement = this; }
+  scrollIntoView() {}
+  requestSubmit() { this.dispatchEvent(new Event('submit', { cancelable: true })); }
+}
+const catalog = { language: 'en', articles: [{ title: 'Agent memory', url: '/en/ai-agent/posts/memory/', description: 'Public agent design', tags: ['agent'] }], photos: [], places: [], products: [] };
+const article = '<div class="post-content"><p>A real public excerpt from the selected article.</p></div>';
+function storage(initial = '') { let value = initial; return { getItem: () => value, setItem: (_key, next) => { value = next; }, dump: () => value }; }
+function fixture({ fetchArticle, store = storage() } = {}) {
+  const saved = { document: globalThis.document, location: globalThis.location, localStorage: globalThis.localStorage, fetch: globalThis.fetch, DOMParser: globalThis.DOMParser };
+  const document = { createElement: tag => new Element(tag, document), createTextNode: text => new TextNode(text) };
+  globalThis.document = document; globalThis.location = { origin: 'https://blog.test' }; globalThis.localStorage = store; globalThis.DOMParser = undefined;
+  const requests = [];
+  globalThis.fetch = async (url, options) => {
+    requests.push({ url, options });
+    if (String(url).includes('/.netlify/functions/')) throw new Error('research must never request a model or runtime');
+    return fetchArticle ? fetchArticle(url, options) : { ok: true, status: 200, url, text: async () => article };
+  };
+  const host = new Element('div', document), actions = [];
+  const dispose = mountAgent({ host, catalog, execute: (...args) => { actions.push(args); }, getState: () => { throw new Error('private state is outside research'); }, notify() {} });
+  return { host, store, requests, actions, dispose, cleanup() { dispose(); Object.assign(globalThis, saved); } };
+}
+async function until(predicate) { const deadline = Date.now() + 1000; while (!predicate()) { if (Date.now() > deadline) assert.fail('panel did not settle'); await new Promise(resolve => setImmediate(resolve)); } }
+function submit(host, text) { const input = host.querySelector('[data-agent-input]'); input.value = text; input.dispatchEvent(new Event('input')); host.querySelector('form').requestSubmit(); }
+function deferred() { let resolve; return { promise: new Promise(r => { resolve = r; }), resolve: value => resolve(value) }; }
+const badge = host => host.querySelectorAll('[data-agent-badge]').at(-1);
+
+test('the explicit research mode reads public data, labels its action and stores the actual excerpt', async () => {
+  const f = fixture();
+  try {
+    f.host.querySelector('[data-agent-mode="research"]').click();
+    assert.equal(f.host.querySelector('[data-agent-input]').maxLength, 200);
+    assert.equal(f.host.querySelector('[data-agent-send]').textContent, 'Search & read ↑');
+    submit(f.host, 'agent');
+    await until(() => badge(f.host)?.dataset.status === 'completed');
+    assert.equal(f.requests.length, 1);
+    assert.equal(f.requests[0].options.redirect, 'error');
+    assert.equal(f.host.querySelector('.bear-agent__task').dataset.agentWorkflow, 'research');
+    assert.match(f.host.querySelector('[data-agent-answer]').textContent, /Original excerpt, not AI generated/);
+    assert.match(f.host.querySelector('[data-agent-answer]').textContent, /A real public excerpt/);
+    assert.equal(f.host.querySelectorAll('[data-agent-step="model"]').length, 0);
+    assert.equal(f.actions.length, 0);
+    assert.equal(JSON.parse(f.store.dump()).tasks[0].workflow, 'research');
+    f.host.querySelector('[data-agent-mode="ai"]').click();
+    assert.equal(f.host.querySelector('[data-agent-input]').maxLength, 4000);
+    assert.equal(f.host.querySelector('[data-agent-send]').textContent, 'Send ↑');
+  } finally { f.cleanup(); }
+});
+
+test('research Stop updates the read timeline and restore stays idle until retry creates a new research task', async () => {
+  const body = deferred(), store = storage();
+  const f = fixture({ store, fetchArticle: async () => ({ ok: true, status: 200, text: () => body.promise }) });
+  let oldID;
+  try {
+    f.host.querySelector('[data-agent-mode="research"]').click(); submit(f.host, 'agent');
+    await until(() => f.requests.length === 1);
+    assert.equal(f.host.querySelector('[data-agent-mode="ai"]').disabled, true);
+    f.host.querySelector('[data-agent-mode="ai"]').click();
+    assert.equal(f.host.querySelector('[data-agent-mode="research"]').getAttribute('aria-pressed'), 'true');
+    f.host.querySelector('[data-agent-stop]').click();
+    await until(() => badge(f.host)?.dataset.status === 'interrupted');
+    assert.equal(f.host.querySelectorAll('[data-agent-step="tool"]').at(-1).dataset.status, 'interrupted');
+    oldID = JSON.parse(store.dump()).tasks[0].id;
+  } finally { f.cleanup(); }
+  const restored = fixture({ store });
+  try {
+    assert.equal(restored.requests.length, 0);
+    assert.equal(badge(restored.host).dataset.status, 'interrupted');
+    restored.host.querySelector('[data-agent-retry]').click();
+    await until(() => badge(restored.host)?.dataset.status === 'completed');
+    assert.equal(restored.requests.length, 1);
+    const records = JSON.parse(store.dump()).tasks;
+    assert.equal(records.find(record => record.id === oldID).status, 'interrupted');
+    assert.notEqual(records.at(-1).id, oldID);
+    assert.equal(records.at(-1).workflow, 'research');
+    body.resolve('<div class="post-content">STALE EXCERPT</div>');
+    await new Promise(resolve => setImmediate(resolve));
+    assert.doesNotMatch(restored.host.textContent, /STALE EXCERPT/);
+  } finally { restored.cleanup(); }
+});
+
+test('research HTTP failure is visible on the first render and never described as an AI outage', async () => {
+  const f = fixture({ fetchArticle: async () => ({ ok: false, status: 404 }) });
+  try {
+    f.host.querySelector('[data-agent-mode="research"]').click(); submit(f.host, 'agent');
+    await until(() => badge(f.host)?.dataset.status === 'failed');
+    assert.match(f.host.textContent, /HTTP 404/);
+    assert.match(f.host.textContent, /Public research did not finish/);
+    assert.doesNotMatch(f.host.textContent, /AI service is unavailable/);
+    assert.equal(f.host.querySelectorAll('[data-agent-step="tool"]').at(-1).dataset.status, 'error');
+  } finally { f.cleanup(); }
+});

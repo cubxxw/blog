@@ -1,0 +1,39 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {createWorkspace,serializeWorkspace} from '../assets/js/space/state.mjs';
+import {createWorkspaceStore} from '../assets/js/space/workspace-storage.mjs';
+const screen={width:1280,height:800};
+const source=fs.readFileSync(new URL('../assets/js/space/desktop.js',import.meta.url),'utf8');
+// Exercise the real controller functions; no copy of the transaction is maintained here.
+const start=source.indexOf('  function persist() {');
+const end=source.indexOf('  function title(win)',start);
+assert.ok(start>0&&end>start);
+function harness(){
+ let raw=serializeWorkspace(createWorkspace({version:1,windows:[{id:'settings',app:'settings'}],active:'settings',note:'Before restore',draft:'',favorites:[],initialized:true},screen)),quota=false;
+ const storage={getItem:()=>raw,setItem:(_,v)=>{if(quota)throw new Error('Quota');raw=v;}};
+ const store=createWorkspaceStore({storage,viewport:screen});
+ const held=[];
+ const context={initial:store.load(),store,createWorkspace,serializeWorkspace,stateViewport:()=>screen,storageKey:'bear-space:v1',navigator:{locks:{request:(_,callback)=>new Promise((resolve,reject)=>held.push(()=>{try{resolve(callback());}catch(e){reject(e);}}))}},render(){},refreshPrivateViews(){},showStorageStatus(){},nodes:new Map(),root:{dispatchEvent(){}},CustomEvent:class{}};
+ vm.runInNewContext(`let state=initial,commitQueue=Promise.resolve(),pendingCommits=0,saveFailure=false;${source.slice(start,end)};globalThis.controller={restoreState,persist,setNote(text){state={...state,note:text};return persist();},state:()=>state,settled:()=>commitQueue};`,context);
+ return{controller:context.controller,held,setQuota:()=>{quota=true;},disk:()=>JSON.parse(raw)};
+}
+async function lockReady(h){for(let i=0;i<10&&!h.held.length;i++)await Promise.resolve();assert.ok(h.held.length);}
+test('restore waiting for a lock never exposes imported content and cannot discard newer edits',async()=>{
+ const h=harness();const next=createWorkspace({version:1,windows:[],note:'Imported',draft:'',favorites:[]},screen);
+ const restore=h.controller.restoreState(next);await lockReady(h);
+ assert.equal(h.controller.state().note,'Before restore');
+ const edit=h.controller.setNote('Typed while restore waited');h.setQuota();h.held.shift()();
+ const result=await restore;assert.equal(result.saved,false);assert.equal(result.reason,'stale-restore');
+ await lockReady(h);h.held.shift()();await edit;
+ assert.equal(h.controller.state().note,'Typed while restore waited');assert.equal(h.disk().note,'Before restore');
+});
+test('quota failure keeps the original live state without an optimistic replacement',async()=>{
+ const h=harness();const restore=h.controller.restoreState(createWorkspace({version:1,windows:[],note:'Imported',draft:'',favorites:[]},screen));await lockReady(h);h.setQuota();h.held.shift()();
+ assert.equal((await restore).saved,false);assert.equal(h.controller.state().note,'Before restore');assert.equal(h.disk().note,'Before restore');
+});
+test('successful restore retains a recovery copy and the confirmation settings window',async()=>{
+ const h=harness();const restore=h.controller.restoreState(createWorkspace({version:1,windows:[],note:'Imported',draft:'',favorites:[]},screen));await lockReady(h);h.held.shift()();
+ assert.equal((await restore).saved,true);assert.equal(h.disk().note,'Imported');assert.ok(h.disk().recoveries.some(x=>x.note==='Before restore'));assert.equal(h.controller.state().active,'settings');assert.ok(h.controller.state().windows.some(w=>w.app==='settings'));
+});

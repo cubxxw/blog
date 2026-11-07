@@ -1,0 +1,176 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createWorkspace } from '../assets/js/space/state.mjs';
+const api = await import('../assets/js/space/workspace-storage.mjs').catch(() => ({}));
+const viewport = { width: 1440, height: 900 };
+const workspace = patch => ({ ...createWorkspace(null, viewport), excerpts: [], recoveries: [], ...patch });
+function storage(value = null) {
+  let raw = value, fail = false;
+  return { getItem: () => raw, setItem: (_key, value) => { if (fail) throw new Error('Quota exceeded'); raw = value; }, raw: () => raw, put: value => { raw = value; }, fail: () => { fail = true; } };
+}
+const merge = args => { assert.equal(typeof api.mergeWorkspaceChanges, 'function'); return api.mergeWorkspaceChanges(args); };
+const store = data => { assert.equal(typeof api.createWorkspaceStore, 'function'); return api.createWorkspaceStore({ storage: data, key: 'workspace', viewport }); };
+
+test('an unrelated local layout change adopts the remote saved note', () => {
+  const base = workspace({ note: 'before' });
+  const local = workspace({ note: 'before', theme: 'dark' });
+  const remote = workspace({ note: 'saved elsewhere', favorites: ['/zh/a/'] });
+  const result = merge({ base, local, remote });
+  assert.equal(result.state.note, 'saved elsewhere');
+  assert.equal(result.state.theme, 'dark');
+  assert.deepEqual(result.state.favorites, ['/zh/a/']);
+  assert.equal(result.conflicts.length, 0);
+});
+
+test('concurrent note and draft edits keep the local text and both recovery copies', () => {
+  const base = workspace({ note: 'original', draft: 'original draft' });
+  const local = workspace({ note: 'my edit', draft: 'my draft' });
+  const remote = workspace({ note: 'their edit', draft: 'their draft' });
+  const result = merge({ base, local, remote });
+  assert.equal(result.state.note, 'my edit');
+  assert.equal(result.state.draft, 'my draft');
+  assert.deepEqual(result.conflicts, ['note', 'draft']);
+  assert.ok(result.state.recoveries.some(r => r.note === 'my edit' && r.draft === 'my draft'));
+  assert.ok(result.state.recoveries.some(r => r.note === 'their edit' && r.draft === 'their draft'));
+  assert.ok(result.state.recoveries.length <= 3);
+});
+
+test('remote deletion of a favorite is not resurrected by another local addition', () => {
+  const base = workspace({ favorites: ['/zh/a/', '/zh/b/'] });
+  const local = workspace({ favorites: ['/zh/a/', '/zh/b/', '/zh/c/'] });
+  const remote = workspace({ favorites: ['/zh/b/', '/zh/d/'] });
+  assert.deepEqual(merge({ base, local, remote }).state.favorites, ['/zh/b/', '/zh/d/', '/zh/c/']);
+});
+
+test('excerpt removals and independent additions merge by id', () => {
+  const excerpt = id => ({ id, text: id, url: '/zh/a/', title: 'Source', anchor: '', createdAt: '2026-10-13T05:00:00.000Z' });
+  const base = workspace({ excerpts: [excerpt('a')] });
+  const local = workspace({ excerpts: [excerpt('a'), excerpt('b')] });
+  const remote = workspace({ excerpts: [excerpt('c')] });
+  assert.deepEqual(merge({ base, local, remote }).state.excerpts.map(e => e.id), ['c', 'b']);
+});
+
+test('two stores re-read disk before committing a stale tab favorite or geometry', () => {
+  const disk = storage(JSON.stringify(workspace({ note: 'old' })));
+  const a = store(disk), b = store(disk);
+  const aState = a.load(), bState = b.load();
+  assert.equal(a.save({ ...aState, note: 'new from A' }).saved, true);
+  const result = b.save({ ...bState, favorites: ['/zh/a/'], windows: [{ id: 'notes', app: 'notes', payload: '', rect: { x: 300, y: 30, width: 620, height: 400 }, minimized: false, maximized: false }] });
+  assert.equal(result.saved, true);
+  assert.equal(result.state.note, 'new from A');
+  assert.equal(JSON.parse(disk.raw()).note, 'new from A');
+  assert.equal(result.state.windows[0].rect.x, 300);
+});
+
+test('two stores preserve both concurrent private edits after a conflict', () => {
+  const disk = storage(JSON.stringify(workspace({ note: 'old' })));
+  const a = store(disk), b = store(disk);
+  const aState = a.load(), bState = b.load();
+  a.save({ ...aState, note: 'A' });
+  const result = b.save({ ...bState, note: 'B' });
+  assert.equal(result.saved, true);
+  assert.deepEqual(result.conflicts, ['note']);
+  assert.ok(result.state.recoveries.some(r => r.note === 'A'));
+  assert.ok(result.state.recoveries.some(r => r.note === 'B'));
+  assert.equal(b.getStatus().state, 'conflict');
+});
+
+test('malformed and future storage is not silently replaced with an empty state', () => {
+  for (const raw of ['{broken', '{"version":99}', '[]', '{"version":1,"note":42}']) {
+    const disk = storage(raw), s = store(disk);
+    const state = s.load();
+    assert.equal(s.getStatus().state, 'blocked');
+    const result = s.save({ ...state, note: 'new local text' });
+    assert.equal(result.saved, false);
+    assert.equal(result.state.note, 'new local text');
+    assert.equal(disk.raw(), raw);
+    assert.equal(s.getStatus().raw, raw);
+  }
+});
+
+test('a quota failure preserves local text and reports unsaved state', () => {
+  const disk = storage(JSON.stringify(workspace({ note: 'before' }))), s = store(disk);
+  const state = s.load(); disk.fail();
+  const result = s.save({ ...state, note: 'still here' });
+  assert.equal(result.saved, false);
+  assert.equal(result.state.note, 'still here');
+  assert.equal(s.getStatus().saved, false);
+  assert.equal(JSON.parse(disk.raw()).note, 'before');
+});
+
+test('a malformed late remote update blocks writes while keeping edited content', () => {
+  const disk = storage(JSON.stringify(workspace({ note: 'before' }))), s = store(disk);
+  const state = s.load(); disk.put('{broken');
+  const result = s.save({ ...state, note: 'local recovery' });
+  assert.equal(result.saved, false);
+  assert.equal(result.state.note, 'local recovery');
+  assert.equal(disk.raw(), '{broken');
+});
+
+test('stored conflicts survive reload and unchanged repeat commits do not duplicate recoveries', () => {
+  const disk = storage(JSON.stringify(workspace({ note: 'old' }))), a = store(disk), b = store(disk);
+  const initial = a.load(), other = b.load();
+  a.save({ ...initial, note: 'A' });
+  const first = b.save({ ...other, note: 'B' });
+  const second = b.save(first.state);
+  assert.equal(second.state.recoveries.length, first.state.recoveries.length);
+  assert.deepEqual(store(disk).load().recoveries, second.state.recoveries);
+});
+
+test('unavailable reads and unconfirmed writes never report saved', () => {
+  const unavailable = store({ getItem: () => { throw new Error('denied'); }, setItem: () => { throw new Error('denied'); } });
+  const state = unavailable.load();
+  assert.equal(unavailable.getStatus().state, 'unavailable');
+  assert.equal(unavailable.save({ ...state, note: 'keep this' }).saved, false);
+  const silent = store({ getItem: () => null, setItem: () => {} });
+  assert.equal(silent.save({ ...silent.load(), note: 'keep this' }).saved, false);
+});
+
+test('a remote cleared workspace does not resurrect its removed favorites', () => {
+  const disk = storage(JSON.stringify(workspace({ note: 'old', favorites: ['/zh/a/'] }))), s = store(disk);
+  const local = s.load(); disk.put(null);
+  const result = s.save({ ...local, theme: 'dark' });
+  assert.equal(result.state.note, '');
+  assert.deepEqual(result.state.favorites, []);
+});
+
+test('concurrent additions beyond excerpt capacity do not silently discard another tab work', () => {
+  const excerpt = id => ({ id, text: `quote ${id}`, url: '/zh/a/', title: 'Source', anchor: '', createdAt: '' });
+  const disk = storage(JSON.stringify(workspace({ excerpts: Array.from({ length: 79 }, (_, i) => excerpt(`old-${i}`)) }))), a = store(disk), b = store(disk);
+  const first = a.load(), second = b.load();
+  a.save({ ...first, excerpts: [...first.excerpts, excerpt('a-new')] });
+  const result = b.save({ ...second, excerpts: [...second.excerpts, excerpt('b-new')] });
+  assert.equal(result.saved, false);
+  assert.ok(result.state.excerpts.some(e => e.id === 'b-new'));
+  assert.ok(JSON.parse(disk.raw()).excerpts.some(e => e.id === 'a-new'));
+  assert.ok(b.getStatus().message.includes('capacity'));
+});
+
+test('concurrent additions beyond favorite capacity leave disk and current edits recoverable', () => {
+  const favorites = Array.from({ length: 199 }, (_, i) => `/zh/${i}/`);
+  const disk = storage(JSON.stringify(workspace({ favorites }))), a = store(disk), b = store(disk);
+  const first = a.load(), second = b.load();
+  a.save({ ...first, favorites: [...favorites, '/zh/a/'] });
+  const result = b.save({ ...second, favorites: [...favorites, '/zh/b/'] });
+  assert.equal(result.saved, false);
+  assert.ok(result.state.favorites.includes('/zh/b/'));
+  assert.ok(JSON.parse(disk.raw()).favorites.includes('/zh/a/'));
+});
+
+test('the maximum escaped private-text state survives save and reload', () => {
+  const disk = storage(), s = store(disk), initial = s.load();
+  const next = { ...initial, note: '\u0001'.repeat(40000), draft: '\u0001'.repeat(6000), recoveries: Array.from({ length: 3 }, (_, i) => ({ id: `r-${i}`, note: '\u0001'.repeat(40000), draft: '\u0001'.repeat(6000), at: '', reason: 'previous' })) };
+  const result = s.save(next);
+  assert.equal(result.saved, true);
+  const restored = store(disk).load();
+  assert.equal(restored.note, next.note); assert.equal(restored.draft, next.draft);
+  assert.equal(restored.recoveries[0].note, next.recoveries[0].note);
+});
+
+test('out-of-contract stored private text is protected rather than truncated on a later layout write', () => {
+  const raw = JSON.stringify(workspace({ note: 'private'.repeat(10000) }));
+  const disk = storage(raw), s = store(disk), initial = s.load();
+  assert.equal(s.getStatus().state, 'blocked');
+  assert.equal(s.save({ ...initial, theme: 'dark' }).saved, false);
+  assert.equal(disk.raw(), raw);
+});
