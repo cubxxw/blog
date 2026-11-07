@@ -18,3 +18,4 @@
 @media (max-width: 640px) { .space .space-transfer__actions { align-items: stretch; } .space .space-transfer__actions > * { flex: 1 1 140px; text-align: center; justify-content: center; } .space .space-transfer__preview button { width: 100%; } }
 
 .space .space-storage-notice{position:absolute;right:16px;bottom:88px;z-index:70;max-width:min(320px,calc(100% - 32px));min-height:44px;padding:10px 14px;border:1px solid var(--sp-line);border-radius:8px;background:var(--sp-paper);color:var(--sp-ink);box-shadow:var(--sp-shadow);font-size:13px;}
+.space .space-bottom > .space-storage-notice{right:0;bottom:calc(100% + 8px);}
